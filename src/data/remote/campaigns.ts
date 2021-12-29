@@ -21,10 +21,8 @@ import { useModifyUserCache } from '@data/apollo/cache';
 import {
   useAddGuideInputMutation,
   useAddCampaignInvestigatorMutation,
-  useDecCountAchievementMutation,
+  useSetCountAchievementMutation,
   useDeleteInvestigatorDecksMutation,
-  useIncCountAchievementMaxMutation,
-  useIncCountAchievementMutation,
   useRemoveCampaignInvestigatorMutation,
   useRemoveGuideInputsMutation,
   useSetBinaryAchievementMutation,
@@ -222,8 +220,8 @@ function guideAchievementToInsert(a: GuideAchievement, serverId: number): Guide_
   return {
     campaign_id: serverId,
     id: a.id,
-    bool_value: a.type === 'binary' ? a.value : undefined,
-    value: a.type === 'count' ? a.value : undefined,
+    bool_value: a.type === 'binary' ? a.value : null,
+    value: a.type === 'count' ? a.value : null,
     type: a.type,
   };
 }
@@ -824,13 +822,10 @@ export interface GuideActions {
   setInput: (campaignId: UploadedCampaignId, input: GuideInput) => Promise<void>;
   removeInputs: (campaignId: UploadedCampaignId, inputs: GuideInput[]) => Promise<void>;
   setBinaryAchievement: (campaignId: UploadedCampaignId, achievementId: string, value: boolean) => Promise<void>;
-  decAchievement: (campaignId: UploadedCampaignId, achievementId: string) => Promise<void>;
-  incAchievement: (campaignId: UploadedCampaignId, achievementId: string, max?: number) => Promise<void>;
+  setCountAchievement: (campaignId: UploadedCampaignId, achievementId: string, value: number) => Promise<void>;
 }
 export function useGuideActions(): GuideActions {
-  const [incCountMax] = useIncCountAchievementMaxMutation();
-  const [incCount] = useIncCountAchievementMutation();
-  const [decCount] = useDecCountAchievementMutation();
+  const [setCount] = useSetCountAchievementMutation();
   const [setBinary] = useSetBinaryAchievementMutation();
 
   const [removeGuideInputs] = useRemoveGuideInputsMutation();
@@ -888,6 +883,7 @@ export function useGuideActions(): GuideActions {
           id: achievementId,
           campaign_id: campaignId.serverId,
           type: 'binary',
+          value: null,
           bool_value: value,
         },
       },
@@ -902,97 +898,36 @@ export function useGuideActions(): GuideActions {
       update: optimisticUpdates.setBinaryAchievement.update,
     });
   }, [setBinary]);
-  const incAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string, max?: number) => {
-    if (max) {
-      await incCountMax({
-        optimisticResponse: {
-          __typename: 'mutation_root',
-          update_guide_achievement: {
-            __typename: 'guide_achievement_mutation_response',
-            returning: [
-              {
-                __typename: 'guide_achievement',
-                campaign_id: campaignId.serverId,
-                id: achievementId,
-                type: 'count',
-                value: null,
-              },
-            ],
-          },
-        },
-        variables: {
-          campaign_id: campaignId.serverId,
-          id: achievementId,
-          max,
-        },
-        context: {
-          serializationKey: campaignId.serverId,
-          max,
-        },
-        update: optimisticUpdates.incCountAchievementMax.update,
-      });
-    } else {
-      await incCount({
-        optimisticResponse: {
-          __typename: 'mutation_root',
-          update_guide_achievement: {
-            __typename: 'guide_achievement_mutation_response',
-            returning: [
-              {
-                __typename: 'guide_achievement',
-                campaign_id: campaignId.serverId,
-                id: achievementId,
-                type: 'count',
-                value: null,
-              },
-            ],
-          },
-        },
-        variables: {
-          campaign_id: campaignId.serverId,
-          id: achievementId,
-        },
-        context: {
-          serializationKey: campaignId.serverId,
-        },
-        update: optimisticUpdates.incCountAchievement.update,
-      });
-    }
-  }, [incCount, incCountMax]);
-  const decAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string) => {
-    await decCount({
+  const setCountAchievement = useCallback(async(campaignId: UploadedCampaignId, achievementId: string, value: number) => {
+    await setCount({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_guide_achievement: {
-          __typename: 'guide_achievement_mutation_response',
-          returning: [
-            {
-              __typename: 'guide_achievement',
-              campaign_id: campaignId.serverId,
-              id: achievementId,
-              type: 'count',
-              value: null,
-            },
-          ],
+        insert_guide_achievement_one: {
+          __typename: 'guide_achievement',
+          id: achievementId,
+          campaign_id: campaignId.serverId,
+          type: 'count',
+          value,
+          bool_value: null,
         },
       },
       variables: {
         campaign_id: campaignId.serverId,
         id: achievementId,
+        value,
       },
       context: {
         serializationKey: campaignId.serverId,
       },
-      update: optimisticUpdates.decCountAchievement.update,
+      update: optimisticUpdates.setCountAchievement.update,
     });
-  }, [decCount]);
+  }, [setCount]);
   return useMemo(() => {
     return {
       setBinaryAchievement,
-      incAchievement,
-      decAchievement,
+      setCountAchievement,
       setInput,
       removeInputs,
     };
-  }, [setBinaryAchievement, incAchievement, decAchievement, setInput, removeInputs]);
+  }, [setBinaryAchievement, setCountAchievement, setInput, removeInputs]);
 }

@@ -171,46 +171,23 @@ export function setBinaryAchievement(
   };
 }
 
-export function incCountAchievement(
+export function setCountAchievement(
   userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   achievementId: string,
-  max?: number
+  value: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
   return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      await actions.incAchievement(campaignId, achievementId, max);
+      await actions.setCountAchievement(campaignId, achievementId, value);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
         campaignId,
         id: achievementId,
-        operation: 'inc',
-        max,
-        now: new Date(),
-      }));
-    }
-  };
-}
-
-export function decCountAchievement(
-  userId: string | undefined,
-  actions: GuideActions,
-  campaignId: CampaignId,
-  achievementId: string,
-  max?: number
-): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return async(dispatch) => {
-    if (userId && campaignId.serverId) {
-      await actions.decAchievement(campaignId, achievementId);
-    } else {
-      dispatch(updateAchievement(userId, {
-        type: GUIDE_UPDATE_ACHIEVEMENT,
-        campaignId,
-        id: achievementId,
-        operation: 'dec',
-        max,
+        operation: 'set',
+        value,
         now: new Date(),
       }));
     }
@@ -438,6 +415,5 @@ export default {
   setCampaignLink,
   undo,
   setBinaryAchievement,
-  incCountAchievement,
-  decCountAchievement,
+  setCountAchievement,
 };

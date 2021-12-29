@@ -208,6 +208,7 @@ export interface Campaign {
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
+  ultimatums?: Ultimatum[];
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -1128,6 +1129,11 @@ export interface Achievement {
     id: string;
     text: string;
   }[];
+}
+export interface Ultimatum {
+  id: string;
+  name: string;
+  text: string;
 }
 export interface Scenario {
   id: string;

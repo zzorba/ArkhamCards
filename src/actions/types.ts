@@ -1226,8 +1226,8 @@ export interface GuideUpdateAchievementAction {
   type: typeof GUIDE_UPDATE_ACHIEVEMENT;
   campaignId: CampaignId;
   id: string;
-  operation: 'set' | 'clear' | 'inc' | 'dec';
-  max?: number;
+  operation: 'set' | 'clear' | 'set_value';
+  value?: number;
   now: Date;
 }
 

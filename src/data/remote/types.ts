@@ -284,7 +284,7 @@ export class CampaignGuideStateRemote implements CampaignGuideStateT {
   }
 
   binaryAchievement(id: string): boolean {
-    return !!find(this.guide.guide_achievements || [], a => a.id === id && a.type === 'binary' && a.bool_value);
+    return !!find(this.guide.guide_achievements || [], a => !!(a.id === id && a.type === 'binary' && a.bool_value));
   }
   countAchievement(id: string): number {
     const entry = find(this.guide.guide_achievements || [], a => a.id === id && a.type === 'count');

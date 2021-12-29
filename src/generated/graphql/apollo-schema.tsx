@@ -10925,30 +10925,14 @@ export type SetBinaryAchievementMutationVariables = Exact<{
 
 export type SetBinaryAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined };
 
-export type IncCountAchievementMaxMutationVariables = Exact<{
+export type SetCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   id: Scalars['String'];
-  max: Scalars['Int'];
+  value: Scalars['Int'];
 }>;
 
 
-export type IncCountAchievementMaxMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
-
-export type IncCountAchievementMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  id: Scalars['String'];
-}>;
-
-
-export type IncCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
-
-export type DecCountAchievementMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  id: Scalars['String'];
-}>;
-
-
-export type DecCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined, update_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', returning: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined };
+export type SetCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined };
 
 export type AddGuideInputMutationVariables = Exact<{
   id: Scalars['String'];
@@ -13006,146 +12990,44 @@ export function useSetBinaryAchievementMutation(baseOptions?: Apollo.MutationHoo
 export type SetBinaryAchievementMutationHookResult = ReturnType<typeof useSetBinaryAchievementMutation>;
 export type SetBinaryAchievementMutationResult = Apollo.MutationResult<SetBinaryAchievementMutation>;
 export type SetBinaryAchievementMutationOptions = Apollo.BaseMutationOptions<SetBinaryAchievementMutation, SetBinaryAchievementMutationVariables>;
-export const IncCountAchievementMaxDocument = gql`
-    mutation incCountAchievementMax($campaign_id: Int!, $id: String!, $max: Int!) {
+export const SetCountAchievementDocument = gql`
+    mutation setCountAchievement($campaign_id: Int!, $id: String!, $value: Int!) {
   insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
-  ) {
-    id
-    campaign_id
-    id
-    type
-    value
-  }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}, value: {_lt: $max}}
-    _inc: {value: 1}
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
-}
-    ${GuideAchievementFragmentDoc}`;
-export type IncCountAchievementMaxMutationFn = Apollo.MutationFunction<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
-
-/**
- * __useIncCountAchievementMaxMutation__
- *
- * To run a mutation, you first call `useIncCountAchievementMaxMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useIncCountAchievementMaxMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [incCountAchievementMaxMutation, { data, loading, error }] = useIncCountAchievementMaxMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      id: // value for 'id'
- *      max: // value for 'max'
- *   },
- * });
- */
-export function useIncCountAchievementMaxMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>(IncCountAchievementMaxDocument, options);
-      }
-export type IncCountAchievementMaxMutationHookResult = ReturnType<typeof useIncCountAchievementMaxMutation>;
-export type IncCountAchievementMaxMutationResult = Apollo.MutationResult<IncCountAchievementMaxMutation>;
-export type IncCountAchievementMaxMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMaxMutation, IncCountAchievementMaxMutationVariables>;
-export const IncCountAchievementDocument = gql`
-    mutation incCountAchievement($campaign_id: Int!, $id: String!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 1}
-    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
+    object: {campaign_id: $campaign_id, id: $id, type: "count", value: $value}
+    on_conflict: {constraint: guide_achievement_pkey, update_columns: [value]}
   ) {
     ...GuideAchievement
   }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}}
-    _inc: {value: 1}
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
 }
     ${GuideAchievementFragmentDoc}`;
-export type IncCountAchievementMutationFn = Apollo.MutationFunction<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
+export type SetCountAchievementMutationFn = Apollo.MutationFunction<SetCountAchievementMutation, SetCountAchievementMutationVariables>;
 
 /**
- * __useIncCountAchievementMutation__
+ * __useSetCountAchievementMutation__
  *
- * To run a mutation, you first call `useIncCountAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useIncCountAchievementMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useSetCountAchievementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetCountAchievementMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [incCountAchievementMutation, { data, loading, error }] = useIncCountAchievementMutation({
+ * const [setCountAchievementMutation, { data, loading, error }] = useSetCountAchievementMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
  *      id: // value for 'id'
+ *      value: // value for 'value'
  *   },
  * });
  */
-export function useIncCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>) {
+export function useSetCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<SetCountAchievementMutation, SetCountAchievementMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<IncCountAchievementMutation, IncCountAchievementMutationVariables>(IncCountAchievementDocument, options);
+        return Apollo.useMutation<SetCountAchievementMutation, SetCountAchievementMutationVariables>(SetCountAchievementDocument, options);
       }
-export type IncCountAchievementMutationHookResult = ReturnType<typeof useIncCountAchievementMutation>;
-export type IncCountAchievementMutationResult = Apollo.MutationResult<IncCountAchievementMutation>;
-export type IncCountAchievementMutationOptions = Apollo.BaseMutationOptions<IncCountAchievementMutation, IncCountAchievementMutationVariables>;
-export const DecCountAchievementDocument = gql`
-    mutation decCountAchievement($campaign_id: Int!, $id: String!) {
-  insert_guide_achievement_one(
-    object: {campaign_id: $campaign_id, id: $id, type: "count", value: 0}
-    on_conflict: {constraint: guide_achievement_pkey, update_columns: []}
-  ) {
-    ...GuideAchievement
-  }
-  update_guide_achievement(
-    where: {campaign_id: {_eq: $campaign_id}, id: {_eq: $id}, value: {_gt: 0}}
-    _inc: {value: -1}
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
-}
-    ${GuideAchievementFragmentDoc}`;
-export type DecCountAchievementMutationFn = Apollo.MutationFunction<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
-
-/**
- * __useDecCountAchievementMutation__
- *
- * To run a mutation, you first call `useDecCountAchievementMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDecCountAchievementMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [decCountAchievementMutation, { data, loading, error }] = useDecCountAchievementMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDecCountAchievementMutation(baseOptions?: Apollo.MutationHookOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DecCountAchievementMutation, DecCountAchievementMutationVariables>(DecCountAchievementDocument, options);
-      }
-export type DecCountAchievementMutationHookResult = ReturnType<typeof useDecCountAchievementMutation>;
-export type DecCountAchievementMutationResult = Apollo.MutationResult<DecCountAchievementMutation>;
-export type DecCountAchievementMutationOptions = Apollo.BaseMutationOptions<DecCountAchievementMutation, DecCountAchievementMutationVariables>;
+export type SetCountAchievementMutationHookResult = ReturnType<typeof useSetCountAchievementMutation>;
+export type SetCountAchievementMutationResult = Apollo.MutationResult<SetCountAchievementMutation>;
+export type SetCountAchievementMutationOptions = Apollo.BaseMutationOptions<SetCountAchievementMutation, SetCountAchievementMutationVariables>;
 export const AddGuideInputDocument = gql`
     mutation addGuideInput($id: String!, $campaign_id: Int!, $type: String!, $scenario: String, $step: String, $payload: jsonb) {
   insert_guide_input_one(

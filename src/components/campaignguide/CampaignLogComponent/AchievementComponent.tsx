@@ -9,6 +9,7 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Achievement } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
+import { useCounter } from '@components/core/hooks';
 
 interface Props {
   achievement: Achievement;
@@ -41,13 +42,10 @@ export default function AchievementComponent({ achievement }: Props) {
     campaignState.setBinaryAchievement(id, value);
   }, [campaignState, achievement.id]);
   const binaryValue = useMemo(() => campaignState.binaryAchievement(achievement.id), [achievement.id, campaignState]);
-  const count = useMemo(() => campaignState.countAchievement(achievement.id), [achievement.id, campaignState]);
-  const onInc = useCallback(() => {
-    campaignState.incCountAchievement(achievement.id, achievement.max);
-  }, [achievement, campaignState]);
-  const onDec = useCallback(() => {
-    campaignState.decCountAchievement(achievement.id);
-  }, [achievement.id, campaignState]);
+  const syncCounterValue = useCallback((value: number) => {
+    campaignState.setCountAchievement(achievement.id, value);
+  }, [campaignState, achievement.id]);
+  const [count, onInc, onDec] = useCounter(campaignState.countAchievement(achievement.id), { min: 0, max: achievement.max }, achievement.type === 'count' ? syncCounterValue : undefined);
   switch (achievement.type) {
     case 'binary':
       return (

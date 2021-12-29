@@ -216,105 +216,27 @@ mutation setBinaryAchievement(
   }
 }
 
-mutation incCountAchievementMax(
+mutation setCountAchievement(
   $campaign_id: Int!,
   $id: String!,
-  $max: Int!
+  $value: Int!
 ) {
   insert_guide_achievement_one(
     object: {
-      campaign_id:$campaign_id
+      campaign_id: $campaign_id
       id: $id
       type: "count"
-      value: 1
+      value: $value
     }
     on_conflict: {
       constraint: guide_achievement_pkey
-      update_columns: []
-    }
-  ) {
-    id
-    campaign_id
-    id
-    type
-    value
-  }
-  update_guide_achievement(
-    where: {
-      campaign_id: { _eq: $campaign_id }
-      id: { _eq: $id }
-      value: { _lt: $max }
-    }
-    _inc: { value: 1 }
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
-}
-
-mutation incCountAchievement(
-  $campaign_id: Int!,
-  $id: String!
-) {
-  insert_guide_achievement_one(
-    object: {
-      campaign_id:$campaign_id
-      id: $id
-      type: "count"
-      value: 1
-    }
-    on_conflict: {
-      constraint: guide_achievement_pkey
-      update_columns: []
+      update_columns: [value]
     }
   ) {
     ...GuideAchievement
   }
-  update_guide_achievement(
-    where: {
-      campaign_id: { _eq: $campaign_id }
-      id: { _eq: $id }
-    }
-    _inc: { value: 1 }
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
 }
 
-mutation decCountAchievement(
-  $campaign_id: Int!,
-  $id: String!
-) {
-  insert_guide_achievement_one(
-    object: {
-      campaign_id:$campaign_id
-      id: $id
-      type: "count"
-      value: 0
-    }
-    on_conflict: {
-      constraint: guide_achievement_pkey
-      update_columns: []
-    }
-  ) {
-    ...GuideAchievement
-  }
-  update_guide_achievement(
-    where: {
-      campaign_id: { _eq: $campaign_id }
-      id: { _eq: $id }
-      value: { _gt: 0 }
-    }
-    _inc: { value: -1 }
-  ) {
-    returning {
-      ...GuideAchievement
-    }
-  }
-}
 mutation addGuideInput(
   $id: String!,
   $campaign_id: Int!,

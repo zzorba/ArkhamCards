@@ -74,19 +74,20 @@ export default function ScenarioCarouselComponent({
     );
   }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
   const activeIndex = useMemo(() => getActiveIndex(processedCampaign.scenarios), [processedCampaign.scenarios]);
+  const [selectedIndex, setIndex] = useState(activeIndex);
   useEffectUpdate(() => {
     if (visible) {
       if (scenarioPressed.current) {
         scenarioPressed.current = false;
-        if (carousel.current) {
+        if (carousel.current && selectedIndex !== activeIndex) {
           const activeIndex = getActiveIndex(processedCampaign.scenarios)
-          carousel.current.snapToItem(activeIndex);
+          carousel.current.snapToItem(activeIndex, true, false);
         }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-  const [selectedIndex, setIndex] = useState(activeIndex);
+
   const numScenarios = processedCampaign.scenarios.length;
   const lastCompletedIndex = dropRightWhile(processedCampaign.scenarios, s => s.type === 'skipped').length - 1;
   const renderScenario = useCallback(({ item, index }: ScenarioItem) => {
@@ -118,7 +119,7 @@ export default function ScenarioCarouselComponent({
       initialNumToRender={processedCampaign.scenarios.length}
       data={processedCampaign.scenarios}
       renderItem={renderScenario}
-      onScrollIndexChanged={setIndex}
+      onSnapToItem={setIndex}
     />
   );
 }

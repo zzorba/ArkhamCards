@@ -173,6 +173,16 @@ const typePolicies: TypedTypePolicies = {
   },
   guide_achievement: {
     keyFields: ['id', 'campaign_id'],
+    fields: {
+      value: {
+        merge(existing, incoming) {
+          if (incoming === null) {
+            return existing || 0;
+          }
+          return incoming;
+        },
+      },
+    },
   },
   investigator_data: {
     keyFields: ['id'],

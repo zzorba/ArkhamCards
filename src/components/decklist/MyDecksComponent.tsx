@@ -111,7 +111,7 @@ function MyDecksComponent({
 
   const [deckIds, deckReasons] = useMemo(() => {
     if (!filterDeck) {
-      return [onlyDecks || [], []];
+      return [onlyDecks || myDecks || [], []];
     }
     const [dropped, keep] = partition(map(onlyDecks || myDecks, deckId => {
       return {

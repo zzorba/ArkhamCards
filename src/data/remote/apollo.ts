@@ -1,13 +1,13 @@
 import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, find, flatMap, map, pick, omit } from 'lodash';
+import { filter, keys, find, flatMap, map, pick, omit } from 'lodash';
 
 import {
   AddCampaignInvestigatorDocument,
   AddCampaignInvestigatorMutation,
   AddGuideInputDocument,
   AddGuideInputMutation,
-  DecCountAchievementDocument,
-  DecCountAchievementMutation,
+  SetCountAchievementDocument,
+  SetCountAchievementMutation,
   DeleteAllLocalDecksMutation,
   DeleteAllLocalDecksDocument,
   DeleteInvestigatorDecksDocument,
@@ -27,10 +27,6 @@ import {
   GetMyDecksQuery,
   GuideAchievementFragment,
   GuideAchievementFragmentDoc,
-  IncCountAchievementDocument,
-  IncCountAchievementMaxDocument,
-  IncCountAchievementMaxMutation,
-  IncCountAchievementMutation,
   MiniCampaignFragment,
   RemoveCampaignInvestigatorDocument,
   RemoveCampaignInvestigatorMutation,
@@ -763,6 +759,7 @@ function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, up
     variables: {
       campaign_id: campaignId,
     },
+    returnPartialData: true,
   }, true);
   if (cacheData === null || !cacheData.campaign_guide.length) {
     return;
@@ -855,27 +852,6 @@ function updateFullCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
   }
 }
 
-
-function updateFullCampaignGuide(
-  cache: ApolloCache<unknown>,
-  campaignId: number,
-  update: (fragment: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment
-) {
-  const id = cache.identify({ __typename: 'campaign', id: campaignId });
-  const existingCacheData = cache.readFragment<FullCampaignGuideStateFragment>({
-    fragment: FullCampaignGuideStateFragmentDoc,
-    fragmentName: 'FullCampaignGuideState',
-    id,
-  }, true);
-  if (existingCacheData) {
-    cache.writeFragment<FullCampaignGuideStateFragment>({
-      fragment: FullCampaignGuideStateFragmentDoc,
-      fragmentName: 'FullCampaignGuideState',
-      data: update(existingCacheData),
-    });
-  }
-}
-
 const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMutation> = (cache, { data }) => {
   if (!data?.delete_campaign_deck?.returning.length) {
     return;
@@ -956,7 +932,7 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
     return;
   }
   const investigator_data = data.insert_investigator_data_one;
-  const mini_investigator_data = pick(investigator_data, ['__typename', 'id', 'campaign_id', 'investigator', 'mental', 'physical', 'insane', 'killed', 'storuAssets']) as MiniInvestigatorDataFragment;
+  const mini_investigator_data: MiniInvestigatorDataFragment = pick(investigator_data, ['__typename', 'id', 'campaign_id', 'investigator', 'mental', 'physical', 'insane', 'killed', 'storyAssets']);
   updateMiniCampaign(
     cache,
     investigator_data.campaign_id,
@@ -1101,12 +1077,26 @@ function updateGuideAchievement(
   insert: () => GuideAchievementFragment,
   update: (achievement: GuideAchievementFragment) => GuideAchievementFragment
 ) {
-  const id = achievement.id;
-  cache.writeFragment<GuideAchievementFragment>({
+  const id = cache.identify({ __typename: 'guide_achievement', id: achievement.id, campaign_id: achievement.campaign_id });
+  /*
+  const existingCacheData = cache.readFragment<GuideAchievementFragment>({
     fragment: GuideAchievementFragmentDoc,
-    data: achievement,
-  });
-  updateFullCampaignGuide(
+    fragmentName: 'GuideAchievement',
+    id,
+  }, true);
+  if (existingCacheData) {
+    const data = update(existingCacheData);
+    cache.writeFragment<GuideAchievementFragment>({
+      fragment: GuideAchievementFragmentDoc,
+      data,
+    });
+  } else {
+    cache.writeFragment<GuideAchievementFragment>({
+      fragment: GuideAchievementFragmentDoc,
+      data: insert(),
+    });
+  }*/
+  updateCampaignGuide(
     cache,
     achievement.campaign_id,
     (existingCacheData: FullCampaignGuideStateFragment) => {
@@ -1115,7 +1105,7 @@ function updateGuideAchievement(
         return {
           ...existingCacheData,
           guide_achievements: [
-            ...existingCacheData.guide_achievements || [],
+            ...(existingCacheData.guide_achievements || []),
             insert(),
           ],
         };
@@ -1139,72 +1129,14 @@ const handleSetBinaryAchievement: MutationUpdaterFn<SetBinaryAchievementMutation
   updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
 };
 
-const handleIncCountAchievementMax: MutationUpdaterFn<IncCountAchievementMaxMutation> = (cache, { data, context }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+const handleSetCountMutation: MutationUpdaterFn<SetCountAchievementMutation> = (cache, { data }) => {
+  if (!data?.insert_guide_achievement_one) {
     return;
   }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  const max = context?.max || 0;
-  updateGuideAchievement(cache, achievement, () => {
-    return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: Math.min(1, context?.max),
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: Math.min((a.value || 0) + 1, max),
-    };
-  });
+  const achievement = data.insert_guide_achievement_one;
+  updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
 };
 
-const handleIncCountAchievement: MutationUpdaterFn<IncCountAchievementMutation> = (cache, { data }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
-    return;
-  }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  updateGuideAchievement(cache, achievement, () => {
-    return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: 1,
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: (a.value || 0) + 1,
-    };
-  });
-};
-
-const handleDecCountAchievement: MutationUpdaterFn<DecCountAchievementMutation> = (cache, { data }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
-    return;
-  }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  updateGuideAchievement(cache, achievement, () => {
-    return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: 0,
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: Math.max((a.value || 0) - 1, 0),
-    };
-  });
-};
 
 interface OptimisticUpdate {
   mutation: DocumentNode;
@@ -1248,17 +1180,9 @@ export const optimisticUpdates = {
     mutation: SetBinaryAchievementDocument,
     update: handleSetBinaryAchievement,
   },
-  incCountAchievementMax: {
-    mutation: IncCountAchievementMaxDocument,
-    update: handleIncCountAchievementMax,
-  },
-  incCountAchievement: {
-    mutation: IncCountAchievementDocument,
-    update: handleIncCountAchievement,
-  },
-  decCountAchievement: {
-    mutation: DecCountAchievementDocument,
-    update: handleDecCountAchievement,
+  setCountAchievement: {
+    mutation: SetCountAchievementDocument,
+    update: handleSetCountMutation,
   },
   updateSpentXp: {
     mutation: UpdateSpentXpDocument,

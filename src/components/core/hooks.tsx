@@ -19,6 +19,8 @@ import { DeckActions } from '@data/remote/decks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import useDebouncedEffect from 'use-debounced-effect-hook';
+import { useDebounce } from 'use-debounce/lib';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -138,23 +140,70 @@ interface SetAction {
   type: 'set';
   value: number;
 }
-export function useCounter(initialValue: number, { min, max }: { min?: number; max?: number }): [number, () => void, () => void, (value: number) => void] {
-  const [value, updateValue] = useReducer((state: number, action: IncAction | DecAction | SetAction) => {
+interface CleanAction {
+  type: 'clean';
+  value: number;
+}
+export function useCounter(
+  initialValue: number,
+  { min, max }: { min?: number; max?: number },
+  syncValue?: (value: number) => void
+): [number, () => void, () => void, (value: number) => void] {
+  const [currentState, updateValue] = useReducer((state: { value: number; dirty: boolean }, action: IncAction | DecAction | SetAction | CleanAction) => {
     switch (action.type) {
       case 'set':
-        return action.value;
+        return {
+          value: action.value,
+          dirty: true,
+        };
       case 'inc':
         if (max) {
-          return Math.min(max, state + 1);
+          return {
+            value: Math.min(max, state.value + 1),
+            dirty: true,
+          };
         }
-        return state + 1;
+        return {
+          value: state.value + 1,
+          dirty: true,
+        };
       case 'dec':
         if (min) {
-          return Math.max(min, state - 1);
+          return {
+            value: Math.max(min, state.value - 1),
+            dirty: true,
+          };
         }
-        return state - 1;
+        return {
+          value: state.value - 1,
+          dirty: true,
+        };
+      case 'clean':
+        return {
+          value: state.value,
+          dirty: state.value !== action.value,
+        };
     }
-  }, initialValue);
+  }, { value: initialValue, dirty: false });
+  const { value, dirty } = currentState;
+  const currentStateRef = useRef(currentState);
+  currentStateRef.current = currentState;
+  useEffect(() => {
+    return () => {
+      if (syncValue && currentStateRef.current.dirty) {
+        syncValue(currentStateRef.current.value);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const [debounceValue] = useDebounce(value, 2000, { trailing: true });
+  useEffectUpdate(() => {
+    if (syncValue && dirty) {
+      syncValue(value);
+      updateValue({ type: 'clean', value });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounceValue]);
   const inc = useCallback(() => {
     updateValue({ type: 'inc' });
   }, [updateValue]);
