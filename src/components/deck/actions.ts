@@ -153,14 +153,15 @@ export function fetchPrivateDeck(
   actions: DeckActions,
   id: ArkhamDbDeckId
 ): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    loadDeck(id.id).then(deck => {
+  return async(dispatch) => {
+    try {
+      const deck = await loadDeck(id.id);
       dispatch(updateDeck(userId, actions, id, deck, false));
-    }).catch(err => {
+    } catch(err) {
       if (err.message === 'Not Found') {
         dispatch(removeDeck(userId, actions, id));
       }
-    });
+    }
   };
 }
 

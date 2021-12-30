@@ -7,7 +7,7 @@ import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
@@ -71,16 +71,23 @@ export function useDeckEdits(
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const [mode, setMode] = useState(initialMode);
   useEffect(() => {
     if (initialDeck && id !== undefined) {
       const editable = (!initialDeck.owner?.id || !userId || initialDeck.owner.id === userId);
-      dispatch(startDeckEdit(id, initialDeck, editable, initialMode));
-      return function cleanup() {
+      dispatch(startDeckEdit(id, initialDeck, editable, mode));
+      setMode(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialDeck, id]);
+  useEffect(() => {
+    if (initialDeck && id !== undefined) {
+      return () => {
         dispatch(finishDeckEdit(id));
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialDeck, id]);
+  }, []);
   const otherDeckEdits: EditDeckState | undefined = useMemo(() => {
     if (userId && initialDeck?.owner?.id && userId !== initialDeck.owner.id) {
       return {

@@ -115,6 +115,7 @@ function updateDecks(
             }];
             case 'remove': return [];
             case 'swap': {
+              // console.log(`Swapping FullCampaign for ${JSON.stringify(result.deck)}`);
               const r: LatestDecks[] = [
                 {
                   __typename: 'latest_decks',
@@ -125,6 +126,7 @@ function updateDecks(
                 },
               ];
               if (result.insert) {
+                // console.log(`Inserting FullCampaign for ${JSON.stringify(result.insert)}`);
                 r.push(
                   {
                     __typename: 'latest_decks',
@@ -166,6 +168,7 @@ function updateDecks(
                 case 'keep': return [d];
                 case 'remove': return [];
                 case 'swap': {
+                  // console.log(`Swapping myDeck for ${JSON.stringify(result.deck)}`);
                   const latestDeck = {
                     ...result.deck,
                     investigator_data: result.deck.investigator_data || d.deck.investigator_data,
@@ -183,6 +186,7 @@ function updateDecks(
                       },
                     });
                   } else if (latestDeck.arkhamdb_id) {
+                    // console.log(`Swapping LatestDeck for ${JSON.stringify(latestDeck)}`);
                     cache.writeQuery<GetLatestArkhamDbDeckQuery>({
                       query: GetLatestArkhamDbDeckDocument,
                       variables: {
@@ -200,6 +204,7 @@ function updateDecks(
                     deck: latestDeck,
                   }];
                   if (result.insert) {
+                    // console.log(`Inserting LatestDeck for ${JSON.stringify(result.insert)}`);
                     r.push({
                       __typename: 'latest_decks',
                       deck: result.insert,
@@ -216,10 +221,12 @@ function updateDecks(
             switch (result.type) {
               case 'keep': return [d];
               case 'remove': return [];
-              case 'swap': return [
-                result.deck,
-                ...(result.insert ? [result.insert] : []),
-              ];
+              case 'swap': {
+                return [
+                  result.deck,
+                  ...(result.insert ? [result.insert] : []),
+                ];
+              }
             }
           }),
         },
@@ -621,6 +628,7 @@ function removeDeck(
           deck: {
             __typename: 'campaign_deck',
             ...omit(deck, ['next_deck']),
+            next_deck: null,
           },
         };
       }
@@ -636,6 +644,7 @@ function removeDeck(
             owner: deck.owner,
             campaign_id: deck.campaign_id,
             campaign: deck.campaign,
+            previous_deck: previousDeck?.previous_deck || null,
           },
         } : { type: 'remove' };
       }
