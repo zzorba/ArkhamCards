@@ -7,7 +7,7 @@ import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCards } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';

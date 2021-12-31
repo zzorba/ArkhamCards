@@ -135,7 +135,7 @@ export default function useSealTokenButton({ campaignId, chaosBag, chaosBagResul
           </View>
         </RoundedFactionBlock>
       ) : (
-        <DeckButton icon="seal" title={t`Seal tokens`} onPress={showDialog} color="dark_gray" />
+        <DeckButton icon="seal" title={t`Seal tokens`} onPress={showDialog} color="dark_gray" noShadow />
       ) }
     </View>,
     dialog,

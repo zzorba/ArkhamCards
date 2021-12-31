@@ -925,8 +925,8 @@ export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
 export interface AdjustBlessCurseAction {
   type: typeof ADJUST_BLESS_CURSE;
   id: CampaignId;
-  bless: boolean;
-  direction: 'inc' | 'dec';
+  bless: number;
+  curse: number;
   now: Date;
 }
 

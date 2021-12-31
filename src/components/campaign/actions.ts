@@ -624,21 +624,21 @@ export function updateChaosBagSealTokens(
   };
 }
 
-export function adjustBlessCurseChaosBagResults(
+export function setBlessCurseChaosBagResults(
   actions: ChaosBagActions,
   id: CampaignId,
-  type: 'bless' | 'curse',
-  direction: 'inc' | 'dec'
+  bless: number,
+  curse: number
 ): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
   return (dispatch) => {
     if (id.serverId) {
-      actions.adjustBlessCurse(id, type, direction);
+      actions.setBlessCurse(id, bless, curse);
     } else {
       dispatch({
         type: ADJUST_BLESS_CURSE,
         id,
-        bless: type === 'bless',
-        direction,
+        bless,
+        curse,
         now: new Date(),
       });
     }

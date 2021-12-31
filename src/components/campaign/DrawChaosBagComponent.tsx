@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
@@ -9,7 +9,7 @@ import KeepAwake from 'react-native-keep-awake';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
-import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagResetBlessCurse } from './actions';
+import { setBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagResetBlessCurse } from './actions';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s, xs, isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -25,6 +25,10 @@ import { useChaosBagActions } from '@data/remote/chaosBag';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { difficultyString } from './constants';
 import useTarotCardDialog from './useTarotCardDialog';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import COLORS from '@styles/colors';
+import { useDialog } from '@components/deck/dialogs';
+import { useCounter } from '@components/core/hooks';
 
 interface Props {
   campaignId: CampaignId;
@@ -36,32 +40,50 @@ interface Props {
   editable?: boolean;
 }
 
-function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'curse'; min: number; value: number; inc: () => void; dec: () => void; }) {
-  const { typography } = useContext(StyleContext);
-  const element = useMemo(() => {
-    const textColor = type === 'bless' ? '#394852' : '#F5F0E1';
-    return (
-      <View style={[{ borderRadius: 4, flexDirection: 'row', alignItems: 'center', backgroundColor: type === 'bless' ? '#cfb13a' : '#7B5373' },
-        TINY_PHONE ? space.paddingSideS : space.paddingSideM, space.paddingTopXs, space.marginRightXs, space.marginLeftXs]}>
-        <Text style={[typography.cardName, { color: textColor, minWidth: 32 }, typography.center, space.paddingRightXs]}>
-          { value === 0 ? '0' : `×${value}`}
-        </Text>
-        <View style={space.paddingBottomS} accessibilityLabel={type === 'bless' ? t`Bless` : t`Curse`}>
-          <ArkhamIcon name={type} size={28} color={textColor} />
+function BlessCurseButton({ type, value, onPress }: { type: 'bless' | 'curse'; value: number; onPress?: () => void }) {
+  const { colors, typography } = useContext(StyleContext);
+  return (
+    <TouchableOpacity onPress={onPress} style={[{ flex: 1 }, space.marginSideXs]}>
+      <View style={[{ backgroundColor: colors.L15, borderRadius: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }, space.paddingS]}>
+        <Text style={typography.cardName}>×{value}</Text>
+        <View style={[
+          { borderRadius: 16, width: 32, height: 32, backgroundColor: colors.tokenFill[type], flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+          space.marginLeftS,
+          type === 'curse' ? space.paddingBottomXs : undefined,
+        ]}>
+          <ArkhamIcon name={type} size={26} color={type === 'bless' ? COLORS.D20 : COLORS.L20} />
         </View>
       </View>
+    </TouchableOpacity>
+  );
+}
+
+function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'curse'; min: number; value: number; inc: () => void; dec: () => void; }) {
+  const { colors, typography } = useContext(StyleContext);
+  const element = useMemo(() => {
+    return (
+      <View style={[{ flexDirection: 'row', alignItems: 'center' },
+        TINY_PHONE ? space.paddingSideS : space.paddingSideM, space.paddingTopXs, space.paddingBottomXs, space.marginRightXs, space.marginLeftXs]}>
+        <Text style={[typography.counter, { color: colors.D20, minWidth: 32 }, typography.center, space.paddingRightXs]}>
+          { value === 0 ? '0' : `${value}×`}
+        </Text>
+        <ChaosToken size="tiny" iconKey={type} />
+      </View>
     );
-  }, [type, value, typography]);
+  }, [value, colors, type, typography]);
   return (
-    <PlusMinusButtons
-      dialogStyle
-      countRender={element}
-      count={value}
-      max={10}
-      min={min}
-      onIncrement={inc}
-      onDecrement={dec}
-    />
+    <View style={space.paddingVerticalXs}>
+      <PlusMinusButtons
+        dialogStyle
+        large
+        countRender={element}
+        count={value}
+        max={10}
+        min={min}
+        onIncrement={inc}
+        onDecrement={dec}
+      />
+    </View>
   );
 }
 
@@ -103,8 +125,9 @@ function DrawnChaosTokenButton({ onPress, token, small, index }: { token: ChaosT
 const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
 
 export default function DrawChaosBagComponent(props: Props) {
+  const [{ isConnected }, refreshNetworkStatus] = useNetworkStatus();
   const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText } = props;
-  const { backgroundStyle, fontScale, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, fontScale, colors, typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
   const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
@@ -207,21 +230,8 @@ export default function DrawChaosBagComponent(props: Props) {
     dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));
   }, [campaignId, dispatch, actions, chaosBagResults]);
 
-  const incBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'inc'));
-  }, [actions, campaignId, dispatch]);
-
-  const decBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'dec'));
-  }, [actions, campaignId, dispatch]);
-
-  const incCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'inc'));
-  }, [actions, campaignId, dispatch]);
-
-  const decCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'dec'));
-  }, [actions, campaignId, dispatch]);
+  const [bless, incBless, decBless, setBless] = useCounter(chaosBagResults.blessTokens || 0, { max: 10 });
+  const [curse, incCurse, decCurse, setCurse] = useCounter(chaosBagResults.curseTokens || 0, { max: 10 })
 
   const returnToken = useCallback((index: number) => {
     const drawnTokens = [...chaosBagResults.drawnTokens];
@@ -340,26 +350,56 @@ export default function DrawChaosBagComponent(props: Props) {
       <ReturnBlessCurseButton key="return" onPress={handleClearTokensKeepBlessAndCursedPressed} />
     );
   }, [chaosBagResults.drawnTokens, handleClearTokensKeepBlessAndCursedPressed]);
-  const blurseSection = useMemo(() => {
-    return (
-      <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideS, { borderColor: colors.L20 }]}>
+  const maybeSyncBlurse = useCallback(() => {
+    if (bless !== (chaosBagResults.blessTokens || 0) || curse !== (chaosBagResults.curseTokens || 0)) {
+      dispatch(setBlessCurseChaosBagResults(actions, campaignId, bless, curse));
+    }
+  }, [dispatch, actions, campaignId, bless, curse, chaosBagResults.blessTokens, chaosBagResults.curseTokens]);
+  const { dialog: blurseDialog, showDialog: showBlurseDialog } = useDialog({
+    title: t`Bless / Curse`,
+    content: (
+      <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width }}>
         <BlessCurseCounter
-          value={chaosBagResults.blessTokens || 0}
+          value={bless}
           inc={incBless}
           dec={decBless}
           min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'bless' ? 1 : 0)}
           type="bless"
         />
         <BlessCurseCounter
-          value={chaosBagResults.curseTokens || 0}
+          value={curse}
           inc={incCurse}
           dec={decCurse}
           min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'curse' ? 1 : 0)}
           type="curse"
         />
       </View>
+    ),
+    dismiss: {
+      onPress: maybeSyncBlurse,
+    },
+  });
+  const showBlurseDialogWrapper = useCallback(() => {
+    setBless(chaosBagResults.blessTokens || 0);
+    setCurse(chaosBagResults.curseTokens || 0);
+    showBlurseDialog();
+  }, [setBless, setCurse, chaosBagResults.blessTokens, chaosBagResults.curseTokens, showBlurseDialog]);
+  const blurseSection = useMemo(() => {
+    return (
+      <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideXs, { borderColor: colors.L20 }]}>
+        <BlessCurseButton
+          onPress={showBlurseDialogWrapper}
+          value={chaosBagResults.blessTokens || 0}
+          type="bless"
+        />
+        <BlessCurseButton
+          onPress={showBlurseDialogWrapper}
+          value={chaosBagResults.curseTokens || 0}
+          type="curse"
+        />
+      </View>
     );
-  }, [incCurse, decCurse, incBless, decBless, chaosBagResults.blessTokens, chaosBagResults.curseTokens, chaosBagResults.sealedTokens, colors]);
+  }, [showBlurseDialogWrapper, chaosBagResults.blessTokens, chaosBagResults.curseTokens, colors]);
   const hasBlessCurse = !((chaosBagResults.blessTokens || 0) === 0 && (chaosBagResults.curseTokens || 0) === 0);
   const advancedSection = useMemo(() => {
     return (
@@ -368,7 +408,7 @@ export default function DrawChaosBagComponent(props: Props) {
         { tarotButton }
         <View style={[space.paddingBottomM, space.paddingTopS]}>
           { hasBlessCurse ? (
-            <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" />
+            <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" noShadow />
           ) : (
             <View style={{ height: 20 * fontScale + s * 2 + xs * 2 - 2 }} />
           ) }
@@ -420,6 +460,16 @@ export default function DrawChaosBagComponent(props: Props) {
     <SafeAreaView style={styles.container}>
       <KeepAwake />
       <ScrollView bounces={false} style={[styles.containerBottom, { flexGrow: 1 }]} contentContainerStyle={[backgroundStyle, { flexGrow: 1 }]}>
+        { !isConnected && !!campaignId.serverId && (
+          <TouchableOpacity onPress={refreshNetworkStatus}>
+            <View style={[space.paddingS, styles.warning, { width }]} key="banner">
+              <AppIcon size={32} color={colors.D30} name="warning" />
+              <Text style={[space.paddingLeftS, typography.small, typography.black, { flex: 1 }]} numberOfLines={2}>
+                { t`You appear to be offline. Tap to check for network.` }
+              </Text>
+            </View>
+          </TouchableOpacity>
+        ) }
         <View style={styles.expandingContainer}>
           <View style={[styles.containerTop, space.paddingBottomS, { borderColor: colors.L20 }]}>
             <ScrollView
@@ -448,6 +498,7 @@ export default function DrawChaosBagComponent(props: Props) {
         </View>
       </ScrollView>
       { sealDialog }
+      { blurseDialog }
       { tarotDialog }
     </SafeAreaView>
   );
@@ -484,7 +535,7 @@ const styles = StyleSheet.create({
   },
   blessCurseBlock: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   containerBottom: {
@@ -527,5 +578,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     borderWidth: 1,
     borderStyle: 'dashed',
+  },
+  warning: {
+    backgroundColor: COLORS.yellow,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });

@@ -1,4 +1,4 @@
-import { find, forEach, findLastIndex, filter, map } from 'lodash';
+import { forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
   DELETE_CAMPAIGN,

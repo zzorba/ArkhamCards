@@ -1,5 +1,5 @@
 import { ApolloCache, DocumentNode, MutationUpdaterFn } from '@apollo/client';
-import { filter, keys, find, flatMap, map, pick, omit } from 'lodash';
+import { filter, find, flatMap, map, pick, omit } from 'lodash';
 
 import {
   AddCampaignInvestigatorDocument,
@@ -15,7 +15,6 @@ import {
   FullCampaignFragment,
   FullCampaignFragmentDoc,
   FullCampaignGuideStateFragment,
-  FullCampaignGuideStateFragmentDoc,
   FullInvestigatorDataFragment,
   GetCampaignDocument,
   GetCampaignGuideDocument,
@@ -26,7 +25,6 @@ import {
   GetMyDecksDocument,
   GetMyDecksQuery,
   GuideAchievementFragment,
-  GuideAchievementFragmentDoc,
   MiniCampaignFragment,
   RemoveCampaignInvestigatorDocument,
   RemoveCampaignInvestigatorMutation,

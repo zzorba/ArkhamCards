@@ -65,6 +65,10 @@ export interface ThemeColors {
     frost: string;
     [token: string]: string | undefined;
   };
+  tokenFill: {
+    bless: string;
+    curse: string;
+  };
   health: string;
   sanity: string;
   disableOverlay: string;
@@ -277,6 +281,10 @@ export const LIGHT_THEME: ThemeColors = {
     curse: '#3A2342',
     frost: '#3D3A63',
   },
+  tokenFill: {
+    bless: '#BFA640',
+    curse: '#7A2D6C',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -427,5 +435,9 @@ export const DARK_THEME: ThemeColors = {
     bless: '#ebaa42',
     curse: '#b069c9',
     frost: '#3D3A63',
+  },
+  tokenFill: {
+    bless: '#ebaa42',
+    curse: '#b069c9',
   },
 };

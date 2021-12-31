@@ -64,6 +64,7 @@ export default function useTarotCardDialog({ chaosBagResults, actions, campaignI
         title={getTarotString(chaosBagResults.tarot)}
         color="dark_gray"
         onPress={showTarotDialog}
+        noShadow
       />
     </View>,
     tarotDialog,

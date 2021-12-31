@@ -10873,40 +10873,14 @@ export type ChaosBagSealTokensMutationVariables = Exact<{
 
 export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
 
-export type ChaosBagReleaseAllSealedMutationVariables = Exact<{
+export type ChaosBagSetBlessCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
+  bless: Scalars['Int'];
+  curse: Scalars['Int'];
 }>;
 
 
-export type ChaosBagReleaseAllSealedMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
-
-export type ChaosBagIncBlessMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-}>;
-
-
-export type ChaosBagIncBlessMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number }> } | null | undefined };
-
-export type ChaosBagDecBlessMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-}>;
-
-
-export type ChaosBagDecBlessMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number }> } | null | undefined };
-
-export type ChaosBagIncCurseMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-}>;
-
-
-export type ChaosBagIncCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, curse: number }> } | null | undefined };
-
-export type ChaosBagDecCurseMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-}>;
-
-
-export type ChaosBagDecCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, curse: number }> } | null | undefined };
+export type ChaosBagSetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number, curse: number }> } | null | undefined };
 
 export type ChaosBagSetTarotMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -12722,199 +12696,48 @@ export function useChaosBagSealTokensMutation(baseOptions?: Apollo.MutationHookO
 export type ChaosBagSealTokensMutationHookResult = ReturnType<typeof useChaosBagSealTokensMutation>;
 export type ChaosBagSealTokensMutationResult = Apollo.MutationResult<ChaosBagSealTokensMutation>;
 export type ChaosBagSealTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
-export const ChaosBagReleaseAllSealedDocument = gql`
-    mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: {id: $campaign_id}
-    _set: {sealed: []}
-  ) {
-    id
-    sealed
-  }
-}
-    `;
-export type ChaosBagReleaseAllSealedMutationFn = Apollo.MutationFunction<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>;
-
-/**
- * __useChaosBagReleaseAllSealedMutation__
- *
- * To run a mutation, you first call `useChaosBagReleaseAllSealedMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagReleaseAllSealedMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagReleaseAllSealedMutation, { data, loading, error }] = useChaosBagReleaseAllSealedMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *   },
- * });
- */
-export function useChaosBagReleaseAllSealedMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>(ChaosBagReleaseAllSealedDocument, options);
-      }
-export type ChaosBagReleaseAllSealedMutationHookResult = ReturnType<typeof useChaosBagReleaseAllSealedMutation>;
-export type ChaosBagReleaseAllSealedMutationResult = Apollo.MutationResult<ChaosBagReleaseAllSealedMutation>;
-export type ChaosBagReleaseAllSealedMutationOptions = Apollo.BaseMutationOptions<ChaosBagReleaseAllSealedMutation, ChaosBagReleaseAllSealedMutationVariables>;
-export const ChaosBagIncBlessDocument = gql`
-    mutation chaosBagIncBless($campaign_id: Int!) {
+export const ChaosBagSetBlessCurseDocument = gql`
+    mutation chaosBagSetBlessCurse($campaign_id: Int!, $bless: Int!, $curse: Int!) {
   update_chaos_bag_result(
-    where: {id: {_eq: $campaign_id}, bless: {_lt: 10}}
-    _inc: {bless: 1}
+    where: {id: {_eq: $campaign_id}}
+    _set: {bless: $bless, curse: $curse}
   ) {
     returning {
       id
       bless
-    }
-  }
-}
-    `;
-export type ChaosBagIncBlessMutationFn = Apollo.MutationFunction<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>;
-
-/**
- * __useChaosBagIncBlessMutation__
- *
- * To run a mutation, you first call `useChaosBagIncBlessMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagIncBlessMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagIncBlessMutation, { data, loading, error }] = useChaosBagIncBlessMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *   },
- * });
- */
-export function useChaosBagIncBlessMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>(ChaosBagIncBlessDocument, options);
-      }
-export type ChaosBagIncBlessMutationHookResult = ReturnType<typeof useChaosBagIncBlessMutation>;
-export type ChaosBagIncBlessMutationResult = Apollo.MutationResult<ChaosBagIncBlessMutation>;
-export type ChaosBagIncBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncBlessMutation, ChaosBagIncBlessMutationVariables>;
-export const ChaosBagDecBlessDocument = gql`
-    mutation chaosBagDecBless($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {id: {_eq: $campaign_id}, bless: {_gt: 0}}
-    _inc: {bless: -1}
-  ) {
-    returning {
-      id
-      bless
-    }
-  }
-}
-    `;
-export type ChaosBagDecBlessMutationFn = Apollo.MutationFunction<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>;
-
-/**
- * __useChaosBagDecBlessMutation__
- *
- * To run a mutation, you first call `useChaosBagDecBlessMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagDecBlessMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagDecBlessMutation, { data, loading, error }] = useChaosBagDecBlessMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *   },
- * });
- */
-export function useChaosBagDecBlessMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>(ChaosBagDecBlessDocument, options);
-      }
-export type ChaosBagDecBlessMutationHookResult = ReturnType<typeof useChaosBagDecBlessMutation>;
-export type ChaosBagDecBlessMutationResult = Apollo.MutationResult<ChaosBagDecBlessMutation>;
-export type ChaosBagDecBlessMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecBlessMutation, ChaosBagDecBlessMutationVariables>;
-export const ChaosBagIncCurseDocument = gql`
-    mutation chaosBagIncCurse($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {id: {_eq: $campaign_id}, curse: {_lt: 10}}
-    _inc: {curse: 1}
-  ) {
-    returning {
-      id
       curse
     }
   }
 }
     `;
-export type ChaosBagIncCurseMutationFn = Apollo.MutationFunction<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>;
+export type ChaosBagSetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
 
 /**
- * __useChaosBagIncCurseMutation__
+ * __useChaosBagSetBlessCurseMutation__
  *
- * To run a mutation, you first call `useChaosBagIncCurseMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagIncCurseMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useChaosBagSetBlessCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetBlessCurseMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [chaosBagIncCurseMutation, { data, loading, error }] = useChaosBagIncCurseMutation({
+ * const [chaosBagSetBlessCurseMutation, { data, loading, error }] = useChaosBagSetBlessCurseMutation({
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
  *   },
  * });
  */
-export function useChaosBagIncCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>) {
+export function useChaosBagSetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>(ChaosBagIncCurseDocument, options);
+        return Apollo.useMutation<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>(ChaosBagSetBlessCurseDocument, options);
       }
-export type ChaosBagIncCurseMutationHookResult = ReturnType<typeof useChaosBagIncCurseMutation>;
-export type ChaosBagIncCurseMutationResult = Apollo.MutationResult<ChaosBagIncCurseMutation>;
-export type ChaosBagIncCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagIncCurseMutation, ChaosBagIncCurseMutationVariables>;
-export const ChaosBagDecCurseDocument = gql`
-    mutation chaosBagDecCurse($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {id: {_eq: $campaign_id}, curse: {_gt: 0}}
-    _inc: {curse: -1}
-  ) {
-    returning {
-      id
-      curse
-    }
-  }
-}
-    `;
-export type ChaosBagDecCurseMutationFn = Apollo.MutationFunction<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>;
-
-/**
- * __useChaosBagDecCurseMutation__
- *
- * To run a mutation, you first call `useChaosBagDecCurseMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagDecCurseMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagDecCurseMutation, { data, loading, error }] = useChaosBagDecCurseMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *   },
- * });
- */
-export function useChaosBagDecCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>(ChaosBagDecCurseDocument, options);
-      }
-export type ChaosBagDecCurseMutationHookResult = ReturnType<typeof useChaosBagDecCurseMutation>;
-export type ChaosBagDecCurseMutationResult = Apollo.MutationResult<ChaosBagDecCurseMutation>;
-export type ChaosBagDecCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagDecCurseMutation, ChaosBagDecCurseMutationVariables>;
+export type ChaosBagSetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagSetBlessCurseMutation>;
+export type ChaosBagSetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagSetBlessCurseMutation>;
+export type ChaosBagSetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
 export const ChaosBagSetTarotDocument = gql`
     mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
   update_chaos_bag_result(where: {id: {_eq: $campaign_id}}, _set: {tarot: $tarot}) {

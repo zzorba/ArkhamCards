@@ -97,86 +97,23 @@ mutation chaosBagSealTokens(
   }
 }
 
-mutation chaosBagReleaseAllSealed($campaign_id: Int!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: { id: $campaign_id }
+mutation chaosBagSetBlessCurse($campaign_id: Int!, $bless: Int!, $curse: Int!) {
+  update_chaos_bag_result(
+    where: {
+      id: { _eq: $campaign_id }
+    }
     _set: {
-      sealed: []
-    }
-  ) {
-    id
-    sealed
-  }
-}
-
-mutation chaosBagIncBless($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {
-      id: { _eq: $campaign_id }
-      bless: { _lt: 10 }
-    }
-    _inc: {
-      bless: 1
+      bless: $bless
+      curse: $curse
     }
   ) {
     returning {
     	id
       bless
-	  }
-  }
-}
-
-mutation chaosBagDecBless($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {
-      id: { _eq: $campaign_id }
-      bless: { _gt: 0 }
-    }
-    _inc: {
-      bless: -1
-    }
-  ) {
-    returning {
-    	id
-      bless
-	  }
-  }
-}
-
-mutation chaosBagIncCurse($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {
-      id: { _eq: $campaign_id }
-      curse: { _lt: 10 }
-    }
-    _inc: {
-      curse: 1
-    }
-  ) {
-    returning {
-    	id
       curse
 	  }
   }
 }
-
-mutation chaosBagDecCurse($campaign_id: Int!) {
-  update_chaos_bag_result(
-    where: {
-      id: { _eq: $campaign_id }
-      curse: { _gt: 0 }
-    }
-    _inc: {
-      curse: -1
-    }
-  ) {
-    returning {
-    	id
-      curse
-	  }
-  }
-}
-
 
 
 mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {

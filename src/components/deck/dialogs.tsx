@@ -11,7 +11,7 @@ import { Deck, getDeckId, ParsedDeck, UPDATE_DECK_EDIT } from '@actions/types';
 import { useDispatch } from 'react-redux';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCounter } from '@components/core/hooks';
-import { SaveDeckChanges, saveDeckChanges, setDeckMode, uploadLocalDeck } from '@components/deck/actions';
+import { SaveDeckChanges, saveDeckChanges, uploadLocalDeck } from '@components/deck/actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';

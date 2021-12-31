@@ -260,7 +260,7 @@ export default function ChaosToken({ iconKey, size: iconSize, sealed, status, sh
     case 'bag':
       return (
         <View style={{ width: size, height: size, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L10 }, styles.tapCircle, shadow.small]}>
+          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L20 }, styles.tapCircle, shadow.small]}>
             <AppIcon name={iconKey === 'odds' ? 'difficulty' : 'chaos_bag'} color={colors.M} size={size / 1.8} />
           </View>
         </View>

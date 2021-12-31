@@ -19,7 +19,6 @@ import { DeckActions } from '@data/remote/decks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useDebounce } from 'use-debounce/lib';
 
 export function useBackButton(handler: () => boolean) {
