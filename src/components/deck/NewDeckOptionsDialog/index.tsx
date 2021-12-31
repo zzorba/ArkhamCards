@@ -184,7 +184,10 @@ function NewDeckOptionsDialog({
         slots[card.code] = card.deck_limit || card.quantity || 0;
       });
       if (investigator.code === '06002') {
-        slots['06008'] = 1;
+        slots['06008'] = (parseInt((meta.deck_size_selected || '30'), 10) - 20) / 10;
+      }
+      if (investigator.code === '01005' && meta.alternate_front === '90037') {
+        slots['90038'] = 1;
       }
     }
 
@@ -205,7 +208,7 @@ function NewDeckOptionsDialog({
     }
 
     return slots;
-  }, [cards, optionSelected, requiredCardOptions, investigator, starterDeck]);
+  }, [cards, meta, optionSelected, requiredCardOptions, investigator, starterDeck]);
   const dispatch: DeckDispatch = useDispatch();
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);

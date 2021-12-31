@@ -599,6 +599,13 @@ export function updateDeckMeta(
         if (investigator_code === '06002' && update.key === 'deck_size_selected') {
           dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10, false));
         }
+        if (investigator_code === '01005' && update.key === 'alternate_front') {
+          if (update.value === '90037') {
+            dispatch(setDeckSlot(id, '90038', 1, false))
+          } else {
+            dispatch(setDeckSlot(id, '90038', 0, false))
+          }
+        }
       }
     });
 
