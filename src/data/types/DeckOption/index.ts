@@ -31,6 +31,25 @@ export function localizeDeckOptionError(error?: string): undefined | string {
   return LOCALIZED_OPTIONS[error] || error;
 }
 
+
+export function localizeOptionName(real_name: string): string {
+  switch (real_name) {
+    case 'Secondary Class':
+      return t`Secondary Class`;
+    case 'Deck Size':
+      return t`Deck Size`;
+    case 'Trait Choice':
+      return t`Trait Choice`;
+    case 'Blessed':
+      return t`Blessed`;
+    case 'Cursed':
+      return t`Cursed`;
+    case 'Blessed and Cursed':
+      return t`Blessed and Cursed`;
+    default:
+      return real_name;
+  }
+}
 export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public type_code?: TypeCodeType[];
@@ -86,16 +105,7 @@ export default class DeckOption {
   public dynamic?: boolean;
 
   static optionName(option: DeckOption) {
-    switch (option.real_name) {
-      case 'Secondary Class':
-        return t`Secondary Class`;
-      case 'Deck Size':
-        return t`Deck Size`;
-      case 'Trait Choice':
-        return t`Trait Choice`;
-      default:
-        return option.real_name;
-    }
+    return localizeOptionName(option.real_name || '');
   }
 
   static deckSizeOnly(option: DeckOption): boolean {

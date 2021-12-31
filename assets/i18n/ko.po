@@ -5065,6 +5065,21 @@ msgstr "${ scenarionName } 시나리오 완료 후"
 msgid "Show decks from other campaigns"
 msgstr "다른 캠페인에 속한 덱 보기"
 
+msgid "Trait Choice"
+msgstr ""
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."

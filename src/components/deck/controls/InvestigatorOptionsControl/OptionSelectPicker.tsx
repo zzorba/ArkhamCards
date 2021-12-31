@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '../DeckPickerStyleButton';
-import DeckOption from '@data/types/DeckOption';
+import DeckOption, { localizeOptionName } from '@data/types/DeckOption';
 
 interface Props {
   name: string;
@@ -39,7 +39,7 @@ export default function OptionSelectPicker({
     description: editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined,
     items: map(options, (option, index) => {
       return {
-        title: option.real_name || `${index}`,
+        title: localizeOptionName(option.real_name || `${index}`),
         value: option.id,
       };
     }),
