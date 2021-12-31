@@ -7,6 +7,7 @@ import {
   filter,
   minBy,
   indexOf,
+  sumBy,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -59,6 +60,7 @@ export default class DeckValidation {
   }
 
   getDeckSize(): number {
+    const deckOptions = this.deckOptions();
     const specialCards = this.specialCardCounts();
     var size: number = 30;
     if (this.investigator.deck_requirements) {
@@ -70,6 +72,7 @@ export default class DeckValidation {
     }
     return size
       + (5 * (specialCards.versatile + specialCards.ancestralKnowledge + (specialCards.forcedLearning * 3)))
+      + sumBy(deckOptions, o => o.size || 0)
       - (5 * specialCards.underworldSupport);
   }
 
@@ -313,7 +316,16 @@ export default class DeckValidation {
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {
       forEach(this.investigator.deck_options, deck_option => {
-        deck_options.push(deck_option);
+        if (deck_option.option_select) {
+          deck_options.push(DeckOption.parse(
+            (this.meta && this.meta.option_selected) ?
+              find(deck_option.option_select, o => o.id === this.meta?.option_selected) :
+              deck_option.option_select[0]
+            )
+          );
+        } else {
+          deck_options.push(deck_option);
+        }
       });
     }
     if (specialCards.versatile > 0) {

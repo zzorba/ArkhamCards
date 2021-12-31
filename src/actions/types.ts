@@ -52,6 +52,7 @@ export interface DeckProblem {
 export interface DeckMeta {
   faction_selected?: FactionCodeType;
   deck_size_selected?: string;
+  option_selected?: string;
   alternate_front?: string;
   alternate_back?: string;
 }

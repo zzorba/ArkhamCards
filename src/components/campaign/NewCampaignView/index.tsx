@@ -86,7 +86,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
   const dispatch: ThunkDispatch<AppState, unknown, NewLinkedCampaignAction | NewCampaignAction | NewStandaloneCampaignAction> = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [saving, setSaving] = useState(false);
-  const [uploadCampaign, toggleUploadCampaign] = useFlag(!!userId);
+  const [uploadCampaign, toggleUploadCampaign] = useFlag(false);
 
   const [name, setName] = useState('');
   const [{ selection, campaign, hasGuide }, setCampaignChoice] = useState<CampaignChoice>({

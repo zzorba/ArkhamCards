@@ -1,5 +1,5 @@
 import { Brackets, Column } from 'typeorm/browser';
-import { indexOf, map } from 'lodash';
+import { indexOf, map, omit, find } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckMeta } from '@actions/types';
@@ -77,6 +77,12 @@ export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public deck_size_select?: string[];
 
+  @Column('simple-json', { nullable: true })
+  public option_select?: (DeckOption & { id: string })[];
+
+  @Column('integer', { nullable: true })
+  public size?: number;
+
   public dynamic?: boolean;
 
   static optionName(option: DeckOption) {
@@ -85,6 +91,8 @@ export default class DeckOption {
         return t`Secondary Class`;
       case 'Deck Size':
         return t`Deck Size`;
+      case 'Trait Choice':
+        return t`Trait Choice`;
       default:
         return option.real_name;
     }
@@ -110,9 +118,20 @@ export default class DeckOption {
     deck_option.type_code = json.type || [];
     deck_option.limit = json.limit;
     deck_option.error = json.error;
+    deck_option.size = json.size;
     deck_option.not = json.not ? true : undefined;
     deck_option.ignore_match = json.ignore_match ? true : undefined;
-    deck_option.real_name = json.name || undefined;
+    deck_option.real_name = json.name || json.real_name || undefined;
+    if (json.option_select) {
+      deck_option.option_select = map(json.option_select, o => {
+        return {
+          ...omit(o, ['name', 'id']),
+          id: o.id,
+          real_name: o.name,
+        };
+      });
+    }
+
     if (json.level) {
       const level = new DeckOptionLevel();
       level.min = json.level.min;
@@ -139,9 +158,11 @@ export default class DeckOption {
 export class DeckOptionQueryBuilder {
   option: DeckOption;
   filterBuilder: FilterBuilder;
+  index: number;
 
   constructor(option: DeckOption, index: number) {
     this.option = option;
+    this.index = index;
     this.filterBuilder = new FilterBuilder(`deck${index}`);
   }
 
@@ -161,6 +182,14 @@ export class DeckOptionQueryBuilder {
     return [];
   }
 
+  private selectedOptionFilter(meta?: DeckMeta): Brackets[] {
+    if (this.option.option_select && this.option.option_select.length) {
+      const option = find(this.option.option_select, o => o.id === meta?.option_selected) || this.option.option_select[0];
+      const query = new DeckOptionQueryBuilder(DeckOption.parse(option), this.index).toQuery(meta);
+      return query ? [query] : [];
+    }
+    return [];
+  }
   private textClause(): Brackets[] {
     if (this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
@@ -176,6 +205,7 @@ export class DeckOptionQueryBuilder {
     const clauses: Brackets[] = [
       ...this.filterBuilder.factionFilter(this.option.faction || []),
       ...this.selectedFactionFilter(meta),
+      ...this.selectedOptionFilter(meta),
       ...this.filterBuilder.slotFilter(this.option.slot || []),
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),

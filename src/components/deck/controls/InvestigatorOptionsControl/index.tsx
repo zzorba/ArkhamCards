@@ -32,7 +32,8 @@ export default function InvestigatorOptionsControl({
   disabled,
   first,
 }: Props) {
-  const options = investigator.investigatorSelectOptions();
+  const backInvestigator = find(parallelInvestigators, pi => pi.code === meta.alternate_back) || investigator;
+  const options = backInvestigator.investigatorSelectOptions();
   const hasParallel = !!parallelInvestigators.length;
   const hasOptions = !!options.length;
   const parallelOptionsSection = useMemo(() => {
@@ -43,7 +44,6 @@ export default function InvestigatorOptionsControl({
     if (!alternateInvestigator) {
       return null;
     }
-
     return (
       <>
         <ParallelInvestigatorPicker
@@ -60,7 +60,6 @@ export default function InvestigatorOptionsControl({
       </>
     );
   }, [investigator, parallelInvestigators, first, setParallel, disabled, editWarning, meta, hasOptions]);
-
   return (
     <View>
       { parallelOptionsSection }
@@ -74,6 +73,7 @@ export default function InvestigatorOptionsControl({
             disabled={disabled}
             editWarning={editWarning}
             first={first && !hasParallel && idx === 0}
+            last={idx === options.length - 1}
           />
         );
       }) }

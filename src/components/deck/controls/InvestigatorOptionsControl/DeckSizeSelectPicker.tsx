@@ -13,6 +13,7 @@ interface Props {
   disabled?: boolean;
   editWarning: boolean;
   first: boolean;
+  last?: boolean;
 }
 
 export default function DeckSizeSelectPicker({
@@ -23,6 +24,7 @@ export default function DeckSizeSelectPicker({
   editWarning,
   onChange,
   first,
+  last,
 }: Props) {
   const onChoiceChange = (index: number | null) => {
     if (index === null) {
@@ -58,6 +60,7 @@ export default function DeckSizeSelectPicker({
         onPress={showDialog}
         valueLabel={valueLabel}
         first={first}
+        last={last}
       />
       { dialog }
     </>
