@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { filter, partition, map, uniq, flatMap } from 'lodash';
+import { partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 

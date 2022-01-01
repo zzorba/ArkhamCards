@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
@@ -20,7 +20,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import useSealTokenButton from './useSealTokenButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import { TINY_PHONE } from '@styles/sizes';
 import { useChaosBagActions } from '@data/remote/chaosBag';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { difficultyString } from './constants';

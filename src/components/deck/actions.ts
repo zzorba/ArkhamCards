@@ -450,6 +450,7 @@ export const saveClonedDeck = (
               xpAdjustment: 0,
               tabooSetId: cloneDeck.taboo_id,
               description: cloneDeck.description_md,
+              side: cloneDeck.sideSlots,
             }
           )).then(resolve, reject);
         },

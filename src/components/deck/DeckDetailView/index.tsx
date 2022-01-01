@@ -52,6 +52,7 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface DeckDetailProps {
   id: DeckId;
