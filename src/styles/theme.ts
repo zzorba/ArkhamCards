@@ -27,6 +27,7 @@ export interface ThemeColors {
   L20: string;
   L30: string;
   D10: string;
+  D15: string;
   D20: string;
   D30: string;
   M: string;
@@ -141,6 +142,7 @@ export const LIGHT_THEME: ThemeColors = {
   L20: light20,
   L30: light30,
   D10: dark10,
+  D15: dark15,
   D20: dark20,
   D30: dark30,
   background: light30,
@@ -291,6 +293,7 @@ export const DARK_THEME: ThemeColors = {
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
+  D15: light15,
   D20: light20,
   D30: light30,
   L10: dark10,

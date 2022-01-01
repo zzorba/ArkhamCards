@@ -8,7 +8,6 @@ import {
   UPDATE_FILTER,
   REMOVE_FILTER_SET,
   ADD_FILTER_SET,
-  SYNC_FILTER_SET,
   TOGGLE_MYTHOS,
   UPDATE_CARD_SORT,
   FilterActions,
@@ -69,15 +68,6 @@ export default function(
       cardData: {
         ...state.cardData,
         [action.id]: action.cardData,
-      },
-    };
-  }
-  if (action.type === SYNC_FILTER_SET) {
-    return {
-      ...state,
-      all: {
-        ...state.all,
-        [action.id]: action.filters,
       },
     };
   }

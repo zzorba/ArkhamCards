@@ -14,15 +14,16 @@ import { useFilterButton } from '../hooks';
 const SIZE = 36;
 
 interface Props {
+  parentComponentId: string;
   filterId: string;
   lightButton?: boolean;
   baseQuery?: Brackets;
   modal?: boolean;
 }
 
-function TuneButton({ filterId, lightButton, baseQuery, modal }: Props) {
+function TuneButton({ parentComponentId, filterId, lightButton, baseQuery, modal }: Props) {
   const { colors } = useContext(StyleContext);
-  const [hasFilters, onPress] = useFilterButton(filterId, baseQuery, modal);
+  const [hasFilters, onPress] = useFilterButton({ componentId: parentComponentId, filterId, baseQuery, modal });
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>

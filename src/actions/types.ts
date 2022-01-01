@@ -1055,13 +1055,6 @@ export interface AddFilterSetAction {
   cardData: CardFilterData;
 }
 
-export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';
-export interface SyncFilterSetAction {
-  type: typeof SYNC_FILTER_SET;
-  id: string;
-  filters: FilterState;
-}
-
 export const REMOVE_FILTER_SET = 'REMOVE_FILTER_SET';
 export interface RemoveFilterSetAction {
   type: typeof REMOVE_FILTER_SET;
@@ -1309,7 +1302,6 @@ export type FilterActions =
   ToggleFilterAction |
   UpdateFilterAction |
   AddFilterSetAction |
-  SyncFilterSetAction |
   RemoveFilterSetAction |
   ToggleMythosAction |
   UpdateCardSortAction;

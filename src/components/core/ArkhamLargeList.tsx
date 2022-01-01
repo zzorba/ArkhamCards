@@ -78,13 +78,19 @@ function ArkhamLargeListIos<Item, Header>({
   const [debouncedRefreshing] = [refreshing || fakeRefresh] // , 50, { leading: true });
   const listRef = useRef<LargeList>(null);
   useEffect(() => {
+    let canceled = false;
     if (debouncedRefreshing) {
       listRef.current?.beginRefresh();
     } else {
       setTimeout(() => {
-        listRef.current?.endRefresh();
+        if (!canceled) {
+          listRef.current?.endRefresh();
+        }
       }, 200);
     }
+    return () => {
+      canceled = true;
+    };
   }, [listRef, debouncedRefreshing]);
   const isRefreshing = useRef(debouncedRefreshing);
   isRefreshing.current = debouncedRefreshing;
@@ -144,6 +150,7 @@ function ArkhamLargeListAndroid<Item, Header>({
   const listRef = useRef<LargeList>(null);
   const height = searchBoxHeight(fontScale);
   useEffect(() => {
+    let canceled = false
     if (debouncedRefreshing) {
       listRef.current?.beginRefresh();
       Animated.timing(extraPaddingTop.current, {
@@ -153,14 +160,19 @@ function ArkhamLargeListAndroid<Item, Header>({
       }).start();
     } else {
       setTimeout(() => {
-        listRef.current?.endRefresh();
-        Animated.timing(extraPaddingTop.current, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: false,
-        }).start();
+        if (!canceled) {
+          listRef.current?.endRefresh();
+          Animated.timing(extraPaddingTop.current, {
+            toValue: 0,
+            duration: 100,
+            useNativeDriver: false,
+          }).start();
+        }
       }, 200);
     }
+    return () => {
+      canceled = true;
+    };
   }, [listRef, debouncedRefreshing, height]);
   const isRefreshing = useRef(debouncedRefreshing);
   isRefreshing.current = debouncedRefreshing;

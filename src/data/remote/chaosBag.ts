@@ -1,7 +1,17 @@
 import { SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
-import { Chaos_Bag_Tarot_Mode_Enum, FullChaosBagResultFragment, FullChaosBagResultFragmentDoc, useChaosBagClearTokensMutation, useChaosBagDrawTokenMutation, useChaosBagResetBlessCurseMutation, useChaosBagSealTokensMutation, useChaosBagSetBlessCurseMutation, useChaosBagSetTarotMutation } from '@generated/graphql/apollo-schema'
+import {
+  Chaos_Bag_Tarot_Mode_Enum,
+  FullChaosBagResultFragment,
+  FullChaosBagResultFragmentDoc,
+  useChaosBagClearTokensMutation,
+  useChaosBagDrawTokenMutation,
+  useChaosBagResetBlessCurseMutation,
+  useChaosBagSealTokensMutation,
+  useChaosBagSetBlessCurseMutation,
+  useChaosBagSetTarotMutation,
+} from '@generated/graphql/apollo-schema'
 import { useCallback } from 'react';
 
 export interface ChaosBagActions {
@@ -44,6 +54,7 @@ export function useChaosBagActions(): ChaosBagActions {
       },
       context: {
         serializationKey: campaignId.serverId,
+        collapseKey: `${campaignId.serverId}-chaosBagClear`,
       },
     });
   }, [clearTokensReq]);
@@ -71,6 +82,7 @@ export function useChaosBagActions(): ChaosBagActions {
       },
       context: {
         serializationKey: campaignId.serverId,
+        collapseKey: `${campaignId.serverId}-chaosBagSetBlessCurse`,
       },
     });
   }, [setBlessCurseReq]);
@@ -170,6 +182,7 @@ export function useChaosBagActions(): ChaosBagActions {
       },
       context: {
         serializationKey: campaignId.serverId,
+        collapseKey: `${campaignId.serverId}-chaosBagResetBlurse`,
       },
     });
   }, [resetBlessCurseReq]);

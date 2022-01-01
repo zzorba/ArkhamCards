@@ -37,6 +37,7 @@ interface Props {
 
 interface CardSearchNavigationOptions {
   componentId: string;
+  filterId: string;
   modal?: boolean;
   lightButton?: boolean;
   mythosToggle?: boolean;
@@ -46,6 +47,7 @@ interface CardSearchNavigationOptions {
 export function navigationOptions(
   {
     componentId,
+    filterId,
     modal,
     lightButton,
     mythosToggle,
@@ -57,7 +59,7 @@ export function navigationOptions(
     component: {
       name: 'MythosButton',
       passProps: {
-        filterId: componentId,
+        filterId,
         lightButton,
       },
       width: MythosButton.WIDTH,
@@ -72,7 +74,8 @@ export function navigationOptions(
     component: {
       name: 'TuneButton',
       passProps: {
-        filterId: componentId,
+        parentComponentId: componentId,
+        filterId,
         baseQuery,
         modal,
         lightButton,
@@ -87,7 +90,7 @@ export function navigationOptions(
     component: {
       name: 'SortButton',
       passProps: {
-        filterId: componentId,
+        filterId,
         lightButton,
       },
       width: SortButton.WIDTH,
@@ -123,11 +126,12 @@ export default function CardSearchComponent(props: Props) {
   } = props;
   const { fontScale, typography, width } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
-  const filterSelector = useCallback((state: AppState) => getFilterState(state, componentId), [componentId]);
+  const filterId = deckId?.uuid || componentId;
+  const filterSelector = useCallback((state: AppState) => getFilterState(state, filterId), [filterId]);
   const filters = useSelector(filterSelector);
-  const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, componentId), [componentId]);
+  const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
   const mythosMode = useSelector(mythosModeSelector);
-  const selectedSortSelector = useCallback((state: AppState) => getCardSort(state, componentId), [componentId]);
+  const selectedSortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
   const selectedSort = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -135,13 +139,16 @@ export default function CardSearchComponent(props: Props) {
       navigationOptions(
         {
           componentId,
+          filterId,
           baseQuery,
           mythosToggle,
           lightButton: deckId !== undefined,
         }
       ));
     return function cleanup() {
-      dispatch(removeFilterSet(componentId));
+      if (!deckId) {
+        dispatch(removeFilterSet(filterId));
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -163,16 +170,16 @@ export default function CardSearchComponent(props: Props) {
   }, [mythosToggle, mythosMode, componentId]);
 
   const onToggleMythosMode = useCallback(() => {
-    dispatch(toggleMythosMode(componentId, !mythosMode));
-  }, [dispatch, componentId, mythosMode]);
+    dispatch(toggleMythosMode(filterId, !mythosMode));
+  }, [dispatch, filterId, mythosMode]);
 
   const onFilterChange = useCallback((key: keyof FilterState, value: any) => {
-    dispatch(updateFilter(componentId, key, value));
-  }, [componentId, dispatch]);
+    dispatch(updateFilter(filterId, key, value));
+  }, [filterId, dispatch]);
 
   const onToggleChange = useCallback((key: keyof FilterState, value: boolean) => {
-    dispatch(toggleFilter(componentId, key, value));
-  }, [componentId, dispatch]);
+    dispatch(toggleFilter(filterId, key, value));
+  }, [filterId, dispatch]);
 
   const [headerItems, headerHeight] = useMemo(() => {
     let headerHeight: number = 0;
@@ -188,6 +195,7 @@ export default function CardSearchComponent(props: Props) {
           enabled={filters?.levelEnabled || false}
           exceptional={filters?.exceptional || false}
           nonExceptional={filters?.nonExceptional || false}
+          componentId={componentId}
         />
       );
       headerHeight += (s * 2 + 10 * 2 + fontScale * 28);
@@ -209,7 +217,7 @@ export default function CardSearchComponent(props: Props) {
       headerHeight += s * 2 + 28 * fontScale;
     }
     return [result, headerHeight];
-  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, typography, onFilterChange, onToggleChange]);
+  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, componentId, typography, onFilterChange, onToggleChange]);
 
   return (
     <CardSearchResultsComponent

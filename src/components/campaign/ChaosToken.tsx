@@ -72,15 +72,15 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
         case 'another':
           return (
             <>
-              <ChaosTokenPart name="token_symbol_fill" color="#394852" size={size} />
-              <ChaosTokenPart name="token_plus_highlight" color="#FFFBF2" size={size} />
+              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
+              <ChaosTokenPart name="token_plus_highlight" color={colors.D15} size={size} />
             </>
           );
         case 'return':
           return (
             <>
-              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
-              <ChaosTokenPart name="token_dismiss_highlight" color="#FC2323" size={size} />
+              <ChaosTokenPart name="token_symbol_fill" color="#FB4135" size={size} />
+              <ChaosTokenPart name="token_dismiss_highlight" color="#D6CFB9" size={size} />
             </>
           );
         case 'odds':
@@ -167,8 +167,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
     return null;
   }, [iconKey, size, colors]);
 
-  const gradientParams = iconKey && GRADIENTS[iconKey];
-  if (iconKey === 'return') {
+  if (iconKey === 'another') {
     return (
       <View style={[
         { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' },
@@ -177,7 +176,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
       </View>
     );
   }
-
+  const gradientParams = iconKey && GRADIENTS[iconKey];
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
       <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden' }}>

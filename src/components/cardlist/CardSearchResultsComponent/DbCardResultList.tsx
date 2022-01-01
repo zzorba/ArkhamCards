@@ -573,6 +573,7 @@ function useSectionFeed({
     });
   }, [componentId]);
   // tslint:disable-next-line: strict-comparisons
+
   const refreshingSearch = (!!deckQuery && (deckCardsTextQuery !== textQuery || deckCardsLoading)) || (textQueryCardsTextQuery !== textQuery);
   const feedLoading = useMemo(() => {
     return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
@@ -828,9 +829,9 @@ export default function({
     showHeader && showHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, tabooSetId, sort]);
-
+  const filterId = deckId?.uuid || componentId;
   useEffect(() => {
-    dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
+    dispatch(addDbFilterSet(filterId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, tabooSetId]);
 

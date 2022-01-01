@@ -1,10 +1,10 @@
 import StyleContext from '@styles/StyleContext';
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
-import { useEffectUpdate, useFlag } from './hooks';
+import { useComponentDidAppear } from './hooks';
 import { s } from '@styles/space';
 
 interface RenderButton {
@@ -15,6 +15,7 @@ interface Props {
   buttons: RenderButton[];
   selectedIndexes: number[];
   onPress: (indexes: number[]) => void;
+  componentId: string;
 }
 
 export function SingleButton({ idx, content, last, onPressIndex, height, selected }: {
@@ -26,14 +27,9 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   selected: boolean;
 }) {
   const { colors } = useContext(StyleContext);
-  const [isSelected, toggleSelected, setSelected] = useFlag(selected);
-  useEffectUpdate(() => {
-    setSelected(selected);
-  }, [selected]);
   const onPress = useCallback(() => {
-    toggleSelected();
     onPressIndex(idx);
-  }, [toggleSelected, onPressIndex, idx]);
+  }, [onPressIndex, idx]);
 
   return (
     <>
@@ -42,12 +38,12 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
         rippleColor={colors.L20}
         style={[
           styles.button,
-          { height: height - 2, backgroundColor: isSelected ? colors.L15 : colors.L30 },
+          { height: height - 2, backgroundColor: selected ? colors.L15 : colors.L30 },
           idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
           last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
         ]}
       >
-        { content.element(isSelected) }
+        { content.element(selected) }
       </Ripple>
     </>
   );
@@ -57,18 +53,19 @@ export default function ArkhamButtonGroup({
   buttons,
   selectedIndexes,
   onPress,
+  componentId,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
-  useEffectUpdate(() => {
+  useComponentDidAppear(() => {
     setLocalSelectedIndexes(selectedIndexes);
-  }, [selectedIndexes]);
+  }, componentId, [selectedIndexes]);
   const onPressIndex = useCallback((idx: number) => {
-    const selection = new Set(selectedIndexes);
-    const newSelection = selection.has(idx) ? filter(selectedIndexes, x => x !== idx) : [...selectedIndexes, idx];
+    const selection = new Set(localSelectedIndexes);
+    const newSelection = selection.has(idx) ? filter(localSelectedIndexes, x => x !== idx) : [...localSelectedIndexes, idx];
     setLocalSelectedIndexes(newSelection);
-    InteractionManager.runAfterInteractions(() => onPress(newSelection));
-  }, [selectedIndexes, setLocalSelectedIndexes, onPress]);
+    setTimeout(() => onPress(newSelection), 10);
+  }, [localSelectedIndexes, setLocalSelectedIndexes, onPress]);
   const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
   const height = 28 * fontScale + 20;
   return (
