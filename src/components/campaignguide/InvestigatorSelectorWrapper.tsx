@@ -85,6 +85,7 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
           scenarioInvestigators,
           investigator => investigator.code === choice
         );
+      case 'resigned':
       case 'defeated':
       case 'not_resigned': {
         const allStatus = campaignLog.investigatorResolutionStatus();
@@ -95,6 +96,8 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
               return status !== 'alive' && status !== 'resigned';
             case 'not_resigned':
               return status !== 'resigned';
+            case 'resigned':
+              return status === 'resigned';
           }
         });
       }

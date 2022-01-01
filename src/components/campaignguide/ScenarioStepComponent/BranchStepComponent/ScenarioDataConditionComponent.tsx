@@ -8,6 +8,8 @@ import {
   ScenarioDataCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import BinaryResult from '@components/campaignguide/BinaryResult';
+import { fixedInvestigatorStatusConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;
@@ -31,6 +33,18 @@ export default function ScenarioDataConditionComponent({ step, condition, campai
         </SetupStepWrapper>
       );
     }
+    case 'fixed_investigator_status':
+      if (step.text) {
+        const result = fixedInvestigatorStatusConditionResult(condition, campaignLog);
+        return (
+          <BinaryResult
+            bulletType={step.bullet_type}
+            prompt={step.text}
+            result={result.decision}
+          />
+        );
+      }
+      return null;
     case 'investigator_status':
     case 'resolution': {
       // Only used for control flow right now.

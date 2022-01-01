@@ -694,7 +694,7 @@ export default class GuidedCampaignLog {
     return 0;
   }
 
-  private getInvestigators(
+  getInvestigators(
     investigator: InvestigatorSelector,
     input?: string[]
   ): string[] {
@@ -710,6 +710,15 @@ export default class GuidedCampaignLog {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
           if (status !== 'alive' && status !== 'resigned') {
+            result.push(code);
+          }
+        });
+        return result;
+      }
+      case 'resigned': {
+        const result: string[] = [];
+        forEach(this.investigatorResolutionStatus(), (status, code) => {
+          if (status === 'resigned') {
             result.push(code);
           }
         });
