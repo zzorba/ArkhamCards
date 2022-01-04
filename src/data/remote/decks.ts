@@ -231,6 +231,7 @@ function getCampaignName(cache: ApolloCache<unknown>, campaignId: number): strin
       __typename: 'campaign',
       id: campaignId,
     }),
+    returnPartialData: true,
   }, true)?.name || '';
 }
 

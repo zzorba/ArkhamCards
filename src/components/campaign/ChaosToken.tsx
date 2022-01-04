@@ -31,7 +31,7 @@ const GRADIENTS: { [token: string]: {
 } | undefined } = {
   frost: {
     colors: ['#3D3A63', '#495483'],
-    stops: [0.6, 1.0],
+    stops: [0.66, 1.0],
   },
   auto_fail: {
     colors: ['#8D181E', '#6A0B10'],
@@ -80,7 +80,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
           return (
             <>
               <ChaosTokenPart name="token_symbol_fill" color="#FB4135" size={size} />
-              <ChaosTokenPart name="token_dismiss_highlight" color="#D6CFB9" size={size} />
+              <ChaosTokenPart name="token_dismiss_highlight" color="#FFFBF2" size={size} />
             </>
           );
         case 'odds':
