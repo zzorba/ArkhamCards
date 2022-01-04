@@ -4,7 +4,7 @@ import { TouchableOpacity, View } from 'react-native';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
-import { useDeckWithFetch, useInvestigatorCards } from '@components/core/hooks';
+import { useDeckWithFetch, useInvestigatorCards, useInvestigators } from '@components/core/hooks';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -79,12 +79,16 @@ export default function DeckSelector({
   investigatorRemoved,
   deckRemoved,
   componentId,
-  deckIds,
+  investigatorToDeck,
   investigatorIds,
 }: Props) {
-  const investigators = useInvestigatorCards();
+  const investigators = useInvestigators(investigatorIds);
   const actions = useDeckActions();
-  const renderDeck = useCallback((deckId: DeckId) => {
+  const renderDeck = useCallback((deckId: DeckId, code: string) => {
+    const investigator = investigators && investigators[code];
+    if (!investigator) {
+      return null;
+    }
     return (
       <InvestigatorDeckRow
         key={deckId.uuid}
@@ -93,7 +97,7 @@ export default function DeckSelector({
         actions={actions}
       />
     );
-  }, [deckRemoved, actions]);
+  }, [deckRemoved, actions, investigators]);
 
   const renderInvestigator = useCallback((code: string) => {
     const investigator = investigators && investigators[code];
@@ -114,7 +118,7 @@ export default function DeckSelector({
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}
-      deckIds={deckIds}
+      investigatorToDeck={investigatorToDeck}
       investigatorIds={investigatorIds}
     />
   );

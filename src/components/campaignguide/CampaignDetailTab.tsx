@@ -27,6 +27,7 @@ import useConnectionProblemBanner from '@components/core/useConnectionProblemBan
 import { useArkhamDbError } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 const SHOW_WEAKNESS = false;
 
@@ -217,6 +218,7 @@ export default function CampaignDetailTab({
           <CampaignInvestigatorsComponent
             componentId={componentId}
             showAlert={showAlert}
+            loading={!campaignInvestigators}
             showAddInvestigator={showAddInvestigator}
             processedCampaign={processedCampaign}
             showTraumaDialog={showTraumaDialog}

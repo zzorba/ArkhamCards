@@ -37,7 +37,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useNavigationButtonPressed, useParallelInvestigators, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -52,7 +52,6 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -126,21 +125,7 @@ function DeckDetailView({
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
   const tabooSet = useTabooSet(tabooSetId);
-  const investigators = useInvestigatorCards(tabooSetId);
-
-  const parallelInvestigators = useMemo(() => {
-    const investigator = deck?.investigator_code;
-    if (!investigator) {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, card => {
-      if (card && investigator && card.alternate_of_code === investigator) {
-        parallelInvestigators.push(card);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, deck?.investigator_code]);
+  const [parallelInvestigators] = useParallelInvestigators(deck?.investigator_code, tabooSetId);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(

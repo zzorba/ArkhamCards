@@ -54,7 +54,6 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   const { fontScale, height, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const investigators = useInvestigatorCards();
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
     Keyboard.dismiss();
     const options: Options = {
@@ -213,7 +212,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       onRefresh={onRefresh}
       onScroll={onScroll}
       data={data}
-      refreshing={!!refreshing || !investigators}
+      refreshing={!!refreshing}
       heightForItem={heightForItem}
       heightForSection={heightForSection}
       renderItem={renderItem}

@@ -56,10 +56,9 @@ function CampaignDetailView(props: Props) {
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaign = useCampaign(campaignId, true);
-  const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign);
 
   const updateCampaignActions = useUpdateCampaignActions();
   const dispatch = useDispatch();

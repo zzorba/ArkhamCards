@@ -43,10 +43,9 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
-  const investigators = useInvestigatorCards();
 
   const campaign = useCampaign(id);
-  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [allInvestigators] = useCampaignInvestigators(campaign);
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
   const [xp, setXp] = useState(0);

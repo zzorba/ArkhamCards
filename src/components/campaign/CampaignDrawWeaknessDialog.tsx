@@ -64,7 +64,6 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
-  campaign?.latestDecks
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const latestDecks = campaign?.latestDecks();

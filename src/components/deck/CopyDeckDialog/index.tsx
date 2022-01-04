@@ -20,12 +20,13 @@ import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeck } from '@data/hooks';
-import { useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { useEffectUpdate, usePlayerCards } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   campaign: MiniCampaignT | undefined;
@@ -81,8 +82,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     }
     return deck?.deck;
   }, [baseDeck, deck, latestDeck, selectedDeckId]);
-  const investigators = useInvestigatorCards();
-  const investigator = useMemo(() => deck && investigators && investigators[deck.deck.investigator_code], [deck, investigators]);
+  const [investigator] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);

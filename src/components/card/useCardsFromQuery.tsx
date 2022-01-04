@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react';
+import { useContext, useEffect, useMemo, useReducer } from 'react';
 import { Brackets } from 'typeorm/browser';
 import { filter } from 'lodash';
 
@@ -45,4 +45,15 @@ export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Pro
     }
   }, [db, query, tabooSetId, sort]);
   return [cards, loading];
+}
+
+
+export function useCardsForQuery(
+  makeQuery: () => Brackets | undefined,
+  deps: any[],
+  sort?: QuerySort[],
+  tabooSetOverride?: number
+): [Card[], boolean] {
+  const query = useMemo(makeQuery, deps);
+  return useCardsFromQuery({ query, sort, tabooSetOverride });
 }

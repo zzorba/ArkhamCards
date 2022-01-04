@@ -8,7 +8,7 @@ import {
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import { s, xs } from '@styles/space';
-import { useInvestigatorCards } from '@components/core/hooks';
+import { useInvestigators } from '@components/core/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { TINY_PHONE } from '@styles/sizes';
 
@@ -16,7 +16,7 @@ interface Props {
   campaign: MiniCampaignT;
 }
 function CampaignInvestigatorRow({ campaign }: Props) {
-  const investigators = useInvestigatorCards();
+  const investigators = useInvestigators(campaign.investigators);
   const renderInvestigator = useCallback((code: string) => {
     const traumaAndCardData = campaign.investigatorTrauma(code);
     const card = investigators?.[code];

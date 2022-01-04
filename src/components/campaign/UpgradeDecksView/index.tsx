@@ -37,9 +37,8 @@ const EMPTY_DECKS: LatestDeckT[] = [];
 function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
-  const investigators = useInvestigatorCards();
   const campaign = useCampaign(id);
-  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [allInvestigators] = useCampaignInvestigators(campaign);
   const latestDecks = campaign?.latestDecks() || EMPTY_DECKS;
   const lang = useSelector(getLangPreference);
   const updateCampaignActions = useUpdateCampaignActions();

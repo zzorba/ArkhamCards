@@ -47,7 +47,6 @@ function LinkedCampaignGuideView(props: Props) {
     campaignIdB: props.campaignIdB,
   });
   const { typography } = useContext(StyleContext);
-  const investigators = useInvestigatorCards();
   const dispatch = useDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
@@ -55,8 +54,8 @@ function LinkedCampaignGuideView(props: Props) {
   const campaign = useCampaign(campaignId, true);
   useCampaignDeleted(componentId, campaign);
   const campaignName = campaign?.name || '';
-  const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, investigators, true);
-  const [campaignDataB] = useSingleCampaignGuideData(campaignIdB, investigators, true);
+  const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, true);
+  const [campaignDataB] = useSingleCampaignGuideData(campaignIdB, true);
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {

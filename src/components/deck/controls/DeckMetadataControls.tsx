@@ -1,11 +1,14 @@
 import React, { useMemo } from 'react';
-import { forEach } from 'lodash';
+import { filter, find } from 'lodash';
 
 import Card from '@data/types/Card';
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import InvestigatorOptionsControl, { hasInvestigatorOptions } from './InvestigatorOptionsControl';
-import { useInvestigatorCards } from '@components/core/hooks';
+import { useInvestigatorCards, useParallelInvestigators } from '@components/core/hooks';
 import { DeckMeta } from '@actions/types';
+import useCardsFromQuery, { useCardsForQuery } from '@components/card/useCardsFromQuery';
+import { where } from '@data/sqlite/query';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   investigatorCode?: string;
@@ -34,20 +37,8 @@ export default function DeckMetadataControls({
   firstElement,
   hasPreviousDeck,
 }: Props) {
-  const investigators = useInvestigatorCards(tabooSetId);
-  const parallelInvestigators = useMemo(() => {
-    if (!investigatorCode) {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, card => {
-      if (card && investigatorCode && card.alternate_of_code === investigatorCode) {
-        parallelInvestigators.push(card);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, investigatorCode]);
-  const investigator = investigators && investigatorCode && investigators[investigatorCode];
+  const [parallelInvestigators] = useParallelInvestigators(investigatorCode, tabooSetId);
+  const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
   if (!investigator) {
     return null;
   }
