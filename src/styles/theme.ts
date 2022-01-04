@@ -437,7 +437,7 @@ export const DARK_THEME: ThemeColors = {
     elder_sign: '#5496cc',
     bless: '#ebaa42',
     curse: '#b069c9',
-    frost: '#3D3A63',
+    frost: '#6559f7',
   },
   tokenFill: {
     bless: '#ebaa42',
