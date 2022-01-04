@@ -26,7 +26,7 @@ import {
   DelayedDeckEdits,
 } from '@actions/types';
 
-import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
+import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeChaosBagResultsSelector } from '@reducers';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
@@ -40,12 +40,13 @@ function uploadCampaignHelper(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     // Do something with deck uploads?
+    const state = getState();
+    const chaosBagResults = makeChaosBagResultsSelector()(state, campaign.uuid);
     if (guided) {
-      const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
-      await actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, chaosBagResults, guide);
     } else {
-      await actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, chaosBagResults, undefined);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,

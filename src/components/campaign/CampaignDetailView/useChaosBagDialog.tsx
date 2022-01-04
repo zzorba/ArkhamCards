@@ -18,6 +18,7 @@ import StyleContext from '@styles/StyleContext';
 import { updateCampaignChaosBag } from '../actions';
 import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 import { ProcessedCampaign } from '@data/scenario';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   componentId: string;
@@ -34,18 +35,19 @@ interface Props {
   customEditPressed?: () => void;
 }
 
-export function useSimpleChaosBagDialog(chaosBag: ChaosBag): [React.ReactNode, () => void] {
+export function useSimpleChaosBagDialog(chaosBag: ChaosBag, tarot?: Chaos_Bag_Tarot_Mode_Enum): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
   const content = useMemo(() => {
     return (
       <View style={space.marginS}>
         <ChaosBagLine
           chaosBag={chaosBag}
+          tarot={tarot}
           width={width - m * 2}
         />
       </View>
     );
-  }, [chaosBag, width]);
+  }, [chaosBag, tarot, width]);
   const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
   const { dialog, showDialog } = useDialog({
     title: t`Chaos Bag (${tokenCount})`,

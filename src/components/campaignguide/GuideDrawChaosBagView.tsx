@@ -11,6 +11,7 @@ import { Navigation } from 'react-native-navigation';
 import useGuideChaosBag from './useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ProcessedCampaign } from '@data/scenario';
+import { useChaosBagResults } from '@data/hooks';
 
 export interface GuideDrawChaosBagProps {
   campaignId: CampaignId;
@@ -35,7 +36,8 @@ export default function GuideDrawChaosBagView({ componentId, campaignId, scenari
     }
   }, [scenarioCard, componentId]);
   const theChaosBag = liveChaosBag || chaosBag;
-  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag);
+  const chaosBagResults = useChaosBagResults(campaignId);
+  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults.tarot);
   const showOdds = useCallback(() => {
     showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
   }, [componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign]);
@@ -47,6 +49,7 @@ export default function GuideDrawChaosBagView({ componentId, campaignId, scenari
       <DrawChaosBagComponent
         campaignId={campaignId}
         chaosBag={theChaosBag}
+        chaosBagResults={chaosBagResults}
         viewChaosBagOdds={showOdds}
         editViewPressed={showDialog}
         scenarioCardText={scenarioCardText}

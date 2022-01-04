@@ -12,6 +12,7 @@ import {
   useChaosBagSetBlessCurseMutation,
   useChaosBagSetTarotMutation,
 } from '@generated/graphql/apollo-schema'
+import { optimisticUpdates } from './apollo';
 import { useCallback } from 'react';
 
 export interface ChaosBagActions {
@@ -56,6 +57,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagClear`,
       },
+      update: optimisticUpdates.chaosBagClearTokens.update,
     });
   }, [clearTokensReq]);
 
@@ -63,16 +65,11 @@ export function useChaosBagActions(): ChaosBagActions {
     await setBlessCurseReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_result: {
-          __typename: 'chaos_bag_result_mutation_response',
-          returning: [
-            {
-              __typename: 'chaos_bag_result',
-              id: campaignId.serverId,
-              bless,
-              curse,
-            },
-          ],
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
+          bless,
+          curse,
         },
       },
       variables: {
@@ -84,6 +81,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagSetBlessCurse`,
       },
+      update: optimisticUpdates.chaosBagSetBlessCurse.update,
     });
   }, [setBlessCurseReq]);
 
@@ -91,15 +89,10 @@ export function useChaosBagActions(): ChaosBagActions {
     await setTarotReq({
       optimisticResponse: {
         __typename: 'mutation_root',
-        update_chaos_bag_result: {
-          __typename: 'chaos_bag_result_mutation_response',
-          returning: [
-            {
-              __typename: 'chaos_bag_result',
-              id: campaignId.serverId,
-              tarot: tarot || null,
-            },
-          ],
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
+          tarot: tarot || null,
         },
       },
       variables: {
@@ -110,6 +103,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagTarot`,
       },
+      update: optimisticUpdates.chaosBagSetTarot.update,
     })
   }, [setTarotReq]);
 
@@ -138,6 +132,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagDraw`,
       },
+      update: optimisticUpdates.chaosBagDrawToken.update,
     });
   }, [drawTokenReq, cache]);
 
@@ -159,6 +154,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagSealed`,
       },
+      update: optimisticUpdates.chaosBagSealTokens.update,
     });
   }, [sealTokensReq]);
 
@@ -184,6 +180,7 @@ export function useChaosBagActions(): ChaosBagActions {
         serializationKey: campaignId.serverId,
         collapseKey: `${campaignId.serverId}-chaosBagResetBlurse`,
       },
+      update: optimisticUpdates.chaosBagResetBlessCurse.update,
     });
   }, [resetBlessCurseReq]);
 

@@ -8,6 +8,7 @@ import {
   CampaignDifficulty,
   CampaignGuideState,
   CampaignNotes,
+  ChaosBagResults,
   GuideAchievement,
   GuideInput,
   ScenarioResult,
@@ -44,11 +45,12 @@ import {
   Guide_Achievement_Insert_Input,
   Investigator_Data_Insert_Input,
   Campaign_Investigator_Insert_Input,
+  useUploadChaosBagResultsMutation,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ChaosBag } from '@app_constants';
-import { handleUploadNewCampaign, optimisticUpdates } from './apollo';
+import { handleUploadNewCampaign, handleUploadChaosBagResults, optimisticUpdates } from './apollo';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 interface CampaignLink {
@@ -225,12 +227,36 @@ function guideAchievementToInsert(a: GuideAchievement, serverId: number): Guide_
     type: a.type,
   };
 }
-export type UploadNewCampaignFn = (campaignId: number, campaign: Campaign, guide: CampaignGuideState | undefined) => Promise<void>;
+export type UploadNewCampaignFn = (campaignId: number, campaign: Campaign, chaosBagResults: ChaosBagResults, guide: CampaignGuideState | undefined) => Promise<void>;
 
 export function useUploadNewCampaign(): UploadNewCampaignFn {
   const [uploadNewCampaign] = useUploadNewCampaignMutation();
+  const [uploadChaosBagResults] = useUploadChaosBagResultsMutation();
 
-  return useCallback(async(campaignId: number, campaign: Campaign, guide: CampaignGuideState | undefined) => {
+  return useCallback(async(campaignId: number, campaign: Campaign, chaosBagResults: ChaosBagResults, guide: CampaignGuideState | undefined) => {
+    const variables = {
+      id: campaignId,
+      bless: chaosBagResults.blessTokens || 0,
+      curse: chaosBagResults.curseTokens || 0,
+      drawn: chaosBagResults.drawnTokens,
+      totalDrawn: chaosBagResults.totalDrawnTokens,
+      sealed: chaosBagResults.sealedTokens,
+      tarot: chaosBagResults.tarot || null,
+    };
+    await uploadChaosBagResults({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          ...variables,
+        },
+      },
+      variables,
+      context: {
+        serializationKey: campaignId,
+      },
+      update: handleUploadChaosBagResults,
+    })
     let inputs: Guide_Input_Insert_Input[] = [];
     let achievements: Guide_Achievement_Insert_Input[] = [];
     if (campaign.guided) {
@@ -288,7 +314,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
       },
       update: handleUploadNewCampaign,
     });
-  }, [uploadNewCampaign]);
+  }, [uploadNewCampaign, uploadChaosBagResults]);
 }
 
 export interface CreateCampaignActions {

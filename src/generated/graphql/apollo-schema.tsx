@@ -10571,6 +10571,70 @@ export type GetCardFaqQueryVariables = Exact<{
 
 export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null | undefined };
 
+export type UploadChaosBagResultsMutationVariables = Exact<{
+  id: Scalars['Int'];
+  bless: Scalars['Int'];
+  curse: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+  sealed: Scalars['jsonb'];
+  totalDrawn: Scalars['Int'];
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+}>;
+
+
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+
+export type ChaosBagClearTokensMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  bless: Scalars['Int'];
+  curse: Scalars['Int'];
+}>;
+
+
+export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, bless: number, curse: number } | null | undefined };
+
+export type ChaosBagDrawTokenMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null | undefined } | null | undefined };
+
+export type ChaosBagResetBlessCurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  drawn: Scalars['jsonb'];
+  sealed: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagResetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any } | null | undefined };
+
+export type ChaosBagSealTokensMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  sealed: Scalars['jsonb'];
+}>;
+
+
+export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
+
+export type ChaosBagSetBlessCurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  bless: Scalars['Int'];
+  curse: Scalars['Int'];
+}>;
+
+
+export type ChaosBagSetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number } | null | undefined };
+
+export type ChaosBagSetTarotMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+}>;
+
+
+export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   cycleCode: Scalars['String'];
@@ -10838,57 +10902,6 @@ export type DeleteInvestigatorDecksMutationVariables = Exact<{
 
 
 export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, investigator: string, owner_id: string }> } | null | undefined };
-
-export type ChaosBagClearTokensMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  bless: Scalars['Int'];
-  curse: Scalars['Int'];
-}>;
-
-
-export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, bless: number, curse: number } | null | undefined };
-
-export type ChaosBagDrawTokenMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  drawn: Scalars['jsonb'];
-}>;
-
-
-export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null | undefined } | null | undefined };
-
-export type ChaosBagResetBlessCurseMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  drawn: Scalars['jsonb'];
-  sealed: Scalars['jsonb'];
-}>;
-
-
-export type ChaosBagResetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any } | null | undefined };
-
-export type ChaosBagSealTokensMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  sealed: Scalars['jsonb'];
-}>;
-
-
-export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
-
-export type ChaosBagSetBlessCurseMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  bless: Scalars['Int'];
-  curse: Scalars['Int'];
-}>;
-
-
-export type ChaosBagSetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, bless: number, curse: number }> } | null | undefined };
-
-export type ChaosBagSetTarotMutationVariables = Exact<{
-  campaign_id: Scalars['Int'];
-  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
-}>;
-
-
-export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result?: { __typename?: 'chaos_bag_result_mutation_response', returning: Array<{ __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined }> } | null | undefined };
 
 export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11436,6 +11449,287 @@ export function useGetCardFaqLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
+export const UploadChaosBagResultsDocument = gql`
+    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $id}
+    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot}
+  ) {
+    ...FullChaosBagResult
+  }
+}
+    ${FullChaosBagResultFragmentDoc}`;
+export type UploadChaosBagResultsMutationFn = Apollo.MutationFunction<UploadChaosBagResultsMutation, UploadChaosBagResultsMutationVariables>;
+
+/**
+ * __useUploadChaosBagResultsMutation__
+ *
+ * To run a mutation, you first call `useUploadChaosBagResultsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUploadChaosBagResultsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [uploadChaosBagResultsMutation, { data, loading, error }] = useUploadChaosBagResultsMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
+ *      drawn: // value for 'drawn'
+ *      sealed: // value for 'sealed'
+ *      totalDrawn: // value for 'totalDrawn'
+ *      tarot: // value for 'tarot'
+ *   },
+ * });
+ */
+export function useUploadChaosBagResultsMutation(baseOptions?: Apollo.MutationHookOptions<UploadChaosBagResultsMutation, UploadChaosBagResultsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UploadChaosBagResultsMutation, UploadChaosBagResultsMutationVariables>(UploadChaosBagResultsDocument, options);
+      }
+export type UploadChaosBagResultsMutationHookResult = ReturnType<typeof useUploadChaosBagResultsMutation>;
+export type UploadChaosBagResultsMutationResult = Apollo.MutationResult<UploadChaosBagResultsMutation>;
+export type UploadChaosBagResultsMutationOptions = Apollo.BaseMutationOptions<UploadChaosBagResultsMutation, UploadChaosBagResultsMutationVariables>;
+export const ChaosBagClearTokensDocument = gql`
+    mutation chaosBagClearTokens($campaign_id: Int!, $bless: Int!, $curse: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: [], bless: $bless, curse: $curse}
+  ) {
+    id
+    drawn
+    bless
+    curse
+  }
+}
+    `;
+export type ChaosBagClearTokensMutationFn = Apollo.MutationFunction<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
+
+/**
+ * __useChaosBagClearTokensMutation__
+ *
+ * To run a mutation, you first call `useChaosBagClearTokensMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagClearTokensMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagClearTokensMutation, { data, loading, error }] = useChaosBagClearTokensMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
+ *   },
+ * });
+ */
+export function useChaosBagClearTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>(ChaosBagClearTokensDocument, options);
+      }
+export type ChaosBagClearTokensMutationHookResult = ReturnType<typeof useChaosBagClearTokensMutation>;
+export type ChaosBagClearTokensMutationResult = Apollo.MutationResult<ChaosBagClearTokensMutation>;
+export type ChaosBagClearTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
+export const ChaosBagDrawTokenDocument = gql`
+    mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: $drawn}
+    _inc: {totalDrawn: 1}
+  ) {
+    id
+    drawn
+    totalDrawn
+  }
+}
+    `;
+export type ChaosBagDrawTokenMutationFn = Apollo.MutationFunction<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
+
+/**
+ * __useChaosBagDrawTokenMutation__
+ *
+ * To run a mutation, you first call `useChaosBagDrawTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagDrawTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagDrawTokenMutation, { data, loading, error }] = useChaosBagDrawTokenMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *   },
+ * });
+ */
+export function useChaosBagDrawTokenMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>(ChaosBagDrawTokenDocument, options);
+      }
+export type ChaosBagDrawTokenMutationHookResult = ReturnType<typeof useChaosBagDrawTokenMutation>;
+export type ChaosBagDrawTokenMutationResult = Apollo.MutationResult<ChaosBagDrawTokenMutation>;
+export type ChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
+export const ChaosBagResetBlessCurseDocument = gql`
+    mutation chaosBagResetBlessCurse($campaign_id: Int!, $drawn: jsonb!, $sealed: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {bless: 0, curse: 0, drawn: $drawn, sealed: $sealed}
+  ) {
+    id
+    bless
+    curse
+    drawn
+    sealed
+  }
+}
+    `;
+export type ChaosBagResetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
+
+/**
+ * __useChaosBagResetBlessCurseMutation__
+ *
+ * To run a mutation, you first call `useChaosBagResetBlessCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagResetBlessCurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagResetBlessCurseMutation, { data, loading, error }] = useChaosBagResetBlessCurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *      sealed: // value for 'sealed'
+ *   },
+ * });
+ */
+export function useChaosBagResetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>(ChaosBagResetBlessCurseDocument, options);
+      }
+export type ChaosBagResetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagResetBlessCurseMutation>;
+export type ChaosBagResetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagResetBlessCurseMutation>;
+export type ChaosBagResetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
+export const ChaosBagSealTokensDocument = gql`
+    mutation chaosBagSealTokens($campaign_id: Int!, $sealed: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {sealed: $sealed}
+  ) {
+    id
+    sealed
+  }
+}
+    `;
+export type ChaosBagSealTokensMutationFn = Apollo.MutationFunction<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
+
+/**
+ * __useChaosBagSealTokensMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSealTokensMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSealTokensMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSealTokensMutation, { data, loading, error }] = useChaosBagSealTokensMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      sealed: // value for 'sealed'
+ *   },
+ * });
+ */
+export function useChaosBagSealTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>(ChaosBagSealTokensDocument, options);
+      }
+export type ChaosBagSealTokensMutationHookResult = ReturnType<typeof useChaosBagSealTokensMutation>;
+export type ChaosBagSealTokensMutationResult = Apollo.MutationResult<ChaosBagSealTokensMutation>;
+export type ChaosBagSealTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
+export const ChaosBagSetBlessCurseDocument = gql`
+    mutation chaosBagSetBlessCurse($campaign_id: Int!, $bless: Int!, $curse: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {bless: $bless, curse: $curse}
+  ) {
+    id
+    bless
+    curse
+  }
+}
+    `;
+export type ChaosBagSetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
+
+/**
+ * __useChaosBagSetBlessCurseMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetBlessCurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetBlessCurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetBlessCurseMutation, { data, loading, error }] = useChaosBagSetBlessCurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
+ *   },
+ * });
+ */
+export function useChaosBagSetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>(ChaosBagSetBlessCurseDocument, options);
+      }
+export type ChaosBagSetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagSetBlessCurseMutation>;
+export type ChaosBagSetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagSetBlessCurseMutation>;
+export type ChaosBagSetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
+export const ChaosBagSetTarotDocument = gql`
+    mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {tarot: $tarot}
+  ) {
+    id
+    tarot
+  }
+}
+    `;
+export type ChaosBagSetTarotMutationFn = Apollo.MutationFunction<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
+
+/**
+ * __useChaosBagSetTarotMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetTarotMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetTarotMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetTarotMutation, { data, loading, error }] = useChaosBagSetTarotMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      tarot: // value for 'tarot'
+ *   },
+ * });
+ */
+export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>(ChaosBagSetTarotDocument, options);
+      }
+export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
+export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
+export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
@@ -12535,246 +12829,6 @@ export function useDeleteInvestigatorDecksMutation(baseOptions?: Apollo.Mutation
 export type DeleteInvestigatorDecksMutationHookResult = ReturnType<typeof useDeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationResult = Apollo.MutationResult<DeleteInvestigatorDecksMutation>;
 export type DeleteInvestigatorDecksMutationOptions = Apollo.BaseMutationOptions<DeleteInvestigatorDecksMutation, DeleteInvestigatorDecksMutationVariables>;
-export const ChaosBagClearTokensDocument = gql`
-    mutation chaosBagClearTokens($campaign_id: Int!, $bless: Int!, $curse: Int!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: {id: $campaign_id}
-    _set: {drawn: [], bless: $bless, curse: $curse}
-  ) {
-    id
-    drawn
-    bless
-    curse
-  }
-}
-    `;
-export type ChaosBagClearTokensMutationFn = Apollo.MutationFunction<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
-
-/**
- * __useChaosBagClearTokensMutation__
- *
- * To run a mutation, you first call `useChaosBagClearTokensMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagClearTokensMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagClearTokensMutation, { data, loading, error }] = useChaosBagClearTokensMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      bless: // value for 'bless'
- *      curse: // value for 'curse'
- *   },
- * });
- */
-export function useChaosBagClearTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>(ChaosBagClearTokensDocument, options);
-      }
-export type ChaosBagClearTokensMutationHookResult = ReturnType<typeof useChaosBagClearTokensMutation>;
-export type ChaosBagClearTokensMutationResult = Apollo.MutationResult<ChaosBagClearTokensMutation>;
-export type ChaosBagClearTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
-export const ChaosBagDrawTokenDocument = gql`
-    mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: {id: $campaign_id}
-    _set: {drawn: $drawn}
-    _inc: {totalDrawn: 1}
-  ) {
-    id
-    drawn
-    totalDrawn
-  }
-}
-    `;
-export type ChaosBagDrawTokenMutationFn = Apollo.MutationFunction<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
-
-/**
- * __useChaosBagDrawTokenMutation__
- *
- * To run a mutation, you first call `useChaosBagDrawTokenMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagDrawTokenMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagDrawTokenMutation, { data, loading, error }] = useChaosBagDrawTokenMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      drawn: // value for 'drawn'
- *   },
- * });
- */
-export function useChaosBagDrawTokenMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>(ChaosBagDrawTokenDocument, options);
-      }
-export type ChaosBagDrawTokenMutationHookResult = ReturnType<typeof useChaosBagDrawTokenMutation>;
-export type ChaosBagDrawTokenMutationResult = Apollo.MutationResult<ChaosBagDrawTokenMutation>;
-export type ChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
-export const ChaosBagResetBlessCurseDocument = gql`
-    mutation chaosBagResetBlessCurse($campaign_id: Int!, $drawn: jsonb!, $sealed: jsonb!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: {id: $campaign_id}
-    _set: {bless: 0, curse: 0, drawn: $drawn, sealed: $sealed}
-  ) {
-    id
-    bless
-    curse
-    drawn
-    sealed
-  }
-}
-    `;
-export type ChaosBagResetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
-
-/**
- * __useChaosBagResetBlessCurseMutation__
- *
- * To run a mutation, you first call `useChaosBagResetBlessCurseMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagResetBlessCurseMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagResetBlessCurseMutation, { data, loading, error }] = useChaosBagResetBlessCurseMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      drawn: // value for 'drawn'
- *      sealed: // value for 'sealed'
- *   },
- * });
- */
-export function useChaosBagResetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>(ChaosBagResetBlessCurseDocument, options);
-      }
-export type ChaosBagResetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagResetBlessCurseMutation>;
-export type ChaosBagResetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagResetBlessCurseMutation>;
-export type ChaosBagResetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagResetBlessCurseMutation, ChaosBagResetBlessCurseMutationVariables>;
-export const ChaosBagSealTokensDocument = gql`
-    mutation chaosBagSealTokens($campaign_id: Int!, $sealed: jsonb!) {
-  update_chaos_bag_result_by_pk(
-    pk_columns: {id: $campaign_id}
-    _set: {sealed: $sealed}
-  ) {
-    id
-    sealed
-  }
-}
-    `;
-export type ChaosBagSealTokensMutationFn = Apollo.MutationFunction<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
-
-/**
- * __useChaosBagSealTokensMutation__
- *
- * To run a mutation, you first call `useChaosBagSealTokensMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagSealTokensMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagSealTokensMutation, { data, loading, error }] = useChaosBagSealTokensMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      sealed: // value for 'sealed'
- *   },
- * });
- */
-export function useChaosBagSealTokensMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>(ChaosBagSealTokensDocument, options);
-      }
-export type ChaosBagSealTokensMutationHookResult = ReturnType<typeof useChaosBagSealTokensMutation>;
-export type ChaosBagSealTokensMutationResult = Apollo.MutationResult<ChaosBagSealTokensMutation>;
-export type ChaosBagSealTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagSealTokensMutation, ChaosBagSealTokensMutationVariables>;
-export const ChaosBagSetBlessCurseDocument = gql`
-    mutation chaosBagSetBlessCurse($campaign_id: Int!, $bless: Int!, $curse: Int!) {
-  update_chaos_bag_result(
-    where: {id: {_eq: $campaign_id}}
-    _set: {bless: $bless, curse: $curse}
-  ) {
-    returning {
-      id
-      bless
-      curse
-    }
-  }
-}
-    `;
-export type ChaosBagSetBlessCurseMutationFn = Apollo.MutationFunction<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
-
-/**
- * __useChaosBagSetBlessCurseMutation__
- *
- * To run a mutation, you first call `useChaosBagSetBlessCurseMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagSetBlessCurseMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagSetBlessCurseMutation, { data, loading, error }] = useChaosBagSetBlessCurseMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      bless: // value for 'bless'
- *      curse: // value for 'curse'
- *   },
- * });
- */
-export function useChaosBagSetBlessCurseMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>(ChaosBagSetBlessCurseDocument, options);
-      }
-export type ChaosBagSetBlessCurseMutationHookResult = ReturnType<typeof useChaosBagSetBlessCurseMutation>;
-export type ChaosBagSetBlessCurseMutationResult = Apollo.MutationResult<ChaosBagSetBlessCurseMutation>;
-export type ChaosBagSetBlessCurseMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetBlessCurseMutation, ChaosBagSetBlessCurseMutationVariables>;
-export const ChaosBagSetTarotDocument = gql`
-    mutation chaosBagSetTarot($campaign_id: Int!, $tarot: chaos_bag_tarot_mode_enum) {
-  update_chaos_bag_result(where: {id: {_eq: $campaign_id}}, _set: {tarot: $tarot}) {
-    returning {
-      id
-      tarot
-    }
-  }
-}
-    `;
-export type ChaosBagSetTarotMutationFn = Apollo.MutationFunction<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
-
-/**
- * __useChaosBagSetTarotMutation__
- *
- * To run a mutation, you first call `useChaosBagSetTarotMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useChaosBagSetTarotMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [chaosBagSetTarotMutation, { data, loading, error }] = useChaosBagSetTarotMutation({
- *   variables: {
- *      campaign_id: // value for 'campaign_id'
- *      tarot: // value for 'tarot'
- *   },
- * });
- */
-export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>(ChaosBagSetTarotDocument, options);
-      }
-export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
-export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
-export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
 export const SetBinaryAchievementDocument = gql`
     mutation setBinaryAchievement($campaign_id: Int!, $id: String!, $value: Boolean!) {
   insert_guide_achievement_one(

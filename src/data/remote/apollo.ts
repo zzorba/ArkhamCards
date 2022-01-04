@@ -75,6 +75,22 @@ import {
   GetLatestDeckDocument,
   MiniInvestigatorDataFragment,
   MiniCampaignFragmentDoc,
+  ChaosBagDrawTokenDocument,
+  ChaosBagDrawTokenMutation,
+  FullChaosBagResultFragment,
+  GetChaosBagResultsQuery,
+  GetChaosBagResultsDocument,
+  ChaosBagClearTokensDocument,
+  ChaosBagClearTokensMutation,
+  ChaosBagResetBlessCurseDocument,
+  ChaosBagResetBlessCurseMutation,
+  ChaosBagSealTokensDocument,
+  ChaosBagSealTokensMutation,
+  ChaosBagSetBlessCurseDocument,
+  ChaosBagSetBlessCurseMutation,
+  ChaosBagSetTarotDocument,
+  ChaosBagSetTarotMutation,
+  UploadChaosBagResultsMutation,
 } from '@generated/graphql/apollo-schema';
 
 interface RemoveDeck {
@@ -760,6 +776,28 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
   }
 };
 
+
+export const handleUploadChaosBagResults: MutationUpdaterFn<UploadChaosBagResultsMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const chaosBag = data.update_chaos_bag_result_by_pk;
+
+  cache.writeQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: chaosBag.id,
+    },
+    data: {
+      __typename: 'query_root',
+      chaos_bag_result_by_pk: {
+        ...chaosBag,
+        tarot: chaosBag.tarot || null,
+      },
+    },
+  });
+};
+
 function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, update: (cacheData: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment) {
   const cacheData = cache.readQuery<GetCampaignGuideQuery>({
     query: GetCampaignGuideDocument,
@@ -1078,6 +1116,34 @@ const handleUpdateAvailableXp: MutationUpdaterFn<UpdateAvailableXpMutation> = (c
   });
 };
 
+function updateChaosBag(
+  cache: ApolloCache<unknown>,
+  campaignId: number,
+  update: (chaosBag: FullChaosBagResultFragment) => FullChaosBagResultFragment
+) {
+  const chaosBag = cache.readQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    returnPartialData: true,
+  }, true);
+  if (!chaosBag || !chaosBag.chaos_bag_result_by_pk) {
+    console.log(`Couldn't find chaos bag for ${campaignId}`);
+    return;
+  }
+  cache.writeQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    data: {
+      ...chaosBag,
+      chaos_bag_result_by_pk: update(chaosBag.chaos_bag_result_by_pk),
+    },
+  });
+}
+
 function updateGuideAchievement(
   cache: ApolloCache<unknown>,
   achievement: GuideAchievementFragment,
@@ -1142,6 +1208,92 @@ const handleSetCountMutation: MutationUpdaterFn<SetCountAchievementMutation> = (
   }
   const achievement = data.insert_guide_achievement_one;
   updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
+};
+
+const handleChaosBagDrawToken: MutationUpdaterFn<ChaosBagDrawTokenMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, drawn, totalDrawn } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn,
+      totalDrawn,
+    };
+  });
+};
+
+const handleChaosBagClearTokens: MutationUpdaterFn<ChaosBagClearTokensMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, bless, curse } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn: [],
+      bless,
+      curse,
+    };
+  });
+};
+
+
+const handleChaosBagResetBlessCurse: MutationUpdaterFn<ChaosBagResetBlessCurseMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, drawn, sealed } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn,
+      sealed,
+      bless: 0,
+      curse: 0,
+    };
+  });
+};
+
+const handleChaosBagSealTokens: MutationUpdaterFn<ChaosBagSealTokensMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, sealed } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      sealed,
+    };
+  });
+};
+
+const handleChaosBagSetBlessCurse: MutationUpdaterFn<ChaosBagSetBlessCurseMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, bless, curse } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      bless,
+      curse,
+    };
+  });
+};
+
+const handleChaosBagSetTarot: MutationUpdaterFn<ChaosBagSetTarotMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, tarot } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      tarot: tarot || null,
+    };
+  });
 };
 
 
@@ -1258,6 +1410,30 @@ export const optimisticUpdates = {
   insertNextArkhamDbDeck: {
     mutation: InsertNextArkhamDbDeckDocument,
     update: handleInsertNextArkhamDbDeck,
+  },
+  chaosBagDrawToken: {
+    mutation: ChaosBagDrawTokenDocument,
+    update: handleChaosBagDrawToken,
+  },
+  chaosBagClearTokens: {
+    mutation: ChaosBagClearTokensDocument,
+    update: handleChaosBagClearTokens,
+  },
+  chaosBagResetBlessCurse: {
+    mutation: ChaosBagResetBlessCurseDocument,
+    update: handleChaosBagResetBlessCurse,
+  },
+  chaosBagSealTokens: {
+    mutation: ChaosBagSealTokensDocument,
+    update: handleChaosBagSealTokens,
+  },
+  chaosBagSetBlessCurse: {
+    mutation: ChaosBagSetBlessCurseDocument,
+    update: handleChaosBagSetBlessCurse,
+  },
+  chaosBagSetTarot: {
+    mutation: ChaosBagSetTarotDocument,
+    update: handleChaosBagSetTarot,
   },
 };
 

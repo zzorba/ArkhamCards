@@ -28,11 +28,13 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import COLORS from '@styles/colors';
 import { useDialog } from '@components/deck/dialogs';
 import { useCounter } from '@components/core/hooks';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 interface Props {
   campaignId: CampaignId;
   chaosBag: ChaosBag;
   difficulty?: CampaignDifficulty;
+  chaosBagResults: ChaosBagResultsT;
   scenarioCardText?: string;
   viewChaosBagOdds: () => void;
   editViewPressed: () => void;
@@ -130,10 +132,9 @@ const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
 
 export default function DrawChaosBagComponent(props: Props) {
   const [{ isConnected }, refreshNetworkStatus] = useNetworkStatus();
-  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText } = props;
+  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText, chaosBagResults } = props;
   const { backgroundStyle, fontScale, colors, typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
-  const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
   const actions = useChaosBagActions();
   const [sealButton, sealDialog] = useSealTokenButton({ campaignId, chaosBag, chaosBagResults, actions });
