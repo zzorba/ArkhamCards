@@ -13,7 +13,6 @@ import { setBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBag
 import { flattenChaosBag } from './campaignUtil';
 import space, { s, xs, isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useChaosBagResults } from '@data/hooks';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';

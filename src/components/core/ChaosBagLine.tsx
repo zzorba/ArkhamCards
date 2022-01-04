@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { chunk, keys, flatMap, map, range, sortBy } from 'lodash';
+import { chunk, map } from 'lodash';
 
-import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { StyleSheet, View } from 'react-native';
 import ChaosToken, { TINY_TOKEN_SIZE, EXTRA_TINY_TOKEN_SIZE } from '@components/campaign/ChaosToken';
 import space, { xs } from '@styles/space';
