@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { filter, find, flatMap, head } from 'lodash';
 
 import OddsCalculatorComponent, { SCENARIO_CODE_FIXER } from './OddsCalculatorComponent';
-import { useCycleScenarios, useInvestigatorCards } from '@components/core/hooks';
+import { useCycleScenarios, useInvestigators } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 
 import { CampaignDifficulty, CampaignId } from '@actions/types';
@@ -22,7 +22,7 @@ export default function OddsCalculatorView({ campaignId, investigatorIds }: Odds
   const campaign = useCampaign(campaignId);
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
   const cycleScenarios = useCycleScenarios(campaign?.cycleCode);
-  const investigators = useInvestigatorCards();
+  const investigators = useInvestigators(investigatorIds);
   const allInvestigators = useMemo(() => flatMap(investigatorIds, code => investigators?.[code] || []), [investigatorIds, investigators]);
 
   const currentScenario = useMemo(() => {

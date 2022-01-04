@@ -7,10 +7,10 @@ import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/Investi
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/sqlite/query';
 import { NavigationProps } from '@components/nav/types';
-import { useInvestigatorCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
+import useSingleCard from '@components/card/useSingleCard';
 
 export interface EditDeckProps {
   id: DeckId;
@@ -31,12 +31,8 @@ export default function DeckEditView({
   const deck = useDeck(id);
   const deckEdits = useSimpleDeckEdits(id);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
-  const investigators = useInvestigatorCards(tabooSetId);
   const [hideVersatile, setHideVersatile] = useState(false);
-  const investigator = useMemo(() => {
-    const investigator_code = deckEdits?.meta.alternate_back || deck?.deck.investigator_code;
-    return investigator_code && investigators && investigators[investigator_code];
-  }, [deck, deckEdits, investigators]);
+  const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.deck.investigator_code, 'player', tabooSetId);
 
   const hasVersatile = (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
   const versatile = !hideVersatile && hasVersatile;

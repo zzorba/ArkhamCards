@@ -28,8 +28,7 @@ export function useCampaignGuideContext(oCampaignId: CampaignId, live: boolean):
   boolean
 ] {
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(oCampaignId);
-  const investigators = useInvestigatorCards();
-  const [campaignData, campaignGuideStatus] = useSingleCampaignGuideData(campaignId, investigators, live);
+  const [campaignData, campaignGuideStatus] = useSingleCampaignGuideData(campaignId, live);
   const updateCampaignActions = useUpdateCampaignActions();
   const deckActions = useDeckActions();
   const context = useCampaignGuideContextFromActions(campaignId, deckActions, updateCampaignActions, campaignData);

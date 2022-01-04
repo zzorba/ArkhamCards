@@ -28,7 +28,7 @@ import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, usePlayerCards, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useParallelInvestigators, usePlayerCards, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -41,6 +41,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
+import useSingleCard from '@components/card/useSingleCard';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -84,7 +85,6 @@ function NewDeckOptionsDialog({
     }
     return tabooSetIdChoice;
   }, [starterDeck, tabooSetIdChoice]);
-  const investigators = useInvestigatorCards(tabooSetId);
   const cards = usePlayerCards(tabooSetId);
   const [metaState, setMeta] = useState<DeckMeta>({});
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
@@ -101,11 +101,12 @@ function NewDeckOptionsDialog({
       alternate_back: back,
     });
   }, [setMeta, metaState]);
-  const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
-  const investigatorFront = useMemo(() => (investigators && metaState.alternate_front) ? investigators[metaState.alternate_front] : investigator,
-    [investigator, investigators, metaState]);
-  const investigatorBack = useMemo(() => (investigators && metaState.alternate_back) ? investigators[metaState.alternate_back] : investigator,
-    [investigator, investigators, metaState]
+  const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
+  const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
+  const investigatorFront = useMemo(() => metaState.alternate_front ? find(parallelInvestigators, c => c.code === metaState.alternate_front) : investigator,
+    [investigator, parallelInvestigators, metaState]);
+  const investigatorBack = useMemo(() => metaState.alternate_back ? find(parallelInvestigators, c => c.code === metaState.alternate_back) : investigator,
+    [investigator, parallelInvestigators, metaState]
   );
 
   const defaultDeckName = useMemo(() => {

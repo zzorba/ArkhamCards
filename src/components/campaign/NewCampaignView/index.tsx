@@ -610,8 +610,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
             >
               <DeckSelector
                 componentId={componentId}
-                deckIds={map(selectedDecks, d => d.id)}
-                investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
+                investigatorToDeck={investigatorToDeck}
+                investigatorIds={investigatorIds}
                 deckRemoved={deckRemoved}
                 investigatorRemoved={guided ? investigatorRemoved : undefined}
               />

@@ -18,6 +18,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
+import { useCardMap } from '@components/card/useCardList';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -61,9 +62,10 @@ export function useCampaign(campaignId: CampaignId | undefined, live?: boolean):
     return remoteCampaign;
   }, [reduxCampaign, remoteCampaign, campaignId]);
 }
-
+const NO_INVESTIGATOR_CODES: string[] = [];
 const NO_INVESTIGATORS: Card[] = [];
-export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, investigators: CardsMap | undefined): [Card[], boolean] {
+export function useCampaignInvestigators(campaign: undefined | SingleCampaignT): [Card[], boolean] {
+  const [investigators] = useCardMap(campaign?.investigators || NO_INVESTIGATOR_CODES, 'encounter');
   const campaignInvestigators = campaign?.investigators;
   return useMemo(() => {
     if (!campaignInvestigators || !investigators) {

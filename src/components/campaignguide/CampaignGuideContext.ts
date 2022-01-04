@@ -15,7 +15,7 @@ export interface CampaignGuideContextType {
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   spentXp: { [code: string]: number | undefined };
-  campaignInvestigators: Card[];
+  campaignInvestigators?: Card[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
   playerCards: CardsMap;

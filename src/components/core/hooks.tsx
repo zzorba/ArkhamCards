@@ -20,6 +20,9 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
+import useCardsFromQuery, { useCardsForQuery } from '@components/card/useCardsFromQuery';
+import useCardList, { useCardMap } from '@components/card/useCardList';
+import { where } from '@data/sqlite/query';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -543,6 +546,17 @@ export function useInvestigatorCards(tabooSetOverride?: number): CardsMap | unde
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const { investigatorCardsByTaboo } = useContext(DatabaseContext);
   return investigatorCardsByTaboo?.[`${tabooSetId || 0}`];
+}
+
+export function useInvestigators(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
+  const [cards] = useCardMap(codes, 'player', tabooSetOverride)
+  return cards;
+}
+
+export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
+  return useCardsForQuery(() => {
+    return investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined;
+  }, [investigatorCode], undefined, tabooSetOverride);
 }
 
 export function useTabooSet(tabooSetId: number): TabooSet | undefined {
