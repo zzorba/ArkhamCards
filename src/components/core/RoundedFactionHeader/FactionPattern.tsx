@@ -7,6 +7,7 @@ import {
   Path,
 } from 'react-native-svg';
 import CampaignPattern from '../../../../assets/campaign_pattern.svg';
+import DualPattern from '../../../../assets/dual_pattern.svg';
 import MysticPattern from '../../../../assets/mystic_pattern.svg';
 import SeekerPattern from '../../../../assets/seeker_pattern.svg';
 import MythosPattern from '../../../../assets/mythos_pattern.svg';
@@ -116,6 +117,12 @@ function HeaderPattern({ faction, width, height, transparent }: { faction : stri
       return (
         <StretchPattern patternWidth={360} width={width} height={height}>
           <MythosPattern color={transparent ? '#000' : '#FFF'} />
+        </StretchPattern>
+      );
+    case 'dual':
+      return (
+        <StretchPattern patternWidth={360} width={width} height={height}>
+          <DualPattern color={transparent ? '#000' : '#FFF'} />
         </StretchPattern>
       );
     case 'neutral':
