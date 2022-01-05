@@ -5066,19 +5066,19 @@ msgid "Show decks from other campaigns"
 msgstr "다른 캠페인에 속한 덱 보기"
 
 msgid "Trait Choice"
-msgstr ""
+msgstr "특성 선택"
 
 msgid "Blessed"
-msgstr ""
+msgstr "축복받은"
 
 msgid "Cursed"
-msgstr ""
+msgstr "저주받은"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "축복받은, 저주받은"
 
 msgid "Select Option"
-msgstr ""
+msgstr "옵션 선택"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5521,7 +5521,7 @@ msgstr "구조물"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "성약"
 
 msgctxt "trait"
 msgid "Creature"
