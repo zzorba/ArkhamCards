@@ -22,7 +22,6 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useInvestigatorCards } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {

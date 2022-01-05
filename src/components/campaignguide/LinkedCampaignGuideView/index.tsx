@@ -11,7 +11,7 @@ import { updateCampaignName } from '@components/campaign/actions';
 import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
 import { useCampaign } from '@data/hooks';
-import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContextFromActions from '@components/campaignguide/useCampaignGuideContextFromActions';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';

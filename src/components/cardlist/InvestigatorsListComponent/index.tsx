@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { filter, forEach, map, sortBy } from 'lodash';
+import { filter, forEach, map, find, sortBy } from 'lodash';
 import {
   Keyboard,
   Platform,
@@ -25,10 +25,12 @@ import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
-import { useInvestigatorCards, usePlayerCards, useToggles } from '@components/core/hooks';
+import { usePlayerCards, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { INVESTIGATOR_CARDS_QUERY } from '@data/sqlite/query';
 
 interface Props {
   componentId: string;
@@ -132,7 +134,8 @@ export default function InvestigatorsListComponent({
 }: Props) {
   const { fontScale, typography } = useContext(StyleContext);
   const cards = usePlayerCards();
-  const investigators = useInvestigatorCards();
+  const sortQuery = useMemo(() => Card.querySort(true, sort), [sort]);
+  const [investigators, loading] = useCardsFromQuery({ query: INVESTIGATOR_CARDS_QUERY, sort: sortQuery });
 
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
@@ -198,43 +201,28 @@ export default function InvestigatorsListComponent({
   const groupedInvestigators = useMemo((): Section[] => {
     const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    const allInvestigators = sortBy(
-      filter(
-        investigators,
-        i => {
-          if (!i) {
-            return false;
-          }
-          if (i.code === CUSTOM_INVESTIGATOR) {
-            return false;
-          }
-          if (i.altArtInvestigator || i.mythos_card) {
-            return false;
-          }
-          if (filterInvestigatorsSet.has(i.code)) {
-            return false;
-          }
-          if (onlyInvestigatorsSet && !onlyInvestigatorsSet.has(i.code)) {
-            return false;
-          }
-          return searchMatchesText(
-            searchTerm,
-            [i.name, i.faction_name || '', i.traits || '']
-          );
-        }),
-      investigator => {
-        if (!investigator) {
-          return '';
+    const allInvestigators = filter(
+      investigators,
+      i => {
+        if (!i) {
+          return false;
         }
-        switch (sort) {
-          case SORT_BY_FACTION:
-            return investigator.factionCode();
-          case SORT_BY_TITLE:
-            return investigator.name;
-          case SORT_BY_PACK:
-          default:
-            return investigator.code;
+        if (i.code === CUSTOM_INVESTIGATOR) {
+          return false;
         }
+        if (i.altArtInvestigator || i.mythos_card) {
+          return false;
+        }
+        if (filterInvestigatorsSet.has(i.code)) {
+          return false;
+        }
+        if (onlyInvestigatorsSet && !onlyInvestigatorsSet.has(i.code)) {
+          return false;
+        }
+        return searchMatchesText(
+          searchTerm,
+          [i.name, i.faction_name || '', i.traits || '']
+        );
       });
 
     const results: Section[] = [];
@@ -283,7 +271,7 @@ export default function InvestigatorsListComponent({
         nonCollectionCards = [];
       }
     }
-    const customInvestigator = investigators && investigators[CUSTOM_INVESTIGATOR];
+    const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
     if (customInvestigator) {
       results.push({
         title: t`Custom`,

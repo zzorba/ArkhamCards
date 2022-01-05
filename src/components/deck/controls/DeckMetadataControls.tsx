@@ -1,13 +1,9 @@
-import React, { useMemo } from 'react';
-import { filter, find } from 'lodash';
+import React from 'react';
 
-import Card from '@data/types/Card';
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import InvestigatorOptionsControl, { hasInvestigatorOptions } from './InvestigatorOptionsControl';
-import { useInvestigatorCards, useParallelInvestigators } from '@components/core/hooks';
+import { useParallelInvestigators } from '@components/core/hooks';
 import { DeckMeta } from '@actions/types';
-import useCardsFromQuery, { useCardsForQuery } from '@components/card/useCardsFromQuery';
-import { where } from '@data/sqlite/query';
 import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {

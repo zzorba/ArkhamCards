@@ -5,7 +5,6 @@ import { t } from 'ttag';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import { SingleCampaignGuideStatus, useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import useCampaignGuideContextFromActions from './useCampaignGuideContextFromActions';
-import { useInvestigatorCards } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { CampaignId } from '@actions/types';
 import { useCampaignId } from '@components/campaign/hooks';

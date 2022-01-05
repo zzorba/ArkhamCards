@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { filter, map } from 'lodash';
+import { filter, map, uniq } from 'lodash';
 import {
   FlatList,
   Platform,
@@ -9,16 +9,17 @@ import {
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards } from '@components/core/hooks';
+import { useInvestigators } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -45,19 +46,20 @@ function DeckListItem({
   deckId,
   deckClicked,
   deckToCampaign,
+  investigators,
 }: {
   deckId: MiniDeckT;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
+  investigators: undefined | CardsMap;
 }) {
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  const investigators = useInvestigatorCards();
   const deck = useLatestDeck(deckId, deckToCampaign);
+  const investigator = deck?.investigator && investigators ? investigators[deck.investigator] : undefined;
   if (!deck) {
     return null;
   }
-  const investigator = deck && investigators && investigators[deck.investigator];
   return (
     <NewDeckListRow
       lang={lang}
@@ -77,7 +79,8 @@ export default function DeckList({
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
   const { colors, backgroundStyle, fontScale } = useContext(StyleContext);
-  const investigators = useInvestigatorCards();
+  const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
+  const investigators = useInvestigators(investigatorCodes);
   const items = useMemo(() => {
     return map(
       filter(deckIds, deckId => {
@@ -103,10 +106,11 @@ export default function DeckList({
         key={deckId.id.uuid}
         deckId={deckId}
         deckClicked={deckClicked}
+        investigators={investigators}
         deckToCampaign={deckToCampaign}
       />
     );
-  }, [deckClicked, deckToCampaign]);
+  }, [deckClicked, deckToCampaign, investigators]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
   const height = searchBoxHeight(fontScale);
   return (

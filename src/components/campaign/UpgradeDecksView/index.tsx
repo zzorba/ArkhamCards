@@ -22,7 +22,7 @@ import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';

@@ -5,10 +5,11 @@ import LegacyDeckListRow from '../decklist/LegacyDeckListRow';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { usePlayerCards, usePressCallback } from '@components/core/hooks';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import useSingleCard from '@components/card/useSingleCard';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -46,8 +47,7 @@ export default function LegacyDeckRow({
 }: Props) {
   const { colors } = useContext(StyleContext);
   const cards = usePlayerCards(deck.taboo_id);
-  const investigators = useInvestigatorCards(deck.taboo_id);
-  const investigator = deck && investigators && investigators[deck.investigator_code] || undefined;
+  const [investigator] = useSingleCard(deck.investigator_code, 'player');
   const onDeckPressFunction = useCallback(() => {
     showDeckModal(id, deck, campaign.id, colors, investigator);
   }, [id, deck, campaign, colors, investigator]);

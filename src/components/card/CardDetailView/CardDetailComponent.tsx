@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { forEach, map } from 'lodash';
+import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -11,7 +11,7 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, useParallelInvestigators } from '@components/core/hooks';
+import { useParallelInvestigators } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 
 interface Props {
