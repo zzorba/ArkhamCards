@@ -24,7 +24,7 @@ import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useFlag, useInvestigators, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
@@ -64,7 +64,8 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
-  const investigators = useInvestigatorCards();
+  const investigatorsCodes = useMemo(() => map(campaign?.latestDecks(), d => d.investigator), [campaign]);
+  const investigators = useInvestigators(investigatorsCodes);
   const cards = usePlayerCards();
   const latestDecks = campaign?.latestDecks();
   const playerCount = useMemo(() => {

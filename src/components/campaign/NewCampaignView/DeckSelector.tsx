@@ -11,6 +11,7 @@ import StyleContext from '@styles/StyleContext';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props extends CampaignDeckListProps {
   deckRemoved?: (
@@ -61,8 +62,7 @@ function InvestigatorDeckRow({ id, actions, deckRemoved }: {
   ) => void;
 }) {
   const deck = useDeckWithFetch(id, actions);
-  const investigators = useInvestigatorCards(deck?.deck.taboo_id || 0);
-  const investigator = deck && investigators && investigators[deck.deck.investigator_code];
+  const [investigator] = useSingleCard(deck?.investigator, 'player');
   const onRemove = useCallback(() => {
     deckRemoved && deckRemoved(id, deck?.deck, investigator);
   }, [deckRemoved, id, deck, investigator]);

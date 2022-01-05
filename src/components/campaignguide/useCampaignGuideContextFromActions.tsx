@@ -19,9 +19,9 @@ import {
   CampaignId,
   DelayedDeckEdits,
 } from '@actions/types';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
-import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -43,7 +43,6 @@ export default function useCampaignGuideContextFromActions(
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
-  const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
@@ -233,6 +232,13 @@ export default function useCampaignGuideContextFromActions(
   }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
+  const investigators = useMemo(() => {
+    const r: CardsMap = {};
+    forEach(campaignInvestigators, c => {
+      r[c.code] = c;
+    });
+    return r;
+  }, [campaignInvestigators]);
   const campaignStateHelper = useMemo(() => {
     if (!investigators || !campaignData) {
       return undefined;
