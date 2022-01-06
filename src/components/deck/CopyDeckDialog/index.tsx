@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { flatMap, keys, map, throttle, uniq } from 'lodash';
+import { flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import DialogComponent from '@lib/react-native-dialog';

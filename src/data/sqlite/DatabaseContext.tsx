@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Database from './Database';
-import Card, { CardsMap } from '../types/Card';
+import { CardsMap } from '../types/Card';
 import TabooSet from '../types/TabooSet';
 
 export interface PlayerCards {

@@ -3,7 +3,7 @@ import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';

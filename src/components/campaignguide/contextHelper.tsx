@@ -5,7 +5,7 @@ import {
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { getCampaignGuide } from '@data/scenario';
 import {
   AppState,

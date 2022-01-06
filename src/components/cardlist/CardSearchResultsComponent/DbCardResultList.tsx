@@ -47,7 +47,6 @@ import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { BROWSE_CARDS } from '@app/App';
 
 interface Props {
   componentId: string;
@@ -505,7 +504,6 @@ function useSectionFeed({
     setRefreshing(true);
 
     // const start = new Date();
-    console.log(`Delaying load by ${loadDelay}`);
     if (loadDelay > 0) {
       setTimeout(() => {
         loadDelay = 0;
@@ -712,7 +710,7 @@ function useSectionFeed({
     let loadingItem: Item | undefined = undefined;
     if (!sections.length || cardsLoading) {
       if (refreshingResult || cardsLoading) {
-        if (!hasCards) {
+        if (!hasCards || refreshingResult) {
           loadingItem = {
             type: 'text',
             id: 'loading',
@@ -1030,7 +1028,6 @@ export default function({
     }
   }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const { lang } = useContext(LanguageContext);
-
   const heightForSection = useCallback((header: SectionHeaderItem) => {
     return itemHeight(header, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

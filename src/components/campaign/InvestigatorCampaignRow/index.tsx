@@ -8,7 +8,7 @@ import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';

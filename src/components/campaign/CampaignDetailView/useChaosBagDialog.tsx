@@ -22,7 +22,7 @@ import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   componentId: string;
-  allInvestigators: Card[];
+  allInvestigators: Card[] | undefined;
   campaignId: CampaignId;
   scenarioId: string | undefined;
   chaosBag: ChaosBag;

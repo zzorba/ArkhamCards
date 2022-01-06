@@ -248,7 +248,7 @@ function CampaignDetailView(props: Props) {
       },
     });
   }, [componentId, campaignId]);
-  const investigatorCount = allInvestigators.length;
+  const investigatorCount = allInvestigators ? allInvestigators.length : (campaign?.investigators.length || 0);
 
   const addScenarioResultPressed = useCallback(() => {
     showAddScenarioResult(componentId, campaignId);
