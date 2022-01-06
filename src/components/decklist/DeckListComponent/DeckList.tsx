@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { filter, map, uniq } from 'lodash';
+import { filter, map, take, uniq } from 'lodash';
 import {
   FlatList,
   Platform,
@@ -12,7 +12,7 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import Card, { CardsMap } from '@data/types/Card';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigators } from '@components/core/hooks';
+import { useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -46,17 +46,15 @@ function DeckListItem({
   deckId,
   deckClicked,
   deckToCampaign,
-  investigators,
 }: {
   deckId: MiniDeckT;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
-  investigators: undefined | CardsMap;
 }) {
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const deck = useLatestDeck(deckId, deckToCampaign);
-  const investigator = deck?.investigator && investigators ? investigators[deck.investigator] : undefined;
+  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id);
   if (!deck) {
     return null;
   }
@@ -97,6 +95,7 @@ export default function DeckList({
         };
       });
   }, [deckIds, deckClicked, investigators, searchTerm]);
+  usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
 
   const renderItem = useCallback(({ item: { deckId } }: {
     item: Item;
@@ -106,11 +105,10 @@ export default function DeckList({
         key={deckId.id.uuid}
         deckId={deckId}
         deckClicked={deckClicked}
-        investigators={investigators}
         deckToCampaign={deckToCampaign}
       />
     );
-  }, [deckClicked, deckToCampaign, investigators]);
+  }, [deckClicked, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
   const height = searchBoxHeight(fontScale);
   return (

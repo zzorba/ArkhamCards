@@ -21,8 +21,9 @@ import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { useInvestigatorCards, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
+import { useAllInvestigators, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
+import { CardsMap } from '@data/types/Card';
 
 export interface MergeBackupProps {
   backupData: BackupState | LegacyBackupState;
@@ -167,7 +168,14 @@ function MergeBackupView({ backupData, componentId }: Props) {
   const cancel = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
-  const investigators = useInvestigatorCards();
+  const [allInvestigators] = useAllInvestigators();
+  const investigators = useMemo(() => {
+    const r: CardsMap = {};
+    forEach(allInvestigators, i => {
+      r[i.code] = i;
+    });
+    return r;
+  }, [allInvestigators]);
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>

@@ -8,9 +8,9 @@ import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { CampaignId, ParsedDeck, Slots } from '@actions/types';
 import { useCampaignGuideContext } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import { useFlag, usePlayerCards } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import { getPacksInCollection, AppState } from '@reducers';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import DeckSectionBlock from '../section/DeckSectionBlock';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -24,6 +24,7 @@ interface Props {
   campaignId: CampaignId;
   live: boolean;
   componentId: string;
+  cards: CardsMap;
 }
 
 interface OverlapSection {
@@ -65,13 +66,13 @@ function OverlapSectionComponent({
   );
 }
 
-export default function DeckOverlapComponent({ parsedDeck, componentId }: {
+export default function DeckOverlapComponent({ parsedDeck, componentId, cards }: {
   parsedDeck?: ParsedDeck;
   componentId: string;
+  cards: CardsMap;
 }) {
   const { campaignInvestigators, latestDecks, campaign } = useContext(CampaignGuideContext);
   const { colors, typography } = useContext(StyleContext);
-  const cards = usePlayerCards();
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
   const [overlap, loading] = useMemo(() => {
@@ -210,7 +211,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId }: {
   );
 }
 
-export function DeckOverlapComponentForCampaign({ parsedDeck, campaignId, live, componentId }: Props) {
+export function DeckOverlapComponentForCampaign({ parsedDeck, campaignId, live, componentId, cards }: Props) {
   const [campaignGuideContext, status] = useCampaignGuideContext(campaignId, live);
   if (!campaignGuideContext) {
     return null;
@@ -220,6 +221,7 @@ export function DeckOverlapComponentForCampaign({ parsedDeck, campaignId, live, 
       <DeckOverlapComponent
         componentId={componentId}
         parsedDeck={parsedDeck}
+        cards={cards}
       />
     </CampaignGuideContext.Provider>
   );

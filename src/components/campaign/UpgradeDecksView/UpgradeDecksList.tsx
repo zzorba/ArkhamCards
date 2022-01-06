@@ -16,7 +16,7 @@ import { parseBasicDeck } from '@lib/parseDeck';
 import LegacyDeckRow from '@components/campaign/LegacyDeckRow';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useToggles } from '@components/core/hooks';
+import { useLatestDeckCards, useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';

@@ -79,7 +79,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
   useEffect(() => {
     FastImage.preload(
       flatMap(weaknessCards, c => {
-        if (!c.imagesrc) {
+        if (!c || !c.imagesrc) {
           return [];
         }
         return {

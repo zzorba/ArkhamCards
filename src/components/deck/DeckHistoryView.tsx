@@ -11,7 +11,7 @@ import { NavigationProps } from '@components/nav/types';
 import { DeckId, ParsedDeck } from '@actions/types';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from '@components/core/hooks';
+import { useLatestDecksCards } from '@components/core/hooks';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import space from '@styles/space';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -45,8 +45,8 @@ export default function DeckHistoryView({
 }: DeckHistoryProps & NavigationProps) {
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const cards = usePlayerCards();
   const [deckHistory, loading, refreshDeckHistory] = useDeckHistory(id, investigator, campaign);
+  const cards = useLatestDecksCards(deckHistory, deckHistory?.length ? (deckHistory[0].deck.taboo_id || 0) : 0);
   const historicDecks: HistoryDeckItemType[] = useMemo(() => {
     if (!cards || !deckHistory) {
       return [];

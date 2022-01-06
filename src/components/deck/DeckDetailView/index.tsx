@@ -383,7 +383,6 @@ function DeckDetailView({
     showAlert,
     deckEditsRef,
     assignedWeaknesses: addedBasicWeaknesses,
-    cards,
   });
 
   const onEditSpecialPressed = useCallback(() => {

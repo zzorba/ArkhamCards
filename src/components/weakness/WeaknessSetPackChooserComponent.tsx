@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { filter, forEach, map, uniqBy, sortBy } from 'lodash';
+import { filter, forEach, flatMap, map, uniqBy, sortBy } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
@@ -23,7 +23,7 @@ export function ControlledWeaknessSetPackChooserComponent({
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(
       uniqBy(
-        map(weaknessCards || [], card => card.pack_code),
+        flatMap(weaknessCards, card => card ? card.pack_code : []),
         code => code
       ));
     return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);
@@ -67,7 +67,7 @@ export default function WeaknessSetPackChooserComponent({
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(
       uniqBy(
-        map(weaknessCards || [], card => card.pack_code),
+        flatMap(weaknessCards, card => card ? card.pack_code : []),
         code => code
       ));
     return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);

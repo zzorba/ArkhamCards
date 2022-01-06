@@ -17,7 +17,7 @@ import { useDispatch } from 'react-redux';
 import { updateCampaignWeaknessSet } from '@components/campaign/actions';
 import { SetCampaignWeaknessSetAction, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import CampaignGuideContext from './CampaignGuideContext';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CampaignErrorView from './CampaignErrorView';
@@ -103,7 +103,7 @@ interface WeaknessItem {
   count: number;
 }
 
-function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: Card[] | undefined }) {
+function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: CardsMap | undefined }) {
   const [open, toggleOpen] = useFlag(false);
   const { campaign } = useContext(CampaignGuideContext);
   const deck = useMemo(() => find(campaign.latestDecks(), deck => deck.investigator === investigator.code), [investigator.code, campaign]);
@@ -113,8 +113,11 @@ function InvestigatorWeakness({ investigator, width, investigatorData, weaknesse
     }
     if (deck) {
       return flatMap(weaknesses, card => {
-        const count = (deck?.deck.slots?.[card?.code] || 0) +
-          (deck?.deck.ignoreDeckLimitSlots?.[card?.code] || 0);
+        if (!card) {
+          return [];
+        }
+        const count = (deck?.deck.slots?.[card.code] || 0) +
+          (deck?.deck.ignoreDeckLimitSlots?.[card.code] || 0);
         if (count > 0) {
           return {
             card,
@@ -133,6 +136,9 @@ function InvestigatorWeakness({ investigator, width, investigatorData, weaknesse
       counts[code] = (counts[code] || 0) + 1;
     });
     return flatMap(weaknesses, card => {
+      if (!card) {
+        return [];
+      }
       const count = counts[card.code];
       if (count > 0) {
         return {

@@ -14,10 +14,10 @@ import COLORS from '@styles/colors';
 import { getLangPreference, AppState, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 
-const BROWSE_CARDS = 'BROWSE_CARDS';
-const BROWSE_DECKS = 'BROWSE_DECKS';
+export const BROWSE_CARDS = 'BROWSE_CARDS';
+export const BROWSE_DECKS = 'BROWSE_DECKS';
 export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
-const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
+export const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
 // @ts-ignore ts2339
 TouchableOpacity.defaultProps = {
@@ -319,7 +319,6 @@ export default class App {
           },
         },
       },
-
     }, {
       stack: {
         id: BROWSE_DECKS,
@@ -367,6 +366,12 @@ export default class App {
       root: {
         bottomTabs: {
           children: tabs,
+          options: {
+            bottomTabs: {
+              currentTabId: BROWSE_DECKS,
+              tabsAttachMode: 'afterInitialTab',
+            },
+          },
         },
       },
     });

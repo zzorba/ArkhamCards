@@ -92,7 +92,7 @@ export interface ArkhamDbApiDeck {
   version?: string;
   xp?: number;
   xp_adjustment?: number;
-  spentXp?: number;
+  xp_spent?: number;
   next_deck?: number;
   previous_deck?: number;
   tags?: string;

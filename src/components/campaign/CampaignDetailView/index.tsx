@@ -13,7 +13,7 @@ import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestig
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useNavigationButtonPressed, useWeaknessCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
@@ -56,7 +56,7 @@ function CampaignDetailView(props: Props) {
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const cards = usePlayerCards();
+  const weaknessCards = useWeaknessCards();
   const campaign = useCampaign(campaignId, true);
   const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign);
 
@@ -138,16 +138,16 @@ function CampaignDetailView(props: Props) {
   const [alertDialog, showAlert] = useAlertDialog();
 
   const checkForWeaknessPrompt = useCallback((deck: Deck) => {
-    if (cards && campaign) {
+    if (weaknessCards && campaign) {
       maybeShowWeaknessPrompt(
         deck,
-        cards,
+        weaknessCards,
         campaign.weaknessSet.assignedCards || {},
         updateWeaknessAssignedCards,
         showAlert
       );
     }
-  }, [cards, campaign, updateWeaknessAssignedCards, showAlert]);
+  }, [weaknessCards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
   const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkForWeaknessPrompt);
   const onAddDeck = useCallback(async(deck: Deck) => {
@@ -166,7 +166,7 @@ function CampaignDetailView(props: Props) {
   const showChooseDeck = useCallback((
     singleInvestigator?: Card,
   ) => {
-    if (!cards || !campaign) {
+    if (!campaign) {
       return;
     }
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
@@ -198,7 +198,7 @@ function CampaignDetailView(props: Props) {
         }],
       },
     });
-  }, [campaign, allInvestigators, cards, onAddDeck, onAddInvestigator]);
+  }, [campaign, allInvestigators, onAddDeck, onAddInvestigator]);
 
   const showAddInvestigator = useCallback(() => {
     showChooseDeck();
@@ -326,25 +326,22 @@ function CampaignDetailView(props: Props) {
                 { `— ${t`Investigators`} · ${investigatorCount} —` }
               </Text>
             </View>
-            { !!cards && (
-              <DecksSection
-                showAlert={showAlert}
-                showTextEditDialog={showTextEditDialog}
-                showCountDialog={showCountDialog}
-                componentId={componentId}
-                campaign={campaign}
-                campaignId={campaignId}
-                latestDecks={campaign.latestDecks()}
-                allInvestigators={allInvestigators}
-                loading={loadingInvestigators}
-                cards={cards}
-                showTraumaDialog={showTraumaDialog}
-                removeInvestigator={onRemoveInvestigator}
-                showXpDialog={showXpDialog}
-                showChooseDeck={showChooseDeck}
-                setCampaignNotes={updateCampaignActions.setCampaignNotes}
-              />
-            ) }
+            <DecksSection
+              showAlert={showAlert}
+              showTextEditDialog={showTextEditDialog}
+              showCountDialog={showCountDialog}
+              componentId={componentId}
+              campaign={campaign}
+              campaignId={campaignId}
+              latestDecks={campaign.latestDecks()}
+              allInvestigators={allInvestigators}
+              loading={loadingInvestigators}
+              showTraumaDialog={showTraumaDialog}
+              removeInvestigator={onRemoveInvestigator}
+              showXpDialog={showXpDialog}
+              showChooseDeck={showChooseDeck}
+              setCampaignNotes={updateCampaignActions.setCampaignNotes}
+            />
             <DeckButton
               color="light_gray"
               icon="plus-thin"

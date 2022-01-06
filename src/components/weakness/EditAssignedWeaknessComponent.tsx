@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { filter } from 'lodash';
+import { flatMap } from 'lodash';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
 import { showCard } from '@components/nav/helper';
@@ -30,7 +30,7 @@ function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssigne
 
   const data: Card[] = useMemo(() => {
     const packCodes = new Set(weaknessSet.packCodes);
-    return filter(weaknessCards || [], card => packCodes.has(card.pack_code));
+    return flatMap(weaknessCards, card => card && packCodes.has(card.pack_code) ? card : []);
   }, [weaknessCards, weaknessSet.packCodes]);
   const renderItem = useCallback(({ item }: ListRenderItemInfo<Card>) => {
     const count = assignedCards[item.code] || 0;

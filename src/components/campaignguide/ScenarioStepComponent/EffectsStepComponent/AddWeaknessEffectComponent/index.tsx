@@ -13,7 +13,7 @@ import { AddWeaknessEffect } from '@data/scenario/types';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import FilterBuilder from '@lib/filters';
-import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
+import { useWeaknessCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -34,7 +34,6 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
   const firstDecisionId = `${id}_use_app`;
   const traitsDecisionId = `${id}_traits`;
   const weaknessCards = useWeaknessCards();
-  const cards = usePlayerCards();
 
   const firstPrompt = useMemo(() => {
     if (effect.count === '$input_value' || effect.choose_only) {
@@ -89,7 +88,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
     investigators: Card[],
     scenarioState: ScenarioStateHelper
   ) => {
-    if (!weaknessCards || !cards) {
+    if (!weaknessCards) {
       return null;
     }
     if (effect.count !== '$input_value') {
@@ -124,7 +123,6 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
             campaignLog={campaignLog}
             scenarioState={scenarioState}
             weaknessCards={weaknessCards}
-            cards={cards}
             count={effect.count === '$input_value' && numberInput ? numberInput[0] : 1}
             standalone={!!effect.standalone}
           />
@@ -133,7 +131,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
     );
   }, [saveTraits,
     id, numberInput, useCardTraits,
-    firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
+    firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>
