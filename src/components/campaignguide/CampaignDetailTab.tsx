@@ -27,7 +27,7 @@ import useConnectionProblemBanner from '@components/core/useConnectionProblemBan
 import { useArkhamDbError } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
-import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useLatestDecksCards } from '@components/core/hooks';
 
 const SHOW_WEAKNESS = false;
 
@@ -159,6 +159,8 @@ export default function CampaignDetailTab({
     cycleCode: campaign.cycleCode,
     processedCampaign,
   });
+  const latestDecks = campaign.latestDecks();
+  const cards = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -228,9 +230,11 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <DeckOverlapComponent componentId={componentId} />
-        </View>
+        { !!cards && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckOverlapComponent componentId={componentId} cards={cards} />
+          </View>
+        ) }
         { footerButtons }
         <View style={{ height: 120 }} />
       </ScrollView>

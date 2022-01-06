@@ -67,7 +67,7 @@ export default class Database {
 
   reloadPlayerCards() {
     // console.log('RELOADING PLAYER CARDS');
-    return syncPlayerCards(this, this._updateInvestigatorCards, this._updatePlayerCards);
+    return syncPlayerCards(this, this._updatePlayerCards);
   }
 
   private _updateInvestigatorCards = (state: InvestigatorCardState) => {

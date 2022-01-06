@@ -1,9 +1,9 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
-import { forEach, debounce, find } from 'lodash';
+import { forEach, flatMap, filter, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, Slots } from '@actions/types';
+import { CampaignCycleCode, DeckId, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -22,7 +22,8 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery, { useCardsForQuery } from '@components/card/useCardsFromQuery';
 import useCardList, { useCardMap } from '@components/card/useCardList';
-import { where } from '@data/sqlite/query';
+import { BASIC_WEAKNESS_QUERY, INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
+import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -492,41 +493,70 @@ export function useSlotActions(slots?: Slots, updateSlots?: (slots: Slots) => vo
 
 interface AppendCardsAction {
   type: 'cards';
-  cards: Card[]
+  cards: Card[];
 }
 
-type LoadCardsAction = ClearAction | AppendCardsAction;
+interface FetchCardsAction {
+  type: 'fetch';
+  fetching: string[];
+}
 
-function lazyCardMap(indexBy: 'code' | 'id') {
-  return (state: CardsMap, action: LoadCardsAction): CardsMap => {
+type LoadCardsAction = ClearAction | AppendCardsAction | FetchCardsAction;
+
+interface LazyCardsState {
+  cards: CardsMap;
+  fetching: Set<string>;
+}
+
+const EMPTY_SET = new Set<string>();
+function lazyCardMap(indexBy: 'code' | 'id'): Reducer<LazyCardsState, LoadCardsAction> {
+  return (state: LazyCardsState, action: LoadCardsAction): LazyCardsState => {
     switch (action.type) {
       case 'clear':
-        return {};
+        return {
+          cards: {},
+          fetching: EMPTY_SET,
+        };
       case 'cards': {
-        const result: CardsMap = { ...state };
+        const result: CardsMap = { ...state.cards };
         forEach(action.cards, card => {
           result[card[indexBy]] = card;
         });
-        return result;
+        return {
+          cards: result,
+          fetching: state.fetching,
+        };
       }
+      case 'fetch':
+        return {
+          cards: state.cards,
+          fetching: new Set([...state.fetching, ...action.fetching]),
+        };
     }
   };
 }
 
-export function useCards(indexBy: 'code' | 'id', initialCards?: Card[]) {
-  return useReducer<Reducer<CardsMap, LoadCardsAction>, Card[] | undefined>(
+export function useCards(indexBy: 'code' | 'id', initialCards?: Card[]): [CardsMap, (action: LoadCardsAction) => void, Set<string>] {
+  const [{ cards, fetching }, updateCards] = useReducer<Reducer<LazyCardsState, LoadCardsAction>, Card[] | null>(
     lazyCardMap(indexBy),
-    initialCards,
-    (initialCards?: Card[]) => {
+    initialCards || null,
+    (initialCards: Card[] | null) => {
       if (initialCards) {
-        return lazyCardMap(indexBy)({}, {
+        return lazyCardMap(indexBy)({
+          cards: {},
+          fetching: EMPTY_SET,
+        }, {
           type: 'cards',
-          cards: { ...initialCards },
+          cards: [...initialCards],
         });
       }
-      return {};
+      return {
+        cards: {},
+        fetching: EMPTY_SET,
+      };
     }
   );
+  return [cards, updateCards, fetching];
 }
 
 export function useTabooSetId(tabooSetOverride?: number): number {
@@ -534,23 +564,60 @@ export function useTabooSetId(tabooSetOverride?: number): number {
   return useSelector((state: AppState) => selector(state, tabooSetOverride)) || 0;
 }
 
-export function usePlayerCards(tabooSetOverride?: number): CardsMap | undefined {
+export function usePlayerCards(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
   const tabooSetId = useTabooSetId(tabooSetOverride);
-  const { playerCardsByTaboo } = useContext(DatabaseContext);
-  const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
-  return playerCards?.cards;
+  const [cards, setCards] = useState<CardsMap>();
+  const { getPlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    let canceled = false;
+    getPlayerCards(codes, tabooSetId).then(cards => {
+      if (!canceled) {
+        setCards(cards);
+      }
+    });
+    return () => {
+      canceled = true;
+    };
+  }, [tabooSetId, codes, getPlayerCards]);
+  return cards;
 }
 
-export function useInvestigatorCards(tabooSetOverride?: number): CardsMap | undefined {
-  const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
-  const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
-  const { investigatorCardsByTaboo } = useContext(DatabaseContext);
-  return investigatorCardsByTaboo?.[`${tabooSetId || 0}`];
+export function usePlayerCardsFunc(generator: () => string[], deps: any[], tabooSetOverride?: number) {
+  const codes = useMemo(generator, deps);
+  return usePlayerCards(codes, tabooSetOverride);
+}
+
+function deckToSlots(deck: LatestDeckT): string[] {
+  return uniq([
+    deck.investigator,
+    ...(deck.deck.meta?.alternate_back ? [deck.deck.meta.alternate_back] : []),
+    ...(deck.deck.meta?.alternate_front ? [deck.deck.meta.alternate_front] : []),
+    ...keys(deck.deck.slots),
+    ...keys(deck.deck.ignoreDeckLimitSlots),
+    ...keys(deck.deck.sideSlots),
+    ...(deck.previousDeck ? keys(deck.previousDeck.slots) : []),
+    ...(deck.previousDeck ? keys(deck.previousDeck.ignoreDeckLimitSlots) : []),
+    ...(deck.previousDeck ? keys(deck.previousDeck.sideSlots) : []),
+  ]);
+}
+
+const EMPTY_CARD_LIST: string[] = [];
+export function useLatestDeckCards(deck: LatestDeckT | undefined): CardsMap | undefined {
+  return usePlayerCardsFunc(() => deck ? deckToSlots(deck) : EMPTY_CARD_LIST, [deck], deck?.deck.taboo_id);
+}
+
+export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): CardsMap | undefined {
+  return usePlayerCardsFunc(() => decks ? uniq(flatMap(decks, deckToSlots)) : EMPTY_CARD_LIST, [decks], tabooSetId);
 }
 
 export function useInvestigators(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
   const [cards] = useCardMap(codes, 'player', tabooSetOverride)
   return cards;
+}
+
+export function useAllInvestigators(tabooSetOverride?: number, sort?: SortType): [Card[], boolean] {
+  const sortQuery = useMemo(() => sort ? Card.querySort(true, sort) : undefined, [sort]);
+  return useCardsFromQuery({ query: INVESTIGATOR_CARDS_QUERY, sort: sortQuery, tabooSetOverride });
 }
 
 export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
@@ -564,7 +631,7 @@ export function useTabooSet(tabooSetId: number): TabooSet | undefined {
   return find(tabooSets, tabooSet => tabooSet.id === tabooSetId);
 }
 
-export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined {
+export function useWeaknessCards(tabooSetOverride?: number): CardsMap | undefined {
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const { playerCardsByTaboo } = useContext(DatabaseContext);

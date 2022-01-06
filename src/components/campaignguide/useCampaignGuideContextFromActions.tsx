@@ -21,7 +21,6 @@ import {
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
-import { usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -43,7 +42,6 @@ export default function useCampaignGuideContextFromActions(
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
-  const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
@@ -332,7 +330,7 @@ export default function useCampaignGuideContextFromActions(
   }, [userId, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
   return useMemo(() => {
     // console.log(`useCampaignGuideContextFromActions campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignStateHelper: ${!!campaignStateHelper}, campaignInvestigators: ${!!campaignInvestigators}, cards: ${!!cards}`);
-    if (!campaign || !campaignGuide || !campaignStateHelper || !cards) {
+    if (!campaign || !campaignGuide || !campaignStateHelper) {
       return undefined;
     }
     return {
@@ -345,9 +343,8 @@ export default function useCampaignGuideContextFromActions(
       spentXp,
       latestDecks: decksByInvestigator,
       weaknessSet: campaign.weaknessSet,
-      playerCards: cards,
       syncCampaignChanges,
     };
   }, [campaignId, syncCampaignChanges,
-    spentXp, campaign, campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator, cards]);
+    spentXp, campaign, campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator]);
 }

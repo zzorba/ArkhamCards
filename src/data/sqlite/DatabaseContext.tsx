@@ -5,9 +5,7 @@ import Card, { CardsMap } from '../types/Card';
 import TabooSet from '../types/TabooSet';
 
 export interface PlayerCards {
-  investigators: CardsMap;
-  cards: CardsMap;
-  weaknessCards: Card[];
+  weaknessCards: CardsMap;
 }
 
 export interface DatabaseContextType {

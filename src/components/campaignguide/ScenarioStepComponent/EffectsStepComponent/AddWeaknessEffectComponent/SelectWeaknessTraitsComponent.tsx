@@ -3,7 +3,7 @@ import { filter, flatMap, map, uniq, sortBy, forEach } from 'lodash';
 import { Text } from 'react-native';
 import { c, t } from 'ttag';
 
-import Card from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 import { useMultiPickerDialog } from '@components/deck/dialogs';
 import { Toggles, useToggles } from '@components/core/hooks';
@@ -16,7 +16,7 @@ import getLocalizedTraits from '@components/filter/CardFilterView/getLocalizedTr
 interface Props {
   choices?: string[];
   save: (traits: string[]) => void;
-  weaknessCards: Card[];
+  weaknessCards: CardsMap;
   useCardTraits: boolean;
 }
 

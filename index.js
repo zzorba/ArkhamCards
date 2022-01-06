@@ -23,6 +23,7 @@ import App from './src/app/App';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from './src/app_constants';
 import createApolloClient from './src/data/apollo/createApolloClient';
 import ApolloClientContext from './src/data/apollo/ApolloClientContext';
+import { PlayerCardProvider } from '@data/sqlite/PlayerCardProvider';
 
 function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children }) {
   return (
@@ -34,9 +35,11 @@ function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children 
               <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
                 <LanguageProvider>
                   <DatabaseProvider>
-                    <StyleProvider>
-                      { children }
-                    </StyleProvider>
+                    <PlayerCardProvider>
+                      <StyleProvider>
+                        { children }
+                      </StyleProvider>
+                    </PlayerCardProvider>
                   </DatabaseProvider>
                 </LanguageProvider>
               </ApolloClientContext.Provider>

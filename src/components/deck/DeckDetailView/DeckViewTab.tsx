@@ -738,6 +738,7 @@ export default function DeckViewTab(props: Props) {
             componentId={componentId}
             parsedDeck={parsedDeck}
             live={!fromCampaign}
+            cards={cards}
           />
         ) }
         <DeckProgressComponent

@@ -5,7 +5,7 @@ import LegacyDeckListRow from '../decklist/LegacyDeckListRow';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -22,7 +22,6 @@ export interface LegacyDeckRowProps {
   deck: LatestDeckT;
   campaign: MiniCampaignT;
   lang: string;
-  renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
   skipRender?: (deck: Deck, investigator: Card) => boolean;
@@ -35,10 +34,9 @@ interface Props extends LegacyDeckRowProps {
 }
 
 export default function LegacyDeckRow({
-  deck: { deck, previousDeck, id },
+  deck,
   campaign,
   lang,
-  renderSubDetails,
   renderDetails,
   killedOrInsane,
   skipRender,
@@ -46,26 +44,12 @@ export default function LegacyDeckRow({
   viewDeckButton,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const cards = usePlayerCards(deck.taboo_id);
-  const [investigator] = useSingleCard(deck.investigator_code, 'player');
+  const cards = useLatestDeckCards(deck);
+  const [investigator] = useSingleCard(deck.deck.investigator_code, 'player');
   const onDeckPressFunction = useCallback(() => {
-    showDeckModal(id, deck, campaign.id, colors, investigator);
-  }, [id, deck, campaign, colors, investigator]);
+    showDeckModal(deck.id, deck.deck, campaign.id, colors, investigator);
+  }, [deck, campaign, colors, investigator]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
-  const subDetails = useMemo(() => {
-    if (deck && renderSubDetails) {
-      if (!investigator || !cards) {
-        return null;
-      }
-      return renderSubDetails(
-        deck,
-        cards,
-        investigator,
-        previousDeck
-      );
-    }
-    return null;
-  }, [deck, cards, investigator, previousDeck, renderSubDetails]);
   const details = useMemo(() => {
     if (!deck || !renderDetails) {
       return null;
@@ -73,8 +57,8 @@ export default function LegacyDeckRow({
     if (!investigator || !cards) {
       return null;
     }
-    return renderDetails(deck, cards, investigator, previousDeck);
-  }, [deck, cards, investigator, previousDeck, renderDetails]);
+    return renderDetails(deck.deck, cards, investigator, deck.previousDeck);
+  }, [deck, cards, investigator, renderDetails]);
 
   if (!deck) {
     return null;
@@ -82,18 +66,17 @@ export default function LegacyDeckRow({
   if (!investigator) {
     return null;
   }
-  if (skipRender && skipRender(deck, investigator)) {
+  if (skipRender && skipRender(deck.deck, investigator)) {
     return null;
   }
   return (
     <LegacyDeckListRow
-      deck={deck}
-      previousDeck={previousDeck}
+      deck={deck.deck}
+      previousDeck={deck.previousDeck}
       lang={lang}
       onPress={onDeckPress}
       investigator={investigator}
       details={details}
-      subDetails={subDetails}
       compact={compact}
       viewDeckButton={viewDeckButton}
       killedOrInsane={killedOrInsane}

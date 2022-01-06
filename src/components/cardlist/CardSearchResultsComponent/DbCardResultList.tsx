@@ -47,6 +47,7 @@ import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { BROWSE_CARDS } from '@app/App';
 
 interface Props {
   componentId: string;
@@ -274,6 +275,8 @@ interface LoadedState {
   textQuery?: Brackets;
   loading: boolean;
 }
+
+let loadDelay: number = 4000;
 function useSectionFeed({
   componentId,
   hasHeader,
@@ -502,18 +505,38 @@ function useSectionFeed({
     setRefreshing(true);
 
     // const start = new Date();
-    db.getPartialCards(
-      sortIgnoreQuotes,
-      combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
-      tabooSetId,
-      sort
-    ).then((cards: PartialCard[]) => {
-      // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-      if (!ignore) {
-        setMainQueryCards({ cards, loading: false });
-        setRefreshing(false);
-      }
-    }, console.log);
+    console.log(`Delaying load by ${loadDelay}`);
+    if (loadDelay > 0) {
+      setTimeout(() => {
+        loadDelay = 0;
+        db.getPartialCards(
+          sortIgnoreQuotes,
+          combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
+          tabooSetId,
+          sort
+        ).then((cards: PartialCard[]) => {
+          // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+          if (!ignore) {
+            setMainQueryCards({ cards, loading: false });
+            setRefreshing(false);
+          }
+        }, console.log);
+      }, loadDelay);
+    } else {
+      db.getPartialCards(
+        sortIgnoreQuotes,
+        combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
+        tabooSetId,
+        sort
+      ).then((cards: PartialCard[]) => {
+        // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+        if (!ignore) {
+          setMainQueryCards({ cards, loading: false });
+          setRefreshing(false);
+        }
+      }, console.log);
+    }
+
     return () => {
       ignore = true;
     };

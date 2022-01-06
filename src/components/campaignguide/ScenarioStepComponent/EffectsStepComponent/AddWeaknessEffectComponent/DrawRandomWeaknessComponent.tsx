@@ -16,8 +16,7 @@ import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 interface OwnProps {
   id: string;
   investigators: Card[];
-  cards: CardsMap;
-  weaknessCards: Card[];
+  weaknessCards: CardsMap;
   traits: string[];
   standalone: boolean;
   realTraits: boolean;
@@ -53,7 +52,7 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   );
 }
 
-export default function DrawRandomWeaknessComponent({ id, investigators, cards, weaknessCards, standalone, traits, realTraits, campaignLog, scenarioState, count }: Props) {
+export default function DrawRandomWeaknessComponent({ id, investigators, weaknessCards, standalone, traits, realTraits, campaignLog, scenarioState, count }: Props) {
   const { campaignInvestigators, latestDecks, weaknessSet } = useContext(CampaignGuideContext);
   const { borderStyle } = useContext(StyleContext);
   const [choices, setChoices] = useState<{ [code: string]: { [index: string]: string }}>({});
@@ -62,10 +61,10 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
       campaignInvestigators,
       latestDecks,
       weaknessSet,
-      cards,
+      weaknessCards,
       flatMap(values(choices), x => values(x))
     );
-  }, [cards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
+  }, [weaknessCards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
   const drawRandomWeakness = useCallback((code: string, index: number) => {
     const card = drawWeakness(
@@ -122,7 +121,7 @@ export default function DrawRandomWeaknessComponent({ id, investigators, cards, 
           map(range(0, count), idx => {
             const choice = scenarioChoices !== undefined ? scenarioChoices[investigator.code][idx] :
               choices[investigator.code]?.[idx];
-            const choiceCard = choice ? cards[choice] : undefined;
+            const choiceCard = choice ? weaknessCards[choice] : undefined;
             return (
               <DrawRandomWeaknessButton
                 key={`${investigator.code}_${idx}`}

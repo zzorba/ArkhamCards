@@ -36,7 +36,6 @@ interface Props {
   unspentXp: number;
   campaignGuide?: CampaignGuide;
   traumaAndCardData: TraumaAndCardData;
-  playerCards: CardsMap;
   badge?: 'deck' | 'upgrade';
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: LatestDeckT;
@@ -82,7 +81,6 @@ export default function InvestigatorCampaignRow({
   totalXp,
   unspentXp,
   traumaAndCardData,
-  playerCards,
   deck,
   children,
   miniButtons,
@@ -110,7 +108,6 @@ export default function InvestigatorCampaignRow({
   const [xpButton, upgradeBadge] = useXpSection({
     deck,
     campaign,
-    cards: playerCards,
     investigator,
     last: !miniButtons,
     totalXp,

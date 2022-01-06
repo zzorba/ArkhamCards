@@ -59,7 +59,7 @@ function AliveInvestigatorRow({
       setSaving(false);
     }
   }, [savingDeckUpgrade, setSaving]);
-  const { campaign, campaignGuide, campaignState, latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
+  const { campaign, campaignGuide, campaignState, latestDecks, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const nextDeckUpgradeStepId = useMemo(() => userId ? campaignState.nextDelayedDeckEdit(investigator.code, userId) : undefined, [campaignState, investigator.code, userId]);
   const deck = latestDecks[investigator.code];
@@ -86,7 +86,6 @@ function AliveInvestigatorRow({
     <InvestigatorCampaignRow
       campaign={campaign}
       campaignGuide={campaignGuide}
-      playerCards={playerCards}
       badge={nextDeckUpgradeStepId ? 'deck' : undefined}
       spentXp={spentXp[investigator.code] || 0}
       totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
@@ -165,7 +164,7 @@ function AliveInvestigatorRow({
 
 export default function CampaignInvestigatorsComponent(props: Props) {
   const { componentId, loading, processedCampaign, actions, savingDeckUpgrade, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog, saveDeckUpgrade } = props;
-  const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, playerCards, spentXp } = useContext(CampaignGuideContext);
+  const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
 
@@ -305,7 +304,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
               <InvestigatorCampaignRow
                 campaignGuide={campaignGuide}
                 key={investigator.code}
-                playerCards={playerCards}
                 spentXp={spentXp[investigator.code] || 0}
                 totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
                 unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}

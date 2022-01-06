@@ -4,7 +4,7 @@ import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks, ProcessedCampaign } from '@data/scenario';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 export interface CampaignGuideContextType {
@@ -18,7 +18,6 @@ export interface CampaignGuideContextType {
   campaignInvestigators?: Card[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
-  playerCards: CardsMap;
   syncCampaignChanges: (campaignLog: ProcessedCampaign) => Promise<void>;
 }
 

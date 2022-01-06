@@ -4,7 +4,7 @@ import { TouchableOpacity, View } from 'react-native';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
-import { useDeckWithFetch, useInvestigatorCards, useInvestigators } from '@components/core/hooks';
+import { useDeckWithFetch, useInvestigators } from '@components/core/hooks';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

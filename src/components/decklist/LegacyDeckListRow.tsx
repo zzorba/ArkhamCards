@@ -12,6 +12,7 @@ import {
   PlaceholderLine,
   Fade,
 } from 'rn-placeholder';
+import { keys, uniq } from 'lodash';
 
 import { Campaign, Deck, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
@@ -22,7 +23,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from '@components/core/hooks';
+import { usePlayerCardsFunc } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -76,7 +77,12 @@ function LegacyDeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = usePlayerCards(deck.taboo_id || 0);
+  const cards = usePlayerCardsFunc(() => uniq([
+    ...keys(deck.slots),
+    ...keys(deck.ignoreDeckLimitSlots),
+    ...(previousDeck ? keys(previousDeck.slots) : []),
+    ...(previousDeck ? keys(previousDeck.ignoreDeckLimitSlots) : []),
+  ]), [deck, previousDeck], deck.taboo_id || 0);
   const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, previousDeck), [details, deck, cards, previousDeck]);
   if (details) {
     return (
