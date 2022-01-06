@@ -21,7 +21,7 @@ import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';
 import { CampaignLogSectionDefinition } from '@data/scenario/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface Props {
   componentId: string;
@@ -271,8 +271,8 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           { investigatorCount ? `— ${t`Investigators`} · ${investigatorCount} —` : `— ${t`Investigators`} —` }
         </Text>
       </View>
-      { loading ? (
-        <ArkhamLoadingSpinner loop autoPlay />
+      { loading || campaignInvestigators === undefined ? (
+        <LoadingCardSearchResult noBorder />
       ) : (
         <>
           { map(aliveInvestigators, investigator => (

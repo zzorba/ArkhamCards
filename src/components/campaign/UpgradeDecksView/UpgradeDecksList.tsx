@@ -16,10 +16,11 @@ import { parseBasicDeck } from '@lib/parseDeck';
 import LegacyDeckRow from '@components/campaign/LegacyDeckRow';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useLatestDeckCards, useToggles } from '@components/core/hooks';
+import { useToggles } from '@components/core/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface Props {
   lang: string;
@@ -28,7 +29,7 @@ interface Props {
   campaign: SingleCampaignT;
   originalDeckUuids: Set<string>;
   decks: LatestDeckT[];
-  allInvestigators: Card[];
+  allInvestigators?: Card[];
 }
 
 function experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
@@ -102,6 +103,9 @@ export default function UpgradeDecksList({
     investigator => !investigator.eliminated(campaign.investigatorData?.[investigator.code] || {})
   );
   const deckActions = useDeckActions();
+  if (allInvestigators === undefined) {
+    return <LoadingCardSearchResult noBorder />;
+  }
   return (
     <>
       { map(investigators, investigator => {

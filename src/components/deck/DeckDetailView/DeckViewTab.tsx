@@ -45,6 +45,7 @@ import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock'
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface SectionCardId extends CardId {
   mode: 'special' | 'side' | 'bonded' | undefined;
@@ -561,7 +562,7 @@ export default function DeckViewTab(props: Props) {
     };
   }, [mode, parsedDeck.id, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, showDeckUpgrades, inCollection]);
 
-  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
+  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
       return null;
@@ -576,7 +577,7 @@ export default function DeckViewTab(props: Props) {
         onPressId={showSwipeCard}
         control={controlForCard(item, card, count)}
         faded={count === 0}
-        noBorder={section.last && index === (section.cards.length - 1)}
+        noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
         noSidePadding
       />
     );
@@ -709,6 +710,7 @@ export default function DeckViewTab(props: Props) {
       { header }
       <View style={space.marginSideS}>
         { (!data || !data.length) ? <ArkhamLoadingSpinner autoPlay loop /> : map(data, deckSection => {
+          const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
           return (
             <View key={deckSection.title} style={space.marginBottomS}>
               <DeckSectionBlock
@@ -725,9 +727,12 @@ export default function DeckViewTab(props: Props) {
                 { flatMap(deckSection.sections, section => (
                   <View key={section.id}>
                     { renderSectionHeader(section) }
-                    { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                    { map(section.cards, (item, index) => renderCard(item, index, section, isLoading)) }
                   </View>
                 )) }
+                { isLoading && (
+                  <LoadingCardSearchResult noBorder />
+                ) }
               </DeckSectionBlock>
             </View>
           );

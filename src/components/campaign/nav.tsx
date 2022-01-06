@@ -126,7 +126,7 @@ export function showGuideDrawChaosBag(
 export function showDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  allInvestigators: Card[],
+  allInvestigators: Card[] | undefined,
   cycleCode: CampaignCycleCode
 ) {
   Navigation.push<CampaignDrawChaosBagProps>(componentId, {
@@ -134,7 +134,7 @@ export function showDrawChaosBag(
       name: 'Campaign.DrawChaosBag',
       passProps: {
         campaignId,
-        allInvestigators,
+        allInvestigators: allInvestigators || [],
         cycleCode,
       },
       options: {
@@ -151,7 +151,7 @@ export function showDrawChaosBag(
   });
 }
 
-export function showChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, allInvestigators: Card[]) {
+export function showChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, allInvestigators: Card[] | undefined) {
   Navigation.push<OddsCalculatorProps>(componentId, {
     component: {
       name: 'OddsCalculator',

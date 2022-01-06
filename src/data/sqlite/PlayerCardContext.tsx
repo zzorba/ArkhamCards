@@ -1,5 +1,5 @@
 import React from 'react';
-import Card, { CardsMap } from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 
 
 export interface PlayerCardContext {

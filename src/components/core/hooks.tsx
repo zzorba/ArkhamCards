@@ -20,9 +20,9 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
-import useCardsFromQuery, { useCardsForQuery } from '@components/card/useCardsFromQuery';
-import useCardList, { useCardMap } from '@components/card/useCardList';
-import { BASIC_WEAKNESS_QUERY, INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { useCardMap } from '@components/card/useCardList';
+import { INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 
 export function useBackButton(handler: () => boolean) {
@@ -621,9 +621,8 @@ export function useAllInvestigators(tabooSetOverride?: number, sort?: SortType):
 }
 
 export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
-  return useCardsForQuery(() => {
-    return investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined;
-  }, [investigatorCode], undefined, tabooSetOverride);
+  const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
+  return useCardsFromQuery({ query, tabooSetOverride });
 }
 
 export function useTabooSet(tabooSetId: number): TabooSet | undefined {

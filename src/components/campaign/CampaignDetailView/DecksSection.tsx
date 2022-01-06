@@ -27,7 +27,7 @@ interface Props {
   campaign: SingleCampaignT;
   loading: boolean;
   latestDecks: LatestDeckT[];
-  allInvestigators: Card[];
+  allInvestigators?: Card[];
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
   showChooseDeck: (investigator?: Card) => void;
@@ -177,7 +177,7 @@ export default function DecksSection({
       return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
     });
   }, [allInvestigators, campaign]);
-  if (loading) {
+  if (loading || allInvestigators === undefined) {
     return <LoadingSpinner inline />;
   }
   return (

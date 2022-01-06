@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -31,7 +31,7 @@ export default function ToggleButton({ onPress, value, accessibilityLabel, size 
           { icon === 'dots' ? (
             <AppIcon
               name="dots"
-              size={size}
+              size={Platform.OS === 'ios' ? size : (size - 2)}
               color={colors.D10}
             />
           ) : (

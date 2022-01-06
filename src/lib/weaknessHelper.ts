@@ -1,4 +1,4 @@
-import { filter, find, flatMap, head, map, range, shuffle, values } from 'lodash';
+import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
 
 import { WeaknessSet } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
