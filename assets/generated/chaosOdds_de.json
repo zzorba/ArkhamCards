@@ -4273,7 +4273,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "Die Hälfte des Schutzwertes deines Ortes (aufgerundet)"
         }
       },
       {
@@ -4294,7 +4294,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "Der Schutzwert deines Ortes"
         }
       },
       {
@@ -4319,7 +4319,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "Anzahl der Handlungskarten im Siegpunktestapel"
         }
       },
       {
@@ -4346,7 +4346,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "Nummer der aktuellen Agenda plus die Anzahl der Handlungskarten im Siegpunktestapel"
         }
       },
       {
@@ -4377,7 +4377,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "Die Höhenstufe deines Ortes"
         }
       },
       {
@@ -4404,7 +4404,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
+          "prompt": "Die Höhenstufe deines Ortes plus 2",
           "min": 2
         }
       },
@@ -4436,7 +4436,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "Die Anzahl der Schlüssel, die du kontrollierst"
         }
       },
       {
@@ -4452,7 +4452,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "[frost]-Marker wurde enthüllt",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4470,7 +4470,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
+          "prompt": "Die Anzahl der Schlüssel, die du kontrollierst plus 2",
           "min": 2
         }
       },
@@ -4487,7 +4487,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "[frost]-Marker wurde enthüllt",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4512,7 +4512,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Befindet sich ein [[Großer Alter]]-Gegner an deinem Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -4545,7 +4545,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Befindet sich ein [[Großer Alter]]-Gegner an deinem Ort",
           "modified_value": {
             "modifier": -4
           }

@@ -241,60 +241,60 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# foi morto no acidente de avião.",
+            "feminine_text": "#name# foi morta no acidente de avião."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Acampamento - Acampamento Barreira (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Acampamento - Monte de Neve (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Acampamento - Local do acidente (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Acampamento - Caverna Cristalina (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Acampamento - Gruta Gelada (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Acampamento - Costas congeladas (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Acampamento - Aterrissagem do quebra-gelo (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Acampamento - Resíduos gelados (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Acampamento - Manto de Gelo Precário (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Acampamento - Remanescentes do Acampamento do Lago (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Acampamento - Penhascos Rochosos (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Acampamento - Túmulos de neve (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Acampamento - caminho traiçoeiro (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -774,55 +774,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Acampamento Barreira"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Monte de Neve"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Local de acidente"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Caverna Cristalina"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Gruta Gelada"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Costas congeladas"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Aterrissagem do quebra-gelo"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Resíduos gelados"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Manto de gelo precário"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Remanescentes do acampamento do lago"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Rochosos"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Túmulo de neve"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Caminho Traiçoeiro"
           }
         ]
       },
@@ -1035,31 +1035,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dinamite"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Pedra-sabão verde"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Cristal Miasmico"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Espécime Mineral"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Rádio Pequeno"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Peças de reposição"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Trenó de madeira"
           }
         ]
       }
