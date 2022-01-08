@@ -231,6 +231,9 @@ export default function useCampaignGuideContextFromActions(
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
   const investigators = useMemo(() => {
+    if (!campaignInvestigators) {
+      return undefined;
+    }
     const r: CardsMap = {};
     forEach(campaignInvestigators, c => {
       r[c.code] = c;
