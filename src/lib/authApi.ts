@@ -10,7 +10,6 @@ interface Params {
 }
 
 function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
-  console.log(keys(apiDeck));
   const deck: ArkhamDbDeck = {
     ...omit(apiDeck, ['previous_deck', 'next_deck', 'xp_spent']),
     local: undefined,

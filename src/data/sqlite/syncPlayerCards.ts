@@ -59,6 +59,11 @@ export default async function syncPlayerCards(
       }
     });
     const tabooSets = await tabooSetsP;
+    forEach(tabooSets, tabooSet => {
+      if (!playerCards[tabooSet.id]) {
+        playerCards[tabooSet.id] = playerCards['0'];
+      }
+    });
     updateContext({
       playerCards,
       tabooSets,
