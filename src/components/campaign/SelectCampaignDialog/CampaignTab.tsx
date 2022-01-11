@@ -9,6 +9,7 @@ import {
   TDE,
   TDEA,
   TDEB,
+  GOB,
   CampaignCycleCode,
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
@@ -39,6 +40,8 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
       return t`Campaign A\nFour-part campaign`;
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
+    case GOB:
+      return t`Two-part campaign variant`;
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:

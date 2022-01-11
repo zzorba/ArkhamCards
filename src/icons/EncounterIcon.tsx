@@ -282,6 +282,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'single_group':
       case 'blob_single_group':
         return this.standaloneIcon('single_group', size, color);
+      case 'gob':
+        return this.standaloneIcon('guardians', size, color);
       case 'lol':
       case 'in_the_labyrinths_of_lunacy':
       case 'guardians':

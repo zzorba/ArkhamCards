@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "los investigadores conocen los planes de Xzharah."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "los planes de la Hermandad prosiguen sin oposición."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "la maldición del letargo fue disipada."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "Soñadores en el Abismo (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Agentes de la Hermandad que escaparon: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "se acerca la hora de la verdad."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "los investigadores han unido sus fuerzas con Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "el Abismo ha sido salvado."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {
