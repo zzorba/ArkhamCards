@@ -26,6 +26,13 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
+function archiveButtonText(archived: boolean, standalone?: boolean): string {
+  if (standalone) {
+    return archived ? t`Unarchive standalone` : t`Archive standalone`;
+  }
+  return archived ? t`Unarchive campaign` : t`Archive campaign`;
+}
+
 export default function DeleteCampaignButton({ componentId, actions, campaignId, campaign, showAlert, standalone }: Props) {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch: Dispatch = useDispatch();
@@ -81,7 +88,7 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
     return (
       <DeckButton
         icon="book"
-        title={archived ? t`Unarchive campaign` : t`Archive campaign`}
+        title={archiveButtonText(archived, standalone)}
         thin
         loading={archiveLoading}
         color="light_gray"
@@ -89,7 +96,7 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
         bottomMargin={s}
       />
     );
-  }, [archiveCampaign, campaign?.archived, archiveLoading]);
+  }, [archiveCampaign, campaign?.archived, standalone, archiveLoading]);
   if (userId && campaignId.serverId && campaign && userId !== campaign.owner_id) {
     return (
       <>
