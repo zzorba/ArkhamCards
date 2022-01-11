@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext, t, c } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
@@ -249,7 +249,7 @@ export default function InvestigatorsListComponent({
     const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
     if (customInvestigator) {
       results.push({
-        title: t`Custom`,
+        title: c('investigator').t`Custom`,
         id: 'custom',
         data: [customInvestigator],
         nonCollectionCount: 0,

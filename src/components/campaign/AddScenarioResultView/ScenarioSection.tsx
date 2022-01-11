@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { concat, filter, find, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import { ScenarioResult, CUSTOM } from '@actions/types';
 import SettingsSwitch from '@components/core/SettingsSwitch';
@@ -122,7 +122,7 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
         };
       });
     scenarios.push({
-      title: t`Custom`,
+      title: c('scenario').t`Custom`,
       value: CUSTOM,
     });
     return scenarios;
@@ -150,7 +150,7 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
     if (loading) {
       return '   ';
     }
-    return selectedScenario === CUSTOM ? t`Custom` : selectedScenario.name;
+    return selectedScenario === CUSTOM ? c('scenario').t`Custom` : selectedScenario.name;
   }, [loading, selectedScenario]);
   return (
     <View style={space.paddingSideS}>

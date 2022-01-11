@@ -1,6 +1,6 @@
 import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule, TabooSets, TabooSet as JsonTabooSet } from '@data/scenario/types';
@@ -330,7 +330,7 @@ export const syncCards = async function(
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
       pack_code: 'custom',
-      pack_name: t`Custom`,
+      pack_name: c('investigator').t`Custom`,
       type_code: 'investigator',
       type_name: t`Investigator`,
       faction_code: 'neutral',

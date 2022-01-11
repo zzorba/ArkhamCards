@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { map, partition } from 'lodash';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   CUSTOM,
@@ -67,7 +67,7 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
         key={packCode}
         packCode={packCode}
         onPress={onPress}
-        text={campaignName(packCode) || t`Custom`}
+        text={campaignName(packCode) || c('campaign').t`Custom`}
         description={guideComingSoon ? t`Guide not yet available` : campaignDescription(packCode)}
       />
     );

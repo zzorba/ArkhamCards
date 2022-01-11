@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach } from 'lodash';
+import { find, forEach, flatMap, map } from 'lodash';
 import {
   Linking,
   Platform,
@@ -52,6 +52,9 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useBondedFromCards, useBondedToCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import FilterBuilder from '@lib/filters';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -79,6 +82,17 @@ function formatTabooStart(date_start: string | undefined, locale: string) {
   return format(date, 'yyyy/MM/dd');
 }
 
+
+function useUpgradeCardsByName(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
+  const cardsByNameQuery = useMemo(() => {
+    const filterBuilder = new FilterBuilder('cards_by_name');
+    const query = filterBuilder.upgradeCardsByNameFilter(flatMap(cards, card => card.xp !== undefined ? card.real_name : []));
+    return query;
+  }, [cards]);
+  return useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+}
+
+
 function DeckDetailView({
   componentId,
   id,
@@ -104,7 +118,7 @@ function DeckDetailView({
   const {
     deck,
     deckT,
-    cards,
+    cards: deckCards,
     deckEdits,
     deckEditsRef,
     visible,
@@ -131,26 +145,53 @@ function DeckDetailView({
     const altFront = deckEdits?.meta.alternate_front && find(
       parallelInvestigators,
       card => card.code === deckEdits?.meta.alternate_front);
-    const investigatorFront = (altFront || (cards && deck && cards[deck.investigator_code]));
+    const investigatorFront = (altFront || (deckCards && deck && deckCards[deck.investigator_code]));
 
     const altBack = deckEdits?.meta.alternate_back && find(
       parallelInvestigators,
       card => card.code === deckEdits?.meta.alternate_back);
-    const investigatorBack = altBack || (deck && cards && cards[deck.investigator_code]);
+    const investigatorBack = altBack || (deck && deckCards && deckCards[deck.investigator_code]);
     return [investigatorFront, investigatorBack];
-  }, [deck, cards, deckEdits?.meta, parallelInvestigators]);
+  }, [deck, deckCards, deckEdits?.meta, parallelInvestigators]);
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-
-  const [cardsByName, bondedCardsByName] = useMemo(() => {
+  const flatDeckCards = useMemo(() => flatMap(deckCards, c =>
+    c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0) ? c : []), [deckCards, deckEdits]);
+  const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
+  const [bondedCards] = useBondedFromCards(flatDeckCards, tabooSetId);
+  const cards = useMemo(() => {
+    const r = {
+      ...deckCards,
+    };
+    forEach(bondedCards, card => {
+      r[card.code] = card;
+    });
+    forEach(possibleUpgradeCards, card => {
+      r[card.code] = card;
+    });
+    return r;
+  }, [bondedCards, deckCards, possibleUpgradeCards]);
+  const bondedCardsByName = useMemo(() => {
+    const r: {
+      [name: string]: Card[];
+    } = {};
+    forEach(bondedCards, card => {
+      if (card.bonded_name) {
+        if (r[card.bonded_name]) {
+          r[card.bonded_name].push(card);
+        } else {
+          r[card.bonded_name] = [card];
+        }
+      }
+    });
+    return r;
+  }, [bondedCards]);
+  const cardsByName = useMemo(() => {
     const cardsByName: {
       [name: string]: Card[];
     } = {};
-    const bondedCardsByName: {
-      [name: string]: Card[];
-    } = {};
-    forEach(cards, card => {
+    forEach(possibleUpgradeCards, card => {
       if (card) {
         const real_name = card.real_name.toLowerCase();
         if (cardsByName[real_name]) {
@@ -158,17 +199,10 @@ function DeckDetailView({
         } else {
           cardsByName[real_name] = [card];
         }
-        if (card.bonded_name) {
-          if (bondedCardsByName[card.bonded_name]) {
-            bondedCardsByName[card.bonded_name].push(card);
-          } else {
-            bondedCardsByName[card.bonded_name] = [card];
-          }
-        }
       }
     });
-    return [cardsByName, bondedCardsByName];
-  }, [cards]);
+    return cardsByName;
+  }, [possibleUpgradeCards]);
 
   const setMode = useCallback((mode: 'view' | 'edit' | 'upgrade') => {
     dispatch({
