@@ -18,6 +18,7 @@ interface Props {
   title: string;
   disabled?: boolean;
   loading?: boolean;
+  shrinkText?: boolean;
 }
 
 function getBackgroundColor(color: 'dark' | 'light' | 'green' | 'red', colors: ThemeColors): string {
@@ -49,7 +50,7 @@ const LEFT_ICON_SIZE = {
   close: 24,
 };
 
-export default function ActionButton({ color, loading, onPress, title, leftIcon, rightIcon, disabled }: Props) {
+export default function ActionButton({ color, loading, onPress, title, leftIcon, rightIcon, disabled, shrinkText }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const enabledColor = color === 'light' ? colors.D20 : colors.L30;
@@ -91,14 +92,15 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
             space.paddingTopXs,
             typography.cardName,
             { color: textColor, flexShrink: 1 },
-          ]}>
+            { textAlignVertical: 'center' },
+          ]} adjustsFontSizeToFit={shrinkText}>
             { title }
           </Text>
         ) }
         { rightIcon && <View style={space.paddingLeftS}><AppIcon size={28} name={rightIcon} color={textColor} /></View> }
       </View>
     );
-  }, [leftIconContent, rightIcon, textColor, typography, title, hideText, leftIcon]);
+  }, [leftIconContent, rightIcon, textColor, typography, title, hideText, leftIcon, shrinkText]);
   const rightPadding = hideText ? 12 : 20;
   if (disabled) {
     return (

@@ -75,6 +75,7 @@ export default function InvestigatorCheckListComponent({
         leftIcon="plus-thin"
         onPress={showAddDeckDialog}
         title={t`Add new`}
+        shrinkText
       />
     );
   }, [allowNewDecks, showAddDeckDialog]);
