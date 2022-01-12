@@ -348,7 +348,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         );
       case 'button':
         return (
-          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} />
+          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} useGestureHandler={Platform.OS === 'ios'} />
         );
       case 'placeholder':
         return (
