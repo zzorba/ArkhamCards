@@ -1073,6 +1073,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "сыщики знают о планах Кжараха."
           },
@@ -1103,16 +1113,6 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "Бездна спасена."
-          }
-        ]
-      },
-      {
-        "section": "taken_by_the_abyss",
-        "entries": [
-          {
-            "id": "$input_value",
-            "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
           }
         ]
       }

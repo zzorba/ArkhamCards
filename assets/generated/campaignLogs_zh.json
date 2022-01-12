@@ -1073,6 +1073,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "你發現了伊扎法拉的計劃。"
           },
@@ -1103,16 +1113,6 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "深淵得到拯救。"
-          }
-        ]
-      },
-      {
-        "section": "taken_by_the_abyss",
-        "entries": [
-          {
-            "id": "$input_value",
-            "masculine_text": "#name#墜入深淵。",
-            "feminine_text": "#name#墜入深淵。"
           }
         ]
       }

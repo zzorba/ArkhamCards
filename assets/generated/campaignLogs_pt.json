@@ -410,7 +410,7 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "a equipe escapou por pouco da ice shelf."
           },
           {
             "id": "team_climbed_to_the_summit",
@@ -418,7 +418,7 @@
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "a equipe derrotou as criaturas caçadoras."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,7 +426,7 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "a equipe fugiu para as montanhas."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
@@ -1073,6 +1073,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "you are aware of Xzharah’s plans."
           },
@@ -1103,16 +1113,6 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "the Abyss was saved."
-          }
-        ]
-      },
-      {
-        "section": "taken_by_the_abyss",
-        "entries": [
-          {
-            "id": "$input_value",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
           }
         ]
       }

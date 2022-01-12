@@ -1073,6 +1073,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "Du kennst Xzharahs Pläne."
           },
@@ -1103,16 +1113,6 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "Der Abgrund wurde gerettet."
-          }
-        ]
-      },
-      {
-        "section": "taken_by_the_abyss",
-        "entries": [
-          {
-            "id": "$input_value",
-            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           }
         ]
       }

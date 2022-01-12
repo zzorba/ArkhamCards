@@ -1073,6 +1073,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "los investigadores conocen los planes de Xzharah."
           },
@@ -1103,16 +1113,6 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "el Abismo ha sido salvado."
-          }
-        ]
-      },
-      {
-        "section": "taken_by_the_abyss",
-        "entries": [
-          {
-            "id": "$input_value",
-            "masculine_text": "#name# ha sido atrapado por el Abismo.",
-            "feminine_text": "#name# ha sido atrapada por el Abismo."
           }
         ]
       }
