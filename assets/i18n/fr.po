@@ -6,13 +6,13 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
-"MIME-Version: 1.0\n"
+"mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
-"mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -473,7 +473,7 @@ msgid "Cross Out"
 msgstr "Barrer le texte"
 
 msgid "Add Another"
-msgstr "Ajouter une autre notre"
+msgstr "En Ajouter un autre"
 
 msgid "Check for updated cards?"
 msgstr "Vérifier les mises à jour des cartes ?"
@@ -829,7 +829,7 @@ msgid "Other Campaigns"
 msgstr "Autres campagnes"
 
 msgid "Select Campaign"
-msgstr "Choisissez un mode de jeu"
+msgstr "Sélectionner une campagne"
 
 msgid "Campaign"
 msgstr "Campagne"
@@ -882,10 +882,10 @@ msgid "Difficulty"
 msgstr "Difficulté"
 
 msgid "Create Campaign"
-msgstr "Commencer la campagne"
+msgstr "Créer la campagne"
 
 msgid "Campaigns"
-msgstr "Mode Campagne"
+msgstr "Campagnes"
 
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
@@ -986,24 +986,24 @@ msgstr "Oui"
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
-msgstr "Les aventures de ${investigator.name}"
+msgstr "Les Aventures de ${investigator.name}"
 
 msgid "${ investigator.name } Investigates"
-msgstr "${investigator.name} enquête"
+msgstr "${investigator.name} Enquête"
 
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
-msgstr "Les mystères de ${investigator.name}"
+msgstr "Les Mystères de ${investigator.name}"
 
 msgid "The ${ investigator.name } Job"
-msgstr "Le boulot de ${investigator.name}"
+msgstr "Le Boulot de ${investigator.name}"
 
 #, javascript-format
 msgid "${ investigator.name } on the Road"
-msgstr "${investigator.name} sur la route"
+msgstr "${investigator.name} sur la Route"
 
 msgid "${ investigator.name } Does It All"
-msgstr "${investigator.name} touche à tout"
+msgstr "${investigator.name} fait Tout"
 
 msgid "Create on ArkhamDB"
 msgstr "Créer sur ArkhamDB"
@@ -1720,7 +1720,7 @@ msgid "Odds Calculator"
 msgstr "Calculateur de probabilités"
 
 msgid "Weakness Set"
-msgstr "Collection de faiblesses"
+msgstr "Ensemble des faiblesses"
 
 msgid "Options"
 msgstr "Options"
@@ -2093,7 +2093,7 @@ msgid "Edit name"
 msgstr "Modifier le nom"
 
 msgid "Guided Campaign"
-msgstr "Guide de Campagne"
+msgstr "Campagne avec Guide"
 
 #. This is a deck upgrade action.
 msgid ""
@@ -2309,7 +2309,7 @@ msgstr ""
 "sauvegardées."
 
 msgid "Choose Side-Scenario"
-msgstr "Choisissez un type de scénario"
+msgstr "Choisissez une Aventure Annexe"
 
 msgid "Add side scenario"
 msgstr "Ajouter une aventure annexe"
@@ -2533,10 +2533,10 @@ msgid " (Per Investigator)"
 msgstr " (Par Investigateur)"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "Activé. L'application gérera les mises en place et les conclusions."
+msgstr "Utiliser l'application pour les mises en place et les conclusions."
 
 msgid "Track campaign log and resolutions manually"
-msgstr "Désactivé. Vous gérerez le Carnet de Campagne et les conclusions manuellement."
+msgstr "Gérer le Carnet de Campagne et les conclusions manuellement"
 
 msgid "Investigators"
 msgstr "Investigateurs"
@@ -2546,7 +2546,7 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr ""
 "Si vous rencontrez un problème avec le Guide de Campagne, merci d'envoyer un message à "
-"l'adresse arkhamcards@gmail.com."
+"l'adresse : arkhamcards@gmail.com."
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
@@ -3823,7 +3823,7 @@ msgstr "Bonus de compétence : Tous"
 msgid ""
 "If you run into any problems with this migration, please contact arkhamcards@gmail.com."
 msgstr ""
-"Si vous rencontrez des problèmes avec cette migration, veuillez contacter l'adresse "
+"Si vous rencontrez des problèmes avec cette migration, veuillez contacter "
 "arkhamcards@gmail.com."
 
 msgid "Asset: Body. Arcane"
@@ -4146,8 +4146,8 @@ msgid ""
 "the app, contact me at arkhamcards@gmail.com. Custom campaigns are a fair amount of "
 "work, but I'd love to support the community in anyway I can."
 msgstr ""
-"Si vous êtes un créateur de contenu personnalisé et que vous souhaitez intégrer votre "
-"campagne à l'application, contactez-moi à arkhamcards@gmail.com. Les campagnes "
+"Si vous êtes un créateur de contenu personnalisé qui a une campagne finie que vous "
+"aimeriez voir dans l'application, contactez-moi à arkhamcards@gmail.com. Les campagnes "
 "personnalisées représentent une bonne quantité de travail, mais j'aimerais soutenir la "
 "communauté de toutes les façons possibles."
 
@@ -5287,22 +5287,22 @@ msgid "After completion of ${ scenarionName }"
 msgstr "Après la fin du scénario ${ scenarionName }"
 
 msgid "Show decks from other campaigns"
-msgstr "Afficher les decks des autres campagnes"
+msgstr ""
 
 msgid "Trait Choice"
-msgstr "Choisissez un trait"
+msgstr ""
 
 msgid "Blessed"
-msgstr "Béni"
+msgstr ""
 
 msgid "Cursed"
-msgstr "Maudit"
+msgstr ""
 
 msgid "Blessed and Cursed"
-msgstr "Béni et Maudit"
+msgstr ""
 
 msgid "Select Option"
-msgstr "Choisissez une option"
+msgstr ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -6793,7 +6793,7 @@ msgstr "Audio en cours de lecture"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr "Vitesse audio : ${ rate }"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."
