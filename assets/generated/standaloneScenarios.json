@@ -49,6 +49,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "machinations_through_time"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "meddling_of_meowlathotep"
   },
   {
