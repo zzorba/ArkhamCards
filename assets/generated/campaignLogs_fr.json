@@ -1073,16 +1073,6 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
-          },
-          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "vous êtes au courant des plans de Xzharah."
           },
@@ -1113,6 +1103,16 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "l'Abîme a été sauvé"
+          }
+        ]
+      },
+      {
+        "section": "taken_by_the_abyss",
+        "entries": [
+          {
+            "id": "$input_value",
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
           }
         ]
       }

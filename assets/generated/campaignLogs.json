@@ -1073,16 +1073,6 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "you are aware of Xzharah’s plans."
           },
@@ -1113,6 +1103,16 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "taken_by_the_abyss",
+        "entries": [
+          {
+            "id": "$input_value",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           }
         ]
       }
