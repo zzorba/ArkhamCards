@@ -404,8 +404,9 @@ export default function DeckViewTab(props: Props) {
       false
     );
     const newData: DeckSection[] = [deckSection, specialSection];
+    let currentIndex = specialIndex;
     if (limitSlotCount > 0) {
-      let index = specialIndex;
+      let index = currentIndex;
       const limitedCards: SectionCardId[] = map(filter(flatten([
         ...flatMap(normalCards.Assets || [], cards => cards.data),
         normalCards.Event || [],
@@ -443,14 +444,16 @@ export default function DeckViewTab(props: Props) {
             },
           ] : [],
         });
+        if (limitedSlots) {
+          currentIndex = index;
+        }
       }
     }
-    let bondedIndex = specialIndex;
     if (ENABLE_SIDE_DECK) {
       const [sideSection, sideIndex] = deckToSections(
         t`Side Deck`,
         editable ? showEditSide : undefined,
-        specialIndex,
+        currentIndex,
         sideCards,
         cards,
         cardsByName,
@@ -461,9 +464,9 @@ export default function DeckViewTab(props: Props) {
         false
       );
       newData.push(sideSection);
-      bondedIndex = sideIndex;
+      currentIndex = sideIndex;
     }
-    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, bondedIndex);
+    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
     if (bonded) {
       newData.push(bonded);
     }
