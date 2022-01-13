@@ -1,14 +1,14 @@
 import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
 import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
-import Card, { PartialCard } from '../types/Card';
+import Card, { CardsMap, PartialCard } from '../types/Card';
 import EncounterSet from '../types/EncounterSet';
 import FaqEntry from '../types/FaqEntry';
 import TabooSet from '../types/TabooSet';
 import Rule from '../types/Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
-import syncPlayerCards, { InvestigatorCardState, PlayerCardState } from './syncPlayerCards';
+import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
 
 type DatabaseListener = () => void;
@@ -28,7 +28,13 @@ export default class Database {
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
-  investigatorState?: InvestigatorCardState;
+
+  globalLoadedCards: {
+    [tabooSetId: number]: CardsMap | undefined;
+  } = {
+    [0]: {},
+  };
+
   listeners: DatabaseListener[] = [];
 
   constructor(latestVersion?: number) {
@@ -70,12 +76,13 @@ export default class Database {
     return syncPlayerCards(this, this._updatePlayerCards);
   }
 
-  private _updateInvestigatorCards = (state: InvestigatorCardState) => {
-    this.investigatorState = state;
-    forEach(this.listeners, listener => listener());
-  }
-
   private _updatePlayerCards = (state: PlayerCardState) => {
+    if (this.playerState) {
+      // This is a reload event, so we need to dump our cards and start over with our loaded set.
+      this.globalLoadedCards = {
+        [0]: {},
+      };
+    }
     this.playerState = state;
     forEach(this.listeners, listener => listener());
   };
