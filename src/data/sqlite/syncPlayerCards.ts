@@ -6,9 +6,6 @@ import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
 import { BASIC_WEAKNESS_QUERY } from './query';
 
-export interface InvestigatorCardState {
-  [tabooSet: string]: CardsMap;
-}
 export interface PlayerCardState {
   playerCards: {
     [tabooSet: string]: PlayerCards;

@@ -6,12 +6,6 @@ import DatabaseContext from './DatabaseContext';
 import { PlayerCardContext } from './PlayerCardContext';
 import { where } from './query';
 
-const globalLoadedCards: {
-  [tabooSetId: number]: CardsMap | undefined;
-} = {
-  [0]: {},
-};
-
 interface Props {
   children: React.ReactNode;
 }
@@ -26,17 +20,17 @@ export function PlayerCardProvider({ children }: Props) {
   const { db } = useContext(DatabaseContext);
   const locallyFetched = useRef<PendingCardRequest[]>([]);
   const getPlayerCards = useCallback(async(codes: string[], tabooSetId: number): Promise<CardsMap> => {
-    if (!globalLoadedCards[tabooSetId]) {
+    if (!db.globalLoadedCards[tabooSetId]) {
       const newCards: CardsMap = {};
-      forEach(globalLoadedCards[0], card => {
+      forEach(db.globalLoadedCards[0], card => {
         if (card && card.taboo_set_id === null) {
           // Keep the null ones, which apply to all versions of the card.
           newCards[card.code] = card;
         }
       })
-      globalLoadedCards[tabooSetId] = newCards;
+      db.globalLoadedCards[tabooSetId] = newCards;
     }
-    const knownCards = globalLoadedCards[tabooSetId] || {};
+    const knownCards = db.globalLoadedCards[tabooSetId] || {};
     const pending = new Set(flatMap(locallyFetched.current, c => c.tabooSetId === tabooSetId ? c.codes : []));
     const unknownCodes = filter(codes, code => {
       if (knownCards[code]) {
@@ -65,7 +59,7 @@ export function PlayerCardProvider({ children }: Props) {
       forEach(newCards, card => {
         if (card.taboo_set_id === null) {
           // It's a generic, so every taboo set (we care about) gets this card.
-          forEach(globalLoadedCards, (cardSet) => {
+          forEach(db.globalLoadedCards, (cardSet) => {
             if (cardSet) {
               cardSet[card.code] = card;
             }
@@ -75,6 +69,8 @@ export function PlayerCardProvider({ children }: Props) {
           knownCards[card.code] = card;
         }
       });
+      // tslint:disable-next-line: strict-comparisons
+      locallyFetched.current = filter(locallyFetched.current, c => c.cardsP !== newCardsP);
     }
     const uniqWaits = uniq(toWaitFor);
     for (let i = 0; i < uniqWaits.length; i++) {
@@ -85,7 +81,7 @@ export function PlayerCardProvider({ children }: Props) {
       cards[code] = knownCards[code];
     });
     return cards;
-  }, [db]);
+  }, [db, db.globalLoadedCards]);
   return (
     <PlayerCardContext.Provider value={{ getPlayerCards }}>
       { children }
