@@ -11,8 +11,10 @@ import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
-import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrack, usePlaybackRate, useTrackDetails } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
+import { useDispatch } from 'react-redux';
+import { SET_PLAYBACK_RATE } from '@actions/types';
 
 export function useNarration(narration?: Narration): Narration | undefined {
   const [hasAudio, narrationLang] = useAudioAccess();
@@ -36,11 +38,31 @@ function parseTime(time: number): string {
   return `${padZero(mins)}:${padZero(secs)}`
 }
 
+function rateToString(rate: number): string {
+  switch (rate) {
+    case 1: return '1';
+    case 1.25: return '1¼';
+    case 1.5: return '1½';
+    case 1.75: return '1¾';
+    case 2: return '2';
+    default: return '?';
+  }
+}
+
+function nextRate(rate: number): number {
+  if (rate + 0.25 <= 2) {
+    return rate + 0.25;
+  }
+  return 1;
+}
+
 export function NarrationInlineControls({ narration }: IconProps) {
   const { colors, typography } = useContext(StyleContext);
+  const dispatch = useDispatch();
   const playerState = usePlaybackState();
   const currentTrackIndex = useCurrentTrack();
   const currentTrack = useTrackDetails(currentTrackIndex);
+  const rate = usePlaybackRate();
   const { position, buffered, duration } = useProgress(1000);
   const posTime = parseTime(position);
   const durTime = parseTime(duration);
@@ -56,6 +78,12 @@ export function NarrationInlineControls({ narration }: IconProps) {
       console.log(e);
     }
   }, []);
+  const onRatePress = useCallback(() => {
+    dispatch({
+      type: SET_PLAYBACK_RATE,
+      rate: nextRate(rate),
+    });
+  }, [dispatch, rate]);
   const [seekPos, setSeekPos] = useState<number>();
   const onScrub = useCallback(async(pos: number) => {
     try {
@@ -97,11 +125,21 @@ export function NarrationInlineControls({ narration }: IconProps) {
                   </View>
                 </TouchableOpacity>
               </View>
+              { isCurrentTrack && (
+                <View style={space.marginLeftXs}>
+                  <TouchableOpacity onPress={onRatePress} accessibilityLabel={c('narration').t`Audio speed: ${rate}`}>
+                    <View style={[styles.button, { backgroundColor: colors.L20 }]}>
+                      <Text style={[typography.button, { color: colors.M }]}>{rateToString(rate)}x</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              )}
               { isPlaying && (
                 <View style={space.marginLeftXs}>
                   <AppIcon name="voiceover" size={40} color={colors.M} accessibilityLabel={c('narration').t`Playing audio`} />
                 </View>
               )}
+
             </>
           ) : (
             <Text style={[space.marginLeftS, typography.small, { color: colors.D20 }]}>{t`Narrate`}</Text>

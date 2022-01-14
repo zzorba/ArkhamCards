@@ -714,7 +714,8 @@ export default class Card {
     if (this.type_code === 'investigator' && this.deck_options) {
       return filter(this.deck_options, option => {
         return !!(option.faction_select && option.faction_select.length > 0) ||
-          !!(option.deck_size_select && option.deck_size_select.length > 0);
+          !!(option.deck_size_select && option.deck_size_select.length > 0) ||
+          !!(option.option_select && option.option_select.length > 0);
       });
     }
     return [];
@@ -1158,9 +1159,7 @@ export default class Card {
       `${sort_by_faction_header} - ${basic_type_header}`;
 
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
-
     const sort_by_cycle = (pack ? pack.cycle_position : 100) * 1000 + sort_by_faction * 100 + sort_by_type;
-
     const sort_by_cost_header = (json.cost === null || json.cost === undefined) ? t`Cost: None` : t`Cost: ${json.cost}`;
     const sort_by_encounter_set_header = json.encounter_name ||
       (linked_card && linked_card.encounter_name) ||

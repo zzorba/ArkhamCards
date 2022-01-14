@@ -31,7 +31,7 @@ const GRADIENTS: { [token: string]: {
 } | undefined } = {
   frost: {
     colors: ['#3D3A63', '#495483'],
-    stops: [0.6, 1.0],
+    stops: [0.66, 1.0],
   },
   auto_fail: {
     colors: ['#8D181E', '#6A0B10'],
@@ -72,15 +72,15 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
         case 'another':
           return (
             <>
-              <ChaosTokenPart name="token_symbol_fill" color="#394852" size={size} />
-              <ChaosTokenPart name="token_plus_highlight" color="#FFFBF2" size={size} />
+              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
+              <ChaosTokenPart name="token_plus_highlight" color={colors.D15} size={size} />
             </>
           );
         case 'return':
           return (
             <>
-              <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
-              <ChaosTokenPart name="token_dismiss_highlight" color="#FC2323" size={size} />
+              <ChaosTokenPart name="token_symbol_fill" color="#FB4135" size={size} />
+              <ChaosTokenPart name="token_dismiss_highlight" color="#FFFBF2" size={size} />
             </>
           );
         case 'odds':
@@ -167,8 +167,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
     return null;
   }, [iconKey, size, colors]);
 
-  const gradientParams = iconKey && GRADIENTS[iconKey];
-  if (iconKey === 'return') {
+  if (iconKey === 'another') {
     return (
       <View style={[
         { width: size, height: size, borderRadius: size / 2, overflow: 'hidden' },
@@ -177,7 +176,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
       </View>
     );
   }
-
+  const gradientParams = iconKey && GRADIENTS[iconKey];
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
       <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden' }}>
@@ -260,7 +259,7 @@ export default function ChaosToken({ iconKey, size: iconSize, sealed, status, sh
     case 'bag':
       return (
         <View style={{ width: size, height: size, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L10 }, styles.tapCircle, shadow.small]}>
+          <View style={[{ width: size - 2, height: size - 2, borderRadius: (size - 2) / 2, backgroundColor: colors.L20 }, styles.tapCircle, shadow.small]}>
             <AppIcon name={iconKey === 'odds' ? 'difficulty' : 'chaos_bag'} color={colors.M} size={size / 1.8} />
           </View>
         </View>

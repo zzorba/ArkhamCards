@@ -19,9 +19,8 @@ import {
   CampaignId,
   DelayedDeckEdits,
 } from '@actions/types';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
-import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -43,8 +42,6 @@ export default function useCampaignGuideContextFromActions(
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
-  const investigators = useInvestigatorCards();
-  const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
@@ -56,12 +53,8 @@ export default function useCampaignGuideContextFromActions(
     dispatch(guideActions.setBinaryAchievement(userId, remoteGuideActions, campaignId, achievementId, value));
   }, [dispatch, userId, remoteGuideActions, campaignId]);
 
-  const incCountAchievement = useCallback((achievementId: string, max?: number) => {
-    dispatch(guideActions.incCountAchievement(userId, remoteGuideActions, campaignId, achievementId, max));
-  }, [dispatch, userId, remoteGuideActions, campaignId]);
-
-  const decCountAchievement = useCallback((achievementId: string) => {
-    dispatch(guideActions.decCountAchievement(userId, remoteGuideActions, campaignId, achievementId));
+  const setCountAchievement = useCallback((achievementId: string, value: number) => {
+    dispatch(guideActions.setCountAchievement(userId, remoteGuideActions, campaignId, achievementId, value));
   }, [dispatch, userId, remoteGuideActions, campaignId]);
 
   const removeDeck = useCallback((
@@ -232,12 +225,21 @@ export default function useCampaignGuideContextFromActions(
       setInterScenarioData,
       undo,
       setBinaryAchievement,
-      incCountAchievement,
-      decCountAchievement,
+      setCountAchievement,
     };
   }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
-    setBinaryAchievement, incCountAchievement, decCountAchievement]);
+    setBinaryAchievement, setCountAchievement]);
+  const investigators = useMemo(() => {
+    if (!campaignInvestigators) {
+      return undefined;
+    }
+    const r: CardsMap = {};
+    forEach(campaignInvestigators, c => {
+      r[c.code] = c;
+    });
+    return r;
+  }, [campaignInvestigators]);
   const campaignStateHelper = useMemo(() => {
     if (!investigators || !campaignData) {
       return undefined;
@@ -331,7 +333,7 @@ export default function useCampaignGuideContextFromActions(
   }, [userId, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
   return useMemo(() => {
     // console.log(`useCampaignGuideContextFromActions campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignStateHelper: ${!!campaignStateHelper}, campaignInvestigators: ${!!campaignInvestigators}, cards: ${!!cards}`);
-    if (!campaign || !campaignGuide || !campaignStateHelper || !cards || !campaignInvestigators) {
+    if (!campaign || !campaignGuide || !campaignStateHelper) {
       return undefined;
     }
     return {
@@ -344,9 +346,8 @@ export default function useCampaignGuideContextFromActions(
       spentXp,
       latestDecks: decksByInvestigator,
       weaknessSet: campaign.weaknessSet,
-      playerCards: cards,
       syncCampaignChanges,
     };
   }, [campaignId, syncCampaignChanges,
-    spentXp, campaign, campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator, cards]);
+    spentXp, campaign, campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator]);
 }

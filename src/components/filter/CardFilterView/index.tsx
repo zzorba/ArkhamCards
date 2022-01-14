@@ -349,6 +349,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
         factions={allFactions}
         selection={factions}
         onFilterChange={onFilterChange}
+        componentId={componentId}
       />
       { hasXp && (
         <XpChooser
@@ -359,6 +360,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           onToggleChange={onToggleChange}
           exceptional={exceptional}
           nonExceptional={nonExceptional}
+          componentId={componentId}
         />
       ) }
       { hasXp && (

@@ -8,7 +8,7 @@ import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
@@ -36,7 +36,6 @@ interface Props {
   unspentXp: number;
   campaignGuide?: CampaignGuide;
   traumaAndCardData: TraumaAndCardData;
-  playerCards: CardsMap;
   badge?: 'deck' | 'upgrade';
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: LatestDeckT;
@@ -82,7 +81,6 @@ export default function InvestigatorCampaignRow({
   totalXp,
   unspentXp,
   traumaAndCardData,
-  playerCards,
   deck,
   children,
   miniButtons,
@@ -110,7 +108,6 @@ export default function InvestigatorCampaignRow({
   const [xpButton, upgradeBadge] = useXpSection({
     deck,
     campaign,
-    cards: playerCards,
     investigator,
     last: !miniButtons,
     totalXp,

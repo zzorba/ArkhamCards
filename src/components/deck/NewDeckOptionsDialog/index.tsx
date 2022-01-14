@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { find, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
+import { find, flatMap, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
@@ -28,7 +28,7 @@ import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, usePlayerCards, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useParallelInvestigators, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -41,6 +41,8 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
+import useSingleCard from '@components/card/useSingleCard';
+import { useCardMap } from '@components/card/useCardList';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -84,8 +86,6 @@ function NewDeckOptionsDialog({
     }
     return tabooSetIdChoice;
   }, [starterDeck, tabooSetIdChoice]);
-  const investigators = useInvestigatorCards(tabooSetId);
-  const cards = usePlayerCards(tabooSetId);
   const [metaState, setMeta] = useState<DeckMeta>({});
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     const newMeta = { ...metaState, [key]: value };
@@ -101,11 +101,12 @@ function NewDeckOptionsDialog({
       alternate_back: back,
     });
   }, [setMeta, metaState]);
-  const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
-  const investigatorFront = useMemo(() => (investigators && metaState.alternate_front) ? investigators[metaState.alternate_front] : investigator,
-    [investigator, investigators, metaState]);
-  const investigatorBack = useMemo(() => (investigators && metaState.alternate_back) ? investigators[metaState.alternate_back] : investigator,
-    [investigator, investigators, metaState]
+  const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
+  const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
+  const investigatorFront = useMemo(() => metaState.alternate_front ? find(parallelInvestigators, c => c.code === metaState.alternate_front) : investigator,
+    [investigator, parallelInvestigators, metaState]);
+  const investigatorBack = useMemo(() => metaState.alternate_back ? find(parallelInvestigators, c => c.code === metaState.alternate_back) : investigator,
+    [investigator, parallelInvestigators, metaState]
   );
 
   const defaultDeckName = useMemo(() => {
@@ -128,6 +129,15 @@ function NewDeckOptionsDialog({
     }
   }, [investigator]);
 
+  const requiredCardCodes = useMemo(() => {
+    return flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
+      return [
+        ...(cardRequirement.code ? [cardRequirement.code] : []),
+        ...(cardRequirement.alternates || []),
+      ];
+    });
+  }, [investigator]);
+  const [cards] = useCardMap(requiredCardCodes, 'player', tabooSetId);
   const requiredCardOptions = useMemo(() => {
     if (!cards || !investigator) {
       return [];
@@ -184,7 +194,10 @@ function NewDeckOptionsDialog({
         slots[card.code] = card.deck_limit || card.quantity || 0;
       });
       if (investigator.code === '06002') {
-        slots['06008'] = 1;
+        slots['06008'] = (parseInt((meta.deck_size_selected || '30'), 10) - 20) / 10;
+      }
+      if (investigator.code === '01005' && meta.alternate_front === '90037') {
+        slots['90038'] = 1;
       }
     }
 
@@ -205,7 +218,7 @@ function NewDeckOptionsDialog({
     }
 
     return slots;
-  }, [cards, optionSelected, requiredCardOptions, investigator, starterDeck]);
+  }, [cards, meta, optionSelected, requiredCardOptions, investigator, starterDeck]);
   const dispatch: DeckDispatch = useDispatch();
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);

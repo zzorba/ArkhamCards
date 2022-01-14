@@ -37,7 +37,7 @@ interface ConditionalBranch {
 
 export default function PlayOptionsComponent({ input, componentId, campaignId, id }: Props) {
   const { campaign, campaignGuide } = useContext(CampaignGuideContext);
-  const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
+  const { scenarioState, processedScenario, processedCampaign } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const { colors, typography, width } = useContext(StyleContext);
   const allInvestigators = useMemo(() => processedScenario.latestCampaignLog.investigators(false), [processedScenario.latestCampaignLog]);
@@ -86,6 +86,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     customEditPressed: chaosBagIndex !== undefined ? editChaosBagPressed : undefined,
     standalone: !!campaign.standaloneId,
     cycleCode: campaign.cycleCode,
+    processedCampaign,
   });
   setChaosBagDialogVisibleRef.current = setChaosBagDialogVisible;
 
@@ -102,6 +103,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
         scenarioId={processedScenario.id.scenarioId}
         standalone={standalone}
         width={width - s * 4}
+        processedCampaign={processedCampaign}
       />
     ),
     customButtons: [

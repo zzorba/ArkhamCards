@@ -32,32 +32,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "此卡牌的[reaction]能力改為：“在你成功調查後，消耗米蘭·克里斯托弗博士……”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "此卡牌的[reaction]能力獲得：“(每輪限制一次。)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "此卡牌獲得：“團隊限制勝利牌區中2張過度深入。”"
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "此卡牌獲得：“每次技能檢定最多投入一張。”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "此卡牌獲得：“每輪最多一次。”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "此卡牌的能力改為：“將手牌中一張占用不超過2個手部槽位的[[道具]]支援卡放置入場。”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌獲得卓越關鍵詞。"
       }
     ]
   },
@@ -106,32 +106,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "此卡牌的[reaction]能力改為：“在你成功調查後，消耗米蘭·克里斯托弗博士……”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "此卡牌的[reaction]能力獲得：“(每輪限制一次。)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "此卡牌獲得：“團隊限制勝利牌區中2張過度深入。”"
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "此卡牌獲得：“每次技能檢定最多投入一張。”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "此卡牌獲得：“每輪最多一次。”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "此卡牌的能力改為：“將手牌中一張占用不超過2個手部槽位的[[道具]]支援卡放置入場。”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌獲得卓越關鍵詞。"
       }
     ]
   },
@@ -200,57 +200,57 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "此卡牌的[reaction]能力改為：“在你成功調查後，消耗米蘭·克里斯托弗博士……”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "此卡牌的[reaction]能力獲得：“(每輪限制一次。)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "此卡牌獲得：“團隊限制勝利牌區中2張過度深入。”"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "在此卡牌能力文本的最後，加上：“(每輪最多一次。)”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "此卡牌獲得：“每輪最多一次。”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "此卡牌的能力改為：“將手牌中的一張等級0-3的[[道具]]支援卡放置入場。”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌獲得卓越關鍵詞。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "在此卡牌能力文本的最後，加上：“將孤注一擲移出遊戲。”"
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "此卡牌的[action]能力改為：“[action]花費1子彈：<b>攻擊</b>。這次攻擊你+2[combat]。如果這次攻擊中抽出的混亂標記為非負數修正值，這次攻擊造成+2傷害。”"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "禁止。"
       }
     ]
   },
@@ -267,7 +267,7 @@
       },
       {
         "code": "01050",
-        "text": "This card now reads: “Disengage from each enemy engaged with you and move to a connecting location with no enemies.”"
+        "text": "此卡牌改為：“所有與你交戰的敵人解除交戰狀態，你移動到一個沒有敵人的連接地點。”"
       },
       {
         "code": "02108",
@@ -291,7 +291,7 @@
       },
       {
         "code": "02226",
-        "text": "This card’s [action] ability gains: “This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.”"
+        "text": "此卡牌的[action]能力獲得：“這次攻擊可以選擇位於標準射程一個地點外的一個非[[菁英]]敵人作為目標，忽略其冷漠和反擊關鍵詞。”"
       },
       {
         "code": "04305",
@@ -307,7 +307,7 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: “Attached asset cannot be used to attack enemies engaged with you.”"
+        "text": "此卡牌失去以下文本：“被疊加支援卡不能被用來攻擊與你交戰的敵人。”"
       },
       {
         "code": "05231",
@@ -315,15 +315,15 @@
       },
       {
         "code": "05324",
-        "text": "This card’s ability gains: “Remove Eucatastrophe from the game.”"
+        "text": "此卡牌的能力獲得：“將美滿結局移出遊戲。”"
       },
       {
         "code": "06022",
-        "text": "This card’s constant ability now reads: “If this card has no charges, remove it from the game.”"
+        "text": "此卡牌的持續能力改為：“如果此卡牌沒有充能，將其移出遊戲。”"
       },
       {
         "code": "06199",
-        "text": "This card’s ability gains: “Remove each committed copy of Three Aces from the game.”"
+        "text": "此卡牌的能力獲得：“將所有投入的Three Aces移出遊戲。”"
       },
       {
         "code": "60233",
@@ -331,65 +331,65 @@
       },
       {
         "code": "07269",
-        "text": "This card’s ability gains: “Remove A Watchful Peace from the game.”"
+        "text": "此卡牌的能力獲得：“將A Watchful Peace移出遊戲。”"
       },
       {
         "code": "07301",
-        "text": "This card’s ability gains: “Remove Hallow from the game.”"
+        "text": "此卡牌的能力獲得：“將Hallow移出遊戲。”"
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "此卡牌的[reaction]能力改為：“在你成功調查後，消耗米蘭·克里斯托弗博士……”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "此卡牌的[reaction]能力獲得：“(每輪限制一次。)”"
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "此卡牌獲得：“團隊限制勝利牌區中2張過度深入。”"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "在此卡牌能力文本的最後，加上：“(每輪最多一次。)”"
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "此卡牌獲得：“每輪最多一次。”"
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "此卡牌的能力改為：“將手牌中的一張等級0-3的[[道具]]支援卡放置入場。”"
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌獲得卓越關鍵詞。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "在此卡牌能力文本的最後，加上：“將孤注一擲移出遊戲。”"
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改為[fast]能力。"
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "此卡牌的[action]能力改為：“[action]花費1子彈：<b>攻擊</b>。這次攻擊你+2[combat]。如果這次攻擊中抽出的混亂標記為非負數修正值，這次攻擊造成+2傷害。”"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "禁止。"
       }
     ]
   }

@@ -111,7 +111,7 @@
   "in_the_clutches_of_chaos": "混沌魔掌",
   "return_to_in_the_clutches_of_chaos": "重返混沌魔掌",
   "music_of_the_damned": "受詛咒的歌聲",
-  "secrets_of_the_universe": "宇宙之秘 ",
+  "secrets_of_the_universe": "宇宙之秘",
   "before_the_black_throne": "黑色王座",
   "return_to_before_the_black_throne": "重返黑色王座",
   "impending_evils": "Impending Evils",
@@ -177,7 +177,7 @@
   "weaver_of_the_cosmos": "Weaver of the Cosmos",
   "terror_of_the_vale": "Terror of the Vale",
   "descent_into_the_pitch": "Descent into the Pitch",
-  "murder_at_the_excelsior_hotel": "埃賽希爾酒店謀殺案(暫譯)",
+  "murder_at_the_excelsior_hotel": "艾肖希爾酒店謀殺案",
   "alien_interference": "外星干擾",
   "dark_rituals": "黑暗儀式",
   "excelsior_management": "酒店經營",
@@ -198,7 +198,7 @@
   "return_to_heart_of_the_elders": "重返久遠腹地",
   "return_to_pillars_of_judgment": "重返審判之柱",
   "return_to_knyan": "重返昆揚",
-  "return_to_the_city_of_archives": "重返天機之城 ",
+  "return_to_the_city_of_archives": "重返天機之城",
   "return_to_the_depths_of_yoth": "重返幽嘶深淵",
   "return_to_shattered_aeons": "重返破碎永世",
   "return_to_turn_back_time": "重返時間倒流",
@@ -301,5 +301,8 @@
   "lost_in_the_night": "Lost in the Night",
   "left_behind": "Left Behind",
   "expedition_team": "Expedition Team",
-  "agents_of_the_unknown": "Agents of the Unknown"
+  "agents_of_the_unknown": "Agents of the Unknown",
+  "machinations_through_time": "Machinations Through Time",
+  "machinations_epic_multiplayer": "多組史詩",
+  "machinations_single_group": "單組團隊"
 }

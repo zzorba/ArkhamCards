@@ -5,7 +5,7 @@ import {
 } from '@actions/types';
 import { createSelector } from 'reselect';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { getCampaignGuide } from '@data/scenario';
 import {
   AppState,
@@ -22,7 +22,7 @@ export interface SingleCampaignGuideData {
   campaignGuide: CampaignGuide;
   campaignState: CampaignGuideStateT;
   linkedCampaignState?: CampaignGuideStateT;
-  campaignInvestigators: Card[];
+  campaignInvestigators?: Card[];
 }
 
 const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaignT) => CampaignGuide | undefined =>
@@ -45,11 +45,10 @@ export type SingleCampaignGuideStatus = 'loading' | 'update';
 
 export function useSingleCampaignGuideData(
   campaignId: CampaignId,
-  investigators: undefined | CardsMap,
   live: boolean
 ): [SingleCampaignGuideData | undefined, SingleCampaignGuideStatus | undefined] {
   const campaign = useCampaign(campaignId, live);
-  const [campaignInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [campaignInvestigators, campaignInvestigatorsLoading] = useCampaignInvestigators(campaign);
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
   const campaignGuide = useSelector((state: AppState) => campaignGuideSelector(state, campaign));
 
@@ -67,7 +66,7 @@ export function useSingleCampaignGuideData(
       campaignGuide,
       campaignState,
       linkedCampaignState,
-      campaignInvestigators,
+      campaignInvestigators: campaignInvestigatorsLoading ? undefined : campaignInvestigators,
     }, undefined];
-  }, [campaign, campaignGuide, campaignState, linkedCampaignState, campaignInvestigators]);
+  }, [campaign, campaignGuide, campaignState, linkedCampaignState, campaignInvestigators, campaignInvestigatorsLoading]);
 }

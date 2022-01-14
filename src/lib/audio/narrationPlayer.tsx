@@ -5,6 +5,8 @@ import TrackPlayer, { Capability, IOSCategory, Event, Track, State, useTrackPlay
 
 import { useInterval } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers';
 
 export function useAudioAccess(): [boolean, string | undefined] {
   const { audioLang } = useContext(LanguageContext);
@@ -17,6 +19,8 @@ interface TrackPlayerFunctions {
   getState: () => Promise<State>;
   addEventListener: (type: Event, listener: (data: any) => void) => EmitterSubscription;
   getCurrentTrack: () => Promise<number>;
+  getRate: () => Promise<number>;
+  setRate: (rate: number) => Promise<void>;
   play: () => Promise<void>;
   pause: () => Promise<void>;
   stop: () => Promise<void>;
@@ -64,6 +68,8 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
             getQueue: TrackPlayer.getQueue,
             getCurrentTrack: TrackPlayer.getCurrentTrack,
             getTrack: TrackPlayer.getTrack,
+            getRate: TrackPlayer.getRate,
+            setRate: TrackPlayer.setRate,
             addEventListener: TrackPlayer.addEventListener,
             play: TrackPlayer.play,
             pause: TrackPlayer.pause,
@@ -126,6 +132,21 @@ export function useCurrentTrack(): number | null {
   );
   return state;
 }
+
+export function usePlaybackRate(): number {
+  const rate = useSelector((state: AppState) => state.settings.playbackRate || 1);
+  useEffect(() => {
+    narrationPlayer().then(trackPlayer => {
+      trackPlayer.getRate().then(systemRate => {
+        if (systemRate !== rate) {
+          trackPlayer.setRate(rate);
+        }
+      });
+    });
+  }, [rate]);
+  return rate;
+}
+
 
 export function useTrackDetails(index: number | null) {
   const [track, setTrack] = useState<Track | null>(null);

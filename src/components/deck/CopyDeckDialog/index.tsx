@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { throttle } from 'lodash';
+import { flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import DialogComponent from '@lib/react-native-dialog';
@@ -20,12 +20,13 @@ import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeck } from '@data/hooks';
-import { useEffectUpdate, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { useEffectUpdate, usePlayerCardsFunc } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   campaign: MiniCampaignT | undefined;
@@ -81,8 +82,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     }
     return deck?.deck;
   }, [baseDeck, deck, latestDeck, selectedDeckId]);
-  const investigators = useInvestigatorCards();
-  const investigator = useMemo(() => deck && investigators && investigators[deck.deck.investigator_code], [deck, investigators]);
+  const [investigator] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
@@ -120,7 +120,18 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     setSelectedDeckId(value ? deckId : undefined);
   }, [setSelectedDeckId]);
 
-  const cards = usePlayerCards();
+  const cards = usePlayerCardsFunc(() => uniq(
+    flatMap([
+      ...(deck?.deck ? [deck.deck] : []),
+      ...(baseDeck ? [baseDeck] : []),
+      ...(latestDeck ? [latestDeck] : []),
+    ], d => [
+      d.investigator_code,
+      ...keys(d.slots),
+      ...keys(d.ignoreDeckLimitSlots),
+      ...keys(d.slots),
+    ])
+  ), [deck, baseDeck, latestDeck], deck?.deck.taboo_id || 0);
   const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck?.deck, cards), [cards, deck]);
   const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards), [cards, baseDeck]);
   const parsedLatestDeck = useMemo(() => cards && latestDeck && parseBasicDeck(latestDeck, cards), [cards, latestDeck]);

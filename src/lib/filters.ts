@@ -615,16 +615,20 @@ export default class FilterBuilder {
   }
 
   bondedFilter(field: 'real_name' | 'bonded_name', bonded_names: string[]): Brackets | undefined {
-    const bondedClause = combineQueriesOpt(
-      this.complexVectorClause(
-        field,
-        bonded_names,
-        valueName => `(c.${field} = :${valueName})`
-      ), 'or');
-    if (!bondedClause) {
-      return undefined;
-    }
+    const bondedClause = where(
+      `c.${field} IN (:...bonded_names)`,
+      { bonded_names }
+    );
     return combineQueries(BASIC_QUERY, [bondedClause], 'and');
+  }
+
+  upgradeCardsByNameFilter(real_names: string[]): Brackets | undefined {
+    const nameClause = where(
+      `c.real_name IN (:...real_names)`,
+      { real_names }
+    );
+    const levelClause = where(`c.xp is not null AND c.xp > 0`);
+    return combineQueries(BASIC_QUERY, [nameClause, levelClause], 'and');
   }
 
   factionFilter(factions: FactionCodeType[]): Brackets[] {

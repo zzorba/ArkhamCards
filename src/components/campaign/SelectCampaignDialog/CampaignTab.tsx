@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { map, partition } from 'lodash';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   CUSTOM,
@@ -9,6 +9,7 @@ import {
   TDE,
   TDEA,
   TDEB,
+  GOB,
   CampaignCycleCode,
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
@@ -39,6 +40,8 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
       return t`Campaign A\nFour-part campaign`;
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
+    case GOB:
+      return t`Two-part campaign variant`;
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:
@@ -64,7 +67,7 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
         key={packCode}
         packCode={packCode}
         onPress={onPress}
-        text={campaignName(packCode) || t`Custom`}
+        text={campaignName(packCode) || c('campaign').t`Custom`}
         description={guideComingSoon ? t`Guide not yet available` : campaignDescription(packCode)}
       />
     );

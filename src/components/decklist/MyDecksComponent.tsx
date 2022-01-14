@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { filter } from 'lodash';
+import { partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -30,7 +30,8 @@ import { useDeckActions } from '@data/remote/decks';
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   onlyDecks?: MiniDeckT[];
-  filterDeck?: (deck: MiniDeckT) => boolean;
+  filterDeck?: (deck: MiniDeckT) => string | undefined;
+  renderExpandButton?: (reason: string) => React.ReactNode | null;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
@@ -41,6 +42,7 @@ function MyDecksComponent({
   deckClicked,
   onlyDecks,
   filterDeck,
+  renderExpandButton,
   searchOptions,
   customFooter,
   login,
@@ -59,7 +61,6 @@ function MyDecksComponent({
     refreshing,
     error,
   }, onRefresh] = useMyDecks(deckActions);
-
   useEffect(() => {
     const now = new Date();
     const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
@@ -96,14 +97,6 @@ function MyDecksComponent({
     );
   }, [login, signedIn, typography]);
 
-  const footer = useMemo(() => {
-    return (
-      <View style={styles.footer}>
-        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
-        { signInFooter }
-      </View>
-    );
-  }, [customFooter, signInFooter]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
   const header = useMemo(() => {
     const searchPadding = !!searchOptions && Platform.OS === 'android';
@@ -115,9 +108,34 @@ function MyDecksComponent({
     );
   }, [searchOptions, fontScale, connectionProblemBanner]);
 
-  const deckIds = useMemo(() => {
-    return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));
+  const [deckIds, deckReasons] = useMemo(() => {
+    if (!filterDeck) {
+      return [onlyDecks || myDecks || [], []];
+    }
+    const [dropped, keep] = partition(map(onlyDecks || myDecks, deckId => {
+      return {
+        deckId,
+        reason: filterDeck ? filterDeck(deckId) : undefined,
+      };
+    }), p => !!p.reason);
+    return [
+      map(keep, x => x.deckId),
+      uniq(flatMap(dropped, x => x.reason ? [x.reason] : [])),
+    ];
   }, [filterDeck, onlyDecks, myDecks]);
+
+  const footer = useMemo(() => {
+    return (
+      <View style={styles.footer}>
+        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
+        { !!renderExpandButton && !!deckReasons.length && (
+          flatMap(deckReasons, renderExpandButton)
+        ) }
+        { signInFooter }
+      </View>
+    );
+  }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
+
   return (
     <DeckListComponent
       searchOptions={searchOptions}

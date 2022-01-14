@@ -33,6 +33,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
   }, [searchBoxRef]);
   const [visible, setVisible] = useState(true);
   const [advancedOpen, setAdvancedOpen] = useState(false);
+  const scrollAnimPos = useRef(new Animated.Value(1));
   const scrollAnim = useRef(new Animated.Value(1));
   const advancedToggleAnim = useRef(new Animated.Value(0));
   const lastOffsetY = useRef(0);
@@ -59,6 +60,13 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
           useNativeDriver: false,
         }).start();
       });
+      scrollAnimPos.current.stopAnimation(() => {
+        Animated.timing(scrollAnimPos.current, {
+          toValue: visible ? 1 : 0,
+          duration: 350,
+          useNativeDriver: true,
+        }).start();
+      })
       setVisible(visible);
     }
   }, [scrollAnim, setVisible, advancedOpen]);
@@ -148,7 +156,7 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
     );
   }, [advancedOptions, fontScale, width, advancedToggleAnim, colors, shadow.medium]);
 
-  const translateY = advancedOpen ? 0 : scrollAnim.current.interpolate({
+  const translateY = advancedOpen ? 0 : scrollAnimPos.current.interpolate({
     inputRange: [0, 1],
     outputRange: [-searchBoxHeight(fontScale), 0],
   });

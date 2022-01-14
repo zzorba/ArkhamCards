@@ -4,6 +4,7 @@ const medium = '#9B9B9B';
 
 export default {
   L30: '#FFFBF2',
+  L20: '#F5F0E1',
   L15: '#E6E1D3',
   D10: '#656C6F',
   D20: '#475259',

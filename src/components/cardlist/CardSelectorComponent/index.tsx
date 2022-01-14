@@ -6,7 +6,7 @@ import Card from '@data/types/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from '@components/core/hooks';
+import { usePlayerCardsFunc } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -35,8 +35,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [colors, componentId]);
-  const cards = usePlayerCards();
-
+  const cards = usePlayerCardsFunc(() => keys(slots), [slots]);
   const matchingCards = useMemo(() => {
     if (!cards) {
       return [];

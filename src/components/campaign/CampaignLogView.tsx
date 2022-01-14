@@ -4,7 +4,6 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 
 import { CampaignId, CampaignNotes } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
-import { useInvestigatorCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import StyleContext from '@styles/StyleContext';
@@ -25,8 +24,7 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
-  const investigators = useInvestigatorCards();
-  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [allInvestigators] = useCampaignInvestigators(campaign);
   const setCampaignNotes = useSetCampaignNotes();
   const saveCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     dispatch(updateCampaignNotes(setCampaignNotes, campaignId, campaignNotes));

@@ -9,28 +9,24 @@ import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideC
 import { CampaignId } from '@actions/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from './CampaignErrorView';
+import { useProcessedScenario } from './useProcessedCampaign';
+import { ProcessedCampaign } from '@data/scenario';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
   standalone?: boolean;
+  processedCampaign?: ProcessedCampaign;
 }
 
 export function useScenarioGuideContext(
   campaignId: CampaignId,
   scenarioId: undefined | string,
   rootView: boolean,
-  standalone?: boolean
-): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, string | undefined, (serverId: number) => void, boolean] {
+  standalone?: boolean,
+  initialProcessedCampaign?: ProcessedCampaign
+): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, ProcessedCampaign | undefined, string | undefined, (serverId: number) => void, boolean] {
   const [campaignContext, campaignStatus, setCampaignServerId, loading] = useCampaignGuideContext(campaignId, rootView);
-  const [processedScenario, processedScenarioError] = useMemo(
-    () => {
-      if (!campaignContext || !scenarioId) {
-        return [undefined, undefined];
-      }
-      const { campaignGuide, campaignState } = campaignContext;
-      return campaignGuide.getScenario(scenarioId, campaignState, standalone);
-    },
-    [scenarioId, campaignContext, standalone]);
+  const [processedScenario, processedCampaign, processedScenarioError] = useProcessedScenario(scenarioId, standalone, campaignContext?.campaignGuide, campaignContext?.campaignState, initialProcessedCampaign);
   const scenarioState = useMemo(() => {
     if (!campaignContext || !processedScenario) {
       return undefined;
@@ -39,14 +35,15 @@ export function useScenarioGuideContext(
     return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
   }, [processedScenario, campaignContext]);
   const scenarioContext = useMemo(() => {
-    if (!processedScenario || !scenarioState) {
+    if (!processedScenario || !scenarioState || !processedCampaign) {
       return undefined;
     }
     return {
+      processedCampaign,
       processedScenario,
       scenarioState,
     };
-  }, [processedScenario, scenarioState]);
+  }, [processedScenario, processedCampaign, scenarioState]);
   const error = useMemo(() => {
     if (campaignStatus) {
       switch (campaignStatus) {
@@ -56,14 +53,14 @@ export function useScenarioGuideContext(
     }
     return processedScenarioError;
   }, [campaignStatus, processedScenarioError]);
-  return [campaignContext, scenarioContext, error, setCampaignServerId, loading];
+  return [campaignContext, scenarioContext, processedCampaign, error, setCampaignServerId, loading];
 }
 
 export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & InjectedCampaignGuideContextProps>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
   function ScenarioDataComponent(props: Props & ScenarioGuideInputProps) {
-    const [campaignContext, scenarioContext, error, setCampaignServerId, uploading] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone);
+    const [campaignContext, scenarioContext, , error, setCampaignServerId, uploading] = useScenarioGuideContext(props.campaignId, props.scenarioId, props.standalone || false, props.standalone, props.processedCampaign);
     if (!campaignContext || !scenarioContext) {
       if (error) {
         return <CampaignErrorView message={error} />

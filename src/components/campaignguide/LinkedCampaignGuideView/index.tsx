@@ -11,7 +11,7 @@ import { updateCampaignName } from '@components/campaign/actions';
 import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import { NavigationProps } from '@components/nav/types';
 import { useCampaign } from '@data/hooks';
-import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import useCampaignGuideContextFromActions from '@components/campaignguide/useCampaignGuideContextFromActions';
 import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
@@ -27,6 +27,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { useLinkedCampaignId } from '@components/campaign/hooks';
+import useProcessedCampaign from '../useProcessedCampaign';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -46,7 +47,6 @@ function LinkedCampaignGuideView(props: Props) {
     campaignIdB: props.campaignIdB,
   });
   const { typography } = useContext(StyleContext);
-  const investigators = useInvestigatorCards();
   const dispatch = useDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
@@ -54,8 +54,8 @@ function LinkedCampaignGuideView(props: Props) {
   const campaign = useCampaign(campaignId, true);
   useCampaignDeleted(componentId, campaign);
   const campaignName = campaign?.name || '';
-  const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, investigators, true);
-  const [campaignDataB] = useSingleCampaignGuideData(campaignIdB, investigators, true);
+  const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, true);
+  const [campaignDataB] = useSingleCampaignGuideData(campaignIdB, true);
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
     Navigation.mergeOptions(componentId, {
@@ -83,18 +83,8 @@ function LinkedCampaignGuideView(props: Props) {
   const contextB = useCampaignGuideContextFromActions(campaignIdB, deckActions, updateCampaignActions, campaignDataB);
   // console.log(`contextA: ${!!contextA}, contextA.campaignGuide: ${!!contextA?.campaignGuide}, contextA.campaignState: ${!!contextA?.campaignState}`);
   // console.log(`contextB: ${!!contextB}, contextB.campaignGuide: ${!!contextB?.campaignGuide}, contextB.campaignState: ${!!contextB?.campaignState}`);
-  const [processedCampaignA, processedCampaignAError] = useMemo(() => {
-    if (!contextA?.campaignGuide || !contextA?.campaignState) {
-      return [undefined, undefined];
-    }
-    return contextA.campaignGuide.processAllScenarios(contextA.campaignState);
-  }, [contextA]);
-  const [processedCampaignB, processedCampaignBError] = useMemo(() => {
-    if (!contextB?.campaignGuide || !contextB?.campaignState) {
-      return [undefined, undefined];
-    }
-    return contextB.campaignGuide.processAllScenarios(contextB.campaignState);
-  }, [contextB]);
+  const [processedCampaignA, processedCampaignAError] = useProcessedCampaign(contextA?.campaignGuide, contextA?.campaignState);
+  const [processedCampaignB, processedCampaignBError] = useProcessedCampaign(contextB?.campaignGuide, contextB?.campaignState);
   // console.log(`processedCampaignA: ${!!processedCampaignA}, processedCampaignB: ${!!processedCampaignB}`);
 
   const setSelectedTabRef = useRef<((index: number) => void) | undefined>(undefined);

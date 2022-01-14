@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { filter, find, flatMap, keys, map, partition, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
@@ -255,13 +255,14 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
       max={input.max}
       extraSelected={extraCards}
       checkText={choice.text}
-      loading={loading}
+      loading={!!query && loading}
       button={(nonDeckButton && selectedCards === undefined) ? (
         <ActionButton
           color="light"
           leftIcon="plus-thin"
-          title={t`Choose additional card`}
+          title={c('card-chooser').t`Choose additional`}
           onPress={showOtherCardSelector}
+          shrinkText
         />
       ) : undefined}
     />

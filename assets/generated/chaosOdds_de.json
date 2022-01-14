@@ -3989,6 +3989,96 @@
     ]
   },
   {
+    "code": "87001",
+    "scenario": "machinations_through_time",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of story cards in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At Tindalos",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "A [[Scientist]] asset is at your location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of story cards in the victory display",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At Tindalos",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "A [[Scientist]] asset is at your location",
+          "modified_value": {
+            "modifier": -6
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
     "code": "90004",
     "scenario": "read_or_die",
     "standard": [
@@ -4266,6 +4356,80 @@
     ]
   },
   {
+    "code": "90041",
+    "scenario": "red_tide_rising",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
     "code": "08501",
     "scenario": "ice_and_death",
     "standard": [
@@ -4273,7 +4437,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "Die Hälfte des Schutzwertes deines Ortes (aufgerundet)"
         }
       },
       {
@@ -4294,7 +4458,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "Der Schutzwert deines Ortes"
         }
       },
       {
@@ -4319,7 +4483,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "Anzahl der Handlungskarten im Siegpunktestapel"
         }
       },
       {
@@ -4346,7 +4510,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "Nummer der aktuellen Agenda plus die Anzahl der Handlungskarten im Siegpunktestapel"
         }
       },
       {
@@ -4377,7 +4541,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "Die Höhenstufe deines Ortes"
         }
       },
       {
@@ -4404,7 +4568,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
+          "prompt": "Die Höhenstufe deines Ortes plus 2",
           "min": 2
         }
       },
@@ -4436,7 +4600,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "Die Anzahl der Schlüssel, die du kontrollierst"
         }
       },
       {
@@ -4452,7 +4616,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "[frost]-Marker wurde enthüllt",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4470,7 +4634,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
+          "prompt": "Die Anzahl der Schlüssel, die du kontrollierst plus 2",
           "min": 2
         }
       },
@@ -4487,7 +4651,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "[frost]-Marker wurde enthüllt",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4512,7 +4676,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Befindet sich ein [[Großer Alter]]-Gegner an deinem Ort",
           "modified_value": {
             "modifier": -3
           }
@@ -4545,7 +4709,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Befindet sich ein [[Großer Alter]]-Gegner an deinem Ort",
           "modified_value": {
             "modifier": -4
           }

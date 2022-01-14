@@ -27,6 +27,7 @@ export interface ThemeColors {
   L20: string;
   L30: string;
   D10: string;
+  D15: string;
   D20: string;
   D30: string;
   M: string;
@@ -65,6 +66,10 @@ export interface ThemeColors {
     frost: string;
     [token: string]: string | undefined;
   };
+  tokenFill: {
+    bless: string;
+    curse: string;
+  };
   health: string;
   sanity: string;
   disableOverlay: string;
@@ -81,7 +86,8 @@ export interface ThemeColors {
     tcu: string;
     tde: string;
     tic: string;
-    eoe: string
+    eoe: string;
+    gob: string;
     standalone: string;
   };
   navButton: string;
@@ -137,6 +143,7 @@ export const LIGHT_THEME: ThemeColors = {
   L20: light20,
   L30: light30,
   D10: dark10,
+  D15: dark15,
   D20: dark20,
   D30: dark30,
   background: light30,
@@ -254,6 +261,7 @@ export const LIGHT_THEME: ThemeColors = {
     tde: '#45559C',
     tic: '#2A7D7F',
     eoe: '#25B7CB',
+    gob: '#AC9788',
     standalone: '#AC9788',
   },
   navButton: '#007AFF',
@@ -277,12 +285,17 @@ export const LIGHT_THEME: ThemeColors = {
     curse: '#3A2342',
     frost: '#3D3A63',
   },
+  tokenFill: {
+    bless: '#BFA640',
+    curse: '#7A2D6C',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
+  D15: light15,
   D20: light20,
   D30: light30,
   L10: dark10,
@@ -405,6 +418,7 @@ export const DARK_THEME: ThemeColors = {
     tde: '#3D4B8A',
     tic: '#236A6B',
     eoe: '#179BAD',
+    gob: '#A18978',
     standalone: '#A18978',
   },
   navButton: '#4aa1ff',
@@ -426,6 +440,10 @@ export const DARK_THEME: ThemeColors = {
     elder_sign: '#5496cc',
     bless: '#ebaa42',
     curse: '#b069c9',
-    frost: '#3D3A63',
+    frost: '#6559f7',
+  },
+  tokenFill: {
+    bless: '#ebaa42',
+    curse: '#b069c9',
   },
 };

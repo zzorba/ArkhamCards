@@ -27,46 +27,66 @@ function tipPressed() {
   Linking.openURL('https://www.tinkoff.ru/sl/6EktRkjsRap');
 }
 
+function esYoutubePressed() {
+  Linking.openURL('https://www.youtube.com/watch?v=Vt9PCm02owU&list=PLFbghkzYxuOj4l3dF9ljqSqd_MKGibzei');
+}
+
 export default function SocialBlock() {
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  if (lang !== 'ru') {
-    return null;
+  if (lang === 'ru') {
+    return (
+      <View style={space.paddingS}>
+        <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
+          <Text style={[typography.text, space.paddingS]}>
+            Общайтесь с другими поклонниками карточного «Ужаса Аркхэма» в русскоязычных сообществах:
+          </Text>
+          <DeckButton
+            icon="discord"
+            topMargin={s}
+            bottomMargin={s}
+            onPress={discordPressed}
+            title={t`Discord`}
+          />
+          <DeckButton
+            bottomMargin={s}
+            icon="vk"
+            onPress={vkPressed}
+            title={t`VK`}
+          />
+          <DeckButton
+            icon="telegram"
+            onPress={telegramPressed}
+            title={t`Telegram`}
+            bottomMargin={s}
+          />
+          <DeckButton
+            icon="headset"
+            color="gold"
+            onPress={tipPressed}
+            title="Донат на аудио"
+            detail="Поддержать авторов аудиосопровождения"
+          />
+        </RoundedFactionBlock>
+      </View>
+    );
   }
 
-  return (
-    <View style={space.paddingS}>
-      <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
-        <Text style={[typography.text, space.paddingS]}>
-          Общайтесь с другими поклонниками карточного «Ужаса Аркхэма» в русскоязычных сообществах:
-        </Text>
-        <DeckButton
-          icon="discord"
-          topMargin={s}
-          bottomMargin={s}
-          onPress={discordPressed}
-          title={t`Discord`}
-        />
-        <DeckButton
-          bottomMargin={s}
-          icon="vk"
-          onPress={vkPressed}
-          title={t`VK`}
-        />
-        <DeckButton
-          icon="telegram"
-          onPress={telegramPressed}
-          title={t`Telegram`}
-          bottomMargin={s}
-        />
-        <DeckButton
-          icon="headset"
-          color="gold"
-          onPress={tipPressed}
-          title="Донат на аудио"
-          detail="Поддержать авторов аудиосопровождения"
-        />
-      </RoundedFactionBlock>
-    </View>
-  );
+  if (lang === 'es') {
+    return (
+      <View style={space.paddingS}>
+        <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Social`} />}>
+          <DeckButton
+            icon="faq"
+            topMargin={s}
+            bottomMargin={s}
+            onPress={esYoutubePressed}
+            title={'Tutorial aplicación'}
+          />
+        </RoundedFactionBlock>
+      </View>
+    );
+  }
+
+  return null;
 }

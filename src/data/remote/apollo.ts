@@ -6,8 +6,8 @@ import {
   AddCampaignInvestigatorMutation,
   AddGuideInputDocument,
   AddGuideInputMutation,
-  DecCountAchievementDocument,
-  DecCountAchievementMutation,
+  SetCountAchievementDocument,
+  SetCountAchievementMutation,
   DeleteAllLocalDecksMutation,
   DeleteAllLocalDecksDocument,
   DeleteInvestigatorDecksDocument,
@@ -15,7 +15,6 @@ import {
   FullCampaignFragment,
   FullCampaignFragmentDoc,
   FullCampaignGuideStateFragment,
-  FullCampaignGuideStateFragmentDoc,
   FullInvestigatorDataFragment,
   GetCampaignDocument,
   GetCampaignGuideDocument,
@@ -26,11 +25,6 @@ import {
   GetMyDecksDocument,
   GetMyDecksQuery,
   GuideAchievementFragment,
-  GuideAchievementFragmentDoc,
-  IncCountAchievementDocument,
-  IncCountAchievementMaxDocument,
-  IncCountAchievementMaxMutation,
-  IncCountAchievementMutation,
   MiniCampaignFragment,
   RemoveCampaignInvestigatorDocument,
   RemoveCampaignInvestigatorMutation,
@@ -81,6 +75,22 @@ import {
   GetLatestDeckDocument,
   MiniInvestigatorDataFragment,
   MiniCampaignFragmentDoc,
+  ChaosBagDrawTokenDocument,
+  ChaosBagDrawTokenMutation,
+  FullChaosBagResultFragment,
+  GetChaosBagResultsQuery,
+  GetChaosBagResultsDocument,
+  ChaosBagClearTokensDocument,
+  ChaosBagClearTokensMutation,
+  ChaosBagResetBlessCurseDocument,
+  ChaosBagResetBlessCurseMutation,
+  ChaosBagSealTokensDocument,
+  ChaosBagSealTokensMutation,
+  ChaosBagSetBlessCurseDocument,
+  ChaosBagSetBlessCurseMutation,
+  ChaosBagSetTarotDocument,
+  ChaosBagSetTarotMutation,
+  UploadChaosBagResultsMutation,
 } from '@generated/graphql/apollo-schema';
 
 interface RemoveDeck {
@@ -119,6 +129,7 @@ function updateDecks(
             }];
             case 'remove': return [];
             case 'swap': {
+              // console.log(`Swapping FullCampaign for ${JSON.stringify(result.deck)}`);
               const r: LatestDecks[] = [
                 {
                   __typename: 'latest_decks',
@@ -129,6 +140,7 @@ function updateDecks(
                 },
               ];
               if (result.insert) {
+                // console.log(`Inserting FullCampaign for ${JSON.stringify(result.insert)}`);
                 r.push(
                   {
                     __typename: 'latest_decks',
@@ -170,6 +182,7 @@ function updateDecks(
                 case 'keep': return [d];
                 case 'remove': return [];
                 case 'swap': {
+                  // console.log(`Swapping myDeck for ${JSON.stringify(result.deck)}`);
                   const latestDeck = {
                     ...result.deck,
                     investigator_data: result.deck.investigator_data || d.deck.investigator_data,
@@ -187,6 +200,7 @@ function updateDecks(
                       },
                     });
                   } else if (latestDeck.arkhamdb_id) {
+                    // console.log(`Swapping LatestDeck for ${JSON.stringify(latestDeck)}`);
                     cache.writeQuery<GetLatestArkhamDbDeckQuery>({
                       query: GetLatestArkhamDbDeckDocument,
                       variables: {
@@ -204,6 +218,7 @@ function updateDecks(
                     deck: latestDeck,
                   }];
                   if (result.insert) {
+                    // console.log(`Inserting LatestDeck for ${JSON.stringify(result.insert)}`);
                     r.push({
                       __typename: 'latest_decks',
                       deck: result.insert,
@@ -220,10 +235,12 @@ function updateDecks(
             switch (result.type) {
               case 'keep': return [d];
               case 'remove': return [];
-              case 'swap': return [
-                result.deck,
-                ...(result.insert ? [result.insert] : []),
-              ];
+              case 'swap': {
+                return [
+                  result.deck,
+                  ...(result.insert ? [result.insert] : []),
+                ];
+              }
             }
           }),
         },
@@ -625,6 +642,7 @@ function removeDeck(
           deck: {
             __typename: 'campaign_deck',
             ...omit(deck, ['next_deck']),
+            next_deck: null,
           },
         };
       }
@@ -640,6 +658,7 @@ function removeDeck(
             owner: deck.owner,
             campaign_id: deck.campaign_id,
             campaign: deck.campaign,
+            previous_deck: previousDeck?.previous_deck || null,
           },
         } : { type: 'remove' };
       }
@@ -757,12 +776,35 @@ export const handleUploadNewCampaign: MutationUpdaterFn<UploadNewCampaignMutatio
   }
 };
 
+
+export const handleUploadChaosBagResults: MutationUpdaterFn<UploadChaosBagResultsMutation> = (cache, { data }) => {
+  if (data === undefined || !data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const chaosBag = data.update_chaos_bag_result_by_pk;
+
+  cache.writeQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: chaosBag.id,
+    },
+    data: {
+      __typename: 'query_root',
+      chaos_bag_result_by_pk: {
+        ...chaosBag,
+        tarot: chaosBag.tarot || null,
+      },
+    },
+  });
+};
+
 function updateCampaignGuide(cache: ApolloCache<unknown>, campaignId: number, update: (cacheData: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment) {
   const cacheData = cache.readQuery<GetCampaignGuideQuery>({
     query: GetCampaignGuideDocument,
     variables: {
       campaign_id: campaignId,
     },
+    returnPartialData: true,
   }, true);
   if (cacheData === null || !cacheData.campaign_guide.length) {
     return;
@@ -855,27 +897,6 @@ function updateFullCampaign(cache: ApolloCache<unknown>, campaignId: number, upd
   }
 }
 
-
-function updateFullCampaignGuide(
-  cache: ApolloCache<unknown>,
-  campaignId: number,
-  update: (fragment: FullCampaignGuideStateFragment) => FullCampaignGuideStateFragment
-) {
-  const id = cache.identify({ __typename: 'campaign', id: campaignId });
-  const existingCacheData = cache.readFragment<FullCampaignGuideStateFragment>({
-    fragment: FullCampaignGuideStateFragmentDoc,
-    fragmentName: 'FullCampaignGuideState',
-    id,
-  }, true);
-  if (existingCacheData) {
-    cache.writeFragment<FullCampaignGuideStateFragment>({
-      fragment: FullCampaignGuideStateFragmentDoc,
-      fragmentName: 'FullCampaignGuideState',
-      data: update(existingCacheData),
-    });
-  }
-}
-
 const handleDeleteInvestigatorDecks: MutationUpdaterFn<DeleteInvestigatorDecksMutation> = (cache, { data }) => {
   if (!data?.delete_campaign_deck?.returning.length) {
     return;
@@ -956,7 +977,7 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
     return;
   }
   const investigator_data = data.insert_investigator_data_one;
-  const mini_investigator_data = pick(investigator_data, ['__typename', 'id', 'campaign_id', 'investigator', 'mental', 'physical', 'insane', 'killed', 'storuAssets']) as MiniInvestigatorDataFragment;
+  const mini_investigator_data: MiniInvestigatorDataFragment = pick(investigator_data, ['__typename', 'id', 'campaign_id', 'investigator', 'mental', 'physical', 'insane', 'killed', 'storyAssets']);
   updateMiniCampaign(
     cache,
     investigator_data.campaign_id,
@@ -1095,18 +1116,60 @@ const handleUpdateAvailableXp: MutationUpdaterFn<UpdateAvailableXpMutation> = (c
   });
 };
 
+function updateChaosBag(
+  cache: ApolloCache<unknown>,
+  campaignId: number,
+  update: (chaosBag: FullChaosBagResultFragment) => FullChaosBagResultFragment
+) {
+  const chaosBag = cache.readQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    returnPartialData: true,
+  }, true);
+  if (!chaosBag || !chaosBag.chaos_bag_result_by_pk) {
+    console.log(`Couldn't find chaos bag for ${campaignId}`);
+    return;
+  }
+  cache.writeQuery<GetChaosBagResultsQuery>({
+    query: GetChaosBagResultsDocument,
+    variables: {
+      campaign_id: campaignId,
+    },
+    data: {
+      ...chaosBag,
+      chaos_bag_result_by_pk: update(chaosBag.chaos_bag_result_by_pk),
+    },
+  });
+}
+
 function updateGuideAchievement(
   cache: ApolloCache<unknown>,
   achievement: GuideAchievementFragment,
   insert: () => GuideAchievementFragment,
   update: (achievement: GuideAchievementFragment) => GuideAchievementFragment
 ) {
-  const id = achievement.id;
-  cache.writeFragment<GuideAchievementFragment>({
+  const id = cache.identify({ __typename: 'guide_achievement', id: achievement.id, campaign_id: achievement.campaign_id });
+  /*
+  const existingCacheData = cache.readFragment<GuideAchievementFragment>({
     fragment: GuideAchievementFragmentDoc,
-    data: achievement,
-  });
-  updateFullCampaignGuide(
+    fragmentName: 'GuideAchievement',
+    id,
+  }, true);
+  if (existingCacheData) {
+    const data = update(existingCacheData);
+    cache.writeFragment<GuideAchievementFragment>({
+      fragment: GuideAchievementFragmentDoc,
+      data,
+    });
+  } else {
+    cache.writeFragment<GuideAchievementFragment>({
+      fragment: GuideAchievementFragmentDoc,
+      data: insert(),
+    });
+  }*/
+  updateCampaignGuide(
     cache,
     achievement.campaign_id,
     (existingCacheData: FullCampaignGuideStateFragment) => {
@@ -1115,7 +1178,7 @@ function updateGuideAchievement(
         return {
           ...existingCacheData,
           guide_achievements: [
-            ...existingCacheData.guide_achievements || [],
+            ...(existingCacheData.guide_achievements || []),
             insert(),
           ],
         };
@@ -1139,72 +1202,100 @@ const handleSetBinaryAchievement: MutationUpdaterFn<SetBinaryAchievementMutation
   updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
 };
 
-const handleIncCountAchievementMax: MutationUpdaterFn<IncCountAchievementMaxMutation> = (cache, { data, context }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+const handleSetCountMutation: MutationUpdaterFn<SetCountAchievementMutation> = (cache, { data }) => {
+  if (!data?.insert_guide_achievement_one) {
     return;
   }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  const max = context?.max || 0;
-  updateGuideAchievement(cache, achievement, () => {
+  const achievement = data.insert_guide_achievement_one;
+  updateGuideAchievement(cache, achievement, () => achievement, () => achievement);
+};
+
+const handleChaosBagDrawToken: MutationUpdaterFn<ChaosBagDrawTokenMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, drawn, totalDrawn } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
     return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: Math.min(1, context?.max),
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: Math.min((a.value || 0) + 1, max),
+      ...chaosBag,
+      drawn,
+      totalDrawn,
     };
   });
 };
 
-const handleIncCountAchievement: MutationUpdaterFn<IncCountAchievementMutation> = (cache, { data }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+const handleChaosBagClearTokens: MutationUpdaterFn<ChaosBagClearTokensMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
     return;
   }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  updateGuideAchievement(cache, achievement, () => {
+  const { id, bless, curse } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
     return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: 1,
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: (a.value || 0) + 1,
+      ...chaosBag,
+      drawn: [],
+      bless,
+      curse,
     };
   });
 };
 
-const handleDecCountAchievement: MutationUpdaterFn<DecCountAchievementMutation> = (cache, { data }) => {
-  if (!data?.update_guide_achievement || !data.update_guide_achievement.returning.length) {
+
+const handleChaosBagResetBlessCurse: MutationUpdaterFn<ChaosBagResetBlessCurseMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
     return;
   }
-  const achievement = data.update_guide_achievement.returning[0];
-  const id = achievement.id;
-  updateGuideAchievement(cache, achievement, () => {
+  const { id, drawn, sealed } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
     return {
-      __typename: 'guide_achievement',
-      id,
-      campaign_id: achievement.campaign_id,
-      type: 'count',
-      value: 0,
-    };
-  }, (a: GuideAchievementFragment) => {
-    return {
-      ...a,
-      value: Math.max((a.value || 0) - 1, 0),
+      ...chaosBag,
+      drawn,
+      sealed,
+      bless: 0,
+      curse: 0,
     };
   });
 };
+
+const handleChaosBagSealTokens: MutationUpdaterFn<ChaosBagSealTokensMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, sealed } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      sealed,
+    };
+  });
+};
+
+const handleChaosBagSetBlessCurse: MutationUpdaterFn<ChaosBagSetBlessCurseMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, bless, curse } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      bless,
+      curse,
+    };
+  });
+};
+
+const handleChaosBagSetTarot: MutationUpdaterFn<ChaosBagSetTarotMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, tarot } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      tarot: tarot || null,
+    };
+  });
+};
+
 
 interface OptimisticUpdate {
   mutation: DocumentNode;
@@ -1248,17 +1339,9 @@ export const optimisticUpdates = {
     mutation: SetBinaryAchievementDocument,
     update: handleSetBinaryAchievement,
   },
-  incCountAchievementMax: {
-    mutation: IncCountAchievementMaxDocument,
-    update: handleIncCountAchievementMax,
-  },
-  incCountAchievement: {
-    mutation: IncCountAchievementDocument,
-    update: handleIncCountAchievement,
-  },
-  decCountAchievement: {
-    mutation: DecCountAchievementDocument,
-    update: handleDecCountAchievement,
+  setCountAchievement: {
+    mutation: SetCountAchievementDocument,
+    update: handleSetCountMutation,
   },
   updateSpentXp: {
     mutation: UpdateSpentXpDocument,
@@ -1327,6 +1410,30 @@ export const optimisticUpdates = {
   insertNextArkhamDbDeck: {
     mutation: InsertNextArkhamDbDeckDocument,
     update: handleInsertNextArkhamDbDeck,
+  },
+  chaosBagDrawToken: {
+    mutation: ChaosBagDrawTokenDocument,
+    update: handleChaosBagDrawToken,
+  },
+  chaosBagClearTokens: {
+    mutation: ChaosBagClearTokensDocument,
+    update: handleChaosBagClearTokens,
+  },
+  chaosBagResetBlessCurse: {
+    mutation: ChaosBagResetBlessCurseDocument,
+    update: handleChaosBagResetBlessCurse,
+  },
+  chaosBagSealTokens: {
+    mutation: ChaosBagSealTokensDocument,
+    update: handleChaosBagSealTokens,
+  },
+  chaosBagSetBlessCurse: {
+    mutation: ChaosBagSetBlessCurseDocument,
+    update: handleChaosBagSetBlessCurse,
+  },
+  chaosBagSetTarot: {
+    mutation: ChaosBagSetTarotDocument,
+    update: handleChaosBagSetTarot,
   },
 };
 

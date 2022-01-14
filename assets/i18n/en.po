@@ -808,10 +808,6 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr ""
-
 msgid "My Campaigns"
 msgstr ""
 
@@ -1553,13 +1549,6 @@ msgstr ""
 msgid "Deck Type"
 msgstr ""
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr ""
-
-msgid "Unknown card: ${ req.code }"
-msgstr ""
-
 msgid "Select Deck Size"
 msgstr ""
 
@@ -2041,9 +2030,6 @@ msgid "Story assets"
 msgstr ""
 
 msgid "Select Cards"
-msgstr ""
-
-msgid "Choose additional card"
 msgstr ""
 
 msgid "Campaign Log"
@@ -4859,6 +4845,54 @@ msgid ""
 msgstr ""
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+msgid "Trait Choice"
+msgstr ""
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
@@ -6314,6 +6348,10 @@ msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr ""
@@ -6328,6 +6366,11 @@ msgstr ""
 
 msgctxt "narration"
 msgid "Playing audio"
+msgstr ""
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
 msgstr ""
 
 msgctxt "campaign_log_entry"
@@ -6360,6 +6403,10 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "trauma"
+msgid "None"
+msgstr ""
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6372,10 +6419,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
 
-msgctxt "trauma"
-msgid "None"
+msgctxt "campaign"
+msgid "Custom"
 msgstr ""
 
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "scenario"
+msgid "Custom"
 msgstr ""

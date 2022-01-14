@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import {
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -157,6 +158,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           icon="expand"
           title={t`Show archived campaigns`}
           onPress={toggleShowArchived}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       );
     }
@@ -166,6 +168,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         icon="campaign"
         title={t`New Campaign`}
         onPress={showNewCampaignDialog}
+        useGestureHandler={Platform.OS === 'ios'}
       />
     );
     return result;

@@ -4,14 +4,12 @@ import {
   UPDATE_FILTER,
   ADD_FILTER_SET,
   REMOVE_FILTER_SET,
-  SYNC_FILTER_SET,
   TOGGLE_MYTHOS,
   UPDATE_CARD_SORT,
   ClearFilterAction,
   ToggleFilterAction,
   UpdateFilterAction,
   AddFilterSetAction,
-  SyncFilterSetAction,
   RemoveFilterSetAction,
   ToggleMythosAction,
   UpdateCardSortAction,
@@ -102,17 +100,6 @@ export function addDbFilterSet(
       mythosToggle,
       cardData,
     });
-  };
-}
-
-export function syncFilterSet(
-  id: string,
-  filters: FilterState
-): SyncFilterSetAction {
-  return {
-    type: SYNC_FILTER_SET,
-    id,
-    filters,
   };
 }
 

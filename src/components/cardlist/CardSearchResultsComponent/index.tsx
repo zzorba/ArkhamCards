@@ -352,7 +352,7 @@ export default function({
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
-  const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
+  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />

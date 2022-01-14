@@ -68,6 +68,7 @@ export type InvestigatorSelector =
   | "any"
   | "choice"
   | "defeated"
+  | "resigned"
   | "not_resigned"
   | "any_resigned"
   | "$input_value"
@@ -126,7 +127,8 @@ export type CampaignDataCondition =
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
-  | ScenarioDataPlayerCountCondition;
+  | ScenarioDataPlayerCountCondition
+  | ScenarioDataFixedInvestigatorStatusCondition;
 export type TraumaCondition = KilledTraumaCondition | BasicTraumaCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type Input =
@@ -208,6 +210,7 @@ export interface Campaign {
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
+  ultimatums?: Ultimatum[];
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -643,6 +646,13 @@ export interface ScenarioDataPlayerCountCondition {
   type: "scenario_data";
   scenario_data: "player_count";
   options: NumOption[];
+}
+export interface ScenarioDataFixedInvestigatorStatusCondition {
+  type: "scenario_data";
+  scenario_data: "fixed_investigator_status";
+  fixed_investigator: string;
+  status: "defeated" | "resigned";
+  options: BoolOption[];
 }
 export interface KilledTraumaCondition {
   type: "trauma";
@@ -1128,6 +1138,11 @@ export interface Achievement {
     id: string;
     text: string;
   }[];
+}
+export interface Ultimatum {
+  id: string;
+  name: string;
+  text: string;
 }
 export interface Scenario {
   id: string;

@@ -47,7 +47,7 @@
     "whenFileExists": "overwrite"
   },
   "dependencies": {
-    "@apollo/client": "3.5.6",
+    "@apollo/client": "3.4.16",
     "@invertase/react-native-apple-authentication": "2.1.5",
     "@matt-block/react-native-in-app-browser": "3.2.2",
     "@ptomasroos/react-native-multi-slider": "2.2.2",
@@ -98,7 +98,7 @@
     "react-native-fast-image": "8.5.11",
     "react-native-flip-card": "3.5.6",
     "react-native-fs": "2.18.0",
-    "react-native-gesture-handler": "1.10.3",
+    "react-native-gesture-handler": "2.1.0",
     "react-native-keep-awake": "4.0.0",
     "react-native-keychain": "8.0.0",
     "react-native-keyevent": "0.2.8",
@@ -113,7 +113,7 @@
     "react-native-pinch-zoom-view": "0.2.0",
     "react-native-progress": "5.0.0",
     "react-native-radial-gradient": "1.0.9",
-    "react-native-reanimated": "2.3.1",
+    "react-native-reanimated": "2.2.4",
     "react-native-scrubber": "1.0.0",
     "react-native-sha256": "1.4.7",
     "react-native-share": "7.3.2",

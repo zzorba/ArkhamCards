@@ -1,9 +1,10 @@
 import React from 'react';
 
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { ProcessedScenario } from '@data/scenario';
+import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 
 export interface ScenarioGuideContextType {
+  processedCampaign: ProcessedCampaign;
   processedScenario: ProcessedScenario;
   scenarioState: ScenarioStateHelper;
 }

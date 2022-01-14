@@ -1,18 +1,13 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, partition } from 'lodash';
-import {
-  InteractionManager,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { InteractionManager, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, Trauma } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -32,8 +27,7 @@ interface Props {
   campaign: SingleCampaignT;
   loading: boolean;
   latestDecks: LatestDeckT[];
-  cards: CardsMap;
-  allInvestigators: Card[];
+  allInvestigators?: Card[];
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
   showChooseDeck: (investigator?: Card) => void;
@@ -49,7 +43,6 @@ export default function DecksSection({
   campaignId,
   campaign,
   latestDecks,
-  cards,
   allInvestigators,
   loading,
   setCampaignNotes,
@@ -153,7 +146,6 @@ export default function DecksSection({
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgradeDialog}
-        playerCards={cards}
         chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
         removeInvestigator={removeDeckPrompt}
@@ -176,7 +168,7 @@ export default function DecksSection({
         />
       </InvestigatorCampaignRow>
     );
-  }, [componentId, campaign, cards,
+  }, [componentId, campaign,
     showTextEditDialog, updateInvestigatorNotes, showCountDialog,
     showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 
@@ -185,7 +177,7 @@ export default function DecksSection({
       return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
     });
   }, [allInvestigators, campaign]);
-  if (loading) {
+  if (loading || allInvestigators === undefined) {
     return <LoadingSpinner inline />;
   }
   return (

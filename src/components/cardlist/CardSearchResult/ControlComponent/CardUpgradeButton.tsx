@@ -20,10 +20,10 @@ interface Props {
 
 export default function CardUpgradeButton({ onUpgradePress, card, deckId, limit, side }: Props) {
   const { colors } = useContext(StyleContext);
-  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card]);
+  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card])
   return (
     <View style={styles.countWrapper}>
-      { !!onUpgradePress && (
+      { !side && !!onUpgradePress && (
         <View style={space.marginRightS}>
           <RoundButton onPress={onPress} accessibilityLabel={t`Show upgrades`}>
             <View style={styles.icon}>

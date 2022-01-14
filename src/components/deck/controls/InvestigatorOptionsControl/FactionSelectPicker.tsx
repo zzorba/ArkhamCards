@@ -15,6 +15,7 @@ interface Props {
   disabled?: boolean;
   editWarning: boolean;
   first: boolean;
+  last?: boolean;
 }
 
 export default function FactionSelectPicker({
@@ -25,6 +26,7 @@ export default function FactionSelectPicker({
   editWarning,
   onChange,
   first,
+  last,
 }: Props){
   const onChoiceChange = (index: number | null) => {
     if (index === null) {
@@ -54,7 +56,7 @@ export default function FactionSelectPicker({
         onPress={showDialog}
         valueLabel={Card.factionCodeToName(selection, t`Select Faction`)}
         first={first}
-        last
+        last={last}
       />
       { dialog }
     </>

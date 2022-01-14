@@ -14,7 +14,7 @@ import { ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { usePlayerCards } from '@components/core/hooks';
+import { useLatestDeckCards } from '@components/core/hooks';
 import { useCampaignDeck } from '@data/hooks';
 import { setIgnoreDeckSlot } from './actions';
 import { useDeckEdits, useShowDrawWeakness } from './hooks';
@@ -32,6 +32,8 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
   const deck = useCampaignDeck(id, campaignId);
+  const cards = useLatestDeckCards(deck);
+  const investigator = cards && deck ? cards[deck.investigator] : undefined;
   const dispatch = useDispatch();
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
 
@@ -47,7 +49,6 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       },
     });
   }, [componentId]);
-  const cards = usePlayerCards();
   const [alertDialog, showAlert] = useAlertDialog();
   const showDrawWeakness = useShowDrawWeakness({
     componentId,
@@ -57,11 +58,9 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     showAlert,
     deckEditsRef,
     assignedWeaknesses,
-    cards,
   });
 
   const editStoryPressed = useCallback(() => {
-    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
@@ -91,11 +90,9 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, deck, cards, colors, id]);
-
+  }, [componentId, investigator, colors, id]);
 
   const editWeaknessPressed = useCallback(() => {
-    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
@@ -125,7 +122,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, deck, cards, colors, id]);
+  }, [componentId, investigator, colors, id]);
 
   const isSpecial = useCallback((card: Card) => {
     return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));

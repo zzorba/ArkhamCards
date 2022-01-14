@@ -813,10 +813,6 @@ msgstr "${ traumaData.mental }精神"
 msgid "None"
 msgstr "無"
 
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "自訂"
-
 msgid "My Campaigns"
 msgstr "我的劇本"
 
@@ -1600,13 +1596,6 @@ msgstr "Steps of the Bridge"
 msgid "Deck Type"
 msgstr "牌組類型"
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${ investigator.deck_requirements.size }張卡牌"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "未知的卡牌: ${ req.code }"
-
 msgid "Select Deck Size"
 msgstr "選擇牌組大小"
 
@@ -2093,9 +2082,6 @@ msgstr "故事支援卡"
 
 msgid "Select Cards"
 msgstr "選擇卡牌"
-
-msgid "Choose additional card"
-msgstr "選擇額外卡牌"
 
 msgid "Campaign Log"
 msgstr "冒險日誌"
@@ -4979,6 +4965,54 @@ msgid ""
 msgstr ""
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+msgid "Trait Choice"
+msgstr ""
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr ""
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
@@ -6409,6 +6443,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "冒險"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "暫停"
@@ -6424,6 +6462,11 @@ msgstr "倒回"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "播放語音"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6453,6 +6496,10 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
+msgctxt "trauma"
+msgid "None"
+msgstr "無"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "無"
@@ -6465,10 +6512,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "審判·XX(逆位)"
 
-msgctxt "trauma"
-msgid "None"
-msgstr "無"
+msgctxt "campaign"
+msgid "Custom"
+msgstr ""
 
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr ""

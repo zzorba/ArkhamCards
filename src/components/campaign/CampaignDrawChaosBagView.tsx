@@ -15,6 +15,7 @@ import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from './nav';
 import Card from '@data/types/Card';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
+import { useChaosBagResults } from '@data/hooks';
 
 export interface CampaignDrawChaosBagProps {
   campaignId: CampaignId;
@@ -69,11 +70,13 @@ function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators, c
       showEditChaosBagDialog();
     }
   }, componentId, [componentId, showEditChaosBagDialog]);
+  const chaosBagResults = useChaosBagResults(campaignId);
 
   return (
     <DrawChaosBagComponent
       campaignId={campaignId}
       chaosBag={chaosBag}
+      chaosBagResults={chaosBagResults}
       editViewPressed={showEditChaosBagDialog}
       viewChaosBagOdds={showChaosBagOdds}
       editable

@@ -231,6 +231,7 @@ function getCampaignName(cache: ApolloCache<unknown>, campaignId: number): strin
       __typename: 'campaign',
       id: campaignId,
     }),
+    returnPartialData: true,
   }, true)?.name || '';
 }
 
@@ -295,7 +296,7 @@ function getPreviousDeck(
   local_uuid: string | undefined,
   arkhamdb_id: number | undefined,
   arkhamdb_user: number | undefined,
-): LatestDeckFragment | undefined {
+): LatestDeckFragment | null {
   const currentDeck = cache.readFragment<LatestDeckFragment>({
     fragment: LatestDeckFragmentDoc,
     fragmentName: 'LatestDeck',
@@ -308,7 +309,7 @@ function getPreviousDeck(
     }),
   }, true);
   if (!currentDeck?.previous_deck) {
-    return undefined;
+    return null;
   }
   const previousDeck = cache.readFragment<AllDeckFragment>({
     fragment: AllDeckFragmentDoc,
@@ -322,7 +323,7 @@ function getPreviousDeck(
     }),
   }, true);
   if (!previousDeck) {
-    return undefined;
+    return null;
   }
   return {
     __typename: 'campaign_deck',
@@ -342,7 +343,7 @@ function getPreviousDeck(
       __typename: 'campaign_deck',
       ...previousDeck,
       campaign_id: currentDeck.campaign_id,
-    } : undefined,
+    } : null,
   };
 }
 export function useDeckActions(): DeckActions {
@@ -444,7 +445,7 @@ export function useDeckActions(): DeckActions {
                   deckId.local ? deckId.uuid : undefined,
                   undefined,
                   undefined,
-                ) : undefined,
+                ) : null,
               },
             ],
           },
@@ -462,6 +463,9 @@ export function useDeckActions(): DeckActions {
       await deleteArkhamDbDeck({
         optimisticResponse: {
           __typename: 'mutation_root',
+          update_campaign_deck: {
+            returning: [],
+          },
           delete_campaign_deck: {
             __typename: 'campaign_deck_mutation_response',
             affected_rows: 1,
@@ -479,7 +483,7 @@ export function useDeckActions(): DeckActions {
                   undefined,
                   deckId.id,
                   undefined,
-                ) : undefined,
+                ) : null,
               },
             ],
           },

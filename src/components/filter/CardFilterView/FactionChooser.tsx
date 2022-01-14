@@ -28,9 +28,10 @@ interface Props {
   onFilterChange: (setting: string, value: any) => void;
   factions: FactionCodeType[];
   selection: FactionCodeType[];
+  componentId: string;
 }
 
-export default function FactionChooser({ onFilterChange, factions, selection }: Props) {
+export default function FactionChooser({ onFilterChange, factions, selection, componentId }: Props) {
   const { colors } = useContext(StyleContext);
   const updateIndex = useCallback((indexes: number[]) => {
     const selection = flatMap(indexes, idx => factions[idx].toLowerCase());
@@ -67,6 +68,7 @@ export default function FactionChooser({ onFilterChange, factions, selection }: 
       onPress={updateIndex}
       selectedIndexes={selectedIndexes}
       buttons={buttons}
+      componentId={componentId}
     />
   );
 }

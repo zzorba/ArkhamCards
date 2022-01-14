@@ -10,6 +10,8 @@ import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView
 import { Navigation } from 'react-native-navigation';
 import useGuideChaosBag from './useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { ProcessedCampaign } from '@data/scenario';
+import { useChaosBagResults } from '@data/hooks';
 
 export interface GuideDrawChaosBagProps {
   campaignId: CampaignId;
@@ -17,10 +19,11 @@ export interface GuideDrawChaosBagProps {
   standalone?: boolean;
   chaosBag: ChaosBag;
   investigatorIds: string[];
+  processedCampaign?: ProcessedCampaign;
 }
 
-export default function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, chaosBag, investigatorIds }: GuideDrawChaosBagProps & NavigationProps) {
-  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag] = useGuideChaosBag({ campaignId, scenarioId, standalone });
+export default function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, chaosBag, investigatorIds, processedCampaign }: GuideDrawChaosBagProps & NavigationProps) {
+  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag] = useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign });
   useEffect(() => {
     if (scenarioCard) {
       Navigation.mergeOptions(componentId, {
@@ -33,10 +36,11 @@ export default function GuideDrawChaosBagView({ componentId, campaignId, scenari
     }
   }, [scenarioCard, componentId]);
   const theChaosBag = liveChaosBag || chaosBag;
-  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag);
+  const chaosBagResults = useChaosBagResults(campaignId);
+  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults.tarot);
   const showOdds = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone);
-  }, [componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone]);
+    showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
+  }, [componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign]);
   if (loading) {
     return <LoadingSpinner />
   }
@@ -45,6 +49,7 @@ export default function GuideDrawChaosBagView({ componentId, campaignId, scenari
       <DrawChaosBagComponent
         campaignId={campaignId}
         chaosBag={theChaosBag}
+        chaosBagResults={chaosBagResults}
         viewChaosBagOdds={showOdds}
         editViewPressed={showDialog}
         scenarioCardText={scenarioCardText}

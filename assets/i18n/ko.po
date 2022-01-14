@@ -1170,13 +1170,6 @@ msgstr "역할군"
 msgid "Search"
 msgstr "검색"
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "카드 ${ investigator.deck_requirements.size }장"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "미지의 카드: ${ req.code }"
-
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
@@ -1416,9 +1409,6 @@ msgstr ""
 
 msgid "Select Cards"
 msgstr "카드 선택"
-
-msgid "Choose additional card"
-msgstr "추가 카드 선택"
 
 msgid "The investigators must decide (choose one):"
 msgstr "조사자들은 결정해야만 합니다(하나를 선택합니다):"
@@ -2157,10 +2147,6 @@ msgid ""
 msgstr ""
 "캠페인 B\n"
 "4부 캠페인"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "커스텀"
 
 msgid "Guide not yet available"
 msgstr "가이드가 아직 사용가능하지 않습니다."
@@ -5059,6 +5045,54 @@ msgid ""
 msgstr "같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 총 수량을 초과합니다."
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr "${ scenarionName } 시나리오 완료 후"
+
+msgid "Show decks from other campaigns"
+msgstr "다른 캠페인에 속한 덱 보기"
+
+msgid "Trait Choice"
+msgstr "특성 선택"
+
+msgid "Blessed"
+msgstr "축복받은"
+
+msgid "Cursed"
+msgstr "저주받은"
+
+msgid "Blessed and Cursed"
+msgstr "축복받은, 저주받은"
+
+msgid "Select Option"
+msgstr "옵션 선택"
+
+msgid "Move to deck"
+msgstr "덱으로 이동"
+
+msgid "Unarchive standalone"
+msgstr "보관되지 않은 독립 시나리오"
+
+msgid "Archive standalone"
+msgstr "보관된 독립 시나리오"
+
+msgid "Bless / Curse"
+msgstr "축복 / 저주"
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr "오프라인 상태인 것으로 보입니다. 탭하여 네트워크 상태를 체크하세요."
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr "두 부분으로 구성된 변형 캠페인"
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr "커스텀 조사자"
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -5499,7 +5533,7 @@ msgstr "구조물"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "성약"
 
 msgctxt "trait"
 msgid "Creature"
@@ -6505,6 +6539,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr "추가 선택"
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "일시정지"
@@ -6520,6 +6558,11 @@ msgstr "뒤로 가기"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "오디오 재생"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr "재생 속도: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6553,6 +6596,10 @@ msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "없음"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "없음"
@@ -6565,10 +6612,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "심판 · XX (역위치)"
 
-msgctxt "trauma"
-msgid "None"
-msgstr "없음"
+msgctxt "campaign"
+msgid "Custom"
+msgstr "커스텀 캠페인"
 
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr "커스텀 시나리오"

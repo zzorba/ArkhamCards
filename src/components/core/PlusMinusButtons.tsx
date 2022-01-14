@@ -22,6 +22,7 @@ interface Props {
   max?: number;
   min?: number;
   style?: ViewStyle;
+  large?: boolean;
   size?: number;
   disabled?: boolean;
   disablePlus?: boolean;
@@ -55,6 +56,7 @@ export default function PlusMinusButtons({
   rounded,
   showZeroCount,
   useGestureHandler,
+  large,
 }: Props
 ) {
   const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
@@ -109,7 +111,7 @@ export default function PlusMinusButtons({
             { dialogStyle ? (
               <AppIcon
                 name="plus-button"
-                size={rounded ? 36 : 28}
+                size={rounded || large ? 36 : 28}
                 color={enabledColor}
               />
             ) : (
@@ -139,7 +141,7 @@ export default function PlusMinusButtons({
             <View opacity={0.3}>
               <AppIcon
                 name="plus-button"
-                size={rounded ? 36 : 28}
+                size={rounded || large ? 36 : 28}
                 color={colors.M}
               />
             </View>
@@ -153,7 +155,7 @@ export default function PlusMinusButtons({
         </View>
       </Touchable>
     );
-  }, [Touchable, onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
+  }, [Touchable, large, onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
 
   const minusButton = useMemo(() => {
     const width = rounded ? 40 : size * 0.8;
@@ -167,7 +169,7 @@ export default function PlusMinusButtons({
             { dialogStyle ? (
               <AppIcon
                 name="minus-button"
-                size={rounded ? 36 : 28}
+                size={rounded || large ? 36 : 28}
                 color={enabledColor}
               />
             ) : (
@@ -196,7 +198,7 @@ export default function PlusMinusButtons({
             <View opacity={0.3}>
               <AppIcon
                 name="minus-button"
-                size={rounded ? 36 : 28}
+                size={rounded || large ? 36 : 28}
                 color={colors.M}
               />
             </View>
@@ -210,7 +212,7 @@ export default function PlusMinusButtons({
         </View>
       </Touchable>
     );
-  }, [Touchable, onDecrement, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
+  }, [Touchable, onDecrement, large, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
 
   const accessibilityActions = useMemo(() => {
     return flatten([

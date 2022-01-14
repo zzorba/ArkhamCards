@@ -17,7 +17,10 @@ interface Props {
   enabled: boolean;
   exceptional: boolean;
   nonExceptional: boolean;
+  componentId: string;
 }
+
+const EMPTY_LEVELS: number[] = [];
 
 export default function XpChooser({
   onFilterChange,
@@ -27,6 +30,7 @@ export default function XpChooser({
   enabled,
   exceptional,
   nonExceptional,
+  componentId,
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
   const levelRanges = useMemo(() => {
@@ -42,7 +46,7 @@ export default function XpChooser({
         xyz[1] >= levels[0] && xyz[1] <= levels[1]) {
       return [idx];
     }
-    return [];
+    return EMPTY_LEVELS;
   }), [levelRanges, enabled, levels]);
   const buttons = useMemo(() => map(levelRanges, xyz => {
     const startXp = xyz[0];
@@ -83,6 +87,7 @@ export default function XpChooser({
         onPress={updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}
+        componentId={componentId}
       />
     </View>
   );

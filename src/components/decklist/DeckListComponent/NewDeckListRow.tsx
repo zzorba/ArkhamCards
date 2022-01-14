@@ -22,7 +22,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -89,8 +89,13 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = usePlayerCards(deck.deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => (!details && deck && cards) ? parseBasicDeck(deck.deck, cards, deck.previousDeck) : undefined, [deck, cards, details]);
+  const cards = useLatestDeckCards(deck);
+  const parsedDeck = useMemo(() => {
+    if (!details && deck && cards) {
+      return parseBasicDeck(deck.deck, cards, deck.previousDeck);
+    }
+    return undefined;
+  }, [deck, cards, details]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (

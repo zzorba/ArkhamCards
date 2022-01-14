@@ -280,7 +280,7 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  if (!deck.previousDeckId || !previousDeck) {
+  if (!previousDeck) {
     return undefined;
   }
   const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||

@@ -17,11 +17,10 @@ import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
 import { updateCampaignInvestigatorTrauma } from '@components/campaign/actions';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
-import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDeck } from '@data/hooks';
-import { useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import useDeckUpgradeAction from './useDeckUpgradeAction';
 import { useDeckActions } from '@data/remote/decks';
@@ -29,6 +28,7 @@ import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
+import useSingleCard from '@components/card/useSingleCard';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -52,7 +52,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const storyEncounterCodes = useMemo(() => latestScenario && latestScenario.scenarioCode ? [latestScenario.scenarioCode] : [], [latestScenario]);
 
   const [storyCounts, updateStoryCounts] = useSlots({});
-  const investigators = useInvestigatorCards(deck?.deck.taboo_id);
   const dispatch: AsyncDispatch = useDispatch();
 
   const [traumaUpdate, setTraumaUpdate] = useState<Trauma | undefined>();
@@ -76,12 +75,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     }
   }, componentId, [save]);
 
-  const investigator: Card | undefined = useMemo(() => {
-    if (!deck || !investigators) {
-      return undefined;
-    }
-    return investigators[deck.deck.investigator_code];
-  }, [deck, investigators]);
+  const [investigator] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
 
   const deckUpgradeComplete = useCallback(async(deck: Deck) => {
     if (campaignId && traumaUpdate) {

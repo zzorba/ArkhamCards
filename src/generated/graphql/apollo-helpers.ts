@@ -626,17 +626,21 @@ export type campaign_variance_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cardKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'exceptional' | 'exile' | 'faction_code' | 'health' | 'is_unique' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | cardKeySpecifier)[];
+export type cardKeySpecifier = ('clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'double_sided' | 'encounter_code' | 'encounter_position' | 'exceptional' | 'exile' | 'faction_code' | 'health' | 'illustrator' | 'is_unique' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | cardKeySpecifier)[];
 export type cardFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
+	double_sided?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	exceptional?: FieldPolicy<any> | FieldReadFunction<any>,
 	exile?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	is_unique?: FieldPolicy<any> | FieldReadFunction<any>,
 	myriad?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -646,6 +650,9 @@ export type cardFieldPolicy = {
 	permanent?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -659,6 +666,7 @@ export type cardFieldPolicy = {
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -683,10 +691,12 @@ export type card_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_avg_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_avg_fieldsKeySpecifier)[];
+export type card_avg_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_avg_fieldsKeySpecifier)[];
 export type card_avg_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -697,21 +707,28 @@ export type card_avg_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_max_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_max_fieldsKeySpecifier)[];
+export type card_max_fieldsKeySpecifier = ('clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'illustrator' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'type_code' | card_max_fieldsKeySpecifier)[];
 export type card_max_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -725,22 +742,29 @@ export type card_max_fieldsFieldPolicy = {
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	type_code?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_min_fieldsKeySpecifier = ('code' | 'cost' | 'deck_limit' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'subtype_code' | 'type_code' | card_min_fieldsKeySpecifier)[];
+export type card_min_fieldsKeySpecifier = ('clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'faction_code' | 'health' | 'illustrator' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'type_code' | card_min_fieldsKeySpecifier)[];
 export type card_min_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -754,6 +778,7 @@ export type card_min_fieldsFieldPolicy = {
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	type_code?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -796,10 +821,12 @@ export type card_pack_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_fieldsKeySpecifier)[];
+export type card_stddev_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_stddev_fieldsKeySpecifier)[];
 export type card_stddev_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -810,12 +837,15 @@ export type card_stddev_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_pop_fieldsKeySpecifier)[];
+export type card_stddev_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_stddev_pop_fieldsKeySpecifier)[];
 export type card_stddev_pop_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -826,12 +856,15 @@ export type card_stddev_pop_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_stddev_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_stddev_samp_fieldsKeySpecifier)[];
+export type card_stddev_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_stddev_samp_fieldsKeySpecifier)[];
 export type card_stddev_samp_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -842,12 +875,15 @@ export type card_stddev_samp_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_sum_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_sum_fieldsKeySpecifier)[];
+export type card_sum_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_sum_fieldsKeySpecifier)[];
 export type card_sum_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -858,10 +894,14 @@ export type card_sum_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_textKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_textKeySpecifier)[];
+export type card_textKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_textKeySpecifier)[];
 export type card_textFieldPolicy = {
+	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -883,8 +923,11 @@ export type card_text_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_text_max_fieldsKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_max_fieldsKeySpecifier)[];
+export type card_text_max_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_max_fieldsKeySpecifier)[];
 export type card_text_max_fieldsFieldPolicy = {
+	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -895,8 +938,11 @@ export type card_text_max_fieldsFieldPolicy = {
 	text?: FieldPolicy<any> | FieldReadFunction<any>,
 	traits?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_text_min_fieldsKeySpecifier = ('code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_min_fieldsKeySpecifier)[];
+export type card_text_min_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'code' | 'encounter_name' | 'flavor' | 'locale' | 'name' | 'slot' | 'subname' | 'text' | 'traits' | card_text_min_fieldsKeySpecifier)[];
 export type card_text_min_fieldsFieldPolicy = {
+	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -912,10 +958,12 @@ export type card_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_var_pop_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_pop_fieldsKeySpecifier)[];
+export type card_var_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_var_pop_fieldsKeySpecifier)[];
 export type card_var_pop_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -926,12 +974,15 @@ export type card_var_pop_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_var_samp_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_var_samp_fieldsKeySpecifier)[];
+export type card_var_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_var_samp_fieldsKeySpecifier)[];
 export type card_var_samp_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -942,12 +993,15 @@ export type card_var_samp_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_variance_fieldsKeySpecifier = ('cost' | 'deck_limit' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | card_variance_fieldsKeySpecifier)[];
+export type card_variance_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | card_variance_fieldsKeySpecifier)[];
 export type card_variance_fieldsFieldPolicy = {
+	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
 	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	doom?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -958,7 +1012,8 @@ export type card_variance_fieldsFieldPolicy = {
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_wild?: FieldPolicy<any> | FieldReadFunction<any>,
-	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>
+	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
+	stage?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type chaos_bag_resultKeySpecifier = ('bless' | 'campaign' | 'created_at' | 'curse' | 'drawn' | 'id' | 'sealed' | 'tarot' | 'tarot_mode' | 'totalDrawn' | 'updated_at' | chaos_bag_resultKeySpecifier)[];
 export type chaos_bag_resultFieldPolicy = {

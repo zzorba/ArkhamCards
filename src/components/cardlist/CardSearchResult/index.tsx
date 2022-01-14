@@ -323,6 +323,7 @@ function CardSearchResult(props: Props) {
       (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
       <Touchable
+        activeOpacity={0.7}
         containerStyle={{ flex: 1 }}
         style={[styles.row, styles.fullHeight]}
         onPress={handleCardPress}

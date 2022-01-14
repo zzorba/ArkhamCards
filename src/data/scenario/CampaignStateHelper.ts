@@ -40,8 +40,7 @@ export interface CampaignGuideActions {
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
   setBinaryAchievement: (achievementId: string, value: boolean) => void;
-  incCountAchievement: (achievementId: string, max?: number) => void;
-  decCountAchievement: (achievementId: string, max?: number) => void;
+  setCountAchievement: (achievementId: string, value: number) => void;
 }
 
 export default class CampaignStateHelper {
@@ -188,12 +187,8 @@ export default class CampaignStateHelper {
     this.actions.setBinaryAchievement(achievementId, value);
   }
 
-  incCountAchievement(achievementId: string, max?: number) {
-    this.actions.incCountAchievement(achievementId, max);
-  }
-
-  decCountAchievement(achievementId: string) {
-    this.actions.decCountAchievement(achievementId);
+  setCountAchievement(achievementId: string, value: number) {
+    this.actions.setCountAchievement(achievementId, value);
   }
 
   undo(scenarioId: string) {
@@ -229,6 +224,14 @@ export default class CampaignStateHelper {
     } else {
       this.actions.undo(scenarioId);
     }
+  }
+
+  scenarioEntries(id: ScenarioId): GuideInput[] {
+    return this.state.inputs(i => !!i.scenario && i.scenario === id.encodedScenarioId);
+  }
+
+  linkedEntries(): GuideInput[] {
+    return this.linkedState?.inputs(i => i.type === 'campaign_link') || [];
   }
 
   private entry(type: string, step?: string, scenario?: string): GuideInput | undefined {

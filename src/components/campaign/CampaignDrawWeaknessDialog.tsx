@@ -24,7 +24,7 @@ import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useFlag, useInvestigators, useNavigationButtonPressed, useSlots, useLatestDeckCards } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
@@ -64,9 +64,8 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
-  campaign?.latestDecks
-  const investigators = useInvestigatorCards();
-  const cards = usePlayerCards();
+  const investigatorsCodes = useMemo(() => map(campaign?.latestDecks(), d => d.investigator), [campaign]);
+  const investigators = useInvestigators(investigatorsCodes);
   const latestDecks = campaign?.latestDecks();
   const playerCount = useMemo(() => {
     if (!campaign) {
@@ -162,6 +161,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     updatePendingAssignedCards({ type: 'sync', slots: assignedCards });
   }, [setPendingNextCard, updatePendingAssignedCards]);
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
+  const cards = useLatestDeckCards(saveWeakness ? undefined : selectedDeck);
   const saveDrawnCard = useCallback(() => {
     if (!pendingNextCard) {
       return;

@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 
-export const ENABLE_SIDE_DECK = false;
+export const ENABLE_SIDE_DECK = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = true;
@@ -256,7 +256,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '-3': 3,
   '-4': 2,
   '-5': 2,
-  '-6': 1,
+  '-6': 2,
   '-7': 1,
   '-8': 1,
   frost: 8,

@@ -1,17 +1,16 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { filter, head, find, flatMap, forEach, groupBy, sortBy, keys, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
+import { filter, head, find, flatMap, forEach, groupBy, sortBy, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, msgid, ngettext, t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
-import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
 import { CampaignDifficulty } from '@actions/types';
 import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
-import space, { isTablet, m, s } from '@styles/space';
+import space, { isTablet, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters, useFlag, useToggles } from '@components/core/hooks';
 import { useChaosBagResults } from '@data/hooks';
@@ -40,6 +39,9 @@ import RoundButton from '@components/core/RoundButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { flattenChaosBag } from '../campaignUtil';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import useTarotCardDialog from '@components/campaign/useTarotCardDialog';
+import { useChaosBagActions } from '@data/remote/chaosBag';
+import useSealTokenButton from '../useSealTokenButton';
 
 
 interface Props {
@@ -786,7 +788,7 @@ export default function OddsCalculatorComponent({
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
   const chaosBagResults = useChaosBagResults(campaign.id);
-  const [chaosBag, sealedChaosBag] = useMemo(() => {
+  const chaosBag = useMemo(() => {
     const sealed: ChaosBag = {};
     forEach(chaosBagResults.sealedTokens, token => {
       sealed[token.icon] = (sealed[token.icon] || 0) + 1;
@@ -802,7 +804,7 @@ export default function OddsCalculatorComponent({
     });
     newChaosBag.bless = (chaosBagResults.blessTokens || 0) - (sealed.bless || 0);
     newChaosBag.curse = (chaosBagResults.curseTokens || 0) - (sealed.curse || 0);
-    return [newChaosBag, sealed];
+    return newChaosBag;
   }, [originalChaosBag, chaosBagResults]);
   const { backgroundStyle, borderStyle, colors, typography, width } = useContext(StyleContext);
   const [modifiedSkill, incModifiedSkill, decModifiedSkill] = useCounter(3, { min: 0 });
@@ -1009,7 +1011,9 @@ export default function OddsCalculatorComponent({
       </>
     );
   }, [specialTokenValues, xValue, tokenFlags, toggleTokenFlag, incXValue, decXValue]);
-
+  const actions = useChaosBagActions();
+  const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId: campaign.id });
+  const [sealButton, sealDialog] = useSealTokenButton({ actions, chaosBag, chaosBagResults, campaignId: campaign.id });
   if (loading) {
     return (
       <LoadingSpinner />
@@ -1077,16 +1081,6 @@ export default function OddsCalculatorComponent({
         />
         <View style={[styles.line, borderStyle, space.marginSideS]} />
         { specialTokenInputs }
-        { keys(sealedChaosBag).length > 0 && (
-          <View style={[styles.sectionRow, borderStyle]}>
-            <Text style={typography.small}>{ t`Sealed tokens` }</Text>
-            <ChaosBagLine
-              chaosBag={sealedChaosBag}
-              width={width - m * 2}
-              sealed
-            />
-          </View>
-        ) }
         <View style={[space.paddingTopS, space.paddingSideS]}>
           { map(allInvestigators, (investigator, index) => (
             <InvestigatorRadioChoice
@@ -1103,8 +1097,14 @@ export default function OddsCalculatorComponent({
             />
           )) }
         </View>
+        <View style={space.paddingSideS}>
+          { sealButton }
+          { tarotButton }
+        </View>
       </ScrollView>
       { dialog }
+      { tarotDialog }
+      { sealDialog }
     </View>
   );
 }
@@ -1113,10 +1113,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-  },
-  sectionRow: {
-    padding: s,
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   line: {
     borderBottomWidth: StyleSheet.hairlineWidth,

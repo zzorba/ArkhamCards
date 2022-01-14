@@ -3,7 +3,7 @@ import { t } from 'ttag';
 
 import { ScenarioProps } from '@components/campaignguide/ScenarioView';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import { ProcessedScenario } from '@data/scenario';
+import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import { CampaignId } from '@actions/types';
 
 export function showScenario(
@@ -14,7 +14,8 @@ export function showScenario(
   subtitle?: string,
   showLinkedScenario?: (
     scenarioId: string
-  ) => void
+  ) => void,
+  processedCampaign?: ProcessedCampaign
 ) {
   const scenarioId = scenario.scenarioGuide.id;
   if (scenario.type === 'playable') {
@@ -27,6 +28,7 @@ export function showScenario(
         campaignId,
         scenarioId,
         showLinkedScenario,
+        processedCampaign,
       },
       options: {
         topBar: {

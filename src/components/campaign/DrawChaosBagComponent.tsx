@@ -2,119 +2,141 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
-import { jt, t, c } from 'ttag';
+import { jt, t } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
-import { adjustBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagReleaseAllSealed, updateChaosBagResetBlessCurse, updateChaosBagSealTokens, updateChaosBagTarotMode } from './actions';
-import SealTokenButton from './SealTokenButton';
+import { setBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagResetBlessCurse } from './actions';
 import { flattenChaosBag } from './campaignUtil';
-import space, { s, xs } from '@styles/space';
+import space, { s, xs, isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useChaosBagResults } from '@data/hooks';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import useSealTokenDialog from './useSealTokenDialog';
+import useSealTokenButton from './useSealTokenButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
-import { TINY_PHONE } from '@styles/sizes';
 import { useChaosBagActions } from '@data/remote/chaosBag';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { difficultyString } from './constants';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
-import { usePickerDialog } from '@components/deck/dialogs';
+import useTarotCardDialog from './useTarotCardDialog';
+import useNetworkStatus from '@components/core/useNetworkStatus';
+import COLORS from '@styles/colors';
+import { useDialog } from '@components/deck/dialogs';
+import { useCounter } from '@components/core/hooks';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 interface Props {
   campaignId: CampaignId;
   chaosBag: ChaosBag;
   difficulty?: CampaignDifficulty;
+  chaosBagResults: ChaosBagResultsT;
   scenarioCardText?: string;
   viewChaosBagOdds: () => void;
   editViewPressed: () => void;
   editable?: boolean;
 }
 
-const SHOW_TAROT_MODE = true;
-
-function getTarotString(tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) {
-  if (!tarot) {
-    return t`Tarot card`;
-  }
-  const cards = {
-    [Chaos_Bag_Tarot_Mode_Enum.Judgement]: t`Judgement · XX`,
-    [Chaos_Bag_Tarot_Mode_Enum.JudgementInverted]: t`Judgement · XX (Inverted)`,
-  };
-  const card = cards[tarot];
-  return t`Tarot card: ${card}`;
-}
-
-function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'curse'; min: number; value: number; inc: () => void; dec: () => void; }) {
-  const { typography } = useContext(StyleContext);
-  const element = useMemo(() => {
-    const textColor = type === 'bless' ? '#394852' : '#F5F0E1';
-    return (
-      <View style={[{ borderRadius: 4, flexDirection: 'row', alignItems: 'center', backgroundColor: type === 'bless' ? '#cfb13a' : '#7B5373' },
-        TINY_PHONE ? space.paddingSideS : space.paddingSideM, space.paddingTopXs, space.marginRightXs, space.marginLeftXs]}>
-        <Text style={[typography.cardName, { color: textColor, minWidth: 32 }, typography.center, space.paddingRightXs]}>
-          { value === 0 ? '0' : `×${value}`}
-        </Text>
-        <View style={space.paddingBottomS} accessibilityLabel={type === 'bless' ? t`Bless` : t`Curse`}>
-          <ArkhamIcon name={type} size={28} color={textColor} />
-        </View>
-      </View>
-    );
-  }, [type, value, typography]);
-  return (
-    <PlusMinusButtons
-      dialogStyle
-      countRender={element}
-      count={value}
-      max={10}
-      min={min}
-      onIncrement={inc}
-      onDecrement={dec}
-    />
-  );
-}
-
-function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
+function BlessCurseButton({ type, value, onPress }: { type: 'bless' | 'curse'; value: number; onPress?: () => void }) {
   const { colors, typography } = useContext(StyleContext);
-  const doNotRemove = <Text key="do_not_remove" style={{ color: colors.warn }}>{t`do not remove`}</Text>;
-  const [height, setHeight] = useState(40);
-  const updateSize = useCallback((event: LayoutChangeEvent) => {
-    setHeight(event.nativeEvent.layout.height);
-  }, [setHeight]);
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View onLayout={updateSize} style={[
-        space.paddingS,
-        space.paddingSideM,
-        styles.removeBlessCurseButton,
-        { borderRadius: height / 2, borderColor: colors.M },
-      ]}>
-        <ArkhamIcon size={24} color={colors.token.bless} name="bless" />
-        <ArkhamIcon size={24} color={colors.token.curse} name="curse" />
-        <Text style={[space.marginLeftS, typography.cardTraits]}>{jt`Return, but ${doNotRemove} Bless/Curse`}</Text>
+    <TouchableOpacity onPress={onPress} style={[{ flex: 1 }, space.marginSideXs]}>
+      <View style={[{ backgroundColor: colors.L15, borderRadius: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flex: 1 }, space.paddingS]}>
+        <Text style={typography.cardName}>×{value}</Text>
+        <View style={[
+          { borderRadius: 16, width: 32, height: 32, backgroundColor: colors.tokenFill[type], flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+          space.marginLeftS,
+          type === 'curse' ? space.paddingBottomXs : undefined,
+        ]}>
+          <ArkhamIcon name={type} size={26} color={type === 'bless' ? COLORS.D20 : COLORS.L20} />
+        </View>
       </View>
     </TouchableOpacity>
   );
 }
 
+function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'curse'; min: number; value: number; inc: () => void; dec: () => void; }) {
+  const { colors, typography } = useContext(StyleContext);
+  const element = useMemo(() => {
+    return (
+      <View style={[{ flexDirection: 'row', alignItems: 'center' }, space.paddingVerticalXs, space.marginSideM]}>
+        <Text style={[typography.counter, { color: colors.D20, minWidth: 32 }, typography.center, space.paddingRightXs]}>
+          { value === 0 ? '0' : `${value}×`}
+        </Text>
+        <ChaosToken size="tiny" iconKey={type} />
+      </View>
+    );
+  }, [value, colors, type, typography]);
+  return (
+    <View style={[space.paddingVerticalXs, { flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }]}>
+      <PlusMinusButtons
+        dialogStyle
+        large
+        countRender={element}
+        count={value}
+        max={10}
+        min={min}
+        onIncrement={inc}
+        onDecrement={dec}
+      />
+    </View>
+  );
+}
+
+function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  const doNotRemove = <Text key="do_not_remove" style={{ color: colors.warn }}>{t`do not remove`}</Text>;
+  const [height, setHeight] = useState(fontScale * 18 * 2 + s * 2);
+  const updateSize = useCallback((event: LayoutChangeEvent) => {
+    setHeight(event.nativeEvent.layout.height);
+  }, [setHeight]);
+  return (
+    <View style={{ flex: 1 }}>
+      <TouchableOpacity onPress={onPress}>
+        <View
+          onLayout={updateSize}
+          style={[
+            space.paddingS,
+            { paddingLeft: height / 2, paddingRight: height / 2 - s * 2 },
+            styles.removeBlessCurseButton,
+            { borderRadius: height / 2, borderColor: colors.M },
+          ]}>
+          <Text style={[typography.cardTraits]} numberOfLines={2} ellipsizeMode="tail">{jt`Return, but ${doNotRemove} Bless/Curse`}</Text>
+          <View style={{ width: 48, flexDirection: 'row' }}>
+            <ArkhamIcon size={24} color={colors.token.bless} name="bless" />
+            <ArkhamIcon size={24} color={colors.token.curse} name="curse" />
+          </View>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function DrawnChaosTokenButton({ onPress, token, small, index }: { token: ChaosTokenType; onPress: (index: number) => void; small?: boolean; index: number }) {
+  const handlePress = useCallback(() => {
+    onPress(index);
+  }, [onPress, index]);
+  return (
+    <Pressable onPress={handlePress}>
+      <ChaosToken iconKey={token} size={small ? 'small' : undefined} />
+    </Pressable>
+  );
+}
+
+
 const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
 
 export default function DrawChaosBagComponent(props: Props) {
-  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText } = props;
-  const { backgroundStyle, fontScale, colors, typography } = useContext(StyleContext);
+  const [{ isConnected }, refreshNetworkStatus] = useNetworkStatus();
+  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText, chaosBagResults } = props;
+  const { backgroundStyle, fontScale, colors, typography, width } = useContext(StyleContext);
   const dispatch = useDispatch();
-  const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
   const actions = useChaosBagActions();
-  const [sealDialog, showSealDialog] = useSealTokenDialog(campaignId, chaosBag, chaosBagResults, actions);
+  const [sealButton, sealDialog] = useSealTokenButton({ campaignId, chaosBag, chaosBagResults, actions });
   const clearTokens = useCallback((removeBlessCurse?: boolean) => {
     const blessToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'bless' ? 1 : 0) : 0;
     const curseToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'curse' ? 1 : 0) : 0;
@@ -141,31 +163,7 @@ export default function DrawChaosBagComponent(props: Props) {
     return shuffle(weightedList).slice(0, drawTokens);
   }, [setIsChaosBagEmpty, chaosBagResults.tarot]);
 
-  const setTarot = useCallback((tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => {
-    dispatch(updateChaosBagTarotMode(actions, campaignId, tarot, chaosBagResults));
-  }, [dispatch, actions, campaignId, chaosBagResults]);
-  const [tarotDialog, showTarotDialog] = usePickerDialog({
-    title: t`Select tarot card`,
-    description: t`Which tarot card is impacting the chaos bag?`,
-    selectedValue: chaosBagResults.tarot,
-    items: [
-      {
-        title: c('Tarot Card').t`None`,
-        value: undefined,
-      },
-      {
-        title: c('Tarot Card').t`Judgement · XX`,
-        description: t`Replace a skull with a 0 token.`,
-        value: Chaos_Bag_Tarot_Mode_Enum.Judgement,
-      },
-      {
-        title: c('Tarot Card').t`Judgement · XX (Inverted)`,
-        description: t`Replace highest non-negative token with a skull.`,
-        value: Chaos_Bag_Tarot_Mode_Enum.JudgementInverted,
-      },
-    ],
-    onValueChange: setTarot,
-  });
+  const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId });
   const drawToken = useCallback((count: number = 1) => {
     const currentChaosBag = cloneDeep(chaosBag);
     currentChaosBag.bless = chaosBagResults.blessTokens || 0;
@@ -205,10 +203,6 @@ export default function DrawChaosBagComponent(props: Props) {
     drawToken();
   }, [drawToken]);
 
-  const releaseAllTokens = useCallback(() => {
-    dispatch(updateChaosBagReleaseAllSealed(actions, campaignId, chaosBagResults));
-  }, [campaignId, actions, dispatch, chaosBagResults]);
-
   useEffect(() => {
     KeyEvent.onKeyUpListener((keyEvent: { keyCode: string; pressedKey: string; action: string }) => {
       switch(keyEvent.pressedKey) {
@@ -240,134 +234,127 @@ export default function DrawChaosBagComponent(props: Props) {
     dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));
   }, [campaignId, dispatch, actions, chaosBagResults]);
 
-  const incBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'inc'));
-  }, [actions, campaignId, dispatch]);
+  const [bless, incBless, decBless, setBless] = useCounter(chaosBagResults.blessTokens || 0, { max: 10 });
+  const [curse, incCurse, decCurse, setCurse] = useCounter(chaosBagResults.curseTokens || 0, { max: 10 })
 
-  const decBless = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'bless', 'dec'));
-  }, [actions, campaignId, dispatch]);
+  const returnToken = useCallback((index: number) => {
+    const drawnTokens = [...chaosBagResults.drawnTokens];
+    dispatch(updateChaosBagDrawToken(actions, campaignId, filter(drawnTokens, (token, idx) => idx !== index), chaosBagResults));
+  }, [dispatch, actions, campaignId, chaosBagResults])
 
-  const incCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'inc'));
-  }, [actions, campaignId, dispatch]);
-
-  const decCurse = useCallback(() => {
-    dispatch(adjustBlessCurseChaosBagResults(actions, campaignId, 'curse', 'dec'));
-  }, [actions, campaignId, dispatch]);
-
-  const drawnTokens = useMemo(() => {
+  const drawnTokensContent = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 1) {
       return reverse(map(drawnTokens.slice(0, drawnTokens.length - 1), (token, index) => {
         return (
-          <View style={space.paddingSideXs} key={index}>
-            <ChaosToken iconKey={token} size="small" />
+          <View style={space.paddingSideXs} key={`${token}-${index}`}>
+            <DrawnChaosTokenButton onPress={returnToken} index={index} token={token} small />
           </View>
         );
       }));
     }
     return null;
-  }, [chaosBagResults.drawnTokens]);
+  }, [chaosBagResults.drawnTokens, returnToken]);
 
   const chaosToken = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     const iconKey = drawnTokens[drawnTokens.length - 1] || undefined;
-    return (
-      <Pressable onPress={handleDrawTokenPressed}>
-        <ChaosToken iconKey={iconKey || 'tap'} shadow />
-      </Pressable>
-    );
-  }, [chaosBagResults.drawnTokens, handleDrawTokenPressed]);
-
-  const releaseSealedToken = useCallback((id: string) => {
-    const newSealedTokens = filter(chaosBagResults.sealedTokens || [], token => token.id !== id);
-    dispatch(updateChaosBagSealTokens(actions, campaignId, chaosBagResults, newSealedTokens));
-  }, [dispatch, campaignId, actions, chaosBagResults]);
-  const sealedTokens = useMemo(() => {
-    const sealedTokens = chaosBagResults.sealedTokens;
-    return map(sealedTokens, token => {
+    if (drawnTokens.length <= 1) {
       return (
-        <View style={space.paddingXs} key={token.id}>
-          <SealTokenButton
-            sealed
-            onToggle={releaseSealedToken}
-            id={token.id}
-            iconKey={token.icon}
-          />
-        </View>
+        <Pressable onPress={handleDrawTokenPressed}>
+          <ChaosToken iconKey={iconKey || 'tap'} shadow />
+        </Pressable>
       );
-    });
-  }, [releaseSealedToken, chaosBagResults.sealedTokens]);
-
-  const drawButton = useMemo(() => {
+    }
+    return (
+      <DrawnChaosTokenButton
+        onPress={returnToken}
+        token={drawnTokens[drawnTokens.length - 1]}
+        index={drawnTokens.length - 1}
+      />
+    )
+  }, [chaosBagResults.drawnTokens, returnToken, handleDrawTokenPressed]);
+  const drawAnotherButton = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
-    if (drawnTokens.length > 0) {
-      if (isChaosBagEmpty) {
-        return (
-          <View style={[styles.advancedButton, styles.advancedButtonLeft]}>
-            <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
-              <Text style={[typography.cardTraits, typography.right]}>
-                { t`Chaos bag is empty` }
-              </Text>
-              <ChaosToken size="tiny" />
-            </View>
-          </View>
-        );
-      }
+    if (drawnTokens.length === 0) {
+      return null;
+    }
+    if (isChaosBagEmpty) {
       return (
-        <View style={[styles.advancedButton, styles.advancedButtonLeft]}>
-          <TouchableWithoutFeedback onPress={handleAddAndDrawAgainPressed}>
-            <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
-              <Text style={[typography.cardTraits, typography.right, space.paddingRightS]}>
-                { t`Draw another` }
-              </Text>
-              <ChaosToken iconKey="another" size="tiny" shadow />
-            </View>
-          </TouchableWithoutFeedback>
+        <View style={{ flex: 1 }}>
+          <View style={[space.paddingSideS, styles.advancedButtonStacked]}>
+            <Text style={[typography.cardTraits, typography.right, typography.center, { minHeight: fontScale * 18 * 2 }, space.marginTopXs]}>
+              { t`Chaos bag is empty` }
+            </Text>
+          </View>
         </View>
       );
     }
     return (
-      <View style={[styles.advancedButton, styles.advancedButtonLeft]}>
+      <View style={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={handleAddAndDrawAgainPressed}>
+          <View style={[space.paddingSideS, styles.advancedButtonStacked]}>
+            <ChaosToken iconKey="another" size="tiny" shadow />
+            <Text style={[typography.cardTraits, typography.right, typography.center, { minHeight: fontScale * 18 * 2 }, space.marginTopXs]} numberOfLines={2}>
+              { t`Draw another` }
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  }, [chaosBagResults.drawnTokens, fontScale, handleAddAndDrawAgainPressed, typography, isChaosBagEmpty]);
+  const viewButton = useMemo(() => {
+    const drawnTokens = chaosBagResults.drawnTokens;
+    return (
+      <View style={[styles.advancedButton, styles.advancedButtonLeft, { paddingTop: fontScale * 18 * 2 + xs }]}>
         <TouchableWithoutFeedback onPress={editViewPressed}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
-            <Text style={[typography.cardTraits, typography.right, space.paddingRightS, { flex: 1 }]} numberOfLines={2}>
-              { editable ? t`Edit chaos bag` : t`View chaos bag` }
-            </Text>
+            { drawnTokens.length === 0 && (
+              <Text style={[typography.cardTraits, typography.right, space.paddingRightS, { flex: 1 }]} numberOfLines={2}>
+                { editable ? t`Edit chaos bag` : t`View chaos bag` }
+              </Text>
+            ) }
             <ChaosToken iconKey="bag" size="tiny" shadow />
           </View>
         </TouchableWithoutFeedback>
       </View>
     );
-  }, [chaosBagResults.drawnTokens, handleAddAndDrawAgainPressed, editable, editViewPressed, typography, isChaosBagEmpty]);
-
-  const clearButton = useMemo(() => {
+  }, [chaosBagResults.drawnTokens, fontScale, editable, editViewPressed, typography]);
+  const returnButton = useMemo(() => {
+    const drawnTokens = chaosBagResults.drawnTokens;
+    if (drawnTokens.length === 0) {
+      return null;
+    }
+    return (
+      <View style={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
+          <View style={[space.paddingSideS, styles.advancedButtonStacked]}>
+            <ChaosToken iconKey="return" size="tiny" />
+            <Text style={[typography.cardTraits, space.marginTopXs, typography.center, { minHeight: fontScale * 18 * 2 }]} numberOfLines={2}>
+              { t`Return tokens` }
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  }, [chaosBagResults.drawnTokens, typography, handleClearTokensPressed, fontScale])
+  const oddsButton = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     return (
-      <View style={[styles.advancedButton, styles.advancedButtonRight]}>
-        { (drawnTokens.length >= 1) ? (
-          <TouchableWithoutFeedback onPress={handleClearTokensPressed}>
-            <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
-              <ChaosToken iconKey="return" size="tiny" />
-              <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
-                { t`Return tokens` }
-              </Text>
-            </View>
-          </TouchableWithoutFeedback>
-        ) : (
-          <TouchableWithoutFeedback onPress={viewChaosBagOdds}>
-            <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
-              <ChaosToken iconKey="odds" size="tiny" />
+      <View style={[styles.advancedButton, styles.advancedButtonRight, { paddingTop: fontScale * 18 * 2 + xs }]}>
+        <TouchableWithoutFeedback onPress={viewChaosBagOdds}>
+          <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
+            <ChaosToken iconKey="odds" size="tiny" />
+            { drawnTokens.length === 0 && (
               <Text style={[typography.cardTraits, space.paddingLeftS, { flex: 1 }]} numberOfLines={2}>
                 { t`Odds calculator` }
               </Text>
-            </View>
-          </TouchableWithoutFeedback>
-        ) }
+            ) }
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     );
-  }, [chaosBagResults.drawnTokens, typography, handleClearTokensPressed, viewChaosBagOdds]);
+  }, [chaosBagResults.drawnTokens, fontScale, typography, viewChaosBagOdds]);
 
   const returnBlessCurse = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -379,85 +366,72 @@ export default function DrawChaosBagComponent(props: Props) {
       <ReturnBlessCurseButton key="return" onPress={handleClearTokensKeepBlessAndCursedPressed} />
     );
   }, [chaosBagResults.drawnTokens, handleClearTokensKeepBlessAndCursedPressed]);
-  const blurseSection = useMemo(() => {
-    return (
-      <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideS, { borderColor: colors.L20 }]}>
+  const maybeSyncBlurse = useCallback(() => {
+    if (bless !== (chaosBagResults.blessTokens || 0) || curse !== (chaosBagResults.curseTokens || 0)) {
+      dispatch(setBlessCurseChaosBagResults(actions, campaignId, bless, curse));
+    }
+  }, [dispatch, actions, campaignId, bless, curse, chaosBagResults.blessTokens, chaosBagResults.curseTokens]);
+  const { dialog: blurseDialog, showDialog: showBlurseDialog } = useDialog({
+    title: t`Bless / Curse`,
+    content: (
+      <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <BlessCurseCounter
-          value={chaosBagResults.blessTokens || 0}
+          value={bless}
           inc={incBless}
           dec={decBless}
           min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'bless' ? 1 : 0)}
           type="bless"
         />
         <BlessCurseCounter
-          value={chaosBagResults.curseTokens || 0}
+          value={curse}
           inc={incCurse}
           dec={decCurse}
           min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'curse' ? 1 : 0)}
           type="curse"
         />
       </View>
+    ),
+    dismiss: {
+      onPress: maybeSyncBlurse,
+    },
+  });
+  const showBlurseDialogWrapper = useCallback(() => {
+    setBless(chaosBagResults.blessTokens || 0);
+    setCurse(chaosBagResults.curseTokens || 0);
+    showBlurseDialog();
+  }, [setBless, setCurse, chaosBagResults.blessTokens, chaosBagResults.curseTokens, showBlurseDialog]);
+  const blurseSection = useMemo(() => {
+    return (
+      <View style={[styles.blessCurseBlock, space.paddingTopM, space.paddingBottomM, space.paddingSideXs, { borderColor: colors.L20 }]}>
+        <BlessCurseButton
+          onPress={showBlurseDialogWrapper}
+          value={chaosBagResults.blessTokens || 0}
+          type="bless"
+        />
+        <BlessCurseButton
+          onPress={showBlurseDialogWrapper}
+          value={chaosBagResults.curseTokens || 0}
+          type="curse"
+        />
+      </View>
     );
-  }, [incCurse, decCurse, incBless, decBless, chaosBagResults.blessTokens, chaosBagResults.curseTokens, chaosBagResults.sealedTokens, colors]);
-  const hasSealedTokens = chaosBagResults.sealedTokens.length;
+  }, [showBlurseDialogWrapper, chaosBagResults.blessTokens, chaosBagResults.curseTokens, colors]);
   const hasBlessCurse = !((chaosBagResults.blessTokens || 0) === 0 && (chaosBagResults.curseTokens || 0) === 0);
   const advancedSection = useMemo(() => {
     return (
       <View style={[space.paddingS]}>
-        { hasSealedTokens ? (
-          <RoundedFactionBlock
-            faction="neutral"
-            header={
-              <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
-                <View style={space.paddingRightM}>
-                  <AppIcon name="seal" size={32} color={colors.D10} />
-                </View>
-                <Text style={typography.cardName}>
-                  { t`Sealed Tokens` }
-                </Text>
-              </View>
-            }
-            footer={
-              <RoundedFooterDoubleButton
-                iconA="expand"
-                titleA={t`Seal tokens`}
-                onPressA={showSealDialog}
-                iconB="dismiss"
-                titleB={t`Release all`}
-                onPressB={releaseAllTokens}
-              />}
-          >
-            <View style={[space.paddingTopS, space.paddingBottomS, styles.sealedTokenRow]}>
-              { sealedTokens }
-            </View>
-          </RoundedFactionBlock>
-        ) : (
-          <View style={space.paddingBottomS}>
-            <DeckButton icon="seal" title={t`Seal tokens`} onPress={showSealDialog} color="dark_gray" />
-          </View>
-        ) }
-        { !!SHOW_TAROT_MODE && (
-          <View style={space.paddingBottomS}>
-            <DeckButton
-              icon="card-outline"
-              title={getTarotString(chaosBagResults.tarot)}
-              color="dark_gray"
-              onPress={showTarotDialog}
-            />
-          </View>
-        ) }
-        <View style={[space.paddingBottomM, space.paddingTopS]}>
+        { sealButton }
+        { tarotButton }
+        <View style={[space.paddingBottomM]}>
           { hasBlessCurse ? (
-            <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" />
+            <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" noShadow />
           ) : (
             <View style={{ height: 20 * fontScale + s * 2 + xs * 2 - 2 }} />
           ) }
         </View>
       </View>
     );
-  }, [showSealDialog, handleResetBlessCursePressed, releaseAllTokens, showTarotDialog,
-    chaosBagResults.tarot,
-    fontScale, sealedTokens, colors, typography, hasSealedTokens, hasBlessCurse]);
+  }, [sealButton, handleResetBlessCursePressed, tarotButton, fontScale, hasBlessCurse]);
   const specialTokenSection = useMemo(() => {
     if (!scenarioCardText) {
       return null;
@@ -489,17 +463,12 @@ export default function DrawChaosBagComponent(props: Props) {
     return uniq(filter(chaosBagResults.drawnTokens, token => CARD_TOKEN.has(token))).length > 0;
   }, [chaosBagResults.drawnTokens]);
   const lowerContent = useMemo(() => {
-    if (drawnSpecialTokens && specialTokenSection) {
-      return (
-        <View>
-          { specialTokenSection }
-        </View>
-      );
-    }
+    const hasSpecial = !!(drawnSpecialTokens && specialTokenSection);
     return (
       <View>
-        { blurseSection }
-        { advancedSection }
+        { (!hasSpecial || isTablet) && blurseSection }
+        { hasSpecial && specialTokenSection }
+        { (!hasSpecial || isTablet) && advancedSection }
       </View>
     );
   }, [drawnSpecialTokens, specialTokenSection, blurseSection, advancedSection]);
@@ -507,28 +476,48 @@ export default function DrawChaosBagComponent(props: Props) {
     <SafeAreaView style={styles.container}>
       <KeepAwake />
       <ScrollView bounces={false} style={[styles.containerBottom, { flexGrow: 1 }]} contentContainerStyle={[backgroundStyle, { flexGrow: 1 }]}>
+        { !isConnected && !!campaignId.serverId && (
+          <TouchableOpacity onPress={refreshNetworkStatus}>
+            <View style={[space.paddingS, styles.warning, { width }]} key="banner">
+              <AppIcon size={32} color={colors.D30} name="warning" />
+              <Text style={[space.paddingLeftS, typography.small, typography.black, { flex: 1 }]} numberOfLines={2}>
+                { t`You appear to be offline. Tap to check for network.` }
+              </Text>
+            </View>
+          </TouchableOpacity>
+        ) }
         <View style={styles.expandingContainer}>
           <View style={[styles.containerTop, space.paddingBottomS, { borderColor: colors.L20 }]}>
-            <ScrollView horizontal contentContainerStyle={styles.drawnTokenRow} overScrollMode="never">
-              { drawnTokens }
+            <ScrollView
+              horizontal
+              contentContainerStyle={styles.drawnTokenRow}
+              bounces={false}
+              showsHorizontalScrollIndicator={false}
+              overScrollMode="never"
+            >
+              { drawnTokensContent }
             </ScrollView>
             <View style={[styles.chaosTokenView, space.paddingSideS]}>
               { chaosToken }
             </View>
-            <View style={[space.paddingSideS, styles.drawButtonRow, space.marginTopM]}>
-              { drawButton }
-              { clearButton }
-            </View>
-            { (!TINY_PHONE || !!returnBlessCurse) && (
-              <View style={[space.paddingSideS, styles.returnBlessCurseWrapper]}>
-                { returnBlessCurse }
+            <View style={[space.paddingSideS, styles.drawButtonRow, space.marginTopS, space.marginBottomS]}>
+              { returnButton }
+              <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 2 }}>
+                { returnBlessCurse || (
+                  <>
+                    { viewButton }
+                    { oddsButton }
+                  </>
+                ) }
               </View>
-            ) }
+              { drawAnotherButton }
+            </View>
           </View>
           { lowerContent }
         </View>
       </ScrollView>
       { sealDialog }
+      { blurseDialog }
       { tarotDialog }
     </SafeAreaView>
   );
@@ -547,8 +536,8 @@ const styles = StyleSheet.create({
   drawButtonRow: {
     minHeight: SMALL_TOKEN_SIZE,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
   },
   chaosTokenView: {
     flex: 2,
@@ -565,22 +554,26 @@ const styles = StyleSheet.create({
   },
   blessCurseBlock: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   containerBottom: {
     flexDirection: 'column',
   },
   drawnTokenRow: {
-    alignItems: 'center',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
     minHeight: SMALL_TOKEN_SIZE + s * 2,
+  },
+  advancedButtonStacked: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   advancedButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
   },
   advancedButtonLeft: {
     justifyContent: 'flex-end',
@@ -596,23 +589,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  sealedTokenRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-  },
-  returnBlessCurseWrapper: {
-    minHeight: 64,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   removeBlessCurseButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     borderWidth: 1,
     borderStyle: 'dashed',
+  },
+  warning: {
+    backgroundColor: COLORS.yellow,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });

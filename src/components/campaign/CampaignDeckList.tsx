@@ -5,29 +5,32 @@ import { DeckId } from '@actions/types';
 
 export interface CampaignDeckListProps {
   componentId: string;
-  deckIds: DeckId[];
+  investigatorToDeck: {
+    [code: string]: DeckId | undefined;
+  };
   investigatorIds: string[];
 }
 
 interface Props extends CampaignDeckListProps {
-  renderDeck: (deckId: DeckId) => ReactNode;
-  renderInvestigator?: (investigator: string) => ReactNode;
+  renderDeck: (deckId: DeckId, investigator: string) => ReactNode;
+  renderInvestigator: (investigator: string) => ReactNode;
 }
 
 export default function CampaignDeckList({
-  deckIds,
   investigatorIds,
+  investigatorToDeck,
   renderDeck,
   renderInvestigator,
 }: Props) {
   return (
     <View>
-      { map(deckIds, deckId => (
-        renderDeck(deckId)
-      )) }
-      { !!renderInvestigator && map(investigatorIds, investigator => (
-        renderInvestigator(investigator)
-      )) }
+      { map(investigatorIds, investigator => {
+        const deckId = investigatorToDeck[investigator];
+        if (deckId) {
+          return renderDeck(deckId, investigator);
+        }
+        return renderInvestigator(investigator)
+      }) }
     </View>
   );
 }

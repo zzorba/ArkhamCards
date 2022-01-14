@@ -45,6 +45,7 @@ import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock'
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface SectionCardId extends CardId {
   mode: 'special' | 'side' | 'bonded' | undefined;
@@ -403,8 +404,9 @@ export default function DeckViewTab(props: Props) {
       false
     );
     const newData: DeckSection[] = [deckSection, specialSection];
+    let currentIndex = specialIndex;
     if (limitSlotCount > 0) {
-      let index = specialIndex;
+      let index = currentIndex;
       const limitedCards: SectionCardId[] = map(filter(flatten([
         ...flatMap(normalCards.Assets || [], cards => cards.data),
         normalCards.Event || [],
@@ -442,14 +444,16 @@ export default function DeckViewTab(props: Props) {
             },
           ] : [],
         });
+        if (limitedSlots) {
+          currentIndex = index;
+        }
       }
     }
-    let bondedIndex = specialIndex;
     if (ENABLE_SIDE_DECK) {
       const [sideSection, sideIndex] = deckToSections(
         t`Side Deck`,
         editable ? showEditSide : undefined,
-        specialIndex,
+        currentIndex,
         sideCards,
         cards,
         cardsByName,
@@ -460,9 +464,9 @@ export default function DeckViewTab(props: Props) {
         false
       );
       newData.push(sideSection);
-      bondedIndex = sideIndex;
+      currentIndex = sideIndex;
     }
-    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, bondedIndex);
+    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
     if (bonded) {
       newData.push(bonded);
     }
@@ -561,7 +565,7 @@ export default function DeckViewTab(props: Props) {
     };
   }, [mode, parsedDeck.id, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, showDeckUpgrades, inCollection]);
 
-  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
+  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
       return null;
@@ -576,7 +580,7 @@ export default function DeckViewTab(props: Props) {
         onPressId={showSwipeCard}
         control={controlForCard(item, card, count)}
         faded={count === 0}
-        noBorder={section.last && index === (section.cards.length - 1)}
+        noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
         noSidePadding
       />
     );
@@ -709,6 +713,7 @@ export default function DeckViewTab(props: Props) {
       { header }
       <View style={space.marginSideS}>
         { (!data || !data.length) ? <ArkhamLoadingSpinner autoPlay loop /> : map(data, deckSection => {
+          const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
           return (
             <View key={deckSection.title} style={space.marginBottomS}>
               <DeckSectionBlock
@@ -725,9 +730,12 @@ export default function DeckViewTab(props: Props) {
                 { flatMap(deckSection.sections, section => (
                   <View key={section.id}>
                     { renderSectionHeader(section) }
-                    { map(section.cards, (item, index) => renderCard(item, index, section)) }
+                    { map(section.cards, (item, index) => renderCard(item, index, section, isLoading)) }
                   </View>
                 )) }
+                { isLoading && (
+                  <LoadingCardSearchResult noBorder />
+                ) }
               </DeckSectionBlock>
             </View>
           );
@@ -738,6 +746,7 @@ export default function DeckViewTab(props: Props) {
             componentId={componentId}
             parsedDeck={parsedDeck}
             live={!fromCampaign}
+            cards={cards}
           />
         ) }
         <DeckProgressComponent

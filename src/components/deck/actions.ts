@@ -153,14 +153,15 @@ export function fetchPrivateDeck(
   actions: DeckActions,
   id: ArkhamDbDeckId
 ): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    loadDeck(id.id).then(deck => {
+  return async(dispatch) => {
+    try {
+      const deck = await loadDeck(id.id);
       dispatch(updateDeck(userId, actions, id, deck, false));
-    }).catch(err => {
+    } catch(err) {
       if (err.message === 'Not Found') {
         dispatch(removeDeck(userId, actions, id));
       }
-    });
+    }
   };
 }
 
@@ -449,6 +450,7 @@ export const saveClonedDeck = (
               xpAdjustment: 0,
               tabooSetId: cloneDeck.taboo_id,
               description: cloneDeck.description_md,
+              side: cloneDeck.sideSlots,
             }
           )).then(resolve, reject);
         },
@@ -597,6 +599,13 @@ export function updateDeckMeta(
         updatedMeta[update.key] = update.value as any;
         if (investigator_code === '06002' && update.key === 'deck_size_selected') {
           dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10, false));
+        }
+        if (investigator_code === '01005' && update.key === 'alternate_front') {
+          if (update.value === '90037') {
+            dispatch(setDeckSlot(id, '90038', 1, false))
+          } else {
+            dispatch(setDeckSlot(id, '90038', 0, false))
+          }
         }
       }
     });

@@ -464,6 +464,7 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
       local_uuid: deckId.local ? deckId.uuid : null,
       arkhamdb_id: deckId.local ? null : deckId.id,
     }),
+    returnPartialData: true,
   }, true);
 
   const result = useMemo(() => {

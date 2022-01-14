@@ -28,6 +28,14 @@ fragment CoreCard on card {
   skill_wild
   subtype_code
   type_code
+  stage
+  doom
+  clues
+  double_sided
+  illustrator
+  real_back_flavor
+  real_back_text
+  real_back_name
 }
 fragment CoreCardText on card_text {
   flavor
@@ -37,6 +45,9 @@ fragment CoreCardText on card_text {
   subname
   text
   traits
+  back_flavor
+  back_text
+  back_name
 }
 fragment UserInfo on users {
   id

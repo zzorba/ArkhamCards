@@ -274,6 +274,8 @@ interface LoadedState {
   textQuery?: Brackets;
   loading: boolean;
 }
+
+let loadDelay: number = 4000;
 function useSectionFeed({
   componentId,
   hasHeader,
@@ -502,18 +504,37 @@ function useSectionFeed({
     setRefreshing(true);
 
     // const start = new Date();
-    db.getPartialCards(
-      sortIgnoreQuotes,
-      combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
-      tabooSetId,
-      sort
-    ).then((cards: PartialCard[]) => {
-      // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-      if (!ignore) {
-        setMainQueryCards({ cards, loading: false });
-        setRefreshing(false);
-      }
-    }, console.log);
+    if (loadDelay > 0) {
+      setTimeout(() => {
+        loadDelay = 0;
+        db.getPartialCards(
+          sortIgnoreQuotes,
+          combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
+          tabooSetId,
+          sort
+        ).then((cards: PartialCard[]) => {
+          // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+          if (!ignore) {
+            setMainQueryCards({ cards, loading: false });
+            setRefreshing(false);
+          }
+        }, console.log);
+      }, loadDelay);
+    } else {
+      db.getPartialCards(
+        sortIgnoreQuotes,
+        combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
+        tabooSetId,
+        sort
+      ).then((cards: PartialCard[]) => {
+        // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+        if (!ignore) {
+          setMainQueryCards({ cards, loading: false });
+          setRefreshing(false);
+        }
+      }, console.log);
+    }
+
     return () => {
       ignore = true;
     };
@@ -573,6 +594,7 @@ function useSectionFeed({
     });
   }, [componentId]);
   // tslint:disable-next-line: strict-comparisons
+
   const refreshingSearch = (!!deckQuery && (deckCardsTextQuery !== textQuery || deckCardsLoading)) || (textQueryCardsTextQuery !== textQuery);
   const feedLoading = useMemo(() => {
     return (visibleCards.length > 0) && !!find(take(visibleCards, 1), c => !cards[c.id]);
@@ -688,7 +710,7 @@ function useSectionFeed({
     let loadingItem: Item | undefined = undefined;
     if (!sections.length || cardsLoading) {
       if (refreshingResult || cardsLoading) {
-        if (!hasCards) {
+        if (!hasCards || refreshingResult) {
           loadingItem = {
             type: 'text',
             id: 'loading',
@@ -828,9 +850,9 @@ export default function({
     showHeader && showHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, tabooSetId, sort]);
-
+  const filterId = deckId?.uuid || componentId;
   useEffect(() => {
-    dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
+    dispatch(addDbFilterSet(filterId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, tabooSetId]);
 
@@ -943,6 +965,7 @@ export default function({
             title={item.title}
             onPress={item.onPress}
             icon={item.icon}
+            useGestureHandler={Platform.OS === 'ios'}
           />
         );
       case 'card': {
@@ -1005,7 +1028,6 @@ export default function({
     }
   }, [headerItems, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const { lang } = useContext(LanguageContext);
-
   const heightForSection = useCallback((header: SectionHeaderItem) => {
     return itemHeight(header, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

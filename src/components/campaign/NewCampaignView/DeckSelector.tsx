@@ -4,13 +4,14 @@ import { TouchableOpacity, View } from 'react-native';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
-import { useDeckWithFetch, useInvestigatorCards } from '@components/core/hooks';
+import { useDeckWithFetch, useInvestigators } from '@components/core/hooks';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props extends CampaignDeckListProps {
   deckRemoved?: (
@@ -61,8 +62,7 @@ function InvestigatorDeckRow({ id, actions, deckRemoved }: {
   ) => void;
 }) {
   const deck = useDeckWithFetch(id, actions);
-  const investigators = useInvestigatorCards(deck?.deck.taboo_id || 0);
-  const investigator = deck && investigators && investigators[deck.deck.investigator_code];
+  const [investigator] = useSingleCard(deck?.investigator, 'player');
   const onRemove = useCallback(() => {
     deckRemoved && deckRemoved(id, deck?.deck, investigator);
   }, [deckRemoved, id, deck, investigator]);
@@ -79,12 +79,16 @@ export default function DeckSelector({
   investigatorRemoved,
   deckRemoved,
   componentId,
-  deckIds,
+  investigatorToDeck,
   investigatorIds,
 }: Props) {
-  const investigators = useInvestigatorCards();
+  const investigators = useInvestigators(investigatorIds);
   const actions = useDeckActions();
-  const renderDeck = useCallback((deckId: DeckId) => {
+  const renderDeck = useCallback((deckId: DeckId, code: string) => {
+    const investigator = investigators && investigators[code];
+    if (!investigator) {
+      return null;
+    }
     return (
       <InvestigatorDeckRow
         key={deckId.uuid}
@@ -93,7 +97,7 @@ export default function DeckSelector({
         actions={actions}
       />
     );
-  }, [deckRemoved, actions]);
+  }, [deckRemoved, actions, investigators]);
 
   const renderInvestigator = useCallback((code: string) => {
     const investigator = investigators && investigators[code];
@@ -114,7 +118,7 @@ export default function DeckSelector({
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}
-      deckIds={deckIds}
+      investigatorToDeck={investigatorToDeck}
       investigatorIds={investigatorIds}
     />
   );

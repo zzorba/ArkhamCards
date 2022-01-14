@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { forEach, map } from 'lodash';
+import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -11,7 +11,7 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards } from '@components/core/hooks';
+import { useParallelInvestigators } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 
 interface Props {
@@ -26,20 +26,8 @@ interface Props {
 }
 
 function InvestigatorInfoComponent({ componentId, card, width, simple, showInvestigatorCards }: Props) {
-  const investigators = useInvestigatorCards();
   const { colors, typography } = useContext(StyleContext);
-  const parallelInvestigators = useMemo(() => {
-    if (card.type_code !== 'investigator') {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, c => {
-      if (c && c.alternate_of_code === card.code) {
-        parallelInvestigators.push(c);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, card]);
+  const [parallelInvestigators] = useParallelInvestigators(card.type_code === 'investigator' ? card.code : undefined);
   const showInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && showInvestigatorCards(card.code);
   }, [card, showInvestigatorCards]);

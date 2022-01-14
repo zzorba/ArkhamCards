@@ -1,7 +1,7 @@
 import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
 
 import { WeaknessSet } from '@actions/types';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 
 export interface WeaknessCriteria {
   traits: string[];
@@ -11,22 +11,21 @@ export interface WeaknessCriteria {
 
 export function availableWeaknesses(
   weaknessSet: WeaknessSet,
-  cards: Card[]
+  cards: CardsMap
 ): Card[] {
   const {
     packCodes,
     assignedCards,
   } = weaknessSet;
   const packSet = new Set(packCodes);
-  return filter(cards, card => (
-    packSet.has(card.pack_code) &&
-    (assignedCards[card.code] || 0) < (card.quantity || 0)
-  ));
+  return flatMap(cards, card =>
+    card && (packSet.has(card.pack_code) && (assignedCards[card.code] || 0) < (card.quantity || 0)) ? card : []
+  );
 }
 
 function matchingWeaknesses(
   set: WeaknessSet,
-  allWeaknesses: Card[],
+  allWeaknesses: CardsMap,
   {
     traits,
     multiplayer,
@@ -58,7 +57,7 @@ function matchingWeaknesses(
 
 export function drawWeakness(
   set: WeaknessSet,
-  allWeaknesses: Card[],
+  allWeaknesses: CardsMap,
   criteria: WeaknessCriteria,
   realTraits: boolean
 ): Card | undefined {

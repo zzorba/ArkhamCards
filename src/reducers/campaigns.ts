@@ -357,11 +357,8 @@ export default function(
     const chaosBagResults = {
       ...((state.chaosBagResults || {})[action.id.campaignId] || NEW_CHAOS_BAG_RESULTS),
     };
-    if (action.bless) {
-      chaosBagResults.blessTokens = (chaosBagResults.blessTokens || 0) + (action.direction === 'inc' ? 1 : -1);
-    } else {
-      chaosBagResults.curseTokens = (chaosBagResults.curseTokens || 0) + (action.direction === 'inc' ? 1 : -1);
-    }
+    chaosBagResults.blessTokens = action.bless;
+    chaosBagResults.curseTokens = action.curse;
 
     return {
       ...state,

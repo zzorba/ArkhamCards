@@ -15,8 +15,7 @@ interface Props {
   width: number;
 }
 
-export default function BondedCardsComponent({ componentId, cards, width }: Props) {
-  const tabooSetId = useTabooSetId();
+export function useBondedToCards(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
   const bondedToQuery = useMemo(() => {
     if (!find(cards, card => !!card.bonded_name)) {
       return undefined;
@@ -28,8 +27,10 @@ export default function BondedCardsComponent({ componentId, cards, width }: Prop
     );
     return query;
   }, [cards]);
-  const [bondedToCards, bondedToCardsLoading] = useCardsFromQuery({ query: bondedToQuery, tabooSetOverride: tabooSetId });
+  return useCardsFromQuery({ query: bondedToQuery, tabooSetOverride });
+}
 
+export function useBondedFromCards(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
   const bondedFromQuery = useMemo(() => {
     if (!find(cards, card => !!card.bonded_from)) {
       return undefined;
@@ -38,7 +39,13 @@ export default function BondedCardsComponent({ componentId, cards, width }: Prop
     const query = filterBuilder.bondedFilter('bonded_name', map(cards, card => card.real_name));
     return query;
   }, [cards]);
-  const [bondedFromCards, bondedFromCardsLoading] = useCardsFromQuery({ query: bondedFromQuery, tabooSetOverride: tabooSetId });
+  return useCardsFromQuery({ query: bondedFromQuery, tabooSetOverride });
+}
+
+export default function BondedCardsComponent({ componentId, cards, width }: Props) {
+  const tabooSetId = useTabooSetId();
+  const [bondedToCards, bondedToCardsLoading] = useBondedToCards(cards, tabooSetId);
+  const [bondedFromCards, bondedFromCardsLoading] = useBondedFromCards(cards, tabooSetId);
 
   if (bondedToCardsLoading && bondedFromCardsLoading) {
     return null;

@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name#墜入深淵。",
+            "feminine_text": "#name#墜入深淵。"
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "你發現了伊扎法拉的計劃。"
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "兄弟會的密謀順利無阻。"
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "沉睡詛咒已破除。"
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "深淵中的沉夢者 (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "逃走的兄弟會成員：#name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "清算之日將至。"
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "你加入了伊扎法拉的勢力。"
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "深淵得到拯救。"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {
@@ -2618,11 +2671,11 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "埃賽希爾酒店再次奪取另一名受害者的性命。"
+            "text": "艾肖希爾酒店再次奪取另一名受害者的性命。"
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "埃賽希爾酒店暫時恢復寧靜。"
+            "text": "艾肖希爾酒店暫時恢復寧靜。"
           },
           {
             "id": "meh_fled_scene_of_the_crime",
