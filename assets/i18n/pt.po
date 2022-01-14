@@ -108,10 +108,6 @@ msgid "Tarot"
 msgstr "Tarô"
 
 #. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "Customizado"
-
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "Investigador"
 
@@ -2192,13 +2188,6 @@ msgid "All Investigators"
 msgstr "Todos os investigadores"
 
 #, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${ investigator.deck_requirements.size } Cartas"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "Carta desconhecida: ${ req.code }"
-
-#, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
 msgstr[0] "Mostrar ${ section.nonCollectionCount } investigador que não está na coleção"
@@ -2696,9 +2685,6 @@ msgstr "Apagar cenário independente"
 
 msgid "Select Cards"
 msgstr "Escolher Cartas"
-
-msgid "Choose additional card"
-msgstr "Escolher carta adicional"
 
 msgid "The investigators must decide (choose one):"
 msgstr "Os investigadores devem decidir (escolha um):"
@@ -5174,6 +5160,32 @@ msgstr ""
 msgid "Select Option"
 msgstr ""
 
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr ""
+
 msgctxt "masculine"
 msgid "Alive"
 msgstr "Vivo"
@@ -6642,6 +6654,10 @@ msgid_plural "Scenarios"
 msgstr[0] "Cenário"
 msgstr[1] "Cenários"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr ""
@@ -6709,6 +6725,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
 
+msgctxt "campaign"
+msgid "Custom"
+msgstr ""
+
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "scenario"
+msgid "Custom"
 msgstr ""

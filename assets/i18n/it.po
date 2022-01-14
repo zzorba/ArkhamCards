@@ -825,10 +825,6 @@ msgstr "${ traumaData.mental } Mentali"
 msgid "None"
 msgstr "Nessuno"
 
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "Personalizzata"
-
 msgid "My Campaigns"
 msgstr "Le Mie Campagne"
 
@@ -1639,13 +1635,6 @@ msgstr "Scalini del Ponte"
 msgid "Deck Type"
 msgstr "Tipo di Mazzo"
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${ investigator.deck_requirements.size } Carte"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "Carta Sconosciuta: ${ req.code }"
-
 msgid "Select Deck Size"
 msgstr "Seleziona Dimensioni del Mazzo"
 
@@ -2170,9 +2159,6 @@ msgstr "Supporti storia"
 
 msgid "Select Cards"
 msgstr "Selezione delle Carte"
-
-msgid "Choose additional card"
-msgstr "Scegli una carta aggiuntiva"
 
 msgid "Campaign Log"
 msgstr "Diario della Campagna"
@@ -5368,6 +5354,32 @@ msgstr ""
 msgid "Select Option"
 msgstr ""
 
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6860,6 +6872,10 @@ msgid_plural "Scenarios"
 msgstr[0] "Scenario"
 msgstr[1] "Scenari"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "Pausa"
@@ -6935,6 +6951,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "Il Giudizio · XX (Rovesciato)"
 
+msgctxt "campaign"
+msgid "Custom"
+msgstr ""
+
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr ""

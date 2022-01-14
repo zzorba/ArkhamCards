@@ -1170,13 +1170,6 @@ msgstr "역할군"
 msgid "Search"
 msgstr "검색"
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "카드 ${ investigator.deck_requirements.size }장"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "미지의 카드: ${ req.code }"
-
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
@@ -1416,9 +1409,6 @@ msgstr ""
 
 msgid "Select Cards"
 msgstr "카드 선택"
-
-msgid "Choose additional card"
-msgstr "추가 카드 선택"
 
 msgid "The investigators must decide (choose one):"
 msgstr "조사자들은 결정해야만 합니다(하나를 선택합니다):"
@@ -2157,10 +2147,6 @@ msgid ""
 msgstr ""
 "캠페인 B\n"
 "4부 캠페인"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "커스텀"
 
 msgid "Guide not yet available"
 msgstr "가이드가 아직 사용가능하지 않습니다."
@@ -5080,6 +5066,32 @@ msgstr "축복받은, 저주받은"
 msgid "Select Option"
 msgstr "옵션 선택"
 
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6527,6 +6539,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "일시정지"
@@ -6596,6 +6612,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "심판 · XX (역위치)"
 
+msgctxt "campaign"
+msgid "Custom"
+msgstr ""
+
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr ""
