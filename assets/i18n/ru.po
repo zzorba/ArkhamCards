@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2021-12-22 22:24+0300\n"
+"PO-Revision-Date: 2022-01-15 01:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n"
 "%100<12 || n%100>14) ? 1 : 2);\n"
 "mime-version: 1.0\n"
-"x-generator: Poedit 2.4.3\n"
+"x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
 "X-Generator: Poedit 3.0.1\n"
 
@@ -1235,13 +1235,6 @@ msgstr "Класс"
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Нет сыщиков по запросу «${ searchTerm }»."
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${ investigator.deck_requirements.size } карт"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "Неизвестная карта: ${ req.code }"
-
 msgid "Search"
 msgstr "Поиск"
 
@@ -1553,9 +1546,6 @@ msgstr ""
 
 msgid "Select Cards"
 msgstr "Выберите карты"
-
-msgid "Choose additional card"
-msgstr "Выберите дополнительную карту"
 
 msgid "The investigators must decide (choose one):"
 msgstr "Сыщики должны решить (выберите одно):"
@@ -2389,10 +2379,6 @@ msgstr ""
 "Кампания B\n"
 "Кампания из четырёх частей"
 
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "Особая"
-
 msgid "Guide not yet available"
 msgstr "Путеводитель ещё не готов"
 
@@ -3081,6 +3067,9 @@ msgid ""
 "level version in your deck (it does not count towards your deck size or the number of "
 "copies of that card in your deck)."
 msgstr ""
+"<b>Дополнительные возможности</b>: Когда вы улучшаете карту [[Удачи]] или [[Авантюру]], "
+"вы можете вместо этого выплатить её полную цену в опыте и оставить низкоуровневую версию "
+"в своей колоде (та карта не идёт в счёт экземпляров одноимённых карт в вашей колоде)."
 
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use Shrewd Analysis "
@@ -3381,6 +3370,9 @@ msgid ""
 "deck (it does not count towards your deck size or the number of copies of that card in "
 "your deck)."
 msgstr ""
+"<b>Дополнительные возможности</b>: Когда вы улучшаете [[Заклинание]], вы можете вместо "
+"этого выплатить его полную цену в опыте и оставить низкоуровневую версию в своей колоде "
+"(та карта не идёт в счёт экземпляров одноимённых карт в вашей колоде)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr "${ spentXP } из ${ _adjustedXp } опыта потрачено"
@@ -4668,16 +4660,16 @@ msgid ""
 msgstr ""
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "Если ведущий сыщик <b>сошёл с ума</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "Если все сыщики <b>сошли с ума</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "Если ведущий сыщик всё ещё жив."
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "Если все сыщики всё ещё живы."
 
 msgid "The Entity"
 msgstr ""
@@ -4701,6 +4693,18 @@ msgid ""
 "be deducted automatically at the <b>end of the scenario</b>, but you should be sure you "
 "have sufficient experience set aside to pay for it."
 msgstr ""
+"Ответвление — это сценарий, который можно сыграть между двумя любыми сценариями в рамках "
+"сюжетной кампании карточной игры «Ужас Аркхэма».\n"
+"- Чтобы сыграть сценарий-ответвление, каждый участвующий в кампании сыщик должен "
+"потратить определённое количество опыта.\n"
+"- Слабости, травмы, опыт и награды, полученные сыщиками в сценарии-ответвлении, остаются "
+"с ними до конца кампании.\n"
+"- Каждое ответвление можно сыграть только раз за кампанию.\n"
+"\n"
+"<b>Обратите внимание:</b> Приложение сможет учесть плату в опыте за участие в "
+"ответвлении только <b>после его окончания</b>, за счёт снижения количества заработанного "
+"опыта. Убедитесь самостоятельно, что у вас достаточно непотраченных очков опыта для "
+"участия в ответвлении."
 
 msgid "Ice and Death: Part 1"
 msgstr ""
@@ -5155,6 +5159,54 @@ msgstr ""
 "превышает число таких карт в вашей коллекции."
 
 #, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr "После завершения сценария «${ scenarionName }»"
+
+msgid "Show decks from other campaigns"
+msgstr "Показать колоды из других кампаний"
+
+msgid "Trait Choice"
+msgstr "Выбор черты"
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
+msgstr "Выбрать вариант"
+
+msgid "Move to deck"
+msgstr "Переместить в колоду"
+
+msgid "Unarchive standalone"
+msgstr "Разархивировать одиночный сценарий"
+
+msgid "Archive standalone"
+msgstr "Архивировать одиночный сценарий"
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr "Не удаётся подключиться к сети. Нажмите, чтобы повторить попытку."
+
+msgid "Guardians of the Abyss"
+msgstr "Стражи Бездны"
+
+msgid "Two-part campaign variant"
+msgstr "Мини-кампания из двух частей"
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr "Пользовательский"
+
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
@@ -5575,7 +5627,7 @@ msgstr "Круг"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "Город"
 
 msgctxt "trait"
 msgid "Civic"
@@ -5627,7 +5679,7 @@ msgstr "Существо"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "Место преступления"
 
 msgctxt "trait"
 msgid "Criminal"
@@ -5815,7 +5867,7 @@ msgstr "Первый этаж"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "Гость"
 
 msgctxt "trait"
 msgid "Gug"
@@ -5823,7 +5875,7 @@ msgstr "Гуг"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr ""
+msgstr "Зала"
 
 msgctxt "trait"
 msgid "Hazard"
@@ -5875,7 +5927,7 @@ msgstr "Врождённый"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "Невинный"
 
 msgctxt "trait"
 msgid "Innsmouth"
@@ -5919,7 +5971,7 @@ msgstr "Ключ"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr ""
+msgstr "Зацепка"
 
 msgctxt "trait"
 msgid "Leng"
@@ -5987,7 +6039,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr ""
+msgstr "Мутант"
 
 msgctxt "trait"
 msgid "Mystery"
@@ -6263,7 +6315,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "Персонал"
 
 msgctxt "trait"
 msgid "Steps"
@@ -6647,6 +6699,10 @@ msgstr[0] "Сценарий"
 msgstr[1] "Сценария"
 msgstr[2] "Сценариев"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr "Выбрать дополнительные"
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "Пауза"
@@ -6662,6 +6718,11 @@ msgstr "Назад"
 msgctxt "narration"
 msgid "Playing audio"
 msgstr "Проигрывается аудио"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr "Скорость воспроизведения: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6699,6 +6760,10 @@ msgstr[2] ""
 "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }"
 "</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Нет"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6711,10 +6776,14 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
 
-msgctxt "trauma"
-msgid "None"
-msgstr "Нет"
+msgctxt "campaign"
+msgid "Custom"
+msgstr "Пользовательская"
 
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr "Пользовательсткий"
