@@ -4256,7 +4256,7 @@ msgid "Archive campaign"
 msgstr "캠페인 보관"
 
 msgid "Show archived campaigns"
-msgstr "보관된 캠페인 보기"
+msgstr "보관된 캠페인 및 독립 시나리오 보기"
 
 msgid "Return to The Circle Undone"
 msgstr "돌아온 끝맺지 못한 의식"
@@ -5070,10 +5070,10 @@ msgid "Move to deck"
 msgstr "덱으로 이동"
 
 msgid "Unarchive standalone"
-msgstr "보관되지 않은 독립 시나리오"
+msgstr "독립 시나리오 보관 취소"
 
 msgid "Archive standalone"
-msgstr "보관된 독립 시나리오"
+msgstr "독립 시나리오 보관"
 
 msgid "Bless / Curse"
 msgstr "축복 / 저주"
