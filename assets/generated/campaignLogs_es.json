@@ -456,8 +456,8 @@
           {
             "id": "partner_missing",
             "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "masculine_text": "#name# ha desaparecido.",
+            "feminine_text": "#name# ha desaparecido."
           },
           {
             "id": "camp_shelter",
@@ -1035,31 +1035,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dinamita"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Esteatita verde"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Cristal de miasma"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Espécimen mineral"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Radio pequeña"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Piezas de repuesto"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Trineo de madera"
           }
         ]
       }

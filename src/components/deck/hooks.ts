@@ -146,7 +146,9 @@ function useParsedDeckHelper(
       ...keys(deckEdits?.ignoreDeckLimitSlots),
       ...(deckEdits?.meta.alternate_back ? [deckEdits.meta.alternate_back] : []),
       ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
-    ])
+      ...keys(deck?.previousDeck?.slots || {}),
+      ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+    ]);
   }, [deckEdits, deck], tabooSetId);
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);

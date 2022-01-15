@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria",
           "min": 0,
           "adjustment": 1
         }
@@ -4039,7 +4039,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria",
           "min": 0,
           "adjustment": 2
         }
@@ -4437,7 +4437,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "La mitad del valor de refugio de tu Lugar (redondeando hacia arriba)"
         }
       },
       {
@@ -4458,7 +4458,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "El valor de refugio de tu Lugar"
         }
       },
       {
@@ -4483,7 +4483,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria"
         }
       },
       {
@@ -4510,7 +4510,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "El número del plan en curso más la cantidad de cartas de Historia que hay en la zona de victoria"
         }
       },
       {
@@ -4541,7 +4541,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "El nivel de tu Lugar"
         }
       },
       {
@@ -4568,7 +4568,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
+          "prompt": "El nivel de tu Lugar más 2",
           "min": 2
         }
       },
@@ -4600,7 +4600,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "El número de llaves que controlas"
         }
       },
       {
@@ -4616,7 +4616,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Fue revelada una ficha [frost]",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4634,7 +4634,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
+          "prompt": "El número de llaves que controlas más 2",
           "min": 2
         }
       },
@@ -4651,7 +4651,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Fue revelada una ficha [frost]",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4676,7 +4676,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Hay un Enemigo [[Antiguo]] en tu Lugar",
           "modified_value": {
             "modifier": -3
           }
@@ -4709,7 +4709,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Hay un Enemigo [[Antiguo]] en tu Lugar",
           "modified_value": {
             "modifier": -4
           }
