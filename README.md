@@ -37,7 +37,7 @@ Start the bundle server in the background
 
 Build App
 
-`npm ios` or `npm andriod` (or their `yarn` counterparts)
+`npm ios` or `npm android` (or their `yarn` counterparts)
 
 ## Translations
 The app is currently translated into English, Spanish, German, Italian, French, Russian and Chinese, and partially translated into Korean, Portuguese and Polish. Translation data for all of the cards comes from ArkhamDB.com, and is community managed. You can submit edits for cards in the [arkhamdb-json-data](https://github.com/kamalisk/arkhamdb-json-data/) project with a pull request.
