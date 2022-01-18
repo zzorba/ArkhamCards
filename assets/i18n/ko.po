@@ -5082,10 +5082,10 @@ msgid "Two-part campaign variant"
 msgstr "두 부분으로 구성된 변형 캠페인"
 
 msgid "Claim previous scenario XP"
-msgstr ""
+msgstr "이전 시나리오의 경험치 획득"
 
 msgid "Apply changes from last completed scenario"
-msgstr ""
+msgstr "마지막으로 완료된 시나리오의 변경점 적용"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
