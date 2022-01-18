@@ -11,11 +11,11 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal ainda está vivo."
+            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
           },
           {
             "id": "house_burned",
-            "text": "sua casa foi queimada até o chão."
+            "text": "sua casa queimou."
           },
           {
             "id": "house_standing",
@@ -330,7 +330,7 @@
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "Dra. Kensler está prestes a entender."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
@@ -378,7 +378,7 @@
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "os investigadores exploraram os arredores da cidade."
           },
           {
             "id": "scouted_the_forked_passage",
@@ -1492,11 +1492,11 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal ainda está vivo."
+            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
           },
           {
             "id": "house_burned",
-            "text": "sua casa foi queimada até o chão."
+            "text": "sua casa queimou."
           },
           {
             "id": "house_standing",

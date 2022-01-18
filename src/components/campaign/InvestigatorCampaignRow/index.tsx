@@ -13,7 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import space, { s } from '@styles/space';
-import { useFlag } from '@components/core/hooks';
+import { useEffectUpdate, useFlag } from '@components/core/hooks';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
@@ -172,7 +172,12 @@ export default function InvestigatorCampaignRow({
   }, [investigator, chooseDeckForInvestigator]);
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
-  const [open, toggleOpen] = useFlag(false);
+  const [open, toggleOpen, setOpen] = useFlag(badge === 'deck');
+  useEffectUpdate(() => {
+    if (badge === 'deck') {
+      setOpen(true);
+    }
+  }, [badge, setOpen]);
   const footerButton = useMemo(() => {
     if (uploading) {
       return (

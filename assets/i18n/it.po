@@ -4714,12 +4714,6 @@ msgstr "Modifica Carte Debolezza"
 msgid "Review and draw weaknesses"
 msgstr "Controlla e pesca le debolezze"
 
-msgid "Save deck upgrade"
-msgstr "Salva gli aggiornamenti del mazzo"
-
-msgid "Apply deck changes from previous scenario"
-msgstr "Applica le modifiche del mazzo dallo scenario precedente"
-
 msgid "Choose expansions for basic weakness"
 msgstr "Seleziona le espansioni per le debolezze base"
 
@@ -5373,6 +5367,12 @@ msgid "Guardians of the Abyss"
 msgstr ""
 
 msgid "Two-part campaign variant"
+msgstr ""
+
+msgid "Claim previous scenario XP"
+msgstr ""
+
+msgid "Apply changes from last completed scenario"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

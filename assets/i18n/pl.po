@@ -4492,12 +4492,6 @@ msgstr ""
 msgid "Uploading campaign"
 msgstr ""
 
-msgid "Save deck upgrade"
-msgstr ""
-
-msgid "Apply deck changes from previous scenario"
-msgstr ""
-
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
@@ -4892,6 +4886,12 @@ msgid "Guardians of the Abyss"
 msgstr ""
 
 msgid "Two-part campaign variant"
+msgstr ""
+
+msgid "Claim previous scenario XP"
+msgstr ""
+
+msgid "Apply changes from last completed scenario"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

@@ -4675,12 +4675,6 @@ msgstr "기본 약점이 뽑힐 확장 선택"
 msgid "Uploading campaign"
 msgstr "캠페인을 업로드하는 중"
 
-msgid "Save deck upgrade"
-msgstr "덱 향상 저장"
-
-msgid "Apply deck changes from previous scenario"
-msgstr "이전 시나리오의 덱 변경점 적용"
-
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
@@ -5086,6 +5080,12 @@ msgstr ""
 
 msgid "Two-part campaign variant"
 msgstr "두 부분으로 구성된 변형 캠페인"
+
+msgid "Claim previous scenario XP"
+msgstr ""
+
+msgid "Apply changes from last completed scenario"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"

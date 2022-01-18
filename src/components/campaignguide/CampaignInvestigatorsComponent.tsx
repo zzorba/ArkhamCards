@@ -107,8 +107,8 @@ function AliveInvestigatorRow({
               key="deck_upgrade"
               color="gold"
               icon="deck"
-              title={t`Save deck upgrade`}
-              detail={t`Apply deck changes from previous scenario`}
+              title={t`Claim previous scenario XP`}
+              detail={t`Apply changes from last completed scenario`}
               loading={saving}
               onPress={saveNextDeckUpgradePressed}
             />
