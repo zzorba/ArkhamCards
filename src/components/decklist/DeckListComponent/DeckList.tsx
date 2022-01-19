@@ -54,7 +54,7 @@ function DeckListItem({
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const deck = useLatestDeck(deckId, deckToCampaign);
-  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id);
+  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id || 0);
   if (!deck) {
     return null;
   }

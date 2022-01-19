@@ -246,55 +246,55 @@
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Acampamento - Acampamento Barreira (7)"
+            "text": "Acampamento - Barrier Camp (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Acampamento - Monte de Neve (4)"
+            "text": "Acampamento - Broad Snowdrifts (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Acampamento - Local do acidente (0)"
+            "text": "Acampamento - Crash Site (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Acampamento - Caverna Cristalina (8)"
+            "text": "Acampamento - Crystalline Cavern (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Acampamento - Gruta Gelada (6)"
+            "text": "Acampamento - Frigid Cave (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Acampamento - Costas congeladas (2)"
+            "text": "Acampamento - Frozen Shores (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Acampamento - Aterrissagem do quebra-gelo (5)"
+            "text": "Acampamento - Icebreaker Landing (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Acampamento - Resíduos gelados (4)"
+            "text": "Acampamento - Icy Wastes (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Acampamento - Manto de Gelo Precário (2)"
+            "text": "Acampamento - Precarious Ice Sheet (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Acampamento - Remanescentes do Acampamento do Lago (7)"
+            "text": "Acampamento - Remnants of Lake's Camp (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Acampamento - Penhascos Rochosos (3)"
+            "text": "Acampamento - Rocky Crags (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Acampamento - Túmulos de neve (5)"
+            "text": "Acampamento - Snow Graves (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Acampamento - caminho traiçoeiro (1)"
+            "text": "Acampamento - Treacherous Path (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -318,7 +318,7 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "A equipe descobriu um cofre antigo."
           },
           {
             "id": "dr_kensler_has_a_plan",
@@ -370,11 +370,11 @@
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "A equipe fotografou os mapas astronômicos."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "a equipe leu o mapa."
           },
           {
             "id": "scouted_the_city_outskirts",
@@ -390,7 +390,7 @@
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "a equipe estudou as esculturas murais.\""
           },
           {
             "id": "surviving_investigators",
@@ -434,11 +434,11 @@
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "a equipe encontrou o túnel escondido."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "a equipe foi guiada para o túnel oculto."
           },
           {
             "id": "the_seal_was_used_improperly",
@@ -774,35 +774,35 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Acampamento Barreira"
+            "text": "Barrier Camp"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Monte de Neve"
+            "text": "Broad Snowdrifts"
           },
           {
             "id": "crash_site",
-            "text": "Local de acidente"
+            "text": "Crash Site"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Caverna Cristalina"
+            "text": "Crystalline Cavern"
           },
           {
             "id": "frigid_cave",
-            "text": "Gruta Gelada"
+            "text": "Frigid Cave"
           },
           {
             "id": "frozen_shores",
-            "text": "Costas congeladas"
+            "text": "Frozen Shores"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Aterrissagem do quebra-gelo"
+            "text": "Icebreaker Landing"
           },
           {
             "id": "icy_wastes",
-            "text": "Resíduos gelados"
+            "text": "Icy Wastes"
           },
           {
             "id": "precarious_ice_sheet",
@@ -810,19 +810,19 @@
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remanescentes do acampamento do lago"
+            "text": "Remnants of Lake's Camp"
           },
           {
             "id": "rocky_crags",
-            "text": "Rochosos"
+            "text": "Rocky Crags"
           },
           {
             "id": "snow_graves",
-            "text": "Túmulo de neve"
+            "text": "Snow Graves"
           },
           {
             "id": "treacherous_path",
-            "text": "Caminho Traiçoeiro"
+            "text": "Treacherous Path"
           }
         ]
       },
@@ -1035,31 +1035,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dinamite"
+            "text": "Dynamite"
           },
           {
             "id": "green_soapstone",
-            "text": "Pedra-sabão verde"
+            "text": "Green Soapstone"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Cristal Miasmico"
+            "text": "Miasmic Crystal"
           },
           {
             "id": "mineral_specimen",
-            "text": "Espécime Mineral"
+            "text": "Mineral Specimen"
           },
           {
             "id": "small_radio",
-            "text": "Rádio Pequeno"
+            "text": "Small Radio"
           },
           {
             "id": "spare_parts",
-            "text": "Peças de reposição"
+            "text": "Spare Parts"
           },
           {
             "id": "wooden_sledge",
-            "text": "Trenó de madeira"
+            "text": "Wooden Sledge"
           }
         ]
       }

@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
-import { forEach, flatMap, filter, find, uniq } from 'lodash';
+import { Platform } from 'react-native';
+import { forEach, flatMap, filter, find, uniq, map, chunk } from 'lodash';
 
 import Card, { CardsMap } from '@data/types/Card';
 import DatabaseContext from './DatabaseContext';
@@ -52,7 +53,10 @@ export function PlayerCardProvider({ children }: Props) {
       toFetch.push(code);
     }
     if (toFetch.length) {
-      const newCardsP = db.getCards(where(`c.code IN (:...codes)`, { codes: toFetch }), tabooSetId);
+      const chunks = Platform.OS === 'ios' ? [toFetch] : chunk(toFetch, 50)
+      const newCardsP = Promise.all(
+        map(chunks, codes => db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId))
+      ).then(result => flatMap(result, x => x));
       locallyFetched.current.push({ codes: toFetch, tabooSetId, cardsP: newCardsP });
 
       const newCards = await newCardsP;

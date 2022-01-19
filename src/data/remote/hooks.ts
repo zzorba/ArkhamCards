@@ -73,13 +73,17 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
         return [];
       }
       if (campaign.link_a_campaign && campaign.link_b_campaign) {
-        return new MiniLinkedCampaignRemote(
-          omit(campaign, ['link_a_campaign', 'link_b_campaign']) as MiniCampaignFragment,
-          campaign.link_a_campaign,
-          campaign.link_b_campaign
-        );
+        if (campaign.link_a_campaign.cycleCode && campaign.link_b_campaign.cycleCode) {
+          return new MiniLinkedCampaignRemote(
+            omit(campaign, ['link_a_campaign', 'link_b_campaign']) as MiniCampaignFragment,
+            campaign.link_a_campaign,
+            campaign.link_b_campaign
+          );
+        }
+      } else if (campaign.cycleCode) {
+        return new MiniCampaignRemote(campaign);
       }
-      return new MiniCampaignRemote(campaign);
+      return [];
     });
   }, [rawCampaigns, userId]);
   return [campaigns, (userId ? (userLoading || dataLoading) : false), refresh];
