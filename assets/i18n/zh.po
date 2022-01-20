@@ -188,7 +188,7 @@ msgstr "連接ArkhamDB"
 msgid "Decks"
 msgstr "牌組"
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr "隱藏ArkhamDB的牌組"
 
 msgid "New Deck"
@@ -5005,6 +5005,9 @@ msgid "Claim previous scenario XP"
 msgstr ""
 
 msgid "Apply changes from last completed scenario"
+msgstr ""
+
+msgid "Hide campaign decks"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

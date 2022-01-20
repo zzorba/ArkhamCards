@@ -21,7 +21,7 @@ import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENT
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
-import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
 import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -78,7 +78,7 @@ export default function CardUpgradeDialog({
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
   const backPressed = useCallback(() => {

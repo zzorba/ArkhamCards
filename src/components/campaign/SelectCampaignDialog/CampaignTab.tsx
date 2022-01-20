@@ -19,6 +19,7 @@ import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
 import { getPacksInCollection, AppState } from '@reducers';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import { useSettingFlag, useSettingValue } from '@components/core/hooks';
 
 export interface SelectCampagaignProps {
   campaigns: CampaignCycleCode[];
@@ -54,7 +55,7 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
 
 export default function CampaignTab({ campaignChanged, campaigns, segment, includeCustom }: SelectCampagaignProps) {
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
 
   const onPress = useCallback((campaignCode: CampaignCycleCode, text: string) => {
     campaignChanged(campaignCode, text, GUIDED_CAMPAIGNS.has(campaignCode));

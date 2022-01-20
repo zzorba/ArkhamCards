@@ -20,7 +20,7 @@ import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
-import { usePressCallback } from '@components/core/hooks';
+import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
 
 interface Props {
@@ -161,7 +161,7 @@ function CardSearchResult(props: Props) {
     }
   }, [onPress, onPressId, id, card]);
   const handleCardPress = usePressCallback(handleCardPressFunction);
-  const colorblind = useSelector((state: AppState) => state.settings.colorblind);
+  const colorblind = useSettingValue('colorblind');
   const dualFactionIcons = useMemo(() => {
     const faction_code = card.factionCode();
     if (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill')) {

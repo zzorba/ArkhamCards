@@ -692,7 +692,7 @@ msgstr "덱"
 msgid "New Deck"
 msgstr "새로운 덱"
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr "아컴디비 덱 숨기기"
 
 msgid "Original Deck"
@@ -5086,6 +5086,9 @@ msgstr "이전 시나리오의 경험치 획득"
 
 msgid "Apply changes from last completed scenario"
 msgstr "마지막으로 완료된 시나리오의 변경점 적용"
+
+msgid "Hide campaign decks"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"

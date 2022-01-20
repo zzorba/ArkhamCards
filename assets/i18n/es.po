@@ -189,7 +189,7 @@ msgstr "Conectar a ArkhamDB"
 msgid "Decks"
 msgstr "Mazos"
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr "Ocultar mazos de ArkhamDB"
 
 msgid "New Deck"
@@ -5368,6 +5368,9 @@ msgid "Claim previous scenario XP"
 msgstr ""
 
 msgid "Apply changes from last completed scenario"
+msgstr ""
+
+msgid "Hide campaign decks"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

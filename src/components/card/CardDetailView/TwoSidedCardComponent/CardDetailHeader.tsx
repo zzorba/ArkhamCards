@@ -11,6 +11,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { useSelector } from 'react-redux';
 import { AppState } from '@reducers';
+import { useSettingValue } from '@components/core/hooks';
 
 interface Props {
   card: Card;
@@ -34,7 +35,7 @@ const PADDING: { [key: string]: number } = {
 function DualFactionIcons({ card }: { card: Card }) {
   const { colors, fontScale } = useContext(StyleContext);
   const faction_code = card.factionCode();
-  const colorblind = useSelector((state: AppState) => !!state.settings.colorblind);
+  const colorblind = useSettingValue('colorblind');
   if (!card.faction_code ||
     (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill'))) {
     return null;

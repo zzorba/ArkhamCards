@@ -27,7 +27,7 @@ import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useSettingValue } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
@@ -342,7 +342,7 @@ export default function DeckViewTab(props: Props) {
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
   const [data, setData] = useState<DeckSection[]>([]);

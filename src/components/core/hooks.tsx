@@ -1,9 +1,9 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard } from 'react-native';
+import { BackHandler, InteractionManager, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import { forEach, flatMap, filter, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -24,6 +24,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
 import { INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
+import { setMiscSetting } from '@components/settings/actions';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -613,6 +614,39 @@ export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId
 export function useInvestigators(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
   const [cards] = useCardMap(codes, 'player', tabooSetOverride)
   return cards;
+}
+
+export function useSettingValue(setting: MiscSetting): boolean {
+  return useSelector((state: AppState) => {
+    switch (setting) {
+      case 'alphabetize': return !!state.settings.alphabetizeEncounterSets;
+      case 'beta1': return !!state.settings.beta1;
+      case 'colorblind': return !!state.settings.colorblind;
+      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
+      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
+      case 'ignore_collection': return !!state.settings.ignore_collection;
+      case 'justify': return !!state.settings.justifyContent;
+      case 'single_card': return !!state.settings.singleCardView;
+      case 'sort_quotes': return !!state.settings.sortRespectQuotes;
+    }
+  });
+}
+
+export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean) => void] {
+  const actualValue = useSettingValue(setting);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(actualValue);
+  useEffect(() => {
+    setValue(actualValue);
+  }, [actualValue, setValue]);
+
+  const actuallySetValue = useCallback((value: boolean) => {
+    setValue(value);
+    setTimeout(() => {
+      dispatch(setMiscSetting(setting, value));
+    }, 50);
+  }, [setting, setValue, dispatch]);
+  return [value, actuallySetValue];
 }
 
 export function useAllInvestigators(tabooSetOverride?: number, sort?: SortType): [Card[], boolean] {

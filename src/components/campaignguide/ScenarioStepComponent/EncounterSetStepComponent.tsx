@@ -21,6 +21,7 @@ import StyleContext from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useSettingValue } from '@components/core/hooks';
 
 const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
@@ -36,7 +37,7 @@ interface Props {
 }
 
 export default function EncounterSetStepComponent({ componentId, campaignId, step, campaignGuide }: Props) {
-  const alphabetizeEncounterSets = useSelector<AppState>(state => state.settings.alphabetizeEncounterSets || false);
+  const alphabetizeEncounterSets = useSettingValue('alphabetize');
   const { colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
 

@@ -42,7 +42,7 @@ export default function StyleProvider({ children } : Props) {
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
-  const justifyContent = false; // useSelector((state: AppState) => !!state.settings.justifyContent);
+  const justifyContent = false;
   const { fontScale, width: windowWidth, height: windowHeight, scale: windowScale } = useWindowDimensions();
   const { scale: screenScale } = useMemo(() => Dimensions.get('screen'), []);
   const { width, height } = useMemo(() => {

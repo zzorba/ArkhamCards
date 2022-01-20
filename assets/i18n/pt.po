@@ -1325,7 +1325,7 @@ msgstr ""
 "Entre para acessar seus baralhos ou compartilhar baralhos que você criou "
 "com outras pessoas."
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr "Esconder Baralhos do ArkhamDB"
 
 msgid "New Deck"
@@ -5179,6 +5179,9 @@ msgid "Claim previous scenario XP"
 msgstr ""
 
 msgid "Apply changes from last completed scenario"
+msgstr ""
+
+msgid "Hide campaign decks"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

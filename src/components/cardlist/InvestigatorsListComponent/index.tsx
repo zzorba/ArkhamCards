@@ -25,7 +25,7 @@ import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
-import { useAllInvestigators, useToggles } from '@components/core/hooks';
+import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
@@ -142,7 +142,7 @@ export default function InvestigatorsListComponent({
   const [investigators, loading] = useAllInvestigators(undefined, sort);
 
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
 

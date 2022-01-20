@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
 import { getPacksInCollection, AppState } from '@reducers';
-import { useToggles, useWeaknessCards } from '@components/core/hooks';
+import { useSettingValue, useToggles, useWeaknessCards } from '@components/core/hooks';
 
 export function ControlledWeaknessSetPackChooserComponent({
   componentId,
@@ -62,7 +62,7 @@ export default function WeaknessSetPackChooserComponent({
     return result;
   }, [packs]);
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const weaknessCards = useWeaknessCards();
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(

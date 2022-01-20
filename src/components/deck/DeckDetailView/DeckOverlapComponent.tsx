@@ -8,7 +8,7 @@ import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { CampaignId, ParsedDeck, Slots } from '@actions/types';
 import { useCampaignGuideContext } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useSettingFlag, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection, AppState } from '@reducers';
 import Card, { CardsMap } from '@data/types/Card';
 import DeckSectionBlock from '../section/DeckSectionBlock';
@@ -74,7 +74,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
   const { campaignInvestigators, latestDecks, campaign } = useContext(CampaignGuideContext);
   const { colors, typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const [overlap, loading] = useMemo(() => {
     if (!cards) {
       return [[], true];
@@ -164,7 +164,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
     return [[section], false];
   }, [campaignInvestigators, latestDecks, campaign, cards, parsedDeck, ignore_collection, in_collection]);
   const [open, toggleOpen] = useFlag(false);
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(componentId, card.code, card, colors, true);

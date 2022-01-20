@@ -37,7 +37,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useNavigationButtonPressed, useParallelInvestigators, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useNavigationButtonPressed, useParallelInvestigators, useSettingValue, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -112,7 +112,7 @@ function DeckDetailView({
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const {
