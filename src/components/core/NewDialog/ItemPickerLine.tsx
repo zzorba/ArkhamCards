@@ -1,5 +1,6 @@
 import React, { useContext, useCallback, useMemo, ReactNode } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -20,7 +21,10 @@ interface Props<T> {
 }
 export default function ItemPickerLine<T>({ iconName, iconNode, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const onPress = useCallback(() => onValueChange(value), [onValueChange, value]);
+  const onPress = useCallback(() => {
+    ReactNativeHapticFeedback.trigger('impactLight');
+    onValueChange(value);
+  }, [onValueChange, value]);
   const icon = useMemo(() => {
     if (iconNode) {
       return iconNode;

@@ -1,7 +1,8 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, InteractionManager, Keyboard } from 'react-native';
+import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
-import { forEach, flatMap, filter, debounce, find, uniq, keys } from 'lodash';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import { forEach, flatMap, debounce, find, uniq, keys } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -150,7 +151,7 @@ interface CleanAction {
 }
 export function useCounter(
   initialValue: number,
-  { min, max }: { min?: number; max?: number },
+  { min, max, hapticFeedback }: { min?: number; max?: number, hapticFeedback?: boolean },
   syncValue?: (value: number) => void
 ): [number, () => void, () => void, (value: number) => void] {
   const [currentState, updateValue] = useReducer((state: { value: number; dirty: boolean }, action: IncAction | DecAction | SetAction | CleanAction) => {
@@ -160,28 +161,26 @@ export function useCounter(
           value: action.value,
           dirty: true,
         };
-      case 'inc':
-        if (max) {
-          return {
-            value: Math.min(max, state.value + 1),
-            dirty: true,
-          };
+      case 'inc': {
+        const newValue = max ? Math.min(max, state.value + 1) : (state.value + 1);
+        if (newValue > state.value && hapticFeedback) {
+          ReactNativeHapticFeedback.trigger('impactMedium');
         }
         return {
-          value: state.value + 1,
+          value: newValue,
           dirty: true,
         };
-      case 'dec':
-        if (min) {
-          return {
-            value: Math.max(min, state.value - 1),
-            dirty: true,
-          };
+      }
+      case 'dec': {
+        const newValue = min ? Math.max(min, state.value - 1) : (state.value - 1);
+        if (newValue < state.value && hapticFeedback) {
+          ReactNativeHapticFeedback.trigger('impactLight');
         }
         return {
-          value: state.value - 1,
+          value: newValue,
           dirty: true,
         };
+      }
       case 'clean':
         return {
           value: state.value,

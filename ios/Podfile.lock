@@ -521,6 +521,8 @@ PODS:
     - React-Core
   - RNLocalize (2.1.6):
     - React-Core
+  - RNReactNativeHapticFeedback (1.13.0):
+    - React-Core
   - RNReanimated (2.2.4):
     - DoubleConversion
     - FBLazyVector
@@ -663,6 +665,7 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSha256 (from `../node_modules/react-native-sha256`)
   - RNShare (from `../node_modules/react-native-share`)
@@ -840,6 +843,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-keychain"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNReactNativeHapticFeedback:
+    :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNSha256:
@@ -955,6 +960,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: a51c9c7419262c75748ddcee3f735bb42da5def1
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLocalize: f10d91c76a5692d4cf6f218c70f6e4d7dcb42d1c
+  RNReactNativeHapticFeedback: b83bfb4b537bdd78eb4f6ffe63c6884f7b049ead
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: d76b8c9c6e6ffb38fc18f40b4338c9d867592ed3

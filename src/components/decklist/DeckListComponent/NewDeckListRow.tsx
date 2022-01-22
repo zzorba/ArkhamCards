@@ -32,6 +32,7 @@ import WarningIcon from '@icons/WarningIcon';
 import { useDeckXpStrings } from '@components/deck/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   lang: string;
@@ -54,7 +55,7 @@ interface DetailProps {
   eliminated: boolean;
 }
 
-function DetailLine({ text, icon, last }: { text: string[]; icon: React.ReactNode; last?: boolean }) {
+function DetailLine({ text, icon, last, content }: { text: string[]; icon: React.ReactNode; content?: React.ReactNode; last?: boolean }) {
   const { borderStyle, typography } = useContext(StyleContext);
   return (
     <View style={[
@@ -74,6 +75,7 @@ function DetailLine({ text, icon, last }: { text: string[]; icon: React.ReactNod
             { line }
           </Text>
         )) }
+        { content }
       </View>
 
     </View>
@@ -87,7 +89,6 @@ function DeckListRowDetails({
   eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
-  const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = useLatestDeckCards(deck);
   const parsedDeck = useMemo(() => {
@@ -96,6 +97,7 @@ function DeckListRowDetails({
     }
     return undefined;
   }, [deck, cards, details]);
+  const traumaData = useMemo(() => deck.campaign?.trauma || {}, [deck.campaign]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
@@ -116,34 +118,25 @@ function DeckListRowDetails({
   }
   const xpString = xpDetailString ? `${mainXpString} · ${xpDetailString}` : mainXpString;
   const scenarioCount = deck.deck.scenarioCount || 0;
-  const traumaData = deck.campaign?.trauma;
   const campaignLines: string[] = [];
   if (deck.campaign) {
     campaignLines.push(deck.campaign.name);
   }
-  if (eliminated) {
-    campaignLines.push(investigator.traumaString(listSeperator, traumaData));
-  } else {
-    campaignLines.push(
-      ngettext(
-        msgid`${scenarioCount} scenario completed`,
-        `${scenarioCount} scenarios completed`,
-        scenarioCount
-      )
-    );
-  }
+  campaignLines.push(
+    ngettext(
+      msgid`${scenarioCount} scenario completed`,
+      `${scenarioCount} scenarios completed`,
+      scenarioCount
+    )
+  );
   return (
     <View style={styles.column}>
       <DetailLine
         icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
         text={campaignLines}
         last={!xpString && !deck.deck.problem}
+        content={<TraumaSummary investigator={investigator} trauma={traumaData} hideNone textStyle={[typography.smallLabel, typography.italic, typography.dark, space.paddingTopXs]} />}
       />
-      { eliminated && (
-        <Text style={typography.small}>
-          { investigator.traumaString(listSeperator, traumaData) }
-        </Text>
-      ) }
       { !!xpString && (
         <DetailLine
           icon={<ArkhamButtonIcon icon="xp" color="dark" />}
