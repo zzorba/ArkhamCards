@@ -693,7 +693,7 @@ msgid "New Deck"
 msgstr "새로운 덱"
 
 msgid "Hide ArkhamDB decks"
-msgstr "아컴디비 덱 숨기기"
+msgstr "아컴디비에 업로드된 덱 숨기기"
 
 msgid "Original Deck"
 msgstr "원래 덱"
@@ -2232,7 +2232,7 @@ msgid "Choose an Investigator"
 msgstr "조사자 선택"
 
 msgid "Hide decks from other campaigns"
-msgstr "다른 캠페인에서 덱 숨기기"
+msgstr "다른 캠페인에 포함된 덱 숨기기"
 
 msgid "Hide killed and insane investigators"
 msgstr "사망하거나 미친 조사자 숨기기"
@@ -3057,7 +3057,7 @@ msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "보유하지 않은 확장에 포함된 ${ nonCollectionCount }개의 카드 확인"
 
 msgid "Hide versatile cards"
-msgstr "다재다능 카드 숨기기"
+msgstr "다재다능 카드의 효과 숨기기"
 
 msgid "Version to copy"
 msgstr "복사할 버전"
@@ -3169,10 +3169,10 @@ msgid "Deck is invalid"
 msgstr "덱 구성 조건을 만족하지 않습니다"
 
 msgid "Show splash cards"
-msgstr "포함된 카드 보기"
+msgstr "항목에 포함된 카드 보기"
 
 msgid "Hide splash cards"
-msgstr "포함된 카드 숨기기"
+msgstr "항목에 포함된 카드 숨기기"
 
 msgid "Limited Slots"
 msgstr "제한된 슬롯"
@@ -5088,7 +5088,7 @@ msgid "Apply changes from last completed scenario"
 msgstr "마지막으로 완료된 시나리오의 변경점 적용"
 
 msgid "Hide campaign decks"
-msgstr ""
+msgstr "캠페인에 속한 덱 숨기기"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
