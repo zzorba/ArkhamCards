@@ -320,7 +320,6 @@ function CardSearchResult(props: Props) {
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
       },
-      (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
       <Touchable
         activeOpacity={0.7}
