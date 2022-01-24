@@ -52,6 +52,7 @@ import { Platform } from 'react-native';
 const packsPersistConfig = {
   key: 'packs',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
@@ -59,6 +60,7 @@ const packsPersistConfig = {
 const cardsPersistConfig = {
   key: 'cards',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error', 'progress', 'fetch'],
 };
@@ -66,6 +68,7 @@ const cardsPersistConfig = {
 const legacyGuidesPersistConfig = {
   key: 'guides',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
 };
 
@@ -73,11 +76,13 @@ const legacyGuidesPersistConfig = {
 const guidesPersistConfig = {
   key: 'guides_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
 };
 
 const trackedQueriesPersistConfig = {
   key: 'trackedQueries',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
@@ -85,6 +90,7 @@ const trackedQueriesPersistConfig = {
 const legacyDecksPersistConfig = {
   key: 'decks',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error', 'edits', 'editting'],
 };
@@ -92,6 +98,7 @@ const legacyDecksPersistConfig = {
 const decksPersistConfig = {
   key: 'decks_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error', 'edits', 'editting'],
 };
@@ -99,6 +106,7 @@ const decksPersistConfig = {
 const campaignsPersistConfig = {
   key: 'campaigns_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
@@ -106,17 +114,20 @@ const campaignsPersistConfig = {
 const settingsPeristConfig = {
   key: 'settings',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
 
 const signedInPersistConfig = {
   key: 'signedIn',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 const dissonantVoicesPersistConfig = {
   key: 'dissonantVoices',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
