@@ -291,6 +291,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
               savingDeckUpgrade={savingDeckUpgrade}
             />
           )) }
+          <DeckButton
+            color="light_gray"
+            icon="plus-thin"
+            title={t`Add Investigator`}
+            onPress={showAddInvestigator}
+            bottomMargin={s}
+          />
           { killedInvestigators.length > 0 && (
             <View style={styles.header}>
               <Text style={[typography.large, typography.center, typography.light]}>
@@ -317,13 +324,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
               />
             );
           }) }
-          <DeckButton
-            color="light_gray"
-            icon="plus-thin"
-            title={t`Add Investigator`}
-            onPress={showAddInvestigator}
-            bottomMargin={s}
-          />
         </>
       ) }
     </>

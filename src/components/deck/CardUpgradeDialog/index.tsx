@@ -15,7 +15,7 @@ import Card, { CardsMap } from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';

@@ -31,7 +31,6 @@ import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
 import WarningIcon from '@icons/WarningIcon';
 import { useDeckXpStrings } from '@components/deck/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import LanguageContext from '@lib/i18n/LanguageContext';
 import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
@@ -52,7 +51,6 @@ interface DetailProps {
   deck: LatestDeckT;
   details?: ReactNode;
   lang: string;
-  eliminated: boolean;
 }
 
 function DetailLine({ text, icon, last, content }: { text: string[]; icon: React.ReactNode; content?: React.ReactNode; last?: boolean }) {
@@ -86,7 +84,6 @@ function DeckListRowDetails({
   investigator,
   deck,
   details,
-  eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
@@ -248,7 +245,6 @@ export default function NewDeckListRow({
                   <DeckListRowDetails
                     deck={deck}
                     investigator={investigator}
-                    eliminated={eliminated}
                     lang={lang}
                     details={details}
                   />

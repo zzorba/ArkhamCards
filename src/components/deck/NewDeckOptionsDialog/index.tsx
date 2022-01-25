@@ -10,7 +10,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 

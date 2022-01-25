@@ -19,7 +19,7 @@ import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions
 import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';

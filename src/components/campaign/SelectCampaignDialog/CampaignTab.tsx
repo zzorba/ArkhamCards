@@ -17,9 +17,9 @@ import {
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import { useSettingFlag, useSettingValue } from '@components/core/hooks';
+import { useSettingValue } from '@components/core/hooks';
 
 export interface SelectCampagaignProps {
   campaigns: CampaignCycleCode[];

@@ -19,7 +19,6 @@ import SocialBlock from './SocialBlock';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { requestFetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent, setSortQuotes } from './actions';
 import { prefetch } from '@lib/auth';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';

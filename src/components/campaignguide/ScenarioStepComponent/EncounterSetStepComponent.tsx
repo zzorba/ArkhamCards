@@ -5,10 +5,8 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { map, sortBy } from 'lodash';
-import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
 
-import { AppState } from '@reducers';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from '@data/scenario/types';

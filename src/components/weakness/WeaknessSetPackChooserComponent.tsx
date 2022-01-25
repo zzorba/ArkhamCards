@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { filter, forEach, flatMap, map, uniqBy, sortBy } from 'lodash';
+import { filter, forEach, flatMap, uniqBy, sortBy } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';

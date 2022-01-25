@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useContext } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView, StyleSheet, Text } from 'react-native';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   ALL_CAMPAIGNS,
@@ -51,7 +51,7 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
   const tabs = useMemo(() => [
     {
       key: 'campaign',
-      title: t`Campaigns`,
+      title: c('new_campaign_type').t`Campaigns`,
       node: (
         <ScrollView style={[styles.flex, backgroundStyle]}>
           <CampaignTab
@@ -83,7 +83,7 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
     },
     {
       key: 'standalone',
-      title: t`Standalones`,
+      title: c('new_campaign_type').t`Standalones`,
       node: (
         <ScrollView style={[styles.flex, backgroundStyle]}>
           <StandaloneTab standaloneChanged={standaloneChanged} />
@@ -99,7 +99,16 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
       ),
     },
   ], [campaignChanged, standaloneChanged, editCollection, backgroundStyle, typography]);
-  const [tabView] = useTabView({ tabs });
+  const onTabChange = useCallback((key: string) => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          text: key === 'campaign' ? t`Select Campaign` : t`Select Standalone`,
+        },
+      },
+    })
+  }, [componentId]);
+  const [tabView] = useTabView({ tabs, onTabChange });
   return tabView;
 }
 

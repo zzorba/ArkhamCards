@@ -28,9 +28,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { setBeta1 } from './actions';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
-import { useSettingFlag, useSettingValue } from '@components/core/hooks';
+import { useSettingFlag } from '@components/core/hooks';
 
 
 function goOffline() {

@@ -6,7 +6,7 @@ import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
 import { addEventListener as addLangEventListener } from 'react-native-localize';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';

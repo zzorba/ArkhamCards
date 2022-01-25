@@ -9,8 +9,6 @@ import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import space, { xs } from '@styles/space';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import { useSelector } from 'react-redux';
-import { AppState } from '@reducers';
 import { useSettingValue } from '@components/core/hooks';
 
 interface Props {

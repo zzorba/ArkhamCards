@@ -85,6 +85,7 @@ export function PlayerCardProvider({ children }: Props) {
       cards[code] = knownCards[code];
     });
     return cards;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db, db.globalLoadedCards]);
   return (
     <PlayerCardContext.Provider value={{ getPlayerCards }}>

@@ -8,8 +8,8 @@ import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { CampaignId, ParsedDeck, Slots } from '@actions/types';
 import { useCampaignGuideContext } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import { useFlag, useSettingFlag, useSettingValue } from '@components/core/hooks';
-import { getPacksInCollection, AppState } from '@reducers';
+import { useFlag, useSettingValue } from '@components/core/hooks';
+import { getPacksInCollection } from '@reducers';
 import Card, { CardsMap } from '@data/types/Card';
 import DeckSectionBlock from '../section/DeckSectionBlock';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -212,7 +212,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
 }
 
 export function DeckOverlapComponentForCampaign({ parsedDeck, campaignId, live, componentId, cards }: Props) {
-  const [campaignGuideContext, status] = useCampaignGuideContext(campaignId, live);
+  const [campaignGuideContext] = useCampaignGuideContext(campaignId, live);
   if (!campaignGuideContext) {
     return null;
   }

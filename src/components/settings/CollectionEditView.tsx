@@ -10,7 +10,7 @@ import { t } from 'ttag';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { setInCollection, setCycleInCollection } from '@actions';
-import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
+import { getAllPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { setIgnoreCollection } from './actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';

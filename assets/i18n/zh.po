@@ -3174,9 +3174,6 @@ msgstr "你是否確定要刪除這個獨立劇本？"
 msgid "Delete standalone"
 msgstr "刪除獨立劇本"
 
-msgid "Standalones"
-msgstr "獨立劇本"
-
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at "
 "arkhamcards@gmail.com, and I'll see about including it in a future release."
@@ -5010,6 +5007,9 @@ msgstr ""
 msgid "Hide campaign decks"
 msgstr ""
 
+msgid "Select Standalone"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -6517,6 +6517,14 @@ msgstr "審判·XX(逆位)"
 
 msgctxt "campaign"
 msgid "Custom"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Campaigns"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Standalones"
 msgstr ""
 
 msgctxt "versus abbreviation"

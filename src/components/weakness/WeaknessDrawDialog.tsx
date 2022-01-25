@@ -7,7 +7,7 @@ import WeaknessDrawComponent from './WeaknessDrawComponent';
 import { t } from 'ttag';
 import { Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { xs } from '@styles/space';
 import { useFlag, useSettingValue, useSlots, useWeaknessCards } from '@components/core/hooks';

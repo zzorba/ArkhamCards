@@ -9,7 +9,7 @@ import {
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';

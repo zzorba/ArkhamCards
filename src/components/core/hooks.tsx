@@ -583,6 +583,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): Card
 }
 
 export function usePlayerCardsFunc(generator: () => string[], deps: any[], tabooSetOverride?: number) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const codes = useMemo(generator, deps);
   return usePlayerCards(codes, tabooSetOverride);
 }

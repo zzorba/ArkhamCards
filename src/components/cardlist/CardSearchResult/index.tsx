@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -18,7 +17,6 @@ import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';

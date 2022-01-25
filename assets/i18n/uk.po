@@ -3098,9 +3098,6 @@ msgstr ""
 msgid "Delete standalone"
 msgstr ""
 
-msgid "Standalones"
-msgstr ""
-
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at "
 "arkhamcards@gmail.com, and I'll see about including it in a future release."
@@ -4897,6 +4894,9 @@ msgstr ""
 msgid "Hide campaign decks"
 msgstr ""
 
+msgid "Select Standalone"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -6431,6 +6431,14 @@ msgstr ""
 
 msgctxt "campaign"
 msgid "Custom"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Campaigns"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Standalones"
 msgstr ""
 
 msgctxt "versus abbreviation"

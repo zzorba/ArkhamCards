@@ -40,7 +40,7 @@ import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
@@ -227,29 +227,30 @@ function bondedSections(
   uniqBondedCards: Card[],
   count: number,
   index: number,
-): DeckSection | undefined {
+): [DeckSection | undefined, number] {
   if (count === 0) {
-    return undefined;
+    return [undefined, index];
   }
-  return {
+  const sections = [{
+    id: 'bonded',
+    cards: map(uniqBondedCards, c => {
+      return {
+        id: c.code,
+        quantity: c.quantity || 0,
+        index: index++,
+        mode: 'bonded',
+        bonded: true,
+        hasUpgrades: false,
+        limited: false,
+        invalid: false,
+      };
+    }),
+    last: true,
+  }];
+  return [{
     title: t`Bonded Cards (${count})`,
-    sections: [{
-      id: 'bonded',
-      cards: map(uniqBondedCards, c => {
-        return {
-          id: c.code,
-          quantity: c.quantity || 0,
-          index: index++,
-          mode: 'bonded',
-          bonded: true,
-          hasUpgrades: false,
-          limited: false,
-          invalid: false,
-        };
-      }),
-      last: true,
-    }],
-  };
+    sections,
+  }, index];
 }
 
 interface Props {
@@ -405,6 +406,11 @@ export default function DeckViewTab(props: Props) {
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     let currentIndex = specialIndex;
+    const [bonded, bondedIndex] = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
+    if (bonded) {
+      newData.push(bonded);
+      currentIndex = bondedIndex;
+    }
     if (limitSlotCount > 0) {
       let index = currentIndex;
       const limitedCards: SectionCardId[] = map(filter(flatten([
@@ -463,12 +469,10 @@ export default function DeckViewTab(props: Props) {
         ignore_collection,
         false
       );
-      newData.push(sideSection);
+      if (editable || sideSection.sections.length) {
+        newData.push(sideSection);
+      }
       currentIndex = sideIndex;
-    }
-    const bonded = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
-    if (bonded) {
-      newData.push(bonded);
     }
     setData(newData);
   }, [investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, parsedDeck.sideCards, deckEdits?.meta, cards,
@@ -740,15 +744,6 @@ export default function DeckViewTab(props: Props) {
             </View>
           );
         }) }
-        { !!campaignId && !parsedDeck.deck.nextDeckId && (
-          <DeckOverlapComponentForCampaign
-            campaignId={campaignId}
-            componentId={componentId}
-            parsedDeck={parsedDeck}
-            live={!fromCampaign}
-            cards={cards}
-          />
-        ) }
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}
@@ -760,6 +755,16 @@ export default function DeckViewTab(props: Props) {
           tabooSetId={tabooSetId}
           singleCardView={singleCardView}
         />
+
+        { !!campaignId && !parsedDeck.deck.nextDeckId && (
+          <DeckOverlapComponentForCampaign
+            campaignId={campaignId}
+            componentId={componentId}
+            parsedDeck={parsedDeck}
+            live={!fromCampaign}
+            cards={cards}
+          />
+        ) }
       </View>
       <View style={styles.footerPadding} />
     </ScrollView>

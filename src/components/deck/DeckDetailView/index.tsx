@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, flatMap, map } from 'lodash';
+import { find, forEach, flatMap, uniqBy } from 'lodash';
 import {
   Linking,
   Platform,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
@@ -52,7 +52,7 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useBondedFromCards, useBondedToCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
@@ -89,7 +89,11 @@ function useUpgradeCardsByName(cards: Card[], tabooSetOverride?: number): [Card[
     const query = filterBuilder.upgradeCardsByNameFilter(flatMap(cards, card => card.xp !== undefined ? card.real_name : []));
     return query;
   }, [cards]);
-  return useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+  const [upgradeCards, loading] = useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+  return [
+    useMemo(() => uniqBy([...upgradeCards, ...cards], c => c.code), [upgradeCards, cards]),
+    loading,
+  ];
 }
 
 

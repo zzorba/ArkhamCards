@@ -41,7 +41,7 @@ import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
-import { useCards, useEffectUpdate, useSettingFlag, useSettingValue, useToggles } from '@components/core/hooks';
+import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
