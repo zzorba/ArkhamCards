@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext, useRef, useEffect, useState } from 'react';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState, getEnableArkhamCardsAccount } from '@reducers';
 import { Action } from 'redux';
@@ -32,11 +32,12 @@ interface Props {
     campaignIdB: UploadedCampaignId;
   }) => void;
   showAlert: ShowAlert;
+  upload?: boolean;
 }
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, upload, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -93,6 +94,12 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
       });
     }
   }, [componentId, campaignId, isOwner]);
+  useEffect(() => {
+    if (upload && campaign) {
+      confirmUploadCampaign();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   if (!userId) {
     if (!enableArkhamCardsAccount) {
       return null;

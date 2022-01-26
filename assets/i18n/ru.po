@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-11-23 07:48-0500\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
+"PO-Revision-Date: 2021-12-22 22:24+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: ru\n"
 "mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.3\n"
-"x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"Language: ru\n"
+"x-generator: Poedit 3.0.1\n"
+"x-poedit-basepath: .\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -127,21 +127,6 @@ msgstr "Выживший"
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "Нейтральный"
-
-msgid "Guardian / Rogue"
-msgstr "Хранитель / Ловкач"
-
-msgid "Rogue / Survivor"
-msgstr "Ловкач / Выживший"
-
-msgid "Survivor / Seeker"
-msgstr "Выживший / Искатель"
-
-msgid "Seeker / Mystic"
-msgstr "Искатель / Мистик"
-
-msgid "Mystic / Guardian"
-msgstr "Мистик / Хранитель"
 
 msgid "Weakness"
 msgstr "Слабость"
@@ -1656,13 +1641,6 @@ msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
 msgstr[0] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[1] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 msgstr[2] "Всего ${ xp } / ${ resupplyPointsString } опыта"
-
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "Доступно ${ specialXp } очко пополнения припасов"
-msgstr[1] "Доступно ${ specialXp } очка пополнения припасов"
-msgstr[2] "Доступно ${ specialXp } очков пополнения припасов"
 
 msgid "Random location"
 msgstr "Случайная локация"
@@ -4043,10 +4021,10 @@ msgid "Campaign players"
 msgstr "Участники кампании"
 
 msgid "Add friends to campaign"
-msgstr "Добавить товарищей к кампании"
+msgstr "Добавить друзей к кампании"
 
 msgid "Add friends"
-msgstr "Добавить товарищей"
+msgstr "Добавить друзей"
 
 msgid "Access"
 msgstr "Доступ"
@@ -4082,7 +4060,7 @@ msgid "Leave"
 msgstr "Покинуть"
 
 msgid "Edit players"
-msgstr "Править игроков"
+msgstr "Добавить/удалить игроков"
 
 msgid "View players"
 msgstr "Список игроков"
@@ -4716,24 +4694,26 @@ msgstr ""
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
-msgstr ""
+msgstr "Версия SQLite: ${ sqliteVersion }"
 
 msgid "Beta testing"
-msgstr ""
+msgstr "Бета-тестирование"
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
 "shared with friends."
 msgstr ""
+"Теперь вы можете загрузить свою кампанию на сервер Arkham Cards, чтобы "
+"синхронизировать её между устройствами и поделиться ею с друзьями."
 
 msgid "Edit Weakness Cards"
-msgstr ""
+msgstr "Редактировать Слабости"
 
 msgid "Fix duplicates"
-msgstr ""
+msgstr "Исправить дубликаты"
 
 msgid "Narrate"
-msgstr ""
+msgstr "Прочитать вслух"
 
 msgid "Do you want to use the app to choose a random partner?"
 msgstr ""
@@ -4852,11 +4832,11 @@ msgid "The Heart of Madness - Seals Recovered"
 msgstr ""
 
 msgid "Negative modifier"
-msgstr ""
+msgstr "Отрицательный модификатор"
 
 #, javascript-format
 msgid "${ textModifier }, draws another"
-msgstr ""
+msgstr "${ textModifier } + ещё жетон"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
 msgstr ""
@@ -4874,44 +4854,52 @@ msgid "Chosen heal type"
 msgstr ""
 
 msgid "Assigned weaknesses"
-msgstr ""
+msgstr "Назначенные слабости"
 
 msgid "Review and draw weaknesses"
-msgstr ""
+msgstr "Просмотреть и взять слабости"
 
 msgid "Choose expansions for basic weakness"
-msgstr ""
+msgstr "Выберите дополнения, включённые в пул слабостей"
 
 msgid "Uploading campaign"
-msgstr ""
+msgstr "Кампания загружается"
 
 msgid "Save deck upgrade"
-msgstr ""
+msgstr "Сохранить улучшение"
 
 msgid "Apply deck changes from previous scenario"
-msgstr ""
+msgstr "Применить изменения после предыдущего сценария"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ input.prompt } (выберите ${ quantity })"
+msgstr[1] "${ input.prompt } (выберите ${ quantity })"
+msgstr[2] "${ input.prompt } (выберите ${ quantity })"
 
 msgid ""
 "This deck is ownered by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""
+"Эта колода привязана к другому игроку. Вы можете записать свои изменения "
+"сейчас, и тот игрок получит возможность применить его в следующий раз, "
+"когда войдёт в приложение."
 
 msgid ""
 "Changes have been recorded. You can apply these changes to your deck on the "
 "main screen of the campaign under your investigator."
 msgstr ""
+"Изменения записаны. Вы можете применить их к своей колоде на главном экране "
+"кампании, в графе своего сыщика."
 
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
 msgstr ""
+"Изменения записаны. Владелец этого сыщика сможет применить их к своей "
+"колоде на главном экране кампании, в графе своего сыщика."
 
 msgid "Tarot card"
 msgstr ""
@@ -4936,6 +4924,343 @@ msgid "Judgement · XX"
 msgstr ""
 
 msgid "Judgement · XX (Inverted)"
+msgstr ""
+
+msgid "The Fool · 0"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during "
+"its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its "
+"resolution."
+msgstr ""
+
+msgid "The Magician · I"
+msgstr ""
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain "
+"resources during their first turn."
+msgstr ""
+
+msgid "The High Priestess · II"
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get +1 [intellect]."
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get -1 [intellect]."
+msgstr ""
+
+msgid "The Empress · III"
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get +1 [agility]."
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get -1 [agility]."
+msgstr ""
+
+msgid "The Emperor · IV"
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get +1 [combat]."
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get -1 [combat]."
+msgstr ""
+
+msgid "The Hierophant · V"
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get +1 [willpower]."
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get -1 [willpower]."
+msgstr ""
+
+msgid "The Lovers · VI"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, adds it to their hand, and shuffles their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, removes it from the game, and shuffles their deck."
+msgstr ""
+
+msgid "The Chariot · VII"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 additional cards in their opening "
+"hand."
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, "
+"and cannot draw cards during their first turn."
+msgstr ""
+
+msgid "Strength · VIII"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand "
+"at -2 cost."
+msgstr ""
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr ""
+
+msgid "The Hermit · IX"
+msgstr ""
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Wheel of Fortune · X"
+msgstr ""
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"investigator may cancel it and treat it as a 0 token instead."
+msgstr ""
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+
+msgid "Justice · XI"
+msgstr ""
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr ""
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr ""
+
+msgid "The Hanged Man · XII"
+msgstr ""
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+
+msgid "Death · XIII"
+msgstr ""
+
+msgid "Each investigator gets +1 health."
+msgstr ""
+
+msgid "Each investigator gets -1 health."
+msgstr ""
+
+msgid "Temperance · XIV"
+msgstr ""
+
+msgid "Each investigator gets +1 sanity."
+msgstr ""
+
+msgid "Each investigator gets -1 sanity."
+msgstr ""
+
+msgid "The Devil · XV"
+msgstr ""
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr ""
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr ""
+
+msgid "The Tower · XVI"
+msgstr ""
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr ""
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr ""
+
+msgid "The Star · XVII"
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr ""
+
+msgid "The Moon · XVIII"
+msgstr ""
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr ""
+
+msgid "The Sun · XIX"
+msgstr ""
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+
+msgid "The World · XXI"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
+msgstr ""
+
+msgid "An app update is required to access this campaign."
+msgstr "Для доступа к этой кампании требуется обновить приложение."
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr ""
+"Обратите внимание: это аккаунт Arkham Cards. Это не то же самое, что "
+"аккаунт ArkhamDB."
+
+msgid "Side Deck"
+msgstr "Отложенные карты"
+
+msgid "Edit Side Deck"
+msgstr "Редактировать отложенные карты"
+
+msgid "Creating campaign..."
+msgstr "Создаём кампанию…"
+
+msgid "Creating standalone..."
+msgstr "Создаёт одиночный сценарий…"
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr ""
+"Кампания будет синхронизирована между вашими устройствами и ею можно будет "
+"поделиться с друзьями"
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+"Кампания будет храниться локально на этом устройстве. Вы сможете загрузить "
+"её на сервер в любое время"
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] "(${ count } карта)"
+msgstr[1] "(${ count } карты)"
+msgstr[2] "(${ count } карт)"
+
+msgid "Collection overlap"
+msgstr "Превышение коллекции"
+
+msgid "Deck overlap"
+msgstr "Пересечение колод"
+
+msgid "Show collection overlap"
+msgstr "Показать конфликтующие карты"
+
+msgid "Hide collection overlap"
+msgstr "Скрыть конфликтующие карты"
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr ""
+"Суммарное число экземпляров некоторых карт в колодах, ассоциированных с "
+"этой кампанией, превышает число таких карт в вашей коллекции."
+
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+msgid "Trait Choice"
+msgstr ""
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
 msgstr ""
 
 #, javascript-format
@@ -6370,7 +6695,7 @@ msgstr "Все"
 
 msgctxt "slots"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 msgctxt "Slots"
 msgid "All"
@@ -6467,18 +6792,23 @@ msgstr[2] "Сценариев"
 
 msgctxt "narration"
 msgid "Pause"
-msgstr ""
+msgstr "Пауза"
 
 msgctxt "narration"
 msgid "Play"
-msgstr ""
+msgstr "Воспроизвести"
 
 msgctxt "narration"
 msgid "Jump back"
-msgstr ""
+msgstr "Назад"
 
 msgctxt "narration"
 msgid "Playing audio"
+msgstr "Проигрывается аудио"
+
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
 msgstr ""
 
 msgctxt "campaign_log_entry"
@@ -6525,6 +6855,10 @@ msgstr[2] ""
 "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ "
 "sectionName }</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Нет"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6536,10 +6870,6 @@ msgstr ""
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
-
-msgctxt "trauma"
-msgid "None"
-msgstr "Нет"
 
 msgctxt "versus abbreviation"
 msgid "VS"

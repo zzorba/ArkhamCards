@@ -441,7 +441,7 @@ export default class FilterBuilder {
       ...(enemyHorrorEnabled ? this.rangeFilter('enemy_horror', enemyHorror, true) : []),
       ...(enemyHealthEnabled ? [
         ...this.rangeFilter('health', enemyHealth, true),
-        where(`(c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator}) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator})`),
+        where(`(c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator ? 1 : 0}) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator ? 1 : 0})`),
       ] : []),
     ];
     if (enemyElite && !enemyNonElite) {

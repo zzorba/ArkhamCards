@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { parse } from 'flatted';
@@ -18,6 +17,8 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useApolloClient } from '@apollo/client';
 import { genericOptimisticUpdates } from '@data/remote/apollo';
 import { trackedQueriesRemove } from '@data/apollo/trackerLink';
+import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
+import space from '@styles/space';
 
 interface Props {
   children: JSX.Element;
@@ -86,19 +87,14 @@ function ApolloGate({ children }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { colors, backgroundStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle, typography } = useContext(StyleContext);
   if (loading || !trackedLoaded) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <Text style={typography.text}>
-          { t`Loading...` }
+        <ArkhamLoadingSpinner autoPlay loop />
+        <Text style={[typography.text, space.marginTopS]}>
+          { loading ? t`Loading latest cards...` : t`Loading...` }
         </Text>
-        <ActivityIndicator
-          style={styles.spinner}
-          size="small"
-          animating
-          color={colors.lightText}
-        />
       </View>
     );
   }
@@ -123,8 +119,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-  },
-  spinner: {
-    height: 80,
   },
 });

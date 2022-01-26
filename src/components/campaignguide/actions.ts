@@ -26,7 +26,7 @@ import {
   DelayedDeckEdits,
 } from '@actions/types';
 
-import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector } from '@reducers';
+import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeChaosBagResultsSelector } from '@reducers';
 import { CreateCampaignActions, GuideActions } from '@data/remote/campaigns';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
@@ -40,12 +40,13 @@ function uploadCampaignHelper(
 ): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
   return async(dispatch, getState) => {
     // Do something with deck uploads?
+    const state = getState();
+    const chaosBagResults = makeChaosBagResultsSelector()(state, campaign.uuid);
     if (guided) {
-      const state = getState();
       const guide = makeCampaignGuideStateSelector()(state, campaign.uuid);
-      await actions.uploadNewCampaign(campaignId.serverId, campaign, guide);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, chaosBagResults, guide);
     } else {
-      await actions.uploadNewCampaign(campaignId.serverId, campaign, undefined);
+      await actions.uploadNewCampaign(campaignId.serverId, campaign, chaosBagResults, undefined);
     }
     dispatch({
       type: UPDATE_CAMPAIGN,
@@ -121,11 +122,11 @@ export function undo(
   scenarioId: string,
   campaignState: CampaignGuideStateT
 ): ThunkAction<void, AppState, unknown, GuideUndoInputAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
       const undoInputs = campaignState.undoInputs(scenarioId);
       if (undoInputs.length) {
-        actions.removeInputs(campaignId, undoInputs);
+        await actions.removeInputs(campaignId, undoInputs);
       }
     } else {
       dispatch({
@@ -154,9 +155,9 @@ export function setBinaryAchievement(
   achievementId: string,
   value: boolean,
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setBinaryAchievement(campaignId, achievementId, value);
+      await actions.setBinaryAchievement(campaignId, achievementId, value);
     } else {
       dispatch(
         updateAchievement(userId, {
@@ -171,46 +172,23 @@ export function setBinaryAchievement(
   };
 }
 
-export function incCountAchievement(
+export function setCountAchievement(
   userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
   achievementId: string,
-  max?: number
+  value: number
 ): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
+  return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.incAchievement(campaignId, achievementId, max);
+      await actions.setCountAchievement(campaignId, achievementId, value);
     } else {
       dispatch(updateAchievement(userId, {
         type: GUIDE_UPDATE_ACHIEVEMENT,
         campaignId,
         id: achievementId,
-        operation: 'inc',
-        max,
-        now: new Date(),
-      }));
-    }
-  };
-}
-
-export function decCountAchievement(
-  userId: string | undefined,
-  actions: GuideActions,
-  campaignId: CampaignId,
-  achievementId: string,
-  max?: number
-): ThunkAction<void, AppState, unknown, GuideUpdateAchievementAction> {
-  return (dispatch) => {
-    if (userId && campaignId.serverId) {
-      actions.decAchievement(campaignId, achievementId);
-    } else {
-      dispatch(updateAchievement(userId, {
-        type: GUIDE_UPDATE_ACHIEVEMENT,
-        campaignId,
-        id: achievementId,
-        operation: 'dec',
-        max,
+        operation: 'set',
+        value,
         now: new Date(),
       }));
     }
@@ -240,7 +218,7 @@ function setGuideInputAction(
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return async(dispatch) => {
     if (userId && campaignId.serverId) {
-      actions.setInput(campaignId, input);
+      await actions.setInput(campaignId, input);
     } else {
       dispatch({
         type: GUIDE_SET_INPUT,
@@ -438,6 +416,5 @@ export default {
   setCampaignLink,
   undo,
   setBinaryAchievement,
-  incCountAchievement,
-  decCountAchievement,
+  setCountAchievement,
 };

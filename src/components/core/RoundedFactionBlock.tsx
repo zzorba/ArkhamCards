@@ -16,7 +16,7 @@ interface Props {
   noShadow?: boolean;
 }
 
-export default function RoundedFactionBlock({ header, footer, children, faction, noSpace, noShadow, color }: Props) {
+function RoundedFactionBlock({ header, footer, children, faction, noSpace, noShadow, color }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[
@@ -37,6 +37,11 @@ export default function RoundedFactionBlock({ header, footer, children, faction,
   );
 }
 
+RoundedFactionBlock.computeHeight = (fontScale: number, noSpace: boolean, footer: boolean) => {
+  return s + 2 + ((noSpace || footer) ? 0 : s);
+}
+
+export default RoundedFactionBlock;
 
 interface AnimatedProps {
   faction: FactionCodeType;
@@ -49,6 +54,7 @@ interface AnimatedProps {
   toggleOpen?: () => void;
   disabled?: boolean;
   open?: boolean;
+  textColor?: string;
 }
 
 
@@ -63,6 +69,7 @@ export function AnimatedRoundedFactionBlock({
   noSpace,
   noShadow,
   footer,
+  textColor,
 }: AnimatedProps) {
   return (
     <CollapsibleFactionBlock
@@ -73,6 +80,7 @@ export function AnimatedRoundedFactionBlock({
       toggleOpen={toggleOpen}
       disabled={disabled}
       noShadow={noShadow}
+      textColor={textColor}
     >
       <View style={(noSpace || footer) ? undefined : space.paddingBottomS}>
         <View style={noSpace ? undefined : space.marginSideS}>

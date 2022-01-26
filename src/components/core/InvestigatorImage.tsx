@@ -20,6 +20,7 @@ import space from '@styles/space';
 
 interface Props {
   card?: Card;
+  backCard?: Card;
   componentId?: string;
   border?: boolean;
   size?: 'large' | 'small' | 'tiny';
@@ -27,6 +28,8 @@ interface Props {
   yithian?: boolean;
   imageLink?: boolean;
   badge?: 'upgrade' | 'deck';
+  tabooSetId?: number;
+  noShadow?: boolean;
 }
 
 const IMAGE_SIZE = {
@@ -41,8 +44,16 @@ const ICON_SIZE = {
   large: 65,
 };
 
-export default function InvestigatorImage({
+function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
+  if (size === 'small' || size === 'tiny') {
+    return size;
+  }
+  return toggleButtonMode(fontScale) ? 'small' : 'large';
+}
+
+function InvestigatorImage({
   card,
+  backCard,
   componentId,
   border,
   size = 'large',
@@ -50,6 +61,8 @@ export default function InvestigatorImage({
   yithian,
   imageLink,
   badge,
+  tabooSetId,
+  noShadow,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -58,16 +71,13 @@ export default function InvestigatorImage({
       if (imageLink) {
         showCardImage(componentId, card, colors);
       } else {
-        showCard(componentId, card.code, card, colors, true);
+        showCard(componentId, card.code, card, colors, true, tabooSetId, backCard?.code);
       }
     }
-  }, [card, componentId, imageLink, colors]);
+  }, [card, backCard, tabooSetId, componentId, imageLink, colors]);
 
   const impliedSize = useMemo(() => {
-    if (size === 'small' || size === 'tiny') {
-      return size;
-    }
-    return toggleButtonMode(fontScale) ? 'small' : 'large';
+    return getImpliedSize(size, fontScale);
   }, [size, fontScale]);
 
 
@@ -131,7 +141,7 @@ export default function InvestigatorImage({
       );
     }
     return (
-      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' ? shadow.large : undefined]}>
+      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' && !noShadow ? shadow.large : undefined]}>
         <View style={[
           styles.container,
           border ? styles.border : undefined,
@@ -177,7 +187,7 @@ export default function InvestigatorImage({
         ) }
       </View>
     );
-  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow]);
+  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
 
   if (componentId && card) {
     return (
@@ -188,6 +198,12 @@ export default function InvestigatorImage({
   }
   return image;
 }
+
+InvestigatorImage.computeHeight = (size: 'large' | 'small' | 'tiny' = 'large', fontScale: number) => {
+  return IMAGE_SIZE[getImpliedSize(size, fontScale)];
+}
+
+export default InvestigatorImage;
 
 const styles = StyleSheet.create({
   yithianTiny: {

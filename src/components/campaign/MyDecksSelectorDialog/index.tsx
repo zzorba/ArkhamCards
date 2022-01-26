@@ -20,13 +20,14 @@ import { CampaignId, Deck, SortType, SORT_BY_PACK } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
-import { s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -88,7 +89,7 @@ function investigatorOptions(): Options {
 }
 
 function MyDecksSelectorDialog(props: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { fontScale, typography, width } = useContext(StyleContext);
   const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDecks, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
 
   const campaign = useCampaign(campaignId);
@@ -227,25 +228,41 @@ function MyDecksSelectorDialog(props: Props) {
     );
   }, [componentId, props]);
 
-  const filterDeck = useCallback((deck: MiniDeckT): boolean => {
+  const filterDeck = useCallback((deck: MiniDeckT): string | undefined => {
     if (singleInvestigator && deck.investigator !== singleInvestigator) {
-      return false;
+      return 'wrong_investigator';
     }
     if (selectedInvestigatorIds && find(selectedInvestigatorIds, i => i === deck.investigator)) {
-      return false;
+      return 'selected_investtigator';
     }
     if (onlyShowSelected) {
-      return true;
-    }
-    if (hideOtherCampaignDecks && deck.campaign_id) {
-      return !deck.campaign_id.campaignId;
+      return undefined;
     }
     if (find(filterInvestigators, deck.investigator)) {
-      return false;
+      return 'filtered_investigator';
     }
-    return true;
+    if (hideOtherCampaignDecks && deck.campaign_id) {
+      return 'other_campaign';
+    }
+    return undefined;
   }, [singleInvestigator, selectedInvestigatorIds, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
-
+  const renderExpandButton = useCallback((reason: string) => {
+    switch (reason) {
+      case 'other_campaign':
+        return (
+          <View style={[space.paddingSideS, { width }]} key="other_campaign">
+            <ArkhamButton
+              icon="show"
+              title={t`Show decks from other campaigns`}
+              onPress={toggleHideOtherCampaignDecks}
+              grow
+            />
+          </View>
+        );
+      default:
+        return null;
+    }
+  }, [toggleHideOtherCampaignDecks, width]);
   const deckTab = useMemo(() => (
     <DeckSelectorTab
       componentId={componentId}
@@ -253,8 +270,9 @@ function MyDecksSelectorDialog(props: Props) {
       searchOptions={searchOptions(true)}
       onlyDecks={onlyDecks}
       filterDeck={filterDeck}
+      renderExpandButton={renderExpandButton}
     />
-  ), [componentId, onDeckSelect, searchOptions, filterDeck, onlyDecks]);
+  ), [componentId, onDeckSelect, searchOptions, filterDeck, renderExpandButton, onlyDecks]);
   const investigatorTab = useMemo(() => {
     if (!onInvestigatorSelect) {
       return null;

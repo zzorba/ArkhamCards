@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform, StyleSheet } from 'react-native';
+import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform } from 'react-native';
 import { t } from 'ttag';
 import { Brackets } from 'typeorm/browser';
 
@@ -11,11 +11,12 @@ import { s, m } from '@styles/space';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { Navigation } from 'react-native-navigation';
 import { RuleViewProps } from './RuleView';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { where } from '@data/sqlite/query';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { SEARCH_REGEX } from '@data/types/Card';
+import { searchNormalize } from '@data/types/Card';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -33,7 +34,13 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
         options: {
           topBar: {
             title: {
-              text: rule.title,
+              component: {
+                name: 'RulesTitle',
+                alignment: 'center',
+                passProps: {
+                  title: rule.title,
+                },
+              },
             },
             backButton: {
               title: t`Back`,
@@ -75,6 +82,7 @@ interface SearchResults {
 export default function RulesView({ componentId }: Props) {
   const { db } = useContext(DatabaseContext);
   const { lang } = useContext(LanguageContext);
+  const { fontScale } = useContext(StyleContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({
     term: '',
@@ -94,7 +102,7 @@ export default function RulesView({ componentId }: Props) {
     db.getRulesPaged(
       0,
       100,
-      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '') })
+      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchNormalize(searchTerm, lang) })
     ).then((rules: Rule[]) => setSearchResults({
       term: searchTerm,
       rules,
@@ -142,6 +150,7 @@ export default function RulesView({ componentId }: Props) {
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]
   ), [searchTerm, searchResults, rules]);
+  const height = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox
       prompt={t`Search rules`}
@@ -152,26 +161,20 @@ export default function RulesView({ componentId }: Props) {
         <FlatList
           onScroll={onScroll}
           data={data}
-          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
           renderItem={renderItem}
-          onEndReachedThreshold={0.5}
+          onEndReachedThreshold={height}
           onEndReached={fetchMore}
           updateCellsBatchingPeriod={50}
           initialNumToRender={30}
           maxToRenderPerBatch={30}
           windowSize={30}
           ListHeaderComponent={(Platform.OS === 'android') ? (
-            <View style={styles.searchBarPadding} />
+            <View style={{ height }} />
           ) : undefined}
         />
       ) }
     </CollapsibleSearchBox>
   );
 }
-
-const styles = StyleSheet.create({
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
-  },
-});

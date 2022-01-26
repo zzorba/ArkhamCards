@@ -1,33 +1,18 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
-"mime-version: 1.0\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"x-generator: Poedit 3.0\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.0\n"
-
-msgid "Guardian / Rogue"
-msgstr "Guardián / Rebelde"
-
-msgid "Rogue / Survivor"
-msgstr "Rebelde / Superviviente"
-
-msgid "Survivor / Seeker"
-msgstr "Superviviente / Buscador"
-
-msgid "Seeker / Mystic"
-msgstr "Buscador / Místico"
-
-msgid "Mystic / Guardian"
-msgstr "Místico / Guardián"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"mime-version: 1.0\n"
+"x-generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -2586,12 +2571,12 @@ msgstr "Contacta con nosotros"
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] "${ count } reabastecimiento"
-msgstr[1] "${ count } reabastecimientos"
+msgstr[1] "${ count } reabastecimiento"
 
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
-msgstr[0] "${ count } punto de suministro"
-msgstr[1] "${ count } puntos de suministro"
+msgstr[0] "${ count } punto de suministros"
+msgstr[1] "${ count } puntos de suministros"
 
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
@@ -2611,12 +2596,6 @@ msgid "Missing card #${ code }. Please try updating cards from ArkhamDB in setti
 msgstr ""
 "Carta #${ code } no encontrada. Por favor, prueba a \"Buscar nuevas cartas en ArkhamDB\" "
 "desde Ajustes."
-
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } de experiencia de reabastecimiento disponible"
-msgstr[1] "${ specialXp } de experiencia de reabastecimiento disponibles"
 
 msgid "Unexpected file type"
 msgstr "Tipo de archivo inesperado"
@@ -3305,14 +3284,14 @@ msgid "Reads \"${ badThing.prompt }\""
 msgstr "Lee \"${ badThing.prompt }\""
 
 msgid "Sign in to Dissonant Voices?"
-msgstr "¿Conectarse a Voces disonantes?"
+msgstr "¿Conectarse a Dissonant Voices?"
 
 msgid ""
 "Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario "
 "text for each Arkham Horror campaign."
 msgstr ""
-"Voces disonantes es un proyecto en marcha de Mythos Busters para narrar, <b>en inglés</"
-"b>, los textos de las campañas de Arkham Horror."
+"Dissonant Voices es un proyecto en marcha de Mythos Busters para narrar, en inglés, los "
+"textos de las campañas de Arkham Horror."
 
 msgid "Are you sure you want to delete this standalone?"
 msgstr "¿Estás seguro de querer eliminar este escenario independiente?"
@@ -3717,7 +3696,7 @@ msgid "Audio narration"
 msgstr "Narración campañas"
 
 msgid "Dissonant Voices"
-msgstr "Voces disonantes"
+msgstr "Dissonant Voices"
 
 msgid "Notes"
 msgstr "Notas"
@@ -4466,9 +4445,9 @@ msgstr ""
 "Pueden pasar hasta 24h para que Patreon actualice tu estado como miembro. Si todavía "
 "tienes problemas transcurridas 24h, por favor contacta con Mythos Busters a través de "
 "Patreon o Discord.\n"
-"Si estás intentando conectarte a Voces disonantes, el proyecto <b>en español</b>, "
-"simplemente conéctate a tu cuenta de Arkham Cards en Ajustes. Si tienes problemas, por "
-"favor contacta con ¡Tengo un plan! a través de Discord."
+"Si estás intentando conectarte a Voces disonantes, el proyecto en español, simplemente "
+"conéctate a tu cuenta de Arkham Cards en Ajustes. Si tienes problemas, por favor "
+"contacta con ¡Tengo un plan! a través de Discord."
 
 msgid "Skull"
 msgstr "Cráneo"
@@ -4882,6 +4861,400 @@ msgstr "El Juicio · XX"
 
 msgid "Judgement · XX (Inverted)"
 msgstr "El Juicio · XX (Invertida)"
+
+msgid "The Fool · 0"
+msgstr "El Loco · 0"
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during its "
+"resolution."
+msgstr ""
+"Cada investigador no derrotado durante esta partida obtiene +2 puntos de experiencia "
+"durante su resolución."
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its resolution."
+msgstr ""
+"Cada investigador derrotado durante esta partida obtiene -2 puntos de experiencia "
+"durante su resolución."
+
+msgid "The Magician · I"
+msgstr "El Mago · I"
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr "Cada investigador comienza la partida con 3 recursos adicionales."
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain resources "
+"during their first turn."
+msgstr ""
+"Cada investigador comienza la partida con 3 recursos menos y no puede obtener recursos "
+"durante su primer turno."
+
+msgid "The High Priestess · II"
+msgstr "La Suma Sacerdotisa · II"
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, they get +1 "
+"[intellect]."
+msgstr ""
+"Durante la primera prueba de [intellect] que cada investigador realice en cada ronda, "
+"recibe +1 [intellect]."
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, they get -1 "
+"[intellect]."
+msgstr ""
+"Durante la primera prueba de [intellect] que cada investigador realice en cada ronda, "
+"recibe -1 [intellect]."
+
+msgid "The Empress · III"
+msgstr "La Emperatriz · III"
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they get +1 "
+"[agility]."
+msgstr ""
+"Durante la primera prueba de [agility] que cada investigador realice en cada ronda, "
+"recibe +1 [agility]."
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they get -1 "
+"[agility]."
+msgstr ""
+"Durante la primera prueba de [agility] que cada investigador realice en cada ronda, "
+"recibe -1 [agility]."
+
+msgid "The Emperor · IV"
+msgstr "El Emperador · IV"
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they get +1 "
+"[combat]."
+msgstr ""
+"Durante la primera prueba de [combat] que cada investigador realice en cada ronda, "
+"recibe +1 [combat]."
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they get -1 "
+"[combat]."
+msgstr ""
+"Durante la primera prueba de [combat] que cada investigador realice en cada ronda, "
+"recibe -1 [combat]."
+
+msgid "The Hierophant · V"
+msgstr "El Sumo Sacerdote · V"
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, they get +1 "
+"[willpower]."
+msgstr ""
+"Durante la primera prueba de [willpower] que cada investigador realice en cada ronda, "
+"recibe +1 [willpower]."
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, they get -1 "
+"[willpower]."
+msgstr ""
+"Durante la primera prueba de [willpower] que cada investigador realice en cada ronda, "
+"recibe -1 [willpower]."
+
+msgid "The Lovers · VI"
+msgstr "Los Amantes · VI"
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally asset, adds it "
+"to their hand, and shuffles their deck."
+msgstr ""
+"Cuando comience la partida, cada investigador busca en su mazo un Apoyo Aliado, lo añade "
+"a su mano y baraja su mazo."
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally asset, removes "
+"it from the game, and shuffles their deck."
+msgstr ""
+"Cuando comience la partida, cada investigador busca en su mazo un Apoyo Aliado, lo "
+"retira de la partida y baraja su mazo."
+
+msgid "The Chariot · VII"
+msgstr "El Carro · VII"
+
+msgid "Each investigator begins the game with 2 additional cards in their opening hand."
+msgstr "Cada investigador comienza la partida con 2 cartas adicionales en su mano inicial."
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, and cannot "
+"draw cards during their first turn."
+msgstr ""
+"Cada investigador comienza la partida con 2 cartas menos en su mano inicial y no puede "
+"robar cartas durante su primer turno."
+
+msgid "Strength · VIII"
+msgstr "La Fuerza · VIII"
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand at -2 cost."
+msgstr ""
+"Cuando comience la partida, cada investigador puede jugar un Apoyo de su mano aplicando "
+"-2 a su coste."
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr "Durante la primera ronda de la partida, ningún investigador puede jugar Apoyos."
+
+msgid "The Hermit · IX"
+msgstr "El Ermitaño · IX"
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr "Aumenta en 3 el tamaño de mano máximo de cada investigador."
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr "Reduce en 3 el tamaño de mano máximo de cada investigador."
+
+msgid "Wheel of Fortune · X"
+msgstr "La Rueda de la Fortuna · X"
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte investigator may "
+"cancel it and treat it as a 0 token instead."
+msgstr ""
+"Una vez por cada acto, cuando cualquier investigador revele una ficha [auto_fail], los "
+"investigadores pueden cancelarla y considerarla como una ficha 0 en su lugar."
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] token, cancel "
+"it and treat it as a -5 token instead."
+msgstr ""
+"Una vez por cada plan, la primera vez que cualquier investigador revele una ficha "
+"[elder_sign], cancélala y considérala como una ficha -5 en su lugar."
+
+msgid "Justice · XI"
+msgstr "La Justicia · XI"
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr ""
+"Cancela la primera ficha de Perdición que fuese a colocarse sobre el último plan de la "
+"partida."
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr "El último plan de la partida entra en juego con 1 ficha de Perdición sobre él."
+
+msgid "The Hanged Man · XII"
+msgstr "El Ahorcado · XII"
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+"Durante la preparación, cada investigador puede cambiar su mano inicial hasta 2 veces "
+"adicionales."
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening hand (resolve "
+"their revelation abilities when the game begins)."
+msgstr ""
+"Ningún investigador puede cambiar su mano inicial ni cambiar Debilidades que tenga en "
+"ella (resuelve sus capacidades \"Revelación\" cuando comience la partida)."
+
+msgid "Death · XIII"
+msgstr "La Muerte · XIII"
+
+msgid "Each investigator gets +1 health."
+msgstr "Cada investigador recibe +1 de salud."
+
+msgid "Each investigator gets -1 health."
+msgstr "Cada investigador recibe -1 de salud."
+
+msgid "Temperance · XIV"
+msgstr "La Templanza · XIV"
+
+msgid "Each investigator gets +1 sanity."
+msgstr "Cada investigador recibe +1 de cordura."
+
+msgid "Each investigator gets -1 sanity."
+msgstr "Cada investigador recibe -1 de cordura."
+
+msgid "The Devil · XV"
+msgstr "El Diablo · XV"
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that investigattor when the "
+"game begins."
+msgstr ""
+"Cada investigador tiene 1 espacio adicional de un tipo a elección de ese investigador "
+"cuando comience la partida."
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by that "
+"investigator when the game begins."
+msgstr ""
+"Cada investigador tiene 3 espacios menos, cada uno de un tipo distinto, a elección de "
+"ese investigador cuando comience la partida."
+
+msgid "The Tower · XVI"
+msgstr "La Torre · XVI"
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it from the game "
+"(return them after the game ends)."
+msgstr ""
+"Cada investigador elige 1 Debilidad básica de su mazo y la retira de la partida "
+"(devuélvelas después de que acabe la partida)."
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after the game ends."
+msgstr ""
+"Añade 1 Debilidad básica aleatoria al mazo de cada investigador. Retíralas después de "
+"que acabe la partida."
+
+msgid "The Star · XVII"
+msgstr "La Estrella · XVII"
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, they may heal 1 "
+"damage or 1 horror."
+msgstr ""
+"Después de que un investigador revele una ficha [elder_sign] durante una prueba de "
+"habilidad, puede curarse 1 punto de daño o 1 punto de horror."
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, they must either "
+"take 1 damage or 1 horror."
+msgstr ""
+"Después de que un investigador revele una ficha [auto_fail] durante una prueba de "
+"habilidad, debe recibir 1 punto de daño o 1 punto de horror."
+
+msgid "The Moon · XVIII"
+msgstr "La Luna · XVIII"
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may shuffle the "
+"bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+"La primera vez que el mazo de cada investigador fuese a quedarse sin cartas, ese "
+"investigador puede barajar las 10 cartas inferiores de su pila de descartes y "
+"devolverlas a su mazo."
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their deck. Shuffle "
+"each discarded weakness into its owner's deck."
+msgstr ""
+"Cuando comience la partida, cada investigador descarta las 5 primeras cartas de su mazo. "
+"Añade cada Debilidad descartada al mazo de su propietario y barájalo."
+
+msgid "The Sun · XIX"
+msgstr "El Sol · XIX"
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+"Durante el primer turno de cada investigador, puede realizar 2 acciones adicionales."
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+"Durante el primer turno de cada investigador, tiene 2 acciones menos para realizar."
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 token. Swap them "
+"back after the game ends."
+msgstr ""
+"Cuando comience la partida, sustituye una ficha [skull] de la bolsa de caos por una "
+"ficha 0. Vuelve a intercambiarlas después de que acabe la partida."
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos bag with a "
+"[skull] token. Swap them back after the game ends."
+msgstr ""
+"Cuando comience la partida, sustituye la ficha de la bolsa de caos que tenga el valor "
+"más alto y no sea negativa por una ficha [skull]. Vuelve a intercambiarlas después de "
+"que acabe la partida."
+
+msgid "The World · XXI"
+msgstr "El Mundo · XXI"
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of their choice "
+"during its resolution."
+msgstr ""
+"Cada investigador no derrotado durante esta partida puede quitarse 1 trauma de su "
+"elección durante su resolución."
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their choice during its "
+"resolution."
+msgstr ""
+"Cada investigador derrotado durante esta partida sufre 1 trauma de su elección durante "
+"su resolución."
+
+msgid "An app update is required to access this campaign."
+msgstr "Es necesario actualizar la aplicación para acceder a esta campaña."
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your ArkhamDB account."
+msgstr ""
+"Ten en cuenta que esto es una cuenta de ArkhamCards, independiente de tu cuenta de "
+"ArkhamDB."
+
+msgid "Side Deck"
+msgstr "Mazo secundario"
+
+msgid "Edit Side Deck"
+msgstr "Editar mazo secundario"
+
+msgid "Creating campaign..."
+msgstr "Creando campaña..."
+
+msgid "Creating standalone..."
+msgstr "Creando escenario independiente..."
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr "La campaña se sincronizará entre dispositivos y podrá ser compartida con amigos"
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr "La campaña se guardará en el dispositivo (podrás subirla a la nube más tarde)"
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] "(${ count } carta)"
+msgstr[1] "(${ count } cartas)"
+
+msgid "Collection overlap"
+msgstr "Solapamiento de colección"
+
+msgid "Deck overlap"
+msgstr "Solapamiento de mazos"
+
+msgid "Show collection overlap"
+msgstr "Mostrar solapamiento"
+
+msgid "Hide collection overlap"
+msgstr "Ocultar solapamiento"
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your card "
+"collection."
+msgstr ""
+"El número total de estas cartas utilizado en los mazos de esta campaña excede tu "
+"colección."
+
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr "Después de completar ${ scenarionName }"
+
+msgid "Show decks from other campaigns"
+msgstr "Mostrar mazos de otras campañas"
+
+msgid "Trait Choice"
+msgstr "Elección de Rasgo"
+
+msgid "Blessed"
+msgstr "Bendecido"
+
+msgid "Cursed"
+msgstr "Maldito"
+
+msgid "Blessed and Cursed"
+msgstr "Bendecido o Maldito"
+
+msgid "Select Option"
+msgstr "Selecciona una opción"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6355,6 +6728,11 @@ msgctxt "narration"
 msgid "Playing audio"
 msgstr "Reproduciendo audio"
 
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
+
 msgctxt "campaign_log_entry"
 msgid "Other."
 msgstr "Otro"
@@ -6384,6 +6762,10 @@ msgstr[0] ""
 msgstr[1] ""
 "Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
 
+msgctxt "trauma"
+msgid "None"
+msgstr "Ninguno"
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "Ninguna"
@@ -6395,10 +6777,6 @@ msgstr "El Juicio · XX"
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "El Juicio · XX (Invertida)"
-
-msgctxt "trauma"
-msgid "None"
-msgstr "Ninguno"
 
 msgctxt "versus abbreviation"
 msgid "VS"

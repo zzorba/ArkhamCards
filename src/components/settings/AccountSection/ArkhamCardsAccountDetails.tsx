@@ -84,11 +84,11 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
       />
       <DeckPickerStyleButton
         icon="per_investigator"
-        editable
+        editable={!loading}
         title={t`Friends`}
         valueLabel={!loading ? (requestLabel || label) : undefined}
         valueLabelDescription={!loading && requestLabel ? label : undefined}
-        onPress={editFriendsPressed}
+        onPress={profile?.handle ? editFriendsPressed : showDialog}
         editIcon="plus-thin"
         last
       />

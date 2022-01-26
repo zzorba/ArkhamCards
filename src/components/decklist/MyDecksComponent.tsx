@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { filter } from 'lodash';
+import { partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -16,21 +16,22 @@ import space, { s } from '@styles/space';
 import { getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { useMyDecks } from '@data/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import ConnectionProblemBanner from '@components/core/ConnectionProblemBanner';
+import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
 
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   onlyDecks?: MiniDeckT[];
-  filterDeck?: (deck: MiniDeckT) => boolean;
+  filterDeck?: (deck: MiniDeckT) => string | undefined;
+  renderExpandButton?: (reason: string) => React.ReactNode | null;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
@@ -41,6 +42,7 @@ function MyDecksComponent({
   deckClicked,
   onlyDecks,
   filterDeck,
+  renderExpandButton,
   searchOptions,
   customFooter,
   login,
@@ -48,7 +50,7 @@ function MyDecksComponent({
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { typography, width } = useContext(StyleContext);
+  const { typography, fontScale, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
   }, [login]);
@@ -59,7 +61,6 @@ function MyDecksComponent({
     refreshing,
     error,
   }, onRefresh] = useMyDecks(deckActions);
-
   useEffect(() => {
     const now = new Date();
     const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
@@ -96,28 +97,45 @@ function MyDecksComponent({
     );
   }, [login, signedIn, typography]);
 
-  const footer = useMemo(() => {
-    return (
-      <View style={styles.footer}>
-        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
-        { signInFooter }
-      </View>
-    );
-  }, [customFooter, signInFooter]);
-
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
   const header = useMemo(() => {
     const searchPadding = !!searchOptions && Platform.OS === 'android';
     return (
       <>
-        { searchPadding && <View style={styles.searchBarPlaceholder} /> }
-        <ConnectionProblemBanner width={width} arkhamdbState={{ error, reLogin }} />
+        { searchPadding && <View style={{ height: searchBoxHeight(fontScale) }} /> }
+        { connectionProblemBanner }
       </>
     );
-  }, [searchOptions, width, error, reLogin]);
+  }, [searchOptions, fontScale, connectionProblemBanner]);
 
-  const deckIds = useMemo(() => {
-    return filter(onlyDecks || myDecks, deckId => !filterDeck || filterDeck(deckId));
+  const [deckIds, deckReasons] = useMemo(() => {
+    if (!filterDeck) {
+      return [onlyDecks || myDecks || [], []];
+    }
+    const [dropped, keep] = partition(map(onlyDecks || myDecks, deckId => {
+      return {
+        deckId,
+        reason: filterDeck ? filterDeck(deckId) : undefined,
+      };
+    }), p => !!p.reason);
+    return [
+      map(keep, x => x.deckId),
+      uniq(flatMap(dropped, x => x.reason ? [x.reason] : [])),
+    ];
   }, [filterDeck, onlyDecks, myDecks]);
+
+  const footer = useMemo(() => {
+    return (
+      <View style={styles.footer}>
+        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
+        { !!renderExpandButton && !!deckReasons.length && (
+          flatMap(deckReasons, renderExpandButton)
+        ) }
+        { signInFooter }
+      </View>
+    );
+  }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
+
   return (
     <DeckListComponent
       searchOptions={searchOptions}
@@ -147,8 +165,5 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-  },
-  searchBarPlaceholder: {
-    height: SEARCH_BAR_HEIGHT,
   },
 });

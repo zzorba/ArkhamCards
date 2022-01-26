@@ -42,6 +42,7 @@ import {
   CampaignLogInvestigatorCountCondition,
   MathCondition,
   CampaignLogCardsSwitchCondition,
+  ScenarioDataFixedInvestigatorStatusCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -756,6 +757,12 @@ function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampai
   }
 }
 
+export function fixedInvestigatorStatusConditionResult(condition: ScenarioDataFixedInvestigatorStatusCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  const investigators = campaignLog.getInvestigators(condition.status);
+  const result = !!find(investigators, condition.fixed_investigator);
+  return binaryConditionResult(result, condition.options);
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -803,6 +810,8 @@ export function conditionResult(
             condition.options
           );
         }
+        case 'fixed_investigator_status':
+          return fixedInvestigatorStatusConditionResult(condition, campaignLog);
         case 'investigator_status': {
           const investigators = campaignLog.investigatorCodes(false);
           const decision = !!find(investigators, code => {

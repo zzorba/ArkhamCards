@@ -508,8 +508,8 @@ export function useBasicDialog(title: string): [
       { saveError }
     </Text>
   ) : (
-    <View style={[space.paddingTopL, space.paddingBottomL]}>
-      <LoadingSpinner large inline />
+    <View style={[space.paddingBottomL, space.paddingTopL]}>
+      <LoadingSpinner inline />
     </View>
   ), [saveError, typography.small]);
   const {
@@ -675,6 +675,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           description: deckEditsRef.current.descriptionChange,
           slots: deckEditsRef.current.slots,
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
+          side: deckEditsRef.current.side,
           problem: problemField,
           spentXp: parsedDeckRef.current.changes?.spentXp || 0,
           xpAdjustment: deckEditsRef.current.xpAdjustment,

@@ -58,6 +58,7 @@ function num(value: number | null | undefined) {
 interface Props {
   componentId?: string;
   card: Card;
+  backCard?: Card;
   linked?: boolean;
   notFirst?: boolean;
   simple?: boolean;
@@ -65,7 +66,7 @@ interface Props {
 }
 
 export default function TwoSidedCardComponent(props: Props) {
-  const { componentId, card, linked, notFirst, simple, width } = props;
+  const { componentId, card, backCard, linked, notFirst, simple, width } = props;
   const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);
   const isHorizontal = card.type_code === 'act' ||
@@ -299,7 +300,8 @@ export default function TwoSidedCardComponent(props: Props) {
         />
       );
     }
-    const noHeader = (card.name === card.back_name || !card.back_name) && !backFirst;
+    const back = backCard || card;
+    const noHeader = (card.name === back.back_name || !back.back_name) && !backFirst;
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
         <View style={[styles.card, shadow.large, backgroundStyle, {
@@ -330,18 +332,18 @@ export default function TwoSidedCardComponent(props: Props) {
                   ) }
                 </View>
               ) }
-              { !!card.back_flavor && flavorFirst &&
-                <CardFlavorTextComponent text={card.back_flavor} />
+              { !!back.back_flavor && flavorFirst &&
+                <CardFlavorTextComponent text={back.back_flavor} />
               }
-              { !!card.back_text && (
+              { !!back.back_text && (
                 <View style={[styles.gameTextBlock, {
                   borderColor: colors.M,
                 }]}>
-                  <CardTextComponent text={card.back_text} />
+                  <CardTextComponent text={back.back_text} />
                 </View>)
               }
-              { !!card.back_flavor && !flavorFirst &&
-                <CardFlavorTextComponent text={card.back_flavor} />
+              { !!back.back_flavor && !flavorFirst &&
+                <CardFlavorTextComponent text={back.back_flavor} />
               }
             </View>
             { isFirst && cardFooter }
@@ -357,7 +359,7 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
       </View>
     );
-  }, [card, componentId, simple, width, linked, shadow.large,
+  }, [backCard, card, componentId, simple, width, linked, shadow.large,
     colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
     toggleShowBack, showTaboo, showFaq]);
 

@@ -7,6 +7,7 @@ import {
   Platform,
   View,
   Easing,
+  InteractionManager,
 } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
@@ -60,8 +61,8 @@ function MythosButton({ filterId }: Props) {
 
   const onPress = useCallback(() => {
     const newState = !mythosModeState;
-    dispatch(toggleMythosMode(filterId, newState));
     setMythosModeState(newState);
+    InteractionManager.runAfterInteractions(() => dispatch(toggleMythosMode(filterId, newState)));
   }, [setMythosModeState, dispatch, mythosModeState, filterId]);
   const investigatorColor = colorAnim.current.interpolate({
     inputRange: [0, 1],

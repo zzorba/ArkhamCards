@@ -9,7 +9,7 @@ import { getFilterState, getCardFilterData, AppState } from '@reducers';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-export function useFilterButton(filterId: string, baseQuery?: Brackets, modal?: boolean): [boolean, () => void] {
+export function useFilterButton({ componentId, filterId, baseQuery, modal }: { componentId: string, filterId: string, baseQuery?: Brackets, modal?: boolean }): [boolean, () => void] {
   const { useCardTraits } = useContext(LanguageContext);
   const filterSelector = useCallback((state: AppState): [boolean, CardFilterData | undefined] => {
     const cardData = getCardFilterData(state, filterId);
@@ -27,7 +27,7 @@ export function useFilterButton(filterId: string, baseQuery?: Brackets, modal?: 
     if (!cardData) {
       return;
     }
-    Navigation.push<CardFilterProps>(filterId, {
+    Navigation.push<CardFilterProps>(componentId, {
       component: {
         name: 'SearchFilters',
         passProps: {
@@ -47,6 +47,6 @@ export function useFilterButton(filterId: string, baseQuery?: Brackets, modal?: 
         },
       },
     });
-  }, [filterId, baseQuery, modal, cardData]);
+  }, [filterId, componentId, baseQuery, modal, cardData]);
   return [filters, onPress];
 }

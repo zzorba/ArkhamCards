@@ -20,6 +20,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
 import { Partner } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { ProcessedCampaign } from '@data/scenario';
 
 interface Props {
   componentId: string;
@@ -31,6 +32,8 @@ interface Props {
   hideChaosBag?: boolean;
   width: number;
   interScenarioId?: string;
+  hideChaosBagButtons?: boolean;
+  processedCampaign: ProcessedCampaign | undefined;
 }
 
 interface CardSectionProps {
@@ -52,10 +55,11 @@ function CardSection({ code, section, campaignGuide, width }: CardSectionProps) 
   return (
     <RoundedFactionBlock
       header={header}
+      noSpace
       faction="neutral"
     >
-      { !!section && (
-        <View style={[space.paddingTopM, space.paddingSideS]}>
+      { !!section && !!section.entries.length && (
+        <View style={[space.paddingTopM, space.paddingSideM]}>
           <CampaignLogSectionComponent
             sectionId={code}
             campaignGuide={campaignGuide}
@@ -77,6 +81,8 @@ export default function CampaignLogComponent({
   hideChaosBag,
   width,
   interScenarioId,
+  hideChaosBagButtons,
+  processedCampaign,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { colon } = useContext(LanguageContext);
@@ -149,7 +155,12 @@ export default function CampaignLogComponent({
         if (CARD_REGEX.test(id)) {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>
-              <CardSection code={id} campaignGuide={campaignGuide} section={section} width={width - s * 2} />
+              <CardSection
+                code={id}
+                campaignGuide={campaignGuide}
+                section={section}
+                width={width - s * 2}
+              />
             </View>
           );
         }
@@ -173,8 +184,8 @@ export default function CampaignLogComponent({
   }, [campaignLog, campaignGuide, width, interScenarioId, colon]);
 
   const oddsCalculatorPressed = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone);
-  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
+    showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone, processedCampaign);
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone, processedCampaign]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
     showGuideDrawChaosBag(
@@ -183,9 +194,10 @@ export default function CampaignLogComponent({
       campaignLog.chaosBag,
       campaignLog.investigatorCodesSafe(),
       scenarioId,
-      standalone
+      standalone,
+      processedCampaign
     );
-  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone, processedCampaign]);
 
   const chaosBagSection = useMemo(() => {
     if (hideChaosBag) {
@@ -203,24 +215,28 @@ export default function CampaignLogComponent({
             chaosBag={campaignLog.chaosBag}
             width={width - m * 2}
           />
-          <DeckButton
-            thin
-            icon="chaos_bag"
-            title={t`Draw chaos tokens`}
-            onPress={chaosBagSimulatorPressed}
-            topMargin={s}
-            bottomMargin={m}
-          />
-          <DeckButton
-            thin
-            icon="difficulty"
-            title={t`Odds calculator`}
-            onPress={oddsCalculatorPressed}
-          />
+          { !hideChaosBagButtons && (
+            <>
+              <DeckButton
+                thin
+                icon="chaos_bag"
+                title={t`Draw chaos tokens`}
+                onPress={chaosBagSimulatorPressed}
+                topMargin={s}
+                bottomMargin={m}
+              />
+              <DeckButton
+                thin
+                icon="difficulty"
+                title={t`Odds calculator`}
+                onPress={oddsCalculatorPressed}
+              />
+            </>
+          ) }
         </View>
       </View>
     );
-  }, [campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed, width, hideChaosBag, standalone]);
+  }, [campaignLog, hideChaosBagButtons, chaosBagSimulatorPressed, oddsCalculatorPressed, width, hideChaosBag, standalone]);
   return (
     <View style={[backgroundStyle, space.paddingBottomM]}>
       { chaosBagSection }

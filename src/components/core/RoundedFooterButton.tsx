@@ -12,10 +12,13 @@ interface Props {
   color?: 'light' | 'dark';
 }
 
+function computeHeight(fontScale: number) {
+  return (18 * fontScale) + 22;
+}
 
-export default function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
+function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const height = (18 * fontScale) + 22;
+  const height = computeHeight(fontScale);
   const backgroundColor = color === 'dark' ? colors.L10 : colors.L20;
   const rippleColor = color === 'dark' ? colors.L20 : colors.L30;
   const textColor = color === 'dark' ? colors.D20 : colors.M;
@@ -35,13 +38,17 @@ export default function RoundedFooterButton({ onPress, icon, title, color = 'dar
     >
       <View pointerEvents="box-none" style={styles.row}>
         { icon === 'spinner' ? <ActivityIndicator size="small" color={textColor} animating /> : <ArkhamButtonIcon icon={icon} color={color === 'dark' ? 'dark' : 'faded'} /> }
-        <Text style={[typography.button, { marginLeft: height / 4, color: textColor }]}>
+        <Text style={[typography.button, { marginLeft: height / 4, color: textColor, textAlignVertical: 'center' }]}>
           { title }
         </Text>
       </View>
     </Ripple>
   );
 }
+
+RoundedFooterButton.computeHeight = computeHeight;
+
+export default RoundedFooterButton;
 
 const styles = StyleSheet.create({
   buttonStyle: {
@@ -56,5 +63,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

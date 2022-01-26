@@ -3,7 +3,7 @@ import { Appearance, Dimensions, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { throttle } from 'lodash';
 
-import StyleContext, { DEFAULLT_STYLE_CONTEXT } from './StyleContext';
+import StyleContext, { DEFAULT_STYLE_CONTEXT } from './StyleContext';
 import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
@@ -36,30 +36,6 @@ function useColorScheme(delay = 2000) {
 interface Props {
   children: React.ReactNode;
 }
-
-const LIGHT_ELEMENTS_THEME = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#444444',
-    },
-    disabledStyle: {
-      backgroundColor: '#dddddd',
-    },
-  },
-};
-
-const DARK_ELEMENTS_THEME = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#bbbbbb',
-    },
-    disabledStyle: {
-      backgroundColor: '#111111',
-    },
-  },
-};
 
 export default function StyleProvider({ children } : Props) {
   const { lang, usePingFang } = useContext(LanguageContext);
@@ -98,7 +74,7 @@ export default function StyleProvider({ children } : Props) {
 
   const context = useMemo(() => {
     return {
-      ...DEFAULLT_STYLE_CONTEXT,
+      ...DEFAULT_STYLE_CONTEXT,
       darkMode,
       fontScale: fontScale * appFontScale,
       width,

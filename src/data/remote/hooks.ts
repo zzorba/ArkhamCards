@@ -82,8 +82,7 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
       return new MiniCampaignRemote(campaign);
     });
   }, [rawCampaigns, userId]);
-  const [loading] = useDebounce(userLoading || dataLoading, 200);
-  return [campaigns, loading, refresh];
+  return [campaigns, (userId ? (userLoading || dataLoading) : false), refresh];
 }
 
 export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, live?: boolean): CampaignGuideStateT | undefined {
@@ -439,7 +438,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
   }, [refetch, userId]);
   const rawDecks = data?.users_by_pk?.decks;
   const deckIds = useMemo(() => {
-    if (!rawDecks) {
+    if (!userId || !rawDecks) {
       return [];
     }
     const result = flatMap(rawDecks, ({ deck }) => {
@@ -449,7 +448,7 @@ export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, (
       return new MiniDeckRemote(deck);
     });
     return result;
-  }, [rawDecks]);
+  }, [userId, rawDecks]);
   const [loading] = useDebounce(!!(userId && !data) || userLoading || dataLoading, 200);
   return [deckIds, loading, refresh];
 }
@@ -465,6 +464,7 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
       local_uuid: deckId.local ? deckId.uuid : null,
       arkhamdb_id: deckId.local ? null : deckId.id,
     }),
+    returnPartialData: true,
   }, true);
 
   const result = useMemo(() => {

@@ -32,12 +32,13 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
           colors,
           false,
           tabooSetId,
+          investigatorBack?.code
         );
       }
     } else {
       toggleShowBack();
     }
-  }, [componentId, tabooSetId, investigator, colors, toggleShowBack]);
+  }, [componentId, tabooSetId, investigator, investigatorBack, colors, toggleShowBack]);
   const [textContent, tabooContent] = useMemo(() => {
     if (!investigatorBack || !investigatorBack.back_text || !showBack) {
       return [
@@ -76,8 +77,10 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
                 <View style={styles.image}>
                   <InvestigatorImage
                     card={investigator}
+                    backCard={investigatorBack}
                     componentId={componentId}
                     yithian={yithian}
+                    tabooSetId={tabooSetId}
                     border
                   />
                 </View>
@@ -89,7 +92,7 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
         { tabooContent }
       </>
     );
-  }, [investigator, componentId, yithian, textContent, tabooContent, showBack]);
+  }, [investigator, investigatorBack, tabooSetId, componentId, yithian, textContent, tabooContent, showBack]);
   return (
     <View style={styles.column}>
       <TouchableOpacity onPress={onPress}>

@@ -176,20 +176,20 @@ async function insertChunk<T>(
 function rulesJson(lang?: string) {
   switch (lang) {
     case 'fr':
-      return require('../../assets/rules_fr.json');
+      return require('../../assets/generated/rules_fr.json');
     case 'es':
-      return require('../../assets/rules_es.json');
+      return require('../../assets/generated/rules_es.json');
     case 'ru':
-      return require('../../assets/rules_ru.json');
+      return require('../../assets/generated/rules_ru.json');
     case 'de':
-      return require('../../assets/rules_de.json');
+      return require('../../assets/generated/rules_de.json');
     case 'ko':
-      return require('../../assets/rules_ko.json');
+      return require('../../assets/generated/rules_ko.json');
     case 'zh':
-      return require('../../assets/rules_zh.json');
+      return require('../../assets/generated/rules_zh.json');
     case 'en':
     default:
-      return require('../../assets/rules.json');
+      return require('../../assets/generated/rules.json');
   }
 }
 
@@ -325,6 +325,7 @@ export const syncCards = async function(
 
     await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
+    VERBOSE && console.log('Imported rules');
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
@@ -371,6 +372,7 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
+          VERBOSE && console.log(card.code);
           /*
           // Code to spit out investigator deck_options localization strings.
           if (card.type_code === 'investigator' && card.deck_options) {

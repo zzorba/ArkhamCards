@@ -5,15 +5,17 @@ import { ChaosBag } from '@app_constants';
 import useSingleCard from '@components/card/useSingleCard';
 import Card from '@data/types/Card';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
+import { ProcessedCampaign } from '@data/scenario';
 
 
 export interface Props {
   campaignId: CampaignId;
   scenarioId?: string;
   standalone?: boolean;
+  processedCampaign: ProcessedCampaign | undefined;
 }
 
-export default function useGuideChaosBag({ campaignId, scenarioId, standalone }: Props): [
+export default function useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign: initialProcessedCampaign }: Props): [
   boolean,
   Card | undefined,
   string | undefined,
@@ -22,19 +24,9 @@ export default function useGuideChaosBag({ campaignId, scenarioId, standalone }:
   string | undefined,
   string | undefined,
 ] {
-  const [campaignContext, scenarioContext] = useScenarioGuideContext(campaignId, scenarioId, false, standalone);
+  const [campaignContext, scenarioContext, processedCampaign] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
   const processedScenario = scenarioContext?.processedScenario;
-  const liveChaosBag = useMemo(() => {
-    if (scenarioId) {
-      return scenarioContext?.processedScenario?.latestCampaignLog?.chaosBag;
-    }
-    if (!campaignContext) {
-      return undefined;
-    }
-    const { campaignGuide, campaignState } = campaignContext;
-    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
-    return processedCampaign.campaignLog.chaosBag;
-  }, [campaignContext, scenarioContext, scenarioId]);
+  const liveChaosBag = processedCampaign?.campaignLog.chaosBag;
   const [scenarioCard, loading] = useSingleCard(processedScenario?.scenarioGuide.scenarioCard(), 'encounter');
 
   const difficulty = processedScenario?.latestCampaignLog.campaignData.difficulty;

@@ -15,10 +15,11 @@ interface Props {
   renderHeader: (toggle: React.ReactFragment) => React.ReactFragment;
   toggleOpen?: () => void;
   disabled?: boolean;
+  textColor?: string;
   faction?: FactionCodeType;
   noShadow?: boolean;
 }
-export default function CollapsibleFactionBlock({ faction, noShadow, color, renderHeader, children, toggleOpen, open, disabled }: Props) {
+export default function CollapsibleFactionBlock({ faction, textColor, noShadow, color, renderHeader, children, toggleOpen, open, disabled }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   const openAnim = useRef(new Animated.Value(open ? 1 : 0));
   useEffectUpdate(() => {
@@ -40,10 +41,10 @@ export default function CollapsibleFactionBlock({ faction, noShadow, color, rend
   const icon = useMemo(() => {
     return !disabled && (
       <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
-        <AppIcon name="expand_less" size={36} color="#FFF" />
+        <AppIcon name="expand_less" size={36} color={textColor || '#FFFFFF'} />
       </Animated.View>
     );
-  }, [iconRotate, disabled]);
+  }, [iconRotate, disabled, textColor]);
 
   return (
     <>

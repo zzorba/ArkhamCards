@@ -22,6 +22,7 @@ import useDbData from '@components/core/useDbData';
 import { useGetCardFaqQuery } from '@generated/graphql/apollo-schema';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
+import { localizedDate } from '@lib/datetime';
 
 export interface CardFaqProps {
   id: string;
@@ -102,7 +103,7 @@ export default function CardFaqView({ id, componentId }: Props) {
     }
     return arkhamDbEntry;
   }, [lang, faqEntries, data, dataLoading]);
-  const lastUpdated = useMemo(() => faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10), [faqEntry]);
+  const lastUpdated = useMemo(() => faqEntry && faqEntry.fetched && localizedDate(faqEntry.fetched, lang, true), [faqEntry, lang]);
 
   return (
     <ScrollView

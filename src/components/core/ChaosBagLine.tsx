@@ -1,25 +1,25 @@
 import React, { useMemo } from 'react';
-import { chunk, keys, flatMap, map, range, sortBy } from 'lodash';
+import { chunk, map } from 'lodash';
 
-import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
+import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { StyleSheet, View } from 'react-native';
 import ChaosToken, { TINY_TOKEN_SIZE, EXTRA_TINY_TOKEN_SIZE } from '@components/campaign/ChaosToken';
 import space, { xs } from '@styles/space';
+import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { flattenChaosBag } from '@components/campaign/campaignUtil';
 
 interface Props {
   chaosBag: ChaosBag;
+  tarot?: Chaos_Bag_Tarot_Mode_Enum;
   width: number;
   sealed?: boolean;
   extraTiny?: boolean;
 }
 
-export default function ChaosBagLine({ chaosBag, width, sealed, extraTiny }: Props) {
+export default function ChaosBagLine({ chaosBag, width, sealed, extraTiny, tarot }: Props) {
   const tokens: ChaosTokenType[] = useMemo(() => {
-    const bagKeys: ChaosTokenType[] = sortBy(
-      keys(chaosBag) as ChaosTokenType[],
-      (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
-    return flatMap(bagKeys, (token: ChaosTokenType) => map(range(0, chaosBag[token] || 0), () => token));
-  }, [chaosBag]);
+    return flattenChaosBag(chaosBag, tarot);
+  }, [chaosBag, tarot]);
   const tokenWidth = (extraTiny ? (EXTRA_TINY_TOKEN_SIZE + 2) : (TINY_TOKEN_SIZE + xs * 2));
   const wrapTokens = Math.floor(width / tokenWidth);
   const wrapWidth = wrapTokens * tokenWidth;

@@ -16,7 +16,7 @@ import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
-const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
+export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
 const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
 // @ts-ignore ts2339
@@ -315,9 +315,11 @@ export default class App {
             text: t`Cards`,
             icon: iconsMap.cards,
             testId: 'Bottom_Cards',
+            popToRoot: true,
           },
         },
       },
+
     }, {
       stack: {
         id: BROWSE_DECKS,
@@ -327,6 +329,7 @@ export default class App {
             text: t`Decks`,
             icon: iconsMap.deck,
             testId: 'Bottom_Decks',
+            popToRoot: true,
           },
         },
       },
@@ -339,6 +342,7 @@ export default class App {
             text: t`Campaigns`,
             icon: iconsMap.book,
             testId: 'Bottom_Campaigns',
+            popToRoot: true,
           },
         },
       },
@@ -351,6 +355,7 @@ export default class App {
             text: t`Settings`,
             icon: iconsMap.settings,
             testId: 'Bottom_Account',
+            popToRoot: true,
           },
         },
       },

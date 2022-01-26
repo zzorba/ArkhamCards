@@ -41,6 +41,7 @@ import { AppState } from '@reducers';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
+  upload?: boolean;
 }
 
 type Props = NavigationProps & CampaignDetailProps
@@ -49,7 +50,7 @@ const EMPTY_CHAOS_BAG = {};
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 function CampaignDetailView(props: Props) {
-  const { componentId } = props;
+  const { componentId, upload } = props;
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
@@ -261,11 +262,12 @@ function CampaignDetailView(props: Props) {
     setChaosBag: updateCampaignActions.setChaosBag,
     scenarioId: undefined,
     cycleCode: campaign?.cycleCode || 'custom',
+    processedCampaign: undefined,
   });
   if (!campaign) {
     if (campaignId.serverId) {
       return (
-        <LoadingSpinner message={uploadingCampaign ? t`Uploading campaign` : undefined} />
+        <LoadingSpinner large message={uploadingCampaign ? t`Uploading campaign` : undefined} />
       );
     }
     return (
@@ -370,6 +372,7 @@ function CampaignDetailView(props: Props) {
               setCampaignServerId={setCampaignServerId}
               showAlert={showAlert}
               deckActions={deckActions}
+              upload={upload}
             />
             <DeleteCampaignButton
               actions={updateCampaignActions}

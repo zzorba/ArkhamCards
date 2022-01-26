@@ -68,6 +68,7 @@ export type InvestigatorSelector =
   | "any"
   | "choice"
   | "defeated"
+  | "resigned"
   | "not_resigned"
   | "any_resigned"
   | "$input_value"
@@ -126,7 +127,8 @@ export type CampaignDataCondition =
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
-  | ScenarioDataPlayerCountCondition;
+  | ScenarioDataPlayerCountCondition
+  | ScenarioDataFixedInvestigatorStatusCondition;
 export type TraumaCondition = KilledTraumaCondition | BasicTraumaCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type Input =
@@ -208,6 +210,7 @@ export interface Campaign {
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
+  ultimatums?: Ultimatum[];
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -644,6 +647,13 @@ export interface ScenarioDataPlayerCountCondition {
   scenario_data: "player_count";
   options: NumOption[];
 }
+export interface ScenarioDataFixedInvestigatorStatusCondition {
+  type: "scenario_data";
+  scenario_data: "fixed_investigator_status";
+  fixed_investigator: string;
+  status: "defeated" | "resigned";
+  options: BoolOption[];
+}
 export interface KilledTraumaCondition {
   type: "trauma";
   investigator: "lead_investigator" | "all";
@@ -1076,10 +1086,10 @@ export interface XpCountStep {
   border_only?: boolean;
   id: string;
   type: "xp_count";
-  bullet_type?: null;
+  bullet_type?: BulletType;
   title?: string;
   special_xp: SpecialXp;
-  text?: null;
+  text?: string;
   narration?: Narration;
 }
 export interface InternalStep {
@@ -1128,6 +1138,11 @@ export interface Achievement {
     id: string;
     text: string;
   }[];
+}
+export interface Ultimatum {
+  id: string;
+  name: string;
+  text: string;
 }
 export interface Scenario {
   id: string;

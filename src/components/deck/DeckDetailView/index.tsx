@@ -52,6 +52,7 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -60,6 +61,7 @@ export interface DeckDetailProps {
   subtitle?: string;
   campaignId: CampaignId | undefined;
   modal?: boolean;
+  fromCampaign?: boolean;
 }
 
 type Props = NavigationProps &
@@ -72,7 +74,7 @@ function formatTabooStart(date_start: string | undefined, locale: string) {
     return '';
   }
   const date = new Date(Date.parse(date_start));
-  if (locale === 'fr') {
+  if (locale === 'fr' || locale === 'it') {
     return format(date, 'dd/MM/yyyy');
   }
   return format(date, 'yyyy/MM/dd');
@@ -88,6 +90,7 @@ function DeckDetailView({
   signedIn,
   login,
   initialMode,
+  fromCampaign,
 }: Props) {
   const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
@@ -440,6 +443,46 @@ function DeckDetailView({
     });
   }, [componentId, setFabOpen, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
+  const onEditSidePressed = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<EditDeckProps>(componentId, {
+      component: {
+        name: 'Deck.EditAddCards',
+        passProps: {
+          id,
+          side: true,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Edit Side Deck`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -1034,6 +1077,8 @@ function DeckDetailView({
           <View style={[styles.container, backgroundStyle] }>
             <DeckViewTab
               componentId={componentId}
+              campaignId={campaignId}
+              fromCampaign={fromCampaign}
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
@@ -1055,10 +1100,11 @@ function DeckDetailView({
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
               showEditCards={onAddCardsPressed}
+              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
+              showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}
-              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               signedIn={signedIn}
               login={login}
               width={width}

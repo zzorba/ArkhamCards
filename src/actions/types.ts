@@ -52,6 +52,7 @@ export interface DeckProblem {
 export interface DeckMeta {
   faction_selected?: FactionCodeType;
   deck_size_selected?: string;
+  option_selected?: string;
   alternate_front?: string;
   alternate_back?: string;
 }
@@ -219,6 +220,7 @@ export interface ParsedDeck {
   slotCounts: SlotCounts;
   normalCards: SplitCards;
   specialCards: SplitCards;
+  sideCards: SplitCards;
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;
@@ -446,7 +448,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   EOE,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([EOE]);
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -580,6 +582,12 @@ export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1';
   value: boolean;
+}
+
+export const SET_PLAYBACK_RATE = 'SET_PLAYBACK_RATE';
+export interface SetPlaybackRateAction {
+  type: typeof SET_PLAYBACK_RATE;
+  rate: number;
 }
 
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
@@ -736,6 +744,7 @@ export interface EditDeckState {
   xpAdjustment: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
+  side: Slots;
   meta: DeckMeta;
   mode: 'edit' | 'upgrade' | 'view';
   editable: boolean;
@@ -764,7 +773,7 @@ interface UpdateDeckEditCountsSetAction {
   code: string;
   operation: 'set';
   value: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
 }
 interface UpdateDeckEditCountsAdjustAction {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
@@ -772,7 +781,7 @@ interface UpdateDeckEditCountsAdjustAction {
   code: string;
   operation: 'inc' | 'dec';
   limit?: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
 }
 export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateDeckEditCountsAdjustAction;
 
@@ -821,6 +830,7 @@ export interface SetPackSpoilerAction {
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
+  uuid: string;
   now: Date;
   name: string;
   difficulty?: CampaignDifficulty;
@@ -841,6 +851,7 @@ export interface StandaloneId {
 export const NEW_STANDALONE = 'NEW_STANDALONE';
 export interface NewStandaloneCampaignAction {
   type: typeof NEW_STANDALONE;
+  uuid: string;
   now: Date;
   name: string;
   standaloneId: StandaloneId;
@@ -851,6 +862,9 @@ export interface NewStandaloneCampaignAction {
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
 export interface NewLinkedCampaignAction {
   type: typeof NEW_LINKED_CAMPAIGN;
+  uuid: string;
+  uuidA: string;
+  uuidB: string;
   now: Date;
   name: string;
   weaknessSet: WeaknessSet;
@@ -911,8 +925,8 @@ export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
 export interface AdjustBlessCurseAction {
   type: typeof ADJUST_BLESS_CURSE;
   id: CampaignId;
-  bless: boolean;
-  direction: 'inc' | 'dec';
+  bless: number;
+  curse: number;
   now: Date;
 }
 
@@ -1039,13 +1053,6 @@ export interface AddFilterSetAction {
   sort?: SortType;
   mythosToggle?: boolean;
   cardData: CardFilterData;
-}
-
-export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';
-export interface SyncFilterSetAction {
-  type: typeof SYNC_FILTER_SET;
-  id: string;
-  filters: FilterState;
 }
 
 export const REMOVE_FILTER_SET = 'REMOVE_FILTER_SET';
@@ -1213,8 +1220,8 @@ export interface GuideUpdateAchievementAction {
   type: typeof GUIDE_UPDATE_ACHIEVEMENT;
   campaignId: CampaignId;
   id: string;
-  operation: 'set' | 'clear' | 'inc' | 'dec';
-  max?: number;
+  operation: 'set' | 'clear' | 'set_value';
+  value?: number;
   now: Date;
 }
 
@@ -1295,7 +1302,6 @@ export type FilterActions =
   ToggleFilterAction |
   UpdateFilterAction |
   AddFilterSetAction |
-  SyncFilterSetAction |
   RemoveFilterSetAction |
   ToggleMythosAction |
   UpdateCardSortAction;

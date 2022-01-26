@@ -25,6 +25,9 @@
 # Keep the class names used to check for availablility
 -keepnames class com.facebook.login.LoginManager
 
+# Reanimated
+-keep class com.swmansion.reanimated.** { *; }
+
 # Don't note a bunch of dynamically referenced classes
 -dontnote com.google.**
 -dontnote com.facebook.**

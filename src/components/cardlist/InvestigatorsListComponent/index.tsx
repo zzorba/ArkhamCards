@@ -21,7 +21,7 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection, AppState } from '@reducers';
 import space, { s } from '@styles/space';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -79,9 +79,10 @@ function investigatorToCode(investigator: Card) {
   return investigator.code;
 }
 
-function renderHeader() {
+function Header() {
+  const { fontScale } = useContext(StyleContext);
   if (Platform.OS === 'android') {
-    return <View style={styles.searchBarPadding} />;
+    return <View style={{ height: searchBoxHeight(fontScale) }} />;
   }
   return null;
 }
@@ -129,7 +130,7 @@ export default function InvestigatorsListComponent({
   searchOptions,
   customFooter,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { fontScale, typography } = useContext(StyleContext);
   const cards = usePlayerCards();
   const investigators = useInvestigatorCards();
 
@@ -342,7 +343,7 @@ export default function InvestigatorsListComponent({
       </>
     );
   }, [typography, customFooter, searchTerm, groupedInvestigators]);
-
+  const searchBarHeight = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox
       prompt={t`Search`}
@@ -352,14 +353,14 @@ export default function InvestigatorsListComponent({
     >
       { onScroll => (
         <SectionList
-          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          contentInset={Platform.OS === 'ios' ? { top: searchBarHeight } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -searchBarHeight } : undefined}
           onScroll={onScroll}
           onScrollBeginDrag={handleScrollBeginDrag}
           sections={groupedInvestigators}
           renderSectionHeader={renderSectionHeader}
           renderSectionFooter={renderSectionFooter}
-          ListHeaderComponent={renderHeader}
+          ListHeaderComponent={Header}
           ListFooterComponent={renderFooter}
           renderItem={renderItem}
           initialNumToRender={24}
@@ -377,9 +378,6 @@ export default function InvestigatorsListComponent({
 const styles = StyleSheet.create({
   footer: {
     marginBottom: 60,
-  },
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
   },
   column: {
     flexDirection: 'column',

@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useCallback, useContext, useMemo } from 'react';
 import { flatMap, forEach, concat, keys, uniq } from 'lodash';
 import deepEqual from 'deep-equal';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 
 import { SingleCampaignGuideData } from './contextHelper';
 import campaignActions, { updateCampaignChaosBag, updateCampaignDifficulty, updateCampaignGuideVersion, updateCampaignInvestigatorData, updateCampaignScenarioResults } from '@components/campaign/actions';
@@ -27,8 +29,11 @@ import { UpdateCampaignActions, useGuideActions } from '@data/remote/campaigns';
 import { DeckActions } from '@data/remote/decks';
 import { ProcessedCampaign } from '@data/scenario';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { AppState } from '@reducers';
 
 const EMPTY_SPENT_XP = {};
+type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
+
 export default function useCampaignGuideContextFromActions(
   campaignId: CampaignId,
   createDeckActions: DeckActions,
@@ -37,7 +42,7 @@ export default function useCampaignGuideContextFromActions(
 ): CampaignGuideContextType | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
-  const dispatch = useDispatch();
+  const dispatch: AsyncDispatch = useDispatch();
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
@@ -51,12 +56,8 @@ export default function useCampaignGuideContextFromActions(
     dispatch(guideActions.setBinaryAchievement(userId, remoteGuideActions, campaignId, achievementId, value));
   }, [dispatch, userId, remoteGuideActions, campaignId]);
 
-  const incCountAchievement = useCallback((achievementId: string, max?: number) => {
-    dispatch(guideActions.incCountAchievement(userId, remoteGuideActions, campaignId, achievementId, max));
-  }, [dispatch, userId, remoteGuideActions, campaignId]);
-
-  const decCountAchievement = useCallback((achievementId: string) => {
-    dispatch(guideActions.decCountAchievement(userId, remoteGuideActions, campaignId, achievementId));
+  const setCountAchievement = useCallback((achievementId: string, value: number) => {
+    dispatch(guideActions.setCountAchievement(userId, remoteGuideActions, campaignId, achievementId, value));
   }, [dispatch, userId, remoteGuideActions, campaignId]);
 
   const removeDeck = useCallback((
@@ -144,8 +145,8 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setNumberChoices = useCallback((stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) => {
-    dispatch(guideActions.setScenarioNumberChoices(
+  const setNumberChoices = useCallback(async(stepId: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string): Promise<void> => {
+    return dispatch(guideActions.setScenarioNumberChoices(
       userId,
       remoteGuideActions,
       campaignId,
@@ -227,12 +228,11 @@ export default function useCampaignGuideContextFromActions(
       setInterScenarioData,
       undo,
       setBinaryAchievement,
-      incCountAchievement,
-      decCountAchievement,
+      setCountAchievement,
     };
   }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
-    setBinaryAchievement, incCountAchievement, decCountAchievement]);
+    setBinaryAchievement, setCountAchievement]);
   const campaignStateHelper = useMemo(() => {
     if (!investigators || !campaignData) {
       return undefined;

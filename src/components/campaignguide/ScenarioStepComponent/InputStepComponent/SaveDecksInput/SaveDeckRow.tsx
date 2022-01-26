@@ -64,8 +64,8 @@ function SaveDeckRow({
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
   const [saving, setSaving] = useState(false);
-  const saveCampaignLog = useCallback((deckId?: DeckId) => {
-    scenarioState.setNumberChoices(choiceId, {}, deckId);
+  const saveCampaignLog = useCallback(async(deckId?: DeckId) => {
+    await scenarioState.setNumberChoices(choiceId, {}, deckId);
     setSaving(false);
   }, [scenarioState, choiceId, setSaving]);
   const [choices, deckChoice] = useMemo(() => scenarioState.numberAndDeckChoices(choiceId), [scenarioState, choiceId]);

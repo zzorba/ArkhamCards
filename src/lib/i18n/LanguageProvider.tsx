@@ -78,6 +78,9 @@ export default function LanguageProvider({ children }: Props) {
       case 'ru':
         // RU is free.
         return 'ru';
+      case 'de':
+        // DE is free
+        return 'de';
       case 'es':
         if (find(profile?.flags, f => f === User_Flag_Type_Enum.EsDv)) {
           // ES requires special ArkhamCards access

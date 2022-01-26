@@ -14,6 +14,7 @@ import { DeckId } from '@actions/types';
 
 export interface EditDeckProps {
   id: DeckId;
+  side?: boolean;
   storyOnly?: boolean;
   weaknessOnly?: boolean;
 }
@@ -23,6 +24,7 @@ type Props = NavigationProps & EditDeckProps;
 export default function DeckEditView({
   componentId,
   id,
+  side,
   storyOnly,
   weaknessOnly,
 }: Props) {
@@ -79,16 +81,20 @@ export default function DeckEditView({
         }
       }
     }
-    const joinedQuery = combineQueries(
-      STORY_CARDS_QUERY,
-      parts,
-      'or'
-    );
+    const joinedQuery = combineQueries(STORY_CARDS_QUERY, parts, 'or');
     if (onYourOwn) {
       return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
     }
     return joinedQuery;
   }, [deckEdits?.meta, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
+  const mode = useMemo(() => {
+    if (storyOnly) {
+      return 'story';
+    }
+    if (side) {
+      return 'side';
+    }
+  }, [storyOnly, side]);
 
   if (!investigator || !queryOpt || !deck || !deckEdits) {
     return null;
@@ -101,7 +107,7 @@ export default function DeckEditView({
       investigator={investigator}
       hideVersatile={hideVersatile}
       setHideVersatile={hasVersatile ? setHideVersatile : undefined}
-      storyOnly={storyOnly}
+      mode={mode}
     />
   );
 }

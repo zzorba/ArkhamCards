@@ -11,7 +11,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
 import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/sqlite/query';
-import Card, { SEARCH_REGEX } from '@data/types/Card';
+import Card, { searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
@@ -41,7 +41,7 @@ interface Props {
   investigator?: Card;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
-  storyOnly?: boolean;
+  mode?: 'story' | 'side';
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
@@ -73,11 +73,11 @@ function SearchOptions({
   toggleSearchFlavor: () => void;
   toggleSearchBack: () => void;
 }) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   return (
     <>
       <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-        <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+        <Text style={[typography.large, { color: colors.M, fontFamily: 'Alegreya-Bold' }]}>
           { t`Search in:` }
         </Text>
       </View>
@@ -237,7 +237,7 @@ export default function({
   investigator,
   headerItems,
   headerHeight,
-  storyOnly,
+  mode,
   initialSort,
   includeDuplicates,
 }: Props) {
@@ -281,7 +281,7 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '')}%`;
+    const safeSearchTerm = `%${searchNormalize(searchTerm, lang)}%`;
     parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
     if (searchBack) {
       parts.push(where([
@@ -352,7 +352,7 @@ export default function({
     );
   }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
-  const [hasFilters, showFiltersPress] = useFilterButton(componentId, baseQuery);
+  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />
@@ -401,9 +401,9 @@ export default function({
             headerItems={headerItems}
             headerHeight={headerHeight}
             showNonCollection={showNonCollection}
-            storyOnly={storyOnly}
+            storyOnly={mode === 'story'}
+            sideDeck={mode === 'side'}
             mythosToggle={mythosToggle}
-            //            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
           { deckId !== undefined && (

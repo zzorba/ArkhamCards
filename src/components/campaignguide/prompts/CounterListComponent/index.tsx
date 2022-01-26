@@ -36,14 +36,14 @@ export default function CounterListComponent({ id, items, countText, requiredTot
   const { colors, borderStyle } = useContext(StyleContext);
   const [counts, onInc, onDec] = useCounters({});
 
-  const save = useCallback(() => {
+  const save = useCallback(async() => {
     const choices: NumberChoices = {};
     forEach(counts, (value, code) => {
       if (value !== undefined) {
         choices[code] = [value];
       }
     });
-    scenarioState.setNumberChoices(
+    await scenarioState.setNumberChoices(
       id,
       choices
     );

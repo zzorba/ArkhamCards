@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import {
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -148,22 +149,38 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       <View style={styles.footer} />
     );
   }, [filteredCampaigns, search, typography]);
+  const buttons: React.ReactNode[] = useMemo(() => {
+    const result: React.ReactNode[] = [];
+    if (hiddenArchived) {
+      result.push(
+        <ArkhamButton
+          key="archived"
+          icon="expand"
+          title={t`Show archived campaigns`}
+          onPress={toggleShowArchived}
+          useGestureHandler={Platform.OS === 'ios'}
+        />
+      );
+    }
+    result.push(
+      <ArkhamButton
+        key="new"
+        icon="campaign"
+        title={t`New Campaign`}
+        onPress={showNewCampaignDialog}
+        useGestureHandler={Platform.OS === 'ios'}
+      />
+    );
+    return result;
+  }, [hiddenArchived, toggleShowArchived, showNewCampaignDialog]);
   const footer = useMemo(() => {
     return (
       <View>
-        { !!hiddenArchived && (
-          <ArkhamButton icon="expand" title={t`Show archived campaigns`} onPress={toggleShowArchived} />
-        )}
         { conditionalFooter }
-        <ArkhamButton
-          icon="campaign"
-          title={t`New Campaign`}
-          onPress={showNewCampaignDialog}
-        />
         <View style={styles.gutter} />
       </View>
     );
-  }, [conditionalFooter, showNewCampaignDialog, hiddenArchived, toggleShowArchived]);
+  }, [conditionalFooter]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search campaigns`}
@@ -181,6 +198,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           campaigns={realFilteredCampaigns}
           standalonesById={standalonesById}
           onRefresh={refreshCampaigns}
+          buttons={buttons}
           refreshing={refreshing}
           footer={footer}
         />

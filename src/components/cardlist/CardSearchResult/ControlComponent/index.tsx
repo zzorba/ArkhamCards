@@ -13,6 +13,7 @@ export type ControlType = {
   type: 'deck';
   deckId: DeckId;
   limit: number;
+  side?: boolean;
 } | {
   type: 'quantity';
   count: number;
@@ -29,6 +30,7 @@ export type ControlType = {
   type: 'upgrade';
   deckId: DeckId;
   limit: number;
+  side?: boolean;
   onUpgradePress?: (card: Card) => void;
 } | {
   type: 'toggle';
@@ -47,11 +49,12 @@ export type ControlType = {
 interface Props {
   card: Card;
   control: ControlType;
+  useGestureHandler?: boolean;
 }
-export function ControlComponent({ card, control }: Props) {
+export function ControlComponent({ card, control, useGestureHandler }: Props) {
   switch (control.type) {
     case 'deck':
-      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} />;
+      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} useGestureHandler={useGestureHandler} />;
     case 'shuffle':
       return <ShuffleButton onPress={control.onShufflePress} />;
     case 'count':
@@ -63,6 +66,7 @@ export function ControlComponent({ card, control }: Props) {
           card={card}
           deckId={control.deckId}
           limit={control.limit}
+          side={control.side}
         />
       );
     case 'toggle':
@@ -83,6 +87,7 @@ export function ControlComponent({ card, control }: Props) {
           limit={control.limit}
           showZeroCount={control.showZeroCount}
           reversed={control.reversed}
+          useGestureHandler={useGestureHandler}
         />
       );
   }

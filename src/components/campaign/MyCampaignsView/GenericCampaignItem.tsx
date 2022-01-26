@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
 import { usePressCallback } from '@components/core/hooks';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { toRelativeDateString } from '@lib/datetime';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -17,14 +18,18 @@ interface Props {
   children: React.ReactNode;
   onPress: () => void;
 }
-export default function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props) {
+
+function computeHeight(fontScale: number) {
+  return s + RoundedFactionBlock.computeHeight(fontScale, true, true) + RoundedFooterButton.computeHeight(fontScale);
+}
+function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props) {
   const { lang } = useContext(LanguageContext);
   const { colors } = useContext(StyleContext);
   const debouncedOnPress = usePressCallback(onPress);
-
+  const Touchable = Platform.OS === 'ios' ? GestureHandlerTouchableOpacity : TouchableOpacity;
   return (
     <View style={[space.paddingSideS, space.paddingBottomS]}>
-      <TouchableOpacity onPress={debouncedOnPress}>
+      <Touchable onPress={debouncedOnPress}>
         <RoundedFactionBlock
           header={children}
           faction="neutral"
@@ -34,7 +39,10 @@ export default function GenericCampaignItem({ campaign, lastUpdated, children, o
         >
           { null }
         </RoundedFactionBlock>
-      </TouchableOpacity>
+      </Touchable>
     </View>
   );
 }
+
+GenericCampaignItem.computeHeight = computeHeight;
+export default GenericCampaignItem;

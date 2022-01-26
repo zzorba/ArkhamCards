@@ -20,10 +20,10 @@ msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (캠페인 B)"
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "'홀로서기' 카드로 인해 조력자 슬롯을 차지하는 자산은 허용되지 않습니다."
+msgstr "'홀로서기' 카드의 효과로 조력자 슬롯을 차지하는 자산은 허용되지 않습니다."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "'다재다능' 카드 효과를 적용하더라도 이외의 다른 역할군 카드가 너무 많이 포함되어 있습니다."
+msgstr "'다재다능' 카드의 효과를 적용하더라도 다른 역할군 카드가 너무 많습니다."
 
 msgid "Hand"
 msgstr "손"
@@ -80,17 +80,17 @@ msgid "None"
 msgstr "없음"
 
 msgid "Killed"
-msgstr "사망한"
+msgstr "사망한 조사자"
 
 msgid "Insane"
-msgstr "미친"
+msgstr "미친 조사자"
 
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
-msgstr "${ traumaData.physical } 육체적"
+msgstr "육체적 트라우마 ${ traumaData.physical }"
 
 msgid "${ traumaData.mental } Mental"
-msgstr "${ traumaData.mental } 정신적"
+msgstr "정신적 트라우마 ${ traumaData.mental }"
 
 #, javascript-format
 msgid "Cost: ${ actualCost }"
@@ -114,21 +114,6 @@ msgstr "생존자"
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "중립"
-
-msgid "Guardian / Rogue"
-msgstr "수호자 / 무법자"
-
-msgid "Rogue / Survivor"
-msgstr "무법자 / 생존자"
-
-msgid "Survivor / Seeker"
-msgstr "생존자 / 탐구자"
-
-msgid "Seeker / Mystic"
-msgstr "탐구자 / 신비주의자"
-
-msgid "Mystic / Guardian"
-msgstr "신비주의자 / 수호자"
 
 msgid "Weakness"
 msgstr "약점"
@@ -433,7 +418,7 @@ msgstr "쓸어넘겨 카드 간 이동하기"
 msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
-msgstr "당신이 이미 플레이 한 시나리오들을 체크하십시오. 체크한 시나리오의 카드만이 검색됩니다."
+msgstr "이미 플레이한 시나리오를 표시하십시오. 표시한 시나리오의 카드만이 검색됩니다."
 
 msgid "Loading"
 msgstr "불러오는 중"
@@ -675,7 +660,7 @@ msgid "${ parsedDeck.experience } experience required"
 msgstr "필요 경험치: ${ parsedDeck.experience }"
 
 msgid "Unable to update: you appear to be offline."
-msgstr "업데이트에 실패하였습니다. 현재 오프라인 상태인 것 같습니다."
+msgstr "업데이트 실패: 현재 오프라인 상태인 것 같습니다."
 
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
@@ -747,7 +732,7 @@ msgstr "저장"
 msgid ""
 "Upgrading your deck allows changes and experience to be tracked over the "
 "course of a campaign."
-msgstr "당신의 덱을 향상하면, 캠페인 과정에서의 덱 변화 및 경험치를 추적할 수 있습니다."
+msgstr "덱을 향상하면, 캠페인이 진행되는 동안의 변경점과 경험치를 추적할 수 있습니다."
 
 msgid "Draw: "
 msgstr "뽑기: "
@@ -775,10 +760,11 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
-"이 덱은 캠페인을 진행중이지 않은 것으로 보입니다.\n"
+"이 덱은 아직 캠페인을 진행 중이지 않은 것으로 보입니다.\n"
 "\n"
-"덱을 캠페인에 추가하면, 캠페인 진행 과정의 여러개의 덱들에서 남은 고유 약점을 추적할 수 있습니다.\n"
-"그러는 대신, 당신의 보유 게임 전부에서 기본 약점을 뽑을 수 있습니다."
+"덱을 캠페인에 추가하면, 앱이 여러 덱 간에 사용 가능한 약점을 추적할 수 있습니다.\n"
+"\n"
+"그렇지 않으면 보유 게임 전체에서 무작위 약점을 뽑을 수도 있습니다."
 
 msgid "Draw From Collection"
 msgstr "보유 게임에서 뽑기"
@@ -799,7 +785,7 @@ msgid ""
 msgstr ""
 "아컴디비와 연결하는데 문제가 있습니다.\n"
 "\n"
-"이 문제가 지속되면, 재인증을 시도해주세요."
+"이 문제가 지속되면, 재인증을 시도하십시오."
 
 msgid "Try again"
 msgstr "다시 시도"
@@ -844,7 +830,7 @@ msgid "Create on ArkhamDB"
 msgstr "아컴디비에 생성하기"
 
 msgid "You seem to be offline. Refresh Network?"
-msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인해주세요."
+msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인하십시오."
 
 msgid "Use Starter Deck"
 msgstr "초심자용 견본 덱 사용"
@@ -915,7 +901,7 @@ msgid "Save Local Changes"
 msgstr "장치 내 변경사항 저장"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
-msgstr "아컴디비에 공유하기 전에 장치 내 변경사항을 저장해주십시오"
+msgstr "아컴디비에 공유하기 전에 장치 내 변경사항을 저장해 주십시오."
 
 msgid "Unsupported Operation"
 msgstr "지원하지 않는 기능"
@@ -929,7 +915,7 @@ msgid ""
 msgstr ""
 "이 덱은 다음/이전 버전의 향상을 포함하고 있어서, 지금 당장은 아컴디비에 업로드할 수 없습니다.\n"
 "\n"
-"이 덱을 업로드하기를 원하면, 이 덱을 복제한 후 복제한 덱을 업로드하는 방법이 있습니다."
+"이 덱을 업로드하려면, 덱 복사하기로 복제한 덱을 업로드하는 방법을 사용할 수 있습니다."
 
 msgid "Sign In"
 msgstr "로그인"
@@ -944,7 +930,7 @@ msgid ""
 msgstr ""
 "당신의 덱을 아컴디비에 업로드해서 다른 사람에게 공유할 수 있습니다.\n"
 "\n"
-"이 작업 이후에 덱을 변경하기 위해서는 인터넷 연결이 필요하게 됩니다."
+"이 작업 이후에 해당 덱을 변경하려면 인터넷 연결을 필요로 합니다."
 
 msgid "Upload"
 msgstr "업로드"
@@ -1279,10 +1265,10 @@ msgstr "카드 뒤집기"
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "추가 경험치: ${ taboo.extra_xp }."
+msgstr "경험치 비용: +${ taboo.extra_xp }점."
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "경험치 할인: ${ taboo.extra_xp }."
+msgstr "경험치 비용: ${ taboo.extra_xp }점."
 
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
@@ -1376,14 +1362,14 @@ msgid "Vengeance: ${ card.vengeance }."
 msgstr "복수: ${ card.vengeance }."
 
 msgid "Taboo List Changes"
-msgstr "금기 목록이 변경되었습니다"
+msgstr "금기 적용 사항"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "추가 경험치: : ${ card.extra_xp }."
+msgstr "경험치 비용: +${ card.extra_xp }점."
 
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "경험치 할인: ${ card.extra_xp }."
+msgstr "경험치 비용: ${ card.extra_xp }점."
 
 msgid "Show front"
 msgstr "앞면 보기"
@@ -2353,10 +2339,10 @@ msgid "Advanced Cards"
 msgstr "강화된 카드"
 
 msgid "Physical"
-msgstr "육체적"
+msgstr "육체적 트라우마"
 
 msgid "Mental"
-msgstr "정신적"
+msgstr "정신적 트라우마"
 
 msgid "Record trauma"
 msgstr "트라우마 기록"
@@ -2567,11 +2553,6 @@ msgid ""
 "Missing card #${ code }. Please try updating cards from ArkhamDB in "
 "settings."
 msgstr "#${ code } 카드를 발견할 수 없습니다. 설정에서 아컴디비 카드 업데이트를 수행해주십시오."
-
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
 
 msgid "Unexpected file type"
 msgstr "예상치 못한 파일 종류"
@@ -3489,7 +3470,7 @@ msgid ""
 "features planned for the future."
 msgstr ""
 "이 앱은 계정 없이도 잘 작동합니다.\n"
-"그러나 로그인시 디바이스 사이의 캠페인 연동이 가능합니다. 추후 기능이 추가될 예정입니다."
+"그러나 로그인을 하면 장치 간에 캠페인을 연동할 수 있으며, 추후 더 많은 기능이 예정되어 있습니다."
 
 #, javascript-format
 msgid "${ pendingFriendCount } pending request"
@@ -3510,7 +3491,7 @@ msgid "ArkhamDB Account"
 msgstr "아컴디비 계정"
 
 msgid "Arkham Cards Account"
-msgstr "ArkhamCards 계정"
+msgstr "아컴카드 계정"
 
 msgid "Looks like there is already an account registered with this email address."
 msgstr "해당 이메일 주소로 가입된 계정이 이미 있는 것으로 보입니다."
@@ -3569,7 +3550,7 @@ msgid ""
 "campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
-"Arkham Cards 계정을 사용하면 장치 간 캠페인 연동이 가능합니다.\n"
+"아컴카드 계정을 사용하면 장치 간 캠페인 연동이 가능합니다.\n"
 "추후 기능이 추가될 예정입니다."
 
 msgid "Sign in to your account"
@@ -3610,7 +3591,7 @@ msgid "Reconnect"
 msgstr "재연결"
 
 msgid "Logged in"
-msgstr "로그인 상태"
+msgstr "로그인 됨"
 
 msgid "Synchronize decks"
 msgstr "덱 연동하기"
@@ -3631,7 +3612,7 @@ msgid "Audio narration"
 msgstr "오디오 나레이션"
 
 msgid "Dissonant Voices"
-msgstr "Dissonant Voices"
+msgstr "Dissonant Voices (한국어 미지원)"
 
 msgid "Notes"
 msgstr "메모"
@@ -3646,7 +3627,7 @@ msgid "Upload campaign"
 msgstr "캠페인 업로드"
 
 msgid "Can't add side scenario right now."
-msgstr "외전을 지금 추가할 수는 없습니다."
+msgstr "지금은 외전을 추가할 수 없습니다."
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
@@ -3659,7 +3640,7 @@ msgid "Earned experience:"
 msgstr "획득한 경험치:"
 
 msgid "Sign out of Arkham Cards?"
-msgstr "ArkhamCards에서 로그아웃 하시겠습니까?"
+msgstr "아컴카드 계정에서 로그아웃 하시겠습니까?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -3669,7 +3650,7 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
-"ArkhamCards에서 로그아웃 하시겠습니까?\n"
+"아컴카드 계정에서 로그아웃 하시겠습니까?\n"
 "\n"
 "업로드 되거나 당신에게 공유된 모든 캠페인은 이 장치에서 삭제됩니다. 추후 로그인을 수행하면 다시 동기화할 수 있습니다.\n"
 "\n"
@@ -3687,13 +3668,13 @@ msgstr "진단 데이터 내보내기"
 msgid ""
 "This feature is intended for advanced diagnostics. Just copy the data "
 "presented here and email it to arkhamcards@gmail.com"
-msgstr "이 기능은 추가 진단을 위한 것 입니다. 여기에 나온 데이터를 복사하고 arkhamcards@gmail.com로 이메일 주십시오"
+msgstr "이 기능은 추가 진단을 위한 것입니다. 여기서 나온 데이터를 복사하여 arkhamcards@gmail.com 이메일로 보내주십시오."
 
 msgid "Database migration required"
 msgstr "데이터베이스 마이그레이션 필요"
 
 msgid "This should only take a few seconds and no network is required."
-msgstr "수십초가 소요되며 네트워크 연결이 필요하지는 않습니다."
+msgstr "몇 초 밖에 걸리지 않고 네트워크는 필요하지 않습니다."
 
 msgid "Migrate now"
 msgstr "지금 마이그레이션하기"
@@ -3725,7 +3706,7 @@ msgstr "능력 소모: 모두"
 msgid ""
 "If you run into any problems with this migration, please contact "
 "arkhamcards@gmail.com."
-msgstr "만약 이 마이그레이션 중에 어떤 오류라도 맞닥뜨리게 된다면, arkhamcards@gmail.com 으로 연락주세요."
+msgstr "만약 이 마이그레이션 중에 어떤 오류라도 맞닥뜨리게 된다면, arkhamcards@gmail.com 이메일로 연락해 주십시오."
 
 msgid "Asset: Body. Arcane"
 msgstr "자산: 신체. 마법"
@@ -3740,7 +3721,7 @@ msgid "Upload campaigns"
 msgstr "캠페인 업로드"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "아컴 카드 계정에 캠페인을 업로드할 수 있습니다."
+msgstr "아컴카드 계정에 캠페인을 업로드할 수 있습니다."
 
 msgid "Uploaded campaigns will be synced between devices."
 msgstr "업로드된 캠페인은 장치 간에 동기화될 것입니다."
@@ -3749,7 +3730,7 @@ msgid "Note campaign achievements"
 msgstr "캠페인 업적 기록"
 
 msgid "Complete campaign setup"
-msgstr "캠페인 준비를 완료하세요."
+msgstr "캠페인 준비를 완료하십시오."
 
 msgid "Review and draw tokens"
 msgstr "열람 및 토큰 뽑기"
@@ -3895,8 +3876,8 @@ msgid ""
 "currently logged in. If you wish to make edits, please login through the "
 "app settings."
 msgstr ""
-"아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 로그인되어 있지 않습니다. 만약 수정을 원한다면, 앱 "
-"설정에서 로그인해주세요."
+"아컴디비 계정으로부터 덱 중에 하나를 표시하려 했지만, 현재 로그인된 상태가 아닙니다. 만약 수정을 원한다면, 앱 설정 부분에서 "
+"로그인을 해주십시오."
 
 msgid "Leave campaign"
 msgstr "캠페인 떠나기"
@@ -3908,7 +3889,7 @@ msgid ""
 msgstr ""
 "정말로 이 캠페인을 떠나시겠습니까?\n"
 "\n"
-"당신의 덱은 캠페인에서 제거되지만, 당신은 나중에 다시 참여할 수도 있습니다."
+"해당 덱은 캠페인에서 제거되지만, 나중에 다시 참여할 수도 있습니다."
 
 msgid "Leave"
 msgstr "떠나기"
@@ -3935,13 +3916,13 @@ msgid ""
 msgstr ""
 "정말로 이 독립 시나리오에서 떠나시겠습니까?\n"
 "\n"
-"당신의 덱은 독립 시나리오에서 제거되지만, 당신은 나중에 다시 참여할 수도 있습니다."
+"해당 덱은 독립 시나리오에서 제거되지만, 나중에 다시 참여할 수도 있습니다."
 
 msgid "Upload standalone"
 msgstr "독립 시나리오 업로드"
 
 msgid "You must be online to upload"
-msgstr "온라인에서만 업로드해야 합니다."
+msgstr "온라인으로 업로드해야 합니다."
 
 msgid "Adjust scenario XP and trauma"
 msgstr "시나리오 경험치와 트라우마 조정"
@@ -3965,8 +3946,8 @@ msgid ""
 "logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
-"아컴디비로부터 당신의 덱 중에 하나를 이곳에 표시하려 했지만, 당신은 현재 다른 아컴디비 계정에 로그인되어 있는 것으로 보입니다. 만약 "
-"수정을 원한다면, 앱 설정에서 로그인해주세요."
+"아컴디비 계정으로부터 덱 중에 하나를 표시하려 했지만, 현재 다른 아컴디비 계정에 로그인된 것처럼 보입니다. 만약 수정을 원한다면, 앱 "
+"설정 부분에서 로그인을 해주십시오."
 
 msgid "Justify text"
 msgstr "텍스트 행 맞추기"
@@ -3991,21 +3972,21 @@ msgid "Fan-Made Content"
 msgstr "팬 제작 컨텐츠"
 
 msgid "Fetching account details..."
-msgstr "계정 세부사항을 가져 오는 중..."
+msgstr "계정 세부사항을 가져오는 중..."
 
 msgid ""
 "Thanks for signing up for Arkham Cards.\n"
 "\n"
 "First of all, you'll need to create a handle for your account."
 msgstr ""
-"아컴 카드에 가입해 주셔서 감사합니다.\n"
+"아컴카드 계정을 등록해 주셔서 감사합니다.\n"
 "\n"
 "첫 번쨰로, 당신의 계정에 대한 별명을 만들어야 합니다."
 
 msgid ""
 "People will be able to search for friends using their handle so you can "
 "join their campaigns."
-msgstr "별명을 사용하여 친구를 검색할 수 있고 캠페인에 참여할 수 있습니다."
+msgstr "별명을 사용하여 친구를 검색할 수 있고 캠페인에 참여할 수도 있습니다."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
 msgstr "이제 로그인을 했으므로 저장된 캠페인에 접근할 수 있습니다."
@@ -4013,7 +3994,7 @@ msgstr "이제 로그인을 했으므로 저장된 캠페인에 접근할 수 �
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
 "shared with friends."
-msgstr "이제 캠페인을 '업로드' 할 수 있고, 이를 통해 장치 또는 공유된 친구 간에 캠페인을 동기화할 수 있습니다. "
+msgstr "이제 캠페인을 '업로드'하여 장치나 공유된 친구 사이에 캠페인을 동기화할 수 있습니다."
 
 msgid "Welcome"
 msgstr "환영합니다"
@@ -4023,7 +4004,7 @@ msgstr "프린트 앤 플레이 카드를 다운로드"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr "${ section.title } (from XP)"
+msgstr "${ section.title } (경험치 지불)"
 
 msgid "Exiled story cards"
 msgstr "추방된 이야기 카드"
@@ -4040,8 +4021,8 @@ msgid ""
 "campaigns are a fair amount of work, but I'd love to support the community "
 "in anyway I can."
 msgstr ""
-"당신이 앱에서 보고 싶은 \"완료\" 캠페인을 가진 커스텀 콘텐츠 제작자라면, arkhamcards@gmail.com으로 연락주세요. "
-"커스텀 캠페인은 상당한 양의 작업이지만 어쨌든 가능한 커뮤니티를 지원하고 싶습니다."
+"앱으로 보고 싶은 “완성된” 캠페인을 가진 커스텀 콘텐츠 제작자 분은 arkhamcards@gmail.com 이메일로 연락을 "
+"주십시오(영문). 커스텀 캠페인은 상당한 양의 작업이지만, 커뮤니티를 가능한 지원하고 싶습니다."
 
 msgid "Alice in Wonderland"
 msgstr "이상한 나라의 앨리스"
@@ -4121,12 +4102,12 @@ msgstr "저장이 필요한 변경점이 없습니다."
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
 "record your changes."
-msgstr "변경 사항을 끝마치려면, 변경점 기록을 위해 '저장' 버튼을 누르세요."
+msgstr "변경 사항을 끝마치려면, 변경점 기록을 위해 '저장' 버튼을 누르십시오."
 
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
-msgstr "이 덱은 경험치에 따라 향상되며 새로운 이야기 카드는 명시된 것처럼 추가되거나 제거됩니다."
+msgstr "이 덱은 경험치로 향상되고 새로운 이야기 카드는 지정된 대로 추가되거나 제거됩니다."
 
 #, javascript-format
 msgid "(new total: ${ total })"
@@ -4200,7 +4181,7 @@ msgid "Learn more"
 msgstr "더 배워보기"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr "덱을 향상하려면 아래의 카드 변경점 목록을 저장하세요."
+msgstr "덱을 향상하려면 아래의 카드 변경점 목록을 저장하십시오."
 
 msgid "Campaign log"
 msgstr "캠페인 기록지"
@@ -4358,7 +4339,7 @@ msgid ""
 msgstr ""
 "죄송합니다, Mythos Buster 후원자가 아닌 것 같습니다.\n"
 "Patreon에서 멤버십 상태를 업데이트하는데 최대 24시간이 걸릴 수 있습니다. 24시간 이후에도 여전히 문제가 발생하면 "
-"Patreon 또는 디스코드 채널을 통해 Mythos Busters에 이 문제에 대한 도움을 요청하세요."
+"Patreon 또는 디스코드 채널을 통해 Mythos Busters에 이 문제에 대한 도움을 요청하십시오."
 
 msgid "Skull"
 msgstr "해골"
@@ -4478,7 +4459,7 @@ msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr "설정 탭에서 ArkhamCards에 로그인하여 활성화"
+msgstr "해당 기능을 활성화하려면 설정 탭에서 아컴카드 계정에 로그인 하십시오."
 
 msgid "Asset: Hand x2. Arcane"
 msgstr "자산: 손 x2. 마법"
@@ -4750,17 +4731,354 @@ msgstr "타로 카드 선택"
 msgid "Which tarot card is impacting the chaos bag?"
 msgstr "혼돈 주머니에 영향을 주는 타로 카드는 무엇입니까?"
 
-msgid "Replace highest non-negative token with a skull."
-msgstr "혼돈 주머니에 있는 음수 보정치가 아닌 가장 높은 숫자의 토큰 1개를 [skull] 토큰 1개로 대체합니다."
-
 msgid "Replace a skull with a 0 token."
-msgstr "혼돈 주머니에 있는 [skull] 토큰 1개를 0 토큰 1개로 대체합니다."
+msgstr "해골 토큰 1개를 0 토큰 1개로 대체."
+
+msgid "Replace highest non-negative token with a skull."
+msgstr "음수 외 가장 큰 수의 토큰 1개를 해골 토큰으로 대체."
+
+msgid "The Fool · 0"
+msgstr "광대 · 0"
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during "
+"its resolution."
+msgstr "이번 게임 동안 쓰러지지 않은 모든 조사자는 결말을 해결하는 동안 +2 경험치를 얻습니다."
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its "
+"resolution."
+msgstr "이번 게임 동안 쓰러진 모든 조사자는 결말을 해결하는 동안 -2 경험치를 얻습니다."
+
+msgid "The Magician · I"
+msgstr "마법사 · I"
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr "모든 조사자는 이번 게임에서 자원을 3개씩 더 가지고 시작합니다."
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain "
+"resources during their first turn."
+msgstr "모든 조사자는 이번 게임에서 자원을 3개씩 덜 가지고 시작하며, 자신의 첫 번째 차례 동안 자원을 획득할 수 없습니다."
+
+msgid "The High Priestess · II"
+msgstr "여사제 · II"
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get +1 [intellect]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [intellect] 테스트 동안, 그 조사자는 +1 [intellect]을 얻습니다."
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get -1 [intellect]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [intellect] 테스트 동안, 그 조사자는 -1 [intellect]을 얻습니다."
+
+msgid "The Empress · III"
+msgstr "여제 · III"
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get +1 [agility]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [agility] 테스트 동안, 그 조사자는 +1 [agility]을 얻습니다."
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get -1 [agility]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [agility] 테스트 동안, 그 조사자는 -1 [agility]을 얻습니다."
+
+msgid "The Emperor · IV"
+msgstr "황제 · IV"
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get +1 [combat]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [combat] 테스트 동안, 그 조사자는 +1 [combat]을 얻습니다."
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get -1 [combat]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [combat] 테스트 동안, 그 조사자는 -1 [combat]을 얻습니다."
+
+msgid "The Hierophant · V"
+msgstr "법황 · V"
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get +1 [willpower]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [willpower] 테스트 동안, 그 조사자는 +1 [willpower]을 얻습니다."
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get -1 [willpower]."
+msgstr "각 조사자가 라운드마다 처음으로 수행하는 [willpower] 테스트 동안, 그 조사자는 -1 [willpower]을 얻습니다."
+
+msgid "The Lovers · VI"
+msgstr "연인 · VI"
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, adds it to their hand, and shuffles their deck."
+msgstr "이번 게임을 시작할 때, 모든 조사자는 자신의 덱에서 조력자 자산 하나를 찾아서 자신의 손으로 가져오고 자신의 덱을 섞습니다."
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, removes it from the game, and shuffles their deck."
+msgstr "이번 게임을 시작할 때, 모든 조사자는 자신의 덱에서 조력자 자산 하나를 찾아서 게임에서 제거하고 자신의 덱을 섞습니다."
+
+msgid "The Chariot · VII"
+msgstr "전차 · VII"
+
+msgid ""
+"Each investigator begins the game with 2 additional cards in their opening "
+"hand."
+msgstr "모든 조사자는 이번 게임에서 시작 카드를 2장씩 더 가지고 시작합니다."
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, "
+"and cannot draw cards during their first turn."
+msgstr "모든 조사자는 이번 게임에서 시작 카드를 2장씩 덜 가지고 시작하며, 자신의 첫 번째 차례 동안 카드를 뽑을 수 없습니다."
+
+msgid "Strength · VIII"
+msgstr "힘 · VIII"
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand "
+"at -2 cost."
+msgstr "이번 게임을 시작할 때, 모든 조사자는 자신의 손에서 자산 하나를 비용을 2 낮춰 플레이해도 됩니다."
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr "이번 게임의 첫 번째 라운드 동안, 모든 조사자는 자산을 플레이할 수 없습니다."
+
+msgid "The Hermit · IX"
+msgstr "은둔자 · IX"
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr "모든 조사자의 손에 들 수 있는 카드 장수 제한이 3씩 늘어납니다."
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr "모든 조사자의 손에 들 수 있는 카드 장수 제한이 3씩 줄어듭니다."
+
+msgid "Wheel of Fortune · X"
+msgstr "운명의 수레바퀴 · X"
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"investigator may cancel it and treat it as a 0 token instead."
+msgstr ""
+"주요목적마다 한 번씩, 어느 조사자가 [auto_fail] 토큰을 공개할 때, 조사자들은 그 토큰을 취소하고 그 대신 0 토큰으로 "
+"간주해도 됩니다."
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+"주요사건마다 한 번씩, 어느 조사자가 [elder_sign] 토큰을 공개할 때, 조사자들은 그 토큰을 취소하고 그 대신 -5 토큰으로 "
+"간주합니다"
+
+msgid "Justice · XI"
+msgstr "정의 · XI"
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr "이번 게임의 마지막 주요사건에 가장 처음으로 놓이려는 파멸 1개를 취소합니다."
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr "이번 게임의 마지막 주요사건은 파멸이 1개 놓인 상태로 플레이 영역에 들어옵니다."
+
+msgid "The Hanged Man · XII"
+msgstr "매달린 남자 · XII"
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr "게임을 준비하는 동안, 모든 조사자는 최대 2번까지 멀리건을 해도 됩니다."
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+"모든 조사자는 멀리건을 할 수도 자신의 시작 카드에 있는 약점을 대체할 수도 없습니다( 게임을 시작할 때, 이렇게 뽑은 약점의 폭로 "
+"기능을 해결합니다)."
+
+msgid "Death · XIII"
+msgstr "죽음 · XIII"
+
+msgid "Each investigator gets +1 health."
+msgstr "모든 조사자는 +1 체력을 얻습니다."
+
+msgid "Each investigator gets -1 health."
+msgstr "모든 조사자는 -1 체력을 얻습니다."
+
+msgid "Temperance · XIV"
+msgstr "절제 · XIV"
+
+msgid "Each investigator gets +1 sanity."
+msgstr "모든 조사자는 +1 정신력을 얻습니다."
+
+msgid "Each investigator gets -1 sanity."
+msgstr "모든 조사자는 -1 정신력을 얻습니다."
+
+msgid "The Devil · XV"
+msgstr "악마 · XV"
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr "모든 조사자는 게임을 시작할 때 원하는 슬롯을 하나씩 선택합니다. 각자 자신이 선택한 슬롯이 1칸 추가됩니다."
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr "모든 조사자는 게임을 시작할 때 서로 다른 슬롯을 세 가지 선택합니다. 각자 자신이 선택한 슬롯이 1칸씩 줄어듭니다."
+
+msgid "The Tower · XVI"
+msgstr "탑 · XVI"
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr "모든 조사자는 자신의 덱에 있는 기본 약점 1장을 선택하여 게임에서 제거합니다(게임이 끝난 후, 다시 덱으로 돌아옵니다)."
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr "모든 조사자의 덱에 무작위 기본 약점 1장씩을 추가합니다. 게임이 끝난 후, 이렇게 추가한 약점을 제거합니다."
+
+msgid "The Star · XVII"
+msgstr "별 · XVII"
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr "조사자 한 명이 능력 테스트 동안 [elder_sign] 토큰을 공개한 후, 그 조사자는 피해 1 또는 공포 1을 회복해도 됩니다."
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr "조사자 한 명이 능력 테스트 동안 [auto_fail] 토큰을 공개한 후, 그 조사자는 피해 1 또는 공포 1을 받아야 합니다."
+
+msgid "The Moon · XVIII"
+msgstr "달 · XVIII"
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr "각 조사자의 덱이 처음으로 다 떨어지려 할 때마다, 그 조사자는 자신의 버린 카드 더미 맨 밑 카드 10장을 덱에 섞어넣어도 됩니다."
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr "게임을 시작할 때, 모든 조사자는 자신의 덱 맨 위 카드 5장을 버립니다. 이렇게 버려진 모든 약점을 소유자의 덱에 섞어넣습니다."
+
+msgid "The Sun · XIX"
+msgstr "태양 · XIX"
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr "모든 조사자는 자신의 첫 번째 차례 동안, 행동을 추가로 2번씩 더 해도 됩니다."
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr "모든 조사자는 자신의 첫 번째 차례 동안, 행동을 2번씩 적게 합니다."
 
 msgid "Judgement · XX"
-msgstr "심판 · XX (정위치)"
+msgstr "심판 · XX"
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+"게임을 시작할 때, 혼돈 주머니에 있는 [skull] 토큰 1개를 0 토큰 1개로 대체합니다. 게임이 끝난 후, 다시 원래대로 "
+"맞바꿉니다."
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+"게임을 시작할 때, 혼돈 주머니에 있는 음수 보정치가 아닌 가장 높은 숫자의 토큰 1개를 [skull] 토큰 1개로 대체합니다. 게임이 "
+"끝난 후, 다시 원래대로 맞바꿉니다."
+
+msgid "The World · XXI"
+msgstr "세계 · XXI"
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr "이번 게임 동안 쓰러지지 않은 모든 조사자는 결말을 해결하는 동안 자신이 원하는 트라우마 1을 제거해도 됩니다."
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
+msgstr "이번 게임 동안 쓰러진 모든 조사자는 결말을 해결하는 동안 자신이 원하는 트라우마 1을 겪습니다."
+
+msgid "An app update is required to access this campaign."
+msgstr "해당 캠페인에 접근하기 위해서는 앱 업데이트가 필요합니다."
 
 msgid "Judgement · XX (Inverted)"
 msgstr "심판 · XX (역위치)"
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr "아컴카드 계정은 아컴디비 계정과는 별개의 계정입니다."
+
+msgid "Side Deck"
+msgstr "보조 덱"
+
+msgid "Edit Side Deck"
+msgstr "보조 덱 수정"
+
+msgid "Creating campaign..."
+msgstr "캠페인 생성 중..."
+
+msgid "Creating standalone..."
+msgstr "독립 시나리오 생성 중..."
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr "캠페인은 장치 간에 동기화할 수 있고 친구와도 공유할 수 있습니다."
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr "캠페인은 이 장치에만 둘 수도 있고, 나중에 업로드하기를 선택할 수도 있습니다."
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] "(${ count }장)"
+
+msgid "Collection overlap"
+msgstr "초과된 공통 보유 카드"
+
+msgid "Deck overlap"
+msgstr "초과된 공통 보유 카드"
+
+msgid "Show collection overlap"
+msgstr "초과된 공통 보유 카드 보기"
+
+msgid "Hide collection overlap"
+msgstr "초과된 공통 보유 카드 숨기기"
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr "같은 캠페인에 속한 덱에서 공통으로 포함된 카드들의 총합이 당신의 보유 게임 내의 총 수량을 초과합니다."
+
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr "${ scenarionName } 시나리오 완료 후"
+
+msgid "Show decks from other campaigns"
+msgstr "다른 캠페인에 속한 덱 보기"
+
+msgid "Trait Choice"
+msgstr "특성 선택"
+
+msgid "Blessed"
+msgstr "축복받은"
+
+msgid "Cursed"
+msgstr "저주받은"
+
+msgid "Blessed and Cursed"
+msgstr "축복받은, 저주받은"
+
+msgid "Select Option"
+msgstr "옵션 선택"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5203,7 +5521,7 @@ msgstr "구조물"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "성약"
 
 msgctxt "trait"
 msgid "Creature"
@@ -6225,6 +6543,11 @@ msgctxt "narration"
 msgid "Playing audio"
 msgstr "오디오 재생"
 
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr "재생 속도: ${ rate }"
+
 msgctxt "campaign_log_entry"
 msgid "Other."
 msgstr "기타."
@@ -6257,22 +6580,22 @@ msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr ""
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr ""
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr ""
-
 msgctxt "trauma"
 msgid "None"
 msgstr "없음"
 
+msgctxt "Tarot Card"
+msgid "None"
+msgstr "없음"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "심판 · XX (정위치)"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "심판 · XX (역위치)"
+
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"

@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useReducer } from 'react';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, View } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -7,7 +8,6 @@ import { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { EditSlotsActions, useCounter, useEffectUpdate } from '@components/core/hooks';
 import StackedCardCount from './StackedCardCount';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface Props {
   code: string;
@@ -17,6 +17,7 @@ interface Props {
   showZeroCount?: boolean;
   forceBig?: boolean;
   reversed?: boolean;
+  useGestureHandler?: boolean;
 }
 
 function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {
@@ -47,7 +48,7 @@ function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { se
   );
 }
 
-function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount }: Props) {
+function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, useGestureHandler }: Props) {
   const { fontScale } = useContext(StyleContext);
   const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit });
   useEffectUpdate(() => {
@@ -75,6 +76,7 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
         dialogStyle
         countRender={<StackedCardCount count={count} showZeroCount={showZeroCount} />}
         showZeroCount={showZeroCount}
+        useGestureHandler={useGestureHandler}
       />
     </View>
   );

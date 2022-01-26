@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import ChaosTokenButton from './ChaosTokenButton';
 import { ChaosTokenType } from '@app_constants';
+import { isTablet } from '@styles/space';
 
 interface Props {
   id: string;
@@ -19,7 +20,7 @@ export default function SealTokenButton({ id, iconKey, onToggle, sealed = false 
       selected={!!sealed}
       onPress={toggleSealToken}
       iconKey={iconKey}
-      tiny
+      tiny={!isTablet}
     />
   );
 }

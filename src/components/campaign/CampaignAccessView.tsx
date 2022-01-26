@@ -102,7 +102,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
     });
     return feed;
   }, [campaignAccess, userId, isOwner, editFriendsPressed, inviteUser, removeUser]);
-  const [feed] = useFriendFeedComponent({ componentId, userId, toFeed, noHeader: true });
+  const [feed] = useFriendFeedComponent({ componentId, userId, toFeed });
   if (!userId) {
     return <LoadingSpinner />;
   }

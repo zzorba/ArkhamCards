@@ -1,0 +1,113 @@
+diff --git a/node_modules/react-native-largelist/Group.js b/node_modules/react-native-largelist/Group.js
+index d635e95..8100350 100644
+--- a/node_modules/react-native-largelist/Group.js
++++ b/node_modules/react-native-largelist/Group.js
+@@ -92,7 +92,7 @@ export class Group extends React.Component<GroupPropType> {
+           const style = StyleSheet.flatten({
+             height,
+             marginTop,
+-            alignSelf: "stretch",
++            alignSelf: 'stretch',
+             transform: [{ scaleY: inverted ? -1 : 1 }],
+           });
+           let rIdx = this._currentIndex;
+diff --git a/node_modules/react-native-largelist/LargeList.js b/node_modules/react-native-largelist/LargeList.js
+index 578ed7b..9db7d6d 100644
+--- a/node_modules/react-native-largelist/LargeList.js
++++ b/node_modules/react-native-largelist/LargeList.js
+@@ -87,6 +87,8 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+     const sections = [0];
+     let sumHeight = this._headerLayout ? this._headerLayout.height : 0;
+     const wrapperHeight = idx(() => this._size.height, 700);
++    const totalGroupHeight = groupMinHeight * (groupCount / 2);
++    const pageHeight = Math.max(totalGroupHeight, wrapperHeight);
+     const shouldRenderContent = this._shouldRenderContent();
+     if (shouldRenderContent) {
+       let currentGroupHeight = 0;
+@@ -127,8 +129,8 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+             if (inputs[currentGroupIndex].length === 0) {
+               inputs[currentGroupIndex].push(Number.MIN_SAFE_INTEGER);
+             }
+-            inputs[currentGroupIndex].push(sumHeight - wrapperHeight);
+-            inputs[currentGroupIndex].push(sumHeight + 0.1 - wrapperHeight);
++            inputs[currentGroupIndex].push(sumHeight - pageHeight);
++            inputs[currentGroupIndex].push(sumHeight + 0.1 - pageHeight);
+             if (outputs[currentGroupIndex].length === 0) {
+               outputs[currentGroupIndex].push(sumHeight);
+               outputs[currentGroupIndex].push(sumHeight);
+@@ -451,8 +453,7 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+       );
+     this.props.onScroll && this.props.onScroll(e);
+     const now = new Date().getTime();
+-    if (this._lastTick - now > 30) {
+-      this._lastTick = now;
++    if (now - this._lastTick < this.props.updateTimeInterval) {
+       return;
+     }
+     this._lastTick = now;
+@@ -462,20 +463,22 @@ export class LargeList extends React.PureComponent<LargeListPropType> {
+       );
+   };
+ 
+-  scrollTo(offset: Offset, animated: boolean = true): Promise<void> {
++  _scrollTo = async(offset: Offset, animated: boolean = true): Promise<void> => {
+     if (!this._scrollView.current)
+       return Promise.reject("LargeList has not been initialized yet!");
+-    this._shouldUpdateContent = false;
+     this._groupRefs.forEach((group) =>
+       idx(() => group.current.contentConversion(offset.y))
+     );
+     this._sectionRefs.forEach((sectionRef) =>
+       idx(() => sectionRef.current.updateOffset(offset.y))
+     );
+-    return this._scrollView.current.scrollTo(offset, animated).then(() => {
+-      this._shouldUpdateContent = true;
+-      return Promise.resolve();
+-    });
++    this._shouldUpdateContent = false;
++    await this._scrollView.current.scrollTo(offset, animated);
++    this._shouldUpdateContent = true;
++  };
++
++  scrollTo(offset: Offset, animated: boolean = true): Promise<void> {
++    return this._scrollTo(offset, animated);
+   }
+ 
+   scrollToIndexPath(
+diff --git a/node_modules/react-native-largelist/WaterfallList.js b/node_modules/react-native-largelist/WaterfallList.js
+index 3e073ae..8211a4f 100644
+--- a/node_modules/react-native-largelist/WaterfallList.js
++++ b/node_modules/react-native-largelist/WaterfallList.js
+@@ -300,8 +300,7 @@ export class WaterfallList extends React.PureComponent<WaterfallListType> {
+   _onScroll = e => {
+     this._contentOffsetY = e.nativeEvent.contentOffset.y;
+     const now = new Date().getTime();
+-    if (this._lastTick - now > 30) {
+-      this._lastTick = now;
++    if (now - this._lastTick < 30) {
+       return;
+     }
+     this._lastTick = now;
+@@ -327,6 +326,10 @@ export class WaterfallList extends React.PureComponent<WaterfallListType> {
+     });
+   }
+ 
++  beginRefresh() {
++    idx(() => this._scrollView.current.beginRefresh());
++  }
++
+   endRefresh() {
+     idx(() => this._scrollView.current.endRefresh());
+   }
+diff --git a/node_modules/react-native-largelist/index.d.ts b/node_modules/react-native-largelist/index.d.ts
+index 8b962d7..d724309 100644
+--- a/node_modules/react-native-largelist/index.d.ts
++++ b/node_modules/react-native-largelist/index.d.ts
+@@ -38,6 +38,7 @@ declare module "react-native-largelist" {
+   export class LargeList extends React.PureComponent<LargeListPropType> {
+     scrollTo(offset: Offset, animated?: boolean): Promise<void>;
+     scrollToIndexPath(indexPath: IndexPath, animated?: boolean): Promise<void>;
++    beginRefresh(): Promise<void>;
+     endRefresh(): void;
+     endLoading(): void;
+   }

@@ -15,7 +15,7 @@ import { TINY_PHONE } from '@styles/sizes';
 interface Props {
   campaign: MiniCampaignT;
 }
-export default function CampaignInvestigatorRow({ campaign }: Props) {
+function CampaignInvestigatorRow({ campaign }: Props) {
   const investigators = useInvestigatorCards();
   const renderInvestigator = useCallback((code: string) => {
     const traumaAndCardData = campaign.investigatorTrauma(code);
@@ -41,6 +41,11 @@ export default function CampaignInvestigatorRow({ campaign }: Props) {
     </View>
   );
 }
+CampaignInvestigatorRow.computeHeight = (fontScale: number) => {
+  return s * 2 + InvestigatorImage.computeHeight('tiny', fontScale);
+};
+
+export default CampaignInvestigatorRow;
 
 const styles = StyleSheet.create({
   row: {

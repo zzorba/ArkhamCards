@@ -1,4 +1,4 @@
-import { find, forEach, findLastIndex, filter, map } from 'lodash';
+import { forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
   DELETE_CAMPAIGN,
@@ -91,60 +91,10 @@ export default function(
               ...guide,
               achievements: [...filter(achievements, a => a.id !== action.id), { id: action.id, type: 'binary', value: true }],
             };
-          case 'inc': {
-            const currentEntry = find(achievements, a => a.id === action.id);
-            if (currentEntry && currentEntry.type === 'count') {
-              return {
-                ...guide,
-                achievements: map(achievements, a => {
-                  if (a.id === action.id && a.type === 'count') {
-                    return {
-                      id: a.id,
-                      type: 'count',
-                      value: action.max !== undefined ? Math.min(a.value + 1, action.max) : (a.value + 1),
-                    };
-                  }
-                  return a;
-                }),
-              };
-            }
+          case 'set_value': {
             return {
               ...guide,
-              achievements: [...achievements,
-                {
-                  id: action.id,
-                  type: 'count',
-                  value: 1,
-                },
-              ],
-            };
-          }
-          case 'dec': {
-            const currentEntry = find(achievements, a => a.id === action.id);
-            if (currentEntry && currentEntry.type === 'count') {
-              return {
-                ...guide,
-                achievements: map(achievements, a => {
-                  if (a.id === action.id && a.type === 'count') {
-                    return {
-                      id: a.id,
-                      type: 'count',
-                      value: Math.max(a.value - 1, 0),
-                    };
-                  }
-                  return a;
-                }),
-              };
-            }
-            return {
-              ...guide,
-              achievements: [...achievements,
-                {
-                  id: action.id,
-                  type: 'count',
-                  value: 0,
-                },
-              ],
+              achievements: [...filter(achievements, a => a.id !== action.id), { id: action.id, type: 'count', value: action.value || 0 }],
             };
           }
         }

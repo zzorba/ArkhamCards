@@ -17,6 +17,7 @@ import CardDetailSectionHeader from './CardDetailSectionHeader';
 interface Props {
   componentId?: string;
   card: Card;
+  backCard?: Card;
   width: number;
   simple?: boolean;
   showSpoilers: boolean;
@@ -113,7 +114,7 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
   );
 }
 
-export default function CardDetailComponent({ componentId, card, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
+export default function CardDetailComponent({ componentId, card, backCard, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
   const bondedCards = useMemo(() => [card], [card]);
@@ -137,6 +138,7 @@ export default function CardDetailComponent({ componentId, card, width, showSpoi
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}
+          backCard={backCard}
           width={width}
           simple={!!simple}
         />

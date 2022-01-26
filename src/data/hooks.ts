@@ -31,7 +31,7 @@ export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => vo
     ) : campaigns;
     return sortBy(toSort, c => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, userId]);
-  return [allCampaigns, !!userId && loading, refresh];
+  return [allCampaigns, loading, refresh];
 }
 
 export function useCampaignGuideState(campaignId?: CampaignId, live?: boolean): CampaignGuideStateT | undefined {
@@ -117,6 +117,11 @@ export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
     }
     return remoteData || reduxData;
   }, [id, remoteData, reduxData]);
+}
+
+export function useArkhamDbError(): string | undefined {
+  const { error, refreshing } = useMyDecksRedux();
+  return refreshing ? error : undefined;
 }
 
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {

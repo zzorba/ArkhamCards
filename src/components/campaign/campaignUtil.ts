@@ -1,4 +1,4 @@
-import { capitalize, find, head, findIndex, flatMap, forEach, keys, map, range, sortBy, values, first } from 'lodash';
+import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
@@ -93,9 +93,13 @@ export function campaignToText(
 
 export function flattenChaosBag(chaosBag: ChaosBag, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined): ChaosTokenType[] {
   const weightedList: ChaosTokenType[] = [];
-  forEach(chaosBag, (multiples, token) => {
-    if (multiples) {
-      forEach(range(0, multiples), () => {
+  forEach(sortBy(
+    keys(chaosBag) as ChaosTokenType[],
+    (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token],
+  ), (token) => {
+    const count = chaosBag[token] || 0;
+    if (count) {
+      forEach(range(0, count), () => {
         weightedList.push(token as ChaosTokenType);
       });
     }

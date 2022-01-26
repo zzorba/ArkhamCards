@@ -1,10 +1,10 @@
 import StyleContext from '@styles/StyleContext';
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
-import { useEffectUpdate } from './hooks';
+import { useComponentDidAppear } from './hooks';
 import { s } from '@styles/space';
 
 interface RenderButton {
@@ -15,6 +15,7 @@ interface Props {
   buttons: RenderButton[];
   selectedIndexes: number[];
   onPress: (indexes: number[]) => void;
+  componentId: string;
 }
 
 export function SingleButton({ idx, content, last, onPressIndex, height, selected }: {
@@ -52,18 +53,19 @@ export default function ArkhamButtonGroup({
   buttons,
   selectedIndexes,
   onPress,
+  componentId,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
-  useEffectUpdate(() => {
+  useComponentDidAppear(() => {
     setLocalSelectedIndexes(selectedIndexes);
-  }, [selectedIndexes]);
+  }, componentId, [selectedIndexes]);
   const onPressIndex = useCallback((idx: number) => {
-    const selection = new Set(selectedIndexes);
-    const newSelection = selection.has(idx) ? filter(selectedIndexes, x => x !== idx) : [...selectedIndexes, idx];
+    const selection = new Set(localSelectedIndexes);
+    const newSelection = selection.has(idx) ? filter(localSelectedIndexes, x => x !== idx) : [...localSelectedIndexes, idx];
     setLocalSelectedIndexes(newSelection);
-    InteractionManager.runAfterInteractions(() => onPress(newSelection));
-  }, [selectedIndexes, setLocalSelectedIndexes, onPress]);
+    setTimeout(() => onPress(newSelection), 10);
+  }, [localSelectedIndexes, setLocalSelectedIndexes, onPress]);
   const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
   const height = 28 * fontScale + 20;
   return (
@@ -78,7 +80,8 @@ export default function ArkhamButtonGroup({
               content={button}
               selected={selection.has(idx)}
               last={last}
-              onPressIndex={onPressIndex} height={height}
+              onPressIndex={onPressIndex}
+              height={height}
             />
           );
         })}

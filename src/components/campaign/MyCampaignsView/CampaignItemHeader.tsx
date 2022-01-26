@@ -5,12 +5,13 @@ import { t } from 'ttag';
 import { campaignNames, campaignColor, difficultyString } from '@components/campaign/constants';
 import { CUSTOM, STANDALONE } from '@actions/types';
 import GameHeader from '@components/campaign/GameHeader';
-import space, { s } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import EncounterIcon from '@icons/EncounterIcon';
 import AppIcon from '@icons/AppIcon';
 import FactionPattern from '@components/core/RoundedFactionHeader/FactionPattern';
+import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 
 interface Props {
   campaign: MiniCampaignT;
@@ -20,8 +21,15 @@ interface Props {
   name?: string;
 }
 
-export default function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneName, name }: Props) {
-  const { colors, typography, shadow, width } = useContext(StyleContext);
+function computeHeight(hideScenario: boolean | undefined, fontScale: number) {
+  return xs + s + Math.ceil(36 * fontScale) + // header;
+    CampaignInvestigatorRow.computeHeight(fontScale) + // investigator row
+    (hideScenario ? 0 : xs + 30 * fontScale) + // scenario row
+    (s * 2 + 26 * fontScale) + s + StyleSheet.hairlineWidth * 4; // name row
+}
+
+function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneName, name }: Props) {
+  const { colors, fontScale, typography, shadow, width } = useContext(StyleContext);
   const cycleCode = campaign.cycleCode;
   const standaloneId = cycleCode === STANDALONE ? campaign.standaloneId : undefined;
   const latestScenario = useMemo(() => campaign.latestScenarioResult, [campaign]);
@@ -50,10 +58,10 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
     const text = cycleCode === CUSTOM ? campaign.name : campaignNames()[cycleCode];
     const campaignName = (cycleCode === STANDALONE && standaloneName) || text;
     return (
-      <View style={[styles.row, styles.flex]}>
+      <View style={styles.row}>
         <View style={space.paddingRightS}>{ icon }</View>
         <View style={styles.flex}>
-          <GameHeader text={campaignName} style={typography.white} />
+          <GameHeader text={campaignName} style={typography.white} truncate />
         </View>
       </View>
     );
@@ -67,7 +75,7 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={[space.marginTopXs, { flex: 1 }]}>
-          <Text style={[typography.mediumGameFont, typography.white]}>
+          <Text style={[typography.mediumGameFont, typography.white]} numberOfLines={1} ellipsizeMode="tail">
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
@@ -97,7 +105,7 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
 
   const color = campaignColor(cycleCode, colors);
   return (
-    <View style={[styles.background, { backgroundColor: colors.L20 }]}>
+    <View style={[styles.background, { height: computeHeight(hideScenario, fontScale), backgroundColor: colors.L20 }]}>
       <View style={[styles.mainCard, space.paddingTopXs, space.paddingLeftS, space.paddingRightXs, space.paddingBottomS, { marginLeft: -1, marginTop: -1, marginRight: -1, backgroundColor: color }, shadow.large]}>
         <FactionPattern height={48} faction="campaign" width={width - s * 2} />
         { campaignSection }
@@ -122,6 +130,10 @@ export default function CampaignItemHeader({ campaign, hideScenario, investigato
     </View>
   );
 }
+
+CampaignItemHeader.computeHeight = computeHeight;
+
+export default CampaignItemHeader;
 
 const styles = StyleSheet.create({
   flex: {

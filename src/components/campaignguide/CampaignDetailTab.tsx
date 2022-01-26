@@ -23,6 +23,10 @@ import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { showGuideCampaignLog } from '@components/campaign/nav';
 import { WeaknessSetProps } from './WeaknessSetView';
+import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
+import { useArkhamDbError } from '@data/hooks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 
 const SHOW_WEAKNESS = false;
 
@@ -34,22 +38,26 @@ interface Props {
   showCountDialog: ShowCountDialog;
   showLinkedScenario?: ShowScenario;
   displayLinkScenarioCount?: number;
-  footerButtons: React.ReactNode;
+  footerButtons?: React.ReactNode;
+  login: () => void;
 }
 
 
 export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
-  showLinkedScenario, showAlert, showCountDialog,
+  showLinkedScenario, showAlert, showCountDialog, login,
 }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
+  const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const reLogin = useCallback(() => login(), [login]);
+  const arkhamDbError = useArkhamDbError();
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
 
   const deckActions = useDeckActions();
-  const deckUpgradeCompleted = useCallback((deck: Deck, xp: number, id: StepId) => {
+  const deckUpgradeCompleted = useCallback(async(deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
     if (choices && delayedDeckEdit) {
-      campaignState.setNumberChoices(
+      await campaignState.setNumberChoices(
         id.id,
         choices,
         getDeckId(deck),
@@ -61,7 +69,9 @@ export default function CampaignDetailTab({
       )
     }
   }, [campaignState]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
+
+  const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -75,8 +85,9 @@ export default function CampaignDetailTab({
       processedCampaign.campaignLog,
       { standalone: false, hideChaosBag: true },
       scenarioId,
+      processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, processedCampaign.campaignLog, scenarioId]);
+  }, [componentId, campaignId, campaignGuide, processedCampaign, scenarioId]);
 
   const showCampaignAchievements = useCallback(() => {
     Navigation.push<CampaignAchievementsProps>(componentId, {
@@ -145,10 +156,12 @@ export default function CampaignDetailTab({
     scenarioId: currentScenario?.id?.encodedScenarioId,
     setChaosBag: updateCampaignActions.setChaosBag,
     cycleCode: campaign.cycleCode,
+    processedCampaign,
   });
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
+        { !!userId && !!arkhamDb && !!campaignId.serverId && connectionProblemBanner }
         <View style={[space.paddingSideS, space.paddingBottomS]}>
           <CampaignSummaryHeader
             difficulty={processedCampaign.campaignLog.campaignData.difficulty}
@@ -213,7 +226,11 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <DeckOverlapComponent componentId={componentId} />
+        </View>
         { footerButtons }
+        <View style={{ height: 120 }} />
       </ScrollView>
       { chaosBagDialog }
       { traumaDialog }

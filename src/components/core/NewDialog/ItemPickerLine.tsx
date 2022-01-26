@@ -45,7 +45,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
                 <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
                   { text }
                 </Text>
-                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
                   { description }
                 </Text>
               </View>

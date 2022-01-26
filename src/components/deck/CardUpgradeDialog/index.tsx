@@ -126,9 +126,9 @@ export default function CardUpgradeDialog({
         (card.xp || 0) < (cards[code]?.xp || 0)
       );
     });
-    dispatch(incDeckSlot(id, code));
+    dispatch(incDeckSlot(id, code, undefined));
     if (possibleDecrement) {
-      dispatch(decDeckSlot(id, possibleDecrement.code));
+      dispatch(decDeckSlot(id, possibleDecrement.code, undefined));
     }
   }, [deckEdits, dispatch, cards, namedCards, id]);
 
@@ -155,6 +155,7 @@ export default function CardUpgradeDialog({
       card.pack_code === 'core' ||
       ignore_collection ||
       inCollection[card.pack_code] ||
+      !!find(card.reprint_pack_codes || [], pack_code => inCollection[pack_code]) ||
       showNonCollection
     );
   }, [inCollection, showNonCollection, ignore_collection]);
@@ -217,8 +218,8 @@ export default function CardUpgradeDialog({
       const xpCost = (firstCard.xp || 0) + (firstCard.extra_xp || 0) - ((baseCard.xp || 0) + (baseCard.extra_xp || 0));
       dispatch(decDeckSlot(id, baseCard.code));
       dispatch(decDeckSlot(id, baseCard.code));
-      dispatch(incDeckSlot(id, firstCard.code));
-      dispatch(incDeckSlot(id, secondCard.code));
+      dispatch(incDeckSlot(id, firstCard.code, firstCard.deck_limit));
+      dispatch(incDeckSlot(id, secondCard.code, secondCard.deck_limit));
       setShrewdAnalysisResult([firstCard.code, secondCard.code]);
       dispatch(setDeckXpAdjustment(id, deckEdits.xpAdjustment + xpCost));
     }

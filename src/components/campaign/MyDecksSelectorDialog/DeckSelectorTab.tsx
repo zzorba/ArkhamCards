@@ -13,7 +13,8 @@ interface Props {
   searchOptions?: SearchOptions;
 
   onlyDecks?: MiniDeckT[];
-  filterDeck?: (deck: MiniDeckT) => boolean;
+  filterDeck?: (deck: MiniDeckT) => string | undefined;
+  renderExpandButton?: (reason: string) => React.ReactNode | null;
 }
 
 export default function DeckSelectorTab({
@@ -22,6 +23,7 @@ export default function DeckSelectorTab({
   filterDeck,
   onlyDecks,
   onDeckSelect,
+  renderExpandButton,
 }: Props) {
   const deckSelected = useCallback(async(deck: LatestDeckT) => {
     onDeckSelect(deck.deck);
@@ -33,6 +35,7 @@ export default function DeckSelectorTab({
       deckClicked={deckSelected}
       onlyDecks={onlyDecks}
       filterDeck={filterDeck}
+      renderExpandButton={renderExpandButton}
     />
   );
 }

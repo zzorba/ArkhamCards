@@ -4,7 +4,6 @@ import {
   FlatList,
   Keyboard,
   Platform,
-  StyleSheet,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
@@ -15,7 +14,7 @@ import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import { searchBoxHeight } from '@components/core/SearchBox';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface SearchSelectProps {
@@ -36,7 +35,7 @@ function keyExtractor(item: Item) {
 }
 
 export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: NavigationProps & SearchSelectProps) {
-  const { backgroundStyle } = useContext(StyleContext);
+  const { backgroundStyle, fontScale } = useContext(StyleContext);
   const [selection, setSelection] = useState<string[]>(initialSelection || []);
   const [search, setSearch] = useState('');
   useNavigationButtonPressed(({ buttonId }) => {
@@ -86,16 +85,15 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
       return values;
     }
     const lowerCaseSearch = search.toLowerCase();
-    return filter(values, value =>
-      search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
+    return filter(values, value => search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
   }, [values, search]);
 
   const header = useMemo(() => {
     if (Platform.OS === 'android') {
-      return <View style={styles.searchBarPadding} />;
+      return <View style={{ height: searchBoxHeight(fontScale) }} />;
     }
     return null;
-  }, []);
+  }, [fontScale]);
 
   const selectedSet = useMemo(() => new Set(selection), [selection]);
   const data = useMemo(() => map(filteredValues, value => {
@@ -104,6 +102,7 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
       selected: selectedSet.has(value),
     };
   }), [filteredValues, selectedSet]);
+  const height = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox
       prompt={placeholder}
@@ -112,8 +111,8 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
     >
       { onScroll => (
         <FlatList
-          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
           contentContainerStyle={backgroundStyle}
           data={data}
           onScroll={onScroll}
@@ -130,9 +129,3 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
     </CollapsibleSearchBox>
   );
 }
-
-const styles = StyleSheet.create({
-  searchBarPadding: {
-    height: SEARCH_BAR_HEIGHT,
-  },
-});

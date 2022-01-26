@@ -27,6 +27,7 @@ export interface ThemeColors {
   L20: string;
   L30: string;
   D10: string;
+  D15: string;
   D20: string;
   D30: string;
   M: string;
@@ -64,6 +65,10 @@ export interface ThemeColors {
     curse: string;
     frost: string;
     [token: string]: string | undefined;
+  };
+  tokenFill: {
+    bless: string;
+    curse: string;
   };
   health: string;
   sanity: string;
@@ -137,6 +142,7 @@ export const LIGHT_THEME: ThemeColors = {
   L20: light20,
   L30: light30,
   D10: dark10,
+  D15: dark15,
   D20: dark20,
   D30: dark30,
   background: light30,
@@ -277,12 +283,17 @@ export const LIGHT_THEME: ThemeColors = {
     curse: '#3A2342',
     frost: '#3D3A63',
   },
+  tokenFill: {
+    bless: '#BFA640',
+    curse: '#7A2D6C',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
+  D15: light15,
   D20: light20,
   D30: light30,
   L10: dark10,
@@ -426,6 +437,10 @@ export const DARK_THEME: ThemeColors = {
     elder_sign: '#5496cc',
     bless: '#ebaa42',
     curse: '#b069c9',
-    frost: '#3D3A63',
+    frost: '#6559f7',
+  },
+  tokenFill: {
+    bless: '#ebaa42',
+    curse: '#b069c9',
   },
 };

@@ -2,13 +2,14 @@ import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodas
 import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
-import { ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
+import { PlayedScenario, ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
 import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
 import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner } from './types';
+import deepEqual from 'deep-equal';
 
 type CampaignLogEntry = {
   id: string;
@@ -61,6 +62,15 @@ interface LogEntryInvestigatorCount extends LogSection {
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies | LogEntryInvestigatorCount;
 export const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
+
+export class CampaignUpdateRequiredError implements Error {
+  name = 'CampaignUpdateRequiredError';
+  message: string;
+
+  constructor() {
+    this.message = t`An app update is required to access this campaign.`;
+  }
+}
 
 /**
  * Wrapper utility to provide structured access to campaigns.
@@ -157,17 +167,6 @@ export default class CampaignGuide {
     );
   }
 
-  getScenario(
-    id: string,
-    campaignState: CampaignStateHelper,
-    standalone?: boolean
-  ): ProcessedScenario | undefined {
-    return find(
-      this.processAllScenarios(campaignState, standalone).scenarios,
-      scenario => scenario.scenarioGuide.id === id
-    );
-  }
-
   campaignLogSections() {
     return this.campaign.campaign.campaign_log;
   }
@@ -190,57 +189,63 @@ export default class CampaignGuide {
 
   processAllScenarios(
     campaignState: CampaignStateHelper,
-    standalone?: boolean
-  ): ProcessedCampaign {
-    const scenarios: ProcessedScenario[] = [];
-    let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
-      [],
-      this,
-      campaignState
-    );
-    forEach(this.allScenarioIds(), scenarioId => {
-      if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
-        const scenario = this.findScenario(scenarioId);
-        const nextScenarios = this.actuallyProcessScenario(
-          scenario.id,
-          scenario.scenario,
-          campaignState,
-          campaignLog,
-          standalone
-        );
-        forEach(nextScenarios, scenario => {
-          scenarios.push(scenario);
-          campaignLog = scenario.latestCampaignLog;
-        });
-      }
-    });
-    let foundPlayable = false;
-    forEach(scenarios, scenario => {
-      if (scenario.type === 'playable') {
-        if (foundPlayable) {
-          scenario.type = 'locked';
-        } else {
+    standalone: boolean | undefined,
+    previousCampaign: ProcessedCampaign | undefined
+  ): [ProcessedCampaign | undefined, string | undefined] {
+    try {
+      const scenarios: ProcessedScenario[] = [];
+      let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
+        [],
+        this,
+        campaignState
+      );
+      forEach(this.allScenarioIds(), scenarioId => {
+        if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
+          const scenario = this.findScenario(scenarioId);
+          const nextScenarios = this.actuallyProcessScenario(
+            scenario.id,
+            scenario.scenario,
+            campaignState,
+            campaignLog,
+            standalone,
+            previousCampaign
+          );
+          forEach(nextScenarios, scenario => {
+            scenarios.push(scenario);
+            campaignLog = scenario.latestCampaignLog;
+          });
+        }
+      });
+      let foundPlayable = false;
+      forEach(scenarios, scenario => {
+        if (scenario.type === 'playable') {
+          if (foundPlayable) {
+            scenario.type = 'locked';
+          } else {
+            foundPlayable = true;
+          }
+        }
+        if (scenario.type === 'started') {
           foundPlayable = true;
         }
-      }
-      if (scenario.type === 'started') {
-        foundPlayable = true;
-      }
-    });
-    let foundUndoable = false;
-    forEach(reverse(slice(scenarios)), scenario => {
-      if (scenario.canUndo) {
-        if (foundUndoable) {
-          scenario.canUndo = false;
-        } else {
-          foundUndoable = true;
+      });
+      let foundUndoable = false;
+      forEach(reverse(slice(scenarios)), scenario => {
+        if (scenario.canUndo) {
+          if (foundUndoable) {
+            scenario.canUndo = false;
+          } else {
+            foundUndoable = true;
+          }
         }
-      }
-    });
-    return {
-      scenarios,
-      campaignLog,
-    };
+      });
+      return [{
+        scenarios,
+        campaignLog,
+      }, undefined];
+    } catch (e) {
+      return [undefined, e.message];
+    }
   }
 
   nextScenario(
@@ -264,7 +269,7 @@ export default class CampaignGuide {
           scenario => scenario.id === entry.scenario
         );
       if (!scenario) {
-        throw new Error(`Could not find side scenario: ${entry.scenario}`);
+        throw new CampaignUpdateRequiredError();
       }
       return {
         id: this.parseScenarioId(entry.scenario),
@@ -325,7 +330,7 @@ export default class CampaignGuide {
         scenario: sideScenario,
       };
     }
-    throw new Error(`Could not find scenario: ${encodedScenarioId}`);
+    throw new CampaignUpdateRequiredError();
   }
 
   parseScenarioId(encodedScenarioId: string): ScenarioId {
@@ -360,7 +365,8 @@ export default class CampaignGuide {
     scenario: Scenario,
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog,
-    standalone?: boolean
+    standalone: boolean | undefined,
+    previousCampaign: ProcessedCampaign | undefined
   ): ProcessedScenario[] {
     const scenarioGuide = new ScenarioGuide(
       id.encodedScenarioId,
@@ -369,6 +375,7 @@ export default class CampaignGuide {
       campaignLog,
       !!standalone
     );
+
     if (!campaignState.startedScenario(id.encodedScenarioId)) {
       if (
         (campaignLog.campaignData.result === 'lose' && scenarioGuide.scenarioType() !== 'epilogue') ||
@@ -394,21 +401,42 @@ export default class CampaignGuide {
         steps: [],
       }];
     }
-    const scenarioState = new ScenarioStateHelper(id.encodedScenarioId, campaignState);
-    const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
-    const firstResult: ProcessedScenario = {
-      type: executedScenario.inProgress ? 'started' : 'completed',
-      id,
-      scenarioGuide,
-      latestCampaignLog: executedScenario.latestCampaignLog,
-      canUndo: true,
-      closeOnUndo: campaignState.closeOnUndo(id.encodedScenarioId),
-      steps: executedScenario.steps,
-    };
-    if (executedScenario.inProgress) {
+    const previousScenario = find(previousCampaign?.scenarios, scenario => scenario.id.encodedScenarioId === id.encodedScenarioId);
+    const inputs = [
+      ...campaignState.scenarioEntries(id),
+      ...campaignState.linkedEntries(),
+    ];
+    let firstResult: PlayedScenario | undefined = undefined;
+    if (previousScenario &&
+      (previousScenario.type === 'completed' || previousScenario.type === 'started') &&
+      deepEqual(inputs, previousScenario.inputs)
+    ) {
+      // We have equality on all inputs that can dictate flow, so short circuit into using the previous result.
+      firstResult = {
+        ...previousScenario,
+        canUndo: true,
+      };
+    } else {
+      const scenarioState = new ScenarioStateHelper(id.encodedScenarioId, campaignState);
+      const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
+      firstResult = {
+        type: executedScenario.inProgress ? 'started' : 'completed',
+        id,
+        scenarioGuide,
+        latestCampaignLog: executedScenario.latestCampaignLog,
+        canUndo: true,
+        closeOnUndo: campaignState.closeOnUndo(id.encodedScenarioId),
+        steps: executedScenario.steps,
+        inputs,
+      };
+    }
+    if (!firstResult) {
+      return [];
+    }
+    if (firstResult.type === 'started') {
       return [firstResult];
     }
-    const latestCampaignLog = executedScenario.latestCampaignLog;
+    const latestCampaignLog = firstResult.latestCampaignLog;
     const nextScenario = this.nextScenario(
       campaignState,
       latestCampaignLog,
@@ -423,7 +451,9 @@ export default class CampaignGuide {
         nextScenario.id,
         nextScenario.scenario,
         campaignState,
-        latestCampaignLog
+        latestCampaignLog,
+        standalone,
+        previousCampaign,
       ),
     ];
   }

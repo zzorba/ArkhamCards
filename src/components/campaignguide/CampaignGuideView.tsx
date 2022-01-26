@@ -21,14 +21,18 @@ import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getDownloadLink } from './ScenarioComponent';
+import CampaignErrorView from './CampaignErrorView';
+import LoadingSpinner from '@components/core/LoadingSpinner';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
+import useProcessedCampaign from './useProcessedCampaign';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps;
+type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps & { upload?: boolean };
 
 function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
-  const { componentId, setCampaignServerId } = props;
+  const { componentId, setCampaignServerId, login, upload } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -62,7 +66,7 @@ function CampaignGuideView(props: Props) {
   const { campaignGuide, campaignState, campaign } = campaignData;
   useCampaignDeleted(componentId, campaign);
 
-  const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
+  const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
   const [alertDialog, showAlert] = useAlertDialog();
   const customData = campaignGuide.campaignCustomData();
   const downloadPressed = useCallback(() => {
@@ -98,6 +102,7 @@ function CampaignGuideView(props: Props) {
           setCampaignServerId={setCampaignServerId}
           showAlert={showAlert}
           deckActions={deckActions}
+          upload={upload}
         />
         <DeleteCampaignButton
           componentId={componentId}
@@ -108,7 +113,13 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, downloadPressed, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
+  if (!processedCampaign) {
+    if (processedCampaignError) {
+      return <CampaignErrorView message={processedCampaignError} />;
+    }
+    return <LoadingSpinner large />;
+  }
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
@@ -118,6 +129,7 @@ function CampaignGuideView(props: Props) {
         showCountDialog={showCountDialog}
         footerButtons={footerButtons}
         updateCampaignActions={updateCampaignActions}
+        login={login}
       />
       { alertDialog }
       { dialog }
@@ -126,7 +138,10 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext(CampaignGuideView, { rootView: true });
+export default withCampaignGuideContext(
+  withLoginState<Props>(CampaignGuideView, { noWrapper: true }),
+  { rootView: true }
+);
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -13,7 +13,7 @@ import { Deck, getDeckId, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/types/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
-import DeckRow from '@components/campaign/DeckRow';
+import LegacyDeckRow from '@components/campaign/LegacyDeckRow';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useToggles } from '@components/core/hooks';
@@ -108,7 +108,7 @@ export default function UpgradeDecksList({
         const deck = find(decks, deck => deck.investigator === investigator.code);
         if (deck) {
           return (
-            <DeckRow
+            <LegacyDeckRow
               key={deck.id.local ? deck.id.uuid : deck.id.id}
               lang={lang}
               campaign={campaign}

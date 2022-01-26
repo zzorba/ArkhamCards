@@ -116,21 +116,6 @@ msgstr ""
 msgid "Neutral"
 msgstr ""
 
-msgid "Guardian / Rogue"
-msgstr ""
-
-msgid "Rogue / Survivor"
-msgstr ""
-
-msgid "Survivor / Seeker"
-msgstr ""
-
-msgid "Seeker / Mystic"
-msgstr ""
-
-msgid "Mystic / Guardian"
-msgstr ""
-
 msgid "Weakness"
 msgstr ""
 
@@ -2474,12 +2459,6 @@ msgid ""
 "settings."
 msgstr ""
 
-#, javascript-format
-msgid "${ specialXp } resupply experience available"
-msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Unexpected file type"
 msgstr ""
 
@@ -4580,6 +4559,334 @@ msgstr ""
 msgid "Judgement · XX (Inverted)"
 msgstr ""
 
+msgid "The Fool · 0"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game earns +2 experience during "
+"its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game earns -2 experience during its "
+"resolution."
+msgstr ""
+
+msgid "The Magician · I"
+msgstr ""
+
+msgid "Each investigator begins the game with 3 addititonal resources"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 3 fewer resources, and cannot gain "
+"resources during their first turn."
+msgstr ""
+
+msgid "The High Priestess · II"
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get +1 [intellect]."
+msgstr ""
+
+msgid ""
+"During the first [intellect] test each investigator performs each round, "
+"they get -1 [intellect]."
+msgstr ""
+
+msgid "The Empress · III"
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get +1 [agility]."
+msgstr ""
+
+msgid ""
+"During the first [agility] test each investigator performs each round, they "
+"get -1 [agility]."
+msgstr ""
+
+msgid "The Emperor · IV"
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get +1 [combat]."
+msgstr ""
+
+msgid ""
+"During the first [combat] test each investigator performs each round, they "
+"get -1 [combat]."
+msgstr ""
+
+msgid "The Hierophant · V"
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get +1 [willpower]."
+msgstr ""
+
+msgid ""
+"During the first [willpower] test each investigator performs each round, "
+"they get -1 [willpower]."
+msgstr ""
+
+msgid "The Lovers · VI"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, adds it to their hand, and shuffles their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator searches their deck for an Ally "
+"asset, removes it from the game, and shuffles their deck."
+msgstr ""
+
+msgid "The Chariot · VII"
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 additional cards in their opening "
+"hand."
+msgstr ""
+
+msgid ""
+"Each investigator begins the game with 2 fewer cards in their opening hand, "
+"and cannot draw cards during their first turn."
+msgstr ""
+
+msgid "Strength · VIII"
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator may play an asset from their hand "
+"at -2 cost."
+msgstr ""
+
+msgid "During the first round of the game, each investigator cannot play assets."
+msgstr ""
+
+msgid "The Hermit · IX"
+msgstr ""
+
+msgid "Increase each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Decrease each investigator's maximum hand size by 3."
+msgstr ""
+
+msgid "Wheel of Fortune · X"
+msgstr ""
+
+msgid ""
+"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"investigator may cancel it and treat it as a 0 token instead."
+msgstr ""
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+
+msgid "Justice · XI"
+msgstr ""
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr ""
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr ""
+
+msgid "The Hanged Man · XII"
+msgstr ""
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+
+msgid "Death · XIII"
+msgstr ""
+
+msgid "Each investigator gets +1 health."
+msgstr ""
+
+msgid "Each investigator gets -1 health."
+msgstr ""
+
+msgid "Temperance · XIV"
+msgstr ""
+
+msgid "Each investigator gets +1 sanity."
+msgstr ""
+
+msgid "Each investigator gets -1 sanity."
+msgstr ""
+
+msgid "The Devil · XV"
+msgstr ""
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr ""
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr ""
+
+msgid "The Tower · XVI"
+msgstr ""
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr ""
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr ""
+
+msgid "The Star · XVII"
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr ""
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr ""
+
+msgid "The Moon · XVIII"
+msgstr ""
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr ""
+
+msgid "The Sun · XIX"
+msgstr ""
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+
+msgid "The World · XXI"
+msgstr ""
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr ""
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
+msgstr ""
+
+msgid "An app update is required to access this campaign."
+msgstr ""
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr ""
+
+msgid "Side Deck"
+msgstr ""
+
+msgid "Edit Side Deck"
+msgstr ""
+
+msgid "Creating campaign..."
+msgstr ""
+
+msgid "Creating standalone..."
+msgstr ""
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr ""
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Collection overlap"
+msgstr ""
+
+msgid "Deck overlap"
+msgstr ""
+
+msgid "Show collection overlap"
+msgstr ""
+
+msgid "Hide collection overlap"
+msgstr ""
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr ""
+
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr ""
+
+msgid "Show decks from other campaigns"
+msgstr ""
+
+msgid "Trait Choice"
+msgstr ""
+
+msgid "Blessed"
+msgstr ""
+
+msgid "Cursed"
+msgstr ""
+
+msgid "Blessed and Cursed"
+msgstr ""
+
+msgid "Select Option"
+msgstr ""
+
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6052,6 +6359,11 @@ msgctxt "narration"
 msgid "Playing audio"
 msgstr ""
 
+#, javascript-format
+msgctxt "narration"
+msgid "Audio speed: ${ rate }"
+msgstr ""
+
 msgctxt "campaign_log_entry"
 msgid "Other."
 msgstr ""
@@ -6082,6 +6394,10 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "trauma"
+msgid "None"
+msgstr ""
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -6092,10 +6408,6 @@ msgstr ""
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
-
-msgctxt "trauma"
-msgid "None"
 msgstr ""
 
 msgctxt "versus abbreviation"

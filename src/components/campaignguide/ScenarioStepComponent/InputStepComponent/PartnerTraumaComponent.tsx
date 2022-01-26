@@ -1,5 +1,5 @@
 import React, { useContext, useCallback, useMemo } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { find, filter, flatMap, forEach, map, findLast } from 'lodash';
 import { t } from 'ttag';
 
@@ -9,7 +9,7 @@ import useCardList from '@components/card/useCardList';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import space, { s } from '@styles/space';
+import space, { s, m } from '@styles/space';
 import Card from '@data/types/Card';
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import InputCounterRow from './InputCounterRow';
@@ -94,6 +94,7 @@ function PartnerTraumaRow({ partner, card, physical, mental, editable, incP, dec
 }
 export default function PartnerTraumaComponent({ id, input, text }: Props) {
   const { campaignLog } = useContext(ScenarioStepContext);
+  const { typography } = useContext(StyleContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const theChoices = useMemo(() => scenarioState.numberChoices(id), [scenarioState, id]);
   const editable = theChoices === undefined;
@@ -124,7 +125,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
   const [physical, incPhysical, decPhysical] = useCounters(initialPhysical);
   const [mental, incMental, decMental] = useCounters(initialMental);
   const [cards] = useCardList(codes, 'encounter');
-  const save = useCallback(() => {
+  const save = useCallback(async() => {
     const choices: NumberChoices = {};
     forEach(codes, c => {
       choices[c] = [
@@ -132,7 +133,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
         (mental[c] || 0) - (initialMental[c] || 0),
       ];
     });
-    scenarioState.setNumberChoices(id, choices)
+    await scenarioState.setNumberChoices(id, choices)
   }, [scenarioState, id, physical, mental, initialPhysical, initialMental, codes]);
   return (
     <>
@@ -146,7 +147,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
         editable={editable}
         onSubmit={save}
       >
-        { map(partners, partner => (
+        { partners.length ? map(partners, partner => (
           <PartnerTraumaRow
             key={partner.code}
             card={find(cards, c => c.code === partner.code)}
@@ -160,8 +161,28 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
             decM={decMental}
             status={campaignLog.traumaAndCardData(partner.code).storyAssets}
           />
-        )) }
+        )) : (
+          <View style={styles.row}>
+            <Text style={[typography.mediumGameFont, styles.nameText]}>
+              { t`None` }
+            </Text>
+          </View>
+        )}
       </InputWrapper>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  row: {
+    padding: s,
+    paddingLeft: m,
+    paddingRight: m,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  nameText: {
+    fontWeight: '600',
+  },
+});
