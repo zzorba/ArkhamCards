@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

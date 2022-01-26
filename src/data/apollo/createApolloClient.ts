@@ -28,14 +28,6 @@ const typePolicies: TypedTypePolicies = {
       campaign: {
         keyArgs: ['id', 'uuid'],
       },
-      previous_deck: {
-        merge(existing, incoming) {
-          if (!incoming) {
-            return null;
-          }
-          return existing;
-        },
-      },
     },
   },
   campaign: {

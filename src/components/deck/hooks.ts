@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
-import { useComponentVisible, useDeckWithFetch, usePlayerCards } from '@components/core/hooks';
+import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import { parseDeck } from '@lib/parseDeck';
@@ -23,6 +23,7 @@ import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { ShowAlert } from './dialogs';
 import COLORS from '@styles/colors';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
+import useSingleCard from '@components/card/useSingleCard';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -137,7 +138,18 @@ function useParsedDeckHelper(
 ): ParsedDeckResults {
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing ? deck : undefined, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
-  const cards = usePlayerCards(tabooSetId);
+  const cards = usePlayerCardsFunc(() => {
+    return uniq([
+      ...(deck ? [deck.investigator] : []),
+      ...keys(deckEdits?.side),
+      ...keys(deckEdits?.slots),
+      ...keys(deckEdits?.ignoreDeckLimitSlots),
+      ...(deckEdits?.meta.alternate_back ? [deckEdits.meta.alternate_back] : []),
+      ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
+      ...keys(deck?.previousDeck?.slots || {}),
+      ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+    ]);
+  }, [deckEdits, deck], tabooSetId);
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
@@ -196,7 +208,7 @@ export function useParsedDeckWithFetch(
   componentId: string,
   actions: DeckActions,
   initialMode?: 'upgrade' | 'edit',
-) {
+): ParsedDeckResults {
   const deck = useDeckWithFetch(id, actions);
   return useParsedDeckHelper(id, componentId, deck, { initialMode, fetchIfMissing: true });
 }
@@ -309,10 +321,9 @@ export function useDeckEditState({
   };
 }
 
-export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAlert, deckEditsRef, assignedWeaknesses, cards }: {
+export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAlert, deckEditsRef, assignedWeaknesses }: {
   componentId: string;
   id: DeckId;
-  cards: CardsMap | undefined;
   showAlert: ShowAlert;
   deck: LatestDeckT | undefined;
   campaignId?: CampaignId;
@@ -320,6 +331,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
   assignedWeaknesses?: string[];
 }): () => void {
   const { colors } = useContext(StyleContext);
+  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id || 0);
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
   const dispatch = useDispatch();
   const saveWeakness = useCallback((code: string, replaceRandomBasicWeakness: boolean) => {
@@ -345,7 +357,6 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
     if (!deckEditsRef.current) {
       return;
     }
-    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
@@ -375,7 +386,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
         },
       },
     });
-  }, [componentId, cards, deck, colors, deckEditsRef, saveWeakness]);
+  }, [componentId, investigator, colors, deckEditsRef, saveWeakness]);
   const drawWeakness = useCallback(() => {
     showAlert(
       t`Draw Basic Weakness`,
@@ -391,7 +402,6 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
     if (!campaignId || !deckEditsRef.current) {
       return;
     }
-    const investigator = deck && cards && cards[deck.deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
@@ -422,7 +432,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
         },
       },
     });
-  }, [componentId, campaignId, deck, cards, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
+  }, [componentId, campaignId, investigator, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
 
   return campaignId ? showCampaignWeaknessDialog : drawWeakness;
 }

@@ -8,6 +8,7 @@ import {
   DWL,
   RTDWL,
   PTC,
+  GOB,
   RTPTC,
   TFA,
   RTTFA,
@@ -67,6 +68,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case DARK_MATTER: return t`Dark Matter`;
     case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     case CROWN_OF_EGIL: return t`Crown of Egil`;
+    case GOB: return t`Guardians of the Abyss`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -324,6 +326,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case TDE: return [];
     case CUSTOM: return [];
     case STANDALONE: return [];
+    case GOB: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -349,6 +352,7 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tic: t`The Innsmouth Conspiracy`,
     eoe: t`Edge of the Earth`,
+    gob: t`Guardians of the Abyss`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,
@@ -387,6 +391,8 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
       return colors.campaign.tic;
     case EOE:
       return colors.campaign.eoe;
+    case GOB:
+      return colors.campaign.gob;
   }
 }
 
@@ -519,6 +525,12 @@ export function getCampaignLog(
           t`Expedition Team`,
         ],
       };
+    case GOB:
+      return {
+        sections: [
+          t`Campaign Notes`,
+        ],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -612,6 +624,12 @@ const CROWN_OF_EGIL_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 1, '-3': 2, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
 };
+const GOB_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, '-6': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 2, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, '-6': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+}
 
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
@@ -830,6 +848,8 @@ export function getChaosBag(
       return ALICE_IN_WONDERLAND_BAG[difficulty];
     case CROWN_OF_EGIL:
       return CROWN_OF_EGIL_BAG[difficulty];
+    case GOB:
+      return GOB_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

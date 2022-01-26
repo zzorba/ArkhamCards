@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
-import { filter, forEach, map, uniqBy, sortBy } from 'lodash';
+import { filter, forEach, flatMap, uniqBy, sortBy } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
 import { getPacksInCollection, AppState } from '@reducers';
-import { useToggles, useWeaknessCards } from '@components/core/hooks';
+import { useSettingValue, useToggles, useWeaknessCards } from '@components/core/hooks';
 
 export function ControlledWeaknessSetPackChooserComponent({
   componentId,
@@ -23,7 +23,7 @@ export function ControlledWeaknessSetPackChooserComponent({
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(
       uniqBy(
-        map(weaknessCards || [], card => card.pack_code),
+        flatMap(weaknessCards, card => card ? card.pack_code : []),
         code => code
       ));
     return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);
@@ -62,12 +62,12 @@ export default function WeaknessSetPackChooserComponent({
     return result;
   }, [packs]);
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const weaknessCards = useWeaknessCards();
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(
       uniqBy(
-        map(weaknessCards || [], card => card.pack_code),
+        flatMap(weaknessCards, card => card ? card.pack_code : []),
         code => code
       ));
     return sortBy(filter(packs, pack => weaknessPackSet.has(pack.code)), pack => pack.cycle_position);

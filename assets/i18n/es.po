@@ -6,13 +6,13 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
-"MIME-Version: 1.0\n"
+"mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"mime-version: 1.0\n"
-"x-generator: Poedit 3.0\n"
-"X-Generator: Poedit 3.0.1\n"
+"x-generator: Poedit 3.0.1\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -191,7 +191,7 @@ msgstr "Conectar a ArkhamDB"
 msgid "Decks"
 msgstr "Mazos"
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr "Ocultar mazos de ArkhamDB"
 
 msgid "New Deck"
@@ -815,10 +815,6 @@ msgstr "${traumaData.mental} Mental"
 
 msgid "None"
 msgstr "Ninguno"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
-msgstr "Personalizada"
 
 msgid "My Campaigns"
 msgstr "Mis Campañas"
@@ -1633,13 +1629,6 @@ msgstr "Peldaños del puente"
 msgid "Deck Type"
 msgstr "Tipo de Mazo"
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr "${investigator.deck_requirements.size } cartas"
-
-msgid "Unknown card: ${ req.code }"
-msgstr "Carta desconocida: ${ req.code }"
-
 msgid "Select Deck Size"
 msgstr "Selecciona tamaño del mazo"
 
@@ -2137,9 +2126,6 @@ msgstr "Apoyos de historia"
 
 msgid "Select Cards"
 msgstr "Selecciona cartas"
-
-msgid "Choose additional card"
-msgstr "Elige una carta adicional"
 
 msgid "Campaign Log"
 msgstr "Registro de campaña"
@@ -3298,9 +3284,6 @@ msgstr "¿Estás seguro de querer eliminar este escenario independiente?"
 
 msgid "Delete standalone"
 msgstr "Eliminar escenario independiente"
-
-msgid "Standalones"
-msgstr "Escenarios independientes"
 
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at arkhamcards@gmail.com, "
@@ -4654,12 +4637,6 @@ msgstr "Debilidades asignadas"
 msgid "Review and draw weaknesses"
 msgstr "Revisar y robar Debilidades"
 
-msgid "Save deck upgrade"
-msgstr "Guardar mejora mazo"
-
-msgid "Apply deck changes from previous scenario"
-msgstr "Aplicar cambios del mazo desde el escenario anterior"
-
 msgid "Choose expansions for basic weakness"
 msgstr "Elegir expansiones para Debilidades básicas"
 
@@ -4673,7 +4650,7 @@ msgid "Fix duplicates"
 msgstr "Arreglar duplicados"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr ""
+msgstr "¿Quieres que la aplicación te elija un Compañero al azar?"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
@@ -4710,7 +4687,7 @@ msgstr ""
 "a su mazo en la pantalla principal de la campaña, bajo su investigador."
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "Equipo de expedición"
 
 #, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, cross out ${ partnerName },"
@@ -4721,17 +4698,23 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"En la sección ${ sectionName } del registro de campaña, anota \"Desaparecido\" junto a "
+"${ partnerName },"
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"En la sección ${ sectionName } del registro de campaña, tacha \"Desaparecido\" junto a "
+"${ partnerName },"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next to "
 "${ partnerName }."
 msgstr ""
+"En la sección ${ sectionName } del registro de campaña, anota una marca junto a "
+"${ partnerName },"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
 msgstr "Puedes curarte 1 trauma físico o mental <i>(a tu elección)</i>"
@@ -4755,10 +4738,10 @@ msgid "If all investigatore are still alive."
 msgstr "Si todos los investigadores están vivos."
 
 msgid "The Entity"
-msgstr ""
+msgstr "La entidad"
 
 msgid "MIA"
-msgstr ""
+msgstr "Desaparecido"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
@@ -4787,55 +4770,55 @@ msgstr ""
 "jugarlo, para pagar su coste."
 
 msgid "Ice and Death: Part 1"
-msgstr ""
+msgstr "Hielo y muerte, parte 1"
 
 msgid "Ice and Death: Part 2"
-msgstr ""
+msgstr "Hielo y muerte, parte 2"
 
 msgid "Ice and Death: Part 3"
-msgstr ""
+msgstr "Hielo y muerte, parte 3"
 
 msgid "Restful Night"
-msgstr ""
+msgstr "Noche reposada"
 
 msgid "To the Forbidden Peaks"
-msgstr ""
+msgstr "Hacia los picos prohibidos"
 
 msgid "Endless Night"
-msgstr ""
+msgstr "Noche infinita"
 
 msgid "City of the Elder Things"
-msgstr ""
+msgstr "Ciudad de los Antiguos"
 
 msgid "Final Night"
-msgstr ""
+msgstr "Noche final"
 
 msgid "The Heart of Madness: Part 1"
-msgstr ""
+msgstr "El corazón de la locura, parte 1"
 
 msgid "The Heart of Madness: Part 2"
-msgstr ""
+msgstr "El corazón de la locura, parte 2"
 
 msgid "Fatal Mirage"
-msgstr ""
+msgstr "Espejismo letal"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "Espejismo letal - Recuerdos descubiertos"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "Espejismo letal - Recuerdos desterrados"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "Hielo y muerte - Lugares revelados"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "Hielo y muerte - Suministros recuperados"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "El corazón de la locura - Sellos colocados"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "El corazón de la locura - Sellos recuperados"
 
 msgid "Tarot card"
 msgstr "Carta de tarot"
@@ -5255,6 +5238,44 @@ msgstr "Bendecido o Maldito"
 
 msgid "Select Option"
 msgstr "Selecciona una opción"
+
+msgid "Move to deck"
+msgstr "Mover al mazo"
+
+msgid "Unarchive standalone"
+msgstr "Desarchivar escenario independiente"
+
+msgid "Archive standalone"
+msgstr "Archivar escenario independiente"
+
+msgid "Bless / Curse"
+msgstr "Bendición / Maldición"
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr "Parece que estás offline. Toca para comprobar la conexión."
+
+msgid "Guardians of the Abyss"
+msgstr "Guardianes del abismo"
+
+msgid "Two-part campaign variant"
+msgstr "Variante de campaña de 2 partes"
+
+msgid "Claim previous scenario XP"
+msgstr ""
+
+msgid "Apply changes from last completed scenario"
+msgstr ""
+
+msgid "Hide campaign decks"
+msgstr ""
+
+msgid "Select Standalone"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
+msgstr "Personalizado"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6712,6 +6733,10 @@ msgid_plural "Scenarios"
 msgstr[0] "Escenario"
 msgstr[1] "Escenarios"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr "Elige una adicional"
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "Pausar"
@@ -6731,7 +6756,7 @@ msgstr "Reproduciendo audio"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "Velocidad: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6778,6 +6803,22 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr "El Juicio · XX (Invertida)"
 
+msgctxt "campaign"
+msgid "Custom"
+msgstr "Personalizada"
+
+msgctxt "new_campaign_type"
+msgid "Campaigns"
+msgstr "Campañas"
+
+msgctxt "new_campaign_type"
+msgid "Standalones"
+msgstr "Escenarios independientes"
+
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "vs."
+
+msgctxt "scenario"
+msgid "Custom"
+msgstr "Personalizado"

@@ -14,6 +14,7 @@ import { parseBasicDeck } from '@lib/parseDeck';
 import space, { m, s } from '@styles/space';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import { useLatestDeckCards } from '@components/core/hooks';
 
 interface Props {
   step: XpCountStep;
@@ -24,12 +25,12 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
   deck: Deck;
   campaignLog: GuidedCampaignLog;
   previousDeck: Deck;
-  playerCards: CardsMap;
+  playerCards?: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const parsedDeck = useMemo(() => parseBasicDeck(deck, playerCards, previousDeck), [deck, playerCards, previousDeck]);
+  const parsedDeck = useMemo(() => playerCards ? parseBasicDeck(deck, playerCards, previousDeck) : undefined, [deck, playerCards, previousDeck]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
-  if (!parsedDeck) {
+  if (!parsedDeck || !playerCards) {
     return children(earnedXp);
   }
   const { changes } = parsedDeck;
@@ -42,9 +43,10 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   campaignLog: GuidedCampaignLog;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const { latestDecks, playerCards, spentXp } = useContext(CampaignGuideContext);
+  const { latestDecks, spentXp } = useContext(CampaignGuideContext);
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
+  const playerCards = useLatestDeckCards(deck);
   if (deck) {
     if (!deck.previousDeck) {
       return children(earnedXp);
@@ -52,8 +54,8 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
     return (
       <SpentDeckXpComponent
         deck={deck.deck}
-        campaignLog={campaignLog}
         playerCards={playerCards}
+        campaignLog={campaignLog}
         previousDeck={deck.previousDeck}
       >
         { children }

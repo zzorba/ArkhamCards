@@ -11,11 +11,11 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal ainda está vivo."
+            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
           },
           {
             "id": "house_burned",
-            "text": "sua casa foi queimada até o chão."
+            "text": "sua casa queimou."
           },
           {
             "id": "house_standing",
@@ -241,84 +241,84 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# foi morto no acidente de avião.",
+            "feminine_text": "#name# foi morta no acidente de avião."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Acampamento - Barrier Camp (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Acampamento - Broad Snowdrifts (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Acampamento - Crash Site (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Acampamento - Crystalline Cavern (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Acampamento - Frigid Cave (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Acampamento - Frozen Shores (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Acampamento - Icebreaker Landing (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Acampamento - Icy Wastes (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Acampamento - Precarious Ice Sheet (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Acampamento - Remnants of Lake's Camp (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Acampamento - Rocky Crags (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Acampamento - Snow Graves (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Acampamento - Treacherous Path (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Claypool confrontou seus demônios."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "os investigadores convenceram Dyer a permitir a expedição."
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Cookie confrontou seus demônios."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Danforth confrontou seus demônios."
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "os investigadores não acreditaram no relatório de Dyer."
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "A equipe descobriu um cofre antigo."
           },
           {
             "id": "dr_kensler_has_a_plan",
@@ -326,35 +326,35 @@
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "Dra. Kensler confrontou seus demônios."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "Dra. Kensler está prestes a entender."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "Dra. Kensler está compartilhando a pesquisa dela com você."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "Dra. Kensler entende a verdadeira natureza do miasma."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "Dra. Sinha confrontou seus demônios"
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Dyer confrontou seus demônios."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Eliyah confrontou seus demônios."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Ellsworth confrontou seus demônios."
           },
           {
             "id": "facility_was_destroyed",
@@ -370,27 +370,27 @@
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "A equipe fotografou os mapas astronômicos."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "a equipe leu o mapa."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "os investigadores exploraram os arredores da cidade."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "os investigadores exploraram a passagem bifurcada."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "os investigadores exploraram a passagem da montanha."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "a equipe estudou as esculturas murais.\""
           },
           {
             "id": "surviving_investigators",
@@ -406,19 +406,19 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Takada confrontou seus demônios."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "a equipe escapou por pouco da ice shelf."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "a equipe subiu ao the summit"
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "a equipe derrotou as criaturas caçadoras."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,23 +426,23 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "a equipe fugiu para as montanhas."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "a equipe encontrou outro caminho pelas montanhas."
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "a equipe encontrou o túnel escondido."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "a equipe foi guiada para o túnel oculto."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "o selo foi usado... incorretamente."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
@@ -806,7 +806,7 @@
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Manto de gelo precário"
           },
           {
             "id": "remnants_of_lakes_camp",
@@ -1060,6 +1060,59 @@
           {
             "id": "wooden_sledge",
             "text": "Wooden Sledge"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
           }
         ]
       }
@@ -1439,11 +1492,11 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal ainda está vivo."
+            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
           },
           {
             "id": "house_burned",
-            "text": "sua casa foi queimada até o chão."
+            "text": "sua casa queimou."
           },
           {
             "id": "house_standing",

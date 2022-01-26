@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
@@ -43,7 +44,10 @@ export default function ArkhamSwitch({ useGestureHandler, disabledColor, value, 
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {
-    onValueChange?.(!value);
+    if (onValueChange) {
+      ReactNativeHapticFeedback.trigger(!value ? 'impactMedium' : 'impactLight');
+      onValueChange(!value);
+    }
   }, [value, onValueChange]);
 
   const theCircleColor = getCircleColor(value, color, circleColor, colors);

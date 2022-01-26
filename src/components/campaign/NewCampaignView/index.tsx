@@ -41,7 +41,7 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
+import { useFlag, useNavigationButtonPressed, useSlots, useWeaknessCards } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
 import { useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
@@ -82,7 +82,7 @@ function getKeyName(
 
 function NewCampaignView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const cards = usePlayerCards();
+  const weaknessCards = useWeaknessCards();
   const dispatch: ThunkDispatch<AppState, unknown, NewLinkedCampaignAction | NewCampaignAction | NewStandaloneCampaignAction> = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [saving, setSaving] = useState(false);
@@ -189,10 +189,10 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [updateWeaknessAssignedCards]);
   const [alertDialog, showAlert] = useAlertDialog();
   const checkDeckForWeaknessPrompt = useCallback((deck: Deck) => {
-    if (cards) {
-      maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert);
+    if (weaknessCards) {
+      maybeShowWeaknessPrompt(deck, weaknessCards, weaknessAssignedCards, updateWeaknessAssigned, showAlert);
     }
-  }, [cards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
+  }, [weaknessCards, weaknessAssignedCards, updateWeaknessAssigned, showAlert]);
 
   const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkDeckForWeaknessPrompt);
   const investigatorAdded = useCallback((card: Card) => {
@@ -610,8 +610,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
             >
               <DeckSelector
                 componentId={componentId}
-                deckIds={map(selectedDecks, d => d.id)}
-                investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
+                investigatorToDeck={investigatorToDeck}
+                investigatorIds={investigatorIds}
                 deckRemoved={deckRemoved}
                 investigatorRemoved={guided ? investigatorRemoved : undefined}
               />

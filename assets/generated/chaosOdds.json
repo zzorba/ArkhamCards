@@ -3991,6 +3991,96 @@
     ]
   },
   {
+    "code": "87001",
+    "scenario": "machinations_through_time",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of story cards in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "prompt": "At Tindalos",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "A [[Scientist]] asset is at your location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of story cards in the victory display",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "At Tindalos",
+          "modified_value": {
+            "modifier": "auto_fail"
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "A [[Scientist]] asset is at your location",
+          "modified_value": {
+            "modifier": -6
+          }
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
     "code": "90004",
     "scenario": "read_or_die",
     "standard": [
@@ -4263,6 +4353,80 @@
         "token": "elder_thing",
         "value": {
           "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "90041",
+    "scenario": "red_tide_rising",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "modified_value": {
+            "modifier": -4
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "modified_value": {
+            "modifier": -5
+          }
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
         }
       }
     ]

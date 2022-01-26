@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach } from 'lodash';
+import { find, forEach, flatMap, uniqBy } from 'lodash';
 import {
   Linking,
   Platform,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
@@ -37,7 +37,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useInvestigatorCards, useNavigationButtonPressed, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useNavigationButtonPressed, useParallelInvestigators, useSettingValue, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -52,6 +52,8 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 export interface DeckDetailProps {
@@ -80,6 +82,21 @@ function formatTabooStart(date_start: string | undefined, locale: string) {
   return format(date, 'yyyy/MM/dd');
 }
 
+
+function useUpgradeCardsByName(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
+  const cardsByNameQuery = useMemo(() => {
+    const filterBuilder = new FilterBuilder('cards_by_name');
+    const query = filterBuilder.upgradeCardsByNameFilter(flatMap(cards, card => card.xp !== undefined ? card.real_name : []));
+    return query;
+  }, [cards]);
+  const [upgradeCards, loading] = useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+  return [
+    useMemo(() => uniqBy([...upgradeCards, ...cards], c => c.code), [upgradeCards, cards]),
+    loading,
+  ];
+}
+
+
 function DeckDetailView({
   componentId,
   id,
@@ -99,13 +116,13 @@ function DeckDetailView({
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const {
     deck,
     deckT,
-    cards,
+    cards: deckCards,
     deckEdits,
     deckEditsRef,
     visible,
@@ -126,46 +143,59 @@ function DeckDetailView({
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
   const tabooSet = useTabooSet(tabooSetId);
-  const investigators = useInvestigatorCards(tabooSetId);
-
-  const parallelInvestigators = useMemo(() => {
-    const investigator = deck?.investigator_code;
-    if (!investigator) {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, card => {
-      if (card && investigator && card.alternate_of_code === investigator) {
-        parallelInvestigators.push(card);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, deck?.investigator_code]);
+  const [parallelInvestigators] = useParallelInvestigators(deck?.investigator_code, tabooSetId);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(
       parallelInvestigators,
       card => card.code === deckEdits?.meta.alternate_front);
-    const investigatorFront = (altFront || (cards && deck && cards[deck.investigator_code]));
+    const investigatorFront = (altFront || (deckCards && deck && deckCards[deck.investigator_code]));
 
     const altBack = deckEdits?.meta.alternate_back && find(
       parallelInvestigators,
       card => card.code === deckEdits?.meta.alternate_back);
-    const investigatorBack = altBack || (deck && cards && cards[deck.investigator_code]);
+    const investigatorBack = altBack || (deck && deckCards && deckCards[deck.investigator_code]);
     return [investigatorFront, investigatorBack];
-  }, [deck, cards, deckEdits?.meta, parallelInvestigators]);
+  }, [deck, deckCards, deckEdits?.meta, parallelInvestigators]);
 
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-
-  const [cardsByName, bondedCardsByName] = useMemo(() => {
+  const flatDeckCards = useMemo(() => flatMap(deckCards, c =>
+    c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0) ? c : []), [deckCards, deckEdits]);
+  const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
+  const [bondedCards] = useBondedFromCards(flatDeckCards, tabooSetId);
+  const cards = useMemo(() => {
+    const r = {
+      ...deckCards,
+    };
+    forEach(bondedCards, card => {
+      r[card.code] = card;
+    });
+    forEach(possibleUpgradeCards, card => {
+      r[card.code] = card;
+    });
+    return r;
+  }, [bondedCards, deckCards, possibleUpgradeCards]);
+  const bondedCardsByName = useMemo(() => {
+    const r: {
+      [name: string]: Card[];
+    } = {};
+    forEach(bondedCards, card => {
+      if (card.bonded_name) {
+        if (r[card.bonded_name]) {
+          r[card.bonded_name].push(card);
+        } else {
+          r[card.bonded_name] = [card];
+        }
+      }
+    });
+    return r;
+  }, [bondedCards]);
+  const cardsByName = useMemo(() => {
     const cardsByName: {
       [name: string]: Card[];
     } = {};
-    const bondedCardsByName: {
-      [name: string]: Card[];
-    } = {};
-    forEach(cards, card => {
+    forEach(possibleUpgradeCards, card => {
       if (card) {
         const real_name = card.real_name.toLowerCase();
         if (cardsByName[real_name]) {
@@ -173,17 +203,10 @@ function DeckDetailView({
         } else {
           cardsByName[real_name] = [card];
         }
-        if (card.bonded_name) {
-          if (bondedCardsByName[card.bonded_name]) {
-            bondedCardsByName[card.bonded_name].push(card);
-          } else {
-            bondedCardsByName[card.bonded_name] = [card];
-          }
-        }
       }
     });
-    return [cardsByName, bondedCardsByName];
-  }, [cards]);
+    return cardsByName;
+  }, [possibleUpgradeCards]);
 
   const setMode = useCallback((mode: 'view' | 'edit' | 'upgrade') => {
     dispatch({
@@ -398,7 +421,6 @@ function DeckDetailView({
     showAlert,
     deckEditsRef,
     assignedWeaknesses: addedBasicWeaknesses,
-    cards,
   });
 
   const onEditSpecialPressed = useCallback(() => {

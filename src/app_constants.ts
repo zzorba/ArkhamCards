@@ -256,7 +256,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '-3': 3,
   '-4': 2,
   '-5': 2,
-  '-6': 1,
+  '-6': 2,
   '-7': 1,
   '-8': 1,
   frost: 8,

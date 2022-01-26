@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { filter, map, sum, values } from 'lodash';
+import React, { useContext, useMemo } from 'react';
+import { filter, sum, sumBy, values } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
 
 import { t } from 'ttag';
 import { WeaknessSet } from '@actions/types';
-import Card from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 import NavButton from '@components/core/NavButton';
 import StyleContext from '@styles/StyleContext';
 import { useWeaknessCards } from '@components/core/hooks';
@@ -19,7 +19,7 @@ interface Props {
 }
 
 
-function computeCount(set: WeaknessSet, allCards: Card[]) {
+function computeCount(set: WeaknessSet, allCards: CardsMap) {
   if (!set) {
     return {
       assigned: 0,
@@ -27,20 +27,20 @@ function computeCount(set: WeaknessSet, allCards: Card[]) {
     };
   }
   const packCodes = new Set(set.packCodes);
-  const cards = filter(allCards, card => packCodes.has(card.pack_code));
+  const cards = filter(allCards, card => !!card && packCodes.has(card.pack_code));
   return {
     assigned: sum(values(set.assignedCards)),
-    total: sum(map(cards, card => card.quantity)),
+    total: sumBy(cards, card => card ? (card.quantity || 0) : 0),
   };
 }
 
 export default function WeaknessSetSection({ weaknessSet, showDrawDialog }: Props) {
   const { typography } = useContext(StyleContext);
   const weaknessCards = useWeaknessCards();
-  if (!weaknessCards) {
+  const counts = useMemo(() => weaknessCards ? computeCount(weaknessSet, weaknessCards) : undefined, [weaknessSet, weaknessCards]);
+  if (!counts) {
     return null;
   }
-  const counts = computeCount(weaknessSet, weaknessCards);
   if (counts.total === 0) {
     return null;
   }

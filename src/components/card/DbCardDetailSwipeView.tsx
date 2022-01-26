@@ -21,7 +21,7 @@ import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards } from '@components/core/hooks';
+import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import Carousel from 'react-native-snap-carousel';
@@ -62,7 +62,7 @@ function DbCardDetailSwipeView(props: Props) {
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const showSpoilers = useSelector(getPackSpoilers);
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);

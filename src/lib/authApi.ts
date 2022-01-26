@@ -11,9 +11,10 @@ interface Params {
 
 function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
   const deck: ArkhamDbDeck = {
-    ...omit(apiDeck, ['previous_deck', 'next_deck']),
+    ...omit(apiDeck, ['previous_deck', 'next_deck', 'xp_spent']),
     local: undefined,
     uuid: undefined,
+    spentXp: apiDeck.xp_spent,
   };
   if (!deck.ignoreDeckLimitSlots) {
     deck.ignoreDeckLimitSlots = {};

@@ -8,9 +8,9 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { find, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
+import { find, flatMap, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
@@ -28,7 +28,7 @@ import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigatorCards, usePlayerCards, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -41,6 +41,8 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
+import useSingleCard from '@components/card/useSingleCard';
+import { useCardMap } from '@components/card/useCardList';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -66,7 +68,7 @@ function NewDeckOptionsDialog({
   const defaultTabooSetId = useTabooSetId();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const { backgroundStyle, colors, fontScale, typography, width } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
@@ -84,8 +86,6 @@ function NewDeckOptionsDialog({
     }
     return tabooSetIdChoice;
   }, [starterDeck, tabooSetIdChoice]);
-  const investigators = useInvestigatorCards(tabooSetId);
-  const cards = usePlayerCards(tabooSetId);
   const [metaState, setMeta] = useState<DeckMeta>({});
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     const newMeta = { ...metaState, [key]: value };
@@ -101,11 +101,12 @@ function NewDeckOptionsDialog({
       alternate_back: back,
     });
   }, [setMeta, metaState]);
-  const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
-  const investigatorFront = useMemo(() => (investigators && metaState.alternate_front) ? investigators[metaState.alternate_front] : investigator,
-    [investigator, investigators, metaState]);
-  const investigatorBack = useMemo(() => (investigators && metaState.alternate_back) ? investigators[metaState.alternate_back] : investigator,
-    [investigator, investigators, metaState]
+  const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
+  const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
+  const investigatorFront = useMemo(() => metaState.alternate_front ? find(parallelInvestigators, c => c.code === metaState.alternate_front) : investigator,
+    [investigator, parallelInvestigators, metaState]);
+  const investigatorBack = useMemo(() => metaState.alternate_back ? find(parallelInvestigators, c => c.code === metaState.alternate_back) : investigator,
+    [investigator, parallelInvestigators, metaState]
   );
 
   const defaultDeckName = useMemo(() => {
@@ -128,6 +129,15 @@ function NewDeckOptionsDialog({
     }
   }, [investigator]);
 
+  const requiredCardCodes = useMemo(() => {
+    return flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
+      return [
+        ...(cardRequirement.code ? [cardRequirement.code] : []),
+        ...(cardRequirement.alternates || []),
+      ];
+    });
+  }, [investigator]);
+  const [cards] = useCardMap(requiredCardCodes, 'player', tabooSetId);
   const requiredCardOptions = useMemo(() => {
     if (!cards || !investigator) {
       return [];

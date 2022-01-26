@@ -29,6 +29,8 @@ interface SettingsState {
   justifyContent?: boolean;
   sortRespectQuotes?: boolean;
   beta1?: boolean;
+  hideCampaignDecks?: boolean;
+  hideArkhamDbDecks?: boolean;
   playbackRate?: number | undefined;
 
   version?: number;
@@ -46,6 +48,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   justifyContent: false,
   sortRespectQuotes: false,
   version: CURRENT_REDUX_VERSION,
+  hideCampaignDecks: false,
 };
 
 type SettingAction =
@@ -133,6 +136,16 @@ export default function(
           return {
             ...state,
             beta1: action.value,
+          };
+        case 'hide_campaign_decks':
+          return {
+            ...state,
+            hideCampaignDecks: action.value,
+          };
+        case 'hide_arkhamdb_decks':
+          return {
+            ...state,
+            hideArkhamDbDecks: action.value,
           };
       }
       return state;

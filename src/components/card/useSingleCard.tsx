@@ -1,12 +1,36 @@
-import Card from '@data/types/Card';
 import { useMemo } from 'react';
+
+import { usePlayerCards } from '@components/core/hooks';
+import Card from '@data/types/Card';
 import useCardList from './useCardList';
 
+const EMPTY_CODES: string[] = [];
 export default function useSingleCard(code: undefined | string, type: 'player' | 'encounter', tabooSetOverride?: number): [Card | undefined, boolean] {
-  const cardList = useMemo(() => code ? [code] : [], [code]);
-  const [cards, loading] = useCardList(cardList, type, tabooSetOverride);
-  if (!cards || !cards.length || !cards[0]) {
+  const [playerCodes, encounterCodes] = useMemo(() => {
+    if (!code) {
+      return [EMPTY_CODES, EMPTY_CODES];
+    }
+    if (type === 'player') {
+      return [[code], EMPTY_CODES];
+    }
+    return [EMPTY_CODES, [code]];
+  }, [code, type]);
+  const playerCards = usePlayerCards(playerCodes, tabooSetOverride);
+  const [encounterCards, loading] = useCardList(encounterCodes, 'encounter', tabooSetOverride);
+  if (!code) {
+    return [undefined, false];
+  }
+  if (type === 'player') {
+    if (!playerCards) {
+      return [undefined, false];
+    }
+    if (!playerCards) {
+      return [undefined, true];
+    }
+    return [playerCards[code], false];
+  }
+  if (!encounterCards || !encounterCards.length || !encounterCards[0]) {
     return [undefined, loading];
   }
-  return [cards[0], loading];
+  return [encounterCards[0], loading];
 }

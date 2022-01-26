@@ -585,6 +585,7 @@ export function useAdjustXpDialog({
             onIncrement={incXp}
             onDecrement={decXp}
             count={xpAdjustment}
+            showZeroCount
             dialogStyle
             allowNegative
           />

@@ -22,7 +22,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards, usePressCallback } from '@components/core/hooks';
+import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
@@ -31,7 +31,7 @@ import ArkhamButtonIcon from '@icons/ArkhamButtonIcon';
 import WarningIcon from '@icons/WarningIcon';
 import { useDeckXpStrings } from '@components/deck/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import LanguageContext from '@lib/i18n/LanguageContext';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   lang: string;
@@ -51,10 +51,9 @@ interface DetailProps {
   deck: LatestDeckT;
   details?: ReactNode;
   lang: string;
-  eliminated: boolean;
 }
 
-function DetailLine({ text, icon, last }: { text: string[]; icon: React.ReactNode; last?: boolean }) {
+function DetailLine({ text, icon, last, content }: { text: string[]; icon: React.ReactNode; content?: React.ReactNode; last?: boolean }) {
   const { borderStyle, typography } = useContext(StyleContext);
   return (
     <View style={[
@@ -74,6 +73,7 @@ function DetailLine({ text, icon, last }: { text: string[]; icon: React.ReactNod
             { line }
           </Text>
         )) }
+        { content }
       </View>
 
     </View>
@@ -84,13 +84,17 @@ function DeckListRowDetails({
   investigator,
   deck,
   details,
-  eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
-  const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = usePlayerCards(deck.deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => (!details && deck && cards) ? parseBasicDeck(deck.deck, cards, deck.previousDeck) : undefined, [deck, cards, details]);
+  const cards = useLatestDeckCards(deck);
+  const parsedDeck = useMemo(() => {
+    if (!details && deck && cards) {
+      return parseBasicDeck(deck.deck, cards, deck.previousDeck);
+    }
+    return undefined;
+  }, [deck, cards, details]);
+  const traumaData = useMemo(() => deck.campaign?.trauma || {}, [deck.campaign]);
   const [mainXpString, xpDetailString] = useDeckXpStrings(parsedDeck);
   if (details) {
     return (
@@ -111,34 +115,25 @@ function DeckListRowDetails({
   }
   const xpString = xpDetailString ? `${mainXpString} · ${xpDetailString}` : mainXpString;
   const scenarioCount = deck.deck.scenarioCount || 0;
-  const traumaData = deck.campaign?.trauma;
   const campaignLines: string[] = [];
   if (deck.campaign) {
     campaignLines.push(deck.campaign.name);
   }
-  if (eliminated) {
-    campaignLines.push(investigator.traumaString(listSeperator, traumaData));
-  } else {
-    campaignLines.push(
-      ngettext(
-        msgid`${scenarioCount} scenario completed`,
-        `${scenarioCount} scenarios completed`,
-        scenarioCount
-      )
-    );
-  }
+  campaignLines.push(
+    ngettext(
+      msgid`${scenarioCount} scenario completed`,
+      `${scenarioCount} scenarios completed`,
+      scenarioCount
+    )
+  );
   return (
     <View style={styles.column}>
       <DetailLine
         icon={<ArkhamButtonIcon icon="campaign" color="dark" />}
         text={campaignLines}
         last={!xpString && !deck.deck.problem}
+        content={<TraumaSummary investigator={investigator} trauma={traumaData} hideNone textStyle={[typography.smallLabel, typography.italic, typography.dark, space.paddingTopXs]} />}
       />
-      { eliminated && (
-        <Text style={typography.small}>
-          { investigator.traumaString(listSeperator, traumaData) }
-        </Text>
-      ) }
       { !!xpString && (
         <DetailLine
           icon={<ArkhamButtonIcon icon="xp" color="dark" />}
@@ -250,7 +245,6 @@ export default function NewDeckListRow({
                   <DeckListRowDetails
                     deck={deck}
                     investigator={investigator}
-                    eliminated={eliminated}
                     lang={lang}
                     details={details}
                   />

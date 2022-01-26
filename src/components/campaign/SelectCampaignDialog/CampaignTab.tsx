@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { map, partition } from 'lodash';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import {
   CUSTOM,
@@ -9,6 +9,7 @@ import {
   TDE,
   TDEA,
   TDEB,
+  GOB,
   CampaignCycleCode,
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
@@ -16,8 +17,9 @@ import {
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import { useSettingValue } from '@components/core/hooks';
 
 export interface SelectCampagaignProps {
   campaigns: CampaignCycleCode[];
@@ -39,6 +41,8 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
       return t`Campaign A\nFour-part campaign`;
     case TDEB:
       return t`Campaign B\nFour-part campaign`;
+    case GOB:
+      return t`Two-part campaign variant`;
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:
@@ -51,7 +55,7 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
 
 export default function CampaignTab({ campaignChanged, campaigns, segment, includeCustom }: SelectCampagaignProps) {
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
 
   const onPress = useCallback((campaignCode: CampaignCycleCode, text: string) => {
     campaignChanged(campaignCode, text, GUIDED_CAMPAIGNS.has(campaignCode));
@@ -64,7 +68,7 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
         key={packCode}
         packCode={packCode}
         onPress={onPress}
-        text={campaignName(packCode) || t`Custom`}
+        text={campaignName(packCode) || c('campaign').t`Custom`}
         description={guideComingSoon ? t`Guide not yet available` : campaignDescription(packCode)}
       />
     );

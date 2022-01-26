@@ -100,7 +100,7 @@ function ButtonRow({ buttons, onSubmit, disabledText }: { buttons?: React.ReactN
       space.paddingTopXs,
       space.marginXs,
     ]}>
-      { !!buttons && <View style={!!onSubmit ? space.paddingRightS : undefined}>{buttons}</View> }
+      { !!buttons && <View style={[!!onSubmit ? space.paddingRightS : undefined, { flexShrink: 1 }]}>{buttons}</View> }
       { !!onSubmit && (
         <ActionButton
           title={disabledText || t`Continue`}

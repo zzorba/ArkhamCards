@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, filter, throttle } from 'lodash';
+import { find, throttle } from 'lodash';
 import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { useSelector } from 'react-redux';
@@ -16,17 +16,15 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { NavigationProps } from '@components/nav/types';
-import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed, useSettingFlag } from '@components/core/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import space, { s } from '@styles/space';
+import MiniDeckT from '@data/interfaces/MiniDeckT';
 
-function searchOptionsHeight(fontScale: number) {
-  return 20 + (fontScale * 20 + 8) + 12;
-}
 
 function MyDecksView({ componentId }: NavigationProps) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const { myDecks } = useSelector(getMyDecksState);
-  const [localDecksOnly, toggleLocalDecksOnly] = useFlag(false);
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       Navigation.showModal({
@@ -54,27 +52,52 @@ function MyDecksView({ componentId }: NavigationProps) {
   const deckNavClicked = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
     showDeckModal(deck.id, deck.deck, deck.campaign?.id, colors, investigator);
   }, [colors]);
+  const [localDecksOnly, toggleLocalDecksOnly] = useSettingFlag('hide_arkhamdb_decks');
+  const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 
-  const searchOptionControls = useMemo(() => {
+  const [searchOptionControls, searchOptionsHeight] = useMemo(() => {
     const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
     const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
-    if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
+    const hasNonCampaignDeck = !!find(myDecks, deckId => !deckId.campaign_id);
+    const hasCampaignDeck = !!find(myDecks, deckId => deckId.campaign_id);
+    const hideLocalDeckToggle = (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck));
+    const hideCampaignDeckToggle = (!hideCampaignDecks && !(hasCampaignDeck && hasNonCampaignDeck));
+    if (hideLocalDeckToggle && hideCampaignDeckToggle) {
       // need to have both to show the toggle.
-      return null;
+      return [null, 0];
     }
-    return (
-      <View style={styles.row}>
-        <Text style={[typography.small, styles.searchOption]}>
-          { t`Hide ArkhamDB Decks` }
-        </Text>
-        <ArkhamSwitch
-          useGestureHandler
-          value={localDecksOnly}
-          onValueChange={toggleLocalDecksOnly}
-        />
-      </View>
-    );
-  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly]);
+    return [
+      (
+        <View style={[styles.column, space.paddingBottomS]} key="controls">
+          { !hideLocalDeckToggle && (
+            <View style={styles.row}>
+              <Text style={[typography.small, styles.searchOption]}>
+                { t`Hide ArkhamDB decks` }
+              </Text>
+              <ArkhamSwitch
+                useGestureHandler
+                value={localDecksOnly}
+                onValueChange={toggleLocalDecksOnly}
+              />
+            </View>
+          ) }
+          { !hideCampaignDeckToggle && (
+            <View style={styles.row}>
+              <Text style={[typography.small, styles.searchOption]}>
+                { t`Hide campaign decks` }
+              </Text>
+              <ArkhamSwitch
+                useGestureHandler
+                value={hideCampaignDecks}
+                onValueChange={toggleHideCampaignDecks}
+              />
+            </View>
+          ) }
+        </View>
+      ),
+      20 + 12 + s + (fontScale * 20 + 8) * ((hideCampaignDeckToggle || hideLocalDeckToggle) ? 1 : 2),
+    ];
+  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
 
   const customFooter = useMemo(() => {
     return (
@@ -88,22 +111,25 @@ function MyDecksView({ componentId }: NavigationProps) {
     );
   }, [showNewDeckDialog]);
 
-  const onlyDecks = useMemo(() => {
-    if (localDecksOnly) {
-      return filter(myDecks, deckId => deckId.id.local);
+  const filterDeck = useCallback((deck: MiniDeckT) => {
+    if (localDecksOnly && !deck.id.local) {
+      return 'remote';
+    }
+    if (hideCampaignDecks && deck.campaign_id) {
+      return 'campaign';
     }
     return undefined;
-  }, [myDecks, localDecksOnly]);
+  }, [localDecksOnly, hideCampaignDecks]);
 
   return (
     <MyDecksComponent
       searchOptions={{
         controls: searchOptionControls,
-        height: searchOptionsHeight(fontScale),
+        height: searchOptionsHeight,
       }}
       customFooter={customFooter}
       deckClicked={deckNavClicked}
-      onlyDecks={onlyDecks}
+      filterDeck={filterDeck}
     />
   );
 }
@@ -134,6 +160,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    flex: 1,
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
     flex: 1,
   },
   searchOption: {

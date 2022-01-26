@@ -21,7 +21,7 @@ import { addScenarioResult } from '../actions';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaignInvestigators, useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
@@ -43,10 +43,9 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch = useDispatch();
-  const investigators = useInvestigatorCards();
 
   const campaign = useCampaign(id);
-  const [allInvestigators] = useCampaignInvestigators(campaign, investigators);
+  const [allInvestigators] = useCampaignInvestigators(campaign);
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
   const [xp, setXp] = useState(0);

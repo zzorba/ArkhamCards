@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "Du kennst Xzharahs Pläne."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "Die Bruderschaft verfolgt ihre Pläne ungestört weiter."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "Der Fluch des Schlafs wurde gebrochen."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "Träumer im Abgrund (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Entkommene Agenten der Bruderschaft: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "Der Jüngste Tag steht bevor."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "Der Abgrund wurde gerettet."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

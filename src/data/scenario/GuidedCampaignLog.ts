@@ -789,7 +789,7 @@ export default class GuidedCampaignLog {
   }
 
   effectiveWeaknessSet(
-    campaignInvestigators: Card[],
+    campaignInvestigators: Card[] | undefined,
     latestDecks: LatestDecks,
     campaignWeaknessSet: WeaknessSet,
     cards: CardsMap,

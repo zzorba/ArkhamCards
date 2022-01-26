@@ -1,6 +1,7 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
@@ -205,6 +206,12 @@ export default function DeckButton({
   const topTextHeight = 22 * Math.max(1.0, fontScale);
   const textHeight = (detail ? 10 : 0) * Math.max(1.0, fontScale) + topTextHeight;
   const height = textHeight + s * 2 + xs * 2;
+  const wrappedOnPress = useCallback(() => {
+    if (onPress) {
+      ReactNativeHapticFeedback.trigger('impactLight');
+      onPress();
+    }
+  }, [onPress]);
   return (
     <Ripple
       disabled={disabled}
@@ -221,7 +228,7 @@ export default function DeckButton({
         bottomMargin ? { marginBottom: bottomMargin } : undefined,
         topMargin ? { marginTop: topMargin } : undefined,
       ]}
-      onPress={onPress}
+      onPress={onPress ? wrappedOnPress : undefined}
       rippleColor={rippleColor[color]}
     >
       <View style={[

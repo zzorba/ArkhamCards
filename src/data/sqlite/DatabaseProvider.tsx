@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Database from './Database';
 import DatabaseContext, { PlayerCards } from './DatabaseContext';
 import { AppState } from '@reducers';
-import { CardsMap } from '../types/Card';
 import TabooSet from '../types/TabooSet';
 
 interface OwnProps {
@@ -20,9 +19,6 @@ type Props = OwnProps & ReduxProps;
 let theDatabase: Database | null = null;
 
 interface State {
-  investigatorCardsByTaboo: {
-    [tabooSet: string]: CardsMap;
-  };
   playerCardsByTaboo: {
     [tabooSet: string]: PlayerCards;
   };
@@ -42,7 +38,6 @@ class DatabaseProvider extends React.Component<Props, State> {
     }
     theDatabase.addListener(this._playerCardsChanged);
     this.state = {
-      investigatorCardsByTaboo: theDatabase.investigatorState || {},
       playerCardsByTaboo: theDatabase.playerState?.playerCards || {},
       tabooSets: theDatabase.playerState?.tabooSets || [],
     };
@@ -55,7 +50,6 @@ class DatabaseProvider extends React.Component<Props, State> {
   _playerCardsChanged = () => {
     if (theDatabase) {
       this.setState({
-        investigatorCardsByTaboo: theDatabase.investigatorState || {},
         playerCardsByTaboo: theDatabase.playerState?.playerCards || {},
         tabooSets: theDatabase.playerState?.tabooSets || [],
       });

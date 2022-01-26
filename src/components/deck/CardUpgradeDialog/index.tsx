@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
+import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t, ngettext, msgid } from 'ttag';
 
@@ -11,17 +11,17 @@ import CardUpgradeOption from './CardUpgradeOption';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
-import { useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
+import { useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
 import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -59,7 +59,13 @@ export default function CardUpgradeDialog({
   investigator,
   id,
 }: Props) {
-  const cards = usePlayerCards();
+  const cards = useMemo(() => {
+    const r: CardsMap = {};
+    forEach(cardsByName, c => {
+      r[c.code] = c;
+    });
+    return r;
+  }, [cardsByName]);
   const deckEdits = useSimpleDeckEdits(id);
   const originalCodes = useMemo(() => {
     if (!deckEdits?.slots) {
@@ -72,7 +78,7 @@ export default function CardUpgradeDialog({
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
   const backPressed = useCallback(() => {
@@ -120,9 +126,9 @@ export default function CardUpgradeDialog({
     }
     const possibleDecrement = find(reverse(namedCards), card => {
       return (
-        !!cards &&
         card.code !== code && deckEdits.slots[card.code] > 0 &&
         (deckEdits.ignoreDeckLimitSlots[card.code] || 0) < deckEdits.slots[card.code] &&
+        !!cards &&
         (card.xp || 0) < (cards[code]?.xp || 0)
       );
     });

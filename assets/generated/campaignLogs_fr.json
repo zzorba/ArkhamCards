@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# a été Pris par l'Abîme",
+            "feminine_text": "#name# a été Prise par l'Abîme"
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "vous êtes au courant des plans de Xzharah."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "les machinations de la Fraternité se poursuivent sans relâche."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "la malédiction de torpeur a été levée"
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "Rêveurs dans l'abîme (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Agents de la Fraternité qui se sont échappés : #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "le Jour Fatidique est arrivé."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "vous avez rejoint les forces de Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "l'Abîme a été sauvé"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {
@@ -2351,7 +2404,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "les investigateus ont obtenu l'assistance d'une autre expédition."
+            "text": "les investigateurs ont obtenu l'assistance d'une autre expédition."
           },
           {
             "id": "relic_is_missing",
@@ -2465,21 +2518,21 @@
       {
         "id": "key_of_eztli",
         "name": "Clé des Eztli",
-        "description": "La Clé des Eztli",
+        "description": "La Clé des Eztli.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "sticky_goop",
         "name": "Substance visqueuse",
-        "description": "La substance visqueuse que vous avez trouvé dnas le Marais Souterrain",
+        "description": "La substance visqueuse que vous avez trouvée dans le Marais Souterrain.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mystérieux sceptre",
-        "description": "Un mysterieux sceptre que vous avez trouvé dans la salle du trône.",
+        "name": "Mystérieux Sceptre",
+        "description": "Un mystérieux sceptre que vous avez trouvé dans la salle du trône.",
         "cost": 0,
         "multiple": false
       },

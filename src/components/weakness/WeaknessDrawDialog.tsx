@@ -7,10 +7,10 @@ import WeaknessDrawComponent from './WeaknessDrawComponent';
 import { t } from 'ttag';
 import { Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import { getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { xs } from '@styles/space';
-import { useFlag, usePlayerCards, useSlots, useWeaknessCards } from '@components/core/hooks';
+import { useFlag, useSettingValue, useSlots, useWeaknessCards } from '@components/core/hooks';
 import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
@@ -28,10 +28,9 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
   const [slots, updateSlots] = useSlots(originalSlots);
   const [saving, setSaving] = useState(false);
   const [pendingNextCard, setPendingNextCard] = useState<string | undefined>();
-  const cards = usePlayerCards();
   const weaknessCards = useWeaknessCards();
   const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
 
   const saveDrawnCard = useCallback(() => {
     if (pendingNextCard) {
@@ -83,13 +82,16 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
   const weaknessSetFromCollection = useMemo(() => {
     const packCodes: { [pack_cod: string]: number } = {};
     forEach(weaknessCards, weaknessCard => {
+      if (!weaknessCard) {
+        return;
+      }
       if (ignore_collection || in_collection[weaknessCard.pack_code] || weaknessCard.pack_code === 'core') {
         packCodes[weaknessCard.pack_code] = 1;
       }
     });
     const assignedCards: Slots = {};
     forEach(slots, (count, code) => {
-      const card = cards && cards[code];
+      const card = weaknessCards && weaknessCards[code];
       if (card && card.isBasicWeakness()) {
         assignedCards[code] = count;
       }
@@ -98,7 +100,7 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
       packCodes: keys(packCodes),
       assignedCards,
     };
-  }, [in_collection, ignore_collection, weaknessCards, cards, slots]);
+  }, [in_collection, ignore_collection, weaknessCards, slots]);
 
   return (
     <WeaknessDrawComponent

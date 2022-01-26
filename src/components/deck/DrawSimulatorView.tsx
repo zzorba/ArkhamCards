@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
+import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -14,7 +14,7 @@ import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import StyleContext from '@styles/StyleContext';
-import { useEffectUpdate, usePlayerCards } from '@components/core/hooks';
+import { useEffectUpdate, usePlayerCardsFunc } from '@components/core/hooks';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -45,7 +45,7 @@ function Button({ title, disabled, onPress }: { title: string; disabled?: boolea
 
 export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const cards = usePlayerCards();
+  const cards = usePlayerCardsFunc(() => keys(slots), [slots], 0);
   const shuffleFreshDeck = useCallback(() => {
     return shuffle(
       flatMap(

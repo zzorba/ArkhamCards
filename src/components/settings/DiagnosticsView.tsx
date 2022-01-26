@@ -28,8 +28,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { setBeta1 } from './actions';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
+import { useSettingFlag } from '@components/core/hooks';
 
 
 function goOffline() {
@@ -51,7 +51,7 @@ export default function DiagnosticsView() {
   const { db } = useContext(DatabaseContext);
   const [schemaCleared, setSchemaCleared] = useState(false);
   const [sqliteVersion, setSqliteVesion] = useState(t`Loading`);
-  const hasBetaAccess = useSelector((state: AppState) => !!state.settings.beta1);
+  const [hasBetaAccess, setBeta1] = useSettingFlag('beta1');
   const { colors } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -74,11 +74,11 @@ export default function DiagnosticsView() {
 
   const submitBetaCode = useCallback(async(code: string) => {
     if (code === THE_CODE) {
-      dispatch(setBeta1(true));
+      setBeta1(true);
       return undefined;
     }
     return 'That code is not correct. Contact arkhamcards@gmail.com to join the beta testing program.';
-  }, [dispatch]);
+  }, [setBeta1]);
 
   const [betaDialog, showBetaDialog] = useSimpleTextDialog({
     title: `Beta test program`,

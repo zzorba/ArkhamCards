@@ -19,7 +19,6 @@ import SocialBlock from './SocialBlock';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { requestFetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets, setColorblind, setJustifyContent, setSortQuotes } from './actions';
 import { prefetch } from '@lib/auth';
 import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
 import StyleContext from '@styles/StyleContext';
@@ -35,6 +34,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
+import { useSettingFlag, useSettingValue } from '@components/core/hooks';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -57,7 +57,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const reduxMigrationCurrent = useSelector((state: AppState) => state.settings.version === CURRENT_REDUX_VERSION);
 
   const packsInCollection = useSelector(getPacksInCollection);
-  const ignoreCollection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignoreCollection = useSettingValue('ignore_collection');
   const spoilerSettings = useSelector(getPackSpoilers);
   const packs = useSelector(getAllPacks);
   const summarizePacks = useCallback((selection: { [pack: string]: boolean | undefined }, ignoreCollection?: boolean) => {
@@ -74,12 +74,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [packs]);
   const collectionSummary = useMemo(() => summarizePacks(packsInCollection, ignoreCollection), [summarizePacks, packsInCollection, ignoreCollection]);
   const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
-  const showCardsingleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const alphabetizeEncounterSets = useSelector((state: AppState) => state.settings.alphabetizeEncounterSets || false);
-  const colorblind = useSelector((state: AppState) => state.settings.colorblind || false);
+  const [showCardSingleCardView, setSingleCardView] = useSettingFlag('single_card');
+  const [alphabetizeEncounterSets, setAlphabetizeEncounterSets] = useSettingFlag('alphabetize');
+  const [colorblind, setColorblind] = useSettingFlag('colorblind');
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
-  const justifyContent = useSelector((state: AppState) => !!state.settings.justifyContent);
-  const sortIgnoreQuotes = useSelector((state: AppState) => !state.settings.sortRespectQuotes);
+  const [justifyContent, setJustifyContent] = useSettingFlag('justify');
+  const [sortRespectQuotes, setSortRespectQuotes] = useSettingFlag('sort_quotes');
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
   const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
@@ -140,24 +140,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [cardsLoading, cardsError]);
 
   const swipeBetweenCardsChanged = useCallback((value: boolean) => {
-    dispatch(setSingleCardView(!value));
-  }, [dispatch]);
+    setSingleCardView(!value);
+  }, [setSingleCardView]);
 
-  const alphabetizeEncounterSetsChanged = useCallback((value: boolean) => {
-    dispatch(setAlphabetizeEncounterSets(value));
-  }, [dispatch]);
-
-  const colorblindChanged = useCallback((value: boolean) => {
-    dispatch(setColorblind(value));
-  }, [dispatch]);
-
-  const sortQuotesChanged = useCallback((value: boolean) => {
-    dispatch(setSortQuotes(!value));
-  }, [dispatch]);
-
-  const justifyContentChanged = useCallback((value: boolean) => {
-    dispatch(setJustifyContent(value));
-  }, [dispatch]);
+  const setSortIgnoreQuotes = useCallback((value: boolean) => {
+    setSortRespectQuotes(!value);
+  }, [setSortRespectQuotes]);
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -216,32 +204,32 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 icon="show"
                 title={t`Color blind friendly icons`}
                 value={colorblind}
-                onValueChange={colorblindChanged}
+                onValueChange={setColorblind}
               />
               <DeckCheckboxButton
                 icon="sort-by-alpha"
                 title={t`Sort ignores punctuation`}
-                value={sortIgnoreQuotes}
-                onValueChange={sortQuotesChanged}
+                value={!sortRespectQuotes}
+                onValueChange={setSortIgnoreQuotes}
               />
               <DeckCheckboxButton
                 icon="copy"
                 title={t`Swipe between card results`}
-                value={!showCardsingleCardView}
+                value={!showCardSingleCardView}
                 onValueChange={swipeBetweenCardsChanged}
               />
               <DeckCheckboxButton
                 icon="sort-by-alpha"
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
-                onValueChange={alphabetizeEncounterSetsChanged}
+                onValueChange={setAlphabetizeEncounterSets}
               />
               { SHOW_JUSTIFY && (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
                 <DeckCheckboxButton
                   icon="menu"
                   title={t`Justify text`}
                   value={justifyContent}
-                  onValueChange={justifyContentChanged}
+                  onValueChange={setJustifyContent}
                 />
               ) }
               { lang === 'de' && (

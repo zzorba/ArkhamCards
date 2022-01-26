@@ -7,7 +7,7 @@ import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { useMyDecksRemote, useRemoteCampaigns, useCampaignGuideStateRemote, useLatestDeckRemote, useCampaignRemote, useDeckFromRemote, useCampaignDeckFromRemote, useChaosBagResultsFromRemote, useDeckHistoryRemote } from '@data/remote/hooks';
 import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
 import { useCampaignFromRedux, useCampaignGuideFromRedux, useChaosBagResultsRedux, useDeckFromRedux, useDeckHistoryRedux, useLatestDeckRedux, useMyDecksRedux } from './local/hooks';
@@ -18,6 +18,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
+import { usePlayerCards } from '@components/core/hooks';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -61,13 +62,13 @@ export function useCampaign(campaignId: CampaignId | undefined, live?: boolean):
     return remoteCampaign;
   }, [reduxCampaign, remoteCampaign, campaignId]);
 }
-
-const NO_INVESTIGATORS: Card[] = [];
-export function useCampaignInvestigators(campaign: undefined | SingleCampaignT, investigators: CardsMap | undefined): [Card[], boolean] {
+const NO_INVESTIGATOR_CODES: string[] = [];
+export function useCampaignInvestigators(campaign: undefined | SingleCampaignT): [Card[] | undefined, boolean] {
+  const investigators = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
   const campaignInvestigators = campaign?.investigators;
   return useMemo(() => {
     if (!campaignInvestigators || !investigators) {
-      return [NO_INVESTIGATORS, true];
+      return [undefined, true];
     }
     return [flatMap(campaignInvestigators, i => investigators[i] || []), false];
   }, [campaignInvestigators, investigators]);

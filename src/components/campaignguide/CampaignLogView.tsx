@@ -51,7 +51,7 @@ export default function CampaignLogView({
   const current = !!scenarioContext?.processedScenario.canUndo;
   const scenarionName = scenarioContext?.processedScenario.scenarioGuide.scenarioName();
   useEffect(() => {
-    if (!current) {
+    if (!current && scenarionName) {
       Navigation.mergeOptions(componentId, {
         topBar: {
           title: {

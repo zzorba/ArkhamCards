@@ -190,7 +190,7 @@ msgstr ""
 msgid "Decks"
 msgstr ""
 
-msgid "Hide ArkhamDB Decks"
+msgid "Hide ArkhamDB decks"
 msgstr ""
 
 msgid "New Deck"
@@ -813,10 +813,6 @@ msgid "${ traumaData.mental } Mental"
 msgstr ""
 
 msgid "None"
-msgstr ""
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "Custom"
 msgstr ""
 
 msgid "My Campaigns"
@@ -1560,13 +1556,6 @@ msgstr ""
 msgid "Deck Type"
 msgstr ""
 
-#, javascript-format
-msgid "${ investigator.deck_requirements.size } Cards"
-msgstr ""
-
-msgid "Unknown card: ${ req.code }"
-msgstr ""
-
 msgid "Select Deck Size"
 msgstr ""
 
@@ -2048,9 +2037,6 @@ msgid "Story assets"
 msgstr ""
 
 msgid "Select Cards"
-msgstr ""
-
-msgid "Choose additional card"
 msgstr ""
 
 msgid "Campaign Log"
@@ -3110,9 +3096,6 @@ msgid "Are you sure you want to delete this standalone?"
 msgstr ""
 
 msgid "Delete standalone"
-msgstr ""
-
-msgid "Standalones"
 msgstr ""
 
 msgid ""
@@ -4506,12 +4489,6 @@ msgstr ""
 msgid "Uploading campaign"
 msgstr ""
 
-msgid "Save deck upgrade"
-msgstr ""
-
-msgid "Apply deck changes from previous scenario"
-msgstr ""
-
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
@@ -4885,6 +4862,44 @@ msgid "Blessed and Cursed"
 msgstr ""
 
 msgid "Select Option"
+msgstr ""
+
+msgid "Move to deck"
+msgstr ""
+
+msgid "Unarchive standalone"
+msgstr ""
+
+msgid "Archive standalone"
+msgstr ""
+
+msgid "Bless / Curse"
+msgstr ""
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr ""
+
+msgid "Guardians of the Abyss"
+msgstr ""
+
+msgid "Two-part campaign variant"
+msgstr ""
+
+msgid "Claim previous scenario XP"
+msgstr ""
+
+msgid "Apply changes from last completed scenario"
+msgstr ""
+
+msgid "Hide campaign decks"
+msgstr ""
+
+msgid "Select Standalone"
+msgstr ""
+
+#. console.log(`${await cards.count() } cards after delete`);
+msgctxt "investigator"
+msgid "Custom"
 msgstr ""
 
 #, javascript-format
@@ -6343,6 +6358,10 @@ msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr ""
+
 msgctxt "narration"
 msgid "Pause"
 msgstr ""
@@ -6410,6 +6429,22 @@ msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
 msgstr ""
 
+msgctxt "campaign"
+msgid "Custom"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Campaigns"
+msgstr ""
+
+msgctxt "new_campaign_type"
+msgid "Standalones"
+msgstr ""
+
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "scenario"
+msgid "Custom"
 msgstr ""

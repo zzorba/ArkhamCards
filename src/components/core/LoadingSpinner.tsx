@@ -6,7 +6,7 @@ import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 
 export default function LoadingSpinner({ large, inline, message }: { large?: boolean; inline?: boolean; message?: string }) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const spinner = large ? <ArkhamLoadingSpinner autoPlay loop large /> : <ActivityIndicator size="small" color={colors.lightText} animating />;
+  const spinner = large ? <ArkhamLoadingSpinner autoPlay loop size="large" /> : <ActivityIndicator size="small" color={colors.lightText} animating />;
   if (inline) {
     return (
       <View style={styles.inline}>

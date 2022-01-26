@@ -23,7 +23,7 @@ import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { useFlag, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag, useInvestigators, useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
@@ -98,7 +98,8 @@ function MyDecksSelectorDialog(props: Props) {
   const [onlyShowPreviousCampaignMembers, toggleOnlyShowPreviousCampaignMembers] = useFlag(false);
   const [hideEliminatedInvestigators, toggleHideEliminatedInvestigators] = useFlag(true);
   const [selectedSort, setSelectedSort] = useState<SortType>(SORT_BY_PACK);
-  const investigators = useInvestigatorCards();
+  const campaignInvestigators = useMemo(() => onlyShowSelected ? [] : keys(campaign?.investigatorData || {}), [campaign?.investigatorData, onlyShowSelected]);
+  const investigators = useInvestigators(campaignInvestigators);
   const filterInvestigators = useMemo(() => {
     if (onlyShowSelected) {
       return [];

@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -18,9 +17,8 @@ import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
-import { usePressCallback } from '@components/core/hooks';
+import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
 
 interface Props {
@@ -161,7 +159,7 @@ function CardSearchResult(props: Props) {
     }
   }, [onPress, onPressId, id, card]);
   const handleCardPress = usePressCallback(handleCardPressFunction);
-  const colorblind = useSelector((state: AppState) => state.settings.colorblind);
+  const colorblind = useSettingValue('colorblind');
   const dualFactionIcons = useMemo(() => {
     const faction_code = card.factionCode();
     if (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill')) {
@@ -320,7 +318,6 @@ function CardSearchResult(props: Props) {
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
       },
-      (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
       <Touchable
         activeOpacity={0.7}

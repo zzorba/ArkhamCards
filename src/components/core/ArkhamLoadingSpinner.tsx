@@ -37,15 +37,20 @@ interface Props {
   autoPlay?: boolean;
   loop?: boolean;
   lottieRef?: React.Ref<LottieView> | React.LegacyRef<LottieView>;
-  large?: boolean;
+  size?: 'large' | 'tiny' | 'default';
 }
 
+const SIZE_SCALE = {
+  large: 2,
+  default: 1,
+  tiny: 0.75,
+}
 export default function ArkhamLoadingSpinner({
   progress,
   autoPlay,
   loop,
   lottieRef,
-  large,
+  size = 'default',
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const colorizedSource = useMemo(() => colorizeLottie(
@@ -78,22 +83,25 @@ export default function ArkhamLoadingSpinner({
     }
   ), [colors.D30]);
   const searchHeight = searchBoxHeight(fontScale);
+  const scale = SIZE_SCALE[size];
   return (
-    <LottieView
-      key="playing"
-      autoPlay={autoPlay}
-      loop={loop}
-      ref={lottieRef}
-      progress={progress}
-      source={colorizedSource}
-      resizeMode="contain"
-      cacheStrategy="strong"
-      style={{
-        width: large ? searchHeight * 2 : searchHeight,
-        height: large ? searchHeight * 2 : searchHeight,
-        alignSelf: 'center',
-      }}
-    />
+    <View style={{ paddingTop: -searchHeight * scale }}>
+      <LottieView
+        key="playing"
+        autoPlay={autoPlay}
+        loop={loop}
+        ref={lottieRef}
+        progress={progress}
+        source={colorizedSource}
+        resizeMode="contain"
+        cacheStrategy="strong"
+        style={{
+          width: searchHeight * scale,
+          height: searchHeight * scale,
+          alignSelf: 'center',
+        }}
+      />
+    </View>
   );
 }
 

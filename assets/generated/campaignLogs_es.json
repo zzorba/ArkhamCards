@@ -241,60 +241,60 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# murió en el accidente de avión.",
+            "feminine_text": "#name# murió en el accidente de avión."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Campamento – Campamento de barrera (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Campamento – Bancos de nieve anchos (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Campamento – Lugar del accidente (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Campamento – Caverna cristalina (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Campamento – Cueva glacial (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Campamento – Costas heladas (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Campamento – Atracadero de rompehielos (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Campamento – Páramos gélidos (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Campamento – Capa de hielo precaria (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Campamento – Restos del campamento de Lake (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Campamento – Peñascos rocosos (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Campamento – Tumbas de nieve (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Campamento – Senda traicionera (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -302,7 +302,7 @@
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "los investigadores convencieron a Dyer de que permitiera la expedición."
           },
           {
             "id": "cookie_has_confronted_his_demons",
@@ -314,7 +314,7 @@
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "los investigadores no se creyeron el informe de Dyer."
           },
           {
             "id": "discovered_an_ancient_vault",
@@ -410,15 +410,15 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "el equipo logró escapar del campo de hielo a duras penas."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "el equipo escaló hasta la cima."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "el equipo derrotó a las criaturas cazadoras."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,11 +426,11 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "el equipo huyó a las montañas."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "el equipo encontró otro modo de atravesar las montañas."
           },
           {
             "id": "team_found_the_hidden_tunnel",
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# ha desaparecido.",
+            "masculine_text": "#name# ha desaparecido.",
+            "feminine_text": "#name# ha desaparecido."
           },
           {
             "id": "camp_shelter",
@@ -774,55 +774,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Campamento de barrera"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Bancos de nieve anchos"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Lugar del accidente"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Caverna cristalina"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Cueva glacial"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Costas heladas"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Atracadero del rompehielos"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Páramos gélidos"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Capa de hielo precaria"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Restos del campamento de Lake"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Peñascos rocosos"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Tumbas de nieve"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Senda traicionera"
           }
         ]
       },
@@ -1035,31 +1035,84 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dinamita"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Esteatita verde"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Cristal de miasma"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Espécimen mineral"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Radio pequeña"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Piezas de repuesto"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Trineo de madera"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "los investigadores conocen los planes de Xzharah."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "los planes de la Hermandad prosiguen sin oposición."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "la maldición del letargo fue disipada."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "Soñadores en el Abismo (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Agentes de la Hermandad que escaparon: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "se acerca la hora de la verdad."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "los investigadores han unido sus fuerzas con Xzharah."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "el Abismo ha sido salvado."
           }
         ]
       }

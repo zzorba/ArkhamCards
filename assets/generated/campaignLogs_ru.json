@@ -1067,6 +1067,59 @@
     "supplies": []
   },
   {
+    "campaignId": "gob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "сыщики знают о планах Кжараха."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "планам Братства ничего не мешает."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "проклятье вечного сна снято."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "в Бездне #X# сновидцев"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Сбежавшие агенты Братства: #name#"
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "грядёт судный день."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "сыщики примкнули к силам Кжараха."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "Бездна спасена."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "ptc",
     "sections": [
       {

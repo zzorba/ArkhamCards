@@ -103,6 +103,7 @@ function ArkhamLargeListIos<Item, Header>({
     if (onRefresh) {
       onRefresh?.();
     }
+
     // Just let it spin for half a second
     setTimeout(() => {
       setFakeRefresh(false);

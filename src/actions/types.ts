@@ -92,7 +92,7 @@ export interface ArkhamDbApiDeck {
   version?: string;
   xp?: number;
   xp_adjustment?: number;
-  spentXp?: number;
+  xp_spent?: number;
   next_deck?: number;
   previous_deck?: number;
   tags?: string;
@@ -377,6 +377,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
+export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
@@ -399,6 +400,7 @@ export type CampaignCycleCode =
   typeof TDEB |
   typeof TIC |
   typeof EOE |
+  typeof GOB |
   typeof STANDALONE |
   typeof DARK_MATTER |
   typeof ALICE_IN_WONDERLAND |
@@ -420,6 +422,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
+  GOB,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -442,6 +445,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEA,
   TDEB,
   TIC,
+  GOB,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
@@ -578,9 +582,10 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1';
+  setting: MiscSetting;
   value: boolean;
 }
 

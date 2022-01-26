@@ -12,6 +12,7 @@ import NotesSection from './NotesSection';
 import space, { s, xs } from '@styles/space';
 import { ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface Props {
   campaignNotes: CampaignNotes | undefined;
@@ -25,7 +26,7 @@ interface Props {
       perInvestigator: boolean
     ) => void
   ) => void;
-  allInvestigators: Card[];
+  allInvestigators?: Card[];
 }
 
 export default function CampaignLogSection(props: Props) {
@@ -138,6 +139,9 @@ export default function CampaignLogSection(props: Props) {
 
   const investigatorSection = useMemo(() => {
     const investigatorNotes = campaignNotes?.investigatorNotes;
+    if (!allInvestigators) {
+      return <LoadingCardSearchResult noBorder />
+    }
     return (
       <InvestigatorSectionList
         allInvestigators={allInvestigators}
