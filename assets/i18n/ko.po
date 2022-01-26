@@ -5162,7 +5162,7 @@ msgid "You appear to be offline. Tap to check for network."
 msgstr "오프라인 상태인 것으로 보입니다. 탭하여 네트워크 상태를 체크하세요."
 
 msgid "Guardians of the Abyss"
-msgstr ""
+msgstr "심연의 수호자"
 
 msgid "Two-part campaign variant"
 msgstr "두 부분으로 구성된 변형 캠페인"
@@ -5177,7 +5177,7 @@ msgid "Hide campaign decks"
 msgstr "캠페인에 속한 덱 숨기기"
 
 msgid "Select Standalone"
-msgstr ""
+msgstr "독립 시나리오 선택"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -6423,7 +6423,7 @@ msgstr "주그"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 msgctxt "trait"
 msgid "Blessed?"
@@ -6431,7 +6431,7 @@ msgstr "축복받은?"
 
 msgctxt "trait"
 msgid "Broken"
-msgstr ""
+msgstr "깨진"
 
 msgctxt "trait"
 msgid "Card"
@@ -6439,7 +6439,7 @@ msgstr "카드"
 
 msgctxt "trait"
 msgid "Entrepreneur"
-msgstr ""
+msgstr "사업가"
 
 msgctxt "trait"
 msgid "Falcon Point"
@@ -6467,15 +6467,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "그림자"
 
 msgctxt "trait"
 msgid "Synergy"
-msgstr ""
+msgstr "시너지"
 
 msgctxt "trait"
 msgid "Unbroken"
-msgstr ""
+msgstr "깨지지 않은"
 
 msgctxt "trait"
 msgid "Wonderland"
