@@ -1,10 +1,10 @@
-import { ActionSheetIOS, Platform, Linking } from 'react-native';
+import { Platform, Linking } from 'react-native';
+import React, { useMemo } from 'react';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
-import AndroidDialogPicker from 'react-native-android-dialog-picker';
-import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 import { startsWith, map, range } from 'lodash';
 import { t } from 'ttag';
 
+import { usePickerDialog, Item } from '@components/deck/dialogs';
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
 import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
@@ -250,35 +250,21 @@ export function showCardSwipe(
   });
 }
 
-export function showOptionDialog(
+export function useOptionDialog(
   title: string,
+  selectedValue: number | undefined,
   options: string[],
   onSelect: (index: number) => void,
-) {
-  if (Platform.OS === 'ios') {
-    ActionSheetIOS.showActionSheetWithOptions(
-      {
-        title: title,
-        options: [...options, t`Cancel`],
-        cancelButtonIndex: options.length,
-      },
-      idx => {
-        if (idx !== options.length) {
-          onSelect(idx);
-        }
-        return 0;
-      }
-    );
-  } else {
-    AndroidDialogPicker.show(
-      {
+): [React.ReactNode, () => void] {
+  const items: Item<number>[] = useMemo(() => [
+    ...map(options, (title, idx) => {
+      return {
         title,
-        items: options,
-        cancelText: t`Cancel`,
-      },
-      onSelect
-    );
-  }
+        value: idx,
+      };
+    }),
+  ], [options]);
+  return usePickerDialog({ title, items, onValueChange: onSelect, selectedValue });
 }
 
 export function showCardImage(componentId: string, card: Card, colors: ThemeColors) {
@@ -368,9 +354,7 @@ export async function openUrl(
   }
 
   if (url.indexOf('arkhamdb.com') !== -1) {
-    InAppBrowser.open(url).catch(() => {
-      Linking.openURL(url);
-    });
+    Linking.openURL(url);
   }
 }
 
@@ -378,6 +362,6 @@ export default {
   showDeckModal,
   getDeckOptions,
   showCard,
-  showOptionDialog,
+  useOptionDialog,
   openUrl,
 };

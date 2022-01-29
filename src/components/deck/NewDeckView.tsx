@@ -3,7 +3,7 @@ import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
+import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { SORT_BY_PACK, SortType , Deck, CampaignId } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
@@ -27,11 +27,11 @@ type Props = NewDeckProps & NavigationProps;
 function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_PACK);
-
+  const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
-    showInvestigatorSortDialog(sortChanged);
-  }, [sortChanged]);
+    showInvestigatorSortDialog();
+  }, [showInvestigatorSortDialog]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'close') {
@@ -59,15 +59,18 @@ function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvest
   }, [componentId, onCreateDeck, campaignId, colors]);
 
   return (
-    <View style={[styles.container, backgroundStyle]}>
-      <InvestigatorsListComponent
-        componentId={componentId}
-        filterInvestigators={filterInvestigators}
-        onlyInvestigators={onlyInvestigators}
-        sort={selectedSort}
-        onPress={onPress}
-      />
-    </View>
+    <>
+      <View style={[styles.container, backgroundStyle]}>
+        <InvestigatorsListComponent
+          componentId={componentId}
+          filterInvestigators={filterInvestigators}
+          onlyInvestigators={onlyInvestigators}
+          sort={selectedSort}
+          onPress={onPress}
+        />
+      </View>
+      { sortDialog}
+    </>
   );
 }
 

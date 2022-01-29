@@ -13,7 +13,7 @@ import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
-import { showSortDialog } from '@components/cardlist/CardSortDialog';
+import { useSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
@@ -70,13 +70,10 @@ function DeckChecklistView({
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
   const checklist = useSelector(checklistSelector);
+  const [sortDialog, showSortDialog] = useSortDialog(setSort, sort, false);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
-      showSortDialog(
-        setSort,
-        sort,
-        false
-      );
+      showSortDialog();
     }
   }, componentId, [sort, setSort]);
 
@@ -130,16 +127,19 @@ function DeckChecklistView({
   }
 
   return (
-    <DbCardResultList
-      componentId={componentId}
-      deckId={id}
-      sort={sort}
-      headerItems={headerItems}
-      headerHeight={headerHeight}
-      renderCard={renderCard}
-      noSearch
-      currentDeckOnly
-    />
+    <>
+      <DbCardResultList
+        componentId={componentId}
+        deckId={id}
+        sort={sort}
+        headerItems={headerItems}
+        headerHeight={headerHeight}
+        renderCard={renderCard}
+        noSearch
+        currentDeckOnly
+      />
+      { sortDialog }
+    </>
   );
 }
 

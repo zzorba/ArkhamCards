@@ -10,7 +10,7 @@ import {
 
 import AppIcon from '@icons/AppIcon';
 import { SortType } from '@actions/types';
-import { showSortDialog } from '@components/cardlist/CardSortDialog';
+import { useSortDialog } from '@components/cardlist/CardSortDialog';
 import { updateCardSort } from '@components/filter/actions';
 import { AppState, getMythosMode, getCardSort } from '@reducers';
 import StyleContext from '@styles/StyleContext';
@@ -35,24 +35,23 @@ function SortButton({ filterId, lightButton }: Props) {
   const sortChanged = useCallback((sort: SortType) => {
     dispatch(updateCardSort(filterId, sort));
   }, [dispatch, filterId]);
-
+  const [sortDialog, showSortDialog] = useSortDialog(sortChanged, sort, mythosMode);
   const onPress = useCallback(() => {
     Keyboard.dismiss();
-    showSortDialog(
-      sortChanged,
-      sort,
-      mythosMode
-    );
-  }, [sortChanged, sort, mythosMode]);
+    showSortDialog();
+  }, [showSortDialog]);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPress} testID="Sort">
-        <View style={styles.touchable}>
-          <AppIcon name="sort" size={22} color={lightButton ? 'white' : colors.M} />
-        </View>
-      </TouchableOpacity>
-    </View>
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={onPress} testID="Sort">
+          <View style={styles.touchable}>
+            <AppIcon name="sort" size={22} color={lightButton ? 'white' : colors.M} />
+          </View>
+        </TouchableOpacity>
+      </View>
+      { sortDialog }
+    </>
   );
 }
 

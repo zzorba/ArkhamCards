@@ -275,7 +275,6 @@ interface LoadedState {
   loading: boolean;
 }
 
-let loadDelay: number = 4000;
 function useSectionFeed({
   componentId,
   hasHeader,
@@ -295,7 +294,7 @@ function useSectionFeed({
 }: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
   const { fontScale } = useContext(StyleContext);
-  const sortIgnoreQuotes = useSettingValue('sort_quotes');
+  const sortIgnoreQuotes = !useSettingValue('sort_quotes');
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
   const packInCollection = useSelector(getPacksInCollection);
@@ -504,36 +503,18 @@ function useSectionFeed({
     setRefreshing(true);
 
     // const start = new Date();
-    if (loadDelay > 0) {
-      setTimeout(() => {
-        loadDelay = 0;
-        db.getPartialCards(
-          sortIgnoreQuotes,
-          combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
-          tabooSetId,
-          sort
-        ).then((cards: PartialCard[]) => {
-          // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-          if (!ignore) {
-            setMainQueryCards({ cards, loading: false });
-            setRefreshing(false);
-          }
-        }, console.log);
-      }, loadDelay);
-    } else {
-      db.getPartialCards(
-        sortIgnoreQuotes,
-        combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
-        tabooSetId,
-        sort
-      ).then((cards: PartialCard[]) => {
-        // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-        if (!ignore) {
-          setMainQueryCards({ cards, loading: false });
-          setRefreshing(false);
-        }
-      }, console.log);
-    }
+    db.getPartialCards(
+      sortIgnoreQuotes,
+      combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
+      tabooSetId,
+      sort
+    ).then((cards: PartialCard[]) => {
+      // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+      if (!ignore) {
+        setMainQueryCards({ cards, loading: false });
+        setRefreshing(false);
+      }
+    }, console.log);
 
     return () => {
       ignore = true;
@@ -542,38 +523,36 @@ function useSectionFeed({
   }, [query, filterQuery, sort, tabooSetId, sortIgnoreQuotes, db]);
 
   useDebouncedEffect(() => {
-    if (textQuery) {
-      let ignore = false;
-      if (!query) {
-        setTextQueryCards({ cards: [], loading: false });
-        return;
-      }
-      // Look for textual card changes.
-      // const start = new Date();
-      const searchTextQuery = textQuery;
-      db.getPartialCards(
-        sortIgnoreQuotes,
-        combineQueries(query,
-          [
-            ...(filterQuery ? [filterQuery] : []),
-            ...(textQuery ? [textQuery] : []),
-          ],
-          'and'
-        ),
-        tabooSetId,
-        sort
-      ).then((cards: PartialCard[]) => {
-        if (!ignore) {
-          // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-          setTextQueryCards({ cards, textQuery: searchTextQuery, loading: false });
-        }
-      });
-      return () => {
-        ignore = true;
-      };
+    if (!textQuery || !query) {
+      setTextQueryCards({ cards: [], loading: false });
+      return;
     }
+    let ignore = false;
+    // Look for textual card changes.
+    // const start = new Date();
+    const searchTextQuery = textQuery;
+    db.getPartialCards(
+      sortIgnoreQuotes,
+      combineQueries(query,
+        [
+          ...(filterQuery ? [filterQuery] : []),
+          ...(textQuery ? [textQuery] : []),
+        ],
+        'and'
+      ),
+      tabooSetId,
+      sort
+    ).then((cards: PartialCard[]) => {
+      if (!ignore) {
+        // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+        setTextQueryCards({ cards, textQuery: searchTextQuery, loading: false });
+      }
+    });
+    return () => {
+      ignore = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, tabooSetId, sortIgnoreQuotes], 200);
+  }, [query, filterQuery, textQuery, sort, tabooSetId, sortIgnoreQuotes], 500);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
