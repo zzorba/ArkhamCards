@@ -209,7 +209,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                 }
                 return (
                   <BranchButton
-                    icon={processedScenario.id.scenarioId}
+                    icon={choice.icon || processedScenario.id.scenarioId}
                     key={index}
                     index={index}
                     text={choice.text}
