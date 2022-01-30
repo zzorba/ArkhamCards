@@ -80,7 +80,7 @@
     "query-string": "7.1.0",
     "react": "17.0.2",
     "react-hook-thunk-reducer": "0.2.4",
-    "react-native": "0.67.1",
+    "react-native": "https://github.com/zzorba/react-native.git#v0.67.1-wix",
     "react-native-action-button": "https://github.com/mastermoo/react-native-action-button.git#ad8c7e5d482296ab4f92aebcf9dcfd28481d7e15",
     "react-native-animatable": "1.3.3",
     "react-native-app-auth": "6.4.1",
