@@ -486,9 +486,6 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-msgid "Selected Difficulty"
-msgstr ""
-
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
 msgstr ""
@@ -4888,6 +4885,9 @@ msgid "Hide campaign decks"
 msgstr ""
 
 msgid "Select Standalone"
+msgstr ""
+
+msgid "Add ${ card.name }:"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

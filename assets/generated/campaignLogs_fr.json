@@ -1070,13 +1070,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme.",
+            "feminine_text": "#name# a été Prise par l'Abîme."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme.",
+            "feminine_text": "#name# a été Prise par l'Abîme."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1088,7 +1088,7 @@
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "la malédiction de torpeur a été levée"
+            "text": "la malédiction de torpeur a été levée."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
@@ -1108,7 +1108,7 @@
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "l'Abîme a été sauvé"
+            "text": "l'Abîme a été sauvé."
           }
         ]
       }
@@ -2629,13 +2629,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme.",
+            "feminine_text": "#name# a été Prise par l'Abîme."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# a été Pris par l'Abîme",
-            "feminine_text": "#name# a été Prise par l'Abîme"
+            "masculine_text": "#name# a été Pris par l'Abîme.",
+            "feminine_text": "#name# a été Prise par l'Abîme."
           },
           {
             "id": "blob_contained",
@@ -2711,7 +2711,7 @@
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "la malédiction de torpeur a été levée"
+            "text": "la malédiction de torpeur a été levée."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
@@ -2731,7 +2731,7 @@
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "l'Abîme a été sauvé"
+            "text": "l'Abîme a été sauvé."
           }
         ]
       },

@@ -1659,9 +1659,6 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Selected Difficulty"
-msgstr ""
-
 msgid "Edit Assigned Weaknesses"
 msgstr ""
 
@@ -4895,6 +4892,9 @@ msgid "Hide campaign decks"
 msgstr ""
 
 msgid "Select Standalone"
+msgstr ""
+
+msgid "Add ${ card.name }:"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

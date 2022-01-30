@@ -32,6 +32,16 @@ function renderInvestigators(investigators: Card[], card: { name: string; advanc
   ));
 }
 
+function getPrompt(effect: AddCardEffect, card: { name: string }): string | undefined {
+  if (!effect.show_prompt) {
+    return undefined;
+  }
+  if (effect.investigator === 'lead_investigator' && effect.optional) {
+    return t`Add ${card.name}:`;
+  }
+  return t`Choose an investigator to add ${card.name} to their deck:`;
+}
+
 export default function AddCardEffectComponent({ id, effect, input }: Props) {
   const { typography } = useContext(StyleContext);
   const [dbCard, loading] = useSingleCard(effect.card, 'player');
@@ -51,7 +61,7 @@ export default function AddCardEffectComponent({ id, effect, input }: Props) {
   return (
     <InvestigatorSelectorWrapper
       id={id}
-      title={effect.show_prompt ? t`Choose an investigator to add ${card.name} to their deck:` : undefined}
+      title={getPrompt(effect, card)}
       investigator={effect.investigator}
       fixedInvestigator={effect.fixed_investigator}
       render={renderInvestigators}
