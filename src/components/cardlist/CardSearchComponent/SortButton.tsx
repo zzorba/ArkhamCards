@@ -42,7 +42,7 @@ function SortButton({ filterId, lightButton }: Props) {
   }, [showSortDialog]);
 
   return (
-    <>
+    <View>
       <View style={styles.container}>
         <TouchableOpacity onPress={onPress} testID="Sort">
           <View style={styles.touchable}>
@@ -51,7 +51,7 @@ function SortButton({ filterId, lightButton }: Props) {
         </TouchableOpacity>
       </View>
       { sortDialog }
-    </>
+    </View>
   );
 }
 
