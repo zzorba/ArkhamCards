@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Anzahl der Handlungskarten im Siegpunktestapel",
           "min": 0,
           "adjustment": 1
         }
@@ -4008,7 +4008,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At Tindalos",
+          "prompt": "In Tindalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4021,7 +4021,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Ein [[Wissenschaftler]]-Vorteilskarte an deinem Ort",
           "modified_value": {
             "modifier": -4
           }
@@ -4039,7 +4039,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Anzahl der Handlungskarten im Siegpunktestapel",
           "min": 0,
           "adjustment": 2
         }
@@ -4051,7 +4051,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At Tindalos",
+          "prompt": "In Tindalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4064,7 +4064,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Ein [[Wissenschaftler]]-Vorteilskarte an deinem Ort",
           "modified_value": {
             "modifier": -6
           }
