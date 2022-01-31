@@ -43,21 +43,7 @@ export default function StyleProvider({ children } : Props) {
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
   const justifyContent = false;
-  const { fontScale, width: windowWidth, height: windowHeight, scale: windowScale } = useWindowDimensions();
-  const { scale: screenScale } = useMemo(() => Dimensions.get('screen'), []);
-  const { width, height } = useMemo(() => {
-    if (windowScale !== 0) {
-      const scaleFactor = screenScale / windowScale;
-      return {
-        width: windowWidth * scaleFactor,
-        height: windowHeight * scaleFactor,
-      };
-    }
-    return {
-      width: windowWidth,
-      height: windowHeight,
-    };
-  }, [windowWidth, windowHeight, windowScale, screenScale]);
+  const { fontScale, width, height } = useWindowDimensions();
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
