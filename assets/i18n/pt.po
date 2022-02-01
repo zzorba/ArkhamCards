@@ -4021,7 +4021,7 @@ msgid ""
 "\n"
 "Your decks will be removed from the campaign, but you can rejoin it later."
 msgstr ""
-Tem certeza de que deseja sair desta campanha?\n"
+"Tem certeza de que deseja sair desta campanha?\n"
 "\n"
 "Seus baralhos serão removidos da campanha, mas você poderá voltar mais tarde."
 
