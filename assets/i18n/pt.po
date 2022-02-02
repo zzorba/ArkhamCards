@@ -4949,345 +4949,403 @@ msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get +1 [intellect]."
 msgstr ""
-"Durante o primeiro teste [intellect] que o investigador realiza em cada rodada, "
-"eles recebem +1 [intellect]."
+"Durante o primeiro teste [intellect] que cada investigador realizar a cada rodada, "
+"ele obtém +1 [intellect]."
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get -1 [intellect]."
 msgstr ""
+"Durante o primeiro teste [intellect] que cada investigador realizar a cada rodada, "
+"ele obtém -1 [intellect]."
 
 msgid "The Empress · III"
-msgstr ""
+msgstr "A Imperatriz · III"
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get +1 [agility]."
 msgstr ""
+"Durante o primeiro teste [agility] que cada investigador realizar a cada rodada, ele "
+"obtém +1 [agility]."
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get -1 [agility]."
 msgstr ""
+"Durante o primeiro teste [agility] que cada investigador realizar a cada rodada, ele "
+"obtém -1 [agility]."
 
 msgid "The Emperor · IV"
-msgstr ""
+msgstr "O Imperador · IV"
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get +1 [combat]."
 msgstr ""
+"Durante o primeiro teste [combat] que cada investigador realizar a cada rodada, ele "
+"obtém +1 [combat]."
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get -1 [combat]."
 msgstr ""
+"Durante o primeiro teste [combat] que cada investigador realizar a cada rodada, ele "
+"obtém -1 [combat]."
 
 msgid "The Hierophant · V"
-msgstr ""
+msgstr "O Hierofante · V"
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get +1 [willpower]."
 msgstr ""
+"Durante o primeiro teste [willpower] cada investigador realizar a cada rodada, "
+"ele obtém +1 [willpower]."
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get -1 [willpower]."
 msgstr ""
+"Durante o primeiro teste [willpower] cada investigador realizar a cada rodada, "
+"ele obtém -1 [willpower]."
 
 msgid "The Lovers · VI"
-msgstr ""
+msgstr "Os Amantes · VI"
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, adds it to their hand, and shuffles their deck."
 msgstr ""
+"Quando o jogo começa, cada investigador procura em seu baralho por um ativo"
+"Aliado, adiciona-o à sua mão e embaralha seu baralho."
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, removes it from the game, and shuffles their deck."
 msgstr ""
+"Quando o jogo começa, cada investigador procura em seu baralho por um ativo"
+"Aliado, remove-o do jogo e embaralha seu baralho."
 
 msgid "The Chariot · VII"
-msgstr ""
+msgstr "A Carruagem · VII"
 
 msgid ""
 "Each investigator begins the game with 2 additional cards in their opening "
 "hand."
 msgstr ""
+"Cada investigador começa o jogo com 2 cartas adicionais em sua mão"
+"inicial."
 
 msgid ""
 "Each investigator begins the game with 2 fewer cards in their opening hand, "
 "and cannot draw cards during their first turn."
 msgstr ""
+"Cada investigador começa o jogo com 2 cartas a menos em sua mão inicial, "
+"e não pode comprar cartas durante seu primeiro turno."
 
 msgid "Strength · VIII"
-msgstr ""
+msgstr "Força · VIII"
 
 msgid ""
 "When the game begins, each investigator may play an asset from their hand "
 "at -2 cost."
 msgstr ""
+"Quando o jogo começa, cada investigador pode jogar um recurso de sua mão"
+"com custo -2."
 
 msgid "During the first round of the game, each investigator cannot play assets."
-msgstr ""
+msgstr "Durante a primeira rodada do jogo, cada investigador não pode jogar ativos.""
 
 msgid "The Hermit · IX"
-msgstr ""
+msgstr "O Eremita · IX"
 
 msgid "Increase each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Aumente o tamanho máximo da mão de cada investigador em 3."
 
 msgid "Decrease each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Diminua o tamanho máximo da mão de cada investigador em 3."
 
 msgid "Wheel of Fortune · X"
-msgstr ""
+msgstr "Roda da Fortuna · X"
 
 msgid ""
-"Once each act, when an investigator reveals an [auto_fail] token, thte "
+"Once each act, when an investigator reveals an [auto_fail] token, the "
 "investigator may cancel it and treat it as a 0 token instead."
 msgstr ""
+"Uma vez a cada ato, quando um investigador revela uma ficha [auto_fail], "
+"o investigador pode cancelá-la e tratá-la como um ficha 0."
 
 msgid ""
 "Once each agenda, the first time any investigator reveals an [elder_sign] "
 "token, cancel it and treat it as a -5 token instead."
 msgstr ""
+"Uma vez que cada agenda, a primeira vez que qualquer investigador revela uma ficha [elder_sign], "
+"cancele-a e trate-a como uma ficha -5."
 
 msgid "Justice · XI"
-msgstr ""
+msgstr "Justiça · XI"
 
 msgid "Cancel the first doom that would be placed on the final agenda of the game."
-msgstr ""
+msgstr "Cancelar a primeira perdição que seria colocada na agenda final do jogo."
 
 msgid "The final agenda of the game enters play with 1 doom on it."
-msgstr ""
+msgstr "A agenda final do jogo entra em jogo com 1 perdição."
 
 msgid "The Hanged Man · XII"
-msgstr ""
+msgstr "O Enforcado · XII"
 
 msgid "During setup, each investigator may take up to 2 additional mulligans."
-msgstr ""
+msgstr "Durante a preparação, cada investigador pode fazer até 2 mulligans adicionais."
 
 msgid ""
 "Each investigator cannot mulligan or replace weaknesses in their opening "
 "hand (resolve their revelation abilities when the game begins)."
 msgstr ""
+"Cada investigador não pode fazer mulligan ou substituir fraquezas em sua mão"
+"inicial (resolva suas habilidades de revelação quando o jogo começar)."
 
 msgid "Death · XIII"
-msgstr ""
+msgstr "Morte · XIII"
 
 msgid "Each investigator gets +1 health."
-msgstr ""
+msgstr "Cada investigador recebe +1 de vida."
 
 msgid "Each investigator gets -1 health."
-msgstr ""
+msgstr "Cada investigador recebe -1 de vida."
 
 msgid "Temperance · XIV"
-msgstr ""
+msgstr "Temperança · XIV"
 
 msgid "Each investigator gets +1 sanity."
-msgstr ""
+msgstr "Cada investigador recebe +1 de sanidade."
 
 msgid "Each investigator gets -1 sanity."
-msgstr ""
+msgstr "Cada investigador recebe -1 de sanidade."
 
 msgid "The Devil · XV"
-msgstr ""
+msgstr "O Diabo · XV"
 
 msgid ""
 "Each investigator has 1 additional slot of a type chosen by that "
 "investigattor when the game begins."
 msgstr ""
+"Cada investigador tem 1 espaço adicional de um tipo escolhido por aquele "
+"investigador quando o jogo começa."
 
 msgid ""
 "Each investigator has 3 fewer slots, each of a different type, chosen by "
 "that investigator when the game begins."
 msgstr ""
+"Cada investigador tem 3 espaços a menos, cada um de um tipo diferente, escolhidos por "
+"aquele investigador quando o jogo começar."
 
 msgid "The Tower · XVI"
-msgstr ""
+msgstr "A Torre · XVI"
 
 msgid ""
 "Each investigator chooses 1 basic weakness in their deck and removes it "
 "from the game (return them after the game ends)."
 msgstr ""
+"Cada investigador escolhe 1 fraqueza básica em seu baralho e a remove"
+"do jogo (devolva-os depois que o jogo terminar)."
 
 msgid ""
 "Add 1 random basic weakness to each investigator's deck. Remove them after "
 "the game ends."
 msgstr ""
+"Adicione 1 fraqueza básica aleatória ao baralho de cada investigador. Remova-os após "
+"o jogo acabar."
 
 msgid "The Star · XVII"
-msgstr ""
+msgstr "A Estrela · XVII"
 
 msgid ""
 "After an investigator reveals an [elder_sign] token during a skill test, "
 "they may heal 1 damage or 1 horror."
 msgstr ""
+"Depois que um investigador revelar uma ficha [elder_sign] durante um teste de habilidade, "
+"ele pode curar 1 dano ou 1 horror."
 
 msgid ""
 "After an investigator reveals an [auto_fail] token during a skill test, "
 "they must either take 1 damage or 1 horror."
 msgstr ""
+"Depois que um investigador revela uma ficha [auto_fail] durante um teste de habilidade, "
+"ele deve receber 1 dano ou 1 horror."
 
 msgid "The Moon · XVIII"
-msgstr ""
+msgstr "A Lua · XVIII"
 
 msgid ""
 "The first time each investigator's deck would run out of cards, they may "
 "shuffle the bottom 10 cards of their discard pile back into their deck."
 msgstr ""
+"A primeira vez que o baralho de cada investigador ficar sem cartas, eles podem "
+"embaralhar as 10 cartas do fundo de sua pilha de descarte de volta ao seu baralho."
 
 msgid ""
 "When the game begins, each investigator discards the top 5 cards of their "
 "deck. Shuffle each discarded weakness into its owner's deck."
 msgstr ""
+"Quando o jogo começa, cada investigador descarta as 5 primeiras cartas de seu "
+"baralho. Embaralhe cada fraqueza descartada no baralho de volta."
 
 msgid "The Sun · XIX"
-msgstr ""
+msgstr "O Sol · XIX"
 
 msgid "During each investigator's first turn, they may take 2 additional actions."
-msgstr ""
+msgstr "Durante o primeiro turno de cada investigador, ele pode realizar 2 ações adicionais."
 
 msgid "During each investigator's first turn, they have 2 fewer actions to take."
-msgstr ""
+msgstr "Durante o primeiro turno de cada investigador, ele tem 2 ações a menos para realizar."
 
 msgid ""
 "When the game begins, replace a [skull] token in the chaos bag with a 0 "
 "token. Swap them back after the game ends."
 msgstr ""
+"Quando o jogo começar, substitua uma ficha [skull] na bolsa do caos por uma ficha"
+"0. Troque-os de volta depois que o jogo terminar."
 
 msgid ""
 "When the game begins, replace the highest non-negative token in the chaos "
 "bag with a [skull] token. Swap them back after the game ends."
 msgstr ""
+"Quando o jogo começar, substitua a ficha não negativa mais alta na bolsa"
+"do caos com uma ficha [skull]. Troque-os de volta depois que o jogo terminar."
 
 msgid "The World · XXI"
-msgstr ""
+msgstr "O Mundo · XXI"
 
 msgid ""
 "Each investigator not defeated during this game may remove 1 trauma of "
 "their choice during its resolution."
 msgstr ""
+"Cada investigador não derrotado durante este jogo pode remover 1 trauma de "
+"sua escolha durante a sua resolução."
 
 msgid ""
 "Each investigator defeated during this game suffers 1 trauma of their "
 "choice during its resolution."
 msgstr ""
+"Cada investigador derrotado durante este jogo sofre 1 trauma de sua "
+"escolha durante a sua resolução."
 
 msgid "An app update is required to access this campaign."
-msgstr ""
+msgstr "É necessária uma atualização do aplicativo para acessar esta campanha."
 
 msgid ""
 "Note that this is an ArkhamCards account, which is separate from your "
 "ArkhamDB account."
 msgstr ""
+"Observe que esta é uma conta ArkhamCards, separada da sua "
+"conta ArkhamDB."
 
 msgid "Side Deck"
-msgstr ""
+msgstr "Baralho alternativo"
 
 msgid "Edit Side Deck"
-msgstr ""
+msgstr "Editar baralho alternativo"
 
 msgid "Creating campaign..."
-msgstr ""
+msgstr "Criando campanha..."
 
 msgid "Creating standalone..."
-msgstr ""
+msgstr "Criando standalone"
 
 msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
+msgstr "A campanha será sincronizada entre os dispositivos e poderá ser compartilhada com amigos"
 
 msgid "Campaign will be local to this device, you can choose to upload it later"
-msgstr ""
+msgstr "A campanha será local para este dispositivo, você pode optar por carregá-la mais tarde"
 
 #, javascript-format
 msgid "(${ count } card)"
 msgid_plural "(${ count } cards)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ count } carta)"
+msgstr[1] "(${ count } cartas)"
 
 msgid "Collection overlap"
-msgstr ""
+msgstr "Coleção sobreposta"
 
 msgid "Deck overlap"
-msgstr ""
+msgstr "Baralho sobreposto"
 
 msgid "Show collection overlap"
-msgstr ""
+msgstr "Mostrar coleção sobreposta"
 
 msgid "Hide collection overlap"
-msgstr ""
+msgstr "Esconder coleção sobreposta"
 
 msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
 msgstr ""
+"O número total dessas cartas entre os baralhos desta campanha excede o sua "
+"coleção de cartas".
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
-msgstr ""
+msgstr "Após a conclusão de ${ scenarionName }"
 
 msgid "Show decks from other campaigns"
-msgstr ""
+msgstr "Mostrar baralhos de outras campanhas"
 
 msgid "Trait Choice"
-msgstr ""
+msgstr "Escolha de Característica"
 
 msgid "Blessed"
-msgstr ""
+msgstr "Abençoado"
 
 msgid "Cursed"
-msgstr ""
+msgstr "Amaldiçoado"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "Abençoado e Amaldiçoado"
 
 msgid "Select Option"
-msgstr ""
+msgstr "Selecionar opção"
 
 msgid "Move to deck"
-msgstr ""
+msgstr "Mover para o baralho"
 
 msgid "Unarchive standalone"
-msgstr ""
+msgstr "Desarquivar standalone"
 
 msgid "Archive standalone"
-msgstr ""
+msgstr "Arquivar standalone"
 
 msgid "Bless / Curse"
-msgstr ""
+msgstr "Abençoar / Maldição"
 
 msgid "You appear to be offline. Tap to check for network."
-msgstr ""
+msgstr "Você parece estar off-line. Toque para verificar a rede."
 
 msgid "Guardians of the Abyss"
-msgstr ""
+msgstr "Guardiões do Abismo"
 
 msgid "Two-part campaign variant"
-msgstr ""
+msgstr Variante de campanha em duas partes""
 
 msgid "Claim previous scenario XP"
-msgstr ""
+msgstr "Reivindicar XP do cenário anterior"
 
 msgid "Apply changes from last completed scenario"
-msgstr ""
+msgstr "Aplicar alterações do último cenário concluído"
 
 msgid "Hide campaign decks"
-msgstr ""
+msgstr "Ocultar baralhos de campanha"
 
 msgid "Select Standalone"
-msgstr ""
+msgstr "Selecionar standalone"
 
 msgid "Add ${ card.name }:"
-msgstr ""
+msgstr "Adicione ${ card.name }:"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgctxt "masculine"
 msgid "Alive"
@@ -5317,7 +5375,7 @@ msgstr "${ investigator.name } lê <b>${ sectionName }</b>"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } ficou <b>insane</b>."
+msgstr "${ investigator.name } ficou <b>louco</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5380,6 +5438,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> não estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5387,6 +5447,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5397,7 +5459,11 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } tem ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Como ${ list } têm ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5408,7 +5474,11 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } não tem um ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
 msgstr[1] ""
+"Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
 
 msgctxt "feminine"
 msgid "Alive"
@@ -5436,7 +5506,7 @@ msgstr "${ investigator.name } lê <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } ficou <b>insana</b>."
+msgstr "${ investigator.name } ficou <b>louca</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
@@ -5497,6 +5567,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> não estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "feminine"
@@ -5504,18 +5576,20 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 msgctxt "feminine"
 msgid "Physical trauma"
-msgstr ""
+msgstr "Trauma físico"
 
 msgctxt "feminine"
 msgid "Mental trauma"
-msgstr ""
+msgstr "Trauma mental"
 
 msgctxt "feminine"
 msgid "Defeated"
-msgstr ""
+msgstr "Derrotada"
 
 #, javascript-format
 msgctxt "feminine"
@@ -5526,7 +5600,12 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } tem ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Como ${ list } têm ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
+
 
 msgctxt "feminine"
 msgid ""
@@ -5536,87 +5615,91 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } não tem ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
 msgstr[1] ""
+"Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ "
+"sectionName }</b>."
 
 msgctxt "Traits"
 msgid "All"
-msgstr ""
+msgstr "Tudo"
 
 msgctxt "trait"
 msgid "???"
-msgstr ""
+msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr ""
+msgstr "Abominação"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "Abismo"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr ""
+msgstr "Ato 1"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr ""
+msgstr "Ato 2"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr ""
+msgstr "Agência"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr ""
+msgstr "Aliado"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "Alterado"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "Ancestral"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "O Ancestral"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr ""
+msgstr "Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr ""
+msgstr "Asilo Arkham"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr ""
+msgstr "armadura"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "Artista"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "Assistente"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "Ataque"
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "Augúrio"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "Porão"
 
 msgctxt "trait"
 msgid "Bayou"
@@ -5624,51 +5707,51 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Believer"
-msgstr ""
+msgstr "Crente"
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr ""
+msgstr "Abençoado"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr ""
+msgstr "Erro"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "Barco"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr ""
+msgstr "Ousado"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "Benefício"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "Ponte"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "Irmandade"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr ""
+msgstr "Byakhee"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr ""
+msgstr "Espectador"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "Cairo"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr ""
+msgstr "Acampamento"
 
 msgctxt "trait"
 msgid "Carnevale"
@@ -5676,115 +5759,115 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Cave"
-msgstr ""
+msgstr "Caverna"
 
 msgctxt "trait"
 msgid "Central"
-msgstr ""
+msgstr "Central"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr ""
+msgstr "Encanto"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr ""
+msgstr "Escolhido"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "Círculo"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "Cidade"
 
 msgctxt "trait"
 msgid "Civic"
-msgstr ""
+msgstr "Cívico"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr ""
+msgstr "Clarividente"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr ""
+msgstr "Roupas"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "Clube do Trevo"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "Costeiro"
 
 msgctxt "trait"
 msgid "Composure"
-msgstr ""
+msgstr "Compostura"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr ""
+msgstr "Condição"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr ""
+msgstr "Conexão"
 
 msgctxt "trait"
 msgid "Conspirator"
-msgstr ""
+msgstr "Conspirador"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr ""
+msgstr "construir"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "Pacto"
 
 msgctxt "trait"
 msgid "Creature"
-msgstr ""
+msgstr "Criatura"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "Cena do crime"
 
 msgctxt "trait"
 msgid "Criminal"
-msgstr ""
+msgstr "Criminoso"
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr ""
+msgstr "Cultista"
 
 msgctxt "trait"
 msgid "Curse"
-msgstr ""
+msgstr "Maldição"
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr ""
+msgstr "Amaldiçoado"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr ""
+msgstr "Jovem Sombrio"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr ""
+msgstr "Profundo"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr ""
+msgstr "Profundezas"
 
 msgctxt "trait"
 msgid "Desert"
-msgstr ""
+msgstr "Deserto"
 
 msgctxt "trait"
 msgid "Desperate"
-msgstr ""
+msgstr "Desesperado"
 
 msgctxt "trait"
 msgid "Detective"
@@ -5792,15 +5875,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Developed"
-msgstr ""
+msgstr "Desenvolvido"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr ""
+msgstr "Dhole"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr ""
+msgstr "Distorção"
 
 msgctxt "trait"
 msgid "Dreamer"
@@ -6830,7 +6913,7 @@ msgstr ""
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
@@ -6842,8 +6925,8 @@ msgstr "Independentes"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
