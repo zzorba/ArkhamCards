@@ -4181,7 +4181,7 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Edge of the Earth"
-msgstr "Confins da Terra"
+msgstr "Nos Confins da Terra"
 
 msgid "Promotional"
 msgstr "Promocional"
