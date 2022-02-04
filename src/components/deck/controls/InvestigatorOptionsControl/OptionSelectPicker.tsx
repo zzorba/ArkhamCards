@@ -33,7 +33,7 @@ export default function OptionSelectPicker({
     }
     onChange(id);
   };
-  const valueLabel = (find(options, o => o.id === selection) || options[0]).real_name;
+  const valueLabel = localizeOptionName((find(options, o => o.id === selection) || options[0]).real_name || '0');
   const [dialog, showDialog] = usePickerDialog({
     title: t`Select Deck Size`,
     description: editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined,
