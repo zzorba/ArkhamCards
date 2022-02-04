@@ -71,6 +71,7 @@ interface Props {
   storyOnly?: boolean;
   sideDeck?: boolean;
   showNonCollection?: boolean;
+  footerPadding?: number;
 }
 
 function getRandomLoadingMessage() {
@@ -787,6 +788,7 @@ export default function({
   storyOnly,
   sideDeck,
   showNonCollection,
+  footerPadding,
 }: Props) {
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
@@ -918,14 +920,14 @@ export default function({
   ] : [], [deckId, sideDeck]);
   const listFooter = useCallback(() => {
     if (refreshing) {
-      return <View />;
+      return <View style={{ height: footerPadding || 0 }} />;
     }
     return (
-      <View style={styles.footer}>
+      <View style={{ paddingBottom: footerPadding || 0 }}>
         { expandSearchControls }
       </View>
     );
-  }, [expandSearchControls, refreshing]);
+  }, [expandSearchControls, refreshing, footerPadding]);
   const renderSection = useCallback((header: SectionHeaderItem) => {
     return (
       <CardSectionHeader
@@ -1035,8 +1037,6 @@ export default function({
 }
 
 const styles = StyleSheet.create({
-  footer: {
-  },
   emptyText: {
     padding: m,
     flexDirection: 'row',

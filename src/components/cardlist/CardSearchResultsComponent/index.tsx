@@ -45,6 +45,7 @@ interface Props {
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
+  bottomPadding?: number;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -242,6 +243,7 @@ export default function({
   mode,
   initialSort,
   includeDuplicates,
+  bottomPadding,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
@@ -402,6 +404,7 @@ export default function({
             sideDeck={mode === 'side'}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
+            footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
           />
           { deckId !== undefined && (
             <>
