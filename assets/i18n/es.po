@@ -5373,6 +5373,15 @@ msgstr ""
 msgid "Add ${ card.name }:"
 msgstr ""
 
+#, javascript-format
+msgid "Select ${ name }"
+msgstr ""
+
+msgid ""
+"Note: This should only be selected at deck creation time, not between "
+"scenarios."
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
