@@ -4126,7 +4126,7 @@ msgstr ""
 "juntar-se às suas campanhas."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
-msgstr ""Agora que você está conectado, você deve ter acesso às suas campanhas salvas.""
+msgstr "Agora que você está conectado, você deve ter acesso às suas campanhas salvas."
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
@@ -4721,7 +4721,7 @@ msgid ""
 "${ partnerName }."
 msgstr ""
 "Na seção ${ sectionName } do Registro da campanha, escreva \"MIA\" ao lado de "
-"${ PartnerName }."
+"${ partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
@@ -4920,7 +4920,7 @@ msgid ""
 "its resolution."
 msgstr ""
 "Cada investigador não derrotado durante este jogo ganha +2 experiência durante "
-"a resolução".
+"a resolução."
 
 msgid ""
 "Each investigator defeated during this game earns -2 experience during its "
@@ -5055,7 +5055,7 @@ msgstr ""
 "com custo -2."
 
 msgid "During the first round of the game, each investigator cannot play assets."
-msgstr "Durante a primeira rodada do jogo, cada investigador não pode jogar ativos.""
+msgstr "Durante a primeira rodada do jogo, cada investigador não pode jogar ativos."
 
 msgid "The Hermit · IX"
 msgstr "O Eremita · IX"
@@ -5282,7 +5282,7 @@ msgid ""
 "card collection."
 msgstr ""
 "O número total dessas cartas entre os baralhos desta campanha excede o sua "
-"coleção de cartas".
+"coleção de cartas."
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
@@ -5325,7 +5325,7 @@ msgid "Guardians of the Abyss"
 msgstr "Guardiões do Abismo"
 
 msgid "Two-part campaign variant"
-msgstr Variante de campanha em duas partes""
+msgstr "Variante de campanha em duas partes"
 
 msgid "Claim previous scenario XP"
 msgstr "Reivindicar XP do cenário anterior"
