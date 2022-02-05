@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import DeckActionRow from './DeckActionRow';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { useEffectUpdate } from '@components/core/hooks';
+import { InteractionManager } from 'react-native';
 
 interface Props {
   title: string;
@@ -15,6 +17,16 @@ interface Props {
 }
 
 export default function DeckCheckboxButton({ title, description, icon, value, onValueChange, disabled, loading, last }: Props) {
+  const [liveValue, setLiveValue] = useState(value);
+  const onUpdate = useCallback((value: boolean) => {
+    setLiveValue(value);
+    setTimeout(() => {
+      onValueChange(value);
+    }, 100);
+  }, [setLiveValue, onValueChange]);
+  useEffectUpdate(() => {
+    setLiveValue(value);
+  }, [setLiveValue, value]);
   return (
     <DeckActionRow
       title={title}
@@ -23,7 +35,7 @@ export default function DeckCheckboxButton({ title, description, icon, value, on
       icon={icon}
       last={last}
       loading={loading}
-      control={<ArkhamSwitch value={value} onValueChange={onValueChange} disabled={disabled} />}
+      control={<ArkhamSwitch value={liveValue} onValueChange={onUpdate} disabled={disabled} />}
     />
   );
 }
