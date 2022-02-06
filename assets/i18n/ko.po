@@ -5088,16 +5088,23 @@ msgid "Select Standalone"
 msgstr "독립 시나리오 선택"
 
 msgid "Add ${ card.name }:"
-msgstr ""
+msgstr "${ card.name } 추가:"
 
 #, javascript-format
 msgid "Select ${ name }"
-msgstr ""
+msgstr "${ name } 선택"
 
 msgid ""
 "Note: This should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
+"참고: 덱 생성 순간에만 선택할 수 있고 시나리오 사이에서는 선택이 불가능합니다."
+
+msgid "Samsung One UI fix"
+msgstr "삼성 One UI 수정 사항 반영"
+
+msgid "Fix layout issues on version 3.0 of Samsung One UI"
+msgstr "삼성 One UI 버전 3.0의 레이아웃 문제 수정"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
