@@ -34,6 +34,7 @@ interface Props {
   faded?: boolean;
   noSidePadding?: boolean;
   useGestureHandler?: boolean;
+  onPressDebounce?: number;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -148,6 +149,7 @@ function CardSearchResult(props: Props) {
     faded,
     noSidePadding,
     useGestureHandler,
+    onPressDebounce = 1000,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -158,7 +160,7 @@ function CardSearchResult(props: Props) {
       onPress && onPress(card);
     }
   }, [onPress, onPressId, id, card]);
-  const handleCardPress = usePressCallback(handleCardPressFunction);
+  const handleCardPress = usePressCallback(handleCardPressFunction, onPressDebounce);
   const colorblind = useSettingValue('colorblind');
   const dualFactionIcons = useMemo(() => {
     const faction_code = card.factionCode();
