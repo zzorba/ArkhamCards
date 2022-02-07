@@ -924,6 +924,7 @@ function DeckDetailView({
             icon="deck"
             onPress={showUpgradeHistoryPressed}
             title={t`Upgrade History`}
+            numberOfLines={2}
             last
           />
         ) }
