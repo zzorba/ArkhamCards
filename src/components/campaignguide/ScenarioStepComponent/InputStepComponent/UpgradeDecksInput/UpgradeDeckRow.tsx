@@ -614,39 +614,43 @@ function UpgradeDeckRow({
     });
     return slots;
   }, [allStoryAssetCards, storyAssets, deck]);
+  const specialExileSection = useMemo(() => {
+    if ((choices === undefined ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
+      return (
+        <CardSelectorComponent
+          componentId={componentId}
+          slots={specialExileSlots}
+          counts={specialExile}
+          filterCard={isExile}
+          updateCount={updateSpecialExileCount}
+          header={(choices !== undefined || !deck) && (
+            <View style={space.paddingSideS}>
+              <DeckSlotHeader title={choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
+            </View>
+          )}
+          locked={saving || !!choices}
+        />
+      );
+    }
+    return null;
+  }, [choices, specialExileSlots, specialExile, updateSpecialExileCount, deck, saving]);
   const exileSection = useMemo(() => {
-    return (
-      <>
-        { !!deck && (choices === undefined || keys(savedExileCounts).length > 0) && (
-          <ExileCardSelectorComponent
-            componentId={componentId}
-            deck={deck}
-            label={<View style={space.paddingSideS}><DeckSlotHeader title={t`Exiled cards` } /></View>}
-            exileCounts={choices === undefined ? exileCounts : savedExileCounts}
-            updateExileCount={onExileCountChange}
-            disabled={!editable || saving || choices !== undefined}
-          >
-            { exileSection }
-          </ExileCardSelectorComponent>
-        )}
-        { (choices === undefined ? keys(specialExileSlots).length : keys(specialExile).length) > 0 && (
-          <CardSelectorComponent
-            componentId={componentId}
-            slots={specialExileSlots}
-            counts={specialExile}
-            filterCard={isExile}
-            updateCount={updateSpecialExileCount}
-            header={(choices !== undefined || !deck) && (
-              <View style={space.paddingSideS}>
-                <DeckSlotHeader title={choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
-              </View>
-            )}
-            locked={saving || !!choices}
-          />
-        ) }
-      </>
-    );
-  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, editable, savedExileCounts, specialExileSlots, exileCounts, choices, specialExile]);
+    if (deck && (choices === undefined || keys(savedExileCounts).length > 0)) {
+      return (
+        <ExileCardSelectorComponent
+          componentId={componentId}
+          deck={deck}
+          label={<View style={space.paddingSideS}><DeckSlotHeader title={t`Exiled cards` } /></View>}
+          exileCounts={choices === undefined ? exileCounts : savedExileCounts}
+          updateExileCount={onExileCountChange}
+          disabled={!editable || saving || choices !== undefined}
+        >
+          { specialExileSection }
+        </ExileCardSelectorComponent>
+      );
+    }
+    return specialExileSection;
+  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
   const campaignSection = useMemo(() => {
     return (
       <>

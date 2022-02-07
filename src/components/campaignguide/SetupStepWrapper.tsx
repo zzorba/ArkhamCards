@@ -48,7 +48,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
+              color={resolution ? colors.campaign.text.resolution : colors.campaign.text.setup}
             />
           </View>
         );
@@ -58,7 +58,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={resolution ? colors.campaign.resolution : colors.campaign.setup}
+              color={resolution ? colors.campaign.text.resolution : colors.campaign.text.setup}
             />
           </View>
         );

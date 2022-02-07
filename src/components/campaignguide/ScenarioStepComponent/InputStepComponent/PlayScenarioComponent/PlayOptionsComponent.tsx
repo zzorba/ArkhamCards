@@ -21,6 +21,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';
+import StoryButton from './StoryButton';
 
 
 interface Props {
@@ -215,6 +216,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                     text={choice.text}
                     description={choice.description}
                     onPress={branchPress}
+                    style={choice.style}
                   />
                 );
               }
@@ -222,16 +224,12 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
           </>
         ) }
         <View style={space.paddingBottomS}>
-          <TouchableOpacity onPress={resolutionPressed}>
-            <View style={[styles.resolutionBlock, { backgroundColor: colors.campaign.resolutionBackground }]}>
-              <BorderWrapper border color="resolution" width={width - s * 4}>
-                <View style={[styles.resolutionContent, space.paddingS, space.paddingTopL]}>
-                  <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
-                  { !input.no_resolutions && <Text style={typography.mediumGameFont}>{t`Proceed to Resolutions`}</Text> }
-                </View>
-              </BorderWrapper>
-            </View>
-          </TouchableOpacity>
+          <StoryButton
+            onPress={resolutionPressed}
+            type="resolution"
+            title={t`Scenario Ended`}
+            description={input.no_resolutions ? undefined : t`Proceed to Resolutions`}
+          />
         </View>
       </InputWrapper>
       { chaosBagDialog }
@@ -245,14 +243,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  resolutionBlock: {
-    borderRadius: 8,
-  },
-  resolutionContent: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
     alignItems: 'center',
   },
 });
