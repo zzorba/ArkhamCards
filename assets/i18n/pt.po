@@ -32,10 +32,10 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "Nenhum ativo que ocupe o espaço de aliado é permitido por Você Mesmo."
 
 msgid "Limit 1 Covenant per deck."
-msgstr "Limite de 1 Covenant por baralho."
+msgstr "Limite de 1 Pacto por baralho."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "Too many off-class cards for Versatile"
+msgstr "Muitas cartas fora da classe para Versátil"
 
 msgid "Updated today"
 msgstr "Atualizado hoje"
@@ -3228,16 +3228,16 @@ msgid "The Path To Carcosa"
 msgstr "O Caminho para Carcosa"
 
 msgid "Return to The Path to Carcosa"
-msgstr "Retorno ao Caminho de Carcosa"
+msgstr "Retorno ao Caminho para Carcosa"
 
 msgid "Return to The Forgotten Age"
 msgstr "Retorno à Era Esquecida"
 
 msgid "The Dream-Quest"
-msgstr "A Busca dos Sonhos"
+msgstr "A Busca Onírica"
 
 msgid "The Web of Dreams"
-msgstr "A Teia dos Sonhos"
+msgstr "A Teia Onírica"
 
 msgid "The Gathering"
 msgstr "O Encontro"
@@ -3835,7 +3835,7 @@ msgid "Save changes?"
 msgstr "Salvar alterações?"
 
 msgid "In Bag"
-msgstr "No Saco"
+msgstr "Na Bolsa"
 
 msgid "Add note"
 msgstr "Adicionar nota"
@@ -4428,7 +4428,7 @@ msgid "Show archived campaigns"
 msgstr "Mostrar campanhas arquivadas"
 
 msgid "Return to The Circle Undone"
-msgstr "Retorno à Círculo Desfeito"
+msgstr "Retorno ao Círculo Desfeito"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
 msgstr ""
