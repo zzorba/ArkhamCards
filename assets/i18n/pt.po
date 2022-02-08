@@ -3237,7 +3237,7 @@ msgid "The Dream-Quest"
 msgstr "A Busca Onírica"
 
 msgid "The Web of Dreams"
-msgstr "A Teia Onírica"
+msgstr "A Teia dos Sonhos"
 
 msgid "The Gathering"
 msgstr "O Encontro"
