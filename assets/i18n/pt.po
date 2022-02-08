@@ -3315,7 +3315,7 @@ msgid "The Last King"
 msgstr "O Último Rei"
 
 msgid "Lunacy’s Reward"
-msgstr "Recompensa de Lunacy"
+msgstr "Recompensa da Loucura"
 
 msgid "Echoes of the Past"
 msgstr "Ecos do passado"
