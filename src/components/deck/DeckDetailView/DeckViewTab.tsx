@@ -231,7 +231,7 @@ function bondedSections(
   if (count === 0) {
     return [undefined, index];
   }
-  const sections = [{
+  const sections: CardSection[] = [{
     id: 'bonded',
     cards: map(uniqBondedCards, c => {
       return {

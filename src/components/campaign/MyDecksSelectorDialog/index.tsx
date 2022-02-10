@@ -9,7 +9,7 @@ import {
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
+import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import useTabView from '@components/core/useTabView';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
@@ -144,11 +144,11 @@ function MyDecksSelectorDialog(props: Props) {
       });
     }, 200);
   }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators]);
-
+  const [investigatorSortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, setSelectedSort);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
-    showInvestigatorSortDialog(setSelectedSort);
-  }, [setSelectedSort]);
+    showInvestigatorSortDialog();
+  }, [showInvestigatorSortDialog]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'add') {
@@ -304,9 +304,19 @@ function MyDecksSelectorDialog(props: Props) {
   }, [deckTab, investigatorTab]);
   const [tabView] = useTabView({ tabs: tabs || [], onTabChange });
   if (tabs) {
-    return tabView;
+    return (
+      <>
+        {tabView}
+        {investigatorSortDialog}
+      </>
+    );
   }
-  return deckTab;
+  return (
+    <>
+      {deckTab}
+      {investigatorSortDialog}
+    </>
+  );
 }
 MyDecksSelectorDialog.options = (passProps: Props) => {
   return deckOptions(passProps);

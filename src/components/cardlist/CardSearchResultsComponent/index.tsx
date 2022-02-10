@@ -4,7 +4,6 @@ import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
-import { useDebounceCallback } from '@react-hook/debounce';
 
 import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
@@ -22,6 +21,7 @@ import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import useDebouncedEffect from 'use-debounced-effect-hook';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -45,6 +45,7 @@ interface Props {
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
+  bottomPadding?: number;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -223,6 +224,8 @@ function ExpandSearchButtons({
   );
 }
 
+const EMPTY_SEARCH_STATE: SearchState = {};
+
 export default function({
   componentId,
   deckId,
@@ -240,6 +243,7 @@ export default function({
   mode,
   initialSort,
   includeDuplicates,
+  bottomPadding,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
@@ -247,14 +251,13 @@ export default function({
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
-  const [searchState, setSearchState] = useState<SearchState>({});
+  const [searchState, setSearchState] = useState<SearchState>(EMPTY_SEARCH_STATE);
   const toggleSearchText = useCallback(() => setSearchText(!searchText), [searchText]);
   const toggleSearchFlavor = useCallback(() => setSearchFlavor(!searchFlavor), [searchFlavor]);
   const toggleSearchBack = useCallback(() => setSearchBack(!searchBack), [searchBack]);
-  const clearSearchTerm = useCallback(() => setSearchTerm(''), []);
-  const updateSearch = useCallback((searchTerm: string) => {
+  useDebouncedEffect(() => {
     if (!searchTerm) {
-      setSearchState({});
+      setSearchState(EMPTY_SEARCH_STATE);
       return;
     }
     const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
@@ -263,12 +266,8 @@ export default function({
       searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
       searchCode,
     });
-  }, []);
-  const debouncedUpdateSearch = useDebounceCallback(updateSearch, 50);
-  const searchUpdated = useCallback((text: string) => {
-    setSearchTerm(text);
-    debouncedUpdateSearch(text);
-  }, [setSearchTerm, debouncedUpdateSearch]);
+  }, [searchTerm, setSearchState], 200);
+  const clearSearchTerm = useCallback(() => setSearchTerm(''), [setSearchTerm]);
 
   const textQuery = useMemo(() => {
     const {
@@ -368,7 +367,7 @@ export default function({
         height: searchOptionsHeight(fontScale),
       }}
       searchTerm={searchTerm || ''}
-      onSearchChange={searchUpdated}
+      onSearchChange={setSearchTerm}
     >
       { (handleScroll, showHeader) => (
         <>
@@ -405,6 +404,7 @@ export default function({
             sideDeck={mode === 'side'}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
+            footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
           />
           { deckId !== undefined && (
             <>

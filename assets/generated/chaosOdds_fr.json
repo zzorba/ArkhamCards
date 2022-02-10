@@ -3996,7 +3996,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Nombre de cartes Histoire dans la pile de victoire",
           "min": 0,
           "adjustment": 1
         }
@@ -4008,7 +4008,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At Tindalos",
+          "prompt": "À Tindalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4021,7 +4021,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Un soutien [[Scientifique]] est dans votre lieu",
           "modified_value": {
             "modifier": -4
           }
@@ -4039,7 +4039,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Nombre de cartes Histoire dans la pile de victoire",
           "min": 0,
           "adjustment": 2
         }
@@ -4051,7 +4051,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At Tindalos",
+          "prompt": "À Tindalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4064,7 +4064,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Un soutien [[Scientifique]] est dans votre lieu",
           "modified_value": {
             "modifier": -6
           }
@@ -4363,7 +4363,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "prompt": "Moitié du nombre de cartes [[Suspect]] et [[Cachette]] dans la pile de victoire (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -4374,7 +4374,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "prompt": "Vous êtes en train d'effectuer une action Discussion avec un ennemi [[Suspect]] ou une action Enquêter dans un lieu [[Cachette]]",
           "modified_value": {
             "modifier": -4
           }
@@ -4398,7 +4398,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "prompt": "Nombre de cartes [[Suspect]] et [[Cachette]] dans la pile de victoire",
           "min": 0
         }
       },
@@ -4409,7 +4409,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "prompt": "Vous êtes en train d'effectuer une action Discussion avec un ennemi [[Suspect]] ou une action Enquêter dans un lieu [[Cachette]]",
           "modified_value": {
             "modifier": -5
           }
@@ -4437,7 +4437,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "Moitié de la valeur d'abri de votre lieu (arrondie au supérieur)"
         }
       },
       {
@@ -4458,7 +4458,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "Valeur d'abri de votre lieu"
         }
       },
       {
@@ -4483,7 +4483,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "Nombre de cartes Histoire dans la pile de victoire"
         }
       },
       {
@@ -4510,7 +4510,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "Numéro de l'intrigue en cours plus le nombre de cartes Histoire dans la pile de victoire"
         }
       },
       {
@@ -4541,7 +4541,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "Niveau de votre lieu"
         }
       },
       {
@@ -4568,7 +4568,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
+          "prompt": "Niveau de votre lieu plus 2",
           "min": 2
         }
       },
@@ -4600,7 +4600,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "Nombre de clés que vous contrôlez"
         }
       },
       {
@@ -4616,7 +4616,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Un pion [frost] a été révélé",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4634,7 +4634,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
+          "prompt": "Nombre de clés que vous contrôlez plus 2",
           "min": 2
         }
       },
@@ -4651,7 +4651,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Un pion [frost] a été révélé",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4676,7 +4676,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Il y a un ennemi [[Grand Ancien]] dans votre lieu",
           "modified_value": {
             "modifier": -3
           }
@@ -4709,7 +4709,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Il y a un ennemi [[Grand Ancien]] dans votre lieu",
           "modified_value": {
             "modifier": -4
           }

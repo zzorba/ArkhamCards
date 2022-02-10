@@ -40,7 +40,7 @@ function fabPadding(control?: 'fab' | 'counts') {
   return s + xs;
 }
 
-export default function DeckNavFooter({
+function DeckNavFooter({
   componentId,
   deckId,
   control,
@@ -135,6 +135,9 @@ export default function DeckNavFooter({
     </>
   );
 }
+
+DeckNavFooter.height = FOOTER_HEIGHT + s * 2;
+export default DeckNavFooter;
 
 const styles = StyleSheet.create({
   marginWrapper: {

@@ -11,6 +11,7 @@ import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
 import useSingleCard from '@components/card/useSingleCard';
+import DeckNavFooter from './DeckNavFooter';
 
 export interface EditDeckProps {
   id: DeckId;

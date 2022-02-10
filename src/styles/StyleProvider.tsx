@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Appearance, Dimensions, useWindowDimensions } from 'react-native';
+import { Appearance, Dimensions, Platform, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { throttle } from 'lodash';
 
@@ -8,6 +8,7 @@ import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useSettingValue } from '@components/core/hooks';
 
 const EXTRA_BOLD_ITALIC = 'Alegreya-ExtraBoldItalic';
 function useColorScheme(delay = 2000) {
@@ -42,22 +43,20 @@ export default function StyleProvider({ children } : Props) {
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
+  const androidOneUiFix = useSettingValue('android_one_ui_fix');
   const justifyContent = false;
   const { fontScale, width: windowWidth, height: windowHeight, scale: windowScale } = useWindowDimensions();
   const { scale: screenScale } = useMemo(() => Dimensions.get('screen'), []);
-  const { width, height } = useMemo(() => {
-    if (windowScale !== 0) {
+  const [width, height] = useMemo(() => {
+    if (windowScale !== 0 && androidOneUiFix && Platform.OS === 'android') {
       const scaleFactor = screenScale / windowScale;
-      return {
-        width: windowWidth * scaleFactor,
-        height: windowHeight * scaleFactor,
-      };
+      return [
+        windowWidth * scaleFactor,
+        windowHeight * scaleFactor,
+      ];
     }
-    return {
-      width: windowWidth,
-      height: windowHeight,
-    };
-  }, [windowWidth, windowHeight, windowScale, screenScale]);
+    return [windowWidth, windowHeight];
+  }, [windowWidth, windowHeight, windowScale, screenScale, androidOneUiFix]);
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';

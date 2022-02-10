@@ -31,7 +31,7 @@ interface Props {
   firstItem?: boolean;
 }
 
-function getIcon(icon?: ChoiceIcon, card?: Card): React.ReactNode {
+function getIcon(icon?: ChoiceIcon | string, card?: Card): React.ReactNode {
   if (card) {
     return (
       <View style={[space.paddingRightXs, { marginLeft: -s }]}>

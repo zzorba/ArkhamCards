@@ -32,7 +32,7 @@ interface SettingsState {
   hideCampaignDecks?: boolean;
   hideArkhamDbDecks?: boolean;
   playbackRate?: number | undefined;
-
+  androidOneUiFix?: boolean;
   version?: number;
 }
 export const CURRENT_REDUX_VERSION = 1;
@@ -49,6 +49,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   sortRespectQuotes: false,
   version: CURRENT_REDUX_VERSION,
   hideCampaignDecks: false,
+  androidOneUiFix: false,
 };
 
 type SettingAction =
@@ -146,6 +147,11 @@ export default function(
           return {
             ...state,
             hideArkhamDbDecks: action.value,
+          };
+        case 'android_one_ui_fix':
+          return {
+            ...state,
+            androidOneUiFix: action.value,
           };
       }
       return state;

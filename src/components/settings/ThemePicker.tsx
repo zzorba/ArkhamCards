@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useColorScheme } from 'react-native-appearance';
+import { useColorScheme } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 

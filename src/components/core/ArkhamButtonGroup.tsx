@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
-import { useComponentDidAppear } from './hooks';
+import { useComponentDidAppear, useEffectUpdate, useFlag } from './hooks';
 import { s } from '@styles/space';
 
 interface RenderButton {
@@ -27,9 +27,14 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   selected: boolean;
 }) {
   const { colors } = useContext(StyleContext);
+  const [localSelected, toggleLocalSelected, setLocalSelected] = useFlag(selected);
   const onPress = useCallback(() => {
+    toggleLocalSelected()
     onPressIndex(idx);
-  }, [onPressIndex, idx]);
+  }, [onPressIndex, idx, toggleLocalSelected]);
+  useEffectUpdate(() => {
+    setLocalSelected(selected);
+  }, [selected, setLocalSelected]);
 
   return (
     <>
@@ -38,12 +43,12 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
         rippleColor={colors.L20}
         style={[
           styles.button,
-          { height: height - 2, backgroundColor: selected ? colors.L15 : colors.L30 },
+          { height: height - 2, backgroundColor: localSelected ? colors.L15 : colors.L30 },
           idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
           last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
         ]}
       >
-        { content.element(selected) }
+        { content.element(localSelected) }
       </Ripple>
     </>
   );

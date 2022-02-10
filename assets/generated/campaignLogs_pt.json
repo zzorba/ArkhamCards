@@ -322,7 +322,7 @@
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "ra. Kensler tem um plano."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -358,15 +358,15 @@
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "a instalação foi destruída."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "a loucura sem nome escapou."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "a loucura sem nome está contida em segurança dentro de seu hospedeiro... por enquanto."
           },
           {
             "id": "photographed_the_astronomical_charts",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "os sobreviventes da expedição foram:"
           },
           {
             "id": "surviving_partners",
@@ -422,7 +422,7 @@
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "a equipe escapou da instalação."
           },
           {
             "id": "team_fled_to_the_mountains",
@@ -446,7 +446,7 @@
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "a verdade da miragem lhe escapa."
           }
         ]
       },
@@ -629,10 +629,6 @@
           },
           {
             "id": "final_night_dyer_yes",
-            "text": "dummy"
-          },
-          {
-            "id": "final_night_eliya_ashevak",
             "text": "dummy"
           },
           {
@@ -1149,11 +1145,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "você escolheu não ir à polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "você destruiu the oathspeaker."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1173,7 +1169,7 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "os seguidores do sinal encontraram o caminho."
           },
           {
             "id": "found_nigel_engram",
@@ -1209,7 +1205,7 @@
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "você deixou the onyx clasp para trás."
           },
           {
             "id": "opened_path_above",
@@ -1221,7 +1217,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "a polícia suspeita de você."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1233,15 +1229,15 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "o Estranho está atrás de você."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "você pegou the onyx clasp."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "você tentou avisar a polícia."
           },
           {
             "id": "unable_to_find_nigel",
@@ -1575,11 +1571,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "você escolheu não ir à polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "você destruiu the oathspeaker."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1599,7 +1595,7 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "os seguidores do sinal encontraram o caminho."
           },
           {
             "id": "found_nigel_engram",
@@ -1635,7 +1631,7 @@
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "você deixou the onyx clasp para trás."
           },
           {
             "id": "opened_path_above",
@@ -1647,7 +1643,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "a polícia suspeita de você."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1659,15 +1655,15 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "o Estranho está atrás de você."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "você pegou the onyx clasp."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "você tentou avisar a polícia."
           },
           {
             "id": "unable_to_find_nigel",
@@ -2474,6 +2470,18 @@
           {
             "id": "final_depth",
             "text": "#X# depth"
+          },
+          {
+            "id": "hote_consult_alejandro",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_ichtaca",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_journal",
+            "text": "dummy"
           },
           {
             "id": "hote_no_mulligan",
@@ -3838,6 +3846,18 @@
           {
             "id": "final_depth",
             "text": "#X# depth"
+          },
+          {
+            "id": "hote_consult_alejandro",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_ichtaca",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_journal",
+            "text": "dummy"
           },
           {
             "id": "hote_no_mulligan",

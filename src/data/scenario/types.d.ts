@@ -835,6 +835,8 @@ export interface BinaryConditionalChoice {
   id: string;
   large?: boolean;
   text: string;
+  icon?: string;
+  style?: "interlude";
   gender?: "masculine" | "feminine";
   tokens?: ChaosToken[];
   description?: string;

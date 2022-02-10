@@ -71,10 +71,10 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const [keyboardHeight] = useKeyboardHeight();
   const onEdit = useCallback(() => {
     toggleEdit();
-    if (Platform.OS === 'android' && textInputRef.current) {
+    if (Platform.OS === 'android') {
       setTimeout(() => {
         textInputRef.current && textInputRef.current.focus();
-      }, 100);
+      }, 500);
     }
   }, [toggleEdit, textInputRef]);
   const fab = useMemo(() => {

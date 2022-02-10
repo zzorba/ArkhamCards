@@ -28,7 +28,7 @@ export default function MenuButton({ icon, title, description, onPress, disabled
           <Text style={typography.menuText} numberOfLines={numberOfLines || 1} ellipsizeMode="clip">
             { title }
           </Text>
-          <Text style={[typography.smallLabel, typography.italic, { color: colors.M }]} numberOfLines={2} ellipsizeMode="clip">
+          <Text style={[typography.smallLabel, typography.italic, { color: colors.M, flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
             { description }
           </Text>
         </View>

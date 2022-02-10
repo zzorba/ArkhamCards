@@ -491,9 +491,6 @@ msgstr "數量"
 msgid "Add"
 msgstr "新增"
 
-msgid "Selected Difficulty"
-msgstr "選擇難度"
-
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
 msgstr "調查員: ${ investigatorName }"
@@ -5008,6 +5005,18 @@ msgid "Hide campaign decks"
 msgstr ""
 
 msgid "Select Standalone"
+msgstr ""
+
+msgid "Add ${ card.name }:"
+msgstr ""
+
+#, javascript-format
+msgid "Select ${ name }"
+msgstr ""
+
+msgid ""
+"Note: This should only be selected at deck creation time, not between "
+"scenarios."
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

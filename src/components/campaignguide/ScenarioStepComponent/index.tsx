@@ -143,7 +143,7 @@ function ScenarioStepComponentContent({
             <View style={styles.titleWrapper}>
               <Text style={[
                 typography.bigGameFont,
-                { color: colors.campaign[step.border_color || 'setup'] },
+                { color: colors.campaign.text[step.border_color || 'setup'] },
                 space.paddingTopL,
                 typography.center,
               ]}>
@@ -210,7 +210,7 @@ export default function ScenarioStepComponent({
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,
-            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
+            { color: resolution ? colors.campaign.text.resolution : colors.campaign.text.setup },
             space.paddingTopL,
             border ? typography.center : {},
           ]}>

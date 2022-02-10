@@ -632,10 +632,6 @@
             "text": "dummy"
           },
           {
-            "id": "final_night_eliya_ashevak",
-            "text": "dummy"
-          },
-          {
             "id": "final_night_eliyah_ashevak",
             "text": "dummy"
           },
@@ -2476,6 +2472,18 @@
             "text": "Profundidad #X#"
           },
           {
+            "id": "hote_consult_alejandro",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_ichtaca",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_journal",
+            "text": "dummy"
+          },
+          {
             "id": "hote_no_mulligan",
             "text": "dummy"
           },
@@ -3838,6 +3846,18 @@
           {
             "id": "final_depth",
             "text": "Profundidad #X#"
+          },
+          {
+            "id": "hote_consult_alejandro",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_ichtaca",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_consult_journal",
+            "text": "dummy"
           },
           {
             "id": "hote_no_mulligan",

@@ -37,6 +37,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
   const textInputRef = useRef<TextInput>(null);
   const clear = useCallback(() => {
     onChangeText('', true);
+    textInputRef.current?.clear();
   }, [onChangeText]);
 
   const onSearchUpdated = useCallback((value: string) => {

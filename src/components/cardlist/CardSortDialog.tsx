@@ -1,5 +1,6 @@
-import { map } from 'lodash';
+import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
+import { useMemo } from 'react';
 
 import {
   SORT_BY_TYPE,
@@ -13,7 +14,7 @@ import {
   SORT_BY_FACTION_XP,
   SORT_BY_FACTION_XP_TYPE_COST,
 } from '@actions/types';
-import { showOptionDialog } from '@components/nav/helper';
+import { useOptionDialog } from '@components/nav/helper';
 
 
 function sortToCopy(sort: SortType): string {
@@ -45,27 +46,34 @@ function sortToCopy(sort: SortType): string {
 }
 
 
-export function showSortDialog(
+export function useSortDialog(
   sortChanged: (sort: SortType) => void,
   selectedSort: SortType,
   hasEncounterCards: boolean
 ) {
-  const sorts: SortType[] = [
-    SORT_BY_TYPE,
-    SORT_BY_FACTION,
-    SORT_BY_FACTION_PACK,
-    SORT_BY_FACTION_XP,
-    SORT_BY_FACTION_XP_TYPE_COST,
-    SORT_BY_COST,
-    SORT_BY_PACK,
-    SORT_BY_TITLE,
-  ];
-  if (hasEncounterCards || selectedSort === SORT_BY_ENCOUNTER_SET) {
-    sorts.push(SORT_BY_ENCOUNTER_SET);
-  }
-  showOptionDialog(
+  const [sortCopy, sorts] = useMemo(() => {
+    const sorts: SortType[] = [
+      SORT_BY_TYPE,
+      SORT_BY_FACTION,
+      SORT_BY_FACTION_PACK,
+      SORT_BY_FACTION_XP,
+      SORT_BY_FACTION_XP_TYPE_COST,
+      SORT_BY_COST,
+      SORT_BY_PACK,
+      SORT_BY_TITLE,
+    ];
+    if (hasEncounterCards || selectedSort === SORT_BY_ENCOUNTER_SET) {
+      sorts.push(SORT_BY_ENCOUNTER_SET);
+    }
+    return [
+      map(sorts, sortToCopy),
+      sorts,
+    ];
+  }, [hasEncounterCards, selectedSort]);
+  return useOptionDialog(
     t`Sort by`,
-    map(sorts, sortToCopy),
+    findIndex(sorts, x => x === selectedSort),
+    sortCopy,
     (index: number) => {
       sortChanged(sorts[index]);
     }

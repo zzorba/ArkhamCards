@@ -567,8 +567,8 @@ function ChaosBagOddsSection({
               <View style={[styles.passPile, failing.length ? { paddingLeft: 2 } : undefined]}>
                 <ChaosTokenPile mode="pass" showBlurse={showBlurse} pile={passing} height={height} totalTokens={total} />
                 <View style={[space.paddingTopS, space.paddingLeftXs]}>
-                  <Text style={[typography.large, { color: colors.campaign.setup }]}>{passPercent}%</Text>
-                  <Text style={[typography.smallLabel, { color: colors.campaign.setup }]} ellipsizeMode="clip" numberOfLines={1}>
+                  <Text style={[typography.large, { color: colors.campaign.text.setup }]}>{passPercent}%</Text>
+                  <Text style={[typography.smallLabel, { color: colors.campaign.text.setup }]} ellipsizeMode="clip" numberOfLines={1}>
                     {tokenRatioString(passingTokens, bagTotal)}
                   </Text>
                 </View>
@@ -580,7 +580,7 @@ function ChaosBagOddsSection({
               <View style={[styles.innerBar, { borderTopLeftRadius: 1.5, borderBottomLeftRadius: 1.5, left: 0, backgroundColor: colors.warn, width: `${Math.round(failingTokens / bagTotal * 100)}%` }]} />
             ) }
             { passingTokens > 0 && (
-              <View style={[styles.innerBar, { borderTopRightRadius: 1.5, borderBottomRightRadius: 1.5, right: 0, backgroundColor: colors.campaign.setup, width: `${Math.round(passingTokens / bagTotal * 100)}%` }]} />
+              <View style={[styles.innerBar, { borderTopRightRadius: 1.5, borderBottomRightRadius: 1.5, right: 0, backgroundColor: colors.campaign.text.setup, width: `${Math.round(passingTokens / bagTotal * 100)}%` }]} />
             ) }
           </View>
         </View>

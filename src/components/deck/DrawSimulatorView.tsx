@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lodash';
+import React, { useCallback, useContext, useMemo, useReducer, useState } from 'react';
+import { concat, filter, flatMap, map, shuffle, range, without, keys, update } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -32,15 +32,67 @@ interface DrawnState {
   selectedCards: string[];
 }
 
+interface DrawCardsAction {
+  type: 'draw';
+  count: number | 'all';
+}
+interface ResetAction {
+  type: 'reset';
+  shuffledDeck: string[];
+}
+interface ToggleSelectionAction {
+  type: 'selection';
+  id: string;
+}
+
+interface ReshuffleSelected {
+  type: 'reshuffle';
+}
+
+
+interface RedrawSelected {
+  type: 'redraw';
+}
+
+type DrawnStateAction = DrawCardsAction | ToggleSelectionAction | ResetAction | ReshuffleSelected | RedrawSelected;
+
 function Button({ title, disabled, onPress }: { title: string; disabled?: boolean; onPress: () => void }) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View style={{ borderRadius: 4, padding: xs, backgroundColor: colors.L20 }}>
-        <Text style={[typography.button, typography.center, typography.light]}>{title}</Text>
+        <Text style={[typography.button, typography.center, disabled ? { color: colors.M } : { color: colors.D20 }]}>{title}</Text>
       </View>
     </TouchableOpacity>
   )
+}
+
+
+function drawHelper(drawState: DrawnState, count: number | 'all'): {
+  shuffledDeck: string[];
+  drawnCards: string[];
+} {
+  const {
+    drawnCards,
+    shuffledDeck,
+  } = drawState;
+  if (count === 'all') {
+    return {
+      drawnCards: [
+        ...shuffledDeck,
+        ...drawnCards,
+      ],
+      shuffledDeck: [],
+    };
+  }
+
+  return {
+    drawnCards: [
+      ...shuffledDeck.slice(0, count),
+      ...drawnCards,
+    ],
+    shuffledDeck: shuffledDeck.slice(count),
+  };
 }
 
 export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
@@ -62,7 +114,59 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
           return map(range(0, slots[cardId]), copy => `${cardId}-${copy}`);
         }));
   }, [cards, slots]);
-  const [drawState, setDrawState] = useState<DrawnState>({
+  const [drawState, updateDrawState] = useReducer<React.Reducer<DrawnState, DrawnStateAction>>((state: DrawnState, action: DrawnStateAction): DrawnState => {
+    switch (action.type) {
+      case 'selection': {
+        if (state.selectedCards.indexOf(action.id) !== -1) {
+          return {
+            ...state,
+            selectedCards: without(state.selectedCards, action.id),
+          };
+        }
+        return {
+          ...state,
+          selectedCards: [
+            ...state.selectedCards,
+            action.id,
+          ],
+        };
+      }
+      case 'reshuffle': {
+        const selectedSet = new Set(state.selectedCards);
+        const newDrawnCards = filter(state.drawnCards, key => !selectedSet.has(key));
+        return {
+          shuffledDeck: shuffle(concat(state.shuffledDeck, state.selectedCards)),
+          drawnCards: newDrawnCards,
+          selectedCards: [],
+        };
+      }
+      case 'redraw': {
+        const {
+          drawnCards,
+          shuffledDeck,
+        } = drawHelper(state, state.selectedCards.length);
+        const selectedSet = new Set(state.selectedCards);
+        const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
+        return {
+          shuffledDeck: shuffle(concat(shuffledDeck, state.selectedCards)),
+          drawnCards: newDrawnCards,
+          selectedCards: [],
+        };
+      }
+      case 'reset':
+        return {
+          shuffledDeck: action.shuffledDeck,
+          drawnCards: [],
+          selectedCards: [],
+        };
+      case 'draw':
+        return {
+          ...drawHelper(state, action.count),
+          selectedCards: state.selectedCards,
+        };
+    }
+  },
+  {
     shuffledDeck: shuffleFreshDeck(),
     drawnCards: [],
     selectedCards: [],
@@ -70,106 +174,25 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
 
 
   const resetDeck = useCallback(() => {
-    setDrawState({
-      shuffledDeck: shuffleFreshDeck(),
-      drawnCards: [],
-      selectedCards: [],
-    });
-  }, [setDrawState, shuffleFreshDeck]);
+    updateDrawState({ type: 'reset', shuffledDeck: shuffleFreshDeck() });
+  }, [updateDrawState, shuffleFreshDeck]);
 
   const reshuffleSelected = useCallback(() => {
-    const {
-      selectedCards,
-      drawnCards,
-      shuffledDeck,
-    } = drawState;
-    const selectedSet = new Set(selectedCards);
-    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
-    setDrawState({
-      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
-      drawnCards: newDrawnCards,
-      selectedCards: [],
-    });
-  }, [drawState, setDrawState]);
+    updateDrawState({ type: 'reshuffle' });
+  }, [updateDrawState]);
 
   useEffectUpdate(() => {
     resetDeck();
   }, [cards, slots]);
-
-  const drawHelper = useCallback((count: number | 'all') => {
-    const {
-      drawnCards,
-      shuffledDeck,
-    } = drawState;
-    if (count === 'all') {
-      return {
-        drawnCards: [
-          ...shuffledDeck,
-          ...drawnCards,
-        ],
-        shuffledDeck: [],
-      };
-    }
-
-    return {
-      drawnCards: [
-        ...shuffledDeck.slice(0, count),
-        ...drawnCards,
-      ],
-      shuffledDeck: shuffledDeck.slice(count),
-    };
-  }, [drawState]);
-
-  const redrawSelected = useCallback(() => {
-    const {
-      selectedCards,
-    } = drawState;
-    const {
-      drawnCards,
-      shuffledDeck,
-    } = drawHelper(selectedCards.length);
-
-    const selectedSet = new Set(selectedCards);
-    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
-    setDrawState({
-      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
-      drawnCards: newDrawnCards,
-      selectedCards: [],
-    });
-  }, [drawState, drawHelper, setDrawState]);
-
-
-  const draw = useCallback((count: number | 'all') => {
-    setDrawState({
-      selectedCards: drawState.selectedCards,
-      ...drawHelper(count),
-    });
-  }, [drawState, drawHelper, setDrawState]);
-
-  const drawOne = useCallback(() => draw(1), [draw]);
-  const drawTwo = useCallback(() => draw(2), [draw]);
-  const drawFive = useCallback(() => draw(5), [draw]);
-  const drawAll = useCallback(() => draw('all'), [draw]);
+  const redrawSelected = useCallback(() => updateDrawState({ type: 'redraw' }), [updateDrawState]);
+  const drawOne = useCallback(() => updateDrawState({ type: 'draw', count: 1 }), [updateDrawState]);
+  const drawTwo = useCallback(() => updateDrawState({ type: 'draw', count: 2 }), [updateDrawState]);
+  const drawFive = useCallback(() => updateDrawState({ type: 'draw', count: 5 }), [updateDrawState]);
+  const drawAll = useCallback(() => updateDrawState({ type: 'draw', count: 'all' }), [updateDrawState]);
 
   const toggleSelection = useCallback((id: string) => {
-    const {
-      selectedCards,
-    } = drawState;
-    if (selectedCards.indexOf(id) !== -1) {
-      setDrawState({
-        ...drawState,
-        selectedCards: without(selectedCards, id),
-      });
-    } else {
-      setDrawState({
-        ...drawState,
-        selectedCards: [
-          ...selectedCards,
-          id,
-        ],
-      });
-    }
-  }, [drawState, setDrawState]);
+    updateDrawState({ type: 'selection', id });
+  }, [updateDrawState]);
 
   const footer = useMemo(() => {
     const {
@@ -247,24 +270,24 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
         id={item.key}
         card={card}
         onPressId={toggleSelection}
+        onPressDebounce={100}
         backgroundColor={item.selected ? colors.L20 : undefined}
       />
     );
   }, [cards, colors, toggleSelection]);
 
-  const {
-    drawnCards,
-    selectedCards,
-  } = drawState;
-  const selectedSet = useMemo(() => new Set(selectedCards), [selectedCards]);
-  const data = useMemo(() => map(drawnCards, cardKey => {
+  const selectedSet = useMemo(() => new Set(drawState.selectedCards), [drawState.selectedCards]);
+  const data = useMemo(() => flatMap(drawState.drawnCards, cardKey => {
+    if (!cardKey) {
+      return [];
+    }
     const parts = cardKey.split('-');
     return {
       key: cardKey,
       code: parts[0],
       selected: selectedSet.has(cardKey),
     };
-  }), [drawnCards, selectedSet]);
+  }), [drawState.drawnCards, selectedSet]);
   return (
     <View style={[styles.container, backgroundStyle]}>
       <FlatList

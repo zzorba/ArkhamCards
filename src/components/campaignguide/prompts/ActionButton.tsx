@@ -25,8 +25,8 @@ function getBackgroundColor(color: 'dark' | 'light' | 'green' | 'red', colors: T
   switch (color) {
     case 'dark': return colors.D10;
     case 'light': return colors.L15;
-    case 'green': return colors.campaign.setup;
-    case 'red': return colors.campaign.resolution;
+    case 'green': return colors.campaign.text.setup;
+    case 'red': return colors.campaign.text.resolution;
   }
 }
 

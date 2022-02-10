@@ -570,11 +570,15 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): Card
   const { getPlayerCards } = useContext(PlayerCardContext);
   useEffect(() => {
     let canceled = false;
-    getPlayerCards(codes, tabooSetId).then(cards => {
-      if (!canceled) {
-        setCards(cards);
-      }
-    });
+    if (codes.length) {
+      getPlayerCards(codes, tabooSetId).then(cards => {
+        if (!canceled) {
+          setCards(cards);
+        }
+      });
+    } else {
+      setCards({});
+    }
     return () => {
       canceled = true;
     };
@@ -628,6 +632,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'justify': return !!state.settings.justifyContent;
       case 'single_card': return !!state.settings.singleCardView;
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
+      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
     }
   });
 }

@@ -1,8 +1,7 @@
 import Crashes from 'appcenter-crashes';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
-import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
-import { Appearance } from 'react-native-appearance';
+import { Appearance, TouchableOpacity, Platform, Linking, LogBox, ColorSchemeName } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
 import { addEventListener as addLangEventListener } from 'react-native-localize';
@@ -128,7 +127,7 @@ export default class App {
   };
 
   setDefaultOptions(
-    colorScheme: 'light' | 'dark' | 'no-preference',
+    colorScheme: ColorSchemeName,
     changeUpdate?: boolean
   ) {
     const system = !this.currentThemeOverride;
