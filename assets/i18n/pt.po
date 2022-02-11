@@ -3321,7 +3321,7 @@ msgid "Echoes of the Past"
 msgstr "Ecos do passado"
 
 msgid "The Unspeakable Oath"
-msgstr "O Juramento Indizível"
+msgstr "O Juramento Impronunciável"
 
 msgid "Lost Soul"
 msgstr "Alma perdida"
