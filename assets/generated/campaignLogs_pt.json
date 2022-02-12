@@ -1123,8 +1123,8 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "possessed",
@@ -1133,11 +1133,11 @@
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "os investigadores foram atacados quando escaparam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "você acordou dentro das catacumbas."
           },
           {
             "id": "carcosa_merged",
@@ -1153,19 +1153,19 @@
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "você não escapou do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "você entrou nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "os investigadores escaparam do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "você fugiu do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1173,11 +1173,11 @@
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "você encontrou Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "você encontrou a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
@@ -1185,23 +1185,23 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "você atendeu ao aviso de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "você ignorou o aviso de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "você se intrometeu em uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "o rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "você conhece o local do portão."
           },
           {
             "id": "left_onyx_clasp",
@@ -1225,7 +1225,7 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "você matou os monstros no jantar."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -1241,7 +1241,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "você não conseguiu encontrar Nigel."
           }
         ]
       },
@@ -1549,8 +1549,8 @@
         "entries": [
           {
             "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "possessed",
@@ -1559,11 +1559,11 @@
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "os investigadores foram atacados quando escaparam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "você acordou dentro das catacumbas."
           },
           {
             "id": "carcosa_merged",
@@ -1579,19 +1579,19 @@
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "você não escapou do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "você entrou nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "os investigadores escaparam do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "você fugiu do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1599,11 +1599,11 @@
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "você encontrou Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "você encontrou a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
@@ -1611,23 +1611,23 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "você atendeu ao aviso de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "você ignorou o aviso de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "você se intrometeu em uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "o rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "você conhece o local do portão."
           },
           {
             "id": "left_onyx_clasp",
@@ -1651,7 +1651,7 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "você matou os monstros no jantar."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -1667,7 +1667,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "você não conseguiu encontrar Nigel."
           }
         ]
       },
