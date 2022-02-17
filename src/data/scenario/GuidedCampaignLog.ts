@@ -1420,11 +1420,6 @@ export default class GuidedCampaignLog {
   }
 
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, numberInput?: number) {
-    const value: number = (
-      (effect.operation === 'add_input' || effect.operation === 'set_input') ?
-        numberInput :
-        effect.value
-    ) || 0;
     if (!effect.id) {
       // Section entry
       const section = this.countSections[effect.section] || {
@@ -1433,13 +1428,16 @@ export default class GuidedCampaignLog {
       const count = section.count;
       switch (effect.operation) {
         case 'add':
-          section.count = count + value;
+          section.count = count + (effect.value || 0);
+          break;
+        case 'set':
+          section.count = effect.value || 0;
           break;
         case 'add_input':
           section.count = count + (numberInput || 0);
           break;
-        case 'set':
-          section.count = value;
+        case 'subtract_input':
+          section.count = count - (numberInput || 0);
           break;
         case 'set_input':
           section.count = numberInput || 0;
@@ -1447,11 +1445,15 @@ export default class GuidedCampaignLog {
       }
       this.countSections[effect.section] = section;
     } else {
+      const value: number = (
+        (effect.operation === 'add_input' || effect.operation === 'set_input' || effect.operation === 'subtract_input') ?
+          numberInput :
+          effect.value
+      ) || 0;
       const section = this.sections[effect.section] || {
         entries: [],
         crossedOut: {},
       };
-
       this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
     }
   }

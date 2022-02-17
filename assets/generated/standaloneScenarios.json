@@ -65,6 +65,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "red_tide_rising"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "the_eternal_slumber"
   },
   {
