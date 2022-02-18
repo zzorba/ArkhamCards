@@ -1503,7 +1503,7 @@ msgid "Multiplayer"
 msgstr "多人遊戲"
 
 msgid "Standalone"
-msgstr "獨立劇本"
+msgstr "獨立冒險"
 
 msgid "Debug Card Json"
 msgstr "Debug Card Json"
@@ -3160,22 +3160,22 @@ msgstr ""
 "文字的口述。"
 
 msgid "Are you sure you want to delete this standalone?"
-msgstr "你是否確定要刪除這個獨立劇本？"
+msgstr "你是否確定要刪除這個獨立冒險？"
 
 msgid "Delete standalone"
-msgstr "刪除獨立劇本"
+msgstr "刪除獨立冒險"
 
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at arkhamcards@gmail.com, "
 "and I'll see about including it in a future release."
 msgstr ""
-"找不到你最喜歡的獨立劇本嗎？請聯繫arkhamcards@gmail.com，我會盡可能在未來的更新中加入。"
+"找不到你最喜歡的獨立冒險嗎？請聯繫arkhamcards@gmail.com，我會盡可能在未來的更新中加入。"
 
 msgid "New Standalone"
-msgstr "新獨立劇本"
+msgstr "新獨立冒險"
 
 msgid "Create Standalone"
-msgstr "建立獨立劇本"
+msgstr "建立獨立冒險"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "The Chameleon"
@@ -4236,13 +4236,13 @@ msgid "Edit my spoiler settings"
 msgstr "編輯我的劇透設定"
 
 msgid "Crown of Egil"
-msgstr "Crown of Egil"
+msgstr ""
 
 msgid "The Crown of Egil"
-msgstr "The Crown of Egil"
+msgstr ""
 
 msgid "Traces of Egil"
-msgstr "Traces of Egil"
+msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
@@ -4390,7 +4390,7 @@ msgstr "支援: 手部 x2. 法術"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ supplyIcon } ${ total } 的 ${ spent }"
 
 msgid "Choose deck"
 msgstr "選擇牌組"
@@ -4405,7 +4405,7 @@ msgid "Please close and restart the app"
 msgstr "請關閉並重新打開此APP"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "重置卡牌資料庫"
 
 msgid "Mythos Busters"
 msgstr "Mythos Busters"
@@ -4580,7 +4580,7 @@ msgstr "你可以治癒1點肉體或精神創傷<i>(你的選擇)</i>"
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next to "
 "${ partnerName }."
-msgstr ""
+msgstr "在劇本日誌中${ sectionName }部分，在${ partnerName }的名字旁打勾。"
 
 msgid "Choose heal type"
 msgstr "選擇治癒類型"
@@ -4598,7 +4598,7 @@ msgid "Choose expansions for basic weakness"
 msgstr ""
 
 msgid "Uploading campaign"
-msgstr "上傳劇本"
+msgstr "劇本上傳中"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
@@ -4911,16 +4911,16 @@ msgid "Edit Side Deck"
 msgstr ""
 
 msgid "Creating campaign..."
-msgstr ""
+msgstr "建立劇本..."
 
 msgid "Creating standalone..."
-msgstr ""
+msgstr "建立獨立冒險..."
 
 msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
+msgstr "劇本將會在裝置之間同步，並且能夠與朋友共享"
 
 msgid "Campaign will be local to this device, you can choose to upload it later"
-msgstr ""
+msgstr "劇本將會保存在本機裝置，你可以選擇稍後再上傳"
 
 #, javascript-format
 msgid "(${ count } card)"
@@ -4970,16 +4970,16 @@ msgid "Move to deck"
 msgstr ""
 
 msgid "Unarchive standalone"
-msgstr ""
+msgstr "解除歸檔獨立冒險"
 
 msgid "Archive standalone"
-msgstr ""
+msgstr "歸檔獨立冒險"
 
 msgid "Bless / Curse"
 msgstr ""
 
 msgid "You appear to be offline. Tap to check for network."
-msgstr ""
+msgstr "你似乎沒有網路連線。點擊以確認網路連線。"
 
 msgid "Guardians of the Abyss"
 msgstr "深淵守護者"
@@ -5007,14 +5007,12 @@ msgid "Select ${ name }"
 msgstr ""
 
 msgid "Note: This should only be selected at deck creation time, not between scenarios."
-msgstr ""
-"注意：此卡牌應該在構建牌組時選擇，而不是在冒險與冒險This should only be selected at deck "
-"creation time, not between scenarios."
+msgstr "注意：此卡牌應該在構建牌組時選擇，而不是在兩場冒險之間。"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6452,7 +6450,7 @@ msgstr "播放語音"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "語音速度: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -6495,15 +6493,15 @@ msgstr "審判·XX(逆位)"
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
-msgstr ""
+msgstr "劇本"
 
 msgctxt "new_campaign_type"
 msgid "Standalones"
-msgstr ""
+msgstr "獨立冒險"
 
 msgctxt "versus abbreviation"
 msgid "VS"
@@ -6511,4 +6509,4 @@ msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
