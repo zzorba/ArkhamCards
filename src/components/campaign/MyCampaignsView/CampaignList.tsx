@@ -45,7 +45,11 @@ interface ButtonItemType {
   button: React.ReactNode;
 }
 
-type ItemType = CampaignItemType | ButtonItemType;
+interface FooterType {
+  type: 'footer';
+}
+
+type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
 type ItemHeader = string;
 
@@ -131,7 +135,10 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   const [connectionProblemBanner, connectionProblemBannerHeight] = useConnectionProblemBanner({ width });
 
   const [data, empty] = useMemo(() => {
+    const empty = campaigns.length === 0;
+    const footerItem: FooterType = { type: 'footer' };
     const items: ItemType[] = [
+      ...(empty ? [footerItem] : []),
       ...map(campaigns, (campaign): CampaignItemType => {
         return {
           type: 'campaign',
@@ -144,9 +151,10 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           button,
         };
       }),
+      ...(!empty ? [footerItem] : []),
     ];
     const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
-    return [feed, campaigns.length === 0];
+    return [feed, empty];
   }, [campaigns, buttons]);
   const searchHeight = searchBoxHeight(fontScale);
   const renderFooter = useCallback(() => {
@@ -183,6 +191,9 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
   }, [fontScale, lang]);
 
   const renderItem = useCallback((item: ItemType) => {
+    if (item.type === 'footer') {
+      return renderFooter();
+    }
     if (item.type === 'campaign') {
       const campaign = item.campaign;
       if (campaign.cycleCode === STANDALONE) {
@@ -205,7 +216,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       );
     }
     return <>{item.button}</>;
-  }, [onPress, standalonesById]);
+  }, [onPress, renderFooter, standalonesById]);
   return (
     <ArkhamLargeList
       onRefresh={onRefresh}
@@ -216,8 +227,6 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       heightForSection={heightForSection}
       renderItem={renderItem}
       renderSection={renderSection}
-      renderHeader={empty ? renderFooter : undefined}
-      renderFooter={!empty ? renderFooter : undefined}
       updateTimeInterval={100}
       groupCount={8}
       groupMinHeight={height}

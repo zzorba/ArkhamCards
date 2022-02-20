@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import DeckActionRow from './DeckActionRow';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useEffectUpdate } from '@components/core/hooks';
-import { InteractionManager } from 'react-native';
 
 interface Props {
   title: string;

@@ -633,7 +633,7 @@ function UpgradeDeckRow({
       );
     }
     return null;
-  }, [choices, specialExileSlots, specialExile, updateSpecialExileCount, deck, saving]);
+  }, [choices, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving]);
   const exileSection = useMemo(() => {
     if (deck && (choices === undefined || keys(savedExileCounts).length > 0)) {
       return (
@@ -650,7 +650,7 @@ function UpgradeDeckRow({
       );
     }
     return specialExileSection;
-  }, [deck, componentId, saving, onExileCountChange, updateSpecialExileCount, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
+  }, [deck, componentId, saving, onExileCountChange, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
   const campaignSection = useMemo(() => {
     return (
       <>

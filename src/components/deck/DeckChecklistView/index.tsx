@@ -6,7 +6,7 @@ import { find } from 'lodash';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
-import { Slots, SORT_BY_TYPE, SortType, DeckId } from '@actions/types';
+import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
@@ -20,10 +20,14 @@ import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeckEdits, useDeckSlotCount } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import useSingleCard from '@components/card/useSingleCard';
+import { useCampaignDeck } from '@data/hooks';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 export interface DeckChecklistProps {
   id: DeckId;
   slots: Slots;
+  campaignId?: CampaignId;
   tabooSetOverride?: number;
 }
 
@@ -63,8 +67,10 @@ function ChecklistCard({
 function DeckChecklistView({
   componentId,
   id,
+  campaignId,
 }: Props) {
   const { colors, typography, fontScale, width } = useContext(StyleContext);
+  const deck = useCampaignDeck(id, campaignId);
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
@@ -121,6 +127,7 @@ function DeckChecklistView({
       m * 2 + 22 * fontScale,
     ];
   }, [checklist, typography, colors, fontScale, clearChecklist, width]);
+  const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.investigator, 'player', deckEdits?.tabooSetChange || deck?.deck.taboo_id);
 
   if (!deckEdits) {
     return null;
@@ -131,12 +138,14 @@ function DeckChecklistView({
       <DbCardResultList
         componentId={componentId}
         deckId={id}
+        investigator={investigator}
         sort={sort}
         headerItems={headerItems}
         headerHeight={headerHeight}
         renderCard={renderCard}
         noSearch
         currentDeckOnly
+        footerPadding={NOTCH_BOTTOM_PADDING}
       />
       { sortDialog }
     </>

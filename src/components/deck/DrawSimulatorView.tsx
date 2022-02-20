@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo, useReducer, useState } from 'react';
-import { concat, filter, flatMap, map, shuffle, range, without, keys, update } from 'lodash';
+import React, { useCallback, useContext, useMemo, useReducer } from 'react';
+import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lodash';
 import {
   FlatList,
   StyleSheet,

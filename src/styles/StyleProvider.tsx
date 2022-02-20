@@ -65,7 +65,7 @@ function useDimensions(): [ScaledSize, ScaledSize] {
     }
     const subscription = Dimensions.addEventListener('change', handleChange);
     // Read one last time, in case stuff 'moved' between last read and this.
-    handleChange({ window: Dimensions.get('window'), screen: Dimensions.get('screen')});
+    handleChange({ window: Dimensions.get('window'), screen: Dimensions.get('screen') });
     return () => {
       subscription.remove();
     };

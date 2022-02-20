@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, DeckId, getDeckId, SORT_BY_TYPE, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -163,7 +163,7 @@ function DeckDetailView({
   const flatDeckCards = useMemo(() => flatMap(deckCards, c =>
     c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0) ? c : []), [deckCards, deckEdits]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
-  const [bondedCards] = useBondedFromCards(flatDeckCards, tabooSetId);
+  const [bondedCards] = useBondedFromCards(flatDeckCards, SORT_BY_TYPE, tabooSetId);
   const cards = useMemo(() => {
     const r = {
       ...deckCards,
@@ -407,11 +407,12 @@ function DeckDetailView({
           id: deckId,
           slots: deckEditsRef.current.slots,
           tabooSetOverride: tabooSetId,
+          campaignId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
+  }, [componentId, campaignId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
 
   const showDrawWeakness = useShowDrawWeakness({
     componentId,
