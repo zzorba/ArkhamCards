@@ -4375,7 +4375,6 @@ msgstr ""
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr ""
 msgstr "Z sekcji ${ sectionName } Dziennika kampanii, wykreśl ${ partnerName },"
 
 #, javascript-format
