@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { findIndex, find, map, flatMap } from 'lodash';
 import { t } from 'ttag';
@@ -20,7 +20,6 @@ import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
-import BorderWrapper from '@components/campaignguide/BorderWrapper';
 import StoryButton from './StoryButton';
 
 
@@ -40,7 +39,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
   const { campaign, campaignGuide } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario, processedCampaign } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
-  const { colors, typography, width } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const allInvestigators = useMemo(() => processedScenario.latestCampaignLog.investigators(false), [processedScenario.latestCampaignLog]);
   const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>();
   const standalone = !!campaign.standaloneId;

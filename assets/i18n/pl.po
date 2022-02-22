@@ -1,114 +1,116 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<12 || n%100>14) ? 1 : 2);\n"
-"Language: pl\n"
-"mime-version: 1.0\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n"
+"%100>14) ? 1 : 2);\n"
+"mime-version: 1.0\n"
 "x-generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Guardian"
-msgstr ""
+msgstr "Strażnik"
 
 msgid "Seeker"
-msgstr ""
+msgstr "Poszukiwacz"
 
 msgid "Mystic"
-msgstr ""
+msgstr "Mistyk"
 
 msgid "Rogue"
-msgstr ""
+msgstr "Łotr"
 
 msgid "Survivor"
-msgstr ""
+msgstr "Ocalały"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
-msgstr ""
+msgstr "Nautralna"
 
 msgid "Weakness"
-msgstr ""
+msgstr "Osłabienie"
 
 msgid "Mythos"
-msgstr ""
+msgstr "Mit"
 
 msgid "Unknown"
-msgstr ""
+msgstr "Nieznany"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
-msgstr ""
+msgstr "Badacz"
 
 msgid "Asset: Hand"
-msgstr ""
+msgstr "Atut: Ręka"
 
 msgid "Asset: Hand x2"
-msgstr ""
+msgstr "Atut: Ręka x2"
 
 msgid "Asset: Hand. Arcane"
-msgstr ""
+msgstr "Atut: Ręka. Mistyczna"
 
 msgid "Asset: Body. Hand x2"
-msgstr ""
+msgstr "Atut: Ciało. Ręka x2"
 
 msgid "Asset: Accessory"
-msgstr ""
+msgstr "Atut: Drobiazg"
 
 msgid "Asset: Ally"
-msgstr ""
+msgstr "Atut: Sprzymierzeniec"
 
 msgid "Asset: Arcane"
-msgstr ""
+msgstr "Atut: Mistyczna"
 
 msgid "Asset: Arcane x2"
-msgstr ""
+msgstr "Atut: Mistyczna x2"
 
 msgid "Asset: Body"
-msgstr ""
+msgstr "Atut: Ciało"
 
 msgid "Asset: Permanent"
-msgstr ""
+msgstr "Atut: Trwały"
 
 msgid "Asset: Tarot"
-msgstr ""
+msgstr "Atut: Tarot"
 
 msgid "Asset: Other"
-msgstr ""
+msgstr "Atut: Inny"
 
 msgid "Event"
-msgstr ""
+msgstr "Wydarzenie"
 
 msgid "Skill"
-msgstr ""
+msgstr "Umiejętność"
 
 msgid "Basic Weakness"
-msgstr ""
+msgstr "Podstawowe Osłabienie"
 
 msgid "Scenario"
-msgstr ""
+msgstr "Scenariusz"
 
 msgid "Story"
 msgstr ""
 
 #, javascript-format
 msgid "Act ${ json.stage }"
-msgstr ""
+msgstr "Akt ${ json.stage }"
 
 msgid "Agenda ${ json.stage }"
-msgstr ""
+msgstr "Tajemnica ${ json.stage }"
 
 #, javascript-format
 msgid "Act ${ linked_card.stage }"
-msgstr ""
+msgstr "Akt ${ linked_card.stage }"
 
 msgid "Agenda ${ linked_card.stage }"
-msgstr ""
+msgstr "Tajemnica ${ linked_card.stage }"
 
 msgid "Second Core Set"
 msgstr ""
@@ -157,7 +159,7 @@ msgid "Edit Story Cards"
 msgstr ""
 
 msgid "Draw Basic Weakness"
-msgstr ""
+msgstr "Wylosuj Podstawowe Osłabienie"
 
 msgid "Draw From Collection"
 msgstr ""
@@ -167,7 +169,7 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Draw Weaknesses"
-msgstr ""
+msgstr "Wylosuj Osłabienia"
 
 msgid "Save"
 msgstr ""
@@ -539,268 +541,268 @@ msgid "Experience"
 msgstr ""
 
 msgid "Easy"
-msgstr ""
+msgstr "Łatwy"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standardowy"
 
 msgid "Hard"
-msgstr ""
+msgstr "Trudny"
 
 msgid "Expert"
-msgstr ""
+msgstr "Ekspercki"
 
 msgid "Night of the Zealot"
-msgstr ""
+msgstr "Noc Fanatyka"
 
 msgid "Return to the Night of the Zealot"
-msgstr ""
+msgstr "Powrót Nocy Fanatyka"
 
 msgid "The Dunwich Legacy"
-msgstr ""
+msgstr "Dziedzictwo Dunwich"
 
 msgid "Return to The Dunwich Legacy"
-msgstr ""
+msgstr "Powrót Dziedzictwa Dunwich"
 
 msgid "The Path To Carcosa"
-msgstr ""
+msgstr "Szlak do Carcosy"
 
 msgid "The Forgotten Age"
-msgstr ""
+msgstr "Zapomniana Era"
 
 msgid "The Circle Undone"
-msgstr ""
+msgstr "Przerwany Krąg"
 
 msgid "The Gathering"
-msgstr ""
+msgstr "Zgromadzenie"
 
 msgid "The Midnight Masks"
-msgstr ""
+msgstr "Maski Północy"
 
 msgid "The Devourer Below"
-msgstr ""
+msgstr "Pożeracz z Otchłani"
 
 msgid "Extracurricular Activity"
-msgstr ""
+msgstr "Zajęcia Pozalekcyjne"
 
 msgid "The House Always Wins"
-msgstr ""
+msgstr "Kasyno Zawsze Wygrywa"
 
 msgid "Armitage’s Fate"
-msgstr ""
+msgstr "Los Armitage'a"
 
 msgid "The Miskatonic Museum"
-msgstr ""
+msgstr "Muzeum Miskatonic"
 
 msgid "Essex County Express"
-msgstr ""
+msgstr "Essex County Express"
 
 msgid "Blood on the Altar"
-msgstr ""
+msgstr "Krew na Ołtarzu"
 
 msgid "The Survivors"
 msgstr ""
 
 msgid "Undimensioned and Unseen"
-msgstr ""
+msgstr "Bezwymiarowe i Niewidzialne"
 
 msgid "Where Doom Awaits"
-msgstr ""
+msgstr "Gdzie Czeka Zagłada"
 
 msgid "Lost in Time and Space"
-msgstr ""
+msgstr "Zagubieni w Czasie i Przestrzeni"
 
 msgid "Epilogue"
-msgstr ""
+msgstr "Epilog"
 
 msgid "Return to Extracurricular Activity"
-msgstr ""
+msgstr "Powrót Zajęć Pozalekcyjnych"
 
 msgid "Return to The House Always Wins"
-msgstr ""
+msgstr "Powrót Kasyno Zawsze Wygrywa"
 
 msgid "Return to The Miskatonic Museum"
-msgstr ""
+msgstr "Powrót Muzeum Miskatonic"
 
 msgid "Return to Essex County Express"
-msgstr ""
+msgstr "Powrót Essex County Express"
 
 msgid "Return to Blood on the Altar"
-msgstr ""
+msgstr "Powrót Krwi na Ołtarzu"
 
 msgid "Return to Undimensioned and Unseen"
-msgstr ""
+msgstr "Powrót Bezwymiarowych i Niewidzialnych"
 
 msgid "Return to Where Doom Awaits"
-msgstr ""
+msgstr "Powrót Gdzie Czeka ZagładaPowrót Gdzie Czeka Zagłada"
 
 msgid "Return to Lost in Time and Space"
-msgstr ""
+msgstr "Powrót Zagubionych w Czasie i Przestrzeni"
 
 msgid "Prologue"
-msgstr ""
+msgstr "Prolog"
 
 msgid "Curtain Call"
-msgstr ""
+msgstr "Po Opadnięciu Kurtyny"
 
 msgid "The Last King"
-msgstr ""
+msgstr "Ostatni Król"
 
 msgid "Lunacy’s Reward"
-msgstr ""
+msgstr "Dar obłędu"
 
 msgid "Echoes of the Past"
-msgstr ""
+msgstr "Echa Przeszłości"
 
 msgid "The Unspeakable Oath"
-msgstr ""
+msgstr "Nieopisywalna Przysięga"
 
 msgid "Lost Soul"
 msgstr ""
 
 msgid "A Phantom of Truth"
-msgstr ""
+msgstr "Widmo Prawdy"
 
 msgid "The Pallid Mask"
-msgstr ""
+msgstr "Blada Maska"
 
 msgid "Black Stars Rise"
-msgstr ""
+msgstr "Noc Czarnych Gwiazd"
 
 msgid "Dim Carcosa"
-msgstr ""
+msgstr "Mgły Carcosy"
 
 msgid "The Untamed Wilds"
-msgstr ""
+msgstr "Dzikie Ostępy"
 
 msgid "Restless Nights"
 msgstr ""
 
 msgid "The Doom of Eztli"
-msgstr ""
+msgstr "Zguba Eztli"
 
 msgid "Expedition’s End"
 msgstr ""
 
 msgid "Threads of Fate"
-msgstr ""
+msgstr "Nici Losu"
 
 msgid "The Boundary Beyond"
-msgstr ""
+msgstr "Poza Granicami Czasu"
 
 msgid "The Jungle Beckons"
 msgstr ""
 
 msgid "Heart of the Elders"
-msgstr ""
+msgstr "Serce Starszych"
 
 msgid "The City of Archives"
-msgstr ""
+msgstr "Miasto Archiwów"
 
 msgid "Those Held Captive"
 msgstr ""
 
 msgid "The Depths of Yoth"
-msgstr ""
+msgstr "Czeluście Yoth"
 
 msgid "The Darkness"
 msgstr ""
 
 msgid "Shattered Aeons"
-msgstr ""
+msgstr "Rozbita Wieczność"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "Prolog: Zaginięcia w Posiadłości Świtu"
 
 msgid "The Witching Hour"
-msgstr ""
+msgstr "Godzina Duchów"
 
 msgid "The Price of Progress"
-msgstr ""
+msgstr "Cena postępu"
 
 msgid "The Secret Name"
-msgstr ""
+msgstr "Sekretne imię"
 
 msgid "The Wages of Sin"
-msgstr ""
+msgstr "Zapłata za Grzechy"
 
 msgid "For the Greater Good"
-msgstr ""
+msgstr "Dla Większego Dobra"
 
 msgid "The Inner Circle"
-msgstr ""
+msgstr "Wewnętrzny krąg"
 
 msgid "Union and Disillusion"
-msgstr ""
+msgstr "Zjednoczenie i Zwątpienie"
 
 msgid "In the Clutches of Chaos"
-msgstr ""
+msgstr "W Szponach Chaosu"
 
 msgid "Twist of Fate"
-msgstr ""
+msgstr "Zrządzenie losu"
 
 msgid "Before the Black Throne"
-msgstr ""
+msgstr "Przed Czarnym Tronem"
 
 msgid "Return to The Gathering"
-msgstr ""
+msgstr "Powrót Zgromadzenia"
 
 msgid "Return to the Midnight Masks"
-msgstr ""
+msgstr "Powrót Masek Północy"
 
 msgid "Return to the Devourer Below"
-msgstr ""
+msgstr "Powrót Pożeracza z Otchłani"
 
 msgid "The Night of the Zealot"
-msgstr ""
+msgstr "Noc fanatyka"
 
 msgid "The Path to Carcosa"
-msgstr ""
+msgstr "Szlak do Carcosy"
 
 msgid "Campaign Notes"
-msgstr ""
+msgstr "Notatki z kampanii"
 
 msgid "Cultists We Interrogated"
-msgstr ""
+msgstr "Kultyści, których przesłuchaliśmy"
 
 msgid "Cultists Who Got Away"
-msgstr ""
+msgstr "Kultyści, którzy uciekli"
 
 msgid "Sacrificed to Yog-Sothoth"
-msgstr ""
+msgstr "Złożeni w ofierze Yog-Sothothowi"
 
 msgid "VIPs Interviewed"
-msgstr ""
+msgstr "Rozmowy z VIP-ami"
 
 msgid "VIPs Slain"
-msgstr ""
+msgstr "Zabici VIP-owie"
 
 msgid "Doubt"
-msgstr ""
+msgstr "Wątpliwości"
 
 msgid "Conviction"
-msgstr ""
+msgstr "Przeświadczenia"
 
 msgid "Chasing the Stranger"
-msgstr ""
+msgstr "Śladem Nieznajomego"
 
 msgid "Supplies"
-msgstr ""
+msgstr "Ekwipunek"
 
 msgid "Mementos Discovered"
-msgstr ""
+msgstr "Odkryte pamiątki"
 
 msgid "Missing Persons - Gavriella Mizrah"
-msgstr ""
+msgstr "Zaginione osoby - Gavriella Mizrah"
 
 msgid "Missing Persons - Jerome Davids"
-msgstr ""
+msgstr "Zaginione osoby - Jerome Davids"
 
 msgid "Missing Persons - Penny White"
-msgstr ""
+msgstr "Zaginione osoby - Penny White"
 
 msgid "Missing Persons - Valentino Rivas"
-msgstr ""
+msgstr "Zaginione osoby - Valentino Rivas"
 
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
@@ -828,7 +830,7 @@ msgid "New Campaign"
 msgstr ""
 
 msgid "Chaos Bag"
-msgstr ""
+msgstr "Worek chaosu"
 
 msgid "Adjust Weakness Set"
 msgstr ""
@@ -869,7 +871,7 @@ msgid "Add Log Section"
 msgstr ""
 
 msgid "Difficulty"
-msgstr ""
+msgstr "Poziom trudności"
 
 msgid "Create Campaign"
 msgstr ""
@@ -917,7 +919,7 @@ msgid "Upgrade"
 msgstr ""
 
 msgid "Scenarios"
-msgstr ""
+msgstr "Scenariusze"
 
 msgid "Scenario Result"
 msgstr ""
@@ -939,7 +941,7 @@ msgid "Show Interludes"
 msgstr ""
 
 msgid "Interlude"
-msgstr ""
+msgstr "Antrakt"
 
 msgid "Name"
 msgstr ""
@@ -966,11 +968,11 @@ msgstr ""
 
 #. This is the lead pack in a cycle.
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #. This is the lead pack in a cycle.
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
@@ -1183,7 +1185,7 @@ msgid ""
 msgstr ""
 
 msgid "Yig's Fury"
-msgstr ""
+msgstr "Furia Yiga"
 
 msgid "Doesn't comply with the Investigator requirements."
 msgstr ""
@@ -1479,7 +1481,7 @@ msgid "Myriad"
 msgstr ""
 
 msgid "Return to The Path to Carcosa"
-msgstr ""
+msgstr "Powrót Szlaku do Carcosy"
 
 msgid "The Dream-Quest"
 msgstr ""
@@ -1488,28 +1490,28 @@ msgid "The Web of Dreams"
 msgstr ""
 
 msgid "Return to Curtain Call"
-msgstr ""
+msgstr "Powrót po Opadnięciu Kurtyny"
 
 msgid "Return to The Last King"
-msgstr ""
+msgstr "Powrót Ostatniego Króla"
 
 msgid "Return to Echoes of the Past"
-msgstr ""
+msgstr "Powrót Ech Przeszłości"
 
 msgid "Return to The Unspeakable Oath"
-msgstr ""
+msgstr "Powrót Nieopisywalnej Przysięgi"
 
 msgid "Return to A Phantom of Truth"
-msgstr ""
+msgstr "Powrót Widma Prawdy"
 
 msgid "Return to The Pallid Mask"
-msgstr ""
+msgstr "Powrót Bladej Maski"
 
 msgid "Return to Black Stars Rise"
-msgstr ""
+msgstr "Powrót Nocy Czarnych Gwiazd"
 
 msgid "Return to Dim Carcosa"
-msgstr ""
+msgstr "Powrót Mgieł Carcosy"
 
 msgid "Beyond the Gates of Sleep"
 msgstr ""
@@ -1518,10 +1520,10 @@ msgid "The Black Cat"
 msgstr ""
 
 msgid "The Search for Kadath"
-msgstr ""
+msgstr "Poszukiwania Kadath"
 
 msgid "The Oneironauts"
-msgstr ""
+msgstr "Oneironauci"
 
 msgid "Dark Side of the Moon"
 msgstr ""
@@ -1545,7 +1547,7 @@ msgid "Weaver of the Cosmos"
 msgstr ""
 
 msgid "Evidence of Kadath"
-msgstr ""
+msgstr "Dowody na istnienie Kadath"
 
 msgid "Steps of the Bridge"
 msgstr ""
@@ -1579,7 +1581,7 @@ msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr ""
 
 msgid "At Death's Doorstep"
-msgstr ""
+msgstr "U Progu Śmierci"
 
 msgid "Sealed Tokens"
 msgstr ""
@@ -1619,7 +1621,7 @@ msgid "Available XP"
 msgstr ""
 
 msgid "Odds Calculator"
-msgstr ""
+msgstr "Kalkulator Szans"
 
 msgid "Weakness Set"
 msgstr ""
@@ -1661,31 +1663,31 @@ msgid "Deleting"
 msgstr ""
 
 msgid "Hand"
-msgstr ""
+msgstr "Ręka"
 
 msgid "Hand. Arcane"
-msgstr ""
+msgstr "Ręka. Mistyczna"
 
 msgid "Hand x2"
-msgstr ""
+msgstr "Ręka x2"
 
 msgid "Arcane"
-msgstr ""
+msgstr "Mistyczna"
 
 msgid "Accessory"
-msgstr ""
+msgstr "Drobiazg"
 
 msgid "Body"
-msgstr ""
+msgstr "Ciało"
 
 msgid "Body. Hand x2"
-msgstr ""
+msgstr "Ciało. Ręka x2"
 
 msgid "Ally"
-msgstr ""
+msgstr "Sprzymierzeniec"
 
 msgid "Tarot"
-msgstr ""
+msgstr "Tarot"
 
 msgid "Other"
 msgstr ""
@@ -1729,7 +1731,7 @@ msgid "Too many off-class cards for Versatile"
 msgstr ""
 
 msgid "Asset: Ally. Arcane"
-msgstr ""
+msgstr "Atut: Sprzymierzeniec. Mistyczna"
 
 msgid "Arcane x2"
 msgstr ""
@@ -1862,9 +1864,11 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"W Dzienniku kampanii, z sekcji „${ logEntry.section }\", wykreśl <i>${ logEntry.text }</"
+"i>"
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr ""
+msgstr "Zanotuj w Dzienniku kampanii, że <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
@@ -1884,7 +1888,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr ""
+msgstr "Ponieważ grasz na <b>${ difficulty }</b> poziomie trudności:"
 
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
 msgstr ""
@@ -1901,7 +1905,13 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
 msgstr[0] ""
+"Sprawdź Dziennik kampanii. Ponieważ jest ${ count } kreska w sekcji „${ logEntry."
+"section }”"
 msgstr[1] ""
+"Sprawdź Dziennik kampanii. Ponieważ są ${ count } kreski w sekcji „${ logEntry.section }”"
+msgstr[2] ""
+"Sprawdź Dziennik kampanii. Ponieważ jest ${ count } kresek w sekcji „${ logEntry."
+"section }”"
 
 msgid ""
 "Check Campaign Log. Because there is ${ count } entry under '${ "
@@ -1914,7 +1924,7 @@ msgstr[1] ""
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr ""
+msgstr "Sprawdź Dziennik kampanii. Ponieważ <i>${ entry }</i>"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
@@ -1998,7 +2008,7 @@ msgid "Undo"
 msgstr ""
 
 msgid "In your Campaign Log, record that:"
-msgstr ""
+msgstr "Zanotuj w Dzienniku kampanii, że:"
 
 msgid "Enter a name for this deck."
 msgstr ""
@@ -2022,7 +2032,7 @@ msgid "The Innsmouth Conspiracy"
 msgstr ""
 
 msgid "Return to..."
-msgstr ""
+msgstr "Powrót do..."
 
 msgid "Investigator Starter Decks"
 msgstr ""
@@ -2055,13 +2065,15 @@ msgid "Start playing the scenario now."
 msgstr ""
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr ""
+msgstr "Zanotuj w Dzienniku kampanii, że <i>${ text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"W Dzienniku kampanii, w sekcji „${ logEntry.section }\", zanotuj <i>${ logEntry.text }</"
+"i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr ""
@@ -2071,7 +2083,7 @@ msgid "Remove ${ tokenString } from the chaos bag."
 msgstr ""
 
 msgid "Odds calculator"
-msgstr ""
+msgstr "Kalkulator szans"
 
 msgid "Clean up broken campaigns"
 msgstr ""
@@ -2284,7 +2296,7 @@ msgstr ""
 
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name }."
-msgstr ""
+msgstr "${ investigator.name } zdobywa ${ card.name }."
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
@@ -2326,35 +2338,35 @@ msgid "Download printable cards"
 msgstr ""
 
 msgid "Return to Threads of Fate"
-msgstr ""
+msgstr "Powrót Nici losu"
 
 msgid "Return to Heart of the Elders"
-msgstr ""
+msgstr "Powrót Serca Starszych"
 
 msgid "Return to Shattered Aeons"
-msgstr ""
+msgstr "Powrót Rozbitej wieczności"
 
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr ""
 
 msgid "Return to The Forgotten Age"
-msgstr ""
+msgstr "Powrót Zaginionej Ery"
 
 msgid "Return to The Untamed Wilds"
-msgstr ""
+msgstr "Powrót Dzikich ostępów"
 
 msgid "Return to The Doom of Eztli"
-msgstr ""
+msgstr "Powrót Zguby Eztli"
 
 msgid "Return to The Boundary Beyond"
-msgstr ""
+msgstr "Powrót Poza granicami czasu"
 
 msgid "Return to The City of Archives"
-msgstr ""
+msgstr "Powrót Miasta Archiwów"
 
 msgid "Return to The Depths of Yoth"
-msgstr ""
+msgstr "Powrót Czeluści Yoth"
 
 msgid "Save XP"
 msgstr ""
@@ -2678,7 +2690,7 @@ msgid "Enable"
 msgstr ""
 
 msgid "Basic weakness"
-msgstr ""
+msgstr "Podstawowe osłabienie"
 
 msgid "Do not count towards deck size"
 msgstr ""
@@ -2785,7 +2797,7 @@ msgid "Curse"
 msgstr ""
 
 msgid "In Too Deep"
-msgstr ""
+msgstr "Zbyt głęboko"
 
 msgid "Devil Reef"
 msgstr ""
@@ -2803,7 +2815,7 @@ msgid "Hidden Truths"
 msgstr ""
 
 msgid "Into the Maelstrom"
-msgstr ""
+msgstr "W głąb wiru"
 
 msgid "Possible Suspects"
 msgstr ""
@@ -2815,7 +2827,7 @@ msgid "In Bag"
 msgstr ""
 
 msgid "The Syzygy"
-msgstr ""
+msgstr "Koniunkcja"
 
 msgid "Coming soon"
 msgstr ""
@@ -2897,7 +2909,7 @@ msgid "Upgrade with Shrewd Analysis"
 msgstr ""
 
 msgid "The Pit of Despair"
-msgstr ""
+msgstr "Jama rozpaczy"
 
 msgid "Puzzle Pieces"
 msgstr ""
@@ -3130,10 +3142,10 @@ msgid "Assets: ${ searchParts }"
 msgstr ""
 
 msgid "Asset"
-msgstr ""
+msgstr "Atut"
 
 msgid "Act"
-msgstr ""
+msgstr "Akt"
 
 msgid "Agenda"
 msgstr ""
@@ -3462,7 +3474,7 @@ msgid "Audio narration"
 msgstr ""
 
 msgid "Dissonant Voices"
-msgstr ""
+msgstr "Dissonant Voices"
 
 msgid "Notes"
 msgstr ""
@@ -3554,7 +3566,7 @@ msgid ""
 msgstr ""
 
 msgid "Asset: Body. Arcane"
-msgstr ""
+msgstr "Atut: Ciało. Mistyczna"
 
 msgid "Color blind friendly icons"
 msgstr ""
@@ -4012,7 +4024,7 @@ msgid "Review and add records"
 msgstr ""
 
 msgid "Chaos bag"
-msgstr ""
+msgstr "Worek chaosu"
 
 msgid "Review and simulate draw"
 msgstr ""
@@ -4051,32 +4063,36 @@ msgid "Edit selection"
 msgstr ""
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "Sprawdź Dziennik kampanii. <i>Jeśli ${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 msgid "VK"
-msgstr ""
+msgstr "VK"
 
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
+msgstr "W Dzienniku kampanii, w sekcji „${ section }”, zanotuj #name#. "
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"W Dzienniku kampanii, z sekcji „${ logEntry.section }\", wykreśl <i>${ logEntry.text }</"
+"i>."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"W Dzienniku kampanii, w sekcji „${ logEntry.section }\", zanotuj <i>${ logEntry.text }</"
+"i>"
 
 msgid "Unarchive campaign"
 msgstr ""
@@ -4088,34 +4104,34 @@ msgid "Show archived campaigns"
 msgstr ""
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "Powrót Przerwanego Kręgu"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
 msgstr ""
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "Powrót Godziny duchów"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "Powrót U progu śmierci"
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "Powrót Sekretnego imienia"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "Powrót Zapłaty za grzechy"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "Powrót Dla większego dobra"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "Powrót Zjednoczenia i zwątpienia"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "Powrót W szponach chaosu"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "Powrót Przed Czarnym Tronem"
 
 msgid "Loading account"
 msgstr ""
@@ -4184,22 +4200,22 @@ msgid ""
 msgstr ""
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "Łatwy poziom trudności"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "Standardowy poziom trudności"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "Trudny poziom trudności"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "Ekspercki poziom trudności"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— Poziom trudności —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— Dostępne Scenariusze —"
 
 msgid "Scenario settings"
 msgstr ""
@@ -4279,7 +4295,7 @@ msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr ""
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "Atut: Ręka x2. Mistyczna"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -4359,7 +4375,7 @@ msgstr ""
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr ""
+msgstr "Z sekcji ${ sectionName } Dziennika kampanii, wykreśl ${ partnerName },"
 
 #, javascript-format
 msgid ""
@@ -4528,13 +4544,13 @@ msgid "Replace a skull with a 0 token."
 msgstr ""
 
 msgid "Judgement · XX"
-msgstr ""
+msgstr "XX · Sąd Ostateczny"
 
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "XX · Sąd Ostateczny (Odwrócony)"
 
 msgid "The Fool · 0"
-msgstr ""
+msgstr "0 · Głupiec"
 
 msgid ""
 "Each investigator not defeated during this game earns +2 experience during "
@@ -4547,7 +4563,7 @@ msgid ""
 msgstr ""
 
 msgid "The Magician · I"
-msgstr ""
+msgstr "I · Mag"
 
 msgid "Each investigator begins the game with 3 addititonal resources"
 msgstr ""
@@ -4558,7 +4574,7 @@ msgid ""
 msgstr ""
 
 msgid "The High Priestess · II"
-msgstr ""
+msgstr "II · Kapłanka"
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
@@ -4571,7 +4587,7 @@ msgid ""
 msgstr ""
 
 msgid "The Empress · III"
-msgstr ""
+msgstr "III · Cesarzowa"
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
@@ -4584,7 +4600,7 @@ msgid ""
 msgstr ""
 
 msgid "The Emperor · IV"
-msgstr ""
+msgstr "IV · Cesarz"
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
@@ -4597,7 +4613,7 @@ msgid ""
 msgstr ""
 
 msgid "The Hierophant · V"
-msgstr ""
+msgstr "V · Wiara"
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
@@ -4610,7 +4626,7 @@ msgid ""
 msgstr ""
 
 msgid "The Lovers · VI"
-msgstr ""
+msgstr "VI · Kochankowie"
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
@@ -4623,7 +4639,7 @@ msgid ""
 msgstr ""
 
 msgid "The Chariot · VII"
-msgstr ""
+msgstr "VII · Rydwan"
 
 msgid ""
 "Each investigator begins the game with 2 additional cards in their opening "
@@ -4647,7 +4663,7 @@ msgid "During the first round of the game, each investigator cannot play assets.
 msgstr ""
 
 msgid "The Hermit · IX"
-msgstr ""
+msgstr "IX · Pustelnik"
 
 msgid "Increase each investigator's maximum hand size by 3."
 msgstr ""
@@ -4656,7 +4672,7 @@ msgid "Decrease each investigator's maximum hand size by 3."
 msgstr ""
 
 msgid "Wheel of Fortune · X"
-msgstr ""
+msgstr "X · Koło Fortuny"
 
 msgid ""
 "Once each act, when an investigator reveals an [auto_fail] token, thte "
@@ -4669,7 +4685,7 @@ msgid ""
 msgstr ""
 
 msgid "Justice · XI"
-msgstr ""
+msgstr "XI · Sprawiedliwość"
 
 msgid "Cancel the first doom that would be placed on the final agenda of the game."
 msgstr ""
@@ -4678,7 +4694,7 @@ msgid "The final agenda of the game enters play with 1 doom on it."
 msgstr ""
 
 msgid "The Hanged Man · XII"
-msgstr ""
+msgstr "XII · Wisielec"
 
 msgid "During setup, each investigator may take up to 2 additional mulligans."
 msgstr ""
@@ -4689,7 +4705,7 @@ msgid ""
 msgstr ""
 
 msgid "Death · XIII"
-msgstr ""
+msgstr "XIII · Śmierć"
 
 msgid "Each investigator gets +1 health."
 msgstr ""
@@ -4698,7 +4714,7 @@ msgid "Each investigator gets -1 health."
 msgstr ""
 
 msgid "Temperance · XIV"
-msgstr ""
+msgstr "XIV · Umiarkowanie"
 
 msgid "Each investigator gets +1 sanity."
 msgstr ""
@@ -4707,7 +4723,7 @@ msgid "Each investigator gets -1 sanity."
 msgstr ""
 
 msgid "The Devil · XV"
-msgstr ""
+msgstr "XV · Diabeł"
 
 msgid ""
 "Each investigator has 1 additional slot of a type chosen by that "
@@ -4733,7 +4749,7 @@ msgid ""
 msgstr ""
 
 msgid "The Star · XVII"
-msgstr ""
+msgstr "XVII · Gwiazda"
 
 msgid ""
 "After an investigator reveals an [elder_sign] token during a skill test, "
@@ -4746,7 +4762,7 @@ msgid ""
 msgstr ""
 
 msgid "The Moon · XVIII"
-msgstr ""
+msgstr "XVIII · Księżyc"
 
 msgid ""
 "The first time each investigator's deck would run out of cards, they may "
@@ -4778,7 +4794,7 @@ msgid ""
 msgstr ""
 
 msgid "The World · XXI"
-msgstr ""
+msgstr "XXI · Świat"
 
 msgid ""
 "Each investigator not defeated during this game may remove 1 trauma of "
@@ -4996,6 +5012,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> nie jest wymieniony w sekcji „${ entry.section }” Dziennika "
+"kampanii."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5003,6 +5021,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> jest wymieniony w sekcji „${ entry.section }” Dziennika "
+"kampanii."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5107,6 +5127,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> nie jest wymieniona w sekcji „${ entry.section }” Dziennika "
+"kampanii."
 
 #, javascript-format
 msgctxt "feminine"
@@ -5114,6 +5136,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> jest wymieniona w sekcji „${ entry.section }” Dziennika "
+"kampanii."
 
 msgctxt "feminine"
 msgid "Physical trauma"
@@ -6432,11 +6456,11 @@ msgstr ""
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX"
-msgstr ""
+msgstr "XX · Sąd Ostateczny"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "XX · Sąd Ostateczny (Odwócony)"
 
 msgctxt "campaign"
 msgid "Custom"

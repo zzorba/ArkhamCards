@@ -322,7 +322,7 @@
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "ra. Kensler tem um plano."
+            "text": "Dra. Kensler tem um plano."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -802,7 +802,7 @@
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Manto de gelo precário"
+            "text": "Precarious Ice Sheet"
           },
           {
             "id": "remnants_of_lakes_camp",
@@ -1122,14 +1122,14 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possessed",
+            "masculine_text": "#name# estava possuído.",
+            "feminine_text": "#name# estava possuída."
+          },
+          {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
-          },
-          {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1141,7 +1141,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1181,7 +1181,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur tem você em suas mãos."
           },
           {
             "id": "heeded_daniels_warning",
@@ -1209,11 +1209,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "você abriu o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "você abriu o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
@@ -1221,7 +1221,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "os investigadores impediram Hastur de escapar de sua prisão."
           },
           {
             "id": "slayed_the_monsters",
@@ -1258,7 +1258,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "um ou mais investigadores estava possuído."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1548,14 +1548,14 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "possessed",
+            "masculine_text": "#name# estava possuído.",
+            "feminine_text": "#name# estava possuída."
+          },
+          {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
-          },
-          {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1567,7 +1567,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1607,7 +1607,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur tem você em suas mãos."
           },
           {
             "id": "heeded_daniels_warning",
@@ -1635,11 +1635,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "você abriu o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "você abriu o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
@@ -1647,7 +1647,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "os investigadores impediram Hastur de escapar de sua prisão."
           },
           {
             "id": "slayed_the_monsters",
@@ -1684,7 +1684,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "um ou mais investigadores estava possuído."
           },
           {
             "id": "tpm_conviction_or_doubt",

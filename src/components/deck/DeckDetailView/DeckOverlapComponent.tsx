@@ -75,7 +75,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
   const { colors, typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
-  const [overlap, loading] = useMemo(() => {
+  const [overlap] = useMemo(() => {
     if (!cards) {
       return [[], true];
     }

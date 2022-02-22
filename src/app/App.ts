@@ -5,7 +5,7 @@ import { Appearance, TouchableOpacity, Platform, Linking, LogBox, ColorSchemeNam
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
 import { addEventListener as addLangEventListener } from 'react-native-localize';
-import { c, t } from 'ttag';
+import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
