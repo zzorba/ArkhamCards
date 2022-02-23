@@ -456,8 +456,8 @@
           {
             "id": "partner_missing",
             "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "masculine_text": "#name# está desaparecido",
+            "feminine_text": "#name# está desaparecida"
           },
           {
             "id": "camp_shelter",
