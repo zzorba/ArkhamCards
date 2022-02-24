@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
@@ -16,7 +16,7 @@ export interface ScenarioFaqProps extends CampaignGuideInputProps {
 }
 
 function ScenarioFaqView({ scenario }: ScenarioFaqProps) {
-  const { borderStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const campaignData = useContext(CampaignGuideContext);
   const [spoilers, setShowSpoilers] = useState(false);
 
@@ -34,16 +34,18 @@ function ScenarioFaqView({ scenario }: ScenarioFaqProps) {
 
   const errata = campaignData.campaignGuide.scenarioFaq(scenario);
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={[space.paddingM, styles.header, borderStyle]}>
-        <Text style={typography.text}>
-          { t`The following questions contain light spoilers for this scenario.` }
-        </Text>
-      </View>
-      { spoilers ?
-        map(errata, (e, idx) => renderErrata(e, idx)) :
-        <ArkhamButton icon="show" title={t`Show Spoilers`} onPress={showSpoilers} /> }
-    </ScrollView>
+    <SafeAreaView style={[styles.container, backgroundStyle]}>
+      <ScrollView style={backgroundStyle}>
+        <View style={[space.paddingM, styles.header, borderStyle]}>
+          <Text style={typography.text}>
+            { t`The following questions contain light spoilers for this scenario.` }
+          </Text>
+        </View>
+        { spoilers ?
+          map(errata, (e, idx) => renderErrata(e, idx)) :
+          <ArkhamButton icon="show" title={t`Show Spoilers`} onPress={showSpoilers} /> }
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
