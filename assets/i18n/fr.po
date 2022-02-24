@@ -143,7 +143,7 @@ msgid "Too many cards."
 msgstr "Il y a trop de cartes."
 
 msgid "Too many copies of a card with the same name."
-msgstr "Il y a trop d'exemplaires da cartes avec le même nom."
+msgstr "Il y a trop d'exemplaires de cartes avec le même nom."
 
 msgid "Contains forbidden cards (cards not permitted by Faction)"
 msgstr "Contient des cartes interdites (cartes non-autorisées par la classe)"
@@ -2045,8 +2045,8 @@ msgstr ""
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
-msgstr[0] "${ investigators } doit lire <b>${ prompt }"
-msgstr[1] "${ investigators } doivent lire <b>${ prompt }"
+msgstr[0] "${ investigators } doit lire <b>${ prompt }</b>."
+msgstr[1] "${ investigators } doivent lire <b>${ prompt }</b>."
 
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
 msgstr "Un investigateur a-t-il la carte « ${ cardName } » dans son deck ?"
@@ -2074,7 +2074,7 @@ msgstr "Si tous les investigateurs ont été <b>tués</b>."
 
 #, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Vérifiez vos ${ logEntry.section }. <i>Si ${ logEntry.text }</i>"
+msgstr "Vérifiez vos ${ logEntry.section }. <i>Si ${ logEntry.text }</i> :"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
@@ -2469,10 +2469,10 @@ msgstr "${ investigator.name } gagne la carte ${ card.name }."
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
-msgstr "${ investigator.name } supprime ${ card.name } (Avancée)"
+msgstr "${ investigator.name } retire la carte ${ card.name } (Avancée)."
 
 msgid "${ investigator.name } removes ${ card.name }"
-msgstr "${ investigator.name } supprime ${ card.name }"
+msgstr "${ investigator.name } retire la carte ${ card.name }."
 
 msgid "Challenge Scenario"
 msgstr "Scénario Défi"
@@ -3940,15 +3940,13 @@ msgstr[0] "${ unspentXp } XP non dépensée"
 msgstr[1] "${ unspentXp } XP non dépensée"
 
 msgid "Tap to draw"
-msgstr "Appuyez ici pour piocher un pion"
+msgstr "Appuyez ici pour révéler un pion"
 
 msgid "Draw another"
-msgstr "Piocher à nouveau"
+msgstr "Révéler un autre pion"
 
 msgid "Return tokens"
-msgstr ""
-"Remettre les pions\n"
-"dans la réserve"
+msgstr "Remettre les pions"
 
 msgid "Seal tokens"
 msgstr "Sceller des pions"
@@ -4440,7 +4438,7 @@ msgid "Edit selection"
 msgstr "Modifier la sélection"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr "Vérifiez votre Carnet de Campagne. <i>Si ${ logEntry.text }</i>"
+msgstr "Vérifiez votre Carnet de Campagne. <i>Si ${ logEntry.text }</i> :"
 
 msgid "Discord"
 msgstr "Discord"
@@ -4471,7 +4469,7 @@ msgid ""
 "logEntry.text }</i>"
 msgstr ""
 "Dans votre Carnet de Campagne, sous la mention « ${ logEntry.section } », "
-"notez que<i> ${ logEntry.text }</i>"
+"notez que <i>${ logEntry.text }</i>"
 
 msgid "Unarchive campaign"
 msgstr "Désarchiver cette campagne"
@@ -4755,7 +4753,7 @@ msgstr "Modificateur négatif"
 
 #, javascript-format
 msgid "${ textModifier }, draws another"
-msgstr "${ textModifier }, révélez un autre pion Chaos"
+msgstr "${ textModifier }, révélez un autre pion"
 
 msgid "Fix duplicates"
 msgstr "Vérifiez les doublons"
@@ -4777,7 +4775,7 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
 msgstr ""
-"Dans votre Carnet de Campagne, sous la mention ${ sectionName }, rayez ${ "
+"Dans la section « ${ sectionName } » du Carnet de Campagne, barrez ${ "
 "partnerName }."
 
 #, javascript-format
@@ -4785,15 +4783,15 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
-"Dans votre Carnet de Campagne, sous la mention ${ sectionName }, inscrivez "
-"« MIA » à côté de ${ partnerName }."
+"Dans la section « ${ sectionName } » du Carnet de Campagne, écrivez « a "
+"disparu » à côté de ${ partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"Dans votre Carnet de Campagne, sous la mention ${ sectionName }, rayez « "
-"MIA » à côté de ${ partnerName }."
+"Dans la section « ${ sectionName } » du Carnet de Campagne, barrez « a "
+"disparu » à côté de ${ partnerName }."
 
 msgid "If the lead investigator was driven <b>insane</b>."
 msgstr "Si l'investigateur principal est devenu <b>dément</b>."
@@ -4814,7 +4812,7 @@ msgid "Resolute"
 msgstr "Déterminé"
 
 msgid "MIA"
-msgstr "MIA"
+msgstr "a disparu"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4930,8 +4928,8 @@ msgstr "Transfert de la campagne en cours"
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
-msgstr[0] "${ input.prompt } (choisir ${ quantity })"
-msgstr[1] "${ input.prompt } (choisir ${ quantity })"
+msgstr[0] "${ input.prompt } (choisissez-en ${ quantity })"
+msgstr[1] "${ input.prompt } (choisissez-en ${ quantity })"
 
 msgid ""
 "This deck is ownered by another player. You can record the upgrade now and "
@@ -5430,11 +5428,11 @@ msgid "Select Standalone"
 msgstr "Choisissez un scénario"
 
 msgid "Add ${ card.name }:"
-msgstr ""
+msgstr "Ajouter ${ card.name } :"
 
 #, javascript-format
 msgid "Select ${ name }"
-msgstr ""
+msgstr "Choisir ${ name }"
 
 msgid ""
 "Note: This should only be selected at deck creation time, not between "
@@ -5581,7 +5579,7 @@ msgstr "Vaincu : aucun traumatisme"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5713,7 +5711,7 @@ msgstr "Vaincue : aucun traumatisme"
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>."
 
 msgctxt "feminine"
 msgid ""
@@ -6055,7 +6053,7 @@ msgstr "Dunwich"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr "Eldritch"
+msgstr "Surnaturel"
 
 msgctxt "trait"
 msgid "Elite"
@@ -6994,7 +6992,7 @@ msgstr[1] "Scénarios"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
-msgstr ""
+msgstr "En choisir un autre"
 
 msgctxt "narration"
 msgid "Pause"
