@@ -2545,6 +2545,13 @@
         "multiple": false
       },
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Gasoline",
         "description": "Enough for a long journey bycar.",
@@ -2552,36 +2559,17 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pingente",
+        "description": "Inúteis, mas boas lembranças trazem conforto aos viajantes longe de casa.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
@@ -2590,21 +2578,33 @@
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "Binóculos",
+        "description": "Para ajudá-lo a ver lugares distantes.",
+        "cost": 2
+      },
+      {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
+        "name": "Cobertor",
+        "description": "Para aquecer à noite",
         "cost": 2
       },
       {
         "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "name": "Giz",
+        "description": "Para escrever em superfícies de pedra áspera.",
         "cost": 2
       },
       {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "id": "compass",
+        "name": "Bússola",
+        "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
@@ -2614,21 +2614,21 @@
         "cost": 2
       },
       {
+        "id": "map",
+        "name": "Map",
+        "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "Tochas",
+        "description": "Pode iluminar áreas escuras ou acender arandelas.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Corda",
+        "description": "Vários longos rolos de corda forte. Vital para escalada e espeleologia.",
         "cost": 3
       }
     ]
@@ -3892,6 +3892,13 @@
     ],
     "supplies": [
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Gasoline",
         "description": "Enough for a long journey bycar.",
@@ -3899,36 +3906,17 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pingente",
+        "description": "Inúteis, mas boas lembranças trazem conforto aos viajantes longe de casa.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
@@ -3937,21 +3925,33 @@
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "Binóculos",
+        "description": "Para ajudá-lo a ver lugares distantes.",
+        "cost": 2
+      },
+      {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
+        "name": "Cobertor",
+        "description": "Para aquecer à noite",
         "cost": 2
       },
       {
         "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "name": "Giz",
+        "description": "Para escrever em superfícies de pedra áspera.",
         "cost": 2
       },
       {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "id": "compass",
+        "name": "Bússola",
+        "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
@@ -3961,21 +3961,21 @@
         "cost": 2
       },
       {
+        "id": "map",
+        "name": "Map",
+        "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "Tochas",
+        "description": "Pode iluminar áreas escuras ou acender arandelas.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Corda",
+        "description": "Vários longos rolos de corda forte. Vital para escalada e espeleologia.",
         "cost": 3
       }
     ]

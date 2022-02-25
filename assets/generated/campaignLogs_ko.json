@@ -2546,13 +2546,6 @@
       },
       {
         "id": "provisions",
-        "name": "비상 물자",
-        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
-        "id": "provisions",
         "name": "비상식량",
         "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
         "cost": 1,
@@ -3898,13 +3891,6 @@
       }
     ],
     "supplies": [
-      {
-        "id": "provisions",
-        "name": "비상 물자",
-        "description": "1인분의 음식과 물입니다. 어딜 가더라도 식량이야말로 필수품입니다.",
-        "cost": 1,
-        "multiple": true
-      },
       {
         "id": "provisions",
         "name": "비상식량",
