@@ -5616,7 +5616,7 @@ msgstr "異次元"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr "外星"
+msgstr "異星"
 
 msgctxt "trait"
 msgid "Eztli"
@@ -5700,7 +5700,7 @@ msgstr "一樓"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr "賓客"
+msgstr "客人"
 
 msgctxt "trait"
 msgid "Gug"
@@ -5708,7 +5708,7 @@ msgstr "古革巨人"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr "大廳"
+msgstr "廳堂"
 
 msgctxt "trait"
 msgid "Hazard"
@@ -5804,7 +5804,7 @@ msgstr "鑰匙"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr "事件線索"
+msgstr "跡象"
 
 msgctxt "trait"
 msgid "Leng"
@@ -6148,7 +6148,7 @@ msgstr "St Mary's"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr "員工"
+msgstr "職工"
 
 msgctxt "trait"
 msgid "Steps"
