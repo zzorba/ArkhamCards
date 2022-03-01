@@ -203,16 +203,18 @@ export default function ScenarioStepComponent({
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
-
+  const strike = !!(step.step.type === 'story' && step.step.title_strikethrough);
   return (
     <ScenarioStepContext.Provider value={context}>
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
         <View style={styles.titleWrapper}>
           <Text style={[
             typography.bigGameFont,
-            { color: resolution ? colors.campaign.text.resolution : colors.campaign.text.setup },
+            { color: resolution || strike ? colors.campaign.text.resolution : colors.campaign.text.setup },
             space.paddingTopL,
             border ? typography.center : {},
+            strike ? { textDecorationLine: 'line-through' } : undefined,
+
           ]}>
             { step.step.title }
           </Text>

@@ -139,6 +139,7 @@ export type Input =
   | InvestigatorChoiceInput
   | ChooseOneInput
   | ChecklistInput
+  | ChoicelistInput
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
@@ -160,7 +161,8 @@ export type InvestigatorChoiceCondition =
   | InvestigatorCardCondition
   | BasicTraumaCondition
   | InvestigatorCondition
-  | CampaignLogCondition;
+  | CampaignLogCondition
+  | CampaignLogCardsCondition;
 export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
@@ -322,6 +324,7 @@ export interface RemoveCardEffect {
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
+  investigator?: "any" | "defeated";
   old_card: string;
   new_card: string;
 }
@@ -331,6 +334,8 @@ export interface TraumaEffect {
   heal_input?: "physical" | "mental";
   mental?: number;
   physical?: number;
+  set_mental?: number;
+  set_physical?: number;
   mental_or_physical?: number;
   killed?: boolean;
   insane?: boolean;
@@ -359,7 +364,7 @@ export interface PartnerStatusEffect {
 export interface CampaignLogEffect {
   type: "campaign_log";
   section: string;
-  id: string;
+  id?: string;
   text?: string;
   cross_out?: boolean;
   bullet_type?: BulletType;
@@ -800,10 +805,16 @@ export interface InvestigatorChoiceInput {
   source: "campaign" | "scenario";
   optional?: boolean;
   investigator: "all" | "choice" | "any" | "resigned";
-  condition?: BasicTraumaCondition;
+  condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
+}
+export interface InvestigatorCondition {
+  type: "investigator";
+  investigator: "each";
+  investigator_data: "trait" | "faction" | "code";
+  options: StringOption[];
 }
 export interface InvestigatorConditionalChoice {
   icon?: ChoiceIcon;
@@ -818,12 +829,6 @@ export interface InvestigatorConditionalChoice {
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
-}
-export interface InvestigatorCondition {
-  type: "investigator";
-  investigator: "each";
-  investigator_data: "trait" | "faction" | "code";
-  options: StringOption[];
 }
 export interface ChooseOneInput {
   type: "choose_one";
@@ -854,6 +859,11 @@ export interface ChecklistInput {
   text: string;
   min?: number;
   max?: number;
+}
+export interface ChoicelistInput {
+  type: "choicelist";
+  items: BinaryConditionalChoice[];
+  choices: BinaryConditionalChoice[];
 }
 export interface CounterInput {
   type: "counter";
@@ -1012,6 +1022,7 @@ export interface StoryStep {
   border_color?: BorderColor;
   border_only?: boolean;
   title?: string;
+  title_strikethrough?: boolean;
   text: string;
   bullets?: {
     text: string;

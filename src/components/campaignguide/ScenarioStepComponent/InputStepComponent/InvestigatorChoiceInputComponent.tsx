@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { filter, keys, slice } from 'lodash';
+import { filter, keys, slice, map } from 'lodash';
 
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -9,7 +9,7 @@ import InvestigatorChoicePrompt from '@components/campaignguide/prompts/Investig
 import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
-import { basicTraumaConditionResult } from '@data/scenario/conditionHelper';
+import { investigatorChoiceConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: InputStep;
@@ -18,13 +18,17 @@ interface Props {
 }
 
 export default function InvestigatorChoiceInputComponent({ step, input, campaignLog }: Props) {
-  const investigators = useMemo(() => {
+  const [investigators, investigatorCodes] = useMemo(() => {
     const allInvestigators = campaignLog.investigators(false)
     if (!input.condition) {
-      return allInvestigators;
+      return [allInvestigators, map(allInvestigators, c => c.code)];
     }
-    const codes = new Set(keys(basicTraumaConditionResult(input.condition, campaignLog).investigatorChoices));
-    return filter(allInvestigators, i => codes.has(i.code));
+    const result = investigatorChoiceConditionResult(input.condition, campaignLog);
+    const codes = new Set(keys(result.investigatorChoices));
+    return [
+      filter(allInvestigators, i => codes.has(i.code)),
+      keys(result.investigatorChoices),
+    ];
   }, [input, campaignLog]);
   const iteration: number = useMemo(() => {
     if (step.id.indexOf('#') === -1) {
@@ -63,6 +67,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
         id={step.id}
         title={choice.text}
         choiceId={choice.id}
+        investigators={investigatorCodes}
         required
       />
     );

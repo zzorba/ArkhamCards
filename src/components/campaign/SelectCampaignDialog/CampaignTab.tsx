@@ -14,6 +14,7 @@ import {
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
   CROWN_OF_EGIL,
+  CALL_OF_THE_PLAGUEBEARER,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -32,6 +33,7 @@ const authors = {
   [DARK_MATTER]: 'Axolotl',
   [ALICE_IN_WONDERLAND]: 'The Beard',
   [CROWN_OF_EGIL]: 'The Mad Juggler',
+  [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
 }
 function campaignDescription(packCode: CampaignCycleCode): string | undefined {
   switch (packCode) {
@@ -46,6 +48,7 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:
+    case CALL_OF_THE_PLAGUEBEARER:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:

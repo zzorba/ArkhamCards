@@ -35,6 +35,9 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
   const { colors, typography } = useContext(StyleContext);
 
   const content = useMemo(() => {
+    if (!editable && !selected) {
+      return null;
+    }
     if (props.type === 'investigator') {
       return (
         <CompactInvestigatorRow
@@ -44,7 +47,13 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
           transparent={transparent && !selected}
           yithian={props.yithian}
         >
-          <RadioButton color="light" icon="radio" selected={selected} />
+          { editable ? (
+            <RadioButton color="light" icon="radio" selected={selected} />
+          ) : (
+            <View style={space.paddingRightXs}>
+              <AppIcon name="check" size={20} color="#FFFBF2" />
+            </View>
+          ) }
         </CompactInvestigatorRow>
       );
     }
@@ -58,7 +67,13 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
             { props.label }
           </Text>
         </View>
-        <RadioButton color="dark" icon="radio" selected={selected} />
+        { editable ? (
+          <RadioButton color="dark" icon="radio" selected={selected} />
+        ) : (
+          <View style={space.paddingRightXs}>
+            <AppIcon name="check" size={20} color={colors.D30} />
+          </View>
+        ) }
       </View>
     );
   }, [selected, props, width, description, colors, typography, transparent]);

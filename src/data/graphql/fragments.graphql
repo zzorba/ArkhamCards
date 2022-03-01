@@ -1,5 +1,5 @@
-fragment CoreCard on card {
-  code
+fragment SingleCard on full_card {
+ code
   cost
   deck_limit
   encounter_code
@@ -20,6 +20,7 @@ fragment CoreCard on card {
   real_subname
   real_text
   real_traits
+  real_encounter_set_name
   sanity
   skill_agility
   skill_combat
@@ -36,10 +37,30 @@ fragment CoreCard on card {
   real_back_flavor
   real_back_text
   real_back_name
+  double_sided
+  doom
+  illustrator
+  shroud
+  victory
+  vengeance
+  back_link
+  enemy_horror
+  enemy_damage
+  enemy_evade
+  enemy_fight
+  hidden
+  deck_requirements
+  deck_options
+  restrictions
 }
-fragment CoreCardText on card_text {
+fragment CoreCard on full_card {
+  ...SingleCard
+  linked_card {
+    ...SingleCard
+  }
+}
+fragment CoreCardText on full_card_text {
   flavor
-  encounter_name
   name
   slot
   subname

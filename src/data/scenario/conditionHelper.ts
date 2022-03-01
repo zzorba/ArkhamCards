@@ -1,9 +1,11 @@
 import {
+  cond,
   every,
   filter,
   find,
   findIndex,
   forEach,
+  hasIn,
   keys,
   map,
   sumBy,
@@ -43,6 +45,7 @@ import {
   MathCondition,
   CampaignLogCardsSwitchCondition,
   ScenarioDataFixedInvestigatorStatusCondition,
+  InvestigatorChoiceCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -833,6 +836,48 @@ export function conditionResult(
       return partnerStatusConditionResult(condition, campaignLog);
   }
 }
+
+
+export function investigatorChoiceConditionResult(
+  condition: InvestigatorChoiceCondition,
+  campaignLog: GuidedCampaignLog
+): Omit<InvestigatorResult, 'options'> {
+  switch (condition.type) {
+    case 'has_card':
+      return investigatorCardConditionResult(condition, campaignLog);
+    case 'trauma':
+      return basicTraumaConditionResult(condition, campaignLog);
+    case 'investigator':
+      return investigatorConditionResult(condition, campaignLog);
+    case 'campaign_log_cards':
+    case 'campaign_log': {
+      const result = campaignLogConditionResult(condition, campaignLog);
+      const investigators = campaignLog.investigatorCodes(false);
+      const investigatorChoices: StringChoices = {};
+      forEach(investigators, code => {
+        if (condition.type === 'campaign_log') {
+          if (result.option) {
+            investigatorChoices[code] = [condition.id];
+          }
+        } else {
+          if (result.input) {
+            const hasInvestigator = result.input.indexOf(code) !== -1;
+            const passes = !!condition.options.find(option => option.boolCondition === hasInvestigator);
+            if (passes) {
+              investigatorChoices[code] = [condition.id];
+            }
+          }
+        }
+      });
+      return {
+        type: 'investigator',
+        investigatorChoices,
+      };
+    }
+  }
+}
+
+
 
 export default {
   conditionResult,

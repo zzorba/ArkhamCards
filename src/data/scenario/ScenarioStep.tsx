@@ -1,6 +1,7 @@
 import {
   flatMap,
   find,
+  filter,
   findIndex,
   forEach,
   groupBy,
@@ -725,6 +726,43 @@ export default class ScenarioStep {
           {
             syntheticId: true,
           }
+        );
+      }
+      case 'choicelist': {
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const options = chooseOneInputChoices(input.choices, this.campaignLog);
+        const selectedOptions = filter(options, o => !!find(choices, theChoices => !!find(theChoices, c => c === o.id)));
+
+        flatMap(choices, (theChoices, choiceId) => {
+          if (find(theChoices, c => c === 'checked')) {
+            return find(options, o => o.id === choiceId) || [];
+          }
+          return [];
+        });
+        const stepIds = flatMap(selectedOptions, option => option.steps || []);
+
+        const items = chooseOneInputChoices(input.items, this.campaignLog);
+        const effectsWithInput: EffectsWithInput[] = flatMap(items, item => {
+          const selection = new Set(choices[item.id] || []);
+          const option = find(options, o => selection.has(o.id));
+          if (!option || !option.effects?.length) {
+            return [];
+          }
+          return {
+            input: [item.id],
+            numberInput: [1],
+            effects: option.effects,
+          };
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...stepIds, ...this.remainingStepIds],
+          effectsWithInput,
+          scenarioState,
+          {}
         );
       }
       case 'checklist': {

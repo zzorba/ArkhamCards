@@ -282,7 +282,7 @@ export const syncCards = async function(
       updateProgress(0.5);
       try {
         const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+        const customCards = map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
         const queryRunner = await db.startTransaction();
         try {
           await insertChunk(sqliteVersion, customCards, async(c: Card[]) => {
@@ -462,7 +462,7 @@ export const syncCards = async function(
     let customCards: Card[] = [];
     try {
       const customCardsResponse = await customCardsPromise;
-      customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      customCards = map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
     } catch (e) {
       console.log(e);
     }

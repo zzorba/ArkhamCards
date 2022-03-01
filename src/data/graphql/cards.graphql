@@ -1,8 +1,13 @@
 query getCustomCards(
   $locale: String!
 ) {
-  card {
+  full_card {
     ...CoreCard
+    encounter_sets(
+      where: { locale: { _eq: $locale }}
+    ) {
+      name
+    }
     packs(
       where: { locale: { _eq: $locale }}
     ) {

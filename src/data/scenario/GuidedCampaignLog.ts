@@ -1026,17 +1026,22 @@ export default class GuidedCampaignLog {
       ...this.campaignData.everyStoryAsset,
       effect.new_card,
     ]);
+    const investigatorRestriction = effect.investigator ?
+      new Set(this.getInvestigators(effect.investigator)) :
+      undefined;
     forEach(
       keys(this.campaignData.investigatorData),
       investigator => {
-        const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
-        this.campaignData.investigatorData[investigator] = {
-          ...data,
-          storyAssets: map(
-            data.storyAssets || [],
-            card => card === effect.old_card ? effect.new_card : card
-          ),
-        };
+        if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
+          const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
+          this.campaignData.investigatorData[investigator] = {
+            ...data,
+            storyAssets: map(
+              data.storyAssets || [],
+              card => card === effect.old_card ? effect.new_card : card
+            ),
+          };
+        }
       }
     );
   }
@@ -1145,6 +1150,12 @@ export default class GuidedCampaignLog {
       }
       if (effect.mental) {
         trauma.mental = (trauma.mental || 0) + effect.mental;
+      }
+      if (effect.set_physical) {
+        trauma.physical = effect.set_physical;
+      }
+      if (effect.set_mental) {
+        trauma.mental = effect.set_mental;
       }
       if (effect.mental_or_physical) {
         throw new Error('These should be filtered out before it reaches campaign log');
@@ -1324,27 +1335,33 @@ export default class GuidedCampaignLog {
       entries: [],
       crossedOut: {},
     };
-    const ids = (effect.id === '$input_value') ? input : [effect.id];
-    forEach(ids, id => {
+    if (!effect.id) {
       if (effect.cross_out) {
-        section.crossedOut[id] = true;
-      } else if (effect.decorate) {
-        section.decoration = {
-          ...(section.decoration || {}),
-          [id]: effect.decorate,
-        };
-      } else if (effect.remove) {
-        section.entries = filter(
-          section.entries,
-          entry => entry.id !== id
-        );
-      } else {
-        section.entries.push({
-          type: 'basic',
-          id,
-        });
+        section.sectionCrossedOut = true;
       }
-    });
+    } else {
+      const ids = (effect.id === '$input_value') ? input : [effect.id];
+      forEach(ids, id => {
+        if (effect.cross_out) {
+          section.crossedOut[id] = true;
+        } else if (effect.decorate) {
+          section.decoration = {
+            ...(section.decoration || {}),
+            [id]: effect.decorate,
+          };
+        } else if (effect.remove) {
+          section.entries = filter(
+            section.entries,
+            entry => entry.id !== id
+          );
+        } else {
+          section.entries.push({
+            type: 'basic',
+            id,
+          });
+        }
+      });
+    }
     this.sections[effect.section] = section;
   }
 
