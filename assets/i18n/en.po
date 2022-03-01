@@ -3851,7 +3851,7 @@ msgstr ""
 msgid "Alice in Wonderland"
 msgstr ""
 
-msgid "Fragments of Alilce"
+msgid "Fragments of Alice"
 msgstr ""
 
 msgid "Wonderland Boons"
@@ -4947,6 +4947,15 @@ msgid "Samsung One UI fix"
 msgstr ""
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
+msgstr ""
+
+msgid "Call of the Plaguebearer"
+msgstr ""
+
+msgid "Eliminated"
+msgstr ""
+
+msgid "Locations"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);

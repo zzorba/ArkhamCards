@@ -4007,7 +4007,7 @@ msgstr ""
 msgid "Alice in Wonderland"
 msgstr "이상한 나라의 앨리스"
 
-msgid "Fragments of Alilce"
+msgid "Fragments of Alice"
 msgstr "앨리스의 파편"
 
 msgid "Wonderland Boons"
@@ -5174,6 +5174,15 @@ msgid ""
 msgstr ""
 "<b>아이콘 속성:</b>\n"
 "• 원작 아이콘 디자인: ${ visualDesigner }"
+
+msgid "Call of the Plaguebearer"
+msgstr ""
+
+msgid "Eliminated"
+msgstr ""
+
+msgid "Locations"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
