@@ -6831,6 +6831,7 @@ export type Guide_Input = {
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
   id: Scalars['String'];
+  inserted_idx?: Maybe<Scalars['Int']>;
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
@@ -6904,11 +6905,13 @@ export type Guide_Input_Arr_Rel_Insert_Input = {
 export type Guide_Input_Avg_Fields = {
   __typename?: 'guide_input_avg_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "guide_input" */
 export type Guide_Input_Avg_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guide_input". All fields are combined with a logical 'AND'. */
@@ -6920,6 +6923,7 @@ export type Guide_Input_Bool_Exp = {
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  inserted_idx?: InputMaybe<Int_Comparison_Exp>;
   payload?: InputMaybe<Jsonb_Comparison_Exp>;
   scenario?: InputMaybe<String_Comparison_Exp>;
   step?: InputMaybe<String_Comparison_Exp>;
@@ -6950,6 +6954,7 @@ export type Guide_Input_Delete_Key_Input = {
 /** input type for incrementing numeric columns in table "guide_input" */
 export type Guide_Input_Inc_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_input" */
@@ -6958,6 +6963,7 @@ export type Guide_Input_Insert_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
   payload?: InputMaybe<Scalars['jsonb']>;
   scenario?: InputMaybe<Scalars['String']>;
   step?: InputMaybe<Scalars['String']>;
@@ -6970,6 +6976,7 @@ export type Guide_Input_Max_Fields = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['String']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
@@ -6980,6 +6987,7 @@ export type Guide_Input_Max_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -6991,6 +6999,7 @@ export type Guide_Input_Min_Fields = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['String']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
@@ -7001,6 +7010,7 @@ export type Guide_Input_Min_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -7028,6 +7038,7 @@ export type Guide_Input_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   payload?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
@@ -7054,6 +7065,8 @@ export enum Guide_Input_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  InsertedIdx = 'inserted_idx',
+  /** column name */
   Payload = 'payload',
   /** column name */
   Scenario = 'scenario',
@@ -7068,6 +7081,7 @@ export type Guide_Input_Set_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
   payload?: InputMaybe<Scalars['jsonb']>;
   scenario?: InputMaybe<Scalars['String']>;
   step?: InputMaybe<Scalars['String']>;
@@ -7078,44 +7092,52 @@ export type Guide_Input_Set_Input = {
 export type Guide_Input_Stddev_Fields = {
   __typename?: 'guide_input_stddev_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Guide_Input_Stddev_Pop_Fields = {
   __typename?: 'guide_input_stddev_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Pop_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Guide_Input_Stddev_Samp_Fields = {
   __typename?: 'guide_input_stddev_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Guide_Input_Sum_Fields = {
   __typename?: 'guide_input_sum_fields';
   campaign_id?: Maybe<Scalars['Int']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "guide_input" */
 export type Guide_Input_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "guide_input" */
@@ -7126,6 +7148,8 @@ export enum Guide_Input_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Id = 'id',
+  /** column name */
+  InsertedIdx = 'inserted_idx',
   /** column name */
   Payload = 'payload',
   /** column name */
@@ -7140,33 +7164,39 @@ export enum Guide_Input_Update_Column {
 export type Guide_Input_Var_Pop_Fields = {
   __typename?: 'guide_input_var_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "guide_input" */
 export type Guide_Input_Var_Pop_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Guide_Input_Var_Samp_Fields = {
   __typename?: 'guide_input_var_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "guide_input" */
 export type Guide_Input_Var_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Guide_Input_Variance_Fields = {
   __typename?: 'guide_input_variance_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "guide_input" */
 export type Guide_Input_Variance_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "investigator_data" */
@@ -12952,7 +12982,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any, inserted_idx?: number | null | undefined }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
@@ -13679,7 +13709,7 @@ export const FullCampaignGuideStateFragmentDoc = gql`
   id
   uuid
   updated_at
-  guide_inputs(order_by: {created_at: asc}) {
+  guide_inputs(order_by: [{created_at: asc}, {inserted_idx: asc}]) {
     ...GuideInput
   }
   guide_achievements(order_by: {created_at: asc}) {
@@ -14067,6 +14097,7 @@ export const UploadNewCampaignDocument = gql`
       step
       payload
       created_at
+      inserted_idx
     }
   }
   insert_guide_achievement(objects: $achievements) {

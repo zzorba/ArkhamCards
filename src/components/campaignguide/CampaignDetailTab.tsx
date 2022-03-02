@@ -220,6 +220,7 @@ export default function CampaignDetailTab({
           <CampaignInvestigatorsComponent
             componentId={componentId}
             showAlert={showAlert}
+            login={login}
             loading={!campaignInvestigators}
             showAddInvestigator={showAddInvestigator}
             processedCampaign={processedCampaign}

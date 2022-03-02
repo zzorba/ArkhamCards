@@ -22,6 +22,7 @@ import { SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';
 import { CampaignLogSectionDefinition } from '@data/scenario/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import { useArkhamDbError } from '@data/hooks';
 
 interface Props {
   componentId: string;
@@ -29,6 +30,7 @@ interface Props {
   processedCampaign: ProcessedCampaign;
   savingDeckUpgrade: boolean;
   loading: boolean;
+  login: () => void;
   showAddInvestigator: () => void;
   showCountDialog: ShowCountDialog;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
@@ -38,7 +40,7 @@ interface Props {
 
 function AliveInvestigatorRow({
   componentId, investigator, processedCampaign, investigatorCountSections, suppliesSections, savingDeckUpgrade,
-  removeInvestigatorPressed, showChooseDeckForInvestigator, showXpDialogPressed, showTraumaDialog, saveDeckUpgrade,
+  login, removeInvestigatorPressed, showChooseDeckForInvestigator, showXpDialogPressed, showTraumaDialog, saveDeckUpgrade,
 }: {
   componentId: string;
   investigator: Card;
@@ -46,6 +48,7 @@ function AliveInvestigatorRow({
   investigatorCountSections: CampaignLogSectionDefinition[];
   suppliesSections: CampaignLogSectionDefinition[];
   savingDeckUpgrade: boolean;
+  login: () => void;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   showChooseDeckForInvestigator: (investigator: Card) => void;
   showXpDialogPressed: (investigator: Card) => void;
@@ -79,6 +82,8 @@ function AliveInvestigatorRow({
       }
     }
   }, [saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
+  const arkhamDbError = useArkhamDbError();
+  const needsArkhamDbReauth = !deck?.deck.local && arkhamDbError === 'badAccessToken';
   const traumaAndCardData = useMemo(() =>
     processedCampaign.campaignLog.traumaAndCardData(investigator.code),
   [processedCampaign.campaignLog, investigator.code]);
@@ -102,16 +107,29 @@ function AliveInvestigatorRow({
       <View style={styles.column}>
         { !!nextDeckUpgradeStepId && (
           <View style={space.paddingBottomS}>
-            <DeckButton
-              shrink
-              key="deck_upgrade"
-              color="gold"
-              icon="deck"
-              title={t`Claim previous scenario XP`}
-              detail={t`Apply changes from last completed scenario`}
-              loading={saving}
-              onPress={saveNextDeckUpgradePressed}
-            />
+            { needsArkhamDbReauth ? (
+              <DeckButton
+                shrink
+                key="deck_upgrade"
+                color="default"
+                icon="arkhamdb"
+                title={t`Reauthorize ArkhamDB`}
+                detail={t`Login required to save deck upgrade`}
+                loading={saving}
+                onPress={login}
+              />
+            ) : (
+              <DeckButton
+                shrink
+                key="deck_upgrade"
+                color="gold"
+                icon="deck"
+                title={t`Claim previous scenario XP`}
+                detail={t`Apply changes from last completed scenario`}
+                loading={saving}
+                onPress={saveNextDeckUpgradePressed}
+              />
+            ) }
           </View>
         ) }
         {
@@ -163,7 +181,10 @@ function AliveInvestigatorRow({
 }
 
 export default function CampaignInvestigatorsComponent(props: Props) {
-  const { componentId, loading, processedCampaign, actions, savingDeckUpgrade, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog, saveDeckUpgrade } = props;
+  const {
+    componentId, loading, processedCampaign, actions, savingDeckUpgrade,
+    login, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog, saveDeckUpgrade,
+  } = props;
   const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
   const dispatch = useDispatch();
@@ -279,12 +300,13 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             <AliveInvestigatorRow
               key={investigator.code}
               investigator={investigator}
-              showChooseDeckForInvestigator={showChooseDeckForInvestigator}
-              removeInvestigatorPressed={removeInvestigatorPressed}
               componentId={componentId}
               investigatorCountSections={investigatorCountSections}
               suppliesSections={suppliesSections}
               processedCampaign={processedCampaign}
+              login={login}
+              showChooseDeckForInvestigator={showChooseDeckForInvestigator}
+              removeInvestigatorPressed={removeInvestigatorPressed}
               showXpDialogPressed={showXpDialogPressed}
               showTraumaDialog={betweenScenarios ? showTraumaDialog : disabledShowTraumaPressed}
               saveDeckUpgrade={saveDeckUpgrade}

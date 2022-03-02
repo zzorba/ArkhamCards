@@ -274,7 +274,10 @@ fragment FullCampaignGuideState on campaign_guide {
   id
   uuid
   updated_at
-  guide_inputs(order_by: { created_at: asc }) {
+  guide_inputs(order_by: [
+    { created_at: asc },
+    { inserted_idx: asc }
+  ]) {
     ...GuideInput
   }
   guide_achievements(order_by: { created_at: asc }) {

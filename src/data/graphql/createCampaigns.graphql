@@ -28,6 +28,7 @@ mutation uploadNewCampaign(
       step
       payload
       created_at
+      inserted_idx
     }
   }
   insert_guide_achievement(

@@ -24,6 +24,7 @@ import {
   NewLinkedCampaignAction,
   NewCampaignAction,
   NewStandaloneCampaignAction,
+  NEW_GUIDED_CAMPAIGNS,
 } from '@actions/types';
 import { BROWSE_CAMPAIGNS } from '@app/App';
 import { ChaosBag } from '@app_constants';
@@ -591,6 +592,13 @@ function NewCampaignView({ componentId }: NavigationProps) {
           <View style={styles.block}>
             <Text style={typography.text}>
               { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }
+            </Text>
+          </View>
+        ) }
+        { hasGuide && guided && selection.type === 'campaign' && NEW_GUIDED_CAMPAIGNS.has(selection.code) && (
+          <View style={styles.block}>
+            <Text style={typography.text}>
+              { t`Note: this campaign is a fairly new addition to the app and may contain some mistakes.` }
             </Text>
           </View>
         ) }

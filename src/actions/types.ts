@@ -453,10 +453,11 @@ export const GUIDED_CAMPAIGNS = new Set([
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
-  // CALL_OF_THE_PLAGUEBEARER,
+  CALL_OF_THE_PLAGUEBEARER,
 ]);
 
-export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER
 ]);
 
