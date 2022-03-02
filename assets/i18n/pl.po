@@ -5454,6 +5454,17 @@ msgstr ""
 msgid "Locations"
 msgstr ""
 
+msgid "Reauthorize ArkhamDB"
+msgstr ""
+
+msgid "Login required to save deck upgrade"
+msgstr ""
+
+msgid ""
+"Note: this campaign is a fairly new addition to the app and may contain "
+"some mistakes."
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
