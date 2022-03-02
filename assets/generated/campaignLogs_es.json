@@ -4917,7 +4917,7 @@
           },
           {
             "id": "collection_was_saved",
-            "text": "the colleciton was saved."
+            "text": "the collection was saved."
           },
           {
             "id": "death_conquered_herbert_west",
@@ -5014,6 +5014,10 @@
           {
             "id": "you_conquered_death",
             "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
           },
           {
             "id": "you_have_received_a_twisted_gift",

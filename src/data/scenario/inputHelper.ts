@@ -54,7 +54,6 @@ export function investigatorChoiceInputChoices(
     };
   }
   const conditionResult = input.condition && investigatorChoiceConditionResult(input.condition, campaignLog);
-  console.log(conditionResult);
   const codes = conditionResult ? keys(conditionResult.investigatorChoices) :
     filter(
       campaignLog.investigatorCodes(false),

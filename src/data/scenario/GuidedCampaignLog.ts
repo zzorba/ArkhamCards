@@ -1004,7 +1004,7 @@ export default class GuidedCampaignLog {
       if (effect.non_story) {
         const assets = data.addedCards || [];
         assets.push(effect.card);
-        data.addedCards = uniq(assets);
+        data.addedCards = assets;
       } else {
         const assets = data.storyAssets || [];
         assets.push(effect.card);
@@ -1034,13 +1034,15 @@ export default class GuidedCampaignLog {
       investigator => {
         if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
           const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
-          this.campaignData.investigatorData[investigator] = {
-            ...data,
-            storyAssets: map(
-              data.storyAssets || [],
-              card => card === effect.old_card ? effect.new_card : card
-            ),
-          };
+          if (!effect.has_card || find(data.storyAssets || [], card => card === effect.has_card)) {
+            this.campaignData.investigatorData[investigator] = {
+              ...data,
+              storyAssets: map(
+                data.storyAssets || [],
+                card => card === effect.old_card ? effect.new_card : card
+              ),
+            };
+          }
         }
       }
     );
@@ -1331,7 +1333,8 @@ export default class GuidedCampaignLog {
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {
-    const section: EntrySection = this.sections[effect.section] || {
+    const sectionId = effect.section === '$input_value' && input?.length ? input[0] : effect.section;
+    const section: EntrySection = this.sections[sectionId] || {
       entries: [],
       crossedOut: {},
     };
@@ -1362,7 +1365,7 @@ export default class GuidedCampaignLog {
         }
       });
     }
-    this.sections[effect.section] = section;
+    this.sections[sectionId] = section;
   }
 
   private updateSectionWithCount(

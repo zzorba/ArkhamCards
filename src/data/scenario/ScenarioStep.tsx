@@ -149,6 +149,7 @@ export default class ScenarioStep {
                     return {
                       type: 'add_card',
                       investigator: '$input_value',
+                      non_story: true,
                       card,
                     };
                   }),
@@ -281,12 +282,18 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
-      case 'border':
+      case 'border': {
+        const decision = scenarioState.decision(`${this.step.id}_read_the_thing`);
         return this.proceedToNextStep(
-          [...this.step.steps, ...this.remainingStepIds],
+          [
+            ...this.step.steps,
+            ...(decision && this.step.confirmation_steps?.length ? this.step.confirmation_steps : []),
+            ...this.remainingStepIds,
+          ],
           scenarioState,
           this.campaignLog
         );
+      }
       case 'input':
         return this.expandInputStep(
           this.step,
@@ -757,6 +764,7 @@ export default class ScenarioStep {
             effects: option.effects,
           };
         });
+        console.log(JSON.stringify(effectsWithInput));
         return this.maybeCreateEffectsStep(
           step.id,
           [...stepIds, ...this.remainingStepIds],
@@ -1464,6 +1472,7 @@ export default class ScenarioStep {
           effectsWithInput,
           stepText: !!this.step.text || !!hiddenResult,
           bullet_type: this.step.bullet_type || bulletType,
+          border_only: this.step.border_only,
           syntheticId,
         },
         this.scenarioGuide,

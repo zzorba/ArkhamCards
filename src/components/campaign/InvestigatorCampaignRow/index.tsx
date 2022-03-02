@@ -127,7 +127,8 @@ export default function InvestigatorCampaignRow({
 
   const storyAssetSection = useMemo(() => {
     const storyAssets = traumaAndCardData.storyAssets || [];
-    if (!storyAssets.length) {
+    const addedCards = traumaAndCardData.addedCards || [];
+    if (!storyAssets.length && !addedCards.length) {
       return null;
     }
     return (
@@ -139,7 +140,17 @@ export default function InvestigatorCampaignRow({
             campaignGuide={campaignGuide}
             code={asset}
             onCardPress={onCardPress}
-            last={idx === storyAssets.length - 1}
+            last={addedCards.length === 0 && idx === storyAssets.length - 1}
+            count={traumaAndCardData.cardCounts?.[asset]}
+          />
+        )) }
+        { map(addedCards, (asset, idx) => (
+          <StoryAssetRow
+            key={asset}
+            campaignGuide={campaignGuide}
+            code={asset}
+            onCardPress={onCardPress}
+            last={idx === addedCards.length - 1}
             count={traumaAndCardData.cardCounts?.[asset]}
           />
         )) }

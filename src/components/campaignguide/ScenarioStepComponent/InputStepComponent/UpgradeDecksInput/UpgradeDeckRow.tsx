@@ -615,7 +615,7 @@ function UpgradeDeckRow({
     return slots;
   }, [allStoryAssetCards, storyAssets, deck]);
   const specialExileSection = useMemo(() => {
-    if ((choices === undefined ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
+    if ((choices === undefined && editable ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
       return (
         <CardSelectorComponent
           componentId={componentId}
@@ -625,10 +625,10 @@ function UpgradeDeckRow({
           updateCount={updateSpecialExileCount}
           header={(choices !== undefined || !deck) && (
             <View style={space.paddingSideS}>
-              <DeckSlotHeader title={choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
+              <DeckSlotHeader title={editable && choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
             </View>
           )}
-          locked={saving || !!choices}
+          locked={saving || !!choices || !editable}
         />
       );
     }

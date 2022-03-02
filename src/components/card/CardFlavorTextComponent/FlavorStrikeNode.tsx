@@ -10,7 +10,7 @@ export default function FlavorStrikeNode() {
     state: RenderState
   ) => {
     return (
-      <MarkdownText key={state.key} style={{ fontFamily: 'Alegreya', textDecorationLine: 'line-through' }}>
+      <MarkdownText key={state.key} style={{ fontFamily: 'Alegreya', fontStyle: 'normal', textDecorationLine: 'line-through' }}>
         { output(node.children, state) }
       </MarkdownText>
     );

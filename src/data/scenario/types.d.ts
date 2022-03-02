@@ -325,6 +325,7 @@ export interface RemoveCardEffect {
 export interface ReplaceCardEffect {
   type: "replace_card";
   investigator?: "any" | "defeated";
+  has_card?: string;
   old_card: string;
   new_card: string;
 }
@@ -1022,7 +1023,6 @@ export interface StoryStep {
   border_color?: BorderColor;
   border_only?: boolean;
   title?: string;
-  title_strikethrough?: boolean;
   text: string;
   bullets?: {
     text: string;
@@ -1122,9 +1122,12 @@ export interface BorderStep {
   border: boolean;
   border_color?: BorderColor;
   title?: string;
+  title_strikethrough?: boolean;
   text?: null;
   bullets?: null;
   bullet_type?: null;
+  confirmation_text?: string;
+  confirmation_steps?: string[];
   narration?: Narration;
   steps: string[];
 }

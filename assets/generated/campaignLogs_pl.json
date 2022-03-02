@@ -2651,11 +2651,11 @@
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "anomalia została powstrzymana."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Obiekt 8L-08 pochłonął cały wszechświat."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2679,19 +2679,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Excelsior pochłonął kolejne ofiary."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "w Excelsiorze panuje spokój - na razie."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "badacze uciekli z miejsca zbrodni."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "morderstwa trwają nadal i pozostają nierozwiązane."
           },
           {
             "id": "ritual_at_sea_was_completed",
@@ -4917,7 +4917,7 @@
           },
           {
             "id": "collection_was_saved",
-            "text": "the colleciton was saved."
+            "text": "the collection was saved."
           },
           {
             "id": "death_conquered_herbert_west",
@@ -5014,6 +5014,10 @@
           {
             "id": "you_conquered_death",
             "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
           },
           {
             "id": "you_have_received_a_twisted_gift",

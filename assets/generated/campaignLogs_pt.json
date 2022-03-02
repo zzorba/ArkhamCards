@@ -2252,7 +2252,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperou a Relíquia das Eras."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -2324,7 +2324,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "o Harbinger ainda está vivo (#X# dano)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2352,7 +2352,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "os investigadores recuperaram a Relic of Ages (Relíquia das Eras)."
           },
           {
             "id": "investigators_saved_serpents",
@@ -2432,24 +2432,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3632,7 +3632,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperou a Relíquia das Eras."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -3704,7 +3704,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "o Harbinger ainda está vivo (#X# dano)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -3732,7 +3732,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "os investigadores recuperaram a Relic of Ages (Relíquia das Eras)."
           },
           {
             "id": "investigators_saved_serpents",
@@ -3808,24 +3808,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -4917,7 +4917,7 @@
           },
           {
             "id": "collection_was_saved",
-            "text": "the colleciton was saved."
+            "text": "the collection was saved."
           },
           {
             "id": "death_conquered_herbert_west",
@@ -5014,6 +5014,10 @@
           {
             "id": "you_conquered_death",
             "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
           },
           {
             "id": "you_have_received_a_twisted_gift",
