@@ -602,13 +602,30 @@ export default class ScenarioStep {
           }
           case PlayingScenarioBranch.RESOLUTION: {
             const steps: string[] = [];
-            if (!input.no_resolutions) {
-              steps.push('$choose_resolution');
+            if (input.fixed_resolution) {
+              return this.maybeCreateEffectsStep(
+                step.id,
+                this.remainingStepIds,
+                [
+                  {
+                    effects: [
+                      {
+                        type: 'scenario_data',
+                        setting: 'scenario_status',
+                        status: 'resolution',
+                        resolution: input.fixed_resolution,
+                      },
+                    ],
+                  },
+                ],
+                scenarioState,
+                {}
+              );
             }
             return this.maybeCreateEffectsStep(
               step.id,
               [
-                ...steps,
+                '$choose_resolution',
                 ...this.remainingStepIds,
               ],
               [],

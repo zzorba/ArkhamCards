@@ -2103,6 +2103,22 @@
             "text": "dummy"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -2659,15 +2675,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua wycofał się, aby wyleczyć rany."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "podczas karnawału Cnidathqua otrzymał wiele ofiar z ludzi."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Cnidathqua uciekł przed słońcem w głębiny."
           },
           {
             "id": "constellation_was_lost_to_the_depths",
@@ -3190,6 +3206,22 @@
         "entries": [
           {
             "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
             "text": "dummy"
           },
           {

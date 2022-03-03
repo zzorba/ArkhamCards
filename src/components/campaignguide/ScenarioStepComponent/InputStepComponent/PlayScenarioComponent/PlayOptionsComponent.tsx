@@ -40,7 +40,10 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
   const { scenarioState, processedScenario, processedCampaign } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const { typography, width } = useContext(StyleContext);
-  const allInvestigators = useMemo(() => processedScenario.latestCampaignLog.investigators(false), [processedScenario.latestCampaignLog]);
+  const allInvestigators = useMemo(
+    () => input.fixed_resolution ? [] : processedScenario.latestCampaignLog.investigators(false),
+    [input.fixed_resolution, processedScenario.latestCampaignLog]
+  );
   const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>();
   const standalone = !!campaign.standaloneId;
 
@@ -157,26 +160,28 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
           onPress={showChaosBagDialog}
           bottomMargin={s}
         />
-        <View style={[styles.row, space.paddingBottomS]}>
-          <DeckButton
-            icon="weakness"
-            title={t`Weakness`}
-            detail={t`Draw random`}
-            color="dark_gray"
-            onPress={drawWeaknessPressed}
-            rightMargin={xs}
-            noShadow
-          />
-          <DeckButton
-            icon="trauma"
-            title={t`Trauma`}
-            detail={t`Record`}
-            color="dark_gray"
-            onPress={recordTraumaPressed}
-            leftMargin={xs}
-            noShadow
-          />
-        </View>
+        { !input.fixed_resolution && (
+          <View style={[styles.row, space.paddingBottomS]}>
+            <DeckButton
+              icon="weakness"
+              title={t`Weakness`}
+              detail={t`Draw random`}
+              color="dark_gray"
+              onPress={drawWeaknessPressed}
+              rightMargin={xs}
+              noShadow
+            />
+            <DeckButton
+              icon="trauma"
+              title={t`Trauma`}
+              detail={t`Record`}
+              color="dark_gray"
+              onPress={recordTraumaPressed}
+              leftMargin={xs}
+              noShadow
+            />
+          </View>
+        ) }
         { !!hasFaq && (
           <DeckButton
             icon="faq"
@@ -227,7 +232,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             onPress={resolutionPressed}
             type="resolution"
             title={t`Scenario Ended`}
-            description={input.no_resolutions ? undefined : t`Proceed to Resolutions`}
+            description={input.fixed_resolution ? undefined : t`Proceed to Resolutions`}
           />
         </View>
       </InputWrapper>

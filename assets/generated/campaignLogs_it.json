@@ -2103,6 +2103,22 @@
             "text": "dummy"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -3190,6 +3206,22 @@
         "entries": [
           {
             "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
             "text": "dummy"
           },
           {

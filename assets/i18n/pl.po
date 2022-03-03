@@ -4748,7 +4748,7 @@ msgid "Record damage/horror:"
 msgstr "Zapisz obrażenia/przerażenie:"
 
 msgid "Expedition Team"
-msgstr "Ekspedycja"
+msgstr "Członkowie Ekspedycji"
 
 #, javascript-format
 msgid ""
@@ -4784,13 +4784,13 @@ msgid "If all investigatore are still alive."
 msgstr "Jeśli wszyscy badacze wciąż żyją,"
 
 msgid "The Entity"
-msgstr ""
+msgstr "Istota"
 
 msgid "Resolute"
-msgstr ""
+msgstr "Niezachwiany"
 
 msgid "MIA"
-msgstr ""
+msgstr "ZwA"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4820,58 +4820,58 @@ msgstr ""
 "doświadczenia, które możesz wydać na ten scenariusz."
 
 msgid "Ice and Death: Part 1"
-msgstr ""
+msgstr "Lód i śmierć: część 1"
 
 msgid "Ice and Death: Part 2"
-msgstr ""
+msgstr "Lód i śmierć: część 2"
 
 msgid "Ice and Death: Part 3"
-msgstr ""
+msgstr "Lód i śmierć: część 3"
 
 msgid "Restful Night"
-msgstr ""
+msgstr "Noc odpoczynku"
 
 msgid "To the Forbidden Peaks"
-msgstr ""
+msgstr "Na zakazane szczyty"
 
 msgid "Endless Night"
-msgstr ""
+msgstr "Niekończąca się noc"
 
 msgid "City of the Elder Things"
-msgstr ""
+msgstr "Miasto Starszych Istot"
 
 msgid "Final Night"
-msgstr ""
+msgstr "Ostatnia noc"
 
 msgid "The Heart of Madness: Part 1"
-msgstr ""
+msgstr "Serce szaleństwa: część 1"
 
 msgid "The Heart of Madness: Part 2"
-msgstr ""
+msgstr "Serce szaleństwa: część 2"
 
 msgid "Fatal Mirage"
-msgstr ""
+msgstr "Zdradzieckie miraże"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "Zdradzieckie miraże - Odkryte wspomnienia"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "Zdradzieckie miraże - Wyparte wspomnienia"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "Lód i śmierć - Odkryte lokalizacje"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "Lód i śmierć - Odzyskane zapasy"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "Serce szaleństwa - Użyte pieczęcie"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "Serce szaleństwa - Odzyskane pieczęcie"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr "Możesz odzyskać 1 punkt fizycznej lub psychiczne traumy <i>Twój wybór</i>"
+msgstr "Możesz odzyskać 1 punkt fizycznej lub psychicznej traumy <i>Twój wybór</i>"
 
 #, javascript-format
 msgid ""
@@ -5102,7 +5102,7 @@ msgid "Increase each investigator's maximum hand size by 3."
 msgstr "Zwiększ limit kart na ręce każdego badacza o 3."
 
 msgid "Decrease each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Zmniejsz limit kart na ręce każdego badacza o 3."
 
 msgid "Wheel of Fortune · X"
 msgstr "Koło Fortuny - X"
@@ -5207,7 +5207,7 @@ msgid ""
 "they may heal 1 damage or 1 horror."
 msgstr ""
 "Po tym, jak badacz odkryje żeton [elder_sign] podczas testu umiejętności, "
-"może uleczyć 1 obrażenie lub 1 przerażenie."
+"może odzyskać 1 punkt obrażenia lub 1 punkt przerażenia."
 
 msgid ""
 "After an investigator reveals an [auto_fail] token during a skill test, "
@@ -5298,99 +5298,106 @@ msgstr "Tworzenie scenariusza pojedynczego..."
 
 msgid "Campaign will be synced between devices and can be shared with friends"
 msgstr ""
+"Kampania będzie synchronizowana między urządzeniami i może być udostępniana "
+"znajomym"
 
 msgid "Campaign will be local to this device, you can choose to upload it later"
-msgstr ""
+msgstr "Kampania będzie lokalna na tym urządzeniu, możesz ją przesłać później"
 
 #, javascript-format
 msgid "(${ count } card)"
 msgid_plural "(${ count } cards)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ count } karta)"
+msgstr[1] "(${ count } karty)"
+msgstr[2] "(${ count } kart)"
 
 msgid "Collection overlap"
-msgstr ""
+msgstr "Kolekcja pokrywa się"
 
 msgid "Deck overlap"
-msgstr ""
+msgstr "Tal nakłada się"
 
 msgid "Show collection overlap"
-msgstr ""
+msgstr "Pokaż pokrywanie się kolekcji"
 
 msgid "Hide collection overlap"
-msgstr ""
+msgstr "Ukryj pokrywanie się kolekcji"
 
 msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
 msgstr ""
+"Całkowita liczba tych kart w taliach z tej kampanii przekracza twoją "
+"kolekcję kart."
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
-msgstr ""
+msgstr "Po ukończeniu scenariusza ${ scenarionName }"
 
 msgid "Show decks from other campaigns"
-msgstr ""
+msgstr "Pokaż talie z innych kampanii"
 
 msgid "Trait Choice"
-msgstr ""
+msgstr "Wybór atutów"
 
 msgid "Blessed"
-msgstr ""
+msgstr "Błogosławiona"
 
 msgid "Cursed"
-msgstr ""
+msgstr "Przeklęta"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "Błogosławiona i przeklęta"
 
 msgid "Select Option"
-msgstr ""
+msgstr "Wybierz opcję"
 
 msgid "Move to deck"
-msgstr ""
+msgstr "Przesuń do talii"
 
 msgid "Unarchive standalone"
-msgstr ""
+msgstr "Cofnij archwizację scenariusza pojedynczego"
 
 msgid "Archive standalone"
 msgstr "Archiwizuj scenariusz pojedynczy"
 
 msgid "Bless / Curse"
-msgstr ""
+msgstr "Błogosławieństwo / Klątwa"
 
 msgid "You appear to be offline. Tap to check for network."
-msgstr ""
+msgstr "Wygląda na to, że jesteś offline. Dotknij, aby sprawdzić sieć."
 
 msgid "Guardians of the Abyss"
-msgstr ""
+msgstr "Strażnicy Otchłani"
 
 msgid "Two-part campaign variant"
-msgstr ""
+msgstr "Two-part campaign variant"
 
 msgid "Claim previous scenario XP"
-msgstr ""
+msgstr "Odbierz XP z poprzedniego scenariusza"
 
 msgid "Apply changes from last completed scenario"
-msgstr ""
+msgstr "Apply changes from last completed scenario"
 
 msgid "Hide campaign decks"
-msgstr ""
+msgstr "Ukryj talie kampanii"
 
 msgid "Select Standalone"
 msgstr "Wybierz scenariusz pojedynczy"
 
 msgid "Add ${ card.name }:"
-msgstr ""
+msgstr "Dodaj ${ card.name }:"
 
 #, javascript-format
 msgid "Select ${ name }"
-msgstr ""
+msgstr "Wybierz ${ name }"
 
 msgid ""
 "Note: This should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
+"Uwaga: Ten wybór powinien mieć miejsce tylko podczas tworzenia talii, a nie "
+"między scenariuszami."
 
 #, javascript-format
 msgid ""
@@ -5412,6 +5419,26 @@ msgid ""
 "and access to card images. Without their continued support, this project "
 "wouldn't be possible."
 msgstr ""
+"Informacje prezentowane w tej aplikacji na temat Horroru w Arkham: Gry "
+"Karcianej, zarówno treściowe, jak i graficzne, są chronione prawami "
+"autorskimi Fantasy Flight Games. \n"
+"Ta aplikacja nie jest produkowana, zatwierdzona, wspierana ani powiązana z "
+"Fantasy Flight Games.\n"
+"\n"
+"Ta aplikacja została stworzona przez Daniela Salinasa jako projekt "
+"fanowski, aby wesprzeć społeczność Horroru w Arkham: Gry Karcianej, z "
+"projektem od ${ visualDesigner } i dodatkowym rozwijaniem przez ${ "
+"dissonantVoicesDeveloper }, ${ chaosBagDeveloper } i ${ toolingDeveloper }. "
+"\n"
+"Jeśli okaże się, że zarządzasz wieloma taliami i kampaniami, mam nadzieję, "
+"że okaże się ona przydatna.\n"
+"\n"
+"Opinie i raporty o błędach są mile widziane przez e-mail na adres "
+"[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)\n"
+"\n"
+"Wielkie podziękowania dla ArkhamDB.com za dostarczenie uporządkowanych "
+"danych, dostępu do API i dostępu do obrazów kart. Bez ich stałego wsparcia "
+"ten projekt nie byłby możliwy."
 
 msgid ""
 "<b>Translation:</b>\n"
@@ -5421,6 +5448,12 @@ msgid ""
 "• Russian: ${ russianTranslators }\n"
 "• Korean: ${ koreanTranslators }"
 msgstr ""
+"<b>Tłumaczenie:</b>\n"
+"• hiszpański: ${ spanishTranslators }\n"
+"• francuski: ${ frenchTranslators }\n"
+"• niemiecki: ${ germanTranslators }\n"
+"• r****ki: ${ russianTranslators }\n"
+"• koreański: ${ koreanTranslators }"
 
 #, javascript-format
 msgid ""
@@ -5430,17 +5463,30 @@ msgid ""
 "• Dissonant Voices audio integration: ${ dissonantVoicesDeveloper }\n"
 "• Tooling and build support: ${ toolingDeveloper }"
 msgstr ""
+"<b>Dodatkowy wkład:</b>\n"
+"• Projekt wizualny: ${ visualDesigner }\n"
+"• Cyfrowy worek chaosy + kalkulator szans: ${ chaosBagDeveloper }\n"
+"• Inetegracja audio Dissonant Voices: ${ dissonantVoicesDeveloper }\n"
+"• Wsparcie narzędziowe: ${ toolingDeveloper }"
 
 msgid ""
 "<b>Icon Attribution:</b>\n"
 "• Original icon designs: ${ visualDesigner }"
 msgstr ""
+"<b>Przypisanie ikon</b>\n"
+"• Oryginalne projekty ikon: ${ visualDesigner }"
 
 msgid "Samsung One UI fix"
 msgstr "Poprawka dla Samsung One UI"
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
 msgstr "Napraw problemy z interfejsem w Samsung One UI 3.0"
+
+msgid "Reauthorize ArkhamDB"
+msgstr ""
+
+msgid "Login required to save deck upgrade"
+msgstr ""
 
 msgid "Call of the Plaguebearer"
 msgstr ""
@@ -5454,12 +5500,6 @@ msgstr ""
 msgid "Locations"
 msgstr ""
 
-msgid "Reauthorize ArkhamDB"
-msgstr ""
-
-msgid "Login required to save deck upgrade"
-msgstr ""
-
 msgid ""
 "Note: this campaign is a fairly new addition to the app and may contain "
 "some mistakes."
@@ -5468,12 +5508,12 @@ msgstr ""
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "Własny"
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>oszalał</b>."
+msgstr "${ investigator.name } stał się<b>niepoczytalny</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5510,9 +5550,9 @@ msgstr[2] ""
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } leczy ${ mental } punkt traumy psychicznej."
-msgstr[1] "${ investigator.name } leczy ${ mental } punkty traumy psychicznej."
-msgstr[2] "${ investigator.name } leczy ${ mental } punktów traumy psychicznej."
+msgstr[0] "${ investigator.name } odzyskuje ${ mental } punkt traumy psychicznej."
+msgstr[1] "${ investigator.name } odzyskuje ${ mental } punkty traumy psychicznej."
+msgstr[2] "${ investigator.name } odzyskuje ${ mental } punktów traumy psychicznej."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5532,7 +5572,7 @@ msgstr[2] ""
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } leczy ${ physical } punkt traumy fizycznej."
+msgstr[0] "${ investigator.name } odzyskuje ${ physical } punkt traumy fizycznej."
 msgstr[1] "${ investigator.name } leczy ${ physical } punkty traumy fizycznej."
 msgstr[2] "${ investigator.name } leczy ${ physical } punktów traumy fizycznej."
 
@@ -5572,7 +5612,7 @@ msgstr "Pokonany: bez traumy"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } odczytuje <b>${ sectionName }</b>"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5580,6 +5620,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> nie jest wymieniony w sekcji ‘${ entry.section "
+"}’ w Dzienniku kampanii,"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5587,6 +5629,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> jest wymieniony w sekcji ‘${ entry.section }’ w "
+"Dzienniku kampanii,"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5597,7 +5641,14 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } posiada ${ supplyName }, musi odczytać <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
+msgstr[2] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5608,11 +5659,18 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } nie posiada ${ supplyName }, musi odczytać <b>${ "
+"sectionName }</b>."
 msgstr[1] ""
+"Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
+"sectionName }</b>."
+msgstr[2] ""
+"Jeśli ${ list } nie posiada ${ supplyName }, musi odczytać <b>${ "
+"sectionName }</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>oszalała</b>."
+msgstr "${ investigator.name } stała się <b>niepoczytalna</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
@@ -5648,9 +5706,9 @@ msgstr[2] ""
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } leczy ${ mental } punkt traumy psychicznej."
-msgstr[1] "${ investigator.name } leczy ${ mental } punkty traumy psychicznej."
-msgstr[2] "${ investigator.name } leczy ${ mental } punktów traumy psychicznej."
+msgstr[0] "${ investigator.name } odzyskuje ${ mental } punkt traumy psychicznej."
+msgstr[1] "${ investigator.name } odzyskuje ${ mental } punkty traumy psychicznej."
+msgstr[2] "${ investigator.name } odzyskuje ${ mental } punktów traumy psychicznej."
 
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -5669,9 +5727,9 @@ msgstr[2] ""
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } leczy ${ physical } punkt traumy fizycznej."
-msgstr[1] "${ investigator.name } leczy ${ physical } punkty traumy fizycznej."
-msgstr[2] "${ investigator.name } leczy ${ physical } punktów traumy fizycznej."
+msgstr[0] "${ investigator.name } odzyskuje ${ physical } punkt traumy fizycznej."
+msgstr[1] "${ investigator.name } odzyskuje ${ physical } punkty traumy fizycznej."
+msgstr[2] "${ investigator.name } odzyskuje ${ physical } punktów traumy fizycznej."
 
 #, javascript-format
 msgctxt "feminine"
@@ -5709,13 +5767,15 @@ msgstr "Pokonana: bez traumy"
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } odczytuje <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> nie jest wymieniona w sekcji ‘${ entry.section "
+"}’ w Dzienniku kampanii,"
 
 #, javascript-format
 msgctxt "feminine"
@@ -5723,6 +5783,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Jeśli <i>${ card.name }</i> jest wymieniona w sekcji ‘${ entry.section }’ w "
+"Dzienniku kampanii,"
 
 msgctxt "feminine"
 msgid "Physical trauma"
@@ -5745,7 +5807,14 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } posiada ${ supplyName }, musi odczytać <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
+msgstr[2] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
 
 msgctxt "feminine"
 msgid ""
@@ -5755,75 +5824,82 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } nie posiada ${ supplyName }, musi odczytać <b>${ "
+"sectionName }</b>."
 msgstr[1] ""
+"Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
+"sectionName }</b>."
+msgstr[2] ""
+"Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
+"sectionName }</b>."
 
 msgctxt "Traits"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "trait"
 msgid "???"
-msgstr ""
+msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr ""
+msgstr "Wynaturzenie"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "Otchłań"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr ""
+msgstr "Akt 1"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr ""
+msgstr "Akt 2"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr ""
+msgstr "Agencja"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr ""
+msgstr "Sprzymierzeniec"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "Zmieniony"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "Pradawny"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "Wielkie Przedwieczny"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr ""
+msgstr "Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr ""
+msgstr "Przytułek Arkham"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr ""
+msgstr "Pancerz"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "Artysta"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "Asystent"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "Atak"
 
 msgctxt "trait"
 msgid "Augury"
@@ -5835,7 +5911,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "Piwnica"
 
 msgctxt "trait"
 msgid "Bayou"
@@ -5847,7 +5923,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr ""
+msgstr "Błogosławiony"
 
 msgctxt "trait"
 msgid "Blunder"
@@ -5855,7 +5931,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "Łódź"
 
 msgctxt "trait"
 msgid "Bold"
@@ -5867,15 +5943,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "Most"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "Bractwo"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr ""
+msgstr "Byakhee"
 
 msgctxt "trait"
 msgid "Bystander"
@@ -5883,7 +5959,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "Kair"
 
 msgctxt "trait"
 msgid "Campsite"
@@ -5931,7 +6007,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -5967,7 +6043,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "Miejsce zbrodni"
 
 msgctxt "trait"
 msgid "Criminal"
@@ -5975,7 +6051,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr ""
+msgstr "Kultysta"
 
 msgctxt "trait"
 msgid "Curse"
@@ -5983,7 +6059,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr ""
+msgstr "Przeklęty"
 
 msgctxt "trait"
 msgid "Dark Young"
@@ -6007,7 +6083,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Detective"
-msgstr ""
+msgstr "Detektyw"
 
 msgctxt "trait"
 msgid "Developed"
@@ -6023,7 +6099,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "Śniący"
 
 msgctxt "trait"
 msgid "Dreamlands"
@@ -6035,15 +6111,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Dunwich"
-msgstr ""
+msgstr "Dunwich"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr ""
+msgstr "Eldritch"
 
 msgctxt "trait"
 msgid "Elite"
-msgstr ""
+msgstr "Elitarny"
 
 msgctxt "trait"
 msgid "Endtimes"
@@ -6051,7 +6127,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "Dowód"
 
 msgctxt "trait"
 msgid "Exhibit"
@@ -6059,11 +6135,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "Ekspedycja"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "Ekspercka"
 
 msgctxt "trait"
 msgid "Extradimensional"
@@ -6075,7 +6151,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "Eztli"
 
 msgctxt "trait"
 msgid "Familiar"
@@ -6119,7 +6195,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "Przyszłość"
 
 msgctxt "trait"
 msgid "Gambit"
@@ -6131,11 +6207,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "Ghast"
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr ""
+msgstr "Ghoul"
 
 msgctxt "trait"
 msgid "Government"
@@ -6147,7 +6223,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr ""
+msgstr "Cmentarz"
 
 msgctxt "trait"
 msgid "Ground Floor"
@@ -6155,11 +6231,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "Gość"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "Gug"
 
 msgctxt "trait"
 msgid "Hall"
@@ -6175,27 +6251,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "Kryjówka"
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "Stowarzyszenie Historyczne"
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "Człowiek"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr ""
+msgstr "Humanoid"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr ""
+msgstr "Łowca"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "Hybryda"
 
 msgctxt "trait"
 msgid "Illicit"
@@ -6215,11 +6291,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "Niewinny"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
@@ -6235,11 +6311,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "Wyspa"
 
 msgctxt "trait"
 msgid "Item"
-msgstr ""
+msgstr "Przedmiot"
 
 msgctxt "trait"
 msgid "Job"
@@ -6247,15 +6323,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "Dżungla"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "Kadath"
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "Klucz"
 
 msgctxt "trait"
 msgid "Lead"
@@ -6267,15 +6343,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "Loża"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "Lunatyk"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr ""
+msgstr "Szaleństwo"
 
 msgctxt "trait"
 msgid "Manifold"
@@ -6283,7 +6359,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "Maska"
 
 msgctxt "trait"
 msgid "Medic"
@@ -6295,11 +6371,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "Mexico City"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr ""
+msgstr "Mi-Go"
 
 msgctxt "trait"
 msgid "Midtown"
@@ -6307,23 +6383,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr ""
+msgstr "Miskatonic"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "Mnar"
 
 msgctxt "trait"
 msgid "Monster"
-msgstr ""
+msgstr "Potwór"
 
 msgctxt "trait"
 msgid "Montréal"
-msgstr ""
+msgstr "Montréal"
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr ""
+msgstr "Góra"
 
 msgctxt "trait"
 msgid "Mutated"
@@ -6335,11 +6411,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr ""
+msgstr "Nowy Orlean"
 
 msgctxt "trait"
 msgid "New York City"
-msgstr ""
+msgstr "Nowy Jork"
 
 msgctxt "trait"
 msgid "Nightgaunt"
@@ -6351,19 +6427,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "Okultystyczny"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "Ocean"
 
 msgctxt "trait"
 msgid "Omen"
-msgstr ""
+msgstr "Omen"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr ""
+msgstr "Ooth-Nargai"
 
 msgctxt "trait"
 msgid "Ooze"
@@ -6383,19 +6459,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Pact"
-msgstr ""
+msgstr "Pakt"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr ""
+msgstr "Paradoks"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr ""
+msgstr "Paryż"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr ""
+msgstr "Część 1"
 
 msgctxt "trait"
 msgid "Passageway"
@@ -6415,11 +6491,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "Trucizna"
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "Policja"
 
 msgctxt "trait"
 msgid "Port"
@@ -6451,7 +6527,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Providence"
-msgstr ""
+msgstr "Providence"
 
 msgctxt "trait"
 msgid "Rail"
@@ -6459,11 +6535,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "Dystansowa"
 
 msgctxt "trait"
 msgid "Relic"
-msgstr ""
+msgstr "Relikt"
 
 msgctxt "trait"
 msgid "Reporter"
@@ -6479,31 +6555,31 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr ""
+msgstr "Rytuał"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr ""
+msgstr "Miejsce rytuału"
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "Rzeka"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "Riverside"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "Droga"
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "Ruiny"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
@@ -6515,11 +6591,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr ""
+msgstr "Uczony"
 
 msgctxt "trait"
 msgid "Science"
-msgstr ""
+msgstr "Nauka"
 
 msgctxt "trait"
 msgid "Script"
@@ -6527,15 +6603,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr ""
+msgstr "Drugie piętro"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "Sentinel Hill"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "Wąż"
 
 msgctxt "trait"
 msgid "Service"
@@ -6547,7 +6623,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "Szantak"
 
 msgctxt "trait"
 msgid "Shattered"
@@ -6559,15 +6635,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr ""
+msgstr "Shoggoth"
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr ""
+msgstr "Srebrny Świt"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr ""
+msgstr "Skai"
 
 msgctxt "trait"
 msgid "Socialite"
@@ -6575,23 +6651,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "Pieśń"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr ""
+msgstr "Czarnoksiężnik"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr ""
+msgstr "Widmowy"
 
 msgctxt "trait"
 msgid "Spell"
-msgstr ""
+msgstr "Zaklęcie"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "Pająk"
 
 msgctxt "trait"
 msgid "Spirit"
@@ -6603,7 +6679,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "Personel"
 
 msgctxt "trait"
 msgid "Steps"
@@ -6631,15 +6707,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr ""
+msgstr "Taktyka"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr ""
+msgstr "Talent"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "Tarot"
 
 msgctxt "trait"
 msgid "Task"
@@ -6651,7 +6727,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "Tenochtitlán"
 
 msgctxt "trait"
 msgid "Tentacle"
@@ -6659,23 +6735,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Terror"
-msgstr ""
+msgstr "Terror"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr ""
+msgstr "Trzecie piętro"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "Tindalos"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr ""
+msgstr "Tom"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr ""
+msgstr "Narzędzie"
 
 msgctxt "trait"
 msgid "Town"
@@ -6687,7 +6763,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "Pułapka"
 
 msgctxt "trait"
 msgid "Trick"
@@ -6719,7 +6795,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "Pustka"
 
 msgctxt "trait"
 msgid "Warden"
@@ -6735,7 +6811,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr ""
+msgstr "Broń"
 
 msgctxt "trait"
 msgid "Wilderness"
@@ -6755,27 +6831,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr ""
+msgstr "Y'ha-nthlei"
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr ""
+msgstr "Yithian"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "Yoth"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
+msgstr "Zoog"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "Błogosławiony?"
 
 msgctxt "trait"
 msgid "Broken"
@@ -6783,7 +6859,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "Karta"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -6815,7 +6891,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Cień"
 
 msgctxt "trait"
 msgid "Synergy"
@@ -6827,88 +6903,88 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "Kraina Czarów"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "Niezachwiany"
 
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr ""
+msgstr "Cykl ${ cycleNames[cycle_position] }"
 
 msgctxt "Types"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "SubTypes"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "Actions"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "action"
 msgid "Fight"
-msgstr ""
+msgstr "Walka"
 
 msgctxt "action"
 msgid "Engage"
-msgstr ""
+msgstr "Wejście w zwarcie"
 
 msgctxt "action"
 msgid "Investigate"
-msgstr ""
+msgstr "Badanie"
 
 msgctxt "action"
 msgid "Play"
-msgstr ""
+msgstr "Zagranie"
 
 msgctxt "action"
 msgid "Draw"
-msgstr ""
+msgstr "Dobranie"
 
 msgctxt "action"
 msgid "Move"
-msgstr ""
+msgstr "Ruch"
 
 msgctxt "action"
 msgid "Evade"
-msgstr ""
+msgstr "Wymykanie"
 
 msgctxt "action"
 msgid "Resource"
-msgstr ""
+msgstr "Dobranie zasobów"
 
 msgctxt "Encounter Sets"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "Illustrators"
 msgid "All"
-msgstr ""
+msgstr "Wszyscy"
 
 msgctxt "slots"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "Slots"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "Uses"
 msgid "All"
-msgstr ""
+msgstr "Wszystko"
 
 msgctxt "Draw Cards"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 msgctxt "Taboo List"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "header"
 msgid "Asset"
@@ -6920,8 +6996,9 @@ msgstr[2] "Atutów"
 msgctxt "header"
 msgid "Event"
 msgid_plural "Events"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wydarzenie"
+msgstr[1] "Wydarzenia"
+msgstr[2] "Wydarzeń"
 
 msgctxt "header"
 msgid "Skill"
@@ -6940,77 +7017,84 @@ msgstr[2] "Osłabień"
 msgctxt "header"
 msgid "Enemy"
 msgid_plural "Enemies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wróg"
+msgstr[1] "Wrogów"
+msgstr[2] "Wrogów"
 
 msgctxt "header"
 msgid "Location"
 msgid_plural "Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lokalizacja"
+msgstr[1] "Lokalizacje"
+msgstr[2] "Lokalizacji"
 
 msgctxt "header"
 msgid "Story"
 msgid_plural "Stories"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fabularna"
+msgstr[1] "Fabularne"
+msgstr[2] "Fabularnych"
 
 msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Akt"
+msgstr[1] "Akty"
+msgstr[2] "Aktów"
 
 msgctxt "header"
 msgid "Agenda"
 msgid_plural "Agendas"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tajemnica"
+msgstr[1] "Tajemnice"
+msgstr[2] "Tajemnic"
 
 msgctxt "header"
 msgid "Investigator"
 msgid_plural "Investigators"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Badacz"
+msgstr[1] "Badaczy"
+msgstr[2] "Badaczy"
 
 msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Scenariusz"
+msgstr[1] "Scenariuszw"
+msgstr[2] "Scenariuszy"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
-msgstr ""
+msgstr "Wybierz dodatkową"
 
 msgctxt "narration"
 msgid "Pause"
-msgstr ""
+msgstr "Pauza"
 
 msgctxt "narration"
 msgid "Play"
-msgstr ""
+msgstr "Odtwórz"
 
 msgctxt "narration"
 msgid "Jump back"
-msgstr ""
+msgstr "Przeskocz wstecz"
 
 msgctxt "narration"
 msgid "Playing audio"
-msgstr ""
+msgstr "Odtwarzanie"
 
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "Prędkość odtwarzania: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr ""
+msgstr "Inny."
 
 msgctxt "Weakness Card"
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 #, javascript-format
 msgctxt "mixed"
@@ -7021,7 +7105,14 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } posiada ${ supplyName }, musi odczytać <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
+msgstr[2] ""
+"Jeśli ${ list } posiadają ${ supplyName }, muszą odczytać <b>${ sectionName "
+"}</b>."
 
 #, javascript-format
 msgctxt "mixed"
@@ -7032,40 +7123,47 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Jeśli ${ list } nie posiada ${ supplyName }, musi odczytać <b>${ "
+"sectionName }</b>."
 msgstr[1] ""
+"Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
+"sectionName }</b>."
+msgstr[2] ""
+"Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
+"sectionName }</b>."
 
 msgctxt "trauma"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "Tarot Card"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX"
-msgstr ""
+msgstr "Sąd Ostateczny · XX"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "Sąd Ostateczny · XX (Odwrócony)"
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr ""
+msgstr "Własna"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
-msgstr ""
+msgstr "Kampanie"
 
 msgctxt "new_campaign_type"
 msgid "Standalones"
-msgstr ""
+msgstr "Scenariusze pojedyncze"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "Własny"
