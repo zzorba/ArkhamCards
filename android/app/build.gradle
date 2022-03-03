@@ -148,7 +148,7 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 626
+        versionCode 627
         versionName "2.16.0"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
