@@ -384,7 +384,7 @@ PODS:
     - react-native-config/App (= 1.4.5)
   - react-native-config/App (1.4.5):
     - React-Core
-  - react-native-document-picker (6.0.4):
+  - react-native-document-picker (8.0.0):
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
@@ -907,7 +907,7 @@ SPEC CHECKSUMS:
   React-logger: 23de8ea0f44fa00ee77e96060273225607fd4d78
   react-native-app-auth: fd1eaa667c0bc014199456d14a6440cb74de814e
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
-  react-native-document-picker: a7950caaee8587002c9acbc7fe497a342094d93a
+  react-native-document-picker: 429972f7ece4463aa5bcdd789622b3a674a3c5d1
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
   react-native-netinfo: ba4ea50d836c60580c59079233c400753fe5bcb6

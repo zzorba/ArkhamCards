@@ -80,6 +80,8 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
     try {
       const res = await DocumentPicker.pickSingle({
         type: [DocumentPicker.types.allFiles],
+        mode: 'import',
+        copyTo: 'cachesDirectory',
       });
       if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
         Alert.alert(

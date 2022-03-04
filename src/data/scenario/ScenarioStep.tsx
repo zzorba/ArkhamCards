@@ -601,7 +601,15 @@ export default class ScenarioStep {
             );
           }
           case PlayingScenarioBranch.RESOLUTION: {
-            const steps: string[] = [];
+            if (input.no_resolutions) {
+              return this.maybeCreateEffectsStep(
+                step.id,
+                this.remainingStepIds,
+                [],
+                scenarioState,
+                {}
+              );
+            }
             if (input.fixed_resolution) {
               return this.maybeCreateEffectsStep(
                 step.id,
@@ -781,7 +789,6 @@ export default class ScenarioStep {
             effects: option.effects,
           };
         });
-        console.log(JSON.stringify(effectsWithInput));
         return this.maybeCreateEffectsStep(
           step.id,
           [...stepIds, ...this.remainingStepIds],
@@ -1129,9 +1136,9 @@ export default class ScenarioStep {
         const choice = choices[index];
         return this.maybeCreateEffectsStep(
           step.id,
-          [...(choice.steps || []), ...this.remainingStepIds],
+          [...(choice?.steps || []), ...this.remainingStepIds],
           [{
-            effects: choice.effects || [],
+            effects: choice?.effects || [],
           }],
           scenarioState,
           { bulletType: 'small' }

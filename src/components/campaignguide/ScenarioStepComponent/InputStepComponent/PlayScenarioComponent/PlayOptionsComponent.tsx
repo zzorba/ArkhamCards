@@ -232,7 +232,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
             onPress={resolutionPressed}
             type="resolution"
             title={t`Scenario Ended`}
-            description={input.fixed_resolution ? undefined : t`Proceed to Resolutions`}
+            description={input.fixed_resolution || input.no_resolutions ? undefined : t`Proceed to Resolutions`}
           />
         </View>
       </InputWrapper>

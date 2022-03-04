@@ -907,6 +907,7 @@ export interface PlayScenarioInput {
   campaign_log?: BinaryConditionalChoice[];
   chaos_bag_branches?: string[];
   fixed_resolution?: string;
+  no_resolutions?: boolean;
 }
 export interface TextBoxInput {
   type: "text_box";
