@@ -1,4 +1,4 @@
-import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
+import { concat, chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, uniqBy, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
 import { c, t } from 'ttag';
 
@@ -282,13 +282,25 @@ export const syncCards = async function(
       updateProgress(0.5);
       try {
         const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+        const customCards = uniqBy(map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')), c => c.id);
         const queryRunner = await db.startTransaction();
         try {
-          await insertChunk(sqliteVersion, customCards, async(c: Card[]) => {
-            await queryRunner.manager.delete(Card, map(c, c => c.id));
+          const [linkedCards, normalCards] = partition(customCards, card => !!card.linked_card);
+          await insertChunk(
+            sqliteVersion,
+            flatMap(customCards, c => c.linked_card ? [c.linked_card, c] : [c]),
+            async(c: Card[]) => {
+              await queryRunner.manager.delete(Card, map(c, c => c.id));
+            });
+          async function insertCards(c: Card[]) {
             await queryRunner.manager.insert(Card, c);
-          });
+          }
+          await insertChunk(sqliteVersion,
+            flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []),
+            insertCards
+          );
+          await insertChunk(sqliteVersion, linkedCards, insertCards);
+          await insertChunk(sqliteVersion, normalCards, insertCards);
           updateProgress(0.7);
         } finally {
           await queryRunner.commitTransaction();
@@ -462,11 +474,12 @@ export const syncCards = async function(
     let customCards: Card[] = [];
     try {
       const customCardsResponse = await customCardsPromise;
-      customCards = map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      customCards = uniqBy(map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')), c => c.id);
     } catch (e) {
       console.log(e);
     }
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
+    const [linkedCustomCards, normalCustomCards] = partition(customCards, card => !!card.linked_card);
     const queryRunner = await db.startTransaction();
     try {
       VERBOSE && console.log('Parsed all cards');
@@ -477,14 +490,18 @@ export const syncCards = async function(
         processedCards += c.length;
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
-      await insertChunk(sqliteVersion, flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
+      await insertChunk(
+        sqliteVersion,
+        concat(
+          flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []),
+          flatMap(linkedCustomCards, c => c.linked_card ? [c.linked_card] : []),
+        ),
+        insertCards
+      );
       // console.log('Inserted back-link cards');
-      await insertChunk(sqliteVersion, linkedCards, insertCards);
+      await insertChunk(sqliteVersion, concat(linkedCards, linkedCustomCards), insertCards);
       VERBOSE && console.log('Inserted front link cards');
-      await insertChunk(sqliteVersion, normalCards, insertCards);
-      if (customCards.length) {
-        await insertChunk(sqliteVersion, customCards, insertCards);
-      }
+      await insertChunk(sqliteVersion, concat(normalCards, normalCustomCards), insertCards);
     } finally {
       await queryRunner.commitTransaction();
       await queryRunner.release();
