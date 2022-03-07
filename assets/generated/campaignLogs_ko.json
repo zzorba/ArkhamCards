@@ -1971,7 +1971,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "케지아의 마녀단이 온 세계를 장악했다"
           },
           {
             "id": "deceiving_the_lodge",
@@ -1991,11 +1991,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "에린이 조사자들에게 합류했다"
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "에린이 만나길 원한다"
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2205,7 +2205,7 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "피흘리는 나무 껍질"
           },
           {
             "id": "corn_husk_doll",
@@ -2233,7 +2233,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "기이한 주문"
           },
           {
             "id": "wisp_of_spectral_mist",
