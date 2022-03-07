@@ -324,7 +324,7 @@ export interface RemoveCardEffect {
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
-  investigator?: "any" | "defeated";
+  investigator?: "all" | "defeated";
   has_card?: string;
   old_card: string;
   new_card: string;
