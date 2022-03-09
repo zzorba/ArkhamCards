@@ -5486,6 +5486,18 @@ msgstr ""
 "Nota: Esta campaña ha sido recientemente añadida a la aplicación y puede "
 "contener errores."
 
+msgid "Durability"
+msgstr ""
+
+msgid "Leylines"
+msgstr ""
+
+msgid "Offerings"
+msgstr ""
+
+msgid "Patrol"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"

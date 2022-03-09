@@ -5197,6 +5197,18 @@ msgid ""
 "some mistakes."
 msgstr "주의: 이 캠페인은 앱에 새로 추가된 것으로 약간의 오류가 있을 수 있습니다."
 
+msgid "Durability"
+msgstr ""
+
+msgid "Leylines"
+msgstr ""
+
+msgid "Offerings"
+msgstr ""
+
+msgid "Patrol"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
