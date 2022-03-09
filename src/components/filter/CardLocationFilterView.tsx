@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -12,6 +12,8 @@ import { xs } from '@styles/space';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
+import TwoColumnSort, { ToggleItem } from './TwoColumnSort';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {
@@ -43,6 +45,14 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
     locationVengeanceEnabled,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const toggleItems: ToggleItem[] = useMemo(() => {
+    return [
+      { label: t`Haunted`, setting: 'hauntedEnabled' },
+      { label: t`Victory`, setting: 'locationVictoryEnabled' },
+      { label: t`Vengeance`, setting: 'locationVengeanceEnabled' },
+    ];
+  }, [lang]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <SliderChooser
@@ -77,30 +87,12 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
           />
         </View>
       </SliderChooser>
-      <View style={styles.toggleRow}>
-        <View style={styles.toggleColumn}>
-          <ToggleFilter
-            label={t`Haunted`}
-            setting="hauntedEnabled"
-            value={hauntedEnabled}
-            onChange={onToggleChange}
-          />
-        </View>
-        <View style={styles.toggleColumn}>
-          <ToggleFilter
-            label={t`Victory`}
-            setting="locationVictoryEnabled"
-            value={locationVictoryEnabled}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Vengeance`}
-            setting="locationVengeanceEnabled"
-            value={locationVengeanceEnabled}
-            onChange={onToggleChange}
-          />
-        </View>
-      </View>
+      <TwoColumnSort
+        noBorder
+        onToggleChange={onToggleChange}
+        filters={filters}
+        items={toggleItems}
+      />
     </ScrollView>
   );
 };

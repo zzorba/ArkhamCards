@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { values, map, forEach } from 'lodash';
 import { t } from 'ttag';
+import stable from 'stable';
 
 import { SearchSelectProps } from '@components/cardlist/SearchMultiSelectView';
 import StyleContext from '@styles/StyleContext';
@@ -32,7 +33,7 @@ export default function FixedSetChooserButton({
   allValues,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const { listSeperator, colon } = useContext(LanguageContext);
+  const { listSeperator, colon, lang } = useContext(LanguageContext);
   const reversedValues = useMemo(() => {
     const reversed: { [key: string]: string } = {};
     forEach(allValues, (value, key) => {
@@ -51,7 +52,7 @@ export default function FixedSetChooserButton({
         name: 'SearchFilters.Chooser',
         passProps: {
           placeholder: t`Search ${title}`,
-          values: values(allValues),
+          values: stable(values(allValues), (a, b) => a.localeCompare(b, lang)),
           onChange,
           selection: map(selection, item => allValues[item]),
         },
@@ -77,7 +78,7 @@ export default function FixedSetChooserButton({
       },
     });
     setPressed(false);
-  }, [allValues, colors, componentId, title, setPressed, onChange, selection]);
+  }, [allValues, colors, lang, componentId, title, setPressed, onChange, selection]);
   const selectedDescription = useMemo(
     () => selection && selection.length ? map(selection, item => allValues[item]).join(listSeperator) : all,
     [allValues, selection, listSeperator, all]

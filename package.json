@@ -140,6 +140,7 @@
     "rn-fetch-blob": "0.12.0",
     "rn-placeholder": "3.0.3",
     "simple-markdown": "0.7.3",
+    "stable": "^0.1.8",
     "subscriptions-transport-ws": "0.11.0",
     "throttle-debounce": "3.0.1",
     "tinycolor2": "^1.4.2",

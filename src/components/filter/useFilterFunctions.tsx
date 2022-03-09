@@ -33,8 +33,8 @@ interface FilterFunctions {
   defaultFilterState: FilterState;
   cardFilterData: CardFilterData;
   pushFilterView: (screenName: string) => void;
-  onToggleChange: (key: string, value: boolean) => void;
-  onFilterChange: (key: string, value: any) => void;
+  onToggleChange: (key: keyof FilterState, value: boolean) => void;
+  onFilterChange: (key: keyof FilterState, value: any) => void;
 }
 
 export default function useFilterFunctions({
@@ -135,11 +135,11 @@ export default function useFilterFunctions({
     });
   }, [componentId, filterId, tabooSetId, baseQuery, modal]);
 
-  const onToggleChange = useCallback((key: string, value: boolean) => {
+  const onToggleChange = useCallback((key: keyof FilterState, value: boolean) => {
     dispatch(toggleFilter(filterId, key, value));
   }, [filterId, dispatch]);
 
-  const onFilterChange = useCallback((key: string, selection: any) => {
+  const onFilterChange = useCallback((key: keyof FilterState, selection: any) => {
     dispatch(updateFilter(filterId, key, selection));
   }, [filterId, dispatch]);
 

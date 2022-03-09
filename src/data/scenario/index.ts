@@ -70,6 +70,8 @@ export interface DisplayChoice {
   trauma?: Trauma;
   resolute?: boolean;
   card?: Card;
+  image?: string;
+  imageOffset?: 'right' | 'left';
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {

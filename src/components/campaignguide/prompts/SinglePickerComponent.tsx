@@ -31,7 +31,7 @@ interface Props {
   firstItem?: boolean;
 }
 
-function getIcon(icon?: ChoiceIcon | string, card?: Card): React.ReactNode {
+function getIcon(icon?: ChoiceIcon | string, card?: Card, image?: string, imageOffset?: 'right' | 'left'): React.ReactNode {
   if (card) {
     return (
       <View style={[space.paddingRightXs, { marginLeft: -s }]}>
@@ -39,6 +39,8 @@ function getIcon(icon?: ChoiceIcon | string, card?: Card): React.ReactNode {
           card={card}
           size="tiny"
           border
+          arkhamCardsImg={image}
+          imageOffset={imageOffset}
         />
       </View>
     );
@@ -74,7 +76,7 @@ export default function SinglePickerComponent({
         return {
           title: c.text || '',
           description: c.description || c.card?.subname,
-          iconNode: getIcon(c.icon, c.card),
+          iconNode: getIcon(c.icon, c.card, c.image, c.imageOffset),
           rightNode: c.trauma ? (
             <>
               { !!c.resolute && <AppIcon accessibilityLabel={t`Resolute`} name="check_on_check" size={40} color={colors.D10} /> }

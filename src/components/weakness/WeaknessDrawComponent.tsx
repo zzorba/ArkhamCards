@@ -12,6 +12,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
 import { t, c } from 'ttag';
+import stable from 'stable';
 
 import { drawWeakness, availableWeaknesses } from '@lib/weaknessHelper';
 import { Slots, WeaknessSet } from '@actions/types';
@@ -180,7 +181,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
     forEach(selectedTraits, trait => {
       traitsMap[trait] = 1;
     });
-    return keys(traitsMap).sort();
+    return stable(keys(traitsMap));
   }, [weaknessSet, weaknessCards, selectedTraits]);
 
   const onToggleChange = useCallback((key: string, value: boolean) => {

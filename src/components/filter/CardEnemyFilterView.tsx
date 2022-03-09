@@ -1,20 +1,17 @@
-import React, { useContext } from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import React, { useContext, useMemo } from 'react';
+import { ScrollView, View } from 'react-native';
 import { t } from 'ttag';
 
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '@components/core/ToggleFilter';
 import COLORS from '@styles/colors';
-import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import TwoColumnSort, { ToggleItem } from './TwoColumnSort';
 
-const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
+const CardEnemyFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {
     defaultFilterState,
     filters,
@@ -63,23 +60,28 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyFightEnabled,
     enemyEvade,
     enemyEvadeEnabled,
-    enemyElite,
-    enemyNonElite,
-    enemyParley,
-    enemyRetaliate,
-    enemyAlert,
-    enemyHunter,
-    enemyNonHunter,
-    enemySpawn,
-    enemyPrey,
-    enemyAloof,
-    enemyMassive,
-    enemySwarm,
-    enemyPatrol,
-    enemyVengeance,
-    enemyVictory,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const toggleItems: ToggleItem[] = useMemo(() => {
+    return [
+      { label: t`Elite`, setting: 'enemyElite', sort: '0' },
+      { label: t`Non-Elite`, setting: 'enemyNonElite', sort: '01' },
+      { label: t`Hunter`, setting: 'enemyHunter', sort: '1' },
+      { label: t`Non-Hunter`, setting: 'enemyNonHunter', sort: '11' },
+      { label: t`Alert`, setting: 'enemyAlert' },
+      { label: t`Massive`, setting: 'enemyMassive' },
+      { label: t`Spawn`, setting: 'enemySpawn' },
+      { label: t`Patrol`, setting: 'enemyPatrol' },
+      { label: t`Swarm`, setting: 'enemySwarm' },
+      { label: t`Aloof`, setting: 'enemyAloof' },
+      { label: t`Retaliate`, setting: 'enemyRetaliate' },
+      { label: t`Prey`, setting: 'enemyPrey' },
+      { label: t`Parley`, setting: 'enemyParley' },
+      { label: t`Victory`, setting: 'enemyVictory' },
+      { label: t`Vengeance`, setting: 'enemyVengeance' }
+    ];
+  }, [lang]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <SliderChooser
@@ -147,106 +149,16 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
         toggleName="enemyHorrorEnabled"
         onToggleChange={onToggleChange}
       />
-      <View style={[styles.toggleRow, space.marginTopXs]}>
-        <View style={styles.toggleColumn}>
-          <ToggleFilter
-            label={t`Elite`}
-            setting="enemyElite"
-            value={enemyElite}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Hunter`}
-            setting="enemyHunter"
-            value={enemyHunter}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Alert`}
-            setting="enemyAlert"
-            value={enemyAlert}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Massive`}
-            setting="enemyMassive"
-            value={enemyMassive}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Spawn`}
-            setting="enemySpawn"
-            value={enemySpawn}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Patrol`}
-            setting="enemyPatrol"
-            value={enemyPatrol}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Swarm`}
-            setting="enemySwarm"
-            value={enemySwarm}
-            onChange={onToggleChange}
-          />
-        </View>
-        <View style={styles.toggleColumn}>
-          <ToggleFilter
-            label={t`Non-Elite`}
-            setting="enemyNonElite"
-            value={enemyNonElite}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Non-Hunter`}
-            setting="enemyNonHunter"
-            value={enemyNonHunter}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Aloof`}
-            setting="enemyAloof"
-            value={enemyAloof}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Retaliate`}
-            setting="enemyRetaliate"
-            value={enemyRetaliate}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Prey`}
-            setting="enemyPrey"
-            value={enemyPrey}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Parley`}
-            setting="enemyParley"
-            value={enemyParley}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Victory`}
-            setting="enemyVictory"
-            value={enemyVictory}
-            onChange={onToggleChange}
-          />
-          <ToggleFilter
-            label={t`Vengeance`}
-            setting="enemyVengeance"
-            value={enemyVengeance}
-            onChange={onToggleChange}
-          />
-        </View>
-      </View>
+      <TwoColumnSort
+        noBorder
+        onToggleChange={onToggleChange}
+        filters={filters}
+        items={toggleItems}
+      />
     </ScrollView>
   );
 };
-CardEnemeyFilterView.options = () => {
+CardEnemyFilterView.options = () => {
   return {
     topBar: {
       backButton: {
@@ -259,16 +171,4 @@ CardEnemeyFilterView.options = () => {
     },
   };
 };
-export default CardEnemeyFilterView;
-
-const styles = StyleSheet.create({
-  toggleColumn: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
-  toggleRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-});
+export default CardEnemyFilterView;
