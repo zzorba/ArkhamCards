@@ -6308,6 +6308,10 @@ msgctxt "Types"
 msgid "All"
 msgstr ""
 
+msgctxt "card-type"
+msgid "Investigator"
+msgstr ""
+
 msgctxt "SubTypes"
 msgid "All"
 msgstr ""

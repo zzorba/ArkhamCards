@@ -6791,6 +6791,10 @@ msgctxt "Types"
 msgid "All"
 msgstr "Alle"
 
+msgctxt "card-type"
+msgid "Investigator"
+msgstr "Ermittler"
+
 msgctxt "SubTypes"
 msgid "All"
 msgstr "Alle"

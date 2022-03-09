@@ -6771,6 +6771,10 @@ msgctxt "Types"
 msgid "All"
 msgstr "Все"
 
+msgctxt "card-type"
+msgid "Investigator"
+msgstr "Сыщик"
+
 msgctxt "SubTypes"
 msgid "All"
 msgstr "Все"

@@ -6419,6 +6419,10 @@ msgctxt "Types"
 msgid "All"
 msgstr "全部"
 
+msgctxt "card-type"
+msgid "Investigator"
+msgstr "調查員"
+
 msgctxt "SubTypes"
 msgid "All"
 msgstr "全部"
