@@ -1,5 +1,5 @@
 fragment SingleCard on full_card {
- code
+  code
   cost
   deck_limit
   encounter_code
