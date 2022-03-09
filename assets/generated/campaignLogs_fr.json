@@ -1971,11 +1971,11 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "la congrégation de Keziah tient le monde dans sa main."
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "les investigateurs sont membres de la Loge."
+            "text": "les investigateurs trompent la Loge."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -1991,11 +1991,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Erynn a rejoint les investigateurs."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Erynn veut vous rencontrer."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2205,11 +2205,11 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "Gravures Sanglantes"
           },
           {
             "id": "corn_husk_doll",
-            "text": "Poupée en épi de maïs"
+            "text": "Poupée de Maïs"
           },
           {
             "id": "gilmans_journal",
@@ -2233,7 +2233,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Étrange Incantation"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -2241,7 +2241,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Crucifix Usagé"
+            "text": "Crucifix de Worn"
           }
         ]
       }
@@ -3089,7 +3089,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "les investigateurs sont membres de la Loge."
+            "text": "les investigateurs trompent la Loge."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -3275,7 +3275,7 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Poupée en épi de maïs"
+            "text": "Poupée de Maïs"
           },
           {
             "id": "gilmans_journal",
@@ -3303,7 +3303,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Crucifix Usagé"
+            "text": "Crucifix de Worn"
           }
         ]
       }

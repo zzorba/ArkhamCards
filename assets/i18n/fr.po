@@ -4582,7 +4582,7 @@ msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
-"0 : (original effect below)\n"
+"0 : (effet de base ci-dessous)\n"
 "${ originalTokenText }"
 
 msgid "Easy difficulty"
@@ -5416,7 +5416,7 @@ msgid "Two-part campaign variant"
 msgstr "Campagne annexe en deux parties"
 
 msgid "Claim previous scenario XP"
-msgstr ""
+msgstr "Reprendre les résultats du scénario précédent"
 
 msgid "Apply changes from last completed scenario"
 msgstr "Appliquer les modifications liées au dernier scénario joué"
@@ -5438,6 +5438,8 @@ msgid ""
 "Note: This should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
+"Note : ceci devrait être choisi à la création du deck et non entre les "
+"scénarios."
 
 #, javascript-format
 msgid ""
@@ -5507,7 +5509,7 @@ msgstr ""
 "• Aspect Visuel : ${ visualDesigner }\n"
 "• Réserve du Chaos digitale + calculateur de probabilités : ${ "
 "chaosBagDeveloper }\n"
-"• Intégration audio de Voix Dissonantes : ${ dissonantVoicesDeveloper }\n"
+"• Intégration audio de Dissonant Voices : ${ dissonantVoicesDeveloper }\n"
 "• Entretien des fonctionnalités et des mises à jours : ${ toolingDeveloper }"
 
 msgid ""
@@ -5518,30 +5520,32 @@ msgstr ""
 "• Visuel des icônes d'origine : ${ visualDesigner }"
 
 msgid "Samsung One UI fix"
-msgstr ""
+msgstr "Correction pour Samsung One UI"
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
-msgstr ""
+msgstr "Corrige les problèmes de mise en page de la version 3.0 de Samsung One UI"
 
 msgid "Call of the Plaguebearer"
 msgstr ""
 
 msgid "Eliminated"
-msgstr ""
+msgstr "Éliminé"
 
 msgid "Locations"
-msgstr ""
+msgstr "Lieux"
 
 msgid "Reauthorize ArkhamDB"
-msgstr ""
+msgstr "Réautoriser ArkhamDB"
 
 msgid "Login required to save deck upgrade"
-msgstr ""
+msgstr "Connexion requise pour pouvoir sauvegarder l'amélioration du deck"
 
 msgid ""
 "Note: this campaign is a fairly new addition to the app and may contain "
 "some mistakes."
 msgstr ""
+"Note : cette campagne a été ajoutée tout récemment à l'application et peut "
+"contenir des erreurs/omissions."
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
