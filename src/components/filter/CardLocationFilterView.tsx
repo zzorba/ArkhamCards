@@ -28,6 +28,8 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
       'cluesEnabled',
       'cluesFixed',
       'hauntedEnabled',
+      'locationVictoryEnabled',
+      'locationVengeanceEnabled',
     ],
   });
   const {
@@ -37,6 +39,8 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
     cluesEnabled,
     cluesFixed,
     hauntedEnabled,
+    locationVictoryEnabled,
+    locationVengeanceEnabled,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
   return (
@@ -79,6 +83,20 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
             label={t`Haunted`}
             setting="hauntedEnabled"
             value={hauntedEnabled}
+            onChange={onToggleChange}
+          />
+        </View>
+        <View style={styles.toggleColumn}>
+          <ToggleFilter
+            label={t`Victory`}
+            setting="locationVictoryEnabled"
+            value={locationVictoryEnabled}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={t`Vengeance`}
+            setting="locationVengeanceEnabled"
+            value={locationVengeanceEnabled}
             onChange={onToggleChange}
           />
         </View>

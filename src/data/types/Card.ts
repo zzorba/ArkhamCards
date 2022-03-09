@@ -1139,8 +1139,11 @@ export default class Card {
       s => `#${s}#`).join(',') : null;
 
     const restrictions = Card.parseRestrictions(json.restrictions);
-    const uses_match = json.real_text && json.real_text.match(USES_REGEX);
-    const uses = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses_match = json.code === '08062' ?
+      ['foo', 'bar', 'charges'] :
+      (json.real_text && json.real_text.match(USES_REGEX));
+    const usesRaw = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses = usesRaw === 'charge' ? 'charges' : usesRaw;
 
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;

@@ -98,12 +98,17 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyEvadeEnabled,
     enemyEvade,
     enemySwarm,
+    enemyPatrol,
+    enemyVengeance,
+    enemyVictory,
     shroud,
     shroudEnabled,
     clues,
     cluesEnabled,
     cluesFixed,
     hauntedEnabled,
+    locationVengeanceEnabled,
+    locationVictoryEnabled,
     factions,
     actions,
     traits,
@@ -112,7 +117,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     encounters,
     illustrators,
     victory,
-    vengeance,
     skillIcons,
     skillEnabled,
     level,
@@ -219,6 +223,15 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (enemySwarm) {
       parts.push(t`Swarm`);
     }
+    if (enemyPatrol) {
+      parts.push(t`Patrol`);
+    }
+    if (enemyVictory) {
+      parts.push(t`Victory`);
+    }
+    if (enemyVengeance) {
+      parts.push(t`Vengeance`);
+    }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
         parts.push(rangeText(t`HPI`, enemyHealth));
@@ -269,6 +282,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyFight,
     enemyEvadeEnabled,
     enemyEvade,
+    enemyParley,
+    enemyVengeance,
+    enemyVictory,
   ]);
 
 
@@ -323,13 +339,19 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (hauntedEnabled) {
       parts.push(t`Haunted`);
     }
+    if (locationVictoryEnabled) {
+      parts.push(t`Victory`);
+    }
+    if (locationVengeanceEnabled) {
+      parts.push(t`Vengeance`);
+    }
 
     if (parts.length === 0) {
       return t`Locations: All`;
     }
     const searchParts = parts.join(listSeperator);
     return t`Locations: ${searchParts}`;
-  }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled]);
+  }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled, locationVictoryEnabled, locationVengeanceEnabled]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
   const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
   const {
@@ -520,12 +542,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               value={victory}
               onChange={onToggleChange}
             />
-            <ToggleFilter
-              label={t`Vengeance`}
-              setting="vengeance"
-              value={vengeance}
-              onChange={onToggleChange}
-            />
           </View>
           <View style={styles.toggleColumn}>
             <ToggleFilter
@@ -550,6 +566,12 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               label={t`Bonded`}
               setting="bonded"
               value={bonded}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Exceptional`}
+              setting="exceptional"
+              value={exceptional}
               onChange={onToggleChange}
             />
           </View>

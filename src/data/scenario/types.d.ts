@@ -226,6 +226,8 @@ export interface Partner {
   description?: string;
   health: number;
   sanity: number;
+  img?: string;
+  img_offset?: "left" | "right";
   resolute_health?: number;
   resolute_sanity?: number;
 }

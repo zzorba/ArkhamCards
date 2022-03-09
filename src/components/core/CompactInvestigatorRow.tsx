@@ -22,8 +22,10 @@ interface Props {
   color?: 'dark' | 'light';
   name?: string;
   hideImage?: boolean;
+  arkhamCardsImg?: string;
+  imageOffset?: 'right' | 'left';
 }
-export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, children, width }: Props) {
+export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -38,12 +40,14 @@ export default function CompactInvestigatorRow({ hideImage, color, eliminated, n
         { !!leftContent && <View style={space.paddingRightS}>{leftContent}</View>}
         { !hideImage && (
           <InvestigatorImage
+            arkhamCardsImg={arkhamCardsImg}
             card={investigator}
             size="tiny"
             border
             yithian={yithian}
             killedOrInsane={eliminated}
             badge={badge}
+            imageOffset={imageOffset}
           />
         ) }
         <View style={[space.paddingLeftXs, styles.textColumn]}>

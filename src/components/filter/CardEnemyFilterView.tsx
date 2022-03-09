@@ -34,6 +34,21 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
       'enemyFightEnabled',
       'enemyEvade',
       'enemyEvadeEnabled',
+      'enemyElite',
+      'enemyNonElite',
+      'enemyParley',
+      'enemyRetaliate',
+      'enemyAlert',
+      'enemyHunter',
+      'enemyNonHunter',
+      'enemySpawn',
+      'enemyPrey',
+      'enemyAloof',
+      'enemyMassive',
+      'enemySwarm',
+      'enemyPatrol',
+      'enemyVictory',
+      'enemyVengeance',
     ],
   });
   const {
@@ -60,6 +75,9 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyAloof,
     enemyMassive,
     enemySwarm,
+    enemyPatrol,
+    enemyVengeance,
+    enemyVictory,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
   return (
@@ -150,21 +168,27 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
             onChange={onToggleChange}
           />
           <ToggleFilter
+            label={t`Massive`}
+            setting="enemyMassive"
+            value={enemyMassive}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
             label={t`Spawn`}
             setting="enemySpawn"
             value={enemySpawn}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={t`Aloof`}
-            setting="enemyAloof"
-            value={enemyAloof}
+            label={t`Patrol`}
+            setting="enemyPatrol"
+            value={enemyPatrol}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={t`Massive`}
-            setting="enemyMassive"
-            value={enemyMassive}
+            label={t`Swarm`}
+            setting="enemySwarm"
+            value={enemySwarm}
             onChange={onToggleChange}
           />
         </View>
@@ -182,15 +206,15 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={t`Retaliate`}
-            setting="enemyRetaliate"
-            value={enemyRetaliate}
+            label={t`Aloof`}
+            setting="enemyAloof"
+            value={enemyAloof}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={t`Parley`}
-            setting="enemyParley"
-            value={enemyParley}
+            label={t`Retaliate`}
+            setting="enemyRetaliate"
+            value={enemyRetaliate}
             onChange={onToggleChange}
           />
           <ToggleFilter
@@ -200,9 +224,21 @@ const CardEnemeyFilterView = (props: FilterFunctionProps & NavigationProps) => {
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={t`Swarm`}
-            setting="enemySwarm"
-            value={enemySwarm}
+            label={t`Parley`}
+            setting="enemyParley"
+            value={enemyParley}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={t`Victory`}
+            setting="enemyVictory"
+            value={enemyVictory}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={t`Vengeance`}
+            setting="enemyVengeance"
+            value={enemyVengeance}
             onChange={onToggleChange}
           />
         </View>
