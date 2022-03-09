@@ -15,6 +15,7 @@ import {
   ALICE_IN_WONDERLAND,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  EOE,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -84,7 +85,8 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
     return partition(
       campaigns,
       pack_code => (ignore_collection || in_collection[pack_code] || pack_code === 'core' || (
-        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
+        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||
+        (in_collection.eoec && pack_code === EOE)))
     );
   }, [segment, campaigns, in_collection, ignore_collection]);
   return (
