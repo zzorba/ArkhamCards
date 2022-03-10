@@ -255,7 +255,7 @@ function ArkhamLargeListAndroid<Item, Header>({
       scrollEventThrottle={1}
       removeClippedSubviews
       ListHeaderComponent={renderHeader}
-      ListFooterComponent={renderFooter}
+      ListFooterComponent={renderFooter || <View />}
       initialNumToRender={20}
     />
   )
