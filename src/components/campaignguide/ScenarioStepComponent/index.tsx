@@ -30,6 +30,8 @@ import StyleContext from '@styles/StyleContext';
 import NarrationStepComponent from './NarrationStepComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import ActionButton from '../prompts/ActionButton';
+import BorderStepComponent from './BorderStepComponent';
+import TitleComponent from './TitleComponent';
 
 interface Props {
   componentId: string;
@@ -138,39 +140,15 @@ function ScenarioStepComponentContent({
       );
     case 'border':
       return (
-        <BorderWrapper border width={width} color={step.border_color}>
-          { !!step.title && (
-            <View style={styles.titleWrapper}>
-              <Text style={[
-                typography.bigGameFont,
-                { color: colors.campaign[step.border_color || 'setup'] },
-                space.paddingTopL,
-                typography.center,
-              ]}>
-                { step.title }
-              </Text>
-            </View>
-          ) }
-          <View style={[space.paddingSideL, space.paddingTopS]}>
-            { map(
-              processedScenario.scenarioGuide.expandSteps(
-                step.steps,
-                scenarioState,
-                campaignLog
-              ),
-              step => (
-                <ScenarioStepComponent
-                  key={step.step.id}
-                  componentId={componentId}
-                  width={width - l * 2}
-                  step={step}
-                  border
-                  switchCampaignScenario={switchCampaignScenario}
-                />
-              )
-            ) }
-          </View>
-        </BorderWrapper>
+        <BorderStepComponent
+          componentId={componentId}
+          step={step}
+          width={width}
+          processedScenario={processedScenario}
+          campaignLog={campaignLog}
+          scenarioState={scenarioState}
+          switchCampaignScenario={switchCampaignScenario}
+        />
       );
     default:
       return null;
@@ -203,20 +181,10 @@ export default function ScenarioStepComponent({
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
-
   return (
     <ScenarioStepContext.Provider value={context}>
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
-        <View style={styles.titleWrapper}>
-          <Text style={[
-            typography.bigGameFont,
-            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
-            space.paddingTopL,
-            border ? typography.center : {},
-          ]}>
-            { step.step.title }
-          </Text>
-        </View>
+        <TitleComponent title={step.step.title} border_color={resolution ? 'resolution' : 'setup'} center={border} />
       ) }
       <ScenarioStepComponentContent
         componentId={componentId}

@@ -25,6 +25,7 @@ import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import TwoColumnSort, { ToggleItem } from '../TwoColumnSort';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -46,7 +47,7 @@ function splitTraits(value: string): string[] {
 export type CardFilterProps = FilterFunctionProps;
 
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
-  const { useCardTraits, listSeperator } = useContext(LanguageContext);
+  const { useCardTraits, listSeperator, lang } = useContext(LanguageContext);
   const {
     filters,
     defaultFilterState,
@@ -98,12 +99,17 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyEvadeEnabled,
     enemyEvade,
     enemySwarm,
+    enemyPatrol,
+    enemyVengeance,
+    enemyVictory,
     shroud,
     shroudEnabled,
     clues,
     cluesEnabled,
     cluesFixed,
     hauntedEnabled,
+    locationVengeanceEnabled,
+    locationVictoryEnabled,
     factions,
     actions,
     traits,
@@ -111,8 +117,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     subTypes,
     encounters,
     illustrators,
-    victory,
-    vengeance,
     skillIcons,
     skillEnabled,
     level,
@@ -121,13 +125,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     nonExceptional,
     cost,
     costEnabled,
-    unique,
-    permanent,
-    fast,
-    exile,
-    bonded,
-    seal,
-    myriad,
     uses,
     slots,
     assetSanityEnabled,
@@ -219,6 +216,15 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (enemySwarm) {
       parts.push(t`Swarm`);
     }
+    if (enemyPatrol) {
+      parts.push(t`Patrol`);
+    }
+    if (enemyVictory) {
+      parts.push(t`Victory`);
+    }
+    if (enemyVengeance) {
+      parts.push(t`Vengeance`);
+    }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
         parts.push(rangeText(t`HPI`, enemyHealth));
@@ -269,6 +275,9 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyFight,
     enemyEvadeEnabled,
     enemyEvade,
+    enemyParley,
+    enemyVengeance,
+    enemyVictory,
   ]);
 
 
@@ -323,13 +332,19 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     if (hauntedEnabled) {
       parts.push(t`Haunted`);
     }
+    if (locationVictoryEnabled) {
+      parts.push(t`Victory`);
+    }
+    if (locationVengeanceEnabled) {
+      parts.push(t`Vengeance`);
+    }
 
     if (parts.length === 0) {
       return t`Locations: All`;
     }
     const searchParts = parts.join(listSeperator);
     return t`Locations: ${searchParts}`;
-  }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled]);
+  }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled, locationVictoryEnabled, locationVengeanceEnabled]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
   const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
   const {
@@ -343,6 +358,20 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     }
     return undefined;
   }, [useCardTraits]);
+  const toggleItems: ToggleItem[] = useMemo(() => {
+    return [
+      { label: t`Fast`, setting: 'fast' },
+      { label: t`Unique` + ' (✷)', setting: 'unique' },
+      { label: t`Seal`, setting: 'seal' },
+      { label: t`Victory`, setting: 'victory' },
+      { label: t`Exile`, setting: 'exile' },
+      { label: t`Permanent`, setting: 'permanent' },
+      { label: t`Myriad`, setting: 'myriad' },
+      { label: t`Bonded`, setting: 'bonded' },
+      { label: t`Exceptional`, setting: 'exceptional' },
+    ];
+  }, [lang]);
+
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <FactionChooser
@@ -413,7 +442,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
             enemy: t`Enemy`,
             treachery: t`Treachery`,
             location: t`Location`,
-            investigator: t`Investigator`,
+            investigator: c('card-type').t`Investigator`,
             scenario: t`Scenario`,
           }}
         />
@@ -493,68 +522,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           onPress={onAssetPress}
         />
       </View>
-      <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
-        <View style={[styles.toggleRow, space.marginTopXs]}>
-          <View style={styles.toggleColumn}>
-            <ToggleFilter
-              label={t`Fast`}
-              setting="fast"
-              value={fast}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Unique`}
-              setting="unique"
-              value={unique}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Seal`}
-              setting="seal"
-              value={seal}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Victory`}
-              setting="victory"
-              value={victory}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Vengeance`}
-              setting="vengeance"
-              value={vengeance}
-              onChange={onToggleChange}
-            />
-          </View>
-          <View style={styles.toggleColumn}>
-            <ToggleFilter
-              label={t`Exile`}
-              setting="exile"
-              value={exile}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Permanent`}
-              setting="permanent"
-              value={permanent}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Myriad`}
-              setting="myriad"
-              value={myriad}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Bonded`}
-              setting="bonded"
-              value={bonded}
-              onChange={onToggleChange}
-            />
-          </View>
-        </View>
-      </View>
+      <TwoColumnSort items={toggleItems} onToggleChange={onToggleChange} filters={filters} />
       { hasEnemy && (
         <NavButton
           text={enemyFilterText}

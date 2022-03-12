@@ -60,7 +60,7 @@ export interface DisplayChoice {
   tokens?: ChaosToken[];
   selected_text?: string;
   selected_feminine_text?: string;
-  icon?: ChoiceIcon;
+  icon?: ChoiceIcon | string;
   masculine_text?: string;
   feminine_text?: string;
   description?: string;
@@ -70,6 +70,8 @@ export interface DisplayChoice {
   trauma?: Trauma;
   resolute?: boolean;
   card?: Card;
+  image?: string;
+  imageOffset?: 'right' | 'left';
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {
@@ -103,6 +105,8 @@ function loadAllChaosTokens(lang: string): ChaosTokens {
       return require('../../../assets/generated/chaosOdds_it.json');
     case 'pt':
       return require('../../../assets/generated/chaosOdds_pt.json');
+    case 'pl':
+      return require('../../../assets/generated/chaosOdds_pl.json');
     case 'zh':
       return require('../../../assets/generated/chaosOdds_zh.json');
     case 'ko':
@@ -131,6 +135,7 @@ export function loadTaboos(lang: string): TabooSets | undefined {
     case 'zh': return require('../../../assets/generated/taboos_zh.json');
     case 'ko': return require('../../../assets/generated/taboos_ko.json');
     case 'pt': return require('../../../assets/generated/taboos_pt.json');
+    case 'pl': return require('../../../assets/generated/taboos_pl.json');
     default: return undefined;
   }
 }
@@ -193,6 +198,13 @@ function load(lang: string): {
         allCampaigns: require('../../../assets/generated/allCampaigns_zh.json'),
         encounterSets: require('../../../assets/generated/encounterSets_zh.json'),
         errata: require('../../../assets/generated/campaignErrata_zh.json'),
+      };
+    case 'pl':
+      return {
+        allLogEntries: require('../../../assets/generated/campaignLogs_pl.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_pl.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_pl.json'),
+        errata: require('../../../assets/generated/campaignErrata_pl.json'),
       };
     case 'ko':
       return {

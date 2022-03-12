@@ -27,6 +27,8 @@ import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { TextStyle } from 'react-native';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import FlavorMiniCapsNode from './FlavorMiniCapsNode';
+import FlavorStrikeNode from './FlavorStrikeNode';
+import FlavorRedNode from './FlavorRedNode';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -69,6 +71,20 @@ function UnderlineHtmlTagRule(): MarkdownRule<WithText, State> {
       return { text: capture[1] };
     },
     render: FlavorUnderlineNode(),
+  };
+}
+
+
+function StrikeHtmlTagRule(): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<strike>(.+?)<\\/strike>')),
+    order: 1,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorStrikeNode(),
   };
 }
 
@@ -182,6 +198,20 @@ function InnsmouthTagRule(style: StyleContextType, sizeScale: number): MarkdownR
   };
 }
 
+
+function RedTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<red>([\\s\\S]+?)<\\/red>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorRedNode(style),
+  };
+}
+
 function GameTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<game>([\\s\\S]+?)<\\/game>')),
@@ -235,6 +265,8 @@ export default function CardFlavorTextComponent(
         bTag: BoldHtmlTagRule(usePingFang),
         uTag: UnderlineHtmlTagRule(),
         brTag: BreakTagRule(),
+        redTag: RedTagRule(context),
+        strikeTag: StrikeHtmlTagRule(),
         citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,

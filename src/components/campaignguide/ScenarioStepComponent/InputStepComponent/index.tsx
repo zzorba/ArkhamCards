@@ -31,6 +31,7 @@ import PrologueRandomizerPrompt from '@components/campaignguide/prompts/Prologue
 import PartnerTraumaComponent from './PartnerTraumaComponent';
 import InvestigatorChoicePartnerComponent from './InvestigatorChoicePartnerComponent';
 import PartnerChoiceComponent from './PartnerChoiceComponent';
+import ChoiceListPrompt from './ChoiceListPrompt';
 
 interface Props {
   step: InputStep;
@@ -70,6 +71,16 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           text={step.text}
           bulletType={step.bullet_type}
           input={step.input}
+        />
+      );
+    }
+
+    case 'choicelist': {
+      return (
+        <ChoiceListPrompt
+          step={step}
+          input={step.input}
+          campaignLog={campaignLog}
         />
       );
     }

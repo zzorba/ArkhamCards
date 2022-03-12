@@ -1971,11 +1971,11 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "la congrégation de Keziah tient le monde dans sa main."
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "les investigateurs sont membres de la Loge."
+            "text": "les investigateurs trompent la Loge."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -1991,11 +1991,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Erynn a rejoint les investigateurs."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Erynn veut vous rencontrer."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2103,6 +2103,22 @@
             "text": "leurre"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "leurre"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "leurre"
           },
@@ -2189,11 +2205,11 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "Gravures Sanglantes"
           },
           {
             "id": "corn_husk_doll",
-            "text": "Poupée en épi de maïs"
+            "text": "Poupée de Maïs"
           },
           {
             "id": "gilmans_journal",
@@ -2217,7 +2233,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Étrange Incantation"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -2225,7 +2241,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Crucifix Usagé"
+            "text": "Crucifix de Worn"
           }
         ]
       }
@@ -3073,7 +3089,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "les investigateurs sont membres de la Loge."
+            "text": "les investigateurs trompent la Loge."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -3193,6 +3209,22 @@
             "text": "leurre"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "leurre"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "leurre"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "leurre"
           },
@@ -3243,7 +3275,7 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Poupée en épi de maïs"
+            "text": "Poupée de Maïs"
           },
           {
             "id": "gilmans_journal",
@@ -3271,7 +3303,7 @@
           },
           {
             "id": "worn_crucific",
-            "text": "Crucifix Usagé"
+            "text": "Crucifix de Worn"
           }
         ]
       }
@@ -4806,6 +4838,498 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcp",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          }
+        ]
+      },
+      {
+        "section": "arkham_advertiser",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "bank_of_arkham",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "heeded_the_call",
+            "masculine_text": "#name# has heeded the call.",
+            "feminine_text": "#name# has heeded the call."
+          },
+          {
+            "id": "injected_a_cardinal_reagant",
+            "masculine_text": "#name# has injected a cardinal reagant.",
+            "feminine_text": "#name# has injected a cardinal reagant."
+          },
+          {
+            "id": "arkham_stands_united",
+            "text": "Arkham stands united."
+          },
+          {
+            "id": "baalshandor_struck_the_first_blow",
+            "text": "Baalshandor struck the first blow."
+          },
+          {
+            "id": "collection_was_saved",
+            "text": "the collection was saved."
+          },
+          {
+            "id": "death_conquered_herbert_west",
+            "text": "Death conquered Herbert West."
+          },
+          {
+            "id": "earned_greysons_respect",
+            "text": "you earned Greyson's respect."
+          },
+          {
+            "id": "found_the_hidden_paths",
+            "text": "you have found the hidden paths."
+          },
+          {
+            "id": "greyson_cut_ties",
+            "text": "Greyson cut ties."
+          },
+          {
+            "id": "herbert_west_is_leading_the_way",
+            "text": "Herbert West is leading the way."
+          },
+          {
+            "id": "herbert_west_was_taken_against_his_will",
+            "text": "Herbert West was taken against his will."
+          },
+          {
+            "id": "hibbs_has_your_back",
+            "text": "Hibbs has your back."
+          },
+          {
+            "id": "hibbs_is_here_to_help",
+            "text": "Hibbs is here to help."
+          },
+          {
+            "id": "investigators_learned_the_secrets_of_the_roadhouse",
+            "text": "the investigators learned the secrets of the roadhouse."
+          },
+          {
+            "id": "learned_the_killing_words",
+            "text": "you learned the killing words."
+          },
+          {
+            "id": "made_sure_the_first_was_dead",
+            "text": "you made sure the First was dead."
+          },
+          {
+            "id": "received_a_cryptic_riddle",
+            "text": "you received a cryptic riddle."
+          },
+          {
+            "id": "saw_a_vision_of_the_portals",
+            "text": "you saw a vision of the portals."
+          },
+          {
+            "id": "tailors_contained_the_problem",
+            "text": "the Tailors contained the problem."
+          },
+          {
+            "id": "the_blood_runs_in_your_veins",
+            "text": "the blood runs in your veins."
+          },
+          {
+            "id": "the_first_claimed_the_facility",
+            "text": "the First claimed The Facility."
+          },
+          {
+            "id": "the_monster_was_buried_under_tons_of_concrete",
+            "text": "the monster was buried under tons of concrete."
+          },
+          {
+            "id": "the_plaguebearer_was_bound_anew",
+            "text": "the Plaguebearer was bound anew."
+          },
+          {
+            "id": "the_plaguebearer_was_destroyed",
+            "text": "the Plaguebearer was destroyed."
+          },
+          {
+            "id": "transported_to_the_lurkers_realm",
+            "text": "you were transported to the Lurker's realm."
+          },
+          {
+            "id": "tripped_the_facility_alarms",
+            "text": "you tripped the Facility alarms."
+          },
+          {
+            "id": "west_conquered_death",
+            "text": "West conquered Death."
+          },
+          {
+            "id": "west_has_recovered_the_reagant",
+            "text": "West has recoverred the reagant."
+          },
+          {
+            "id": "you_conquered_death",
+            "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
+          },
+          {
+            "id": "you_have_received_a_twisted_gift",
+            "text": "you have received a twisted gift."
+          },
+          {
+            "id": "you_hid_the_briefcase",
+            "text": "you hid the briefcase."
+          }
+        ]
+      },
+      {
+        "section": "eliminated",
+        "entries": [
+          {
+            "id": "armitage",
+            "text": "Henry Armitage"
+          },
+          {
+            "id": "beecher",
+            "text": "Miram Beecher"
+          },
+          {
+            "id": "doyle",
+            "text": "Doyle Jeffries"
+          },
+          {
+            "id": "hibbs",
+            "text": "Hibbs"
+          },
+          {
+            "id": "ma",
+            "text": "Ma Matheson"
+          },
+          {
+            "id": "priest_of_plagues",
+            "text": "Priest of Plagues"
+          },
+          {
+            "id": "the_loving_couple",
+            "text": "The Loving Couple"
+          },
+          {
+            "id": "thing_in_water",
+            "text": "The Thing in the Water"
+          },
+          {
+            "id": "vice_president",
+            "text": "The Vice President"
+          }
+        ]
+      },
+      {
+        "section": "general_store",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hibbs_roadhouse",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "body_belongs_to_cthughua",
+            "text": "leurre"
+          },
+          {
+            "id": "finished_history_lesson",
+            "text": "leurre"
+          },
+          {
+            "id": "late_risers_six_locations",
+            "text": "leurre"
+          },
+          {
+            "id": "messenger_of_flame_defeated",
+            "text": "leurre"
+          },
+          {
+            "id": "messenger_of_the_king_defeated",
+            "text": "leurre"
+          },
+          {
+            "id": "owe_hastur_your_life",
+            "text": "leurre"
+          },
+          {
+            "id": "resigned_herbert_west",
+            "text": "leurre"
+          }
+        ]
+      },
+      {
+        "section": "mas_boarding_house",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "orne_library",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "river_docks",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "ye_olde_magick_shoppe",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
           }
         ]
       }

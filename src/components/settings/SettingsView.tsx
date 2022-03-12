@@ -77,6 +77,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const [showCardSingleCardView, setSingleCardView] = useSettingFlag('single_card');
   const [alphabetizeEncounterSets, setAlphabetizeEncounterSets] = useSettingFlag('alphabetize');
   const [colorblind, setColorblind] = useSettingFlag('colorblind');
+  const [androidOneUiFix, setAndroidOneUiFix] = useSettingFlag('android_one_ui_fix');
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const [justifyContent, setJustifyContent] = useSettingFlag('justify');
   const [sortRespectQuotes, setSortRespectQuotes] = useSettingFlag('sort_quotes');
@@ -224,6 +225,15 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={alphabetizeEncounterSets}
                 onValueChange={setAlphabetizeEncounterSets}
               />
+              { Platform.OS === 'android' && (
+                <DeckCheckboxButton
+                  icon="tools"
+                  title={t`Samsung One UI fix`}
+                  description={t`Fix layout issues on version 3.0 of Samsung One UI`}
+                  value={androidOneUiFix}
+                  onValueChange={setAndroidOneUiFix}
+                />
+              )}
               { SHOW_JUSTIFY && (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
                 <DeckCheckboxButton
                   icon="menu"

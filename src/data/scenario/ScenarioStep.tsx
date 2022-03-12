@@ -1,6 +1,7 @@
 import {
   flatMap,
   find,
+  filter,
   findIndex,
   forEach,
   groupBy,
@@ -148,6 +149,7 @@ export default class ScenarioStep {
                     return {
                       type: 'add_card',
                       investigator: '$input_value',
+                      non_story: true,
                       card,
                     };
                   }),
@@ -280,12 +282,18 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
-      case 'border':
+      case 'border': {
+        const decision = scenarioState.decision(`${this.step.id}_read_the_thing`);
         return this.proceedToNextStep(
-          [...this.step.steps, ...this.remainingStepIds],
+          [
+            ...this.step.steps,
+            ...(decision && this.step.confirmation_steps?.length ? this.step.confirmation_steps : []),
+            ...this.remainingStepIds,
+          ],
           scenarioState,
           this.campaignLog
         );
+      }
       case 'input':
         return this.expandInputStep(
           this.step,
@@ -593,14 +601,39 @@ export default class ScenarioStep {
             );
           }
           case PlayingScenarioBranch.RESOLUTION: {
-            const steps: string[] = [];
-            if (!input.no_resolutions) {
-              steps.push('$choose_resolution');
+            if (input.no_resolutions) {
+              return this.maybeCreateEffectsStep(
+                step.id,
+                this.remainingStepIds,
+                [],
+                scenarioState,
+                {}
+              );
+            }
+            if (input.fixed_resolution) {
+              return this.maybeCreateEffectsStep(
+                step.id,
+                this.remainingStepIds,
+                [
+                  {
+                    effects: [
+                      {
+                        type: 'scenario_data',
+                        setting: 'scenario_status',
+                        status: 'resolution',
+                        resolution: input.fixed_resolution,
+                      },
+                    ],
+                  },
+                ],
+                scenarioState,
+                {}
+              );
             }
             return this.maybeCreateEffectsStep(
               step.id,
               [
-                ...steps,
+                '$choose_resolution',
                 ...this.remainingStepIds,
               ],
               [],
@@ -725,6 +758,43 @@ export default class ScenarioStep {
           {
             syntheticId: true,
           }
+        );
+      }
+      case 'choicelist': {
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const options = chooseOneInputChoices(input.choices, this.campaignLog);
+        const selectedOptions = filter(options, o => !!find(choices, theChoices => !!find(theChoices, c => c === o.id)));
+
+        flatMap(choices, (theChoices, choiceId) => {
+          if (find(theChoices, c => c === 'checked')) {
+            return find(options, o => o.id === choiceId) || [];
+          }
+          return [];
+        });
+        const stepIds = flatMap(selectedOptions, option => option.steps || []);
+
+        const items = chooseOneInputChoices(input.items, this.campaignLog);
+        const effectsWithInput: EffectsWithInput[] = flatMap(items, item => {
+          const selection = new Set(choices[item.id] || []);
+          const option = find(options, o => selection.has(o.id));
+          if (!option || !option.effects?.length) {
+            return [];
+          }
+          return {
+            input: [item.id],
+            numberInput: [1],
+            effects: option.effects,
+          };
+        });
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...stepIds, ...this.remainingStepIds],
+          effectsWithInput,
+          scenarioState,
+          {}
         );
       }
       case 'checklist': {
@@ -1066,9 +1136,9 @@ export default class ScenarioStep {
         const choice = choices[index];
         return this.maybeCreateEffectsStep(
           step.id,
-          [...(choice.steps || []), ...this.remainingStepIds],
+          [...(choice?.steps || []), ...this.remainingStepIds],
           [{
-            effects: choice.effects || [],
+            effects: choice?.effects || [],
           }],
           scenarioState,
           { bulletType: 'small' }
@@ -1426,6 +1496,7 @@ export default class ScenarioStep {
           effectsWithInput,
           stepText: !!this.step.text || !!hiddenResult,
           bullet_type: this.step.bullet_type || bulletType,
+          border_only: this.step.border_only,
           syntheticId,
         },
         this.scenarioGuide,

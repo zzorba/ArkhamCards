@@ -69,7 +69,7 @@ function DetailLine({ text, icon, last, content }: { text: string[]; icon: React
       </View>
       <View style={[styles.column, { flex: 1 }]}>
         { map(text, (line, idx) => (
-          <Text key={idx} style={[typography.smallLabel, typography.italic, typography.dark, styles.flex]} numberOfLines={1} ellipsizeMode="tail">
+          <Text key={idx} style={[typography.smallLabel, typography.italic, typography.dark, styles.flex]} numberOfLines={2} ellipsizeMode="tail">
             { line }
           </Text>
         )) }

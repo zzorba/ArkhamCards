@@ -74,10 +74,16 @@ export interface ThemeColors {
   sanity: string;
   disableOverlay: string;
   campaign:{
-    setup: string;
-    interlude: string
-    resolution: string;
-    resolutionBackground: string;
+    text: {
+      setup: string;
+      interlude: string
+      resolution: string;
+    };
+    background: {
+      setup: string;
+      interlude: string;
+      resolution: string;
+    }
 
     core: string;
     dwl: string;
@@ -248,11 +254,16 @@ export const LIGHT_THEME: ThemeColors = {
   health: '#8D181E',
   sanity: '#165385',
   campaign: {
-    setup: '#128C60',
-    interlude: '#174691',
-    resolution: '#E75122',
-    resolutionBackground: '#E7512233',
-
+    text: {
+      setup: '#128C60',
+      interlude: '#2D529A',
+      resolution: '#E75122',
+    },
+    background: {
+      resolution: '#E7512233',
+      interlude: '#2D529A33',
+      setup: '#128C6033',
+    },
     core: '#00759C',
     dwl: '#6D9548',
     ptc: '#5B579C',
@@ -405,11 +416,16 @@ export const DARK_THEME: ThemeColors = {
   health: '#AE4236',
   sanity: '#2C7FC0',
   campaign: {
-    setup: '#07AF73',
-    interlude: '#1735ad',
-    resolution: '#F04932',
-    resolutionBackground: '#F0493233',
-
+    text: {
+      setup: '#07AF73',
+      interlude: '#4C97EF',
+      resolution: '#F04932',
+    },
+    background: {
+      setup: '#07AF7333',
+      resolution: '#F0493233',
+      interlude: '#4C97EF33',
+    },
     core: '#006385',
     dwl: '#57783A',
     ptc: '#524F8D',

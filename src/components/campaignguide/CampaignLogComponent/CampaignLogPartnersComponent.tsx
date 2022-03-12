@@ -44,6 +44,8 @@ export default function CampaignLogPartnersComponent({ partners, campaignLog, wi
             <CompactInvestigatorRow
               investigator={card}
               hideImage={!card && !loading}
+              arkhamCardsImg={partner.img}
+              imageOffset={partner.img_offset}
               width={width}
               eliminated={eliminated}
               name={name}

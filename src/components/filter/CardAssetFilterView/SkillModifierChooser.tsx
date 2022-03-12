@@ -7,18 +7,18 @@ import { t } from 'ttag';
 
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from '@components/core/ToggleFilter';
-import { SkillModifierFilters } from '@lib/filters';
+import { FilterState, SkillModifierFilters } from '@lib/filters';
 import { xs } from '@styles/space';
 
 interface Props {
-  onFilterChange: (setting: string, value: any) => void;
+  onFilterChange: (setting: keyof FilterState, value: any) => void;
   skillModifiers: SkillModifierFilters;
   enabled: boolean;
-  onToggleChange: (setting: string, value: boolean) => void;
+  onToggleChange: (setting: keyof FilterState, value: boolean) => void;
 }
 
 export default function SkillModifierChooser({ onFilterChange, skillModifiers, enabled, onToggleChange }: Props) {
-  const handleToggleChange = useCallback((key: string) => {
+  const handleToggleChange = useCallback((key: keyof FilterState) => {
     onFilterChange('skillModifiers', {
       ...skillModifiers,
       [key]: !skillModifiers[key as keyof SkillModifierFilters],

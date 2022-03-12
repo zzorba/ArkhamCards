@@ -1501,7 +1501,7 @@ msgid "Multiplayer"
 msgstr "多人遊戲"
 
 msgid "Standalone"
-msgstr "獨立劇本"
+msgstr "獨立冒險"
 
 msgid "Debug Card Json"
 msgstr "Debug Card Json"
@@ -1558,13 +1558,13 @@ msgid "The Black Cat"
 msgstr "The Black Cat"
 
 msgid "The Search for Kadath"
-msgstr "The Search for Kadath"
+msgstr "尋覓卡達斯"
 
 msgid "The Oneironauts"
 msgstr "The Oneironauts"
 
 msgid "Dark Side of the Moon"
-msgstr "Dark Side of the Moon"
+msgstr "月之暗面"
 
 msgid "The Great Ones"
 msgstr "The Great Ones"
@@ -1576,13 +1576,13 @@ msgid "Waking Nightmare"
 msgstr "Waking Nightmare"
 
 msgid "A Thousand Shapes of Horror"
-msgstr "A Thousand Shapes of Horror"
+msgstr "萬千駭形"
 
 msgid "Point of No Return"
-msgstr "Point of No Return"
+msgstr "無歸之地"
 
 msgid "Weaver of the Cosmos"
-msgstr "Weaver of the Cosmos"
+msgstr "編織宇宙"
 
 msgid "Evidence of Kadath"
 msgstr "Evidence of Kadath"
@@ -1898,7 +1898,7 @@ msgid "Update decks with scenario results"
 msgstr "以冒險結果更新牌組"
 
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "將冒險日誌中的<i>${ logEntry.text }</i>劃去。 "
+msgstr "將冒險日誌中的<i>${ logEntry.text }</i>劃去。"
 
 #, javascript-format
 msgid ""
@@ -2060,7 +2060,7 @@ msgid "Upload"
 msgstr "上傳"
 
 msgid "The Dream-Eaters"
-msgstr "The Dream-Eaters"
+msgstr "食夢者"
 
 msgid "The Innsmouth Conspiracy"
 msgstr "The Innsmouth Conspiracy"
@@ -2802,7 +2802,7 @@ msgid "Search options"
 msgstr "搜尋選項"
 
 msgid "Search in:"
-msgstr "搜尋於: "
+msgstr "搜尋於:"
 
 msgid "Encounter Card Toggle"
 msgstr "Encounter Card Toggle"
@@ -3166,21 +3166,21 @@ msgid ""
 msgstr "Dissonant Voices是一個正在進行中的專案，由Mythos Busters提供英文版詭鎮奇談劇本之中，冒險文字的口述。"
 
 msgid "Are you sure you want to delete this standalone?"
-msgstr "你是否確定要刪除這個獨立劇本？"
+msgstr "你是否確定要刪除這個獨立冒險？"
 
 msgid "Delete standalone"
-msgstr "刪除獨立劇本"
+msgstr "刪除獨立冒險"
 
 msgid ""
 "Don't see your favorite Standalone scenario here? Let me know at "
 "arkhamcards@gmail.com, and I'll see about including it in a future release."
-msgstr "找不到你最喜歡的獨立劇本嗎？請聯繫arkhamcards@gmail.com，我會盡可能在未來的更新中加入。"
+msgstr "找不到你最喜歡的獨立冒險嗎？請聯繫arkhamcards@gmail.com，我會盡可能在未來的更新中加入。"
 
 msgid "New Standalone"
-msgstr "新獨立劇本"
+msgstr "新獨立冒險"
 
 msgid "Create Standalone"
-msgstr "建立獨立劇本"
+msgstr "建立獨立冒險"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgid "The Chameleon"
@@ -3960,8 +3960,8 @@ msgstr ""
 msgid "Alice in Wonderland"
 msgstr "愛麗絲夢遊仙境"
 
-msgid "Fragments of Alilce"
-msgstr "Fragments of Alilce"
+msgid "Fragments of Alice"
+msgstr "Fragments of Alice"
 
 msgid "Wonderland Boons"
 msgstr "Wonderland Boons"
@@ -4072,7 +4072,7 @@ msgid ""
 "changes, and deckbuilding requirements."
 msgstr ""
 "這位調查員沒有相對應的牌組。\n"
-"如果你選擇一副牌組，本APP可以協助你追蹤花費過的經驗、故事支援的變化以及牌組構建需求。"
+"如果你選擇一副牌組，此APP可以協助你追蹤花費過的經驗、故事支援的變化以及牌組構建需求。"
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
@@ -4241,13 +4241,13 @@ msgid "Edit my spoiler settings"
 msgstr "編輯我的劇透設定"
 
 msgid "Crown of Egil"
-msgstr "Crown of Egil"
+msgstr ""
 
 msgid "The Crown of Egil"
-msgstr "The Crown of Egil"
+msgstr ""
 
 msgid "Traces of Egil"
-msgstr "Traces of Egil"
+msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
@@ -4326,8 +4326,7 @@ msgstr "修正後技能值"
 #, javascript-format
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total }標記"
 
 msgid "Show all cards"
 msgstr "顯示所有卡牌"
@@ -4389,29 +4388,29 @@ msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr "你不能加入超過5張等級0的流浪者卡牌"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "在設定頁面登入Arkham Cards以啟用"
 
 msgid "Asset: Hand x2. Arcane"
 msgstr "支援: 手部 x2. 法術"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ supplyIcon } ${ total } 的 ${ spent }"
 
 msgid "Choose deck"
 msgstr "選擇牌組"
 
 msgid "Frost"
-msgstr ""
+msgstr "冰霜"
 
 msgid "Database reset"
 msgstr ""
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "請關閉並重新打開此APP"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "重置卡牌資料庫"
 
 msgid "Mythos Busters"
 msgstr "Mythos Busters"
@@ -4457,54 +4456,54 @@ msgid "Fix duplicates"
 msgstr ""
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr ""
+msgstr "你是否要用APP隨機幫你選擇一個夥伴？"
 
 msgid "Select more"
-msgstr ""
+msgstr "選擇更多"
 
 msgid "Record damage/horror:"
-msgstr ""
+msgstr "紀錄傷害/恐懼："
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "探險隊"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr ""
+msgstr "在劇本日誌中${ sectionName }部分，劃掉${ partnerName }。"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
-msgstr ""
+msgstr "在劇本日誌中${ sectionName }部分，在${ partnerName }的名字旁寫下“失蹤”。"
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
-msgstr ""
+msgstr "在劇本日誌中${ sectionName }部分，將${ partnerName }旁的“失蹤”劃掉。"
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "如果調查員隊長<b>發瘋</b>了。"
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "如果所有調查員都<b>發瘋</b>了。"
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "如果調查員隊長仍存活。"
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "如果所有調查員都仍存活。"
 
 msgid "The Entity"
-msgstr ""
+msgstr "實體"
 
 msgid "Resolute"
-msgstr ""
+msgstr "堅毅"
 
 msgid "MIA"
-msgstr ""
+msgstr "失蹤"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4520,72 +4519,78 @@ msgid ""
 "but you should be sure you have sufficient experience set aside to pay for "
 "it."
 msgstr ""
+"支線劇情是一種冒險，可在《詭鎮奇談：卡牌版》的任意兩場冒險之間進行。\n"
+"- 參與劇本的每位調查員需要支付一定數量的經驗值，才能進行支線劇情。\n"
+"- 調查員們保留在支線劇情中獲得的弱點、創傷、經驗、獎勵，直到該劇本結束。\n"
+"- 在每個劇本中，每個支線劇情只能進行一次遊戲。\n"
+"\n"
+"<b>注意：</b>使用此APP時，進行支線冒險所需要的經驗值會自動在<b>冒險結束</b>時扣除，但你仍應該確保你能有足夠的經驗支付。"
 
 msgid "Ice and Death: Part 1"
-msgstr ""
+msgstr "亡命冰原：第1部分"
 
 msgid "Ice and Death: Part 2"
-msgstr ""
+msgstr "亡命冰原：第2部分"
 
 msgid "Ice and Death: Part 3"
-msgstr ""
+msgstr "亡命冰原：第3部分"
 
 msgid "Restful Night"
-msgstr ""
+msgstr "寧靜夜晚"
 
 msgid "To the Forbidden Peaks"
-msgstr ""
+msgstr "失落之峰"
 
 msgid "Endless Night"
-msgstr ""
+msgstr "無盡夜晚"
 
 msgid "City of the Elder Things"
-msgstr ""
+msgstr "古老者之城"
 
 msgid "Final Night"
-msgstr ""
+msgstr "最後一夜"
 
 msgid "The Heart of Madness: Part 1"
-msgstr ""
+msgstr "瘋狂之心：第1部分"
 
 msgid "The Heart of Madness: Part 2"
-msgstr ""
+msgstr "瘋狂之心：第2部分"
 
 msgid "Fatal Mirage"
-msgstr ""
+msgstr "致命幻景"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "致命幻景 - 發現的記憶"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "致命幻景 - 驅除的記憶"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "亡命冰原 - 已揭示的地點"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "亡命冰原 - 已回收的補給品"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "瘋狂之心 - 放置的封印"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "瘋狂之心 - 發現的封印"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr ""
+msgstr "你可以治癒1點肉體或精神創傷<i>(你的選擇)</i>"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
-msgstr ""
+msgstr "在劇本日誌中${ sectionName }部分，在${ partnerName }的名字旁打勾。"
 
 msgid "Choose heal type"
-msgstr ""
+msgstr "選擇治癒類型"
 
 msgid "Chosen heal type"
-msgstr ""
+msgstr "選擇的治癒類型"
 
 msgid "Assigned weaknesses"
 msgstr ""
@@ -4597,7 +4602,7 @@ msgid "Choose expansions for basic weakness"
 msgstr ""
 
 msgid "Uploading campaign"
-msgstr ""
+msgstr "劇本上傳中"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
@@ -4918,16 +4923,16 @@ msgid "Edit Side Deck"
 msgstr ""
 
 msgid "Creating campaign..."
-msgstr ""
+msgstr "建立劇本..."
 
 msgid "Creating standalone..."
-msgstr ""
+msgstr "建立獨立冒險..."
 
 msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
+msgstr "劇本將會在裝置之間同步，並且能夠與朋友共享"
 
 msgid "Campaign will be local to this device, you can choose to upload it later"
-msgstr ""
+msgstr "劇本將會保存在本機裝置，你可以選擇稍後再上傳"
 
 #, javascript-format
 msgid "(${ count } card)"
@@ -4960,16 +4965,16 @@ msgid "Show decks from other campaigns"
 msgstr ""
 
 msgid "Trait Choice"
-msgstr ""
+msgstr "選擇屬性"
 
 msgid "Blessed"
-msgstr ""
+msgstr "祝福"
 
 msgid "Cursed"
-msgstr ""
+msgstr "詛咒縈繞"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "祝福與詛咒縈繞"
 
 msgid "Select Option"
 msgstr ""
@@ -4978,19 +4983,19 @@ msgid "Move to deck"
 msgstr ""
 
 msgid "Unarchive standalone"
-msgstr ""
+msgstr "解除歸檔獨立冒險"
 
 msgid "Archive standalone"
-msgstr ""
+msgstr "歸檔獨立冒險"
 
 msgid "Bless / Curse"
 msgstr ""
 
 msgid "You appear to be offline. Tap to check for network."
-msgstr ""
+msgstr "你似乎沒有網路連線。點擊以確認網路連線。"
 
 msgid "Guardians of the Abyss"
-msgstr ""
+msgstr "深淵守護者"
 
 msgid "Two-part campaign variant"
 msgstr ""
@@ -5005,15 +5010,106 @@ msgid "Hide campaign decks"
 msgstr ""
 
 msgid "Select Standalone"
-msgstr ""
+msgstr "選擇單場冒險"
 
 msgid "Add ${ card.name }:"
+msgstr "加入${ card.name }:"
+
+#, javascript-format
+msgid "Select ${ name }"
+msgstr ""
+
+msgid ""
+"Note: This should only be selected at deck creation time, not between "
+"scenarios."
+msgstr "注意：此卡牌應該在構建牌組時選擇，而不是在兩場冒險之間。"
+
+#, javascript-format
+msgid ""
+"The information presented in this app about Arkham Horror: The Card Game, "
+"both literal and graphical, is copyrighted by Fantasy Flight Games. This "
+"app is not produced, endorsed, supported, or affiliated with Fantasy Flight "
+"Games.\n"
+"\n"
+"This application was created by Daniel Salinas as a fan project to help "
+"support the Arkham Horror: The Card Game community, with design from ${ "
+"visualDesigner } and additional development by ${ dissonantVoicesDeveloper "
+"}, ${ chaosBagDeveloper }, and ${ toolingDeveloper }. If you find yourself "
+"managing lots of decks and campaigns, I'm hoping it proves useful.\n"
+"\n"
+"Feedback and bug reports are welcome by email at "
+"[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)\n"
+"\n"
+"Many thanks to ArkhamDB.com for providing the structured data, API access "
+"and access to card images. Without their continued support, this project "
+"wouldn't be possible."
+msgstr ""
+
+msgid ""
+"<b>Translation:</b>\n"
+"• Spanish: ${ spanishTranslators }\n"
+"• French: ${ frenchTranslators }\n"
+"• German: ${ germanTranslators }\n"
+"• Russian: ${ russianTranslators }\n"
+"• Korean: ${ koreanTranslators }"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"<b>Additional Contributions:</b>\n"
+"• Visual Design: ${ visualDesigner }\n"
+"• Digital chaos bag + odds calculator: ${ chaosBagDeveloper }\n"
+"• Dissonant Voices audio integration: ${ dissonantVoicesDeveloper }\n"
+"• Tooling and build support: ${ toolingDeveloper }"
+msgstr ""
+
+msgid ""
+"<b>Icon Attribution:</b>\n"
+"• Original icon designs: ${ visualDesigner }"
+msgstr ""
+
+msgid "Samsung One UI fix"
+msgstr ""
+
+msgid "Fix layout issues on version 3.0 of Samsung One UI"
+msgstr ""
+
+msgid "Call of the Plaguebearer"
+msgstr ""
+
+msgid "Eliminated"
+msgstr ""
+
+msgid "Locations"
+msgstr ""
+
+msgid "Reauthorize ArkhamDB"
+msgstr ""
+
+msgid "Login required to save deck upgrade"
+msgstr ""
+
+msgid ""
+"Note: this campaign is a fairly new addition to the app and may contain "
+"some mistakes."
+msgstr ""
+
+msgid "Durability"
+msgstr ""
+
+msgid "Leylines"
+msgstr ""
+
+msgid "Offerings"
+msgstr ""
+
+msgid "Patrol"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
 
 #, javascript-format
 msgctxt "masculine"
@@ -5396,7 +5492,7 @@ msgstr "圓環"
 
 msgctxt "trait"
 msgid "City"
-msgstr "City"
+msgstr "城市"
 
 msgctxt "trait"
 msgid "Civic"
@@ -5552,7 +5648,7 @@ msgstr "異次元"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr "外星"
+msgstr "異星"
 
 msgctxt "trait"
 msgid "Eztli"
@@ -5636,7 +5732,7 @@ msgstr "一樓"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr "賓客"
+msgstr "客人"
 
 msgctxt "trait"
 msgid "Gug"
@@ -5644,7 +5740,7 @@ msgstr "古革巨人"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr "大廳"
+msgstr "廳堂"
 
 msgctxt "trait"
 msgid "Hazard"
@@ -5740,7 +5836,7 @@ msgstr "鑰匙"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr "事件線索"
+msgstr "跡象"
 
 msgctxt "trait"
 msgid "Leng"
@@ -6084,7 +6180,7 @@ msgstr "St Mary's"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr "員工"
+msgstr "職工"
 
 msgctxt "trait"
 msgid "Steps"
@@ -6312,7 +6408,7 @@ msgstr "仙境"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "堅毅"
 
 #, javascript-format
 msgctxt "filter"
@@ -6322,6 +6418,10 @@ msgstr "${ cycleNames[cycle_position] }循環"
 msgctxt "Types"
 msgid "All"
 msgstr "全部"
+
+msgctxt "card-type"
+msgid "Investigator"
+msgstr "調查員"
 
 msgctxt "SubTypes"
 msgid "All"
@@ -6469,11 +6569,11 @@ msgstr "播放語音"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "語音速度: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
-msgstr "其他"
+msgstr "其他。"
 
 msgctxt "Weakness Card"
 msgid "All"
@@ -6517,15 +6617,15 @@ msgstr "審判·XX(逆位)"
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
-msgstr ""
+msgstr "劇本"
 
 msgctxt "new_campaign_type"
 msgid "Standalones"
-msgstr ""
+msgstr "獨立冒險"
 
 msgctxt "versus abbreviation"
 msgid "VS"
@@ -6533,4 +6633,4 @@ msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "自訂"

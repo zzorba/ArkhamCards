@@ -632,6 +632,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'justify': return !!state.settings.justifyContent;
       case 'single_card': return !!state.settings.singleCardView;
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
+      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
     }
   });
 }

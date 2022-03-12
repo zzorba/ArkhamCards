@@ -1,6 +1,6 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
+import { forEach, pick, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
@@ -9,7 +9,7 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, Ski
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardFragment, CoreCardTextFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardFragment, CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
@@ -970,9 +970,11 @@ export default class Card {
   }
 
   static fromGraphQl(
-    card: CoreCardFragment & {
+    card: SingleCardFragment & {
+      linked_card?: SingleCardFragment;
       packs: { name: string }[];
       translations: CoreCardTextFragment[];
+      encounter_sets: { name: string}[],
     },
     lang: string
   ) {
@@ -987,6 +989,7 @@ export default class Card {
       enemy: t`Enemy`,
       act: t`Act`,
       agenda: t`Agenda`,
+      story: t`Story`,
     };
     const factionNames: { [key: string]: string } = {
       neutral: t`Neutral`,
@@ -1014,11 +1017,18 @@ export default class Card {
       text: card.real_text,
       traits: card.real_traits,
     };
+    json.encounter_name = card.encounter_sets.length ? card.encounter_sets[0].name : card.real_encounter_set_name;
     json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];
     if (card.subtype_code) {
       json.subtype_name = subTypeName[card.subtype_code];
+    }
+    if (card.linked_card) {
+      json.linked_card = Card.fromGraphQl({
+        ...pick(card, ['packs', 'translations', 'encounter_sets']),
+        ...card.linked_card,
+      }, lang);
     }
     return Card.fromJson(json,
       {
@@ -1129,8 +1139,11 @@ export default class Card {
       s => `#${s}#`).join(',') : null;
 
     const restrictions = Card.parseRestrictions(json.restrictions);
-    const uses_match = json.real_text && json.real_text.match(USES_REGEX);
-    const uses = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses_match = json.code === '08062' ?
+      ['foo', 'bar', 'charges'] :
+      (json.real_text && json.real_text.match(USES_REGEX));
+    const usesRaw = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses = usesRaw === 'charge' ? 'charges' : usesRaw;
 
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;

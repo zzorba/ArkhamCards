@@ -30,6 +30,8 @@ interface Props {
   badge?: 'upgrade' | 'deck';
   tabooSetId?: number;
   noShadow?: boolean;
+  arkhamCardsImg?: string;
+  imageOffset?: 'right' | 'left';
 }
 
 const IMAGE_SIZE = {
@@ -53,6 +55,7 @@ function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
 
 function InvestigatorImage({
   card,
+  arkhamCardsImg,
   backCard,
   componentId,
   border,
@@ -63,6 +66,7 @@ function InvestigatorImage({
   badge,
   tabooSetId,
   noShadow,
+  imageOffset,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -84,9 +88,9 @@ function InvestigatorImage({
   const imageStyle = useMemo(() => {
     if (card?.type_code === 'asset') {
       switch (impliedSize) {
-        case 'tiny': return styles.tinyAsset;
-        case 'small': return styles.smallAsset;
-        case 'large': return styles.largeAsset;
+        case 'tiny': return imageOffset === 'right' ? styles.tinyRightAsset : styles.tinyAsset;
+        case 'small': return imageOffset === 'right' ? styles.smallRightAsset : styles.smallAsset;
+        case 'large': return imageOffset === 'right' ? styles.largeRightAsset : styles.largeAsset;
       }
     }
     switch (impliedSize) {
@@ -94,15 +98,26 @@ function InvestigatorImage({
       case 'small': return yithian ? styles.yithianSmall : styles.small;
       case 'large': return yithian ? styles.yithianLarge : styles.large;
     }
-  }, [impliedSize, yithian, card]);
+  }, [impliedSize, imageOffset, yithian, card]);
+  const imgUri = useMemo(() => {
+    if (card) {
+      if (yithian) {
+        return 'https://arkhamdb.com/bundles/cards/04244.jpg';
+      }
+      if (card.imagesrc) {
+        return `https://arkhamdb.com/${card.imagesrc}`;
+      }
+    }
+    return arkhamCardsImg;
+  }, [card, yithian, arkhamCardsImg]);
 
   const investigatorImage = useMemo(() => {
-    if (card) {
+    if (imgUri) {
       return (
         <FastImage
           style={imageStyle}
           source={{
-            uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
+            uri: imgUri,
           }}
           resizeMode="contain"
         />
@@ -111,7 +126,7 @@ function InvestigatorImage({
     return (
       <View style={[imageStyle, { backgroundColor: colors.L20 }]} />
     );
-  }, [card, yithian, colors, imageStyle]);
+  }, [imgUri, colors, imageStyle]);
 
   const styledImage = useMemo(() => {
     if (killedOrInsane) {
@@ -174,7 +189,7 @@ function InvestigatorImage({
               </View>
             </View>
           </View>
-          { !!card.imagesrc && (
+          { !!imgUri && (
             <View style={styles.relative}>
               { styledImage }
             </View>
@@ -273,6 +288,28 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -44,
     left: -20,
+    width: (136 + 34) * 1.25,
+    height: (166 + 44) * 1.25,
+  },
+
+  tinyRightAsset: {
+    position: 'absolute',
+    top: -12,
+    left: -27,
+    width: (136 + 34) * 0.45,
+    height: (166 + 44) * 0.45,
+  },
+  smallRightAsset: {
+    position: 'absolute',
+    top: -36,
+    left: -40,
+    width: (136 + 34),
+    height: (166 + 44),
+  },
+  largeRightAsset: {
+    position: 'absolute',
+    top: -44,
+    left: -40,
     width: (136 + 34) * 1.25,
     height: (166 + 44) * 1.25,
   },

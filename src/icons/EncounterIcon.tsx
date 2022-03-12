@@ -665,9 +665,37 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sleeping_nightmares':
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
+
+      case 'agents_of_cthugha':
+        return this.darkMatterIcon('agents_of_cthugua', size, color);
+      case 'agency_survivors':
+      case 'gifts_of_the_plaguebearer':
+      case 'haze_of_miasma':
+      case 'life_and_death':
+      case 'the_plaguebearers_commands':
+      case 'tenuous_allies':
+      case 'fallen_arkham':
+      case 'unbound_power':
+      case 'late_risers':
+      case 'night_on_the_town':
+      case 'dead_by_dawn':
+      case 'high_noon_descent':
+      case 'the_afternoon_war':
+      case 'death_at_sundown':
+      case 'the_midnight_hour':
+        return this.darkMatterIcon(encounter_code, size, color);
+      case 'mourning_chorus':
+        return this.darkMatterIcon('mourning_stroll', size, color);
+      case 'zcp':
+      case 'call_of_the_plaguebearer':
+        return this.darkMatterIcon('call_of_the_plaguebearer', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
+
+
+
+
     }
   }
 }

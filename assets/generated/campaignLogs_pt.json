@@ -322,7 +322,7 @@
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "ra. Kensler tem um plano."
+            "text": "Dra. Kensler tem um plano."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -456,8 +456,8 @@
           {
             "id": "partner_missing",
             "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "masculine_text": "#name# está desaparecido",
+            "feminine_text": "#name# está desaparecida"
           },
           {
             "id": "camp_shelter",
@@ -802,7 +802,7 @@
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Manto de gelo precário"
+            "text": "Precarious Ice Sheet"
           },
           {
             "id": "remnants_of_lakes_camp",
@@ -1122,126 +1122,126 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# estava possuído.",
+            "feminine_text": "#name# estava possuída."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "os investigadores foram atacados quando escaparam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "você acordou dentro das catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "você escolheu não ir à polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "você destruiu the oathspeaker."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "você não escapou do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "você entrou nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "os investigadores escaparam do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "você fugiu do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "os seguidores do sinal encontraram o caminho."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "você encontrou Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "você encontrou a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur tem você em suas mãos."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "você atendeu ao aviso de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "você ignorou o aviso de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "você se intrometeu em uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "o rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "você conhece o local do portão."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "você deixou the onyx clasp para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "você abriu o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "você abriu o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "a polícia suspeita de você."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "os investigadores impediram Hastur de escapar de sua prisão."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "você matou os monstros no jantar."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "o Estranho está atrás de você."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "você pegou the onyx clasp."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "você tentou avisar a polícia."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "você não conseguiu encontrar Nigel."
           }
         ]
       },
@@ -1258,7 +1258,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "um ou mais investigadores estava possuído."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1548,126 +1548,126 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# estava possuído.",
+            "feminine_text": "#name# estava possuída."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "os investigadores foram atacados quando escaparam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "você acordou dentro das catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "você escolheu não ir à polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "você destruiu the oathspeaker."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "você não escapou do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "você entrou nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "os investigadores escaparam do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "você fugiu do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "os seguidores do sinal encontraram o caminho."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "você encontrou Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "você encontrou a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur tem você em suas mãos."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "você atendeu ao aviso de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "você ignorou o aviso de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "você se intrometeu em uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "o rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "você conhece o local do portão."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "você deixou the onyx clasp para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "você abriu o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "você abriu o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "a polícia suspeita de você."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "os investigadores impediram Hastur de escapar de sua prisão."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "você matou os monstros no jantar."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "o Estranho está atrás de você."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "você pegou the onyx clasp."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "você tentou avisar a polícia."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "você não conseguiu encontrar Nigel."
           }
         ]
       },
@@ -1684,7 +1684,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "um ou mais investigadores estava possuído."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -2103,6 +2103,22 @@
             "text": "dummy"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -2240,7 +2256,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro seguiu os investigadores até as ruínas."
           },
           {
             "id": "alejandro_is_missing",
@@ -2252,11 +2268,11 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperou a Relíquia das Eras."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro optou por permanecer no acampamento."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2276,7 +2292,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "os investigadores abriram caminho para as ruínas de Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -2288,7 +2304,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "os investigadores ganharam a confiança de Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2324,7 +2340,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "o Harbinger ainda está vivo (#X# dano)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2336,11 +2352,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca desconfia dos investigadores."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca observou seu progresso com grande interesse."
           },
           {
             "id": "ichtaca_set_against",
@@ -2352,7 +2368,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "os investigadores recuperaram a Relic of Ages (Relíquia das Eras)."
           },
           {
             "id": "investigators_saved_serpents",
@@ -2424,7 +2440,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "os investigadores foram forçados a esperar por suprimentos adicionais."
           }
         ]
       },
@@ -2432,24 +2448,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -2545,6 +2561,13 @@
         "multiple": false
       },
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Gasoline",
         "description": "Enough for a long journey bycar.",
@@ -2552,36 +2575,17 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pingente",
+        "description": "Inúteis, mas boas lembranças trazem conforto aos viajantes longe de casa.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
@@ -2590,21 +2594,33 @@
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "Binóculos",
+        "description": "Para ajudá-lo a ver lugares distantes.",
+        "cost": 2
+      },
+      {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
+        "name": "Cobertor",
+        "description": "Para aquecer à noite",
         "cost": 2
       },
       {
         "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "name": "Giz",
+        "description": "Para escrever em superfícies de pedra áspera.",
         "cost": 2
       },
       {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "id": "compass",
+        "name": "Bússola",
+        "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
@@ -2614,21 +2630,21 @@
         "cost": 2
       },
       {
+        "id": "map",
+        "name": "Map",
+        "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "Tochas",
+        "description": "Pode iluminar áreas escuras ou acender arandelas.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Corda",
+        "description": "Vários longos rolos de corda forte. Vital para escalada e espeleologia.",
         "cost": 3
       }
     ]
@@ -3193,6 +3209,22 @@
             "text": "dummy"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -3620,7 +3652,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro seguiu os investigadores até as ruínas."
           },
           {
             "id": "alejandro_is_missing",
@@ -3632,11 +3664,11 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperou a Relíquia das Eras."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro optou por permanecer no acampamento."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -3656,7 +3688,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "os investigadores abriram caminho para as ruínas de Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -3668,7 +3700,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "os investigadores ganharam a confiança de Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -3704,7 +3736,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "o Harbinger ainda está vivo (#X# dano)"
           },
           {
             "id": "ichtaca_has_confidence",
@@ -3716,11 +3748,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca desconfia dos investigadores."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca observou seu progresso com grande interesse."
           },
           {
             "id": "ichtaca_set_against",
@@ -3732,7 +3764,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "os investigadores recuperaram a Relic of Ages (Relíquia das Eras)."
           },
           {
             "id": "investigators_saved_serpents",
@@ -3800,7 +3832,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "os investigadores foram forçados a esperar por suprimentos adicionais."
           }
         ]
       },
@@ -3808,24 +3840,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# começa com 3 recursos a menos.",
+            "feminine_text": "#name# começa com 3 recursos a menos."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3892,6 +3924,13 @@
     ],
     "supplies": [
       {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
         "id": "gasoline",
         "name": "Gasoline",
         "description": "Enough for a long journey bycar.",
@@ -3899,36 +3938,17 @@
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
-        "cost": 1,
-        "multiple": true
-      },
-      {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Pingente",
+        "description": "Inúteis, mas boas lembranças trazem conforto aos viajantes longe de casa.",
         "cost": 1
-      },
-      {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
       },
       {
         "id": "pickaxe",
@@ -3937,21 +3957,33 @@
         "cost": 2
       },
       {
+        "id": "binoculars",
+        "name": "Binóculos",
+        "description": "Para ajudá-lo a ver lugares distantes.",
+        "cost": 2
+      },
+      {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
+        "name": "Cobertor",
+        "description": "Para aquecer à noite",
         "cost": 2
       },
       {
         "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "name": "Giz",
+        "description": "Para escrever em superfícies de pedra áspera.",
         "cost": 2
       },
       {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "id": "compass",
+        "name": "Bússola",
+        "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
@@ -3961,21 +3993,21 @@
         "cost": 2
       },
       {
+        "id": "map",
+        "name": "Map",
+        "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
+        "cost": 3
+      },
+      {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
+        "name": "Tochas",
+        "description": "Pode iluminar áreas escuras ou acender arandelas.",
         "cost": 3
       },
       {
         "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
-        "cost": 3
-      },
-      {
-        "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Corda",
+        "description": "Vários longos rolos de corda forte. Vital para escalada e espeleologia.",
         "cost": 3
       }
     ]
@@ -4806,6 +4838,498 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcp",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          }
+        ]
+      },
+      {
+        "section": "arkham_advertiser",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "bank_of_arkham",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "heeded_the_call",
+            "masculine_text": "#name# has heeded the call.",
+            "feminine_text": "#name# has heeded the call."
+          },
+          {
+            "id": "injected_a_cardinal_reagant",
+            "masculine_text": "#name# has injected a cardinal reagant.",
+            "feminine_text": "#name# has injected a cardinal reagant."
+          },
+          {
+            "id": "arkham_stands_united",
+            "text": "Arkham stands united."
+          },
+          {
+            "id": "baalshandor_struck_the_first_blow",
+            "text": "Baalshandor struck the first blow."
+          },
+          {
+            "id": "collection_was_saved",
+            "text": "the collection was saved."
+          },
+          {
+            "id": "death_conquered_herbert_west",
+            "text": "Death conquered Herbert West."
+          },
+          {
+            "id": "earned_greysons_respect",
+            "text": "you earned Greyson's respect."
+          },
+          {
+            "id": "found_the_hidden_paths",
+            "text": "you have found the hidden paths."
+          },
+          {
+            "id": "greyson_cut_ties",
+            "text": "Greyson cut ties."
+          },
+          {
+            "id": "herbert_west_is_leading_the_way",
+            "text": "Herbert West is leading the way."
+          },
+          {
+            "id": "herbert_west_was_taken_against_his_will",
+            "text": "Herbert West was taken against his will."
+          },
+          {
+            "id": "hibbs_has_your_back",
+            "text": "Hibbs has your back."
+          },
+          {
+            "id": "hibbs_is_here_to_help",
+            "text": "Hibbs is here to help."
+          },
+          {
+            "id": "investigators_learned_the_secrets_of_the_roadhouse",
+            "text": "the investigators learned the secrets of the roadhouse."
+          },
+          {
+            "id": "learned_the_killing_words",
+            "text": "you learned the killing words."
+          },
+          {
+            "id": "made_sure_the_first_was_dead",
+            "text": "you made sure the First was dead."
+          },
+          {
+            "id": "received_a_cryptic_riddle",
+            "text": "you received a cryptic riddle."
+          },
+          {
+            "id": "saw_a_vision_of_the_portals",
+            "text": "you saw a vision of the portals."
+          },
+          {
+            "id": "tailors_contained_the_problem",
+            "text": "the Tailors contained the problem."
+          },
+          {
+            "id": "the_blood_runs_in_your_veins",
+            "text": "the blood runs in your veins."
+          },
+          {
+            "id": "the_first_claimed_the_facility",
+            "text": "the First claimed The Facility."
+          },
+          {
+            "id": "the_monster_was_buried_under_tons_of_concrete",
+            "text": "the monster was buried under tons of concrete."
+          },
+          {
+            "id": "the_plaguebearer_was_bound_anew",
+            "text": "the Plaguebearer was bound anew."
+          },
+          {
+            "id": "the_plaguebearer_was_destroyed",
+            "text": "the Plaguebearer was destroyed."
+          },
+          {
+            "id": "transported_to_the_lurkers_realm",
+            "text": "you were transported to the Lurker's realm."
+          },
+          {
+            "id": "tripped_the_facility_alarms",
+            "text": "you tripped the Facility alarms."
+          },
+          {
+            "id": "west_conquered_death",
+            "text": "West conquered Death."
+          },
+          {
+            "id": "west_has_recovered_the_reagant",
+            "text": "West has recoverred the reagant."
+          },
+          {
+            "id": "you_conquered_death",
+            "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
+          },
+          {
+            "id": "you_have_received_a_twisted_gift",
+            "text": "you have received a twisted gift."
+          },
+          {
+            "id": "you_hid_the_briefcase",
+            "text": "you hid the briefcase."
+          }
+        ]
+      },
+      {
+        "section": "eliminated",
+        "entries": [
+          {
+            "id": "armitage",
+            "text": "Henry Armitage"
+          },
+          {
+            "id": "beecher",
+            "text": "Miram Beecher"
+          },
+          {
+            "id": "doyle",
+            "text": "Doyle Jeffries"
+          },
+          {
+            "id": "hibbs",
+            "text": "Hibbs"
+          },
+          {
+            "id": "ma",
+            "text": "Ma Matheson"
+          },
+          {
+            "id": "priest_of_plagues",
+            "text": "Priest of Plagues"
+          },
+          {
+            "id": "the_loving_couple",
+            "text": "The Loving Couple"
+          },
+          {
+            "id": "thing_in_water",
+            "text": "The Thing in the Water"
+          },
+          {
+            "id": "vice_president",
+            "text": "The Vice President"
+          }
+        ]
+      },
+      {
+        "section": "general_store",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hibbs_roadhouse",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "body_belongs_to_cthughua",
+            "text": "dummy"
+          },
+          {
+            "id": "finished_history_lesson",
+            "text": "dummy"
+          },
+          {
+            "id": "late_risers_six_locations",
+            "text": "dummy"
+          },
+          {
+            "id": "messenger_of_flame_defeated",
+            "text": "dummy"
+          },
+          {
+            "id": "messenger_of_the_king_defeated",
+            "text": "dummy"
+          },
+          {
+            "id": "owe_hastur_your_life",
+            "text": "dummy"
+          },
+          {
+            "id": "resigned_herbert_west",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mas_boarding_house",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "orne_library",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "river_docks",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "ye_olde_magick_shoppe",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
           }
         ]
       }

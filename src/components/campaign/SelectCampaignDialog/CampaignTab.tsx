@@ -14,6 +14,8 @@ import {
   DARK_MATTER,
   ALICE_IN_WONDERLAND,
   CROWN_OF_EGIL,
+  CALL_OF_THE_PLAGUEBEARER,
+  EOE,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -32,6 +34,7 @@ const authors = {
   [DARK_MATTER]: 'Axolotl',
   [ALICE_IN_WONDERLAND]: 'The Beard',
   [CROWN_OF_EGIL]: 'The Mad Juggler',
+  [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
 }
 function campaignDescription(packCode: CampaignCycleCode): string | undefined {
   switch (packCode) {
@@ -46,6 +49,7 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:
+    case CALL_OF_THE_PLAGUEBEARER:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:
@@ -80,8 +84,9 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
     }
     return partition(
       campaigns,
-      pack_code => (ignore_collection || in_collection[pack_code] || (
-        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
+      pack_code => (ignore_collection || in_collection[pack_code] || pack_code === 'core' || (
+        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||
+        (in_collection.eoec && pack_code === EOE)))
     );
   }, [segment, campaigns, in_collection, ignore_collection]);
   return (

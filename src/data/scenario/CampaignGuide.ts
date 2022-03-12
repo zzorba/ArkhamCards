@@ -1,4 +1,4 @@
-import { find, findIndex, filter, flatMap, forEach, reverse, slice, map } from 'lodash';
+import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';

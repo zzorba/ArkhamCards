@@ -122,7 +122,7 @@ export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
 
 export function useArkhamDbError(): string | undefined {
   const { error, refreshing } = useMyDecksRedux();
-  return refreshing ? error : undefined;
+  return refreshing ? undefined : error;
 }
 
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
@@ -162,7 +162,7 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkha
   }, [myDecks, remoteMyDecks, userId]);
   return [{
     myDecks: mergedMyDecks,
-    error,
+    error: refreshing ? undefined : error,
     refreshing: refreshing || (!!userId && remoteRefreshing),
     myDecksUpdated,
   }, onRefresh];

@@ -14,7 +14,7 @@ interface Props {
 
 export default function ResultIndicatorIcon({ result }: Props) {
   const { colors } = useContext(StyleContext);
-  const backgroundColor = result ? colors.campaign.setup : colors.campaign.resolution;
+  const backgroundColor = result ? colors.campaign.text.setup : colors.campaign.text.resolution;
   return (
     <View style={[styles.iconWrapper, space.paddingRightM]}>
       <View style={[styles.icon, { backgroundColor }]}>

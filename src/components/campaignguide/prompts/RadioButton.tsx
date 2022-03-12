@@ -6,10 +6,11 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { ChoiceIcon } from '@data/scenario/types';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
+import EncounterIcon from '@icons/EncounterIcon';
 
 interface Props {
   color: 'light' | 'dark';
-  icon: 'per_investigator' | 'radio' | ChoiceIcon;
+  icon: 'per_investigator' | 'radio' | ChoiceIcon | string;
   selected?: boolean;
 }
 
@@ -33,11 +34,25 @@ export default function RadioButton({ color, icon, selected }: Props) {
       </View>
     );
   }
-  return (
-    <View style={[styles.button, { backgroundColor: selected ? selectedColor : '#FFFBF244' }]}>
-      { !!selected && (icon === 'per_investigator' ? <ArkhamIcon name={icon} size={22} color={iconColor} /> : <AppIcon name={icon === 'accept' ? 'check' : icon} size={ICON_SIZE[icon]} color={iconColor} />) }
-    </View>
-  );
+  switch (icon) {
+    case 'per_investigator':
+    case 'mental':
+    case 'physical':
+    case 'resign':
+    case 'dismiss':
+    case 'accept':
+      return (
+        <View style={[styles.button, { backgroundColor: selected ? selectedColor : '#FFFBF244' }]}>
+          { !!selected && (icon === 'per_investigator' ? <ArkhamIcon name={icon} size={22} color={iconColor} /> : <AppIcon name={icon === 'accept' ? 'check' : icon} size={ICON_SIZE[icon]} color={iconColor} />) }
+        </View>
+      );
+    default:
+      return (
+        <View style={[styles.button, { backgroundColor: selected ? selectedColor : '#FFFBF244' }]}>
+          { !!selected && <EncounterIcon encounter_code={icon} size={24} color={iconColor} /> }
+        </View>
+      );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
+import { concat, chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, uniqBy, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
 import { c, t } from 'ttag';
 
@@ -282,13 +282,41 @@ export const syncCards = async function(
       updateProgress(0.5);
       try {
         const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+        const customCards = uniqBy(
+          map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
+          c => c.id
+        );
+        const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.code, c.linked_card.code] : []));
+        const dedupedCustomCards = filter(customCards, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+
+        VERBOSE && console.log('Clearing out old custom cards');
+        const cardsDb = await db.cards();
+        await cardsDb.createQueryBuilder().where(`code like 'z%'`).delete().execute();
+
         const queryRunner = await db.startTransaction();
         try {
-          await insertChunk(sqliteVersion, customCards, async(c: Card[]) => {
-            await queryRunner.manager.delete(Card, map(c, c => c.id));
+          VERBOSE && console.log('Incremental update of the custom cards');
+          const [linkedCards, normalCards] = partition(dedupedCustomCards, card => !!card.linked_card);
+          const backLinkCards = flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []);
+
+          async function insertCards(c: Card[]) {
             await queryRunner.manager.insert(Card, c);
-          });
+          }
+
+          VERBOSE && console.log('Inserting back-link cards');
+          VERBOSE && console.log(map(backLinkCards, c => c.id));
+          await insertChunk(sqliteVersion, backLinkCards, insertCards);
+
+          VERBOSE && console.log('Inserting front-link cards');
+          VERBOSE && console.log(map(linkedCards, c => c.id));
+          await insertChunk(sqliteVersion, linkedCards, insertCards);
+
+          VERBOSE && console.log('Inserting normal cards');
+          VERBOSE && console.log(map(normalCards, c => c.id));
+          await insertChunk(sqliteVersion, normalCards, insertCards);
+          VERBOSE && console.log('Done with incremental');
+
+
           updateProgress(0.7);
         } finally {
           await queryRunner.commitTransaction();
@@ -372,7 +400,6 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
-          VERBOSE && console.log(card.code);
           /*
           // Code to spit out investigator deck_options localization strings.
           if (card.type_code === 'investigator' && card.deck_options) {
@@ -397,9 +424,21 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
+
+    let customCards: Card[] = [];
+    try {
+      const customCardsResponse = await customCardsPromise;
+      customCards = uniqBy(
+        map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
+        c => c.id
+      );
+    } catch (e) {
+      console.log(e);
+    }
     updateProgress(0.35);
-    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card] : []));
-    const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+    const allCardsToInsert = concat(cardsToInsert, customCards);
+    const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card.code] : []));
+    const dedupedCards = filter(allCardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
     const flatCards = flatMap(dedupedCards, (c: Card) => {
       return c.linked_card ? [c, c.linked_card] : [c];
     });
@@ -459,32 +498,29 @@ export const syncCards = async function(
         });
       }
     });
-    let customCards: Card[] = [];
-    try {
-      const customCardsResponse = await customCardsPromise;
-      customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
-    } catch (e) {
-      console.log(e);
-    }
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     const queryRunner = await db.startTransaction();
     try {
       VERBOSE && console.log('Parsed all cards');
-      const totalCards = (linkedCards.length + normalCards.length + customCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
+      const totalCards = (linkedCards.length + normalCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
       async function insertCards(c: Card[]) {
         await queryRunner.manager.insert(Card, c);
         processedCards += c.length;
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
-      await insertChunk(sqliteVersion, flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
-      // console.log('Inserted back-link cards');
+      const backLinkCards = flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []);
+      VERBOSE && console.log(map(backLinkCards, c => c.id));
+
+      await insertChunk(
+        sqliteVersion,
+        flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []),
+        insertCards
+      );
+      VERBOSE && console.log('Inserted back-link cards');
       await insertChunk(sqliteVersion, linkedCards, insertCards);
       VERBOSE && console.log('Inserted front link cards');
       await insertChunk(sqliteVersion, normalCards, insertCards);
-      if (customCards.length) {
-        await insertChunk(sqliteVersion, customCards, insertCards);
-      }
     } finally {
       await queryRunner.commitTransaction();
       await queryRunner.release();
@@ -500,7 +536,7 @@ export const syncCards = async function(
       lastModified,
     };
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     throw e;
   }
 };

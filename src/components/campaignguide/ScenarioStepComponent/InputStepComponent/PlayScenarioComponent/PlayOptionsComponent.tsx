@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { findIndex, find, map, flatMap } from 'lodash';
 import { t } from 'ttag';
@@ -20,7 +20,7 @@ import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
-import BorderWrapper from '@components/campaignguide/BorderWrapper';
+import StoryButton from './StoryButton';
 
 
 interface Props {
@@ -39,8 +39,11 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
   const { campaign, campaignGuide } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario, processedCampaign } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
-  const { colors, typography, width } = useContext(StyleContext);
-  const allInvestigators = useMemo(() => processedScenario.latestCampaignLog.investigators(false), [processedScenario.latestCampaignLog]);
+  const { typography, width } = useContext(StyleContext);
+  const allInvestigators = useMemo(
+    () => input.fixed_resolution ? [] : processedScenario.latestCampaignLog.investigators(false),
+    [input.fixed_resolution, processedScenario.latestCampaignLog]
+  );
   const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>();
   const standalone = !!campaign.standaloneId;
 
@@ -157,26 +160,28 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
           onPress={showChaosBagDialog}
           bottomMargin={s}
         />
-        <View style={[styles.row, space.paddingBottomS]}>
-          <DeckButton
-            icon="weakness"
-            title={t`Weakness`}
-            detail={t`Draw random`}
-            color="dark_gray"
-            onPress={drawWeaknessPressed}
-            rightMargin={xs}
-            noShadow
-          />
-          <DeckButton
-            icon="trauma"
-            title={t`Trauma`}
-            detail={t`Record`}
-            color="dark_gray"
-            onPress={recordTraumaPressed}
-            leftMargin={xs}
-            noShadow
-          />
-        </View>
+        { !input.fixed_resolution && (
+          <View style={[styles.row, space.paddingBottomS]}>
+            <DeckButton
+              icon="weakness"
+              title={t`Weakness`}
+              detail={t`Draw random`}
+              color="dark_gray"
+              onPress={drawWeaknessPressed}
+              rightMargin={xs}
+              noShadow
+            />
+            <DeckButton
+              icon="trauma"
+              title={t`Trauma`}
+              detail={t`Record`}
+              color="dark_gray"
+              onPress={recordTraumaPressed}
+              leftMargin={xs}
+              noShadow
+            />
+          </View>
+        ) }
         { !!hasFaq && (
           <DeckButton
             icon="faq"
@@ -215,6 +220,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
                     text={choice.text}
                     description={choice.description}
                     onPress={branchPress}
+                    style={choice.style}
                   />
                 );
               }
@@ -222,16 +228,12 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
           </>
         ) }
         <View style={space.paddingBottomS}>
-          <TouchableOpacity onPress={resolutionPressed}>
-            <View style={[styles.resolutionBlock, { backgroundColor: colors.campaign.resolutionBackground }]}>
-              <BorderWrapper border color="resolution" width={width - s * 4}>
-                <View style={[styles.resolutionContent, space.paddingS, space.paddingTopL]}>
-                  <Text style={[typography.bigGameFont, { color: colors.campaign.resolution }]}>{t`Scenario Ended`}</Text>
-                  { !input.no_resolutions && <Text style={typography.mediumGameFont}>{t`Proceed to Resolutions`}</Text> }
-                </View>
-              </BorderWrapper>
-            </View>
-          </TouchableOpacity>
+          <StoryButton
+            onPress={resolutionPressed}
+            type="resolution"
+            title={t`Scenario Ended`}
+            description={input.fixed_resolution || input.no_resolutions ? undefined : t`Proceed to Resolutions`}
+          />
         </View>
       </InputWrapper>
       { chaosBagDialog }
@@ -245,14 +247,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  resolutionBlock: {
-    borderRadius: 8,
-  },
-  resolutionContent: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
     alignItems: 'center',
   },
 });

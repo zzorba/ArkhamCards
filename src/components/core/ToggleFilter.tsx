@@ -13,12 +13,12 @@ import StyleContext from '@styles/StyleContext';
 
 const ICON_SIZE = 28;
 
-interface Props {
+interface Props<T> {
   label?: string;
   icon?: string;
-  setting: string;
+  setting: T;
   value: boolean;
-  onChange: (setting: string, value: boolean) => void;
+  onChange: (setting: T, value: boolean) => void;
   style?: ViewStyle;
 }
 
@@ -36,7 +36,7 @@ function Label({ label, icon }: { label?: string; icon?: string }) {
   );
 }
 
-export default function ToggleFilter({ onChange, setting, label, value, icon, style }: Props) {
+export default function ToggleFilter<T>({ onChange, setting, label, value, icon, style }: Props<T>) {
   const onToggle = useCallback(() => {
     onChange(setting, !value);
   }, [setting, onChange, value]);

@@ -23,6 +23,7 @@ import {
   campaignLogCountConditionResult,
   campaignDataScenarioConditionResult,
   partnerStatusConditionResult,
+  investigatorChoiceConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -52,7 +53,8 @@ export function investigatorChoiceInputChoices(
       choices: input.choices,
     };
   }
-  const codes = input.condition ? keys(basicTraumaConditionResult(input.condition, campaignLog).investigatorChoices) :
+  const conditionResult = input.condition && investigatorChoiceConditionResult(input.condition, campaignLog);
+  const codes = conditionResult ? keys(conditionResult.investigatorChoices) :
     filter(
       campaignLog.investigatorCodes(false),
       code => input.investigator !== 'resigned' || campaignLog.resigned(code)
@@ -66,7 +68,7 @@ export function investigatorChoiceInputChoices(
           result[code] = [...(result[code] || []), idx];
         });
       } else {
-        const conditionResult = calculateInvestigatorConditionResult(
+        const conditionResult = investigatorChoiceConditionResult(
           choice.condition,
           campaignLog
         );
@@ -154,30 +156,3 @@ export function calculateBinaryConditionResult(
     }
   }
 }
-
-function calculateInvestigatorConditionResult(
-  condition: InvestigatorChoiceCondition,
-  campaignLog: GuidedCampaignLog
-): Omit<InvestigatorResult, 'options'> {
-  switch (condition.type) {
-    case 'has_card':
-      return investigatorCardConditionResult(condition, campaignLog);
-    case 'trauma':
-      return basicTraumaConditionResult(condition, campaignLog);
-    case 'investigator':
-      return investigatorConditionResult(condition, campaignLog);
-    case 'campaign_log': {
-      const result = campaignLogConditionResult(condition, campaignLog);
-      const investigators = campaignLog.investigatorCodes(false);
-      const investigatorChoices: StringChoices = {};
-      forEach(investigators, code => {
-        investigatorChoices[code] = result.option ? [condition.id] : [];
-      });
-      return {
-        type: 'investigator',
-        investigatorChoices,
-      };
-    }
-  }
-}
-

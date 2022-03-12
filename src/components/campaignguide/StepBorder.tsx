@@ -14,7 +14,7 @@ const SCALE = 0.1;
 export default function StepBorder({ type, width, margin, color = 'setup' }: Props) {
   const { colors } = useContext(StyleContext);
   const lineWidth = width * (1 - 2.3 * SCALE) - margin * 2;
-  const backgroundColor = colors.campaign[color];
+  const backgroundColor = colors.campaign.text[color];
   return (
     <View style={styles.wrapper}>
       { type === 'top' ? (

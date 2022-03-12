@@ -241,156 +241,156 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name#在墜機事故中遇難。",
+            "feminine_text": "#name#在墜機事故中遇難。"
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "營地 - 屏障營地(7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "營地 - 遼闊雪地(4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "營地 - 墜機點(0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "營地 - 水晶洞穴(8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "營地 - 嚴寒洞穴(6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "營地 - 冰凍海岸(2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "營地 - 破冰船登陸點(5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "營地 - 冰封荒原(4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "營地 - 不穩定冰蓋(2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "營地 - 萊克營地遺址(7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "營地 - 岩石峭壁(3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "營地 - 雪塚(5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "營地 - 危險道路(1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "克萊普爾直面他內心的惡魔。"
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "調查員們使戴爾同意了這次探險。"
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "曲奇直面他內心的惡魔。"
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "丹佛斯直面他內心的惡魔。"
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "調查員們不相信戴爾的報告。"
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "團隊發現了一個古代墓穴。"
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "肯斯勒博士有一個計畫。"
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "肯斯勒博士直面她內心的惡魔。"
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "肯斯勒博士馬上就要明白了。"
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "肯斯勒博士與你分享她的研究。"
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "肯斯勒博士理解了瘴氣的本質。"
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "辛哈醫生直面她內心的惡魔。"
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "戴爾直面他內心的惡魔。"
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "伊里亞直面他內心的惡魔。"
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "埃爾斯沃思直面他內心的惡魔。"
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "設施被摧毀了。"
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "無名瘋狂逃脫了。"
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "無名瘋狂被安全地控制在其宿主體內……暫時。"
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "團隊拍攝了天文圖的照片。"
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "團隊查看了地圖。"
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "調查員對城市市郊進行了偵察。"
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "調查員偵察了分岔通道。"
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "調查員對山口進行了偵察。"
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "團隊研究了壁畫雕刻。"
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "本次探險的倖存者是："
           },
           {
             "id": "surviving_partners",
@@ -406,47 +406,47 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "高田直面她內心的惡魔。"
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "隊伍好不容易逃離冰架。"
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "隊伍爬上了山頂。"
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "隊伍擊敗了追獵生物。"
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "團隊逃離了設施。"
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "隊伍逃進山脈中。"
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "隊伍找到另一條路穿過山脈。"
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "隊伍找到隱秘隧道。"
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "隊伍被引導到隱秘隧道。"
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "封印使用……不當。"
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "你尚未明瞭幻景的真相。"
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name#失蹤了。",
+            "masculine_text": "#name#失蹤了。",
+            "feminine_text": "#name#失蹤了。"
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "屏障營地"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "遼闊雪地"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "墜機點"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "水晶洞穴"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "嚴寒洞穴"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "冰凍海岸"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "破冰船登陸點"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "冰封荒原"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "不穩定冰蓋"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "萊克營地遺址"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "岩石峭壁"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "雪塚"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "危險道路"
           }
         ]
       },
@@ -827,75 +827,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "飛機場"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "阿拉斯加荒野"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "翻譯異星文字之記憶"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "凌亂宿舍"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "肯斯勒博士的辦公室"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "戴爾的教室"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "狩獵失敗之記憶"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "醫務室"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "去世病人之記憶"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "失蹤父親之記憶"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "摩艾石像"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "奧斯曼前線"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "飽經戰亂的國家之記憶"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "悔恨航程之記憶"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "可怕發現之記憶"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "黑色岩石"
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "單戀之記憶"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "無法述說的惡魔之記憶"
           }
         ]
       },
@@ -904,75 +904,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "飛機場"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "阿拉斯加荒野"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "大本營"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "凌亂宿舍"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "沿海水域"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "菲奧多西亞號甲板"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "荒廢車站"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "肯斯勒博士的辦公室"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "戴爾的教室"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "古老者廳室"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "樹籬迷宮"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "醫務室"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "摩艾石像"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "奧斯曼前線"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "河景劇院"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "聳立岩石"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "黑色岩石"
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "大學禮堂"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "炸藥"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "綠皂石"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "瘴氣水晶"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "礦物標本"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "小型收音機"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "備用零件"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "木製雪橇"
           }
         ]
       }
@@ -2103,6 +2103,22 @@
             "text": "dummy"
           },
           {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
+            "text": "dummy"
+          },
+          {
             "id": "a_record_of_those_lost",
             "text": "dummy"
           },
@@ -2679,19 +2695,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "艾肖希爾酒店再次奪取另一名受害者的性命。"
+            "text": "艾肖希爾酒店又有一名受害者。"
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "艾肖希爾酒店暫時恢復寧靜。"
+            "text": "艾肖希爾酒店目前歸於平靜。"
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "調查員們逃離了犯罪現場。"
+            "text": "調查員逃離了犯罪現場。"
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "謀殺持續，懸案未解。"
+            "text": "謀殺仍在繼續，尚未解決。"
           },
           {
             "id": "ritual_at_sea_was_completed",
@@ -3190,6 +3206,22 @@
         "entries": [
           {
             "id": "$input_value",
+            "text": "dummy"
+          },
+          {
+            "id": "05046_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05047_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05048_fate_decided",
+            "text": "dummy"
+          },
+          {
+            "id": "05049_fate_decided",
             "text": "dummy"
           },
           {
@@ -4806,6 +4838,498 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcp",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          }
+        ]
+      },
+      {
+        "section": "arkham_advertiser",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "bank_of_arkham",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "heeded_the_call",
+            "masculine_text": "#name# has heeded the call.",
+            "feminine_text": "#name# has heeded the call."
+          },
+          {
+            "id": "injected_a_cardinal_reagant",
+            "masculine_text": "#name# has injected a cardinal reagant.",
+            "feminine_text": "#name# has injected a cardinal reagant."
+          },
+          {
+            "id": "arkham_stands_united",
+            "text": "Arkham stands united."
+          },
+          {
+            "id": "baalshandor_struck_the_first_blow",
+            "text": "Baalshandor struck the first blow."
+          },
+          {
+            "id": "collection_was_saved",
+            "text": "the collection was saved."
+          },
+          {
+            "id": "death_conquered_herbert_west",
+            "text": "Death conquered Herbert West."
+          },
+          {
+            "id": "earned_greysons_respect",
+            "text": "you earned Greyson's respect."
+          },
+          {
+            "id": "found_the_hidden_paths",
+            "text": "you have found the hidden paths."
+          },
+          {
+            "id": "greyson_cut_ties",
+            "text": "Greyson cut ties."
+          },
+          {
+            "id": "herbert_west_is_leading_the_way",
+            "text": "Herbert West is leading the way."
+          },
+          {
+            "id": "herbert_west_was_taken_against_his_will",
+            "text": "Herbert West was taken against his will."
+          },
+          {
+            "id": "hibbs_has_your_back",
+            "text": "Hibbs has your back."
+          },
+          {
+            "id": "hibbs_is_here_to_help",
+            "text": "Hibbs is here to help."
+          },
+          {
+            "id": "investigators_learned_the_secrets_of_the_roadhouse",
+            "text": "the investigators learned the secrets of the roadhouse."
+          },
+          {
+            "id": "learned_the_killing_words",
+            "text": "you learned the killing words."
+          },
+          {
+            "id": "made_sure_the_first_was_dead",
+            "text": "you made sure the First was dead."
+          },
+          {
+            "id": "received_a_cryptic_riddle",
+            "text": "you received a cryptic riddle."
+          },
+          {
+            "id": "saw_a_vision_of_the_portals",
+            "text": "you saw a vision of the portals."
+          },
+          {
+            "id": "tailors_contained_the_problem",
+            "text": "the Tailors contained the problem."
+          },
+          {
+            "id": "the_blood_runs_in_your_veins",
+            "text": "the blood runs in your veins."
+          },
+          {
+            "id": "the_first_claimed_the_facility",
+            "text": "the First claimed The Facility."
+          },
+          {
+            "id": "the_monster_was_buried_under_tons_of_concrete",
+            "text": "the monster was buried under tons of concrete."
+          },
+          {
+            "id": "the_plaguebearer_was_bound_anew",
+            "text": "the Plaguebearer was bound anew."
+          },
+          {
+            "id": "the_plaguebearer_was_destroyed",
+            "text": "the Plaguebearer was destroyed."
+          },
+          {
+            "id": "transported_to_the_lurkers_realm",
+            "text": "you were transported to the Lurker's realm."
+          },
+          {
+            "id": "tripped_the_facility_alarms",
+            "text": "you tripped the Facility alarms."
+          },
+          {
+            "id": "west_conquered_death",
+            "text": "West conquered Death."
+          },
+          {
+            "id": "west_has_recovered_the_reagant",
+            "text": "West has recoverred the reagant."
+          },
+          {
+            "id": "you_conquered_death",
+            "text": "you conquered Death."
+          },
+          {
+            "id": "you_have_been_warned",
+            "text": "you have been warned."
+          },
+          {
+            "id": "you_have_received_a_twisted_gift",
+            "text": "you have received a twisted gift."
+          },
+          {
+            "id": "you_hid_the_briefcase",
+            "text": "you hid the briefcase."
+          }
+        ]
+      },
+      {
+        "section": "eliminated",
+        "entries": [
+          {
+            "id": "armitage",
+            "text": "Henry Armitage"
+          },
+          {
+            "id": "beecher",
+            "text": "Miram Beecher"
+          },
+          {
+            "id": "doyle",
+            "text": "Doyle Jeffries"
+          },
+          {
+            "id": "hibbs",
+            "text": "Hibbs"
+          },
+          {
+            "id": "ma",
+            "text": "Ma Matheson"
+          },
+          {
+            "id": "priest_of_plagues",
+            "text": "Priest of Plagues"
+          },
+          {
+            "id": "the_loving_couple",
+            "text": "The Loving Couple"
+          },
+          {
+            "id": "thing_in_water",
+            "text": "The Thing in the Water"
+          },
+          {
+            "id": "vice_president",
+            "text": "The Vice President"
+          }
+        ]
+      },
+      {
+        "section": "general_store",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hibbs_roadhouse",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "body_belongs_to_cthughua",
+            "text": "dummy"
+          },
+          {
+            "id": "finished_history_lesson",
+            "text": "dummy"
+          },
+          {
+            "id": "late_risers_six_locations",
+            "text": "dummy"
+          },
+          {
+            "id": "messenger_of_flame_defeated",
+            "text": "dummy"
+          },
+          {
+            "id": "messenger_of_the_king_defeated",
+            "text": "dummy"
+          },
+          {
+            "id": "owe_hastur_your_life",
+            "text": "dummy"
+          },
+          {
+            "id": "resigned_herbert_west",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mas_boarding_house",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "orne_library",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "river_docks",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
+          }
+        ]
+      },
+      {
+        "section": "ye_olde_magick_shoppe",
+        "entries": [
+          {
+            "id": "crater_of_unbinding",
+            "text": "Crater of Unbinding"
+          },
+          {
+            "id": "defended",
+            "text": "Defended"
+          },
+          {
+            "id": "flame_touched",
+            "text": "Flame-Touched"
+          },
+          {
+            "id": "infected",
+            "text": "Infected"
+          },
+          {
+            "id": "madness_touched",
+            "text": "Madness-Touched"
+          },
+          {
+            "id": "rallied",
+            "text": "Rallied"
+          },
+          {
+            "id": "site_of_unbinding",
+            "text": "Site of Unbinding"
           }
         ]
       }

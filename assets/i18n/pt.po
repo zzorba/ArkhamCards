@@ -29,13 +29,13 @@ msgid "Too many cards (${ drawDeckSize } / ${ size })."
 msgstr "Muitas cartas (${ drawDeckSize } / ${ size })."
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "No assets that take up the ally slot are allowed by On Your Own."
+msgstr "Nenhum ativo que ocupe o espaço de aliado é permitido por Você Mesmo."
 
 msgid "Limit 1 Covenant per deck."
-msgstr "Limite de 1 Covenant por baralho."
+msgstr "Limite de 1 Pacto por baralho."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "Too many off-class cards for Versatile"
+msgstr "Muitas cartas fora da classe para Versátil"
 
 msgid "Updated today"
 msgstr "Atualizado hoje"
@@ -166,19 +166,19 @@ msgid "Cost: ${ actualCost }"
 msgstr "Custo: ${ actualCost }"
 
 msgid "Guardian"
-msgstr "Guardian"
+msgstr "Guardião"
 
 msgid "Seeker"
-msgstr "Seeker"
+msgstr "Buscador"
 
 msgid "Mystic"
-msgstr "Mystic"
+msgstr "Místico"
 
 msgid "Rogue"
-msgstr "Rogue"
+msgstr "Ladino"
 
 msgid "Survivor"
-msgstr "Survivor"
+msgstr "Sobrevivente"
 
 msgid "Basic Weakness"
 msgstr "Fraqueza Básica"
@@ -281,10 +281,10 @@ msgid ""
 "card in the victory display."
 msgstr ""
 "Cada investigador ganha experiência igual ao valor de Vitória X de cada "
-"carta no marcador de vitória."
+"carta no painel de vitória."
 
 msgid "Victory display:"
-msgstr "Marcador de vitória:"
+msgstr "Painel de vitória:"
 
 #, javascript-format
 msgid ""
@@ -294,10 +294,10 @@ msgid_plural ""
 "Each investigator pays ${ entry.xpCost } experience points to play this "
 "scenario."
 msgstr[0] ""
-"Cada investigador paga ${ entry.xpCost } ponto de experiência por jogar "
+"Cada investigador paga ${ entry.xpCost } ponto de experiência para jogar "
 "este cenário."
 msgstr[1] ""
-"Cada investigador paga ${ entry.xpCost } pontos de experiência por jogar "
+"Cada investigador paga ${ entry.xpCost } pontos de experiência para jogar "
 "este cenário."
 
 #. This is a deck upgrade action.
@@ -527,7 +527,7 @@ msgid "Export Diagnostic Data"
 msgstr "Exportar Dados de Diagnóstico"
 
 msgid "Return to..."
-msgstr "Return to…"
+msgstr "Retorno a…"
 
 msgid "Investigator Starter Decks"
 msgstr "Baralhos Iniciais de Investigador"
@@ -1036,10 +1036,10 @@ msgid "Per Investigator"
 msgstr "Por Investigador"
 
 msgid "Evade"
-msgstr "Evade"
+msgstr "Evadir"
 
 msgid "Damage"
-msgstr "Damage"
+msgstr "Dano"
 
 msgid "Horror"
 msgstr "Horror"
@@ -1048,10 +1048,10 @@ msgid "Elite"
 msgstr "Elite"
 
 msgid "Hunter"
-msgstr "Hunter"
+msgstr "Caçador"
 
 msgid "Alert"
-msgstr "Alert"
+msgstr "Alerta"
 
 msgid "Spawn"
 msgstr "Spawn"
@@ -1060,37 +1060,37 @@ msgid "Aloof"
 msgstr "Aloof"
 
 msgid "Massive"
-msgstr "Massive"
+msgstr "Massivo"
 
 msgid "Non-Elite"
-msgstr "Non-Elite"
+msgstr "Não-Elite"
 
 msgid "Non-Hunter"
-msgstr "Non-Hunter"
+msgstr "Não-Caçador"
 
 msgid "Retaliate"
-msgstr "Retaliate"
+msgstr "Retaliar"
 
 msgid "Parley"
-msgstr "Parley"
+msgstr "Negociar"
 
 msgid "Prey"
-msgstr "Prey"
+msgstr "Presa"
 
 msgid "Swarm"
-msgstr "Swarm"
+msgstr "Enxame"
 
 msgid "Location Filters"
 msgstr "Filtros de Localização"
 
 msgid "Shroud"
-msgstr "Shroud"
+msgstr "Véu"
 
 msgid "Clues"
 msgstr "Pistas"
 
 msgid "Haunted"
-msgstr "Haunted"
+msgstr "Assombrado"
 
 #, javascript-format
 msgid "Search ${ title }"
@@ -1161,16 +1161,16 @@ msgid "Slots"
 msgstr "Espaços"
 
 msgid "Agility"
-msgstr "Agility"
+msgstr "Agilidade"
 
 msgid "Combat"
-msgstr "Combat"
+msgstr "Combate"
 
 msgid "Intellect"
-msgstr "Intellect"
+msgstr "Intelecto"
 
 msgid "Willpower"
-msgstr "Willpower"
+msgstr "Força de vontade"
 
 msgid "Boost"
 msgstr "Boost"
@@ -1244,7 +1244,7 @@ msgid "Victory"
 msgstr "Vitória"
 
 msgid "Vengeance"
-msgstr "Vengeance"
+msgstr "Vingança"
 
 msgid "Exile"
 msgstr "Exile"
@@ -1253,10 +1253,10 @@ msgid "Permanent"
 msgstr "Permanente"
 
 msgid "Myriad"
-msgstr "Myriad"
+msgstr "Miríade"
 
 msgid "Bonded"
-msgstr "Bonded"
+msgstr "Ligado"
 
 msgid "Encounter Sets"
 msgstr "Conjuntos de Encontro"
@@ -2074,24 +2074,24 @@ msgstr "Sanidade: Nenhum"
 
 #, javascript-format
 msgid "Health: ${ count }"
-msgstr "Health: ${ count }"
+msgstr "Saúde: ${ count }"
 
 msgid "Sanity: ${ count }"
-msgstr "Sanity: ${ count }"
+msgstr "Sanidade: ${ count }"
 
 #, javascript-format
 msgid "Willpower: ${ willpower }"
-msgstr "Willpower: ${ willpower }"
+msgstr "Força de vontade: ${ willpower }"
 
 msgid "Intellect: ${ intellect }"
-msgstr "Intellect: ${ intellect }"
+msgstr "Intelecto: ${ intellect }"
 
 #, javascript-format
 msgid "Combat: ${ combat }"
-msgstr "Combat: ${ combat }"
+msgstr "Combate: ${ combat }"
 
 msgid "Agility: ${ agility }"
-msgstr "Agility: ${ agility }"
+msgstr "Agilidade: ${ agility }"
 
 msgid "Search options"
 msgstr "Opções de Pesquisa"
@@ -2134,22 +2134,22 @@ msgid "Yes"
 msgstr "Sim"
 
 msgid "The Dunwich Legacy"
-msgstr "The Dunwich Legacy"
+msgstr "O Legado de Dunwich"
 
 msgid "The Path to Carcosa"
-msgstr "The Path to Carcosa"
+msgstr "O Caminho para Carcosa"
 
 msgid "The Forgotten Age"
-msgstr "The Forgotten Age"
+msgstr "A Era Esquecida"
 
 msgid "The Circle Undone"
-msgstr "The Circle Undone"
+msgstr "O Círculo Desfeito"
 
 msgid "The Dream-Eaters"
-msgstr "The Dream-Eaters"
+msgstr "Os Devoradores de Sonhos"
 
 msgid "The Innsmouth Conspiracy"
-msgstr "The Innsmouth Conspiracy"
+msgstr "A conspiração de Innsmouth"
 
 msgid "Books"
 msgstr "Livros"
@@ -2211,7 +2211,7 @@ msgid "Drawing a mythos card with surge"
 msgstr "Comprando uma carta de mythos com surto"
 
 msgid "Placing doom on the agenda"
-msgstr "Colocando Condenação na agenda"
+msgstr "Colocando perdição na agenda"
 
 msgid "Reticulating spines"
 msgstr "Reticulando espinhas"
@@ -2470,45 +2470,45 @@ msgstr "Saúde: ${ health } por investigador"
 
 #, javascript-format
 msgid "Health: ${ health }"
-msgstr "Health: ${ health }"
+msgstr "Saúde: ${ health }"
 
 msgid "Evade: ${ evade }"
-msgstr "Evade: ${ evade }"
+msgstr "Evadir: ${ evade }"
 
 msgid "Test Icons: "
-msgstr "Test Icons: "
+msgstr "Ícones de teste: "
 
 #, javascript-format
 msgid "Willpower: ${ count }"
-msgstr "Willpower: ${ count }"
+msgstr "Força de vontade: ${ count }"
 
 msgid "Intellect: ${ count }"
-msgstr "Intellect: ${ count }"
+msgstr "Intelecto: ${ count }"
 
 #, javascript-format
 msgid "Combat: ${ count }"
-msgstr "Combat: ${ count }"
+msgstr "Combate: ${ count }"
 
 msgid "Agility: ${ count }"
-msgstr "Agility: ${ count }"
+msgstr "Agilidade: ${ count }"
 
 #, javascript-format
 msgid "Wild: ${ count }"
-msgstr "Wild: ${ count }"
+msgstr "Coringa: ${ count }"
 
 msgid "Slot: ${ card.slot }"
 msgstr "Espaço: ${ card.slot }"
 
 #, javascript-format
 msgid "Doom: ${ doom }"
-msgstr "Condenação: ${ doom }"
+msgstr "Perdição: ${ doom }"
 
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Pistas: ${ clues }${ perInvestigatorClues }"
 
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "Shroud: ${ shroud }. Pistas: ${ clues }${ perInvestigatorClues }."
+msgstr "Véu: ${ shroud }. Pistas: ${ clues }${ perInvestigatorClues }."
 
 msgid "Show back"
 msgstr "Mostrar verso"
@@ -2554,7 +2554,7 @@ msgstr ""
 "Você tem certeza que quer remover este baralho da campanha?\n"
 "\n"
 "Depois de remover o baralho, você poderá escolher um baralho diferente mas "
-"experiência e posses de história somente serão salvos assim que você "
+"experiência e ativos de história somente serão salvos assim que você "
 "completa novos cenários."
 
 msgid "Remove deck"
@@ -2606,10 +2606,10 @@ msgid "Add Investigator"
 msgstr "Adicionar Investigador"
 
 msgid "Show story assets from other campaigns"
-msgstr "Mostrar posses de historia de outras campanhas"
+msgstr "Mostrar Ativos de historia de outras campanhas"
 
 msgid "Story assets"
-msgstr "Posses de História"
+msgstr "Ativos de História"
 
 #, javascript-format
 msgid ""
@@ -3216,28 +3216,28 @@ msgid "Not Now"
 msgstr "Agora Não"
 
 msgid "Night of the Zealot"
-msgstr "Noite da Fanática"
+msgstr "Noite do Zelote"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Retorno à Noite da Fanática"
+msgstr "Retorno à Noite do Zelote"
 
 msgid "Return to The Dunwich Legacy"
-msgstr "Return to The Dunwich Legacy"
+msgstr "Retorno ao Legado de Dunwich"
 
 msgid "The Path To Carcosa"
-msgstr "The Path To Carcosa"
+msgstr "O Caminho para Carcosa"
 
 msgid "Return to The Path to Carcosa"
-msgstr "Return to The Path to Carcosa"
+msgstr "Retorno ao Caminho para Carcosa"
 
 msgid "Return to The Forgotten Age"
-msgstr "Return to The Forgotten Age"
+msgstr "Retorno à Era Esquecida"
 
 msgid "The Dream-Quest"
-msgstr "The Dream-Quest"
+msgstr "A Busca Onírica"
 
 msgid "The Web of Dreams"
-msgstr "The Web of Dreams"
+msgstr "A Teia dos Sonhos"
 
 msgid "The Gathering"
 msgstr "O Encontro"
@@ -3246,7 +3246,7 @@ msgid "The Midnight Masks"
 msgstr "As Máscaras da Meia-Noite"
 
 msgid "The Devourer Below"
-msgstr "O Devorador Inferior"
+msgstr "O Devorador das Profundezas"
 
 msgid "Prologue"
 msgstr "Prólogo"
@@ -3285,58 +3285,58 @@ msgid "Epilogue"
 msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
-msgstr "Return to Extracurricular Activity"
+msgstr "Retorno à atividade extracurricular"
 
 msgid "Return to The House Always Wins"
-msgstr "Return to The House Always Wins"
+msgstr "Retorno à Casa Sempre Vence"
 
 msgid "Return to The Miskatonic Museum"
-msgstr "Return to The Miskatonic Museum"
+msgstr "Retorno à Museu Miskatonic"
 
 msgid "Return to Essex County Express"
-msgstr "Return to Essex County Express"
+msgstr "Retorno à Expresso para o Condado de Essex"
 
 msgid "Return to Blood on the Altar"
-msgstr "Return to Blood on the Altar"
+msgstr "Retorno à Sangue no Altar"
 
 msgid "Return to Undimensioned and Unseen"
-msgstr "Return to Undimensioned and Unseen"
+msgstr "Retorno à Incomensurável e invisível"
 
 msgid "Return to Where Doom Awaits"
-msgstr "Return to Where Doom Awaits"
+msgstr "Retorno à Onde a Desgraça Espera"
 
 msgid "Return to Lost in Time and Space"
-msgstr "Return to Lost in Time and Space"
+msgstr "Retorno à Perdido no Tempo e no Espaço"
 
 msgid "Curtain Call"
-msgstr "Curtain Call"
+msgstr "O Fechar das Cortinas"
 
 msgid "The Last King"
-msgstr "The Last King"
+msgstr "O Último Rei"
 
 msgid "Lunacy’s Reward"
-msgstr "Lunacy’s Reward"
+msgstr "Recompensa da Loucura"
 
 msgid "Echoes of the Past"
-msgstr "Echoes of the Past"
+msgstr "Ecos do passado"
 
 msgid "The Unspeakable Oath"
-msgstr "The Unspeakable Oath"
+msgstr "O Juramento Impronunciável"
 
 msgid "Lost Soul"
-msgstr "Lost Soul"
+msgstr "Alma perdida"
 
 msgid "A Phantom of Truth"
-msgstr "A Phantom of Truth"
+msgstr "Um fantasma da verdade"
 
 msgid "The Pallid Mask"
-msgstr "The Pallid Mask"
+msgstr "A Máscara Pálida"
 
 msgid "Black Stars Rise"
-msgstr "Black Stars Rise"
+msgstr "Estrelas Negras Ascendem"
 
 msgid "Dim Carcosa"
-msgstr "Dim Carcosa"
+msgstr "Carcosa Sombria"
 
 msgid "Return to Curtain Call"
 msgstr "Return to Curtain Call"
@@ -3363,43 +3363,43 @@ msgid "Return to Dim Carcosa"
 msgstr "Return to Dim Carcosa"
 
 msgid "The Untamed Wilds"
-msgstr "The Untamed Wilds"
+msgstr "A Selva indomável"
 
 msgid "Restless Nights"
-msgstr "Restless Nights"
+msgstr "Noites sem Descanso"
 
 msgid "The Doom of Eztli"
-msgstr "The Doom of Eztli"
+msgstr "A Perdição de Eztli"
 
 msgid "Expedition’s End"
-msgstr "Expedition’s End"
+msgstr "Fim da expedição"
 
 msgid "Threads of Fate"
-msgstr "Threads of Fate"
+msgstr "Fios do Destino"
 
 msgid "The Boundary Beyond"
-msgstr "The Boundary Beyond"
+msgstr "A Fronteira Além"
 
 msgid "The Jungle Beckons"
-msgstr "The Jungle Beckons"
+msgstr "A Selva Chama"
 
 msgid "Heart of the Elders"
-msgstr "Heart of the Elders"
+msgstr "Coração dos Ancestrais"
 
 msgid "The City of Archives"
-msgstr "The City of Archives"
+msgstr "A Cidade dos Arquivos"
 
 msgid "Those Held Captive"
-msgstr "Those Held Captive"
+msgstr "Aqueles Mantidos em Cativeiro"
 
 msgid "The Depths of Yoth"
-msgstr "The Depths of Yoth"
+msgstr "As profundezas de Yoth"
 
 msgid "The Darkness"
-msgstr "The Darkness"
+msgstr "A Escuridão"
 
 msgid "Shattered Aeons"
-msgstr "Shattered Aeons"
+msgstr "Eras Despedaçadas"
 
 msgid "Return to The Untamed Wilds"
 msgstr "Return to The Untamed Wilds"
@@ -3429,37 +3429,37 @@ msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr "Prologue: Disappearance at the Twilight Estate"
 
 msgid "The Witching Hour"
-msgstr "The Witching Hour"
+msgstr "A Hora da Bruxaria"
 
 msgid "At Death's Doorstep"
-msgstr "At Death's Doorstep"
+msgstr "À Porta da Morte"
 
 msgid "The Price of Progress"
-msgstr "The Price of Progress"
+msgstr "O Preço do Progresso"
 
 msgid "The Secret Name"
-msgstr "The Secret Name"
+msgstr "O Nome Secreto"
 
 msgid "The Wages of Sin"
-msgstr "The Wages of Sin"
+msgstr "O Salário do Pecado"
 
 msgid "For the Greater Good"
-msgstr "For the Greater Good"
+msgstr "Para um Bem Maior"
 
 msgid "The Inner Circle"
-msgstr "The Inner Circle"
+msgstr "O Círculo Interior"
 
 msgid "Union and Disillusion"
-msgstr "Union and Disillusion"
+msgstr "União e Desilusão"
 
 msgid "In the Clutches of Chaos"
-msgstr "In the Clutches of Chaos"
+msgstr "Nas Garras do Caos"
 
 msgid "Twist of Fate"
-msgstr "Twist of Fate"
+msgstr "Reviravolta do Destino"
 
 msgid "Before the Black Throne"
-msgstr "Before the Black Throne"
+msgstr "Antes do Trono Negro"
 
 msgid "Return to The Gathering"
 msgstr "Return to The Gathering"
@@ -3471,76 +3471,76 @@ msgid "Return to the Devourer Below"
 msgstr "Return to the Devourer Below"
 
 msgid "Beyond the Gates of Sleep"
-msgstr "Beyond the Gates of Sleep"
+msgstr "Além dos Portões do Sono"
 
 msgid "The Black Cat"
-msgstr "The Black Cat"
+msgstr "O Gato Preto"
 
 msgid "The Search for Kadath"
-msgstr "The Search for Kadath"
+msgstr "A Busca por Kadath"
 
 msgid "The Oneironauts"
-msgstr "The Oneironauts"
+msgstr "Os Onironautas"
 
 msgid "Dark Side of the Moon"
-msgstr "Dark Side of the Moon"
+msgstr "Lado Escuro da Lua"
 
 msgid "The Great Ones"
 msgstr "The Great Ones"
 
 msgid "Where Gods Dwell"
-msgstr "Where Gods Dwell"
+msgstr "Onde os Deuses Habitam"
 
 msgid "Waking Nightmare"
-msgstr "Waking Nightmare"
+msgstr "Pesadelo Acordado"
 
 msgid "A Thousand Shapes of Horror"
-msgstr "A Thousand Shapes of Horror"
+msgstr "Mil formas de horror"
 
 msgid "Point of No Return"
-msgstr "Point of No Return"
+msgstr "Ponto sem Retorno"
 
 msgid "Weaver of the Cosmos"
-msgstr "Weaver of the Cosmos"
+msgstr "Tecelão do Cosmos"
 
 msgid "The Pit of Despair"
-msgstr "The Pit of Despair"
+msgstr "O Poço do Desespero"
 
 msgid "Puzzle Pieces"
-msgstr "Puzzle Pieces"
+msgstr "Peças de Quebra-Cabeças"
 
 msgid "The Vanishing of Elina Harper"
-msgstr "The Vanishing of Elina Harper"
+msgstr "O Desaparecimento de Elina Harper"
 
 msgid "The Syzygy"
-msgstr "The Syzygy"
+msgstr "A Sizígia"
 
 msgid "In Too Deep"
-msgstr "In Too Deep"
+msgstr "Muito profundo"
 
 msgid "Devil Reef"
-msgstr "Devil Reef"
+msgstr "Recife Diabólico"
 
 msgid "Beneath the Waves"
-msgstr "Beneath the Waves"
+msgstr "Debaixo das Ondas"
 
 msgid "Horror in High Gear"
-msgstr "Horror in High Gear"
+msgstr "Horror em Alta Velocidade"
 
 msgid "A Light in the Fog"
-msgstr "A Light in the Fog"
+msgstr "Uma Luz no Nevoeiro"
 
 msgid "The Lair of Dagon"
-msgstr "The Lair of Dagon"
+msgstr "O Covil de Dagon"
 
 msgid "Hidden Truths"
-msgstr "Hidden Truths"
+msgstr "Verdades Ocultas"
 
 msgid "Into the Maelstrom"
-msgstr "Into the Maelstrom"
+msgstr "Dentro do Redemoinho"
 
 msgid "The Night of the Zealot"
-msgstr "The Night of the Zealot"
+msgstr "A Noite do Zelote"
 
 msgid "Campaign Notes"
 msgstr "Notas de Campanha"
@@ -3835,7 +3835,7 @@ msgid "Save changes?"
 msgstr "Salvar alterações?"
 
 msgid "In Bag"
-msgstr "No Saco"
+msgstr "Na Bolsa"
 
 msgid "Add note"
 msgstr "Adicionar nota"
@@ -3936,34 +3936,34 @@ msgid "Faction, Level, Type"
 msgstr "Facção, Nível, Tipo"
 
 msgid "Ammo"
-msgstr ""
+msgstr "Munição"
 
 msgid "Bounties"
-msgstr ""
+msgstr "Recompensas"
 
 msgid "Charges"
-msgstr ""
+msgstr "Carga"
 
 msgid "Keys"
-msgstr ""
+msgstr "Chaves"
 
 msgid "Locks"
-msgstr ""
+msgstr "Fechaduras"
 
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 msgid "Secrets"
-msgstr ""
+msgstr "Segredos"
 
 msgid "Tickets"
-msgstr ""
+msgstr "Ingressos"
 
 msgid "Tries"
-msgstr ""
+msgstr "Tentativas"
 
 msgid "Whistles"
-msgstr ""
+msgstr "Assobios"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -3984,156 +3984,179 @@ msgid "Packs: ${ allPacksString }"
 msgstr "Pacotes: ${ allPacksString }"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Carregando..."
 
 msgid "Campaign players"
-msgstr ""
+msgstr "Jogadores da campanha"
 
 msgid "Add friends to campaign"
-msgstr ""
+msgstr "Adicionar amigos à campanha"
 
 msgid "Add friends"
-msgstr ""
+msgstr "Adicionar amigos"
 
 msgid "Access"
-msgstr ""
+msgstr "Acesso"
 
 msgid "Later"
-msgstr ""
+msgstr "Mais tarde"
 
 msgid "Searching cards..."
-msgstr ""
+msgstr "Procurando cartas..."
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you are not "
 "currently logged in. If you wish to make edits, please login through the "
 "app settings."
 msgstr ""
+"Este parece ser um dos seus baralhos do ArkhamDB, mas você não está "
+"atualmente logado. Se você deseja fazer edições, por favor faça o login "
+"através do configurações do aplicativo."
 
 msgid "Leave campaign"
-msgstr ""
+msgstr "Sair da campanha"
 
 msgid ""
 "Are you sure you want to leave this campaign?\n"
 "\n"
 "Your decks will be removed from the campaign, but you can rejoin it later."
 msgstr ""
+"Tem certeza de que deseja sair desta campanha?\n"
+"\n"
+"Seus baralhos serão removidos da campanha, mas você poderá voltar mais "
+"tarde."
 
 msgid "Leave"
-msgstr ""
+msgstr "Sair"
 
 msgid "Edit players"
-msgstr ""
+msgstr "Editar jogadores"
 
 msgid "View players"
-msgstr ""
+msgstr "Ver jogadores"
 
 msgid "Clear card cache"
-msgstr ""
+msgstr "Limpar cache da carta"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Enviando..."
 
 msgid "Leave standalone"
-msgstr ""
+msgstr "Deixar standalone"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
 "\n"
 "Your decks will be removed from the standalone, but you can rejoin it later."
 msgstr ""
+"Tem certeza de que deseja deixar este standalone?\n"
+"\n"
+"Seus Baralhos serão removidos do standalone, mas você poderá se juntar a "
+"ele mais tarde."
 
 msgid "Upload standalone"
-msgstr ""
+msgstr "Enviar Standalone"
 
 msgid "You must be online to upload"
-msgstr ""
+msgstr "Você deve estar online para fazer o upload"
 
 msgid "Adjust scenario XP and trauma"
-msgstr ""
+msgstr "Ajustar a XP e o trauma do cenário"
 
 msgid "Unspent XP"
-msgstr ""
+msgstr "XP não gasto"
 
 #, javascript-format
 msgid "${ unspentXp } saved"
-msgstr ""
+msgstr "${ unspentXp } salvo"
 
 #, javascript-format
 msgid "Scenario Card - ${ difficultyStr }"
-msgstr ""
+msgstr "Carta de Cenário - ${ difficultyStr }"
 
 msgid "Scenario Card"
-msgstr ""
+msgstr "Carta de Cenário"
 
 msgid ""
 "This appears to be one of your decks from ArkhamDB, however you seem to be "
 "logged into a different ArkhamDB account? If you wish to make edits, please "
 "login through the app settings."
 msgstr ""
+"Este parece ser um dos seus baralhos do ArkhamDB, mas você parece estar "
+"logado em uma conta diferente do ArkhamDB? Se você deseja fazer edições, "
+"por favor logue através das configurações do aplicativo."
 
 msgid "Justify text"
-msgstr ""
+msgstr "Texto justificado"
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr ""
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "Matéria escura"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "Perdição iminente"
 
 msgid "Memories"
-msgstr ""
+msgstr "Memórias"
 
 msgid "Fan-Made Campaigns"
-msgstr ""
+msgstr "Campanhas feitas por fãs"
 
 msgid "Fan-Made Content"
-msgstr ""
+msgstr "Conteúdo feito por fãs"
 
 msgid "Fetching account details..."
-msgstr ""
+msgstr "Buscando detalhes da conta..."
 
 msgid ""
 "Thanks for signing up for Arkham Cards.\n"
 "\n"
 "First of all, you'll need to create a handle for your account."
 msgstr ""
+"Obrigado por se inscrever no Arkham Cards.\n"
+"\n"
+"Primeiro de tudo, você precisará criar um identificador para sua conta."
 
 msgid ""
 "People will be able to search for friends using their handle so you can "
 "join their campaigns."
 msgstr ""
+"As pessoas poderão procurar amigos usando o identificador para que você "
+"possajuntar-se às suas campanhas."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
 msgstr ""
+"Agora que você está conectado, você deve ter acesso às suas campanhas "
+"salvas."
 
 msgid ""
 "Campaigns can now be 'uploaded' so they can be synced between devices or "
 "shared with friends."
 msgstr ""
+"As campanhas agora podem ser 'enviadas' para que possam ser sincronizadas "
+"entre dispositivos ou compartilhada com amigos."
 
 msgid "Welcome"
-msgstr ""
+msgstr "Bem vindo(a)"
 
 msgid "Download print and play cards"
-msgstr ""
+msgstr "Download de cartas de imprimir e jogar"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
-msgstr ""
+msgstr "${ section.title } (de XP)"
 
 msgid "Exiled story cards"
-msgstr ""
+msgstr "Cartas de história exiladas"
 
 msgid "Exile story cards"
-msgstr ""
+msgstr "Exile Cartas de história"
 
 msgid "Fan-made scenario by ${ custom.creator }"
-msgstr ""
+msgstr "Cenário feito por fãs por ${ custom.creator }"
 
 msgid ""
 "If you are a custom content creator who has a \"finished\" campaign you'd "
@@ -4141,15 +4164,17 @@ msgid ""
 "campaigns are a fair amount of work, but I'd love to support the community "
 "in anyway I can."
 msgstr ""
+"Se você é um criador de conteúdo personalizado que tem uma campanha "
+"\"concluída\" que você gostaria de ver no aplicativo, entre em contato "
+"comigo em arkhamcards@gmail.com. Campanhaspersonalizadas geram uma "
+"quantidade razoável de trabalho, mas eu adoraria apoiar a comunidadede "
+"qualquer forma que eu posso."
 
 msgid "Alice in Wonderland"
-msgstr ""
-
-msgid "Fragments of Alilce"
-msgstr ""
+msgstr "Alice no Pais das Maravilhas"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "Benefícios do País das Maravilhas"
 
 msgid "Wonderland Banes"
 msgstr ""
@@ -4158,112 +4183,126 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Edge of the Earth"
-msgstr ""
+msgstr "Nos Confins da Terra"
 
 msgid "Promotional"
-msgstr ""
+msgstr "Promocional"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cards que não sejam Guardiões ou Neutros"
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas que não sejam Buscadoras ou Neutras"
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas que não sejam de Ladino ou Neutro"
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas que não sejam Místicas ou Neutras"
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas que não sejam Sobreviventes ou Neutras"
 
 msgid "You must have at least 7 cards from 3 different factions"
-msgstr ""
+msgstr "Você deve ter pelo menos 7 cartas de 3 facções diferentes"
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr ""
+msgstr "Você não pode ter mais de 15 cartas de Buscador e/ou Mística de nível 0-1"
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas de Guardião e/ou Místico"
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas Místicas de nível 0"
 
 msgid "Choose resolution"
-msgstr ""
+msgstr "Escolha a resolução"
 
 msgid "Choose investigator to record trauma"
-msgstr ""
+msgstr "Escolha o investigador para registrar o trauma"
 
 msgid "Defeated"
-msgstr ""
+msgstr "Derrotado"
 
 msgid "Status of investigators"
-msgstr ""
+msgstr "Situação dos investigadores"
 
 msgid "Social"
-msgstr ""
+msgstr "Social"
 
 msgid "Add new"
-msgstr ""
+msgstr "Adicionar novo"
 
 msgid "Lead"
-msgstr ""
+msgstr "Líder"
 
 msgid "Changes have been recorded."
-msgstr ""
+msgstr "As alterações foram registradas."
 
 msgid "No adjustments need saving."
-msgstr ""
+msgstr "Nenhum ajuste precisa ser salvo."
 
 msgid ""
 "When you have finished making adjustments, press the 'Save' button to "
 "record your changes."
 msgstr ""
+"Quando terminar de fazer os ajustes, pressione o botão 'Salvar' para gravar "
+"suas alterações."
 
 msgid ""
 "This deck will be upgraded with XP and any new story cards will be added or "
 "removed as specified."
 msgstr ""
+"Este baralho será atualizado com XP e quaisquer novas cartas de história "
+"serão adicionadas ou removidas conforme especificado."
 
 #, javascript-format
 msgid "(new total: ${ total })"
-msgstr ""
+msgstr "(novo total: ${ total })"
 
 msgid "Earned XP:"
-msgstr ""
+msgstr "XP ganho:"
 
 msgid "Not deck owner"
-msgstr ""
+msgstr "Não é proprietário do baralho"
 
 msgid "Saved"
-msgstr ""
+msgstr "Salvo"
 
 #, javascript-format
 msgid ""
 "This deck is owned by ${ deck.owner.handle }. They must open the app on "
 "their own device to save the upgrade"
 msgstr ""
+"Este baralho é de propriedade de ${ deck.owner.handle }. Devem abrir o "
+"aplicativo em seu próprio dispositivo para salvar a atualização"
 
 msgid ""
 "This deck is owned by another user. They must open the app on their own "
 "device to save the upgrade"
 msgstr ""
+"Este baralho pertence a outro usuário. Ele deve abrir o aplicativo no "
+"próprio dispositivo para salvar a atualização"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
 "If you choose a deck, the app can help track spent experience, story asset "
 "changes, and deckbuilding requirements."
 msgstr ""
+"Este investigador não tem um baralho associado a ele.\n"
+"Se você escolher um baralho, o aplicativo pode ajudar a rastrear a "
+"experiência gasta, o recurso da históriamudanças e requisitos de construção "
+"de baralhos."
 
 msgid ""
 "Now that your upgrade has been saved, when visiting the deck be sure to use "
 "the 'Edit' button when making card changes."
 msgstr ""
+"Agora que seu upgrade foi salvo, ao visitar o baralho não deixe de usar o "
+"botão 'Editar' ao fazer alterações nas cartas."
 
 msgid "What exactly does the app handle?"
-msgstr ""
+msgstr "O que exatamente o aplicativo lida?"
 
 msgid ""
 "Generally speaking, the app handles anything that you see mentioned in the "
@@ -4274,6 +4313,13 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can "
 "'adjust' the available experience when editing a deck."
 msgstr ""
+"De um modo geral, o aplicativo lida com tudo o que você vê mencionado no "
+"registro de campanha digital.\n"
+"Se você estiver construindo seu baralho com o aplicativo, ele também lidará "
+"com cartas como Pesquisa Arcana e Análise Astuta (se você permitir que o "
+"aplicativo aleatorize suas atualizações).\n"
+"Se você achar que cometeu um erro depois de atualizar seu baralho, você "
+"pode 'ajustar' a experiência disponível ao editar um baralho."
 
 msgid ""
 "The numbers below already include all the trauma, victory points, and story "
@@ -4282,63 +4328,70 @@ msgid ""
 "If you have any other cards or effects that the app does not take care of, "
 "you can make adjustments below before saving each investigator."
 msgstr ""
+"Os números abaixo já incluem todo o trauma, pontos de vitória e ativos "
+"história que você pode ter ganho durante a resolução.\n"
+"\n"
+"Se você tiver quaisquer outras cartas ou efeitos que o aplicativo não "
+"cuide, você pode fazer os ajustes abaixo antes de salvar cada investigador."
 
 msgid "Learn more"
-msgstr ""
+msgstr "Saber mais"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr ""
+msgstr "Salvar atualizará seu baralho com as alterações de cartas listadas acima"
 
 msgid "Campaign log"
-msgstr ""
+msgstr "Registro de campanha"
 
 msgid "Record in campaign log"
-msgstr ""
+msgstr "Gravar no registro de campanha"
 
 msgid "Review and add records"
-msgstr ""
+msgstr "Revisar e adicionar registros"
 
 msgid "Chaos bag"
-msgstr ""
+msgstr "Bolsa do caos"
 
 msgid "Review and simulate draw"
-msgstr ""
+msgstr "Revise e simule uma compra"
 
 msgid "Draw random"
-msgstr ""
+msgstr "Compra aleatória"
 
 msgid "Record"
-msgstr ""
+msgstr "Registro"
 
 msgid "Scenario effects"
-msgstr ""
+msgstr "Efeitos do cenário"
 
 msgid "Scenario Ended"
-msgstr ""
+msgstr "Cenário encerrado"
 
 msgid "Proceed to Resolutions"
-msgstr ""
+msgstr "Prossiga para as Resoluções"
 
 msgid "Choose trauma type"
-msgstr ""
+msgstr "Escolha o tipo de trauma"
 
 msgid "Chosen trauma type"
-msgstr ""
+msgstr "Tipo de trauma escolhido"
 
 msgid "Random results"
-msgstr ""
+msgstr "Resultados aleatórios"
 
 msgid "Select Traits"
-msgstr ""
+msgstr "Selecionar traços"
 
 msgid "Random weaknesses will be drawn that match these traits."
 msgstr ""
+"Serão retiradas fraquezas aleatórias que correspondam a essas "
+"características."
 
 msgid "Edit selection"
-msgstr ""
+msgstr "Editar seleção"
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "Verifique o registro da campanha. <i>Se ${ logEntry.text }</i>"
 
 msgid "Discord"
 msgstr ""
@@ -4350,32 +4403,32 @@ msgid "Telegram"
 msgstr ""
 
 #, javascript-format
-msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr ""
-
-#, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"No seu registro de campanha, em \"${ logEntry.section }\", risque <i>${ "
+"logEntry.text }</i>."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"No seu registro de campanha, em \"${ logEntry.section }\", registre <i>${ "
+"logEntry.text }</i>"
 
 msgid "Unarchive campaign"
-msgstr ""
+msgstr "Desarquivar campanha"
 
 msgid "Archive campaign"
-msgstr ""
+msgstr "Arquivar campanha"
 
 msgid "Show archived campaigns"
-msgstr ""
+msgstr "Mostrar campanhas arquivadas"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "Retorno ao Círculo Desfeito"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
 msgstr ""
@@ -4405,17 +4458,17 @@ msgid "Return to Before the Black Throne"
 msgstr ""
 
 msgid "Loading account"
-msgstr ""
+msgstr "Carregando conta"
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
-msgstr ""
+msgstr "Escolha um investigador para adicionar ${ card.name } ao baralho dele:"
 
 msgid "Show card"
-msgstr ""
+msgstr "Mostre a carta"
 
 msgid "Edit my spoiler settings"
-msgstr ""
+msgstr "Editar minhas configurações de spoiler"
 
 msgid "Crown of Egil"
 msgstr ""
@@ -4428,10 +4481,10 @@ msgstr ""
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr ""
+msgstr "Campanha criada por fãs por ${ author }"
 
 msgid "Sort ignores punctuation"
-msgstr ""
+msgstr "Classificar ignora pontuação"
 
 msgid ""
 "Sorry, you don't seem to be a Mythos Buster patron.\n"
@@ -4439,30 +4492,35 @@ msgid ""
 "you are still experiencing problems after 24hrs, please contact Mythos "
 "Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
+"Desculpe, você não parece ser um patrono do Mythos Buster.\n"
+"Pode levar até 24 horas antes que o Patreon atualize seu status de membro. "
+"Se você ainda está tendo problemas após 24 horas, entre em contato com a "
+"Mythos Busters via Patreon ou no canal Discord para ajudar com este "
+"problema."
 
 msgid "Skull"
-msgstr ""
+msgstr "Crânio"
 
 msgid "Cultist"
-msgstr ""
+msgstr "Cultista"
 
 msgid "Tablet"
-msgstr ""
+msgstr "Tábua"
 
 msgid "Elder Thing"
-msgstr ""
+msgstr "Criatura Ancestral"
 
 msgid "Auto-Fail"
-msgstr ""
+msgstr "Falha automática"
 
 msgid "Elder Sign"
-msgstr ""
+msgstr "Sinal Ancestral"
 
 msgid "Number of [[Item]] assets you control"
-msgstr ""
+msgstr "Número de [[Item]] ativos que você controla"
 
 msgid "Your investigator's modifier"
-msgstr ""
+msgstr "O modificador do seu investigador"
 
 #, javascript-format
 msgid ""
@@ -4471,211 +4529,226 @@ msgid ""
 msgstr ""
 
 msgid "Easy difficulty"
-msgstr ""
+msgstr "Dificuldade Fácil"
 
 msgid "Standard difficulty"
-msgstr ""
+msgstr "Dificuldade Padrão"
 
 msgid "Hard difficulty"
-msgstr ""
+msgstr "Dificuldade Difícil"
 
 msgid "Expert difficulty"
-msgstr ""
+msgstr "Dificuldade do Especialista"
 
 msgid "— Difficulty —"
-msgstr ""
+msgstr "— Dificuldade —"
 
 msgid "— Available Scenarios —"
-msgstr ""
+msgstr "— Cenários Disponíveis —"
 
 msgid "Scenario settings"
-msgstr ""
+msgstr "Configurações do cenário"
 
 msgid "Test difficulty"
-msgstr ""
+msgstr "Dificuldade do teste"
 
 msgid "Modified skill"
-msgstr ""
+msgstr "Habilidade modificada"
 
 #, javascript-format
 msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ tokens }/${ total } ficha"
+msgstr[1] "${ tokens }/${ total } fichas"
 
 msgid "Show all cards"
-msgstr ""
+msgstr "Mostrar todos as cartas"
 
 msgid "Disable to choose individual packs to show"
-msgstr ""
+msgstr "Desative para escolher pacotes individuais para mostrar"
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "Todos as cartas são mostradas em todo o aplicativo"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, "
 "building decks, or upgrading cards to those in your own collection."
 msgstr ""
+"Use esses controles para limitar quais cartas são visíveis durante a "
+"pesquisa, construindo baralhos ou atualizando cartas para sua própria "
+"coleção."
 
 msgid "All Cycles and Packs"
-msgstr ""
+msgstr "Todos os Ciclos e Pacotes"
 
 msgid "Record that..."
-msgstr ""
+msgstr "Registre isso..."
 
 msgid "Player card entries only"
-msgstr ""
+msgstr "Apenas entradas de cartas de jogador"
 
 msgid "Accept friend request"
-msgstr ""
+msgstr "Aceitar solicitação de amizade"
 
 msgid "Send friend request"
-msgstr ""
+msgstr "Enviar solicitação de amizade"
 
 msgid "Reject friend request"
-msgstr ""
+msgstr "Rejeitar pedido de amizade"
 
 msgid "Revoke friend request"
-msgstr ""
+msgstr "Revogar pedido de amizade"
 
 msgid "Show upgrades"
-msgstr ""
+msgstr "Mostrar atualizações"
 
 msgid "Hide Bless/Curse Odds"
-msgstr ""
+msgstr "Ocultar probabilidades de Bênção/Maldição"
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
+msgstr "Mostrar probabilidades de Bênção/Maldição"
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Facção, Nível, Tipo, Custo"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas de Sobrevivente de nível 0"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas de Guardião nível 0"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas de Buscador de nível 0"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "Você não pode ter mais de 5 cartas de Ladino nível 0"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "Faça login no Arkham Cards na guia Configurações para ativar"
 
 msgid "Asset: Hand x2. Arcane"
-msgstr ""
+msgstr "Recurso: Mão x2. Arcano"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
 msgstr ""
 
 msgid "Choose deck"
-msgstr ""
+msgstr "Escolher baralho"
 
 msgid "Frost"
-msgstr ""
+msgstr "Geada"
 
 msgid "Database reset"
-msgstr ""
+msgstr "Redefinição do banco de dados"
 
 msgid "Please close and restart the app"
-msgstr ""
+msgstr "Feche e reinicie o aplicativo"
 
 msgid "Reset card database"
-msgstr ""
+msgstr "Redefinir banco de dados de carta"
 
 msgid "Mythos Busters"
-msgstr ""
+msgstr "Mythos Busters"
 
 #, javascript-format
 msgid ""
 "This app is made possible by the continued support of our fans on Patreon "
 "and the ${ mythosBustersLink } podcast."
 msgstr ""
+"Este aplicativo é possível graças ao apoio contínuo de nossos fãs no "
+"Patreone o podcast ${ mythosBustersLink }."
 
 msgid ""
 "This app is made possible by the continued support of our fans on ${ "
 "patreonLink } and the ${ mythosBustersLink } podcast."
 msgstr ""
+"Este aplicativo é possível graças ao apoio contínuo de nossos fãs em ${ "
+"patreonLink } e o podcast ${ mythosBustersLink }."
 
 msgid ""
 "The card database has been reset.\n"
 "\n"
 "Please close the app and restart it to trigger a full sync of card data."
 msgstr ""
+"O banco de dados de cartas foi redefinido.\n"
+"\n"
+"Por favor, feche o aplicativo e reinicie-o para acionar uma sincronização "
+"completa dos dados de cartas."
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
 msgstr ""
 
 msgid "Beta testing"
-msgstr ""
+msgstr "Teste beta"
 
 msgid "Edit Weakness Cards"
-msgstr ""
+msgstr "Editar cartas de fraqueza"
 
 msgid "Narrate"
-msgstr ""
+msgstr "Narrar"
 
 msgid "Negative modifier"
-msgstr ""
+msgstr "Modificador negativo"
 
 #, javascript-format
 msgid "${ textModifier }, draws another"
-msgstr ""
+msgstr "${ textModifier }, compre outro"
 
 msgid "Fix duplicates"
-msgstr ""
+msgstr "Corrigir duplicatas"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr ""
+msgstr "Você quer usar o aplicativo para escolher um parceiro aleatório?"
 
 msgid "Select more"
-msgstr ""
+msgstr "Selecione mais"
 
 msgid "Record damage/horror:"
-msgstr ""
+msgstr "Registro de dano/horror:"
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "Equipe de expedição"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr ""
+msgstr "Na seção ${ sectionName } do Registro da campanha, risque ${ partnerName },"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"Na seção ${ sectionName } do Registro da campanha, escreva \"MIA\" ao lado "
+"de ${ partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
+"Na seção ${ sectionName } do Registro da campanha, risque \"MIA\" próximo "
+"ao ${ partnerName }."
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "Se o investigador líder ficou <b>louco</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "Se todos os investigadores ficaram <b>loucos</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "Se o investigador líder ainda estiver vivo."
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "Se todos os investigadores ainda estiverem vivos."
 
 msgid "The Entity"
-msgstr ""
+msgstr "A Entidade"
 
 msgid "Resolute"
-msgstr ""
+msgstr "Resoluto"
 
 msgid "MIA"
 msgstr ""
@@ -4694,84 +4767,98 @@ msgid ""
 "but you should be sure you have sufficient experience set aside to pay for "
 "it."
 msgstr ""
+"Uma história paralela é um cenário que pode ser jogado entre quaisquer dois "
+"cenários de uma campanha de <i>Arkham Horror: The Card Game</i>.\n"
+"- Jogar uma história paralela custa a cada investigador na campanha uma "
+"certa quantidade de experiência, que deve ser paga ao iniciar o cenário.\n"
+"- Fraquezas, traumas, experiência e recompensas concedidas ao jogar uma "
+"história paralela fica com os investigadores pelo restante da campanha.\n"
+"- Cada história paralela só pode ser jogada uma vez por campanha.\n"
+"\n"
+"<b>Observação:</b> ao usar este aplicativo, a experiência necessária para "
+"jogar esses cenários serão deduzidos automaticamente no <b>final do "
+"cenário</b>, mas você deve ter certeza de que tem experiência suficiente "
+"para pagarisso."
 
 msgid "Ice and Death: Part 1"
-msgstr ""
+msgstr "Gelo e Morte: Parte 1"
 
 msgid "Ice and Death: Part 2"
-msgstr ""
+msgstr "Gelo e Morte: Parte 2"
 
 msgid "Ice and Death: Part 3"
-msgstr ""
+msgstr "Gelo e Morte: Parte 3"
 
 msgid "Restful Night"
-msgstr ""
+msgstr "Noite de Descanso"
 
 msgid "To the Forbidden Peaks"
-msgstr ""
+msgstr "Para os Picos Proibidos"
 
 msgid "Endless Night"
-msgstr ""
+msgstr "Noite sem fim"
 
 msgid "City of the Elder Things"
-msgstr ""
+msgstr "Cidade das Criaturas Ancestrais"
 
 msgid "Final Night"
-msgstr ""
+msgstr "Noite Final"
 
 msgid "The Heart of Madness: Part 1"
-msgstr ""
+msgstr "O Coração da Loucura: Parte 1"
 
 msgid "The Heart of Madness: Part 2"
-msgstr ""
+msgstr "O Coração da Loucura: Parte 2"
 
 msgid "Fatal Mirage"
-msgstr ""
+msgstr "Miragem Fatal"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "Miragem Fatal - Memórias Descobertas"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "Miragem Fatal - Memórias Banidas"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "Gelo e Morte - Locais Revelados"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "Gelo e Morte - Suprimentos Recuperados"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "O Coração da Loucura - Selos Colocados"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "O Coração da Loucura - Selos Recuperados"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr ""
+msgstr "Você pode curar 1 trauma físico ou mental <i>(sua escolha)</i>"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
+"Na seção ${ sectionName } do Registro da campanha, desenhe uma marca de "
+"check ao lado de ${ partnerName }."
 
 msgid "Choose heal type"
-msgstr ""
+msgstr "Escolha o tipo de cura"
 
 msgid "Chosen heal type"
-msgstr ""
+msgstr "Tipo de cura escolhido"
 
 msgid "Assigned weaknesses"
-msgstr ""
+msgstr "Fraquezas atribuídas"
 
 msgid "Review and draw weaknesses"
-msgstr ""
+msgstr "Revise e compre fraquezas"
 
 msgid "Choose expansions for basic weakness"
-msgstr ""
+msgstr "Escolha expansões para fraqueza básica"
 
 msgid "Uploading campaign"
-msgstr ""
+msgstr "Fazendo upload da campanha"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
@@ -4784,165 +4871,494 @@ msgid ""
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""
+"Este baralho pertence a outro jogador. Você pode gravar a atualização agora "
+"e eles terão a oportunidade de salvar as alterações em seu baralho quando "
+"eles abrem o aplicativo em seguida."
 
 msgid ""
 "Changes have been recorded. You can apply these changes to your deck on the "
 "main screen of the campaign under your investigator."
 msgstr ""
+"As alterações foram gravadas. Você pode aplicar essas alterações ao seu "
+"baralho na tela principal da campanha sob seu investigador."
 
 msgid ""
 "Changes have been recorded. The owner of this deck can apply these changes "
 "to their deck on the main screen of the campaign under their investigator."
 msgstr ""
+"As alterações foram registradas. O proprietário desse baralho pode aplicar "
+"essas alterações ao seu baralho na tela principal da campanha sob seu "
+"investigador."
 
 msgid "Tarot card"
-msgstr ""
+msgstr "Carta de Tarô"
 
 #, javascript-format
 msgid "Tarot card: ${ card }"
-msgstr ""
+msgstr "Carta de Tarô: ${ card }"
 
 msgid "Select tarot card"
-msgstr ""
+msgstr "Selecione a carta de tarô"
 
 msgid "Which tarot card is impacting the chaos bag?"
-msgstr ""
+msgstr "Qual carta de tarô está afetando a bolsa do caos?"
 
 msgid "Replace highest non-negative token with a skull."
-msgstr ""
+msgstr "Substitua a ficha não negativa mais alta por uma caveira."
 
 msgid "Replace a skull with a 0 token."
-msgstr ""
+msgstr "Substitua uma caveira por uma ficha 0."
 
 msgid "Judgement · XX"
-msgstr ""
+msgstr "Julgamento · XX"
 
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "Julgamento · XX (Invertido)"
 
 msgid "The Fool · 0"
-msgstr ""
+msgstr "O Louco · 0"
 
 msgid ""
 "Each investigator not defeated during this game earns +2 experience during "
 "its resolution."
 msgstr ""
+"Cada investigador não derrotado durante este jogo ganha +2 experiência "
+"durante a resolução."
 
 msgid ""
 "Each investigator defeated during this game earns -2 experience during its "
 "resolution."
 msgstr ""
+"Cada investigador derrotado durante este jogo ganha -2 experiência durante "
+"a resolução."
 
 msgid "The Magician · I"
-msgstr ""
+msgstr "O Mago · I"
 
 msgid "Each investigator begins the game with 3 addititonal resources"
-msgstr ""
+msgstr "Cada investigador começa o jogo com 3 recursos adicionais"
 
 msgid ""
 "Each investigator begins the game with 3 fewer resources, and cannot gain "
 "resources during their first turn."
 msgstr ""
+"Cada investigador começa o jogo com 3 recursos a menos e não pode ganhar "
+"recursos durante seu primeiro turno."
 
 msgid "The High Priestess · II"
-msgstr ""
+msgstr "A Alta Sacerdotisa · II"
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get +1 [intellect]."
 msgstr ""
+"Durante o primeiro teste [intellect] que cada investigador realizar a cada "
+"rodada, ele obtém +1 [intellect]."
 
 msgid ""
 "During the first [intellect] test each investigator performs each round, "
 "they get -1 [intellect]."
 msgstr ""
+"Durante o primeiro teste [intellect] que cada investigador realizar a cada "
+"rodada, ele obtém -1 [intellect]."
 
 msgid "The Empress · III"
-msgstr ""
+msgstr "A Imperatriz · III"
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get +1 [agility]."
 msgstr ""
+"Durante o primeiro teste [agility] que cada investigador realizar a cada "
+"rodada, ele obtém +1 [agility]."
 
 msgid ""
 "During the first [agility] test each investigator performs each round, they "
 "get -1 [agility]."
 msgstr ""
+"Durante o primeiro teste [agility] que cada investigador realizar a cada "
+"rodada, ele obtém -1 [agility]."
 
 msgid "The Emperor · IV"
-msgstr ""
+msgstr "O Imperador · IV"
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get +1 [combat]."
 msgstr ""
+"Durante o primeiro teste [combat] que cada investigador realizar a cada "
+"rodada, ele obtém +1 [combat]."
 
 msgid ""
 "During the first [combat] test each investigator performs each round, they "
 "get -1 [combat]."
 msgstr ""
+"Durante o primeiro teste [combat] que cada investigador realizar a cada "
+"rodada, ele obtém -1 [combat]."
 
 msgid "The Hierophant · V"
-msgstr ""
+msgstr "O Hierofante · V"
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get +1 [willpower]."
 msgstr ""
+"Durante o primeiro teste [willpower] cada investigador realizar a cada "
+"rodada, ele obtém +1 [willpower]."
 
 msgid ""
 "During the first [willpower] test each investigator performs each round, "
 "they get -1 [willpower]."
 msgstr ""
+"Durante o primeiro teste [willpower] cada investigador realizar a cada "
+"rodada, ele obtém -1 [willpower]."
 
 msgid "The Lovers · VI"
-msgstr ""
+msgstr "Os Amantes · VI"
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, adds it to their hand, and shuffles their deck."
 msgstr ""
+"Quando o jogo começa, cada investigador procura em seu baralho por um "
+"ativoAliado, adiciona-o à sua mão e embaralha seu baralho."
 
 msgid ""
 "When the game begins, each investigator searches their deck for an Ally "
 "asset, removes it from the game, and shuffles their deck."
 msgstr ""
+"Quando o jogo começa, cada investigador procura em seu baralho por um "
+"ativoAliado, remove-o do jogo e embaralha seu baralho."
 
 msgid "The Chariot · VII"
-msgstr ""
+msgstr "A Carruagem · VII"
 
 msgid ""
 "Each investigator begins the game with 2 additional cards in their opening "
 "hand."
-msgstr ""
+msgstr "Cada investigador começa o jogo com 2 cartas adicionais em sua mãoinicial."
 
 msgid ""
 "Each investigator begins the game with 2 fewer cards in their opening hand, "
 "and cannot draw cards during their first turn."
 msgstr ""
+"Cada investigador começa o jogo com 2 cartas a menos em sua mão inicial, e "
+"não pode comprar cartas durante seu primeiro turno."
 
 msgid "Strength · VIII"
-msgstr ""
+msgstr "Força · VIII"
 
 msgid ""
 "When the game begins, each investigator may play an asset from their hand "
 "at -2 cost."
 msgstr ""
+"Quando o jogo começa, cada investigador pode jogar um recurso de sua mãocom "
+"custo -2."
 
 msgid "During the first round of the game, each investigator cannot play assets."
-msgstr ""
+msgstr "Durante a primeira rodada do jogo, cada investigador não pode jogar ativos."
 
 msgid "The Hermit · IX"
-msgstr ""
+msgstr "O Eremita · IX"
 
 msgid "Increase each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Aumente o tamanho máximo da mão de cada investigador em 3."
 
 msgid "Decrease each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "Diminua o tamanho máximo da mão de cada investigador em 3."
 
 msgid "Wheel of Fortune · X"
+msgstr "Roda da Fortuna · X"
+
+msgid ""
+"Once each agenda, the first time any investigator reveals an [elder_sign] "
+"token, cancel it and treat it as a -5 token instead."
+msgstr ""
+"Uma vez que cada agenda, a primeira vez que qualquer investigador revela "
+"uma ficha [elder_sign], cancele-a e trate-a como uma ficha -5."
+
+msgid "Justice · XI"
+msgstr "Justiça · XI"
+
+msgid "Cancel the first doom that would be placed on the final agenda of the game."
+msgstr "Cancelar a primeira perdição que seria colocada na agenda final do jogo."
+
+msgid "The final agenda of the game enters play with 1 doom on it."
+msgstr "A agenda final do jogo entra em jogo com 1 perdição."
+
+msgid "The Hanged Man · XII"
+msgstr "O Enforcado · XII"
+
+msgid "During setup, each investigator may take up to 2 additional mulligans."
+msgstr ""
+"Durante a preparação, cada investigador pode fazer até 2 mulligans "
+"adicionais."
+
+msgid ""
+"Each investigator cannot mulligan or replace weaknesses in their opening "
+"hand (resolve their revelation abilities when the game begins)."
+msgstr ""
+"Cada investigador não pode fazer mulligan ou substituir fraquezas em sua "
+"mãoinicial (resolva suas habilidades de revelação quando o jogo começar)."
+
+msgid "Death · XIII"
+msgstr "Morte · XIII"
+
+msgid "Each investigator gets +1 health."
+msgstr "Cada investigador recebe +1 de vida."
+
+msgid "Each investigator gets -1 health."
+msgstr "Cada investigador recebe -1 de vida."
+
+msgid "Temperance · XIV"
+msgstr "Temperança · XIV"
+
+msgid "Each investigator gets +1 sanity."
+msgstr "Cada investigador recebe +1 de sanidade."
+
+msgid "Each investigator gets -1 sanity."
+msgstr "Cada investigador recebe -1 de sanidade."
+
+msgid "The Devil · XV"
+msgstr "O Diabo · XV"
+
+msgid ""
+"Each investigator has 1 additional slot of a type chosen by that "
+"investigattor when the game begins."
+msgstr ""
+"Cada investigador tem 1 espaço adicional de um tipo escolhido por aquele "
+"investigador quando o jogo começa."
+
+msgid ""
+"Each investigator has 3 fewer slots, each of a different type, chosen by "
+"that investigator when the game begins."
+msgstr ""
+"Cada investigador tem 3 espaços a menos, cada um de um tipo diferente, "
+"escolhidos por aquele investigador quando o jogo começar."
+
+msgid "The Tower · XVI"
+msgstr "A Torre · XVI"
+
+msgid ""
+"Each investigator chooses 1 basic weakness in their deck and removes it "
+"from the game (return them after the game ends)."
+msgstr ""
+"Cada investigador escolhe 1 fraqueza básica em seu baralho e a removedo "
+"jogo (devolva-os depois que o jogo terminar)."
+
+msgid ""
+"Add 1 random basic weakness to each investigator's deck. Remove them after "
+"the game ends."
+msgstr ""
+"Adicione 1 fraqueza básica aleatória ao baralho de cada investigador. "
+"Remova-os após o jogo acabar."
+
+msgid "The Star · XVII"
+msgstr "A Estrela · XVII"
+
+msgid ""
+"After an investigator reveals an [elder_sign] token during a skill test, "
+"they may heal 1 damage or 1 horror."
+msgstr ""
+"Depois que um investigador revelar uma ficha [elder_sign] durante um teste "
+"de habilidade, ele pode curar 1 dano ou 1 horror."
+
+msgid ""
+"After an investigator reveals an [auto_fail] token during a skill test, "
+"they must either take 1 damage or 1 horror."
+msgstr ""
+"Depois que um investigador revela uma ficha [auto_fail] durante um teste de "
+"habilidade, ele deve receber 1 dano ou 1 horror."
+
+msgid "The Moon · XVIII"
+msgstr "A Lua · XVIII"
+
+msgid ""
+"The first time each investigator's deck would run out of cards, they may "
+"shuffle the bottom 10 cards of their discard pile back into their deck."
+msgstr ""
+"A primeira vez que o baralho de cada investigador ficar sem cartas, eles "
+"podem embaralhar as 10 cartas do fundo de sua pilha de descarte de volta ao "
+"seu baralho."
+
+msgid ""
+"When the game begins, each investigator discards the top 5 cards of their "
+"deck. Shuffle each discarded weakness into its owner's deck."
+msgstr ""
+"Quando o jogo começa, cada investigador descarta as 5 primeiras cartas de "
+"seu baralho. Embaralhe cada fraqueza descartada no baralho de volta."
+
+msgid "The Sun · XIX"
+msgstr "O Sol · XIX"
+
+msgid "During each investigator's first turn, they may take 2 additional actions."
+msgstr ""
+"Durante o primeiro turno de cada investigador, ele pode realizar 2 ações "
+"adicionais."
+
+msgid "During each investigator's first turn, they have 2 fewer actions to take."
+msgstr ""
+"Durante o primeiro turno de cada investigador, ele tem 2 ações a menos para "
+"realizar."
+
+msgid ""
+"When the game begins, replace a [skull] token in the chaos bag with a 0 "
+"token. Swap them back after the game ends."
+msgstr ""
+"Quando o jogo começar, substitua uma ficha [skull] na bolsa do caos por uma "
+"ficha0. Troque-os de volta depois que o jogo terminar."
+
+msgid ""
+"When the game begins, replace the highest non-negative token in the chaos "
+"bag with a [skull] token. Swap them back after the game ends."
+msgstr ""
+"Quando o jogo começar, substitua a ficha não negativa mais alta na bolsado "
+"caos com uma ficha [skull]. Troque-os de volta depois que o jogo terminar."
+
+msgid "The World · XXI"
+msgstr "O Mundo · XXI"
+
+msgid ""
+"Each investigator not defeated during this game may remove 1 trauma of "
+"their choice during its resolution."
+msgstr ""
+"Cada investigador não derrotado durante este jogo pode remover 1 trauma de "
+"sua escolha durante a sua resolução."
+
+msgid ""
+"Each investigator defeated during this game suffers 1 trauma of their "
+"choice during its resolution."
+msgstr ""
+"Cada investigador derrotado durante este jogo sofre 1 trauma de sua escolha "
+"durante a sua resolução."
+
+msgid "An app update is required to access this campaign."
+msgstr "É necessária uma atualização do aplicativo para acessar esta campanha."
+
+msgid ""
+"Note that this is an ArkhamCards account, which is separate from your "
+"ArkhamDB account."
+msgstr "Observe que esta é uma conta ArkhamCards, separada da sua conta ArkhamDB."
+
+msgid "Side Deck"
+msgstr "Baralho alternativo"
+
+msgid "Edit Side Deck"
+msgstr "Editar baralho alternativo"
+
+msgid "Creating campaign..."
+msgstr "Criando campanha..."
+
+msgid "Creating standalone..."
+msgstr "Criando standalone"
+
+msgid "Campaign will be synced between devices and can be shared with friends"
+msgstr ""
+"A campanha será sincronizada entre os dispositivos e poderá ser "
+"compartilhada com amigos"
+
+msgid "Campaign will be local to this device, you can choose to upload it later"
+msgstr ""
+"A campanha será local para este dispositivo, você pode optar por carregá-la "
+"mais tarde"
+
+#, javascript-format
+msgid "(${ count } card)"
+msgid_plural "(${ count } cards)"
+msgstr[0] "(${ count } carta)"
+msgstr[1] "(${ count } cartas)"
+
+msgid "Collection overlap"
+msgstr "Coleção sobreposta"
+
+msgid "Deck overlap"
+msgstr "Baralho sobreposto"
+
+msgid "Show collection overlap"
+msgstr "Mostrar coleção sobreposta"
+
+msgid "Hide collection overlap"
+msgstr "Esconder coleção sobreposta"
+
+msgid ""
+"The total number of these cards among decks from this campaign exceeds your "
+"card collection."
+msgstr ""
+"O número total dessas cartas entre os baralhos desta campanha excede o sua "
+"coleção de cartas."
+
+#, javascript-format
+msgid "After completion of ${ scenarionName }"
+msgstr "Após a conclusão de ${ scenarionName }"
+
+msgid "Show decks from other campaigns"
+msgstr "Mostrar baralhos de outras campanhas"
+
+msgid "Trait Choice"
+msgstr "Escolha de Característica"
+
+msgid "Blessed"
+msgstr "Abençoado"
+
+msgid "Cursed"
+msgstr "Amaldiçoado"
+
+msgid "Blessed and Cursed"
+msgstr "Abençoado e Amaldiçoado"
+
+msgid "Select Option"
+msgstr "Selecionar opção"
+
+msgid "Move to deck"
+msgstr "Mover para o baralho"
+
+msgid "Unarchive standalone"
+msgstr "Desarquivar standalone"
+
+msgid "Archive standalone"
+msgstr "Arquivar standalone"
+
+msgid "Bless / Curse"
+msgstr "Abençoar / Maldição"
+
+msgid "You appear to be offline. Tap to check for network."
+msgstr "Você parece estar off-line. Toque para verificar a rede."
+
+msgid "Guardians of the Abyss"
+msgstr "Guardiões do Abismo"
+
+msgid "Two-part campaign variant"
+msgstr "Variante de campanha em duas partes"
+
+msgid "Claim previous scenario XP"
+msgstr "Reivindicar XP do cenário anterior"
+
+msgid "Apply changes from last completed scenario"
+msgstr "Aplicar alterações do último cenário concluído"
+
+msgid "Hide campaign decks"
+msgstr "Ocultar baralhos de campanha"
+
+msgid "Select Standalone"
+msgstr "Selecionar standalone"
+
+msgid "Add ${ card.name }:"
+msgstr "Adicione ${ card.name }:"
+
+#, javascript-format
+msgid "Select ${ name }"
+msgstr ""
+
+msgid ""
+"Note: This should only be selected at deck creation time, not between "
+"scenarios."
+msgstr ""
+
+#, javascript-format
+msgid "In your Campaign Log, under \"${ section }\", record #name#. "
+msgstr ""
+
+msgid "Fragments of Alice"
 msgstr ""
 
 msgid ""
@@ -4950,244 +5366,92 @@ msgid ""
 "investigator may cancel it and treat it as a 0 token instead."
 msgstr ""
 
+#, javascript-format
 msgid ""
-"Once each agenda, the first time any investigator reveals an [elder_sign] "
-"token, cancel it and treat it as a -5 token instead."
-msgstr ""
-
-msgid "Justice · XI"
-msgstr ""
-
-msgid "Cancel the first doom that would be placed on the final agenda of the game."
-msgstr ""
-
-msgid "The final agenda of the game enters play with 1 doom on it."
-msgstr ""
-
-msgid "The Hanged Man · XII"
-msgstr ""
-
-msgid "During setup, each investigator may take up to 2 additional mulligans."
-msgstr ""
-
-msgid ""
-"Each investigator cannot mulligan or replace weaknesses in their opening "
-"hand (resolve their revelation abilities when the game begins)."
-msgstr ""
-
-msgid "Death · XIII"
-msgstr ""
-
-msgid "Each investigator gets +1 health."
-msgstr ""
-
-msgid "Each investigator gets -1 health."
-msgstr ""
-
-msgid "Temperance · XIV"
-msgstr ""
-
-msgid "Each investigator gets +1 sanity."
-msgstr ""
-
-msgid "Each investigator gets -1 sanity."
-msgstr ""
-
-msgid "The Devil · XV"
+"The information presented in this app about Arkham Horror: The Card Game, "
+"both literal and graphical, is copyrighted by Fantasy Flight Games. This "
+"app is not produced, endorsed, supported, or affiliated with Fantasy Flight "
+"Games.\n"
+"\n"
+"This application was created by Daniel Salinas as a fan project to help "
+"support the Arkham Horror: The Card Game community, with design from ${ "
+"visualDesigner } and additional development by ${ dissonantVoicesDeveloper "
+"}, ${ chaosBagDeveloper }, and ${ toolingDeveloper }. If you find yourself "
+"managing lots of decks and campaigns, I'm hoping it proves useful.\n"
+"\n"
+"Feedback and bug reports are welcome by email at "
+"[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)\n"
+"\n"
+"Many thanks to ArkhamDB.com for providing the structured data, API access "
+"and access to card images. Without their continued support, this project "
+"wouldn't be possible."
 msgstr ""
 
 msgid ""
-"Each investigator has 1 additional slot of a type chosen by that "
-"investigattor when the game begins."
-msgstr ""
-
-msgid ""
-"Each investigator has 3 fewer slots, each of a different type, chosen by "
-"that investigator when the game begins."
-msgstr ""
-
-msgid "The Tower · XVI"
-msgstr ""
-
-msgid ""
-"Each investigator chooses 1 basic weakness in their deck and removes it "
-"from the game (return them after the game ends)."
-msgstr ""
-
-msgid ""
-"Add 1 random basic weakness to each investigator's deck. Remove them after "
-"the game ends."
-msgstr ""
-
-msgid "The Star · XVII"
-msgstr ""
-
-msgid ""
-"After an investigator reveals an [elder_sign] token during a skill test, "
-"they may heal 1 damage or 1 horror."
-msgstr ""
-
-msgid ""
-"After an investigator reveals an [auto_fail] token during a skill test, "
-"they must either take 1 damage or 1 horror."
-msgstr ""
-
-msgid "The Moon · XVIII"
-msgstr ""
-
-msgid ""
-"The first time each investigator's deck would run out of cards, they may "
-"shuffle the bottom 10 cards of their discard pile back into their deck."
-msgstr ""
-
-msgid ""
-"When the game begins, each investigator discards the top 5 cards of their "
-"deck. Shuffle each discarded weakness into its owner's deck."
-msgstr ""
-
-msgid "The Sun · XIX"
-msgstr ""
-
-msgid "During each investigator's first turn, they may take 2 additional actions."
-msgstr ""
-
-msgid "During each investigator's first turn, they have 2 fewer actions to take."
-msgstr ""
-
-msgid ""
-"When the game begins, replace a [skull] token in the chaos bag with a 0 "
-"token. Swap them back after the game ends."
-msgstr ""
-
-msgid ""
-"When the game begins, replace the highest non-negative token in the chaos "
-"bag with a [skull] token. Swap them back after the game ends."
-msgstr ""
-
-msgid "The World · XXI"
-msgstr ""
-
-msgid ""
-"Each investigator not defeated during this game may remove 1 trauma of "
-"their choice during its resolution."
-msgstr ""
-
-msgid ""
-"Each investigator defeated during this game suffers 1 trauma of their "
-"choice during its resolution."
-msgstr ""
-
-msgid "An app update is required to access this campaign."
-msgstr ""
-
-msgid ""
-"Note that this is an ArkhamCards account, which is separate from your "
-"ArkhamDB account."
-msgstr ""
-
-msgid "Side Deck"
-msgstr ""
-
-msgid "Edit Side Deck"
-msgstr ""
-
-msgid "Creating campaign..."
-msgstr ""
-
-msgid "Creating standalone..."
-msgstr ""
-
-msgid "Campaign will be synced between devices and can be shared with friends"
-msgstr ""
-
-msgid "Campaign will be local to this device, you can choose to upload it later"
+"<b>Translation:</b>\n"
+"• Spanish: ${ spanishTranslators }\n"
+"• French: ${ frenchTranslators }\n"
+"• German: ${ germanTranslators }\n"
+"• Russian: ${ russianTranslators }\n"
+"• Korean: ${ koreanTranslators }"
 msgstr ""
 
 #, javascript-format
-msgid "(${ count } card)"
-msgid_plural "(${ count } cards)"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Collection overlap"
-msgstr ""
-
-msgid "Deck overlap"
-msgstr ""
-
-msgid "Show collection overlap"
-msgstr ""
-
-msgid "Hide collection overlap"
+msgid ""
+"<b>Additional Contributions:</b>\n"
+"• Visual Design: ${ visualDesigner }\n"
+"• Digital chaos bag + odds calculator: ${ chaosBagDeveloper }\n"
+"• Dissonant Voices audio integration: ${ dissonantVoicesDeveloper }\n"
+"• Tooling and build support: ${ toolingDeveloper }"
 msgstr ""
 
 msgid ""
-"The total number of these cards among decks from this campaign exceeds your "
-"card collection."
+"<b>Icon Attribution:</b>\n"
+"• Original icon designs: ${ visualDesigner }"
 msgstr ""
 
-#, javascript-format
-msgid "After completion of ${ scenarionName }"
+msgid "Samsung One UI fix"
 msgstr ""
 
-msgid "Show decks from other campaigns"
+msgid "Fix layout issues on version 3.0 of Samsung One UI"
 msgstr ""
 
-msgid "Trait Choice"
+msgid "Call of the Plaguebearer"
 msgstr ""
 
-msgid "Blessed"
+msgid "Eliminated"
 msgstr ""
 
-msgid "Cursed"
+msgid "Locations"
 msgstr ""
 
-msgid "Blessed and Cursed"
+msgid "Reauthorize ArkhamDB"
 msgstr ""
 
-msgid "Select Option"
+msgid "Login required to save deck upgrade"
 msgstr ""
 
-msgid "Move to deck"
+msgid ""
+"Note: this campaign is a fairly new addition to the app and may contain "
+"some mistakes."
 msgstr ""
 
-msgid "Unarchive standalone"
+msgid "Durability"
 msgstr ""
 
-msgid "Archive standalone"
+msgid "Leylines"
 msgstr ""
 
-msgid "Bless / Curse"
+msgid "Offerings"
 msgstr ""
 
-msgid "You appear to be offline. Tap to check for network."
-msgstr ""
-
-msgid "Guardians of the Abyss"
-msgstr ""
-
-msgid "Two-part campaign variant"
-msgstr ""
-
-msgid "Claim previous scenario XP"
-msgstr ""
-
-msgid "Apply changes from last completed scenario"
-msgstr ""
-
-msgid "Hide campaign decks"
-msgstr ""
-
-msgid "Select Standalone"
-msgstr ""
-
-msgid "Add ${ card.name }:"
+msgid "Patrol"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgctxt "masculine"
 msgid "Alive"
@@ -5217,7 +5481,7 @@ msgstr "${ investigator.name } lê <b>${ sectionName }</b>"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } ficou <b>insane</b>."
+msgstr "${ investigator.name } ficou <b>louco</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5280,6 +5544,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> não estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5287,6 +5553,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5296,8 +5564,8 @@ msgid ""
 msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Como ${ list } tem ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
+msgstr[1] "Como ${ list } têm ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5308,7 +5576,11 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } não tem um ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 
 msgctxt "feminine"
 msgid "Alive"
@@ -5336,7 +5608,7 @@ msgstr "${ investigator.name } lê <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } ficou <b>insana</b>."
+msgstr "${ investigator.name } ficou <b>louca</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
@@ -5397,6 +5669,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> não estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 #, javascript-format
 msgctxt "feminine"
@@ -5404,18 +5678,20 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Se <i>${ card.name }</i> estiver listado em '${ entry.section }' em seu "
+"Registro de campanha."
 
 msgctxt "feminine"
 msgid "Physical trauma"
-msgstr ""
+msgstr "Trauma físico"
 
 msgctxt "feminine"
 msgid "Mental trauma"
-msgstr ""
+msgstr "Trauma mental"
 
 msgctxt "feminine"
 msgid "Defeated"
-msgstr ""
+msgstr "Derrotada"
 
 #, javascript-format
 msgctxt "feminine"
@@ -5425,8 +5701,8 @@ msgid ""
 msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Como ${ list } tem ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
+msgstr[1] "Como ${ list } têm ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 
 msgctxt "feminine"
 msgid ""
@@ -5436,87 +5712,91 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
+"Como ${ list } não tem ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 msgstr[1] ""
+"Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ sectionName "
+"}</b>."
 
 msgctxt "Traits"
 msgid "All"
-msgstr ""
+msgstr "Tudo"
 
 msgctxt "trait"
 msgid "???"
-msgstr ""
+msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr ""
+msgstr "Abominação"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "Abismo"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr ""
+msgstr "Ato 1"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr ""
+msgstr "Ato 2"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr ""
+msgstr "Agência"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr ""
+msgstr "Aliado"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "Alterado"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "Ancestral"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr ""
+msgstr "O Ancestral"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr ""
+msgstr "Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr ""
+msgstr "Asilo Arkham"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr ""
+msgstr "armadura"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "Artista"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr ""
+msgstr "Assistente"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "Ataque"
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "Augúrio"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "Porão"
 
 msgctxt "trait"
 msgid "Bayou"
@@ -5524,51 +5804,51 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Believer"
-msgstr ""
+msgstr "Crente"
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr ""
+msgstr "Abençoado"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr ""
+msgstr "Erro"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "Barco"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr ""
+msgstr "Ousado"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "Benefício"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "Ponte"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "Irmandade"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr ""
+msgstr "Byakhee"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr ""
+msgstr "Espectador"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "Cairo"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr ""
+msgstr "Acampamento"
 
 msgctxt "trait"
 msgid "Carnevale"
@@ -5576,115 +5856,115 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Cave"
-msgstr ""
+msgstr "Caverna"
 
 msgctxt "trait"
 msgid "Central"
-msgstr ""
+msgstr "Central"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr ""
+msgstr "Encanto"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr ""
+msgstr "Escolhido"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "Círculo"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "Cidade"
 
 msgctxt "trait"
 msgid "Civic"
-msgstr ""
+msgstr "Cívico"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr ""
+msgstr "Clarividente"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr ""
+msgstr "Roupas"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "Clube do Trevo"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "Costeiro"
 
 msgctxt "trait"
 msgid "Composure"
-msgstr ""
+msgstr "Compostura"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr ""
+msgstr "Condição"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr ""
+msgstr "Conexão"
 
 msgctxt "trait"
 msgid "Conspirator"
-msgstr ""
+msgstr "Conspirador"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr ""
+msgstr "construir"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "Pacto"
 
 msgctxt "trait"
 msgid "Creature"
-msgstr ""
+msgstr "Criatura"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "Cena do crime"
 
 msgctxt "trait"
 msgid "Criminal"
-msgstr ""
+msgstr "Criminoso"
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr ""
+msgstr "Cultista"
 
 msgctxt "trait"
 msgid "Curse"
-msgstr ""
+msgstr "Maldição"
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr ""
+msgstr "Amaldiçoado"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr ""
+msgstr "Jovem Sombrio"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr ""
+msgstr "Profundo"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr ""
+msgstr "Profundezas"
 
 msgctxt "trait"
 msgid "Desert"
-msgstr ""
+msgstr "Deserto"
 
 msgctxt "trait"
 msgid "Desperate"
-msgstr ""
+msgstr "Desesperado"
 
 msgctxt "trait"
 msgid "Detective"
@@ -5692,15 +5972,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Developed"
-msgstr ""
+msgstr "Desenvolvido"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr ""
+msgstr "Dhole"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr ""
+msgstr "Distorção"
 
 msgctxt "trait"
 msgid "Dreamer"
@@ -6523,6 +6803,10 @@ msgctxt "Types"
 msgid "All"
 msgstr ""
 
+msgctxt "card-type"
+msgid "Investigator"
+msgstr "Investigador"
+
 msgctxt "SubTypes"
 msgid "All"
 msgstr ""
@@ -6730,7 +7014,7 @@ msgstr ""
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
@@ -6742,8 +7026,8 @@ msgstr "Independentes"
 
 msgctxt "versus abbreviation"
 msgid "VS"
-msgstr ""
+msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"

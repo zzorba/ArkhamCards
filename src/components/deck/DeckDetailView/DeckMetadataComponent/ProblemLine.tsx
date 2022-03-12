@@ -32,7 +32,11 @@ export default function ProblemLine({ problem }: Props) {
   );
   const description = (
     <View style={styles.row}>
-      <Text style={[typography.small, typography.italic, { color: colors.M, lineHeight: 24 * fontScale }]}>
+      <Text
+        numberOfLines={2}
+        ellipsizeMode="tail"
+        style={[typography.small, typography.italic, { color: colors.M, lineHeight: 24 * fontScale }]}
+      >
         { DECK_PROBLEM_MESSAGES[problem.reason] }
       </Text>
     </View>

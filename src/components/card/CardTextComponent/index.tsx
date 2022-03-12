@@ -25,6 +25,7 @@ import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { TextStyle } from 'react-native';
+import RedNode from './RedNode';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -61,6 +62,20 @@ function ArkhamIconSkillTextRule(usePingFang: boolean, style: StyleContextType, 
     render: ArkhamIconNode(usePingFang, style, sizeScale),
   };
 }
+
+function RedTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<red>([\\s\\S]+?)<\\/red>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: RedNode(style),
+  };
+}
+
 
 function ArkahmIconSpanRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
@@ -270,6 +285,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       badBiTag: MalformedBoldItalicHtmlTagRule(usePingFang, context),
       bTag: BoldHtmlTagRule(usePingFang, context, sizeScale),
       pTag: ParagraphTagRule,
+      redTag: RedTagRule(context),
       uTag: UnderlineHtmlTagRule(usePingFang, context),
       emTag: EmphasisHtmlTagRule(usePingFang, context),
       iTag: ItalicHtmlTagRule(usePingFang, context),

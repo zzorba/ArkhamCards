@@ -117,7 +117,7 @@ function SearchOptions({
   );
 }
 
-function ExpandModesButtons({
+function useExpandModesButtons({
   hasFilters,
   mythosToggle,
   toggleMythosMode,
@@ -129,12 +129,12 @@ function ExpandModesButtons({
   toggleMythosMode: () => void;
   clearSearchFilters: () => void;
   mythosMode?: boolean;
-}) {
+}): [React.ReactNode, number] {
   if (!mythosToggle && !hasFilters) {
-    return null;
+    return [null, 0];
   }
-  return (
-    <View>
+  return [(
+    <View key="mode_buttons">
       { !!mythosToggle && (
         <ArkhamButton
           icon="search"
@@ -150,10 +150,10 @@ function ExpandModesButtons({
         />
       ) }
     </View>
-  );
+  ), (mythosToggle ? 1 : 0) + (hasFilters ? 1 : 0)];
 }
 
-function ExpandSearchButtons({
+function useExpandSearchButtons({
   hasFilters,
   mythosToggle,
   toggleMythosMode,
@@ -177,20 +177,13 @@ function ExpandSearchButtons({
   clearSearchTerm: () => void;
   toggleSearchText: () => void;
   toggleSearchBack: () => void;
-}) {
+}): [React.ReactNode, number] {
+  const [expandModes, expandModesCount] = useExpandModesButtons({ hasFilters, mythosToggle, toggleMythosMode, clearSearchFilters, mythosMode });
   if (!searchTerm) {
-    return (
-      <ExpandModesButtons
-        hasFilters={hasFilters}
-        mythosToggle={mythosToggle}
-        toggleMythosMode={toggleMythosMode}
-        clearSearchFilters={clearSearchFilters}
-        mythosMode={mythosMode}
-      />
-    );
+    return [expandModes, expandModesCount];
   }
-  return (
-    <View>
+  return [(
+    <View key="expand_buttons">
       { !!searchTerm && (
         <ArkhamButton
           icon="search"
@@ -212,15 +205,9 @@ function ExpandSearchButtons({
           title={t`Search card backs`}
         />
       ) }
-      <ExpandModesButtons
-        hasFilters={hasFilters}
-        mythosToggle={mythosToggle}
-        toggleMythosMode={toggleMythosMode}
-        clearSearchFilters={clearSearchFilters}
-        mythosMode={mythosMode}
-      />
+      { expandModes }
     </View>
-  );
+  ), expandModesCount + (!searchTerm ? 1 : 0) + (!searchTerm ? 1 : 0) + (!searchBack ? 1 : 0)];
 }
 
 const EMPTY_SEARCH_STATE: SearchState = {};
@@ -357,6 +344,19 @@ export default function({
     </View>
   ), [colors, hasFilters]);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
+  const [expandSearchControls, expandSearchControlsHeight] = useExpandSearchButtons({
+    hasFilters: !!filterQuery,
+    mythosToggle,
+    toggleMythosMode,
+    clearSearchFilters,
+    mythosMode,
+    searchTerm,
+    searchText,
+    searchBack,
+    clearSearchTerm,
+    toggleSearchText,
+    toggleSearchBack,
+  });
   return (
     <CollapsibleSearchBox
       prompt={t`Search for a card`}
@@ -380,21 +380,8 @@ export default function({
             investigator={investigator}
             handleScroll={handleScroll}
             showHeader={showHeader}
-            expandSearchControls={(
-              <ExpandSearchButtons
-                hasFilters={!!filterQuery}
-                mythosToggle={mythosToggle}
-                toggleMythosMode={toggleMythosMode}
-                clearSearchFilters={clearSearchFilters}
-                mythosMode={mythosMode}
-                searchTerm={searchTerm}
-                searchText={searchText}
-                searchBack={searchBack}
-                clearSearchTerm={clearSearchTerm}
-                toggleSearchText={toggleSearchText}
-                toggleSearchBack={toggleSearchBack}
-              />
-            )}
+            expandSearchControls={expandSearchControls}
+            expandSearchControlsHeight={expandSearchControlsHeight * ArkhamButton.computeHeight(fontScale, lang)}
             headerItems={headerItems}
             headerHeight={headerHeight}
             showNonCollection={showNonCollection}
@@ -402,6 +389,7 @@ export default function({
             sideDeck={mode === 'side'}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
+            footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
           />
           { deckId !== undefined && (
             <>
