@@ -121,7 +121,7 @@ msgstr "Szukaj talii"
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr "Brak pasujących talii dla \"${ searchTerm }\"."
+msgstr "Brak pasujących talii dla „${ searchTerm }”."
 
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
@@ -443,7 +443,7 @@ msgid "Exile"
 msgstr "Wygnanie"
 
 msgid "Unique"
-msgstr "Wyjątkowa"
+msgstr "Unikatowa"
 
 msgid "Vengeance"
 msgstr "Zemsta"
@@ -503,7 +503,7 @@ msgstr "Zamień Losowe Osłabienie"
 
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
-msgstr "Zapisz do talii ${ investigator.name }’"
+msgstr "Zapisz do talii ${ investigator.name }"
 
 msgid "Not yet started"
 msgstr "Nierozpoczęte"
@@ -549,7 +549,7 @@ msgid "Hard"
 msgstr "Trudny"
 
 msgid "Expert"
-msgstr "Ekspercka"
+msgstr "Ekspercki"
 
 msgid "Night of the Zealot"
 msgstr "Noc Fanatyka"
@@ -880,7 +880,7 @@ msgstr "Kampanie"
 
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
-msgstr "Brak pasujących Kampanii dla \"${ search }\"."
+msgstr "Brak pasujących Kampanii dla „${ search }”."
 
 msgid "Search campaigns"
 msgstr "Szukaj Kampanii"
@@ -1004,7 +1004,7 @@ msgid "Search"
 msgstr "Szukaj"
 
 msgid "No matching investigators for \"${ searchTerm }\"."
-msgstr "Brak pasujących Badaczy dla \"${ searchTerm }\"."
+msgstr "Brak pasujących Badaczy dla „${ searchTerm }”."
 
 msgid "N/A"
 msgstr "N/A"
@@ -1122,7 +1122,7 @@ msgstr "Otrzymanie 3 pkt obrażenia i 3 pkt przerażenia"
 
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
-msgstr "Brak pasujących kart dla \"${ searchTerm }\""
+msgstr "Brak pasujących kart dla „${ searchTerm }”"
 
 msgid "No matching cards"
 msgstr "Brak pasujących kart"
@@ -1138,7 +1138,7 @@ msgstr "Szukaj Karty"
 
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
-msgstr "Wyczyść wyszukiwanie \"${ searchTerm }\""
+msgstr "Wyczyść wyszukiwanie „${ searchTerm }”"
 
 msgid "Apply"
 msgstr "Zatwierdź"
@@ -1231,7 +1231,7 @@ msgstr ""
 "tylko niektórych z ograniczeń, z których będzie korzystać)."
 
 msgid "Note: not all cards have translations available."
-msgstr "Uwaga: nie wszystkie Karty posiadają dostępne tłumaczenia."
+msgstr "Uwaga: nie wszystkie karty posiadają dostępne tłumaczenia."
 
 msgid "Taboo List"
 msgstr "Lista Tabu"
@@ -1243,7 +1243,7 @@ msgid "Try Again"
 msgstr "Spróbuj ponownie"
 
 msgid "Loading latest cards..."
-msgstr "Ładowanie ostatnich Kart..."
+msgstr "Ładowanie najnowszych kart..."
 
 msgid "Charts"
 msgstr "Wykresy"
@@ -2041,14 +2041,14 @@ msgstr[1] "${ investigators } muszą przeczytać <b>${ prompt }</b>."
 msgstr[2] "${ investigators } muszą przeczytać <b>${ prompt }</b>."
 
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr "Czy jakiś Badacz ma kartę \"${ cardName }\" w swojej talii?"
+msgstr "Czy jakiś Badacz ma kartę „${ cardName }” w swojej talii?"
 
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "Czy Badacz z kartą \"${ cardName }\" w talii został pokonany?"
+msgstr "Czy Badacz z kartą „${ cardName }” w talii został pokonany?"
 
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "Dla każdego Badacza z kartą \"${ cardName }\" w talii:"
+msgstr "Dla każdego Badacza z kartą „${ cardName }” w talii:"
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
@@ -2073,7 +2073,7 @@ msgstr "Czy na pewno chcesz usunąć kampanię: ${ campaignName }"
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
-msgstr "${ scenarioName } (Attempt ${ attempt })"
+msgstr "${ scenarioName } (Próba ${ attempt })"
 
 msgid "Select Deck"
 msgstr "Wybierz talię"
@@ -2185,7 +2185,7 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"W Dzienniku kampanii, w sekcji \"${ logEntry.section }\", zanotuj <i>${ "
+"W Dzienniku kampanii, w sekcji „${ logEntry.section }”, zanotuj <i>${ "
 "logEntry.text }</i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
@@ -2958,7 +2958,7 @@ msgid "Search options"
 msgstr "Opcje wyszukiwania"
 
 msgid "Search in:"
-msgstr "Szukaw w:"
+msgstr "Szukaj w:"
 
 msgid "Encounter Card Toggle"
 msgstr "Przełącznik kart spotkania"
@@ -3193,8 +3193,7 @@ msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "Pokaż ${ nonCollectionCount } kartę spoza kolekcji"
 msgstr[1] ""
-"Pokaż ${ nonCollectionCount } karty spoza kolekcjiPokaż ${ "
-"nonCollectionCount } kartę spoza kolekcji"
+"Pokaż ${ nonCollectionCount } karty spoza kolekcji"
 msgstr[2] "Pokaż ${ nonCollectionCount } kart spoza kolekcji"
 
 msgid "Hide versatile cards"
@@ -3342,7 +3341,7 @@ msgid "Missing system permission"
 msgstr "Brak uprawnień systemowych"
 
 msgid "Reads \"${ badThing.prompt }\""
-msgstr "Odczytuje \"${ badThing.prompt }\""
+msgstr "Odczytuje „${ badThing.prompt }”"
 
 msgid "Sign in to Dissonant Voices?"
 msgstr "Zalogować do Dissonant Voices?"
@@ -3437,7 +3436,7 @@ msgstr ""
 "oraz ilości kopii tej karty w twojej talii)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr "Wydano ${ _adjustedXp } z ${ spentXP } XP"
+msgstr "Wydano ${ spentXP } z ${ _adjustedXp } XP"
 
 msgid "Upgrading"
 msgstr "Ulepszanie"
@@ -3721,7 +3720,7 @@ msgid "Sign out"
 msgstr "Wyloguj"
 
 msgid "Sign in to app"
-msgstr "Zaloguj do aplikacji"
+msgstr "Zaloguj się do aplikacji"
 
 msgid "Problem reading from ArkhamDB"
 msgstr "Problem z odczytem z ArkhamDB"
@@ -4381,7 +4380,7 @@ msgid "Record in campaign log"
 msgstr "Zanotuj w dzienniku kampanii"
 
 msgid "Review and add records"
-msgstr "Przegląðaj i dodaj notatki"
+msgstr "Przeglądaj i dodaj notatki"
 
 msgid "Chaos bag"
 msgstr "Worek chaosu"
@@ -4720,7 +4719,7 @@ msgid "Sqlite version: ${ sqliteVersion }"
 msgstr "Wersja Sqlite: ${ sqliteVersion }"
 
 msgid "Beta testing"
-msgstr "Trwają testy beta"
+msgstr "Testy wersji beta"
 
 msgid "Edit Weakness Cards"
 msgstr "Edytuj Karty Osłabienia"
@@ -4761,14 +4760,14 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
-"W sekcji ${ sectionName } Dziennika kampanii wpisz „MIA” obok ${ "
+"W sekcji ${ sectionName } Dziennika kampanii wpisz „ZwA” obok ${ "
 "partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"W sekcji ${ sectionName } Dziennika kampanii skreśl „MIA” obok ${ "
+"W sekcji ${ sectionName } Dziennika kampanii skreśl „ZwA” obok ${ "
 "partnerName }."
 
 msgid "If the lead investigator was driven <b>insane</b>."
@@ -6934,7 +6933,7 @@ msgstr "Wszystkie"
 
 msgctxt "card-type"
 msgid "Investigator"
-msgstr "Badacze"
+msgstr "Badacz"
 
 msgctxt "SubTypes"
 msgid "All"
