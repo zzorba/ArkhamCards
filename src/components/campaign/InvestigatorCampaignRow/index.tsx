@@ -55,7 +55,7 @@ function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code
     return campaignGuide?.card(code)?.description;
   }, [campaignGuide, code]);
   if (loading || !card) {
-    return <LoadingCardSearchResult />;
+    return <LoadingCardSearchResult noBorder={last} />;
   }
   return (
     <CardSearchResult
