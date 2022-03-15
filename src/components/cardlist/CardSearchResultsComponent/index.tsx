@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';
@@ -140,6 +140,7 @@ function useExpandModesButtons({
           icon="search"
           onPress={toggleMythosMode}
           title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !!hasFilters && (
@@ -147,6 +148,7 @@ function useExpandModesButtons({
           icon="search"
           onPress={clearSearchFilters}
           title={t`Clear search filters`}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
     </View>
@@ -189,6 +191,7 @@ function useExpandSearchButtons({
           icon="search"
           onPress={clearSearchTerm}
           title={t`Clear "${searchTerm}" search`}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !searchText && (
@@ -196,6 +199,7 @@ function useExpandSearchButtons({
           icon="search"
           onPress={toggleSearchText}
           title={t`Search game text`}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !searchBack && (
@@ -203,6 +207,7 @@ function useExpandSearchButtons({
           icon="search"
           onPress={toggleSearchBack}
           title={t`Search card backs`}
+          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { expandModes }

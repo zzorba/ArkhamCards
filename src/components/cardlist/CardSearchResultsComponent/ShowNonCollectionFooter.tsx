@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import {
+  Platform,
   View,
   StyleSheet,
 } from 'react-native';
@@ -31,6 +32,7 @@ export default function ShowNonCollectionFooter({ id, title, onPress, noBorder }
         icon="expand"
         title={title}
         onPress={handleOnPress}
+        useGestureHandler={Platform.OS === 'ios'}
       />
     </View>
   );
