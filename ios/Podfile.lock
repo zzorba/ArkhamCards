@@ -390,9 +390,9 @@ PODS:
     - React
   - react-native-keyevent (0.2.8):
     - React
-  - react-native-netinfo (8.0.0):
+  - react-native-netinfo (8.1.0):
     - React-Core
-  - react-native-pager-view (5.4.11):
+  - react-native-pager-view (5.4.15):
     - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
@@ -464,13 +464,13 @@ PODS:
     - React-jsi (= 0.67.3)
     - React-logger (= 0.67.3)
     - React-perflogger (= 0.67.3)
-  - ReactNativeNavigation (7.25.4):
+  - ReactNativeNavigation (7.26.0):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.25.4)
-  - ReactNativeNavigation/Core (7.25.4):
+    - ReactNativeNavigation/Core (= 7.26.0)
+  - ReactNativeNavigation/Core (7.26.0):
     - HMSegmentedControl
     - React-Core
     - React-RCTImage
@@ -479,43 +479,43 @@ PODS:
     - React-Core
   - RNAppleAuthentication (2.1.5):
     - React-Core
-  - RNCAsyncStorage (1.16.1):
+  - RNCAsyncStorage (1.16.2):
     - React-Core
-  - RNColorMatrixImageFilters (5.2.10):
+  - RNColorMatrixImageFilters (5.2.14):
     - React-Core
-  - RNDeviceInfo (8.4.9):
+  - RNDeviceInfo (8.5.0):
     - React-Core
   - RNFastImage (8.5.11):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (14.5.0):
+  - RNFBApp (14.5.1):
     - Firebase/CoreOnly (= 8.12.1)
     - React-Core
-  - RNFBAuth (14.5.0):
+  - RNFBAuth (14.5.1):
     - Firebase/Auth (= 8.12.1)
     - React-Core
     - RNFBApp
-  - RNFBDatabase (14.5.0):
+  - RNFBDatabase (14.5.1):
     - Firebase/Database (= 8.12.1)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (14.5.0):
+  - RNFBFunctions (14.5.1):
     - Firebase/Functions (= 8.12.1)
     - React-Core
     - RNFBApp
   - RNFS (2.19.0):
     - React-Core
-  - RNGestureHandler (2.2.0):
+  - RNGestureHandler (2.3.2):
     - React-Core
-  - RNGoogleSignin (7.1.0):
+  - RNGoogleSignin (7.2.1):
     - GoogleSignIn (~> 6.1.0)
     - React-Core
   - RNKeychain (8.0.0):
     - React-Core
   - RNLocalize (2.2.0):
     - React-Core
-  - RNReactNativeHapticFeedback (1.13.0):
+  - RNReactNativeHapticFeedback (1.13.1):
     - React-Core
   - RNReanimated (2.4.1):
     - DoubleConversion
@@ -551,8 +551,8 @@ PODS:
     - React-Core
   - RNSpringScrollView (3.0.2):
     - React
-  - RNSVG (12.1.1):
-    - React
+  - RNSVG (12.3.0):
+    - React-Core
   - RNVectorIcons (9.1.0):
     - React-Core
   - SDWebImage (5.11.1):
@@ -910,8 +910,8 @@ SPEC CHECKSUMS:
   react-native-document-picker: 429972f7ece4463aa5bcdd789622b3a674a3c5d1
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
-  react-native-netinfo: ba4ea50d836c60580c59079233c400753fe5bcb6
-  react-native-pager-view: 7f00d63688f7df9fad86dfb0154814419cc5eb8d
+  react-native-netinfo: 379ba2af7d2abcec0c062267abe1c9a977c72bf9
+  react-native-pager-view: b1914469643f40042e65d78cbf3d3dfebd6fb0d9
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   react-native-track-player: 23dd515aacf1d36a0e522ef7fdbc55f13f26d4fb
   React-perflogger: 93d3f142d6d9a46e635f09ba0518027215a41098
@@ -926,28 +926,28 @@ SPEC CHECKSUMS:
   React-RCTVibration: d0361f15ea978958fab7ffb6960f475b5063d83f
   React-runtimeexecutor: af1946623656f9c5fd64ca6f36f3863516193446
   ReactCommon: 650e33cde4fb7d36781cd3143f5276da0abb2f96
-  ReactNativeNavigation: 146bec8f834564f05637b43f469b9ca6e1cbe94f
+  ReactNativeNavigation: b3344828dfe4a696425cbc00d61e05c4c0150f98
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
-  RNCAsyncStorage: b49b4e38a1548d03b74b30e558a1d18465b94be7
-  RNColorMatrixImageFilters: bad88a55a2b1ea57efcaff5a03297d25bd83947e
-  RNDeviceInfo: 4944cf8787b9c5bffaf301fda68cc1a2ec003341
+  RNCAsyncStorage: 7ebe0ebbb533d9336de2734866d172cce6515fce
+  RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
+  RNDeviceInfo: a674f06c5a5bd496aebb809cbc3be61cfd612a65
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBApp: 06c8447270d295edc431bccd55970d8711a07a42
-  RNFBAuth: e248a56b1d28d3b53b54b72a296cf9270df1d96e
-  RNFBDatabase: b3d47ea4f15e80004e84ffc5597bf409a14f9834
-  RNFBFunctions: e1cdc731ad9248672ab45e70f751cdae2e963389
+  RNFBApp: 5bae3002117e55f3c9aa0fb38175dd16c8046c90
+  RNFBAuth: ed314ff1732011c23041570ac4a98bc6070f9f4d
+  RNFBDatabase: 3c0f5efe76714ca3a8838250fdefe26a85f3380e
+  RNFBFunctions: ce53e6f983b38fb87af9934632218a687319212a
   RNFS: fc610f78fdf8bfc89a9e5cc2f898519f4dba1002
-  RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
-  RNGoogleSignin: 233fdfa02522216c19bf02a1e6c60b60a75ffb4c
+  RNGestureHandler: 6e757e487a4834e7280e98e9bac66d2d9c575e9c
+  RNGoogleSignin: 824ef4924ecb709477fc9f39d6557baeded867c4
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLocalize: 6571ea792a7dcb6d217c98c14d9147e9417cef62
-  RNReactNativeHapticFeedback: b83bfb4b537bdd78eb4f6ffe63c6884f7b049ead
+  RNReactNativeHapticFeedback: 4085973f5a38b40d3c6793a3ee5724773eae045e
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: b955e66f1af2849711f13c193debda72b94f8aa0
   RNSpringScrollView: e354167d96f2c3d2f20b186990b2c3946987cb3c
-  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+  RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
