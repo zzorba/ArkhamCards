@@ -2260,7 +2260,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro está desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
@@ -2316,15 +2316,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "os investigadores forjaram um vínculo com Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "você está forjando seu próprio caminho."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "os investigadores encontraram a relíquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -2348,7 +2348,7 @@
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está no escuro."
           },
           {
             "id": "ichtaca_is_wary",
@@ -2424,7 +2424,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "os investigadores resgataram Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -2505,7 +2505,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca partiu sem você."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -2513,7 +2513,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "ouviu o conto de Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -2588,9 +2588,9 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
       {
@@ -2612,6 +2612,12 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "Picareta",
+        "description": "Para quebrar superfícies rochosas.",
+        "cost": 2
+      },
+      {
         "id": "compass",
         "name": "Bússola",
         "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
@@ -2621,12 +2627,6 @@
         "id": "canteen",
         "name": "Canteen",
         "description": "Pode ser reabastecido em córregos e rios.",
-        "cost": 2
-      },
-      {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
         "cost": 2
       },
       {
@@ -3656,7 +3656,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro está desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
@@ -3712,15 +3712,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "os investigadores forjaram um vínculo com Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "você está forjando seu próprio caminho."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "os investigadores encontraram a relíquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -3744,7 +3744,7 @@
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está no escuro."
           },
           {
             "id": "ichtaca_is_wary",
@@ -3816,7 +3816,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "os investigadores resgataram Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -3897,7 +3897,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca partiu sem você."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -3905,7 +3905,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "ouviu o conto de Ichtaca."
           },
           {
             "id": "tasks_completed",
@@ -3951,9 +3951,9 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
       {
@@ -3975,6 +3975,12 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "Picareta",
+        "description": "Para quebrar superfícies rochosas.",
+        "cost": 2
+      },
+      {
         "id": "compass",
         "name": "Bússola",
         "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
@@ -3984,12 +3990,6 @@
         "id": "canteen",
         "name": "Canteen",
         "description": "Pode ser reabastecido em córregos e rios.",
-        "cost": 2
-      },
-      {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
         "cost": 2
       },
       {
