@@ -3519,9 +3519,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 mais o número de Foliões Inocentes embaixo do baralho da agenda",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3549,9 +3550,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 mais o número de Foliões Inocentes embaixo do baralho da agenda",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the act or agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
