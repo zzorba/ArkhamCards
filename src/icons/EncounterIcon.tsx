@@ -447,10 +447,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'unspeakable_fate':
       case 'city_of_the_damned':
       case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
+      case 'unspeakable_fate':
+      case 'unavoidable_demise':
+        return this.circleIcon('unspeakable_fate', size, color);
       case 'witchwork':
       case 'hexcraft':
         return this.circleIcon('witchwork', size, color);
