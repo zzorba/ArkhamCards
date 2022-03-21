@@ -98,8 +98,10 @@ export default function NumberPrompt({
         onSubmit={submit}
       >
         <View style={[styles.promptRow, count === undefined ? undefined : space.paddingS]}>
-          <View style={styles.text}>
-            <Text style={[space.marginLeftS, typography.mediumGameFont]}>{prompt}</Text>
+          <View style={[styles.text, { flex: 1 }]}>
+            <Text style={[space.marginLeftS, typography.mediumGameFont, { flex: 1 }]}>
+              {prompt}
+            </Text>
             { count !== undefined && (
               <View style={[space.paddingLeftS, space.paddingRightM]}>
                 <Text style={[typography.mediumGameFont, typography.regular]}>

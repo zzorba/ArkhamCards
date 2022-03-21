@@ -42,6 +42,7 @@ import {
   ScenarioStatus,
   TraumaEffect,
   GainSuppliesEffect,
+  LoseSuppliesEffect,
   CampaignLogInvestigatorCountEffect,
   PartnerStatusEffect,
   Partner,
@@ -187,6 +188,7 @@ export default class GuidedCampaignLog {
       case 'upgrade_decks':
       case 'save_decks':
       case 'gain_supplies':
+      case 'lose_supplies':
       case 'partner_status':
         return true;
       default:
@@ -280,6 +282,9 @@ export default class GuidedCampaignLog {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
+            case 'lose_supplies':
+              this.handleLoseSuppliesEffect(effect);
+              break;
             case 'gain_supplies':
               this.handleGainSuppliesEffect(effect, input);
               break;
@@ -1181,6 +1186,24 @@ export default class GuidedCampaignLog {
     });
   }
 
+
+  private handleLoseSuppliesEffect(effect: LoseSuppliesEffect) {
+    if (effect.investigator !== 'all') {
+      throw new Error('Unexpected investigator type for lose_supplies effect.');
+    }
+    const investigators = this.getInvestigators(effect.investigator);
+    forEach(investigators, investigator => {
+      const countEffect: CampaignLogInvestigatorCountEffect = {
+        type: 'campaign_log_investigator_count',
+        section: effect.section,
+        investigator: '$input_value',
+        operation: 'cross_out',
+        id: effect.supply
+      };
+      this.handleCampaignLogInvestigatorCountEffect(countEffect, [investigator]);
+    });
+  }
+
   private handleGainSuppliesEffect(effect: GainSuppliesEffect, input?: string[]) {
     if (effect.investigator !== '$input_value') {
       throw new Error('Unexpected investigator type for gain_supplies effect.');
@@ -1371,13 +1394,16 @@ export default class GuidedCampaignLog {
   private updateSectionWithCount(
     section: EntrySection,
     id: string,
-    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input',
+    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input' | 'cross_out',
     value: number
   ): EntrySection {
     // Normal entry
     const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
     switch (operation) {
+      case 'cross_out':
+        section.crossedOut[id] = true;
+        break;
       case 'subtract_input':
         if (entry && entry.type === 'count') {
           entry.count = count - value;
@@ -1422,13 +1448,13 @@ export default class GuidedCampaignLog {
     input?: string[],
     numberInput?: number
   ) {
+    const investigatorSection = this.investigatorSections[effect.section] || {};
+    const investigators = this.getInvestigators(effect.investigator, input);
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
         numberInput :
         effect.value
     ) || 0;
-    const investigatorSection = this.investigatorSections[effect.section] || {};
-    const investigators = this.getInvestigators(effect.investigator, input);
     forEach(investigators, investigator => {
       const section = investigatorSection[investigator] || {
         entries: [],

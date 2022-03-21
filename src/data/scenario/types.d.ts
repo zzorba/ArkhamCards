@@ -59,6 +59,7 @@ export type Effect =
   | UpgradeDecksEffect
   | SaveDecksEffect
   | GainSuppliesEffect
+  | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
@@ -403,7 +404,7 @@ export interface CampaignLogInvestigatorCountEffect {
   id: string;
   investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
-  operation: "set_input" | "set" | "add_input" | "add";
+  operation: "set_input" | "set" | "add_input" | "add" | "cross_out";
   value?: number;
   text?: string;
 }
@@ -479,6 +480,12 @@ export interface Supply {
   description: string;
   cost: number;
   multiple?: boolean;
+}
+export interface LoseSuppliesEffect {
+  type: "lose_supplies";
+  section: string;
+  supply: string;
+  investigator: "all";
 }
 export interface CheckCampaignLogCardsEffect {
   type: "check_campaign_log_cards";
