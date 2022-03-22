@@ -180,7 +180,8 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
         true,
         parsedDeck?.deck.taboo_id,
         undefined,
-        parsedDeck?.investigator
+        parsedDeck?.investigator,
+        false
       );
     }
   }, [colors, overlap, componentId, parsedDeck, singleCardView]);

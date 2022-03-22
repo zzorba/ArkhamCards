@@ -311,7 +311,8 @@ function NewDeckOptionsDialog({
       false,
       tabooSetId,
       undefined,
-      investigator
+      investigator,
+      false
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {

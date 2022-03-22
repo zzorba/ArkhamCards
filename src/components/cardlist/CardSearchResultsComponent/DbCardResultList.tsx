@@ -938,7 +938,8 @@ export default function({
       showSpoilerCards,
       tabooSetOverride,
       deckId,
-      investigator
+      investigator,
+      true
     );
   }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [

@@ -2416,7 +2416,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "badacze zdobyli wsparcie innej ekspedycji."
           },
           {
             "id": "relic_is_missing",
@@ -2540,23 +2540,23 @@
     ],
     "supplies": [
       {
+        "id": "key_of_eztli",
+        "name": "Klucz Eztli",
+        "description": "Klucz Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "name": "Kleista maź",
+        "description": "Tajemnicze berło, które znalazłeś w podziemnych bagnach.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Tajemnicze berło",
+        "description": "Tajemnicze berło, które znalazłeś w sali tronowej.",
         "cost": 0,
         "multiple": false
       },
@@ -4020,144 +4020,144 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# zdobył skafander.",
+            "feminine_text": "#name# zdobyła skafander."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "misja agentki Harper została zakończona."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "misja agentki Harper została zakończona… ale za jaką cenę?"
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen jest żądny zemsty."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham jest żądny zemsty."
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon przebudził się."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagon nadal śpi."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "Istoty z Głębin zalały Ziemię."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "badacze uciekli z Y’ha-nthlei."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "zaczęła się powódź."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly jest żądny zemsty."
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "stróż został pokonany."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "brama do Y’ha-nthlei rozpoznała was jako jej prawowitych strażników."
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman jest żądna zemsty."
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "strażnik Y’ha-nthlei został zabity."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "zaniesiono koronę do latarni."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "zaniesiono posążek do latarni."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "Innsmouth zostało pochłonięte przez przypływ."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little jest żądna zemsty."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "badacze bezpiecznie dotarli do swoich pojazdów."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "zaniesiono opończę do latarni."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh jest żądny zemsty."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "misja nie powiodła się."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "misja się powiodła."
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "rytuał Zakonu został przerwany."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "plany Istot z Głębin zostały pokrzyżowane."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "badacze weszli w posiadanie mapy Y’ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "badacze weszli w posiadanie klucza do Y’ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "badacze dotarli do Sokolego Przylądka przed wschodem słońca."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "skarby głębin zostały zniszczone… ale za jaką cenę?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "skarby głębin przepadły na zawsze."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "Koszmar z Diabelskiej rafy jest martwy."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "Koszmar z Diabelskiej rafy wciąż żyje."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "fale stają się coraz silniejsze."
           }
         ]
       },
@@ -4182,7 +4182,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Dom przy Water Street"
           },
           {
             "id": "accuse_little",
@@ -4194,23 +4194,23 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Skwer New Church Green"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ezoteryczny Zakon Dagona"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Więzienie w Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Zaułek konowała"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Nadbrzeżne slumsy"
           },
           {
             "id": "act_2_setup",
@@ -4283,63 +4283,63 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "umowa z Joe Sargentem"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "podążanie za tropem"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "ucieczka z więzienia"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "interwencja"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "walka z przerażającym diabłem"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "rozmowa z panem Moorem"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "decyzja o trzymaniu się razem"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "odkrycie mistycznej relikwii"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "odkrycie dziwnego posążka"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "odkrycie nieczystej opończy"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "spotkanie sekretnego kultu"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "przerażająca prawda"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "cykl życia Istoty z Głębin"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "spotkanie z Thomasem Dawsonem"
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "bolesna zdrada"
           }
         ]
       },
@@ -4348,27 +4348,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Dom przy Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Więzienie w Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Skwer New Church Green"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ezoteryczny Zakon Dagona"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Zaułek konowała"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Nadbrzeżne slumsy"
           }
         ]
       },

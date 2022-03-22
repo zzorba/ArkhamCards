@@ -250,7 +250,7 @@ function CardSearchResult(props: Props) {
             { card.renderName }
           </Text>
         </View>
-        { true && (
+        { !!(skillIcons || dualFactionIcons || tabooBlock || card.advanced || card.renderSubname || description) && (
           <View style={[styles.row, { backgroundColor: 'transparent' }]}>
             { dualFactionIcons }
             { skillIcons }

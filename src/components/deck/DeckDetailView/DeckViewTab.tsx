@@ -514,7 +514,8 @@ export default function DeckViewTab(props: Props) {
       false,
       tabooSetId,
       parsedDeck.id,
-      investigatorFront
+      investigatorFront,
+      editable
     );
   }, [componentId, data, colors, investigatorFront, tabooSetId, parsedDeck.id, singleCardView, cards]);
 

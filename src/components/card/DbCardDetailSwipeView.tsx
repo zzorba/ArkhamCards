@@ -40,6 +40,7 @@ export interface CardDetailSwipeProps {
   tabooSetId?: number;
   deckId?: DeckId;
   faction?: FactionCodeType;
+  editable?: boolean;
 }
 
 type Props = NavigationProps & CardDetailSwipeProps;
@@ -56,7 +57,7 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
+  const { componentId, cardCodes, editable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
   const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
@@ -182,6 +183,7 @@ function DbCardDetailSwipeView(props: Props) {
         deckId={deckId}
         limit={deck_limit}
         side={currentControl === 'side'}
+        editable={editable}
       />
     );
   }, [deckId, currentCard, currentControl, packInCollection, ignore_collection]);
@@ -239,7 +241,12 @@ function DbCardDetailSwipeView(props: Props) {
       />
       { deckId !== undefined && (
         <>
-          <DeckNavFooter deckId={deckId} componentId={componentId} control="counts" onPress={backPressed} />
+          <DeckNavFooter
+            deckId={deckId}
+            componentId={componentId}
+            control="counts"
+            onPress={backPressed}
+          />
           { deckCountControls }
         </>
       ) }
