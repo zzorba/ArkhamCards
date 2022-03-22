@@ -67,6 +67,7 @@ interface Props {
 
 export default function TwoSidedCardComponent(props: Props) {
   const { componentId, card, backCard, linked, notFirst, simple, width } = props;
+  const custom = card.custom();
   const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);
   const isHorizontal = card.type_code === 'act' ||
@@ -348,7 +349,7 @@ export default function TwoSidedCardComponent(props: Props) {
             </View>
             { isFirst && cardFooter }
           </View>
-          { isFirst && (
+          { isFirst && !card.custom() && (
             <CardFooterButton
               onPressFaq={showFaq}
               onPressTaboo={
@@ -450,7 +451,7 @@ export default function TwoSidedCardComponent(props: Props) {
             {
               backgroundColor: noHeader ? 'transparent' : colors.background,
             },
-            !isFirst || simple ? {
+            !isFirst || simple || custom ? {
               borderBottomLeftRadius: 8,
               borderBottomRightRadius: 8,
             } : undefined,
@@ -479,7 +480,7 @@ export default function TwoSidedCardComponent(props: Props) {
               { isFirst && !simple && cardFooter }
             </View>
           </View>
-          { isFirst && !simple && (
+          { isFirst && !simple && !custom && (
             <CardFooterButton
               onPressFaq={showFaq}
               onPressTaboo={
