@@ -1,15 +1,9 @@
 import React, { useMemo } from 'react';
-import { filter, map } from 'lodash';
+import { map } from 'lodash';
 
-import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
-import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import ChooseInvestigatorPrompt from '@components/campaignguide/prompts/ChooseInvestigatorPrompt';
-import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
-import { ChoicelistInput, InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
+import { ChoicelistInput, InputStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { chooseOneInputChoices, investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
-import { basicTraumaConditionResult } from '@data/scenario/conditionHelper';
+import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ChoiceListComponent, { ListItem } from '@components/campaignguide/prompts/ChoiceListComponent';
 import { UniversalChoices } from '@data/scenario';
 

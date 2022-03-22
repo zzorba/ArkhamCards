@@ -18,7 +18,6 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import NavButton from '@components/core/NavButton';
 import { getAllPacks } from '@reducers';
 import COLORS from '@styles/colors';
-import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
@@ -256,12 +255,12 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     enemyNonElite,
     enemyHunter,
     enemyNonHunter,
-    enemyParley,
     enemyRetaliate,
     enemyAlert,
     enemySpawn,
     enemyPrey,
     enemyAloof,
+    enemyPatrol,
     enemySwarm,
     enemyMassive,
     enemyHealthEnabled,
@@ -346,7 +345,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     return t`Locations: ${searchParts}`;
   }, [listSeperator, shroud, shroudEnabled, clues, cluesEnabled, cluesFixed, hauntedEnabled, locationVictoryEnabled, locationVengeanceEnabled]);
   const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation } = cardFilterData;
-  const { backgroundStyle, borderStyle, width } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   const {
     componentId,
     baseQuery,
@@ -359,9 +358,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     return undefined;
   }, [useCardTraits]);
   const toggleItems: ToggleItem[] = useMemo(() => {
+    const uniqueStr = t`Unique`;
     return [
       { label: t`Fast`, setting: 'fast' },
-      { label: t`Unique` + ' (✷)', setting: 'unique' },
+      { label: `${uniqueStr} (✷)`, setting: 'unique' },
       { label: t`Seal`, setting: 'seal' },
       { label: t`Victory`, setting: 'victory' },
       { label: t`Exile`, setting: 'exile' },
@@ -370,6 +370,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       { label: t`Bonded`, setting: 'bonded' },
       { label: t`Exceptional`, setting: 'exceptional' },
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
   return (
@@ -581,18 +582,6 @@ CardFilterView.options = () => {
 export default CardFilterView;
 
 const styles = StyleSheet.create({
-  toggleStack: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  toggleRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  toggleColumn: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
   xpSection: {
     flexDirection: 'column',
     width: '100%',

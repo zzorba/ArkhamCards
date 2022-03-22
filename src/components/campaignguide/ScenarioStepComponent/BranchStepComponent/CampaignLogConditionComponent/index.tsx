@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Text } from 'react-native';
-import { find, every } from 'lodash';
+import { every } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignLogCardConditionComponent from './CampaignLogCardConditionComponent';

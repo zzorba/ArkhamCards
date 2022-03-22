@@ -1198,7 +1198,7 @@ export default class GuidedCampaignLog {
         section: effect.section,
         investigator: '$input_value',
         operation: 'cross_out',
-        id: effect.supply
+        id: effect.supply,
       };
       this.handleCampaignLogInvestigatorCountEffect(countEffect, [investigator]);
     });

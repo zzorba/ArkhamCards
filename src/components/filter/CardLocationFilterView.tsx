@@ -1,14 +1,12 @@
 import React, { useContext, useMemo } from 'react';
 import {
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
 import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
-import { xs } from '@styles/space';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
@@ -40,9 +38,6 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
     clues,
     cluesEnabled,
     cluesFixed,
-    hauntedEnabled,
-    locationVictoryEnabled,
-    locationVengeanceEnabled,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
@@ -52,6 +47,7 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
       { label: t`Victory`, setting: 'locationVictoryEnabled' },
       { label: t`Vengeance`, setting: 'locationVengeanceEnabled' },
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
@@ -107,16 +103,3 @@ CardLocationFilterView.options = () => {
   };
 };
 export default CardLocationFilterView;
-
-const styles = StyleSheet.create({
-  toggleColumn: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
-  toggleRow: {
-    marginTop: xs,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-});

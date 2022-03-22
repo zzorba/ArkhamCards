@@ -9,7 +9,7 @@ import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, BASIC_WITH_DUPLICATES_QUERY } from '@data/sqlite/query';
+import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY } from '@data/sqlite/query';
 import Card, { searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -22,6 +22,7 @@ import { useFilterButton } from '../hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
+import { useSettingValue } from '@components/core/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -240,6 +241,8 @@ export default function({
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
+  const customContent = useSettingValue('custom_content');
+  const showCustomContent = customContent && (!deckId || deckId.local);
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
   const [searchState, setSearchState] = useState<SearchState>(EMPTY_SEARCH_STATE);
   const toggleSearchText = useCallback(() => setSearchText(!searchText), [searchText]);
@@ -334,12 +337,18 @@ export default function({
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
+    if (!showCustomContent) {
+      queryParts.push(NO_CUSTOM_CARDS_QUERY);
+    }
+    if (!actuallyIncludeDuplicates) {
+      queryParts.push(NO_DUPLICATES_QUERY);
+    }
     return combineQueries(
-      actuallyIncludeDuplicates ? BASIC_WITH_DUPLICATES_QUERY : BASIC_QUERY,
+      BASIC_QUERY,
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters]);
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
   const renderFabIcon = useCallback(() => (

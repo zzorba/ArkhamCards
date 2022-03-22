@@ -1,11 +1,9 @@
 import {
-  cond,
   every,
   filter,
   find,
   findIndex,
   forEach,
-  hasIn,
   keys,
   map,
   sumBy,
@@ -876,8 +874,6 @@ export function investigatorChoiceConditionResult(
     }
   }
 }
-
-
 
 export default {
   conditionResult,

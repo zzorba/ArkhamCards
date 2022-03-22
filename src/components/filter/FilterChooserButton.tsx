@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import DbChooserButton from '@components/core/DbChooserButton';
 import { Brackets } from 'typeorm';
-import { combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
+import { combineQueries, NO_CUSTOM_CARDS_QUERY } from '@data/sqlite/query';
 
 interface Props {
   componentId: string;
@@ -42,10 +42,7 @@ export default function FilterChooserButton({
   const onChange = useCallback((values: string[]) => {
     onFilterChange(setting, values);
   }, [onFilterChange, setting]);
-  const theQuery = useMemo(() =>
-    combineQueries(where('c.browse_visible < 16'), query ? [query] : [], 'and'),
-    [query]
-  );
+  const theQuery = useMemo(() => combineQueries(NO_CUSTOM_CARDS_QUERY, query ? [query] : [], 'and'), [query]);
   return (
     <DbChooserButton
       componentId={componentId}

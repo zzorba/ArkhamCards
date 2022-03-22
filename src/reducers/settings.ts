@@ -34,6 +34,7 @@ interface SettingsState {
   playbackRate?: number | undefined;
   androidOneUiFix?: boolean;
   version?: number;
+  customContent?: boolean;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -50,6 +51,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: CURRENT_REDUX_VERSION,
   hideCampaignDecks: false,
   androidOneUiFix: false,
+  customContent: false,
 };
 
 type SettingAction =
@@ -152,6 +154,11 @@ export default function(
           return {
             ...state,
             androidOneUiFix: action.value,
+          };
+        case 'custom_content':
+          return {
+            ...state,
+            customContent: action.value,
           };
       }
       return state;

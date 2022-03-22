@@ -76,7 +76,7 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
         ) }
       </View>
     );
-  }, [selected, props, width, description, colors, typography, transparent]);
+  }, [selected, editable, props, width, description, colors, typography, transparent]);
   return (
     <View style={space.paddingBottomXs}>
       { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }

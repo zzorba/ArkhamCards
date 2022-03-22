@@ -288,9 +288,8 @@ export const syncCards = async function(
           map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
           c => c.id
         );
-        const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.code, c.linked_card.code] : []));
+        const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
         const dedupedCustomCards = filter(customCards, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
-
         VERBOSE && console.log('Clearing out old custom cards');
         const cardsDb = await db.cards();
         await cardsDb.createQueryBuilder().where(`code like 'z%'`).delete().execute();
@@ -439,7 +438,7 @@ export const syncCards = async function(
     }
     updateProgress(0.35);
     const allCardsToInsert = concat(cardsToInsert, customCards);
-    const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card.code] : []));
+    const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
     const dedupedCards = filter(allCardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
     const flatCards = flatMap(dedupedCards, (c: Card) => {
       return c.linked_card ? [c, c.linked_card] : [c];

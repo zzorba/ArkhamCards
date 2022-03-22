@@ -52,6 +52,16 @@ export function setSingleCardView(value: boolean): SetMiscSettingAction {
   };
 }
 
+
+export function setCustomContent(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'custom_content',
+    value,
+  };
+}
+
+
 export function setAlphabetizeEncounterSets(value: boolean): SetMiscSettingAction {
   return {
     type: SET_MISC_SETTING,

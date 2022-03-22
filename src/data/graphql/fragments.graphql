@@ -37,7 +37,6 @@ fragment SingleCard on full_card {
   real_back_flavor
   real_back_text
   real_back_name
-  double_sided
   doom
   illustrator
   shroud
@@ -52,12 +51,6 @@ fragment SingleCard on full_card {
   deck_requirements
   deck_options
   restrictions
-}
-fragment CoreCard on full_card {
-  ...SingleCard
-  linked_card {
-    ...SingleCard
-  }
 }
 fragment CoreCardText on full_card_text {
   flavor

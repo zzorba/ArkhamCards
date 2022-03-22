@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, flatMap, uniqBy } from 'lodash';
+import { find, forEach, flatMap, uniqBy, keys } from 'lodash';
 import {
   Linking,
   Platform,
@@ -726,14 +726,22 @@ function DeckDetailView({
         ],
       );
     } else {
-      showAlert(
-        t`Upload to ArkhamDB`,
-        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
-        [
-          { text: t`Cancel`, style: 'cancel' },
-          { text: t`Upload`, onPress: uploadLocalDeck },
-        ],
-      );
+      const hasCustomContent = find([...keys(deck.slots), ...keys(deck.sideSlots), ...keys(deck.ignoreDeckLimitSlots)], code => code.startsWith('z'));
+      if (hasCustomContent) {
+        showAlert(
+          t`Deck contains custom content`,
+          t`Sorry, this deck cannot be uploaded to ArkhamDB because it contains fan-made content.\n\nPlease remove all fan-made cards from the deck list and try again.`
+        );
+      } else {
+        showAlert(
+          t`Upload to ArkhamDB`,
+          t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
+          [
+            { text: t`Cancel`, style: 'cancel' },
+            { text: t`Upload`, onPress: uploadLocalDeck },
+          ],
+        );
+      }
     }
   }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
@@ -935,7 +943,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
+        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z')) && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}

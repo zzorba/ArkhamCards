@@ -1,14 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter, map } from 'lodash';
+import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BorderWrapper from '@components/campaignguide/BorderWrapper';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
@@ -25,8 +23,7 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
-import space, { m, s, l } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import space, { m, s } from '@styles/space';
 import NarrationStepComponent from './NarrationStepComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import ActionButton from '../prompts/ActionButton';
@@ -48,7 +45,6 @@ function ScenarioStepComponentContent({
   width,
   switchCampaignScenario,
 }: Props) {
-  const { typography, colors } = useContext(StyleContext);
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   if (step.border_only && !border) {
@@ -162,7 +158,6 @@ export default function ScenarioStepComponent({
   border,
   switchCampaignScenario,
 }: Props) {
-  const { typography, colors } = useContext(StyleContext);
   const { campaignInvestigators } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
 
@@ -208,10 +203,6 @@ export default function ScenarioStepComponent({
 }
 
 const styles = StyleSheet.create({
-  titleWrapper: {
-    marginLeft: m,
-    marginRight: m + s,
-  },
   extraTopPadding: {
     paddingTop: m + s,
   },

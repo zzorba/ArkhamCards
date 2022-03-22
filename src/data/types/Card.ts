@@ -9,7 +9,7 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, Ski
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardFragment, CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
@@ -969,14 +969,12 @@ export default class Card {
     }
   }
 
-  static fromGraphQl(
+  private static gqlToJson(
     card: SingleCardFragment & {
-      linked_card?: SingleCardFragment;
       packs: { name: string }[];
       translations: CoreCardTextFragment[];
       encounter_sets: { name: string}[],
-    },
-    lang: string
+    }
   ) {
     const cardTypeNames: { [key: string]: string } = {
       asset: t`Asset`,
@@ -1024,21 +1022,38 @@ export default class Card {
     if (card.subtype_code) {
       json.subtype_name = subTypeName[card.subtype_code];
     }
+    return json;
+  }
+
+  static fromGraphQl(
+    card: SingleCardFragment & {
+      linked_card?: SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      };
+      packs: { name: string }[];
+      translations: CoreCardTextFragment[];
+      encounter_sets: { name: string}[],
+    },
+    lang: string
+  ) {
+    const json = Card.gqlToJson(card);
     if (card.linked_card) {
-      json.linked_card = Card.fromGraphQl({
-        ...pick(card, ['packs', 'translations', 'encounter_sets']),
+      json.linked_card = Card.gqlToJson({
+        ...pick(card, ['packs', 'encounter_sets']),
         ...card.linked_card,
-      }, lang);
+      });
+      json.linked_to_code = json.linked_card.code;
+      json.linked_to_name = json.linked_card.real_name;
     }
     return Card.fromJson(json,
       {
         [card.pack_code]: {
           position: card.pack_position,
-          cycle_position: 0,
+          cycle_position: 100,
         },
       },
       {
-        '0': {
+        '100': {
           name: t`Fan-Made Content`,
           code: 'fan',
         },

@@ -8,7 +8,7 @@ import { t, ngettext, msgid } from 'ttag';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } from '@reducers';
 import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
-import { combineQueriesOpt, where } from '@data/sqlite/query';
+import { combineQueriesOpt, NO_CUSTOM_CARDS_QUERY } from '@data/sqlite/query';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { clearFilters, toggleFilter, updateFilter } from './actions';
@@ -80,7 +80,7 @@ export default function useFilterFunctions({
       combineQueriesOpt(
         [
           ...(baseQuery ? [baseQuery as Brackets] : []),
-          where('c.browse_visible < 16'),
+          NO_CUSTOM_CARDS_QUERY,
           ...(filterParts ? [filterParts] : []),
         ],
         'and'

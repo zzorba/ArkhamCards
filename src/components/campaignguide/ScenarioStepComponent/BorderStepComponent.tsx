@@ -1,11 +1,10 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import { BorderStep } from '@data/scenario/types';
 import BorderWrapper from '../BorderWrapper';
-import StyleContext from '@styles/StyleContext';
-import space, { l, m, s } from '@styles/space';
+import space, { l } from '@styles/space';
 import { ProcessedScenario } from '@data/scenario';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -24,7 +23,6 @@ interface Props {
 }
 
 export default function BorderStepComponent({ componentId, switchCampaignScenario, step, width, processedScenario, scenarioState, campaignLog }: Props) {
-  const { typography, colors } = useContext(StyleContext);
   const id = `${step.id}_read_the_thing`;
   const decision = useMemo(() => scenarioState.decision(id), [scenarioState, id]);
   const showButton = useMemo(() => decision === undefined && processedScenario.canUndo, [decision, processedScenario.canUndo]);
@@ -73,15 +71,3 @@ export default function BorderStepComponent({ componentId, switchCampaignScenari
     </BorderWrapper>
   );
 }
-
-
-const styles = StyleSheet.create({
-  titleWrapper: {
-    marginLeft: m,
-    marginRight: m + s,
-  },
-  extraTopPadding: {
-    paddingTop: m + s,
-  },
-});
-

@@ -458,7 +458,7 @@ export const GUIDED_CAMPAIGNS = new Set([
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
-  CALL_OF_THE_PLAGUEBEARER
+  CALL_OF_THE_PLAGUEBEARER,
 ]);
 
 export interface CustomCampaignLog {
@@ -589,7 +589,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;

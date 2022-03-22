@@ -54,7 +54,7 @@ interface Props {
 export function ControlComponent({ card, control, useGestureHandler }: Props) {
   switch (control.type) {
     case 'deck':
-      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} useGestureHandler={useGestureHandler} />;
+      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} useGestureHandler={useGestureHandler} editable />;
     case 'shuffle':
       return <ShuffleButton onPress={control.onShufflePress} />;
     case 'count':

@@ -260,6 +260,7 @@ function parseSpecialTokenValuesText(
         counter: {
           prompt: t`Negative modifier`,
           initial_value: 3,
+          min: -10,
           negate: true,
         },
       },

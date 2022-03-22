@@ -1,25 +1,20 @@
 import { filter, find, flatMap, forEach, head, keys, values } from 'lodash';
 
-import { NumberChoices, StringChoices } from '@actions/types';
+import { NumberChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
-  InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   BinaryConditionalChoice,
   CampaignLogCardsCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import {
-  basicTraumaConditionResult,
   campaignDataInvestigatorConditionResult,
   campaignDataChaosBagConditionResult,
-  investigatorCardConditionResult,
   campaignLogConditionResult,
-  investigatorConditionResult,
   binaryCardConditionResult,
   multiConditionResult,
   BinaryResult,
-  InvestigatorResult,
   campaignLogCountConditionResult,
   campaignDataScenarioConditionResult,
   partnerStatusConditionResult,

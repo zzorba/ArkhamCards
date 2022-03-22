@@ -695,10 +695,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
-
-
-
-
     }
   }
 }

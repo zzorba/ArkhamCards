@@ -186,7 +186,7 @@ function DbCardDetailSwipeView(props: Props) {
         editable={editable}
       />
     );
-  }, [deckId, currentCard, currentControl, packInCollection, ignore_collection]);
+  }, [deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
   ): React.ReactNode => {

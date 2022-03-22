@@ -23,7 +23,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
-import { INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
+import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 
@@ -633,6 +633,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'single_card': return !!state.settings.singleCardView;
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
+      case 'custom_content': return !!state.settings.customContent;
     }
   });
 }
@@ -654,9 +655,16 @@ export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean)
   return [value, actuallySetValue];
 }
 
-export function useAllInvestigators(tabooSetOverride?: number, sort?: SortType): [Card[], boolean] {
-  const sortQuery = useMemo(() => sort ? Card.querySort(true, sort) : undefined, [sort]);
-  return useCardsFromQuery({ query: INVESTIGATOR_CARDS_QUERY, sort: sortQuery, tabooSetOverride });
+export function useAllInvestigators(tabooSetOverride?: number, sortType?: SortType): [Card[], boolean] {
+  const customContent = useSettingValue('custom_content');
+  const sort = useMemo(() => sortType ? Card.querySort(true, sortType) : undefined, [sortType]);
+  const query = useMemo(() => {
+    if (!customContent) {
+      return combineQueries(INVESTIGATOR_CARDS_QUERY, [NO_CUSTOM_CARDS_QUERY], 'and');
+    }
+    return INVESTIGATOR_CARDS_QUERY;
+  }, [customContent]);
+  return useCardsFromQuery({ query, sort, tabooSetOverride });
 }
 
 export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {

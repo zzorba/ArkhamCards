@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import space, { m, s } from '@styles/space';
@@ -51,8 +51,5 @@ const styles = StyleSheet.create({
   titleWrapper: {
     marginLeft: m,
     marginRight: m + s,
-  },
-  extraTopPadding: {
-    paddingTop: m + s,
   },
 });

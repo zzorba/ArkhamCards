@@ -28,6 +28,7 @@ export default function PackCardsView({
     <CardSearchComponent
       componentId={componentId}
       baseQuery={query}
+      sort="pack"
       showNonCollection
       includeDuplicates
     />

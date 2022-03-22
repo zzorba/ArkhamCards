@@ -202,7 +202,7 @@ function InvestigatorImage({
         ) }
       </View>
     );
-  }, [card, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
+  }, [card, imgUri, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
 
   if (componentId && card) {
     return (

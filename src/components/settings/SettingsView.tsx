@@ -76,6 +76,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
   const [showCardSingleCardView, setSingleCardView] = useSettingFlag('single_card');
   const [alphabetizeEncounterSets, setAlphabetizeEncounterSets] = useSettingFlag('alphabetize');
+  const [customContent, setCustomContent] = useSettingFlag('custom_content');
+
   const [colorblind, setColorblind] = useSettingFlag('colorblind');
   const [androidOneUiFix, setAndroidOneUiFix] = useSettingFlag('android_one_ui_fix');
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
@@ -224,6 +226,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
                 onValueChange={setAlphabetizeEncounterSets}
+              />
+              <DeckCheckboxButton
+                icon="xp"
+                title={t`Show fan-made content`}
+                value={customContent}
+                onValueChange={setCustomContent}
               />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton
