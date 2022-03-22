@@ -2,7 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 
 import DbChooserButton from '@components/core/DbChooserButton';
 import { Brackets } from 'typeorm';
-import { combineQueries, NO_CUSTOM_CARDS_QUERY } from '@data/sqlite/query';
+import { BASIC_QUERY, combineQueries, NO_CUSTOM_CARDS_QUERY } from '@data/sqlite/query';
+import { useSettingValue } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -39,10 +40,18 @@ export default function FilterChooserButton({
   fixedTranslations,
   includeNone,
 }: Props) {
+  const showCustomContent = useSettingValue('custom_content');
   const onChange = useCallback((values: string[]) => {
     onFilterChange(setting, values);
   }, [onFilterChange, setting]);
-  const theQuery = useMemo(() => combineQueries(NO_CUSTOM_CARDS_QUERY, query ? [query] : [], 'and'), [query]);
+  const theQuery = useMemo(() => combineQueries(
+    BASIC_QUERY,
+    [
+      ...(!showCustomContent ? [NO_CUSTOM_CARDS_QUERY] : []),
+      ...(query ? [query] : []),
+    ],
+    'and'
+  ), [query]);
   return (
     <DbChooserButton
       componentId={componentId}

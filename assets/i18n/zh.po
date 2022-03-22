@@ -5063,6 +5063,7 @@ msgid ""
 "• Tooling and build support: ${ toolingDeveloper }"
 msgstr ""
 
+#, javascript-format
 msgid ""
 "<b>Icon Attribution:</b>\n"
 "• Original icon designs: ${ visualDesigner }"
@@ -5104,6 +5105,30 @@ msgid "Offerings"
 msgstr ""
 
 msgid "Patrol"
+msgstr ""
+
+msgid "Consternation on the Constellation"
+msgstr ""
+
+msgid "Show fan-made content"
+msgstr ""
+
+msgid "Deck contains custom content"
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made content.\n"
+"\n"
+"Please remove all fan-made cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
+"content."
+msgstr ""
+
+msgid "Player"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
@@ -6474,6 +6499,18 @@ msgstr "全部"
 msgctxt "slots"
 msgid "None"
 msgstr "無"
+
+msgctxt "fan-made-uses"
+msgid "Blame"
+msgstr ""
+
+msgctxt "fan-made-uses"
+msgid "Poems"
+msgstr ""
+
+msgctxt "fan-made-uses"
+msgid "Portions"
+msgstr ""
 
 msgctxt "Slots"
 msgid "All"
