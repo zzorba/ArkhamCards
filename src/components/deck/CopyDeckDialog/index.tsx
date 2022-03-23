@@ -125,7 +125,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     setSelectedDeckId(value ? deckId : undefined);
   }, [setSelectedDeckId]);
 
-  const cards = usePlayerCardsFunc(() => uniq(
+  const [cards] = usePlayerCardsFunc(() => uniq(
     flatMap([
       ...(deck?.deck ? [deck.deck] : []),
       ...(baseDeck ? [baseDeck] : []),

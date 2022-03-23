@@ -239,6 +239,7 @@ function CardSearchResult(props: Props) {
       colors.faction.dual :
       colors.faction[card.factionCode()]
     ).text;
+    const custom = card.custom();
     return (
       <View style={styles.cardNameBlock}>
         <View style={[styles.row, space.paddingTopXs, { backgroundColor: 'transparent' }]}>
@@ -248,6 +249,8 @@ function CardSearchResult(props: Props) {
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
+            { custom && '  ' }
+            { custom && <EncounterIcon encounter_code={card.pack_code} size={18} color={colors.L10} /> }
           </Text>
         </View>
         { !!(skillIcons || dualFactionIcons || tabooBlock || card.advanced || card.renderSubname || description) && (
@@ -260,7 +263,7 @@ function CardSearchResult(props: Props) {
                 <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
               </View>
             ) }
-            { (!!card.renderSubname || !!description) && (
+            { (!!card.renderSubname || !!description || custom) && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
                   { description || card.renderSubname }

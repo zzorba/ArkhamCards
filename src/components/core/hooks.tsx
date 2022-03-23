@@ -564,16 +564,19 @@ export function useTabooSetId(tabooSetOverride?: number): number {
   return useSelector((state: AppState) => selector(state, tabooSetOverride)) || 0;
 }
 
-export function usePlayerCards(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
+export function usePlayerCards(codes: string[], tabooSetOverride?: number): [CardsMap | undefined, boolean, boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
+  const [loading, setLoading] = useState(true);
   const { getPlayerCards } = useContext(PlayerCardContext);
   useEffect(() => {
+    setLoading(true);
     let canceled = false;
     if (codes.length) {
       getPlayerCards(codes, tabooSetId).then(cards => {
         if (!canceled) {
           setCards(cards);
+          setLoading(false);
         }
       });
     } else {
@@ -582,8 +585,14 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): Card
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, getPlayerCards]);
-  return cards;
+  }, [tabooSetId, codes, getPlayerCards, setLoading]);
+  const cardsMissing = useMemo(() => {
+    if (codes.length === 0) {
+      return false;
+    }
+    return !cards || !!find(codes, code => !cards[code]);
+  }, [cards, codes]);
+  return [cards, loading, cardsMissing];
 }
 
 export function usePlayerCardsFunc(generator: () => string[], deps: any[], tabooSetOverride?: number) {
@@ -607,11 +616,11 @@ function deckToSlots(deck: LatestDeckT): string[] {
 }
 
 const EMPTY_CARD_LIST: string[] = [];
-export function useLatestDeckCards(deck: LatestDeckT | undefined): CardsMap | undefined {
+export function useLatestDeckCards(deck: LatestDeckT | undefined): [CardsMap | undefined, boolean, boolean] {
   return usePlayerCardsFunc(() => deck ? deckToSlots(deck) : EMPTY_CARD_LIST, [deck], deck?.deck.taboo_id);
 }
 
-export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): CardsMap | undefined {
+export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): [CardsMap | undefined, boolean, boolean] {
   return usePlayerCardsFunc(() => decks ? uniq(flatMap(decks, deckToSlots)) : EMPTY_CARD_LIST, [decks], tabooSetId);
 }
 

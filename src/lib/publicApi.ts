@@ -206,15 +206,20 @@ export const syncRules = async function(
     const rule = Rule.parse(lang || 'en', jsonRule, index);
     return [rule];
   });
+  VERBOSE && console.log('Parsed all rules');
 
   const [simpleRules, complexRules] = partition(allRules, r => !r.rules);
   await insertChunk(sqliteVersion, simpleRules, async rules => await db.insertRules(rules));
-  forEach(complexRules, r => {
-    db.insertRules([
+  VERBOSE && console.log('Inserted all simple rules');
+
+  for (let i  = 0; i < complexRules.length; i++) {
+    const r = complexRules[i];
+    await db.insertRules([
       r,
       ...flatMap(r.rules || [], r2 => [r2, ...(r2.rules || [])]),
     ]);
-  });
+  }
+  VERBOSE && console.log('Inserted all complex rules');
 };
 export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
@@ -416,7 +421,7 @@ export const syncCards = async function(
     await db.clearCache();
     VERBOSE && console.log('Cleared old database');
     updateProgress(0.22);
-
+    VERBOSE && console.log('Starting to import rules');
     await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
     VERBOSE && console.log('Imported rules');
@@ -544,7 +549,8 @@ export const syncCards = async function(
       lastModified,
     };
   } catch (e) {
-    // console.log(e);
+    console.log(e);
+    console.log(e.stack)
     throw e;
   }
 };

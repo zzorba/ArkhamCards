@@ -11,7 +11,7 @@ import DeckList from './DeckList';
 import { Campaign } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import space, { s } from '@styles/space';
+import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -56,7 +56,7 @@ export default function DeckListComponent({
       return (
         <View style={styles.footer}>
           <View style={styles.footerText}>
-            <Text style={[styles.emptyStateText, typography.text, space.marginBottomM]}>
+            <Text style={[typography.text, space.marginBottomM]}>
               { t`No decks yet.\n\nUse the + button to create a new one.` }
             </Text>
           </View>
@@ -66,7 +66,7 @@ export default function DeckListComponent({
     }
     if (searchTerm && empty) {
       return (
-        <View style={[styles.footer, styles.emptyStateText]}>
+        <View style={styles.footer}>
           <View style={styles.footerText}>
             <Text style={[typography.text, typography.center, space.marginBottomM]}>
               { t`No matching decks for "${searchTerm}".` }
@@ -117,16 +117,12 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     marginBottom: 60,
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   footerText: {
-    padding: s,
+    padding: m,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  emptyStateText: {
-    marginLeft: s,
-    marginRight: s,
   },
 });

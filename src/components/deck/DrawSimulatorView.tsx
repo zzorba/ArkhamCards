@@ -97,7 +97,7 @@ function drawHelper(drawState: DrawnState, count: number | 'all'): {
 
 export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const cards = usePlayerCardsFunc(() => keys(slots), [slots], 0);
+  const [cards] = usePlayerCardsFunc(() => keys(slots), [slots], 0);
   const shuffleFreshDeck = useCallback(() => {
     return shuffle(
       flatMap(

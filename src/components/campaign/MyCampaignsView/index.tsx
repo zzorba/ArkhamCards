@@ -126,29 +126,29 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     return [result, result.length !== filteredCampaigns.length];
   }, [filteredCampaigns, showArchived]);
 
-  const conditionalFooter = useMemo(() => {
+  const [conditionalFooter, footerHeight] = useMemo(() => {
     if (filteredCampaigns.length === 0) {
       if (search) {
-        return (
-          <View style={[styles.footer, space.paddingTopS]}>
+        return [(
+          <View style={[styles.footer, space.paddingTopM]}>
             <Text style={[typography.text, typography.center]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
           </View>
-        );
+        ), 64 * fontScale];
       }
-      return (
-        <View style={[styles.footer, space.paddingTopS]}>
+      return [(
+        <View style={[styles.footer, space.paddingTopM]}>
           <Text style={[typography.text]}>
             { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
         </View>
-      );
+      ), 96 * fontScale];
     }
-    return (
+    return [(
       <View style={styles.footer} />
-    );
-  }, [filteredCampaigns, search, typography]);
+    ), 0];
+  }, [filteredCampaigns, search, fontScale, typography]);
   const buttons: React.ReactNode[] = useMemo(() => {
     const result: React.ReactNode[] = [];
     if (hiddenArchived) {
@@ -201,6 +201,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           buttons={buttons}
           refreshing={refreshing}
           footer={footer}
+          footerHeight={footerHeight}
         />
       ) }
     </CollapsibleSearchBox>
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
     marginLeft: m,
     marginRight: m,
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
   },
   gutter: {

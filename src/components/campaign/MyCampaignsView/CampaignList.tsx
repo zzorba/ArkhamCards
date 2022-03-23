@@ -29,6 +29,7 @@ interface Props {
   componentId: string;
   campaigns: MiniCampaignT[];
   footer: JSX.Element;
+  footerHeight?: number;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
   onRefresh?: () => void;
   refreshing?: boolean;
@@ -47,13 +48,14 @@ interface ButtonItemType {
 
 interface FooterType {
   type: 'footer';
+  height: number;
 }
 
 type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
 type ItemHeader = string;
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing, buttons }: Props) {
+export default function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons }: Props) {
   const { fontScale, height, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -136,7 +138,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
 
   const [data, empty] = useMemo(() => {
     const empty = campaigns.length === 0;
-    const footerItem: FooterType = { type: 'footer' };
+    const footerItem: FooterType = { type: 'footer', height: footerHeight || 0 };
     const items: ItemType[] = [
       ...(empty ? [footerItem] : []),
       ...map(campaigns, (campaign): CampaignItemType => {
@@ -154,14 +156,18 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       ...(!empty ? [footerItem] : []),
     ];
     const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
-    return [feed, empty];
+    return [feed, empty, footerHeight];
   }, [campaigns, buttons]);
   const searchHeight = searchBoxHeight(fontScale);
   const renderFooter = useCallback(() => {
     if (refreshing) {
       return <View />;
     }
-    return <View style={{ paddingTop: empty ? searchHeight : 0 }}>{footer}</View>;
+    return (
+      <View style={{ flexDirection: 'column' }}>
+        { footer }
+      </View>
+    );
   }, [footer, refreshing, empty, searchHeight]);
 
   const heightForSection = useCallback((): number => {
@@ -187,8 +193,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       }
       return CampaignItem.computeHeight(fontScale);
     }
+    if (item.type === 'footer') {
+      return refreshing ? 0 : item.height;
+    }
     return ArkhamButton.computeHeight(fontScale, lang);
-  }, [fontScale, lang]);
+  }, [fontScale, lang, refreshing]);
 
   const renderItem = useCallback((item: ItemType) => {
     if (item.type === 'footer') {

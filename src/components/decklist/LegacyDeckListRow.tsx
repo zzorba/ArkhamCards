@@ -77,7 +77,7 @@ function LegacyDeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = usePlayerCardsFunc(() => uniq([
+  const [cards] = usePlayerCardsFunc(() => uniq([
     ...keys(deck.slots),
     ...keys(deck.ignoreDeckLimitSlots),
     ...(previousDeck ? keys(previousDeck.slots) : []),

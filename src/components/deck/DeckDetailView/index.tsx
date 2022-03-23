@@ -5,6 +5,7 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { Action } from 'redux';
@@ -55,6 +56,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -128,6 +130,7 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
+    cardsMissing,
   } = parsedDeckObj;
 
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
@@ -1088,9 +1091,25 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards) {
+  if (!parsedDeck || !cards || cardsMissing) {
     return (
-      <LoadingSpinner large />
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <LoadingSpinner large inline />
+        { cardsMissing && (
+          <View style={space.paddingSideM}>
+            <Text style={[typography.text, space.paddingBottomS]}>
+               {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
+            </Text>
+            <View>
+              <ArkhamButton
+                icon="dismiss"
+                title={t`Done`}
+                onPress={handleBackPress}
+              />
+            </View>
+          </View>
+        ) }
+      </View>
     );
   }
   const menuWidth = Math.min(width * 0.60, 240);

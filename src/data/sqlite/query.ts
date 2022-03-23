@@ -1,17 +1,17 @@
 import { forEach } from 'lodash';
-import { Brackets } from 'typeorm/browser';
+import { NotBrackets, Brackets } from 'typeorm/browser';
 
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import { QueryParams } from '@data/sqlite/types';
+import { QueryBuilder, WhereExpressionBuilder } from 'typeorm';
 
 
 export function where(query: string, params?: QueryParams): Brackets {
   return new Brackets(qb => qb.where(query, params));
 }
 
-export const ON_YOUR_OWN_RESTRICTION = new Brackets(
+export const ON_YOUR_OWN_RESTRICTION = new NotBrackets(
   qb => qb.where(`c.slots_normalized is not null AND c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
-  { negate: true }
 );
 
 export const BASIC_QUERY = where('c.browse_visible != 0');
@@ -52,13 +52,12 @@ export function combineQueriesOpt(
   return undefined;
 }
 
-export function combineQueries(
+function combineQueryHelper(
   firstQuery: Brackets,
   otherQueries: Brackets[],
   operation: 'or' | 'and',
-  negate?: boolean
-) {
-  return new Brackets(qb => {
+): (qb: WhereExpressionBuilder) => WhereExpressionBuilder {
+  return (qb: WhereExpressionBuilder) => {
     qb = qb.where(firstQuery);
     forEach(otherQueries, query => {
       switch (operation) {
@@ -71,5 +70,18 @@ export function combineQueries(
       }
     });
     return qb;
-  }, { negate });
+  }
+}
+
+export function combineQueries(
+  firstQuery: Brackets,
+  otherQueries: Brackets[],
+  operation: 'or' | 'and',
+  negate?: boolean
+) {
+  const builder = combineQueryHelper(firstQuery, otherQueries, operation)
+  if (negate) {
+    return new NotBrackets(builder);
+  }
+  return new Brackets(builder);
 }

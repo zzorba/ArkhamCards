@@ -35,7 +35,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [colors, componentId]);
-  const cards = usePlayerCardsFunc(() => keys(slots), [slots]);
+  const [cards] = usePlayerCardsFunc(() => keys(slots), [slots]);
   const matchingCards = useMemo(() => {
     if (!cards) {
       return [];
