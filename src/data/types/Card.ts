@@ -1070,11 +1070,12 @@ export default class Card {
       },
       {
         '100': {
-          name: t`Fan-Made Content`,
-          code: 'fan',
+          name: json.pack_name || t`Fan-Made Content`,
+          code: card.pack_code,
         },
       },
-      lang
+      lang,
+      true
     );
   }
 
@@ -1092,7 +1093,8 @@ export default class Card {
         code?: string;
       };
     },
-    lang: string
+    lang: string,
+    noFlipping?: boolean
   ): Card {
     if (json.code === '02041') {
       json.subtype_code = null;
@@ -1290,7 +1292,7 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
+    if (!noFlipping && result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
       // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
       result = {
         ...result.linked_card,
