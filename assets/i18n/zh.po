@@ -5131,6 +5131,12 @@ msgstr ""
 msgid "Player"
 msgstr ""
 
+msgid "Barkham Horror"
+msgstr ""
+
+msgid "Show all available cards for parallel"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
