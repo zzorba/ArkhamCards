@@ -249,34 +249,40 @@ export const getAllPacks = createSelector(
         allPacks || DEFAULT_PACK_LIST,
         showCustomContent ? map([
           {
+            code: 'zbh',
+            cycle_code: 'fan',
+            name: t`Barkham Horror`,
+            position: 1,
+          },
+          {
             code: 'zdm',
             cycle_code: 'fan',
             name: t`Dark Matter`,
-            position: 1,
+            position: 2,
           },
           {
             code: 'zaw',
             cycle_code: 'fan',
             name: t`Alice in Wonderland`,
-            position: 2,
+            position: 3,
           },
           {
             code: 'zce',
             cycle_code: 'fan',
             name: t`The Crown of Egil`,
-            position: 3,
+            position: 4,
           },
           {
             code: 'zcp',
             cycle_code: 'fan',
             name: t`Call of the Plaguebearer`,
-            position: 4,
+            position: 5,
           },
           {
             code: 'zcc',
             cycle_code: 'fan',
             name: t`Consternation on the Constellation`,
-            position: 5,
+            position: 6,
           },
         ], (p): Pack => {
           return {

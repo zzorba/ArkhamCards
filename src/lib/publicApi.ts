@@ -505,7 +505,7 @@ export const syncCards = async function(
     const allCardsToInsert = concat(cardsToInsert, customCards);
     const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
     const dedupedCards = filter(allCardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
-    handleDerivativeData(dedupedCards)
+    handleDerivativeData(dedupedCards, dupes)
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     const queryRunner = await db.startTransaction();
     try {

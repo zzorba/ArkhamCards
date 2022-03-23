@@ -204,6 +204,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 <FontSizePicker />
               </View>
               <DeckCheckboxButton
+                icon="xp"
+                title={t`Show fan-made content`}
+                value={customContent}
+                onValueChange={setCustomContent}
+              />
+              <DeckCheckboxButton
                 icon="show"
                 title={t`Color blind friendly icons`}
                 value={colorblind}
@@ -222,16 +228,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 onValueChange={swipeBetweenCardsChanged}
               />
               <DeckCheckboxButton
-                icon="sort-by-alpha"
+                icon="log"
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
                 onValueChange={setAlphabetizeEncounterSets}
-              />
-              <DeckCheckboxButton
-                icon="xp"
-                title={t`Show fan-made content`}
-                value={customContent}
-                onValueChange={setCustomContent}
               />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton

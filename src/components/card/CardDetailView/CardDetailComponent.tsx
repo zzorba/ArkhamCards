@@ -31,6 +31,9 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   const showInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && showInvestigatorCards(card.code);
   }, [card, showInvestigatorCards]);
+  const showParallelInvestigatorCardsPressed = useCallback(() => {
+    showInvestigatorCards && parallelInvestigators.length && showInvestigatorCards(parallelInvestigators[0].code);
+  }, [card, showInvestigatorCards]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;
@@ -62,6 +65,13 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
           title={t`Show all available cards`}
           onPress={showInvestigatorCardsPressed}
         />
+        { parallelInvestigators.length > 0 && (
+          <ArkhamButton
+            icon="parallel"
+            title={t`Show all available cards for parallel`}
+            onPress={showParallelInvestigatorCardsPressed}
+          />
+        ) }
       </View>
       <SignatureCardsComponent
         componentId={componentId}

@@ -2364,7 +2364,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "A fé de Ichtaca é restaurada."
           },
           {
             "id": "investigators_recovered_relic",
@@ -2384,7 +2384,7 @@
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "os investigadores traçaram o caminho a seguir."
           },
           {
             "id": "mended_tear_in_time",
@@ -2562,21 +2562,21 @@
       },
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Provisões",
         "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
+        "name": "Gasolina",
         "description": "Enough for a long journey bycar.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Medicamento",
         "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
@@ -2625,13 +2625,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Cantil",
         "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Mapa",
         "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
         "cost": 3
       },
@@ -3760,7 +3760,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "A fé de Ichtaca é restaurada."
           },
           {
             "id": "investigators_recovered_relic",
@@ -3780,7 +3780,7 @@
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "os investigadores traçaram o caminho a seguir."
           },
           {
             "id": "mended_tear_in_time",
@@ -3925,21 +3925,21 @@
     "supplies": [
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Provisões",
         "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
+        "name": "Gasolina",
         "description": "Enough for a long journey bycar.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Medicamento",
         "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
@@ -3988,13 +3988,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Cantil",
         "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Mapa",
         "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
         "cost": 3
       },
