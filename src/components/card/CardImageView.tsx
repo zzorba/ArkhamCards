@@ -35,7 +35,6 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
   if (!card) {
     return null;
   }
-
   if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
     if (!flipped) {
       return (
@@ -50,7 +49,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
             source={{
-              uri: `https://arkhamdb.com${card.imagesrc}`,
+              uri: card.imageUri(),
             }}
           />
         </ViewControl>
@@ -69,13 +68,12 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
           resizeMode="contain"
           source={{
             // @ts-ignore
-            uri: `https://arkhamdb.com${card.double_sided ? card.backimagesrc : card.linked_card.imagesrc}`,
+            uri: card.double_sided ? card.backImageUri() : card.linked_card?.imageUri(),
           }}
         />
       </ViewControl>
     );
   }
-
   return (
     <ViewControl
       cropWidth={width}
@@ -88,7 +86,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         style={{ height: cardHeight, width: cardWidth }}
         resizeMode="contain"
         source={{
-          uri: `https://arkhamdb.com${card.imagesrc}`,
+          uri: card.imageUri(),
         }}
       />
     </ViewControl>

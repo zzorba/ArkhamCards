@@ -582,6 +582,22 @@ export default class Card {
     return arkham_num(this.health);
   }
 
+  public imageUri(): string | undefined {
+    if (!this.imagesrc) {
+      return undefined;
+    }
+    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    const uri = `${baseUri}${this.imagesrc}`;
+    return uri;
+  }
+  public backImageUri(): string | undefined {
+    if (!this.backimagesrc) {
+      return undefined;
+    }
+    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    return `${baseUri}${this.backimagesrc}`;
+  }
+
   isBasicWeakness(): boolean {
     return this.type_code !== 'scenario' &&
       this.subtype_code === 'basicweakness' &&

@@ -50,8 +50,8 @@ function LocationCardImage({ code, back, name }: { code: string; back: boolean; 
       <TextCard name={name || code} />
     );
   }
-  const image = back ? card.backimagesrc : card.imagesrc;
-  if (!image) {
+  const uri = back ? card.backImageUri() : card.imageUri();
+  if (!uri) {
     return (
       <TextCard name={(back && card.back_name) || card.name} />
     );
@@ -60,7 +60,7 @@ function LocationCardImage({ code, back, name }: { code: string; back: boolean; 
     <FastImage
       style={styles.verticalCardImage}
       source={{
-        uri: `https://arkhamdb.com${image}`,
+        uri,
       }}
       resizeMode="contain"
     />

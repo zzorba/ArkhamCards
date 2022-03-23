@@ -104,8 +104,9 @@ function InvestigatorImage({
       if (yithian) {
         return 'https://arkhamdb.com/bundles/cards/04244.jpg';
       }
-      if (card.imagesrc) {
-        return `https://arkhamdb.com/${card.imagesrc}`;
+      const img = card.imageUri();
+      if (img) {
+        return img;
       }
     }
     return arkhamCardsImg;

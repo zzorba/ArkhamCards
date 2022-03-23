@@ -51,6 +51,8 @@ fragment SingleCard on full_card {
   deck_requirements
   deck_options
   restrictions
+  imagesrc
+  backimagesrc
 }
 fragment CoreCardText on full_card_text {
   flavor

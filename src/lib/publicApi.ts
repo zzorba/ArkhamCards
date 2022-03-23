@@ -218,6 +218,70 @@ export const syncRules = async function(
 };
 export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
+
+function handleDerivativeData(dedupedCards: Card[], dupes: {
+  [code: string]: string[] | undefined;
+}) {
+  const flatCards = flatMap(dedupedCards, (c: Card) => {
+    return c.linked_card ? [c, c.linked_card] : [c];
+  });
+  const encounter_card_counts: {
+    [encounter_code: string]: number | undefined;
+  } = {};
+
+  // Clean up all the bonded stuff.
+  const bondedNames: string[] = [];
+  const playerCards: Card[] = [];
+  forEach(flatCards, card => {
+    if (dupes[card.code]) {
+      card.reprint_pack_codes = dupes[card.code];
+    }
+    if (!card.hidden && card.encounter_code) {
+      encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
+    }
+    if (card.bonded_name) {
+      bondedNames.push(card.bonded_name);
+    }
+    if ((card.deck_limit && card.deck_limit > 0) && !card.spoiler && !(card.xp === undefined || card.xp === null)) {
+      playerCards.push(card);
+    }
+  });
+
+  // Handle all upgrade stuff
+  const cardsByName = values(groupBy(playerCards, card => card.real_name.toLowerCase()));
+  forEach(cardsByName, cardsGroup => {
+    if (cardsGroup.length > 1) {
+      const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
+      if (maxXpCard) {
+        forEach(cardsGroup, card => {
+          const xp = card.xp || 0;
+          card.has_upgrades = xp < (maxXpCard.xp || 0);
+        });
+      }
+    }
+  });
+
+  // Handle all bonded card stuff, and encountercode sizes.
+  const bondedSet = new Set(bondedNames);
+  forEach(flatCards, card => {
+    if (card.encounter_code) {
+      card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
+      encounter_card_counts;
+    }
+    if (bondedSet.has(card.real_name)) {
+      card.bonded_from = true;
+    }
+  });
+
+  // Deal with duplicate ids?
+  forEach(groupBy(flatCards, card => card.id), dupes => {
+    if (dupes.length > 1) {
+      forEach(dupes, (dupe, idx) => {
+        dupe.id = `${dupe.id}_${idx}`;
+      });
+    }
+  });
+}
 export const syncCards = async function(
   updateProgress: (progress: number, msg?: string) => void,
   db: Database,
@@ -290,6 +354,7 @@ export const syncCards = async function(
         );
         const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
         const dedupedCustomCards = filter(customCards, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+        handleDerivativeData(dedupedCustomCards, {});
         VERBOSE && console.log('Clearing out old custom cards');
         const cardsDb = await db.cards();
         await cardsDb.createQueryBuilder().where(`code like 'z%'`).delete().execute();
@@ -440,65 +505,7 @@ export const syncCards = async function(
     const allCardsToInsert = concat(cardsToInsert, customCards);
     const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
     const dedupedCards = filter(allCardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
-    const flatCards = flatMap(dedupedCards, (c: Card) => {
-      return c.linked_card ? [c, c.linked_card] : [c];
-    });
-    const encounter_card_counts: {
-      [encounter_code: string]: number | undefined;
-    } = {};
-
-    // Clean up all the bonded stuff.
-    const bondedNames: string[] = [];
-    const playerCards: Card[] = [];
-    forEach(flatCards, card => {
-      if (dupes[card.code]) {
-        card.reprint_pack_codes = dupes[card.code];
-      }
-      if (!card.hidden && card.encounter_code) {
-        encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
-      }
-      if (card.bonded_name) {
-        bondedNames.push(card.bonded_name);
-      }
-      if ((card.deck_limit && card.deck_limit > 0) && !card.spoiler && !(card.xp === undefined || card.xp === null)) {
-        playerCards.push(card);
-      }
-    });
-
-    // Handle all upgrade stuff
-    const cardsByName = values(groupBy(playerCards, card => card.real_name.toLowerCase()));
-    forEach(cardsByName, cardsGroup => {
-      if (cardsGroup.length > 1) {
-        const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
-        if (maxXpCard) {
-          forEach(cardsGroup, card => {
-            const xp = card.xp || 0;
-            card.has_upgrades = xp < (maxXpCard.xp || 0);
-          });
-        }
-      }
-    });
-
-    // Handle all bonded card stuff, and encountercode sizes.
-    const bondedSet = new Set(bondedNames);
-    forEach(flatCards, card => {
-      if (card.encounter_code) {
-        card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
-        encounter_card_counts;
-      }
-      if (bondedSet.has(card.real_name)) {
-        card.bonded_from = true;
-      }
-    });
-
-    // Deal with duplicate ids?
-    forEach(groupBy(flatCards, card => card.id), dupes => {
-      if (dupes.length > 1) {
-        forEach(dupes, (dupe, idx) => {
-          dupe.id = `${dupe.id}_${idx}`;
-        });
-      }
-    });
+    handleDerivativeData(dedupedCards)
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     const queryRunner = await db.startTransaction();
     try {
