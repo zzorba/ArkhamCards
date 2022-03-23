@@ -4985,9 +4985,6 @@ msgstr ""
 msgid "Consternation on the Constellation"
 msgstr ""
 
-msgid "Show fan-made content"
-msgstr ""
-
 msgid "Deck contains custom content"
 msgstr ""
 
@@ -5010,6 +5007,9 @@ msgid "Barkham Horror"
 msgstr ""
 
 msgid "Show all available cards for parallel"
+msgstr ""
+
+msgid "Show fan-made cards"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
