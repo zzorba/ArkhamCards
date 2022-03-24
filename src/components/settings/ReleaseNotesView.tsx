@@ -29,109 +29,108 @@ function linkPressed(url: string) {
 }
 
 function getReleaseNotes(width: number): ReleaseNote[] {
-  const t = c('release-notes').t;
   return [
     {
       date: new Date('2022-04-01'),
-      title: t`Fan-made cards + Barkham Horror`,
+      title: c('releaseNotes').t`Fan-made cards + Barkham Horror`,
       faction: 'survivor',
       lines: [
-        t`Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard.`,
+        c('releaseNotes').t`Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard.`,
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 589 / 676 }}
             source={{ uri: 'https://img.arkhamcards.com/onboarding/custom-content.png' }}
           />
         </View>,
-        t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
-        t`- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden.`,
-        t`- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial.`,
-        t`Note: You might need to refresh the cards once (using <b>Check ArkhamDB for updates</b>).`,
-        t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`
+        c('releaseNotes').t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
+        c('releaseNotes').t`- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden.`,
+        c('releaseNotes').t`- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial.`,
+        c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check ArkhamDB for updates</b>).`,
+        c('releaseNotes').t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`
       ],
     },
     {
       date: new Date('2022-03-15'),
-      title: t`Campaign sharing released!`,
+      title: c('releaseNotes').t`Campaign sharing released!`,
       faction: 'mystic',
       lines: [
-        t`At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you.`,
-        t`- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app.`,
-        t`- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices.`,
-        t`- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well.`,
-        t`- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag.`,
-        t`- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself.`,
-        t`If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized.`
+        c('releaseNotes').t`At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you.`,
+        c('releaseNotes').t`- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app.`,
+        c('releaseNotes').t`- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices.`,
+        c('releaseNotes').t`- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well.`,
+        c('releaseNotes').t`- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag.`,
+        c('releaseNotes').t`- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself.`,
+        c('releaseNotes').t`If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized.`
       ],
     },
     {
       date: new Date('2021-12-31'),
-      title: t`Find overlap between decks`,
+      title: c('releaseNotes').t`Find overlap between decks`,
       faction: 'rogue',
       lines: [
-        t`If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection).`,
+        c('releaseNotes').t`If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection).`,
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 462 / 400 }}
             source={{ uri: 'https://img.arkhamcards.com/onboarding/overlap.jpeg' }}
           />
         </View>,
-        t`If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign.`,
+        c('releaseNotes').t`If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign.`,
       ],
     },
     {
       date: new Date('2021-11-20'),
-      title: t`Edge of the Earth campaign is now out`,
+      title: c('releaseNotes').t`Edge of the Earth campaign is now out`,
       faction: 'guardian',
       lines: [
-        t`The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible.`,
-        t`Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns.`,
+        c('releaseNotes').t`The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible.`,
+        c('releaseNotes').t`Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns.`,
         <View key="icon" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <ChaosToken iconKey='frost' size="small" />
         </View>,
-        t`Stay warm out there!`,
+        c('releaseNotes').t`Stay warm out there!`,
       ],
     },
     {
       date: new Date('2021-08-15'),
-      title: t`Newly designed chaos odds calculator`,
+      title: c('releaseNotes').t`Newly designed chaos odds calculator`,
       faction: 'seeker',
       lines: [
-        t`<center>\"Never tell me the odds!\" - Han Solo</center>`,
-        t`Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner.`,
-        t`As you can see below, the results are incredible:`,
+        c('releaseNotes').t`<center>\"Never tell me the odds!\" - Han Solo</center>`,
+        c('releaseNotes').t`Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner.`,
+        c('releaseNotes').t`As you can see below, the results are incredible:`,
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 822 / 676 }}
             source={{ uri: 'https://img.arkhamcards.com/onboarding/odds-calculator.png' }}
           />
         </View>,
-        t`In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all.`,
+        c('releaseNotes').t`In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all.`,
         <View key="icon" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <ChaosToken iconKey='bless' size="tiny" />
           <View style={space.paddingLeftS}>
             <ChaosToken iconKey='curse' size="tiny" />
           </View>
         </View>,
-        t`You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!`,
-        t`Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple.`,
+        c('releaseNotes').t`You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!`,
+        c('releaseNotes').t`Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple.`,
       ],
     },
 
     {
       date: new Date('2021-06-15'),
-      title: t`Support for fan-made campaigns`,
+      title: c('releaseNotes').t`Support for fan-made campaigns`,
       faction: 'neutral',
       lines: [
-        t`Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app.`,
-        t`Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:`,
-        t`- Alice in Wonderland by The Beard`,
-        t`- Dark Matter by Axolotl`,
-        t`- Crown of Egil by The Mad Juggler`,
-        t`- Call of the Plaguebearer by Walker Graves`,
-        t`As for standalone scenarios:`,
-        t`- Consternation on the Constellation - by The Mythos Busters`,
-        t`If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`,
+        c('releaseNotes').t`Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app.`,
+        c('releaseNotes').t`Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:`,
+        c('releaseNotes').t`- Alice in Wonderland by The Beard`,
+        c('releaseNotes').t`- Dark Matter by Axolotl`,
+        c('releaseNotes').t`- Crown of Egil by The Mad Juggler`,
+        c('releaseNotes').t`- Call of the Plaguebearer by Walker Graves`,
+        c('releaseNotes').t`As for standalone scenarios:`,
+        c('releaseNotes').t`- Consternation on the Constellation - by The Mythos Busters`,
+        c('releaseNotes').t`If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`,
       ],
     },
   ];
