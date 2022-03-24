@@ -72,6 +72,7 @@ export class MiniCampaignRemote implements MiniCampaignT {
   public investigators: string[];
   public updatedAt: Date;
   public owner_id: string;
+  public remote: boolean = true;
   public linked: undefined | CampaignLink = undefined;
 
   constructor(

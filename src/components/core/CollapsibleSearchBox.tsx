@@ -21,11 +21,12 @@ interface Props {
     showHeader: () => void,
     focus: () => void
   ) => React.ReactNode;
+  banner?: React.ReactNode;
 }
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
-export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
+export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, searchTerm, onSearchChange, children }: Props) {
   const { backgroundStyle, borderStyle, colors, fontScale, shadow, width } = useContext(StyleContext);
   const searchBoxRef = useRef<SearchBoxHandles>(null);
   const focus = useCallback(() => {
@@ -217,15 +218,23 @@ export default function CollapsibleSearchBox({ prompt, advancedOptions, searchTe
         },
       ]}>
         { advancedOptionsBlock }
-        <Animated.View needsOffscreenAlphaCompositing style={[
-          styles.fixed,
-          shadow.small,
-          { width },
-          Platform.select({
-            default: { shadowOpacity },
-            android: { elevation: shadowElevation, borderBottomWidth: shadowBorder, borderColor: colors.L20 },
-          }),
-        ]}>
+        <Animated.View
+          needsOffscreenAlphaCompositing
+          style={[
+            styles.fixed,
+            shadow.small,
+            { width },
+            Platform.select({
+              default: { shadowOpacity },
+              android: { elevation: shadowElevation, borderBottomWidth: shadowBorder, borderColor: colors.L20 },
+            }),
+          ]}
+        >
+          { !advancedOpen && !!banner && (
+            <View style={[styles.banner, { top: searchBoxHeight(fontScale) }]}>
+              { banner }
+            </View>
+          ) }
           <SearchBox
             ref={searchBoxRef}
             onChangeText={onSearchChange}
@@ -250,6 +259,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   slider: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  banner: {
     position: 'absolute',
     top: 0,
     left: 0,

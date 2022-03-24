@@ -14,7 +14,7 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack, RESET_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import Card from '@data/types/Card';
@@ -60,6 +60,9 @@ export default function DiagnosticsView() {
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
 
+  const resetOnboarding = useCallback(() => {
+    dispatch({ type: RESET_ONBOARDING });
+  }, [dispatch]);
   useEffect(() => {
     let canceled = false;
     db.sqliteVersion().then((versioned) => {
@@ -278,6 +281,7 @@ export default function DiagnosticsView() {
           text={schemaCleared ? t`Please close and restart the app` : t`Reset card database`}
         />
         <CardSectionHeader section={{ title: t`Debug` }} />
+        <SettingsItem text={t`Reset onboarding`} onPress={resetOnboarding} />
         <SettingsItem text={t`Sqlite version: ${sqliteVersion}`} onPress={dummyOnPress} />
         { debugSection }
       </ScrollView>

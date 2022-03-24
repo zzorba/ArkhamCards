@@ -865,3 +865,12 @@ export const getArkhamDbDecks = createSelector(
     return [allDecks, !!error];
   }
 );
+
+
+export const getOnboardingDismissed = createSelector(
+  (state: AppState) => state.settings.dismissedOnboarding,
+  (state: AppState, onboarding: string) => onboarding,
+  (dismissedOnboarding, onboarding): boolean => {
+    return !!find(dismissedOnboarding || [], x => x === onboarding);
+  }
+);

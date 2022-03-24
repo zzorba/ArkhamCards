@@ -53,6 +53,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
     case 'OddsCalculator': return require('@components/campaign/OddsCalculatorView').default;
     case 'Settings.Diagnostics': return require('@components/settings/DiagnosticsView').default;
+    case 'Settings.ReleaseNotes': return require('@components/settings/ReleaseNotesView').default;
     case 'Settings.Backup': return require('@components/settings/BackupView').default;
     case 'Settings.MergeBackup': return require('@components/settings/MergeBackupView').default;
     case 'Settings.SafeMode': return require('@components/settings/SafeModeView').default;

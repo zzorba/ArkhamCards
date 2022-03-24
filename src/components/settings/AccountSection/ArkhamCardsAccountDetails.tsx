@@ -13,10 +13,12 @@ import { useUpdateHandle } from '@data/remote/api';
 import StyleContext from '@styles/StyleContext';
 import { useMyProfile } from '@data/remote/hooks';
 import { useComponentDidAppear } from '@components/core/hooks';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
   const { typography } = useContext(StyleContext);
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
+  const { lang } = useContext(LanguageContext);
   const [profile, loadingProfile, refresh] = useMyProfile(false);
 
   useComponentDidAppear(() => {
@@ -66,7 +68,13 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
   if (!userId) {
     return (
       <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
-        <Text style={typography.text}>{t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`}</Text>
+        <Text style={typography.text}>
+          {
+            lang === 'en' ?
+            t`Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends.` :
+            t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`
+          }
+        </Text>
       </View>
     );
   }

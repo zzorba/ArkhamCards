@@ -653,6 +653,18 @@ export interface SetLanguageChoiceAction {
   choiceLang: string;
 }
 
+export const DISMISS_ONBOARDING = 'DISMISS_ONBOARDING';
+export interface DismissOnboardingAction {
+  type: typeof DISMISS_ONBOARDING;
+  onboarding: string;
+}
+
+
+export const RESET_ONBOARDING = 'RESET_ONBOARDING';
+export interface ResetOnboardingAction {
+  type: typeof RESET_ONBOARDING;
+}
+
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';
 export interface CardFetchSuccessAction {
   type: typeof CARD_FETCH_SUCCESS;

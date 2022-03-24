@@ -29,7 +29,6 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
-
 function SearchOptions({
   showArchived,
   toggleShowArchived,
@@ -57,7 +56,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { fontScale } = useContext(StyleContext);
+  const { colors, fontScale } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
@@ -182,29 +181,31 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     );
   }, [conditionalFooter]);
   return (
-    <CollapsibleSearchBox
-      prompt={t`Search campaigns`}
-      searchTerm={search}
-      onSearchChange={setSearch}
-      advancedOptions={{
-        controls: <SearchOptions showArchived={showArchived} toggleShowArchived={toggleShowArchived} />,
-        height: 20 + (fontScale * 20 + 8) + 12,
-      }}
-    >
-      { onScroll => (
-        <CampaignList
-          onScroll={onScroll}
-          componentId={componentId}
-          campaigns={realFilteredCampaigns}
-          standalonesById={standalonesById}
-          onRefresh={refreshCampaigns}
-          buttons={buttons}
-          refreshing={refreshing}
-          footer={footer}
-          footerHeight={footerHeight}
-        />
-      ) }
-    </CollapsibleSearchBox>
+    <View style={{ flex: 1 }}>
+      <CollapsibleSearchBox
+        prompt={t`Search campaigns`}
+        searchTerm={search}
+        onSearchChange={setSearch}
+        advancedOptions={{
+          controls: <SearchOptions showArchived={showArchived} toggleShowArchived={toggleShowArchived} />,
+          height: 20 + (fontScale * 20 + 8) + 12,
+        }}
+      >
+        { onScroll => (
+          <CampaignList
+            onScroll={onScroll}
+            componentId={componentId}
+            campaigns={realFilteredCampaigns}
+            standalonesById={standalonesById}
+            onRefresh={refreshCampaigns}
+            buttons={buttons}
+            refreshing={refreshing}
+            footer={footer}
+            footerHeight={footerHeight}
+          />
+        ) }
+      </CollapsibleSearchBox>
+    </View>
   );
 }
 

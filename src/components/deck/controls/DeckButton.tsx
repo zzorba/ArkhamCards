@@ -51,7 +51,8 @@ export type DeckButtonIcon =
   'edit' |
   'email' |
   'login' |
-  'logo';
+  'logo' |
+  'xp';
 
 interface Props {
   title: string;

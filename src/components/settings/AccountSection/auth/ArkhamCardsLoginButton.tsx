@@ -22,6 +22,7 @@ import { AppState } from '@reducers';
 import { removeLocalCampaign } from '@components/campaign/actions';
 import useConfirmSignupDialog from './useConfirmSignupDialog';
 import { useApolloClient } from '@apollo/client';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -405,6 +406,7 @@ interface Props {
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const dispatch = useDispatch();
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
@@ -460,7 +462,9 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
       <View style={styles.center}>
         <View style={[space.paddingSideS, space.paddingTopXs, space.paddingBottomM]}>
           <Text style={typography.text}>
-            { t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\nMore features are in the works.`}
+            { lang === 'en' ?
+            t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\n\nYou can also upload in-progress campaigns and share them with friends and even share a synchronized chaos bag.` :
+            t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\nMore features are in the works.`}
           </Text>
         </View>
         <View style={[styles.row, space.paddingSideS, space.paddingBottomM]}>
@@ -544,6 +548,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     <View style={[space.paddingTopS, styles.wrapper]}>
       <DeckButton
         title={userId ? t`Sign out` : t`Sign in to app`}
+        detail={userId ? undefined : t`Sync campaigns to share with friends`}
         icon="logo"
         loading={loading}
         color={userId ? 'default' : 'red'}

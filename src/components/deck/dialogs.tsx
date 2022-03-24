@@ -23,6 +23,54 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
+import AppModal from '@components/core/AppModal';
+
+
+interface ModalOptions {
+  content: React.ReactNode;
+  allowDismiss?: boolean;
+  alignment?: 'center' | 'bottom';
+  avoidKeyboard?: boolean;
+}
+
+
+export function useModal({
+  content,
+  allowDismiss,
+  alignment,
+  avoidKeyboard,
+}: ModalOptions): {
+  dialog: React.ReactNode;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
+  showDialog: () => void;
+} {
+  const [visible, setVisible] = useState(false);
+  const onDismiss = useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
+  const dialog = useMemo(() => {
+    return (
+      <AppModal
+        dismissable={allowDismiss}
+        onDismiss={onDismiss}
+        visible={visible}
+        alignment={alignment}
+        avoidKeyboard={avoidKeyboard}
+      >
+        { content }
+      </AppModal>
+    );
+  }, [visible, alignment, onDismiss, content, allowDismiss, avoidKeyboard]);
+  const showDialog = useCallback(() => setVisible(true), [setVisible]);
+  return {
+    visible,
+    setVisible,
+    dialog,
+    showDialog,
+  };
+}
+
 
 interface DialogOptions {
   title: string;
