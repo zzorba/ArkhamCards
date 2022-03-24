@@ -5199,22 +5199,22 @@ msgid ""
 msgstr "주의: 이 캠페인은 앱에 새로 추가된 것으로 약간의 오류가 있을 수 있습니다."
 
 msgid "Durability"
-msgstr ""
+msgstr "내구도"
 
 msgid "Leylines"
-msgstr ""
+msgstr "지맥"
 
 msgid "Offerings"
-msgstr ""
+msgstr "공물"
 
 msgid "Patrol"
-msgstr ""
+msgstr "순찰"
 
 msgid "Consternation on the Constellation"
 msgstr ""
 
 msgid "Deck contains custom content"
-msgstr ""
+msgstr "커스텀 콘텐츠를 포함한 덱"
 
 msgid ""
 "Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
@@ -5222,23 +5222,27 @@ msgid ""
 "\n"
 "Please remove all fan-made cards from the deck list and try again."
 msgstr ""
+"죄송합니다. 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다.\n"
+"\n"
+"덱 목록에서 모든 팬 제작 카드들을 제거한 뒤에 다시 시도해 주십시오."
 
 msgid ""
 "Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
 "content."
 msgstr ""
+"주의: 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다."
 
 msgid "Player"
-msgstr ""
+msgstr "플레이어"
 
 msgid "Barkham Horror"
-msgstr ""
+msgstr "멍컴호러"
 
 msgid "Show all available cards for parallel"
-msgstr ""
+msgstr "사용가능한 모든 평행 카드 보기"
 
 msgid "Show fan-made cards"
-msgstr ""
+msgstr "팬 제작 카드 보기"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -6631,11 +6635,11 @@ msgstr ""
 
 msgctxt "fan-made-uses"
 msgid "Poems"
-msgstr ""
+msgstr "시문"
 
 msgctxt "fan-made-uses"
 msgid "Portions"
-msgstr ""
+msgstr "몫"
 
 msgctxt "Slots"
 msgid "All"
