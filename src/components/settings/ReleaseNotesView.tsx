@@ -170,7 +170,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
         ]}>
           <View style={styles.row}>
             <View style={styles.textColumn}>
-              <Text style={[typography.mediumGameFont, { color: colors.L20 }, typography.center]}>
+              <Text style={[typography.mediumGameFont, { color: '#FFF' }, typography.center]}>
                 { title }
               </Text>
             </View>
