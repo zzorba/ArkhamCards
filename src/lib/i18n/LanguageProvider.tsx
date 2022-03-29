@@ -9,6 +9,7 @@ import { getSystemLanguage } from '@lib/i18n';
 import { getLangChoice, hasDissonantVoices } from '@reducers';
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
+import { NON_LOCALIZED_CARDS } from '@lib/publicApi';
 
 interface Props {
   children: React.ReactNode;
@@ -34,13 +35,10 @@ function getColon(lang: string): string {
 }
 
 function getArkhamDbDomain(lang: string): string {
-  switch (lang) {
-    case 'pt':
-    case 'en':
-      return 'https://arkhamdb.com';
-    default:
-      return `https://${lang}.arkhamdb.com`;
+  if (NON_LOCALIZED_CARDS.has(lang)) {
+    return 'https://arkhamdb.com';
   }
+  return `https://${lang}.arkhamdb.com`;
 }
 
 export default function LanguageProvider({ children }: Props) {

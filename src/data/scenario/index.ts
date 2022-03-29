@@ -112,6 +112,7 @@ function loadAllChaosTokens(lang: string): ChaosTokens {
     case 'ko':
       return require('../../../assets/generated/chaosOdds_ko.json');
     default:
+    case 'vi':
     case 'en':
       return require('../../../assets/generated/chaosOdds.json');
   }
@@ -136,7 +137,10 @@ export function loadTaboos(lang: string): TabooSets | undefined {
     case 'ko': return require('../../../assets/generated/taboos_ko.json');
     case 'pt': return require('../../../assets/generated/taboos_pt.json');
     case 'pl': return require('../../../assets/generated/taboos_pl.json');
-    default: return undefined;
+    case 'vi':
+    case 'en':
+    default:
+      return undefined;
   }
 }
 
@@ -212,6 +216,13 @@ function load(lang: string): {
         allCampaigns: require('../../../assets/generated/allCampaigns_ko.json'),
         encounterSets: require('../../../assets/generated/encounterSets_ko.json'),
         errata: require('../../../assets/generated/campaignErrata_ko.json'),
+      };
+    case 'vi':
+      return {
+        allLogEntries: require('../../../assets/generated/campaignLogs_vi.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_vi.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_vi.json'),
+        errata: require('../../../assets/generated/campaignErrata_vi.json'),
       };
     default:
     case 'en':
