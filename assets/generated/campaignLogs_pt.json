@@ -2296,7 +2296,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "os investigadores cooperaram com os Yithians."
           },
           {
             "id": "earned_alejandros_trust",
@@ -2336,7 +2336,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "os investigadores tiveram suas memórias expurgadas."
           },
           {
             "id": "harbinger_alive",
@@ -2380,7 +2380,7 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "a selva observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
@@ -2396,23 +2396,23 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# caminhos são conhecidos por você."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "o processo saiu pela culatra."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "o processo saiu pela culatra espetacularmente."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "o processo foi aperfeiçoado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "o processo foi bem sucedido."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -2428,7 +2428,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "os investigadores resistiram ao cativeiro."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -2448,6 +2448,11 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>.",
+            "feminine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>."
+          },
+          {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
@@ -2461,11 +2466,6 @@
             "id": "hote_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -2525,7 +2525,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# tarefas foram concluídas"
           },
           {
             "id": "thc_reminder",
@@ -3692,7 +3692,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "os investigadores cooperaram com os Yithians."
           },
           {
             "id": "earned_alejandros_trust",
@@ -3732,7 +3732,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "os investigadores tiveram suas memórias expurgadas."
           },
           {
             "id": "harbinger_alive",
@@ -3776,7 +3776,7 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "a selva observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
@@ -3792,23 +3792,23 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# caminhos são conhecidos por você."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "o processo saiu pela culatra."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "o processo saiu pela culatra espetacularmente."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "o processo foi aperfeiçoado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "o processo foi bem sucedido."
           },
           {
             "id": "relic_is_missing",
@@ -3820,7 +3820,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "os investigadores resistiram ao cativeiro."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -3840,6 +3840,11 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>.",
+            "feminine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>."
+          },
+          {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
@@ -3853,11 +3858,6 @@
             "id": "hote_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3909,7 +3909,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# tarefas foram concluídas"
           },
           {
             "id": "thc_reminder",
