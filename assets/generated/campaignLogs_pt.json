@@ -2276,11 +2276,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se lembra de tudo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está contra você."
           },
           {
             "id": "braziers_are_lit",
@@ -2312,7 +2312,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "os investigadores caíram nas profundezas."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -2360,7 +2360,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está contra você."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -2392,7 +2392,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "o nexus está próximo."
           },
           {
             "id": "paths_known",
@@ -2420,7 +2420,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "a relíquia está desaparecida."
           },
           {
             "id": "rescued_alejandro",
@@ -2485,7 +2485,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# profundidade"
           },
           {
             "id": "hote_consult_alejandro",
@@ -2570,7 +2570,7 @@
       {
         "id": "gasoline",
         "name": "Gasolina",
-        "description": "Enough for a long journey bycar.",
+        "description": "O suficiente para uma longa viagem de carro.",
         "cost": 1,
         "multiple": true
       },
@@ -2589,7 +2589,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Canivete",
         "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
@@ -3672,11 +3672,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se lembra de tudo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está contra você."
           },
           {
             "id": "braziers_are_lit",
@@ -3708,7 +3708,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "os investigadores caíram nas profundezas."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -3756,7 +3756,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está contra você."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -3788,7 +3788,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "o nexus está próximo."
           },
           {
             "id": "paths_known",
@@ -3812,7 +3812,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "a relíquia está desaparecida."
           },
           {
             "id": "rescued_alejandro",
@@ -3877,7 +3877,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# profundidade"
           },
           {
             "id": "hote_consult_alejandro",
@@ -3933,7 +3933,7 @@
       {
         "id": "gasoline",
         "name": "Gasolina",
-        "description": "Enough for a long journey bycar.",
+        "description": "O suficiente para uma longa viagem de carro.",
         "cost": 1,
         "multiple": true
       },
@@ -3952,7 +3952,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Canivete",
         "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
