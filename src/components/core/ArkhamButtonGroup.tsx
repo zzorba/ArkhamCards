@@ -16,6 +16,7 @@ interface Props {
   selectedIndexes: number[];
   onPress: (indexes: number[]) => void;
   componentId: string;
+  interaction?: 'radio'
 }
 
 export function SingleButton({ idx, content, last, onPressIndex, height, selected }: {
@@ -59,6 +60,7 @@ export default function ArkhamButtonGroup({
   selectedIndexes,
   onPress,
   componentId,
+  interaction,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
@@ -67,10 +69,16 @@ export default function ArkhamButtonGroup({
   }, componentId, [selectedIndexes]);
   const onPressIndex = useCallback((idx: number) => {
     const selection = new Set(localSelectedIndexes);
-    const newSelection = selection.has(idx) ? filter(localSelectedIndexes, x => x !== idx) : [...localSelectedIndexes, idx];
+    let newSelection = localSelectedIndexes;
+
+    if (interaction === 'radio') {
+      newSelection = selection.has(idx) ? [] : [idx];
+    } else {
+      newSelection = selection.has(idx) ? filter(localSelectedIndexes, x => x !== idx) : [...localSelectedIndexes, idx];
+    }
     setLocalSelectedIndexes(newSelection);
     setTimeout(() => onPress(newSelection), 10);
-  }, [localSelectedIndexes, setLocalSelectedIndexes, onPress]);
+  }, [localSelectedIndexes, interaction, setLocalSelectedIndexes, onPress]);
   const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
   const height = 28 * fontScale + 20;
   return (
