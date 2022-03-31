@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
+import { NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
+import Animated, { useDerivedValue, interpolate, useAnimatedStyle, useAnimatedScrollHandler, withTiming, useSharedValue } from 'react-native-reanimated';
 
 import SearchBox, { SearchBoxHandles, searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
@@ -17,7 +18,7 @@ interface Props {
   searchTerm: string;
   onSearchChange: (text: string, submit: boolean) => void;
   children: (
-    handleScroll: (...args: any[]) => void,
+    handleScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void,
     showHeader: () => void,
     focus: () => void
   ) => React.ReactNode;
@@ -34,40 +35,21 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
   }, [searchBoxRef]);
   const [visible, setVisible] = useState(true);
   const [advancedOpen, setAdvancedOpen] = useState(false);
-  const scrollAnimPos = useRef(new Animated.Value(1));
-  const scrollAnim = useRef(new Animated.Value(1));
-  const advancedToggleAnim = useRef(new Animated.Value(0));
+  const scrollAnimPos = useSharedValue(1);
+  const scrollAnim = useSharedValue(1);
+  const advancedToggleAnim = useSharedValue(0);
   const lastOffsetY = useRef(0);
-  const scrollY = useRef(new Animated.Value(0));
   const [offsetY, setOffsetY] = useThrottle(0, 4);
-  const onScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+
+  const scrollY = useRef(0);
+  const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    scrollY.current = event.nativeEvent.contentOffset.y;
     setOffsetY(event.nativeEvent.contentOffset.y);
-  }, [setOffsetY]);
-  const handleScroll = useMemo(() => Animated.event(
-    [{ nativeEvent: { contentOffset: { y: scrollY.current } } }],
-    {
-      listener: onScroll,
-      useNativeDriver: false,
-    },
-  ), [onScroll]);
-
-
+  }, []);
   const animateScroll = useCallback((visible: boolean) => {
     if (!advancedOpen) {
-      scrollAnim.current.stopAnimation(() => {
-        Animated.timing(scrollAnim.current, {
-          toValue: visible ? 1 : 0,
-          duration: 350,
-          useNativeDriver: false,
-        }).start();
-      });
-      scrollAnimPos.current.stopAnimation(() => {
-        Animated.timing(scrollAnimPos.current, {
-          toValue: visible ? 1 : 0,
-          duration: 350,
-          useNativeDriver: true,
-        }).start();
-      })
+      scrollAnim.value = withTiming(visible ? 1 : 0, { duration: 350 });
+      scrollAnimPos.value = withTiming(visible ? 1 : 0, { duration: 350 });
       setVisible(visible);
     }
   }, [scrollAnim, setVisible, advancedOpen]);
@@ -81,55 +63,56 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
       animateScroll(false);
     }
   }, [searchTerm, visible, animateScroll]);
+  const searchBarHeight = searchBoxHeight(fontScale);
   useEffect(() => {
     /**
      * This is the throttle scrollEvent, throttled so we check it slightly
      * less often and are able to make decisions about whether we update
      * the stored scrollY or not.
      */
-    if (offsetY <= 0) {
+    if (offsetY <= searchBarHeight * 2) {
+      showHeader();
+      return;
+    }
+    const delta = Math.abs(offsetY - lastOffsetY.current);
+    if (delta < SCROLL_DISTANCE_BUFFER) {
+      // Not a long enough scroll, don't update scrollY and don't take any
+      // action at all.
+      return;
+    }
+    // We have a decent sized scroll so we will make a direction based
+    // show/hide decision UNLESS we are near the top/bottom of the content.
+    const scrollingUp = offsetY < lastOffsetY.current;
+    if (scrollingUp) {
       showHeader();
     } else {
-      const delta = Math.abs(offsetY - lastOffsetY.current);
-      if (delta < SCROLL_DISTANCE_BUFFER) {
-        // Not a long enough scroll, don't update scrollY and don't take any
-        // action at all.
-        return;
-      }
-
-      // We have a decent sized scroll so we will make a direction based
-      // show/hide decision UNLESS we are near the top/bottom of the content.
-      const scrollingUp = offsetY < lastOffsetY.current;
-      if (scrollingUp) {
-        showHeader();
-      } else {
-        hideHeader();
-      }
-      lastOffsetY.current = offsetY;
+      hideHeader();
     }
+    lastOffsetY.current = offsetY;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offsetY]);
 
 
   const toggleAdvanced = useCallback(() => {
-    advancedToggleAnim.current.stopAnimation(() => {
-      Animated.timing(advancedToggleAnim.current, {
-        toValue: !advancedOpen ? 1 : 0,
-        duration: 250,
-        useNativeDriver: false,
-      }).start();
-    });
+    advancedToggleAnim.value = withTiming(!advancedOpen ? 1 : 0, { duration: 250 });
     setAdvancedOpen(!advancedOpen);
   }, [setAdvancedOpen, advancedToggleAnim, advancedOpen]);
+  const advancedOptionsHeight = advancedOptions?.height || 0;
+  const advancedBlockAnimation = useAnimatedStyle(() => {
+    const translateY = interpolate(
+      advancedToggleAnim.value,
+      [0, 1],
+      [-(searchBarHeight + advancedOptionsHeight), searchBarHeight],
+    );
+    return {
+      transform: [{ translateY }],
+    };
+  }, [advancedOptionsHeight, advancedToggleAnim, searchBarHeight]);
+
   const advancedOptionsBlock = useMemo(() => {
     if (!advancedOptions) {
       return null;
     }
-    const height = searchBoxHeight(fontScale);
-    const controlHeight = advancedToggleAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [-(height + advancedOptions.height), height],
-    });
     return (
       <Animated.View needsOffscreenAlphaCompositing style={[
         styles.advancedOptions,
@@ -137,9 +120,9 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
         {
           backgroundColor: colors.L20,
           width,
-          height: advancedOptions.height,
-          transform: [{ translateY: controlHeight }],
+          height: advancedOptionsHeight,
         },
+        advancedBlockAnimation,
         Platform.select({
           default: {},
           android: {
@@ -149,48 +132,45 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
         }),
       ]}>
         <View style={[styles.textSearchOptions, {
-          height: advancedOptions.height,
+          height: advancedOptionsHeight,
         }]}>
           { advancedOptions.controls }
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, fontScale, width, advancedToggleAnim, colors, shadow.medium]);
-
-  const translateY = advancedOpen ? 0 : scrollAnimPos.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-searchBoxHeight(fontScale), 0],
-  });
-  const shadowOpacity = Animated.multiply(
-    advancedToggleAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0.25, 0],
-    }),
-    scrollAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 1],
-    }),
-  );
-  const shadowElevation = Animated.multiply(
-    advancedToggleAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [6, 0],
-    }),
-    scrollAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 1],
-    }),
-  );
-  const shadowBorder = Animated.multiply(
-    advancedToggleAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0.2, 0],
-    }),
-    scrollAnim.current.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 1],
-    }),
-  );
+  }, [advancedOptions, advancedBlockAnimation, fontScale, width, advancedToggleAnim, colors, shadow.medium]);
+  const wrapperStyle = useAnimatedStyle(() => {
+    const translateY = advancedOpen ? 0 : interpolate(
+      scrollAnimPos.value,
+      [0, 1],
+      [-searchBarHeight, 0],
+    );
+    return {
+      transform: [{ translateY }],
+    }
+  }, [searchBarHeight, scrollAnimPos, advancedOpen]);
+  const isAndroid = Platform.OS === 'android';
+  const shadowColor = useDerivedValue(() => colors.L20, [colors.L20]);
+  const shadowStyle = useAnimatedStyle(() => {
+    if (isAndroid) {
+      const shadowElevation = (
+        interpolate(advancedToggleAnim.value, [0, 1], [6, 0]) *
+        interpolate(scrollAnim.value, [0, 1], [0, 1])
+      );
+      const shadowBorder = (
+        interpolate(advancedToggleAnim.value, [0, 1], [0.2, 0]) *
+        interpolate(scrollAnim.value, [0, 1], [0, 1])
+      );
+      return {
+        elevation: shadowElevation,
+        borderBottomWidth: shadowBorder,
+        borderColor: shadowColor.value,
+      };
+    }
+    const shadowOpacity = interpolate(advancedToggleAnim.value, [0, 1], [0.25, 0]) *
+      interpolate(scrollAnim.value, [0, 1], [0, 1]);
+    return { shadowOpacity: shadowOpacity };
+  }, [advancedToggleAnim, scrollAnim, isAndroid, shadowColor]);
   return (
     <View style={[styles.wrapper, backgroundStyle]}>
       <View style={[styles.container, backgroundStyle, borderStyle]}>
@@ -212,10 +192,10 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
         backgroundStyle,
         {
           width,
-          transform: [{ translateY }],
           height: searchBoxHeight(fontScale),
           zIndex: 2,
         },
+        wrapperStyle
       ]}>
         { advancedOptionsBlock }
         <Animated.View
@@ -224,10 +204,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
             styles.fixed,
             shadow.small,
             { width },
-            Platform.select({
-              default: { shadowOpacity },
-              android: { elevation: shadowElevation, borderBottomWidth: shadowBorder, borderColor: colors.L20 },
-            }),
+            shadowStyle,
           ]}
         >
           { !advancedOpen && !!banner && (

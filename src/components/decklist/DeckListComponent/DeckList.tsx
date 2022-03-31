@@ -1,11 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { filter, map, take, uniq } from 'lodash';
-import {
-  FlatList,
-  Platform,
-  RefreshControl,
-  StyleSheet,
-} from 'react-native';
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
@@ -20,6 +14,7 @@ import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useSingleCard from '@components/card/useSingleCard';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -97,9 +92,7 @@ export default function DeckList({
   }, [deckIds, deckClicked, investigators, searchTerm]);
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
 
-  const renderItem = useCallback(({ item: { deckId } }: {
-    item: Item;
-  }) => {
+  const renderItem = useCallback(({ deckId }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}
@@ -111,35 +104,17 @@ export default function DeckList({
   }, [deckClicked, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
   const height = searchBoxHeight(fontScale);
+  const renderHeader = useCallback(() => header || null, [header]);
+  const renderFooter = useCallback(() => footer(items.length === 0), [footer, items.length]);
   return (
-    <FlatList
-      refreshControl={
-        <RefreshControl
-          refreshing={debouncedRefreshing}
-          onRefresh={onRefresh}
-          tintColor={colors.lightText}
-          progressViewOffset={height}
-        />
-      }
-      initialNumToRender={8}
-      contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
-      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
+    <ArkhamLargeList
+      refreshing={debouncedRefreshing}
+      onRefresh={onRefresh}
       onScroll={onScroll}
-      keyboardShouldPersistTaps="always"
-      keyboardDismissMode="on-drag"
-      style={[styles.container, backgroundStyle]}
       data={items}
       renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      ListHeaderComponent={header}
-      removeClippedSubviews
-      ListFooterComponent={footer(items.length === 0)}
+      renderHeader={renderHeader}
+      renderFooter={renderFooter}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

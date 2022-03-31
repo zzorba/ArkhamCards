@@ -4,13 +4,12 @@ import { set } from 'lodash';
 import { Animated, StyleSheet, View } from 'react-native';
 import tinycolor from 'tinycolor2';
 
-import { RefreshHeader, RefreshHeaderPropType, RefreshHeaderStateType } from 'react-native-spring-scrollview';
 import StyleContext from '@styles/StyleContext';
 import { searchBoxHeight } from './SearchBox';
 
 const loadingAnimation = require('../../../assets/loading.json');
 
-function colorizeLottie(json: any, colorByPath: Record<string, string>) {
+export function colorizeLottie(json: any, colorByPath: Record<string, string>) {
   const nextJson = JSON.parse(JSON.stringify(json));
 
   Object.entries(colorByPath).forEach(([path, color]) => {
@@ -103,48 +102,6 @@ export default function ArkhamLoadingSpinner({
       />
     </View>
   );
-}
-
-export function useArkhamLottieHeader(noSearch?: boolean) {
-  const { fontScale } = useContext(StyleContext);
-  return useMemo(() => {
-    const searchHeight = searchBoxHeight(fontScale);
-    return class ArkhamLottieHeader extends RefreshHeader<RefreshHeaderStateType> {
-      ref: React.RefObject<LottieView>;
-
-      constructor(props: RefreshHeaderPropType) {
-        super(props);
-
-        this.ref = React.createRef<LottieView>();
-      }
-      static style = 'stickyContent';
-      static height: number = searchHeight;
-
-      componentDidUpdate(prevProps: RefreshHeaderPropType, prevState: RefreshHeaderStateType) {
-        if (this.state.status !== prevState.status) {
-          if (this.state.status === 'refreshing') {
-            this.ref.current?.resume();
-          }
-        }
-      }
-      componentDidMount() {
-        if (this.state.status === 'refreshing') {
-          this.ref.current?.play();
-        }
-      }
-      render() {
-        return (
-          <View style={[styles.wrapper, { paddingTop: noSearch ? 0 : searchHeight }]}>
-            <ArkhamLoadingSpinner
-              lottieRef={this.ref}
-              autoPlay
-              loop
-            />
-          </View>
-        );
-      }
-    }
-  }, [noSearch, fontScale]);
 }
 
 const styles = StyleSheet.create({

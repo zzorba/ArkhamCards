@@ -155,8 +155,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       }),
       ...(!empty ? [footerItem] : []),
     ];
-    const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
-    return [feed, empty, footerHeight];
+    return [items, empty, footerHeight];
   }, [campaigns, buttons]);
   const searchHeight = searchBoxHeight(fontScale);
   const renderFooter = useCallback(() => {
@@ -170,13 +169,9 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     );
   }, [footer, refreshing, empty, searchHeight]);
 
-  const heightForSection = useCallback((): number => {
-    return searchHeight + (!!userId && !refreshing ? connectionProblemBannerHeight : 0);
-  }, [userId, searchHeight, refreshing, connectionProblemBannerHeight]);
-
-  const renderSection = useCallback((): React.ReactElement<any> => {
+  const renderHeader = useCallback((): React.ReactElement<any> => {
     return (
-      <View style={{ paddingTop: searchHeight }}>
+      <View>
         { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
       </View>
     );
@@ -233,12 +228,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       data={data}
       refreshing={!!refreshing}
       heightForItem={heightForItem}
-      heightForSection={heightForSection}
       renderItem={renderItem}
-      renderSection={renderSection}
-      updateTimeInterval={100}
-      groupCount={8}
-      groupMinHeight={height}
+      renderHeader={renderHeader}
     />
   );
 }

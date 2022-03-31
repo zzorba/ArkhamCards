@@ -370,11 +370,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
 
   const hasSearch = !!handleScroll;
   const data: FriendFeedItem[] = useMemo(() => {
-    const paddingItem: PaddingItem | undefined = hasSearch ? { type: 'padding', id: 'padding', padding: searchBoxHeight(fontScale) } : undefined;
-    return [
-      ...(paddingItem ? [paddingItem] : []),
-      ...toFeed(isSelf, profile),
-    ];
+    return toFeed(isSelf, profile);
   }, [toFeed, fontScale, isSelf, profile, hasSearch]);
   const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
@@ -412,14 +408,9 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
       refreshing={isRefreshing}
       onRefresh={doRefresh}
       onScroll={handleScroll}
-      data={[{ items: data }]}
+      data={data}
       renderItem={renderItem}
       heightForItem={heightItem}
-      renderSection={renderItem}
-      heightForSection={heightItem}
-      updateTimeInterval={100}
-      groupCount={4}
-      groupMinHeight={height}
     />
   ), doRefresh];
 }

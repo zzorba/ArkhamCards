@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, map } from 'lodash';
 import {
-  FlatList,
   Keyboard,
   Platform,
   View,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -110,7 +110,7 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
       onSearchChange={setSearch}
     >
       { onScroll => (
-        <FlatList
+        <Animated.FlatList
           contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
           contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
           contentContainerStyle={backgroundStyle}
