@@ -3521,9 +3521,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3551,9 +3552,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of Innocent Revelers underneat the agenda deck",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {

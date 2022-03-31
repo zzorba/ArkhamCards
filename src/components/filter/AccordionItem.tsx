@@ -1,11 +1,10 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
-  Animated,
-  Easing,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming, interpolate } from 'react-native-reanimated';
 import { t } from 'ttag';
 
 import ToggleButton from '@components/core/ToggleButton';
@@ -23,18 +22,17 @@ interface Props {
 
 export default function AccordionItem({ label, height, children, enabled, toggleName, onToggleChange }: Props) {
   const { fontScale, borderStyle, typography } = useContext(StyleContext);
-  const heightAnim = useRef(new Animated.Value(enabled ? 1 : 0));
+  const heightAnim = useSharedValue(enabled ? 1 : 0);
 
   useEffect(() => {
-    heightAnim.current.stopAnimation(() => {
-      Animated.timing(heightAnim.current, {
-        toValue: enabled ? 1 : 0,
-        duration: 250,
+    heightAnim.value = withTiming(
+      enabled ? 1 : 0,
+      {
+        duration: 200,
         easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
-        useNativeDriver: false,
-      }).start();
-    });
-  }, [enabled]);
+      }
+    );
+  }, [enabled, heightAnim]);
 
   const togglePressed = useCallback(() => {
     onToggleChange(toggleName, !enabled);
@@ -58,13 +56,13 @@ export default function AccordionItem({ label, height, children, enabled, toggle
   }, [label, enabled, typography, togglePressed]);
 
   const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
-  const containerHeight = heightAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height],
-    extrapolate: 'clamp',
-  });
+  const containerStyle = useAnimatedStyle(() => {
+    return {
+      height: interpolate(heightAnim.value, [0, 1], [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height]),
+    };
+  }, [height, COLLAPSED_HEIGHT]);
   return (
-    <Animated.View style={[styles.container, borderStyle, { height: containerHeight }]}>
+    <Animated.View style={[styles.container, borderStyle, containerStyle]}>
       { labelSection }
       { children }
     </Animated.View>

@@ -2260,11 +2260,11 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro está desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro continua sua pesquisa por conta própria."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -2276,19 +2276,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se lembra de tudo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está contra você."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "os braseiros estão acesos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "os braseiros permanecem apagados."
           },
           {
             "id": "cleared_path_to_temple",
@@ -2296,11 +2296,11 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "os investigadores cooperaram com os Yithians."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "os investigadores ganharam a confiança de Alejandro"
           },
           {
             "id": "earned_ichtacas_trust",
@@ -2308,35 +2308,35 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "o tecido do tempo é desfeito."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "os investigadores caíram nas profundezas."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "os investigadores forjaram um vínculo com Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "você está forjando seu próprio caminho."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "os investigadores encontraram a relíquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "os investigadores deram a custódia da relíquia a Alejandro"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "os investigadores deram a custódia da relíquia a Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "os investigadores tiveram suas memórias expurgadas."
           },
           {
             "id": "harbinger_alive",
@@ -2344,11 +2344,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca tem confiança em você."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está no escuro."
           },
           {
             "id": "ichtaca_is_wary",
@@ -2360,11 +2360,11 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está contra você."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "A fé de Ichtaca é restaurada."
           },
           {
             "id": "investigators_recovered_relic",
@@ -2372,47 +2372,47 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "os investigadores salvaram a civilização das Serpentes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "os investigadores salvaram a civilização dos Yithians."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "a selva observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "os investigadores traçaram o caminho a seguir."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "os investigadores consertaram o rasgo a tempo."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "o nexus está próximo."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# caminhos são conhecidos por você."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "o processo saiu pela culatra."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "o processo saiu pela culatra espetacularmente."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "o processo foi aperfeiçoado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "o processo foi bem sucedido."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -2420,23 +2420,23 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "a relíquia está desaparecida."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "os investigadores resgataram Alejandro."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "os investigadores resistiram ao cativeiro."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "os investigadores selaram a Relíquia das Eras para sempre."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "os investigadores voltam no tempo"
           },
           {
             "id": "wait_for_additional_supplies",
@@ -2447,6 +2447,11 @@
       {
         "section": "hidden",
         "entries": [
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>.",
+            "feminine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>."
+          },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
@@ -2461,11 +2466,6 @@
             "id": "hote_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -2485,7 +2485,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# profundidade"
           },
           {
             "id": "hote_consult_alejandro",
@@ -2505,7 +2505,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca partiu sem você."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -2513,7 +2513,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "ouviu o conto de Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -2525,7 +2525,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# tarefas foram concluídas"
           },
           {
             "id": "thc_reminder",
@@ -2562,21 +2562,21 @@
       },
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Provisões",
         "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "name": "Gasolina",
+        "description": "O suficiente para uma longa viagem de carro.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Medicamento",
         "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
@@ -2588,9 +2588,9 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "id": "pocketknife",
+        "name": "Canivete",
+        "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
       {
@@ -2612,6 +2612,12 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "Picareta",
+        "description": "Para quebrar superfícies rochosas.",
+        "cost": 2
+      },
+      {
         "id": "compass",
         "name": "Bússola",
         "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
@@ -2619,19 +2625,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Cantil",
         "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
-        "cost": 2
-      },
-      {
         "id": "map",
-        "name": "Map",
+        "name": "Mapa",
         "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
         "cost": 3
       },
@@ -3656,11 +3656,11 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro está desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro continua sua pesquisa por conta própria."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -3672,19 +3672,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro se lembra de tudo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está contra você."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "os braseiros estão acesos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "os braseiros permanecem apagados."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3692,11 +3692,11 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "os investigadores cooperaram com os Yithians."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "os investigadores ganharam a confiança de Alejandro"
           },
           {
             "id": "earned_ichtacas_trust",
@@ -3704,35 +3704,35 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "o tecido do tempo é desfeito."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "os investigadores caíram nas profundezas."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "os investigadores forjaram um vínculo com Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "você está forjando seu próprio caminho."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "os investigadores encontraram a relíquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "os investigadores deram a custódia da relíquia a Alejandro"
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "os investigadores deram a custódia da relíquia a Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "os investigadores tiveram suas memórias expurgadas."
           },
           {
             "id": "harbinger_alive",
@@ -3740,11 +3740,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca tem confiança em você."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está no escuro."
           },
           {
             "id": "ichtaca_is_wary",
@@ -3756,11 +3756,11 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está contra você."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "A fé de Ichtaca é restaurada."
           },
           {
             "id": "investigators_recovered_relic",
@@ -3768,67 +3768,67 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "os investigadores salvaram a civilização das Serpentes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "os investigadores salvaram a civilização dos Yithians."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "a selva observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "os investigadores traçaram o caminho a seguir."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "os investigadores consertaram o rasgo a tempo."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "o nexus está próximo."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# caminhos são conhecidos por você."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "o processo saiu pela culatra."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "o processo saiu pela culatra espetacularmente."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "o processo foi aperfeiçoado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "o processo foi bem sucedido."
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "a relíquia está desaparecida."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "os investigadores resgataram Alejandro."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "os investigadores resistiram ao cativeiro."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "os investigadores selaram a Relíquia das Eras para sempre."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "os investigadores voltam no tempo"
           },
           {
             "id": "wait_for_additional_supplies",
@@ -3839,6 +3839,11 @@
       {
         "section": "hidden",
         "entries": [
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>.",
+            "feminine_text": "#name# começa com 1 pista <i>(do banco de fichas)</i>."
+          },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
@@ -3853,11 +3858,6 @@
             "id": "hote_fewer_resources",
             "masculine_text": "#name# começa com 3 recursos a menos.",
             "feminine_text": "#name# começa com 3 recursos a menos."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3877,7 +3877,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# profundidade"
           },
           {
             "id": "hote_consult_alejandro",
@@ -3897,7 +3897,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca partiu sem você."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -3905,11 +3905,11 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "ouviu o conto de Ichtaca."
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# tarefas foram concluídas"
           },
           {
             "id": "thc_reminder",
@@ -3925,21 +3925,21 @@
     "supplies": [
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Provisões",
         "description": "Comida e água para uma pessoa. Essencial para qualquer viagem.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "name": "Gasolina",
+        "description": "O suficiente para uma longa viagem de carro.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Medicamento",
         "description": "Para evitar doenças, infecções ou venenos.",
         "cost": 2,
         "multiple": true
@@ -3951,9 +3951,9 @@
         "cost": 1
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
+        "id": "pocketknife",
+        "name": "Canivete",
+        "description": "Muito pequena para ser usado como uma arma confiável, mas pode ser escondida facilmente.",
         "cost": 2
       },
       {
@@ -3975,6 +3975,12 @@
         "cost": 2
       },
       {
+        "id": "pickaxe",
+        "name": "Picareta",
+        "description": "Para quebrar superfícies rochosas.",
+        "cost": 2
+      },
+      {
         "id": "compass",
         "name": "Bússola",
         "description": "Pode guiá-lo quando você estiver irremediavelmente perdido.",
@@ -3982,19 +3988,13 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Cantil",
         "description": "Pode ser reabastecido em córregos e rios.",
         "cost": 2
       },
       {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
-        "cost": 2
-      },
-      {
         "id": "map",
-        "name": "Map",
+        "name": "Mapa",
         "description": "Não marcado por enquanto, mas com o tempo, você poderá mapear seus arredores.",
         "cost": 3
       },

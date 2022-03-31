@@ -64,7 +64,7 @@ export function useCampaign(campaignId: CampaignId | undefined, live?: boolean):
 }
 const NO_INVESTIGATOR_CODES: string[] = [];
 export function useCampaignInvestigators(campaign: undefined | SingleCampaignT): [Card[] | undefined, boolean] {
-  const investigators = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
+  const [investigators] = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
   const campaignInvestigators = campaign?.investigators;
   return useMemo(() => {
     if (!campaignInvestigators || !investigators) {

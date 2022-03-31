@@ -42,10 +42,10 @@ export function TraumaIconPile({ physical, mental, whiteText, paddingTop }: { ph
 }
 
 export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
-  const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
+  const textColorStyle = whiteText ? { color: '#FFF' } : { color: colors.D30 };
   if (investigator.killed(trauma)) {
     return <Text style={textStyle || [typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
   }
@@ -56,7 +56,7 @@ export default function TraumaSummary({ trauma, investigator, whiteText, hideNon
     if (whiteText || hideNone) {
       return null;
     }
-    return <Text style={typography.subHeaderText}>{c('trauma').t`None`}</Text>;
+    return <Text style={[typography.subHeaderText, textColorStyle]}>{c('trauma').t`None`}</Text>;
   }
   return <TraumaIconPile physical={physical} mental={mental} whiteText={whiteText} paddingTop={textStyle ? xs : undefined} />
 }

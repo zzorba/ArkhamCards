@@ -105,7 +105,8 @@ function updateDeck(
       isWrite,
     });
     if (userId) {
-      const uploads = getDeckUploadedCampaigns(getState(), id);
+      // Favor previous deck id in case this is a 'new' deck being 'saved'
+      const uploads = getDeckUploadedCampaigns(getState(), deck.previousDeckId || id);
       if (uploads?.campaignId.length) {
         await Promise.all(map(uploads.campaignId, campaignId => actions.updateDeck(deck, campaignId)));
       }

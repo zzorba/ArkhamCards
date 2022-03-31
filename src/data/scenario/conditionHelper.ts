@@ -1,11 +1,9 @@
 import {
-  cond,
   every,
   filter,
   find,
   findIndex,
   forEach,
-  hasIn,
   keys,
   map,
   sumBy,
@@ -46,6 +44,7 @@ import {
   CampaignLogCardsSwitchCondition,
   ScenarioDataFixedInvestigatorStatusCondition,
   InvestigatorChoiceCondition,
+  ScenarioDataInvestigatorStatusCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -766,6 +765,22 @@ export function fixedInvestigatorStatusConditionResult(condition: ScenarioDataFi
   return binaryConditionResult(result, condition.options);
 }
 
+export function investigatorStatusConditionResult(condition: ScenarioDataInvestigatorStatusCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  const investigators = campaignLog.investigatorCodes(false);
+  const decision = !!find(investigators, code => {
+    switch (condition.investigator) {
+      case 'defeated':
+        return campaignLog.isDefeated(code);
+      case 'resigned':
+        return campaignLog.resigned(code);
+    }
+  });
+  return binaryConditionResult(
+    decision,
+    condition.options
+  );
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -816,19 +831,7 @@ export function conditionResult(
         case 'fixed_investigator_status':
           return fixedInvestigatorStatusConditionResult(condition, campaignLog);
         case 'investigator_status': {
-          const investigators = campaignLog.investigatorCodes(false);
-          const decision = !!find(investigators, code => {
-            switch (condition.investigator) {
-              case 'defeated':
-                return campaignLog.isDefeated(code);
-              case 'resigned':
-                return campaignLog.resigned(code);
-            }
-          });
-          return binaryConditionResult(
-            decision,
-            condition.options
-          );
+          return investigatorStatusConditionResult(condition, campaignLog);
         }
       }
     }
@@ -876,8 +879,6 @@ export function investigatorChoiceConditionResult(
     }
   }
 }
-
-
 
 export default {
   conditionResult,

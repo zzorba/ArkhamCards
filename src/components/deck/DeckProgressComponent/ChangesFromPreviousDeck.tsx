@@ -88,7 +88,8 @@ export default function ChangesFromPreviousDeck({
         true,
         tabooSetId,
         parsedDeck.id,
-        investigator
+        investigator,
+        false
       );
     }
   }, [colors, allCards, componentId, investigator, parsedDeck.id, tabooSetId, singleCardView]);

@@ -842,7 +842,7 @@ export function guideInputToInsert(input: GuideInput, serverId: number, index?: 
     scenario: input.scenario || null,
     step: input.step || null,
     payload: omit(input, ['scenario', 'step', 'type']),
-    inserted_idx: index !== undefined ? index :  null,
+    inserted_idx: index !== undefined ? index : null,
   };
 }
 export interface GuideActions {

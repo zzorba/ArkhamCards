@@ -458,7 +458,7 @@ export const GUIDED_CAMPAIGNS = new Set([
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
-  CALL_OF_THE_PLAGUEBEARER
+  CALL_OF_THE_PLAGUEBEARER,
 ]);
 
 export interface CustomCampaignLog {
@@ -589,7 +589,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -651,6 +651,18 @@ export const SET_LANGUAGE_CHOICE = 'SET_LANGUAGE_CHOICE';
 export interface SetLanguageChoiceAction {
   type: typeof SET_LANGUAGE_CHOICE;
   choiceLang: string;
+}
+
+export const DISMISS_ONBOARDING = 'DISMISS_ONBOARDING';
+export interface DismissOnboardingAction {
+  type: typeof DISMISS_ONBOARDING;
+  onboarding: string;
+}
+
+
+export const RESET_ONBOARDING = 'RESET_ONBOARDING';
+export interface ResetOnboardingAction {
+  type: typeof RESET_ONBOARDING;
 }
 
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';

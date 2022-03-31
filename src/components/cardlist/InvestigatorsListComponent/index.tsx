@@ -2,10 +2,6 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, forEach, find } from 'lodash';
 import {
   Keyboard,
-  Platform,
-  SectionList,
-  SectionListData,
-  SectionListRenderItemInfo,
   StyleSheet,
   Text,
   View,
@@ -21,7 +17,6 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -29,8 +24,8 @@ import { useAllInvestigators, useSettingValue, useToggles } from '@components/co
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import FactionIcon from '@icons/FactionIcon';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
 interface Props {
   componentId: string;
@@ -43,10 +38,26 @@ interface Props {
   customFooter?: React.ReactNode;
 }
 
-interface Section extends SectionListData<Card> {
+interface CardItem {
+  type: 'card';
+  card: Card;
+}
+interface HeaderItem {
+  type: 'header';
+  title: string;
+}
+
+interface FooterItem {
+  type: 'footer';
+  id: string;
+  nonCollectionCount: number;
+}
+
+type Item = CardItem | HeaderItem | FooterItem;
+
+interface Section {
   title: string;
   id: string;
-  data: Card[];
   nonCollectionCount: number;
 }
 
@@ -69,24 +80,12 @@ function headerForInvestigator(
   }
 }
 
-function renderSectionHeader({ section }: { section: SectionListData<Card> }) {
+function renderSectionHeader(item: HeaderItem) {
   return (
-    <View style={space.paddingS} key={section.title}>
-      <CardDetailSectionHeader title={section.title} color="dark" normalCase />
+    <View style={space.paddingS} key={item.title}>
+      <CardDetailSectionHeader title={item.title} color="dark" normalCase />
     </View>
   );
-}
-
-function investigatorToCode(investigator: Card) {
-  return investigator.code;
-}
-
-function Header() {
-  const { fontScale } = useContext(StyleContext);
-  if (Platform.OS === 'android') {
-    return <View style={{ height: searchBoxHeight(fontScale) }} />;
-  }
-  return null;
 }
 
 function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, showFaction }: {
@@ -138,17 +137,13 @@ export default function InvestigatorsListComponent({
   searchOptions,
   customFooter,
 }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const [investigators, loading] = useAllInvestigators(undefined, sort);
 
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
-
-  const handleScrollBeginDrag = useCallback(() => {
-    Keyboard.dismiss();
-  }, []);
 
   const onInvestigatorPress = useCallback((investigator: Card) => {
     onPress(investigator);
@@ -167,13 +162,7 @@ export default function InvestigatorsListComponent({
     setShowNonCollection(id, true);
   }, [setShowNonCollection]);
 
-  const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Card>) => {
-    return (
-      <CustomInvestigatorRow key={item.code} investigator={item} onInvestigatorPress={onInvestigatorPress} showFaction />
-    );
-  }, [onInvestigatorPress]);
-
-  const groupedInvestigators = useMemo((): Section[] => {
+  const data = useMemo((): Item[] => {
     const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterInvestigatorsSet = new Set(filterInvestigators);
     const allInvestigators = filter(
@@ -200,7 +189,7 @@ export default function InvestigatorsListComponent({
         );
       });
 
-    const results: Section[] = [];
+    const results: Item[] = [];
     let nonCollectionCards: Card[] = [];
     let currentBucket: Section | undefined = undefined;
     forEach(allInvestigators, i => {
@@ -208,8 +197,17 @@ export default function InvestigatorsListComponent({
       if (!currentBucket || currentBucket.title !== header) {
         if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
-            forEach(nonCollectionCards, c => {
-              currentBucket && currentBucket.data.push(c);
+            forEach(nonCollectionCards, card => {
+              results.push({
+                type: 'card',
+                card,
+              });
+            });
+          } else {
+            results.push({
+              type: 'footer',
+              id: currentBucket.id,
+              nonCollectionCount: nonCollectionCards.length,
             });
           }
           currentBucket.nonCollectionCount = nonCollectionCards.length;
@@ -218,14 +216,16 @@ export default function InvestigatorsListComponent({
         currentBucket = {
           title: header,
           id: `${sort}-${results.length}`,
-          data: [],
           nonCollectionCount: 0,
         };
-        results.push(currentBucket);
+        results.push({
+          type: 'header',
+          title: header,
+        });
       }
       if (i) {
         if (i.pack_code && (i.pack_code === 'core' || ignore_collection || cardInCollection(i, in_collection))) {
-          currentBucket.data.push(i);
+          results.push({ type: 'card', card: i });
         } else {
           nonCollectionCards.push(i);
         }
@@ -234,11 +234,21 @@ export default function InvestigatorsListComponent({
 
     // One last snap of the non-collection cards
     if (currentBucket) {
+      // @ts-ignore
+      const id = currentBucket.id;
       if (nonCollectionCards.length > 0) {
-        // @ts-ignore
-        if (showNonCollection[currentBucket.id]) {
-          forEach(nonCollectionCards, c => {
-            currentBucket && currentBucket.data.push(c);
+        if (showNonCollection[id]) {
+          forEach(nonCollectionCards, card => {
+            results.push({
+              type: 'card',
+              card,
+            });
+          });
+        } else {
+          results.push({
+            type: 'footer',
+            id,
+            nonCollectionCount: nonCollectionCards.length,
           });
         }
         // @ts-ignore
@@ -249,20 +259,22 @@ export default function InvestigatorsListComponent({
     const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
     if (customInvestigator) {
       results.push({
+        type: 'header',
         title: c('investigator').t`Custom`,
-        id: 'custom',
-        data: [customInvestigator],
-        nonCollectionCount: 0,
+      });
+      results.push({
+        type: 'card',
+        card: customInvestigator,
       });
     }
     return results;
   }, [investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
-  const renderSectionFooter = useCallback(({ section }: { section: SectionListData<Card> }) => {
-    if (!section.nonCollectionCount) {
+  const renderSectionFooter = useCallback((item: FooterItem) => {
+    if (!item.nonCollectionCount) {
       return null;
     }
-    if (showNonCollection[section.id]) {
+    if (showNonCollection[item.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
         <ArkhamButton
@@ -272,9 +284,10 @@ export default function InvestigatorsListComponent({
         />
       );
     }
+    const section = { nonCollectionCount: item.nonCollectionCount };
     return (
       <ShowNonCollectionFooter
-        id={section.id}
+        id={item.id}
         noBorder
         title={ngettext(
           msgid`Show ${section.nonCollectionCount} non-collection investigator`,
@@ -286,8 +299,25 @@ export default function InvestigatorsListComponent({
     );
   }, [showNonCollection, showNonCollectionCards, showEditCollection]);
 
+  const renderItem = useCallback((item: Item) => {
+    switch (item.type) {
+      case 'header':
+        return renderSectionHeader(item);
+      case 'footer':
+        return renderSectionFooter(item);
+      case 'card':
+        return (
+          <CustomInvestigatorRow
+            key={item.card.code}
+            investigator={item.card}
+            onInvestigatorPress={onInvestigatorPress}
+            showFaction
+          />
+        );
+    }
+  }, [onInvestigatorPress, renderSectionFooter]);
   const renderFooter = useCallback(() => {
-    if (searchTerm && groupedInvestigators.length === 0) {
+    if (searchTerm && data.length === 0) {
       return (
         <>
           { !!customFooter && customFooter }
@@ -305,8 +335,7 @@ export default function InvestigatorsListComponent({
         <View style={styles.footer} />
       </>
     );
-  }, [typography, customFooter, searchTerm, groupedInvestigators]);
-  const searchBarHeight = searchBoxHeight(fontScale);
+  }, [typography, customFooter, searchTerm, data]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search`}
@@ -315,26 +344,13 @@ export default function InvestigatorsListComponent({
       advancedOptions={searchOptions}
     >
       { onScroll => (
-        loading ? <ArkhamLoadingSpinner autoPlay loop /> : (
-          <SectionList
-            contentInset={Platform.OS === 'ios' ? { top: searchBarHeight } : undefined}
-            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -searchBarHeight } : undefined}
-            onScroll={onScroll}
-            onScrollBeginDrag={handleScrollBeginDrag}
-            sections={groupedInvestigators}
-            renderSectionHeader={renderSectionHeader}
-            renderSectionFooter={renderSectionFooter}
-            ListHeaderComponent={Header}
-            ListFooterComponent={renderFooter}
-            renderItem={renderItem}
-            initialNumToRender={24}
-            keyExtractor={investigatorToCode}
-            stickySectionHeadersEnabled={false}
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="on-drag"
-            scrollEventThrottle={1}
-          />
-        )
+        <ArkhamLargeList
+          refreshing={loading}
+          onScroll={onScroll}
+          data={data}
+          renderFooter={renderFooter}
+          renderItem={renderItem}
+        />
       ) }
     </CollapsibleSearchBox>
   );

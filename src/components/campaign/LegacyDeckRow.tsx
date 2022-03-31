@@ -44,7 +44,7 @@ export default function LegacyDeckRow({
   viewDeckButton,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const cards = useLatestDeckCards(deck);
+  const [cards] = useLatestDeckCards(deck);
   const [investigator] = useSingleCard(deck.deck.investigator_code, 'player');
   const onDeckPressFunction = useCallback(() => {
     showDeckModal(deck.id, deck.deck, campaign.id, colors, investigator);

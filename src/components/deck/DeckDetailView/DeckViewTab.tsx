@@ -514,9 +514,10 @@ export default function DeckViewTab(props: Props) {
       false,
       tabooSetId,
       parsedDeck.id,
-      investigatorFront
+      investigatorFront,
+      editable
     );
-  }, [componentId, data, colors, investigatorFront, tabooSetId, parsedDeck.id, singleCardView, cards]);
+  }, [componentId, data, editable, colors, investigatorFront, tabooSetId, parsedDeck.id, singleCardView, cards]);
 
   const renderSectionHeader = useCallback((section: CardSection) => {
     if (section.superTitle) {

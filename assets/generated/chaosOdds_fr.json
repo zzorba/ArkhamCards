@@ -3519,9 +3519,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de Participants Innocents sous le deck Intrigue plus 2",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3549,9 +3550,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de Participants Innocents sous le deck Intrigue plus 2",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {

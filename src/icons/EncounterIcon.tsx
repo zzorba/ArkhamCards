@@ -91,6 +91,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('stella', size, color);
       case 'meddling_of_meowlathotep':
         return this.standaloneIcon('meddling', size, color);
+      case 'zbh':
+      case 'barkham_horror':
+        return this.standaloneIcon('barkham_horror', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
@@ -447,10 +450,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'unspeakable_fate':
       case 'city_of_the_damned':
       case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
+      case 'unspeakable_fate':
+      case 'unavoidable_demise':
+        return this.circleIcon('unspeakable_fate', size, color);
       case 'witchwork':
       case 'hexcraft':
         return this.circleIcon('witchwork', size, color);
@@ -608,6 +613,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_warning':
         return this.aliceIcon(encounter_code, size, color);
       case 'chesire_cat':
+      case 'cheshire_cat':
         return this.aliceIcon('cheshire_cat', size, color);
       case 'jabberwocky':
         return this.aliceIcon('jabberwock', size, color);
@@ -692,10 +698,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
-
-
-
-
     }
   }
 }

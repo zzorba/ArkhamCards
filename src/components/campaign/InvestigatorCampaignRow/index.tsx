@@ -55,7 +55,7 @@ function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code
     return campaignGuide?.card(code)?.description;
   }, [campaignGuide, code]);
   if (loading || !card) {
-    return <LoadingCardSearchResult />;
+    return <LoadingCardSearchResult noBorder={last} />;
   }
   return (
     <CardSearchResult
@@ -189,6 +189,7 @@ export default function InvestigatorCampaignRow({
       setOpen(true);
     }
   }, [badge, setOpen]);
+
   const footerButton = useMemo(() => {
     if (uploading) {
       return (
@@ -238,14 +239,22 @@ export default function InvestigatorCampaignRow({
               </View>
             ) }
           </View>
-        ) }
+        )}
       >
         <View style={[space.paddingSideS]}>
           <View style={space.paddingBottomS}>
+            { !!deck?.owner?.handle && (
+              <MiniPickerStyleButton
+                title={t`Player`}
+                valueLabel={deck?.owner.handle}
+                first
+                editable={false}
+              />
+            ) }
             <MiniPickerStyleButton
               title={t`Trauma`}
               valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-              first
+              first={!deck?.owner?.handle}
               last={!xpButton && !miniButtons}
               editable={!!showTraumaDialog}
               onPress={onTraumaPress}

@@ -161,7 +161,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     updatePendingAssignedCards({ type: 'sync', slots: assignedCards });
   }, [setPendingNextCard, updatePendingAssignedCards]);
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
-  const cards = useLatestDeckCards(saveWeakness ? undefined : selectedDeck);
+  const [cards] = useLatestDeckCards(saveWeakness ? undefined : selectedDeck);
   const saveDrawnCard = useCallback(() => {
     if (!pendingNextCard) {
       return;

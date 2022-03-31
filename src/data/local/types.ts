@@ -29,6 +29,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
   public updatedAt: Date;
   public linked: undefined | CampaignLink = undefined;
   public archived: boolean;
+  public remote: boolean = false;
 
   constructor(
     campaign: Campaign,

@@ -3519,9 +3519,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "주요사건 덱 밑에 있는 ‘무고한 축제 참가자’의 수에 2를 더한 값",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3549,9 +3550,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "주요사건 덱 밑에 있는 ‘무고한 축제 참가자’의 수에 2를 더한 값",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {

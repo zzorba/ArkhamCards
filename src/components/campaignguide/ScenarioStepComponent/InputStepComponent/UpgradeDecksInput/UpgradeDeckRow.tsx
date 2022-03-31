@@ -633,7 +633,7 @@ function UpgradeDeckRow({
       );
     }
     return null;
-  }, [choices, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving]);
+  }, [choices, editable, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving]);
   const exileSection = useMemo(() => {
     if (deck && (choices === undefined || keys(savedExileCounts).length > 0)) {
       return (

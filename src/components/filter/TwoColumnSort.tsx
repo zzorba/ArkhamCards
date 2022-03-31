@@ -47,20 +47,20 @@ export default function TwoColumnSort({ items, filters, noBorder, onToggleChange
           }) }
         </View>
         <View style={styles.toggleColumn}>
-        { flatMap(sortedItems, ({ label, setting }, index) => {
-          if (index % 2 === 0) {
-            return null
-          }
-          return (
-            <ToggleFilter
-              key={label}
-              label={label}
-              setting={setting}
-              value={!!filters[setting]}
-              onChange={onToggleChange}
-            />
-          );
-        }) }
+          { flatMap(sortedItems, ({ label, setting }, index) => {
+            if (index % 2 === 0) {
+              return null
+            }
+            return (
+              <ToggleFilter
+                key={label}
+                label={label}
+                setting={setting}
+                value={!!filters[setting]}
+                onChange={onToggleChange}
+              />
+            );
+          }) }
         </View>
       </View>
     </View>
@@ -79,11 +79,6 @@ const styles = StyleSheet.create({
   toggleColumn: {
     width: '50%',
     flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
-  xpSection: {
-    flexDirection: 'column',
-    width: '100%',
     alignItems: 'flex-end',
   },
 });

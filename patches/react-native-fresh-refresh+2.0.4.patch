@@ -1,0 +1,60 @@
+diff --git a/node_modules/react-native-fresh-refresh/lib/index.js b/node_modules/react-native-fresh-refresh/lib/index.js
+index 0882d7e..7c32c7b 100644
+--- a/node_modules/react-native-fresh-refresh/lib/index.js
++++ b/node_modules/react-native-fresh-refresh/lib/index.js
+@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
+ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+ import DefaultLoader from './loader';
+ import Animated, { Extrapolate, interpolate, runOnJS, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue, withSpring, withTiming, } from 'react-native-reanimated';
+-const RefreshableWrapper = ({ isLoading, onRefresh, refreshHeight = 100, defaultAnimationEnabled, contentOffset, children, Loader = <DefaultLoader />, bounces = true }) => {
++const RefreshableWrapper = ({ managedLoading = false, isLoading, onRefresh, refreshHeight = 100, defaultAnimationEnabled, contentOffset, children, Loader = <DefaultLoader />, bounces = true }) => {
+     const isRefreshing = useSharedValue(false);
+     const loaderOffsetY = useSharedValue(0);
+     const listContentOffsetY = useSharedValue(0);
+@@ -13,12 +13,21 @@ const RefreshableWrapper = ({ isLoading, onRefresh, refreshHeight = 100, default
+             loaderOffsetY.value = withTiming(0);
+             isRefreshing.value = false;
+             isLoaderActive.value = false;
++        }  else if (managedLoading) {
++	    // In managed mode, we want to start the animation
++	    // running when isLoading is set to true as well
++	    loaderOffsetY.value = withTiming(refreshHeight);
++	    isRefreshing.value = true;
++	    isLoaderActive.value = true;
+         }
+     }, [isLoading]);
+-    const onScroll = useAnimatedScrollHandler((event) => {
++    const onScroll = useAnimatedScrollHandler((event, ctx) => {
+         const y = event.contentOffset.y;
+-        listContentOffsetY.value = y;
+-    });
++	listContentOffsetY.value = y;
++        if (children.props.onScroll) {
++          runOnJS(children.props.onScroll)({ nativeEvent: event });
++        }
++    }, [children.props.onScroll]);
+     const native = Gesture.Native();
+     const panGesture = Gesture.Pan()
+         .onChange((event) => {
+diff --git a/node_modules/react-native-fresh-refresh/src/index.tsx b/node_modules/react-native-fresh-refresh/src/index.tsx
+index 76d3edd..c36d3db 100644
+--- a/node_modules/react-native-fresh-refresh/src/index.tsx
++++ b/node_modules/react-native-fresh-refresh/src/index.tsx
+@@ -23,6 +23,7 @@ interface Props {
+   children: JSX.Element;
+   Loader?: () => JSX.Element | JSX.Element;
+   bounces: boolean;
++  managedLoading?: boolean;
+ }
+ 
+ const RefreshableWrapper: React.FC<Props> = ({
+@@ -33,7 +34,8 @@ const RefreshableWrapper: React.FC<Props> = ({
+   contentOffset,
+   children,
+   Loader = <DefaultLoader />,
+-  bounces = true
++  bounces = true,
++  managedLoading = false,
+ }) => {
+   const isRefreshing = useSharedValue(false);
+   const loaderOffsetY = useSharedValue(0);

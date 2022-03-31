@@ -32,7 +32,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
   const deck = useCampaignDeck(id, campaignId);
-  const cards = useLatestDeckCards(deck);
+  const [cards] = useLatestDeckCards(deck);
   const investigator = cards && deck ? cards[deck.investigator] : undefined;
   const dispatch = useDispatch();
   const [deckEdits, deckEditsRef] = useDeckEdits(id);

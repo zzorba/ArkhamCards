@@ -1,0 +1,65 @@
+diff --git a/node_modules/react-native-reanimated/react-native-reanimated.d.ts b/node_modules/react-native-reanimated/react-native-reanimated.d.ts
+index a3aafb2..5af4d5e 100644
+--- a/node_modules/react-native-reanimated/react-native-reanimated.d.ts
++++ b/node_modules/react-native-reanimated/react-native-reanimated.d.ts
+@@ -39,24 +39,16 @@ declare module 'react-native-reanimated' {
+     PanGestureHandlerGestureEvent,
+   } from 'react-native-gesture-handler';
+ 
+-  import('./src/reanimated2/globals');
+-
+-  export type TimingAnimation =
+-    import('./src/reanimated2/animation/index').TimingAnimation;
+-  export type SpringAnimation =
+-    import('./src/reanimated2/animation/index').SpringAnimation;
+-  export type DecayAnimation =
+-    import('./src/reanimated2/animation/index').DecayAnimation;
+-  export type DelayAnimation =
+-    import('./src/reanimated2/animation/commonTypes').DelayAnimation;
+-  export type RepeatAnimation =
+-    import('./src/reanimated2/animation/index').RepeatAnimation;
+-  export type SequenceAnimation =
+-    import('./src/reanimated2/animation/index').SequenceAnimation;
+-  export type StyleLayoutAnimation =
+-    import('./src/reanimated2/animation/index').StyleLayoutAnimation;
+-  export type Animation<T> =
+-    import('./src/reanimated2/commonTypes').Animation<T>;
++  export {
++    Animation,
++    TimingAnimation,
++    SpringAnimation,
++    DecayAnimation,
++    DelayAnimation,
++    RepeatAnimation,
++    SequenceAnimation,
++    StyleLayoutAnimation,
++  } from './src/reanimated2/animation/index';
+ 
+   namespace Animated {
+     type Nullable<T> = T | null | undefined;
+diff --git a/node_modules/react-native-reanimated/src/reanimated2/animation/index.ts b/node_modules/react-native-reanimated/src/reanimated2/animation/index.ts
+index f9173e7..6b922c2 100644
+--- a/node_modules/react-native-reanimated/src/reanimated2/animation/index.ts
++++ b/node_modules/react-native-reanimated/src/reanimated2/animation/index.ts
+@@ -1,4 +1,4 @@
+-export {
++export type {
+   HigherOrderAnimation,
+   NextAnimation,
+   DelayAnimation,
+@@ -7,9 +7,12 @@ export {
+   StyleLayoutAnimation,
+ } from './commonTypes';
+ export { cancelAnimation, defineAnimation, initialUpdaterRun } from './util';
+-export { withTiming, TimingAnimation } from './timing';
+-export { withSpring, SpringAnimation } from './spring';
+-export { withDecay, DecayAnimation } from './decay';
++export { withTiming } from './timing';
++export type {  TimingAnimation } from './timing';
++export { withSpring } from './spring';
++export type { SpringAnimation } from './spring';
++export { withDecay } from './decay';
++export type { DecayAnimation } from './decay';
+ export { withDelay } from './delay';
+ export { withRepeat } from './repeat';
+ export { withSequence } from './sequence';

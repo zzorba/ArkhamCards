@@ -1,3 +1,5 @@
+import { uniq } from 'lodash';
+
 import {
   SET_TABOO_SET,
   SET_MISC_SETTING,
@@ -15,6 +17,10 @@ import {
   REDUX_MIGRATION,
   SET_PLAYBACK_RATE,
   SetPlaybackRateAction,
+  DismissOnboardingAction,
+  DISMISS_ONBOARDING,
+  ResetOnboardingAction,
+  RESET_ONBOARDING,
 } from '@actions/types';
 
 interface SettingsState {
@@ -34,6 +40,8 @@ interface SettingsState {
   playbackRate?: number | undefined;
   androidOneUiFix?: boolean;
   version?: number;
+  customContent?: boolean;
+  dismissedOnboarding?: string[];
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -50,6 +58,8 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: CURRENT_REDUX_VERSION,
   hideCampaignDecks: false,
   androidOneUiFix: false,
+  customContent: false,
+  dismissedOnboarding: [],
 };
 
 type SettingAction =
@@ -60,7 +70,9 @@ type SettingAction =
   SetThemeAction |
   SetFontScaleAction |
   ReduxMigrationAction |
-  SetPlaybackRateAction;
+  SetPlaybackRateAction |
+  DismissOnboardingAction |
+  ResetOnboardingAction;
 
 
 export default function(
@@ -68,6 +80,19 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case DISMISS_ONBOARDING:
+      return {
+        ...state,
+        dismissedOnboarding: uniq([
+          ...(state.dismissedOnboarding || []),
+          action.onboarding,
+        ]),
+      };
+    case RESET_ONBOARDING:
+      return {
+        ...state,
+        dismissedOnboarding: [],
+      };
     case REDUX_MIGRATION:
       return {
         ...state,
@@ -152,6 +177,11 @@ export default function(
           return {
             ...state,
             androidOneUiFix: action.value,
+          };
+        case 'custom_content':
+          return {
+            ...state,
+            customContent: action.value,
           };
       }
       return state;

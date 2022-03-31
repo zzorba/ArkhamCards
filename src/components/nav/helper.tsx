@@ -219,7 +219,8 @@ export function showCardSwipe(
   showSpoilers?: boolean,
   tabooSetId?: number,
   deckId?: DeckId,
-  investigator?: Card
+  investigator?: Card,
+  editable?: boolean
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -244,6 +245,7 @@ export function showCardSwipe(
         whiteNav: !!investigator,
         faction: investigator?.factionCode(),
         controls: controls === 'side' ? map(range(0, codes.length), () => 'side') : controls,
+        editable,
       },
       options,
     },

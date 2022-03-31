@@ -87,7 +87,7 @@ function DeckListRowDetails({
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const cards = useLatestDeckCards(deck);
+  const [cards] = useLatestDeckCards(deck);
   const parsedDeck = useMemo(() => {
     if (!details && deck && cards) {
       return parseBasicDeck(deck.deck, cards, deck.previousDeck);

@@ -56,8 +56,8 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
           currentUserLoading = false;
           currentUser = user || undefined;
           if (user) {
-            const idTokenReuslt = await user.getIdTokenResult();
-            const hasuraClaims = idTokenReuslt.claims['https://hasura.io/jwt/claims'];
+            const idTokenResult = await user.getIdTokenResult();
+            const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
             if (hasuraClaims) {
               DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
             } else {
@@ -68,8 +68,8 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
                   setTimeout(() => callback(user), 500);
                   return;
                 }
-                const idTokenReuslt = await user.getIdTokenResult(true);
-                if (idTokenReuslt.claims['https://hasura.io/jwt/claims']) {
+                const idTokenResult = await user.getIdTokenResult(true);
+                if (idTokenResult.claims['https://hasura.io/jwt/claims']) {
                   // Force refresh to pick up the latest custom claims changes.
                   DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
                 } else {

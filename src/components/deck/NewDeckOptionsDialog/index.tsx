@@ -74,6 +74,7 @@ function NewDeckOptionsDialog({
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
   const [offlineDeck, toggleOfflineDeck] = useFlag(
     investigatorId === CUSTOM_INVESTIGATOR ||
+    investigatorId.startsWith('z') ||
     !signedIn ||
     !isConnected ||
     networkType === NetInfoStateType.none);
@@ -311,7 +312,8 @@ function NewDeckOptionsDialog({
       false,
       tabooSetId,
       undefined,
-      investigator
+      investigator,
+      false
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
@@ -350,7 +352,7 @@ function NewDeckOptionsDialog({
             </DeckSectionBlock>
           </View>
         ) }
-        { investigatorId !== CUSTOM_INVESTIGATOR && (
+        { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckCheckboxButton
               icon="card-outline"

@@ -1,6 +1,5 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -16,7 +15,6 @@ import space, { s } from '@styles/space';
 import { getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
@@ -50,7 +48,7 @@ function MyDecksComponent({
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { typography, fontScale, width } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
   }, [login]);
@@ -99,14 +97,8 @@ function MyDecksComponent({
 
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
   const header = useMemo(() => {
-    const searchPadding = !!searchOptions && Platform.OS === 'android';
-    return (
-      <>
-        { searchPadding && <View style={{ height: searchBoxHeight(fontScale) }} /> }
-        { connectionProblemBanner }
-      </>
-    );
-  }, [searchOptions, fontScale, connectionProblemBanner]);
+    return connectionProblemBanner;
+  }, [connectionProblemBanner]);
 
   const [deckIds, deckReasons] = useMemo(() => {
     if (!filterDeck) {

@@ -241,156 +241,156 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# zginął w katastrofie samolotu.",
+            "feminine_text": "#name# zginęła w katastrofie samolotu."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Obóz - Obóz na Barierze Lodowej (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Obóz - Szerokie zaspy (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Obóz - Miejsce katastrofy (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Obóz - Krystaliczna grota (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Obóz - Zimna jaskinia (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Obóz - Lodowy brzeg (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Obóz - Pomost lodołamacza (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Obóz - Lodowe pustkowia (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Obóz - Zagrażająca zmarzlina (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Obóz - Pozostałości obozu Lake’a (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Obóz - Kamienista grań (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Obóz - Groby ze śniegu (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Obóz - Niebezpieczna droga (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Claypool zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "badacze przekonali Dyera, aby zgodził się na wyprawę."
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Cookie zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Danforth zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "badacze nie uwierzyli w raport Dyera."
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "załoga odkryła starożytną kryptę."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "dr Kensler ma plan."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "dr Kensler zmierzyła się z demonami swojej przeszłości."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "dr Kensler jest bliska zrozumienia istot."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "dr Kensler dzieli się z wami wynikami swoich badań."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "dr Kensler rozumie prawdziwą naturę miazmatu."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "dr Sinha zmierzyła się z demonami swojej przeszłości."
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Dyer zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Eliyah zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Ellsworth zmierzył się z demonami swojej przeszłości."
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "baza została zniszczona."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "nienazwane szaleństwo uciekło."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "nienazwane szaleństwo jest bezpiecznie zamknięte w nowym gospodarzu… na razie."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "załoga sfotografowała mapy astronomiczne."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "załoga odczytała mapę."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "badacze przeszukali obrzeża miasta."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "badacze odnaleźli rozwidlone przejście."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "badacze znaleźli górską przełęcz."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "załoga zbadała rzeźbienia na ścianach."
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "ocalali następujący członkowie ekspedycji:"
           },
           {
             "id": "surviving_partners",
@@ -406,47 +406,47 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Takada zmierzyła się z demonami swojej przeszłości."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "załoga z trudem uciekła z lodowca."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "załoga wspięła się na szczyt."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "załoga pokonała polujące stworzenia."
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "załoga uciekła z bazy."
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "załoga uciekła w góry."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "załoga znalazła inną drogę przez góry."
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "załoga znalazła ukryty tunel."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "załoga została poprowadzona do ukrytego tunelu."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "pieczęć została użyta… ale w zły sposób."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "prawda o mirażu jest poza waszym zasięgiem."
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# jest ZwA.",
+            "masculine_text": "#name# jest ZwA.",
+            "feminine_text": "#name# jest ZwA."
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Obóz na Barierze Lodowej"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Szerokie zaspy"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Miejsce katastrofy"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Krystaliczna grota"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Zimna jaskinia"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Lodowy brzeg"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Pomost lodołamacza"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Lodowe pustkowia"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Zagrażająca zmarzlina"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Pozostałości obozu Lake’a"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Kamienista grań"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Groby ze śniegu"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Niebezpieczna droga"
           }
         ]
       },
@@ -827,75 +827,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Lotnisko"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Dzikie tereny Alaski"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "Wspomnienie obcego tłumaczenia"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Zagracony pokój w akademiku"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Gabinet dr Kensler"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Aula Dyera"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "Wspomnienie tragicznego polowania"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Izba chorych"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "Wspomnienie zmarłego pacjenta"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "Wspomnienie utraconego ojca"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Posągi moai"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Front osmański"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "Wspomnienie spustoszonego kraju"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "Wspomnienie zgubnej podróży"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "Wspomnienie przerażającego odkrycia"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Czarny obelisk"
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "Wspomnienie nieodwzajemnionej miłości"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "Wspomnienie nieopisywalnego zła"
           }
         ]
       },
@@ -904,75 +904,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Lotnisko"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Dzikie tereny Alaski"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "Główny obóz"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Zagracony pokój w akademiku"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "Wody przybrzeżne"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "Pokład Teodozji"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "Opuszczona stacja"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Gabinet dr Kensler"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Aula Dyera"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "Komnata starszych bogów"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "Labirynt ogrodowy"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Izba chorych"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Posągi moai"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Front osmański"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "Kinoteatr Riverview"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "Stojące kamienie"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Czarny obelisk"
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "Sale uniwersytetu"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dynamit"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Zielony steatyt"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Miazmatyczny kryształ"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Próbka minerału"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Małe radio"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Części zapasowe"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Drewniane sanie"
           }
         ]
       }
@@ -2416,7 +2416,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "badacze zdobyli wsparcie innej ekspedycji."
           },
           {
             "id": "relic_is_missing",
@@ -2540,23 +2540,23 @@
     ],
     "supplies": [
       {
+        "id": "key_of_eztli",
+        "name": "Klucz Eztli",
+        "description": "Klucz Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "name": "Kleista maź",
+        "description": "Tajemnicze berło, które znalazłeś w podziemnych bagnach.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Tajemnicze berło",
+        "description": "Tajemnicze berło, które znalazłeś w sali tronowej.",
         "cost": 0,
         "multiple": false
       },
@@ -4020,144 +4020,144 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# zdobył skafander.",
+            "feminine_text": "#name# zdobyła skafander."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "misja agentki Harper została zakończona."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "misja agentki Harper została zakończona… ale za jaką cenę?"
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen jest żądny zemsty."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham jest żądny zemsty."
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon przebudził się."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagon nadal śpi."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "Istoty z Głębin zalały Ziemię."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "badacze uciekli z Y’ha-nthlei."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "zaczęła się powódź."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly jest żądny zemsty."
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "stróż został pokonany."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "brama do Y’ha-nthlei rozpoznała was jako jej prawowitych strażników."
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman jest żądna zemsty."
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "strażnik Y’ha-nthlei został zabity."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "zaniesiono koronę do latarni."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "zaniesiono posążek do latarni."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "Innsmouth zostało pochłonięte przez przypływ."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little jest żądna zemsty."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "badacze bezpiecznie dotarli do swoich pojazdów."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "zaniesiono opończę do latarni."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh jest żądny zemsty."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "misja nie powiodła się."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "misja się powiodła."
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "rytuał Zakonu został przerwany."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "plany Istot z Głębin zostały pokrzyżowane."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "badacze weszli w posiadanie mapy Y’ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "badacze weszli w posiadanie klucza do Y’ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "badacze dotarli do Sokolego Przylądka przed wschodem słońca."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "skarby głębin zostały zniszczone… ale za jaką cenę?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "skarby głębin przepadły na zawsze."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "Koszmar z Diabelskiej rafy jest martwy."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "Koszmar z Diabelskiej rafy wciąż żyje."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "fale stają się coraz silniejsze."
           }
         ]
       },
@@ -4182,7 +4182,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Dom przy Water Street"
           },
           {
             "id": "accuse_little",
@@ -4194,23 +4194,23 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Skwer New Church Green"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ezoteryczny Zakon Dagona"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Więzienie w Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Zaułek konowała"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Nadbrzeżne slumsy"
           },
           {
             "id": "act_2_setup",
@@ -4283,63 +4283,63 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "umowa z Joe Sargentem"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "podążanie za tropem"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "ucieczka z więzienia"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "interwencja"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "walka z przerażającym diabłem"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "rozmowa z panem Moorem"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "decyzja o trzymaniu się razem"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "odkrycie mistycznej relikwii"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "odkrycie dziwnego posążka"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "odkrycie nieczystej opończy"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "spotkanie sekretnego kultu"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "przerażająca prawda"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "cykl życia Istoty z Głębin"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "spotkanie z Thomasem Dawsonem"
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "bolesna zdrada"
           }
         ]
       },
@@ -4348,27 +4348,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Dom przy Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Więzienie w Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Skwer New Church Green"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ezoteryczny Zakon Dagona"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Zaułek konowała"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Nadbrzeżne slumsy"
           }
         ]
       },

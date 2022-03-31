@@ -46,7 +46,7 @@ import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@compone
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
-import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 
@@ -264,7 +264,6 @@ interface SectionFeedProps {
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
   sideDeck?: boolean;
-  noSearch?: boolean;
   hasHeader?: boolean;
   investigator?: Card;
   footerPadding?: number;
@@ -273,7 +272,7 @@ interface SectionFeedProps {
 }
 
 interface SectionFeed {
-  feed: BasicSection<Item, SectionHeaderItem>[];
+  feed: Item[];
   fullFeed: PartialCard[];
   refreshing: boolean;
   refreshingSearch: boolean;
@@ -296,7 +295,6 @@ function useSectionFeed({
   sort,
   tabooSetId,
   filterQuery,
-  noSearch,
   searchTerm,
   textQuery,
   showAllNonCollection,
@@ -608,8 +606,7 @@ function useSectionFeed({
 
   const refreshingResult = refreshing || (feedLoading && !expandButtonPressed);
   const [sections, hasCards, cardsLoading] = useMemo(() => {
-    const result: BasicSection<Item, SectionHeaderItem>[] = [];
-    let currentSection: BasicSection<Item, SectionHeaderItem> = { items: [] };
+    const result: Item[] = [];
     let missingCards = false;
     let loadingSection = false;
     let noCards = true;
@@ -637,17 +634,7 @@ function useSectionFeed({
     for (let i = 0; i < partialItems.length; i++) {
       const item = partialItems[i];
       if (item.type !== 'pc') {
-        if (item.type === 'header' && !item.header.superTitle) {
-          if (currentSection.header || currentSection.items.length) {
-            result.push(currentSection);
-          }
-          currentSection = {
-            header: item,
-            items: [],
-          };
-        } else {
-          currentSection.items.push(item);
-        }
+        result.push(item);
         loadingSection = false;
         continue;
       }
@@ -655,7 +642,7 @@ function useSectionFeed({
       const card = cards[id];
       if (!card) {
         if (!loadingSection) {
-          currentSection.items.push({ type: 'loading', id: id, message: loadingCount > 1 });
+          result.push({ type: 'loading', id: id, message: loadingCount > 1 });
           cardsLoading = true;
           if (loadingCount > 1) {
             break;
@@ -667,7 +654,7 @@ function useSectionFeed({
       }
       noCards = false;
       loadingSection = false;
-      currentSection.items.push({
+      result.push({
         type: 'card',
         id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
         card,
@@ -675,7 +662,7 @@ function useSectionFeed({
     }
     if (!missingCards && spoilerCardsCount > 0 && loadingCount <= 1) {
       if (showSpoilers) {
-        currentSection.items.push({
+        result.push({
           type: 'button',
           id: 'edit_spoilers',
           onPress: editSpoilerSettings,
@@ -683,7 +670,7 @@ function useSectionFeed({
           icon: 'edit',
         });
       } else {
-        currentSection.items.push({
+        result.push({
           type: 'button',
           id: 'show_spoilers',
           onPress: () => {
@@ -698,27 +685,20 @@ function useSectionFeed({
         });
       }
     }
-    if (currentSection.header || currentSection.items.length) {
-      result.push(currentSection);
-    }
     if (bondedCards.length) {
       result.push({
-        items: [
-          {
-            type: 'header',
-            id: 'bonded',
-            header: {
-              superTitle: t`Bonded`,
-            },
-          },
-          ...map(bondedCards, (card: Card): CardItem => {
-            return {
-              type: 'card',
-              id: card.id,
-              card,
-            };
-          }),
-        ],
+        type: 'header',
+        id: 'bonded',
+        header: {
+          superTitle: t`Bonded`,
+        },
+      });
+      forEach(bondedCards, (card: Card) => {
+        result.push({
+          type: 'card',
+          id: card.id,
+          card,
+        });
       });
     }
     return [result, !(noCards && cardsLoading), cardsLoading];
@@ -771,21 +751,19 @@ function useSectionFeed({
         }
       }
     }
-    const paddingItem: Item | undefined = !noSearch ? { type: 'padding', id: 'padding', size: searchBoxHeight(fontScale) } : undefined;
     const headerItem: Item | undefined = hasHeader ? { type: 'list_header', id: 'list_header' } : undefined;
     const leadingItems: Item[] = [
-      ...(paddingItem ? [paddingItem] : []),
       ...(headerItem ? [headerItem] : []),
       ...(loadingItem ? [loadingItem] : []),
     ];
 
-    const sectionItems: BasicSection<Item, SectionHeaderItem>[] = [
-      ...(leadingItems.length ? [{ items: leadingItems }] : []),
+    const sectionItems: Item[] = [
+      ...leadingItems,
       ...(hasCards ? sections : []),
-      { items: [{ type: 'footer', height: footerPadding + (refreshingFinal ? 0 : expandSearchControlsHeight), refreshing: refreshingFinal }] },
+      { type: 'footer', height: footerPadding + (refreshingFinal ? 0 : expandSearchControlsHeight), refreshing: refreshingFinal },
     ];
     return sectionItems;
-  }, [expandSearchControlsHeight, footerPadding, sections, fontScale, refreshingFinal, loadingMessage, cardsLoading, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
+  }, [expandSearchControlsHeight, footerPadding, sections, fontScale, refreshingFinal, loadingMessage, cardsLoading, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
   return {
     feed,
     fullFeed: visibleCards,
@@ -845,7 +823,7 @@ export default function({
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
-  const { colors, borderStyle, fontScale, typography, height, width } = useContext(StyleContext);
+  const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
@@ -865,7 +843,6 @@ export default function({
     investigator,
     query,
     sort,
-    noSearch,
     hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,
     filterQuery,
@@ -893,7 +870,7 @@ export default function({
   }, [query, tabooSetId]);
 
   const feedValues = useRef<{
-    feed: BasicSection<Item, SectionHeaderItem>[];
+    feed: Item[];
     fullFeed: PartialCard[];
   }>();
   useEffect(() => {
@@ -927,7 +904,7 @@ export default function({
       }
       return partialCard.code;
     });
-    const cards = flatMap(feed, ({ items }) => flatMap(items, item => item.type === 'card' ? item.card : []));
+    const cards = flatMap(feed, item => item.type === 'card' ? item.card : []);
     showCardSwipe(
       componentId,
       codes,
@@ -938,7 +915,8 @@ export default function({
       showSpoilerCards,
       tabooSetOverride,
       deckId,
-      investigator
+      investigator,
+      true
     );
   }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
@@ -973,14 +951,6 @@ export default function({
       side: !!sideDeck,
     },
   ] : [], [deckId, sideDeck]);
-  const renderSection = useCallback((header: SectionHeaderItem) => {
-    return (
-      <CardSectionHeader
-        section={header.header}
-        investigator={investigator}
-      />
-    )
-  }, [investigator]);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
@@ -1063,28 +1033,19 @@ export default function({
     }
   }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const { lang } = useContext(LanguageContext);
-  const heightForSection = useCallback((header: SectionHeaderItem) => {
-    return itemHeight(header, fontScale, headerHeight || 0, lang);
-  }, [fontScale, headerHeight, lang]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);
   return (
     <ArkhamLargeList
       data={feed}
-      heightForSection={heightForSection}
       heightForItem={heightForItem}
-      renderSection={renderSection}
       renderItem={renderItem}
       onScroll={handleScroll}
       onLoading={fetchMore}
-      updateTimeInterval={Platform.OS === 'ios' ? 100 : 50}
-      groupCount={Platform.OS === 'ios' ? 20 : 16}
-      groupMinHeight={height / 2}
       onRefresh={refreshDeck}
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
-      stickyHeaders
     />
   );
 }

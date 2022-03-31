@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, flatMap, uniqBy } from 'lodash';
+import { find, forEach, flatMap, uniqBy, keys } from 'lodash';
 import {
   Linking,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { Action } from 'redux';
@@ -55,6 +56,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -128,6 +130,7 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
+    cardsMissing,
   } = parsedDeckObj;
 
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
@@ -726,14 +729,22 @@ function DeckDetailView({
         ],
       );
     } else {
-      showAlert(
-        t`Upload to ArkhamDB`,
-        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
-        [
-          { text: t`Cancel`, style: 'cancel' },
-          { text: t`Upload`, onPress: uploadLocalDeck },
-        ],
-      );
+      const hasCustomContent = find([...keys(deck.slots), ...keys(deck.sideSlots), ...keys(deck.ignoreDeckLimitSlots)], code => code.startsWith('z'));
+      if (hasCustomContent) {
+        showAlert(
+          t`Deck contains custom content`,
+          t`Sorry, this deck cannot be uploaded to ArkhamDB because it contains fan-made content.\n\nPlease remove all fan-made cards from the deck list and try again.`
+        );
+      } else {
+        showAlert(
+          t`Upload to ArkhamDB`,
+          t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
+          [
+            { text: t`Cancel`, style: 'cancel' },
+            { text: t`Upload`, onPress: uploadLocalDeck },
+          ],
+        );
+      }
     }
   }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
@@ -935,7 +946,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
+        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z')) && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
@@ -1080,9 +1091,25 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards) {
+  if (!parsedDeck || !cards || cardsMissing) {
     return (
-      <LoadingSpinner large />
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <LoadingSpinner large inline />
+        { cardsMissing && (
+          <View style={space.paddingSideM}>
+            <Text style={[typography.text, space.paddingBottomS]}>
+              {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
+            </Text>
+            <View>
+              <ArkhamButton
+                icon="dismiss"
+                title={t`Done`}
+                onPress={handleBackPress}
+              />
+            </View>
+          </View>
+        ) }
+      </View>
     );
   }
   const menuWidth = Math.min(width * 0.60, 240);

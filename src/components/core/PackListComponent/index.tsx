@@ -55,6 +55,8 @@ function cycleName(position: string): string {
     case '70': return t`Standalone`;
     case '80': return t`Books`;
     case '90': return t`Parallel`;
+    case '100': return t`Fan-Made Content`;
+
     default: return 'Unknown';
   }
 }

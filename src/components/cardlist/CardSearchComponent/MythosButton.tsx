@@ -1,14 +1,13 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Animated,
   StyleSheet,
   Pressable,
   Platform,
   View,
-  Easing,
   InteractionManager,
 } from 'react-native';
+import Animated, { interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import AppIcon from '@icons/AppIcon';
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
@@ -30,8 +29,7 @@ const HEIGHT = SIZE;
 function MythosButton({ filterId }: Props) {
   const { colors } = useContext(StyleContext);
   const mythosMode = useSelector((state: AppState) => getMythosMode(state, filterId));
-  const toggleAnim = useRef(new Animated.Value(mythosMode ? 1 : 0));
-  const colorAnim = useRef(new Animated.Value(mythosMode ? 1 : 0));
+  const toggleAnim = useSharedValue(mythosMode ? 1 : 0);
   const [mythosModeState, setMythosModeState] = useState(mythosMode);
   const dispatch = useDispatch();
   useEffectUpdate(() => {
@@ -39,24 +37,7 @@ function MythosButton({ filterId }: Props) {
   }, [mythosMode]);
 
   useEffectUpdate(() => {
-    Animated.timing(
-      toggleAnim.current,
-      {
-        toValue: mythosModeState ? 1 : 0,
-        duration: 250,
-        useNativeDriver: true,
-        easing: Easing.linear,
-      }
-    ).start();
-    Animated.timing(
-      colorAnim.current,
-      {
-        toValue: mythosModeState ? 1 : 0,
-        duration: 250,
-        useNativeDriver: false,
-        easing: Easing.linear,
-      }
-    ).start();
+    toggleAnim.value = withTiming(mythosModeState ? 1 : 0, { duration: 250 });
   }, [mythosModeState]);
 
   const onPress = useCallback(() => {
@@ -64,20 +45,27 @@ function MythosButton({ filterId }: Props) {
     setMythosModeState(newState);
     InteractionManager.runAfterInteractions(() => dispatch(toggleMythosMode(filterId, newState)));
   }, [setMythosModeState, dispatch, mythosModeState, filterId]);
-  const investigatorColor = colorAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [colors.D30, colors.L10],
-  });
-  const mythosColor = colorAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [colors.L10, colors.D30],
-  });
-  const movingCircleX = toggleAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, SIZE + 2.5],
+
+  const dark = colors.D30;
+  const light = colors.L10;
+  const backgroundColor = colors.L10;
+
+  const investigatorStyle = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [dark,dark, light, light]) as string,
+    };
+  }, [dark, light]);
+  const mythosStyle = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [light, light, dark, dark]) as string,
+    };
+  }, [light, dark]);
+  const movingCircleX = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [0, SIZE + 2.5]) }],
+    };
   });
 
-  const backgroundColor = colors.L10;
 
   return (
     <View style={styles.container}>
@@ -88,13 +76,11 @@ function MythosButton({ filterId }: Props) {
           </View>
           <Animated.View style={[
             styles.circle,
-            {
-              backgroundColor,
-              transform: [{ translateX: movingCircleX }],
-            },
+            { backgroundColor },
+            movingCircleX,
           ]} />
           <View style={styles.iconWrapper}>
-            <Animated.Text style={{ color: investigatorColor }} allowFontScaling={false}>
+            <Animated.Text style={investigatorStyle} allowFontScaling={false}>
               <AnimatedArkhamIcon
                 name={'per_investigator'}
                 size={24}
@@ -102,7 +88,7 @@ function MythosButton({ filterId }: Props) {
             </Animated.Text>
           </View>
           <View style={styles.iconWrapper}>
-            <Animated.Text style={{ color: mythosColor }} allowFontScaling={false}>
+            <Animated.Text style={mythosStyle} allowFontScaling={false}>
               <AnimatedArkhamIcon
                 name={'auto_fail'}
                 size={24}

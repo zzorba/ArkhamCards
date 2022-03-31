@@ -3328,19 +3328,19 @@
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "黑貓在你身邊。"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "黑貓在你身邊。"
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "黑貓帶去你們陷入困境的消息。"
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "黑貓察覺到了什麼。"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3352,7 +3352,7 @@
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "黑貓告知了幻夢境的事情。"
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
@@ -3364,7 +3364,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "黑貓提醒其他調查員。"
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -3372,7 +3372,7 @@
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "貓群收到了祖格鼠的貢品。"
           },
           {
             "id": "dreamers_awoke",
@@ -3412,7 +3412,7 @@
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "調查員和祖格鼠談判。"
           },
           {
             "id": "possess_silver_key",
@@ -3436,7 +3436,7 @@
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "調查員被倫道夫·卡特救下。"
           },
           {
             "id": "strayed_from_the_path",
@@ -3444,7 +3444,7 @@
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "那好吧，隨你便。"
           },
           {
             "id": "travelled_to_the_cold_wastes",
@@ -3456,7 +3456,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "這是你自找的。"
           }
         ]
       },
@@ -3516,15 +3516,15 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "黑貓在你身邊。"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "黑貓在你身邊。"
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "黑貓察覺到了什麼。"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3544,7 +3544,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "黑貓提醒其他調查員。"
           },
           {
             "id": "bridge_was_completed",
@@ -3556,23 +3556,23 @@
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "馬斯沃倫醫生生還。"
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "馬斯沃倫醫生失蹤。"
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "馬斯沃倫醫生與你一同調查。"
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "馬斯沃倫醫生留在病人身邊。"
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "馬斯沃倫醫生生死未卜。"
           },
           {
             "id": "found_a_way_out_of_the_underworld",
@@ -3584,7 +3584,7 @@
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "你獨自前行。"
           },
           {
             "id": "possess_silver_key",
@@ -3596,11 +3596,11 @@
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "倫道夫自己逃出了醫院。"
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "倫道夫和調查員一起逃出了醫院。"
           },
           {
             "id": "randolph_survived_descent",
@@ -3620,7 +3620,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "這是你自找的。"
           }
         ]
       },
