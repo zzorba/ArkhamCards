@@ -56,7 +56,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { colors, fontScale } = useContext(StyleContext);
+  const { fontScale } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
@@ -129,7 +129,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     if (filteredCampaigns.length === 0) {
       if (search) {
         return [(
-          <View style={[styles.footer, space.paddingTopM]}>
+          <View key="none" style={[styles.footer, space.paddingTopM]}>
             <Text style={[typography.text, typography.center]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
@@ -137,7 +137,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         ), 64 * fontScale];
       }
       return [(
-        <View style={[styles.footer, space.paddingTopM]}>
+        <View key="none-create" style={[styles.footer, space.paddingTopM]}>
           <Text style={[typography.text]}>
             { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
@@ -145,7 +145,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       ), 96 * fontScale];
     }
     return [(
-      <View style={styles.footer} />
+      <View key="empty" style={styles.footer} />
     ), 0];
   }, [filteredCampaigns, search, fontScale, typography]);
   const buttons: React.ReactNode[] = useMemo(() => {

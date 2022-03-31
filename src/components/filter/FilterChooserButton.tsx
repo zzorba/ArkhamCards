@@ -51,7 +51,7 @@ export default function FilterChooserButton({
       ...(query ? [query] : []),
     ],
     'and'
-  ), [query]);
+  ), [query, showCustomContent]);
   return (
     <DbChooserButton
       componentId={componentId}

@@ -46,7 +46,7 @@ import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@compone
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
-import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 
@@ -264,7 +264,6 @@ interface SectionFeedProps {
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
   sideDeck?: boolean;
-  noSearch?: boolean;
   hasHeader?: boolean;
   investigator?: Card;
   footerPadding?: number;
@@ -296,7 +295,6 @@ function useSectionFeed({
   sort,
   tabooSetId,
   filterQuery,
-  noSearch,
   searchTerm,
   textQuery,
   showAllNonCollection,
@@ -765,7 +763,7 @@ function useSectionFeed({
       { type: 'footer', height: footerPadding + (refreshingFinal ? 0 : expandSearchControlsHeight), refreshing: refreshingFinal },
     ];
     return sectionItems;
-  }, [expandSearchControlsHeight, footerPadding, sections, fontScale, refreshingFinal, loadingMessage, cardsLoading, noSearch, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
+  }, [expandSearchControlsHeight, footerPadding, sections, fontScale, refreshingFinal, loadingMessage, cardsLoading, hasHeader, refreshingResult, refreshingSearch, searchTerm, hasCards]);
   return {
     feed,
     fullFeed: visibleCards,
@@ -825,7 +823,7 @@ export default function({
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
-  const { colors, borderStyle, fontScale, typography, height, width } = useContext(StyleContext);
+  const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
@@ -845,7 +843,6 @@ export default function({
     investigator,
     query,
     sort,
-    noSearch,
     hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,
     filterQuery,
@@ -954,14 +951,6 @@ export default function({
       side: !!sideDeck,
     },
   ] : [], [deckId, sideDeck]);
-  const renderSection = useCallback((header: SectionHeaderItem) => {
-    return (
-      <CardSectionHeader
-        section={header.header}
-        investigator={investigator}
-      />
-    )
-  }, [investigator]);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {

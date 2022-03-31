@@ -6,7 +6,6 @@ import StyleContext from '@styles/StyleContext';
 import { FactionCodeType } from '@app_constants';
 import { map } from 'lodash';
 import { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
-import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
@@ -15,7 +14,6 @@ import { localizedDate } from '@lib/datetime';
 import { useFlag } from '@components/core/hooks';
 import ChaosToken from '@components/campaign/ChaosToken';
 import FastImage from 'react-native-fast-image';
-import { openUrl } from '@components/nav/helper';
 
 interface ReleaseNote {
   date: Date;
@@ -46,7 +44,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         c('releaseNotes').t`- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden.`,
         c('releaseNotes').t`- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial.`,
         c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check ArkhamDB for updates</b>).`,
-        c('releaseNotes').t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`
+        c('releaseNotes').t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`,
       ],
     },
     {
@@ -60,7 +58,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         c('releaseNotes').t`- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well.`,
         c('releaseNotes').t`- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag.`,
         c('releaseNotes').t`- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself.`,
-        c('releaseNotes').t`If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized.`
+        c('releaseNotes').t`If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized.`,
       ],
     },
     {
@@ -86,7 +84,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         c('releaseNotes').t`The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible.`,
         c('releaseNotes').t`Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns.`,
         <View key="icon" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-          <ChaosToken iconKey='frost' size="small" />
+          <ChaosToken iconKey="frost" size="small" />
         </View>,
         c('releaseNotes').t`Stay warm out there!`,
       ],
@@ -107,9 +105,9 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         </View>,
         c('releaseNotes').t`In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all.`,
         <View key="icon" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-          <ChaosToken iconKey='bless' size="tiny" />
+          <ChaosToken iconKey="bless" size="tiny" />
           <View style={space.paddingLeftS}>
-            <ChaosToken iconKey='curse' size="tiny" />
+            <ChaosToken iconKey="curse" size="tiny" />
           </View>
         </View>,
         c('releaseNotes').t`You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!`,
@@ -152,7 +150,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
         { localizedDate(date, lang, true) }
       </Text>
     </View>
-  ), [date, lang, colors]);
+  ), [date, lang, colors, typography]);
   const renderHeader = useCallback((icon: React.ReactFragment) => {
     return (
       <View style={[{
@@ -202,10 +200,9 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
 }
 export default function ReleaseNotesView({ componentId }: { componentId: string }) {
   const { backgroundStyle, width } = useContext(StyleContext);
-  const { lang } = useContext(LanguageContext);
   const releaseNotes = useMemo(() => getReleaseNotes(width - s * 4), [width]);
   return (
-    <View style={[{ flex: 1 }, backgroundStyle ]}>
+    <View style={[{ flex: 1 }, backgroundStyle]}>
       <ScrollView style={[backgroundStyle, space.paddingSideS, space.paddingTopS]}>
         { map(releaseNotes, (note, idx) => {
           return (

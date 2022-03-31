@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import LottieView from 'lottie-react-native';
 import { set } from 'lodash';
-import { Animated, StyleSheet, View } from 'react-native';
+import { Animated, View } from 'react-native';
 import tinycolor from 'tinycolor2';
 
 import StyleContext from '@styles/StyleContext';
@@ -103,12 +103,3 @@ export default function ArkhamLoadingSpinner({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-});
-

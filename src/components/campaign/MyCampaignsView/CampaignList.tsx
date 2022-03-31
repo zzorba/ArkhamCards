@@ -12,7 +12,6 @@ import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView'
 import { StandaloneGuideProps } from '@components/campaignguide/StandaloneGuideView';
 import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampaignGuideView';
 import COLORS from '@styles/colors';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -20,7 +19,7 @@ import useConnectionProblemBanner from '@components/core/useConnectionProblemBan
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -53,10 +52,8 @@ interface FooterType {
 
 type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
-type ItemHeader = string;
-
 export default function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons }: Props) {
-  const { fontScale, height, width } = useContext(StyleContext);
+  const { fontScale, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
@@ -134,9 +131,9 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
 
   const [{ networkType, isConnected }] = useNetworkStatus();
   const offline = !isConnected || networkType === NetInfoStateType.none;
-  const [connectionProblemBanner, connectionProblemBannerHeight] = useConnectionProblemBanner({ width });
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width });
 
-  const [data, empty] = useMemo(() => {
+  const data = useMemo(() => {
     const empty = campaigns.length === 0;
     const footerItem: FooterType = { type: 'footer', height: footerHeight || 0 };
     const items: ItemType[] = [
@@ -155,9 +152,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       }),
       ...(!empty ? [footerItem] : []),
     ];
-    return [items, empty, footerHeight];
-  }, [campaigns, buttons]);
-  const searchHeight = searchBoxHeight(fontScale);
+    return items;
+  }, [campaigns, buttons, footerHeight]);
   const renderFooter = useCallback(() => {
     if (refreshing) {
       return <View />;
@@ -167,7 +163,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         { footer }
       </View>
     );
-  }, [footer, refreshing, empty, searchHeight]);
+  }, [footer, refreshing]);
 
   const renderHeader = useCallback((): React.ReactElement<any> => {
     return (
@@ -175,7 +171,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
         { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
       </View>
     );
-  }, [userId, searchHeight, refreshing, connectionProblemBanner]);
+  }, [userId, refreshing, connectionProblemBanner]);
 
   const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {

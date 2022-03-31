@@ -2284,11 +2284,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "os braseiros estão acesos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "os braseiros permanecem apagados."
           },
           {
             "id": "cleared_path_to_temple",
@@ -2308,7 +2308,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "o tecido do tempo é desfeito."
           },
           {
             "id": "fell_into_depths",
@@ -2372,11 +2372,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "os investigadores salvaram a civilização das Serpentes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "os investigadores salvaram a civilização dos Yithians."
           },
           {
             "id": "jungle_watches",
@@ -2388,7 +2388,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "os investigadores consertaram o rasgo a tempo."
           },
           {
             "id": "nexus_is_near",
@@ -2436,7 +2436,7 @@
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "os investigadores voltam no tempo"
           },
           {
             "id": "wait_for_additional_supplies",
@@ -3680,11 +3680,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "os braseiros estão acesos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "os braseiros permanecem apagados."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3704,7 +3704,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "o tecido do tempo é desfeito."
           },
           {
             "id": "fell_into_depths",
@@ -3768,11 +3768,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "os investigadores salvaram a civilização das Serpentes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "os investigadores salvaram a civilização dos Yithians."
           },
           {
             "id": "jungle_watches",
@@ -3784,7 +3784,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "os investigadores consertaram o rasgo a tempo."
           },
           {
             "id": "nexus_is_near",
@@ -3828,7 +3828,7 @@
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "os investigadores voltam no tempo"
           },
           {
             "id": "wait_for_additional_supplies",

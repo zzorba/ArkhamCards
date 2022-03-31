@@ -6,7 +6,7 @@ import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
 import TextInputLine from './TextInputLine';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 import Card from '@data/types/Card';

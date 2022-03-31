@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -32,7 +32,7 @@ export default function AccordionItem({ label, height, children, enabled, toggle
         easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
       }
     );
-  }, [enabled]);
+  }, [enabled, heightAnim]);
 
   const togglePressed = useCallback(() => {
     onToggleChange(toggleName, !enabled);

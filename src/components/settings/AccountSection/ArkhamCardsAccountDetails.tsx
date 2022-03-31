@@ -71,8 +71,8 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         <Text style={typography.text}>
           {
             lang === 'en' ?
-            t`Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends.` :
-            t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`
+              t`Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends.` :
+              t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`
           }
         </Text>
       </View>

@@ -212,7 +212,7 @@ export const syncRules = async function(
   await insertChunk(sqliteVersion, simpleRules, async rules => await db.insertRules(rules));
   VERBOSE && console.log('Inserted all simple rules');
 
-  for (let i  = 0; i < complexRules.length; i++) {
+  for (let i = 0; i < complexRules.length; i++) {
     const r = complexRules[i];
     await db.insertRules([
       r,

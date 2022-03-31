@@ -4,7 +4,6 @@ import { filter, map, take, uniq } from 'lodash';
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
@@ -26,15 +25,6 @@ interface Props {
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
-}
-
-interface Item {
-  key: string;
-  deckId: MiniDeckT;
-}
-
-function keyExtractor(item: Item) {
-  return item.deckId.id.uuid;
 }
 
 function DeckListItem({
@@ -71,7 +61,6 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
-  const { fontScale } = useContext(StyleContext);
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
   const items = useMemo(() => {

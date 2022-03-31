@@ -1,18 +1,12 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
-import { StyleSheet, View, Keyboard, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import RefreshableWrapper from 'react-native-fresh-refresh';
-import Animated, { runOnJS } from 'react-native-reanimated';
+import Animated, { useSharedValue } from 'react-native-reanimated';
+import { map } from 'lodash';
 
 import { searchBoxHeight } from './SearchBox';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 import StyleContext from '@styles/StyleContext';
-import { flatMap, map } from 'lodash';
-import { useSharedValue } from 'react-native-reanimated';
-
-export interface BasicSection<Item, Header> {
-  header?: Header;
-  items: Item[];
-}
 
 interface Props<Item> {
   heightForItem?: (item: Item) => number;
@@ -39,10 +33,6 @@ interface FlatLoader {
 }
 type FlatDataItem<Item> = FlatItem<Item> | FlatLoader;
 
-function dismissKeyboard() {
-  'worklet';
-  Keyboard.dismiss();
-}
 export default function ArkhamLargeList<Item>({
   refreshing,
   noSearch,
@@ -80,7 +70,7 @@ export default function ArkhamLargeList<Item>({
       ...items,
     ];
   }, [data, noSearch]);
-  const loader = (
+  const loader = useMemo(() => (
     <View style={[{
       height: searchBoxHeight(fontScale),
     }]}>
@@ -89,7 +79,7 @@ export default function ArkhamLargeList<Item>({
         loop
       />
     </View>
-  );
+  ), [fontScale]);
   const renderFlatItem: ListRenderItem<FlatDataItem<Item>> = useCallback(({ item }: ListRenderItemInfo<FlatDataItem<Item>>) => {
     switch (item.type) {
       case 'item':
@@ -131,11 +121,3 @@ export default function ArkhamLargeList<Item>({
     </RefreshableWrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-});

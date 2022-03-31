@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
-import Animated, { useDerivedValue, interpolate, useAnimatedStyle, useAnimatedScrollHandler, withTiming, useSharedValue } from 'react-native-reanimated';
+import Animated, { useDerivedValue, interpolate, useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 
 import SearchBox, { SearchBoxHandles, searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
@@ -45,14 +45,14 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
   const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
     scrollY.current = event.nativeEvent.contentOffset.y;
     setOffsetY(event.nativeEvent.contentOffset.y);
-  }, []);
+  }, [setOffsetY]);
   const animateScroll = useCallback((visible: boolean) => {
     if (!advancedOpen) {
       scrollAnim.value = withTiming(visible ? 1 : 0, { duration: 350 });
       scrollAnimPos.value = withTiming(visible ? 1 : 0, { duration: 350 });
       setVisible(visible);
     }
-  }, [scrollAnim, setVisible, advancedOpen]);
+  }, [scrollAnim, scrollAnimPos, setVisible, advancedOpen]);
   const showHeader = useCallback(() => {
     if (!visible) {
       animateScroll(true);
@@ -138,7 +138,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
         </View>
       </Animated.View>
     );
-  }, [advancedOptions, advancedBlockAnimation, fontScale, width, advancedToggleAnim, colors, shadow.medium]);
+  }, [advancedOptions, advancedOptionsHeight, advancedBlockAnimation, width, colors, shadow.medium]);
   const wrapperStyle = useAnimatedStyle(() => {
     const translateY = advancedOpen ? 0 : interpolate(
       scrollAnimPos.value,
@@ -195,7 +195,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
           height: searchBoxHeight(fontScale),
           zIndex: 2,
         },
-        wrapperStyle
+        wrapperStyle,
       ]}>
         { advancedOptionsBlock }
         <Animated.View

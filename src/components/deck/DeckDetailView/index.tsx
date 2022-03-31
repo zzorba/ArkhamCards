@@ -1098,7 +1098,7 @@ function DeckDetailView({
         { cardsMissing && (
           <View style={space.paddingSideM}>
             <Text style={[typography.text, space.paddingBottomS]}>
-               {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
+              {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
             </Text>
             <View>
               <ArkhamButton

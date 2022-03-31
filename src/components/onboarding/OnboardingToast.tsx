@@ -28,13 +28,11 @@ export default function OnboardingToast({ onPress, hide, text, background, setti
             <View>
               <AppIcon size={32} color="#FFF" name="logo" />
             </View>
-            <Text style={[
+            <Text numberOfLines={2} style={[
               space.paddingLeftS,
               typography.small,
               typography.white,
-            ]}
-              numberOfLines={2}
-            >
+            ]}>
               { text }
             </Text>
           </View>

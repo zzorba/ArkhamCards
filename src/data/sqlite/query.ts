@@ -3,7 +3,7 @@ import { NotBrackets, Brackets } from 'typeorm/browser';
 
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import { QueryParams } from '@data/sqlite/types';
-import { QueryBuilder, WhereExpressionBuilder } from 'typeorm';
+import { WhereExpressionBuilder } from 'typeorm';
 
 
 export function where(query: string, params?: QueryParams): Brackets {

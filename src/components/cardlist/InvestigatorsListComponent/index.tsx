@@ -1,8 +1,7 @@
-import React, { ReactText, useCallback, useContext, useMemo, useState } from 'react';
-import { filter, forEach, find, result } from 'lodash';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { filter, forEach, find } from 'lodash';
 import {
   Keyboard,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -18,7 +17,6 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -90,18 +88,6 @@ function renderSectionHeader(item: HeaderItem) {
   );
 }
 
-function investigatorToCode(investigator: Card) {
-  return investigator.code;
-}
-
-function Header() {
-  const { fontScale } = useContext(StyleContext);
-  if (Platform.OS === 'android') {
-    return <View style={{ height: searchBoxHeight(fontScale) }} />;
-  }
-  return null;
-}
-
 function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, showFaction }: {
   investigator: Card;
   onInvestigatorPress: (card: Card) => void;
@@ -151,17 +137,13 @@ export default function InvestigatorsListComponent({
   searchOptions,
   customFooter,
 }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const [investigators, loading] = useAllInvestigators(undefined, sort);
 
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
-
-  const handleScrollBeginDrag = useCallback(() => {
-    Keyboard.dismiss();
-  }, []);
 
   const onInvestigatorPress = useCallback((investigator: Card) => {
     onPress(investigator);
@@ -354,7 +336,6 @@ export default function InvestigatorsListComponent({
       </>
     );
   }, [typography, customFooter, searchTerm, data]);
-  const searchBarHeight = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox
       prompt={t`Search`}

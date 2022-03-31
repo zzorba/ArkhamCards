@@ -274,7 +274,7 @@ interface Props {
 }
 
 export default function useFriendFeedComponent({ componentId, userId, handleScroll, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
-  const { borderStyle, colors, height, fontScale, typography } = useContext(StyleContext);
+  const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
   const { lang } = useContext(LanguageContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
@@ -368,10 +368,9 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
     setRefreshing(false);
   }, [refetchMyProfile, refetchProfile]);
 
-  const hasSearch = !!handleScroll;
   const data: FriendFeedItem[] = useMemo(() => {
     return toFeed(isSelf, profile);
-  }, [toFeed, fontScale, isSelf, profile, hasSearch]);
+  }, [toFeed, isSelf, profile]);
   const searchResultsError = searchResults?.error;
   const header = useMemo(() => {
     const spacer = Platform.OS === 'android' && <View style={{ height: searchBoxHeight(fontScale) }} />;

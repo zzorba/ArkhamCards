@@ -1,6 +1,6 @@
-import React, { useRef, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Animated, { interpolate, Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Collapsible from 'react-native-collapsible';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
@@ -10,7 +10,7 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 
 function degToRad(deg: number): string {
-  return ((deg * Math.PI) / 180) + 'rad';
+  return `${((deg * Math.PI) / 180)}rad`;
 }
 
 interface Props {
@@ -37,7 +37,7 @@ export default function CollapsibleFactionBlock({ faction, textColor, noShadow, 
   });
   const icon = useMemo(() => {
     return !disabled && (
-      <Animated.View style={[{ width: 36, height: 36}, iconRotateStyle]}>
+      <Animated.View style={[styles.icon, iconRotateStyle]}>
         <AppIcon name="expand_less" size={36} color={textColor || '#FFFFFF'} />
       </Animated.View>
     );
@@ -73,5 +73,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderBottomWidth: 1,
+  },
+  icon: {
+    width: 36,
+    height: 36,
   },
 });

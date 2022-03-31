@@ -33,7 +33,7 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   }, [card, showInvestigatorCards]);
   const showParallelInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && parallelInvestigators.length && showInvestigatorCards(parallelInvestigators[0].code);
-  }, [card, showInvestigatorCards]);
+  }, [showInvestigatorCards, parallelInvestigators]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;

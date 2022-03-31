@@ -463,8 +463,8 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         <View style={[space.paddingSideS, space.paddingTopXs, space.paddingBottomM]}>
           <Text style={typography.text}>
             { lang === 'en' ?
-            t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\n\nYou can also upload in-progress campaigns and share them with friends and even share a synchronized chaos bag.` :
-            t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\nMore features are in the works.`}
+              t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\n\nYou can also upload in-progress campaigns and share them with friends and even share a synchronized chaos bag.` :
+              t`Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\nMore features are in the works.`}
           </Text>
         </View>
         <View style={[styles.row, space.paddingSideS, space.paddingBottomM]}>
@@ -475,7 +475,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         </View>
       </View>
     );
-  }, [typography, loginPressed, createAccountPressed]);
+  }, [typography, lang, loginPressed, createAccountPressed]);
 
   const emailContent = useMemo(() => {
     return (
