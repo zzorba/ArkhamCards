@@ -319,7 +319,7 @@ export default function({
 
   const query = useMemo(() => {
     const queryParts: Brackets[] = [];
-    const actuallyIncludeDuplicates = includeDuplicates || (filters?.packCodes.length);
+    const actuallyIncludeDuplicates = includeDuplicates;
     if (mythosToggle) {
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);

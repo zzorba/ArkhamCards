@@ -70,6 +70,7 @@ function InvesigatorCheckListItemComponent({
       <View style={styles.switch}>
         <ArkhamSwitch
           onValueChange={toggle}
+          disabled={!editable}
           value={selected}
           large
           color="light"

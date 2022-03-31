@@ -1357,7 +1357,7 @@ export default class Card {
     json: any,
     card: Card
   ): Card {
-    const code: string = json.code;
+    const code: string = card.code;
     const result: Card = { ...card } as Card;
     result.id = `${tabooId}-${code}`;
     result.taboo_set_id = tabooId;

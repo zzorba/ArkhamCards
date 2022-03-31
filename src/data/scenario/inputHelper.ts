@@ -1,4 +1,4 @@
-import { filter, find, flatMap, forEach, head, keys, values } from 'lodash';
+import { filter, find, findIndex, flatMap, forEach, head, keys, values } from 'lodash';
 
 import { NumberChoices } from '@actions/types';
 import {
@@ -52,7 +52,16 @@ export function investigatorChoiceInputChoices(
   const codes = conditionResult ? keys(conditionResult.investigatorChoices) :
     filter(
       campaignLog.investigatorCodes(false),
-      code => input.investigator !== 'resigned' || campaignLog.resigned(code)
+      code => {
+        switch (input.investigator) {
+          case 'resigned':
+            return campaignLog.resigned(code);
+          case 'not_defeated':
+            return !campaignLog.isDefeated(code);
+          default:
+            return true;
+        }
+      }
     );
   const result: NumberChoices = {};
   forEach(
@@ -70,7 +79,7 @@ export function investigatorChoiceInputChoices(
         forEach(conditionResult.investigatorChoices,
           (indexes, code) => {
             // If we got one or more matches, that means this 'choice' is good.
-            if (indexes.length) {
+            if (indexes.length && findIndex(codes, c => c === code) !== -1) {
               result[code] = [
                 ...(result[code] || []),
                 idx,

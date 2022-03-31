@@ -34,7 +34,7 @@ function getColon(lang: string): string {
   }
 }
 
-function getArkhamDbDomain(lang: string): string {
+export function getArkhamDbDomain(lang: string): string {
   if (NON_LOCALIZED_CARDS.has(lang)) {
     return 'https://arkhamdb.com';
   }

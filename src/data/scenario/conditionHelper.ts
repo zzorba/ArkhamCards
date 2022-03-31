@@ -545,9 +545,11 @@ export function campaignDataInvestigatorConditionResult(
     campaignLog
   );
   let match: OptionWithId | undefined = undefined;
-  forEach(result.investigatorChoices, (choices) => {
+  let input: string[] = [];
+  forEach(result.investigatorChoices, (choices, code) => {
     if (choices.length) {
       match = find(result.options, option => option.id === choices[0]);
+      input.push(code);
     }
   });
   if (match) {
@@ -555,6 +557,7 @@ export function campaignDataInvestigatorConditionResult(
       type: 'binary',
       decision: true,
       option: match,
+      input,
     };
   }
   return {

@@ -21,7 +21,14 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
   const [investigators, investigatorCodes] = useMemo(() => {
     const allInvestigators = campaignLog.investigators(false)
     if (!input.condition) {
-      return [allInvestigators, map(allInvestigators, c => c.code)];
+      const selectedInvestigators = filter(allInvestigators, c => {
+        switch (input.investigator) {
+          case 'resigned': return campaignLog.resigned(c.code);
+          case 'not_defeated': return !campaignLog.isDefeated(c.code);
+          default: return true;
+        }
+      })
+      return [selectedInvestigators, map(selectedInvestigators, c => c.code)];
     }
     const result = investigatorChoiceConditionResult(input.condition, campaignLog);
     const codes = new Set(keys(result.investigatorChoices));
@@ -73,6 +80,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
     );
   }
   if (input.choices.length === 1 && (
+    input.investigator === 'not_defeated' ||
     input.investigator === 'all' ||
     input.investigator === 'choice'
   )) {
@@ -90,7 +98,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           choiceId={choice.id}
           checkText={choice.text}
           confirmText={choice.selected_text}
-          investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined}
+          investigators={choices.type === 'personalized' ? keys(choices.perCode) : investigatorCodes}
           min={input.investigator === 'choice' && !input.optional ? 1 : 0}
           max={4}
         />
@@ -104,7 +112,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       text={step.text}
       promptType={step.prompt_type}
       bulletType={step.bullet_type}
-      investigators={input.investigator === 'resigned' ? filter(investigators, card => campaignLog.resigned(card.code)) : undefined}
+      investigators={investigators}
       options={options}
       detailed={input.special_mode === 'detailed'}
       optional={input.investigator === 'choice'}

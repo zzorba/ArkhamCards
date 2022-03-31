@@ -12,6 +12,7 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { loadTaboos } from '@data/scenario';
+import { getArkhamDbDomain } from './i18n/LanguageProvider';
 
 const VERBOSE = false;
 
@@ -36,8 +37,7 @@ export const syncTaboos = async function(
   cache?: TabooCache
 ): Promise<TabooCache | null> {
   try {
-    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
-    const uri = `https://${langPrefix}arkhamdb.com/api/public/taboos/`;
+    const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/taboos/`;
     const headers = new Headers();
     if (cache && cache.lastModified && cache.tabooCount > 0) {
       const cards = await db.cards();
@@ -73,12 +73,12 @@ export const syncTaboos = async function(
 
     await cardsRep.createQueryBuilder()
       .update()
-      .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards })
+      .where('(code in (:...codes) OR duplicate_of_code in (:...codes)) AND (taboo_set_id is null)', { codes: allTabooCards })
       .set({ taboo_set_id: 0 })
       .execute();
     VERBOSE && console.log('Found base taboo cards');
     const baseTabooCards: Card[] = await (await db.cards()).createQueryBuilder('c')
-      .where('c.code IN (:...codes) AND c.taboo_set_id = 0')
+      .where('(c.code IN (:...codes) OR c.duplicate_of_code in (:...codes)) AND c.taboo_set_id = 0')
       .leftJoin('c.linked_card', 'linked_card')
       .setParameters({ codes: allTabooCards })
       .addSelect(Card.ELIDED_FIELDS)
@@ -93,23 +93,37 @@ export const syncTaboos = async function(
     try {
       for (let i = 0; i < json.length; i++) {
         const tabooJson = getTaboos(json[i], localTaboos);
-        const cards = tabooJson.cards;
+        const taboos = tabooJson.cards;
         try {
-          tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
+          tabooSets.push(TabooSet.fromJson(tabooJson, taboos.length));
           const tabooCardsToSave: {
-            [key: string]: Card | undefined;
+            [key: string]: Card[] | undefined;
           } = {};
           forEach(baseTabooCards, card => {
-            tabooCardsToSave[card.code] = Card.placeholderTabooCard(tabooJson.id, card);
+            const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
+            if (card.duplicate_of_code) {
+              tabooCardsToSave[card.duplicate_of_code] = [
+                ...(tabooCardsToSave[card.duplicate_of_code] || []),
+                tabooCard,
+              ];
+            } else {
+              tabooCardsToSave[card.code] = [
+                ...(tabooCardsToSave[card.code] || []),
+                tabooCard,
+              ];
+            }
           });
 
-          for (let j = 0; j < cards.length; j++) {
-            const cardJson = cards[j];
-            const code: string = cardJson.code;
-            const card = tabooCardsToSave[code];
-            if (card) {
+          for (let j = 0; j < taboos.length; j++) {
+            const taboo = taboos[j];
+            const code: string = taboo.code;
+            const cards = tabooCardsToSave[code];
+            if (cards?.length) {
               try {
-                tabooCardsToSave[code] = Card.fromTabooCardJson(tabooJson.id, cardJson, card);
+                tabooCardsToSave[code] = map(
+                  cards,
+                  card => Card.fromTabooCardJson(tabooJson.id, taboo, card)
+                );
               } catch (e) {
                 Alert.alert(`${e}`);
                 console.log(e);
@@ -118,7 +132,7 @@ export const syncTaboos = async function(
               console.log(`Could not find old card: ${code}`);
             }
           }
-          const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
+          const cardsToInsert = flatMap(values(tabooCardsToSave), cards => cards || []);
           // await cards.save(cardsToInsert);
           await insertChunk(sqliteVersion, cardsToInsert, async cards => {
             await queryRunner.manager.insert(Card, cards);
@@ -300,8 +314,7 @@ export const syncCards = async function(
   try {
     updateProgress(0);
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
-    const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
-    const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
+    const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
       [cycle_position: number]: {
@@ -482,10 +495,10 @@ export const syncCards = async function(
           }
           */
           if (card.duplicate_of_code) {
-            if (!dupes[card.duplicate_of_code]) {
-              dupes[card.duplicate_of_code] = [];
-            }
-            dupes[card.duplicate_of_code]?.push(card.pack_code);
+            dupes[card.duplicate_of_code] = [
+              ...(dupes[card.duplicate_of_code] || []),
+              card.pack_code,
+            ];
           }
           cardsToInsert.push(card);
         }
