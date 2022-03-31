@@ -1030,6 +1030,9 @@ export default class Card {
       subname: card.real_subname,
       text: card.real_text,
       traits: card.real_traits,
+      back_flavor: card.real_back_flavor,
+      back_name: card.real_back_name,
+      back_text: card.real_back_text,
     };
     json.encounter_name = card.encounter_sets.length ? card.encounter_sets[0].name : card.real_encounter_set_name;
     json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
