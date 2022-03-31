@@ -99,13 +99,7 @@ function MyDecksComponent({
 
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
   const header = useMemo(() => {
-    const searchPadding = !!searchOptions && Platform.OS === 'android';
-    return (
-      <>
-        { searchPadding && <View style={{ height: searchBoxHeight(fontScale) }} /> }
-        { connectionProblemBanner }
-      </>
-    );
+    return connectionProblemBanner;
   }, [searchOptions, fontScale, connectionProblemBanner]);
 
   const [deckIds, deckReasons] = useMemo(() => {

@@ -71,7 +71,7 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
-  const { colors, backgroundStyle, fontScale } = useContext(StyleContext);
+  const { fontScale } = useContext(StyleContext);
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
   const items = useMemo(() => {
@@ -103,7 +103,6 @@ export default function DeckList({
     );
   }, [deckClicked, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
-  const height = searchBoxHeight(fontScale);
   const renderHeader = useCallback(() => header || null, [header]);
   const renderFooter = useCallback(() => footer(items.length === 0), [footer, items.length]);
   return (
