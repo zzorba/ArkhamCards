@@ -36,3 +36,25 @@ index 0882d7e..7c32c7b 100644
      const native = Gesture.Native();
      const panGesture = Gesture.Pan()
          .onChange((event) => {
+diff --git a/node_modules/react-native-fresh-refresh/src/index.tsx b/node_modules/react-native-fresh-refresh/src/index.tsx
+index 76d3edd..c36d3db 100644
+--- a/node_modules/react-native-fresh-refresh/src/index.tsx
++++ b/node_modules/react-native-fresh-refresh/src/index.tsx
+@@ -23,6 +23,7 @@ interface Props {
+   children: JSX.Element;
+   Loader?: () => JSX.Element | JSX.Element;
+   bounces: boolean;
++  managedLoading?: boolean;
+ }
+ 
+ const RefreshableWrapper: React.FC<Props> = ({
+@@ -33,7 +34,8 @@ const RefreshableWrapper: React.FC<Props> = ({
+   contentOffset,
+   children,
+   Loader = <DefaultLoader />,
+-  bounces = true
++  bounces = true,
++  managedLoading = false,
+ }) => {
+   const isRefreshing = useSharedValue(false);
+   const loaderOffsetY = useSharedValue(0);

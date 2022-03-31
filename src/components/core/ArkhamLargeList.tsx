@@ -113,6 +113,7 @@ export default function ArkhamLargeList<Item>({
       onRefresh={handleRefresh}
       refreshHeight={searchBoxHeight(fontScale)}
       bounces
+      managedLoading
     >
       <Animated.FlatList
         data={flatData}

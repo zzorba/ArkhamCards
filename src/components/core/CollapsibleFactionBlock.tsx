@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useMemo } from 'react';
-import { Animated, Easing, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import Animated, { interpolate, Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Collapsible from 'react-native-collapsible';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
@@ -7,6 +8,10 @@ import { FactionCodeType } from '@app_constants';
 import { useEffectUpdate } from './hooks';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
+
+function degToRad(deg: number): string {
+  return ((deg * Math.PI) / 180) + 'rad';
+}
 
 interface Props {
   open?: boolean;
@@ -21,30 +26,22 @@ interface Props {
 }
 export default function CollapsibleFactionBlock({ faction, textColor, noShadow, color, renderHeader, children, toggleOpen, open, disabled }: Props) {
   const { colors, shadow } = useContext(StyleContext);
-  const openAnim = useRef(new Animated.Value(open ? 1 : 0));
+  const openAnim = useSharedValue(open ? degToRad(-180) : degToRad(-90));
   useEffectUpdate(() => {
-    Animated.timing(
-      openAnim.current,
-      {
-        toValue: open ? 1 : 0,
-        duration: 200,
-        useNativeDriver: false,
-        easing: Easing.ease,
-      }
-    ).start();
+    openAnim.value = withTiming(open ? degToRad(-180) : degToRad(-90), { duration: 200, easing: Easing.ease });
   }, [open]);
-  const iconRotate = openAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['-90deg', '-180deg'],
-    extrapolate: 'clamp',
+  const iconRotateStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: openAnim.value }],
+    };
   });
   const icon = useMemo(() => {
     return !disabled && (
-      <Animated.View style={{ width: 36, height: 36, transform: [{ rotate: iconRotate }] }}>
+      <Animated.View style={[{ width: 36, height: 36}, iconRotateStyle]}>
         <AppIcon name="expand_less" size={36} color={textColor || '#FFFFFF'} />
       </Animated.View>
     );
-  }, [iconRotate, disabled, textColor]);
+  }, [iconRotateStyle, disabled, textColor]);
 
   return (
     <>
