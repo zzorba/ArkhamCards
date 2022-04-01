@@ -31,9 +31,10 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   const showInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && showInvestigatorCards(card.code);
   }, [card, showInvestigatorCards]);
+  const parallelInvestigator = parallelInvestigators.length > 0 ? parallelInvestigators[0] : undefined;
   const showParallelInvestigatorCardsPressed = useCallback(() => {
-    showInvestigatorCards && parallelInvestigators.length && showInvestigatorCards(parallelInvestigators[0].code);
-  }, [showInvestigatorCards, parallelInvestigators]);
+    showInvestigatorCards && parallelInvestigator && showInvestigatorCards(parallelInvestigator.code);
+  }, [showInvestigatorCards, parallelInvestigator]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;
@@ -65,8 +66,9 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
           title={t`Show all available cards`}
           onPress={showInvestigatorCardsPressed}
         />
-        { parallelInvestigators.length > 0 && (
+        { !!parallelInvestigator && (
           <ArkhamButton
+            key="parallel"
             icon="parallel"
             title={t`Show all available cards for parallel`}
             onPress={showParallelInvestigatorCardsPressed}
