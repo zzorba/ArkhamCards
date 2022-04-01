@@ -32,32 +32,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "[reaction] свойство этой карты следует читать: «После того как вы успешно исследовали, поверните „Доктора Милана Кристофера“…»"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "[reaction] свойство этой карты можно активировать не чаще 1 раза в раунд."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Не более 2 экземпляров «Забраться слишком далеко» на победном счёте на всех."
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "Максимум 1 такая карта на проверку."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Максимум 1 раз в раунд."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "Свойство этой карты следует читать: «Введите в игру со своей руки актив-[[вещь]], занимающий менее 2 слотов рук»."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Эта карта считается Исключительной."
       }
     ]
   },
@@ -106,32 +106,32 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "[reaction] свойство этой карты следует читать: «После того как вы успешно исследовали, поверните „Доктора Милана Кристофера“…»"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "[reaction] свойство этой карты можно активировать не чаще 1 раза в раунд."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Не более 2 экземпляров «Забраться слишком далеко» на победном счёте на всех."
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "Максимум 1 такая карта на проверку."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Максимум 1 раз в раунд."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "Свойство этой карты следует читать: «Введите в игру со своей руки актив-[[вещь]], занимающий менее 2 слотов рук»."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Эта карта считается Исключительной."
       }
     ]
   },
@@ -200,57 +200,57 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "[reaction] свойство этой карты следует читать: «После того как вы успешно исследовали, поверните „Доктора Милана Кристофера“…»"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "[reaction] свойство этой карты можно активировать не чаще 1 раза в раунд."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Не более 2 экземпляров «Забраться слишком далеко» на победном счёте на всех."
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "Свойство карты можно использовать «максимум 1 раз в раунд»."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Максимум 1 раз в раунд."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "Свойство этой карты следует читать: «Введите в игру со своей руки актив-[[вещь]] уровня 0–3»."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Эта карта считается Исключительной."
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "После розыгрыша свойства этой карты удалите её из игры."
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "Свойство [action] следует читать: «[action] Потратьте 1 патрон: <b>Бой.</b> У вас +2 [combat] в этой атаке. Если в ходе этой атаки вытянут жетон с неотрицательным модификатором, эта атака наносит +2 раны»."
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "Запрещена."
       }
     ]
   },
@@ -339,57 +339,57 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "[reaction] свойство этой карты следует читать: «После того как вы успешно исследовали, поверните „Доктора Милана Кристофера“…»"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "[reaction] свойство этой карты можно активировать не чаще 1 раза в раунд."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Не более 2 экземпляров «Забраться слишком далеко» на победном счёте на всех."
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: “(max once per round).”"
+        "text": "Свойство карты можно использовать «максимум 1 раз в раунд»."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Максимум 1 раз в раунд."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+        "text": "Свойство этой карты следует читать: «Введите в игру со своей руки актив-[[вещь]] уровня 0–3»."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Эта карта считается Исключительной."
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+        "text": "После розыгрыша свойства этой карты удалите её из игры."
       },
       {
         "code": "05116",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "05188",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "05189",
-        "text": "This card’s [action] ability is now a [fast] ability."
+        "text": "Свойство [action] считается свойством [fast]."
       },
       {
         "code": "06195",
-        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+        "text": "Свойство [action] следует читать: «[action] Потратьте 1 патрон: <b>Бой.</b> У вас +2 [combat] в этой атаке. Если в ходе этой атаки вытянут жетон с неотрицательным модификатором, эта атака наносит +2 раны»."
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "Запрещена."
       }
     ]
   }

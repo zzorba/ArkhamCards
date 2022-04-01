@@ -720,6 +720,15 @@ export default class GuidedCampaignLog {
         });
         return result;
       }
+      case 'not_defeated': {
+        const result: string[] = [];
+        forEach(this.investigatorResolutionStatus(), (status, code) => {
+          if (status === 'alive' || status === 'resigned') {
+            result.push(code);
+          }
+        });
+        return result;
+      }
       case 'resigned': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {

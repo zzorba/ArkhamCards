@@ -70,6 +70,7 @@ export type InvestigatorSelector =
   | "choice"
   | "defeated"
   | "resigned"
+  | "not_defeated"
   | "not_resigned"
   | "any_resigned"
   | "$input_value"
@@ -319,7 +320,7 @@ export interface AddWeaknessEffect {
 }
 export interface RemoveCardEffect {
   type: "remove_card";
-  investigator?: "choice" | "$input_value" | "$fixed_investigator";
+  investigator?: "choice" | "defeated" | "$input_value" | "$fixed_investigator";
   fixed_investigator?: string;
   card: string;
   non_story?: boolean;
@@ -814,7 +815,7 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator: "all" | "choice" | "any" | "resigned";
+  investigator: "all" | "choice" | "any" | "resigned" | "not_defeated";
   condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;

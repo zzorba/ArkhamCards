@@ -580,8 +580,9 @@ export function parseDeck(
   if (!deck) {
     return undefined;
   }
-  const investigator_code = meta.alternate_back || deck.investigator_code;
-  const investigator: Card | undefined = cards[investigator_code];
+  const investigator_front_code = meta.alternate_front || deck.investigator_code;
+  const investigator_back_code = meta.alternate_back || deck.investigator_code;
+  const investigator: Card | undefined = cards[investigator_back_code];
   if (!investigator) {
     return undefined;
   }
@@ -675,6 +676,8 @@ export function parseDeck(
   return {
     id: getDeckId(deck),
     investigator,
+    investigatorFront: cards[investigator_front_code] || investigator,
+    investigatorBack: cards[investigator_back_code] || investigator,
     deck,
     slots,
     normalCardCount: sum(normalCards.map(c =>

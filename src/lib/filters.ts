@@ -573,6 +573,20 @@ export default class FilterBuilder {
     return [];
   }
 
+  packCodes(packCodes: string[]): Brackets[] {
+    const packClause = this.equalsVectorClause(packCodes, 'pack_code');
+    if (packClause.length) {
+      return [
+        combineQueries(
+          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: map(packCodes, c => `%${c}%`).join('') }),
+          packClause,
+          'or'
+        ),
+      ];
+    }
+    return [];
+  }
+
   playerCardFilters(filters: FilterState): Brackets[] {
     const {
       uses,
@@ -670,7 +684,7 @@ export default class FilterBuilder {
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
-        ...this.equalsVectorClause(filters.packCodes, 'pack_code'),
+        ...this.packCodes(filters.packCodes),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),

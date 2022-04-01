@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import { t } from 'ttag';
 
 import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 import TuneButton from '@components/cardlist/CardSearchComponent/TuneButton';
@@ -10,6 +11,8 @@ import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
+import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
+import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
 
 interface ProviderProps<S> {
   store: S;
@@ -109,10 +112,10 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     ));
   }
 
-  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView), () => BrowseCardsView);
-  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView), () => MyCampaignsView);
-  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView), () => MyDecksView);
-  Navigation.registerComponent('Settings', providerWrapper(SettingsView), () => SettingsView);
+  Navigation.registerComponent('Browse.Cards', providerWrapper(BottomTabNameCorrector(BROWSE_CARDS, () => t`Cards`, BrowseCardsView)), () => BrowseCardsView);
+  Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
+  Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
+  Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);

@@ -1,9 +1,11 @@
 import React from 'react';
-import { CardsMap } from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 
 
 export interface PlayerCardContext {
+  getExistingCards: (tabooSetId: number) => CardsMap;
   getPlayerCards: (codes: string[], tabooSetId: number) => Promise<CardsMap>;
+  storePlayerCards: (cards: Card[]) => void;
 }
 
 export const PlayerCardContext = React.createContext<PlayerCardContext>(

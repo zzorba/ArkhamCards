@@ -2,7 +2,7 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, flatMap, debounce, find, uniq, keys } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -26,6 +26,7 @@ import { useCardMap } from '@components/card/useCardList';
 import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
+import specialCards from '@data/deck/specialCards';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -568,8 +569,14 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
   const [loading, setLoading] = useState(true);
-  const { getPlayerCards } = useContext(PlayerCardContext);
+  const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
+    const existingCards = getExistingCards(tabooSetId);
+    if (findIndex(codes, code => !existingCards[code]) === -1) {
+      setCards(existingCards);
+      return;
+    }
+
     setLoading(true);
     let canceled = false;
     if (codes.length) {
@@ -585,7 +592,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, getPlayerCards, setLoading]);
+  }, [tabooSetId, codes, getExistingCards, getPlayerCards, setLoading]);
   const cardsMissing = useMemo(() => {
     if (codes.length === 0) {
       return false;
@@ -678,7 +685,42 @@ export function useAllInvestigators(tabooSetOverride?: number, sortType?: SortTy
 
 export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
   const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
-  return useCardsFromQuery({ query, tabooSetOverride });
+  const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    if (cards.length) {
+      storePlayerCards(cards);
+    }
+  }, [cards, storePlayerCards]);
+  return [cards, loading];
+}
+
+export function useRequiredCards(investigatorFront: Card | undefined, investigatorBack: Card | undefined, tabooSetOverride?: number): [Card[], boolean] {
+  const [codes, loading] = useMemo(() => {
+    if (!investigatorFront || !investigatorBack) {
+      return [[], true];
+    }
+    return [
+      uniq([
+        ...flatMap(investigatorBack.deck_requirements?.card || [], req => [
+          ...(req.code ? [req.code] : []),
+          ...(req.alternates || []),
+        ]),
+        ...(specialCards[investigatorFront.code]?.front || []),
+        ...(specialCards[investigatorBack.code]?.back || []),
+      ]),
+      false,
+    ];
+  }, [investigatorBack, investigatorFront]);
+  const query = useMemo(() => codes?.length ? where('c.code in (:...codes)', { codes }) : undefined, [codes]);
+  const [cards, cardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    if (cards.length) {
+      storePlayerCards(cards);
+    }
+  }, [cards, storePlayerCards]);
+  return [cards, loading || cardsLoading];
 }
 
 export function useTabooSet(tabooSetId: number): TabooSet | undefined {

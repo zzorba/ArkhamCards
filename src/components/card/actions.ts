@@ -29,9 +29,10 @@ import {
   CARD_REQUEST_FETCH,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
-import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
+import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
 
 const VERBOSE = false;
 function shouldFetchCards(state: AppState) {
@@ -151,9 +152,8 @@ export function fetchPacks(
       if (lastModified && packs && packs.length && state.lang == lang) {
         headers.append('If-Modified-Since', lastModified);
       }
-      const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
-      VERBOSE && console.log(`Fetch called: https://${langPrefix}arkhamdb.com/api/public/packs/`);
-      const response = await fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
+      VERBOSE && console.log(`Fetch called: https://arkhamdb.com/api/public/packs/`);
+      const response = await fetch(`${getArkhamDbDomain(lang || 'en')}/api/public/packs/`, {
         method: 'GET',
         headers: headers,
       });

@@ -37,7 +37,7 @@ function renderInvestigators(investigators: Card[], card: Card) {
 }
 
 function RemoveCardEffectNonInputComponent({ id, effect, input, campaignLog, investigator }: Props & {
-  investigator: 'choice' | '$input_value' | '$fixed_investigator';
+  investigator: 'defeated' | 'choice' | '$input_value' | '$fixed_investigator';
 }) {
   const { typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(effect.card, 'player');

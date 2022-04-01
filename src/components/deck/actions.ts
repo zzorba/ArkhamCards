@@ -44,6 +44,7 @@ import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, dele
 import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import specialMetaSlots from '@data/deck/specialMetaSlots';
 
 export interface ServerDeck {
   deckId: DeckId;
@@ -598,15 +599,11 @@ export function updateDeckMeta(
         delete updatedMeta[update.key];
       } else {
         updatedMeta[update.key] = update.value as any;
-        if (investigator_code === '06002' && update.key === 'deck_size_selected') {
-          dispatch(setDeckSlot(id, '06008', (parseInt(update.value, 10) - 20) / 10, false));
-        }
-        if (investigator_code === '01005' && update.key === 'alternate_front') {
-          if (update.value === '90037') {
-            dispatch(setDeckSlot(id, '90038', 1, false))
-          } else {
-            dispatch(setDeckSlot(id, '90038', 0, false))
-          }
+        const slotUpdates = specialMetaSlots(investigator_code, update);
+        if (slotUpdates) {
+          forEach(slotUpdates, (count, code) => {
+            dispatch(setDeckSlot(id, code, count, false));
+          });
         }
       }
     });

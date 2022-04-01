@@ -319,7 +319,7 @@ export default function({
 
   const query = useMemo(() => {
     const queryParts: Brackets[] = [];
-    const actuallyIncludeDuplicates = includeDuplicates || (filters?.packCodes.length);
+    const actuallyIncludeDuplicates = includeDuplicates;
     if (mythosToggle) {
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);
@@ -348,7 +348,7 @@ export default function({
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, filters, showCustomContent]);
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
   const renderFabIcon = useCallback(() => (

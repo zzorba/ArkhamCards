@@ -206,6 +206,8 @@ export type CardSplitType = keyof SplitCards;
 export interface ParsedDeck {
   id: DeckId;
   investigator: Card;
+  investigatorFront: Card;
+  investigatorBack: Card;
   deck: Deck;
   slots: Slots;
   deckSize: number;
