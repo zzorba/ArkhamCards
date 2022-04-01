@@ -545,7 +545,7 @@ export function campaignDataInvestigatorConditionResult(
     campaignLog
   );
   let match: OptionWithId | undefined = undefined;
-  let input: string[] = [];
+  const input: string[] = [];
   forEach(result.investigatorChoices, (choices, code) => {
     if (choices.length) {
       match = find(result.options, option => option.id === choices[0]);

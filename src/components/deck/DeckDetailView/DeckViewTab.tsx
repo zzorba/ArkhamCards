@@ -89,7 +89,7 @@ function hasUpgrades(
     )));
 }
 
-function sectionHeaderTitle(type: TypeCodeType, count: number): string {
+function sectionHeaderTitle(type: TypeCodeType | string, count: number): string {
   switch (type) {
     case 'asset': return c('header').ngettext(msgid`Asset`, `Assets`, count);
     case 'event': return c('header').ngettext(msgid`Event`, `Events`, count);
@@ -102,9 +102,14 @@ function sectionHeaderTitle(type: TypeCodeType, count: number): string {
     case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
     case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
     case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
+    default: return type;
   }
 }
 
+interface ExtraSection {
+  title: string;
+  codes: CardId[];
+}
 function deckToSections(
   title: string,
   onTitlePress: undefined | (() => void),
@@ -118,6 +123,7 @@ function deckToSections(
   ignoreCollection: boolean,
   limitedSlots: boolean,
   limitedSlotsOnly?: boolean,
+  extraSections?: ExtraSection[]
 ): [DeckSection, number] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
@@ -165,7 +171,7 @@ function deckToSections(
       });
     });
   }
-  const splits: { cardType: TypeCodeType; cardSplitGroup?: CardId[] }[] = [
+  const splits: { cardType: string; cardSplitGroup?: CardId[] }[] = [
     {
       cardType: 'event',
       cardSplitGroup: halfDeck.Event,
@@ -183,6 +189,15 @@ function deckToSections(
       cardSplitGroup: halfDeck.Treachery,
     },
   ];
+  forEach(extraSections, ({ title, codes }) => {
+    if (codes.length) {
+      splits.push({
+        cardType: title,
+        cardSplitGroup: codes,
+      });
+    }
+  });
+
   forEach(splits, ({ cardSplitGroup, cardType }) => {
     if (cardSplitGroup) {
       const cardIds = filter(cardSplitGroup, c => !limitedSlots || c.limited);
@@ -269,6 +284,7 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  requiredCards?: CardId[];
   fromCampaign?: boolean;
   campaignId?: CampaignId;
   visible: boolean;
@@ -319,6 +335,7 @@ export default function DeckViewTab(props: Props) {
     deck,
     parsedDeck,
     singleCardView,
+    requiredCards,
     showEditCards,
     showEditSpecial,
     showEditSide,
@@ -402,7 +419,12 @@ export default function DeckViewTab(props: Props) {
       'special',
       inCollection,
       ignore_collection,
-      false
+      false,
+      undefined,
+      requiredCards && [{
+        title: t`Other investigator cards`,
+        codes: requiredCards,
+      }]
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     let currentIndex = specialIndex;
@@ -475,7 +497,7 @@ export default function DeckViewTab(props: Props) {
       currentIndex = sideIndex;
     }
     setData(newData);
-  }, [investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, parsedDeck.sideCards, deckEdits?.meta, cards,
+  }, [requiredCards, investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, parsedDeck.sideCards, deckEdits?.meta, cards,
     showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {

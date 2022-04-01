@@ -29,7 +29,7 @@ import {
   CARD_REQUEST_FETCH,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
-import { NON_LOCALIZED_CARDS, syncCards, syncTaboos } from '@lib/publicApi';
+import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';

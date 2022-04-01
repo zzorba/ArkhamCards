@@ -26,7 +26,7 @@ import Card from '@data/types/Card';
 import { AppState } from '@reducers';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
-import starterDecks from '../../../../assets/starter-decks';
+import starterDecks from '@data/deck/starterDecks';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
@@ -43,6 +43,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
+import specialMetaSlots from '@data/deck/specialMetaSlots';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -194,12 +195,14 @@ function NewDeckOptionsDialog({
         }
         slots[card.code] = card.deck_limit || card.quantity || 0;
       });
-      if (investigator.code === '06002') {
-        slots['06008'] = (parseInt((meta.deck_size_selected || '30'), 10) - 20) / 10;
-      }
-      if (investigator.code === '01005' && meta.alternate_front === '90037') {
-        slots['90038'] = 1;
-      }
+      forEach(meta, (value, key) => {
+        const specialSlots = specialMetaSlots(investigator.code, { key: key as keyof DeckMeta, value });
+        if (specialSlots) {
+          forEach(specialSlots, (count, code) => {
+            slots[code] = count;
+          });
+        }
+      });
     }
 
     if (optionSelected[0] !== true ||
@@ -354,13 +357,14 @@ function NewDeckOptionsDialog({
         ) }
         { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckCheckboxButton
-              icon="card-outline"
-              title={t`Use Starter Deck`}
-              value={starterDeck}
-              disabled={!hasStarterDeck}
-              onValueChange={setStarterDeck}
-            />
+            { !!hasStarterDeck && (
+              <DeckCheckboxButton
+                icon="card-outline"
+                title={t`Use Starter Deck`}
+                value={starterDeck}
+                onValueChange={setStarterDeck}
+              />
+            ) }
             { signedIn ? (
               <DeckCheckboxButton
                 icon="world"

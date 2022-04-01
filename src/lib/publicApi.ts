@@ -235,7 +235,6 @@ export const syncRules = async function(
   }
   VERBOSE && console.log('Inserted all complex rules');
 };
-export const NON_LOCALIZED_CARDS = new Set(['en', 'pt', 'vi']);
 
 
 function handleDerivativeData(dedupedCards: Card[], dupes: {

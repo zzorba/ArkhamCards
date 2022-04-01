@@ -4740,5 +4740,65 @@
         }
       }
     ]
+  },
+  {
+    "code": "zez_00001",
+    "scenario": "the_heart_of_madness",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "reveal_another": true,
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Music]] treacheries in play.",
+          "min": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
   }
 ]

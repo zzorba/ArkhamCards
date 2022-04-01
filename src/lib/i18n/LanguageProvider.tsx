@@ -9,7 +9,8 @@ import { getSystemLanguage } from '@lib/i18n';
 import { getLangChoice, hasDissonantVoices } from '@reducers';
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
-import { NON_LOCALIZED_CARDS } from '@lib/publicApi';
+
+const NON_LOCALIZED_CARDS = new Set(['en', 'pt', 'vi']);
 
 interface Props {
   children: React.ReactNode;

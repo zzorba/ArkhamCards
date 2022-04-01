@@ -14,13 +14,13 @@ import { ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useLatestDeckCards } from '@components/core/hooks';
-import { useCampaignDeck } from '@data/hooks';
+import { useRequiredCards } from '@components/core/hooks';
 import { setIgnoreDeckSlot } from './actions';
-import { useDeckEdits, useShowDrawWeakness } from './hooks';
+import { useParsedDeck, useShowDrawWeakness } from './hooks';
 import { useAlertDialog } from './dialogs';
 import { CampaignId, DeckId } from '@actions/types';
 import StyleContext from '@styles/StyleContext';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 export interface EditSpecialCardsProps {
   id: DeckId;
@@ -31,11 +31,17 @@ export interface EditSpecialCardsProps {
 function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
-  const deck = useCampaignDeck(id, campaignId);
-  const [cards] = useLatestDeckCards(deck);
-  const investigator = cards && deck ? cards[deck.investigator] : undefined;
   const dispatch = useDispatch();
-  const [deckEdits, deckEditsRef] = useDeckEdits(id);
+  const parsedDeckObj = useParsedDeck(id, componentId, 'edit');
+  const {
+    deckT,
+    cards,
+    deckEdits,
+    deckEditsRef,
+    tabooSetId,
+    parsedDeck,
+  } = parsedDeckObj;
+  const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
 
   const cardPressed = useCallback((card: Card) => {
     Navigation.push<CardDetailProps>(componentId, {
@@ -52,7 +58,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const [alertDialog, showAlert] = useAlertDialog();
   const showDrawWeakness = useShowDrawWeakness({
     componentId,
-    deck,
+    deck: deckT,
     id,
     campaignId,
     showAlert,
@@ -60,8 +66,9 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     assignedWeaknesses,
   });
 
+  const factionColor = parsedDeck?.investigator?.factionCode() || 'neutral';
   const editStoryPressed = useCallback(() => {
-    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    const backgroundColor = colors.faction[factionColor].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.EditAddCards',
@@ -90,10 +97,10 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, investigator, colors, id]);
+  }, [componentId, factionColor, colors, id]);
 
   const editWeaknessPressed = useCallback(() => {
-    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    const backgroundColor = colors.faction[factionColor].background;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.EditAddCards',
@@ -122,7 +129,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, investigator, colors, id]);
+  }, [componentId, factionColor, colors, id]);
 
   const isSpecial = useCallback((card: Card) => {
     return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));
@@ -174,6 +181,29 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     );
   }, [weaknesses, deckEdits, showDrawWeakness, editWeaknessPressed, cardPressed]);
 
+  const investigatorSection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
+    return (
+      <>
+        <CardSectionHeader section={{ title: t`Investigator` }} />
+        { requiredCardsLoading && <LoadingCardSearchResult /> }
+        { map(sortBy(requiredCards, card => card.name), card => (
+          <CardSearchResult
+            key={card.code}
+            card={card}
+            onPress={cardPressed}
+            control={{
+              type: 'deck',
+              deckId: id,
+              limit: card.deck_limit || 1,
+            }}
+          />
+        )) }
+      </>
+    );
+  }, [deckEdits, requiredCards, requiredCardsLoading]);
 
   const storyCards = useMemo(() => {
     if (!deckEdits) {
@@ -236,6 +266,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   return (
     <>
       <ScrollView style={[styles.wrapper, backgroundStyle]}>
+        { investigatorSection }
         { ignoreCardsSection }
         { storySection }
         { basicWeaknessSection }

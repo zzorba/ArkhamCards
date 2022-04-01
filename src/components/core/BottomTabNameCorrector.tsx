@@ -22,7 +22,7 @@ export default function BottomTabNameCorrector<P extends NavigationComponentProp
     useAppState({onForeground});
 
     return (
-      <Component {...props} />
+      <Component { ...props } />
     );
   }
 
