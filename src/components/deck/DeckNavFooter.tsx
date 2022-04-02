@@ -57,7 +57,7 @@ function DeckNavFooter({
     if (!parsedDeck) {
       return [undefined, undefined];
     }
-    if (parsedDeck.deck.previousDeckId) {
+    if (parsedDeck.deck?.previousDeckId) {
       const adjustedXp = parsedDeck.availableExperience;
       const spentXP = (parsedDeck.changes?.spentXp || 0);
       return t`${spentXP} of ${adjustedXp} XP spent`;

@@ -32,7 +32,7 @@ export interface Slots {
 const INVESTIGATOR = 'investigator';
 const TOO_MANY_COPIES = 'too_many_copies';
 const INVALID_CARDS = 'invalid_cards';
-const TOO_FEW_CARDS = 'too_few_cards';
+export const TOO_FEW_CARDS = 'too_few_cards';
 const TOO_MANY_CARDS = 'too_many_cards';
 const DECK_OPTIONS_LIMIT = 'deck_options_limit';
 
@@ -204,11 +204,12 @@ export interface SplitCards {
 export type CardSplitType = keyof SplitCards;
 
 export interface ParsedDeck {
-  id: DeckId;
+  id?: DeckId;
+  deck?: Deck;
+
   investigator: Card;
   investigatorFront: Card;
   investigatorBack: Card;
-  deck: Deck;
   slots: Slots;
   deckSize: number;
   normalCardCount: number;

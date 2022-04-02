@@ -187,13 +187,15 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         replaceRandomBasicWeakness
       );
       const parsedDeck = parseDeck(
-        selectedDeck.deck,
+        selectedDeck.deck.investigator_code,
         selectedDeck.deck.meta || {},
         newSlots,
         selectedDeck.deck.ignoreDeckLimitSlots || {},
         selectedDeck.deck.sideSlots || {},
         cards,
-        selectedDeck. previousDeck
+        selectedDeck. previousDeck,
+        undefined,
+        selectedDeck.deck
       );
       const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 

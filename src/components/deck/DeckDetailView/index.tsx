@@ -57,6 +57,7 @@ import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsC
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { ChaosDeckProps } from '../ChaosDeckView';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -72,6 +73,8 @@ type Props = NavigationProps &
   DeckDetailProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
+
+const SHOW_CHAOS_MODE = false;
 
 function formatTabooStart(date_start: string | undefined, locale: string) {
   if (!date_start) {
@@ -813,7 +816,24 @@ function DeckDetailView({
       showDrawSimulator(componentId, parsedDeck, colors);
     }
   }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
-
+  const showChaosMode = useCallback(() => {
+    if (!parsedDeck || !deckEdits) {
+      return;
+    }
+    Navigation.push<ChaosDeckProps>(
+      componentId,
+      {
+        component: {
+          name: 'Deck.Chaos',
+          passProps: {
+            investigatorCode: parsedDeck.investigatorBack.code,
+            meta: deckEdits.meta,
+          },
+          options: getDeckOptions(colors, { title: t`Ultimatum of Chaos` }, parsedDeck.investigator),
+        },
+      }
+    )
+  }, [componentId, parsedDeck]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -843,6 +863,13 @@ function DeckDetailView({
               icon="taboo_thin"
               description={tabooSet ? formatTabooStart(tabooSet.date_start, lang) : t`None`}
             />
+            { SHOW_CHAOS_MODE && (
+              <MenuButton
+                title={t`Ultimatum of Chaos`}
+                onPress={showChaosMode}
+                icon="xp"
+              />
+            ) }
           </>
         ) }
         <MenuButton

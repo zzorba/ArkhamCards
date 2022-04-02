@@ -30,6 +30,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.Description': return require('@components/deck/DeckDescriptionView').default;
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
+    case 'Deck.Chaos': return require('@components/deck/ChaosDeckView').default;
     case 'Card': return require('@components/card/CardDetailView').default;
     case 'Card.Swipe': return require('@components/card/DbCardDetailSwipeView').default;
     case 'Card.Faq': return require('@components/card/CardFaqView').default;

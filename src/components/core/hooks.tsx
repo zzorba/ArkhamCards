@@ -706,8 +706,8 @@ export function useRequiredCards(investigatorFront: Card | undefined, investigat
           ...(req.code ? [req.code] : []),
           ...(req.alternates || []),
         ]),
-        ...(specialCards[investigatorFront.code]?.front || []),
-        ...(specialCards[investigatorBack.code]?.back || []),
+        ...(specialCards[investigatorFront.code]?.front?.codes || []),
+        ...(specialCards[investigatorBack.code]?.back?.codes || []),
       ]),
       false,
     ];

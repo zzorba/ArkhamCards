@@ -1,6 +1,11 @@
+interface SpecialCards {
+  codes: string[];
+  min: number;
+  max: number;
+}
 interface InvestigatorSpecialCards {
-  front?: string[];
-  back?: string[];
+  front?: SpecialCards;
+  back?: SpecialCards
 }
 
 interface AllSpecialCards {
@@ -13,21 +18,29 @@ export const PARALLEL_ROLAND_CODE = '90024';
 
 const specialCards: AllSpecialCards = {
   [PARALLEL_ROLAND_CODE]: {
-    front: [
-      '90025',
-      '90026',
-      '90027',
-      '90028',
-      '90029',
-    ],
+    front: {
+      min: 3,
+      max: 3,
+      codes: [
+        '90025',
+        '90026',
+        '90027',
+        '90028',
+        '90029',
+      ],
+    },
   },
   [LILY_CODE]: {
-    back: [
-      '08011a',
-      '08012a',
-      '08013a',
-      '08014a',
-    ],
+    back: {
+      min: 1,
+      max: 4,
+      codes: [
+        '08011a',
+        '08012a',
+        '08013a',
+        '08014a',
+      ],
+    },
   },
 };
 

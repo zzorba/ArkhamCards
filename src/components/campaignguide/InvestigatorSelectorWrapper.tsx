@@ -87,11 +87,14 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
         );
       case 'resigned':
       case 'defeated':
+      case 'not_defeated':
       case 'not_resigned': {
         const allStatus = campaignLog.investigatorResolutionStatus();
         return filter(scenarioInvestigators, card => {
           const status = allStatus[card.code];
           switch (investigator) {
+            case 'not_defeated':
+              return status === 'alive' || status === 'resigned';
             case 'defeated':
               return status !== 'alive' && status !== 'resigned';
             case 'not_resigned':

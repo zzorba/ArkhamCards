@@ -178,7 +178,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
         colors,
         map(allCards, o => o.card),
         true,
-        parsedDeck?.deck.taboo_id,
+        parsedDeck?.deck?.taboo_id,
         undefined,
         parsedDeck?.investigator,
         false

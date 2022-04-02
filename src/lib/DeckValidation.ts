@@ -98,7 +98,7 @@ export default class DeckValidation {
   getCopiesAndDeckLimit(cards: Card[]) {
     const specialCards = this.specialCardCounts();
     return mapValues(
-      groupBy(this.getDrawDeck(cards), card => card ? card.real_name : 'Unknown Card'),
+      groupBy(cards, card => card ? card.real_name : 'Unknown Card'),
       group => {
         const card = group[0];
         const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
@@ -123,8 +123,8 @@ export default class DeckValidation {
       });
   }
 
-  getProblem(cards: Card[]): DeckProblem | null {
-    const reason = this.getProblemHelper(cards);
+  getProblem(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblem | null {
+    const reason = this.getProblemHelper(cards, ignoreInvestigatorRequirements);
     if (!reason) {
       return null;
     }
@@ -134,12 +134,12 @@ export default class DeckValidation {
     };
   }
 
-  getProblemHelper(cards: Card[]): DeckProblemType | null {
+  getProblemHelper(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblemType | null {
     // get investigator data
     var card = this.investigator;
     // store list of all problems
     this.problem_list = [];
-    if (card && card.deck_requirements){
+    if (card && card.deck_requirements && !ignoreInvestigatorRequirements){
       //console.log(card.deck_requirements);
       // must have the required cards
       if (card.deck_requirements.card) {
@@ -150,8 +150,6 @@ export default class DeckValidation {
           return 'investigator';
         }
       }
-    } else {
-
     }
     const size = this.getDeckSize();
 

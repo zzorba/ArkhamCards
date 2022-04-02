@@ -30,7 +30,7 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
     if (!parsedDeck) {
       return [undefined, undefined];
     }
-    if (parsedDeck.deck.previousDeckId) {
+    if (parsedDeck.deck?.previousDeckId) {
       const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
       const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
@@ -161,14 +161,15 @@ function useParsedDeckHelper(
       initialized.current = true;
       setParsedDeck(
         parseDeck(
-          deck.deck,
+          deck.deck.investigator_code,
           deck.deck.meta || {},
           deck.deck.slots || {},
           deck.deck.ignoreDeckLimitSlots,
           deck.deck.sideSlots || {},
           cards,
           deck.previousDeck,
-          deck.deck.xp_adjustment || 0
+          deck.deck.xp_adjustment || 0,
+          deck.deck
         )
       );
     }
@@ -177,14 +178,15 @@ function useParsedDeckHelper(
     if (cards && visible && deckEdits && deck) {
       setParsedDeck(
         parseDeck(
-          deck.deck,
+          deck.deck.investigator_code,
           deckEdits.meta,
           deckEdits.slots,
           deckEdits.ignoreDeckLimitSlots,
           deckEdits.side,
           cards,
           deck.previousDeck,
-          deckEdits.xpAdjustment
+          deckEdits.xpAdjustment,
+          deck.deck
         )
       );
     }

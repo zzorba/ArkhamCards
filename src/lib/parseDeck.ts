@@ -252,7 +252,7 @@ function decSlot(slots: Slots, card: Card) {
   slots[card.code]--;
 }
 
-function getCards(
+export function getCards(
   cards: CardsMap,
   slots: Slots,
   ignoreDeckLimitSlots: Slots
@@ -556,32 +556,31 @@ export function parseBasicDeck(
     return undefined;
   }
   return parseDeck(
-    deck,
+    deck.investigator_code,
     deck.meta || {},
     deck.slots || {},
     deck.ignoreDeckLimitSlots || {},
     deck.sideSlots || {},
     cards,
     previousDeck,
-    deck.xp_adjustment
+    deck.xp_adjustment,
+    deck
   );
 }
 
 export function parseDeck(
-  deck: Deck | null,
+  investigator_code: string,
   meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   sideSlots: Slots,
   cards: CardsMap,
   previousDeck?: Deck,
-  xpAdjustment?: number
+  xpAdjustment?: number,
+  originalDeck?: Deck
 ): ParsedDeck | undefined {
-  if (!deck) {
-    return undefined;
-  }
-  const investigator_front_code = meta.alternate_front || deck.investigator_code;
-  const investigator_back_code = meta.alternate_back || deck.investigator_code;
+  const investigator_front_code = meta.alternate_front || investigator_code;
+  const investigator_back_code = meta.alternate_back || investigator_code;
   const investigator: Card | undefined = cards[investigator_back_code];
   if (!investigator) {
     return undefined;
@@ -590,7 +589,7 @@ export function parseDeck(
   const cardIds = flatMap(
     sortBy(
       sortBy(
-        filter(uniq([...keys(slots), ...keys(deck.slots)]), id => !!cards[id]),
+        filter(uniq([...keys(slots), ...keys(originalDeck?.slots)]), id => !!cards[id]),
         id => {
           const card = cards[id];
           return (card && card.xp) || 0;
@@ -624,7 +623,7 @@ export function parseDeck(
   const sideCards: CardId[] = flatMap(
     sortBy(
       sortBy(
-        filter(uniq([...keys(deck.sideSlots || {}), ...keys(sideSlots)]), id => !!cards[id]),
+        filter(uniq([...keys(originalDeck?.sideSlots || {}), ...keys(sideSlots)]), id => !!cards[id]),
         id => {
           const card = cards[id];
           return (card && card.xp) || 0;
@@ -652,10 +651,10 @@ export function parseDeck(
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;
 
-  const changes = getDeckChanges(
+  const changes = originalDeck && getDeckChanges(
     cards,
     validation,
-    deck,
+    originalDeck,
     slots,
     ignoreDeckLimitSlots,
     previousDeck);
@@ -674,18 +673,18 @@ export function parseDeck(
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
   return {
-    id: getDeckId(deck),
+    id: originalDeck ? getDeckId(originalDeck) : undefined,
     investigator,
     investigatorFront: cards[investigator_front_code] || investigator,
     investigatorBack: cards[investigator_back_code] || investigator,
-    deck,
+    deck: originalDeck,
     slots,
     normalCardCount: sum(normalCards.map(c =>
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     deckSize: validation.getDeckSize(),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
-    availableExperience: (deck.xp || 0) + (xpAdjustment || 0),
+    availableExperience: (originalDeck?.xp || 0) + (xpAdjustment || 0),
     packs: uniqBy(cardIds, c => {
       const card = cards[c.id];
       return (card && card.pack_code) || '';
