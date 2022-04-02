@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2022-04-01 21:13+0300\n"
+"PO-Revision-Date: 2022-04-02 10:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -555,10 +555,10 @@ msgid "Core Set"
 msgstr "Базовый набор"
 
 msgid "Select Packs"
-msgstr "Выберите наборы"
+msgstr "Выберите допы"
 
 msgid "Pack Filters"
-msgstr "Фильтр по наборам"
+msgstr "Фильтр по допам"
 
 #, javascript-format
 msgid "${ label }: All"
@@ -592,10 +592,10 @@ msgid "Filter"
 msgstr "Фильтр"
 
 msgid "Packs: All"
-msgstr "Наборы: все"
+msgstr "Допы: все"
 
 msgid "Packs: ${ allPacksString }"
-msgstr "Наборы: ${ allPacksString }"
+msgstr "Допы: ${ allPacksString }"
 
 msgid "HPI"
 msgstr "HPI"
@@ -1173,11 +1173,11 @@ msgstr "Отключить весь цикл?"
 #. This is the lead pack in a cycle.
 #, javascript-format
 msgid "Mark all packs in the ${ pack.name } cycle?"
-msgstr "Отметить все наборы в цикле ${ pack.name }?"
+msgstr "Отметить все допы цикла ${ pack.name }?"
 
 #. This is the lead pack in a cycle.
 msgid "Clear all packs in the ${ pack.name } cycle?"
-msgstr "Убрать все наборы в цикле ${ pack.name }?"
+msgstr "Убрать все допы цикла ${ pack.name }?"
 
 #. This is the lead pack in a cycle.
 msgid "No"
@@ -1218,10 +1218,10 @@ msgid "Faction, Name"
 msgstr "Класс, название"
 
 msgid "Faction, Pack"
-msgstr "Класс, набор"
+msgstr "Класс, доп"
 
 msgid "Pack"
-msgstr "Набор"
+msgstr "Доп"
 
 msgid "Title"
 msgstr "Название"
@@ -3056,7 +3056,7 @@ msgstr[2] ""
 "${ upgradeCards }"
 
 msgid "You can edit your collection under Settings to adjust the eligible choices."
-msgstr "Укажите в Настройках, какие наборы у вас есть, чтобы видеть доступные вам карты."
+msgstr "Укажите в Настройках, какие допы у вас есть, чтобы видеть доступные вам карты."
 
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] card, you may "
@@ -4103,10 +4103,10 @@ msgid ""
 "the app, contact me at arkhamcards@gmail.com. Custom campaigns are a fair amount of "
 "work, but I'd love to support the community in anyway I can."
 msgstr ""
-"Если вы разрабатываете собственный фанатский контент и у вас есть «завершённая» "
-"кампания, которую вы бы хотели увидеть в приложении, напишите на arkhamcards@gmail.com. "
-"Добавить пользовательскую кампанию в приложение — немалый труд, но мы рады постараться "
-"на благо сообщества игры."
+"Если вы разрабатываете собственный фанатский контент и у вас есть готовая кампания, "
+"которую вы бы хотели увидеть в приложении, напишите на arkhamcards@gmail.com. Добавить "
+"пользовательскую кампанию в приложение — немалый труд, но мы рады постараться на благо "
+"сообщества игры."
 
 msgid "Alice in Wonderland"
 msgstr "Алиса в Стране чудес"
@@ -5348,7 +5348,7 @@ msgstr ""
 "контент."
 
 msgid "Player"
-msgstr "Игрок:"
+msgstr "Игрок"
 
 msgid "Barkham Horror"
 msgstr "Ужас Гавкхэма"
@@ -5803,7 +5803,7 @@ msgid ""
 "well."
 msgstr ""
 "- После загрузки на сервер вы увидите новую функцию — <b>«Добавить/удалить игроков»</b>. "
-"Выберите друзей из списка и они увидят эту кампанию в своём приложении!"
+"Выберите друзей из списка, и они увидят эту кампанию в своём приложении."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5858,7 +5858,7 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "Edge of the Earth campaign is now out"
-msgstr ""
+msgstr "«На краю Земли» уже в приложении (англ.)"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5939,7 +5939,7 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "Support for fan-made campaigns"
-msgstr ""
+msgstr "Поддержка фанатского контента"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5947,42 +5947,50 @@ msgid ""
 "it does, and starting today, you'll start to find some of these campaigns and side-"
 "scenarios in the app."
 msgstr ""
+"Знаете ли вы, что у этой игры есть активное сообщество разработчиков фанатского "
+"контента? Ну вот теперь знаете, а с сегодняшнего дня вы сможете найти некоторые их "
+"творения в приложении."
 
 msgctxt "releaseNotes"
 msgid ""
 "Adding more campaigns will be an ongoing effort, but as of now we the following "
 "campaigns are available:"
 msgstr ""
+"Со временем мы будем добавлять больше контента и постепенно постараемся перевести его на "
+"русский язык, а прямо сейчас доступны кампании на английском:"
 
 msgctxt "releaseNotes"
 msgid "- Alice in Wonderland by The Beard"
-msgstr ""
+msgstr "— Alice in Wonderland (автор: The Beard)"
 
 msgctxt "releaseNotes"
 msgid "- Dark Matter by Axolotl"
-msgstr ""
+msgstr "— Dark Matter (автор: Axolotl)"
 
 msgctxt "releaseNotes"
 msgid "- Crown of Egil by The Mad Juggler"
-msgstr ""
+msgstr "— Crown of Egil (автор: The Mad Juggler)"
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr ""
+msgstr "— Call of the Plaguebearer (автор: Walker Graves)"
 
 msgctxt "releaseNotes"
 msgid "As for standalone scenarios:"
-msgstr ""
+msgstr "И отдельный сценарий (кстати, он уже переведён на русский язык!):"
 
 msgctxt "releaseNotes"
 msgid "- Consternation on the Constellation - by The Mythos Busters"
-msgstr ""
+msgstr "— «Застывшее созвездие» (авторы: The Mythos Busters)"
 
 msgctxt "releaseNotes"
 msgid ""
 "If you are a content creator who is interested in getting your (completed) campaign into "
 "the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
 msgstr ""
+"Если вы разрабатываете собственный фанатский контент и у вас есть готовая кампания, "
+"которую вы бы хотели увидеть в приложении, напишите на [arkhamcards@gmail.com](mailto:"
+"arkhamcards@gmail.com)."
 
 msgctxt "trait"
 msgid "???"
