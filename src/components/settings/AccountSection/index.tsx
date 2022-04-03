@@ -20,7 +20,7 @@ interface Props extends NavigationProps {
   showAlert: ShowAlert;
 }
 
-const LATEST_RELEASE_NOTES = 'rn-2022-04-01';
+const LATEST_RELEASE_NOTES = 'rn-2022-04-03';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
   const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);

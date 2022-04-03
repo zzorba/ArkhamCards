@@ -29,6 +29,19 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-04-03'),
+      title: c('releaseNotes').t`Ultimatum of Chaos`,
+      faction: 'neutral',
+      lines: [
+        c('releaseNotes').t`The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one.`,
+
+        c('releaseNotes').t`- The app will use your defined collection to try to generate the deck.`,
+        c('releaseNotes').t`- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning).`,
+        c('releaseNotes').t`- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable.`,
+        c('releaseNotes').t`- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release.`,
+      ],
+    },
+    {
       date: new Date('2022-04-01'),
       title: c('releaseNotes').t`Fan-made cards + Barkham Horror`,
       faction: 'survivor',
