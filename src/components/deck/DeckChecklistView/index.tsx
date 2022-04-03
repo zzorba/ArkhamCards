@@ -23,6 +23,7 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import KeepAwake from 'react-native-keep-awake';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -69,7 +70,7 @@ function DeckChecklistView({
   id,
   campaignId,
 }: Props) {
-  const { colors, typography, fontScale, width } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
   const deck = useCampaignDeck(id, campaignId);
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
   const dispatch = useDispatch();
@@ -134,7 +135,8 @@ function DeckChecklistView({
   }
 
   return (
-    <>
+    <View style={[backgroundStyle, { flex: 1 }]}>
+      <KeepAwake />
       <DbCardResultList
         componentId={componentId}
         deckId={id}
@@ -148,7 +150,7 @@ function DeckChecklistView({
         footerPadding={NOTCH_BOTTOM_PADDING}
       />
       { sortDialog }
-    </>
+    </View>
   );
 }
 

@@ -58,6 +58,7 @@ interface Props {
   showEditSide?: () => void;
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
+  showDraftCards?: () => void;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
   singleCardView: boolean;
@@ -90,6 +91,7 @@ export default function DeckViewTab(props: Props) {
     requiredCards,
     showEditCards,
     showEditSpecial,
+    showDraftCards,
     showEditSide,
     cardsByName,
     bondedCardsByName,
@@ -210,6 +212,7 @@ export default function DeckViewTab(props: Props) {
     showEditCards,
     showEditSpecial,
     showEditSide,
+    showDraftCards,
     showDrawWeakness,
     showCardUpgradeDialog: showDeckUpgrades ? showCardUpgradeDialog : undefined,
     deckEditsRef,

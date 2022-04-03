@@ -107,7 +107,7 @@ export default function ArkhamLargeList<Item>({
   ), [searchBarHeight]);
   const renderLoader = useCallback(() => {
     return noSearch ? loader : <View />;
-  }, [noSearch, loader]);
+  }, [noSearch, loader, debouncedRefreshing]);
 
   const renderRealHeader = useCallback(() => {
     return (

@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-fresh-refresh/lib/index.js b/node_modules/react-native-fresh-refresh/lib/index.js
-index 0882d7e..7c32c7b 100644
+index 0882d7e..989e849 100644
 --- a/node_modules/react-native-fresh-refresh/lib/index.js
 +++ b/node_modules/react-native-fresh-refresh/lib/index.js
 @@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
@@ -36,6 +36,19 @@ index 0882d7e..7c32c7b 100644
      const native = Gesture.Native();
      const panGesture = Gesture.Pan()
          .onChange((event) => {
+@@ -62,7 +71,11 @@ const RefreshableWrapper = ({ isLoading, onRefresh, refreshHeight = 100, default
+                         scale: isLoaderActive.value ? withSpring(1) : withTiming(0.01),
+                     },
+                 ]
+-                : undefined,
++                : [
++                    {
++                        translateY: interpolate(loaderOffsetY.value, [0, refreshHeight], [-refreshHeight, 0], Extrapolate.CLAMP)
++                    },
++                  ],
+         };
+     });
+     const overscrollAnimation = useAnimatedStyle(() => {
 diff --git a/node_modules/react-native-fresh-refresh/src/index.tsx b/node_modules/react-native-fresh-refresh/src/index.tsx
 index 76d3edd..c36d3db 100644
 --- a/node_modules/react-native-fresh-refresh/src/index.tsx

@@ -23,6 +23,8 @@ import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
+import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import { normal } from 'react-native-color-matrix-image-filters';
 
 function hasUpgrades(
   code: string,
@@ -73,6 +75,7 @@ interface CardSection extends CardSectionHeaderData {
 interface DeckSection {
   title: string;
   onTitlePress?: () => void;
+  footer?: React.ReactNode;
   sections: CardSection[];
   toggleCollapsed?: () => void;
   collapsed?: boolean;
@@ -104,6 +107,7 @@ function sectionHeaderTitle(type: TypeCodeType | string, count: number): string 
 function deckToSections(
   title: string,
   onTitlePress: undefined | (() => void),
+  footer: React.ReactNode | undefined,
   index: number,
   halfDeck: SplitCards,
   cards: CardsMap,
@@ -223,7 +227,7 @@ function deckToSections(
     result[result.length - 1].last = true;
   }
   return [
-    { title, onTitlePress, sections: result },
+    { title, footer, onTitlePress, sections: result },
     index,
   ];
 }
@@ -270,6 +274,7 @@ interface Props {
   mode: 'view' | 'edit' | 'upgrade';
 
   editable?: boolean;
+  showDraftCards?: () => void;
   showEditCards?: () => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
@@ -288,7 +293,11 @@ interface Props {
 }
 
 
-export default function useParsedDeckComponent({ deckEditsRef, componentId, tabooSetId, parsedDeck, mode, editable, bondedCardsByName, cards, visible, meta, requiredCards, showDrawWeakness, showEditSpecial, showEditCards, showEditSide, showCardUpgradeDialog, cardsByName }: Props): [React.ReactNode, number] {
+export default function useParsedDeckComponent({
+  deckEditsRef, componentId, tabooSetId, parsedDeck, cardsByName,
+  mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
+  showDrawWeakness, showEditSpecial, showEditCards, showEditSide, showCardUpgradeDialog, showDraftCards,
+}: Props): [React.ReactNode, number] {
   const inCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
@@ -329,9 +338,34 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
     const sideCards = parsedDeck.sideCards;
     const slots = parsedDeck.slots;
     const validation = new DeckValidation(parsedDeck.investigatorBack, slots, meta);
+    const shouldDraft = !parsedDeck.changes && !!showDraftCards;
+    const hasNormalCards = (!!normalCards.Assets?.length ||
+      !!normalCards.Enemy?.length ||
+      !!normalCards.Event?.length ||
+      !!normalCards.Skill?.length ||
+      !!normalCards.Treachery?.length
+    );
     const [deckSection, deckIndex] = deckToSections(
       t`Deck Cards`,
-      editable ? showEditCards : undefined,
+      showEditCards,
+      shouldDraft ? (
+        <RoundedFooterDoubleButton
+          onPressA={showEditCards}
+          titleA={t`Add cards`}
+          iconA="deck"
+          onPressB={showDraftCards}
+          titleB={t`Draft cards`}
+          iconB="draw"
+        />
+      ) : (
+        !hasNormalCards && (
+          <RoundedFooterButton
+            title={t`Add cards`}
+            icon="deck"
+            onPress={showEditCards}
+          />
+        )
+      ),
       0,
       normalCards,
       cards,
@@ -344,7 +378,8 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
     );
     const [specialSection, specialIndex] = deckToSections(
       t`Special Cards`,
-      editable ? showEditSpecial : undefined,
+      showEditSpecial,
+      undefined,
       deckIndex,
       specialCards,
       cards,
@@ -413,7 +448,12 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
     }
     const [sideSection, sideIndex] = deckToSections(
       t`Side Deck`,
-      editable ? showEditSide : undefined,
+      showEditSide,
+      <RoundedFooterButton
+        title={t`Add cards`}
+        icon="deck"
+        onPress={showEditSide}
+      />,
       currentIndex,
       sideCards,
       cards,
@@ -553,18 +593,18 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
     <>
       { map(data, deckSection => {
         const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
+
+
         return (
           <View key={deckSection.title} style={space.marginBottomS}>
             <DeckSectionBlock
               faction={faction}
               title={deckSection.title}
-              onTitlePress={deckSection.onTitlePress}
+              onTitlePress={editable ? deckSection.onTitlePress : undefined}
               collapsed={deckSection.collapsed}
               toggleCollapsed={deckSection.toggleCollapsed}
               collapsedText={deckSection.collapsed ? t`Show splash cards` : t`Hide splash cards`}
-              footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
-                <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
-              ) : undefined}
+              footerButton={editable ? deckSection.footer : undefined}
             >
               { flatMap(deckSection.sections, section => (
                 <View key={section.id}>

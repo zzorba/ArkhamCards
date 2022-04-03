@@ -57,6 +57,7 @@ import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsC
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { DeckDraftProps } from '../DeckDraftView';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -67,6 +68,8 @@ export interface DeckDetailProps {
   modal?: boolean;
   fromCampaign?: boolean;
 }
+
+const SHOW_DRAFT_CARDS = false;
 
 type Props = NavigationProps &
   DeckDetailProps &
@@ -484,6 +487,45 @@ function DeckDetailView({
           topBar: {
             title: {
               text: t`Edit Side Deck`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
+  const showDraftCards = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<DeckDraftProps>(componentId, {
+      component: {
+        name: 'Deck.DraftCards',
+        passProps: {
+          id,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Draft Cards`,
               color: 'white',
             },
             backButton: {
@@ -1155,6 +1197,7 @@ function DeckDetailView({
               requiredCards={extraRequiredCards}
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
+              showDraftCards={SHOW_DRAFT_CARDS ? showDraftCards : undefined}
               showEditCards={onAddCardsPressed}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
