@@ -11,32 +11,43 @@ interface Props {
   query?: Brackets;
   sort?: QuerySort[];
   tabooSetOverride?: number;
+  guaranteeResults?: boolean;
 }
 
 interface CardState {
   cards: Card[];
+  loadedQuery?: Brackets;
   loading: boolean;
 }
 
-export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Props): [Card[], boolean] {
+interface Action {
+  cards: Card[];
+  query: Brackets;
+}
+
+export default function useCardsFromQuery({ query, sort, tabooSetOverride, guaranteeResults }: Props): [Card[], boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const { db } = useContext(DatabaseContext);
-  const [{ cards, loading }, updateCards] = useReducer((state: CardState, cards: Card[]) => {
-    return {
-      cards,
-      loading: false,
-    };
-  }, {
-    cards: [],
-    loading: true,
-  });
+  const [{ cards, loadedQuery, loading }, updateCards] = useReducer(
+    (state: CardState, action: Action): CardState => {
+      return {
+        cards: action.cards,
+        loadedQuery: action.query,
+        loading: false,
+      };
+    }, {
+      cards: [],
+      loading: true,
+    }
+  );
   useEffect(() => {
     let canceled = false;
-    if (query) {
+    const theQuery = query;
+    if (theQuery) {
       // setCards(undefined);
-      db.getCards(query, tabooSetId, sort).then(cards => {
+      db.getCards(theQuery, tabooSetId, sort).then(cards => {
         if (!canceled) {
-          updateCards(filter(cards, card => !!card));
+          updateCards({ query: theQuery, cards: filter(cards, card => !!card) });
         }
       });
       return () => {
@@ -44,5 +55,5 @@ export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Pro
       };
     }
   }, [db, query, tabooSetId, sort]);
-  return [cards, loading];
+  return [cards, loading || !!(guaranteeResults && loadedQuery !== query)];
 }

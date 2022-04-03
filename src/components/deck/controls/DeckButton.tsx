@@ -215,7 +215,7 @@ export default function DeckButton({
   }, [onPress]);
   return (
     <Ripple
-      disabled={disabled}
+      disabled={loading || disabled}
       style={[
         {
           minHeight: height,

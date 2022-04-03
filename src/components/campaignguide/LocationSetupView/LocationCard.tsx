@@ -40,7 +40,7 @@ function TextCard({ name }: { name: string }) {
   );
 }
 
-function LocationCardImage({ code, back, name }: { code: string; back: boolean; name?: string }) {
+function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height }: { width: number; height: number; code: string; back: boolean; rotate: boolean; rotateLeft: boolean; name?: string }) {
   const [card, loading] = useSingleCard(code, 'encounter');
   if (loading) {
     return <LoadingSpinner />;
@@ -58,7 +58,7 @@ function LocationCardImage({ code, back, name }: { code: string; back: boolean; 
   }
   return (
     <FastImage
-      style={styles.verticalCardImage}
+      style={[styles.verticalCardImage, { width, height }, rotate ? { transform: [{ rotate: rotateLeft ? '-90deg' : '90deg' }] } : undefined]}
       source={{
         uri,
       }}
@@ -105,8 +105,12 @@ export default function LocationCard({ code, height, width, left, top, name, res
         return (
           <LocationCardImage
             name={name}
-            code={code.replace('_back', '').replace('_rotate', '')}
+            code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '')}
             back={code.indexOf('_back') !== -1}
+            width={width}
+            height={height}
+            rotateLeft={code.indexOf('_rotate_left') !== -1}
+            rotate={rotate}
           />
         );
     }

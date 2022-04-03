@@ -2126,9 +2126,6 @@ msgstr "Zanotuj w Dzienniku kampanii, że:"
 msgid "Enter a name for this deck."
 msgstr "Wprowadź nazwę dla tej talii."
 
-msgid "Use Starter Deck"
-msgstr "Użyj Talii początkowej"
-
 msgid "Create deck"
 msgstr "Stwórz talię"
 
@@ -5599,6 +5596,59 @@ msgid ""
 "When it is finished, you can try to load the deck again."
 msgstr ""
 
+msgid "Other investigator cards"
+msgstr ""
+
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgid "Generate deck"
+msgstr ""
+
+msgid "- Adjust your card collection in the app settings."
+msgstr ""
+
+msgid ""
+"- Remove the parallel investigator choice, which might require a larger "
+"card collection."
+msgstr ""
+
+msgid "- Remove the taboo list, which removes some card options."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Unable to build a random deck for this investigator:\n"
+"${ remedy }"
+msgstr ""
+
+msgid "Starter deck"
+msgstr ""
+
+msgid "Unable to generate deck"
+msgstr ""
+
+msgid "Suggested starter deck for this investigator from FFG."
+msgstr ""
+
+msgid "An empty deck."
+msgstr ""
+
+msgid "Sorry, the app cannot generate random decks for this investigator yet."
+msgstr ""
+
+msgid "A fully randomized deck."
+msgstr ""
+
+msgid "Special deck"
+msgstr ""
+
+msgid "Re-generate deck"
+msgstr ""
+
+msgid "Multi-class"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -7330,10 +7380,6 @@ msgctxt "Draw Cards"
 msgid "All"
 msgstr "Wszystkie"
 
-msgctxt "Taboo List"
-msgid "None"
-msgstr "Brak"
-
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
@@ -7410,6 +7456,10 @@ msgid_plural "Scenarios"
 msgstr[0] "Scenariusz"
 msgstr[1] "Scenariuszw"
 msgstr[2] "Scenariuszy"
+
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Brak"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useRef, useMemo, useState } from 'react
 import { View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import RefreshableWrapper from 'react-native-fresh-refresh';
 import Animated, { useSharedValue } from 'react-native-reanimated';
-import { at, map } from 'lodash';
+import { map } from 'lodash';
 
 import { searchBoxHeight } from './SearchBox';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
@@ -67,15 +67,10 @@ export default function ArkhamLargeList<Item>({
   const contentOffset = useSharedValue(0);
   const searchBarHeight = searchBoxHeight(fontScale);
   const flatData: FlatDataItem<Item>[] = useMemo(() => {
-    const loaderItems: FlatLoader[] = noSearch ? [] : [{
-      type: 'loader',
-      layout: { index: 0, length: searchBarHeight, offset: 0 },
-    }];
-    const baseIndex = noSearch ? 0 : 1;
-    let offset: number = noSearch ? 0 : searchBarHeight;
-    const items: FlatItem<Item>[] = map(data, (item, idx) => {
+    let offset: number = 0;
+    return map(data, (item, idx) => {
       const layout = heightForItem ? {
-        index: idx + baseIndex,
+        index: idx,
         offset,
         length: heightForItem(item),
       } : undefined;
@@ -88,11 +83,18 @@ export default function ArkhamLargeList<Item>({
         layout,
       };
     });
-    return [
-      ...loaderItems,
-      ...items,
-    ];
-  }, [data, noSearch, heightForItem]);
+  }, [data, heightForItem]);
+  const renderFlatItem: ListRenderItem<FlatDataItem<Item>> = useCallback(({ item }: ListRenderItemInfo<FlatDataItem<Item>>) => {
+    switch (item.type) {
+      case 'item':
+        return renderItem(item.item);
+      default:
+        return null;
+    }
+  }, [renderItem]);
+  const getItemLayout = useCallback((data: null | undefined | Array<FlatDataItem<Item>>, idx: number) => {
+    return data?.[idx].layout || { offset: 0, length: 0, index: idx };
+  }, []);
   const loader = useMemo(() => (
     <View style={[{
       height: searchBarHeight,
@@ -103,22 +105,18 @@ export default function ArkhamLargeList<Item>({
       />
     </View>
   ), [searchBarHeight]);
-  const renderFlatItem: ListRenderItem<FlatDataItem<Item>> = useCallback(({ item }: ListRenderItemInfo<FlatDataItem<Item>>) => {
-    switch (item.type) {
-      case 'item':
-        return renderItem(item.item);
-      case 'loader':
-        return loader;
-      default:
-        return null;
-    }
-  }, [loader, renderItem]);
-  const getItemLayout= useCallback((data: null | undefined | Array<FlatDataItem<Item>>, idx: number) => {
-    return data?.[idx].layout || { offset: 0, length: 0, index: idx };
-  }, []);
   const renderLoader = useCallback(() => {
     return noSearch ? loader : <View />;
   }, [noSearch, loader]);
+
+  const renderRealHeader = useCallback(() => {
+    return (
+      <View>
+        { !noSearch && loader }
+        { renderHeader?.() }
+      </View>
+    );
+  }, [searchBarHeight, noSearch, loader, renderHeader]);
   return (
     <RefreshableWrapper
       contentOffset={contentOffset}
@@ -140,7 +138,7 @@ export default function ArkhamLargeList<Item>({
         scrollsToTop
         removeClippedSubviews
         getItemLayout={heightForItem ? getItemLayout : undefined}
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={renderRealHeader}
         ListFooterComponent={renderFooter || <View />}
         initialNumToRender={20}
         maxToRenderPerBatch={20}

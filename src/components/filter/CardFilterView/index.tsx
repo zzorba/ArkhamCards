@@ -360,6 +360,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const toggleItems: ToggleItem[] = useMemo(() => {
     const uniqueStr = t`Unique`;
     return [
+      { label: t`Multi-class`, setting: 'multiClass' },
       { label: t`Fast`, setting: 'fast' },
       { label: `${uniqueStr} (✷)`, setting: 'unique' },
       { label: t`Seal`, setting: 'seal' },

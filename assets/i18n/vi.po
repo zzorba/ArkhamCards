@@ -1914,9 +1914,6 @@ msgstr ""
 msgid "Required Cards"
 msgstr ""
 
-msgid "Use Starter Deck"
-msgstr ""
-
 msgid "Create on ArkhamDB"
 msgstr ""
 
@@ -5070,6 +5067,59 @@ msgstr ""
 msgid "Scenario Result"
 msgstr ""
 
+msgid "Other investigator cards"
+msgstr ""
+
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgid "Generate deck"
+msgstr ""
+
+msgid "- Adjust your card collection in the app settings."
+msgstr ""
+
+msgid ""
+"- Remove the parallel investigator choice, which might require a larger "
+"card collection."
+msgstr ""
+
+msgid "- Remove the taboo list, which removes some card options."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Unable to build a random deck for this investigator:\n"
+"${ remedy }"
+msgstr ""
+
+msgid "Starter deck"
+msgstr ""
+
+msgid "Unable to generate deck"
+msgstr ""
+
+msgid "Suggested starter deck for this investigator from FFG."
+msgstr ""
+
+msgid "An empty deck."
+msgstr ""
+
+msgid "Sorry, the app cannot generate random decks for this investigator yet."
+msgstr ""
+
+msgid "A fully randomized deck."
+msgstr ""
+
+msgid "Special deck"
+msgstr ""
+
+msgid "Re-generate deck"
+msgstr ""
+
+msgid "Multi-class"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -6715,10 +6765,6 @@ msgctxt "Draw Cards"
 msgid "All"
 msgstr ""
 
-msgctxt "Taboo List"
-msgid "None"
-msgstr ""
-
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
@@ -6784,6 +6830,10 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "Taboo List"
+msgid "None"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

@@ -832,9 +832,6 @@ msgstr "아컴디비에 생성하기"
 msgid "You seem to be offline. Refresh Network?"
 msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인하십시오."
 
-msgid "Use Starter Deck"
-msgstr "초심자용 견본 덱 사용"
-
 msgid "Create deck"
 msgstr "덱 생성하기"
 
@@ -5302,6 +5299,59 @@ msgstr ""
 "\n"
 "이 과정을 완료해야 덱을 다시 불러올 수 있습니다."
 
+msgid "Other investigator cards"
+msgstr ""
+
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgid "Generate deck"
+msgstr ""
+
+msgid "- Adjust your card collection in the app settings."
+msgstr ""
+
+msgid ""
+"- Remove the parallel investigator choice, which might require a larger "
+"card collection."
+msgstr ""
+
+msgid "- Remove the taboo list, which removes some card options."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Unable to build a random deck for this investigator:\n"
+"${ remedy }"
+msgstr ""
+
+msgid "Starter deck"
+msgstr ""
+
+msgid "Unable to generate deck"
+msgstr ""
+
+msgid "Suggested starter deck for this investigator from FFG."
+msgstr ""
+
+msgid "An empty deck."
+msgstr ""
+
+msgid "Sorry, the app cannot generate random decks for this investigator yet."
+msgstr ""
+
+msgid "A fully randomized deck."
+msgstr ""
+
+msgid "Special deck"
+msgstr ""
+
+msgid "Re-generate deck"
+msgstr ""
+
+msgid "Multi-class"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -6990,10 +7040,6 @@ msgctxt "Draw Cards"
 msgid "All"
 msgstr "전부"
 
-msgctxt "Taboo List"
-msgid "None"
-msgstr "없음"
-
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
@@ -7048,6 +7094,10 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
+
+msgctxt "Taboo List"
+msgid "None"
+msgstr "없음"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

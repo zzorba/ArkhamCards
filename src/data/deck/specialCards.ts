@@ -1,3 +1,5 @@
+import { PARALLEL_WENDY_CODE } from './specialMetaSlots';
+
 interface SpecialCards {
   codes: string[];
   min: number;
@@ -15,8 +17,19 @@ interface AllSpecialCards {
 export const LILY_CODE = '08010';
 export const ROLAND_CODE = '01001';
 export const PARALLEL_ROLAND_CODE = '90024';
+export const LOLA_CODE = '03006';
+export const JOE_DIAMOND_CODE = '05002';
 
 const specialCards: AllSpecialCards = {
+  [PARALLEL_WENDY_CODE]: {
+    front: {
+      min: 0,
+      max: 0,
+      codes: [
+        '90038',
+      ],
+    },
+  },
   [PARALLEL_ROLAND_CODE]: {
     front: {
       min: 3,

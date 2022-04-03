@@ -523,6 +523,7 @@ export function updateChaosBagClearTokens(
         curseTokens: curse,
         sealedTokens: chaosBagResults.sealedTokens,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+        tarot: chaosBagResults.tarot,
       }));
     }
   };

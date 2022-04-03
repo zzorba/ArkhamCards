@@ -399,6 +399,7 @@ interface PickerItem<T> {
   type?: undefined;
   title: string;
   description?: string;
+  disabled?: boolean;
   value: T;
   icon?: string;
   iconNode?: React.ReactNode;
@@ -447,6 +448,7 @@ export function usePickerDialog<T>({
             text={item.title}
             description={item.description}
             value={item.value}
+            disabled={item.disabled}
             rightNode={item.rightNode}
             onValueChange={onValuePress}
             // tslint:disable-next-line

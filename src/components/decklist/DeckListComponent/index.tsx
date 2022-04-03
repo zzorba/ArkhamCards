@@ -22,7 +22,7 @@ interface Props {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  customHeader?: ReactNode;
+  connectionProblemBanner?: React.ReactNode;
   customFooter?: ReactNode;
   searchOptions?: SearchOptions;
   isEmpty?: boolean;
@@ -33,8 +33,8 @@ export default function DeckListComponent({
   deckToCampaign,
   deckClicked,
   onRefresh,
+  connectionProblemBanner,
   refreshing,
-  customHeader,
   customFooter,
   searchOptions,
   isEmpty,
@@ -45,11 +45,12 @@ export default function DeckListComponent({
     Keyboard.dismiss();
     deckClicked(deck, investigator);
   }, [deckClicked]);
+
   const header = useMemo(() => (
     <View style={styles.header}>
-      { !!customHeader && customHeader }
+      { !!connectionProblemBanner && connectionProblemBanner }
     </View>
-  ), [customHeader]);
+  ), [connectionProblemBanner]);
 
   const renderFooter = useCallback((empty: boolean) => {
     if (isEmpty && !refreshing) {

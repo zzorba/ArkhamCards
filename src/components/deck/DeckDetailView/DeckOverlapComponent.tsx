@@ -77,16 +77,17 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
   const in_collection = useSelector(getPacksInCollection);
   const [excludeInvestigators, toggleExcludeInvestigators] = useToggles({});
   const ignore_collection = useSettingValue('ignore_collection');
+  const currentInvestigator = parsedDeck?.investigator.code;
   const activeDeckInvestigators = useMemo(() => {
     return filter(campaignInvestigators, investigator => {
-      if (investigator.code === parsedDeck?.investigator.code ||
+      if (investigator.code === currentInvestigator ||
         investigator.eliminated(campaign.getInvestigatorData(investigator.code))) {
         return false;
       }
       const deck = latestDecks[investigator.code];
       return !!deck;
     });
-  }, [campaignInvestigators, campaign]);
+  }, [campaignInvestigators, currentInvestigator, latestDecks, campaign]);
   const [overlap] = useMemo(() => {
     if (!cards) {
       return [[], true];
@@ -172,7 +173,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
       }),
     };
     return [[section], false];
-  }, [excludeInvestigators, activeDeckInvestigators, latestDecks, campaign, cards, parsedDeck, ignore_collection, in_collection]);
+  }, [excludeInvestigators, activeDeckInvestigators, latestDecks, cards, parsedDeck, ignore_collection, in_collection]);
   const [open, toggleOpen] = useFlag(false);
   const singleCardView = useSettingValue('single_card');
   const showCardPressed = useCallback((id: string, card: Card) => {
@@ -213,20 +214,8 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
       </Text>
       <View style={[styles.leftRow, space.paddingS, space.paddingBottomM]}>
         { map(activeDeckInvestigators, investigator => (
-          investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null :
-          <View style={space.paddingRightS} key={investigator.code}>
-            <InvestigatorImageButton
-              onPress={toggleExcludeInvestigators}
-              selected={!excludeInvestigators[investigator.code]}
-              card={investigator}
-              size="tiny"
-            />
-          </View>
-        )) }
-        <View style={styles.rightRow}>
-          { map(activeDeckInvestigators, investigator => (
-            investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null :
-            <View style={space.paddingLeftS} key={investigator.code}>
+            investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null :
+            <View style={space.paddingRightS} key={investigator.code}>
               <InvestigatorImageButton
                 onPress={toggleExcludeInvestigators}
                 selected={!excludeInvestigators[investigator.code]}
@@ -234,6 +223,18 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
                 size="tiny"
               />
             </View>
+        )) }
+        <View style={styles.rightRow}>
+          { map(activeDeckInvestigators, investigator => (
+              investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null :
+              <View style={space.paddingLeftS} key={investigator.code}>
+                <InvestigatorImageButton
+                  onPress={toggleExcludeInvestigators}
+                  selected={!excludeInvestigators[investigator.code]}
+                  card={investigator}
+                  size="tiny"
+                />
+              </View>
           )) }
         </View>
       </View>

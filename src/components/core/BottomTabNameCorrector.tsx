@@ -19,7 +19,7 @@ export default function BottomTabNameCorrector<P extends NavigationComponentProp
       });
     }, []);
 
-    useAppState({onForeground});
+    useAppState({ onForeground });
 
     return (
       <Component { ...props } />

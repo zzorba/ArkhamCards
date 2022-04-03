@@ -10,9 +10,10 @@ interface Props {
   investigatorCode?: string;
   tabooOpen?: boolean;
   editable: boolean;
-  setTabooSet?: (tabooSet?: number) => void;
+  setTabooSet?: (tabooSet: number) => void;
   tabooSetId: number;
   hasPreviousDeck?: boolean;
+  showTaboo?: boolean;
 
   meta: DeckMeta;
   setMeta: (key: keyof DeckMeta, value?: string) => void;
@@ -32,6 +33,7 @@ export default function DeckMetadataControls({
   tabooSetId,
   firstElement,
   hasPreviousDeck,
+  showTaboo,
 }: Props) {
   const [parallelInvestigators] = useParallelInvestigators(investigatorCode, tabooSetId);
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
@@ -45,6 +47,7 @@ export default function DeckMetadataControls({
       { !!setTabooSet && (
         <DeckTabooPickerButton
           open={tabooOpen}
+          show={showTaboo}
           disabled={!editable}
           tabooSetId={tabooSetId}
           setTabooSet={setTabooSet}

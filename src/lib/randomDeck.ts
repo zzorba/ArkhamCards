@@ -1,50 +1,26 @@
 import { DeckMeta, Slots, TOO_FEW_CARDS } from '@actions/types';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import specialCards from '@data/deck/specialCards';
-import specialMetaSlots from '@data/deck/specialMetaSlots';
-import Card, { CardsMap } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { forEach, pullAt, random, shuffle, take } from 'lodash';
-import { useMemo } from 'react';
 import { SharedValue, withTiming } from 'react-native-reanimated';
 import DeckValidation from './DeckValidation';
 
 const VERBOSE = false;
+const MINI_VEROBSE = VERBOSE;
+
 export default function randomDeck(
   investigatorCode: string,
   investigatorBack: Card,
   meta: DeckMeta,
   possibleCards: Card[],
-  cards: CardsMap,
-  progress: SharedValue<number>
-) {
+  progress: SharedValue<number>,
+  in_collection: { [pack_code: string]: boolean },
+  ignore_collection: boolean
+): [Slots, boolean] {
   VERBOSE && console.log('\n\n\n\n****RANDOM DECK TIME****');
   const deckCards: Card[] = [];
   const localPossibleCards = [...possibleCards];
   const slots: Slots = {};
-  forEach(investigatorBack.deck_requirements?.card || [], req => {
-    if (req.code) {
-      const card = cards[req.code];
-      if (card) {
-        slots[req.code] = card.deck_limit || 1;
-        deckCards.push(card);
-        VERBOSE && console.log(`Adding required card: ${card.name}`);
-      }
-    }
-  });
-  forEach(investigatorBack.deck_requirements?.random || [], req => {
-    if (req.target == 'subtype' && req.value === 'basicweakness') {
-      slots[RANDOM_BASIC_WEAKNESS] = 1;
-    }
-  });
-
-  forEach(meta, (value, key) => {
-    const specialSlots = specialMetaSlots(investigatorCode, { key: key as keyof DeckMeta, value });
-    if (specialSlots) {
-      forEach(specialSlots, (count, code) => {
-        slots[code] = count;
-      });
-    }
-  });
   const validation = new DeckValidation(investigatorBack, slots, meta);
   let deckSize = 0;
   while (deckSize < validation.getDeckSize()) {
@@ -57,6 +33,7 @@ export default function randomDeck(
     while (
       card.xp === undefined ||
       (problem && problem.reason !== TOO_FEW_CARDS) ||
+      card.collectionDeckLimit(in_collection, ignore_collection) < (slots[card.code] || 0) ||
       invalidCards.length
     ) {
       VERBOSE && console.log(`\tRejected: ${card.name}`);
@@ -83,7 +60,7 @@ export default function randomDeck(
     }
     if (!card) {
       // Couldn't find a card, give up;
-      return slots;
+      return [slots, false];
     }
     VERBOSE && console.log(`Added: ${card.name}`);
     deckCards.push(card);
@@ -98,14 +75,16 @@ export default function randomDeck(
   if (specialFront) {
     forEach(take(shuffle(specialFront.codes), specialFront.min), code => {
       slots[code] = 1;
+      console.log(`SPECIAL[${code}] = 1`)
     })
   }
   if (specialBack) {
     forEach(take(shuffle(specialBack.codes), specialBack.min), code => {
       slots[code] = 1;
+      console.log(`SPECIAL[${code}] = 1`)
     })
   }
 
-  VERBOSE && console.log(slots);
-  return slots;
+  MINI_VEROBSE && console.log(slots);
+  return [slots, true];
 }

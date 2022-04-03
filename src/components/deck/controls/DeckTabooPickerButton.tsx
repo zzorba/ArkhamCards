@@ -13,7 +13,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   tabooSetId?: number;
-  setTabooSet: (tabooSet?: number) => void;
+  setTabooSet: (tabooSet: number) => void;
   disabled?: boolean;
   open?: boolean;
   first?: boolean;
@@ -35,7 +35,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
   const { lang } = useContext(LanguageContext);
   const tabooSets = useDbData(fetchTaboos);
   const items = useMemo(() => [
-    { value: -1, title: c('Taboo List').t`None` },
+    { value: 0, title: c('Taboo List').t`None` },
     ...map(tabooSets, set => {
       return {
         value: set.id,
@@ -49,9 +49,9 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
       // No change, so just drop it.
       return;
     }
-    setTabooSet(tabooId === -1 ? undefined : tabooId);
+    setTabooSet(tabooId);
   }, [tabooSets, setTabooSet]);
-  const selectedValue = !tabooSetId ? -1 : tabooSetId;
+  const selectedValue = !tabooSetId ? 0 : tabooSetId;
   const [dialog, showDialog] = usePickerDialog({
     title: t`Select Taboo List`,
     items,

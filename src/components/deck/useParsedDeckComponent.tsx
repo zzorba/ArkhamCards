@@ -23,7 +23,6 @@ import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
-import { parse } from 'flatted';
 
 function hasUpgrades(
   code: string,
@@ -229,8 +228,6 @@ function deckToSections(
   ];
 }
 
-
-
 function bondedSections(
   uniqBondedCards: Card[],
   count: number,
@@ -297,12 +294,13 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigatorFront = parsedDeck?.investigatorFront;
 
+  const slots = parsedDeck?.slots;
   const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
-    if (!parsedDeck) {
+    if (!slots) {
       return [[], 0];
     }
     const bondedCards: Card[] = [];
-    forEach(parsedDeck?.slots, (count, code) => {
+    forEach(slots, (count, code) => {
       const card = cards[code];
       if (count > 0 && card) {
         const possibleBondedCards = bondedCardsByName?.[card.real_name];
@@ -319,9 +317,8 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
     const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
     const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
     return [uniqueBondedCards, bondedCardsCount];
-  }, [parsedDeck?.slots, cards, bondedCardsByName]);
+  }, [slots, cards, bondedCardsByName]);
   const limitSlotCount = find(parsedDeck?.investigatorBack.deck_options, option => !!option.limit)?.limit || 0;
-
   const [data, setData] = useState<DeckSection[]>([]);
   useEffect(() => {
     if (!parsedDeck?.investigatorBack || !visible) {
@@ -550,7 +547,7 @@ export default function useParsedDeckComponent({ deckEditsRef, componentId, tabo
   }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
 
   if (!data || !data.length) {
-    return [<ArkhamLoadingSpinner autoPlay loop />, bondedCardsCount];
+    return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];
   }
   return [(
     <>

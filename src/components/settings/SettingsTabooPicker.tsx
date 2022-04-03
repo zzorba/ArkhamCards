@@ -11,7 +11,7 @@ interface Props {
 
 export default function SettingsTabooPicker({ last }: Props) {
   const dispatch = useDispatch();
-  const onSetTabooSet = useCallback((tabooSetId?: number) => {
+  const onSetTabooSet = useCallback((tabooSetId: number) => {
     dispatch(setTabooSet(tabooSetId));
   }, [dispatch]);
   const tabooSetSelector: (state: AppState, tabooSetId?: number) => number | undefined = useMemo(makeTabooSetSelector, []);

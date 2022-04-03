@@ -1,8 +1,7 @@
-import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
+import React, { MutableRefObject, ReactNode, useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { c, msgid, t } from 'ttag';
+import { useDispatch } from 'react-redux';
+import { t } from 'ttag';
 
 import {
   CampaignId,
@@ -13,62 +12,24 @@ import {
   DeckProblem,
   EditDeckState,
   ParsedDeck,
-  Slots,
-  SplitCards,
 } from '@actions/types';
 import COLORS from '@styles/colors';
-import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProgressComponent from '../DeckProgressComponent';
-import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { BODY_OF_A_YITHIAN, ENABLE_SIDE_DECK, RANDOM_BASIC_WEAKNESS, TypeCodeType } from '@app_constants';
-import DeckValidation from '@lib/DeckValidation';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useSettingValue } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
-import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
-import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
-import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import DeckMetadataComponent from './DeckMetadataComponent';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
-import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
-import { getPacksInCollection } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
-import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import useParsedDeckComponent from '../useParsedDeckComponent';
-
-interface SectionCardId extends CardId {
-  mode: 'special' | 'side' | 'bonded' | undefined;
-  hasUpgrades: boolean;
-  index: number;
-}
-
-interface CardSection extends CardSectionHeaderData {
-  id: string;
-  cards: SectionCardId[];
-  first?: boolean;
-  last?: boolean;
-}
-
-interface DeckSection {
-  title: string;
-  onTitlePress?: () => void;
-  sections: CardSection[];
-  toggleCollapsed?: () => void;
-  collapsed?: boolean;
-}
-
 
 interface Props {
   componentId: string;

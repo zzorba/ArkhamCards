@@ -12,6 +12,7 @@ interface Props<T> {
   iconNode?: ReactNode;
   rightNode?: ReactNode;
   text: string;
+  disabled?: boolean;
   description?: string;
   value: T;
   onValueChange: (value: T) => void;
@@ -19,7 +20,7 @@ interface Props<T> {
   last: boolean;
   indicator?: 'check' | 'radio'
 }
-export default function ItemPickerLine<T>({ iconName, iconNode, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
+export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');
@@ -35,13 +36,13 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
     return null;
   }, [iconNode, iconName, colors]);
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
       <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
         <View style={styles.contentRow}>
           <View style={styles.leadRow}>
             { !!icon && (
               <View style={[styles.icon, space.marginRightS]}>
-                { icon }
+                { !disabled && icon }
               </View>
             ) }
             { description ? (
@@ -61,7 +62,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
           </View>
           { !!rightNode && rightNode }
           { indicator === 'radio' ? (
-            <View style={[styles.circle, { borderColor: colors.L10 }]}>
+            <View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }]}>
               { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
             </View>
           ) : (

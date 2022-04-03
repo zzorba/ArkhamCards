@@ -95,11 +95,6 @@ function MyDecksComponent({
     );
   }, [login, signedIn, typography]);
 
-  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
-  const header = useMemo(() => {
-    return connectionProblemBanner;
-  }, [connectionProblemBanner]);
-
   const [deckIds, deckReasons] = useMemo(() => {
     if (!filterDeck) {
       return [onlyDecks || myDecks || [], []];
@@ -127,12 +122,13 @@ function MyDecksComponent({
       </View>
     );
   }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
 
   return (
     <DeckListComponent
       searchOptions={searchOptions}
-      customHeader={header}
       customFooter={footer}
+      connectionProblemBanner={connectionProblemBanner}
       deckIds={deckIds}
       deckClicked={deckClicked}
       deckToCampaign={deckToCampaign}
