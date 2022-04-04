@@ -98,7 +98,7 @@ export default class DeckValidation {
   getCopiesAndDeckLimit(cards: Card[]) {
     const specialCards = this.specialCardCounts();
     return mapValues(
-      groupBy(cards, card => card ? card.real_name : 'Unknown Card'),
+      groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}` : 'Unknown Card'),
       group => {
         const card = group[0];
         const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
