@@ -5238,7 +5238,7 @@ msgid "Show all available cards for parallel"
 msgstr "사용가능한 모든 평행 카드 보기"
 
 msgid "Show fan-made cards"
-msgstr "팬 제작 카드 보기"
+msgstr "멍컴호러 및 팬 제작 콘텐츠 보기"
 
 msgid "Reset onboarding"
 msgstr "튜토리얼 재활성화"
@@ -5300,57 +5300,60 @@ msgstr ""
 "이 과정을 완료해야 덱을 다시 불러올 수 있습니다."
 
 msgid "Other investigator cards"
-msgstr ""
+msgstr "다른 조사자 카드"
 
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "최후통첩: 혼돈"
 
 msgid "Generate deck"
-msgstr ""
+msgstr "덱 생성하기"
 
 msgid "- Adjust your card collection in the app settings."
-msgstr ""
+msgstr "- 앱 설정에서 보유 게임 목록을 조정하세요."
 
 msgid ""
 "- Remove the parallel investigator choice, which might require a larger "
 "card collection."
 msgstr ""
+"- 더 많은 보유 게임 목록을 필요로 하는 해당 평행 조사자 선택을 제거하세요."
 
 msgid "- Remove the taboo list, which removes some card options."
-msgstr ""
+msgstr "- 일부 카드 선택지를 제거하는 금기 목록을 제거하세요."
 
 #, javascript-format
 msgid ""
 "Unable to build a random deck for this investigator:\n"
 "${ remedy }"
 msgstr ""
+"해당 조사자를 위한 무작위 덱 생성을 수행할 수 없음:\n"
+"${ remedy }"
 
 msgid "Starter deck"
-msgstr ""
+msgstr "초심자용 견본 덱"
 
 msgid "Unable to generate deck"
-msgstr ""
+msgstr "덱 생성 불가능"
 
 msgid "Suggested starter deck for this investigator from FFG."
-msgstr ""
+msgstr "Fantasy Flight Games에서 제공하는 초심자용 견본 덱."
 
 msgid "An empty deck."
-msgstr ""
+msgstr "비어있는 덱."
 
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
-msgstr ""
+msgstr "죄송합니다, 해당 조사자의 무작위 덱 생성을 아직 수행할 수 없습니다."
 
 msgid "A fully randomized deck."
-msgstr ""
+msgstr "보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 덱."
 
 msgid "Special deck"
-msgstr ""
+msgstr "특별한 덱"
 
 msgid "Re-generate deck"
-msgstr ""
+msgstr "덱 다시 생성하기"
 
 msgid "Multi-class"
-msgstr ""
+msgstr "다중 역할군"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -5601,8 +5604,30 @@ msgid "All"
 msgstr "전부"
 
 msgctxt "releaseNotes"
+msgid ""
+"The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
+msgstr ""
+"앱은 이제 '최후통첩: 혼돈' 선택 규칙에 따른 무작위 덱 생성을 제공합니다. 새로운 덱을 구성할 때, '특별한 덱' 버튼을 누르면 Fantasy Flight Games에서 제공하는 초심자용 견본 덱이나 보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 덱 중에 하나를 선택할 수 있습니다."
+
+msgctxt "releaseNotes"
+msgid "- The app will use your defined collection to try to generate the deck."
+msgstr "- 앱은 보유 게임으로 설정된 목록을 사용하여 덱을 생성하려고 할 것입니다."
+
+msgctxt "releaseNotes"
+msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgstr "- ‘암흑가의 지원’이나 ‘강제 학습’ 같은 지구의 끝자락 조사자 확장에 포함된 영속 카드 중심의 덱 생성을 지원합니다."
+
+msgctxt "releaseNotes"
+msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
+msgstr "- 실제로 저장하기 전에 덱을 보여주고, 특별히 생성 불가능한 형태로 덱이 생성되는 경우 덱을 다시 생성할 수도 있습니다."
+
+msgctxt "releaseNotes"
+msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
+msgstr "- 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 대한 무작위 덱 생성을 지원하지 않습니다. 해당 내용은 추후에 다루려고 합니다."
+
+msgctxt "releaseNotes"
 msgid "Fan-made cards + Barkham Horror"
-msgstr "팬 제작 카드 및 멍컴호러"
+msgstr "멍컴호러 및 팬 제작 콘텐츠"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5613,9 +5638,9 @@ msgid ""
 "released as part of the <i>Barkham Horror</i> promotional set, as well as "
 "the excellent <i>Alice in Wonderland</i> campaign by The Beard."
 msgstr ""
-"이번 릴리스부터 카드를 검색하거나 덱을 생성할 때 일부 '비공식' 콘텐츠의 잠금을 해제하는 새로운 설정이 있습니다. 팬 제작 캠페인은 "
-"한동안 사용할 수 있었지만 관련 카드는 검색할 수 없었습니다. 시작으로, 여기에는 <i>멍컴호러</i>의 프로모션 세트로 출시된 카드 "
-"및 The Beard가 제작한 <i>이상한 나라의 앨리스</i>라는 훌륭한 캠페인이 포함됩니다."
+"이제 카드를 검색하거나 덱을 생성할 때 일부 '비공식' 콘텐츠의 잠금을 해제하는 새로운 설정이 있습니다. 팬 제작 캠페인은 "
+"한동안 사용할 수 있었지만 관련 카드는 검색할 수 없었습니다. 여기에는 <i>멍컴호러</i>의 프로모션 세트로 출시된 카드 "
+"및 The Beard가 제작한 <i>이상한 나라의 앨리스</i>라는 훌륭한 캠페인을 포함하는 것을 시작으로 하려 합니다."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5737,7 +5762,7 @@ msgid ""
 "calculate which cards are included in too many decks (based on your "
 "collection)."
 msgstr ""
-"하나의 보유 게임 목록에서 여러 플레이어를 위한 덱을 구성하는 경우 이 릴리스가 적합합니다. 공유 캠페인에 덱을 추가하면 앱에 설정된 "
+"하나의 보유 게임 목록에서 여러 플레이어를 위한 덱을 구성하는 경우 이 기능이 적합합니다. 공유 캠페인에 덱을 추가하면 앱에 설정된 "
 "보유 게임 목록에 따라 덱을 비교하여 너무 많이 포함된 카드가 있는지를 계산합니다."
 
 msgctxt "releaseNotes"
@@ -5748,7 +5773,7 @@ msgstr "덱이 캠페인에 추가된 경우, 해당 캠페인에 포함된 각 
 
 msgctxt "releaseNotes"
 msgid "Edge of the Earth campaign is now out"
-msgstr "지구의 끝자락 캠페인 출시"
+msgstr "지구의 끝자락 캠페인 가이드 출시 (영문)"
 
 msgctxt "releaseNotes"
 msgid ""
