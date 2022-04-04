@@ -21,7 +21,7 @@ export default function ExperienceLine({ parsedDeck }: Props) {
       { t`Experience` }
     </Text>
   );
-  const icon = <AppIcon name="xp" size={36} color={colors.M} />;
+  const icon = <AppIcon name="xp" size={32} color={colors.M} />;
   const description = (
     <View style={[styles.row, space.paddingTopXs]}>
       <Text style={typography.large}>

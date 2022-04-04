@@ -44,7 +44,7 @@ export default function ProblemLine({ problem }: Props) {
 
   return (
     <MetadataLineComponent
-      icon={<WarningIcon size={32} />}
+      icon={<WarningIcon size={30} />}
       title={title}
       description={description}
     />
