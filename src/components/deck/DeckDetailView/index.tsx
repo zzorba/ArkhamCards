@@ -881,7 +881,7 @@ function DeckDetailView({
             <MenuButton
               title={t`Taboo`}
               onPress={showTabooPicker}
-              icon="taboo_thin"
+              icon="taboo"
               description={tabooSet ? formatTabooStart(tabooSet.date_start, lang) : t`None`}
             />
           </>
@@ -933,8 +933,16 @@ function DeckDetailView({
               icon="special_cards"
               title={t`Special Cards`}
               description={t`Story assets and weaknesses`}
-              last
+              last={!SHOW_DRAFT_CARDS}
             />
+            { !!SHOW_DRAFT_CARDS && (
+              <MenuButton
+                onPress={showDraftCards}
+                icon="draft"
+                title={t`Draft Cards`}
+                last
+              />
+            ) }
           </>
         ) }
         { (editable || (!deck.nextDeckId && !!deck.previousDeckId)) && (
@@ -1011,13 +1019,7 @@ function DeckDetailView({
   ]);
 
   const fabIcon = useCallback((active: boolean) => {
-    if (active) {
-      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
-    }
-    if (editable && mode === 'view') {
-      return <AppIcon name="edit" color="white" size={24} />;
-    }
-    return <AppIcon name="plus-thin" color={colors.L30} size={24} />;
+    return <AppIcon name="plus-button" color={colors.L30} size={32} />;
   }, [colors, editable, mode]);
 
   const fab = useMemo(() => {
@@ -1055,7 +1057,7 @@ function DeckDetailView({
           shadowStyle={shadow.medium}
           useNativeFeedback={false}
         >
-          <AppIcon name="draw" color={colors.L30} size={34} />
+          <AppIcon name="draw" color="#FFF" size={34} />
         </ActionButton.Item>
         <ActionButton.Item
           buttonColor={factionColor}
@@ -1066,7 +1068,7 @@ function DeckDetailView({
           shadowStyle={shadow.medium}
           useNativeFeedback={false}
         >
-          <AppIcon name="chart" color={colors.L30} size={34} />
+          <AppIcon name="chart" color="#FFF" size={34} />
         </ActionButton.Item>
         { editable && mode === 'view' && (
           <ActionButton.Item
@@ -1077,22 +1079,10 @@ function DeckDetailView({
             onPress={onUpgradePressed}
             useNativeFeedback={false}
           >
-            <AppIcon name="upgrade" color={colors.L30} size={32} />
+            <AppIcon name="upgrade"color="#FFF" size={32} />
           </ActionButton.Item>
         ) }
-        { editable && (mode === 'view' ? (
-          <ActionButton.Item
-            buttonColor={factionColor}
-            textStyle={actionLabelStyle}
-            textContainerStyle={actionContainerStyle}
-            title={t`Edit`}
-            onPress={onEditPressed}
-            shadowStyle={shadow.medium}
-            useNativeFeedback={false}
-          >
-            <AppIcon name="edit" color={colors.L30} size={24} />
-          </ActionButton.Item>
-        ) : (
+        { editable && (
           <ActionButton.Item
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
@@ -1102,9 +1092,22 @@ function DeckDetailView({
             shadowStyle={shadow.medium}
             useNativeFeedback={false}
           >
-            <AppIcon name="plus-thin" color={colors.L30} size={24} />
+            <AppIcon name="addcard" color="#FFF" size={32} />
           </ActionButton.Item>
-        )) }
+        ) }
+        { editable && mode === 'view' && (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Edit`}
+            onPress={onEditPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="edit" color="#FFF" size={32} />
+          </ActionButton.Item>
+        ) }
       </ActionButton>
     );
   }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);

@@ -214,7 +214,7 @@ export default function InvestigatorCampaignRow({
         iconA="deck"
         titleA={deck ? t`View deck` : t`Select deck`}
         onPressB={removePressed}
-        iconB="dismiss"
+        iconB="trash"
         titleB={deck ? t`Remove deck` : t`Remove`}
       />
     )

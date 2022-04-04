@@ -53,7 +53,7 @@ interface Props {
   visible: boolean;
   editable: boolean;
   buttons?: ReactNode;
-  showDrawWeakness: () => void;
+  showDrawWeakness: (replaceRandomBasicWeakness?: boolean) => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
   showXpAdjustmentDialog: () => void;

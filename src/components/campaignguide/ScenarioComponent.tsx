@@ -121,13 +121,8 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
   return queue;
 }
 
-const RESET_ENABLED = false;
 export function dynamicOptions(undo: boolean) {
-  const rightButtons = RESET_ENABLED ? [{
-    icon: iconsMap.replay,
-    id: 'reset',
-    color: COLORS.M,
-  }] : [{
+  const rightButtons = [{
     icon: iconsMap.log,
     id: 'log',
     color: COLORS.M,

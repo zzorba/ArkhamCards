@@ -81,7 +81,7 @@ NewDeckView.options = () => {
         text: t`New Deck`,
       },
       leftButtons: [{
-        icon: iconsMap.close,
+        icon: iconsMap.dismiss,
         id: 'close',
         color: COLORS.M,
         accessibilityLabel: t`Cancel`,

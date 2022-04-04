@@ -60,7 +60,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
     return (
       <TouchableOpacity style={space.marginRightS} onPress={clear}>
         <View style={styles.dismissIcon}>
-          <AppIcon name="dismiss" size={18 * fontScale} color={colors.D20} />
+          <AppIcon name="dismiss" size={28 * fontScale} color={colors.D20} />
         </View>
       </TouchableOpacity>
     );
@@ -82,6 +82,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
         <ToggleButton
           accessibilityLabel={t`Search options`}
           value={!!advancedOpen}
+          size={28}
           onPress={toggleAdvanced}
           icon="dots"
           inputSize={inputHeight - 4}
@@ -101,7 +102,7 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
         },
       ]}>
         <View style={styles.searchIcon}>
-          <AppIcon name="search" color={colors.M} size={18 * fontScale} />
+          <AppIcon name="search" color={colors.M} size={28 * fontScale} />
         </View>
         <TextInput
           ref={textInputRef}

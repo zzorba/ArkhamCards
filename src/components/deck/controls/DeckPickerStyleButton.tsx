@@ -23,19 +23,10 @@ interface Props {
 
 function iconSize(icon: string) {
   switch (icon) {
-    case 'xp':
-    case 'show':
-      return 32;
-    case 'card-outline':
-      return 34;
     case 'per_investigator':
-    case 'logo':
-    case 'font-size':
-    case 'parallel':
-    case 'taboo_thin':
       return 26;
     default:
-      return 28;
+      return 32;
   }
 }
 
@@ -97,7 +88,7 @@ export default function DeckPickerStyleButton({
         </View>
         { (!!editable || !!loading) && (
           <View style={styles.editIcon}>
-            { !!editable && <AppIcon name={editIcon} size={20} color={colors.M} /> }
+            { !!editable && <AppIcon name={editIcon} size={32} color={colors.M} /> }
             { !!loading && <ActivityIndicator size="small" animating color={colors.M} /> }
           </View>
         ) }

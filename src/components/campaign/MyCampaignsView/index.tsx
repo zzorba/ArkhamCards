@@ -216,7 +216,7 @@ MyCampaignsView.options = (): Options => {
         text: t`Campaigns`,
       },
       rightButtons: [{
-        icon: iconsMap.add,
+        icon: iconsMap['plus-button'],
         id: 'add',
         color: COLORS.M,
         accessibilityLabel: t`New Campaign`,

@@ -60,6 +60,8 @@ function CardImage({ card, width }: { card: Card, width: number }) {
         card={card}
         width={width}
         showSpoilers
+        simple
+        noImage
       />
     </View>
   );

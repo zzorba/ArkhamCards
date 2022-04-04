@@ -63,6 +63,7 @@ interface Props {
   notFirst?: boolean;
   simple?: boolean;
   width: number;
+  noImage?: boolean;
 }
 
 export default function TwoSidedCardComponent(props: Props) {
@@ -365,7 +366,7 @@ export default function TwoSidedCardComponent(props: Props) {
     toggleShowBack, showTaboo, showFaq]);
 
   const image = useMemo(() => {
-    if (card.type_code === 'story' || card.type_code === 'scenario') {
+    if (card.type_code === 'story' || card.type_code === 'scenario' || props.noImage) {
       return null;
     }
     return (
@@ -382,7 +383,7 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
       </View>
     );
-  }, [card, componentId]);
+  }, [card, componentId, props.noImage]);
 
   const cardText = useMemo(() => {
     return (

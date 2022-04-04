@@ -21,16 +21,18 @@ export default function MenuButton({ icon, title, description, onPress, disabled
       <View style={[styles.row, space.paddingTopS, space.paddingBottomS, borderStyle, !last ? styles.border : undefined]}>
         { !!icon && (
           <View style={[styles.icon, space.marginRightXs]}>
-            <AppIcon name={icon} size={icon === 'edit' ? 22 : 28} color={colors.M} />
+            <AppIcon name={icon} size={28} color={colors.M} />
           </View>
         ) }
         <View style={[styles.column, { flex: 1 }]}>
           <Text style={typography.menuText} numberOfLines={numberOfLines || 1} ellipsizeMode="clip">
             { title }
           </Text>
-          <Text style={[typography.smallLabel, typography.italic, { color: colors.M, flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
-            { description }
-          </Text>
+          { !!description && (
+            <Text style={[typography.smallLabel, typography.italic, { color: colors.M, flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
+              { description }
+            </Text>
+          ) }
         </View>
       </View>
     </TouchableOpacity>
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flex: 1,
   },
 });

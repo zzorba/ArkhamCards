@@ -36,6 +36,7 @@ export interface CampaignDrawWeaknessProps {
   deckSlots?: Slots;
   unsavedAssignedCards?: string[];
   saveWeakness?: (code: string, replaceRandomBasicWeakness: boolean) => void;
+  alwaysReplaceRandomBasicWeakness?: boolean;
 }
 
 type Props = NavigationProps & CampaignDrawWeaknessProps;
@@ -58,7 +59,7 @@ function updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWe
 }
 
 export default function CampaignDrawWeaknessDialog(props: Props) {
-  const { saveWeakness, componentId, campaignId } = props;
+  const { saveWeakness, componentId, campaignId, alwaysReplaceRandomBasicWeakness } = props;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const deckActions = useDeckActions();
@@ -172,7 +173,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       const newSlots = deckSlots && updateSlots(
         deckSlots,
         pendingNextCard,
-        replaceRandomBasicWeakness
+        replaceRandomBasicWeakness || !!alwaysReplaceRandomBasicWeakness
       );
       updatePendingAssignedCards({ type: 'sync', slots: {} });
       setPendingNextCard(undefined);
@@ -184,7 +185,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       const newSlots = updateSlots(
         selectedDeck.deck.slots || {},
         pendingNextCard,
-        replaceRandomBasicWeakness
+        replaceRandomBasicWeakness || !!alwaysReplaceRandomBasicWeakness
       );
       const parsedDeck = parseDeck(
         selectedDeck.deck.investigator_code,
@@ -218,7 +219,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         Alert.alert(err);
       });
     }
-  }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, cards, selectedDeck, replaceRandomBasicWeakness, deckSlots,
+  }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, cards, selectedDeck, replaceRandomBasicWeakness, alwaysReplaceRandomBasicWeakness, deckSlots,
     unsavedAssignedCards, userId, deckActions, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
   const investigatorChooser = useMemo(() => {
@@ -235,7 +236,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
             onPress={onPressInvestigator}
           />
         ) }
-        { hasRandomBasicWeakness && (
+        { hasRandomBasicWeakness && !alwaysReplaceRandomBasicWeakness && (
           <ToggleFilter
             style={{ ...styles.toggleRow, ...borderStyle }}
             label={t`Replace Random Weakness`}
@@ -246,7 +247,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         ) }
       </View>
     );
-  }, [toggleReplaceRandomBasicWeakness, onPressInvestigator, borderStyle, investigators, selectedDeck, replaceRandomBasicWeakness, deckSlots]);
+  }, [toggleReplaceRandomBasicWeakness, onPressInvestigator, alwaysReplaceRandomBasicWeakness, borderStyle, investigators, selectedDeck, replaceRandomBasicWeakness, deckSlots]);
 
   const flippedHeader = useMemo(() => {
     if (!pendingNextCard) {

@@ -54,7 +54,7 @@ export default function ThemePicker() {
     <>
       <DeckPickerStyleButton
         title={t`Theme`}
-        icon="logo"
+        icon="theme"
         editable
         onPress={showDialog}
         valueLabel={valueLabel}

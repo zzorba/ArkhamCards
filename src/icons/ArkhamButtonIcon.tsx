@@ -7,7 +7,7 @@ import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 import { ThemeColors } from '@styles/theme';
 
-export type ArkhamButtonIconType = 'draw' | 'parallel' | 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
+export type ArkhamButtonIconType = 'trash' | 'draft' | 'addcard' | 'draw' | 'parallel' | 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
 interface Props {
   icon: ArkhamButtonIconType;
   color: 'light' | 'dark' | 'faded';
@@ -26,7 +26,7 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
   const iconColor = getColor(color, colors);
   switch (icon) {
     case 'date':
-      return <View style={styles.dateIcon}><AppIcon name="date" size={24 * fontScale} color={iconColor} /></View>;
+      return <AppIcon name="date" size={24 * fontScale} color={iconColor} />;
     case 'world':
       return <View style={styles.worldIcon}><AppIcon name="world" size={24 * fontScale} color={iconColor} /></View>;
     case 'check':
@@ -36,19 +36,13 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
     case 'draw':
       return <View style={styles.deckIcon}><AppIcon name="draw" size={26 * fontScale} color={iconColor} /></View>;
     case 'deck':
-      return <View style={styles.deckIcon}><AppIcon name="deck" size={26 * fontScale} color={iconColor} /></View>;
-    case 'search':
-      return <AppIcon name="search" size={18 * fontScale} color={iconColor} />;
+    case 'draft':
+    case 'addcard':
+      return <View style={styles.deckIcon}><AppIcon name={icon} size={26 * fontScale} color={iconColor} /></View>;
     case 'campaign':
-      return <View style={styles.bookIcon}><AppIcon name="book" size={20 * fontScale} color={iconColor} /></View>;
-    case 'edit':
-      return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={iconColor} /></View>;
+      return <View style={styles.bookIcon}><AppIcon name="book" size={24 * fontScale} color={iconColor} /></View>;
     case 'expand':
-      return <AppIcon name="plus" size={18 * fontScale} color={iconColor} />;
-    case 'taboo':
-      return <AppIcon name="taboo" size={18 * fontScale} color={iconColor} />;
-    case 'parallel':
-      return <AppIcon name="parallel" size={22 * fontScale} color={iconColor} />;
+      return <AppIcon name="plus-button" size={24 * fontScale} color={iconColor} />;
     case 'up':
       return (
         <View style={styles.upIcon}>
@@ -57,16 +51,17 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
       );
     case 'faq':
       return <ArkhamIcon name="wild" size={18 * fontScale} color={iconColor} />;
+    case 'search':
+    case 'edit':
+    case 'taboo':
+    case 'parallel':
     case 'xp':
-      return <AppIcon name="xp" size={22 * fontScale} color={iconColor} />;
     case 'show':
-      return <AppIcon name="show" size={22 * fontScale} color={iconColor} />;
     case 'hide':
-      return <AppIcon name="hide" size={22 * fontScale} color={iconColor} />;
     case 'dismiss':
-      return <AppIcon name="dismiss" size={18 * fontScale} color={iconColor} />;
+    case 'trash':
     case 'confirm':
-      return <AppIcon name="check" size={22 * fontScale} color={iconColor} />;
+      return <AppIcon name={icon} size={24 * fontScale} color={iconColor} />;
   }
 }
 

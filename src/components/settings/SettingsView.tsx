@@ -204,7 +204,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 <FontSizePicker />
               </View>
               <DeckCheckboxButton
-                icon="cards"
+                icon="special_cards"
                 title={t`Show fan-made cards`}
                 value={customContent}
                 onValueChange={setCustomContent}

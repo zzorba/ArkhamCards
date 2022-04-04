@@ -50,10 +50,10 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow, 
         onPress={wrappedOnPress}
       >
         <View pointerEvents="box-none" style={styles.row}>
-          <View style={[{ width: 24 * fontScale, height: 20 * fontScale }, space.marginRightXs]}>
+          <View style={[{ width: 24 * fontScale, height: 24 * fontScale }, space.marginRightXs]}>
             <ArkhamButtonIcon icon={icon} color={variant === 'fill' ? 'light' : 'dark'} />
           </View>
-          <Text style={[typography.button, { color: variant === 'fill' ? colors.L30 : colors.D20 }]}>
+          <Text style={[typography.button, { paddingTop: 10, paddingBottom: 10, flex: 1, color: variant === 'fill' ? colors.L30 : colors.D20 }]}>
             { title }
           </Text>
         </View>
@@ -81,7 +81,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
   },
 });

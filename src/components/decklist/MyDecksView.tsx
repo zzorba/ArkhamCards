@@ -141,7 +141,7 @@ MyDecksView.options = () => {
         text: t`Decks`,
       },
       rightButtons: [{
-        icon: iconsMap.add,
+        icon: iconsMap['plus-button'],
         id: 'add',
         color: COLORS.M,
         accessibilityLabel: t`New Deck`,

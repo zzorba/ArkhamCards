@@ -24,7 +24,6 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
-import { normal } from 'react-native-color-matrix-image-filters';
 
 function hasUpgrades(
   code: string,
@@ -278,7 +277,7 @@ interface Props {
   showEditCards?: () => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
-  showDrawWeakness?: () => void;
+  showDrawWeakness?: (replaceRandomBasicWeakness?: boolean) => void;
   showCardUpgradeDialog?: (card: Card) => void;
   deckEditsRef?: MutableRefObject<EditDeckState | undefined>;
 
@@ -352,16 +351,16 @@ export default function useParsedDeckComponent({
         <RoundedFooterDoubleButton
           onPressA={showEditCards}
           titleA={t`Add cards`}
-          iconA="deck"
+          iconA="addcard"
           onPressB={showDraftCards}
           titleB={t`Draft cards`}
-          iconB="draw"
+          iconB="draft"
         />
       ) : (
         !hasNormalCards && (
           <RoundedFooterButton
             title={t`Add cards`}
-            icon="deck"
+            icon="addcard"
             onPress={showEditCards}
           />
         )
@@ -500,7 +499,7 @@ export default function useParsedDeckComponent({
     if (card.code === RANDOM_BASIC_WEAKNESS && editable && showDrawWeakness) {
       return {
         type: 'shuffle',
-        onShufflePress: showDrawWeakness,
+        onShufflePress: () => showDrawWeakness(true),
       };
     }
     if (mode === 'view' || item.mode === 'bonded') {

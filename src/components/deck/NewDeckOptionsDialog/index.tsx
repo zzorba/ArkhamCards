@@ -331,7 +331,6 @@ function NewDeckOptionsDialog({
   }, [investigatorId]);
   const [specialDeckDialog, showSpecialDeckDialog] = usePickerDialog({
     title: t`Special deck`,
-    investigator,
     items,
     selectedValue: specialDeckMode,
     onValueChange: setSpecialDeckMode,
@@ -548,7 +547,7 @@ function NewDeckOptionsDialog({
               ) : (
                 <DeckButton
                   title={t`Create deck`}
-                  icon="plus-thin"
+                  icon="plus-button"
                   loading={saving}
                   onPress={okDisabled ? undefined : onOkayPress}
                 />

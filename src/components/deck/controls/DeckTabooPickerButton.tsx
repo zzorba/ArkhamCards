@@ -72,7 +72,7 @@ export default function DeckTabooPickerButton({ tabooSetId, setTabooSet, disable
     <>
       <DeckPickerStyleButton
         title={t`Taboo List`}
-        icon="taboo_thin"
+        icon="taboo"
         editable={!disabled}
         loading={loading}
         onPress={showDialog}

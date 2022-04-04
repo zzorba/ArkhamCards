@@ -51,13 +51,13 @@ function deckOptions(passProps: Props): Options {
         text: passProps.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
       },
       leftButtons: [{
-        icon: iconsMap.close,
+        icon: iconsMap.dismiss,
         id: 'close',
         color: COLORS.M,
         accessibilityLabel: t`Cancel`,
       }],
       rightButtons: passProps.onlyShowSelected ? [] : [{
-        icon: iconsMap.add,
+        icon: iconsMap['plus-button'],
         id: 'add',
         color: COLORS.M,
         accessibilityLabel: t`New Deck`,
@@ -73,7 +73,7 @@ function investigatorOptions(): Options {
         text: t`Choose an Investigator`,
       },
       leftButtons: [{
-        icon: iconsMap.close,
+        icon: iconsMap.dismiss,
         id: 'close',
         color: COLORS.M,
         accessibilityLabel: t`Cancel`,

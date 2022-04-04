@@ -7,6 +7,49 @@ import DeckValidation from './DeckValidation';
 
 const VERBOSE = false;
 const MINI_VEROBSE = VERBOSE;
+/*
+function randomAllowedCardHelper(
+  validation: DeckValidation,
+  possibleCards: Card[],
+  in_collection: { [pack_code: string]: boolean },
+  ignore_collection: boolean
+): Card | undefined {
+  let index = random(0, possibleCards.length - 1);
+  let card: Card | undefined = possibleCards[index];
+  VERBOSE && console.log(`Trying: ${card.name}`);
+  validation.slots[card.code] = (validation.slots[card.code] || 0) + 1;
+  let invalidCards: Card[] = validation.getInvalidCards([...deckCards, card]);
+  let problem = validation.getProblem([...deckCards, card], true);
+  while (
+    card.xp === undefined ||
+    (problem && problem.reason !== TOO_FEW_CARDS) ||
+    card.collectionDeckLimit(in_collection, ignore_collection) < (slots[card.code] || 0) ||
+    invalidCards.length
+  ) {
+    VERBOSE && console.log(`\tRejected: ${card.name}`);
+
+    slots[card.code] = (slots[card.code] || 0) - 1;
+    if (!slots[card.code]) {
+      delete slots[card.code];
+    }
+    if (problem?.reason !== 'investigator') {
+      VERBOSE && console.log(`\t${card?.name} is invalid (${JSON.stringify(problem)}, skipping`);
+    }
+    pullAt(localPossibleCards, index);
+    if (localPossibleCards.length === 0) {
+      card = undefined;
+      break;
+    }
+
+    index = random(0, localPossibleCards.length - 1);
+    card = localPossibleCards[index];
+    VERBOSE && console.log(`\tTrying: ${card.name}`);
+    slots[card.code] = (slots[card.code] || 0) + 1;
+    invalidCards = validation.getInvalidCards([...deckCards, card]);
+    problem = validation.getProblem([...deckCards, card], true);
+  }
+  return undefined;
+}*/
 
 export default function randomDeck(
   investigatorCode: string,

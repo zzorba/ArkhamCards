@@ -46,7 +46,7 @@ function SortButton({ filterId, lightButton }: Props) {
       <View style={styles.container}>
         <TouchableOpacity onPress={onPress} testID="Sort">
           <View style={styles.touchable}>
-            <AppIcon name="sort" size={22} color={lightButton ? 'white' : colors.M} />
+            <AppIcon name="sort" size={32} color={lightButton ? 'white' : colors.M} />
           </View>
         </TouchableOpacity>
       </View>
