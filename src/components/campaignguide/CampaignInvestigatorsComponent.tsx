@@ -315,7 +315,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           )) }
           <DeckButton
             color="light_gray"
-            icon="plus-thin"
+            icon="plus-button"
             title={t`Add Investigator`}
             onPress={showAddInvestigator}
             bottomMargin={s}

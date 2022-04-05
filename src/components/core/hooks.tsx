@@ -650,6 +650,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'custom_content': return !!state.settings.customContent;
+      case 'card_grid': return !!state.settings.cardGrid;
     }
   });
 }

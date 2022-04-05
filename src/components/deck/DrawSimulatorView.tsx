@@ -1,20 +1,30 @@
-import React, { useCallback, useContext, useMemo, useReducer } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
 import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lodash';
 import {
   FlatList,
   StyleSheet,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { c, t } from 'ttag';
+import { t } from 'ttag';
 
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
-import { s, xs } from '@styles/space';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useEffectUpdate, usePlayerCardsFunc } from '@components/core/hooks';
+import { useEffectUpdate, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
+import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
+import ListToggleButton from './ListToggleButton';
+import { NavigationProps } from '@components/nav/types';
+import AppIcon from '@icons/AppIcon';
+import Card from '@data/types/Card';
+import { showCard } from '@components/nav/helper';
+import colors from '@styles/colors';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import CardImage from '@components/card/CardImage';
+import { CARD_RATIO } from '@styles/sizes';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -56,15 +66,62 @@ interface RedrawSelected {
 
 type DrawnStateAction = DrawCardsAction | ToggleSelectionAction | ResetAction | ReshuffleSelected | RedrawSelected;
 
-function Button({ title, disabled, onPress }: { title: string; disabled?: boolean; onPress: () => void }) {
+function Button({ title, disabled, onPress, square, icon, color = 'light' }: { title?: string; square?: boolean; disabled?: boolean; onPress: () => void; color?: 'light' | 'dark' | 'red', icon?: string }) {
   const { colors, typography } = useContext(StyleContext);
+  const backgroundColor = useMemo(() => {
+    switch (color) {
+      case 'dark': return colors.D20;
+      case 'light': return colors.D10;
+      case 'red': return colors.warn;
+    }
+  }, [color, colors]);
   return (
-    <TouchableOpacity disabled={disabled} onPress={onPress}>
-      <View style={{ borderRadius: 4, padding: xs, backgroundColor: colors.L20 }}>
-        <Text style={[typography.button, typography.center, disabled ? { color: colors.M } : { color: colors.D20 }]}>{title}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={[space.paddingLeftS, !square ? { flex: 1 } : undefined]}>
+      <TouchableOpacity disabled={disabled} onPress={onPress}>
+        <View style={[
+          square ? { width: 50, justifyContent: 'center' } : { justifyContent: 'flex-start' },
+          { borderRadius: 8, padding: s, height: 50, backgroundColor, flexDirection: 'row', alignItems: 'center' },
+        ]}>
+          { !!icon && <AppIcon name={icon} size={32} color={disabled ? colors.M : colors.L30} /> }
+          { !!title && (
+            <Text style={[square ? typography.counter : typography.large, icon ? space.paddingLeftXs : undefined, typography.center, disabled ? { color: colors.M } : { color: colors.L30 }]}>
+              {title}
+            </Text>
+          ) }
+        </View>
+      </TouchableOpacity>
+    </View>
   )
+}
+
+
+export function navigationOptions(
+  {
+    lightButton,
+  }: {
+    lightButton?: boolean;
+  }
+){
+  const rightButtons: OptionsTopBarButton[] = [{
+    id: 'grid',
+    component: {
+      name: 'ListToggleButton',
+      passProps: {
+        lightButton,
+      },
+      width: ListToggleButton.WIDTH,
+      height: ListToggleButton.HEIGHT,
+    },
+    accessibilityLabel: t`Grid`,
+    enabled: true,
+  }];
+  const topBarOptions: OptionsTopBar = {
+    rightButtons,
+  };
+
+  return {
+    topBar: topBarOptions,
+  };
 }
 
 
@@ -95,8 +152,42 @@ function drawHelper(drawState: DrawnState, count: number | 'all'): {
   };
 }
 
-export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width: number; grid: boolean; onPress: (card: Card) => void; toggleSelection: (id: string) => void; item: Item; card: Card }) {
+  const onGridPress = useCallback(() => onPress(card), [onPress, card]);
+  const onToggle = useCallback(() => toggleSelection(item.key), [toggleSelection, item.key]);
+  if (grid) {
+    return (
+      <View style={{ flexDirection: 'column', alignItems: 'center', width: width + s, height: CARD_RATIO * width + 60, paddingRight: s, paddingBottom: m }}>
+        <ArkhamSwitch value={item.selected} onValueChange={onToggle} />
+        <View style={space.paddingTopXs}>
+          <TouchableOpacity onPress={onGridPress}>
+            <CardImage card={card} width={width} superCompact />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+  return (
+    <CardSearchResult
+      key={item.key}
+      id={item.key}
+      card={card}
+      onPress={onPress}
+      backgroundColor={item.selected ? colors.L20 : undefined}
+      control={{
+        type: 'toggle',
+        value: item.selected,
+        toggleValue: onToggle,
+      }}
+    />
+  );
+}
+
+export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorProps & NavigationProps) {
+  const { backgroundStyle, colors, typography, width } = useContext(StyleContext);
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
+  }, [componentId]);
   const [cards] = usePlayerCardsFunc(() => keys(slots), [slots], 0);
   const shuffleFreshDeck = useCallback(() => {
     return shuffle(
@@ -189,12 +280,12 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   const drawTwo = useCallback(() => updateDrawState({ type: 'draw', count: 2 }), [updateDrawState]);
   const drawFive = useCallback(() => updateDrawState({ type: 'draw', count: 5 }), [updateDrawState]);
   const drawAll = useCallback(() => updateDrawState({ type: 'draw', count: 'all' }), [updateDrawState]);
-
+  const gridView = useSettingValue('card_grid');
   const toggleSelection = useCallback((id: string) => {
     updateDrawState({ type: 'selection', id });
   }, [updateDrawState]);
 
-  const footer = useMemo(() => {
+  const header = useMemo(() => {
     const {
       shuffledDeck,
       drawnCards,
@@ -203,61 +294,82 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
-      <View style={[styles.controlsContainer, { backgroundColor: colors.L10 }]}>
+      <View style={styles.controlsContainer}>
         <View style={[styles.drawButtonRow, { backgroundColor: colors.L10 }]}>
-          <Text style={[typography.button, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
+          <AppIcon name="draw" size={32} color={colors.D10} />
+          <Text style={[typography.large, { color: colors.darkText }]}>{ t`Draw` }</Text>
           <View style={styles.buttonContainer}>
             <Button
-              title="1"
+              title="×1"
               disabled={deckEmpty}
               onPress={drawOne}
+              square
             />
-          </View>
-          <View style={styles.buttonContainer}>
             <Button
-              title="2"
+              title="×2"
               disabled={deckEmpty}
               onPress={drawTwo}
+              square
             />
-          </View>
-          <View style={styles.buttonContainer}>
             <Button
-              title="5"
+              title="×5"
               disabled={deckEmpty}
               onPress={drawFive}
+              square
             />
-          </View>
-          <View style={styles.buttonContainer}>
             <Button
-              title={c('Draw Cards').t`All`}
+              title="∞"
               disabled={deckEmpty}
               onPress={drawAll}
+              square
+              color="dark"
+            />
+            <Button
+              icon="dismiss"
+              color="red"
+              square
+              disabled={drawnCards.length === 0}
+              onPress={resetDeck}
             />
           </View>
         </View>
-        <View style={[styles.wrapButtonRow, { backgroundColor: colors.L10 }]}>
+        <View style={[styles.drawButtonRow, { backgroundColor: colors.L20 }]}>
+          <Text style={[typography.smallLabel, { color: colors.darkText }]}>{ t`Selection` }</Text>
           <View style={styles.buttonContainer}>
             <Button
+              icon="draft"
               title={t`Redraw`}
               disabled={noSelection}
-              onPress={redrawSelected} />
-          </View>
-          <View style={styles.buttonContainer}>
+              onPress={redrawSelected}
+            />
             <Button
+              icon="undo"
               title={t`Reshuffle`}
               disabled={noSelection}
-              onPress={reshuffleSelected} />
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button
-              title={t`Reset`}
-              disabled={drawnCards.length === 0}
-              onPress={resetDeck} />
+              onPress={reshuffleSelected}
+            />
           </View>
         </View>
       </View>
     );
   }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
+
+
+  const onCardPress = useCallback((card: Card) => {
+    showCard(componentId, card.code, card, colors, true);
+  }, [componentId, colors]);
+  const cardWidth = useMemo(() => {
+    let cardsPerRow = 10;
+    let cardWidth = (width - s) / cardsPerRow - s;
+    while (cardsPerRow > 2) {
+      if (cardWidth > 110) {
+        break;
+      }
+      cardsPerRow--;
+      cardWidth = (width - s) / cardsPerRow - s;
+    }
+    return cardWidth;
+  }, [width]);
 
   const renderCardItem = useCallback(({ item }: { item: Item }) => {
     const card = cards && cards[item.code];
@@ -265,16 +377,17 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
       return null;
     }
     return (
-      <CardSearchResult
+      <CardItem
         key={item.key}
-        id={item.key}
+        width={cardWidth}
+        grid={gridView}
+        item={item}
         card={card}
-        onPressId={toggleSelection}
-        onPressDebounce={100}
-        backgroundColor={item.selected ? colors.L20 : undefined}
+        onPress={onCardPress}
+        toggleSelection={toggleSelection}
       />
     );
-  }, [cards, colors, toggleSelection]);
+  }, [cards, colors, cardWidth, gridView, onCardPress, toggleSelection]);
 
   const selectedSet = useMemo(() => new Set(drawState.selectedCards), [drawState.selectedCards]);
   const data = useMemo(() => flatMap(drawState.drawnCards, cardKey => {
@@ -290,11 +403,17 @@ export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
   }), [drawState.drawnCards, selectedSet]);
   return (
     <View style={[styles.container, backgroundStyle]}>
-      <FlatList
-        data={data}
-        renderItem={renderCardItem}
-      />
-      { footer }
+      { header }
+      { gridView ? (
+        <ScrollView contentContainerStyle={[styles.gridView, { width }]}>
+          { map(data, (item) => renderCardItem({ item })) }
+        </ScrollView>
+      ) : (
+        <FlatList
+          data={data}
+          renderItem={renderCardItem}
+        />
+      ) }
     </View>
   );
 }
@@ -304,9 +423,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  gridView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    paddingLeft: s,
+  },
   controlsContainer: {
     flexDirection: 'column',
-    paddingBottom: NOTCH_BOTTOM_PADDING + s,
   },
   drawButtonRow: {
     width: '100%',
@@ -318,13 +443,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  wrapButtonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  },
   buttonContainer: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
     padding: s,
   },
 });

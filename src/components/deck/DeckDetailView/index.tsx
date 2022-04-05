@@ -1015,12 +1015,12 @@ function DeckDetailView({
   }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
-    onEditSpecialPressed, onChecklistPressed,
+    onEditSpecialPressed, onChecklistPressed, showDraftCards,
   ]);
 
-  const fabIcon = useCallback((active: boolean) => {
+  const fabIcon = useCallback(() => {
     return <AppIcon name="plus-button" color={colors.L30} size={32} />;
-  }, [colors, editable, mode]);
+  }, [colors]);
 
   const fab = useMemo(() => {
     const actionLabelStyle = {

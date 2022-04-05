@@ -17,6 +17,8 @@ export type DeckButtonIcon =
   'vk' |
   'telegram' |
   'faq' |
+  'draft' |
+  'undo' |
   'trauma' |
   'backup' |
   'seal' |

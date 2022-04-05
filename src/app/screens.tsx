@@ -13,6 +13,7 @@ import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
+import ListToggleButton from '@components/deck/ListToggleButton';
 
 interface ProviderProps<S> {
   store: S;
@@ -119,6 +120,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
+  Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 

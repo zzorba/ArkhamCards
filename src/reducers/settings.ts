@@ -41,6 +41,7 @@ interface SettingsState {
   androidOneUiFix?: boolean;
   version?: number;
   customContent?: boolean;
+  cardGrid?: boolean;
   dismissedOnboarding?: string[];
 }
 export const CURRENT_REDUX_VERSION = 1;
@@ -60,6 +61,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   androidOneUiFix: false,
   customContent: false,
   dismissedOnboarding: [],
+  cardGrid: false,
 };
 
 type SettingAction =
@@ -182,6 +184,11 @@ export default function(
           return {
             ...state,
             customContent: action.value,
+          };
+        case 'card_grid':
+          return {
+            ...state,
+            cardGrid: action.value,
           };
       }
       return state;

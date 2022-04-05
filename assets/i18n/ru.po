@@ -803,8 +803,8 @@ msgstr ""
 "Улучшение колоды позволяет отслеживать изменения карт и опыта в ходе "
 "кампании."
 
-msgid "Draw: "
-msgstr "Взять: "
+msgid "Draw"
+msgstr "Взять"
 
 msgid "Redraw"
 msgstr "Перетянуть"
@@ -2465,19 +2465,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 

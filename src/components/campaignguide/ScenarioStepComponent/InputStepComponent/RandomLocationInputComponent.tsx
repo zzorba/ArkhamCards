@@ -77,7 +77,7 @@ export default function RandomLocationInputComponent({ input }: Props) {
           <View style={[styles.row, space.paddingBottomXs]}>
             <ActionButton
               color="light"
-              leftIcon="plus-thin"
+              leftIcon="plus-button"
               title={t`Draw location`}
               disabled={selectedCards.length >= cards.length}
               onPress={drawLocation}

@@ -159,7 +159,7 @@ export default function CampaignLogSection(props: Props) {
       { investigatorSection }
       <View style={[space.paddingSideS, space.paddingTopS]}>
         <DeckButton
-          icon="plus-thin"
+          icon="plus-button"
           title={t`Add Log Section`}
           onPress={addSectionDialogPressed}
           color="light_gray"

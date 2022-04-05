@@ -107,7 +107,7 @@ export default function ArkhamLargeList<Item>({
   ), [searchBarHeight]);
   const renderLoader = useCallback(() => {
     return noSearch ? loader : <View />;
-  }, [noSearch, loader, debouncedRefreshing]);
+  }, [noSearch, loader]);
 
   const renderRealHeader = useCallback(() => {
     return (
@@ -116,7 +116,7 @@ export default function ArkhamLargeList<Item>({
         { renderHeader?.() }
       </View>
     );
-  }, [searchBarHeight, noSearch, loader, renderHeader]);
+  }, [noSearch, loader, renderHeader]);
   return (
     <RefreshableWrapper
       contentOffset={contentOffset}

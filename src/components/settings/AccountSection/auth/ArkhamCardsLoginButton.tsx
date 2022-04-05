@@ -348,7 +348,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
                   { t`Would you like to create a new account instead?` }
                 </Text>
                 <View style={styles.row}>
-                  <DeckButton thin color="red" icon="plus-thin" title={`Create new account`} onPress={switchToCreate} />
+                  <DeckButton thin color="red" icon="plus-button" title={`Create new account`} onPress={switchToCreate} />
                 </View>
               </View>
             );
@@ -471,7 +471,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
           <DeckButton thin icon="login" title={t`Sign in to your account`} onPress={loginPressed} />
         </View>
         <View style={[styles.row, space.paddingSideS, space.paddingBottomS]}>
-          <DeckButton thin icon="plus-thin" title={t`Create a new account`} onPress={createAccountPressed} />
+          <DeckButton thin icon="plus-button" title={t`Create a new account`} onPress={createAccountPressed} />
         </View>
       </View>
     );

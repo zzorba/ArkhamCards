@@ -73,7 +73,7 @@ export default function EditTraumaDialogContent({
   return (
     <View>
       <NewDialog.ContentLine
-        icon='physical'
+        icon="physical"
         text={t`Physical Trauma`}
         paddingBottom={s}
         control={(

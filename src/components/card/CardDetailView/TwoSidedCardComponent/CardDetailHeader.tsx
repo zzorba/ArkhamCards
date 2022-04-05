@@ -79,7 +79,8 @@ function DualFactionIcons({ card }: { card: Card }) {
     </View>
   );
 }
-function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
+
+function FactionIcons({ card, linked }: { card: Card; linked: boolean; }) {
   const color = '#FFF';
   if (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') {
     return (
@@ -202,7 +203,7 @@ export default function CardDetailHeader({ card, width, back, linked }: Props) {
   return (
     <RoundedFactionHeader faction={card.factionCode()} width={width} dualFaction={!!card.faction2_code}>
       <HeaderContent card={card} back={!!back} />
-      <FactionIcon card={card} linked={linked} />
+      <FactionIcons card={card} linked={linked} />
     </RoundedFactionHeader>
   );
 }

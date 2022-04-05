@@ -834,19 +834,19 @@ msgstr "Worek Chaosu"
 msgid "Adjust Weakness Set"
 msgstr "Dopasuj Zestaw Osłabień"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ta talia zawiera kilka podstawowych osłabień"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ta talia zawiera podstawowe osłabienie"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
@@ -1012,8 +1012,8 @@ msgstr "N/A"
 msgid "All Investigators"
 msgstr "Wszyscy Badacze"
 
-msgid "Draw: "
-msgstr "Dobierz: "
+msgid "Draw"
+msgstr "Dobierz"
 
 msgid "Redraw"
 msgstr "Dobierz ponownie"

@@ -7,7 +7,7 @@ import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 import { ThemeColors } from '@styles/theme';
 
-export type ArkhamButtonIconType = 'trash' | 'draft' | 'addcard' | 'draw' | 'parallel' | 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
+export type ArkhamButtonIconType = 'filter-clear' | 'trash' | 'draft' | 'addcard' | 'draw' | 'parallel' | 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
 interface Props {
   icon: ArkhamButtonIconType;
   color: 'light' | 'dark' | 'faded';
@@ -61,6 +61,7 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
     case 'dismiss':
     case 'trash':
     case 'confirm':
+    case 'filter-clear':
       return <AppIcon name={icon} size={24 * fontScale} color={iconColor} />;
   }
 }
@@ -78,16 +79,10 @@ const styles = StyleSheet.create({
     marginTop: -2,
     marginRight: -4,
   },
-  editIcon: {
-    marginLeft: 2,
-  },
   upIcon: {
     marginTop: -2,
   },
   bookIcon: {
     marginTop: -3,
-  },
-  dateIcon: {
-    marginTop: -4,
   },
 });

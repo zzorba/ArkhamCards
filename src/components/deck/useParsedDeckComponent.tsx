@@ -450,7 +450,7 @@ export default function useParsedDeckComponent({
       showEditSide,
       <RoundedFooterButton
         title={t`Add cards`}
-        icon="deck"
+        icon="addcard"
         onPress={showEditSide}
       />,
       currentIndex,
@@ -469,7 +469,7 @@ export default function useParsedDeckComponent({
     currentIndex = sideIndex;
     setData(newData);
   }, [requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
-    showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+    showDraftCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';
   const renderSectionHeader = useCallback((section: CardSection) => {

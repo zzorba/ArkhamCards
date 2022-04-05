@@ -64,10 +64,6 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
     }
   }, [fullFactions, onFilterChange]);
 
-  if (fullFactions.length <= 1) {
-    return null;
-  }
-
   const [selectedIndexes, buttons] = useMemo(() => {
     const selectedIndexes: number[] = [];
     const buttons = map(fullFactions, (faction, idx) => {
@@ -114,6 +110,10 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
     });
     return [selectedIndexes, buttons];
   }, [colors, multiClass, selection]);
+
+  if (fullFactions.length <= 1) {
+    return null;
+  }
   return (
     <ArkhamButtonGroup
       onPress={updateIndex}
