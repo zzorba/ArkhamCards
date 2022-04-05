@@ -42,6 +42,7 @@ export default function CardImage({ card, width, superCompact }: { card: Card, w
   if (uri) {
     return (
       <FastImage
+        accessibilityLabel={card.name}
         style={{ width, height: CARD_RATIO * width }}
         source={{
           uri,

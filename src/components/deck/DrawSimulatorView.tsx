@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
@@ -66,7 +66,7 @@ interface RedrawSelected {
 
 type DrawnStateAction = DrawCardsAction | ToggleSelectionAction | ResetAction | ReshuffleSelected | RedrawSelected;
 
-function Button({ title, disabled, onPress, square, icon, color = 'light' }: { title?: string; square?: boolean; disabled?: boolean; onPress: () => void; color?: 'light' | 'dark' | 'red', icon?: string }) {
+function Button({ title, disabled, onPress, square, icon, color = 'light', accessibilityLabel }: { accessibilityLabel?: string; title?: string; square?: boolean; disabled?: boolean; onPress: () => void; color?: 'light' | 'dark' | 'red', icon?: string }) {
   const { colors, typography } = useContext(StyleContext);
   const backgroundColor = useMemo(() => {
     switch (color) {
@@ -77,7 +77,7 @@ function Button({ title, disabled, onPress, square, icon, color = 'light' }: { t
   }, [color, colors]);
   return (
     <View style={[space.paddingLeftS, !square ? { flex: 1 } : undefined]}>
-      <TouchableOpacity disabled={disabled} onPress={onPress}>
+      <TouchableOpacity disabled={disabled} onPress={onPress} accessibilityLabel={accessibilityLabel}>
         <View style={[
           square ? { width: 50, justifyContent: 'center' } : { justifyContent: 'flex-start' },
           { borderRadius: 8, padding: s, height: 50, backgroundColor, flexDirection: 'row', alignItems: 'center' },
@@ -319,6 +319,7 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
             />
             <Button
               title="∞"
+              accessibilityLabel={c('Draw Cards').t`All`}
               disabled={deckEmpty}
               onPress={drawAll}
               square
@@ -326,6 +327,7 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
             />
             <Button
               icon="dismiss"
+              accessibilityLabel={t`Reset`}
               color="red"
               square
               disabled={drawnCards.length === 0}
