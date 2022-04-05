@@ -5604,6 +5604,10 @@ msgid "All"
 msgstr "전부"
 
 msgctxt "releaseNotes"
+msgid "Ultimatum of Chaos"
+msgstr "최후통첩: 혼돈"
+
+msgctxt "releaseNotes"
 msgid ""
 "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
 msgstr ""
