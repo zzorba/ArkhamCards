@@ -13,12 +13,13 @@ import { useSettingFlag } from '@components/core/hooks';
 const SIZE = 36;
 
 interface Props {
+  setting: 'card_grid' | 'draft_grid';
   lightButton?: boolean;
 }
 
-function ListToggleButton({ lightButton }: Props) {
+function ListToggleButton({ lightButton, setting }: Props) {
   const { colors } = useContext(StyleContext);
-  const [cardGrid, setCardGrid] = useSettingFlag('card_grid');
+  const [cardGrid, setCardGrid] = useSettingFlag(setting);
   const onPress = useCallback(() => setCardGrid(!cardGrid), [cardGrid, setCardGrid]);
   return (
     <View style={styles.container}>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Card from '@data/types/Card';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import { CardCount } from './CardCount';
@@ -7,7 +8,7 @@ import CardToggle from './CardToggle';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
 import { DeckId } from '@actions/types';
-import ShuffleButton from './ShuffleButton';
+import ShuffleButton, { DraftButton } from './ShuffleButton';
 
 export type ControlType = {
   type: 'deck';
@@ -44,6 +45,9 @@ export type ControlType = {
 } | {
   type: 'shuffle';
   onShufflePress: () => void;
+} | {
+  type: 'draft';
+  onDraft: (card: Card) => void;
 }
 
 interface Props {
@@ -57,6 +61,8 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
       return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} useGestureHandler={useGestureHandler} editable />;
     case 'shuffle':
       return <ShuffleButton onPress={control.onShufflePress} />;
+    case 'draft':
+      return <DraftButton card={card} onPress={control.onDraft} />;
     case 'count':
       return <CardCount count={control.count} deltaCountMode={control.deltaCountMode} showZeroCount={control.showZeroCount} />;
     case 'upgrade':

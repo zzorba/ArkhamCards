@@ -114,7 +114,7 @@ export default function LocationCard({ code, height, width, left, top, name, res
           />
         );
     }
-  }, [colors, borderStyle, code, name]);
+  }, [colors, borderStyle, code, name, height, rotate, width]);
 
   const resourceDividers = useMemo(() => {
     if (!resource_dividers) {

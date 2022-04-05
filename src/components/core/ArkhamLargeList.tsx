@@ -141,8 +141,8 @@ export default function ArkhamLargeList<Item>({
         ListHeaderComponent={renderRealHeader}
         ListFooterComponent={renderFooter || <View />}
         initialNumToRender={20}
-        maxToRenderPerBatch={20}
-        updateCellsBatchingPeriod={25}
+        maxToRenderPerBatch={40}
+        updateCellsBatchingPeriod={10}
       />
     </RefreshableWrapper>
   );

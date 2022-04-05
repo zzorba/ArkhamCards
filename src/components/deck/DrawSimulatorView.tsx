@@ -3,7 +3,6 @@ import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lod
 import {
   FlatList,
   StyleSheet,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -25,6 +24,7 @@ import colors from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardImage from '@components/card/CardImage';
 import { CARD_RATIO } from '@styles/sizes';
+import CardGridComponent from '@components/cardlist/CardGridComponent';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -94,7 +94,6 @@ function Button({ title, disabled, onPress, square, icon, color = 'light', acces
   )
 }
 
-
 export function navigationOptions(
   {
     lightButton,
@@ -107,6 +106,7 @@ export function navigationOptions(
     component: {
       name: 'ListToggleButton',
       passProps: {
+        setting: 'card_grid',
         lightButton,
       },
       width: ListToggleButton.WIDTH,
@@ -150,6 +150,13 @@ function drawHelper(drawState: DrawnState, count: number | 'all'): {
     ],
     shuffledDeck: shuffledDeck.slice(count),
   };
+}
+
+function GridControl({ item, toggleSelection }: { item: Item; toggleSelection: (id: string) => void; }) {
+  const onToggle = useCallback(() => toggleSelection(item.key), [toggleSelection, item.key]);
+  return (
+    <ArkhamSwitch value={item.selected} onValueChange={onToggle} />
+  );
 }
 
 function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width: number; grid: boolean; onPress: (card: Card) => void; toggleSelection: (id: string) => void; item: Item; card: Card }) {
@@ -389,7 +396,7 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
         toggleSelection={toggleSelection}
       />
     );
-  }, [cards, colors, cardWidth, gridView, onCardPress, toggleSelection]);
+  }, [cards, cardWidth, gridView, onCardPress, toggleSelection]);
 
   const selectedSet = useMemo(() => new Set(drawState.selectedCards), [drawState.selectedCards]);
   const data = useMemo(() => flatMap(drawState.drawnCards, cardKey => {
@@ -403,13 +410,23 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
       selected: selectedSet.has(cardKey),
     };
   }), [drawState.drawnCards, selectedSet]);
+
+  const renderGridControl = useCallback((item: Item) => {
+    return (
+      <GridControl item={item} toggleSelection={toggleSelection} />
+    );
+  }, [toggleSelection]);
   return (
     <View style={[styles.container, backgroundStyle]}>
       { header }
       { gridView ? (
-        <ScrollView contentContainerStyle={[styles.gridView, { width }]}>
-          { map(data, (item) => renderCardItem({ item })) }
-        </ScrollView>
+        <CardGridComponent
+          items={data}
+          cards={cards}
+          componentId={componentId}
+          controlHeight={40}
+          controlForCard={renderGridControl}
+        />
       ) : (
         <FlatList
           data={data}
@@ -424,13 +441,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-  },
-  gridView: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
-    paddingLeft: s,
   },
   controlsContainer: {
     flexDirection: 'column',

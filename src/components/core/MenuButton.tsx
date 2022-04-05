@@ -9,15 +9,16 @@ interface Props {
   title: string;
   description?: string;
   onPress: () => void;
+  onLongPress?: () => void;
   disabled?: boolean;
   last?: boolean;
   numberOfLines?: number;
 }
 
-export default function MenuButton({ icon, title, description, onPress, disabled, numberOfLines, last }: Props) {
+export default function MenuButton({ icon, title, description, onPress, onLongPress, disabled, numberOfLines, last }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
-    <TouchableOpacity onPress={onPress} disabled={disabled}>
+    <TouchableOpacity onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
       <View style={[styles.row, space.paddingTopS, space.paddingBottomS, borderStyle, !last ? styles.border : undefined]}>
         { !!icon && (
           <View style={[styles.icon, space.marginRightXs]}>

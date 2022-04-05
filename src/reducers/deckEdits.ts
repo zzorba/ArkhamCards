@@ -15,6 +15,10 @@ import {
   getDeckId,
   SYNC_DECK,
   Slots,
+  DraftState,
+  SET_CURRENT_DRAFT,
+  CLEAR_CURRENT_DRAFT,
+  SET_CURRENT_DRAFT_SIZE,
 } from '@actions/types';
 
 interface DeckEditsState {
@@ -30,6 +34,9 @@ interface DeckEditsState {
   deck_uploads?: {
     [uuid: string]: string[] | undefined;
   };
+  draft?: {
+    [uuid: string]: DraftState | undefined;
+  };
 }
 
 const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
@@ -37,6 +44,7 @@ const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
   editting: {},
   checklist: {},
   deck_uploads: {},
+  draft: {},
 };
 
 function getCurrentSlots(edits: EditDeckState, type: 'slots' | 'ignoreDeckLimitSlots' | 'side'): Slots {
@@ -51,6 +59,42 @@ export default function(
   state = DEFAULT_DECK_EDITS_STATE,
   action: DeckEditsActions
 ): DeckEditsState {
+  if (action.type === SET_CURRENT_DRAFT) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          current: action.current,
+        },
+      },
+    };
+  }
+  if (action.type === CLEAR_CURRENT_DRAFT) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          current: undefined,
+        },
+      },
+    };
+  }
+  if (action.type === SET_CURRENT_DRAFT_SIZE) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          size: action.size,
+        },
+      },
+    };
+  }
   if (action.type === SYNC_DECK) {
     const deck_uploads = {
       ...(state.deck_uploads || {}),

@@ -481,6 +481,8 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.17.0):
     - React-Core
+  - RNCClipboard (1.8.5):
+    - React-Core
   - RNColorMatrixImageFilters (5.2.14):
     - React-Core
   - RNDeviceInfo (8.5.1):
@@ -642,6 +644,7 @@ DEPENDENCIES:
   - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - RNColorMatrixImageFilters (from `../node_modules/react-native-color-matrix-image-filters`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
@@ -801,6 +804,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   RNColorMatrixImageFilters:
     :path: "../node_modules/react-native-color-matrix-image-filters"
   RNDeviceInfo:
@@ -925,6 +930,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
   RNCAsyncStorage: 4efdcd2f7378421b29467c9de58f43552b60cf5b
+  RNCClipboard: cc054ad1e8a33d2a74cd13e565588b4ca928d8fd
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
   RNDeviceInfo: 8d4177859b062334835962799460528869a487fb
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7

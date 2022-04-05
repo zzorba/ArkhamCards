@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useCallback, useContext } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { find, map, range } from 'lodash';
 
@@ -36,7 +36,13 @@ function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
   );
 }
 
-export default function CardImage({ card, width, superCompact }: { card: Card, width: number; superCompact?: boolean }) {
+interface Props {
+  card: Card,
+  width: number;
+  superCompact?: boolean;
+}
+
+export default function CardImage({ card, width, superCompact }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const uri = card.imageUri();
   if (uri) {
@@ -128,6 +134,15 @@ export default function CardImage({ card, width, superCompact }: { card: Card, w
         noImage
       />
     </View>
+  );
+}
+
+export function TouchableCardImage({ onPress, ...props }: Props & { onPress: (card: Card) => void }) {
+  const handleOnPress = useCallback(() => onPress(props.card), [props.card, onPress]);
+  return (
+    <TouchableOpacity onPress={handleOnPress}>
+      <CardImage {...props} />
+    </TouchableOpacity>
   );
 }
 

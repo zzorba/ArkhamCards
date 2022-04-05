@@ -55,6 +55,7 @@
     "@react-hook/debounce": "4.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.17.0",
+    "@react-native-clipboard/clipboard": "^1.8.5",
     "@react-native-community/hooks": "2.8.1",
     "@react-native-community/netinfo": "8.2.0",
     "@react-native-firebase/app": "14.5.1",

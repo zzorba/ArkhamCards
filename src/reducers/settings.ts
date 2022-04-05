@@ -42,6 +42,7 @@ interface SettingsState {
   version?: number;
   customContent?: boolean;
   cardGrid?: boolean;
+  draftList?: boolean;
   dismissedOnboarding?: string[];
 }
 export const CURRENT_REDUX_VERSION = 1;
@@ -62,6 +63,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   customContent: false,
   dismissedOnboarding: [],
   cardGrid: false,
+  draftList: false,
 };
 
 type SettingAction =
@@ -189,6 +191,11 @@ export default function(
           return {
             ...state,
             cardGrid: action.value,
+          };
+        case 'draft_grid':
+          return {
+            ...state,
+            draftList: !action.value,
           };
       }
       return state;

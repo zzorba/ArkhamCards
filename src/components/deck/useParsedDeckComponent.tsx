@@ -303,6 +303,7 @@ export default function useParsedDeckComponent({
   const investigatorFront = parsedDeck?.investigatorFront;
 
   const slots = parsedDeck?.slots;
+  const investigatorBack = parsedDeck?.investigatorBack;
   const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
     if (!slots) {
       return [[], 0];
@@ -326,7 +327,7 @@ export default function useParsedDeckComponent({
     const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
     return [uniqueBondedCards, bondedCardsCount];
   }, [slots, cards, bondedCardsByName]);
-  const limitSlotCount = find(parsedDeck?.investigatorBack.deck_options, option => !!option.limit)?.limit || 0;
+  const limitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
   const [data, setData] = useState<DeckSection[]>([]);
   useEffect(() => {
     if (!parsedDeck?.investigatorBack || !visible) {

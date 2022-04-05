@@ -14,6 +14,7 @@ import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
 import ListToggleButton from '@components/deck/ListToggleButton';
+import Toast from '@components/Toast';
 
 interface ProviderProps<S> {
   store: S;
@@ -114,12 +115,23 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     ));
   }
 
+  function providerNoGestureHandler<Props>(
+    ScreenComponenet: React.ComponentType<Props>,
+  ) {
+    return () => (props: Props) => (
+      <Provider store={store}>
+        <ScreenComponenet {...props} />
+      </Provider>
+    );
+  }
+
   Navigation.registerComponent('Browse.Cards', providerWrapper(BottomTabNameCorrector(BROWSE_CARDS, () => t`Cards`, BrowseCardsView)), () => BrowseCardsView);
   Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
   Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
   Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
+  Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
   Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);

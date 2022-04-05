@@ -592,7 +592,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -762,6 +762,30 @@ export interface DeleteDeckAction {
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 export interface ClearDecksAction {
   type: typeof CLEAR_DECKS;
+}
+
+export interface DraftState {
+  size?: number;
+  current?: string[];
+}
+export const SET_CURRENT_DRAFT = 'SET_CURRENT_DRAFT';
+export interface SetCurrentDraftAction {
+  type: typeof SET_CURRENT_DRAFT;
+  id: DeckId;
+  current: string[];
+}
+
+export const CLEAR_CURRENT_DRAFT = 'CLEAR_CURRENT_DRAFT';
+export interface ClearCurrentDraftAction {
+  type: typeof CLEAR_CURRENT_DRAFT;
+  id: DeckId;
+}
+
+export const SET_CURRENT_DRAFT_SIZE = 'SET_CURRENT_DRAFT_SIZE';
+export interface SetCurrentDraftSizeAction {
+  type: typeof SET_CURRENT_DRAFT_SIZE;
+  id: DeckId;
+  size: number;
 }
 
 export interface EditDeckState {
@@ -1379,7 +1403,10 @@ export type DeckEditsActions =
   UpdateDeckEditAction |
   FinishDeckEditAction |
   UpdateDeckEditCountsAction |
-  SyncDeckAction;
+  SyncDeckAction |
+  SetCurrentDraftAction |
+  ClearCurrentDraftAction |
+  SetCurrentDraftSizeAction;
 
 export type CampaignActions =
   ArkhamDbLogoutAction |

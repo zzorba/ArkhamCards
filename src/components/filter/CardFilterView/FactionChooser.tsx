@@ -109,7 +109,7 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
       };
     });
     return [selectedIndexes, buttons];
-  }, [colors, multiClass, selection]);
+  }, [colors, multiClass, selection, fullFactions]);
 
   if (fullFactions.length <= 1) {
     return null;

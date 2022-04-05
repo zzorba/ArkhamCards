@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useSharedValue } from 'react-native-reanimated';
-import { filter, find, forEach } from 'lodash';
+import { find, flatMap, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckMeta, Slots } from '@actions/types';
@@ -10,7 +10,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import { combineQueries, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import randomDeck from '@lib/randomDeck';
-import { CardsMap } from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import specialCards from '@data/deck/specialCards';
 import { usePlayerCards, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
@@ -24,21 +24,34 @@ interface Props {
   setSlots: (slots: Slots | undefined) => void;
 }
 
-export default function useChaosDeckGenerator({ investigatorCode, meta, enabled, tabooSetId, setSlots, setError }: Props): [() => void, boolean, CardsMap] {
+interface DraftableCardsProps {
+  investigatorCode?: string;
+  meta?: DeckMeta;
+  tabooSetId: number;
+  disabled?: boolean;
+}
+
+export function useDraftableCards({ investigatorCode, meta, tabooSetId, disabled }: DraftableCardsProps): [
+  Card | undefined,
+  string[] | undefined,
+  CardsMap
+] {
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
-  const [investigatorBack] = useSingleCard(meta.alternate_back || investigatorCode, 'player', tabooSetId);
+  const [investigatorBack] = useSingleCard(meta?.alternate_back || investigatorCode, 'player', tabooSetId);
   const specialCodes = useMemo(() => {
+    if (!investigatorCode || !meta) {
+      return [];
+    }
     return [
       ...(specialCards[meta.alternate_front || investigatorCode]?.front?.codes || []),
       ...(specialCards[meta.alternate_back || investigatorCode]?.back?.codes || []),
     ];
-  }, [meta.alternate_back, meta.alternate_front, investigatorCode]);
+  }, [meta, investigatorCode]);
   const [investigatorSpecialCards] = usePlayerCards(specialCodes, tabooSetId);
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
-
   const query = useMemo(() => {
-    if (!investigatorBack || !enabled) {
+    if (!investigatorBack || disabled) {
       return undefined;
     }
     return combineQueries(
@@ -51,16 +64,16 @@ export default function useChaosDeckGenerator({ investigatorCode, meta, enabled,
       ],
       'and'
     );
-  }, [investigatorBack, meta, enabled]);
+  }, [investigatorBack, meta, disabled]);
   const [playerCards, loading] = useCardsFromQuery({ query, tabooSetOverride: tabooSetId, guaranteeResults: true });
-  const filteredPlayerCards = useMemo(() => {
-    return filter(playerCards, c => {
+  const filteredPlayerCodes = useMemo(() => {
+    return flatMap(playerCards, c => {
       return !c.has_restrictions && (
         ignore_collection ||
         c.pack_code === 'core' ||
         in_collection[c.pack_code] ||
         !!find(c.reprint_pack_codes, pc => in_collection[pc])
-      );
+      ) ? c.code : [];
     });
   }, [playerCards, ignore_collection, in_collection]);
   const cards = useMemo(() => {
@@ -78,15 +91,25 @@ export default function useChaosDeckGenerator({ investigatorCode, meta, enabled,
     });
     return r;
   }, [playerCards, investigatorSpecialCards, investigator, investigatorBack]);
+
+  return [investigatorBack, loading ? undefined : filteredPlayerCodes, cards];
+}
+
+export default function useChaosDeckGenerator({ investigatorCode, meta, enabled, tabooSetId, setSlots, setError }: Props): [() => void, boolean, CardsMap] {
+  const [investigatorBack, possibleCodes, cards] = useDraftableCards({ investigatorCode, meta, tabooSetId: tabooSetId || 0, disabled: !enabled });
+  const in_collection = useSelector(getPacksInCollection);
+  const ignore_collection = useSettingValue('ignore_collection');
+
   const progress = useSharedValue(0);
   const onPress = useCallback(() => {
-    if (investigatorBack && filteredPlayerCards.length) {
+    if (investigatorBack && possibleCodes?.length) {
       setSlots(undefined);
       const [slots, success] = randomDeck(
         investigatorCode,
         investigatorBack,
         meta,
-        filteredPlayerCards,
+        possibleCodes,
+        cards,
         progress,
         in_collection,
         ignore_collection
@@ -111,10 +134,10 @@ export default function useChaosDeckGenerator({ investigatorCode, meta, enabled,
     } else {
       setError('Got no investigator or no cards, giving up');
     }
-  }, [filteredPlayerCards, progress, investigatorBack,
+  }, [possibleCodes, cards, progress, investigatorBack,
     in_collection, ignore_collection,
     setError, setSlots,
     meta, tabooSetId, investigatorCode]);
 
-  return [onPress, loading, cards];
+  return [onPress, !possibleCodes, cards];
 }

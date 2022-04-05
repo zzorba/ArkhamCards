@@ -15,6 +15,7 @@ import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import ActionButton from 'react-native-action-button';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -58,6 +59,7 @@ import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '../DeckDraftView';
+import Toast from '@components/Toast';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -855,6 +857,37 @@ function DeckDetailView({
       showDrawSimulator(componentId, parsedDeck, colors);
     }
   }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
+  const onCopyDeckId = useCallback(() => {
+    if (!deckId.local) {
+      setMenuOpen(false);
+      Clipboard.setString(`${deckId.id}`);
+      Navigation.showOverlay({
+        component: {
+          name: 'Toast',
+          passProps: {
+            message: t`Deck id copied!`,
+          },
+          options: Toast.options,
+        },
+      });
+    }
+  }, [deckId, setMenuOpen]);
+
+  const onCopyUrl = useCallback(() => {
+    if (!deckId.local) {
+      setMenuOpen(false);
+      Clipboard.setString(`${arkhamDbDomain}/deck/view/${deckId.id}`);
+      Navigation.showOverlay({
+        component: {
+          name: 'Toast',
+          passProps: {
+            message: t`Link to deck copied!`,
+          },
+          options: Toast.options,
+        },
+      });
+    }
+  }, [deckId, arkhamDbDomain, setMenuOpen]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -874,6 +907,7 @@ function DeckDetailView({
             <MenuButton
               icon="name"
               onPress={showEditNameDialog}
+              onLongPress={!deck.local ? onCopyDeckId : undefined}
               numberOfLines={2}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
@@ -999,6 +1033,7 @@ function DeckDetailView({
             title={t`View on ArkhamDB`}
             description={t`Open in browser`}
             onPress={viewDeck}
+            onLongPress={onCopyUrl}
             last={!editable}
           />
         ) }
@@ -1015,7 +1050,7 @@ function DeckDetailView({
   }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
-    onEditSpecialPressed, onChecklistPressed, showDraftCards,
+    onEditSpecialPressed, onChecklistPressed, showDraftCards, onCopyDeckId, onCopyUrl,
   ]);
 
   const fabIcon = useCallback(() => {
