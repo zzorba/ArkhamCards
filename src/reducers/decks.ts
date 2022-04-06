@@ -28,6 +28,10 @@ import {
   REMOVE_UPLOAD_DECK,
   UploadedDeck,
   GroupedUploadedDecks,
+  DraftState,
+  SET_CURRENT_DRAFT,
+  CLEAR_CURRENT_DRAFT,
+  SET_CURRENT_DRAFT_SIZE,
 } from '@actions/types';
 import deepEqual from 'deep-equal';
 
@@ -42,6 +46,9 @@ interface DecksState {
   refreshing: boolean;
   error: string | null;
   lastModified?: string;
+  draft?: {
+    [uuid: string]: DraftState | undefined;
+  };
 }
 
 const DEFAULT_DECK_STATE: DecksState = {
@@ -52,6 +59,7 @@ const DEFAULT_DECK_STATE: DecksState = {
   refreshing: false,
   error: null,
   lastModified: undefined,
+  draft: {},
 };
 
 export function updateDeck(
@@ -73,6 +81,42 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === SET_CURRENT_DRAFT) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          current: action.current,
+        },
+      },
+    };
+  }
+  if (action.type === CLEAR_CURRENT_DRAFT) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          current: undefined,
+        },
+      },
+    };
+  }
+  if (action.type === SET_CURRENT_DRAFT_SIZE) {
+    return {
+      ...state,
+      draft: {
+        ...(state.draft || {}),
+        [action.id.uuid]: {
+          ...(state.draft?.[action.id.uuid] || {}),
+          size: action.size,
+        },
+      },
+    };
+  }
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {

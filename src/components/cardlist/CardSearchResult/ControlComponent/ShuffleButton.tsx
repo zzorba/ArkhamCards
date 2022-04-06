@@ -31,13 +31,13 @@ export default function ShuffleButton({ onPress }: Props) {
   );
 }
 
-export function DraftButton({ card, onPress }: { card: Card; onPress: (card: Card) => void }) {
+export function DraftButton({ card, onPress, wide }: { card: Card; onPress: (card: Card) => void; wide?: boolean }) {
   const { colors } = useContext(StyleContext);
   const handleOnPress = useCallback(() => onPress(card), [onPress, card]);
   const debouncedOnPress = usePressCallback(handleOnPress, 500);
   return (
     <View style={[styles.countWrapper, space.paddingLeftXs, space.paddingRightS]}>
-      <RoundButton onPress={debouncedOnPress} accessibilityLabel={t`Take`}>
+      <RoundButton wide={wide} onPress={debouncedOnPress || handleOnPress} accessibilityLabel={t`Take`}>
         <View style={styles.icon}>
           <AppIcon
             name="plus-button"

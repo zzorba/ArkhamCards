@@ -1390,7 +1390,10 @@ export type DecksActions =
   ReduxMigrationAction |
   UploadDeckAction |
   RemoveUploadDeckAction |
-  SetUploadedDecksAction;
+  SetUploadedDecksAction |
+  SetCurrentDraftAction |
+  ClearCurrentDraftAction |
+  SetCurrentDraftSizeAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |
@@ -1403,10 +1406,7 @@ export type DeckEditsActions =
   UpdateDeckEditAction |
   FinishDeckEditAction |
   UpdateDeckEditCountsAction |
-  SyncDeckAction |
-  SetCurrentDraftAction |
-  ClearCurrentDraftAction |
-  SetCurrentDraftSizeAction;
+  SyncDeckAction;
 
 export type CampaignActions =
   ArkhamDbLogoutAction |

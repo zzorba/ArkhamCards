@@ -13,6 +13,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import SlotIcon from './CardDetailView/TwoSidedCardComponent/SlotIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
+import StylizedCard from './StylizedCard';
 
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -75,6 +76,7 @@ export default function CardImage({ card, width, superCompact }: Props) {
         </View>
       );
     }
+    return <StylizedCard width={width} card={card} />;
     return (
       <View style={[
         styles.simpleCard,

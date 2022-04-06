@@ -71,7 +71,7 @@ export interface DeckDetailProps {
   fromCampaign?: boolean;
 }
 
-const SHOW_DRAFT_CARDS = false;
+const SHOW_DRAFT_CARDS = true;
 
 type Props = NavigationProps &
   DeckDetailProps &

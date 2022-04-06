@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Animated, { ComplexAnimationBuilder, SharedValue, useAnimatedReaction, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { map } from 'lodash';
 
 import Card, { CardsMap } from '@data/types/Card';
@@ -9,19 +10,101 @@ import { CARD_RATIO } from '@styles/sizes';
 import { showCard } from '@components/nav/helper';
 import CardImage, { TouchableCardImage } from '@components/card/CardImage';
 
+export interface DraftHistory {
+  cycle: number;
+  code: string;
+}
+
 export interface GridItem {
   key: string;
   code: string;
+  enterAnimation?: ComplexAnimationBuilder;
+  exitAnimation?: ComplexAnimationBuilder;
+  fadeOut?: boolean;
+  draftCycle?: number;
 }
 interface Props<ItemT extends GridItem> {
   componentId?: string;
   items: ItemT[];
   cards: CardsMap | undefined;
   controlHeight: number;
-  controlForCard: (item: ItemT, card: Card) => React.ReactNode;
+  controlPosition?: 'above' | 'below';
+  controlForCard: (item: ItemT, card: Card, cardWidth: number) => React.ReactNode;
   maxCardsPerRow?: number
+  draftHistory?: SharedValue<DraftHistory>;
 }
 
+function CardGridItem<ItemT extends GridItem>({
+  item,
+  card,
+  cardWidth,
+  control,
+  controlHeight,
+  controlPosition,
+  onCardPress,
+  draftHistory,
+}: {
+  item: ItemT;
+  card: Card;
+  cardWidth: number;
+  control: React.ReactNode;
+  controlHeight: number;
+  controlPosition: 'above' | 'below';
+  onCardPress?: (card: Card) => void;
+  draftHistory?: SharedValue<DraftHistory>;
+}) {
+  const opacity = useSharedValue(1);
+  useAnimatedReaction(() => {
+    // console.log(`${JSON.stringify(item)} has history ${JSON.stringify(draftHistory?.value)}`);
+    if (!item.draftCycle || !draftHistory || draftHistory.value.cycle < item.draftCycle) {
+      return false;
+    }
+    return draftHistory.value.code !== item.code;
+  }, (result, previous) => {
+    // console.log(`${item.code} - ${previous} -> ${result}`);
+    if (result !== previous) {
+      opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
+    }
+  }, [item.draftCycle, item.code, draftHistory]);
+  const style = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    }
+  }, [opacity]);
+  return (
+    <Animated.View
+      entering={item.enterAnimation}
+      exiting={item.exitAnimation}
+      style={[{
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: cardWidth + s,
+        height: CARD_RATIO * cardWidth + m + controlHeight,
+        paddingRight: s,
+        paddingBottom: m,
+      }, style]}
+    >
+      { controlPosition === 'above' && control }
+      <View style={space.paddingVerticalXs}>
+        { onCardPress ? (
+          <TouchableCardImage
+            onPress={onCardPress}
+            card={card}
+            width={cardWidth}
+            superCompact
+          />
+        ) : (
+          <CardImage
+            card={card}
+            width={cardWidth}
+            superCompact
+          />
+        ) }
+      </View>
+      { controlPosition === 'below' && control }
+    </Animated.View>
+  );
+}
 
 export default function CardGridComponent<ItemT extends GridItem>({
   componentId,
@@ -29,9 +112,11 @@ export default function CardGridComponent<ItemT extends GridItem>({
   cards,
   controlForCard,
   controlHeight,
+  controlPosition = 'above',
   maxCardsPerRow = 10,
+  draftHistory,
 }: Props<ItemT>) {
-  const { colors, width } = useContext(StyleContext);
+  const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const cardWidth = useMemo(() => {
     let cardsPerRow = maxCardsPerRow;
     let cardWidth = (width - s) / cardsPerRow - s;
@@ -44,6 +129,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
     }
     return cardWidth;
   }, [width, maxCardsPerRow]);
+
   const onCardPress = useCallback((card: Card) => {
     componentId && showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
@@ -53,38 +139,23 @@ export default function CardGridComponent<ItemT extends GridItem>({
     if (!card) {
       return null;
     }
+    const control = controlForCard(item, card, cardWidth);
     return (
-      <View key={item.key} style={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: cardWidth + s,
-        height: CARD_RATIO * cardWidth + m + controlHeight,
-        paddingRight: s,
-        paddingBottom: m,
-      }}>
-        { controlForCard(item, card) }
-        <View style={space.paddingTopXs}>
-          { componentId ? (
-            <TouchableCardImage
-              onPress={onCardPress}
-              card={card}
-              width={cardWidth}
-              superCompact
-            />
-          ) : (
-            <CardImage
-              card={card}
-              width={cardWidth}
-              superCompact
-            />
-          ) }
-        </View>
-      </View>
+      <CardGridItem
+        key={item.key}
+        card={card}
+        cardWidth={cardWidth}
+        draftHistory={draftHistory}
+        item={item}
+        control={control}
+        controlHeight={controlHeight}
+        controlPosition={controlPosition}
+        onCardPress={componentId ? onCardPress : undefined}
+      />
     );
-  }, [cards, cardWidth, controlForCard, controlHeight, componentId, onCardPress]);
-
+  }, [cards, cardWidth, controlForCard, controlPosition, draftHistory, controlHeight, componentId, onCardPress]);
   return (
-    <ScrollView contentContainerStyle={[styles.gridView, { width }, space.paddingTopS]}>
+    <ScrollView style={[backgroundStyle, { flex: 1 }]} contentContainerStyle={[styles.gridView, { width, minHeight: height * 0.75 }, space.paddingTopS]}>
       { map(items, (item) => renderCardItem(item)) }
     </ScrollView>
   );

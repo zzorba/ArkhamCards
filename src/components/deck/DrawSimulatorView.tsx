@@ -25,6 +25,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardImage from '@components/card/CardImage';
 import { CARD_RATIO } from '@styles/sizes';
 import CardGridComponent from '@components/cardlist/CardGridComponent';
+import { FadeOut, SlideInDown, SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -408,6 +409,8 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
       key: cardKey,
       code: parts[0],
       selected: selectedSet.has(cardKey),
+      enterAnimation: SlideInLeft.duration(500),
+      exitAnimation: SlideOutRight.duration(250),
     };
   }), [drawState.drawnCards, selectedSet]);
 
