@@ -64,6 +64,15 @@ export const SCENARIO_CODE_FIXER: {
   the_devourer_below: 'tentacles',
   the_untamed_wilds: 'wilds',
   the_doom_of_eztli: 'eztli',
+  heart_of_the_elders_part_1: 'heart_of_the_elders',
+  heart_of_the_elders_part_2: 'heart_of_the_elders',
+  ice_and_death_part_1: 'ice_and_death',
+  ice_and_death_part_2: 'ice_and_death',
+  ice_and_death_part_3: 'ice_and_death',
+  the_heart_of_madness_part_1: 'the_heart_of_madness',
+  the_heart_of_madness_part_2: 'the_heart_of_madness',
+  fatal_mirage_2: 'fatal_mirage',
+  fatal_mirage_3: 'fatal_mirage',
 };
 
 function parseSpecialTokenValuesText(
