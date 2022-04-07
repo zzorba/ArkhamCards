@@ -1,13 +1,14 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { FlatList, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { map } from 'lodash';
-import Animated, { SlideInDown, SlideInLeft, SlideOutDown, SlideOutRight, useSharedValue } from 'react-native-reanimated';
+import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import ActionButton from 'react-native-action-button';
 
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, DeckId, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE } from '@actions/types';
+import { CampaignId, DeckId, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
 import { useCampaignDeck } from '@data/hooks';
 import { useParsedDeck } from './hooks';
 import StyleContext from '@styles/StyleContext';
@@ -16,11 +17,11 @@ import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-nav
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
 import { useDraftableCards } from './useChaosDeckGenerator';
-import { AppState, getPacksInCollection } from '@reducers';
-import { useCounter, usePressCallback, useSettingValue } from '@components/core/hooks';
+import { AppState, getDraftPacks } from '@reducers';
+import { useCounter, useEffectUpdate, usePressCallback, useSettingValue } from '@components/core/hooks';
 import { getDraftCards } from '@lib/randomDeck';
 import DeckButton from './controls/DeckButton';
-import space from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import CardGridComponent, { DraftHistory, GridItem } from '@components/cardlist/CardGridComponent';
 import { incDeckSlot } from './actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -29,7 +30,10 @@ import { showCard } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
-import { ca } from 'date-fns/locale';
+import { parseDeck } from '@lib/parseDeck';
+import { useAlertDialog } from './dialogs';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { CollectionEditProps } from '@components/settings/CollectionEditView';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -88,31 +92,126 @@ export function navigationOptions(
   };
 }
 
+
+function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => void; loading: boolean; secondaryAction?: boolean }) {
+  const { colors, shadow } = useContext(StyleContext);
+  const localPress = useCallback(() => {
+    if (!loading) {
+      onPress();
+    }
+  }, [loading, onPress]);
+  const renderIcon = useCallback(() => {
+    return loading ? <ActivityIndicator size="small" color={colors.L30} animating /> : (
+      <AppIcon name="draft" size={24} color={colors.L30} />
+    );
+  }, [loading, colors])
+  return (
+    <ActionButton
+      buttonColor={secondaryAction ? colors.D20 : colors.warn}
+      renderIcon={renderIcon}
+      onPress={localPress}
+      offsetX={s + xs}
+      offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+      shadowStyle={shadow.large}
+      fixNativeFeedbackRadius
+    />
+  );
+}
+
+function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory }: {
+  item: GridItem;
+  card: Card;
+  draftHistory: SharedValue<DraftHistory>;
+  onCardPress: (card: Card) => void;
+  onDraft: (card: Card, item: GridItem) => void;
+}) {
+  const { borderStyle } = useContext(StyleContext);
+  const actualOnDraft = useCallback((card: Card) => {
+    onDraft(card, item);
+  }, [onDraft, item]);
+  const opacity = useSharedValue(1);
+  useAnimatedReaction(() => {
+    // console.log(`${JSON.stringify(item)} has history ${JSON.stringify(draftHistory?.value)}`);
+    if (!item.draftCycle || draftHistory.value.cycle < item.draftCycle) {
+      return false;
+    }
+    return !draftHistory.value.code || draftHistory.value.code !== item.code;
+  }, (result, previous) => {
+    // console.log(`${item.code} - ${previous} -> ${result}`);
+    if (result !== previous) {
+      opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
+    }
+  }, [item.draftCycle, item.code, draftHistory]);
+  const style = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    }
+  }, [opacity]);
+  return (
+    <Animated.View key={item.key} style={[
+      borderStyle,
+      { borderTopWidth: StyleSheet.hairlineWidth },
+      style,
+    ]} entering={item.enterAnimation} exiting={item.exitAnimation}>
+      <CardSearchResult
+        id={item.key}
+        card={card}
+        onPress={onCardPress}
+        control={{
+          type: 'draft',
+          onDraft: actualOnDraft,
+        }}
+      />
+    </Animated.View>
+  );
+}
+
 export default function DeckDraftView({ componentId, id, campaignId }: DeckDraftProps & NavigationProps) {
   const deck = useCampaignDeck(id, campaignId);
-  const parsedDeckObj = useParsedDeck(id, componentId);
+  const {
+    deckEdits,
+    tabooSetId,
+    parsedDeck,
+    visible,
+  } = useParsedDeck(id, componentId);
+  const meta = deckEdits?.meta;
+  const slots = deckEdits?.slots;
+  const problem = parsedDeck?.problem;
   useEffect(() => {
     Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
   }, [componentId]);
-
+  const dispatch = useDispatch();
+  const localSlots = useRef<Slots>({ ...(deckEdits?.slots || {}) });
+  useEffect(() => {
+    if (slots) {
+      localSlots.current = { ...slots };
+    }
+  }, [slots]);
   const initialDraftSize = useSelector((state: AppState) => state.decks.draft?.[id.uuid]?.size || 3);
   const initialDraftCards = useSelector((state: AppState) => state.decks.draft?.[id.uuid]?.current);
   const [draftCards, setLocalDraftCards] = useState<undefined | string[]>(initialDraftCards);
   const draftCycle = useRef<number>(1);
 
-  const dispatch = useDispatch();
   const updateDraftSize = useCallback((size: number) => dispatch({ type: SET_CURRENT_DRAFT_SIZE, id, size }), [id, dispatch]);
 
-  const setDraftCards = useCallback((current: string[]) => {
-    draftCycle.current = draftCycle.current + 1;
+  const setDraftCards = useCallback((current: string[] | undefined) => {
+    draftCycle.current = current ? draftCycle.current + 1 : 1;
     setLocalDraftCards(current);
     dispatch({ type: SET_CURRENT_DRAFT, id, current });
   }, [id, dispatch, setLocalDraftCards, draftCycle]);
 
   const [handSize, incHandSize, decHandSize] = useCounter(initialDraftSize, { min: 2, max: 10, hapticFeedback: true }, updateDraftSize);
-  const meta = parsedDeckObj.deckEdits?.meta;
-  const tabooSetId = parsedDeckObj.tabooSetId;
-  const [investigatorBack, allPossibleCodes, cards] = useDraftableCards({ investigatorCode: deck?.investigator, meta, tabooSetId });
+  const [in_collection, ignore_collection] = useSelector(getDraftPacks);
+  const [editingPack, setEditingPacks] = useState(false);
+
+  const [investigatorBack, allPossibleCodes, cards] = useDraftableCards({
+    investigatorCode: deck?.investigator,
+    meta,
+    tabooSetId,
+    in_collection,
+    ignore_collection,
+    disabled: !visible && editingPack,
+  });
   const possibleCodes = useRef<string[]>([]);
   useEffect(() => {
     if (allPossibleCodes) {
@@ -120,17 +219,28 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     }
   }, [allPossibleCodes]);
 
-  const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSettingValue('ignore_collection');
-  const deckEdits = parsedDeckObj.deckEdits;
+  const [alertDialog, showAlert] = useAlertDialog();
   const onDraftNewCards = useCallback(() => {
-    if (!deckEdits || !investigatorBack) {
+    if (!meta || !investigatorBack) {
+      return;
+    }
+    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards);
+    if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
+      setDraftCards([]);
+      showAlert(
+        t`Invalid deck`,
+        t`This deck is currently invalid in some way. Please address the issues before continuing the draft.`
+      );
+      return;
+    }
+    if (currentParsedDeck.problem?.reason !== TOO_FEW_CARDS) {
+      Navigation.pop(componentId);
       return;
     }
     const [draftOptions, newPossibleCodes] = getDraftCards(
       investigatorBack,
-      deckEdits.meta,
-      deckEdits.slots,
+      meta,
+      localSlots.current,
       handSize,
       possibleCodes.current,
       cards,
@@ -139,9 +249,9 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [investigatorBack, deckEdits, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, showAlert, setDraftCards, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
 
-  const { backgroundStyle, colors, typography, shadow } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
   const draftHistory = useSharedValue<DraftHistory>({ cycle: -1, code: '000' });
   const draftItems = useMemo(() => {
@@ -149,12 +259,26 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       return {
         key: `${draftCycle.current}_${code}`,
         code: code,
-        enterAnimation: SlideInLeft.duration(500).delay(500),
+        enterAnimation: draftCycle.current > 1 ? SlideInLeft.duration(500).delay(500) : undefined,
         exitAnimation: SlideOutDown.duration(500),
         draftCycle: draftCycle.current,
       };
     });
   }, [draftCards]);
+  const onRedrawDraftCards = useCallback(() => {
+    draftHistory.value = {
+      cycle: draftCycle.current,
+    };
+    setDraftCards([]);
+  }, [setDraftCards, draftHistory]);
+
+  useEffectUpdate(() => {
+    if (draftCards) {
+      onRedrawDraftCards();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [in_collection, ignore_collection])
+
   const onDraft = useCallback((card: Card, item?: GridItem) => {
     ReactNativeHapticFeedback.trigger('impactMedium');
     if (item && item.draftCycle !== undefined) {
@@ -163,11 +287,15 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
         code: card.code,
       };
     }
+    localSlots.current[card.code] = Math.min(
+      (localSlots.current[card.code] || 0) + 1,
+      card.deck_limit || 0
+    );
     setTimeout(() => {
       onDraftNewCards();
-    }, 500);
+    }, 250);
     dispatch(incDeckSlot(id, card.code, card.deck_limit || 0, false));
-  }, [dispatch, id, onDraftNewCards]);
+  }, [dispatch, draftHistory, id, onDraftNewCards]);
 
   const gridView = useSettingValue('draft_grid');
 
@@ -184,25 +312,43 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       return null;
     }
     return (
-      <Animated.View key={item.key} entering={SlideInLeft} exiting={SlideOutRight}>
-        <CardSearchResult
-          id={item.key}
-          card={card}
-          onPress={onCardPress}
-          control={{
-            type: 'draft',
-            onDraft,
-          }}
-        />
-      </Animated.View>
+      <FadingCardSearchResult
+        item={item}
+        card={card}
+        onCardPress={onCardPress}
+        onDraft={onDraft}
+        draftHistory={draftHistory}
+      />
     );
-  }, [cards, onDraft, onCardPress]);
+  }, [cards, onDraft, onCardPress, draftHistory]);
+  const showPackChooser = useCallback(() => {
+    Navigation.push<CollectionEditProps>(componentId, {
+      component: {
+        name: 'My.Collection',
+        passProps: {
+          draftMode: true,
+        },
+      },
+    });
+    setTimeout(() => {
+      setEditingPacks(true);
+    }, 50);
+
+  }, [componentId]);
+
+  useEffect(() => {
+    if (visible && editingPack) {
+      setEditingPacks(false);
+    }
+  }, [visible, editingPack, setEditingPacks]);
 
   return (
     <View style={[backgroundStyle, { flex: 1 }]}>
       <View style={[space.paddingS, { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: colors.L20 }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={[typography.large, typography.dark, space.paddingRightM]}>{t`Hand size:`}</Text>
+          <Text style={[typography.large, typography.dark, space.paddingRightM]}>
+            {t`Hand size:`}
+          </Text>
           <PlusMinusButtons
             dialogStyle
             onIncrement={incHandSize}
@@ -210,17 +356,34 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
             count={handSize}
           />
         </View>
-        <DeckButton
-          shrink
-          loading={!allPossibleCodes}
-          icon="draft"
-          color={draftCards && draftCards.length === handSize ? 'red_outline' : 'red'}
-          title={draftCards ? t`Redraw` : t`Begin`}
-          onPress={onDraftNewCards}
-        />
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <DeckButton onPress={showPackChooser} title={t`Choose packs`} icon="deck" shrink />
+        </View>
       </View>
       { !allPossibleCodes ? <LoadingSpinner large /> : (
         <>
+          { (!draftCards || !draftCards.length) && (
+            <View style={[{ flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }]}>
+              <View style={space.paddingS}>
+                <Text style={typography.text}>
+                  { t`This tool lets you build a deck progressively, choosing one card at a time from a limited set of cards.`}
+                  {'\n\n'}
+                  { t`Each 'hand' of cards is taken at random from all possible cards that are allowed given the current investigator + deckbuilding option choices you have made.`}
+                  {'\n\n'}
+                  { t`The drafting process will continue until your deck is full, but you can stop or change the settings at any time` }
+                </Text>
+              </View>
+              <View style={[space.paddingSideS, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }]}>
+                <DeckButton
+                  color="red"
+                  title={t`Begin draft`}
+                  onPress={onDraftNewCards}
+                  icon="draft"
+                  shrink
+                />
+              </View>
+            </View>
+          ) }
           { gridView ? (
             <CardGridComponent
               controlForCard={controlForCard}
@@ -243,7 +406,14 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
         deckId={id}
         componentId={componentId}
         onPress={backPressed}
+        control="fab"
       />
+      <FabDraftButton
+        loading={!allPossibleCodes}
+        secondaryAction={!!(draftCards && draftCards.length === handSize)}
+        onPress={draftCards ? onRedrawDraftCards : onDraftNewCards}
+      />
+      { alertDialog }
     </View>
   );
 }

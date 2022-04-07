@@ -11,7 +11,7 @@ import {
 } from 'lodash';
 import { t } from 'ttag';
 
-import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '@actions/types';
+import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
 import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -147,7 +147,7 @@ export default class DeckValidation {
           !find(cards, theCard => theCard.code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
         )) {
-          return 'investigator';
+          return INVESTIGATOR_PROBLEM;
         }
       }
     }
@@ -158,13 +158,13 @@ export default class DeckValidation {
     if(findKey(
         copiesAndDeckLimit,
         value => value.nb_copies > value.deck_limit) != null) {
-      return 'too_many_copies';
+      return TOO_MANY_COPIES;
     }
 
     // no invalid card
     const invalidCards = this.getInvalidCards(cards);
     if (invalidCards.length > 0) {
-      return 'invalid_cards';
+      return INVALID_CARDS;
     }
 
     const deck_options = this.deckOptions();
@@ -179,7 +179,7 @@ export default class DeckValidation {
           if (error) {
             this.problem_list.push(error);
           }
-          return 'investigator';
+          return INVESTIGATOR_PROBLEM;
         }
       }
       const atleast = option.atleast;
@@ -196,7 +196,7 @@ export default class DeckValidation {
             if (error){
               this.problem_list.push(error);
             }
-            return 'investigator';
+            return INVESTIGATOR_PROBLEM;
           }
         } else if (atleast.types && atleast.min) {
           var type_count = 0;
@@ -210,7 +210,7 @@ export default class DeckValidation {
             if (error){
               this.problem_list.push(error);
             }
-            return 'investigator';
+            return INVESTIGATOR_PROBLEM;
           }
         }
       }
@@ -221,14 +221,14 @@ export default class DeckValidation {
     if (drawDeckSize < size) {
       const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Not enough cards (${drawDeckSize} / ${size}).`);
-      return 'too_few_cards';
+      return TOO_FEW_CARDS;
     }
 
     // at least 60 others cards
     if (drawDeckSize > size) {
       const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Too many cards (${drawDeckSize} / ${size}).`);
-      return 'too_many_cards';
+      return TOO_MANY_CARDS;
     }
     return null;
   }

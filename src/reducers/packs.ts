@@ -10,6 +10,7 @@ import {
   SET_PACK_SPOILER,
   PacksActions,
   Pack,
+  SET_PACK_DRAFT,
 } from '@actions/types';
 
 interface PacksState {
@@ -20,6 +21,9 @@ interface PacksState {
     [code: string]: boolean;
   };
   show_spoilers: {
+    [code: string]: boolean;
+  };
+  draft?: {
     [code: string]: boolean;
   };
   loading: boolean;
@@ -81,7 +85,9 @@ export default function(
         dateUpdatePrompt: action.timestamp.getTime() / 1000,
         lastModified: action.lastModified,
       });
-  } else if (action.type === SET_IN_COLLECTION) {
+  }
+
+  if (action.type === SET_IN_COLLECTION) {
     const new_collection = Object.assign({}, state.in_collection);
     if (action.code) {
       if (action.value) {
@@ -110,7 +116,37 @@ export default function(
         in_collection: new_collection,
       },
     );
-  } else if (action.type === SET_PACK_SPOILER) {
+  }
+
+  if (action.type === SET_PACK_DRAFT) {
+    const new_draft = Object.assign({}, state.draft || {});
+    if (action.code) {
+      if (action.value) {
+        new_draft[action.code] = true;
+      } else {
+        delete new_draft[action.code];
+      }
+    } else if (action.cycle_code) {
+      const cyclePack = find(state.all, pack => pack.code === action.cycle_code);
+      if (cyclePack) {
+        forEach(state.all, pack => {
+          if (pack.cycle_position === cyclePack.cycle_position) {
+            if (action.value) {
+              new_draft[pack.code] = true;
+            } else {
+              delete new_draft[pack.code];
+            }
+          }
+        });
+      }
+    }
+    return {
+      ...state,
+      draft: new_draft,
+    };
+  }
+
+  if (action.type === SET_PACK_SPOILER) {
     const new_spoilers = Object.assign({}, state.show_spoilers);
     if (action.code) {
       if (action.value) {

@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { c, t } from 'ttag';
+import { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
@@ -25,7 +26,6 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardImage from '@components/card/CardImage';
 import { CARD_RATIO } from '@styles/sizes';
 import CardGridComponent from '@components/cardlist/CardGridComponent';
-import { FadeOut, SlideInDown, SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 export interface DrawSimulatorProps {
   slots: Slots;

@@ -2190,19 +2190,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -5317,8 +5317,7 @@ msgstr "- 앱 설정에서 보유 게임 목록을 조정하세요."
 msgid ""
 "- Remove the parallel investigator choice, which might require a larger "
 "card collection."
-msgstr ""
-"- 더 많은 보유 게임 목록을 필요로 하는 해당 평행 조사자 선택을 제거하세요."
+msgstr "- 더 많은 보유 게임 목록을 필요로 하는 해당 평행 조사자 선택을 제거하세요."
 
 msgid "- Remove the taboo list, which removes some card options."
 msgstr "- 일부 카드 선택지를 제거하는 금기 목록을 제거하세요."
@@ -5355,8 +5354,105 @@ msgstr "특별한 덱"
 msgid "Re-generate deck"
 msgstr "덱 다시 생성하기"
 
-msgid "Multi-class"
-msgstr "다중 역할군"
+msgid "Draft from card collection"
+msgstr ""
+
+msgid "Disable to choose which packs to draft from"
+msgstr ""
+
+msgid "Draft using your card collection"
+msgstr ""
+
+msgid "Draft Pool"
+msgstr ""
+
+msgid "Grid"
+msgstr ""
+
+msgid "Invalid deck"
+msgstr ""
+
+msgid ""
+"This deck is currently invalid in some way. Please address the issues "
+"before continuing the draft."
+msgstr ""
+
+msgid "Hand size:"
+msgstr ""
+
+msgid "Choose packs"
+msgstr ""
+
+msgid ""
+"This tool lets you build a deck progressively, choosing one card at a time "
+"from a limited set of cards."
+msgstr ""
+
+msgid ""
+"Each 'hand' of cards is taken at random from all possible cards that are "
+"allowed given the current investigator + deckbuilding option choices you "
+"have made."
+msgstr ""
+
+msgid ""
+"The drafting process will continue until your deck is full, but you can "
+"stop or change the settings at any time"
+msgstr ""
+
+msgid "Begin draft"
+msgstr ""
+
+msgid "Draft cards"
+msgstr ""
+
+msgid "Unsupported investigator"
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes or Joe Diamond."
+msgstr ""
+
+msgid "Please correct invalid deck issues"
+msgstr ""
+
+msgid ""
+"This deck currently contains one or more forbidden cards.\n"
+"\n"
+"Please address these outstanding deck issues before drafting cards."
+msgstr ""
+
+msgid "Deck is full"
+msgstr ""
+
+msgid ""
+"This deck is full.\n"
+"\n"
+"Remove some cards or create a new deck if you would like to draft.\n"
+"\n"
+"At the moment it is only possible to draft level 0 cards using the app."
+msgstr ""
+
+msgid "Draft Cards"
+msgstr ""
+
+msgid "Deck id copied!"
+msgstr ""
+
+msgid "Link to deck copied!"
+msgstr ""
+
+msgid "Build a deck randomly"
+msgstr ""
+
+msgid "A single core set is always included"
+msgstr ""
+
+msgid "Campaigns Cycles"
+msgstr ""
+
+msgid "Take"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -5612,25 +5708,39 @@ msgstr "최후통첩: 혼돈"
 
 msgctxt "releaseNotes"
 msgid ""
-"The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
+"The app now supports building random decks following the steps set out by "
+"the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new "
+"option lets you choose a 'special deck', which can be used to either create "
+"the FFG suggested starter deck or a fully randomly generated one."
 msgstr ""
-"앱은 이제 '최후통첩: 혼돈' 선택 규칙에 따른 무작위 덱 생성을 제공합니다. 새로운 덱을 구성할 때, '특별한 덱' 버튼을 누르면 Fantasy Flight Games에서 제공하는 초심자용 견본 덱이나 보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 덱 중에 하나를 선택할 수 있습니다."
+"앱은 이제 '최후통첩: 혼돈' 선택 규칙에 따른 무작위 덱 생성을 제공합니다. 새로운 덱을 구성할 때, '특별한 덱' 버튼을 누르면 "
+"Fantasy Flight Games에서 제공하는 초심자용 견본 덱이나 보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 "
+"덱 중에 하나를 선택할 수 있습니다."
 
 msgctxt "releaseNotes"
 msgid "- The app will use your defined collection to try to generate the deck."
 msgstr "- 앱은 보유 게임으로 설정된 목록을 사용하여 덱을 생성하려고 할 것입니다."
 
 msgctxt "releaseNotes"
-msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgid ""
+"- Support the deckbuilding focused permanents included in the Edge of the "
+"Earth Investigator expansion (Underworld Support/Forced Learning)."
 msgstr "- ‘암흑가의 지원’이나 ‘강제 학습’ 같은 지구의 끝자락 조사자 확장에 포함된 영속 카드 중심의 덱 생성을 지원합니다."
 
 msgctxt "releaseNotes"
-msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
+msgid ""
+"- Shows the deck before you actully save it, so you can re-roll if it "
+"produced something particularly unviable."
 msgstr "- 실제로 저장하기 전에 덱을 보여주고, 특별히 생성 불가능한 형태로 덱이 생성되는 경우 덱을 다시 생성할 수도 있습니다."
 
 msgctxt "releaseNotes"
-msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
-msgstr "- 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 대한 무작위 덱 생성을 지원하지 않습니다. 해당 내용은 추후에 다루려고 합니다."
+msgid ""
+"- Given their unique deck-building restrictions, the app does not yet "
+"support generating random decks for Lola Hayes or Joe Diamond. This is "
+"something that I will try to address in a future release."
+msgstr ""
+"- 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 대한 무작위 덱 생성을 지원하지 않습니다. 해당 "
+"내용은 추후에 다루려고 합니다."
 
 msgctxt "releaseNotes"
 msgid "Fan-made cards + Barkham Horror"
@@ -5645,9 +5755,9 @@ msgid ""
 "released as part of the <i>Barkham Horror</i> promotional set, as well as "
 "the excellent <i>Alice in Wonderland</i> campaign by The Beard."
 msgstr ""
-"이제 카드를 검색하거나 덱을 생성할 때 일부 '비공식' 콘텐츠의 잠금을 해제하는 새로운 설정이 있습니다. 팬 제작 캠페인은 "
-"한동안 사용할 수 있었지만 관련 카드는 검색할 수 없었습니다. 여기에는 <i>멍컴호러</i>의 프로모션 세트로 출시된 카드 "
-"및 The Beard가 제작한 <i>이상한 나라의 앨리스</i>라는 훌륭한 캠페인을 포함하는 것을 시작으로 하려 합니다."
+"이제 카드를 검색하거나 덱을 생성할 때 일부 '비공식' 콘텐츠의 잠금을 해제하는 새로운 설정이 있습니다. 팬 제작 캠페인은 한동안 "
+"사용할 수 있었지만 관련 카드는 검색할 수 없었습니다. 여기에는 <i>멍컴호러</i>의 프로모션 세트로 출시된 카드 및 The "
+"Beard가 제작한 <i>이상한 나라의 앨리스</i>라는 훌륭한 캠페인을 포함하는 것을 시작으로 하려 합니다."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -5910,6 +6020,26 @@ msgid ""
 msgstr ""
 "완성된 캠페인을 앱에 적용하는 데 관심이 있는 콘텐츠 제작자라면 "
 "[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)으로 영문으로 연락을 주십시오."
+
+msgctxt "releaseNotes"
+msgid "Drafting player decks"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"As a follow up to the earlier Ultimatum of Chaos release, the app now "
+"supports building a deck via a set of drafting rules. Choose what packs you "
+"want to pull from and how big each draft 'hand' should be, and build your "
+"deck one card at a time."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- You can find this feature on the deck edit screen in the menu."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- Only level cards / decks can be drafted."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"

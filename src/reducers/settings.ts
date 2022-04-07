@@ -43,6 +43,7 @@ interface SettingsState {
   customContent?: boolean;
   cardGrid?: boolean;
   draftList?: boolean;
+  draftSeparatePacks?: boolean;
   dismissedOnboarding?: string[];
 }
 export const CURRENT_REDUX_VERSION = 1;
@@ -64,6 +65,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   dismissedOnboarding: [],
   cardGrid: false,
   draftList: false,
+  draftSeparatePacks: false,
 };
 
 type SettingAction =
@@ -196,6 +198,11 @@ export default function(
           return {
             ...state,
             draftList: !action.value,
+          };
+        case 'draft_from_collection':
+          return {
+            ...state,
+            draftSeparatePacks: !action.value,
           };
       }
       return state;

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import { NavigationProps } from '@components/nav/types';
@@ -44,8 +44,7 @@ function Toast({ componentId, message, timeout = 3000 }: ToastProps & Navigation
       </View>
     </View>
   );
-};
-
+}
 
 const styles = StyleSheet.create({
   root: {
@@ -63,11 +62,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  text: {
-    color: 'white',
-    fontSize: 16,
-    marginLeft: 16,
   },
 });
 

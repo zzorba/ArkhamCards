@@ -7,7 +7,7 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+            "text": "Thị trấn Arkham bị nuốt chửng bởi sự trả thù khủng khiếp của Umôrdhoth."
           },
           {
             "id": "ghoul_priest_alive",
@@ -15,7 +15,7 @@
           },
           {
             "id": "house_burned",
-            "text": "your house has burned to the ground."
+            "text": "nhà của bạn đã bị đốt cháy thành tro tàn."
           },
           {
             "id": "house_standing",
@@ -27,19 +27,19 @@
           },
           {
             "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+            "text": "các điều tra viên đã hy sinh Lita Chantler cho Umôrdhoth."
           },
           {
             "id": "past_midnight",
-            "text": "it is past midnight."
+            "text": "đã quá nửa đêm."
           },
           {
             "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
+            "text": "nghi thức triệu hồi Umôrdhoth bị phá vỡ."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
+            "text": "các điều tra viên đã đẩy lùi được Umôrdhoth."
           }
         ]
       },
@@ -104,7 +104,7 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "the Experiment was defeated."
+            "text": "vật Thí Nghiệm bị đánh bại."
           },
           {
             "id": "failed_to_recover_necronomicon",
@@ -168,7 +168,7 @@
           },
           {
             "id": "students_rescued",
-            "text": "the students were rescued."
+            "text": "các học sinh được giải cứu."
           },
           {
             "id": "took_necronomicon",
@@ -176,7 +176,7 @@
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
+            "text": "các điều tra viên bất tỉnh trong vài giờ."
           },
           {
             "id": "warned_townsfolk",
@@ -1347,7 +1347,7 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "the Experiment was defeated."
+            "text": "vật Thí Nghiệm bị đánh bại."
           },
           {
             "id": "failed_to_recover_necronomicon",
@@ -1411,7 +1411,7 @@
           },
           {
             "id": "students_rescued",
-            "text": "the students were rescued."
+            "text": "các học sinh được giải cứu."
           },
           {
             "id": "took_necronomicon",
@@ -1419,7 +1419,7 @@
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
+            "text": "các điều tra viên bất tỉnh trong vài giờ."
           },
           {
             "id": "warned_townsfolk",
@@ -1484,7 +1484,7 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+            "text": "Thị trấn Arkham bị nuốt chửng bởi sự trả thù khủng khiếp của Umôrdhoth."
           },
           {
             "id": "ghoul_priest_alive",
@@ -1492,7 +1492,7 @@
           },
           {
             "id": "house_burned",
-            "text": "your house has burned to the ground."
+            "text": "nhà của bạn đã bị đốt cháy thành tro tàn."
           },
           {
             "id": "house_standing",
@@ -1504,19 +1504,19 @@
           },
           {
             "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+            "text": "các điều tra viên đã hy sinh Lita Chantler cho Umôrdhoth."
           },
           {
             "id": "past_midnight",
-            "text": "it is past midnight."
+            "text": "đã quá nửa đêm."
           },
           {
             "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
+            "text": "nghi thức triệu hồi Umôrdhoth bị phá vỡ."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
+            "text": "các điều tra viên đã đẩy lùi được Umôrdhoth."
           }
         ]
       },

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, map, range, countBy, sumBy } from 'lodash';
+import { flatMap, map, range, sumBy } from 'lodash';
 
 import { FactionCodeType, SkillCodeType, SKILLS, TypeCodeType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
@@ -8,10 +8,8 @@ import AssetCard from '../../../assets/asset.svg';
 import EventCard from '../../../assets/event.svg';
 import SkillCard from '../../../assets/skill.svg';
 import Card from '@data/types/Card';
-import { CARD_COLORS, dark15, dark20, dualLightText, light10, light20, light30, medium, mythosLightText, neutralLightText } from '@styles/theme';
-import CardCostIcon from '@components/core/CardCostIcon';
+import { CARD_COLORS, dark15, dark20, dualLightText, light20, light30, medium, neutralLightText } from '@styles/theme';
 import AppIcon from '@icons/AppIcon';
-import ArkhamIconNode from './CardTextComponent/ArkhamIconNode';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardIcon from '@icons/CardIcon';
 
@@ -38,10 +36,12 @@ const FACTION_ICON_SCALE: {
   [key in FactionCodeType]: number | undefined;
 } = {
   guardian: 1.05,
+  seeker: 1.0,
   rogue: 0.95,
   survivor: 0.92,
   neutral: 0.80,
   mystic: 0.95,
+  mythos: 1.0,
 }
 
 const CARD_WIDTH = 96.0;
@@ -63,7 +63,7 @@ export default function StylizedCard({ card, width }: Props) {
   const multiSlot = !!(card.real_slots_normalized && sumBy(card.real_slots_normalized, c => c === '#' ? 1 : 0) > 2);
   const slotCircleRadius = 10 / CARD_WIDTH * width * (multiSlot ? 0.70 : 1);
   const faction = card.factionCode();
-  const { background, border } = CARD_COLORS[faction] || {};
+  const { background } = CARD_COLORS[faction] || {};
   const level = (card.xp === null || card.xp === undefined) ? 'null' : `${card.xp}`;
   return (
     <View style={[styles.wrapper, { width, height }, shadow.medium]}>
@@ -79,8 +79,7 @@ export default function StylizedCard({ card, width }: Props) {
           <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.boldItalic, typography.center, { textAlignVertical: 'center', fontSize: height * 0.3 / 4, lineHeight: height * 0.3 / 3 }]}>
             { card.traits }
           </Text>
-
-      </View>
+        </View>
       ) }
       { (card.type_code === 'asset' || card.type_code === 'event') ? (
         <>
@@ -94,7 +93,10 @@ export default function StylizedCard({ card, width }: Props) {
                 />
               </View>
             ) }
-            <View style={{ position: 'absolute', top: costIconRadius * 0.0125, left: costIconRadius * 0.025, width: costIconRadius * 2, height: costIconRadius * 1.7, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={[
+              { position: 'absolute', top: costIconRadius * 0.0125, left: costIconRadius * 0.025, width: costIconRadius * 2, height: costIconRadius * 1.7 },
+              styles.center,
+            ]}>
               <Text style={{
                 fontFamily: 'cost',
                 fontSize: ((card.cost || 0) >= 10 ? 0.85 : 1.0) * costIconRadius * 0.9,
@@ -107,7 +109,7 @@ export default function StylizedCard({ card, width }: Props) {
             <View style={[
               shadow.medium,
               { marginLeft: insetS * (card.faction3_code ? 0.25 : 0.5), width: factionCircleRadius * 2, height: factionCircleRadius * 2, borderRadius: factionCircleRadius, backgroundColor: background },
-              { flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+              styles.center,
             ]}>
               <AppIcon
                 name={`class_${faction}`}
@@ -119,7 +121,7 @@ export default function StylizedCard({ card, width }: Props) {
               <View style={[
                 shadow.medium,
                 { marginLeft: insetS * (card.faction3_code ? 0.25 : 0.5), width: factionCircleRadius * 2, height: factionCircleRadius * 2, borderRadius: factionCircleRadius, backgroundColor: CARD_COLORS[card.faction2_code].background },
-                { flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+                styles.center,
               ]}>
                 <AppIcon
                   name={`class_${card.faction2_code}`}
@@ -132,7 +134,7 @@ export default function StylizedCard({ card, width }: Props) {
               <View style={[
                 shadow.medium,
                 { width: factionCircleRadius * 2, height: factionCircleRadius * 2, borderRadius: factionCircleRadius, backgroundColor: CARD_COLORS[card.faction3_code].background },
-                { flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+                styles.center,
               ]}>
                 <AppIcon
                   name={`class_${card.faction3_code}`}
@@ -178,7 +180,7 @@ export default function StylizedCard({ card, width }: Props) {
             return (
               <View key={`${skill}_${idx}`} style={[
                 { backgroundColor: light30, borderRadius: skillCircleRadius, width: skillCircleRadius * 2, height: skillCircleRadius * 2, marginBottom: 2 / CARD_HEIGHT * height },
-                { flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+                styles.center,
               ]}>
                 <ArkhamIcon
                   name={skill}
@@ -196,7 +198,7 @@ export default function StylizedCard({ card, width }: Props) {
             return (
               <View key={slot} style={[
                 { marginLeft: insetS * (multiSlot ? 0.5 : 1), width: slotCircleRadius * 2, height: slotCircleRadius * 2, borderRadius: slotCircleRadius, backgroundColor: light20 },
-                { flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
+                styles.center,
               ]}>
                 <CardIcon
                   name={`${slot.trim().replace(' ', '_').toLowerCase()}_solid`}
@@ -208,7 +210,10 @@ export default function StylizedCard({ card, width }: Props) {
           }) }
         </View>
       ) }
-      <View style={{ position: 'absolute', top: 0.1 * height, left: 0.2 * width, width: width * 0.65, height: height * 0.45, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={[
+        { position: 'absolute', top: 0.1 * height, left: 0.2 * width, width: width * 0.65, height: height * 0.45 },
+        styles.center,
+      ]}>
         <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.cardName, typography.center, { textAlignVertical: 'center', fontSize: height * 0.35 / 4, lineHeight: height * 0.35 / 3.5 }]}>
           { card.name }
         </Text>
@@ -222,7 +227,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     position: 'relative',
   },
-  fixed: {
-    position: 'absolute',
+  center: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

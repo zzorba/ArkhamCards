@@ -4,7 +4,7 @@ import Animated, { ComplexAnimationBuilder, SharedValue, useAnimatedReaction, us
 import { map } from 'lodash';
 
 import Card, { CardsMap } from '@data/types/Card';
-import space, { s, m } from '@styles/space';
+import space, { isTablet, s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { CARD_RATIO } from '@styles/sizes';
 import { showCard } from '@components/nav/helper';
@@ -12,7 +12,7 @@ import CardImage, { TouchableCardImage } from '@components/card/CardImage';
 
 export interface DraftHistory {
   cycle: number;
-  code: string;
+  code?: string;
 }
 
 export interface GridItem {
@@ -59,7 +59,7 @@ function CardGridItem<ItemT extends GridItem>({
     if (!item.draftCycle || !draftHistory || draftHistory.value.cycle < item.draftCycle) {
       return false;
     }
-    return draftHistory.value.code !== item.code;
+    return !draftHistory.value.code || draftHistory.value.code !== item.code;
   }, (result, previous) => {
     // console.log(`${item.code} - ${previous} -> ${result}`);
     if (result !== previous) {
@@ -113,7 +113,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
   controlForCard,
   controlHeight,
   controlPosition = 'above',
-  maxCardsPerRow = 10,
+  maxCardsPerRow = 8,
   draftHistory,
 }: Props<ItemT>) {
   const { backgroundStyle, colors, width, height } = useContext(StyleContext);
@@ -121,7 +121,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
     let cardsPerRow = maxCardsPerRow;
     let cardWidth = (width - s) / cardsPerRow - s;
     while (cardsPerRow > 2) {
-      if (cardWidth > 110) {
+      if (cardWidth > (isTablet ? 200 : 110)) {
         break;
       }
       cardsPerRow--;

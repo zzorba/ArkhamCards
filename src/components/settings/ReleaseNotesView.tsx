@@ -29,6 +29,17 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-04-10'),
+      title: c('releaseNotes').t`Drafting player decks`,
+      faction: 'seeker',
+      lines: [
+        c('releaseNotes').t`As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time.`,
+        c('releaseNotes').t`- You can find this feature on the deck edit screen in the menu.`,
+        c('releaseNotes').t`- Only level cards / decks can be drafted.`,
+        c('releaseNotes').t`- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release.`,
+      ],
+    },
+    {
       date: new Date('2022-04-03'),
       title: c('releaseNotes').t`Ultimatum of Chaos`,
       faction: 'neutral',

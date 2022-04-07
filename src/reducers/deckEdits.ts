@@ -15,10 +15,6 @@ import {
   getDeckId,
   SYNC_DECK,
   Slots,
-  DraftState,
-  SET_CURRENT_DRAFT,
-  CLEAR_CURRENT_DRAFT,
-  SET_CURRENT_DRAFT_SIZE,
 } from '@actions/types';
 
 interface DeckEditsState {

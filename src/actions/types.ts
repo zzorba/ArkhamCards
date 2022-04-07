@@ -29,15 +29,15 @@ export type SortType =
 export interface Slots {
   [code: string]: number;
 }
-const INVESTIGATOR = 'investigator';
-const TOO_MANY_COPIES = 'too_many_copies';
-const INVALID_CARDS = 'invalid_cards';
+export const INVESTIGATOR_PROBLEM = 'investigator';
+export const TOO_MANY_COPIES = 'too_many_copies';
+export const INVALID_CARDS = 'invalid_cards';
 export const TOO_FEW_CARDS = 'too_few_cards';
-const TOO_MANY_CARDS = 'too_many_cards';
-const DECK_OPTIONS_LIMIT = 'deck_options_limit';
+export const TOO_MANY_CARDS = 'too_many_cards';
+export const DECK_OPTIONS_LIMIT = 'deck_options_limit';
 
 export type DeckProblemType =
-  typeof INVESTIGATOR |
+  typeof INVESTIGATOR_PROBLEM |
   typeof TOO_MANY_COPIES |
   typeof INVALID_CARDS |
   typeof TOO_FEW_CARDS |
@@ -592,7 +592,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -878,6 +878,15 @@ export interface SetPackSpoilerAction {
   cycle_code?: string;
   value: boolean;
 }
+
+export const SET_PACK_DRAFT = 'SET_PACK_DRAFT';
+export interface SetPackDraftAction {
+  type: typeof SET_PACK_DRAFT;
+  code?: string;
+  cycle_code?: string;
+  value: boolean;
+}
+
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
@@ -1364,6 +1373,7 @@ export type PacksActions =
   PacksAvailableAction |
   SetInCollectionAction |
   SetPackSpoilerAction |
+  SetPackDraftAction |
   UpdatePromptDismissedAction;
 
 export type SignInActions =
@@ -1393,7 +1403,10 @@ export type DecksActions =
   SetUploadedDecksAction |
   SetCurrentDraftAction |
   ClearCurrentDraftAction |
-  SetCurrentDraftSizeAction;
+  SetCurrentDraftSizeAction |
+  UpdateDeckEditAction |
+  SetPackDraftAction |
+  SetInCollectionAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |

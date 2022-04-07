@@ -1,4 +1,4 @@
-import { filter, find, forEach, keys, flatMap, head, omit, uniq } from 'lodash';
+import { filter, find, forEach, keys, flatMap, head, omit, uniq, mapValues } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import {
@@ -32,6 +32,9 @@ import {
   SET_CURRENT_DRAFT,
   CLEAR_CURRENT_DRAFT,
   SET_CURRENT_DRAFT_SIZE,
+  UPDATE_DECK_EDIT,
+  SET_PACK_DRAFT,
+  SET_IN_COLLECTION,
 } from '@actions/types';
 import deepEqual from 'deep-equal';
 
@@ -81,6 +84,38 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === UPDATE_DECK_EDIT) {
+    // If the meta changes for this deck, we need to reset
+    // the current 'draft' hand.
+    if (action.updates.meta !== undefined) {
+      return {
+        ...state,
+        draft: {
+          ...(state.draft || {}),
+          [action.id.uuid]: {
+            ...(state.draft?.[action.id.uuid] || {}),
+            current: undefined,
+          },
+        },
+      };
+    }
+    return state;
+  }
+  if (action.type === SET_PACK_DRAFT || action.type === SET_IN_COLLECTION) {
+    // We drop all cards when the pack changes
+    const newDraft = mapValues(state.draft || {}, (draft => {
+      if (draft) {
+        return {
+          size: draft.size,
+        };
+      }
+      return undefined;
+    }));
+    return {
+      ...state,
+      draft: newDraft,
+    };
+  }
   if (action.type === SET_CURRENT_DRAFT) {
     return {
       ...state,

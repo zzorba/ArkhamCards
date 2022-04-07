@@ -23,7 +23,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -60,6 +60,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '../DeckDraftView';
 import Toast from '@components/Toast';
+import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -503,15 +504,37 @@ function DeckDetailView({
       },
     });
   }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
-  const showDraftCards = useCallback(() => {
+  const onDraftCards = useCallback(() => {
     if (!deck || !cards) {
       return;
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    if (deck.investigator_code === LOLA_CODE || deck.investigator_code === JOE_DIAMOND_CODE) {
+      showAlert(
+        t`Unsupported investigator`,
+        t`Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes or Joe Diamond.`
+      );
+      return;
+    }
+    if (problem && problem.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Please correct invalid deck issues`,
+        t`This deck currently contains one or more forbidden cards.\n\nPlease address these outstanding deck issues before drafting cards.`
+      );
+      return;
+    }
+    if (problem?.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Deck is full`,
+        t`This deck is full.\n\nRemove some cards or create a new deck if you would like to draft.\n\nAt the moment it is only possible to draft level 0 cards using the app.`,
+      );
+      return;
+
     }
     if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
       setMode('edit');
     }
-    setFabOpen(false);
-    setMenuOpen(false);
     const investigator = cards[deck.investigator_code];
     const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
     Navigation.push<DeckDraftProps>(componentId, {
@@ -541,7 +564,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
+  }, [componentId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -969,11 +992,12 @@ function DeckDetailView({
               description={t`Story assets and weaknesses`}
               last={!SHOW_DRAFT_CARDS}
             />
-            { !!SHOW_DRAFT_CARDS && (
+            { !!SHOW_DRAFT_CARDS && !deck.previousDeckId &&  (
               <MenuButton
-                onPress={showDraftCards}
+                onPress={onDraftCards}
                 icon="draft"
                 title={t`Draft Cards`}
+                description={t`Build a deck randomly`}
                 last
               />
             ) }
@@ -1050,7 +1074,7 @@ function DeckDetailView({
   }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
-    onEditSpecialPressed, onChecklistPressed, showDraftCards, onCopyDeckId, onCopyUrl,
+    onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl,
   ]);
 
   const fabIcon = useCallback(() => {
@@ -1117,6 +1141,19 @@ function DeckDetailView({
             <AppIcon name="upgrade"color="#FFF" size={32} />
           </ActionButton.Item>
         ) }
+         { editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId && (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Draft cards`}
+            onPress={onDraftCards}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="draft" color="#FFF" size={32} />
+          </ActionButton.Item>
+        ) }
         { editable && (
           <ActionButton.Item
             buttonColor={factionColor}
@@ -1145,7 +1182,7 @@ function DeckDetailView({
         ) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography, deck]);
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];
@@ -1235,7 +1272,7 @@ function DeckDetailView({
               requiredCards={extraRequiredCards}
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
-              showDraftCards={SHOW_DRAFT_CARDS ? showDraftCards : undefined}
+              showDraftCards={SHOW_DRAFT_CARDS ? onDraftCards : undefined}
               showEditCards={onAddCardsPressed}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}

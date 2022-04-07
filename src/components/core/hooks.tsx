@@ -652,6 +652,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'custom_content': return !!state.settings.customContent;
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
+      case 'draft_from_collection': return !state.settings.draftSeparatePacks;
     }
   });
 }

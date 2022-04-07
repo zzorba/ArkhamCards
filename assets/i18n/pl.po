@@ -834,19 +834,19 @@ msgstr "Worek Chaosu"
 msgid "Adjust Weakness Set"
 msgstr "Dopasuj Zestaw Osłabień"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ta talia zawiera kilka podstawowych osłabień"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ta talia zawiera podstawowe osłabienie"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
@@ -5646,7 +5646,107 @@ msgstr ""
 msgid "Re-generate deck"
 msgstr ""
 
-msgid "Multi-class"
+msgid "Draft from card collection"
+msgstr ""
+
+msgid "Disable to choose which packs to draft from"
+msgstr ""
+
+msgid "Draft using your card collection"
+msgstr ""
+
+msgid "Draft Pool"
+msgstr ""
+
+msgid "Grid"
+msgstr ""
+
+msgid "Invalid deck"
+msgstr ""
+
+msgid ""
+"This deck is currently invalid in some way. Please address the issues "
+"before continuing the draft."
+msgstr ""
+
+msgid "Hand size:"
+msgstr ""
+
+msgid "Choose packs"
+msgstr ""
+
+msgid ""
+"This tool lets you build a deck progressively, choosing one card at a time "
+"from a limited set of cards."
+msgstr ""
+
+msgid ""
+"Each 'hand' of cards is taken at random from all possible cards that are "
+"allowed given the current investigator + deckbuilding option choices you "
+"have made."
+msgstr ""
+
+msgid ""
+"The drafting process will continue until your deck is full, but you can "
+"stop or change the settings at any time"
+msgstr ""
+
+msgid "Begin draft"
+msgstr ""
+
+msgid "Selection"
+msgstr ""
+
+msgid "Draft cards"
+msgstr ""
+
+msgid "Unsupported investigator"
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes or Joe Diamond."
+msgstr ""
+
+msgid "Please correct invalid deck issues"
+msgstr ""
+
+msgid ""
+"This deck currently contains one or more forbidden cards.\n"
+"\n"
+"Please address these outstanding deck issues before drafting cards."
+msgstr ""
+
+msgid "Deck is full"
+msgstr ""
+
+msgid ""
+"This deck is full.\n"
+"\n"
+"Remove some cards or create a new deck if you would like to draft.\n"
+"\n"
+"At the moment it is only possible to draft level 0 cards using the app."
+msgstr ""
+
+msgid "Draft Cards"
+msgstr ""
+
+msgid "Deck id copied!"
+msgstr ""
+
+msgid "Link to deck copied!"
+msgstr ""
+
+msgid "Build a deck randomly"
+msgstr ""
+
+msgid "A single core set is always included"
+msgstr ""
+
+msgid "Campaigns Cycles"
+msgstr ""
+
+msgid "Take"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
@@ -6217,6 +6317,61 @@ msgid ""
 "If you are a content creator who is interested in getting your (completed) "
 "campaign into the app, you can reach me at "
 "[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Drafting player decks"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"As a follow up to the earlier Ultimatum of Chaos release, the app now "
+"supports building a deck via a set of drafting rules. Choose what packs you "
+"want to pull from and how big each draft 'hand' should be, and build your "
+"deck one card at a time."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- You can find this feature on the deck edit screen in the menu."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- Only level cards / decks can be drafted."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Given their unique deck-building restrictions, the app does not yet "
+"support generating random decks for Lola Hayes or Joe Diamond. This is "
+"something that I will try to address in a future release."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"The app now supports building random decks following the steps set out by "
+"the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new "
+"option lets you choose a 'special deck', which can be used to either create "
+"the FFG suggested starter deck or a fully randomly generated one."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- The app will use your defined collection to try to generate the deck."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Support the deckbuilding focused permanents included in the Edge of the "
+"Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Shows the deck before you actully save it, so you can re-roll if it "
+"produced something particularly unviable."
 msgstr ""
 
 msgctxt "trait"

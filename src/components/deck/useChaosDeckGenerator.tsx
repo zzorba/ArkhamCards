@@ -29,9 +29,20 @@ interface DraftableCardsProps {
   meta?: DeckMeta;
   tabooSetId: number;
   disabled?: boolean;
+  in_collection: {
+    [pack: string]: boolean;
+  };
+  ignore_collection: boolean;
 }
 
-export function useDraftableCards({ investigatorCode, meta, tabooSetId, disabled }: DraftableCardsProps): [
+export function useDraftableCards({
+  investigatorCode,
+  meta,
+  tabooSetId,
+  disabled,
+  in_collection,
+  ignore_collection,
+}: DraftableCardsProps): [
   Card | undefined,
   string[] | undefined,
   CardsMap
@@ -48,8 +59,6 @@ export function useDraftableCards({ investigatorCode, meta, tabooSetId, disabled
     ];
   }, [meta, investigatorCode]);
   const [investigatorSpecialCards] = usePlayerCards(specialCodes, tabooSetId);
-  const in_collection = useSelector(getPacksInCollection);
-  const ignore_collection = useSettingValue('ignore_collection');
   const query = useMemo(() => {
     if (!investigatorBack || disabled) {
       return undefined;
@@ -96,9 +105,17 @@ export function useDraftableCards({ investigatorCode, meta, tabooSetId, disabled
 }
 
 export default function useChaosDeckGenerator({ investigatorCode, meta, enabled, tabooSetId, setSlots, setError }: Props): [() => void, boolean, CardsMap] {
-  const [investigatorBack, possibleCodes, cards] = useDraftableCards({ investigatorCode, meta, tabooSetId: tabooSetId || 0, disabled: !enabled });
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
+
+  const [investigatorBack, possibleCodes, cards] = useDraftableCards({
+    investigatorCode,
+    meta,
+    tabooSetId: tabooSetId || 0,
+    disabled: !enabled,
+    in_collection,
+    ignore_collection,
+  });
 
   const progress = useSharedValue(0);
   const onPress = useCallback(() => {

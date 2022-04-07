@@ -12,7 +12,6 @@ import { RANDOM_BASIC_WEAKNESS, SkillCodeType, SKILLS } from '@app_constants';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import SlotIcon from './CardDetailView/TwoSidedCardComponent/SlotIcon';
-import CardCostIcon from '@components/core/CardCostIcon';
 import StylizedCard from './StylizedCard';
 
 
@@ -76,7 +75,9 @@ export default function CardImage({ card, width, superCompact }: Props) {
         </View>
       );
     }
-    return <StylizedCard width={width} card={card} />;
+    if (card.type_code === 'asset' || card.type_code === 'event' || card.type_code === 'skill') {
+      return <StylizedCard width={width} card={card} />;
+    }
     return (
       <View style={[
         styles.simpleCard,
@@ -85,7 +86,6 @@ export default function CardImage({ card, width, superCompact }: Props) {
       >
         <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start', padding: xs }}>
-            { card.type_code === 'asset' || card.type_code === 'skill' || card.type_code === 'event' && <CardCostIcon card={card} inverted /> }
             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end' }}>
               { card.subtype_code !== 'weakness' ? (
                 <>

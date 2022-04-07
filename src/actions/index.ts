@@ -19,6 +19,7 @@ import {
   DISSONANT_VOICES_LOGIN_ERROR,
   DISSONANT_VOICES_LOGOUT,
   ArkhamDbDeck,
+  SET_PACK_DRAFT,
 } from './types';
 import { AppState, getArkhamDbDecks } from '@reducers';
 
@@ -188,6 +189,27 @@ export function setCycleInCollection(cycle_code: string, value: boolean): ThunkA
   return (dispatch) => {
     dispatch({
       type: SET_IN_COLLECTION,
+      cycle_code,
+      value,
+    });
+  };
+}
+
+
+export function setPackDraft(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_PACK_DRAFT,
+      code,
+      value,
+    });
+  };
+}
+
+export function setCycleDraft(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: SET_PACK_DRAFT,
       cycle_code,
       value,
     });

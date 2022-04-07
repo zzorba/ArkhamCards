@@ -22,6 +22,9 @@ import { NetInfoStateType } from '@react-native-community/netinfo';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useDeckActions } from '@data/remote/decks';
+import { useMyDecks } from '@data/hooks';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -52,8 +55,12 @@ interface FooterType {
 
 type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons }: Props) {
+function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons, login }: Props & LoginStateProps) {
   const { fontScale, width } = useContext(StyleContext);
+  const reLogin = useCallback(() => {
+    login();
+  }, [login]);
+
   const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
@@ -131,7 +138,9 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
 
   const [{ networkType, isConnected }] = useNetworkStatus();
   const offline = !isConnected || networkType === NetInfoStateType.none;
-  const [connectionProblemBanner] = useConnectionProblemBanner({ width });
+  const deckActions = useDeckActions();
+  const [{ refreshing: decksRefreshing, error }, refreshDecks] = useMyDecks(deckActions);
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } });
 
   const data = useMemo(() => {
     const empty = campaigns.length === 0;
@@ -217,15 +226,23 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
     }
     return <>{item.button}</>;
   }, [onPress, renderFooter, standalonesById]);
+  const combinedRefreshing = !!(refreshing || decksRefreshing);
+  const handleRefresh = useCallback(() => {
+    onRefresh?.();
+    refreshDecks(false);
+  }, [onRefresh, refreshDecks]);
+
   return (
     <ArkhamLargeList
-      onRefresh={onRefresh}
+      onRefresh={handleRefresh}
       onScroll={onScroll}
       data={data}
-      refreshing={!!refreshing}
+      refreshing={combinedRefreshing}
       heightForItem={heightForItem}
       renderItem={renderItem}
       renderHeader={renderHeader}
     />
   );
 }
+
+export default withLoginState<Props>(CampaignList);

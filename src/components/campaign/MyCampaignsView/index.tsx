@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import {
   Platform,
@@ -56,7 +56,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { fontScale } = useContext(StyleContext);
+  const { fontScale, width } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
