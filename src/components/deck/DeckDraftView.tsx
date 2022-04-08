@@ -269,12 +269,15 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     draftHistory.value = {
       cycle: draftCycle.current,
     };
-    setDraftCards([]);
-  }, [setDraftCards, draftHistory]);
+    onDraftNewCards();
+  }, [onDraftNewCards, draftHistory]);
 
   useEffectUpdate(() => {
     if (draftCards) {
-      onRedrawDraftCards();
+      draftHistory.value = {
+        cycle: draftCycle.current,
+      }
+      setDraftCards(undefined);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [in_collection, ignore_collection])
