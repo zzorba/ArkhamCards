@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2022-03-26 11:56-0400\n"
-"PO-Revision-Date: 2022-04-14 00:01+0700\n"
+"PO-Revision-Date: 2022-04-14 00:11+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
@@ -3044,11 +3044,11 @@ msgstr ""
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
-msgstr[0] ""
+msgstr[0] "Đặt các bộ bài encounter ${ encounterSetString } sang một bên, ngoài vùng chơi."
 
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
-msgstr[0] ""
+msgstr[0] "Tập hợp tất cả lá bài từ các bộ bài encounter ${ encounterSetString }."
 
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
