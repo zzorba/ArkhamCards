@@ -1741,23 +1741,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           }
         ]
       },
@@ -1766,23 +1766,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -1803,23 +1803,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -1840,23 +1840,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -1877,23 +1877,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -1959,7 +1959,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "você está sendo caçado."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2863,23 +2863,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           }
         ]
       },
@@ -2888,23 +2888,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -2925,23 +2925,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -2962,23 +2962,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -2999,23 +2999,23 @@
         "entries": [
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# desapareceu na névoa.",
+            "feminine_text": "#name# desapareceu na névoa"
           },
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# foi levado pelo Vigilante",
+            "feminine_text": "#name# foi levada pelo Vigilante."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# foi puxado para o reino espectral.",
+            "feminine_text": "#name# foi puxada para o reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# foi reivindicado pelos espectros.",
+            "feminine_text": "#name# foi reivindicada pelos espectros."
           },
           {
             "id": "alive",
@@ -3081,7 +3081,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "você está sendo caçado."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
