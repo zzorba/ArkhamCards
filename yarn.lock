@@ -2327,29 +2327,29 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-8.2.0.tgz#0bcf2b618c3b0ab72bb5529df3e580af9e6ae96b"
   integrity sha512-mPMg9Uu2XeMX3tainvCWLhD9FZtdox3fcbPXJINuyFNgEQ2AUhGcoUT1dUpcFZrY4eXYiO9cckPhPHq9lWzSAA==
 
-"@react-native-firebase/app@14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.5.1.tgz#48acd6a497fd5a71c1a602c944ab788a0c5df706"
-  integrity sha512-PmoiKU3DBnuaMZ5Nw71qCmDbJMJQJoYknm5gTI+j09iF0PDzzF0t+Qe/lCWEKMrDs6TuYpJvxFoocSFlAF6BHg==
+"@react-native-firebase/app@14.7.0":
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.7.0.tgz#a12f120c2c6a437284a30391cb16670422d48a7e"
+  integrity sha512-/TdFv0L4AOEdKbAqmUu0yDXWq0Viw9sEX5mprPQDQbnctEJVwDLWehJkKx2CMiGeZox7VU2cshBLD0AC82XTtQ==
   dependencies:
     "@expo/config-plugins" "^4.0.18"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.5.1.tgz#17b593bbbbbf8bcf979d10bee5b7736297770149"
-  integrity sha512-zioU88bUz3sOGzEQw3VhvkWURKjgWk46P8wd0ukPrTeWj0pY1YsCosyy+0Svk9upTBkvHlywXmEHmkNeZLq7Uw==
+"@react-native-firebase/auth@14.7.0":
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.7.0.tgz#e25088fba1f5e2c821d5d5cc1597518c55734327"
+  integrity sha512-RyoMlJ9DRUelGh4z4wnt8Bjr/BEy1TNBkDa3f60uG6ryACNP7k4GqfMCzienSBa4NAwz70DJHEP6bDB6OTt35g==
 
-"@react-native-firebase/database@14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-14.5.1.tgz#9f74142d52cb969ea8f33b4f88514246da10f2e5"
-  integrity sha512-bSEzLEBhiIoD/xtqDdrgNqWYgHAvBk0OyuWvfGZByzZaZsCsR+4QDCTe/yb9EZRuSKHvTwYw8Sz2zpC+39WAUA==
+"@react-native-firebase/database@14.7.0":
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-14.7.0.tgz#05fbbae0f07e13360329b5b8069a6044a951afab"
+  integrity sha512-7kCt70Yq9WPgbvpaA5hKJQSCP9J/cetTp1lwEoV3WJ6aVvOqoK1T9vIfQed66AjaHR/vf1WTCUpL4rPPZqwCTg==
 
-"@react-native-firebase/functions@14.5.1":
-  version "14.5.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-14.5.1.tgz#67d871b7da4888cf52de63db4d0143fe16a840ca"
-  integrity sha512-dvEP71CZnTRVwfqg1bAmzijW1dyZaaguhcmp2Go4wjZhU3lOO8UUix1PsH0MO1mNMdupQa8/FQunM9jnbuZKjg==
+"@react-native-firebase/functions@14.7.0":
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-14.7.0.tgz#55ea67d5f585dd999beb84e89decd3392b4a269d"
+  integrity sha512-lSLKhPUCqwoRpsiDlIFdCGvMZ6EhWxzT3GU3gjcDQyRLVyWwozsCgjvXFljQ5z7dQDzWgM0JQm3ANl7gTSHREA==
 
 "@react-native-google-signin/google-signin@7.2.2":
   version "7.2.2"
@@ -10851,10 +10851,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-redux@7.2.6:
-  version "7.2.6"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
-  integrity sha512-10RPdsz0UUrRL1NZE0ejTkucnclYSgXp5q+tB5SWx2qeG2ZJQJyymgAhwKy73yiL/13btfB6fPr+rgbMAaZIAQ==
+react-redux@7.2.8:
+  version "7.2.8"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.8.tgz#a894068315e65de5b1b68899f9c6ee0923dd28de"
+  integrity sha512-6+uDjhs3PSIclqoCk0kd6iX74gzrGc3W5zcAjbrFgEdIjRSQObdIwfx80unTkVUYvbQ95Y8Av3OvFHq1w5EOUw==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@types/react-redux" "^7.1.20"
