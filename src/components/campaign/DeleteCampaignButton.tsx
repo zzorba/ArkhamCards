@@ -97,10 +97,9 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
       />
     );
   }, [archiveCampaign, campaign?.archived, standalone, archiveLoading]);
-  if (userId && campaignId.serverId && campaign && userId !== campaign.owner_id) {
-    return (
-      <>
-        {archiveButton}
+  const deleteButton = useMemo(() => {
+    if (userId && campaignId.serverId && campaign && userId !== campaign.owner_id) {
+      return (
         <DeckButton
           icon="delete"
           title={standalone ? t`Leave standalone` : t`Leave campaign`}
@@ -109,12 +108,9 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
           onPress={confirmLeaveCampaign}
           bottomMargin={s}
         />
-      </>
-    );
-  }
-  return (
-    <>
-      {archiveButton}
+      );
+    }
+    return (
       <DeckButton
         icon="delete"
         title={standalone ? t`Delete standalone` : t`Delete campaign`}
@@ -123,6 +119,12 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
         onPress={confirmDeleteCampaign}
         bottomMargin={s}
       />
+    );
+  }, [userId, campaignId.serverId, campaign, standalone, confirmLeaveCampaign, confirmDeleteCampaign])
+  return (
+    <>
+      {archiveButton}
+      {deleteButton}
     </>
   );
 }

@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
+import space, { m } from '@styles/space';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column-reverse',
     alignItems: 'center',
     position: 'absolute',
-    bottom: NOTCH_BOTTOM_PADDING,
+    bottom: NOTCH_BOTTOM_PADDING + m * 4,
     left: 0,
   },
   toast: {

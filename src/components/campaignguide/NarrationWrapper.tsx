@@ -257,11 +257,7 @@ function PlayerView({ style }: PlayerProps) {
       );
     }
     if (lang === 'ru') {
-      return (
-        <View>
-
-        </View>
-      );
+      return null;
     }
     return null;
   }, [lang])

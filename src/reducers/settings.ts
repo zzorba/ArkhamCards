@@ -45,6 +45,7 @@ interface SettingsState {
   draftList?: boolean;
   draftSeparatePacks?: boolean;
   dismissedOnboarding?: string[];
+  campaignShowDeckId?: boolean;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -66,6 +67,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   cardGrid: false,
   draftList: false,
   draftSeparatePacks: false,
+  campaignShowDeckId: false,
 };
 
 type SettingAction =
@@ -203,6 +205,11 @@ export default function(
           return {
             ...state,
             draftSeparatePacks: !action.value,
+          };
+        case 'campaign_show_deck_id':
+          return {
+            ...state,
+            campaignShowDeckId: action.value,
           };
       }
       return state;

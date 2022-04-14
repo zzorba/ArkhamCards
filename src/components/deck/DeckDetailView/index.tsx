@@ -39,7 +39,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useCopyAction, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -880,37 +880,17 @@ function DeckDetailView({
       showDrawSimulator(componentId, parsedDeck, colors);
     }
   }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
+  const copyDeckId = useCopyAction(`${deckId.id}`, t`Deck id copied!`);
   const onCopyDeckId = useCallback(() => {
-    if (!deckId.local) {
-      setMenuOpen(false);
-      Clipboard.setString(`${deckId.id}`);
-      Navigation.showOverlay({
-        component: {
-          name: 'Toast',
-          passProps: {
-            message: t`Deck id copied!`,
-          },
-          options: Toast.options,
-        },
-      });
-    }
-  }, [deckId, setMenuOpen]);
+    setMenuOpen(false);
+    copyDeckId();
+  }, [deckId, setMenuOpen, copyDeckId]);
 
+  const copyDeckUrl = useCopyAction(`${arkhamDbDomain}/deck/view/${deckId.id}`, t`Link to deck copied!`);
   const onCopyUrl = useCallback(() => {
-    if (!deckId.local) {
-      setMenuOpen(false);
-      Clipboard.setString(`${arkhamDbDomain}/deck/view/${deckId.id}`);
-      Navigation.showOverlay({
-        component: {
-          name: 'Toast',
-          passProps: {
-            message: t`Link to deck copied!`,
-          },
-          options: Toast.options,
-        },
-      });
-    }
-  }, [deckId, arkhamDbDomain, setMenuOpen]);
+    setMenuOpen(false);
+    copyDeckUrl();
+  }, [deckId, copyDeckUrl, setMenuOpen]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;

@@ -35,6 +35,7 @@ import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLog
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 import { useSettingFlag, useSettingValue } from '@components/core/hooks';
+import campaigns from '@reducers/campaigns';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -150,6 +151,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
     setSortRespectQuotes(!value);
   }, [setSortRespectQuotes]);
 
+  const [campaignShowDeckId, setCampaignShowDeckId] = useSettingFlag('campaign_show_deck_id');
+
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
   }, [navButtonPressed]);
@@ -232,6 +235,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
                 onValueChange={setAlphabetizeEncounterSets}
+              />
+              <DeckCheckboxButton
+                icon="arkhamdb"
+                title={t`Show deck ids on campaigns`}
+                value={campaignShowDeckId}
+                onValueChange={setCampaignShowDeckId}
               />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton

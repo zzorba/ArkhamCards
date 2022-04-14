@@ -27,6 +27,9 @@ import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where 
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
+import Clipboard from '@react-native-clipboard/clipboard';
+import Toast from '@components/Toast';
+import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -636,6 +639,21 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
   return cards;
 }
 
+export function useCopyAction(value: string, confirmationText: string): () => void {
+  return useCallback(() => {
+    Clipboard.setString(value);
+    Navigation.showOverlay({
+      component: {
+        name: 'Toast',
+        passProps: {
+          message: confirmationText,
+        },
+        options: Toast.options,
+      },
+    });
+  }, [value, useConfirmSignupDialog]);
+}
+
 export function useSettingValue(setting: MiscSetting): boolean {
   return useSelector((state: AppState) => {
     switch (setting) {
@@ -653,6 +671,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
+      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
     }
   });
 }
