@@ -16,11 +16,13 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { NavigationProps } from '@components/nav/types';
-import { useNavigationButtonPressed, usePlayerCards, useSettingFlag } from '@components/core/hooks';
+import { useNavigationButtonPressed, usePlayerCards, useSettingFlag, useToggles } from '@components/core/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import StylizedCard from '@components/card/StylizedCard';
+import { getTarotCards } from '@components/campaign/constants';
+import TarotCardComponent from '@components/card/TarotCardComponent';
 
 
 function MyDecksView({ componentId }: NavigationProps) {

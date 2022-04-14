@@ -6,6 +6,7 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props<T> {
   iconName?: string;
@@ -20,6 +21,7 @@ interface Props<T> {
   last: boolean;
   indicator?: 'check' | 'radio'
 }
+const ARKHAM_ICONS = new Set(['weakness', 'wild']);
 export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
@@ -31,6 +33,9 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
       return iconNode;
     }
     if (iconName) {
+      if (ARKHAM_ICONS.has(iconName)) {
+        return <ArkhamIcon name={iconName} size={32} color={colors.M} />;
+      }
       return <AppIcon name={iconName} size={32} color={colors.M} />;
     }
     return null;

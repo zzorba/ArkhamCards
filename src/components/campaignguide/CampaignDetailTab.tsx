@@ -30,6 +30,7 @@ import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapCom
 import { useLatestDecksCards } from '@components/core/hooks';
 
 const SHOW_WEAKNESS = false;
+const SHOW_TAROT = false;
 
 interface Props {
   componentId: string;
@@ -159,6 +160,14 @@ export default function CampaignDetailTab({
     cycleCode: campaign.cycleCode,
     processedCampaign,
   });
+
+  const onTarotPress = useCallback(() => {
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.Tarot',
+      },
+    });
+  }, [componentId]);
   const latestDecks = campaign.latestDecks();
   const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
   return (
@@ -198,6 +207,16 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
+          { SHOW_TAROT && (
+            <DeckButton
+              icon="special_cards"
+              title={t`Tarot Readings`}
+              detail={t`Perform readings with the tarot deck`}
+              color="light_gray"
+              onPress={onTarotPress}
+              bottomMargin={s}
+            />
+          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"
