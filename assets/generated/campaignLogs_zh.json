@@ -3380,15 +3380,15 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "入夢者醒來。"
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "調查員驅逐了奈亞拉托提普。"
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "調查員逃離了奈亞拉托提普的魔掌。"
           },
           {
             "id": "dreamers_grow_weaker",
@@ -3400,11 +3400,11 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "入夢者永遠留在了幻夢境。"
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monastery."
+            "text": "入夢者進入隱修院底下。"
           },
           {
             "id": "forced_way_into_temple",
@@ -3412,7 +3412,7 @@
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "奈亞拉托提普開始入侵。"
           },
           {
             "id": "parleyed_with_zoogs",
@@ -3552,11 +3552,11 @@
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "橋樑已經建成。"
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "橋樑已被摧毀。"
           },
           {
             "id": "doctor_is_alive",
@@ -3584,7 +3584,7 @@
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "調查員永遠無法逃離。"
           },
           {
             "id": "on_your_own",
@@ -3612,15 +3612,15 @@
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "調查員回到現實世界。"
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "調查員仍在幻夢境。"
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "調查員被困在阿特拉克·納克亞的領域。"
           },
           {
             "id": "you_asked_for_it",
