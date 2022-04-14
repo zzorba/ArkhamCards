@@ -25,7 +25,7 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useBackButton, useComponentVisible, useNavigationButtonPressed } from '@components/core/hooks';
 import { useAlertDialog } from '@components/deck/dialogs';
-import { CampaignCycleCode, EOE } from '@actions/types';
+import { CampaignCycleCode, CUSTOM, EOE } from '@actions/types';
 
 export interface EditChaosBagProps {
   cycleCode: CampaignCycleCode;
@@ -101,7 +101,7 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
     mutateChaosBag({ id, mutate });
   }, [mutateChaosBag]);
   const chaosTokens: ChaosTokenType[] = useMemo(() => {
-    if (cycleCode === EOE) {
+    if (cycleCode === EOE || cycleCode === CUSTOM) {
       return CHAOS_TOKENS;
     }
     return filter(CHAOS_TOKENS, x => x !== 'frost');
