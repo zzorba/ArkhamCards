@@ -1,0 +1,846 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "Une Lueur dans le Brouillard"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "Le Spectre de la Vérité"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "A Sea of Troubles"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "Mille Nuances d’Horreur"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "Le Tout pour le Tout"
+  },
+  {
+    "id": "arkham",
+    "name": "Les Masques de Minuit"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "Arkham in Wonderland"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "Le Sort d’Armitage"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "Aux Portes de la Mort"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "bad_blood",
+    "name": "Mauvais Sang"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "Devant le Trône Noir"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "Sous les Vagues"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "Par-delà le Mur du Sommeil"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "Sous les Étoiles Noires"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "Bleeding Hearts"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "Le Dévoreur de Toute Chose"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "Du Sang sur l'Autel"
+  },
+  {
+    "id": "by_the_book",
+    "name": "Suivre les Règles"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "Le Carnaval des Horreurs"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "La Cité des Anciens"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Désolation à Bord du Constellation"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "La Malédiction du Rougarou"
+  },
+  {
+    "id": "curtain_call",
+    "name": "Baisser de Rideau"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "La Face Cachée de la Lune"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "devil_reef",
+    "name": "Le Récif du Diable"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "La Pâle Carcosa"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "Renouveau – Disparitions dans la Demeure du Crépuscule"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "Prologue…"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "Les Survivants"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "Les Échos du Passé"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "Electric Nightmare"
+  },
+  {
+    "id": "endless_night",
+    "name": "Une Nuit Interminable"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "L’Express du Comté d’Essex"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "Activité Extrascolaire"
+  },
+  {
+    "id": "eztli",
+    "name": "Le Fléau des Eztli"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "Mirage Fatal"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "Mirage Fatal"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "Mirage Fatal"
+  },
+  {
+    "id": "final_night",
+    "name": "La Dernière Nuit"
+  },
+  {
+    "id": "fools_mate",
+    "name": "Fool's Mate"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "Pour le Bien Commun"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "Fragment of Carcosa"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "Le Cœur des Anciens, Partie 1"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "Le Cœur des Anciens, Partie 2"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "Vérités Cachées"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "Horreur à Toute Vitesse"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "Humpty Dumpty"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "De Glace et de Mort"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "Ice and Death, Part I"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "Ice and Death, Part II"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "Ice and Death, Part III"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "Dans les Griffes du Chaos"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "Les Labyrinthes de la Folie"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "Mouillés Jusqu’au Cou"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "Dans le Maelström"
+  },
+  {
+    "id": "introspection",
+    "name": "Introspection"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "Introspection (continued)"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "Perdu dans le Temps et l’Espace"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "Lost Quantum"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "Lucid Nightmare"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "Machinations au Fil du Temps"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "La Cabale de Myarlathotep"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "Mission Briefing"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "Meutre à l'Hôtel Excelsior"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "Point de Non-Retour"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "Le Prix de la Folie"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "Âme Perdue"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "Les Pièces du Puzzle"
+  },
+  {
+    "id": "read_or_die",
+    "name": "Lire ou Mourir"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "restful_night",
+    "name": "Une Nuit Reposante"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "Renouveau – Le Spectre de la Vérité"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "Renouveau – Aux Portes de la Mort"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "Renouveau – Devant le Trône Noir"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "Renouveau – Sous les Étoiles Noires"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "Renouveau – Du Sang sur l'Autel"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "Renouveau – Baisser de Rideau"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "Renouveau – La Pâle Carcosa"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "Renouveau – Les Échos du Passé"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "Renouveau – L'Express du Comté d'Essex"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "Renouveau – Activité Extrascolaire"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "Renouveau – Pour le Bien Commun"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "Renouveau – Le Cœur des Anciens, Partie 1"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "Renouveau – Le Cœur des Anciens, Partie 2"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "Renouveau – Dans les Griffes du Chaos"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "Renouveau – Perdu dans le Temps et l'Espace"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "Renouveau – Paradoxes Temporels"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "Renouveau – Par-delà les Limites"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "Renouveau – La Cité des Archives"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "Renouveau – La Civilisation Oubliée"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "Renouveau – Le Dévoreur du Dessous"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "Renouveau – Le Fléau des Eztli"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "Renouveau – Le Rassemblement"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "Renouveau – La Banque Gagne Toujours"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "Renouveau – Le Dernier Roi"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "Renouveau – Les Masques de Minuit"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "Renouveau – Le Musée Miskatonic"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "Renouveau – Le Masque Blême"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "Renouveau – Le Nom Secret"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "Renouveau – Le Serment Indicible"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "Renouveau – Une Contrée Sauvage"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "Renouveau – Le Salaire du Péché"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "Renouveau – L’Heure des Sorcières"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "Renouveau – Les Fils du Destin"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "Renouveau – Remonter le Temps"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "Renouveau – Aux Frontières du Visible"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "Renouveau – Union et Désillusion"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "Renouveau – Là où le Destin Attend"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "Paradoxes Temporels"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "Sibling Rivalry"
+  },
+  {
+    "id": "starfall",
+    "name": "Starfall"
+  },
+  {
+    "id": "strange_moons",
+    "name": "Strange Moons"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "Tempest in a Teapot"
+  },
+  {
+    "id": "tentacles",
+    "name": "Le Dévoreur du Dessous"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "Nuits Agitées"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "La Fin de l’Expédition"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "L’Appel de la Jungle"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "Les Captifs"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "Les Ténèbres"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "Prologue"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_attack",
+    "name": "The Attack"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "Le Chat Noir"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "Par-delà les Limites"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "The Caterpillar"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "La Cité des Archives"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "Les Profondeurs de Yoth"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "The Disappearance"
+  },
+  {
+    "id": "the_dodo",
+    "name": "The Dodo"
+  },
+  {
+    "id": "the_duchess",
+    "name": "The Duchess"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "Éternelle Torpeur"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "Les Grands Anciens"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "Le Cœur de la Folie"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "The Heart of Madness, Part I"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "The Heart of Madness, Part II"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "La Banque Gagne Toujours"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "Le Cercle Restreint"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "La Tanière de Dagon"
+  },
+  {
+    "id": "the_last_king",
+    "name": "Le Dernier Roi"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "The Lion and the Unicorn"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "The Machine in Yellow"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "Le Musée Miskatonic"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "L'Usurpateur de la Nuit"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "Les Onironautes"
+  },
+  {
+    "id": "the_other_side",
+    "name": "The Other Side"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "Le Masque Blême"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "Le Gouffre du Désespoir"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "Le Prix du Progrès"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "À la Recherche de Kadath"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "Le Nom Secret"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "La Syzygie"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "The Tatterdemalion"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "Le Serment Indicible"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "La Disparition d'Elina Harper"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "Le Salaire du Péché"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "The White Queen"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "L’Heure des Sorcières"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "Les Fils du Destin"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "Vers les Sommets Interdits"
+  },
+  {
+    "id": "torch",
+    "name": "Le Rassemblement"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Traces d'Egil"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "Remonter le Temps"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "Coup du Sort"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "Aux Frontières du Visible"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "Union et Désillusion"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "Cauchemar Éveillé"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "La Guerre des Dieux Extérieurs"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "Tisseuse du Cosmos"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "Là où le Destin Attend"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "La Demeure des Dieux"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "Wild Snark Chase"
+  },
+  {
+    "id": "wilds",
+    "name": "Une Contrée Sauvage"
+  }
+]

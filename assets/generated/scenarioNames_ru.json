@@ -1,0 +1,846 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "A Light in the Fog"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "Призрак Истины"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "A Sea of Troubles"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "A Thousand Shapes of Horror"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "All or Nothing"
+  },
+  {
+    "id": "arkham",
+    "name": "Полуночные маски"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "Arkham in Wonderland"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "Судьба Армитеджа"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "На пороге смерти"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "bad_blood",
+    "name": "Bad Blood"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "Перед Чёрным престолом"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "Beneath the Waves"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "Beyond the Gates of Sleep"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "Восход чёрных звёзд"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "Bleeding Hearts"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "The Blob That Ate Everything"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "Кровь на алтаре"
+  },
+  {
+    "id": "by_the_book",
+    "name": "By the Book"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "Карнавал ужасов"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "City of the Elder Things"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Застывшее «Созвездие»"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "Проклятие ругару"
+  },
+  {
+    "id": "curtain_call",
+    "name": "Дайте занавес"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "Dark Side of the Moon"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "devil_reef",
+    "name": "Devil Reef"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "Туманная Каркоза"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "Return to Disappearance at the Twilight Estate"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "Prologue…"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "Выжившие"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "Отголоски прошлого"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "Electric Nightmare"
+  },
+  {
+    "id": "endless_night",
+    "name": "Endless Night"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "Экспресс округа Эссекс"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "Факультативные занятия"
+  },
+  {
+    "id": "eztli",
+    "name": "Погибель эцтли"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "final_night",
+    "name": "Final Night"
+  },
+  {
+    "id": "fools_mate",
+    "name": "Fool's Mate"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "Ради высшего блага"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "Fragment of Carcosa"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "Сердце древних, часть 1"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "Сердце древних, часть 2"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "Hidden Truths"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "Horror in High Gear"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "Humpty Dumpty"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "Ice and Death"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "Ice and Death, Part I"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "Ice and Death, Part II"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "Ice and Death, Part III"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "В когтях Хаоса"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "Лабиринты безумия"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "In Too Deep"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "Into the Maelstrom"
+  },
+  {
+    "id": "introspection",
+    "name": "Introspection"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "Introspection (continued)"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "Потерянные во времени и пространстве"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "Lost Quantum"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "Lucid Nightmare"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "Machinations Through Time"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "Козни Мяулапхотепа"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "Mission Briefing"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "Убийство в отеле «Эксельсиор»"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "Point of No Return"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "Награда за безумие"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "Пропащая душа"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "Puzzle Pieces"
+  },
+  {
+    "id": "read_or_die",
+    "name": "Прочти или умри"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "restful_night",
+    "name": "Restful Night"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "Return to A Phantom of Truth"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "Return to At Death's Doorstep"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "Return to Before the Black Throne"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "Return to Black Stars Rise"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "Return to Blood on the Altar"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "Return to Curtain Call"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "Return to Dim Carcosa"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "Return to Echoes of the Past"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "Return to The Essex County Express"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "Return to Extracurricular Activities"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "Return to For the Greater Good"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "Return to Heart of the Elders, Part 1"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "Return to Heart of the Elders, Part 2"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "Return to In the Clutches of Chaos"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "Return to Lost in Time and Space"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "Return to Shattered Aeons"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "Return to The Boundary Beyond"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "Return to The City of Archives"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "Return to The Depths of Yoth"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "Пожиратель из глубин. Возвращение"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "Return to The Doom of Eztli"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "Встреча. Возвращение"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "Return to The House Always Wins"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "Return to The Last King"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "Полуночные маски. Возвращение"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "Return to The Miskatonic Museum"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "Return to The Pallid Mask"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "Return to The Secret Name"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "Return to The Unspeakable Oath"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "Return to The Untamed Wilds"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "Return to The Wages of Sin"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "Return to The Witching Hour"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "Return to Threads of Fate"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "Return to Turn Back Time"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "Return to Undimensioned and Unseen"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "Return to Union and Disillusion"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "Return to Where Doom Awaits"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "Расколотая вечность"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "Sibling Rivalry"
+  },
+  {
+    "id": "starfall",
+    "name": "Starfall"
+  },
+  {
+    "id": "strange_moons",
+    "name": "Strange Moons"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "Tempest in a Teapot"
+  },
+  {
+    "id": "tentacles",
+    "name": "Пожиратель из глубин"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "Бессонные ночи"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "Финал экспедиции"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "Зов джунглей"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "На свободе"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "Во тьме"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_attack",
+    "name": "The Attack"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "The Black Cat"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "Потусторонний предел"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "The Caterpillar"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "Город архивов"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "Глубины Йота"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "The Disappearance"
+  },
+  {
+    "id": "the_dodo",
+    "name": "The Dodo"
+  },
+  {
+    "id": "the_duchess",
+    "name": "The Duchess"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "Беспробудный сон"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "The Great Ones"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "The Heart of Madness"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "The Heart of Madness, Part I"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "The Heart of Madness, Part II"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "Казино всегда в выигрыше"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "Внутренний круг"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "The Lair of Dagon"
+  },
+  {
+    "id": "the_last_king",
+    "name": "Последний король"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "The Lion and the Unicorn"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "The Machine in Yellow"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "Мискатоникский музей"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "Узурпатор ночи"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "The Oneironauts"
+  },
+  {
+    "id": "the_other_side",
+    "name": "The Other Side"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "Бледная маска"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "The Pit of Despair"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "Цена прогресса"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "The Search for Kadath"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "Тайное имя"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "Симфония Эриха Цанна"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "The Syzygy"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "The Tatterdemalion"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "Невыразимая клятва"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "The Vanishing of Elina Harper"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "Расплата за грехи"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "The White Queen"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "Час ведьмовства"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "Нити судьбы"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "To the Forbidden Peaks"
+  },
+  {
+    "id": "torch",
+    "name": "Встреча"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Traces of Egil"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "Обратить время вспять"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "Причуда судьбы"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "Неизмеримые и невидимые"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "Единство и разочарование"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "Waking Nightmare"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "Война Внешних богов"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "Weaver of the Cosmos"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "Там, где ждёт погибель"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "Where the Gods Dwell"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "Wild Snark Chase"
+  },
+  {
+    "id": "wilds",
+    "name": "Дремучие джунгли"
+  }
+]
