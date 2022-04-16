@@ -4644,7 +4644,7 @@ msgid "Fix duplicates"
 msgstr "Arreglar duplicados"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr "¿Quieres que la aplicación te elija un Compañero al azar?"
+msgstr "¿Quieres que la aplicación elija un Compañero al azar?"
 
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
