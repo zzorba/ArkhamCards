@@ -6188,7 +6188,7 @@ msgstr "- Dark Matter, por Axolotl"
 
 msgctxt "releaseNotes"
 msgid "- Crown of Egil by The Mad Juggler"
-msgstr "- Corona de Egil, por The Mad Juggler"
+msgstr "- La corona de Egil, por The Mad Juggler"
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
