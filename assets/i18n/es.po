@@ -3864,7 +3864,7 @@ msgstr "no eliminar"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr "Devolver, pero ${ doNotRemove } Bendición/Maldición"
+msgstr "Devolver, pero ${ doNotRemove }"
 
 msgid "View chaos bag"
 msgstr "Ver bolsa de caos"
