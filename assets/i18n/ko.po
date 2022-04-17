@@ -1585,7 +1585,7 @@ msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
 msgstr[0] ""
-"캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 마크가 ${ count }개 이하이므로 다음 지시를 "
+"캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 마크가 ${ count }개이므로 다음 지시를 "
 "수행합니다."
 
 msgid ""
@@ -1594,7 +1594,7 @@ msgid ""
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ "
 "logEntry.section }'"
-msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 항목이 ${ count }개 이하이므로"
+msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 항목이 ${ count }개이므로"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
