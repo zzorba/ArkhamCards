@@ -5375,9 +5375,7 @@ msgstr "유효하지 않은 덱"
 msgid ""
 "This deck is currently invalid in some way. Please address the issues "
 "before continuing the draft."
-msgstr ""
-"이 덱은 현재 어떠한 면에서 유효하지 않습니다. 드래프트를 진행하기 전에 해당 "
-"문제를 해결하세요."
+msgstr "이 덱은 현재 어떠한 면에서 유효하지 않습니다. 드래프트를 진행하기 전에 해당 문제를 해결하세요."
 
 msgid "Hand size:"
 msgstr "뽑을 카드 수:"
@@ -5389,23 +5387,21 @@ msgid ""
 "This tool lets you build a deck progressively, choosing one card at a time "
 "from a limited set of cards."
 msgstr ""
-"이를 사용하면 제한된 카드들 중에서 한 번에 하나의 카드를 선택하여, 허용된 덱 크기까지 "
-"덱이 가득 채워지도록 이를 반복하여 덱을 구성할 수 있습니다."
+"이를 사용하면 제한된 카드들 중에서 한 번에 하나의 카드를 선택하여, 허용된 덱 크기까지 덱이 가득 채워지도록 이를 반복하여 덱을 "
+"구성할 수 있습니다."
 
 msgid ""
 "Each 'hand' of cards is taken at random from all possible cards that are "
 "allowed given the current investigator + deckbuilding option choices you "
 "have made."
 msgstr ""
-"매 번 뽑아오는 카드는 현재 조사자의 덱 구성 선택지 및 덱 구성 요구조건에 따라 "
-"드래프트 후보로 선택된 모든 카드 중에서 무작위로 가져오게 됩니다."
+"매 번 뽑아오는 카드는 현재 조사자의 덱 구성 선택지 및 덱 구성 요구조건에 따라 드래프트 후보로 선택된 모든 카드 중에서 무작위로 "
+"가져오게 됩니다."
 
 msgid ""
 "The drafting process will continue until your deck is full, but you can "
 "stop or change the settings at any time"
-msgstr ""
-"드래프트 과정은 허용된 덱 크기까지 덱이 가득 채워지도록 반복되지만, 언제든지 해당 "
-"과정을 멈추거나 설정 사항을 변경할 수 있습니다."
+msgstr "드래프트 과정은 허용된 덱 크기까지 덱이 가득 채워지도록 반복되지만, 언제든지 해당 과정을 멈추거나 설정 사항을 변경할 수 있습니다."
 
 msgid "Begin draft"
 msgstr "드래프트 시작"
@@ -5419,9 +5415,7 @@ msgstr "지원되지 않는 조사자"
 msgid ""
 "Sorry, given their unique deckbuilding rules, this app does not yet support "
 "drafting for Lola Hayes or Joe Diamond."
-msgstr ""
-"죄송합니다. 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 "
-"대해서는 아직 해당 기능을 지원하지 않습니다."
+msgstr "죄송합니다. 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 대해서는 아직 해당 기능을 지원하지 않습니다."
 
 msgid "Please correct invalid deck issues"
 msgstr "유효하지 않은 덱 문제를 올바르게 수정하세요."
@@ -5471,6 +5465,153 @@ msgstr "캠페인 사이클"
 
 msgid "Take"
 msgstr "가지기"
+
+#, javascript-format
+msgid "Tarot: ${ card.title } · Inverted"
+msgstr ""
+
+msgid "Tarot: ${ card.title }"
+msgstr ""
+
+msgid ""
+"If you are using the digital chaos bag in the app, be sure to enable the "
+"tarot option on the chaos bag screen."
+msgstr ""
+
+msgid "Show deck ids on campaigns"
+msgstr ""
+
+msgid "Tarot Reading"
+msgstr ""
+
+msgid "Tarot Readings"
+msgstr ""
+
+msgid "Perform readings with the tarot deck"
+msgstr ""
+
+msgid "What is this?"
+msgstr ""
+
+msgid ""
+"Reveal the top card in a random orientation. It's effects are active "
+"throughout the scenario, and could be positive or negative, depending on "
+"its orientation. This reading is ideal if you want to add a splash of chaos "
+"to a scenario."
+msgstr ""
+
+msgid ""
+"Reveal the top two cards, one in the upright position and one in the "
+"reversed position. Their effects are active throughout the scenario. One "
+"card has a positive effect, the other has a negative effect. This reading "
+"is ideal if you want to add a touch of randomness or replay value to a "
+"scenario, but desire a more balanced effect."
+msgstr ""
+
+msgid ""
+"Reveal three cards in the upright position. Then, choose and reverse 2 of "
+"them. The effects of all 3 cards are active throughout the scenario. One "
+"card has a positive effect and the other two negative, but the "
+"investigators decide which is which. This reading is ideal if you want to "
+"add an element of strategic decision-making during your reading."
+msgstr ""
+
+msgid ""
+"Before starting a campaign, reveal one card for each scenarion in the "
+"campaign, ignoring side stories and counting scenarios with multiple parts "
+"as separate scenarios. Place each card in a line, in the upright position. "
+"Each of these cards applies to one scenario in the campaign. Then, choose "
+"and reverse half of the cards (rounded up). This reading is ideal if you "
+"want your readings to have long-term consequences and force you to plan "
+"ahead."
+msgstr ""
+
+msgid ""
+"Draw 3 random cards from the tarot deck and choose 1. Place the chosen card "
+"in front of you, in the upright position. Each other investigator ignores "
+"its effects."
+msgstr ""
+
+msgid ""
+"Draw a random card from the tarot deck and place the chosen card in front "
+"of you, in the reverse position. Each other investigator ignores its "
+"effects."
+msgstr ""
+
+msgid ""
+"There are endless possible readings that you could perform using the Tarot "
+"Deck. Feel free to create your own!"
+msgstr ""
+
+msgid "Choose two cards to reverse."
+msgstr ""
+
+msgid "Reverse half of the cards (rounded up)."
+msgstr ""
+
+msgid "Choose one card."
+msgstr ""
+
+msgid "Draw and reverse cards however you like!"
+msgstr ""
+
+msgid "Reveal"
+msgstr ""
+
+#, javascript-format
+msgid "${ card.title } - Inverted"
+msgstr ""
+
+msgid "Inverted"
+msgstr ""
+
+msgid "Upright"
+msgstr ""
+
+msgid "A single card in a random position."
+msgstr ""
+
+msgid "Two cards, one upright and one reversed."
+msgstr ""
+
+msgid "Reveal three upright cards, choose two to reverse."
+msgstr ""
+
+msgid "A reading for the full campaign."
+msgstr ""
+
+msgid "Choose from three upright cards."
+msgstr ""
+
+msgid "A single reversed card."
+msgstr ""
+
+msgid "Draw cards in random positions."
+msgstr ""
+
+msgid "Choose reading type"
+msgstr ""
+
+msgid "You must flip all cards to reveal your fate."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Too many card reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Not enough cards reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+msgid "Reject fate (redraw)"
+msgstr ""
+
+msgid "Deck Id"
+msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -5733,8 +5874,8 @@ msgid ""
 msgstr ""
 "앱은 이제 '최후통첩: 혼돈' 선택 규칙에 따른 무작위 덱 생성을 제공합니다. 새로운 덱을 구성할 때, '특별한 덱' 버튼을 누르면 "
 "Fantasy Flight Games에서 제공하는 초심자용 견본 덱이나 보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 "
-"덱 중에 하나를 선택할 수 있습니다. 단, 무작위로 구성되는 덱은 0 레벨을 기준으로 생성되므로 만약 조사자의 추가 경험치나 "
-"덱 구성 시에 얻는 경험치를 적용하려면 덱을 생성한 후에 덱 수정 기능을 사용하여야 합니다."
+"덱 중에 하나를 선택할 수 있습니다. 단, 무작위로 구성되는 덱은 0 레벨을 기준으로 생성되므로 만약 조사자의 추가 경험치나 덱 구성 "
+"시에 얻는 경험치를 적용하려면 덱을 생성한 후에 덱 수정 기능을 사용하여야 합니다."
 
 msgctxt "releaseNotes"
 msgid "- The app will use your defined collection to try to generate the deck."
@@ -6051,11 +6192,10 @@ msgid ""
 "want to pull from and how big each draft 'hand' should be, and build your "
 "deck one card at a time."
 msgstr ""
-"이전 '최후 통첩: 혼돈' 기능에 대한 후속 조치로 앱은 이제 드래프트 규칙을 통한 덱 구성을 지원합니다. "
-"보유 게임 중에서 드래프트 후보로 넣을 목록을 선택하고, 드래프트로 몇 장의 카드를 가져오는지를 선택하세요. "
-"가져온 카드를 클릭하여 살펴보고 그 중에 한 장만 덱에 추가하여 이를 허용된 덱 크기까지 덱이 가득 채워지도록 "
-"반복합니다. 단, 드래프트로는 0 레벨을 기준으로 뽑게 되므로 만약 조사자의 추가 경험치나 덱 구성 시에 얻는 "
-"경험치를 적용하려면 덱을 생성한 후에 덱 수정 기능을 사용하여야 합니다."
+"이전 '최후 통첩: 혼돈' 기능에 대한 후속 조치로 앱은 이제 드래프트 규칙을 통한 덱 구성을 지원합니다. 보유 게임 중에서 드래프트 "
+"후보로 넣을 목록을 선택하고, 드래프트로 몇 장의 카드를 가져오는지를 선택하세요. 가져온 카드를 클릭하여 살펴보고 그 중에 한 장만 "
+"덱에 추가하여 이를 허용된 덱 크기까지 덱이 가득 채워지도록 반복합니다. 단, 드래프트로는 0 레벨을 기준으로 뽑게 되므로 만약 "
+"조사자의 추가 경험치나 덱 구성 시에 얻는 경험치를 적용하려면 덱을 생성한 후에 덱 수정 기능을 사용하여야 합니다."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
@@ -7341,6 +7481,34 @@ msgid_plural ""
 msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
+
+msgctxt "tarot-reading"
+msgid "Chaos"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Balance"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Choice"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Destiny"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Observed"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Damned"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Custom"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"
