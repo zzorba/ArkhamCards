@@ -3519,7 +3519,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "prompt": "Número de Carnavaleros inocentes bajo el mazo de Plan",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -3550,7 +3550,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "prompt": "Número de Carnavaleros inocentes bajo los mazos de Plan o de Acto",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -4772,7 +4772,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Music]] treacheries in play.",
+          "prompt": "Número de traiciones [[Música]] en juego.",
           "min": 0,
           "reveal_another": true
         }
