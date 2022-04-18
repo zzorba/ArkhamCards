@@ -7,6 +7,7 @@ import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import TextWithIcons from '../TextWithIcons';
 
 interface Props<T> {
   iconName?: string;
@@ -55,8 +56,8 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
                 <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
                   { text }
                 </Text>
-                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
-                  { description }
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={3} ellipsizeMode="clip">
+                  <TextWithIcons size={16} color={colors.lightText} text={description} />
                 </Text>
               </View>
             ) : (

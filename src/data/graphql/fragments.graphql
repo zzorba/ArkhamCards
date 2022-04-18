@@ -237,6 +237,7 @@ fragment FullCampaign on campaign {
   weaknessSet
   guided
   guide_version
+  tarot_reading
   archived
   owner_id
   investigators(order_by: { created_at: asc }) {

@@ -600,8 +600,7 @@ export default class Card {
 
   isBasicWeakness(): boolean {
     return this.type_code !== 'scenario' &&
-      this.subtype_code === 'basicweakness' &&
-      this.code !== RANDOM_BASIC_WEAKNESS;
+      this.subtype_code === 'basicweakness';
   }
 
   factionPackSortHeader() {

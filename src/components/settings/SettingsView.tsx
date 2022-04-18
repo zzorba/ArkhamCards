@@ -260,14 +260,21 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 />
               ) }
               { lang === 'de' && (
-                <View style={[space.paddingTopS, space.paddingSideS]}>
-                  <Text style={typography.text}>
-                    { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert und benötigt keinen Dissonant Voices login. Wenn du seine Arbeit unterstützen möchtest, spendiere ihm einen Kaffee auf' }
-                    <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
-                  </Text>
-                </View>
+                <>
+                  <View style={space.paddingS}>
+                    <Text style={typography.text}>
+                      { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert. Wenn du das Projekt unterstützen möchtest, spendiere einen Kaffee auf ' }
+                      <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
+                    </Text>
+                  </View>
+                  <DeckButton
+                    icon="kofi"
+                    title="Hier einen Kaffee spendieren"
+                    onPress={showDeKofi}
+                  />
+                </>
               ) }
-              { lang !== 'ru' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+              { lang !== 'ru' && lang !== 'de' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>
           <SocialBlock />

@@ -80,7 +80,7 @@ export type base_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'archived' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'campaign_guide' | 'chaosBag' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'owner_id' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
+export type campaignKeySpecifier = ('access' | 'access_aggregate' | 'archived' | 'base_decks' | 'base_decks_aggregate' | 'campaignNotes' | 'campaign_guide' | 'chaosBag' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'created_at' | 'cycleCode' | 'deleted' | 'difficulty' | 'guide_version' | 'guided' | 'id' | 'investigator_data' | 'investigator_data_aggregate' | 'investigators' | 'investigators_aggregate' | 'latest_decks' | 'latest_decks_aggregate' | 'link_a_campaign' | 'link_a_campaign_id' | 'link_b_campaign' | 'link_b_campaign_id' | 'link_campaign_id' | 'linked_campaign' | 'name' | 'owner' | 'owner_id' | 'scenarioResults' | 'showInterludes' | 'standaloneId' | 'tarot_reading' | 'updated_at' | 'uuid' | 'weaknessSet' | campaignKeySpecifier)[];
 export type campaignFieldPolicy = {
 	access?: FieldPolicy<any> | FieldReadFunction<any>,
 	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -117,6 +117,7 @@ export type campaignFieldPolicy = {
 	scenarioResults?: FieldPolicy<any> | FieldReadFunction<any>,
 	showInterludes?: FieldPolicy<any> | FieldReadFunction<any>,
 	standaloneId?: FieldPolicy<any> | FieldReadFunction<any>,
+	tarot_reading?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	weaknessSet?: FieldPolicy<any> | FieldReadFunction<any>

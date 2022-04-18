@@ -195,8 +195,7 @@ export interface FullCampaign {
 export interface Campaign {
   id: string;
   name: string;
-  tarot: boolean;
-  campaign_length: number;
+  tarot?: string[];
   version: number;
   position: number;
   cards?: {

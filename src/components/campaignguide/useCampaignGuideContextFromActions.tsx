@@ -247,6 +247,7 @@ export default function useCampaignGuideContextFromActions(
     const guideVersion = campaignData.campaign.guideVersion;
     return new CampaignStateHelper(
       campaignData.campaignState,
+      campaignData.campaign.tarotReading,
       investigators,
       actions,
       guideVersion === undefined ? -1 : guideVersion,

@@ -259,6 +259,23 @@ mutation updateWeaknessSet(
   }
 }
 
+
+mutation updateTarotReading(
+  $campaign_id: Int!,
+  $tarotReading: jsonb!
+) {
+  update_campaign_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      tarot_reading: $tarotReading,
+    },
+  ) {
+    id
+    uuid
+    tarot_reading
+  }
+}
+
 mutation updateCampaignDifficulty(
   $campaign_id: Int!,
   $difficulty: String

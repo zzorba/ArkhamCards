@@ -1,4 +1,4 @@
-import { CampaignId, CampaignNotes, InvestigatorData, ScenarioResult, TraumaAndCardData, WeaknessSet } from '@actions/types';
+import { CampaignId, CampaignNotes, InvestigatorData, ScenarioResult, TarotReading, TraumaAndCardData, WeaknessSet } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import LatestDeckT from './LatestDeckT';
 import MiniCampaignT from './MiniCampaignT';
@@ -13,6 +13,7 @@ export default interface SingleCampaignT extends MiniCampaignT {
   chaosBag: ChaosBag;
   investigatorData: InvestigatorData;
   weaknessSet: WeaknessSet;
+  tarotReading: TarotReading | undefined;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
   linkedCampaignId: CampaignId | undefined;

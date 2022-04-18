@@ -179,7 +179,7 @@ function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
   const { campaignInvestigators, campaign, campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
-  const weaknessCards = useWeaknessCards();
+  const weaknessCards = useWeaknessCards(true);
   if (!processedCampaign) {
     if (processedCampaignError) {
       return <CampaignErrorView message={processedCampaignError} />;

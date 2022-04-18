@@ -2,7 +2,7 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -30,6 +30,7 @@ import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
 import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -750,12 +751,24 @@ export function useTabooSet(tabooSetId: number): TabooSet | undefined {
   return find(tabooSets, tabooSet => tabooSet.id === tabooSetId);
 }
 
-export function useWeaknessCards(tabooSetOverride?: number): CardsMap | undefined {
+export function useWeaknessCards(includeRandomBasicWeakness?: boolean, tabooSetOverride?: number): CardsMap | undefined {
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
-  return playerCards?.weaknessCards;
+  const weaknessCards = playerCards?.weaknessCards;
+  return useMemo(() => {
+    if (!weaknessCards) {
+      return undefined;
+    }
+    const result: CardsMap = {};
+    forEach(weaknessCards, (card, code) => {
+      if (card && (includeRandomBasicWeakness || code !== RANDOM_BASIC_WEAKNESS)) {
+        result[code] = card;
+      }
+    });
+    return result;
+  }, [playerCards, includeRandomBasicWeakness]);
 }
 
 export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {

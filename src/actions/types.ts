@@ -494,6 +494,11 @@ export interface UploadedCampaignId {
 
 export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
+export interface TarotReading {
+  cards: { [scenario: string]: string | undefined };
+  inverted: { [scenario: string]: boolean | undefined };
+}
+
 interface BaseCampaign {
   serverId?: number;
   name: string;
@@ -507,7 +512,7 @@ interface BaseCampaign {
   guided?: boolean;
   guideVersion?: number;
   adjustedInvestigatorData?: InvestigatorData;
-
+  tarotReading?: TarotReading | null;
   archived?: boolean;
 
   // All 'objects' might be optional

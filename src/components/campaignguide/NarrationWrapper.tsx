@@ -250,7 +250,7 @@ function PlayerView({ style }: PlayerProps) {
       return (
         <View>
           <Text style={typography.text}>
-            { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert und benötigt keinen Dissonant Voices login. Wenn du seine Arbeit unterstützen möchtest, spendiere ihm einen Kaffee auf ' }
+            { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert. Wenn du das Projekt unterstützen möchtest, spendiere einen Kaffee auf ' }
             <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
           </Text>
         </View>
