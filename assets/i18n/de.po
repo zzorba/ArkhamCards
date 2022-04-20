@@ -84,7 +84,7 @@ msgid "Event"
 msgstr "Ereignis"
 
 msgid "Skill"
-msgstr "Fähigkeit"
+msgstr "Fertigkeit"
 
 msgid "Basic Weakness"
 msgstr "Grundschwäche"
