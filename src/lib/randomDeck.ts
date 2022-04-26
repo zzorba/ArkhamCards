@@ -129,13 +129,11 @@ export default function randomDeck(
   if (specialFront) {
     forEach(take(shuffle(specialFront.codes), specialFront.min), code => {
       slots[code] = 1;
-      console.log(`SPECIAL[${code}] = 1`)
     })
   }
   if (specialBack) {
     forEach(take(shuffle(specialBack.codes), specialBack.min), code => {
       slots[code] = 1;
-      console.log(`SPECIAL[${code}] = 1`)
     })
   }
 

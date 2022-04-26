@@ -494,6 +494,11 @@ export interface UploadedCampaignId {
 
 export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
+export interface TarotReading {
+  cards: { [scenario: string]: string | undefined };
+  inverted: { [scenario: string]: boolean | undefined };
+}
+
 interface BaseCampaign {
   serverId?: number;
   name: string;
@@ -507,7 +512,7 @@ interface BaseCampaign {
   guided?: boolean;
   guideVersion?: number;
   adjustedInvestigatorData?: InvestigatorData;
-
+  tarotReading?: TarotReading | null;
   archived?: boolean;
 
   // All 'objects' might be optional
@@ -592,7 +597,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;

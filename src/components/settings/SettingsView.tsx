@@ -35,6 +35,7 @@ import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLog
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 import { useSettingFlag, useSettingValue } from '@components/core/hooks';
+import campaigns from '@reducers/campaigns';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -150,6 +151,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
     setSortRespectQuotes(!value);
   }, [setSortRespectQuotes]);
 
+  const [campaignShowDeckId, setCampaignShowDeckId] = useSettingFlag('campaign_show_deck_id');
+
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
   }, [navButtonPressed]);
@@ -233,6 +236,12 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={alphabetizeEncounterSets}
                 onValueChange={setAlphabetizeEncounterSets}
               />
+              <DeckCheckboxButton
+                icon="arkhamdb"
+                title={t`Show deck ids on campaigns`}
+                value={campaignShowDeckId}
+                onValueChange={setCampaignShowDeckId}
+              />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton
                   icon="tools"
@@ -251,14 +260,21 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 />
               ) }
               { lang === 'de' && (
-                <View style={[space.paddingTopS, space.paddingSideS]}>
-                  <Text style={typography.text}>
-                    { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert und benötigt keinen Dissonant Voices login. Wenn du seine Arbeit unterstützen möchtest, spendiere ihm einen Kaffee auf ' }
-                    <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
-                  </Text>
-                </View>
+                <>
+                  <View style={space.paddingS}>
+                    <Text style={typography.text}>
+                      { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert. Wenn du das Projekt unterstützen möchtest, spendiere einen Kaffee auf ' }
+                      <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
+                    </Text>
+                  </View>
+                  <DeckButton
+                    icon="kofi"
+                    title="Hier einen Kaffee spendieren"
+                    onPress={showDeKofi}
+                  />
+                </>
               ) }
-              { lang !== 'ru' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+              { lang !== 'ru' && lang !== 'de' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>
           <SocialBlock />

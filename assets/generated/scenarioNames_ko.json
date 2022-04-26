@@ -1,0 +1,846 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "안개 속 한 줄기 빛"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "진실의 망령"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "문제의 바다"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "천 가지 무시무시한 형체"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "모 아니면 도"
+  },
+  {
+    "id": "arkham",
+    "name": "한밤의 가면"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "이상한 나라의 아컴"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "아미티지의 운명"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "죽음의 문턱에서"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "bad_blood",
+    "name": "악연"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "검은 옥좌 앞에"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "Beneath the Waves"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "잠의 관문을 지나서"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "검은 별이 떠오르다"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "피흘리는 하트"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "모든 것을 집어삼키는 멍울"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "제단에 흘린 피"
+  },
+  {
+    "id": "by_the_book",
+    "name": "수칙대로"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "공포의 사육제"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "옛것의 도시"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "루가루의 저주"
+  },
+  {
+    "id": "curtain_call",
+    "name": "커튼콜"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "달의 어두운 면"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "devil_reef",
+    "name": "악마의 암초"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "어스레한 카르코사"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "돌아온 황혼회 저택에서의 실종"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "서막…?"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "생존자들"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "과거로부터의 메아리"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "전기 신호 속 악몽"
+  },
+  {
+    "id": "endless_night",
+    "name": "끝없는 밤"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "에식스 카운티 특급열차"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "과외 활동"
+  },
+  {
+    "id": "eztli",
+    "name": "에스틀리의 몰락"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "치명적인 신기루"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "치명적인 신기루"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "치명적인 신기루"
+  },
+  {
+    "id": "final_night",
+    "name": "마지막 밤"
+  },
+  {
+    "id": "fools_mate",
+    "name": "바보의 메이트"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "대의를 위하여"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "카르코사의 파편"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "그리폰과 가짜 거북"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "고대 문명의 심장부(1부)"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "고대 문명의 심장부(2부)"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "Hidden Truths"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "공포의 추격전"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "험프티 덤프티"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "얼음과 죽음"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "얼음과 죽음, 1부"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "얼음과 죽음, 2부"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "얼음과 죽음, 3부"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "혼돈의 손아귀에서"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "광기의 미궁"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "지구의 그림자에서"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "너무나 깊은 수렁"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "혼돈의 소용돌이로"
+  },
+  {
+    "id": "introspection",
+    "name": "자아성찰"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "자아성찰 (계속)"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "시공간을 헤매다"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "잃어버린 양자"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "자각 악몽"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "시간을 초월한 음모"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "냐옹라토텝의 역습"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "임무 브리핑"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "엑셀시어 호텔 살인사건"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "돌아올 수 없는 다리"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "광기의 보상"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "잃어버린 영혼"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "Puzzle Pieces"
+  },
+  {
+    "id": "read_or_die",
+    "name": "책이 아니면 죽음을"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "restful_night",
+    "name": "평온한 밤"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "돌아온 진실의 망령"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "돌아온 죽음의 문턱에서"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "돌아온 검은 옥좌 앞에"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "돌아온 검은 별이 떠오르다"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "돌아온 제단에 흘린 피"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "돌아온 커튼콜"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "돌아온 어스레한 카르코사"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "돌아온 과거로부터의 메아리"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "돌아온 에식스 카운티 특급열차"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "돌아온 과외 활동"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "돌아온 대의를 위하여"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "돌아온 고대 문명의 심장부(1부)"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "돌아온 고대 문명의 심장부(2부)"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "돌아온 혼돈의 손아귀에서"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "돌아온 시공간을 헤매다"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "돌아온 산산조각난 영겁"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "돌아온 경계 너머"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "돌아온 기록물의 도시"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "돌아온 요스 깊은 곳으로"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "돌아온 지하 세계의 포식자"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "돌아온 에스틀리의 몰락"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "돌아온 회합"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "돌아온 도박장은 언제나 이긴다"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "돌아온 마지막 왕"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "돌아온 한밤의 가면"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "돌아온 미스캐토닉 박물관"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "돌아온 창백한 가면"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "돌아온 비밀 이름"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "돌아온 입에 담아선 안 될 맹세"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "돌아온 길들지 않은 야생"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "돌아온 죄악의 응보"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "돌아온 마녀의 시간"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "돌아온 운명의 실가닥"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "돌아온 시간을 거슬러"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "돌아온 차원 너머에 보이지 않는 존재"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "돌아온 합일과 환멸"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "돌아온 파멸이 기다리는 곳"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "산산조각난 영겁"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "형제 간 경쟁"
+  },
+  {
+    "id": "starfall",
+    "name": "저무는 별"
+  },
+  {
+    "id": "strange_moons",
+    "name": "기묘한 위성"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "찻잔 속 폭풍"
+  },
+  {
+    "id": "tentacles",
+    "name": "지하 세계의 포식자"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "쉴 수 없는 밤"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "탐사의 끝"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "손짓하는 밀림"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "포로가 되었던 자들"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "어둠"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_attack",
+    "name": "습격"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "The Black Cat"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "경계 너머"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "애벌레"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "기록물의 도시"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "요스 깊은 곳으로"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "The Disappearance"
+  },
+  {
+    "id": "the_dodo",
+    "name": "도도새"
+  },
+  {
+    "id": "the_duchess",
+    "name": "공작부인"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "영원한 잠"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "The Great Ones"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "광기의 심장부"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "광기의 심장부, 1부"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "광기의 심장부, 2부"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "도박장은 언제나 이긴다"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "원로회"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "데이곤의 처소"
+  },
+  {
+    "id": "the_last_king",
+    "name": "마지막 왕"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "사자와 유니콘"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "황색의 기계"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "미스캐토닉 박물관"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "밤의 찬탈자"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "The Oneironauts"
+  },
+  {
+    "id": "the_other_side",
+    "name": "반대편"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "창백한 가면"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "The Pit of Despair"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "진보에는 희생이 따른다"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "카다스를 찾아서"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "비밀 이름"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "The Syzygy"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "누더기호"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "입에 담아선 안 될 맹세"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "The Vanishing of Elina Harper"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "죄악의 응보"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "하얀 여왕"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "마녀의 시간"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "운명의 실가닥"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "금단의 봉우리를 향해"
+  },
+  {
+    "id": "torch",
+    "name": "회합"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Traces of Egil"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "시간을 거슬러"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "운명의 장난"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "차원 너머에 보이지 않는 존재"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "합일과 환멸"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "깨어난 악몽"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "이계 신의 전쟁"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "우주의 가닥을 엮는 자"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "파멸이 기다리는 곳"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "신들이 기거하는 곳"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "야생의 스나크 추적"
+  },
+  {
+    "id": "wilds",
+    "name": "길들지 않은 야생"
+  }
+]

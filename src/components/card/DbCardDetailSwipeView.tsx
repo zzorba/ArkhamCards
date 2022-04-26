@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
+import Carousel from 'react-native-snap-carousel';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { find, filter, map, slice } from 'lodash';
@@ -24,7 +25,6 @@ import StyleContext from '@styles/StyleContext';
 import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
-import Carousel from 'react-native-snap-carousel';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';

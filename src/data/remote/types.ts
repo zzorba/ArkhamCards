@@ -1,5 +1,5 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken } from '@actions/types';
-import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex, filter } from 'lodash';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading } from '@actions/types';
+import { keys, uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex, filter } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
@@ -182,6 +182,7 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
+  tarotReading: TarotReading | undefined;
   linkedCampaignId: CampaignId | undefined;
   guideVersion: number;
   deleted: boolean;
@@ -201,6 +202,7 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
     this.weaknessSet = campaign.weaknessSet || EMPTY_WEAKNESS_SET;
     this.campaignNotes = campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
     this.scenarioResults = campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+    this.tarotReading = campaign.tarot_reading || undefined;
     this.linkedCampaignId = campaign.linked_campaign ? {
       campaignId: campaign.linked_campaign.uuid,
       serverId: campaign.linked_campaign.id,

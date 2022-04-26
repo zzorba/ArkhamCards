@@ -6,6 +6,8 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import TextWithIcons from '../TextWithIcons';
 
 interface Props<T> {
   iconName?: string;
@@ -20,6 +22,7 @@ interface Props<T> {
   last: boolean;
   indicator?: 'check' | 'radio'
 }
+const ARKHAM_ICONS = new Set(['weakness', 'wild']);
 export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
@@ -31,6 +34,9 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
       return iconNode;
     }
     if (iconName) {
+      if (ARKHAM_ICONS.has(iconName)) {
+        return <ArkhamIcon name={iconName} size={32} color={colors.M} />;
+      }
       return <AppIcon name={iconName} size={32} color={colors.M} />;
     }
     return null;
@@ -50,8 +56,8 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
                 <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
                   { text }
                 </Text>
-                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
-                  { description }
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={3} ellipsizeMode="clip">
+                  <TextWithIcons size={16} color={colors.lightText} text={description} />
                 </Text>
               </View>
             ) : (

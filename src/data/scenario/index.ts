@@ -1,4 +1,4 @@
-import { find, flatMap, sortBy } from 'lodash';
+import { find, flatMap, forEach, sortBy } from 'lodash';
 
 import { GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
@@ -8,6 +8,8 @@ import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import Card from '@data/types/Card';
+import { useContext, useMemo } from 'react';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -142,6 +144,37 @@ export function loadTaboos(lang: string): TabooSets | undefined {
     default:
       return undefined;
   }
+}
+
+
+function getScenarioNames(lang: string): { id: string; name: string}[] {
+  switch (lang) {
+    case 'es': return require('../../../assets/generated/scenarioNames_es.json');
+    case 'de': return require('../../../assets/generated/scenarioNames_de.json');
+    case 'ru': return require('../../../assets/generated/scenarioNames_ru.json');
+    case 'fr': return require('../../../assets/generated/scenarioNames_fr.json');
+    case 'it': return require('../../../assets/generated/scenarioNames_it.json');
+    case 'zh': return require('../../../assets/generated/scenarioNames_zh.json');
+    case 'ko': return require('../../../assets/generated/scenarioNames_ko.json');
+    case 'pt': return require('../../../assets/generated/scenarioNames_pt.json');
+    case 'pl': return require('../../../assets/generated/scenarioNames_pl.json');
+    case 'vi': return require('../../../assets/generated/scenarioNames_vi.json');
+    case 'en': return require('../../../assets/generated/scenarioNames.json');
+    default:
+      return [];
+  }
+}
+
+export function useScenarioNames(): { [id: string]: string | undefined } {
+  const { lang } = useContext(LanguageContext);
+  return useMemo(() => {
+   const list = getScenarioNames(lang);
+   const result: { [id: string]: string | undefined } = {};
+   forEach(list, ({ id, name }) => {
+     result[id] = name;
+   });
+   return result;
+  }, [lang]);
 }
 
 

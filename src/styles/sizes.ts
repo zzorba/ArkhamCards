@@ -6,6 +6,7 @@ import DeviceInfo from 'react-native-device-info';
 
 export const TINY_PHONE = (Dimensions.get('window').width < 375);
 export const CARD_RATIO = 7.0 / 5.0;
+export const TAROT_CARD_RATIO = 12 / 7.0;
 
 export const HAS_NOTCH = DeviceInfo.hasNotch();
 export const NOTCH_BOTTOM_PADDING = HAS_NOTCH ? 20 : 0;

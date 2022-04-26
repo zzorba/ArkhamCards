@@ -28,8 +28,10 @@ import { useArkhamDbError } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import { useLatestDecksCards } from '@components/core/hooks';
+import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
 
 const SHOW_WEAKNESS = false;
+const SHOW_TAROT = false;
 
 interface Props {
   componentId: string;
@@ -53,7 +55,6 @@ export default function CampaignDetailTab({
   const reLogin = useCallback(() => login(), [login]);
   const arkhamDbError = useArkhamDbError();
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
-
   const deckActions = useDeckActions();
   const deckUpgradeCompleted = useCallback(async(deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
@@ -159,6 +160,38 @@ export default function CampaignDetailTab({
     cycleCode: campaign.cycleCode,
     processedCampaign,
   });
+
+  const onTarotPress = useCallback((readingType: TarotReadingType) => {
+    Navigation.push<TarotCardReadingProps>(componentId, {
+      component: {
+        name: 'Campaign.Tarot',
+        passProps: {
+          id: campaignId,
+          originalReading: campaign.tarotReading,
+          scenarios: campaignGuide.tarotScenarios(),
+          readingType,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Tarot Reading`,
+            },
+            subtitle: {
+              text: getTarotReadingLabel(readingType),
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignGuide]);
+  const [tarotDialog, showTarotDialog] = useTarotCardReadingPicker({
+    value: undefined,
+    onValueChange: onTarotPress,
+  })
+
   const latestDecks = campaign.latestDecks();
   const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
   return (
@@ -198,6 +231,16 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
+          { SHOW_TAROT && (
+            <DeckButton
+              icon="special_cards"
+              title={t`Tarot Readings`}
+              detail={t`Perform readings with the tarot deck`}
+              color="light_gray"
+              onPress={showTarotDialog}
+              bottomMargin={s}
+            />
+          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"
@@ -241,6 +284,7 @@ export default function CampaignDetailTab({
       </ScrollView>
       { chaosBagDialog }
       { traumaDialog }
+      { tarotDialog }
     </SafeAreaView>
   );
 }

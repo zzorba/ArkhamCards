@@ -12,6 +12,8 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'kofi' |
+  'addcard' |
   'headset' |
   'discord' |
   'vk' |
@@ -26,6 +28,7 @@ export type DeckButtonIcon =
   'log' |
   'finish' |
   'wrench' |
+  'special_cards' |
   'plus-button' |
   'minus-button' |
   'right-arrow' |

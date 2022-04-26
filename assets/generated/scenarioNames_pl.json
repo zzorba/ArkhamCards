@@ -1,0 +1,846 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "Światło pośród mgieł"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "Widmo Prawdy"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "A Sea of Troubles"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "Koszmar Tysiąca Wcieleń"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "Wszystko albo nic"
+  },
+  {
+    "id": "arkham",
+    "name": "Maski Północy"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "Arkham in Wonderland"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "Los Armitage'a"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "U Progu Śmierci"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "bad_blood",
+    "name": "Zła krew"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "Przed Czarnym Tronem"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "Pod falami"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "Przez Wrota Snu"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "Noc Czarnych Gwiazd"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "Bleeding Hearts"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "Śluz, który pożarł wszystko"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "Krew na ołtarzu"
+  },
+  {
+    "id": "by_the_book",
+    "name": "W majestacie prawa"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "Karnawał Koszmarów"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "Miasto Starszych Istot"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "Klątwa Rougarou"
+  },
+  {
+    "id": "curtain_call",
+    "name": "Po Opadnięciu Kurtyny"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "Ciemna Strona Księżyca"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "devil_reef",
+    "name": "Diabelska rafa"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "Mgły Carcosy"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "Powrót Zaginięcia w Posiadłości Świtu"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "Prologue…"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "Ocalali"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "Echa Przeszłości"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "Electric Nightmare"
+  },
+  {
+    "id": "endless_night",
+    "name": "Niekończąca się noc"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "Essex County Express"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "Zajęcia Pozalekcyjne"
+  },
+  {
+    "id": "eztli",
+    "name": "Zguba Eztli"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "Zdradzieckie miraże"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "Zdradzieckie miraże"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "Zdradzieckie miraże"
+  },
+  {
+    "id": "final_night",
+    "name": "Ostatnia noc"
+  },
+  {
+    "id": "fools_mate",
+    "name": "Fool's Mate"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "Dla Większego Dobra"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "Fragment of Carcosa"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "Serce Starszych, Część 1"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "Serce Starszych, Część 2"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "Ukryta prawda"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "Na wysokich obrotach"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "Humpty Dumpty"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "Lód i śmierć"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "Lód i śmierć, Część I"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "Lód i śmierć, Część II"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "Lód i śmierć, Część III"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "W Szponach Chaosu"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "Labirynty Obłędu"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "Zbyt głęboko"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "W głąb wiru"
+  },
+  {
+    "id": "introspection",
+    "name": "Introspection"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "Introspection (continued)"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "Zagubieni w Czasie i Przestrzeni"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "Lost Quantum"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "Lucid Nightmare"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "Machinacje w czasie"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "Intrygi Miaulathotepa"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "Mission Briefing"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "Morderstwo w Hotelu Excelsior"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "Nie Ma Odwrotu"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "Dar obłędu"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "Zagubiona dusza"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "Fragmenty układanki"
+  },
+  {
+    "id": "read_or_die",
+    "name": "Przeczytaj lub zgiń"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "restful_night",
+    "name": "Noc odpoczynku"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "Powrót Widma Prawdy"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "Powrót U progu śmierci"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "Powrót Przed Czarnym Tronem"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "Powrót Nocy Czarnych Gwiazd"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "Powrót Krwi na Ołtarzu"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "Powrót po Opadnięciu Kurtyny"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "Powrót Mgieł Carcosy"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "Powrót Ech Przeszłości"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "Powrót Essex County Express"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "Powrót Zajęć Pozalekcyjnych"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "Powrót Dla większego dobra"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "Powrót Serca Starszych, Część 1"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "Powrót Serca Starszych, Część 2"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "Powrót W szponach chaosu"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "Powrót Zagubionych w Czasie i Przestrzeni"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "Powrót Rozbitej wieczności"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "Powrót Poza granice czasu"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "Powrót Miasta archiwów"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "Powrót Czeluści Yoth"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "Powrót Pożeracza z otchłani"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "Powrót Zguby Eztli"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "Powrót Zgromadzenia"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "Powrót Kasyno Zawsze Wygrywa"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "Powrót Ostatniego Króla"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "Powrót Masek północy"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "Powrót Muzeum Miskatonic"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "Powrót Bladej Maski"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "Powrót Sekretnego imienia"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "Powrót Nieopisywalnej Przysięgi"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "Powrót Dzikich ostępów"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "Powrót Zapłaty za grzechy"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "Powrót Godziny duchów"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "Powrót Nici losu"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "Powrót Cofnąć czas"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "Powrót Bezwymiarowych i Niewidzialnych"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "Powrót Zjednoczenia i zwątpienia"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "Powrót Gdzie Czeka Zagłada"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "Rozbita Wieczność"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "Sibling Rivalry"
+  },
+  {
+    "id": "starfall",
+    "name": "Starfall"
+  },
+  {
+    "id": "strange_moons",
+    "name": "Strange Moons"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "Tempest in a Teapot"
+  },
+  {
+    "id": "tentacles",
+    "name": "Pożeracz z Otchłani"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "Niespokojne noce"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "Koniec ekspedycji"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "Zew dżungli"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "Pojmani"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "Ciemność"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_attack",
+    "name": "Atak"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "Czarny kot"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "Poza Granicami Czasu"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "The Caterpillar"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "Miasto Archiwów"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "Czeluście Yoth"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "Zniknięcie"
+  },
+  {
+    "id": "the_dodo",
+    "name": "The Dodo"
+  },
+  {
+    "id": "the_duchess",
+    "name": "The Duchess"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "Wieczny Sen"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "Wielcy"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "Serce szaleństwa"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "Serce szaleństwa, Część I"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "Serce szaleństwa, Część II"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "Kasyno Zawsze Wygrywa"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "Wewnętrzny krąg"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "Leże Dagona"
+  },
+  {
+    "id": "the_last_king",
+    "name": "Ostatni Król"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "The Lion and the Unicorn"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "The Machine in Yellow"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "Muzeum Miskatonic"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "Uzurpator Nocy"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "Oneironauci"
+  },
+  {
+    "id": "the_other_side",
+    "name": "Druga strona"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "Blada Maska"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "Jama rozpaczy"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "Cena postępu"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "Poszukiwania Kadath"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "Sekretne Imię"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "Koniunkcja"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "The Tatterdemalion"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "Nieopisywalna Przysięga"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "Zniknięcie Eliny Harper"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "Zapłata za Grzechy"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "The White Queen"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "Godzina Duchów"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "Nici Losu"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "Na zakazane szczyty"
+  },
+  {
+    "id": "torch",
+    "name": "Zgromadzenie"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Ślady Egila"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "Cofnąć Czas"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "Zrządzenie losu"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "Bezwymiarowe i Niewidzialne"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "Zjednoczenie i Zwątpienie"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "Koszmar na Jawie"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "Wojna Bogów Zewnętrznych"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "Tkaczka Kosmosu"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "Gdzie Czeka Zagłada"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "Gdzie Mieszkają Bogowie"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "Wild Snark Chase"
+  },
+  {
+    "id": "wilds",
+    "name": "Dzikie Ostępy"
+  }
+]

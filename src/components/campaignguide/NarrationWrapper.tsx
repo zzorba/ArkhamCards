@@ -1,16 +1,18 @@
-import { isEqual, findIndex, filter, map, forEach } from 'lodash';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { isEqual, findIndex, filter, map, forEach, find } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
   StyleSheet,
   Text,
+  Linking,
   TouchableHighlight,
   View,
   ViewStyle,
   EmitterSubscription,
   TouchableOpacity,
 } from 'react-native';
+import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
@@ -20,6 +22,8 @@ import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
 import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
+import { useDialog } from '@components/deck/dialogs';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 
 function Divider() {
@@ -166,6 +170,16 @@ function ProgressView() {
   );
 }
 
+
+async function restart() {
+  try {
+    const trackPlayer = await narrationPlayer();
+    await trackPlayer.seekTo(0);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 async function replay() {
   try {
     const trackPlayer = await narrationPlayer();
@@ -192,11 +206,18 @@ async function nextTrack() {
   }
 }
 
+
+function showDeKofi() {
+  Linking.openURL('https://ko-fi.com/simplainer');
+}
+
 function PlayerView({ style }: PlayerProps) {
-  const { colors } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const { colors, typography } = useContext(StyleContext);
   const trackIndex = useCurrentTrack();
   const track = useTrackDetails(trackIndex);
   const queue = useTrackPlayerQueue();
+  const firstTrack = useMemo(() => !!track && findIndex(queue, t => t.url === track.url) === 0, [queue, track]);
   const state: State = usePlaybackState();
   const onReplayPress = usePressCallback(replay, 250);
 
@@ -214,8 +235,38 @@ function PlayerView({ style }: PlayerProps) {
     }
   }, [track, state]);
   const onPlayPress = usePressCallback(onPlay, 250);
-  const onPreviousPress = usePressCallback(previousTrack, 250);
+  const previousTrackAction = useCallback(() => {
+    if (firstTrack) {
+      restart();
+    } else {
+      previousTrack();
+    }
+  }, [firstTrack]);
+  const onPreviousPress = usePressCallback(previousTrackAction, 250);
   const onNextPress = usePressCallback(nextTrack, 250);
+
+  const infoContent = useMemo(() => {
+    if (lang === 'de') {
+      return (
+        <View>
+          <Text style={typography.text}>
+            { 'Die deutsche Vertonung wird von "SIMPLAINER" produziert. Wenn du das Projekt unterstützen möchtest, spendiere einen Kaffee auf ' }
+            <Text key="de_kofi" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showDeKofi}>www.ko-fi.com/simplainer</Text>.
+          </Text>
+        </View>
+      );
+    }
+    if (lang === 'ru') {
+      return null;
+    }
+    return null;
+  }, [lang])
+
+  const { dialog, showDialog } = useDialog({
+    title: t`What is this?`,
+    content: infoContent,
+    allowDismiss: true,
+  });
   useTrackPlayerEvents([Event.PlaybackError], ({ message, code }) => {
     if (code === 'playback-source') {
       if (message === 'Response code: 403') {
@@ -242,6 +293,7 @@ function PlayerView({ style }: PlayerProps) {
           height: m * 2 + 32,
           alignItems: 'center',
           padding: m,
+          paddingRight: infoContent ? m + 8 : m,
         }}
       >
         <View style={styles.leftRow}>
@@ -263,9 +315,16 @@ function PlayerView({ style }: PlayerProps) {
         ) : (
           <PlayButton onPress={onPlayPress} />
         ) }
-        <NextButton onPress={onNextPress} />
+        <NextButton
+          onPress={onNextPress}
+          disabled={!track || findIndex(queue, t => t.url === track?.url) + 1 >= queue.length}
+        />
+        <View style={{ position: 'absolute', top: 0, right: 0 }}>
+          { !!infoContent && <InfoButton onPress={showDialog} />}
+        </View>
       </View>
       <ProgressView />
+      { dialog }
     </View>
   );
 }
@@ -325,16 +384,17 @@ interface PlaybackButtonProps {
   name: string;
   type?: string;
   size?: number;
+  disabled?: boolean;
   onPress?: () => void;
 }
 
-function PlaybackButton({ name, size = 30, onPress }: PlaybackButtonProps) {
+function PlaybackButton({ name, size = 30, onPress, disabled }: PlaybackButtonProps) {
   const { colors } = useContext(StyleContext);
   return (
     <View style={{ padding: 2 }}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} disabled={disabled}>
         <View>
-          <MaterialIcons name={name} size={size} color={colors.D30} />
+          <MaterialIcons name={name} size={size} color={disabled ? colors.D10 : colors.D30} />
         </View>
       </TouchableOpacity>
     </View>
@@ -343,6 +403,7 @@ function PlaybackButton({ name, size = 30, onPress }: PlaybackButtonProps) {
 
 interface ButtonProps {
   onPress?: () => void;
+  disabled?: boolean;
 }
 function PreviousButton({ onPress }: ButtonProps) {
   return <PlaybackButton name="skip-previous" onPress={onPress} />;
@@ -353,11 +414,15 @@ function PlayButton({ onPress }: ButtonProps) {
 function PauseButton({ onPress }: ButtonProps) {
   return <PlaybackButton name="pause" onPress={onPress} />;
 }
-function NextButton({ onPress }: ButtonProps) {
-  return <PlaybackButton name="skip-next" onPress={onPress} />;
+function NextButton({ onPress, disabled }: ButtonProps) {
+  return <PlaybackButton name="skip-next" disabled={disabled} onPress={onPress} />;
 }
 function ReplayButton({ onPress }: ButtonProps) {
   return <PlaybackButton name="replay" onPress={onPress} />;
+}
+
+function InfoButton({ onPress }: ButtonProps) {
+  return <PlaybackButton size={24} name="info" onPress={onPress} />;
 }
 
 interface TrackProps {

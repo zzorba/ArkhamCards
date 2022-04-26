@@ -15,6 +15,7 @@ import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
 import ListToggleButton from '@components/deck/ListToggleButton';
 import Toast from '@components/Toast';
+import TarotOverlay from '@components/core/TarotOverlay';
 
 interface ProviderProps<S> {
   store: S;
@@ -54,6 +55,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.WeaknessSet': return require('@components/campaignguide/WeaknessSetView').default;
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/social/FriendsView').default;
+    case 'Campaign.Tarot': return require('@components/campaign/TarotCardReadingView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
     case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
@@ -132,6 +134,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
+  Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
   Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);

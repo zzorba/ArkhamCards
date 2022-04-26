@@ -11,6 +11,7 @@ mutation uploadNewCampaign(
   $scenarioResults: jsonb,
   $chaosBag: jsonb,
   $weaknessSet: jsonb,
+  $tarotReading: jsonb,
   $guideVersion: Int,
   $inputs: [guide_input_insert_input!]!,
   $achievements: [guide_achievement_insert_input!]!,
@@ -55,6 +56,7 @@ mutation uploadNewCampaign(
       scenarioResults: $scenarioResults
       weaknessSet: $weaknessSet
       guide_version: $guideVersion
+      tarot_reading: $tarotReading
     }
 	) {
     ...FullCampaign

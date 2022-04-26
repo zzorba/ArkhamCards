@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import Ripple from '@lib/react-native-material-ripple';
@@ -8,7 +8,7 @@ import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
-  icon?: string;
+  icon?: string | React.ReactNode;
   title: string;
   valueLabel: string | React.ReactNode;
   valueLabelDescription?: string;
@@ -19,6 +19,7 @@ interface Props {
   onPress?: () => void;
   noLabelDivider?: boolean;
   editIcon?: string;
+  theme?: 'light' | 'dark';
 }
 
 function iconSize(icon: string) {
@@ -42,8 +43,30 @@ export default function DeckPickerStyleButton({
   onPress,
   noLabelDivider,
   editIcon = 'edit',
+  theme = 'light',
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const iconNode = useMemo(() => {
+    if (!icon) {
+      return null;
+    }
+    if (typeof icon === 'string') {
+      return (
+        <View style={styles.icon}>
+          { icon === 'per_investigator' ? (
+            <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
+          ) : (
+            <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
+          ) }
+        </View>
+      );
+    }
+    return (
+      <View style={styles.icon}>
+        {icon}
+      </View>
+    );
+  }, [icon, colors]);
   return (
     <Ripple
       onPress={onPress}
@@ -53,28 +76,20 @@ export default function DeckPickerStyleButton({
         space.paddingTopS,
         first ? styles.roundTop : undefined,
         last ? styles.roundBottom : undefined,
-        { backgroundColor: colors.L20 },
+        { backgroundColor: theme === 'light' ? colors.L20 : colors.D20 },
       ]}
-      rippleColor={colors.L30}
+      rippleColor={theme === 'light' ? colors.L30 : colors.D10}
     >
       <View style={[styles.row, space.paddingBottomS, !last ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         <View style={styles.leftRow}>
-          { !!icon && (
-            <View style={styles.icon}>
-              { icon === 'per_investigator' ? (
-                <ArkhamIcon name={icon} size={iconSize(icon)} color={colors.M} />
-              ) : (
-                <AppIcon name={icon} size={iconSize(icon)} color={colors.M} />
-              ) }
-            </View>
-          ) }
+          { iconNode }
           <View style={styles.column}>
-            <Text style={[typography.smallLabel, typography.dark, typography.italic]}>
+            <Text style={[typography.smallLabel, { color: theme === 'light' ? colors.D30 : colors.L30 }, typography.italic]}>
               { title }
             </Text>
             <View style={[styles.row, space.paddingTopXs]}>
               { typeof valueLabel === 'string' ? (
-                <Text style={[typography.large]}>
+                <Text style={[typography.large, { color: theme === 'light' ? colors.D30 : colors.L30 }]}>
                   { valueLabel }
                 </Text>
               ) : valueLabel }

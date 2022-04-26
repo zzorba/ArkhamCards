@@ -15,7 +15,7 @@ export function useAudioAccess(): [boolean, string | undefined] {
 
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
-  getTrack: (id: number) => Promise<Track>;
+  getTrack: (id: number) => Promise<Track | null>;
   getState: () => Promise<State>;
   addEventListener: (type: Event, listener: (data: any) => void) => EmitterSubscription;
   getCurrentTrack: () => Promise<number>;

@@ -5220,6 +5220,153 @@ msgstr ""
 msgid "Take"
 msgstr ""
 
+#, javascript-format
+msgid "Tarot: ${ card.title } · Inverted"
+msgstr ""
+
+msgid "Tarot: ${ card.title }"
+msgstr ""
+
+msgid ""
+"If you are using the digital chaos bag in the app, be sure to enable the "
+"tarot option on the chaos bag screen."
+msgstr ""
+
+msgid "Show deck ids on campaigns"
+msgstr ""
+
+msgid "Tarot Reading"
+msgstr ""
+
+msgid "Tarot Readings"
+msgstr ""
+
+msgid "Perform readings with the tarot deck"
+msgstr ""
+
+msgid "What is this?"
+msgstr ""
+
+msgid ""
+"Reveal the top card in a random orientation. It's effects are active "
+"throughout the scenario, and could be positive or negative, depending on "
+"its orientation. This reading is ideal if you want to add a splash of chaos "
+"to a scenario."
+msgstr ""
+
+msgid ""
+"Reveal the top two cards, one in the upright position and one in the "
+"reversed position. Their effects are active throughout the scenario. One "
+"card has a positive effect, the other has a negative effect. This reading "
+"is ideal if you want to add a touch of randomness or replay value to a "
+"scenario, but desire a more balanced effect."
+msgstr ""
+
+msgid ""
+"Reveal three cards in the upright position. Then, choose and reverse 2 of "
+"them. The effects of all 3 cards are active throughout the scenario. One "
+"card has a positive effect and the other two negative, but the "
+"investigators decide which is which. This reading is ideal if you want to "
+"add an element of strategic decision-making during your reading."
+msgstr ""
+
+msgid ""
+"Before starting a campaign, reveal one card for each scenarion in the "
+"campaign, ignoring side stories and counting scenarios with multiple parts "
+"as separate scenarios. Place each card in a line, in the upright position. "
+"Each of these cards applies to one scenario in the campaign. Then, choose "
+"and reverse half of the cards (rounded up). This reading is ideal if you "
+"want your readings to have long-term consequences and force you to plan "
+"ahead."
+msgstr ""
+
+msgid ""
+"Draw 3 random cards from the tarot deck and choose 1. Place the chosen card "
+"in front of you, in the upright position. Each other investigator ignores "
+"its effects."
+msgstr ""
+
+msgid ""
+"Draw a random card from the tarot deck and place the chosen card in front "
+"of you, in the reverse position. Each other investigator ignores its "
+"effects."
+msgstr ""
+
+msgid ""
+"There are endless possible readings that you could perform using the Tarot "
+"Deck. Feel free to create your own!"
+msgstr ""
+
+msgid "Choose two cards to reverse."
+msgstr ""
+
+msgid "Reverse half of the cards (rounded up)."
+msgstr ""
+
+msgid "Choose one card."
+msgstr ""
+
+msgid "Draw and reverse cards however you like!"
+msgstr ""
+
+msgid "Reveal"
+msgstr ""
+
+#, javascript-format
+msgid "${ card.title } - Inverted"
+msgstr ""
+
+msgid "Inverted"
+msgstr ""
+
+msgid "Upright"
+msgstr ""
+
+msgid "A single card in a random position."
+msgstr ""
+
+msgid "Two cards, one upright and one reversed."
+msgstr ""
+
+msgid "Reveal three upright cards, choose two to reverse."
+msgstr ""
+
+msgid "A reading for the full campaign."
+msgstr ""
+
+msgid "Choose from three upright cards."
+msgstr ""
+
+msgid "A single reversed card."
+msgstr ""
+
+msgid "Draw cards in random positions."
+msgstr ""
+
+msgid "Choose reading type"
+msgstr ""
+
+msgid "You must flip all cards to reveal your fate."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Too many card reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Not enough cards reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+msgid "Reject fate (redraw)"
+msgstr ""
+
+msgid "Deck Id"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -7044,6 +7191,34 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "tarot-reading"
+msgid "Chaos"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Balance"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Choice"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Destiny"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Observed"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Damned"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Custom"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"
