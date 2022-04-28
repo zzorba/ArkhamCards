@@ -284,6 +284,12 @@ export const getAllPacks = createSelector(
             name: t`Consternation on the Constellation`,
             position: 6,
           },
+          {
+            code: 'zez',
+            cycle_code: 'fan',
+            name: t`Symphony of Erich Zann`,
+            position: 7,
+          },
         ], (p): Pack => {
           return {
             id: p.code,
