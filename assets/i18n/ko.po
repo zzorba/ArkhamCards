@@ -3949,7 +3949,7 @@ msgid "Fan-Made Campaigns"
 msgstr "팬 제작 캠페인"
 
 msgid "Fan-Made Content"
-msgstr "팬 제작 컨텐츠"
+msgstr "멍컴호러 및 팬 제작 콘텐츠"
 
 msgid "Fetching account details..."
 msgstr "계정 세부사항을 가져오는 중..."
@@ -5237,6 +5237,9 @@ msgstr "플레이어"
 msgid "Barkham Horror"
 msgstr "멍컴호러"
 
+msgid "Symphony of Erich Zann"
+msgstr "에리히 잔의 교향곡"
+
 msgid "Show all available cards for parallel"
 msgstr "사용가능한 모든 평행 카드 보기"
 
@@ -6508,6 +6511,10 @@ msgid "Dunwich"
 msgstr "던위치"
 
 msgctxt "trait"
+msgid "Eidolon"
+msgstr ""
+
+msgctxt "trait"
 msgid "Eldritch"
 msgstr "섬뜩한"
 
@@ -6608,12 +6615,16 @@ msgid "Ghoul"
 msgstr "구울"
 
 msgctxt "trait"
+msgid "Glacier"
+msgstr ""
+
+msgctxt "trait"
 msgid "Government"
 msgstr "정부"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr "기금"
+msgstr "후원금"
 
 msgctxt "trait"
 msgid "Graveyard"
@@ -6793,6 +6804,10 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mountain"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountains"
 msgstr ""
 
 msgctxt "trait"
@@ -7162,6 +7177,10 @@ msgstr "함정"
 msgctxt "trait"
 msgid "Trick"
 msgstr "속임수"
+
+msgctxt "trait"
+msgid "Uncharted"
+msgstr ""
 
 msgctxt "trait"
 msgid "Unhallowed"
