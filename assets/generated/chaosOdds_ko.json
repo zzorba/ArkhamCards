@@ -4772,7 +4772,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Music]] treacheries in play.",
+          "prompt": "플레이 영역에 있는 [[음악]] 음모 개수의 총합.",
           "min": 0,
           "reveal_another": true
         }
