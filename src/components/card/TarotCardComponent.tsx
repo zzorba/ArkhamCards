@@ -5,7 +5,7 @@ import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTi
 
 import { TAROT_CARD_RATIO } from '@styles/sizes';
 import FastImage from 'react-native-fast-image';
-import { TarotCard } from '@components/campaign/constants';
+import { TarotCard } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
 import space from '@styles/space';

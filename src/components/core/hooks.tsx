@@ -248,8 +248,16 @@ interface SyncCountAction {
 export interface Counters {
   [code: string]: number | undefined;
 }
-export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string, min?: number) => void, (code: string, value: number) => void, (values: Counters) => void] {
-  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction) => {
+
+type IncCounter = (code: string, max?: number) => void;
+type DecCounter = (code: string, min?: number) => void;
+type SetCounter = (code: string, value: number) => void;
+type ResetCounters = (values: Counters) => void;
+export function useCounters(initialValue: Counters): [Counters, IncCounter, DecCounter, SetCounter, ResetCounters] {
+  const [value, updateValue] = useReducer((
+    state: Counters,
+    action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction
+  ) => {
     switch (action.type) {
       case 'set':
         return {

@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
+  Share as LegacyShare
 } from 'react-native';
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
@@ -169,13 +170,19 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
                 JSON.stringify(backupData),
                 'utf8'
               );
-              await Share.open({
-                url: `file://${path}`,
-                saveToFiles: true,
-                filename,
-                title: filename,
-                type: 'text/json',
-              });
+              if (Platform.Version && parseInt(`${Platform.Version}`, 10) < 13) {
+                await LegacyShare.share({
+                  url: `file://${path}`,
+                });
+              } else {
+                await Share.open({
+                  url: `file://${path}`,
+                  saveToFiles: true,
+                  filename,
+                  title: filename,
+                  type: 'text/json',
+                });
+              }
             } else {
               await Share.open({
                 title: t`Save backup`,

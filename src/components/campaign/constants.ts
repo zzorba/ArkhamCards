@@ -322,8 +322,42 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Fatal Mirage`, code: 'fatal_mirage_2', pack_code: 'eoec' },
       { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
     ];
-    case CROWN_OF_EGIL:
+    case DARK_MATTER:
+      return [
+        { name: t`Prologue`, code: 'dm_prologue', pack_code: 'zdm', interlude: true },
+        { name: t`The Tatterdemalion`, code: 'the_tatterdemalion', pack_code: 'zdm' },
+        { name: t`Electric Nightmare`, code: 'electric_nightmare', pack_code: 'zdm' },
+        { name: t`Mission Briefing`, code: 'mission_briefing', pack_code: 'zdm', interlude: true },
+        { name: t`Lost Quantum`, code: 'lost_quantum', pack_code: 'zdm' },
+        { name: t`In the Shadow of Earth`, code: 'in_the_shadow_of_earth', pack_code: 'zdm' },
+        { name: t`Strange Moons`, code: 'strange_moons', pack_code: 'zdm' },
+        { name: t`Introspection`, code: 'introspection', pack_code: 'zdm', interlude: true },
+        { name: t`The Machine in Yellow`, code: 'the_machine_in_yellow', pack_code: 'zdm' },
+        { name: t`Fragment of Carcosa`, code: 'fragment_of_carcosa', pack_code: 'zdm' },
+        { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
+        { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
+      ];
     case ALICE_IN_WONDERLAND:
+      return [
+        { name: t`Prologue`, code: 'aw_prologue', pack_code: 'zaw', interlude: true },
+        { name: t`Arkham in Wonderland`, code: 'arkham_in_wonderland', pack_code: 'zaw' },
+        { name: t`The Dodo`, code: 'the_dodo', pack_code: 'zaw', interlude: true },
+        { name: t`A Sea of Troubles`, code: 'a_sea_of_troubles', pack_code: 'zaw' },
+        { name: t`The Caterpillar`, code: 'the_caterpillar', pack_code: 'zaw', interlude: true },
+        { name: t`Tempest in a Teapot`, code: 'tempest_in_a_teapot', pack_code: 'zaw' },
+        { name: t`The Duchess`, code: 'the_duchess', pack_code: 'zaw', interlude: true },
+        { name: t`Bleeding Hearts`, code: 'bleeding_hearts', pack_code: 'zaw' },
+        { name: t`Gryphon and Mock Turtle`, code: 'gryphon_and_mock_turtle', pack_code: 'zaw', interlude: true },
+        { name: t`Wild Snark Chase`, code: 'wild_snark_chase', pack_code: 'zaw' },
+        { name: t`Humpty Dumpty`, code: 'humpty_dumpty', pack_code: 'zaw', interlude: true },
+        { name: t`Sibling Rivalry`, code: 'sibling_rivalry', pack_code: 'zaw' },
+        { name: t`The Lion and the Unicorn`, code: 'the_lion_and_the_unicorn', pack_code: 'zaw', interlude: true },
+        { name: t`Fool's Mate`, code: 'fools_mate', pack_code: 'zaw' },
+        { name: t`The White Queen`, code: 'the_white_queen', pack_code: 'zaw', interlude: true },
+        { name: t`Lucid Nightmare`, code: 'Lucid Nightmare', pack_code: 'zaw' },
+        { name: t`Epilogue`, code: 'aw_epilogue', pack_code: 'zaw', interlude: true },
+      ];
+    case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
     case DARK_MATTER:
     case TDE:

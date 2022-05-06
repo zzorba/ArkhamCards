@@ -157,7 +157,7 @@ function parseSpecialTokenValuesText(
                   token,
                   text: effectText,
                   value: {
-                    reveal_another: true,
+                    reveal_another: 1,
                     modifier: 0,
                   },
                 });
@@ -185,11 +185,15 @@ function parseSpecialTokenValuesText(
                   ...token.condition.default_value,
                   modifier: typeof token.condition.default_value.modifier === 'number' ? 0 : token.condition.default_value.modifier,
                 },
-                prompt: token.condition.prompt,
-                modified_value: {
-                  ...token.condition.modified_value,
-                  modifier: typeof token.condition.modified_value.modifier === 'number' ? 0 : token.condition.modified_value.modifier,
-                },
+                options: map(token.condition.options, option => {
+                  return {
+                    prompt: option.prompt,
+                    modified_value: {
+                      ...option.modified_value,
+                      modifier: typeof option.modified_value.modifier === 'number' ? 0 : option.modified_value.modifier,
+                    },
+                  };
+                }),
               },
               text: jimText,
             };
@@ -289,7 +293,9 @@ function parseSpecialTokenValuesText(
 interface SpecialTokenRender {
   token: ChaosTokenType;
   textModifier: string
+  revealCount: number;
   modifier: number;
+  doubleNextToken?: boolean;
   count: number;
   countRender?: number;
   color: string;
@@ -334,14 +340,15 @@ function NumberInput({ title, value, color, inc, dec }: {
   );
 }
 
-function isPassing(value: ChaosTokenModifier, modifiedSkill: number, testDifficulty: number): boolean {
+function isPassing(value: ChaosTokenModifier, modifiedSkill: number, testDifficulty: number, doubleNextToken?: boolean): boolean {
   if (value.modifier === 'auto_succeed') {
     return true;
   }
   if (value.modifier === 'auto_fail') {
     return false;
   }
-  return Math.max(0, value.modifier + modifiedSkill) >= testDifficulty;
+  const modifiedDifficulty = testDifficulty + (value.increase_difficulty || 0);
+  return Math.max(0, value.modifier * (doubleNextToken ? 2 : 1) + modifiedSkill) >= modifiedDifficulty;
 }
 
 function calculatePassingOdds(
@@ -349,7 +356,9 @@ function calculatePassingOdds(
   chaosBagResults: ChaosBagResultsT,
   specialTokenValues: SimpleChaosTokenValue[],
   modifiedSkill: number,
-  testDifficulty: number
+  testDifficulty: number,
+  revealCount: number,
+  doubleNextToken?: boolean
 ) {
   const flatTokens = flatMap(flattenChaosBag(chaosBag, chaosBagResults.tarot), token => {
     const value: undefined | ChaosTokenModifier = getChaosTokenValue(token, specialTokenValues);
@@ -361,7 +370,7 @@ function calculatePassingOdds(
       token,
     };
   });
-  const [passing, failing] = partition(flatTokens, t => isPassing(t.value, modifiedSkill, testDifficulty));
+  const [passing, failing] = partition(flatTokens, t => isPassing(t.value, modifiedSkill, testDifficulty, doubleNextToken));
   const total = passing.length + failing.length;
   if (total === 0) {
     return 0;
@@ -568,7 +577,7 @@ function ChaosBagOddsSection({
                 <View style={[space.paddingTopS, space.paddingRightXs]}>
                   <Text style={[typography.large, { color: colors.warn }, typography.right]}>{failPercent}%</Text>
                   <Text style={[typography.smallLabel, { color: colors.warn }, typography.right]} ellipsizeMode="clip" numberOfLines={1}>
-                    {tokenRatioString(failingTokens, bagTotal)}
+                    { tokenRatioString(failingTokens, bagTotal) }
                   </Text>
                 </View>
               </View>
@@ -623,6 +632,8 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         textModifier: t.value.modifier > 0 ? `+${t.value.modifier}` : `${t.value.modifier}`,
         modifier: t.value.modifier === 'auto_fail' || t.value.modifier === 'auto_succeed' ? SPECIAL_ODDS[t.value.modifier] : t.value.modifier,
         token: t.token,
+        revealCount: t.value.reveal_another,
+        doubleNextToken: t.value.double_next_modifier,
         count: chaosBag[t.token] || 0,
         color: colors.D30,
       };
@@ -633,6 +644,8 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         textModifier: '+2',
         modifier: 2,
         count: bless,
+        revealCount: 1,
+        doubleNextToken: false,
         color: colors.token.bless,
       });
     }
@@ -641,6 +654,8 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         token: 'curse',
         textModifier: '-2',
         modifier: -2,
+        revealCount: 1,
+        doubleNextToken: false,
         count: curse,
         color: colors.token.curse,
       });
@@ -650,6 +665,8 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         token: 'frost',
         textModifier: '-1',
         modifier: -1,
+        doubleNextToken: false,
+        revealCount: 1,
         count: frost,
         color: colors.token.frost,
       });
@@ -659,18 +676,35 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         token: 'frost',
         textModifier: t`Auto-Fail`,
         modifier: -100,
+        doubleNextToken: false,
+        revealCount: 1,
         count: frost,
         color: colors.token.frost,
       });
     }
-    const basePass = calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty)
+    const basePass = calculatePassingOdds(
+      chaosBag,
+      chaosBagResults,
+      specialTokenValues,
+      modifiedSkill,
+      testDifficulty,
+      1
+    );
     return map(drawAnotherTokens, t => {
       if (t.modifier === 0) {
         return { ...t, boost: undefined };
       }
-      const minBoost = calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill + t.modifier, testDifficulty) - basePass;
+      const minBoost = calculatePassingOdds(
+        chaosBag,
+        chaosBagResults,
+        specialTokenValues,
+        modifiedSkill + t.modifier,
+        testDifficulty,
+        t.revealCount,
+        t.doubleNextToken
+      ) - basePass;
 
-      const totalNonDrawAnotherTokens = total - (sumBy(drawAnotherTokens, x => x.count));
+      const totalNonDrawAnotherTokens = total - sumBy(drawAnotherTokens, x => x.count);
       if (t.token === 'frost') {
         if (t.modifier === -100) {
           // This is the draw 2 auto-fail
@@ -690,7 +724,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
             ...chaosBag,
             frost: 0,
             auto_fail: 1 + (t.count - 1),
-          }, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty);
+          }, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty, 1);
 
           const oddsAdjustment = Math.round((oddsOfDrawingOneFrost * oddsOfFailingViaFrost) - basePass);
           return {
@@ -712,7 +746,15 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         };
       }
 
-      const maxBoost = t.count > 1 ? calculatePassingOdds(chaosBag, chaosBagResults, specialTokenValues, modifiedSkill + t.modifier * t.count, testDifficulty) - basePass : minBoost;
+      const maxBoost = t.count > 1 ? calculatePassingOdds(
+        chaosBag,
+        chaosBagResults,
+        specialTokenValues,
+        modifiedSkill + t.modifier * t.count,
+        testDifficulty,
+        t.revealCount * t.count,
+        t.doubleNextToken
+      ) - basePass : minBoost;
       return {
         ...t,
         boost: {
@@ -730,7 +772,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
   }
   return (
     <View style={space.paddingTopS}>
-      { map(finalTokens, ({ token, modifier, textModifier, count, countRender, boost, color }) => {
+      { map(finalTokens, ({ token, modifier, textModifier, count, countRender, revealCount, boost, color }) => {
         return (
           <View style={[styles.specialTokenRow, space.paddingVerticalXs]} key={token}>
             <View style={[styles.specialTokenValue, space.paddingSideS, { minWidth: 64 }]}>
@@ -758,7 +800,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
             <View style={[styles.specialTokenTextColumn, space.paddingSideS]}>
               <View style={{ minWidth: Math.min(width * 0.25, 120) }}>
                 <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
-                  {modifier === -100 ? textModifier : t`${textModifier}, draws another`}
+                  { modifier === -100 ? textModifier : (revealCount > 1 ? t`${textModifier}, draws another ${revealCount}}` : t`${textModifier}, draws another`)}
                 </Text>
                 <Text style={[typography.small, { color }]}>
                   { boost ? `${boost.min}${boost.min !== boost.max ? ` ~ ${boost.max}` : ''}` : ' ' }
@@ -834,7 +876,7 @@ export default function OddsCalculatorComponent({
     });
   }, [standalonePacks, scenarioCards]);
 
-  const [tokenFlags, toggleTokenFlag] = useToggles({});
+  const [tokenChoices, ,, setTokenChoice, resetTokenChoices] = useCounters({});
 
   const items: Item<Scenario | undefined>[] = useMemo(() => {
     return [
@@ -969,15 +1011,16 @@ export default function OddsCalculatorComponent({
           };
         }
         if (tokenValue.type === 'condition') {
+          const value = tokenChoices[tokenValue.token] || 0;
           return {
             token: tokenValue.token,
-            value: tokenFlags[tokenValue.token] ? tokenValue.condition.modified_value : tokenValue.condition.default_value,
+            value: value && (value - 1 < tokenValue.condition.options.length) ? tokenValue.condition.options[value - 1].modified_value : tokenValue.condition.default_value,
           };
         }
         return tokenValue;
       }),
     ];
-  }, [specialTokenValues, xValue, tokenFlags]);
+  }, [specialTokenValues, xValue, tokenChoices]);
 
   const specialTokenInputs = useMemo(() => {
     return (
@@ -1001,14 +1044,19 @@ export default function OddsCalculatorComponent({
           }
           if (token.type === 'condition') {
             return (
-              <ToggleTokenInput
-                key={token.token}
-                symbol={token.token}
-                text={token.text}
-                prompt={token.condition.prompt}
-                value={!!tokenFlags[token.token]}
-                toggle={toggleTokenFlag}
-              />
+              <View key={token.token}>
+                { map(token.condition.options, ((option, idx) => (
+                  <ToggleTokenInput
+                    key={`${token.token}-${idx}`}
+                    symbol={token.token}
+                    text={idx === 0 ? token.text : undefined}
+                    index={idx + 1}
+                    prompt={option.prompt}
+                    value={tokenChoices[token.token] || 0}
+                    toggle={setTokenChoice}
+                  />
+                )))}
+              </View>
             );
           }
           if (!token.text) {
@@ -1020,7 +1068,7 @@ export default function OddsCalculatorComponent({
         }) }
       </>
     );
-  }, [specialTokenValues, xValue, tokenFlags, toggleTokenFlag, incXValue, decXValue]);
+  }, [specialTokenValues, xValue, tokenChoices, setTokenChoice, incXValue, decXValue]);
   const actions = useChaosBagActions();
   const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId: campaign.id });
   const [sealButton, sealDialog] = useSealTokenButton({ actions, chaosBag, chaosBagResults, campaignId: campaign.id });

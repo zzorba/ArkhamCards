@@ -8,7 +8,7 @@ import space, { m } from '@styles/space';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
 import TarotCardComponent from '@components/card/TarotCardComponent';
-import { TarotCard } from '@components/campaign/constants';
+import { TarotCard } from '@app_constants';
 import { TAROT_CARD_RATIO } from '@styles/sizes';
 
 export interface TarotProps {

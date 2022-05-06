@@ -13,13 +13,10 @@ import { getTarotCards, TarotCard } from '@app_constants';
 import { useSettingValue, useToggles } from '@components/core/hooks';
 import TarotCardComponent from '@components/card/TarotCardComponent';
 import DeckButton from '@components/deck/controls/DeckButton';
-import Animated, { SlideInDown, SlideInLeft, SlideOutRight } from 'react-native-reanimated';
-import { Navigation, OptionsModalPresentationStyle, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
-import TarotOverlay, { TarotProps } from '@components/core/TarotOverlay';
+import Animated, { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
+import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
 import ListToggleButton from '@components/deck/ListToggleButton';
-import FastImage from 'react-native-fast-image';
 import { TAROT_CARD_RATIO } from '@styles/sizes';
-import ArkhamIcon from '@icons/ArkhamIcon';
 import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import { useScenarioNames } from '@data/scenario';
@@ -370,7 +367,7 @@ function TarotCardReadingView({
     item: TarotCard;
     index: number;
     dataIndex: number;
-  }) => {
+  }): React.ReactNode => {
     return (
       <View key={item.id} style={[
         space.paddingSideS,

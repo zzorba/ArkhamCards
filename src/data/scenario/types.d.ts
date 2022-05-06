@@ -1290,7 +1290,9 @@ export interface SimpleChaosTokenValue {
 }
 export interface ChaosTokenModifier {
   modifier: number | ("auto_fail" | "auto_succeed");
-  reveal_another?: boolean;
+  reveal_another?: number;
+  increase_difficulty?: number;
+  double_next_modifier?: boolean;
   cancel_modifiers?: boolean;
 }
 export interface CounterChaosTokenValue {
@@ -1302,7 +1304,7 @@ export interface CounterChaosTokenValue {
     min?: number;
     max?: number;
     scale?: number;
-    reveal_another?: boolean;
+    reveal_another?: number;
     adjustment?: number;
     initial_value?: number;
     negate?: boolean;
@@ -1313,9 +1315,11 @@ export interface ConditionChaosTokenValue {
   token: SpecialChaosToken;
   text?: string;
   condition: {
-    prompt: string;
     default_value: ChaosTokenModifier;
-    modified_value: ChaosTokenModifier;
+    options: {
+      prompt: string;
+      modified_value: ChaosTokenModifier;
+    }[];
   };
 }
 export interface TabooSet {

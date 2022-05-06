@@ -34,7 +34,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -168,10 +168,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "10 or more cards in your discard pile",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -197,10 +201,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "10 or more cards in your discard pile",
-          "modified_value": {
-            "modifier": -5
-          }
+          "options": [
+            {
+              "prompt": "10 or more cards in your discard pile",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
         }
       },
       {
@@ -224,10 +232,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Spend 2 resources to treat this token as a 0",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Spend 2 resources to treat this token as a 0",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       },
       {
@@ -251,10 +263,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Spend 3 resources to treat this token as a 0",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Spend 3 resources to treat this token as a 0",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       },
       {
@@ -282,10 +298,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Hunting Horror is at your location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "Hunting Horror is at your location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -315,10 +335,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Hunting Horror is at your location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Hunting Horror is at your location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -385,7 +409,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -480,7 +504,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -490,10 +514,14 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       },
       {
@@ -516,7 +544,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -527,10 +555,14 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       },
       {
@@ -552,16 +584,20 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Altered]] location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "At an [[Altered]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -572,10 +608,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Agenda 2 is in play",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Agenda 2 is in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -595,16 +635,20 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Altered]] location",
-          "modified_value": {
-            "modifier": -5
-          }
+          "options": [
+            {
+              "prompt": "At an [[Altered]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -615,10 +659,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Agenda 2 is in play",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "Agenda 2 is in play",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -647,7 +695,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -678,7 +726,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -710,10 +758,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 3 or more horror on you",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "Have 3 or more horror on you",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -771,7 +823,7 @@
       {
         "token": "skull",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -800,7 +852,7 @@
       {
         "token": "skull",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -919,10 +971,14 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       }
     ],
@@ -930,7 +986,7 @@
       {
         "token": "skull",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -957,10 +1013,14 @@
           "default_value": {
             "modifier": "auto_fail"
           },
-          "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
-          "modified_value": {
-            "modifier": 0
-          }
+          "options": [
+            {
+              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
         }
       }
     ]
@@ -1106,19 +1166,23 @@
         "type": "condition",
         "condition": {
           "default_value": {
-            "reveal_another": true,
+            "reveal_another": 1,
             "modifier": 0
           },
-          "prompt": "Attack or evasion attempt against an enemy with doom on it",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "Attack or evasion attempt against an enemy with doom on it",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
         "token": "tablet",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1143,19 +1207,23 @@
         "type": "condition",
         "condition": {
           "default_value": {
-            "reveal_another": true,
+            "reveal_another": 1,
             "modifier": 0
           },
-          "prompt": "An enemy with 1 or more doom on it at your location",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "An enemy with 1 or more doom on it at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
         "token": "tablet",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1178,16 +1246,20 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "No remaining sanity left",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "No remaining sanity left",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1216,7 +1288,7 @@
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1271,10 +1343,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are poisoned",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "You are poisoned",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ],
@@ -1311,10 +1387,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are poisoned",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "You are poisoned",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ]
@@ -1330,10 +1410,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Doom on your location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "Doom on your location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -1356,7 +1440,7 @@
         "token": "elder_thing",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       }
     ],
@@ -1368,10 +1452,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Doom on your location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Doom on your location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -1394,7 +1482,7 @@
         "token": "elder_thing",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       }
     ]
@@ -1427,7 +1515,7 @@
         "token": "elder_thing",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       }
     ],
@@ -1471,23 +1559,27 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At an [[Ancient]] location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "At an [[Ancient]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
       {
         "token": "tablet",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1506,23 +1598,27 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At an [[Ancient]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "At an [[Ancient]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
       {
         "token": "tablet",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -1545,10 +1641,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Cave]] location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "At a [[Cave]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -1578,10 +1678,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Cave]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "At a [[Cave]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -1615,10 +1719,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Have 5 or more cards in your hand",
-          "modified_value": {
-            "modifier": -5
-          }
+          "options": [
+            {
+              "prompt": "Have 5 or more cards in your hand",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
         }
       },
       {
@@ -1648,10 +1756,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Have 5 or more cards in your hand",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "Have 5 or more cards in your hand",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -1690,14 +1802,14 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
         "token": "tablet",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -1707,10 +1819,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "3 or more vengeance points in the victory display",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "3 or more vengeance points in the victory display",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ],
@@ -1727,14 +1843,14 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
         "token": "tablet",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -1744,10 +1860,14 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "3 or more vengeance points in the victory display",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "3 or more vengeance points in the victory display",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ]
@@ -1763,10 +1883,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Relic of Ages is at your location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Relic of Ages is at your location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -1796,10 +1920,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Relic of Ages is at your location",
-          "modified_value": {
-            "modifier": -5
-          }
+          "options": [
+            {
+              "prompt": "Relic of Ages is at your location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
         }
       },
       {
@@ -1933,10 +2061,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Your location is haunted",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "Your location is haunted",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -1960,10 +2092,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Your location is haunted",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Your location is haunted",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -1991,16 +2127,20 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "You are at an [[Extradimensional]] location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "You are at an [[Extradimensional]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -2025,16 +2165,20 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are at an [[Extradimensional]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "You are at an [[Extradimensional]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": 0
         }
       },
@@ -2091,7 +2235,7 @@
         "counter": {
           "prompt": "The number of Unfinished Business in the victory display",
           "min": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2130,7 +2274,7 @@
         "token": "cultist",
         "value": {
           "modifier": -2,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2159,7 +2303,7 @@
         "token": "cultist",
         "value": {
           "modifier": -2,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2175,11 +2319,15 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "No [[Cultist]] enemies in play have doom on them",
-          "modified_value": {
-            "modifier": -3,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "No [[Cultist]] enemies in play have doom on them",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       }
     ]
@@ -2195,11 +2343,15 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "During a <b>circle</b> action",
-          "modified_value": {
-            "modifier": -2,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "During a <b>circle</b> action",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -2229,11 +2381,15 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "During a <b>circle</b> action",
-          "modified_value": {
-            "modifier": -3,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "During a <b>circle</b> action",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -2272,7 +2428,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2302,7 +2458,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2335,7 +2491,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2364,7 +2520,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2444,17 +2600,21 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Engaged with a [[Staff]] enemy",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "Engaged with a [[Staff]] enemy",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2474,17 +2634,21 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Engaged with a [[Staff]] enemy",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "Engaged with a [[Staff]] enemy",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2514,7 +2678,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2544,7 +2708,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2572,17 +2736,21 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At a [[Graveyard]] location",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "At a [[Graveyard]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2606,17 +2774,21 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Graveyard]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "At a [[Graveyard]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2649,7 +2821,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2678,7 +2850,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2711,7 +2883,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2741,7 +2913,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2774,7 +2946,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2803,7 +2975,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2836,7 +3008,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -2865,7 +3037,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3143,10 +3315,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "6 or fewer locations remaining in the Road deck",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "6 or fewer locations remaining in the Road deck",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -3176,10 +3352,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "6 or fewer locations remaining in the Road deck",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "6 or fewer locations remaining in the Road deck",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -3213,11 +3393,15 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "Location is flooded",
-          "modified_value": {
-            "modifier": -1,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Location is flooded",
+              "modified_value": {
+                "modifier": -1,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3247,11 +3431,15 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Location is flooded",
-          "modified_value": {
-            "modifier": -2,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Location is flooded",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3292,13 +3480,17 @@
         "condition": {
           "default_value": {
             "modifier": 0,
-            "reveal_another": true
+            "reveal_another": 1
           },
-          "prompt": "Curse revealed (before or after)",
-          "modified_value": {
-            "modifier": "auto_fail",
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Curse revealed (before or after)",
+              "modified_value": {
+                "modifier": "auto_fail",
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3330,13 +3522,17 @@
         "condition": {
           "default_value": {
             "modifier": -2,
-            "reveal_another": true
+            "reveal_another": 1
           },
-          "prompt": "Curse revealed (before or after)",
-          "modified_value": {
-            "modifier": "auto_fail",
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Curse revealed (before or after)",
+              "modified_value": {
+                "modifier": "auto_fail",
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3364,10 +3560,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -3397,10 +3597,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -3434,10 +3638,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At a [[Bayou]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "At a [[Bayou]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -3447,18 +3655,22 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "Rougarou is at your location",
-          "modified_value": {
-            "modifier": -2,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Rougarou is at your location",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
         "token": "tablet",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3476,10 +3688,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "At a [[Bayou]] location",
-          "modified_value": {
-            "modifier": -6
-          }
+          "options": [
+            {
+              "prompt": "At a [[Bayou]] location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
         }
       },
       {
@@ -3489,18 +3705,22 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Rougarou is at your location",
-          "modified_value": {
-            "modifier": -3,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "Rougarou is at your location",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
         "token": "tablet",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3513,7 +3733,7 @@
   },
   {
     "code": "82001",
-    "scenario": "carnvele_of_horrors",
+    "scenario": "carnevale_of_horrors",
     "standard": [
       {
         "token": "skull",
@@ -3529,7 +3749,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3560,7 +3780,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3585,7 +3805,7 @@
         "token": "skull",
         "value": {
           "modifier": -1,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3612,7 +3832,7 @@
         "token": "skull",
         "value": {
           "modifier": -1,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3651,7 +3871,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3668,10 +3888,14 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Add 1 strength to the abyss",
-          "modified_value": {
-            "modifier": "auto_succeed"
-          }
+          "options": [
+            {
+              "prompt": "Add 1 strength to the abyss",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
         }
       }
     ],
@@ -3689,7 +3913,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3706,10 +3930,14 @@
           "default_value": {
             "modifier": -6
           },
-          "prompt": "Add 1 strength to the abyss",
-          "modified_value": {
-            "modifier": "auto_succeed"
-          }
+          "options": [
+            {
+              "prompt": "Add 1 strength to the abyss",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
         }
       }
     ]
@@ -3730,7 +3958,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3761,7 +3989,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -3798,11 +4026,15 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
-          "modified_value": {
-            "modifier": -1,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "There is an [[Innocent]] enemy in the victory display",
+              "modified_value": {
+                "modifier": -1,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3812,10 +4044,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "Place one of your clues on your location",
-          "modified_value": {
-            "modifier": -1
-          }
+          "options": [
+            {
+              "prompt": "Place one of your clues on your location",
+              "modified_value": {
+                "modifier": -1
+              }
+            }
+          ]
         }
       },
       {
@@ -3841,11 +4077,15 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Innocent]] enemy in the victory display",
-          "modified_value": {
-            "modifier": -2,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "There is an [[Innocent]] enemy in the victory display",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -3855,10 +4095,14 @@
           "default_value": {
             "modifier": -5
           },
-          "prompt": "Place one of your clues on your location",
-          "modified_value": {
-            "modifier": -2
-          }
+          "options": [
+            {
+              "prompt": "Place one of your clues on your location",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
         }
       },
       {
@@ -4010,10 +4254,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At Tindalos",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "At Tindalos",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -4023,10 +4271,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Scientist]] asset is at your location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "A [[Scientist]] asset is at your location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -4053,10 +4305,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At Tindalos",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "At Tindalos",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -4066,10 +4322,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Scientist]] asset is at your location",
-          "modified_value": {
-            "modifier": -6
-          }
+          "options": [
+            {
+              "prompt": "A [[Scientist]] asset is at your location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
         }
       },
       {
@@ -4096,7 +4356,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -4126,7 +4386,7 @@
         "token": "cultist",
         "value": {
           "modifier": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -4162,10 +4422,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You have 10 or more resources",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "You have 10 or more resources",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -4198,10 +4462,14 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "You have 10 or more resources",
-          "modified_value": {
-            "modifier": -8
-          }
+          "options": [
+            {
+              "prompt": "You have 10 or more resources",
+              "modified_value": {
+                "modifier": -8
+              }
+            }
+          ]
         }
       },
       {
@@ -4299,11 +4567,15 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
-          "modified_value": {
-            "modifier": -2,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "A [[Cultist]] enemy is engaged with you",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -4336,11 +4608,15 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Cultist]] enemy is engaged with you",
-          "modified_value": {
-            "modifier": -3,
-            "reveal_another": true
-          }
+          "options": [
+            {
+              "prompt": "A [[Cultist]] enemy is engaged with you",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -4376,10 +4652,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -4411,10 +4691,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
-          "modified_value": {
-            "modifier": -5
-          }
+          "options": [
+            {
+              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
         }
       },
       {
@@ -4570,8 +4854,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
-          "min": 2
+          "prompt": "The level of your location",
+          "min": 0,
+          "adjustment": 2
         }
       },
       {
@@ -4618,10 +4903,14 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "[frost] token was revealed",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -4636,8 +4925,9 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
-          "min": 2
+          "prompt": "The number of keys you control",
+          "min": 0,
+          "adjustment": 2
         }
       },
       {
@@ -4653,10 +4943,14 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
-          "modified_value": {
-            "modifier": "auto_fail"
-          }
+          "options": [
+            {
+              "prompt": "[frost] token was revealed",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -4678,10 +4972,14 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
-          "modified_value": {
-            "modifier": -3
-          }
+          "options": [
+            {
+              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
         }
       },
       {
@@ -4711,10 +5009,14 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
-          "modified_value": {
-            "modifier": -4
-          }
+          "options": [
+            {
+              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
         }
       },
       {
@@ -4739,12 +5041,12 @@
   },
   {
     "code": "zez_00001",
-    "scenario": "the_heart_of_madness",
+    "scenario": "the_symphony_of_erich_zann",
     "standard": [
       {
         "token": "skull",
         "value": {
-          "reveal_another": true,
+          "reveal_another": 1,
           "modifier": -1
         }
       },
@@ -4774,7 +5076,7 @@
         "counter": {
           "prompt": "Number of [[Music]] treacheries in play.",
           "min": 0,
-          "reveal_another": true
+          "reveal_another": 1
         }
       },
       {
@@ -4793,6 +5095,2309 @@
         "token": "elder_thing",
         "value": {
           "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcc_00001",
+    "scenario": "consternation_on_the_constellation",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Your location is exhausted",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is exhausted",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00014",
+    "scenario": "the_tatterdemalion",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00054",
+    "scenario": "electric_nightmare",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half your “Memories” (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "double_next_modifier": true,
+          "modifier": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your “Memories”",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "double_next_modifier": true,
+          "modifier": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00089",
+    "scenario": "lost_quantum",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of face-down encounter cards in your threat area",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of locations in play (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of face-down encounter cards in your threat area",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00112",
+    "scenario": "in_the_shadow_of_earth",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of damage on you and assets you control (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": "auto_fail"
+          },
+          "options": [
+            {
+              "prompt": "Take 2 damage",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of damage on you and assets you control (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": "auto_fail"
+          },
+          "options": [
+            {
+              "prompt": "Take 3 damage",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00153",
+    "scenario": "strange_moons",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 2,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 2,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "modified_value": {
+                "modifier": -4,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00190",
+    "scenario": "the_machine_in_yellow",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half your “Memories” (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of hidden cards in your hand",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "double_next_modifier": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Cross out a tally mark next to your “Memories”",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your “Memories”",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of hidden cards in your hand",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "double_next_modifier": true,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "options": [
+            {
+              "prompt": "Cross out a tally mark next to your “Memories”",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00209",
+    "scenario": "fragment_of_carcosa",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1,
+            "reveal_another": 1
+          },
+          "options": [
+            {
+              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "modified_value": {
+                "modifier": -1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Carcosa]] location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            },
+            {
+              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2,
+            "reveal_another": 1
+          },
+          "options": [
+            {
+              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Carcosa]] location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            },
+            {
+              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zdm_00243",
+    "scenario": "starfall",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of revealed locations without clues (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "increase_difficulty": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of locations in play (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "increase_difficulty": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00001",
+    "scenario": "arkham_in_wonderland",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Wonderland]] locations in play",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Wonderland]] locations in play",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00022",
+    "scenario": "a_sea_of_troubles",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "No oysters on your location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "No oysters on your location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "No oysters on your location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "No oysters on your location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00047",
+    "scenario": "tempest_in_a_teapot",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of the current ‘c’ Agenda",
+          "min": 1,
+          "max": 4,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "You “Have terrible table manners”",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "You “Have terrible table manners”",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of the current ‘c’ Agenda",
+          "min": 1,
+          "max": 5,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "You “Have terrible table manners”",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "You “Have terrible table manners”",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00087",
+    "scenario": "bleeding_hearts",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of blame on your copy of Royal Suspicion (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Queen of Hearts is at your location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Executioner is in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of blame on your copy of Royal Suspicion",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Queen of Hearts is at your location or a connecting location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Executioner is in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00114",
+    "scenario": "wild_snark_chase",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the doom on the current agenda (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Spend 1 action",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "The Jabberwock is in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the doom on the current agenda (rounded up)",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [
+            {
+              "prompt": "Spend 1 action",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "reveal_another": 1,
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "The Jabberwock is in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00148",
+    "scenario": "sibling_rivalry",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00173",
+    "scenario": "fools_mate",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Chess]] enemies in play",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Shadow]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Chess]] enemies in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Shadow]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zaw_00199",
+    "scenario": "lucid_nightmare",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "More total damage and horror on Alice than on your investigator",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Gurathnaka is at your location",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "There is more total damage and horror on Alice than on your investigator",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Gurathnaka is at your location",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zce001",
+    "scenario": "the_warning",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of successfully completed <b>saga</b> actions",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "3 times the number of successfully completed <b>saga</b> actions",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
+    "code": "zce018",
+    "scenario": "the_golden_circle",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "At a [[Night]] location",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in hand",
+          "min": 0,
+          "max": 3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of damage on you",
+          "min": 0,
+          "max": 3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of horror on you",
+          "min": 0,
+          "max": 3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At a [[Night]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in hand",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of damage on you",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Amount of horror on you",
+          "min": 0,
+          "max": 4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zce040",
+    "scenario": "the_fallen",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of revealed [[Tundra]] locations",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of cards in your hand",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest cost of a hand asset in your play area",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest cost of an arcane asset in your play area",
+          "min": 0,
+          "max": 4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of revealed [[Tundra]] locations",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of cards in your hand",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest cost of a hand asset in your play area",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest cost of an arcane asset in your play area",
+          "min": 0,
+          "adjustment": 1
+        }
+      }
+    ]
+  },
+  {
+    "code": "zce076",
+    "scenario": "the_crown",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Twice the number of the current agenda",
+          "min": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[cultist]] in the chaos bag",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[tablet]] in the chaos bag",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[elder_thing]] in the chaos bag",
+          "min": 0,
+          "adjustment": 1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Twice the number of the current agenda",
+          "min": 2,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[cultist]] in the chaos bag",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[tablet]] in the chaos bag",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[elder_thing]] in the chaos bag",
+          "min": 0,
+          "adjustment": 2
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp001",
+    "scenario": "late_risers",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your distance from Lab Omega",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Twice your distance from Lab Omega",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp019",
+    "scenario": "night_on_the_town",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with <em>Survivors</em>",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with a <em>Ruin</em> or <em>Survivors</em>",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp047",
+    "scenario": "dead_by_dawn",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "min": 0,
+          "max": 5,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp083",
+    "scenario": "mourning_chorus",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest number of doom on an enemy in play",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Miasma]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The highest number of doom on an enemy in play",
+          "min": 0,
+          "max": 6,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Miasma]] location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp109",
+    "scenario": "high_noon_descent",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations away you are from The Saferoom",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of locations away you are from The Saferoom",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp149",
+    "scenario": "the_afternoon_war",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The most damage or horror on a location",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The most damage or horror on a location",
+          "min": 0,
+          "max": 6
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp179",
+    "scenario": "death_at_sundown",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The the [[Floor]] of your location",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The the [[Floor]] of your location",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -7
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcp211",
+    "scenario": "the_midnight_hour",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of locations with horror on them",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of locations with horror on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
         }
       }
     ]

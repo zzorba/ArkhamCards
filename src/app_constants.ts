@@ -217,11 +217,11 @@ export function chaosTokenName(token: ChaosTokenType) {
 export function getChaosTokenValue(token: ChaosTokenType, specialTokenValues: SimpleChaosTokenValue[]): ChaosTokenModifier | undefined {
   switch (token) {
     case 'frost':
-      return { modifier: -1, reveal_another: true };
+      return { modifier: -1, reveal_another: 1 };
     case 'bless':
-      return { modifier: 2, reveal_another: true };
+      return { modifier: 2, reveal_another: 1 };
     case 'curse':
-      return { modifier: -2, reveal_another: true };
+      return { modifier: -2, reveal_another: 1 };
     case 'auto_fail':
       return { modifier: 'auto_fail' };
     case 'skull':

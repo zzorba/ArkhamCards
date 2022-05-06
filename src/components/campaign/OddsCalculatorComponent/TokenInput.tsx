@@ -24,11 +24,11 @@ export default function TokenInput({
 }: Props) {
   const { colors } = useContext(StyleContext);
   return (
-    <>
+    <View style={{ flexDirection: 'column' }}>
       { !!text && <TokenTextLine symbol={symbol} text={text} /> }
       <View style={[styles.input, { backgroundColor: colors.L20, minHeight: 36 + s * 2 }, space.marginSideS, !text ? space.marginTopS : undefined]}>
         <View style={[styles.row, space.paddingS]}>
-          { !text ? (
+          { !prompt ? (
             <ChaosToken iconKey={symbol} size="extraTiny" />
           ) : (
             <View style={{ width: 36 }}>
@@ -43,7 +43,7 @@ export default function TokenInput({
           { children }
         </View>
       </View>
-    </>
+    </View>
   );
 }
 

@@ -30,35 +30,35 @@ PODS:
     - React-Core (= 0.67.4)
     - React-jsi (= 0.67.4)
     - ReactCommon/turbomodule/core (= 0.67.4)
-  - Firebase/Auth (8.12.1):
+  - Firebase/Auth (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 8.12.0)
-  - Firebase/CoreOnly (8.12.1):
-    - FirebaseCore (= 8.12.1)
-  - Firebase/Database (8.12.1):
+    - FirebaseAuth (~> 8.15.0)
+  - Firebase/CoreOnly (8.15.0):
+    - FirebaseCore (= 8.15.0)
+  - Firebase/Database (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 8.12.0)
-  - Firebase/Functions (8.12.1):
+    - FirebaseDatabase (~> 8.15.0)
+  - Firebase/Functions (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseFunctions (~> 8.12.0)
-  - FirebaseAuth (8.12.0):
+    - FirebaseFunctions (~> 8.15.0)
+  - FirebaseAuth (8.15.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/Environment (~> 7.7)
     - GTMSessionFetcher/Core (~> 1.5)
-  - FirebaseCore (8.12.1):
+  - FirebaseCore (8.15.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (8.14.0):
+  - FirebaseCoreDiagnostics (8.15.0):
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseDatabase (8.12.0):
+  - FirebaseDatabase (8.15.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseFunctions (8.12.0):
+  - FirebaseFunctions (8.15.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
   - Flipper (0.75.1):
@@ -491,19 +491,19 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (14.5.1):
-    - Firebase/CoreOnly (= 8.12.1)
+  - RNFBApp (14.9.0):
+    - Firebase/CoreOnly (= 8.15.0)
     - React-Core
-  - RNFBAuth (14.5.1):
-    - Firebase/Auth (= 8.12.1)
-    - React-Core
-    - RNFBApp
-  - RNFBDatabase (14.5.1):
-    - Firebase/Database (= 8.12.1)
+  - RNFBAuth (14.9.0):
+    - Firebase/Auth (= 8.15.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (14.5.1):
-    - Firebase/Functions (= 8.12.1)
+  - RNFBDatabase (14.9.0):
+    - Firebase/Database (= 8.15.0)
+    - React-Core
+    - RNFBApp
+  - RNFBFunctions (14.9.0):
+    - Firebase/Functions (= 8.15.0)
     - React-Core
     - RNFBApp
   - RNFS (2.19.0):
@@ -859,12 +859,12 @@ SPEC CHECKSUMS:
   DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
   FBLazyVector: f7b0632c6437e312acf6349288d9aa4cb6d59030
   FBReactNativeSpec: 0f4e1f4cfeace095694436e7c7fcc5bf4b03a0ff
-  Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
-  FirebaseAuth: 5250d7bdba35e57cc34ec7ddc525f82b2757f2a0
-  FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
-  FirebaseCoreDiagnostics: fd0c8490f34287229c1d6c103d3a55f81ec85712
-  FirebaseDatabase: f130b3d45b2a7a0b86059734d5bd67353df8d32f
-  FirebaseFunctions: aead53cdd81ce7371043b79250060546c25f9c7c
+  Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
+  FirebaseAuth: 3e73bf8abf4fbb40f8b421f361f4cc48ee57388c
+  FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
+  FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseDatabase: f567afd233e54a303d84423207736590a6feb419
+  FirebaseFunctions: f9346c6afd2c7d84aabb331d70dd0c8309e1abe1
   Flipper: d3da1aa199aad94455ae725e9f3aa43f3ec17021
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 57ffbe81ef95306cc9e69c4aa3aeeeeb58a6a28c
@@ -933,10 +933,10 @@ SPEC CHECKSUMS:
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
   RNDeviceInfo: 36286df381fcaf1933ff9d2d3c34ba2abeb2d8d8
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBApp: 5bae3002117e55f3c9aa0fb38175dd16c8046c90
-  RNFBAuth: ed314ff1732011c23041570ac4a98bc6070f9f4d
-  RNFBDatabase: 3c0f5efe76714ca3a8838250fdefe26a85f3380e
-  RNFBFunctions: ce53e6f983b38fb87af9934632218a687319212a
+  RNFBApp: d3a0f69a3cc67c609f962acf67f483a841ffc49f
+  RNFBAuth: 647e3bac0592ad7f2adc2e5ba9764e918400566a
+  RNFBDatabase: b0cfd1213a5d90aea03a66b9feab34ddfae37b96
+  RNFBFunctions: b64eecd87588bccd67a5c6117ac61839f9512ca5
   RNFS: fc610f78fdf8bfc89a9e5cc2f898519f4dba1002
   RNGestureHandler: 6e757e487a4834e7280e98e9bac66d2d9c575e9c
   RNGoogleSignin: d7f8368b82d94f1dec964785d496387ca7f19092
@@ -955,6 +955,6 @@ SPEC CHECKSUMS:
   Yoga: d6b6a80659aa3e91aaba01d0012e7edcbedcbecd
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c9345d43ce5b59a8c7f810d436c2d787af7eef56
+PODFILE CHECKSUM: 23b86307525f8cc23e91a3a7a6fdea3af6cb7aa1
 
 COCOAPODS: 1.11.3
