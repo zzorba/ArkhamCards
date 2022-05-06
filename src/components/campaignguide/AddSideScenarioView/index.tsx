@@ -22,6 +22,7 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { useDialog } from '@components/deck/dialogs';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import useProcessedCampaign from '../useProcessedCampaign';
+import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -145,6 +146,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
           title={t`Custom scenario`}
           onPress={customScenarioPressed}
         />
+        <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
   }, [borderStyle, backgroundStyle, playableSideScenarios, componentId, onPress, customScenarioPressed]);
@@ -165,6 +167,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
             onPress={onPress}
           />
         )) }
+        <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
   }, [backgroundStyle, borderStyle, playableChallengeScenarios, componentId, onPress]);
