@@ -5306,7 +5306,7 @@ msgstr ""
 "이 과정을 완료해야 덱을 다시 불러올 수 있습니다."
 
 msgid "Other investigator cards"
-msgstr "다른 조사자 카드"
+msgstr "나머지 조사자 전용 카드"
 
 msgid "Ultimatum of Chaos"
 msgstr "최후통첩: 혼돈"
