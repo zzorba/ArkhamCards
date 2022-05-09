@@ -1,7 +1,8 @@
-import { map } from 'lodash';
+import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
+import { useMemo } from 'react';
 
-import { showOptionDialog } from '@components/nav/helper';
+import { useOptionDialog } from '@components/nav/helper';
 import {
   SORT_BY_FACTION,
   SORT_BY_PACK,
@@ -19,17 +20,25 @@ function sortToCopy(sort: SortType) {
   }
 }
 
-export function showInvestigatorSortDialog(
+export function useInvestigatorSortDialog(
+  sort: SortType,
   sortChanged: (sort: SortType) => void
 ) {
-  const sorts: SortType[] = [
-    SORT_BY_TITLE,
-    SORT_BY_FACTION,
-    SORT_BY_PACK,
-  ];
-  showOptionDialog(
+  const [sortCopy, sorts] = useMemo(() => {
+    const sorts: SortType[] = [
+      SORT_BY_TITLE,
+      SORT_BY_FACTION,
+      SORT_BY_PACK,
+    ];
+    return [
+      map(sorts, sortToCopy),
+      sorts,
+    ];
+  }, []);
+  return useOptionDialog(
     t`Sort by`,
-    map(sorts, sortToCopy),
+    findIndex(sorts, x => x === sort),
+    sortCopy,
     (index: number) => {
       sortChanged(sorts[index]);
     }

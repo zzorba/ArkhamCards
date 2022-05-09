@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
 import { forEach, map, uniq } from 'lodash';
+import stable from 'stable';
 import { t } from 'ttag';
 
 import NavButton from './NavButton';
@@ -71,7 +72,7 @@ export default function DbChooserButton({ componentId, title, all, field, includ
             placeholder: t`Search ${title}`,
             values: uniq([
               ...(noneString ? [noneString] : []),
-              ...(fixedTranslations ? actualValues.sort((a, b) => a.localeCompare(b, lang)) : actualValues),
+              ...(fixedTranslations ? stable(actualValues.slice(), (a, b) => a.localeCompare(b, lang)) : actualValues),
             ]),
             onChange: onSelectionChange,
             selection: actualSelection,

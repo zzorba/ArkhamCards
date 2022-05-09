@@ -64,7 +64,7 @@ export function useCampaign(campaignId: CampaignId | undefined, live?: boolean):
 }
 const NO_INVESTIGATOR_CODES: string[] = [];
 export function useCampaignInvestigators(campaign: undefined | SingleCampaignT): [Card[] | undefined, boolean] {
-  const investigators = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
+  const [investigators] = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
   const campaignInvestigators = campaign?.investigators;
   return useMemo(() => {
     if (!campaignInvestigators || !investigators) {
@@ -122,7 +122,7 @@ export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {
 
 export function useArkhamDbError(): string | undefined {
   const { error, refreshing } = useMyDecksRedux();
-  return refreshing ? error : undefined;
+  return refreshing ? undefined : error;
 }
 
 export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
@@ -162,7 +162,7 @@ export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkha
   }, [myDecks, remoteMyDecks, userId]);
   return [{
     myDecks: mergedMyDecks,
-    error,
+    error: refreshing ? undefined : error,
     refreshing: refreshing || (!!userId && remoteRefreshing),
     myDecksUpdated,
   }, onRefresh];

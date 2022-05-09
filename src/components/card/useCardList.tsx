@@ -21,7 +21,7 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
       'and'
     )];
   }, [codes, type]);
-  const playerCards = usePlayerCards(playerCodes, tabooSetOverride);
+  const [playerCards, playerCardsLoading] = usePlayerCards(playerCodes, tabooSetOverride);
   const [queryCards, queryCardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
   return useMemo(() => {
     if (!codes.length) {
@@ -31,7 +31,7 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
       return [playerCards ? flatMap(codes, c => {
         const card = playerCards[c];
         return card ? card : [];
-      }) : EMPTY_CARDS, !!playerCards];
+      }) : EMPTY_CARDS, !playerCards];
     }
 
     return [queryCards, queryCardsLoading];

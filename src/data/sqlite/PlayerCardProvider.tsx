@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
-import { forEach, flatMap, filter, find, uniq } from 'lodash';
+import { Platform } from 'react-native';
+import { forEach, flatMap, filter, find, uniq, map, chunk } from 'lodash';
 
 import Card, { CardsMap } from '@data/types/Card';
 import DatabaseContext from './DatabaseContext';
@@ -19,6 +20,36 @@ interface PendingCardRequest {
 export function PlayerCardProvider({ children }: Props) {
   const { db } = useContext(DatabaseContext);
   const locallyFetched = useRef<PendingCardRequest[]>([]);
+  const storePlayerCards = useCallback(async(newCards: Card[]) => {
+    forEach(newCards, card => {
+      const tabooSetId = card.taboo_set_id;
+      if (tabooSetId === null || tabooSetId === undefined) {
+        // It's a generic, so every taboo set (we care about) gets this card.
+        forEach(db.globalLoadedCards, (cardSet) => {
+          if (cardSet) {
+            cardSet[card.code] = card;
+          }
+        })
+      } else {
+        // It's a taboo one
+        if (!db.globalLoadedCards[tabooSetId]) {
+          const newCards: CardsMap = {};
+          forEach(db.globalLoadedCards[0], card => {
+            if (card && card.taboo_set_id === null) {
+              // Keep the null ones, which apply to all versions of the card.
+              newCards[card.code] = card;
+            }
+          })
+          db.globalLoadedCards[tabooSetId] = newCards;
+        }
+        const knownCards = db.globalLoadedCards[tabooSetId] || {};
+        knownCards[card.code] = card;
+      }
+    });
+  }, [db]);
+  const getExistingCards = useCallback((tabooSetId: number): CardsMap => {
+    return db.globalLoadedCards[tabooSetId] || {};
+  }, [db]);
   const getPlayerCards = useCallback(async(codes: string[], tabooSetId: number): Promise<CardsMap> => {
     if (!db.globalLoadedCards[tabooSetId]) {
       const newCards: CardsMap = {};
@@ -52,7 +83,10 @@ export function PlayerCardProvider({ children }: Props) {
       toFetch.push(code);
     }
     if (toFetch.length) {
-      const newCardsP = db.getCards(where(`c.code IN (:...codes)`, { codes: toFetch }), tabooSetId);
+      const chunks = Platform.OS === 'ios' ? [toFetch] : chunk(toFetch, 50)
+      const newCardsP = Promise.all(
+        map(chunks, codes => db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId))
+      ).then(result => flatMap(result, x => x));
       locallyFetched.current.push({ codes: toFetch, tabooSetId, cardsP: newCardsP });
 
       const newCards = await newCardsP;
@@ -81,9 +115,10 @@ export function PlayerCardProvider({ children }: Props) {
       cards[code] = knownCards[code];
     });
     return cards;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db, db.globalLoadedCards]);
   return (
-    <PlayerCardContext.Provider value={{ getPlayerCards }}>
+    <PlayerCardContext.Provider value={{ getExistingCards, getPlayerCards, storePlayerCards }}>
       { children }
     </PlayerCardContext.Provider>
   )

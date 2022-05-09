@@ -10,7 +10,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
@@ -26,9 +26,9 @@ import Card from '@data/types/Card';
 import { AppState } from '@reducers';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
-import starterDecks from '../../../../assets/starter-decks';
+import starterDecks from '@data/deck/starterDecks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useParallelInvestigators, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -43,6 +43,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
+import specialMetaSlots from '@data/deck/specialMetaSlots';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -68,12 +69,13 @@ function NewDeckOptionsDialog({
   const defaultTabooSetId = useTabooSetId();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const { backgroundStyle, colors, fontScale, typography, width } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
   const [offlineDeck, toggleOfflineDeck] = useFlag(
     investigatorId === CUSTOM_INVESTIGATOR ||
+    investigatorId.startsWith('z') ||
     !signedIn ||
     !isConnected ||
     networkType === NetInfoStateType.none);
@@ -193,12 +195,14 @@ function NewDeckOptionsDialog({
         }
         slots[card.code] = card.deck_limit || card.quantity || 0;
       });
-      if (investigator.code === '06002') {
-        slots['06008'] = (parseInt((meta.deck_size_selected || '30'), 10) - 20) / 10;
-      }
-      if (investigator.code === '01005' && meta.alternate_front === '90037') {
-        slots['90038'] = 1;
-      }
+      forEach(meta, (value, key) => {
+        const specialSlots = specialMetaSlots(investigator.code, { key: key as keyof DeckMeta, value });
+        if (specialSlots) {
+          forEach(specialSlots, (count, code) => {
+            slots[code] = count;
+          });
+        }
+      });
     }
 
     if (optionSelected[0] !== true ||
@@ -311,7 +315,8 @@ function NewDeckOptionsDialog({
       false,
       tabooSetId,
       undefined,
-      investigator
+      investigator,
+      false
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const formContent = useMemo(() => {
@@ -350,15 +355,16 @@ function NewDeckOptionsDialog({
             </DeckSectionBlock>
           </View>
         ) }
-        { investigatorId !== CUSTOM_INVESTIGATOR && (
+        { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckCheckboxButton
-              icon="card-outline"
-              title={t`Use Starter Deck`}
-              value={starterDeck}
-              disabled={!hasStarterDeck}
-              onValueChange={setStarterDeck}
-            />
+            { !!hasStarterDeck && (
+              <DeckCheckboxButton
+                icon="card-outline"
+                title={t`Use Starter Deck`}
+                value={starterDeck}
+                onValueChange={setStarterDeck}
+              />
+            ) }
             { signedIn ? (
               <DeckCheckboxButton
                 icon="world"

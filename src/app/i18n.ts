@@ -13,6 +13,7 @@ const ALL_LANGUAGES = [
   'ru',
   'pt',
   'zh',
+  'vi',
   'en',
 ];
 
@@ -28,6 +29,7 @@ function getTranslationObj(locale: string) {
     case 'ru': return require('../../assets/i18n/ru.po.json');
     case 'pt': return require('../../assets/i18n/pt.po.json');
     case 'zh': return require('../../assets/i18n/zh.po.json');
+    case 'vi': return require('../../assets/i18n/vi.po.json');
     case 'en':
     default:
       return require('../../assets/i18n/en.po.json');

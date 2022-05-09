@@ -1,15 +1,16 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, flatMap, map } from 'lodash';
+import { find, forEach, flatMap, uniqBy, keys, map, filter } from 'lodash';
 import {
   Linking,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
@@ -21,7 +22,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, DeckId, getDeckId, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -37,7 +38,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useNavigationButtonPressed, useParallelInvestigators, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -52,9 +53,10 @@ import { useCampaign } from '@data/hooks';
 import { useDeckActions } from '@data/remote/decks';
 import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useBondedFromCards, useBondedToCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -89,7 +91,11 @@ function useUpgradeCardsByName(cards: Card[], tabooSetOverride?: number): [Card[
     const query = filterBuilder.upgradeCardsByNameFilter(flatMap(cards, card => card.xp !== undefined ? card.real_name : []));
     return query;
   }, [cards]);
-  return useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+  const [upgradeCards, loading] = useCardsFromQuery({ query: cardsByNameQuery, tabooSetOverride });
+  return [
+    useMemo(() => uniqBy([...upgradeCards, ...cards], c => c.code), [upgradeCards, cards]),
+    loading,
+  ];
 }
 
 
@@ -112,7 +118,7 @@ function DeckDetailView({
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
+  const singleCardView = useSettingValue('single_card');
   const parsedDeckObj = useParsedDeckWithFetch(id, componentId, deckActions, initialMode);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const {
@@ -124,7 +130,9 @@ function DeckDetailView({
     visible,
     parsedDeck,
     tabooSetId,
+    cardsMissing,
   } = parsedDeckObj;
+  const tabooSet = useTabooSet(tabooSetId);
 
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
@@ -138,28 +146,13 @@ function DeckDetailView({
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
-  const tabooSet = useTabooSet(tabooSetId);
-  const [parallelInvestigators] = useParallelInvestigators(deck?.investigator_code, tabooSetId);
-
-  const [investigatorFront, investigatorBack] = useMemo(() => {
-    const altFront = deckEdits?.meta.alternate_front && find(
-      parallelInvestigators,
-      card => card.code === deckEdits?.meta.alternate_front);
-    const investigatorFront = (altFront || (deckCards && deck && deckCards[deck.investigator_code]));
-
-    const altBack = deckEdits?.meta.alternate_back && find(
-      parallelInvestigators,
-      card => card.code === deckEdits?.meta.alternate_back);
-    const investigatorBack = altBack || (deck && deckCards && deckCards[deck.investigator_code]);
-    return [investigatorFront, investigatorBack];
-  }, [deck, deckCards, deckEdits?.meta, parallelInvestigators]);
-
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const flatDeckCards = useMemo(() => flatMap(deckCards, c =>
     c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0) ? c : []), [deckCards, deckEdits]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
-  const [bondedCards] = useBondedFromCards(flatDeckCards, tabooSetId);
+  const [bondedCards] = useBondedFromCards(flatDeckCards, SORT_BY_TYPE, tabooSetId);
+  const [requiredCards] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
   const cards = useMemo(() => {
     const r = {
       ...deckCards,
@@ -170,8 +163,11 @@ function DeckDetailView({
     forEach(possibleUpgradeCards, card => {
       r[card.code] = card;
     });
+    forEach(requiredCards, card => {
+      r[card.code] = card;
+    })
     return r;
-  }, [bondedCards, deckCards, possibleUpgradeCards]);
+  }, [bondedCards, deckCards, possibleUpgradeCards, requiredCards]);
   const bondedCardsByName = useMemo(() => {
     const r: {
       [name: string]: Card[];
@@ -403,11 +399,12 @@ function DeckDetailView({
           id: deckId,
           slots: deckEditsRef.current.slots,
           tabooSetOverride: tabooSetId,
+          campaignId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
+  }, [componentId, campaignId, deck, deckId, cards, tabooSetId, deckEditsRef, colors, setFabOpen, setMenuOpen]);
 
   const showDrawWeakness = useShowDrawWeakness({
     componentId,
@@ -721,14 +718,22 @@ function DeckDetailView({
         ],
       );
     } else {
-      showAlert(
-        t`Upload to ArkhamDB`,
-        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
-        [
-          { text: t`Cancel`, style: 'cancel' },
-          { text: t`Upload`, onPress: uploadLocalDeck },
-        ],
-      );
+      const hasCustomContent = find([...keys(deck.slots), ...keys(deck.sideSlots), ...keys(deck.ignoreDeckLimitSlots)], code => code.startsWith('z'));
+      if (hasCustomContent) {
+        showAlert(
+          t`Deck contains custom content`,
+          t`Sorry, this deck cannot be uploaded to ArkhamDB because it contains fan-made content.\n\nPlease remove all fan-made cards from the deck list and try again.`
+        );
+      } else {
+        showAlert(
+          t`Upload to ArkhamDB`,
+          t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
+          [
+            { text: t`Cancel`, style: 'cancel' },
+            { text: t`Upload`, onPress: uploadLocalDeck },
+          ],
+        );
+      }
     }
   }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
@@ -920,6 +925,7 @@ function DeckDetailView({
             icon="deck"
             onPress={showUpgradeHistoryPressed}
             title={t`Upgrade History`}
+            numberOfLines={2}
             last
           />
         ) }
@@ -929,7 +935,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
+        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z')) && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
@@ -1061,6 +1067,22 @@ function DeckDetailView({
       </ActionButton>
     );
   }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  const extraRequiredCards = useMemo(() => {
+    if (mode === 'view' || !requiredCards) {
+      return [];
+    }
+    const requiredCardIds: CardId[] = map(
+      filter(requiredCards, c => !deck?.slots?.[c.code]),
+      c => {
+        return {
+          id: c.code,
+          quantity: parsedDeck?.slots[c.code] || 0,
+          invalid: false,
+          limited: false,
+        };
+      });
+    return requiredCardIds
+  }, [requiredCards, mode, parsedDeck?.slots, deck?.slots]);
 
   if (!deck) {
     return (
@@ -1074,9 +1096,25 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards) {
+  if (!parsedDeck || !cards || cardsMissing) {
     return (
-      <LoadingSpinner large />
+      <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+        <LoadingSpinner large inline />
+        { cardsMissing && (
+          <View style={space.paddingSideM}>
+            <Text style={[typography.text, space.paddingBottomS]}>
+              {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
+            </Text>
+            <View>
+              <ArkhamButton
+                icon="dismiss"
+                title={t`Done`}
+                onPress={handleBackPress}
+              />
+            </View>
+          </View>
+        ) }
+      </View>
     );
   }
   const menuWidth = Math.min(width * 0.60, 240);
@@ -1100,8 +1138,8 @@ function DeckDetailView({
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
-              investigatorFront={investigatorFront}
-              investigatorBack={investigatorBack}
+              investigatorFront={parsedDeck.investigatorFront}
+              investigatorBack={parsedDeck.investigatorBack}
               deck={deck}
               editable={editable}
               tabooSet={tabooSet}
@@ -1115,6 +1153,7 @@ function DeckDetailView({
               cards={cards}
               cardsByName={cardsByName}
               bondedCardsByName={bondedCardsByName}
+              requiredCards={extraRequiredCards}
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
               showEditCards={onAddCardsPressed}

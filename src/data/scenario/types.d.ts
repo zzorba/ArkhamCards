@@ -59,6 +59,7 @@ export type Effect =
   | UpgradeDecksEffect
   | SaveDecksEffect
   | GainSuppliesEffect
+  | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
@@ -69,6 +70,7 @@ export type InvestigatorSelector =
   | "choice"
   | "defeated"
   | "resigned"
+  | "not_defeated"
   | "not_resigned"
   | "any_resigned"
   | "$input_value"
@@ -139,6 +141,7 @@ export type Input =
   | InvestigatorChoiceInput
   | ChooseOneInput
   | ChecklistInput
+  | ChoicelistInput
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
@@ -160,7 +163,8 @@ export type InvestigatorChoiceCondition =
   | InvestigatorCardCondition
   | BasicTraumaCondition
   | InvestigatorCondition
-  | CampaignLogCondition;
+  | CampaignLogCondition
+  | CampaignLogCardsCondition;
 export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
@@ -224,6 +228,8 @@ export interface Partner {
   description?: string;
   health: number;
   sanity: number;
+  img?: string;
+  img_offset?: "left" | "right";
   resolute_health?: number;
   resolute_sanity?: number;
 }
@@ -314,7 +320,7 @@ export interface AddWeaknessEffect {
 }
 export interface RemoveCardEffect {
   type: "remove_card";
-  investigator?: "choice" | "$input_value" | "$fixed_investigator";
+  investigator?: "choice" | "defeated" | "$input_value" | "$fixed_investigator";
   fixed_investigator?: string;
   card: string;
   non_story?: boolean;
@@ -322,6 +328,8 @@ export interface RemoveCardEffect {
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
+  investigator?: "all" | "defeated";
+  has_card?: string;
   old_card: string;
   new_card: string;
 }
@@ -331,6 +339,8 @@ export interface TraumaEffect {
   heal_input?: "physical" | "mental";
   mental?: number;
   physical?: number;
+  set_mental?: number;
+  set_physical?: number;
   mental_or_physical?: number;
   killed?: boolean;
   insane?: boolean;
@@ -359,7 +369,7 @@ export interface PartnerStatusEffect {
 export interface CampaignLogEffect {
   type: "campaign_log";
   section: string;
-  id: string;
+  id?: string;
   text?: string;
   cross_out?: boolean;
   bullet_type?: BulletType;
@@ -395,7 +405,7 @@ export interface CampaignLogInvestigatorCountEffect {
   id: string;
   investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
-  operation: "set_input" | "set" | "add_input" | "add";
+  operation: "set_input" | "set" | "add_input" | "add" | "cross_out";
   value?: number;
   text?: string;
 }
@@ -471,6 +481,12 @@ export interface Supply {
   description: string;
   cost: number;
   multiple?: boolean;
+}
+export interface LoseSuppliesEffect {
+  type: "lose_supplies";
+  section: string;
+  supply: string;
+  investigator: "all";
 }
 export interface CheckCampaignLogCardsEffect {
   type: "check_campaign_log_cards";
@@ -799,11 +815,17 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator: "all" | "choice" | "any" | "resigned";
-  condition?: BasicTraumaCondition;
+  investigator: "all" | "choice" | "any" | "resigned" | "not_defeated";
+  condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
+}
+export interface InvestigatorCondition {
+  type: "investigator";
+  investigator: "each";
+  investigator_data: "trait" | "faction" | "code";
+  options: StringOption[];
 }
 export interface InvestigatorConditionalChoice {
   icon?: ChoiceIcon;
@@ -819,12 +841,6 @@ export interface InvestigatorConditionalChoice {
   steps?: string[];
   effects?: Effect[];
 }
-export interface InvestigatorCondition {
-  type: "investigator";
-  investigator: "each";
-  investigator_data: "trait" | "faction" | "code";
-  options: StringOption[];
-}
 export interface ChooseOneInput {
   type: "choose_one";
   default_choice?: string;
@@ -835,6 +851,8 @@ export interface BinaryConditionalChoice {
   id: string;
   large?: boolean;
   text: string;
+  icon?: string;
+  style?: "interlude";
   gender?: "masculine" | "feminine";
   tokens?: ChaosToken[];
   description?: string;
@@ -852,6 +870,11 @@ export interface ChecklistInput {
   text: string;
   min?: number;
   max?: number;
+}
+export interface ChoicelistInput {
+  type: "choicelist";
+  items: BinaryConditionalChoice[];
+  choices: BinaryConditionalChoice[];
 }
 export interface CounterInput {
   type: "counter";
@@ -893,6 +916,7 @@ export interface PlayScenarioInput {
   branches?: BinaryConditionalChoice[];
   campaign_log?: BinaryConditionalChoice[];
   chaos_bag_branches?: string[];
+  fixed_resolution?: string;
   no_resolutions?: boolean;
 }
 export interface TextBoxInput {
@@ -1109,9 +1133,12 @@ export interface BorderStep {
   border: boolean;
   border_color?: BorderColor;
   title?: string;
+  title_strikethrough?: boolean;
   text?: null;
   bullets?: null;
   bullet_type?: null;
+  confirmation_text?: string;
+  confirmation_steps?: string[];
   narration?: Narration;
   steps: string[];
 }

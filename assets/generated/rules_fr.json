@@ -684,7 +684,7 @@
     "id": "Patrol",
     "cycle": ["side", "eoe"],
     "title": "Patrouille",
-    "text": "Certains ennemis possèdent le mot-clé Patrouille. Lors de la phase des ennemis (à l’étape structurelle 3.2), chaque ennemi redressé et non-engagé ayant le mot-clé Patrouille se déplace vers un lieu connexe en direction du lieu désigné (entre parenthèses à côté du mot-clé Patrouille) par le chemin le plus court possible.\n- Si plusieurs lieux peuvent correspondre au lieu désigné, l’investigateur principal a le droit de choisir en direction de quel lieu l’ennemi se déplace.\n- Si un ennemi ayant le mot-clé Patrouille est censé se déplacer dans un lieu qui est bloqué par une capacité de carte, cet ennemi ne se déplace pas"
+    "text": "Certains ennemis possèdent le mot-clé Patrouille. Lors de la phase des ennemis (à l’étape structurelle 3.2), chaque ennemi redressé et non-engagé ayant le mot-clé Patrouille se déplace vers un lieu connexe en direction du lieu désigné (entre parenthèses à côté du mot-clé Patrouille) par le chemin le plus court possible.\n- Si plusieurs lieux peuvent correspondre au lieu désigné, l’investigateur principal a le droit de choisir en direction de quel lieu l’ennemi se déplace.\n- Si un ennemi ayant le mot-clé Patrouille est censé se déplacer dans un lieu qui est bloqué par une capacité de carte, cet ennemi ne se déplace pas."
   },
   {
     "id": "Per_Investigator",

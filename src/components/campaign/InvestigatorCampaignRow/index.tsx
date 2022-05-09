@@ -13,7 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import space, { s } from '@styles/space';
-import { useFlag } from '@components/core/hooks';
+import { useEffectUpdate, useFlag } from '@components/core/hooks';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
@@ -55,7 +55,7 @@ function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code
     return campaignGuide?.card(code)?.description;
   }, [campaignGuide, code]);
   if (loading || !card) {
-    return <LoadingCardSearchResult />;
+    return <LoadingCardSearchResult noBorder={last} />;
   }
   return (
     <CardSearchResult
@@ -127,7 +127,8 @@ export default function InvestigatorCampaignRow({
 
   const storyAssetSection = useMemo(() => {
     const storyAssets = traumaAndCardData.storyAssets || [];
-    if (!storyAssets.length) {
+    const addedCards = traumaAndCardData.addedCards || [];
+    if (!storyAssets.length && !addedCards.length) {
       return null;
     }
     return (
@@ -139,7 +140,17 @@ export default function InvestigatorCampaignRow({
             campaignGuide={campaignGuide}
             code={asset}
             onCardPress={onCardPress}
-            last={idx === storyAssets.length - 1}
+            last={addedCards.length === 0 && idx === storyAssets.length - 1}
+            count={traumaAndCardData.cardCounts?.[asset]}
+          />
+        )) }
+        { map(addedCards, (asset, idx) => (
+          <StoryAssetRow
+            key={asset}
+            campaignGuide={campaignGuide}
+            code={asset}
+            onCardPress={onCardPress}
+            last={idx === addedCards.length - 1}
             count={traumaAndCardData.cardCounts?.[asset]}
           />
         )) }
@@ -172,7 +183,13 @@ export default function InvestigatorCampaignRow({
   }, [investigator, chooseDeckForInvestigator]);
 
   const yithian = useMemo(() => !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN), [traumaAndCardData.storyAssets]);
-  const [open, toggleOpen] = useFlag(false);
+  const [open, toggleOpen, setOpen] = useFlag(badge === 'deck');
+  useEffectUpdate(() => {
+    if (badge === 'deck') {
+      setOpen(true);
+    }
+  }, [badge, setOpen]);
+
   const footerButton = useMemo(() => {
     if (uploading) {
       return (
@@ -222,14 +239,22 @@ export default function InvestigatorCampaignRow({
               </View>
             ) }
           </View>
-        ) }
+        )}
       >
         <View style={[space.paddingSideS]}>
           <View style={space.paddingBottomS}>
+            { !!deck?.owner?.handle && (
+              <MiniPickerStyleButton
+                title={t`Player`}
+                valueLabel={deck?.owner.handle}
+                first
+                editable={false}
+              />
+            ) }
             <MiniPickerStyleButton
               title={t`Trauma`}
               valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-              first
+              first={!deck?.owner?.handle}
               last={!xpButton && !miniButtons}
               editable={!!showTraumaDialog}
               onPress={onTraumaPress}

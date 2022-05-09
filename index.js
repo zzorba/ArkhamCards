@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistCache } from 'apollo-cache-persist';
@@ -27,27 +26,25 @@ import { PlayerCardProvider } from '@data/sqlite/PlayerCardProvider';
 
 function MyProvider({ store: { redux, persistor, apollo, anonApollo }, children }) {
   return (
-    <AppearanceProvider>
-      <Provider store={redux}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ArkhamCardsAuthProvider>
-            <ApolloProvider client={apollo}>
-              <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
-                <LanguageProvider>
-                  <DatabaseProvider>
-                    <PlayerCardProvider>
-                      <StyleProvider>
-                        { children }
-                      </StyleProvider>
-                    </PlayerCardProvider>
-                  </DatabaseProvider>
-                </LanguageProvider>
-              </ApolloClientContext.Provider>
-            </ApolloProvider>
-          </ArkhamCardsAuthProvider>
-        </PersistGate>
-      </Provider>
-    </AppearanceProvider>
+    <Provider store={redux}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ArkhamCardsAuthProvider>
+          <ApolloProvider client={apollo}>
+            <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
+              <LanguageProvider>
+                <DatabaseProvider>
+                  <PlayerCardProvider>
+                    <StyleProvider>
+                      { children }
+                    </StyleProvider>
+                  </PlayerCardProvider>
+                </DatabaseProvider>
+              </LanguageProvider>
+            </ApolloClientContext.Provider>
+          </ApolloProvider>
+        </ArkhamCardsAuthProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 

@@ -1,5 +1,6 @@
 import { filter } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { Platform } from 'react-native';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
@@ -49,6 +50,7 @@ export default function configureStore(initialState: AppState) {
     // Disable timeout since hitting the timeout causes it to reset all data?
     // WHY is that the default behavior?!?!?
     timeout: 0,
+    throttle: Platform.OS === 'android' ? 1000 : undefined,
     // These all have some transient fields and are handled separately.
     blacklist: [
       'cards', 'signedIn', 'filters', 'deckEdits', 'packs', 'dissonantVoices',

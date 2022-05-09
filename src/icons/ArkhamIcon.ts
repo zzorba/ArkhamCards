@@ -1,5 +1,5 @@
-import { Animated } from 'react-native';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import Animated from 'react-native-reanimated';
 
 import arkhamIconConfig from '../../assets/arkhamicons-config.json';
 

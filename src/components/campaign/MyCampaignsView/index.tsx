@@ -29,7 +29,6 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
-
 function SearchOptions({
   showArchived,
   toggleShowArchived,
@@ -126,29 +125,29 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     return [result, result.length !== filteredCampaigns.length];
   }, [filteredCampaigns, showArchived]);
 
-  const conditionalFooter = useMemo(() => {
+  const [conditionalFooter, footerHeight] = useMemo(() => {
     if (filteredCampaigns.length === 0) {
       if (search) {
-        return (
-          <View style={[styles.footer, space.paddingTopS]}>
+        return [(
+          <View key="none" style={[styles.footer, space.paddingTopM]}>
             <Text style={[typography.text, typography.center]}>
               { t`No matching campaigns for "${search}".` }
             </Text>
           </View>
-        );
+        ), 64 * fontScale];
       }
-      return (
-        <View style={[styles.footer, space.paddingTopS]}>
+      return [(
+        <View key="none-create" style={[styles.footer, space.paddingTopM]}>
           <Text style={[typography.text]}>
             { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
         </View>
-      );
+      ), 96 * fontScale];
     }
-    return (
-      <View style={styles.footer} />
-    );
-  }, [filteredCampaigns, search, typography]);
+    return [(
+      <View key="empty" style={styles.footer} />
+    ), 0];
+  }, [filteredCampaigns, search, fontScale, typography]);
   const buttons: React.ReactNode[] = useMemo(() => {
     const result: React.ReactNode[] = [];
     if (hiddenArchived) {
@@ -182,28 +181,31 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     );
   }, [conditionalFooter]);
   return (
-    <CollapsibleSearchBox
-      prompt={t`Search campaigns`}
-      searchTerm={search}
-      onSearchChange={setSearch}
-      advancedOptions={{
-        controls: <SearchOptions showArchived={showArchived} toggleShowArchived={toggleShowArchived} />,
-        height: 20 + (fontScale * 20 + 8) + 12,
-      }}
-    >
-      { onScroll => (
-        <CampaignList
-          onScroll={onScroll}
-          componentId={componentId}
-          campaigns={realFilteredCampaigns}
-          standalonesById={standalonesById}
-          onRefresh={refreshCampaigns}
-          buttons={buttons}
-          refreshing={refreshing}
-          footer={footer}
-        />
-      ) }
-    </CollapsibleSearchBox>
+    <View style={{ flex: 1 }}>
+      <CollapsibleSearchBox
+        prompt={t`Search campaigns`}
+        searchTerm={search}
+        onSearchChange={setSearch}
+        advancedOptions={{
+          controls: <SearchOptions showArchived={showArchived} toggleShowArchived={toggleShowArchived} />,
+          height: 20 + (fontScale * 20 + 8) + 12,
+        }}
+      >
+        { onScroll => (
+          <CampaignList
+            onScroll={onScroll}
+            componentId={componentId}
+            campaigns={realFilteredCampaigns}
+            standalonesById={standalonesById}
+            onRefresh={refreshCampaigns}
+            buttons={buttons}
+            refreshing={refreshing}
+            footer={footer}
+            footerHeight={footerHeight}
+          />
+        ) }
+      </CollapsibleSearchBox>
+    </View>
   );
 }
 
@@ -235,7 +237,7 @@ const styles = StyleSheet.create({
     marginLeft: m,
     marginRight: m,
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
   },
   gutter: {

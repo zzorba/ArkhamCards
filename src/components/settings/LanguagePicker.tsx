@@ -52,7 +52,7 @@ function dialogStrings(lang: string): DialogStrings {
     case 'fr':
       return {
         title: 'Confirmation',
-        description: 'Changer la langue de l\'app nécessite le téléchargement des traductions des cartes depuis ArkhamDB. Ceci nécessite une connexion réseau et peu prendre du temps.',
+        description: 'Changer la langue de l\'application requiert le téléchargement des traductions des cartes depuis ArkhamDB. Ceci nécessite une connexion réseau et peut prendre un peu de temps.',
         confirmButton: 'Télécharger maintenant',
         cancelButton: 'Annuler',
       };
@@ -94,6 +94,7 @@ function dialogStrings(lang: string): DialogStrings {
     case 'it':
     case 'pl':
     case 'uk':
+    case 'vi':
     default:
       return {
         title: t`Confirm`,

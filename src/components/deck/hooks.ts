@@ -122,6 +122,7 @@ export interface ParsedDeckResults {
   parsedDeck?: ParsedDeck;
   parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
+  cardsMissing: boolean;
 }
 
 function useParsedDeckHelper(
@@ -138,7 +139,7 @@ function useParsedDeckHelper(
 ): ParsedDeckResults {
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing ? deck : undefined, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
-  const cards = usePlayerCardsFunc(() => {
+  const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(() => {
     return uniq([
       ...(deck ? [deck.investigator] : []),
       ...keys(deckEdits?.side),
@@ -146,7 +147,9 @@ function useParsedDeckHelper(
       ...keys(deckEdits?.ignoreDeckLimitSlots),
       ...(deckEdits?.meta.alternate_back ? [deckEdits.meta.alternate_back] : []),
       ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
-    ])
+      ...keys(deck?.previousDeck?.slots || {}),
+      ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+    ]);
   }, [deckEdits, deck], tabooSetId);
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);
@@ -198,6 +201,7 @@ function useParsedDeckHelper(
     parsedDeck,
     parsedDeckRef,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
+    cardsMissing: !cardsLoading && cardsMissing,
   };
 }
 

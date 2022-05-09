@@ -1,9 +1,10 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
-import { forEach, flatMap, filter, debounce, find, uniq, keys } from 'lodash';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -22,8 +23,10 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
-import { INVESTIGATOR_CARDS_QUERY, where } from '@data/sqlite/query';
+import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
+import { setMiscSetting } from '@components/settings/actions';
+import specialCards from '@data/deck/specialCards';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -149,7 +152,7 @@ interface CleanAction {
 }
 export function useCounter(
   initialValue: number,
-  { min, max }: { min?: number; max?: number },
+  { min, max, hapticFeedback }: { min?: number; max?: number, hapticFeedback?: boolean },
   syncValue?: (value: number) => void
 ): [number, () => void, () => void, (value: number) => void] {
   const [currentState, updateValue] = useReducer((state: { value: number; dirty: boolean }, action: IncAction | DecAction | SetAction | CleanAction) => {
@@ -159,28 +162,26 @@ export function useCounter(
           value: action.value,
           dirty: true,
         };
-      case 'inc':
-        if (max) {
-          return {
-            value: Math.min(max, state.value + 1),
-            dirty: true,
-          };
+      case 'inc': {
+        const newValue = max ? Math.min(max, state.value + 1) : (state.value + 1);
+        if (newValue > state.value && hapticFeedback) {
+          ReactNativeHapticFeedback.trigger('impactMedium');
         }
         return {
-          value: state.value + 1,
+          value: newValue,
           dirty: true,
         };
-      case 'dec':
-        if (min) {
-          return {
-            value: Math.max(min, state.value - 1),
-            dirty: true,
-          };
+      }
+      case 'dec': {
+        const newValue = min ? Math.max(min, state.value - 1) : (state.value - 1);
+        if (newValue < state.value && hapticFeedback) {
+          ReactNativeHapticFeedback.trigger('impactLight');
         }
         return {
-          value: state.value - 1,
+          value: newValue,
           dirty: true,
         };
+      }
       case 'clean':
         return {
           value: state.value,
@@ -564,25 +565,45 @@ export function useTabooSetId(tabooSetOverride?: number): number {
   return useSelector((state: AppState) => selector(state, tabooSetOverride)) || 0;
 }
 
-export function usePlayerCards(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
+export function usePlayerCards(codes: string[], tabooSetOverride?: number): [CardsMap | undefined, boolean, boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
-  const { getPlayerCards } = useContext(PlayerCardContext);
+  const [loading, setLoading] = useState(true);
+  const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
+    const existingCards = getExistingCards(tabooSetId);
+    if (findIndex(codes, code => !existingCards[code]) === -1) {
+      setCards(existingCards);
+      return;
+    }
+
+    setLoading(true);
     let canceled = false;
-    getPlayerCards(codes, tabooSetId).then(cards => {
-      if (!canceled) {
-        setCards(cards);
-      }
-    });
+    if (codes.length) {
+      getPlayerCards(codes, tabooSetId).then(cards => {
+        if (!canceled) {
+          setCards(cards);
+          setLoading(false);
+        }
+      });
+    } else {
+      setCards({});
+    }
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, getPlayerCards]);
-  return cards;
+  }, [tabooSetId, codes, getExistingCards, getPlayerCards, setLoading]);
+  const cardsMissing = useMemo(() => {
+    if (codes.length === 0) {
+      return false;
+    }
+    return !cards || !!find(codes, code => !cards[code]);
+  }, [cards, codes]);
+  return [cards, loading, cardsMissing];
 }
 
 export function usePlayerCardsFunc(generator: () => string[], deps: any[], tabooSetOverride?: number) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const codes = useMemo(generator, deps);
   return usePlayerCards(codes, tabooSetOverride);
 }
@@ -602,11 +623,11 @@ function deckToSlots(deck: LatestDeckT): string[] {
 }
 
 const EMPTY_CARD_LIST: string[] = [];
-export function useLatestDeckCards(deck: LatestDeckT | undefined): CardsMap | undefined {
+export function useLatestDeckCards(deck: LatestDeckT | undefined): [CardsMap | undefined, boolean, boolean] {
   return usePlayerCardsFunc(() => deck ? deckToSlots(deck) : EMPTY_CARD_LIST, [deck], deck?.deck.taboo_id);
 }
 
-export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): CardsMap | undefined {
+export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): [CardsMap | undefined, boolean, boolean] {
   return usePlayerCardsFunc(() => decks ? uniq(flatMap(decks, deckToSlots)) : EMPTY_CARD_LIST, [decks], tabooSetId);
 }
 
@@ -615,14 +636,91 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
   return cards;
 }
 
-export function useAllInvestigators(tabooSetOverride?: number, sort?: SortType): [Card[], boolean] {
-  const sortQuery = useMemo(() => sort ? Card.querySort(true, sort) : undefined, [sort]);
-  return useCardsFromQuery({ query: INVESTIGATOR_CARDS_QUERY, sort: sortQuery, tabooSetOverride });
+export function useSettingValue(setting: MiscSetting): boolean {
+  return useSelector((state: AppState) => {
+    switch (setting) {
+      case 'alphabetize': return !!state.settings.alphabetizeEncounterSets;
+      case 'beta1': return !!state.settings.beta1;
+      case 'colorblind': return !!state.settings.colorblind;
+      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
+      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
+      case 'ignore_collection': return !!state.settings.ignore_collection;
+      case 'justify': return !!state.settings.justifyContent;
+      case 'single_card': return !!state.settings.singleCardView;
+      case 'sort_quotes': return !!state.settings.sortRespectQuotes;
+      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
+      case 'custom_content': return !!state.settings.customContent;
+    }
+  });
+}
+
+export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean) => void] {
+  const actualValue = useSettingValue(setting);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(actualValue);
+  useEffect(() => {
+    setValue(actualValue);
+  }, [actualValue, setValue]);
+
+  const actuallySetValue = useCallback((value: boolean) => {
+    setValue(value);
+    setTimeout(() => {
+      dispatch(setMiscSetting(setting, value));
+    }, 50);
+  }, [setting, setValue, dispatch]);
+  return [value, actuallySetValue];
+}
+
+export function useAllInvestigators(tabooSetOverride?: number, sortType?: SortType): [Card[], boolean] {
+  const customContent = useSettingValue('custom_content');
+  const sort = useMemo(() => sortType ? Card.querySort(true, sortType) : undefined, [sortType]);
+  const query = useMemo(() => {
+    if (!customContent) {
+      return combineQueries(INVESTIGATOR_CARDS_QUERY, [NO_CUSTOM_CARDS_QUERY], 'and');
+    }
+    return INVESTIGATOR_CARDS_QUERY;
+  }, [customContent]);
+  return useCardsFromQuery({ query, sort, tabooSetOverride });
 }
 
 export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
   const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
-  return useCardsFromQuery({ query, tabooSetOverride });
+  const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    if (cards.length) {
+      storePlayerCards(cards);
+    }
+  }, [cards, storePlayerCards]);
+  return [cards, loading];
+}
+
+export function useRequiredCards(investigatorFront: Card | undefined, investigatorBack: Card | undefined, tabooSetOverride?: number): [Card[], boolean] {
+  const [codes, loading] = useMemo(() => {
+    if (!investigatorFront || !investigatorBack) {
+      return [[], true];
+    }
+    return [
+      uniq([
+        ...flatMap(investigatorBack.deck_requirements?.card || [], req => [
+          ...(req.code ? [req.code] : []),
+          ...(req.alternates || []),
+        ]),
+        ...(specialCards[investigatorFront.code]?.front || []),
+        ...(specialCards[investigatorBack.code]?.back || []),
+      ]),
+      false,
+    ];
+  }, [investigatorBack, investigatorFront]);
+  const query = useMemo(() => codes?.length ? where('c.code in (:...codes)', { codes }) : undefined, [codes]);
+  const [cards, cardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    if (cards.length) {
+      storePlayerCards(cards);
+    }
+  }, [cards, storePlayerCards]);
+  return [cards, loading || cardsLoading];
 }
 
 export function useTabooSet(tabooSetId: number): TabooSet | undefined {

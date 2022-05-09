@@ -1,4 +1,4 @@
-import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, values } from 'lodash';
+import { concat, chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniq, uniqBy, values } from 'lodash';
 import { Alert, Platform } from 'react-native';
 import { c, t } from 'ttag';
 
@@ -12,6 +12,7 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { loadTaboos } from '@data/scenario';
+import { getArkhamDbDomain } from './i18n/LanguageProvider';
 
 const VERBOSE = false;
 
@@ -36,8 +37,7 @@ export const syncTaboos = async function(
   cache?: TabooCache
 ): Promise<TabooCache | null> {
   try {
-    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
-    const uri = `https://${langPrefix}arkhamdb.com/api/public/taboos/`;
+    const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/taboos/`;
     const headers = new Headers();
     if (cache && cache.lastModified && cache.tabooCount > 0) {
       const cards = await db.cards();
@@ -73,12 +73,12 @@ export const syncTaboos = async function(
 
     await cardsRep.createQueryBuilder()
       .update()
-      .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards })
+      .where('(code in (:...codes) OR duplicate_of_code in (:...codes)) AND (taboo_set_id is null)', { codes: allTabooCards })
       .set({ taboo_set_id: 0 })
       .execute();
     VERBOSE && console.log('Found base taboo cards');
     const baseTabooCards: Card[] = await (await db.cards()).createQueryBuilder('c')
-      .where('c.code IN (:...codes) AND c.taboo_set_id = 0')
+      .where('(c.code IN (:...codes) OR c.duplicate_of_code in (:...codes)) AND c.taboo_set_id = 0')
       .leftJoin('c.linked_card', 'linked_card')
       .setParameters({ codes: allTabooCards })
       .addSelect(Card.ELIDED_FIELDS)
@@ -93,23 +93,37 @@ export const syncTaboos = async function(
     try {
       for (let i = 0; i < json.length; i++) {
         const tabooJson = getTaboos(json[i], localTaboos);
-        const cards = tabooJson.cards;
+        const taboos = tabooJson.cards;
         try {
-          tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
+          tabooSets.push(TabooSet.fromJson(tabooJson, taboos.length));
           const tabooCardsToSave: {
-            [key: string]: Card | undefined;
+            [key: string]: Card[] | undefined;
           } = {};
           forEach(baseTabooCards, card => {
-            tabooCardsToSave[card.code] = Card.placeholderTabooCard(tabooJson.id, card);
+            const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
+            if (card.duplicate_of_code) {
+              tabooCardsToSave[card.duplicate_of_code] = [
+                ...(tabooCardsToSave[card.duplicate_of_code] || []),
+                tabooCard,
+              ];
+            } else {
+              tabooCardsToSave[card.code] = [
+                ...(tabooCardsToSave[card.code] || []),
+                tabooCard,
+              ];
+            }
           });
 
-          for (let j = 0; j < cards.length; j++) {
-            const cardJson = cards[j];
-            const code: string = cardJson.code;
-            const card = tabooCardsToSave[code];
-            if (card) {
+          for (let j = 0; j < taboos.length; j++) {
+            const taboo = taboos[j];
+            const code: string = taboo.code;
+            const cards = tabooCardsToSave[code];
+            if (cards?.length) {
               try {
-                tabooCardsToSave[code] = Card.fromTabooCardJson(tabooJson.id, cardJson, card);
+                tabooCardsToSave[code] = map(
+                  cards,
+                  card => Card.fromTabooCardJson(tabooJson.id, taboo, card)
+                );
               } catch (e) {
                 Alert.alert(`${e}`);
                 console.log(e);
@@ -118,7 +132,7 @@ export const syncTaboos = async function(
               console.log(`Could not find old card: ${code}`);
             }
           }
-          const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
+          const cardsToInsert = flatMap(values(tabooCardsToSave), cards => cards || []);
           // await cards.save(cardsToInsert);
           await insertChunk(sqliteVersion, cardsToInsert, async cards => {
             await queryRunner.manager.insert(Card, cards);
@@ -187,6 +201,8 @@ function rulesJson(lang?: string) {
       return require('../../assets/generated/rules_ko.json');
     case 'zh':
       return require('../../assets/generated/rules_zh.json');
+    case 'pl':
+      return require('../../assets/generated/rules_pl.json');
     case 'en':
     default:
       return require('../../assets/generated/rules.json');
@@ -204,18 +220,86 @@ export const syncRules = async function(
     const rule = Rule.parse(lang || 'en', jsonRule, index);
     return [rule];
   });
+  VERBOSE && console.log('Parsed all rules');
 
   const [simpleRules, complexRules] = partition(allRules, r => !r.rules);
   await insertChunk(sqliteVersion, simpleRules, async rules => await db.insertRules(rules));
-  forEach(complexRules, r => {
-    db.insertRules([
+  VERBOSE && console.log('Inserted all simple rules');
+
+  for (let i = 0; i < complexRules.length; i++) {
+    const r = complexRules[i];
+    await db.insertRules([
       r,
       ...flatMap(r.rules || [], r2 => [r2, ...(r2.rules || [])]),
     ]);
-  });
+  }
+  VERBOSE && console.log('Inserted all complex rules');
 };
-export const NON_LOCALIZED_CARDS = new Set(['en', 'pt']);
 
+
+function handleDerivativeData(dedupedCards: Card[], dupes: {
+  [code: string]: string[] | undefined;
+}) {
+  const flatCards = flatMap(dedupedCards, (c: Card) => {
+    return c.linked_card ? [c, c.linked_card] : [c];
+  });
+  const encounter_card_counts: {
+    [encounter_code: string]: number | undefined;
+  } = {};
+
+  // Clean up all the bonded stuff.
+  const bondedNames: string[] = [];
+  const playerCards: Card[] = [];
+  forEach(flatCards, card => {
+    if (dupes[card.code]) {
+      card.reprint_pack_codes = dupes[card.code];
+    }
+    if (!card.hidden && card.encounter_code) {
+      encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
+    }
+    if (card.bonded_name) {
+      bondedNames.push(card.bonded_name);
+    }
+    if ((card.deck_limit && card.deck_limit > 0) && !card.spoiler && !(card.xp === undefined || card.xp === null)) {
+      playerCards.push(card);
+    }
+  });
+
+  // Handle all upgrade stuff
+  const cardsByName = values(groupBy(playerCards, card => card.real_name.toLowerCase()));
+  forEach(cardsByName, cardsGroup => {
+    if (cardsGroup.length > 1) {
+      const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
+      if (maxXpCard) {
+        forEach(cardsGroup, card => {
+          const xp = card.xp || 0;
+          card.has_upgrades = xp < (maxXpCard.xp || 0);
+        });
+      }
+    }
+  });
+
+  // Handle all bonded card stuff, and encountercode sizes.
+  const bondedSet = new Set(bondedNames);
+  forEach(flatCards, card => {
+    if (card.encounter_code) {
+      card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
+      encounter_card_counts;
+    }
+    if (bondedSet.has(card.real_name)) {
+      card.bonded_from = true;
+    }
+  });
+
+  // Deal with duplicate ids?
+  forEach(groupBy(flatCards, card => card.id), dupes => {
+    if (dupes.length > 1) {
+      forEach(dupes, (dupe, idx) => {
+        dupe.id = `${dupe.id}_${idx}`;
+      });
+    }
+  });
+}
 export const syncCards = async function(
   updateProgress: (progress: number, msg?: string) => void,
   db: Database,
@@ -229,8 +313,7 @@ export const syncCards = async function(
   try {
     updateProgress(0);
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
-    const langPrefix = lang && !NON_LOCALIZED_CARDS.has(lang) ? `${lang}.` : '';
-    const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
+    const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
       [cycle_position: number]: {
@@ -282,13 +365,41 @@ export const syncCards = async function(
       updateProgress(0.5);
       try {
         const customCardsResponse = await customCardsPromise;
-        const customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+        const customCards = uniqBy(
+          map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
+          c => c.id
+        );
+        const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
+        const dedupedCustomCards = filter(customCards, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+        handleDerivativeData(dedupedCustomCards, {});
+        VERBOSE && console.log('Clearing out old custom cards');
+        const cardsDb = await db.cards();
+        await cardsDb.createQueryBuilder().where(`code like 'z%'`).delete().execute();
+
         const queryRunner = await db.startTransaction();
         try {
-          await insertChunk(sqliteVersion, customCards, async(c: Card[]) => {
-            await queryRunner.manager.delete(Card, map(c, c => c.id));
+          VERBOSE && console.log('Incremental update of the custom cards');
+          const [linkedCards, normalCards] = partition(dedupedCustomCards, card => !!card.linked_card);
+          const backLinkCards = flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []);
+
+          async function insertCards(c: Card[]) {
             await queryRunner.manager.insert(Card, c);
-          });
+          }
+
+          VERBOSE && console.log('Inserting back-link cards');
+          VERBOSE && console.log(map(backLinkCards, c => c.id));
+          await insertChunk(sqliteVersion, backLinkCards, insertCards);
+
+          VERBOSE && console.log('Inserting front-link cards');
+          VERBOSE && console.log(map(linkedCards, c => c.id));
+          await insertChunk(sqliteVersion, linkedCards, insertCards);
+
+          VERBOSE && console.log('Inserting normal cards');
+          VERBOSE && console.log(map(normalCards, c => c.id));
+          await insertChunk(sqliteVersion, normalCards, insertCards);
+          VERBOSE && console.log('Done with incremental');
+
+
           updateProgress(0.7);
         } finally {
           await queryRunner.commitTransaction();
@@ -322,7 +433,7 @@ export const syncCards = async function(
     await db.clearCache();
     VERBOSE && console.log('Cleared old database');
     updateProgress(0.22);
-
+    VERBOSE && console.log('Starting to import rules');
     await syncRules(db, sqliteVersion, lang);
     updateProgress(0.25);
     VERBOSE && console.log('Imported rules');
@@ -372,7 +483,6 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
-          VERBOSE && console.log(card.code);
           /*
           // Code to spit out investigator deck_options localization strings.
           if (card.type_code === 'investigator' && card.deck_options) {
@@ -384,10 +494,10 @@ export const syncCards = async function(
           }
           */
           if (card.duplicate_of_code) {
-            if (!dupes[card.duplicate_of_code]) {
-              dupes[card.duplicate_of_code] = [];
-            }
-            dupes[card.duplicate_of_code]?.push(card.pack_code);
+            dupes[card.duplicate_of_code] = [
+              ...(dupes[card.duplicate_of_code] || []),
+              card.pack_code,
+            ];
           }
           cardsToInsert.push(card);
         }
@@ -397,94 +507,45 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    updateProgress(0.35);
-    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card] : []));
-    const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
-    const flatCards = flatMap(dedupedCards, (c: Card) => {
-      return c.linked_card ? [c, c.linked_card] : [c];
-    });
-    const encounter_card_counts: {
-      [encounter_code: string]: number | undefined;
-    } = {};
 
-    // Clean up all the bonded stuff.
-    const bondedNames: string[] = [];
-    const playerCards: Card[] = [];
-    forEach(flatCards, card => {
-      if (dupes[card.code]) {
-        card.reprint_pack_codes = dupes[card.code];
-      }
-      if (!card.hidden && card.encounter_code) {
-        encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
-      }
-      if (card.bonded_name) {
-        bondedNames.push(card.bonded_name);
-      }
-      if ((card.deck_limit && card.deck_limit > 0) && !card.spoiler && !(card.xp === undefined || card.xp === null)) {
-        playerCards.push(card);
-      }
-    });
-
-    // Handle all upgrade stuff
-    const cardsByName = values(groupBy(playerCards, card => card.real_name.toLowerCase()));
-    forEach(cardsByName, cardsGroup => {
-      if (cardsGroup.length > 1) {
-        const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
-        if (maxXpCard) {
-          forEach(cardsGroup, card => {
-            const xp = card.xp || 0;
-            card.has_upgrades = xp < (maxXpCard.xp || 0);
-          });
-        }
-      }
-    });
-
-    // Handle all bonded card stuff, and encountercode sizes.
-    const bondedSet = new Set(bondedNames);
-    forEach(flatCards, card => {
-      if (card.encounter_code) {
-        card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
-        encounter_card_counts;
-      }
-      if (bondedSet.has(card.real_name)) {
-        card.bonded_from = true;
-      }
-    });
-
-    // Deal with duplicate ids?
-    forEach(groupBy(flatCards, card => card.id), dupes => {
-      if (dupes.length > 1) {
-        forEach(dupes, (dupe, idx) => {
-          dupe.id = `${dupe.id}_${idx}`;
-        });
-      }
-    });
     let customCards: Card[] = [];
     try {
       const customCardsResponse = await customCardsPromise;
-      customCards = map(customCardsResponse.data.card, customCard => Card.fromGraphQl(customCard, lang || 'en'));
+      customCards = uniqBy(
+        map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
+        c => c.id
+      );
     } catch (e) {
       console.log(e);
     }
+    updateProgress(0.35);
+    const allCardsToInsert = concat(cardsToInsert, customCards);
+    const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
+    const dedupedCards = filter(allCardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+    handleDerivativeData(dedupedCards, dupes)
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     const queryRunner = await db.startTransaction();
     try {
       VERBOSE && console.log('Parsed all cards');
-      const totalCards = (linkedCards.length + normalCards.length + customCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
+      const totalCards = (linkedCards.length + normalCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
       async function insertCards(c: Card[]) {
         await queryRunner.manager.insert(Card, c);
         processedCards += c.length;
         updateProgress(0.35 + (processedCards / (1.0 * totalCards) * 0.50));
       }
-      await insertChunk(sqliteVersion, flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), insertCards);
-      // console.log('Inserted back-link cards');
+      const backLinkCards = flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []);
+      VERBOSE && console.log(map(backLinkCards, c => c.id));
+
+      await insertChunk(
+        sqliteVersion,
+        flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []),
+        insertCards
+      );
+      VERBOSE && console.log('Inserted back-link cards');
       await insertChunk(sqliteVersion, linkedCards, insertCards);
       VERBOSE && console.log('Inserted front link cards');
       await insertChunk(sqliteVersion, normalCards, insertCards);
-      if (customCards.length) {
-        await insertChunk(sqliteVersion, customCards, insertCards);
-      }
     } finally {
       await queryRunner.commitTransaction();
       await queryRunner.release();
@@ -501,6 +562,7 @@ export const syncCards = async function(
     };
   } catch (e) {
     console.log(e);
+    console.log(e.stack)
     throw e;
   }
 };

@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform } from 'react-native';
+import { TouchableOpacity, ListRenderItemInfo, View, Platform } from 'react-native';
 import { t } from 'ttag';
 import { Brackets } from 'typeorm/browser';
+import Animated from 'react-native-reanimated';
 
 import Rule from '@data/types/Rule';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
@@ -158,7 +159,7 @@ export default function RulesView({ componentId }: Props) {
       onSearchChange={updateSearch}
     >
       { (onScroll) => (
-        <FlatList
+        <Animated.FlatList
           onScroll={onScroll}
           data={data}
           contentInset={Platform.OS === 'ios' ? { top: height } : undefined}

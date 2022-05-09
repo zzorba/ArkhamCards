@@ -1,16 +1,9 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { filter, map, take, uniq } from 'lodash';
-import {
-  FlatList,
-  Platform,
-  RefreshControl,
-  StyleSheet,
-} from 'react-native';
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import Card, { CardsMap } from '@data/types/Card';
-import { searchBoxHeight } from '@components/core/SearchBox';
+import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
@@ -20,6 +13,7 @@ import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useSingleCard from '@components/card/useSingleCard';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -31,15 +25,6 @@ interface Props {
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
-}
-
-interface Item {
-  key: string;
-  deckId: MiniDeckT;
-}
-
-function keyExtractor(item: Item) {
-  return item.deckId.id.uuid;
 }
 
 function DeckListItem({
@@ -54,7 +39,7 @@ function DeckListItem({
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const deck = useLatestDeck(deckId, deckToCampaign);
-  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id);
+  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id || 0);
   if (!deck) {
     return null;
   }
@@ -76,7 +61,6 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
-  const { colors, backgroundStyle, fontScale } = useContext(StyleContext);
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
   const items = useMemo(() => {
@@ -97,9 +81,7 @@ export default function DeckList({
   }, [deckIds, deckClicked, investigators, searchTerm]);
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
 
-  const renderItem = useCallback(({ item: { deckId } }: {
-    item: Item;
-  }) => {
+  const renderItem = useCallback(({ deckId }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}
@@ -110,36 +92,17 @@ export default function DeckList({
     );
   }, [deckClicked, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
-  const height = searchBoxHeight(fontScale);
+  const renderHeader = useCallback(() => header || null, [header]);
+  const renderFooter = useCallback(() => footer(items.length === 0), [footer, items.length]);
   return (
-    <FlatList
-      refreshControl={
-        <RefreshControl
-          refreshing={debouncedRefreshing}
-          onRefresh={onRefresh}
-          tintColor={colors.lightText}
-          progressViewOffset={height}
-        />
-      }
-      initialNumToRender={8}
-      contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
-      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
+    <ArkhamLargeList
+      refreshing={debouncedRefreshing}
+      onRefresh={onRefresh}
       onScroll={onScroll}
-      keyboardShouldPersistTaps="always"
-      keyboardDismissMode="on-drag"
-      style={[styles.container, backgroundStyle]}
       data={items}
       renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      ListHeaderComponent={header}
-      removeClippedSubviews
-      ListFooterComponent={footer(items.length === 0)}
+      renderHeader={renderHeader}
+      renderFooter={renderFooter}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

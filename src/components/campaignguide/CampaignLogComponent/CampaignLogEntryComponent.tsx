@@ -84,6 +84,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
           <TextEntryComponent
             icon={sectionId === 'supplies' ? entry.id : undefined}
             text={`${title || logEntry.supply.name}: #X#`}
+            crossedOut={crossedOut}
             entry={entry}
           />
         );

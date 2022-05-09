@@ -1,11 +1,12 @@
 import StyleContext from '@styles/StyleContext';
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useReducer } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { filter, map } from 'lodash';
+import { filter, map, findIndex } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
-import { useComponentDidAppear } from './hooks';
+import { useComponentDidAppear, useEffectUpdate } from './hooks';
 import { s } from '@styles/space';
+import deepEqual from 'deep-equal';
 
 interface RenderButton {
   element: (selected: boolean) => React.ReactNode;
@@ -16,6 +17,7 @@ interface Props {
   selectedIndexes: number[];
   onPress: (indexes: number[]) => void;
   componentId: string;
+  interaction?: 'radio'
 }
 
 export function SingleButton({ idx, content, last, onPressIndex, height, selected }: {
@@ -49,36 +51,67 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   );
 }
 
+interface SyncIndexes {
+  type: 'sync';
+  indexes: number[];
+}
+interface ToggleIndex {
+  type: 'toggle';
+  idx: number;
+  interaction?: 'radio';
+}
+type IndexAction = ToggleIndex | SyncIndexes;
 export default function ArkhamButtonGroup({
   buttons,
   selectedIndexes,
   onPress,
   componentId,
+  interaction,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
-  const [localSelectedIndexes, setLocalSelectedIndexes] = useState(selectedIndexes);
+  const [localSelectedIndexes, updateLocalSelectedIndexes] = useReducer((indexes: number[], action: IndexAction) => {
+    switch (action.type) {
+      case 'sync':
+        if (deepEqual(indexes, action.indexes)) {
+          return indexes;
+        }
+        return action.indexes;
+      case 'toggle': {
+        const selected = findIndex(indexes, idx => idx === action.idx) !== -1;
+        let newSelection = indexes;
+        if (action.interaction === 'radio') {
+          newSelection = selected ? [] : [action.idx];
+        } else {
+          newSelection = selected ?
+            filter(indexes, x => x !== action.idx) :
+            [...indexes, action.idx];
+        }
+        return newSelection;
+      }
+    }
+  }, selectedIndexes);
+  useEffectUpdate(() => {
+    onPress(localSelectedIndexes);
+  }, [localSelectedIndexes]);
   useComponentDidAppear(() => {
-    setLocalSelectedIndexes(selectedIndexes);
-  }, componentId, [selectedIndexes]);
+    updateLocalSelectedIndexes({ type: 'sync', indexes: selectedIndexes });
+  }, componentId, [updateLocalSelectedIndexes, selectedIndexes]);
   const onPressIndex = useCallback((idx: number) => {
-    const selection = new Set(localSelectedIndexes);
-    const newSelection = selection.has(idx) ? filter(localSelectedIndexes, x => x !== idx) : [...localSelectedIndexes, idx];
-    setLocalSelectedIndexes(newSelection);
-    setTimeout(() => onPress(newSelection), 10);
-  }, [localSelectedIndexes, setLocalSelectedIndexes, onPress]);
-  const selection = useMemo(() => new Set(localSelectedIndexes), [localSelectedIndexes]);
+    updateLocalSelectedIndexes({ type: 'toggle', idx, interaction });
+  }, [interaction, updateLocalSelectedIndexes]);
   const height = 28 * fontScale + 20;
   return (
     <View style={styles.wrapper}>
       <View style={[styles.buttonWrapper, { borderColor: colors.M, borderRadius: height / 2, height, backgroundColor: colors.L30 }]}>
         { map(buttons, (button, idx) => {
           const last = idx === (buttons.length - 1);
+          const selected = findIndex(localSelectedIndexes, x => x === idx) !== -1;
           return (
             <SingleButton
               idx={idx}
-              key={idx}
+              key={`${idx}-${selected}`}
               content={button}
-              selected={selection.has(idx)}
+              selected={selected}
               last={last}
               onPressIndex={onPressIndex}
               height={height}

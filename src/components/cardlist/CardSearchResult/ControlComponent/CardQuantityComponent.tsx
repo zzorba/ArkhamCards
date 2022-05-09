@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { rowHeight, toggleButtonMode } from '../constants';
-import { xs } from '@styles/space';
+import space, { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { EditSlotsActions, useCounter, useEffectUpdate } from '@components/core/hooks';
 import StackedCardCount from './StackedCardCount';
@@ -18,9 +18,10 @@ interface Props {
   forceBig?: boolean;
   reversed?: boolean;
   useGestureHandler?: boolean;
+  locked?: boolean;
 }
 
-function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {
+function TinyCardQuantityComponent({ code, locked, count: propsCount, countChanged: { setSlot }, limit }: Omit<Props, 'showZeroCount' | 'forceBig'>) {
   const { fontScale } = useContext(StyleContext);
   const [count, updateCount] = useReducer((count: number, action: 'cycle' | 'sync') => {
     if (action === 'cycle') {
@@ -41,16 +42,20 @@ function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { se
 
   return (
     <View style={[styles.row, { height: rowHeight(fontScale) }]}>
-      <TouchableOpacity onPress={onPress}>
+      { locked ? (
         <StackedCardCount count={count} showZeroCount />
-      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={onPress}>
+          <StackedCardCount count={count} showZeroCount />
+        </TouchableOpacity>
+      ) }
     </View>
   );
 }
 
-function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, useGestureHandler }: Props) {
+function NormalCardQuantityComponent({ code, locked, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, useGestureHandler }: Props) {
   const { fontScale } = useContext(StyleContext);
-  const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit });
+  const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit, hapticFeedback: true });
   useEffectUpdate(() => {
     setCount(propsCount);
   }, [propsCount]);
@@ -63,6 +68,13 @@ function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { 
     decCount();
     decSlot(code);
   }, [decCount, decSlot, code]);
+  if (locked) {
+    return (
+      <View style={[styles.row, { height: rowHeight(fontScale) }, space.paddingSideS]}>
+        <StackedCardCount count={count} showZeroCount={showZeroCount} />
+      </View>
+    );
+  }
 
   return (
     <View style={[styles.row, { height: rowHeight(fontScale) }]}>

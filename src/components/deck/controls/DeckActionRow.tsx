@@ -24,7 +24,10 @@ function iconSize(icon: string) {
       return 30;
     case 'elder_sign':
     case 'copy':
+    case 'cards':
       return 26;
+    case 'log':
+      return 28;
     case 'sort':
       return 18;
     default:

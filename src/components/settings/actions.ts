@@ -17,6 +17,7 @@ import {
   LegacyCampaignGuideState,
   ChaosBagResults,
   REDUX_MIGRATION,
+  MiscSetting,
 } from '@actions/types';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 import { AppState } from '@reducers';
@@ -50,6 +51,16 @@ export function setSingleCardView(value: boolean): SetMiscSettingAction {
     value,
   };
 }
+
+
+export function setCustomContent(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'custom_content',
+    value,
+  };
+}
+
 
 export function setAlphabetizeEncounterSets(value: boolean): SetMiscSettingAction {
   return {
@@ -99,6 +110,23 @@ export function setBeta1(value: boolean): SetMiscSettingAction {
   return {
     type: SET_MISC_SETTING,
     setting: 'beta1',
+    value,
+  };
+}
+
+
+export function setHideCampaignDecks(value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting: 'hide_campaign_decks',
+    value,
+  };
+}
+
+export function setMiscSetting(setting: MiscSetting, value: boolean): SetMiscSettingAction {
+  return {
+    type: SET_MISC_SETTING,
+    setting,
     value,
   };
 }

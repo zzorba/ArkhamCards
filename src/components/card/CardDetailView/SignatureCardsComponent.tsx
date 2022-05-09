@@ -36,6 +36,7 @@ export default function SignatureCardsComponent({ componentId, investigator, wid
   if (alternateCardsLoading && requiredCardsLoading) {
     return null;
   }
+
   const [advancedCards, altCards] = partition(alternateCards, card => !!card.advanced);
   return (
     <View style={space.marginBottomS}>

@@ -12,6 +12,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
 import { t, c } from 'ttag';
+import stable from 'stable';
 
 import { drawWeakness, availableWeaknesses } from '@lib/weaknessHelper';
 import { Slots, WeaknessSet } from '@actions/types';
@@ -41,12 +42,13 @@ interface Props {
 }
 
 function CardImage({ card, width }: { card: Card, width: number }) {
-  if (card.imagesrc) {
+  const uri = card.imageUri();
+  if (uri) {
     return (
       <FastImage
         style={styles.verticalCardImage}
         source={{
-          uri: `https://arkhamdb.com/${card.imagesrc}`,
+          uri,
         }}
         resizeMode="contain"
       />
@@ -79,11 +81,12 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
   useEffect(() => {
     FastImage.preload(
       flatMap(weaknessCards, c => {
-        if (!c || !c.imagesrc) {
+        const uri = c?.imageUri();
+        if (!uri) {
           return [];
         }
         return {
-          uri: `https://arkhamdb.com/${c.imagesrc}`,
+          uri,
         };
       })
     );
@@ -180,7 +183,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
     forEach(selectedTraits, trait => {
       traitsMap[trait] = 1;
     });
-    return keys(traitsMap).sort();
+    return stable(keys(traitsMap));
   }, [weaknessSet, weaknessCards, selectedTraits]);
 
   const onToggleChange = useCallback((key: string, value: boolean) => {

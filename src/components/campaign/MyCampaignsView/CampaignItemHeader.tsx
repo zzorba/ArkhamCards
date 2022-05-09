@@ -122,7 +122,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
               <AppIcon name="book" size={24} color={colors.D20} />
             </View>
             <View style={styles.flex}>
-              <Text style={[typography.gameFont, typography.light]}>{name}</Text>
+              <Text style={[typography.gameFont, typography.light]} numberOfLines={1} ellipsizeMode="tail">{name}</Text>
             </View>
           </View>
         ) }

@@ -23,6 +23,7 @@ import {
   ScenarioResult,
   STANDALONE,
   ALICE_IN_WONDERLAND,
+  CALL_OF_THE_PLAGUEBEARER,
   DARK_MATTER,
   RTTCU,
   EOE,
@@ -69,6 +70,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     case CROWN_OF_EGIL: return t`Crown of Egil`;
     case GOB: return t`Guardians of the Abyss`;
+    case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -322,11 +324,13 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     ];
     case CROWN_OF_EGIL:
     case ALICE_IN_WONDERLAND:
-    case DARK_MATTER: return [];
-    case TDE: return [];
-    case CUSTOM: return [];
-    case STANDALONE: return [];
-    case GOB: return [];
+    case CALL_OF_THE_PLAGUEBEARER:
+    case DARK_MATTER:
+    case TDE:
+    case CUSTOM:
+    case STANDALONE:
+    case GOB:
+      return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -357,6 +361,7 @@ export function campaignNames() {
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,
     standalone: t`Standalone`,
+    zcp: t`Call of the Plaguebearer`,
   };
 }
 
@@ -388,6 +393,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
     case EOE:
       return colors.campaign.eoe;
@@ -492,11 +498,19 @@ export function getCampaignLog(
       return {
         sections: [
           t`Campaign Notes`,
-          t`Fragments of Alilce`,
+          t`Fragments of Alice`,
           t`Wonderland Boons`,
           t`Wonderland Banes`,
         ],
         counts: [t`Strength of Wonderland`],
+      };
+    case CALL_OF_THE_PLAGUEBEARER:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Eliminated`,
+          t`Locations`,
+        ],
       };
     case CROWN_OF_EGIL:
       return {
@@ -623,6 +637,12 @@ const CROWN_OF_EGIL_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 1, '-3': 2, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+};
+const CALL_OF_THE_PLAGUEBEARER_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 3, '0': 3, '-1': 3, '-2': 1, skull: 2, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 1, '-3': 3, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 3, '-6': 1, skull: 2, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
 };
 const GOB_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, '-6': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
@@ -848,6 +868,8 @@ export function getChaosBag(
       return ALICE_IN_WONDERLAND_BAG[difficulty];
     case CROWN_OF_EGIL:
       return CROWN_OF_EGIL_BAG[difficulty];
+    case CALL_OF_THE_PLAGUEBEARER:
+      return CALL_OF_THE_PLAGUEBEARER_BAG[difficulty];
     case GOB:
       return GOB_BAG[difficulty];
     default: {

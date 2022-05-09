@@ -34,10 +34,16 @@ export function slotsTranslations() {
 export function usesTranslations() {
   return {
     ammo: t`Ammo`,
+    blame: c('fan-made-uses').t`Blame`,
     bounties: t`Bounties`,
     charges: t`Charges`,
+    durability: t`Durability`,
     keys: t`Keys`,
+    leylines: t`Leylines`,
     locks: t`Locks`,
+    offerings: t`Offerings`,
+    poems: c('fan-made-uses').t`Poems`,
+    portions: c('fan-made-uses').t`Portions`,
     resources: t`Resources`,
     secrets: t`Secrets`,
     supplies: t`Supplies`,

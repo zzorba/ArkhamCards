@@ -8,6 +8,7 @@ import StyleContext from '@styles/StyleContext';
 import TokenIcon from '@icons/TokenIcon';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
+import space from '@styles/space';
 
 interface OwnProps {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
@@ -243,7 +244,13 @@ export default function ChaosToken({ iconKey, size: iconSize, sealed, status, sh
       return (
         <View style={[{ width: size, height: size }, styles.tapCircle]}>
           <ChaosTokenPart name="tap_circle" color={colors.M} size={size} />
-          <Text style={[typography.small, typography.italic, typography.center, typography.light]}>{t`Tap to draw`}</Text>
+          <Text style={[
+            typography.small,
+            typography.italic,
+            typography.center,
+            typography.light,
+            space.marginSideS,
+          ]}>{t`Tap to draw`}</Text>
         </View>
       );
     }

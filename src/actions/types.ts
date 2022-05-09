@@ -206,6 +206,8 @@ export type CardSplitType = keyof SplitCards;
 export interface ParsedDeck {
   id: DeckId;
   investigator: Card;
+  investigatorFront: Card;
+  investigatorBack: Card;
   deck: Deck;
   slots: Slots;
   deckSize: number;
@@ -382,6 +384,7 @@ export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
+export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -404,7 +407,8 @@ export type CampaignCycleCode =
   typeof STANDALONE |
   typeof DARK_MATTER |
   typeof ALICE_IN_WONDERLAND |
-  typeof CROWN_OF_EGIL;
+  typeof CROWN_OF_EGIL |
+  typeof CALL_OF_THE_PLAGUEBEARER;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -428,6 +432,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
+  CALL_OF_THE_PLAGUEBEARER,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -445,14 +450,18 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEA,
   TDEB,
   TIC,
+  EOE,
   GOB,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
-  EOE,
+  CALL_OF_THE_PLAGUEBEARER,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
+  CALL_OF_THE_PLAGUEBEARER,
+]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -582,9 +591,10 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
-  setting: 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1';
+  setting: MiscSetting;
   value: boolean;
 }
 
@@ -643,6 +653,18 @@ export const SET_LANGUAGE_CHOICE = 'SET_LANGUAGE_CHOICE';
 export interface SetLanguageChoiceAction {
   type: typeof SET_LANGUAGE_CHOICE;
   choiceLang: string;
+}
+
+export const DISMISS_ONBOARDING = 'DISMISS_ONBOARDING';
+export interface DismissOnboardingAction {
+  type: typeof DISMISS_ONBOARDING;
+  onboarding: string;
+}
+
+
+export const RESET_ONBOARDING = 'RESET_ONBOARDING';
+export interface ResetOnboardingAction {
+  type: typeof RESET_ONBOARDING;
 }
 
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';

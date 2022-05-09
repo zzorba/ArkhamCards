@@ -1,6 +1,6 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
+import { forEach, pick, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
@@ -9,7 +9,7 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, Ski
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardFragment, CoreCardTextFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
@@ -582,6 +582,22 @@ export default class Card {
     return arkham_num(this.health);
   }
 
+  public imageUri(): string | undefined {
+    if (!this.imagesrc) {
+      return undefined;
+    }
+    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    const uri = `${baseUri}${this.imagesrc}`;
+    return uri;
+  }
+  public backImageUri(): string | undefined {
+    if (!this.backimagesrc) {
+      return undefined;
+    }
+    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    return `${baseUri}${this.backimagesrc}`;
+  }
+
   isBasicWeakness(): boolean {
     return this.type_code !== 'scenario' &&
       this.subtype_code === 'basicweakness' &&
@@ -969,12 +985,12 @@ export default class Card {
     }
   }
 
-  static fromGraphQl(
-    card: CoreCardFragment & {
+  private static gqlToJson(
+    card: SingleCardFragment & {
       packs: { name: string }[];
       translations: CoreCardTextFragment[];
-    },
-    lang: string
+      encounter_sets: { name: string}[],
+    }
   ) {
     const cardTypeNames: { [key: string]: string } = {
       asset: t`Asset`,
@@ -987,6 +1003,7 @@ export default class Card {
       enemy: t`Enemy`,
       act: t`Act`,
       agenda: t`Agenda`,
+      story: t`Story`,
     };
     const factionNames: { [key: string]: string } = {
       neutral: t`Neutral`,
@@ -1013,27 +1030,55 @@ export default class Card {
       subname: card.real_subname,
       text: card.real_text,
       traits: card.real_traits,
+      back_flavor: card.real_back_flavor,
+      back_name: card.real_back_name,
+      back_text: card.real_back_text,
     };
+    json.encounter_name = card.encounter_sets.length ? card.encounter_sets[0].name : card.real_encounter_set_name;
     json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];
     if (card.subtype_code) {
       json.subtype_name = subTypeName[card.subtype_code];
     }
+    return json;
+  }
+
+  static fromGraphQl(
+    card: SingleCardFragment & {
+      linked_card?: SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      };
+      packs: { name: string }[];
+      translations: CoreCardTextFragment[];
+      encounter_sets: { name: string}[],
+    },
+    lang: string
+  ) {
+    const json = Card.gqlToJson(card);
+    if (card.linked_card) {
+      json.linked_card = Card.gqlToJson({
+        ...pick(card, ['packs', 'encounter_sets']),
+        ...card.linked_card,
+      });
+      json.linked_to_code = json.linked_card.code;
+      json.linked_to_name = json.linked_card.real_name;
+    }
     return Card.fromJson(json,
       {
         [card.pack_code]: {
           position: card.pack_position,
-          cycle_position: 0,
+          cycle_position: 100,
         },
       },
       {
-        '0': {
-          name: t`Fan-Made Content`,
-          code: 'fan',
+        '100': {
+          name: json.pack_name || t`Fan-Made Content`,
+          code: card.pack_code,
         },
       },
-      lang
+      lang,
+      true
     );
   }
 
@@ -1051,7 +1096,8 @@ export default class Card {
         code?: string;
       };
     },
-    lang: string
+    lang: string,
+    noFlipping?: boolean
   ): Card {
     if (json.code === '02041') {
       json.subtype_code = null;
@@ -1129,8 +1175,11 @@ export default class Card {
       s => `#${s}#`).join(',') : null;
 
     const restrictions = Card.parseRestrictions(json.restrictions);
-    const uses_match = json.real_text && json.real_text.match(USES_REGEX);
-    const uses = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses_match = json.code === '08062' ?
+      ['foo', 'bar', 'charges'] :
+      (json.real_text && json.real_text.match(USES_REGEX));
+    const usesRaw = uses_match ? uses_match[2].toLowerCase() : null;
+    const uses = usesRaw === 'charge' ? 'charges' : usesRaw;
 
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
@@ -1246,7 +1295,7 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
+    if (!noFlipping && result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
       // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
       result = {
         ...result.linked_card,
@@ -1308,7 +1357,7 @@ export default class Card {
     json: any,
     card: Card
   ): Card {
-    const code: string = json.code;
+    const code: string = card.code;
     const result: Card = { ...card } as Card;
     result.id = `${tabooId}-${code}`;
     result.taboo_set_id = tabooId;

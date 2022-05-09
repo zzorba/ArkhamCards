@@ -160,7 +160,7 @@ export default function CampaignDetailTab({
     processedCampaign,
   });
   const latestDecks = campaign.latestDecks();
-  const cards = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+  const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -220,6 +220,7 @@ export default function CampaignDetailTab({
           <CampaignInvestigatorsComponent
             componentId={componentId}
             showAlert={showAlert}
+            login={login}
             loading={!campaignInvestigators}
             showAddInvestigator={showAddInvestigator}
             processedCampaign={processedCampaign}

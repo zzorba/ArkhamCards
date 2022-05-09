@@ -260,7 +260,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
     let inputs: Guide_Input_Insert_Input[] = [];
     let achievements: Guide_Achievement_Insert_Input[] = [];
     if (campaign.guided) {
-      inputs = map(guide?.inputs || [], input => guideInputToInsert(input, campaignId));
+      inputs = map(guide?.inputs || [], (input, idx) => guideInputToInsert(input, campaignId, idx));
       achievements = map(guide?.achievements || [], a => guideAchievementToInsert(a, campaignId));
     }
     const investigator_data: Investigator_Data_Insert_Input[] = [];
@@ -834,7 +834,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     setChaosBag, setWeaknessSet, setCampaignNotes, setCampaigName, setXp, setScenarioResults, setDifficulty, setGuideVersion]);
 }
 
-export function guideInputToInsert(input: GuideInput, serverId: number) {
+export function guideInputToInsert(input: GuideInput, serverId: number, index?: number) {
   return {
     id: `${serverId}(${input.type},${input.scenario || ''},${input.step || ''})`,
     type: input.type,
@@ -842,6 +842,7 @@ export function guideInputToInsert(input: GuideInput, serverId: number) {
     scenario: input.scenario || null,
     step: input.step || null,
     payload: omit(input, ['scenario', 'step', 'type']),
+    inserted_idx: index !== undefined ? index : null,
   };
 }
 export interface GuideActions {

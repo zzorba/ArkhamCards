@@ -42,6 +42,7 @@ import {
   ScenarioStatus,
   TraumaEffect,
   GainSuppliesEffect,
+  LoseSuppliesEffect,
   CampaignLogInvestigatorCountEffect,
   PartnerStatusEffect,
   Partner,
@@ -187,6 +188,7 @@ export default class GuidedCampaignLog {
       case 'upgrade_decks':
       case 'save_decks':
       case 'gain_supplies':
+      case 'lose_supplies':
       case 'partner_status':
         return true;
       default:
@@ -280,6 +282,9 @@ export default class GuidedCampaignLog {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
+            case 'lose_supplies':
+              this.handleLoseSuppliesEffect(effect);
+              break;
             case 'gain_supplies':
               this.handleGainSuppliesEffect(effect, input);
               break;
@@ -715,6 +720,15 @@ export default class GuidedCampaignLog {
         });
         return result;
       }
+      case 'not_defeated': {
+        const result: string[] = [];
+        forEach(this.investigatorResolutionStatus(), (status, code) => {
+          if (status === 'alive' || status === 'resigned') {
+            result.push(code);
+          }
+        });
+        return result;
+      }
       case 'resigned': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
@@ -1004,7 +1018,7 @@ export default class GuidedCampaignLog {
       if (effect.non_story) {
         const assets = data.addedCards || [];
         assets.push(effect.card);
-        data.addedCards = uniq(assets);
+        data.addedCards = assets;
       } else {
         const assets = data.storyAssets || [];
         assets.push(effect.card);
@@ -1026,17 +1040,24 @@ export default class GuidedCampaignLog {
       ...this.campaignData.everyStoryAsset,
       effect.new_card,
     ]);
+    const investigatorRestriction = effect.investigator ?
+      new Set(this.getInvestigators(effect.investigator)) :
+      undefined;
     forEach(
       keys(this.campaignData.investigatorData),
       investigator => {
-        const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
-        this.campaignData.investigatorData[investigator] = {
-          ...data,
-          storyAssets: map(
-            data.storyAssets || [],
-            card => card === effect.old_card ? effect.new_card : card
-          ),
-        };
+        if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
+          const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
+          if (!effect.has_card || find(data.storyAssets || [], card => card === effect.has_card)) {
+            this.campaignData.investigatorData[investigator] = {
+              ...data,
+              storyAssets: map(
+                data.storyAssets || [],
+                card => card === effect.old_card ? effect.new_card : card
+              ),
+            };
+          }
+        }
       }
     );
   }
@@ -1146,6 +1167,12 @@ export default class GuidedCampaignLog {
       if (effect.mental) {
         trauma.mental = (trauma.mental || 0) + effect.mental;
       }
+      if (effect.set_physical) {
+        trauma.physical = effect.set_physical;
+      }
+      if (effect.set_mental) {
+        trauma.mental = effect.set_mental;
+      }
       if (effect.mental_or_physical) {
         throw new Error('These should be filtered out before it reaches campaign log');
       }
@@ -1165,6 +1192,24 @@ export default class GuidedCampaignLog {
       if (this.chaosBag[token] === 0) {
         delete this.chaosBag[token];
       }
+    });
+  }
+
+
+  private handleLoseSuppliesEffect(effect: LoseSuppliesEffect) {
+    if (effect.investigator !== 'all') {
+      throw new Error('Unexpected investigator type for lose_supplies effect.');
+    }
+    const investigators = this.getInvestigators(effect.investigator);
+    forEach(investigators, investigator => {
+      const countEffect: CampaignLogInvestigatorCountEffect = {
+        type: 'campaign_log_investigator_count',
+        section: effect.section,
+        investigator: '$input_value',
+        operation: 'cross_out',
+        id: effect.supply,
+      };
+      this.handleCampaignLogInvestigatorCountEffect(countEffect, [investigator]);
     });
   }
 
@@ -1320,44 +1365,54 @@ export default class GuidedCampaignLog {
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {
-    const section: EntrySection = this.sections[effect.section] || {
+    const sectionId = effect.section === '$input_value' && input?.length ? input[0] : effect.section;
+    const section: EntrySection = this.sections[sectionId] || {
       entries: [],
       crossedOut: {},
     };
-    const ids = (effect.id === '$input_value') ? input : [effect.id];
-    forEach(ids, id => {
+    if (!effect.id) {
       if (effect.cross_out) {
-        section.crossedOut[id] = true;
-      } else if (effect.decorate) {
-        section.decoration = {
-          ...(section.decoration || {}),
-          [id]: effect.decorate,
-        };
-      } else if (effect.remove) {
-        section.entries = filter(
-          section.entries,
-          entry => entry.id !== id
-        );
-      } else {
-        section.entries.push({
-          type: 'basic',
-          id,
-        });
+        section.sectionCrossedOut = true;
       }
-    });
-    this.sections[effect.section] = section;
+    } else {
+      const ids = (effect.id === '$input_value') ? input : [effect.id];
+      forEach(ids, id => {
+        if (effect.cross_out) {
+          section.crossedOut[id] = true;
+        } else if (effect.decorate) {
+          section.decoration = {
+            ...(section.decoration || {}),
+            [id]: effect.decorate,
+          };
+        } else if (effect.remove) {
+          section.entries = filter(
+            section.entries,
+            entry => entry.id !== id
+          );
+        } else {
+          section.entries.push({
+            type: 'basic',
+            id,
+          });
+        }
+      });
+    }
+    this.sections[sectionId] = section;
   }
 
   private updateSectionWithCount(
     section: EntrySection,
     id: string,
-    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input',
+    operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input' | 'cross_out',
     value: number
   ): EntrySection {
     // Normal entry
     const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
     switch (operation) {
+      case 'cross_out':
+        section.crossedOut[id] = true;
+        break;
       case 'subtract_input':
         if (entry && entry.type === 'count') {
           entry.count = count - value;
@@ -1402,13 +1457,13 @@ export default class GuidedCampaignLog {
     input?: string[],
     numberInput?: number
   ) {
+    const investigatorSection = this.investigatorSections[effect.section] || {};
+    const investigators = this.getInvestigators(effect.investigator, input);
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
         numberInput :
         effect.value
     ) || 0;
-    const investigatorSection = this.investigatorSections[effect.section] || {};
-    const investigators = this.getInvestigators(effect.investigator, input);
     forEach(investigators, investigator => {
       const section = investigatorSection[investigator] || {
         entries: [],
@@ -1420,11 +1475,6 @@ export default class GuidedCampaignLog {
   }
 
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, numberInput?: number) {
-    const value: number = (
-      (effect.operation === 'add_input' || effect.operation === 'set_input') ?
-        numberInput :
-        effect.value
-    ) || 0;
     if (!effect.id) {
       // Section entry
       const section = this.countSections[effect.section] || {
@@ -1433,13 +1483,16 @@ export default class GuidedCampaignLog {
       const count = section.count;
       switch (effect.operation) {
         case 'add':
-          section.count = count + value;
+          section.count = count + (effect.value || 0);
+          break;
+        case 'set':
+          section.count = effect.value || 0;
           break;
         case 'add_input':
           section.count = count + (numberInput || 0);
           break;
-        case 'set':
-          section.count = value;
+        case 'subtract_input':
+          section.count = count - (numberInput || 0);
           break;
         case 'set_input':
           section.count = numberInput || 0;
@@ -1447,11 +1500,15 @@ export default class GuidedCampaignLog {
       }
       this.countSections[effect.section] = section;
     } else {
+      const value: number = (
+        (effect.operation === 'add_input' || effect.operation === 'set_input' || effect.operation === 'subtract_input') ?
+          numberInput :
+          effect.value
+      ) || 0;
       const section = this.sections[effect.section] || {
         entries: [],
         crossedOut: {},
       };
-
       this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
     }
   }

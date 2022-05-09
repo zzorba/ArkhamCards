@@ -12,7 +12,6 @@ import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView'
 import { StandaloneGuideProps } from '@components/campaignguide/StandaloneGuideView';
 import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampaignGuideView';
 import COLORS from '@styles/colors';
-import { searchBoxHeight } from '@components/core/SearchBox';
 import StandaloneItem from './StandaloneItem';
 import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -20,7 +19,7 @@ import useConnectionProblemBanner from '@components/core/useConnectionProblemBan
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import ArkhamLargeList, { BasicSection } from '@components/core/ArkhamLargeList';
+import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -29,6 +28,7 @@ interface Props {
   componentId: string;
   campaigns: MiniCampaignT[];
   footer: JSX.Element;
+  footerHeight?: number;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
   onRefresh?: () => void;
   refreshing?: boolean;
@@ -45,12 +45,15 @@ interface ButtonItemType {
   button: React.ReactNode;
 }
 
-type ItemType = CampaignItemType | ButtonItemType;
+interface FooterType {
+  type: 'footer';
+  height: number;
+}
 
-type ItemHeader = string;
+type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
-export default function CampaignList({ onScroll, componentId, campaigns, footer, standalonesById, onRefresh, refreshing, buttons }: Props) {
-  const { fontScale, height, width } = useContext(StyleContext);
+export default function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons }: Props) {
+  const { fontScale, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onPress = useCallback((id: string, campaign: MiniCampaignT) => {
@@ -128,10 +131,13 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
 
   const [{ networkType, isConnected }] = useNetworkStatus();
   const offline = !isConnected || networkType === NetInfoStateType.none;
-  const [connectionProblemBanner, connectionProblemBannerHeight] = useConnectionProblemBanner({ width });
+  const [connectionProblemBanner] = useConnectionProblemBanner({ width });
 
-  const [data, empty] = useMemo(() => {
+  const data = useMemo(() => {
+    const empty = campaigns.length === 0;
+    const footerItem: FooterType = { type: 'footer', height: footerHeight || 0 };
     const items: ItemType[] = [
+      ...(empty ? [footerItem] : []),
       ...map(campaigns, (campaign): CampaignItemType => {
         return {
           type: 'campaign',
@@ -144,29 +150,28 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
           button,
         };
       }),
+      ...(!empty ? [footerItem] : []),
     ];
-    const feed: BasicSection<ItemType, ItemHeader>[] = [{ items, header: '1' }];
-    return [feed, campaigns.length === 0];
-  }, [campaigns, buttons]);
-  const searchHeight = searchBoxHeight(fontScale);
+    return items;
+  }, [campaigns, buttons, footerHeight]);
   const renderFooter = useCallback(() => {
     if (refreshing) {
       return <View />;
     }
-    return <View style={{ paddingTop: empty ? searchHeight : 0 }}>{footer}</View>;
-  }, [footer, refreshing, empty, searchHeight]);
-
-  const heightForSection = useCallback((): number => {
-    return searchHeight + (!!userId && !refreshing ? connectionProblemBannerHeight : 0);
-  }, [userId, searchHeight, refreshing, connectionProblemBannerHeight]);
-
-  const renderSection = useCallback((): React.ReactElement<any> => {
     return (
-      <View style={{ paddingTop: searchHeight }}>
+      <View style={{ flexDirection: 'column' }}>
+        { footer }
+      </View>
+    );
+  }, [footer, refreshing]);
+
+  const renderHeader = useCallback((): React.ReactElement<any> => {
+    return (
+      <View>
         { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
       </View>
     );
-  }, [userId, searchHeight, refreshing, connectionProblemBanner]);
+  }, [userId, refreshing, connectionProblemBanner]);
 
   const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {
@@ -179,10 +184,16 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       }
       return CampaignItem.computeHeight(fontScale);
     }
+    if (item.type === 'footer') {
+      return refreshing ? 0 : item.height;
+    }
     return ArkhamButton.computeHeight(fontScale, lang);
-  }, [fontScale, lang]);
+  }, [fontScale, lang, refreshing]);
 
   const renderItem = useCallback((item: ItemType) => {
+    if (item.type === 'footer') {
+      return renderFooter();
+    }
     if (item.type === 'campaign') {
       const campaign = item.campaign;
       if (campaign.cycleCode === STANDALONE) {
@@ -205,7 +216,7 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       );
     }
     return <>{item.button}</>;
-  }, [onPress, standalonesById]);
+  }, [onPress, renderFooter, standalonesById]);
   return (
     <ArkhamLargeList
       onRefresh={onRefresh}
@@ -213,14 +224,8 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer,
       data={data}
       refreshing={!!refreshing}
       heightForItem={heightForItem}
-      heightForSection={heightForSection}
       renderItem={renderItem}
-      renderSection={renderSection}
-      renderHeader={empty ? renderFooter : undefined}
-      renderFooter={!empty ? renderFooter : undefined}
-      updateTimeInterval={100}
-      groupCount={8}
-      groupMinHeight={height}
+      renderHeader={renderHeader}
     />
   );
 }

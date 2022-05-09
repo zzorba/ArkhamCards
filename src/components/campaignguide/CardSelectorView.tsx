@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ScrollView, ActivityIndicator, Platform, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import { filter, keyBy, mapValues, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
+import Animated from 'react-native-reanimated';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -126,7 +127,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
       prompt={t`Search`}
     >
       { onScroll => (
-        <ScrollView
+        <Animated.ScrollView
           onScroll={onScroll}
           contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
           contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
@@ -134,7 +135,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
           { Platform.OS === 'android' && <View style={{ height }} /> }
           { renderCards(normalCards, normalCardsLoading) }
           { storyCardsSection }
-        </ScrollView>
+        </Animated.ScrollView>
       ) }
     </CollapsibleSearchBox>
   );

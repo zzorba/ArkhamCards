@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
 import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
-import { xs } from '@styles/space';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
+import TwoColumnSort, { ToggleItem } from './TwoColumnSort';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {
@@ -28,6 +28,8 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
       'cluesEnabled',
       'cluesFixed',
       'hauntedEnabled',
+      'locationVictoryEnabled',
+      'locationVengeanceEnabled',
     ],
   });
   const {
@@ -36,9 +38,17 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
     clues,
     cluesEnabled,
     cluesFixed,
-    hauntedEnabled,
   } = filters;
   const { backgroundStyle, width } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
+  const toggleItems: ToggleItem[] = useMemo(() => {
+    return [
+      { label: t`Haunted`, setting: 'hauntedEnabled' },
+      { label: t`Victory`, setting: 'locationVictoryEnabled' },
+      { label: t`Vengeance`, setting: 'locationVengeanceEnabled' },
+    ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <SliderChooser
@@ -73,16 +83,12 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
           />
         </View>
       </SliderChooser>
-      <View style={styles.toggleRow}>
-        <View style={styles.toggleColumn}>
-          <ToggleFilter
-            label={t`Haunted`}
-            setting="hauntedEnabled"
-            value={hauntedEnabled}
-            onChange={onToggleChange}
-          />
-        </View>
-      </View>
+      <TwoColumnSort
+        noBorder
+        onToggleChange={onToggleChange}
+        filters={filters}
+        items={toggleItems}
+      />
     </ScrollView>
   );
 };
@@ -97,16 +103,3 @@ CardLocationFilterView.options = () => {
   };
 };
 export default CardLocationFilterView;
-
-const styles = StyleSheet.create({
-  toggleColumn: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
-  toggleRow: {
-    marginTop: xs,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-});

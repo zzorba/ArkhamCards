@@ -1,4 +1,4 @@
-fragment CoreCard on card {
+fragment SingleCard on full_card {
   code
   cost
   deck_limit
@@ -20,6 +20,7 @@ fragment CoreCard on card {
   real_subname
   real_text
   real_traits
+  real_encounter_set_name
   sanity
   skill_agility
   skill_combat
@@ -36,10 +37,25 @@ fragment CoreCard on card {
   real_back_flavor
   real_back_text
   real_back_name
+  doom
+  illustrator
+  shroud
+  victory
+  vengeance
+  back_link
+  enemy_horror
+  enemy_damage
+  enemy_evade
+  enemy_fight
+  hidden
+  deck_requirements
+  deck_options
+  restrictions
+  imagesrc
+  backimagesrc
 }
-fragment CoreCardText on card_text {
+fragment CoreCardText on full_card_text {
   flavor
-  encounter_name
   name
   slot
   subname
@@ -253,7 +269,10 @@ fragment FullCampaignGuideState on campaign_guide {
   id
   uuid
   updated_at
-  guide_inputs(order_by: { created_at: asc }) {
+  guide_inputs(order_by: [
+    { created_at: asc },
+    { inserted_idx: asc }
+  ]) {
     ...GuideInput
   }
   guide_achievements(order_by: { created_at: asc }) {

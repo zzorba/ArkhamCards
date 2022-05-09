@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import Ripple from '@lib/react-native-material-ripple';
 import ArkhamButtonIcon, { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
@@ -25,6 +26,10 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow, 
   const { lang } = useContext(LanguageContext);
   const height = ((lang === 'zh' ? 22 : 20) * fontScale) + 20;
   const shadowClass = variant === 'fill' ? shadow.medium : shadow.small;
+  const wrappedOnPress = useCallback(() => {
+    ReactNativeHapticFeedback.trigger('impactLight');
+    onPress();
+  }, [onPress]);
   return (
     <View style={[styles.wrapper, grow ? { flexDirection: 'row' } : styles.inline]}>
       <Ripple
@@ -42,7 +47,7 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow, 
         ]}
         rippleColor={colors.L10}
         useGestureHandler={useGestureHandler}
-        onPress={onPress}
+        onPress={wrappedOnPress}
       >
         <View pointerEvents="box-none" style={styles.row}>
           <View style={[{ width: 24 * fontScale, height: 20 * fontScale }, space.marginRightXs]}>

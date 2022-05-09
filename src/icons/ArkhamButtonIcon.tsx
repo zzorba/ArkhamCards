@@ -7,7 +7,7 @@ import ArkhamIcon from './ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 import { ThemeColors } from '@styles/theme';
 
-export type ArkhamButtonIconType = 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
+export type ArkhamButtonIconType = 'parallel' | 'date' | 'world' | 'check' | 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign' | 'faq' | 'xp' | 'show' | 'hide' | 'dismiss' | 'confirm' | 'taboo';
 interface Props {
   icon: ArkhamButtonIconType;
   color: 'light' | 'dark' | 'faded';
@@ -45,6 +45,8 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
       return <AppIcon name="plus" size={18 * fontScale} color={iconColor} />;
     case 'taboo':
       return <AppIcon name="taboo" size={18 * fontScale} color={iconColor} />;
+    case 'parallel':
+      return <AppIcon name="parallel" size={22 * fontScale} color={iconColor} />;
     case 'up':
       return (
         <View style={styles.upIcon}>

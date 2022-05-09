@@ -19,6 +19,7 @@ export default interface MiniCampaignT {
   updatedAt: Date;
   archived: boolean;
   linked: undefined | CampaignLink;
+  remote: boolean;
 
   investigatorTrauma: (code: string) => TraumaAndCardData;
 }

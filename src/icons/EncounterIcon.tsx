@@ -91,6 +91,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('stella', size, color);
       case 'meddling_of_meowlathotep':
         return this.standaloneIcon('meddling', size, color);
+      case 'zbh':
+      case 'barkham_horror':
+        return this.standaloneIcon('barkham_horror', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
@@ -447,10 +450,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'witchcraft':
       case 'music_of_the_damned':
       case 'secrets_of_the_universe':
-      case 'unspeakable_fate':
       case 'city_of_the_damned':
       case 'bloodthirsty_spirits':
         return this.circleIcon(encounter_code, size, color);
+      case 'unspeakable_fate':
+      case 'unavoidable_demise':
+        return this.circleIcon('unspeakable_fate', size, color);
       case 'witchwork':
       case 'hexcraft':
         return this.circleIcon('witchwork', size, color);
@@ -566,6 +571,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'dark_matter':
       case 'zdm':
         return this.darkMatterIcon('the_tatterdemalion', size, color);
+      case 'zez':
+      case 'the_symphony_of_erich_zann':
+      case 'the_symphony_of_erich_zahn':
+        return this.standaloneIcon('zez', size, color);
       case 'a_sea_of_troubles':
       case 'gurathnakas_shadows':
       case 'arkham_in_wonderland':
@@ -608,6 +617,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_warning':
         return this.aliceIcon(encounter_code, size, color);
       case 'chesire_cat':
+      case 'cheshire_cat':
         return this.aliceIcon('cheshire_cat', size, color);
       case 'jabberwocky':
         return this.aliceIcon('jabberwock', size, color);
@@ -665,6 +675,30 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sleeping_nightmares':
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
+
+      case 'agents_of_cthugha':
+        return this.darkMatterIcon('agents_of_cthugua', size, color);
+      case 'agency_survivors':
+      case 'gifts_of_the_plaguebearer':
+      case 'haze_of_miasma':
+      case 'life_and_death':
+      case 'the_plaguebearers_commands':
+      case 'tenuous_allies':
+      case 'fallen_arkham':
+      case 'unbound_power':
+      case 'late_risers':
+      case 'night_on_the_town':
+      case 'dead_by_dawn':
+      case 'high_noon_descent':
+      case 'the_afternoon_war':
+      case 'death_at_sundown':
+      case 'the_midnight_hour':
+        return this.darkMatterIcon(encounter_code, size, color);
+      case 'mourning_chorus':
+        return this.darkMatterIcon('mourning_stroll', size, color);
+      case 'zcp':
+      case 'call_of_the_plaguebearer':
+        return this.darkMatterIcon('call_of_the_plaguebearer', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

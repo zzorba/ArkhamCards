@@ -10,17 +10,18 @@ import { t } from 'ttag';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { setInCollection, setCycleInCollection } from '@actions';
-import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
+import { getAllPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { setIgnoreCollection } from './actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import space from '@styles/space';
+import { useSettingValue } from '@components/core/hooks';
 
 function CollectionEditView({ componentId }: NavigationProps) {
   const dispatch = useDispatch();
   const packs = useSelector(getAllPacks);
   const in_collection = useSelector(getPacksInCollection);
-  const ignoreCollection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignoreCollection = useSettingValue('ignore_collection');
   const setChecked = useCallback((code: string, value: boolean) => {
     dispatch(setInCollection(code, value));
   }, [dispatch]);

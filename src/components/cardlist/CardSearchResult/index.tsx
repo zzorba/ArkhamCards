@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -18,9 +17,8 @@ import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { AppState } from '@reducers';
 import { ControlComponent, ControlType } from './ControlComponent';
-import { usePressCallback } from '@components/core/hooks';
+import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
 
 interface Props {
@@ -36,6 +34,7 @@ interface Props {
   faded?: boolean;
   noSidePadding?: boolean;
   useGestureHandler?: boolean;
+  onPressDebounce?: number;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -150,6 +149,7 @@ function CardSearchResult(props: Props) {
     faded,
     noSidePadding,
     useGestureHandler,
+    onPressDebounce = 1000,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPressFunction = useCallback(() => {
@@ -160,8 +160,8 @@ function CardSearchResult(props: Props) {
       onPress && onPress(card);
     }
   }, [onPress, onPressId, id, card]);
-  const handleCardPress = usePressCallback(handleCardPressFunction);
-  const colorblind = useSelector((state: AppState) => state.settings.colorblind);
+  const handleCardPress = usePressCallback(handleCardPressFunction, onPressDebounce);
+  const colorblind = useSettingValue('colorblind');
   const dualFactionIcons = useMemo(() => {
     const faction_code = card.factionCode();
     if (!card.faction2_code && (!colorblind || faction_code === 'mythos' || card.type_code === 'investigator' || card.type_code === 'skill')) {
@@ -239,6 +239,7 @@ function CardSearchResult(props: Props) {
       colors.faction.dual :
       colors.faction[card.factionCode()]
     ).text;
+    const custom = card.custom();
     return (
       <View style={styles.cardNameBlock}>
         <View style={[styles.row, space.paddingTopXs, { backgroundColor: 'transparent' }]}>
@@ -248,9 +249,11 @@ function CardSearchResult(props: Props) {
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
+            { custom && '  ' }
+            { custom && <EncounterIcon encounter_code={card.pack_code} size={18} color={colors.L10} /> }
           </Text>
         </View>
-        { true && (
+        { !!(skillIcons || dualFactionIcons || tabooBlock || card.advanced || card.renderSubname || description) && (
           <View style={[styles.row, { backgroundColor: 'transparent' }]}>
             { dualFactionIcons }
             { skillIcons }
@@ -260,7 +263,7 @@ function CardSearchResult(props: Props) {
                 <AppIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
               </View>
             ) }
-            { (!!card.renderSubname || !!description) && (
+            { (!!card.renderSubname || !!description || custom) && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
                   { description || card.renderSubname }
@@ -320,7 +323,6 @@ function CardSearchResult(props: Props) {
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
       },
-      (!control && !noSidePadding) ? styles.rowPadding : undefined,
     ]}>
       <Touchable
         activeOpacity={0.7}

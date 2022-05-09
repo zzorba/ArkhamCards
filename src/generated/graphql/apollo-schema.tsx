@@ -5,7 +5,7 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -2395,18 +2395,26 @@ export type Campaign_Variance_Fields = {
 /** columns and relationships of "card" */
 export type Card = {
   __typename?: 'card';
+  back_link?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
   code: Scalars['String'];
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
+  deck_options?: Maybe<Scalars['jsonb']>;
+  deck_requirements?: Maybe<Scalars['jsonb']>;
   doom?: Maybe<Scalars['Int']>;
   double_sided?: Maybe<Scalars['Boolean']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
   faction_code: Scalars['String'];
   health?: Maybe<Scalars['Int']>;
+  hidden?: Maybe<Scalars['Boolean']>;
   illustrator?: Maybe<Scalars['String']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   myriad?: Maybe<Scalars['Boolean']>;
@@ -2429,7 +2437,9 @@ export type Card = {
   real_subname?: Maybe<Scalars['String']>;
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<Scalars['jsonb']>;
   sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
   skill_agility?: Maybe<Scalars['Int']>;
   skill_combat?: Maybe<Scalars['Int']>;
   skill_intellect?: Maybe<Scalars['Int']>;
@@ -2442,6 +2452,19 @@ export type Card = {
   /** An aggregate relationship */
   translations_aggregate: Card_Text_Aggregate;
   type_code: Scalars['String'];
+  victory?: Maybe<Scalars['Int']>;
+};
+
+
+/** columns and relationships of "card" */
+export type CardDeck_OptionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "card" */
+export type CardDeck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2462,6 +2485,12 @@ export type CardPacks_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
   where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "card" */
+export type CardRestrictionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2514,6 +2543,13 @@ export type Card_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Card_Append_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** aggregate avg on columns */
 export type Card_Avg_Fields = {
   __typename?: 'card_avg_fields';
@@ -2522,17 +2558,23 @@ export type Card_Avg_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "card". All fields are combined with a logical 'AND'. */
@@ -2540,18 +2582,26 @@ export type Card_Bool_Exp = {
   _and?: InputMaybe<Array<Card_Bool_Exp>>;
   _not?: InputMaybe<Card_Bool_Exp>;
   _or?: InputMaybe<Array<Card_Bool_Exp>>;
+  back_link?: InputMaybe<String_Comparison_Exp>;
   clues?: InputMaybe<Int_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
+  deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
+  deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
   doom?: InputMaybe<Int_Comparison_Exp>;
   double_sided?: InputMaybe<Boolean_Comparison_Exp>;
   encounter_code?: InputMaybe<String_Comparison_Exp>;
   encounter_position?: InputMaybe<Int_Comparison_Exp>;
+  enemy_damage?: InputMaybe<Int_Comparison_Exp>;
+  enemy_evade?: InputMaybe<Int_Comparison_Exp>;
+  enemy_fight?: InputMaybe<Int_Comparison_Exp>;
+  enemy_horror?: InputMaybe<Int_Comparison_Exp>;
   exceptional?: InputMaybe<Boolean_Comparison_Exp>;
   exile?: InputMaybe<Boolean_Comparison_Exp>;
   faction_code?: InputMaybe<String_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
+  hidden?: InputMaybe<Boolean_Comparison_Exp>;
   illustrator?: InputMaybe<String_Comparison_Exp>;
   is_unique?: InputMaybe<Boolean_Comparison_Exp>;
   myriad?: InputMaybe<Boolean_Comparison_Exp>;
@@ -2571,7 +2621,9 @@ export type Card_Bool_Exp = {
   real_subname?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
   real_traits?: InputMaybe<String_Comparison_Exp>;
+  restrictions?: InputMaybe<Jsonb_Comparison_Exp>;
   sanity?: InputMaybe<Int_Comparison_Exp>;
+  shroud?: InputMaybe<Int_Comparison_Exp>;
   skill_agility?: InputMaybe<Int_Comparison_Exp>;
   skill_combat?: InputMaybe<Int_Comparison_Exp>;
   skill_intellect?: InputMaybe<Int_Comparison_Exp>;
@@ -2581,12 +2633,187 @@ export type Card_Bool_Exp = {
   subtype_code?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Card_Text_Bool_Exp>;
   type_code?: InputMaybe<String_Comparison_Exp>;
+  victory?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card" */
 export enum Card_Constraint {
   /** unique or primary key constraint */
   CardPkey = 'card_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Card_Delete_At_Path_Input = {
+  deck_options?: InputMaybe<Array<Scalars['String']>>;
+  deck_requirements?: InputMaybe<Array<Scalars['String']>>;
+  restrictions?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Card_Delete_Elem_Input = {
+  deck_options?: InputMaybe<Scalars['Int']>;
+  deck_requirements?: InputMaybe<Scalars['Int']>;
+  restrictions?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Card_Delete_Key_Input = {
+  deck_options?: InputMaybe<Scalars['String']>;
+  deck_requirements?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "card_encounter_set" */
+export type Card_Encounter_Set = {
+  __typename?: 'card_encounter_set';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_encounter_set" */
+export type Card_Encounter_Set_Aggregate = {
+  __typename?: 'card_encounter_set_aggregate';
+  aggregate?: Maybe<Card_Encounter_Set_Aggregate_Fields>;
+  nodes: Array<Card_Encounter_Set>;
+};
+
+/** aggregate fields of "card_encounter_set" */
+export type Card_Encounter_Set_Aggregate_Fields = {
+  __typename?: 'card_encounter_set_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Encounter_Set_Max_Fields>;
+  min?: Maybe<Card_Encounter_Set_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_encounter_set" */
+export type Card_Encounter_Set_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "card_encounter_set" */
+export type Card_Encounter_Set_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Card_Encounter_Set_Max_Order_By>;
+  min?: InputMaybe<Card_Encounter_Set_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "card_encounter_set" */
+export type Card_Encounter_Set_Arr_Rel_Insert_Input = {
+  data: Array<Card_Encounter_Set_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "card_encounter_set". All fields are combined with a logical 'AND'. */
+export type Card_Encounter_Set_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Encounter_Set_Bool_Exp>>;
+  _not?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Encounter_Set_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_encounter_set" */
+export enum Card_Encounter_Set_Constraint {
+  /** unique or primary key constraint */
+  CardEncounterSetPkey = 'card_encounter_set_pkey'
+}
+
+/** input type for inserting data into table "card_encounter_set" */
+export type Card_Encounter_Set_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Encounter_Set_Max_Fields = {
+  __typename?: 'card_encounter_set_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "card_encounter_set" */
+export type Card_Encounter_Set_Max_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Card_Encounter_Set_Min_Fields = {
+  __typename?: 'card_encounter_set_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "card_encounter_set" */
+export type Card_Encounter_Set_Min_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "card_encounter_set" */
+export type Card_Encounter_Set_Mutation_Response = {
+  __typename?: 'card_encounter_set_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Encounter_Set>;
+};
+
+/** on conflict condition type for table "card_encounter_set" */
+export type Card_Encounter_Set_On_Conflict = {
+  constraint: Card_Encounter_Set_Constraint;
+  update_columns: Array<Card_Encounter_Set_Update_Column>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_encounter_set". */
+export type Card_Encounter_Set_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_encounter_set */
+export type Card_Encounter_Set_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_encounter_set" */
+export enum Card_Encounter_Set_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_encounter_set" */
+export type Card_Encounter_Set_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_encounter_set" */
+export enum Card_Encounter_Set_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
 }
 
 /** input type for incrementing numeric columns in table "card" */
@@ -2596,33 +2823,47 @@ export type Card_Inc_Input = {
   deck_limit?: InputMaybe<Scalars['Int']>;
   doom?: InputMaybe<Scalars['Int']>;
   encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
   health?: InputMaybe<Scalars['Int']>;
   pack_position?: InputMaybe<Scalars['Int']>;
   position?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
   sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
   skill_agility?: InputMaybe<Scalars['Int']>;
   skill_combat?: InputMaybe<Scalars['Int']>;
   skill_intellect?: InputMaybe<Scalars['Int']>;
   skill_wild?: InputMaybe<Scalars['Int']>;
   skill_willpower?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "card" */
 export type Card_Insert_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
   doom?: InputMaybe<Scalars['Int']>;
   double_sided?: InputMaybe<Scalars['Boolean']>;
   encounter_code?: InputMaybe<Scalars['String']>;
   encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
   illustrator?: InputMaybe<Scalars['String']>;
   is_unique?: InputMaybe<Scalars['Boolean']>;
   myriad?: InputMaybe<Scalars['Boolean']>;
@@ -2642,7 +2883,9 @@ export type Card_Insert_Input = {
   real_subname?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
   sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
   skill_agility?: InputMaybe<Scalars['Int']>;
   skill_combat?: InputMaybe<Scalars['Int']>;
   skill_intellect?: InputMaybe<Scalars['Int']>;
@@ -2652,11 +2895,13 @@ export type Card_Insert_Input = {
   subtype_code?: InputMaybe<Scalars['String']>;
   translations?: InputMaybe<Card_Text_Arr_Rel_Insert_Input>;
   type_code?: InputMaybe<Scalars['String']>;
+  victory?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
 export type Card_Max_Fields = {
   __typename?: 'card_max_fields';
+  back_link?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
   code?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
@@ -2664,6 +2909,10 @@ export type Card_Max_Fields = {
   doom?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -2682,6 +2931,7 @@ export type Card_Max_Fields = {
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
   skill_agility?: Maybe<Scalars['Int']>;
   skill_combat?: Maybe<Scalars['Int']>;
   skill_intellect?: Maybe<Scalars['Int']>;
@@ -2690,11 +2940,13 @@ export type Card_Max_Fields = {
   stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   type_code?: Maybe<Scalars['String']>;
+  victory?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate min on columns */
 export type Card_Min_Fields = {
   __typename?: 'card_min_fields';
+  back_link?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
   code?: Maybe<Scalars['String']>;
   cost?: Maybe<Scalars['Int']>;
@@ -2702,6 +2954,10 @@ export type Card_Min_Fields = {
   doom?: Maybe<Scalars['Int']>;
   encounter_code?: Maybe<Scalars['String']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -2720,6 +2976,7 @@ export type Card_Min_Fields = {
   real_text?: Maybe<Scalars['String']>;
   real_traits?: Maybe<Scalars['String']>;
   sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
   skill_agility?: Maybe<Scalars['Int']>;
   skill_combat?: Maybe<Scalars['Int']>;
   skill_intellect?: Maybe<Scalars['Int']>;
@@ -2728,6 +2985,7 @@ export type Card_Min_Fields = {
   stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   type_code?: Maybe<Scalars['String']>;
+  victory?: Maybe<Scalars['Int']>;
 };
 
 /** response of any mutation on the table "card" */
@@ -2748,18 +3006,26 @@ export type Card_On_Conflict = {
 
 /** Ordering options when selecting data from "card". */
 export type Card_Order_By = {
+  back_link?: InputMaybe<Order_By>;
   clues?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
+  deck_options?: InputMaybe<Order_By>;
+  deck_requirements?: InputMaybe<Order_By>;
   doom?: InputMaybe<Order_By>;
   double_sided?: InputMaybe<Order_By>;
   encounter_code?: InputMaybe<Order_By>;
   encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
   exceptional?: InputMaybe<Order_By>;
   exile?: InputMaybe<Order_By>;
   faction_code?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
+  hidden?: InputMaybe<Order_By>;
   illustrator?: InputMaybe<Order_By>;
   is_unique?: InputMaybe<Order_By>;
   myriad?: InputMaybe<Order_By>;
@@ -2779,7 +3045,9 @@ export type Card_Order_By = {
   real_subname?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
+  restrictions?: InputMaybe<Order_By>;
   sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
   skill_agility?: InputMaybe<Order_By>;
   skill_combat?: InputMaybe<Order_By>;
   skill_intellect?: InputMaybe<Order_By>;
@@ -2789,6 +3057,7 @@ export type Card_Order_By = {
   subtype_code?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Card_Text_Aggregate_Order_By>;
   type_code?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "card_pack" */
@@ -2949,8 +3218,17 @@ export type Card_Pk_Columns_Input = {
   code: Scalars['String'];
 };
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Card_Prepend_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** select columns of table "card" */
 export enum Card_Select_Column {
+  /** column name */
+  BackLink = 'back_link',
   /** column name */
   Clues = 'clues',
   /** column name */
@@ -2960,6 +3238,10 @@ export enum Card_Select_Column {
   /** column name */
   DeckLimit = 'deck_limit',
   /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
   Doom = 'doom',
   /** column name */
   DoubleSided = 'double_sided',
@@ -2968,6 +3250,14 @@ export enum Card_Select_Column {
   /** column name */
   EncounterPosition = 'encounter_position',
   /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
   Exceptional = 'exceptional',
   /** column name */
   Exile = 'exile',
@@ -2975,6 +3265,8 @@ export enum Card_Select_Column {
   FactionCode = 'faction_code',
   /** column name */
   Health = 'health',
+  /** column name */
+  Hidden = 'hidden',
   /** column name */
   Illustrator = 'illustrator',
   /** column name */
@@ -3012,7 +3304,11 @@ export enum Card_Select_Column {
   /** column name */
   RealTraits = 'real_traits',
   /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
   Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
   /** column name */
   SkillAgility = 'skill_agility',
   /** column name */
@@ -3028,23 +3324,33 @@ export enum Card_Select_Column {
   /** column name */
   SubtypeCode = 'subtype_code',
   /** column name */
-  TypeCode = 'type_code'
+  TypeCode = 'type_code',
+  /** column name */
+  Victory = 'victory'
 }
 
 /** input type for updating data in table "card" */
 export type Card_Set_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
   doom?: InputMaybe<Scalars['Int']>;
   double_sided?: InputMaybe<Scalars['Boolean']>;
   encounter_code?: InputMaybe<Scalars['String']>;
   encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
   illustrator?: InputMaybe<Scalars['String']>;
   is_unique?: InputMaybe<Scalars['Boolean']>;
   myriad?: InputMaybe<Scalars['Boolean']>;
@@ -3063,7 +3369,9 @@ export type Card_Set_Input = {
   real_subname?: InputMaybe<Scalars['String']>;
   real_text?: InputMaybe<Scalars['String']>;
   real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
   sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
   skill_agility?: InputMaybe<Scalars['Int']>;
   skill_combat?: InputMaybe<Scalars['Int']>;
   skill_intellect?: InputMaybe<Scalars['Int']>;
@@ -3072,6 +3380,7 @@ export type Card_Set_Input = {
   stage?: InputMaybe<Scalars['Int']>;
   subtype_code?: InputMaybe<Scalars['String']>;
   type_code?: InputMaybe<Scalars['String']>;
+  victory?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
@@ -3082,17 +3391,23 @@ export type Card_Stddev_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -3103,17 +3418,23 @@ export type Card_Stddev_Pop_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -3124,17 +3445,23 @@ export type Card_Stddev_Samp_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
@@ -3145,17 +3472,23 @@ export type Card_Sum_Fields = {
   deck_limit?: Maybe<Scalars['Int']>;
   doom?: Maybe<Scalars['Int']>;
   encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
   health?: Maybe<Scalars['Int']>;
   pack_position?: Maybe<Scalars['Int']>;
   position?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
   skill_agility?: Maybe<Scalars['Int']>;
   skill_combat?: Maybe<Scalars['Int']>;
   skill_intellect?: Maybe<Scalars['Int']>;
   skill_wild?: Maybe<Scalars['Int']>;
   skill_willpower?: Maybe<Scalars['Int']>;
   stage?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
 };
 
 /** columns and relationships of "card_text" */
@@ -3430,8 +3763,135 @@ export enum Card_Text_Update_Column {
   Traits = 'traits'
 }
 
+/** columns and relationships of "card_type_code" */
+export type Card_Type_Code = {
+  __typename?: 'card_type_code';
+  code: Scalars['String'];
+};
+
+/** aggregated selection of "card_type_code" */
+export type Card_Type_Code_Aggregate = {
+  __typename?: 'card_type_code_aggregate';
+  aggregate?: Maybe<Card_Type_Code_Aggregate_Fields>;
+  nodes: Array<Card_Type_Code>;
+};
+
+/** aggregate fields of "card_type_code" */
+export type Card_Type_Code_Aggregate_Fields = {
+  __typename?: 'card_type_code_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Type_Code_Max_Fields>;
+  min?: Maybe<Card_Type_Code_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_type_code" */
+export type Card_Type_Code_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "card_type_code". All fields are combined with a logical 'AND'. */
+export type Card_Type_Code_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Type_Code_Bool_Exp>>;
+  _not?: InputMaybe<Card_Type_Code_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Type_Code_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_type_code" */
+export enum Card_Type_Code_Constraint {
+  /** unique or primary key constraint */
+  CardTypeCodePkey = 'card_type_code_pkey'
+}
+
+export enum Card_Type_Code_Enum {
+  Act = 'act',
+  Agenda = 'agenda',
+  Asset = 'asset',
+  Enemy = 'enemy',
+  Event = 'event',
+  Investigator = 'investigator',
+  Location = 'location',
+  Scenario = 'scenario',
+  Skill = 'skill',
+  Story = 'story',
+  Treachery = 'treachery'
+}
+
+/** Boolean expression to compare columns of type "card_type_code_enum". All fields are combined with logical 'AND'. */
+export type Card_Type_Code_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Card_Type_Code_Enum>;
+  _in?: InputMaybe<Array<Card_Type_Code_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Card_Type_Code_Enum>;
+  _nin?: InputMaybe<Array<Card_Type_Code_Enum>>;
+};
+
+/** input type for inserting data into table "card_type_code" */
+export type Card_Type_Code_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Type_Code_Max_Fields = {
+  __typename?: 'card_type_code_max_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Card_Type_Code_Min_Fields = {
+  __typename?: 'card_type_code_min_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "card_type_code" */
+export type Card_Type_Code_Mutation_Response = {
+  __typename?: 'card_type_code_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Type_Code>;
+};
+
+/** on conflict condition type for table "card_type_code" */
+export type Card_Type_Code_On_Conflict = {
+  constraint: Card_Type_Code_Constraint;
+  update_columns: Array<Card_Type_Code_Update_Column>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_type_code". */
+export type Card_Type_Code_Order_By = {
+  code?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_type_code */
+export type Card_Type_Code_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "card_type_code" */
+export enum Card_Type_Code_Select_Column {
+  /** column name */
+  Code = 'code'
+}
+
+/** input type for updating data in table "card_type_code" */
+export type Card_Type_Code_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_type_code" */
+export enum Card_Type_Code_Update_Column {
+  /** column name */
+  Code = 'code'
+}
+
 /** update columns of table "card" */
 export enum Card_Update_Column {
+  /** column name */
+  BackLink = 'back_link',
   /** column name */
   Clues = 'clues',
   /** column name */
@@ -3441,6 +3901,10 @@ export enum Card_Update_Column {
   /** column name */
   DeckLimit = 'deck_limit',
   /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
   Doom = 'doom',
   /** column name */
   DoubleSided = 'double_sided',
@@ -3449,6 +3913,14 @@ export enum Card_Update_Column {
   /** column name */
   EncounterPosition = 'encounter_position',
   /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
   Exceptional = 'exceptional',
   /** column name */
   Exile = 'exile',
@@ -3456,6 +3928,8 @@ export enum Card_Update_Column {
   FactionCode = 'faction_code',
   /** column name */
   Health = 'health',
+  /** column name */
+  Hidden = 'hidden',
   /** column name */
   Illustrator = 'illustrator',
   /** column name */
@@ -3493,7 +3967,11 @@ export enum Card_Update_Column {
   /** column name */
   RealTraits = 'real_traits',
   /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
   Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
   /** column name */
   SkillAgility = 'skill_agility',
   /** column name */
@@ -3509,7 +3987,9 @@ export enum Card_Update_Column {
   /** column name */
   SubtypeCode = 'subtype_code',
   /** column name */
-  TypeCode = 'type_code'
+  TypeCode = 'type_code',
+  /** column name */
+  Victory = 'victory'
 }
 
 /** aggregate var_pop on columns */
@@ -3520,17 +4000,23 @@ export type Card_Var_Pop_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
@@ -3541,17 +4027,23 @@ export type Card_Var_Samp_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
@@ -3562,17 +4054,23 @@ export type Card_Variance_Fields = {
   deck_limit?: Maybe<Scalars['Float']>;
   doom?: Maybe<Scalars['Float']>;
   encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
   health?: Maybe<Scalars['Float']>;
   pack_position?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
   skill_agility?: Maybe<Scalars['Float']>;
   skill_combat?: Maybe<Scalars['Float']>;
   skill_intellect?: Maybe<Scalars['Float']>;
   skill_wild?: Maybe<Scalars['Float']>;
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "chaos_bag_result" */
@@ -4666,6 +5164,1355 @@ export enum Friend_Status_Update_Column {
   UserIdB = 'user_id_b'
 }
 
+/** columns and relationships of "full_card" */
+export type Full_Card = {
+  __typename?: 'full_card';
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code: Scalars['String'];
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  deck_options?: Maybe<Scalars['jsonb']>;
+  deck_requirements?: Maybe<Scalars['jsonb']>;
+  doom?: Maybe<Scalars['Int']>;
+  double_sided?: Maybe<Scalars['Boolean']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  /** An array relationship */
+  encounter_sets: Array<Card_Encounter_Set>;
+  /** An aggregate relationship */
+  encounter_sets_aggregate: Card_Encounter_Set_Aggregate;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  exceptional?: Maybe<Scalars['Boolean']>;
+  exile?: Maybe<Scalars['Boolean']>;
+  faction_code: Scalars['String'];
+  health?: Maybe<Scalars['Int']>;
+  hidden?: Maybe<Scalars['Boolean']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  is_unique?: Maybe<Scalars['Boolean']>;
+  /** An object relationship */
+  linked_card: Full_Card;
+  myriad?: Maybe<Scalars['Boolean']>;
+  pack_code: Scalars['String'];
+  pack_position: Scalars['Int'];
+  /** An array relationship */
+  packs: Array<Card_Pack>;
+  /** An aggregate relationship */
+  packs_aggregate: Card_Pack_Aggregate;
+  permanent?: Maybe<Scalars['Boolean']>;
+  position: Scalars['Int'];
+  quantity: Scalars['Int'];
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name: Scalars['String'];
+  real_pack_name: Scalars['String'];
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<Scalars['jsonb']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  translations: Array<Full_Card_Text>;
+  /** An aggregate relationship */
+  translations_aggregate: Full_Card_Text_Aggregate;
+  type_code: Card_Type_Code_Enum;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardDeck_OptionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardDeck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardEncounter_SetsArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardEncounter_Sets_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardPacksArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardPacks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardRestrictionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardTranslationsArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+/** columns and relationships of "full_card" */
+export type Full_CardTranslations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+/** aggregated selection of "full_card" */
+export type Full_Card_Aggregate = {
+  __typename?: 'full_card_aggregate';
+  aggregate?: Maybe<Full_Card_Aggregate_Fields>;
+  nodes: Array<Full_Card>;
+};
+
+/** aggregate fields of "full_card" */
+export type Full_Card_Aggregate_Fields = {
+  __typename?: 'full_card_aggregate_fields';
+  avg?: Maybe<Full_Card_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Full_Card_Max_Fields>;
+  min?: Maybe<Full_Card_Min_Fields>;
+  stddev?: Maybe<Full_Card_Stddev_Fields>;
+  stddev_pop?: Maybe<Full_Card_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Full_Card_Stddev_Samp_Fields>;
+  sum?: Maybe<Full_Card_Sum_Fields>;
+  var_pop?: Maybe<Full_Card_Var_Pop_Fields>;
+  var_samp?: Maybe<Full_Card_Var_Samp_Fields>;
+  variance?: Maybe<Full_Card_Variance_Fields>;
+};
+
+
+/** aggregate fields of "full_card" */
+export type Full_Card_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Full_Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Full_Card_Append_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Full_Card_Avg_Fields = {
+  __typename?: 'full_card_avg_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "full_card". All fields are combined with a logical 'AND'. */
+export type Full_Card_Bool_Exp = {
+  _and?: InputMaybe<Array<Full_Card_Bool_Exp>>;
+  _not?: InputMaybe<Full_Card_Bool_Exp>;
+  _or?: InputMaybe<Array<Full_Card_Bool_Exp>>;
+  back_link?: InputMaybe<String_Comparison_Exp>;
+  backimagesrc?: InputMaybe<String_Comparison_Exp>;
+  clues?: InputMaybe<Int_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  deck_limit?: InputMaybe<Int_Comparison_Exp>;
+  deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
+  deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  doom?: InputMaybe<Int_Comparison_Exp>;
+  double_sided?: InputMaybe<Boolean_Comparison_Exp>;
+  encounter_code?: InputMaybe<String_Comparison_Exp>;
+  encounter_position?: InputMaybe<Int_Comparison_Exp>;
+  encounter_sets?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  enemy_damage?: InputMaybe<Int_Comparison_Exp>;
+  enemy_evade?: InputMaybe<Int_Comparison_Exp>;
+  enemy_fight?: InputMaybe<Int_Comparison_Exp>;
+  enemy_horror?: InputMaybe<Int_Comparison_Exp>;
+  exceptional?: InputMaybe<Boolean_Comparison_Exp>;
+  exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction_code?: InputMaybe<String_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  hidden?: InputMaybe<Boolean_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  is_unique?: InputMaybe<Boolean_Comparison_Exp>;
+  linked_card?: InputMaybe<Full_Card_Bool_Exp>;
+  myriad?: InputMaybe<Boolean_Comparison_Exp>;
+  pack_code?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
+  packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  permanent?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_name?: InputMaybe<String_Comparison_Exp>;
+  real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_encounter_set_name?: InputMaybe<String_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  real_pack_name?: InputMaybe<String_Comparison_Exp>;
+  real_slot?: InputMaybe<String_Comparison_Exp>;
+  real_subname?: InputMaybe<String_Comparison_Exp>;
+  real_text?: InputMaybe<String_Comparison_Exp>;
+  real_traits?: InputMaybe<String_Comparison_Exp>;
+  restrictions?: InputMaybe<Jsonb_Comparison_Exp>;
+  sanity?: InputMaybe<Int_Comparison_Exp>;
+  shroud?: InputMaybe<Int_Comparison_Exp>;
+  skill_agility?: InputMaybe<Int_Comparison_Exp>;
+  skill_combat?: InputMaybe<Int_Comparison_Exp>;
+  skill_intellect?: InputMaybe<Int_Comparison_Exp>;
+  skill_wild?: InputMaybe<Int_Comparison_Exp>;
+  skill_willpower?: InputMaybe<Int_Comparison_Exp>;
+  stage?: InputMaybe<Int_Comparison_Exp>;
+  subtype_code?: InputMaybe<String_Comparison_Exp>;
+  translations?: InputMaybe<Full_Card_Text_Bool_Exp>;
+  type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  vengeance?: InputMaybe<Int_Comparison_Exp>;
+  victory?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "full_card" */
+export enum Full_Card_Constraint {
+  /** unique or primary key constraint */
+  FullCardPkey = 'full_card_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Full_Card_Delete_At_Path_Input = {
+  deck_options?: InputMaybe<Array<Scalars['String']>>;
+  deck_requirements?: InputMaybe<Array<Scalars['String']>>;
+  restrictions?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Full_Card_Delete_Elem_Input = {
+  deck_options?: InputMaybe<Scalars['Int']>;
+  deck_requirements?: InputMaybe<Scalars['Int']>;
+  restrictions?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Full_Card_Delete_Key_Input = {
+  deck_options?: InputMaybe<Scalars['String']>;
+  deck_requirements?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "full_card" */
+export type Full_Card_Inc_Input = {
+  clues?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  health?: InputMaybe<Scalars['Int']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "full_card" */
+export type Full_Card_Insert_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  encounter_sets?: InputMaybe<Card_Encounter_Set_Arr_Rel_Insert_Input>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  linked_card?: InputMaybe<Full_Card_Obj_Rel_Insert_Input>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  packs?: InputMaybe<Card_Pack_Arr_Rel_Insert_Input>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Full_Card_Text_Arr_Rel_Insert_Input>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Full_Card_Max_Fields = {
+  __typename?: 'full_card_max_fields';
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Full_Card_Min_Fields = {
+  __typename?: 'full_card_min_fields';
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "full_card" */
+export type Full_Card_Mutation_Response = {
+  __typename?: 'full_card_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Full_Card>;
+};
+
+/** input type for inserting object relation for remote table "full_card" */
+export type Full_Card_Obj_Rel_Insert_Input = {
+  data: Full_Card_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Full_Card_On_Conflict>;
+};
+
+/** on conflict condition type for table "full_card" */
+export type Full_Card_On_Conflict = {
+  constraint: Full_Card_Constraint;
+  update_columns: Array<Full_Card_Update_Column>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "full_card". */
+export type Full_Card_Order_By = {
+  back_link?: InputMaybe<Order_By>;
+  backimagesrc?: InputMaybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  deck_options?: InputMaybe<Order_By>;
+  deck_requirements?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  double_sided?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  encounter_sets_aggregate?: InputMaybe<Card_Encounter_Set_Aggregate_Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  exceptional?: InputMaybe<Order_By>;
+  exile?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  hidden?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  is_unique?: InputMaybe<Order_By>;
+  linked_card?: InputMaybe<Full_Card_Order_By>;
+  myriad?: InputMaybe<Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Order_By>;
+  permanent?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_encounter_set_name?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  restrictions?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  translations_aggregate?: InputMaybe<Full_Card_Text_Aggregate_Order_By>;
+  type_code?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: full_card */
+export type Full_Card_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Full_Card_Prepend_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "full_card" */
+export enum Full_Card_Select_Column {
+  /** column name */
+  BackLink = 'back_link',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Victory = 'victory'
+}
+
+/** input type for updating data in table "full_card" */
+export type Full_Card_Set_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Full_Card_Stddev_Fields = {
+  __typename?: 'full_card_stddev_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Full_Card_Stddev_Pop_Fields = {
+  __typename?: 'full_card_stddev_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Full_Card_Stddev_Samp_Fields = {
+  __typename?: 'full_card_stddev_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Full_Card_Sum_Fields = {
+  __typename?: 'full_card_sum_fields';
+  clues?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "full_card_text" */
+export type Full_Card_Text = {
+  __typename?: 'full_card_text';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code: Scalars['String'];
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "full_card_text" */
+export type Full_Card_Text_Aggregate = {
+  __typename?: 'full_card_text_aggregate';
+  aggregate?: Maybe<Full_Card_Text_Aggregate_Fields>;
+  nodes: Array<Full_Card_Text>;
+};
+
+/** aggregate fields of "full_card_text" */
+export type Full_Card_Text_Aggregate_Fields = {
+  __typename?: 'full_card_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Full_Card_Text_Max_Fields>;
+  min?: Maybe<Full_Card_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "full_card_text" */
+export type Full_Card_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "full_card_text" */
+export type Full_Card_Text_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Full_Card_Text_Max_Order_By>;
+  min?: InputMaybe<Full_Card_Text_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "full_card_text" */
+export type Full_Card_Text_Arr_Rel_Insert_Input = {
+  data: Array<Full_Card_Text_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "full_card_text". All fields are combined with a logical 'AND'. */
+export type Full_Card_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Full_Card_Text_Bool_Exp>>;
+  _not?: InputMaybe<Full_Card_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Full_Card_Text_Bool_Exp>>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_name?: InputMaybe<String_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  encounter_name?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  slot?: InputMaybe<String_Comparison_Exp>;
+  subname?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "full_card_text" */
+export enum Full_Card_Text_Constraint {
+  /** unique or primary key constraint */
+  FullCardTextPkey = 'full_card_text_pkey'
+}
+
+/** input type for inserting data into table "full_card_text" */
+export type Full_Card_Text_Insert_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Full_Card_Text_Max_Fields = {
+  __typename?: 'full_card_text_max_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "full_card_text" */
+export type Full_Card_Text_Max_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Full_Card_Text_Min_Fields = {
+  __typename?: 'full_card_text_min_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "full_card_text" */
+export type Full_Card_Text_Min_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "full_card_text" */
+export type Full_Card_Text_Mutation_Response = {
+  __typename?: 'full_card_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Full_Card_Text>;
+};
+
+/** on conflict condition type for table "full_card_text" */
+export type Full_Card_Text_On_Conflict = {
+  constraint: Full_Card_Text_Constraint;
+  update_columns: Array<Full_Card_Text_Update_Column>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "full_card_text". */
+export type Full_Card_Text_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: full_card_text */
+export type Full_Card_Text_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "full_card_text" */
+export enum Full_Card_Text_Select_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits'
+}
+
+/** input type for updating data in table "full_card_text" */
+export type Full_Card_Text_Set_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "full_card_text" */
+export enum Full_Card_Text_Update_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits'
+}
+
+/** update columns of table "full_card" */
+export enum Full_Card_Update_Column {
+  /** column name */
+  BackLink = 'back_link',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Victory = 'victory'
+}
+
+/** aggregate var_pop on columns */
+export type Full_Card_Var_Pop_Fields = {
+  __typename?: 'full_card_var_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Full_Card_Var_Samp_Fields = {
+  __typename?: 'full_card_var_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Full_Card_Variance_Fields = {
+  __typename?: 'full_card_variance_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+};
+
 /** columns and relationships of "guide_achievement" */
 export type Guide_Achievement = {
   __typename?: 'guide_achievement';
@@ -5006,6 +6853,7 @@ export type Guide_Input = {
   campaign_id: Scalars['Int'];
   created_at: Scalars['timestamptz'];
   id: Scalars['String'];
+  inserted_idx?: Maybe<Scalars['Int']>;
   payload?: Maybe<Scalars['jsonb']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
@@ -5079,11 +6927,13 @@ export type Guide_Input_Arr_Rel_Insert_Input = {
 export type Guide_Input_Avg_Fields = {
   __typename?: 'guide_input_avg_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "guide_input" */
 export type Guide_Input_Avg_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guide_input". All fields are combined with a logical 'AND'. */
@@ -5095,6 +6945,7 @@ export type Guide_Input_Bool_Exp = {
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
+  inserted_idx?: InputMaybe<Int_Comparison_Exp>;
   payload?: InputMaybe<Jsonb_Comparison_Exp>;
   scenario?: InputMaybe<String_Comparison_Exp>;
   step?: InputMaybe<String_Comparison_Exp>;
@@ -5125,6 +6976,7 @@ export type Guide_Input_Delete_Key_Input = {
 /** input type for incrementing numeric columns in table "guide_input" */
 export type Guide_Input_Inc_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "guide_input" */
@@ -5133,6 +6985,7 @@ export type Guide_Input_Insert_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
   payload?: InputMaybe<Scalars['jsonb']>;
   scenario?: InputMaybe<Scalars['String']>;
   step?: InputMaybe<Scalars['String']>;
@@ -5145,6 +6998,7 @@ export type Guide_Input_Max_Fields = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['String']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
@@ -5155,6 +7009,7 @@ export type Guide_Input_Max_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -5166,6 +7021,7 @@ export type Guide_Input_Min_Fields = {
   campaign_id?: Maybe<Scalars['Int']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['String']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
   scenario?: Maybe<Scalars['String']>;
   step?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
@@ -5176,6 +7032,7 @@ export type Guide_Input_Min_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -5203,6 +7060,7 @@ export type Guide_Input_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
   payload?: InputMaybe<Order_By>;
   scenario?: InputMaybe<Order_By>;
   step?: InputMaybe<Order_By>;
@@ -5229,6 +7087,8 @@ export enum Guide_Input_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  InsertedIdx = 'inserted_idx',
+  /** column name */
   Payload = 'payload',
   /** column name */
   Scenario = 'scenario',
@@ -5243,6 +7103,7 @@ export type Guide_Input_Set_Input = {
   campaign_id?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
   payload?: InputMaybe<Scalars['jsonb']>;
   scenario?: InputMaybe<Scalars['String']>;
   step?: InputMaybe<Scalars['String']>;
@@ -5253,44 +7114,52 @@ export type Guide_Input_Set_Input = {
 export type Guide_Input_Stddev_Fields = {
   __typename?: 'guide_input_stddev_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Guide_Input_Stddev_Pop_Fields = {
   __typename?: 'guide_input_stddev_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Pop_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Guide_Input_Stddev_Samp_Fields = {
   __typename?: 'guide_input_stddev_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "guide_input" */
 export type Guide_Input_Stddev_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Guide_Input_Sum_Fields = {
   __typename?: 'guide_input_sum_fields';
   campaign_id?: Maybe<Scalars['Int']>;
+  inserted_idx?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "guide_input" */
 export type Guide_Input_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "guide_input" */
@@ -5301,6 +7170,8 @@ export enum Guide_Input_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Id = 'id',
+  /** column name */
+  InsertedIdx = 'inserted_idx',
   /** column name */
   Payload = 'payload',
   /** column name */
@@ -5315,33 +7186,39 @@ export enum Guide_Input_Update_Column {
 export type Guide_Input_Var_Pop_Fields = {
   __typename?: 'guide_input_var_pop_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "guide_input" */
 export type Guide_Input_Var_Pop_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Guide_Input_Var_Samp_Fields = {
   __typename?: 'guide_input_var_samp_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "guide_input" */
 export type Guide_Input_Var_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Guide_Input_Variance_Fields = {
   __typename?: 'guide_input_variance_fields';
   campaign_id?: Maybe<Scalars['Float']>;
+  inserted_idx?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "guide_input" */
 export type Guide_Input_Variance_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
+  inserted_idx?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "investigator_data" */
@@ -6477,6 +8354,10 @@ export type Mutation_Root = {
   delete_card?: Maybe<Card_Mutation_Response>;
   /** delete single row from the table: "card" */
   delete_card_by_pk?: Maybe<Card>;
+  /** delete data from the table: "card_encounter_set" */
+  delete_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
+  /** delete single row from the table: "card_encounter_set" */
+  delete_card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
   /** delete data from the table: "card_pack" */
   delete_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** delete single row from the table: "card_pack" */
@@ -6485,6 +8366,10 @@ export type Mutation_Root = {
   delete_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** delete single row from the table: "card_text" */
   delete_card_text_by_pk?: Maybe<Card_Text>;
+  /** delete data from the table: "card_type_code" */
+  delete_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
+  /** delete single row from the table: "card_type_code" */
+  delete_card_type_code_by_pk?: Maybe<Card_Type_Code>;
   /** delete data from the table: "chaos_bag_result" */
   delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_result" */
@@ -6509,6 +8394,14 @@ export type Mutation_Root = {
   delete_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
   /** delete single row from the table: "friend_status_type" */
   delete_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** delete data from the table: "full_card" */
+  delete_full_card?: Maybe<Full_Card_Mutation_Response>;
+  /** delete single row from the table: "full_card" */
+  delete_full_card_by_pk?: Maybe<Full_Card>;
+  /** delete data from the table: "full_card_text" */
+  delete_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
+  /** delete single row from the table: "full_card_text" */
+  delete_full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** delete data from the table: "guide_achievement" */
   delete_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** delete single row from the table: "guide_achievement" */
@@ -6571,6 +8464,10 @@ export type Mutation_Root = {
   insert_campaign_one?: Maybe<Campaign>;
   /** insert data into the table: "card" */
   insert_card?: Maybe<Card_Mutation_Response>;
+  /** insert data into the table: "card_encounter_set" */
+  insert_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
+  /** insert a single row into the table: "card_encounter_set" */
+  insert_card_encounter_set_one?: Maybe<Card_Encounter_Set>;
   /** insert a single row into the table: "card" */
   insert_card_one?: Maybe<Card>;
   /** insert data into the table: "card_pack" */
@@ -6581,6 +8478,10 @@ export type Mutation_Root = {
   insert_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** insert a single row into the table: "card_text" */
   insert_card_text_one?: Maybe<Card_Text>;
+  /** insert data into the table: "card_type_code" */
+  insert_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
+  /** insert a single row into the table: "card_type_code" */
+  insert_card_type_code_one?: Maybe<Card_Type_Code>;
   /** insert data into the table: "chaos_bag_result" */
   insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_result" */
@@ -6605,6 +8506,14 @@ export type Mutation_Root = {
   insert_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
   /** insert a single row into the table: "friend_status_type" */
   insert_friend_status_type_one?: Maybe<Friend_Status_Type>;
+  /** insert data into the table: "full_card" */
+  insert_full_card?: Maybe<Full_Card_Mutation_Response>;
+  /** insert a single row into the table: "full_card" */
+  insert_full_card_one?: Maybe<Full_Card>;
+  /** insert data into the table: "full_card_text" */
+  insert_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
+  /** insert a single row into the table: "full_card_text" */
+  insert_full_card_text_one?: Maybe<Full_Card_Text>;
   /** insert data into the table: "guide_achievement" */
   insert_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** insert a single row into the table: "guide_achievement" */
@@ -6677,6 +8586,10 @@ export type Mutation_Root = {
   update_card?: Maybe<Card_Mutation_Response>;
   /** update single row of the table: "card" */
   update_card_by_pk?: Maybe<Card>;
+  /** update data of the table: "card_encounter_set" */
+  update_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
+  /** update single row of the table: "card_encounter_set" */
+  update_card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
   /** update data of the table: "card_pack" */
   update_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** update single row of the table: "card_pack" */
@@ -6685,6 +8598,10 @@ export type Mutation_Root = {
   update_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** update single row of the table: "card_text" */
   update_card_text_by_pk?: Maybe<Card_Text>;
+  /** update data of the table: "card_type_code" */
+  update_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
+  /** update single row of the table: "card_type_code" */
+  update_card_type_code_by_pk?: Maybe<Card_Type_Code>;
   /** update data of the table: "chaos_bag_result" */
   update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** update single row of the table: "chaos_bag_result" */
@@ -6709,6 +8626,14 @@ export type Mutation_Root = {
   update_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
   /** update single row of the table: "friend_status_type" */
   update_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** update data of the table: "full_card" */
+  update_full_card?: Maybe<Full_Card_Mutation_Response>;
+  /** update single row of the table: "full_card" */
+  update_full_card_by_pk?: Maybe<Full_Card>;
+  /** update data of the table: "full_card_text" */
+  update_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
+  /** update single row of the table: "full_card_text" */
+  update_full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
@@ -6822,6 +8747,19 @@ export type Mutation_RootDelete_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Card_Encounter_SetArgs = {
+  where: Card_Encounter_Set_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Encounter_Set_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Card_PackArgs = {
   where: Card_Pack_Bool_Exp;
 };
@@ -6844,6 +8782,18 @@ export type Mutation_RootDelete_Card_TextArgs = {
 export type Mutation_RootDelete_Card_Text_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Type_CodeArgs = {
+  where: Card_Type_Code_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Type_Code_By_PkArgs = {
+  code: Scalars['String'];
 };
 
 
@@ -6918,6 +8868,31 @@ export type Mutation_RootDelete_Friend_Status_TypeArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Friend_Status_Type_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Full_CardArgs = {
+  where: Full_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Full_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Full_Card_TextArgs = {
+  where: Full_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Full_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -7121,6 +9096,20 @@ export type Mutation_RootInsert_CardArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Card_Encounter_SetArgs = {
+  objects: Array<Card_Encounter_Set_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Encounter_Set_OneArgs = {
+  object: Card_Encounter_Set_Insert_Input;
+  on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Card_OneArgs = {
   object: Card_Insert_Input;
   on_conflict?: InputMaybe<Card_On_Conflict>;
@@ -7152,6 +9141,20 @@ export type Mutation_RootInsert_Card_TextArgs = {
 export type Mutation_RootInsert_Card_Text_OneArgs = {
   object: Card_Text_Insert_Input;
   on_conflict?: InputMaybe<Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Type_CodeArgs = {
+  objects: Array<Card_Type_Code_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Type_Code_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Type_Code_OneArgs = {
+  object: Card_Type_Code_Insert_Input;
+  on_conflict?: InputMaybe<Card_Type_Code_On_Conflict>;
 };
 
 
@@ -7236,6 +9239,34 @@ export type Mutation_RootInsert_Friend_Status_TypeArgs = {
 export type Mutation_RootInsert_Friend_Status_Type_OneArgs = {
   object: Friend_Status_Type_Insert_Input;
   on_conflict?: InputMaybe<Friend_Status_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Full_CardArgs = {
+  objects: Array<Full_Card_Insert_Input>;
+  on_conflict?: InputMaybe<Full_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Full_Card_OneArgs = {
+  object: Full_Card_Insert_Input;
+  on_conflict?: InputMaybe<Full_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Full_Card_TextArgs = {
+  objects: Array<Full_Card_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Full_Card_Text_OneArgs = {
+  object: Full_Card_Text_Insert_Input;
+  on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
 };
 
 
@@ -7497,7 +9528,12 @@ export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_CardArgs = {
+  _append?: InputMaybe<Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Card_Delete_Key_Input>;
   _inc?: InputMaybe<Card_Inc_Input>;
+  _prepend?: InputMaybe<Card_Prepend_Input>;
   _set?: InputMaybe<Card_Set_Input>;
   where: Card_Bool_Exp;
 };
@@ -7505,9 +9541,28 @@ export type Mutation_RootUpdate_CardArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_By_PkArgs = {
+  _append?: InputMaybe<Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Card_Delete_Key_Input>;
   _inc?: InputMaybe<Card_Inc_Input>;
+  _prepend?: InputMaybe<Card_Prepend_Input>;
   _set?: InputMaybe<Card_Set_Input>;
   pk_columns: Card_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Encounter_SetArgs = {
+  _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
+  where: Card_Encounter_Set_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Encounter_Set_By_PkArgs = {
+  _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
+  pk_columns: Card_Encounter_Set_Pk_Columns_Input;
 };
 
 
@@ -7536,6 +9591,20 @@ export type Mutation_RootUpdate_Card_TextArgs = {
 export type Mutation_RootUpdate_Card_Text_By_PkArgs = {
   _set?: InputMaybe<Card_Text_Set_Input>;
   pk_columns: Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_CodeArgs = {
+  _set?: InputMaybe<Card_Type_Code_Set_Input>;
+  where: Card_Type_Code_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Code_By_PkArgs = {
+  _set?: InputMaybe<Card_Type_Code_Set_Input>;
+  pk_columns: Card_Type_Code_Pk_Columns_Input;
 };
 
 
@@ -7632,6 +9701,46 @@ export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
 export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   pk_columns: Friend_Status_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_CardArgs = {
+  _append?: InputMaybe<Full_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Full_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Full_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Full_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<Full_Card_Inc_Input>;
+  _prepend?: InputMaybe<Full_Card_Prepend_Input>;
+  _set?: InputMaybe<Full_Card_Set_Input>;
+  where: Full_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_Card_By_PkArgs = {
+  _append?: InputMaybe<Full_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Full_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Full_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Full_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<Full_Card_Inc_Input>;
+  _prepend?: InputMaybe<Full_Card_Prepend_Input>;
+  _set?: InputMaybe<Full_Card_Set_Input>;
+  pk_columns: Full_Card_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_Card_TextArgs = {
+  _set?: InputMaybe<Full_Card_Text_Set_Input>;
+  where: Full_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_Card_Text_By_PkArgs = {
+  _set?: InputMaybe<Full_Card_Text_Set_Input>;
+  pk_columns: Full_Card_Text_Pk_Columns_Input;
 };
 
 
@@ -7845,6 +9954,12 @@ export type Query_Root = {
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_encounter_set" */
+  card_encounter_set: Array<Card_Encounter_Set>;
+  /** fetch aggregated fields from the table: "card_encounter_set" */
+  card_encounter_set_aggregate: Card_Encounter_Set_Aggregate;
+  /** fetch data from the table: "card_encounter_set" using primary key columns */
+  card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
   /** fetch data from the table: "card_pack" */
   card_pack: Array<Card_Pack>;
   /** fetch aggregated fields from the table: "card_pack" */
@@ -7857,6 +9972,12 @@ export type Query_Root = {
   card_text_aggregate: Card_Text_Aggregate;
   /** fetch data from the table: "card_text" using primary key columns */
   card_text_by_pk?: Maybe<Card_Text>;
+  /** fetch data from the table: "card_type_code" */
+  card_type_code: Array<Card_Type_Code>;
+  /** fetch aggregated fields from the table: "card_type_code" */
+  card_type_code_aggregate: Card_Type_Code_Aggregate;
+  /** fetch data from the table: "card_type_code" using primary key columns */
+  card_type_code_by_pk?: Maybe<Card_Type_Code>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
@@ -7893,6 +10014,18 @@ export type Query_Root = {
   friend_status_type_aggregate: Friend_Status_Type_Aggregate;
   /** fetch data from the table: "friend_status_type" using primary key columns */
   friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** fetch data from the table: "full_card" */
+  full_card: Array<Full_Card>;
+  /** fetch aggregated fields from the table: "full_card" */
+  full_card_aggregate: Full_Card_Aggregate;
+  /** fetch data from the table: "full_card" using primary key columns */
+  full_card_by_pk?: Maybe<Full_Card>;
+  /** fetch data from the table: "full_card_text" */
+  full_card_text: Array<Full_Card_Text>;
+  /** fetch aggregated fields from the table: "full_card_text" */
+  full_card_text_aggregate: Full_Card_Text_Aggregate;
+  /** fetch data from the table: "full_card_text" using primary key columns */
+  full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -8108,6 +10241,30 @@ export type Query_RootCard_By_PkArgs = {
 };
 
 
+export type Query_RootCard_Encounter_SetArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Encounter_Set_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Encounter_Set_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootCard_PackArgs = {
   distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -8153,6 +10310,29 @@ export type Query_RootCard_Text_AggregateArgs = {
 export type Query_RootCard_Text_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Query_RootCard_Type_CodeArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Code_Order_By>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Code_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Code_Order_By>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Code_By_PkArgs = {
+  code: Scalars['String'];
 };
 
 
@@ -8293,6 +10473,53 @@ export type Query_RootFriend_Status_Type_AggregateArgs = {
 
 export type Query_RootFriend_Status_Type_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+export type Query_RootFull_CardArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Order_By>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
+};
+
+
+export type Query_RootFull_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Order_By>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
+};
+
+
+export type Query_RootFull_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Query_RootFull_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootFull_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootFull_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -8585,6 +10812,12 @@ export type Subscription_Root = {
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_encounter_set" */
+  card_encounter_set: Array<Card_Encounter_Set>;
+  /** fetch aggregated fields from the table: "card_encounter_set" */
+  card_encounter_set_aggregate: Card_Encounter_Set_Aggregate;
+  /** fetch data from the table: "card_encounter_set" using primary key columns */
+  card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
   /** fetch data from the table: "card_pack" */
   card_pack: Array<Card_Pack>;
   /** fetch aggregated fields from the table: "card_pack" */
@@ -8597,6 +10830,12 @@ export type Subscription_Root = {
   card_text_aggregate: Card_Text_Aggregate;
   /** fetch data from the table: "card_text" using primary key columns */
   card_text_by_pk?: Maybe<Card_Text>;
+  /** fetch data from the table: "card_type_code" */
+  card_type_code: Array<Card_Type_Code>;
+  /** fetch aggregated fields from the table: "card_type_code" */
+  card_type_code_aggregate: Card_Type_Code_Aggregate;
+  /** fetch data from the table: "card_type_code" using primary key columns */
+  card_type_code_by_pk?: Maybe<Card_Type_Code>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
@@ -8633,6 +10872,18 @@ export type Subscription_Root = {
   friend_status_type_aggregate: Friend_Status_Type_Aggregate;
   /** fetch data from the table: "friend_status_type" using primary key columns */
   friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** fetch data from the table: "full_card" */
+  full_card: Array<Full_Card>;
+  /** fetch aggregated fields from the table: "full_card" */
+  full_card_aggregate: Full_Card_Aggregate;
+  /** fetch data from the table: "full_card" using primary key columns */
+  full_card_by_pk?: Maybe<Full_Card>;
+  /** fetch data from the table: "full_card_text" */
+  full_card_text: Array<Full_Card_Text>;
+  /** fetch aggregated fields from the table: "full_card_text" */
+  full_card_text_aggregate: Full_Card_Text_Aggregate;
+  /** fetch data from the table: "full_card_text" using primary key columns */
+  full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -8848,6 +11099,30 @@ export type Subscription_RootCard_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Encounter_SetArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Encounter_Set_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Encounter_Set_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Subscription_RootCard_PackArgs = {
   distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -8893,6 +11168,29 @@ export type Subscription_RootCard_Text_AggregateArgs = {
 export type Subscription_RootCard_Text_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Type_CodeArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Code_Order_By>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Code_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Code_Order_By>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Code_By_PkArgs = {
+  code: Scalars['String'];
 };
 
 
@@ -9033,6 +11331,53 @@ export type Subscription_RootFriend_Status_Type_AggregateArgs = {
 
 export type Subscription_RootFriend_Status_Type_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+export type Subscription_RootFull_CardArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Order_By>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootFull_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Order_By>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootFull_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootFull_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootFull_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Full_Card_Text_Order_By>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootFull_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -9568,6 +11913,8 @@ export type User_Campaigns_Variance_Order_By = {
 export type User_Flag = {
   __typename?: 'user_flag';
   flag: User_Flag_Type_Enum;
+  /** An object relationship */
+  user: Users;
   user_id: Scalars['String'];
 };
 
@@ -9613,6 +11960,7 @@ export type User_Flag_Bool_Exp = {
   _not?: InputMaybe<User_Flag_Bool_Exp>;
   _or?: InputMaybe<Array<User_Flag_Bool_Exp>>;
   flag?: InputMaybe<User_Flag_Type_Enum_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
   user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -9625,6 +11973,7 @@ export enum User_Flag_Constraint {
 /** input type for inserting data into table "user_flag" */
 export type User_Flag_Insert_Input = {
   flag?: InputMaybe<User_Flag_Type_Enum>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
   user_id?: InputMaybe<Scalars['String']>;
 };
 
@@ -9669,6 +12018,7 @@ export type User_Flag_On_Conflict = {
 /** Ordering options when selecting data from "user_flag". */
 export type User_Flag_Order_By = {
   flag?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
@@ -10561,7 +12911,7 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', card: Array<{ __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text?: string | null | undefined, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, stage?: number | null | undefined, doom?: number | null | undefined, clues?: number | null | undefined, double_sided?: boolean | null | undefined, illustrator?: string | null | undefined, real_back_flavor?: string | null | undefined, real_back_text?: string | null | undefined, real_back_name?: string | null | undefined, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text?: string | null | undefined, traits?: string | null | undefined, back_flavor?: string | null | undefined, back_text?: string | null | undefined, back_name?: string | null | undefined }> }> };
+export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -10569,7 +12919,7 @@ export type GetCardFaqQueryVariables = Exact<{
 }>;
 
 
-export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null | undefined };
+export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null };
 
 export type UploadChaosBagResultsMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -10582,7 +12932,7 @@ export type UploadChaosBagResultsMutationVariables = Exact<{
 }>;
 
 
-export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10591,7 +12941,7 @@ export type ChaosBagClearTokensMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, bless: number, curse: number } | null | undefined };
+export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, bless: number, curse: number } | null };
 
 export type ChaosBagDrawTokenMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10599,7 +12949,7 @@ export type ChaosBagDrawTokenMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null | undefined } | null | undefined };
+export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null } | null };
 
 export type ChaosBagResetBlessCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10608,7 +12958,7 @@ export type ChaosBagResetBlessCurseMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagResetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any } | null | undefined };
+export type ChaosBagResetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any } | null };
 
 export type ChaosBagSealTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10616,7 +12966,7 @@ export type ChaosBagSealTokensMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null | undefined };
+export type ChaosBagSealTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, sealed: any } | null };
 
 export type ChaosBagSetBlessCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10625,7 +12975,7 @@ export type ChaosBagSetBlessCurseMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagSetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number } | null | undefined };
+export type ChaosBagSetBlessCurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number } | null };
 
 export type ChaosBagSetTarotMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10633,7 +12983,7 @@ export type ChaosBagSetTarotMutationVariables = Exact<{
 }>;
 
 
-export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -10654,7 +13004,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null | undefined, step?: string | null | undefined, payload?: any | null | undefined, created_at: any }> } | null | undefined, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null | undefined, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null | undefined, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null | undefined, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> } | null | undefined, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, archived?: boolean | null, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
@@ -10668,7 +13018,7 @@ export type InsertNewDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
+export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type InsertNextLocalDeckMutationVariables = Exact<{
   previous_local_uuid?: InputMaybe<Scalars['String']>;
@@ -10681,7 +13031,7 @@ export type InsertNextLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
+export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int'];
@@ -10695,7 +13045,7 @@ export type InsertNextArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
+export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type UpdateArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -10706,7 +13056,7 @@ export type UpdateArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null | undefined, content_hash?: string | null | undefined, arkhamdb_user?: number | null | undefined, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
+export type UpdateArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, arkhamdb_user?: number | null, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type UpdateLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -10716,7 +13066,7 @@ export type UpdateLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null | undefined, content_hash?: string | null | undefined, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
+export type UpdateLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteAllLocalDecksMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -10724,7 +13074,7 @@ export type DeleteAllLocalDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllLocalDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
+export type DeleteAllLocalDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -10732,7 +13082,7 @@ export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllArkhamDbDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number }> } | null | undefined };
+export type DeleteAllArkhamDbDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String'];
@@ -10740,7 +13090,7 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }> } | null | undefined };
+export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type DeleteArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -10748,14 +13098,14 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }> } | null | undefined };
+export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> } | null | undefined };
+export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null };
 
 export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10763,7 +13113,7 @@ export type GetLatestLocalDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
+export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestArkhamDbDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10771,14 +13121,14 @@ export type GetLatestArkhamDbDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
+export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestDeckQueryVariables = Exact<{
   deckId: Scalars['Int'];
 }>;
 
 
-export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined };
+export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type GetDeckHistoryQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10786,113 +13136,113 @@ export type GetDeckHistoryQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }> };
+export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
-export type CoreCardFragment = { __typename?: 'card', code: string, cost?: number | null | undefined, deck_limit?: number | null | undefined, encounter_code?: string | null | undefined, encounter_position?: number | null | undefined, exile?: boolean | null | undefined, faction_code: string, health?: number | null | undefined, is_unique?: boolean | null | undefined, pack_code: string, pack_position: number, permanent?: boolean | null | undefined, position: number, quantity: number, real_flavor?: string | null | undefined, real_name: string, real_pack_name: string, real_slot?: string | null | undefined, real_subname?: string | null | undefined, real_text?: string | null | undefined, real_traits?: string | null | undefined, sanity?: number | null | undefined, skill_agility?: number | null | undefined, skill_combat?: number | null | undefined, skill_intellect?: number | null | undefined, skill_willpower?: number | null | undefined, skill_wild?: number | null | undefined, subtype_code?: string | null | undefined, type_code: string, stage?: number | null | undefined, doom?: number | null | undefined, clues?: number | null | undefined, double_sided?: boolean | null | undefined, illustrator?: string | null | undefined, real_back_flavor?: string | null | undefined, real_back_text?: string | null | undefined, real_back_name?: string | null | undefined };
+export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null };
 
-export type CoreCardTextFragment = { __typename?: 'card_text', flavor?: string | null | undefined, encounter_name?: string | null | undefined, name: string, slot?: string | null | undefined, subname?: string | null | undefined, text?: string | null | undefined, traits?: string | null | undefined, back_flavor?: string | null | undefined, back_text?: string | null | undefined, back_name?: string | null | undefined };
+export type CoreCardTextFragment = { __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null };
 
-export type UserInfoFragment = { __typename?: 'users', id: string, handle?: string | null | undefined };
+export type UserInfoFragment = { __typename?: 'users', id: string, handle?: string | null };
 
-export type GuideInputFragment = { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined };
+export type GuideInputFragment = { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null };
 
-export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined };
+export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null };
 
-export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
+export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null };
 
-export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
+export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type BasicDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number };
+export type BasicDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
+export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
+export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined };
+export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
+export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
-export type FullGuideInvestigatorDataFragment = { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
+export type FullGuideInvestigatorDataFragment = { __typename?: 'investigator_data', addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
-export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined };
+export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
-export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> };
+export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
 
-export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> };
+export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> };
 
 export type GetMyCampaignsQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, scenarioResults?: any | null | undefined, guided?: boolean | null | undefined, archived?: boolean | null | undefined, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> }, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }> } | null | undefined }> } | null | undefined };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
 
 export type GetCampaignQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignGuideQuery = { __typename?: 'query_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> }> };
+export type GetCampaignGuideQuery = { __typename?: 'query_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> }> };
 
 export type GetCampaignAccessQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignAccessQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null | undefined } }> } | null | undefined };
+export type GetCampaignAccessQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null } }> } | null };
 
 export type GetChaosBagResultsQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null | undefined, deleted?: boolean | null | undefined, cycleCode?: string | null | undefined, standaloneId?: any | null | undefined, difficulty?: string | null | undefined, campaignNotes?: any | null | undefined, chaosBag?: any | null | undefined, showInterludes?: boolean | null | undefined, scenarioResults?: any | null | undefined, weaknessSet?: any | null | undefined, guided?: boolean | null | undefined, guide_version?: number | null | undefined, archived?: boolean | null | undefined, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null | undefined, addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined }, investigator_data?: { __typename?: 'investigator_data', id?: string | null | undefined, killed?: boolean | null | undefined, insane?: boolean | null | undefined, physical?: number | null | undefined, mental?: number | null | undefined } | null | undefined, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null | undefined, content?: any | null | undefined, content_hash?: string | null | undefined, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, campaign_id: number } | null | undefined } | null | undefined }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null | undefined };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignAccessSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null | undefined }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null | undefined } }> } | null | undefined };
+export type CampaignAccessSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, owner: { __typename?: 'users', id: string, handle?: string | null }, access: Array<{ __typename?: 'campaign_access', user: { __typename?: 'users', id: string, handle?: string | null } }> } | null };
 
 export type CampaignGuideSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignGuideSubscription = { __typename?: 'subscription_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null | undefined, uuid?: string | null | undefined, updated_at?: any | null | undefined, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined }> }> };
+export type CampaignGuideSubscription = { __typename?: 'subscription_root', campaign_guide: Array<{ __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> }> };
 
 export type ChaosBagResultsSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null | undefined, tarot?: Chaos_Bag_Tarot_Mode_Enum | null | undefined } | null | undefined };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null | undefined, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null | undefined } | null | undefined }>, flags: Array<{ __typename?: 'user_flag', flag: User_Flag_Type_Enum }> } | null | undefined };
+export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, flags: Array<{ __typename?: 'user_flag', flag: User_Flag_Type_Enum }> } | null };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10901,7 +13251,7 @@ export type DeleteInvestigatorDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null | undefined, local_uuid?: string | null | undefined, investigator: string, owner_id: string }> } | null | undefined };
+export type DeleteInvestigatorDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', id: number, campaign_id: number, arkhamdb_id?: number | null, local_uuid?: string | null, investigator: string, owner_id: string }> } | null };
 
 export type SetBinaryAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10910,7 +13260,7 @@ export type SetBinaryAchievementMutationVariables = Exact<{
 }>;
 
 
-export type SetBinaryAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined };
+export type SetBinaryAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null } | null };
 
 export type SetCountAchievementMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10919,7 +13269,7 @@ export type SetCountAchievementMutationVariables = Exact<{
 }>;
 
 
-export type SetCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null | undefined, bool_value?: boolean | null | undefined } | null | undefined };
+export type SetCountAchievementMutation = { __typename?: 'mutation_root', insert_guide_achievement_one?: { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null } | null };
 
 export type AddGuideInputMutationVariables = Exact<{
   id: Scalars['String'];
@@ -10931,7 +13281,7 @@ export type AddGuideInputMutationVariables = Exact<{
 }>;
 
 
-export type AddGuideInputMutation = { __typename?: 'mutation_root', insert_guide_input_one?: { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null | undefined, scenario?: string | null | undefined, type: string, payload?: any | null | undefined } | null | undefined };
+export type AddGuideInputMutation = { __typename?: 'mutation_root', insert_guide_input_one?: { __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null } | null };
 
 export type RemoveGuideInputsMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10939,7 +13289,7 @@ export type RemoveGuideInputsMutationVariables = Exact<{
 }>;
 
 
-export type RemoveGuideInputsMutation = { __typename?: 'mutation_root', delete_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number }> } | null | undefined };
+export type RemoveGuideInputsMutation = { __typename?: 'mutation_root', delete_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number }> } | null };
 
 export type UpdateInvestigatorTraumaMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10951,7 +13301,7 @@ export type UpdateInvestigatorTraumaMutationVariables = Exact<{
 }>;
 
 
-export type UpdateInvestigatorTraumaMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
+export type UpdateInvestigatorTraumaMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null } | null };
 
 export type UpdateInvestigatorDataMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10970,7 +13320,7 @@ export type UpdateInvestigatorDataMutationVariables = Exact<{
 }>;
 
 
-export type UpdateInvestigatorDataMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', addedCards?: any | null | undefined, ignoreStoryAssets?: any | null | undefined, removedCards?: any | null | undefined, cardCounts?: any | null | undefined, specialXp?: any | null | undefined, availableXp?: number | null | undefined, id?: string | null | undefined, campaign_id: number, investigator: string, mental?: number | null | undefined, physical?: number | null | undefined, insane?: boolean | null | undefined, killed?: boolean | null | undefined, storyAssets?: any | null | undefined } | null | undefined };
+export type UpdateInvestigatorDataMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null } | null };
 
 export type UpdateSpentXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10979,7 +13329,7 @@ export type UpdateSpentXpMutationVariables = Exact<{
 }>;
 
 
-export type UpdateSpentXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, spentXp?: number | null | undefined } | null | undefined };
+export type UpdateSpentXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, spentXp?: number | null } | null };
 
 export type UpdateAvailableXpMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10988,7 +13338,7 @@ export type UpdateAvailableXpMutationVariables = Exact<{
 }>;
 
 
-export type UpdateAvailableXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null | undefined, campaign_id: number, investigator: string, availableXp?: number | null | undefined } | null | undefined };
+export type UpdateAvailableXpMutation = { __typename?: 'mutation_root', insert_investigator_data_one?: { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, availableXp?: number | null } | null };
 
 export type UpdateCampaignArchivedMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -10996,7 +13346,7 @@ export type UpdateCampaignArchivedMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignArchivedMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, archived?: boolean | null | undefined } | null | undefined };
+export type UpdateCampaignArchivedMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, archived?: boolean | null } | null };
 
 export type UpdateWeaknessSetMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11004,7 +13354,7 @@ export type UpdateWeaknessSetMutationVariables = Exact<{
 }>;
 
 
-export type UpdateWeaknessSetMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, weaknessSet?: any | null | undefined } | null | undefined };
+export type UpdateWeaknessSetMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, weaknessSet?: any | null } | null };
 
 export type UpdateCampaignDifficultyMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11012,7 +13362,7 @@ export type UpdateCampaignDifficultyMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignDifficultyMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, difficulty?: string | null | undefined } | null | undefined };
+export type UpdateCampaignDifficultyMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, difficulty?: string | null } | null };
 
 export type UpdateCampaignScenarioResultsMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11020,7 +13370,7 @@ export type UpdateCampaignScenarioResultsMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignScenarioResultsMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, scenarioResults?: any | null | undefined } | null | undefined };
+export type UpdateCampaignScenarioResultsMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, scenarioResults?: any | null } | null };
 
 export type UpdateCampaignGuideVersionMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11028,7 +13378,7 @@ export type UpdateCampaignGuideVersionMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignGuideVersionMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, guide_version?: number | null | undefined } | null | undefined };
+export type UpdateCampaignGuideVersionMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, guide_version?: number | null } | null };
 
 export type UpdateCampaignNotesMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11036,7 +13386,7 @@ export type UpdateCampaignNotesMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignNotesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, campaignNotes?: any | null | undefined } | null | undefined };
+export type UpdateCampaignNotesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, campaignNotes?: any | null } | null };
 
 export type UpdateCampaignShowInterludesMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11044,7 +13394,7 @@ export type UpdateCampaignShowInterludesMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignShowInterludesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, showInterludes?: boolean | null | undefined } | null | undefined };
+export type UpdateCampaignShowInterludesMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, showInterludes?: boolean | null } | null };
 
 export type UpdateChaosBagMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11052,7 +13402,7 @@ export type UpdateChaosBagMutationVariables = Exact<{
 }>;
 
 
-export type UpdateChaosBagMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, chaosBag?: any | null | undefined } | null | undefined };
+export type UpdateChaosBagMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, chaosBag?: any | null } | null };
 
 export type UpdateCampaignNameMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11060,7 +13410,7 @@ export type UpdateCampaignNameMutationVariables = Exact<{
 }>;
 
 
-export type UpdateCampaignNameMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null | undefined } | null | undefined };
+export type UpdateCampaignNameMutation = { __typename?: 'mutation_root', update_campaign_by_pk?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null } | null };
 
 export type AddCampaignInvestigatorMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11068,7 +13418,7 @@ export type AddCampaignInvestigatorMutationVariables = Exact<{
 }>;
 
 
-export type AddCampaignInvestigatorMutation = { __typename?: 'mutation_root', insert_campaign_investigator_one?: { __typename?: 'campaign_investigator', id?: string | null | undefined, investigator: string, campaign_id: number } | null | undefined };
+export type AddCampaignInvestigatorMutation = { __typename?: 'mutation_root', insert_campaign_investigator_one?: { __typename?: 'campaign_investigator', id?: string | null, investigator: string, campaign_id: number } | null };
 
 export type RemoveCampaignInvestigatorMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -11076,10 +13426,10 @@ export type RemoveCampaignInvestigatorMutationVariables = Exact<{
 }>;
 
 
-export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null | undefined, campaign_id: number, investigator: string }> } | null | undefined };
+export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null, campaign_id: number, investigator: string }> } | null };
 
-export const CoreCardFragmentDoc = gql`
-    fragment CoreCard on card {
+export const SingleCardFragmentDoc = gql`
+    fragment SingleCard on full_card {
   code
   cost
   deck_limit
@@ -11101,6 +13451,7 @@ export const CoreCardFragmentDoc = gql`
   real_subname
   real_text
   real_traits
+  real_encounter_set_name
   sanity
   skill_agility
   skill_combat
@@ -11117,12 +13468,27 @@ export const CoreCardFragmentDoc = gql`
   real_back_flavor
   real_back_text
   real_back_name
+  doom
+  illustrator
+  shroud
+  victory
+  vengeance
+  back_link
+  enemy_horror
+  enemy_damage
+  enemy_evade
+  enemy_fight
+  hidden
+  deck_requirements
+  deck_options
+  restrictions
+  imagesrc
+  backimagesrc
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
-    fragment CoreCardText on card_text {
+    fragment CoreCardText on full_card_text {
   flavor
-  encounter_name
   name
   slot
   subname
@@ -11356,7 +13722,7 @@ export const FullCampaignGuideStateFragmentDoc = gql`
   id
   uuid
   updated_at
-  guide_inputs(order_by: {created_at: asc}) {
+  guide_inputs(order_by: [{created_at: asc}, {inserted_idx: asc}]) {
     ...GuideInput
   }
   guide_achievements(order_by: {created_at: asc}) {
@@ -11367,8 +13733,17 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 ${GuideAchievementFragmentDoc}`;
 export const GetCustomCardsDocument = gql`
     query getCustomCards($locale: String!) {
-  card {
-    ...CoreCard
+  full_card {
+    ...SingleCard
+    linked_card {
+      ...SingleCard
+      translations(where: {locale: {_eq: $locale}}) {
+        ...CoreCardText
+      }
+    }
+    encounter_sets(where: {locale: {_eq: $locale}}) {
+      name
+    }
     packs(where: {locale: {_eq: $locale}}) {
       name
     }
@@ -11377,7 +13752,7 @@ export const GetCustomCardsDocument = gql`
     }
   }
 }
-    ${CoreCardFragmentDoc}
+    ${SingleCardFragmentDoc}
 ${CoreCardTextFragmentDoc}`;
 
 /**
@@ -11741,6 +14116,7 @@ export const UploadNewCampaignDocument = gql`
       step
       payload
       created_at
+      inserted_idx
     }
   }
   insert_guide_achievement(objects: $achievements) {

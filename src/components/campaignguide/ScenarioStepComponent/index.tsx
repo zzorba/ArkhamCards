@@ -1,14 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter, map } from 'lodash';
+import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BorderWrapper from '@components/campaignguide/BorderWrapper';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
@@ -25,11 +23,12 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
-import space, { m, s, l } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import space, { m, s } from '@styles/space';
 import NarrationStepComponent from './NarrationStepComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import ActionButton from '../prompts/ActionButton';
+import BorderStepComponent from './BorderStepComponent';
+import TitleComponent from './TitleComponent';
 
 interface Props {
   componentId: string;
@@ -46,7 +45,6 @@ function ScenarioStepComponentContent({
   width,
   switchCampaignScenario,
 }: Props) {
-  const { typography, colors } = useContext(StyleContext);
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   if (step.border_only && !border) {
@@ -138,39 +136,15 @@ function ScenarioStepComponentContent({
       );
     case 'border':
       return (
-        <BorderWrapper border width={width} color={step.border_color}>
-          { !!step.title && (
-            <View style={styles.titleWrapper}>
-              <Text style={[
-                typography.bigGameFont,
-                { color: colors.campaign[step.border_color || 'setup'] },
-                space.paddingTopL,
-                typography.center,
-              ]}>
-                { step.title }
-              </Text>
-            </View>
-          ) }
-          <View style={[space.paddingSideL, space.paddingTopS]}>
-            { map(
-              processedScenario.scenarioGuide.expandSteps(
-                step.steps,
-                scenarioState,
-                campaignLog
-              ),
-              step => (
-                <ScenarioStepComponent
-                  key={step.step.id}
-                  componentId={componentId}
-                  width={width - l * 2}
-                  step={step}
-                  border
-                  switchCampaignScenario={switchCampaignScenario}
-                />
-              )
-            ) }
-          </View>
-        </BorderWrapper>
+        <BorderStepComponent
+          componentId={componentId}
+          step={step}
+          width={width}
+          processedScenario={processedScenario}
+          campaignLog={campaignLog}
+          scenarioState={scenarioState}
+          switchCampaignScenario={switchCampaignScenario}
+        />
       );
     default:
       return null;
@@ -184,7 +158,6 @@ export default function ScenarioStepComponent({
   border,
   switchCampaignScenario,
 }: Props) {
-  const { typography, colors } = useContext(StyleContext);
   const { campaignInvestigators } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
 
@@ -203,20 +176,10 @@ export default function ScenarioStepComponent({
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
-
   return (
     <ScenarioStepContext.Provider value={context}>
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
-        <View style={styles.titleWrapper}>
-          <Text style={[
-            typography.bigGameFont,
-            { color: resolution ? colors.campaign.resolution : colors.campaign.setup },
-            space.paddingTopL,
-            border ? typography.center : {},
-          ]}>
-            { step.step.title }
-          </Text>
-        </View>
+        <TitleComponent title={step.step.title} border_color={resolution ? 'resolution' : 'setup'} center={border} />
       ) }
       <ScenarioStepComponentContent
         componentId={componentId}
@@ -240,10 +203,6 @@ export default function ScenarioStepComponent({
 }
 
 const styles = StyleSheet.create({
-  titleWrapper: {
-    marginLeft: m,
-    marginRight: m + s,
-  },
   extraTopPadding: {
     paddingTop: m + s,
   },

@@ -306,7 +306,7 @@ export default function DrawChaosBagComponent(props: Props) {
   const viewButton = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     return (
-      <View style={[styles.advancedButton, styles.advancedButtonLeft, { paddingTop: fontScale * 18 * 2 + xs }]}>
+      <View style={[styles.advancedButton, styles.advancedButtonLeft, { paddingTop: fontScale * 18 * 2 + xs, flex: 1 }]}>
         <TouchableWithoutFeedback onPress={editViewPressed}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonLeft]}>
             { drawnTokens.length === 0 && (
@@ -341,7 +341,7 @@ export default function DrawChaosBagComponent(props: Props) {
   const oddsButton = useMemo(() => {
     const drawnTokens = chaosBagResults.drawnTokens;
     return (
-      <View style={[styles.advancedButton, styles.advancedButtonRight, { paddingTop: fontScale * 18 * 2 + xs }]}>
+      <View style={[styles.advancedButton, styles.advancedButtonRight, { paddingTop: fontScale * 18 * 2 + xs, flex: 1 }]}>
         <TouchableWithoutFeedback onPress={viewChaosBagOdds}>
           <View style={[space.paddingSideS, styles.advancedButton, styles.advancedButtonRight]}>
             <ChaosToken iconKey="odds" size="tiny" />
@@ -502,7 +502,8 @@ export default function DrawChaosBagComponent(props: Props) {
             </View>
             <View style={[space.paddingSideS, styles.drawButtonRow, space.marginTopS, space.marginBottomS]}>
               { returnButton }
-              <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 2 }}>
+              <View style={[
+                { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 2 }]}>
                 { returnBlessCurse || (
                   <>
                     { viewButton }

@@ -88,6 +88,7 @@ export default function XpChooser({
         selectedIndexes={selectedIndexes}
         buttons={buttons}
         componentId={componentId}
+        interaction="radio"
       />
     </View>
   );

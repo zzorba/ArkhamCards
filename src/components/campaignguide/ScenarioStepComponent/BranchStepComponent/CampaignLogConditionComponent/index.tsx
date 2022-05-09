@@ -40,10 +40,11 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
               t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`);
 
           const result = campaignLog.check(condition.section, condition.id);
+          const negativeResult = condition.options.length === 1 && condition.options[0].boolCondition === false;
           return (
             <BinaryResult
               prompt={prompt}
-              result={result}
+              result={negativeResult ? !result : result}
               bulletType={step.bullet_type}
             />
           );

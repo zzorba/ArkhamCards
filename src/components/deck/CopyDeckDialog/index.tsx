@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { flatMap, keys, throttle, uniq } from 'lodash';
+import { find, flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import DialogComponent from '@lib/react-native-dialog';
@@ -51,7 +51,12 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
   const latestDeck = useSelector((state: AppState) => latestDeckSelector(state, deckId));
   const [saving, setSaving] = useState(false);
   const [deckName, setDeckName] = useState<string | undefined>();
-  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.deck.local && deck.deck.investigator_code !== CUSTOM_INVESTIGATOR));
+  const isCustomContent = useMemo(() =>!!(
+    deck?.deck.investigator_code === CUSTOM_INVESTIGATOR ||
+    deck?.deck.investigator_code.startsWith('z') ||
+    (deck && find([...keys(deck.deck.slots), ...keys(deck.deck.sideSlots), ...keys(deck.deck.ignoreDeckLimitSlots)], code => code.startsWith('z')))
+  ), [deck]);
+  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.deck.local));
   const [selectedDeckId, setSelectedDeckId] = useState(deckId);
   const [error, setError] = useState<string | undefined>();
 
@@ -98,7 +103,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     }
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
-      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
+      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none || isCustomContent);
       dispatch(saveClonedDeck(userId, actions, local, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
@@ -107,7 +112,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
         }
       );
     }
-  }, [signedIn, actions, isConnected, networkType, userId,
+  }, [signedIn, actions, isConnected, networkType, userId, isCustomContent,
     deckName, offlineDeck, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);
@@ -120,7 +125,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     setSelectedDeckId(value ? deckId : undefined);
   }, [setSelectedDeckId]);
 
-  const cards = usePlayerCardsFunc(() => uniq(
+  const [cards] = usePlayerCardsFunc(() => uniq(
     flatMap([
       ...(deck?.deck ? [deck.deck] : []),
       ...(baseDeck ? [baseDeck] : []),
@@ -197,26 +202,29 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
           returnKeyType="done"
         />
         { deckSelector }
-        { deck?.deck.investigator_code !== CUSTOM_INVESTIGATOR && (
-          <>
-            <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-              { t`Deck Type` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Deck Type` }
+        </DialogComponent.Description>
+        <DialogComponent.Switch
+          label={t`Create on ArkhamDB`}
+          value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none && !isCustomContent}
+          disabled={isCustomContent || !isConnected || networkType === NetInfoStateType.none}
+          onValueChange={onDeckTypeChange}
+          trackColor={COLORS.switchTrackColor}
+        />
+        { !!isCustomContent && (
+          <DialogComponent.Description
+            style={[space.marginSideL, space.marginBottomM, typography.small, typography.left]}
+          >
+            { t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made content.` }
+          </DialogComponent.Description>
+        ) }
+        { (!isConnected || networkType === NetInfoStateType.none) && (
+          <TouchableOpacity onPress={refreshNetworkStatus}>
+            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+              { t`You seem to be offline. Refresh Network?` }
             </DialogComponent.Description>
-            <DialogComponent.Switch
-              label={t`Create on ArkhamDB`}
-              value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none}
-              disabled={!isConnected || networkType === NetInfoStateType.none}
-              onValueChange={onDeckTypeChange}
-              trackColor={COLORS.switchTrackColor}
-            />
-            { (!isConnected || networkType === NetInfoStateType.none) && (
-              <TouchableOpacity onPress={refreshNetworkStatus}>
-                <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-                  { t`You seem to be offline. Refresh Network?` }
-                </DialogComponent.Description>
-              </TouchableOpacity>
-            ) }
-          </>
+          </TouchableOpacity>
         ) }
         { !!error && (
           <Text style={[typography.text, typography.center, styles.error, space.marginBottomS]}>
@@ -225,7 +233,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
         ) }
       </>
     );
-  }, [signedIn, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, deck?.deck.investigator_code, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
+  }, [signedIn, isCustomContent, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
 
 
   if (!investigator) {

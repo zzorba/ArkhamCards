@@ -1,28 +1,24 @@
-import { filter, find, flatMap, forEach, head, keys, values } from 'lodash';
+import { filter, find, findIndex, flatMap, forEach, head, keys, values } from 'lodash';
 
-import { NumberChoices, StringChoices } from '@actions/types';
+import { NumberChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
-  InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   BinaryConditionalChoice,
   CampaignLogCardsCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import {
-  basicTraumaConditionResult,
   campaignDataInvestigatorConditionResult,
   campaignDataChaosBagConditionResult,
-  investigatorCardConditionResult,
   campaignLogConditionResult,
-  investigatorConditionResult,
   binaryCardConditionResult,
   multiConditionResult,
   BinaryResult,
-  InvestigatorResult,
   campaignLogCountConditionResult,
   campaignDataScenarioConditionResult,
   partnerStatusConditionResult,
+  investigatorChoiceConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -52,10 +48,20 @@ export function investigatorChoiceInputChoices(
       choices: input.choices,
     };
   }
-  const codes = input.condition ? keys(basicTraumaConditionResult(input.condition, campaignLog).investigatorChoices) :
+  const conditionResult = input.condition && investigatorChoiceConditionResult(input.condition, campaignLog);
+  const codes = conditionResult ? keys(conditionResult.investigatorChoices) :
     filter(
       campaignLog.investigatorCodes(false),
-      code => input.investigator !== 'resigned' || campaignLog.resigned(code)
+      code => {
+        switch (input.investigator) {
+          case 'resigned':
+            return campaignLog.resigned(code);
+          case 'not_defeated':
+            return !campaignLog.isDefeated(code);
+          default:
+            return true;
+        }
+      }
     );
   const result: NumberChoices = {};
   forEach(
@@ -66,14 +72,14 @@ export function investigatorChoiceInputChoices(
           result[code] = [...(result[code] || []), idx];
         });
       } else {
-        const conditionResult = calculateInvestigatorConditionResult(
+        const conditionResult = investigatorChoiceConditionResult(
           choice.condition,
           campaignLog
         );
         forEach(conditionResult.investigatorChoices,
           (indexes, code) => {
             // If we got one or more matches, that means this 'choice' is good.
-            if (indexes.length) {
+            if (indexes.length && findIndex(codes, c => c === code) !== -1) {
               result[code] = [
                 ...(result[code] || []),
                 idx,
@@ -154,30 +160,3 @@ export function calculateBinaryConditionResult(
     }
   }
 }
-
-function calculateInvestigatorConditionResult(
-  condition: InvestigatorChoiceCondition,
-  campaignLog: GuidedCampaignLog
-): Omit<InvestigatorResult, 'options'> {
-  switch (condition.type) {
-    case 'has_card':
-      return investigatorCardConditionResult(condition, campaignLog);
-    case 'trauma':
-      return basicTraumaConditionResult(condition, campaignLog);
-    case 'investigator':
-      return investigatorConditionResult(condition, campaignLog);
-    case 'campaign_log': {
-      const result = campaignLogConditionResult(condition, campaignLog);
-      const investigators = campaignLog.investigatorCodes(false);
-      const investigatorChoices: StringChoices = {};
-      forEach(investigators, code => {
-        investigatorChoices[code] = result.option ? [condition.id] : [];
-      });
-      return {
-        type: 'investigator',
-        investigatorChoices,
-      };
-    }
-  }
-}
-

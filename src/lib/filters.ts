@@ -67,7 +67,6 @@ export interface FilterState {
   nonExceptional: boolean;
   costEnabled: boolean;
   victory: boolean;
-  vengeance: boolean;
   skillEnabled: boolean;
   unique: boolean;
   permanent: boolean;
@@ -84,6 +83,8 @@ export interface FilterState {
   cluesEnabled: boolean;
   cluesFixed: boolean;
   hauntedEnabled: boolean;
+  locationVictoryEnabled: boolean;
+  locationVengeanceEnabled: boolean;
   enemyHealthEnabled: boolean;
   enemyHealthPerInvestigator: boolean;
   enemyDamageEnabled: boolean;
@@ -103,6 +104,9 @@ export interface FilterState {
   enemyAloof: boolean;
   enemyMassive: boolean;
   enemySwarm: boolean;
+  enemyPatrol: boolean;
+  enemyVictory: boolean;
+  enemyVengeance: boolean;
   // Slider controls that are dynamically sized
   level: [number, number];
   cost: [number, number];
@@ -157,7 +161,6 @@ export const defaultFilterState: FilterState = {
   nonExceptional: false,
   costEnabled: false,
   victory: false,
-  vengeance: false,
   skillEnabled: false,
   unique: false,
   permanent: false,
@@ -181,6 +184,8 @@ export const defaultFilterState: FilterState = {
   cluesEnabled: false,
   cluesFixed: false,
   hauntedEnabled: false,
+  locationVictoryEnabled: false,
+  locationVengeanceEnabled: false,
   enemyHealthEnabled: false,
   enemyHealthPerInvestigator: false,
   enemyDamageEnabled: false,
@@ -200,6 +205,9 @@ export const defaultFilterState: FilterState = {
   enemyAloof: false,
   enemyMassive: false,
   enemySwarm: false,
+  enemyPatrol: false,
+  enemyVictory: false,
+  enemyVengeance: false,
   // Slider controls that are dynamically sized
   level: [0, 5],
   cost: [0, 6],
@@ -336,6 +344,8 @@ export default class FilterBuilder {
       clues,
       cluesFixed,
       hauntedEnabled,
+      locationVengeanceEnabled,
+      locationVictoryEnabled,
     } = filters;
     const result: Brackets[] = [
       ...(shroudEnabled ? this.rangeFilter('shroud', shroud, true) : []),
@@ -348,6 +358,12 @@ export default class FilterBuilder {
     }
     if (hauntedEnabled) {
       result.push(where(`c.real_text LIKE '%<b>Haunted</b>%' OR linked_card.real_text LIKE '%<b>Haunted</b>%'`));
+    }
+    if (locationVictoryEnabled) {
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
+    }
+    if (locationVengeanceEnabled) {
+      result.push(VENGEANCE_FILTER);
     }
     if (result.length) {
       result.push(where(`c.type_code = 'location' OR linked_card.type_code = 'location'`));
@@ -421,6 +437,9 @@ export default class FilterBuilder {
       enemyAloof,
       enemyMassive,
       enemySwarm,
+      enemyPatrol,
+      enemyVengeance,
+      enemyVictory,
       // range filters
       enemyEvade,
       enemyEvadeEnabled,
@@ -480,6 +499,15 @@ export default class FilterBuilder {
     if (enemySwarm) {
       result.push(where(`c.real_text LIKE '%Swarming%' or linked_card.real_text LIKE '%Swarming%'`));
     }
+    if (enemyPatrol) {
+      result.push(where(`c.real_text LIKE '%Patrol%' or linked_card.real_text LIKE '%Patrol%'`));
+    }
+    if (enemyVictory) {
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
+    }
+    if (enemyVengeance) {
+      result.push(VENGEANCE_FILTER);
+    }
 
     if (result.length ||
       (enemyHunter && enemyNonHunter) ||
@@ -493,14 +521,10 @@ export default class FilterBuilder {
   miscFilter(filters: FilterState): Brackets[] {
     const {
       victory,
-      vengeance,
     } = filters;
     const result: Brackets[] = [];
     if (victory) {
       result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
-    }
-    if (vengeance) {
-      result.push(VENGEANCE_FILTER);
     }
     return result;
   }
@@ -543,6 +567,20 @@ export default class FilterBuilder {
         where(
           `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
           { [valueName]: values }
+        ),
+      ];
+    }
+    return [];
+  }
+
+  packCodes(packCodes: string[]): Brackets[] {
+    const packClause = this.equalsVectorClause(packCodes, 'pack_code');
+    if (packClause.length) {
+      return [
+        combineQueries(
+          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: map(packCodes, c => `%${c}%`).join('') }),
+          packClause,
+          'or'
         ),
       ];
     }
@@ -646,7 +684,7 @@ export default class FilterBuilder {
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
-        ...this.equalsVectorClause(filters.packCodes, 'pack_code'),
+        ...this.packCodes(filters.packCodes),
         ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),

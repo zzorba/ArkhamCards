@@ -65,11 +65,19 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "red_tide_rising"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "the_eternal_slumber"
   },
   {
     "campaignId": "side",
     "scenarioId": "the_nights_usurper"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "the_symphony_of_erich_zann"
   },
   {
     "campaignId": "side",

@@ -21,7 +21,7 @@ import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards } from '@components/core/hooks';
+import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import Carousel from 'react-native-snap-carousel';
@@ -40,6 +40,7 @@ export interface CardDetailSwipeProps {
   tabooSetId?: number;
   deckId?: DeckId;
   faction?: FactionCodeType;
+  editable?: boolean;
 }
 
 type Props = NavigationProps & CardDetailSwipeProps;
@@ -56,13 +57,13 @@ const options = (passProps: CardDetailSwipeProps) => {
 };
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
+  const { componentId, cardCodes, editable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
   const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const packInCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSelector((state: AppState) => !!state.settings.ignore_collection);
+  const ignore_collection = useSettingValue('ignore_collection');
   const showSpoilers = useSelector(getPackSpoilers);
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
@@ -182,9 +183,10 @@ function DbCardDetailSwipeView(props: Props) {
         deckId={deckId}
         limit={deck_limit}
         side={currentControl === 'side'}
+        editable={editable}
       />
     );
-  }, [deckId, currentCard, currentControl, packInCollection, ignore_collection]);
+  }, [deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
   const renderCard = useCallback((
     { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
   ): React.ReactNode => {
@@ -239,7 +241,12 @@ function DbCardDetailSwipeView(props: Props) {
       />
       { deckId !== undefined && (
         <>
-          <DeckNavFooter deckId={deckId} componentId={componentId} control="counts" onPress={backPressed} />
+          <DeckNavFooter
+            deckId={deckId}
+            componentId={componentId}
+            control="counts"
+            onPress={backPressed}
+          />
           { deckCountControls }
         </>
       ) }

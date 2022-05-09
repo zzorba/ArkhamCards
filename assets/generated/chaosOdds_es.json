@@ -3519,9 +3519,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 más el número de Carnavaleros inocentes bajo el mazo de Plan",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3549,9 +3550,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 más el número de Carnavaleros inocentes bajo el mazo de Plan",
-          "min": 2,
-          "max": 5
+          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "min": 0,
+          "max": 3,
+          "adjustment": 2
         }
       },
       {
@@ -3996,7 +3998,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria",
           "min": 0,
           "adjustment": 1
         }
@@ -4008,7 +4010,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "At Tindalos",
+          "prompt": "En Tíndalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4021,7 +4023,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Hay un Apoyo [[Científico]] en tu Lugar",
           "modified_value": {
             "modifier": -4
           }
@@ -4039,7 +4041,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria",
           "min": 0,
           "adjustment": 2
         }
@@ -4051,7 +4053,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "At Tindalos",
+          "prompt": "En Tíndalos",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4064,7 +4066,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "A [[Scientist]] asset is at your location",
+          "prompt": "Hay un Apoyo [[Científico]] en tu Lugar",
           "modified_value": {
             "modifier": -6
           }
@@ -4363,7 +4365,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "prompt": "La mitad de la cantidad de cartas [[Sospechoso]] y [[Escondite]] en la zona de victoria (redondeando hacia arriba)",
           "min": 0
         }
       },
@@ -4374,7 +4376,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "prompt": "Estás negociando con un Enemigo [[Sospechoso]] o investigando un Lugar [[Escondite]]",
           "modified_value": {
             "modifier": -4
           }
@@ -4398,7 +4400,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "prompt": "La cantidad de cartas [[Sospechoso]] y [[Escondite]] en la zona de victoria",
           "min": 0
         }
       },
@@ -4409,7 +4411,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+          "prompt": "Estás negociando con un Enemigo [[Sospechoso]] o investigando un Lugar [[Escondite]]",
           "modified_value": {
             "modifier": -5
           }
@@ -4437,7 +4439,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "La mitad del valor de refugio de tu Lugar (redondeando hacia arriba)"
         }
       },
       {
@@ -4458,7 +4460,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "El valor de refugio de tu Lugar"
         }
       },
       {
@@ -4483,7 +4485,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "La cantidad de cartas de Historia que hay en la zona de victoria"
         }
       },
       {
@@ -4510,7 +4512,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "El número del plan en curso más la cantidad de cartas de Historia que hay en la zona de victoria"
         }
       },
       {
@@ -4541,7 +4543,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "El nivel de tu Lugar"
         }
       },
       {
@@ -4568,7 +4570,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the level of your location",
+          "prompt": "El nivel de tu Lugar más 2",
           "min": 2
         }
       },
@@ -4600,7 +4602,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "El número de llaves que controlas"
         }
       },
       {
@@ -4616,7 +4618,7 @@
           "default_value": {
             "modifier": -3
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Fue revelada una ficha [frost]",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4634,7 +4636,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "2 plus the number of keys you control",
+          "prompt": "El número de llaves que controlas más 2",
           "min": 2
         }
       },
@@ -4651,7 +4653,7 @@
           "default_value": {
             "modifier": -4
           },
-          "prompt": "[frost] token was revealed",
+          "prompt": "Fue revelada una ficha [frost]",
           "modified_value": {
             "modifier": "auto_fail"
           }
@@ -4676,7 +4678,7 @@
           "default_value": {
             "modifier": -1
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Hay un Enemigo [[Antiguo]] en tu Lugar",
           "modified_value": {
             "modifier": -3
           }
@@ -4709,7 +4711,7 @@
           "default_value": {
             "modifier": -2
           },
-          "prompt": "There is an [[Ancient One]] enemy at your locations",
+          "prompt": "Hay un Enemigo [[Antiguo]] en tu Lugar",
           "modified_value": {
             "modifier": -4
           }
@@ -4731,6 +4733,66 @@
         "token": "elder_thing",
         "value": {
           "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "zez_00001",
+    "scenario": "the_heart_of_madness",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "reveal_another": true,
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Music]] treacheries in play.",
+          "min": 0,
+          "reveal_another": true
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
         }
       }
     ]

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
+import { concat, find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
+import { t } from 'ttag';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
@@ -41,7 +42,7 @@ import {
   ArkhamDbDeck,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
+import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -52,6 +53,7 @@ import { Platform } from 'react-native';
 const packsPersistConfig = {
   key: 'packs',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
@@ -59,6 +61,7 @@ const packsPersistConfig = {
 const cardsPersistConfig = {
   key: 'cards',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error', 'progress', 'fetch'],
 };
@@ -66,6 +69,7 @@ const cardsPersistConfig = {
 const legacyGuidesPersistConfig = {
   key: 'guides',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
 };
 
@@ -73,11 +77,13 @@ const legacyGuidesPersistConfig = {
 const guidesPersistConfig = {
   key: 'guides_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
 };
 
 const trackedQueriesPersistConfig = {
   key: 'trackedQueries',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
@@ -85,6 +91,7 @@ const trackedQueriesPersistConfig = {
 const legacyDecksPersistConfig = {
   key: 'decks',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error', 'edits', 'editting'],
 };
@@ -92,6 +99,7 @@ const legacyDecksPersistConfig = {
 const decksPersistConfig = {
   key: 'decks_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error', 'edits', 'editting'],
 };
@@ -99,6 +107,7 @@ const decksPersistConfig = {
 const campaignsPersistConfig = {
   key: 'campaigns_2',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
@@ -106,17 +115,20 @@ const campaignsPersistConfig = {
 const settingsPeristConfig = {
   key: 'settings',
   timeout: 0,
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: [],
 };
 
 const signedInPersistConfig = {
   key: 'signedIn',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 const dissonantVoicesPersistConfig = {
   key: 'dissonantVoices',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
@@ -149,6 +161,7 @@ const DEFAULT_PACK_LIST: Pack[] = [];
 const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allGuidesSelector = (state: AppState) => state.guides.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
+const showCustomContentSelector = (state: AppState) => !!state.settings.customContent;
 const allDecksSelector = (state: AppState) => state.decks.all;
 
 function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId): Campaign | undefined {
@@ -226,10 +239,65 @@ export function getPackFetchDate(state: AppState) {
   return state.packs.dateFetched;
 }
 
+
 export const getAllPacks = createSelector(
   allPacksSelector,
-  allPacks => sortBy(
-    sortBy(allPacks || DEFAULT_PACK_LIST, pack => pack.position),
+  showCustomContentSelector,
+  (allPacks, showCustomContent) => sortBy(
+    sortBy(
+      concat(
+        allPacks || DEFAULT_PACK_LIST,
+        showCustomContent ? map([
+          {
+            code: 'zbh',
+            cycle_code: 'fan',
+            name: t`Barkham Horror`,
+            position: 1,
+          },
+          {
+            code: 'zdm',
+            cycle_code: 'fan',
+            name: t`Dark Matter`,
+            position: 2,
+          },
+          {
+            code: 'zaw',
+            cycle_code: 'fan',
+            name: t`Alice in Wonderland`,
+            position: 3,
+          },
+          {
+            code: 'zce',
+            cycle_code: 'fan',
+            name: t`The Crown of Egil`,
+            position: 4,
+          },
+          {
+            code: 'zcp',
+            cycle_code: 'fan',
+            name: t`Call of the Plaguebearer`,
+            position: 5,
+          },
+          {
+            code: 'zcc',
+            cycle_code: 'fan',
+            name: t`Consternation on the Constellation`,
+            position: 6,
+          },
+        ], (p): Pack => {
+          return {
+            id: p.code,
+            name: p.name,
+            code: p.code,
+            position: p.position,
+            cycle_position: 100,
+            available: '2022-01-01',
+            known: 0,
+            total: 0,
+            url: 'https://arkhamcards.com',
+          };
+        }) : []
+      ), pack => pack.position),
     pack => pack.cycle_position
   )
 );
@@ -666,7 +734,7 @@ export const getEnableArkhamCardsAccount = createSelector(
   (beta1: undefined | boolean): boolean => {
     return ENABLE_ARKHAM_CARDS_ACCOUNT && (
       (Platform.OS === 'ios' && (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA || (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS && !!beta1))) ||
-      (Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID && !!beta1)
+      (Platform.OS === 'android' && (ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA || (ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID && !!beta1)))
     );
   }
 );
@@ -795,5 +863,14 @@ export const getArkhamDbDecks = createSelector(
       }
     });
     return [allDecks, !!error];
+  }
+);
+
+
+export const getOnboardingDismissed = createSelector(
+  (state: AppState) => state.settings.dismissedOnboarding,
+  (state: AppState, onboarding: string) => onboarding,
+  (dismissedOnboarding, onboarding): boolean => {
+    return !!find(dismissedOnboarding || [], x => x === onboarding);
   }
 );

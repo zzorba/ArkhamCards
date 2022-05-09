@@ -1,18 +1,18 @@
 import React, { useContext, useMemo } from 'react';
 import { Platform, StyleSheet, Text, TouchableOpacity, ScrollView, View } from 'react-native';
-import Modal from 'react-native-modal';
 import { map } from 'lodash';
 
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
 import TextInputLine from './TextInputLine';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import { NOTCH_BOTTOM_PADDING, TINY_PHONE } from '@styles/sizes';
+import { TINY_PHONE } from '@styles/sizes';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '../CompactInvestigatorRow';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import AppModal from '../AppModal';
 
 interface Props {
   title: string;
@@ -40,7 +40,7 @@ function NewDialog(props: Props) {
     forceVerticalButtons,
   } = props;
   const { lang } = useContext(LanguageContext);
-  const { backgroundStyle, darkMode, colors, shadow, typography, width, height } = useContext(StyleContext);
+  const { backgroundStyle, colors, shadow, typography, width, height } = useContext(StyleContext);
   const verticalButtons = forceVerticalButtons || buttons.length > 2 || TINY_PHONE || lang === 'de';
   const dismissButton = useMemo(() => {
     if (!dismissable) {
@@ -59,24 +59,12 @@ function NewDialog(props: Props) {
     );
   }, [dismissable, investigator, onDismiss, colors]);
   return (
-    <Modal
+    <AppModal
       avoidKeyboard={avoidKeyboard}
-      isVisible={visible}
-      animationIn={alignment === 'bottom' ? 'slideInUp' : 'fadeIn'}
-      animationOut={alignment === 'bottom' ? 'slideOutDown' : 'fadeOut'}
-      onBackdropPress={dismissable ? onDismiss : undefined}
-      onBackButtonPress={dismissable ? onDismiss : undefined}
-      hasBackdrop
-      backdropOpacity={darkMode ? 0.75 : 0.5}
-      backdropColor={darkMode ? '#444444' : '#000000'}
-      style={[styles.wrapper, alignment === 'bottom' ? {
-        justifyContent: 'flex-end',
-        padding: s,
-        paddingBottom: NOTCH_BOTTOM_PADDING + m,
-      } : {
-        justifyContent: 'center',
-        padding: s,
-      }]}
+      visible={visible}
+      alignment={alignment}
+      dismissable={dismissable}
+      onDismiss={onDismiss}
     >
       <View style={[
         shadow.large,
@@ -132,7 +120,7 @@ function NewDialog(props: Props) {
           ) }
         </View>
       </View>
-    </Modal>
+    </AppModal>
   );
 }
 
@@ -142,12 +130,6 @@ NewDialog.TextInput = TextInputLine;
 export default NewDialog;
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 0,
-  },
   dialog: Platform.select({
     default: {
       borderRadius: 8,

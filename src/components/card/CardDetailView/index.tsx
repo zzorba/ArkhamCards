@@ -24,7 +24,7 @@ import space from '@styles/space';
 import useSingleCard from '../useSingleCard';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
-  const rightButtons = [{
+  const rightButtons = card?.custom() ? [] : [{
     icon: iconsMap.web,
     id: 'share',
     color: color || COLORS.M,

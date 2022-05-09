@@ -43,6 +43,8 @@ import {
   MathCondition,
   CampaignLogCardsSwitchCondition,
   ScenarioDataFixedInvestigatorStatusCondition,
+  InvestigatorChoiceCondition,
+  ScenarioDataInvestigatorStatusCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -543,9 +545,11 @@ export function campaignDataInvestigatorConditionResult(
     campaignLog
   );
   let match: OptionWithId | undefined = undefined;
-  forEach(result.investigatorChoices, (choices) => {
+  const input: string[] = [];
+  forEach(result.investigatorChoices, (choices, code) => {
     if (choices.length) {
       match = find(result.options, option => option.id === choices[0]);
+      input.push(code);
     }
   });
   if (match) {
@@ -553,6 +557,7 @@ export function campaignDataInvestigatorConditionResult(
       type: 'binary',
       decision: true,
       option: match,
+      input,
     };
   }
   return {
@@ -763,6 +768,22 @@ export function fixedInvestigatorStatusConditionResult(condition: ScenarioDataFi
   return binaryConditionResult(result, condition.options);
 }
 
+export function investigatorStatusConditionResult(condition: ScenarioDataInvestigatorStatusCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  const investigators = campaignLog.investigatorCodes(false);
+  const decision = !!find(investigators, code => {
+    switch (condition.investigator) {
+      case 'defeated':
+        return campaignLog.isDefeated(code);
+      case 'resigned':
+        return campaignLog.resigned(code);
+    }
+  });
+  return binaryConditionResult(
+    decision,
+    condition.options
+  );
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -813,24 +834,52 @@ export function conditionResult(
         case 'fixed_investigator_status':
           return fixedInvestigatorStatusConditionResult(condition, campaignLog);
         case 'investigator_status': {
-          const investigators = campaignLog.investigatorCodes(false);
-          const decision = !!find(investigators, code => {
-            switch (condition.investigator) {
-              case 'defeated':
-                return campaignLog.isDefeated(code);
-              case 'resigned':
-                return campaignLog.resigned(code);
-            }
-          });
-          return binaryConditionResult(
-            decision,
-            condition.options
-          );
+          return investigatorStatusConditionResult(condition, campaignLog);
         }
       }
     }
     case 'partner_status':
       return partnerStatusConditionResult(condition, campaignLog);
+  }
+}
+
+
+export function investigatorChoiceConditionResult(
+  condition: InvestigatorChoiceCondition,
+  campaignLog: GuidedCampaignLog
+): Omit<InvestigatorResult, 'options'> {
+  switch (condition.type) {
+    case 'has_card':
+      return investigatorCardConditionResult(condition, campaignLog);
+    case 'trauma':
+      return basicTraumaConditionResult(condition, campaignLog);
+    case 'investigator':
+      return investigatorConditionResult(condition, campaignLog);
+    case 'campaign_log_cards':
+    case 'campaign_log': {
+      const result = campaignLogConditionResult(condition, campaignLog);
+      const investigators = campaignLog.investigatorCodes(false);
+      const investigatorChoices: StringChoices = {};
+      forEach(investigators, code => {
+        if (condition.type === 'campaign_log') {
+          if (result.option) {
+            investigatorChoices[code] = [condition.id];
+          }
+        } else {
+          if (result.input) {
+            const hasInvestigator = result.input.indexOf(code) !== -1;
+            const passes = !!condition.options.find(option => option.boolCondition === hasInvestigator);
+            if (passes) {
+              investigatorChoices[code] = [condition.id];
+            }
+          }
+        }
+      });
+      return {
+        type: 'investigator',
+        investigatorChoices,
+      };
+    }
   }
 }
 

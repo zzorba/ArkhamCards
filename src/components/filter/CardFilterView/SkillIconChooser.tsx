@@ -7,14 +7,14 @@ import { t } from 'ttag';
 
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from '@components/core/ToggleFilter';
-import { SkillIconsFilters } from '@lib/filters';
+import { FilterState, SkillIconsFilters } from '@lib/filters';
 import { xs } from '@styles/space';
 
 interface Props {
-  onFilterChange: (setting: string, value: any) => void;
+  onFilterChange: (setting: keyof FilterState, value: any) => void;
   skillIcons: SkillIconsFilters;
   enabled: boolean;
-  onToggleChange: (setting: string, value: boolean) => void;
+  onToggleChange: (setting: keyof FilterState, value: boolean) => void;
 }
 
 export default function SkillIconChooser({ onFilterChange, skillIcons, enabled, onToggleChange }: Props) {

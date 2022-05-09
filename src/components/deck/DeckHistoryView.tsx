@@ -46,7 +46,7 @@ export default function DeckHistoryView({
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const [deckHistory, loading, refreshDeckHistory] = useDeckHistory(id, investigator, campaign);
-  const cards = useLatestDecksCards(deckHistory, deckHistory?.length ? (deckHistory[0].deck.taboo_id || 0) : 0);
+  const [cards] = useLatestDecksCards(deckHistory, deckHistory?.length ? (deckHistory[0].deck.taboo_id || 0) : 0);
   const historicDecks: HistoryDeckItemType[] = useMemo(() => {
     if (!cards || !deckHistory) {
       return [];

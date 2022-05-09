@@ -8,6 +8,7 @@ import CardDetailSectionHeader from './CardDetailSectionHeader';
 import FilterBuilder from '@lib/filters';
 import { useTabooSetId } from '@components/core/hooks';
 import useCardsFromQuery from '../useCardsFromQuery';
+import { SortType, SORT_BY_TYPE } from '@actions/types';
 
 interface Props {
   componentId?: string;
@@ -30,7 +31,7 @@ export function useBondedToCards(cards: Card[], tabooSetOverride?: number): [Car
   return useCardsFromQuery({ query: bondedToQuery, tabooSetOverride });
 }
 
-export function useBondedFromCards(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
+export function useBondedFromCards(cards: Card[], sort: SortType, tabooSetOverride?: number): [Card[], boolean] {
   const bondedFromQuery = useMemo(() => {
     if (!find(cards, card => !!card.bonded_from)) {
       return undefined;
@@ -39,13 +40,14 @@ export function useBondedFromCards(cards: Card[], tabooSetOverride?: number): [C
     const query = filterBuilder.bondedFilter('bonded_name', map(cards, card => card.real_name));
     return query;
   }, [cards]);
-  return useCardsFromQuery({ query: bondedFromQuery, tabooSetOverride });
+  const sortQuery = useMemo(() => sort ? Card.querySort(true, sort) : undefined, [sort]);
+  return useCardsFromQuery({ query: bondedFromQuery, tabooSetOverride, sort: sortQuery });
 }
 
 export default function BondedCardsComponent({ componentId, cards, width }: Props) {
   const tabooSetId = useTabooSetId();
   const [bondedToCards, bondedToCardsLoading] = useBondedToCards(cards, tabooSetId);
-  const [bondedFromCards, bondedFromCardsLoading] = useBondedFromCards(cards, tabooSetId);
+  const [bondedFromCards, bondedFromCardsLoading] = useBondedFromCards(cards, SORT_BY_TYPE, tabooSetId);
 
   if (bondedToCardsLoading && bondedFromCardsLoading) {
     return null;

@@ -86,9 +86,9 @@ function ImagePlaceholder({ card }: { card: Card }) {
 }
 
 function ImageContent({ card }: { card: Card }) {
-  const filename = (card.type_code === 'location' && card.double_sided) ?
-    card.backimagesrc :
-    card.imagesrc;
+  const uri = (card.type_code === 'location' && card.double_sided) ?
+    card.backImageUri() :
+    card.imageUri();
 
   const horizontal = card.type_code === 'act' ||
     card.type_code === 'investigator' ||
@@ -100,7 +100,7 @@ function ImageContent({ card }: { card: Card }) {
         <FastImage
           style={styles.verticalContainer}
           source={{
-            uri: `https://arkhamdb.com${filename}`,
+            uri,
           }}
           resizeMode="contain"
         />
@@ -114,7 +114,7 @@ function ImageContent({ card }: { card: Card }) {
         <FastImage
           style={[styles.image, imageStyle(card)]}
           source={{
-            uri: `https://arkhamdb.com${filename}`,
+            uri,
           }}
           resizeMode="contain"
         />

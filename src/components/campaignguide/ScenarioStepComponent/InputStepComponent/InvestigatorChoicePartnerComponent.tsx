@@ -35,6 +35,8 @@ export default function InvestigatorChoicePartnerComponent({ id, input, text, bu
           id: partner.code,
           text: partner.name,
           description: partner.description,
+          image: partner.img,
+          imageOffset: partner.img_offset,
           trauma: trauma,
           resolute: !!find(trauma.storyAssets || [], code => code === 'resolute'),
           card: find(cards, c => c.code === partner.code),
