@@ -4445,7 +4445,6 @@ msgstr ""
 msgid "Negative modifier"
 msgstr ""
 
-#, javascript-format
 msgid "${ textModifier }, draws another"
 msgstr ""
 
@@ -5338,13 +5337,6 @@ msgstr ""
 msgid "Take"
 msgstr ""
 
-#, javascript-format
-msgid "Tarot: ${ card.title } · Inverted"
-msgstr ""
-
-msgid "Tarot: ${ card.title }"
-msgstr ""
-
 msgid ""
 "If you are using the digital chaos bag in the app, be sure to enable the "
 "tarot option on the chaos bag screen."
@@ -5483,6 +5475,95 @@ msgid "Reject fate (redraw)"
 msgstr ""
 
 msgid "Deck Id"
+msgstr ""
+
+msgid "Symphony of Erich Zann"
+msgstr ""
+
+#, javascript-format
+msgid "${ card.title } (inverted)"
+msgstr ""
+
+msgid "Destiny Tarot Reading"
+msgstr ""
+
+msgid "The Tatterdemalion"
+msgstr ""
+
+msgid "Electric Nightmare"
+msgstr ""
+
+msgid "Mission Briefing"
+msgstr ""
+
+msgid "Lost Quantum"
+msgstr ""
+
+msgid "In the Shadow of Earth"
+msgstr ""
+
+msgid "Strange Moons"
+msgstr ""
+
+msgid "Introspection"
+msgstr ""
+
+msgid "The Machine in Yellow"
+msgstr ""
+
+msgid "Fragment of Carcosa"
+msgstr ""
+
+msgid "Starfall"
+msgstr ""
+
+msgid "Arkham in Wonderland"
+msgstr ""
+
+msgid "The Dodo"
+msgstr ""
+
+msgid "A Sea of Troubles"
+msgstr ""
+
+msgid "The Caterpillar"
+msgstr ""
+
+msgid "Tempest in a Teapot"
+msgstr ""
+
+msgid "The Duchess"
+msgstr ""
+
+msgid "Bleeding Hearts"
+msgstr ""
+
+msgid "Gryphon and Mock Turtle"
+msgstr ""
+
+msgid "Wild Snark Chase"
+msgstr ""
+
+msgid "Humpty Dumpty"
+msgstr ""
+
+msgid "Sibling Rivalry"
+msgstr ""
+
+msgid "The Lion and the Unicorn"
+msgstr ""
+
+msgid "Fool's Mate"
+msgstr ""
+
+msgid "The White Queen"
+msgstr ""
+
+msgid "Lucid Nightmare"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }}"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
