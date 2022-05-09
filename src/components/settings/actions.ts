@@ -22,7 +22,7 @@ import {
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 import { AppState } from '@reducers';
 
-export function setTabooSet(tabooId?: number): SetTabooSetAction {
+export function setTabooSet(tabooId: number): SetTabooSetAction {
   return {
     type: SET_TABOO_SET,
     tabooId,

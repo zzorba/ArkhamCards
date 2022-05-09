@@ -7,7 +7,7 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+            "text": "Thị trấn Arkham bị nuốt chửng bởi sự trả thù khủng khiếp của Umôrdhoth."
           },
           {
             "id": "ghoul_priest_alive",
@@ -15,7 +15,7 @@
           },
           {
             "id": "house_burned",
-            "text": "your house has burned to the ground."
+            "text": "nhà của bạn đã bị đốt cháy thành tro tàn."
           },
           {
             "id": "house_standing",
@@ -27,19 +27,19 @@
           },
           {
             "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+            "text": "các điều tra viên đã hy sinh Lita Chantler cho Umôrdhoth."
           },
           {
             "id": "past_midnight",
-            "text": "it is past midnight."
+            "text": "đã quá nửa đêm."
           },
           {
             "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
+            "text": "nghi thức triệu hồi Umôrdhoth bị phá vỡ."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
+            "text": "các điều tra viên đã đẩy lùi được Umôrdhoth."
           }
         ]
       },
@@ -72,11 +72,11 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "các điều tra viên đã xua đuổi Silas Bishop đi."
           },
           {
             "id": "bone_to_pick",
-            "text": "the O'Bannion gang has a bone to pick with the investigators."
+            "text": "băng đảng O'Bannion có chuyện muốn nói với các điều tra viên."
           },
           {
             "id": "brood_escaped",
@@ -92,11 +92,11 @@
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "the investigators destroyed the Necronomicon."
+            "text": "các điều tra viên phá hủy cuốn sách Necronomicon."
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "entered_the_gate",
@@ -104,55 +104,55 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "the Experiment was defeated."
+            "text": "vật Thí Nghiệm bị đánh bại."
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "the investigators failed to recover the Necronomicon."
+            "text": "các điều tra viên thất bại trong việc lấy lại cuốn sách Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "the investigators failed to save the students."
+            "text": "các điều tra viên thất bại trong việc cứu các sinh viên."
           },
           {
             "id": "francis_morgan_kidnapped",
-            "text": "Dr. Francis Morgan was kidnapped."
+            "text": "Tiến sĩ Francis Morgan bị bắt cóc."
           },
           {
             "id": "francis_morgan_rescued",
-            "text": "the investigators rescued Dr. Francis Morgan."
+            "text": "các điều tra viên cứu được tiến sĩ Francis Morgan."
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "Tiến sĩ Francis Morgan đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "henry_armitage_kidnapped",
-            "text": "Dr. Henry Armitage was kidnapped."
+            "text": "Tiến sĩ Henry Armitage bị bắt cóc."
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "the investigators rescued Dr. Henry Armitage."
+            "text": "điều tra viên giải cứu được tiến sĩ Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "Tiến sĩ Henry Armitage đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "investigators_delayed",
-            "text": "the investigators were delayed on their way to Dunwich."
+            "text": "các điều tra viên bị chậm trễ trên đường tới làng Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "các điều tra viên giúp Silas Bishop thoát khỏi nỗi thống khổ."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi has the investigators' back."
+            "text": "Naomi giúp đỡ các điều tra viên."
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "cuốn Necronomicon đã bị lấy cắp."
           },
           {
             "id": "no_brood_escaped",
@@ -160,23 +160,23 @@
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "các điều tra viên giúp Silas Bishop hồi phục."
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "nghi lễ được hoàn thành."
           },
           {
             "id": "students_rescued",
-            "text": "the students were rescued."
+            "text": "các học sinh được giải cứu."
           },
           {
             "id": "took_necronomicon",
-            "text": "the investigators took custody of the Necronomicon."
+            "text": "các điều tra viên tạm giữ cuốn sách Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
+            "text": "các điều tra viên bất tỉnh trong vài giờ."
           },
           {
             "id": "warned_townsfolk",
@@ -184,15 +184,15 @@
           },
           {
             "id": "warren_rice_kidnapped",
-            "text": "Professor Warren Rice was kidnapped."
+            "text": "Giáo sư Warren Rice bị bắt cóc."
           },
           {
             "id": "warren_rice_rescued",
-            "text": "the investigators rescued Professor Warren Rice."
+            "text": "các điều tra viên cứu được giáo sư Warren Rice."
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "Giáo sư Warren Rice đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -208,7 +208,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy."
           }
         ]
       },
@@ -1315,11 +1315,11 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "các điều tra viên đã xua đuổi Silas Bishop đi."
           },
           {
             "id": "bone_to_pick",
-            "text": "the O'Bannion gang has a bone to pick with the investigators."
+            "text": "băng đảng O'Bannion có chuyện muốn nói với các điều tra viên."
           },
           {
             "id": "brood_escaped",
@@ -1335,11 +1335,11 @@
           },
           {
             "id": "destroyed_necronomicon",
-            "text": "the investigators destroyed the Necronomicon."
+            "text": "các điều tra viên phá hủy cuốn sách Necronomicon."
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
+            "text": "Earl Sawyer đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "entered_the_gate",
@@ -1347,55 +1347,55 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "the Experiment was defeated."
+            "text": "vật Thí Nghiệm bị đánh bại."
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "the investigators failed to recover the Necronomicon."
+            "text": "các điều tra viên thất bại trong việc lấy lại cuốn sách Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "the investigators failed to save the students."
+            "text": "các điều tra viên thất bại trong việc cứu các sinh viên."
           },
           {
             "id": "francis_morgan_kidnapped",
-            "text": "Dr. Francis Morgan was kidnapped."
+            "text": "Tiến sĩ Francis Morgan bị bắt cóc."
           },
           {
             "id": "francis_morgan_rescued",
-            "text": "the investigators rescued Dr. Francis Morgan."
+            "text": "các điều tra viên cứu được tiến sĩ Francis Morgan."
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+            "text": "Tiến sĩ Francis Morgan đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "henry_armitage_kidnapped",
-            "text": "Dr. Henry Armitage was kidnapped."
+            "text": "Tiến sĩ Henry Armitage bị bắt cóc."
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "the investigators rescued Dr. Henry Armitage."
+            "text": "điều tra viên giải cứu được tiến sĩ Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "Tiến sĩ Henry Armitage đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "investigators_delayed",
-            "text": "the investigators were delayed on their way to Dunwich."
+            "text": "các điều tra viên bị chậm trễ trên đường tới làng Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "các điều tra viên giúp Silas Bishop thoát khỏi nỗi thống khổ."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi has the investigators' back."
+            "text": "Naomi giúp đỡ các điều tra viên."
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "cuốn Necronomicon đã bị lấy cắp."
           },
           {
             "id": "no_brood_escaped",
@@ -1403,23 +1403,23 @@
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "các điều tra viên giúp Silas Bishop hồi phục."
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "nghi lễ được hoàn thành."
           },
           {
             "id": "students_rescued",
-            "text": "the students were rescued."
+            "text": "các học sinh được giải cứu."
           },
           {
             "id": "took_necronomicon",
-            "text": "the investigators took custody of the Necronomicon."
+            "text": "các điều tra viên tạm giữ cuốn sách Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
+            "text": "các điều tra viên bất tỉnh trong vài giờ."
           },
           {
             "id": "warned_townsfolk",
@@ -1427,15 +1427,15 @@
           },
           {
             "id": "warren_rice_kidnapped",
-            "text": "Professor Warren Rice was kidnapped."
+            "text": "Giáo sư Warren Rice bị bắt cóc."
           },
           {
             "id": "warren_rice_rescued",
-            "text": "the investigators rescued Professor Warren Rice."
+            "text": "các điều tra viên cứu được giáo sư Warren Rice."
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
+            "text": "Giáo sư Warren Rice đã sống sót qua The Dunwich Legacy campaign."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
@@ -1451,7 +1451,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
+            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy."
           }
         ]
       },
@@ -1484,7 +1484,7 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+            "text": "Thị trấn Arkham bị nuốt chửng bởi sự trả thù khủng khiếp của Umôrdhoth."
           },
           {
             "id": "ghoul_priest_alive",
@@ -1492,7 +1492,7 @@
           },
           {
             "id": "house_burned",
-            "text": "your house has burned to the ground."
+            "text": "nhà của bạn đã bị đốt cháy thành tro tàn."
           },
           {
             "id": "house_standing",
@@ -1504,19 +1504,19 @@
           },
           {
             "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+            "text": "các điều tra viên đã hy sinh Lita Chantler cho Umôrdhoth."
           },
           {
             "id": "past_midnight",
-            "text": "it is past midnight."
+            "text": "đã quá nửa đêm."
           },
           {
             "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
+            "text": "nghi thức triệu hồi Umôrdhoth bị phá vỡ."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
+            "text": "các điều tra viên đã đẩy lùi được Umôrdhoth."
           }
         ]
       },
@@ -2719,15 +2719,15 @@
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Rougarou tiếp tục lảng vảng quanh vùng đầm lầy."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Rougarou bị tiêu diệt, và lời nguyền được gỡ bỏ."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Rougarou đã trốn thoát và bạn đã nhận phải lời nguyền."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",

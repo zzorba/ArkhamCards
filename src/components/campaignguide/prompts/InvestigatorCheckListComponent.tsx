@@ -72,7 +72,7 @@ export default function InvestigatorCheckListComponent({
     return (
       <ActionButton
         color="light"
-        leftIcon="plus-thin"
+        leftIcon="plus-button"
         onPress={showAddDeckDialog}
         title={t`Add new`}
         shrinkText

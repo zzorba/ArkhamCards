@@ -90,6 +90,8 @@ interface DialogOptions {
   alignment?: 'center' | 'bottom';
   avoidKeyboard?: boolean;
   customButtons?: React.ReactNode[];
+  maxHeightPercent?: number;
+  noPadding?: boolean;
 }
 
 export function useDialog({
@@ -102,6 +104,8 @@ export function useDialog({
   alignment,
   avoidKeyboard,
   customButtons,
+  maxHeightPercent,
+  noPadding,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -170,6 +174,8 @@ export function useDialog({
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
         forceVerticalButtons={!!customButtons}
+        maxHeightPercent={maxHeightPercent}
+        noPadding={noPadding}
       >
         { content }
       </NewDialog>
@@ -399,6 +405,7 @@ interface PickerItem<T> {
   type?: undefined;
   title: string;
   description?: string;
+  disabled?: boolean;
   value: T;
   icon?: string;
   iconNode?: React.ReactNode;
@@ -408,7 +415,7 @@ export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
   investigator?: Card;
-  description?: string;
+  description?: string | React.ReactNode;
   items: Item<T>[];
   selectedValue?: T;
   onValueChange: (value: T) => void;
@@ -429,14 +436,23 @@ export function usePickerDialog<T>({
       setVisibleRef.current(false);
     }
   }, [onValueChange, setVisibleRef]);
+  const descriptionSection = useMemo(() => {
+    if (!description) {
+      return null;
+    }
+    if (typeof description === 'string') {
+      return (
+        <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+          <Text style={typography.text}>{ description } </Text>
+        </View>
+      );
+    }
+    return <>{description}</>;
+  }, [description, typography]);
   const content = useMemo(() => {
     return (
       <View>
-        { !!description && (
-          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
-            <Text style={typography.text}>{ description } </Text>
-          </View>
-        )}
+        { descriptionSection }
         { map(items, (item, idx) => item.type === 'header' ? (
           <DeckBubbleHeader title={item.title} key={idx} />
         ) : (
@@ -447,6 +463,7 @@ export function usePickerDialog<T>({
             text={item.title}
             description={item.description}
             value={item.value}
+            disabled={item.disabled}
             rightNode={item.rightNode}
             onValueChange={onValuePress}
             // tslint:disable-next-line

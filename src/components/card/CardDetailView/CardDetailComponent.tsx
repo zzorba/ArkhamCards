@@ -20,6 +20,7 @@ interface Props {
   backCard?: Card;
   width: number;
   simple?: boolean;
+  noImage?: boolean;
   showSpoilers: boolean;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
@@ -114,7 +115,7 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
   );
 }
 
-export default function CardDetailComponent({ componentId, card, backCard, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple }: Props) {
+export default function CardDetailComponent({ componentId, card, backCard, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple, noImage }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
   const bondedCards = useMemo(() => [card], [card]);
@@ -141,14 +142,17 @@ export default function CardDetailComponent({ componentId, card, backCard, width
           backCard={backCard}
           width={width}
           simple={!!simple}
+          noImage={noImage}
         />
-        <BondedCardsComponent
-          componentId={componentId}
-          cards={bondedCards}
-          width={width}
-        />
+        { !simple && (
+          <BondedCardsComponent
+            componentId={componentId}
+            cards={bondedCards}
+            width={width}
+          />
+        ) }
       </View>
-      { card.type_code === 'investigator' && (
+      { card.type_code === 'investigator' && !simple && (
         <InvestigatorInfoComponent
           componentId={componentId}
           card={card}

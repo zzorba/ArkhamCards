@@ -104,6 +104,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     shroud,
     shroudEnabled,
     clues,
+    multiClass,
     cluesEnabled,
     cluesFixed,
     hauntedEnabled,
@@ -378,6 +379,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       <FactionChooser
         factions={allFactions}
         selection={factions}
+        multiClass={multiClass}
         onFilterChange={onFilterChange}
         componentId={componentId}
       />

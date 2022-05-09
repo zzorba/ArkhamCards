@@ -29,15 +29,15 @@ export type SortType =
 export interface Slots {
   [code: string]: number;
 }
-const INVESTIGATOR = 'investigator';
-const TOO_MANY_COPIES = 'too_many_copies';
-const INVALID_CARDS = 'invalid_cards';
-const TOO_FEW_CARDS = 'too_few_cards';
-const TOO_MANY_CARDS = 'too_many_cards';
-const DECK_OPTIONS_LIMIT = 'deck_options_limit';
+export const INVESTIGATOR_PROBLEM = 'investigator';
+export const TOO_MANY_COPIES = 'too_many_copies';
+export const INVALID_CARDS = 'invalid_cards';
+export const TOO_FEW_CARDS = 'too_few_cards';
+export const TOO_MANY_CARDS = 'too_many_cards';
+export const DECK_OPTIONS_LIMIT = 'deck_options_limit';
 
 export type DeckProblemType =
-  typeof INVESTIGATOR |
+  typeof INVESTIGATOR_PROBLEM |
   typeof TOO_MANY_COPIES |
   typeof INVALID_CARDS |
   typeof TOO_FEW_CARDS |
@@ -204,11 +204,12 @@ export interface SplitCards {
 export type CardSplitType = keyof SplitCards;
 
 export interface ParsedDeck {
-  id: DeckId;
+  id?: DeckId;
+  deck?: Deck;
+
   investigator: Card;
   investigatorFront: Card;
   investigatorBack: Card;
-  deck: Deck;
   slots: Slots;
   deckSize: number;
   normalCardCount: number;
@@ -493,6 +494,11 @@ export interface UploadedCampaignId {
 
 export type CampaignId = LocalCampaignId | UploadedCampaignId;
 
+export interface TarotReading {
+  cards: { [scenario: string]: string | undefined };
+  inverted: { [scenario: string]: boolean | undefined };
+}
+
 interface BaseCampaign {
   serverId?: number;
   name: string;
@@ -506,7 +512,7 @@ interface BaseCampaign {
   guided?: boolean;
   guideVersion?: number;
   adjustedInvestigatorData?: InvestigatorData;
-
+  tarotReading?: TarotReading | null;
   archived?: boolean;
 
   // All 'objects' might be optional
@@ -591,7 +597,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -763,6 +769,30 @@ export interface ClearDecksAction {
   type: typeof CLEAR_DECKS;
 }
 
+export interface DraftState {
+  size?: number;
+  current?: string[];
+}
+export const SET_CURRENT_DRAFT = 'SET_CURRENT_DRAFT';
+export interface SetCurrentDraftAction {
+  type: typeof SET_CURRENT_DRAFT;
+  id: DeckId;
+  current: string[];
+}
+
+export const CLEAR_CURRENT_DRAFT = 'CLEAR_CURRENT_DRAFT';
+export interface ClearCurrentDraftAction {
+  type: typeof CLEAR_CURRENT_DRAFT;
+  id: DeckId;
+}
+
+export const SET_CURRENT_DRAFT_SIZE = 'SET_CURRENT_DRAFT_SIZE';
+export interface SetCurrentDraftSizeAction {
+  type: typeof SET_CURRENT_DRAFT_SIZE;
+  id: DeckId;
+  size: number;
+}
+
 export interface EditDeckState {
   nameChange?: string;
   descriptionChange?: string;
@@ -853,6 +883,15 @@ export interface SetPackSpoilerAction {
   cycle_code?: string;
   value: boolean;
 }
+
+export const SET_PACK_DRAFT = 'SET_PACK_DRAFT';
+export interface SetPackDraftAction {
+  type: typeof SET_PACK_DRAFT;
+  code?: string;
+  cycle_code?: string;
+  value: boolean;
+}
+
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
@@ -1339,6 +1378,7 @@ export type PacksActions =
   PacksAvailableAction |
   SetInCollectionAction |
   SetPackSpoilerAction |
+  SetPackDraftAction |
   UpdatePromptDismissedAction;
 
 export type SignInActions =
@@ -1365,7 +1405,13 @@ export type DecksActions =
   ReduxMigrationAction |
   UploadDeckAction |
   RemoveUploadDeckAction |
-  SetUploadedDecksAction;
+  SetUploadedDecksAction |
+  SetCurrentDraftAction |
+  ClearCurrentDraftAction |
+  SetCurrentDraftSizeAction |
+  UpdateDeckEditAction |
+  SetPackDraftAction |
+  SetInCollectionAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |

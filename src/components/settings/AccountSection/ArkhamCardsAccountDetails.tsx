@@ -97,7 +97,7 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
         valueLabel={!loading ? (requestLabel || label) : undefined}
         valueLabelDescription={!loading && requestLabel ? label : undefined}
         onPress={profile?.handle ? editFriendsPressed : showDialog}
-        editIcon="plus-thin"
+        editIcon="plus-button"
         last
       />
       { dialog }

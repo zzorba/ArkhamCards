@@ -51,6 +51,7 @@ export default function(
   state = DEFAULT_DECK_EDITS_STATE,
   action: DeckEditsActions
 ): DeckEditsState {
+
   if (action.type === SYNC_DECK) {
     const deck_uploads = {
       ...(state.deck_uploads || {}),

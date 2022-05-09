@@ -284,6 +284,12 @@ export const getAllPacks = createSelector(
             name: t`Consternation on the Constellation`,
             position: 6,
           },
+          {
+            code: 'zez',
+            cycle_code: 'fan',
+            name: t`Symphony of Erich Zann`,
+            position: 7,
+          },
         ], (p): Pack => {
           return {
             id: p.code,
@@ -341,6 +347,17 @@ export const getPackSpoilers = createSelector(
 export const getPacksInCollection = createSelector(
   (state: AppState) => state.packs.in_collection,
   (in_collection) => in_collection || DEFAULT_OBJECT
+);
+
+export const getDraftPacks = createSelector(
+  (state: AppState) => state.packs.draft,
+  (state: AppState) => state.packs.in_collection,
+  (state: AppState) => state.settings.draftSeparatePacks,
+  (state: AppState) => state.settings.ignore_collection,
+  (draft, in_collection, draftSeparatePacks, ignore_collection): [{ [pack: string]: boolean }, boolean] => [
+    (!draft || !draftSeparatePacks ? in_collection : draft) || DEFAULT_OBJECT,
+    !draftSeparatePacks && !!ignore_collection,
+  ]
 );
 
 export const getAllDecks = createSelector(

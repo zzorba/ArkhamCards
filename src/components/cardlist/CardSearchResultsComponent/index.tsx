@@ -146,7 +146,7 @@ function useExpandModesButtons({
       ) }
       { !!hasFilters && (
         <ArkhamButton
-          icon="search"
+          icon="filter-clear"
           onPress={clearSearchFilters}
           title={t`Clear search filters`}
           useGestureHandler={Platform.OS === 'ios'}

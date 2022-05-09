@@ -21,7 +21,7 @@ export default function CardCountLine({ parsedDeck: { normalCardCount, totalCard
       { t`Card count` }
     </Text>
   );
-  const icon = <AppIcon name="card-outline" size={36} color={colors.M} />;
+  const icon = <AppIcon name="card-outline" size={32} color={colors.M} />;
   const description = (
     <View style={styles.row}>
       <Text style={[typography.large, space.marginRightXs]}>

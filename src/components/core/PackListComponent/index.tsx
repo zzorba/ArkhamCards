@@ -24,6 +24,8 @@ interface PackCycle extends SectionListData<Pack> {
 
 interface Props {
   componentId: string;
+  alwaysShowCoreSet?: boolean;
+  cyclesOnly?: boolean;
   coreSetName?: string;
   packs: Pack[];
   checkState?: { [pack_code: string]: boolean | undefined };
@@ -43,6 +45,7 @@ function keyExtractor(item: Pack) {
 function cycleName(position: string): string {
   switch (position) {
     case '1': return t`Core Set`;
+    case '1_cycle': return t`Campaigns`;
     case '2': return t`The Dunwich Legacy`;
     case '3': return t`The Path to Carcosa`;
     case '4': return t`The Forgotten Age`;
@@ -56,7 +59,6 @@ function cycleName(position: string): string {
     case '80': return t`Books`;
     case '90': return t`Parallel`;
     case '100': return t`Fan-Made Content`;
-
     default: return 'Unknown';
   }
 }
@@ -71,6 +73,7 @@ function renderSectionHeader({ section }: { section: SectionListData<Pack> }) {
 
 export default function PackListComponent({
   componentId,
+  alwaysShowCoreSet,
   coreSetName,
   packs,
   checkState,
@@ -81,6 +84,7 @@ export default function PackListComponent({
   baseQuery,
   compact,
   noFlatList,
+  cyclesOnly,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const renderPack = useCallback((pack: Pack) => {
@@ -89,20 +93,36 @@ export default function PackListComponent({
         pack.id !== p.id);
     }) : [];
     return (
-      <PackRow
-        key={pack.id}
-        componentId={componentId}
-        pack={pack}
-        nameOverride={pack.code === 'core' ? coreSetName : undefined}
-        cycle={cyclePacks}
-        setChecked={setChecked}
-        setCycleChecked={setCycleChecked}
-        checked={checkState && checkState[pack.code]}
-        baseQuery={baseQuery}
-        compact={compact}
-      />
+      <>
+        { alwaysShowCoreSet && pack.code === 'core' && (
+          <PackRow
+            key="always-core"
+            componentId={componentId}
+            pack={pack}
+            nameOverride={t`Core Set`}
+            description={t`A single core set is always included`}
+            cycle={cyclePacks}
+            baseQuery={baseQuery}
+            compact={compact}
+            checked
+          />
+        ) }
+        <PackRow
+          key={pack.id}
+          componentId={componentId}
+          pack={pack}
+          nameOverride={pack.code === 'core' ? coreSetName : undefined}
+          cycle={cyclePacks}
+          setChecked={setChecked}
+          setCycleChecked={setCycleChecked}
+          checked={checkState && checkState[pack.code]}
+          baseQuery={baseQuery}
+          compact={compact}
+          alwaysCycle={cyclesOnly}
+        />
+      </>
     );
-  }, [packs, checkState, componentId, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
+  }, [packs, checkState, componentId, cyclesOnly, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
     return renderPack(item);
@@ -126,10 +146,17 @@ export default function PackListComponent({
     );
   }
   const groups: PackCycle[] = map(
-    groupBy(filter(packs, pack => pack.code !== 'books'), pack => pack.cycle_position),
+    groupBy(
+      filter(packs, pack => pack.code !== 'books' && (
+        !cyclesOnly ||
+        pack.cycle_position < 2 ||
+        pack.cycle_position >= 50 ||
+        pack.position === 1
+      ) && (!cyclesOnly || pack.cycle_position < 70)),
+      pack => (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position),
     (group, key) => {
       return {
-        title: cycleName(`${key}`),
+        title: key === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(`${key}`),
         id: key,
         data: group,
       };

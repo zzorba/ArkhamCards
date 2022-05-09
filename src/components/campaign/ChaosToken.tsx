@@ -55,7 +55,7 @@ const GRADIENTS: { [token: string]: {
 function ChaosTokenPart({ name, size, color }: { name: string; size: number; color: string }) {
   return (
     <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}>
-      { name === 'plus-thin' ? <AppIcon name={name} size={size / 4} color={color} /> : <TokenIcon name={name} size={size} color={color} /> }
+      <TokenIcon name={name} size={size} color={color} />
     </View>
   );
 }

@@ -2,7 +2,7 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -27,6 +27,10 @@ import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where 
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
+import Clipboard from '@react-native-clipboard/clipboard';
+import Toast from '@components/Toast';
+import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -244,8 +248,16 @@ interface SyncCountAction {
 export interface Counters {
   [code: string]: number | undefined;
 }
-export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string, min?: number) => void, (code: string, value: number) => void, (values: Counters) => void] {
-  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction) => {
+
+type IncCounter = (code: string, max?: number) => void;
+type DecCounter = (code: string, min?: number) => void;
+type SetCounter = (code: string, value: number) => void;
+type ResetCounters = (values: Counters) => void;
+export function useCounters(initialValue: Counters): [Counters, IncCounter, DecCounter, SetCounter, ResetCounters] {
+  const [value, updateValue] = useReducer((
+    state: Counters,
+    action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction
+  ) => {
     switch (action.type) {
       case 'set':
         return {
@@ -636,6 +648,21 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
   return cards;
 }
 
+export function useCopyAction(value: string, confirmationText: string): () => void {
+  return useCallback(() => {
+    Clipboard.setString(value);
+    Navigation.showOverlay({
+      component: {
+        name: 'Toast',
+        passProps: {
+          message: confirmationText,
+        },
+        options: Toast.options,
+      },
+    });
+  }, [value, useConfirmSignupDialog]);
+}
+
 export function useSettingValue(setting: MiscSetting): boolean {
   return useSelector((state: AppState) => {
     switch (setting) {
@@ -650,6 +677,10 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'custom_content': return !!state.settings.customContent;
+      case 'card_grid': return !!state.settings.cardGrid;
+      case 'draft_grid': return !state.settings.draftList;
+      case 'draft_from_collection': return !state.settings.draftSeparatePacks;
+      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
     }
   });
 }
@@ -706,8 +737,8 @@ export function useRequiredCards(investigatorFront: Card | undefined, investigat
           ...(req.code ? [req.code] : []),
           ...(req.alternates || []),
         ]),
-        ...(specialCards[investigatorFront.code]?.front || []),
-        ...(specialCards[investigatorBack.code]?.back || []),
+        ...(specialCards[investigatorFront.code]?.front?.codes || []),
+        ...(specialCards[investigatorBack.code]?.back?.codes || []),
       ]),
       false,
     ];
@@ -728,12 +759,24 @@ export function useTabooSet(tabooSetId: number): TabooSet | undefined {
   return find(tabooSets, tabooSet => tabooSet.id === tabooSetId);
 }
 
-export function useWeaknessCards(tabooSetOverride?: number): CardsMap | undefined {
+export function useWeaknessCards(includeRandomBasicWeakness?: boolean, tabooSetOverride?: number): CardsMap | undefined {
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
-  return playerCards?.weaknessCards;
+  const weaknessCards = playerCards?.weaknessCards;
+  return useMemo(() => {
+    if (!weaknessCards) {
+      return undefined;
+    }
+    const result: CardsMap = {};
+    forEach(weaknessCards, (card, code) => {
+      if (card && (includeRandomBasicWeakness || code !== RANDOM_BASIC_WEAKNESS)) {
+        result[code] = card;
+      }
+    });
+    return result;
+  }, [playerCards, includeRandomBasicWeakness]);
 }
 
 export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {

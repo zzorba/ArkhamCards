@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { DeckProblem, DeckProblemType } from '@actions/types';
+import { DeckProblem, DeckProblemType, DECK_OPTIONS_LIMIT, INVALID_CARDS, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
 import StyleContext from '@styles/StyleContext';
 import MetadataLineComponent from './MetadataLineComponent';
 import WarningIcon from '@icons/WarningIcon';
@@ -18,12 +18,12 @@ export default function ProblemLine({ problem }: Props) {
   }
 
   const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
-    too_few_cards: t`Not enough cards.`,
-    too_many_cards: t`Too many cards.`,
-    too_many_copies: t`Too many copies of a card with the same name.`,
-    invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
-    deck_options_limit: t`Contains too many limited cards.`,
-    investigator: t`Doesn't comply with the Investigator requirements.`,
+    [TOO_FEW_CARDS]: t`Not enough cards.`,
+    [TOO_MANY_CARDS]: t`Too many cards.`,
+    [TOO_MANY_COPIES]: t`Too many copies of a card with the same name.`,
+    [INVALID_CARDS]: t`Contains forbidden cards (cards not permitted by Faction)`,
+    [DECK_OPTIONS_LIMIT]: t`Contains too many limited cards.`,
+    [INVESTIGATOR_PROBLEM]: t`Doesn't comply with the Investigator requirements.`,
   };
   const title = (
     <Text style={[typography.large, { color: colors.warnText }]}>
@@ -44,7 +44,7 @@ export default function ProblemLine({ problem }: Props) {
 
   return (
     <MetadataLineComponent
-      icon={<WarningIcon size={32} />}
+      icon={<WarningIcon size={30} />}
       title={title}
       description={description}
     />

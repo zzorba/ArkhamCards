@@ -30,7 +30,7 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
     if (!parsedDeck) {
       return [undefined, undefined];
     }
-    if (parsedDeck.deck.previousDeckId) {
+    if (parsedDeck.deck?.previousDeckId) {
       const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
       const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
@@ -161,14 +161,15 @@ function useParsedDeckHelper(
       initialized.current = true;
       setParsedDeck(
         parseDeck(
-          deck.deck,
+          deck.deck.investigator_code,
           deck.deck.meta || {},
           deck.deck.slots || {},
           deck.deck.ignoreDeckLimitSlots,
           deck.deck.sideSlots || {},
           cards,
           deck.previousDeck,
-          deck.deck.xp_adjustment || 0
+          deck.deck.xp_adjustment || 0,
+          deck.deck
         )
       );
     }
@@ -177,14 +178,15 @@ function useParsedDeckHelper(
     if (cards && visible && deckEdits && deck) {
       setParsedDeck(
         parseDeck(
-          deck.deck,
+          deck.deck.investigator_code,
           deckEdits.meta,
           deckEdits.slots,
           deckEdits.ignoreDeckLimitSlots,
           deckEdits.side,
           cards,
           deck.previousDeck,
-          deckEdits.xpAdjustment
+          deckEdits.xpAdjustment,
+          deck.deck
         )
       );
     }
@@ -331,7 +333,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
   campaignId?: CampaignId;
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
   assignedWeaknesses?: string[];
-}): () => void {
+}): (alwaysReplaceRandomBasicWeakness?: boolean) => void {
   const { colors } = useContext(StyleContext);
   const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id || 0);
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
@@ -355,7 +357,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
     });
   }, [componentId]);
 
-  const showWeaknessDialog = useCallback(() => {
+  const showWeaknessDialog = useCallback((alwaysReplaceRandomBasicWeakness?: boolean) => {
     if (!deckEditsRef.current) {
       return;
     }
@@ -366,6 +368,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
         passProps: {
           slots: deckEditsRef.current.slots,
           saveWeakness,
+          alwaysReplaceRandomBasicWeakness,
         },
         options: {
           statusBar: {
@@ -389,18 +392,18 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
       },
     });
   }, [componentId, investigator, colors, deckEditsRef, saveWeakness]);
-  const drawWeakness = useCallback(() => {
+  const drawWeakness = useCallback((alwaysReplaceRandomBasicWeakness?: boolean) => {
     showAlert(
       t`Draw Basic Weakness`,
       t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
       [
-        { text: t`Draw From Collection`, icon: 'draw', style: 'default', onPress: showWeaknessDialog },
+        { text: t`Draw From Collection`, icon: 'draw', style: 'default', onPress: () => showWeaknessDialog(alwaysReplaceRandomBasicWeakness) },
         { text: t`Edit Collection`, icon: 'edit', onPress: editCollection },
         { text: t`Cancel`, style: 'cancel' },
       ]);
   }, [showWeaknessDialog, editCollection, showAlert]);
 
-  const showCampaignWeaknessDialog = useCallback(() => {
+  const showCampaignWeaknessDialog = useCallback((alwaysReplaceRandomBasicWeakness?: boolean) => {
     if (!campaignId || !deckEditsRef.current) {
       return;
     }
@@ -413,6 +416,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
           deckSlots: deckEditsRef.current.slots,
           saveWeakness,
           unsavedAssignedCards: unsavedAssignedWeaknesses,
+          alwaysReplaceRandomBasicWeakness,
         },
         options: {
           statusBar: {

@@ -1,11 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -56,7 +51,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { fontScale } = useContext(StyleContext);
+  const { fontScale, width } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
@@ -216,7 +211,7 @@ MyCampaignsView.options = (): Options => {
         text: t`Campaigns`,
       },
       rightButtons: [{
-        icon: iconsMap.add,
+        icon: iconsMap['plus-button'],
         id: 'add',
         color: COLORS.M,
         accessibilityLabel: t`New Campaign`,

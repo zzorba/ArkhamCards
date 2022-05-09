@@ -18,11 +18,12 @@ import BasicButton from '@components/core/BasicButton';
 export interface DrawWeaknessProps {
   saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
   slots: Slots;
+  alwaysReplaceRandomBasicWeakness?: boolean;
 }
 
 type Props = NavigationProps & DrawWeaknessProps;
 
-export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: originalSlots }: Props) {
+export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: originalSlots, alwaysReplaceRandomBasicWeakness }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const [replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness] = useFlag(true);
   const [slots, updateSlots] = useSlots(originalSlots);
@@ -36,10 +37,10 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
     if (pendingNextCard) {
       setSaving(true);
       // We are in 'pending' mode to don't save it immediately.
-      saveWeakness(pendingNextCard, replaceRandomBasicWeakness);
+      saveWeakness(pendingNextCard, replaceRandomBasicWeakness || !!alwaysReplaceRandomBasicWeakness);
       const newSlots = { ...slots };
       newSlots[pendingNextCard] = (newSlots[pendingNextCard] || 0) + 1;
-      if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
+      if ((replaceRandomBasicWeakness || alwaysReplaceRandomBasicWeakness) && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
         newSlots[RANDOM_BASIC_WEAKNESS] = newSlots[RANDOM_BASIC_WEAKNESS] - 1;
         if (newSlots[RANDOM_BASIC_WEAKNESS] === 0) {
           delete newSlots[RANDOM_BASIC_WEAKNESS];
@@ -49,10 +50,10 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
       updateSlots({ type: 'sync', slots: newSlots });
       setSaving(false);
     }
-  }, [pendingNextCard, saveWeakness, replaceRandomBasicWeakness, setPendingNextCard, updateSlots, slots, setSaving]);
+  }, [pendingNextCard, saveWeakness, replaceRandomBasicWeakness, alwaysReplaceRandomBasicWeakness, setPendingNextCard, updateSlots, slots, setSaving]);
   const customHeader = useMemo(() => {
     const hasRandomBasicWeakness = slots[RANDOM_BASIC_WEAKNESS] > 0;
-    if (hasRandomBasicWeakness) {
+    if (hasRandomBasicWeakness && !alwaysReplaceRandomBasicWeakness) {
       return (
         <ToggleFilter
           style={{ ...styles.toggleRow, ...borderStyle }}
@@ -64,7 +65,7 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
       );
     }
     return null;
-  }, [borderStyle, slots, replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness]);
+  }, [borderStyle, slots, replaceRandomBasicWeakness, alwaysReplaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness]);
 
   const flippedHeader = useMemo(() => {
     if (!pendingNextCard) {

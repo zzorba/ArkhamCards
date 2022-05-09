@@ -55,11 +55,12 @@ import {
   TraumaAndCardData,
   LocalCampaignId,
   SealedToken,
+  TarotReading,
 } from '@actions/types';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
-import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
+import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignTarotReadingAction, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
@@ -359,6 +360,22 @@ export function updateCampaignWeaknessSet(
   };
 }
 
+
+export function updateTarotReading(
+  setTarotReading: SetCampaignTarotReadingAction,
+  id: CampaignId,
+  tarotReading: TarotReading | undefined,
+  now?: Date
+): ThunkAction<void, AppState, unknown, UpdateCampaignAction> {
+  return async(dispatch) => {
+    if (id.serverId !== undefined) {
+      await setTarotReading(id, tarotReading || undefined);
+    } else {
+      dispatch(updateCampaign(id, { tarotReading: tarotReading || null }, now));
+    }
+  };
+}
+
 export function updateCampaignChaosBag(
   setChaosBag: SetCampaignChaosBagAction,
   id: CampaignId,
@@ -523,6 +540,7 @@ export function updateChaosBagClearTokens(
         curseTokens: curse,
         sealedTokens: chaosBagResults.sealedTokens,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+        tarot: chaosBagResults.tarot,
       }));
     }
   };

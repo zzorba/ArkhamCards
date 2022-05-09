@@ -1,5 +1,5 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults } from '@actions/types';
-import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter } from 'lodash';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading } from '@actions/types';
+import { keys, find, findLast, uniq, map, concat, last, maxBy, sumBy, filter } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -137,6 +137,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
   linkedCampaignId: CampaignId | undefined;
+  tarotReading: TarotReading | undefined;
   guideVersion: number;
   deleted: boolean = false;
 
@@ -153,6 +154,7 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
     this.weaknessSet = campaign.weaknessSet || EMPTY_WEAKNESS_SET;
     this.campaignNotes = campaign.campaignNotes || EMPTY_CAMPAIGN_NOTES;
     this.scenarioResults = campaign.scenarioResults || EMPTY_SCENARIO_RESULTS;
+    this.tarotReading = campaign.tarotReading || undefined;
     this.linkedCampaignId = campaign.linkedCampaignUuid ? {
       campaignId: campaign.linkedCampaignUuid,
       serverId: campaign.serverId,

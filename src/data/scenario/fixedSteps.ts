@@ -12,11 +12,13 @@ import {
   Step,
   Scenario,
   ChoiceIcon,
+  GenericStep,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { getTarotCards } from '@app_constants';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -465,6 +467,32 @@ const interScenarioChangesStep: Step = {
   hidden: true,
 };
 
+export const CHECK_TAROT_READING = '$check_tarot_reading';
+function checkTarotReadingStep(scenarioGuide: ScenarioGuide, campaignState: CampaignStateHelper): GenericStep {
+  const scenarioId = scenarioGuide.scenarioId();
+  if (scenarioId) {
+    const tarotReading = campaignState.scenarioTarotReading(scenarioId);
+    if (tarotReading) {
+      const card = getTarotCards()[tarotReading.id];
+      if (card) {
+        return {
+          id: CHECK_TAROT_READING,
+          title: tarotReading.inverted ? t`Tarot: ${card.title} · Inverted` : t`Tarot: ${card.title}`,
+          bullet_type: 'default',
+          text: tarotReading.inverted ? card.inverted_text : card.text,
+          bullets: card.id === 'judgement' ? [
+            { text: t`If you are using the digital chaos bag in the app, be sure to enable the tarot option on the chaos bag screen.` },
+          ] : undefined,
+        };
+      }
+    }
+  }
+  return {
+    id: CHECK_TAROT_READING,
+    hidden: true,
+  };
+}
+
 export function getFixedStep(
   id: string,
   scenarioGuide: ScenarioGuide,
@@ -475,6 +503,8 @@ export function getFixedStep(
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
       return chooseResolutionStep(scenarioGuide.resolutions());
+    case CHECK_TAROT_READING:
+      return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
     case PROCEED_STEP_ID: {

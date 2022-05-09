@@ -263,7 +263,7 @@ export default class App {
             },
             rightButtonColor: COLORS.M,
             rightButtons: [{
-              icon: iconsMap.add,
+              icon: iconsMap['plus-button'],
               id: 'add',
               color: COLORS.M,
               accessibilityLabel: t`New Deck`,
@@ -282,7 +282,7 @@ export default class App {
             },
             rightButtonColor: COLORS.M,
             rightButtons: [{
-              icon: iconsMap.add,
+              icon: iconsMap['plus-button'],
               id: 'add',
               color: COLORS.M,
               accessibilityLabel: t`New Campaign`,

@@ -1012,8 +1012,8 @@ msgstr "N/A"
 msgid "All Investigators"
 msgstr "Wszyscy Badacze"
 
-msgid "Draw: "
-msgstr "Dobierz: "
+msgid "Draw"
+msgstr "Dobierz"
 
 msgid "Redraw"
 msgstr "Dobierz ponownie"
@@ -2125,9 +2125,6 @@ msgstr "Zanotuj w Dzienniku kampanii, że:"
 
 msgid "Enter a name for this deck."
 msgstr "Wprowadź nazwę dla tej talii."
-
-msgid "Use Starter Deck"
-msgstr "Użyj Talii początkowej"
 
 msgid "Create deck"
 msgstr "Stwórz talię"
@@ -5599,6 +5596,306 @@ msgid ""
 "When it is finished, you can try to load the deck again."
 msgstr ""
 
+msgid "Other investigator cards"
+msgstr ""
+
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgid "Generate deck"
+msgstr ""
+
+msgid "- Adjust your card collection in the app settings."
+msgstr ""
+
+msgid ""
+"- Remove the parallel investigator choice, which might require a larger "
+"card collection."
+msgstr ""
+
+msgid "- Remove the taboo list, which removes some card options."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Unable to build a random deck for this investigator:\n"
+"${ remedy }"
+msgstr ""
+
+msgid "Starter deck"
+msgstr ""
+
+msgid "Unable to generate deck"
+msgstr ""
+
+msgid "Suggested starter deck for this investigator from FFG."
+msgstr ""
+
+msgid "An empty deck."
+msgstr ""
+
+msgid "Sorry, the app cannot generate random decks for this investigator yet."
+msgstr ""
+
+msgid "A fully randomized deck."
+msgstr ""
+
+msgid "Special deck"
+msgstr ""
+
+msgid "Re-generate deck"
+msgstr ""
+
+msgid "Draft from card collection"
+msgstr ""
+
+msgid "Disable to choose which packs to draft from"
+msgstr ""
+
+msgid "Draft using your card collection"
+msgstr ""
+
+msgid "Draft Pool"
+msgstr ""
+
+msgid "Grid"
+msgstr ""
+
+msgid "Invalid deck"
+msgstr ""
+
+msgid ""
+"This deck is currently invalid in some way. Please address the issues "
+"before continuing the draft."
+msgstr ""
+
+msgid "Hand size:"
+msgstr ""
+
+msgid "Choose packs"
+msgstr ""
+
+msgid ""
+"This tool lets you build a deck progressively, choosing one card at a time "
+"from a limited set of cards."
+msgstr ""
+
+msgid ""
+"Each 'hand' of cards is taken at random from all possible cards that are "
+"allowed given the current investigator + deckbuilding option choices you "
+"have made."
+msgstr ""
+
+msgid ""
+"The drafting process will continue until your deck is full, but you can "
+"stop or change the settings at any time"
+msgstr ""
+
+msgid "Begin draft"
+msgstr ""
+
+msgid "Selection"
+msgstr ""
+
+msgid "Draft cards"
+msgstr ""
+
+msgid "Unsupported investigator"
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes or Joe Diamond."
+msgstr ""
+
+msgid "Please correct invalid deck issues"
+msgstr ""
+
+msgid ""
+"This deck currently contains one or more forbidden cards.\n"
+"\n"
+"Please address these outstanding deck issues before drafting cards."
+msgstr ""
+
+msgid "Deck is full"
+msgstr ""
+
+msgid ""
+"This deck is full.\n"
+"\n"
+"Remove some cards or create a new deck if you would like to draft.\n"
+"\n"
+"At the moment it is only possible to draft level 0 cards using the app."
+msgstr ""
+
+msgid "Draft Cards"
+msgstr ""
+
+msgid "Deck id copied!"
+msgstr ""
+
+msgid "Link to deck copied!"
+msgstr ""
+
+msgid "Build a deck randomly"
+msgstr ""
+
+msgid "A single core set is always included"
+msgstr ""
+
+msgid "Campaigns Cycles"
+msgstr ""
+
+msgid "Take"
+msgstr ""
+
+#, javascript-format
+msgid "Tarot: ${ card.title } · Inverted"
+msgstr ""
+
+msgid "Tarot: ${ card.title }"
+msgstr ""
+
+msgid ""
+"If you are using the digital chaos bag in the app, be sure to enable the "
+"tarot option on the chaos bag screen."
+msgstr ""
+
+msgid "Show deck ids on campaigns"
+msgstr ""
+
+msgid "Tarot Reading"
+msgstr ""
+
+msgid "Tarot Readings"
+msgstr ""
+
+msgid "Perform readings with the tarot deck"
+msgstr ""
+
+msgid "What is this?"
+msgstr ""
+
+msgid ""
+"Reveal the top card in a random orientation. It's effects are active "
+"throughout the scenario, and could be positive or negative, depending on "
+"its orientation. This reading is ideal if you want to add a splash of chaos "
+"to a scenario."
+msgstr ""
+
+msgid ""
+"Reveal the top two cards, one in the upright position and one in the "
+"reversed position. Their effects are active throughout the scenario. One "
+"card has a positive effect, the other has a negative effect. This reading "
+"is ideal if you want to add a touch of randomness or replay value to a "
+"scenario, but desire a more balanced effect."
+msgstr ""
+
+msgid ""
+"Reveal three cards in the upright position. Then, choose and reverse 2 of "
+"them. The effects of all 3 cards are active throughout the scenario. One "
+"card has a positive effect and the other two negative, but the "
+"investigators decide which is which. This reading is ideal if you want to "
+"add an element of strategic decision-making during your reading."
+msgstr ""
+
+msgid ""
+"Before starting a campaign, reveal one card for each scenarion in the "
+"campaign, ignoring side stories and counting scenarios with multiple parts "
+"as separate scenarios. Place each card in a line, in the upright position. "
+"Each of these cards applies to one scenario in the campaign. Then, choose "
+"and reverse half of the cards (rounded up). This reading is ideal if you "
+"want your readings to have long-term consequences and force you to plan "
+"ahead."
+msgstr ""
+
+msgid ""
+"Draw 3 random cards from the tarot deck and choose 1. Place the chosen card "
+"in front of you, in the upright position. Each other investigator ignores "
+"its effects."
+msgstr ""
+
+msgid ""
+"Draw a random card from the tarot deck and place the chosen card in front "
+"of you, in the reverse position. Each other investigator ignores its "
+"effects."
+msgstr ""
+
+msgid ""
+"There are endless possible readings that you could perform using the Tarot "
+"Deck. Feel free to create your own!"
+msgstr ""
+
+msgid "Choose two cards to reverse."
+msgstr ""
+
+msgid "Reverse half of the cards (rounded up)."
+msgstr ""
+
+msgid "Choose one card."
+msgstr ""
+
+msgid "Draw and reverse cards however you like!"
+msgstr ""
+
+msgid "Reveal"
+msgstr ""
+
+#, javascript-format
+msgid "${ card.title } - Inverted"
+msgstr ""
+
+msgid "Inverted"
+msgstr ""
+
+msgid "Upright"
+msgstr ""
+
+msgid "A single card in a random position."
+msgstr ""
+
+msgid "Two cards, one upright and one reversed."
+msgstr ""
+
+msgid "Reveal three upright cards, choose two to reverse."
+msgstr ""
+
+msgid "A reading for the full campaign."
+msgstr ""
+
+msgid "Choose from three upright cards."
+msgstr ""
+
+msgid "A single reversed card."
+msgstr ""
+
+msgid "Draw cards in random positions."
+msgstr ""
+
+msgid "Choose reading type"
+msgstr ""
+
+msgid "You must flip all cards to reveal your fate."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Too many card reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Not enough cards reversed (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
+msgstr ""
+
+msgid "Reject fate (redraw)"
+msgstr ""
+
+msgid "Deck Id"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -6167,6 +6464,61 @@ msgid ""
 "If you are a content creator who is interested in getting your (completed) "
 "campaign into the app, you can reach me at "
 "[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Drafting player decks"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"As a follow up to the earlier Ultimatum of Chaos release, the app now "
+"supports building a deck via a set of drafting rules. Choose what packs you "
+"want to pull from and how big each draft 'hand' should be, and build your "
+"deck one card at a time."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- You can find this feature on the deck edit screen in the menu."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- Only level cards / decks can be drafted."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Given their unique deck-building restrictions, the app does not yet "
+"support generating random decks for Lola Hayes or Joe Diamond. This is "
+"something that I will try to address in a future release."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Ultimatum of Chaos"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"The app now supports building random decks following the steps set out by "
+"the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new "
+"option lets you choose a 'special deck', which can be used to either create "
+"the FFG suggested starter deck or a fully randomly generated one."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- The app will use your defined collection to try to generate the deck."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Support the deckbuilding focused permanents included in the Edge of the "
+"Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Shows the deck before you actully save it, so you can re-roll if it "
+"produced something particularly unviable."
 msgstr ""
 
 msgctxt "trait"
@@ -7330,10 +7682,6 @@ msgctxt "Draw Cards"
 msgid "All"
 msgstr "Wszystkie"
 
-msgctxt "Taboo List"
-msgid "None"
-msgstr "Brak"
-
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
@@ -7411,6 +7759,10 @@ msgstr[0] "Scenariusz"
 msgstr[1] "Scenariuszw"
 msgstr[2] "Scenariuszy"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Brak"
+
 msgctxt "card-chooser"
 msgid "Choose additional"
 msgstr "Wybierz dodatkową"
@@ -7479,6 +7831,34 @@ msgstr[1] ""
 msgstr[2] ""
 "Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>${ "
 "sectionName }</b>."
+
+msgctxt "tarot-reading"
+msgid "Chaos"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Balance"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Choice"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Destiny"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Observed"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Damned"
+msgstr ""
+
+msgctxt "tarot-reading"
+msgid "Custom"
+msgstr ""
 
 msgctxt "trauma"
 msgid "None"

@@ -12,6 +12,7 @@ import {
   GuideAchievement,
   GuideInput,
   ScenarioResult,
+  TarotReading,
   Trauma,
   TraumaAndCardData,
   UploadedCampaignId,
@@ -46,6 +47,7 @@ import {
   Investigator_Data_Insert_Input,
   Campaign_Investigator_Insert_Input,
   useUploadChaosBagResultsMutation,
+  useUpdateTarotReadingMutation,
 } from '@generated/graphql/apollo-schema';
 import { useFunction, ErrorResponse } from './api';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -432,6 +434,32 @@ export function useSetCampaignWeaknessSet(): SetCampaignWeaknessSetAction {
       },
     });
   }, [updateWeaknessSet]);
+}
+
+
+export type SetCampaignTarotReadingAction = (campaignId: UploadedCampaignId, tarotReading: TarotReading | undefined) => Promise<void>;
+export function useSetCampaignTarotReading(): SetCampaignTarotReadingAction {
+  const [updateTarotReading] = useUpdateTarotReadingMutation();
+  return useCallback(async(campaignId: UploadedCampaignId, tarotReading: TarotReading | undefined) => {
+    await updateTarotReading({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        update_campaign_by_pk: {
+          __typename: 'campaign',
+          id: campaignId.serverId,
+          uuid: campaignId.campaignId,
+          tarot_reading: tarotReading,
+        },
+      },
+      variables: {
+        campaign_id: campaignId.serverId,
+        tarotReading,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
+      },
+    });
+  }, [updateTarotReading]);
 }
 
 

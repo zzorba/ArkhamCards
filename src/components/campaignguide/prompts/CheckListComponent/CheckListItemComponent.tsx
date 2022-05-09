@@ -11,6 +11,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { find } from 'lodash';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import TraumaSummary from '@components/campaign/TraumaSummary';
+import COLORS from '@styles/colors';
 
 interface Props {
   code: string;
@@ -71,6 +72,7 @@ function InvesigatorCheckListItemComponent({
         <ArkhamSwitch
           onValueChange={toggle}
           disabled={!editable}
+          disabledColor={COLORS.L15}
           value={selected}
           large
           color="light"

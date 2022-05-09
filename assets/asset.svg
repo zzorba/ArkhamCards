@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="96"
+   height="128"
+   viewBox="0 0 96 128"
+   fill="none"
+   version="1.1"
+   id="svg1872"
+   sodipodi:docname="asset.svg"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1874"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="4.875"
+     inkscape:cx="48.102564"
+     inkscape:cy="64"
+     inkscape:window-width="1296"
+     inkscape:window-height="846"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1850" />
+  <g
+     clip-path="url(#clip0_2266_28666)"
+     id="g1850">
+    <path
+       d="M0 4C0 1.79086 1.79086 0 4 0H92C94.2091 0 96 1.79086 96 4V124C96 126.209 94.2091 128 92 128H4C1.79086 128 0 126.209 0 124V4Z"
+       fill="#FFFBF2"
+       id="path1788" />
+    <path
+       opacity="0.3"
+       d="M96.0001 43.2C96.0001 25.6 80.5715 9.59998 48.0001 9.59998C18.8572 9.59998 1.71436 25.6 1.71436 43.2C1.71436 65.6 22.2858 76.8 48.0001 76.8C77.1429 76.8 96.0001 60.8 96.0001 43.2Z"
+       fill="#faction"
+       id="path1790" />
+    <path
+       d="M47.9998 112C15.4284 112 -5.14307 126.4 -5.14307 126.4V129.6H101.143V126.4C101.143 126.4 80.5712 112 47.9998 112Z"
+       fill="#faction"
+       id="path1792" />
+    <path
+       d="M47.9998 9.6C80.5712 9.6 95.9998 25.6 95.9998 43.2C95.9998 60.8 77.1427 76.8 47.9998 76.8C78.8569 76.8 99.4284 62.4 99.4284 62.4V0H-3.42878V62.4C-3.42878 62.4 20.5712 76.8 47.9998 76.8C22.2855 76.8 1.71408 65.6 1.71408 43.2C1.71408 25.6 18.8569 9.6 47.9998 9.6Z"
+       fill="#faction"
+       id="path1794" />
+    <path
+       d="M47.9998 76.8C77.1427 76.8 95.9998 60.8 95.9998 43.2C95.9998 25.6 80.5712 9.6 47.9998 9.6C18.8569 9.6 1.71408 25.6 1.71408 43.2C1.71408 65.6 22.2855 76.8 47.9998 76.8ZM47.9998 76.8C78.8569 76.8 99.4284 62.4 99.4284 62.4V0H-3.42878V62.4C-3.42878 62.4 20.5712 76.8 47.9998 76.8ZM47.9998 112C15.4284 112 -5.14307 126.4 -5.14307 126.4V129.6H101.143V126.4C101.143 126.4 80.5712 112 47.9998 112Z"
+       stroke="#border"
+       id="path1796" />
+    <path
+       d="M-3.42871 -1.59998H99.4284V11.2H-3.42871V-1.59998Z"
+       fill="#FFFBF2"
+       stroke="#border"
+       id="path1798" />
+    <circle
+       cx="16"
+       cy="16"
+       r="11.5"
+       fill="#FFFBF2"
+       stroke="#4F5A60"
+       id="circle1828" />
+    <ellipse
+       cx="16"
+       cy="13.75"
+       rx="10.5"
+       ry="9.75"
+       fill="#4F5A60"
+       id="ellipse1830" />
+  </g>
+  <defs
+     id="defs1870">
+    <filter
+       id="filter0_d_2266_28666"
+       x="72"
+       y="2"
+       width="24"
+       height="24"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood1852" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix1854" />
+      <feOffset
+         dy="2"
+         id="feOffset1856" />
+      <feGaussianBlur
+         stdDeviation="2"
+         id="feGaussianBlur1858" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix1860" />
+      <feBlend
+         mode="normal"
+         in2="BackgroundImageFix"
+         result="effect1_dropShadow_2266_28666"
+         id="feBlend1862" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="effect1_dropShadow_2266_28666"
+         result="shape"
+         id="feBlend1864" />
+    </filter>
+    <clipPath
+       id="clip0_2266_28666">
+      <path
+         d="M0 4C0 1.79086 1.79086 0 4 0H92C94.2091 0 96 1.79086 96 4V124C96 126.209 94.2091 128 92 128H4C1.79086 128 0 126.209 0 124V4Z"
+         fill="white"
+         id="path1867" />
+    </clipPath>
+  </defs>
+</svg>

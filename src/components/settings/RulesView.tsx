@@ -18,6 +18,7 @@ import { where } from '@data/sqlite/query';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { searchNormalize } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -25,7 +26,7 @@ interface Props {
 
 function RuleComponent({ componentId, rule, level }: { componentId: string; rule: Rule; level: number }) {
   const { listSeperator } = useContext(LanguageContext);
-  const onPress = useCallback(() =>{
+  const onPressRaw = useCallback(() => {
     Navigation.push<RuleViewProps>(componentId, {
       component: {
         name: 'Rule',
@@ -51,6 +52,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
       },
     });
   }, [componentId, rule]);
+  const onPress = usePressCallback(onPressRaw);
   return (
     <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>

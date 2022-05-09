@@ -27,9 +27,11 @@ interface Props {
   baseQuery?: Brackets;
   compact?: boolean;
   nameOverride?: string;
+  description?: string;
+  alwaysCycle?: boolean;
 }
 
-export default function PackRow({ componentId, pack, cycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
+export default function PackRow({ componentId, description, pack, cycle, alwaysCycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     Navigation.push<PackCardsProps>(componentId, {
@@ -55,8 +57,16 @@ export default function PackRow({ componentId, pack, cycle, setChecked, setCycle
 
   const onCheckPress = useCallback(() => {
     const value = !checked;
-    setChecked && setChecked(pack.code, value);
+    if (alwaysCycle && setCycleChecked) {
+      if (cycle.length) {
+        setCycleChecked(pack.code, value)
+      } else {
+        setChecked && setChecked(pack.code, value);
+      }
+      return;
+    }
 
+    setChecked && setChecked(pack.code, value);
     if (setCycleChecked &&
       pack.position === 1 &&
       pack.cycle_position < 50 &&
@@ -81,7 +91,7 @@ export default function PackRow({ componentId, pack, cycle, setChecked, setCycle
         ],
       );
     }
-  }, [pack, cycle, checked, setCycleChecked, setChecked]);
+  }, [pack, cycle, checked, alwaysCycle, setCycleChecked, setChecked]);
 
   const backgroundColor = colors.background;
   const iconSize = 24;
@@ -105,19 +115,31 @@ export default function PackRow({ componentId, pack, cycle, setChecked, setCycle
               color={colors.darkText}
             />
           </View>
-          <Text
-            style={[typography.large, { color: colors.darkText, fontSize, lineHeight, flex: 1 }]}
-            numberOfLines={2}
-            ellipsizeMode="tail"
-          >
-            { nameOverride || pack.name }
-          </Text>
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
+            <Text
+              style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
+              numberOfLines={2}
+              ellipsizeMode="tail"
+            >
+              { nameOverride || pack.name }
+            </Text>
+            { !!description && (
+              <Text
+                style={[typography.small, typography.italic, { color: colors.lightText, fontSize, lineHeight }]}
+                numberOfLines={2}
+                ellipsizeMode="tail"
+              >
+                { description }
+              </Text>
+            ) }
+          </View>
         </View>
       </TouchableOpacity>
-      { !!setChecked && (
+      { (!!setChecked || checked) && (
         <View style={[styles.checkbox, { height: rowHeight }]}>
           <ArkhamSwitch
             value={!!checked}
+            disabled={!setChecked}
             onValueChange={onCheckPress}
           />
         </View>

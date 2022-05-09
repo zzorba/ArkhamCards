@@ -4,7 +4,7 @@ import { CardsMap } from '../types/Card';
 import TabooSet from '../types/TabooSet';
 import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
-import { BASIC_WEAKNESS_QUERY } from './query';
+import { BASIC_WEAKNESS_QUERY_WITH_RBW } from './query';
 
 export interface PlayerCardState {
   playerCards: {
@@ -21,7 +21,7 @@ export default async function syncPlayerCards(
   try {
     const start = new Date();
     const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().getMany());
-    const weaknessCardsP = db.cardsQuery().then(qb => qb.where(BASIC_WEAKNESS_QUERY).getMany());
+    const weaknessCardsP = db.cardsQuery().then(qb => qb.where(BASIC_WEAKNESS_QUERY_WITH_RBW).getMany());
 
     const cards = await weaknessCardsP;
     VERBOSE && console.log(`***********\nFetched weakness cards in: ${(new Date()).getTime() - start.getTime()}\n**************`);

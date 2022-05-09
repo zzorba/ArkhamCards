@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Platform } from 'react-native';
 import { Navigation, NavigationComponentProps, NavigationFunctionComponent } from 'react-native-navigation';
 import useAppState from 'react-native-appstate-hook';
@@ -19,7 +19,10 @@ export default function BottomTabNameCorrector<P extends NavigationComponentProp
       });
     }, []);
 
-    useAppState({onForeground});
+    useAppState({ onForeground });
+    useEffect(() => {
+      onForeground();
+    }, [onForeground]);
 
     return (
       <Component { ...props } />

@@ -203,7 +203,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         )) }
       </>
     );
-  }, [deckEdits, requiredCards, requiredCardsLoading]);
+  }, [id, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
 
   const storyCards = useMemo(() => {
     if (!deckEdits) {

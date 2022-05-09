@@ -42,13 +42,16 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
   const [textContent, tabooContent] = useMemo(() => {
     if (!investigatorBack || !investigatorBack.back_text || !showBack) {
       return [
-        investigator.text ? (
-          <View style={[styles.gameTextBlock, styles.headerLeftMargin]} key="text">
-            <CardTextComponent
-              text={investigator.text}
-            />
-          </View>
-        ) : null,
+        <>
+          <InvestigatorStatLine investigator={investigator} />
+          { !!investigator.text && (
+            <View style={[styles.gameTextBlock, styles.headerLeftMargin]} key="text">
+              <CardTextComponent
+                text={investigator.text}
+              />
+            </View>
+          ) }
+        </>,
         <View style={styles.headerLeftMargin} key="taboo">
           <CardTabooTextBlock card={investigator} />
         </View>,
@@ -69,7 +72,6 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
         <View>
           <View style={styles.header}>
             <View style={styles.headerTextColumn}>
-              <InvestigatorStatLine investigator={investigator} />
               { textContent }
             </View>
             { !showBack && (

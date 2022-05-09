@@ -42,7 +42,7 @@ interface Props {
 }
 
 function deckXpString(parsedDeck: ParsedDeck) {
-  const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
+  const xp = (parsedDeck.deck?.xp || 0) + (parsedDeck.deck?.xp_adjustment || 0);
   if (xp > 0) {
     if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
       return t`${xp} available experience, ${parsedDeck.changes.spentXp} spent`;

@@ -18,7 +18,7 @@ export default function GenericStepComponent({ step }: Props) {
   }
   return (
     <>
-      <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
+      <SetupStepWrapper bulletType={step.title ? (step.bullet_type || 'none') : step.bullet_type}>
         { !!step.text && (
           <CampaignGuideTextComponent text={step.text} />
         ) }

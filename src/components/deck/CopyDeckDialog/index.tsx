@@ -151,7 +151,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
         <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
           { t`Version to copy` }
         </DialogComponent.Description>
-        { parsedBaseDeck ? (
+        { parsedBaseDeck?.id ? (
           <SelectDeckSwitch
             deckId={parsedBaseDeck.id}
             label={t`Base Version\n${parsedBaseDeck.experience} XP`}
@@ -159,7 +159,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
-        { parsedCurrentDeck ? (
+        { parsedCurrentDeck?.id && parsedCurrentDeck.deck ? (
           <SelectDeckSwitch
             deckId={parsedCurrentDeck.id}
             label={t`Current Version ${parsedCurrentDeck.deck.version}\n${parsedCurrentDeck.experience} XP`}
@@ -167,7 +167,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
             onValueChange={selectedDeckIdChanged}
           />
         ) : null }
-        { parsedLatestDeck ? (
+        { parsedLatestDeck?.id && parsedLatestDeck.deck ? (
           <SelectDeckSwitch
             deckId={parsedLatestDeck.id}
             label={t`Latest Version ${parsedLatestDeck.deck.version}\n${parsedLatestDeck.experience} XP`}

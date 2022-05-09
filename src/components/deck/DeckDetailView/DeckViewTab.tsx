@@ -1,8 +1,7 @@
-import React, { MutableRefObject, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { filter, find, flatMap, flatten, forEach, map, sum, sumBy, uniqBy } from 'lodash';
+import React, { MutableRefObject, ReactNode, useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { c, msgid, t } from 'ttag';
+import { useDispatch } from 'react-redux';
+import { t } from 'ttag';
 
 import {
   CampaignId,
@@ -13,260 +12,24 @@ import {
   DeckProblem,
   EditDeckState,
   ParsedDeck,
-  Slots,
-  SplitCards,
 } from '@actions/types';
 import COLORS from '@styles/colors';
-import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProgressComponent from '../DeckProgressComponent';
-import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { BODY_OF_A_YITHIAN, ENABLE_SIDE_DECK, RANDOM_BASIC_WEAKNESS, TypeCodeType } from '@app_constants';
-import DeckValidation from '@lib/DeckValidation';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useSettingValue } from '@components/core/hooks';
 import { setDeckTabooSet, updateDeckMeta } from '@components/deck/actions';
-import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
-import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
-import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import DeckMetadataComponent from './DeckMetadataComponent';
-import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
 import { useDeckXpStrings } from '../hooks';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
-import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
-import { getPacksInCollection } from '@reducers';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
-import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
-
-interface SectionCardId extends CardId {
-  mode: 'special' | 'side' | 'bonded' | undefined;
-  hasUpgrades: boolean;
-  index: number;
-}
-
-interface CardSection extends CardSectionHeaderData {
-  id: string;
-  cards: SectionCardId[];
-  first?: boolean;
-  last?: boolean;
-}
-
-interface DeckSection {
-  title: string;
-  onTitlePress?: () => void;
-  sections: CardSection[];
-  toggleCollapsed?: () => void;
-  collapsed?: boolean;
-}
-
-function hasUpgrades(
-  code: string,
-  cards: CardsMap,
-  cardsByName: { [name: string]: Card[] },
-  validation: DeckValidation,
-  inCollection: { [pack_code: string]: boolean },
-  ignoreCollection: boolean,
-): boolean {
-  const card = cards[code];
-  return !!(
-    card &&
-    card.has_upgrades &&
-    find(cardsByName[card.real_name.toLowerCase()] || [], upgradeCard => (
-      upgradeCard &&
-      upgradeCard.code !== code &&
-      (upgradeCard.xp || 0) > (card.xp || 0) &&
-      validation.canIncludeCard(upgradeCard, false) &&
-      (upgradeCard.pack_code === 'core' || ignoreCollection || inCollection[upgradeCard.pack_code])
-    )));
-}
-
-function sectionHeaderTitle(type: TypeCodeType | string, count: number): string {
-  switch (type) {
-    case 'asset': return c('header').ngettext(msgid`Asset`, `Assets`, count);
-    case 'event': return c('header').ngettext(msgid`Event`, `Events`, count);
-    case 'skill': return c('header').ngettext(msgid`Skill`, `Skills`, count);
-    case 'treachery': return c('header').ngettext(msgid`Treachery`, `Treacheries`, count);
-    case 'enemy': return c('header').ngettext(msgid`Enemy`, `Enemies`, count);
-    case 'location': return c('header').ngettext(msgid`Location`, `Locations`, count);
-    case 'story': return c('header').ngettext(msgid`Story`, `Stories`, count);
-    case 'act': return c('header').ngettext(msgid`Act`, `Acts`, count);
-    case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
-    case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
-    case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
-    default: return type;
-  }
-}
-
-interface ExtraSection {
-  title: string;
-  codes: CardId[];
-}
-function deckToSections(
-  title: string,
-  onTitlePress: undefined | (() => void),
-  index: number,
-  halfDeck: SplitCards,
-  cards: CardsMap,
-  cardsByName: { [name: string]: Card[] },
-  validation: DeckValidation,
-  mode: 'special' | 'side' | undefined,
-  inCollection: { [pack_code: string]: boolean },
-  ignoreCollection: boolean,
-  limitedSlots: boolean,
-  limitedSlotsOnly?: boolean,
-  extraSections?: ExtraSection[]
-): [DeckSection, number] {
-  const result: CardSection[] = [];
-  if (halfDeck.Assets) {
-    const assets = flatMap(halfDeck.Assets, subAssets => {
-      const data = filter(subAssets.data, c => limitedSlotsOnly ? c.limited : (!c.limited || !limitedSlots));
-      if (!data.length) {
-        return [];
-      }
-      return {
-        ...subAssets,
-        data,
-      };
-    });
-    const assetCount = sumBy(
-      assets,
-      subAssets => sum(subAssets.data.map(c => c.quantity))
-    );
-    if (assetCount > 0) {
-      const assets = sectionHeaderTitle('asset', assetCount);
-      result.push({
-        id: `assets${mode ? `-${mode}` : ''}`,
-        subTitle: `— ${assets} · ${assetCount} —`,
-        cards: [],
-      });
-    }
-    forEach(assets, (subAssets, idx) => {
-      result.push({
-        id: `asset${mode ? `-${mode}` : ''}-${idx}`,
-        title: subAssets.type,
-        cards: map(subAssets.data, c => {
-          return {
-            ...c,
-            index: index++,
-            mode,
-            hasUpgrades: hasUpgrades(
-              c.id,
-              cards,
-              cardsByName,
-              validation,
-              inCollection,
-              ignoreCollection
-            ),
-          };
-        }),
-      });
-    });
-  }
-  const splits: { cardType: string; cardSplitGroup?: CardId[] }[] = [
-    {
-      cardType: 'event',
-      cardSplitGroup: halfDeck.Event,
-    },
-    {
-      cardType: 'skill',
-      cardSplitGroup: halfDeck.Skill,
-    },
-    {
-      cardType: 'enemy',
-      cardSplitGroup: halfDeck.Enemy,
-    },
-    {
-      cardType: 'treachery',
-      cardSplitGroup: halfDeck.Treachery,
-    },
-  ];
-  forEach(extraSections, ({ title, codes }) => {
-    if (codes.length) {
-      splits.push({
-        cardType: title,
-        cardSplitGroup: codes,
-      });
-    }
-  });
-
-  forEach(splits, ({ cardSplitGroup, cardType }) => {
-    if (cardSplitGroup) {
-      const cardIds = filter(cardSplitGroup, c => !limitedSlots || c.limited);
-      if (!cardIds.length) {
-        return;
-      }
-      const count = sumBy(cardIds, c => c.quantity);
-      const localizedName = sectionHeaderTitle(cardType, count);
-      result.push({
-        id: `${cardType}-${mode ? `-${mode}` : ''}`,
-        subTitle: `— ${localizedName} · ${count} —`,
-        cards: map(cardIds, c => {
-          return {
-            ...c,
-            index: index++,
-            mode,
-            hasUpgrades: hasUpgrades(
-              c.id,
-              cards,
-              cardsByName,
-              validation,
-              inCollection,
-              ignoreCollection
-            ),
-          };
-        }),
-      });
-    }
-  });
-  if (result.length) {
-    result[0].first = true;
-    result[result.length - 1].last = true;
-  }
-  return [
-    { title, onTitlePress, sections: result },
-    index,
-  ];
-}
-
-
-function bondedSections(
-  uniqBondedCards: Card[],
-  count: number,
-  index: number,
-): [DeckSection | undefined, number] {
-  if (count === 0) {
-    return [undefined, index];
-  }
-  const sections: CardSection[] = [{
-    id: 'bonded',
-    cards: map(uniqBondedCards, c => {
-      return {
-        id: c.code,
-        quantity: c.quantity || 0,
-        index: index++,
-        mode: 'bonded',
-        bonded: true,
-        hasUpgrades: false,
-        limited: false,
-        invalid: false,
-      };
-    }),
-    last: true,
-  }];
-  return [{
-    title: t`Bonded Cards (${count})`,
-    sections,
-  }, index];
-}
+import useParsedDeckComponent from '../useParsedDeckComponent';
 
 interface Props {
   componentId: string;
@@ -290,11 +53,12 @@ interface Props {
   visible: boolean;
   editable: boolean;
   buttons?: ReactNode;
-  showDrawWeakness: () => void;
+  showDrawWeakness: (replaceRandomBasicWeakness?: boolean) => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
+  showDraftCards?: () => void;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
   singleCardView: boolean;
@@ -309,17 +73,6 @@ interface Props {
   deckEdits?: EditDeckState;
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
   mode: 'view' | 'edit' | 'upgrade';
-}
-
-function getCount(item: SectionCardId, ignoreDeckLimitSlots: Slots | undefined) {
-  if (item.mode === 'special') {
-    if ((ignoreDeckLimitSlots?.[item.id] || 0) > 0) {
-      return ignoreDeckLimitSlots?.[item.id] || 0;
-    }
-  } else if (item.mode === 'side' || item.mode === 'bonded') {
-    return item.quantity;
-  }
-  return item.quantity - (ignoreDeckLimitSlots?.[item.id] || 0);
 }
 
 export default function DeckViewTab(props: Props) {
@@ -338,6 +91,7 @@ export default function DeckViewTab(props: Props) {
     requiredCards,
     showEditCards,
     showEditSpecial,
+    showDraftCards,
     showEditSide,
     cardsByName,
     bondedCardsByName,
@@ -358,278 +112,30 @@ export default function DeckViewTab(props: Props) {
     mode,
   } = props;
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
-  const inCollection = useSelector(getPacksInCollection);
-  const ignore_collection = useSettingValue('ignore_collection');
-  const [limitedSlots, toggleLimitedSlots] = useFlag(false);
+  const { backgroundStyle, shadow, typography } = useContext(StyleContext);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
-  const [data, setData] = useState<DeckSection[]>([]);
-
-  const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
-    const bondedCards: Card[] = [];
-    forEach(parsedDeck.slots, (count, code) => {
-      const card = cards[code];
-      if (count > 0 && card) {
-        const possibleBondedCards = bondedCardsByName[card.real_name];
-        if (possibleBondedCards && possibleBondedCards.length) {
-          forEach(possibleBondedCards, bonded => {
-            bondedCards.push(bonded);
-          });
-        }
-      }
-    });
-    if (!bondedCards.length) {
-      return [[], 0];
-    }
-    const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
-    const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
-    return [uniqueBondedCards, bondedCardsCount];
-  }, [parsedDeck.slots, cards, bondedCardsByName]);
-  const limitSlotCount = find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0;
-  useEffect(() => {
-    if (!investigatorBack || !visible) {
-      return;
-    }
-    const normalCards = parsedDeck.normalCards;
-    const specialCards = parsedDeck.specialCards;
-    const sideCards = parsedDeck.sideCards;
-    const slots = parsedDeck.slots;
-    const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
-    const [deckSection, deckIndex] = deckToSections(
-      t`Deck Cards`,
-      editable ? showEditCards : undefined,
-      0,
-      normalCards,
-      cards,
-      cardsByName,
-      validation,
-      undefined,
-      inCollection,
-      ignore_collection,
-      false
-    );
-    const [specialSection, specialIndex] = deckToSections(
-      t`Special Cards`,
-      editable ? showEditSpecial : undefined,
-      deckIndex,
-      specialCards,
-      cards,
-      cardsByName,
-      validation,
-      'special',
-      inCollection,
-      ignore_collection,
-      false,
-      undefined,
-      requiredCards && [{
-        title: t`Other investigator cards`,
-        codes: requiredCards,
-      }]
-    );
-    const newData: DeckSection[] = [deckSection, specialSection];
-    let currentIndex = specialIndex;
-    const [bonded, bondedIndex] = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
-    if (bonded) {
-      newData.push(bonded);
-      currentIndex = bondedIndex;
-    }
-    if (limitSlotCount > 0) {
-      let index = currentIndex;
-      const limitedCards: SectionCardId[] = map(filter(flatten([
-        ...flatMap(normalCards.Assets || [], cards => cards.data),
-        normalCards.Event || [],
-        normalCards.Skill || [],
-        normalCards.Treachery || [],
-        normalCards.Enemy || [],
-        ...flatMap(specialCards.Assets || [], cards => cards.data),
-      ]), card => card.limited), card => {
-        return {
-          ...card,
-          index: index++,
-          mode: undefined,
-          hasUpgrades: hasUpgrades(
-            card.id,
-            cards,
-            cardsByName,
-            validation,
-            inCollection,
-            ignore_collection
-          ),
-        };
-      });
-      const count = sumBy(limitedCards, card => slots[card.id] || 0);
-      if (count > 0) {
-        newData.push({
-          title: t`Limited Slots`,
-          toggleCollapsed: toggleLimitedSlots,
-          collapsed: !limitedSlots,
-          sections: limitedSlots ? [
-            {
-              id: 'splash',
-              title: t`${count} of ${limitSlotCount}`,
-              cards: limitedCards,
-              last: true,
-            },
-          ] : [],
-        });
-        if (limitedSlots) {
-          currentIndex = index;
-        }
-      }
-    }
-    if (ENABLE_SIDE_DECK) {
-      const [sideSection, sideIndex] = deckToSections(
-        t`Side Deck`,
-        editable ? showEditSide : undefined,
-        currentIndex,
-        sideCards,
-        cards,
-        cardsByName,
-        validation,
-        'side',
-        inCollection,
-        ignore_collection,
-        false
-      );
-      if (editable || sideSection.sections.length) {
-        newData.push(sideSection);
-      }
-      currentIndex = sideIndex;
-    }
-    setData(newData);
-  }, [requiredCards, investigatorBack, limitSlotCount, ignore_collection, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, parsedDeck.sideCards, deckEdits?.meta, cards,
-    showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
-  const faction = parsedDeck.investigator.factionCode();
-  const showSwipeCard = useCallback((id: string, card: Card) => {
-    if (singleCardView) {
-      showCard(
-        componentId,
-        card.code,
-        card,
-        colors,
-        true,
-        tabooSetId
-      );
-      return;
-    }
-    const index = parseInt(id, 10);
-    const visibleCards: Card[] = [];
-    const controls: ('deck' | 'side' | 'special' | 'bonded')[] = [];
-    forEach(data, deckSection => {
-      forEach(deckSection.sections, section => {
-        forEach(section.cards, item => {
-          const card = cards[item.id];
-          if (card) {
-            visibleCards.push(card);
-            controls.push(item.mode || 'deck');
-          }
-        });
-      });
-    });
-    showCardSwipe(
-      componentId,
-      map(visibleCards, card => card.code),
-      controls,
-      index,
-      colors,
-      visibleCards,
-      false,
-      tabooSetId,
-      parsedDeck.id,
-      investigatorFront,
-      editable
-    );
-  }, [componentId, data, editable, colors, investigatorFront, tabooSetId, parsedDeck.id, singleCardView, cards]);
-
-  const renderSectionHeader = useCallback((section: CardSection) => {
-    if (section.superTitle) {
-      return (
-        <DeckSectionHeader
-          title={section.superTitle}
-          onPress={section.onPress}
-          faction={faction}
-        />
-      );
-    }
-    if (section.title) {
-      return (
-        <DeckSlotHeader title={section.title} first={section.first} />
-      );
-    }
-    if (section.subTitle) {
-      return (
-        <DeckBubbleHeader title={section.subTitle} />
-      );
-    }
-    return null;
-  }, [faction]);
 
   const showDeckUpgrades = useMemo(() => {
     return !!(deck.previousDeckId && !deck.nextDeckId);
   }, [deck.previousDeckId, deck.nextDeckId]);
 
-  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
-    if (card.code === RANDOM_BASIC_WEAKNESS && editable) {
-      return {
-        type: 'shuffle',
-        onShufflePress: showDrawWeakness,
-      };
-    }
-    if (mode === 'view' || item.mode === 'bonded') {
-      return count !== undefined ? {
-        type: 'count',
-        count,
-      } : undefined;
-    }
-
-    const upgradeEnabled = editable && showDeckUpgrades && item.hasUpgrades;
-    return {
-      type: 'upgrade',
-      deckId: parsedDeck.id,
-      side: item.mode === 'side',
-      limit: card.collectionDeckLimit(inCollection, ignore_collection),
-      onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-    };
-  }, [mode, parsedDeck.id, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, showDeckUpgrades, inCollection]);
-
-  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
-    const card = cards[item.id];
-    if (!card) {
-      return null;
-    }
-    const count = getCount(item, deckEditsRef.current?.ignoreDeckLimitSlots);
-    return (
-      <CardSearchResult
-        key={item.index}
-        card={card}
-        id={`${item.index}`}
-        invalid={item.invalid}
-        onPressId={showSwipeCard}
-        control={controlForCard(item, card, count)}
-        faded={count === 0}
-        noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
-        noSidePadding
-      />
-    );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
-
   const dispatch = useDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
-    dispatch(setDeckTabooSet(parsedDeck.id, tabooSetId || 0));
-  }, [dispatch, parsedDeck.id]);
+    dispatch(setDeckTabooSet(deckId, tabooSetId || 0));
+  }, [dispatch, deckId]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     if (deckEditsRef.current) {
-      dispatch(updateDeckMeta(parsedDeck.id, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
+      dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [{ key, value }]));
     }
-  }, [dispatch, parsedDeck.id, deck.investigator_code, deckEditsRef]);
+  }, [dispatch, deckId, deck.investigator_code, deckEditsRef]);
   const setParallel = useCallback((front: string, back: string) => {
     if (deckEditsRef.current) {
-      dispatch(updateDeckMeta(parsedDeck.id, deck.investigator_code, deckEditsRef.current, [
+      dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [
         { key: 'alternate_front', value: front },
         { key: 'alternate_back', value: back },
       ]));
     }
-  }, [dispatch, deckEditsRef, parsedDeck.id, deck.investigator_code]);
+  }, [dispatch, deckEditsRef, deckId, deck.investigator_code]);
   const [xpLabel, xpDetailLabel] = useDeckXpStrings(parsedDeck);
 
   const renderXpButton = useCallback((last: boolean) => {
@@ -693,7 +199,27 @@ export default function DeckViewTab(props: Props) {
       />
     );
   }, [componentId, parsedDeck.slots, cards, investigatorFront, investigatorBack, tabooSetId]);
+  const [parsedDeckComponent, bondedCardCount] = useParsedDeckComponent({
+    componentId,
+    parsedDeck,
+    visible,
+    cards,
+    meta: deckEdits?.meta,
+    tabooSetId,
+    mode,
 
+    editable,
+    showEditCards,
+    showEditSpecial,
+    showEditSide,
+    showDraftCards,
+    showDrawWeakness,
+    showCardUpgradeDialog: showDeckUpgrades ? showCardUpgradeDialog : undefined,
+    deckEditsRef,
+    requiredCards,
+    cardsByName,
+    bondedCardsByName,
+  });
   const header = useMemo(() => {
     return (
       <View style={styles.headerWrapper}>
@@ -705,7 +231,7 @@ export default function DeckViewTab(props: Props) {
             { deckEdits?.mode === 'view' && (
               <DeckMetadataComponent
                 parsedDeck={parsedDeck}
-                bondedCardCount={bondedCardsCount}
+                bondedCardCount={bondedCardCount}
                 problem={problem}
               />
             ) }
@@ -715,7 +241,7 @@ export default function DeckViewTab(props: Props) {
         </View>
       </View>
     );
-  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardsCount, problem, deckEdits]);
+  }, [investigatorBlock, investigatorOptions, buttons, parsedDeck, bondedCardCount, problem, deckEdits]);
   if (!deckEdits) {
     return null;
   }
@@ -739,34 +265,7 @@ export default function DeckViewTab(props: Props) {
       ) }
       { header }
       <View style={space.marginSideS}>
-        { (!data || !data.length) ? <ArkhamLoadingSpinner autoPlay loop /> : map(data, deckSection => {
-          const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
-          return (
-            <View key={deckSection.title} style={space.marginBottomS}>
-              <DeckSectionBlock
-                faction={faction}
-                title={deckSection.title}
-                onTitlePress={deckSection.onTitlePress}
-                collapsed={deckSection.collapsed}
-                toggleCollapsed={deckSection.toggleCollapsed}
-                collapsedText={deckSection.collapsed ? t`Show splash cards` : t`Hide splash cards`}
-                footerButton={deckSection.sections.length === 0 && deckSection.onTitlePress ? (
-                  <RoundedFooterButton onPress={deckSection.onTitlePress} title={t`Add cards`} icon="deck" />
-                ) : undefined}
-              >
-                { flatMap(deckSection.sections, section => (
-                  <View key={section.id}>
-                    { renderSectionHeader(section) }
-                    { map(section.cards, (item, index) => renderCard(item, index, section, isLoading)) }
-                  </View>
-                )) }
-                { isLoading && (
-                  <LoadingCardSearchResult noBorder />
-                ) }
-              </DeckSectionBlock>
-            </View>
-          );
-        }) }
+        { parsedDeckComponent }
         <DeckProgressComponent
           componentId={componentId}
           cards={cards}
@@ -779,7 +278,7 @@ export default function DeckViewTab(props: Props) {
           singleCardView={singleCardView}
         />
 
-        { !!campaignId && !parsedDeck.deck.nextDeckId && (
+        { !!campaignId && !parsedDeck.deck?.nextDeckId && (
           <DeckOverlapComponentForCampaign
             campaignId={campaignId}
             componentId={componentId}

@@ -259,7 +259,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
       button={(nonDeckButton && selectedCards === undefined) ? (
         <ActionButton
           color="light"
-          leftIcon="plus-thin"
+          leftIcon="plus-button"
           title={c('card-chooser').t`Choose additional`}
           onPress={showOtherCardSelector}
           shrinkText

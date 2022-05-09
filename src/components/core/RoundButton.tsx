@@ -13,9 +13,10 @@ interface Props {
   noShadow?: boolean;
   accessibilityLabel: string;
   useGestureHandler?: boolean;
+  wide?: boolean;
 }
 
-export default function RoundButton({ onPress, accessibilityLabel, children, disabled, size = 32, margin = 0, noShadow, useGestureHandler }: Props) {
+export default function RoundButton({ onPress, accessibilityLabel, children, disabled, size = 32, margin = 0, noShadow, useGestureHandler, wide }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <Ripple accessibilityLabel={accessibilityLabel} style={[
@@ -23,7 +24,7 @@ export default function RoundButton({ onPress, accessibilityLabel, children, dis
       styles.button,
       {
         backgroundColor: colors.L20,
-        width: size,
+        width: size * (wide ? 2 : 1),
         height: size,
         borderRadius: size / 2,
         margin,

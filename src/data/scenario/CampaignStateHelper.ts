@@ -15,6 +15,7 @@ import {
   SYSTEM_BASED_GUIDE_INPUT_TYPES,
   SYSTEM_BASED_GUIDE_INPUT_IDS,
   DelayedDeckEdits,
+  TarotReading,
 } from '@actions/types';
 import { ScenarioId, StepId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
@@ -47,12 +48,14 @@ export default class CampaignStateHelper {
   state: CampaignGuideStateT;
   investigators: CardsMap;
   actions: CampaignGuideActions;
+  tarotReading: TarotReading | undefined;
 
   linkedState?: CampaignGuideStateT;
   guideVersion: number;
 
   constructor(
     state: CampaignGuideStateT,
+    tarotReading: TarotReading | undefined,
     investigators: CardsMap,
     actions: CampaignGuideActions,
     guideVersion: number,
@@ -60,6 +63,7 @@ export default class CampaignStateHelper {
   ) {
     this.guideVersion = guideVersion;
     this.state = state;
+    this.tarotReading = tarotReading;
     this.investigators = investigators;
     this.actions = actions;
     this.linkedState = linkedState;
@@ -67,6 +71,17 @@ export default class CampaignStateHelper {
 
   lastUpdated(): Date {
     return this.state.lastUpdated() || new Date();
+  }
+
+  scenarioTarotReading(scenarioId: string): { id: string; inverted: boolean } | undefined {
+    const card = this.tarotReading?.cards[scenarioId];
+    if (!card) {
+      return undefined;
+    }
+    return {
+      id: card,
+      inverted: !!this.tarotReading?.inverted[card],
+    };
   }
 
   showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => Promise<void>) {

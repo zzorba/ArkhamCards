@@ -6,12 +6,15 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import TextWithIcons from '../TextWithIcons';
 
 interface Props<T> {
   iconName?: string;
   iconNode?: ReactNode;
   rightNode?: ReactNode;
   text: string;
+  disabled?: boolean;
   description?: string;
   value: T;
   onValueChange: (value: T) => void;
@@ -19,7 +22,8 @@ interface Props<T> {
   last: boolean;
   indicator?: 'check' | 'radio'
 }
-export default function ItemPickerLine<T>({ iconName, iconNode, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
+const ARKHAM_ICONS = new Set(['weakness', 'wild']);
+export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');
@@ -30,18 +34,21 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
       return iconNode;
     }
     if (iconName) {
+      if (ARKHAM_ICONS.has(iconName)) {
+        return <ArkhamIcon name={iconName} size={32} color={colors.M} />;
+      }
       return <AppIcon name={iconName} size={32} color={colors.M} />;
     }
     return null;
   }, [iconNode, iconName, colors]);
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
       <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
         <View style={styles.contentRow}>
           <View style={styles.leadRow}>
             { !!icon && (
               <View style={[styles.icon, space.marginRightS]}>
-                { icon }
+                { !disabled && icon }
               </View>
             ) }
             { description ? (
@@ -49,8 +56,8 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
                 <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
                   { text }
                 </Text>
-                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
-                  { description }
+                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={3} ellipsizeMode="clip">
+                  <TextWithIcons size={16} color={colors.lightText} text={description} />
                 </Text>
               </View>
             ) : (
@@ -61,7 +68,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, text, descriptio
           </View>
           { !!rightNode && rightNode }
           { indicator === 'radio' ? (
-            <View style={[styles.circle, { borderColor: colors.L10 }]}>
+            <View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }]}>
               { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
             </View>
           ) : (

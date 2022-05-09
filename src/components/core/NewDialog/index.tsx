@@ -25,6 +25,8 @@ interface Props {
   alignment?: 'center' | 'bottom',
   avoidKeyboard?: boolean;
   forceVerticalButtons?: boolean;
+  maxHeightPercent?: number;
+  noPadding?: boolean;
 }
 function NewDialog(props: Props) {
   const {
@@ -38,6 +40,8 @@ function NewDialog(props: Props) {
     alignment = 'center',
     avoidKeyboard,
     forceVerticalButtons,
+    maxHeightPercent = 0.5,
+    noPadding,
   } = props;
   const { lang } = useContext(LanguageContext);
   const { backgroundStyle, colors, shadow, typography, width, height } = useContext(StyleContext);
@@ -86,14 +90,14 @@ function NewDialog(props: Props) {
             { dismissButton }
           </View>
         ) }
-        <View style={[styles.body, backgroundStyle]}>
+        <View style={[styles.body, noPadding ? undefined : space.paddingSideS, backgroundStyle]}>
           <ScrollView
             overScrollMode="never"
             keyboardShouldPersistTaps="always"
             bounces={false}
             showsVerticalScrollIndicator
-            style={{ maxHeight: height * 0.5 }}
-            contentContainerStyle={[space.paddingTopS, space.paddingBottomS]}
+            style={{ maxHeight: height * maxHeightPercent }}
+            contentContainerStyle={noPadding ? undefined : [space.paddingTopS, space.paddingBottomS]}
           >
             { children }
           </ScrollView>
@@ -155,8 +159,6 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   body: {
-    paddingLeft: s,
-    paddingRight: s,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     flexDirection: 'column',

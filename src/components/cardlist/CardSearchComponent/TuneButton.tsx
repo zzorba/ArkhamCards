@@ -28,7 +28,7 @@ function TuneButton({ parentComponentId, filterId, lightButton, baseQuery, modal
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={styles.touchable}>
-          <AppIcon name="filter" size={22} color={lightButton ? 'white' : colors.M} />
+          <AppIcon name="filter" size={32} color={lightButton ? 'white' : colors.M} />
           { hasFilters && <View style={styles.chiclet} /> }
         </View>
       </TouchableOpacity>

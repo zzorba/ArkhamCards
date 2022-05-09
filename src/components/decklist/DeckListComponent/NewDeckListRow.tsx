@@ -222,7 +222,7 @@ export default function NewDeckListRow({
           footer={(
             <View style={[{ backgroundColor: colors.L10 }, styles.footer]}>
               <View style={space.marginRightS}>
-                <ArkhamButtonIcon icon="deck" color="dark" />
+                <ArkhamButtonIcon icon="date" color="dark" />
               </View>
               <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
                 { dateStr || ''}

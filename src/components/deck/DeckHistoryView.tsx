@@ -34,7 +34,7 @@ interface HistoryDeckItemType {
 
 
 function itemToKey({ deck }: HistoryDeckItemType): string {
-  return deck.id.local ? deck.id.uuid : `${deck.id.id}`;
+  return deck.id?.local ? deck.id.uuid : `${deck.id?.id}`;
 }
 
 export default function DeckHistoryView({
@@ -55,7 +55,7 @@ export default function DeckHistoryView({
       const currentDeck = deck.id.uuid === id.uuid;
       const currentXpAdjustment = currentDeck ? deckEdits?.xpAdjustment : undefined;
       const parsedDeck = parseDeck(
-        deck.deck,
+        deck.deck.investigator_code,
         (currentDeck && deckEdits?.meta) || (deck.deck.meta || {}),
         (currentDeck && deckEdits?.slots) || deck.deck.slots || {},
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.deck.ignoreDeckLimitSlots,
@@ -63,6 +63,7 @@ export default function DeckHistoryView({
         cards,
         deck.previousDeck,
         currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.deck.xp_adjustment || 0),
+        deck.deck
       );
       if (parsedDeck) {
         return [{ id: deck.id, deck: parsedDeck, versionNumber: 0 }];
@@ -83,7 +84,7 @@ export default function DeckHistoryView({
     if (!deck.changes) {
       return t`Original Deck`;
     }
-    if (deck.id.uuid === id.uuid) {
+    if (!deck.id || deck.id.uuid === id.uuid) {
       if (deck.changes) {
         return t`Latest Deck: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
       }
@@ -98,7 +99,7 @@ export default function DeckHistoryView({
 
   const onDeckPress = useCallback((deckId: DeckId, parsedDeck: ParsedDeck) => {
     const options = getDeckOptions(colors, {
-      title: parsedDeck.deck.name,
+      title: parsedDeck.deck?.name || '',
     }, parsedDeck.investigator);
     Navigation.push<DeckDetailProps>(componentId, {
       component: {
@@ -113,7 +114,7 @@ export default function DeckHistoryView({
   }, [componentId, campaign, colors]);
 
   const renderItem = useCallback(({ item: { id, deck, versionNumber, first } }: ListRenderItemInfo<HistoryDeckItemType>) => {
-    if (!cards) {
+    if (!cards || !deck.id || !deck.deck) {
       return null;
     }
     return (

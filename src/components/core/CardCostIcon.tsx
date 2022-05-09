@@ -41,22 +41,7 @@ function CardCostIcon({ card, inverted, linked }: Props) {
     if (card.type_code === 'skill') {
       return '';
     }
-    if (card.code === '03016') {
-      return '0';
-    }
-    if (card.code === '02010' ||
-      card.code === '03238' ||
-      card.cost === -2
-    ) {
-      return 'X';
-    }
-    if (card.permanent || card.double_sided || linked || card.linked_card) {
-      return '-';
-    }
-    if (card.cost === null) {
-      return '-';
-    }
-    return `${card.cost}`;
+    return card.realCost(linked);
   }, [card, linked]);
 
 

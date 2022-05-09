@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { t } from 'ttag';
@@ -6,6 +6,9 @@ import { t } from 'ttag';
 import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
 import space from '@styles/space';
+import Card from '@data/types/Card';
+import AppIcon from '@icons/AppIcon';
+import { usePressCallback } from '@components/core/hooks';
 
 interface Props {
   onPress: () => void;
@@ -20,6 +23,25 @@ export default function ShuffleButton({ onPress }: Props) {
           <MaterialCommunityIcons
             name="shuffle-variant"
             size={20}
+            color={colors.M}
+          />
+        </View>
+      </RoundButton>
+    </View>
+  );
+}
+
+export function DraftButton({ card, onPress, wide }: { card: Card; onPress: (card: Card) => void; wide?: boolean }) {
+  const { colors } = useContext(StyleContext);
+  const handleOnPress = useCallback(() => onPress(card), [onPress, card]);
+  const debouncedOnPress = usePressCallback(handleOnPress, 500);
+  return (
+    <View style={[styles.countWrapper, space.paddingLeftXs, space.paddingRightS]}>
+      <RoundButton wide={wide} onPress={debouncedOnPress || handleOnPress} accessibilityLabel={t`Take`}>
+        <View style={styles.icon}>
+          <AppIcon
+            name="plus-button"
+            size={24}
             color={colors.M}
           />
         </View>

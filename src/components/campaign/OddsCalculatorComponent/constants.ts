@@ -51,13 +51,17 @@ function basicElderSignValue(card: Card): SingleChaosTokenValue {
         token: 'elder_sign',
         type: 'condition',
         condition: {
-          prompt: t`Wendy's Amulet in play`,
           default_value: {
             modifier: 0,
           },
-          modified_value: {
-            modifier: 'auto_succeed',
-          },
+          options: [
+            {
+              prompt: t`Wendy's Amulet in play`,
+              modified_value: {
+                modifier: 'auto_succeed',
+              },
+            },
+          ],
         },
       };
     // Jenny Barnes
@@ -102,13 +106,17 @@ function basicElderSignValue(card: Card): SingleChaosTokenValue {
         token: 'elder_sign',
         type: 'condition',
         condition: {
-          prompt: t`Spend two resources to automatically succeed`,
           default_value: {
             modifier: 0,
           },
-          modified_value: {
-            modifier: 'auto_succeed',
-          },
+          options: [
+            {
+              prompt: t`Spend two resources to automatically succeed`,
+              modified_value: {
+                modifier: 'auto_succeed',
+              },
+            },
+          ],
         },
       };
     // Norman Withers

@@ -70,7 +70,7 @@ export default function UpgradeDecksList({
     }
     if (!originalDeckUuids.has(getDeckId(deck).uuid)) {
       const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
-      if (!parsedDeck) {
+      if (!parsedDeck?.deck) {
         return null;
       }
       return (

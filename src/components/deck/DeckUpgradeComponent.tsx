@@ -94,7 +94,7 @@ function DeckUpgradeComponent({
     <View style={styles.container}>
       { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
       { !hideXp && (
-        <View style={[styles.xpBlock, { backgroundColor: colors.upgrade }]}>
+        <View style={styles.xpBlock}>
           <CardSectionHeader
             investigator={investigator}
             section={{ superTitle: t`Experience points` }}
@@ -105,6 +105,7 @@ function DeckUpgradeComponent({
             </Text>
             <PlusMinusButtons
               count={xp}
+              dialogStyle
               onIncrement={incXp}
               onDecrement={decXp}
             />

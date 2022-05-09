@@ -20,11 +20,11 @@ import Card from '@data/types/Card';
 import BasicButton from '@components/core/BasicButton';
 import ChooserButton from '@components/core/ChooserButton';
 import ToggleFilter from '@components/core/ToggleFilter';
-import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useWeaknessCards } from '@components/core/hooks';
+import CardImage from '@components/card/CardImage';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
@@ -39,30 +39,6 @@ interface Props {
   customHeader?: ReactNode;
   customFlippedHeader?: ReactNode;
   saving?: boolean;
-}
-
-function CardImage({ card, width }: { card: Card, width: number }) {
-  const uri = card.imageUri();
-  if (uri) {
-    return (
-      <FastImage
-        style={styles.verticalCardImage}
-        source={{
-          uri,
-        }}
-        resizeMode="contain"
-      />
-    );
-  }
-  return (
-    <View style={styles.singleCardWrapper}>
-      <CardDetailComponent
-        card={card}
-        width={width}
-        showSpoilers
-      />
-    </View>
-  );
 }
 
 export default function WeaknessDrawComponent({ componentId, weaknessSet, updateDrawnCard, playerCount, campaignMode, customHeader, customFlippedHeader, saving }: Props) {

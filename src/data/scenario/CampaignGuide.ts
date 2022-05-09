@@ -107,6 +107,10 @@ export default class CampaignGuide {
     });
   }
 
+  tarotScenarios(): string[] | undefined {
+    return this.campaign.campaign.tarot;
+  }
+
   scenarioFaq(scenario: string): Question[] {
     const scenarioFaq = find(this.errata.faq, faq => faq.scenario_code === scenario);
     return scenarioFaq ? scenarioFaq.questions : [];

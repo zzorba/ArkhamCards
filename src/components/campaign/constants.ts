@@ -322,8 +322,42 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Fatal Mirage`, code: 'fatal_mirage_2', pack_code: 'eoec' },
       { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
     ];
-    case CROWN_OF_EGIL:
+    case DARK_MATTER:
+      return [
+        { name: t`Prologue`, code: 'dm_prologue', pack_code: 'zdm', interlude: true },
+        { name: t`The Tatterdemalion`, code: 'the_tatterdemalion', pack_code: 'zdm' },
+        { name: t`Electric Nightmare`, code: 'electric_nightmare', pack_code: 'zdm' },
+        { name: t`Mission Briefing`, code: 'mission_briefing', pack_code: 'zdm', interlude: true },
+        { name: t`Lost Quantum`, code: 'lost_quantum', pack_code: 'zdm' },
+        { name: t`In the Shadow of Earth`, code: 'in_the_shadow_of_earth', pack_code: 'zdm' },
+        { name: t`Strange Moons`, code: 'strange_moons', pack_code: 'zdm' },
+        { name: t`Introspection`, code: 'introspection', pack_code: 'zdm', interlude: true },
+        { name: t`The Machine in Yellow`, code: 'the_machine_in_yellow', pack_code: 'zdm' },
+        { name: t`Fragment of Carcosa`, code: 'fragment_of_carcosa', pack_code: 'zdm' },
+        { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
+        { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
+      ];
     case ALICE_IN_WONDERLAND:
+      return [
+        { name: t`Prologue`, code: 'aw_prologue', pack_code: 'zaw', interlude: true },
+        { name: t`Arkham in Wonderland`, code: 'arkham_in_wonderland', pack_code: 'zaw' },
+        { name: t`The Dodo`, code: 'the_dodo', pack_code: 'zaw', interlude: true },
+        { name: t`A Sea of Troubles`, code: 'a_sea_of_troubles', pack_code: 'zaw' },
+        { name: t`The Caterpillar`, code: 'the_caterpillar', pack_code: 'zaw', interlude: true },
+        { name: t`Tempest in a Teapot`, code: 'tempest_in_a_teapot', pack_code: 'zaw' },
+        { name: t`The Duchess`, code: 'the_duchess', pack_code: 'zaw', interlude: true },
+        { name: t`Bleeding Hearts`, code: 'bleeding_hearts', pack_code: 'zaw' },
+        { name: t`Gryphon and Mock Turtle`, code: 'gryphon_and_mock_turtle', pack_code: 'zaw', interlude: true },
+        { name: t`Wild Snark Chase`, code: 'wild_snark_chase', pack_code: 'zaw' },
+        { name: t`Humpty Dumpty`, code: 'humpty_dumpty', pack_code: 'zaw', interlude: true },
+        { name: t`Sibling Rivalry`, code: 'sibling_rivalry', pack_code: 'zaw' },
+        { name: t`The Lion and the Unicorn`, code: 'the_lion_and_the_unicorn', pack_code: 'zaw', interlude: true },
+        { name: t`Fool's Mate`, code: 'fools_mate', pack_code: 'zaw' },
+        { name: t`The White Queen`, code: 'the_white_queen', pack_code: 'zaw', interlude: true },
+        { name: t`Lucid Nightmare`, code: 'Lucid Nightmare', pack_code: 'zaw' },
+        { name: t`Epilogue`, code: 'aw_epilogue', pack_code: 'zaw', interlude: true },
+      ];
+    case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
     case DARK_MATTER:
     case TDE:
@@ -691,143 +725,6 @@ export function scenarioRewards(encounterCode: string) {
     ];
   }
   return result;
-}
-
-export function getTarotCards() {
-  return [
-    {
-      id: 'the_fool',
-      title: t`The Fool · 0`,
-      text: t`Each investigator not defeated during this game earns +2 experience during its resolution.`,
-      inverted_text: t`Each investigator defeated during this game earns -2 experience during its resolution.`,
-    },
-    {
-      id: 'the_magician',
-      title: t`The Magician · I`,
-      text: t`Each investigator begins the game with 3 addititonal resources`,
-      inverted_text: t`Each investigator begins the game with 3 fewer resources, and cannot gain resources during their first turn.`,
-    },
-    {
-      id: 'the_high_priestess',
-      title: t`The High Priestess · II`,
-      text: t`During the first [intellect] test each investigator performs each round, they get +1 [intellect].`,
-      inverted_text: t`During the first [intellect] test each investigator performs each round, they get -1 [intellect].`,
-    },
-    {
-      id: 'the_empress',
-      title: t`The Empress · III`,
-      text: t`During the first [agility] test each investigator performs each round, they get +1 [agility].`,
-      inverted_text: t`During the first [agility] test each investigator performs each round, they get -1 [agility].`,
-    },
-    {
-      id: 'the_emperor',
-      title: t`The Emperor · IV`,
-      text: t`During the first [combat] test each investigator performs each round, they get +1 [combat].`,
-      inverted_text: t`During the first [combat] test each investigator performs each round, they get -1 [combat].`,
-    },
-    {
-      id: 'the_hierophant',
-      title: t`The Hierophant · V`,
-      text: t`During the first [willpower] test each investigator performs each round, they get +1 [willpower].`,
-      inverted_text: t`During the first [willpower] test each investigator performs each round, they get -1 [willpower].`,
-    },
-    {
-      id: 'the_lovers',
-      title: t`The Lovers · VI`,
-      text: t`When the game begins, each investigator searches their deck for an Ally asset, adds it to their hand, and shuffles their deck.`,
-      inverted_text: t`When the game begins, each investigator searches their deck for an Ally asset, removes it from the game, and shuffles their deck.`,
-    },
-    {
-      id: 'the_chariot',
-      title: t`The Chariot · VII`,
-      text: t`Each investigator begins the game with 2 additional cards in their opening hand.`,
-      inverted_text: t`Each investigator begins the game with 2 fewer cards in their opening hand, and cannot draw cards during their first turn.`,
-    },
-    {
-      id: 'strength',
-      title: t`Strength · VIII`,
-      text: t`When the game begins, each investigator may play an asset from their hand at -2 cost.`,
-      inverted_text: t`During the first round of the game, each investigator cannot play assets.`,
-    },
-    {
-      id: 'the_hermit',
-      title: t`The Hermit · IX`,
-      text: t`Increase each investigator's maximum hand size by 3.`,
-      inverted_text: t`Decrease each investigator's maximum hand size by 3.`,
-    },
-    {
-      id: 'wheel_of_fortune',
-      title: t`Wheel of Fortune · X`,
-      text: t`Once each act, when an investigator reveals an [auto_fail] token, thte investigator may cancel it and treat it as a 0 token instead.`,
-      inverted_text: t`Once each agenda, the first time any investigator reveals an [elder_sign] token, cancel it and treat it as a -5 token instead.`,
-    },
-    {
-      id: 'justice',
-      title: t`Justice · XI`,
-      text: t`Cancel the first doom that would be placed on the final agenda of the game.`,
-      inverted_text: t`The final agenda of the game enters play with 1 doom on it.`,
-    },
-    {
-      id: 'the_hanged_man',
-      title: t`The Hanged Man · XII`,
-      text: t`During setup, each investigator may take up to 2 additional mulligans.`,
-      inverted_text: t`Each investigator cannot mulligan or replace weaknesses in their opening hand (resolve their revelation abilities when the game begins).`,
-    },
-    {
-      id: 'death',
-      title: t`Death · XIII`,
-      text: t`Each investigator gets +1 health.`,
-      inverted_text: t`Each investigator gets -1 health.`,
-    },
-    {
-      id: 'temperance',
-      title: t`Temperance · XIV`,
-      text: t`Each investigator gets +1 sanity.`,
-      inverted_text: t`Each investigator gets -1 sanity.`,
-    },
-    {
-      id: 'the_devil',
-      title: t`The Devil · XV`,
-      text: t`Each investigator has 1 additional slot of a type chosen by that investigattor when the game begins.`,
-      inverted_text: t`Each investigator has 3 fewer slots, each of a different type, chosen by that investigator when the game begins.`,
-    },
-    {
-      id: 'the_tower',
-      title: t`The Tower · XVI`,
-      text: t`Each investigator chooses 1 basic weakness in their deck and removes it from the game (return them after the game ends).`,
-      inverted_text: t`Add 1 random basic weakness to each investigator's deck. Remove them after the game ends.`,
-    },
-    {
-      id: 'the_star',
-      title: t`The Star · XVII`,
-      text: t`After an investigator reveals an [elder_sign] token during a skill test, they may heal 1 damage or 1 horror.`,
-      inverted_text: t`After an investigator reveals an [auto_fail] token during a skill test, they must either take 1 damage or 1 horror.`,
-    },
-    {
-      id: 'the_moon',
-      title: t`The Moon · XVIII`,
-      text: t`The first time each investigator's deck would run out of cards, they may shuffle the bottom 10 cards of their discard pile back into their deck.`,
-      inverted_text: t`When the game begins, each investigator discards the top 5 cards of their deck. Shuffle each discarded weakness into its owner's deck.`,
-    },
-    {
-      id: 'the_sun',
-      title: t`The Sun · XIX`,
-      text: t`During each investigator's first turn, they may take 2 additional actions.`,
-      inverted_text: t`During each investigator's first turn, they have 2 fewer actions to take.`,
-    },
-    {
-      id: 'judgement',
-      title: t`Judgement · XX`,
-      text: t`When the game begins, replace a [skull] token in the chaos bag with a 0 token. Swap them back after the game ends.`,
-      inverted_text: t`When the game begins, replace the highest non-negative token in the chaos bag with a [skull] token. Swap them back after the game ends.`,
-    },
-    {
-      id: 'the_world',
-      title: t`The World · XXI`,
-      text: t`Each investigator not defeated during this game may remove 1 trauma of their choice during its resolution.`,
-      inverted_text: t`Each investigator defeated during this game suffers 1 trauma of their choice during its resolution.`,
-    },
-  ];
 }
 
 export function getChaosBag(

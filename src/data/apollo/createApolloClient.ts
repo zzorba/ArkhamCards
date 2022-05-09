@@ -41,6 +41,11 @@ const typePolicies: TypedTypePolicies = {
           return incoming || existing || '';
         },
       },
+      tarot_reading: {
+        read(existing) {
+          return existing || null;
+        },
+      },
       cycleCode: {
         read(existing) {
           return existing || '';

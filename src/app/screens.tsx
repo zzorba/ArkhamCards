@@ -13,6 +13,9 @@ import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
+import ListToggleButton from '@components/deck/ListToggleButton';
+import Toast from '@components/Toast';
+import TarotOverlay from '@components/core/TarotOverlay';
 
 interface ProviderProps<S> {
   store: S;
@@ -28,6 +31,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.Checklist': return require('@components/deck/DeckChecklistView').default;
     case 'Deck.DrawSimulator': return require('@components/deck/DrawSimulatorView').default;
     case 'Deck.Description': return require('@components/deck/DeckDescriptionView').default;
+    case 'Deck.DraftCards': return require('@components/deck/DeckDraftView').default;
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;
@@ -51,6 +55,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.WeaknessSet': return require('@components/campaignguide/WeaknessSetView').default;
     case 'Guide.CardSelector': return require('@components/campaignguide/CardSelectorView').default;
     case 'Friends': return require('@components/social/FriendsView').default;
+    case 'Campaign.Tarot': return require('@components/campaign/TarotCardReadingView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
     case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
@@ -112,12 +117,25 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     ));
   }
 
+  function providerNoGestureHandler<Props>(
+    ScreenComponenet: React.ComponentType<Props>,
+  ) {
+    return () => (props: Props) => (
+      <Provider store={store}>
+        <ScreenComponenet {...props} />
+      </Provider>
+    );
+  }
+
   Navigation.registerComponent('Browse.Cards', providerWrapper(BottomTabNameCorrector(BROWSE_CARDS, () => t`Cards`, BrowseCardsView)), () => BrowseCardsView);
   Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
   Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
   Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
+  Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
+  Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
+  Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 

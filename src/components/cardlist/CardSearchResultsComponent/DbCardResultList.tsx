@@ -450,7 +450,7 @@ function useSectionFeed({
               msgid`Show ${nonCollectionCount} non-collection card`,
               `Show ${nonCollectionCount} non-collection cards`,
               nonCollectionCount),
-            icon: 'expand',
+            icon: 'show',
           });
         }
       }

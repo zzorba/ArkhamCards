@@ -2687,11 +2687,11 @@
           },
           {
             "id": "constellation_was_lost_to_the_depths",
-            "text": "the Constellation was lost to the depths."
+            "text": "el Constelación se perdió en las profundidades."
           },
           {
             "id": "constellation_was_saved",
-            "text": "the Constellation was saved."
+            "text": "el Constelación se salvó."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2711,11 +2711,11 @@
           },
           {
             "id": "ritual_at_sea_was_completed",
-            "text": "the ritual at sea was completed."
+            "text": "el ritual en el mar fue completado."
           },
           {
             "id": "ritual_at_sea_was_halted",
-            "text": "the ritual at sea was halted."
+            "text": "el ritual en el mar fue detenido."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -4029,11 +4029,11 @@
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "la misión de la agente Harper quedó completada."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "la misión de la agente Harper quedó completada… pero ¿a qué precio?"
           },
           {
             "id": "allen_out_for_blood",
@@ -4045,23 +4045,23 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagón ha despertado."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagón sigue durmiendo."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "los profundos han inundado la Tierra."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "los investigadores escaparon de Y'ha-nthlei."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "la inundación ha comenzado."
           },
           {
             "id": "friendly_out_for_blood",
@@ -4069,11 +4069,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "el guardián de la puerta ha sido derrotado."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "la puerta de Y'ha-nthlei te reconoce como su guardián por derecho."
           },
           {
             "id": "gilman_out_for_blood",
@@ -4081,7 +4081,7 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "el guardián de Y'ha-nthlei ha sido derrotado."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
@@ -4121,11 +4121,11 @@
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "el ritual de la Orden quedó desbaratado."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "el plan de los profundos fue frustrado."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
@@ -4145,11 +4145,11 @@
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "las riquezas de las profundidades han sido destruidas… pero ¿a qué precio?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "las riquezas de las profundidades se han perdido para siempre."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
@@ -4331,7 +4331,7 @@
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "la horrible verdad"
           },
           {
             "id": "lifecycle_of_a_deep_one",
@@ -4343,7 +4343,7 @@
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "una dolorosa traición"
           }
         ]
       },

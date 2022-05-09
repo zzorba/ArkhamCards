@@ -1,3 +1,4 @@
+import { FactionCodeType } from '@app_constants';
 import { TextStyle } from 'react-native';
 
 export interface ThemeFonts {
@@ -108,15 +109,15 @@ export interface ThemeColors {
     dark: string;
   };
 }
-const light10 = '#D7D3C6';
+export const light10 = '#D7D3C6';
 const light15 = '#E6E1D3';
-const light20 = '#F5F0E1';
-const light30 = '#FFFBF2';
+export const light20 = '#F5F0E1';
+export const light30 = '#FFFBF2';
 const dark10 = '#656C6F';
-const dark15 = '#4F5A60';
-const dark20 = '#475259';
+export const dark15 = '#4F5A60';
+export const dark20 = '#475259';
 const dark30 = '#24303C';
-const medium = '#9B9B9B';
+export const medium = '#9B9B9B';
 
 const neutralBorder = medium;
 
@@ -125,10 +126,10 @@ const seekerLightText = '#DB7C07';
 const rogueLightText = '#219428';
 const mysticLightText = '#7554AB';
 const survivorLightText = '#CC3038';
-const neutralLightText = dark20;
-const dualLightText = '#868600';
+export const neutralLightText = dark20;
+export const dualLightText = '#868600';
 const deadLightText = '#704214';
-const mythosLightText = dark30;
+export const mythosLightText = dark30;
 
 const guardianDarkText = '#5CB4FD';
 const seekerDarkText = '#EFA345';
@@ -136,6 +137,42 @@ const rogueDarkText = '#48B14F';
 const mysticDarkText = '#BA81F2';
 const survivorDarkText = '#EE4A53';
 const neutralDarkText = light20;
+
+export const CARD_COLORS: {
+  [key in FactionCodeType]: {
+    background: string;
+    border: string;
+  };
+} = {
+  guardian: {
+    background: guardianLightText,
+    border: seekerDarkText,
+  },
+  seeker: {
+    background: seekerLightText,
+    border: dark10,
+  },
+  rogue: {
+    background: rogueLightText,
+    border: light10,
+  },
+  mystic: {
+    background: mysticLightText,
+    border: dark10,
+  },
+  survivor: {
+    background: survivorLightText,
+    border: dark10,
+  },
+  neutral: {
+    background: neutralLightText,
+    border: medium,
+  },
+  mythos: {
+    background: neutralLightText,
+    border: medium,
+  },
+};
 
 const dualDarkText = '#E9D06C';
 const deadDarkText = '#704214';

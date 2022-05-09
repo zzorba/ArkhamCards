@@ -5,6 +5,7 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { BorderColor } from '@data/scenario/types';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import TextWithIcons from '@components/core/TextWithIcons';
 
 interface Props {
   title: string;
@@ -12,22 +13,6 @@ interface Props {
   center?: boolean;
   strikethrough?: boolean;
 }
-const DIVIDE_REGEX = new RegExp('^(.*)\\[(.*?)\\](.*)$');
-
-function DivideText({ text, color }: { text: string; color: string }) {
-  const match = text.match(DIVIDE_REGEX);
-  if (match) {
-    return (
-      <>
-        { match[1] }
-        <ArkhamIcon name={match[2]} size={28} color={color} />
-        { !!match[3] && <DivideText text={match[3]} color={color} /> }
-      </>
-    );
-  }
-  return <>{text}</>;
-}
-
 export default function TitleComponent({ title, center, strikethrough, border_color = 'setup' }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const color = colors.campaign.text[border_color];
@@ -40,7 +25,7 @@ export default function TitleComponent({ title, center, strikethrough, border_co
         center ? typography.center : {},
         strikethrough ? { textDecorationLine: 'line-through' } : undefined,
       ]}>
-        <DivideText text={title} color={color} />
+        <TextWithIcons size={28} text={title} color={color} />
       </Text>
     </View>
   );

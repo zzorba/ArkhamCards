@@ -13,7 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import space, { s } from '@styles/space';
-import { useEffectUpdate, useFlag } from '@components/core/hooks';
+import { useCopyAction, useEffectUpdate, useFlag, useSettingValue } from '@components/core/hooks';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 import TraumaSummary from '../TraumaSummary';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
@@ -91,6 +91,7 @@ export default function InvestigatorCampaignRow({
   showDeckUpgrade,
   showTraumaDialog,
 }: Props) {
+  const campaignShowDeckId = useSettingValue('campaign_show_deck_id');
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, width, typography } = useContext(StyleContext);
@@ -214,11 +215,42 @@ export default function InvestigatorCampaignRow({
         iconA="deck"
         titleA={deck ? t`View deck` : t`Select deck`}
         onPressB={removePressed}
-        iconB="dismiss"
+        iconB="trash"
         titleB={deck ? t`Remove deck` : t`Remove`}
       />
     )
   }, [uploading, deck, canRemoveDeck, viewDeck, selectDeck, removePressed]);
+
+  const playerLine = useMemo(() => {
+    if (!deck?.owner?.handle) {
+      return null;
+    }
+    return (
+      <MiniPickerStyleButton
+        title={t`Player`}
+        valueLabel={deck?.owner.handle}
+        first
+        editable={false}
+      />
+    );
+  }, [deck]);
+
+  const copyDeckId = useCopyAction(`${deck?.id.id}`, t`Deck id copied!`);
+  const deckIdLine = useMemo(() => {
+    if (!campaignShowDeckId || !deck || deck.id.local) {
+      return null;
+    }
+    return (
+      <MiniPickerStyleButton
+        title={t`Deck Id`}
+        icon="share"
+        valueLabel={`${deck.id.id}`}
+        first={!playerLine}
+        onPress={copyDeckId}
+        editable
+      />
+    );
+  }, [playerLine, copyDeckId, campaignShowDeckId, deck]);
   return (
     <View style={space.marginBottomS}>
       <AnimatedCompactInvestigatorRow
@@ -243,18 +275,12 @@ export default function InvestigatorCampaignRow({
       >
         <View style={[space.paddingSideS]}>
           <View style={space.paddingBottomS}>
-            { !!deck?.owner?.handle && (
-              <MiniPickerStyleButton
-                title={t`Player`}
-                valueLabel={deck?.owner.handle}
-                first
-                editable={false}
-              />
-            ) }
+            { playerLine }
+            { deckIdLine }
             <MiniPickerStyleButton
               title={t`Trauma`}
               valueLabel={<TraumaSummary trauma={traumaAndCardData} investigator={investigator} />}
-              first={!deck?.owner?.handle}
+              first={!playerLine && !deckIdLine }
               last={!xpButton && !miniButtons}
               editable={!!showTraumaDialog}
               onPress={onTraumaPress}

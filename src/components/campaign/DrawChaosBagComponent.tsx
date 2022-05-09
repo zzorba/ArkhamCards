@@ -444,7 +444,7 @@ export default function DrawChaosBagComponent(props: Props) {
           header={
             <View style={[styles.headerBlock, { backgroundColor: colors.L10 }]}>
               <View style={space.paddingRightM}>
-                <AppIcon name="card-outline" size={32} color={colors.D10} />
+                <AppIcon name="card-outline" size={28} color={colors.D10} />
               </View>
               <Text style={typography.cardName}>
                 { difficultyStr ? t`Scenario Card - ${difficultyStr}` : t`Scenario Card` }

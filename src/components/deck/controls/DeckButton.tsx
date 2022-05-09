@@ -12,11 +12,15 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'kofi' |
+  'addcard' |
   'headset' |
   'discord' |
   'vk' |
   'telegram' |
   'faq' |
+  'draft' |
+  'undo' |
   'trauma' |
   'backup' |
   'seal' |
@@ -24,6 +28,7 @@ export type DeckButtonIcon =
   'log' |
   'finish' |
   'wrench' |
+  'special_cards' |
   'plus-button' |
   'minus-button' |
   'right-arrow' |
@@ -44,7 +49,6 @@ export type DeckButtonIcon =
   'settings' |
   'book' |
   'arkhamdb' |
-  'plus-thin' |
   'dismiss' |
   'check-thin' |
   'upgrade' |
@@ -78,13 +82,12 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   faq: 24,
   trauma: 32,
   backup: 24,
-  'plus-button': 32,
-  'minus-button': 32,
+  'plus-button': 28,
+  'minus-button': 28,
   'right-arrow': 32,
-  'plus-thin': 24,
   'check-thin': 30,
   weakness: 24,
-  'card-outline': 24,
+  'card-outline': 28,
   tdea: 28,
   tdeb: 28,
   book: 22,
@@ -92,10 +95,11 @@ const ICON_SIZE: { [icon: string]: number | undefined } = {
   arkhamdb: 24,
   logo: 28,
   login: 24,
+  seal: 26,
   email: 24,
-  edit: 24,
-  upgrade: 34,
-  dismiss: 22,
+  edit: 28,
+  upgrade: 28,
+  dismiss: 28,
 };
 const ICON_SIZE_THIN: { [icon: string]: number | undefined } = {
   upgrade: 26,
@@ -192,7 +196,7 @@ export default function DeckButton({
     if (!icon) {
       return null;
     }
-    const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 26;
+    const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 28;
     if (MATERIAL_ICONS.has(icon)) {
       return <MaterialIcons name={icon} size={size} color={theIconColor} />;
     }
@@ -215,7 +219,7 @@ export default function DeckButton({
   }, [onPress]);
   return (
     <Ripple
-      disabled={disabled}
+      disabled={loading || disabled}
       style={[
         {
           minHeight: height,

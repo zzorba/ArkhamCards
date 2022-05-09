@@ -9,7 +9,7 @@ import space from '@styles/space';
 import { ThemeColors } from '@styles/theme';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-type LEFT_ICON = 'plus-thin' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck' | 'edit';
+type LEFT_ICON = 'plus-button' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck' | 'edit';
 interface Props {
   color: 'dark' | 'light' | 'green' | 'red';
   onPress: () => void;
@@ -45,7 +45,7 @@ const LEFT_ICON_SIZE = {
   shuffle: 24,
   deck: 24,
   undo: 24,
-  'plus-thin': 18,
+  'plus-button': 24,
   check: 16,
   close: 24,
 };

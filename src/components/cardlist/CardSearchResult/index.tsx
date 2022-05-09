@@ -322,6 +322,7 @@ function CardSearchResult(props: Props) {
       {
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
+        alignItems: 'center',
       },
     ]}>
       <Touchable

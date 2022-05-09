@@ -18,20 +18,12 @@ interface Props {
 
 function iconSize(icon: string) {
   switch (icon) {
-    case 'world':
-    case 'sort-by-alpha':
     case 'mythos-busters':
-      return 30;
-    case 'elder_sign':
-    case 'copy':
-    case 'cards':
-      return 26;
-    case 'log':
-      return 28;
-    case 'sort':
-      return 18;
-    default:
       return 34;
+    case 'copy':
+      return 26;
+    default:
+      return 28;
   }
 }
 export default function DeckActionRow({ title, titleFirst, description, icon, last, control, loading, growControl }: Props) {

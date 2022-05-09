@@ -25,7 +25,7 @@ import useSingleCard from '../useSingleCard';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
-    icon: iconsMap.web,
+    icon: iconsMap.world,
     id: 'share',
     color: color || COLORS.M,
     accessibilityLabel: t`Share`,

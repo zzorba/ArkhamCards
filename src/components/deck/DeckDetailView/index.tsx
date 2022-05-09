@@ -15,6 +15,7 @@ import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import ActionButton from 'react-native-action-button';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -22,7 +23,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -38,7 +39,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/n
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
+import { useBackButton, useCopyAction, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
@@ -57,6 +58,9 @@ import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsC
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { DeckDraftProps } from '../DeckDraftView';
+import Toast from '@components/Toast';
+import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -67,6 +71,8 @@ export interface DeckDetailProps {
   modal?: boolean;
   fromCampaign?: boolean;
 }
+
+const SHOW_DRAFT_CARDS = true;
 
 type Props = NavigationProps &
   DeckDetailProps &
@@ -498,6 +504,67 @@ function DeckDetailView({
       },
     });
   }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
+  const onDraftCards = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    if (deck.investigator_code === LOLA_CODE || deck.investigator_code === JOE_DIAMOND_CODE) {
+      showAlert(
+        t`Unsupported investigator`,
+        t`Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes or Joe Diamond.`
+      );
+      return;
+    }
+    if (problem && problem.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Please correct invalid deck issues`,
+        t`This deck currently contains one or more forbidden cards.\n\nPlease address these outstanding deck issues before drafting cards.`
+      );
+      return;
+    }
+    if (problem?.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Deck is full`,
+        t`This deck is full.\n\nRemove some cards or create a new deck if you would like to draft.\n\nAt the moment it is only possible to draft level 0 cards using the app.`,
+      );
+      return;
+
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<DeckDraftProps>(componentId, {
+      component: {
+        name: 'Deck.DraftCards',
+        passProps: {
+          id,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Draft Cards`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -813,7 +880,17 @@ function DeckDetailView({
       showDrawSimulator(componentId, parsedDeck, colors);
     }
   }, [componentId, parsedDeck, colors, setFabOpen, setMenuOpen]);
+  const copyDeckId = useCopyAction(`${deckId.id}`, t`Deck id copied!`);
+  const onCopyDeckId = useCallback(() => {
+    setMenuOpen(false);
+    copyDeckId();
+  }, [deckId, setMenuOpen, copyDeckId]);
 
+  const copyDeckUrl = useCopyAction(`${arkhamDbDomain}/deck/view/${deckId.id}`, t`Link to deck copied!`);
+  const onCopyUrl = useCallback(() => {
+    setMenuOpen(false);
+    copyDeckUrl();
+  }, [deckId, copyDeckUrl, setMenuOpen]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -833,6 +910,7 @@ function DeckDetailView({
             <MenuButton
               icon="name"
               onPress={showEditNameDialog}
+              onLongPress={!deck.local ? onCopyDeckId : undefined}
               numberOfLines={2}
               title={deckEdits.nameChange || deck.name}
               description={!deck.local ? t`Deck #${deck.id}` : undefined}
@@ -840,7 +918,7 @@ function DeckDetailView({
             <MenuButton
               title={t`Taboo`}
               onPress={showTabooPicker}
-              icon="taboo_thin"
+              icon="taboo"
               description={tabooSet ? formatTabooStart(tabooSet.date_start, lang) : t`None`}
             />
           </>
@@ -892,8 +970,17 @@ function DeckDetailView({
               icon="special_cards"
               title={t`Special Cards`}
               description={t`Story assets and weaknesses`}
-              last
+              last={!SHOW_DRAFT_CARDS}
             />
+            { !!SHOW_DRAFT_CARDS && !deck.previousDeckId &&  (
+              <MenuButton
+                onPress={onDraftCards}
+                icon="draft"
+                title={t`Draft Cards`}
+                description={t`Build a deck randomly`}
+                last
+              />
+            ) }
           </>
         ) }
         { (editable || (!deck.nextDeckId && !!deck.previousDeckId)) && (
@@ -950,6 +1037,7 @@ function DeckDetailView({
             title={t`View on ArkhamDB`}
             description={t`Open in browser`}
             onPress={viewDeck}
+            onLongPress={onCopyUrl}
             last={!editable}
           />
         ) }
@@ -966,18 +1054,12 @@ function DeckDetailView({
   }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
-    onEditSpecialPressed, onChecklistPressed,
+    onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl,
   ]);
 
-  const fabIcon = useCallback((active: boolean) => {
-    if (active) {
-      return <AppIcon name="plus-thin" color={colors.L30} size={32} />;
-    }
-    if (editable && mode === 'view') {
-      return <AppIcon name="edit" color="white" size={24} />;
-    }
-    return <AppIcon name="plus-thin" color={colors.L30} size={24} />;
-  }, [colors, editable, mode]);
+  const fabIcon = useCallback(() => {
+    return <AppIcon name="plus-button" color={colors.L30} size={32} />;
+  }, [colors]);
 
   const fab = useMemo(() => {
     const actionLabelStyle = {
@@ -1014,7 +1096,7 @@ function DeckDetailView({
           shadowStyle={shadow.medium}
           useNativeFeedback={false}
         >
-          <AppIcon name="draw" color={colors.L30} size={34} />
+          <AppIcon name="draw" color="#FFF" size={34} />
         </ActionButton.Item>
         <ActionButton.Item
           buttonColor={factionColor}
@@ -1025,7 +1107,7 @@ function DeckDetailView({
           shadowStyle={shadow.medium}
           useNativeFeedback={false}
         >
-          <AppIcon name="chart" color={colors.L30} size={34} />
+          <AppIcon name="chart" color="#FFF" size={34} />
         </ActionButton.Item>
         { editable && mode === 'view' && (
           <ActionButton.Item
@@ -1036,22 +1118,23 @@ function DeckDetailView({
             onPress={onUpgradePressed}
             useNativeFeedback={false}
           >
-            <AppIcon name="upgrade" color={colors.L30} size={32} />
+            <AppIcon name="upgrade"color="#FFF" size={32} />
           </ActionButton.Item>
         ) }
-        { editable && (mode === 'view' ? (
+         { editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId && (
           <ActionButton.Item
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
             textContainerStyle={actionContainerStyle}
-            title={t`Edit`}
-            onPress={onEditPressed}
+            title={t`Draft cards`}
+            onPress={onDraftCards}
             shadowStyle={shadow.medium}
             useNativeFeedback={false}
           >
-            <AppIcon name="edit" color={colors.L30} size={24} />
+            <AppIcon name="draft" color="#FFF" size={32} />
           </ActionButton.Item>
-        ) : (
+        ) }
+        { editable && (
           <ActionButton.Item
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
@@ -1061,12 +1144,25 @@ function DeckDetailView({
             shadowStyle={shadow.medium}
             useNativeFeedback={false}
           >
-            <AppIcon name="plus-thin" color={colors.L30} size={24} />
+            <AppIcon name="addcard" color="#FFF" size={32} />
           </ActionButton.Item>
-        )) }
+        ) }
+        { editable && mode === 'view' && (
+          <ActionButton.Item
+            buttonColor={factionColor}
+            textStyle={actionLabelStyle}
+            textContainerStyle={actionContainerStyle}
+            title={t`Edit`}
+            onPress={onEditPressed}
+            shadowStyle={shadow.medium}
+            useNativeFeedback={false}
+          >
+            <AppIcon name="edit" color="#FFF" size={32} />
+          </ActionButton.Item>
+        ) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography]);
+  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography, deck]);
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];
@@ -1156,6 +1252,7 @@ function DeckDetailView({
               requiredCards={extraRequiredCards}
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
+              showDraftCards={SHOW_DRAFT_CARDS ? onDraftCards : undefined}
               showEditCards={onAddCardsPressed}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}

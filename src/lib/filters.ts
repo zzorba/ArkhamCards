@@ -67,6 +67,7 @@ export interface FilterState {
   nonExceptional: boolean;
   costEnabled: boolean;
   victory: boolean;
+  multiClass: boolean;
   skillEnabled: boolean;
   unique: boolean;
   permanent: boolean;
@@ -171,6 +172,7 @@ export const defaultFilterState: FilterState = {
   evadeAction: false,
   exile: false,
   myriad: false,
+  multiClass: false,
   seal: false,
   skillIcons: {
     willpower: false,
@@ -521,8 +523,12 @@ export default class FilterBuilder {
   miscFilter(filters: FilterState): Brackets[] {
     const {
       victory,
+      multiClass,
     } = filters;
     const result: Brackets[] = [];
+    if (multiClass) {
+      result.push(where('c.faction2_code is not null'));
+    }
     if (victory) {
       result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
     }

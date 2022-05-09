@@ -625,7 +625,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
               />
               <View style={[styles.centerRow, space.paddingXs]}>
                 <ActionButton
-                  leftIcon="plus-thin"
+                  leftIcon="plus-button"
                   color="light"
                   title={guided ? t`Add Investigator` : t`Add Investigator Deck`}
                   onPress={showDeckSelector}

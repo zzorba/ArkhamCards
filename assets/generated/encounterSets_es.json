@@ -81,7 +81,7 @@
   "agents_of_azathoth": "Agentes de Azathoth",
   "anettes_coven": "Aquelarre de Anette",
   "at_deaths_doorstep": "A las puertas de la muerte",
-  "return_to_at_deaths_doorstep": "Regreso a ",
+  "return_to_at_deaths_doorstep": "Regreso a A las puertas de la muerte",
   "city_of_sins": "Ciudad de pecados",
   "city_of_the_damned": "Ciudad de los malditos",
   "disappearance_at_the_twilight_estate": "Desaparición en la finca del Crepúsculo",
@@ -246,12 +246,12 @@
   "the_boogeyman": "The Boogeyman",
   "interstellar_predators": "Interstellar Predators",
   "hasturs_gaze": "Hastur's Gaze",
-  "consternation_on_the_constellation": "Consternación en el Constellation",
+  "consternation_on_the_constellation": "Consternación en el Constelación",
   "deep_ones": "Deep Ones",
   "sinking_ship": "Sinking Ship",
   "a_sea_of_troubles": "A Sea of Troubles",
   "gurathnakas_shadows": "Gurathnaka's Shadows",
-  "cheshire_cat": "Cheshire Cat",
+  "cheshire_cat": "Gato de Cheshire",
   "arkham_in_wonderland": "Arkham in Wonderland",
   "warped_reality": "Warped Reality",
   "bleeding_hearts": "Bleeding Hearts",
@@ -323,5 +323,5 @@
   "the_afternoon_war": "The Afternoon War",
   "death_at_sundown": "Death at Sundown",
   "the_midnight_hour": "The Midnight Hour",
-  "the_symphony_of_erich_zann": "The Symphony of Erich Zann"
+  "the_symphony_of_erich_zann": "La sinfonía de Erich Zann"
 }

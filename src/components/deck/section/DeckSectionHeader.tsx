@@ -30,7 +30,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
           </Text>
         </View>
         <View style={[styles.icon, { height: 40, width: 40 }]}>
-          <AppIcon name="edit" size={18 * fontScale} color="#FFF" />
+          <AppIcon name="edit" size={28 * fontScale} color="#FFF" />
         </View>
       </Ripple>
     );

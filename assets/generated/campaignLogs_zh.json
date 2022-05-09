@@ -3322,13 +3322,13 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name#已打破烏撒的法則。",
+            "feminine_text": "#name#已打破烏撒的法則。"
           },
           {
             "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "masculine_text": "#name#被俘。",
+            "feminine_text": "#name#被俘。"
           },
           {
             "id": "black_cat_at_your_side",
@@ -3348,11 +3348,11 @@
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "黑貓調查真相。"
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "黑貓得知真相。"
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
@@ -3360,11 +3360,11 @@
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "黑貓提到了阿特拉克·納克亞。"
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "黑貓提到了奈亞拉托提普。"
           },
           {
             "id": "black_cat_warned_the_others",
@@ -3372,7 +3372,7 @@
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "調查員被帶到冰封荒土。"
           },
           {
             "id": "cats_collected_their_tribute",
@@ -3380,39 +3380,39 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "入夢者醒來。"
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "調查員驅逐了奈亞拉托提普。"
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "調查員逃離了奈亞拉托提普的魔掌。"
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "入夢者漸漸衰弱。"
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "入夢者知道了另一條路。"
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "入夢者永遠留在了幻夢境。"
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monastery."
+            "text": "入夢者進入隱修院底下。"
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "調查員強行進入神廟。"
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "奈亞拉托提普開始入侵。"
           },
           {
             "id": "parleyed_with_zoogs",
@@ -3420,23 +3420,23 @@
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "調查員持有銀鑰匙。"
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "倫道夫在這趟航程中遇難。"
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "倫道夫未遭俘虜。"
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "倫道夫安全地經歷了航程。"
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "倫道夫被俘。"
           },
           {
             "id": "saved_by_randolph_carter",
@@ -3444,7 +3444,7 @@
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "入夢者偏離了道路。"
           },
           {
             "id": "threaten_black_cat",
@@ -3452,11 +3452,11 @@
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "調查員前往冰封荒土。"
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "維吉爾被俘。"
           },
           {
             "id": "you_asked_for_it",
@@ -3532,19 +3532,19 @@
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "黑貓調查真相。"
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "黑貓得知真相。"
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "黑貓向其他調查員尋求幫助。"
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "黑貓告知了地下世界的事情。"
           },
           {
             "id": "black_cat_warned_the_others",
@@ -3552,11 +3552,11 @@
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "橋樑已經建成。"
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "橋樑已被摧毀。"
           },
           {
             "id": "doctor_is_alive",
@@ -3580,11 +3580,11 @@
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "調查員找到了離開地下世界的路。"
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "調查員永遠無法逃離。"
           },
           {
             "id": "on_your_own",
@@ -3592,11 +3592,11 @@
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "調查員持有銀鑰匙。"
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "倫道夫在下降到地下世界的途中遇難。"
           },
           {
             "id": "randolph_escaped_hospital_alone",
@@ -3608,19 +3608,19 @@
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "倫道夫安全下降到地下世界。"
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "調查員回到現實世界。"
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "調查員仍在幻夢境。"
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "調查員被困在阿特拉克·納克亞的領域。"
           },
           {
             "id": "you_asked_for_it",
