@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2022-04-02 10:45+0300\n"
+"PO-Revision-Date: 2022-05-09 14:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -357,7 +357,7 @@ msgid "Import data"
 msgstr "Импортировать"
 
 msgid "Backup campaign data?"
-msgstr "Сделать резервную копию кампании?"
+msgstr "Сделать резервную копию данных?"
 
 msgid "Export Campaign Data"
 msgstr "Экспортировать"
@@ -366,10 +366,10 @@ msgid "Backup"
 msgstr "Резервная копия"
 
 msgid "Backup Campaign Data"
-msgstr "Сделать резервную копию кампании"
+msgstr "Эскпортировать данные приложения"
 
 msgid "Restore Campaign Data"
-msgstr "Восстановить кампанию"
+msgstr "Импортировать данные приложения"
 
 msgid "Loading"
 msgstr "Загрузка"
@@ -387,10 +387,10 @@ msgid "Debug Card Json"
 msgstr "Отладка данных карты"
 
 msgid "Return to..."
-msgstr ""
+msgstr "Возвращение"
 
 msgid "Investigator Starter Decks"
-msgstr ""
+msgstr "Колоды сыщиков"
 
 msgid "Side stories"
 msgstr "Сценарии-ответвления"
@@ -455,7 +455,7 @@ msgid "Check ArkhamDB for updates"
 msgstr "Обновить карты с ArkhamDB"
 
 msgid "Backup Data"
-msgstr "Сделать резервную копию"
+msgstr "Резервное копирование"
 
 msgid "Card Collection"
 msgstr "Коллекция карт"
@@ -1645,7 +1645,7 @@ msgid "Campaign cards"
 msgstr "Карты кампании"
 
 msgid "Trauma"
-msgstr "Травма"
+msgstr "Травмы"
 
 msgid "Physical"
 msgstr "Физическая"
@@ -2033,7 +2033,7 @@ msgid "Night of the Zealot"
 msgstr "Ночь фанатички"
 
 msgid "Return to the Night of the Zealot"
-msgstr ""
+msgstr "Ночь фанатички. Возвращение"
 
 msgid "Return to The Dunwich Legacy"
 msgstr ""
@@ -4669,8 +4669,8 @@ msgid ""
 "This app is made possible by the continued support of our fans on ${ "
 "patreonLink } and the ${ mythosBustersLink } podcast."
 msgstr ""
-"Arkham Cards существует благодаря фанатам игры на Patreon (${ patreonLink "
-"}) и подкасту ${ mythosBustersLink }."
+"Arkham Cards существует благодаря фанатам игры на (${ patreonLink }) и "
+"подкасту ${ mythosBustersLink }."
 
 msgid ""
 "The card database has been reset.\n"
@@ -4835,7 +4835,6 @@ msgstr ""
 msgid "Negative modifier"
 msgstr "Отрицательный модификатор"
 
-#, javascript-format
 msgid "${ textModifier }, draws another"
 msgstr "${ textModifier } + ещё жетон"
 
@@ -5521,128 +5520,143 @@ msgstr ""
 "После этого снова попробуйте загрузить колоду."
 
 msgid "Other investigator cards"
-msgstr ""
+msgstr "Другие карты сыщика"
 
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ультиматум Хаоса"
 
 msgid "Generate deck"
-msgstr ""
+msgstr "Сгенерировать колоду"
 
 msgid "- Adjust your card collection in the app settings."
-msgstr ""
+msgstr "- Укажите состав своей коллекции в настройках приложения."
 
 msgid ""
 "- Remove the parallel investigator choice, which might require a larger "
 "card collection."
-msgstr ""
+msgstr "- Уберите паралелльных сыщиков: они могут требовать большей коллекции."
 
 msgid "- Remove the taboo list, which removes some card options."
-msgstr ""
+msgstr "- Уберите табу, которое меняет пул доступных карт."
 
 #, javascript-format
 msgid ""
 "Unable to build a random deck for this investigator:\n"
 "${ remedy }"
 msgstr ""
+"Не удалось сгенерировать колоду для этого сыщика:\n"
+"${ remedy }"
 
 msgid "Starter deck"
-msgstr ""
+msgstr "Стартовая колода"
 
 msgid "Unable to generate deck"
-msgstr ""
+msgstr "Не удалось сгенерировать"
 
 msgid "Suggested starter deck for this investigator from FFG."
-msgstr ""
+msgstr "Состав колоды, предлагаемый FFG."
 
 msgid "An empty deck."
-msgstr ""
+msgstr "Пустая колода."
 
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr ""
+"Извините, приложение ещё не умеет случайным образом генерировать колоды для "
+"этого сыщика."
 
 msgid "A fully randomized deck."
-msgstr ""
+msgstr "Колода, состоящая из случайных карт."
 
 msgid "Special deck"
-msgstr ""
+msgstr "Особая колода"
 
 msgid "Re-generate deck"
-msgstr ""
+msgstr "Пересобрать колоду"
 
 msgid "Draft from card collection"
-msgstr ""
+msgstr "Драфтить из коллекции"
 
 msgid "Disable to choose which packs to draft from"
-msgstr ""
+msgstr "Отключите, чтобы вручную указать коллекцию для драфта"
 
 msgid "Draft using your card collection"
-msgstr ""
+msgstr "Драфт с использованием вашей коллекции"
 
 msgid "Draft Pool"
-msgstr ""
+msgstr "Коллекция для драфта"
 
 msgid "Grid"
-msgstr ""
+msgstr "Сетка"
 
 msgid "Invalid deck"
-msgstr ""
+msgstr "Ошибка колоды"
 
 msgid ""
 "This deck is currently invalid in some way. Please address the issues "
 "before continuing the draft."
-msgstr ""
+msgstr "В колоде есть какие-то ошибки. Исправьте их прежде чем продолжать драфт."
 
 msgid "Hand size:"
-msgstr ""
+msgstr "Размер руки:"
 
 msgid "Choose packs"
-msgstr ""
+msgstr "Выбрать дополнения"
 
 msgid ""
 "This tool lets you build a deck progressively, choosing one card at a time "
 "from a limited set of cards."
 msgstr ""
+"Этот инструмент позволяет вам постепенно составлять колоду, выбирая по "
+"одной карте за раз из нескольких."
 
 msgid ""
 "Each 'hand' of cards is taken at random from all possible cards that are "
 "allowed given the current investigator + deckbuilding option choices you "
 "have made."
 msgstr ""
+"Каждая «рука» драфта состоит из нескольких карт, выбранных случайно из всех "
+"доступных в вашей коллекции для данного сыщика."
 
 msgid ""
 "The drafting process will continue until your deck is full, but you can "
 "stop or change the settings at any time"
 msgstr ""
+"Процесс драфта будет повторяться, пока вы не достигнете размера колоды, но "
+"вы можете в любой момент остановиться или изменить настройки"
 
 msgid "Begin draft"
-msgstr ""
+msgstr "Начать драфт"
 
 msgid "Selection"
-msgstr ""
+msgstr "Выбор"
 
 msgid "Draft cards"
-msgstr ""
+msgstr "Драфтить"
 
 msgid "Unsupported investigator"
-msgstr ""
+msgstr "Неподдерживаемый сыщик"
 
 msgid ""
 "Sorry, given their unique deckbuilding rules, this app does not yet support "
 "drafting for Lola Hayes or Joe Diamond."
 msgstr ""
+"Приносим извинения: приложение пока не может драфтить колоды для Джо "
+"Даймонда и Лолы Хейз из-за особых требований к составлению их колод."
 
 msgid "Please correct invalid deck issues"
-msgstr ""
+msgstr "Исправьте ошибки в колодах"
 
 msgid ""
 "This deck currently contains one or more forbidden cards.\n"
 "\n"
 "Please address these outstanding deck issues before drafting cards."
 msgstr ""
+"Колода содержит по меньшей мере одну запрещённую карту.\n"
+"\n"
+"Пожалуйста, исправьте эту ошибку прежде чем продолжать драфт."
 
 msgid "Deck is full"
-msgstr ""
+msgstr "Колода полна"
 
 msgid ""
 "This deck is full.\n"
@@ -5651,34 +5665,32 @@ msgid ""
 "\n"
 "At the moment it is only possible to draft level 0 cards using the app."
 msgstr ""
+"Колода полна.\n"
+"\n"
+"Удалите из неё карты или создайте новую колоду, чтобы продолжить драфт.\n"
+"\n"
+"На данный момент приложение поддерживает драфт только карт 0 уровня."
 
 msgid "Draft Cards"
-msgstr ""
+msgstr "Драфтить"
 
 msgid "Deck id copied!"
-msgstr ""
+msgstr "Код колоды скопирован!"
 
 msgid "Link to deck copied!"
-msgstr ""
+msgstr "Ссылка на колоду скопирована!"
 
 msgid "Build a deck randomly"
-msgstr ""
+msgstr "Составить случайную колоду"
 
 msgid "A single core set is always included"
-msgstr ""
+msgstr "Одна копия базового набора всегда включена"
 
 msgid "Campaigns Cycles"
-msgstr ""
+msgstr "Циклы кампаний"
 
 msgid "Take"
-msgstr ""
-
-#, javascript-format
-msgid "Tarot: ${ card.title } · Inverted"
-msgstr ""
-
-msgid "Tarot: ${ card.title }"
-msgstr ""
+msgstr "Взять"
 
 msgid ""
 "If you are using the digital chaos bag in the app, be sure to enable the "
@@ -5818,6 +5830,95 @@ msgid "Reject fate (redraw)"
 msgstr ""
 
 msgid "Deck Id"
+msgstr ""
+
+msgid "Symphony of Erich Zann"
+msgstr ""
+
+#, javascript-format
+msgid "${ card.title } (inverted)"
+msgstr ""
+
+msgid "Destiny Tarot Reading"
+msgstr ""
+
+msgid "The Tatterdemalion"
+msgstr ""
+
+msgid "Electric Nightmare"
+msgstr ""
+
+msgid "Mission Briefing"
+msgstr ""
+
+msgid "Lost Quantum"
+msgstr ""
+
+msgid "In the Shadow of Earth"
+msgstr ""
+
+msgid "Strange Moons"
+msgstr ""
+
+msgid "Introspection"
+msgstr ""
+
+msgid "The Machine in Yellow"
+msgstr ""
+
+msgid "Fragment of Carcosa"
+msgstr ""
+
+msgid "Starfall"
+msgstr ""
+
+msgid "Arkham in Wonderland"
+msgstr ""
+
+msgid "The Dodo"
+msgstr ""
+
+msgid "A Sea of Troubles"
+msgstr ""
+
+msgid "The Caterpillar"
+msgstr ""
+
+msgid "Tempest in a Teapot"
+msgstr ""
+
+msgid "The Duchess"
+msgstr ""
+
+msgid "Bleeding Hearts"
+msgstr ""
+
+msgid "Gryphon and Mock Turtle"
+msgstr ""
+
+msgid "Wild Snark Chase"
+msgstr ""
+
+msgid "Humpty Dumpty"
+msgstr ""
+
+msgid "Sibling Rivalry"
+msgstr ""
+
+msgid "The Lion and the Unicorn"
+msgstr ""
+
+msgid "Fool's Mate"
+msgstr ""
+
+msgid "The White Queen"
+msgstr ""
+
+msgid "Lucid Nightmare"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }}"
 msgstr ""
 
 #. console.log(`${await cards.count() } cards after delete`);
@@ -6443,7 +6544,7 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "Drafting player decks"
-msgstr ""
+msgstr "Драфт колод игроков"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6452,14 +6553,17 @@ msgid ""
 "want to pull from and how big each draft 'hand' should be, and build your "
 "deck one card at a time."
 msgstr ""
+"Развивая функционал «Ультиматума Хаоса», в приложении теперь можно "
+"составить колоду через драфт. Выберите, по сколько карт драфтить за раз и "
+"из каких дополнений, и карта за картой соберите всю колоду."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
-msgstr ""
+msgstr "- Функция доступна на экране редактирования колоды."
 
 msgctxt "releaseNotes"
 msgid "- Only level cards / decks can be drafted."
-msgstr ""
+msgstr "- Драфтить можно только карты уровня 0."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6467,10 +6571,12 @@ msgid ""
 "support generating random decks for Lola Hayes or Joe Diamond. This is "
 "something that I will try to address in a future release."
 msgstr ""
+"- У Джо Даймонда и Лолы Хейз особые правила составления колод, так что пока "
+"их колоды драфтить не получится. Мы ещё подумаем, как с ними быть."
 
 msgctxt "releaseNotes"
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ультиматум Хаоса"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6479,22 +6585,30 @@ msgid ""
 "option lets you choose a 'special deck', which can be used to either create "
 "the FFG suggested starter deck or a fully randomly generated one."
 msgstr ""
+"Приложение теперь умеет составлять случайные колоды по правилам "
+"«Ультиматума Хаоса». При создании новой колоды приложение предложит вам "
+"варианты «особых колод», среди которых — колоды, предложенные FFG, а также "
+"опция генерации случайной колоды."
 
 msgctxt "releaseNotes"
 msgid "- The app will use your defined collection to try to generate the deck."
-msgstr ""
+msgstr "- В колоде будут только карты из вашей коллекции."
 
 msgctxt "releaseNotes"
 msgid ""
 "- Support the deckbuilding focused permanents included in the Edge of the "
 "Earth Investigator expansion (Underworld Support/Forced Learning)."
 msgstr ""
+"- Генератор включает поддержку карт, меняющих правила составления колод (из "
+"дополнения «На краю земли»)."
 
 msgctxt "releaseNotes"
 msgid ""
 "- Shows the deck before you actully save it, so you can re-roll if it "
 "produced something particularly unviable."
 msgstr ""
+"- Просмотрите карты прежде чем сохранить колоду. Если вышло что-то "
+"совершенно неиграемое, вы можете перегенерировать колоду."
 
 msgctxt "trait"
 msgid "???"
