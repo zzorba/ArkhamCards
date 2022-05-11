@@ -5480,7 +5480,7 @@ msgid "Tarot Reading"
 msgstr "타로 점치기"
 
 msgid "Tarot Readings"
-msgstr "타로 점치기 · 운명"
+msgstr "타로 점치기"
 
 msgid "Perform readings with the tarot deck"
 msgstr "타로 덱을 사용하여 점치기 수행"
@@ -5629,89 +5629,89 @@ msgstr "덱 Id"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
-msgstr ""
+msgstr "${ card.title } (역방향)"
 
 msgid "Destiny Tarot Reading"
-msgstr ""
+msgstr "타로 점치기 · 운명"
 
 msgid "The Tatterdemalion"
-msgstr ""
+msgstr "누더기호"
 
 msgid "Electric Nightmare"
-msgstr ""
+msgstr "전기 신호 속 악몽"
 
 msgid "Mission Briefing"
-msgstr ""
+msgstr "임무 브리핑"
 
 msgid "Lost Quantum"
-msgstr ""
+msgstr "잃어버린 양자"
 
 msgid "In the Shadow of Earth"
-msgstr ""
+msgstr "지구의 그림자에서"
 
 msgid "Strange Moons"
-msgstr ""
+msgstr "기묘한 위성"
 
 msgid "Introspection"
-msgstr ""
+msgstr "자아성찰"
 
 msgid "The Machine in Yellow"
-msgstr ""
+msgstr "황색의 기계"
 
 msgid "Fragment of Carcosa"
-msgstr ""
+msgstr "카르코사의 파편"
 
 msgid "Starfall"
-msgstr ""
+msgstr "저무는 별"
 
 msgid "Arkham in Wonderland"
-msgstr ""
+msgstr "이상한 나라의 아컴"
 
 msgid "The Dodo"
-msgstr ""
+msgstr "도도새"
 
 msgid "A Sea of Troubles"
-msgstr ""
+msgstr "문제의 바다"
 
 msgid "The Caterpillar"
-msgstr ""
+msgstr "애벌레"
 
 msgid "Tempest in a Teapot"
-msgstr ""
+msgstr "찻잔 속 폭풍"
 
 msgid "The Duchess"
-msgstr ""
+msgstr "공작부인"
 
 msgid "Bleeding Hearts"
-msgstr ""
+msgstr "피흘리는 하트"
 
 msgid "Gryphon and Mock Turtle"
-msgstr ""
+msgstr "그리폰과 가짜 거북"
 
 msgid "Wild Snark Chase"
-msgstr ""
+msgstr "야생의 스나크 추적"
 
 msgid "Humpty Dumpty"
-msgstr ""
+msgstr "험프티 덤프티"
 
 msgid "Sibling Rivalry"
-msgstr ""
+msgstr "형제 간 경쟁"
 
 msgid "The Lion and the Unicorn"
-msgstr ""
+msgstr "사자와 유니콘"
 
 msgid "Fool's Mate"
-msgstr ""
+msgstr "바보의 메이트"
 
 msgid "The White Queen"
-msgstr ""
+msgstr "하얀 여왕"
 
 msgid "Lucid Nightmare"
-msgstr ""
+msgstr "자각 악몽"
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr ""
+msgstr "${ textModifier }, 다른 것 ${ revealCount }}회 뽑기"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
