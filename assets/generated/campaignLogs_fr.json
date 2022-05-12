@@ -2540,16 +2540,16 @@
     ],
     "supplies": [
       {
-        "id": "key_of_eztli",
-        "name": "Clé des Eztli",
-        "description": "La Clé des Eztli.",
+        "id": "sticky_goop",
+        "name": "Substance visqueuse",
+        "description": "A sticky goop you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "sticky_goop",
-        "name": "Substance visqueuse",
-        "description": "La substance visqueuse que vous avez trouvée dans le Marais Souterrain.",
+        "id": "key_of_eztli",
+        "name": "Clé des Eztli",
+        "description": "La Clé des Eztli.",
         "cost": 0,
         "multiple": false
       },

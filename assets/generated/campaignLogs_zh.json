@@ -2416,7 +2416,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "調查員得到了另一支探險隊的幫助。"
           },
           {
             "id": "relic_is_missing",
@@ -2541,22 +2541,22 @@
     "supplies": [
       {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "name": "黏液團",
+        "description": "A sticky goop you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "name": "神秘權杖",
+        "description": "你在王座大廳裡找到的神祕權杖。",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "埃茲特里之鑰",
+        "description": "埃茲特里之鑰。",
         "cost": 0,
         "multiple": false
       },

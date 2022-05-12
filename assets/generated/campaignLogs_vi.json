@@ -2540,16 +2540,16 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "id": "mysterious_scepter",
+        "name": "Mysterious Scepter",
+        "description": "A mysterious scepter you found in the throne room.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "id": "sticky_goop",
+        "name": "Sticky Goop",
+        "description": "A sticky goop you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
       },

@@ -936,11 +936,11 @@
   {
     "id": "Appendix_II_Timing_and_Gameplay",
     "title": "Приложение II: Структура раунда",
-    "text": "The [Phase Sequence timing chart](#Phase_Sequence_Timing) depicts the phases and steps of a game round. Each time an investigator makes a skill test, use the skill test timing detailed in the [Skill Test timing chart](#Skill_Test_Timing).\nПронумерованные строки на сером фоне называются структурными событиями. Структурные события — это обязательные события, заданные самой структурой раунда.\nСтроки на красном фоне называются окнами игроков. В эти периоды времени игроки могут использовать активируемые свойства [free].\nThe specific details for each of these steps are explained starting.",
+    "text": "[Схема раунда](#Phase_Sequence_Timing) детально описывает, как выполняется каждое структурное событие, в порядке их выполнения. Всякий раз, когда сыщик выполняет проверку навыка, сверяйтесь со схемой [Порядка проверки навыка](#Skill_Test_Timing).\nПронумерованные строки на сером фоне называются структурными событиями. Структурные события — это обязательные события, заданные самой структурой раунда.\nСтроки на красном фоне называются окнами игроков. В эти периоды времени игроки могут использовать активируемые свойства [free].\nThe specific details for each of these steps are explained starting.",
     "rules": [
       {
         "id": "Phase_Sequence_Timing",
-        "title": "Phase Sequence timing chart",
+        "title": "Схема раунда",
         "table": [
           { "row": [{ "text": "I. Фаза Мифа (пропустите в первом раунде)" }] },
           { "row": [{ "color": "green", "text": "1.1 Начало раунда. Начало фазы Мифа." }] },
