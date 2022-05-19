@@ -145,7 +145,7 @@ function TarotCardButton({
       ]
     }
     return [
-      <View style={{ transform: [{ rotate: inverted ? '-180deg' : '0deg' }]}}><AppIcon size={24} color={colors.M} name="upgrade" /></View>,
+      <View style={{ transform: [{ rotate: inverted ? '-180deg' : '0deg' }]}}><AppIcon size={24} color={colors.M} name="up" /></View>,
       inverted ? t`Inverted` : t`Upright`,
       card.title
     ];
@@ -175,19 +175,19 @@ export function useTarotCardReadingPicker({ value, onValueChange } : {
     return [
       {
         title: getTarotReadingLabel('chaos'),
-        icon: 'log',
+        icon: 'draft',
         description: t`A single card in a random position.`,
         value: 'chaos',
       },
       {
         title: getTarotReadingLabel('balance'),
-        icon: 'log',
+        icon: 'tools',
         description: t`Two cards, one upright and one reversed.`,
         value: 'balance',
       },
       {
         title: getTarotReadingLabel('choice'),
-        icon: 'log',
+        icon: 'difficulty',
         description: t`Reveal three upright cards, choose two to reverse.`,
         value: 'choice',
       },
@@ -222,6 +222,7 @@ export function useTarotCardReadingPicker({ value, onValueChange } : {
     items,
     selectedValue: value,
     onValueChange: onValueChange,
+    noIcons: true,
   });
 }
 
@@ -359,9 +360,9 @@ function TarotCardReadingView({
   }, [readingType, tarotCards, flipped, reversed, scenarios]);
 
   const dialogCardWidth = useMemo(() => {
-    return ((width - s * 4) * TAROT_CARD_RATIO > height * 0.7) ? (
+    return ((width - s * 8) * TAROT_CARD_RATIO > height * 0.7) ? (
       (height * 0.7) / TAROT_CARD_RATIO
-    ) : (width - s * 4);
+    ) : (width - s * 8);
   }, [width, height]);
   const renderSwipeCard = useCallback(({ item, index, dataIndex }: {
     item: TarotCard;
@@ -396,7 +397,7 @@ function TarotCardReadingView({
       <View style={{ width: width - s * 2, height: height * 0.7 + m * 2 }}>
         <Carousel
           itemWidth={dialogCardWidth}
-          sliderWidth={width - s * 2}
+          sliderWidth={width + s * 4}
           itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
           sliderHeight={height * 0.7 + m * 2}
           firstItem={jumpIndex}
@@ -479,7 +480,9 @@ function TarotCardReadingView({
       setSaving(false);
     }, 50);
   }, [setCampaignTaroReading, setSaving, setSavedReading,  id, reversed, tarotCards, scenarios, dispatch]);
+  const footerContent = useMemo(() => {
 
+  }, []);
   return (
     <View style={[{ flex: 1, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start' }, backgroundStyle]}>
       <View style={[space.paddingS, { flexDirection: 'row' }]}>
@@ -589,7 +592,6 @@ function TarotCardReadingView({
             }) }
           </ScrollView>
       ) }
-
       { dialog }
     </View>
   )

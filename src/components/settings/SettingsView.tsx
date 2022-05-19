@@ -51,6 +51,10 @@ function showDeKofi() {
   Linking.openURL('https://ko-fi.com/simplainer');
 }
 
+function showRuDonate() {
+  Linking.openURL('https://www.tinkoff.ru/cf/5Cbm7NvL1uF');
+}
+
 const SHOW_JUSTIFY = false;
 export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
@@ -272,6 +276,16 @@ export default function SettingsView({ componentId }: NavigationProps) {
                     title="Hier einen Kaffee spendieren"
                     onPress={showDeKofi}
                   />
+                </>
+              ) }
+               { lang === 'ru' && (
+                <>
+                  <View style={space.paddingS}>
+                    <Text style={typography.text}>
+                      { 'Русская озвучка — фанатский проект, который существует на добровольные пожертвования. Ты тоже ' }
+                      <Text key="ru_donate" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showRuDonate}>можешь помочь</Text>.
+                    </Text>
+                  </View>
                 </>
               ) }
               { lang !== 'ru' && lang !== 'de' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }

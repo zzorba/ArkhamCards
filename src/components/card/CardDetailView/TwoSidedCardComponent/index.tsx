@@ -33,9 +33,9 @@ import CardFooterButton from './CardFooterButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import { useFlag } from '@components/core/hooks';
+import { MAX_WIDTH } from '@styles/sizes';
 
 const SKILL_ICON_SIZE = 24;
-const MAX_WIDTH = 768;
 
 const SKILL_FIELDS = [
   'skill_willpower',

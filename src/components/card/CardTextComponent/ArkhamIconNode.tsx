@@ -1,10 +1,15 @@
 import React from 'react';
+import { Platform, Text, View } from 'react-native';
 import { MarkdownText, Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 
 import { WithIconName, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
+import EncounterIcon from '@icons/EncounterIcon';
+import LocationConnectorIcon from '@icons/LocationConnectorIcon';
+import space, { l, s } from '@styles/space';
+import { MAX_WIDTH } from '@styles/sizes';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   Action: 'action',
@@ -53,13 +58,54 @@ const ALL_ICONS = new Set([
   'seal_d',
   'seal_e',
 ]);
-export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale }: StyleContextType, sizeScale: number) {
+
+function CenterIconWrapper({ width, children }: { width: number; children: React.ReactNode }) {
+  return (
+    <MarkdownText>
+      {'\n'}
+      { Platform.OS === 'android' ? '\n' : '' }
+      <View style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: width - s * 6,
+        maxWidth: MAX_WIDTH - s * 2,
+      }}>
+        { children }
+      </View>
+      { Platform.OS === 'android' ? '' : '\n'}
+    </MarkdownText>
+  );
+}
+export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale, width }: StyleContextType, sizeScale: number) {
   return (
     node: Node & WithIconName,
     output: OutputFunction,
     state: RenderState & State,
   ) => {
     const icon_name = BAD_ICON_NAMES[node.name] || node.name;
+    if (icon_name.startsWith('encounter=')) {
+      return (
+        <CenterIconWrapper key={state.key} width={width}>
+          <EncounterIcon
+            key={state.key}
+            encounter_code={icon_name.replace('encounter=', '')}
+            size={36 * fontScale * sizeScale}
+            color={colors.darkText}
+          />
+        </CenterIconWrapper>
+      );
+    }
+    if (icon_name.startsWith('location=')) {
+      return (
+        <CenterIconWrapper key={state.key} width={width}>
+          <LocationConnectorIcon
+            connector={icon_name.replace('location=', '')}
+            size={36 * fontScale * sizeScale}
+          />
+        </CenterIconWrapper>
+      );
+    }
     if (!ALL_ICONS.has(icon_name)) {
       return (
         <MarkdownText

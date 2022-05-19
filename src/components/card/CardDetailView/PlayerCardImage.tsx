@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   actImage: {
     top: -25 * SCALE_FACTOR,
-    left: -130 * SCALE_FACTOR,
+    left: -136 * SCALE_FACTOR,
     height: 136 * 1.35 * SCALE_FACTOR,
     width: 166 * 1.35 * SCALE_FACTOR,
   },

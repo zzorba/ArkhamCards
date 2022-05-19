@@ -61,7 +61,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
     <Animated.View style={[{ width, height }, cardStyle]}>
       <TouchableWithoutFeedback onPress={onPress}>
         <FlipCard
-          style={[{ width, height, borderRadius: 16, backgroundColor: colors.faction.mystic.text, overflow: 'hidden' }]}
+          style={[{ width, height, borderRadius: 16, backgroundColor: 'rgb(35,21,38)', overflow: 'hidden' }]}
           friction={6}
           perspective={1000}
           flipHorizontal

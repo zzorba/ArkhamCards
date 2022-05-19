@@ -42,7 +42,7 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
 function ArkhamIconRule(usePingFang: boolean, style: StyleContextType, sizeScale: number, avoidLinks: boolean): MarkdownRule<WithIconName, State> {
   return {
     match: SimpleMarkdown.inlineRegex(
-      avoidLinks ? new RegExp('^\\[([^\\]]+)\\](?=$|[^(])') : new RegExp('^\\[([^\\]]+)\\]')
+      avoidLinks ? new RegExp('^\\[([^\\]]+?)\\](?=$|[^(])') : new RegExp('^\\[([^\\]]+?)\\]')
     ),
     order: BASE_ORDER + 1,
     parse: (capture) => {
@@ -54,7 +54,7 @@ function ArkhamIconRule(usePingFang: boolean, style: StyleContextType, sizeScale
 
 function ArkhamIconSkillTextRule(usePingFang: boolean, style: StyleContextType, sizeScale: number): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+?)\\](?=\\([0-9X]+\\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
@@ -307,6 +307,8 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       marginBottom: 4,
       color: context.colors.darkText,
       textAlign: context.justifyContent ? 'justify' : undefined,
+      alignSelf: 'flex-start',
+      flexShrink: 1,
     };
   }, [context, usePingFang, sizeScale]);
   // Text that has hyperlinks uses a different style for the icons.
@@ -431,6 +433,13 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             italic: '',
           },
         },
+      }}
+      style={{
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        flexShrink: 1,
+        backgroundColor: '0xBB8888',
       }}
       onLinkPress={onLinkPress ? wrappedOnLinkPress : undefined}
     >

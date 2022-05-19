@@ -1054,6 +1054,9 @@ export default class Card {
     },
     lang: string
   ) {
+    if (card.code === 'zaw_00022') {
+      console.log(JSON.stringify(card, undefined, 2));
+    }
     const json = Card.gqlToJson(card);
     if (card.linked_card) {
       json.linked_card = Card.gqlToJson({

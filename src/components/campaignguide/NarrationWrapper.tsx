@@ -211,6 +211,10 @@ function showDeKofi() {
   Linking.openURL('https://ko-fi.com/simplainer');
 }
 
+function showRuDonate() {
+  Linking.openURL('https://www.tinkoff.ru/cf/5Cbm7NvL1uF');
+}
+
 function PlayerView({ style }: PlayerProps) {
   const { lang } = useContext(LanguageContext);
   const { colors, typography } = useContext(StyleContext);
@@ -257,7 +261,12 @@ function PlayerView({ style }: PlayerProps) {
       );
     }
     if (lang === 'ru') {
-      return null;
+      return (
+        <Text style={typography.text}>
+          { 'Русская озвучка — фанатский проект, который существует на добровольные пожертвования. Ты тоже ' }
+          <Text key="ru_donate" style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showRuDonate}>можешь помочь</Text>.
+        </Text>
+      );
     }
     return null;
   }, [lang])

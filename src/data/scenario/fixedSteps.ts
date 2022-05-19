@@ -13,6 +13,7 @@ import {
   Scenario,
   ChoiceIcon,
   GenericStep,
+  RuleReminderStep,
 } from '@data/scenario/types';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -468,18 +469,19 @@ const interScenarioChangesStep: Step = {
 };
 
 export const CHECK_TAROT_READING = '$check_tarot_reading';
-function checkTarotReadingStep(scenarioGuide: ScenarioGuide, campaignState: CampaignStateHelper): GenericStep {
+function checkTarotReadingStep(scenarioGuide: ScenarioGuide, campaignState: CampaignStateHelper): RuleReminderStep | GenericStep {
   const scenarioId = scenarioGuide.scenarioId();
   if (scenarioId) {
     const tarotReading = campaignState.scenarioTarotReading(scenarioId);
     if (tarotReading) {
       const card = getTarotCards()[tarotReading.id];
       if (card) {
+        const title = tarotReading.inverted ? t`${card.title} (inverted)` : card.title;
         return {
           id: CHECK_TAROT_READING,
-          title: tarotReading.inverted ? t`Tarot: ${card.title} · Inverted` : t`Tarot: ${card.title}`,
-          bullet_type: 'default',
-          text: tarotReading.inverted ? card.inverted_text : card.text,
+          type: 'rule_reminder',
+          title: t`Destiny Tarot Reading`,
+          text: `<b>${title}</b>\n${tarotReading.inverted ? card.inverted_text : card.text}`,
           bullets: card.id === 'judgement' ? [
             { text: t`If you are using the digital chaos bag in the app, be sure to enable the tarot option on the chaos bag screen.` },
           ] : undefined,
