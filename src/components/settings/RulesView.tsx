@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { TouchableOpacity, ListRenderItemInfo, View, Platform } from 'react-native';
+import { TouchableOpacity, StyleSheet, ListRenderItemInfo, View, Platform } from 'react-native';
 import { t } from 'ttag';
 import { Brackets } from 'typeorm/browser';
 import Animated from 'react-native-reanimated';
@@ -19,6 +19,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { searchNormalize } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { usePressCallback } from '@components/core/hooks';
+import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 
 interface Props {
   componentId: string;
@@ -85,7 +86,7 @@ interface SearchResults {
 export default function RulesView({ componentId }: Props) {
   const { db } = useContext(DatabaseContext);
   const { lang } = useContext(LanguageContext);
-  const { fontScale } = useContext(StyleContext);
+  const { fontScale, height } = useContext(StyleContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({
     term: '',
@@ -153,7 +154,7 @@ export default function RulesView({ componentId }: Props) {
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]
   ), [searchTerm, searchResults, rules]);
-  const height = searchBoxHeight(fontScale);
+  const searchBarHeight = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox
       prompt={t`Search rules`}
@@ -164,20 +165,34 @@ export default function RulesView({ componentId }: Props) {
         <Animated.FlatList
           onScroll={onScroll}
           data={data}
-          contentInset={Platform.OS === 'ios' ? { top: height } : undefined}
-          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -height } : undefined}
+          contentInset={Platform.OS === 'ios' ? { top: searchBarHeight } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -searchBarHeight } : undefined}
           renderItem={renderItem}
-          onEndReachedThreshold={height}
+          onEndReachedThreshold={searchBarHeight}
           onEndReached={fetchMore}
           updateCellsBatchingPeriod={50}
           initialNumToRender={30}
           maxToRenderPerBatch={30}
           windowSize={30}
           ListHeaderComponent={(Platform.OS === 'android') ? (
-            <View style={{ height }} />
+            <View style={{ height: searchBarHeight }} />
           ) : undefined}
+          ListFooterComponent={
+            <View style={[styles.footer, { height: height / 2 }]}>
+              { rules.endReached ? null : <ArkhamLoadingSpinner autoPlay loop />}
+            </View>
+          }
         />
       ) }
     </CollapsibleSearchBox>
   );
 }
+
+
+const styles = StyleSheet.create({
+  footer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});
