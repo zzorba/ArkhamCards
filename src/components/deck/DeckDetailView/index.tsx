@@ -20,7 +20,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import CopyDeckDialog from '@components/deck/CopyDeckDialog';
+import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
 import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
@@ -143,7 +143,6 @@ function DeckDetailView({
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
-  const [copying, toggleCopying] = useFlag(false);
   const [
     deletingDialog,
     deleting,
@@ -384,12 +383,6 @@ function DeckDetailView({
       ]
     );
   }, [actuallyDeleteBrokenDeck, showAlert]);
-
-  const toggleCopyDialog = useCallback(() => {
-    setFabOpen(false);
-    setMenuOpen(false);
-    toggleCopying();
-  }, [toggleCopying, setFabOpen, setMenuOpen]);
 
   const onChecklistPressed = useCallback(() => {
     if (!deck || !cards || !deckEditsRef.current) {
@@ -643,18 +636,12 @@ function DeckDetailView({
       },
     });
   }, [componentId, deck, deckId, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
-
-  const copyDialog = useMemo(() => {
-    return (
-      <CopyDeckDialog
-        campaign={campaign}
-        deckId={copying ? id : undefined}
-        toggleVisible={toggleCopyDialog}
-        signedIn={signedIn}
-        actions={deckActions}
-      />
-    );
-  }, [id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
+  const [copyDialog, showCopyDialog] = useCopyDeckDialog({ campaign, deckId: id, signedIn, actions: deckActions })
+  const toggleCopyDialog = useCallback(() => {
+    setFabOpen(false);
+    setMenuOpen(false);
+    showCopyDialog();
+  }, [showCopyDialog, setFabOpen, setMenuOpen]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);

@@ -11,16 +11,19 @@ interface Props {
   control: React.ReactNode;
   height?: number;
   paddingBottom?: number;
+  hideIcon?: boolean;
 }
-export default function NewDialogContentLine({ icon, text, control, height, paddingBottom }: Props) {
+export default function NewDialogContentLine({ icon, text, control, height, paddingBottom, hideIcon }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.row, height ? { minHeight: height } : undefined, { paddingBottom }]}>
       <View style={styles.leadRow}>
-        <View style={[styles.icon, space.marginRightXs]}>
-          { !!icon && <AppIcon name={icon} size={32} color={colors.M} /> }
-        </View>
-        <Text style={[typography.menuText, !icon ? typography.italic : undefined]}>
+        {!hideIcon && (
+          <View style={[styles.icon, space.marginRightXs]}>
+            { !!icon && <AppIcon name={icon} size={32} color={colors.M} /> }
+          </View>
+        ) }
+        <Text style={[typography.menuText, !icon ? typography.italic : undefined, styles.text]}>
           { text }
         </Text>
       </View>
@@ -39,6 +42,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    flex: 1,
+  },
+  text: {
+    flex: 1,
   },
   icon: {
     width: 32,
