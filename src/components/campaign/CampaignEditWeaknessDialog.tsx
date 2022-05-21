@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { t } from 'ttag';
+import { useAppDispatch } from '@app/store';
 import { CampaignId, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
@@ -14,7 +14,7 @@ export interface CampaignEditWeaknessProps {
 }
 
 function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWeaknessProps & NavigationProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const campaign = useCampaign(campaignId);
   const weaknessSet = campaign?.weaknessSet;
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();

@@ -30,6 +30,7 @@ import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock'
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 import useParsedDeckComponent from '../useParsedDeckComponent';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -119,7 +120,7 @@ export default function DeckViewTab(props: Props) {
     return !!(deck.previousDeckId && !deck.nextDeckId);
   }, [deck.previousDeckId, deck.nextDeckId]);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
     dispatch(setDeckTabooSet(deckId, tabooSetId || 0));
   }, [dispatch, deckId]);

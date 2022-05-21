@@ -38,6 +38,7 @@ import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campa
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
+import { useAppDispatch } from '@app/store';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -61,7 +62,7 @@ function CampaignDetailView(props: Props) {
   const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign);
 
   const updateCampaignActions = useUpdateCampaignActions();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const asyncDispatch: AsyncDispatch = useDispatch();
 
   const updateInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {

@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { c, t } from 'ttag';
 import { updateChaosBagTarotMode } from './actions';
 
@@ -11,6 +10,7 @@ import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   campaignId: CampaignId;
@@ -31,7 +31,7 @@ function getTarotString(tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) {
 }
 
 export default function useTarotCardDialog({ chaosBagResults, actions, campaignId }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const setTarot = useCallback((tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => {
     dispatch(updateChaosBagTarotMode(actions, campaignId, tarot, chaosBagResults));
   }, [dispatch, actions, campaignId, chaosBagResults]);

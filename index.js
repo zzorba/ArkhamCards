@@ -14,7 +14,7 @@ import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/sqlite/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
-import configureStore from './src/app/store';
+import { store, persistor } from './src/app/store';
 import StyleProvider from './src/styles/StyleProvider';
 import LanguageProvider from './src/lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from './src/lib/ArkhamCardsAuthProvider';
@@ -53,7 +53,6 @@ if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
 
 }
 
-const { store, persistor } = configureStore({});
 const [apolloClient, anonClient] = createApolloClient(store);
 
 persistCache({

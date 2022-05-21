@@ -22,6 +22,7 @@ import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import { useSetCampaignShowInterludes } from '@data/remote/campaigns';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { useAppDispatch } from '@app/store';
 
 interface OwnProps {
   campaign: SingleCampaignT;
@@ -78,7 +79,7 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
   const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const setShowInterludes = useSetCampaignShowInterludes();
   const toggleShowInterludes = useCallback(() => {

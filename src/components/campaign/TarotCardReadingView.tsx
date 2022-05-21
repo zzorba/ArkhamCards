@@ -4,6 +4,7 @@ import { find, filter, map, shuffle, take, values, sumBy, findIndex, forEach } f
 import Carousel from 'react-native-snap-carousel';
 import { c, t } from 'ttag';
 
+import { useAppDispatch } from '@app/store';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import { Item, useDialog, usePickerDialog } from '@components/deck/dialogs';
@@ -21,7 +22,6 @@ import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import { useScenarioNames } from '@data/scenario';
 import { useSetCampaignTarotReading } from '@data/remote/campaigns';
-import { useDispatch } from 'react-redux';
 import { updateTarotReading } from './actions';
 import { CampaignId, TarotReading } from '@actions/types';
 
@@ -445,7 +445,7 @@ function TarotCardReadingView({
   const instruction = getTarotReadingInstruction(readingType);
 
   const setCampaignTaroReading = useSetCampaignTarotReading();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const dirty = useMemo(() => {
     if (!savedReading || !tarotCards || !scenarios) {
       return true;

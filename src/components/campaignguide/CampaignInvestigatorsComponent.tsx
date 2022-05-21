@@ -23,6 +23,7 @@ import { CampaignLogSectionDefinition } from '@data/scenario/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import { useArkhamDbError } from '@data/hooks';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -187,7 +188,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   } = props;
   const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const appState = useAppState();
   const syncCampaignData = useCallback(() => {

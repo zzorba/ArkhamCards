@@ -28,6 +28,7 @@ import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { useLinkedCampaignId } from '@components/campaign/hooks';
 import useProcessedCampaign from '../useProcessedCampaign';
+import { useAppDispatch } from '@app/store';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -47,7 +48,7 @@ function LinkedCampaignGuideView(props: Props) {
     campaignIdB: props.campaignIdB,
   });
   const { typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();

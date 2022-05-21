@@ -49,6 +49,7 @@ import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -857,7 +858,7 @@ export default function({
     expandSearchControlsHeight,
     footerPadding,
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     // showHeader when somethings drastic happens, and get a new error message.
     showHeader && showHeader();
