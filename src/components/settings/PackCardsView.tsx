@@ -19,7 +19,7 @@ export default function PackCardsView({
 }: Props) {
   const query = useMemo(() => {
     return combineQueries(
-      where(`c.pack_code = '${pack_code}'`),
+      where(`c.pack_code = '${pack_code}' AND (c.hidden is null OR not c.hidden)`),
       baseQuery ? [baseQuery] : [],
       'and'
     );

@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useContext, useState, useRef } from 'react';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import React, { useCallback, useMemo, useContext, useState, useRef, useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
@@ -12,6 +12,7 @@ import { useDeckSlotCount } from '@components/deck/hooks';
 import { DeckId } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useWhyDidYouUpdate } from '@lib/hooks';
 
 interface DeckCardQuantityProps {
   deckId: DeckId;
@@ -28,36 +29,39 @@ function DeckQuantityComponent(props: DeckCardQuantityProps) {
   const { colors } = useContext(StyleContext);
   const { deckId, editable, code, limit, showZeroCount, forceBig, useGestureHandler, side } = props;
   const actualCount = useDeckSlotCount(deckId, code, side);
+  useWhyDidYouUpdate('DeckQuantityComponent', props);
 
   const [count, setCount] = useState(actualCount);
   useEffectUpdate(() => {
     setCount(actualCount)
   }, [setCount, actualCount]);
   const countRef = useRef(count);
-  countRef.current = count;
+  useEffect(() => {
+    countRef.current = count;
+  }, [count]);
   const dispatch = useDispatch();
   const countChanged: EditSlotsActions = useMemo(() => {
     return {
       setSlot: (code: string, count: number) => {
         setCount(count);
-        InteractionManager.runAfterInteractions(() => dispatch(setDeckSlot(deckId, code, count, side)));
+        setTimeout(() => dispatch(setDeckSlot(deckId, code, count, side)), 20);
       },
       incSlot: (code: string) => {
         setCount(Math.min(limit, countRef.current + 1));
-        InteractionManager.runAfterInteractions(() => dispatch(incDeckSlot(deckId, code, limit, side)));
+        setTimeout(() => dispatch(incDeckSlot(deckId, code, limit, side)), 20);
       },
       decSlot: (code: string) => {
         setCount(Math.max(0, countRef.current - 1));
-        InteractionManager.runAfterInteractions(() => dispatch(decDeckSlot(deckId, code, side)));
+        setTimeout(() => dispatch(decDeckSlot(deckId, code, side)), 20);
       },
     };
   }, [dispatch, deckId, limit, side, setCount]);
   const onSidePress = useCallback(() => {
-    InteractionManager.runAfterInteractions(() => {
-      setCount(Math.max(0, countRef.current - 1));
+    setCount(Math.max(0, countRef.current - 1));
+    setTimeout(() => {
       dispatch(decDeckSlot(deckId, code, true));
       dispatch(incDeckSlot(deckId, code, limit, false));
-    });
+    }, 20);
   }, [dispatch, deckId, code, limit]);
   return (
     <>

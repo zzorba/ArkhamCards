@@ -7,6 +7,7 @@ fragment SingleCard on full_card {
   exile
   faction_code
   health
+  health_per_investigator
   is_unique
   pack_code
   pack_position

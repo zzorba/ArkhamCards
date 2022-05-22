@@ -2540,16 +2540,16 @@
     ],
     "supplies": [
       {
-        "id": "key_of_eztli",
-        "name": "Klucz Eztli",
-        "description": "Klucz Eztli.",
+        "id": "sticky_goop",
+        "name": "Kleista maź",
+        "description": "A sticky goop you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "sticky_goop",
-        "name": "Kleista maź",
-        "description": "Tajemnicze berło, które znalazłeś w podziemnych bagnach.",
+        "id": "key_of_eztli",
+        "name": "Klucz Eztli",
+        "description": "Klucz Eztli.",
         "cost": 0,
         "multiple": false
       },

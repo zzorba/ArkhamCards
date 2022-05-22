@@ -13,6 +13,7 @@ import { NavigationProps } from '@components/nav/types';
 import { getAllPacks, getPackSpoilers } from '@reducers';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useAppDispatch } from '@app/store';
 
 export default function SpoilersView({ componentId }: NavigationProps) {
   const { backgroundStyle, typography } = useContext(StyleContext);
@@ -27,7 +28,7 @@ export default function SpoilersView({ componentId }: NavigationProps) {
     </View>
   ), [typography]);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const setChecked = useCallback((code: string, value: boolean) => {
     dispatch(setPackSpoiler(code, value));
   }, [dispatch]);

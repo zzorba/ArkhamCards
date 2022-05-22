@@ -31,6 +31,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
 import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { useAppDispatch } from '@app/store';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -797,7 +798,7 @@ export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Sc
 
 export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): LatestDeckT | undefined {
   const deck = useDeck(id, true);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (!deck && id !== undefined && !id.local && !id.serverId) {

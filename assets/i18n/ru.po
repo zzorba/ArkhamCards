@@ -5420,7 +5420,7 @@ msgid "Patrol"
 msgstr ""
 
 msgid "Consternation on the Constellation"
-msgstr ""
+msgstr "Застывшее «Созвездие»"
 
 msgid "Deck contains custom content"
 msgstr ""
@@ -5833,7 +5833,7 @@ msgid "Deck Id"
 msgstr ""
 
 msgid "Symphony of Erich Zann"
-msgstr ""
+msgstr "Симфония Эриха Цанна"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"

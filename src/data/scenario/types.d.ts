@@ -175,7 +175,13 @@ export type BinaryChoiceCondition =
   | CampaignLogSectionExistsCondition
   | MultiCondition
   | PartnerStatusCondition;
-export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
+export type LocationConnector =
+  | "purple_moon"
+  | "blue_triangle"
+  | "red_square"
+  | "orange_heart"
+  | "green_diamond"
+  | "green_clover";
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
   | CardChoice

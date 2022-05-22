@@ -287,10 +287,10 @@ export default function CardFlavorTextComponent(
             300: 'Light',
             400: 'Regular',
             700: 'Semibold',
-            800: 'ExtraBold',
-            900: 'Black',
+            800: 'Semibold',
+            900: 'Semibold',
             normal: 'Regular',
-            bold: 'Bold',
+            bold: 'Semibold',
           },
           fontStyles: {
             normal: '',

@@ -40,6 +40,7 @@ import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { useAppDispatch } from '@app/store';
 
 function useCachedValue<T>(value: T | undefined): T | undefined {
   const ref = useRef<T | undefined>(value);
@@ -403,7 +404,7 @@ function parseAllDeck(allDecks: AllDeckFragment[]): GroupedUploadedDecks {
 
 export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, () => Promise<GroupedUploadedDecks>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const checkForSync = useRef(false);
   const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
     fetchPolicy: 'cache-and-network',

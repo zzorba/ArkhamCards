@@ -295,6 +295,7 @@ interface SpecialTokenRender {
   textModifier: string
   revealCount: number;
   modifier: number;
+  difficultyModifier: number | undefined;
   doubleNextToken?: boolean;
   count: number;
   countRender?: number;
@@ -631,6 +632,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
       return {
         textModifier: t.value.modifier > 0 ? `+${t.value.modifier}` : `${t.value.modifier}`,
         modifier: t.value.modifier === 'auto_fail' || t.value.modifier === 'auto_succeed' ? SPECIAL_ODDS[t.value.modifier] : t.value.modifier,
+        difficultyModifier: t.value.increase_difficulty,
         token: t.token,
         revealCount: t.value.reveal_another,
         doubleNextToken: t.value.double_next_modifier,
@@ -647,6 +649,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         revealCount: 1,
         doubleNextToken: false,
         color: colors.token.bless,
+        difficultyModifier: undefined,
       });
     }
     if (curse > 0) {
@@ -658,6 +661,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         doubleNextToken: false,
         count: curse,
         color: colors.token.curse,
+        difficultyModifier: undefined,
       });
     }
     if (frost > 0) {
@@ -669,6 +673,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         revealCount: 1,
         count: frost,
         color: colors.token.frost,
+        difficultyModifier: undefined,
       });
     }
     if (frost > 1) {
@@ -680,6 +685,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         revealCount: 1,
         count: frost,
         color: colors.token.frost,
+        difficultyModifier: undefined,
       });
     }
     const basePass = calculatePassingOdds(
@@ -699,7 +705,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         chaosBagResults,
         specialTokenValues,
         modifiedSkill + t.modifier,
-        testDifficulty,
+        testDifficulty + (t.difficultyModifier || 0),
         t.revealCount,
         t.doubleNextToken
       ) - basePass;
@@ -751,7 +757,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         chaosBagResults,
         specialTokenValues,
         modifiedSkill + t.modifier * t.count,
-        testDifficulty,
+        testDifficulty + ((t.difficultyModifier || 0) * t.count),
         t.revealCount * t.count,
         t.doubleNextToken
       ) - basePass : minBoost;

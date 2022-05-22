@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from 'react';
-import { useDispatch } from 'react-redux';
 import { ScrollView, View, StyleSheet } from 'react-native';
 
 import { CampaignId, CampaignNotes } from '@actions/types';
@@ -12,6 +11,7 @@ import useAddCampaignNoteSectionDialog from './useAddCampaignNoteSectionDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 import { useSetCampaignNotes } from '@data/remote/campaigns';
+import { useAppDispatch } from '@app/store';
 
 export interface CampaignLogViewProps {
   campaignId: CampaignId;
@@ -23,7 +23,7 @@ export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const setCampaignNotes = useSetCampaignNotes();
   const saveCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {

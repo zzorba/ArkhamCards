@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { filter, map, range, sortBy } from 'lodash';
 import { t } from 'ttag';
 
+import { useAppDispatch } from '@app/store';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
 import SealTokenButton from './SealTokenButton';
 import { CampaignId, SealedToken } from '@actions/types';
-import { useDispatch } from 'react-redux';
 import AppIcon from '@icons/AppIcon';
 import { updateChaosBagReleaseAllSealed, updateChaosBagSealTokens } from './actions';
 import space, { s } from '@styles/space';
@@ -65,7 +65,7 @@ export default function useSealTokenButton({ campaignId, chaosBag, chaosBagResul
     });
   }, [chaosBag, chaosBagResults.blessTokens, chaosBagResults.curseTokens, chaosBagResults.tarot]);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const updateSealedTokens = useCallback((newSealedTokens: SealedToken[]) => {
     dispatch(updateChaosBagSealTokens(actions, campaignId, chaosBagResults, newSealedTokens));
   }, [dispatch, campaignId, chaosBagResults, actions]);

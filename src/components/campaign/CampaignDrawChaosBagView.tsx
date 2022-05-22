@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { useAppDispatch } from '@app/store';
 import DrawChaosBagComponent from './DrawChaosBagComponent';
 import { updateCampaignChaosBag } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
@@ -27,7 +28,7 @@ type Props = NavigationProps & CampaignDrawChaosBagProps;
 
 function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators, cycleCode }: Props) {
   const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
   const setCampaignChaosBag = useSetCampaignChaosBag();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {

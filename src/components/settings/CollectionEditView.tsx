@@ -19,13 +19,14 @@ import { useSettingFlag, useSettingValue } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { Navigation } from 'react-native-navigation';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useAppDispatch } from '@app/store';
 
 export interface CollectionEditProps {
   draftMode?: boolean;
 }
 
 function CollectionEditView({ componentId, draftMode }: CollectionEditProps & NavigationProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [draft] = useSelector(getDraftPacks);
   const [draftFromCollection, toggleDraftFromCollection] = useSettingFlag('draft_from_collection');
   const packs = useSelector(getAllPacks);

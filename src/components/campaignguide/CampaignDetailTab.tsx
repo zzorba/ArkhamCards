@@ -231,16 +231,6 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
-          { SHOW_TAROT && (
-            <DeckButton
-              icon="special_cards"
-              title={t`Tarot Readings`}
-              detail={t`Perform readings with the tarot deck`}
-              color="light_gray"
-              onPress={showTarotDialog}
-              bottomMargin={s}
-            />
-          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"
@@ -259,7 +249,7 @@ export default function CampaignDetailTab({
           showLinkedScenario={showLinkedScenario}
           showAlert={showAlert}
         />
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
+        <View style={space.paddingSideS}>
           <CampaignInvestigatorsComponent
             componentId={componentId}
             showAlert={showAlert}
@@ -274,6 +264,19 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
+
+        { SHOW_TAROT && (
+          <View style={[space.paddingSideS, space.paddingBottomS]}>
+            <DeckButton
+              icon="special_cards"
+              title={t`Tarot Readings`}
+              detail={t`Perform readings with the tarot deck`}
+              color="light_gray"
+              onPress={showTarotDialog}
+              bottomMargin={s}
+            />
+          </View>
+        ) }
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckOverlapComponent componentId={componentId} cards={cards} />

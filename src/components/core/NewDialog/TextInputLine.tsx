@@ -1,5 +1,5 @@
 import React, { Ref, useCallback, useContext } from 'react';
-import { NativeSyntheticEvent, Platform, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
+import { NativeSyntheticEvent, Platform, ReturnKeyType, StyleSheet, Text, TextInput, TextInputSubmitEditingEventData, View } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
@@ -9,14 +9,16 @@ interface Props {
   onChangeText: (value: string) => void;
   placeholder?: string;
 
-  textInputRef: Ref<TextInput>;
+  textInputRef?: Ref<TextInput>;
   error?: string;
 
   onSubmit?: (text: string) => void;
   paddingBottom?: number;
   disabled?: boolean;
+
+  returnKeyType?: ReturnKeyType;
 }
-export default function TextInputLine({ value, onChangeText, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
+export default function TextInputLine({ value, onChangeText, returnKeyType, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const onSubmitEditting = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -40,7 +42,7 @@ export default function TextInputLine({ value, onChangeText, disabled, textInput
         placeholderTextColor={colors.lightText}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmit ? onSubmitEditting : undefined}
-        returnKeyType={onSubmit ? 'done' : undefined}
+        returnKeyType={onSubmit ? 'done' : returnKeyType}
       />
       { !!error && (
         <View style={space.paddingTopS}>

@@ -7,6 +7,7 @@ import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useAppDispatch } from '@app/store';
 import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
@@ -70,7 +71,7 @@ export function useDeckEdits(
   initialDeck?: LatestDeckT,
   initialMode?: 'edit' | 'upgrade'
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [mode, setMode] = useState(initialMode);
   useEffect(() => {

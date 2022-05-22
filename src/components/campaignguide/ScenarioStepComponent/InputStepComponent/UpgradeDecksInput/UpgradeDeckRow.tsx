@@ -39,6 +39,7 @@ import { useDeck } from '@data/hooks';
 import InputCounterRow from '../InputCounterRow';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -143,7 +144,7 @@ function UpgradeDeckRow({
 }: Props) {
   const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
   const { colors, typography, width } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
   const earnedXp = useMemo(() => {

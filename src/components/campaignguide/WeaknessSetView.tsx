@@ -13,7 +13,6 @@ import space, { s } from '@styles/space';
 import { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
 import { useFlag, useToggles, useWeaknessCards } from '@components/core/hooks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { useDispatch } from 'react-redux';
 import { updateCampaignWeaknessSet } from '@components/campaign/actions';
 import { SetCampaignWeaknessSetAction, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import CampaignGuideContext from './CampaignGuideContext';
@@ -22,12 +21,13 @@ import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestig
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CampaignErrorView from './CampaignErrorView';
 import useProcessedCampaign from './useProcessedCampaign';
+import { useAppDispatch } from '@app/store';
 
 export type WeaknessSetProps = CampaignGuideInputProps;
 
 function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet }: { campaign: SingleCampaignT; componentId: string; setCampaignWeaknessSet: SetCampaignWeaknessSetAction }) {
   const { typography, colors } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [liveSelected, toggle] = useToggles(
     () => {
       const r: { [pack: string]: boolean } = {};

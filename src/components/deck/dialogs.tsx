@@ -419,6 +419,7 @@ interface PickerDialogOptions<T> {
   items: Item<T>[];
   selectedValue?: T;
   onValueChange: (value: T) => void;
+  noIcons?: boolean;
 }
 export function usePickerDialog<T>({
   title,
@@ -427,6 +428,7 @@ export function usePickerDialog<T>({
   items,
   selectedValue,
   onValueChange,
+  noIcons,
 }: PickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>();
@@ -465,6 +467,7 @@ export function usePickerDialog<T>({
             value={item.value}
             disabled={item.disabled}
             rightNode={item.rightNode}
+            indicator={noIcons ? 'none' : undefined}
             onValueChange={onValuePress}
             // tslint:disable-next-line
             selected={selectedValue === item.value}

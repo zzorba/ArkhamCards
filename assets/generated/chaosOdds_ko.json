@@ -5185,7 +5185,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "당신의 위협 영역에 있는 [[AI]] 조우 카드 장수",
           "min": 0
         }
       },
@@ -5201,7 +5201,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "당신의 위협 영역에 있는 [[AI]] 조우 카드 장수",
           "min": 0
         }
       },
@@ -5221,7 +5221,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "당신의 “기억” 개수의 절반(소수점 내림)",
           "min": 0
         }
       },
@@ -5245,7 +5245,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "당신의 “기억” 개수",
           "min": 0
         }
       },
@@ -5273,7 +5273,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "당신의 위협 영역에 있는 뒷면 조우 카드 개수",
           "min": 0
         }
       },
@@ -5281,7 +5281,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded down)",
+          "prompt": "플레이 상태인 장소 개수의 절반(소수점 내림)",
           "min": 0
         }
       },
@@ -5304,7 +5304,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "당신의 위협 영역에 있는 뒷면 조우 카드 개수",
           "min": 0
         }
       },
@@ -5312,7 +5312,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations in play",
+          "prompt": "플레이 상태인 장소 개수",
           "min": 0
         }
       },
@@ -5339,7 +5339,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded down)",
+          "prompt": "당신과 당신이 조종하는 자산이 가진 피해 총합의 절반(소수점 내림)",
           "min": 0
         }
       },
@@ -5365,7 +5365,7 @@
           },
           "options": [
             {
-              "prompt": "Take 2 damage",
+              "prompt": "피해를 2 받음",
               "modified_value": {
                 "modifier": 0
               }
@@ -5379,7 +5379,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded up)",
+          "prompt": "당신과 당신이 조종하는 자산이 가진 피해 총합의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -5405,7 +5405,7 @@
           },
           "options": [
             {
-              "prompt": "Take 3 damage",
+              "prompt": "피해를 3 받음",
               "modified_value": {
                 "modifier": 0
               }
@@ -5447,7 +5447,7 @@
           },
           "options": [
             {
-              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "prompt": "이번 능력 테스트는 [[비야키]] 적에 대한 공격이나 회피 시도",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -5486,7 +5486,7 @@
           },
           "options": [
             {
-              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "prompt": "이번 능력 테스트는 [[비야키]] 적에 대한 공격이나 회피 시도",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -5505,7 +5505,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "당신의 “기억” 개수의 절반(소수점 내림)",
           "min": 0
         }
       },
@@ -5513,7 +5513,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of hidden cards in your hand",
+          "prompt": "당신의 손에 있는 ‘숨김’ 카드 장수",
           "min": 0
         }
       },
@@ -5534,7 +5534,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out a tally mark next to your “Memories”",
+              "prompt": "당신의 “기억”에 있는 빗금 하나를 지움",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5548,7 +5548,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "당신의 “기억” 개수",
           "min": 0
         }
       },
@@ -5556,7 +5556,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of hidden cards in your hand",
+          "prompt": "당신의 손에 있는 ‘숨김’ 카드 장수",
           "min": 0
         }
       },
@@ -5577,7 +5577,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out a tally mark next to your “Memories”",
+              "prompt": "당신의 “기억”에 있는 빗금 하나를 지움",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5613,7 +5613,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "prompt": "당신의 “기억”에 있는 빗금 하나를 지움",
               "modified_value": {
                 "modifier": -1
               }
@@ -5630,13 +5630,13 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Carcosa]] location",
+              "prompt": "당신이 [[카르코사]] 장소에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
             },
             {
-              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "prompt": "당신이 [[카르코사]] 장소에 있으며, 현재 주요사건에 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": -2
               }
@@ -5668,7 +5668,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "prompt": "당신의 “기억”에 있는 빗금 하나를 지움",
               "modified_value": {
                 "modifier": -2
               }
@@ -5685,13 +5685,13 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Carcosa]] location",
+              "prompt": "당신이 [[카르코사]] 장소에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
             },
             {
-              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "prompt": "당신이 [[카르코사]] 장소에 있으며, 현재 주요사건에 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": -3
               }
@@ -5709,7 +5709,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed locations without clues (rounded up)",
+          "prompt": "단서가 없는 공개된 장소 개수의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -5739,7 +5739,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded up)",
+          "prompt": "플레이 영역에 있는 장소 개수의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -5773,7 +5773,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "플레이 영역에 있는 [[이상한 나라]] 장소의 수",
           "min": 0,
           "max": 5
         }
@@ -5790,7 +5790,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "플레이 영역에 있는 [[이상한 나라]] 장소의 수",
           "min": 0,
           "adjustment": 1
         }
@@ -5822,7 +5822,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "당신이 있는 장소에 굴이 없음",
               "modified_value": {
                 "modifier": -5
               }
@@ -5839,7 +5839,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "당신이 있는 장소에 굴이 없음",
               "modified_value": {
                 "modifier": -5
               }
@@ -5870,7 +5870,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "당신이 있는 장소에 굴이 없음",
               "modified_value": {
                 "modifier": -6
               }
@@ -5887,7 +5887,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "당신이 있는 장소에 굴이 없음",
               "modified_value": {
                 "modifier": -6
               }
@@ -5911,7 +5911,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "현재 진행 중인 주요사건 c의 번호",
           "min": 1,
           "max": 4,
           "adjustment": 1
@@ -5926,7 +5926,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "당신은 “식사 예절이 없음”",
               "modified_value": {
                 "modifier": -4
               }
@@ -5943,7 +5943,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "당신은 “식사 예절이 없음”",
               "modified_value": {
                 "modifier": -4
               }
@@ -5963,7 +5963,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "현재 진행 중인 주요사건 c의 번호",
           "min": 1,
           "max": 5,
           "adjustment": 2
@@ -5978,7 +5978,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "당신은 “식사 예절이 없음”",
               "modified_value": {
                 "modifier": -5
               }
@@ -5995,7 +5995,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "당신은 “식사 예절이 없음”",
               "modified_value": {
                 "modifier": -5
               }
@@ -6019,7 +6019,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of blame on your copy of Royal Suspicion (rounded up)",
+          "prompt": "당신이 조종하는 ‘여왕의 불신’ 위에 있는 비난의 숫자의 절반(반올림)",
           "min": 0
         }
       },
@@ -6032,7 +6032,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location",
+              "prompt": "하트 여왕이 당신이 있는 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6056,7 +6056,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "‘처형인’이 플레이 중임",
               "modified_value": {
                 "modifier": -4
               }
@@ -6070,7 +6070,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of blame on your copy of Royal Suspicion",
+          "prompt": "당신이 조종하는 ‘여왕의 불신’ 위에 있는 비난의 숫자",
           "min": 0
         }
       },
@@ -6083,7 +6083,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location or a connecting location",
+              "prompt": "하트 여왕이 당신이 있는 장소나 이어진 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6107,7 +6107,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "‘처형인’이 플레이 중임",
               "modified_value": {
                 "modifier": -5
               }
@@ -6125,7 +6125,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "현재 주요사건에 올라가 있는 파멸의 수의 절반(반올림)",
           "min": 0
         }
       },
@@ -6138,7 +6138,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "행동을 1 소비함",
               "modified_value": {
                 "modifier": -2
               }
@@ -6161,7 +6161,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "‘재버워크’가 플레이 중임",
               "modified_value": {
                 "modifier": -4
               }
@@ -6175,7 +6175,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "현재 주요사건에 올라가 있는 파멸의 수의 절반(반올림)",
           "min": 0,
           "adjustment": 1
         }
@@ -6189,7 +6189,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "행동을 1 소비함",
               "modified_value": {
                 "modifier": -3
               }
@@ -6213,7 +6213,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "‘재버워크’가 플레이 중임",
               "modified_value": {
                 "modifier": -5
               }
@@ -6236,7 +6236,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 1 [per_investigator]개 이상의 토큰이 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -6253,7 +6253,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 있는 피해 토큰과 공포 토큰의 수가 같지 않음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6270,7 +6270,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 있는 피해 토큰과 공포 토큰의 수가 같지 않음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6295,7 +6295,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 1 [per_investigator]개 이상의 토큰이 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6312,7 +6312,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 있는 피해 토큰과 공포 토큰의 수가 같지 않음",
               "modified_value": {
                 "modifier": -5
               }
@@ -6329,7 +6329,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "시나리오 참조 카드 위에 있는 피해 토큰과 공포 토큰의 수가 같지 않음",
               "modified_value": {
                 "modifier": -5
               }
@@ -6353,7 +6353,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "플레이 중인 [[체스]] 적의 숫자",
           "min": 0,
           "max": 5
         }
@@ -6367,7 +6367,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "[[체스]] 적과 전투하거나 회피하는 도중에 이 토큰이 공개되었음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6385,7 +6385,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "[[체스]] 적과 전투하거나 회피하는 도중에 이 토큰이 공개되었음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6403,7 +6403,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "당신이 [[그림자]] 장소에 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -6417,7 +6417,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "플레이 중인 [[체스]] 적의 숫자",
           "min": 0
         }
       },
@@ -6430,7 +6430,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "[[체스]] 적과 전투하거나 회피하는 도중에 이 토큰이 공개되었음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6448,7 +6448,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "[[체스]] 적과 전투하거나 회피하는 도중에 이 토큰이 공개되었음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6466,7 +6466,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "당신이 [[그림자]] 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6489,7 +6489,7 @@
           },
           "options": [
             {
-              "prompt": "More total damage and horror on Alice than on your investigator",
+              "prompt": "당신의 조사자보다 엘리스 위의 피해와 공포의 총합이 더 많음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6506,7 +6506,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "당신이 [[이상한 나라]] 또는 [[그림자]] 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -6523,7 +6523,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "플레이 영역에 있는 [[이상한 나라]] 장소가 3개 이하",
               "modified_value": {
                 "modifier": -4
               }
@@ -6540,7 +6540,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "‘구라트나카’가 당신이 있는 장소에 있음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6560,7 +6560,7 @@
           },
           "options": [
             {
-              "prompt": "There is more total damage and horror on Alice than on your investigator",
+              "prompt": "당신의 조사자보다 엘리스 위의 피해와 공포의 총합이 더 많음",
               "modified_value": {
                 "modifier": -5
               }
@@ -6577,7 +6577,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "당신이 [[이상한 나라]] 또는 [[그림자]] 장소에 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -6594,7 +6594,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "플레이 영역에 있는 [[이상한 나라]] 장소가 3개 이하",
               "modified_value": {
                 "modifier": -5
               }
@@ -6611,7 +6611,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "‘구라트나카’가 당신이 있는 장소에 있음",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -7398,6 +7398,66 @@
         "token": "elder_thing",
         "value": {
           "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zbh022",
+    "scenario": "meddling_of_meowlathotep",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "플레이 상태이거나, 승점 더미에 있거나, ‘냐옹라토텝’에게 부착된 [[묘스크]] 적을 모두 센 다음 그 숫자를 반으로 나눈 값(올림)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "플레이 상태이거나, 승점 더미에 있거나, ‘냐옹라토텝’에게 부착된 [[묘스크]] 적을 모두 센 값",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -7
         }
       }
     ]

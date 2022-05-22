@@ -80,15 +80,15 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# con brood trốn thoát vào tự nhiên."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "bạn đã trấn an được dân làng."
           },
           {
             "id": "closed_tear",
-            "text": "the investigators closed the tear in reality."
+            "text": "các điều tra viên đã đóng được vết rách thực tại."
           },
           {
             "id": "destroyed_necronomicon",
@@ -100,7 +100,7 @@
           },
           {
             "id": "entered_the_gate",
-            "text": "the investigators entered the gate."
+            "text": "các điều tra viên tiến vào cánh cửa."
           },
           {
             "id": "experiment_defeated",
@@ -156,7 +156,7 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Không có con brood nào trốn thoát vào tự nhiên."
           },
           {
             "id": "restored_silas_bishop",
@@ -180,7 +180,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "bạn đã cảnh báo được cho dân làng."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -196,19 +196,19 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
+            "text": "Yog-Sothoth đã xé bỏ rào cản giữa các thế giới và trở thành một với tất cả thực tại."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth tore apart the barrier between worlds, and became one with all reality."
+            "text": "Yog-Sothoth xé bỏ rào cản giữa các thế giới và hợp nhất thành một với tất cả thực tại."
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth has fled to another dimension."
+            "text": "Yog-Sothoth đã chạy trốn đến một chiều không gian khác."
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy."
+            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy campaign."
           }
         ]
       },
@@ -1323,15 +1323,15 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# con brood trốn thoát vào tự nhiên."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "bạn đã trấn an được dân làng."
           },
           {
             "id": "closed_tear",
-            "text": "the investigators closed the tear in reality."
+            "text": "các điều tra viên đã đóng được vết rách thực tại."
           },
           {
             "id": "destroyed_necronomicon",
@@ -1343,7 +1343,7 @@
           },
           {
             "id": "entered_the_gate",
-            "text": "the investigators entered the gate."
+            "text": "các điều tra viên tiến vào cánh cửa."
           },
           {
             "id": "experiment_defeated",
@@ -1399,7 +1399,7 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Không có con brood nào trốn thoát vào tự nhiên."
           },
           {
             "id": "restored_silas_bishop",
@@ -1423,7 +1423,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "bạn đã cảnh báo được cho dân làng."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1439,19 +1439,19 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
+            "text": "Yog-Sothoth đã xé bỏ rào cản giữa các thế giới và trở thành một với tất cả thực tại."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth tore apart the barrier between worlds, and became one with all reality."
+            "text": "Yog-Sothoth xé bỏ rào cản giữa các thế giới và hợp nhất thành một với tất cả thực tại."
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth has fled to another dimension."
+            "text": "Yog-Sothoth đã chạy trốn đến một chiều không gian khác."
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy."
+            "text": "Zebulon Whateley đã sống sót qua The Dunwich Legacy campaign."
           }
         ]
       },
@@ -2540,16 +2540,16 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "id": "mysterious_scepter",
+        "name": "Mysterious Scepter",
+        "description": "A mysterious scepter you found in the throne room.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "id": "sticky_goop",
+        "name": "Sticky Goop",
+        "description": "A sticky goop you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
       },

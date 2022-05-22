@@ -1419,7 +1419,7 @@ export type friend_status_type_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_cardKeySpecifier = ('back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'exceptional' | 'exile' | 'faction_code' | 'health' | 'hidden' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked_card' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | 'updated_at' | 'vengeance' | 'victory' | full_cardKeySpecifier)[];
+export type full_cardKeySpecifier = ('back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'exceptional' | 'exile' | 'faction_code' | 'health' | 'health_per_investigator' | 'hidden' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked_card' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | 'updated_at' | 'vengeance' | 'victory' | full_cardKeySpecifier)[];
 export type full_cardFieldPolicy = {
 	back_link?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1443,6 +1443,7 @@ export type full_cardFieldPolicy = {
 	exile?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
+	health_per_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	hidden?: FieldPolicy<any> | FieldReadFunction<any>,
 	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,

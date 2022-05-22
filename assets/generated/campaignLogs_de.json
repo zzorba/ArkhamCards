@@ -2540,6 +2540,13 @@
     ],
     "supplies": [
       {
+        "id": "sticky_goop",
+        "name": "Klebrige Substanz",
+        "description": "A sticky goop you found in a subterranean swamp.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "key_of_eztli",
         "name": "Schlüssel der Eztli",
         "description": "Der Schlüssel der Eztli.",
@@ -2550,13 +2557,6 @@
         "id": "mysterious_scepter",
         "name": "Mysteriöses Zepter",
         "description": "Ein Mysteriöses Zepter, das im Thronsaal gefunden wurde.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "sticky_goop",
-        "name": "Klebrige Substanz",
-        "description": "Ein mysteriöses Zepter gefunden in einem Thronsaal.",
         "cost": 0,
         "multiple": false
       },

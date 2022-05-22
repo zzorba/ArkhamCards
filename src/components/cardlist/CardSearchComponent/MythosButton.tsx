@@ -5,7 +5,6 @@ import {
   Pressable,
   Platform,
   View,
-  InteractionManager,
 } from 'react-native';
 import Animated, { interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -43,7 +42,7 @@ function MythosButton({ filterId }: Props) {
   const onPress = useCallback(() => {
     const newState = !mythosModeState;
     setMythosModeState(newState);
-    InteractionManager.runAfterInteractions(() => dispatch(toggleMythosMode(filterId, newState)));
+    setTimeout(() => dispatch(toggleMythosMode(filterId, newState)), 20);
   }, [setMythosModeState, dispatch, mythosModeState, filterId]);
 
   const dark = colors.D30;

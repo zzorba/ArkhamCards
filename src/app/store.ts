@@ -8,6 +8,7 @@ import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import reducers, { AppState } from '@reducers';
+import { useDispatch } from 'react-redux';
 
 // import Reactotron from './ReactotronConfig';
 
@@ -26,7 +27,7 @@ const discard = async(error, _action, _retries) => {
 }
 */
 
-export default function configureStore(initialState: AppState) {
+function configureStore(initialState: AppState) {
   const offline = createOffline({
     ...offlineConfig,
     // @ts-ignore
@@ -87,3 +88,6 @@ export default function configureStore(initialState: AppState) {
 
   return { store, persistor };
 }
+export const { store, persistor } = configureStore({} as any);
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatch>()

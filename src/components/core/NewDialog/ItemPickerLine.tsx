@@ -20,7 +20,7 @@ interface Props<T> {
   onValueChange: (value: T) => void;
   selected: boolean;
   last: boolean;
-  indicator?: 'check' | 'radio'
+  indicator?: 'check' | 'radio' | 'none';
 }
 const ARKHAM_ICONS = new Set(['weakness', 'wild']);
 export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
@@ -67,12 +67,14 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
             ) }
           </View>
           { !!rightNode && rightNode }
-          { indicator === 'radio' ? (
-            <View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }]}>
-              { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
-            </View>
-          ) : (
-            <ArkhamSwitch value={selected} color="dark" />
+          { indicator !== 'none' && (
+            indicator === 'radio' ? (
+              <View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }]}>
+                { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
+              </View>
+            ) : (
+              <ArkhamSwitch value={selected} color="dark" />
+            )
           ) }
         </View>
       </View>

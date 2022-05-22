@@ -23,6 +23,7 @@ import { removeLocalCampaign } from '@components/campaign/actions';
 import useConfirmSignupDialog from './useConfirmSignupDialog';
 import { useApolloClient } from '@apollo/client';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useAppDispatch } from '@app/store';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -407,7 +408,7 @@ interface Props {
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();

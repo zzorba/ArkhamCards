@@ -27,6 +27,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useAppDispatch } from '@app/store';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
@@ -42,7 +43,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const campaign = useCampaign(id);
   const [allInvestigators] = useCampaignInvestigators(campaign);

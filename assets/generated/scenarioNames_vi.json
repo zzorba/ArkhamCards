@@ -45,7 +45,7 @@
   },
   {
     "id": "aw_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "aw_prologue",
@@ -85,7 +85,7 @@
   },
   {
     "id": "blood_on_the_altar",
-    "name": "Blood on the Altar"
+    "name": "Máu trên Tế Đàn"
   },
   {
     "id": "by_the_book",
@@ -97,7 +97,7 @@
   },
   {
     "id": "ce_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "ce_prologue",
@@ -113,7 +113,7 @@
   },
   {
     "id": "cp_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "cp_prologue",
@@ -157,7 +157,7 @@
   },
   {
     "id": "dm_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "dm_prologue",
@@ -165,7 +165,7 @@
   },
   {
     "id": "dwl_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "dwl_interlude2",
@@ -193,7 +193,7 @@
   },
   {
     "id": "eoe_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "eoe_prologue",
@@ -365,7 +365,7 @@
   },
   {
     "id": "ptc_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "ptc_interlude1",
@@ -561,11 +561,11 @@
   },
   {
     "id": "tcu_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "tde_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "tde_prologue",
@@ -581,7 +581,7 @@
   },
   {
     "id": "tfa_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "tfa_interlude1",
@@ -785,7 +785,7 @@
   },
   {
     "id": "tic_epilogue",
-    "name": "Epilogue"
+    "name": "Phần kết"
   },
   {
     "id": "to_the_forbidden_peaks",

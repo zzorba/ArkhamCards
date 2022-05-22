@@ -25,6 +25,7 @@ import CampaignErrorView from './CampaignErrorView';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import useProcessedCampaign from './useProcessedCampaign';
+import { useAppDispatch } from '@app/store';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -37,7 +38,7 @@ function CampaignGuideView(props: Props) {
   const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { campaignId } = campaignData;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   const setCampaignName = useCallback((name: string) => {
