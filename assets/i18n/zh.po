@@ -1524,10 +1524,10 @@ msgid "Return to The Path to Carcosa"
 msgstr "重返卡爾克薩之路"
 
 msgid "The Dream-Quest"
-msgstr "The Dream-Quest"
+msgstr "夢尋秘境"
 
 msgid "The Web of Dreams"
-msgstr "The Web of Dreams"
+msgstr "睡夢之網"
 
 msgid "Return to Curtain Call"
 msgstr "重返謝幕"
@@ -1554,28 +1554,28 @@ msgid "Return to Dim Carcosa"
 msgstr "重返卡城幽影"
 
 msgid "Beyond the Gates of Sleep"
-msgstr "Beyond the Gates of Sleep"
+msgstr "夢境門外"
 
 msgid "The Black Cat"
-msgstr "The Black Cat"
+msgstr "黑貓"
 
 msgid "The Search for Kadath"
 msgstr "尋覓卡達斯"
 
 msgid "The Oneironauts"
-msgstr "The Oneironauts"
+msgstr "夢境行者"
 
 msgid "Dark Side of the Moon"
 msgstr "月之暗面"
 
 msgid "The Great Ones"
-msgstr "The Great Ones"
+msgstr "夢境諸神"
 
 msgid "Where Gods Dwell"
-msgstr "Where Gods Dwell"
+msgstr "神居之所"
 
 msgid "Waking Nightmare"
-msgstr "Waking Nightmare"
+msgstr "清醒噩夢"
 
 msgid "A Thousand Shapes of Horror"
 msgstr "萬千駭形"
@@ -1587,10 +1587,10 @@ msgid "Weaver of the Cosmos"
 msgstr "編織宇宙"
 
 msgid "Evidence of Kadath"
-msgstr "Evidence of Kadath"
+msgstr "卡達斯的證據"
 
 msgid "Steps of the Bridge"
-msgstr "Steps of the Bridge"
+msgstr "橋梁進度"
 
 msgid "Deck Type"
 msgstr "牌組類型"
@@ -1621,7 +1621,7 @@ msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "折扣${ taboo.extra_xp }點經驗。"
 
 msgid "At Death's Doorstep"
-msgstr "At Death's Doorstep"
+msgstr "死亡門前"
 
 msgid "Sealed Tokens"
 msgstr "已封印標記"
@@ -1770,7 +1770,7 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "使用自食其力時，不允許使用占用盟友槽位的支援卡。"
 
 msgid "Too many off-class cards for Versatile"
-msgstr "Too many off-class cards for Versatile"
+msgstr ""
 
 msgid "Asset: Ally. Arcane"
 msgstr "支援: 盟友. 法術"
