@@ -1082,9 +1082,6 @@ msgstr "Bearbeiten"
 msgid "Required"
 msgstr "Erforderlich"
 
-msgid "Copy Deck"
-msgstr "Deck kopieren"
-
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
@@ -4853,7 +4850,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid ""
-"This deck is ownered by another player. You can record the upgrade now and "
+"This deck is owned by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""

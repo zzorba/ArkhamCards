@@ -1082,9 +1082,6 @@ msgstr "Editar"
 msgid "Required"
 msgstr "Requerido"
 
-msgid "Copy Deck"
-msgstr "Copiar mazo"
-
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
@@ -4728,7 +4725,7 @@ msgid "Record damage/horror:"
 msgstr "Guardar daño/horror:"
 
 msgid ""
-"This deck is ownered by another player. You can record the upgrade now and "
+"This deck is owned by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""

@@ -1051,9 +1051,6 @@ msgstr "새로운 이름"
 msgid "Required"
 msgstr "요구사항"
 
-msgid "Copy Deck"
-msgstr "덱 복사"
-
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
@@ -4674,7 +4671,7 @@ msgid_plural "${ input.prompt } (choose ${ quantity })"
 msgstr[0] "${ input.prompt } (${ quantity }개 선택)"
 
 msgid ""
-"This deck is ownered by another player. You can record the upgrade now and "
+"This deck is owned by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""

@@ -1145,7 +1145,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "bạn chọn không đến chỗ cảnh sát."
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -1217,7 +1217,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "cảnh sát nghi ngờ bạn."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1229,7 +1229,7 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Kẻ Lạ đi theo bạn."
           },
           {
             "id": "took_onyx_clasp",
@@ -1237,7 +1237,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "bạn cố gắng cảnh báo cảnh sát."
           },
           {
             "id": "unable_to_find_nigel",
@@ -1571,7 +1571,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "bạn chọn không đến chỗ cảnh sát."
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -1643,7 +1643,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "cảnh sát nghi ngờ bạn."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1655,7 +1655,7 @@
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Kẻ Lạ đi theo bạn."
           },
           {
             "id": "took_onyx_clasp",
@@ -1663,7 +1663,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "bạn cố gắng cảnh báo cảnh sát."
           },
           {
             "id": "unable_to_find_nigel",
