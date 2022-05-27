@@ -23,6 +23,30 @@ export interface SectionCount {
   count: number;
 }
 
+async function createDatabaseConnection(recreate: boolean) {
+  const connection = await createConnection({
+    type: 'react-native',
+    database: 'arkham4',
+    location: 'default',
+    logging: [
+      'error',
+      'schema',
+    ],
+    // maxQueryExecutionTime: 4000,
+    migrations: [],
+    entities: [
+      Card,
+      EncounterSet,
+      FaqEntry,
+      TabooSet,
+      Rule,
+    ],
+  });
+  await connection.runMigrations();
+  await connection.synchronize(recreate);
+  return connection;
+}
+
 export default class Database {
   static SCHEMA_VERSION: number = 41;
   connectionP: Promise<Connection>;
@@ -39,28 +63,7 @@ export default class Database {
 
   constructor(latestVersion?: number) {
     const recreate = !latestVersion || latestVersion !== Database.SCHEMA_VERSION;
-
-    this.connectionP = createConnection({
-      type: 'react-native',
-      database: 'arkham4',
-      location: 'default',
-      logging: [
-        'error',
-        // 'query',
-        'schema',
-      ],
-      dropSchema: recreate,
-      synchronize: recreate,
-      // maxQueryExecutionTime: 4000,
-      // migrations:['migrations/migration.js'],
-      entities: [
-        Card,
-        EncounterSet,
-        FaqEntry,
-        TabooSet,
-        Rule,
-      ],
-    });
+    this.connectionP = createDatabaseConnection(recreate);
   }
 
   addListener(change: () => void) {

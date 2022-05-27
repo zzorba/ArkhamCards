@@ -55,6 +55,7 @@ export interface DeckMeta {
   option_selected?: string;
   alternate_front?: string;
   alternate_back?: string;
+  [key: string]: string | undefined;
 }
 
 export interface LocalDeckId {

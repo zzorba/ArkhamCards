@@ -394,15 +394,15 @@ export default class DeckValidation {
         }
         if (option.faction_select && option.faction_select.length) {
           let selected_faction: string = option.faction_select[0]
-          if (this.meta &&
-            this.meta.faction_selected &&
-            indexOf(option.faction_select, this.meta.faction_selected) !== -1
-          ) {
-            selected_faction = this.meta.faction_selected;
+          if (this.meta) {
+            const selection = option.id ? this.meta[option.id] : this.meta.faction_selected;
+            if (selection && indexOf(option.faction_select, selection) !== -1) {
+              selected_faction = selection;
+            }
           }
-          if (card.faction_code != selected_faction &&
-            card.faction2_code != selected_faction &&
-            card.faction3_code != selected_faction){
+          if (card.faction_code !== selected_faction &&
+            card.faction2_code !== selected_faction &&
+            card.faction3_code !== selected_faction){
             continue;
           }
         }
