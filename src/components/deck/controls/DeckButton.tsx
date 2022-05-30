@@ -13,6 +13,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
   'kofi' |
+  'resign' |
   'addcard' |
   'headset' |
   'discord' |
@@ -44,7 +45,7 @@ export type DeckButtonIcon =
   'chaos_bag' |
   'chart' |
   'elder_sign' |
-  'delete' |
+  'trash' |
   'per_investigator' |
   'settings' |
   'book' |
@@ -58,12 +59,14 @@ export type DeckButtonIcon =
   'logo' |
   'xp';
 
+export type DeckButtonColor = 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
+
 interface Props {
   title: string;
   detail?: string;
   icon?: DeckButtonIcon;
   encounterIcon?: string;
-  color?: 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
+  color?: DeckButtonColor;
   onPress?: () => void;
   rightMargin?: number;
   thin?: boolean;
@@ -114,7 +117,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
   },
 };
 
-const MATERIAL_ICONS = new Set(['email', 'delete', 'login', 'backup', 'headset']);
+const MATERIAL_ICONS = new Set(['email', 'login', 'backup', 'headset']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'faq', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({

@@ -1030,7 +1030,7 @@ function DeckDetailView({
         ) }
         { editable && (
           <MenuButton
-            icon="delete"
+            icon="trash"
             title={t`Delete deck`}
             onPress={deleteDeckPressed}
             last

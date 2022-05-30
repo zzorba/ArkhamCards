@@ -32,7 +32,7 @@ export default function CampaignNoteSectionRow({ name, isCount, perInvestigator,
       onPress={pickerOnPress}
       disabled={!onPress}
       title={title}
-      widget="delete"
+      widget="trash"
       settingsStyle
       noBorder
     />

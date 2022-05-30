@@ -17,13 +17,14 @@ import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
-import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
+import DeckButton, { DeckButtonColor, DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
 import AppModal from '@components/core/AppModal';
+import CardTextComponent from '@components/card/CardTextComponent';
 
 
 interface ModalOptions {
@@ -77,12 +78,15 @@ interface DialogOptions {
   investigator?: Card;
   confirm?: {
     title: string;
+    icon?: DeckButtonIcon;
+    color?: DeckButtonColor;
     disabled?: boolean;
     onPress: () => void | Promise<boolean>;
     loading?: boolean;
   };
   dismiss?: {
     title?: string;
+    color?: DeckButtonColor;
     onPress?: () => void;
   };
   content: React.ReactNode;
@@ -140,7 +144,7 @@ export function useDialog({
         <DeckButton
           key="cancel"
           icon="dismiss"
-          color={confirm ? 'red_outline' : undefined}
+          color={dismiss.color || (confirm ? 'red_outline' : undefined)}
           title={dismiss.title}
           thin
           onPress={onDismiss}
@@ -151,8 +155,9 @@ export function useDialog({
       result.push(
         <DeckButton
           key="save"
-          icon="check-thin"
+          icon={confirm.icon || 'check-thin'}
           title={confirm.title}
+          color={confirm.color}
           disabled={confirm.disabled}
           thin
           loading={confirm.loading}
@@ -200,6 +205,7 @@ interface AlertState {
   title: string;
   description: string;
   buttons: AlertButton[];
+  formatText: boolean;
 }
 
 function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClose: () => void }) {
@@ -214,7 +220,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
       return button.icon;
     }
     if (button.style === 'destructive') {
-      return 'delete';
+      return 'trash';
     }
     if (button.style === 'cancel') {
       return 'dismiss';
@@ -241,7 +247,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
   );
 }
 
-export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
+export type ShowAlert = (title: string, description: string, buttons?: AlertButton[], options: { formatText?: boolean }) => void;
 export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode, ShowAlert] {
   const { typography } = useContext(StyleContext);
   const [state, setState] = useState<AlertState | undefined>();
@@ -276,16 +282,19 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
         forceVerticalButtons={forceVerticalButtons}
       >
         <View style={space.paddingS}>
-          <Text style={typography.small}>{ state?.description || '' }</Text>
+          { state?.formatText ? <CardTextComponent text={state?.description || ''} /> : (
+            <Text style={typography.small}>{ state?.description || '' }</Text>
+          ) }
         </View>
       </NewDialog>
     );
   }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
-  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
+  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }], options?: { formatText?: boolean } = {}) => {
     setState({
       title,
       description,
       buttons: buttons.length > 0 ? buttons : [{ text: t`Okay` }],
+      formatText: options.formatText || false,
     });
   }, [setState]);
   return [dialog, showAlert];

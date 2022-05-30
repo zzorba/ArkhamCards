@@ -13274,6 +13274,13 @@ export type GetProfileQueryVariables = Exact<{
 
 export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, flags: Array<{ __typename?: 'user_flag', flag: User_Flag_Type_Enum }> } | null };
 
+export type GetDeleteInformationQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetDeleteInformationQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, arkhamDBDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, localDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, createdCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> }, joinedCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', name?: string | null, cycleCode?: string | null } | null }> } } | null };
+
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
   investigator: Scalars['String'];
@@ -15202,6 +15209,83 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetDeleteInformationDocument = gql`
+    query getDeleteInformation($userId: String!) {
+  users_by_pk(id: $userId) {
+    id
+    handle
+    arkhamDBDeckCount: all_decks_aggregate(
+      where: {_and: [{next_deck_id: {_is_null: true}}, {arkhamdb_id: {_is_null: false}}]}
+    ) {
+      aggregate {
+        count
+      }
+    }
+    localDeckCount: all_decks_aggregate(
+      where: {_and: [{next_deck_id: {_is_null: true}}, {arkhamdb_id: {_is_null: true}}]}
+    ) {
+      aggregate {
+        count
+      }
+    }
+    createdCampaignCount: campaigns_aggregate(
+      where: {campaign: {owner_id: {_eq: $userId}}}
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          id
+          name
+          cycleCode
+        }
+      }
+    }
+    joinedCampaignCount: campaigns_aggregate(
+      where: {campaign: {owner_id: {_neq: $userId}}}
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          name
+          cycleCode
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetDeleteInformationQuery__
+ *
+ * To run a query within a React component, call `useGetDeleteInformationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeleteInformationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeleteInformationQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetDeleteInformationQuery(baseOptions: Apollo.QueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
+      }
+export function useGetDeleteInformationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
+        }
+export type GetDeleteInformationQueryHookResult = ReturnType<typeof useGetDeleteInformationQuery>;
+export type GetDeleteInformationLazyQueryHookResult = ReturnType<typeof useGetDeleteInformationLazyQuery>;
+export type GetDeleteInformationQueryResult = Apollo.QueryResult<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>;
 export const DeleteInvestigatorDecksDocument = gql`
     mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
   delete_campaign_deck(

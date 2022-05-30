@@ -21,6 +21,20 @@ export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(func
   }, [lang, functionName]);
 }
 
+interface DeleteAccountRequest {
+
+}
+
+export function useDeleteAccount() {
+  const apiCall = useFunction<DeleteAccountRequest>('social-deleteAccount');
+  return useCallback(async() => {
+    const data = await apiCall({});
+    if (data.error) {
+      return data.error;
+    }
+  }, [apiCall]);
+}
+
 interface UpdateHandleRequest {
   handle: string;
 }

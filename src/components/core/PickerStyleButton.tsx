@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   title: string;
@@ -16,7 +17,7 @@ interface Props {
     backgroundColor: string;
     textColor: string;
   };
-  widget?: 'shuffle' | 'nav' | 'delete';
+  widget?: 'shuffle' | 'nav' | 'trash';
   noBorder?: boolean;
   settingsStyle?: boolean;
 }
@@ -53,11 +54,11 @@ export default function PickerStyleButton({
             color={pickerColors ? pickerColors.textColor : colors.darkText}
           />
         );
-      case 'delete':
+      case 'trash':
         return (
           <View style={space.marginRightS}>
-            <MaterialIcons
-              name="delete"
+            <AppIcon
+              name="trash"
               size={26}
               color={pickerColors ? pickerColors.textColor : colors.D10}
             />

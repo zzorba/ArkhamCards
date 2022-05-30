@@ -19,6 +19,7 @@ import Card from '@data/types/Card';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   superTitle?: string;
@@ -132,8 +133,8 @@ export default function InvestigatorRow({
           { !!onRemove && (
             <View style={styles.closeIcon}>
               <TouchableOpacity onPress={handleOnRemove}>
-                <MaterialCommunityIcons
-                  name="delete"
+                <AppIcon
+                  name="trash"
                   size={26}
                   color={colors.D10}
                 />

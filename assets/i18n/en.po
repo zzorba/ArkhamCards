@@ -5438,6 +5438,49 @@ msgstr ""
 msgid "${ textModifier }, draws another ${ revealCount }}"
 msgstr ""
 
+msgid "Delete your account"
+msgstr ""
+
+msgid "Loading account details..."
+msgstr ""
+
+msgid ""
+"Are you sure that you want to <b>permanently</b> delete your account? This "
+"<b>cannot be undone</b>."
+msgstr ""
+
+#, javascript-format
+msgid "You are currently signed in as <b>${ handle }</b>."
+msgstr ""
+
+msgid "The following data will be removed:"
+msgstr ""
+
+msgid "The campaign that has been uploaded will be deleted:"
+msgid_plural ""
+"The ${ createdCampaignCount } campaign that have been uploaded will be "
+"deleted:"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid ""
+"The friend's campaign that you have participated in will have your decks "
+"removed:"
+msgid_plural ""
+"The ${ joinedCampaignCount } campaigns from friends that you have "
+"participated in will have your decks removed:"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "I understand that all data will be deleted permanently."
+msgstr ""
+
+msgid "Confirm account deletion"
+msgstr ""
+
+msgid "Delete account"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"

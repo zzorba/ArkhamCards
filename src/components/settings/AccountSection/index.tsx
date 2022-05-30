@@ -49,8 +49,7 @@ export default function AccountSection({ componentId, showAlert }: Props) {
       { enableArkhamCardsAccount && (
         <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="mystic" header={<DeckSectionHeader faction="mystic" title={t`Arkham Cards Account`} />}>
-            <ArkhamCardsAccountDetails componentId={componentId} />
-            <ArkhamCardsLoginButton showAlert={showAlert} />
+            <ArkhamCardsAccountDetails componentId={componentId} showAlert={showAlert} />
             <View style={space.paddingTopS}>
               <DeckButton
                 icon="xp"
