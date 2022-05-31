@@ -5744,6 +5744,7 @@ msgid_plural ""
 "participated in will have your decks removed:"
 msgstr[0] ""
 "참가 중인 친구의 캠페인 ${ joinedCampaignCount }개에서 덱이 제거됩니다:"
+msgstr[1] ""
 
 msgid "I understand that all data will be deleted permanently."
 msgstr "모든 데이터가 영구적으로 삭제된다는 것을 이해했습니다."
@@ -5753,6 +5754,15 @@ msgstr "계정 삭제 확인"
 
 msgid "Delete account"
 msgstr "계정 삭제"
+
+msgid "If you choose to delete this account, the following data will be removed."
+msgstr ""
+
+msgid "The campaign that you have uploaded to this account will be deleted:"
+msgid_plural ""
+"The ${ createdCampaignCount } campaigns that you have uploaded to this "
+"account will be deleted:"
+msgstr[0] ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"

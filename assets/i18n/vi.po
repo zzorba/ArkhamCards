@@ -5464,15 +5464,6 @@ msgstr ""
 msgid "You are currently signed in as <b>${ handle }</b>."
 msgstr ""
 
-msgid "The following data will be removed:"
-msgstr ""
-
-msgid "The campaign that has been uploaded will be deleted:"
-msgid_plural ""
-"The ${ createdCampaignCount } campaign that have been uploaded will be "
-"deleted:"
-msgstr[0] ""
-
 msgid ""
 "The friend's campaign that you have participated in will have your decks "
 "removed:"
@@ -5480,6 +5471,7 @@ msgid_plural ""
 "The ${ joinedCampaignCount } campaigns from friends that you have "
 "participated in will have your decks removed:"
 msgstr[0] ""
+msgstr[1] ""
 
 msgid "I understand that all data will be deleted permanently."
 msgstr ""
@@ -5489,6 +5481,15 @@ msgstr ""
 
 msgid "Delete account"
 msgstr ""
+
+msgid "If you choose to delete this account, the following data will be removed."
+msgstr ""
+
+msgid "The campaign that you have uploaded to this account will be deleted:"
+msgid_plural ""
+"The ${ createdCampaignCount } campaigns that you have uploaded to this "
+"account will be deleted:"
+msgstr[0] ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"

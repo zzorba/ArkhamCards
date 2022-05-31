@@ -96,6 +96,7 @@ interface DialogOptions {
   customButtons?: React.ReactNode[];
   maxHeightPercent?: number;
   noPadding?: boolean;
+  forceVerticalButtons?: boolean;
 }
 
 export function useDialog({
@@ -110,6 +111,7 @@ export function useDialog({
   customButtons,
   maxHeightPercent,
   noPadding,
+  forceVerticalButtons,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -178,7 +180,7 @@ export function useDialog({
         buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
-        forceVerticalButtons={!!customButtons}
+        forceVerticalButtons={!!customButtons || forceVerticalButtons}
         maxHeightPercent={maxHeightPercent}
         noPadding={noPadding}
       >
@@ -247,7 +249,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
   );
 }
 
-export type ShowAlert = (title: string, description: string, buttons?: AlertButton[], options: { formatText?: boolean }) => void;
+export type ShowAlert = (title: string, description: string, buttons?: AlertButton[], options?: { formatText?: boolean }) => void;
 export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode, ShowAlert] {
   const { typography } = useContext(StyleContext);
   const [state, setState] = useState<AlertState | undefined>();
@@ -289,7 +291,7 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
       </NewDialog>
     );
   }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
-  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }], options?: { formatText?: boolean } = {}) => {
+  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }], options: { formatText?: boolean } = {}) => {
     setState({
       title,
       description,

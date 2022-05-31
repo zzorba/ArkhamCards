@@ -81,6 +81,7 @@ query getDeleteInformation($userId:String!) {
       }
       nodes {
         campaign {
+          id
           name
           cycleCode
         }

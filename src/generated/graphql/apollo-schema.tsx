@@ -13279,7 +13279,7 @@ export type GetDeleteInformationQueryVariables = Exact<{
 }>;
 
 
-export type GetDeleteInformationQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, arkhamDBDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, localDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, createdCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> }, joinedCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', name?: string | null, cycleCode?: string | null } | null }> } } | null };
+export type GetDeleteInformationQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, arkhamDBDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, localDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, createdCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> }, joinedCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> } } | null };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -15250,6 +15250,7 @@ export const GetDeleteInformationDocument = gql`
       }
       nodes {
         campaign {
+          id
           name
           cycleCode
         }

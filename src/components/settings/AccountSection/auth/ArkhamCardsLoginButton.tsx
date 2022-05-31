@@ -423,7 +423,6 @@ export default function ArkhamCardsLoginButton({ showAlert, handle }: Props) {
   }, [dispatch, apollo]);
   const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
   const [showConfirmDelete, deleteDialog] = useDeleteAccountDialog(user, doLogout);
-
   const logoutPressed = useCallback(() => {
     const deleteAccountButton: AlertButton = {
       icon: 'trash',

@@ -45,11 +45,11 @@ export default function useDeleteAccountDialog(
       messages.push(t`You are currently signed in as <b>${handle}</b>.`);
     }
     if (createdCampaignCount || joinedCampaignCount) {
-      messages.push(t`The following data will be removed:`);
+      messages.push(t`If you choose to delete this account, the following data will be removed.`);
       if (createdCampaignCount) {
         messages.push(
-          ngettext(msgid`The campaign that has been uploaded will be deleted:`,
-            `The ${createdCampaignCount} campaign that have been uploaded will be deleted:`,
+          ngettext(msgid`The campaign that you have uploaded to this account will be deleted:`,
+            `The ${createdCampaignCount} campaigns that you have uploaded to this account will be deleted:`,
             createdCampaignCount
           )
         );
@@ -110,15 +110,13 @@ export default function useDeleteAccountDialog(
       loading: deleteInfo.loading,
       onPress: onDelete,
     },
-    dismiss: {
-      title: t`Cancel`,
-      color: 'default',
-    },
+    allowDismiss: true,
     content: (
       <View>
         { content }
       </View>
     ),
+    forceVerticalButtons: true,
   });
 
   const showConfirmDelete = useCallback(() => {
@@ -130,7 +128,7 @@ export default function useDeleteAccountDialog(
     });
     setTimeout(() => {
       showDialog()
-    }, 500);
+    }, 1000);
   }, [showDialog, user, fetchDeleteInfo, setAcknowledged]);
   return [showConfirmDelete, dialog];
 }
