@@ -5960,7 +5960,6 @@ msgid_plural ""
 "account will be deleted:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"

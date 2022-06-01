@@ -5641,6 +5641,7 @@ msgid_plural ""
 "The ${ createdCampaignCount } campaigns that you have uploaded to this "
 "account will be deleted:"
 msgstr[0] ""
+msgstr[1] ""
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
