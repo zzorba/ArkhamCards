@@ -5735,14 +5735,14 @@ msgid "Delete account"
 msgstr "계정 삭제"
 
 msgid "If you choose to delete this account, the following data will be removed."
-msgstr ""
+msgstr "계정을 삭세하면, 다음의 데이터가 제거됩니다."
 
 msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural ""
 "The ${ createdCampaignCount } campaigns that you have uploaded to this "
 "account will be deleted:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "업로드된 캠페인이 삭제됩니다:"
+msgstr[1] "업로드된 ${ createdCampaignCount }개의 캠페인이 삭제됩니다:"
 
 msgid ""
 "The friend's campaign that you have participated in will have your decks "
@@ -5750,7 +5750,8 @@ msgid ""
 msgid_plural ""
 "The ${ joinedCampaignCount } campaigns from friends that you have "
 "participated in will have your decks removed:"
-msgstr[0] ""
+msgstr[0] "참가 중인 친구의 캠페인에서 당신의 덱이 제거됩니다:"
+msgstr[1] "참가 중인 친구의 캠페인 ${ joinedCampaignCount }개에서 당신의 덱이 제거됩니다:"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
