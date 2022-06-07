@@ -2540,13 +2540,6 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Pringue pegajoso",
-        "description": "A sticky goop you found in a subterranean swamp.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
         "id": "key_of_eztli",
         "name": "Llave de Eztli",
         "description": "La Llave de Eztli.",
@@ -2557,6 +2550,13 @@
         "id": "mysterious_scepter",
         "name": "Cetro misterioso",
         "description": "Un cetro misterioso que encontraste en la sala del trono.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "sticky_goop",
+        "name": "Pringue pegajoso",
+        "description": "Un pringue pegajoso que encontraste en un pantano subterráneo.",
         "cost": 0,
         "multiple": false
       },
