@@ -23,7 +23,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
-import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
+import { ALL_INVESTIGATORS_QUERY, combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
@@ -648,7 +648,6 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
   const [cards] = useCardMap(codes, 'player', tabooSetOverride)
   return cards;
 }
-
 export function useCopyAction(value: string, confirmationText: string): () => void {
   return useCallback(() => {
     Clipboard.setString(value);
@@ -703,7 +702,10 @@ export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean)
   return [value, actuallySetValue];
 }
 
-export function useAllInvestigators(tabooSetOverride?: number, sortType?: SortType): [Card[], boolean] {
+export function useAllInvestigators(
+  tabooSetOverride?: number,
+  sortType?: SortType
+): [Card[], boolean] {
   const customContent = useSettingValue('custom_content');
   const sort = useMemo(() => sortType ? Card.querySort(true, sortType) : undefined, [sortType]);
   const query = useMemo(() => {

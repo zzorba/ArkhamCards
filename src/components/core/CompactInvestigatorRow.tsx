@@ -7,6 +7,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import space from '@styles/space';
 import CollapsibleFactionBlock from './CollapsibleFactionBlock';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   investigator?: Card;
@@ -25,13 +26,17 @@ interface Props {
   arkhamCardsImg?: string;
   imageOffset?: 'right' | 'left';
 }
-export default function CompactInvestigatorRow({ hideImage, color, eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
+export default function CompactInvestigatorRow({
+  hideImage,
+  color,
+  eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
       transparent={transparent}
       eliminated={eliminated}
       faction={investigator?.factionCode() || 'neutral'}
+      parallel={!!investigator?.alternate_of_code}
       fullRound={!open}
       width={width}
       color={color}
@@ -52,7 +57,9 @@ export default function CompactInvestigatorRow({ hideImage, color, eliminated, n
         ) }
         <View style={[space.paddingLeftXs, styles.textColumn]}>
           <Text
-            style={[typography.cardName, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
+            style={[
+              typography.cardName,
+              !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
             numberOfLines={1}
             ellipsizeMode="tail"
           >

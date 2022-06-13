@@ -42,11 +42,13 @@ export default class DeckValidation {
   meta?: DeckMeta;
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
+  all_options: boolean;
 
-  constructor(investigator: Card, slots: Slots, meta?: DeckMeta) {
+  constructor(investigator: Card, slots: Slots, meta?: DeckMeta, all_options?: boolean) {
     this.investigator = investigator;
     this.slots = slots;
     this.meta = meta;
+    this.all_options = all_options || false;
   }
 
   specialCardCounts(): SpecialCardCounts {
@@ -315,12 +317,19 @@ export default class DeckValidation {
         this.investigator.deck_options.length) {
       forEach(this.investigator.deck_options, deck_option => {
         if (deck_option.option_select) {
-          deck_options.push(DeckOption.parse(
-            (this.meta && this.meta.option_selected) ?
-              find(deck_option.option_select, o => o.id === this.meta?.option_selected) :
-              deck_option.option_select[0]
-            )
-          );
+          const option = this.meta && this.meta.option_selected ? find(deck_option.option_select, o => o.id === this.meta?.option_selected) : undefined;
+          if (option) {
+            deck_options.push(DeckOption.parse(option));
+          } else {
+            if (this.all_options) {
+              for (let k = 0; k < deck_option.option_select.length; k++) {
+                const o = deck_option.option_select[k];
+                deck_options.push(DeckOption.parse(o));
+              }
+            } else {
+              deck_options.push(DeckOption.parse(deck_option.option_select[0]));
+            }
+          }
         } else {
           deck_options.push(deck_option);
         }
@@ -393,16 +402,18 @@ export default class DeckValidation {
           }
         }
         if (option.faction_select && option.faction_select.length) {
-          let selected_faction: string = option.faction_select[0]
+          let selected_faction: Set<string> = new Set(this.all_options ? option.faction_select : [option.faction_select[0]]);
           if (this.meta) {
             const selection = option.id ? this.meta[option.id] : this.meta.faction_selected;
             if (selection && indexOf(option.faction_select, selection) !== -1) {
-              selected_faction = selection;
+              selected_faction = new Set([selection]);
             }
           }
-          if (card.faction_code !== selected_faction &&
-            card.faction2_code !== selected_faction &&
-            card.faction3_code !== selected_faction){
+          if (
+            (card.faction_code && !selected_faction.has(card.faction_code)) ||
+            (card.faction2_code && !selected_faction.has(card.faction2_code)) ||
+            (card.faction3_code && !selected_faction.has(card.faction3_code))
+          ) {
             continue;
           }
         }

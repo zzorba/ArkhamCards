@@ -129,9 +129,10 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
         ) }
       </>
     );
-  }, [saveTraits,
+  }, [saveTraits, renderCardChoice,
     id, numberInput, useCardTraits,
-    firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
+    firstDecisionId, traitsDecisionId, effect,
+    weaknessCards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>

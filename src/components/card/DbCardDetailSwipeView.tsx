@@ -29,6 +29,7 @@ import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { DeckId } from '@actions/types';
+import { CardInvestigatorProps } from './CardInvestigatorsView';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -125,6 +126,27 @@ function DbCardDetailSwipeView(props: Props) {
       },
     });
   }, [componentId]);
+
+  const showInvestigators = useCallback((code: string) => {
+    Navigation.push<CardInvestigatorProps>(componentId, {
+      component: {
+        name: 'Card.Investigators',
+        passProps: {
+          code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Investigators`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId]);
   const backPressed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);
@@ -156,11 +178,14 @@ function DbCardDetailSwipeView(props: Props) {
             },
           },
         });
-      } else if (buttonId === 'back') {
+      } else if (buttonId === 'investigator') {
+        showInvestigators(currentCard.code);
+      }
+       else if (buttonId === 'back') {
         Navigation.pop(componentId);
       }
     }
-  }, componentId, [currentCard]);
+  }, componentId, [currentCard, showInvestigators, showInvestigatorCards]);
 
   const showCardSpoiler = useCallback((card?: Card) => {
     if (!card) {

@@ -35,15 +35,22 @@ export function rightButtonsForCard(card?: Card, color?: string) {
     color: color || COLORS.M,
     accessibilityLabel: t`FAQ`,
   }];
-  if (card &&
-    card.type_code === 'investigator' &&
-    card.encounter_code === null
-  ) {
+  if (card?.encounter_code) {
+    return rightButtons;
+  }
+  if (card && card.type_code === 'investigator') {
     rightButtons.push({
       icon: iconsMap.deck,
       id: 'deck',
       color: color || COLORS.M,
       accessibilityLabel: t`Deckbuilding Cards`,
+    });
+  } else if (card && (card.deck_limit || 0) > 0) {
+    rightButtons.push({
+      icon: iconsMap.per_investigator,
+      id: 'investigator',
+      color: color || COLORS.M,
+      accessibilityLabel: t`Investigators`,
     });
   }
   return rightButtons;

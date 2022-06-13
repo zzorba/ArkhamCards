@@ -13,6 +13,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { loadTaboos } from '@data/scenario';
 import { getArkhamDbDomain } from './i18n/LanguageProvider';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
 const VERBOSE = false;
 
@@ -447,7 +448,7 @@ export const syncCards = async function(
       faction_code: 'neutral',
       faction_name: t`Neutral`,
       position: 1,
-      code: 'custom_001',
+      code: CUSTOM_INVESTIGATOR,
       name: 'Johnny Anybody',
       real_name: 'Johnny Anybody',
       subname: t`The Chameleon`,
