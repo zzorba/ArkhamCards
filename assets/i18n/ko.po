@@ -5804,12 +5804,12 @@ msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effe
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ physical } 회복합니다."
 
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ effect.physical } 받습니다."
 
 msgctxt "masculine"
 msgid "Alive"
@@ -5917,13 +5917,13 @@ msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effe
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ physical } 회복합니다."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ effect.physical } 받습니다."
 
 msgctxt "feminine"
 msgid "Alive"
