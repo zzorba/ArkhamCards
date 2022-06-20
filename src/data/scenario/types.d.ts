@@ -868,6 +868,7 @@ export interface BinaryConditionalChoice {
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
+  narration?: Narration;
 }
 export interface ChecklistInput {
   type: "checklist";
