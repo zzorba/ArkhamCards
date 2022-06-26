@@ -1165,7 +1165,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "bạn trốn thoát khỏi bữa tiệc tối."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1193,7 +1193,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "bạn đã xâm nhập vào một cuộc họp bí mật."
           },
           {
             "id": "king_claimed_victims",
@@ -1225,7 +1225,7 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "bạn đã giết những con quái vật ở bữa tiệc tối."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -1591,7 +1591,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "bạn trốn thoát khỏi bữa tiệc tối."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1619,7 +1619,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "bạn đã xâm nhập vào một cuộc họp bí mật."
           },
           {
             "id": "king_claimed_victims",
@@ -1651,7 +1651,7 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "bạn đã giết những con quái vật ở bữa tiệc tối."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -2675,15 +2675,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua rút lui để chữa trị vết thương."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "nhiều người đã bị hiến tế Cnidathqua trong lễ hội Carnevale."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "mặt trời đã đẩy Cnidathqua xuống vực sâu."
           },
           {
             "id": "constellation_was_lost_to_the_depths",
