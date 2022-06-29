@@ -1767,7 +1767,7 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "使用自食其力時，不允許使用占用盟友槽位的支援卡。"
 
 msgid "Too many off-class cards for Versatile"
-msgstr ""
+msgstr "多才多藝有太多不符合職階的卡牌"
 
 msgid "Asset: Ally. Arcane"
 msgstr "支援: 盟友. 法術"
@@ -2599,7 +2599,7 @@ msgid "Checklist"
 msgstr "清單"
 
 msgid "Limit 1 Covenant per deck."
-msgstr "每副牌組限制僅有1個Covenant。"
+msgstr "每個牌組限制1張聖約。"
 
 msgid "Checking for FAQ"
 msgstr "正在讀取FAQ"
@@ -2790,7 +2790,7 @@ msgid "Search in:"
 msgstr "搜尋於:"
 
 msgid "Encounter Card Toggle"
-msgstr "Encounter Card Toggle"
+msgstr ""
 
 msgid "Show all available cards"
 msgstr "顯示所有可用卡牌"
@@ -3105,7 +3105,7 @@ msgstr[0] "${ normalCardCount } · 總共${ totalCardCount }張"
 
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
-msgstr[0] "${ bondedCardCount } bound"
+msgstr[0] "${ bondedCardCount }綁定"
 
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
@@ -3881,10 +3881,10 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] }和${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr "Dark Matter"
+msgstr ""
 
 msgid "Impending Doom"
-msgstr "Impending Doom"
+msgstr ""
 
 msgid "Memories"
 msgstr "記憶"
@@ -4435,7 +4435,7 @@ msgid "Beta testing"
 msgstr "Beta測試"
 
 msgid "Edit Weakness Cards"
-msgstr ""
+msgstr "編輯弱點卡"
 
 msgid "Narrate"
 msgstr ""
@@ -4981,7 +4981,7 @@ msgid "Guardians of the Abyss"
 msgstr "深淵守護者"
 
 msgid "Two-part campaign variant"
-msgstr ""
+msgstr "2場冒險的劇本變體"
 
 msgid "Claim previous scenario XP"
 msgstr ""
@@ -5000,7 +5000,7 @@ msgstr "加入${ card.name }:"
 
 #, javascript-format
 msgid "Select ${ name }"
-msgstr ""
+msgstr "選擇${ name }"
 
 msgid "Note: This should only be selected at deck creation time, not between scenarios."
 msgstr "注意：此卡牌應該在構建牌組時選擇，而不是在兩場冒險之間。"
@@ -5098,7 +5098,7 @@ msgstr ""
 
 msgid ""
 "Note: this campaign is a fairly new addition to the app and may contain some mistakes."
-msgstr ""
+msgstr "注意：這個劇本新加入APP之中不久，可能還有許多錯誤。"
 
 msgid "Durability"
 msgstr ""
@@ -5146,7 +5146,7 @@ msgstr ""
 msgid ""
 "Signing into Arkham Cards will let you backup your campaigns between your devices and "
 "share in-progress campaigns with other friends."
-msgstr ""
+msgstr "登入Arkham Cards能讓你可以在不同裝置之間備份劇本，也可以與朋友共享進行中的劇本。"
 
 msgid "Recent updates"
 msgstr "近期更新"
@@ -5184,7 +5184,7 @@ msgid "Enjoy the campaign"
 msgstr ""
 
 msgid "Did you know campaigns can be shared with friends using this app?"
-msgstr ""
+msgstr "你知道使用本APP可以讓你在朋友之間共享劇本嗎？"
 
 msgid ""
 "This deck contains new cards that the app hasn't seen before.\n"
@@ -6356,7 +6356,7 @@ msgstr "構造物"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr "Covenant"
+msgstr "聖約"
 
 msgctxt "trait"
 msgid "Creature"
@@ -6416,7 +6416,7 @@ msgstr "蠕蟲"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr "Distortion"
+msgstr ""
 
 msgctxt "trait"
 msgid "Dreamer"
@@ -6632,7 +6632,7 @@ msgstr "樂器"
 
 msgctxt "trait"
 msgid "Island"
-msgstr "Island"
+msgstr "島礁"
 
 msgctxt "trait"
 msgid "Item"
@@ -6752,7 +6752,7 @@ msgstr "密教"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr "Ocean"
+msgstr "海洋"
 
 msgctxt "trait"
 msgid "Omen"
@@ -6840,7 +6840,7 @@ msgstr "現代"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr "Prison"
+msgstr ""
 
 msgctxt "trait"
 msgid "Private"
@@ -6892,7 +6892,7 @@ msgstr "河畔"
 
 msgctxt "trait"
 msgid "Road"
-msgstr "Road"
+msgstr "道路"
 
 msgctxt "trait"
 msgid "Ruins"
@@ -6920,7 +6920,7 @@ msgstr "科學"
 
 msgctxt "trait"
 msgid "Script"
-msgstr "Script"
+msgstr ""
 
 msgctxt "trait"
 msgid "Second Floor"
@@ -7152,7 +7152,7 @@ msgstr "樹林"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr "Y'ha-nthlei"
+msgstr "伊哈·恩斯雷"
 
 msgctxt "trait"
 msgid "Yithian"
@@ -7188,11 +7188,11 @@ msgstr "經營者"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "獵鷹岬"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "巢穴"
 
 msgctxt "trait"
 msgid "Nostalgia II"
