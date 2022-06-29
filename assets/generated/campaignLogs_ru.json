@@ -1261,6 +1261,10 @@
             "text": "хотя бы один сыщик одержим."
           },
           {
+            "id": "reprint_language",
+            "text": "dummy"
+          },
+          {
             "id": "tpm_conviction_or_doubt",
             "text": "dummy"
           }
@@ -1685,6 +1689,10 @@
           {
             "id": "possessed",
             "text": "хотя бы один сыщик одержим."
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",

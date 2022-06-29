@@ -621,6 +621,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.aliceIcon('cheshire_cat', size, color);
       case 'jabberwocky':
         return this.aliceIcon('jabberwock', size, color);
+      case 'zbt':
+        return this.standaloneIcon('beta', size, color);
       case 'alice_in_wonderland':
       case 'zaw':
         return this.aliceIcon('alice_in_wonderland', size, color);

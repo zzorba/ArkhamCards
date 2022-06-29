@@ -1261,6 +1261,10 @@
             "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
           },
           {
+            "id": "reprint_language",
+            "text": "dummy"
+          },
+          {
             "id": "tpm_conviction_or_doubt",
             "text": "dummy"
           }
@@ -1685,6 +1689,10 @@
           {
             "id": "possessed",
             "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",

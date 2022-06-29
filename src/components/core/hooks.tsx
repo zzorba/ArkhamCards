@@ -23,7 +23,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
-import { ALL_INVESTIGATORS_QUERY, combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
+import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';

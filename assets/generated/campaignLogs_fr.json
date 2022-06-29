@@ -1261,6 +1261,10 @@
             "text": "au moins un investigateur était possédé."
           },
           {
+            "id": "reprint_language",
+            "text": "leurre"
+          },
+          {
             "id": "tpm_conviction_or_doubt",
             "text": "leurre"
           }
@@ -1685,6 +1689,10 @@
           {
             "id": "possessed",
             "text": "au moins un investigateur était possédé."
+          },
+          {
+            "id": "reprint_language",
+            "text": "leurre"
           },
           {
             "id": "tpm_conviction_or_doubt",

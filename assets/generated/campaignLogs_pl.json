@@ -1261,6 +1261,10 @@
             "text": "jeden lub więcej badaczy zostało opętanych."
           },
           {
+            "id": "reprint_language",
+            "text": "dummy"
+          },
+          {
             "id": "tpm_conviction_or_doubt",
             "text": "dummy"
           }
@@ -1685,6 +1689,10 @@
           {
             "id": "possessed",
             "text": "jeden lub więcej badaczy zostało opętanych."
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",

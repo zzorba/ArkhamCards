@@ -5,7 +5,7 @@
   },
   {
     "id": "a_light_in_the_fog",
-    "name": "A Light in the Fog"
+    "name": "霧中之光"
   },
   {
     "id": "a_phantom_of_truth",
@@ -65,7 +65,7 @@
   },
   {
     "id": "beneath_the_waves",
-    "name": "Beneath the Waves"
+    "name": "浪濤之下"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -145,7 +145,7 @@
   },
   {
     "id": "devil_reef",
-    "name": "Devil Reef"
+    "name": "魔鬼礁石"
   },
   {
     "id": "dim_carcosa",
@@ -245,7 +245,7 @@
   },
   {
     "id": "gryphon_and_mock_turtle",
-    "name": "Gryphon and Mock Turtle"
+    "name": "獅鷲和假海龜"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -257,7 +257,7 @@
   },
   {
     "id": "hidden_truths",
-    "name": "Hidden Truths"
+    "name": "隱秘真相"
   },
   {
     "id": "high_noon_descent",
@@ -269,11 +269,11 @@
   },
   {
     "id": "horror_in_high_gear",
-    "name": "Horror in High Gear"
+    "name": "全速恐懼"
   },
   {
     "id": "humpty_dumpty",
-    "name": "Humpty Dumpty"
+    "name": "蛋頭先生"
   },
   {
     "id": "ice_and_death",
@@ -305,11 +305,11 @@
   },
   {
     "id": "in_too_deep",
-    "name": "In Too Deep"
+    "name": "深陷危局"
   },
   {
     "id": "into_the_maelstrom",
-    "name": "Into the Maelstrom"
+    "name": "暗潮之下"
   },
   {
     "id": "introspection",
@@ -372,6 +372,10 @@
     "name": "癲狂獎勵"
   },
   {
+    "id": "ptc_interlude1_reprint",
+    "name": "Skeptic's Reward"
+  },
+  {
     "id": "ptc_interlude2",
     "name": "失魂落魄"
   },
@@ -381,7 +385,7 @@
   },
   {
     "id": "puzzle_pieces",
-    "name": "Puzzle Pieces"
+    "name": "記憶碎片"
   },
   {
     "id": "read_or_die",
@@ -625,7 +629,7 @@
   },
   {
     "id": "the_caterpillar",
-    "name": "The Caterpillar"
+    "name": "毛毛蟲"
   },
   {
     "id": "the_city_of_archives",
@@ -645,11 +649,11 @@
   },
   {
     "id": "the_dodo",
-    "name": "The Dodo"
+    "name": "渡渡鳥"
   },
   {
     "id": "the_duchess",
-    "name": "The Duchess"
+    "name": "公爵夫人"
   },
   {
     "id": "the_eternal_slumber",
@@ -689,7 +693,7 @@
   },
   {
     "id": "the_lair_of_dagon",
-    "name": "The Lair of Dagon"
+    "name": "達貢巢穴"
   },
   {
     "id": "the_last_king",
@@ -729,7 +733,7 @@
   },
   {
     "id": "the_pit_of_despair",
-    "name": "The Pit of Despair"
+    "name": "絕望深坑"
   },
   {
     "id": "the_price_of_progress",
@@ -749,7 +753,7 @@
   },
   {
     "id": "the_syzygy",
-    "name": "The Syzygy"
+    "name": "朔望"
   },
   {
     "id": "the_tatterdemalion",
@@ -761,7 +765,7 @@
   },
   {
     "id": "the_vanishing_of_elina_harper",
-    "name": "The Vanishing of Elina Harper"
+    "name": "艾蓮娜·哈珀失蹤案"
   },
   {
     "id": "the_wages_of_sin",

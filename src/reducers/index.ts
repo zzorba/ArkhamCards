@@ -255,40 +255,46 @@ export const getAllPacks = createSelector(
             position: 1,
           },
           {
+            code: 'zbt',
+            cycle_code: 'fan',
+            name: t`Beta`,
+            position: 2,
+          },
+          {
             code: 'zdm',
             cycle_code: 'fan',
             name: t`Dark Matter`,
-            position: 2,
+            position: 3,
           },
           {
             code: 'zaw',
             cycle_code: 'fan',
             name: t`Alice in Wonderland`,
-            position: 3,
+            position: 4,
           },
           {
             code: 'zce',
             cycle_code: 'fan',
             name: t`The Crown of Egil`,
-            position: 4,
+            position: 5,
           },
           {
             code: 'zcp',
             cycle_code: 'fan',
             name: t`Call of the Plaguebearer`,
-            position: 5,
+            position: 6,
           },
           {
             code: 'zcc',
             cycle_code: 'fan',
             name: t`Consternation on the Constellation`,
-            position: 6,
+            position: 7,
           },
           {
             code: 'zez',
             cycle_code: 'fan',
             name: t`Symphony of Erich Zann`,
-            position: 7,
+            position: 8,
           },
         ], (p): Pack => {
           return {
