@@ -7410,7 +7410,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Meowsk]] enemies in play, in the victory display, and attached to Meowlathotep, rounded up",
+          "prompt": "La mitad de la cantidad de Enemigos [[Miáuscara]] en juego, en la zona de victoria y vinculados a Miaulathotep, redondeando hacia arriba",
           "min": 0
         }
       },
@@ -7438,7 +7438,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Meowsk]] enemies in play, in the victory display, and attached to Meowlathotep",
+          "prompt": "La cantidad de Enemigos [[Miáuscara]] en juego, en la zona de victoria y vinculados a Miaulathotep",
           "min": 0
         }
       },

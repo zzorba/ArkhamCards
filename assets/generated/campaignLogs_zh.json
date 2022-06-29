@@ -4037,11 +4037,11 @@
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "扎多克·艾倫要你血債血償。"
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "布里安·伯納姆要你血債血償。"
           },
           {
             "id": "dagon_has_awakened",
@@ -4065,7 +4065,7 @@
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "羅伯特·弗蘭得禮要你血債血償。"
           },
           {
             "id": "gatekeeper_has_been_defeated",
@@ -4077,7 +4077,7 @@
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "歐斯拉·吉爾曼要你血債血償。"
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
@@ -4093,15 +4093,15 @@
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "印斯茅斯被怒潮吞沒。"
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "喬伊斯·小利透要你血債血償。"
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "調查員安全爬上載具。"
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
@@ -4109,15 +4109,15 @@
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "巴納巴斯·馬什要你血債血償。"
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "任務失敗。"
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "任務成功。"
           },
           {
             "id": "orders_ritual_was_disrupted",
@@ -4170,51 +4170,51 @@
         "entries": [
           {
             "id": "accuse_allen",
-            "text": "Zadok Allen"
+            "text": "扎多克·艾倫"
           },
           {
             "id": "accuse_burnham",
-            "text": "Brian Burnham"
+            "text": "布里安·伯納姆"
           },
           {
             "id": "accuse_friendly",
-            "text": "Robert Friendly"
+            "text": "羅伯特·弗蘭得禮"
           },
           {
             "id": "accuse_gilman",
-            "text": "Othera Gilman"
+            "text": "歐斯拉·吉爾曼"
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "水街老屋"
           },
           {
             "id": "accuse_little",
-            "text": "Joyce Little"
+            "text": "喬伊斯·小利透"
           },
           {
             "id": "accuse_marsh",
-            "text": "Barnabas Marsh"
+            "text": "巴納巴斯·馬什"
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "新格林教堂"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "達貢密教"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "印斯茅斯監獄"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "鋸骨巷"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "朝岸貧民窟"
           },
           {
             "id": "act_2_setup",
@@ -4287,23 +4287,23 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "與喬·薩金特的一場交易"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "密切追蹤的一條線索"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "一次越獄"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "一次攔路警告"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "與駭人魔鬼的一戰"
           },
           {
             "id": "conversation_with_mr_moore",
@@ -4311,7 +4311,7 @@
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "一起行動的決定"
           },
           {
             "id": "discovery_of_a_mystical_relic",
@@ -4327,7 +4327,7 @@
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "與神秘教派的一次相遇"
           },
           {
             "id": "horrific_truth",
@@ -4339,7 +4339,7 @@
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "與托馬斯·道森的一場會面"
           },
           {
             "id": "stinging_betrayal",
@@ -4352,27 +4352,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "水街老屋"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "印斯茅斯監獄"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "新格林教堂"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "達貢密教"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "鋸骨巷"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "朝岸貧民窟"
           }
         ]
       },
@@ -4381,27 +4381,27 @@
         "entries": [
           {
             "id": "allen",
-            "text": "Zadok Allen"
+            "text": "扎多克·艾倫"
           },
           {
             "id": "burnham",
-            "text": "Brian Burnham"
+            "text": "布里安·伯納姆"
           },
           {
             "id": "friendly",
-            "text": "Robert Friendly"
+            "text": "羅伯特·弗蘭得禮"
           },
           {
             "id": "gilman",
-            "text": "Othera Gilman"
+            "text": "歐斯拉·吉爾曼"
           },
           {
             "id": "little",
-            "text": "Joyce Little"
+            "text": "喬伊斯·小利透"
           },
           {
             "id": "marsh",
-            "text": "Barnabas Marsh"
+            "text": "巴納巴斯·馬什"
           }
         ]
       }
@@ -4532,11 +4532,11 @@
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "如果調查員掉進了兔子洞。"
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "如果調查員穿過了鏡子。"
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
