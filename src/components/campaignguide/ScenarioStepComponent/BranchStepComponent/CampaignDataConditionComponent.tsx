@@ -52,6 +52,19 @@ export default function CampaignDataConditionComponent({ step, condition, campai
         </SetupStepWrapper>
       );
     }
+    case 'scenario_replayed': {
+      if (!step.text) {
+        return null;
+      }
+      const result = campaignDataScenarioConditionResult(condition, campaignLog);
+      return (
+        <BinaryResult
+          bulletType={step.bullet_type}
+          prompt={step.text}
+          result={result.decision}
+        />
+      );
+    }
     case 'investigator':
       if (step.text) {
         const result = campaignDataInvestigatorConditionResult(condition, campaignLog);
