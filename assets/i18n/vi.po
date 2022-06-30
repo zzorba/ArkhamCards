@@ -5492,6 +5492,9 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Beta"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -7178,6 +7181,10 @@ msgstr ""
 
 msgctxt "fan-made-uses"
 msgid "Portions"
+msgstr ""
+
+msgctxt "uses"
+msgid "Supplies"
 msgstr ""
 
 msgctxt "Slots"
