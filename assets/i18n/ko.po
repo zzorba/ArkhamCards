@@ -3849,6 +3849,10 @@ msgstr "자원"
 msgid "Secrets"
 msgstr "비밀"
 
+msgctxt "uses"
+msgid "Supplies"
+msgstr "소모품"
+
 msgid "Tickets"
 msgstr ""
 
@@ -5842,7 +5846,7 @@ msgid_plural ""
 msgstr[0] "참가 중인 친구의 캠페인에서 당신의 덱이 제거됩니다:"
 
 msgid "Beta"
-msgstr ""
+msgstr "베타 카드"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
