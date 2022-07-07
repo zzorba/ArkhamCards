@@ -116,6 +116,7 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
           packs={packs}
           header={header}
           cyclesOnly={draftMode}
+          includeNoCore
           checkState={draftMode ? draft : in_collection}
           setChecked={setChecked}
           setCycleChecked={setCycleChecked}

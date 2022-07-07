@@ -1149,7 +1149,7 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "bạn phá hủy chiếc loa tuyên thệ."
+            "text": "bạn tiêu diệt người tuyên thệ."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1185,11 +1185,11 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "bạn lưu ý lời cảnh báo của Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "bạn bỏ qua lời cảnh báo của Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1579,7 +1579,7 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "bạn phá hủy chiếc loa tuyên thệ."
+            "text": "bạn tiêu diệt người tuyên thệ."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1615,11 +1615,11 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "bạn lưu ý lời cảnh báo của Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "bạn bỏ qua lời cảnh báo của Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1967,7 +1967,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "bạn bị săn đuổi."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -3089,7 +3089,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "bạn bị săn đuổi."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",

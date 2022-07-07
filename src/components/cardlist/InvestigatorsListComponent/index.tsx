@@ -237,7 +237,7 @@ export default function InvestigatorsListComponent({
         });
       }
       if (i) {
-        if (i.pack_code && (i.pack_code === 'core' || ignore_collection || cardInCollection(i, in_collection))) {
+        if (i.pack_code && ((i.pack_code === 'core' && !in_collection.no_core) || ignore_collection || cardInCollection(i, in_collection))) {
           results.push({ type: 'card', card: i });
         } else {
           nonCollectionCards.push(i);

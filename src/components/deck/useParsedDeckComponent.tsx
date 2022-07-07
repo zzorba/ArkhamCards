@@ -42,7 +42,7 @@ function hasUpgrades(
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
-      (upgradeCard.pack_code === 'core' || ignoreCollection || inCollection[upgradeCard.pack_code])
+      ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || inCollection[upgradeCard.pack_code])
     )));
 }
 

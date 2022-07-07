@@ -155,41 +155,40 @@ function useParsedDeckHelper(
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
-  const parsedDeckRef = useRef<ParsedDeck | undefined>();
-  parsedDeckRef.current = parsedDeck;
+  const parsedDeckRef = useRef<ParsedDeck | undefined>(parsedDeck);
   useEffect(() => {
     if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
       initialized.current = true;
-      setParsedDeck(
-        parseDeck(
-          deck.deck.investigator_code,
-          deck.deck.meta || {},
-          deck.deck.slots || {},
-          deck.deck.ignoreDeckLimitSlots,
-          deck.deck.sideSlots || {},
-          cards,
-          deck.previousDeck,
-          deck.deck.xp_adjustment || 0,
-          deck.deck
-        )
+      const pd = parseDeck(
+        deck.deck.investigator_code,
+        deck.deck.meta || {},
+        deck.deck.slots || {},
+        deck.deck.ignoreDeckLimitSlots,
+        deck.deck.sideSlots || {},
+        cards,
+        deck.previousDeck,
+        deck.deck.xp_adjustment || 0,
+        deck.deck
       );
+      parsedDeckRef.current = pd;
+      setParsedDeck(pd);
     }
   }, [deck, cards, fetchIfMissing, parsedDeck]);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
-      setParsedDeck(
-        parseDeck(
-          deck.deck.investigator_code,
-          deckEdits.meta,
-          deckEdits.slots,
-          deckEdits.ignoreDeckLimitSlots,
-          deckEdits.side,
-          cards,
-          deck.previousDeck,
-          deckEdits.xpAdjustment,
-          deck.deck
-        )
+      const pd = parseDeck(
+        deck.deck.investigator_code,
+        deckEdits.meta,
+        deckEdits.slots,
+        deckEdits.ignoreDeckLimitSlots,
+        deckEdits.side,
+        cards,
+        deck.previousDeck,
+        deckEdits.xpAdjustment,
+        deck.deck
       );
+      parsedDeckRef.current = pd;
+      setParsedDeck(pd);
     }
   }, [cards, deck, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
   return {

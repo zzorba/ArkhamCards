@@ -25,6 +25,7 @@ import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
 import AppModal from '@components/core/AppModal';
 import CardTextComponent from '@components/card/CardTextComponent';
+import { parseDeck } from '@lib/parseDeck';
 
 
 interface ModalOptions {
@@ -718,6 +719,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
     deck,
+    previousDeck,
+    cards,
     parsedDeckRef,
     deckEditsRef,
     tabooSetId,
@@ -742,13 +745,24 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeckRef.current || !deckEditsRef.current) {
+    if (!deck || !cards || !parsedDeckRef.current || !deckEditsRef.current) {
       return;
     }
     setSaving(true);
     try {
       if (hasPendingEdits) {
-        const problem = parsedDeckRef.current.problem;
+        const newParsedDeck = parseDeck(
+          deck.investigator_code,
+          deckEditsRef.current.meta,
+          deckEditsRef.current.slots,
+          deckEditsRef.current.ignoreDeckLimitSlots,
+          deckEditsRef.current.side,
+          cards,
+          previousDeck,
+          deckEditsRef.current.xpAdjustment,
+          deck
+        );
+        const problem = newParsedDeck ? newParsedDeck.problem : parsedDeckRef.current.problem;
         const problemField = problem ? problem.reason : '';
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,

@@ -472,7 +472,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        if (!showAllNonCollection && !ignore_collection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
+        if (!showAllNonCollection && !ignore_collection && (card.pack_code !== 'core' || packInCollection.no_core) && !cardInCollection(card, packInCollection)) {
           currentNonCollection.push(card);
         } else {
           result.push(card);
