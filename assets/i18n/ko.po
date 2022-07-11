@@ -6603,7 +6603,7 @@ msgstr "의식진"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "도시"
 
 msgctxt "trait"
 msgid "Civic"
@@ -6683,7 +6683,7 @@ msgstr "심해인"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr ""
+msgstr "무저갱"
 
 msgctxt "trait"
 msgid "Desert"
@@ -6795,7 +6795,7 @@ msgstr "신발"
 
 msgctxt "trait"
 msgid "Forbidden"
-msgstr ""
+msgstr "금단"
 
 msgctxt "trait"
 msgid "Forgotten"
@@ -6819,7 +6819,7 @@ msgstr "유령"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "가스트"
 
 msgctxt "trait"
 msgid "Ghoul"
@@ -6835,7 +6835,7 @@ msgstr "후원금"
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr ""
+msgstr "묘지"
 
 msgctxt "trait"
 msgid "Ground Floor"
@@ -6951,7 +6951,7 @@ msgstr "실마리"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr ""
+msgstr "렝"
 
 msgctxt "trait"
 msgid "Lodge"
@@ -6999,7 +6999,7 @@ msgstr "미스캐토닉"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "므나르"
 
 msgctxt "trait"
 msgid "Monster"
@@ -7011,7 +7011,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr ""
+msgstr "산"
 
 msgctxt "trait"
 msgid "Mutated"
@@ -7051,7 +7051,7 @@ msgstr "징조"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr ""
+msgstr "우스 나르가이"
 
 msgctxt "trait"
 msgid "Ooze"
@@ -7063,7 +7063,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr ""
+msgstr "오리아브"
 
 msgctxt "trait"
 msgid "Otherworld"
@@ -7111,7 +7111,7 @@ msgstr "경찰"
 
 msgctxt "trait"
 msgid "Port"
-msgstr ""
+msgstr "항구"
 
 msgctxt "trait"
 msgid "Portal"
@@ -7243,7 +7243,7 @@ msgstr "산산조각난"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr ""
+msgstr "배"
 
 msgctxt "trait"
 msgid "Shoggoth"
@@ -7255,7 +7255,7 @@ msgstr "은빛 황혼회"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr ""
+msgstr "스카이"
 
 msgctxt "trait"
 msgid "Socialite"
@@ -7279,7 +7279,7 @@ msgstr "마법"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "거미"
 
 msgctxt "trait"
 msgid "Spirit"
@@ -7287,7 +7287,7 @@ msgstr "영혼"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr ""
+msgstr "세인트 메리 병원"
 
 msgctxt "trait"
 msgid "Staff"
@@ -7295,7 +7295,7 @@ msgstr "직원"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr ""
+msgstr "계단"
 
 msgctxt "trait"
 msgid "Summon"
@@ -7307,7 +7307,7 @@ msgstr "보급"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr ""
+msgstr "표면"
 
 msgctxt "trait"
 msgid "Suspect"
@@ -7315,7 +7315,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr "신디케이트"
+msgstr "조직원"
 
 msgctxt "trait"
 msgid "Tactic"
@@ -7335,7 +7335,7 @@ msgstr "과업"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr ""
+msgstr "사원"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
@@ -7391,7 +7391,7 @@ msgstr "향상"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr ""
+msgstr "계곡"
 
 msgctxt "trait"
 msgid "Vehicle"
@@ -7415,7 +7415,7 @@ msgstr "파수꾼"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr ""
+msgstr "황무지"
 
 msgctxt "trait"
 msgid "Wayfarer"
