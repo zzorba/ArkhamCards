@@ -598,7 +598,7 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id';
+export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id' | 'low_memory';
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;

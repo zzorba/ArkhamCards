@@ -402,18 +402,16 @@ export default class DeckValidation {
           }
         }
         if (option.faction_select && option.faction_select.length) {
-          let selected_faction: Set<string> = new Set(this.all_options ? option.faction_select : [option.faction_select[0]]);
+          let selected_faction: Set<string> = new Set(
+            this.all_options ? option.faction_select : [option.faction_select[0]]
+          );
           if (this.meta) {
             const selection = option.id ? this.meta[option.id] : this.meta.faction_selected;
             if (selection && indexOf(option.faction_select, selection) !== -1) {
               selected_faction = new Set([selection]);
             }
           }
-          if (
-            (card.faction_code && !selected_faction.has(card.faction_code)) ||
-            (card.faction2_code && !selected_faction.has(card.faction2_code)) ||
-            (card.faction3_code && !selected_faction.has(card.faction3_code))
-          ) {
+          if (!find(card.factionCodes(), code => selected_faction.has(code))) {
             continue;
           }
         }

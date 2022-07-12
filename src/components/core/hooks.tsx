@@ -1,8 +1,8 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard } from 'react-native';
+import { BackHandler, Keyboard, Platform } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -32,6 +32,7 @@ import Toast from '@components/Toast';
 import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
+import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -681,6 +682,8 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'draft_grid': return !state.settings.draftList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
       case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
+      case 'low_memory':
+        return LOW_MEMORY_DEVICE ? !state.settings.lowMemory : !!state.settings.lowMemory;
     }
   });
 }

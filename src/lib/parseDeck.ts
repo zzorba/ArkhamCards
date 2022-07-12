@@ -605,10 +605,11 @@ export function parseDeck(
       if (!card) {
         return [];
       }
+      const invalid = !validation.canIncludeCard(card, false);
       return {
         id,
         quantity: slots[id] || 0,
-        invalid: !validation.canIncludeCard(card, false) || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
+        invalid: invalid || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
         limited: validation.isCardLimited(card),
       };
     });

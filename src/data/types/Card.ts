@@ -15,7 +15,8 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
+const HEALS_DAMAGE_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+|all|(X total) )?damage');
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export function searchNormalize(text: string, lang: string) {
@@ -495,6 +496,8 @@ export default class Card {
   public seal?: boolean;
   @Column('boolean', { nullable: true })
   public heals_horror?: boolean;
+  @Column('boolean', { nullable: true })
+  public heals_damage?: boolean;
 
   @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
@@ -609,6 +612,14 @@ export default class Card {
 
   factionCode(): FactionCodeType {
     return this.faction_code || 'neutral';
+  }
+
+  factionCodes(): FactionCodeType[] {
+    return [
+      this.faction_code || 'neutral',
+      ...(this.faction2_code ? [this.faction2_code] : []),
+      ...(this.faction3_code ? [this.faction3_code] : []),
+    ];
   }
 
   getHealth(traumaData: TraumaAndCardData | undefined) {
@@ -1188,6 +1199,8 @@ export default class Card {
 
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
+    const heals_damage_match = json.real_text && json.real_text.match(HEALS_DAMAGE_REGEX);
+    const heals_damage = heals_damage_match ? true : null;
     const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
     const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
 
@@ -1278,6 +1291,7 @@ export default class Card {
       myriad,
       advanced,
       heals_horror,
+      heals_damage,
       sort_by_type,
       sort_by_faction,
       sort_by_faction_pack,

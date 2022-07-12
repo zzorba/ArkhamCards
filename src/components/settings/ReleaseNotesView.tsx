@@ -67,7 +67,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         c('releaseNotes').t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
         c('releaseNotes').t`- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden.`,
         c('releaseNotes').t`- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial.`,
-        c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check ArkhamDB for updates</b>).`,
+        c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check for card updates</b>).`,
         c('releaseNotes').t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`,
       ],
     },

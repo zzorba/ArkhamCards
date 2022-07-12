@@ -186,14 +186,18 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
     },
     [visibleCards, beingFetched, fetchSize, db, updateCards]
   );
-
+  const fetchedOne = useRef(false);
+  const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
-      // Initial fetch when we get back first set of results.
-      fetchMore();
+      if (!fetchedOne.current || !lowMemoryMode) {
+        fetchedOne.current = true;
+        // Initial fetch when we get back first set of results.
+        fetchMore();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards]);
+  }, [visibleCards, cards, lowMemoryMode]);
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
     cards,

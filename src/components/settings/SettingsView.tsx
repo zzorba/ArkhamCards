@@ -144,7 +144,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
     }
     return cardsError ?
       t`Error: Check for Cards Again` :
-      t`Check ArkhamDB for updates`;
+      t`Check for card updates`;
   }, [cardsLoading, cardsError]);
 
   const swipeBetweenCardsChanged = useCallback((value: boolean) => {
@@ -156,6 +156,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [setSortRespectQuotes]);
 
   const [campaignShowDeckId, setCampaignShowDeckId] = useSettingFlag('campaign_show_deck_id');
+  const [lowMemory, setLowMemory] = useSettingFlag('low_memory');
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -245,6 +246,13 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 title={t`Show deck ids on campaigns`}
                 value={campaignShowDeckId}
                 onValueChange={setCampaignShowDeckId}
+              />
+              <DeckCheckboxButton
+                icon="tools"
+                title={t`Low memory mode`}
+                description={t`Have the app preload fewer cards to help performance on older devices`}
+                value={lowMemory}
+                onValueChange={setLowMemory}
               />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton

@@ -22,6 +22,7 @@ import {
   ResetOnboardingAction,
   RESET_ONBOARDING,
 } from '@actions/types';
+import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 interface SettingsState {
   tabooId?: number;
@@ -46,6 +47,7 @@ interface SettingsState {
   draftSeparatePacks?: boolean;
   dismissedOnboarding?: string[];
   campaignShowDeckId?: boolean;
+  lowMemory?: boolean;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -68,6 +70,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   draftList: false,
   draftSeparatePacks: false,
   campaignShowDeckId: false,
+  lowMemory: false,
 };
 
 type SettingAction =
@@ -210,6 +213,11 @@ export default function(
           return {
             ...state,
             campaignShowDeckId: action.value,
+          };
+        case 'low_memory':
+          return {
+            ...state,
+            lowMemory: LOW_MEMORY_DEVICE ? !action.value : action.value,
           };
       }
       return state;

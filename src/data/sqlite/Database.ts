@@ -10,6 +10,7 @@ import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
+import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
 
 type DatabaseListener = () => void;
 
@@ -33,7 +34,9 @@ async function createDatabaseConnection(recreate: boolean) {
       'schema',
     ],
     // maxQueryExecutionTime: 4000,
-    migrations: [],
+    migrations: [
+      HealsDamageMigration1657382994910,
+    ],
     entities: [
       Card,
       EncounterSet,

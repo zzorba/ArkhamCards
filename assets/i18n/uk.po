@@ -385,9 +385,6 @@ msgstr ""
 msgid "Error: Check for Cards Again"
 msgstr ""
 
-msgid "Check ArkhamDB for updates"
-msgstr ""
-
 msgid "Card Collection"
 msgstr ""
 
@@ -5491,6 +5488,9 @@ msgstr[1] ""
 msgid "Beta"
 msgstr ""
 
+msgid "Check for card updates"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
@@ -5774,12 +5774,6 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid ""
-"Note: You might need to refresh the cards once (using <b>Check ArkhamDB for "
-"updates</b>)."
-msgstr ""
-
-msgctxt "releaseNotes"
-msgid ""
 "Have some fan-made content you'd like to see in the app, let me know at "
 "[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
 msgstr ""
@@ -6028,6 +6022,12 @@ msgctxt "releaseNotes"
 msgid ""
 "- Shows the deck before you actully save it, so you can re-roll if it "
 "produced something particularly unviable."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"Note: You might need to refresh the cards once (using <b>Check for card "
+"updates</b>)."
 msgstr ""
 
 msgctxt "trait"
