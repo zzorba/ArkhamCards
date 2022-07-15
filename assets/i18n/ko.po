@@ -1807,10 +1807,10 @@ msgid "Return to The Path to Carcosa"
 msgstr "돌아온 카르코사로 가는 길"
 
 msgid "The Dream-Quest"
-msgstr ""
+msgstr "몽환의 추적"
 
 msgid "The Web of Dreams"
-msgstr ""
+msgstr "꿈의 거미줄"
 
 msgid "The Gathering"
 msgstr "회합"
@@ -2023,19 +2023,19 @@ msgid "Beyond the Gates of Sleep"
 msgstr "잠의 관문을 지나서"
 
 msgid "The Black Cat"
-msgstr ""
+msgstr "검은 고양이"
 
 msgid "The Search for Kadath"
 msgstr "카다스를 찾아서"
 
 msgid "The Oneironauts"
-msgstr ""
+msgstr "꿈 항해자"
 
 msgid "Dark Side of the Moon"
 msgstr "달의 어두운 면"
 
 msgid "The Great Ones"
-msgstr ""
+msgstr "위대한 존재"
 
 msgid "Where Gods Dwell"
 msgstr "신들이 기거하는 곳"
@@ -2101,10 +2101,10 @@ msgid "Missing Persons - Valentino Rivas"
 msgstr "실종자 - 발렌티노 리바스"
 
 msgid "Evidence of Kadath"
-msgstr ""
+msgstr "카다스의 증거"
 
 msgid "Steps of the Bridge"
-msgstr ""
+msgstr "다리의 진척도"
 
 #, javascript-format
 msgid "${ totalXp } total"
