@@ -72,6 +72,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
             large: true,
             text: `<b>${resolution.title}</b>`,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
+            hidden: resolution.hidden,
             steps: [
               investigatorStatusStepId(resolution),
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),

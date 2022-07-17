@@ -875,6 +875,7 @@ export interface BinaryConditionalChoice {
   steps?: string[];
   effects?: Effect[];
   narration?: Narration;
+  hidden?: boolean;
 }
 export interface ChecklistInput {
   type: "checklist";
@@ -1215,6 +1216,7 @@ export interface Resolution {
   title: string;
   description?: string;
   text?: string;
+  hidden?: boolean;
   investigator_status?: InvestigatorStatus[];
   steps: string[];
   narration?: Narration;
