@@ -1122,14 +1122,14 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# bị chiếm hữu.",
+            "feminine_text": "#name# bị chiếm hữu."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1137,11 +1137,11 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "bạn tỉnh dậy bên trong hầm mộ."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "địa hạt của thành phố Carcosa hợp nhất với thế giới chúng ta, và Hastur cai trị cả hai."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1157,7 +1157,7 @@
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "bạn đã tự mình bước vào hầm mộ."
           },
           {
             "id": "escaped_the_asylum",
@@ -1181,7 +1181,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur bắt giữ được bạn trong tầm tay của hắn."
           },
           {
             "id": "heeded_daniels_warning",
@@ -1201,7 +1201,7 @@
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "bạn biết vị trí của cánh cổng."
           },
           {
             "id": "left_onyx_clasp",
@@ -1209,11 +1209,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "bạn đã mở con đường phía trên."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "bạn đã mở con đường phía dưới."
           },
           {
             "id": "police_are_suspicious",
@@ -1221,7 +1221,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
@@ -1258,7 +1258,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "một hoặc nhiều hơn điều tra viên bị chiếm hữu."
           },
           {
             "id": "reprint_language",
@@ -1552,14 +1552,14 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# bị chiếm hữu.",
+            "feminine_text": "#name# bị chiếm hữu."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1567,11 +1567,11 @@
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "bạn tỉnh dậy bên trong hầm mộ."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "địa hạt của thành phố Carcosa hợp nhất với thế giới chúng ta, và Hastur cai trị cả hai."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1587,7 +1587,7 @@
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "bạn đã tự mình bước vào hầm mộ."
           },
           {
             "id": "escaped_the_asylum",
@@ -1611,7 +1611,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur bắt giữ được bạn trong tầm tay của hắn."
           },
           {
             "id": "heeded_daniels_warning",
@@ -1631,7 +1631,7 @@
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "bạn biết vị trí của cánh cổng."
           },
           {
             "id": "left_onyx_clasp",
@@ -1639,11 +1639,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "bạn đã mở con đường phía trên."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "bạn đã mở con đường phía dưới."
           },
           {
             "id": "police_are_suspicious",
@@ -1651,7 +1651,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
@@ -1688,7 +1688,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "một hoặc nhiều hơn điều tra viên bị chiếm hữu."
           },
           {
             "id": "reprint_language",
