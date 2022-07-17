@@ -4016,6 +4016,9 @@ msgstr "이상한 나라의 힘"
 msgid "Edge of the Earth"
 msgstr "지구의 끝자락"
 
+msgid "The Scarlet Keys"
+msgstr "진홍색 열쇠"
+
 msgid "Promotional"
 msgstr "프로모션"
 
@@ -5752,19 +5755,19 @@ msgid "Beta"
 msgstr "베타 카드"
 
 msgid "Check for card updates"
-msgstr ""
+msgstr "카드 업데이트 사항 확인하기"
 
 msgid "Low memory mode"
-msgstr ""
+msgstr "메모리 절감 모드"
 
 msgid "Have the app preload fewer cards to help performance on older devices"
-msgstr ""
+msgstr "앱이 더 적은 수의 카드를 미리 로드하도록 하여 구형 기기의 성능을 돕습니다."
 
 msgid "Choose slot to remove"
-msgstr ""
+msgstr "제거할 슬롯 선택"
 
 msgid "Slot"
-msgstr ""
+msgstr "슬롯"
 
 msgid ""
 "Sorry, the app cannot yet support customizable cards like this one, but we "
@@ -5772,9 +5775,13 @@ msgid ""
 "\n"
 "Please check for pending app updates and try again later."
 msgstr ""
+"죄송합니다. 맞춤형 카드는 현재 작업 중인 기능으로 앱은 아직 해당 기능을 "
+"지원하지 않습니다!\n"
+"\n"
+"보류 중인 앱 업데이트가 있는지 확인하고 나중에 다시 시도하세요."
 
 msgid "Customizations"
-msgstr ""
+msgstr "맞춤형 카드"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -5782,14 +5789,14 @@ msgid_plural "${ xp } XP"
 msgstr[0] ""
 
 msgid "Show selected customizations"
-msgstr ""
+msgstr "선택한 맞춤형 카드만 보기"
 
 msgid "Show all customizations"
-msgstr ""
+msgstr "모든 맞춤형 카드 보기"
 
 #, javascript-format
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
-msgstr ""
+msgstr "${ scenario.scenario } (${ resolution }, 경험치 ${ scenarioXp }점)"
 
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
@@ -6382,6 +6389,8 @@ msgid ""
 "Note: You might need to refresh the cards once (using <b>Check for card "
 "updates</b>)."
 msgstr ""
+"중요: 카드를 한 번 새로고침해야 할 수도 있습니다(<b>카드 업데이트 사항 "
+"확인하기</b> 버튼을 누르세요)."
 
 msgctxt "trait"
 msgid "???"
