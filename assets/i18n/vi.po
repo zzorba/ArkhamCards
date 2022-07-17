@@ -5501,6 +5501,37 @@ msgstr ""
 msgid "Have the app preload fewer cards to help performance on older devices"
 msgstr ""
 
+msgid "Choose slot to remove"
+msgstr ""
+
+msgid "Slot"
+msgstr ""
+
+msgid ""
+"Sorry, the app cannot yet support customizable cards like this one, but we "
+"are working on it!\n"
+"\n"
+"Please check for pending app updates and try again later."
+msgstr ""
+
+msgid "Customizations"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } XP"
+msgid_plural "${ xp } XP"
+msgstr[0] ""
+
+msgid "Show selected customizations"
+msgstr ""
+
+msgid "Show all customizations"
+msgstr ""
+
+#, javascript-format
+msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
+msgstr ""
+
 #. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
