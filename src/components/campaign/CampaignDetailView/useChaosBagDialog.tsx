@@ -10,7 +10,6 @@ import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/types/Card';
-import { useDispatch } from 'react-redux';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';

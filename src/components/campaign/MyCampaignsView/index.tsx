@@ -51,7 +51,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { fontScale, width } = useContext(StyleContext);
+  const { fontScale } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {

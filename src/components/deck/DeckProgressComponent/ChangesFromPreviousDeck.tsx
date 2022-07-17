@@ -76,7 +76,7 @@ export default function ChangesFromPreviousDeck({
 
   const showCardPressed = useCallback((card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, true);
+      showCard(componentId, card.code, card, colors, true, parsedDeck.id, parsedDeck.customizations);
     } else {
       showCardSwipe(
         componentId,
@@ -89,10 +89,12 @@ export default function ChangesFromPreviousDeck({
         tabooSetId,
         parsedDeck.id,
         investigator,
-        false
+        false,
+        parsedDeck.customizations
       );
     }
-  }, [colors, allCards, componentId, investigator, parsedDeck.id, tabooSetId, singleCardView]);
+  }, [colors, allCards, componentId, investigator, parsedDeck.id,
+    parsedDeck.customizations, tabooSetId, singleCardView]);
 
   const faction = parsedDeck.investigator.factionCode();
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {

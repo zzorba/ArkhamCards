@@ -89,7 +89,7 @@ export default function DeckList({
   }, [lowMemory, allItems, numDecks])
   const onLoadMore = useCallback(() => {
     setNumDecks(numDecks + 10);
-  }, [lowMemory, numDecks, setNumDecks]);
+  }, [numDecks, setNumDecks]);
 
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
   const renderItem = useCallback(({ deckId }) => {

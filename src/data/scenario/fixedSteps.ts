@@ -18,8 +18,7 @@ import {
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import { getTarotCards } from '@app_constants';
+import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,

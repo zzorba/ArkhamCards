@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Linking,
   ScrollView,
@@ -22,6 +22,9 @@ import StyleContext from '@styles/StyleContext';
 import { useComponentDidAppear, useFlag, useNavigationButtonPressed } from '@components/core/hooks';
 import space from '@styles/space';
 import useSingleCard from '../useSingleCard';
+import CardCustomizationOptions from './CardCustomizationOptions';
+import { Customizations, DeckId } from '@actions/types';
+import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -62,6 +65,8 @@ export interface CardDetailProps {
   pack_code: string;
   showSpoilers?: boolean;
   tabooSetId?: number;
+  deckId: DeckId | undefined;
+  initialCustomizations: Customizations | undefined;
 }
 
 type Props = NavigationProps & CardDetailProps;
@@ -95,7 +100,15 @@ function showFaq(componentId: string, id: string) {
   });
 }
 
-function CardDetailView({ componentId, id, back_id, pack_code, showSpoilers: propsShowSpoilers, tabooSetId: tabooSetIdOverride }: Props) {
+function CardDetailView({
+  componentId, id,
+  back_id,
+  pack_code,
+  showSpoilers: propsShowSpoilers,
+  tabooSetId: tabooSetIdOverride,
+  deckId,
+  initialCustomizations,
+}: Props) {
   const { backgroundStyle, typography, width } = useContext(StyleContext);
   const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
   const showSpoilersSetting = useSelector(showSpoilersSelector);
@@ -136,7 +149,10 @@ function CardDetailView({ componentId, id, back_id, pack_code, showSpoilers: pro
       Navigation.pop(componentId);
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
-  const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
+  const [originalCard, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
+  const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
+  const customizationChoices = customizations[id];
+  const card = useMemo(() => originalCard?.withCustomizations(customizationChoices), [originalCard, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
     if (card) {
@@ -147,7 +163,7 @@ function CardDetailView({ componentId, id, back_id, pack_code, showSpoilers: pro
       });
     }
   }, [card, componentId]);
-
+  const parsedDeckObj = useParsedDeck(deckId, componentId);
   if (loading) {
     return <View style={[styles.wrapper, backgroundStyle]} />;
   }
@@ -170,6 +186,19 @@ function CardDetailView({ componentId, id, back_id, pack_code, showSpoilers: pro
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
       />
+      { !!card.customization_options && !!originalCard && (
+        <CardCustomizationOptions
+          componentId={componentId}
+          card={originalCard}
+          deckId={deckId}
+          customizationOptions={card.customization_options}
+          customizationChoices={customizationChoices}
+          width={width}
+          editable={parsedDeckObj.editable}
+          mode={parsedDeckObj.deckEdits?.mode}
+          setChoice={setChoice}
+        />
+      ) }
     </ScrollView>
   );
 }

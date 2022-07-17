@@ -15,7 +15,6 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSectionComponent';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import { useDispatch } from 'react-redux';
 import { updateCampaignXp } from '@components/campaign/actions';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';

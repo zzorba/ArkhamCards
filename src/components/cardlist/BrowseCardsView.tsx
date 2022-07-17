@@ -21,5 +21,5 @@ function CardSearchView({ componentId, sort }: Props) {
 
 export default withFetchCardsGate<Props>(
   CardSearchView,
-  { promptForUpdate: true }
+  { promptForUpdate: false }
 );

@@ -188,7 +188,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -462,7 +462,7 @@ export function usePickerDialog<T>({
       );
     }
     return <>{description}</>;
-  }, [description, typography]);
+  }, [description, borderStyle, typography]);
   const content = useMemo(() => {
     return (
       <View>
@@ -488,7 +488,7 @@ export function usePickerDialog<T>({
         )) }
       </View>
     );
-  }, [items, onValuePress, borderStyle, typography, description, selectedValue]);
+  }, [items, onValuePress, descriptionSection, noIcons, selectedValue]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator,
@@ -799,7 +799,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
+  }, [deck, saving, cards, previousDeck, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
     dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);

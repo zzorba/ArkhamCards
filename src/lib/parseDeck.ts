@@ -22,6 +22,8 @@ import {
   AssetGroup,
   CardId,
   CardSplitType,
+  CustomizationDecision,
+  Customizations,
   Deck,
   DeckChanges,
   DeckMeta,
@@ -49,6 +51,7 @@ import {
   ACE_OF_RODS_CODE,
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 function filterBy(
   cardIds: CardId[],
@@ -255,16 +258,18 @@ function decSlot(slots: Slots, card: Card) {
 export function getCards(
   cards: CardsMap,
   slots: Slots,
-  ignoreDeckLimitSlots: Slots
+  ignoreDeckLimitSlots: Slots,
+  customizations: Customizations
 ): Card[] {
   return flatMap(keys(slots), code => {
     const card = cards[code];
     if (!card) {
       return [];
     }
+    const customizedCard = card.withCustomizations(customizations[card.code]);
     return map(
       range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
-      () => card
+      () => customizedCard
     );
   });
 }
@@ -275,7 +280,8 @@ function getDeckChanges(
   deck: Deck,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
-  previousDeck?: Deck
+  customizations: Customizations,
+  previousDeck?: Deck,
 ): DeckChanges | undefined {
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
@@ -296,7 +302,8 @@ function getDeckChanges(
   ).getDeckSize();
   const previousDeckCards: Card[] = getCards(cards,
     previousDeck.slots || {},
-    previousDeck.ignoreDeckLimitSlots || {}
+    previousDeck.ignoreDeckLimitSlots || {},
+    customizations
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
   const newDeckSize = validation.getDeckSize();
@@ -568,6 +575,66 @@ export function parseBasicDeck(
   );
 }
 
+
+export function parseCustomizationDecision(value: string | undefined): CustomizationDecision[] {
+  if (!value) {
+    return [];
+  }
+  return map(value.split(','), choice => {
+    const parts = choice.split('|');
+    return {
+      index: parseInt(parts[0], 10),
+      spent_xp: parts.length > 1 ? parseInt(parts[1], 10) : 0,
+      choice: parts.length > 2 ? parts[2] : undefined,
+    };
+  });
+}
+
+export function parseCustomizations(
+  meta: DeckMeta,
+  slots: Slots,
+  cards: CardsMap,
+  previousMeta: DeckMeta | undefined
+): Customizations {
+  const result: Customizations = {};
+  forEach(keys(meta), key => {
+    const value = meta[key];
+    if (!key.startsWith('cus_') || !value) {
+      return
+    }
+    const code = key.substring(4);
+    const card = cards[code];
+    if (!slots[code] || !card?.customization_options) {
+      return
+    }
+    const previousEntry = previousMeta?.[`cus_${code}`];
+    const previousDecisions = previousEntry ? parseCustomizationDecision(previousEntry) : [];
+    const decisions = parseCustomizationDecision(value);
+    const selections: CustomizationChoice[] = flatMap(decisions, decision => {
+      const previous = find(previousDecisions, pd => pd.index === decision.index);
+      const option = card.customization_options?.[decision.index];
+      if (!option) {
+        return [];
+      }
+      const basic = {
+        option,
+        xp_spent: decision.spent_xp,
+        xp_locked: previous?.spent_xp || 0,
+        unlocked: decision.spent_xp === option.xp,
+      };
+      if (!option?.choice) {
+        return basic;
+      }
+      return {
+        ...basic,
+        choice: decision.choice,
+      };
+    });
+    result[code] = selections;
+  });
+  return result;
+}
+
 export function parseDeck(
   investigator_code: string,
   meta: DeckMeta,
@@ -579,6 +646,7 @@ export function parseDeck(
   xpAdjustment?: number,
   originalDeck?: Deck
 ): ParsedDeck | undefined {
+  const customizations = parseCustomizations(meta, slots, cards, previousDeck?.meta);
   const investigator_front_code = meta.alternate_front || investigator_code;
   const investigator_back_code = meta.alternate_back || investigator_code;
   const investigator: Card | undefined = cards[investigator_back_code];
@@ -605,12 +673,13 @@ export function parseDeck(
       if (!card) {
         return [];
       }
-      const invalid = !validation.canIncludeCard(card, false);
+      const customizedCard = card.withCustomizations(customizations[card.code]);
+      const invalid = !validation.canIncludeCard(customizedCard, false);
       return {
         id,
         quantity: slots[id] || 0,
-        invalid: invalid || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
-        limited: validation.isCardLimited(card),
+        invalid: invalid || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
+        limited: validation.isCardLimited(customizedCard),
       };
     });
   const specialCards = cardIds.filter(c =>
@@ -649,7 +718,7 @@ export function parseDeck(
     }
   );
 
-  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
+  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, customizations);
   const problem = validation.getProblem(deckCards) || undefined;
 
   const changes = originalDeck && getDeckChanges(
@@ -658,6 +727,7 @@ export function parseDeck(
     originalDeck,
     slots,
     ignoreDeckLimitSlots,
+    customizations,
     previousDeck);
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
@@ -680,6 +750,7 @@ export function parseDeck(
     investigatorBack: cards[investigator_back_code] || investigator,
     deck: originalDeck,
     slots,
+    customizations,
     normalCardCount: sum(normalCards.map(c =>
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     deckSize: validation.getDeckSize(),

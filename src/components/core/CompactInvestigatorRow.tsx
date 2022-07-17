@@ -7,7 +7,6 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import space from '@styles/space';
 import CollapsibleFactionBlock from './CollapsibleFactionBlock';
-import AppIcon from '@icons/AppIcon';
 
 interface Props {
   investigator?: Card;

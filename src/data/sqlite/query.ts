@@ -11,7 +11,7 @@ export function where(query: string, params?: QueryParams): Brackets {
 }
 
 export const ON_YOUR_OWN_RESTRICTION = new NotBrackets(
-  qb => qb.where(`c.slots_normalized is not null AND c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
+  qb => qb.where(`c.slots_normalized is not null AND c.slots_normalized LIKE :slot AND (c.removable_slot is null OR not c.removable_slot)`, { slot: '%#ally#%' }),
 );
 
 export const BASIC_QUERY = where('c.browse_visible != 0');

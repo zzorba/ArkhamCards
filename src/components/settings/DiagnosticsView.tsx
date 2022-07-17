@@ -165,10 +165,23 @@ export default function DiagnosticsView() {
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
     cycleNames[80] = { name: t`Promotional`, code: 'promotional' };
     cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
-    db.cards().then(cards => {
-      cards.insert(
-        Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
-      );
+    const newCards: Card[] = [];
+    const theJson = JSON.parse(json);
+    if (Array.isArray(theJson)) {
+      forEach(theJson, cardJson => {
+        const newCard = Card.fromJson(cardJson, packsByCode, cycleNames, lang)
+        newCards.push(newCard);
+      });
+    } else {
+      const newCard = Card.fromJson(theJson, packsByCode, cycleNames, lang);
+      newCards.push(newCard)
+    }
+    db.cards().then(async(cards) => {
+      for (let i = 0; i < newCards.length; i++) {
+        const card = newCards[i];
+        await cards.delete(card.id);
+        await cards.insert(card);
+      }
     });
   }, [packs, lang, db]);
 

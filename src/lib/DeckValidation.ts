@@ -11,7 +11,7 @@ import {
 } from 'lodash';
 import { t } from 'ttag';
 
-import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
+import { Customizations, DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
 import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -43,12 +43,26 @@ export default class DeckValidation {
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
   all_options: boolean;
+  all_customizations: boolean;
 
-  constructor(investigator: Card, slots: Slots, meta?: DeckMeta, all_options?: boolean) {
+  /**
+   *
+   * @param investigator
+   * @param slots
+   * @param meta
+   * @param all_options
+   */
+  constructor(
+    investigator: Card,
+    slots: Slots,
+    meta: DeckMeta | undefined,
+    { all_options, all_customizations }: { all_options?: boolean; all_customizations?: boolean } = {}
+  ) {
     this.investigator = investigator;
     this.slots = slots;
     this.meta = meta;
     this.all_options = all_options || false;
+    this.all_customizations = all_customizations || false;
   }
 
   specialCardCounts(): SpecialCardCounts {
@@ -434,7 +448,12 @@ export default class DeckValidation {
           var slot_valid = false;
           for(var j = 0; j < option.slot.length; j++){
             var slot = option.slot[j];
-            if (card.real_slot && card.real_slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
+            if (card.customization_options && this.all_customizations) {
+              // Permissive mode, don't handle removal for now since I don't think we use it.
+              if (find(card.customization_options, c => c.real_slot && c.real_slot?.toUpperCase().indexOf(trait.toUpperCase()+".") !== -1)){
+                slot_valid = true;
+              }
+            } else if (card.real_slot && card.real_slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
               slot_valid = true;
             }
           }
@@ -451,6 +470,12 @@ export default class DeckValidation {
             var trait = option.trait[j];
             if (card.real_traits && card.real_traits.toUpperCase().indexOf(trait.toUpperCase()+".") !== -1){
               trait_valid = true;
+            }
+            if (card.customization_options && this.all_customizations) {
+              // Permissive mode
+              if (find(card.customization_options, o => o.real_traits && o.real_traits?.toUpperCase().indexOf(trait.toUpperCase()+".") !== -1)){
+                trait_valid = true;
+              }
             }
           }
 
@@ -482,6 +507,12 @@ export default class DeckValidation {
             if (card.real_text && card.real_text.toLowerCase().match(text)){
               text_valid = true;
             }
+            if (card.customization_options && this.all_customizations) {
+              // Permissive mode
+              if (find(card.customization_options, o => o.real_text && o.real_text.toLowerCase().match(text))){
+                text_valid = true;
+              }
+            }
           }
           if (!text_valid) {
             continue;
@@ -491,7 +522,10 @@ export default class DeckValidation {
         if (option.level){
           var level_valid = false;
           if (card.xp !== undefined && option.level){
-            if (card.xp >= option.level.min && card.xp <= option.level.max){
+            if (card.customization_options && this.all_customizations) {
+              // Permissive mode, any XP could work for this investigator.
+              level_valid = true;
+            } else if (card.xp >= option.level.min && card.xp <= option.level.max){
               level_valid = true;
             } else {
               continue;

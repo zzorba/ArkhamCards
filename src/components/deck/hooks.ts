@@ -1,19 +1,19 @@
-import { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
-import { find, forEach, keys, range, uniq } from 'lodash';
+import { filter, find, forEach, keys, sortBy, range, uniq } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@app/store';
-import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
+import { CampaignId, Customizations, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
-import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
+import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
-import { parseDeck } from '@lib/parseDeck';
+import { parseCustomizations, parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -25,6 +25,8 @@ import { ShowAlert } from './dialogs';
 import COLORS from '@styles/colors';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import useSingleCard from '@components/card/useSingleCard';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
+import { useCardMap } from '@components/card/useCardList';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -52,6 +54,17 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
 export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | undefined {
   const deckEditsSelector = useMemo(makeDeckEditsSelector, []);
   return useSelector((state: AppState) => deckEditsSelector(state, id));
+}
+
+export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: EditDeckState | undefined) {
+  const slots = deckEdits?.slots;
+  const codes = useMemo(() => slots ? keys(slots) : [], [slots]);
+  const [cards] = useCardMap(codes, 'player');
+  const meta = deckEdits?.meta;
+  const previousMeta = deck?.previousDeck?.meta;
+  return useMemo(() => {
+    return (meta && slots && cards) ? parseCustomizations(meta, slots, cards, previousMeta) : undefined;
+  }, [meta, slots, previousMeta, cards])
 }
 
 export function useDeckSlotCount({ uuid }: DeckId, code: string, side?: boolean): number {
@@ -120,6 +133,7 @@ export interface ParsedDeckResults {
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
   tabooSetId: number;
   visible: boolean;
+  editable: boolean;
   parsedDeck?: ParsedDeck;
   parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
@@ -127,7 +141,7 @@ export interface ParsedDeckResults {
 }
 
 function useParsedDeckHelper(
-  id: DeckId,
+  id: DeckId | undefined,
   componentId: string,
   deck: LatestDeckT | undefined,
   {
@@ -202,6 +216,7 @@ function useParsedDeckHelper(
     visible,
     parsedDeck,
     parsedDeckRef,
+    editable: !!deckEdits?.editable,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
     cardsMissing: !cardsLoading && cardsMissing,
   };
@@ -218,12 +233,49 @@ export function useParsedDeckWithFetch(
 }
 
 export function useParsedDeck(
-  id: DeckId,
+  id: DeckId | undefined,
   componentId: string,
   initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeck(id);
   return useParsedDeckHelper(id, componentId, deck, { initialMode });
+}
+
+interface UpdateCustomizationAction {
+  code: string;
+  choice: CustomizationChoice;
+}
+export function useCardCustomizations(
+  deckId: DeckId | undefined,
+  initialCustomizations: Customizations | undefined
+): [Customizations, (code: string, choice: CustomizationChoice) => void] {
+  const dispatch = useAppDispatch();
+  const [, deckEditsRef] = useDeckEdits(deckId);
+  const [customizations, updateCustomizations] = useReducer<React.Reducer<Customizations, UpdateCustomizationAction>>((state: Customizations, action: UpdateCustomizationAction) => {
+    const { code, choice } = action;
+    const updated: Customizations = { ...state };
+    updated[code] = sortBy([
+      ...filter(state[code] || [], c => c.option.index !== choice.option.index),
+      {
+        ...choice,
+        xp_locked: find(state[code] || [], c => c.option.index === choice.option.index)?.xp_locked || 0,
+      },
+    ], c => c.option.index);
+    return updated;
+  }, initialCustomizations || {});
+
+  const setChoice = useCallback((code: string, choice: CustomizationChoice) => {
+    updateCustomizations({ code, choice });
+    if (deckEditsRef.current && deckId) {
+      const decision = {
+        index: choice.option.index,
+        spent_xp: choice.xp_spent,
+        choice: choice.choice,
+      };
+      dispatch(updateDeckCustomizationChoice(deckId, deckEditsRef.current, code, decision));
+    }
+  }, [dispatch, deckId, deckEditsRef, updateCustomizations]);
+  return [customizations, setChoice];
 }
 
 export interface DeckEditState {

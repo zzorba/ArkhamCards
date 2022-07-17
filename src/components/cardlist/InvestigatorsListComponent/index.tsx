@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { filter, forEach, find, map } from 'lodash';
+import { filter, forEach, find } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -283,7 +283,7 @@ export default function InvestigatorsListComponent({
       }
     }
     return results;
-  }, [hideCustomInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
+  }, [filterInvestigator, hideCustomInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
   const renderSectionFooter = useCallback((item: FooterItem) => {
     if (!item.nonCollectionCount) {

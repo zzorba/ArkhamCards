@@ -524,6 +524,7 @@ export default function useParsedDeckComponent({
   }, [mode, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
+  const customizations = parsedDeck?.customizations;
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -532,6 +533,8 @@ export default function useParsedDeckComponent({
         card,
         colors,
         true,
+        deckId,
+        customizations,
         tabooSetId
       );
       return;
@@ -561,9 +564,10 @@ export default function useParsedDeckComponent({
       tabooSetId,
       deckId,
       investigatorFront,
-      editable
+      editable,
+      customizations,
     );
-  }, [componentId, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
+  }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
 
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
@@ -571,10 +575,11 @@ export default function useParsedDeckComponent({
       return null;
     }
     const count = getCount(item, deckEditsRef?.current?.ignoreDeckLimitSlots);
+    const cardCustomizations = customizations?.[card.code];
     return (
       <CardSearchResult
         key={item.index}
-        card={card}
+        card={card.withCustomizations(cardCustomizations)}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
@@ -584,7 +589,7 @@ export default function useParsedDeckComponent({
         noSidePadding
       />
     );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
+  }, [showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
 
   if (!data || !data.length) {
     return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];
@@ -593,8 +598,6 @@ export default function useParsedDeckComponent({
     <>
       { map(data, deckSection => {
         const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
-
-
         return (
           <View key={deckSection.title} style={space.marginBottomS}>
             <DeckSectionBlock

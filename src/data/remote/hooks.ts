@@ -34,7 +34,6 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';

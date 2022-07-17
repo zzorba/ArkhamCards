@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useRef, useContext } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';

@@ -1,6 +1,6 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, pick, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
+import { forEach, flatMap, pick, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
@@ -10,6 +10,7 @@ import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
 import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
@@ -458,6 +459,9 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
+  @Column('simple-json', { nullable: true })
+  public customization_options?: CustomizationOption[];
+
   @OneToOne(() => Card, { cascade: true, eager: true })
   @Index()
   @JoinColumn({ name: 'linked_card_id' })
@@ -485,6 +489,9 @@ export default class Card {
   public slots_normalized?: string;
   @Column('text', { nullable: true })
   public real_slots_normalized?: string;
+  @Column('boolean', { nullable: true })
+  public removable_slot?: boolean;
+
   @Column('text', { nullable: true })
   public uses?: string;
   @Column('text', { nullable: true })
@@ -524,7 +531,6 @@ export default class Card {
   @Column('integer', { nullable: true, select: false })
   public sort_by_cycle?: number;
 
-
   @Column('integer', { nullable: true, select: false })
   public browse_visible!: number;
 
@@ -562,6 +568,118 @@ export default class Card {
     'c.s_search_real_name_back',
     'c.s_search_real_game',
   ];
+
+  public clone(): Card {
+    const card = new Card();
+    forEach(Object.keys(this), key => {
+      // @ts-ignore ts7053
+      card[key] = this[key];
+    });
+    return card;
+  }
+
+  public customizationChoice(index: number, xp: number, choice?: string): CustomizationChoice | undefined {
+    if (!this.customization_options) {
+      return undefined;
+    }
+    const option = this.customization_options[index];
+    if (!option) {
+      return undefined;
+    }
+    return {
+      option,
+      xp_spent: xp,
+      xp_locked: 0,
+      unlocked: option.xp === xp,
+      choice,
+    };
+  }
+
+  public withCustomizations(customizations?: CustomizationChoice[]): Card {
+    if (!this.customization_options) {
+      return this;
+    }
+    if (!customizations || !find(customizations, c => c.xp_spent)) {
+      return this;
+    }
+    const card = this.clone();
+    const xp_spent = sumBy(customizations, c => c.xp_spent);
+    card.xp = Math.floor((xp_spent + 1) / 2.0);
+    const unlocked = filter(customizations, c => c.unlocked);
+    let lines = (card.text || '').split('\n');
+    forEach(unlocked, (change) => {
+      const option = change.option;
+      if (option.health) {
+        card.health = (card.health || 0) + option.health;
+      }
+      if (option.sanity) {
+        card.sanity = (card.sanity || 0) + option.sanity;
+      }
+      if (option.deck_limit) {
+        card.deck_limit = option.deck_limit;
+      }
+      if (option.real_slot) {
+        card.real_slot = option.real_slot;
+      }
+      if (option.cost) {
+        card.cost = (card.cost || 0) + option.cost;
+      }
+      if (option.real_traits) {
+        card.real_traits = option.real_traits;
+      }
+      if (option.text_change && option.text_edit) {
+        const position = option.position || 0;
+        switch (option.text_change) {
+          case 'trait':
+            card.traits = option.text_edit;
+            break;
+          case 'insert':
+            // Delayed execution
+            break;
+          case 'replace':
+            lines[position] = option.text_edit;
+            break;
+          case 'append':
+            lines.push(option.text_edit);
+        }
+      }
+      if (option.choice) {
+        switch(option.choice) {
+          case 'remove_slot': {
+            const choice = parseInt(change.choice || '0', 10);
+            if (card.real_slot) {
+              card.real_slot = flatMap(card.real_slot.split('.'), (slot, index) => {
+                if (index === choice) {
+                  return [];
+                }
+                return slot.trim();
+              }).join('. ');
+            }
+            if (card.slot) {
+              card.slot = flatMap(card.slot.split('.'), (slot, index) => {
+                if (index === choice) {
+                  return [];
+                }
+                return slot.trim();
+              }).join('. ');
+            }
+          }
+        }
+      }
+    });
+    forEach(unlocked, ({ option }) => {
+      if (option.text_change === 'insert' && option.text_edit) {
+        const position = option.position || 0;
+        lines = [
+          ...lines.slice(0, position),
+          option.text_edit,
+          ...lines.slice(position),
+        ];
+      }
+    });
+    card.text = lines.join('\n');
+    return card;
+  }
 
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
@@ -1157,10 +1275,12 @@ export default class Card {
         }
       }
     }
-
-    const real_traits_normalized = json.real_traits ? map(
+    const customization_options = CustomizationOption.parseAll(json);
+    const removable_slot = !!find(customization_options, option => option.choice === 'remove_slot');
+    const real_traits = find(customization_options, t => !!t.real_traits)?.real_traits || json.real_traits;
+    const real_traits_normalized = real_traits ? map(
       filter(
-        map(json.real_traits.split('.'), trait => trait.toLowerCase().trim()),
+        map(real_traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
     const traits_normalized = json.traits ? map(
@@ -1184,6 +1304,7 @@ export default class Card {
       ),
       s => `#${s}#`).join(',') : null;
 
+
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.code === '08062' ?
       ['foo', 'bar', 'charges'] :
@@ -1197,9 +1318,11 @@ export default class Card {
     const seal_match = json.real_text && json.real_text.match(SEAL_REGEX);
     const seal = !!seal_match || json.code === SERPENTS_OF_YIG;
 
-    const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
+    const heals_horror_match = !!(json.real_text && json.real_text.match(HEALS_HORROR_REGEX)) ||
+      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_HORROR_REGEX));
     const heals_horror = heals_horror_match ? true : null;
-    const heals_damage_match = json.real_text && json.real_text.match(HEALS_DAMAGE_REGEX);
+    const heals_damage_match = !!(json.real_text && json.real_text.match(HEALS_DAMAGE_REGEX)) ||
+      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_DAMAGE_REGEX));
     const heals_damage = heals_damage_match ? true : null;
     const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
     const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
@@ -1252,9 +1375,9 @@ export default class Card {
 
     const s_search_real_name = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
     const s_search_real_name_back = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
-    const s_search_real_game = searchNormalize(filter([json.real_text, json.real_traits], x => !!x).join(' '), 'en');
+    const s_search_real_game = searchNormalize(filter([json.real_text, real_traits], x => !!x).join(' '), 'en');
     let result = {
-      ...json,
+      ...omit(json, ['customization_options', 'customization_text']),
       ...eskills,
       id: json.code,
       tabooSetId: null,
@@ -1276,6 +1399,7 @@ export default class Card {
       linked_card,
       spoiler,
       traits_normalized,
+      customization_options,
       real_traits_normalized,
       real_slot,
       real_slots_normalized,
@@ -1289,6 +1413,7 @@ export default class Card {
       ...restrictions,
       seal,
       myriad,
+      removable_slot,
       advanced,
       heals_horror,
       heals_damage,

@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard, Platform } from 'react-native';
+import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
@@ -206,7 +206,7 @@ export function useCounter(
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [debounceValue] = useDebounce(value, 2000, { trailing: true });
+  const [debounceValue] = useDebounce(value, 200, { trailing: true });
   useEffectUpdate(() => {
     if (syncValue && dirty) {
       syncValue(value);
@@ -661,7 +661,7 @@ export function useCopyAction(value: string, confirmationText: string): () => vo
         options: Toast.options,
       },
     });
-  }, [value, useConfirmSignupDialog]);
+  }, [value, useConfirmSignupDialog, confirmationText]);
 }
 
 export function useSettingValue(setting: MiscSetting): boolean {
@@ -782,7 +782,7 @@ export function useWeaknessCards(includeRandomBasicWeakness?: boolean, tabooSetO
       }
     });
     return result;
-  }, [playerCards, includeRandomBasicWeakness]);
+  }, [playerCards, includeRandomBasicWeakness, weaknessCards]);
 }
 
 export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {

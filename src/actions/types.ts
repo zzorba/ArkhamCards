@@ -3,6 +3,7 @@ import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_CYCLE = 'cycle';
@@ -204,9 +205,20 @@ export interface SplitCards {
 }
 export type CardSplitType = keyof SplitCards;
 
+export interface CustomizationDecision {
+  index: number;
+  spent_xp: number;
+  choice?: string;
+}
+
+export interface Customizations {
+  [code: string]: CustomizationChoice[] | undefined;
+}
+
 export interface ParsedDeck {
   id?: DeckId;
   deck?: Deck;
+  customizations: Customizations;
 
   investigator: Card;
   investigatorFront: Card;

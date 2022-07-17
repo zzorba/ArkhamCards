@@ -6,7 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
-  Share as LegacyShare
+  Share as LegacyShare,
 } from 'react-native';
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';

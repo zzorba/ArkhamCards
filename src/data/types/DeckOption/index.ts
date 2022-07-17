@@ -185,7 +185,7 @@ export class DeckOptionQueryBuilder {
     if (this.option.faction_select && this.option.faction_select.length) {
       if (meta) {
         const selection = this.option.id ? (meta[this.option.id] as FactionCodeType) : meta.faction_selected;
-        if (selection &&  indexOf(this.option.faction_select, selection) !== -1) {
+        if (selection && indexOf(this.option.faction_select, selection) !== -1) {
           // If we have a deck select ONLY the ones they specified.
           // If not select them all.
           return this.filterBuilder.factionFilter([selection]);

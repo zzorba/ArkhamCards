@@ -96,7 +96,7 @@ export default function PackRow({ packId, componentId, description, pack, cycle,
         ],
       );
     }
-  }, [pack, cycle, checked, alwaysCycle, setCycleChecked, setChecked]);
+  }, [pack, cycle, checked, alwaysCycle, packId, setCycleChecked, setChecked]);
 
   const backgroundColor = colors.background;
   const iconSize = 24;

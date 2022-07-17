@@ -11,7 +11,7 @@ import {
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import { INCOMPLETE_GUIDED_CAMPAIGNS, Pack } from '@actions/types';
+import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
@@ -144,7 +144,7 @@ export default function PackListComponent({
         alwaysCycle={cyclesOnly}
       />
     );
-  }, [packs, checkState, componentId, cyclesOnly, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
+  }, [packs, checkState, componentId, cyclesOnly, alwaysShowCoreSet, includeNoCore, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
     return renderPack(item);

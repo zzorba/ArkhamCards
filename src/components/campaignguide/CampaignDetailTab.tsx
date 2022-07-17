@@ -186,7 +186,7 @@ export default function CampaignDetailTab({
         },
       },
     });
-  }, [componentId, campaignGuide]);
+  }, [componentId, campaignGuide, campaign.tarotReading]);
   const [tarotDialog, showTarotDialog] = useTarotCardReadingPicker({
     value: undefined,
     onValueChange: onTarotPress,

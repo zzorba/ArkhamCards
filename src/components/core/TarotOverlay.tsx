@@ -1,12 +1,10 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, Text, TouchableWithoutFeedback, StyleSheet, Platform } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
-import space, { m } from '@styles/space';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import AppIcon from '@icons/AppIcon';
+import { m } from '@styles/space';
 import TarotCardComponent from '@components/card/TarotCardComponent';
 import { TarotCard } from '@app_constants';
 import { TAROT_CARD_RATIO } from '@styles/sizes';
@@ -20,7 +18,6 @@ export interface TarotProps {
 }
 
 export default function TarotOverlay({ componentId, tarot, inverted, flipped, onFlip, onInvert }: TarotProps & NavigationProps) {
-  console.log({ inverted, flipped });
   const [localFlipped, setLocalFlipped] = useState(flipped);
   const [localInverted, setLocalInverted] = useState(inverted);
   const handleInvert = useCallback((id: string, inverted: boolean) => {
@@ -31,9 +28,9 @@ export default function TarotOverlay({ componentId, tarot, inverted, flipped, on
   const handleFlip = useCallback((id: string) => {
     setLocalFlipped(true);
     onFlip?.(id);
-  }, [setLocalInverted, onFlip]);
+  }, [setLocalFlipped, onFlip]);
 
-  const { colors, typography, width, height } = useContext(StyleContext);
+  const { width, height } = useContext(StyleContext);
   const onDismiss = useCallback(() => {
     Navigation.dismissModal(componentId);
   }, [componentId]);

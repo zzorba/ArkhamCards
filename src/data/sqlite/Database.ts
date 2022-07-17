@@ -11,6 +11,8 @@ import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
 import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
+import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
+import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
 
 type DatabaseListener = () => void;
 
@@ -36,6 +38,8 @@ async function createDatabaseConnection(recreate: boolean) {
     // maxQueryExecutionTime: 4000,
     migrations: [
       HealsDamageMigration1657382994910,
+      CustomizeMigration1657651357621,
+      RemovableSlot1658075280573,
     ],
     entities: [
       Card,

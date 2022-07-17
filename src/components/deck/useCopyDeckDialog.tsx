@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ActivityIndicator, View, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { find, flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -197,7 +197,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         ) : null }
       </>
     );
-  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, typography, selectedDeckIdChanged]);
+  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, selectedDeckIdChanged]);
 
   const formContent = useMemo(() => {
     if (saving) {
@@ -247,7 +247,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
               onValueChange={onDeckTypeChange}
             />
           }
-          />
+        />
         { !!isCustomContent && (
           <NewDialog.ContentLine
             hideIcon

@@ -21,7 +21,7 @@ import {
   Text,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
@@ -40,7 +40,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
@@ -828,6 +828,7 @@ export default function({
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
+  const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
@@ -893,6 +894,8 @@ export default function({
         card,
         colors,
         true,
+        deckId,
+        customizations,
         tabooSetOverride
       );
       return;
@@ -921,9 +924,10 @@ export default function({
       tabooSetOverride,
       deckId,
       investigator,
-      true
+      true,
+      customizations
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
+  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
     {
       type: 'deck',
@@ -979,7 +983,7 @@ export default function({
         return (
           <CardSearchResult
             key={item.id}
-            card={card}
+            card={card.withCustomizations(customizations?.[card.code])}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
@@ -1036,7 +1040,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  }, [customizations, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const { lang } = useContext(LanguageContext);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);

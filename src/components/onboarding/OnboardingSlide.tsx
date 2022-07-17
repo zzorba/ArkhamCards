@@ -43,5 +43,5 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 16,
     padding: m,
     flexDirection: 'column',
-  }
-})
+  },
+});

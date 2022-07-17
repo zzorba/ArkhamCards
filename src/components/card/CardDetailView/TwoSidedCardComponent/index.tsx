@@ -495,7 +495,6 @@ export default function TwoSidedCardComponent(props: Props) {
   }, [card, simple, width, linked, cardText, shadow.large, custom,
     cardFooter, colors, backgroundStyle, showBack, flavorFirst, image, metadataBlock, playdataBlock,
     toggleShowBack, showFaq, showTaboo]);
-
   const backFirst = !linked &&
     (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
     !(isHorizontal || !card.mythos_card) &&

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { MarkdownText, Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -8,7 +8,7 @@ import { WithIconName, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
 import LocationConnectorIcon from '@icons/LocationConnectorIcon';
-import space, { l, s } from '@styles/space';
+import { s } from '@styles/space';
 import { MAX_WIDTH } from '@styles/sizes';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {

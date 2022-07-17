@@ -1,6 +1,5 @@
 import React, { MutableRefObject, ReactNode, useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import {

@@ -35,7 +35,6 @@ import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLog
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 import { useSettingFlag, useSettingValue } from '@components/core/hooks';
-import campaigns from '@reducers/campaigns';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -286,7 +285,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   />
                 </>
               ) }
-               { lang === 'ru' && (
+              { lang === 'ru' && (
                 <>
                   <View style={space.paddingS}>
                     <Text style={typography.text}>

@@ -8,7 +8,7 @@ import { useAppDispatch } from '@app/store';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import { Item, useDialog, usePickerDialog } from '@components/deck/dialogs';
-import space, { l, m, s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { getTarotCards, TarotCard } from '@app_constants';
 import { useSettingValue, useToggles } from '@components/core/hooks';
@@ -572,24 +572,24 @@ function TarotCardReadingView({
             { flexDirection: 'column' }
           ]}>
             { map(tarotCards, (card, idx) => {
-              const scenario = readingType === 'destiny' && scenarios && scenarios.length > idx ? scenarios[idx] : undefined;
-              return (
-                <Animated.View key={card.id} entering={SlideInLeft} exiting={SlideOutRight}>
-                  <TarotCardButton
-                    card={card}
-                    flipped={!!flipped[card.id]}
-                    onFlip={toggleFlipped}
-                    showTarotCard={showTarotCard}
-                    inverted={!!reversed[card.id]}
-                    scenario={scenario}
-                    scenarioName={scenario ? scenarioNames[scenario] : undefined}
-                    onInvert={onInvert}
-                    first={idx === 0}
-                    last={idx === tarotCards.length - 1}
-                  />
-                </Animated.View>
-              );
-            }) }
+                const scenario = readingType === 'destiny' && scenarios && scenarios.length > idx ? scenarios[idx] : undefined;
+                return (
+                  <Animated.View key={card.id} entering={SlideInLeft} exiting={SlideOutRight}>
+                    <TarotCardButton
+                      card={card}
+                      flipped={!!flipped[card.id]}
+                      onFlip={toggleFlipped}
+                      showTarotCard={showTarotCard}
+                      inverted={!!reversed[card.id]}
+                      scenario={scenario}
+                      scenarioName={scenario ? scenarioNames[scenario] : undefined}
+                      onInvert={onInvert}
+                      first={idx === 0}
+                      last={idx === tarotCards.length - 1}
+                    />
+                  </Animated.View>
+                );
+              }) }
           </ScrollView>
       ) }
       { dialog }

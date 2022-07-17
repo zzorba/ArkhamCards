@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, flatMap, map, throttle } from 'lodash';
-import { Platform, Text, StyleSheet, View, ScrollView } from 'react-native';
+import { find, throttle } from 'lodash';
+import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -121,16 +121,6 @@ function MyDecksView({ componentId }: NavigationProps) {
     return undefined;
   }, [localDecksOnly, hideCampaignDecks]);
 
-/*const codes = ['05012', '03023', '02150', '60330', '05118', '03312', '08124', '05109', '60529', '01059', '60214', '01087', '02150', '02300', '01047', '02018', '60302'];
-  const [sampleCards] = usePlayerCards(codes);
-  const cards = useMemo(() => flatMap(codes, code => sampleCards?.[code] || []), [sampleCards, codes]);
-  return (
-    <ScrollView style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'black' }}>
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={300} /> : [])}
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={200} /> : [])}
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={250} /> : [])}
-    </ScrollView>
-  );*/
   return (
     <MyDecksComponent
       searchOptions={{
@@ -162,7 +152,7 @@ MyDecksView.options = () => {
 
 export default withFetchCardsGate(
   MyDecksView,
-  { promptForUpdate: false },
+  { promptForUpdate: true },
 );
 
 const styles = StyleSheet.create({
