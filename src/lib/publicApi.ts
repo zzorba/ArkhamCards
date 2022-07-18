@@ -441,13 +441,13 @@ export const syncCards = async function(
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
-      pack_code: 'custom',
+      pack_code: 'zcu',
       pack_name: c('investigator').t`Custom`,
       type_code: 'investigator',
       type_name: t`Investigator`,
       faction_code: 'neutral',
       faction_name: t`Neutral`,
-      position: 1,
+      position: 4,
       code: CUSTOM_INVESTIGATOR,
       name: 'Johnny Anybody',
       real_name: 'Johnny Anybody',

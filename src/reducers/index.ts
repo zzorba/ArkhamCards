@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { concat, find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
@@ -261,40 +261,46 @@ export const getAllPacks = createSelector(
             position: 2,
           },
           {
+            code: 'zcu',
+            cycle_code: 'fan',
+            name: c('investigator').t`Custom`,
+            position: 3,
+          },
+          {
             code: 'zdm',
             cycle_code: 'fan',
             name: t`Dark Matter`,
-            position: 3,
+            position: 4,
           },
           {
             code: 'zaw',
             cycle_code: 'fan',
             name: t`Alice in Wonderland`,
-            position: 4,
+            position: 5,
           },
           {
             code: 'zce',
             cycle_code: 'fan',
             name: t`The Crown of Egil`,
-            position: 5,
+            position: 6,
           },
           {
             code: 'zcp',
             cycle_code: 'fan',
             name: t`Call of the Plaguebearer`,
-            position: 6,
+            position: 7,
           },
           {
             code: 'zcc',
             cycle_code: 'fan',
             name: t`Consternation on the Constellation`,
-            position: 7,
+            position: 8,
           },
           {
             code: 'zez',
             cycle_code: 'fan',
             name: t`Symphony of Erich Zann`,
-            position: 8,
+            position: 9,
           },
         ], (p): Pack => {
           return {

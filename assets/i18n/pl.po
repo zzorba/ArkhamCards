@@ -6047,7 +6047,6 @@ msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Show selected customizations"
 msgstr ""
@@ -6059,7 +6058,6 @@ msgstr ""
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

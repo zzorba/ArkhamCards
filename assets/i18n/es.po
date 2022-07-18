@@ -6127,7 +6127,6 @@ msgstr ""
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
