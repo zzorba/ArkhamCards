@@ -1070,45 +1070,45 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# 심연으로 끌려갔다.",
+            "feminine_text": "#name# 심연으로 끌려갔다."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# 심연으로 끌려갔다.",
+            "feminine_text": "#name# 심연으로 끌려갔다."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "짜라의 계획을 알아냈다"
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "짐승의 결사단의 음모가 계속된다"
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "영원한 잠의 저주가 풀렸다"
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "심연에 있는 꿈꾸는 자 (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "탈출한 결사단원: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "심판의 날이 다가온다"
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "조사자들이 짜라의 군세에 합류했다"
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "심연을 구했다"
           }
         ]
       }
@@ -2665,13 +2665,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# 심연으로 끌려갔다.",
+            "feminine_text": "#name# 심연으로 끌려갔다."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# 심연으로 끌려갔다.",
+            "feminine_text": "#name# 심연으로 끌려갔다."
           },
           {
             "id": "blob_contained",
@@ -2739,35 +2739,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "짜라의 계획을 알아냈다"
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "짐승의 결사단의 음모가 계속된다"
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "영원한 잠의 저주가 풀렸다"
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "심연에 있는 꿈꾸는 자 (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "탈출한 결사단원: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "심판의 날이 다가온다"
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "조사자들이 짜라의 군세에 합류했다"
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "심연을 구했다"
           },
           {
             "id": "zez_all_is_quiet",
