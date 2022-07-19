@@ -2059,7 +2059,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# mẩu bằng chứng đã bị bỏ lại."
           },
           {
             "id": "rejected_fate",
@@ -2095,11 +2095,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "bùa phép của các phù thủy đã bị phá vỡ."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "bùa phép của các phù thủy đã được thực hiện."
           }
         ]
       },
@@ -2229,11 +2229,11 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Mesmerizing Flute (Sáo mê hoặc)"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ritual Components (Thành phần nghi lễ)"
           },
           {
             "id": "scrap_of_torn_shadow",
@@ -3169,7 +3169,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# mẩu bằng chứng đã bị bỏ lại."
           },
           {
             "id": "rejected_fate",
@@ -3205,11 +3205,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "bùa phép của các phù thủy đã bị phá vỡ."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "bùa phép của các phù thủy đã được thực hiện."
           }
         ]
       },
@@ -3299,11 +3299,11 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Mesmerizing Flute (Sáo mê hoặc)"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ritual Components (Thành phần nghi lễ)"
           },
           {
             "id": "scrap_of_torn_shadow",
