@@ -299,13 +299,13 @@ export default function CardCustomizationOptions({ setChoice, mode, deckId, cust
             { t`Customizations`}
           </Text>
           { !!deckId && (
-            <Text style={[typography.text, { color: '#FFFFFF'}]}>
+            <Text style={[typography.text, { color: '#FFFFFF' }]}>
               { ngettext(msgid`${xp} XP`, `${xp} XP`, xp) }
             </Text>
           ) }
         </View>
       </RoundedFactionHeader>
-      <View style={[styles.main, { borderColor: colors.faction[card.factionCode()].border}]}>
+      <View style={[styles.main, { borderColor: colors.faction[card.factionCode()].border }]}>
         { (!deckId || customizationChoices) ? (
           <View style={space.paddingSideS}>
             { map(customizationOptions, (option, index) => (
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: 12,
     height: 24,
-     overflow: 'hidden',
+    overflow: 'hidden',
   },
   largeXp: {
     borderRadius: 6,

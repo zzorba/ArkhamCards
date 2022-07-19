@@ -29,6 +29,19 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-07-20'),
+      title: c('releaseNotes').t`Settings synchronization`,
+      faction: 'guardian',
+      lines: [
+        c('releaseNotes').t`Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!`,
+        c('releaseNotes').t`- This includes your collection + spoiler settings, as well as many general app preferences.`,
+        c('releaseNotes').t`I've had some reports of slower performance on some devices, and have a new <i>"Low Memory Mode"</i> setting to try out.`,
+        c('releaseNotes').t`- If you've been experiencing slow app behavior in anyway, please try it out.`,
+        c('releaseNotes').t`- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild.`,
+        c('releaseNotes').t`BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned.`,
+      ],
+    },
+    {
       date: new Date('2022-04-10'),
       title: c('releaseNotes').t`Drafting player decks`,
       faction: 'seeker',

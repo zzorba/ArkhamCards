@@ -508,7 +508,7 @@ PODS:
     - RNFBApp
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.4.2):
+  - RNGestureHandler (2.5.0):
     - React-Core
   - RNGoogleSignin (7.2.2):
     - GoogleSignIn (~> 6.1.0)
@@ -519,7 +519,7 @@ PODS:
     - React-Core
   - RNReactNativeHapticFeedback (1.13.1):
     - React-Core
-  - RNReanimated (2.8.0):
+  - RNReanimated (2.9.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -938,12 +938,12 @@ SPEC CHECKSUMS:
   RNFBDatabase: 465033505f231fb2cb760f227a1b6df052f6ea8f
   RNFBFunctions: 558cae123f823432ba92a3f3f803e5056573b309
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: 61628a2c859172551aa2100d3e73d1e57878392f
+  RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNGoogleSignin: d7f8368b82d94f1dec964785d496387ca7f19092
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLocalize: 95a43f85e41a966be7bc9cff2437128911c52da0
   RNReactNativeHapticFeedback: 4085973f5a38b40d3c6793a3ee5724773eae045e
-  RNReanimated: 46cdb89ca59ab7181334f4ed05a70e82ddb36751
+  RNReanimated: b5b17149593e7c05e4ec5c0efea1f21e05829510
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: 5972e774cd69eec879131b5283f883c1b93fc91c
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8

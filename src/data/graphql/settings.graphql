@@ -1,0 +1,212 @@
+query getSettings($userId: String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    in_collection
+    show_spoilers
+    onboarding
+  }
+}
+
+query getPacks($userId:String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    in_collection
+    show_spoilers
+  }
+}
+
+mutation updateSettingAlphabetize(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { alphabetize: $value }
+  ) {
+    user_id
+    alphabetize
+  }
+}
+
+mutation updateSettingColorblind(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { colorblind: $value }
+  ) {
+    user_id
+    colorblind
+  }
+}
+
+mutation updateSettingIgnoreCollection(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { ignore_collection: $value }
+  ) {
+    user_id
+    ignore_collection
+  }
+}
+
+
+mutation updateSettingSingleCard(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { single_card: $value }
+  ) {
+    user_id
+    single_card
+  }
+}
+
+
+mutation updateSettingSortQuotes(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { sort_quotes: $value }
+  ) {
+    user_id
+    sort_quotes
+  }
+}
+
+mutation updateSettingCustomContent(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { custom_content: $value }
+  ) {
+    user_id
+    custom_content
+  }
+}
+
+mutation updateSettingCampaignShowDeckId(
+  $userId: String!,
+  $value: Boolean!,
+) {
+  update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _set: { campaign_show_deck_id: $value }
+  ) {
+    user_id
+    campaign_show_deck_id
+  }
+}
+
+mutation upsertSettings(
+  $userId: String!,
+  $in_collection: jsonb!,
+  $show_spoilers: jsonb!,
+  $onboarding: jsonb!,
+  $alphabetize: Boolean!,
+  $colorblind: Boolean!,
+  $ignore_collection: Boolean!,
+  $single_card: Boolean!,
+  $sort_quotes: Boolean!,
+  $custom_content: Boolean!,
+  $campaign_show_deck_id: Boolean!,
+) {
+ insert_user_settings_one(
+    object: {
+      user_id: $userId,
+      alphabetize: $alphabetize,
+      colorblind: $colorblind,
+      ignore_collection: $ignore_collection,
+      single_card: $single_card,
+      sort_quotes: $sort_quotes,
+      custom_content: $custom_content,
+      campaign_show_deck_id: $campaign_show_deck_id
+      in_collection: $in_collection
+      show_spoilers: $show_spoilers
+      onboarding: $onboarding
+    }
+    on_conflict: {
+      constraint: user_settings_pkey
+      update_columns: [
+        alphabetize,
+        colorblind,
+        ignore_collection,
+        single_card,
+        sort_quotes,
+        custom_content,
+        campaign_show_deck_id,
+        in_collection,
+        show_spoilers,
+        onboarding,
+      ]
+    }
+  ) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    onboarding
+    in_collection
+    show_spoilers
+  }
+}
+
+mutation updateInCollection(
+  $userId: String!,
+  $update: jsonb!
+) {
+   update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _append: { in_collection: $update }
+  ) {
+    user_id
+    in_collection
+  }
+}
+
+mutation updateShowSpoilers(
+  $userId: String!,
+  $update: jsonb!
+) {
+   update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _append: { show_spoilers: $update }
+  ) {
+    user_id
+    show_spoilers
+  }
+}
+
+mutation updateOnboarding(
+  $userId: String!,
+  $update: jsonb!
+) {
+   update_user_settings_by_pk(
+    pk_columns: { user_id: $userId },
+    _append: { onboarding: $update }
+  ) {
+    user_id
+    onboarding
+  }
+}

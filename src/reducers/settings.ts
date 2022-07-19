@@ -1,4 +1,4 @@
-import { uniq } from 'lodash';
+import { uniq, filter, forEach } from 'lodash';
 
 import {
   SET_TABOO_SET,
@@ -17,10 +17,8 @@ import {
   REDUX_MIGRATION,
   SET_PLAYBACK_RATE,
   SetPlaybackRateAction,
-  DismissOnboardingAction,
-  DISMISS_ONBOARDING,
-  ResetOnboardingAction,
-  RESET_ONBOARDING,
+  SyncDismissOnboardingAction,
+  SYNC_DISMISS_ONBOARDING,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -52,6 +50,7 @@ interface SettingsState {
 export const CURRENT_REDUX_VERSION = 1;
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
+  version: CURRENT_REDUX_VERSION,
   tabooId: undefined,
   singleCardView: false,
   alphabetizeEncounterSets: false,
@@ -61,7 +60,6 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   fontScale: undefined,
   justifyContent: false,
   sortRespectQuotes: false,
-  version: CURRENT_REDUX_VERSION,
   hideCampaignDecks: false,
   androidOneUiFix: false,
   customContent: false,
@@ -82,8 +80,7 @@ type SettingAction =
   SetFontScaleAction |
   ReduxMigrationAction |
   SetPlaybackRateAction |
-  DismissOnboardingAction |
-  ResetOnboardingAction;
+  SyncDismissOnboardingAction;
 
 
 export default function(
@@ -91,19 +88,20 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
-    case DISMISS_ONBOARDING:
+    case SYNC_DISMISS_ONBOARDING: {
+      let onboarding = [...(state.dismissedOnboarding || [])];
+      forEach(action.updates, (value, key) => {
+        if (value) {
+          onboarding.push(key)
+        } else {
+          onboarding = filter(onboarding, x => x !== key);
+        }
+      });
       return {
         ...state,
-        dismissedOnboarding: uniq([
-          ...(state.dismissedOnboarding || []),
-          action.onboarding,
-        ]),
+        dismissedOnboarding: uniq(onboarding),
       };
-    case RESET_ONBOARDING:
-      return {
-        ...state,
-        dismissedOnboarding: [],
-      };
+    }
     case REDUX_MIGRATION:
       return {
         ...state,

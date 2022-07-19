@@ -285,7 +285,7 @@ export interface UserProfile {
 
 export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const { data, previousData, loading: dataLoading, refetch } = useGetProfileQuery({
+  const { data, previousData, loading: dataLoading, refetch: refetchProfile } = useGetProfileQuery({
     variables: { userId: profileUserId || '' },
     skip: !userId || !profileUserId,
     fetchPolicy: useCached ? 'cache-only' : 'cache-and-network',
@@ -333,10 +333,12 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
     };
   }, [data, previousData]);
   const doRefetch = useCallback(async() => {
-    await refetch?.({
-      userId: profileUserId,
-    });
-  }, [refetch, profileUserId]);
+    if (profileUserId) {
+      await refetchProfile?.({
+        userId: profileUserId,
+      });
+    }
+  }, [refetchProfile, profileUserId]);
   return [profile, userLoading || dataLoading, doRefetch];
 }
 

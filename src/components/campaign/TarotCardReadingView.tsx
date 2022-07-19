@@ -47,6 +47,7 @@ export function getTarotReadingLabel(value: TarotReadingType) {
   }
 }
 
+/*
 function getTarotReadingDescription(value: TarotReadingType) {
   switch (value) {
     case 'chaos': return t`Reveal the top card in a random orientation. It's effects are active throughout the scenario, and could be positive or negative, depending on its orientation. This reading is ideal if you want to add a splash of chaos to a scenario.`;
@@ -58,6 +59,7 @@ function getTarotReadingDescription(value: TarotReadingType) {
     case 'custom': return t`There are endless possible readings that you could perform using the Tarot Deck. Feel free to create your own!`;
   }
 }
+*/
 
 function getTarotReadingInstruction(value: TarotReadingType): string | undefined {
   switch (value) {
@@ -105,10 +107,8 @@ function TarotCardButton({
   card,
   flipped,
   inverted,
-  onFlip,
   scenario,
   scenarioName,
-  onInvert,
   first,
   last,
   showTarotCard,
@@ -127,7 +127,7 @@ function TarotCardButton({
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     showTarotCard(card.id);
-  }, [card.id, flipped, onFlip, showTarotCard]);
+  }, [card.id, showTarotCard]);
   const [icon, title, valueLabel] = useMemo(() => {
     const scenarioIcon = scenario ? <EncounterIcon encounter_code={scenario} size={24} color={colors.M} /> : undefined;
     if (!flipped) {
@@ -142,14 +142,16 @@ function TarotCardButton({
         scenarioIcon,
         scenarioName || scenario || 'scenario',
         inverted ? t`${card.title} - Inverted` : card.title,
-      ]
+      ];
     }
     return [
-      <View style={{ transform: [{ rotate: inverted ? '-180deg' : '0deg' }]}}><AppIcon size={24} color={colors.M} name="up" /></View>,
+      <View key="icon" style={{ transform: [{ rotate: inverted ? '-180deg' : '0deg' }] }}>
+        <AppIcon size={24} color={colors.M} name="up" />
+      </View>,
       inverted ? t`Inverted` : t`Upright`,
-      card.title
+      card.title,
     ];
-  }, [inverted, scenarioName, flipped, scenario, inverted, card.title]);
+  }, [colors, inverted, scenarioName, flipped, scenario, card.title]);
   return (
     <>
       <DeckPickerStyleButton
@@ -250,7 +252,8 @@ function TarotCardReadingView({
     if (originalReading && readingType === 'destiny') {
       const cards: TarotCard[] = [];
       const flipped: { [code: string]: boolean | undefined } = {};
-      const reversed: { [code: string]: boolean | undefined } = {};      forEach(scenarios, scenario => {
+      const reversed: { [code: string]: boolean | undefined } = {};
+      forEach(scenarios, scenario => {
         const id = originalReading.cards[scenario];
         if (id) {
           const card = allTarotCards[id];
@@ -267,7 +270,7 @@ function TarotCardReadingView({
       resetFlipped(flipped);
       resetReversed(reversed);
     }
-  }, [originalReading, readingType]);
+  }, [originalReading, readingType, resetFlipped, resetReversed, scenarios]);
 
   const doTarotDraw = useCallback(() => {
     const allTarotCards = shuffle(values(getTarotCards()));
@@ -318,7 +321,7 @@ function TarotCardReadingView({
         break;
       }
     }
-  }, [scenarios, readingType, resetReversed, setTarotCards, setReversed, setTarotCards, resetFlipped]);
+  }, [scenarios, readingType, resetReversed, setTarotCards, setReversed, resetFlipped]);
   const cardWidth = useMemo(() => {
     if (!tarotCards || !tarotCards.length) {
       return 100;
@@ -337,7 +340,7 @@ function TarotCardReadingView({
       ...cards,
     ]);
     setReversed(cards[0].id, Math.random() < 0.5);
-  }, [setTarotCards, tarotCards]);
+  }, [setTarotCards, setReversed, tarotCards]);
   const scenarioNames = useScenarioNames();
   const onInvert = readingType === 'custom' || readingType === 'choice' || readingType === 'destiny' ? setReversed : undefined;
 
@@ -354,8 +357,8 @@ function TarotCardReadingView({
     return [
       readingType === 'destiny' && currentReversedCount === requiredReversedCount,
       currentReversedCount > requiredReversedCount ?
-      t`Too many card reversed (${currentReversedCount} / ${requiredReversedCount})` :
-      t`Not enough cards reversed (${currentReversedCount} / ${requiredReversedCount})`,
+        t`Too many card reversed (${currentReversedCount} / ${requiredReversedCount})` :
+        t`Not enough cards reversed (${currentReversedCount} / ${requiredReversedCount})`,
     ];
   }, [readingType, tarotCards, flipped, reversed, scenarios]);
 
@@ -364,7 +367,7 @@ function TarotCardReadingView({
       (height * 0.7) / TAROT_CARD_RATIO
     ) : (width - s * 8);
   }, [width, height]);
-  const renderSwipeCard = useCallback(({ item, index, dataIndex }: {
+  const renderSwipeCard = useCallback(({ item }: {
     item: TarotCard;
     index: number;
     dataIndex: number;
@@ -386,7 +389,7 @@ function TarotCardReadingView({
         />
       </View>
     );
-  }, [dialogCardWidth, flipped, reversed, toggleFlipped, onInvert]);
+  }, [dialogCardWidth, flipped, reversed, width, toggleFlipped, onInvert]);
   const [jumpIndex, setJumpIndex] = useState(0);
   const [index, setIndex] = useState(0);
   const content = useMemo(() => {
@@ -412,7 +415,7 @@ function TarotCardReadingView({
         />
       </View>
     );
-  }, [tarotCards, dialogCardWidth, renderSwipeCard, jumpIndex, setIndex]);
+  }, [tarotCards, dialogCardWidth, renderSwipeCard, jumpIndex, setIndex, height, width]);
   const dialogTitle = useMemo(() => {
     if (!tarotCards || index >= tarotCards.length) {
       return t`Loading`;
@@ -479,15 +482,12 @@ function TarotCardReadingView({
       setSavedReading(reading);
       setSaving(false);
     }, 50);
-  }, [setCampaignTaroReading, setSaving, setSavedReading,  id, reversed, tarotCards, scenarios, dispatch]);
-  const footerContent = useMemo(() => {
-
-  }, []);
+  }, [setCampaignTaroReading, setSaving, setSavedReading, id, reversed, tarotCards, scenarios, dispatch]);
   return (
     <View style={[{ flex: 1, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start' }, backgroundStyle]}>
       <View style={[space.paddingS, { flexDirection: 'row' }]}>
         <DeckButton
-          icon='draft'
+          icon="draft"
           title={tarotCards?.length ? t`Reject fate (redraw)` : t`Draw`}
           onPress={doTarotDraw}
           color={tarotCards?.length ? 'red_outline' : 'red'}
@@ -543,7 +543,7 @@ function TarotCardReadingView({
                   <View style={[space.paddingSideM, { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', maxWidth: cardWidth }]}>
                     <View style={space.paddingRightXs}>
                       <EncounterIcon encounter_code={scenarioCode} size={32} color={colors.D20} />
-                      </View>
+                    </View>
                     <Text style={[typography.gameFont, { flex: 1 }]} numberOfLines={2} ellipsizeMode="tail">
                       { scenarioNames[scenarioCode] || scenarioCode }
                     </Text>
@@ -569,28 +569,29 @@ function TarotCardReadingView({
           contentContainerStyle={[
             backgroundStyle,
             space.paddingS,
-            { flexDirection: 'column' }
-          ]}>
-            { map(tarotCards, (card, idx) => {
-                const scenario = readingType === 'destiny' && scenarios && scenarios.length > idx ? scenarios[idx] : undefined;
-                return (
-                  <Animated.View key={card.id} entering={SlideInLeft} exiting={SlideOutRight}>
-                    <TarotCardButton
-                      card={card}
-                      flipped={!!flipped[card.id]}
-                      onFlip={toggleFlipped}
-                      showTarotCard={showTarotCard}
-                      inverted={!!reversed[card.id]}
-                      scenario={scenario}
-                      scenarioName={scenario ? scenarioNames[scenario] : undefined}
-                      onInvert={onInvert}
-                      first={idx === 0}
-                      last={idx === tarotCards.length - 1}
-                    />
-                  </Animated.View>
-                );
-              }) }
-          </ScrollView>
+            { flexDirection: 'column' },
+          ]}
+        >
+          { map(tarotCards, (card, idx) => {
+            const scenario = readingType === 'destiny' && scenarios && scenarios.length > idx ? scenarios[idx] : undefined;
+            return (
+              <Animated.View key={card.id} entering={SlideInLeft} exiting={SlideOutRight}>
+                <TarotCardButton
+                  card={card}
+                  flipped={!!flipped[card.id]}
+                  onFlip={toggleFlipped}
+                  showTarotCard={showTarotCard}
+                  inverted={!!reversed[card.id]}
+                  scenario={scenario}
+                  scenarioName={scenario ? scenarioNames[scenario] : undefined}
+                  onInvert={onInvert}
+                  first={idx === 0}
+                  last={idx === tarotCards.length - 1}
+                />
+              </Animated.View>
+            );
+          }) }
+        </ScrollView>
       ) }
       { dialog }
     </View>
