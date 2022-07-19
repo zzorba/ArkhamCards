@@ -54,6 +54,7 @@ function cycleName(position: string): string {
     case '6': return t`The Dream-Eaters`;
     case '7': return t`The Innsmouth Conspiracy`;
     case '8': return t`Edge of the Earth`;
+    case '9': return t`The Scarlet Keys`;
     case '50': return t`Return to...`;
     case '60': return t`Investigator Starter Decks`;
     case '70': return t`Standalone`;

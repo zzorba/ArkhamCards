@@ -168,6 +168,7 @@ export default function DiagnosticsView() {
       }
     });
     cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[9] = { name: t`The Scarlet Keys`, code: 'tsk' };
     cycleNames[50] = { name: t`Return to...`, code: 'return' };
     cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };

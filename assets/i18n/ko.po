@@ -5723,6 +5723,9 @@ msgstr "모든 맞춤형 카드 보기"
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr "${ scenario.scenario } (${ resolution }, 경험치 ${ scenarioXp }점)"
 
+msgid "The Scarlet Keys"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "커스텀 조사자"

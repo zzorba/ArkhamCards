@@ -6047,6 +6047,9 @@ msgstr ""
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
+msgid "The Scarlet Keys"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"

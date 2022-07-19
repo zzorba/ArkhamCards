@@ -393,6 +393,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
+export const TSK = 'tsk';
 export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
@@ -417,6 +418,7 @@ export type CampaignCycleCode =
   typeof TDEB |
   typeof TIC |
   typeof EOE |
+  typeof TSK |
   typeof GOB |
   typeof STANDALONE |
   typeof DARK_MATTER |
