@@ -13,6 +13,7 @@ import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
 import AliceIcon from './AliceIcon';
+import ScarletIcon from './ScarletIcon';
 
 interface Props {
   encounter_code: string;
@@ -70,6 +71,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   edgeIcon(name: string, size: number, color: string) {
     return (<EdgeIcon name={name} size={size} color={color} />);
+  }
+
+  scarletIcon(name: string, size: number, color: string) {
+    return (<ScarletIcon name={name} size={size} color={color} />);
   }
 
   render() {
@@ -677,7 +682,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sleeping_nightmares':
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
-
+      case 'tsk':
+      case 'tskp':
+      case 'tskc':
+        return this.scarletIcon('tsk', size, color);
       case 'agents_of_cthugha':
         return this.darkMatterIcon('agents_of_cthugua', size, color);
       case 'agency_survivors':

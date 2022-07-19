@@ -93,7 +93,7 @@ apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
     iconFontsDir: 'android/app/src/main/assets/fonts',
-    iconFontNames: ['MaterialIcons.ttf', 'cardicons.ttf', 'Caveat.ttf', 'alice.ttf', 'edge.ttf', 'dark_matter.ttf', 'Teutonic RU.ttf', 'MaterialCommunityIcons.ttf', 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'tokens.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
+    iconFontNames: ['MaterialIcons.ttf', 'scarlet.ttf', 'cardicons.ttf', 'Caveat.ttf', 'alice.ttf', 'edge.ttf', 'dark_matter.ttf', 'Teutonic RU.ttf', 'MaterialCommunityIcons.ttf', 'AnkeCalligraphicFG.ttf', 'arkhamicons.ttf', 'tokens.ttf', 'coreset.ttf', 'AboutDead.ttf', 'Alegreya.ttf', 'Alegreya-ExtraBoldItalic.ttf', 'Alegreya-ExtraBold.ttf', 'Alegreya-BoldItalic.ttf', 'Alegreya-MediumItalic.ttf', 'Alegreya-Bold.ttf', 'Alegreya-Medium.ttf', 'Alegreya-Regular.ttf', 'Alegreya-Italic', 'Conkordia.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'innsmouth.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
 ]
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
