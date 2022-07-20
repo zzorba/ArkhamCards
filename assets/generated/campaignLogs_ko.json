@@ -1070,13 +1070,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# 심연으로 끌려갔다.",
-            "feminine_text": "#name# 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# 심연으로 끌려갔다.",
-            "feminine_text": "#name# 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1258,7 +1258,7 @@
           },
           {
             "id": "possessed",
-            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
+            "text": "한 명 이상의 조사자가 꼭두각시로 전락했다"
           },
           {
             "id": "reprint_language",
@@ -1688,7 +1688,7 @@
           },
           {
             "id": "possessed",
-            "text": "조사자가 한 명이라도 꼭두각시로 전락했다"
+            "text": "한 명 이상의 조사자가 꼭두각시로 전락했다"
           },
           {
             "id": "reprint_language",
@@ -1749,23 +1749,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           }
         ]
       },
@@ -1774,23 +1774,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -1811,23 +1811,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -1848,23 +1848,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -1885,23 +1885,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2665,13 +2665,13 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# 심연으로 끌려갔다.",
-            "feminine_text": "#name# 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# 심연으로 끌려갔다.",
-            "feminine_text": "#name# 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
           },
           {
             "id": "blob_contained",
@@ -2871,23 +2871,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           }
         ]
       },
@@ -2896,23 +2896,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2933,23 +2933,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -2970,23 +2970,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -3007,23 +3007,23 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# 은/는 감시자에게 사로잡혔다",
-            "feminine_text": "#name# 은/는 감시자에게 사로잡혔다"
+            "masculine_text": "#name#의 존재가 감시자에게 사로잡혔다",
+            "feminine_text": "#name#의 존재가 감시자에게 사로잡혔다"
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다",
-            "feminine_text": "#name# 은/는 악령들의 손아귀에 떨어졌다"
+            "masculine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다",
+            "feminine_text": "#name#의 존재가 악령들의 손아귀에 떨어졌다"
           },
           {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# 은/는 안개 속으로 사라졌다",
-            "feminine_text": "#name# 은/는 안개 속으로 사라졌다"
+            "masculine_text": "#name#의 존재가 안개 속으로 사라졌다",
+            "feminine_text": "#name#의 존재가 안개 속으로 사라졌다"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# 은/는 혼령계로 끌려갔다",
-            "feminine_text": "#name# 은/는 혼령계로 끌려갔다"
+            "masculine_text": "#name#의 존재가 혼령계로 끌려갔다",
+            "feminine_text": "#name#의 존재가 혼령계로 끌려갔다"
           },
           {
             "id": "alive",
@@ -3340,19 +3340,19 @@
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "검은 고양이가 당신 곁에 있다"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "검은 고양이가 당신 곁에 있다"
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "검은 고양이가 당신이 역경을 겪고 있다는 소식을 전달했다"
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "검은 고양이는 뭔가 직감이 들었다"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3364,7 +3364,7 @@
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "검은 고양이가 몽환의 땅에 얽힌 지식을 공유했다"
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
@@ -3376,7 +3376,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "검은 고양이가 당신의 동료들에게 경고를 보냈다"
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -3384,7 +3384,7 @@
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "고양이가 주그의 공물을 받아갔다"
           },
           {
             "id": "dreamers_awoke",
@@ -3400,7 +3400,7 @@
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "꿈꾸는 자들이 쇠약해졌다."
           },
           {
             "id": "dreamers_know_of_another_path",
@@ -3424,7 +3424,7 @@
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "조사자들이 주그와 협상했다"
           },
           {
             "id": "possess_silver_key",
@@ -3448,15 +3448,15 @@
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "랜돌프 카터가 조사자들을 구출했다"
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "꿈꾸는 자들이 길에서 벗어났다"
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "그래, 좋아. 그럼 네 마음대로 해 봐"
           },
           {
             "id": "travelled_to_the_cold_wastes",
@@ -3468,7 +3468,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "당신이 자초한 일이다"
           }
         ]
       },
@@ -3528,15 +3528,15 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "검은 고양이가 당신 곁에 있다"
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "검은 고양이가 당신 곁에 있다"
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "검은 고양이는 뭔가 직감이 들었다"
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3556,7 +3556,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "검은 고양이가 당신의 동료들에게 경고를 보냈다"
           },
           {
             "id": "bridge_was_completed",
@@ -3568,23 +3568,23 @@
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "마헤스와란 의사가 살아 있다"
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "마헤스와란 의사가 실종되었다"
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "마헤스와란 의사가 조사에 동참했다"
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "마헤스와란 의사가 환자들과 함께 머물렀다"
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "마헤스와란 의사의 운명은 알 수 없게 되었다"
           },
           {
             "id": "found_a_way_out_of_the_underworld",
@@ -3596,7 +3596,7 @@
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "조사자들은 홀로 과업을 완수해야 한다"
           },
           {
             "id": "possess_silver_key",
@@ -3608,11 +3608,11 @@
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "랜돌프가 자력으로 병원에서 탈출했다"
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "랜돌프가 조사자들과 함께 병원을 탈출했다"
           },
           {
             "id": "randolph_survived_descent",
@@ -3632,7 +3632,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "당신이 자초한 일이다"
           }
         ]
       },
