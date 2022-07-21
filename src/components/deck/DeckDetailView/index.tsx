@@ -533,6 +533,7 @@ function DeckDetailView({
         name: 'Deck.DraftCards',
         passProps: {
           id,
+          campaignId,
         },
         options: {
           statusBar: {
@@ -555,7 +556,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
+  }, [componentId, campaignId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
