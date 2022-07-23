@@ -318,11 +318,11 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "El equipo descubrió una antigua cámara."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "la Dra. Kensler tiene un plan."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -338,7 +338,7 @@
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "la Dra. Kensler entiende la verdadera naturaleza del miasma."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
@@ -358,23 +358,23 @@
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "la instalación fue destruida."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "la locura sin nombre escapó."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "la locura sin nombre está contenida de forma segura dentro de su anfitriona… por ahora."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "El equipo fotografió los atlas estelares."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "el equipo leyó el mapa."
           },
           {
             "id": "scouted_the_city_outskirts",
@@ -382,7 +382,7 @@
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "los investigadores exploraron el pasadizo bifurcado."
           },
           {
             "id": "scouted_the_mountain_pass",
@@ -390,7 +390,7 @@
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "el equipo estudió los murales tallados."
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "los supervivientes de la expedición fueron:"
           },
           {
             "id": "surviving_partners",
@@ -422,7 +422,7 @@
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "el equipo huyó de la instalación."
           },
           {
             "id": "team_fled_to_the_mountains",
@@ -434,19 +434,19 @@
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "el equipo encontró el túnel oculto."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "el equipo fue guiado hacia el túnel oculto."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "el sello se usó… de forma incorrecta."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "a los investigadores se les escapa la verdad del espejismo."
           }
         ]
       },
