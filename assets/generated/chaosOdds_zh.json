@@ -3062,7 +3062,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
+          "prompt": "-1(如果你所在地點部分淹沒，改為-2；如果你所在地點完全淹沒，改為-3)",
           "min": 1,
           "max": 3
         }
@@ -3091,7 +3091,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
+          "prompt": "-2(如果你所在地點部分淹沒，改為-3；如果你所在地點完全淹沒，改為-4)",
           "min": 2,
           "max": 4
         }
@@ -3124,7 +3124,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "當前密謀編號",
           "min": 1
         }
       },
@@ -3152,7 +3152,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "當前密謀編號",
           "min": 1,
           "adjustment": 1
         }
@@ -3185,7 +3185,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "你同一行東面的地點數量",
           "min": 0
         }
       },
@@ -3205,7 +3205,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "你所在地點和所有連接地點之間的屏障數量",
           "min": 0
         }
       }
@@ -3215,7 +3215,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "你同一行東面的地點數量",
           "min": 0,
           "scale": 2
         }
@@ -3236,7 +3236,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "你所在地點和所有連接地點之間的屏障數量",
           "min": 0,
           "scale": 2
         }
@@ -3251,7 +3251,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "調查員控制的鑰匙數量",
           "min": 0
         }
       },
@@ -3279,7 +3279,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "調查員控制的鑰匙數量",
           "min": 0,
           "adjustment": 1
         }
@@ -3317,7 +3317,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "道路牌堆中剩下的地點不多於6個",
               "modified_value": {
                 "modifier": -3
               }
@@ -3354,7 +3354,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "道路牌堆中剩下的地點不多於6個",
               "modified_value": {
                 "modifier": -4
               }
@@ -3395,7 +3395,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "你所在地點已淹沒",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -3433,7 +3433,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "你所在地點已淹沒",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -3470,7 +3470,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "冒險輔助卡上的鑰匙數量",
           "min": 0
         }
       },
@@ -3484,7 +3484,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "抽出了[curse]標記(之前或之後)",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3511,7 +3511,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "冒險輔助卡上的鑰匙數量",
           "scale": 2,
           "min": 0
         }
@@ -3526,7 +3526,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "抽出了[curse]標記(之前或之後)",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3562,7 +3562,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "場上有至少4個未淹沒的[[伊哈·恩斯雷]]地點",
               "modified_value": {
                 "modifier": -3
               }
@@ -3599,7 +3599,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "場上有至少4個未淹沒的[[伊哈·恩斯雷]]地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -4641,7 +4641,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "prompt": "勝利牌區中[[嫌犯]]和[[窩點]]卡牌數量的一半(向上取整)",
           "min": 0
         }
       },
@@ -4654,7 +4654,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "你與一個[[嫌犯]]敵人談判，或調查一個[[窩點]]地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -4680,7 +4680,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "prompt": "勝利牌區中[[嫌犯]]和[[窩點]]卡牌的數量",
           "min": 0
         }
       },
@@ -4693,7 +4693,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "你與一個[[嫌犯]]敵人談判，或調查一個[[窩點]]地點",
               "modified_value": {
                 "modifier": -5
               }

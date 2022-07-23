@@ -71,7 +71,7 @@ export function getDraftCards(
   const validation = new DeckValidation(investigatorBack, slots, meta);
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
-  const deckCards: Card[] = getCards(cards, slots, {});
+  const deckCards: Card[] = getCards(cards, slots, {}, {});
   while (draftCards.length < count) {
     const [draftCard, newPossibleCodes] = randomAllowedCardHelper(
       validation,

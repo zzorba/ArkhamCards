@@ -5,7 +5,7 @@ import { ngettext, msgid, t } from 'ttag';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import space from '@styles/space';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import { useSimpleTextDialog } from '@components/deck/dialogs';
+import { ShowAlert, useSimpleTextDialog } from '@components/deck/dialogs';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '@components/social/FriendsView';
@@ -14,8 +14,12 @@ import StyleContext from '@styles/StyleContext';
 import { useMyProfile } from '@data/remote/hooks';
 import { useComponentDidAppear } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import ArkhamCardsLoginButton from './auth/ArkhamCardsLoginButton';
 
-export default function ArkhamCardsAccountDetails({ componentId }: NavigationProps) {
+interface Props {
+  showAlert: ShowAlert;
+}
+export default function ArkhamCardsAccountDetails({ componentId, showAlert }: NavigationProps & Props) {
   const { typography } = useContext(StyleContext);
   const { userId, loading } = useContext(ArkhamCardsAuthContext);
   const { lang } = useContext(LanguageContext);
@@ -65,41 +69,43 @@ export default function ArkhamCardsAccountDetails({ componentId }: NavigationPro
     }
     return t`Choose a handle`;
   }, [loading, loadingProfile, profile])
-  if (!userId) {
-    return (
-      <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
-        <Text style={typography.text}>
-          {
-            lang === 'en' ?
-              t`Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends.` :
-              t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`
-          }
-        </Text>
-      </View>
-    );
-  }
   const requestLabel = pendingFriendCount > 0 ? ngettext(msgid`${pendingFriendCount} pending request`, `${pendingFriendCount} pending requests`, pendingFriendCount) : undefined;
   const label = ngettext(msgid`${friendCount} friend`, `${friendCount} friends`, friendCount);
   return (
     <View style={[space.paddingTopS]}>
-      <DeckPickerStyleButton
-        icon="name"
-        editable
-        title={t`Account name`}
-        valueLabel={accountNameLabel}
-        onPress={showDialog}
-        first
-      />
-      <DeckPickerStyleButton
-        icon="per_investigator"
-        editable={!loading}
-        title={t`Friends`}
-        valueLabel={!loading ? (requestLabel || label) : undefined}
-        valueLabelDescription={!loading && requestLabel ? label : undefined}
-        onPress={profile?.handle ? editFriendsPressed : showDialog}
-        editIcon="plus-button"
-        last
-      />
+      { !userId ? (
+        <View style={[space.paddingBottomS, space.paddingTopS, space.paddingSideS]}>
+          <Text style={typography.text}>
+            {
+              lang === 'en' ?
+                t`Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends.` :
+                t`This app works just fine without an account.\nBut signing in will allow you to sync campaigns between devices, with more features planned for the future.`
+            }
+          </Text>
+        </View>
+      ) : (
+        <>
+          <DeckPickerStyleButton
+            icon="name"
+            editable
+            title={t`Account name`}
+            valueLabel={accountNameLabel}
+            onPress={showDialog}
+            first
+          />
+          <DeckPickerStyleButton
+            icon="per_investigator"
+            editable={!loading}
+            title={t`Friends`}
+            valueLabel={!loading ? (requestLabel || label) : undefined}
+            valueLabelDescription={!loading && requestLabel ? label : undefined}
+            onPress={profile?.handle ? editFriendsPressed : showDialog}
+            editIcon="plus-button"
+            last
+          />
+        </>
+      ) }
+      <ArkhamCardsLoginButton showAlert={showAlert} handle={accountNameLabel} />
       { dialog }
     </View>
   );

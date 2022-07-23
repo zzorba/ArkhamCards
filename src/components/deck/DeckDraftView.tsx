@@ -37,7 +37,7 @@ import { CollectionEditProps } from '@components/settings/CollectionEditView';
 
 export interface DeckDraftProps {
   id: DeckId;
-  campaignId?: CampaignId;
+  campaignId: CampaignId | undefined;
 }
 
 function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth: number; item: GridItem; onDraft: (card: Card, item?: GridItem) => void }) {
@@ -131,13 +131,11 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
   }, [onDraft, item]);
   const opacity = useSharedValue(1);
   useAnimatedReaction(() => {
-    // console.log(`${JSON.stringify(item)} has history ${JSON.stringify(draftHistory?.value)}`);
     if (!item.draftCycle || draftHistory.value.cycle < item.draftCycle) {
       return false;
     }
     return !draftHistory.value.code || draftHistory.value.code !== item.code;
   }, (result, previous) => {
-    // console.log(`${item.code} - ${previous} -> ${result}`);
     if (result !== previous) {
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }

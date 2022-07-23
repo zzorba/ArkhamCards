@@ -34,8 +34,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
-import { useSettingFlag, useSettingValue } from '@components/core/hooks';
-import campaigns from '@reducers/campaigns';
+import { useRemoteSettingFlag, useSettingFlag, useSettingValue } from '@components/core/hooks';
+import { useRemoteSettings, useUpdateRemoteSetting } from '@data/remote/settings';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -55,12 +55,11 @@ function showRuDonate() {
   Linking.openURL('https://www.tinkoff.ru/cf/5Cbm7NvL1uF');
 }
 
-const SHOW_JUSTIFY = false;
 export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const reduxMigrationCurrent = useSelector((state: AppState) => state.settings.version === CURRENT_REDUX_VERSION);
-
+  useRemoteSettings(true);
   const packsInCollection = useSelector(getPacksInCollection);
   const ignoreCollection = useSettingValue('ignore_collection');
   const spoilerSettings = useSelector(getPackSpoilers);
@@ -79,15 +78,15 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [packs]);
   const collectionSummary = useMemo(() => summarizePacks(packsInCollection, ignoreCollection), [summarizePacks, packsInCollection, ignoreCollection]);
   const spoilerSummary = useMemo(() => summarizePacks(spoilerSettings), [summarizePacks, spoilerSettings]);
-  const [showCardSingleCardView, setSingleCardView] = useSettingFlag('single_card');
-  const [alphabetizeEncounterSets, setAlphabetizeEncounterSets] = useSettingFlag('alphabetize');
-  const [customContent, setCustomContent] = useSettingFlag('custom_content');
+  const updateRemoteSetting = useUpdateRemoteSetting();
+  const [showCardSingleCardView, setSingleCardView] = useRemoteSettingFlag('single_card', updateRemoteSetting);
+  const [alphabetizeEncounterSets, setAlphabetizeEncounterSets] = useRemoteSettingFlag('alphabetize', updateRemoteSetting);
+  const [customContent, setCustomContent] = useRemoteSettingFlag('custom_content', updateRemoteSetting);
 
-  const [colorblind, setColorblind] = useSettingFlag('colorblind');
+  const [colorblind, setColorblind] = useRemoteSettingFlag('colorblind', updateRemoteSetting);
   const [androidOneUiFix, setAndroidOneUiFix] = useSettingFlag('android_one_ui_fix');
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
-  const [justifyContent, setJustifyContent] = useSettingFlag('justify');
-  const [sortRespectQuotes, setSortRespectQuotes] = useSettingFlag('sort_quotes');
+  const [sortRespectQuotes, setSortRespectQuotes] = useRemoteSettingFlag('sort_quotes', updateRemoteSetting);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
   const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getLangChoice);
@@ -144,7 +143,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
     }
     return cardsError ?
       t`Error: Check for Cards Again` :
-      t`Check ArkhamDB for updates`;
+      t`Check for card updates`;
   }, [cardsLoading, cardsError]);
 
   const swipeBetweenCardsChanged = useCallback((value: boolean) => {
@@ -155,7 +154,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
     setSortRespectQuotes(!value);
   }, [setSortRespectQuotes]);
 
-  const [campaignShowDeckId, setCampaignShowDeckId] = useSettingFlag('campaign_show_deck_id');
+  const [campaignShowDeckId, setCampaignShowDeckId] = useRemoteSettingFlag('campaign_show_deck_id', updateRemoteSetting);
+  const [lowMemory, setLowMemory] = useSettingFlag('low_memory');
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -246,6 +246,13 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={campaignShowDeckId}
                 onValueChange={setCampaignShowDeckId}
               />
+              <DeckCheckboxButton
+                icon="tools"
+                title={t`Low memory mode`}
+                description={t`Have the app preload fewer cards to help performance on older devices`}
+                value={lowMemory}
+                onValueChange={setLowMemory}
+              />
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton
                   icon="tools"
@@ -255,14 +262,6 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onValueChange={setAndroidOneUiFix}
                 />
               )}
-              { SHOW_JUSTIFY && (Platform.OS === 'ios' || (typeof Platform.Version !== 'string' && Platform.Version >= 26)) && (
-                <DeckCheckboxButton
-                  icon="menu"
-                  title={t`Justify text`}
-                  value={justifyContent}
-                  onValueChange={setJustifyContent}
-                />
-              ) }
               { lang === 'de' && (
                 <>
                   <View style={space.paddingS}>
@@ -278,7 +277,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   />
                 </>
               ) }
-               { lang === 'ru' && (
+              { lang === 'ru' && (
                 <>
                   <View style={space.paddingS}>
                     <Text style={typography.text}>

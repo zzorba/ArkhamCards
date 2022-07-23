@@ -77,6 +77,7 @@ export type InvestigatorSelector =
   | "$fixed_investigator";
 export type BulletType = "none" | "small" | "default";
 export type CampaignDataEffect =
+  | CampaignDataSetScenariosEffect
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
   | CampaignDataNextScenarioEffect
@@ -413,6 +414,11 @@ export interface CampaignLogInvestigatorCountEffect {
   operation: "set_input" | "set" | "add_input" | "add" | "cross_out";
   value?: number;
   text?: string;
+}
+export interface CampaignDataSetScenariosEffect {
+  type: "campaign_data";
+  setting: "set_scenarios";
+  scenarios: string[];
 }
 export interface CampaignDataResultEffect {
   type: "campaign_data";
@@ -765,7 +771,7 @@ export interface CardChoiceInput {
 }
 export interface CardSearchQuery {
   source: "scenario" | "deck";
-  trait?: string;
+  traits?: string[];
   unique?: boolean;
   vengeance?: boolean;
   exclude_code?: string[];
@@ -868,6 +874,8 @@ export interface BinaryConditionalChoice {
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
+  narration?: Narration;
+  hidden?: boolean;
 }
 export interface ChecklistInput {
   type: "checklist";
@@ -1208,6 +1216,7 @@ export interface Resolution {
   title: string;
   description?: string;
   text?: string;
+  hidden?: boolean;
   investigator_status?: InvestigatorStatus[];
   steps: string[];
   narration?: Narration;

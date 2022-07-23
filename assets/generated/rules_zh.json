@@ -162,8 +162,8 @@
   {
     "id": "Bless_and_Curse_Tokens",
     "cycle": [ "tic" ],
-    "title": "Bless and Curse Tokens",
-    "text": "This expansion introduces two new kinds of chaos tokens: bless ([bless]) tokens and curse ([curse]) tokens. By default, the chaos bag does not contain any [bless] or [curse] tokens. However, certain card effects can add these tokens or remove them from the chaos bag.\n- [bless] tokens revealed during a skill test have the following effects: \"+2。再抽出1個標記。Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [bless] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [curse] tokens revealed during a skill test have the following effects: \"–2。再抽出1個標記。Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [curse] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [bless] or [curse] tokens revealed outside of a skill test have no effect on their own unless otherwise specified by a card effect.\nFAQ:\n- <i>Do [bless] and [curse] tokens have a modifier or value if they are revealed outside of a skill test?</i> No. [bless] and [curse] tokens revealed outside of a skill test have no modifier or value.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of an ability's effect, and there are not enough [bless] or [curse] tokens remaining to fulfill that effect, what happens?</i> You perform as much of the ability as you can, adding [bless] or [curse] tokens until there are none left to add.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of a card/ability's cost, and there are not enough [bless] or [curse] tokens remaining to fulfill that cost, what happens?</i> If the cost cannot be paid, the card/ability therefore cannot be played/triggered.\n- <i>During a campaign, do [bless] and [curse] tokens remain in the chaos bag from scenario to scenario?</i> No, [bless] and [curse] tokens do not carry over from scenario to scenario."
+    "title": "祝福和詛咒標記",
+    "text": "本擴展引入了兩種新的混亂標記：祝福([bless])標記和詛咒([curse])標記。混亂袋中初始不含有任何[bless]或[curse]標記。不過，特定的卡牌效果會在混亂袋中增加或移除這類標記。\n- 技能檢定期間抽取的[bless]標記有如下效果：\"+2。再抽出另1個標記。不將本標記放回混亂袋，改為將其返回供應堆。\"任何時候混亂袋中或封印在場上卡牌上的[bless]標記總計不能超過10個。\n- 技能檢定期間抽取的[curse]標記有如下效果：\"–2。再抽出另1個標記。不將本標記放回混亂袋，改為將其返回供應堆。\"任何時候混亂袋中或封印在場上卡牌上的[curse]標記總計不能超過10個。\n- 除非有卡牌效果特別指明，否則在技能檢定外抽取的[bless]或[curse]標記沒有效果。\nFAQ:\n- <i>如果在技能檢定期間以外抽出的[bless]和[curse]標記有修正值嗎？</i>沒有。在技能檢定期間以外抽出的[bless]和[curse]標記不帶有修正值。\n- <i>如果作為某能力效果的一部分，要將一定數量的[bless]或[curse]標記加入混亂袋，但剩餘的[bless]或[curse]標記數量不夠，該怎麼做？</i>你盡可能的執行該能力，將[bless]或[curse]標記加入，直到標記用盡。\n- <i>如果作為卡牌/能力的費用的一部分，要將一定數量的[bless]或[curse]標記加入混亂袋，但剩餘的[bless]或[curse]標記數量不夠，該怎麼做？</i>如果費用無法支付，該卡牌/能力就不能被打出/啟動。\n- <i>在劇本期間，在兩場冒險之間，[bless]和[curse]標記會保留在混亂袋裡嗎？</i>不會，在兩場冒險之間需要將[bless]和[curse]標記移除。"
   },
   {
     "id": "Bonded",
@@ -452,8 +452,8 @@
   {
     "id": "Flood_Tokens",
     "cycle": [ "tic" ],
-    "title": "Flood Tokens",
-    "text": "Throughout this campaign, scenario card effects can flood locations. Each location has one of three different flood levels: it is either unflooded, partially flooded, or fully flooded. A location's flood level can be tracked using the double‑sided flood tokens included in this deluxe box. <b>A location's flood level has no inherent game effect.</b> However, some card effects may change or become stronger while you are at a flooded location, particularly if that location is fully flooded.\n- A location with no flood token is unflooded.\n- If a location becomes partially flooded, place a flood token on it with the partially flooded side faceup to designate this.\n- If a location becomes fully flooded, place a flood token on it with the fully flooded side faceup (or if it is already partially flooded, flip its flood token over) to designate this.\n- If a location's flood level is \"increased,\" it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased.\n- If a location's flood level is \"decreased,\" it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token.\n- For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\""
+    "title": "淹沒標記",
+    "text": "在本劇本中，冒險卡效果會淹沒地點。地點共有三種不同的淹沒等級：未淹沒、部分淹沒，或完全淹沒。地點的淹沒等級由本豪華擴展中帶有的雙面淹沒標記記錄。<b>地點的淹沒等級本身沒有遊戲效果。</b>不過，你位於淹沒地點時，有些卡牌效果可能發生改變或強化——尤其是你位於完全淹沒地點時。\n- 沒有淹沒標記的地點即為未淹沒。\n- 如果地點變為部分淹没，在上面放置一個淹沒標記，以部分淹沒面朝上，作為標識。\n- 如果地點變為完全淹没，在上面放置一個淹沒標記，以完全淹沒面朝上(或者如果其已為部分淹沒，則將淹沒標記翻面)，作為標識。\n- 如果地點的淹沒等級\"提升\"，則其從未淹沒變為部分淹沒，或從部分淹沒變為完全淹沒。已經完全淹沒的地點淹沒等級不能提升。\n- 如果地點的淹沒等級\"降低\"，則其從完全淹沒變為部分淹沒，或從部分淹沒變為未淹沒。如果地點變為未淹沒，移除其淹沒標記。\n- 若有卡牌效果提及，部分淹沒和完全淹沒的地點都視為\"淹沒\"。"
   },
   {
     "id": "Forced_Abilities",
@@ -524,8 +524,8 @@
   },
   {
     "id": "Instead",
-    "title": "代替",
-    "text": "\"代替\"一詞用來指示一個替換效果。替換效果指在一定條件下，一個其他的效果會代替原有的效果來執行。\n- 如果在觸發條件時，產生了多個替換效果，並造成一定的結算衝突。則時間點離當前最近的替換效果優先會代替原有的效果來執行。\n- 帶有\"將要\"一詞的觸發條件，優先於不帶有\"將要\"一詞的觸發條件。(例如：\"當X將要發生時\"優先於\"當X發生時\"。)\n- 如果帶有\"將要\"一詞的替換效果觸發，導致另一個觸發條件被改變，則新的觸發條件替換原有的觸發條件。舊的觸發條件不再使用。"
+    "title": "改為(代替)",
+    "text": "\"改為\"一詞用來指示一個替換效果。替換效果指在一定條件下，一個其他的效果會代替原有的效果來執行。\n- 如果在觸發條件時，產生了多個替換效果，並造成一定的結算衝突。則時間點離當前最近的替換效果優先會代替原有的效果來執行。\n- 帶有\"將要\"一詞的觸發條件，優先於不帶有\"將要\"一詞的觸發條件。(例如：\"當X將要發生時\"優先於\"當X發生時\"。)\n- 如果帶有\"將要\"一詞的替換效果觸發，導致另一個觸發條件被改變，則新的觸發條件替換原有的觸發條件。舊的觸發條件不再使用。"
   },
   {
     "id": "Investigate_Action",
@@ -551,8 +551,8 @@
   {
     "id": "Keys",
     "cycle": [ "tic" ],
-    "title": "Keys",
-    "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color (<i>red</i>, <i>blue</i>, <i>green</i>, <i>yellow</i>, <i>purple</i>, <i>black</i>, <i>white</i>).\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on an enemy, location, or story asset. Keys can be acquired in any of three ways:\n- If a location with a key on it has no clues, an investigator may take control of each of the location's keys as a [free] ability.\n- If an investigator causes an enemy with a key on it to leave play, that investigator must take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)\n- Some card effects may allow an investigator to take control of keys in other ways.\nWhen an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
+    "title": "鑰匙",
+    "text": "本擴展引入了鑰匙標記，代表了在冒險期間會獲得或使用的重要物件或信息。\n鑰匙標記有正反兩面。所有七個鑰匙的背面顏色都一樣，這樣就可以隨機打亂，使調查員無法分辨。每個鑰匙的正面皆由不同的顏色標明，每種顏色代表不同的事物。(<i>紅色</i>、<i>藍色</i>、<i>綠色</i>、<i>黃色</i>、<i>紫色</i>、<i>黑色</i>、<i>白色</i>)。\n如果一場冒險用到了鑰匙，則該冒險的設置會指示有多少個鑰匙會放在一邊；以及鑰匙是正面朝上，還是正面朝下隨機打亂。鑰匙可以通過不同的卡牌效果入場，通常是被放在敵人、地點，或劇情支援上。以下是三種獲取鑰匙的方法：\n- 作為一個[fast]能力，如果帶有鑰匙的地點上沒有線索，調查員可以控制該地點的所有鑰匙。\n- 如果有調查員使帶有鑰匙的敵人離場，導致該敵人離場的調查員必須控制該敵人上的每個鑰匙。(如果敵人因其他方式離場，將其鑰匙放在其所在地點上。)\n- 某些卡牌效果可能允許調查員以其他方式控制鑰匙。\n調查員在控制鑰匙時，將其翻至正面朝上(如果其正面朝下)，並將其放在自己的調查員卡上。如果控制鑰匙的調查員退場，將其所有鑰匙放在其所在地點上。作為一個[action]能力，調查員可以將其任意數量的鑰匙給予同一地點的另一位調查員。\n<b>鑰匙本身沒有遊戲效果。</b>不過，某些卡牌效果會根據調查員控制了什麼鑰匙而發生改變。此外，冒險期間的進程有時會對鑰匙有需求。"
   },
   {
     "id": "Keywords",

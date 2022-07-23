@@ -5209,6 +5209,8 @@ export type Full_Card = {
   enemy_horror?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code: Scalars['String'];
   health?: Maybe<Scalars['Int']>;
   health_per_investigator?: Maybe<Scalars['Boolean']>;
@@ -5257,6 +5259,7 @@ export type Full_Card = {
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 
@@ -5400,6 +5403,7 @@ export type Full_Card_Avg_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "full_card". All fields are combined with a logical 'AND'. */
@@ -5426,6 +5430,8 @@ export type Full_Card_Bool_Exp = {
   enemy_horror?: InputMaybe<Int_Comparison_Exp>;
   exceptional?: InputMaybe<Boolean_Comparison_Exp>;
   exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction2_code?: InputMaybe<String_Comparison_Exp>;
+  faction3_code?: InputMaybe<String_Comparison_Exp>;
   faction_code?: InputMaybe<String_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
   health_per_investigator?: InputMaybe<Boolean_Comparison_Exp>;
@@ -5467,6 +5473,7 @@ export type Full_Card_Bool_Exp = {
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   vengeance?: InputMaybe<Int_Comparison_Exp>;
   victory?: InputMaybe<Int_Comparison_Exp>;
+  xp?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "full_card" */
@@ -5521,6 +5528,7 @@ export type Full_Card_Inc_Input = {
   stage?: InputMaybe<Scalars['Int']>;
   vengeance?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "full_card" */
@@ -5544,6 +5552,8 @@ export type Full_Card_Insert_Input = {
   enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
@@ -5585,6 +5595,7 @@ export type Full_Card_Insert_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
@@ -5603,6 +5614,8 @@ export type Full_Card_Max_Fields = {
   enemy_evade?: Maybe<Scalars['Int']>;
   enemy_fight?: Maybe<Scalars['Int']>;
   enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -5634,6 +5647,7 @@ export type Full_Card_Max_Fields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate min on columns */
@@ -5652,6 +5666,8 @@ export type Full_Card_Min_Fields = {
   enemy_evade?: Maybe<Scalars['Int']>;
   enemy_fight?: Maybe<Scalars['Int']>;
   enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -5683,6 +5699,7 @@ export type Full_Card_Min_Fields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** response of any mutation on the table "full_card" */
@@ -5729,6 +5746,8 @@ export type Full_Card_Order_By = {
   enemy_horror?: InputMaybe<Order_By>;
   exceptional?: InputMaybe<Order_By>;
   exile?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
   faction_code?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
   health_per_investigator?: InputMaybe<Order_By>;
@@ -5770,6 +5789,7 @@ export type Full_Card_Order_By = {
   updated_at?: InputMaybe<Order_By>;
   vengeance?: InputMaybe<Order_By>;
   victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: full_card */
@@ -5822,6 +5842,10 @@ export enum Full_Card_Select_Column {
   Exceptional = 'exceptional',
   /** column name */
   Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
   /** column name */
   FactionCode = 'faction_code',
   /** column name */
@@ -5897,7 +5921,9 @@ export enum Full_Card_Select_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
-  Victory = 'victory'
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
 }
 
 /** input type for updating data in table "full_card" */
@@ -5920,6 +5946,8 @@ export type Full_Card_Set_Input = {
   enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
@@ -5958,6 +5986,7 @@ export type Full_Card_Set_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
@@ -5986,6 +6015,7 @@ export type Full_Card_Stddev_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -6014,6 +6044,7 @@ export type Full_Card_Stddev_Pop_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -6042,6 +6073,7 @@ export type Full_Card_Stddev_Samp_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
@@ -6070,6 +6102,7 @@ export type Full_Card_Sum_Fields = {
   stage?: Maybe<Scalars['Int']>;
   vengeance?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** columns and relationships of "full_card_text" */
@@ -6381,6 +6414,10 @@ export enum Full_Card_Update_Column {
   /** column name */
   Exile = 'exile',
   /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
+  /** column name */
   FactionCode = 'faction_code',
   /** column name */
   Health = 'health',
@@ -6455,7 +6492,9 @@ export enum Full_Card_Update_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
-  Victory = 'victory'
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
 }
 
 /** aggregate var_pop on columns */
@@ -6484,6 +6523,7 @@ export type Full_Card_Var_Pop_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
@@ -6512,6 +6552,7 @@ export type Full_Card_Var_Samp_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
@@ -6540,6 +6581,7 @@ export type Full_Card_Variance_Fields = {
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "guide_achievement" */
@@ -8463,6 +8505,10 @@ export type Mutation_Root = {
   delete_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
   /** delete data from the table: "user_sent_friend_requests" */
   delete_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** delete data from the table: "user_settings" */
+  delete_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** delete single row from the table: "user_settings" */
+  delete_user_settings_by_pk?: Maybe<User_Settings>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
@@ -8587,6 +8633,10 @@ export type Mutation_Root = {
   insert_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
   /** insert a single row into the table: "user_sent_friend_requests" */
   insert_user_sent_friend_requests_one?: Maybe<User_Sent_Friend_Requests>;
+  /** insert data into the table: "user_settings" */
+  insert_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** insert a single row into the table: "user_settings" */
+  insert_user_settings_one?: Maybe<User_Settings>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
@@ -8695,6 +8745,10 @@ export type Mutation_Root = {
   update_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
   /** update data of the table: "user_sent_friend_requests" */
   update_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** update data of the table: "user_settings" */
+  update_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** update single row of the table: "user_settings" */
+  update_user_settings_by_pk?: Maybe<User_Settings>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
@@ -9022,6 +9076,18 @@ export type Mutation_RootDelete_User_Received_Friend_RequestsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_User_Sent_Friend_RequestsArgs = {
   where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_SettingsArgs = {
+  where: User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
 };
 
 
@@ -9438,6 +9504,20 @@ export type Mutation_RootInsert_User_Sent_Friend_RequestsArgs = {
 /** mutation root */
 export type Mutation_RootInsert_User_Sent_Friend_Requests_OneArgs = {
   object: User_Sent_Friend_Requests_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_SettingsArgs = {
+  objects: Array<User_Settings_Insert_Input>;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_Settings_OneArgs = {
+  object: User_Settings_Insert_Input;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
 
@@ -9915,6 +9995,30 @@ export type Mutation_RootUpdate_User_Sent_Friend_RequestsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_SettingsArgs = {
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  pk_columns: User_Settings_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
@@ -10109,6 +10213,12 @@ export type Query_Root = {
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -10779,6 +10889,29 @@ export type Query_RootUser_Sent_Friend_Requests_AggregateArgs = {
 };
 
 
+export type Query_RootUser_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
 export type Query_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10967,6 +11100,12 @@ export type Subscription_Root = {
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -11634,6 +11773,29 @@ export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
   where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
 };
 
 
@@ -12577,6 +12739,251 @@ export type User_Sent_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** columns and relationships of "user_settings" */
+export type User_Settings = {
+  __typename?: 'user_settings';
+  alphabetize?: Maybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: Maybe<Scalars['Boolean']>;
+  colorblind?: Maybe<Scalars['Boolean']>;
+  custom_content?: Maybe<Scalars['Boolean']>;
+  ignore_collection?: Maybe<Scalars['Boolean']>;
+  in_collection?: Maybe<Scalars['jsonb']>;
+  onboarding?: Maybe<Scalars['jsonb']>;
+  show_spoilers?: Maybe<Scalars['jsonb']>;
+  single_card?: Maybe<Scalars['Boolean']>;
+  sort_quotes?: Maybe<Scalars['Boolean']>;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsIn_CollectionArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsOnboardingArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsShow_SpoilersArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "user_settings" */
+export type User_Settings_Aggregate = {
+  __typename?: 'user_settings_aggregate';
+  aggregate?: Maybe<User_Settings_Aggregate_Fields>;
+  nodes: Array<User_Settings>;
+};
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_Fields = {
+  __typename?: 'user_settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<User_Settings_Max_Fields>;
+  min?: Maybe<User_Settings_Min_Fields>;
+};
+
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type User_Settings_Append_Input = {
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** Boolean expression to filter rows from the table "user_settings". All fields are combined with a logical 'AND'. */
+export type User_Settings_Bool_Exp = {
+  _and?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  _not?: InputMaybe<User_Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  alphabetize?: InputMaybe<Boolean_Comparison_Exp>;
+  campaign_show_deck_id?: InputMaybe<Boolean_Comparison_Exp>;
+  colorblind?: InputMaybe<Boolean_Comparison_Exp>;
+  custom_content?: InputMaybe<Boolean_Comparison_Exp>;
+  ignore_collection?: InputMaybe<Boolean_Comparison_Exp>;
+  in_collection?: InputMaybe<Jsonb_Comparison_Exp>;
+  onboarding?: InputMaybe<Jsonb_Comparison_Exp>;
+  show_spoilers?: InputMaybe<Jsonb_Comparison_Exp>;
+  single_card?: InputMaybe<Boolean_Comparison_Exp>;
+  sort_quotes?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "user_settings" */
+export enum User_Settings_Constraint {
+  /** unique or primary key constraint */
+  UserSettingsPkey = 'user_settings_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type User_Settings_Delete_At_Path_Input = {
+  in_collection?: InputMaybe<Array<Scalars['String']>>;
+  onboarding?: InputMaybe<Array<Scalars['String']>>;
+  show_spoilers?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type User_Settings_Delete_Elem_Input = {
+  in_collection?: InputMaybe<Scalars['Int']>;
+  onboarding?: InputMaybe<Scalars['Int']>;
+  show_spoilers?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type User_Settings_Delete_Key_Input = {
+  in_collection?: InputMaybe<Scalars['String']>;
+  onboarding?: InputMaybe<Scalars['String']>;
+  show_spoilers?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for inserting data into table "user_settings" */
+export type User_Settings_Insert_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type User_Settings_Max_Fields = {
+  __typename?: 'user_settings_max_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type User_Settings_Min_Fields = {
+  __typename?: 'user_settings_min_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "user_settings" */
+export type User_Settings_Mutation_Response = {
+  __typename?: 'user_settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<User_Settings>;
+};
+
+/** on conflict condition type for table "user_settings" */
+export type User_Settings_On_Conflict = {
+  constraint: User_Settings_Constraint;
+  update_columns: Array<User_Settings_Update_Column>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "user_settings". */
+export type User_Settings_Order_By = {
+  alphabetize?: InputMaybe<Order_By>;
+  campaign_show_deck_id?: InputMaybe<Order_By>;
+  colorblind?: InputMaybe<Order_By>;
+  custom_content?: InputMaybe<Order_By>;
+  ignore_collection?: InputMaybe<Order_By>;
+  in_collection?: InputMaybe<Order_By>;
+  onboarding?: InputMaybe<Order_By>;
+  show_spoilers?: InputMaybe<Order_By>;
+  single_card?: InputMaybe<Order_By>;
+  sort_quotes?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: user_settings */
+export type User_Settings_Pk_Columns_Input = {
+  user_id: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type User_Settings_Prepend_Input = {
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "user_settings" */
+export enum User_Settings_Select_Column {
+  /** column name */
+  Alphabetize = 'alphabetize',
+  /** column name */
+  CampaignShowDeckId = 'campaign_show_deck_id',
+  /** column name */
+  Colorblind = 'colorblind',
+  /** column name */
+  CustomContent = 'custom_content',
+  /** column name */
+  IgnoreCollection = 'ignore_collection',
+  /** column name */
+  InCollection = 'in_collection',
+  /** column name */
+  Onboarding = 'onboarding',
+  /** column name */
+  ShowSpoilers = 'show_spoilers',
+  /** column name */
+  SingleCard = 'single_card',
+  /** column name */
+  SortQuotes = 'sort_quotes',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "user_settings" */
+export type User_Settings_Set_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "user_settings" */
+export enum User_Settings_Update_Column {
+  /** column name */
+  Alphabetize = 'alphabetize',
+  /** column name */
+  CampaignShowDeckId = 'campaign_show_deck_id',
+  /** column name */
+  Colorblind = 'colorblind',
+  /** column name */
+  CustomContent = 'custom_content',
+  /** column name */
+  IgnoreCollection = 'ignore_collection',
+  /** column name */
+  InCollection = 'in_collection',
+  /** column name */
+  Onboarding = 'onboarding',
+  /** column name */
+  ShowSpoilers = 'show_spoilers',
+  /** column name */
+  SingleCard = 'single_card',
+  /** column name */
+  SortQuotes = 'sort_quotes',
+  /** column name */
+  UserId = 'user_id'
+}
+
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
@@ -12940,7 +13347,7 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
+export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -13168,7 +13575,7 @@ export type GetDeckHistoryQueryVariables = Exact<{
 
 export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
-export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null };
+export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null };
 
 export type CoreCardTextFragment = { __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null };
 
@@ -13267,12 +13674,130 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 
 export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
+export type GetSettingsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetSettingsQuery = { __typename?: 'query_root', user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null, colorblind?: boolean | null, ignore_collection?: boolean | null, single_card?: boolean | null, sort_quotes?: boolean | null, custom_content?: boolean | null, campaign_show_deck_id?: boolean | null, in_collection?: any | null, show_spoilers?: any | null, onboarding?: any | null } | null };
+
+export type GetPacksQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetPacksQuery = { __typename?: 'query_root', user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, in_collection?: any | null, show_spoilers?: any | null } | null };
+
+export type UpdateSettingAlphabetizeMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingAlphabetizeMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null } | null };
+
+export type UpdateSettingColorblindMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingColorblindMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, colorblind?: boolean | null } | null };
+
+export type UpdateSettingIgnoreCollectionMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingIgnoreCollectionMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, ignore_collection?: boolean | null } | null };
+
+export type UpdateSettingSingleCardMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingSingleCardMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, single_card?: boolean | null } | null };
+
+export type UpdateSettingSortQuotesMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingSortQuotesMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, sort_quotes?: boolean | null } | null };
+
+export type UpdateSettingCustomContentMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingCustomContentMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, custom_content?: boolean | null } | null };
+
+export type UpdateSettingCampaignShowDeckIdMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingCampaignShowDeckIdMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, campaign_show_deck_id?: boolean | null } | null };
+
+export type UpsertSettingsMutationVariables = Exact<{
+  userId: Scalars['String'];
+  in_collection: Scalars['jsonb'];
+  show_spoilers: Scalars['jsonb'];
+  onboarding: Scalars['jsonb'];
+  alphabetize: Scalars['Boolean'];
+  colorblind: Scalars['Boolean'];
+  ignore_collection: Scalars['Boolean'];
+  single_card: Scalars['Boolean'];
+  sort_quotes: Scalars['Boolean'];
+  custom_content: Scalars['Boolean'];
+  campaign_show_deck_id: Scalars['Boolean'];
+}>;
+
+
+export type UpsertSettingsMutation = { __typename?: 'mutation_root', insert_user_settings_one?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null, colorblind?: boolean | null, ignore_collection?: boolean | null, single_card?: boolean | null, sort_quotes?: boolean | null, custom_content?: boolean | null, campaign_show_deck_id?: boolean | null, onboarding?: any | null, in_collection?: any | null, show_spoilers?: any | null } | null };
+
+export type UpdateInCollectionMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateInCollectionMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, in_collection?: any | null } | null };
+
+export type UpdateShowSpoilersMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateShowSpoilersMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, show_spoilers?: any | null } | null };
+
+export type UpdateOnboardingMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateOnboardingMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, onboarding?: any | null } | null };
+
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
 export type GetProfileQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, friends: Array<{ __typename?: 'user_friends', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, sent_requests: Array<{ __typename?: 'user_sent_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, received_requests: Array<{ __typename?: 'user_received_friend_requests', user?: { __typename?: 'users', id: string, handle?: string | null } | null }>, flags: Array<{ __typename?: 'user_flag', flag: User_Flag_Type_Enum }> } | null };
+
+export type GetDeleteInformationQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetDeleteInformationQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, arkhamDBDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, localDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, createdCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> }, joinedCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> } } | null };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13475,6 +14000,8 @@ export const SingleCardFragmentDoc = gql`
   encounter_position
   exile
   faction_code
+  faction2_code
+  faction3_code
   health
   health_per_investigator
   is_unique
@@ -13523,6 +14050,7 @@ export const SingleCardFragmentDoc = gql`
   restrictions
   imagesrc
   backimagesrc
+  xp
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
@@ -15148,6 +15676,524 @@ export function useChaosBagResultsSubscription(baseOptions: Apollo.SubscriptionH
       }
 export type ChaosBagResultsSubscriptionHookResult = ReturnType<typeof useChaosBagResultsSubscription>;
 export type ChaosBagResultsSubscriptionResult = Apollo.SubscriptionResult<ChaosBagResultsSubscription>;
+export const GetSettingsDocument = gql`
+    query getSettings($userId: String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    in_collection
+    show_spoilers
+    onboarding
+  }
+}
+    `;
+
+/**
+ * __useGetSettingsQuery__
+ *
+ * To run a query within a React component, call `useGetSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSettingsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetSettingsQuery(baseOptions: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+      }
+export function useGetSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        }
+export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
+export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
+export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
+export const GetPacksDocument = gql`
+    query getPacks($userId: String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    in_collection
+    show_spoilers
+  }
+}
+    `;
+
+/**
+ * __useGetPacksQuery__
+ *
+ * To run a query within a React component, call `useGetPacksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPacksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPacksQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetPacksQuery(baseOptions: Apollo.QueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
+      }
+export function useGetPacksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
+        }
+export type GetPacksQueryHookResult = ReturnType<typeof useGetPacksQuery>;
+export type GetPacksLazyQueryHookResult = ReturnType<typeof useGetPacksLazyQuery>;
+export type GetPacksQueryResult = Apollo.QueryResult<GetPacksQuery, GetPacksQueryVariables>;
+export const UpdateSettingAlphabetizeDocument = gql`
+    mutation updateSettingAlphabetize($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {alphabetize: $value}
+  ) {
+    user_id
+    alphabetize
+  }
+}
+    `;
+export type UpdateSettingAlphabetizeMutationFn = Apollo.MutationFunction<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>;
+
+/**
+ * __useUpdateSettingAlphabetizeMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingAlphabetizeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingAlphabetizeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingAlphabetizeMutation, { data, loading, error }] = useUpdateSettingAlphabetizeMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingAlphabetizeMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>(UpdateSettingAlphabetizeDocument, options);
+      }
+export type UpdateSettingAlphabetizeMutationHookResult = ReturnType<typeof useUpdateSettingAlphabetizeMutation>;
+export type UpdateSettingAlphabetizeMutationResult = Apollo.MutationResult<UpdateSettingAlphabetizeMutation>;
+export type UpdateSettingAlphabetizeMutationOptions = Apollo.BaseMutationOptions<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>;
+export const UpdateSettingColorblindDocument = gql`
+    mutation updateSettingColorblind($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {colorblind: $value}
+  ) {
+    user_id
+    colorblind
+  }
+}
+    `;
+export type UpdateSettingColorblindMutationFn = Apollo.MutationFunction<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>;
+
+/**
+ * __useUpdateSettingColorblindMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingColorblindMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingColorblindMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingColorblindMutation, { data, loading, error }] = useUpdateSettingColorblindMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingColorblindMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>(UpdateSettingColorblindDocument, options);
+      }
+export type UpdateSettingColorblindMutationHookResult = ReturnType<typeof useUpdateSettingColorblindMutation>;
+export type UpdateSettingColorblindMutationResult = Apollo.MutationResult<UpdateSettingColorblindMutation>;
+export type UpdateSettingColorblindMutationOptions = Apollo.BaseMutationOptions<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>;
+export const UpdateSettingIgnoreCollectionDocument = gql`
+    mutation updateSettingIgnoreCollection($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {ignore_collection: $value}
+  ) {
+    user_id
+    ignore_collection
+  }
+}
+    `;
+export type UpdateSettingIgnoreCollectionMutationFn = Apollo.MutationFunction<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>;
+
+/**
+ * __useUpdateSettingIgnoreCollectionMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingIgnoreCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingIgnoreCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingIgnoreCollectionMutation, { data, loading, error }] = useUpdateSettingIgnoreCollectionMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingIgnoreCollectionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>(UpdateSettingIgnoreCollectionDocument, options);
+      }
+export type UpdateSettingIgnoreCollectionMutationHookResult = ReturnType<typeof useUpdateSettingIgnoreCollectionMutation>;
+export type UpdateSettingIgnoreCollectionMutationResult = Apollo.MutationResult<UpdateSettingIgnoreCollectionMutation>;
+export type UpdateSettingIgnoreCollectionMutationOptions = Apollo.BaseMutationOptions<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>;
+export const UpdateSettingSingleCardDocument = gql`
+    mutation updateSettingSingleCard($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {single_card: $value}
+  ) {
+    user_id
+    single_card
+  }
+}
+    `;
+export type UpdateSettingSingleCardMutationFn = Apollo.MutationFunction<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>;
+
+/**
+ * __useUpdateSettingSingleCardMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingSingleCardMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingSingleCardMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingSingleCardMutation, { data, loading, error }] = useUpdateSettingSingleCardMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingSingleCardMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>(UpdateSettingSingleCardDocument, options);
+      }
+export type UpdateSettingSingleCardMutationHookResult = ReturnType<typeof useUpdateSettingSingleCardMutation>;
+export type UpdateSettingSingleCardMutationResult = Apollo.MutationResult<UpdateSettingSingleCardMutation>;
+export type UpdateSettingSingleCardMutationOptions = Apollo.BaseMutationOptions<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>;
+export const UpdateSettingSortQuotesDocument = gql`
+    mutation updateSettingSortQuotes($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {sort_quotes: $value}
+  ) {
+    user_id
+    sort_quotes
+  }
+}
+    `;
+export type UpdateSettingSortQuotesMutationFn = Apollo.MutationFunction<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>;
+
+/**
+ * __useUpdateSettingSortQuotesMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingSortQuotesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingSortQuotesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingSortQuotesMutation, { data, loading, error }] = useUpdateSettingSortQuotesMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingSortQuotesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>(UpdateSettingSortQuotesDocument, options);
+      }
+export type UpdateSettingSortQuotesMutationHookResult = ReturnType<typeof useUpdateSettingSortQuotesMutation>;
+export type UpdateSettingSortQuotesMutationResult = Apollo.MutationResult<UpdateSettingSortQuotesMutation>;
+export type UpdateSettingSortQuotesMutationOptions = Apollo.BaseMutationOptions<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>;
+export const UpdateSettingCustomContentDocument = gql`
+    mutation updateSettingCustomContent($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {custom_content: $value}
+  ) {
+    user_id
+    custom_content
+  }
+}
+    `;
+export type UpdateSettingCustomContentMutationFn = Apollo.MutationFunction<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>;
+
+/**
+ * __useUpdateSettingCustomContentMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingCustomContentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingCustomContentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingCustomContentMutation, { data, loading, error }] = useUpdateSettingCustomContentMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingCustomContentMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>(UpdateSettingCustomContentDocument, options);
+      }
+export type UpdateSettingCustomContentMutationHookResult = ReturnType<typeof useUpdateSettingCustomContentMutation>;
+export type UpdateSettingCustomContentMutationResult = Apollo.MutationResult<UpdateSettingCustomContentMutation>;
+export type UpdateSettingCustomContentMutationOptions = Apollo.BaseMutationOptions<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>;
+export const UpdateSettingCampaignShowDeckIdDocument = gql`
+    mutation updateSettingCampaignShowDeckId($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {campaign_show_deck_id: $value}
+  ) {
+    user_id
+    campaign_show_deck_id
+  }
+}
+    `;
+export type UpdateSettingCampaignShowDeckIdMutationFn = Apollo.MutationFunction<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>;
+
+/**
+ * __useUpdateSettingCampaignShowDeckIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingCampaignShowDeckIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingCampaignShowDeckIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingCampaignShowDeckIdMutation, { data, loading, error }] = useUpdateSettingCampaignShowDeckIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingCampaignShowDeckIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>(UpdateSettingCampaignShowDeckIdDocument, options);
+      }
+export type UpdateSettingCampaignShowDeckIdMutationHookResult = ReturnType<typeof useUpdateSettingCampaignShowDeckIdMutation>;
+export type UpdateSettingCampaignShowDeckIdMutationResult = Apollo.MutationResult<UpdateSettingCampaignShowDeckIdMutation>;
+export type UpdateSettingCampaignShowDeckIdMutationOptions = Apollo.BaseMutationOptions<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>;
+export const UpsertSettingsDocument = gql`
+    mutation upsertSettings($userId: String!, $in_collection: jsonb!, $show_spoilers: jsonb!, $onboarding: jsonb!, $alphabetize: Boolean!, $colorblind: Boolean!, $ignore_collection: Boolean!, $single_card: Boolean!, $sort_quotes: Boolean!, $custom_content: Boolean!, $campaign_show_deck_id: Boolean!) {
+  insert_user_settings_one(
+    object: {user_id: $userId, alphabetize: $alphabetize, colorblind: $colorblind, ignore_collection: $ignore_collection, single_card: $single_card, sort_quotes: $sort_quotes, custom_content: $custom_content, campaign_show_deck_id: $campaign_show_deck_id, in_collection: $in_collection, show_spoilers: $show_spoilers, onboarding: $onboarding}
+    on_conflict: {constraint: user_settings_pkey, update_columns: [alphabetize, colorblind, ignore_collection, single_card, sort_quotes, custom_content, campaign_show_deck_id, in_collection, show_spoilers, onboarding]}
+  ) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    onboarding
+    in_collection
+    show_spoilers
+  }
+}
+    `;
+export type UpsertSettingsMutationFn = Apollo.MutationFunction<UpsertSettingsMutation, UpsertSettingsMutationVariables>;
+
+/**
+ * __useUpsertSettingsMutation__
+ *
+ * To run a mutation, you first call `useUpsertSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpsertSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [upsertSettingsMutation, { data, loading, error }] = useUpsertSettingsMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      in_collection: // value for 'in_collection'
+ *      show_spoilers: // value for 'show_spoilers'
+ *      onboarding: // value for 'onboarding'
+ *      alphabetize: // value for 'alphabetize'
+ *      colorblind: // value for 'colorblind'
+ *      ignore_collection: // value for 'ignore_collection'
+ *      single_card: // value for 'single_card'
+ *      sort_quotes: // value for 'sort_quotes'
+ *      custom_content: // value for 'custom_content'
+ *      campaign_show_deck_id: // value for 'campaign_show_deck_id'
+ *   },
+ * });
+ */
+export function useUpsertSettingsMutation(baseOptions?: Apollo.MutationHookOptions<UpsertSettingsMutation, UpsertSettingsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpsertSettingsMutation, UpsertSettingsMutationVariables>(UpsertSettingsDocument, options);
+      }
+export type UpsertSettingsMutationHookResult = ReturnType<typeof useUpsertSettingsMutation>;
+export type UpsertSettingsMutationResult = Apollo.MutationResult<UpsertSettingsMutation>;
+export type UpsertSettingsMutationOptions = Apollo.BaseMutationOptions<UpsertSettingsMutation, UpsertSettingsMutationVariables>;
+export const UpdateInCollectionDocument = gql`
+    mutation updateInCollection($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {in_collection: $update}
+  ) {
+    user_id
+    in_collection
+  }
+}
+    `;
+export type UpdateInCollectionMutationFn = Apollo.MutationFunction<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>;
+
+/**
+ * __useUpdateInCollectionMutation__
+ *
+ * To run a mutation, you first call `useUpdateInCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateInCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateInCollectionMutation, { data, loading, error }] = useUpdateInCollectionMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateInCollectionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>(UpdateInCollectionDocument, options);
+      }
+export type UpdateInCollectionMutationHookResult = ReturnType<typeof useUpdateInCollectionMutation>;
+export type UpdateInCollectionMutationResult = Apollo.MutationResult<UpdateInCollectionMutation>;
+export type UpdateInCollectionMutationOptions = Apollo.BaseMutationOptions<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>;
+export const UpdateShowSpoilersDocument = gql`
+    mutation updateShowSpoilers($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {show_spoilers: $update}
+  ) {
+    user_id
+    show_spoilers
+  }
+}
+    `;
+export type UpdateShowSpoilersMutationFn = Apollo.MutationFunction<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>;
+
+/**
+ * __useUpdateShowSpoilersMutation__
+ *
+ * To run a mutation, you first call `useUpdateShowSpoilersMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateShowSpoilersMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateShowSpoilersMutation, { data, loading, error }] = useUpdateShowSpoilersMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateShowSpoilersMutation(baseOptions?: Apollo.MutationHookOptions<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>(UpdateShowSpoilersDocument, options);
+      }
+export type UpdateShowSpoilersMutationHookResult = ReturnType<typeof useUpdateShowSpoilersMutation>;
+export type UpdateShowSpoilersMutationResult = Apollo.MutationResult<UpdateShowSpoilersMutation>;
+export type UpdateShowSpoilersMutationOptions = Apollo.BaseMutationOptions<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>;
+export const UpdateOnboardingDocument = gql`
+    mutation updateOnboarding($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {onboarding: $update}
+  ) {
+    user_id
+    onboarding
+  }
+}
+    `;
+export type UpdateOnboardingMutationFn = Apollo.MutationFunction<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>;
+
+/**
+ * __useUpdateOnboardingMutation__
+ *
+ * To run a mutation, you first call `useUpdateOnboardingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateOnboardingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateOnboardingMutation, { data, loading, error }] = useUpdateOnboardingMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateOnboardingMutation(baseOptions?: Apollo.MutationHookOptions<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>(UpdateOnboardingDocument, options);
+      }
+export type UpdateOnboardingMutationHookResult = ReturnType<typeof useUpdateOnboardingMutation>;
+export type UpdateOnboardingMutationResult = Apollo.MutationResult<UpdateOnboardingMutation>;
+export type UpdateOnboardingMutationOptions = Apollo.BaseMutationOptions<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {
@@ -15202,6 +16248,84 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetDeleteInformationDocument = gql`
+    query getDeleteInformation($userId: String!) {
+  users_by_pk(id: $userId) {
+    id
+    handle
+    arkhamDBDeckCount: all_decks_aggregate(
+      where: {_and: [{next_deck_id: {_is_null: true}}, {arkhamdb_id: {_is_null: false}}]}
+    ) {
+      aggregate {
+        count
+      }
+    }
+    localDeckCount: all_decks_aggregate(
+      where: {_and: [{next_deck_id: {_is_null: true}}, {arkhamdb_id: {_is_null: true}}]}
+    ) {
+      aggregate {
+        count
+      }
+    }
+    createdCampaignCount: campaigns_aggregate(
+      where: {campaign: {owner_id: {_eq: $userId}}}
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          id
+          name
+          cycleCode
+        }
+      }
+    }
+    joinedCampaignCount: campaigns_aggregate(
+      where: {campaign: {owner_id: {_neq: $userId}}}
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          id
+          name
+          cycleCode
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetDeleteInformationQuery__
+ *
+ * To run a query within a React component, call `useGetDeleteInformationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeleteInformationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeleteInformationQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetDeleteInformationQuery(baseOptions: Apollo.QueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
+      }
+export function useGetDeleteInformationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
+        }
+export type GetDeleteInformationQueryHookResult = ReturnType<typeof useGetDeleteInformationQuery>;
+export type GetDeleteInformationLazyQueryHookResult = ReturnType<typeof useGetDeleteInformationLazyQuery>;
+export type GetDeleteInformationQueryResult = Apollo.QueryResult<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>;
 export const DeleteInvestigatorDecksDocument = gql`
     mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
   delete_campaign_deck(

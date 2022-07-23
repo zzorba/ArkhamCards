@@ -163,6 +163,7 @@ export default class ScenarioGuide {
         latestCampaignLog: this.scenarioStartCampaignLog,
       };
     }
+
     const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
     return {
       steps,

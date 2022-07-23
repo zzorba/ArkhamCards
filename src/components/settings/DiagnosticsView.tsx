@@ -14,7 +14,7 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack, RESET_ONBOARDING } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import Card from '@data/types/Card';
@@ -30,6 +30,7 @@ import { useApolloClient } from '@apollo/client';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
 import { useSettingFlag } from '@components/core/hooks';
+import { useUpdateOnboarding } from '@data/remote/settings';
 
 
 function goOffline() {
@@ -59,10 +60,17 @@ export default function DiagnosticsView() {
   const state = useSelector((state: AppState) => state);
   const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
+  const onboarding = useSelector((state: AppState) => state.settings.dismissedOnboarding);
+  const updateRemoteOnboarding = useUpdateOnboarding();
 
   const resetOnboarding = useCallback(() => {
-    dispatch({ type: RESET_ONBOARDING });
-  }, [dispatch]);
+    const updates: { [code: string]: boolean } = {};
+    forEach(onboarding, o => {
+      updates[o] = false;
+    });
+    updateRemoteOnboarding(updates);
+    dispatch({ type: SYNC_DISMISS_ONBOARDING, updates });
+  }, [dispatch, updateRemoteOnboarding, onboarding]);
   useEffect(() => {
     let canceled = false;
     db.sqliteVersion().then((versioned) => {
@@ -160,15 +168,29 @@ export default function DiagnosticsView() {
       }
     });
     cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[9] = { name: t`The Scarlet Keys`, code: 'tsk' };
     cycleNames[50] = { name: t`Return to...`, code: 'return' };
     cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
     cycleNames[80] = { name: t`Promotional`, code: 'promotional' };
     cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
-    db.cards().then(cards => {
-      cards.insert(
-        Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
-      );
+    const newCards: Card[] = [];
+    const theJson = JSON.parse(json);
+    if (Array.isArray(theJson)) {
+      forEach(theJson, cardJson => {
+        const newCard = Card.fromJson(cardJson, packsByCode, cycleNames, lang)
+        newCards.push(newCard);
+      });
+    } else {
+      const newCard = Card.fromJson(theJson, packsByCode, cycleNames, lang);
+      newCards.push(newCard)
+    }
+    db.cards().then(async(cards) => {
+      for (let i = 0; i < newCards.length; i++) {
+        const card = newCards[i];
+        await cards.delete(card.id);
+        await cards.insert(card);
+      }
     });
   }, [packs, lang, db]);
 

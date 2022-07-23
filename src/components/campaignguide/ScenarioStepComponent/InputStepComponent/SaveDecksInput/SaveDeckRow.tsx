@@ -27,6 +27,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -59,7 +60,7 @@ function SaveDeckRow({
   const { colors, typography, width } = useContext(StyleContext);
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);

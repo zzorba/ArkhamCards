@@ -101,9 +101,9 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
                   <View style={{ position: 'absolute', bottom: 4, right: 4 }}>
                     <AppIcon name="fleur_bottom_right" size={25} color={colors.faction.dual.invertedText} />
                   </View>
-                  <View style={[space.paddingSideS, { transform: [{ rotate: degToRad(-180) }]}]}>
+                  <View style={[space.paddingSideS, { transform: [{ rotate: degToRad(-180) }] }]}>
                     <Text style={[typography.gameFont, typography.center, { fontSize, lineHeight: fontSize + 2, color: colors.faction.dual.invertedText }]}>
-                      <TextWithIcons text={card.inverted_text} color={colors.faction.dual.invertedText} size={fontSize * .8} />
+                      <TextWithIcons text={card.inverted_text} color={colors.faction.dual.invertedText} size={fontSize * 0.8} />
                     </Text>
                   </View>
                 </View>
@@ -122,11 +122,11 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
                     <AppIcon name="fleur_top_right" size={30} color={colors.faction.dual.invertedText} />
                   </View>
 
-                  <Text style={[typography.gameFont, typography.center, typography.underline, space.paddingBottomS, { fontSize: fontSize * 1.25, lineHeight: fontSize * 1.25 + 2,  color: colors.faction.dual.invertedText }]}>
+                  <Text style={[typography.gameFont, typography.center, typography.underline, space.paddingBottomS, { fontSize: fontSize * 1.25, lineHeight: fontSize * 1.25 + 2, color: colors.faction.dual.invertedText }]}>
                     { card.title }
                   </Text>
                   <Text style={[typography.gameFont, typography.center, { flex: 1, textAlignVertical: 'center', fontSize: fontSize, lineHeight: fontSize + 2, color: colors.faction.dual.invertedText }]}>
-                    <TextWithIcons text={card.text} color={colors.faction.dual.invertedText} size={fontSize * .8} />
+                    <TextWithIcons text={card.text} color={colors.faction.dual.invertedText} size={fontSize * 0.8} />
                   </Text>
                 </View>
               </>
@@ -134,7 +134,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
               <View style={[
                 space.paddingVerticalXs,
                 space.paddingSideS,
-                { borderColor: colors.D30, borderTopWidth: 2, borderLeftWidth: 1, borderRightWidth: 1,  borderTopLeftRadius: 8, borderTopRightRadius: 8, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 },
+                { borderColor: colors.D30, borderTopWidth: 2, borderLeftWidth: 1, borderRightWidth: 1, borderTopLeftRadius: 8, borderTopRightRadius: 8, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 },
                 { position: 'absolute', bottom: 0, left: -2, width, minHeight: height * 0.14, backgroundColor: colors.faction.mythos.text },
                 { flexDirection: 'column', justifyContent: 'center', alignItems: 'center' },
               ]}>
@@ -145,7 +145,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
                   <AppIcon name="fleur_top_right" size={width / 8} color={colors.faction.dual.invertedText} />
                 </View>
 
-                <Text style={[typography.gameFont, typography.center, typography.underline, { fontSize: fontSize, lineHeight: fontSize * 1.25 + 2,  color: colors.faction.dual.invertedText }]}>
+                <Text style={[typography.gameFont, typography.center, typography.underline, { fontSize: fontSize, lineHeight: fontSize * 1.25 + 2, color: colors.faction.dual.invertedText }]}>
                   { card.title }
                 </Text>
               </View>

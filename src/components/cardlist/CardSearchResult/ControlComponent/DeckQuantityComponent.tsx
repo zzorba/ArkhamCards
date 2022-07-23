@@ -12,7 +12,6 @@ import { useDeckSlotCount } from '@components/deck/hooks';
 import { DeckId } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 
 interface DeckCardQuantityProps {
   deckId: DeckId;
@@ -29,8 +28,6 @@ function DeckQuantityComponent(props: DeckCardQuantityProps) {
   const { colors } = useContext(StyleContext);
   const { deckId, editable, code, limit, showZeroCount, forceBig, useGestureHandler, side } = props;
   const actualCount = useDeckSlotCount(deckId, code, side);
-  useWhyDidYouUpdate('DeckQuantityComponent', props);
-
   const [count, setCount] = useState(actualCount);
   useEffectUpdate(() => {
     setCount(actualCount)

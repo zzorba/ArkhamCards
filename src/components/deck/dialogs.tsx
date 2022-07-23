@@ -17,13 +17,15 @@ import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { ParsedDeckResults, DeckEditState, useDeckEditState } from './hooks';
-import DeckButton, { DeckButtonIcon } from './controls/DeckButton';
+import DeckButton, { DeckButtonColor, DeckButtonIcon } from './controls/DeckButton';
 import DeckBubbleHeader from './section/DeckBubbleHeader';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
 import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
 import AppModal from '@components/core/AppModal';
+import CardTextComponent from '@components/card/CardTextComponent';
+import { parseDeck } from '@lib/parseDeck';
 
 
 interface ModalOptions {
@@ -77,12 +79,15 @@ interface DialogOptions {
   investigator?: Card;
   confirm?: {
     title: string;
+    icon?: DeckButtonIcon;
+    color?: DeckButtonColor;
     disabled?: boolean;
     onPress: () => void | Promise<boolean>;
     loading?: boolean;
   };
   dismiss?: {
     title?: string;
+    color?: DeckButtonColor;
     onPress?: () => void;
   };
   content: React.ReactNode;
@@ -92,6 +97,7 @@ interface DialogOptions {
   customButtons?: React.ReactNode[];
   maxHeightPercent?: number;
   noPadding?: boolean;
+  forceVerticalButtons?: boolean;
 }
 
 export function useDialog({
@@ -106,6 +112,7 @@ export function useDialog({
   customButtons,
   maxHeightPercent,
   noPadding,
+  forceVerticalButtons,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -140,7 +147,7 @@ export function useDialog({
         <DeckButton
           key="cancel"
           icon="dismiss"
-          color={confirm ? 'red_outline' : undefined}
+          color={dismiss.color || (confirm ? 'red_outline' : undefined)}
           title={dismiss.title}
           thin
           onPress={onDismiss}
@@ -151,8 +158,9 @@ export function useDialog({
       result.push(
         <DeckButton
           key="save"
-          icon="check-thin"
+          icon={confirm.icon || 'check-thin'}
           title={confirm.title}
+          color={confirm.color}
           disabled={confirm.disabled}
           thin
           loading={confirm.loading}
@@ -173,14 +181,14 @@ export function useDialog({
         buttons={buttons}
         alignment={alignment}
         avoidKeyboard={avoidKeyboard}
-        forceVerticalButtons={!!customButtons}
+        forceVerticalButtons={!!customButtons || forceVerticalButtons}
         maxHeightPercent={maxHeightPercent}
         noPadding={noPadding}
       >
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -200,6 +208,7 @@ interface AlertState {
   title: string;
   description: string;
   buttons: AlertButton[];
+  formatText: boolean;
 }
 
 function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClose: () => void }) {
@@ -214,7 +223,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
       return button.icon;
     }
     if (button.style === 'destructive') {
-      return 'delete';
+      return 'trash';
     }
     if (button.style === 'cancel') {
       return 'dismiss';
@@ -241,7 +250,7 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
   );
 }
 
-export type ShowAlert = (title: string, description: string, buttons?: AlertButton[]) => void;
+export type ShowAlert = (title: string, description: string, buttons?: AlertButton[], options?: { formatText?: boolean }) => void;
 export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode, ShowAlert] {
   const { typography } = useContext(StyleContext);
   const [state, setState] = useState<AlertState | undefined>();
@@ -276,16 +285,19 @@ export function useAlertDialog(forceVerticalButtons?: boolean): [React.ReactNode
         forceVerticalButtons={forceVerticalButtons}
       >
         <View style={space.paddingS}>
-          <Text style={typography.small}>{ state?.description || '' }</Text>
+          { state?.formatText ? <CardTextComponent text={state?.description || ''} /> : (
+            <Text style={typography.small}>{ state?.description || '' }</Text>
+          ) }
         </View>
       </NewDialog>
     );
   }, [state, buttons, onDismiss, typography, forceVerticalButtons]);
-  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }]) => {
+  const showAlert = useCallback((title: string, description: string, buttons: AlertButton[] = [{ text: t`Okay` }], options: { formatText?: boolean } = {}) => {
     setState({
       title,
       description,
       buttons: buttons.length > 0 ? buttons : [{ text: t`Okay` }],
+      formatText: options.formatText || false,
     });
   }, [setState]);
   return [dialog, showAlert];
@@ -450,7 +462,7 @@ export function usePickerDialog<T>({
       );
     }
     return <>{description}</>;
-  }, [description, typography]);
+  }, [description, borderStyle, typography]);
   const content = useMemo(() => {
     return (
       <View>
@@ -476,7 +488,7 @@ export function usePickerDialog<T>({
         )) }
       </View>
     );
-  }, [items, onValuePress, borderStyle, typography, description, selectedValue]);
+  }, [items, onValuePress, descriptionSection, noIcons, selectedValue]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator,
@@ -707,6 +719,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
     deck,
+    previousDeck,
+    cards,
     parsedDeckRef,
     deckEditsRef,
     tabooSetId,
@@ -731,13 +745,24 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeckRef.current || !deckEditsRef.current) {
+    if (!deck || !cards || !parsedDeckRef.current || !deckEditsRef.current) {
       return;
     }
     setSaving(true);
     try {
       if (hasPendingEdits) {
-        const problem = parsedDeckRef.current.problem;
+        const newParsedDeck = parseDeck(
+          deck.investigator_code,
+          deckEditsRef.current.meta,
+          deckEditsRef.current.slots,
+          deckEditsRef.current.ignoreDeckLimitSlots,
+          deckEditsRef.current.side,
+          cards,
+          previousDeck,
+          deckEditsRef.current.xpAdjustment,
+          deck
+        );
+        const problem = newParsedDeck ? newParsedDeck.problem : parsedDeckRef.current.problem;
         const problemField = problem ? problem.reason : '';
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,
@@ -774,7 +799,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
+  }, [deck, saving, cards, previousDeck, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
     dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);

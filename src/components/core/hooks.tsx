@@ -2,9 +2,9 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { BackHandler, Keyboard } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -29,8 +29,9 @@ import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
-import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { useAppDispatch } from '@app/store';
+import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -204,7 +205,7 @@ export function useCounter(
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [debounceValue] = useDebounce(value, 2000, { trailing: true });
+  const [debounceValue] = useDebounce(value, 200, { trailing: true });
   useEffectUpdate(() => {
     if (syncValue && dirty) {
       syncValue(value);
@@ -647,7 +648,6 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
   const [cards] = useCardMap(codes, 'player', tabooSetOverride)
   return cards;
 }
-
 export function useCopyAction(value: string, confirmationText: string): () => void {
   return useCallback(() => {
     Clipboard.setString(value);
@@ -660,8 +660,9 @@ export function useCopyAction(value: string, confirmationText: string): () => vo
         options: Toast.options,
       },
     });
-  }, [value, useConfirmSignupDialog]);
+  }, [value, confirmationText]);
 }
+
 
 export function useSettingValue(setting: MiscSetting): boolean {
   return useSelector((state: AppState) => {
@@ -669,23 +670,27 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'alphabetize': return !!state.settings.alphabetizeEncounterSets;
       case 'beta1': return !!state.settings.beta1;
       case 'colorblind': return !!state.settings.colorblind;
-      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
-      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
       case 'ignore_collection': return !!state.settings.ignore_collection;
       case 'justify': return !!state.settings.justifyContent;
       case 'single_card': return !!state.settings.singleCardView;
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
-      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'custom_content': return !!state.settings.customContent;
+      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
+
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
-      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
+
+      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
+      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
+      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
+      case 'low_memory':
+        return LOW_MEMORY_DEVICE ? !state.settings.lowMemory : !!state.settings.lowMemory;
     }
   });
 }
 
-export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean) => void] {
+export function useSettingFlag(setting: MiscLocalSetting): [boolean, (value: boolean) => void] {
   const actualValue = useSettingValue(setting);
   const dispatch = useDispatch();
   const [value, setValue] = useState(actualValue);
@@ -702,7 +707,32 @@ export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean)
   return [value, actuallySetValue];
 }
 
-export function useAllInvestigators(tabooSetOverride?: number, sortType?: SortType): [Card[], boolean] {
+
+export function useRemoteSettingFlag(
+  setting: MiscRemoteSetting,
+  remoteUpdate: (setting: MiscRemoteSetting, value: boolean) => void
+): [boolean, (value: boolean) => void] {
+  const actualValue = useSettingValue(setting);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(actualValue);
+  useEffect(() => {
+    setValue(actualValue);
+  }, [actualValue, setValue]);
+
+  const actuallySetValue = useCallback((value: boolean) => {
+    setValue(value);
+    remoteUpdate(setting, value);
+    setTimeout(() => {
+      dispatch(setMiscSetting(setting, value));
+    }, 50);
+  }, [setting, setValue, dispatch, remoteUpdate]);
+  return [value, actuallySetValue];
+}
+
+export function useAllInvestigators(
+  tabooSetOverride?: number,
+  sortType?: SortType
+): [Card[], boolean] {
   const customContent = useSettingValue('custom_content');
   const sort = useMemo(() => sortType ? Card.querySort(true, sortType) : undefined, [sortType]);
   const query = useMemo(() => {
@@ -776,7 +806,7 @@ export function useWeaknessCards(includeRandomBasicWeakness?: boolean, tabooSetO
       }
     });
     return result;
-  }, [playerCards, includeRandomBasicWeakness]);
+  }, [includeRandomBasicWeakness, weaknessCards]);
 }
 
 export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {
@@ -797,7 +827,7 @@ export function useCampaignScenarios(campaign: SingleCampaignT | undefined): [Sc
 
 export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): LatestDeckT | undefined {
   const deck = useDeck(id, true);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
     if (!deck && id !== undefined && !id.local && !id.serverId) {

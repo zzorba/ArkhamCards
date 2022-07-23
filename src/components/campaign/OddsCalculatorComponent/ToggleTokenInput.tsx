@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { Text } from 'react-native';
 
 import { ChaosTokenType } from '@app_constants';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
@@ -29,7 +28,7 @@ export default function ToggleTokenInput({
     } else {
       toggle(symbol, index);
     }
-  }, [selected, toggle, symbol]);
+  }, [selected, toggle, index, symbol]);
   return (
     <TokenInput
       symbol={symbol}

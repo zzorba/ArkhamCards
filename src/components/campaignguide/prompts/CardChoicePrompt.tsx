@@ -34,7 +34,7 @@ const FILTER_BUILDER = new FilterBuilder('ccp');
 
 function basicQuery(q: CardSearchQuery): Brackets[] {
   const result: Brackets[] = [
-    ...(q.trait ? FILTER_BUILDER.traitFilter([q.trait], false) : []),
+    ...(q.traits ? FILTER_BUILDER.traitFilter(q.traits, false) : []),
   ];
   if (q.unique) {
     result.push(UNIQUE_FILTER);

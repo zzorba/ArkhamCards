@@ -75,12 +75,14 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
         { !(scenarioResults.length === 0 && cycleScenarios.length === 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             { map(scenarioResults, (scenario, idx) => {
+              const resolution = scenario.resolution;
+              const scenarioXp = scenario.xp || 0;
               return (
                 <ScenarioResultButton
                   key={idx}
                   componentId={componentId}
                   campaignId={campaignId}
-                  name={scenario.interlude ? scenario.scenario : `${scenario.scenario} (${scenario.resolution}, ${scenario.xp || 0} XP)`}
+                  name={scenario.interlude ? scenario.scenario : t`${scenario.scenario} (${resolution}, ${scenarioXp} XP)`}
                   index={idx}
                   status="completed"
                 />

@@ -6,8 +6,8 @@ import {
   PACKS_FETCH_ERROR,
   PACKS_AVAILABLE,
   PACKS_CACHE_HIT,
-  SET_IN_COLLECTION,
-  SET_PACK_SPOILER,
+  SYNC_IN_COLLECTION,
+  SYNC_PACK_SPOILER,
   PacksActions,
   Pack,
   SET_PACK_DRAFT,
@@ -49,73 +49,74 @@ export default function(
   action: PacksActions
 ): PacksState {
   if (action.type === UPDATE_PROMPT_DISMISSED) {
-    return Object.assign({},
-      state,
-      {
-        dateUpdatePrompt: action.timestamp.getTime() / 1000,
-      });
+    return {
+      ...state,
+      dateUpdatePrompt: action.timestamp.getTime() / 1000,
+    };
   }
   if (action.type === PACKS_FETCH_START) {
-    return Object.assign({}, state, {
+    return {
+      ...state,
       loading: true,
       error: null,
-    });
+    };
   }
   if (action.type === PACKS_FETCH_ERROR) {
-    return Object.assign({}, state, {
+    return {
+      ...state,
       loading: false,
       error: action.error,
-    });
+    };
   }
   if (action.type === PACKS_CACHE_HIT) {
-    return Object.assign({}, state, {
+    return {
+      ...state,
       loading: false,
       dateFetched: action.timestamp.getTime() / 1000,
       dateUpdatePrompt: action.timestamp.getTime() / 1000,
-    });
+    };
   }
   if (action.type === PACKS_AVAILABLE) {
-    return Object.assign({},
-      state,
-      {
-        all: action.packs,
-        lang: action.lang,
-        loading: false,
-        dateFetched: action.timestamp.getTime() / 1000,
-        dateUpdatePrompt: action.timestamp.getTime() / 1000,
-        lastModified: action.lastModified,
-      });
+    return {
+      ...state,
+      all: action.packs,
+      lang: action.lang,
+      loading: false,
+      dateFetched: action.timestamp.getTime() / 1000,
+      dateUpdatePrompt: action.timestamp.getTime() / 1000,
+      lastModified: action.lastModified || null,
+    };
   }
 
-  if (action.type === SET_IN_COLLECTION) {
-    const new_collection = Object.assign({}, state.in_collection);
-    if (action.code) {
-      if (action.value) {
-        new_collection[action.code] = true;
-      } else {
-        delete new_collection[action.code];
-      }
-    } else if (action.cycle_code) {
-      const cyclePack = find(state.all, pack => pack.code === action.cycle_code);
-      if (cyclePack) {
-        forEach(state.all, pack => {
-          if (pack.cycle_position === cyclePack.cycle_position) {
-            if (action.value) {
-              new_collection[pack.code] = true;
-            } else {
-              delete new_collection[pack.code];
-            }
-          }
-        });
-      }
-    }
 
-    return Object.assign({},
-      state,
-      {
-        in_collection: new_collection,
-      },
-    );
+  if (action.type === SYNC_IN_COLLECTION) {
+    const new_collection = Object.assign({}, state.in_collection);
+    forEach(action.updates, (value, code) => {
+      if (value) {
+        new_collection[code] = true;
+      } else {
+        delete new_collection[code];
+      }
+    });
+    return {
+      ...state,
+      in_collection: new_collection,
+    };
+  }
+
+  if (action.type === SYNC_PACK_SPOILER) {
+    const new_spoilers = Object.assign({}, state.show_spoilers);
+    forEach(action.updates, (value, code) => {
+      if (value) {
+        new_spoilers[code] = true;
+      } else {
+        delete new_spoilers[code];
+      }
+    });
+    return {
+      ...state,
+      show_spoilers: new_spoilers,
+    };
   }
 
   if (action.type === SET_PACK_DRAFT) {
@@ -146,35 +147,5 @@ export default function(
     };
   }
 
-  if (action.type === SET_PACK_SPOILER) {
-    const new_spoilers = Object.assign({}, state.show_spoilers);
-    if (action.code) {
-      if (action.value) {
-        new_spoilers[action.code] = true;
-      } else {
-        delete new_spoilers[action.code];
-      }
-    } else if (action.cycle_code) {
-      const cyclePack = find(state.all, pack => pack.code === action.cycle_code);
-      if (cyclePack) {
-        forEach(state.all, pack => {
-          if (pack.cycle_position === cyclePack.cycle_position) {
-            if (action.value) {
-              new_spoilers[pack.code] = true;
-            } else {
-              delete new_spoilers[pack.code];
-            }
-          }
-        });
-      }
-    }
-
-    return Object.assign({},
-      state,
-      {
-        show_spoilers: new_spoilers,
-      },
-    );
-  }
   return state;
 }

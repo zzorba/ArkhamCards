@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useRef, useContext } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
@@ -28,6 +27,7 @@ import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { useLinkedCampaignId } from '@components/campaign/hooks';
 import useProcessedCampaign from '../useProcessedCampaign';
+import { useAppDispatch } from '@app/store';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -47,7 +47,7 @@ function LinkedCampaignGuideView(props: Props) {
     campaignIdB: props.campaignIdB,
   });
   const { typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();

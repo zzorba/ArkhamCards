@@ -542,10 +542,7 @@ export default class FilterBuilder {
       exceptional,
       nonExceptional,
     } = filters;
-    if (!levelEnabled) {
-      return [];
-    }
-    const result = this.rangeFilter('xp', level, false);
+    const result = !levelEnabled ? [] : this.rangeFilter('xp', level, false);
     if (exceptional && !nonExceptional) {
       result.push(where(`c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'`));
     }

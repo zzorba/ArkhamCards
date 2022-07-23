@@ -10,7 +10,6 @@ import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import Card from '@data/types/Card';
-import { useDispatch } from 'react-redux';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
@@ -19,6 +18,7 @@ import { updateCampaignChaosBag } from '../actions';
 import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 import { ProcessedCampaign } from '@data/scenario';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -89,7 +89,7 @@ export default function useChaosBagDialog({
       showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
     }
   }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone, cycleCode, processedCampaign]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {
       dispatch(updateCampaignChaosBag(setChaosBag, campaignId, chaosBag));

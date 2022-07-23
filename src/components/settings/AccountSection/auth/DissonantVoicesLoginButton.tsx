@@ -1,7 +1,7 @@
 import { t } from 'ttag';
 import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { dissonantVoicesLogin, dissonantVoicesLogout } from '@actions';
 import { AppState } from '@reducers';
@@ -10,6 +10,7 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { ShowAlert } from '@components/deck/dialogs';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   showAlert: ShowAlert;
@@ -18,7 +19,7 @@ interface Props {
 
 export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
   const { typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { loading, status, error } = useSelector((state: AppState) => state.dissonantVoices);
   const doLogin = useCallback(() => {
     dispatch(dissonantVoicesLogin());

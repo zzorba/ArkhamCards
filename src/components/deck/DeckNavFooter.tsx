@@ -12,7 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
-import { useDeckEditState, useParsedDeck } from '@components/deck/hooks';
+import { ParsedDeckResults, useDeckEditState, useParsedDeck } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { DeckId } from '@actions/types';
 import { TINY_PHONE } from '@styles/sizes';
@@ -40,16 +40,17 @@ function fabPadding(control?: 'fab' | 'counts') {
   return s + xs;
 }
 
-function DeckNavFooter({
-  componentId,
-  deckId,
-  control,
-  onPress,
-  forceShow,
-  yOffset,
-}: Props) {
+
+interface PreloadedProps {
+  componentId: string;
+  parsedDeckObj: ParsedDeckResults;
+  onPress: () => void;
+  control?: 'fab' | 'counts' ;
+  forceShow?: boolean;
+  yOffset?: number;
+}
+export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceShow, yOffset }: PreloadedProps) {
   const { colors, shadow, typography } = useContext(StyleContext);
-  const parsedDeckObj = useParsedDeck(deckId, componentId);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, deckEdits } = parsedDeckObj;
   const { mode } = useDeckEditState(parsedDeckObj);
@@ -136,6 +137,22 @@ function DeckNavFooter({
   );
 }
 
+function DeckNavFooter({
+  componentId,
+  deckId,
+  ...props
+}: Props) {
+  const parsedDeckObj = useParsedDeck(deckId, componentId);
+  return (
+    <PreLoadedDeckNavFooter
+      componentId={componentId}
+      parsedDeckObj={parsedDeckObj}
+      {...props}
+    />
+  );
+}
+
+PreLoadedDeckNavFooter.height = FOOTER_HEIGHT + s * 2;
 DeckNavFooter.height = FOOTER_HEIGHT + s * 2;
 export default DeckNavFooter;
 

@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { setPackSpoiler, setCyclePackSpoiler } from '@actions';
@@ -13,6 +13,8 @@ import { NavigationProps } from '@components/nav/types';
 import { getAllPacks, getPackSpoilers } from '@reducers';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useAppDispatch } from '@app/store';
+import { useUpdateRemotePack } from '@data/remote/settings';
 
 export default function SpoilersView({ componentId }: NavigationProps) {
   const { backgroundStyle, typography } = useContext(StyleContext);
@@ -26,14 +28,15 @@ export default function SpoilersView({ componentId }: NavigationProps) {
       </Text>
     </View>
   ), [typography]);
+  const updateRemotePack = useUpdateRemotePack();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const setChecked = useCallback((code: string, value: boolean) => {
-    dispatch(setPackSpoiler(code, value));
-  }, [dispatch]);
+    dispatch(setPackSpoiler(code, value, updateRemotePack));
+  }, [dispatch, updateRemotePack]);
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
-    dispatch(setCyclePackSpoiler(cycle_code, value));
-  }, [dispatch]);
+    dispatch(setCyclePackSpoiler(cycle_code, value, updateRemotePack));
+  }, [dispatch, updateRemotePack]);
 
   if (!packs.length) {
     return (

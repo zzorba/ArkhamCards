@@ -4,9 +4,9 @@ import React, { useContext } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 
-export default function LoadingSpinner({ large, inline, message }: { large?: boolean; inline?: boolean; message?: string }) {
+export default function LoadingSpinner({ large, inline, message, arkham }: { large?: boolean; inline?: boolean; message?: string; arkham?: boolean }) {
   const { backgroundStyle, colors, typography, width, height } = useContext(StyleContext);
-  const spinner = large ? <ArkhamLoadingSpinner autoPlay loop size="large" /> : <ActivityIndicator size="small" color={colors.lightText} animating />;
+  const spinner = large || arkham ? <ArkhamLoadingSpinner autoPlay loop size={large ? 'large' : undefined} /> : <ActivityIndicator size="small" color={colors.lightText} animating />;
   if (inline) {
     return (
       <View style={styles.inline}>

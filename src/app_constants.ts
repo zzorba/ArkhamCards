@@ -295,8 +295,6 @@ export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '60210', // Forbidden Tome
 ]);
 
-
-
 export interface TarotCard {
   id: string;
   position: number;

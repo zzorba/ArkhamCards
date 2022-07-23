@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
 import { jt, t } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
+import { useAppDispatch } from '@app/store';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
@@ -133,7 +133,7 @@ export default function DrawChaosBagComponent(props: Props) {
   const [{ isConnected }, refreshNetworkStatus] = useNetworkStatus();
   const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText, chaosBagResults } = props;
   const { backgroundStyle, fontScale, colors, typography, width } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
   const actions = useChaosBagActions();
   const [sealButton, sealDialog] = useSealTokenButton({ campaignId, chaosBag, chaosBagResults, actions });

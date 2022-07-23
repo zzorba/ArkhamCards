@@ -5,6 +5,7 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
+  View,
 } from 'react-native';
 import { find, last } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -275,7 +276,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
             steps={processedScenario.steps}
             switchCampaignScenario={switchCampaignScenario}
           />
-          { !!footer && footer }
+          { !!footer ? footer : <View style={{ height: 100 }} /> }
         </ScrollView>
       </NarrationWrapper>
     </KeyboardAvoidingView>

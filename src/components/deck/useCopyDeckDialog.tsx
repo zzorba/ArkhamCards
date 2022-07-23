@@ -1,23 +1,20 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { find, flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
-import DialogComponent from '@lib/react-native-dialog';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
-import SelectDeckSwitch from './SelectDeckSwitch';
-import { saveClonedDeck } from '../actions';
+import { saveClonedDeck } from './actions';
 import { showDeckModal } from '@components/nav/helper';
-import Dialog from '@components/core/Dialog';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { login } from '@actions';
 import { Deck, DeckId, getDeckId } from '@actions/types';
+import NewDialog from '@components/core/NewDialog';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
-import COLORS from '@styles/colors';
-import space from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeck } from '@data/hooks';
 import { useEffectUpdate, usePlayerCardsFunc } from '@components/core/hooks';
@@ -27,10 +24,38 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import useSingleCard from '@components/card/useSingleCard';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { useDialog } from './dialogs';
+
+interface SelectDeckSwitchPropsProps {
+  deckId: DeckId;
+  label: string;
+  value: boolean;
+  onValueChange: (deckId: DeckId, value: boolean) => void;
+}
+
+function SelectDeckSwitch({ deckId, label, value, onValueChange }: SelectDeckSwitchPropsProps) {
+  const handleOnValueChange = useCallback((value: boolean) => {
+    onValueChange(deckId, value);
+  }, [onValueChange, deckId]);
+
+  return (
+    <NewDialog.ContentLine
+      hideIcon
+      text={label}
+      paddingBottom={s}
+      control={(
+        <ArkhamSwitch
+          value={value}
+          onValueChange={handleOnValueChange}
+        />
+      )}
+    />
+  );
+}
 
 interface Props {
   campaign: MiniCampaignT | undefined;
-  toggleVisible: () => void;
   deckId?: DeckId;
   signedIn?: boolean;
   actions: DeckActions;
@@ -39,7 +64,7 @@ interface Props {
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 // TODO: remote decks
-export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signedIn, actions }: Props) {
+export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions }: Props): [React.ReactNode, () => void] {
   const { colors, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
@@ -91,12 +116,9 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
-    if (Platform.OS === 'android') {
-      toggleVisible();
-    }
     // Change the deck options for required cards, if present.
     showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator);
-  }, [campaign, toggleVisible, investigator, setSaving, colors]);
+  }, [campaign, investigator, setSaving, colors]);
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;
@@ -148,9 +170,7 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
     }
     return (
       <>
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Version to copy` }
-        </DialogComponent.Description>
+        <NewDialog.SectionHeader text={t`Version to copy`} paddingTop={s} />
         { parsedBaseDeck?.id ? (
           <SelectDeckSwitch
             deckId={parsedBaseDeck.id}
@@ -177,53 +197,71 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
         ) : null }
       </>
     );
-  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, typography, selectedDeckIdChanged]);
+  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, selectedDeckIdChanged]);
 
   const formContent = useMemo(() => {
     if (saving) {
       return (
-        <ActivityIndicator
-          style={styles.spinner}
-          color={colors.lightText}
-          size="large"
-          animating
-        />
+        <>
+          <NewDialog.SectionHeader
+            text={t`Saving`}
+          />
+          <ActivityIndicator
+            style={styles.spinner}
+            color={colors.lightText}
+            size="large"
+            animating
+          />
+        </>
       );
     }
     return (
       <>
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`New Name` }
-        </DialogComponent.Description>
-        <DialogComponent.Input
-          value={deckName || ''}
-          placeholder={t`Required`}
-          onChangeText={onDeckNameChange}
-          returnKeyType="done"
+        <NewDialog.SectionHeader
+          text={t`Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.`}
         />
+        <View style={space.paddingBottomS}>
+          <NewDialog.ContentLine
+            text={t`New Name`}
+            paddingBottom={s}
+            control={null}
+            hideIcon
+          />
+          <NewDialog.TextInput
+            value={deckName || ''}
+            placeholder={t`Required`}
+            onChangeText={onDeckNameChange}
+            returnKeyType="done"
+          />
+        </View>
         { deckSelector }
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Deck Type` }
-        </DialogComponent.Description>
-        <DialogComponent.Switch
-          label={t`Create on ArkhamDB`}
-          value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none && !isCustomContent}
-          disabled={isCustomContent || !isConnected || networkType === NetInfoStateType.none}
-          onValueChange={onDeckTypeChange}
-          trackColor={COLORS.switchTrackColor}
+        <NewDialog.SectionHeader text={t`Deck Type`} paddingTop={s} />
+        <NewDialog.ContentLine
+          icon="arkhamdb"
+          text={t`Create on ArkhamDB`}
+          paddingBottom={s}
+          control={
+            <ArkhamSwitch
+              value={!offlineDeck && !!signedIn && isConnected && networkType !== NetInfoStateType.none && !isCustomContent}
+              disabled={isCustomContent || !isConnected || networkType === NetInfoStateType.none}
+              onValueChange={onDeckTypeChange}
+            />
+          }
         />
         { !!isCustomContent && (
-          <DialogComponent.Description
-            style={[space.marginSideL, space.marginBottomM, typography.small, typography.left]}
-          >
-            { t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made content.` }
-          </DialogComponent.Description>
+          <NewDialog.ContentLine
+            hideIcon
+            text={t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made content.`}
+            control={null}
+            paddingBottom={s}
+          />
         ) }
         { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
-            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { t`You seem to be offline. Refresh Network?` }
-            </DialogComponent.Description>
+            <NewDialog.ContentLine
+              icon="error"
+              text={t`You seem to be offline. Refresh Network?`}
+              control={null} />
           </TouchableOpacity>
         ) }
         { !!error && (
@@ -234,38 +272,21 @@ export default function CopyDeckDialog({ toggleVisible, campaign, deckId, signed
       </>
     );
   }, [signedIn, isCustomContent, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
-
-
-  if (!investigator) {
-    return null;
-  }
-  const okDisabled = saving || selectedDeckId === null;
-  return (
-    <Dialog
-      title={t`Copy Deck`}
-      visible={!!deckId}
-    >
-      <DialogComponent.Description
-        style={[space.marginSideS, saving ? typography.center : typography.left, typography.text]}
-      >
-        { saving ?
-          t`Saving` :
-          t`Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.`
-        }
-      </DialogComponent.Description>
-      { formContent }
-      <DialogComponent.Button
-        label={t`Cancel`}
-        onPress={toggleVisible}
-      />
-      <DialogComponent.Button
-        label={t`Okay`}
-        color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
-        disabled={okDisabled}
-        onPress={onOkayPress}
-      />
-    </Dialog>
-  );
+  const { dialog, showDialog } = useDialog({
+    title: t`Clone deck`,
+    content: formContent,
+    allowDismiss: true,
+    confirm: {
+      onPress: onOkayPress,
+      disabled: selectedDeckId === null,
+      title: t`Clone deck`,
+      loading: saving,
+    },
+    dismiss: {
+      title: t`Cancel`,
+    },
+  });
+  return [dialog, showDialog];
 }
 
 const styles = StyleSheet.create({

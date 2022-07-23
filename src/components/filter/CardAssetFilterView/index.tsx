@@ -46,7 +46,7 @@ export function usesTranslations() {
     portions: c('fan-made-uses').t`Portions`,
     resources: t`Resources`,
     secrets: t`Secrets`,
-    supplies: t`Supplies`,
+    supplies: c('uses').t`Supplies`,
     tickets: t`Tickets`,
     tries: t`Tries`,
     whistles: t`Whistles`,

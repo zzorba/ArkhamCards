@@ -79,7 +79,7 @@ export function useDraftableCards({
     return flatMap(playerCards, c => {
       return !c.has_restrictions && (
         ignore_collection ||
-        c.pack_code === 'core' ||
+        (c.pack_code === 'core' && !in_collection.no_core) ||
         in_collection[c.pack_code] ||
         !!find(c.reprint_pack_codes, pc => in_collection[pc])
       ) ? c.code : [];

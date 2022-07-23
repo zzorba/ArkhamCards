@@ -23,6 +23,9 @@ export default function ChooseOneListComponent({
         if (!editable && idx !== selectedIndex) {
           return null;
         }
+        if (editable && choice.hidden) {
+          return null;
+        }
         return (
           <ChoiceComponent
             key={idx}

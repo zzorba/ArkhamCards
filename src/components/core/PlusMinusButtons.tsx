@@ -35,6 +35,7 @@ interface Props {
   rounded?: boolean;
   showZeroCount?: boolean;
   useGestureHandler?: boolean;
+  showMax?: boolean;
 }
 
 export default function PlusMinusButtons({
@@ -57,6 +58,7 @@ export default function PlusMinusButtons({
   showZeroCount,
   useGestureHandler,
   large,
+  showMax,
 }: Props
 ) {
   const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
@@ -246,12 +248,15 @@ export default function PlusMinusButtons({
       }
       return (
         <View style={styles.count}>
-          <Text style={typography.menuText}>{ allowNegative && count >= 0 ? `+${count}` : count } </Text>
+          <Text style={typography.menuText}>
+            { allowNegative && count >= 0 ? `+${count}` : count }
+            { showMax && max ? `/${max}` : ''}
+          </Text>
         </View>
       );
     }
     return null;
-  }, [countRender, rounded, count, dialogStyle, allowNegative, showZeroCount, typography]);
+  }, [countRender, showMax, max, rounded, count, dialogStyle, allowNegative, showZeroCount, typography]);
 
   return (
     <View

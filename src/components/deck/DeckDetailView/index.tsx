@@ -15,12 +15,11 @@ import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import ActionButton from 'react-native-action-button';
-import Clipboard from '@react-native-clipboard/clipboard';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import CopyDeckDialog from '@components/deck/CopyDeckDialog';
+import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
 import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
@@ -59,7 +58,6 @@ import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '../DeckDraftView';
-import Toast from '@components/Toast';
 import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
 
 export interface DeckDetailProps {
@@ -143,7 +141,6 @@ function DeckDetailView({
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
   const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
 
-  const [copying, toggleCopying] = useFlag(false);
   const [
     deletingDialog,
     deleting,
@@ -385,12 +382,6 @@ function DeckDetailView({
     );
   }, [actuallyDeleteBrokenDeck, showAlert]);
 
-  const toggleCopyDialog = useCallback(() => {
-    setFabOpen(false);
-    setMenuOpen(false);
-    toggleCopying();
-  }, [toggleCopying, setFabOpen, setMenuOpen]);
-
   const onChecklistPressed = useCallback(() => {
     if (!deck || !cards || !deckEditsRef.current) {
       return;
@@ -542,6 +533,7 @@ function DeckDetailView({
         name: 'Deck.DraftCards',
         passProps: {
           id,
+          campaignId,
         },
         options: {
           statusBar: {
@@ -564,7 +556,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
+  }, [componentId, campaignId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -643,18 +635,12 @@ function DeckDetailView({
       },
     });
   }, [componentId, deck, deckId, campaign, colors, parsedDeck, setFabOpen, setMenuOpen]);
-
-  const copyDialog = useMemo(() => {
-    return (
-      <CopyDeckDialog
-        campaign={campaign}
-        deckId={copying ? id : undefined}
-        toggleVisible={toggleCopyDialog}
-        signedIn={signedIn}
-        actions={deckActions}
-      />
-    );
-  }, [id, signedIn, campaign, copying, deckActions, toggleCopyDialog]);
+  const [copyDialog, showCopyDialog] = useCopyDeckDialog({ campaign, deckId: id, signedIn, actions: deckActions })
+  const toggleCopyDialog = useCallback(() => {
+    setFabOpen(false);
+    setMenuOpen(false);
+    showCopyDialog();
+  }, [showCopyDialog, setFabOpen, setMenuOpen]);
 
   const showTabooPicker = useCallback(() => {
     setTabooOpen(true);
@@ -884,13 +870,13 @@ function DeckDetailView({
   const onCopyDeckId = useCallback(() => {
     setMenuOpen(false);
     copyDeckId();
-  }, [deckId, setMenuOpen, copyDeckId]);
+  }, [setMenuOpen, copyDeckId]);
 
   const copyDeckUrl = useCopyAction(`${arkhamDbDomain}/deck/view/${deckId.id}`, t`Link to deck copied!`);
   const onCopyUrl = useCallback(() => {
     setMenuOpen(false);
     copyDeckUrl();
-  }, [deckId, copyDeckUrl, setMenuOpen]);
+  }, [copyDeckUrl, setMenuOpen]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -972,7 +958,7 @@ function DeckDetailView({
               description={t`Story assets and weaknesses`}
               last={!SHOW_DRAFT_CARDS}
             />
-            { !!SHOW_DRAFT_CARDS && !deck.previousDeckId &&  (
+            { !!SHOW_DRAFT_CARDS && !deck.previousDeckId && (
               <MenuButton
                 onPress={onDraftCards}
                 icon="draft"
@@ -1043,7 +1029,7 @@ function DeckDetailView({
         ) }
         { editable && (
           <MenuButton
-            icon="delete"
+            icon="trash"
             title={t`Delete deck`}
             onPress={deleteDeckPressed}
             last
@@ -1121,7 +1107,7 @@ function DeckDetailView({
             <AppIcon name="upgrade"color="#FFF" size={32} />
           </ActionButton.Item>
         ) }
-         { editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId && (
+        { editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId && (
           <ActionButton.Item
             buttonColor={factionColor}
             textStyle={actionLabelStyle}
@@ -1162,7 +1148,7 @@ function DeckDetailView({
         ) }
       </ActionButton>
     );
-  }, [factionColor, fabOpen, editable, mode, shadow, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography, deck]);
+  }, [factionColor, fabOpen, editable, mode, shadow, onDraftCards, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography, deck]);
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];

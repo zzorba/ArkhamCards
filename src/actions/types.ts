@@ -3,6 +3,7 @@ import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_CYCLE = 'cycle';
@@ -55,6 +56,7 @@ export interface DeckMeta {
   option_selected?: string;
   alternate_front?: string;
   alternate_back?: string;
+  [key: string]: string | undefined;
 }
 
 export interface LocalDeckId {
@@ -203,9 +205,20 @@ export interface SplitCards {
 }
 export type CardSplitType = keyof SplitCards;
 
+export interface CustomizationDecision {
+  index: number;
+  spent_xp: number;
+  choice?: string;
+}
+
+export interface Customizations {
+  [code: string]: CustomizationChoice[] | undefined;
+}
+
 export interface ParsedDeck {
   id?: DeckId;
   deck?: Deck;
+  customizations: Customizations;
 
   investigator: Card;
   investigatorFront: Card;
@@ -380,6 +393,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
+export const TSK = 'tsk';
 export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
@@ -404,6 +418,7 @@ export type CampaignCycleCode =
   typeof TDEB |
   typeof TIC |
   typeof EOE |
+  typeof TSK |
   typeof GOB |
   typeof STANDALONE |
   typeof DARK_MATTER |
@@ -597,7 +612,10 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id';
+
+export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'draft_from_collection' | 'low_memory';
+export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -661,16 +679,10 @@ export interface SetLanguageChoiceAction {
   choiceLang: string;
 }
 
-export const DISMISS_ONBOARDING = 'DISMISS_ONBOARDING';
-export interface DismissOnboardingAction {
-  type: typeof DISMISS_ONBOARDING;
-  onboarding: string;
-}
-
-
-export const RESET_ONBOARDING = 'RESET_ONBOARDING';
-export interface ResetOnboardingAction {
-  type: typeof RESET_ONBOARDING;
+export const SYNC_DISMISS_ONBOARDING = 'SYNC_DISMISS_ONBOARDING';
+export interface SyncDismissOnboardingAction {
+  type: typeof SYNC_DISMISS_ONBOARDING;
+  updates: { [onboarding: string]: boolean };
 }
 
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';
@@ -869,19 +881,15 @@ export interface MyDecksErrorAction {
   type: typeof MY_DECKS_ERROR;
   error: string;
 }
-export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
-export interface SetInCollectionAction {
-  type: typeof SET_IN_COLLECTION;
-  code?: string;
-  cycle_code?: string;
-  value: boolean;
+export const SYNC_IN_COLLECTION = 'SYNC_IN_COLLECTION';
+export interface SyncInCollectionAction {
+  type: typeof SYNC_IN_COLLECTION;
+  updates: { [key: string]: boolean }
 }
-export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
-export interface SetPackSpoilerAction {
-  type: typeof SET_PACK_SPOILER;
-  code?: string;
-  cycle_code?: string;
-  value: boolean;
+export const SYNC_PACK_SPOILER = 'SYNC_PACK_SPOILER';
+export interface SyncPackSpoilerAction {
+  type: typeof SYNC_PACK_SPOILER;
+  updates: { [key: string]: boolean }
 }
 
 export const SET_PACK_DRAFT = 'SET_PACK_DRAFT';
@@ -1376,8 +1384,8 @@ export type PacksActions =
   PacksFetchErrorAction |
   PacksCacheHitAction |
   PacksAvailableAction |
-  SetInCollectionAction |
-  SetPackSpoilerAction |
+  SyncInCollectionAction |
+  SyncPackSpoilerAction |
   SetPackDraftAction |
   UpdatePromptDismissedAction;
 
@@ -1411,7 +1419,7 @@ export type DecksActions =
   SetCurrentDraftSizeAction |
   UpdateDeckEditAction |
   SetPackDraftAction |
-  SetInCollectionAction;
+  SyncInCollectionAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |

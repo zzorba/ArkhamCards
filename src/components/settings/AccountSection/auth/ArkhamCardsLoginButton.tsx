@@ -6,13 +6,12 @@ import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-nativ
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-import { useDispatch } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
-import { ShowAlert, useDialog } from '@components/deck/dialogs';
+import { AlertButton, ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -23,6 +22,8 @@ import { removeLocalCampaign } from '@components/campaign/actions';
 import useConfirmSignupDialog from './useConfirmSignupDialog';
 import { useApolloClient } from '@apollo/client';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useAppDispatch } from '@app/store';
+import useDeleteAccountDialog from './useDeleteAccountDialog';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -402,13 +403,14 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
 
 interface Props {
   showAlert: ShowAlert;
+  handle: string;
 }
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  const dispatch = useDispatch();
-  const { userId, loading } = useContext(ArkhamCardsAuthContext);
+  const dispatch = useAppDispatch();
+  const { userId, loading, user } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
   const setVisibleRef = useRef<(visible: boolean) => void>();
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
@@ -419,7 +421,14 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     dispatch(logout());
   }, [dispatch, apollo]);
   const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
+  const [showConfirmDelete, deleteDialog] = useDeleteAccountDialog(user, doLogout);
   const logoutPressed = useCallback(() => {
+    const deleteAccountButton: AlertButton = {
+      icon: 'trash',
+      style: 'destructive',
+      text: t`Delete your account`,
+      onPress: showConfirmDelete,
+    };
     showAlert(
       t`Sign out of Arkham Cards?`,
       t`Are you sure you want to sign out of Arkham Cards?\n\nAny campaigns you uploaded or have had shared with you will be removed from this device. They can be resynced if you sign in again.\n\nNote: if you have made recent changes while offline, they may be lost.`,
@@ -428,14 +437,15 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
           text: t`Cancel`,
           style: 'cancel',
         },
+        ...(Platform.OS === 'ios' ? [deleteAccountButton] : []),
         {
+          icon: 'resign',
           text: t`Sign out`,
-          style: 'destructive',
           onPress: doLogout,
         },
       ]
     );
-  }, [showAlert, doLogout]);
+  }, [showAlert, doLogout, showConfirmDelete]);
   const createAccountPressed = useCallback(() => setMode('create'), [setMode]);
   const loginPressed = useCallback(() => setMode('login'), [setMode]);
   const resetDialog = useCallback(() => {
@@ -551,11 +561,13 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         detail={userId ? undefined : t`Sync campaigns to share with friends`}
         icon="logo"
         loading={loading}
-        color={userId ? 'default' : 'red'}
+        color={userId ? 'default' : 'dark_gray'}
         onPress={userId ? logoutPressed : showLoginDialog}
+        noShadow
       />
       { loginDialog }
       { signupDialog }
+      { deleteDialog }
     </View>
   );
 }

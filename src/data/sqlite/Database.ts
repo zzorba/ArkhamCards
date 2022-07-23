@@ -10,6 +10,9 @@ import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
+import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
+import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
+import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
 
 type DatabaseListener = () => void;
 
@@ -21,6 +24,34 @@ export interface SqliteVersion {
 export interface SectionCount {
   id: string | number | null;
   count: number;
+}
+
+async function createDatabaseConnection(recreate: boolean) {
+  const connection = await createConnection({
+    type: 'react-native',
+    database: 'arkham4',
+    location: 'default',
+    logging: [
+      'error',
+      'schema',
+    ],
+    // maxQueryExecutionTime: 4000,
+    migrations: [
+      HealsDamageMigration1657382994910,
+      CustomizeMigration1657651357621,
+      RemovableSlot1658075280573,
+    ],
+    entities: [
+      Card,
+      EncounterSet,
+      FaqEntry,
+      TabooSet,
+      Rule,
+    ],
+  });
+  await connection.runMigrations();
+  await connection.synchronize(recreate);
+  return connection;
 }
 
 export default class Database {
@@ -39,28 +70,7 @@ export default class Database {
 
   constructor(latestVersion?: number) {
     const recreate = !latestVersion || latestVersion !== Database.SCHEMA_VERSION;
-
-    this.connectionP = createConnection({
-      type: 'react-native',
-      database: 'arkham4',
-      location: 'default',
-      logging: [
-        'error',
-        // 'query',
-        'schema',
-      ],
-      dropSchema: recreate,
-      synchronize: recreate,
-      // maxQueryExecutionTime: 4000,
-      // migrations:['migrations/migration.js'],
-      entities: [
-        Card,
-        EncounterSet,
-        FaqEntry,
-        TabooSet,
-        Rule,
-      ],
-    });
+    this.connectionP = createDatabaseConnection(recreate);
   }
 
   addListener(change: () => void) {

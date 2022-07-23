@@ -15,7 +15,6 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSectionComponent';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
-import { useDispatch } from 'react-redux';
 import { updateCampaignXp } from '@components/campaign/actions';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';
@@ -23,6 +22,7 @@ import { CampaignLogSectionDefinition } from '@data/scenario/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import { useArkhamDbError } from '@data/hooks';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -187,7 +187,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   } = props;
   const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const appState = useAppState();
   const syncCampaignData = useCallback(() => {

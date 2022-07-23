@@ -1,4 +1,4 @@
-import { isEqual, findIndex, filter, map, forEach, find } from 'lodash';
+import { isEqual, findIndex, filter, map, forEach } from 'lodash';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -269,7 +269,7 @@ function PlayerView({ style }: PlayerProps) {
       );
     }
     return null;
-  }, [lang])
+  }, [lang, typography, colors])
 
   const { dialog, showDialog } = useDialog({
     title: t`What is this?`,

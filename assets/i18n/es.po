@@ -285,9 +285,6 @@ msgstr "Actualizando cartas"
 msgid "Error: Check for Cards Again"
 msgstr "Error: Buscar cartas de nuevo"
 
-msgid "Check ArkhamDB for updates"
-msgstr "Buscar nuevas cartas en ArkhamDB"
-
 msgid "Card Collection"
 msgstr "Colección de cartas"
 
@@ -1081,9 +1078,6 @@ msgstr "Editar"
 
 msgid "Required"
 msgstr "Requerido"
-
-msgid "Copy Deck"
-msgstr "Copiar mazo"
 
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
@@ -1926,8 +1920,8 @@ msgstr[1] ""
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
-msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente ícono:"
-msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes íconos:"
+msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente icono:"
+msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes iconos:"
 
 msgid "Choose Investigators"
 msgstr "Elige los investigadores"
@@ -4080,9 +4074,6 @@ msgstr ""
 "estás conectado a una cuenta de ArkhamDB diferente. Si quieres editarlo, "
 "por favor conéctate a través de la aplicación."
 
-msgid "Justify text"
-msgstr "Justificar texto"
-
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } y ${ tokens[1] }"
@@ -4728,7 +4719,7 @@ msgid "Record damage/horror:"
 msgstr "Guardar daño/horror:"
 
 msgid ""
-"This deck is ownered by another player. You can record the upgrade now and "
+"This deck is owned by another player. You can record the upgrade now and "
 "they will be given an opportunity to save the changes to their deck when "
 "they next open the app."
 msgstr ""
@@ -5777,151 +5768,110 @@ msgid ""
 "If you are using the digital chaos bag in the app, be sure to enable the "
 "tarot option on the chaos bag screen."
 msgstr ""
+"Si estás utilizando la bolsa de caos digital en la aplicación, comprueba "
+"que tengas habilitada la opción de la carta de tarot en la pantalla de la "
+"bolsa de caos."
 
 msgid "Show deck ids on campaigns"
-msgstr ""
+msgstr "Mostrar id del mazo en campañas"
 
 msgid "Tarot Reading"
-msgstr ""
+msgstr "Lectura de tarot"
 
 msgid "Tarot Readings"
-msgstr ""
+msgstr "Lecturas de tarot"
 
 msgid "Perform readings with the tarot deck"
-msgstr ""
+msgstr "Realiza lecturas con el mazo de Tarot"
 
 msgid "What is this?"
-msgstr ""
-
-msgid ""
-"Reveal the top card in a random orientation. It's effects are active "
-"throughout the scenario, and could be positive or negative, depending on "
-"its orientation. This reading is ideal if you want to add a splash of chaos "
-"to a scenario."
-msgstr ""
-
-msgid ""
-"Reveal the top two cards, one in the upright position and one in the "
-"reversed position. Their effects are active throughout the scenario. One "
-"card has a positive effect, the other has a negative effect. This reading "
-"is ideal if you want to add a touch of randomness or replay value to a "
-"scenario, but desire a more balanced effect."
-msgstr ""
-
-msgid ""
-"Reveal three cards in the upright position. Then, choose and reverse 2 of "
-"them. The effects of all 3 cards are active throughout the scenario. One "
-"card has a positive effect and the other two negative, but the "
-"investigators decide which is which. This reading is ideal if you want to "
-"add an element of strategic decision-making during your reading."
-msgstr ""
-
-msgid ""
-"Before starting a campaign, reveal one card for each scenarion in the "
-"campaign, ignoring side stories and counting scenarios with multiple parts "
-"as separate scenarios. Place each card in a line, in the upright position. "
-"Each of these cards applies to one scenario in the campaign. Then, choose "
-"and reverse half of the cards (rounded up). This reading is ideal if you "
-"want your readings to have long-term consequences and force you to plan "
-"ahead."
-msgstr ""
-
-msgid ""
-"Draw 3 random cards from the tarot deck and choose 1. Place the chosen card "
-"in front of you, in the upright position. Each other investigator ignores "
-"its effects."
-msgstr ""
-
-msgid ""
-"Draw a random card from the tarot deck and place the chosen card in front "
-"of you, in the reverse position. Each other investigator ignores its "
-"effects."
-msgstr ""
-
-msgid ""
-"There are endless possible readings that you could perform using the Tarot "
-"Deck. Feel free to create your own!"
-msgstr ""
+msgstr "¿Qué es esto?"
 
 msgid "Choose two cards to reverse."
-msgstr ""
+msgstr "Elige dos cartas para poner en posición invertida."
 
 msgid "Reverse half of the cards (rounded up)."
 msgstr ""
+"Elige la mitad de las cartas (redondeando hacia arriba) para poner en "
+"posición invertida."
 
 msgid "Choose one card."
-msgstr ""
+msgstr "Elige una carta."
 
 msgid "Draw and reverse cards however you like!"
-msgstr ""
+msgstr "¡Roba e invierte las cartas a tu gusto!"
 
 msgid "Reveal"
-msgstr ""
+msgstr "Revelar"
 
 #, javascript-format
 msgid "${ card.title } - Inverted"
-msgstr ""
+msgstr "${ card.title } - Invertida"
 
 msgid "Inverted"
-msgstr ""
+msgstr "Invertida"
 
 msgid "Upright"
-msgstr ""
+msgstr "De pie"
 
 msgid "A single card in a random position."
-msgstr ""
+msgstr "Una carta en posición aleatoria."
 
 msgid "Two cards, one upright and one reversed."
-msgstr ""
+msgstr "Dos cartas, una de pie y otra invertida."
 
 msgid "Reveal three upright cards, choose two to reverse."
-msgstr ""
+msgstr "Revela tres cartas de pie, elige dos para invertir."
 
 msgid "A reading for the full campaign."
-msgstr ""
+msgstr "Una lectura para toda la campaña."
 
 msgid "Choose from three upright cards."
-msgstr ""
+msgstr "Elige entre 3 cartas de pie."
 
 msgid "A single reversed card."
-msgstr ""
+msgstr "Una sola carta invertida."
 
 msgid "Draw cards in random positions."
-msgstr ""
+msgstr "Roba cartas en posiciones aleatorias."
 
 msgid "Choose reading type"
-msgstr ""
+msgstr "Elige el tipo de lectura"
 
 msgid "You must flip all cards to reveal your fate."
-msgstr ""
+msgstr "Debes darle la vuelta a todas las cartas para revelar tu destino."
 
 #, javascript-format
 msgid ""
 "Too many card reversed (${ currentReversedCount } / ${ "
 "requiredReversedCount })"
 msgstr ""
+"Demasiadas cartas invertidas (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
 
 #, javascript-format
 msgid ""
 "Not enough cards reversed (${ currentReversedCount } / ${ "
 "requiredReversedCount })"
 msgstr ""
+"No hay suficientes cartas invertidas (${ currentReversedCount } / ${ "
+"requiredReversedCount })"
 
 msgid "Reject fate (redraw)"
-msgstr ""
+msgstr "Rechaza tu destino (vuelve a robar)"
 
 msgid "Deck Id"
-msgstr ""
+msgstr "ID del mazo"
 
 msgid "Symphony of Erich Zann"
-msgstr ""
+msgstr "La sinfonía de Erich Zann"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
-msgstr ""
+msgstr "${ card.title } (invertida)"
 
 msgid "Destiny Tarot Reading"
-msgstr ""
+msgstr "Lectura de Tarot Destino"
 
 msgid "The Tatterdemalion"
 msgstr ""
@@ -6002,7 +5952,102 @@ msgstr ""
 msgid "${ textModifier }, draws another ${ revealCount }}"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
+msgid "Delete your account"
+msgstr "Elimina tu cuenta"
+
+msgid "Loading account details..."
+msgstr "Cargando detalles de tu cuenta..."
+
+msgid ""
+"Are you sure that you want to <b>permanently</b> delete your account? This "
+"<b>cannot be undone</b>."
+msgstr ""
+"¿Estás seguro de que deseas eliminar tu cuenta <b>de forma permanente</b>? "
+"Esto <b>no puede deshacerse</b>."
+
+#, javascript-format
+msgid "You are currently signed in as <b>${ handle }</b>."
+msgstr "Estás conectado como <b>${ handle }</b>."
+
+msgid ""
+"The friend's campaign that you have participated in will have your decks "
+"removed:"
+msgid_plural ""
+"The ${ joinedCampaignCount } campaigns from friends that you have "
+"participated in will have your decks removed:"
+msgstr[0] "Tus mazos se eliminarán de la campaña con amigos en la que has participado:"
+msgstr[1] ""
+"Tus mazos se eliminarán de las ${ joinedCampaignCount } campañas con amigos "
+"en la que has participado:"
+
+msgid "I understand that all data will be deleted permanently."
+msgstr "Entiendo que todos mis datos serán eliminados de forma permanente."
+
+msgid "Confirm account deletion"
+msgstr "Confirmar cancelación de la cuenta"
+
+msgid "Delete account"
+msgstr "Eliminar cuenta"
+
+msgid "If you choose to delete this account, the following data will be removed."
+msgstr "Si eliges eliminar esta cuenta, los siguientes datos serán eliminados."
+
+msgid "The campaign that you have uploaded to this account will be deleted:"
+msgid_plural ""
+"The ${ createdCampaignCount } campaigns that you have uploaded to this "
+"account will be deleted:"
+msgstr[0] "La campaña que has sincronizado con esta cuenta se eliminará:"
+msgstr[1] ""
+"Las ${ createdCampaignCount } campañas que has sincronizado con esta cuenta "
+"se eliminarán:"
+
+msgid "Beta"
+msgstr ""
+
+msgid "Check for card updates"
+msgstr ""
+
+msgid "Low memory mode"
+msgstr ""
+
+msgid "Have the app preload fewer cards to help performance on older devices"
+msgstr ""
+
+msgid "Choose slot to remove"
+msgstr ""
+
+msgid "Slot"
+msgstr ""
+
+msgid ""
+"Sorry, the app cannot yet support customizable cards like this one, but we "
+"are working on it!\n"
+"\n"
+"Please check for pending app updates and try again later."
+msgstr ""
+
+msgid "Customizations"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } XP"
+msgid_plural "${ xp } XP"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Show selected customizations"
+msgstr ""
+
+msgid "Show all customizations"
+msgstr ""
+
+#, javascript-format
+msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
+msgstr ""
+
+msgid "The Scarlet Keys"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
@@ -6334,14 +6379,6 @@ msgid ""
 msgstr ""
 "- Las cartas fanmade aparecen con un pequeño icono indicando a qué pack "
 "pertenecen, para que puedas detectar que no son oficiales."
-
-msgctxt "releaseNotes"
-msgid ""
-"Note: You might need to refresh the cards once (using <b>Check ArkhamDB for "
-"updates</b>)."
-msgstr ""
-"Nota: Puede ser necesario refrescar las cartas una vez (usando <b>Buscar "
-"nuevas cartas en ArkhamDB</b>)."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6683,6 +6720,53 @@ msgstr ""
 "- Te mostrará el mazo antes de guardarlo, para que puedas volver a "
 "generarlo de nuevo si el mazo actual tiene una composición particularmente "
 "inviable."
+
+msgctxt "releaseNotes"
+msgid ""
+"Note: You might need to refresh the cards once (using <b>Check for card "
+"updates</b>)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Settings synchronization"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"Good news for players who use Arkham Cards with more than one device, if "
+"you sign into your Arkham Cards account your settings will now sync between "
+"devices automatically!"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- This includes your collection + spoiler settings, as well as many general "
+"app preferences."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"I've had some reports of slower performance on some devices, and have a new "
+"<i>\"Low Memory Mode\"</i> setting to try out."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- If you've been experiencing slow app behavior in anyway, please try it "
+"out."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- And if you try it out, send me an email at arkhamcards@gmail.com, I would "
+"love to hear how it is working in the wild."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"BTW, support for the newly announced mechanic from The Scarlet Keys is in "
+"the works, so stay tuned."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -7833,6 +7917,10 @@ msgctxt "fan-made-uses"
 msgid "Portions"
 msgstr "Porciones"
 
+msgctxt "uses"
+msgid "Supplies"
+msgstr "Suministros"
+
 msgctxt "Slots"
 msgid "All"
 msgstr "Todos"
@@ -7980,31 +8068,31 @@ msgstr[1] ""
 
 msgctxt "tarot-reading"
 msgid "Chaos"
-msgstr ""
+msgstr "Caos"
 
 msgctxt "tarot-reading"
 msgid "Balance"
-msgstr ""
+msgstr "Equilibrio"
 
 msgctxt "tarot-reading"
 msgid "Choice"
-msgstr ""
+msgstr "Elección"
 
 msgctxt "tarot-reading"
 msgid "Destiny"
-msgstr ""
+msgstr "Destino"
 
 msgctxt "tarot-reading"
 msgid "Observed"
-msgstr ""
+msgstr "Observado"
 
 msgctxt "tarot-reading"
 msgid "Damned"
-msgstr ""
+msgstr "Maldito"
 
 msgctxt "tarot-reading"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizada"
 
 msgctxt "trauma"
 msgid "None"

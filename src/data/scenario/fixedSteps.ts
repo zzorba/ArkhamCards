@@ -18,8 +18,7 @@ import {
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import { getTarotCards } from '@app_constants';
+import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -73,6 +72,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
             large: true,
             text: `<b>${resolution.title}</b>`,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
+            hidden: resolution.hidden,
             steps: [
               investigatorStatusStepId(resolution),
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),

@@ -2545,7 +2545,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of cards in your hand (rounded up)",
+          "prompt": "손에 있는 카드 장수의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -2553,7 +2553,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed Enchanted Woods locations",
+          "prompt": "공개된 ‘마법 걸린 숲’ 장소의 개수",
           "min": 0
         }
       },
@@ -2569,7 +2569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of cards in your hand",
+          "prompt": "손에 있는 카드 장수",
           "min": 0
         }
       },
@@ -2577,7 +2577,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed [[Woods]] locations",
+          "prompt": "공개된 [[숲]] 장소의 개수",
           "min": 0
         }
       },
@@ -2602,7 +2602,7 @@
           },
           "options": [
             {
-              "prompt": "Engaged with a [[Staff]] enemy",
+              "prompt": "[[직원]] 적과 교전 중임",
               "modified_value": {
                 "modifier": -3
               }
@@ -2621,7 +2621,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of infested locations",
+          "prompt": "창궐 장소의 개수",
           "min": 0
         }
       }
@@ -2636,7 +2636,7 @@
           },
           "options": [
             {
-              "prompt": "Engaged with a [[Staff]] enemy",
+              "prompt": "[[직원]] 적과 교전 중임",
               "modified_value": {
                 "modifier": -4
               }
@@ -2655,7 +2655,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of infested locations",
+          "prompt": "창궐 장소의 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -2670,7 +2670,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "prompt": "조사자들이 밝혀낸 신들의 흔적 개수",
           "min": 0
         }
       },
@@ -2699,7 +2699,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Signs of the Gods the investigators have uncovered",
+          "prompt": "조사자들이 밝혀낸 신들의 흔적 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -2738,7 +2738,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Graveyard]] location",
+              "prompt": "[[묘지]] 장소에 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -2776,7 +2776,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Graveyard]] location",
+              "prompt": "[[묘지]] 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -2813,7 +2813,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level (rounded up)",
+          "prompt": "경보 수치의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -2842,7 +2842,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your alarm level",
+          "prompt": "경보 수치",
           "min": 0
         }
       },
@@ -2875,7 +2875,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of damage on the scenario reference card",
+          "prompt": "이 카드에 놓인 피해 개수",
           "min": 0
         }
       },
@@ -2904,7 +2904,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of damage on the scenario reference card",
+          "prompt": "이 카드에 놓인 피해 개수",
           "min": 1,
           "adjustment": 1
         }
@@ -2938,7 +2938,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of the current act",
+          "prompt": "현재 주요목적 번호",
           "min": 1
         }
       },
@@ -2967,7 +2967,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of the current act plus the number of the current agenda",
+          "prompt": "현재 주요사건 번호 + 현재 주요목적 번호",
           "min": 2
         }
       },
@@ -3000,7 +3000,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on a location in play",
+          "prompt": "플레이 상태인 장소 중에서, 파멸이 가장 많이 놓인 장소의 파멸 개수",
           "min": 0
         }
       },
@@ -3029,7 +3029,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom on locations in play",
+          "prompt": "플레이 상태인 모든 장소에 놓인 파멸 개수의 총합",
           "min": 0
         }
       },
@@ -6795,7 +6795,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of cards in your hand",
+          "prompt": "손에 있는 카드 장수",
           "min": 0,
           "max": 4
         }
@@ -6833,7 +6833,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of cards in your hand",
+          "prompt": "손에 있는 카드 장수",
           "min": 0,
           "max": 5
         }

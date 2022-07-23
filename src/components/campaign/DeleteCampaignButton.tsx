@@ -101,7 +101,7 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
     if (userId && campaignId.serverId && campaign && userId !== campaign.owner_id) {
       return (
         <DeckButton
-          icon="delete"
+          icon="trash"
           title={standalone ? t`Leave standalone` : t`Leave campaign`}
           thin
           color="red_outline"
@@ -112,7 +112,7 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
     }
     return (
       <DeckButton
-        icon="delete"
+        icon="trash"
         title={standalone ? t`Delete standalone` : t`Delete campaign`}
         thin
         color="red_outline"

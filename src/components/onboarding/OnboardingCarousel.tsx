@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { Text, View, Platform } from 'react-native';
-import { range } from 'lodash';
+import { View, Platform } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import StyleContext from '@styles/StyleContext';
@@ -23,7 +22,7 @@ export function useOnboardingCarousel(slides: React.ReactNode[]): [React.ReactNo
   const { dialog, showDialog, setVisible } = useModal({
     allowDismiss: true,
     alignment: 'center',
-    content: <OnboardingCarousel slides={slides} width={width} onEndReached={onDismiss} />
+    content: <OnboardingCarousel slides={slides} width={width} onEndReached={onDismiss} />,
   });
   setVisibleRef.current = setVisible;
   return [dialog, showDialog];
@@ -38,12 +37,12 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
     item: React.ReactNode;
   }) => {
     return item;
-  }, [width, height, slides]);
+  }, []);
   const slidesWithDummy = useMemo(() => {
     if (slides.length) {
       return [
         ...slides,
-        <View key="finale" />
+        <View key="finale" />,
       ];
     }
     return slides;

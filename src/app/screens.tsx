@@ -39,6 +39,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Faq': return require('@components/card/CardFaqView').default;
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;
+    case 'Card.Investigators': return require('@components/card/CardInvestigatorsView').default;
     case 'Campaign.Access': return require('@components/campaign/CampaignAccessView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;

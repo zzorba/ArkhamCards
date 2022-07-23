@@ -192,7 +192,8 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
         parsedDeck?.deck?.taboo_id,
         undefined,
         parsedDeck?.investigator,
-        false
+        false,
+        parsedDeck?.customizations
       );
     }
   }, [colors, overlap, componentId, parsedDeck, singleCardView]);
@@ -214,20 +215,8 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
       </Text>
       <View style={[styles.leftRow, space.paddingS, space.paddingBottomM]}>
         { map(activeDeckInvestigators, investigator => (
-          investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null :
-          <View style={space.paddingRightS} key={investigator.code}>
-            <InvestigatorImageButton
-              onPress={toggleExcludeInvestigators}
-              selected={!excludeInvestigators[investigator.code]}
-              card={investigator}
-              size="tiny"
-            />
-          </View>
-        )) }
-        <View style={styles.rightRow}>
-          { map(activeDeckInvestigators, investigator => (
-            investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null :
-            <View style={space.paddingLeftS} key={investigator.code}>
+          investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null : (
+            <View style={space.paddingRightS} key={investigator.code}>
               <InvestigatorImageButton
                 onPress={toggleExcludeInvestigators}
                 selected={!excludeInvestigators[investigator.code]}
@@ -235,6 +224,20 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
                 size="tiny"
               />
             </View>
+          )
+        )) }
+        <View style={styles.rightRow}>
+          { map(activeDeckInvestigators, investigator => (
+            investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null : (
+              <View style={space.paddingLeftS} key={investigator.code}>
+                <InvestigatorImageButton
+                  onPress={toggleExcludeInvestigators}
+                  selected={!excludeInvestigators[investigator.code]}
+                  card={investigator}
+                  size="tiny"
+                />
+              </View>
+            )
           )) }
         </View>
       </View>

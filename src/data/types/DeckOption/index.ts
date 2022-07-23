@@ -87,8 +87,12 @@ export default class DeckOption {
   @Column('boolean', { nullable: true })
   public ignore_match?: boolean;
 
+  // These fields are used for choice ones.
   @Column('text', { nullable: true })
   public real_name?: string;
+
+  @Column('text', { nullable: true })
+  public id?: string;
 
   @Column('simple-array', { nullable: true })
   public faction_select?: FactionCodeType[];
@@ -128,6 +132,7 @@ export default class DeckOption {
     deck_option.type_code = json.type || [];
     deck_option.limit = json.limit;
     deck_option.error = json.error;
+    deck_option.id = json.id;
     deck_option.size = json.size;
     deck_option.not = json.not ? true : undefined;
     deck_option.ignore_match = json.ignore_match ? true : undefined;
@@ -178,14 +183,13 @@ export class DeckOptionQueryBuilder {
 
   private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
     if (this.option.faction_select && this.option.faction_select.length) {
-      if (
-        meta &&
-        meta.faction_selected &&
-        indexOf(this.option.faction_select, meta.faction_selected) !== -1
-      ) {
-        // If we have a deck select ONLY the ones they specified.
-        // If not select them all.
-        return this.filterBuilder.factionFilter([meta.faction_selected]);
+      if (meta) {
+        const selection = this.option.id ? (meta[this.option.id] as FactionCodeType) : meta.faction_selected;
+        if (selection && indexOf(this.option.faction_select, selection) !== -1) {
+          // If we have a deck select ONLY the ones they specified.
+          // If not select them all.
+          return this.filterBuilder.factionFilter([selection]);
+        }
       }
       return this.filterBuilder.factionFilter(this.option.faction_select);
     }
@@ -204,9 +208,16 @@ export class DeckOptionQueryBuilder {
     if (this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
     )) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
+    }
+
+    if (this.option.text && this.option.text.length &&
+      this.option.text[0] === '[Hh]eals? (that much )?(\\d+|all|(X total) )?damage'
+    ) {
+      return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
     return [];
   }

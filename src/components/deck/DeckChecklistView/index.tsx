@@ -18,7 +18,7 @@ import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeckEdits, useDeckSlotCount } from '@components/deck/hooks';
+import { useDeckSlotCount, useParsedDeck } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
@@ -72,7 +72,7 @@ function DeckChecklistView({
 }: Props) {
   const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
   const deck = useCampaignDeck(id, campaignId);
-  const [deckEdits, deckEditsRef] = useDeckEdits(id);
+  const { deckEdits, deckEditsRef, parsedDeckRef } = useParsedDeck(id, componentId);
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
@@ -94,9 +94,11 @@ function DeckChecklistView({
       card,
       colors,
       true,
+      id,
+      parsedDeckRef.current?.customizations,
       deckEditsRef.current.tabooSetChange
     );
-  }, [deckEditsRef, componentId, colors]);
+  }, [id, deckEditsRef, parsedDeckRef, componentId, colors]);
 
   const renderCard = useCallback((card: Card) => {
     return (

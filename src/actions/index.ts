@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { values } from 'lodash';
+import { find, forEach, values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -8,8 +8,6 @@ import {
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
-  SET_IN_COLLECTION,
-  SET_PACK_SPOILER,
   ARKHAMDB_LOGIN_STARTED,
   ARKHAMDB_LOGIN,
   ARKHAMDB_LOGIN_ERROR,
@@ -20,8 +18,12 @@ import {
   DISSONANT_VOICES_LOGOUT,
   ArkhamDbDeck,
   SET_PACK_DRAFT,
+  SYNC_IN_COLLECTION,
+  SYNC_PACK_SPOILER,
+  SyncInCollectionAction,
+  SyncPackSpoilerAction,
 } from './types';
-import { AppState, getArkhamDbDecks } from '@reducers';
+import { AppState, getAllPacks, getArkhamDbDecks } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
@@ -175,24 +177,66 @@ export function refreshMyDecks(cacheArkhamDb: boolean): ThunkAction<Promise<Arkh
   };
 }
 
-export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    dispatch({
-      type: SET_IN_COLLECTION,
-      code,
-      value,
-    });
+export function syncPackSettings(
+  type: 'in_collection' | 'show_spoilers',
+  updates: { [code: string]: boolean },
+): SyncInCollectionAction | SyncPackSpoilerAction {
+  return {
+    type: type === 'in_collection' ? SYNC_IN_COLLECTION : SYNC_PACK_SPOILER,
+    updates,
   };
 }
 
-export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    dispatch({
-      type: SET_IN_COLLECTION,
-      cycle_code,
-      value,
-    });
+type UpdateRemotePack = (type: 'in_collection' | 'show_spoilers', updates: { [code: string]: boolean }) => void
+
+function setPack(
+  type: 'in_collection' | 'show_spoilers',
+  code: string,
+  value: boolean,
+  updateRemote: UpdateRemotePack | undefined
+) {
+  const updates = { [code]: value };
+  updateRemote?.(type, updates)
+  return syncPackSettings(type, updates);
+}
+
+export function setCycle(
+  type: 'in_collection' | 'show_spoilers',
+  cycle_code: string,
+  value: boolean,
+  updateRemote: UpdateRemotePack | undefined
+): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch, getState) => {
+    const packs = getAllPacks(getState());
+    const updates: { [code: string]: boolean } = {};
+    const cyclePack = find(packs, pack => pack.code === cycle_code);
+    if (cyclePack) {
+      forEach(packs, pack => {
+        if (pack.cycle_position === cyclePack.cycle_position) {
+          updates[pack.code] = value;
+        }
+      });
+      updateRemote?.(type, updates);
+      dispatch(syncPackSettings(type, updates));
+    }
   };
+}
+
+export function setInCollection(code: string, value: boolean, updateRemote: UpdateRemotePack) {
+  return setPack('in_collection', code, value, updateRemote);
+}
+
+
+export function setCycleInCollection(cycle_code: string, value: boolean, updateRemote: UpdateRemotePack): ThunkAction<void, AppState, unknown, Action<string>> {
+  return setCycle('in_collection', cycle_code, value, updateRemote);
+}
+
+export function setPackSpoiler(code: string, value: boolean, updateRemote: UpdateRemotePack) {
+  return setPack('show_spoilers', code, value, updateRemote);
+}
+
+export function setCyclePackSpoiler(cycle_code: string, value: boolean, updateRemote: UpdateRemotePack): ThunkAction<void, AppState, unknown, Action<string>> {
+  return setCycle('show_spoilers', cycle_code, value, updateRemote);
 }
 
 
@@ -216,31 +260,10 @@ export function setCycleDraft(cycle_code: string, value: boolean): ThunkAction<v
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    dispatch({
-      type: SET_PACK_SPOILER,
-      code,
-      value,
-    });
-  };
-}
-
-export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action<string>> {
-  return (dispatch) => {
-    dispatch({
-      type: SET_PACK_SPOILER,
-      cycle_code,
-      value,
-    });
-  };
-}
-
 export default {
   login,
   logout,
   verifyLogin,
   refreshMyDecks,
-  setInCollection,
   setPackSpoiler,
 };

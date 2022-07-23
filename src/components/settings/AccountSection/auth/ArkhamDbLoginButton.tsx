@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { t } from 'ttag';
 import { logout, login } from '@actions';
@@ -9,13 +9,14 @@ import DeckActionRow from '@components/deck/controls/DeckActionRow';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { ShowAlert } from '@components/deck/dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   last?: boolean;
   showAlert: ShowAlert
 }
 export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const loading = useSelector((state: AppState) => state.signedIn.loading);
   const { arkhamDb: signedIn } = useContext(ArkhamCardsAuthContext);
   const { error } = useSelector(getMyDecksState);

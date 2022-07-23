@@ -16,6 +16,7 @@ interface Props {
   dualFaction?: boolean
   width: number;
   children: React.ReactNode | React.ReactNode[];
+  parallel?: boolean;
   fullRound?: boolean;
   eliminated?: boolean;
   transparent?: boolean;

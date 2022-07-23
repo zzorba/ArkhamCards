@@ -372,6 +372,10 @@
     "name": "Recompensa de la demencia"
   },
   {
+    "id": "ptc_interlude1_reprint",
+    "name": "La sombra de la realidad"
+  },
+  {
     "id": "ptc_interlude2",
     "name": "Alma perdida"
   },
@@ -389,7 +393,7 @@
   },
   {
     "id": "red_tide_rising",
-    "name": "Red Tide Rising"
+    "name": "Sube la Marea Roja"
   },
   {
     "id": "restful_night",

@@ -4,12 +4,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { login } from '@actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   noWrapper: boolean;
@@ -21,7 +22,7 @@ export default function LoginStateComponent({ noWrapper, children }: Props) {
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const error = useSelector((state: AppState) => state.signedIn.error || undefined);
   const loading = useSelector((state: AppState) => state.signedIn.loading);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const doLogin = useCallback(() => dispatch(login()), [dispatch]);
 
   if (noWrapper) {

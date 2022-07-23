@@ -13,6 +13,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { loadTaboos } from '@data/scenario';
 import { getArkhamDbDomain } from './i18n/LanguageProvider';
+import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
 const VERBOSE = false;
 
@@ -328,6 +329,7 @@ export const syncCards = async function(
       }
     });
     cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[9] = { name: t`The Scarlet Keys`, code: 'tsk' };
     cycleNames[50] = { name: t`Return to...`, code: 'return' };
     cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
@@ -440,14 +442,14 @@ export const syncCards = async function(
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
-      pack_code: 'custom',
+      pack_code: 'zcu',
       pack_name: c('investigator').t`Custom`,
       type_code: 'investigator',
       type_name: t`Investigator`,
       faction_code: 'neutral',
       faction_name: t`Neutral`,
-      position: 1,
-      code: 'custom_001',
+      position: 4,
+      code: CUSTOM_INVESTIGATOR,
       name: 'Johnny Anybody',
       real_name: 'Johnny Anybody',
       subname: t`The Chameleon`,

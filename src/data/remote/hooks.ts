@@ -34,12 +34,12 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SingleCampaignRemote } from '@data/remote/types';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDispatch } from 'react-redux';
 import { setServerDecks } from '@components/deck/actions';
 import { DeckActions } from './decks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { useAppDispatch } from '@app/store';
 
 function useCachedValue<T>(value: T | undefined): T | undefined {
   const ref = useRef<T | undefined>(value);
@@ -285,7 +285,7 @@ export interface UserProfile {
 
 export function useProfile(profileUserId: string | undefined, useCached?: boolean): [UserProfile | undefined, boolean, () => Promise<void>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const { data, previousData, loading: dataLoading, refetch } = useGetProfileQuery({
+  const { data, previousData, loading: dataLoading, refetch: refetchProfile } = useGetProfileQuery({
     variables: { userId: profileUserId || '' },
     skip: !userId || !profileUserId,
     fetchPolicy: useCached ? 'cache-only' : 'cache-and-network',
@@ -333,10 +333,12 @@ export function useProfile(profileUserId: string | undefined, useCached?: boolea
     };
   }, [data, previousData]);
   const doRefetch = useCallback(async() => {
-    await refetch?.({
-      userId: profileUserId,
-    });
-  }, [refetch, profileUserId]);
+    if (profileUserId) {
+      await refetchProfile?.({
+        userId: profileUserId,
+      });
+    }
+  }, [refetchProfile, profileUserId]);
   return [profile, userLoading || dataLoading, doRefetch];
 }
 
@@ -403,7 +405,7 @@ function parseAllDeck(allDecks: AllDeckFragment[]): GroupedUploadedDecks {
 
 export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, () => Promise<GroupedUploadedDecks>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const checkForSync = useRef(false);
   const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
     fetchPolicy: 'cache-and-network',

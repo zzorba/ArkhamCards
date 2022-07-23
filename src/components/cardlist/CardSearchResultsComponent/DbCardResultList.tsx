@@ -21,7 +21,7 @@ import {
   Text,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
@@ -40,7 +40,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
@@ -49,6 +49,7 @@ import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -185,14 +186,18 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
     },
     [visibleCards, beingFetched, fetchSize, db, updateCards]
   );
-
+  const fetchedOne = useRef(false);
+  const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
-      // Initial fetch when we get back first set of results.
-      fetchMore();
+      if (!fetchedOne.current || !lowMemoryMode) {
+        fetchedOne.current = true;
+        // Initial fetch when we get back first set of results.
+        fetchMore();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards]);
+  }, [visibleCards, cards, lowMemoryMode]);
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
     cards,
@@ -471,7 +476,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        if (!showAllNonCollection && !ignore_collection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
+        if (!showAllNonCollection && !ignore_collection && (card.pack_code !== 'core' || packInCollection.no_core) && !cardInCollection(card, packInCollection)) {
           currentNonCollection.push(card);
         } else {
           result.push(card);
@@ -823,6 +828,7 @@ export default function({
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
+  const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
@@ -857,7 +863,7 @@ export default function({
     expandSearchControlsHeight,
     footerPadding,
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     // showHeader when somethings drastic happens, and get a new error message.
     showHeader && showHeader();
@@ -888,6 +894,8 @@ export default function({
         card,
         colors,
         true,
+        deckId,
+        customizations,
         tabooSetOverride
       );
       return;
@@ -916,9 +924,10 @@ export default function({
       tabooSetOverride,
       deckId,
       investigator,
-      true
+      true,
+      customizations
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
+  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
     {
       type: 'deck',
@@ -974,7 +983,7 @@ export default function({
         return (
           <CardSearchResult
             key={item.id}
-            card={card}
+            card={card.withCustomizations(customizations?.[card.code])}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
@@ -1031,7 +1040,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  }, [customizations, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const { lang } = useContext(LanguageContext);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);

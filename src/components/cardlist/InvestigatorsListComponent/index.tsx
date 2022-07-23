@@ -26,16 +26,20 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   componentId: string;
   hideDeckbuildingRules?: boolean;
   sort: SortType;
   onPress: (investigator: Card) => void;
+  filterInvestigator?: (investigator: Card) => boolean;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
   searchOptions?: SearchOptions;
   customFooter?: React.ReactNode;
+  hideCustomInvestigator?: boolean;
+  includeParallelInvestigators?: boolean;
 }
 
 interface CardItem {
@@ -106,6 +110,7 @@ function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, sh
             investigator={investigator}
             width={width - s * 2}
           >
+            { investigator.alternate_of_code ? <AppIcon color="#FFFFFF" name="parallel" size={36} /> : null }
             { showFaction ? <FactionIcon defaultColor="white" faction={investigator.factionCode()} size={32} /> : undefined }
           </CompactInvestigatorRow>
         </TouchableOpacity>
@@ -132,14 +137,16 @@ export default function InvestigatorsListComponent({
   componentId,
   sort,
   onPress,
+  filterInvestigator,
   filterInvestigators = [],
   onlyInvestigators,
   searchOptions,
   customFooter,
+  hideCustomInvestigator,
+  includeParallelInvestigators,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const [investigators, loading] = useAllInvestigators(undefined, sort);
-
   const in_collection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection,, setShowNonCollection] = useToggles({});
@@ -174,13 +181,19 @@ export default function InvestigatorsListComponent({
         if (i.code === CUSTOM_INVESTIGATOR) {
           return false;
         }
-        if (i.altArtInvestigator || i.mythos_card) {
+        if (i.mythos_card) {
+          return false;
+        }
+        if (i.altArtInvestigator && !includeParallelInvestigators) {
           return false;
         }
         if (filterInvestigatorsSet.has(i.code)) {
           return false;
         }
         if (onlyInvestigatorsSet && !onlyInvestigatorsSet.has(i.code)) {
+          return false;
+        }
+        if (filterInvestigator && !filterInvestigator(i)) {
           return false;
         }
         return searchMatchesText(
@@ -224,7 +237,7 @@ export default function InvestigatorsListComponent({
         });
       }
       if (i) {
-        if (i.pack_code && (i.pack_code === 'core' || ignore_collection || cardInCollection(i, in_collection))) {
+        if (i.pack_code && ((i.pack_code === 'core' && !in_collection.no_core) || ignore_collection || cardInCollection(i, in_collection))) {
           results.push({ type: 'card', card: i });
         } else {
           nonCollectionCards.push(i);
@@ -256,19 +269,21 @@ export default function InvestigatorsListComponent({
         nonCollectionCards = [];
       }
     }
-    const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
-    if (customInvestigator) {
-      results.push({
-        type: 'header',
-        title: c('investigator').t`Custom`,
-      });
-      results.push({
-        type: 'card',
-        card: customInvestigator,
-      });
+    if (!hideCustomInvestigator) {
+      const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
+      if (customInvestigator) {
+        results.push({
+          type: 'header',
+          title: c('investigator').t`Custom`,
+        });
+        results.push({
+          type: 'card',
+          card: customInvestigator,
+        });
+      }
     }
     return results;
-  }, [investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
+  }, [filterInvestigator, hideCustomInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
   const renderSectionFooter = useCallback((item: FooterItem) => {
     if (!item.nonCollectionCount) {

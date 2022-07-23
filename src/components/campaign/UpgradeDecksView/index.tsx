@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -26,6 +26,7 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useAppDispatch } from '@app/store';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
@@ -36,7 +37,7 @@ const EMPTY_DECKS: LatestDeckT[] = [];
 
 function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const campaign = useCampaign(id);
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const latestDecks = campaign?.latestDecks() || EMPTY_DECKS;

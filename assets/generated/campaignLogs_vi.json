@@ -1122,126 +1122,126 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# bị chiếm hữu.",
+            "feminine_text": "#name# bị chiếm hữu."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "các điều tra viên bị tấn công khi trốn thoát khỏi Nhà thương điên."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "bạn tỉnh dậy bên trong hầm mộ."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "địa hạt của thành phố Carcosa hợp nhất với thế giới chúng ta, và Hastur cai trị cả hai."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "bạn chọn không đến chỗ cảnh sát."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "bạn tiêu diệt người tuyên thệ."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "bạn đã không thoát khỏi cái nhìn của bóng ma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "bạn đã tự mình bước vào hầm mộ."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "các điều tra viên trốn thoát khỏi Nhà thương điên."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "bạn trốn thoát khỏi bữa tiệc tối."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "những kẻ theo đuổi dấu hiệu đã tìm thấy con đường tiến về phía trước."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "bạn đã tìm thấy Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "bạn đã tìm thấy nhà của Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur bắt giữ được bạn trong tầm tay của hắn."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "bạn lưu ý lời cảnh báo của Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "bạn bỏ qua lời cảnh báo của Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "bạn đã xâm nhập vào một cuộc họp bí mật."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "Nhà vua đã tuyên bố các nạn nhân của nó."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "bạn biết vị trí của cánh cổng."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "bạn bỏ cái móc mã não ở lại."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "bạn đã mở con đường phía trên."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "bạn đã mở con đường phía dưới."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "cảnh sát nghi ngờ bạn."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "bạn đã giết những con quái vật ở bữa tiệc tối."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Kẻ Lạ đi theo bạn."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "bạn lấy chiếc móc mã não đi."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "bạn cố gắng cảnh báo cảnh sát."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "bạn không tìm thấy Nigel."
           }
         ]
       },
@@ -1258,7 +1258,11 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "một hoặc nhiều hơn điều tra viên bị chiếm hữu."
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1548,126 +1552,126 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "read_act_2",
-            "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "id": "possessed",
+            "masculine_text": "#name# bị chiếm hữu.",
+            "feminine_text": "#name# bị chiếm hữu."
           },
           {
-            "id": "possessed",
-            "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "id": "read_act_2",
+            "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "các điều tra viên bị tấn công khi trốn thoát khỏi Nhà thương điên."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "bạn tỉnh dậy bên trong hầm mộ."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "địa hạt của thành phố Carcosa hợp nhất với thế giới chúng ta, và Hastur cai trị cả hai."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "bạn chọn không đến chỗ cảnh sát."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "bạn tiêu diệt người tuyên thệ."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "bạn đã không thoát khỏi cái nhìn của bóng ma."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "bạn đã tự mình bước vào hầm mộ."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "các điều tra viên trốn thoát khỏi Nhà thương điên."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "bạn trốn thoát khỏi bữa tiệc tối."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "những kẻ theo đuổi dấu hiệu đã tìm thấy con đường tiến về phía trước."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "bạn đã tìm thấy Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "bạn đã tìm thấy nhà của Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur bắt giữ được bạn trong tầm tay của hắn."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "bạn lưu ý lời cảnh báo của Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "bạn bỏ qua lời cảnh báo của Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "bạn đã xâm nhập vào một cuộc họp bí mật."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "Nhà vua đã tuyên bố các nạn nhân của nó."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "bạn biết vị trí của cánh cổng."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "bạn bỏ cái móc mã não ở lại."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "bạn đã mở con đường phía trên."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "bạn đã mở con đường phía dưới."
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "cảnh sát nghi ngờ bạn."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "bạn đã giết những con quái vật ở bữa tiệc tối."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Kẻ Lạ đi theo bạn."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "bạn lấy chiếc móc mã não đi."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "bạn cố gắng cảnh báo cảnh sát."
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "bạn không tìm thấy Nigel."
           }
         ]
       },
@@ -1684,7 +1688,11 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "một hoặc nhiều hơn điều tra viên bị chiếm hữu."
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1740,24 +1748,24 @@
         "section": "$input_value",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           }
         ]
       },
@@ -1765,24 +1773,24 @@
         "section": "05046",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -1802,24 +1810,24 @@
         "section": "05047",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -1839,24 +1847,24 @@
         "section": "05048",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -1876,24 +1884,24 @@
         "section": "05049",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -1919,7 +1927,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "bạn đã chấp nhận số mạng của bạn."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -1959,7 +1967,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "bạn bị săn đuổi."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2051,11 +2059,11 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# mẩu bằng chứng đã bị bỏ lại."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "bạn đã từ chối số mạng của bạn."
           },
           {
             "id": "rescued_josef",
@@ -2087,11 +2095,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "bùa phép của các phù thủy đã bị phá vỡ."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "bùa phép của các phù thủy đã được thực hiện."
           }
         ]
       },
@@ -2221,11 +2229,11 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Mesmerizing Flute (Sáo mê hoặc)"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ritual Components (Thành phần nghi lễ)"
           },
           {
             "id": "scrap_of_torn_shadow",
@@ -2675,15 +2683,15 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua rút lui để chữa trị vết thương."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "nhiều người đã bị hiến tế Cnidathqua trong lễ hội Carnevale."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "mặt trời đã đẩy Cnidathqua xuống vực sâu."
           },
           {
             "id": "constellation_was_lost_to_the_depths",
@@ -2862,24 +2870,24 @@
         "section": "$input_value",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           }
         ]
       },
@@ -2887,24 +2895,24 @@
         "section": "05046",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -2924,24 +2932,24 @@
         "section": "05047",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -2961,24 +2969,24 @@
         "section": "05048",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -2998,24 +3006,24 @@
         "section": "05049",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# bị Watcher giết chết",
+            "feminine_text": "#name# bị Watcher giết chết"
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# bị biến mất trong màn sương.",
+            "feminine_text": "#name# bị biến mất trong màn sương."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# bị giết chết bởi các bóng ma",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma"
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# bị kéo vào cõi ma.",
+            "feminine_text": "#name# bị kéo vào cõi ma."
           },
           {
             "id": "alive",
@@ -3041,7 +3049,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "bạn đã chấp nhận số mạng của bạn."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -3081,7 +3089,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "bạn bị săn đuổi."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -3161,11 +3169,11 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# mẩu bằng chứng đã bị bỏ lại."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "bạn đã từ chối số mạng của bạn."
           },
           {
             "id": "rescued_josef",
@@ -3197,11 +3205,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "bùa phép của các phù thủy đã bị phá vỡ."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "bùa phép của các phù thủy đã được thực hiện."
           }
         ]
       },
@@ -3291,11 +3299,11 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Mesmerizing Flute (Sáo mê hoặc)"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ritual Components (Thành phần nghi lễ)"
           },
           {
             "id": "scrap_of_torn_shadow",

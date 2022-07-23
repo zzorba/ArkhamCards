@@ -128,6 +128,7 @@ interface ScenarioData {
 }
 
 interface CampaignData {
+  scenarios?: string[];
   scenarioStatus: {
     [code: string]: ScenarioStatus | undefined;
   };
@@ -529,7 +530,7 @@ export default class GuidedCampaignLog {
     }
     if (this.scenarioId === CAMPAIGN_SETUP_ID) {
       // We haven't started yet, so the prologue/first scenario is first.
-      return this.campaignGuide.prologueScenarioId();
+      return this.campaignGuide.prologueScenarioId(this.campaignData.scenarios);
     }
 
     const {
@@ -1255,6 +1256,9 @@ export default class GuidedCampaignLog {
             this.campaignData.difficulty = CampaignDifficulty.EXPERT;
             break;
         }
+        break;
+      case 'set_scenarios':
+        this.campaignData.scenarios = effect.scenarios;
         break;
       case 'skip_scenario':
         this.campaignData.scenarioStatus[effect.scenario] = 'skipped';

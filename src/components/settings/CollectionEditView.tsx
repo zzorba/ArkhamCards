@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
@@ -12,44 +12,43 @@ import { NavigationProps } from '@components/nav/types';
 import { setInCollection, setCycleInCollection, setPackDraft, setCycleDraft } from '@actions';
 import { getAllPacks, getDraftPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import { setIgnoreCollection } from './actions';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import space from '@styles/space';
-import { useSettingFlag, useSettingValue } from '@components/core/hooks';
+import { useRemoteSettingFlag, useSettingFlag } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { Navigation } from 'react-native-navigation';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useAppDispatch } from '@app/store';
+import { useUpdateRemotePack, useUpdateRemoteSetting } from '@data/remote/settings';
 
 export interface CollectionEditProps {
   draftMode?: boolean;
 }
 
 function CollectionEditView({ componentId, draftMode }: CollectionEditProps & NavigationProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [draft] = useSelector(getDraftPacks);
   const [draftFromCollection, toggleDraftFromCollection] = useSettingFlag('draft_from_collection');
   const packs = useSelector(getAllPacks);
   const in_collection = useSelector(getPacksInCollection);
-  const ignoreCollection = useSettingValue('ignore_collection');
+  const updateRemoteSetting = useUpdateRemoteSetting();
+  const updateRemotePack = useUpdateRemotePack();
+  const [ignoreCollection, toggleIgnoreCollection] = useRemoteSettingFlag('ignore_collection', updateRemoteSetting);
   const setChecked = useCallback((code: string, value: boolean) => {
     if (draftMode) {
       dispatch(setPackDraft(code, value));
     } else {
-      dispatch(setInCollection(code, value));
+      dispatch(setInCollection(code, value, updateRemotePack));
     }
-  }, [dispatch, draftMode]);
-
-  const toggleIgnoreCollection = useCallback((value: boolean) => {
-    dispatch(setIgnoreCollection(value));
-  }, [dispatch]);
+  }, [dispatch, draftMode, updateRemotePack]);
 
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
     if (draftMode) {
       dispatch(setCycleDraft(cycle_code, value));
     } else {
-      dispatch(setCycleInCollection(cycle_code, value));
+      dispatch(setCycleInCollection(cycle_code, value, updateRemotePack));
     }
-  }, [dispatch, draftMode]);
+  }, [dispatch, draftMode, updateRemotePack]);
 
   const { backgroundStyle, typography } = useContext(StyleContext);
   const onEditCollection = useCallback(() => {
@@ -115,6 +114,7 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
           packs={packs}
           header={header}
           cyclesOnly={draftMode}
+          includeNoCore
           checkState={draftMode ? draft : in_collection}
           setChecked={setChecked}
           setCycleChecked={setCycleChecked}

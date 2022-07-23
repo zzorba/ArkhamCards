@@ -22,3 +22,70 @@ query getProfile($userId:String!) {
     }
   }
 }
+
+query getDeleteInformation($userId:String!) {
+  users_by_pk(id: $userId) {
+    id
+    handle
+    arkhamDBDeckCount: all_decks_aggregate(
+      where: {
+      	_and: [
+          { next_deck_id: { _is_null: true }}
+          { arkhamdb_id: { _is_null: false }}
+        ]
+      }
+    ) {
+      aggregate {
+        count
+      }
+    }
+    localDeckCount: all_decks_aggregate(
+      where: {
+      	_and: [
+          { next_deck_id: { _is_null: true }}
+          { arkhamdb_id: { _is_null: true }}
+        ]
+      }
+    ) {
+      aggregate {
+        count
+      }
+    }
+    createdCampaignCount: campaigns_aggregate(
+      where: {
+        campaign: {
+          owner_id: { _eq: $userId }
+        }
+      }
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          id
+          name
+          cycleCode
+        }
+      }
+    }
+    joinedCampaignCount: campaigns_aggregate(
+      where: {
+        campaign: {
+          owner_id: { _neq: $userId }
+        }
+      }
+    ) {
+      aggregate {
+        count
+      }
+      nodes {
+        campaign {
+          id
+          name
+          cycleCode
+        }
+      }
+    }
+  }
+}

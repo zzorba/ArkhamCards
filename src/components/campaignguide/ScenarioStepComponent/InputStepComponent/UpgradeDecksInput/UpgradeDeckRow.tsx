@@ -34,11 +34,11 @@ import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { useDispatch } from 'react-redux';
 import { useDeck } from '@data/hooks';
 import InputCounterRow from '../InputCounterRow';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -77,7 +77,7 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasChanges: boolean, isOw
     return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
   }
   if (!isOwner) {
-    return t`This deck is ownered by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app.`;
+    return t`This deck is owned by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app.`;
   }
   return t`This deck will be upgraded with XP and any new story cards will be added or removed as specified.`;
 }
@@ -143,7 +143,7 @@ function UpgradeDeckRow({
 }: Props) {
   const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
   const { colors, typography, width } = useContext(StyleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
   const earnedXp = useMemo(() => {

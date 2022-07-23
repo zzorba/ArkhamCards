@@ -6,7 +6,7 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -21,6 +21,7 @@ import { useEffectUpdate } from '@components/core/hooks';
 import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
+import { useAppDispatch } from '@app/store';
 
 const REFETCH_DAYS = 30;
 const REPROMPT_DAYS = 30;
@@ -55,7 +56,7 @@ function ProgressBar({ progress }: { progress: number }) {
 export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const { db } = useContext(DatabaseContext);
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
   const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
   const fetchRequest = useSelector((state: AppState) => state.cards.fetch);

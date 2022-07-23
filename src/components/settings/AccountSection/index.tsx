@@ -4,7 +4,6 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
-import ArkhamCardsLoginButton from './auth/ArkhamCardsLoginButton';
 import ArkhamDbLoginButton from './auth/ArkhamDbLoginButton';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import ArkhamCardsAccountDetails from './ArkhamCardsAccountDetails';
@@ -20,7 +19,7 @@ interface Props extends NavigationProps {
   showAlert: ShowAlert;
 }
 
-const LATEST_RELEASE_NOTES = 'rn-2022-04-10';
+const LATEST_RELEASE_NOTES = 'rn-2022-07-20';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
   const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
@@ -49,8 +48,7 @@ export default function AccountSection({ componentId, showAlert }: Props) {
       { enableArkhamCardsAccount && (
         <View style={[space.paddingSideS, space.paddingBottomS]}>
           <RoundedFactionBlock faction="mystic" header={<DeckSectionHeader faction="mystic" title={t`Arkham Cards Account`} />}>
-            <ArkhamCardsAccountDetails componentId={componentId} />
-            <ArkhamCardsLoginButton showAlert={showAlert} />
+            <ArkhamCardsAccountDetails componentId={componentId} showAlert={showAlert} />
             <View style={space.paddingTopS}>
               <DeckButton
                 icon="xp"

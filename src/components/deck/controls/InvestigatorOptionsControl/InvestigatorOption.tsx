@@ -7,11 +7,12 @@ import FactionSelectPicker from './FactionSelectPicker';
 import { DeckMeta } from '@actions/types';
 import DeckOption from '@data/types/DeckOption';
 import OptionSelectPicker from './OptionSelectPicker';
+import { FactionCodeType } from '@app_constants';
 
 interface Props {
   option: DeckOption;
   meta: DeckMeta;
-  setMeta: (key: keyof DeckMeta, value?: string) => void;
+  setMeta: (key: string, value?: string) => void;
   editWarning: boolean;
   disabled?: boolean;
   first: boolean;
@@ -28,12 +29,16 @@ export default function InvestigatorOption({
   last,
 }: Props) {
   const onChange = useCallback((selection: string) => {
-    if (option.faction_select && option.faction_select.length) {
-      setMeta('faction_selected', selection);
-    } else if (option.deck_size_select && option.deck_size_select.length) {
-      setMeta('deck_size_selected', selection);
-    } else if (option.option_select) {
-      setMeta('option_selected', selection);
+    if (option.id) {
+      setMeta(option.id, selection);
+    } else {
+      if (option.faction_select && option.faction_select.length) {
+        setMeta('faction_selected', selection);
+      } else if (option.deck_size_select && option.deck_size_select.length) {
+        setMeta('deck_size_selected', selection);
+      } else if (option.option_select) {
+        setMeta('option_selected', selection);
+      }
     }
   }, [option, setMeta]);
   if (option.deck_size_select && option.deck_size_select.length) {
@@ -55,10 +60,11 @@ export default function InvestigatorOption({
     );
   }
   if (option.faction_select && option.faction_select.length) {
+    const choice = option.id ? (meta[option.id] as FactionCodeType) : meta.faction_selected;
     const selection = (
-      meta.faction_selected &&
-      indexOf(option.faction_select, meta.faction_selected) !== -1
-    ) ? meta.faction_selected : undefined;
+      choice &&
+      indexOf(option.faction_select, choice) !== -1
+    ) ? choice : undefined;
     return (
       <FactionSelectPicker
         name={DeckOption.optionName(option) || t`Select Faction`}

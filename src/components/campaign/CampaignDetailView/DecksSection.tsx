@@ -14,12 +14,12 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
 import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
-import { useDispatch } from 'react-redux';
 import { updateCampaignNotes } from '../actions';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SetCampaignNotesAction } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { useAppDispatch } from '@app/store';
 
 interface Props {
   componentId: string;
@@ -114,7 +114,7 @@ export default function DecksSection({
   const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const saveCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     dispatch(updateCampaignNotes(setCampaignNotes, campaignId, campaignNotes));
   }, [dispatch, setCampaignNotes, campaignId]);

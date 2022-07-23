@@ -40,6 +40,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     deckEditsRef,
     tabooSetId,
     parsedDeck,
+    parsedDeckRef,
   } = parsedDeckObj;
   const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
 
@@ -51,10 +52,12 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           id: card.code,
           pack_code: card.pack_code,
           showSpoilers: true,
+          deckId: id,
+          initialCustomizations: parsedDeckRef.current?.customizations,
         },
       },
     });
-  }, [componentId]);
+  }, [componentId, id, parsedDeckRef]);
   const [alertDialog, showAlert] = useAlertDialog();
   const showDrawWeakness = useShowDrawWeakness({
     componentId,

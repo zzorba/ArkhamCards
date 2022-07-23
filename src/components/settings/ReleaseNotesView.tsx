@@ -29,6 +29,19 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-07-20'),
+      title: c('releaseNotes').t`Settings synchronization`,
+      faction: 'guardian',
+      lines: [
+        c('releaseNotes').t`Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!`,
+        c('releaseNotes').t`- This includes your collection + spoiler settings, as well as many general app preferences.`,
+        c('releaseNotes').t`I've had some reports of slower performance on some devices, and have a new <i>"Low Memory Mode"</i> setting to try out.`,
+        c('releaseNotes').t`- If you've been experiencing slow app behavior in anyway, please try it out.`,
+        c('releaseNotes').t`- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild.`,
+        c('releaseNotes').t`BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned.`,
+      ],
+    },
+    {
       date: new Date('2022-04-10'),
       title: c('releaseNotes').t`Drafting player decks`,
       faction: 'seeker',
@@ -67,7 +80,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
         c('releaseNotes').t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
         c('releaseNotes').t`- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden.`,
         c('releaseNotes').t`- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial.`,
-        c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check ArkhamDB for updates</b>).`,
+        c('releaseNotes').t`Note: You might need to refresh the cards once (using <b>Check for card updates</b>).`,
         c('releaseNotes').t`Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com).`,
       ],
     },

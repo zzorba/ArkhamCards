@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import AppIcon from './AppIcon';
-import space from '@styles/space';
 
 interface Props {
   connector: string;
@@ -30,7 +29,7 @@ function SymbolIcon({ connector, size }: Props): JSX.Element | null {
 export default function LocationConnectorIcon({ connector, size }: Props) {
   return (
     <View style={[styles.icon, { width: size, height: size }]} key={connector}>
-      <View style={[styles.iconBackground, { width: size - 2, height: size - 2, borderRadius: (size / 2) - 1, }]} />
+      <View style={[styles.iconBackground, { width: size - 2, height: size - 2, borderRadius: (size / 2) - 1 }]} />
       <SymbolIcon connector={connector} size={size} />
     </View>
   );

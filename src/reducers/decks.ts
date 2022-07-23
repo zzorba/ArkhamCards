@@ -34,7 +34,7 @@ import {
   SET_CURRENT_DRAFT_SIZE,
   UPDATE_DECK_EDIT,
   SET_PACK_DRAFT,
-  SET_IN_COLLECTION,
+  SYNC_IN_COLLECTION,
 } from '@actions/types';
 import deepEqual from 'deep-equal';
 
@@ -101,7 +101,7 @@ export default function(
     }
     return state;
   }
-  if (action.type === SET_PACK_DRAFT || action.type === SET_IN_COLLECTION) {
+  if (action.type === SET_PACK_DRAFT || action.type === SYNC_IN_COLLECTION) {
     // We drop all cards when the pack changes
     const newDraft = mapValues(state.draft || {}, (draft => {
       if (draft) {
