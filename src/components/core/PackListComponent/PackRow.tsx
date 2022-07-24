@@ -120,7 +120,7 @@ export default function PackRow({ packId, componentId, description, pack, cycle,
               color={colors.darkText}
             />
           </View>
-          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>
             <Text
               style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
               numberOfLines={2}
