@@ -2550,7 +2550,7 @@
       {
         "id": "sticky_goop",
         "name": "Kleista maź",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "description": "Kleista maź, którą znalazłeś w podziemnych bagnach.",
         "cost": 0,
         "multiple": false
       },

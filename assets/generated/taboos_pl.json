@@ -2,7 +2,7 @@
   {
     "id": 1,
     "code": "001",
-    "name": "Lista Tabu",
+    "name": "Lista tabu",
     "active": 1,
     "date_start": "2019-04-20",
     "cards": [
@@ -32,39 +32,39 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera...”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "Ta karta zyskuje: „Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę”."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą Przedmiot z twojej ręki, który zajmuje mniej niż 2 strefy ręki”."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
       }
     ]
   },
   {
     "id": 2,
     "code": "002",
-    "name": "Lista Tabu",
+    "name": "Lista tabu",
     "active": 1,
     "date_start": "2019-09-27",
     "cards": [
@@ -106,39 +106,39 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera...”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
       },
       {
         "code": "02229",
-        "text": "This card gains: “Max 1 committed per skill test.”"
+        "text": "Ta karta zyskuje: „Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę”."
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
       },
       {
         "code": "03029",
-        "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą Przedmiot z twojej ręki, który zajmuje mniej niż 2 strefy ręki”."
       },
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
       }
     ]
   },
   {
     "id": 3,
     "code": "003",
-    "name": "Lista Tabu",
+    "name": "Lista tabu",
     "active": 1,
     "date_start": "2020-10-15",
     "cards": [
@@ -200,15 +200,15 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera...”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
       },
       {
         "code": "02229",
@@ -216,7 +216,7 @@
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
       },
       {
         "code": "03029",
@@ -225,7 +225,7 @@
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
       },
       {
         "code": "04309",
@@ -250,14 +250,14 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "Zakazane."
       }
     ]
   },
   {
     "id": 4,
     "code": "004",
-    "name": "Lista Tabu",
+    "name": "Lista tabu",
     "active": 1,
     "date_start": "2021-06-28",
     "cards": [
@@ -339,15 +339,15 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera...”"
       },
       {
         "code": "02002",
-        "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
       },
       {
         "code": "02111",
-        "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
       },
       {
         "code": "02229",
@@ -355,7 +355,7 @@
       },
       {
         "code": "02266",
-        "text": "This card gains: “Max once per round.”"
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
       },
       {
         "code": "03029",
@@ -364,7 +364,7 @@
       {
         "code": "03315",
         "exceptional": 1,
-        "text": "This card gains the Exceptional keyword."
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
       },
       {
         "code": "04309",
@@ -389,7 +389,7 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "Zakazane."
       }
     ]
   }
