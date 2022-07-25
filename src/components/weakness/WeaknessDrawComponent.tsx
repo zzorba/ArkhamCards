@@ -39,9 +39,10 @@ interface Props {
   customHeader?: ReactNode;
   customFlippedHeader?: ReactNode;
   saving?: boolean;
+  investigator: Card | undefined;
 }
 
-export default function WeaknessDrawComponent({ componentId, weaknessSet, updateDrawnCard, playerCount, campaignMode, customHeader, customFlippedHeader, saving }: Props) {
+export default function WeaknessDrawComponent({ componentId,investigator, weaknessSet, updateDrawnCard, playerCount, campaignMode, customHeader, customFlippedHeader, saving }: Props) {
   const { colors, typography, width, height } = useContext(StyleContext);
   const [headerHeight, setHeaderHeight] = useState(32);
   const [flippedHeaderHeight, setFlippedHeaderHeight] = useState(32);
@@ -97,6 +98,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
       return undefined;
     }
     const card = drawWeakness(
+      investigator,
       weaknessSet,
       weaknessCards,
       {
@@ -107,7 +109,7 @@ export default function WeaknessDrawComponent({ componentId, weaknessSet, update
       false
     );
     return card;
-  }, [weaknessCards, selectedTraits, multiplayer, standalone, weaknessSet]);
+  }, [weaknessCards, investigator, selectedTraits, multiplayer, standalone, weaknessSet]);
 
   const hasWeakness = useMemo(() => getNextCard() !== undefined, [getNextCard]);
 

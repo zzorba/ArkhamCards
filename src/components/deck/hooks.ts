@@ -418,6 +418,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
       component: {
         name: 'Weakness.Draw',
         passProps: {
+          investigator,
           slots: deckEditsRef.current.slots,
           saveWeakness,
           alwaysReplaceRandomBasicWeakness,

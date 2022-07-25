@@ -614,6 +614,16 @@ const SPECIAL_ODDS: { [key: string]: number } = {
   auto_suceed: 100,
 };
 
+function modifierLabel(modifier: number, textModifier: string, revealCount: number) {
+  if (modifier === -100) {
+    return textModifier;
+   }
+   if (revealCount > 1) {
+    return t`${textModifier}, draws another ${revealCount}`;
+   }
+   return t`${textModifier}, draws another`;
+}
+
 function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty }: ChaosBagProps & { chaosBagResults: ChaosBagResultsT }) {
   const { colors, typography, width } = useContext(StyleContext);
   const bless = chaosBag.bless || 0;
@@ -806,7 +816,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
             <View style={[styles.specialTokenTextColumn, space.paddingSideS]}>
               <View style={{ minWidth: Math.min(width * 0.25, 120) }}>
                 <Text style={[typography.smallLabel, typography.italic, typography.dark]}>
-                  { modifier === -100 ? textModifier : (revealCount > 1 ? t`${textModifier}, draws another ${revealCount}}` : t`${textModifier}, draws another`)}
+                  { modifierLabel(modifier, textModifier, revealCount) }
                 </Text>
                 <Text style={[typography.small, { color }]}>
                   { boost ? `${boost.min}${boost.min !== boost.max ? ` ~ ${boost.max}` : ''}` : ' ' }

@@ -13,7 +13,7 @@ interface Props {
   value: string;
   widget?: 'shuffle';
   disabled?: boolean;
-  onPress: (code: string) => void;
+  onPress: (investigator: Card) => void;
 }
 
 export default function InvestigatorButton({
@@ -25,8 +25,8 @@ export default function InvestigatorButton({
 }: Props) {
   const { typography, width } = useContext(StyleContext);
   const onTouchablePress = useCallback(() => {
-    onPress(investigator.code);
-  }, [onPress, investigator.code]);
+    onPress(investigator);
+  }, [onPress, investigator]);
   const widgetIcon = useMemo(() => {
     if (!widget || disabled) {
       return null;

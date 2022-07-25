@@ -26,7 +26,7 @@ interface Item {
 }
 
 function getLabel({ datum }: { datum: Item }) {
-  return datum.value;
+  return `${datum.value}`;
 }
 
 export default function SkillIconChart({ width, parsedDeck }: Props) {
@@ -79,6 +79,7 @@ export default function SkillIconChart({ width, parsedDeck }: Props) {
           labels={getLabel}
           style={{
             data: {
+              // @ts-ignore
               fill: skillColor,
             },
             labels: {

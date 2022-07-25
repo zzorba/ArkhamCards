@@ -24,6 +24,7 @@ export function availableWeaknesses(
 }
 
 function matchingWeaknesses(
+  investigator: Card | undefined,
   set: WeaknessSet,
   allWeaknesses: CardsMap,
   {
@@ -56,6 +57,7 @@ function matchingWeaknesses(
 }
 
 export function drawWeakness(
+  investigator: Card | undefined,
   set: WeaknessSet,
   allWeaknesses: CardsMap,
   criteria: WeaknessCriteria,
@@ -63,7 +65,7 @@ export function drawWeakness(
 ): Card | undefined {
   const cards = shuffle(
     flatMap(
-      matchingWeaknesses(set, allWeaknesses, criteria, realTraits),
+      matchingWeaknesses(investigator, set, allWeaknesses, criteria, realTraits),
       card => {
         return map(
           range(0, (card.quantity || 0) - (set.assignedCards[card.code] || 0)),

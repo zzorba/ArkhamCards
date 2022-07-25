@@ -33,10 +33,10 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   choiceCard?: Card;
   index: number;
   disabled: boolean;
-  drawRandomWeakness: (investigator: string, index: number) => void;
+  drawRandomWeakness: (investigator: Card, index: number) => void;
 }) {
-  const onPress = useCallback((code: string) => {
-    drawRandomWeakness(code, index);
+  const onPress = useCallback((investigator: Card) => {
+    drawRandomWeakness(investigator, index);
   }, [index, drawRandomWeakness]);
   return (
     <InvestigatorButton
@@ -66,8 +66,9 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
     );
   }, [weaknessCards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
-  const drawRandomWeakness = useCallback((code: string, index: number) => {
+  const drawRandomWeakness = useCallback((investigator: Card, index: number) => {
     const card = drawWeakness(
+      investigator,
       effectiveWeaknessSet,
       weaknessCards,
       {
@@ -82,8 +83,8 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
     } else {
       setChoices({
         ...choices,
-        [code]: {
-          ...(choices[code] || {}),
+        [investigator.code]: {
+          ...(choices[investigator.code] || {}),
           [index]: [card.code],
         },
       });

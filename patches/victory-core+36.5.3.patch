@@ -1,0 +1,13 @@
+diff --git a/node_modules/victory-core/lib/index.d.ts b/node_modules/victory-core/lib/index.d.ts
+index f0819db..12affd9 100644
+--- a/node_modules/victory-core/lib/index.d.ts
++++ b/node_modules/victory-core/lib/index.d.ts
+@@ -12,7 +12,7 @@ export * from "./victory-portal/portal";
+ export * from "./victory-portal/portal-context";
+ export * from "./victory-portal/victory-portal";
+ export * from "./victory-primitives";
+-export { Border as Box, type BorderProps as BoxProps, } from "./victory-primitives";
++export { Border as Box, BorderProps as BoxProps, } from "./victory-primitives";
+ export * from "./victory-util";
+ export * from "./victory-state";
+ //# sourceMappingURL=index.d.ts.map

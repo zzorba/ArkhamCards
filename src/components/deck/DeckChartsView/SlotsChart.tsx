@@ -31,7 +31,7 @@ function getSlotData(slot: SlotCodeType, slotCounts: SlotCounts): Item {
   };
 }
 function getValue({ datum }: { datum: Item }) {
-  return datum.value;
+  return `${datum.value}`;
 }
 
 export default function SlotIconChart({ parsedDeck: { slotCounts }, width }: Props) {

@@ -287,11 +287,13 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     return null;
   }
 
+  const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
   return (
     <WeaknessDrawComponent
       componentId={componentId}
       playerCount={playerCount}
       campaignMode
+      investigator={investigator}
       customHeader={investigatorChooser}
       customFlippedHeader={flippedHeader}
       weaknessSet={dynamicWeaknessSet}
