@@ -31,7 +31,7 @@ export default function ChoiceComponent({
   const textContent = useMemo(() => {
     return (
       <>
-        { choice.text && <CampaignGuideTextComponent text={choice.text} sizeScale={choice.large ? 1.2 : 1} /> }
+        { choice.text && <CampaignGuideTextComponent text={choice.text} sizeScale={choice.large ? 1.2 : undefined} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );

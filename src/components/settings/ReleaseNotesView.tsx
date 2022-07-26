@@ -228,7 +228,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
       <View style={[space.paddingS, styles.noteBody]}>
         { map(lines, (t, tidx) => (
           <View key={tidx}>
-            { typeof t === 'string' ? <CardTextComponent onLinkPress={linkPressed} text={t} sizeScale={1} /> : t }
+            { typeof t === 'string' ? <CardTextComponent onLinkPress={linkPressed} text={t} /> : t }
           </View>
         ))}
       </View>
