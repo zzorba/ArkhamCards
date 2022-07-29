@@ -23,6 +23,8 @@ export function availableWeaknesses(
   );
 }
 
+const INVESTIGATOR_FACTION = /^\[(.+?)\] investigator only\.$/m;
+
 function matchingWeaknesses(
   investigator: Card | undefined,
   set: WeaknessSet,
@@ -51,8 +53,9 @@ function matchingWeaknesses(
     const matchesCampaignModeOnly = !standalone || !!(
       card.real_text && card.real_text.indexOf('Campaign Mode only.') === -1
     );
-
-    return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly;
+    const investigatorMatch = card.real_text && card.real_text.match(INVESTIGATOR_FACTION);
+    const factionMatch = !investigatorMatch || !investigator || (investigator.factionCode() === investigatorMatch[1]);
+    return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly && factionMatch;
   });
 }
 

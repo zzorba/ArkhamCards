@@ -458,7 +458,7 @@ export default function TwoSidedCardComponent(props: Props) {
             } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
-              <View style={[styles.row, styles.flex]}>
+              <View style={styles.row}>
                 <View style={[styles.mainColumn, styles.flex]}>
                   { metadataBlock }
                   { playdataBlock }
@@ -530,7 +530,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    flex: 1,
   },
   playerImage: {
     marginTop: 2,
