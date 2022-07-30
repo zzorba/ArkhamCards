@@ -804,6 +804,10 @@
     "name": "Traces of Egil"
   },
   {
+    "id": "tsk_prologue",
+    "name": "Prologue"
+  },
+  {
     "id": "turn_back_time",
     "name": "Turn Back Time"
   },

@@ -4417,6 +4417,21 @@
     "supplies": []
   },
   {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "調查員在日出後抵達了獵鷹岬。"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {

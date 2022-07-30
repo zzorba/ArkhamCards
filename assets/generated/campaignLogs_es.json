@@ -4417,6 +4417,21 @@
     "supplies": []
   },
   {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "los investigadores llegaron al Cabo del Halcón tras la salida del sol."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {

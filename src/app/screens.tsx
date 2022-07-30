@@ -42,6 +42,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Investigators': return require('@components/card/CardInvestigatorsView').default;
     case 'Campaign.Access': return require('@components/campaign/CampaignAccessView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
+    case 'Campaign.Map': return require('@components/campaignguide/CampaignMapView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;

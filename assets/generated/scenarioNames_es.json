@@ -804,6 +804,10 @@
     "name": "Huellas de Egil"
   },
   {
+    "id": "tsk_prologue",
+    "name": "Prólogo"
+  },
+  {
     "id": "turn_back_time",
     "name": "Vuelta atrás en el tiempo"
   },

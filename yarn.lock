@@ -3574,6 +3574,11 @@ abort-controller@^3.0.0:
   dependencies:
     event-target-shim "^5.0.0"
 
+abs-svg-path@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/abs-svg-path/-/abs-svg-path-0.1.1.tgz#df601c8e8d2ba10d4a76d625e236a9a39c2723bf"
+  integrity sha512-d8XPSGjfyzlXC3Xx891DJRyZfqk5JU0BJrDQcsWomFIV1/BIzPW5HDH5iDdWpqWaav0YVIEzT1RHTwWr0FFshA==
+
 absolute-path@^0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/absolute-path/-/absolute-path-0.0.0.tgz#a78762fbdadfb5297be99b15d35a785b2f095bf7"
@@ -10062,6 +10067,13 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
+normalize-svg-path@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/normalize-svg-path/-/normalize-svg-path-1.1.0.tgz#0e614eca23c39f0cffe821d6be6cd17e569a766c"
+  integrity sha512-r9KHKG2UUeB5LoTouwDzBy2VxXlHsiM6fyLQvnJa0S5hrhzqElH/CH7TUGhT1fVvIYBIKf3OpY4YJ4CK+iaqHg==
+  dependencies:
+    svg-arc-to-cubic-bezier "^3.0.0"
+
 note-down@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/note-down/-/note-down-0.2.3.tgz#191253818ec10a082eeb814000f8202856c22f02"
@@ -10468,6 +10480,11 @@ parse-json@^5.0.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
+parse-svg-path@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/parse-svg-path/-/parse-svg-path-0.1.2.tgz#7a7ec0d1eb06fa5325c7d3e009b859a09b5d49eb"
+  integrity sha512-JyPSBnkTJ0AI8GGJLfMXvKq42cj5c006fnLz6fXy6zfoVjJizi8BNTpu8on8ziI1cKy9d9DGNuY17Ce7wuejpQ==
+
 parse5-htmlparser2-tree-adapter@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
@@ -10716,6 +10733,11 @@ pretty-format@^26.0.0, pretty-format@^26.5.2, pretty-format@^26.6.2:
     ansi-regex "^5.0.0"
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
+
+priority-queue-typescript@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/priority-queue-typescript/-/priority-queue-typescript-1.0.1.tgz#7a89a8513af3698f7abbf3fe1123ecdf3cd22b7b"
+  integrity sha512-Apycf6CgjdPRNfpZ8qgQeHVRe4B6R51QAd94k6fE13tGUpW1RLv8+ZeJipl2f0j/No3nt2Gk7dF2f+i1Au/I2w==
 
 private@^0.1.6:
   version "0.1.8"
@@ -11117,6 +11139,11 @@ react-native-pager-view@5.4.25:
   resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.4.25.tgz#cd639d5387a7f3d5581b55a33c5faa1cbc200f97"
   integrity sha512-3drrYwaLat2fYszymZe3nHMPASJ4aJMaxiejfA1V5SK3OygYmdtmV2u5prX7TnjueJzGSyyaCYEr2JlrRt4YPg==
 
+react-native-pan-pinch-view@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-pan-pinch-view/-/react-native-pan-pinch-view-1.0.1.tgz#9c8aff0f74ab3b74d839da655c2397011cb66410"
+  integrity sha512-gShQHJmWumuQXyBC/FVS9nf7in0UC+aFC8vzhGXnNNXje1Oc/7YY18qZl9w0oEwZJfJFraLKgahofDv79co8Cw==
+
 react-native-pinch-zoom-view@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-native-pinch-zoom-view/-/react-native-pinch-zoom-view-0.2.0.tgz#5ff469e7b1b4a69629a8fb31a226d3855e813799"
@@ -11149,6 +11176,15 @@ react-native-reanimated@2.9.1:
     lodash.isequal "^4.5.0"
     setimmediate "^1.0.5"
     string-hash-64 "^1.0.3"
+
+react-native-redash@^18.0.0:
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-18.0.0.tgz#c075e8bff34d9aad2ce82ffdcb228e90e3a9cc4a"
+  integrity sha512-yyjbNxGPsKh10r4HvudNLJoX9fUsvGbcbmWlUE9pAWg3BCtFsImSEANFFNOmYbPk1JqnVqrWMGCmVvd4zfwn7Q==
+  dependencies:
+    abs-svg-path "^0.1.1"
+    normalize-svg-path "^1.0.1"
+    parse-svg-path "^0.1.2"
 
 react-native-safe-modules@^1.0.3:
   version "1.0.3"
@@ -12566,6 +12602,11 @@ svelte@^3.20.1:
   version "3.49.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.49.0.tgz#5baee3c672306de1070c3b7888fc2204e36a4029"
   integrity sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==
+
+svg-arc-to-cubic-bezier@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/svg-arc-to-cubic-bezier/-/svg-arc-to-cubic-bezier-3.2.0.tgz#390c450035ae1c4a0104d90650304c3bc814abe6"
+  integrity sha512-djbJ/vZKZO+gPoSDThGNpKDO+o+bAeA4XQKovvkNCqnIS2t+S4qnLAGQhyyrulhCFRl1WWzAp0wUDV8PpTVU3g==
 
 svg-parser@^2.0.2:
   version "2.0.4"

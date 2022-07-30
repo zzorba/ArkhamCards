@@ -4417,6 +4417,21 @@
     "supplies": []
   },
   {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {

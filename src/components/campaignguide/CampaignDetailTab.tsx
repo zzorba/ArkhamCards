@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { InteractionManager, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
@@ -29,6 +29,9 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import { useLatestDecksCards } from '@components/core/hooks';
 import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
+import { CampaignMapProps } from './CampaignMapView';
+import { iconsMap } from '@app/NavIcons';
+import COLORS from '@styles/colors';
 
 const SHOW_WEAKNESS = false;
 const SHOW_TAROT = false;
@@ -161,6 +164,37 @@ export default function CampaignDetailTab({
     processedCampaign,
   });
 
+  const showMap = useCallback(() => {
+    Navigation.showModal<CampaignMapProps>({
+      stack: {
+        children: [{
+          component: {
+            name: 'Campaign.Map',
+            passProps: {
+              campaignId,
+            },
+            options: {
+              topBar: {
+                title: {
+                  text: t`Map`,
+                },
+                leftButtons: [{
+                  icon: iconsMap.dismiss,
+                  id: 'close',
+                  color: COLORS.M,
+                  accessibilityLabel: t`Close`,
+                }],
+              },
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.fullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
+          },
+        }]
+      },
+    });
+  }, [componentId, campaignId]);
+
   const onTarotPress = useCallback((readingType: TarotReadingType) => {
     Navigation.push<TarotCardReadingProps>(componentId, {
       component: {
@@ -231,6 +265,16 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
+          { !!campaignGuide.campaignMap() && (
+            <DeckButton
+              icon="map"
+              title={t`Map`}
+              detail={t`Examine campaign map`}
+              color="light_gray"
+              onPress={showMap}
+              bottomMargin={s}
+            />
+          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"

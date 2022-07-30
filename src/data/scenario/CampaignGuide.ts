@@ -8,7 +8,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner } from './types';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner, CampaignMap } from './types';
 import deepEqual from 'deep-equal';
 
 type CampaignLogEntry = {
@@ -114,6 +114,10 @@ export default class CampaignGuide {
   scenarioFaq(scenario: string): Question[] {
     const scenarioFaq = find(this.errata.faq, faq => faq.scenario_code === scenario);
     return scenarioFaq ? scenarioFaq.questions : [];
+  }
+
+  campaignMap(): CampaignMap | undefined {
+    return this.campaign.campaign.map;
   }
 
   sideScenarios(): Scenario[] {

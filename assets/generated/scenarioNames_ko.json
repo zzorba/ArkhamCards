@@ -804,6 +804,10 @@
     "name": "Traces of Egil"
   },
   {
+    "id": "tsk_prologue",
+    "name": "서막"
+  },
+  {
     "id": "turn_back_time",
     "name": "시간을 거슬러"
   },

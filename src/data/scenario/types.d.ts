@@ -205,6 +205,7 @@ export interface Campaign {
   tarot?: string[];
   version: number;
   position: number;
+  map?: CampaignMap;
   cards?: {
     code: string;
     name: string;
@@ -221,6 +222,27 @@ export interface Campaign {
   custom?: CustomData;
   achievements?: Achievement[];
   ultimatums?: Ultimatum[];
+}
+export interface CampaignMap {
+  width: number;
+  height: number;
+  locations: Location[];
+}
+export interface Location {
+  id: string;
+  x: number;
+  y: number;
+  name: string;
+  dossier?: {
+    image?: {
+      ratio: number;
+      uri: string;
+    };
+    text?: string;
+  }[];
+  status: "locked" | "standard" | "side";
+  label: "left" | "right";
+  connections: string[];
 }
 export interface CampaignLogSectionDefinition {
   id: string;

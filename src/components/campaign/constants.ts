@@ -431,6 +431,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case TSK:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
     case EOE:
