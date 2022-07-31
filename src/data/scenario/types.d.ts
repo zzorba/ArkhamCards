@@ -157,7 +157,8 @@ export type Input =
   | TarotReadingInput
   | PartnerTraumaInput
   | InvestigatorPartnerChoiceInput
-  | PartnerChoiceInput;
+  | PartnerChoiceInput
+  | EmbarkInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition =
@@ -1009,6 +1010,12 @@ export interface PartnerChoiceInput {
   prompt: string;
   effects: Effect[];
 }
+export interface EmbarkInput {
+  type: "embark";
+  options: StringOption[];
+  effects: Effect[];
+  steps: string[];
+}
 export interface EncounterSetsStep {
   id: string;
   type: "encounter_sets";
@@ -1223,7 +1230,7 @@ export interface Scenario {
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
-  type?: "interlude" | "epilogue" | "placeholder";
+  type?: "interlude" | "epilogue" | "placeholder" | "core";
   standalone_setup?: string[];
 }
 export interface ChallengeData {

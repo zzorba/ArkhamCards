@@ -4441,6 +4441,19 @@
             "text": "Die Ermittler haben Falcon Point nach Sonnenaufgang erreicht."
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
       }
     ],
     "supplies": []

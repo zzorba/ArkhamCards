@@ -34,7 +34,7 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 
 const SHOW_WEAKNESS = false;
-const SHOW_TAROT = false;
+const SHOW_TAROT = true;
 
 interface Props {
   componentId: string;

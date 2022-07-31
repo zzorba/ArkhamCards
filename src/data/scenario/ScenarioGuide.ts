@@ -128,6 +128,13 @@ export default class ScenarioGuide {
     if (existingStep) {
       return existingStep;
     }
+    const coreStep = find(
+      this.campaignGuide.findScenarioData('core')?.steps,
+      step => step.id === id
+    );
+    if (coreStep) {
+      return coreStep;
+    }
 
     const fixedStep = getFixedStep(
       id,

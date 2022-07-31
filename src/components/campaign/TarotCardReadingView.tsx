@@ -426,8 +426,11 @@ function TarotCardReadingView({
         return scenarioNames[scenarios[index]] || card?.title;
       }
     }
-    return card.title;
-  }, [tarotCards, index, readingType, scenarios, scenarioNames]);
+    if (flipped[card.id]) {
+      return card.title;
+    }
+    return t`Reveal`;
+  }, [tarotCards, flipped, index, readingType, scenarios, scenarioNames]);
   const { dialog, showDialog } = useDialog({
     title: dialogTitle,
     content,
@@ -549,7 +552,7 @@ function TarotCardReadingView({
                     </Text>
                   </View>
                 ) }
-                <View style={[space.paddingLeftS, space.paddingTopS]}>
+                <View style={[space.paddingLeftXs, space.paddingRightXs, space.paddingTopS]}>
                   <TarotCardComponent
                     width={cardWidth}
                     card={card}

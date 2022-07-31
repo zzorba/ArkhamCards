@@ -4427,6 +4427,19 @@
             "text": "les investigateurs ont atteint le phare après le lever du soleil."
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "leurre"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "leurre"
+          }
+        ]
       }
     ],
     "supplies": []

@@ -4427,6 +4427,19 @@
             "text": "調查員在日出後抵達了獵鷹岬。"
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
       }
     ],
     "supplies": []

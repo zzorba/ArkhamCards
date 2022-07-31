@@ -17,7 +17,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import space from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
-import CardTextComponent from '@components/card/CardTextComponent';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
 

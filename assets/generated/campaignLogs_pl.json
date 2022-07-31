@@ -4427,6 +4427,19 @@
             "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
       }
     ],
     "supplies": []

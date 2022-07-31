@@ -4427,6 +4427,19 @@
             "text": "los investigadores llegaron al Cabo del Halcón tras la salida del sol."
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
       }
     ],
     "supplies": []
