@@ -2036,7 +2036,7 @@ msgid "A Thousand Shapes of Horror"
 msgstr "천 가지 무시무시한 형체"
 
 msgid "Point of No Return"
-msgstr "돌아올 수 없는 다리"
+msgstr "돌아갈 수 없는 다리"
 
 msgid "The Night of the Zealot"
 msgstr "광신도의 밤"
