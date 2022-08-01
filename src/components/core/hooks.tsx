@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard } from 'react-native';
+import { BackHandler, Keyboard, Platform } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
@@ -685,7 +685,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'low_memory':
-        return LOW_MEMORY_DEVICE ? !state.settings.lowMemory : !!state.settings.lowMemory;
+        return Platform.OS === 'android' || !!state.settings.lowMemory;
     }
   });
 }

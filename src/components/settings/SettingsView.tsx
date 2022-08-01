@@ -246,13 +246,15 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={campaignShowDeckId}
                 onValueChange={setCampaignShowDeckId}
               />
-              <DeckCheckboxButton
-                icon="tools"
-                title={t`Low memory mode`}
-                description={t`Have the app preload fewer cards to help performance on older devices`}
-                value={lowMemory}
-                onValueChange={setLowMemory}
-              />
+              { Platform.OS === 'ios' && (
+                <DeckCheckboxButton
+                  icon="tools"
+                  title={t`Low memory mode`}
+                  description={t`Have the app preload fewer cards to help performance on older devices`}
+                  value={lowMemory}
+                  onValueChange={setLowMemory}
+                />
+              ) }
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton
                   icon="tools"
