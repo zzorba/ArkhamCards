@@ -442,7 +442,6 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
-  TSK,
   GOB,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
@@ -468,7 +467,6 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEB,
   TIC,
   EOE,
-  TSK,
   GOB,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
