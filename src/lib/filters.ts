@@ -578,11 +578,17 @@ export default class FilterBuilder {
 
   packCodes(packCodes: string[]): Brackets[] {
     const packClause = this.equalsVectorClause(packCodes, 'pack_code');
-    if (packClause.length) {
+    if (packClause.length && packCodes.length) {
+      const [packCode, ...otherCodes] = packCodes;
       return [
         combineQueries(
-          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: map(packCodes, c => `%${c}%`).join('') }),
-          packClause,
+          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes:`%${packCode}%` }),
+          [
+            ...map(otherCodes, c =>
+              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes:`%${c}%` }),
+            ),
+            ...packClause
+          ],
           'or'
         ),
       ];
