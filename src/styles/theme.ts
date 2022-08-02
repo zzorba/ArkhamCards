@@ -37,6 +37,8 @@ export interface ThemeColors {
   lightText: string;
   taboo: string;
   divider: string;
+  tarotText: string;
+  tarotInvertedText: string;
   faction: {
     guardian: FactionColors;
     seeker: FactionColors;
@@ -271,6 +273,8 @@ export const LIGHT_THEME: ThemeColors = {
       border: mythosLightText,
     },
   },
+  tarotText: dualDarkText,
+  tarotInvertedText: dualDarkText,
   upgrade: '#cfb13a',
   skill: {
     willpower: {
@@ -434,6 +438,8 @@ export const DARK_THEME: ThemeColors = {
     },
   },
 
+  tarotText: dualDarkText,
+  tarotInvertedText: dualLightText,
   upgrade: '#cfb13a',
   skill: {
     willpower: {
