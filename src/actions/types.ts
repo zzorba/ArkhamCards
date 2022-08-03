@@ -1032,20 +1032,11 @@ export interface CampaignRemoveInvestigatorAction {
   now: Date;
 }
 
-export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
-export interface AddCampaignScenarioResultAction {
-  type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
+export const SET_CAMPAIGN_NOTES = 'SET_CAMPAIGN_NOTES';
+export interface SetCampaignNotesAction {
+  type: typeof SET_CAMPAIGN_NOTES;
   campaignId: CampaignId;
-  scenarioResult: ScenarioResult;
-  campaignNotes?: CampaignNotes;
-  now: Date;
-}
-export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
-export interface EditCampaignScenarioResultAction {
-  type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  campaignId: CampaignId;
-  index: number;
-  scenarioResult: ScenarioResult;
+  campaignNotes: CampaignNotes;
   now: Date;
 }
 export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
@@ -1446,11 +1437,10 @@ export type CampaignActions =
   UpdateCampaignXpAction |
   UpdateCampaignTraumaAction |
   DeleteCampaignAction |
-  AddCampaignScenarioResultAction |
-  EditCampaignScenarioResultAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
+  SetCampaignNotesAction |
   AdjustBlessCurseAction |
   EnsureUuidAction |
   ReduxMigrationAction;

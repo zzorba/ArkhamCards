@@ -172,7 +172,8 @@ export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
   allDecksSelector,
-  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
+  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
+    return map(
     filter(
       values(allCampaigns),
       campaign => {
@@ -208,7 +209,8 @@ export const getCampaigns = createSelector(
         getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
       );
     }
-  )
+  );
+  }
 );
 
 export const getBackupData = createSelector(

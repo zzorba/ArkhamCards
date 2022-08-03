@@ -244,5 +244,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
       return <InvestigatorChoicePartnerComponent id={step.id} input={step.input} text={step.text} bulletType={step.bullet_type} />;
     case 'partner_choice':
       return <PartnerChoiceComponent id={step.id} input={step.input} />;
+    case 'embark':
+      return null;
   }
 }

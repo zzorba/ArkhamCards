@@ -141,7 +141,6 @@ function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, 
   const deckActions = useDeckActions();
   const [{ refreshing: decksRefreshing, error }, refreshDecks] = useMyDecks(deckActions);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } });
-
   const data = useMemo(() => {
     const empty = campaigns.length === 0;
     const footerItem: FooterType = { type: 'footer', height: footerHeight || 0 };

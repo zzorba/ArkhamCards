@@ -82,7 +82,7 @@ export default class ScenarioGuide {
     return this.scenario.full_name;
   }
 
-  scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' {
+  scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' | 'core' {
     return this.scenario.type || 'scenario';
   }
 

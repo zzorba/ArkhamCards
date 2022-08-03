@@ -8,8 +8,6 @@ import {
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   UPDATE_CHAOS_BAG_RESULTS,
-  ADD_CAMPAIGN_SCENARIO_RESULT,
-  EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
   CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
@@ -27,8 +25,6 @@ import {
   CustomCampaignLog,
   ScenarioResult,
   WeaknessSet,
-  AddCampaignScenarioResultAction,
-  EditCampaignScenarioResultAction,
   RestoreComplexBackupAction,
   NewCampaignAction,
   NewLinkedCampaignAction,
@@ -64,6 +60,7 @@ import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInter
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { Action } from 'redux';
 
 function getBaseDeckIds(
   state: AppState,
@@ -722,34 +719,45 @@ export function deleteCampaign(
 }
 
 export function addScenarioResult(
-  userId: string | undefined,
-  campaignId: CampaignId,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
-): ThunkAction<void, AppState, unknown, AddCampaignScenarioResultAction> {
-  return async(dispatch) => {
-    dispatch({
-      type: ADD_CAMPAIGN_SCENARIO_RESULT,
-      campaignId,
-      scenarioResult,
-      campaignNotes,
-      now: new Date(),
-    });
+): ThunkAction<void, AppState, unknown, Action> {
+  return async(dispatch, getState) => {
+    const getCampaign = makeCampaignSelector();
+    const campaign = getCampaign(getState(), id.campaignId);
+    if (campaign) {
+      const scenarioResults = [
+        ...(campaign.scenarioResults || []),
+        { ...scenarioResult },
+      ];
+      dispatch(updateCampaignScenarioResults(actions, id, scenarioResults));
+
+      if (campaignNotes) {
+        updateCampaignNotes(actions.setCampaignNotes, id, campaignNotes);
+      }
+    }
   };
 }
 
 export function editScenarioResult(
-  campaignId: CampaignId,
+  actions: UpdateCampaignActions,
+  id: CampaignId,
   index: number,
   scenarioResult: ScenarioResult
-): EditCampaignScenarioResultAction {
-  return {
-    type: EDIT_CAMPAIGN_SCENARIO_RESULT,
-    campaignId,
-    index,
-    scenarioResult,
-    now: new Date(),
-  };
+): ThunkAction<void, AppState, unknown, Action> {
+  return async(dispatch, getState) => {
+    const getCampaign = makeCampaignSelector();
+    const campaign = getCampaign(getState(), id.campaignId);
+    if (campaign) {
+      const scenarioResults = [
+        ...campaign.scenarioResults || [],
+      ];
+      scenarioResults[index] = { ...scenarioResult };
+      dispatch(updateCampaignScenarioResults(actions, id, scenarioResults));
+    }
+  }
 }
 
 export default {

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
+import { concat, filter, flatMap, forEach, partition, throttle, map } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -94,7 +94,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       showNewCampaignDialog();
     }
   }, componentId, [showNewCampaignDialog]);
-
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     const [archived, unarchived] = partition(flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
