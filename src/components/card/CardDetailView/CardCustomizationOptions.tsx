@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { map, find, repeat, flatMap, range, sumBy } from 'lodash';
+import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
 import Card from '@data/types/Card';
@@ -9,15 +9,28 @@ import StyleContext from '@styles/StyleContext';
 import CardTextComponent from '../CardTextComponent';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
-import { DeckId } from '@actions/types';
-import { useCounter, useFlag } from '@components/core/hooks';
+import { DeckId, SORT_BY_TITLE } from '@actions/types';
+import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
-import { usePickerDialog } from '@components/deck/dialogs';
+import { useDialog, usePickerDialog } from '@components/deck/dialogs';
 import SlotIcon from './TwoSidedCardComponent/SlotIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import AppIcon from '@icons/AppIcon';
+import useCardList from '../useCardList';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import { DeckOptionQueryBuilder } from '@data/types/DeckOption';
+import { Navigation } from 'react-native-navigation';
+import { CardSelectorProps } from '@components/campaignguide/CardSelectorView';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { useDeckEdits, useSimpleDeckEdits } from '@components/deck/hooks';
+import deckEdits from '@reducers/deckEdits';
+import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import ArkhamButton from '@components/core/ArkhamButton';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 interface Props {
   componentId: string;
@@ -114,19 +127,6 @@ function XpControl({ option, choice, xp, onInc, onDec, onSet } : {
       ) }
     </View>
   );
-
-  return (
-    <PlusMinusButtons
-      dialogStyle
-      showZeroCount
-      showMax
-      onIncrement={onInc}
-      onDecrement={onDec}
-      count={xp}
-      min={choice?.xp_locked || 0}
-      max={option.xp}
-    />
-  );
 }
 
 function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
@@ -177,7 +177,171 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
   );
 }
 
-function AdvancedControl({ card, type, editable, choice, setChoice }: {
+function ToggleCard({ card, selectedCodes, quantity, setSelectedCodes, last }: { card: Card; quantity: number; selectedCodes: string[]; setSelectedCodes: (codes: string[]) => void; last?: boolean }) {
+  const onToggle = useCallback((value: boolean) => {
+    if (value) {
+      setSelectedCodes(uniq([...selectedCodes, card.code]))
+    } else {
+      setSelectedCodes(filter(selectedCodes, code => code !== card.code));
+    }
+  }, [card.code, selectedCodes, setSelectedCodes]);
+  const selected = !!find(selectedCodes, code => code === card.code);
+  return (
+    <CardSearchResult
+      card={card}
+      noBorder={last}
+      control={{
+        type: 'toggle',
+        value: selected,
+        toggleValue: onToggle,
+        disabled: !selected && selectedCodes.length >= quantity
+      }}
+    />
+  );
+}
+
+function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setChoice }: {
+  componentId: string;
+  card: Card;
+  deckId?: DeckId;
+  setChoice: (choice: string) => void;
+  editable: boolean;
+  choice: CustomizationChoice;
+}) {
+  const { listSeperator } = useContext(LanguageContext);
+  const deckEditState = useSimpleDeckEdits(deckId);
+  const inDeckCodes = useMemo(() => {
+    const codes: string[] = [];
+    forEach(deckEditState?.slots || {}, (count, code) => {
+      if (count > 0) {
+        codes.push(code);
+      }
+    });
+    return codes;
+  }, [deckEditState]);
+  const [selectedCodes, setSelectedCodes] = useState<string[]>(choice.choice?.split('^') || []);
+  useEffectUpdate(() => {
+    setChoice(selectedCodes.join('^'));
+  }, [selectedCodes]);
+  const [selectedCards, loading] = useCardList(selectedCodes, 'player');
+  const [inDeckCards, loadingDeck] = useCardList(inDeckCodes, 'player');
+  const query = useMemo(() =>{
+    if (!choice.option.card) {
+      return undefined;
+    }
+    const builder = new DeckOptionQueryBuilder(choice.option.card, 0, 'custom');
+    return builder.toQuery();
+  }, [choice.option]);
+  const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const showCardPicker = useCallback(() => {
+    setDialogVisibleRef.current?.(false);
+    Navigation.push<CardSelectorProps>(componentId, {
+      component: {
+        name: 'Guide.CardSelector',
+        passProps: {
+          query,
+          selection: selectedCodes,
+          onSelect: setSelectedCodes,
+          includeStoryToggle: true,
+          uniqueName: false,
+          max: choice.option.quantity || 1,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Select Cards`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [selectedCards, setSelectedCodes, componentId, query]);
+  const selectedText = useMemo(() => map(selectedCards, c => c.name).join(listSeperator), [selectedCards])
+  const quantity = choice.option.quantity || 1;
+  const title = editable ?
+    ngettext(msgid`Name ${quantity} card`, `Name ${quantity} cards`, quantity) :
+    ngettext(msgid`Named card`, `Named cards`, quantity);
+
+  const content = useMemo(() => {
+    const eligibleCards = sortBy(filter(inDeckCards, card =>
+      !!choice.option.card && card.matchesOption(choice.option.card)
+    ), card => card.name);
+    const canSelectMore = (choice.option.quantity || 1) > selectedCodes.length;
+    const nonDeckSelected = filter(selectedCards, card => {
+      return !find(inDeckCodes, code => card.code === code);
+    });
+    return (
+      <View style={space.paddingBottomS}>
+        { !!eligibleCards.length && <CardSectionHeader section={{ title: t`In deck` }} /> }
+        <View style={space.paddingSideS}>
+          { loadingDeck && <LoadingCardSearchResult /> }
+          { map(eligibleCards, (card, idx) => (
+            <ToggleCard
+              key={card.code}
+              card={card}
+              quantity={choice.option.quantity || 1}
+              selectedCodes={selectedCodes}
+              setSelectedCodes={setSelectedCodes}
+              last={idx === (eligibleCards.length - 1) && !canSelectMore && !nonDeckSelected.length}
+            />
+          )) }
+        </View>
+        { !!nonDeckSelected.length && <CardSectionHeader section={{ title: t`Other` }} /> }
+        <View style={space.paddingSideS}>
+          { map(nonDeckSelected, (card, idx) => (
+            <ToggleCard
+              key={card.code}
+              card={card}
+              quantity={choice.option.quantity || 1}
+              selectedCodes={selectedCodes}
+              setSelectedCodes={setSelectedCodes}
+              last={idx === (nonDeckSelected.length - 1) && !canSelectMore}
+            />
+          )) }
+        </View>
+        { !!canSelectMore && (
+          <ArkhamButton
+            onPress={showCardPicker}
+            title={t`Select additional cards`}
+            icon="addcard"
+          />
+        ) }
+      </View>
+    );
+  }, [choice.option.card, loadingDeck, selectedCards, selectedCodes, setSelectedCodes, inDeckCards, showCardPicker])
+  const { dialog, showDialog, setVisible } = useDialog({
+    title,
+    content,
+    noPadding: true,
+    allowDismiss: true,
+  });
+  useEffect(() => {
+    setDialogVisibleRef.current = setVisible;
+  }, [setVisible]);
+  return (
+    <>
+      <View style={space.paddingBottomS}>
+        <DeckPickerStyleButton
+          title={title}
+          icon="card-outline"
+          valueLabel={selectedText}
+          editable={editable}
+          onPress={showDialog}
+          first
+          last
+        />
+      </View>
+      { dialog }
+    </>
+  );
+}
+
+function AdvancedControl({ componentId, deckId, card, type, editable, choice, setChoice }: {
+  componentId: string;
+  deckId?: DeckId;
   card: Card;
   type: string;
   editable: boolean;
@@ -190,7 +354,25 @@ function AdvancedControl({ card, type, editable, choice, setChoice }: {
   }, [setChoice, choice.option])
   switch (type) {
     case 'remove_slot':
-      return <RemoveSlotAdvancedControl card={card} editable={editable} choice={choice} setChoice={onSetChoice} />
+      return (
+        <RemoveSlotAdvancedControl
+          card={card}
+          editable={editable}
+          choice={choice}
+          setChoice={onSetChoice}
+        />
+      );
+    case 'choose_card':
+      return (
+        <ChooseCardAdvancedControl
+          componentId={componentId}
+          card={card}
+          editable={editable}
+          choice={choice}
+          setChoice={onSetChoice}
+          deckId={deckId}
+        />
+      );
     default:
       return (
         <Text style={[typography.text, space.paddingS]}>
@@ -201,7 +383,9 @@ function AdvancedControl({ card, type, editable, choice, setChoice }: {
 }
 
 interface LineProps {
+  componentId: string;
   card: Card;
+  deckId?: DeckId;
   option: CustomizationOption;
   showAll: boolean;
   mode?: 'edit' | 'upgrade' | 'view'
@@ -211,7 +395,7 @@ interface LineProps {
   setChoice: (code: string, choice: CustomizationChoice) => void;
 }
 
-function CustomizationLine({ card, option, editable, mode, choices, showAll, last, setChoice }: LineProps) {
+function CustomizationLine({ componentId, card, option, deckId, editable, mode, choices, showAll, last, setChoice }: LineProps) {
   const { borderStyle } = useContext(StyleContext);
   const choice = find(choices, o => o.option.index === option.index);
   const onXpChange = useCallback((index: number, xp: number) => {
@@ -243,7 +427,6 @@ function CustomizationLine({ card, option, editable, mode, choices, showAll, las
     }
     return `${option.text?.replace(/:.*$/, '')}:`;
   }, [option.text, showAdvanced]);
-
   if (mode === 'view' && (!choice || (option.xp && !count)) && !showAll) {
     // Drop the ones you didn't chose when not editing
     return null;
@@ -258,7 +441,7 @@ function CustomizationLine({ card, option, editable, mode, choices, showAll, las
       <View style={styles.row}>
         <View style={{ flex: 1 }}>
           <CardTextComponent
-            text={`${(option.xp && !editable) ? `${xpBoxes} ` : ''}<b>${option.title}</b> ${text}`}
+            text={`${(option.xp && !editable) ? `${xpBoxes} ` : ''}${option.title ? `<b>${option.title}</b> ` : ''}${text}`}
           />
         </View>
         { editable && (
@@ -276,9 +459,11 @@ function CustomizationLine({ card, option, editable, mode, choices, showAll, las
       </View>
       { !!option.choice && !!choice?.unlocked && (
         <AdvancedControl
+          componentId={componentId}
           type={option.choice}
           card={card}
-          editable={editable}
+          editable={editable && choice.editable}
+          deckId={deckId}
           choice={choice}
           setChoice={onChoiceChange}
         />
@@ -287,7 +472,7 @@ function CustomizationLine({ card, option, editable, mode, choices, showAll, las
   );
 }
 
-export default function CardCustomizationOptions({ setChoice, mode, deckId, customizationChoices, card, customizationOptions, width, editable }: Props) {
+export default function CardCustomizationOptions({ setChoice, mode, deckId, customizationChoices, card, customizationOptions, width, editable, componentId }: Props) {
   const { typography, colors } = useContext(StyleContext);
   const [showAll, toggleShowAll] = useFlag(false);
   const xp = useMemo(() => sumBy(customizationChoices, c => c.xp_spent), [customizationChoices]);
@@ -310,12 +495,14 @@ export default function CardCustomizationOptions({ setChoice, mode, deckId, cust
           <View style={space.paddingSideS}>
             { map(customizationOptions, (option, index) => (
               <CustomizationLine
+                componentId={componentId}
                 key={option.index}
                 card={card}
                 option={option}
                 mode={mode}
                 choices={customizationChoices}
                 showAll={showAll}
+                deckId={deckId}
                 editable={editable}
                 setChoice={setChoice}
                 last={index === customizationOptions.length - 1}

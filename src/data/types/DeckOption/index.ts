@@ -175,10 +175,10 @@ export class DeckOptionQueryBuilder {
   filterBuilder: FilterBuilder;
   index: number;
 
-  constructor(option: DeckOption, index: number) {
+  constructor(option: DeckOption, index: number, prefix: string = 'deck') {
     this.option = option;
     this.index = index;
-    this.filterBuilder = new FilterBuilder(`deck${index}`);
+    this.filterBuilder = new FilterBuilder(`${prefix}${index}`);
   }
 
   private selectedFactionFilter(meta?: DeckMeta): Brackets[] {

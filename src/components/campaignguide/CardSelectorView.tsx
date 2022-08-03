@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
-import { filter, keyBy, mapValues, keys, map, uniqBy } from 'lodash';
+import { filter, keyBy, mapValues, keys, map, uniqBy, sumBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import Animated from 'react-native-reanimated';
 import { t } from 'ttag';
@@ -17,6 +17,7 @@ import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { QuerySort } from '@data/sqlite/types';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -24,15 +25,25 @@ export interface CardSelectorProps {
   onSelect: (cards: string[]) => void;
   includeStoryToggle: boolean;
   uniqueName: boolean;
+  max?: number;
 }
 
 type Props = CardSelectorProps & NavigationProps;
+const SORT: QuerySort[] = [
+  { s: 'c.renderName', direction: 'ASC' },
+  { s: 'c.xp', direction: 'ASC' },
+];
 
-export default function CardSelectorView({ query, selection: initialSelection, onSelect, includeStoryToggle, uniqueName }: Props) {
+export default function CardSelectorView({ max, query, selection: initialSelection, onSelect, includeStoryToggle, uniqueName }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const [selection, setSelection] = useState(mapValues(keyBy(initialSelection), () => true));
   const [storyToggle, setStoryToggle] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const selectedCount = useMemo(() => {
+    return sumBy(keys(selection), (key) => {
+      return selection[key] ? 1 : 0;
+    });
+  }, [selection]);
 
   const onChange = useCallback((card: Card, count: number) => {
     const newSelection = {
@@ -62,15 +73,19 @@ export default function CardSelectorView({ query, selection: initialSelection, o
       uniqBy(
         filter(cards, card => searchMatchesText(searchTerm, [card.name])),
         card => uniqueName ? card.name : card.code),
-      card => (
-        <CardToggleRow
-          key={card.code}
-          card={card}
-          onChange={onChange}
-          count={selection[card.code] ? 1 : 0}
-          limit={1}
-        />
-      )
+      card => {
+        const selected = selection[card.code];
+        return (
+          <CardToggleRow
+            key={card.code}
+            card={card}
+            onChange={onChange}
+            count={selected ? 1 : 0}
+            limit={1}
+            disabled={!!max ? (!selected && selectedCount >= max) : false}
+          />
+        );
+      }
     );
   }, [uniqueName, selection, searchTerm, colors, onChange]);
 
@@ -118,7 +133,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
     );
   }, [query]);
 
-  const [normalCards, normalCardsLoading] = useCardsFromQuery({ query: normalCardsQuery });
+  const [normalCards, normalCardsLoading] = useCardsFromQuery({ query: normalCardsQuery, sort: SORT });
   const height = searchBoxHeight(fontScale);
   return (
     <CollapsibleSearchBox

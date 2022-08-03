@@ -597,39 +597,36 @@ export function parseCustomizations(
   previousMeta: DeckMeta | undefined
 ): Customizations {
   const result: Customizations = {};
-  forEach(keys(meta), key => {
-    const value = meta[key];
-    if (!key.startsWith('cus_') || !value) {
-      return
-    }
-    const code = key.substring(4);
+  forEach(slots, (count, code) => {
     const card = cards[code];
-    if (!slots[code] || !card?.customization_options) {
-      return
+    if (!card?.customization_options || !count) {
+      return;
     }
+    const value = meta[`cus_${code}`] || '';
     const previousEntry = previousMeta?.[`cus_${code}`];
     const previousDecisions = previousEntry ? parseCustomizationDecision(previousEntry) : [];
     const decisions = parseCustomizationDecision(value);
-    const selections: CustomizationChoice[] = flatMap(decisions, decision => {
-      const previous = find(previousDecisions, pd => pd.index === decision.index);
-      const option = card.customization_options?.[decision.index];
-      if (!option) {
+    const selections: CustomizationChoice[] = flatMap(card.customization_options, option => {
+      const decision = find(decisions, d => d.index === option.index);
+      const previous = find(previousDecisions, pd => pd.index === option.index);
+      if (!decision && option.xp) {
         return [];
       }
       const basic = {
         option,
-        xp_spent: decision.spent_xp,
+        xp_spent: decision?.spent_xp || 0,
         xp_locked: previous?.spent_xp || 0,
-        unlocked: decision.spent_xp === option.xp,
+        editable: !previous || (previous.spent_xp < (option.xp || 0)),
+        unlocked: (decision?.spent_xp || 0) === option.xp,
       };
-      if (!option?.choice) {
+      if (!option.choice) {
         return basic;
       }
       return {
         ...basic,
-        choice: decision.choice,
+        choice: decision?.choice,
       };
-    });
+    })
     result[code] = selections;
   });
   return result;

@@ -591,6 +591,7 @@ export default class Card {
       xp_spent: xp,
       xp_locked: 0,
       unlocked: option.xp === xp,
+      editable: true,
       choice,
     };
   }
@@ -701,6 +702,20 @@ export default class Card {
   }
   public enemyHealth(): string {
     return arkham_num(this.health);
+  }
+
+  public matchesOption(option: DeckOption): boolean {
+    if (option.type_code) {
+      if (!find(option.type_code, type_code => this.type_code === type_code)) {
+        return false;
+      }
+    }
+    if (option.trait) {
+      if (!find(option.trait, trait => !!this.real_traits && this.real_traits.toLowerCase().indexOf(trait.toLowerCase()) !== -1)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   public imageUri(): string | undefined {

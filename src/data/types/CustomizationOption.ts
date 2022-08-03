@@ -1,5 +1,6 @@
 import { map } from 'lodash';
 import { Column } from 'typeorm/browser';
+import DeckOption from './DeckOption';
 
 const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
 
@@ -7,6 +8,7 @@ const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
 export interface CustomizationChoice {
   xp_spent: number;
   xp_locked: number;
+  editable: boolean;
   unlocked: boolean;
   option: CustomizationOption;
   choice?: string;
@@ -49,6 +51,12 @@ export default class CustomizationOption {
   @Column('integer')
   public index!: number;
 
+  @Column('integer', { nullable: true })
+  public quantity?: number;
+
+  @Column('simple-json', { nullable: true })
+  public card?: DeckOption;
+
   // Derived from localized text
   @Column('text', { nullable: true })
   public title?: string;
@@ -74,6 +82,9 @@ export default class CustomizationOption {
     option.text_change = json.text_change;
     option.position = json.position;
 
+    option.quantity = json.quantity;
+    option.card = json.card ? DeckOption.parse(json.card) : undefined;
+
     option.index = index;
     const line = lines[index];
     if (line) {
@@ -81,6 +92,8 @@ export default class CustomizationOption {
       if (match) {
         option.title = match[1];
         option.text = match[2];
+      } else {
+        option.text = line;
       }
     }
     const change = change_lines[index];

@@ -36,6 +36,7 @@ export type ControlType = {
 } | {
   type: 'toggle';
   value: boolean;
+  disabled?: boolean;
   toggleValue: (value: boolean) => void;
 } | {
   type: 'count_with_toggle';
@@ -76,7 +77,7 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
         />
       );
     case 'toggle':
-      return <CardToggle value={control.value} toggleValue={control.toggleValue} />;
+      return <CardToggle value={control.value} toggleValue={control.toggleValue} disabled={control.disabled} />;
     case 'count_with_toggle':
       return (
         <>
