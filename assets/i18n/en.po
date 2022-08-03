@@ -5378,10 +5378,6 @@ msgstr ""
 msgid "Lucid Nightmare"
 msgstr ""
 
-#, javascript-format
-msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr ""
-
 msgid "Delete your account"
 msgstr ""
 
@@ -5470,6 +5466,48 @@ msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
 msgid "The Scarlet Keys"
+msgstr ""
+
+#, javascript-format
+msgid "Name ${ quantity } card"
+msgid_plural "Name ${ quantity } cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Named card"
+msgid_plural "Named cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "In deck"
+msgstr ""
+
+msgid "Select additional cards"
+msgstr ""
+
+msgid "Map"
+msgstr ""
+
+msgid "Examine campaign map"
+msgstr ""
+
+msgid "You are here."
+msgstr ""
+
+msgid "Warning: Locked"
+msgstr ""
+
+#, javascript-format
+msgid "Travel time from ${ currentLocation.name }:"
+msgstr ""
+
+msgid "${ travelDistance } day"
+msgid_plural "${ travelDistance } days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr ""
 
 msgctxt "investigator"
