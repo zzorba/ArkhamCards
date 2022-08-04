@@ -171,7 +171,8 @@ export default function CardSearchComponent(props: Props) {
           mythosToggle,
           lightButton: deckId !== undefined,
         }
-      ));
+      )
+    );
     return function cleanup() {
       if (!deckId) {
         dispatch(removeFilterSet(filterId));

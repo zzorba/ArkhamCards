@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
-import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native';
+import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
 import RefreshableWrapper from 'react-native-fresh-refresh';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 import { map } from 'lodash';
@@ -119,12 +119,13 @@ export default function ArkhamLargeList<Item>({
       </View>
     );
   }, [noSearch, loader, renderHeader]);
-  if (LOW_MEMORY_DEVICE) {
+  if (Platform.OS === 'android') {
     return (
       <FlatList
         data={flatData}
         refreshControl={
           <RefreshControl
+            progressViewOffset={noSearch ? 0 : searchBarHeight}
             refreshing={debouncedRefreshing}
             onRefresh={handleRefresh}
             tintColor={colors.lightText}
