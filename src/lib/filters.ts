@@ -66,6 +66,8 @@ export interface FilterState {
   exceptional: boolean;
   nonExceptional: boolean;
   costEnabled: boolean;
+  costEven: boolean;
+  costOdd: boolean;
   victory: boolean;
   multiClass: boolean;
   skillEnabled: boolean;
@@ -161,6 +163,8 @@ export const defaultFilterState: FilterState = {
   exceptional: false,
   nonExceptional: false,
   costEnabled: false,
+  costEven: false,
+  costOdd: false,
   victory: false,
   skillEnabled: false,
   unique: false,
@@ -555,10 +559,30 @@ export default class FilterBuilder {
   costFilter(filters: FilterState): Brackets[] {
     const {
       costEnabled,
+      costEven,
+      costOdd,
       cost,
     } = filters;
     if (costEnabled) {
-      return this.rangeFilter('cost', cost, false);
+      const costQuery = this.rangeFilter('cost', cost, false);
+      if (costEven || costOdd) {
+        if (costEven && costOdd) {
+          return costQuery;
+        }
+        if (costEven) {
+          return [combineQueries(
+            where('c.cost is not null AND c.cost % 2 = 0'),
+            costQuery,
+            'and'
+          )];
+        }
+        return [combineQueries(
+          where('c.cost is not null AND c.cost % 2 = 1'),
+          costQuery,
+          'and'
+        )];
+      }
+      return costQuery;
     }
     return [];
   }

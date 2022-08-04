@@ -97,6 +97,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
 }
 
 const PROCEED_STEP_ID = '$proceed';
+const EMBARK_STEP_ID = '$embark';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
 const chooseInvestigatorsStep: InputStep = {
@@ -509,6 +510,19 @@ export function getFixedStep(
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
+    case EMBARK_STEP_ID: {
+      return {
+        id: EMBARK_STEP_ID,
+        text: t`You may <b>embark</b>.`,
+        effects: [
+          {
+            type: 'scenario_data',
+            setting: 'scenario_status',
+            status: 'completed',
+          },
+        ],
+      };
+    };
     case PROCEED_STEP_ID: {
       const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
         campaignState,

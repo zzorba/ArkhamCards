@@ -125,6 +125,8 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     nonExceptional,
     cost,
     costEnabled,
+    costEven,
+    costOdd,
     uses,
     slots,
     assetSanityEnabled,
@@ -478,7 +480,23 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
           toggleName="costEnabled"
           onToggleChange={onToggleChange}
           max={defaultFilterState.cost[1]}
-        />
+          height={2}
+        >
+          <View style={styles.xpSection}>
+            <ToggleFilter
+              label={c('cost').t`Even`}
+              setting="costEven"
+              value={costEven}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={c('cost').t`Odd`}
+              setting="costOdd"
+              value={costOdd}
+              onChange={onToggleChange}
+            />
+          </View>
+        </SliderChooser>
       ) }
       { hasSkill && (
         <SkillIconChooser

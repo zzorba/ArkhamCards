@@ -157,8 +157,7 @@ export type Input =
   | TarotReadingInput
   | PartnerTraumaInput
   | InvestigatorPartnerChoiceInput
-  | PartnerChoiceInput
-  | EmbarkInput;
+  | PartnerChoiceInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition =
@@ -227,6 +226,8 @@ export interface Campaign {
 export interface CampaignMap {
   width: number;
   height: number;
+  max_time: number;
+  final_scenario: string;
   locations: Location[];
 }
 export interface Location {
@@ -234,6 +235,7 @@ export interface Location {
   x: number;
   y: number;
   name: string;
+  scenario: string;
   dossier?: {
     image?: {
       ratio: number;
@@ -1009,12 +1011,6 @@ export interface PartnerChoiceInput {
   quantity?: ConstantOperand | CampaignLogCountOperand;
   prompt: string;
   effects: Effect[];
-}
-export interface EmbarkInput {
-  type: "embark";
-  options: StringOption[];
-  effects: Effect[];
-  steps: string[];
 }
 export interface EncounterSetsStep {
   id: string;

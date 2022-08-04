@@ -20,8 +20,16 @@
     "name": "천 가지 무시무시한 형체"
   },
   {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "모 아니면 도"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -68,6 +76,10 @@
     "name": "Beneath the Waves"
   },
   {
+    "id": "bermuda",
+    "name": "Bermuda"
+  },
+  {
     "id": "beyond_the_gates_of_sleep",
     "name": "잠의 관문을 지나서"
   },
@@ -88,6 +100,14 @@
     "name": "제단에 흘린 피"
   },
   {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
+  },
+  {
     "id": "by_the_book",
     "name": "수칙대로"
   },
@@ -106,6 +126,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "옛것의 도시"
+  },
+  {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -252,6 +280,10 @@
     "name": "그리폰과 가짜 거북"
   },
   {
+    "id": "havana",
+    "name": "Havana"
+  },
+  {
     "id": "heart_of_the_elders_part_1",
     "name": "고대 문명의 심장부(1부)"
   },
@@ -270,6 +302,10 @@
   {
     "id": "history_lesson",
     "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Hong Kong"
   },
   {
     "id": "horror_in_high_gear",
@@ -324,8 +360,28 @@
     "name": "자아성찰 (계속)"
   },
   {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
+  },
+  {
+    "id": "london",
+    "name": "London"
   },
   {
     "id": "lost_in_time_and_space",
@@ -344,12 +400,24 @@
     "name": "시간을 초월한 음모"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakech",
+    "name": "Marrakech"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "냐옹라토텝의 역습"
   },
   {
     "id": "mission_briefing",
     "name": "임무 브리핑"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -360,8 +428,16 @@
     "name": "엑셀시어 호텔 살인사건"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
+  },
+  {
+    "id": "perth",
+    "name": "Perth"
   },
   {
     "id": "point_of_no_return",
@@ -390,6 +466,10 @@
   {
     "id": "puzzle_pieces",
     "name": "Puzzle Pieces"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
   },
   {
     "id": "read_or_die",
@@ -552,6 +632,30 @@
     "name": "돌아온 파멸이 기다리는 곳"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "산산조각난 영겁"
   },
@@ -564,8 +668,16 @@
     "name": "저무는 별"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "기묘한 위성"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -800,6 +912,10 @@
     "name": "금단의 봉우리를 향해"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
     "id": "torch",
     "name": "회합"
   },
@@ -810,6 +926,10 @@
   {
     "id": "tsk_prologue",
     "name": "서막"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -854,5 +974,9 @@
   {
     "id": "wilds",
     "name": "길들지 않은 야생"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

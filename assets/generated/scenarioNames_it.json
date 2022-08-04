@@ -20,8 +20,16 @@
     "name": "Le Mille Forme dell'Orrore"
   },
   {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "All or Nothing"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -68,6 +76,10 @@
     "name": "Sotto le Onde"
   },
   {
+    "id": "bermuda",
+    "name": "Bermuda"
+  },
+  {
     "id": "beyond_the_gates_of_sleep",
     "name": "Oltre La Soglia del Sonno"
   },
@@ -88,6 +100,14 @@
     "name": "Sangue sull'Altare"
   },
   {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
+  },
+  {
     "id": "by_the_book",
     "name": "By the Book"
   },
@@ -106,6 +126,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "La Città degli Antichi"
+  },
+  {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -252,6 +280,10 @@
     "name": "Gryphon and Mock Turtle"
   },
   {
+    "id": "havana",
+    "name": "Havana"
+  },
+  {
     "id": "heart_of_the_elders_part_1",
     "name": "Heart of the Elders, Part 1"
   },
@@ -270,6 +302,10 @@
   {
     "id": "history_lesson",
     "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Hong Kong"
   },
   {
     "id": "horror_in_high_gear",
@@ -324,8 +360,28 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
+  },
+  {
+    "id": "london",
+    "name": "London"
   },
   {
     "id": "lost_in_time_and_space",
@@ -344,12 +400,24 @@
     "name": "Machinations Through Time"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakech",
+    "name": "Marrakech"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "The Meddling of Meowlathotep"
   },
   {
     "id": "mission_briefing",
     "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -360,8 +428,16 @@
     "name": "Assassinio all'Hotel Excelsior"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
+  },
+  {
+    "id": "perth",
+    "name": "Perth"
   },
   {
     "id": "point_of_no_return",
@@ -390,6 +466,10 @@
   {
     "id": "puzzle_pieces",
     "name": "I Pezzi del Puzzle"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
   },
   {
     "id": "read_or_die",
@@ -552,6 +632,30 @@
     "name": "Ritorno a… Verso un Destino Oscuro"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "Eoni Infranti"
   },
@@ -564,8 +668,16 @@
     "name": "Starfall"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -800,6 +912,10 @@
     "name": "Alle Vette Proibite"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
     "id": "torch",
     "name": "L'Adunanza"
   },
@@ -810,6 +926,10 @@
   {
     "id": "tsk_prologue",
     "name": "Prologo"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -854,5 +974,9 @@
   {
     "id": "wilds",
     "name": "La Foresta Inviolata"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]
