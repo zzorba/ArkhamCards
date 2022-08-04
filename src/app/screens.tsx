@@ -5,7 +5,6 @@ import { t } from 'ttag';
 
 import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 import TuneButton from '@components/cardlist/CardSearchComponent/TuneButton';
-import SortButton from '@components/cardlist/CardSearchComponent/SortButton';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
@@ -133,7 +132,6 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
   Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
   Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
-  Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
   Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
