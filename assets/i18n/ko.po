@@ -5726,10 +5726,12 @@ msgstr "진홍색 열쇠"
 msgid "Name ${ quantity } card"
 msgid_plural "Name ${ quantity } cards"
 msgstr[0] ""
+msgstr[1] ""
 
 msgid "Named card"
 msgid_plural "Named cards"
 msgstr[0] ""
+msgstr[1] ""
 
 msgid "In deck"
 msgstr ""
@@ -5756,9 +5758,13 @@ msgstr ""
 msgid "${ travelDistance } day"
 msgid_plural "${ travelDistance } days"
 msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
+msgstr ""
+
+msgid "You may <b>embark</b>."
 msgstr ""
 
 msgctxt "investigator"
@@ -7483,6 +7489,14 @@ msgstr "조사자"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "전부"
+
+msgctxt "cost"
+msgid "Even"
+msgstr ""
+
+msgctxt "cost"
+msgid "Odd"
+msgstr ""
 
 msgctxt "Actions"
 msgid "All"

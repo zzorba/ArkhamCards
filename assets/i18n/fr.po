@@ -6088,6 +6088,9 @@ msgstr[1] ""
 msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr ""
 
+msgid "You may <b>embark</b>."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
@@ -7795,6 +7798,14 @@ msgstr "Investigateur"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "Tous"
+
+msgctxt "cost"
+msgid "Even"
+msgstr ""
+
+msgctxt "cost"
+msgid "Odd"
+msgstr ""
 
 msgctxt "Actions"
 msgid "All"
