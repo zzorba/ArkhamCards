@@ -606,8 +606,8 @@ export default class Card {
     const card = this.clone();
     const xp_spent = sumBy(customizations, c => c.xp_spent);
     card.xp = Math.floor((xp_spent + 1) / 2.0);
-    const unlocked = filter(customizations, c => c.unlocked);
-    let lines = (card.text || '').split('\n');
+    const unlocked = sortBy(filter(customizations, c => c.unlocked), c => c.option.index);
+    const lines = (card.text || '').split('\n');
     forEach(unlocked, (change) => {
       const option = change.option;
       if (option.health) {
@@ -668,17 +668,16 @@ export default class Card {
         }
       }
     });
-    forEach(unlocked, ({ option }) => {
-      if (option.text_change === 'insert' && option.text_edit) {
-        const position = option.position || 0;
-        lines = [
-          ...lines.slice(0, position),
-          option.text_edit,
-          ...lines.slice(position),
-        ];
-      }
+    const final_lines: string[] = [];
+    forEach(lines, (line, idx) => {
+      final_lines.push(line);
+      forEach(unlocked, ({ option }) => {
+        if (option.text_change === 'insert' && option.position === idx && option.text_edit) {
+          final_lines.push(option.text_edit);
+        }
+      });
     });
-    card.text = lines.join('\n');
+    card.text = final_lines.join('\n');
     return card;
   }
 
