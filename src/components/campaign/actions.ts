@@ -61,6 +61,7 @@ import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { Action } from 'redux';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
 function getBaseDeckIds(
   state: AppState,
@@ -720,22 +721,20 @@ export function deleteCampaign(
 
 export function addScenarioResult(
   actions: UpdateCampaignActions,
-  id: CampaignId,
+  campaign: SingleCampaignT,
   scenarioResult: ScenarioResult,
   campaignNotes?: CampaignNotes
 ): ThunkAction<void, AppState, unknown, Action> {
-  return async(dispatch, getState) => {
-    const getCampaign = makeCampaignSelector();
-    const campaign = getCampaign(getState(), id.campaignId);
+  return async(dispatch) => {
     if (campaign) {
       const scenarioResults = [
         ...(campaign.scenarioResults || []),
         { ...scenarioResult },
       ];
-      dispatch(updateCampaignScenarioResults(actions, id, scenarioResults));
+      dispatch(updateCampaignScenarioResults(actions, campaign.id, scenarioResults));
 
       if (campaignNotes) {
-        updateCampaignNotes(actions.setCampaignNotes, id, campaignNotes);
+        updateCampaignNotes(actions.setCampaignNotes, campaign.id, campaignNotes);
       }
     }
   };
@@ -743,19 +742,17 @@ export function addScenarioResult(
 
 export function editScenarioResult(
   actions: UpdateCampaignActions,
-  id: CampaignId,
+  campaign: SingleCampaignT,
   index: number,
   scenarioResult: ScenarioResult
 ): ThunkAction<void, AppState, unknown, Action> {
-  return async(dispatch, getState) => {
-    const getCampaign = makeCampaignSelector();
-    const campaign = getCampaign(getState(), id.campaignId);
+  return async(dispatch) => {
     if (campaign) {
       const scenarioResults = [
         ...campaign.scenarioResults || [],
       ];
       scenarioResults[index] = { ...scenarioResult };
-      dispatch(updateCampaignScenarioResults(actions, id, scenarioResults));
+      dispatch(updateCampaignScenarioResults(actions, campaign.id, scenarioResults));
     }
   }
 }

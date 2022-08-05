@@ -37,8 +37,8 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
   const actions = useUpdateCampaignActions();
   const doSave = useMemo(() => throttle(() => {
-    if (scenarioResult) {
-      dispatch(editScenarioResult(actions, campaignId, index, scenarioResult));
+    if (scenarioResult && campaign) {
+      dispatch(editScenarioResult(actions, campaign, index, scenarioResult));
     }
     Navigation.pop(componentId);
   }, 200), [campaignId, index, actions, scenarioResult, componentId, dispatch]);

@@ -51,9 +51,9 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const actions = useUpdateCampaignActions();
 
   const doSave = useCallback((showDeckUpgrade: boolean) => {
-    if (scenario) {
+    if (scenario && campaign) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      dispatch(addScenarioResult(actions, id, scenarioResult, campaignNotes));
+      dispatch(addScenarioResult(actions, campaign, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
