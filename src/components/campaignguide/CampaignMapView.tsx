@@ -24,7 +24,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
 
-function BorderBox({ children, locked }: { children: React.ReactNode, locked: boolean }) {
+function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
   const bgColor = locked ? '#394852' : '#F5F0E1';
   const size = 6;
   const [dimensions, setDimensions] = useState<{ width: number; height: number}>();
@@ -41,11 +41,10 @@ function BorderBox({ children, locked }: { children: React.ReactNode, locked: bo
         paddingRight: 4,
       }}
       onLayout={onLayout}
-
     >
       <View
         style={{ position: 'absolute', top: 0, left: 0, width: dimensions?.width, height: dimensions?.height }}
-        opacity={!dimensions ? 0 : 0.8}
+        opacity={!dimensions ? 0 : (visited ? 0.5 : 0.8)}
       >
         { !!dimensions && (
           <>
@@ -209,7 +208,7 @@ function PointOfInterest({
   visited,
 }: PointOfInterestProps) {
   const borderRadius = widthRatio * 1.25;
-  const dotRadius = widthRatio * 8;
+  const dotRadius = widthRatio * (location.status === 'side' ? 6 : 8);
   const onPress = useCallback(() => {
     onSelect(location);
   }, [location, onSelect]);
@@ -230,7 +229,7 @@ function PointOfInterest({
       left: location.x * widthRatio - dotRadius - 4,
     }]}>
       <Pressable onPress={onPress}>
-        <BorderBox locked={location.status === 'locked'}>
+        <BorderBox locked={location.status === 'locked'} visited={visited && !currentLocation}>
           <View style={{
             flexDirection: location.direction === 'left' ? 'row' : 'row-reverse',
             justifyContent: 'flex-end',
@@ -265,12 +264,15 @@ function PointOfInterest({
                 { location.name }
               </Text>
               { visited && !currentLocation && !!textDimensions && (
-                <View style={{ position: 'absolute', top: 0, left: dotRadius, width: textDimensions.width, height: textDimensions.height }}>
+                <View style={{ position: 'absolute', top: 0, left: 2, width: textDimensions.width, height: textDimensions.height }}>
                   <StrikeSvg width={textDimensions.width} height={textDimensions.height} color="black" />
                 </View>
               ) }
             </View>
-            <View style={{ width: dotRadius * 2, height: dotRadius * 2 }}>
+            <View
+              style={{ width: dotRadius * 2, height: dotRadius * 2 }}
+              opacity={visited && !currentLocation ? 0.5 : 1}
+            >
               <AppIcon
                 color={statusColors[location.status]}
                 size={dotRadius * 2}
@@ -349,7 +351,7 @@ function LocationContent({
           <Text style={typography.text}>{t`You are currently here.`}</Text>
         ) }
         { visited && !atLocation && (
-          <Text style={typography.text}>{t`You cannot travel here, since you have already visited this location.`}</Text>
+          <Text style={typography.text}>{t`You have already visited this location.`}</Text>
         ) }
         { location.status === 'locked' && (
           <Text style={typography.text}>{t`Warning: Locked`}</Text>
