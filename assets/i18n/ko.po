@@ -4555,7 +4555,7 @@ msgid "Resolute"
 msgstr ""
 
 msgid "MIA"
-msgstr ""
+msgstr "행방불명"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -5706,8 +5706,8 @@ msgstr "맞춤형 카드"
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "경험치 ${ xp }점"
+msgstr[1] "경험치 ${ xp }점"
 
 msgid "Show selected customizations"
 msgstr "선택한 맞춤형 카드만 보기"
@@ -5734,38 +5734,38 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "In deck"
-msgstr ""
+msgstr "덱에 포함됨"
 
 msgid "Select additional cards"
-msgstr ""
+msgstr "추가 카드 선택"
 
 msgid "Map"
-msgstr ""
+msgstr "지도"
 
 msgid "Examine campaign map"
-msgstr ""
+msgstr "캠페인 지도 검토"
 
 msgid "You are here."
-msgstr ""
+msgstr "현 위치"
 
 msgid "Warning: Locked"
-msgstr ""
+msgstr "주의: 잠김"
 
 #, javascript-format
 msgid "Travel time from ${ currentLocation.name }:"
-msgstr ""
+msgstr "${ currentLocation.name }에서의 소요 시간:"
 
 msgid "${ travelDistance } day"
 msgid_plural "${ travelDistance } days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ travelDistance }일"
+msgstr[1] "${ travelDistance }일"
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
-msgstr ""
+msgstr "${ textModifier }, 다른 것 ${ revealCount }회 뽑기"
 
 msgid "You may <b>embark</b>."
-msgstr ""
+msgstr "<b>승선</b> 가능."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7492,11 +7492,11 @@ msgstr "전부"
 
 msgctxt "cost"
 msgid "Even"
-msgstr ""
+msgstr "짝수"
 
 msgctxt "cost"
 msgid "Odd"
-msgstr ""
+msgstr "홀수"
 
 msgctxt "Actions"
 msgid "All"
