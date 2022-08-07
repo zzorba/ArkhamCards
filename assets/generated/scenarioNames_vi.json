@@ -404,8 +404,8 @@
     "name": "Manokwari"
   },
   {
-    "id": "marrakech",
-    "name": "Marrakech"
+    "id": "marrakesh",
+    "name": "Marrakesh"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -470,6 +470,10 @@
   {
     "id": "quito",
     "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
   },
   {
     "id": "read_or_die",

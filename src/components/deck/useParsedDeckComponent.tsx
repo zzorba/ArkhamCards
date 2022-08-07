@@ -24,6 +24,7 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function hasUpgrades(
   code: string,
@@ -568,7 +569,7 @@ export default function useParsedDeckComponent({
       customizations,
     );
   }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
-
+  const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
@@ -579,7 +580,7 @@ export default function useParsedDeckComponent({
     return (
       <CardSearchResult
         key={item.index}
-        card={card.withCustomizations(cardCustomizations)}
+        card={card.withCustomizations(listSeperator, cardCustomizations)}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
@@ -589,7 +590,7 @@ export default function useParsedDeckComponent({
         noSidePadding
       />
     );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
+  }, [listSeperator, showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
 
   if (!data || !data.length) {
     return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];

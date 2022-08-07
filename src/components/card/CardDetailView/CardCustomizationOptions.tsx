@@ -31,6 +31,10 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import CardSectionHeader from '@components/core/CardSectionHeader';
+import NewDialog from '@components/core/NewDialog';
+import RoundButton from '@components/core/RoundButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import colors from '@styles/colors';
 
 interface Props {
   componentId: string;
@@ -44,13 +48,14 @@ interface Props {
   mode?: 'edit' | 'upgrade' | 'view';
 }
 
-function XpBox({ small, checked, margin }: { small?: boolean; checked?: boolean; margin?: boolean }) {
+function XpBox({ small, checked, margin, disabled }: { disabled?: boolean; small?: boolean; checked?: boolean; margin?: boolean }) {
   const { colors } = useContext(StyleContext);
   if (small) {
     return (
       <View style={[
         styles.smallXp,
         { borderColor: colors.L10 },
+        disabled ? { backgroundColor: colors.L20 } : undefined,
         margin ? { marginRight: 2 } : undefined,
       ]} >
         { !!checked && <View style={{ marginLeft: -15, marginTop: -2 }}><AppIcon name="check_on_check" size={28} color={colors.D10} /></View> }
@@ -61,6 +66,7 @@ function XpBox({ small, checked, margin }: { small?: boolean; checked?: boolean;
     <View style={[
       styles.largeXp,
       { borderColor: colors.L10 },
+      disabled ? { backgroundColor: colors.L10 } : undefined,
       margin ? { marginRight: 2 } : undefined,
     ]}>
       { !!checked && <View style={{ marginLeft: -5, marginTop: -2 }}><AppIcon name="check_on_check" size={28} color={colors.D10} /></View> }
@@ -68,15 +74,15 @@ function XpBox({ small, checked, margin }: { small?: boolean; checked?: boolean;
   );
 }
 
-function XpCheckbox({ xp, checked, onCheck }: { xp: number; checked: boolean; onCheck: (index: number) => void }) {
+function XpCheckbox({ xp, checked, onCheck, disabled }: { disabled: boolean; xp: number; checked: boolean; onCheck: (index: number) => void }) {
   const onPress = useCallback(() => {
     onCheck(checked ? (xp - 1) : xp);
   }, [onCheck, xp, checked]);
 
   return (
     <View style={{ marginRight: 4 }}>
-      <TouchableOpacity onPress={onPress}>
-        <XpBox checked={checked} />
+      <TouchableOpacity onPress={onPress} disabled={disabled}>
+        <XpBox checked={checked} disabled={disabled} />
       </TouchableOpacity>
     </View>
   );
@@ -102,6 +108,7 @@ function XpControl({ option, choice, xp, onInc, onDec, onSet } : {
             xp={index + 1}
             checked={xp > index}
             onCheck={onSet}
+            disabled={!!choice?.xp_locked && !!choice.xp_locked <= index + 1}
           />
         ))}
       </View>
@@ -339,6 +346,138 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
   );
 }
 
+function TraitLine({ trait, editable, onRemove, index }: { trait: string; index: number; editable: boolean; onRemove: (index: number) => void}) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  const onPress = useCallback(() => {
+    onRemove(index);
+  }, [onRemove, index]);
+  return (
+    <View style={[space.paddingTopS, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+      <Text style={[typography.cardTraits, space.paddingSideS, space.paddingTopS, {
+        flex: 1,
+        fontSize: Math.ceil(20 * fontScale),
+        lineHeight: Math.ceil(22 * fontScale)
+      }]}>
+        {trait}
+      </Text>
+      { !!editable && (
+        <RoundButton accessibilityLabel={t`Remove trait`} onPress={onPress}>
+          <AppIcon name="dismiss" size={24} color={colors.D20} />
+        </RoundButton>
+      ) }
+    </View>
+  );
+}
+
+function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
+  componentId: string;
+  card: Card;
+  setChoice: (choice: string) => void;
+  editable: boolean;
+  choice: CustomizationChoice;
+}) {
+  console.log(choice);
+  const { listSeperator } = useContext(LanguageContext);
+  const [selectedTraits, setSelectedTraits] = useState<string[]>(filter(map(choice.choice?.split('^') || [], x => x.trim()), x => !!x));
+  useEffectUpdate(() => {
+    setChoice(selectedTraits.join('^'));
+  }, [selectedTraits]);
+  const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const selectedText = useMemo(() => selectedTraits.join(listSeperator), [selectedTraits])
+  const quantity = choice.option.quantity || 1;
+  const title = editable ?
+    ngettext(msgid`Choose ${quantity} trait`, `Choose ${quantity} traits`, quantity) :
+    ngettext(msgid`Chosen trait`, `Chosen traits`, quantity);
+
+  const [currentTrait, setCurrentTrait] = useState('');
+  const saveCurrentTrait = useCallback((trait: string) => {
+    setSelectedTraits([
+      ...selectedTraits,
+      trait.replace(/[\^|,]/g, ''),
+    ]);
+    setCurrentTrait('');
+  }, [selectedTraits, setSelectedTraits, setCurrentTrait]);
+  const onSaveCurrent = useCallback(() => {
+    saveCurrentTrait(currentTrait);
+  }, [saveCurrentTrait, currentTrait]);
+  const onRemoveTrait = useCallback((index: number) => {
+    setSelectedTraits([
+      ...selectedTraits.slice(0, index),
+      ...selectedTraits.slice(index + 1),
+    ]);
+  }, [selectedTraits, setSelectedTraits]);
+  const [focused, setFocused] = useState(false);
+  const onFocus = useCallback(() => {
+    setFocused(true);
+  }, [setFocused]);
+  const onBlur = useCallback(() => {
+    setFocused(false);
+  }, [setFocused]);
+  const content = useMemo(() => {
+    const canSelectMore = (choice.option.quantity || 1) > selectedTraits.length;
+    const canSubmit = !!currentTrait.replace(/[\^|,]/g, '').trim();
+    return (
+      <View style={space.paddingBottomS}>
+        <View style={[space.paddingSideS]}>
+          { map(selectedTraits, (trait, idx) => (
+            <TraitLine key={idx} editable={editable} trait={trait} index={idx} onRemove={onRemoveTrait} />
+          ))}
+          { canSelectMore && (
+            <View style={space.paddingTopS}>
+              <NewDialog.TextInput
+                value={currentTrait}
+                placeholder={t`Add trait`}
+                onChangeText={setCurrentTrait}
+                onSubmit={saveCurrentTrait}
+                onFocus={onFocus}
+                onBlur={onBlur}
+              />
+              { focused && (
+                <View style={space.paddingTopS}>
+                  <DeckButton
+                    key="save"
+                    icon="check-thin"
+                    title={t`Save`}
+                    color={canSubmit ? 'default' : 'light_gray'}
+                    disabled={!canSubmit}
+                    thin
+                    onPress={onSaveCurrent}
+                  />
+                </View>
+              )}
+            </View>
+          )}
+        </View>
+      </View>
+    );
+  }, [choice.option.card, selectedTraits, currentTrait, setCurrentTrait])
+  const { dialog, showDialog, setVisible } = useDialog({
+    title,
+    content,
+    noPadding: true,
+    allowDismiss: true,
+  });
+  useEffect(() => {
+    setDialogVisibleRef.current = setVisible;
+  }, [setVisible]);
+  return (
+    <>
+      <View style={space.paddingBottomS}>
+        <DeckPickerStyleButton
+          title={title}
+          icon="font-size"
+          valueLabel={selectedText}
+          editable={editable}
+          onPress={showDialog}
+          first
+          last
+        />
+      </View>
+      { dialog }
+    </>
+  );
+}
+
 function AdvancedControl({ componentId, deckId, card, type, editable, choice, setChoice }: {
   componentId: string;
   deckId?: DeckId;
@@ -371,6 +510,16 @@ function AdvancedControl({ componentId, deckId, card, type, editable, choice, se
           choice={choice}
           setChoice={onSetChoice}
           deckId={deckId}
+        />
+      );
+    case 'choose_trait':
+      return (
+        <ChooseTraitAdvancedControl
+          componentId={componentId}
+          card={card}
+          editable={editable}
+          choice={choice}
+          setChoice={onSetChoice}
         />
       );
     default:

@@ -18,6 +18,7 @@ import {
   DeckId,
   CampaignId,
   DelayedDeckEdits,
+  EmbarkData,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
@@ -68,8 +69,8 @@ export default function useCampaignGuideContextFromActions(
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
-  const startScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.startScenario(userId, remoteGuideActions, campaignId, scenarioId));
+  const startScenario = useCallback((scenarioId: string, embarkData: EmbarkData | undefined) => {
+    dispatch(guideActions.startScenario(userId, remoteGuideActions, campaignId, scenarioId, embarkData));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const startSideScenario = useCallback((scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput) => {
@@ -166,14 +167,18 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries?: string[]) => {
+  const setInterScenarioData = useCallback((
+    investigatorData: InvestigatorTraumaData,
+    scenarioId: undefined | string,
+    campaignLogEntries: string[] | undefined
+  ) => {
     dispatch(guideActions.setInterScenarioData(
       userId,
       remoteGuideActions,
       campaignId,
       investigatorData,
       scenarioId,
-      campaignLogEntries,
+      campaignLogEntries
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 

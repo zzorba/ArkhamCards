@@ -27,6 +27,7 @@ import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeak
 import useSingleCard from '@components/card/useSingleCard';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -170,6 +171,7 @@ function useParsedDeckHelper(
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
   const parsedDeckRef = useRef<ParsedDeck | undefined>(parsedDeck);
+  const { listSeperator } = useContext(LanguageContext);
   useEffect(() => {
     if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
       initialized.current = true;
@@ -180,6 +182,7 @@ function useParsedDeckHelper(
         deck.deck.ignoreDeckLimitSlots,
         deck.deck.sideSlots || {},
         cards,
+        listSeperator,
         deck.previousDeck,
         deck.deck.xp_adjustment || 0,
         deck.deck
@@ -187,7 +190,7 @@ function useParsedDeckHelper(
       parsedDeckRef.current = pd;
       setParsedDeck(pd);
     }
-  }, [deck, cards, fetchIfMissing, parsedDeck]);
+  }, [deck, cards, fetchIfMissing, listSeperator, parsedDeck]);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
       const pd = parseDeck(
@@ -197,6 +200,7 @@ function useParsedDeckHelper(
         deckEdits.ignoreDeckLimitSlots,
         deckEdits.side,
         cards,
+        listSeperator,
         deck.previousDeck,
         deckEdits.xpAdjustment,
         deck.deck
@@ -204,7 +208,7 @@ function useParsedDeckHelper(
       parsedDeckRef.current = pd;
       setParsedDeck(pd);
     }
-  }, [cards, deck, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
+  }, [cards, deck, listSeperator, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
   return {
     deck: deck?.deck,
     deckT: deck,

@@ -19,6 +19,7 @@ import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
+import CampaignGuide from './CampaignGuide';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -51,7 +52,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
 }
 
 export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
-function chooseResolutionStep(resolutions: Resolution[]): InputStep {
+function chooseResolutionStep(resolutions: Resolution[], scenarioGuide: ScenarioGuide): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
     resolution => resolution.id === 'investigator_defeat'
@@ -78,6 +79,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
               `$r_${resolution.id}`,
               ...resolution.steps,
+              ...(scenarioGuide.sideScenario ? scenarioGuide.campaignGuide.sideScenarioResolutionStepIds() : []),
               INTER_SCENARIO_CHANGES_STEP_ID,
               PROCEED_STEP_ID,
             ],
@@ -96,8 +98,8 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   return step;
 }
 
-const PROCEED_STEP_ID = '$proceed';
-const EMBARK_STEP_ID = '$embark';
+export const PROCEED_STEP_ID = '$proceed';
+export const EMBARK_STEP_ID = '$embark';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
 const chooseInvestigatorsStep: InputStep = {
@@ -505,7 +507,7 @@ export function getFixedStep(
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
-      return chooseResolutionStep(scenarioGuide.resolutions());
+      return chooseResolutionStep(scenarioGuide.resolutions(), scenarioGuide);
     case CHECK_TAROT_READING:
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
@@ -513,14 +515,7 @@ export function getFixedStep(
     case EMBARK_STEP_ID: {
       return {
         id: EMBARK_STEP_ID,
-        text: t`You may <b>embark</b>.`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'scenario_status',
-            status: 'completed',
-          },
-        ],
+        type: 'internal'
       };
     };
     case PROCEED_STEP_ID: {
@@ -578,13 +573,16 @@ export function getFixedStep(
   }
 }
 
-export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
+export function scenarioStepIds(campaignGuide: CampaignGuide, scenario: Scenario, standalone?: boolean) {
+  const sharedCampaignSetup = campaignGuide.scenarioSetupStepIds();
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
+      ...sharedCampaignSetup,
       ...scenario.setup,
       INTER_SCENARIO_CHANGES_STEP_ID,
       PROCEED_STEP_ID,
     ] : [
+      ...sharedCampaignSetup,
       CHOOSE_INVESTIGATORS_STEP_ID,
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),

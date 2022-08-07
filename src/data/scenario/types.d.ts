@@ -82,7 +82,8 @@ export type CampaignDataEffect =
   | CampaignDataDifficultyEffect
   | CampaignDataNextScenarioEffect
   | CampaignDataSwapChaosBagEffect
-  | CampaignDataRedirectExperienceEffect;
+  | CampaignDataRedirectExperienceEffect
+  | CampaignDataEmbarkEffect;
 export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
@@ -124,6 +125,7 @@ export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
+  | CampaignDataNextScenarioCondition
   | CampaignDataInvestigatorCondition
   | CampaignDataLinkedCondition
   | CampaignDataVersionCondition;
@@ -171,6 +173,7 @@ export type BinaryChoiceCondition =
   | CampaignDataInvestigatorCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
+  | CampaignDataNextScenarioCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
@@ -215,9 +218,11 @@ export interface Campaign {
   campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];
   hidden_scenarios?: string[];
+  scenario_setup?: string[];
+  side_scenario_steps?: Step[];
+  side_scenario_resolution?: string[];
   setup: string[];
   steps: Step[];
-  side_scenario_steps?: Step[];
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
@@ -228,9 +233,10 @@ export interface CampaignMap {
   height: number;
   max_time: number;
   final_scenario: string;
-  locations: Location[];
+  locations: MapLocation[];
+  labels: MapLabel[];
 }
-export interface Location {
+export interface MapLocation {
   id: string;
   x: number;
   y: number;
@@ -244,8 +250,15 @@ export interface Location {
     text?: string;
   }[];
   status: "locked" | "standard" | "side";
-  label: "left" | "right";
+  direction: "left" | "right";
   connections: string[];
+}
+export interface MapLabel {
+  x: number;
+  y: number;
+  name: string;
+  direction: "left" | "center" | "right";
+  type: "connection" | "ocean" | "small_ocean" | "continent" | "country";
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -282,6 +295,7 @@ export interface MultiCondition {
     | CampaignLogCondition
     | CampaignLogSectionExistsCondition
     | CampaignDataChaosBagCondition
+    | CampaignDataNextScenarioCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
     | CampaignDataScenarioCondition
@@ -470,6 +484,12 @@ export interface CampaignDataRedirectExperienceEffect {
   setting: "redirect_experience";
   investigator_count: string;
 }
+export interface CampaignDataEmbarkEffect {
+  type: "campaign_data";
+  setting: "embark";
+  location?: string;
+  starting_location?: boolean;
+}
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
   setting: "lead_investigator" | "playing_scenario";
@@ -567,6 +587,11 @@ export interface Option {
   pre_border_effects?: Effect[];
   effects?: Effect[];
   steps?: string[];
+}
+export interface CampaignDataNextScenarioCondition {
+  type: "campaign_data";
+  campaign_data: "next_scenario";
+  options: BoolOption[];
 }
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";

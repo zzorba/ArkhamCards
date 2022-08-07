@@ -33,6 +33,7 @@ import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
 import { useCardCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -77,6 +78,7 @@ function ScrollableCard({ componentId, mode, editable, card, setChoice, width, h
   mode?: 'view' | 'edit' | 'upgrade';
 }) {
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const customizationChoices = useMemo(() => {
     if (card && deckId) {
       return (deckCount ? customizations[card.code] || [] : []);
@@ -84,8 +86,8 @@ function ScrollableCard({ componentId, mode, editable, card, setChoice, width, h
     return undefined;
   }, [deckId, customizations, card, deckCount])
   const customizedCard = useMemo(() => {
-    return card?.withCustomizations(customizationChoices);
-  }, [card, customizationChoices]);
+    return card?.withCustomizations(listSeperator, customizationChoices);
+  }, [card, listSeperator, customizationChoices]);
   if (!customizedCard) {
     return (
       <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
@@ -127,6 +129,7 @@ function ScrollableCard({ componentId, mode, editable, card, setChoice, width, h
 
 function DbCardDetailSwipeView(props: Props) {
   const { componentId, cardCodes, editable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
   const deckEdits = useSimpleDeckEdits(deckId);
   const { backgroundStyle, width, height } = useContext(StyleContext);
@@ -148,8 +151,8 @@ function DbCardDetailSwipeView(props: Props) {
 
   const currentCard = useMemo(() => {
     const card = cards[currentCode];
-    return card && card.withCustomizations(customizations[currentCode]);
-  }, [customizations, currentCode, cards]);
+    return card && card.withCustomizations(listSeperator, customizations[currentCode]);
+  }, [listSeperator, customizations, currentCode, cards]);
   useEffect(() => {
     const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));
     if (find(nearbyCards, code => !cards[code])) {

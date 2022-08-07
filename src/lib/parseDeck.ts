@@ -259,6 +259,7 @@ export function getCards(
   cards: CardsMap,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
+  listSeperator: string,
   customizations: Customizations
 ): Card[] {
   return flatMap(keys(slots), code => {
@@ -266,7 +267,7 @@ export function getCards(
     if (!card) {
       return [];
     }
-    const customizedCard = card.withCustomizations(customizations[card.code]);
+    const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
     return map(
       range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
       () => customizedCard
@@ -280,6 +281,7 @@ function getDeckChanges(
   deck: Deck,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
+  listSeperator: string,
   customizations: Customizations,
   previousDeck?: Deck,
 ): DeckChanges | undefined {
@@ -303,6 +305,7 @@ function getDeckChanges(
   const previousDeckCards: Card[] = getCards(cards,
     previousDeck.slots || {},
     previousDeck.ignoreDeckLimitSlots || {},
+    listSeperator,
     customizations
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
@@ -557,6 +560,7 @@ function calculateTotalXp(
 export function parseBasicDeck(
   deck: Deck | null,
   cards: CardsMap,
+  listSeperator: string,
   previousDeck?: Deck
 ): ParsedDeck | undefined {
   if (!deck) {
@@ -569,6 +573,7 @@ export function parseBasicDeck(
     deck.ignoreDeckLimitSlots || {},
     deck.sideSlots || {},
     cards,
+    listSeperator,
     previousDeck,
     deck.xp_adjustment,
     deck
@@ -639,6 +644,7 @@ export function parseDeck(
   ignoreDeckLimitSlots: Slots,
   sideSlots: Slots,
   cards: CardsMap,
+  listSeperator: string,
   previousDeck?: Deck,
   xpAdjustment?: number,
   originalDeck?: Deck
@@ -715,7 +721,7 @@ export function parseDeck(
     }
   );
 
-  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, customizations);
+  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
   const problem = validation.getProblem(deckCards) || undefined;
 
   const changes = originalDeck && getDeckChanges(
@@ -724,6 +730,7 @@ export function parseDeck(
     originalDeck,
     slots,
     ignoreDeckLimitSlots,
+    listSeperator,
     customizations,
     previousDeck);
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);

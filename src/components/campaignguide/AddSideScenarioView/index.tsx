@@ -23,14 +23,16 @@ import { useDialog } from '@components/deck/dialogs';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import useProcessedCampaign from '../useProcessedCampaign';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { EmbarkData } from '@actions/types';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
+  embarkData?: EmbarkData;
 }
 
 type Props = NavigationProps & AddSideScenarioProps;
 
-function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
+function AddSideScenarioView({ componentId, latestScenarioId, embarkData }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const [customScenarioName, setCustomScenarioName] = useState('');
@@ -39,6 +41,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
     campaignState.startOfficialSideScenario(
       scenario.id,
       latestScenarioId,
+      embarkData,
     );
     Navigation.pop(componentId);
   }, [componentId, latestScenarioId, campaignState]);
@@ -48,6 +51,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
       latestScenarioId,
       customScenarioName,
       customXpCost,
+      embarkData,
     );
     Navigation.pop(componentId);
   }, [componentId, latestScenarioId, campaignState, customScenarioName, customXpCost]);

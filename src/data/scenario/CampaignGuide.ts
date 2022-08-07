@@ -59,6 +59,12 @@ interface LogEntryInvestigatorCount extends LogSection {
   type: 'investigator_count';
 }
 
+interface UnprocessedScenario {
+  id: ScenarioId;
+  scenario: Scenario;
+  side: boolean;
+}
+
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies | LogEntryInvestigatorCount;
 export const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 export const CAMPAIGN_SETUP_ID = '$campaign_setup';
@@ -105,6 +111,13 @@ export default class CampaignGuide {
       }
       return [];
     });
+  }
+
+  scenarioSetupStepIds(): string[] {
+    return this.campaign.campaign.scenario_setup || [];
+  }
+  sideScenarioResolutionStepIds(): string[] {
+    return this.campaign.campaign.side_scenario_resolution || [];
   }
 
   tarotScenarios(): string[] | undefined {
@@ -206,8 +219,7 @@ export default class CampaignGuide {
       );
       const setupScenario = this.findScenario(CAMPAIGN_SETUP_ID);
       const nextScenarios = this.actuallyProcessScenario(
-        setupScenario.id,
-        setupScenario.scenario,
+        setupScenario,
         campaignState,
         campaignLog,
         standalone,
@@ -223,8 +235,7 @@ export default class CampaignGuide {
         if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
           const scenario = this.findScenario(scenarioId);
           const nextScenarios = this.actuallyProcessScenario(
-            scenario.id,
-            scenario.scenario,
+            scenario,
             campaignState,
             campaignLog,
             standalone,
@@ -272,10 +283,7 @@ export default class CampaignGuide {
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog,
     includeSkipped: boolean
-  ): {
-    id: ScenarioId;
-    scenario: Scenario;
-  } | undefined {
+  ): UnprocessedScenario | undefined {
     if (!campaignLog.scenarioId) {
       return this.findScenario(CAMPAIGN_SETUP_ID);
     }
@@ -294,6 +302,7 @@ export default class CampaignGuide {
       return {
         id: this.parseScenarioId(entry.scenario),
         scenario: this.insertCustomPlayScenarioStep(scenario),
+        side: true,
       };
     }
 
@@ -316,10 +325,7 @@ export default class CampaignGuide {
     return undefined;
   }
 
-  private findScenario(encodedScenarioId: string): {
-    id: ScenarioId;
-    scenario: Scenario;
-  } {
+  private findScenario(encodedScenarioId: string): UnprocessedScenario {
     if (encodedScenarioId === CAMPAIGN_SETUP_ID) {
       return {
         id: this.parseScenarioId(CAMPAIGN_SETUP_ID),
@@ -333,6 +339,7 @@ export default class CampaignGuide {
           setup: this.campaign.campaign.setup,
           steps: this.campaign.campaign.steps,
         },
+        side: false,
       };
     }
     const id = this.parseScenarioId(encodedScenarioId);
@@ -341,6 +348,7 @@ export default class CampaignGuide {
       return {
         id,
         scenario: mainScenario,
+        side: false,
       };
     }
     const sideScenario = find(this.sideCampaign.scenarios, scenario => scenario.id === id.scenarioId);
@@ -348,6 +356,7 @@ export default class CampaignGuide {
       return {
         id,
         scenario: sideScenario,
+        side: true,
       };
     }
     throw new CampaignUpdateRequiredError();
@@ -381,8 +390,7 @@ export default class CampaignGuide {
   }
 
   private actuallyProcessScenario(
-    id: ScenarioId,
-    scenario: Scenario,
+    { id, scenario, side }: UnprocessedScenario,
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog,
     standalone: boolean | undefined,
@@ -391,6 +399,7 @@ export default class CampaignGuide {
     const scenarioGuide = new ScenarioGuide(
       id.encodedScenarioId,
       scenario,
+      side,
       this,
       campaignLog,
       !!standalone
@@ -467,8 +476,7 @@ export default class CampaignGuide {
     return [
       firstResult,
       ...this.actuallyProcessScenario(
-        nextScenario.id,
-        nextScenario.scenario,
+        nextScenario,
         campaignState,
         latestCampaignLog,
         standalone,
@@ -477,7 +485,9 @@ export default class CampaignGuide {
     ];
   }
 
-  private getCustomScenario(entry: GuideStartCustomSideScenarioInput): Scenario {
+  private getCustomScenario(
+    entry: GuideStartCustomSideScenarioInput
+  ): Scenario {
     return {
       id: entry.scenario,
       scenario_name: entry.name,
@@ -485,10 +495,12 @@ export default class CampaignGuide {
       header: '',
       setup: [
         'spend_xp_cost',
+        ...this.scenarioSetupStepIds(),
         PLAY_SCENARIO_STEP_ID,
         '$end_of_scenario_status',
         '$earn_xp',
         '$upgrade_decks',
+        ...this.sideScenarioResolutionStepIds(),
         '$proceed',
       ],
       steps: [

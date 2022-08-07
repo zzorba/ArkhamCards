@@ -17,6 +17,7 @@ import space from '@styles/space';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { useDeckHistory } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface DeckHistoryProps {
   id: DeckId;
@@ -45,6 +46,7 @@ export default function DeckHistoryView({
 }: DeckHistoryProps & NavigationProps) {
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
   const [deckHistory, loading, refreshDeckHistory] = useDeckHistory(id, investigator, campaign);
   const [cards] = useLatestDecksCards(deckHistory, deckHistory?.length ? (deckHistory[0].deck.taboo_id || 0) : 0);
   const historicDecks: HistoryDeckItemType[] = useMemo(() => {
@@ -61,6 +63,7 @@ export default function DeckHistoryView({
         (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.deck.ignoreDeckLimitSlots,
         (currentDeck && deckEdits?.side) || deck.deck.sideSlots || {},
         cards,
+        listSeperator,
         deck.previousDeck,
         currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.deck.xp_adjustment || 0),
         deck.deck
@@ -79,7 +82,7 @@ export default function DeckHistoryView({
       });
     }
     return allDecks;
-  }, [id, deckHistory, cards, deckEdits]);
+  }, [id, deckHistory, cards, deckEdits, listSeperator]);
   const deckTitle = useCallback((deck: ParsedDeck, versionNumber: number): string => {
     if (!deck.changes) {
       return t`Original Deck`;

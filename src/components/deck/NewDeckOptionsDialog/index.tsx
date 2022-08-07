@@ -48,6 +48,7 @@ import useChaosDeckGenerator from '../useChaosDeckGenerator';
 import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -400,6 +401,7 @@ function NewDeckOptionsDialog({
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
   const [generateChaosDeck, chaosDeckLoading, chaosCards] = useChaosDeckGenerator({ investigatorCode: investigatorId, meta, tabooSetId, enabled: specialDeckMode === 'chaos', setSlots, setError });
+  const { listSeperator } = useContext(LanguageContext);
   const parsedChaosDeck = useMemo(() => {
     if (specialDeckMode !== 'chaos' || !chaosSlots || !investigatorBack) {
       return undefined;
@@ -408,8 +410,8 @@ function NewDeckOptionsDialog({
       ...chaosSlots,
       ...requiredSlots,
     };
-    return parseDeck(investigatorBack.code, meta, slots, {}, {}, chaosCards);
-  }, [investigatorBack, meta, chaosSlots, requiredSlots, chaosCards, specialDeckMode]);
+    return parseDeck(investigatorBack.code, meta, slots, {}, {}, chaosCards, listSeperator);
+  }, [investigatorBack, meta, chaosSlots, requiredSlots, chaosCards, specialDeckMode, listSeperator]);
 
   const [parsedDeckComponent] = useParsedDeckComponent({
     componentId,

@@ -608,6 +608,14 @@ export function campaignDataConditionResult(
     }
     case 'investigator':
       return campaignDataInvestigatorConditionResult(condition, campaignLog);
+    case 'next_scenario': {
+      const hasNextScenario = !!campaignLog.campaignData.nextScenario;
+      const currentScenarioId = campaignLog.scenarioId ? campaignLog.campaignGuide.parseScenarioId(campaignLog.scenarioId) : undefined;
+      const replayRequired = !!currentScenarioId && (
+        (currentScenarioId.replayAttempt || 0) < (campaignLog.campaignData.scenarioReplayCount[currentScenarioId.scenarioId] || 0)
+      );
+      return binaryConditionResult(hasNextScenario || replayRequired, condition.options);
+    }
   }
 }
 
@@ -632,12 +640,11 @@ export function multiConditionResult(
         case 'campaign_data': {
           switch (subCondition.campaign_data) {
             case 'chaos_bag':
-              return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
-              return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'scenario_completed':
             case 'scenario_replayed':
-              return campaignDataScenarioConditionResult(subCondition, campaignLog).option ? 1 : 0;
+            case 'next_scenario':
+              return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
         case 'scenario_data': {
@@ -807,8 +814,6 @@ export function conditionResult(
       return campaignLogCountConditionResult(condition, campaignLog);
     case 'math':
       return mathConditionResult(condition, campaignLog);
-    case 'campaign_data':
-      return campaignDataConditionResult(condition, campaignLog);
     case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
     case 'trauma':

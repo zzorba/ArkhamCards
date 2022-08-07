@@ -15,6 +15,7 @@ import space, { m, s } from '@styles/space';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import { useLatestDeckCards } from '@components/core/hooks';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   step: XpCountStep;
@@ -28,7 +29,8 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
   playerCards?: CardsMap;
   children: (xp: number) => JSX.Element | null;
 }) {
-  const parsedDeck = useMemo(() => playerCards ? parseBasicDeck(deck, playerCards, previousDeck) : undefined, [deck, playerCards, previousDeck]);
+  const { listSeperator } = useContext(LanguageContext);
+  const parsedDeck = useMemo(() => playerCards ? parseBasicDeck(deck, playerCards, listSeperator, previousDeck) : undefined, [deck, playerCards, previousDeck]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
   if (!parsedDeck || !playerCards) {
     return children(earnedXp);

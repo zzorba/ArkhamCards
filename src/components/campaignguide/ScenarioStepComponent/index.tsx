@@ -12,7 +12,7 @@ import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
-import { CHOOSE_RESOLUTION_STEP_ID } from '@data/scenario/fixedSteps';
+import { CHOOSE_RESOLUTION_STEP_ID, PROCEED_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -188,7 +188,7 @@ export default function ScenarioStepComponent({
         width={width}
         switchCampaignScenario={switchCampaignScenario}
       />
-      { (step.step.id === '$proceed') && (
+      { (step.step.id === PROCEED_STEP_ID) && (
         <View style={space.paddingS}>
           <ActionButton
             leftIcon="check"

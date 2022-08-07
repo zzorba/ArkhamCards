@@ -5,6 +5,7 @@ import {
   InvestigatorTraumaData,
   DeckId,
   DelayedDeckEdits,
+  EmbarkData,
 } from '@actions/types';
 import CampaignStateHelper from './CampaignStateHelper';
 
@@ -87,6 +88,10 @@ export default class ScenarioStateHelper {
 
   interScenarioCampaignLogEntries(): string[] | undefined {
     return this.campaignState.interScenarioCampaignLogEntries(this.scenarioId);
+  }
+
+  embarkData(): EmbarkData | undefined {
+    return this.campaignState.scenarioEmbarkData(this.scenarioId);
   }
 
   setCampaignLink(id: string, decision: string) {

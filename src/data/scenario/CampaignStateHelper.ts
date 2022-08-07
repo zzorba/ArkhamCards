@@ -16,6 +16,7 @@ import {
   SYSTEM_BASED_GUIDE_INPUT_IDS,
   DelayedDeckEdits,
   TarotReading,
+  EmbarkData,
 } from '@actions/types';
 import { ScenarioId, StepId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
@@ -33,8 +34,8 @@ export interface CampaignGuideActions {
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
   setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
-  setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries?: string[]) => void;
-  startScenario: (scenarioId: string) => void;
+  setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries: string[] | undefined) => void;
+  startScenario: (scenarioId: string, embarkData: EmbarkData | undefined) => void;
   startSideScenario: (
     scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
   ) => void;
@@ -96,8 +97,8 @@ export default class CampaignStateHelper {
     this.actions.removeInvestigator(investigator);
   }
 
-  startScenario(scenarioId: string) {
-    this.actions.startScenario(scenarioId);
+  startScenario(scenarioId: string, embarkData?: EmbarkData) {
+    this.actions.startScenario(scenarioId, embarkData);
   }
 
   closeOnUndo(scenarioId: string) {
@@ -120,7 +121,8 @@ export default class CampaignStateHelper {
 
   startOfficialSideScenario(
     scenarioId: string,
-    previousScenarioId: ScenarioId
+    previousScenarioId: ScenarioId,
+    embarkData: EmbarkData | undefined
   ) {
     this.actions.startSideScenario({
       type: 'start_side_scenario',
@@ -128,13 +130,15 @@ export default class CampaignStateHelper {
       sideScenarioType: 'official',
       scenario: scenarioId,
       step: undefined,
+      embarkData,
     });
   }
 
   startCustomSideScenario(
     previousScenarioId: ScenarioId,
     name: string,
-    xpCost: number
+    xpCost: number,
+    embarkData: EmbarkData | undefined
   ) {
     this.actions.startSideScenario({
       type: 'start_side_scenario',
@@ -144,6 +148,7 @@ export default class CampaignStateHelper {
       name,
       xpCost,
       step: undefined,
+      embarkData,
     });
   }
 
@@ -184,7 +189,11 @@ export default class CampaignStateHelper {
       ...(this.interScenarioInvestigatorData(scenarioId) || {}),
       [investigator]: trauma,
     };
-    this.actions.setInterScenarioData(investigatorData, scenarioId, this.interScenarioCampaignLogEntries(scenarioId));
+    this.actions.setInterScenarioData(
+      investigatorData,
+      scenarioId,
+      this.interScenarioCampaignLogEntries(scenarioId)
+    );
   }
 
   setInterScenarioCampaignLogEntries(campaignLogEntries: string[], scenarioId: undefined | string) {
@@ -242,7 +251,11 @@ export default class CampaignStateHelper {
   }
 
   scenarioEntries(id: ScenarioId): GuideInput[] {
-    return this.state.inputs(i => !!i.scenario && i.scenario === id.encodedScenarioId);
+    return this.state.inputs(i =>
+      (!!i.scenario && i.scenario === id.encodedScenarioId) ||
+      ((i.type === 'start_scenario' || i.type === 'start_side_scenario') &&
+        !!i.embarkData && i.embarkData.previousScenarioId === id.encodedScenarioId)
+    );
   }
 
   linkedEntries(): GuideInput[] {
@@ -261,6 +274,7 @@ export default class CampaignStateHelper {
       )
     ));
   }
+
 
   private linkedEntry(
     type: string,
@@ -308,6 +322,18 @@ export default class CampaignStateHelper {
     const entry = this.entry('inter_scenario', undefined, scenarioId);
     if (entry && entry.type === 'inter_scenario') {
       return entry.campaignLogEntries;
+    }
+    return undefined;
+  }
+
+  scenarioEmbarkData(scenarioId: string | undefined): EmbarkData | undefined {
+    const entry = this.state.findLastInput(input => (
+      (input.type === 'start_scenario' || input.type === 'start_side_scenario') &&
+      !!scenarioId &&
+      input.embarkData?.previousScenarioId === scenarioId
+    ));
+    if (entry && (entry.type === 'start_scenario' || entry.type === 'start_side_scenario')) {
+      return entry.embarkData;
     }
     return undefined;
   }

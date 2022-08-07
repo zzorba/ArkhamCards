@@ -24,6 +24,7 @@ import {
   UploadedCampaignId,
   UPDATE_CAMPAIGN,
   DelayedDeckEdits,
+  EmbarkData,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeChaosBagResultsSelector } from '@reducers';
@@ -233,12 +234,14 @@ export function startScenario(
   userId: string | undefined,
   actions: GuideActions,
   campaignId: CampaignId,
-  scenario: string
+  scenario: string,
+  embarkData: EmbarkData | undefined
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
     type: 'start_scenario',
     scenario,
     step: undefined,
+    embarkData,
   });
 }
 
@@ -274,7 +277,7 @@ export function setInterScenarioData(
   campaignId: CampaignId,
   value: InvestigatorTraumaData,
   scenario: string | undefined,
-  campaignLogEntries?: string[],
+  campaignLogEntries: string[] | undefined
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
     type: 'inter_scenario',

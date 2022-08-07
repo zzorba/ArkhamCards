@@ -34,10 +34,11 @@ function randomAllowedCardHelper(
         delete validation.slots[card.code];
       }
 
-      if (!(
-        (problem && problem.reason !== TOO_FEW_CARDS) ||
-        card.collectionDeckLimit(in_collection, ignore_collection) < (validation.slots[card.code] || 0) ||
-        invalidCards.length)) {
+      if (
+        (!problem || problem.reason === TOO_FEW_CARDS) &&
+        card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0) &&
+        !invalidCards.length
+      ) {
         // Found a good card
         break;
       }

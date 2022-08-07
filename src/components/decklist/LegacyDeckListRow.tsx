@@ -83,7 +83,7 @@ function LegacyDeckListRowDetails({
     ...(previousDeck ? keys(previousDeck.slots) : []),
     ...(previousDeck ? keys(previousDeck.ignoreDeckLimitSlots) : []),
   ]), [deck, previousDeck], deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, previousDeck), [details, deck, cards, previousDeck]);
+  const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, listSeperator, previousDeck), [details, listSeperator, deck, cards, previousDeck]);
   if (details) {
     return (
       <>

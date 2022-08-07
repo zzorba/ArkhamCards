@@ -596,7 +596,7 @@ export default class Card {
     };
   }
 
-  public withCustomizations(customizations?: CustomizationChoice[]): Card {
+  public withCustomizations(listSeperator: string, customizations?: CustomizationChoice[]): Card {
     if (!this.customization_options) {
       return this;
     }
@@ -628,20 +628,32 @@ export default class Card {
       if (option.real_traits) {
         card.real_traits = option.real_traits;
       }
-      if (option.text_change && option.text_edit) {
+      let text_edit = option.text_edit;
+      if (option.text_change && option.choice) {
+        switch (option.choice) {
+          case 'choose_trait':
+            text_edit = text_edit + (change.choice?.split('^').map(x => `[[${x}]]`).join(listSeperator) || '');
+            break;
+          case 'choose_card':
+            // TODO???
+        }
+      }
+      if (option.text_change && text_edit) {
         const position = option.position || 0;
-        switch (option.text_change) {
-          case 'trait':
-            card.traits = option.text_edit;
-            break;
-          case 'insert':
-            // Delayed execution
-            break;
-          case 'replace':
-            lines[position] = option.text_edit;
-            break;
-          case 'append':
-            lines.push(option.text_edit);
+        if (option.choice !== 'choose_card') {
+          switch (option.text_change) {
+            case 'trait':
+              card.traits = text_edit;
+              break;
+            case 'insert':
+              // Delayed execution
+              break;
+            case 'replace':
+              lines[position] = text_edit;
+              break;
+            case 'append':
+              lines.push(text_edit);
+          }
         }
       }
       if (option.choice) {
@@ -671,9 +683,22 @@ export default class Card {
     const final_lines: string[] = [];
     forEach(lines, (line, idx) => {
       final_lines.push(line);
-      forEach(unlocked, ({ option }) => {
-        if (option.text_change === 'insert' && option.position === idx && option.text_edit) {
-          final_lines.push(option.text_edit);
+      forEach(unlocked, ({ option, choice }) => {
+        if (option.text_change === 'insert' && option.position === idx) {
+          let text_edit = option.text_edit;
+          if (option.text_change && option.choice) {
+            switch (option.choice) {
+              case 'choose_trait':
+                text_edit = text_edit + (choice?.split('^').map(x => `[[${x}]]`).join(listSeperator) || '');
+                break;
+              case 'choose_card':
+                // TODO: skip for now?
+                return;
+            }
+          }
+          if (text_edit) {
+            final_lines.push(text_edit);
+          }
         }
       });
     });

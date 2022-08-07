@@ -26,6 +26,7 @@ import Card from '@data/types/Card';
 import AppModal from '@components/core/AppModal';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { parseDeck } from '@lib/parseDeck';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 
 interface ModalOptions {
@@ -740,7 +741,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     setSaveError(err.message || 'Unknown Error');
   }, [setSaveError, setSaving]);
   const deckActions = useDeckActions();
-
+  const { listSeperator } = useContext(LanguageContext);
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
       return;
@@ -758,6 +759,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           deckEditsRef.current.ignoreDeckLimitSlots,
           deckEditsRef.current.side,
           cards,
+          listSeperator,
           previousDeck,
           deckEditsRef.current.xpAdjustment,
           deck
@@ -800,7 +802,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
       handleSaveError(e);
     }
   }, [deck, saving, cards, previousDeck, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
-    dispatch, deckDispatch, handleSaveError, setSaving]);
+    listSeperator, dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);

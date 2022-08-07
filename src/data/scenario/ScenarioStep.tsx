@@ -34,7 +34,8 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_STEP_ID } from '@data/scenario/fixedSteps';
+import CampaignGuide from './CampaignGuide';
 
 export default class ScenarioStep {
   step: Step;
@@ -224,6 +225,54 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     switch (this.step.type) {
       case 'internal':
+        if (this.step.id === EMBARK_STEP_ID) {
+          const embarkData = scenarioState.embarkData();
+          const effectsWithInput: EffectsWithInput[] = [];
+
+          if (embarkData) {
+            const nextScenarioLink: Effect[] = embarkData.nextScenario === '$side_scenario' ?
+            [] : [
+              {
+                type: 'campaign_data',
+                setting: 'next_scenario',
+                scenario: embarkData.nextScenario,
+              },
+            ];
+            effectsWithInput.push({
+              numberInput: [embarkData.time],
+              effects: [
+                {
+                  type: 'campaign_log_count',
+                  section: 'time',
+                  operation: 'add_input'
+                },
+                {
+                  type: 'campaign_data',
+                  setting: 'embark',
+                  location: embarkData.destination,
+                },
+                ...nextScenarioLink,
+              ],
+            });
+          } else {
+            // No data yet, so mark that we want some.
+            effectsWithInput.push({
+              effects: [
+                {
+                  type: 'campaign_data',
+                  setting: 'embark',
+                },
+              ],
+            });
+          }
+          return this.maybeCreateEffectsStep(
+            this.step.id,
+            this.remainingStepIds,
+            effectsWithInput,
+            scenarioState,
+            {}
+          );
+        }
         if (this.step.id === INTER_SCENARIO_CHANGES_STEP_ID) {
           const investigatorData = scenarioState.interScenarioInvestigatorData();
           const effectsWithInput: EffectsWithInput[] = [];

@@ -144,6 +144,11 @@ interface CampaignData {
     [code: string]: TraumaAndCardData | undefined;
   };
   redirect_experience: string;
+
+  // TSK stuff;
+  embark?: boolean;
+  location?: string;
+  visitedLocations: string[];
 }
 
 export default class GuidedCampaignLog {
@@ -231,6 +236,7 @@ export default class GuidedCampaignLog {
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
         redirect_experience: '',
+        visitedLocations: [],
       };
       this.chaosBag = {};
       this.swapChaosBag = {};
@@ -1283,6 +1289,21 @@ export default class GuidedCampaignLog {
       }
       case 'redirect_experience': {
         this.campaignData.redirect_experience = effect.investigator_count;
+        break;
+      }
+      case 'embark': {
+        if (effect.location) {
+          this.campaignData.location = effect.location;
+          if (!effect.starting_location) {
+            this.campaignData.visitedLocations = [
+              ...this.campaignData.visitedLocations,
+              effect.location,
+            ];
+          }
+          this.campaignData.embark = false;
+        } else {
+          this.campaignData.embark = true;
+        }
         break;
       }
     }

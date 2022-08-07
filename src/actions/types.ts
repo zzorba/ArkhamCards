@@ -1194,9 +1194,17 @@ export interface GuideChoiceInput extends BasicInput {
   choice: number;
 }
 
+export interface EmbarkData {
+  previousScenarioId: string;
+  destination: string;
+  time: number;
+  nextScenario: string;
+}
+
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
   step: undefined;
+  embarkData?: EmbarkData;
 }
 
 export interface GuideInterScenarioInput extends BasicInput {
@@ -1211,6 +1219,7 @@ interface StartSideScenarioInput extends BasicInput {
   scenario: string;
   previousScenarioId: string;
   step: undefined;
+  embarkData?: EmbarkData;
 }
 export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
   sideScenarioType: 'official';

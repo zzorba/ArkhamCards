@@ -960,6 +960,7 @@ export default function({
       side: !!sideDeck,
     },
   ] : [], [deckId, sideDeck]);
+  const { lang, listSeperator } = useContext(LanguageContext);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
@@ -983,7 +984,7 @@ export default function({
         return (
           <CardSearchResult
             key={item.id}
-            card={card.withCustomizations(customizations?.[card.code])}
+            card={card.withCustomizations(listSeperator, customizations?.[card.code])}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
@@ -1040,8 +1041,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [customizations, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
-  const { lang } = useContext(LanguageContext);
+  }, [customizations, listSeperator, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);
