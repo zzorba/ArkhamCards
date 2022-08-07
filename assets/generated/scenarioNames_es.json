@@ -21,7 +21,7 @@
   },
   {
     "id": "alexandria",
-    "name": "Alexandria"
+    "name": "Alejandría"
   },
   {
     "id": "all_or_nothing",
@@ -77,7 +77,7 @@
   },
   {
     "id": "bermuda",
-    "name": "Bermuda"
+    "name": "Las Bermudas"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -133,7 +133,7 @@
   },
   {
     "id": "constantinople",
-    "name": "Constantinople"
+    "name": "Constantinopla"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -281,7 +281,7 @@
   },
   {
     "id": "havana",
-    "name": "Havana"
+    "name": "La Habana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -365,11 +365,11 @@
   },
   {
     "id": "kathmandu",
-    "name": "Kathmandu"
+    "name": "Katmandú"
   },
   {
     "id": "kuala_lampur",
-    "name": "Kuala Lampur"
+    "name": "Kuala Lumpur"
   },
   {
     "id": "lagos",
@@ -381,7 +381,7 @@
   },
   {
     "id": "london",
-    "name": "London"
+    "name": "Londres"
   },
   {
     "id": "lost_in_time_and_space",
@@ -417,7 +417,7 @@
   },
   {
     "id": "moscow",
-    "name": "Moscow"
+    "name": "Moscú"
   },
   {
     "id": "mourning_chorus",
@@ -637,15 +637,15 @@
   },
   {
     "id": "reykjavik",
-    "name": "Reykjavik"
+    "name": "Reikiavik"
   },
   {
     "id": "rio_de_janiero",
-    "name": "Rio de Janiero"
+    "name": "Río de Janeiro"
   },
   {
     "id": "rome",
-    "name": "Rome"
+    "name": "Roma"
   },
   {
     "id": "san_francisco",
@@ -657,7 +657,7 @@
   },
   {
     "id": "shanghai",
-    "name": "Shanghai"
+    "name": "Shanghái"
   },
   {
     "id": "shattered_aeons",
@@ -673,7 +673,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Stockholm"
+    "name": "Estocolmo"
   },
   {
     "id": "strange_moons",
@@ -681,7 +681,7 @@
   },
   {
     "id": "sydney",
-    "name": "Sydney"
+    "name": "Sídney"
   },
   {
     "id": "tcu_epilogue",
@@ -917,7 +917,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Tokyo"
+    "name": "Tokio"
   },
   {
     "id": "torch",
