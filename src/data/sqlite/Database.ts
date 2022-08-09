@@ -13,6 +13,7 @@ import { SortType } from '@actions/types';
 import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
+import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
 
 type DatabaseListener = () => void;
 
@@ -40,6 +41,7 @@ async function createDatabaseConnection(recreate: boolean) {
       HealsDamageMigration1657382994910,
       CustomizeMigration1657651357621,
       RemovableSlot1658075280573,
+      AlternateRequiredCodeMigration1660064759967,
     ],
     entities: [
       Card,

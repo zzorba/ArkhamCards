@@ -232,6 +232,9 @@ export default class Card {
   @Column('text', { nullable: true })
   public alternate_of_code?: string;
 
+  @Column('text', { nullable: true })
+  public alternate_required_code?: string;
+
   @Column('integer', { nullable: true })
   public taboo_set_id?: number;
 

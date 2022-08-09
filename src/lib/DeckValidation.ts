@@ -161,6 +161,7 @@ export default class DeckValidation {
       if (card.deck_requirements.card) {
         if (find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
+          !find(cards, theCard => theCard.alternate_required_code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
         )) {
           return INVESTIGATOR_PROBLEM;

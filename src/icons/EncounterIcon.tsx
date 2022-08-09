@@ -309,6 +309,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'excelsior_management':
       case 'sins_of_the_past':
       case 'vile_experiments':
+      case 'meteoric_phenomenon':
+      case 'unnatural_disturbances':
+      case 'inhospitable_locality':
+      case 'made_flesh':
         return this.standaloneIcon(encounter_code, size, color);
       case 'hotel':
         return this.standaloneIcon('excelsior', size, color);
@@ -580,6 +584,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_symphony_of_erich_zann':
       case 'the_symphony_of_erich_zahn':
         return this.standaloneIcon('zez', size, color);
+      case 'the_colour_out_of_space':
+        return this.standaloneIcon('meteoric_phenomenon', size, color);
       case 'a_sea_of_troubles':
       case 'gurathnakas_shadows':
       case 'arkham_in_wonderland':

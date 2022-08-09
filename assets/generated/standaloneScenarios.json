@@ -69,6 +69,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "the_colour_out_of_space"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "the_eternal_slumber"
   },
   {

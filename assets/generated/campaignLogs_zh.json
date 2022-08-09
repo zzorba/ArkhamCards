@@ -2770,6 +2770,18 @@
             "text": "深淵得到拯救。"
           },
           {
+            "id": "zcos_abandoned_the_people_of_eastwick",
+            "text": "you abandoned the people of Eastwick."
+          },
+          {
+            "id": "zcos_fended_off_an_alien_entity",
+            "text": "you fended off an alien entity."
+          },
+          {
+            "id": "zcos_slaughtered_the_people_of_eastwick",
+            "text": "you slaughtered the people of Eastwick."
+          },
+          {
             "id": "zez_all_is_quiet",
             "text": "all is quiet at Rue d'Auseil... for now."
           }
