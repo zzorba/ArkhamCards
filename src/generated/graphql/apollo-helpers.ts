@@ -1419,8 +1419,9 @@ export type friend_status_type_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_cardKeySpecifier = ('back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'health_per_investigator' | 'hidden' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked_card' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | 'updated_at' | 'vengeance' | 'victory' | 'xp' | full_cardKeySpecifier)[];
+export type full_cardKeySpecifier = ('alternate_required_code' | 'back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'health_per_investigator' | 'hidden' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked_card' | 'myriad' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'translations' | 'translations_aggregate' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | full_cardKeySpecifier)[];
 export type full_cardFieldPolicy = {
+	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1485,6 +1486,7 @@ export type full_cardFieldPolicy = {
 	type_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -1507,7 +1509,7 @@ export type full_card_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_avg_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_avg_fieldsKeySpecifier)[];
+export type full_card_avg_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_avg_fieldsKeySpecifier)[];
 export type full_card_avg_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1531,11 +1533,13 @@ export type full_card_avg_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_max_fieldsKeySpecifier = ('back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'illustrator' | 'imagesrc' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'updated_at' | 'vengeance' | 'victory' | 'xp' | full_card_max_fieldsKeySpecifier)[];
+export type full_card_max_fieldsKeySpecifier = ('alternate_required_code' | 'back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'illustrator' | 'imagesrc' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_max_fieldsKeySpecifier)[];
 export type full_card_max_fieldsFieldPolicy = {
+	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1581,11 +1585,13 @@ export type full_card_max_fieldsFieldPolicy = {
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_min_fieldsKeySpecifier = ('back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'illustrator' | 'imagesrc' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'updated_at' | 'vengeance' | 'victory' | 'xp' | full_card_min_fieldsKeySpecifier)[];
+export type full_card_min_fieldsKeySpecifier = ('alternate_required_code' | 'back_link' | 'backimagesrc' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'illustrator' | 'imagesrc' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_min_fieldsKeySpecifier)[];
 export type full_card_min_fieldsFieldPolicy = {
+	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1631,6 +1637,7 @@ export type full_card_min_fieldsFieldPolicy = {
 	subtype_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -1639,7 +1646,7 @@ export type full_card_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_stddev_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_stddev_fieldsKeySpecifier)[];
+export type full_card_stddev_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_stddev_fieldsKeySpecifier)[];
 export type full_card_stddev_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1663,10 +1670,11 @@ export type full_card_stddev_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_stddev_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_stddev_pop_fieldsKeySpecifier)[];
+export type full_card_stddev_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_stddev_pop_fieldsKeySpecifier)[];
 export type full_card_stddev_pop_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1690,10 +1698,11 @@ export type full_card_stddev_pop_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_stddev_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_stddev_samp_fieldsKeySpecifier)[];
+export type full_card_stddev_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_stddev_samp_fieldsKeySpecifier)[];
 export type full_card_stddev_samp_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1717,10 +1726,11 @@ export type full_card_stddev_samp_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_sum_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_sum_fieldsKeySpecifier)[];
+export type full_card_sum_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_sum_fieldsKeySpecifier)[];
 export type full_card_sum_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1744,6 +1754,7 @@ export type full_card_sum_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -1808,7 +1819,7 @@ export type full_card_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_var_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_var_pop_fieldsKeySpecifier)[];
+export type full_card_var_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_var_pop_fieldsKeySpecifier)[];
 export type full_card_var_pop_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1832,10 +1843,11 @@ export type full_card_var_pop_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_var_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_var_samp_fieldsKeySpecifier)[];
+export type full_card_var_samp_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_var_samp_fieldsKeySpecifier)[];
 export type full_card_var_samp_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1859,10 +1871,11 @@ export type full_card_var_samp_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type full_card_variance_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'victory' | 'xp' | full_card_variance_fieldsKeySpecifier)[];
+export type full_card_variance_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'vengeance' | 'version' | 'victory' | 'xp' | full_card_variance_fieldsKeySpecifier)[];
 export type full_card_variance_fieldsFieldPolicy = {
 	clues?: FieldPolicy<any> | FieldReadFunction<any>,
 	cost?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1886,6 +1899,7 @@ export type full_card_variance_fieldsFieldPolicy = {
 	skill_willpower?: FieldPolicy<any> | FieldReadFunction<any>,
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	vengeance?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };

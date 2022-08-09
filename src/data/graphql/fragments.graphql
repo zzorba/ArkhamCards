@@ -57,6 +57,7 @@ fragment SingleCard on full_card {
   imagesrc
   backimagesrc
   xp
+  alternate_required_code
 }
 fragment CoreCardText on full_card_text {
   flavor
