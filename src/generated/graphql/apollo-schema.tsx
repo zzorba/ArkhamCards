@@ -14333,7 +14333,7 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 ${GuideAchievementFragmentDoc}`;
 export const GetCustomCardsDocument = gql`
     query getCustomCards($locale: String!) {
-  full_card(where: {version: {_lte: 2}}) {
+  full_card(where: {version: {_lte: 1}}) {
     ...SingleCard
     linked_card {
       ...SingleCard
