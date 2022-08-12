@@ -741,6 +741,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'spawn_of_ryleh':
         return this.cyclopeanIcon('spawn_of_ryleh', size, color);
 
+      case 'zjc':
+      case 'jennys_choice':
+      case 'lost_cathedral':
+        return this.standaloneIcon('lost_cathedral', size, color);
+
       case 'mourning_chorus':
         return this.darkMatterIcon('mourning_stroll', size, color);
       case 'zcp':

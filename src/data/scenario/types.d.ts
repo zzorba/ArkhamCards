@@ -361,7 +361,8 @@ export interface SetCardCountEffect {
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
-  investigator: "all" | "$input_value" | "lead_investigator";
+  investigator: "all" | "$input_value" | "lead_investigator" | "$fixed_investigator";
+  fixed_investigator?: string;
   weakness_traits: string[];
   select_traits?: boolean;
   count?: "$input_value";
@@ -385,7 +386,8 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
+  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value" | "$fixed_investigator";
+  fixed_investigator?: string;
   heal_input?: "physical" | "mental";
   mental?: number;
   physical?: number;

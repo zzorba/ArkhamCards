@@ -119,6 +119,7 @@ export default class ScenarioStep {
           if (input === '$fixed_investigator') {
             switch (specialEffect.type) {
               case 'earn_xp':
+              case 'trauma':
               case 'remove_card':
               case 'add_card': {
                 result.push({

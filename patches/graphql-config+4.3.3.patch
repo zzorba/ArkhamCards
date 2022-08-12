@@ -1,0 +1,22 @@
+diff --git a/node_modules/graphql-config/index.mjs b/node_modules/graphql-config/index.mjs
+index 3728ba8..3f25fae 100644
+--- a/node_modules/graphql-config/index.mjs
++++ b/node_modules/graphql-config/index.mjs
+@@ -1,7 +1,7 @@
+ import { normalize, isAbsolute, relative, dirname } from 'path';
+ import minimatch from 'minimatch';
+ import { cosmiconfigSync, defaultLoaders, cosmiconfig } from 'cosmiconfig';
+-import loadTs from 'cosmiconfig-typescript-loader';
++import loadTsx from 'cosmiconfig-typescript-loader';
+ import { loadToml } from 'cosmiconfig-toml-loader';
+ import { env } from 'string-env-interpolation';
+ import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+@@ -11,6 +11,8 @@ import { loadTypedefs, loadTypedefsSync, loadDocuments, loadDocumentsSync, loadS
+ import { mergeTypeDefs } from '@graphql-tools/merge';
+ import { buildASTSchema, print } from 'graphql';
+ 
++const loadTs = loadTsx.default
++
+ /******************************************************************************
+ Copyright (c) Microsoft Corporation.
+ 

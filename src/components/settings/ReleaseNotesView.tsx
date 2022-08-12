@@ -35,7 +35,7 @@ function getReleaseNotes(width: number): ReleaseNote[] {
       lines: [
         c('releaseNotes').t`This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard.`,
         c('releaseNotes').t`- Includes a fully guided mode, with all setup and resolution text accounted for.`,
-        c('releaseNotes').t`This update also adds support for several fan-made standalone scenario, including "The Colour Out of Space".`,
+        c('releaseNotes').t`This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario.`,
       ],
     },
     {

@@ -49,6 +49,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "jennys_choice"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "machinations_through_time"
   },
   {
