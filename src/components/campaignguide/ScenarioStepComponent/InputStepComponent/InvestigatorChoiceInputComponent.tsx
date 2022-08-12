@@ -15,9 +15,11 @@ interface Props {
   step: InputStep;
   input: InvestigatorChoiceInput;
   campaignLog: GuidedCampaignLog;
+  min?: number;
+  max?: number;
 }
 
-export default function InvestigatorChoiceInputComponent({ step, input, campaignLog }: Props) {
+export default function InvestigatorChoiceInputComponent({ step, input, campaignLog, min, max }: Props) {
   const [investigators, investigatorCodes] = useMemo(() => {
     const allInvestigators = campaignLog.investigators(false)
     if (!input.condition) {
@@ -99,8 +101,8 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           checkText={choice.text}
           confirmText={choice.selected_text}
           investigators={choices.type === 'personalized' ? keys(choices.perCode) : investigatorCodes}
-          min={input.investigator === 'choice' && !input.optional ? 1 : 0}
-          max={4}
+          min={min || (input.investigator === 'choice' && !input.optional ? 1 : 0)}
+          max={max || 4}
         />
       </>
     );

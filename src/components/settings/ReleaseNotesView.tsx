@@ -29,6 +29,16 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-08-11'),
+      title: c('releaseNotes').t`Cyclopean Foundations`,
+      faction: 'rogue',
+      lines: [
+        c('releaseNotes').t`This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard.`,
+        c('releaseNotes').t`- Includes a fully guided mode, with all setup and resolution text accounted for.`,
+        c('releaseNotes').t`This update also adds support for several fan-made standalone scenario, including "The Colour Out of Space".`,
+      ],
+    },
+    {
       date: new Date('2022-07-20'),
       title: c('releaseNotes').t`Settings synchronization`,
       faction: 'guardian',

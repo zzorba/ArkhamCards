@@ -245,7 +245,8 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       possibleCodes.current,
       cards,
       in_collection,
-      ignore_collection
+      ignore_collection,
+      listSeperator
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;

@@ -1015,8 +1015,7 @@ export default class ScenarioStep {
         const supplies = investigatorSupplies[investigator];
         const hasSupply = !!(
           supplies &&
-          !supplies.crossedOut[input.id] &&
-          find(supplies.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0)
+          find(supplies.entries, entry => entry.id === input.id && entry.type === 'count' && !entry.crossedOut && entry.count > 0)
         );
         return this.binaryBranch(
           hasSupply,

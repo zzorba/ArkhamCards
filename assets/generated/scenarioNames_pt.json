@@ -4,6 +4,10 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
     "name": "Uma Luz no Nevoeiro"
   },
@@ -18,6 +22,10 @@
   {
     "id": "a_thousand_shapes_of_horror",
     "name": "Mil formas de horror"
+  },
+  {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
   },
   {
     "id": "alexandria",
@@ -96,6 +104,10 @@
     "name": "A Bolha Que Comeu Tudo"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Sangue no Altar"
   },
@@ -121,6 +133,14 @@
   },
   {
     "id": "ce_prologue",
+    "name": "Prólogo"
+  },
+  {
+    "id": "cf_epilogue",
+    "name": "Epílogo"
+  },
+  {
+    "id": "cf_prologue",
     "name": "Prólogo"
   },
   {
@@ -150,6 +170,10 @@
   {
     "id": "cp_prologue",
     "name": "Prólogo"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -276,6 +300,10 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
     "name": "Gryphon and Mock Turtle"
   },
@@ -388,6 +416,10 @@
     "name": "Perdido no Tempo e no Espaço"
   },
   {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
+  },
+  {
     "id": "lost_quantum",
     "name": "Lost Quantum"
   },
@@ -444,6 +476,10 @@
     "name": "Ponto sem Retorno"
   },
   {
+    "id": "private_lives",
+    "name": "Private Lives"
+  },
+  {
     "id": "ptc_epilogue",
     "name": "Epílogo"
   },
@@ -466,6 +502,10 @@
   {
     "id": "puzzle_pieces",
     "name": "Peças de Quebra-Cabeças"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
   },
   {
     "id": "quito",
@@ -922,6 +962,10 @@
   {
     "id": "tokyo",
     "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
   },
   {
     "id": "torch",

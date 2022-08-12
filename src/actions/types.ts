@@ -400,6 +400,7 @@ export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
+export const CYCLOPEAN_FOUNDATIONS = 'zcf';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -422,6 +423,7 @@ export type CampaignCycleCode =
   typeof GOB |
   typeof STANDALONE |
   typeof DARK_MATTER |
+  typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
   typeof CALL_OF_THE_PLAGUEBEARER;
@@ -449,6 +451,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -472,11 +475,13 @@ export const GUIDED_CAMPAIGNS = new Set([
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ]);
 
 export interface CustomCampaignLog {

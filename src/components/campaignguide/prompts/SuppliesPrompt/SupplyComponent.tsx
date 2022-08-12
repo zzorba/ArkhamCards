@@ -40,14 +40,10 @@ export default function SupplyComponent({
       return 0;
     }
     const section = (processedScenario.latestCampaignLog.investigatorSections[sectionId] || {})[investigator.code] || {};
-    const crossed_out = !!(section.crossedOut || {})[supply.id];
-    if (crossed_out) {
-      return 0;
-    }
     const entry = find(section.entries || [],
       e => e.id === supply.id && e.type === 'count'
     );
-    if (!entry || entry.type !== 'count') {
+    if (!entry || entry.type !== 'count' || entry.crossedOut) {
       return 0;
     }
     return entry.count;

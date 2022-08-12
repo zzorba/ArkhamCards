@@ -2783,7 +2783,7 @@
           },
           {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil... for now."
+            "text": "all is quiet at Rue d'Auseil… for now."
           }
         ]
       },
@@ -4890,6 +4890,257 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcf",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "took_out_a_loan",
+            "masculine_text": "#name# took out a loan.",
+            "feminine_text": "#name# took out a loan."
+          },
+          {
+            "id": "architects_project_was_fully_completed",
+            "text": "the architects' project was fully completed."
+          },
+          {
+            "id": "architects_project_was_sabotaged",
+            "text": "the architects's project was sabotaged."
+          },
+          {
+            "id": "arrived_on_schedule",
+            "text": "the investigators arrived on schedule."
+          },
+          {
+            "id": "chose_the_least_predictable_route",
+            "text": "the investigators chose the least predictable route."
+          },
+          {
+            "id": "chose_the_most_direct_route",
+            "text": "the investigators chose the most direct route."
+          },
+          {
+            "id": "chose_the_most_populous_route",
+            "text": "the investigators chose the most popular route."
+          },
+          {
+            "id": "cthulhu_reigns",
+            "text": "Cthulhu reigns over all humankind."
+          },
+          {
+            "id": "cthulhu_slumbers",
+            "text": "Cthulhu slumbers in the deep once more."
+          },
+          {
+            "id": "cults_project_nears_completion",
+            "text": "the cult's project nears completion."
+          },
+          {
+            "id": "escaped_rlyeh",
+            "text": "the investigators escaped from R'lyeh."
+          },
+          {
+            "id": "expelled_the_traitors",
+            "text": "the investigators expelled the traitors."
+          },
+          {
+            "id": "explored_the_myra_louise",
+            "text": "the investigators explored the Myra Louise."
+          },
+          {
+            "id": "exposed_the_traitors",
+            "text": "the investigators exposed the traitors."
+          },
+          {
+            "id": "failed_to_find_the_myra_louise",
+            "text": "the investigators failed to find the Myra Louise."
+          },
+          {
+            "id": "failed_to_stop_the_traitors_plan",
+            "text": "the investigators failed to stop the traitors' plan."
+          },
+          {
+            "id": "forced_to_withdraw",
+            "text": "the investigators were forced to withdraw."
+          },
+          {
+            "id": "found_the_missing_artifacts",
+            "text": "the investigators found the missing artifacts."
+          },
+          {
+            "id": "found_the_myra_louise",
+            "text": "the investigators found the Myra Louise."
+          },
+          {
+            "id": "have_been_observed",
+            "text": "the investigators have been observed."
+          },
+          {
+            "id": "interviewed_the_broker",
+            "text": "the investigators interviewed the broker."
+          },
+          {
+            "id": "know_the_full_story",
+            "text": "the investigators know the full story."
+          },
+          {
+            "id": "left_the_auction_early",
+            "text": "the investigators left the auction early."
+          },
+          {
+            "id": "severely_delayed",
+            "text": "the investigators were severely delayed."
+          },
+          {
+            "id": "understand_the_truth",
+            "text": "the investigators understand the truth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_alive",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "cultists_killed",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallace Thorpe"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "auction_lots",
+            "text": "leurre"
+          },
+          {
+            "id": "auction_lots_in_victory_display",
+            "text": "leurre"
+          },
+          {
+            "id": "end_of_the_line",
+            "text": "leurre"
+          },
+          {
+            "id": "gt_cooperate",
+            "text": "leurre"
+          },
+          {
+            "id": "gt_ruckus",
+            "text": "leurre"
+          },
+          {
+            "id": "gt_took_time",
+            "text": "leurre"
+          },
+          {
+            "id": "lm_evidence_1",
+            "text": "leurre"
+          },
+          {
+            "id": "lm_evidence_2",
+            "text": "leurre"
+          },
+          {
+            "id": "lm_evidence_3",
+            "text": "leurre"
+          },
+          {
+            "id": "luther_alive",
+            "text": "leurre"
+          },
+          {
+            "id": "pl_evidence_1",
+            "text": "leurre"
+          },
+          {
+            "id": "pl_evidence_2",
+            "text": "leurre"
+          },
+          {
+            "id": "pl_evidence_3",
+            "text": "leurre"
+          },
+          {
+            "id": "pl_evidence_4",
+            "text": "leurre"
+          },
+          {
+            "id": "pl_evidence_5",
+            "text": "leurre"
+          },
+          {
+            "id": "repaid_loans",
+            "text": "leurre"
+          },
+          {
+            "id": "two_impossible_pillars",
+            "text": "leurre"
+          },
+          {
+            "id": "zgt_add_chaos_token",
+            "text": "leurre"
           }
         ]
       }

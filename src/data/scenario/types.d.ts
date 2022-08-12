@@ -107,7 +107,12 @@ export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
-export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand | PartnerStatusCondition;
+export type Operand =
+  | CampaignLogCountOperand
+  | ChaosBagOperand
+  | ConstantOperand
+  | MostXpEarnedOperand
+  | PartnerStatusCondition;
 export type PartnerStatus =
   | "eliminated"
   | "alive"
@@ -659,6 +664,9 @@ export interface ConstantOperand {
   type: "constant";
   value: number;
 }
+export interface MostXpEarnedOperand {
+  type: "most_xp_earned";
+}
 export interface PartnerStatusCondition {
   type: "partner_status";
   section: string;
@@ -877,6 +885,8 @@ export interface InvestigatorChoiceInput {
   source: "campaign" | "scenario";
   optional?: boolean;
   investigator: "all" | "choice" | "any" | "resigned" | "not_defeated";
+  min?: ConstantOperand | CampaignLogCountOperand;
+  max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;
@@ -943,8 +953,8 @@ export interface CounterInput {
   type: "counter";
   text: string;
   confirm_text?: string;
-  min?: number;
-  max?: number;
+  min?: ConstantOperand | CampaignLogCountOperand;
+  max?: ConstantOperand | CampaignLogCountOperand;
   long_lived?: boolean;
   delta?: boolean;
   effects: Effect[];

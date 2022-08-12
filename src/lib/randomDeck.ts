@@ -67,12 +67,13 @@ export function getDraftCards(
   possibleCards: string[],
   cards: CardsMap,
   in_collection: { [pack_code: string]: boolean },
-  ignore_collection: boolean
+  ignore_collection: boolean,
+  listSeperator: string
 ): [Card[], string[]] {
   const validation = new DeckValidation(investigatorBack, slots, meta);
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
-  const deckCards: Card[] = getCards(cards, slots, {}, {});
+  const deckCards: Card[] = getCards(cards, slots, {}, listSeperator, {});
   while (draftCards.length < count) {
     const [draftCard, newPossibleCodes] = randomAllowedCardHelper(
       validation,

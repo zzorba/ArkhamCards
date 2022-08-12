@@ -29,6 +29,7 @@ import {
   EOE,
   CROWN_OF_EGIL,
   TSK,
+  CYCLOPEAN_FOUNDATIONS,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -73,6 +74,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case CROWN_OF_EGIL: return t`Crown of Egil`;
     case GOB: return t`Guardians of the Abyss`;
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
+    case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -339,6 +341,21 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
         { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
       ];
+
+    case CYCLOPEAN_FOUNDATIONS:
+      return [
+        { name: t`Prologue`, code: 'cf_prologue', pack_code: 'zcf', interlude: true },
+        { name: t`Lost Moorings`, code: 'lost_moorings', pack_code: 'zcf' },
+        { name: t`Going Twice`, code: 'going_twice', pack_code: 'zcf' },
+        { name: t`Private Lives`, code: 'private_lives', pack_code: 'zcf' },
+        { name: t`Crumbling Masonry`, code: 'crumbling_masonry', pack_code: 'zcf' },
+        { name: t`A House Divided`, code: 'a_house_divided', pack_code: 'zcf', interlude: true },
+        { name: t`Across Dreaful Waters`, code: 'across_dreadful_waters', pack_code: 'zcf' },
+        { name: t`Blood From Stones`, code: 'blood_from_stones', pack_code: 'zcf' },
+        { name: t`Pyroclastic Flow`, code: 'pyroclastic_flow', pack_code: 'zcf' },
+        { name: t`Tomb of Dead Dreams`, code: 'tomb_of_dead_dreams', pack_code: 'zcf' },
+        { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zcf', interlude: true },
+      ];
     case ALICE_IN_WONDERLAND:
       return [
         { name: t`Prologue`, code: 'aw_prologue', pack_code: 'zaw', interlude: true },
@@ -399,6 +416,7 @@ export function campaignNames() {
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,
     standalone: t`Standalone`,
+    zcf: t`Cyclopean Foundations`,
     zcp: t`Call of the Plaguebearer`,
   };
 }
@@ -412,6 +430,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DWL:
     case RTDWL:
     case CROWN_OF_EGIL:
+    case CYCLOPEAN_FOUNDATIONS:
       return colors.campaign.dwl;
     case PTC:
     case RTPTC:
@@ -585,6 +604,15 @@ export function getCampaignLog(
           t`Campaign Notes`,
         ],
       };
+    case CYCLOPEAN_FOUNDATIONS:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Cultists Alive`,
+          t`Cultists Killed`,
+        ],
+        counts: [t`Notice`],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -670,6 +698,13 @@ const ALICE_IN_WONDERLAND_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '+1': 1, '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 1, '-3': 1, '-4': 1, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
+const CYCLOPEAN_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, '-7': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const CROWN_OF_EGIL_BAG: ChaosBagByDifficulty = {
@@ -776,6 +811,8 @@ export function getChaosBag(
       return CALL_OF_THE_PLAGUEBEARER_BAG[difficulty];
     case GOB:
       return GOB_BAG[difficulty];
+    case CYCLOPEAN_FOUNDATIONS:
+      return CYCLOPEAN_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

@@ -179,7 +179,11 @@ export default function ScenarioStepComponent({
   return (
     <ScenarioStepContext.Provider value={context}>
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
-        <TitleComponent title={step.step.title} border_color={resolution ? 'resolution' : 'setup'} center={border} />
+        <TitleComponent
+          title={step.step.title}
+          border_color={(step.step.type === 'story' && step.step.border_color) || (resolution ? 'resolution' : 'setup')}
+          center={border}
+        />
       ) }
       <ScenarioStepComponentContent
         componentId={componentId}

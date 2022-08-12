@@ -27,6 +27,7 @@
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		655E70E728A0144500DBB0DF /* TT2020StyleE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */; };
+		655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E828A55C7400DBB0DF /* cyclopean.ttf */; };
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
 		656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D83DA25AA4AB80010E4CA /* cost.ttf */; };
 		657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276682644DE1B00157DE3 /* dark_matter.ttf */; };
@@ -92,6 +93,7 @@
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
 		655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TT2020StyleE-Regular.ttf"; path = "../assets/TT2020StyleE-Regular.ttf"; sourceTree = "<group>"; };
+		655E70E828A55C7400DBB0DF /* cyclopean.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cyclopean.ttf; path = ../assets/cyclopean.ttf; sourceTree = "<group>"; };
 		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		656D83DA25AA4AB80010E4CA /* cost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
 		657276682644DE1B00157DE3 /* dark_matter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				655E70E828A55C7400DBB0DF /* cyclopean.ttf */,
 				655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */,
 				6592B6D028876A3F00F61AB6 /* scarlet.ttf */,
 				65B74400272B19A700602ACD /* cardicons.ttf */,
@@ -370,6 +373,7 @@
 				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
 				657276D0265984A200157DE3 /* alice.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
+				655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,

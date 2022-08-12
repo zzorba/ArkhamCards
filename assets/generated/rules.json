@@ -265,7 +265,7 @@
   {
     "id": "Constant_Abilities",
     "title": "Constant Abilities",
-    "text": "See \"[Ability](#Abilities_Constant)\"."
+    "text": "See \"[Ability](#Abilities_Constant_Abilities)\"."
   },
   {
     "id": "Control",
@@ -470,7 +470,7 @@
   {
     "id": "Forced_Abilities",
     "title": "Forced Abilities",
-    "text": "See \"[Ability](#Abilities_Forced)\"."
+    "text": "See \"[Ability](#Abilities_Forced_Abilities)\"."
   },
   {
     "id": "Gains",

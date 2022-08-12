@@ -4,6 +4,10 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
     "name": "안개 속 한 줄기 빛"
   },
@@ -18,6 +22,10 @@
   {
     "id": "a_thousand_shapes_of_horror",
     "name": "천 가지 무시무시한 형체"
+  },
+  {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
   },
   {
     "id": "alexandria",
@@ -96,6 +104,10 @@
     "name": "모든 것을 집어삼키는 멍울"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "제단에 흘린 피"
   },
@@ -121,6 +133,14 @@
   },
   {
     "id": "ce_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "cf_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "cf_prologue",
     "name": "서막"
   },
   {
@@ -150,6 +170,10 @@
   {
     "id": "cp_prologue",
     "name": "서막"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -276,6 +300,10 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
     "name": "그리폰과 가짜 거북"
   },
@@ -388,6 +416,10 @@
     "name": "시공간을 헤매다"
   },
   {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
+  },
+  {
     "id": "lost_quantum",
     "name": "잃어버린 양자"
   },
@@ -444,6 +476,10 @@
     "name": "돌아갈 수 없는 다리"
   },
   {
+    "id": "private_lives",
+    "name": "Private Lives"
+  },
+  {
     "id": "ptc_epilogue",
     "name": "후일담"
   },
@@ -466,6 +502,10 @@
   {
     "id": "puzzle_pieces",
     "name": "Puzzle Pieces"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
   },
   {
     "id": "quito",
@@ -922,6 +962,10 @@
   {
     "id": "tokyo",
     "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
   },
   {
     "id": "torch",

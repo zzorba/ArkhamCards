@@ -108,7 +108,7 @@ function XpControl({ option, choice, xp, onInc, onDec, onSet } : {
             xp={index + 1}
             checked={xp > index}
             onCheck={onSet}
-            disabled={!!choice?.xp_locked && !!choice.xp_locked <= index + 1}
+            disabled={!!choice?.xp_locked && (choice.xp_locked <= index + 1)}
           />
         ))}
       </View>

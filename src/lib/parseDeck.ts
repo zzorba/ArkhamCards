@@ -676,7 +676,7 @@ export function parseDeck(
       if (!card) {
         return [];
       }
-      const customizedCard = card.withCustomizations(customizations[card.code]);
+      const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
       const invalid = !validation.canIncludeCard(customizedCard, false);
       return {
         id,

@@ -506,11 +506,6 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
           ) )}
         </View>
       </PanPinchView>
-      { false && currentLocation && (
-        <View style={[{ position: 'absolute', bottom: NOTCH_BOTTOM_PADDING, left: 0 }, space.paddingM]}>
-          <Text>Departing from {currentLocation.name}</Text>
-        </View>
-      )}
       { dialog }
     </View>
   );

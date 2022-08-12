@@ -3,6 +3,7 @@ import React from 'react';
 import ArkhamIcon from './ArkhamIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
+import CyclopeanIcon from './CyclopeanIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
 import DarkMatterIcon from './DarkMatterIcon';
@@ -43,6 +44,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   darkMatterIcon(name: string, size: number, color: string) {
     return (<DarkMatterIcon name={name} size={size} color={color} />);
+  }
+
+  cyclopeanIcon(name: string, size: number, color: string) {
+    return (<CyclopeanIcon name={name} size={size} color={color} />);
   }
 
   dunwichIcon(name: string, size: number, color: string) {
@@ -710,6 +715,32 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'death_at_sundown':
       case 'the_midnight_hour':
         return this.darkMatterIcon(encounter_code, size, color);
+      case 'zcf':
+      case 'across_dreadful_waters':
+      case 'archaic_evils':
+      case 'architects_of_chaos':
+      case 'awakened_madness':
+      case 'blood_from_stones':
+      case 'countermeasures':
+      case 'crumbling_masonry':
+      case 'cult_of_cthulhu':
+      case 'deep_dreams':
+      case 'going_twice':
+      case 'grand_compass':
+      case 'lost_moorings':
+      case 'private_lives':
+      case 'pyroclastic_flow':
+      case 'shadowy_agents':
+      case 'storm_and_sea':
+      case 'tomb_of_dead_dreams':
+      case 'unfriendly_ports':
+      case 'unnatural_stone':
+        return this.cyclopeanIcon(encounter_code, size, color);
+
+      case 'spawn_of_rlyeh':
+      case 'spawn_of_ryleh':
+        return this.cyclopeanIcon('spawn_of_ryleh', size, color);
+
       case 'mourning_chorus':
         return this.darkMatterIcon('mourning_stroll', size, color);
       case 'zcp':
