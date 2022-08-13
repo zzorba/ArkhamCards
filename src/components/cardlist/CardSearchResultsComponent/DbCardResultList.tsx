@@ -153,6 +153,7 @@ type PartialItem = SectionHeaderItem | ButtonItem | PartialCardItem;
 interface CardFetcher {
   cards: CardsMap;
   fetchMore?: () => void;
+  expandCards: () => void;
 }
 /**
  * This function turns partial cards into real cards, and provides a manual fetchMore function.
@@ -198,10 +199,14 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCards, cards, lowMemoryMode]);
+  const expandCards = useCallback(() => {
+    fetchedOne.current = false;
+  }, []);
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
     cards,
     fetchMore: allFetched ? undefined : fetchMore,
+    expandCards,
   };
 }
 
@@ -367,7 +372,7 @@ function useSectionFeed({
   }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort, sideDeck]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
-
+  const expandSectionRef = useRef<(sectionId: string) => void>();
   const editCollectionSettings = useCallback(() => {
     Keyboard.dismiss();
     Navigation.push(componentId, {
@@ -448,8 +453,7 @@ function useSectionFeed({
             type: 'button',
             id: `${prefix}_nc_${sectionId}`,
             onPress: () => {
-              setExpandButtonPressed(true);
-              setShowNonCollection(sectionId, true);
+              expandSectionRef.current?.(sectionId);
             },
             title: ngettext(
               msgid`Show ${nonCollectionCount} non-collection card`,
@@ -489,9 +493,18 @@ function useSectionFeed({
     }
     return [result, items, spoilerCards.length];
   }, [includeBonded, partialCards, deckCardsLoading, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, hasDeckChanges,
-    sideDeck, investigator, showAllNonCollection, editCollectionSettings, setShowNonCollection, refreshDeck]);
+    sideDeck, investigator, showAllNonCollection,
+    editCollectionSettings, refreshDeck]);
 
-  const { cards, fetchMore } = useCardFetcher(visibleCards);
+  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards);
+  useEffect(() => {
+    expandSectionRef.current = (sectionId: string) => {
+      expandCards();
+      setExpandButtonPressed(true);
+      setShowNonCollection(sectionId, true);
+    }
+  }, [expandCards, setExpandButtonPressed, setShowNonCollection]);
+
   const flatDeckCards: Card[] = useMemo(() => {
     if (includeBonded) {
       return flatMap(values(cards), c => c ? c : []);
