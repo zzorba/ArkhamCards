@@ -21,7 +21,7 @@ interface Props {
 export default function CampaignLogSectionComponent({ sectionId, campaignGuide, section, title, interScenarioId }: Props) {
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const { campaignState } = useContext(CampaignGuideContext);
-  const saveTextEntry = useCallback((text) => {
+  const saveTextEntry = useCallback((text: string) => {
     const entries = campaignState.interScenarioCampaignLogEntries(interScenarioId) || []
     campaignState.setInterScenarioCampaignLogEntries([...entries, text], interScenarioId);
   }, [campaignState, interScenarioId]);

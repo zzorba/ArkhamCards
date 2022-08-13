@@ -1277,7 +1277,7 @@ export default class Card {
       DeckRequirement.parse(json.deck_requirements) :
       null;
     const deck_options = json.deck_options ?
-      DeckOption.parseList(json.deck_options) :
+      DeckOption.parseList(typeof json.deck_options === 'string' ? JSON.parse(json.deck_options) : json.deck_options) :
       [];
 
     const wild = json.skill_wild || 0;
@@ -1408,6 +1408,8 @@ export default class Card {
       json.code === '98007' || // Norman
       json.code === '99001'; // PROMO Marie
 
+    const alternate_of_code = json.alternate_of_code && json.duplicate_of_code && json.alternate_of_code === json.duplicate_of_code ? undefined : json.alternate_of_code;
+
     const s_search_name = searchNormalize(filter([renderName, renderSubname], x => !!x).join(' '), lang);
     const s_search_name_back = searchNormalize(filter([name, json.subname, json.back_name], x => !!x).join(' '), lang);
     const s_search_game = searchNormalize(filter([json.text, json.traits], x => !!x).join(' '), lang);
@@ -1419,8 +1421,9 @@ export default class Card {
     const s_search_real_name_back = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
     const s_search_real_game = searchNormalize(filter([json.real_text, real_traits], x => !!x).join(' '), 'en');
     let result = {
-      ...omit(json, ['customization_options', 'customization_text']),
+      ...omit(json, ['customization_options', 'customization_text', 'deck_options', 'deck_requirements', 'alternate_of_code']),
       ...eskills,
+      alternate_of_code,
       id: json.code,
       tabooSetId: null,
       s_search_name,

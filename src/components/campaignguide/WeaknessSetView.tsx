@@ -54,7 +54,7 @@ function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [liveSelected]);
   const [open, toggleOpen] = useFlag(false);
-  const renderHeader = useCallback((icon: React.ReactFragment) => {
+  const renderHeader = useCallback((icon: React.ReactNode) => {
     return (
       <View style={[
         styles.block,

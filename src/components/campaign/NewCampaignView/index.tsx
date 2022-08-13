@@ -400,7 +400,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     });
   }, [setCampaignChoice]);
   const [open, toggleOpen] = useFlag(false);
-  const renderWeaknessHeader = useCallback((icon: React.ReactFragment) => {
+  const renderWeaknessHeader = useCallback((icon: React.ReactNode) => {
     return (
       <View style={[
         styles.block,

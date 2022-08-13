@@ -11,7 +11,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 interface Props<T> {
   result: InvestigatorCardResult;
   extraArg: T;
-  renderOption: (investigators: Card[], option: BoolOption, listSeperator: string, extraArg: T) => Element | null;
+  renderOption: (investigators: Card[], option: BoolOption, listSeperator: string, extraArg: T) => React.ReactNode;
 }
 
 function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: BoolOptionWithId }) {

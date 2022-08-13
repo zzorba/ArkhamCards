@@ -198,7 +198,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
       </Text>
     </View>
   ), [date, lang, colors, typography]);
-  const renderHeader = useCallback((icon: React.ReactFragment) => {
+  const renderHeader = useCallback((icon: React.ReactNode): React.ReactNode => {
     return (
       <View style={[{
         borderTopLeftRadius: 8,

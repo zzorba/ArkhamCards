@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, map, take, uniq } from 'lodash';
 
-import { Campaign } from '@actions/types';
+import { Campaign, DeckId } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
@@ -92,7 +92,7 @@ export default function DeckList({
   }, [numDecks, setNumDecks]);
 
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
-  const renderItem = useCallback(({ deckId }) => {
+  const renderItem = useCallback(({ deckId }: { deckId: MiniDeckT }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}

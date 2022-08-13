@@ -17,7 +17,7 @@ interface Props {
   open?: boolean;
   color?: string;
   children?: React.ReactNode;
-  renderHeader: (toggle: React.ReactFragment) => React.ReactFragment;
+  renderHeader: (toggle: React.ReactNode) => React.ReactNode;
   toggleOpen?: () => void;
   disabled?: boolean;
   textColor?: string;
@@ -36,11 +36,11 @@ export default function CollapsibleFactionBlock({ faction, textColor, noShadow, 
     };
   });
   const icon = useMemo(() => {
-    return !disabled && (
+    return !disabled ? (
       <Animated.View style={[styles.icon, iconRotateStyle]}>
         <AppIcon name="expand_less" size={36} color={textColor || '#FFFFFF'} />
       </Animated.View>
-    );
+    ) : undefined;
   }, [iconRotateStyle, disabled, textColor]);
 
   return (

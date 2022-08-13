@@ -376,7 +376,6 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
   editable: boolean;
   choice: CustomizationChoice;
 }) {
-  console.log(choice);
   const { listSeperator } = useContext(LanguageContext);
   const [selectedTraits, setSelectedTraits] = useState<string[]>(filter(map(choice.choice?.split('^') || [], x => x.trim()), x => !!x));
   useEffectUpdate(() => {
