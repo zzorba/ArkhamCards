@@ -1,0 +1,20 @@
+diff --git a/node_modules/@types/victory/index.d.ts b/node_modules/@types/victory/index.d.ts
+index d292da4..7332292 100755
+--- a/node_modules/@types/victory/index.d.ts
++++ b/node_modules/@types/victory/index.d.ts
+@@ -2232,6 +2232,7 @@ declare module 'victory' {
+     export class VictoryBoxPlot extends React.Component<VictoryBoxPlotProps, any> {}
+ 
+     export interface VictoryChartProps extends VictoryCommonProps {
++        children?: React.ReactNode;
+         /**
+          * The domain prop describes the range of values your chart will include. This prop can be
+          * given as a array of the minimum and maximum expected values for your chart,
+@@ -2758,6 +2759,7 @@ declare module 'victory' {
+     export class VictoryScatter extends React.Component<VictoryScatterProps, any> {}
+ 
+     export interface VictoryStackProps extends VictoryCommonProps, VictoryMultiLabeableProps {
++        children?: React.ReactNode;
+         /**
+          * The categories prop specifies how categorical data for a chart should be ordered.
+          * This prop should be given as an array of string values, or an object with

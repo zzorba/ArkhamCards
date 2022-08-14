@@ -26,7 +26,7 @@ interface TrackPlayerFunctions {
   stop: () => Promise<void>;
   skipToNext: () => Promise<void>;
   skip: (trackId: number) => Promise<void>;
-  add: (tracks: Track | Track[], insertBeforeId?: number) => Promise<void>;
+  add: (tracks: Track | Track[], insertBeforeId?: number) => Promise<void | number>;
   remove: (trackIds: number | number[]) => Promise<void>;
   reset: () => Promise<void>;
   seekTo: (seconds: number) => Promise<void>;
@@ -40,6 +40,13 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
   if (_narrationPromise === null) {
     _narrationPromise = new Promise<TrackPlayerFunctions>((resolve, reject) => {
       try {
+        TrackPlayer.registerPlaybackService(() => async() => {
+          TrackPlayer.addEventListener(Event.RemotePlay, TrackPlayer.play);
+          TrackPlayer.addEventListener(Event.RemotePause, TrackPlayer.pause);
+          TrackPlayer.addEventListener(Event.RemoteNext, TrackPlayer.skipToNext);
+          TrackPlayer.addEventListener(Event.RemotePrevious, TrackPlayer.skipToPrevious);
+        });
+
         TrackPlayer.setupPlayer({
           iosCategory: IOSCategory.Playback,
           iosCategoryMode: IOSCategoryMode.SpokenAudio,
@@ -57,12 +64,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
               Capability.Play,
               Capability.Pause,
             ],
-          });
-          TrackPlayer.registerPlaybackService(() => async() => {
-            TrackPlayer.addEventListener(Event.RemotePlay, TrackPlayer.play);
-            TrackPlayer.addEventListener(Event.RemotePause, TrackPlayer.pause);
-            TrackPlayer.addEventListener(Event.RemoteNext, TrackPlayer.skipToNext);
-            TrackPlayer.addEventListener(Event.RemotePrevious, TrackPlayer.skipToPrevious);
+            progressUpdateEventInterval: 2,
           });
           resolve({
             getQueue: TrackPlayer.getQueue,
@@ -87,6 +89,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
           });
         }, reject);
       } catch (e) {
+        console.log(e);
         reject(e);
       }
     });
@@ -94,43 +97,40 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
   return _narrationPromise;
 }
 
-export function useTrackPlayerQueue(interval: number = 100) {
-  const [state, setState] = useState<Track[]>([]);
-  const getProgress = async() => {
-    const trackPlayer = await narrationPlayer();
-    const newQueue = await trackPlayer.getQueue();
-    if (!isEqual(newQueue, state)) {
-      setState(newQueue);
-    }
-  };
-
-  useInterval(getProgress, interval);
-  return state;
+async function getCurrentTrackDetails(nextTrack?: number): Promise<Track | undefined> {
+  const trackPlayer = await narrationPlayer();
+  const currentTrack = (nextTrack === undefined) ? await trackPlayer.getCurrentTrack() : nextTrack;
+  const queue = await trackPlayer.getQueue();
+  if (currentTrack === -1 || currentTrack >= queue.length) {
+    return undefined;
+  }
+  return queue[currentTrack];
 }
 
-export function useCurrentTrack(): number | null {
-  const [state, setState] = useState<number | null>(null);
+export function useCurrentTrackDetails() {
+  const [currentTrack, setCurrentTrack] = useState<Track | undefined>();
   useEffect(() => {
     let canceled = false;
-    narrationPlayer().then(trackPlayer => {
-      trackPlayer.getCurrentTrack().then(currentTrack => {
-        if (!canceled) {
-          setState(currentTrack);
-        }
-      });
+    getCurrentTrackDetails().then(currentTrack => {
+      if (!canceled) {
+        setCurrentTrack(currentTrack);
+      }
     });
     return () => {
       canceled = true;
     };
   }, []);
-  useTrackPlayerEvents([Event.PlaybackTrackChanged],
+  useTrackPlayerEvents([Event.PlaybackTrackChanged, Event.PlaybackState],
     ({ type, nextTrack }) => {
       if (type === Event.PlaybackTrackChanged) {
-        setState(nextTrack);
+        getCurrentTrackDetails(nextTrack).then(setCurrentTrack);
+      }
+      if (type === Event.PlaybackState) {
+        getCurrentTrackDetails().then(setCurrentTrack);
       }
     }
   );
-  return state;
+  return currentTrack;
 }
 
 export function usePlaybackRate(): number {
@@ -147,27 +147,6 @@ export function usePlaybackRate(): number {
   return rate;
 }
 
-
-export function useTrackDetails(index: number | null) {
-  const [track, setTrack] = useState<Track | null>(null);
-  useEffect(() => {
-    let canceled = false;
-    narrationPlayer().then(trackPlayer => {
-      if (index !== null && index >= 0) {
-        trackPlayer.getTrack(index).then(track => {
-          if (!canceled) {
-            setTrack(track);
-          }
-        });
-      }
-      return function cancel() {
-        canceled = true;
-      };
-    });
-  }, [index]);
-  return track;
-}
-
 export function useStopAudioOnUnmount() {
   const [hasAudio] = useAudioAccess();
   useEffect(() => {
@@ -179,4 +158,18 @@ export function useStopAudioOnUnmount() {
       };
     }
   }, [hasAudio]);
+}
+
+export function useTrackPlayerQueue(interval: number = 100) {
+  const [state, setState] = useState<Track[]>([]);
+  const getProgress = async() => {
+    const trackPlayer = await narrationPlayer();
+    const newQueue = await trackPlayer.getQueue();
+    if (!isEqual(newQueue, state)) {
+       setState(newQueue);
+     }
+   };
+
+   useInterval(getProgress, interval);
+  return state;
 }

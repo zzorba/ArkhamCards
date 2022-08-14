@@ -1,4 +1,4 @@
-import { isEqual, findIndex, filter, map, forEach } from 'lodash';
+import { isEqual, findIndex, filter, map, forEach, range } from 'lodash';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -20,7 +20,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
-import { narrationPlayer, useAudioAccess, useCurrentTrack, useTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 import { useDialog } from '@components/deck/dialogs';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -49,7 +49,8 @@ function artist(lang: string) {
   }
 }
 
-export async function setNarrationQueue(queue: NarrationTrack[]) {
+// Returns true if the current index was not preserved (a reset has occurred)
+export async function setNarrationQueue(queue: NarrationTrack[]): Promise<void> {
   const trackPlayer = await narrationPlayer();
   const accessToken = await getAccessToken();
 
@@ -59,7 +60,7 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
   }
 
   const oldTrackIds: string[] = map(oldTracks, (track) => track.narrationId);
-  const newTracks: Track[] = map(queue, (track): Track => {
+  const newTracks: Track[] = map(queue, (track: NarrationTrack): Track => {
     if (track.lang && track.lang !== 'dv') {
       return {
         narrationId: track.id,
@@ -117,7 +118,7 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
       if (tracksToInsert.length) {
         if (j >= newTracks.length) {
           // We fell off without finding an old 'common' track, so just append at the end..
-          await trackPlayer.add(tracksToInsert);
+          await trackPlayer.add(tracksToInsert, oldTrackIds.length);
         } else {
           // This means we found a common track to stop at, which would put it currently at position 'i' in the queue.
           await trackPlayer.add(tracksToInsert, j)
@@ -127,11 +128,14 @@ export async function setNarrationQueue(queue: NarrationTrack[]) {
         i++;
       }
     }
-  } else {
-    // otherwise reset and add all the new tracks
-    await trackPlayer.reset();
-    await trackPlayer.add(newTracks);
+    return;
   }
+
+  // otherwise reset and add all the new tracks
+  if (oldTracks.length) {
+    await trackPlayer.reset();
+  }
+  await trackPlayer.add(newTracks);
 }
 
 export interface NarrationTrack {
@@ -218,26 +222,24 @@ function showRuDonate() {
 function PlayerView({ style }: PlayerProps) {
   const { lang } = useContext(LanguageContext);
   const { colors, typography } = useContext(StyleContext);
-  const trackIndex = useCurrentTrack();
-  const track = useTrackDetails(trackIndex);
+  const track = useCurrentTrackDetails();
   const queue = useTrackPlayerQueue();
   const firstTrack = useMemo(() => !!track && findIndex(queue, t => t.url === track.url) === 0, [queue, track]);
   const state: State = usePlaybackState();
   const onReplayPress = usePressCallback(replay, 250);
 
   const onPlay = useCallback(async() => {
-    if (!track) {
-      console.log(`No track`);
+    if (!track && !firstTrack) {
       return;
     }
     const trackPlayer = await narrationPlayer();
-    // tslint:disable-next-line: strict-comparisons
+    const state = await trackPlayer.getState();
     if (state === State.Playing) {
       await trackPlayer.pause();
     } else {
       await trackPlayer.play();
     }
-  }, [track, state]);
+  }, [track, firstTrack]);
   const onPlayPress = usePressCallback(onPlay, 250);
   const previousTrackAction = useCallback(() => {
     if (firstTrack) {
@@ -339,7 +341,7 @@ function PlayerView({ style }: PlayerProps) {
 }
 
 interface ArtworkProps {
-  track: Track | null;
+  track: Track | undefined;
 }
 
 function ArtworkView({ track }: ArtworkProps) {
@@ -372,7 +374,7 @@ function ArtworkView({ track }: ArtworkProps) {
 
 interface TitleProps {
   style?: ViewStyle;
-  track: Track | null;
+  track: Track | undefined;
 }
 
 function TitleView({ style, track }: TitleProps) {
@@ -463,53 +465,6 @@ function TrackView({ track, isCurrentTrack }: TrackProps) {
         </View>
       </>
     </TouchableHighlight>
-  );
-}
-
-interface PlaylistProps {
-  style?: ViewStyle;
-  queue: Track[];
-}
-
-function PlaylistView({ style, queue }: PlaylistProps) {
-  const [currentTrackIndex, setCurrenTrackIndex] = useState<number | null>(null);
-  const currentTrack = useTrackDetails(currentTrackIndex);
-  useEffect(() => {
-    let canceled = false;
-    let listener: EmitterSubscription | undefined = undefined;
-    narrationPlayer().then(trackPlayer => {
-      listener = trackPlayer.addEventListener(
-        Event.PlaybackTrackChanged,
-        (data) => {
-          if (!canceled) {
-            setCurrenTrackIndex(data.nextTrack);
-          }
-        }
-      );
-      trackPlayer.getCurrentTrack().then(currentTrackId => {
-        if (!canceled) {
-          setCurrenTrackIndex(currentTrackId);
-        }
-      });
-    });
-    return () => {
-      canceled = true;
-      if (listener) {
-        listener.remove();
-      }
-    };
-  }, []);
-  return (
-    <View style={style}>
-      { queue.map((track) => (
-        <TrackView
-          key={track.narrationId}
-          track={track}
-          isCurrentTrack={currentTrack ? currentTrack.narrationId === track.narrationId : false}
-        />
-      ))}
-      <Divider />
-    </View>
   );
 }
 
