@@ -1,14 +1,14 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { forEach, map } from 'lodash';
-import PinchZoomView from 'react-native-pinch-zoom-view';
+import PanPinchView from 'react-native-pan-pinch-view';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { LocationSetupStep } from '@data/scenario/types';
 import LocationCard from './LocationCard';
-import { CARD_RATIO } from '@styles/sizes';
+import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -117,7 +117,9 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
 
   const rowHeight = TOP_PADDING * 2 + cardHeight * (locations.length / (vertical === 'half' ? 2 : 1)) + GUTTER_SIZE;
   return (
-    <PinchZoomView style={{ width: 500 }}>
+    <PanPinchView minScale={1} maxScale={2} initialScale={1}
+      containerDimensions={{ width, height: height - NOTCH_BOTTOM_PADDING }}
+      contentDimensions={{ width: 500, height: height * 2 }}>
       { !!note && (
         <View style={{ width: width }}>
           <SetupStepWrapper bulletType="none">
@@ -128,7 +130,7 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
       <View style={[styles.container, { height: rowHeight }]}>
         { map(locations, renderRow) }
       </View>
-    </PinchZoomView>
+    </PanPinchView>
   );
 }
 

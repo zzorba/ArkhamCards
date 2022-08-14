@@ -80,7 +80,8 @@ RNKeyEvent *keyEvent = nil;
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-
+  [ReactNativeNavigation bootstrapWithBridge:bridge];
+  
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();
   _reactNativeConfig = std::make_shared<facebook::react::EmptyReactNativeConfig const>();
@@ -89,8 +90,12 @@ RNKeyEvent *keyEvent = nil;
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
 
-  [ReactNativeNavigation bootstrapWithBridge:bridge];
+  NSDictionary *initProps = [self prepareInitialProps];
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"ArkhamCards", initProps);
 
+  if (@available(iOS 13.0, *)) {
+      rootView.backgroundColor = [UIColor systemBackgroundColor];
+  }
   return YES;
 }
 
@@ -108,7 +113,7 @@ RNKeyEvent *keyEvent = nil;
 - (BOOL)concurrentRootEnabled
 {
   // Switch this bool to turn on and off the concurrent root
-  return true;
+  return false;
 }
 
 - (NSDictionary *)prepareInitialProps

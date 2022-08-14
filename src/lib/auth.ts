@@ -6,7 +6,7 @@ import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
 // @ts-ignore
 const config: AppAuthConfig = {
   issuer: Config.OAUTH_SITE,
-  clientId: Config.OAUTH_CLIENT_ID,
+  clientId: Config.OAUTH_CLIENT_ID || '',
   clientSecret: Config.OAUTH_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://auth/redirect',
   serviceConfiguration: {

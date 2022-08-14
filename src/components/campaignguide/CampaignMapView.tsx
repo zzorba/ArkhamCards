@@ -19,7 +19,6 @@ import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
 import { interpolate } from 'react-native-reanimated';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';

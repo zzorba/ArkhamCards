@@ -2932,17 +2932,10 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*":
+"@types/react-native@*", "@types/react-native@0.69.5":
   version "0.69.5"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.69.5.tgz#7709fdbff031a5ecf1956705e6c4a07cdfe6867c"
   integrity sha512-mSUCuGUsW2kJlZiu4GmdYVDKZX/52iyC9rm6dxAmflJj1b7kSO/CMSDy5WbcfS8QerxTqbYGTrIwHD0GnXHzbQ==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-native@0.67.8":
-  version "0.67.8"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.67.8.tgz#edaaa0527b835fffbfc34c09874722b6e4a4d1f3"
-  integrity sha512-xA8rYiTHvO6RoZv/LFnmEeqRuhA2y34mGB8zX3bGHe/pCt9jEStUPyUO4q1KcDc9GiGIOBD8ArfRtThprAjSfQ==
   dependencies:
     "@types/react" "*"
 
@@ -3430,17 +3423,17 @@ app-root-path@^3.0.0:
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-3.0.0.tgz#210b6f43873227e18a4b810a032283311555d5ad"
   integrity sha512-qMcx+Gy2UZynHjOHOIXPNvpf+9cjvk3cWrBBK7zg4gH9+clobJRb9NGzcT7mQTcV/6Gm/1WelUtqxVXnNlrwcw==
 
-appcenter-crashes@4.4.4:
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-4.4.4.tgz#60526500e827164e45146af7a6e03252cf45ea37"
-  integrity sha512-Hps5Gnkv99Sgsc9n8A/HWWFs4tMkVmW4apcc6PKnat2Lquysr55k0jqNSPqZVuSK4DNUyPoqaXMUPbeCUhWNNg==
+appcenter-crashes@4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-4.4.5.tgz#56f42072279967d36ff7fe277f8b0b3cd68cf9f4"
+  integrity sha512-B1kgD9U0SFtnrO9RRV4GmFAs5ZfU2mepnobSlzrmm2Gw2y+U55JXsf0TaQozEBBWrM1wf1COZgRr4em578dNlg==
   dependencies:
-    appcenter "4.4.4"
+    appcenter "4.4.5"
 
-appcenter-link-scripts@4.4.4:
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-4.4.4.tgz#052ff1ca6a5639f479f322054faa7d44ed27d0fd"
-  integrity sha512-nQHQW04AUFwhs13WfKb79HqwEMVaXaKq2OYUMNkO30leWDlx1HHLF11pofhQHFY4mprGfXQ2aKxqLlVS9ezVjQ==
+appcenter-link-scripts@4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-4.4.5.tgz#0d2550b15b5828df904ee0ce76d5fca1e4edd206"
+  integrity sha512-bs++S1eFm2+noAYC7+5lZESg2IvRJ1rl2o41Re3L+dg6UtKrIf/34LgIsnOM7Ufn+pophkmqkO5GRapVDGTO4Q==
   dependencies:
     debug "4.1.1"
     glob "5.0.15"
@@ -3449,12 +3442,12 @@ appcenter-link-scripts@4.4.4:
     which "1.2.11"
     xcode "2.0.0"
 
-appcenter@4.4.4:
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-4.4.4.tgz#895570fcba8c7c8f370020a88313111e39823a9a"
-  integrity sha512-I/9fT2G2G/wqsuUMnhdGm+DbGjT+9AfLedFPppyzh2jKfTaUK8KfwSsHs/+mkQBYq7VToG0G4p3y8Erpg9rG4w==
+appcenter@4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-4.4.5.tgz#800008cc5566f5092dba4797f6d7940d5ae65203"
+  integrity sha512-3OPM8yOgwYyd1pBLVxra9+rAscCTEEySyxYhJYwzPw8ZjnGIJNTgDQ+YwuajoYG8vPJRbl8ZmG16wcdcMYk14g==
   dependencies:
-    appcenter-link-scripts "4.4.4"
+    appcenter-link-scripts "4.4.5"
 
 appdirsjs@^1.2.4:
   version "1.2.7"
@@ -10675,10 +10668,9 @@ react-native-color-matrix-image-filters@5.2.14:
     rn-color-matrices "^4.1.0"
     ts-tiny-invariant "^1.0.5"
 
-react-native-config@1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.6.tgz#2aefebf4d9cf02831e64bbc1307596bd212f6d42"
-  integrity sha512-cSLdOfva2IPCxh6HjHN1IDVW9ratAvNnnAUx6ar2Byvr8KQU7++ysdFYPaoNVuJURuYoAKgvjab8ZcnwGZIO6Q==
+"react-native-config@https://github.com/Cordobo/react-native-config.git":
+  version "1.4.7"
+  resolved "https://github.com/Cordobo/react-native-config.git#1b026de7c78d77d700dfe639b83d556212a1a060"
 
 react-native-deep-linking@2.2.0:
   version "2.2.0"
@@ -10817,13 +10809,6 @@ react-native-pan-pinch-view@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-native-pan-pinch-view/-/react-native-pan-pinch-view-1.0.1.tgz#9c8aff0f74ab3b74d839da655c2397011cb66410"
   integrity sha512-gShQHJmWumuQXyBC/FVS9nf7in0UC+aFC8vzhGXnNNXje1Oc/7YY18qZl9w0oEwZJfJFraLKgahofDv79co8Cw==
-
-react-native-pinch-zoom-view@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-pinch-zoom-view/-/react-native-pinch-zoom-view-0.2.0.tgz#5ff469e7b1b4a69629a8fb31a226d3855e813799"
-  integrity sha512-KPrJCSKX/NZuNjyS9gl4gR1AhV0sWo2KgJOI5tD8+YhzjtSRHnaq9XvOdO4ero3oyU2oFXyFHEVH+DzOfaXqOg==
-  dependencies:
-    prop-types "^15.6.0"
 
 react-native-progress@5.0.0:
   version "5.0.0"
