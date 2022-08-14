@@ -140,7 +140,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+<true/>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
