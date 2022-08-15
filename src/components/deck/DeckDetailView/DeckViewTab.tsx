@@ -207,7 +207,6 @@ export default function DeckViewTab(props: Props) {
     meta: deckEdits?.meta,
     tabooSetId,
     mode,
-
     editable,
     showEditCards,
     showEditSpecial,

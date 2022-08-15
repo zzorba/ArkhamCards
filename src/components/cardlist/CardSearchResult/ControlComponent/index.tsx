@@ -32,6 +32,7 @@ export type ControlType = {
   deckId: DeckId;
   limit: number;
   side?: boolean;
+  editable: boolean;
   onUpgradePress?: (card: Card) => void;
 } | {
   type: 'toggle';
@@ -72,6 +73,7 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
           onUpgradePress={control.onUpgradePress}
           card={card}
           deckId={control.deckId}
+          editable={control.editable}
           limit={control.limit}
           side={control.side}
         />

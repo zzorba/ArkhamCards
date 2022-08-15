@@ -519,6 +519,7 @@ export default function useParsedDeckComponent({
       type: 'upgrade',
       deckId: deckId,
       side: item.mode === 'side',
+      editable: !!editable,
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
