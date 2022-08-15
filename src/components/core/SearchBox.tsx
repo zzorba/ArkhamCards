@@ -121,8 +121,9 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
             flex: 1,
             color: colors.darkText,
             textAlignVertical: 'center',
+            borderBottomColor: 'transparent',
           }}
-          underlineColorAndroid="rgba(0,0,0,0)"
+          underlineColorAndroid="transparent"
           onChangeText={onSearchUpdated}
           placeholder={placeholder}
           placeholderTextColor={colors.D20}

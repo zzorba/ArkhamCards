@@ -1,6 +1,7 @@
 package com.arkhamcards;
 
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import androidx.core.splashscreen.SplashScreen;
@@ -19,10 +20,22 @@ public class MainActivity extends NavigationActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT < 23) {
+            setContentView(this.createLegacySplashLayout());
+        }
+    }
+
+    public LinearLayout createLegacySplashLayout() {
+        LinearLayout splash = new LinearLayout(this);
+        Drawable launch_screen_bitmap = ContextCompat.getDrawable(getApplicationContext(), R.drawable.splash);
+        splash.setBackground(launch_screen_bitmap);
+        return splash;
     }
 
     @Override protected void addDefaultSplashLayout() {
-        SplashScreen.installSplashScreen(this);
+        if (Build.VERSION.SDK_INT >= 23) {
+            SplashScreen.installSplashScreen(this);
+        }
         super.addDefaultSplashLayout();
     }
 }

@@ -1,4 +1,5 @@
 import { forEach, keys, map } from 'lodash';
+import { Platform } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -15,7 +16,7 @@ const icons: {
   per_investigator: [24, COLORS.M, ArkhamIcon],
   auto_fail: [24, COLORS.M, ArkhamIcon],
   cultist: [24, COLORS.M, ArkhamIcon],
-  edit: [32, COLORS.M, AppIcon],
+  edit: [Platform.OS === 'android' ? 30 : 32, COLORS.M, AppIcon],
   tune: [32, COLORS.M, AppIcon],
   dismiss: [32, COLORS.M, AppIcon],
   undo: [32, COLORS.M, AppIcon],

@@ -9,6 +9,6 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="ArkhamCards.DayNight">
         <item name="android:windowBackground">@color/colorBackground</item>
-	<item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+    	<item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 </resources>
