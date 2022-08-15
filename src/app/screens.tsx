@@ -128,10 +128,10 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     );
   }
 
-  Navigation.registerComponent('Browse.Cards', providerWrapper(BottomTabNameCorrector(BROWSE_CARDS, () => t`Cards`, BrowseCardsView)), () => BrowseCardsView);
-  Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
-  Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
-  Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
+  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView), () => BrowseCardsView);
+  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView), () => MyCampaignsView);
+  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView), () => MyDecksView);
+  Navigation.registerComponent('Settings', providerWrapper(SettingsView), () => SettingsView);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
   Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
