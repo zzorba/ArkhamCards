@@ -179,7 +179,7 @@ export function useScenarioNames(): { [id: string]: string | undefined } {
 }
 
 
-function load(lang: string): {
+function loadAll(lang: string): {
   allLogEntries: CampaignLog[];
   allCampaigns: FullCampaign[];
   encounterSets: {
@@ -269,6 +269,27 @@ function load(lang: string): {
   }
 }
 
+
+function load(lang: string, id: string): {
+  allLogEntries: CampaignLog[];
+  campaign: FullCampaign | undefined;
+  sideCampaign: FullCampaign | undefined;
+  encounterSets: {
+    [code: string]: string;
+  };
+  errata: Errata;
+} {
+  const result = loadAll(lang);
+
+  return {
+    allLogEntries: result.allLogEntries,
+    encounterSets: result.encounterSets,
+    errata: result.errata,
+    campaign: find(result.allCampaigns, campaign => campaign.campaign.id === id),
+    sideCampaign: find(result.allCampaigns, campaign => campaign.campaign.id === 'side'),
+  };
+}
+
 function combineCampaignLog(
   campaignLog: CampaignLog,
   sideCampaign: CampaignLog
@@ -308,17 +329,14 @@ export function getCampaignGuide(
 ): CampaignGuide | undefined {
   const {
     allLogEntries,
-    allCampaigns,
+    campaign,
+    sideCampaign,
     encounterSets,
     errata,
-  } = load(lang);
+  } = load(lang, id);
 
-  const campaign = find(allCampaigns, campaign =>
-    campaign.campaign.id === id
-  );
   const logEntries = find(allLogEntries, log => log.campaignId === id);
   const sideLogEntries = find(allLogEntries, log => log.campaignId === 'side');
-  const sideCampaign = find(allCampaigns, campaign => campaign.campaign.id === 'side');
 
   if (!campaign || !logEntries || !sideCampaign || !sideLogEntries) {
     return undefined;
@@ -364,7 +382,7 @@ export function getStandaloneScenarios(
   const {
     allLogEntries,
     allCampaigns,
-  } = load(lang);
+  } = loadAll(lang);
   const standalones = require('../../../assets/generated/standaloneScenarios.json');
   return sortBy(flatMap(standalones, (id: StandaloneId) => {
     const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
