@@ -286,37 +286,52 @@ function PointOfInterest({
   );
 }
 
-function findShortestPath(start: string, end: string, allLocations: MapLocation[]): string[] {
+interface Path {
+  time: number;
+  path: string[];
+}
+
+function findShortestPath(start: string, end: string, allLocations: MapLocation[]): Path | undefined{
   if (start === end) {
-    return [start];
+    return {
+      path: [start],
+      time: 0,
+    };
   }
   const locationsById: { [id: string]: MapLocation } = {};
   forEach(allLocations, l => {
     locationsById[l.id] = l;
   });
 
-  const queue = new PriorityQueue<string[]>(10, (pathA: string[], pathB: string[]) => pathA.length - pathB.length);
+  const queue = new PriorityQueue<Path>(10, (pathA: Path, pathB: Path) => pathA.time - pathB.time);
   const startLocation = locationsById[start];
   forEach(startLocation.connections, connection => {
-    queue.add([start, connection]);
+    queue.add({
+      path: [start, connection],
+      time: 1,
+    });
   });
   while (!queue.empty()) {
-    const shortestCurrent = queue.poll();
+    const shortestCurrent: Path | undefined = queue.poll();
     if (shortestCurrent) {
-      if (indexOf(shortestCurrent, end) !== -1) {
+      if (indexOf(shortestCurrent.path, end) !== -1) {
         return shortestCurrent;
       }
-      const last = shortestCurrent[shortestCurrent.length - 1];
+      const last = shortestCurrent.path[shortestCurrent.path.length - 1];
       const lastLocation = locationsById[last];
       forEach(lastLocation.connections, location => {
-        if (indexOf(shortestCurrent, location) === -1) {
+        if (indexOf(shortestCurrent.path, location) === -1) {
           // Add it to list if we don't have a loop;
-          queue.add([...shortestCurrent, location]);
+          // Side locations only cost 1 time even when you pass through them.
+          queue.add({
+            path: [...shortestCurrent.path, location],
+            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1)
+          });
         }
       })
     }
   }
-  return [];
+  return undefined;
 }
 
 function LocationContent({
@@ -338,7 +353,7 @@ function LocationContent({
       return undefined;
     }
     const shortestPath = findShortestPath(currentLocation.id, location.id, allLocations);
-    return shortestPath.length - 1;
+    return shortestPath?.time || 0;
   }, [currentLocation, allLocations, location])
   const makeCurrent = useCallback(() => {
     setCurrentLocation?.(location, travelDistance);

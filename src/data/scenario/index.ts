@@ -25,6 +25,7 @@ interface BasicScenario {
 
 export interface PlayedScenario extends BasicScenario {
   type: 'started' | 'completed';
+  location?: string;
   canUndo: boolean;
   closeOnUndo: boolean;
   steps: ScenarioStep[];

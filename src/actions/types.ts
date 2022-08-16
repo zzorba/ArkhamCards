@@ -445,6 +445,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
   EOE,
   GOB,
+  //TSK,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -476,6 +477,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);

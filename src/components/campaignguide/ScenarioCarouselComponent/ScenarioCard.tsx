@@ -10,6 +10,8 @@ import EncounterIcon from '@icons/EncounterIcon';
 import space, { m } from '@styles/space';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { ShowAlert } from '@components/deck/dialogs';
+import { CampaignMap } from '@data/scenario/types';
+import { find } from 'lodash';
 
 interface Props {
   componentId: string;
@@ -20,19 +22,24 @@ interface Props {
   isActive: boolean;
   finalScenario?: boolean;
   last?: boolean;
+  campaignMap: CampaignMap | undefined;
 }
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, finalScenario, last, isActive }: Props) {
+export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, campaignMap, finalScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
-    const scenarioName = scenario.scenarioGuide.scenarioHeader();
+    const scenarioName = scenario.scenarioGuide.scenarioHeader() || (
+      ((scenario.type === 'started' || scenario.type === 'completed') && scenario.location) ?
+        find(campaignMap?.locations, location => location.id === scenario.location)?.name :
+        undefined
+    );
     const actualName = scenario.scenarioGuide.scenarioName();
     if (scenario.id.replayAttempt) {
       const attempt = scenario.id.replayAttempt + 1;
       return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];
     }
     return [scenarioName, actualName];
-  }, [scenario.scenarioGuide, scenario.id]);
+  }, [scenario.scenarioGuide, scenario.id, campaignMap]);
   const onPress = useCallback(() => {
     showScenario(scenario);
   }, [showScenario, scenario]);

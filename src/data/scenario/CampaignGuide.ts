@@ -449,6 +449,7 @@ export default class CampaignGuide {
       const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
       firstResult = {
         type: executedScenario.inProgress ? 'started' : 'completed',
+        location: campaignState.sideScenarioEmbarkData(id.encodedScenarioId)?.destination,
         id,
         scenarioGuide,
         latestCampaignLog: executedScenario.latestCampaignLog,

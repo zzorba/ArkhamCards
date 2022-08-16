@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { Platform, Text } from 'react-native';
-import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
+import { dropRightWhile, find, findIndex, findLast, findLastIndex, map, times } from 'lodash';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -71,6 +71,7 @@ export default function ScenarioCarouselComponent({
 }: Props) {
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
+  const campaignMap = useMemo(() => campaignGuide.campaignMap(), [campaignGuide]);
   const carousel = useRef<Carousel<CarouselItem>>(null);
   const scenarioPressed = useRef<boolean>(false);
   const visible = useComponentVisible(componentId);
@@ -108,19 +109,35 @@ export default function ScenarioCarouselComponent({
   }, [processedCampaign]);
   const currentTime = processedCampaign.campaignLog.count('time', '$count');
 
+  const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
+    const embarkData: EmbarkData = {
+      destination,
+      previousScenarioId,
+      nextScenario,
+      time: time + xp_cost
+    };
+    if (campaignMap) {
+      if (currentTime + embarkData.time >= campaignMap.max_time) {
+        embarkData.nextScenario = campaignMap.final_scenario;
+        campaignState.startScenario(campaignMap.final_scenario, embarkData);
+        return undefined;
+      }
+    }
+    return embarkData;
+  }, [campaignGuide, currentTime, campaignMap])
+
   const onEmbark = useCallback((location: MapLocation, timeSpent: number) => {
-    const map = campaignGuide.campaignMap();
-    if (interScenarioId && map) {
+    if (interScenarioId && campaignMap) {
       const embarkData: EmbarkData = {
         destination: location.id,
         time: timeSpent,
         previousScenarioId: interScenarioId.encodedScenarioId,
         nextScenario: location.scenario,
       };
-      if (currentTime + timeSpent >= map.max_time) {
+      if (currentTime + timeSpent >= campaignMap.max_time) {
         // You got redirected fool, out of time sucker...
-        embarkData.nextScenario = map.final_scenario;
-        campaignState.startScenario(map.final_scenario, embarkData);
+        embarkData.nextScenario = campaignMap.final_scenario;
+        campaignState.startScenario(campaignMap.final_scenario, embarkData);
       } else if (location.scenario === '$side_scenario') {
         Navigation.push<AddSideScenarioProps>(componentId, {
           component: {
@@ -129,6 +146,7 @@ export default function ScenarioCarouselComponent({
               campaignId,
               latestScenarioId: interScenarioId,
               embarkData: embarkData,
+              onEmbarkSide,
             },
             options: {
               topBar: {
@@ -149,7 +167,7 @@ export default function ScenarioCarouselComponent({
         campaignState.startScenario(location.scenario, embarkData);
       }
     }
-  }, [componentId, interScenarioId, currentTime, CampaignStateHelper, CampaignGuideContext]);
+  }, [onEmbarkSide, componentId, interScenarioId, currentTime, campaignMap]);
 
   const onShowEmbark = useCallback(() => {
     scenarioPressed.current = true;
@@ -232,6 +250,7 @@ export default function ScenarioCarouselComponent({
             key={index}
             showScenario={onShowScenario}
             scenario={item.scenario}
+            campaignMap={campaignMap}
             showAlert={showAlert}
             processedCampaign={processedCampaign}
             componentId={componentId}

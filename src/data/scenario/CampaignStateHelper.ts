@@ -302,6 +302,11 @@ export default class CampaignStateHelper {
     );
   }
 
+  sideScenarioEmbarkData(scenario: string): EmbarkData | undefined {
+    const entry = this.entry('start_side_scenario', undefined, scenario);
+    return entry && entry.type === 'start_side_scenario' ? entry.embarkData : undefined;
+  }
+
   choice(id: string, scenario?: string): number | undefined {
     const entry = this.entry('choice', id, scenario);
     if (entry && entry.type === 'choice') {
