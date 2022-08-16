@@ -2400,29 +2400,29 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-8.3.1.tgz#c880407c660475d1fa0afa92fa259aae0e9e2dc9"
   integrity sha512-CYZXW3wZJ8Ac7FQjrDfqITFZ6Ex+dCOOKQv0LvjQUI811otSBATyEZrBVWc+1GpZExbKTlulyE0X3W4v5YN1hQ==
 
-"@react-native-firebase/app@14.11.0":
-  version "14.11.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.11.0.tgz#41b1b7d41f51b6880ebad6a12ff87c85bcdab0d6"
-  integrity sha512-LzqgZNx+WcNGYRZG6LB9BkJAx4LE+LsbPF9p65TMSagWYd/iJafoXl4d6KWQeUMIFZQH7Ke/eJ/fIZkc+4eMRw==
+"@react-native-firebase/app@15.3.0":
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-15.3.0.tgz#589bbde3a7edf7663182fb83cf86630d871dbfcf"
+  integrity sha512-q04Y4aBCCR/4peeTWuXzt/KeI95QMNML/1o6PVN2FSsXSz42z2QbZByIj4cHgSA2LqCSokIDcch01rwx0ZUHcA==
   dependencies:
     "@expo/config-plugins" "^4.1.5"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@14.11.0":
-  version "14.11.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.11.0.tgz#cc5748777224dd81f87d005a71c887098e0f1e63"
-  integrity sha512-h4JJI3DKKpiVLX+FDiFNprUHquoBkZUZA+bpIZoRGHOr9V8GzcD4IGBs2biWOYYGfEvGZvTVlHXlZOo4rmWEuA==
+"@react-native-firebase/auth@15.3.0":
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-15.3.0.tgz#f848cf703450f8457e1ce60189f741942392a832"
+  integrity sha512-8QIl9SR2tBRjS3D4dq1MXESDn2pYtAwGvhNp+bG1MQUa0NdS4aTfpdsDSF0vKMAngkl2ZJufaqiaVlY74DoD+w==
 
-"@react-native-firebase/database@14.11.0":
-  version "14.11.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-14.11.0.tgz#0e91750a15ebc65ab2af50ebc47360c8f8a0e418"
-  integrity sha512-fD+OYvJjhDhDJmbARzKOZPcsmc3sAExZzKzYijscTDHwhmVM1hgddoTQZMQr40jIQVY5uO2PPx7BiKOz5dZssg==
+"@react-native-firebase/database@15.3.0":
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-15.3.0.tgz#e219d319ad4ccd12d91b8188cb0250d0c11fd339"
+  integrity sha512-v21CZVEogkvLX3+59IryaFPkZyhv8xr4p2/UdOVF9uyV1AZCb4subFgj8ZBnmkrB1/sVkdqsfa72EfXprV8ahg==
 
-"@react-native-firebase/functions@14.11.0":
-  version "14.11.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-14.11.0.tgz#5aed97d391a2f0b5ef1105a69ac037868d121f65"
-  integrity sha512-6zhlHSCYslRaJLvjTVoF7u2ttgCzbZGFTiA+FmDI0h4E1rAJfbULcjSzpYypDTdaczr2qb6LxXSGEM9mtk+1oA==
+"@react-native-firebase/functions@15.3.0":
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-15.3.0.tgz#3c966c6b93cb3c3d5dc7efe2b3ebfc83b0de5c8e"
+  integrity sha512-gvcI40LRBWWQot+9X0XZzK5uZgX7AMZ77ti6n63OkwJSG15KI+ATVVvT45IbKvhLPtT4khpOdURl1bX4RD7e7g==
 
 "@react-native-google-signin/google-signin@7.2.2":
   version "7.2.2"
@@ -10793,7 +10793,7 @@ react-native-radial-gradient@1.1.2:
   dependencies:
     deprecated-react-native-prop-types "^2.3.0"
 
-react-native-reanimated@^2.9.0:
+react-native-reanimated@2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.9.1.tgz#d9a932e312c13c05b4f919e43ebbf76d996e0bc1"
   integrity sha512-309SIhDBwY4F1n6e5Mr5D1uPZm2ESIcmZsGXHUu8hpKX4oIOlZj2MilTk+kHhi05LjChoJkcpfkstotCJmPRPg==
