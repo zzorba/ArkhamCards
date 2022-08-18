@@ -2373,7 +2373,6 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합�
 msgid "Challenge Scenario"
 msgstr "도전 시나리오"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name }의 도전 시나리오"
 
@@ -2839,17 +2838,17 @@ msgstr "조우 카드 토글"
 msgid "Show all available cards"
 msgstr "모든 사용 가능한 카드 보기"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "전투: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "체력: 조사자당 ${ health }"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "체력: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "회피: ${ evade }"
 
@@ -5745,9 +5744,6 @@ msgstr "지도"
 msgid "Examine campaign map"
 msgstr "캠페인 지도 검토"
 
-msgid "You are here."
-msgstr "현 위치"
-
 msgid "Warning: Locked"
 msgstr "주의: 잠김"
 
@@ -5764,8 +5760,97 @@ msgstr[1] "${ travelDistance }일"
 msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr "${ textModifier }, 다른 것 ${ revealCount }회 뽑기"
 
-msgid "You may <b>embark</b>."
-msgstr "<b>승선</b> 가능."
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr ""
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] ""
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] ""
+
+msgid "Add trait"
+msgstr ""
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] ""
+
+msgid "You are currently here."
+msgstr ""
+
+msgid "You have already visited this location."
+msgstr ""
+
+msgid ""
+"Travelling to this location will allow you to insert a side-scenarion into "
+"your campaign."
+msgstr ""
+
+msgid "Embark"
+msgstr ""
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr ""
+
+msgid "Depart"
+msgstr ""
+
+msgid "Choose destination"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr ""
+
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgid "Lost Moorings"
+msgstr ""
+
+msgid "Going Twice"
+msgstr ""
+
+msgid "Private Lives"
+msgstr ""
+
+msgid "Crumbling Masonry"
+msgstr ""
+
+msgid "A House Divided"
+msgstr ""
+
+msgid "Across Dreaful Waters"
+msgstr ""
+
+msgid "Blood From Stones"
+msgstr ""
+
+msgid "Pyroclastic Flow"
+msgstr ""
+
+msgid "Tomb of Dead Dreams"
+msgstr ""
+
+msgid "Cultists Alive"
+msgstr ""
+
+msgid "Cultists Killed"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6400,6 +6485,28 @@ msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
 msgstr "그 외에도 진홍색 열쇠 확장에서 발표된 새로운 메커니즘을 지원하기 위해 작업 중에 있습니다. 계속 지켜봐주시기 바랍니다."
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"

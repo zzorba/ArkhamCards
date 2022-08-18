@@ -2455,7 +2455,6 @@ msgstr "${ investigator.name } entfernt ${ card.name }"
 msgid "Challenge Scenario"
 msgstr "Herausforderungsszenario"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name } Herausforderungsszenario"
 
@@ -2952,17 +2951,17 @@ msgstr "Begegnungskarten umschalten"
 msgid "Show all available cards"
 msgstr "Zeige alle verfügbaren Karten"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "Kampf: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "Ausdauer: ${ health } pro Ermittler"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "Ausdauer: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "Entkommen: ${ evade }"
 
@@ -5938,9 +5937,6 @@ msgstr ""
 msgid "Examine campaign map"
 msgstr ""
 
-msgid "You are here."
-msgstr ""
-
 msgid "Warning: Locked"
 msgstr ""
 
@@ -5957,7 +5953,99 @@ msgstr[1] ""
 msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr ""
 
-msgid "You may <b>embark</b>."
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr ""
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add trait"
+msgstr ""
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "You are currently here."
+msgstr ""
+
+msgid "You have already visited this location."
+msgstr ""
+
+msgid ""
+"Travelling to this location will allow you to insert a side-scenarion into "
+"your campaign."
+msgstr ""
+
+msgid "Embark"
+msgstr ""
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr ""
+
+msgid "Depart"
+msgstr ""
+
+msgid "Choose destination"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr ""
+
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgid "Lost Moorings"
+msgstr ""
+
+msgid "Going Twice"
+msgstr ""
+
+msgid "Private Lives"
+msgstr ""
+
+msgid "Crumbling Masonry"
+msgstr ""
+
+msgid "A House Divided"
+msgstr ""
+
+msgid "Across Dreaful Waters"
+msgstr ""
+
+msgid "Blood From Stones"
+msgstr ""
+
+msgid "Pyroclastic Flow"
+msgstr ""
+
+msgid "Tomb of Dead Dreams"
+msgstr ""
+
+msgid "Cultists Alive"
+msgstr ""
+
+msgid "Cultists Killed"
+msgstr ""
+
+msgid "Notice"
 msgstr ""
 
 msgctxt "investigator"
@@ -6573,6 +6661,28 @@ msgctxt "releaseNotes"
 msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
 msgstr ""
 
 msgctxt "trait"
