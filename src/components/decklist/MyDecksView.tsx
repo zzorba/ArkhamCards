@@ -62,10 +62,6 @@ function MyDecksView({ componentId }: NavigationProps) {
     const hasCampaignDeck = !!find(myDecks, deckId => deckId.campaign_id);
     const hideLocalDeckToggle = (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck));
     const hideCampaignDeckToggle = (!hideCampaignDecks && !(hasCampaignDeck && hasNonCampaignDeck));
-    if (hideLocalDeckToggle && hideCampaignDeckToggle) {
-      // need to have both to show the toggle.
-      return [null, 0];
-    }
     return [
       (
         <View style={[styles.column, space.paddingBottomS]} key="controls">
