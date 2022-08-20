@@ -52,7 +52,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
           iosCategoryMode: IOSCategoryMode.SpokenAudio,
         }).then(() => {
           TrackPlayer.updateOptions({
-            stoppingAppPausesPlayback: true,
+            stoppingAppPausesPlayback: false,
             capabilities: [
               Capability.Play,
               Capability.Pause,
