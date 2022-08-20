@@ -98,9 +98,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
 async function getCurrentTrackDetails(nextTrack?: number): Promise<Track | undefined> {
   const trackPlayer = await narrationPlayer();
   const currentTrack = (nextTrack === undefined) ? await trackPlayer.getCurrentTrack() : nextTrack;
-  console.log(currentTrack);
   const queue = await trackPlayer.getQueue();
-  console.log(JSON.stringify(queue));
   if (currentTrack === -1 || currentTrack >= queue.length) {
     return undefined;
   }
