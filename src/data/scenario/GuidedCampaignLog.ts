@@ -53,7 +53,7 @@ import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
 import { LatestDecks } from '@data/scenario';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import { SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from './fixedSteps';
+import { INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from './fixedSteps';
 
 interface BasicEntry {
   id: string;
@@ -443,7 +443,7 @@ export default class GuidedCampaignLog {
           this.investigatorCodes(true),
           investigator =>this.isDefeated(investigator));
         return !!find(investigators, investigator => {
-          const entry = findLast(this.sections[sectionId]?.entries || [], entry => entry.id === `$investigator_partner_${investigator}` && entry.type === 'card');
+          const entry = findLast(this.sections[sectionId]?.entries || [], entry => entry.id === `${INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX}${investigator}` && entry.type === 'card');
           return !!find(entry?.type === 'card' ? entry.cards : [], c => c.card === partner.code);
         });
       }
@@ -1676,13 +1676,21 @@ export default class GuidedCampaignLog {
               entry => entry.id !== id
             );
           } else {
-            forEach(cards, card => {
+            if (id === SELECTED_PARTNERS_CAMPAIGN_LOG_ID) {
               section.entries.push({
                 type: 'card',
                 id,
-                cards: [card]
+                cards,
               });
-            });
+            } else {
+              forEach(cards, card => {
+                section.entries.push({
+                  type: 'card',
+                  id,
+                  cards: [card]
+                });
+              });
+            }
           }
         });
       }

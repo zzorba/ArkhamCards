@@ -162,7 +162,7 @@ function drawStandaloneWeaknessStep(): InputStep {
 }
 
 export const SELECTED_PARTNERS_CAMPAIGN_LOG_ID = '$selected_partners';
-
+export const INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX = '$investigator_partner_';
 const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
 const saveStandaloneDecksStep: InputStep = {
   id: SAVE_STANDALONE_DECKS_ID,
