@@ -1,10 +1,29 @@
 diff --git a/node_modules/react-native-scrubber/index.js b/node_modules/react-native-scrubber/index.js
-index 26618ed..42fad0e 100644
+index 26618ed..578af6e 100644
 --- a/node_modules/react-native-scrubber/index.js
 +++ b/node_modules/react-native-scrubber/index.js
-@@ -333,7 +333,7 @@ export default class extends Component {
-               
-             ]} 
+@@ -78,14 +78,16 @@ export default class extends Component {
+   scaleUp = () => {
+     Animated.timing(this.scaleFactor, {
+         toValue: 1,
+-        duration: SCALE_UP_DURAITON
++        duration: SCALE_UP_DURAITON,
++        useNativeDriver: false
+     }).start();
+   }
+ 
+   scaleDown = () => {
+     Animated.timing(this.scaleFactor, {
+         toValue: 0,
+-        duration: SCALE_UP_DURAITON
++        duration: SCALE_UP_DURAITON,
++        useNativeDriver: false
+     }).start();
+   }
+ 
+@@ -333,7 +335,7 @@ export default class extends Component {
+ 
+             ]}
              {...this.panResponder.panHandlers}
 -            hitSlop={{top: 50, bottom: 50, left: 50, right: 50}}
 +            hitSlop={{top: 10, bottom: 50, left: 50, right: 50}}

@@ -23,7 +23,6 @@ interface TrackPlayerFunctions {
   setRate: (rate: number) => Promise<void>;
   play: () => Promise<void>;
   pause: () => Promise<void>;
-  stop: () => Promise<void>;
   skipToNext: () => Promise<void>;
   skip: (trackId: number) => Promise<void>;
   add: (tracks: Track | Track[], insertBeforeId?: number) => Promise<void | number>;
@@ -52,7 +51,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
           iosCategoryMode: IOSCategoryMode.SpokenAudio,
         }).then(() => {
           TrackPlayer.updateOptions({
-            stopWithApp: true,
+            stoppingAppPausesPlayback: false,
             capabilities: [
               Capability.Play,
               Capability.Pause,
@@ -75,7 +74,6 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
             addEventListener: TrackPlayer.addEventListener,
             play: TrackPlayer.play,
             pause: TrackPlayer.pause,
-            stop: TrackPlayer.stop,
             skipToNext: TrackPlayer.skipToNext,
             getState: TrackPlayer.getState,
             skip: TrackPlayer.skip,
@@ -121,12 +119,16 @@ export function useCurrentTrackDetails() {
     };
   }, []);
   useTrackPlayerEvents([Event.PlaybackTrackChanged, Event.PlaybackState],
-    ({ type, nextTrack }) => {
-      if (type === Event.PlaybackTrackChanged) {
-        getCurrentTrackDetails(nextTrack).then(setCurrentTrack);
-      }
-      if (type === Event.PlaybackState) {
-        getCurrentTrackDetails().then(setCurrentTrack);
+    (event) => {
+      switch (event.type) {
+        case Event.PlaybackTrackChanged: {
+          getCurrentTrackDetails(event.nextTrack).then(setCurrentTrack);
+          break;
+        }
+        case Event.PlaybackState: {
+          getCurrentTrackDetails().then(setCurrentTrack);
+          break;
+        }
       }
     }
   );
@@ -153,7 +155,7 @@ export function useStopAudioOnUnmount() {
     if (hasAudio) {
       return function() {
         narrationPlayer().then(trackPlayer => {
-          trackPlayer.stop().then(() => trackPlayer.removeUpcomingTracks());
+          trackPlayer.pause().then(() => trackPlayer.removeUpcomingTracks());
         });
       };
     }
