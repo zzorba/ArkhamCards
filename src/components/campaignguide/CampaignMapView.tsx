@@ -312,7 +312,7 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
     });
   });
   while (!queue.empty()) {
-    const shortestCurrent: Path | undefined = queue.poll();
+    const shortestCurrent: Path | null = queue.poll();
     if (shortestCurrent) {
       if (indexOf(shortestCurrent.path, end) !== -1) {
         return shortestCurrent;
