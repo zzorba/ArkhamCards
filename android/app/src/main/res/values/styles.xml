@@ -3,7 +3,6 @@
     <style name="AppSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splashBackground</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/app_icon</item>
-        <item name="windowSplashScreenAnimationDuration">3000</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
     <!-- Base application theme. -->

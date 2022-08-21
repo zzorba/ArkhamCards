@@ -2,26 +2,23 @@ package com.arkhamcards;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AnticipateInterpolator;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import androidx.core.splashscreen.SplashScreen;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import android.app.Activity;
 
 import com.reactnativenavigation.NavigationActivity;
-import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.ReactRootView;
-
-import javax.annotation.Nonnull;
 
 public class MainActivity extends NavigationActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +34,34 @@ public class MainActivity extends NavigationActivity {
     @Override protected void addDefaultSplashLayout() {
         if (Build.VERSION.SDK_INT >= 23) {
             final SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-            splashScreen.setOnExitAnimationListener(splashScreenViewProvider -> {
+            splashScreen.setOnExitAnimationListener((splashScreenViewProvider) -> {
                 final View splashScreenView = splashScreenViewProvider.getView();
-                final ObjectAnimator slideUp = ObjectAnimator.ofFloat(
+                final ObjectAnimator fadeOut = ObjectAnimator.ofFloat(
                         splashScreenView,
-                        View.TRANSLATION_Y,
-                        0f,
-                        -splashScreenView.getHeight()
+                        View.ALPHA,
+                        1f,
+                        0f
                 );
-                slideUp.setInterpolator(new AnticipateInterpolator());
-                slideUp.setDuration(600L);
+                final ObjectAnimator sizeUpX = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.SCALE_X,
+                    1f,
+                    1.2f
+                );
+                final ObjectAnimator sizeUpY = ObjectAnimator.ofFloat(
+                        splashScreenView,
+                        View.SCALE_Y,
+                        1f,
+                        1.2f
+                );
+
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.playTogether(fadeOut, sizeUpX, sizeUpY);
+                animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+                animatorSet.setDuration(600L);
 
                 // Call SplashScreenView.remove at the end of your custom animation.
-                slideUp.addListener(new AnimatorListenerAdapter() {
+                animatorSet.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         splashScreenViewProvider.remove();
@@ -57,8 +69,9 @@ public class MainActivity extends NavigationActivity {
                 });
 
                 // Run your animation.
-                slideUp.start();
+                animatorSet.start();
             });
+            splashScreen.setKeepOnScreenCondition(() -> !this.rootPresenter.setRootCalled());
             super.addDefaultSplashLayout();
         } else {
             setContentView(this.createLegacySplashLayout());

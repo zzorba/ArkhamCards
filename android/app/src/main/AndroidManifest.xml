@@ -15,7 +15,9 @@
       android:icon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:hardwareAccelerated="true"
-      android:theme="@style/AppSplash">
+        android:theme="@style/AppSplash"
+        tools:replace="android:theme"
+    >
         <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="com.arkhamcards.fileprovider"
