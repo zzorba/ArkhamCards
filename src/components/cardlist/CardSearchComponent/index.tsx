@@ -20,7 +20,6 @@ import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import { useComponentVisible, useEffectUpdate, useNavigationButtonPressed } from '@components/core/hooks';
 import COLORS from '@styles/colors';
-import _ from 'lodash';
 import { useFilterButton } from '../hooks';
 import { useSortDialog } from '../CardSortDialog';
 
@@ -111,7 +110,7 @@ export function navigationOptions(
     enabled: true,
   } : {
     id: 'filter',
-    icon: iconsMap['filter'],
+    icon: iconsMap.filter,
     color: lightButton ? 'white' : COLORS.M,
     accessibilityLabel: t`Filters`,
   };
@@ -120,7 +119,7 @@ export function navigationOptions(
     filterButton,
     {
       id: 'sort',
-      icon: iconsMap['sort'],
+      icon: iconsMap.sort,
       color: lightButton ? 'white' : COLORS.M,
       accessibilityLabel: t`Sort`,
     },

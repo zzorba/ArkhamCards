@@ -76,7 +76,7 @@ export default function CampaignDetailTab({
   }, [campaignState]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
 
-  const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [saving, , saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -190,10 +190,10 @@ export default function CampaignDetailTab({
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },
-        }]
+        }],
       },
     });
-  }, [componentId, campaignId]);
+  }, [campaignId]);
 
   const onTarotPress = useCallback((readingType: TarotReadingType) => {
     Navigation.push<TarotCardReadingProps>(componentId, {

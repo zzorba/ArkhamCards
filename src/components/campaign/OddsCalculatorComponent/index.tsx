@@ -617,11 +617,11 @@ const SPECIAL_ODDS: { [key: string]: number } = {
 function modifierLabel(modifier: number, textModifier: string, revealCount: number) {
   if (modifier === -100) {
     return textModifier;
-   }
-   if (revealCount > 1) {
+  }
+  if (revealCount > 1) {
     return t`${textModifier}, draws another ${revealCount}`;
-   }
-   return t`${textModifier}, draws another`;
+  }
+  return t`${textModifier}, draws another`;
 }
 
 function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modifiedSkill, testDifficulty }: ChaosBagProps & { chaosBagResults: ChaosBagResultsT }) {
@@ -892,7 +892,7 @@ export default function OddsCalculatorComponent({
     });
   }, [standalonePacks, scenarioCards]);
 
-  const [tokenChoices, ,, setTokenChoice, resetTokenChoices] = useCounters({});
+  const [tokenChoices, ,, setTokenChoice] = useCounters({});
 
   const items: Item<Scenario | undefined>[] = useMemo(() => {
     return [

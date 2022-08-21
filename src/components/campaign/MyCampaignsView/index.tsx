@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { concat, filter, flatMap, forEach, partition, throttle, map } from 'lodash';
+import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';

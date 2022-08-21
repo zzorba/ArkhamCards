@@ -62,10 +62,6 @@ const styles = StyleSheet.create({
     top: m,
     right: m,
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   button: {
     marginRight: 80 + m,
   },

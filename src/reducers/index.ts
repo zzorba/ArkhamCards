@@ -174,42 +174,42 @@ export const getCampaigns = createSelector(
   allDecksSelector,
   (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
     return map(
-    filter(
-      values(allCampaigns),
-      campaign => {
-        return (!campaign.linkedCampaignUuid && !campaign.serverId);
-      }
-    ),
-    (campaign: Campaign) => {
-      if (campaign.linkUuid) {
-        const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
-        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
-        if (campaignA && campaignB) {
-          const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
-          const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
-          return new MiniLinkedCampaignRedux(
-            campaign,
-            getCampaignLastUpdated(campaign),
-            campaignA,
-            decksA,
-            getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
-            campaignB,
-            decksB,
-            getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
-          );
+      filter(
+        values(allCampaigns),
+        campaign => {
+          return (!campaign.linkedCampaignUuid && !campaign.serverId);
         }
+      ),
+      (campaign: Campaign) => {
+        if (campaign.linkUuid) {
+          const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
+          const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
+          if (campaignA && campaignB) {
+            const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
+            const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
+            return new MiniLinkedCampaignRedux(
+              campaign,
+              getCampaignLastUpdated(campaign),
+              campaignA,
+              decksA,
+              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+              campaignB,
+              decksB,
+              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+            );
+          }
+        }
+        return new MiniCampaignRedux(
+          campaign,
+          flatMap(campaign.deckIds, id => {
+            const deck = getDeck(allDecks, id);
+            const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
+            return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
+          }),
+          getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
+        );
       }
-      return new MiniCampaignRedux(
-        campaign,
-        flatMap(campaign.deckIds, id => {
-          const deck = getDeck(allDecks, id);
-          const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
-          return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
-        }),
-        getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
-      );
-    }
-  );
+    );
   }
 );
 

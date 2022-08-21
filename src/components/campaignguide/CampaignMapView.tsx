@@ -19,7 +19,6 @@ import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
 import { interpolate } from 'react-native-reanimated';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
@@ -31,6 +30,12 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
   const onLayout = useCallback((event: LayoutChangeEvent) => {
     setDimensions({ width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height });
   }, [setDimensions]);
+  const opacity = useMemo(() => {
+    if (!dimensions) {
+      return 0;
+    }
+    return visited ? 0.5 : 0.8;
+  }, [dimensions, visited])
   return (
     <View
       style={{
@@ -44,7 +49,7 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
     >
       <View
         style={{ position: 'absolute', top: 0, left: 0, width: dimensions?.width, height: dimensions?.height }}
-        opacity={!dimensions ? 0 : (visited ? 0.5 : 0.8)}
+        opacity={opacity}
       >
         { !!dimensions && (
           <>
@@ -52,7 +57,7 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
             <View style={{ position: 'absolute', top: size - 1, right: 0, width: size, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
             <View style={{ position: 'absolute', top: 0, left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: size, backgroundColor: bgColor }} />
             <View style={{ position: 'absolute', bottom: 0, left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: size, backgroundColor: bgColor }} />
-            <View style={{ position: 'absolute', top: size -1 , left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
+            <View style={{ position: 'absolute', top: size - 1 , left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
           </>
         ) }
         <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}><AppIcon name="label_tl_bg" color={bgColor} size={size} /></View>
@@ -88,10 +93,6 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
     </View>
   )
 }
-
-
-
-//const TSK_MAP = require('../../../assets/tsk.png');
 
 export interface CampaignMapProps extends CampaignGuideInputProps {
   onSelect?: (location: MapLocation, time: number) => void;
@@ -157,7 +158,7 @@ function MapLabelComponent({
   campaignWidth,
   label,
   widthRatio,
-  heightRatio
+  heightRatio,
 }: MapLabelProps) {
   const lineHeight = fontTypeStyles[label.type].lineHeight;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
@@ -325,7 +326,7 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
           // Side locations only cost 1 time even when you pass through them.
           queue.add({
             path: [...shortestCurrent.path, location],
-            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1)
+            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1),
           });
         }
       })
@@ -421,7 +422,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
       onSelect(location, distance || 1);
       onDismiss();
     }
-  }, [onSelect, componentId, onDismiss]);
+  }, [onSelect, onDismiss]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'close') {
@@ -435,7 +436,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
       return [1, 1];
     }
     return [campaignMap.width * 1.0 / campaignMap.height * height, height];
-  }, [campaignMap, width, height]);
+  }, [campaignMap, height]);
   const clearSelection = useCallback(() => setSelectedLocation(undefined), []);
   const { dialog, showDialog, setVisible } = useDialog({
     title: selectedLocation?.name || '',
@@ -482,6 +483,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
         [0, height - theHeight]);
       pinchRef.current.translateTo(x, y, false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLocation]);
   if (!campaignMap) {
     return <Text>No map</Text>;
@@ -497,7 +499,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
         contentDimensions={{ width: theWidth, height: theHeight }}
       >
         <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
-          <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988"/>
+          <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988" />
           { map(campaignMap.labels, (label, idx) => (
             <MapLabelComponent
               key={idx}
@@ -518,7 +520,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               onSelect={setSelectedLocation}
               visited={!!find(visitedLocations, loc => loc === location.id)}
             />
-          ) )}
+          )) }
         </View>
       </PanPinchView>
       { dialog }

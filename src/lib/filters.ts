@@ -606,12 +606,12 @@ export default class FilterBuilder {
       const [packCode, ...otherCodes] = packCodes;
       return [
         combineQueries(
-          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes:`%${packCode}%` }),
+          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: `%${packCode}%` }),
           [
             ...map(otherCodes, c =>
-              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes:`%${c}%` }),
+              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: `%${c}%` }),
             ),
-            ...packClause
+            ...packClause,
           ],
           'or'
         ),

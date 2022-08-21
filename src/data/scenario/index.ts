@@ -170,12 +170,12 @@ function getScenarioNames(lang: string): { id: string; name: string}[] {
 export function useScenarioNames(): { [id: string]: string | undefined } {
   const { lang } = useContext(LanguageContext);
   return useMemo(() => {
-   const list = getScenarioNames(lang);
-   const result: { [id: string]: string | undefined } = {};
-   forEach(list, ({ id, name }) => {
-     result[id] = name;
-   });
-   return result;
+    const list = getScenarioNames(lang);
+    const result: { [id: string]: string | undefined } = {};
+    forEach(list, ({ id, name }) => {
+      result[id] = name;
+    });
+    return result;
   }, [lang]);
 }
 

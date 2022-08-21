@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import Carousel from 'react-native-snap-carousel';
-import { Platform, Text } from 'react-native';
-import { dropRightWhile, find, findIndex, findLast, findLastIndex, map, times } from 'lodash';
+import { Platform } from 'react-native';
+import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -19,7 +19,6 @@ import { CampaignMapProps } from '../CampaignMapView';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { EmbarkData } from '@actions/types';
-import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { AddSideScenarioProps } from '../AddSideScenarioView';
 
 interface Props {
@@ -98,7 +97,7 @@ export default function ScenarioCarouselComponent({
       showLinkedScenario ? onShowLinkedScenario : undefined,
       processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, campaignState, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
+  }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
   const currentLocationId = processedCampaign.campaignLog.campaignData.location;
   const interScenarioId = useMemo(() => {
     if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
@@ -114,7 +113,7 @@ export default function ScenarioCarouselComponent({
       destination,
       previousScenarioId,
       nextScenario,
-      time: time + xp_cost
+      time: time + xp_cost,
     };
     if (campaignMap) {
       if (currentTime + embarkData.time >= campaignMap.max_time) {
@@ -124,7 +123,7 @@ export default function ScenarioCarouselComponent({
       }
     }
     return embarkData;
-  }, [campaignGuide, currentTime, campaignMap])
+  }, [campaignState, currentTime, campaignMap])
 
   const onEmbark = useCallback((location: MapLocation, timeSpent: number) => {
     if (interScenarioId && campaignMap) {
@@ -167,7 +166,7 @@ export default function ScenarioCarouselComponent({
         campaignState.startScenario(location.scenario, embarkData);
       }
     }
-  }, [onEmbarkSide, componentId, interScenarioId, currentTime, campaignMap]);
+  }, [onEmbarkSide, componentId, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
 
   const onShowEmbark = useCallback(() => {
     scenarioPressed.current = true;
@@ -201,10 +200,10 @@ export default function ScenarioCarouselComponent({
                 OptionsModalPresentationStyle.overCurrentContext,
             },
           },
-        }]
+        }],
       },
     });
-  }, [componentId, campaignId, currentLocationId, onEmbark, processedCampaign]);
+  }, [campaignId, currentLocationId, onEmbark, processedCampaign]);
 
   const data = useMemo(() => {
     const items: (ScenarioItem | EmbarkItem)[] = map(processedCampaign.scenarios, scenario => {
@@ -216,7 +215,7 @@ export default function ScenarioCarouselComponent({
     const noInProgress = !find(processedCampaign.scenarios, scenario => scenario.type === 'started');
     if (noInProgress && processedCampaign.campaignLog.campaignData.embark) {
       items.push({
-        type: 'embark'
+        type: 'embark',
       });
     }
     return items;
@@ -270,7 +269,8 @@ export default function ScenarioCarouselComponent({
           />
         );
     }
-  }, [onShowScenario, showAlert, processedCampaign, componentId, currentLocation, campaignId, lastCompletedIndex, numScenarios, activeIndex]);
+  }, [onShowScenario, showAlert, onShowEmbark, processedCampaign, componentId,
+    campaignMap,currentLocation, lastCompletedIndex, numScenarios, activeIndex]);
   return (
     <Carousel
       ref={carousel}

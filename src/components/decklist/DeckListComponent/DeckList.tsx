@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, map, take, uniq } from 'lodash';
 
-import { Campaign, DeckId } from '@actions/types';
+import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';

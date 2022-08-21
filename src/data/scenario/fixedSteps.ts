@@ -512,12 +512,11 @@ export function getFixedStep(
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
-    case EMBARK_STEP_ID: {
+    case EMBARK_STEP_ID:
       return {
         id: EMBARK_STEP_ID,
-        type: 'internal'
+        type: 'internal',
       };
-    };
     case PROCEED_STEP_ID: {
       const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
         campaignState,

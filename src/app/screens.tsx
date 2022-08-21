@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import { t } from 'ttag';
 
 import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 import TuneButton from '@components/cardlist/CardSearchComponent/TuneButton';
@@ -10,8 +9,6 @@ import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
-import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
-import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
 import ListToggleButton from '@components/deck/ListToggleButton';
 import Toast from '@components/Toast';
 import TarotOverlay from '@components/core/TarotOverlay';

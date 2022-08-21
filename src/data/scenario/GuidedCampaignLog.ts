@@ -1687,7 +1687,7 @@ export default class GuidedCampaignLog {
                 section.entries.push({
                   type: 'card',
                   id,
-                  cards: [card]
+                  cards: [card],
                 });
               });
             }

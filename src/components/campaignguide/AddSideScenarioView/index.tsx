@@ -40,7 +40,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
   const [customXpCost, incCustomXpCost, decCustomXpCost, setCustomXpCost] = useCounter(1, { min: 0 });
   const onPress = useCallback((scenario: Scenario) => {
     if (embarkData && onEmbarkSide) {
-      let newEmbarkData = onEmbarkSide(embarkData, scenario.xp_cost || 0);
+      const newEmbarkData = onEmbarkSide(embarkData, scenario.xp_cost || 0);
       if (newEmbarkData) {
         // Getting back no data means we were sent somewhere else because we ran out of time.
         campaignState.startOfficialSideScenario(
@@ -62,7 +62,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
 
   const saveCustomScenario = useCallback(() => {
     if (embarkData && onEmbarkSide) {
-      let newEmbarkData = onEmbarkSide(embarkData, customXpCost || 0);
+      const newEmbarkData = onEmbarkSide(embarkData, customXpCost || 0);
       if (newEmbarkData) {
         campaignState.startCustomSideScenario(
           latestScenarioId,

@@ -35,7 +35,6 @@ import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX } from '@data/scenario/fixedSteps';
-import CampaignGuide from './CampaignGuide';
 
 export default class ScenarioStep {
   step: Step;
@@ -232,20 +231,20 @@ export default class ScenarioStep {
 
           if (embarkData) {
             const nextScenarioLink: Effect[] = embarkData.nextScenario === '$side_scenario' ?
-            [] : [
-              {
-                type: 'campaign_data',
-                setting: 'next_scenario',
-                scenario: embarkData.nextScenario,
-              },
-            ];
+              [] : [
+                {
+                  type: 'campaign_data',
+                  setting: 'next_scenario',
+                  scenario: embarkData.nextScenario,
+                },
+              ];
             effectsWithInput.push({
               numberInput: [embarkData.time],
               effects: [
                 {
                   type: 'campaign_log_count',
                   section: 'time',
-                  operation: 'add_input'
+                  operation: 'add_input',
                 },
                 {
                   type: 'campaign_data',

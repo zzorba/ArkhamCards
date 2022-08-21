@@ -168,10 +168,10 @@ export function useTrackPlayerQueue(interval: number = 100) {
     const trackPlayer = await narrationPlayer();
     const newQueue = await trackPlayer.getQueue();
     if (!isEqual(newQueue, state)) {
-       setState(newQueue);
-     }
-   };
+      setState(newQueue);
+    }
+  };
 
-   useInterval(getProgress, interval);
+  useInterval(getProgress, interval);
   return state;
 }

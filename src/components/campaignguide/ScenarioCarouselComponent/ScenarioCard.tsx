@@ -39,7 +39,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];
     }
     return [scenarioName, actualName];
-  }, [scenario.scenarioGuide, scenario.id, campaignMap]);
+  }, [scenario, campaignMap]);
   const onPress = useCallback(() => {
     showScenario(scenario);
   }, [showScenario, scenario]);

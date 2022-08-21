@@ -1,15 +1,13 @@
-import { isEqual, findIndex, filter, map, forEach, range } from 'lodash';
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { isEqual, findIndex, filter, map, forEach } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
   StyleSheet,
   Text,
   Linking,
-  TouchableHighlight,
   View,
   ViewStyle,
-  EmitterSubscription,
   TouchableOpacity,
 } from 'react-native';
 import { t } from 'ttag';
@@ -434,38 +432,6 @@ function ReplayButton({ onPress }: ButtonProps) {
 
 function InfoButton({ onPress }: ButtonProps) {
   return <PlaybackButton size={24} name="info" onPress={onPress} />;
-}
-
-interface TrackProps {
-  track: Track;
-  isCurrentTrack: boolean;
-}
-
-function TrackView({ track, isCurrentTrack }: TrackProps) {
-  const playNarration = useCallback(() => {
-    playNarrationTrack(track.narrationId);
-  }, [track.narrationId]);
-  return (
-    <TouchableHighlight onPress={playNarration}>
-      <>
-        <Divider />
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            height: m * 2 + 32,
-            width: '100%',
-            alignItems: 'center',
-            padding: m,
-            backgroundColor: isCurrentTrack ? 'grey' : 'transparent',
-          }}
-        >
-          <ArtworkView track={track} />
-          <TitleView style={{ flex: 1 }} track={track} />
-        </View>
-      </>
-    </TouchableHighlight>
-  );
 }
 
 interface NarratorContainerProps {

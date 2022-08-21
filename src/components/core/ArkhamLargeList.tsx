@@ -7,7 +7,6 @@ import { map } from 'lodash';
 import { searchBoxHeight } from './SearchBox';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 import StyleContext from '@styles/StyleContext';
-import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 interface Props<Item> {
   heightForItem?: (item: Item) => number;

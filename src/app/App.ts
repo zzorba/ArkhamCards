@@ -360,7 +360,6 @@ export default class App {
     }];
 
     this.setDefaultOptions(appearance);
-
     Navigation.setRoot({
       root: {
         bottomTabs: {

@@ -9,10 +9,9 @@ import StyleContext from '@styles/StyleContext';
 import CardTextComponent from '../CardTextComponent';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
-import { DeckId, SORT_BY_TITLE } from '@actions/types';
+import { DeckId } from '@actions/types';
 import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { useDialog, usePickerDialog } from '@components/deck/dialogs';
 import SlotIcon from './TwoSidedCardComponent/SlotIcon';
@@ -24,17 +23,13 @@ import { DeckOptionQueryBuilder } from '@data/types/DeckOption';
 import { Navigation } from 'react-native-navigation';
 import { CardSelectorProps } from '@components/campaignguide/CardSelectorView';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useDeckEdits, useSimpleDeckEdits } from '@components/deck/hooks';
-import deckEdits from '@reducers/deckEdits';
-import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
+import { useSimpleDeckEdits } from '@components/deck/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
-import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import NewDialog from '@components/core/NewDialog';
 import RoundButton from '@components/core/RoundButton';
 import DeckButton from '@components/deck/controls/DeckButton';
-import colors from '@styles/colors';
 
 interface Props {
   componentId: string;
@@ -201,7 +196,7 @@ function ToggleCard({ card, selectedCodes, quantity, setSelectedCodes, last }: {
         type: 'toggle',
         value: selected,
         toggleValue: onToggle,
-        disabled: !selected && selectedCodes.length >= quantity
+        disabled: !selected && selectedCodes.length >= quantity,
       }}
     />
   );
@@ -265,8 +260,8 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
         },
       },
     });
-  }, [selectedCards, setSelectedCodes, componentId, query]);
-  const selectedText = useMemo(() => map(selectedCards, c => c.name).join(listSeperator), [selectedCards])
+  }, [setSelectedCodes, componentId, query, choice, selectedCodes]);
+  const selectedText = useMemo(() => map(selectedCards, c => c.name).join(listSeperator), [selectedCards, listSeperator])
   const quantity = choice.option.quantity || 1;
   const title = editable ?
     ngettext(msgid`Name ${quantity} card`, `Name ${quantity} cards`, quantity) :
@@ -318,7 +313,7 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
         ) }
       </View>
     );
-  }, [choice.option.card, loadingDeck, selectedCards, selectedCodes, setSelectedCodes, inDeckCards, showCardPicker])
+  }, [loadingDeck, selectedCards, selectedCodes, setSelectedCodes, inDeckCards, showCardPicker, choice, inDeckCodes])
   const { dialog, showDialog, setVisible } = useDialog({
     title,
     content,
@@ -356,7 +351,7 @@ function TraitLine({ trait, editable, onRemove, index }: { trait: string; index:
       <Text style={[typography.cardTraits, space.paddingSideS, space.paddingTopS, {
         flex: 1,
         fontSize: Math.ceil(20 * fontScale),
-        lineHeight: Math.ceil(22 * fontScale)
+        lineHeight: Math.ceil(22 * fontScale),
       }]}>
         {trait}
       </Text>
@@ -382,7 +377,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
     setChoice(selectedTraits.join('^'));
   }, [selectedTraits]);
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
-  const selectedText = useMemo(() => selectedTraits.join(listSeperator), [selectedTraits])
+  const selectedText = useMemo(() => selectedTraits.join(listSeperator), [selectedTraits, listSeperator])
   const quantity = choice.option.quantity || 1;
   const title = editable ?
     ngettext(msgid`Choose ${quantity} trait`, `Choose ${quantity} traits`, quantity) :
@@ -449,7 +444,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
         </View>
       </View>
     );
-  }, [choice.option.card, selectedTraits, currentTrait, setCurrentTrait])
+  }, [choice, selectedTraits, currentTrait, setCurrentTrait, editable, focused, onBlur, onFocus, onRemoveTrait, onSaveCurrent, saveCurrentTrait])
   const { dialog, showDialog, setVisible } = useDialog({
     title,
     content,

@@ -81,7 +81,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
         Navigation.pop(componentId);
       }
     }
-  }, [componentId, id, actions, dispatch, scenario, xp, campaignNotes]);
+  }, [componentId, campaign, id, actions, dispatch, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
   useNavigationButtonPressed(({ buttonId }) => {

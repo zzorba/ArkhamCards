@@ -72,7 +72,7 @@ export default function useXpSection({
       return undefined;
     }
     return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
-  }, [deck, uploading, showDeckUpgrade, cards]);
+  }, [deck, uploading, listSeperator, showDeckUpgrade, cards]);
   if (deck && !uploading) {
     if (!parsedDeck) {
       return [null, false];

@@ -19,7 +19,6 @@ import {
   campaignDataScenarioConditionResult,
   partnerStatusConditionResult,
   investigatorChoiceConditionResult,
-  campaignDataConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 

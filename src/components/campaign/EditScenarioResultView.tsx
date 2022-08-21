@@ -41,7 +41,7 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
       dispatch(editScenarioResult(actions, campaign, index, scenarioResult));
     }
     Navigation.pop(componentId);
-  }, 200), [campaignId, index, actions, scenarioResult, componentId, dispatch]);
+  }, 200), [campaign, index, actions, scenarioResult, componentId, dispatch]);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'save') {
       doSave();

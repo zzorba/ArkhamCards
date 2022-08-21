@@ -30,7 +30,9 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
   children: (xp: number) => JSX.Element | null;
 }) {
   const { listSeperator } = useContext(LanguageContext);
-  const parsedDeck = useMemo(() => playerCards ? parseBasicDeck(deck, playerCards, listSeperator, previousDeck) : undefined, [deck, playerCards, previousDeck]);
+  const parsedDeck = useMemo(
+    () => playerCards ? parseBasicDeck(deck, playerCards, listSeperator, previousDeck) : undefined,
+    [deck, playerCards, previousDeck, listSeperator]);
   const earnedXp = campaignLog.earnedXp(deck.investigator_code);
   if (!parsedDeck || !playerCards) {
     return children(earnedXp);

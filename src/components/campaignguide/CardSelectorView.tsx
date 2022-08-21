@@ -87,7 +87,7 @@ export default function CardSelectorView({ max, query, selection: initialSelecti
         );
       }
     );
-  }, [uniqueName, selection, searchTerm, colors, onChange]);
+  }, [uniqueName, max, selectedCount, selection, searchTerm, colors, onChange]);
 
   const toggleStoryCards = useCallback(() => {
     setStoryToggle(true);

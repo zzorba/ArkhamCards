@@ -31,7 +31,6 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
-import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
