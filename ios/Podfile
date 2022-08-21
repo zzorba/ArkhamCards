@@ -6,11 +6,9 @@ install! 'cocoapods', :deterministic_uuids => false
 
 production = ENV["PRODUCTION"] == "1"
 
-pod 'GoogleSignIn', '~> 6.1.0'
-
 target 'ArkhamCards' do
+  use_frameworks! :linkage => :static
   config = use_native_modules!
-
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -20,7 +18,7 @@ target 'ArkhamCards' do
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => true,
     :fabric_enabled => flags[:fabric_enabled],
-    :flipper_configuration => FlipperConfiguration.enabled,
+    :flipper_configuration => FlipperConfiguration.disabled,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
