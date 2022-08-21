@@ -64,8 +64,6 @@ function MythosButton({ filterId }: Props) {
       transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [0, SIZE + 2.5]) }],
     };
   });
-
-
   return (
     <View style={styles.container}>
       <Pressable onPress={onPress}>
@@ -122,13 +120,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? 3 : 0,
   },
   circle: {
     borderRadius: SIZE / 2,
     width: SIZE,
     height: SIZE,
     position: 'absolute',
-    top: 1,
+    top: Platform.OS === 'android' ? 3.5 : 1,
     left: 1,
   },
   buttonFrame: {
