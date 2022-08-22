@@ -89,6 +89,7 @@ export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
   | ScenarioDataInvestigatorStatusEffect
+  | ScenarioDataAddInvestigatorEffect
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
 export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
@@ -507,6 +508,12 @@ export interface ScenarioDataInvestigatorStatusEffect {
   setting: "investigator_status";
   investigator: "$input_value";
   investigator_status: InvestigatorStatus;
+}
+export interface ScenarioDataAddInvestigatorEffect {
+  type: "scenario_data";
+  setting: "add_investigator";
+  investigator: "$fixed_investigator";
+  fixed_investigator: string;
 }
 export interface ScenarioDataStatusEffect {
   type: "scenario_data";

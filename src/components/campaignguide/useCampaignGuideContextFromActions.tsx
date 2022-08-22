@@ -43,7 +43,7 @@ export default function useCampaignGuideContextFromActions(
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
-  const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
+  const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
@@ -64,6 +64,10 @@ export default function useCampaignGuideContextFromActions(
   ) => {
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator, deckId));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
+
+  const addInvestigator = useCallback((investigator: string, deckId?: DeckId) => {
+    campaignAddInvestigator(campaignId, investigator, deckId);
+  }, [campaignAddInvestigator, campaignId]);
 
   const removeInvestigator = useCallback((investigator: Card) => {
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code));
@@ -215,6 +219,7 @@ export default function useCampaignGuideContextFromActions(
     return {
       showChooseDeck,
       removeDeck,
+      addInvestigator,
       removeInvestigator,
       startScenario,
       startSideScenario,

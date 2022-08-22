@@ -1318,38 +1318,49 @@ export default class GuidedCampaignLog {
       }
       return;
     }
+
     // All investigator status from here on out.
     const scenario = this.scenarioData[scenarioId] || {
       investigatorStatus: {},
     };
 
-    if (effect.investigator !== '$input_value') {
-      throw new Error('investigator_status should always be $input_value');
-    }
-    if (!input) {
-      throw new Error('input required for scenarioData effect');
-    }
-    switch (effect.setting) {
-      case 'investigator_status':
-        forEach(input, code => {
-          scenario.investigatorStatus[code] = effect.investigator_status;
-        });
-        break;
-      case 'playing_scenario': {
-        const playing: PlayingScenarioItem[] = map(
-          input || [],
-          investigator => {
-            return {
-              investigator,
-            };
-          }
-        );
-        scenario.playingScenario = playing;
-        break;
+    if (effect.setting === 'add_investigator') {
+      if (effect.investigator !== '$fixed_investigator') {
+        throw new Error('add_investigator should always be $fixed_investigator');
       }
-      case 'lead_investigator':
-        scenario.leadInvestigator = input[0];
-        break;
+      scenario.playingScenario = [
+        ...(scenario.playingScenario || []),
+        { investigator: effect.fixed_investigator },
+      ];
+    } else {
+      if (effect.investigator !== '$input_value') {
+        throw new Error('investigator_status should always be $input_value');
+      }
+      if (!input) {
+        throw new Error('input required for scenarioData effect');
+      }
+      switch (effect.setting) {
+        case 'investigator_status':
+          forEach(input, code => {
+            scenario.investigatorStatus[code] = effect.investigator_status;
+          });
+          break;
+        case 'playing_scenario': {
+          const playing: PlayingScenarioItem[] = map(
+            input || [],
+            investigator => {
+              return {
+                investigator,
+              };
+            }
+          );
+          scenario.playingScenario = playing;
+          break;
+        }
+        case 'lead_investigator':
+          scenario.leadInvestigator = input[0];
+          break;
+      }
     }
     this.scenarioData[scenarioId] = scenario;
     this.latestScenarioData = scenario;

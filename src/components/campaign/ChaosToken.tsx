@@ -9,7 +9,6 @@ import TokenIcon from '@icons/TokenIcon';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 import space from '@styles/space';
-import { getDomainWithZero } from 'victory-core/lib/victory-util/domain';
 
 interface OwnProps {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
@@ -184,9 +183,9 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
   const gradientParams = iconKey && GRADIENTS[iconKey];
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
-      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', position: 'relative'  }}>
+      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', position: 'relative' }}>
         <RadialGradient
-          style={{ width: size, height: size, borderRadius: size / 2}}
+          style={{ width: size, height: size, borderRadius: size / 2 }}
           key={iconKey}
           colorList={gradientParams || DEFAULT_GRADIENT}
           x="50%"
