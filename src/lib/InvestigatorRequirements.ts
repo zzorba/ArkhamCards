@@ -44,7 +44,7 @@ export function queryForInvestigator(investigator: Card, meta?: DeckMeta): Brack
 
   return combineQueries(
     where(
-      'c.restrictions_investigator IN (:...values)',
+      'c.restrictions_investigator IN (:...values) OR c.alternate_required_code IN (:...values)',
       {
         values: [
           investigator.code,

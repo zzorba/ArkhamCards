@@ -2,7 +2,7 @@ query getCustomCards(
   $locale: String!
 ) {
   full_card(
-    where: { version: { _lte: 1 } }
+    where: { version: { _lte: 2 } }
   ) {
     ...SingleCard
     linked_card {

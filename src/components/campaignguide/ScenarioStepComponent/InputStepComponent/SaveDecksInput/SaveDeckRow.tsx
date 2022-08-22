@@ -76,12 +76,12 @@ function SaveDeckRow({
     if (deck) {
       setSaving(true);
       const slots: Slots = { ...deck.deck.slots };
-      const allowedChanges = !!find(storyAssetDeltas, (delta, code) => !code.startsWith('z'));
+      const allowedChanges = !!find(storyAssetDeltas, (delta, code) => deck.id.local || !code.startsWith('z'));
       if (!allowedChanges) {
         saveCampaignLog(deck.id);
       } else {
         forEach(storyAssetDeltas, (delta, code) => {
-          if (code.startsWith('z')) {
+          if (code.startsWith('z') && !deck.id.local) {
             return;
           }
           slots[code] = (slots[code] || 0) + delta;

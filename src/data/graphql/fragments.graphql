@@ -58,6 +58,7 @@ fragment SingleCard on full_card {
   backimagesrc
   xp
   alternate_required_code
+  clues_fixed
 }
 fragment CoreCardText on full_card_text {
   flavor

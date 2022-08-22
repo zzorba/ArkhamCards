@@ -33,8 +33,7 @@ import { CampaignMapProps } from './CampaignMapView';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 
-const SHOW_WEAKNESS = false;
-const SHOW_TAROT = true;
+const SHOW_WEAKNESS = true;
 
 interface Props {
   componentId: string;
@@ -308,19 +307,16 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
-
-        { SHOW_TAROT && (
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckButton
-              icon="special_cards"
-              title={t`Tarot Readings`}
-              detail={t`Perform readings with the tarot deck`}
-              color="light_gray"
-              onPress={showTarotDialog}
-              bottomMargin={s}
-            />
-          </View>
-        ) }
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <DeckButton
+            icon="special_cards"
+            title={t`Tarot Readings`}
+            detail={t`Perform readings with the tarot deck`}
+            color="light_gray"
+            onPress={showTarotDialog}
+            bottomMargin={s}
+          />
+        </View>
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckOverlapComponent componentId={componentId} cards={cards} />

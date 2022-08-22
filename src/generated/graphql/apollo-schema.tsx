@@ -5191,6 +5191,7 @@ export type Full_Card = {
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
+  clues_fixed?: Maybe<Scalars['Boolean']>;
   code: Scalars['String'];
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
@@ -5418,6 +5419,7 @@ export type Full_Card_Bool_Exp = {
   back_link?: InputMaybe<String_Comparison_Exp>;
   backimagesrc?: InputMaybe<String_Comparison_Exp>;
   clues?: InputMaybe<Int_Comparison_Exp>;
+  clues_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
@@ -5543,6 +5545,7 @@ export type Full_Card_Insert_Input = {
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -5743,6 +5746,7 @@ export type Full_Card_Order_By = {
   back_link?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   clues?: InputMaybe<Order_By>;
+  clues_fixed?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
@@ -5828,6 +5832,8 @@ export enum Full_Card_Select_Column {
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -5950,6 +5956,7 @@ export type Full_Card_Set_Input = {
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -6409,6 +6416,8 @@ export enum Full_Card_Update_Column {
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -13378,7 +13387,7 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
+export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -13606,7 +13615,7 @@ export type GetDeckHistoryQueryVariables = Exact<{
 
 export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
-export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null };
+export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null };
 
 export type CoreCardTextFragment = { __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null };
 
@@ -14083,6 +14092,7 @@ export const SingleCardFragmentDoc = gql`
   backimagesrc
   xp
   alternate_required_code
+  clues_fixed
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
@@ -14333,7 +14343,7 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 ${GuideAchievementFragmentDoc}`;
 export const GetCustomCardsDocument = gql`
     query getCustomCards($locale: String!) {
-  full_card(where: {version: {_lte: 1}}) {
+  full_card(where: {version: {_lte: 2}}) {
     ...SingleCard
     linked_card {
       ...SingleCard

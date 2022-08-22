@@ -310,6 +310,12 @@ export const getAllPacks = createSelector(
             name: t`The Colour Out of Space`,
             position: 10,
           },
+          {
+            code: 'zjc',
+            cycle_code: 'fan',
+            name: t`Jenny's Choice`,
+            position: 11,
+          },
         ], (p): Pack => {
           return {
             id: p.code,
