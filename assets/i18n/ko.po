@@ -5764,21 +5764,21 @@ msgid "The Colour Out of Space"
 msgstr ""
 
 msgid "Remove trait"
-msgstr ""
+msgstr "특성 제거"
 
 #, javascript-format
 msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "특성 ${ quantity }개를 선택하십시오"
+msgstr[1] "특성 ${ quantity }개를 선택하십시오"
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "선택한 특성"
+msgstr[1] "선택한 특성"
 
 msgid "Add trait"
-msgstr ""
+msgstr "특성 추가"
 
 #, javascript-format
 msgid "${ quantity } copy"
@@ -5787,34 +5787,37 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "You are currently here."
-msgstr ""
+msgstr "당신의 현재 위치."
 
 msgid "You have already visited this location."
-msgstr ""
+msgstr "이미 방문한 곳입니다."
 
 msgid ""
 "Travelling to this location will allow you to insert a side-scenarion into "
 "your campaign."
 msgstr ""
+"해당 위치로 이동하면 캠페인에 도전/외전 시나리오를 추가할 수 있습니다."
 
 msgid "Embark"
-msgstr ""
+msgstr "승선"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
-msgstr ""
+msgstr "출발지: ${ currentLocation.name }"
 
 msgid "Depart"
-msgstr ""
+msgstr "출발"
 
 msgid "Choose destination"
-msgstr ""
+msgstr "도착지 선택"
 
 #, javascript-format
 msgid ""
 "${ investigator.name } Fan-Made Challenge Scenario by ${ "
 "scenario.custom.creator }"
 msgstr ""
+"${ investigator.name }의 팬 제작 도전 시나리오 (제작자: ${ "
+"scenario.custom.creator })"
 
 msgid "Cyclopean Foundations"
 msgstr ""
@@ -7658,7 +7661,7 @@ msgstr "없음"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr ""
+msgstr "비난"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
