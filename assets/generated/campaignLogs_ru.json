@@ -2784,6 +2784,14 @@
           {
             "id": "zez_all_is_quiet",
             "text": "улица д'Осейль затихла… На время."
+          },
+          {
+            "id": "zhu_avenged_the_house_of_usher",
+            "text": "the investigators avenged the House of Usher."
+          },
+          {
+            "id": "zhu_house_of_usher_has_fallen",
+            "text": "the House of Usher has fallen."
           }
         ]
       },

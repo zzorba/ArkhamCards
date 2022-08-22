@@ -20,10 +20,12 @@ import { useNavigationButtonPressed, useSettingFlag } from '@components/core/hoo
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 
 function MyDecksView({ componentId }: NavigationProps) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { myDecks } = useSelector(getMyDecksState);
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
@@ -56,16 +58,10 @@ function MyDecksView({ componentId }: NavigationProps) {
   const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 
   const [searchOptionControls, searchOptionsHeight] = useMemo(() => {
-    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
-    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
-    const hasNonCampaignDeck = !!find(myDecks, deckId => !deckId.campaign_id);
-    const hasCampaignDeck = !!find(myDecks, deckId => deckId.campaign_id);
-    const hideLocalDeckToggle = (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck));
-    const hideCampaignDeckToggle = (!hideCampaignDecks && !(hasCampaignDeck && hasNonCampaignDeck));
     return [
       (
         <View style={[styles.column, space.paddingBottomS]} key="controls">
-          { !hideLocalDeckToggle && (
+          { !!arkhamDb && (
             <View style={styles.row}>
               <Text style={[typography.small, styles.searchOption]}>
                 { t`Hide ArkhamDB decks` }
@@ -77,23 +73,21 @@ function MyDecksView({ componentId }: NavigationProps) {
               />
             </View>
           ) }
-          { !hideCampaignDeckToggle && (
-            <View style={styles.row}>
-              <Text style={[typography.small, styles.searchOption]}>
-                { t`Hide campaign decks` }
-              </Text>
-              <ArkhamSwitch
-                useGestureHandler
-                value={hideCampaignDecks}
-                onValueChange={toggleHideCampaignDecks}
-              />
-            </View>
-          ) }
+          <View style={styles.row}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide campaign decks` }
+            </Text>
+            <ArkhamSwitch
+              useGestureHandler
+              value={hideCampaignDecks}
+              onValueChange={toggleHideCampaignDecks}
+            />
+          </View>
         </View>
       ),
-      20 + 12 + s + (fontScale * 20 + 8) * ((hideCampaignDeckToggle || hideLocalDeckToggle) ? 1 : 2),
+      20 + 12 + s + (fontScale * 20 + 8) * (arkhamDb ? 2 : 1),
     ];
-  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
+  }, [arkhamDb, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
 
   const customFooter = useMemo(() => {
     return (
