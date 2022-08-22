@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View, ViewStyle } from 'react-native';
-import RadialGradient from 'react-native-radial-gradient';
+import { RadialGradient } from 'react-native-gradients';
 import { t } from 'ttag';
 
 import { ChaosTokenType } from '@app_constants';
@@ -9,6 +9,7 @@ import TokenIcon from '@icons/TokenIcon';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 import space from '@styles/space';
+import { getDomainWithZero } from 'victory-core/lib/victory-util/domain';
 
 interface OwnProps {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
@@ -26,30 +27,33 @@ export const SMALL_TOKEN_SIZE = TINY_PHONE ? 48 : 64;
 export const TINY_TOKEN_SIZE = 48;
 export const EXTRA_TINY_TOKEN_SIZE = 36;
 
-const GRADIENTS: { [token: string]: {
-  colors: string[];
-  stops: number[];
-} | undefined } = {
-  frost: {
-    colors: ['#3D3A63', '#495483'],
-    stops: [0.66, 1.0],
-  },
-  auto_fail: {
-    colors: ['#8D181E', '#6A0B10'],
-    stops: [0.75, 1.0],
-  },
-  elder_sign: {
-    colors: ['#33A1FB', '#3C8AC9', '#457398'],
-    stops: [0.0, 0.5, 1.0],
-  },
-  bless: {
-    colors: ['#9C702A', '#695823'],
-    stops: [0.25, 1.0],
-  },
-  curse: {
-    colors: ['#362330', '#3B224A'],
-    stops: [0.25, 1.0],
-  },
+const DEFAULT_GRADIENT = [
+  { offset: '60%', color: '#FFFBF2' },
+  { offset: '100%', color: '#D6CFB9' },
+];
+
+const GRADIENTS: { [token: string]: {offset: string; color: string}[] | undefined } = {
+  frost: [
+    { offset: '66%', color: '#3D3A63' },
+    { offset: '100%', color: '#495483' },
+  ],
+  auto_fail: [
+    { offset: '75%', color: '#8D181E' },
+    { offset: '100%', color: '#6A0B10' },
+  ],
+  elder_sign: [
+    { offset: '0%', color: '#33A1FB' },
+    { offset: '50%', color: '#3C8AC9' },
+    { offset: '100%', color: '#457398' },
+  ],
+  bless: [
+    { offset: '25%', color: '#9C702A' },
+    { offset: '100%', color: '#695823' },
+  ],
+  curse: [
+    { offset: '25%', color: '#362330' },
+    { offset: '100%', color: '#3B224A' },
+  ],
 };
 
 function ChaosTokenPart({ name, size, color }: { name: string; size: number; color: string }) {
@@ -180,16 +184,19 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
   const gradientParams = iconKey && GRADIENTS[iconKey];
   return (
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
-      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden' }}>
-        <RadialGradient style={{ width: size, height: size, borderRadius: size / 2, position: 'relative' }}
+      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', position: 'relative'  }}>
+        <RadialGradient
+          style={{ width: size, height: size, borderRadius: size / 2}}
           key={iconKey}
-          colors={gradientParams?.colors || ['#FFFBF2', '#D6CFB9']}
-          stops={gradientParams?.stops || [0.6, 1.0]}
-          center={[size / 2, size / 2]}
-          radius={size / 2}
-        >
+          colorList={gradientParams || DEFAULT_GRADIENT}
+          x="50%"
+          y="50%"
+          rx="50%"
+          ry="50%"
+        />
+        <View style={{ width: size, height: size, position: 'absolute', top: 0, left: 0 }}>
           { icon }
-        </RadialGradient>
+        </View>
         { status !== undefined && (
           <View style={{ position: 'absolute', top: 0, left: 0, borderRadius: size / 2, width: size, height: size,
             borderWidth: 2, borderColor: status === 'added' ? colors.faction.rogue.text : colors.faction.survivor.text }} />

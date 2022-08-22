@@ -10751,6 +10751,13 @@ react-native-gesture-handler@^2.5.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
+react-native-gradients@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-gradients/-/react-native-gradients-1.2.0.tgz#efa378135b15fe3f3a9ef287297920924b3be957"
+  integrity sha512-LQMH/MJoEbRnvfGijr7rUau7H+o/9C2KoTdMIUtwGDv5w0Yj5AYmPD0e1/QarBDvX0oMdcNKPdvPi2vJDIWC6Q==
+  dependencies:
+    react-native-svg "^12.1.1"
+
 react-native-gradle-plugin@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz#96602f909745239deab7b589443f14fce5da2056"
@@ -10833,12 +10840,10 @@ react-native-progress@5.0.0:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-radial-gradient@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-radial-gradient/-/react-native-radial-gradient-1.1.2.tgz#befbf2a381569006b2301e2c6611f4a563fbb0c8"
-  integrity sha512-hpNIIiMuBlQrjdItOOqSa780xypI5RmMI3GZ1k1xUulp79KhY/+tFKQhjvwmYBLIjWcnCKafXygBwVe0+Xib3Q==
-  dependencies:
-    deprecated-react-native-prop-types "^2.3.0"
+react-native-radial-gradient@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-radial-gradient/-/react-native-radial-gradient-1.1.1.tgz#02f82fcf2f0b2414b3888a00972149a800db768e"
+  integrity sha512-cjuFjQlFt8uWqvlVHDpax5BHeXtT7K+mhdeCqod0bzeT/DmooVMBGX7rgKXIA0kl9sKhnHNQ0D2qgIaa45yaIw==
 
 react-native-reanimated@^2.9.1:
   version "2.9.1"
@@ -10925,7 +10930,7 @@ react-native-svg-transformer@1.0.0:
     "@svgr/plugin-svgo" "^6.1.2"
     path-dirname "^1.0.2"
 
-react-native-svg@^12.3.0:
+react-native-svg@^12.1.1, react-native-svg@^12.3.0:
   version "12.4.4"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.4.4.tgz#2ba684eaea9a7402fbbe0ed9737e77284631d00e"
   integrity sha512-LpcNlEVCURexqPAvQ9ne8KrPVfYz0wIDygwud8VMRmXLezysXzyQN/DTsjm1BO9lIfYp55WQsr3u3yW/vk6iiA==
