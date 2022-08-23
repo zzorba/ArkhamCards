@@ -760,9 +760,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zatw':
       case 'against_the_wendigo':
         return this.standaloneIcon('wendigo', size, color);
+      case 'hanninah_valley':
       case 'hannihah_valley':
+        return this.standaloneIcon('hannihah_valley', size, color);
       case 'wendigos_myth':
-        return this.standaloneIcon(encounter_code, size, color);
+        return this.standaloneIcon('wendigos_myth', size, color);
       case 'zjc':
       case 'jennys_choice':
       case 'lost_cathedral':
