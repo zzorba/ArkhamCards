@@ -26,6 +26,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       const selectedInvestigators = filter(allInvestigators, c => {
         switch (input.investigator) {
           case 'resigned': return campaignLog.resigned(c.code);
+          case 'defeated': return campaignLog.isDefeated(c.code);
           case 'not_defeated': return !campaignLog.isDefeated(c.code);
           default: return true;
         }
