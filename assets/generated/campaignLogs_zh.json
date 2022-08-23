@@ -2674,6 +2674,62 @@
             "feminine_text": "#name#墜入深淵。"
           },
           {
+            "id": "atw_bernards_fate",
+            "text": "you have discovered Bernard's fate."
+          },
+          {
+            "id": "atw_custodian_of_knowledge",
+            "text": "you are the custodian of Ithaqua's knowledge."
+          },
+          {
+            "id": "atw_defeated_the_wendigo",
+            "text": "you defated the Wendigo."
+          },
+          {
+            "id": "atw_discovered_the_fate_of_the_students",
+            "text": "you have discovered the fate of Dr. Nadelmann's students."
+          },
+          {
+            "id": "atw_found_the_gold",
+            "text": "you have found Hanninah's gold."
+          },
+          {
+            "id": "atw_have_enough_evidence",
+            "text": "you have enoughe evidence to clear Dr. Nadelmann."
+          },
+          {
+            "id": "atw_norman_alive",
+            "text": "Norman is alive."
+          },
+          {
+            "id": "atw_norman_dead",
+            "text": "You let Norman die."
+          },
+          {
+            "id": "atw_normans_fate",
+            "text": "you have discovered Norman's fate."
+          },
+          {
+            "id": "atw_sarcee_are_hunting",
+            "text": "the Sarcee are hunting you down."
+          },
+          {
+            "id": "atw_saved_charlie",
+            "text": "you saved Charlie."
+          },
+          {
+            "id": "atw_saved_the_gold_prospector",
+            "text": "you saved the gold prospector."
+          },
+          {
+            "id": "atw_sylvias_fate",
+            "text": "you have discovered Sylvia's fate."
+          },
+          {
+            "id": "atw_wendigo_still_roams",
+            "text": "you know that the Wendigo still roams the North Hanninah valley."
+          },
+          {
             "id": "blob_contained",
             "text": "怪物得到控制。"
           },
@@ -2808,6 +2864,10 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "atw_added_tablet",
             "text": "dummy"
           },
           {

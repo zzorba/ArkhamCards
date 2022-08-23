@@ -17,6 +17,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "against_the_wendigo"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "all_or_nothing"
   },
   {
