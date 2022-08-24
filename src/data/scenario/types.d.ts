@@ -387,7 +387,14 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value" | "$fixed_investigator";
+  investigator:
+    | "all"
+    | "lead_investigator"
+    | "defeated"
+    | "not_resigned"
+    | "resigned"
+    | "$input_value"
+    | "$fixed_investigator";
   fixed_investigator?: string;
   heal_input?: "physical" | "mental";
   mental?: number;
@@ -893,7 +900,7 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator: "all" | "choice" | "any" | "resigned" | "not_defeated";
+  investigator: "all" | "choice" | "any" | "resigned" | "defeated" | "not_defeated";
   min?: ConstantOperand | CampaignLogCountOperand;
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
