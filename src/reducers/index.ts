@@ -322,6 +322,12 @@ export const getAllPacks = createSelector(
             name: t`The Fall of the House of Usher`,
             position: 12,
           },
+          {
+            code: 'zatw',
+            cycle_code: 'fan',
+            name: t`Against the Wendigo`,
+            position: 13,
+          },
         ], (p): Pack => {
           return {
             id: p.code,
