@@ -27,51 +27,37 @@ PODS:
     - React-Core (= 0.69.4)
     - React-jsi (= 0.69.4)
     - ReactCommon/turbomodule/core (= 0.69.4)
-  - Firebase/Auth (9.4.0):
+  - Firebase/Auth (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 9.4.0)
-  - Firebase/CoreOnly (9.4.0):
-    - FirebaseCore (= 9.4.0)
-  - Firebase/Database (9.4.0):
+    - FirebaseAuth (~> 8.15.0)
+  - Firebase/CoreOnly (8.15.0):
+    - FirebaseCore (= 8.15.0)
+  - Firebase/Database (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 9.4.0)
-  - Firebase/Functions (9.4.0):
+    - FirebaseDatabase (~> 8.15.0)
+  - Firebase/Functions (8.15.0):
     - Firebase/CoreOnly
-    - FirebaseFunctions (~> 9.4.0)
-  - FirebaseAppCheckInterop (9.4.0)
-  - FirebaseAuth (9.4.0):
-    - FirebaseCore (~> 9.0)
+    - FirebaseFunctions (~> 8.15.0)
+  - FirebaseAuth (8.15.0):
+    - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
     - GoogleUtilities/Environment (~> 7.7)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.7)
-  - FirebaseAuthInterop (9.4.0)
-  - FirebaseCore (9.4.0):
-    - FirebaseCoreDiagnostics (~> 9.0)
-    - FirebaseCoreInternal (~> 9.0)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - FirebaseCore (8.15.0):
+    - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (9.4.0):
-    - GoogleDataTransport (< 10.0.0, >= 9.1.4)
+  - FirebaseCoreDiagnostics (8.15.0):
+    - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseCoreExtension (9.4.0):
-    - FirebaseCore (~> 9.0)
-  - FirebaseCoreInternal (9.4.0):
-    - "GoogleUtilities/NSData+zlib (~> 7.7)"
-  - FirebaseDatabase (9.4.0):
-    - FirebaseCore (~> 9.0)
+    - nanopb (~> 2.30908.0)
+  - FirebaseDatabase (8.15.0):
+    - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseFunctions (9.4.0):
-    - FirebaseAppCheckInterop (~> 9.0)
-    - FirebaseAuthInterop (~> 9.0)
-    - FirebaseCore (~> 9.0)
-    - FirebaseCoreExtension (~> 9.0)
-    - FirebaseMessagingInterop (~> 9.0)
-    - FirebaseSharedSwift (~> 9.0)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.7)
-  - FirebaseMessagingInterop (9.4.0)
-  - FirebaseSharedSwift (9.4.0)
+  - FirebaseFunctions (8.15.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - fmt (6.2.1)
   - glog (0.3.5)
   - GoogleDataTransport (9.2.0):
@@ -118,11 +104,11 @@ PODS:
   - lottie-react-native (5.1.4):
     - lottie-ios (~> 3.4.0)
     - React-Core
-  - nanopb (2.30909.0):
-    - nanopb/decode (= 2.30909.0)
-    - nanopb/encode (= 2.30909.0)
-  - nanopb/decode (2.30909.0)
-  - nanopb/encode (2.30909.0)
+  - nanopb (2.30908.0):
+    - nanopb/decode (= 2.30908.0)
+    - nanopb/encode (= 2.30908.0)
+  - nanopb/decode (2.30908.0)
+  - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.1)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -465,19 +451,19 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (15.3.0):
-    - Firebase/CoreOnly (= 9.4.0)
+  - RNFBApp (14.11.1):
+    - Firebase/CoreOnly (= 8.15.0)
     - React-Core
-  - RNFBAuth (15.3.0):
-    - Firebase/Auth (= 9.4.0)
-    - React-Core
-    - RNFBApp
-  - RNFBDatabase (15.3.0):
-    - Firebase/Database (= 9.4.0)
+  - RNFBAuth (14.11.1):
+    - Firebase/Auth (= 8.15.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (15.3.0):
-    - Firebase/Functions (= 9.4.0)
+  - RNFBDatabase (14.11.1):
+    - Firebase/Database (= 8.15.0)
+    - React-Core
+    - RNFBApp
+  - RNFBFunctions (14.11.1):
+    - Firebase/Functions (= 8.15.0)
     - React-Core
     - RNFBApp
   - RNFS (2.20.0):
@@ -617,17 +603,11 @@ SPEC REPOS:
     - AppCenter
     - AppCenterReactNativeShared
     - Firebase
-    - FirebaseAppCheckInterop
     - FirebaseAuth
-    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
-    - FirebaseCoreExtension
-    - FirebaseCoreInternal
     - FirebaseDatabase
     - FirebaseFunctions
-    - FirebaseMessagingInterop
-    - FirebaseSharedSwift
     - fmt
     - GoogleDataTransport
     - GoogleSignIn
@@ -796,18 +776,12 @@ SPEC CHECKSUMS:
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: c71b8c429a8af2aff1013934a7152e9d9d0c937d
   FBReactNativeSpec: cb0df4f0084281b394f76bb9b4d1d9540f35963f
-  Firebase: 7703fc4022824b6d6db1bf7bea58d13b8e17ec46
-  FirebaseAppCheckInterop: 63119cdfc94b16c3e9421513c17f597aee2ea225
-  FirebaseAuth: ae5d4402e1516497357d909162b091b3ca2a2e9c
-  FirebaseAuthInterop: 826d3d772b554e3675ceaab8c665008277ca9d1c
-  FirebaseCore: 9a2b10270a854731c4d4d8a97d0aa8380ec3458d
-  FirebaseCoreDiagnostics: aaa87098082c4d4bdd1a9557b1186d18ca85ce8c
-  FirebaseCoreExtension: 2cf8c542b54ad3c2d4b746c22e8828b670dcd9b0
-  FirebaseCoreInternal: a13302b0088fbf5f38b79b6ece49c2af7d3e05d6
-  FirebaseDatabase: e93f5441b549ea4492a8d8a0c7d612ac46c1b12a
-  FirebaseFunctions: cea54b689fb87b59b692989c0a5472c36df98aa1
-  FirebaseMessagingInterop: a4bec680b953ddde5be175f4a2afce89c38cdc5f
-  FirebaseSharedSwift: 812ad75bf1a79968b2da3d75fdde9ce7cd172301
+  Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
+  FirebaseAuth: 3e73bf8abf4fbb40f8b421f361f4cc48ee57388c
+  FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
+  FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
+  FirebaseDatabase: f567afd233e54a303d84423207736590a6feb419
+  FirebaseFunctions: f9346c6afd2c7d84aabb331d70dd0c8309e1abe1
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
@@ -822,7 +796,7 @@ SPEC CHECKSUMS:
   libwebp: 60305b2e989864154bd9be3d772730f08fc6a59c
   lottie-ios: 69495122151a378fdc7d1bb4c5930347e37baf1f
   lottie-react-native: b702fab740cdb952a8e2354713d3beda63ff97b0
-  nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RCT-Folly: b9d9fe1fc70114b751c076104e52f3b1b5e5a95a
   RCTRequired: bd9d2ab0fda10171fcbcf9ba61a7df4dc15a28f4
@@ -868,17 +842,17 @@ SPEC CHECKSUMS:
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
   RNDeviceInfo: 0a7c1d2532aa7691f9b9925a27e43af006db4dae
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNFBApp: 39904cebc3958e2d377dccf870b5c5d76cb089a9
-  RNFBAuth: 32b9de70bcd7593159b73a81066cd7f9aa919952
-  RNFBDatabase: 0cbc755fb4a5637f67eed1937ccaf01e672dc720
-  RNFBFunctions: 1edab0744190d42c89a1059d446408ea5a5bf654
+  RNFBApp: 9646e09d041ea159b84584865212e4cf33acd179
+  RNFBAuth: af943e3ba071b5f4d18896c31e6cba3a77b1fa08
+  RNFBDatabase: 7390a8b320e6f1ea82ac6ecd6e19c5a76a4397f0
+  RNFBFunctions: 0e7c0a20c35fca0f828b2eeec8d0ff1718390e68
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNGoogleSignin: b2179ba653c759b936404a7746fc5302f9de6a5a
   RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
   RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
   RNReactNativeHapticFeedback: 1e3efeca9628ff9876ee7cdd9edec1b336913f8c
-  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
+  RNReanimated: 44fc7bfc7f2c63ba76e93f8ceaaecdd59dce902f
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: d56424e3926cbc239db1cc1c168adcb051aad50b
   RNSVG: ecd661f380a07ba690c9c5929c475a44f432d674
@@ -888,6 +862,6 @@ SPEC CHECKSUMS:
   SwiftAudioEx: 1974c2eb942c9b54f58c3d3f5d704da527e2c5ba
   Yoga: ff994563b2fd98c982ca58e8cd9db2cdaf4dda74
 
-PODFILE CHECKSUM: cc6c3143d2cad94eb22ed9b209bf80268e3e0693
+PODFILE CHECKSUM: 1e46b11eee2b5cd79995ad8c178c9cfc6194b765
 
 COCOAPODS: 1.11.3
