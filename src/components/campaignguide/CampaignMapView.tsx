@@ -1,14 +1,15 @@
 import React, { useCallback, useContext, useRef, useEffect, useMemo, useState } from 'react';
+import { LayoutChangeEvent, Pressable, StyleSheet, Text, TextStyle, View } from 'react-native';
+import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
 import { find, forEach, indexOf, map, sumBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
+import FastImage from 'react-native-fast-image';
 
 import { NavigationProps } from '@components/nav/types';
 import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
-import { View } from 'react-native-animatable';
-import { LayoutChangeEvent, Pressable, Text, TextStyle } from 'react-native';
 import StyleContext from '@styles/StyleContext';
 import { MapLabel, MapLocation } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
@@ -18,10 +19,10 @@ import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
-import { interpolate } from 'react-native-reanimated';
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
+const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
 function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
   const bgColor = locked ? '#394852' : '#F5F0E1';
@@ -509,6 +510,13 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               heightRatio={heightRatio}
             />
           )) }
+          <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
+            <FastImage
+              source={PAPER_TEXTURE}
+              style={{ width: theWidth, height: theHeight }}
+              resizeMode="cover"
+            />
+          </View>
           { map(campaignMap.locations, (location) => (
             <PointOfInterest
               key={location.id}
@@ -532,3 +540,11 @@ export default withCampaignGuideContext(
   CampaignMapView,
   { rootView: false }
 );
+
+const styles = StyleSheet.create({
+  texture: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+});
