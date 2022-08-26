@@ -5,7 +5,7 @@
   },
   {
     "id": "a_house_divided",
-    "name": "A House Divided"
+    "name": "붕괴된 의회"
   },
   {
     "id": "a_light_in_the_fog",
@@ -25,11 +25,11 @@
   },
   {
     "id": "across_dreadful_waters",
-    "name": "Across Dreadful Waters"
+    "name": "공포의 바다 건너"
   },
   {
     "id": "against_the_wendigo",
-    "name": "Against the Wendigo"
+    "name": "웬디고에 맞서다"
   },
   {
     "id": "alexandria",
@@ -109,7 +109,7 @@
   },
   {
     "id": "blood_from_stones",
-    "name": "Blood From Stones"
+    "name": "돌에서 흐르는 피"
   },
   {
     "id": "blood_on_the_altar",
@@ -177,7 +177,7 @@
   },
   {
     "id": "crumbling_masonry",
-    "name": "Crumbling Masonry"
+    "name": "무너지는 메이슨"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -305,7 +305,7 @@
   },
   {
     "id": "going_twice",
-    "name": "Going Twice"
+    "name": "입찰 선언"
   },
   {
     "id": "gryphon_and_mock_turtle",
@@ -425,7 +425,7 @@
   },
   {
     "id": "lost_moorings",
-    "name": "Lost Moorings"
+    "name": "사라진 정박지"
   },
   {
     "id": "lost_quantum",
@@ -485,7 +485,7 @@
   },
   {
     "id": "private_lives",
-    "name": "Private Lives"
+    "name": "사생활"
   },
   {
     "id": "ptc_epilogue",
@@ -513,7 +513,7 @@
   },
   {
     "id": "pyroclastic_flow",
-    "name": "Pyroclastic Flow"
+    "name": "화쇄류"
   },
   {
     "id": "quito",
@@ -977,7 +977,7 @@
   },
   {
     "id": "tomb_of_dead_dreams",
-    "name": "Tomb of Dead Dreams"
+    "name": "잠든 꿈의 묘소"
   },
   {
     "id": "torch",
