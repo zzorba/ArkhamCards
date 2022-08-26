@@ -5820,43 +5820,43 @@ msgstr ""
 "scenario.custom.creator })"
 
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "거석의 근간"
 
 msgid "Lost Moorings"
-msgstr ""
+msgstr "사라진 정박지"
 
 msgid "Going Twice"
-msgstr ""
+msgstr "입찰 선언"
 
 msgid "Private Lives"
-msgstr ""
+msgstr "사생활"
 
 msgid "Crumbling Masonry"
-msgstr ""
+msgstr "무너지는 메이슨"
 
 msgid "A House Divided"
-msgstr ""
+msgstr "붕괴된 의회"
 
 msgid "Across Dreaful Waters"
-msgstr ""
+msgstr "공포의 바다 건너"
 
 msgid "Blood From Stones"
-msgstr ""
+msgstr "돌에서 흐르는 피"
 
 msgid "Pyroclastic Flow"
-msgstr ""
+msgstr "화쇄류"
 
 msgid "Tomb of Dead Dreams"
-msgstr ""
+msgstr "잠든 꿈의 묘소"
 
 msgid "Cultists Alive"
-msgstr ""
+msgstr "살아있는 추종자들"
 
 msgid "Cultists Killed"
-msgstr ""
+msgstr "숙청된 추종자들"
 
 msgid "Notice"
-msgstr ""
+msgstr "주목도"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6494,25 +6494,30 @@ msgstr "그 외에도 진홍색 열쇠 확장에서 발표된 새로운 메커�
 
 msgctxt "releaseNotes"
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "거석의 근간"
 
 msgctxt "releaseNotes"
 msgid ""
 "This release adds the newly finished fan-made Cyclopean Foundations "
 "campaign by The Beard."
 msgstr ""
+"이번 릴리즈에는 “거석의 근간(제작자: The Beard / 한국어화: ´허걱이´님)”이라는 "
+"팬 제작 캠페인이 새로이 추가되었습니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "- Includes a fully guided mode, with all setup and resolution text "
 "accounted for."
 msgstr ""
+"- 모든 게임 설정 및 결말에 대한 완전한 가이드가 포함되어 있습니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
 msgstr ""
+"또한 이번 업데이트에서는 “The Colour Out of Space(한국어화 미지원)”라는 팬 제작 "
+"독립 시나리오에 대한 지원도 추가되었습니다."
 
 msgctxt "trait"
 msgid "???"
