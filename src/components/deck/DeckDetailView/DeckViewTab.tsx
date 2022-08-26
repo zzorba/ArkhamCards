@@ -30,6 +30,8 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import { useAppDispatch } from '@app/store';
+import { MANDY_CODE } from '@data/deck/specialMetaSlots';
+import { updateDeck } from '@reducers/decks';
 
 interface Props {
   componentId: string;
@@ -122,6 +124,11 @@ export default function DeckViewTab(props: Props) {
   const dispatch = useAppDispatch();
   const setTabooSet = useCallback((tabooSetId: number | undefined) => {
     dispatch(setDeckTabooSet(deckId, tabooSetId || 0));
+
+    // TODO: see if there's a better way to handle Mandy's deck size changing like this.
+    if (tabooSetId && tabooSetId >= 5 && deck.investigator_code === MANDY_CODE && deckEditsRef.current) {
+      dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [{ key: 'deck_size_selected', value: '50' }]))
+    }
   }, [dispatch, deckId]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     if (deckEditsRef.current) {

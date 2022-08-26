@@ -1426,6 +1426,10 @@ export interface Taboo {
   xp?: number;
   description?: string;
   text?: string;
-  exceptional?: number;
+  exceptional?: boolean;
   deck_limit?: number;
+  deck_options?: any[];
+  deck_requirements?: {
+    [k: string]: any;
+  };
 }

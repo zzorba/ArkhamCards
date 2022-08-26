@@ -80,10 +80,11 @@ export default class DeckValidation {
     const specialCards = this.specialCardCounts();
     var size: number = 30;
     if (this.investigator.deck_requirements) {
-      if (this.meta && this.meta.deck_size_selected) {
-        size = parseInt(this.meta.deck_size_selected, 10);
-      } else if (this.investigator.deck_requirements.size) {
+      if (this.investigator.deck_requirements.size) {
         size = this.investigator.deck_requirements.size;
+      }
+      if (this.meta && this.meta.deck_size_selected && deckOptions.find(option => option.deck_size_select?.length)) {
+        size = parseInt(this.meta.deck_size_selected, 10);
       }
     }
     return size

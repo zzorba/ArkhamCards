@@ -1552,12 +1552,20 @@ export default class Card {
     if (json.text) {
       result.taboo_text_change = json.text;
     }
-    if (json.exceptional) {
-      result.exceptional = true;
-      result.deck_limit = 1;
+    if (json.exceptional !== undefined) {
+      result.exceptional = json.exceptional;
+      if (json.exceptional) {
+        result.deck_limit = 1;
+      }
     }
     if (json.deck_limit !== undefined) {
       result.deck_limit = json.deck_limit;
+    }
+    if (json.deck_options) {
+      result.deck_options = DeckOption.parseList(json.deck_options);
+    }
+    if (json.deck_requirements) {
+      result.deck_requirements = DeckRequirement.parse(json.deck_requirements);
     }
     return result;
   }

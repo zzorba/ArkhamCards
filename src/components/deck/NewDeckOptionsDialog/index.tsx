@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -103,38 +103,77 @@ function NewDeckOptionsDialog({
     }
     return tabooSetIdChoice;
   }, [specialDeckMode, tabooSetIdChoice]);
-  const [metaState, setMeta] = useState<DeckMeta>({});
   const [chaosSlots, setSlots] = useState<Slots | undefined>(undefined);
+  const [metaState, setMetaField] = useReducer((meta: DeckMeta, { key, value }: { key: keyof DeckMeta; value?: string }) => {
+    const newMeta = { ...meta, [key]: value };
+    if (!newMeta[key]) {
+      delete newMeta[key];
+    }
+    return newMeta;
+  }, {});
   const setTabooSetId = useCallback((tabooSetId: number) => {
     actuallySetTabooSetId(tabooSetId);
     setSlots(undefined);
   }, [actuallySetTabooSetId, setSlots]);
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
-    const newMeta = { ...metaState, [key]: value };
-    if (!newMeta[key]) {
-      delete newMeta[key];
-    }
-    setMeta(newMeta);
+    setMetaField({ key, value });
     setSlots(undefined);
-  }, [metaState, setMeta, setSlots]);
+  }, [setMetaField, setSlots]);
   const setParallel = useCallback((front: string, back: string) => {
     if (metaState.alternate_front === front && metaState.alternate_back === back) {
       return;
     }
-    setMeta({
-      ...metaState,
-      alternate_front: front,
-      alternate_back: back,
-    });
+    setMetaField({ key: 'alternate_front', value: front });
+    setMetaField({ key: 'alternate_back', value: back });
     setSlots(undefined);
-  }, [setMeta, metaState]);
+  }, [setMetaField, setSlots, metaState]);
   const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
   const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
+
   const [investigatorFront, investigatorBack] = useMemo(() => [
     metaState.alternate_front && metaState.alternate_back !== investigatorId ? find(parallelInvestigators, c => c.code === metaState.alternate_front) : investigator,
     metaState.alternate_back && metaState.alternate_back !== investigatorId ? find(parallelInvestigators, c => c.code === metaState.alternate_back) : investigator,
   ], [investigator, parallelInvestigators, investigatorId, metaState]);
 
+  useEffect(() => {
+    if (investigatorBack?.deck_options) {
+      forEach(investigatorBack.deck_options, option => {
+        if (option.deck_size_select?.length) {
+          if (option.id) {
+            if (!metaState[option.id]) {
+              updateMeta(option.id, option.deck_size_select[0]);
+            }
+          } else {
+            if (!metaState.deck_size_selected) {
+              updateMeta('deck_size_selected', option.deck_size_select[0]);
+            }
+          }
+        }
+        if (option.faction_select?.length) {
+          if (option.id) {
+            if (!metaState[option.id]) {
+              updateMeta(option.id, option.faction_select[0]);
+            }
+          } else {
+            if (!metaState.faction_selected) {
+              updateMeta('faction_selected', option.faction_select[0]);
+            }
+          }
+        }
+        if (option.option_select?.length) {
+          if (option.id) {
+            if (!metaState[option.id]) {
+              updateMeta(option.id, option.option_select[0].id);
+            }
+          } else {
+            if (!metaState.option_selected) {
+              updateMeta('option_selected', option.option_select[0].id);
+            }
+          }
+        }
+      });
+    }
+  }, [investigatorBack]);
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
       return t`New Deck`;
@@ -204,6 +243,7 @@ function NewDeckOptionsDialog({
     }
     return metaState || {};
   }, [specialDeckMode, metaState, investigator]);
+
   const requiredSlots: Slots = useMemo(() => {
     if (specialDeckMode === 'starter' && investigator && starterDecks.cards[investigator.code]) {
       return starterDecks.cards[investigator.code] || {};
@@ -214,8 +254,8 @@ function NewDeckOptionsDialog({
     };
 
     // Seed all the 'basic' requirements from the investigator.
-    if (cards && investigator && investigator.deck_requirements) {
-      forEach(investigator.deck_requirements.card, cardRequirement => {
+    if (cards && investigatorBack && investigatorBack.deck_requirements) {
+      forEach(investigatorBack.deck_requirements.card, cardRequirement => {
         const card = cardRequirement.code && cards[cardRequirement.code];
         if (!card) {
           return;
@@ -224,6 +264,19 @@ function NewDeckOptionsDialog({
       });
     }
     forEach(meta, (value, key) => {
+      if (!investigatorBack?.deck_options?.find(option => {
+        switch (key) {
+          case 'deck_size_selected': return !!option?.deck_size_select?.length;
+          case 'faction_selected': return !!option?.faction_select?.length;
+          case 'option_selected': return !!option?.option_select?.length;
+          case 'alternate_back': return true;
+          case 'alternate_front': return true;
+          default: return option.id === key;
+        }
+      })) {
+        // Skip it if we don't find a matching option on the current gator.
+        return;
+      }
       const specialSlots = specialMetaSlots(investigatorId, { key: key as keyof DeckMeta, value });
       if (specialSlots) {
         forEach(specialSlots, (count, code) => {
@@ -251,7 +304,7 @@ function NewDeckOptionsDialog({
       });
     }
     return result;
-  }, [cards, meta, investigatorId, optionSelected, requiredCardOptions, investigator, specialDeckMode]);
+  }, [cards, meta, investigatorId, optionSelected, requiredCardOptions, investigator, investigatorBack, specialDeckMode]);
   const dispatch: DeckDispatch = useDispatch();
   const showNewDeck = useCallback((deck: Deck) => {
     // Change the deck options for required cards, if present.
