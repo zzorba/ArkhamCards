@@ -4089,9 +4089,6 @@ msgstr "Recuerdos"
 msgid "Fan-Made Campaigns"
 msgstr "Campañas fan-made"
 
-msgid "Fan-Made Content"
-msgstr "Contenido fan-made"
-
 msgid "Fetching account details..."
 msgstr "Recuperando detalles de la cuenta..."
 
@@ -6182,6 +6179,24 @@ msgid "Cultists Killed"
 msgstr ""
 
 msgid "Notice"
+msgstr ""
+
+msgid "Jenny's Choice"
+msgstr ""
+
+msgid "The Fall of the House of Usher"
+msgstr ""
+
+msgid "Against the Wendigo"
+msgstr ""
+
+msgid "Non-canon Content"
+msgstr ""
+
+msgid "Fan-made Campaigns"
+msgstr ""
+
+msgid "Fan-made Scenarios"
 msgstr ""
 
 msgctxt "investigator"
