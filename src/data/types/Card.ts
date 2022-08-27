@@ -9,7 +9,7 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCod
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardTextFragment, CycleFragment, EncounterSetFragment, PackFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 
 const SERPENTS_OF_YIG = '04014';
@@ -1157,9 +1157,16 @@ export default class Card {
 
   private static gqlToJson(
     card: SingleCardFragment & {
-      packs: { name: string }[];
       translations: CoreCardTextFragment[];
-      encounter_sets: { name: string}[],
+    },
+    encounterSets: { [code: string]: string | undefined },
+    packs: {
+      [pack_code: string]: {
+        name: string;
+        position: number;
+        cycle_name: string;
+        cycle_position: number;
+      };
     }
   ) {
     const cardTypeNames: { [key: string]: string } = {
@@ -1204,8 +1211,9 @@ export default class Card {
       back_name: card.real_back_name,
       back_text: card.real_back_text,
     };
-    json.encounter_name = card.encounter_sets.length ? card.encounter_sets[0].name : card.real_encounter_set_name;
-    json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
+    json.encounter_name = card.encounter_code ? (encounterSets[card.encounter_code] || card.real_encounter_set_name) : undefined;
+    json.pack_name = packs[card.pack_code]?.name || card.real_pack_name;
+    json.cycle_name = packs[card.pack_code]?.cycle_name;
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];
     if (card.subtype_code) {
@@ -1219,37 +1227,32 @@ export default class Card {
       linked_card?: SingleCardFragment & {
         translations: CoreCardTextFragment[];
       };
-      packs: { name: string }[];
       translations: CoreCardTextFragment[];
-      encounter_sets: { name: string}[],
     },
-    lang: string
+    lang: string,
+    encounterSets: { [code: string]: string | undefined },
+    packs: {
+      [pack_code: string]: {
+        name: string;
+        position: number;
+        cycle_position: number;
+        cycle_name: string;
+      };
+    },
+    cycles: {
+      [cycle_code: string]: {
+        name: string;
+        position: number;
+      };
+    }
   ) {
-    const json = Card.gqlToJson(card);
+    const json = Card.gqlToJson(card, encounterSets, packs);
     if (card.linked_card) {
-      json.linked_card = Card.gqlToJson({
-        ...pick(card, ['packs', 'encounter_sets']),
-        ...card.linked_card,
-      });
+      json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs);
       json.linked_to_code = json.linked_card.code;
       json.linked_to_name = json.linked_card.real_name;
     }
-    return Card.fromJson(json,
-      {
-        [card.pack_code]: {
-          position: card.pack_position,
-          cycle_position: 100,
-        },
-      },
-      {
-        '100': {
-          name: json.pack_name || t`Fan-Made Content`,
-          code: card.pack_code,
-        },
-      },
-      lang,
-      true
-    );
+    return Card.fromJson(json, packs, cycles, lang);
   }
 
   static fromJson(

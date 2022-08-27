@@ -5,6 +5,7 @@ import {
   PACKS_FETCH_START,
   PACKS_FETCH_ERROR,
   PACKS_AVAILABLE,
+  CUSTOM_PACKS_AVAILABLE,
   PACKS_CACHE_HIT,
   SYNC_IN_COLLECTION,
   SYNC_PACK_SPOILER,
@@ -15,6 +16,7 @@ import {
 
 interface PacksState {
   all: Pack[];
+  custom?: Pack[];
   dateFetched: number | null;
   dateUpdatePrompt: number | null;
   in_collection: {
@@ -34,6 +36,7 @@ interface PacksState {
 
 const DEFAULT_PACKS_STATE: PacksState = {
   all: [],
+  custom: [],
   dateFetched: null,
   dateUpdatePrompt: null,
   in_collection: { core: true },
@@ -88,6 +91,12 @@ export default function(
     };
   }
 
+  if (action.type === CUSTOM_PACKS_AVAILABLE) {
+    return {
+      ...state,
+      custom: action.packs,
+    };
+  }
 
   if (action.type === SYNC_IN_COLLECTION) {
     const new_collection = Object.assign({}, state.in_collection);

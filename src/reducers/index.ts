@@ -161,6 +161,7 @@ const DEFAULT_PACK_LIST: Pack[] = [];
 const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allGuidesSelector = (state: AppState) => state.guides.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
+const customPacksSelector = (state: AppState) => state.packs.custom;
 const showCustomContentSelector = (state: AppState) => !!state.settings.customContent;
 const allDecksSelector = (state: AppState) => state.decks.all;
 
@@ -244,12 +245,13 @@ export function getPackFetchDate(state: AppState) {
 
 export const getAllPacks = createSelector(
   allPacksSelector,
+  customPacksSelector,
   showCustomContentSelector,
-  (allPacks, showCustomContent) => sortBy(
+  (allPacks, customPacks, showCustomContent) => sortBy(
     sortBy(
       concat(
         allPacks || DEFAULT_PACK_LIST,
-        showCustomContent ? map([
+        showCustomContent ? (customPacks?.length ? customPacks : map([
           {
             code: 'zbh',
             cycle_code: 'fan',
@@ -340,7 +342,7 @@ export const getAllPacks = createSelector(
             total: 0,
             url: 'https://arkhamcards.com',
           };
-        }) : []
+        })) : []
       ), pack => pack.position),
     pack => pack.cycle_position
   )

@@ -13,21 +13,26 @@ query getCustomCards(
         ...CoreCardText
       }
     }
-    encounter_sets(
-      where: { locale: { _eq: $locale }}
-    ) {
-      name
-    }
-    packs(
-      where: { locale: { _eq: $locale }}
-    ) {
-      name
-    }
     translations(
       where: { locale: { _eq: $locale }}
     ) {
       ...CoreCardText
     }
+  }
+  card_encounter_set(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...EncounterSet
+  }
+  card_pack(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...Pack
+  }
+  card_cycle(
+    where: { locale: { _eq: $locale }}
+  ) {
+    ...Cycle
   }
 }
 

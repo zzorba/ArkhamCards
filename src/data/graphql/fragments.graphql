@@ -1,3 +1,18 @@
+fragment EncounterSet on card_encounter_set {
+  code
+  name
+}
+fragment Pack on card_pack {
+  code
+  cycle_code
+  name
+  position
+}
+fragment Cycle on card_cycle {
+  code
+  name
+  position
+}
 fragment SingleCard on full_card {
   code
   cost

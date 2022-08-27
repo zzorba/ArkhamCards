@@ -249,10 +249,10 @@ export interface Pack {
   code: string;
   position: number;
   cycle_position: number;
-  available: string;
+  available?: string;
   known: number;
   total: number;
-  url: string;
+  url?: string;
 }
 
 export interface Trauma {
@@ -651,6 +651,13 @@ export interface PacksAvailableAction {
   lang: string;
   timestamp: Date;
   lastModified?: string;
+}
+
+export const CUSTOM_PACKS_AVAILABLE = 'CUSTOM_PACKS_AVAILABLE';
+export interface CustomPacksAvailableAction {
+  type: typeof CUSTOM_PACKS_AVAILABLE;
+  packs: Pack[];
+  lang: string;
 }
 
 export interface CardCache {
@@ -1391,6 +1398,7 @@ export type PacksActions =
   PacksFetchErrorAction |
   PacksCacheHitAction |
   PacksAvailableAction |
+  CustomPacksAvailableAction |
   SyncInCollectionAction |
   SyncPackSpoilerAction |
   SetPackDraftAction |
