@@ -248,16 +248,31 @@ export interface MapLocation {
   y: number;
   name: string;
   scenario: string;
-  dossier?: {
-    image?: {
-      ratio: number;
-      uri: string;
-    };
-    text?: string;
-  }[];
+  dossier?: Dossier[];
+  details: LocationDetails;
   status: "locked" | "standard" | "side";
   direction: "left" | "right";
   connections: string[];
+}
+export interface Dossier {
+  title: string;
+  entries: DossierElement[];
+}
+export interface DossierElement {
+  image?: {
+    ratio: number;
+    uri: string;
+    alignment: "left" | "right";
+  };
+  text?: string;
+}
+export interface LocationDetails {
+  image?: {
+    region: {
+      name: string;
+    };
+  };
+  text?: string;
 }
 export interface MapLabel {
   x: number;

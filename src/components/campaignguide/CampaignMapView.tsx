@@ -11,10 +11,10 @@ import { NavigationProps } from '@components/nav/types';
 import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
-import { MapLabel, MapLocation } from '@data/scenario/types';
+import { DossierElement, Dossier, MapLabel, MapLocation } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
 import ArkhamButton from '@components/core/ArkhamButton';
-import space from '@styles/space';
+import space, { s, m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
@@ -22,6 +22,9 @@ import { useBackButton, useNavigationButtonPressed } from '@components/core/hook
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
+import EncounterIcon from '@icons/EncounterIcon';
+import colors from '@styles/colors';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
 function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
@@ -336,6 +339,59 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
   return undefined;
 }
 
+function DossierImage({
+  uri,
+  ratio,
+  width,
+  alignment,
+}: {
+  uri: string;
+  alignment: 'right' | 'left';
+  ratio: number;
+  width: number;
+}) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
+      <View style={{ padding: 8, backgroundColor: colors.L10, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
+        <FastImage
+          source={{ uri: `https://img.arkhamcards.com${uri}` }}
+          style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
+          resizeMode="cover"
+        />
+      </View>
+    </View>
+  );
+}
+
+
+function DossierComponent({ dossier }: { dossier: Dossier }) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <View style={[{ flexDirection: 'column', backgroundColor: colors.L20 }, space.paddingM, space.marginBottomM]}>
+      { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} /> )}
+    </View>
+  )
+}
+
+function DossierEntryComponent({
+  element: { image, text }
+}: {
+  element: DossierElement
+}) {
+  const { width } = useContext(StyleContext);
+  return (
+    <View style={{ flexDirection: image?.alignment === 'left' ? 'row-reverse' : 'row' }}>
+      { !!text && <View style={{ flex: 1 }}><CampaignGuideTextComponent text={text} /></View> }
+      { !!image && (
+        <View style={space.marginBottomS}>
+          <DossierImage uri={image.uri} ratio={image.ratio} alignment={image.alignment} width={(width - s * 4) / 2.5} />
+        </View>
+      ) }
+    </View>
+  )
+}
+
 function LocationContent({
   location,
   allLocations,
@@ -349,7 +405,7 @@ function LocationContent({
   visited: boolean;
   setCurrentLocation?: (location: MapLocation, distance: number | undefined) => void;
 }) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography, width } = useContext(StyleContext);
   const travelDistance = useMemo(() => {
     if (!currentLocation || !allLocations) {
       return undefined;
@@ -363,7 +419,10 @@ function LocationContent({
   const atLocation = currentLocation?.id === location.id
   return (
     <>
-      <View style={[space.paddingSideS, { flexDirection: 'column' }]}>
+      <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
+        <View style={{ position: 'absolute', top: s, right: s }} opacity={0.25}>
+          <EncounterIcon encounter_code={location.id} size={width / 3} color={colors.D30} />
+        </View>
         { atLocation && (
           <Text style={typography.text}>{t`You are currently here.`}</Text>
         ) }
@@ -390,11 +449,16 @@ function LocationContent({
         { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
           <ArkhamButton icon="check" title="Move here" onPress={makeCurrent} />
         ) }
-        { !!location.dossier && map(location.dossier, (entry, idx) => (
-          <View key={idx}>
-            { !!entry.text && <CampaignGuideTextComponent text={entry.text} /> }
+        { !!location.dossier && (
+          <View>
+            <View style={space.paddingBottomS}>
+              <CardDetailSectionHeader title={ngettext(msgid`Dossier`, `Dossiers`, location.dossier.length)} />
+            </View>
+            { map(location.dossier, (entry, idx) => (
+              <DossierComponent key={idx} dossier={entry} />
+            )) }
           </View>
-        ))}
+        ) }
       </View>
     </>
   );

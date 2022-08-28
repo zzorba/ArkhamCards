@@ -700,15 +700,26 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'alexandria':
       case 'anchorage':
       case 'bermuda':
+      case 'bombay':
+      case 'buenos_aires':
       case 'constantinople':
+      case 'havana':
+      case 'hong_kong':
+      case 'kabul':
+      case 'kathmandu':
+      case 'kuala_lampur':
+      case 'lagos':
       case 'london':
       case 'marrakesh':
       case 'moscow':
       case 'rio_de_janiero':
+      case 'rome':
       case 'san_francisco':
+      case 'shanghai':
+      case 'stockholm':
       case 'sydney':
       case 'tokyo':
-
+      case 'tunguska':
         return this.scarletIcon(encounter_code, size, color);
       case 'agents_of_cthugha':
         return this.darkMatterIcon('agents_of_cthugua', size, color);
