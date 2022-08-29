@@ -9,9 +9,10 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCod
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardTextFragment, CycleFragment, EncounterSetFragment, PackFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 
+const SICKENING_REALITY_CARDS = new Set(['03065b', '03066b', '03067b', '03068b', '03069b'])
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
@@ -1481,16 +1482,18 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (!noFlipping && result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
-      // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
+    if (!noFlipping && (
+      (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') ||
+      SICKENING_REALITY_CARDS.has(result.code)
+    )) {
       result = {
-        ...result.linked_card,
+        ...omit(result.linked_card, ['back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'linked_card']),
         back_linked: null,
         hidden: null,
         linked_to_code: result.code,
         linked_to_name: result.name,
         linked_card: {
-          ...result,
+          ...omit(result, ['linked_card', 'back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'browse_visible', 'mythos_card']),
           linked_card: undefined,
           back_linked: true,
           hidden: true,
