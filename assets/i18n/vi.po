@@ -5495,16 +5495,7 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
-msgid "Examine campaign map"
-msgstr ""
-
-msgid "Warning: Locked"
-msgstr ""
-
 #, javascript-format
-msgid "Travel time from ${ currentLocation.name }:"
-msgstr ""
-
 msgid "${ travelDistance } day"
 msgid_plural "${ travelDistance } days"
 msgstr[0] ""
@@ -5539,17 +5530,6 @@ msgid "${ quantity } copy"
 msgid_plural "${ quantity } copies"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "You are currently here."
-msgstr ""
-
-msgid "You have already visited this location."
-msgstr ""
-
-msgid ""
-"Travelling to this location will allow you to insert a side-scenarion into "
-"your campaign."
-msgstr ""
 
 msgid "Embark"
 msgstr ""
@@ -5625,6 +5605,39 @@ msgid "Fan-made Campaigns"
 msgstr ""
 
 msgid "Fan-made Scenarios"
+msgstr ""
+
+msgid "Currently here"
+msgstr ""
+
+msgid "Already visited"
+msgstr ""
+
+msgid ""
+"You may stop at this location to play a side-story. Passing through this "
+"location costs no additional time."
+msgstr ""
+
+msgid ""
+"As an additional cost to play the side-story, you must spend one time for "
+"each XP cost of the scenario."
+msgstr ""
+
+msgid "Travel time:"
+msgstr ""
+
+msgid "Travel here"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Dossier"
+msgid_plural "Dossiers"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Departing from ${ location }"
 msgstr ""
 
 msgctxt "investigator"
