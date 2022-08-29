@@ -163,37 +163,6 @@ export default function CampaignDetailTab({
     processedCampaign,
   });
 
-  const showMap = useCallback(() => {
-    Navigation.showModal<CampaignMapProps>({
-      stack: {
-        children: [{
-          component: {
-            name: 'Campaign.Map',
-            passProps: {
-              campaignId,
-            },
-            options: {
-              topBar: {
-                title: {
-                  text: t`Map`,
-                },
-                leftButtons: [{
-                  icon: iconsMap.dismiss,
-                  id: 'close',
-                  color: COLORS.M,
-                  accessibilityLabel: t`Close`,
-                }],
-              },
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  }, [campaignId]);
-
   const onTarotPress = useCallback((readingType: TarotReadingType) => {
     Navigation.push<TarotCardReadingProps>(componentId, {
       component: {
@@ -264,16 +233,6 @@ export default function CampaignDetailTab({
             onPress={showChaosBag}
             bottomMargin={s}
           />
-          { !!campaignGuide.campaignMap() && (
-            <DeckButton
-              icon="map"
-              title={t`Map`}
-              detail={t`Examine campaign map`}
-              color="light_gray"
-              onPress={showMap}
-              bottomMargin={s}
-            />
-          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"

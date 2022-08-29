@@ -267,12 +267,12 @@ export interface DossierElement {
   text?: string;
 }
 export interface LocationDetails {
-  image?: {
-    region: {
-      name: string;
-    };
+  region: {
+    name: string;
   };
-  text?: string;
+  country?: {
+    name: string;
+  };
 }
 export interface MapLabel {
   x: number;

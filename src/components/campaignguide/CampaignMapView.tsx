@@ -23,8 +23,9 @@ import { useBackButton, useNavigationButtonPressed } from '@components/core/hook
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
 import EncounterIcon from '@icons/EncounterIcon';
-import colors from '@styles/colors';
+import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import DeckButton from '@components/deck/controls/DeckButton';
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
 function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
@@ -353,7 +354,7 @@ function DossierImage({
   const { colors } = useContext(StyleContext);
   return (
     <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
-      <View style={{ padding: 8, backgroundColor: colors.L10, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
+      <View style={{ padding: 8, paddingBottom: 32, backgroundColor: COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
           source={{ uri: `https://img.arkhamcards.com${uri}` }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
@@ -365,10 +366,14 @@ function DossierImage({
 }
 
 
-function DossierComponent({ dossier }: { dossier: Dossier }) {
+function DossierComponent({ dossier }: { dossier: Dossier; idx: number }) {
   const { colors } = useContext(StyleContext);
   return (
-    <View style={[{ flexDirection: 'column', backgroundColor: colors.L20 }, space.paddingM, space.marginBottomM]}>
+    <View style={[
+      { flexDirection: 'column', backgroundColor: colors.L20 },
+      space.paddingM,
+      space.marginBottomM,
+    ]}>
       { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} /> )}
     </View>
   )
@@ -416,46 +421,88 @@ function LocationContent({
   const makeCurrent = useCallback(() => {
     setCurrentLocation?.(location, travelDistance);
   }, [setCurrentLocation, location, travelDistance]);
-  const atLocation = currentLocation?.id === location.id
+  const atLocation = currentLocation?.id === location.id;
+
+  const travelSection = useMemo(() => {
+    if (atLocation) {
+      return (
+        <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+          <DeckButton shrink thin icon="check-thin" color="light_gray" title={t`Currently here`} disabled />
+        </View>
+      );
+    }
+    if (visited) {
+      return (
+        <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+          <DeckButton shrink thin icon="check-thin" color="light_gray" title={t`Already visited`} disabled />
+        </View>
+      );
+    }
+
+    if (location.status === 'locked') {
+      return (
+        <>
+          <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+            <DeckButton shrink thin icon="map" color="light_gray" title={t`Locked`} disabled />
+          </View>
+        </>
+
+      );
+    }
+    if ((!currentLocation || !atLocation) && !visited) {
+      return (
+        <>
+          { location.status === 'side' && (
+            <>
+              <Text style={typography.text}>
+                { t`You may stop at this location to play a side-story. Passing through this location costs no additional time.` }
+              </Text>
+              <Text style={typography.text}>
+                { t`As an additional cost to play the side-story, you must spend one time for each XP cost of the scenario.` }
+              </Text>
+            </>
+          ) }
+          { !!travelDistance && !!currentLocation && (
+            <Text style={[typography.text, { }]} textBreakStrategy="highQuality">
+              { t`Travel time:`} { ngettext(msgid`${travelDistance} day`, `${travelDistance} days`, travelDistance) }
+            </Text>
+          ) }
+          { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
+            <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+              <DeckButton shrink thin icon="map" title={t`Travel here`} onPress={makeCurrent} />
+            </View>
+          ) }
+        </>
+      );
+    }
+  }, [location, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
-        <View style={{ position: 'absolute', top: s, right: s }} opacity={0.25}>
-          <EncounterIcon encounter_code={location.id} size={width / 3} color={colors.D30} />
+        <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
+          <EncounterIcon encounter_code={location.id} size={width / 3.5} color={colors.D20} />
         </View>
-        { atLocation && (
-          <Text style={typography.text}>{t`You are currently here.`}</Text>
-        ) }
-        { visited && !atLocation && (
-          <Text style={typography.text}>{t`You have already visited this location.`}</Text>
-        ) }
-        { location.status === 'locked' && (
-          <Text style={typography.text}>{t`Warning: Locked`}</Text>
-        ) }
-        { !visited && !atLocation && location.status === 'side' && (
+        <CardDetailSectionHeader title={t`Information`} />
+        <Text style={typography.text}>
+          {location.name}
+        </Text>
+        <Text style={typography.text}>
+          {location.details.region.name}
+        </Text>
+        { !!location.details.country && (
           <Text style={typography.text}>
-            {t`Travelling to this location will allow you to insert a side-scenarion into your campaign.`}
+            {location.details.country.name}
           </Text>
         ) }
-        { (!currentLocation || !atLocation) && !visited && location.status !== 'locked' && (
-          <>
-            { !!travelDistance && !!currentLocation && (
-              <Text style={[typography.text, { }]} textBreakStrategy="highQuality">
-                { t`Travel time from ${currentLocation.name}:`} { ngettext(msgid`${travelDistance} day`, `${travelDistance} days`, travelDistance) }
-              </Text>
-            ) }
-          </>
-        ) }
-        { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
-          <ArkhamButton icon="check" title="Move here" onPress={makeCurrent} />
-        ) }
+        {travelSection}
+
         { !!location.dossier && (
           <View>
             <View style={space.paddingBottomS}>
               <CardDetailSectionHeader title={ngettext(msgid`Dossier`, `Dossiers`, location.dossier.length)} />
             </View>
             { map(location.dossier, (entry, idx) => (
-              <DossierComponent key={idx} dossier={entry} />
+              <DossierComponent key={idx} dossier={entry} idx={idx} />
             )) }
           </View>
         ) }

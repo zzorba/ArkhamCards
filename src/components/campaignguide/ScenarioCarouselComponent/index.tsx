@@ -177,6 +177,7 @@ export default function ScenarioCarouselComponent({
       onSelect: onEmbark,
       visitedLocations: processedCampaign.campaignLog.campaignData.visitedLocations,
     };
+    const location = campaignMap && find(campaignMap.locations, location => location.id === currentLocationId)?.name;
     Navigation.showModal<CampaignMapProps>({
       stack: {
         children: [{
@@ -187,6 +188,9 @@ export default function ScenarioCarouselComponent({
               topBar: {
                 title: {
                   text: t`Map`,
+                },
+                subtitle: {
+                  text: location ? t`Departing from ${location}` : undefined,
                 },
                 leftButtons: [{
                   icon: iconsMap.dismiss,
@@ -203,7 +207,7 @@ export default function ScenarioCarouselComponent({
         }],
       },
     });
-  }, [campaignId, currentLocationId, onEmbark, processedCampaign]);
+  }, [campaignId, currentLocationId, campaignMap, onEmbark, processedCampaign]);
 
   const data = useMemo(() => {
     const items: (ScenarioItem | EmbarkItem)[] = map(processedCampaign.scenarios, scenario => {

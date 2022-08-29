@@ -1,13 +1,18 @@
 [
   {
-    "id": "Golden_Rule",
+    "id": "The_Golden_Rules",
     "title": "The Golden Rule",
     "text": "If the text of this Rules Reference directly contradicts the text of the Learn to Play book, the text of the Rules Reference takes precedence.\nIf the text of a card directly contradicts the text of either the Rules Reference or the Learn to Play book, the text of the card takes precedence."
   },
   {
-    "id": "Grim_Rule",
+    "id": "The_Grim_Rule",
     "title": "The Grim Rule",
     "text": "If players are unable to find the answer to a rules or timing conflict in this Rules Reference, resolve the conflict in the manner that the players perceive as the worst possible at that moment with regards to winning the scenario, and continue with the game.\nWhen investigators are forced to make a choice and there are multiple valid options, the lead investigator decides between those options. The Grim Rule does not play a part in these choices.\n<i>For example: Locked Door reads “Attach to the location with the most clues,and without a Locked Door attached.” If there are 3 locations that are tied for the most clues, and none of them already have a Locked Door attached, the lead investigator decides between those 3 locations. Players are not forced to decide which of those 3 options would be the objectively worst option.</i>\nThe Grim Rule only comes into effect if players are unable to find the answer to a rules or timing conflict, and are thus unable to continue playing the game. It is designed to keep the game moving when looking up the correct answer would be too time-consuming or inconvenient for the players. The Grim Rule is not an exhaustive answer to rules/timing conflicts."
+  },
+  {
+    "id": "The_Silver_Rule",
+    "title": "The Silver Rule",
+    "text": "If the text of two cards directly contradict one another in a way that is impossible to reconcile, the encounter card takes precedence over the player card. If both cards are encounter cards or both are player cards, the lead investigator may decide which takes precedence."
   },
   {
     "id": "A_An",
@@ -64,7 +69,19 @@
   {
     "id": "Action",
     "title": "Action",
-    "text": "During his or her turn, an investigator is permitted to take up to **three** actions. When performing an action, all costs of the action are first paid. Then, the consequences of the action resolve.\n- If an investigator is instructed to lose 1 or more actions, he or she has that many fewer actions to take during that round.\nSome card abilities grant investigators \"additional actions.\" If an investigator has one or more additional actions during his or her turn, the first action he or she takes that is able to qualify as that additional action automatically uses that additional action.\n<i>For example: Daisy Walker reads: \"You may take an additional action during your turn, which can only be used on Tome [action] abilities.\" The first time Daisy performs a Tome [action] ability each turn, it automatically uses up that additional action, and not one of Daisy’s three standard actions.</i>\nIf an action qualifies as more than one of an investigator’s additional actions, he or she may choose which additional action is used.\nIf an effect causes an investigator to lose one or more actions, that investigator has that many fewer standard actions to take that turn (the investigator’s three standard actions are the ones that are \"lost\" first). If an investigator only has additional actions remaining, those are then lost, in an order of the investigator’s choosing.\n<i>For example: An effect causes Daisy to lose two actions. She has two fewer standard actions to take during her turn. She cannot choose to \"lose\" her additional action unless it is the only action she has remaining.</i>\nFor a complete list of the available actions, see \"[2.2.1 Investigator takes an action, if able](#Investigation_Phase)\"."
+    "text": "During his or her turn, an investigator is permitted to take up to **three** actions. When performing an action, all costs of the action are first paid. Then, the consequences of the action resolve.\n- If an investigator is instructed to lose 1 or more actions, he or she has that many fewer actions to take during that round.\nSome card abilities grant investigators \"additional actions.\" If an investigator has one or more additional actions during his or her turn, the first action he or she takes that is able to qualify as that additional action automatically uses that additional action.\n<i>For example: Daisy Walker reads: \"You may take an additional action during your turn, which can only be used on Tome [action] abilities.\" The first time Daisy performs a Tome [action] ability each turn, it automatically uses up that additional action, and not one of Daisy’s three standard actions.</i>\nIf an action qualifies as more than one of an investigator’s additional actions, he or she may choose which additional action is used.\nIf an effect causes an investigator to lose one or more actions, that investigator has that many fewer standard actions to take that turn (the investigator’s three standard actions are the ones that are \"lost\" first). If an investigator only has additional actions remaining, those are then lost, in an order of the investigator’s choosing.\n<i>For example: An effect causes Daisy to lose two actions. She has two fewer standard actions to take during her turn. She cannot choose to \"lose\" her additional action unless it is the only action she has remaining.</i>\nFor a complete list of the available actions, see \"[2.2.1 Investigator takes an action, if able](#Investigation_Phase)\".",
+    "rules": [
+      {
+        "id": "Only_As_Your_First_Action",
+        "title": "“…only as your first action”",
+        "text": "If a card can only be played or its ability only triggered as your “first action,” it must spend one of your actions, and that action must be the first one you have taken during your turn. If it is fast, a free triggered ability, ignores its action cost, or takes place outside of your turn, it cannot be played or triggered."
+      },
+      {
+        "id": "Take_An_Action_Vs_Perform_An_Action",
+        "title": "“Take an action” vs “Perform/resolve an action”",
+        "text": "Some effects allow an investigator to “take” an action, usually of a certain type—for example, the ability on Ursula Downs or Haste. If an effect allows an investigator to take an action, they effectively gain an action and then immediately spend it in order to take the action in question, meaning it follows all of the rules taking an action might normally follow: it may provoke attacks of opportunity, it counts as an action for the purposes of cards that count how many actions you have taken, etc.\nSome other effects, such as Quickdraw Holster, allow an investigator to “perform” or “resolve” an action. Such effects typically specify that they ignore that action’s [action] cost. In this case, no action has been gained or spent, and the action is resolved as specified."
+      }
+    ]
   },
   {
     "id": "Activate_Action",
@@ -126,6 +143,11 @@
         "id": "Control_of_Attachments",
         "title": "Control of Attachments",
         "text": "An attachment may change control depending on the card it is attached to.\n- If an investigator attaches a player card to a player card he or she controls, he or she retains control of the attachment.\n- If an investigator attaches a player card to a player card another investigator controls, that other investigator takes control of the attachment.\n- If a player card with 1 or more player attachments changes control, the card’s new controller takes control of those player attachments.\n- If an investigator attaches a player card to an encounter card, he or she retains control of the attachment (but does not gain control of the attached encounter card)."
+      },
+      {
+        "id": "Moving_Attachments",
+        "title": "Shifting Slots",
+        "text": "If an attachment “moves” from one game element to another, or attaches to a game element while already attached to a game element, it detaches from its original game element and attaches to the new one."
       }
     ]
   },
@@ -376,6 +398,11 @@
     "text": "An empty location is a location with no enemies or investigators at it."
   },
   {
+    "id": "Encounter_Cards_Vs_Scenario_Cards",
+    "title": "“Encounter cards” vs “Scenario cards”",
+    "text": "These two terms are used interchangeably to mean any non-player card used in a scenario, such as the contents of the encounter deck, locations, acts, agendas, the scenario reference card, etc."
+  },
+  {
     "id": "Encounter_Deck",
     "title": "Encounter Deck",
     "text": "The encounter deck contains the encounter cards (enemy, treachery, and story asset cards) the investigators may encounter during a scenario.\n- If the encounter deck is empty, shuffle the encounter discard pile back into the encounter deck."
@@ -447,6 +474,11 @@
     "text": "Some abilities in this campaign (and others) are identified with an \"Explore\" action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the \"activate\" action.\n\"Explore\" abilities instruct you to draw the top card of the \"exploration deck,\" which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.\n- Each \"Explore\" ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a \"successful\" exploration.\n- If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck.\n- If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an \"unsuccessful\" exploration.\n- As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value.\n<i>Example: Agenda 1a — “Expedition into the Wild” has the following ability: “[action]: <b>Explore.</b> Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
   },
   {
+    "id": "Farthest_From_All_Investigators",
+    "title": "“Farthest from all investigators”",
+    "text": "Some card effects instruct investigators to put a card into play at the location farthest from all investigators. This is determined by finding the location with the highest combined distance from each investigator. In the event of a tie, as usual, the lead investigator decides.\n<i>For example: Location A is 5 connections away from investigator A and 1 connection away from investigator B. Location B is 3 connections away from investigator A and 4 connections away from investigator B. Location B is therefore the farthest from both investigators, because the total distance for each investigator to get to location B is higher than location A. (This is true even though location A is farther from investigator A.)</i>"
+  },
+  {
     "id": "Fast",
     "title": "Fast",
     "text": "Fast is a keyword ability. A fast card does not cost an action to be played and is not played using the \"Play\" action.\n- A fast event card may be played from a player's hand any time its play instructions specify. If the instructions specify when/after a timing point, the card may be played as if the described timing point were a triggering condition for playing the card. If the instructions specify a duration or period of time, the card may be played during any player window within that period. If the instructions specify both a when/after timing point and a duration or period of time, the card may be played in reference to any instance of the specified triggering condition within that time period.\n- A fast asset may be played by an investigator during any player window on his or her turn.\n- Because fast cards do not cost actions to play, they do not provoke attacks of opportunity (see \"[Attack of Opportunity](#Attack_of_Opportunity)\")."
@@ -466,6 +498,11 @@
     "cycle": ["tic"],
     "title": "Flood Tokens",
     "text": "Throughout this campaign, scenario card effects can flood locations. Each location has one of three different flood levels: it is either unflooded, partially flooded, or fully flooded. A location's flood level can be tracked using the double‑sided flood tokens included in this deluxe box. <b>A location's flood level has no inherent game effect.</b> However, some card effects may change or become stronger while you are at a flooded location, particularly if that location is fully flooded.\n- A location with no flood token is unflooded.\n- If a location becomes partially flooded, place a flood token on it with the partially flooded side faceup to designate this.\n- If a location becomes fully flooded, place a flood token on it with the fully flooded side faceup (or if it is already partially flooded, flip its flood token over) to designate this.\n- If a location's flood level is \"increased,\" it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased.\n- If a location's flood level is \"decreased,\" it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token.\n- For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\""
+  },
+  {
+    "id": "For_Each_Or_For_Every",
+    "title": "“For each” or “for every”",
+    "text": "Some card effects instruct an investigator to perform an effect multiple times for each instance of a particular condition (e.g. “for each horror on you,” or “for each card in your hand”). If such an effect can be calculated and resolved simultaneously, it should be resolved as a single cumulative effect. If it cannot be resolved simultaneously (for example, if it has multiple steps or other dependencies), each instance should be resolved as separate effects.\n<i>For example: A treachery card instructs you to “take 1 horror for each point you fail by.” Since you can calculate how many points you fail by and resolve the dealt horror simultaneously, it should be resolved as a single instance of horror.</i>\n<i>A different treachery card instructs you: “For each point you fail by, discard 1 random card from your hand. For each card you cannot discard, take 1 horror or 1 damage.” In this case, the effect must be applied in full one at a time for each point you fail by.</i>"
   },
   {
     "id": "Forced_Abilities",
@@ -590,6 +627,11 @@
     "id": "Leaves_Play",
     "title": "Leaves Play",
     "text": "The phrase \"leaves play\" refers to any time a card makes a transition from an in-play state to an out-of-play state (see \"[In Play and Out of Play](#In_Play_and_Out_of_Play)\").\nIf a card leaves play, the following consequences occur simultaneously with the card leaving play:\n- All tokens on the card are returned to the token pool.\n- All attachments on the card are discarded.\n- All lasting effects and/or delayed effects affecting the card while it was in play expire for that card."
+  },
+  {
+    "id": "Limbo",
+    "title": "Limbo",
+    "text": "While the effects of an event or treachery card are being resolved, or while a skill is committed to a skill test, it is neither in play, in the discard pile, nor is it in an investigator’s hand. For the purposes of rules clarification, this liminal state is called “limbo.”\nAn event card enters limbo during step 3 of the Initiation Sequence, after costs are paid and attacks of opportunity are made <i>(see [Appendix I](#Appendix_I_Initiation_Sequence) in the Rules Reference)</i>. A treachery card enters limbo after it is drawn, while its revelation ability is being resolved. A skill card enters limbo as it is committed to a skill test. While in limbo, the card is typically placed on the table to show that its effects are being resolved. It is no longer considered to be in any investigator’s hand, but it has not yet been placed in any discard pile. It is technically not in play, and does not count as being in play for the purposes of other card effects, however its effects may still alter the game state. After resolving the card’s effects in <i>full</i>, it is placed in its relevant discard pile and is no longer in limbo. If its effects cause it to enter play (such as attaching to another game element or placing it in an investigator’s threat or play area), it leaves limbo and enters play at that point in time."
   },
   {
     "id": "Limits_and_Maximums",
@@ -840,7 +882,19 @@
   {
     "id": "Search",
     "title": "Search",
-    "text": "When a player is instructed to search for a card, that player is permitted to look at all of the cards in the searched area without revealing those cards to the other players.\n- If an effect searches an entire deck, the deck must be shuffled upon completion of the search.\n- When resolving a search effect, a player is obligated to find the object of the search should one or more eligible options be found within the searched area.\n- While cards are in the process of being searched, they are not considered to have left their game area of origin."
+    "text": "When a player is instructed to search for a card, that player is permitted to look at all of the cards in the searched area without revealing those cards to the other players.\n- If an effect searches an entire deck, the deck must be shuffled upon completion of the search.\n- When resolving a search effect, a player is obligated to find the object of the search should one or more eligible options be found within the searched area.\n- While cards are in the process of being searched, they are not considered to have left their game area of origin.",
+    "rules": [
+      {
+        "id": "Looking_At_Searching_And_Finding",
+        "title": "“Looking at,” “Searching,” & “Finding”",
+        "text": "These three terms all involve sifting through out-of-play cards (typically an investigator’s deck or the encounter deck), but do not count as one another for the purposes of other card effects. <i>For example, if an investigator “looks at” the top 3 cards of their deck, this is not a search effect. Additionally, while “finding” a card does typically involve searching through out-of-play areas, this is also not considered to be a search effect.</i>"
+      },
+      {
+        "id": "Searching_During_Setup",
+        "title": "Searching During Setup",
+        "text": "If an investigator is instructed to search a deck for 1 or more cards during setup, abilities that trigger when a deck is searched (such as Mandy Thompson’s [reaction] ability or abilities on [[Research]] cards) cannot be resolved, as the game has not yet begun."
+      }
+    ]
   },
   {
     "id": "Self_Referential_Text",
@@ -875,7 +929,14 @@
   {
     "id": "Slots",
     "title": "Slots",
-    "text": "Each investigator has a number of specific slots that can be filled at any given moment. Each asset in an investigator's play area or threat area with a slot symbol is held in a slot of that type. Slots limit the number of asset cards the investigator is permitted to have in play simultaneously.\nThe slots normally available to an investigator are:\n- <b>1 accessory slot</b>\n- <b>1 body slot</b>\n- <b>1 ally slot</b>\n- <b>2 hand slots</b>\n- <b>2 arcane slots</b>\n- <b>1 tarot slot</b>\nIf an asset has no slot symbols on it, it does not take up any of the above slots. There is no limit to the number of slot-less assets an investigator can have in play.\nIf an investigator is at his or her slot limit for a type of asset and wishes to play or gain control of a different asset that would use that slot, the investigator must choose and discard other assets under his or her control simultaneously with the new asset entering the slot."
+    "text": "Each investigator has a number of specific slots that can be filled at any given moment. Each asset in an investigator's play area or threat area with a slot symbol is held in a slot of that type. Slots limit the number of asset cards the investigator is permitted to have in play simultaneously.\nThe slots normally available to an investigator are:\n- <b>1 accessory slot</b>\n- <b>1 body slot</b>\n- <b>1 ally slot</b>\n- <b>2 hand slots</b>\n- <b>2 arcane slots</b>\n- <b>1 tarot slot</b>\nIf an asset has no slot symbols on it, it does not take up any of the above slots. There is no limit to the number of slot-less assets an investigator can have in play.\nIf an investigator is at his or her slot limit for a type of asset and wishes to play or gain control of a different asset that would use that slot, the investigator must choose and discard other assets under his or her control simultaneously with the new asset entering the slot.",
+    "rules": [
+      {
+        "id": "Shifting_Slots",
+        "title": "Shifting Slots",
+        "text": "Some card effects allow an investigator to put assets of one slot type into one of their other slots, allow one of an investigator’s slot types to carry assets of a different slot type, or cause assets to no longer take up slots. In such an event, the investigator must decide which slot is holding which asset at the moment it is played. This cannot be adjusted later unless the contents or quantity of the investigator’s slots changes, at which point the investigator may switch which slots are holding any of their assets."
+      }
+    ]
   },
   {
     "id": "Spawn",
@@ -959,7 +1020,14 @@
   {
     "id": "Treachery_Cards",
     "title": "Treachery Cards",
-    "text": "Treachery cards represent curses, afflictions, madnesses, obstacles, disasters, or other unexpected occurrences an investigator may encounter throughout the course of a scenario.\nWhen a treachery card is drawn by an investigator, that investigator must resolve its effects. Then, place the card in its discard pile unless otherwise instructed by the ability.\nSee \"[1.4 Each investigator draws 1 encounter card](#Mythos_Phase)\"."
+    "text": "Treachery cards represent curses, afflictions, madnesses, obstacles, disasters, or other unexpected occurrences an investigator may encounter throughout the course of a scenario.\nWhen a treachery card is drawn by an investigator, that investigator must resolve its effects. Then, place the card in its discard pile unless otherwise instructed by the ability.\nSee \"[1.4 Each investigator draws 1 encounter card](#Mythos_Phase)\".",
+    "rules": [
+      {
+        "id": "Treachery_Subtitles",
+        "title": "Treachery Subtitles",
+        "text": "Treachery cards do not have a header for their subtitle. If the title of a treachery card contains 1 or more words in parentheses, that is considered to be its subtitle. Other cards with the same title and a different subtitle are still considered to be copies of one another. <i>e.g. Restless Journey (Fallacy) and Restless Journey (Hardship) are both copies of Restless Journey.</i>"
+      }
+    ]
   },
   {
     "id": "Triggered_Abilities",
@@ -1033,7 +1101,14 @@
   {
     "id": "You_Your",
     "title": "You/Your",
-    "text": "The following guidelines are used to interpret which investigator is referenced by the words \"you\" and \"your.\"\n- A <b>Revelation</b> ability that references \"you/your\" refers to the investigator who drew the card and is resolving the ability.\n- When resolving a triggered ability ([fast], [reaction], or [action] ability), \"you/your\" refers to the investigator triggering the ability.\n- If an ability contains a clause identifying whom it is targeting, \"you/your\" in that ability refers to those investigators. <i>For example, Stubborn Detective reads: \"While Stubborn Detective is at your location…\" This clause identifies \"you\" as any investigator at his location. Young Deep One reads: \"After Young Deep One engages you…\" This clause identifies \"you\" as any investigator who engages Young Deep One.</i>\n- Any other instance of \"you/your\" that does not fall into the above categories refers to the investigator who controls the card, the investigator who has the card in his/her threat area, or who is currently interacting with the card.\nA card may have multiple different abilities in which \"you/your\" may be interpreted differently. “You/your” may refer to a different investigator in each of these abilities.\n<i>For example: Dreams of R’lyeh reads:</i>\n<i>\"<b>Revelation</b> - Put Dreams of R’lyeh into play in your threat area.\nYou get –1 [willpower] and –1 sanity.\n[action]: Test [willpower] (3). If you succeed, Discard Dreams of R’lyeh.\"</i>\nThese three abilities reference \"you/your\" in different ways. For the <b>Revelation</b> ability, \"your\" refers to the investigator who drew Dreams of R’lyeh and is resolving its <b>Revelation</b>. For its constant ability, \"you\" refers to the investigator who has Dreams of R’lyeh in his or her threat area. For its [action] ability, \"you\" refers to the investigator who is performing the [action] ability."
+    "text": "The following guidelines are used to interpret which investigator is referenced by the words \"you\" and \"your.\"\n- A <b>Revelation</b> ability that references \"you/your\" refers to the investigator who drew the card and is resolving the ability.\n- When resolving a triggered ability ([fast], [reaction], or [action] ability), \"you/your\" refers to the investigator triggering the ability.\n- If an ability contains a clause identifying whom it is targeting, \"you/your\" in that ability refers to those investigators. <i>For example, Stubborn Detective reads: \"While Stubborn Detective is at your location…\" This clause identifies \"you\" as any investigator at his location. Young Deep One reads: \"After Young Deep One engages you…\" This clause identifies \"you\" as any investigator who engages Young Deep One.</i>\n- Any other instance of \"you/your\" that does not fall into the above categories refers to the investigator who controls the card, the investigator who has the card in his/her threat area, or who is currently interacting with the card.\nA card may have multiple different abilities in which \"you/your\" may be interpreted differently. “You/your” may refer to a different investigator in each of these abilities.\n<i>For example: Dreams of R’lyeh reads:</i>\n<i>\"<b>Revelation</b> - Put Dreams of R’lyeh into play in your threat area.\nYou get –1 [willpower] and –1 sanity.\n[action]: Test [willpower] (3). If you succeed, Discard Dreams of R’lyeh.\"</i>\nThese three abilities reference \"you/your\" in different ways. For the <b>Revelation</b> ability, \"your\" refers to the investigator who drew Dreams of R’lyeh and is resolving its <b>Revelation</b>. For its constant ability, \"you\" refers to the investigator who has Dreams of R’lyeh in his or her threat area. For its [action] ability, \"you\" refers to the investigator who is performing the [action] ability.",
+    "rules": [
+      {
+        "id": "Interpreting_You_When_Taking_or_Being_Dealt_Damage",
+        "title": "Interpreting \"You\" When Taking or Being Dealt Damage",
+        "text": "When an ability refers to “you” in response to taking damage or being dealt damage, it also includes any assets you control.\n<i>For example: The [reaction] ability on Survival Knife triggers “after an enemy attack deals damage to you during the enemy phase.” This ability triggers even if the damage from that attack is assigned to one or more of your assets, and not your investigator card. However, if all of the damage from that attack is assigned to another investigator or their assets (through the use of a card effect that allows them to do so), then no damage has been dealt to you.</i>"
+      }
+    ]
   },
   {
     "id": "Appendix_I_Initiation_Sequence",
