@@ -5942,13 +5942,13 @@ msgid "Against the Wendigo"
 msgstr "웬디고에 맞서다"
 
 msgid "Non-canon Content"
-msgstr ""
+msgstr "비정규 콘텐츠"
 
 msgid "Fan-made Campaigns"
-msgstr ""
+msgstr "팬 제작 캠페인"
 
 msgid "Fan-made Scenarios"
-msgstr ""
+msgstr "팬 제작 시나리오"
 
 msgctxt "investigator"
 msgid "Custom"
