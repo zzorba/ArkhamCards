@@ -50,6 +50,8 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
     case 'zh':
     case 'fr':
     case 'es':
+    case 'pt':
+    case 'uk':
     case 'de':
     case 'it':
     case 'ru':
@@ -121,6 +123,7 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
       }
     }
   }
+  console.log(queue);
   return queue;
 }
 

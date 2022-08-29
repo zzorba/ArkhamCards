@@ -1257,6 +1257,10 @@ export interface CustomData {
     zh?: string;
     ru?: string;
     it?: string;
+    vi?: string;
+    pl?: string;
+    uk?: string;
+    pt?: string;
   };
 }
 export interface Achievement {
