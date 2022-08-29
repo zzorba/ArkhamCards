@@ -587,12 +587,12 @@ export default class FilterBuilder {
     return [];
   }
 
-  equalsVectorClause(values: string[], field: string, valuePrefix?: string[]): Brackets[] {
+  equalsVectorClause(values: string[], field: string, valuePrefix?: string[], noLinked?: boolean): Brackets[] {
     if (values.length) {
       const valueName = this.fieldName([...(valuePrefix || []), field]);
       return [
         where(
-          `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
+          noLinked ? `c.${field} IN (:...${valueName})` : `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
           { [valueName]: values }
         ),
       ];

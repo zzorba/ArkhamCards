@@ -57,7 +57,7 @@ function mainQuery(
 ): Brackets | undefined {
   const queries = flatMap(query, q => {
     if (q.code) {
-      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code']);
+      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code'], true);
     }
     switch (q.source) {
       case 'scenario': {

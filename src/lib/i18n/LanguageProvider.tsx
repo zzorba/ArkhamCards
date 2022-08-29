@@ -77,8 +77,9 @@ export default function LanguageProvider({ children }: Props) {
       case 'ru':
         // RU is free.
         return 'ru';
+      case 'pl':
       case 'de':
-        // DE is free
+        // DE and PL is free
         return 'de';
       case 'es':
         if (find(profile?.flags, f => f === User_Flag_Type_Enum.EsDv)) {

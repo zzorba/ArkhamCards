@@ -53,6 +53,8 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
     case 'de':
     case 'it':
     case 'ru':
+    case 'vi':
+    case 'pl':
       return customData.download_link[lang] || customData.download_link.en;
     default:
       return customData.download_link.en;
