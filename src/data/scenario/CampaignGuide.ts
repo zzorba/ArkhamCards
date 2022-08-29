@@ -207,7 +207,7 @@ export default class CampaignGuide {
 
   processAllScenarios(
     campaignState: CampaignStateHelper,
-    standalone: boolean | undefined,
+    standaloneId: string | undefined,
     previousCampaign: ProcessedCampaign | undefined
   ): [ProcessedCampaign | undefined, string | undefined] {
     try {
@@ -217,18 +217,33 @@ export default class CampaignGuide {
         this,
         campaignState
       );
-      const setupScenario = this.findScenario(CAMPAIGN_SETUP_ID);
-      const nextScenarios = this.actuallyProcessScenario(
-        setupScenario,
-        campaignState,
-        campaignLog,
-        standalone,
-        previousCampaign
-      );
-      forEach(nextScenarios, scenario => {
-        scenarios.push(scenario);
-        campaignLog = scenario.latestCampaignLog;
-      });
+      if (standaloneId) {
+        const scenario = this.findScenario(standaloneId);
+        const nextScenarios = this.actuallyProcessScenario(
+          scenario,
+          campaignState,
+          campaignLog,
+          true,
+          previousCampaign
+        );
+        forEach(nextScenarios, scenario => {
+          scenarios.push(scenario);
+          campaignLog = scenario.latestCampaignLog;
+        });
+      } else {
+        const setupScenario = this.findScenario(CAMPAIGN_SETUP_ID);
+        const nextScenarios = this.actuallyProcessScenario(
+          setupScenario,
+          campaignState,
+          campaignLog,
+          false,
+          previousCampaign
+        );
+        forEach(nextScenarios, scenario => {
+          scenarios.push(scenario);
+          campaignLog = scenario.latestCampaignLog;
+        });
+      }
 
       const scenarioIds = campaignLog.campaignData.scenarios || this.campaign.campaign.scenarios;
       forEach(scenarioIds, scenarioId => {
@@ -238,7 +253,7 @@ export default class CampaignGuide {
             scenario,
             campaignState,
             campaignLog,
-            standalone,
+            !!standaloneId,
             previousCampaign
           );
           forEach(nextScenarios, scenario => {
@@ -275,6 +290,7 @@ export default class CampaignGuide {
         campaignLog,
       }, undefined];
     } catch (e) {
+      console.log(e.message);
       return [undefined, e.message];
     }
   }

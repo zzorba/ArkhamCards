@@ -123,7 +123,6 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
       }
     }
   }
-  console.log(queue);
   return queue;
 }
 

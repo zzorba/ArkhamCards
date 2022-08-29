@@ -583,9 +583,14 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
   const [loading, setLoading] = useState(true);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
-    const existingCards = getExistingCards(tabooSetId);
-    if (findIndex(codes, code => !existingCards[code]) === -1) {
-      setCards(existingCards);
+    const knownCards = getExistingCards(tabooSetId);
+    if (findIndex(codes, code => !knownCards[code]) === -1) {
+      const cards: CardsMap = {};
+      forEach(codes, code => {
+        cards[code] = knownCards[code];
+      });
+      setCards(cards);
+      setLoading(false);
       return;
     }
 
@@ -600,6 +605,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
       });
     } else {
       setCards({});
+      setLoading(false);
     }
     return () => {
       canceled = true;
