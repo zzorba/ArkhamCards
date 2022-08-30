@@ -8,7 +8,7 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
-import { EditChaosBagProps } from '../EditChaosBagDialog';
+import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
 import Card from '@data/types/Card';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';

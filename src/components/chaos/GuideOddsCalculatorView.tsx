@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { flatMap } from 'lodash';
 
-import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
+import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { useCycleScenarios, useInvestigators } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import { CampaignId } from '@actions/types';
-import useGuideChaosBag from './useGuideChaosBag';
+import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ProcessedCampaign } from '@data/scenario';
 

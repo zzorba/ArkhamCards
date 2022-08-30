@@ -3,7 +3,7 @@ import { chunk, map } from 'lodash';
 
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { StyleSheet, View } from 'react-native';
-import ChaosToken, { TINY_TOKEN_SIZE, EXTRA_TINY_TOKEN_SIZE } from '@components/campaign/ChaosToken';
+import ChaosToken, { TINY_TOKEN_SIZE, EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
 import space, { xs } from '@styles/space';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { flattenChaosBag } from '@components/campaign/campaignUtil';

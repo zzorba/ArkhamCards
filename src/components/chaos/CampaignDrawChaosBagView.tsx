@@ -13,7 +13,7 @@ import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
-import { showChaosBagOddsCalculator } from './nav';
+import { showChaosBagOddsCalculator } from '../campaign/nav';
 import Card from '@data/types/Card';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
 import { useChaosBagResults } from '@data/hooks';

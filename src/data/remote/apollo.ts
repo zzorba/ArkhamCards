@@ -91,6 +91,8 @@ import {
   ChaosBagSetTarotDocument,
   ChaosBagSetTarotMutation,
   UploadChaosBagResultsMutation,
+  ChaosBagSetDifficultyDocument,
+  ChaosBagSetDifficultyMutation,
 } from '@generated/graphql/apollo-schema';
 
 interface RemoveDeck {
@@ -1297,6 +1299,20 @@ const handleChaosBagSetTarot: MutationUpdaterFn<ChaosBagSetTarotMutation> = (cac
 };
 
 
+const handleChaosBagSetDifficulty: MutationUpdaterFn<ChaosBagSetDifficultyMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, difficulty } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      difficulty: difficulty || null,
+    };
+  });
+};
+
+
 interface OptimisticUpdate {
   mutation: DocumentNode;
   update?: MutationUpdaterFn;
@@ -1434,6 +1450,10 @@ export const optimisticUpdates = {
   chaosBagSetTarot: {
     mutation: ChaosBagSetTarotDocument,
     update: handleChaosBagSetTarot,
+  },
+  chaosBagSetDifficulty: {
+    mutation: ChaosBagSetDifficultyDocument,
+    update: handleChaosBagSetDifficulty,
   },
 };
 

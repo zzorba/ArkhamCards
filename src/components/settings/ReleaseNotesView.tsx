@@ -12,7 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { localizedDate } from '@lib/datetime';
 import { useFlag } from '@components/core/hooks';
-import ChaosToken from '@components/campaign/ChaosToken';
+import ChaosToken from '@components/chaos/ChaosToken';
 import FastImage from 'react-native-fast-image';
 
 interface ReleaseNote {

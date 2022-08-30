@@ -124,6 +124,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   sealed
   totalDrawn
   tarot
+  difficulty
 }
 
 fragment MiniDeck on campaign_deck {

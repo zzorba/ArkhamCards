@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import { ChaosTokenType } from '@app_constants';
-import ChaosToken from '@components/campaign/ChaosToken';
+import ChaosToken from '@components/chaos/ChaosToken';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

@@ -12,7 +12,7 @@ import { updateChaosBagReleaseAllSealed, updateChaosBagSealTokens } from './acti
 import space, { s } from '@styles/space';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import { flattenChaosBag } from './campaignUtil';
+import { flattenChaosBag } from '../campaign/campaignUtil';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import StyleContext from '@styles/StyleContext';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';

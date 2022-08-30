@@ -45,8 +45,8 @@ function getStandardComponent(componentName: string | number) {
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
     case 'Guide.ScenarioFaq': return require('@components/campaignguide/ScenarioFaqView').default;
     case 'Guide.ChallengeScenario': return require('@components/campaignguide/ChallengeScenarioView').default;
-    case 'Guide.DrawChaosBag': return require('@components/campaignguide/GuideDrawChaosBagView').default;
-    case 'Guide.OddsCalculator': return require('@components/campaignguide/GuideOddsCalculatorView').default;
+    case 'Guide.DrawChaosBag': return require('@components/chaos/GuideDrawChaosBagView').default;
+    case 'Guide.OddsCalculator': return require('@components/chaos/GuideOddsCalculatorView').default;
     case 'Guide.Achievements': return require('@components/campaignguide/CampaignAchievementsView').default;
     case 'Guide.Log': return require('@components/campaignguide/CampaignLogView').default;
     case 'Guide.LocationSetup': return require('@components/campaignguide/LocationSetupView').default;
@@ -56,8 +56,8 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.Tarot': return require('@components/campaign/TarotCardReadingView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
-    case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
-    case 'OddsCalculator': return require('@components/campaign/OddsCalculatorView').default;
+    case 'Campaign.DrawChaosBag': return require('@components/chaos/CampaignDrawChaosBagView').default;
+    case 'OddsCalculator': return require('@components/chaos/OddsCalculatorView').default;
     case 'Settings.Diagnostics': return require('@components/settings/DiagnosticsView').default;
     case 'Settings.ReleaseNotes': return require('@components/settings/ReleaseNotesView').default;
     case 'Settings.Backup': return require('@components/settings/BackupView').default;
@@ -73,7 +73,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Pack': return require('@components/settings/PackCardsView').default;
     case 'My.Spoilers': return require('@components/settings/SpoilersView').default;
     case 'Dialog.CardUpgrade': return require('@components/deck/CardUpgradeDialog').default;
-    case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
+    case 'Dialog.EditChaosBag': return require('@components/chaos/EditChaosBagDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;

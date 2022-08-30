@@ -1,4 +1,4 @@
-import { filter, forEach, map } from 'lodash';
+import { forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 import uuid from 'react-native-uuid';
 
@@ -7,7 +7,6 @@ import {
   NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
-  UPDATE_CHAOS_BAG_RESULTS,
   CAMPAIGN_ADD_INVESTIGATOR,
   CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
@@ -21,7 +20,6 @@ import {
   CampaignGuideState,
   CampaignCycleCode,
   CampaignDifficulty,
-  ChaosBagResults,
   CustomCampaignLog,
   ScenarioResult,
   WeaknessSet,
@@ -30,10 +28,7 @@ import {
   NewLinkedCampaignAction,
   UpdateCampaignAction,
   UpdateCampaignXpAction,
-  UpdateChaosBagResultsAction,
   DeleteCampaignAction,
-  AdjustBlessCurseAction,
-  ADJUST_BLESS_CURSE,
   StandaloneId,
   NewStandaloneCampaignAction,
   NEW_STANDALONE,
@@ -50,16 +45,12 @@ import {
   UPDATE_CAMPAIGN_TRAUMA,
   TraumaAndCardData,
   LocalCampaignId,
-  SealedToken,
   TarotReading,
 } from '@actions/types';
-import { ChaosBag, ChaosTokenType } from '@app_constants';
+import { ChaosBag } from '@app_constants';
 import { AppState, makeCampaignSelector, getDeck, makeDeckSelector } from '@reducers';
 import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignTarotReadingAction, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
-import { ChaosBagActions } from '@data/remote/chaosBag';
-import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { Action } from 'redux';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 
@@ -504,160 +495,6 @@ function updateCampaign(
       campaign: sparseCampaign,
       now: (now || new Date()),
     });
-  };
-}
-
-function updateChaosBagResults(
-  id: CampaignId,
-  chaosBagResults: ChaosBagResults
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    dispatch({
-      type: UPDATE_CHAOS_BAG_RESULTS,
-      id,
-      chaosBagResults,
-      now: new Date(),
-    });
-  };
-}
-
-export function updateChaosBagClearTokens(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  bless: number,
-  curse: number,
-  chaosBagResults: ChaosBagResultsT
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.clearTokens(id, bless, curse);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        drawnTokens: [],
-        blessTokens: bless,
-        curseTokens: curse,
-        sealedTokens: chaosBagResults.sealedTokens,
-        totalDrawnTokens: chaosBagResults.totalDrawnTokens,
-        tarot: chaosBagResults.tarot,
-      }));
-    }
-  };
-}
-
-export function updateChaosBagDrawToken(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  drawn: ChaosTokenType[],
-  chaosBagResults: ChaosBagResultsT
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.drawToken(id, drawn);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        ...chaosBagResults,
-        drawnTokens: drawn,
-        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
-      }));
-    }
-  };
-}
-
-
-export function updateChaosBagTarotMode(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  tarot: Chaos_Bag_Tarot_Mode_Enum | undefined,
-  chaosBagResults: ChaosBagResultsT
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.setTarot(id, tarot);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        ...chaosBagResults,
-        tarot,
-      }));
-    }
-  };
-}
-
-export function updateChaosBagReleaseAllSealed(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  chaosBagResults: ChaosBagResultsT
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.releaseAllSealed(id);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        ...chaosBagResults,
-        sealedTokens: [],
-      }));
-    }
-  };
-}
-
-export function updateChaosBagResetBlessCurse(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  chaosBagResults: ChaosBagResultsT
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    const drawnTokens = filter(chaosBagResults.drawnTokens, t => t !== 'bless' && t !== 'curse');
-    const sealedTokens = filter(chaosBagResults.sealedTokens, t => t.icon !== 'bless' && t.icon !== 'curse');
-    if (id.serverId) {
-      actions.resetBlessCurse(id, drawnTokens, sealedTokens);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        ...chaosBagResults,
-        blessTokens: 0,
-        curseTokens: 0,
-        drawnTokens,
-        sealedTokens,
-      }));
-    }
-  };
-}
-
-
-export function updateChaosBagSealTokens(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  chaosBagResults: ChaosBagResultsT,
-  sealedTokens: SealedToken[]
-): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.sealTokens(id, sealedTokens);
-    } else {
-      dispatch(updateChaosBagResults(id, {
-        ...chaosBagResults,
-        sealedTokens,
-      }));
-    }
-  };
-}
-
-export function setBlessCurseChaosBagResults(
-  actions: ChaosBagActions,
-  id: CampaignId,
-  bless: number,
-  curse: number
-): ThunkAction<void, AppState, unknown, AdjustBlessCurseAction> {
-  return (dispatch) => {
-    if (id.serverId) {
-      actions.setBlessCurse(id, bless, curse);
-    } else {
-      dispatch({
-        type: ADJUST_BLESS_CURSE,
-        id,
-        bless,
-        curse,
-        now: new Date(),
-      });
-    }
   };
 }
 

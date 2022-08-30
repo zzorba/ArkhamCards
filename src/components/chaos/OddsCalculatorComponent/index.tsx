@@ -37,11 +37,13 @@ import InvestigatorRadioChoice from '@components/campaignguide/prompts/ChooseInv
 import { elderSign } from './constants';
 import RoundButton from '@components/core/RoundButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import { flattenChaosBag } from '../campaignUtil';
+import { flattenChaosBag } from '../../campaign/campaignUtil';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import useTarotCardDialog from '@components/campaign/useTarotCardDialog';
+import useTarotCardDialog from '@components/chaos/useTarotCardDialog';
 import { useChaosBagActions } from '@data/remote/chaosBag';
 import useSealTokenButton from '../useSealTokenButton';
+import useDifficultyOverrideButton from '../useDifficultyOverrideButton';
+import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 
 
 interface Props {
@@ -839,7 +841,7 @@ export default function OddsCalculatorComponent({
   scenarioCard,
   scenarioCardText,
   scenarioCode,
-  difficulty: defaultDifficulty,
+  difficulty: campaignDifficulty,
 }: Props) {
   const { lang } = useContext(LanguageContext);
   const [showBlurse, toggleShowBlurse] = useFlag(true);
@@ -852,7 +854,6 @@ export default function OddsCalculatorComponent({
     };
   }, []);
   const [selectedInvestigator, onSelectInvestigator] = useState(0);
-  const [difficulty, setDifficulty] = useState<CampaignDifficulty>(defaultDifficulty || CampaignDifficulty.STANDARD);
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
   const chaosBagResults = useChaosBagResults(campaign.id);
@@ -934,34 +935,10 @@ export default function OddsCalculatorComponent({
     }
     return encounterCode;
   }, [currentScenario]);
-  const scenarioText = useMemo(() => {
-    if (!currentScenario) {
-      return scenarioCardText;
-    }
-    const difficulty = campaign ? campaign.difficulty : undefined;
-    const scenarioCard = (scenarioCards && currentScenario && encounterCode) ?
-      find(scenarioCards, card => card.encounter_code === encounterCode) :
-      undefined;
-    const text = difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT ? scenarioCard?.back_text : scenarioCard?.text;
-    return text ? tail(text.split('\n')).join('\n') : undefined;
-  }, [campaign, currentScenario, encounterCode, scenarioCardText, scenarioCards]);
 
   const dialogContent = useMemo(() => {
     return (
       <View>
-        <DeckBubbleHeader title={t`— Difficulty —`} />
-        { map([CampaignDifficulty.EASY, CampaignDifficulty.STANDARD, CampaignDifficulty.HARD, CampaignDifficulty.EXPERT], d => (
-          <NewDialog.PickerItem
-            key={d}
-            text={difficultyString(d)}
-            value={d}
-            onValueChange={setDifficulty}
-            // tslint:disable-next-line
-            selected={difficulty === d}
-            last={d === CampaignDifficulty.EXPERT}
-          />
-        )) }
-        <DeckBubbleHeader title={t`— Available Scenarios —`} />
         { map(items, (item, idx) => item.type === 'header' ? (
           <DeckBubbleHeader title={item.title} key={idx} />
         ) : (
@@ -979,7 +956,7 @@ export default function OddsCalculatorComponent({
         )) }
       </View>
     );
-  }, [items, setCurrentScenario, currentScenario, difficulty]);
+  }, [items, setCurrentScenario, currentScenario]);
   const { dialog, showDialog } = useDialog({
     title: t`Scenario settings`,
     content: dialogContent,
@@ -987,11 +964,24 @@ export default function OddsCalculatorComponent({
     allowDismiss: true,
   });
 
+  const difficulty = chaosBagResults.difficulty || campaignDifficulty;
+  const hardOrExpert: boolean = difficulty === CampaignDifficulty.HARD || difficulty === Campaign_Difficulty_Enum.Hard || difficulty === CampaignDifficulty.EXPERT || difficulty === Campaign_Difficulty_Enum.Expert;
+  const scenarioText = useMemo(() => {
+    if (!currentScenario) {
+      return scenarioCardText;
+    }
+    const scenarioCard = (scenarioCards && currentScenario && encounterCode) ?
+      find(scenarioCards, card => card.encounter_code === encounterCode) :
+      undefined;
+    const text = hardOrExpert ? scenarioCard?.back_text : scenarioCard?.text;
+    return text ? tail(text.split('\n')).join('\n') : undefined;
+  }, [campaign, currentScenario, encounterCode, scenarioCardText, scenarioCards, hardOrExpert]);
+
   const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
   const [specialTokenValues, initialXValue] = useMemo(() => {
     const stv: SingleChaosTokenValue[] = parseSpecialTokenValuesText(
       lang,
-      difficulty === 'hard' || difficulty === 'expert',
+      hardOrExpert,
       scenarioText,
       scenarioCard,
       currentScenario?.code || scenarioCode,
@@ -1012,7 +1002,7 @@ export default function OddsCalculatorComponent({
       stv,
       initialValues,
     ];
-  }, [lang, scenarioText, difficulty, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
+  }, [lang, scenarioText, hardOrExpert, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
   const [xValue, incXValue, decXValue] = useCounters(initialXValue);
 
   const allSpecialTokenValues: SimpleChaosTokenValue[] = useMemo(() => {
@@ -1086,6 +1076,7 @@ export default function OddsCalculatorComponent({
     );
   }, [specialTokenValues, xValue, tokenChoices, setTokenChoice, incXValue, decXValue]);
   const actions = useChaosBagActions();
+  const [difficultyButton, difficultyDialog] = useDifficultyOverrideButton({ actions, chaosBagResults, campaignId: campaign.id });
   const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId: campaign.id });
   const [sealButton, sealDialog] = useSealTokenButton({ actions, chaosBag, chaosBagResults, campaignId: campaign.id });
   if (loading) {
@@ -1174,11 +1165,13 @@ export default function OddsCalculatorComponent({
         <View style={space.paddingSideS}>
           { sealButton }
           { tarotButton }
+          { difficultyButton }
         </View>
       </ScrollView>
       { dialog }
       { tarotDialog }
       { sealDialog }
+      { difficultyDialog }
     </View>
   );
 }

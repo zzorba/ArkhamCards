@@ -34,13 +34,22 @@ import {
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
+import { Campaign_Access, Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 
-export function difficultyString(difficulty: CampaignDifficulty): string {
+export function difficultyString(difficulty: CampaignDifficulty | Campaign_Difficulty_Enum): string {
   switch (difficulty) {
-    case CampaignDifficulty.EASY: return t`Easy`;
-    case CampaignDifficulty.STANDARD: return t`Standard`;
-    case CampaignDifficulty.HARD: return t`Hard`;
-    case CampaignDifficulty.EXPERT: return t`Expert`;
+    case CampaignDifficulty.EASY:
+    case Campaign_Difficulty_Enum.Easy:
+      return t`Easy`;
+    case CampaignDifficulty.STANDARD:
+    case Campaign_Difficulty_Enum.Standard:
+      return t`Standard`;
+    case CampaignDifficulty.HARD:
+    case Campaign_Difficulty_Enum.Hard:
+      return t`Hard`;
+    case CampaignDifficulty.EXPERT:
+    case Campaign_Difficulty_Enum.Expert:
+      return t`Expert`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = difficulty;

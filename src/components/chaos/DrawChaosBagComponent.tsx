@@ -10,7 +10,7 @@ import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import ChaosToken, { SMALL_TOKEN_SIZE } from './ChaosToken';
 import { setBlessCurseChaosBagResults, updateChaosBagClearTokens, updateChaosBagDrawToken, updateChaosBagResetBlessCurse } from './actions';
-import { flattenChaosBag } from './campaignUtil';
+import { flattenChaosBag } from '../campaign/campaignUtil';
 import space, { s, xs, isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -21,13 +21,14 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import { useChaosBagActions } from '@data/remote/chaosBag';
 import CardTextComponent from '@components/card/CardTextComponent';
-import { difficultyString } from './constants';
+import { difficultyString } from '../campaign/constants';
 import useTarotCardDialog from './useTarotCardDialog';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import COLORS from '@styles/colors';
 import { useDialog } from '@components/deck/dialogs';
 import { useCounter } from '@components/core/hooks';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import useDifficultyOverrideButton from './useDifficultyOverrideButton';
 
 interface Props {
   campaignId: CampaignId;
@@ -131,7 +132,8 @@ const CARD_TOKEN = new Set(['skull', 'cultist', 'tablet', 'elder_thing']);
 
 export default function DrawChaosBagComponent(props: Props) {
   const [{ isConnected }, refreshNetworkStatus] = useNetworkStatus();
-  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty, editable, scenarioCardText, chaosBagResults } = props;
+  const { campaignId, chaosBag, viewChaosBagOdds, editViewPressed, difficulty: campaignDifficulty, editable, scenarioCardText, chaosBagResults } = props;
+  const difficulty = chaosBagResults.difficulty || campaignDifficulty;
   const { backgroundStyle, fontScale, colors, typography, width } = useContext(StyleContext);
   const dispatch = useAppDispatch();
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
@@ -163,6 +165,7 @@ export default function DrawChaosBagComponent(props: Props) {
     return shuffle(weightedList).slice(0, drawTokens);
   }, [setIsChaosBagEmpty, chaosBagResults.tarot]);
 
+  const [difficultyButton, difficultyDialog] = useDifficultyOverrideButton({ actions, chaosBagResults, campaignId });
   const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId });
   const drawToken = useCallback((count: number = 1) => {
     const currentChaosBag = cloneDeep(chaosBag);
@@ -422,6 +425,7 @@ export default function DrawChaosBagComponent(props: Props) {
       <View style={[space.paddingS]}>
         { sealButton }
         { tarotButton }
+        { difficultyButton }
         <View style={[space.paddingBottomM]}>
           { hasBlessCurse ? (
             <DeckButton icon="dismiss" title={t`Remove all bless & curse tokens`} onPress={handleResetBlessCursePressed} color="dark_gray" noShadow />
@@ -520,6 +524,7 @@ export default function DrawChaosBagComponent(props: Props) {
       { sealDialog }
       { blurseDialog }
       { tarotDialog }
+      { difficultyDialog }
     </SafeAreaView>
   );
 }

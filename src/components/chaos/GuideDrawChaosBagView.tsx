@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';
+import DrawChaosBagComponent from './DrawChaosBagComponent';
 import { ChaosBag } from '@app_constants';
 import { CampaignId } from '@actions/types';
 import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
 import { NavigationProps } from '@components/nav/types';
 import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import { Navigation } from 'react-native-navigation';
-import useGuideChaosBag from './useGuideChaosBag';
+import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ProcessedCampaign } from '@data/scenario';
 import { useChaosBagResults } from '@data/hooks';

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import ChaosTokenButton from './ChaosTokenButton';
+import ChaosTokenButton from '../chaos/ChaosTokenButton';
 import { ChaosTokenType } from '@app_constants';
 import { isTablet } from '@styles/space';
 

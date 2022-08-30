@@ -1534,6 +1534,124 @@ export type Campaign_Delete_Key_Input = {
   weaknessSet?: InputMaybe<Scalars['String']>;
 };
 
+/** columns and relationships of "campaign_difficulty" */
+export type Campaign_Difficulty = {
+  __typename?: 'campaign_difficulty';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate = {
+  __typename?: 'campaign_difficulty_aggregate';
+  aggregate?: Maybe<Campaign_Difficulty_Aggregate_Fields>;
+  nodes: Array<Campaign_Difficulty>;
+};
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_Fields = {
+  __typename?: 'campaign_difficulty_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Campaign_Difficulty_Max_Fields>;
+  min?: Maybe<Campaign_Difficulty_Min_Fields>;
+};
+
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "campaign_difficulty". All fields are combined with a logical 'AND'. */
+export type Campaign_Difficulty_Bool_Exp = {
+  _and?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "campaign_difficulty" */
+export enum Campaign_Difficulty_Constraint {
+  /** unique or primary key constraint */
+  CampaignDifficultyPkey = 'campaign_difficulty_pkey'
+}
+
+export enum Campaign_Difficulty_Enum {
+  Easy = 'easy',
+  Expert = 'expert',
+  Hard = 'hard',
+  Standard = 'standard'
+}
+
+/** Boolean expression to compare columns of type "campaign_difficulty_enum". All fields are combined with logical 'AND'. */
+export type Campaign_Difficulty_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _in?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _nin?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+};
+
+/** input type for inserting data into table "campaign_difficulty" */
+export type Campaign_Difficulty_Insert_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Campaign_Difficulty_Max_Fields = {
+  __typename?: 'campaign_difficulty_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaign_Difficulty_Min_Fields = {
+  __typename?: 'campaign_difficulty_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "campaign_difficulty" */
+export type Campaign_Difficulty_Mutation_Response = {
+  __typename?: 'campaign_difficulty_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Campaign_Difficulty>;
+};
+
+/** on conflict condition type for table "campaign_difficulty" */
+export type Campaign_Difficulty_On_Conflict = {
+  constraint: Campaign_Difficulty_Constraint;
+  update_columns: Array<Campaign_Difficulty_Update_Column>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "campaign_difficulty". */
+export type Campaign_Difficulty_Order_By = {
+  value?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: campaign_difficulty */
+export type Campaign_Difficulty_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "campaign_difficulty" */
+export type Campaign_Difficulty_Set_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Update_Column {
+  /** column name */
+  Value = 'value'
+}
+
 /** columns and relationships of "campaign_guide" */
 export type Campaign_Guide = {
   __typename?: 'campaign_guide';
@@ -4581,6 +4699,7 @@ export type Chaos_Bag_Result = {
   campaign: Campaign;
   created_at: Scalars['timestamptz'];
   curse: Scalars['Int'];
+  difficulty?: Maybe<Campaign_Difficulty_Enum>;
   drawn: Scalars['jsonb'];
   id: Scalars['Int'];
   sealed: Scalars['jsonb'];
@@ -4687,6 +4806,7 @@ export type Chaos_Bag_Result_Bool_Exp = {
   campaign?: InputMaybe<Campaign_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   curse?: InputMaybe<Int_Comparison_Exp>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum_Comparison_Exp>;
   drawn?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   sealed?: InputMaybe<Jsonb_Comparison_Exp>;
@@ -4736,6 +4856,7 @@ export type Chaos_Bag_Result_Insert_Input = {
   campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4809,6 +4930,7 @@ export type Chaos_Bag_Result_Order_By = {
   campaign?: InputMaybe<Campaign_Order_By>;
   created_at?: InputMaybe<Order_By>;
   curse?: InputMaybe<Order_By>;
+  difficulty?: InputMaybe<Order_By>;
   drawn?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sealed?: InputMaybe<Order_By>;
@@ -4838,6 +4960,8 @@ export enum Chaos_Bag_Result_Select_Column {
   /** column name */
   Curse = 'curse',
   /** column name */
+  Difficulty = 'difficulty',
+  /** column name */
   Drawn = 'drawn',
   /** column name */
   Id = 'id',
@@ -4856,6 +4980,7 @@ export type Chaos_Bag_Result_Set_Input = {
   bless?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4940,6 +5065,8 @@ export enum Chaos_Bag_Result_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Curse = 'curse',
+  /** column name */
+  Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
   /** column name */
@@ -8935,6 +9062,10 @@ export type Mutation_Root = {
   delete_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** delete single row from the table: "campaign_deck" */
   delete_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** delete data from the table: "campaign_difficulty" */
+  delete_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** delete single row from the table: "campaign_difficulty" */
+  delete_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** delete data from the table: "campaign_guide" */
   delete_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** delete data from the table: "campaign_investigator" */
@@ -9059,6 +9190,10 @@ export type Mutation_Root = {
   insert_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** insert a single row into the table: "campaign_deck" */
   insert_campaign_deck_one?: Maybe<Campaign_Deck>;
+  /** insert data into the table: "campaign_difficulty" */
+  insert_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** insert a single row into the table: "campaign_difficulty" */
+  insert_campaign_difficulty_one?: Maybe<Campaign_Difficulty>;
   /** insert data into the table: "campaign_guide" */
   insert_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** insert a single row into the table: "campaign_guide" */
@@ -9199,6 +9334,10 @@ export type Mutation_Root = {
   update_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** update single row of the table: "campaign_deck" */
   update_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** update data of the table: "campaign_difficulty" */
+  update_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** update single row of the table: "campaign_difficulty" */
+  update_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** update data of the table: "campaign_guide" */
   update_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** update data of the table: "campaign_investigator" */
@@ -9351,6 +9490,18 @@ export type Mutation_RootDelete_Campaign_DeckArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Campaign_Deck_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_DifficultyArgs = {
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -9741,6 +9892,20 @@ export type Mutation_RootInsert_Campaign_DeckArgs = {
 export type Mutation_RootInsert_Campaign_Deck_OneArgs = {
   object: Campaign_Deck_Insert_Input;
   on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_DifficultyArgs = {
+  objects: Array<Campaign_Difficulty_Insert_Input>;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_Difficulty_OneArgs = {
+  object: Campaign_Difficulty_Insert_Input;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
 };
 
 
@@ -10244,6 +10409,20 @@ export type Mutation_RootUpdate_Campaign_Deck_By_PkArgs = {
   _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
   _set?: InputMaybe<Campaign_Deck_Set_Input>;
   pk_columns: Campaign_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_DifficultyArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Difficulty_By_PkArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  pk_columns: Campaign_Difficulty_Pk_Columns_Input;
 };
 
 
@@ -12066,6 +12245,12 @@ export type Query_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
@@ -12329,6 +12514,29 @@ export type Query_RootCampaign_Deck_AggregateArgs = {
 
 export type Query_RootCampaign_Deck_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Query_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -13064,6 +13272,12 @@ export type Subscription_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
@@ -13327,6 +13541,29 @@ export type Subscription_RootCampaign_Deck_AggregateArgs = {
 
 export type Subscription_RootCampaign_Deck_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
 };
 
 
@@ -15582,10 +15819,11 @@ export type UploadChaosBagResultsMutationVariables = Exact<{
   sealed: Scalars['jsonb'];
   totalDrawn: Scalars['Int'];
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
 }>;
 
 
-export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -15637,6 +15875,14 @@ export type ChaosBagSetTarotMutationVariables = Exact<{
 
 
 export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+
+export type ChaosBagSetDifficultyMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
+}>;
+
+
+export type ChaosBagSetDifficultyMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -15810,7 +16056,7 @@ export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: s
 
 export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null };
 
 export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
@@ -15867,7 +16113,7 @@ export type GetChaosBagResultsQueryVariables = Exact<{
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -15895,7 +16141,7 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type GetSettingsQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -16321,6 +16567,7 @@ export const FullChaosBagResultFragmentDoc = gql`
   sealed
   totalDrawn
   tarot
+  difficulty
 }
     `;
 export const IdDeckFragmentDoc = gql`
@@ -16645,10 +16892,10 @@ export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
-    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
   update_chaos_bag_result_by_pk(
     pk_columns: {id: $id}
-    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot}
+    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot, difficulty: $difficulty}
   ) {
     ...FullChaosBagResult
   }
@@ -16676,6 +16923,7 @@ export type UploadChaosBagResultsMutationFn = Apollo.MutationFunction<UploadChao
  *      sealed: // value for 'sealed'
  *      totalDrawn: // value for 'totalDrawn'
  *      tarot: // value for 'tarot'
+ *      difficulty: // value for 'difficulty'
  *   },
  * });
  */
@@ -16925,6 +17173,44 @@ export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOpt
 export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
+export const ChaosBagSetDifficultyDocument = gql`
+    mutation chaosBagSetDifficulty($campaign_id: Int!, $difficulty: campaign_difficulty_enum) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {difficulty: $difficulty}
+  ) {
+    id
+    difficulty
+  }
+}
+    `;
+export type ChaosBagSetDifficultyMutationFn = Apollo.MutationFunction<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
+
+/**
+ * __useChaosBagSetDifficultyMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetDifficultyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetDifficultyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetDifficultyMutation, { data, loading, error }] = useChaosBagSetDifficultyMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      difficulty: // value for 'difficulty'
+ *   },
+ * });
+ */
+export function useChaosBagSetDifficultyMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>(ChaosBagSetDifficultyDocument, options);
+      }
+export type ChaosBagSetDifficultyMutationHookResult = ReturnType<typeof useChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationResult = Apollo.MutationResult<ChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $tarotReading: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {

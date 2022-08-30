@@ -209,8 +209,9 @@ export class DeckOptionQueryBuilder {
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
-    )) {
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
+      )) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
     }
 
