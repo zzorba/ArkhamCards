@@ -2186,19 +2186,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -5849,37 +5849,41 @@ msgid "Fan-made Scenarios"
 msgstr "팬 제작 시나리오"
 
 msgid "Currently here"
-msgstr ""
+msgstr "현재 위치"
 
 msgid "Already visited"
-msgstr ""
+msgstr "이미 방문함"
 
 msgid ""
 "You may stop at this location to play a side-story. Passing through this "
 "location costs no additional time."
 msgstr ""
+"외전 이야기를 플레이하기 위해 이 위치에서 멈출 수 있습니다. 이 위치를 통과하는 데 "
+"추가적인 시간이 필요하지 않습니다."
 
 msgid ""
 "As an additional cost to play the side-story, you must spend one time for "
 "each XP cost of the scenario."
 msgstr ""
+"해당 시나리오의 각 경험치 비용을 외전 이야기를 플레이하기 위한 추가 비용으로 한 번은 "
+"소비해야 합니다."
 
 msgid "Travel time:"
-msgstr ""
+msgstr "여행 시간:"
 
 msgid "Travel here"
-msgstr ""
+msgstr "이곳을 여행하기"
 
 msgid "Information"
-msgstr ""
+msgstr "정보"
 
 msgid "Dossier"
 msgid_plural "Dossiers"
-msgstr[0] ""
+msgstr[0] "서류"
 
 #, javascript-format
 msgid "Departing from ${ location }"
-msgstr ""
+msgstr "출발지: ${ location }"
 
 msgctxt "investigator"
 msgid "Custom"
