@@ -216,7 +216,7 @@ export class DeckOptionQueryBuilder {
     }
 
     if (this.option.text && this.option.text.length &&
-      this.option.text[0] === '[Hh]eals? (that much )?(\\d+|all|(X total) )?damage'
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) )?damage'
     ) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }

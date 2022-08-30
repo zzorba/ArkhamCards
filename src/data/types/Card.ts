@@ -18,7 +18,7 @@ const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
 const HEALS_HORROR_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?damage (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?horror/;
-const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?(\d+|all|(X total) )?damage/;
+const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((\d+|all|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export function searchNormalize(text: string, lang: string) {
