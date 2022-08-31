@@ -1,5 +1,5 @@
 import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
+import { DataSource, Brackets, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, QueryRunner } from 'typeorm/browser';
 
 import Card, { CardsMap, PartialCard } from '../types/Card';
 import EncounterSet from '../types/EncounterSet';
@@ -28,7 +28,7 @@ export interface SectionCount {
 }
 
 async function createDatabaseConnection(recreate: boolean) {
-  const connection = await createConnection({
+  const dataSource = new DataSource({
     type: 'react-native',
     database: 'arkham4',
     location: 'default',
@@ -36,6 +36,7 @@ async function createDatabaseConnection(recreate: boolean) {
       'error',
       'schema',
     ],
+    relationLoadStrategy: 'query',
     // maxQueryExecutionTime: 4000,
     migrations: [
       HealsDamageMigration1657382994910,
@@ -50,7 +51,8 @@ async function createDatabaseConnection(recreate: boolean) {
       TabooSet,
       Rule,
     ],
-  });
+  })
+  const connection = await dataSource.initialize();
   await connection.runMigrations();
   await connection.synchronize(recreate);
   return connection;
@@ -58,7 +60,7 @@ async function createDatabaseConnection(recreate: boolean) {
 
 export default class Database {
   static SCHEMA_VERSION: number = 42;
-  connectionP: Promise<Connection>;
+  connectionP: Promise<DataSource>;
 
   playerState?: PlayerCardState;
 
@@ -112,6 +114,7 @@ export default class Database {
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
     const cards = await this.cards();
     return cards.createQueryBuilder('c')
+      .setFindOptions({ loadEagerRelations: false })
       .leftJoinAndSelect('c.linked_card', 'linked_card');
   }
 
@@ -196,6 +199,7 @@ export default class Database {
   ): Promise<InsertResult> {
     const query = (await this.cards())
       .createQueryBuilder()
+      .setFindOptions({ loadEagerRelations: false })
       .insert()
       .into(Card)
       .values(cards);
@@ -207,6 +211,8 @@ export default class Database {
   ): Promise<InsertResult> {
     const query = (await this.rules())
       .createQueryBuilder()
+      .setFindOptions({ loadEagerRelations: false })
+
       .insert()
       .into(Rule)
       .values(rules);
@@ -219,6 +225,7 @@ export default class Database {
     query?: Brackets,
   ): Promise<Rule[]> {
     let rulesQuery = (await this.rules()).createQueryBuilder('r')
+      .setFindOptions({ loadEagerRelations: false })
       .leftJoinAndSelect('r.rules', 'sub_rules')
       .leftJoinAndSelect('sub_rules.rules', 'sub_rules_2');
     if (query) {
@@ -239,6 +246,7 @@ export default class Database {
   ): Promise<string[]> {
     const cards = await this.cards();
     let cardsQuery = cards.createQueryBuilder('c')
+      .setFindOptions({ loadEagerRelations: false })
       .select(`distinct c.${field} as value, linked_card.${field} as linked_value`)
       .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
@@ -269,6 +277,7 @@ export default class Database {
   ): Promise<PartialCard[]> {
     const cards = await this.cards();
     let cardsQuery = cards.createQueryBuilder('c')
+      .setFindOptions({ loadEagerRelations: false })
       .select(PartialCard.selectStatement(sort))
       .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
@@ -277,11 +286,9 @@ export default class Database {
     }
     const sortQuery = Card.querySort(sortIgnoreQuotes, sort);
     if (sortQuery.length) {
-      const orderBy: OrderByCondition = {};
       forEach(sortQuery, ({ s, direction }) => {
-        orderBy[s] = direction;
+        cardsQuery.addOrderBy(s, direction);
       });
-      cardsQuery.orderBy(orderBy);
     }
     const result = await cardsQuery.getRawMany();
     return flatMap(result, raw => PartialCard.fromRaw(raw, sort) || []);
@@ -301,6 +308,7 @@ export default class Database {
   ): Promise<Card[]> {
     const cards = await this.cards();
     return await cards.createQueryBuilder('c')
+      .setFindOptions({ loadEagerRelations: false })
       .leftJoinAndSelect('c.linked_card', 'linked_card')
       .where(where(`c.id IN (:...cardIds)`, { cardIds: ids }))
       .getMany();
@@ -313,7 +321,7 @@ export default class Database {
     sort?: QuerySort[],
   ): Promise<Card | undefined> {
     const cardsQuery = await this.applyCardsQuery(query, tabooSetId, sort);
-    return await cardsQuery.getOne();
+    return (await cardsQuery.getOne()) || undefined;
   }
 
   async getCardCount(
@@ -347,11 +355,9 @@ export default class Database {
       cardsQuery = cardsQuery.andWhere(query);
     }
     if (sort && sort.length) {
-      const orderBy: OrderByCondition = {};
       forEach(sort, ({ s, direction }) => {
-        orderBy[s] = direction;
+        cardsQuery.addOrderBy(s, direction);
       });
-      cardsQuery.orderBy(orderBy);
     }
     if (groupBy) {
       cardsQuery = cardsQuery.groupBy(groupBy);

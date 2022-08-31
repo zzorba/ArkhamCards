@@ -49,6 +49,7 @@ export default function CardFaqView({ id, componentId }: Props) {
   const fetchFaqEntries = useCallback(async(db: Database) => {
     const qb = await db.faqEntries();
     const faqEntries = await qb.createQueryBuilder('faq')
+      .setFindOptions({ loadEagerRelations: false })
       .where('faq.code = :code', { code: id })
       .getMany();
     return faqEntries;

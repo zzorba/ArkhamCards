@@ -25,10 +25,12 @@ export async function calculateDefaultDbFilterState(
 ): Promise<[FilterState, CardFilterData]> {
   const cards = await db.cards();
   let factionsQuery = cards.createQueryBuilder('c')
+    .setFindOptions({ loadEagerRelations: false })
     .select('distinct c.faction_code as faction_code')
     .leftJoin('c.linked_card', 'linked_card')
     .where(tabooSetQuery(tabooSetId));
   let cardsQuery = cards.createQueryBuilder('c')
+    .setFindOptions({ loadEagerRelations: false })
     .select([
       'max(c.xp) as xp, max(linked_card.xp) as linked_xp',
       'max(c.cost) as cost, max(linked_card.cost) as linked_cost',

@@ -25,6 +25,7 @@ interface Props {
 async function fetchTaboos(db: Database) {
   const tabooSetsR = await db.tabooSets();
   const tabooSets = await tabooSetsR.createQueryBuilder()
+    .setFindOptions({ loadEagerRelations: false })
     .orderBy('id', 'DESC')
     .getMany();
   return tabooSets;

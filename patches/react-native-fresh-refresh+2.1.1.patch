@@ -1,0 +1,33 @@
+diff --git a/node_modules/react-native-fresh-refresh/.DS_Store b/node_modules/react-native-fresh-refresh/.DS_Store
+new file mode 100644
+index 0000000..10f4d43
+Binary files /dev/null and b/node_modules/react-native-fresh-refresh/.DS_Store differ
+diff --git a/node_modules/react-native-fresh-refresh/lib/index.js b/node_modules/react-native-fresh-refresh/lib/index.js
+index 57148ff..2103518 100644
+--- a/node_modules/react-native-fresh-refresh/lib/index.js
++++ b/node_modules/react-native-fresh-refresh/lib/index.js
+@@ -27,9 +27,9 @@ const RefreshableWrapper = ({ isLoading, onRefresh, refreshHeight = 100, default
+         listContentOffsetY.value = y;
+         // recover children component onScroll event
+         if (children.props.onScroll) {
+-            runOnJS(children.props.onScroll)(event);
++            runOnJS(children.props.onScroll)({ nativeEvent: event });
+         }
+-    });
++    }, [children.props.onScroll]);
+     const native = Gesture.Native();
+     const panGesture = Gesture.Pan()
+         .onChange((event) => {
+@@ -76,7 +76,11 @@ const RefreshableWrapper = ({ isLoading, onRefresh, refreshHeight = 100, default
+                         scale: isLoaderActive.value ? withSpring(1) : withTiming(0.01),
+                     },
+                 ]
+-                : undefined,
++                : [
++                    {
++                        translateY: interpolate(loaderOffsetY.value, [0, refreshHeight], [-refreshHeight, 0], Extrapolate.CLAMP)
++                    },
++                ],
+         };
+     });
+     const overscrollAnimation = useAnimatedStyle(() => {

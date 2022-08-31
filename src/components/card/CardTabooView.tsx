@@ -37,11 +37,11 @@ async function fetchTabooData(db: Database, id: string): Promise<TabooData> {
   const cardsQuery = await db.cardsQuery();
   const card = await cardsQuery
     .where('c.code = :code and (c.taboo_set_id = 0 or c.taboo_set_id is null)', { code: id })
-    .getOne();
+    .getOne() || undefined;
   const taboos = await cardsQuery
     .where('c.code = :code and c.taboo_set_id > 0', { code: id })
     .getMany();
-  const allTabooSets = await (await db.tabooSets()).createQueryBuilder().orderBy('id', 'ASC').getMany();
+  const allTabooSets = await (await db.tabooSets()).createQueryBuilder().setFindOptions({ loadEagerRelations: false }).orderBy('id', 'ASC').getMany();
   const tabooSets: TabooSetMap = {};
   forEach(allTabooSets, tabooSet => {
     tabooSets[tabooSet.id] = tabooSet;
