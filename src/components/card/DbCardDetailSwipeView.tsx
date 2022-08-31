@@ -46,6 +46,7 @@ export interface CardDetailSwipeProps {
   deckId?: DeckId;
   faction?: FactionCodeType;
   editable?: boolean;
+  customizationsEditable?: boolean;
   initialCustomizations: Customizations | undefined
 }
 
@@ -62,10 +63,10 @@ const options = (passProps: CardDetailSwipeProps) => {
   };
 };
 
-function ScrollableCard({ componentId, mode, editable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler }: {
+function ScrollableCard({ componentId, mode, customizationsEditable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler }: {
   componentId: string;
   card: Card | undefined;
-  editable: boolean | undefined;
+  customizationsEditable: boolean | undefined;
   setChoice: (code: string, choice: CustomizationChoice) => void;
   width: number;
   height: number;
@@ -118,7 +119,7 @@ function ScrollableCard({ componentId, mode, editable, card, setChoice, width, h
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
           width={width}
-          editable={!!editable && !!deckCount}
+          editable={!!customizationsEditable && !!deckCount}
           setChoice={setChoice}
         />
       ) }
@@ -128,7 +129,7 @@ function ScrollableCard({ componentId, mode, editable, card, setChoice, width, h
 }
 
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, editable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
   const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
   const deckEdits = useSimpleDeckEdits(deckId);
@@ -305,10 +306,10 @@ function DbCardDetailSwipeView(props: Props) {
         showInvestigatorCards={showInvestigatorCards}
         setChoice={setChoice}
         deckCount={card && slots?.[card.code]}
-        editable={editable}
+        customizationsEditable={editable || customizationsEditable}
       />
     );
-  }, [slots, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
+  }, [slots, customizationsEditable, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);

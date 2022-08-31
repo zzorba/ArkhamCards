@@ -1,4 +1,4 @@
-import { CampaignDifficulty, CampaignId, SealedToken, UploadedCampaignId } from '@actions/types'
+import { SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
 import {

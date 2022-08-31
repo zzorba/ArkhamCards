@@ -225,7 +225,8 @@ export function showCardSwipe(
   deckId?: DeckId,
   investigator?: Card,
   editable?: boolean,
-  initialCustomizations?: Customizations
+  initialCustomizations?: Customizations,
+  customizationsEditable?: boolean
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -252,6 +253,7 @@ export function showCardSwipe(
         controls: controls === 'side' ? map(range(0, codes.length), () => 'side') : controls,
         editable,
         initialCustomizations,
+        customizationsEditable: editable || customizationsEditable,
       },
       options,
     },

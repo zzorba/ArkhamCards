@@ -13,8 +13,7 @@ import CampaignGuideContext from './CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
-import ArkhamButton from '@components/core/ArkhamButton';
-import space, { s, m } from '@styles/space';
+import space, { s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
@@ -351,7 +350,6 @@ function DossierImage({
   ratio: number;
   width: number;
 }) {
-  const { colors } = useContext(StyleContext);
   return (
     <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
       <View style={{ padding: 8, paddingBottom: 32, backgroundColor: COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
@@ -374,15 +372,18 @@ function DossierComponent({ dossier }: { dossier: Dossier; idx: number }) {
       space.paddingM,
       space.marginBottomM,
     ]}>
-      { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} /> )}
+      { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} />)}
     </View>
-  )
+  );
 }
 
 function DossierEntryComponent({
-  element: { image, text }
+  element: {
+    image,
+    text,
+  },
 }: {
-  element: DossierElement
+  element: DossierElement;
 }) {
   const { width } = useContext(StyleContext);
   return (
@@ -475,7 +476,7 @@ function LocationContent({
         </>
       );
     }
-  }, [location, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
+  }, [location, makeCurrent, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>

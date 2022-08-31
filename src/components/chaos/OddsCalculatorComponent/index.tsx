@@ -6,7 +6,7 @@ import KeepAwake from 'react-native-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { difficultyString, Scenario, scenarioFromCard } from '@components/campaign/constants';
+import { Scenario, scenarioFromCard } from '@components/campaign/constants';
 import { CampaignDifficulty } from '@actions/types';
 import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
@@ -975,7 +975,7 @@ export default function OddsCalculatorComponent({
       undefined;
     const text = hardOrExpert ? scenarioCard?.back_text : scenarioCard?.text;
     return text ? tail(text.split('\n')).join('\n') : undefined;
-  }, [campaign, currentScenario, encounterCode, scenarioCardText, scenarioCards, hardOrExpert]);
+  }, [currentScenario, encounterCode, scenarioCardText, scenarioCards, hardOrExpert]);
 
   const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
   const [specialTokenValues, initialXValue] = useMemo(() => {

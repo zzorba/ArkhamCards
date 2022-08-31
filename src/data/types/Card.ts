@@ -1,6 +1,6 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, flatMap, pick, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
+import { forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 

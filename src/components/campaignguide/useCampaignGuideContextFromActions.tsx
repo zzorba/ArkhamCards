@@ -237,7 +237,7 @@ export default function useCampaignGuideContextFromActions(
       setBinaryAchievement,
       setCountAchievement,
     };
-  }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
+  }, [addInvestigator, showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
   const investigators = useMemo(() => {

@@ -173,7 +173,7 @@ function NewDeckOptionsDialog({
         }
       });
     }
-  }, [investigatorBack]);
+  }, [investigatorBack, metaState, updateMeta]);
   const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
       return t`New Deck`;
@@ -583,7 +583,19 @@ function NewDeckOptionsDialog({
       </ScrollView>
       <View style={[styles.footer, { height: footerSize, width, backgroundColor: colors.L10 }, shadow.large]}>
         <View style={[styles.column, { position: 'absolute', top: s, left: 0 }]}>
-
+          { showRegenerateButton && (
+            <View style={[styles.row, space.paddingBottomS]}>
+              <View style={[space.marginLeftS, styles.flex, space.marginRightS]}>
+                <DeckButton
+                  title={t`Re-generate deck`}
+                  icon="card-outline"
+                  color="red_outline"
+                  loading={chaosDeckLoading}
+                  onPress={generateChaosDeck}
+                />
+              </View>
+            </View>
+          ) }
           <View style={styles.row}>
             <View style={[space.marginLeftS, styles.flex, space.marginRightS]}>
               <DeckButton
@@ -611,19 +623,6 @@ function NewDeckOptionsDialog({
               ) }
             </View>
           </View>
-          { showRegenerateButton && (
-            <View style={[styles.row, space.paddingTopS]}>
-              <View style={[space.marginLeftS, styles.flex, space.marginRightS]}>
-                <DeckButton
-                  title={t`Re-generate deck`}
-                  icon="card-outline"
-                  color="red_outline"
-                  loading={chaosDeckLoading}
-                  onPress={generateChaosDeck}
-                />
-              </View>
-            </View>
-          ) }
         </View>
       </View>
       { errorDialog }

@@ -6,6 +6,7 @@ import {
   keys,
   map,
   mapValues,
+  values,
   range,
   groupBy,
   partition,
@@ -15,6 +16,7 @@ import {
   uniqBy,
   union,
   uniq,
+  sumBy,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -33,6 +35,7 @@ import {
   SkillCounts,
   SlotCounts,
   Slots,
+  SpecialDiscount,
   SplitCards,
 } from '@actions/types';
 import Card, { CardKey, CardsMap } from '@data/types/Card';
@@ -284,10 +287,12 @@ function getDeckChanges(
   listSeperator: string,
   customizations: Customizations,
   previousDeck?: Deck,
+  previousCustomizations?: Customizations,
 ): DeckChanges | undefined {
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
+  const totalExiledCards = sum(values(exiledCards));
   if (!previousDeck) {
     return undefined;
   }
@@ -311,6 +316,7 @@ function getDeckChanges(
   const invalidCards = validation.getInvalidCards(previousDeckCards);
   const newDeckSize = validation.getDeckSize();
   let extraDeckSize = newDeckSize - oldDeckSize;
+  let totalFreeCards = extraDeckSize + totalExiledCards;
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
@@ -326,6 +332,17 @@ function getDeckChanges(
         changedCards[code] = delta;
       }
     });
+  const customizedXp: Slots = {};
+  const customizedSlots: Slots = {};
+  forEach(keys(slots), code => {
+    const customXp = sumBy(customizations[code], c => c.xp_spent);
+    const previousXp = sumBy(previousCustomizations?.[code] || [], c => c.xp_spent);
+    if (customXp > previousXp) {
+      customizedXp[code] = customXp - previousXp;
+      customizedSlots[code] = customXp - previousXp;
+    }
+  });
+
   const exiledSlots: Card[] = [];
   forEach(exiledCards,
     (exileCount, code) => {
@@ -382,8 +399,14 @@ function getDeckChanges(
 
   const spentXp = sum(map(
     sortBy(
+      sortBy(
+        addedNormalCards,
+        // Put customizable cards AFTER other L0 cards,
+        // to maximize chance Adaptable/Exile gives you Free swaps of them
+        // since normally you get to check a box if its customizable
+        card => card.customization_options ? 1 : 0
+      ),
       // null cards are story assets, so putting them in is free.
-      addedNormalCards,
       card => -((card.xp || 0) + (card.extra_xp || 0))
     ),
     addedCard => {
@@ -409,7 +432,6 @@ function getDeckChanges(
         if (exiledSlots.length > 0) {
           // Every exiled card gives you one free '0' cost insert.
           pullAt(exiledSlots, [0]);
-
           incSlot(added, addedCard);
 
           // But you still have to pay the TABOO xp.
@@ -434,6 +456,7 @@ function getDeckChanges(
           // Couldn't find a 0 cost card to remove, it's weird that you
           // chose to take away an XP card -- or maybe you are just adding cards.
         }
+
         incSlot(added, addedCard);
         const tabooCost = addedCard.extra_xp || 0;
         if (tabooCost > 0) {
@@ -452,6 +475,13 @@ function getDeckChanges(
           extraDeckSize--;
           return 0;
         }
+
+        // Customizable cards are always Level 0, so if you end up paying XP
+        // for them you get a discount.
+        if ((customizedXp[addedCard.code] || 0) > 0) {
+          customizedXp[addedCard.code] = customizedXp[addedCard.code] - 1;
+        }
+
         return 1 + downTheRabbitHoleXp;
       }
 
@@ -505,6 +535,7 @@ function getDeckChanges(
           if (addedCard.permanent && !removedCard.permanent) {
             // If we added in a permanent upgrade, let swaps happen for free.
             extraDeckSize++;
+            totalFreeCards++;
           }
           // Upgrade of the same name, so you only pay the delta.
           let xpCost = (computeXp(addedCard) - computeXp(removedCard));
@@ -522,19 +553,79 @@ function getDeckChanges(
   ));
   forEach(removedCards, removedCard => decSlot(removed, removedCard));
 
+  const totalCustomizationXp = sumBy(keys(customizedXp), (code) => {
+    let xpCost = customizedXp[code] || 0;
+    const card = cards[code];
+    if (!card) {
+      return xpCost;
+    }
+    if (arcaneResearchUses > 0 &&
+      card.real_traits_normalized &&
+      card.real_traits_normalized.indexOf('#spell#') !== -1
+    ) {
+      while (xpCost > 0 && arcaneResearchUses > 0) {
+        xpCost--;
+        arcaneResearchUses--;
+      }
+    }
+    if (xpCost > 0 && downTheRabitHoleUses > 0) {
+      xpCost--;
+      downTheRabitHoleUses--;
+    }
+    return xpCost;
+  });
+
+  const specialDiscounts: SpecialDiscount[] = [];
+  if (slots[ADAPTABLE_CODE]) {
+    specialDiscounts.push({
+      code: ADAPTABLE_CODE,
+      available: slots[ADAPTABLE_CODE] * 2,
+      used: slots[ADAPTABLE_CODE] * 2 - adaptableUses,
+    });
+  }
+  if (slots[DEJA_VU_CODE] && totalExiledCards) {
+    const maxUses = slots[DEJA_VU_CODE] * Math.min(3, totalExiledCards);
+    specialDiscounts.push({
+      code: DEJA_VU_CODE,
+      available: maxUses,
+      used: maxUses - dejaVuUses,
+    });
+  }
+  if (slots[ARCANE_RESEARCH_CODE]) {
+    specialDiscounts.push({
+      code: ARCANE_RESEARCH_CODE,
+      available: slots[ARCANE_RESEARCH_CODE],
+      used: slots[ARCANE_RESEARCH_CODE] - arcaneResearchUses,
+    });
+  }
+  if (slots[DOWN_THE_RABBIT_HOLE_CODE]) {
+    specialDiscounts.push({
+      code: DOWN_THE_RABBIT_HOLE_CODE,
+      available: 2,
+      used: 2 - downTheRabitHoleUses,
+    });
+  }
+
   return {
     added,
     removed,
     upgraded,
+    customized: customizedSlots,
     exiled: exiledCards,
-    spentXp: spentXp || 0,
+    spentXp: totalCustomizationXp + (spentXp || 0),
+    specialDiscounts: {
+      usedFreeCards: totalFreeCards - (extraDeckSize + exiledSlots.length),
+      totalFreeCards,
+      cards: specialDiscounts,
+    },
   };
 }
 
 function calculateTotalXp(
   cards: CardsMap,
   slots: Slots,
-  ignoreDeckLimitSlots: Slots
+  ignoreDeckLimitSlots: Slots,
+  customizations: Customizations
 ): number {
   const myriadBuys: {
     [name: string]: boolean;
@@ -543,17 +634,18 @@ function calculateTotalXp(
   return sum(map(keys(slots), code => {
     const card = cards[code];
     const xp = computeXp(card);
+    const customize_xp = sumBy(customizations[code], custom => custom.xp_spent);
     if (card && card.myriad) {
       const myriadKey = `${card.real_name}_${card.xp}`;
       if (!myriadBuys[myriadKey]) {
         // Pay the cost only once for myriad.
         myriadBuys[myriadKey] = true;
-        return xp;
+        return xp + customize_xp;
       }
       return 0;
     }
     const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
-    return xp * count;
+    return xp * count + customize_xp;
   }));
 }
 
@@ -600,7 +692,8 @@ export function parseCustomizations(
   slots: Slots,
   cards: CardsMap,
   previousMeta: DeckMeta | undefined
-): Customizations {
+): [Customizations, Customizations | undefined] {
+  const previousCustomizations: Customizations = {};
   const result: Customizations = {};
   forEach(slots, (count, code) => {
     const card = cards[code];
@@ -611,6 +704,27 @@ export function parseCustomizations(
     const previousEntry = previousMeta?.[`cus_${code}`];
     const previousDecisions = previousEntry ? parseCustomizationDecision(previousEntry) : [];
     const decisions = parseCustomizationDecision(value);
+    const previousSelections: CustomizationChoice[] = flatMap(card.customization_options, option => {
+      const previous = find(previousDecisions, pd => pd.index === option.index);
+      if (!previous && option.xp) {
+        return [];
+      }
+      const basic = {
+        option,
+        xp_spent: previous?.spent_xp || 0,
+        xp_locked: previous?.spent_xp || 0,
+        editable: false,
+        unlocked: (previous?.spent_xp || 0) === option.xp,
+      };
+      if (!option.choice) {
+        return basic;
+      }
+      return {
+        ...basic,
+        choice: previous?.choice,
+      };
+    })
+    previousCustomizations[code] = previousSelections;
     const selections: CustomizationChoice[] = flatMap(card.customization_options, option => {
       const decision = find(decisions, d => d.index === option.index);
       const previous = find(previousDecisions, pd => pd.index === option.index);
@@ -634,7 +748,7 @@ export function parseCustomizations(
     })
     result[code] = selections;
   });
-  return result;
+  return [result, previousCustomizations];
 }
 
 export function parseDeck(
@@ -649,7 +763,7 @@ export function parseDeck(
   xpAdjustment?: number,
   originalDeck?: Deck
 ): ParsedDeck | undefined {
-  const customizations = parseCustomizations(meta, slots, cards, previousDeck?.meta);
+  const [customizations, previousCustomizations] = parseCustomizations(meta, slots, cards, previousDeck?.meta);
   const investigator_front_code = meta.alternate_front || investigator_code;
   const investigator_back_code = meta.alternate_back || investigator_code;
   const investigator: Card | undefined = cards[investigator_back_code];
@@ -732,8 +846,10 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     listSeperator,
     customizations,
-    previousDeck);
-  const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
+    previousDeck,
+    previousCustomizations
+  );
+  const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots, customizations);
 
   const factionCounts: FactionCounts = {};
   forEach(PLAYER_FACTION_CODES, faction => {

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { c, t } from 'ttag';
+import { t } from 'ttag';
 import { updateChaosBagDifficultyOverride } from './actions';
 
-import { CampaignDifficulty, CampaignId } from '@actions/types';
-import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { CampaignId } from '@actions/types';
+import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 import { usePickerDialog } from '@components/deck/dialogs';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { ChaosBagActions } from '@data/remote/chaosBag';

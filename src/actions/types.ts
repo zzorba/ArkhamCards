@@ -176,12 +176,24 @@ export type SlotCounts = {
   [slot in SlotCodeType]?: number;
 }
 
+export interface SpecialDiscount {
+  code: string;
+  available: number;
+  used: number;
+}
+
 export interface DeckChanges {
   added: Slots;
   removed: Slots;
   upgraded: Slots;
   exiled: Slots;
+  customized: Slots;
   spentXp: number;
+  specialDiscounts: {
+    usedFreeCards: number;
+    totalFreeCards: number;
+    cards: SpecialDiscount[];
+  };
 }
 
 export interface CardId {

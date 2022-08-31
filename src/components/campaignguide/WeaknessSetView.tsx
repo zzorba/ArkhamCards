@@ -84,6 +84,7 @@ function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet 
       renderHeader={renderHeader}
       open={open}
       toggleOpen={toggleOpen}
+      textColor={colors.L20}
       noSpace
     >
       <View style={[space.paddingXs, space.paddingRightS]}>

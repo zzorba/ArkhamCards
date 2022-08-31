@@ -327,6 +327,7 @@ export const syncCards = async function(
   try {
     updateProgress(0);
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
+    // const uri = `http://localhost:8000/api/public/cards/?encounter=1`;
     const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {

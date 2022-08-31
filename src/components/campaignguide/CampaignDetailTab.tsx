@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
@@ -29,9 +29,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import { useLatestDecksCards } from '@components/core/hooks';
 import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
-import { CampaignMapProps } from './CampaignMapView';
-import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
 
 const SHOW_WEAKNESS = true;
 

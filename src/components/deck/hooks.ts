@@ -57,14 +57,14 @@ export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | unde
   return useSelector((state: AppState) => deckEditsSelector(state, id));
 }
 
-export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: EditDeckState | undefined) {
+export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: EditDeckState | undefined): Customizations | undefined {
   const slots = deckEdits?.slots;
   const codes = useMemo(() => slots ? keys(slots) : [], [slots]);
   const [cards] = useCardMap(codes, 'player');
   const meta = deckEdits?.meta;
   const previousMeta = deck?.previousDeck?.meta;
   return useMemo(() => {
-    return (meta && slots && cards) ? parseCustomizations(meta, slots, cards, previousMeta) : undefined;
+    return (meta && slots && cards) ? parseCustomizations(meta, slots, cards, previousMeta)[0] : undefined;
   }, [meta, slots, previousMeta, cards])
 }
 

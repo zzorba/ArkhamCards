@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
+import { Text, View } from 'react-native';
 import { concat, flatMap, findIndex, keys, map, sortBy } from 'lodash';
-import { t } from 'ttag';
+import { t, msgid, ngettext } from 'ttag';
 
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -10,6 +11,7 @@ import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -29,6 +31,7 @@ function hasChanges(changes?: DeckChanges): boolean {
     keys(changes.upgraded).length ||
     keys(changes.added).length ||
     keys(changes.removed).length ||
+    keys(changes.customized).length ||
     keys(changes.exiled).length
   ));
 }
@@ -45,7 +48,7 @@ export default function ChangesFromPreviousDeck({
   editable,
   footerButton,
 }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const {
     investigator,
     changes,
@@ -62,17 +65,35 @@ export default function ChangesFromPreviousDeck({
     );
   }, [cards]);
 
+  const discountCards = useMemo(() => {
+    if (!changes?.specialDiscounts.cards.length) {
+      return [];
+    }
+    return sortBy(flatMap(changes.specialDiscounts.cards, discount => {
+      const card = cards[discount.code];
+      if (!card) {
+        return [];
+      }
+      return {
+        card,
+        discount,
+      }
+    }), card => card.card.name)
+  }, [changes?.specialDiscounts, cards])
+
   const allCards = useMemo(() => {
     if (!changes) {
       return [];
     }
     return concat(
+      map(discountCards, card => card.card),
       getCards(changes.upgraded),
       getCards(changes.added),
       getCards(changes.removed),
-      getCards(changes.exiled)
+      getCards(changes.customized),
+      getCards(changes.exiled),
     );
-  }, [changes, getCards]);
+  }, [changes, discountCards, getCards]);
 
   const showCardPressed = useCallback((card: Card) => {
     if (singleCardView) {
@@ -90,11 +111,12 @@ export default function ChangesFromPreviousDeck({
         parsedDeck.id,
         investigator,
         false,
-        parsedDeck.customizations
+        parsedDeck.customizations,
+        editable
       );
     }
   }, [colors, allCards, componentId, investigator, parsedDeck.id,
-    parsedDeck.customizations, tabooSetId, singleCardView]);
+    parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
   const faction = parsedDeck.investigator.factionCode();
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
@@ -102,7 +124,6 @@ export default function ChangesFromPreviousDeck({
     if (!cards.length) {
       return null;
     }
-
     return (
       <>
         <DeckBubbleHeader title={title} />
@@ -136,6 +157,7 @@ export default function ChangesFromPreviousDeck({
           { renderSection(changes.upgraded, 'upgrade', t`Upgraded`) }
           { renderSection(changes.added, 'added', t`Added`) }
           { renderSection(changes.removed, 'removed', t`Removed`) }
+          { renderSection(changes.customized, 'customized', t`Customization upgrades`) }
           { renderSection(changes.exiled, 'exiled', t`Exiled`) }
         </>
       );
@@ -144,12 +166,42 @@ export default function ChangesFromPreviousDeck({
       <DeckBubbleHeader title={t`No Changes` } />
     );
   }, [changes, renderSection]);
+  const remainingFreeCards = changes ? (changes.specialDiscounts.totalFreeCards - changes.specialDiscounts.usedFreeCards) : 0;
   return (
     <DeckSectionBlock
       faction={faction}
       title={title || (editable ? t`Latest upgrade` : t`Card changes`)}
       footerButton={footerButton || (onTitlePress && <RoundedFooterButton title={t`View deck`} icon="deck" onPress={handleTitlePress} />)}
     >
+      { !!(discountCards.length || remainingFreeCards) && (
+        <>
+          <DeckBubbleHeader title={t`Special discounts`} />
+          <View style={space.paddingSideS}>
+            <Text style={typography.text}>
+              { ngettext(
+                msgid`${remainingFreeCards} additional level 0 card may be added to the deck without spending experience.`,
+                `Up to ${remainingFreeCards} level 0 cards may be added to the deck  without spending experience.`,
+                remainingFreeCards
+              ) }
+            </Text>
+          </View>
+          { map(discountCards, ({ discount, card }, idx) => {
+            return (
+              <CardSearchResult
+                onPress={showCardPressed}
+                key={card.code}
+                card={card}
+                control={{
+                  type: 'discount',
+                  available: discount.available,
+                  used: discount.used,
+                }}
+                noBorder={idx === (discountCards.length - 1)}
+              />
+            );
+          }) }
+        </>
+      ) }
       { editsSection }
     </DeckSectionBlock>
   );

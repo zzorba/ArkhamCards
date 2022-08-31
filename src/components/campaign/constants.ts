@@ -34,7 +34,7 @@ import {
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
-import { Campaign_Access, Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
+import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 
 export function difficultyString(difficulty: CampaignDifficulty | Campaign_Difficulty_Enum): string {
   switch (difficulty) {

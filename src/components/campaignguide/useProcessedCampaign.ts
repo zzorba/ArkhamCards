@@ -1,5 +1,5 @@
 import { useMemo, useEffect, useRef } from 'react';
-import { find, map } from 'lodash';
+import { find } from 'lodash';
 
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';

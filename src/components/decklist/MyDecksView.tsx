@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { useSelector } from 'react-redux';

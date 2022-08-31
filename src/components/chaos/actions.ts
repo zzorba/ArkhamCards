@@ -14,7 +14,7 @@ import { ChaosTokenType } from '@app_constants';
 import { AppState } from '@reducers';
 import { ChaosBagActions } from '@data/remote/chaosBag';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import { Campaign_Difficulty, Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 
 
 function updateChaosBagResults(
@@ -92,9 +92,6 @@ export function updateChaosBagTarotMode(
     }
   };
 }
-
-
-
 
 export function updateChaosBagDifficultyOverride(
   actions: ChaosBagActions,

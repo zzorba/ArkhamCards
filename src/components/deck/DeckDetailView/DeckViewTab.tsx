@@ -31,7 +31,6 @@ import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import { useAppDispatch } from '@app/store';
 import { MANDY_CODE } from '@data/deck/specialMetaSlots';
-import { updateDeck } from '@reducers/decks';
 
 interface Props {
   componentId: string;
@@ -129,7 +128,7 @@ export default function DeckViewTab(props: Props) {
     if (tabooSetId && tabooSetId >= 5 && deck.investigator_code === MANDY_CODE && deckEditsRef.current) {
       dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [{ key: 'deck_size_selected', value: '50' }]))
     }
-  }, [dispatch, deckId]);
+  }, [dispatch, deckId, deckEditsRef, deck.investigator_code]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     if (deckEditsRef.current) {
       dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [{ key, value }]));

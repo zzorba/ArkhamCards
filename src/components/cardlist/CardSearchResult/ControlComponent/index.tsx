@@ -9,6 +9,7 @@ import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
 import { DeckId } from '@actions/types';
 import ShuffleButton, { DraftButton } from './ShuffleButton';
+import { DiscountComponent } from './DiscountComponent';
 
 export type ControlType = {
   type: 'deck';
@@ -50,6 +51,10 @@ export type ControlType = {
 } | {
   type: 'draft';
   onDraft: (card: Card) => void;
+} | {
+  type: 'discount';
+  available: number;
+  used: number;
 }
 
 interface Props {
@@ -98,6 +103,10 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
           reversed={control.reversed}
           useGestureHandler={useGestureHandler}
         />
+      );
+    case 'discount':
+      return (
+        <DiscountComponent available={control.available} used={control.used} />
       );
   }
 }

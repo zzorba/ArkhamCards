@@ -435,7 +435,7 @@ export default function DrawChaosBagComponent(props: Props) {
         </View>
       </View>
     );
-  }, [sealButton, handleResetBlessCursePressed, tarotButton, fontScale, hasBlessCurse]);
+  }, [sealButton, difficultyButton, handleResetBlessCursePressed, tarotButton, fontScale, hasBlessCurse]);
   const specialTokenSection = useMemo(() => {
     if (!scenarioCardText) {
       return null;
