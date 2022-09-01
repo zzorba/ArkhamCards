@@ -4292,12 +4292,6 @@ msgstr "困難"
 msgid "Expert difficulty"
 msgstr "專家"
 
-msgid "— Difficulty —"
-msgstr "— 難度 —"
-
-msgid "— Available Scenarios —"
-msgstr "— 可進行的冒險 —"
-
 msgid "Scenario settings"
 msgstr "冒險設置"
 
@@ -5786,10 +5780,59 @@ msgstr ""
 msgid "Dossier"
 msgid_plural "Dossiers"
 msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgid "Departing from ${ location }"
 msgstr ""
+
+msgid "Customization upgrades"
+msgstr ""
+
+msgid "Special discounts"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] ""
+
+msgid "Difficulty override"
+msgstr ""
+
+msgid "Easy / Standard"
+msgstr ""
+
+msgid "Hard / Expert"
+msgstr ""
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr ""
+
+msgid "Select scenario effects difficulty"
+msgstr ""
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Use campaign setting"
+msgstr ""
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] ""
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7644,6 +7687,22 @@ msgctxt "Taboo List"
 msgid "None"
 msgstr "無"
 
+msgctxt "Tarot Card"
+msgid "None"
+msgstr "無"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "審判·XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "審判·XX(逆位)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "VS"
+
 msgctxt "card-chooser"
 msgid "Choose additional"
 msgstr ""
@@ -7729,18 +7788,6 @@ msgctxt "trauma"
 msgid "None"
 msgstr "無"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "無"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "審判·XX"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "審判·XX(逆位)"
-
 msgctxt "campaign"
 msgid "Custom"
 msgstr "自訂"
@@ -7752,10 +7799,6 @@ msgstr "劇本"
 msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "獨立冒險"
-
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"

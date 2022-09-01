@@ -4560,12 +4560,6 @@ msgstr "Poziom trudny"
 msgid "Expert difficulty"
 msgstr "Poziom ekspercki"
 
-msgid "— Difficulty —"
-msgstr "— Poziom trudności —"
-
-msgid "— Available Scenarios —"
-msgstr "— Dostępny scenariusze —"
-
 msgid "Scenario settings"
 msgstr "Ustawienia scenariusza"
 
@@ -6161,11 +6155,62 @@ msgid "Dossier"
 msgid_plural "Dossiers"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Departing from ${ location }"
 msgstr ""
+
+msgid "Customization upgrades"
+msgstr ""
+
+msgid "Special discounts"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Difficulty override"
+msgstr ""
+
+msgid "Easy / Standard"
+msgstr ""
+
+msgid "Hard / Expert"
+msgstr ""
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr ""
+
+msgid "Select scenario effects difficulty"
+msgstr ""
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Use campaign setting"
+msgstr ""
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8108,6 +8153,22 @@ msgctxt "Taboo List"
 msgid "None"
 msgstr "Brak"
 
+msgctxt "Tarot Card"
+msgid "None"
+msgstr "Brak"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "Sąd Ostateczny · XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "Sąd Ostateczny · XX (Odwrócony)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "VS"
+
 msgctxt "card-chooser"
 msgid "Choose additional"
 msgstr "Wybierz dodatkową"
@@ -8209,18 +8270,6 @@ msgctxt "trauma"
 msgid "None"
 msgstr "Brak"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "Brak"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "Sąd Ostateczny · XX"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "Sąd Ostateczny · XX (Odwrócony)"
-
 msgctxt "campaign"
 msgid "Custom"
 msgstr "Własna"
@@ -8232,10 +8281,6 @@ msgstr "Kampanie"
 msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "Scenariusze pojedyncze"
-
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"
