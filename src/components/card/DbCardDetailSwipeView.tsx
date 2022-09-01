@@ -63,7 +63,9 @@ const options = (passProps: CardDetailSwipeProps) => {
   };
 };
 
-function ScrollableCard({ componentId, mode, customizationsEditable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler }: {
+const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
+
+function ScrollableCard(props: {
   componentId: string;
   card: Card | undefined;
   customizationsEditable: boolean | undefined;
@@ -78,11 +80,12 @@ function ScrollableCard({ componentId, mode, customizationsEditable, card, setCh
   showInvestigatorCards: (code: string) => void;
   mode?: 'view' | 'edit' | 'upgrade';
 }) {
+  const { componentId, mode, customizationsEditable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
-  const customizationChoices = useMemo(() => {
+  const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
     if (card && deckId) {
-      return (deckCount ? customizations[card.code] || [] : []);
+      return (deckCount && customizations[card.code]) || NO_CUSTOMIZATIONS;
     }
     return undefined;
   }, [deckId, customizations, card, deckCount])
@@ -293,7 +296,7 @@ function DbCardDetailSwipeView(props: Props) {
   ): React.ReactNode => {
     return (
       <ScrollableCard
-        key={itemIndex}
+        key={`${itemIndex}-${card?.code}`}
         card={card}
         width={width}
         height={height}
