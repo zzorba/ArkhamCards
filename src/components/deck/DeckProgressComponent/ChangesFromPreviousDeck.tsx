@@ -53,16 +53,24 @@ export default function ChangesFromPreviousDeck({
     investigator,
     changes,
   } = parsedDeck;
-  const getCards = useCallback((slots: Slots): Card[] => {
+  const getCards = useCallback((slots: Slots, id: string): {
+    id: string;
+    card: Card;
+  }[] => {
     if (!keys(slots).length) {
       return [];
     }
-    return sortBy(
+    return map(sortBy(
       sortBy(
         flatMap(keys(slots), code => cards[code] || []),
         card => card.xp || 0),
       card => card.name
-    );
+    ), card => {
+      return {
+        id,
+        card,
+      };
+    });
   }, [cards]);
 
   const discountCards = useMemo(() => {
@@ -86,26 +94,31 @@ export default function ChangesFromPreviousDeck({
       return [];
     }
     return concat(
-      map(discountCards, card => card.card),
-      getCards(changes.upgraded),
-      getCards(changes.added),
-      getCards(changes.removed),
-      getCards(changes.customized),
-      getCards(changes.exiled),
+      map(discountCards, card => {
+        return {
+          id: 'discount',
+          card: card.card,
+        };
+      }),
+      getCards(changes.upgraded, 'upgraded'),
+      getCards(changes.added, 'added'),
+      getCards(changes.removed, 'removed'),
+      getCards(changes.customized, 'customized'),
+      getCards(changes.exiled, 'exiled'),
     );
   }, [changes, discountCards, getCards]);
 
-  const showCardPressed = useCallback((card: Card) => {
+  const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(componentId, card.code, card, colors, true, parsedDeck.id, parsedDeck.customizations);
     } else {
       showCardSwipe(
         componentId,
-        map(allCards, card => card.code),
+        map(allCards, card => card.card.code),
         undefined,
-        findIndex(allCards, c => c.code === card.code),
+        findIndex(allCards, c => c.id === id && c.card.code === card.code),
         colors,
-        allCards,
+        map(allCards, c => c.card),
         true,
         tabooSetId,
         parsedDeck.id,
@@ -115,22 +128,23 @@ export default function ChangesFromPreviousDeck({
         editable
       );
     }
-  }, [colors, allCards, componentId, investigator, parsedDeck.id,
+  }, [colors, allCards, investigator, componentId, parsedDeck.id,
     parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
   const faction = parsedDeck.investigator.factionCode();
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
-    const cards = getCards(slots);
+    const cards = getCards(slots, id);
     if (!cards.length) {
       return null;
     }
     return (
       <>
         <DeckBubbleHeader title={title} />
-        { map(cards, (card, idx) => (
+        { map(cards, ({ card }, idx) => (
           <CardSearchResult
-            onPress={showCardPressed}
+            onPressId={showCardPressed}
             key={card.code}
+            id={id}
             card={card}
             control={{
               type: 'count',
@@ -190,8 +204,9 @@ export default function ChangesFromPreviousDeck({
           { map(discountCards, ({ discount, card }, idx) => {
             return (
               <CardSearchResult
-                onPress={showCardPressed}
+                onPressId={showCardPressed}
                 key={card.code}
+                id="discount"
                 card={card}
                 control={{
                   type: 'discount',
