@@ -87,7 +87,7 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.2)
-  - hermes-engine (0.69.4)
+  - hermes-engine (0.69.5)
   - HMSegmentedControl (1.5.6)
   - leveldb-library (1.22.1)
   - libevent (2.1.12)
@@ -789,7 +789,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMAppAuth: 4d8f864896f3646f0c33baf38a28362f4c601e15
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  hermes-engine: 761a544537e62df2a37189389b9d2654dc1f75af
+  hermes-engine: 479687cd0904b24f1b2ae71d1196b44786af5601
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
