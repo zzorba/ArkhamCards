@@ -176,15 +176,17 @@ export default function ChangesFromPreviousDeck({
       { !!(discountCards.length || remainingFreeCards) && (
         <>
           <DeckBubbleHeader title={t`Special discounts`} />
-          <View style={space.paddingSideS}>
-            <Text style={typography.text}>
-              { ngettext(
-                msgid`${remainingFreeCards} additional level 0 card may be added to the deck without spending experience.`,
-                `Up to ${remainingFreeCards} level 0 cards may be added to the deck  without spending experience.`,
-                remainingFreeCards
-              ) }
-            </Text>
-          </View>
+          { (remainingFreeCards > 0) && (
+            <View style={space.paddingSideS}>
+              <Text style={typography.text}>
+                { ngettext(
+                  msgid`${remainingFreeCards} additional level 0 card may be added to the deck without spending experience.`,
+                  `Up to ${remainingFreeCards} level 0 cards may be added to the deck  without spending experience.`,
+                  remainingFreeCards
+                ) }
+              </Text>
+            </View>
+          ) }
           { map(discountCards, ({ discount, card }, idx) => {
             return (
               <CardSearchResult
