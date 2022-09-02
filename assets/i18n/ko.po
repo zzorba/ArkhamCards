@@ -4150,7 +4150,7 @@ msgid "Learn more"
 msgstr "더 배워보기"
 
 msgid "Save will update your deck with the card changes listed above."
-msgstr "덱을 향상하려면 아래의 카드 변경점 목록을 저장하십시오."
+msgstr "위의 카드 변경 사항이 반영되도록 저장 버튼을 눌러 덱을 최신화하십시오."
 
 msgid "Campaign log"
 msgstr "캠페인 기록지"
@@ -5763,8 +5763,7 @@ msgstr "특성 추가"
 #, javascript-format
 msgid "${ quantity } copy"
 msgid_plural "${ quantity } copies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ quantity }장의 사본"
 
 msgid "Embark"
 msgstr "승선"
@@ -5876,10 +5875,10 @@ msgid "Departing from ${ location }"
 msgstr "출발지: ${ location }"
 
 msgid "Customization upgrades"
-msgstr ""
+msgstr "맞춤형 카드 향상"
 
 msgid "Special discounts"
-msgstr ""
+msgstr "특별 할인"
 
 #, javascript-format
 msgid ""
@@ -5889,39 +5888,47 @@ msgid_plural ""
 "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
 "without spending experience."
 msgstr[0] ""
+"경험치를 소비하지 않고 추가적인 레벨 0 카드를 ${ remainingFreeCards }장까지 "
+"덱에 추가할 수 있습니다."
+msgstr[1] ""
+"경험치를 소비하지 않고 레벨 0 카드를 최대 ${ remainingFreeCards }장까지 덱에 "
+"추가할 수 있습니다."
 
 msgid "Difficulty override"
-msgstr ""
+msgstr "난이도 덮어쓰기"
 
 msgid "Easy / Standard"
-msgstr ""
+msgstr "쉬움 / 보통"
 
 msgid "Hard / Expert"
-msgstr ""
+msgstr "어려움 / 전문가"
 
 #, javascript-format
 msgid "Difficulty override: ${ msg[difficulty] }"
-msgstr ""
+msgstr "난이도 덮어쓰기: ${ msg[difficulty] }"
 
 msgid "Select scenario effects difficulty"
-msgstr ""
+msgstr "난이도에 따른 시나리오 효과 선택"
 
 msgid ""
 "In order to support custom modes like \"Stan-hard\", you may choose to use "
 "either side of the scenario reference card to show token effects and odds "
 "calculations in the app."
 msgstr ""
+"참조 카드는 보통 난이도로 사용하고 혼돈 주머니 구성은 어려움 난이도로 하는 “보통-어려움” "
+"등의 사용자 지정 모드를 지원하기 위해 시나리오 참조 카드의 양쪽 중 하나를 선택하여 "
+"토큰 효과와는 다르게 확률 계산기에 표시하도록 앱에서 선택할 수 있습니다."
 
 msgid "Disabled"
-msgstr ""
+msgstr "비활성화"
 
 msgid "Use campaign setting"
-msgstr ""
+msgstr "캠페인 설정 사용"
 
 #, javascript-format
 msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
-msgstr[0] ""
+msgstr[0] "${ used } / ${ available } 사용"
 
 msgctxt "investigator"
 msgid "Custom"
