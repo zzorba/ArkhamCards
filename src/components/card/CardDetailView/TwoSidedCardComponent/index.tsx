@@ -313,16 +313,18 @@ export default function TwoSidedCardComponent(props: Props) {
           borderTopWidth: noHeader ? 1 : 0,
         }]}>
           { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width - s * 2)} linked={!!linked} /> }
-          <View removeClippedSubviews style={[
-            styles.cardBody,
-            {
-              backgroundColor: noHeader ? 'transparent' : colors.background,
-            },
-            !isFirst ? {
-              borderBottomLeftRadius: 8,
-              borderBottomRightRadius: 8,
-            } : undefined,
-          ]}>
+          <View
+            style={[
+              styles.cardBody,
+              {
+                backgroundColor: noHeader ? 'transparent' : colors.background,
+              },
+              !isFirst ? {
+                borderBottomLeftRadius: 8,
+                borderBottomRightRadius: 8,
+              } : undefined,
+            ]}
+          >
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
                 <View style={styles.metadataBlock}>

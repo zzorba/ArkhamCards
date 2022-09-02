@@ -22,7 +22,8 @@ import { QuerySort } from '@data/sqlite/types';
 export interface CardSelectorProps {
   query?: Brackets;
   selection: string[];
-  onSelect: (cards: string[]) => void;
+  selectedCards?: Card[];
+  onSelect: (codes: string[], cards: Card[]) => void;
   includeStoryToggle: boolean;
   uniqueName: boolean;
   max?: number;
@@ -34,9 +35,12 @@ const SORT: QuerySort[] = [
   { s: 'c.xp', direction: 'ASC' },
 ];
 
-export default function CardSelectorView({ max, query, selection: initialSelection, onSelect, includeStoryToggle, uniqueName }: Props) {
+export default function CardSelectorView({ max, query, selection: initialSelection, selectedCards: initialSelectedCards, onSelect, includeStoryToggle, uniqueName }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
-  const [selection, setSelection] = useState(mapValues(keyBy(initialSelection), () => true));
+  const [{ selection, selectedCards }, setSelection] = useState({
+    selection: mapValues(keyBy(initialSelection), () => true),
+    selectedCards: initialSelectedCards || [],
+  });
   const [storyToggle, setStoryToggle] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const selectedCount = useMemo(() => {
@@ -49,14 +53,15 @@ export default function CardSelectorView({ max, query, selection: initialSelecti
     const newSelection = {
       ...selection,
     };
+    const newSelectedCards = count > 0 ? [...selectedCards, card] : filter(selectedCards, c => c.code !== card.code);
     if (count > 0) {
       newSelection[card.code] = true;
     } else {
       delete newSelection[card.code];
     }
-    setSelection(newSelection);
-    onSelect(keys(newSelection));
-  }, [selection, onSelect]);
+    setSelection({ selection: newSelection, selectedCards: newSelectedCards });
+    onSelect(keys(newSelection), newSelectedCards);
+  }, [selection, onSelect, selectedCards]);
 
   const renderCards = useCallback((cards: Card[], loading: boolean) => {
     if (loading || cards.length === 0) {

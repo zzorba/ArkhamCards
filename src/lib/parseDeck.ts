@@ -54,7 +54,7 @@ import {
   ACE_OF_RODS_CODE,
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
-import { CustomizationChoice } from '@data/types/CustomizationOption';
+import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
 
 function filterBy(
   cardIds: CardId[],
@@ -270,7 +270,7 @@ export function getCards(
     if (!card) {
       return [];
     }
-    const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
+    const customizedCard = card.withCustomizations(listSeperator, customizations[card.code], 'getCards');
     return map(
       range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
       () => customizedCard
@@ -687,6 +687,46 @@ export function parseCustomizationDecision(value: string | undefined): Customiza
   });
 }
 
+export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: string | undefined, option: CustomizationOption, cards: CardsMap): CustomizationChoice {
+  if (!option.choice) {
+    return {
+      type: undefined,
+      ...basic,
+    };
+  }
+  switch (option.choice) {
+    case 'remove_slot':
+      return {
+        type: 'remove_slot',
+        ...basic,
+        encodedChoice: choice || '0',
+        choice: parseInt(choice || '0', 10),
+      };
+    case 'choose_trait':
+      return {
+        type: 'choose_trait',
+        ...basic,
+        encodedChoice: choice || '',
+        choice: filter(map(choice?.split('^') || [], x => x.trim()), x => !!x),
+      };
+    case 'choose_card': {
+      const codes = choice?.split('^') || [];
+      return {
+        type: 'choose_card',
+        ...basic,
+        choice: codes,
+        encodedChoice: choice || '',
+        cards: flatMap(codes, code => cards[code] || []),
+      };
+    }
+    default:
+      return {
+        type: undefined,
+        ...basic,
+      };
+  }
+}
+
 export function parseCustomizations(
   meta: DeckMeta,
   slots: Slots,
@@ -704,47 +744,36 @@ export function parseCustomizations(
     const previousEntry = previousMeta?.[`cus_${code}`];
     const previousDecisions = previousEntry ? parseCustomizationDecision(previousEntry) : [];
     const decisions = parseCustomizationDecision(value);
+
     const previousSelections: CustomizationChoice[] = flatMap(card.customization_options, option => {
       const previous = find(previousDecisions, pd => pd.index === option.index);
       if (!previous && option.xp) {
         return [];
       }
-      const basic = {
+      const basic: CoreCustomizationChoice = {
         option,
         xp_spent: previous?.spent_xp || 0,
         xp_locked: previous?.spent_xp || 0,
         editable: false,
         unlocked: (previous?.spent_xp || 0) === option.xp,
       };
-      if (!option.choice) {
-        return basic;
-      }
-      return {
-        ...basic,
-        choice: previous?.choice,
-      };
+      return processAdvancedChoice(basic, previous?.choice, option, cards);
     })
     previousCustomizations[code] = previousSelections;
-    const selections: CustomizationChoice[] = flatMap(card.customization_options, option => {
+    const selections: CustomizationChoice[] = flatMap(card.customization_options, (option): CustomizationChoice[] | CustomizationChoice => {
       const decision = find(decisions, d => d.index === option.index);
       const previous = find(previousDecisions, pd => pd.index === option.index);
       if (!decision && option.xp) {
         return [];
       }
-      const basic = {
+      const basic: CoreCustomizationChoice = {
         option,
         xp_spent: decision?.spent_xp || 0,
         xp_locked: previous?.spent_xp || 0,
         editable: !previous || (previous.spent_xp < (option.xp || 0)),
         unlocked: (decision?.spent_xp || 0) === option.xp,
       };
-      if (!option.choice) {
-        return basic;
-      }
-      return {
-        ...basic,
-        choice: decision?.choice,
-      };
+      return processAdvancedChoice(basic, decision?.choice, option, cards);
     })
     result[code] = selections;
   });
@@ -790,7 +819,7 @@ export function parseDeck(
       if (!card) {
         return [];
       }
-      const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
+      const customizedCard = card.withCustomizations(listSeperator, customizations[card.code], 'quantityParse');
       const invalid = !validation.canIncludeCard(customizedCard, false);
       return {
         id,

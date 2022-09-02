@@ -154,7 +154,7 @@ function CardDetailView({
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
   const { listSeperator } = useContext(LanguageContext);
   const customizationChoices = customizations[id];
-  const card = useMemo(() => originalCard?.withCustomizations(listSeperator, customizationChoices), [listSeperator, originalCard, customizationChoices]);
+  const card = useMemo(() => originalCard?.withCustomizations(listSeperator, customizationChoices, 'detail'), [listSeperator, originalCard, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
     if (card) {

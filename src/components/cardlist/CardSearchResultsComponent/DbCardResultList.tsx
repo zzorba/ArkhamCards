@@ -997,7 +997,7 @@ export default function({
         return (
           <CardSearchResult
             key={item.id}
-            card={card.withCustomizations(listSeperator, customizations?.[card.code])}
+            card={card.withCustomizations(listSeperator, customizations?.[card.code], 'list')}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"

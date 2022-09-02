@@ -35,6 +35,25 @@ export type SlotCodeType =
   'ally' |
   'tarot';
 
+export function asSlotCodeType(val: string | undefined): SlotCodeType | undefined {
+  if (!val) {
+    return undefined;
+  }
+  switch (val) {
+    case 'hand':
+    case 'hand x2':
+    case 'arcane':
+    case 'arcane x2':
+    case 'accessory':
+    case 'body':
+    case 'ally':
+    case 'tarot':
+      return val;
+    default:
+      return undefined;
+  }
+}
+
 export const SLOTS: SlotCodeType[] = [
   'hand',
   'hand x2',
@@ -269,6 +288,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
+export const RAVEN_QUILL_CODE = '09042';
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';
 export const SHREWD_ANALYSIS_CODE = '04106';

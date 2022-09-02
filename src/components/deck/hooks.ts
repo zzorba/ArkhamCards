@@ -2,7 +2,7 @@ import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, u
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
-import { filter, find, forEach, keys, sortBy, range, uniq } from 'lodash';
+import { filter, find, forEach, keys, sortBy, range, uniq, flatMap } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +13,12 @@ import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
-import { parseCustomizations, parseDeck } from '@lib/parseDeck';
+import { parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { RANDOM_BASIC_WEAKNESS, RAVEN_QUILL_CODE } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { ShowAlert } from './dialogs';
@@ -59,13 +59,25 @@ export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | unde
 
 export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: EditDeckState | undefined): Customizations | undefined {
   const slots = deckEdits?.slots;
-  const codes = useMemo(() => slots ? keys(slots) : [], [slots]);
+  const ravenChoice = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const codes = useMemo(() => {
+    const ravenQuillChoices = flatMap(
+      parseCustomizationDecision(ravenChoice),
+      choice => {
+        if (!choice.choice) {
+          return [];
+        }
+        return choice.choice?.split('^') || [];
+      });
+    const slotCodes = slots ? keys(slots) : [];
+    return [...ravenQuillChoices, ...slotCodes];
+  }, [slots, ravenChoice]);
   const [cards] = useCardMap(codes, 'player');
   const meta = deckEdits?.meta;
   const previousMeta = deck?.previousDeck?.meta;
   return useMemo(() => {
     return (meta && slots && cards) ? parseCustomizations(meta, slots, cards, previousMeta)[0] : undefined;
-  }, [meta, slots, previousMeta, cards])
+  }, [meta, slots, previousMeta, cards]);
 }
 
 export function useDeckSlotCount({ uuid }: DeckId, code: string, side?: boolean): number {
@@ -156,6 +168,15 @@ function useParsedDeckHelper(
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing ? deck : undefined, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(() => {
+    const ravenQuillChoices = flatMap(
+      parseCustomizationDecision(deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`]),
+      choice => {
+        if (!choice.choice) {
+          return [];
+        }
+        return choice.choice?.split('^') || [];
+      });
+
     return uniq([
       ...(deck ? [deck.investigator] : []),
       ...keys(deckEdits?.side),
@@ -165,6 +186,7 @@ function useParsedDeckHelper(
       ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
       ...keys(deck?.previousDeck?.slots || {}),
       ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+      ...ravenQuillChoices,
     ]);
   }, [deckEdits, deck], tabooSetId);
   const visible = useComponentVisible(componentId);
@@ -274,7 +296,7 @@ export function useCardCustomizations(
       const decision = {
         index: choice.option.index,
         spent_xp: choice.xp_spent,
-        choice: choice.choice,
+        choice: choice.type ? choice.encodedChoice : undefined,
       };
       dispatch(updateDeckCustomizationChoice(deckId, deckEditsRef.current, code, decision));
     }

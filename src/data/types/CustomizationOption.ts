@@ -1,18 +1,43 @@
 import { map } from 'lodash';
 import { Column } from 'typeorm/browser';
+import Card from './Card';
 import DeckOption from './DeckOption';
 
 const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
 
-
-export interface CustomizationChoice {
+export interface CoreCustomizationChoice {
   xp_spent: number;
   xp_locked: number;
   editable: boolean;
   unlocked: boolean;
   option: CustomizationOption;
-  choice?: string;
 }
+
+interface BasicCustomizationChoice extends CoreCustomizationChoice {
+  type: undefined;
+}
+
+export interface RemoveSlotCustomizationChoice extends CoreCustomizationChoice {
+  type: 'remove_slot';
+  encodedChoice: string;
+  choice: number;
+}
+
+export interface ChooseTraitCustomizationChoice extends CoreCustomizationChoice {
+  type: 'choose_trait';
+  encodedChoice: string;
+  choice: string[];
+}
+
+export interface ChooseCardCustomizationChoice extends CoreCustomizationChoice {
+  type: 'choose_card',
+  encodedChoice: string;
+  choice: string[]
+  cards: Card[];
+}
+
+export type AdvancedCustomizationChoice = RemoveSlotCustomizationChoice | ChooseTraitCustomizationChoice | ChooseCardCustomizationChoice;
+export type CustomizationChoice = BasicCustomizationChoice | AdvancedCustomizationChoice;
 
 export default class CustomizationOption {
   @Column('integer', { nullable: true })

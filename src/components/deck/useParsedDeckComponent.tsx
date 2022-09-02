@@ -581,7 +581,7 @@ export default function useParsedDeckComponent({
     return (
       <CardSearchResult
         key={item.index}
-        card={card.withCustomizations(listSeperator, cardCustomizations)}
+        card={card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}

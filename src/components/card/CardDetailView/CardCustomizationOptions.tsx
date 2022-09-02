@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy } from 'lodash';
+import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy, uniqBy } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
 import Card from '@data/types/Card';
-import CustomizationOption, { CustomizationChoice } from '@data/types/CustomizationOption';
+import CustomizationOption, { AdvancedCustomizationChoice, ChooseCardCustomizationChoice, ChooseTraitCustomizationChoice, CustomizationChoice, RemoveSlotCustomizationChoice } from '@data/types/CustomizationOption';
 import StyleContext from '@styles/StyleContext';
 import CardTextComponent from '../CardTextComponent';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
@@ -133,11 +133,11 @@ function XpControl({ option, choice, xp, onInc, onDec, onSet } : {
 
 function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
   card: Card;
-  setChoice: (choice: string) => void;
+  setChoice: (choice: RemoveSlotCustomizationChoice) => void;
   editable: boolean;
-  choice: CustomizationChoice;
+  choice: RemoveSlotCustomizationChoice;
 }) {
-  const [selectedValue, setSelection] = useState(parseInt(choice.choice || '0', 10));
+  const [selectedValue, setSelection] = useState(choice.choice);
   const items = useMemo(() => {
     const real_slots = card.real_slot?.split('.') || [];
     return flatMap(card.slot?.split('.'), (slot, index) => {
@@ -154,8 +154,12 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
   }, [card.real_slot, card.slot]);
   const onChange = useCallback((index: number) => {
     setSelection(index);
-    setChoice(`${index}`);
-  }, [setChoice, setSelection]);
+    setChoice({
+      ...choice,
+      encodedChoice: `${index}`,
+      choice: index,
+    });
+  }, [setChoice, setSelection, choice]);
   const [dialog, showDialog] = usePickerDialog({
     title: t`Choose slot to remove`,
     items,
@@ -179,14 +183,27 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
   );
 }
 
-function ToggleCard({ card, selectedCodes, quantity, setSelectedCodes, last }: { card: Card; quantity: number; selectedCodes: string[]; setSelectedCodes: (codes: string[]) => void; last?: boolean }) {
+function ToggleCard({ card, selectedCodes, selectedCards, quantity, setSelection, last }: {
+  card: Card;
+  quantity: number;
+  selectedCodes: string[];
+  selectedCards: Card[];
+  setSelection: (codes: string[], cards: Card[]) => void;
+  last?: boolean;
+}) {
   const onToggle = useCallback((value: boolean) => {
     if (value) {
-      setSelectedCodes(uniq([...selectedCodes, card.code]))
+      setSelection(
+        uniq([...selectedCodes, card.code]),
+        uniqBy([...selectedCards, card], c => c.code)
+      );
     } else {
-      setSelectedCodes(filter(selectedCodes, code => code !== card.code));
+      setSelection(
+        filter(selectedCodes, code => code !== card.code),
+        filter(selectedCards, c => c.code !== card.code)
+      );
     }
-  }, [card.code, selectedCodes, setSelectedCodes]);
+  }, [card, setSelection, selectedCodes, selectedCards]);
   const selected = !!find(selectedCodes, code => code === card.code);
   return (
     <CardSearchResult
@@ -206,9 +223,9 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
   componentId: string;
   card: Card;
   deckId?: DeckId;
-  setChoice: (choice: string) => void;
+  setChoice: (choice: ChooseCardCustomizationChoice) => void;
   editable: boolean;
-  choice: CustomizationChoice;
+  choice: ChooseCardCustomizationChoice;
 }) {
   const { listSeperator } = useContext(LanguageContext);
   const deckEditState = useSimpleDeckEdits(deckId);
@@ -221,11 +238,19 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
     });
     return codes;
   }, [deckEditState]);
-  const [selectedCodes, setSelectedCodes] = useState<string[]>(choice.choice?.split('^') || []);
-  useEffectUpdate(() => {
-    setChoice(selectedCodes.join('^'));
-  }, [selectedCodes]);
-  const [selectedCards, loading] = useCardList(selectedCodes, 'player');
+  const [{ selection, selectedCards }, setSelected] = useState({
+    selection: choice.choice,
+    selectedCards: choice.cards,
+  });
+  const onSelect = useCallback((codes: string[], cards: Card[]) => {
+    setSelected({ selection: codes, selectedCards: cards });
+    setChoice({
+      ...choice,
+      choice: codes,
+      cards,
+      encodedChoice: codes.join('^'),
+    })
+  }, [choice, setSelected, setChoice]);
   const [inDeckCards, loadingDeck] = useCardList(inDeckCodes, 'player');
   const query = useMemo(() =>{
     if (!choice.option.card) {
@@ -242,8 +267,9 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
         name: 'Guide.CardSelector',
         passProps: {
           query,
-          selection: selectedCodes,
-          onSelect: setSelectedCodes,
+          selection,
+          selectedCards,
+          onSelect,
           includeStoryToggle: true,
           uniqueName: false,
           max: choice.option.quantity || 1,
@@ -260,7 +286,7 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
         },
       },
     });
-  }, [setSelectedCodes, componentId, query, choice, selectedCodes]);
+  }, [onSelect, componentId, query, choice, selection, selectedCards]);
   const selectedText = useMemo(() => map(selectedCards, c => c.name).join(listSeperator), [selectedCards, listSeperator])
   const quantity = choice.option.quantity || 1;
   const title = editable ?
@@ -271,7 +297,7 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
     const eligibleCards = sortBy(filter(inDeckCards, card =>
       !!choice.option.card && card.matchesOption(choice.option.card)
     ), card => card.name);
-    const canSelectMore = (choice.option.quantity || 1) > selectedCodes.length;
+    const canSelectMore = (choice.option.quantity || 1) > selection.length;
     const nonDeckSelected = filter(selectedCards, card => {
       return !find(inDeckCodes, code => card.code === code);
     });
@@ -285,8 +311,9 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
               key={card.code}
               card={card}
               quantity={choice.option.quantity || 1}
-              selectedCodes={selectedCodes}
-              setSelectedCodes={setSelectedCodes}
+              selectedCodes={selection}
+              selectedCards={selectedCards}
+              setSelection={onSelect}
               last={idx === (eligibleCards.length - 1) && !canSelectMore && !nonDeckSelected.length}
             />
           )) }
@@ -298,8 +325,9 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
               key={card.code}
               card={card}
               quantity={choice.option.quantity || 1}
-              selectedCodes={selectedCodes}
-              setSelectedCodes={setSelectedCodes}
+              selectedCodes={selection}
+              selectedCards={selectedCards}
+              setSelection={onSelect}
               last={idx === (nonDeckSelected.length - 1) && !canSelectMore}
             />
           )) }
@@ -313,7 +341,7 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
         ) }
       </View>
     );
-  }, [loadingDeck, selectedCards, selectedCodes, setSelectedCodes, inDeckCards, showCardPicker, choice, inDeckCodes])
+  }, [loadingDeck, selectedCards, selection, onSelect, inDeckCards, showCardPicker, choice, inDeckCodes])
   const { dialog, showDialog, setVisible } = useDialog({
     title,
     content,
@@ -367,14 +395,18 @@ function TraitLine({ trait, editable, onRemove, index }: { trait: string; index:
 function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
   componentId: string;
   card: Card;
-  setChoice: (choice: string) => void;
+  setChoice: (choice: ChooseTraitCustomizationChoice) => void;
   editable: boolean;
-  choice: CustomizationChoice;
+  choice: ChooseTraitCustomizationChoice;
 }) {
   const { listSeperator } = useContext(LanguageContext);
-  const [selectedTraits, setSelectedTraits] = useState<string[]>(filter(map(choice.choice?.split('^') || [], x => x.trim()), x => !!x));
+  const [selectedTraits, setSelectedTraits] = useState<string[]>(choice.choice);
   useEffectUpdate(() => {
-    setChoice(selectedTraits.join('^'));
+    setChoice({
+      ...choice,
+      encodedChoice: selectedTraits.join('^'),
+      choice: selectedTraits,
+    });
   }, [selectedTraits]);
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
   const selectedText = useMemo(() => selectedTraits.join(listSeperator), [selectedTraits, listSeperator])
@@ -472,27 +504,23 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
   );
 }
 
-function AdvancedControl({ componentId, deckId, card, type, editable, choice, setChoice }: {
+function AdvancedControl({ componentId, deckId, card, editable, choice, setChoice }: {
   componentId: string;
   deckId?: DeckId;
   card: Card;
-  type: string;
   editable: boolean;
-  choice: CustomizationChoice;
-  setChoice: (index: number, xp: number, decision: string) => void;
+  choice: AdvancedCustomizationChoice;
+  setChoice: (choice: AdvancedCustomizationChoice) => void;
 }) {
   const { typography } = useContext(StyleContext);
-  const onSetChoice = useCallback((decision: string) => {
-    setChoice(choice.option.index, choice.option.xp || 0, decision);
-  }, [setChoice, choice.option])
-  switch (type) {
+  switch (choice.type) {
     case 'remove_slot':
       return (
         <RemoveSlotAdvancedControl
           card={card}
           editable={editable}
           choice={choice}
-          setChoice={onSetChoice}
+          setChoice={setChoice}
         />
       );
     case 'choose_card':
@@ -502,7 +530,7 @@ function AdvancedControl({ componentId, deckId, card, type, editable, choice, se
           card={card}
           editable={editable}
           choice={choice}
-          setChoice={onSetChoice}
+          setChoice={setChoice}
           deckId={deckId}
         />
       );
@@ -513,7 +541,7 @@ function AdvancedControl({ componentId, deckId, card, type, editable, choice, se
           card={card}
           editable={editable}
           choice={choice}
-          setChoice={onSetChoice}
+          setChoice={setChoice}
         />
       );
     default:
@@ -542,16 +570,13 @@ function CustomizationLine({ componentId, card, option, deckId, editable, mode, 
   const { borderStyle } = useContext(StyleContext);
   const choice = find(choices, o => o.option.index === option.index);
   const onXpChange = useCallback((index: number, xp: number) => {
-    const choice = card.customizationChoice(index, xp);
+    const choice = card.customizationChoice(index, xp, undefined, {});
     if (choice) {
       setChoice(card.code, choice);
     }
   }, [setChoice, card]);
-  const onChoiceChange = useCallback((index: number, xp: number, decision: string) => {
-    const choice = card.customizationChoice(index, xp, decision);
-    if (choice) {
-      setChoice(card.code, choice);
-    }
+  const onChoiceChange = useCallback((choice: AdvancedCustomizationChoice) => {
+    setChoice(card.code, choice);
   }, [setChoice, card])
 
   const xpBoxes = editable ? undefined : (repeat('☒', choice?.xp_spent || 0) + repeat('☐', (option.xp || 0) - (choice?.xp_spent || 0)));
@@ -600,10 +625,9 @@ function CustomizationLine({ componentId, card, option, deckId, editable, mode, 
           </View>
         ) }
       </View>
-      { !!option.choice && !!choice?.unlocked && (
+      { !!option.choice && !!choice?.unlocked && !!choice.type && (
         <AdvancedControl
           componentId={componentId}
-          type={option.choice}
           card={card}
           editable={editable && choice.editable}
           deckId={deckId}

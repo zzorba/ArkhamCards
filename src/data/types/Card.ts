@@ -11,6 +11,7 @@ import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
 import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
+import { processAdvancedChoice } from '@lib/parseDeck';
 
 const SICKENING_REALITY_CARDS = new Set(['03065b', '03066b', '03067b', '03068b', '03069b'])
 const SERPENTS_OF_YIG = '04014';
@@ -582,7 +583,7 @@ export default class Card {
     return card;
   }
 
-  public customizationChoice(index: number, xp: number, choice?: string): CustomizationChoice | undefined {
+  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap): CustomizationChoice | undefined {
     if (!this.customization_options) {
       return undefined;
     }
@@ -590,21 +591,20 @@ export default class Card {
     if (!option) {
       return undefined;
     }
-    return {
+    return processAdvancedChoice({
       option,
       xp_spent: xp,
       xp_locked: 0,
       unlocked: option.xp === xp,
       editable: true,
-      choice,
-    };
+    }, choice, option, cards);
   }
 
-  public withCustomizations(listSeperator: string, customizations?: CustomizationChoice[]): Card {
+  public withCustomizations(listSeperator: string, customizations: CustomizationChoice[] | undefined, location: string): Card {
     if (!this.customization_options) {
       return this;
     }
-    if (!customizations || !find(customizations, c => c.xp_spent)) {
+    if (!customizations || !find(customizations, c => c.xp_spent || c.unlocked)) {
       return this;
     }
     const card = this.clone();
@@ -612,6 +612,8 @@ export default class Card {
     card.xp = Math.floor((xp_spent + 1) / 2.0);
     const unlocked = sortBy(filter(customizations, c => c.unlocked), c => c.option.index);
     const lines = (card.text || '').split('\n');
+
+    const text_edits: string[] = [];
     forEach(unlocked, (change) => {
       const option = change.option;
       if (option.health) {
@@ -632,16 +634,21 @@ export default class Card {
       if (option.real_traits) {
         card.real_traits = option.real_traits;
       }
-      let text_edit = option.text_edit;
+      let text_edit = option.text_edit || '';
       if (option.text_change && option.choice) {
-        switch (option.choice) {
-          case 'choose_trait':
-            text_edit = text_edit + (change.choice?.split('^').map(x => `[[${x}]]`).join(listSeperator) || '');
+        switch (change.type) {
+          case 'choose_trait': {
+            const traits = (change.choice.map(x => `[[${x}]]`).join(listSeperator) || '');
+            text_edit = traits ? text_edit.replace('_____', `<u>${traits}</u>`) : text_edit;
             break;
+          }
           case 'choose_card':
-            // TODO???
+            const cardNames = change.cards.map(card => card.name).join(listSeperator)
+            text_edit = cardNames ? `${text_edit} <u>${cardNames}</u>` : text_edit;
+            break;
         }
       }
+      text_edits.push(text_edit);
       if (option.text_change && text_edit) {
         const position = option.position || 0;
         if (option.choice !== 'choose_card') {
@@ -657,16 +664,16 @@ export default class Card {
               break;
             case 'append':
               lines.push(text_edit);
+              break;
           }
         }
       }
       if (option.choice) {
-        switch(option.choice) {
+        switch(change.type) {
           case 'remove_slot': {
-            const choice = parseInt(change.choice || '0', 10);
             if (card.real_slot) {
               card.real_slot = flatMap(card.real_slot.split('.'), (slot, index) => {
-                if (index === choice) {
+                if (index === change.choice) {
                   return [];
                 }
                 return slot.trim();
@@ -674,7 +681,7 @@ export default class Card {
             }
             if (card.slot) {
               card.slot = flatMap(card.slot.split('.'), (slot, index) => {
-                if (index === choice) {
+                if (index === change.choice) {
                   return [];
                 }
                 return slot.trim();
@@ -685,24 +692,19 @@ export default class Card {
       }
     });
     const final_lines: string[] = [];
+    forEach(unlocked, ({ option }, idx) => {
+      const text_edit = text_edits[idx];
+      if (option.text_change === 'insert' && option.position === -1 && text_edit) {
+        final_lines.push(text_edit);
+      }
+    });
+
     forEach(lines, (line, idx) => {
       final_lines.push(line);
-      forEach(unlocked, ({ option, choice }) => {
-        if (option.text_change === 'insert' && option.position === idx) {
-          let text_edit = option.text_edit;
-          if (option.text_change && option.choice) {
-            switch (option.choice) {
-              case 'choose_trait':
-                text_edit = text_edit + (choice?.split('^').map(x => `[[${x}]]`).join(listSeperator) || '');
-                break;
-              case 'choose_card':
-                // TODO: skip for now?
-                return;
-            }
-          }
-          if (text_edit) {
-            final_lines.push(text_edit);
-          }
+      forEach(unlocked, ({ option }, unlockedIdx) => {
+        const text_edit = text_edits[unlockedIdx];
+        if (option.text_change === 'insert' && option.position === idx && text_edit) {
+          final_lines.push(text_edit);
         }
       });
     });

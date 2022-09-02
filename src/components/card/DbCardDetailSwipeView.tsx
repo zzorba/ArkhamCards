@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
-import Carousel from 'react-native-snap-carousel';
+import ReanimatedCarousel from 'react-native-reanimated-carousel';
+import SnapCarousel from 'react-native-snap-carousel'
+import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { find, filter, map, slice } from 'lodash';
@@ -90,7 +92,7 @@ function ScrollableCard(props: {
     return undefined;
   }, [deckId, customizations, card, deckCount])
   const customizedCard = useMemo(() => {
-    return card?.withCustomizations(listSeperator, customizationChoices);
+    return card?.withCustomizations(listSeperator, customizationChoices, 'customizedCard');
   }, [card, listSeperator, customizationChoices]);
   if (!customizedCard) {
     return (
@@ -155,7 +157,7 @@ function DbCardDetailSwipeView(props: Props) {
 
   const currentCard = useMemo(() => {
     const card = cards[currentCode];
-    return card && card.withCustomizations(listSeperator, customizations[currentCode]);
+    return card && card.withCustomizations(listSeperator, customizations[currentCode], 'currentCard');
   }, [listSeperator, customizations, currentCode, cards]);
   useEffect(() => {
     const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));
@@ -292,8 +294,12 @@ function DbCardDetailSwipeView(props: Props) {
   const mode = deckEdits?.mode;
   const slots = deckEdits?.slots;
   const renderCard = useCallback((
-    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
-  ): React.ReactNode => {
+    { item: card, index: itemIndex }: {
+      item: Card | undefined;
+      index: number;
+      animationValue?: Animated.SharedValue<number>;
+    }
+  ): React.ReactElement => {
     return (
       <ScrollableCard
         key={`${itemIndex}-${card?.code}`}
@@ -320,21 +326,45 @@ function DbCardDetailSwipeView(props: Props) {
     <View
       style={[styles.wrapper, backgroundStyle, { width, height }]}
     >
-      <Carousel
-        vertical={false}
-        data={data}
-        firstItem={initialIndex}
-        initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
-        maxToRenderPerBatch={3}
-        renderItem={renderCard}
-        sliderWidth={width}
-        itemWidth={width}
-        useExperimentalSnap
-        shouldOptimizeUpdates
-        onScrollIndexChanged={setIndex}
-        disableIntervalMomentum
-        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
-      />
+      { Platform.OS === 'android' ? (
+        <ReanimatedCarousel
+          width={width}
+          vertical={false}
+          windowSize={4}
+          data={data}
+          defaultIndex={initialIndex}
+          snapEnabled
+          style={{ width: '100%' }}
+          mode="parallax"
+          modeConfig={{
+            parallaxScrollingScale: 1,
+            parallaxScrollingOffset: 25,
+            parallaxAdjacentItemScale: 0.9,
+          }}
+          scrollAnimationDuration={350}
+          renderItem={renderCard}
+          onSnapToItem={setIndex}
+          panGestureHandlerProps={{
+            activeOffsetX: [10, 10],
+          }}
+        />
+      ) : (
+        <SnapCarousel
+          vertical={false}
+          data={data}
+          firstItem={initialIndex}
+          initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
+          maxToRenderPerBatch={3}
+          renderItem={renderCard}
+          sliderWidth={width}
+          itemWidth={width}
+          useExperimentalSnap
+          shouldOptimizeUpdates
+          onScrollIndexChanged={setIndex}
+          disableIntervalMomentum
+          apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
+        />
+      ) }
       { deckId !== undefined && (
         <>
           <DeckNavFooter
