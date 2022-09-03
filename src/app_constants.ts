@@ -4,7 +4,6 @@ import { t } from 'ttag';
 
 import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 
-export const ENABLE_SIDE_DECK = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA = true;
