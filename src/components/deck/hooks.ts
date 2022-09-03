@@ -72,11 +72,14 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
     const slotCodes = slots ? keys(slots) : [];
     return [...ravenQuillChoices, ...slotCodes];
   }, [slots, ravenChoice]);
-  const [cards] = useCardMap(codes, 'player');
+  const [cards] = useCardMap(codes, 'player', deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id);
   const meta = deckEdits?.meta;
   const previousMeta = deck?.previousDeck?.meta;
   return useMemo(() => {
-    return (meta && slots && cards) ? parseCustomizations(meta, slots, cards, previousMeta)[0] : undefined;
+    if (!meta || !slots || !cards) {
+      return undefined;
+    }
+    return parseCustomizations(meta, slots, cards, previousMeta)[0];
   }, [meta, slots, previousMeta, cards]);
 }
 

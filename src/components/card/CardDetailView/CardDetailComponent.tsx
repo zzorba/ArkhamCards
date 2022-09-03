@@ -134,7 +134,7 @@ export default function CardDetailComponent({ componentId, card, backCard, width
   }
 
   return (
-    <View key={card.code} style={[styles.viewContainer, backgroundStyle]}>
+    <View style={[styles.viewContainer, backgroundStyle]}>
       <View style={{ width }}>
         <TwoSidedCardComponent
           componentId={componentId}

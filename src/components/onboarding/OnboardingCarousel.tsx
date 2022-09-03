@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { View } from 'react-native';
 
-import Carousel from 'react-native-reanimated-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
 import StyleContext from '@styles/StyleContext';
 import { m } from '@styles/space';
 import { useModal } from '@components/deck/dialogs';
@@ -53,7 +53,7 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
   }, [slides.length, onEndReached])
   return (
     <View style={{ width, height: height - m * 2 - NOTCH_BOTTOM_PADDING }}>
-      <Carousel
+      <SnapCarousel
         vertical={false}
         data={slidesWithDummy}
         defaultIndex={0}

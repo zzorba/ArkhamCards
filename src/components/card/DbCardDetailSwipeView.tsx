@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
-import ReanimatedCarousel from 'react-native-reanimated-carousel';
-import SnapCarousel from 'react-native-snap-carousel'
+import SnapCarousel from 'react-native-snap-carousel';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -298,11 +297,11 @@ function DbCardDetailSwipeView(props: Props) {
       item: Card | undefined;
       index: number;
       animationValue?: Animated.SharedValue<number>;
-    }
+    }, options: any
   ): React.ReactElement => {
     return (
       <ScrollableCard
-        key={`${itemIndex}-${card?.code}`}
+        key={itemIndex}
         card={card}
         width={width}
         height={height}
@@ -326,45 +325,22 @@ function DbCardDetailSwipeView(props: Props) {
     <View
       style={[styles.wrapper, backgroundStyle, { width, height }]}
     >
-      { Platform.OS === 'android' ? (
-        <ReanimatedCarousel
-          width={width}
-          vertical={false}
-          windowSize={4}
-          data={data}
-          defaultIndex={initialIndex}
-          snapEnabled
-          style={{ width: '100%' }}
-          mode="parallax"
-          modeConfig={{
-            parallaxScrollingScale: 1,
-            parallaxScrollingOffset: 25,
-            parallaxAdjacentItemScale: 0.9,
-          }}
-          scrollAnimationDuration={350}
-          renderItem={renderCard}
-          onSnapToItem={setIndex}
-          panGestureHandlerProps={{
-            activeOffsetX: [10, 10],
-          }}
-        />
-      ) : (
-        <SnapCarousel
-          vertical={false}
-          data={data}
-          firstItem={initialIndex}
-          initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
-          maxToRenderPerBatch={3}
-          renderItem={renderCard}
-          sliderWidth={width}
-          itemWidth={width}
-          useExperimentalSnap
-          shouldOptimizeUpdates
-          onScrollIndexChanged={setIndex}
-          disableIntervalMomentum
-          apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
-        />
-      ) }
+      <SnapCarousel
+        vertical={false}
+        data={data}
+        firstItem={initialIndex}
+        initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
+        maxToRenderPerBatch={3}
+        renderItem={renderCard}
+        sliderWidth={width}
+        itemWidth={width}
+        useExperimentalSnap
+        onScrollIndexChanged={setIndex}
+        disableIntervalMomentum
+        activeSlideOffset={5}
+        shouldOptimizeUpdates
+        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
+      />
       { deckId !== undefined && (
         <>
           <DeckNavFooter

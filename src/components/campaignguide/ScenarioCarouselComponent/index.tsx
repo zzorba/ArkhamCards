@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
-import Carousel from 'react-native-snap-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
 import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
 import { t } from 'ttag';
@@ -71,7 +71,7 @@ export default function ScenarioCarouselComponent({
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
   const campaignMap = useMemo(() => campaignGuide.campaignMap(), [campaignGuide]);
-  const carousel = useRef<Carousel<CarouselItem>>(null);
+  const carousel = useRef<SnapCarousel<CarouselItem>>(null);
   const scenarioPressed = useRef<boolean>(false);
   const visible = useComponentVisible(componentId);
   useEffectUpdate(() => {
@@ -276,7 +276,7 @@ export default function ScenarioCarouselComponent({
   }, [onShowScenario, showAlert, onShowEmbark, processedCampaign, componentId,
     campaignMap,currentLocation, lastCompletedIndex, numScenarios, activeIndex]);
   return (
-    <Carousel
+    <SnapCarousel
       ref={carousel}
       vertical={false}
       itemWidth={width - m * 3}
