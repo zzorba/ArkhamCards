@@ -170,6 +170,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
         <SaveDecksInput
           id={step.id}
           componentId={componentId}
+          includeTrauma={step.input.trauma}
         />
       );
     case 'play_scenario':

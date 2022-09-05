@@ -1055,6 +1055,7 @@ export interface PrologueRandomizer {
 }
 export interface SaveDecksInput {
   type: "save_decks";
+  trauma?: boolean;
 }
 export interface TarotReadingInput {
   type: "tarot_reading";

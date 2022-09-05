@@ -1195,7 +1195,7 @@ export default class ScenarioStep {
       case 'save_decks': {
         const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
           return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
-        });
+        }) || input.trauma;
         if (!hasDeckChanges) {
           return this.proceedToNextStep(
             this.remainingStepIds,
@@ -1208,11 +1208,64 @@ export default class ScenarioStep {
           return undefined;
         }
 
+        const effectsWithInput: EffectsWithInput[] = [];
+        if (input.trauma) {
+          const investigators = this.campaignLog.investigators(false);
+          forEach(investigators, investigator => {
+            const choices = scenarioState.numberChoices(`${this.step.id}#${investigator.code}`);
+            if (choices !== undefined) {
+              const effects: Effect[] = [];
+              const physicalAdjust = (choices.physical && choices.physical[0]) || 0;
+              if (physicalAdjust !== 0) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  physical: physicalAdjust,
+                  hidden: true,
+                });
+              }
+              if (choices.killed && choices.killed[0]) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  killed: true,
+                  hidden: true,
+                });
+              }
+              const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
+              if (mentalAdjust !== 0) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  mental: mentalAdjust,
+                  hidden: true,
+                });
+              }
+              if (choices.insane && choices.insane[0]) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  insane: true,
+                  hidden: true,
+                });
+              }
+              if (effects.length) {
+                effectsWithInput.push({
+                  input: [investigator.code],
+                  effects,
+                });
+              }
+            }
+          });
+        }
+
+        effectsWithInput.push({ effects: [{ type: 'save_decks' }] });
+
         // Finally do the deck 'save' to bank it.
         return this.maybeCreateEffectsStep(
           this.step.id,
           this.remainingStepIds,
-          [{ effects: [{ type: 'save_decks' }] }],
+          effectsWithInput,
           scenarioState,
           {}
         );
