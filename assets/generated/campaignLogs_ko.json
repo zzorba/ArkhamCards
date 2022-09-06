@@ -4976,104 +4976,104 @@
         "entries": [
           {
             "id": "took_out_a_loan",
-            "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "masculine_text": "#name# 조사자가 대출을 받았다",
+            "feminine_text": "#name# 조사자가 대출을 받았다"
           },
           {
             "id": "architects_project_was_fully_completed",
-            "text": "the architects' project was fully completed."
+            "text": "설계자의 계획이 완전히 결실을 맺었다"
           },
           {
             "id": "architects_project_was_sabotaged",
-            "text": "the architects's project was sabotaged."
+            "text": "설계자의 계획이 방해받았다"
           },
           {
             "id": "arrived_on_schedule",
-            "text": "the investigators arrived on schedule."
+            "text": "조사자들이 예정대로 도착했다"
           },
           {
             "id": "chose_the_least_predictable_route",
-            "text": "the investigators chose the least predictable route."
+            "text": "조사자들은 예측 가능성이 낮은 경로를 선택했다"
           },
           {
             "id": "chose_the_most_direct_route",
-            "text": "the investigators chose the most direct route."
+            "text": "조사자들은 직항로를 선택했다"
           },
           {
             "id": "chose_the_most_populous_route",
-            "text": "the investigators chose the most popular route."
+            "text": "조사자들은 유동 인구가 많은 경로를 선택했다"
           },
           {
             "id": "cthulhu_reigns",
-            "text": "Cthulhu reigns over all humankind."
+            "text": "크툴루가 전 인류를 통치한다"
           },
           {
             "id": "cthulhu_slumbers",
-            "text": "Cthulhu slumbers in the deep once more."
+            "text": "크툴루가 다시 한 번 깊은 곳에서 잠에 빠져 들었다"
           },
           {
             "id": "cults_project_nears_completion",
-            "text": "the cult's project nears completion."
+            "text": "이교도의 계획이 막바지에 도달했다"
           },
           {
             "id": "escaped_rlyeh",
-            "text": "the investigators escaped from R'lyeh."
+            "text": "조사자들이 르리예에서 탈출했다"
           },
           {
             "id": "expelled_the_traitors",
-            "text": "the investigators expelled the traitors."
+            "text": "조사자들이 배신자를 축출했다"
           },
           {
             "id": "explored_the_myra_louise",
-            "text": "the investigators explored the Myra Louise."
+            "text": "조사자들이 마이라 루이스호를 탐사했다"
           },
           {
             "id": "exposed_the_traitors",
-            "text": "the investigators exposed the traitors."
+            "text": "조사자들이 배신자를 드러냈다"
           },
           {
             "id": "failed_to_find_the_myra_louise",
-            "text": "the investigators failed to find the Myra Louise."
+            "text": "조사자들이 마이라 루이스호를 찾는데 실패했다"
           },
           {
             "id": "failed_to_stop_the_traitors_plan",
-            "text": "the investigators failed to stop the traitors' plan."
+            "text": "조사자들이 배신자들의 계획을 막는데 실패했다"
           },
           {
             "id": "forced_to_withdraw",
-            "text": "the investigators were forced to withdraw."
+            "text": "조사자들이 철수할 수 밖에 없었다"
           },
           {
             "id": "found_the_missing_artifacts",
-            "text": "the investigators found the missing artifacts."
+            "text": "조사자들이 잃어버린 유물을 찾았다"
           },
           {
             "id": "found_the_myra_louise",
-            "text": "the investigators found the Myra Louise."
+            "text": "조사자들이 마이라 루이스호를 찾았다"
           },
           {
             "id": "have_been_observed",
-            "text": "the investigators have been observed."
+            "text": "조사자들이 감시당했다"
           },
           {
             "id": "interviewed_the_broker",
-            "text": "the investigators interviewed the broker."
+            "text": "조사자들이 브로커를 추궁했다"
           },
           {
             "id": "know_the_full_story",
-            "text": "the investigators know the full story."
+            "text": "조사자들이 사건의 모든 전말을 알아냈다"
           },
           {
             "id": "left_the_auction_early",
-            "text": "the investigators left the auction early."
+            "text": "조사자들이 일찍 경매장을 떠났다"
           },
           {
             "id": "severely_delayed",
-            "text": "the investigators were severely delayed."
+            "text": "조사자들이 크게 지체되었다"
           },
           {
             "id": "understand_the_truth",
-            "text": "the investigators understand the truth."
+            "text": "조사자들이 사건의 진상을 알아냈다"
           }
         ]
       },
@@ -5082,27 +5082,27 @@
         "entries": [
           {
             "id": "glen",
-            "text": "Glen Conroy"
+            "text": "글렌 콘로이"
           },
           {
             "id": "hector",
-            "text": "Hector Sutton"
+            "text": "헥터 서턴"
           },
           {
             "id": "paul",
-            "text": "Paul Kellerman"
+            "text": "폴 켈러먼"
           },
           {
             "id": "rodney",
-            "text": "Rodney Duvall"
+            "text": "로드니 듀발"
           },
           {
             "id": "ulysses",
-            "text": "Ulysses Hill"
+            "text": "율리시스 힐"
           },
           {
             "id": "wallace",
-            "text": "Wallce Thorpe"
+            "text": "윌리스 소프"
           }
         ]
       },
@@ -5111,31 +5111,27 @@
         "entries": [
           {
             "id": "glen",
-            "text": "Glen Conroy"
+            "text": "글렌 콘로이"
           },
           {
             "id": "hector",
-            "text": "Hector Sutton"
+            "text": "헥터 서턴"
           },
           {
             "id": "paul",
-            "text": "Paul Kellerman"
+            "text": "폴 켈러먼"
           },
           {
             "id": "rodney",
-            "text": "Rodney Duvall"
+            "text": "로드니 듀발"
           },
           {
             "id": "ulysses",
-            "text": "Ulysses Hill"
+            "text": "율리시스 힐"
           },
           {
             "id": "wallace",
-            "text": "Wallace Thorpe"
-          },
-          {
-            "id": "wallace",
-            "text": "Wallce Thorpe"
+            "text": "윌리스 소프"
           }
         ]
       },
