@@ -4093,9 +4093,6 @@ msgstr ""
 msgid "Learn more"
 msgstr "瞭解更多"
 
-msgid "Save will update your deck with the card changes listed above."
-msgstr "以上的變更將會儲存到你的牌組。"
-
 msgid "Campaign log"
 msgstr "冒險日誌"
 
@@ -5835,6 +5832,9 @@ msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

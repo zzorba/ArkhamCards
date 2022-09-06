@@ -4149,9 +4149,6 @@ msgstr ""
 msgid "Learn more"
 msgstr "더 배워보기"
 
-msgid "Save will update your deck with the card changes listed above."
-msgstr "위의 카드 변경 사항이 반영되도록 저장 버튼을 눌러 덱을 최신화하십시오."
-
 msgid "Campaign log"
 msgstr "캠페인 기록지"
 
@@ -5924,6 +5921,9 @@ msgstr "캠페인 설정 사용"
 msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] "${ used } / ${ available } 사용"
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

@@ -4321,9 +4321,6 @@ msgstr ""
 msgid "Learn more"
 msgstr "Saber mais"
 
-msgid "Save will update your deck with the card changes listed above."
-msgstr "Salvar atualizará seu baralho com as alterações de cartas listadas acima"
-
 msgid "Campaign log"
 msgstr "Registro de campanha"
 
@@ -6140,6 +6137,9 @@ msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
