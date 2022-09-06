@@ -69,7 +69,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const dateUpdatePrompt = useSelector((state: AppState) => state.packs.dateUpdatePrompt || undefined);
   const cardCount = useCallback(async() => {
     const cards = await db.cards();
-    return await cards.count({ loadEagerRelations: false });
+    return await cards.count();
   }, [db]);
   const { anonClient } = useContext(ApolloClientContext);
 

@@ -165,10 +165,5 @@ declare module 'react-native-markdown-view' {
    */
   class MarkdownView extends React.Component<MarkdownViewProps> {}
 
-  interface MarkdownTextProps {
-    style: TextStyle | (TextStyle | undefined)[];
-    children?: string;
-  }
-  class MarkdownText extends React.Component<MarkdownTextProps> {}
-  export { MarkdownView, MarkdownText };
+  export { MarkdownView };
 }

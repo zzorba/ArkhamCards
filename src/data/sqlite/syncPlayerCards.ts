@@ -20,7 +20,7 @@ export default async function syncPlayerCards(
 ) {
   try {
     const start = new Date();
-    const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).getMany());
+    const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().getMany());
     const weaknessCardsP = db.cardsQuery().then(qb => qb.where(BASIC_WEAKNESS_QUERY_WITH_RBW).getMany());
 
     const cards = await weaknessCardsP;

@@ -44,7 +44,6 @@ export const syncTaboos = async function(
     if (cache && cache.lastModified && cache.tabooCount > 0) {
       const cards = await db.cards();
       const tabooCount = await cards.createQueryBuilder()
-        .setFindOptions({ loadEagerRelations: false })
         .where('taboo_set_id > 0')
         .getCount();
       if (tabooCount === cache.tabooCount) {
@@ -71,25 +70,25 @@ export const syncTaboos = async function(
     updateProgress(0.92);
     VERBOSE && console.log('Starting to update Taboos');
     const cardsRep = await db.cards();
-    await cardsRep.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).where('taboo_set_id > 0').delete().execute();
+    await cardsRep.createQueryBuilder().where('taboo_set_id > 0').delete().execute();
     VERBOSE && console.log('Deleted old Taboo cards');
 
     await cardsRep.createQueryBuilder()
-      .setFindOptions({ loadEagerRelations: false })
       .update()
       .where('(code in (:...codes) OR duplicate_of_code in (:...codes)) AND (taboo_set_id is null)', { codes: allTabooCards })
       .set({ taboo_set_id: 0 })
       .execute();
     VERBOSE && console.log('Found base taboo cards');
-    const baseTabooCards: Card[] = await (await db.cards()).createQueryBuilder('c').setFindOptions({ loadEagerRelations: false })
+    const baseTabooCards: Card[] = await (await db.cards()).createQueryBuilder('c')
       .where('(c.code IN (:...codes) OR c.duplicate_of_code in (:...codes)) AND c.taboo_set_id = 0')
+      .leftJoin('c.linked_card', 'linked_card')
       .setParameters({ codes: allTabooCards })
       .addSelect(Card.ELIDED_FIELDS)
       .getMany();
     updateProgress(0.95);
 
     const tabooSetsRep = await db.tabooSets();
-    await tabooSetsRep.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
+    await tabooSetsRep.createQueryBuilder().delete().execute();
 
     const queryRunner = await db.startTransaction();
     const tabooSets: TabooSet[] = [];
@@ -152,7 +151,7 @@ export const syncTaboos = async function(
     updateProgress(0.98);
 
     await tabooSetsRep.insert(tabooSets);
-    const tabooCount = await cardsRep.createQueryBuilder().setFindOptions({ loadEagerRelations: false })
+    const tabooCount = await cardsRep.createQueryBuilder()
       .where('taboo_set_id > 0')
       .getCount();
     updateProgress(1.0);
@@ -226,21 +225,11 @@ export const syncRules = async function(
   VERBOSE && console.log('Parsed all rules');
 
   const [simpleRules, complexRules] = partition(allRules, r => !r.rules);
-  forEach(rules, r => {
-    if (!r.id) {
-      console.log(r.title);
-    }
-  })
   await insertChunk(sqliteVersion, simpleRules, async rules => await db.insertRules(rules));
   VERBOSE && console.log('Inserted all simple rules');
 
   for (let i = 0; i < complexRules.length; i++) {
     const r = complexRules[i];
-    forEach(r.rules, r2 => {
-      if (!r2.id) {
-        console.log(r2.title);
-      }
-    })
     await db.insertRules([
       r,
       ...flatMap(r.rules || [], r2 => [r2, ...(r2.rules || [])]),
@@ -357,7 +346,7 @@ export const syncCards = async function(
       cache.cardCount > 0
     ) {
       const cards = await db.cards();
-      const cardCount = await cards.createQueryBuilder('card').setFindOptions({ loadEagerRelations: false })
+      const cardCount = await cards.createQueryBuilder('card')
         .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
         .getCount();
       if (cardCount === cache.cardCount) {
@@ -427,7 +416,7 @@ export const syncCards = async function(
         handleDerivativeData(dedupedCustomCards, {});
         VERBOSE && console.log('Clearing out old custom cards');
         const cardsDb = await db.cards();
-        await cardsDb.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).where(`code like 'z%'`).delete().execute();
+        await cardsDb.createQueryBuilder().where(`code like 'z%'`).delete().execute();
 
         const queryRunner = await db.startTransaction();
         try {
@@ -479,10 +468,10 @@ export const syncCards = async function(
     const rules = await db.rules();
 
     // Delete the tables.
-    await cards.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
-    await encounterSets.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
-    await tabooSets.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
-    await rules.createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
+    await cards.createQueryBuilder().delete().execute();
+    await encounterSets.createQueryBuilder().delete().execute();
+    await tabooSets.createQueryBuilder().delete().execute();
+    await rules.createQueryBuilder().delete().execute();
     await db.clearCache();
     VERBOSE && console.log('Cleared old database');
     updateProgress(0.22);
@@ -599,7 +588,6 @@ export const syncCards = async function(
     VERBOSE && console.log('Inserted normal cards');
     updateProgress(0.90);
     const cardCount = await cards.createQueryBuilder('card')
-      .setFindOptions({ loadEagerRelations: false })
       .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
       .getCount();
     return {
@@ -616,7 +604,6 @@ export const syncCards = async function(
 export const getFaqEntry = async function(db: Database, code: string) {
   const faqs = await db.faqEntries();
   const faqEntry = await faqs.createQueryBuilder()
-    .setFindOptions({ loadEagerRelations: false })
     .where('code = :code')
     .setParameters({ code })
     .getOne();

@@ -133,9 +133,9 @@ export default function DiagnosticsView() {
 
   const clearDatabase = useCallback(async() => {
     await (await db.cardsQuery()).delete().execute();
-    await (await db.encounterSets()).createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
-    await (await db.faqEntries()).createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
-    await (await db.tabooSets()).createQueryBuilder().setFindOptions({ loadEagerRelations: false }).delete().execute();
+    await (await db.encounterSets()).createQueryBuilder().delete().execute();
+    await (await db.faqEntries()).createQueryBuilder().delete().execute();
+    await (await db.tabooSets()).createQueryBuilder().delete().execute();
   }, [db]);
   const apollo = useApolloClient();
   const doSyncCards = useCallback(() => {
