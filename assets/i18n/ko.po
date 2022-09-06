@@ -5923,7 +5923,7 @@ msgid_plural "${ used } / ${ available } used"
 msgstr[0] "${ used } / ${ available } 사용"
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
-msgstr ""
+msgstr "당신은 레벨 0-1 다른 수호자 그리고/또는 생존자 카드를 최대 15장까지만 포함시킬 수 있습니다."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6757,7 +6757,7 @@ msgstr "클로버 클럽"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "해안가"
 
 msgctxt "trait"
 msgid "Composure"
@@ -7657,27 +7657,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "조력자? 생물"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "이 개놈아!"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "성"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr ""
+msgstr "의자"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr ""
+msgstr "체스"
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "세련된"
 
 msgctxt "trait"
 msgid "Consort"
@@ -7685,7 +7685,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr ""
+msgstr "시체"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7693,11 +7693,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Dilemma"
-msgstr ""
+msgstr "딜레마"
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr ""
+msgstr "번화가"
 
 msgctxt "trait"
 msgid "Eidolon"
@@ -7713,11 +7713,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "개 친구들"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "신발(못 신는다)"
 
 msgctxt "trait"
 msgid "Glacier"
@@ -7729,11 +7729,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Machine"
-msgstr ""
+msgstr "기계"
 
 msgctxt "trait"
 msgid "Madness?"
-msgstr ""
+msgstr "정신이상?"
 
 msgctxt "trait"
 msgid "Mainland"
@@ -7749,15 +7749,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "음악"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "음악가"
 
 msgctxt "trait"
 msgid "Northside"
-msgstr ""
+msgstr "북부"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -7769,7 +7769,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Possessed"
-msgstr ""
+msgstr "홀린"
 
 msgctxt "trait"
 msgid "Present"
@@ -7781,7 +7781,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "멍멍이"
 
 msgctxt "trait"
 msgid "Resonant"
@@ -7789,15 +7789,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "제한구역"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "칸"
 
 msgctxt "trait"
 msgid "Scientist"
-msgstr ""
+msgstr "과학자"
 
 msgctxt "trait"
 msgid "Shapeshifter"
@@ -7809,19 +7809,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "경사"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "병사"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "거기 서!"
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "탁자"
 
 msgctxt "trait"
 msgid "That's bad"
@@ -7829,11 +7829,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr ""
+msgstr "배신자"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "털진 숲"
 
 msgctxt "trait"
 msgid "Uncharted"
@@ -7849,11 +7849,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "날씨"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "뭐? 안 돼"
 
 #, javascript-format
 msgctxt "filter"
