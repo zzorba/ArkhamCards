@@ -1798,7 +1798,7 @@
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah đã chết."
           },
           {
             "id": "on_gavriellas_trail",
@@ -1835,7 +1835,7 @@
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids đã chết."
           },
           {
             "id": "on_jeromes_trail",
@@ -1872,7 +1872,7 @@
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas đã chết."
           },
           {
             "id": "on_valentinos_trail",
@@ -1909,7 +1909,7 @@
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White đã chết."
           },
           {
             "id": "on_pennys_trail",
@@ -1922,8 +1922,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -1935,35 +1935,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette đã dạy cho bạn những phép thuật cổ."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "các điều tra viên đã bắt giữ Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "các điều tra viên đã bắt giữ Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "các điều tra viên yêu cầu Anette hỗ trợ mình."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "các điều tra viên đã yêu cầu Sanford hỗ trợ."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "các điều tra viên đã nắm quyền kiểm soát Silver Twilight Lodge."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth đã nuốt chửng cả vũ trụ."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth thiu thiu ngủ... cho lúc này."
           },
           {
             "id": "being_hunted",
@@ -1975,7 +1975,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "các điều tra viên tiếp tục một mình."
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
@@ -1991,7 +1991,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "diệt vong ngày càng đến gần."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -2055,7 +2055,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "con đường uốn lượn trước mặt bạn: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2079,7 +2079,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "các điều tra viên ký vào Cuốn sách Hắc ám của Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -3004,7 +3004,7 @@
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah đã chết."
           },
           {
             "id": "on_gavriellas_trail",
@@ -3041,7 +3041,7 @@
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids đã chết."
           },
           {
             "id": "on_jeromes_trail",
@@ -3078,7 +3078,7 @@
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas đã chết."
           },
           {
             "id": "on_valentinos_trail",
@@ -3115,7 +3115,7 @@
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White đã chết."
           },
           {
             "id": "on_pennys_trail",
@@ -3128,8 +3128,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3141,35 +3141,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette đã dạy cho bạn những phép thuật cổ."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "các điều tra viên đã bắt giữ Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "các điều tra viên đã bắt giữ Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "các điều tra viên yêu cầu Anette hỗ trợ mình."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "các điều tra viên đã yêu cầu Sanford hỗ trợ."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "các điều tra viên đã nắm quyền kiểm soát Silver Twilight Lodge."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth đã nuốt chửng cả vũ trụ."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth thiu thiu ngủ... cho lúc này."
           },
           {
             "id": "being_hunted",
@@ -3181,7 +3181,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "các điều tra viên tiếp tục một mình."
           },
           {
             "id": "deceiving_the_lodge",
@@ -3193,7 +3193,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "diệt vong ngày càng đến gần."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -3249,7 +3249,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "con đường uốn lượn trước mặt bạn: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -3273,7 +3273,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "các điều tra viên ký vào Cuốn sách Hắc ám của Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
