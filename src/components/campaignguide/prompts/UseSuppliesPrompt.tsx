@@ -31,7 +31,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
       const supplies = investigagorSupplies[investigator.code] || {};
       const entry = find(supplies.entries || [],
         entry => entry.id === input.id &&
-          !supplies.crossedOut[entry.id] &&
+          !entry.crossedOut &&
           entry.type === 'count'
       );
       limits[investigator.code] = (entry && entry.type === 'count') ? entry.count : 0;

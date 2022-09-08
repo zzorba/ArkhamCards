@@ -32,6 +32,7 @@ import PartnerTraumaComponent from './PartnerTraumaComponent';
 import InvestigatorChoicePartnerComponent from './InvestigatorChoicePartnerComponent';
 import PartnerChoiceComponent from './PartnerChoiceComponent';
 import ChoiceListPrompt from './ChoiceListPrompt';
+import { getOperand } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: InputStep;
@@ -93,8 +94,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           longLived={!!step.input.long_lived}
           delta={!!step.input.delta}
           confirmText={step.input.confirm_text}
-          min={step.input.min}
-          max={step.input.max}
+          min={step.input.min ? getOperand(step.input.min, campaignLog) : undefined}
+          max={step.input.max ? getOperand(step.input.max, campaignLog) : undefined}
           text={step.text}
         />
       );
@@ -141,6 +142,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           step={step}
           input={step.input}
           campaignLog={campaignLog}
+          min={step.input.min ? getOperand(step.input.min, campaignLog) : undefined}
+          max={step.input.max ? getOperand(step.input.max, campaignLog) : undefined}
         />
       );
     case 'investigator_choice_supplies':
@@ -167,6 +170,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
         <SaveDecksInput
           id={step.id}
           componentId={componentId}
+          includeTrauma={step.input.trauma}
         />
       );
     case 'play_scenario':

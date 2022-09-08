@@ -17,6 +17,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "against_the_wendigo"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "all_or_nothing"
   },
   {
@@ -49,6 +53,10 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "jennys_choice"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "machinations_through_time"
   },
   {
@@ -69,7 +77,15 @@
   },
   {
     "campaignId": "side",
+    "scenarioId": "the_colour_out_of_space"
+  },
+  {
+    "campaignId": "side",
     "scenarioId": "the_eternal_slumber"
+  },
+  {
+    "campaignId": "side",
+    "scenarioId": "the_fall_of_the_house_of_usher"
   },
   {
     "campaignId": "side",

@@ -51,7 +51,7 @@ function SearchOptions({
 function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { lang } = useContext(LanguageContext);
-  const { fontScale, width } = useContext(StyleContext);
+  const { fontScale } = useContext(StyleContext);
   const standalonesById = useMemo(() => {
     const scenarios = getStandaloneScenarios(lang);
     const result: {
@@ -94,7 +94,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       showNewCampaignDialog();
     }
   }, componentId, [showNewCampaignDialog]);
-
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     const [archived, unarchived] = partition(flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];

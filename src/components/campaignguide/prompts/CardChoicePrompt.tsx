@@ -34,7 +34,7 @@ const FILTER_BUILDER = new FilterBuilder('ccp');
 
 function basicQuery(q: CardSearchQuery): Brackets[] {
   const result: Brackets[] = [
-    ...(q.trait ? FILTER_BUILDER.traitFilter([q.trait], false) : []),
+    ...(q.traits ? FILTER_BUILDER.traitFilter(q.traits, false) : []),
   ];
   if (q.unique) {
     result.push(UNIQUE_FILTER);
@@ -57,7 +57,7 @@ function mainQuery(
 ): Brackets | undefined {
   const queries = flatMap(query, q => {
     if (q.code) {
-      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code']);
+      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code'], true);
     }
     switch (q.source) {
       case 'scenario': {

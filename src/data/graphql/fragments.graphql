@@ -1,3 +1,18 @@
+fragment EncounterSet on card_encounter_set {
+  code
+  name
+}
+fragment Pack on card_pack {
+  code
+  cycle_code
+  name
+  position
+}
+fragment Cycle on card_cycle {
+  code
+  name
+  position
+}
 fragment SingleCard on full_card {
   code
   cost
@@ -6,6 +21,8 @@ fragment SingleCard on full_card {
   encounter_position
   exile
   faction_code
+  faction2_code
+  faction3_code
   health
   health_per_investigator
   is_unique
@@ -54,6 +71,9 @@ fragment SingleCard on full_card {
   restrictions
   imagesrc
   backimagesrc
+  xp
+  alternate_required_code
+  clues_fixed
 }
 fragment CoreCardText on full_card_text {
   flavor
@@ -104,6 +124,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   sealed
   totalDrawn
   tarot
+  difficulty
 }
 
 fragment MiniDeck on campaign_deck {

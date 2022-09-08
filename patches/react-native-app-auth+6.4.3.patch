@@ -20,8 +20,7 @@ index 0000000..0d259dd
 +o/classes
 diff --git a/node_modules/react-native-app-auth/android/build/.transforms/4385e69e5c9e72ec263d1345e8bc52b2/transformed/classes/classes.dex b/node_modules/react-native-app-auth/android/build/.transforms/4385e69e5c9e72ec263d1345e8bc52b2/transformed/classes/classes.dex
 new file mode 100644
-index 0000000..3dc2810
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/.transforms/4385e69e5c9e72ec263d1345e8bc52b2/transformed/classes/classes.dex differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/.transforms/584432b7318eb31402ff892431537e7d/results.bin b/node_modules/react-native-app-auth/android/build/.transforms/584432b7318eb31402ff892431537e7d/results.bin
 new file mode 100644
 index 0000000..0d259dd
@@ -31,8 +30,7 @@ index 0000000..0d259dd
 +o/classes
 diff --git a/node_modules/react-native-app-auth/android/build/.transforms/584432b7318eb31402ff892431537e7d/transformed/classes/classes.dex b/node_modules/react-native-app-auth/android/build/.transforms/584432b7318eb31402ff892431537e7d/transformed/classes/classes.dex
 new file mode 100644
-index 0000000..17f51ac
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/.transforms/584432b7318eb31402ff892431537e7d/transformed/classes/classes.dex differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/generated/source/buildConfig/debug/com/rnappauth/BuildConfig.java b/node_modules/react-native-app-auth/android/build/generated/source/buildConfig/debug/com/rnappauth/BuildConfig.java
 new file mode 100644
 index 0000000..98d8fcd
@@ -177,20 +175,16 @@ index 0000000..9e26dfe
 \ No newline at end of file
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/debug/classes.jar b/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/debug/classes.jar
 new file mode 100644
-index 0000000..c1c83ac
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/debug/classes.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/release/classes.jar b/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/release/classes.jar
 new file mode 100644
-index 0000000..5446e3b
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/compile_library_classes_jar/release/classes.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/debug/R.jar b/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/debug/R.jar
 new file mode 100644
-index 0000000..5b03982
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/debug/R.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/release/R.jar b/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/release/R.jar
 new file mode 100644
-index 0000000..5b03982
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/compile_r_class_jar/release/R.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/compile_symbol_list/debug/R.txt b/node_modules/react-native-app-auth/android/build/intermediates/compile_symbol_list/debug/R.txt
 new file mode 100644
 index 0000000..d20252e
@@ -4039,172 +4033,130 @@ index 0000000..a5acd4a
 \ No newline at end of file
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/BuildConfig.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/BuildConfig.class
 new file mode 100644
-index 0000000..0bc7d89
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/BuildConfig.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$1.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$1.class
 new file mode 100644
-index 0000000..252cb5f
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$1.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$2.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$2.class
 new file mode 100644
-index 0000000..e54407f
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$2.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$3.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$3.class
 new file mode 100644
-index 0000000..1c7e268
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$3.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$4.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$4.class
 new file mode 100644
-index 0000000..ee7ebd3
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$4.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$5.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$5.class
 new file mode 100644
-index 0000000..219db60
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$5.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$6.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$6.class
 new file mode 100644
-index 0000000..5778c56
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$6.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$7.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$7.class
 new file mode 100644
-index 0000000..097b8dc
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$7.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$8.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$8.class
 new file mode 100644
-index 0000000..293f56c
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$8.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$9.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$9.class
 new file mode 100644
-index 0000000..9aa7e3a
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule$9.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule.class
 new file mode 100644
-index 0000000..fcd2cbc
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthModule.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthPackage.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthPackage.class
 new file mode 100644
-index 0000000..d8f6e9c
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/RNAppAuthPackage.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/CustomConnectionBuilder.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/CustomConnectionBuilder.class
 new file mode 100644
-index 0000000..66905c5
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/CustomConnectionBuilder.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/DateUtil.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/DateUtil.class
 new file mode 100644
-index 0000000..3ecb6dd
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/DateUtil.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/EndSessionResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/EndSessionResponseFactory.class
 new file mode 100644
-index 0000000..fa0c557
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/EndSessionResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/MapUtil.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/MapUtil.class
 new file mode 100644
-index 0000000..335e68a
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/MapUtil.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/RegistrationResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/RegistrationResponseFactory.class
 new file mode 100644
-index 0000000..661f3da
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/RegistrationResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/TokenResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/TokenResponseFactory.class
 new file mode 100644
-index 0000000..f57bf78
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/TokenResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class
 new file mode 100644
-index 0000000..c88e374
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class
 new file mode 100644
-index 0000000..9610ccf
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class
 new file mode 100644
-index 0000000..0076820
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/debug/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/BuildConfig.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/BuildConfig.class
 new file mode 100644
-index 0000000..68e8212
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/BuildConfig.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$1.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$1.class
 new file mode 100644
-index 0000000..252cb5f
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$1.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$2.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$2.class
 new file mode 100644
-index 0000000..e54407f
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$2.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$3.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$3.class
 new file mode 100644
-index 0000000..1c7e268
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$3.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$4.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$4.class
 new file mode 100644
-index 0000000..ee7ebd3
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$4.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$5.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$5.class
 new file mode 100644
-index 0000000..219db60
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$5.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$6.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$6.class
 new file mode 100644
-index 0000000..5778c56
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$6.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$7.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$7.class
 new file mode 100644
-index 0000000..097b8dc
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$7.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$8.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$8.class
 new file mode 100644
-index 0000000..293f56c
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$8.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$9.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$9.class
 new file mode 100644
-index 0000000..9aa7e3a
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule$9.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule.class
 new file mode 100644
-index 0000000..fcd2cbc
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthModule.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthPackage.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthPackage.class
 new file mode 100644
-index 0000000..d8f6e9c
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/RNAppAuthPackage.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/CustomConnectionBuilder.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/CustomConnectionBuilder.class
 new file mode 100644
-index 0000000..66905c5
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/CustomConnectionBuilder.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/DateUtil.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/DateUtil.class
 new file mode 100644
-index 0000000..3ecb6dd
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/DateUtil.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/EndSessionResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/EndSessionResponseFactory.class
 new file mode 100644
-index 0000000..fa0c557
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/EndSessionResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/MapUtil.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/MapUtil.class
 new file mode 100644
-index 0000000..335e68a
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/MapUtil.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/RegistrationResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/RegistrationResponseFactory.class
 new file mode 100644
-index 0000000..661f3da
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/RegistrationResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/TokenResponseFactory.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/TokenResponseFactory.class
 new file mode 100644
-index 0000000..f57bf78
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/TokenResponseFactory.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class
 new file mode 100644
-index 0000000..c88e374
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$1.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class
 new file mode 100644
-index 0000000..9610ccf
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder$2.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class
 new file mode 100644
-index 0000000..0076820
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/javac/release/classes/com/rnappauth/utils/UnsafeConnectionBuilder.class differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/local_only_symbol_list/debug/R-def.txt b/node_modules/react-native-app-auth/android/build/intermediates/local_only_symbol_list/debug/R-def.txt
 new file mode 100644
 index 0000000..78ac5b8
@@ -4351,12 +4303,10 @@ index 0000000..a054834
 \ No newline at end of file
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/debug/classes.jar b/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/debug/classes.jar
 new file mode 100644
-index 0000000..9d45574
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/debug/classes.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/release/classes.jar b/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/release/classes.jar
 new file mode 100644
-index 0000000..426675a
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/intermediates/runtime_library_classes_jar/release/classes.jar differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt b/node_modules/react-native-app-auth/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt
 new file mode 100644
 index 0000000..51db21c
@@ -7221,12 +7171,10 @@ index 0000000..2dd783d
 +		INJECTED from /Users/daniel/ArkhamCards/node_modules/react-native-app-auth/android/src/main/AndroidManifest.xml
 diff --git a/node_modules/react-native-app-auth/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin b/node_modules/react-native-app-auth/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
 new file mode 100644
-index 0000000..10b67d7
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin b/node_modules/react-native-app-auth/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin
 new file mode 100644
-index 0000000..024f190
-Binary files /dev/null and b/node_modules/react-native-app-auth/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-app-auth/android/src/main/java/com/rnappauth/RNAppAuthModule.java b/node_modules/react-native-app-auth/android/src/main/java/com/rnappauth/RNAppAuthModule.java
 index 8736904..542bc37 100644
 --- a/node_modules/react-native-app-auth/android/src/main/java/com/rnappauth/RNAppAuthModule.java
@@ -7262,3 +7210,14 @@ index 4cad2da..1bc35c7 100644
  
          return map;
      }
+diff --git a/node_modules/react-native-app-auth/react-native-app-auth.podspec b/node_modules/react-native-app-auth/react-native-app-auth.podspec
+index b2de868..2dcafa6 100644
+--- a/node_modules/react-native-app-auth/react-native-app-auth.podspec
++++ b/node_modules/react-native-app-auth/react-native-app-auth.podspec
+@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
+   s.source_files  = 'ios/**/*.{h,m}'
+   s.requires_arc = true
+   s.dependency 'React-Core'
+-  s.dependency 'AppAuth', '1.4.0'
++  s.dependency 'AppAuth', '~> 1.4'
+ end

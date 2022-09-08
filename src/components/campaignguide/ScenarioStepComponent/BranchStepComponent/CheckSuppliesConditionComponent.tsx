@@ -91,7 +91,7 @@ export default function CheckSuppliesConditionComponent({ step, condition, campa
     );
   }, [condition, listSeperator]);
 
-  const renderAllOption = useCallback((cards: Card[], option: Option): Element | null => {
+  const renderAllOption = useCallback((cards: Card[], option: Option): React.ReactNode => {
     return renderCondition(
       cards,
       option.boolCondition === true

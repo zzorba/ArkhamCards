@@ -1,4 +1,4 @@
-import { map, forEach, range } from 'lodash';
+import { map, filter, forEach, range, sortBy } from 'lodash';
 import Config from 'react-native-config';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
@@ -38,6 +38,7 @@ import {
   UPLOAD_DECK,
   LocalDeck,
   GroupedUploadedDecks,
+  CustomizationDecision,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -45,6 +46,7 @@ import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import specialMetaSlots from '@data/deck/specialMetaSlots';
+import { parseCustomizationDecision } from '@lib/parseDeck';
 
 export interface ServerDeck {
   deckId: DeckId;
@@ -583,12 +585,45 @@ export function setDeckXpAdjustment(id: DeckId, xpAdjustment: number): UpdateDec
   };
 }
 
+export function updateDeckCustomizationChoice(
+  id: DeckId,
+  deckEdits: EditDeckState,
+  code: string,
+  decision: CustomizationDecision
+): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    const key = `cus_${code}`;
+    const existing = sortBy([
+      ...filter(
+        parseCustomizationDecision(deckEdits.meta[key]),
+        d => d.index !== decision.index
+      ),
+      decision,
+    ], d => d.index);
+    const updatedMeta: DeckMeta = { ...deckEdits.meta };
+    updatedMeta[key] = map(existing, e => {
+      const parts = [`${e.index}`, `${e.spent_xp}`];
+      if (e.choice) {
+        parts.push(e.choice);
+      }
+      return parts.join('|')
+    }).join(',');
+    dispatch({
+      type: UPDATE_DECK_EDIT,
+      id,
+      updates: {
+        meta: updatedMeta,
+      },
+    });
+  };
+}
+
 export function updateDeckMeta(
   id: DeckId,
   investigator_code: string,
   deckEdits: EditDeckState,
   updates: {
-    key: keyof DeckMeta;
+    key: keyof DeckMeta | string;
     value?: string;
   }[]
 ): ThunkAction<void, AppState, unknown, Action<string>> {

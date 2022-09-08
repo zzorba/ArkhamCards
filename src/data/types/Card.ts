@@ -1,21 +1,25 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, pick, filter, keys, map, min, omit, find, sortBy, indexOf } from 'lodash';
+import { forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
 import { SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
 import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
+import { processAdvancedChoice } from '@lib/parseDeck';
 
+const SICKENING_REALITY_CARDS = new Set(['03065b', '03066b', '03067b', '03068b', '03069b'])
 const SERPENTS_OF_YIG = '04014';
-const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
-const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
-const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror');
+const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
+const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
+const SEAL_REGEX = /.*Seal \(.+\)\..*/;
+const HEALS_HORROR_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?damage (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?horror/;
+const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export function searchNormalize(text: string, lang: string) {
@@ -229,6 +233,9 @@ export default class Card {
 
   @Column('text', { nullable: true })
   public alternate_of_code?: string;
+
+  @Column('text', { nullable: true })
+  public alternate_required_code?: string;
 
   @Column('integer', { nullable: true })
   public taboo_set_id?: number;
@@ -457,6 +464,9 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
+  @Column('simple-json', { nullable: true })
+  public customization_options?: CustomizationOption[];
+
   @OneToOne(() => Card, { cascade: true, eager: true })
   @Index()
   @JoinColumn({ name: 'linked_card_id' })
@@ -484,6 +494,9 @@ export default class Card {
   public slots_normalized?: string;
   @Column('text', { nullable: true })
   public real_slots_normalized?: string;
+  @Column('boolean', { nullable: true })
+  public removable_slot?: boolean;
+
   @Column('text', { nullable: true })
   public uses?: string;
   @Column('text', { nullable: true })
@@ -495,6 +508,8 @@ export default class Card {
   public seal?: boolean;
   @Column('boolean', { nullable: true })
   public heals_horror?: boolean;
+  @Column('boolean', { nullable: true })
+  public heals_damage?: boolean;
 
   @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
@@ -520,7 +535,6 @@ export default class Card {
   public sort_by_pack?: number;
   @Column('integer', { nullable: true, select: false })
   public sort_by_cycle?: number;
-
 
   @Column('integer', { nullable: true, select: false })
   public browse_visible!: number;
@@ -560,6 +574,144 @@ export default class Card {
     'c.s_search_real_game',
   ];
 
+  public clone(): Card {
+    const card = new Card();
+    forEach(Object.keys(this), key => {
+      // @ts-ignore ts7053
+      card[key] = this[key];
+    });
+    return card;
+  }
+
+  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap): CustomizationChoice | undefined {
+    if (!this.customization_options) {
+      return undefined;
+    }
+    const option = this.customization_options[index];
+    if (!option) {
+      return undefined;
+    }
+    return processAdvancedChoice({
+      option,
+      xp_spent: xp,
+      xp_locked: 0,
+      unlocked: option.xp === xp,
+      editable: true,
+    }, choice, option, cards);
+  }
+
+  public withCustomizations(listSeperator: string, customizations: CustomizationChoice[] | undefined, location: string): Card {
+    if (!this.customization_options) {
+      return this;
+    }
+    if (!customizations || !find(customizations, c => c.xp_spent || c.unlocked)) {
+      return this;
+    }
+    const card = this.clone();
+    const xp_spent = sumBy(customizations, c => c.xp_spent);
+    card.xp = Math.floor((xp_spent + 1) / 2.0);
+    const unlocked = sortBy(filter(customizations, c => c.unlocked), c => c.option.index);
+    const lines = (card.text || '').split('\n');
+
+    const text_edits: string[] = [];
+    forEach(unlocked, (change) => {
+      const option = change.option;
+      if (option.health) {
+        card.health = (card.health || 0) + option.health;
+      }
+      if (option.sanity) {
+        card.sanity = (card.sanity || 0) + option.sanity;
+      }
+      if (option.deck_limit) {
+        card.deck_limit = option.deck_limit;
+      }
+      if (option.real_slot) {
+        card.real_slot = option.real_slot;
+      }
+      if (option.cost) {
+        card.cost = (card.cost || 0) + option.cost;
+      }
+      if (option.real_traits) {
+        card.real_traits = option.real_traits;
+      }
+      let text_edit = option.text_edit || '';
+      if (option.text_change && option.choice) {
+        switch (change.type) {
+          case 'choose_trait': {
+            const traits = (change.choice.map(x => `[[${x}]]`).join(listSeperator) || '');
+            text_edit = traits ? text_edit.replace('_____', `<u>${traits}</u>`) : text_edit;
+            break;
+          }
+          case 'choose_card':
+            const cardNames = change.cards.map(card => card.name).join(listSeperator)
+            text_edit = cardNames ? `${text_edit} <u>${cardNames}</u>` : text_edit;
+            break;
+        }
+      }
+      text_edits.push(text_edit);
+      if (option.text_change && text_edit) {
+        const position = option.position || 0;
+        if (option.choice !== 'choose_card') {
+          switch (option.text_change) {
+            case 'trait':
+              card.traits = text_edit;
+              break;
+            case 'insert':
+              // Delayed execution
+              break;
+            case 'replace':
+              lines[position] = text_edit;
+              break;
+            case 'append':
+              lines.push(text_edit);
+              break;
+          }
+        }
+      }
+      if (option.choice) {
+        switch(change.type) {
+          case 'remove_slot': {
+            if (card.real_slot) {
+              card.real_slot = flatMap(card.real_slot.split('.'), (slot, index) => {
+                if (index === change.choice) {
+                  return [];
+                }
+                return slot.trim();
+              }).join('. ');
+            }
+            if (card.slot) {
+              card.slot = flatMap(card.slot.split('.'), (slot, index) => {
+                if (index === change.choice) {
+                  return [];
+                }
+                return slot.trim();
+              }).join('. ');
+            }
+          }
+        }
+      }
+    });
+    const final_lines: string[] = [];
+    forEach(unlocked, ({ option }, idx) => {
+      const text_edit = text_edits[idx];
+      if (option.text_change === 'insert' && option.position === -1 && text_edit) {
+        final_lines.push(text_edit);
+      }
+    });
+
+    forEach(lines, (line, idx) => {
+      final_lines.push(line);
+      forEach(unlocked, ({ option }, unlockedIdx) => {
+        const text_edit = text_edits[unlockedIdx];
+        if (option.text_change === 'insert' && option.position === idx && text_edit) {
+          final_lines.push(text_edit);
+        }
+      });
+    });
+    card.text = final_lines.join('\n');
+    return card;
+  }
+
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
   }
@@ -580,6 +732,20 @@ export default class Card {
   }
   public enemyHealth(): string {
     return arkham_num(this.health);
+  }
+
+  public matchesOption(option: DeckOption): boolean {
+    if (option.type_code) {
+      if (!find(option.type_code, type_code => this.type_code === type_code)) {
+        return false;
+      }
+    }
+    if (option.trait) {
+      if (!find(option.trait, trait => !!this.real_traits && this.real_traits.toLowerCase().indexOf(trait.toLowerCase()) !== -1)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   public imageUri(): string | undefined {
@@ -609,6 +775,14 @@ export default class Card {
 
   factionCode(): FactionCodeType {
     return this.faction_code || 'neutral';
+  }
+
+  factionCodes(): FactionCodeType[] {
+    return [
+      this.faction_code || 'neutral',
+      ...(this.faction2_code ? [this.faction2_code] : []),
+      ...(this.faction3_code ? [this.faction3_code] : []),
+    ];
   }
 
   getHealth(traumaData: TraumaAndCardData | undefined) {
@@ -986,9 +1160,16 @@ export default class Card {
 
   private static gqlToJson(
     card: SingleCardFragment & {
-      packs: { name: string }[];
       translations: CoreCardTextFragment[];
-      encounter_sets: { name: string}[],
+    },
+    encounterSets: { [code: string]: string | undefined },
+    packs: {
+      [pack_code: string]: {
+        name: string;
+        position: number;
+        cycle_name: string;
+        cycle_position: number;
+      };
     }
   ) {
     const cardTypeNames: { [key: string]: string } = {
@@ -1033,8 +1214,9 @@ export default class Card {
       back_name: card.real_back_name,
       back_text: card.real_back_text,
     };
-    json.encounter_name = card.encounter_sets.length ? card.encounter_sets[0].name : card.real_encounter_set_name;
-    json.pack_name = card.packs.length ? card.packs[0].name : card.real_pack_name;
+    json.encounter_name = card.encounter_code ? (encounterSets[card.encounter_code] || card.real_encounter_set_name) : undefined;
+    json.pack_name = packs[card.pack_code]?.name || card.real_pack_name;
+    json.cycle_name = packs[card.pack_code]?.cycle_name;
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];
     if (card.subtype_code) {
@@ -1048,37 +1230,32 @@ export default class Card {
       linked_card?: SingleCardFragment & {
         translations: CoreCardTextFragment[];
       };
-      packs: { name: string }[];
       translations: CoreCardTextFragment[];
-      encounter_sets: { name: string}[],
     },
-    lang: string
+    lang: string,
+    encounterSets: { [code: string]: string | undefined },
+    packs: {
+      [pack_code: string]: {
+        name: string;
+        position: number;
+        cycle_position: number;
+        cycle_name: string;
+      };
+    },
+    cycles: {
+      [cycle_code: string]: {
+        name: string;
+        position: number;
+      };
+    }
   ) {
-    const json = Card.gqlToJson(card);
+    const json = Card.gqlToJson(card, encounterSets, packs);
     if (card.linked_card) {
-      json.linked_card = Card.gqlToJson({
-        ...pick(card, ['packs', 'encounter_sets']),
-        ...card.linked_card,
-      });
+      json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs);
       json.linked_to_code = json.linked_card.code;
       json.linked_to_name = json.linked_card.real_name;
     }
-    return Card.fromJson(json,
-      {
-        [card.pack_code]: {
-          position: card.pack_position,
-          cycle_position: 100,
-        },
-      },
-      {
-        '100': {
-          name: json.pack_name || t`Fan-Made Content`,
-          code: card.pack_code,
-        },
-      },
-      lang,
-      true
-    );
+    return Card.fromJson(json, packs, cycles, lang);
   }
 
   static fromJson(
@@ -1106,7 +1283,7 @@ export default class Card {
       DeckRequirement.parse(json.deck_requirements) :
       null;
     const deck_options = json.deck_options ?
-      DeckOption.parseList(json.deck_options) :
+      DeckOption.parseList(typeof json.deck_options === 'string' ? JSON.parse(json.deck_options) : json.deck_options) :
       [];
 
     const wild = json.skill_wild || 0;
@@ -1146,10 +1323,12 @@ export default class Card {
         }
       }
     }
-
-    const real_traits_normalized = json.real_traits ? map(
+    const customization_options = CustomizationOption.parseAll(json);
+    const removable_slot = !!find(customization_options, option => option.choice === 'remove_slot');
+    const real_traits = find(customization_options, t => !!t.real_traits)?.real_traits || json.real_traits;
+    const real_traits_normalized = real_traits ? map(
       filter(
-        map(json.real_traits.split('.'), trait => trait.toLowerCase().trim()),
+        map(real_traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
     const traits_normalized = json.traits ? map(
@@ -1173,6 +1352,7 @@ export default class Card {
       ),
       s => `#${s}#`).join(',') : null;
 
+
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.code === '08062' ?
       ['foo', 'bar', 'charges'] :
@@ -1186,8 +1366,12 @@ export default class Card {
     const seal_match = json.real_text && json.real_text.match(SEAL_REGEX);
     const seal = !!seal_match || json.code === SERPENTS_OF_YIG;
 
-    const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
+    const heals_horror_match = !!(json.real_text && json.real_text.match(HEALS_HORROR_REGEX)) ||
+      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_HORROR_REGEX));
     const heals_horror = heals_horror_match ? true : null;
+    const heals_damage_match = !!(json.real_text && json.real_text.match(HEALS_DAMAGE_REGEX)) ||
+      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_DAMAGE_REGEX));
+    const heals_damage = heals_damage_match ? true : null;
     const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
     const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
 
@@ -1230,6 +1414,8 @@ export default class Card {
       json.code === '98007' || // Norman
       json.code === '99001'; // PROMO Marie
 
+    const alternate_of_code = json.alternate_of_code && json.duplicate_of_code && json.alternate_of_code === json.duplicate_of_code ? undefined : json.alternate_of_code;
+
     const s_search_name = searchNormalize(filter([renderName, renderSubname], x => !!x).join(' '), lang);
     const s_search_name_back = searchNormalize(filter([name, json.subname, json.back_name], x => !!x).join(' '), lang);
     const s_search_game = searchNormalize(filter([json.text, json.traits], x => !!x).join(' '), lang);
@@ -1239,10 +1425,11 @@ export default class Card {
 
     const s_search_real_name = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
     const s_search_real_name_back = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
-    const s_search_real_game = searchNormalize(filter([json.real_text, json.real_traits], x => !!x).join(' '), 'en');
+    const s_search_real_game = searchNormalize(filter([json.real_text, real_traits], x => !!x).join(' '), 'en');
     let result = {
-      ...json,
+      ...omit(json, ['customization_options', 'customization_text', 'deck_options', 'deck_requirements', 'alternate_of_code']),
       ...eskills,
+      alternate_of_code,
       id: json.code,
       tabooSetId: null,
       s_search_name,
@@ -1263,6 +1450,7 @@ export default class Card {
       linked_card,
       spoiler,
       traits_normalized,
+      customization_options,
       real_traits_normalized,
       real_slot,
       real_slots_normalized,
@@ -1276,8 +1464,10 @@ export default class Card {
       ...restrictions,
       seal,
       myriad,
+      removable_slot,
       advanced,
       heals_horror,
+      heals_damage,
       sort_by_type,
       sort_by_faction,
       sort_by_faction_pack,
@@ -1294,16 +1484,18 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (!noFlipping && result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
-      // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
+    if (!noFlipping && (
+      (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') ||
+      SICKENING_REALITY_CARDS.has(result.code)
+    )) {
       result = {
-        ...result.linked_card,
+        ...omit(result.linked_card, ['back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'linked_card']),
         back_linked: null,
         hidden: null,
         linked_to_code: result.code,
         linked_to_name: result.name,
         linked_card: {
-          ...result,
+          ...omit(result, ['linked_card', 'back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'browse_visible', 'mythos_card']),
           linked_card: undefined,
           back_linked: true,
           hidden: true,
@@ -1368,12 +1560,20 @@ export default class Card {
     if (json.text) {
       result.taboo_text_change = json.text;
     }
-    if (json.exceptional) {
-      result.exceptional = true;
-      result.deck_limit = 1;
+    if (json.exceptional !== undefined) {
+      result.exceptional = json.exceptional;
+      if (json.exceptional) {
+        result.deck_limit = 1;
+      }
     }
     if (json.deck_limit !== undefined) {
       result.deck_limit = json.deck_limit;
+    }
+    if (json.deck_options) {
+      result.deck_options = DeckOption.parseList(json.deck_options);
+    }
+    if (json.deck_requirements) {
+      result.deck_requirements = DeckRequirement.parse(json.deck_requirements);
     }
     return result;
   }

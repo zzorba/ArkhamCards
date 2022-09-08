@@ -36,6 +36,7 @@ interface Props {
   baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
+  includeNoCore?: boolean;
 }
 
 function keyExtractor(item: Pack) {
@@ -53,12 +54,15 @@ function cycleName(position: string): string {
     case '6': return t`The Dream-Eaters`;
     case '7': return t`The Innsmouth Conspiracy`;
     case '8': return t`Edge of the Earth`;
+    case '9': return t`The Scarlet Keys`;
     case '50': return t`Return to...`;
     case '60': return t`Investigator Starter Decks`;
     case '70': return t`Standalone`;
     case '80': return t`Books`;
     case '90': return t`Parallel`;
-    case '100': return t`Fan-Made Content`;
+    case '100': return t`Non-canon Content`;
+    case '110': return t`Fan-made Campaigns`;
+    case '120': return t`Fan-made Scenarios`;
     default: return 'Unknown';
   }
 }
@@ -85,6 +89,7 @@ export default function PackListComponent({
   compact,
   noFlatList,
   cyclesOnly,
+  includeNoCore,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const renderPack = useCallback((pack: Pack) => {
@@ -92,37 +97,57 @@ export default function PackListComponent({
       return (pack.cycle_position === p.cycle_position &&
         pack.id !== p.id);
     }) : [];
+    if (pack.code === 'core' && (alwaysShowCoreSet || includeNoCore)) {
+      return (
+        <>
+          { (alwaysShowCoreSet || includeNoCore) && pack.code === 'core' && (
+            <PackRow
+              key="always-core"
+              componentId={componentId}
+              pack={pack}
+              packId="no_core"
+              nameOverride={t`Core Set`}
+              description={alwaysShowCoreSet ? t`A single core set is always included` : undefined}
+              cycle={cyclePacks}
+              baseQuery={baseQuery}
+              compact={compact}
+              setChecked={!alwaysShowCoreSet && !checkState?.core ? setChecked : undefined}
+              checked={alwaysShowCoreSet || !checkState?.no_core}
+            />
+          ) }
+          { (!includeNoCore || !checkState?.no_core) && (
+            <PackRow
+              key={pack.id}
+              componentId={componentId}
+              pack={pack}
+              nameOverride={coreSetName}
+              cycle={cyclePacks}
+              setChecked={setChecked}
+              setCycleChecked={setCycleChecked}
+              checked={checkState && checkState[pack.code]}
+              baseQuery={baseQuery}
+              compact={compact}
+              alwaysCycle={cyclesOnly}
+            />
+          ) }
+        </>
+      )
+    }
     return (
-      <>
-        { alwaysShowCoreSet && pack.code === 'core' && (
-          <PackRow
-            key="always-core"
-            componentId={componentId}
-            pack={pack}
-            nameOverride={t`Core Set`}
-            description={t`A single core set is always included`}
-            cycle={cyclePacks}
-            baseQuery={baseQuery}
-            compact={compact}
-            checked
-          />
-        ) }
-        <PackRow
-          key={pack.id}
-          componentId={componentId}
-          pack={pack}
-          nameOverride={pack.code === 'core' ? coreSetName : undefined}
-          cycle={cyclePacks}
-          setChecked={setChecked}
-          setCycleChecked={setCycleChecked}
-          checked={checkState && checkState[pack.code]}
-          baseQuery={baseQuery}
-          compact={compact}
-          alwaysCycle={cyclesOnly}
-        />
-      </>
+      <PackRow
+        key={pack.id}
+        componentId={componentId}
+        pack={pack}
+        cycle={cyclePacks}
+        setChecked={setChecked}
+        setCycleChecked={setCycleChecked}
+        checked={checkState && checkState[pack.code]}
+        baseQuery={baseQuery}
+        compact={compact}
+        alwaysCycle={cyclesOnly}
+      />
     );
-  }, [packs, checkState, componentId, cyclesOnly, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
+  }, [packs, checkState, componentId, cyclesOnly, alwaysShowCoreSet, includeNoCore, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
     return renderPack(item);

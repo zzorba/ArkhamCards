@@ -5,7 +5,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -20,6 +19,8 @@ import { useCampaign } from '@data/hooks';
 import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useAppDispatch } from '@app/store';
 
 export interface EditScenarioResultProps {
   campaignId: CampaignId;
@@ -31,15 +32,16 @@ type Props = NavigationProps & EditScenarioResultProps;
 export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults?.[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
+  const actions = useUpdateCampaignActions();
   const doSave = useMemo(() => throttle(() => {
-    if (scenarioResult) {
-      dispatch(editScenarioResult(campaignId, index, scenarioResult));
+    if (scenarioResult && campaign) {
+      dispatch(editScenarioResult(actions, campaign, index, scenarioResult));
     }
     Navigation.pop(componentId);
-  }, 200), [campaignId, index, scenarioResult, componentId, dispatch]);
+  }, 200), [campaign, index, actions, scenarioResult, componentId, dispatch]);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'save') {
       doSave();

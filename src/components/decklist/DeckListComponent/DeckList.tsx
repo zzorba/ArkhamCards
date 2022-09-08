@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, map, take, uniq } from 'lodash';
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';
+import { useInvestigators, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -61,9 +61,10 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
 }: Props) {
+  const lowMemory = useSettingValue('low_memory');
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
-  const items = useMemo(() => {
+  const allItems = useMemo(() => {
     return map(
       filter(deckIds, deckId => {
         const investigator = investigators && investigators[deckId.investigator];
@@ -79,9 +80,19 @@ export default function DeckList({
         };
       });
   }, [deckIds, deckClicked, investigators, searchTerm]);
-  usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
+  const [numDecks, setNumDecks] = useState(10);
+  const items = useMemo(() => {
+    if (!lowMemory) {
+      return allItems;
+    }
+    return take(allItems, numDecks);
+  }, [lowMemory, allItems, numDecks])
+  const onLoadMore = useCallback(() => {
+    setNumDecks(numDecks + 10);
+  }, [numDecks, setNumDecks]);
 
-  const renderItem = useCallback(({ deckId }) => {
+  usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
+  const renderItem = useCallback(({ deckId }: { deckId: MiniDeckT }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}
@@ -99,6 +110,7 @@ export default function DeckList({
       refreshing={debouncedRefreshing}
       onRefresh={onRefresh}
       onScroll={onScroll}
+      onLoading={lowMemory && numDecks < allItems.length ? onLoadMore : undefined}
       data={items}
       renderItem={renderItem}
       renderHeader={renderHeader}

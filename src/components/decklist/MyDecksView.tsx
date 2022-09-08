@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, flatMap, map, throttle } from 'lodash';
-import { Platform, Text, StyleSheet, View, ScrollView } from 'react-native';
+import { throttle } from 'lodash';
+import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -20,10 +20,12 @@ import { useNavigationButtonPressed, useSettingFlag } from '@components/core/hoo
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 
 function MyDecksView({ componentId }: NavigationProps) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { myDecks } = useSelector(getMyDecksState);
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
@@ -56,20 +58,10 @@ function MyDecksView({ componentId }: NavigationProps) {
   const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 
   const [searchOptionControls, searchOptionsHeight] = useMemo(() => {
-    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
-    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
-    const hasNonCampaignDeck = !!find(myDecks, deckId => !deckId.campaign_id);
-    const hasCampaignDeck = !!find(myDecks, deckId => deckId.campaign_id);
-    const hideLocalDeckToggle = (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck));
-    const hideCampaignDeckToggle = (!hideCampaignDecks && !(hasCampaignDeck && hasNonCampaignDeck));
-    if (hideLocalDeckToggle && hideCampaignDeckToggle) {
-      // need to have both to show the toggle.
-      return [null, 0];
-    }
     return [
       (
         <View style={[styles.column, space.paddingBottomS]} key="controls">
-          { !hideLocalDeckToggle && (
+          { !!arkhamDb && (
             <View style={styles.row}>
               <Text style={[typography.small, styles.searchOption]}>
                 { t`Hide ArkhamDB decks` }
@@ -81,23 +73,21 @@ function MyDecksView({ componentId }: NavigationProps) {
               />
             </View>
           ) }
-          { !hideCampaignDeckToggle && (
-            <View style={styles.row}>
-              <Text style={[typography.small, styles.searchOption]}>
-                { t`Hide campaign decks` }
-              </Text>
-              <ArkhamSwitch
-                useGestureHandler
-                value={hideCampaignDecks}
-                onValueChange={toggleHideCampaignDecks}
-              />
-            </View>
-          ) }
+          <View style={styles.row}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide campaign decks` }
+            </Text>
+            <ArkhamSwitch
+              useGestureHandler
+              value={hideCampaignDecks}
+              onValueChange={toggleHideCampaignDecks}
+            />
+          </View>
         </View>
       ),
-      20 + 12 + s + (fontScale * 20 + 8) * ((hideCampaignDeckToggle || hideLocalDeckToggle) ? 1 : 2),
+      20 + 12 + s + (fontScale * 20 + 8) * (arkhamDb ? 2 : 1),
     ];
-  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
+  }, [arkhamDb, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
 
   const customFooter = useMemo(() => {
     return (
@@ -121,16 +111,6 @@ function MyDecksView({ componentId }: NavigationProps) {
     return undefined;
   }, [localDecksOnly, hideCampaignDecks]);
 
-/*const codes = ['05012', '03023', '02150', '60330', '05118', '03312', '08124', '05109', '60529', '01059', '60214', '01087', '02150', '02300', '01047', '02018', '60302'];
-  const [sampleCards] = usePlayerCards(codes);
-  const cards = useMemo(() => flatMap(codes, code => sampleCards?.[code] || []), [sampleCards, codes]);
-  return (
-    <ScrollView style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'black' }}>
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={300} /> : [])}
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={200} /> : [])}
-      { flatMap(cards, (card) => card ? <StylizedCard key={card.code} card={card} width={250} /> : [])}
-    </ScrollView>
-  );*/
   return (
     <MyDecksComponent
       searchOptions={{
@@ -162,7 +142,7 @@ MyDecksView.options = () => {
 
 export default withFetchCardsGate(
   MyDecksView,
-  { promptForUpdate: false },
+  { promptForUpdate: true },
 );
 
 const styles = StyleSheet.create({

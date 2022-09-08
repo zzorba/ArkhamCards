@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Linking, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { updateCampaignName } from '@components/campaign/actions';

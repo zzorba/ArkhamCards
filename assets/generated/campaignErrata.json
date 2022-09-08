@@ -72,6 +72,51 @@
       ]
     },
     {
+      "encounter_code": "return_to_the_wages_of_sin",
+      "cards": [
+        {
+          "code": ["54040"],
+          "text": "This card’s second bullet point should end with: “Otherwise, place it in the spectral encounter discard pile.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "return_to_before_the_black_throne",
+      "cards": [
+        {
+          "code": ["54060"],
+          "text": "The last sentence of this card’s Cosmos ability should instead read: “You may choose not to move to Winding Gulf and instead place 1 doom on Azathoth.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "unstable_realm",
+      "cards": [
+        {
+          "code": ["54068"],
+          "text": "The triggering condition on this card’s first Forced ability read: “After you leave attached location” instead of “when you leave attached location.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dark_side_of_the_moon",
+      "cards": [
+        {
+          "code": ["06224"],
+          "text": "The triggering condition on this cards’ <b>Forced</b> abilities should read: “If Virgil Gray leaves play” instead of “if Virgil Gray is defeated.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_search_for_kadath",
+      "cards": [
+        {
+          "code": ["06144"],
+          "text": "The triggering condition on this cards’ <b>Forced</b> abilities should read: “If Virgil Gray leaves play” instead of “if Virgil Gray is defeated.”"
+        }
+      ]
+    },
+    {
       "encounter_code": "the_pallid_mask",
       "cards": [
         {
@@ -156,6 +201,10 @@
         {
           "code": ["07315"],
           "text": "This card’s <b>Objective</b> ability should read: “…you may choose to advance” instead of “…advance.”"
+        },
+        {
+          "code": ["07330a", "07331a"],
+          "text": "The triggering condition on each of these cards’ Forced abilities should read: “At the end of the investigation phase” instead of “at the end of the round.”"
         }
       ]
     }
@@ -180,6 +229,42 @@
         {
           "question": "Is the setup instruction regarding which version of Act 2—“The Really Bad Ones” the investigators should use correct? Am I supposed to be able to trigger the parley ability on Daniel Chesterfield (…Or At Least, What’s Left of Him)?",
           "answer": "Yes, it is correct, and no, there is no way to trigger it (in this reality)."
+        }
+      ]
+    },
+    {
+      "scenario_code": "a_phantom_of_truth",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>Forced</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_pallid_mask",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>Forced</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "black_stars_rise",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>Forced</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "dim_carcosa",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>Forced</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
         }
       ]
     },

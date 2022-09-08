@@ -10,6 +10,10 @@ import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
+import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
+import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
+import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
+import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
 
 type DatabaseListener = () => void;
 
@@ -33,7 +37,12 @@ async function createDatabaseConnection(recreate: boolean) {
       'schema',
     ],
     // maxQueryExecutionTime: 4000,
-    migrations: [],
+    migrations: [
+      HealsDamageMigration1657382994910,
+      CustomizeMigration1657651357621,
+      RemovableSlot1658075280573,
+      AlternateRequiredCodeMigration1660064759967,
+    ],
     entities: [
       Card,
       EncounterSet,
@@ -48,7 +57,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 41;
+  static SCHEMA_VERSION: number = 44;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;

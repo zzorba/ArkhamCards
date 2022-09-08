@@ -15,6 +15,7 @@ import {
   ALICE_IN_WONDERLAND,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
   EOE,
 } from '@actions/types';
 import CycleItem from './CycleItem';
@@ -35,6 +36,7 @@ const authors = {
   [ALICE_IN_WONDERLAND]: 'The Beard',
   [CROWN_OF_EGIL]: 'The Mad Juggler',
   [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
+  [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
 }
 function campaignDescription(packCode: CampaignCycleCode): string | undefined {
   switch (packCode) {
@@ -50,6 +52,7 @@ function campaignDescription(packCode: CampaignCycleCode): string | undefined {
     case ALICE_IN_WONDERLAND:
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
+    case CYCLOPEAN_FOUNDATIONS:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:
@@ -84,7 +87,7 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
     }
     return partition(
       campaigns,
-      pack_code => (ignore_collection || in_collection[pack_code] || pack_code === 'core' || (
+      pack_code => (ignore_collection || in_collection[pack_code] || (pack_code === 'core' && !in_collection.no_core) || (
         in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||
         (in_collection.eoec && pack_code === EOE)))
     );

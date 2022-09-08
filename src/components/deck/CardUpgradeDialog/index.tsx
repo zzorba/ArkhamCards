@@ -158,7 +158,7 @@ export default function CardUpgradeDialog({
 
   const cardInCollection = useCallback((card: Card): boolean => {
     return (
-      card.pack_code === 'core' ||
+      (card.pack_code === 'core' && !inCollection.no_core) ||
       ignore_collection ||
       inCollection[card.pack_code] ||
       !!find(card.reprint_pack_codes || [], pack_code => inCollection[pack_code]) ||

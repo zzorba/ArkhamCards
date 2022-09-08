@@ -4,7 +4,6 @@ import { StyleSheet, View, Text } from 'react-native';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { BorderColor } from '@data/scenario/types';
-import ArkhamIcon from '@icons/ArkhamIcon';
 import TextWithIcons from '@components/core/TextWithIcons';
 
 interface Props {

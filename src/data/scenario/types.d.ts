@@ -77,16 +77,19 @@ export type InvestigatorSelector =
   | "$fixed_investigator";
 export type BulletType = "none" | "small" | "default";
 export type CampaignDataEffect =
+  | CampaignDataSetScenariosEffect
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
   | CampaignDataNextScenarioEffect
   | CampaignDataSwapChaosBagEffect
-  | CampaignDataRedirectExperienceEffect;
+  | CampaignDataRedirectExperienceEffect
+  | CampaignDataEmbarkEffect;
 export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
   | ScenarioDataInvestigatorStatusEffect
+  | ScenarioDataAddInvestigatorEffect
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
 export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
@@ -105,7 +108,12 @@ export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
-export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand | PartnerStatusCondition;
+export type Operand =
+  | CampaignLogCountOperand
+  | ChaosBagOperand
+  | ConstantOperand
+  | MostXpEarnedOperand
+  | PartnerStatusCondition;
 export type PartnerStatus =
   | "eliminated"
   | "alive"
@@ -123,6 +131,7 @@ export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
+  | CampaignDataNextScenarioCondition
   | CampaignDataInvestigatorCondition
   | CampaignDataLinkedCondition
   | CampaignDataVersionCondition;
@@ -170,6 +179,7 @@ export type BinaryChoiceCondition =
   | CampaignDataInvestigatorCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
+  | CampaignDataNextScenarioCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
@@ -204,6 +214,7 @@ export interface Campaign {
   tarot?: string[];
   version: number;
   position: number;
+  map?: CampaignMap;
   cards?: {
     code: string;
     name: string;
@@ -213,13 +224,62 @@ export interface Campaign {
   campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];
   hidden_scenarios?: string[];
+  scenario_setup?: string[];
+  side_scenario_steps?: Step[];
+  side_scenario_resolution?: string[];
   setup: string[];
   steps: Step[];
-  side_scenario_steps?: Step[];
   campaign_type: "standalone" | "campaign";
   custom?: CustomData;
   achievements?: Achievement[];
   ultimatums?: Ultimatum[];
+}
+export interface CampaignMap {
+  width: number;
+  height: number;
+  max_time: number;
+  final_scenario: string;
+  locations: MapLocation[];
+  labels: MapLabel[];
+}
+export interface MapLocation {
+  id: string;
+  x: number;
+  y: number;
+  name: string;
+  scenario: string;
+  dossier?: Dossier[];
+  details: LocationDetails;
+  status: "locked" | "standard" | "side";
+  direction: "left" | "right";
+  connections: string[];
+}
+export interface Dossier {
+  title: string;
+  entries: DossierElement[];
+}
+export interface DossierElement {
+  image?: {
+    ratio: number;
+    uri: string;
+    alignment: "left" | "right";
+  };
+  text?: string;
+}
+export interface LocationDetails {
+  region: {
+    name: string;
+  };
+  country?: {
+    name: string;
+  };
+}
+export interface MapLabel {
+  x: number;
+  y: number;
+  name: string;
+  direction: "left" | "center" | "right";
+  type: "connection" | "ocean" | "small_ocean" | "continent" | "country";
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -256,6 +316,7 @@ export interface MultiCondition {
     | CampaignLogCondition
     | CampaignLogSectionExistsCondition
     | CampaignDataChaosBagCondition
+    | CampaignDataNextScenarioCondition
     | CampaignLogCountCondition
     | CampaignDataVersionCondition
     | CampaignDataScenarioCondition
@@ -316,7 +377,8 @@ export interface SetCardCountEffect {
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
-  investigator: "all" | "$input_value" | "lead_investigator";
+  investigator: "all" | "$input_value" | "lead_investigator" | "$fixed_investigator";
+  fixed_investigator?: string;
   weakness_traits: string[];
   select_traits?: boolean;
   count?: "$input_value";
@@ -340,7 +402,15 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
+  investigator:
+    | "all"
+    | "lead_investigator"
+    | "defeated"
+    | "not_resigned"
+    | "resigned"
+    | "$input_value"
+    | "$fixed_investigator";
+  fixed_investigator?: string;
   heal_input?: "physical" | "mental";
   mental?: number;
   physical?: number;
@@ -414,6 +484,11 @@ export interface CampaignLogInvestigatorCountEffect {
   value?: number;
   text?: string;
 }
+export interface CampaignDataSetScenariosEffect {
+  type: "campaign_data";
+  setting: "set_scenarios";
+  scenarios: string[];
+}
 export interface CampaignDataResultEffect {
   type: "campaign_data";
   setting: "result";
@@ -439,6 +514,12 @@ export interface CampaignDataRedirectExperienceEffect {
   setting: "redirect_experience";
   investigator_count: string;
 }
+export interface CampaignDataEmbarkEffect {
+  type: "campaign_data";
+  setting: "embark";
+  location?: string;
+  starting_location?: boolean;
+}
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
   setting: "lead_investigator" | "playing_scenario";
@@ -449,6 +530,12 @@ export interface ScenarioDataInvestigatorStatusEffect {
   setting: "investigator_status";
   investigator: "$input_value";
   investigator_status: InvestigatorStatus;
+}
+export interface ScenarioDataAddInvestigatorEffect {
+  type: "scenario_data";
+  setting: "add_investigator";
+  investigator: "$fixed_investigator";
+  fixed_investigator: string;
 }
 export interface ScenarioDataStatusEffect {
   type: "scenario_data";
@@ -537,6 +624,11 @@ export interface Option {
   effects?: Effect[];
   steps?: string[];
 }
+export interface CampaignDataNextScenarioCondition {
+  type: "campaign_data";
+  campaign_data: "next_scenario";
+  options: BoolOption[];
+}
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";
   section: string;
@@ -602,6 +694,9 @@ export interface ChaosBagOperand {
 export interface ConstantOperand {
   type: "constant";
   value: number;
+}
+export interface MostXpEarnedOperand {
+  type: "most_xp_earned";
 }
 export interface PartnerStatusCondition {
   type: "partner_status";
@@ -765,7 +860,7 @@ export interface CardChoiceInput {
 }
 export interface CardSearchQuery {
   source: "scenario" | "deck";
-  trait?: string;
+  traits?: string[];
   unique?: boolean;
   vengeance?: boolean;
   exclude_code?: string[];
@@ -820,7 +915,9 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator: "all" | "choice" | "any" | "resigned" | "not_defeated";
+  investigator: "all" | "choice" | "any" | "resigned" | "defeated" | "not_defeated";
+  min?: ConstantOperand | CampaignLogCountOperand;
+  max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
   confirm_text?: string;
@@ -869,6 +966,7 @@ export interface BinaryConditionalChoice {
   steps?: string[];
   effects?: Effect[];
   narration?: Narration;
+  hidden?: boolean;
 }
 export interface ChecklistInput {
   type: "checklist";
@@ -886,8 +984,8 @@ export interface CounterInput {
   type: "counter";
   text: string;
   confirm_text?: string;
-  min?: number;
-  max?: number;
+  min?: ConstantOperand | CampaignLogCountOperand;
+  max?: ConstantOperand | CampaignLogCountOperand;
   long_lived?: boolean;
   delta?: boolean;
   effects: Effect[];
@@ -957,6 +1055,7 @@ export interface PrologueRandomizer {
 }
 export interface SaveDecksInput {
   type: "save_decks";
+  trauma?: boolean;
 }
 export interface TarotReadingInput {
   type: "tarot_reading";
@@ -1159,6 +1258,10 @@ export interface CustomData {
     zh?: string;
     ru?: string;
     it?: string;
+    vi?: string;
+    pl?: string;
+    uk?: string;
+    pt?: string;
   };
 }
 export interface Achievement {
@@ -1194,7 +1297,7 @@ export interface Scenario {
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
-  type?: "interlude" | "epilogue" | "placeholder";
+  type?: "interlude" | "epilogue" | "placeholder" | "core";
   standalone_setup?: string[];
 }
 export interface ChallengeData {
@@ -1209,6 +1312,7 @@ export interface Resolution {
   title: string;
   description?: string;
   text?: string;
+  hidden?: boolean;
   investigator_status?: InvestigatorStatus[];
   steps: string[];
   narration?: Narration;
@@ -1342,6 +1446,10 @@ export interface Taboo {
   xp?: number;
   description?: string;
   text?: string;
-  exceptional?: number;
+  exceptional?: boolean;
   deck_limit?: number;
+  deck_options?: any[];
+  deck_requirements?: {
+    [k: string]: any;
+  };
 }

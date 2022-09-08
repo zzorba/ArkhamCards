@@ -2,11 +2,11 @@ import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
-import { WithText } from './types';
+import { WithChildren, WithText } from './types';
 
 export default function UnderlineHtmlTagNode(usePingFang: boolean, { typography }: StyleContextType) {
   return (
-    node: Node & WithText,
+    node: Node & WithChildren,
     output: OutputFunction,
     state: RenderState
   ) => {
@@ -16,7 +16,7 @@ export default function UnderlineHtmlTagNode(usePingFang: boolean, { typography 
         fontStyle: 'normal',
         fontWeight: '700',
       }, typography.underline]}>
-        { node.text }
+        { output(node.children, state) }
       </MarkdownText>
     );
   };

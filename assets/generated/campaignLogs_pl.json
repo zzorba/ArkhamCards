@@ -1261,6 +1261,10 @@
             "text": "jeden lub więcej badaczy zostało opętanych."
           },
           {
+            "id": "reprint_language",
+            "text": "dummy"
+          },
+          {
             "id": "tpm_conviction_or_doubt",
             "text": "dummy"
           }
@@ -1685,6 +1689,10 @@
           {
             "id": "possessed",
             "text": "jeden lub więcej badaczy zostało opętanych."
+          },
+          {
+            "id": "reprint_language",
+            "text": "dummy"
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -2542,7 +2550,7 @@
       {
         "id": "sticky_goop",
         "name": "Kleista maź",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "description": "Kleista maź, którą znalazłeś w podziemnych bagnach.",
         "cost": 0,
         "multiple": false
       },
@@ -2666,6 +2674,62 @@
             "feminine_text": "#name# was taken by the abyss."
           },
           {
+            "id": "atw_bernards_fate",
+            "text": "you have discovered Bernard's fate."
+          },
+          {
+            "id": "atw_custodian_of_knowledge",
+            "text": "you are the custodian of Ithaqua's knowledge."
+          },
+          {
+            "id": "atw_defeated_the_wendigo",
+            "text": "you defated the Wendigo."
+          },
+          {
+            "id": "atw_discovered_the_fate_of_the_students",
+            "text": "you have discovered the fate of Dr. Nadelmann's students."
+          },
+          {
+            "id": "atw_found_the_gold",
+            "text": "you have found Hanninah's gold."
+          },
+          {
+            "id": "atw_have_enough_evidence",
+            "text": "you have enoughe evidence to clear Dr. Nadelmann."
+          },
+          {
+            "id": "atw_norman_alive",
+            "text": "Norman is alive."
+          },
+          {
+            "id": "atw_norman_dead",
+            "text": "You let Norman die."
+          },
+          {
+            "id": "atw_normans_fate",
+            "text": "you have discovered Norman's fate."
+          },
+          {
+            "id": "atw_sarcee_are_hunting",
+            "text": "the Sarcee are hunting you down."
+          },
+          {
+            "id": "atw_saved_charlie",
+            "text": "you saved Charlie."
+          },
+          {
+            "id": "atw_saved_the_gold_prospector",
+            "text": "you saved the gold prospector."
+          },
+          {
+            "id": "atw_sylvias_fate",
+            "text": "you have discovered Sylvia's fate."
+          },
+          {
+            "id": "atw_wendigo_still_roams",
+            "text": "you know that the Wendigo still roams the North Hanninah valley."
+          },
+          {
             "id": "blob_contained",
             "text": "anomalia została powstrzymana."
           },
@@ -2719,15 +2783,15 @@
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Rougarou nadal grasuje po zalewisku."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Rougarou został zniszczony i klątwa została zdjęta."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Rougarou uciekł i przyjęliście klątwę."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2762,8 +2826,28 @@
             "text": "the Abyss was saved."
           },
           {
+            "id": "zcos_abandoned_the_people_of_eastwick",
+            "text": "you abandoned the people of Eastwick."
+          },
+          {
+            "id": "zcos_fended_off_an_alien_entity",
+            "text": "you fended off an alien entity."
+          },
+          {
+            "id": "zcos_slaughtered_the_people_of_eastwick",
+            "text": "you slaughtered the people of Eastwick."
+          },
+          {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil... for now."
+            "text": "all is quiet at Rue d'Auseil… for now."
+          },
+          {
+            "id": "zhu_avenged_the_house_of_usher",
+            "text": "the investigators avenged the House of Usher."
+          },
+          {
+            "id": "zhu_house_of_usher_has_fallen",
+            "text": "the House of Usher has fallen."
           }
         ]
       },
@@ -2780,6 +2864,10 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "atw_added_tablet",
             "text": "dummy"
           },
           {
@@ -2848,6 +2936,10 @@
           },
           {
             "id": "meh_the_truth",
+            "text": "dummy"
+          },
+          {
+            "id": "zjc_killed_jenny",
             "text": "dummy"
           }
         ]
@@ -3321,146 +3413,146 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "id": "captured",
+            "masculine_text": "#name# został pojmany.",
+            "feminine_text": "#name# została pojmana."
           },
           {
-            "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# złamał prawo Ultharu.",
+            "feminine_text": "#name# złamała prawo Ultharu."
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "czarny kot jest po waszej stronie."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "czarny kot jest po waszej stronie."
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "czarny kot dostarczył informacje o waszej niedoli."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "czarny kot ma przeczucie."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "czarny kot poszukuje prawdy."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "czarny kot zna prawdę."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "czarny kot podzielił się wiedzą o Krainach snów."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "czarny kot opowiedział o Atlach-Nasze."
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "czarny kot opowiedział o Nyarlathotepie."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "czarny kot ostrzegł pozostałych."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "badacze zostali zaniesieni na Lodowe pustkowie."
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "koty otrzymały daninę od zugów."
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "śniący się obudzili."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "śniący wygnali Nyarlathotepa."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "badacze uciekli z uścisku Nyarlathotepa."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "śniący osłabli."
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "śniący znają inną drogę."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "badacze pozostali na zawsze w Krainach snów."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monastery."
+            "text": "śniący powędrowali pod monastyr."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "badacze wtargnęli do świątyni."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "rozpoczęła się inwazja Nyarlathotepa."
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "badacze naradzili się z zugami."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "badacze weszli w posiadanie Srebrnego klucza."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Randolph nie przetrwał podróży."
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph uniknął pojmania."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Randolph przetrwał podróż."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph został pojmany."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "badacze zostali uratowani przez Randolpha Cartera."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "śniący zboczyli ze ścieżki."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "cóż, w porządku, róbcie po swojemu."
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "badacze dotarli na Lodowe pustkowie."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil został pojmany."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "sami się o to prosiliście."
           }
         ]
       },
@@ -3520,111 +3612,111 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "czarny kot jest po waszej stronie."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "czarny kot jest po waszej stronie."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "czarny kot ma przeczucie."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "czarny kot poszukuje prawdy."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "czarny kot zna prawdę."
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "czarny kot poprosił o pomoc pozostałych."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "czarny kot podzielił się wiedzą o Podziemiach."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "czarny kot ostrzegł pozostałych."
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "most został ukończony."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "most został zniszczony."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "dr Maheswaran żyje."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "dr Maheswaran zaginęła."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "dr Maheswaran dołączyła do waszego śledztwa."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "dr Maheswaran została z pacjentami."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "los dr Maheswaran jest nieznany."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "badacze znaleźli wyjście z Podziemi."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "badacze nigdy nie uciekli."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "jesteście zdani na siebie."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "badacze weszli w posiadanie Srebrnego klucza."
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph nie przetrwał zejścia."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph uciekł ze szpitala na własną rękę."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph uciekł ze szpitala razem z badaczami."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph przetrwał zejście."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "badacze powrócili do rzeczywistości."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "badacze są nadal w Krainach snów."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "badacze są uwięzieni w królestwie Atlach-Nachy."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "sami się o to prosiliście."
           }
         ]
       },
@@ -4409,6 +4501,34 @@
     "supplies": []
   },
   {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {
@@ -4842,6 +4962,257 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcf",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "took_out_a_loan",
+            "masculine_text": "#name# took out a loan.",
+            "feminine_text": "#name# took out a loan."
+          },
+          {
+            "id": "architects_project_was_fully_completed",
+            "text": "the architects' project was fully completed."
+          },
+          {
+            "id": "architects_project_was_sabotaged",
+            "text": "the architects's project was sabotaged."
+          },
+          {
+            "id": "arrived_on_schedule",
+            "text": "the investigators arrived on schedule."
+          },
+          {
+            "id": "chose_the_least_predictable_route",
+            "text": "the investigators chose the least predictable route."
+          },
+          {
+            "id": "chose_the_most_direct_route",
+            "text": "the investigators chose the most direct route."
+          },
+          {
+            "id": "chose_the_most_populous_route",
+            "text": "the investigators chose the most popular route."
+          },
+          {
+            "id": "cthulhu_reigns",
+            "text": "Cthulhu reigns over all humankind."
+          },
+          {
+            "id": "cthulhu_slumbers",
+            "text": "Cthulhu slumbers in the deep once more."
+          },
+          {
+            "id": "cults_project_nears_completion",
+            "text": "the cult's project nears completion."
+          },
+          {
+            "id": "escaped_rlyeh",
+            "text": "the investigators escaped from R'lyeh."
+          },
+          {
+            "id": "expelled_the_traitors",
+            "text": "the investigators expelled the traitors."
+          },
+          {
+            "id": "explored_the_myra_louise",
+            "text": "the investigators explored the Myra Louise."
+          },
+          {
+            "id": "exposed_the_traitors",
+            "text": "the investigators exposed the traitors."
+          },
+          {
+            "id": "failed_to_find_the_myra_louise",
+            "text": "the investigators failed to find the Myra Louise."
+          },
+          {
+            "id": "failed_to_stop_the_traitors_plan",
+            "text": "the investigators failed to stop the traitors' plan."
+          },
+          {
+            "id": "forced_to_withdraw",
+            "text": "the investigators were forced to withdraw."
+          },
+          {
+            "id": "found_the_missing_artifacts",
+            "text": "the investigators found the missing artifacts."
+          },
+          {
+            "id": "found_the_myra_louise",
+            "text": "the investigators found the Myra Louise."
+          },
+          {
+            "id": "have_been_observed",
+            "text": "the investigators have been observed."
+          },
+          {
+            "id": "interviewed_the_broker",
+            "text": "the investigators interviewed the broker."
+          },
+          {
+            "id": "know_the_full_story",
+            "text": "the investigators know the full story."
+          },
+          {
+            "id": "left_the_auction_early",
+            "text": "the investigators left the auction early."
+          },
+          {
+            "id": "severely_delayed",
+            "text": "the investigators were severely delayed."
+          },
+          {
+            "id": "understand_the_truth",
+            "text": "the investigators understand the truth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_alive",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "cultists_killed",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallace Thorpe"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "auction_lots",
+            "text": "dummy"
+          },
+          {
+            "id": "auction_lots_in_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "end_of_the_line",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_cooperate",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_ruckus",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_took_time",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "luther_alive",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_4",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_5",
+            "text": "dummy"
+          },
+          {
+            "id": "repaid_loans",
+            "text": "dummy"
+          },
+          {
+            "id": "two_impossible_pillars",
+            "text": "dummy"
+          },
+          {
+            "id": "zgt_add_chaos_token",
+            "text": "dummy"
           }
         ]
       }

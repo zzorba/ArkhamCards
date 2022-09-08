@@ -24,8 +24,7 @@ export default function InvestigatorChoiceWithSuppliesInputComponent({ step, inp
     const investigatorSection = campaignLog.investigatorSections[input.section] || {};
     const section = investigatorSection[code];
     return !!(section &&
-      find(section.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0) &&
-      !section.crossedOut[input.id]
+      find(section.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0 && !entry.crossedOut)
     );
   }, [input, campaignLog]);
 

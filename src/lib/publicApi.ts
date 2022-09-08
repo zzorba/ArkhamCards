@@ -2,7 +2,7 @@ import { concat, chunk, filter, find, flatMap, forEach, groupBy, head, map, part
 import { Alert, Platform } from 'react-native';
 import { c, t } from 'ttag';
 
-import { CardCache, TabooCache, Pack } from '@actions/types';
+import { CardCache, TabooCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE } from '@actions/types';
 import { Rule as JsonRule, TabooSets, TabooSet as JsonTabooSet } from '@data/scenario/types';
 import Card, { CARD_NUM_COLUMNS } from '@data/types/Card';
 import Rule from '@data/types/Rule';
@@ -14,6 +14,7 @@ import { GetCustomCardsDocument, GetCustomCardsQuery, GetCustomCardsQueryVariabl
 import { loadTaboos } from '@data/scenario';
 import { getArkhamDbDomain } from './i18n/LanguageProvider';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import { Dispatch } from 'react';
 
 const VERBOSE = false;
 
@@ -307,13 +308,15 @@ export const syncCards = async function(
   sqliteVersion: SqliteVersion,
   anonClient: ApolloClient<NormalizedCacheObject>,
   packs: Pack[],
+  dispatch: Dispatch<PacksActions>,
   lang?: string,
-  cache?: CardCache
+  cache?: CardCache,
 ): Promise<CardCache | null> {
   VERBOSE && console.log('syncCards called');
   try {
     updateProgress(0);
     VERBOSE && console.log('Starting sync of cards from ArkhamDB');
+    // const uri = `http://localhost:8000/api/public/cards/?encounter=1`;
     const uri = `${getArkhamDbDomain(lang || 'en')}/api/public/cards/?encounter=1`;
     const packsByCode: { [code: string]: Pack } = {};
     const cycleNames: {
@@ -329,6 +332,7 @@ export const syncCards = async function(
       }
     });
     cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
+    cycleNames[9] = { name: t`The Scarlet Keys`, code: 'tsk' };
     cycleNames[50] = { name: t`Return to...`, code: 'return' };
     cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
     cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
@@ -357,6 +361,46 @@ export const syncCards = async function(
         locale: lang || 'en',
       },
       fetchPolicy: 'network-only',
+    }).then((customCardsResponse): [Card[], Pack[]] => {
+      const encounterSets: { [code: string]: string | undefined } = {};
+      forEach(customCardsResponse.data.card_encounter_set, encounterSet => {
+        encounterSets[encounterSet.code] = encounterSet.name;
+      });
+      const packs: {
+        [pack_code: string]: Pack & { cycle_name: string };
+      } = {};
+      const cycles: {
+        [cycle_code: string]: {
+          name: string;
+          position: number;
+        };
+      } = {};
+      forEach(customCardsResponse.data.card_cycle, cycle => {
+        cycles[cycle.code] = {
+          name: cycle.name,
+          position: cycle.position,
+        };
+      });
+      forEach(customCardsResponse.data.card_pack, pack => {
+        if (pack.cycle_code) {
+          const cycle = cycles[pack.cycle_code];
+          packs[pack.code] = {
+            id: pack.code,
+            code: pack.code,
+            name: pack.name,
+            position: pack.position || 0,
+            cycle_position: cycle.position,
+            cycle_name: cycle.name,
+            known: 0,
+            total: 0,
+          };
+        }
+      });
+      const customCards = uniqBy(
+        map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en', encounterSets, packs, cycles)),
+        c => c.id
+      );
+      return [customCards, values(packs)];
     });
     const response = await fetch(uri, {
       method: 'GET',
@@ -365,11 +409,8 @@ export const syncCards = async function(
     if (response.status === 304 && cache) {
       updateProgress(0.5);
       try {
-        const customCardsResponse = await customCardsPromise;
-        const customCards = uniqBy(
-          map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
-          c => c.id
-        );
+        const [customCards, customPacks] = await customCardsPromise;
+        dispatch({ type: CUSTOM_PACKS_AVAILABLE, packs: customPacks, lang: lang || 'en' });
         const linkedSet = new Set(flatMap(customCards, (c: Card) => c.linked_card ? [c.linked_card.code] : []));
         const dedupedCustomCards = filter(customCards, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
         handleDerivativeData(dedupedCustomCards, {});
@@ -441,13 +482,13 @@ export const syncCards = async function(
 
     // console.log(`${await cards.count() } cards after delete`);
     const genericInvestigator = Card.fromJson({
-      pack_code: 'custom',
+      pack_code: 'zcu',
       pack_name: c('investigator').t`Custom`,
       type_code: 'investigator',
       type_name: t`Investigator`,
       faction_code: 'neutral',
       faction_name: t`Neutral`,
-      position: 1,
+      position: 4,
       code: CUSTOM_INVESTIGATOR,
       name: 'Johnny Anybody',
       real_name: 'Johnny Anybody',
@@ -509,16 +550,8 @@ export const syncCards = async function(
       }
     });
 
-    let customCards: Card[] = [];
-    try {
-      const customCardsResponse = await customCardsPromise;
-      customCards = uniqBy(
-        map(customCardsResponse.data.full_card, customCard => Card.fromGraphQl(customCard, lang || 'en')),
-        c => c.id
-      );
-    } catch (e) {
-      console.log(e);
-    }
+    const [customCards, customPacks] = await customCardsPromise;
+    dispatch({ type: CUSTOM_PACKS_AVAILABLE, packs: customPacks, lang: lang || 'en' });
     updateProgress(0.35);
     const allCardsToInsert = concat(cardsToInsert, customCards);
     const linkedSet = new Set(flatMap(allCardsToInsert, (c: Card) => c.linked_card ? [c.linked_card.code] : []));

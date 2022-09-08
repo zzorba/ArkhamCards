@@ -4,8 +4,12 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
-    "name": "A Light in the Fog"
+    "name": "霧中之光"
   },
   {
     "id": "a_phantom_of_truth",
@@ -20,8 +24,24 @@
     "name": "萬千駭形"
   },
   {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "孤注一擲"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -65,7 +85,11 @@
   },
   {
     "id": "beneath_the_waves",
-    "name": "Beneath the Waves"
+    "name": "浪濤之下"
+  },
+  {
+    "id": "bermuda",
+    "name": "Bermuda"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -84,8 +108,20 @@
     "name": "吞噬萬物"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "血色祭壇"
+  },
+  {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
   },
   {
     "id": "by_the_book",
@@ -104,12 +140,32 @@
     "name": "引導故事"
   },
   {
+    "id": "cf_epilogue",
+    "name": "尾聲故事"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "引導故事"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "古老者之城"
   },
   {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
+  },
+  {
     "id": "consternation_on_the_constellation",
     "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "The Scarlet Keys"
   },
   {
     "id": "cp_epilogue",
@@ -118,6 +174,10 @@
   {
     "id": "cp_prologue",
     "name": "引導故事"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -145,7 +205,7 @@
   },
   {
     "id": "devil_reef",
-    "name": "Devil Reef"
+    "name": "魔鬼礁石"
   },
   {
     "id": "dim_carcosa",
@@ -244,8 +304,16 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
-    "name": "Gryphon and Mock Turtle"
+    "name": "獅鷲和假海龜"
+  },
+  {
+    "id": "havana",
+    "name": "Havana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -257,7 +325,7 @@
   },
   {
     "id": "hidden_truths",
-    "name": "Hidden Truths"
+    "name": "隱秘真相"
   },
   {
     "id": "high_noon_descent",
@@ -268,12 +336,16 @@
     "name": "History Lesson"
   },
   {
+    "id": "hong_kong",
+    "name": "Hong Kong"
+  },
+  {
     "id": "horror_in_high_gear",
-    "name": "Horror in High Gear"
+    "name": "全速恐懼"
   },
   {
     "id": "humpty_dumpty",
-    "name": "Humpty Dumpty"
+    "name": "蛋頭先生"
   },
   {
     "id": "ice_and_death",
@@ -305,11 +377,11 @@
   },
   {
     "id": "in_too_deep",
-    "name": "In Too Deep"
+    "name": "深陷危局"
   },
   {
     "id": "into_the_maelstrom",
-    "name": "Into the Maelstrom"
+    "name": "暗潮之下"
   },
   {
     "id": "introspection",
@@ -320,12 +392,40 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
   {
+    "id": "london",
+    "name": "London"
+  },
+  {
     "id": "lost_in_time_and_space",
     "name": "迷失時空"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
   },
   {
     "id": "lost_quantum",
@@ -340,12 +440,24 @@
     "name": "時間騙局"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Marrakesh"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "喵鳴拉托提普的干預"
   },
   {
     "id": "mission_briefing",
     "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -356,12 +468,24 @@
     "name": "艾肖希爾酒店謀殺案"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
   },
   {
+    "id": "perth",
+    "name": "Perth"
+  },
+  {
     "id": "point_of_no_return",
     "name": "無歸之地"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
   },
   {
     "id": "ptc_epilogue",
@@ -370,6 +494,10 @@
   {
     "id": "ptc_interlude1",
     "name": "癲狂獎勵"
+  },
+  {
+    "id": "ptc_interlude1_reprint",
+    "name": "Reality's Shadow"
   },
   {
     "id": "ptc_interlude2",
@@ -381,7 +509,19 @@
   },
   {
     "id": "puzzle_pieces",
-    "name": "Puzzle Pieces"
+    "name": "記憶碎片"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
   },
   {
     "id": "read_or_die",
@@ -544,6 +684,30 @@
     "name": "重返毀滅之地"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "破碎永世"
   },
@@ -556,8 +720,16 @@
     "name": "Starfall"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -625,11 +797,15 @@
   },
   {
     "id": "the_caterpillar",
-    "name": "The Caterpillar"
+    "name": "毛毛蟲"
   },
   {
     "id": "the_city_of_archives",
     "name": "天機之城"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
   },
   {
     "id": "the_crown",
@@ -645,15 +821,19 @@
   },
   {
     "id": "the_dodo",
-    "name": "The Dodo"
+    "name": "渡渡鳥"
   },
   {
     "id": "the_duchess",
-    "name": "The Duchess"
+    "name": "公爵夫人"
   },
   {
     "id": "the_eternal_slumber",
     "name": "永恆沉睡"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
   },
   {
     "id": "the_fallen",
@@ -689,7 +869,7 @@
   },
   {
     "id": "the_lair_of_dagon",
-    "name": "The Lair of Dagon"
+    "name": "達貢巢穴"
   },
   {
     "id": "the_last_king",
@@ -729,7 +909,7 @@
   },
   {
     "id": "the_pit_of_despair",
-    "name": "The Pit of Despair"
+    "name": "絕望深坑"
   },
   {
     "id": "the_price_of_progress",
@@ -749,7 +929,7 @@
   },
   {
     "id": "the_syzygy",
-    "name": "The Syzygy"
+    "name": "朔望"
   },
   {
     "id": "the_tatterdemalion",
@@ -761,7 +941,7 @@
   },
   {
     "id": "the_vanishing_of_elina_harper",
-    "name": "The Vanishing of Elina Harper"
+    "name": "艾蓮娜·哈珀失蹤案"
   },
   {
     "id": "the_wages_of_sin",
@@ -792,12 +972,28 @@
     "name": "失落之峰"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
+  },
+  {
     "id": "torch",
     "name": "聚集於此"
   },
   {
     "id": "traces_of_egil",
     "name": "Traces of Egil"
+  },
+  {
+    "id": "tsk_prologue",
+    "name": "引導故事"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -842,5 +1038,9 @@
   {
     "id": "wilds",
     "name": "荒莽密林"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

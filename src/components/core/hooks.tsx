@@ -1,10 +1,10 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard } from 'react-native';
+import { BackHandler, Keyboard, Platform } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, MiscSetting, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -23,13 +23,12 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
-import { ALL_INVESTIGATORS_QUERY, combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
+import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
-import useConfirmSignupDialog from '@components/settings/AccountSection/auth/useConfirmSignupDialog';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
 
@@ -205,7 +204,7 @@ export function useCounter(
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [debounceValue] = useDebounce(value, 2000, { trailing: true });
+  const [debounceValue] = useDebounce(value, 200, { trailing: true });
   useEffectUpdate(() => {
     if (syncValue && dirty) {
       syncValue(value);
@@ -584,9 +583,14 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
   const [loading, setLoading] = useState(true);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
-    const existingCards = getExistingCards(tabooSetId);
-    if (findIndex(codes, code => !existingCards[code]) === -1) {
-      setCards(existingCards);
+    const knownCards = getExistingCards(tabooSetId);
+    if (findIndex(codes, code => !knownCards[code]) === -1) {
+      const cards: CardsMap = {};
+      forEach(codes, code => {
+        cards[code] = knownCards[code];
+      });
+      setCards(cards);
+      setLoading(false);
       return;
     }
 
@@ -601,6 +605,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
       });
     } else {
       setCards({});
+      setLoading(false);
     }
     return () => {
       canceled = true;
@@ -660,8 +665,9 @@ export function useCopyAction(value: string, confirmationText: string): () => vo
         options: Toast.options,
       },
     });
-  }, [value, useConfirmSignupDialog]);
+  }, [value, confirmationText]);
 }
+
 
 export function useSettingValue(setting: MiscSetting): boolean {
   return useSelector((state: AppState) => {
@@ -669,23 +675,27 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'alphabetize': return !!state.settings.alphabetizeEncounterSets;
       case 'beta1': return !!state.settings.beta1;
       case 'colorblind': return !!state.settings.colorblind;
-      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
-      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
       case 'ignore_collection': return !!state.settings.ignore_collection;
       case 'justify': return !!state.settings.justifyContent;
       case 'single_card': return !!state.settings.singleCardView;
       case 'sort_quotes': return !!state.settings.sortRespectQuotes;
-      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'custom_content': return !!state.settings.customContent;
+      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
+
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
-      case 'campaign_show_deck_id': return !!state.settings.campaignShowDeckId;
+
+      case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
+      case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
+      case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
+      case 'low_memory':
+        return Platform.OS === 'android' || !!state.settings.lowMemory;
     }
   });
 }
 
-export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean) => void] {
+export function useSettingFlag(setting: MiscLocalSetting): [boolean, (value: boolean) => void] {
   const actualValue = useSettingValue(setting);
   const dispatch = useDispatch();
   const [value, setValue] = useState(actualValue);
@@ -699,6 +709,28 @@ export function useSettingFlag(setting: MiscSetting): [boolean, (value: boolean)
       dispatch(setMiscSetting(setting, value));
     }, 50);
   }, [setting, setValue, dispatch]);
+  return [value, actuallySetValue];
+}
+
+
+export function useRemoteSettingFlag(
+  setting: MiscRemoteSetting,
+  remoteUpdate: (setting: MiscRemoteSetting, value: boolean) => void
+): [boolean, (value: boolean) => void] {
+  const actualValue = useSettingValue(setting);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(actualValue);
+  useEffect(() => {
+    setValue(actualValue);
+  }, [actualValue, setValue]);
+
+  const actuallySetValue = useCallback((value: boolean) => {
+    setValue(value);
+    remoteUpdate(setting, value);
+    setTimeout(() => {
+      dispatch(setMiscSetting(setting, value));
+    }, 50);
+  }, [setting, setValue, dispatch, remoteUpdate]);
   return [value, actuallySetValue];
 }
 
@@ -779,7 +811,7 @@ export function useWeaknessCards(includeRandomBasicWeakness?: boolean, tabooSetO
       }
     });
     return result;
-  }, [playerCards, includeRandomBasicWeakness]);
+  }, [includeRandomBasicWeakness, weaknessCards]);
 }
 
 export function useCycleScenarios(cycleCode: CampaignCycleCode | undefined): Scenario[] {

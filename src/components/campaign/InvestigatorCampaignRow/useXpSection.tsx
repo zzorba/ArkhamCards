@@ -11,6 +11,7 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useLatestDeckCards } from '@components/core/hooks';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   deck?: LatestDeckT;
@@ -62,6 +63,7 @@ export default function useXpSection({
   }, [colors, campaign, deck, investigator]);
   const ownerDeck = !deck?.owner || !userId || deck.owner.id === userId;
   const [cards] = useLatestDeckCards(deck);
+  const { listSeperator } = useContext(LanguageContext);
   const parsedDeck = useMemo(() => {
     if (!deck || uploading || !cards) {
       return undefined;
@@ -69,8 +71,8 @@ export default function useXpSection({
     if (!deck.previousDeck && !showDeckUpgrade) {
       return undefined;
     }
-    return parseBasicDeck(deck.deck, cards, deck.previousDeck);
-  }, [deck, uploading, showDeckUpgrade, cards]);
+    return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
+  }, [deck, uploading, listSeperator, showDeckUpgrade, cards]);
   if (deck && !uploading) {
     if (!parsedDeck) {
       return [null, false];

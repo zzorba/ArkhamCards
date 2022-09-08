@@ -21,7 +21,7 @@ import {
   Text,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
@@ -40,7 +40,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
@@ -153,6 +153,7 @@ type PartialItem = SectionHeaderItem | ButtonItem | PartialCardItem;
 interface CardFetcher {
   cards: CardsMap;
   fetchMore?: () => void;
+  expandCards: () => void;
 }
 /**
  * This function turns partial cards into real cards, and provides a manual fetchMore function.
@@ -186,18 +187,26 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
     },
     [visibleCards, beingFetched, fetchSize, db, updateCards]
   );
-
+  const fetchedOne = useRef(false);
+  const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
-      // Initial fetch when we get back first set of results.
-      fetchMore();
+      if (!fetchedOne.current || !lowMemoryMode) {
+        fetchedOne.current = true;
+        // Initial fetch when we get back first set of results.
+        fetchMore();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards]);
+  }, [visibleCards, cards, lowMemoryMode]);
+  const expandCards = useCallback(() => {
+    fetchedOne.current = false;
+  }, []);
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
     cards,
     fetchMore: allFetched ? undefined : fetchMore,
+    expandCards,
   };
 }
 
@@ -363,7 +372,7 @@ function useSectionFeed({
   }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort, sideDeck]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
-
+  const expandSectionRef = useRef<(sectionId: string) => void>();
   const editCollectionSettings = useCallback(() => {
     Keyboard.dismiss();
     Navigation.push(componentId, {
@@ -444,8 +453,7 @@ function useSectionFeed({
             type: 'button',
             id: `${prefix}_nc_${sectionId}`,
             onPress: () => {
-              setExpandButtonPressed(true);
-              setShowNonCollection(sectionId, true);
+              expandSectionRef.current?.(sectionId);
             },
             title: ngettext(
               msgid`Show ${nonCollectionCount} non-collection card`,
@@ -472,7 +480,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        if (!showAllNonCollection && !ignore_collection && card.pack_code !== 'core' && !cardInCollection(card, packInCollection)) {
+        if (!showAllNonCollection && !ignore_collection && (card.pack_code !== 'core' || packInCollection.no_core) && !cardInCollection(card, packInCollection)) {
           currentNonCollection.push(card);
         } else {
           result.push(card);
@@ -485,9 +493,18 @@ function useSectionFeed({
     }
     return [result, items, spoilerCards.length];
   }, [includeBonded, partialCards, deckCardsLoading, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, hasDeckChanges,
-    sideDeck, investigator, showAllNonCollection, editCollectionSettings, setShowNonCollection, refreshDeck]);
+    sideDeck, investigator, showAllNonCollection,
+    editCollectionSettings, refreshDeck]);
 
-  const { cards, fetchMore } = useCardFetcher(visibleCards);
+  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards);
+  useEffect(() => {
+    expandSectionRef.current = (sectionId: string) => {
+      expandCards();
+      setExpandButtonPressed(true);
+      setShowNonCollection(sectionId, true);
+    }
+  }, [expandCards, setExpandButtonPressed, setShowNonCollection]);
+
   const flatDeckCards: Card[] = useMemo(() => {
     if (includeBonded) {
       return flatMap(values(cards), c => c ? c : []);
@@ -824,6 +841,7 @@ export default function({
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
   const deckEdits = useSimpleDeckEdits(deckId);
+  const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
@@ -889,6 +907,8 @@ export default function({
         card,
         colors,
         true,
+        deckId,
+        customizations,
         tabooSetOverride
       );
       return;
@@ -917,9 +937,10 @@ export default function({
       tabooSetOverride,
       deckId,
       investigator,
-      true
+      true,
+      customizations
     );
-  }, [feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
+  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => deckId ? [
     {
       type: 'deck',
@@ -952,6 +973,7 @@ export default function({
       side: !!sideDeck,
     },
   ] : [], [deckId, sideDeck]);
+  const { lang, listSeperator } = useContext(LanguageContext);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
@@ -975,7 +997,7 @@ export default function({
         return (
           <CardSearchResult
             key={item.id}
-            card={card}
+            card={card.withCustomizations(listSeperator, customizations?.[card.code], 'list')}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
@@ -1032,8 +1054,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
-  const { lang } = useContext(LanguageContext);
+  }, [customizations, listSeperator, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { ngettext, msgid } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import Card from '@data/types/Card';
@@ -12,6 +13,7 @@ interface Props {
 }
 export default function CardFooterInfo({ card }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const quantity = card.quantity || 1;
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }, TINY_PHONE ? { flexDirection: 'column', alignItems: 'flex-end' } : {}]}>
       <View style={styles.illustrator}>
@@ -25,7 +27,7 @@ export default function CardFooterInfo({ card }: Props) {
         ) }
       </View>
       <View style={styles.cardNumber}>
-        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
+        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) ? (
           <View style={[styles.row, styles.encounterRow]}>
             <Text style={typography.tiny}>
               { card.encounter_name }
@@ -43,7 +45,16 @@ export default function CardFooterInfo({ card }: Props) {
                 card.encounter_position } / {card.encounter_size || 0}
             </Text>
           </View>
+        ) : (
+          card.subtype_code === 'basicweakness' && (
+            <View style={[styles.row, styles.encounterRow]}>
+              <Text style={typography.tiny}>
+                { ngettext(msgid`${quantity} copy`, `${quantity} copies`, quantity) }
+              </Text>
+            </View>
+          )
         ) }
+
         <View style={styles.row}>
           <Text style={typography.tiny}>
             { card.cycle_name }

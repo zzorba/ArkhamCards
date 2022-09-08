@@ -37,6 +37,8 @@ export interface ThemeColors {
   lightText: string;
   taboo: string;
   divider: string;
+  tarotText: string;
+  tarotInvertedText: string;
   faction: {
     guardian: FactionColors;
     seeker: FactionColors;
@@ -94,6 +96,7 @@ export interface ThemeColors {
     tde: string;
     tic: string;
     eoe: string;
+    tsk: string;
     gob: string;
     standalone: string;
   };
@@ -270,6 +273,8 @@ export const LIGHT_THEME: ThemeColors = {
       border: mythosLightText,
     },
   },
+  tarotText: dualDarkText,
+  tarotInvertedText: dualDarkText,
   upgrade: '#cfb13a',
   skill: {
     willpower: {
@@ -309,6 +314,7 @@ export const LIGHT_THEME: ThemeColors = {
     tde: '#45559C',
     tic: '#2A7D7F',
     eoe: '#25B7CB',
+    tsk: '#593B5D',
     gob: '#AC9788',
     standalone: '#AC9788',
   },
@@ -432,6 +438,8 @@ export const DARK_THEME: ThemeColors = {
     },
   },
 
+  tarotText: dualDarkText,
+  tarotInvertedText: dualLightText,
   upgrade: '#cfb13a',
   skill: {
     willpower: {
@@ -471,6 +479,7 @@ export const DARK_THEME: ThemeColors = {
     tde: '#3D4B8A',
     tic: '#236A6B',
     eoe: '#179BAD',
+    tsk: '#4B314E',
     gob: '#A18978',
     standalone: '#A18978',
   },

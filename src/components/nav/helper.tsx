@@ -10,7 +10,7 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
-import { CampaignId, Deck, DeckId, ParsedDeck } from '@actions/types';
+import { CampaignId, Customizations, Deck, DeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
@@ -141,6 +141,8 @@ export function showCard(
   card: Card,
   colors: ThemeColors,
   showSpoilers: undefined | boolean,
+  deckId?: DeckId,
+  initialCustomizations?: Customizations,
   tabooSetId?: number,
   backCode?: string,
 ) {
@@ -153,6 +155,8 @@ export function showCard(
         pack_code: card.pack_code,
         showSpoilers: !!showSpoilers,
         tabooSetId,
+        deckId,
+        initialCustomizations,
       },
       options: {
         topBar: {
@@ -220,7 +224,9 @@ export function showCardSwipe(
   tabooSetId?: number,
   deckId?: DeckId,
   investigator?: Card,
-  editable?: boolean
+  editable?: boolean,
+  initialCustomizations?: Customizations,
+  customizationsEditable?: boolean
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -246,6 +252,8 @@ export function showCardSwipe(
         faction: investigator?.factionCode(),
         controls: controls === 'side' ? map(range(0, codes.length), () => 'side') : controls,
         editable,
+        initialCustomizations,
+        customizationsEditable: editable || customizationsEditable,
       },
       options,
     },

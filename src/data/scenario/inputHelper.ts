@@ -122,6 +122,7 @@ export function calculateBinaryConditionResult(
           return campaignDataInvestigatorConditionResult(condition, campaignLog);
         case 'scenario_completed':
         case 'scenario_replayed':
+        case 'next_scenario':
           return campaignDataScenarioConditionResult(condition, campaignLog);
         case 'chaos_bag': {
           const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);

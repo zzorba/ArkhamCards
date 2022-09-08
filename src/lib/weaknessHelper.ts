@@ -23,7 +23,10 @@ export function availableWeaknesses(
   );
 }
 
+const INVESTIGATOR_FACTION = /^\[(.+?)\] investigator only\.$/m;
+
 function matchingWeaknesses(
+  investigator: Card | undefined,
   set: WeaknessSet,
   allWeaknesses: CardsMap,
   {
@@ -50,12 +53,14 @@ function matchingWeaknesses(
     const matchesCampaignModeOnly = !standalone || !!(
       card.real_text && card.real_text.indexOf('Campaign Mode only.') === -1
     );
-
-    return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly;
+    const investigatorMatch = card.real_text && card.real_text.match(INVESTIGATOR_FACTION);
+    const factionMatch = !investigatorMatch || !investigator || (investigator.factionCode() === investigatorMatch[1]);
+    return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly && factionMatch;
   });
 }
 
 export function drawWeakness(
+  investigator: Card | undefined,
   set: WeaknessSet,
   allWeaknesses: CardsMap,
   criteria: WeaknessCriteria,
@@ -63,7 +68,7 @@ export function drawWeakness(
 ): Card | undefined {
   const cards = shuffle(
     flatMap(
-      matchingWeaknesses(set, allWeaknesses, criteria, realTraits),
+      matchingWeaknesses(investigator, set, allWeaknesses, criteria, realTraits),
       card => {
         return map(
           range(0, (card.quantity || 0) - (set.assignedCards[card.code] || 0)),

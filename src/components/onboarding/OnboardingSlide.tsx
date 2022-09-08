@@ -13,7 +13,7 @@ interface Props {
   img?: string;
 }
 
-export default function OnboardingSlide({ title, faction, body, img }: Props) {
+export default function OnboardingSlide({ title, faction, body }: Props) {
   const { colors, shadow, width, height, typography } = useContext(StyleContext);
   const sizeW = width - m * 2;
   const sizeH = height - m * 2 - NOTCH_BOTTOM_PADDING;
@@ -43,5 +43,5 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 16,
     padding: m,
     flexDirection: 'column',
-  }
-})
+  },
+});

@@ -313,16 +313,18 @@ export default function TwoSidedCardComponent(props: Props) {
           borderTopWidth: noHeader ? 1 : 0,
         }]}>
           { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width - s * 2)} linked={!!linked} /> }
-          <View removeClippedSubviews style={[
-            styles.cardBody,
-            {
-              backgroundColor: noHeader ? 'transparent' : colors.background,
-            },
-            !isFirst ? {
-              borderBottomLeftRadius: 8,
-              borderBottomRightRadius: 8,
-            } : undefined,
-          ]}>
+          <View
+            style={[
+              styles.cardBody,
+              {
+                backgroundColor: noHeader ? 'transparent' : colors.background,
+              },
+              !isFirst ? {
+                borderBottomLeftRadius: 8,
+                borderBottomRightRadius: 8,
+              } : undefined,
+            ]}
+          >
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
                 <View style={styles.metadataBlock}>
@@ -458,7 +460,7 @@ export default function TwoSidedCardComponent(props: Props) {
             } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
-              <View style={[styles.row, styles.flex]}>
+              <View style={styles.row}>
                 <View style={[styles.mainColumn, styles.flex]}>
                   { metadataBlock }
                   { playdataBlock }
@@ -495,7 +497,6 @@ export default function TwoSidedCardComponent(props: Props) {
   }, [card, simple, width, linked, cardText, shadow.large, custom,
     cardFooter, colors, backgroundStyle, showBack, flavorFirst, image, metadataBlock, playdataBlock,
     toggleShowBack, showFaq, showTaboo]);
-
   const backFirst = !linked &&
     (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
     !(isHorizontal || !card.mythos_card) &&
@@ -531,7 +532,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    flex: 1,
   },
   playerImage: {
     marginTop: 2,

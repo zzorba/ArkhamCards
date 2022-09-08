@@ -9,6 +9,7 @@ import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
 import { DeckId } from '@actions/types';
 import ShuffleButton, { DraftButton } from './ShuffleButton';
+import { DiscountComponent } from './DiscountComponent';
 
 export type ControlType = {
   type: 'deck';
@@ -32,10 +33,12 @@ export type ControlType = {
   deckId: DeckId;
   limit: number;
   side?: boolean;
+  editable: boolean;
   onUpgradePress?: (card: Card) => void;
 } | {
   type: 'toggle';
   value: boolean;
+  disabled?: boolean;
   toggleValue: (value: boolean) => void;
 } | {
   type: 'count_with_toggle';
@@ -48,6 +51,10 @@ export type ControlType = {
 } | {
   type: 'draft';
   onDraft: (card: Card) => void;
+} | {
+  type: 'discount';
+  available: number;
+  used: number;
 }
 
 interface Props {
@@ -71,12 +78,13 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
           onUpgradePress={control.onUpgradePress}
           card={card}
           deckId={control.deckId}
+          editable={control.editable}
           limit={control.limit}
           side={control.side}
         />
       );
     case 'toggle':
-      return <CardToggle value={control.value} toggleValue={control.toggleValue} />;
+      return <CardToggle value={control.value} toggleValue={control.toggleValue} disabled={control.disabled} />;
     case 'count_with_toggle':
       return (
         <>
@@ -95,6 +103,10 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
           reversed={control.reversed}
           useGestureHandler={useGestureHandler}
         />
+      );
+    case 'discount':
+      return (
+        <DiscountComponent available={control.available} used={control.used} />
       );
   }
 }

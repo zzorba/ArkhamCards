@@ -7,6 +7,7 @@ import {
   keys,
   map,
   sumBy,
+  maxBy,
 } from 'lodash';
 
 import { StringChoices } from '@actions/types';
@@ -45,6 +46,7 @@ import {
   ScenarioDataFixedInvestigatorStatusCondition,
   InvestigatorChoiceCondition,
   ScenarioDataInvestigatorStatusCondition,
+  CampaignDataNextScenarioCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -170,6 +172,11 @@ export function getOperand(
       return campaignLog.chaosBag[op.token] || 0;
     case 'constant':
       return op.value;
+    case 'most_xp_earned': {
+      const investigators = campaignLog.investigatorCodes(false);
+      const topCode = maxBy(investigators, code => campaignLog.earnedXp(code));
+      return topCode ? campaignLog.earnedXp(topCode) : 0;
+    }
     case 'partner_status': {
       const partnerResult = partnerStatusConditionResult(op, campaignLog);
       return keys(partnerResult.investigatorChoices).length;
@@ -199,7 +206,7 @@ export function checkSuppliesAnyConditionResult(
     !!find(investigators, investigator => {
       const supplies = investigatorSupplies[investigator.code] || {};
       return !!find(supplies.entries, entry => (
-        entry.id === condition.id && !supplies.crossedOut[condition.id] && entry.type === 'count' && entry.count > 0
+        entry.id === condition.id && !entry.crossedOut && entry.type === 'count' && entry.count > 0
       ));
     }),
     condition.options
@@ -217,7 +224,7 @@ export function checkSuppliesAllConditionResult(
   });
   forEach(investigatorSupplies, (supplies, investigatorCode) => {
     const hasSupply = !!find(supplies.entries,
-      entry => entry.id === condition.id && !supplies.crossedOut[condition.id] && entry.type === 'count' && entry.count > 0
+      entry => entry.id === condition.id && !entry.crossedOut && entry.type === 'count' && entry.count > 0
     );
     const index = findIndex(
       condition.options,
@@ -463,10 +470,18 @@ function investigatorDataMatches(
 }
 
 export function campaignDataScenarioConditionResult(
-  condition: CampaignDataScenarioCondition,
+  condition: CampaignDataScenarioCondition | CampaignDataNextScenarioCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   switch (condition.campaign_data) {
+    case 'next_scenario': {
+      const hasNextScenario = !!campaignLog.campaignData.nextScenario;
+      const currentScenarioId = campaignLog.scenarioId ? campaignLog.campaignGuide.parseScenarioId(campaignLog.scenarioId) : undefined;
+      const replayRequired = !!currentScenarioId && (
+        (currentScenarioId.replayAttempt || 0) < (campaignLog.campaignData.scenarioReplayCount[currentScenarioId.scenarioId] || 0)
+      );
+      return binaryConditionResult(hasNextScenario || replayRequired, condition.options);
+    }
     case 'scenario_completed':
       return binaryConditionResult(
         campaignLog.scenarioStatus(condition.scenario) === 'completed',
@@ -594,6 +609,7 @@ export function campaignDataConditionResult(
         campaignLog
       );
     case 'scenario_replayed':
+    case 'next_scenario':
     case 'scenario_completed': {
       return campaignDataScenarioConditionResult(condition, campaignLog);
     }
@@ -632,12 +648,11 @@ export function multiConditionResult(
         case 'campaign_data': {
           switch (subCondition.campaign_data) {
             case 'chaos_bag':
-              return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
-              return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'scenario_completed':
             case 'scenario_replayed':
-              return campaignDataScenarioConditionResult(subCondition, campaignLog).option ? 1 : 0;
+            case 'next_scenario':
+              return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
         case 'scenario_data': {
@@ -807,8 +822,6 @@ export function conditionResult(
       return campaignLogCountConditionResult(condition, campaignLog);
     case 'math':
       return mathConditionResult(condition, campaignLog);
-    case 'campaign_data':
-      return campaignDataConditionResult(condition, campaignLog);
     case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
     case 'trauma':

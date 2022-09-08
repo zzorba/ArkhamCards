@@ -34,10 +34,11 @@ import { parseDeck } from '@lib/parseDeck';
 import { useAlertDialog } from './dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { CollectionEditProps } from '@components/settings/CollectionEditView';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface DeckDraftProps {
   id: DeckId;
-  campaignId?: CampaignId;
+  campaignId: CampaignId | undefined;
 }
 
 function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth: number; item: GridItem; onDraft: (card: Card, item?: GridItem) => void }) {
@@ -131,13 +132,11 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
   }, [onDraft, item]);
   const opacity = useSharedValue(1);
   useAnimatedReaction(() => {
-    // console.log(`${JSON.stringify(item)} has history ${JSON.stringify(draftHistory?.value)}`);
     if (!item.draftCycle || draftHistory.value.cycle < item.draftCycle) {
       return false;
     }
     return !draftHistory.value.code || draftHistory.value.code !== item.code;
   }, (result, previous) => {
-    // console.log(`${item.code} - ${previous} -> ${result}`);
     if (result !== previous) {
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
@@ -220,11 +219,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
   }, [allPossibleCodes]);
 
   const [alertDialog, showAlert] = useAlertDialog();
+  const { listSeperator } = useContext(LanguageContext);
   const onDraftNewCards = useCallback(() => {
     if (!meta || !investigatorBack) {
       return;
     }
-    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards);
+    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards, listSeperator);
     if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
       setDraftCards([]);
       showAlert(
@@ -245,11 +245,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       possibleCodes.current,
       cards,
       in_collection,
-      ignore_collection
+      ignore_collection,
+      listSeperator
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, showAlert, setDraftCards, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
 
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);

@@ -52,14 +52,13 @@ export default function DbChooserButton({ componentId, title, all, field, includ
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
 
       // This code will export all traits in the english database.
-      /*
-      console.log('const localized_traits = {')
-      forEach(values, value => {
-        const escaped = value.replace(`'`, `\\'`);
-        console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
-      });
-      console.log('};')
-      */
+
+      //console.log('const localized_traits = {')
+      //forEach(values, value => {
+      //  const escaped = value.replace(`'`, `\\'`);
+      //  console.log(`  '${escaped}': c('trait').t\`${value}\`,`)
+      //});
+      //console.log('};')
 
       const actualValues = fixedTranslations ? map(values, item => fixedTranslations[item] || item) : values;
       const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;

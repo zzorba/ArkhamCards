@@ -41,4 +41,5 @@
     <color name="selectedToggleButtonColor">#111111</color>
     <color name="dividerColor">#424242</color>
     <color name="disabledOverlayColor">#99000000</color>
+    <color name="splashBackground">#513661</color>
 </resources>

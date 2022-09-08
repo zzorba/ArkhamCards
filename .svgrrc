@@ -1,6 +1,7 @@
 {
   "replaceAttrValues": {
     "#border": "{props.border}",
+    "#background": "{props.background}",
     "#faction": "{props.faction}"
   }
 }

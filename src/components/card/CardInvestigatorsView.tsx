@@ -4,7 +4,7 @@ import { Keyboard } from 'react-native';
 import { t } from 'ttag';
 
 import COLORS from '@styles/colors';
-import { useAllInvestigators, useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import DeckValidation from '@lib/DeckValidation';
 import StyleContext from '@styles/StyleContext';
@@ -23,7 +23,7 @@ export interface CardInvestigatorProps {
 }
 
 function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & NavigationProps) {
-  const { backgroundStyle, colors, width } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const [card, loading] = useSingleCard(code, 'player');
   const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_FACTION);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
@@ -41,7 +41,7 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
     ) {
       return false;
     }
-    const validation = new DeckValidation(investigator, {}, undefined, true);
+    const validation = new DeckValidation(investigator, {}, undefined, { all_options: true, all_customizations: true });
     return validation.canIncludeCard(card, false);
   }, [card]);
 
@@ -54,7 +54,7 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
 
   const onPress = useCallback((investigator: Card) => {
     showCard(componentId, investigator.code, investigator, colors, false);
-  }, [componentId]);
+  }, [componentId, colors]);
 
   if (loading || !card) {
     return <LoadingSpinner large />;
@@ -75,8 +75,6 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
     </>
   );
 }
-
-
 
 CardInvestigatorsView.options = () => {
   return {

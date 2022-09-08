@@ -1,30 +1,33 @@
-import { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
-import { find, forEach, keys, range, uniq } from 'lodash';
+import { filter, find, forEach, keys, sortBy, range, uniq, flatMap } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@app/store';
-import { CampaignId, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
+import { CampaignId, Customizations, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
 import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
-import { finishDeckEdit, startDeckEdit } from '@components/deck/actions';
+import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
-import { parseDeck } from '@lib/parseDeck';
+import { parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { RANDOM_BASIC_WEAKNESS, RAVEN_QUILL_CODE } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { ShowAlert } from './dialogs';
 import COLORS from '@styles/colors';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import useSingleCard from '@components/card/useSingleCard';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
+import { useCardMap } from '@components/card/useCardList';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
@@ -52,6 +55,32 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
 export function useSimpleDeckEdits(id: DeckId | undefined): EditDeckState | undefined {
   const deckEditsSelector = useMemo(makeDeckEditsSelector, []);
   return useSelector((state: AppState) => deckEditsSelector(state, id));
+}
+
+export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: EditDeckState | undefined): Customizations | undefined {
+  const slots = deckEdits?.slots;
+  const ravenChoice = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const codes = useMemo(() => {
+    const ravenQuillChoices = flatMap(
+      parseCustomizationDecision(ravenChoice),
+      choice => {
+        if (!choice.choice) {
+          return [];
+        }
+        return choice.choice?.split('^') || [];
+      });
+    const slotCodes = slots ? keys(slots) : [];
+    return [...ravenQuillChoices, ...slotCodes];
+  }, [slots, ravenChoice]);
+  const [cards] = useCardMap(codes, 'player', deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id);
+  const meta = deckEdits?.meta;
+  const previousMeta = deck?.previousDeck?.meta;
+  return useMemo(() => {
+    if (!meta || !slots || !cards) {
+      return undefined;
+    }
+    return parseCustomizations(meta, slots, cards, previousMeta)[0];
+  }, [meta, slots, previousMeta, cards]);
 }
 
 export function useDeckSlotCount({ uuid }: DeckId, code: string, side?: boolean): number {
@@ -120,6 +149,7 @@ export interface ParsedDeckResults {
   deckEditsRef: MutableRefObject<EditDeckState | undefined>;
   tabooSetId: number;
   visible: boolean;
+  editable: boolean;
   parsedDeck?: ParsedDeck;
   parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
@@ -127,7 +157,7 @@ export interface ParsedDeckResults {
 }
 
 function useParsedDeckHelper(
-  id: DeckId,
+  id: DeckId | undefined,
   componentId: string,
   deck: LatestDeckT | undefined,
   {
@@ -141,6 +171,15 @@ function useParsedDeckHelper(
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing ? deck : undefined, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(() => {
+    const ravenQuillChoices = flatMap(
+      parseCustomizationDecision(deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`]),
+      choice => {
+        if (!choice.choice) {
+          return [];
+        }
+        return choice.choice?.split('^') || [];
+      });
+
     return uniq([
       ...(deck ? [deck.investigator] : []),
       ...keys(deckEdits?.side),
@@ -150,48 +189,51 @@ function useParsedDeckHelper(
       ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
       ...keys(deck?.previousDeck?.slots || {}),
       ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+      ...ravenQuillChoices,
     ]);
   }, [deckEdits, deck], tabooSetId);
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(undefined);
-  const parsedDeckRef = useRef<ParsedDeck | undefined>();
-  parsedDeckRef.current = parsedDeck;
+  const parsedDeckRef = useRef<ParsedDeck | undefined>(parsedDeck);
+  const { listSeperator } = useContext(LanguageContext);
   useEffect(() => {
     if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
       initialized.current = true;
-      setParsedDeck(
-        parseDeck(
-          deck.deck.investigator_code,
-          deck.deck.meta || {},
-          deck.deck.slots || {},
-          deck.deck.ignoreDeckLimitSlots,
-          deck.deck.sideSlots || {},
-          cards,
-          deck.previousDeck,
-          deck.deck.xp_adjustment || 0,
-          deck.deck
-        )
+      const pd = parseDeck(
+        deck.deck.investigator_code,
+        deck.deck.meta || {},
+        deck.deck.slots || {},
+        deck.deck.ignoreDeckLimitSlots,
+        deck.deck.sideSlots || {},
+        cards,
+        listSeperator,
+        deck.previousDeck,
+        deck.deck.xp_adjustment || 0,
+        deck.deck
       );
+      parsedDeckRef.current = pd;
+      setParsedDeck(pd);
     }
-  }, [deck, cards, fetchIfMissing, parsedDeck]);
+  }, [deck, cards, fetchIfMissing, listSeperator, parsedDeck]);
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
-      setParsedDeck(
-        parseDeck(
-          deck.deck.investigator_code,
-          deckEdits.meta,
-          deckEdits.slots,
-          deckEdits.ignoreDeckLimitSlots,
-          deckEdits.side,
-          cards,
-          deck.previousDeck,
-          deckEdits.xpAdjustment,
-          deck.deck
-        )
+      const pd = parseDeck(
+        deck.deck.investigator_code,
+        deckEdits.meta,
+        deckEdits.slots,
+        deckEdits.ignoreDeckLimitSlots,
+        deckEdits.side,
+        cards,
+        listSeperator,
+        deck.previousDeck,
+        deckEdits.xpAdjustment,
+        deck.deck
       );
+      parsedDeckRef.current = pd;
+      setParsedDeck(pd);
     }
-  }, [cards, deck, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
+  }, [cards, deck, listSeperator, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
   return {
     deck: deck?.deck,
     deckT: deck,
@@ -203,6 +245,7 @@ function useParsedDeckHelper(
     visible,
     parsedDeck,
     parsedDeckRef,
+    editable: !!deckEdits?.editable,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
     cardsMissing: !cardsLoading && cardsMissing,
   };
@@ -219,12 +262,49 @@ export function useParsedDeckWithFetch(
 }
 
 export function useParsedDeck(
-  id: DeckId,
+  id: DeckId | undefined,
   componentId: string,
   initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeck(id);
   return useParsedDeckHelper(id, componentId, deck, { initialMode });
+}
+
+interface UpdateCustomizationAction {
+  code: string;
+  choice: CustomizationChoice;
+}
+export function useCardCustomizations(
+  deckId: DeckId | undefined,
+  initialCustomizations: Customizations | undefined
+): [Customizations, (code: string, choice: CustomizationChoice) => void] {
+  const dispatch = useAppDispatch();
+  const [, deckEditsRef] = useDeckEdits(deckId);
+  const [customizations, updateCustomizations] = useReducer<React.Reducer<Customizations, UpdateCustomizationAction>>((state: Customizations, action: UpdateCustomizationAction) => {
+    const { code, choice } = action;
+    const updated: Customizations = { ...state };
+    updated[code] = sortBy([
+      ...filter(state[code] || [], c => c.option.index !== choice.option.index),
+      {
+        ...choice,
+        xp_locked: find(state[code] || [], c => c.option.index === choice.option.index)?.xp_locked || 0,
+      },
+    ], c => c.option.index);
+    return updated;
+  }, initialCustomizations || {});
+
+  const setChoice = useCallback((code: string, choice: CustomizationChoice) => {
+    updateCustomizations({ code, choice });
+    if (deckEditsRef.current && deckId) {
+      const decision = {
+        index: choice.option.index,
+        spent_xp: choice.xp_spent,
+        choice: choice.type ? choice.encodedChoice : undefined,
+      };
+      dispatch(updateDeckCustomizationChoice(deckId, deckEditsRef.current, code, decision));
+    }
+  }, [dispatch, deckId, deckEditsRef, updateCustomizations]);
+  return [customizations, setChoice];
 }
 
 export interface DeckEditState {
@@ -367,6 +447,7 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
       component: {
         name: 'Weakness.Draw',
         passProps: {
+          investigator,
           slots: deckEditsRef.current.slots,
           saveWeakness,
           alwaysReplaceRandomBasicWeakness,

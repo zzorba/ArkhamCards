@@ -13,6 +13,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  bigint: any;
   jsonb: any;
   timestamp: any;
   timestamptz: any;
@@ -322,6 +323,19 @@ export type Base_Decks_Variance_Fields = {
 export type Base_Decks_Variance_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
+export type Bigint_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['bigint']>;
+  _gt?: InputMaybe<Scalars['bigint']>;
+  _gte?: InputMaybe<Scalars['bigint']>;
+  _in?: InputMaybe<Array<Scalars['bigint']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['bigint']>;
+  _lte?: InputMaybe<Scalars['bigint']>;
+  _neq?: InputMaybe<Scalars['bigint']>;
+  _nin?: InputMaybe<Array<Scalars['bigint']>>;
 };
 
 /** columns and relationships of "campaign" */
@@ -1520,6 +1534,124 @@ export type Campaign_Delete_Key_Input = {
   weaknessSet?: InputMaybe<Scalars['String']>;
 };
 
+/** columns and relationships of "campaign_difficulty" */
+export type Campaign_Difficulty = {
+  __typename?: 'campaign_difficulty';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate = {
+  __typename?: 'campaign_difficulty_aggregate';
+  aggregate?: Maybe<Campaign_Difficulty_Aggregate_Fields>;
+  nodes: Array<Campaign_Difficulty>;
+};
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_Fields = {
+  __typename?: 'campaign_difficulty_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Campaign_Difficulty_Max_Fields>;
+  min?: Maybe<Campaign_Difficulty_Min_Fields>;
+};
+
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "campaign_difficulty". All fields are combined with a logical 'AND'. */
+export type Campaign_Difficulty_Bool_Exp = {
+  _and?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "campaign_difficulty" */
+export enum Campaign_Difficulty_Constraint {
+  /** unique or primary key constraint */
+  CampaignDifficultyPkey = 'campaign_difficulty_pkey'
+}
+
+export enum Campaign_Difficulty_Enum {
+  Easy = 'easy',
+  Expert = 'expert',
+  Hard = 'hard',
+  Standard = 'standard'
+}
+
+/** Boolean expression to compare columns of type "campaign_difficulty_enum". All fields are combined with logical 'AND'. */
+export type Campaign_Difficulty_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _in?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _nin?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+};
+
+/** input type for inserting data into table "campaign_difficulty" */
+export type Campaign_Difficulty_Insert_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Campaign_Difficulty_Max_Fields = {
+  __typename?: 'campaign_difficulty_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaign_Difficulty_Min_Fields = {
+  __typename?: 'campaign_difficulty_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "campaign_difficulty" */
+export type Campaign_Difficulty_Mutation_Response = {
+  __typename?: 'campaign_difficulty_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Campaign_Difficulty>;
+};
+
+/** on conflict condition type for table "campaign_difficulty" */
+export type Campaign_Difficulty_On_Conflict = {
+  constraint: Campaign_Difficulty_Constraint;
+  update_columns: Array<Campaign_Difficulty_Update_Column>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "campaign_difficulty". */
+export type Campaign_Difficulty_Order_By = {
+  value?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: campaign_difficulty */
+export type Campaign_Difficulty_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "campaign_difficulty" */
+export type Campaign_Difficulty_Set_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Update_Column {
+  /** column name */
+  Value = 'value'
+}
+
 /** columns and relationships of "campaign_guide" */
 export type Campaign_Guide = {
   __typename?: 'campaign_guide';
@@ -2412,6 +2544,128 @@ export type Campaign_Variance_Fields = {
   link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle = {
+  __typename?: 'campaigns_by_cycle';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate = {
+  __typename?: 'campaigns_by_cycle_aggregate';
+  aggregate?: Maybe<Campaigns_By_Cycle_Aggregate_Fields>;
+  nodes: Array<Campaigns_By_Cycle>;
+};
+
+/** aggregate fields of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate_Fields = {
+  __typename?: 'campaigns_by_cycle_aggregate_fields';
+  avg?: Maybe<Campaigns_By_Cycle_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Campaigns_By_Cycle_Max_Fields>;
+  min?: Maybe<Campaigns_By_Cycle_Min_Fields>;
+  stddev?: Maybe<Campaigns_By_Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Campaigns_By_Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Campaigns_By_Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Campaigns_By_Cycle_Sum_Fields>;
+  var_pop?: Maybe<Campaigns_By_Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Campaigns_By_Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Campaigns_By_Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Campaigns_By_Cycle_Avg_Fields = {
+  __typename?: 'campaigns_by_cycle_avg_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "campaigns_by_cycle". All fields are combined with a logical 'AND'. */
+export type Campaigns_By_Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Campaigns_By_Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaigns_By_Cycle_Bool_Exp>>;
+  count?: InputMaybe<Bigint_Comparison_Exp>;
+  cyclecode?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Campaigns_By_Cycle_Max_Fields = {
+  __typename?: 'campaigns_by_cycle_max_fields';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaigns_By_Cycle_Min_Fields = {
+  __typename?: 'campaigns_by_cycle_min_fields';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** Ordering options when selecting data from "campaigns_by_cycle". */
+export type Campaigns_By_Cycle_Order_By = {
+  count?: InputMaybe<Order_By>;
+  cyclecode?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "campaigns_by_cycle" */
+export enum Campaigns_By_Cycle_Select_Column {
+  /** column name */
+  Count = 'count',
+  /** column name */
+  Cyclecode = 'cyclecode'
+}
+
+/** aggregate stddev on columns */
+export type Campaigns_By_Cycle_Stddev_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Campaigns_By_Cycle_Stddev_Pop_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_pop_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Campaigns_By_Cycle_Stddev_Samp_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_samp_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Campaigns_By_Cycle_Sum_Fields = {
+  __typename?: 'campaigns_by_cycle_sum_fields';
+  count?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate var_pop on columns */
+export type Campaigns_By_Cycle_Var_Pop_Fields = {
+  __typename?: 'campaigns_by_cycle_var_pop_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Campaigns_By_Cycle_Var_Samp_Fields = {
+  __typename?: 'campaigns_by_cycle_var_samp_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Campaigns_By_Cycle_Variance_Fields = {
+  __typename?: 'campaigns_by_cycle_variance_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
 /** columns and relationships of "card" */
 export type Card = {
   __typename?: 'card';
@@ -2661,6 +2915,210 @@ export enum Card_Constraint {
   /** unique or primary key constraint */
   CardPkey = 'card_pkey'
 }
+
+/** columns and relationships of "card_cycle" */
+export type Card_Cycle = {
+  __typename?: 'card_cycle';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  position: Scalars['Int'];
+};
+
+/** aggregated selection of "card_cycle" */
+export type Card_Cycle_Aggregate = {
+  __typename?: 'card_cycle_aggregate';
+  aggregate?: Maybe<Card_Cycle_Aggregate_Fields>;
+  nodes: Array<Card_Cycle>;
+};
+
+/** aggregate fields of "card_cycle" */
+export type Card_Cycle_Aggregate_Fields = {
+  __typename?: 'card_cycle_aggregate_fields';
+  avg?: Maybe<Card_Cycle_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Card_Cycle_Max_Fields>;
+  min?: Maybe<Card_Cycle_Min_Fields>;
+  stddev?: Maybe<Card_Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Card_Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Card_Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Card_Cycle_Sum_Fields>;
+  var_pop?: Maybe<Card_Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Card_Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Card_Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "card_cycle" */
+export type Card_Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Card_Cycle_Avg_Fields = {
+  __typename?: 'card_cycle_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "card_cycle". All fields are combined with a logical 'AND'. */
+export type Card_Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Card_Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Cycle_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_cycle" */
+export enum Card_Cycle_Constraint {
+  /** unique or primary key constraint */
+  CardCyclePkey = 'card_cycle_pkey'
+}
+
+/** input type for incrementing numeric columns in table "card_cycle" */
+export type Card_Cycle_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "card_cycle" */
+export type Card_Cycle_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Card_Cycle_Max_Fields = {
+  __typename?: 'card_cycle_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Card_Cycle_Min_Fields = {
+  __typename?: 'card_cycle_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "card_cycle" */
+export type Card_Cycle_Mutation_Response = {
+  __typename?: 'card_cycle_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Cycle>;
+};
+
+/** input type for inserting object relation for remote table "card_cycle" */
+export type Card_Cycle_Obj_Rel_Insert_Input = {
+  data: Card_Cycle_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
+};
+
+/** on conflict condition type for table "card_cycle" */
+export type Card_Cycle_On_Conflict = {
+  constraint: Card_Cycle_Constraint;
+  update_columns: Array<Card_Cycle_Update_Column>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_cycle". */
+export type Card_Cycle_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_cycle */
+export type Card_Cycle_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_cycle" */
+export enum Card_Cycle_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position'
+}
+
+/** input type for updating data in table "card_cycle" */
+export type Card_Cycle_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Card_Cycle_Stddev_Fields = {
+  __typename?: 'card_cycle_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Card_Cycle_Stddev_Pop_Fields = {
+  __typename?: 'card_cycle_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Card_Cycle_Stddev_Samp_Fields = {
+  __typename?: 'card_cycle_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Card_Cycle_Sum_Fields = {
+  __typename?: 'card_cycle_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "card_cycle" */
+export enum Card_Cycle_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position'
+}
+
+/** aggregate var_pop on columns */
+export type Card_Cycle_Var_Pop_Fields = {
+  __typename?: 'card_cycle_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Card_Cycle_Var_Samp_Fields = {
+  __typename?: 'card_cycle_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Card_Cycle_Variance_Fields = {
+  __typename?: 'card_cycle_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Card_Delete_At_Path_Input = {
@@ -3084,8 +3542,12 @@ export type Card_Order_By = {
 export type Card_Pack = {
   __typename?: 'card_pack';
   code: Scalars['String'];
+  /** An object relationship */
+  cycle?: Maybe<Card_Cycle>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
   name: Scalars['String'];
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** aggregated selection of "card_pack" */
@@ -3098,9 +3560,17 @@ export type Card_Pack_Aggregate = {
 /** aggregate fields of "card_pack" */
 export type Card_Pack_Aggregate_Fields = {
   __typename?: 'card_pack_aggregate_fields';
+  avg?: Maybe<Card_Pack_Avg_Fields>;
   count: Scalars['Int'];
   max?: Maybe<Card_Pack_Max_Fields>;
   min?: Maybe<Card_Pack_Min_Fields>;
+  stddev?: Maybe<Card_Pack_Stddev_Fields>;
+  stddev_pop?: Maybe<Card_Pack_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Card_Pack_Stddev_Samp_Fields>;
+  sum?: Maybe<Card_Pack_Sum_Fields>;
+  var_pop?: Maybe<Card_Pack_Var_Pop_Fields>;
+  var_samp?: Maybe<Card_Pack_Var_Samp_Fields>;
+  variance?: Maybe<Card_Pack_Variance_Fields>;
 };
 
 
@@ -3112,9 +3582,17 @@ export type Card_Pack_Aggregate_FieldsCountArgs = {
 
 /** order by aggregate values of table "card_pack" */
 export type Card_Pack_Aggregate_Order_By = {
+  avg?: InputMaybe<Card_Pack_Avg_Order_By>;
   count?: InputMaybe<Order_By>;
   max?: InputMaybe<Card_Pack_Max_Order_By>;
   min?: InputMaybe<Card_Pack_Min_Order_By>;
+  stddev?: InputMaybe<Card_Pack_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Card_Pack_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Card_Pack_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Card_Pack_Sum_Order_By>;
+  var_pop?: InputMaybe<Card_Pack_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Card_Pack_Var_Samp_Order_By>;
+  variance?: InputMaybe<Card_Pack_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "card_pack" */
@@ -3124,14 +3602,28 @@ export type Card_Pack_Arr_Rel_Insert_Input = {
   on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
 };
 
+/** aggregate avg on columns */
+export type Card_Pack_Avg_Fields = {
+  __typename?: 'card_pack_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "card_pack" */
+export type Card_Pack_Avg_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "card_pack". All fields are combined with a logical 'AND'. */
 export type Card_Pack_Bool_Exp = {
   _and?: InputMaybe<Array<Card_Pack_Bool_Exp>>;
   _not?: InputMaybe<Card_Pack_Bool_Exp>;
   _or?: InputMaybe<Array<Card_Pack_Bool_Exp>>;
   code?: InputMaybe<String_Comparison_Exp>;
+  cycle?: InputMaybe<Card_Cycle_Bool_Exp>;
+  cycle_code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_pack" */
@@ -3140,41 +3632,57 @@ export enum Card_Pack_Constraint {
   CardPackPkey = 'card_pack_pkey'
 }
 
+/** input type for incrementing numeric columns in table "card_pack" */
+export type Card_Pack_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
 /** input type for inserting data into table "card_pack" */
 export type Card_Pack_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
+  cycle?: InputMaybe<Card_Cycle_Obj_Rel_Insert_Input>;
+  cycle_code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
 export type Card_Pack_Max_Fields = {
   __typename?: 'card_pack_max_fields';
   code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "card_pack" */
 export type Card_Pack_Max_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Card_Pack_Min_Fields = {
   __typename?: 'card_pack_min_fields';
   code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "card_pack" */
 export type Card_Pack_Min_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "card_pack" */
@@ -3196,8 +3704,11 @@ export type Card_Pack_On_Conflict = {
 /** Ordering options when selecting data from "card_pack". */
 export type Card_Pack_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle?: InputMaybe<Card_Cycle_Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_pack */
@@ -3211,16 +3722,66 @@ export enum Card_Pack_Select_Column {
   /** column name */
   Code = 'code',
   /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Position = 'position'
 }
 
 /** input type for updating data in table "card_pack" */
 export type Card_Pack_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Card_Pack_Stddev_Fields = {
+  __typename?: 'card_pack_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Card_Pack_Stddev_Pop_Fields = {
+  __typename?: 'card_pack_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Card_Pack_Stddev_Samp_Fields = {
+  __typename?: 'card_pack_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Card_Pack_Sum_Fields = {
+  __typename?: 'card_pack_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "card_pack" */
+export type Card_Pack_Sum_Order_By = {
+  position?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "card_pack" */
@@ -3228,10 +3789,47 @@ export enum Card_Pack_Update_Column {
   /** column name */
   Code = 'code',
   /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Position = 'position'
 }
+
+/** aggregate var_pop on columns */
+export type Card_Pack_Var_Pop_Fields = {
+  __typename?: 'card_pack_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "card_pack" */
+export type Card_Pack_Var_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Card_Pack_Var_Samp_Fields = {
+  __typename?: 'card_pack_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "card_pack" */
+export type Card_Pack_Var_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Card_Pack_Variance_Fields = {
+  __typename?: 'card_pack_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "card_pack" */
+export type Card_Pack_Variance_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
 
 /** primary key columns input for table: card */
 export type Card_Pk_Columns_Input = {
@@ -4101,6 +4699,7 @@ export type Chaos_Bag_Result = {
   campaign: Campaign;
   created_at: Scalars['timestamptz'];
   curse: Scalars['Int'];
+  difficulty?: Maybe<Campaign_Difficulty_Enum>;
   drawn: Scalars['jsonb'];
   id: Scalars['Int'];
   sealed: Scalars['jsonb'];
@@ -4207,6 +4806,7 @@ export type Chaos_Bag_Result_Bool_Exp = {
   campaign?: InputMaybe<Campaign_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   curse?: InputMaybe<Int_Comparison_Exp>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum_Comparison_Exp>;
   drawn?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   sealed?: InputMaybe<Jsonb_Comparison_Exp>;
@@ -4256,6 +4856,7 @@ export type Chaos_Bag_Result_Insert_Input = {
   campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4329,6 +4930,7 @@ export type Chaos_Bag_Result_Order_By = {
   campaign?: InputMaybe<Campaign_Order_By>;
   created_at?: InputMaybe<Order_By>;
   curse?: InputMaybe<Order_By>;
+  difficulty?: InputMaybe<Order_By>;
   drawn?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sealed?: InputMaybe<Order_By>;
@@ -4358,6 +4960,8 @@ export enum Chaos_Bag_Result_Select_Column {
   /** column name */
   Curse = 'curse',
   /** column name */
+  Difficulty = 'difficulty',
+  /** column name */
   Drawn = 'drawn',
   /** column name */
   Id = 'id',
@@ -4376,6 +4980,7 @@ export type Chaos_Bag_Result_Set_Input = {
   bless?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4460,6 +5065,8 @@ export enum Chaos_Bag_Result_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Curse = 'curse',
+  /** column name */
+  Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
   /** column name */
@@ -5187,9 +5794,11 @@ export enum Friend_Status_Update_Column {
 /** columns and relationships of "full_card" */
 export type Full_Card = {
   __typename?: 'full_card';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
+  clues_fixed?: Maybe<Scalars['Boolean']>;
   code: Scalars['String'];
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
@@ -5209,6 +5818,8 @@ export type Full_Card = {
   enemy_horror?: Maybe<Scalars['Int']>;
   exceptional?: Maybe<Scalars['Boolean']>;
   exile?: Maybe<Scalars['Boolean']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code: Scalars['String'];
   health?: Maybe<Scalars['Int']>;
   health_per_investigator?: Maybe<Scalars['Boolean']>;
@@ -5256,7 +5867,9 @@ export type Full_Card = {
   type_code: Card_Type_Code_Enum;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version: Scalars['Int'];
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 
@@ -5399,7 +6012,9 @@ export type Full_Card_Avg_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "full_card". All fields are combined with a logical 'AND'. */
@@ -5407,9 +6022,11 @@ export type Full_Card_Bool_Exp = {
   _and?: InputMaybe<Array<Full_Card_Bool_Exp>>;
   _not?: InputMaybe<Full_Card_Bool_Exp>;
   _or?: InputMaybe<Array<Full_Card_Bool_Exp>>;
+  alternate_required_code?: InputMaybe<String_Comparison_Exp>;
   back_link?: InputMaybe<String_Comparison_Exp>;
   backimagesrc?: InputMaybe<String_Comparison_Exp>;
   clues?: InputMaybe<Int_Comparison_Exp>;
+  clues_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
@@ -5426,6 +6043,8 @@ export type Full_Card_Bool_Exp = {
   enemy_horror?: InputMaybe<Int_Comparison_Exp>;
   exceptional?: InputMaybe<Boolean_Comparison_Exp>;
   exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction2_code?: InputMaybe<String_Comparison_Exp>;
+  faction3_code?: InputMaybe<String_Comparison_Exp>;
   faction_code?: InputMaybe<String_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
   health_per_investigator?: InputMaybe<Boolean_Comparison_Exp>;
@@ -5466,7 +6085,9 @@ export type Full_Card_Bool_Exp = {
   type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   vengeance?: InputMaybe<Int_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
   victory?: InputMaybe<Int_Comparison_Exp>;
+  xp?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "full_card" */
@@ -5520,14 +6141,18 @@ export type Full_Card_Inc_Input = {
   skill_willpower?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Scalars['Int']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "full_card" */
 export type Full_Card_Insert_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -5544,6 +6169,8 @@ export type Full_Card_Insert_Input = {
   enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
@@ -5584,12 +6211,15 @@ export type Full_Card_Insert_Input = {
   type_code?: InputMaybe<Card_Type_Code_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
 export type Full_Card_Max_Fields = {
   __typename?: 'full_card_max_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
@@ -5603,6 +6233,8 @@ export type Full_Card_Max_Fields = {
   enemy_evade?: Maybe<Scalars['Int']>;
   enemy_fight?: Maybe<Scalars['Int']>;
   enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -5633,12 +6265,15 @@ export type Full_Card_Max_Fields = {
   subtype_code?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate min on columns */
 export type Full_Card_Min_Fields = {
   __typename?: 'full_card_min_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
@@ -5652,6 +6287,8 @@ export type Full_Card_Min_Fields = {
   enemy_evade?: Maybe<Scalars['Int']>;
   enemy_fight?: Maybe<Scalars['Int']>;
   enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
   faction_code?: Maybe<Scalars['String']>;
   health?: Maybe<Scalars['Int']>;
   illustrator?: Maybe<Scalars['String']>;
@@ -5682,7 +6319,9 @@ export type Full_Card_Min_Fields = {
   subtype_code?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** response of any mutation on the table "full_card" */
@@ -5710,9 +6349,11 @@ export type Full_Card_On_Conflict = {
 
 /** Ordering options when selecting data from "full_card". */
 export type Full_Card_Order_By = {
+  alternate_required_code?: InputMaybe<Order_By>;
   back_link?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   clues?: InputMaybe<Order_By>;
+  clues_fixed?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
@@ -5729,6 +6370,8 @@ export type Full_Card_Order_By = {
   enemy_horror?: InputMaybe<Order_By>;
   exceptional?: InputMaybe<Order_By>;
   exile?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
   faction_code?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
   health_per_investigator?: InputMaybe<Order_By>;
@@ -5769,7 +6412,9 @@ export type Full_Card_Order_By = {
   type_code?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
   victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: full_card */
@@ -5787,11 +6432,15 @@ export type Full_Card_Prepend_Input = {
 /** select columns of table "full_card" */
 export enum Full_Card_Select_Column {
   /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
   BackLink = 'back_link',
   /** column name */
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -5822,6 +6471,10 @@ export enum Full_Card_Select_Column {
   Exceptional = 'exceptional',
   /** column name */
   Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
   /** column name */
   FactionCode = 'faction_code',
   /** column name */
@@ -5897,14 +6550,20 @@ export enum Full_Card_Select_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
-  Victory = 'victory'
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
 }
 
 /** input type for updating data in table "full_card" */
 export type Full_Card_Set_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -5920,6 +6579,8 @@ export type Full_Card_Set_Input = {
   enemy_horror?: InputMaybe<Scalars['Int']>;
   exceptional?: InputMaybe<Scalars['Boolean']>;
   exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
@@ -5957,7 +6618,9 @@ export type Full_Card_Set_Input = {
   type_code?: InputMaybe<Card_Type_Code_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
@@ -5985,7 +6648,9 @@ export type Full_Card_Stddev_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -6013,7 +6678,9 @@ export type Full_Card_Stddev_Pop_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -6041,7 +6708,9 @@ export type Full_Card_Stddev_Samp_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
@@ -6069,7 +6738,9 @@ export type Full_Card_Sum_Fields = {
   skill_willpower?: Maybe<Scalars['Int']>;
   stage?: Maybe<Scalars['Int']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
 };
 
 /** columns and relationships of "full_card_text" */
@@ -6345,11 +7016,15 @@ export enum Full_Card_Text_Update_Column {
 /** update columns of table "full_card" */
 export enum Full_Card_Update_Column {
   /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
   BackLink = 'back_link',
   /** column name */
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -6380,6 +7055,10 @@ export enum Full_Card_Update_Column {
   Exceptional = 'exceptional',
   /** column name */
   Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
   /** column name */
   FactionCode = 'faction_code',
   /** column name */
@@ -6455,7 +7134,11 @@ export enum Full_Card_Update_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
-  Victory = 'victory'
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
 }
 
 /** aggregate var_pop on columns */
@@ -6483,7 +7166,9 @@ export type Full_Card_Var_Pop_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
@@ -6511,7 +7196,9 @@ export type Full_Card_Var_Samp_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
@@ -6539,7 +7226,9 @@ export type Full_Card_Variance_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "guide_achievement" */
@@ -8373,6 +9062,10 @@ export type Mutation_Root = {
   delete_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** delete single row from the table: "campaign_deck" */
   delete_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** delete data from the table: "campaign_difficulty" */
+  delete_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** delete single row from the table: "campaign_difficulty" */
+  delete_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** delete data from the table: "campaign_guide" */
   delete_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** delete data from the table: "campaign_investigator" */
@@ -8383,6 +9076,10 @@ export type Mutation_Root = {
   delete_card?: Maybe<Card_Mutation_Response>;
   /** delete single row from the table: "card" */
   delete_card_by_pk?: Maybe<Card>;
+  /** delete data from the table: "card_cycle" */
+  delete_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** delete single row from the table: "card_cycle" */
+  delete_card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** delete data from the table: "card_encounter_set" */
   delete_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** delete single row from the table: "card_encounter_set" */
@@ -8447,6 +9144,14 @@ export type Mutation_Root = {
   delete_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
   /** delete data from the table: "local_decks" */
   delete_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** delete data from the table: "official_card" */
+  delete_official_card?: Maybe<Official_Card_Mutation_Response>;
+  /** delete single row from the table: "official_card" */
+  delete_official_card_by_pk?: Maybe<Official_Card>;
+  /** delete data from the table: "official_card_text" */
+  delete_official_card_text?: Maybe<Official_Card_Text_Mutation_Response>;
+  /** delete single row from the table: "official_card_text" */
+  delete_official_card_text_by_pk?: Maybe<Official_Card_Text>;
   /** delete data from the table: "user_campaigns" */
   delete_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** delete data from the table: "user_flag" */
@@ -8463,6 +9168,10 @@ export type Mutation_Root = {
   delete_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
   /** delete data from the table: "user_sent_friend_requests" */
   delete_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** delete data from the table: "user_settings" */
+  delete_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** delete single row from the table: "user_settings" */
+  delete_user_settings_by_pk?: Maybe<User_Settings>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
@@ -8481,6 +9190,10 @@ export type Mutation_Root = {
   insert_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** insert a single row into the table: "campaign_deck" */
   insert_campaign_deck_one?: Maybe<Campaign_Deck>;
+  /** insert data into the table: "campaign_difficulty" */
+  insert_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** insert a single row into the table: "campaign_difficulty" */
+  insert_campaign_difficulty_one?: Maybe<Campaign_Difficulty>;
   /** insert data into the table: "campaign_guide" */
   insert_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** insert a single row into the table: "campaign_guide" */
@@ -8493,6 +9206,10 @@ export type Mutation_Root = {
   insert_campaign_one?: Maybe<Campaign>;
   /** insert data into the table: "card" */
   insert_card?: Maybe<Card_Mutation_Response>;
+  /** insert data into the table: "card_cycle" */
+  insert_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** insert a single row into the table: "card_cycle" */
+  insert_card_cycle_one?: Maybe<Card_Cycle>;
   /** insert data into the table: "card_encounter_set" */
   insert_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** insert a single row into the table: "card_encounter_set" */
@@ -8563,6 +9280,14 @@ export type Mutation_Root = {
   insert_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** insert a single row into the table: "local_decks" */
   insert_local_decks_one?: Maybe<Local_Decks>;
+  /** insert data into the table: "official_card" */
+  insert_official_card?: Maybe<Official_Card_Mutation_Response>;
+  /** insert a single row into the table: "official_card" */
+  insert_official_card_one?: Maybe<Official_Card>;
+  /** insert data into the table: "official_card_text" */
+  insert_official_card_text?: Maybe<Official_Card_Text_Mutation_Response>;
+  /** insert a single row into the table: "official_card_text" */
+  insert_official_card_text_one?: Maybe<Official_Card_Text>;
   /** insert data into the table: "user_campaigns" */
   insert_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** insert a single row into the table: "user_campaigns" */
@@ -8587,6 +9312,10 @@ export type Mutation_Root = {
   insert_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
   /** insert a single row into the table: "user_sent_friend_requests" */
   insert_user_sent_friend_requests_one?: Maybe<User_Sent_Friend_Requests>;
+  /** insert data into the table: "user_settings" */
+  insert_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** insert a single row into the table: "user_settings" */
+  insert_user_settings_one?: Maybe<User_Settings>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
@@ -8605,6 +9334,10 @@ export type Mutation_Root = {
   update_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** update single row of the table: "campaign_deck" */
   update_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** update data of the table: "campaign_difficulty" */
+  update_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** update single row of the table: "campaign_difficulty" */
+  update_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** update data of the table: "campaign_guide" */
   update_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** update data of the table: "campaign_investigator" */
@@ -8615,6 +9348,10 @@ export type Mutation_Root = {
   update_card?: Maybe<Card_Mutation_Response>;
   /** update single row of the table: "card" */
   update_card_by_pk?: Maybe<Card>;
+  /** update data of the table: "card_cycle" */
+  update_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** update single row of the table: "card_cycle" */
+  update_card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** update data of the table: "card_encounter_set" */
   update_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** update single row of the table: "card_encounter_set" */
@@ -8679,6 +9416,14 @@ export type Mutation_Root = {
   update_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
   /** update data of the table: "local_decks" */
   update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** update data of the table: "official_card" */
+  update_official_card?: Maybe<Official_Card_Mutation_Response>;
+  /** update single row of the table: "official_card" */
+  update_official_card_by_pk?: Maybe<Official_Card>;
+  /** update data of the table: "official_card_text" */
+  update_official_card_text?: Maybe<Official_Card_Text_Mutation_Response>;
+  /** update single row of the table: "official_card_text" */
+  update_official_card_text_by_pk?: Maybe<Official_Card_Text>;
   /** update data of the table: "user_campaigns" */
   update_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** update data of the table: "user_flag" */
@@ -8695,6 +9440,10 @@ export type Mutation_Root = {
   update_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
   /** update data of the table: "user_sent_friend_requests" */
   update_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** update data of the table: "user_settings" */
+  update_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** update single row of the table: "user_settings" */
+  update_user_settings_by_pk?: Maybe<User_Settings>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
@@ -8745,6 +9494,18 @@ export type Mutation_RootDelete_Campaign_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Campaign_DifficultyArgs = {
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Campaign_GuideArgs = {
   where: Campaign_Guide_Bool_Exp;
 };
@@ -8772,6 +9533,19 @@ export type Mutation_RootDelete_CardArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Card_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_CycleArgs = {
+  where: Card_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -8977,6 +9751,31 @@ export type Mutation_RootDelete_Local_DecksArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Official_CardArgs = {
+  where: Official_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Official_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Official_Card_TextArgs = {
+  where: Official_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Official_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_User_CampaignsArgs = {
   where: User_Campaigns_Bool_Exp;
 };
@@ -9022,6 +9821,18 @@ export type Mutation_RootDelete_User_Received_Friend_RequestsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_User_Sent_Friend_RequestsArgs = {
   where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_SettingsArgs = {
+  where: User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_User_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
 };
 
 
@@ -9085,6 +9896,20 @@ export type Mutation_RootInsert_Campaign_Deck_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Campaign_DifficultyArgs = {
+  objects: Array<Campaign_Difficulty_Insert_Input>;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_Difficulty_OneArgs = {
+  object: Campaign_Difficulty_Insert_Input;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Campaign_GuideArgs = {
   objects: Array<Campaign_Guide_Insert_Input>;
 };
@@ -9121,6 +9946,20 @@ export type Mutation_RootInsert_Campaign_OneArgs = {
 export type Mutation_RootInsert_CardArgs = {
   objects: Array<Card_Insert_Input>;
   on_conflict?: InputMaybe<Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_CycleArgs = {
+  objects: Array<Card_Cycle_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Cycle_OneArgs = {
+  object: Card_Cycle_Insert_Input;
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
 };
 
 
@@ -9366,6 +10205,34 @@ export type Mutation_RootInsert_Local_Decks_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Official_CardArgs = {
+  objects: Array<Official_Card_Insert_Input>;
+  on_conflict?: InputMaybe<Official_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Official_Card_OneArgs = {
+  object: Official_Card_Insert_Input;
+  on_conflict?: InputMaybe<Official_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Official_Card_TextArgs = {
+  objects: Array<Official_Card_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Official_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Official_Card_Text_OneArgs = {
+  object: Official_Card_Text_Insert_Input;
+  on_conflict?: InputMaybe<Official_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_User_CampaignsArgs = {
   objects: Array<User_Campaigns_Insert_Input>;
 };
@@ -9438,6 +10305,20 @@ export type Mutation_RootInsert_User_Sent_Friend_RequestsArgs = {
 /** mutation root */
 export type Mutation_RootInsert_User_Sent_Friend_Requests_OneArgs = {
   object: User_Sent_Friend_Requests_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_SettingsArgs = {
+  objects: Array<User_Settings_Insert_Input>;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_User_Settings_OneArgs = {
+  object: User_Settings_Insert_Input;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
 
@@ -9532,6 +10413,20 @@ export type Mutation_RootUpdate_Campaign_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_DifficultyArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Difficulty_By_PkArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  pk_columns: Campaign_Difficulty_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Campaign_GuideArgs = {
   _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
   _set?: InputMaybe<Campaign_Guide_Set_Input>;
@@ -9582,6 +10477,22 @@ export type Mutation_RootUpdate_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_CycleArgs = {
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  where: Card_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Cycle_By_PkArgs = {
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  pk_columns: Card_Cycle_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_Encounter_SetArgs = {
   _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
   where: Card_Encounter_Set_Bool_Exp;
@@ -9597,6 +10508,7 @@ export type Mutation_RootUpdate_Card_Encounter_Set_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_PackArgs = {
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
   _set?: InputMaybe<Card_Pack_Set_Input>;
   where: Card_Pack_Bool_Exp;
 };
@@ -9604,6 +10516,7 @@ export type Mutation_RootUpdate_Card_PackArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_Pack_By_PkArgs = {
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
   _set?: InputMaybe<Card_Pack_Set_Input>;
   pk_columns: Card_Pack_Pk_Columns_Input;
 };
@@ -9858,6 +10771,46 @@ export type Mutation_RootUpdate_Local_DecksArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Official_CardArgs = {
+  _append?: InputMaybe<Official_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Official_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Official_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Official_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<Official_Card_Inc_Input>;
+  _prepend?: InputMaybe<Official_Card_Prepend_Input>;
+  _set?: InputMaybe<Official_Card_Set_Input>;
+  where: Official_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Official_Card_By_PkArgs = {
+  _append?: InputMaybe<Official_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Official_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Official_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Official_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<Official_Card_Inc_Input>;
+  _prepend?: InputMaybe<Official_Card_Prepend_Input>;
+  _set?: InputMaybe<Official_Card_Set_Input>;
+  pk_columns: Official_Card_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Official_Card_TextArgs = {
+  _set?: InputMaybe<Official_Card_Text_Set_Input>;
+  where: Official_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Official_Card_Text_By_PkArgs = {
+  _set?: InputMaybe<Official_Card_Text_Set_Input>;
+  pk_columns: Official_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_CampaignsArgs = {
   _inc?: InputMaybe<User_Campaigns_Inc_Input>;
   _set?: InputMaybe<User_Campaigns_Set_Input>;
@@ -9915,6 +10868,30 @@ export type Mutation_RootUpdate_User_Sent_Friend_RequestsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_SettingsArgs = {
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  pk_columns: User_Settings_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
@@ -9925,6 +10902,1307 @@ export type Mutation_RootUpdate_UsersArgs = {
 export type Mutation_RootUpdate_Users_By_PkArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
+};
+
+/** columns and relationships of "official_card" */
+export type Official_Card = {
+  __typename?: 'official_card';
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  clues_fixed?: Maybe<Scalars['Boolean']>;
+  code: Scalars['String'];
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  deck_options?: Maybe<Scalars['jsonb']>;
+  deck_requirements?: Maybe<Scalars['jsonb']>;
+  doom?: Maybe<Scalars['Int']>;
+  double_sided?: Maybe<Scalars['Boolean']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  exceptional?: Maybe<Scalars['Boolean']>;
+  exile?: Maybe<Scalars['Boolean']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code: Scalars['String'];
+  health?: Maybe<Scalars['Int']>;
+  health_per_investigator?: Maybe<Scalars['Boolean']>;
+  hidden?: Maybe<Scalars['Boolean']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  is_unique?: Maybe<Scalars['Boolean']>;
+  myriad?: Maybe<Scalars['Boolean']>;
+  pack_code: Scalars['String'];
+  pack_position: Scalars['Int'];
+  permanent?: Maybe<Scalars['Boolean']>;
+  position: Scalars['Int'];
+  quantity: Scalars['Int'];
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name: Scalars['String'];
+  real_pack_name: Scalars['String'];
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<Scalars['jsonb']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  type_code: Card_Type_Code_Enum;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version: Scalars['Int'];
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+
+/** columns and relationships of "official_card" */
+export type Official_CardDeck_OptionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "official_card" */
+export type Official_CardDeck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "official_card" */
+export type Official_CardRestrictionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "official_card" */
+export type Official_Card_Aggregate = {
+  __typename?: 'official_card_aggregate';
+  aggregate?: Maybe<Official_Card_Aggregate_Fields>;
+  nodes: Array<Official_Card>;
+};
+
+/** aggregate fields of "official_card" */
+export type Official_Card_Aggregate_Fields = {
+  __typename?: 'official_card_aggregate_fields';
+  avg?: Maybe<Official_Card_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Official_Card_Max_Fields>;
+  min?: Maybe<Official_Card_Min_Fields>;
+  stddev?: Maybe<Official_Card_Stddev_Fields>;
+  stddev_pop?: Maybe<Official_Card_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Official_Card_Stddev_Samp_Fields>;
+  sum?: Maybe<Official_Card_Sum_Fields>;
+  var_pop?: Maybe<Official_Card_Var_Pop_Fields>;
+  var_samp?: Maybe<Official_Card_Var_Samp_Fields>;
+  variance?: Maybe<Official_Card_Variance_Fields>;
+};
+
+
+/** aggregate fields of "official_card" */
+export type Official_Card_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Official_Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Official_Card_Append_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** aggregate avg on columns */
+export type Official_Card_Avg_Fields = {
+  __typename?: 'official_card_avg_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "official_card". All fields are combined with a logical 'AND'. */
+export type Official_Card_Bool_Exp = {
+  _and?: InputMaybe<Array<Official_Card_Bool_Exp>>;
+  _not?: InputMaybe<Official_Card_Bool_Exp>;
+  _or?: InputMaybe<Array<Official_Card_Bool_Exp>>;
+  alternate_required_code?: InputMaybe<String_Comparison_Exp>;
+  back_link?: InputMaybe<String_Comparison_Exp>;
+  backimagesrc?: InputMaybe<String_Comparison_Exp>;
+  clues?: InputMaybe<Int_Comparison_Exp>;
+  clues_fixed?: InputMaybe<Boolean_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  deck_limit?: InputMaybe<Int_Comparison_Exp>;
+  deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
+  deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  doom?: InputMaybe<Int_Comparison_Exp>;
+  double_sided?: InputMaybe<Boolean_Comparison_Exp>;
+  encounter_code?: InputMaybe<String_Comparison_Exp>;
+  encounter_position?: InputMaybe<Int_Comparison_Exp>;
+  enemy_damage?: InputMaybe<Int_Comparison_Exp>;
+  enemy_evade?: InputMaybe<Int_Comparison_Exp>;
+  enemy_fight?: InputMaybe<Int_Comparison_Exp>;
+  enemy_horror?: InputMaybe<Int_Comparison_Exp>;
+  exceptional?: InputMaybe<Boolean_Comparison_Exp>;
+  exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction2_code?: InputMaybe<String_Comparison_Exp>;
+  faction3_code?: InputMaybe<String_Comparison_Exp>;
+  faction_code?: InputMaybe<String_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  health_per_investigator?: InputMaybe<Boolean_Comparison_Exp>;
+  hidden?: InputMaybe<Boolean_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  is_unique?: InputMaybe<Boolean_Comparison_Exp>;
+  myriad?: InputMaybe<Boolean_Comparison_Exp>;
+  pack_code?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
+  permanent?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_name?: InputMaybe<String_Comparison_Exp>;
+  real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_encounter_set_name?: InputMaybe<String_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  real_pack_name?: InputMaybe<String_Comparison_Exp>;
+  real_slot?: InputMaybe<String_Comparison_Exp>;
+  real_subname?: InputMaybe<String_Comparison_Exp>;
+  real_text?: InputMaybe<String_Comparison_Exp>;
+  real_traits?: InputMaybe<String_Comparison_Exp>;
+  restrictions?: InputMaybe<Jsonb_Comparison_Exp>;
+  sanity?: InputMaybe<Int_Comparison_Exp>;
+  shroud?: InputMaybe<Int_Comparison_Exp>;
+  skill_agility?: InputMaybe<Int_Comparison_Exp>;
+  skill_combat?: InputMaybe<Int_Comparison_Exp>;
+  skill_intellect?: InputMaybe<Int_Comparison_Exp>;
+  skill_wild?: InputMaybe<Int_Comparison_Exp>;
+  skill_willpower?: InputMaybe<Int_Comparison_Exp>;
+  stage?: InputMaybe<Int_Comparison_Exp>;
+  subtype_code?: InputMaybe<String_Comparison_Exp>;
+  type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  vengeance?: InputMaybe<Int_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
+  victory?: InputMaybe<Int_Comparison_Exp>;
+  xp?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "official_card" */
+export enum Official_Card_Constraint {
+  /** unique or primary key constraint */
+  OfficialCardPkey = 'official_card_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Official_Card_Delete_At_Path_Input = {
+  deck_options?: InputMaybe<Array<Scalars['String']>>;
+  deck_requirements?: InputMaybe<Array<Scalars['String']>>;
+  restrictions?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Official_Card_Delete_Elem_Input = {
+  deck_options?: InputMaybe<Scalars['Int']>;
+  deck_requirements?: InputMaybe<Scalars['Int']>;
+  restrictions?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Official_Card_Delete_Key_Input = {
+  deck_options?: InputMaybe<Scalars['String']>;
+  deck_requirements?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "official_card" */
+export type Official_Card_Inc_Input = {
+  clues?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  health?: InputMaybe<Scalars['Int']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "official_card" */
+export type Official_Card_Insert_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Official_Card_Max_Fields = {
+  __typename?: 'official_card_max_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Official_Card_Min_Fields = {
+  __typename?: 'official_card_min_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "official_card" */
+export type Official_Card_Mutation_Response = {
+  __typename?: 'official_card_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Official_Card>;
+};
+
+/** on conflict condition type for table "official_card" */
+export type Official_Card_On_Conflict = {
+  constraint: Official_Card_Constraint;
+  update_columns: Array<Official_Card_Update_Column>;
+  where?: InputMaybe<Official_Card_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "official_card". */
+export type Official_Card_Order_By = {
+  alternate_required_code?: InputMaybe<Order_By>;
+  back_link?: InputMaybe<Order_By>;
+  backimagesrc?: InputMaybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  clues_fixed?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  deck_options?: InputMaybe<Order_By>;
+  deck_requirements?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  double_sided?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  exceptional?: InputMaybe<Order_By>;
+  exile?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  health_per_investigator?: InputMaybe<Order_By>;
+  hidden?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  is_unique?: InputMaybe<Order_By>;
+  myriad?: InputMaybe<Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  permanent?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_encounter_set_name?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  restrictions?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  type_code?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: official_card */
+export type Official_Card_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Official_Card_Prepend_Input = {
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "official_card" */
+export enum Official_Card_Select_Column {
+  /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackLink = 'back_link',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
+}
+
+/** input type for updating data in table "official_card" */
+export type Official_Card_Set_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Official_Card_Stddev_Fields = {
+  __typename?: 'official_card_stddev_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Official_Card_Stddev_Pop_Fields = {
+  __typename?: 'official_card_stddev_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Official_Card_Stddev_Samp_Fields = {
+  __typename?: 'official_card_stddev_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Official_Card_Sum_Fields = {
+  __typename?: 'official_card_sum_fields';
+  clues?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "official_card_text" */
+export type Official_Card_Text = {
+  __typename?: 'official_card_text';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code: Scalars['String'];
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "official_card_text" */
+export type Official_Card_Text_Aggregate = {
+  __typename?: 'official_card_text_aggregate';
+  aggregate?: Maybe<Official_Card_Text_Aggregate_Fields>;
+  nodes: Array<Official_Card_Text>;
+};
+
+/** aggregate fields of "official_card_text" */
+export type Official_Card_Text_Aggregate_Fields = {
+  __typename?: 'official_card_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Official_Card_Text_Max_Fields>;
+  min?: Maybe<Official_Card_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "official_card_text" */
+export type Official_Card_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Official_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "official_card_text". All fields are combined with a logical 'AND'. */
+export type Official_Card_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Official_Card_Text_Bool_Exp>>;
+  _not?: InputMaybe<Official_Card_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Official_Card_Text_Bool_Exp>>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_name?: InputMaybe<String_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  encounter_name?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  slot?: InputMaybe<String_Comparison_Exp>;
+  subname?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "official_card_text" */
+export enum Official_Card_Text_Constraint {
+  /** unique or primary key constraint */
+  OfficialCardTextPkey = 'official_card_text_pkey'
+}
+
+/** input type for inserting data into table "official_card_text" */
+export type Official_Card_Text_Insert_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Official_Card_Text_Max_Fields = {
+  __typename?: 'official_card_text_max_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Official_Card_Text_Min_Fields = {
+  __typename?: 'official_card_text_min_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "official_card_text" */
+export type Official_Card_Text_Mutation_Response = {
+  __typename?: 'official_card_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Official_Card_Text>;
+};
+
+/** on conflict condition type for table "official_card_text" */
+export type Official_Card_Text_On_Conflict = {
+  constraint: Official_Card_Text_Constraint;
+  update_columns: Array<Official_Card_Text_Update_Column>;
+  where?: InputMaybe<Official_Card_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "official_card_text". */
+export type Official_Card_Text_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: official_card_text */
+export type Official_Card_Text_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "official_card_text" */
+export enum Official_Card_Text_Select_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits'
+}
+
+/** input type for updating data in table "official_card_text" */
+export type Official_Card_Text_Set_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "official_card_text" */
+export enum Official_Card_Text_Update_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits'
+}
+
+/** update columns of table "official_card" */
+export enum Official_Card_Update_Column {
+  /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackLink = 'back_link',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
+}
+
+/** aggregate var_pop on columns */
+export type Official_Card_Var_Pop_Fields = {
+  __typename?: 'official_card_var_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Official_Card_Var_Samp_Fields = {
+  __typename?: 'official_card_var_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Official_Card_Variance_Fields = {
+  __typename?: 'official_card_variance_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
 };
 
 /** column ordering options */
@@ -9967,6 +12245,12 @@ export type Query_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
@@ -9977,12 +12261,22 @@ export type Query_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** fetch data from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle: Array<Campaigns_By_Cycle>;
+  /** fetch aggregated fields from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
   /** fetch data from the table: "card" */
   card: Array<Card>;
   /** fetch aggregated fields from the table: "card" */
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_cycle" */
+  card_cycle: Array<Card_Cycle>;
+  /** fetch aggregated fields from the table: "card_cycle" */
+  card_cycle_aggregate: Card_Cycle_Aggregate;
+  /** fetch data from the table: "card_cycle" using primary key columns */
+  card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
   /** fetch aggregated fields from the table: "card_encounter_set" */
@@ -10081,6 +12375,18 @@ export type Query_Root = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table: "official_card" */
+  official_card: Array<Official_Card>;
+  /** fetch aggregated fields from the table: "official_card" */
+  official_card_aggregate: Official_Card_Aggregate;
+  /** fetch data from the table: "official_card" using primary key columns */
+  official_card_by_pk?: Maybe<Official_Card>;
+  /** fetch data from the table: "official_card_text" */
+  official_card_text: Array<Official_Card_Text>;
+  /** fetch aggregated fields from the table: "official_card_text" */
+  official_card_text_aggregate: Official_Card_Text_Aggregate;
+  /** fetch data from the table: "official_card_text" using primary key columns */
+  official_card_text_by_pk?: Maybe<Official_Card_Text>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
@@ -10109,6 +12415,12 @@ export type Query_Root = {
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -10205,6 +12517,29 @@ export type Query_RootCampaign_Deck_By_PkArgs = {
 };
 
 
+export type Query_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
 export type Query_RootCampaign_GuideArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10247,6 +12582,24 @@ export type Query_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Query_RootCampaigns_By_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCampaigns_By_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
 export type Query_RootCardArgs = {
   distinct_on?: InputMaybe<Array<Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10267,6 +12620,30 @@ export type Query_RootCard_AggregateArgs = {
 
 export type Query_RootCard_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Query_RootCard_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -10660,6 +13037,53 @@ export type Query_RootLocal_Decks_AggregateArgs = {
 };
 
 
+export type Query_RootOfficial_CardArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Order_By>>;
+  where?: InputMaybe<Official_Card_Bool_Exp>;
+};
+
+
+export type Query_RootOfficial_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Order_By>>;
+  where?: InputMaybe<Official_Card_Bool_Exp>;
+};
+
+
+export type Query_RootOfficial_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Query_RootOfficial_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Text_Order_By>>;
+  where?: InputMaybe<Official_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootOfficial_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Text_Order_By>>;
+  where?: InputMaybe<Official_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootOfficial_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootUser_CampaignsArgs = {
   distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10779,6 +13203,29 @@ export type Query_RootUser_Sent_Friend_Requests_AggregateArgs = {
 };
 
 
+export type Query_RootUser_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Query_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
+};
+
+
 export type Query_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10825,6 +13272,12 @@ export type Subscription_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
@@ -10835,12 +13288,22 @@ export type Subscription_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** fetch data from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle: Array<Campaigns_By_Cycle>;
+  /** fetch aggregated fields from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
   /** fetch data from the table: "card" */
   card: Array<Card>;
   /** fetch aggregated fields from the table: "card" */
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_cycle" */
+  card_cycle: Array<Card_Cycle>;
+  /** fetch aggregated fields from the table: "card_cycle" */
+  card_cycle_aggregate: Card_Cycle_Aggregate;
+  /** fetch data from the table: "card_cycle" using primary key columns */
+  card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
   /** fetch aggregated fields from the table: "card_encounter_set" */
@@ -10939,6 +13402,18 @@ export type Subscription_Root = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table: "official_card" */
+  official_card: Array<Official_Card>;
+  /** fetch aggregated fields from the table: "official_card" */
+  official_card_aggregate: Official_Card_Aggregate;
+  /** fetch data from the table: "official_card" using primary key columns */
+  official_card_by_pk?: Maybe<Official_Card>;
+  /** fetch data from the table: "official_card_text" */
+  official_card_text: Array<Official_Card_Text>;
+  /** fetch aggregated fields from the table: "official_card_text" */
+  official_card_text_aggregate: Official_Card_Text_Aggregate;
+  /** fetch data from the table: "official_card_text" using primary key columns */
+  official_card_text_by_pk?: Maybe<Official_Card_Text>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
@@ -10967,6 +13442,12 @@ export type Subscription_Root = {
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -11063,6 +13544,29 @@ export type Subscription_RootCampaign_Deck_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
 export type Subscription_RootCampaign_GuideArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11105,6 +13609,24 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaigns_By_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaigns_By_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
 export type Subscription_RootCardArgs = {
   distinct_on?: InputMaybe<Array<Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11125,6 +13647,30 @@ export type Subscription_RootCard_AggregateArgs = {
 
 export type Subscription_RootCard_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -11518,6 +14064,53 @@ export type Subscription_RootLocal_Decks_AggregateArgs = {
 };
 
 
+export type Subscription_RootOfficial_CardArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Order_By>>;
+  where?: InputMaybe<Official_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootOfficial_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Order_By>>;
+  where?: InputMaybe<Official_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootOfficial_Card_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootOfficial_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Text_Order_By>>;
+  where?: InputMaybe<Official_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootOfficial_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Official_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Official_Card_Text_Order_By>>;
+  where?: InputMaybe<Official_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootOfficial_Card_Text_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Subscription_RootUser_CampaignsArgs = {
   distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11634,6 +14227,29 @@ export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
   where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_SettingsArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Settings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['String'];
 };
 
 
@@ -12577,6 +15193,251 @@ export type User_Sent_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** columns and relationships of "user_settings" */
+export type User_Settings = {
+  __typename?: 'user_settings';
+  alphabetize?: Maybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: Maybe<Scalars['Boolean']>;
+  colorblind?: Maybe<Scalars['Boolean']>;
+  custom_content?: Maybe<Scalars['Boolean']>;
+  ignore_collection?: Maybe<Scalars['Boolean']>;
+  in_collection?: Maybe<Scalars['jsonb']>;
+  onboarding?: Maybe<Scalars['jsonb']>;
+  show_spoilers?: Maybe<Scalars['jsonb']>;
+  single_card?: Maybe<Scalars['Boolean']>;
+  sort_quotes?: Maybe<Scalars['Boolean']>;
+  user_id: Scalars['String'];
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsIn_CollectionArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsOnboardingArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "user_settings" */
+export type User_SettingsShow_SpoilersArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregated selection of "user_settings" */
+export type User_Settings_Aggregate = {
+  __typename?: 'user_settings_aggregate';
+  aggregate?: Maybe<User_Settings_Aggregate_Fields>;
+  nodes: Array<User_Settings>;
+};
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_Fields = {
+  __typename?: 'user_settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<User_Settings_Max_Fields>;
+  min?: Maybe<User_Settings_Min_Fields>;
+};
+
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type User_Settings_Append_Input = {
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** Boolean expression to filter rows from the table "user_settings". All fields are combined with a logical 'AND'. */
+export type User_Settings_Bool_Exp = {
+  _and?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  _not?: InputMaybe<User_Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  alphabetize?: InputMaybe<Boolean_Comparison_Exp>;
+  campaign_show_deck_id?: InputMaybe<Boolean_Comparison_Exp>;
+  colorblind?: InputMaybe<Boolean_Comparison_Exp>;
+  custom_content?: InputMaybe<Boolean_Comparison_Exp>;
+  ignore_collection?: InputMaybe<Boolean_Comparison_Exp>;
+  in_collection?: InputMaybe<Jsonb_Comparison_Exp>;
+  onboarding?: InputMaybe<Jsonb_Comparison_Exp>;
+  show_spoilers?: InputMaybe<Jsonb_Comparison_Exp>;
+  single_card?: InputMaybe<Boolean_Comparison_Exp>;
+  sort_quotes?: InputMaybe<Boolean_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "user_settings" */
+export enum User_Settings_Constraint {
+  /** unique or primary key constraint */
+  UserSettingsPkey = 'user_settings_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type User_Settings_Delete_At_Path_Input = {
+  in_collection?: InputMaybe<Array<Scalars['String']>>;
+  onboarding?: InputMaybe<Array<Scalars['String']>>;
+  show_spoilers?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type User_Settings_Delete_Elem_Input = {
+  in_collection?: InputMaybe<Scalars['Int']>;
+  onboarding?: InputMaybe<Scalars['Int']>;
+  show_spoilers?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type User_Settings_Delete_Key_Input = {
+  in_collection?: InputMaybe<Scalars['String']>;
+  onboarding?: InputMaybe<Scalars['String']>;
+  show_spoilers?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for inserting data into table "user_settings" */
+export type User_Settings_Insert_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type User_Settings_Max_Fields = {
+  __typename?: 'user_settings_max_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type User_Settings_Min_Fields = {
+  __typename?: 'user_settings_min_fields';
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "user_settings" */
+export type User_Settings_Mutation_Response = {
+  __typename?: 'user_settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<User_Settings>;
+};
+
+/** on conflict condition type for table "user_settings" */
+export type User_Settings_On_Conflict = {
+  constraint: User_Settings_Constraint;
+  update_columns: Array<User_Settings_Update_Column>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "user_settings". */
+export type User_Settings_Order_By = {
+  alphabetize?: InputMaybe<Order_By>;
+  campaign_show_deck_id?: InputMaybe<Order_By>;
+  colorblind?: InputMaybe<Order_By>;
+  custom_content?: InputMaybe<Order_By>;
+  ignore_collection?: InputMaybe<Order_By>;
+  in_collection?: InputMaybe<Order_By>;
+  onboarding?: InputMaybe<Order_By>;
+  show_spoilers?: InputMaybe<Order_By>;
+  single_card?: InputMaybe<Order_By>;
+  sort_quotes?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: user_settings */
+export type User_Settings_Pk_Columns_Input = {
+  user_id: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type User_Settings_Prepend_Input = {
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "user_settings" */
+export enum User_Settings_Select_Column {
+  /** column name */
+  Alphabetize = 'alphabetize',
+  /** column name */
+  CampaignShowDeckId = 'campaign_show_deck_id',
+  /** column name */
+  Colorblind = 'colorblind',
+  /** column name */
+  CustomContent = 'custom_content',
+  /** column name */
+  IgnoreCollection = 'ignore_collection',
+  /** column name */
+  InCollection = 'in_collection',
+  /** column name */
+  Onboarding = 'onboarding',
+  /** column name */
+  ShowSpoilers = 'show_spoilers',
+  /** column name */
+  SingleCard = 'single_card',
+  /** column name */
+  SortQuotes = 'sort_quotes',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "user_settings" */
+export type User_Settings_Set_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "user_settings" */
+export enum User_Settings_Update_Column {
+  /** column name */
+  Alphabetize = 'alphabetize',
+  /** column name */
+  CampaignShowDeckId = 'campaign_show_deck_id',
+  /** column name */
+  Colorblind = 'colorblind',
+  /** column name */
+  CustomContent = 'custom_content',
+  /** column name */
+  IgnoreCollection = 'ignore_collection',
+  /** column name */
+  InCollection = 'in_collection',
+  /** column name */
+  Onboarding = 'onboarding',
+  /** column name */
+  ShowSpoilers = 'show_spoilers',
+  /** column name */
+  SingleCard = 'single_card',
+  /** column name */
+  SortQuotes = 'sort_quotes',
+  /** column name */
+  UserId = 'user_id'
+}
+
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
@@ -12940,7 +15801,7 @@ export type GetCustomCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
+export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, card_pack: Array<{ __typename?: 'card_pack', code: string, cycle_code?: string | null, name: string, position?: number | null }>, card_cycle: Array<{ __typename?: 'card_cycle', code: string, name: string, position: number }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -12958,10 +15819,11 @@ export type UploadChaosBagResultsMutationVariables = Exact<{
   sealed: Scalars['jsonb'];
   totalDrawn: Scalars['Int'];
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
 }>;
 
 
-export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13013,6 +15875,14 @@ export type ChaosBagSetTarotMutationVariables = Exact<{
 
 
 export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+
+export type ChaosBagSetDifficultyMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
+}>;
+
+
+export type ChaosBagSetDifficultyMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
@@ -13168,7 +16038,13 @@ export type GetDeckHistoryQueryVariables = Exact<{
 
 export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
-export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null };
+export type EncounterSetFragment = { __typename?: 'card_encounter_set', code: string, name: string };
+
+export type PackFragment = { __typename?: 'card_pack', code: string, cycle_code?: string | null, name: string, position?: number | null };
+
+export type CycleFragment = { __typename?: 'card_cycle', code: string, name: string, position: number };
+
+export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, alternate_required_code?: string | null, clues_fixed?: boolean | null };
 
 export type CoreCardTextFragment = { __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null };
 
@@ -13180,7 +16056,7 @@ export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: s
 
 export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null };
 
 export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
@@ -13237,7 +16113,7 @@ export type GetChaosBagResultsQueryVariables = Exact<{
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13265,7 +16141,118 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
+
+export type GetSettingsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetSettingsQuery = { __typename?: 'query_root', user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null, colorblind?: boolean | null, ignore_collection?: boolean | null, single_card?: boolean | null, sort_quotes?: boolean | null, custom_content?: boolean | null, campaign_show_deck_id?: boolean | null, in_collection?: any | null, show_spoilers?: any | null, onboarding?: any | null } | null };
+
+export type GetPacksQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetPacksQuery = { __typename?: 'query_root', user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, in_collection?: any | null, show_spoilers?: any | null } | null };
+
+export type UpdateSettingAlphabetizeMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingAlphabetizeMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null } | null };
+
+export type UpdateSettingColorblindMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingColorblindMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, colorblind?: boolean | null } | null };
+
+export type UpdateSettingIgnoreCollectionMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingIgnoreCollectionMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, ignore_collection?: boolean | null } | null };
+
+export type UpdateSettingSingleCardMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingSingleCardMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, single_card?: boolean | null } | null };
+
+export type UpdateSettingSortQuotesMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingSortQuotesMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, sort_quotes?: boolean | null } | null };
+
+export type UpdateSettingCustomContentMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingCustomContentMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, custom_content?: boolean | null } | null };
+
+export type UpdateSettingCampaignShowDeckIdMutationVariables = Exact<{
+  userId: Scalars['String'];
+  value: Scalars['Boolean'];
+}>;
+
+
+export type UpdateSettingCampaignShowDeckIdMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, campaign_show_deck_id?: boolean | null } | null };
+
+export type UpsertSettingsMutationVariables = Exact<{
+  userId: Scalars['String'];
+  in_collection: Scalars['jsonb'];
+  show_spoilers: Scalars['jsonb'];
+  onboarding: Scalars['jsonb'];
+  alphabetize: Scalars['Boolean'];
+  colorblind: Scalars['Boolean'];
+  ignore_collection: Scalars['Boolean'];
+  single_card: Scalars['Boolean'];
+  sort_quotes: Scalars['Boolean'];
+  custom_content: Scalars['Boolean'];
+  campaign_show_deck_id: Scalars['Boolean'];
+}>;
+
+
+export type UpsertSettingsMutation = { __typename?: 'mutation_root', insert_user_settings_one?: { __typename?: 'user_settings', user_id: string, alphabetize?: boolean | null, colorblind?: boolean | null, ignore_collection?: boolean | null, single_card?: boolean | null, sort_quotes?: boolean | null, custom_content?: boolean | null, campaign_show_deck_id?: boolean | null, onboarding?: any | null, in_collection?: any | null, show_spoilers?: any | null } | null };
+
+export type UpdateInCollectionMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateInCollectionMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, in_collection?: any | null } | null };
+
+export type UpdateShowSpoilersMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateShowSpoilersMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, show_spoilers?: any | null } | null };
+
+export type UpdateOnboardingMutationVariables = Exact<{
+  userId: Scalars['String'];
+  update: Scalars['jsonb'];
+}>;
+
+
+export type UpdateOnboardingMutation = { __typename?: 'mutation_root', update_user_settings_by_pk?: { __typename?: 'user_settings', user_id: string, onboarding?: any | null } | null };
 
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -13473,6 +16460,27 @@ export type RemoveCampaignInvestigatorMutationVariables = Exact<{
 
 export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null, campaign_id: number, investigator: string }> } | null };
 
+export const EncounterSetFragmentDoc = gql`
+    fragment EncounterSet on card_encounter_set {
+  code
+  name
+}
+    `;
+export const PackFragmentDoc = gql`
+    fragment Pack on card_pack {
+  code
+  cycle_code
+  name
+  position
+}
+    `;
+export const CycleFragmentDoc = gql`
+    fragment Cycle on card_cycle {
+  code
+  name
+  position
+}
+    `;
 export const SingleCardFragmentDoc = gql`
     fragment SingleCard on full_card {
   code
@@ -13482,6 +16490,8 @@ export const SingleCardFragmentDoc = gql`
   encounter_position
   exile
   faction_code
+  faction2_code
+  faction3_code
   health
   health_per_investigator
   is_unique
@@ -13530,6 +16540,9 @@ export const SingleCardFragmentDoc = gql`
   restrictions
   imagesrc
   backimagesrc
+  xp
+  alternate_required_code
+  clues_fixed
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
@@ -13554,6 +16567,7 @@ export const FullChaosBagResultFragmentDoc = gql`
   sealed
   totalDrawn
   tarot
+  difficulty
 }
     `;
 export const IdDeckFragmentDoc = gql`
@@ -13780,7 +16794,7 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 ${GuideAchievementFragmentDoc}`;
 export const GetCustomCardsDocument = gql`
     query getCustomCards($locale: String!) {
-  full_card {
+  full_card(where: {version: {_lte: 2}}) {
     ...SingleCard
     linked_card {
       ...SingleCard
@@ -13788,19 +16802,25 @@ export const GetCustomCardsDocument = gql`
         ...CoreCardText
       }
     }
-    encounter_sets(where: {locale: {_eq: $locale}}) {
-      name
-    }
-    packs(where: {locale: {_eq: $locale}}) {
-      name
-    }
     translations(where: {locale: {_eq: $locale}}) {
       ...CoreCardText
     }
   }
+  card_encounter_set(where: {locale: {_eq: $locale}}) {
+    ...EncounterSet
+  }
+  card_pack(where: {locale: {_eq: $locale}}) {
+    ...Pack
+  }
+  card_cycle(where: {locale: {_eq: $locale}}) {
+    ...Cycle
+  }
 }
     ${SingleCardFragmentDoc}
-${CoreCardTextFragmentDoc}`;
+${CoreCardTextFragmentDoc}
+${EncounterSetFragmentDoc}
+${PackFragmentDoc}
+${CycleFragmentDoc}`;
 
 /**
  * __useGetCustomCardsQuery__
@@ -13872,10 +16892,10 @@ export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
-    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
   update_chaos_bag_result_by_pk(
     pk_columns: {id: $id}
-    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot}
+    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot, difficulty: $difficulty}
   ) {
     ...FullChaosBagResult
   }
@@ -13903,6 +16923,7 @@ export type UploadChaosBagResultsMutationFn = Apollo.MutationFunction<UploadChao
  *      sealed: // value for 'sealed'
  *      totalDrawn: // value for 'totalDrawn'
  *      tarot: // value for 'tarot'
+ *      difficulty: // value for 'difficulty'
  *   },
  * });
  */
@@ -14152,6 +17173,44 @@ export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOpt
 export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
+export const ChaosBagSetDifficultyDocument = gql`
+    mutation chaosBagSetDifficulty($campaign_id: Int!, $difficulty: campaign_difficulty_enum) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {difficulty: $difficulty}
+  ) {
+    id
+    difficulty
+  }
+}
+    `;
+export type ChaosBagSetDifficultyMutationFn = Apollo.MutationFunction<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
+
+/**
+ * __useChaosBagSetDifficultyMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetDifficultyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetDifficultyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetDifficultyMutation, { data, loading, error }] = useChaosBagSetDifficultyMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      difficulty: // value for 'difficulty'
+ *   },
+ * });
+ */
+export function useChaosBagSetDifficultyMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>(ChaosBagSetDifficultyDocument, options);
+      }
+export type ChaosBagSetDifficultyMutationHookResult = ReturnType<typeof useChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationResult = Apollo.MutationResult<ChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $tarotReading: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
@@ -15155,6 +18214,524 @@ export function useChaosBagResultsSubscription(baseOptions: Apollo.SubscriptionH
       }
 export type ChaosBagResultsSubscriptionHookResult = ReturnType<typeof useChaosBagResultsSubscription>;
 export type ChaosBagResultsSubscriptionResult = Apollo.SubscriptionResult<ChaosBagResultsSubscription>;
+export const GetSettingsDocument = gql`
+    query getSettings($userId: String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    in_collection
+    show_spoilers
+    onboarding
+  }
+}
+    `;
+
+/**
+ * __useGetSettingsQuery__
+ *
+ * To run a query within a React component, call `useGetSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSettingsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetSettingsQuery(baseOptions: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+      }
+export function useGetSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        }
+export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
+export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
+export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
+export const GetPacksDocument = gql`
+    query getPacks($userId: String!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    in_collection
+    show_spoilers
+  }
+}
+    `;
+
+/**
+ * __useGetPacksQuery__
+ *
+ * To run a query within a React component, call `useGetPacksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPacksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPacksQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetPacksQuery(baseOptions: Apollo.QueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
+      }
+export function useGetPacksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
+        }
+export type GetPacksQueryHookResult = ReturnType<typeof useGetPacksQuery>;
+export type GetPacksLazyQueryHookResult = ReturnType<typeof useGetPacksLazyQuery>;
+export type GetPacksQueryResult = Apollo.QueryResult<GetPacksQuery, GetPacksQueryVariables>;
+export const UpdateSettingAlphabetizeDocument = gql`
+    mutation updateSettingAlphabetize($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {alphabetize: $value}
+  ) {
+    user_id
+    alphabetize
+  }
+}
+    `;
+export type UpdateSettingAlphabetizeMutationFn = Apollo.MutationFunction<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>;
+
+/**
+ * __useUpdateSettingAlphabetizeMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingAlphabetizeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingAlphabetizeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingAlphabetizeMutation, { data, loading, error }] = useUpdateSettingAlphabetizeMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingAlphabetizeMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>(UpdateSettingAlphabetizeDocument, options);
+      }
+export type UpdateSettingAlphabetizeMutationHookResult = ReturnType<typeof useUpdateSettingAlphabetizeMutation>;
+export type UpdateSettingAlphabetizeMutationResult = Apollo.MutationResult<UpdateSettingAlphabetizeMutation>;
+export type UpdateSettingAlphabetizeMutationOptions = Apollo.BaseMutationOptions<UpdateSettingAlphabetizeMutation, UpdateSettingAlphabetizeMutationVariables>;
+export const UpdateSettingColorblindDocument = gql`
+    mutation updateSettingColorblind($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {colorblind: $value}
+  ) {
+    user_id
+    colorblind
+  }
+}
+    `;
+export type UpdateSettingColorblindMutationFn = Apollo.MutationFunction<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>;
+
+/**
+ * __useUpdateSettingColorblindMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingColorblindMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingColorblindMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingColorblindMutation, { data, loading, error }] = useUpdateSettingColorblindMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingColorblindMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>(UpdateSettingColorblindDocument, options);
+      }
+export type UpdateSettingColorblindMutationHookResult = ReturnType<typeof useUpdateSettingColorblindMutation>;
+export type UpdateSettingColorblindMutationResult = Apollo.MutationResult<UpdateSettingColorblindMutation>;
+export type UpdateSettingColorblindMutationOptions = Apollo.BaseMutationOptions<UpdateSettingColorblindMutation, UpdateSettingColorblindMutationVariables>;
+export const UpdateSettingIgnoreCollectionDocument = gql`
+    mutation updateSettingIgnoreCollection($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {ignore_collection: $value}
+  ) {
+    user_id
+    ignore_collection
+  }
+}
+    `;
+export type UpdateSettingIgnoreCollectionMutationFn = Apollo.MutationFunction<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>;
+
+/**
+ * __useUpdateSettingIgnoreCollectionMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingIgnoreCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingIgnoreCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingIgnoreCollectionMutation, { data, loading, error }] = useUpdateSettingIgnoreCollectionMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingIgnoreCollectionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>(UpdateSettingIgnoreCollectionDocument, options);
+      }
+export type UpdateSettingIgnoreCollectionMutationHookResult = ReturnType<typeof useUpdateSettingIgnoreCollectionMutation>;
+export type UpdateSettingIgnoreCollectionMutationResult = Apollo.MutationResult<UpdateSettingIgnoreCollectionMutation>;
+export type UpdateSettingIgnoreCollectionMutationOptions = Apollo.BaseMutationOptions<UpdateSettingIgnoreCollectionMutation, UpdateSettingIgnoreCollectionMutationVariables>;
+export const UpdateSettingSingleCardDocument = gql`
+    mutation updateSettingSingleCard($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {single_card: $value}
+  ) {
+    user_id
+    single_card
+  }
+}
+    `;
+export type UpdateSettingSingleCardMutationFn = Apollo.MutationFunction<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>;
+
+/**
+ * __useUpdateSettingSingleCardMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingSingleCardMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingSingleCardMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingSingleCardMutation, { data, loading, error }] = useUpdateSettingSingleCardMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingSingleCardMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>(UpdateSettingSingleCardDocument, options);
+      }
+export type UpdateSettingSingleCardMutationHookResult = ReturnType<typeof useUpdateSettingSingleCardMutation>;
+export type UpdateSettingSingleCardMutationResult = Apollo.MutationResult<UpdateSettingSingleCardMutation>;
+export type UpdateSettingSingleCardMutationOptions = Apollo.BaseMutationOptions<UpdateSettingSingleCardMutation, UpdateSettingSingleCardMutationVariables>;
+export const UpdateSettingSortQuotesDocument = gql`
+    mutation updateSettingSortQuotes($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {sort_quotes: $value}
+  ) {
+    user_id
+    sort_quotes
+  }
+}
+    `;
+export type UpdateSettingSortQuotesMutationFn = Apollo.MutationFunction<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>;
+
+/**
+ * __useUpdateSettingSortQuotesMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingSortQuotesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingSortQuotesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingSortQuotesMutation, { data, loading, error }] = useUpdateSettingSortQuotesMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingSortQuotesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>(UpdateSettingSortQuotesDocument, options);
+      }
+export type UpdateSettingSortQuotesMutationHookResult = ReturnType<typeof useUpdateSettingSortQuotesMutation>;
+export type UpdateSettingSortQuotesMutationResult = Apollo.MutationResult<UpdateSettingSortQuotesMutation>;
+export type UpdateSettingSortQuotesMutationOptions = Apollo.BaseMutationOptions<UpdateSettingSortQuotesMutation, UpdateSettingSortQuotesMutationVariables>;
+export const UpdateSettingCustomContentDocument = gql`
+    mutation updateSettingCustomContent($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {custom_content: $value}
+  ) {
+    user_id
+    custom_content
+  }
+}
+    `;
+export type UpdateSettingCustomContentMutationFn = Apollo.MutationFunction<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>;
+
+/**
+ * __useUpdateSettingCustomContentMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingCustomContentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingCustomContentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingCustomContentMutation, { data, loading, error }] = useUpdateSettingCustomContentMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingCustomContentMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>(UpdateSettingCustomContentDocument, options);
+      }
+export type UpdateSettingCustomContentMutationHookResult = ReturnType<typeof useUpdateSettingCustomContentMutation>;
+export type UpdateSettingCustomContentMutationResult = Apollo.MutationResult<UpdateSettingCustomContentMutation>;
+export type UpdateSettingCustomContentMutationOptions = Apollo.BaseMutationOptions<UpdateSettingCustomContentMutation, UpdateSettingCustomContentMutationVariables>;
+export const UpdateSettingCampaignShowDeckIdDocument = gql`
+    mutation updateSettingCampaignShowDeckId($userId: String!, $value: Boolean!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _set: {campaign_show_deck_id: $value}
+  ) {
+    user_id
+    campaign_show_deck_id
+  }
+}
+    `;
+export type UpdateSettingCampaignShowDeckIdMutationFn = Apollo.MutationFunction<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>;
+
+/**
+ * __useUpdateSettingCampaignShowDeckIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateSettingCampaignShowDeckIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateSettingCampaignShowDeckIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateSettingCampaignShowDeckIdMutation, { data, loading, error }] = useUpdateSettingCampaignShowDeckIdMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      value: // value for 'value'
+ *   },
+ * });
+ */
+export function useUpdateSettingCampaignShowDeckIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>(UpdateSettingCampaignShowDeckIdDocument, options);
+      }
+export type UpdateSettingCampaignShowDeckIdMutationHookResult = ReturnType<typeof useUpdateSettingCampaignShowDeckIdMutation>;
+export type UpdateSettingCampaignShowDeckIdMutationResult = Apollo.MutationResult<UpdateSettingCampaignShowDeckIdMutation>;
+export type UpdateSettingCampaignShowDeckIdMutationOptions = Apollo.BaseMutationOptions<UpdateSettingCampaignShowDeckIdMutation, UpdateSettingCampaignShowDeckIdMutationVariables>;
+export const UpsertSettingsDocument = gql`
+    mutation upsertSettings($userId: String!, $in_collection: jsonb!, $show_spoilers: jsonb!, $onboarding: jsonb!, $alphabetize: Boolean!, $colorblind: Boolean!, $ignore_collection: Boolean!, $single_card: Boolean!, $sort_quotes: Boolean!, $custom_content: Boolean!, $campaign_show_deck_id: Boolean!) {
+  insert_user_settings_one(
+    object: {user_id: $userId, alphabetize: $alphabetize, colorblind: $colorblind, ignore_collection: $ignore_collection, single_card: $single_card, sort_quotes: $sort_quotes, custom_content: $custom_content, campaign_show_deck_id: $campaign_show_deck_id, in_collection: $in_collection, show_spoilers: $show_spoilers, onboarding: $onboarding}
+    on_conflict: {constraint: user_settings_pkey, update_columns: [alphabetize, colorblind, ignore_collection, single_card, sort_quotes, custom_content, campaign_show_deck_id, in_collection, show_spoilers, onboarding]}
+  ) {
+    user_id
+    alphabetize
+    colorblind
+    ignore_collection
+    single_card
+    sort_quotes
+    custom_content
+    campaign_show_deck_id
+    onboarding
+    in_collection
+    show_spoilers
+  }
+}
+    `;
+export type UpsertSettingsMutationFn = Apollo.MutationFunction<UpsertSettingsMutation, UpsertSettingsMutationVariables>;
+
+/**
+ * __useUpsertSettingsMutation__
+ *
+ * To run a mutation, you first call `useUpsertSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpsertSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [upsertSettingsMutation, { data, loading, error }] = useUpsertSettingsMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      in_collection: // value for 'in_collection'
+ *      show_spoilers: // value for 'show_spoilers'
+ *      onboarding: // value for 'onboarding'
+ *      alphabetize: // value for 'alphabetize'
+ *      colorblind: // value for 'colorblind'
+ *      ignore_collection: // value for 'ignore_collection'
+ *      single_card: // value for 'single_card'
+ *      sort_quotes: // value for 'sort_quotes'
+ *      custom_content: // value for 'custom_content'
+ *      campaign_show_deck_id: // value for 'campaign_show_deck_id'
+ *   },
+ * });
+ */
+export function useUpsertSettingsMutation(baseOptions?: Apollo.MutationHookOptions<UpsertSettingsMutation, UpsertSettingsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpsertSettingsMutation, UpsertSettingsMutationVariables>(UpsertSettingsDocument, options);
+      }
+export type UpsertSettingsMutationHookResult = ReturnType<typeof useUpsertSettingsMutation>;
+export type UpsertSettingsMutationResult = Apollo.MutationResult<UpsertSettingsMutation>;
+export type UpsertSettingsMutationOptions = Apollo.BaseMutationOptions<UpsertSettingsMutation, UpsertSettingsMutationVariables>;
+export const UpdateInCollectionDocument = gql`
+    mutation updateInCollection($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {in_collection: $update}
+  ) {
+    user_id
+    in_collection
+  }
+}
+    `;
+export type UpdateInCollectionMutationFn = Apollo.MutationFunction<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>;
+
+/**
+ * __useUpdateInCollectionMutation__
+ *
+ * To run a mutation, you first call `useUpdateInCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateInCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateInCollectionMutation, { data, loading, error }] = useUpdateInCollectionMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateInCollectionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>(UpdateInCollectionDocument, options);
+      }
+export type UpdateInCollectionMutationHookResult = ReturnType<typeof useUpdateInCollectionMutation>;
+export type UpdateInCollectionMutationResult = Apollo.MutationResult<UpdateInCollectionMutation>;
+export type UpdateInCollectionMutationOptions = Apollo.BaseMutationOptions<UpdateInCollectionMutation, UpdateInCollectionMutationVariables>;
+export const UpdateShowSpoilersDocument = gql`
+    mutation updateShowSpoilers($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {show_spoilers: $update}
+  ) {
+    user_id
+    show_spoilers
+  }
+}
+    `;
+export type UpdateShowSpoilersMutationFn = Apollo.MutationFunction<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>;
+
+/**
+ * __useUpdateShowSpoilersMutation__
+ *
+ * To run a mutation, you first call `useUpdateShowSpoilersMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateShowSpoilersMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateShowSpoilersMutation, { data, loading, error }] = useUpdateShowSpoilersMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateShowSpoilersMutation(baseOptions?: Apollo.MutationHookOptions<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>(UpdateShowSpoilersDocument, options);
+      }
+export type UpdateShowSpoilersMutationHookResult = ReturnType<typeof useUpdateShowSpoilersMutation>;
+export type UpdateShowSpoilersMutationResult = Apollo.MutationResult<UpdateShowSpoilersMutation>;
+export type UpdateShowSpoilersMutationOptions = Apollo.BaseMutationOptions<UpdateShowSpoilersMutation, UpdateShowSpoilersMutationVariables>;
+export const UpdateOnboardingDocument = gql`
+    mutation updateOnboarding($userId: String!, $update: jsonb!) {
+  update_user_settings_by_pk(
+    pk_columns: {user_id: $userId}
+    _append: {onboarding: $update}
+  ) {
+    user_id
+    onboarding
+  }
+}
+    `;
+export type UpdateOnboardingMutationFn = Apollo.MutationFunction<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>;
+
+/**
+ * __useUpdateOnboardingMutation__
+ *
+ * To run a mutation, you first call `useUpdateOnboardingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateOnboardingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateOnboardingMutation, { data, loading, error }] = useUpdateOnboardingMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpdateOnboardingMutation(baseOptions?: Apollo.MutationHookOptions<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>(UpdateOnboardingDocument, options);
+      }
+export type UpdateOnboardingMutationHookResult = ReturnType<typeof useUpdateOnboardingMutation>;
+export type UpdateOnboardingMutationResult = Apollo.MutationResult<UpdateOnboardingMutation>;
+export type UpdateOnboardingMutationOptions = Apollo.BaseMutationOptions<UpdateOnboardingMutation, UpdateOnboardingMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile($userId: String!) {
   users_by_pk(id: $userId) {

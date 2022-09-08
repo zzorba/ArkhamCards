@@ -69,7 +69,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
     return <FreeFormCampaignLogEntryComponent entry={entry} interScenarioId={interScenarioId} />;
   }
   const logEntry = campaignGuide.logEntry(sectionId, entry.id);
-  const crossedOut = section.crossedOut[entry.id];
+  const crossedOut = !!entry.crossedOut;
   const decoration = (section.decoration || {})[entry.id];
   switch (logEntry.type) {
     case 'supplies': {

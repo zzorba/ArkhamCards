@@ -45,10 +45,10 @@ export default RoundedFactionBlock;
 
 interface AnimatedProps {
   faction: FactionCodeType;
-  renderHeader: (toggle: React.ReactFragment) => React.ReactFragment;
+  renderHeader: (toggle: React.ReactNode) => React.ReactNode;
   color?: string;
   children: React.ReactNode | React.ReactNode[];
-  footer?: React.ReactChild;
+  footer?: React.ReactNode;
   noSpace?: boolean;
   noShadow?: boolean;
   toggleOpen?: () => void;

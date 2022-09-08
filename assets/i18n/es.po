@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"x-generator: Poedit 3.0.1\n"
+"x-generator: Poedit 3.1\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -284,9 +284,6 @@ msgstr "Actualizando cartas"
 
 msgid "Error: Check for Cards Again"
 msgstr "Error: Buscar cartas de nuevo"
-
-msgid "Check ArkhamDB for updates"
-msgstr "Buscar nuevas cartas en ArkhamDB"
 
 msgid "Card Collection"
 msgstr "Colección de cartas"
@@ -2452,7 +2449,6 @@ msgstr "${ investigator.name } elimina ${ card.name }"
 msgid "Challenge Scenario"
 msgstr "Escenario de desafío"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "Escenario de desafío de ${ investigator.name }"
 
@@ -2948,17 +2944,17 @@ msgstr "Interruptor Cartas Encuentros"
 msgid "Show all available cards"
 msgstr "Muestra todas las cartas disponibles"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "Combate: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "Salud: ${ health } por investigador"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "Salud: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "Evitar: ${ evade }"
 
@@ -4077,9 +4073,6 @@ msgstr ""
 "estás conectado a una cuenta de ArkhamDB diferente. Si quieres editarlo, "
 "por favor conéctate a través de la aplicación."
 
-msgid "Justify text"
-msgstr "Justificar texto"
-
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } y ${ tokens[1] }"
@@ -4095,9 +4088,6 @@ msgstr "Recuerdos"
 
 msgid "Fan-Made Campaigns"
 msgstr "Campañas fan-made"
-
-msgid "Fan-Made Content"
-msgstr "Contenido fan-made"
 
 msgid "Fetching account details..."
 msgstr "Recuperando detalles de la cuenta..."
@@ -4328,9 +4318,6 @@ msgstr ""
 msgid "Learn more"
 msgstr "Saber más"
 
-msgid "Save will update your deck with the card changes listed above."
-msgstr "Guardar actualizará tu mazo con los cambios listados arriba."
-
 msgid "Campaign log"
 msgstr "Registro de campaña"
 
@@ -4536,12 +4523,6 @@ msgstr "Dificultad difícil"
 
 msgid "Expert difficulty"
 msgstr "Dificultad experto"
-
-msgid "— Difficulty —"
-msgstr "— Dificultad —"
-
-msgid "— Available Scenarios —"
-msgstr "— Escenarios disponibles —"
 
 msgid "Scenario settings"
 msgstr "Ajustes escenario"
@@ -4757,7 +4738,7 @@ msgid ""
 "partnerName },"
 msgstr ""
 "En la sección ${ sectionName } del registro de campaña, tacha a ${ "
-"partnerName },"
+"partnerName }."
 
 #, javascript-format
 msgid ""
@@ -5793,85 +5774,6 @@ msgstr "Realiza lecturas con el mazo de Tarot"
 msgid "What is this?"
 msgstr "¿Qué es esto?"
 
-msgid ""
-"Reveal the top card in a random orientation. It's effects are active "
-"throughout the scenario, and could be positive or negative, depending on "
-"its orientation. This reading is ideal if you want to add a splash of chaos "
-"to a scenario."
-msgstr ""
-"Revela la primera carta con orientación aleatoria. Sus efectos permanecerán "
-"activos durante el escenario y podrían ser positivos o negativos en función "
-"de la orientación. Esta lectura es ideal si quieres añadirle una pincelada "
-"de caos a un escenario."
-
-msgid ""
-"Reveal the top two cards, one in the upright position and one in the "
-"reversed position. Their effects are active throughout the scenario. One "
-"card has a positive effect, the other has a negative effect. This reading "
-"is ideal if you want to add a touch of randomness or replay value to a "
-"scenario, but desire a more balanced effect."
-msgstr ""
-"Revela dos cartas, la primera de pie y la siguiente invertida. Sus efectos "
-"permanecerán activos durante el escenario, y una carta tendrá un efecto "
-"positivo y la otra, negativo. Esta lectura es ideal si quieres añadirle un "
-"toque de aleatoriedad o de rejugabilidad a un escenario, pero quieres que "
-"el efecto esté más equilibrado."
-
-msgid ""
-"Reveal three cards in the upright position. Then, choose and reverse 2 of "
-"them. The effects of all 3 cards are active throughout the scenario. One "
-"card has a positive effect and the other two negative, but the "
-"investigators decide which is which. This reading is ideal if you want to "
-"add an element of strategic decision-making during your reading."
-msgstr ""
-"Revela las 3 primeras cartas de pie. A continuación, elige 2 y ponlas en "
-"posición invertida. Los efectos de las 3 cartas permanecerán activos "
-"durante el escenario, y una carta tendrá un efecto positivo y las otras "
-"dos, negativo, pero los investigadores deciden cuáles. Esta lectura es "
-"ideal si quieres añadir un elemento de decisión estratégica a la lectura."
-
-msgid ""
-"Before starting a campaign, reveal one card for each scenarion in the "
-"campaign, ignoring side stories and counting scenarios with multiple parts "
-"as separate scenarios. Place each card in a line, in the upright position. "
-"Each of these cards applies to one scenario in the campaign. Then, choose "
-"and reverse half of the cards (rounded up). This reading is ideal if you "
-"want your readings to have long-term consequences and force you to plan "
-"ahead."
-msgstr ""
-"Antes de empezar la campaña, revela una carta por cada escenario de la "
-"campaña, ignorando las historias secundarias y contando los escenarios con "
-"varias partes como escenarios distintos. Coloca todas las cartas formando "
-"una línea horizontal y de pie. Cada una de estas cartas se aplica a un "
-"escenario de la campaña. A continuación, elige la mitad de las cartas "
-"(redondeando hacia arriba) y ponlas en posición invertida. Esta lectura es "
-"ideal si quieres que tu lectura tenga consecuencias a largo plazo y te "
-"obligue a planear con anticipación."
-
-msgid ""
-"Draw 3 random cards from the tarot deck and choose 1. Place the chosen card "
-"in front of you, in the upright position. Each other investigator ignores "
-"its effects."
-msgstr ""
-"Roba 3 cartas aleatorias del mazo de Tarot y elige 1. Coloca la carta "
-"elegida frente a ti, de pie. Cada uno de los demás investigadores ignora "
-"sus efectos."
-
-msgid ""
-"Draw a random card from the tarot deck and place the chosen card in front "
-"of you, in the reverse position. Each other investigator ignores its "
-"effects."
-msgstr ""
-"Roba una carta aleatoria del mazo de Tarot y colócala frente a ti, "
-"invertida. Cada uno de los demás investigadores ignora sus efectos."
-
-msgid ""
-"There are endless possible readings that you could perform using the Tarot "
-"Deck. Feel free to create your own!"
-msgstr ""
-"Existen infinitas posibilidades que puedes emplear para realizar lecturas "
-"con el mazo de Tarot. ¡Tienes total libertad para crear las que quieras!"
-
 msgid "Choose two cards to reverse."
 msgstr "Elige dos cartas para poner en posición invertida."
 
@@ -6033,10 +5935,6 @@ msgstr ""
 msgid "Lucid Nightmare"
 msgstr ""
 
-#, javascript-format
-msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr ""
-
 msgid "Delete your account"
 msgstr "Elimina tu cuenta"
 
@@ -6086,7 +5984,279 @@ msgstr[1] ""
 "Las ${ createdCampaignCount } campañas que has sincronizado con esta cuenta "
 "se eliminarán:"
 
-#. console.log(`${await cards.count() } cards after delete`);
+msgid "Beta"
+msgstr "Beta"
+
+msgid "Check for card updates"
+msgstr "Buscar nuevas cartas"
+
+msgid "Low memory mode"
+msgstr "Modo poca memoria"
+
+msgid "Have the app preload fewer cards to help performance on older devices"
+msgstr ""
+"La app precarga menos cartas para mejorar el rendimiento en dispositivos "
+"antiguos"
+
+msgid "Choose slot to remove"
+msgstr "Elige el espacio a eliminar"
+
+msgid "Slot"
+msgstr "Espacio"
+
+msgid ""
+"Sorry, the app cannot yet support customizable cards like this one, but we "
+"are working on it!\n"
+"\n"
+"Please check for pending app updates and try again later."
+msgstr ""
+"Disculpa, la aplicación todavía no soporta cartas Personalizable como esta, "
+"pero estamos trabajando en ello.\n"
+"\n"
+"Por favor, revisa las actualizaciones de la aplicación y vuelve a "
+"intentarlo más adelante."
+
+msgid "Customizations"
+msgstr "Personalizaciones"
+
+#, javascript-format
+msgid "${ xp } XP"
+msgid_plural "${ xp } XP"
+msgstr[0] "${ xp } XP"
+msgstr[1] "${ xp } XP"
+
+msgid "Show selected customizations"
+msgstr "Mostrar personalizaciones seleccionadas"
+
+msgid "Show all customizations"
+msgstr "Mostrar todas las personalizaciones"
+
+#, javascript-format
+msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
+msgstr "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
+
+msgid "The Scarlet Keys"
+msgstr "Las llaves escarlata"
+
+#, javascript-format
+msgid "Name ${ quantity } card"
+msgid_plural "Name ${ quantity } cards"
+msgstr[0] "Nombra ${ quantity } carta"
+msgstr[1] "Nombra ${ quantity } cartas"
+
+msgid "Named card"
+msgid_plural "Named cards"
+msgstr[0] "Carta nombrada"
+msgstr[1] "Cartas nombradas"
+
+msgid "In deck"
+msgstr "En el mazo"
+
+msgid "Select additional cards"
+msgstr "Selecciona cartas adicionales"
+
+msgid "Map"
+msgstr "Mapa"
+
+#, javascript-format
+msgid "${ travelDistance } day"
+msgid_plural "${ travelDistance } days"
+msgstr[0] "${ travelDistance } día"
+msgstr[1] "${ travelDistance } días"
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }"
+msgstr ""
+
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr ""
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add trait"
+msgstr ""
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Embark"
+msgstr ""
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr ""
+
+msgid "Depart"
+msgstr ""
+
+msgid "Choose destination"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr ""
+
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgid "Lost Moorings"
+msgstr ""
+
+msgid "Going Twice"
+msgstr ""
+
+msgid "Private Lives"
+msgstr ""
+
+msgid "Crumbling Masonry"
+msgstr ""
+
+msgid "A House Divided"
+msgstr ""
+
+msgid "Across Dreaful Waters"
+msgstr ""
+
+msgid "Blood From Stones"
+msgstr ""
+
+msgid "Pyroclastic Flow"
+msgstr ""
+
+msgid "Tomb of Dead Dreams"
+msgstr ""
+
+msgid "Cultists Alive"
+msgstr ""
+
+msgid "Cultists Killed"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Jenny's Choice"
+msgstr ""
+
+msgid "The Fall of the House of Usher"
+msgstr ""
+
+msgid "Against the Wendigo"
+msgstr ""
+
+msgid "Non-canon Content"
+msgstr ""
+
+msgid "Fan-made Campaigns"
+msgstr ""
+
+msgid "Fan-made Scenarios"
+msgstr ""
+
+msgid "Currently here"
+msgstr ""
+
+msgid "Already visited"
+msgstr ""
+
+msgid ""
+"You may stop at this location to play a side-story. Passing through this "
+"location costs no additional time."
+msgstr ""
+
+msgid ""
+"As an additional cost to play the side-story, you must spend one time for "
+"each XP cost of the scenario."
+msgstr ""
+
+msgid "Travel time:"
+msgstr ""
+
+msgid "Travel here"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Dossier"
+msgid_plural "Dossiers"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Departing from ${ location }"
+msgstr ""
+
+msgid "Customization upgrades"
+msgstr ""
+
+msgid "Special discounts"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Difficulty override"
+msgstr ""
+
+msgid "Easy / Standard"
+msgstr ""
+
+msgid "Hard / Expert"
+msgstr ""
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr ""
+
+msgid "Select scenario effects difficulty"
+msgstr ""
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Use campaign setting"
+msgstr ""
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
@@ -6418,14 +6588,6 @@ msgid ""
 msgstr ""
 "- Las cartas fanmade aparecen con un pequeño icono indicando a qué pack "
 "pertenecen, para que puedas detectar que no son oficiales."
-
-msgctxt "releaseNotes"
-msgid ""
-"Note: You might need to refresh the cards once (using <b>Check ArkhamDB for "
-"updates</b>)."
-msgstr ""
-"Nota: Puede ser necesario refrescar las cartas una vez (usando <b>Buscar "
-"nuevas cartas en ArkhamDB</b>)."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6767,6 +6929,91 @@ msgstr ""
 "- Te mostrará el mazo antes de guardarlo, para que puedas volver a "
 "generarlo de nuevo si el mazo actual tiene una composición particularmente "
 "inviable."
+
+msgctxt "releaseNotes"
+msgid ""
+"Note: You might need to refresh the cards once (using <b>Check for card "
+"updates</b>)."
+msgstr ""
+"Nota: Es posible que necesites actualizar las cartas (haz clic en <b>Buscar "
+"nuevas cartas</b>)."
+
+msgctxt "releaseNotes"
+msgid "Settings synchronization"
+msgstr "Sincronización de ajustes"
+
+msgctxt "releaseNotes"
+msgid ""
+"Good news for players who use Arkham Cards with more than one device, if "
+"you sign into your Arkham Cards account your settings will now sync between "
+"devices automatically!"
+msgstr ""
+"Buenas noticias para aquellos que utilizan Arkham Cards en más de un "
+"dispositivo. Si inicias sesión en tu cuenta de Arkham Cards, ¡tus ajustes "
+"se sincronizarán entre dispositivos automáticamente!"
+
+msgctxt "releaseNotes"
+msgid ""
+"- This includes your collection + spoiler settings, as well as many general "
+"app preferences."
+msgstr ""
+"- Esto incluye tu colección y los ajustes sobre spoilers, así como los "
+"ajustes generales de la aplicación."
+
+msgctxt "releaseNotes"
+msgid ""
+"I've had some reports of slower performance on some devices, and have a new "
+"<i>\"Low Memory Mode\"</i> setting to try out."
+msgstr ""
+"He recibido reportes sobre problemas de rendimiento en algunos "
+"dispositivos, y se ha lanzado el nuevo <i>\"Modo poca memoria\"</i> ajuste "
+"para probar de resolverlo."
+
+msgctxt "releaseNotes"
+msgid ""
+"- If you've been experiencing slow app behavior in anyway, please try it "
+"out."
+msgstr ""
+"- Si has estado experimentando un comportamiento lento de la aplicación, "
+"prueba el nuevo modo, por favor."
+
+msgctxt "releaseNotes"
+msgid ""
+"- And if you try it out, send me an email at arkhamcards@gmail.com, I would "
+"love to hear how it is working in the wild."
+msgstr ""
+"- Y si lo pruebas, envíame un correo a arkhamcards@gmail.com, me encantará "
+"saber si está solucionando el problema."
+
+msgctxt "releaseNotes"
+msgid ""
+"BTW, support for the newly announced mechanic from The Scarlet Keys is in "
+"the works, so stay tuned."
+msgstr ""
+"Por cierto, estoy trabajando en dar soporte a las nuevas cartas "
+"Personalizable de Las llaves escarlata, ¡estad atentos!"
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -7840,6 +8087,206 @@ msgctxt "trait"
 msgid "Resolute"
 msgstr ""
 
+msgctxt "trait"
+msgid "Ally? Creature"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bad dog"
+msgstr ""
+
+msgctxt "trait"
+msgid "Castle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Classy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Consort"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corpse"
+msgstr ""
+
+msgctxt "trait"
+msgid "Coterie"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dilemma"
+msgstr ""
+
+msgctxt "trait"
+msgid "Downtown"
+msgstr ""
+
+msgctxt "trait"
+msgid "Eidolon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Elder Thing"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrance"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fellow Dogs"
+msgstr ""
+
+msgctxt "trait"
+msgid "Footwear, but not really"
+msgstr ""
+
+msgctxt "trait"
+msgid "Glacier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Infection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machine"
+msgstr ""
+
+msgctxt "trait"
+msgid "Madness?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mainland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mirage"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountains"
+msgstr ""
+
+msgctxt "trait"
+msgid "Music"
+msgstr ""
+
+msgctxt "trait"
+msgid "Musician"
+msgstr ""
+
+msgctxt "trait"
+msgid "Northside"
+msgstr ""
+
+msgctxt "trait"
+msgid "Parasitic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Past"
+msgstr ""
+
+msgctxt "trait"
+msgid "Possessed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Present"
+msgstr ""
+
+msgctxt "trait"
+msgid "Priestess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pup"
+msgstr ""
+
+msgctxt "trait"
+msgid "Resonant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Restricted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Row"
+msgstr ""
+
+msgctxt "trait"
+msgid "Scientist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shapeshifter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sister"
+msgstr ""
+
+msgctxt "trait"
+msgid "Slope"
+msgstr ""
+
+msgctxt "trait"
+msgid "Soldier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stop"
+msgstr ""
+
+msgctxt "trait"
+msgid "Table"
+msgstr ""
+
+msgctxt "trait"
+msgid "That's bad"
+msgstr ""
+
+msgctxt "trait"
+msgid "Traitor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tulgey Wood"
+msgstr ""
+
+msgctxt "trait"
+msgid "Uncharted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Underground"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upper Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weather"
+msgstr ""
+
+msgctxt "trait"
+msgid "What? No"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -7856,6 +8303,14 @@ msgstr "Investigador"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "Todos"
+
+msgctxt "cost"
+msgid "Even"
+msgstr "Par"
+
+msgctxt "cost"
+msgid "Odd"
+msgstr "Impar"
 
 msgctxt "Actions"
 msgid "All"
@@ -7916,6 +8371,10 @@ msgstr "Poemas"
 msgctxt "fan-made-uses"
 msgid "Portions"
 msgstr "Porciones"
+
+msgctxt "uses"
+msgid "Supplies"
+msgstr "Suministros"
 
 msgctxt "Slots"
 msgid "All"
@@ -7998,6 +8457,22 @@ msgstr[1] "Escenarios"
 msgctxt "Taboo List"
 msgid "None"
 msgstr "Ninguna"
+
+msgctxt "Tarot Card"
+msgid "None"
+msgstr "Ninguna"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "El Juicio · XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "El Juicio · XX (Invertida)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "vs."
 
 msgctxt "card-chooser"
 msgid "Choose additional"
@@ -8094,18 +8569,6 @@ msgctxt "trauma"
 msgid "None"
 msgstr "Ninguno"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "Ninguna"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "El Juicio · XX"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "El Juicio · XX (Invertida)"
-
 msgctxt "campaign"
 msgid "Custom"
 msgstr "Personalizada"
@@ -8117,10 +8580,6 @@ msgstr "Campañas"
 msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "Escenarios independientes"
-
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "vs."
 
 msgctxt "scenario"
 msgid "Custom"

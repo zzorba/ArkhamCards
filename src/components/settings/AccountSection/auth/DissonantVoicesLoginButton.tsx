@@ -1,7 +1,7 @@
 import { t } from 'ttag';
 import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { dissonantVoicesLogin, dissonantVoicesLogout } from '@actions';
 import { AppState } from '@reducers';

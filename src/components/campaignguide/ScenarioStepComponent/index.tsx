@@ -12,7 +12,7 @@ import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
-import { CHOOSE_RESOLUTION_STEP_ID } from '@data/scenario/fixedSteps';
+import { CHOOSE_RESOLUTION_STEP_ID, PROCEED_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -179,7 +179,11 @@ export default function ScenarioStepComponent({
   return (
     <ScenarioStepContext.Provider value={context}>
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
-        <TitleComponent title={step.step.title} border_color={resolution ? 'resolution' : 'setup'} center={border} />
+        <TitleComponent
+          title={step.step.title}
+          border_color={(step.step.type === 'story' && step.step.border_color) || (resolution ? 'resolution' : 'setup')}
+          center={border}
+        />
       ) }
       <ScenarioStepComponentContent
         componentId={componentId}
@@ -188,7 +192,7 @@ export default function ScenarioStepComponent({
         width={width}
         switchCampaignScenario={switchCampaignScenario}
       />
-      { (step.step.id === '$proceed') && (
+      { (step.step.id === PROCEED_STEP_ID) && (
         <View style={space.paddingS}>
           <ActionButton
             leftIcon="check"

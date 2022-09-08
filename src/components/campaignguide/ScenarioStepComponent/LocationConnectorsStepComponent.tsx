@@ -6,7 +6,7 @@ import {
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';
-import { LocationConnectorsStep, LocationConnector } from '@data/scenario/types';
+import { LocationConnectorsStep } from '@data/scenario/types';
 import LocationConnectorIcon from '@icons/LocationConnectorIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
@@ -40,17 +40,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-  },
-  icon: {
-    position: 'relative',
-  },
-  iconBackground: {
-    position: 'absolute',
-    top: 1,
-    left: 1,
-    width: ICON_SIZE - 2,
-    height: ICON_SIZE - 2,
-    backgroundColor: 'white',
-    borderRadius: (ICON_SIZE / 2) - 1,
   },
 });

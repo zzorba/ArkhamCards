@@ -17,7 +17,19 @@ import { AppState } from '@reducers';
 
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
-export default function useChooseDeck(createDeckActions: DeckActions, updateActions: UpdateCampaignActions) {
+type ChooseDeckType = (
+  campaignId: CampaignId,
+  campaignInvestigators: Card[],
+  singleInvestigator?: Card,
+  callback?: (code: string) => Promise<void>,
+) => void;
+
+type AddInvestigatorType = (campaignId: CampaignId, code: string, deckId?: DeckId) => Promise<void>;
+
+export default function useChooseDeck(createDeckActions: DeckActions, updateActions: UpdateCampaignActions): [
+  ChooseDeckType,
+  AddInvestigatorType,
+] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch: AsyncDispatch = useDispatch();
   const doAddInvestigator = useCallback(async(campaignId: CampaignId, code: string, deckId?: DeckId) => {
@@ -72,5 +84,5 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
       },
     });
   }, [doAddInvestigator]);
-  return showChooseDeck;
+  return [showChooseDeck, doAddInvestigator];
 }

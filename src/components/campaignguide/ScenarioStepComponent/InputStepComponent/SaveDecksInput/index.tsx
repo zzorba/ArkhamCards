@@ -15,9 +15,10 @@ import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 interface Props {
   componentId: string;
   id: string;
+  includeTrauma?: boolean;
 }
 
-export default function SaveDecksInput({ componentId, id }: Props) {
+export default function SaveDecksInput({ componentId, id, includeTrauma }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
@@ -128,6 +129,7 @@ export default function SaveDecksInput({ componentId, id }: Props) {
             investigator={investigator}
             deck={latestDecks[investigator.code]}
             editable={!hasDecision}
+            includeTrauma={!!includeTrauma}
           />
         );
       }) }

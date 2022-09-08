@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
-import Carousel from 'react-native-snap-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
+import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { find, filter, map, slice } from 'lodash';
@@ -28,8 +29,12 @@ import { where } from '@data/sqlite/query';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
-import { DeckId } from '@actions/types';
+import { Customizations, DeckId } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
+import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
+import { useCardCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -42,6 +47,8 @@ export interface CardDetailSwipeProps {
   deckId?: DeckId;
   faction?: FactionCodeType;
   editable?: boolean;
+  customizationsEditable?: boolean;
+  initialCustomizations: Customizations | undefined
 }
 
 type Props = NavigationProps & CardDetailSwipeProps;
@@ -57,9 +64,80 @@ const options = (passProps: CardDetailSwipeProps) => {
   };
 };
 
+const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
+
+function ScrollableCard(props: {
+  componentId: string;
+  card: Card | undefined;
+  customizationsEditable: boolean | undefined;
+  setChoice: (code: string, choice: CustomizationChoice) => void;
+  width: number;
+  height: number;
+  deckId: DeckId | undefined;
+  deckCount?: number;
+  customizations: Customizations;
+  showCardSpoiler: (card: Card) => boolean;
+  toggleShowSpoilers: (code: string) => void;
+  showInvestigatorCards: (code: string) => void;
+  mode?: 'view' | 'edit' | 'upgrade';
+}) {
+  const { componentId, mode, customizationsEditable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler } = props;
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
+  const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
+    if (card && deckId) {
+      return (deckCount && customizations[card.code]) || NO_CUSTOMIZATIONS;
+    }
+    return undefined;
+  }, [deckId, customizations, card, deckCount])
+  const customizedCard = useMemo(() => {
+    return card?.withCustomizations(listSeperator, customizationChoices, 'customizedCard');
+  }, [card, listSeperator, customizationChoices]);
+  if (!customizedCard) {
+    return (
+      <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
+        <ActivityIndicator color={colors.lightText} size="small" animating />
+      </View>
+    );
+  }
+  return (
+    <ScrollView
+      overScrollMode="never"
+      bounces={false}
+      contentContainerStyle={backgroundStyle}
+    >
+      <CardDetailComponent
+        componentId={componentId}
+        card={customizedCard}
+        showSpoilers={showCardSpoiler(customizedCard)}
+        toggleShowSpoilers={toggleShowSpoilers}
+        showInvestigatorCards={showInvestigatorCards}
+        width={width}
+      />
+      { !!customizedCard.customization_options && !!card && (
+        <CardCustomizationOptions
+          componentId={componentId}
+          card={card}
+          mode={mode}
+          deckId={deckId}
+          customizationOptions={customizedCard.customization_options}
+          customizationChoices={customizationChoices}
+          width={width}
+          editable={!!customizationsEditable && !!deckCount}
+          setChoice={setChoice}
+        />
+      ) }
+      { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
+    </ScrollView>
+  );
+}
+
 function DbCardDetailSwipeView(props: Props) {
-  const { componentId, cardCodes, editable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls } = props;
-  const { backgroundStyle, colors, width, height } = useContext(StyleContext);
+  const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { listSeperator } = useContext(LanguageContext);
+  const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
+  const deckEdits = useSimpleDeckEdits(deckId);
+  const { backgroundStyle, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, tabooSetOverride));
@@ -75,7 +153,11 @@ function DbCardDetailSwipeView(props: Props) {
       controls ? controls[index] : undefined,
     ];
   }, [cardCodes, controls, index]);
-  const currentCard = useMemo(() => cards[currentCode], [cards, currentCode]);
+
+  const currentCard = useMemo(() => {
+    const card = cards[currentCode];
+    return card && card.withCustomizations(listSeperator, customizations[currentCode], 'currentCard');
+  }, [listSeperator, customizations, currentCode, cards]);
   useEffect(() => {
     const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));
     if (find(nearbyCards, code => !cards[code])) {
@@ -180,17 +262,13 @@ function DbCardDetailSwipeView(props: Props) {
         });
       } else if (buttonId === 'investigator') {
         showInvestigators(currentCard.code);
-      }
-       else if (buttonId === 'back') {
+      } else if (buttonId === 'back') {
         Navigation.pop(componentId);
       }
     }
   }, componentId, [currentCard, showInvestigators, showInvestigatorCards]);
 
-  const showCardSpoiler = useCallback((card?: Card) => {
-    if (!card) {
-      return false;
-    }
+  const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
   }, [showSpoilers, spoilers, showAllSpoilers]);
 
@@ -212,36 +290,34 @@ function DbCardDetailSwipeView(props: Props) {
       />
     );
   }, [deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
+  const mode = deckEdits?.mode;
+  const slots = deckEdits?.slots;
   const renderCard = useCallback((
-    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }
-  ): React.ReactNode => {
-    if (!card) {
-      return (
-        <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
-          <ActivityIndicator color={colors.lightText} size="small" animating />
-        </View>
-      );
-    }
+    { item: card, index: itemIndex }: {
+      item: Card | undefined;
+      index: number;
+      animationValue?: Animated.SharedValue<number>;
+    }, options: any
+  ): React.ReactElement => {
     return (
-      <ScrollView
+      <ScrollableCard
         key={itemIndex}
-        overScrollMode="never"
-        bounces={false}
-        contentContainerStyle={backgroundStyle}
-      >
-        <CardDetailComponent
-          key={itemIndex}
-          componentId={componentId}
-          card={card}
-          showSpoilers={showCardSpoiler(card)}
-          toggleShowSpoilers={toggleShowSpoilers}
-          showInvestigatorCards={showInvestigatorCards}
-          width={width}
-        />
-        { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
-      </ScrollView>
+        card={card}
+        width={width}
+        height={height}
+        deckId={deckId}
+        mode={mode}
+        componentId={componentId}
+        customizations={customizations}
+        showCardSpoiler={showCardSpoiler}
+        toggleShowSpoilers={toggleShowSpoilers}
+        showInvestigatorCards={showInvestigatorCards}
+        setChoice={setChoice}
+        deckCount={card && slots?.[card.code]}
+        customizationsEditable={editable || customizationsEditable}
+      />
     );
-  }, [showCardSpoiler, backgroundStyle, componentId, deckId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
+  }, [slots, customizationsEditable, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
@@ -249,7 +325,7 @@ function DbCardDetailSwipeView(props: Props) {
     <View
       style={[styles.wrapper, backgroundStyle, { width, height }]}
     >
-      <Carousel
+      <SnapCarousel
         vertical={false}
         data={data}
         firstItem={initialIndex}
@@ -259,16 +335,17 @@ function DbCardDetailSwipeView(props: Props) {
         sliderWidth={width}
         itemWidth={width}
         useExperimentalSnap
-        shouldOptimizeUpdates
         onScrollIndexChanged={setIndex}
         disableIntervalMomentum
+        activeSlideOffset={5}
+        shouldOptimizeUpdates
         apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
       { deckId !== undefined && (
         <>
           <DeckNavFooter
-            deckId={deckId}
             componentId={componentId}
+            deckId={deckId}
             control="counts"
             onPress={backPressed}
           />

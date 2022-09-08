@@ -4952,7 +4952,99 @@
         }
       }
     ]
-   },
+  },
+  {
+    "code": "zcos_00001",
+     "scenario": "the_colour_out_of_space",
+     "standard": [
+       {
+         "token": "skull",
+         "type": "condition",
+         "condition": {
+           "default_value": {
+             "modifier": -1
+           },
+           "options": [{
+             "prompt": "Your location is <b>Infected</b>",
+             "modified_value": {
+               "modifier": -3
+             }
+           }]
+         }
+       },
+       {
+         "token": "cultist",
+         "type": "condition",
+         "condition": {
+           "default_value": {
+             "modifier": -2
+           },
+           "options": [{
+             "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+             "modified_value": {
+               "modifier": -4
+             }
+           }]
+         }
+       },
+       {
+         "token": "tablet",
+         "value": {
+           "modifier": -2
+         }
+       },
+       {
+         "token": "elder_thing",
+         "value": {
+           "modifier": -3
+         }
+       }
+     ],
+     "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Your location is <b>Infected</b>",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+            "modified_value": {
+              "modifier": -6
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
   {
    "code": "zcc_00001",
     "scenario": "consternation_on_the_constellation",

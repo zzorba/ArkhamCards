@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
-import { View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
 import RefreshableWrapper from 'react-native-fresh-refresh';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 import { map } from 'lodash';
@@ -40,6 +40,7 @@ type FlatDataItem<Item> = FlatItem<Item> | FlatLoader;
 export default function ArkhamLargeList<Item>({
   refreshing,
   noSearch,
+  onLoading,
   onRefresh,
   renderHeader,
   renderFooter,
@@ -48,7 +49,7 @@ export default function ArkhamLargeList<Item>({
   onScroll,
   heightForItem,
 }: Props<Item>) {
-  const { fontScale } = useContext(StyleContext);
+  const { fontScale, colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
   const [debouncedRefreshing] = [refreshing || fakeRefresh];
   const isRefreshing = useRef(debouncedRefreshing);
@@ -117,6 +118,36 @@ export default function ArkhamLargeList<Item>({
       </View>
     );
   }, [noSearch, loader, renderHeader]);
+  if (Platform.OS === 'android') {
+    return (
+      <FlatList
+        data={flatData}
+        refreshControl={
+          <RefreshControl
+            progressViewOffset={noSearch ? 0 : searchBarHeight}
+            refreshing={debouncedRefreshing}
+            onRefresh={handleRefresh}
+            tintColor={colors.lightText}
+          />
+        }
+        scrollEventThrottle={16}
+        onScroll={onScroll}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
+        renderItem={renderFlatItem}
+        scrollsToTop
+        onEndReached={onLoading}
+        onEndReachedThreshold={0.5}
+        removeClippedSubviews
+        getItemLayout={heightForItem ? getItemLayout : undefined}
+        ListHeaderComponent={renderRealHeader}
+        ListFooterComponent={renderFooter || <View />}
+        initialNumToRender={20}
+        maxToRenderPerBatch={40}
+        updateCellsBatchingPeriod={10}
+      />
+    )
+  }
   return (
     <RefreshableWrapper
       contentOffset={contentOffset}
@@ -136,6 +167,8 @@ export default function ArkhamLargeList<Item>({
         keyboardDismissMode="on-drag"
         renderItem={renderFlatItem}
         scrollsToTop
+        onEndReached={onLoading}
+        onEndReachedThreshold={0.5}
         removeClippedSubviews
         getItemLayout={heightForItem ? getItemLayout : undefined}
         ListHeaderComponent={renderRealHeader}

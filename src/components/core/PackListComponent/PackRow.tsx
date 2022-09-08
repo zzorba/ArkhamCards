@@ -20,6 +20,7 @@ import StyleContext from '@styles/StyleContext';
 interface Props {
   componentId: string;
   pack: Pack;
+  packId?: string;
   cycle: Pack[];
   setChecked?: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
@@ -31,7 +32,7 @@ interface Props {
   alwaysCycle?: boolean;
 }
 
-export default function PackRow({ componentId, description, pack, cycle, alwaysCycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
+export default function PackRow({ packId, componentId, description, pack, cycle, alwaysCycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     Navigation.push<PackCardsProps>(componentId, {
@@ -57,6 +58,10 @@ export default function PackRow({ componentId, description, pack, cycle, alwaysC
 
   const onCheckPress = useCallback(() => {
     const value = !checked;
+    if (packId) {
+      setChecked && setChecked(packId, !value);
+      return;
+    }
     if (alwaysCycle && setCycleChecked) {
       if (cycle.length) {
         setCycleChecked(pack.code, value)
@@ -91,7 +96,7 @@ export default function PackRow({ componentId, description, pack, cycle, alwaysC
         ],
       );
     }
-  }, [pack, cycle, checked, alwaysCycle, setCycleChecked, setChecked]);
+  }, [pack, cycle, checked, alwaysCycle, packId, setCycleChecked, setChecked]);
 
   const backgroundColor = colors.background;
   const iconSize = 24;
@@ -115,7 +120,7 @@ export default function PackRow({ componentId, description, pack, cycle, alwaysC
               color={colors.darkText}
             />
           </View>
-          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start' }}>
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>
             <Text
               style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
               numberOfLines={2}

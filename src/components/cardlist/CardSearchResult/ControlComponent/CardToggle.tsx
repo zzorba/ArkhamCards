@@ -6,13 +6,15 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 interface Props {
   value: boolean;
   toggleValue: (value: boolean) => void;
+  disabled?: boolean;
 }
-export default function CardToggle({ value, toggleValue }: Props) {
+export default function CardToggle({ value, toggleValue, disabled }: Props) {
   return (
     <View style={styles.switchButton}>
       <ArkhamSwitch
         value={!!value}
         onValueChange={toggleValue}
+        disabled={disabled}
         useGestureHandler={Platform.OS === 'ios'}
       />
     </View>

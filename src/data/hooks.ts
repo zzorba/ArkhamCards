@@ -64,14 +64,14 @@ export function useCampaign(campaignId: CampaignId | undefined, live?: boolean):
 }
 const NO_INVESTIGATOR_CODES: string[] = [];
 export function useCampaignInvestigators(campaign: undefined | SingleCampaignT): [Card[] | undefined, boolean] {
-  const [investigators] = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
+  const [allInvestigators] = usePlayerCards(campaign?.investigators || NO_INVESTIGATOR_CODES);
   const campaignInvestigators = campaign?.investigators;
   return useMemo(() => {
-    if (!campaignInvestigators || !investigators) {
+    if (!campaignInvestigators || !allInvestigators) {
       return [undefined, true];
     }
-    return [flatMap(campaignInvestigators, i => investigators[i] || []), false];
-  }, [campaignInvestigators, investigators]);
+    return [flatMap(campaignInvestigators, i => allInvestigators[i] || []), false];
+  }, [campaignInvestigators, allInvestigators]);
 }
 
 function shouldUseReduxDeck(id: DeckId, userId: string | undefined, reduxDeck: LatestDeckT | undefined, remoteDeck: LatestDeckT | undefined) {

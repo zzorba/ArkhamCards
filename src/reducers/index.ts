@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { concat, find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
@@ -161,6 +161,7 @@ const DEFAULT_PACK_LIST: Pack[] = [];
 const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allGuidesSelector = (state: AppState) => state.guides.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
+const customPacksSelector = (state: AppState) => state.packs.custom;
 const showCustomContentSelector = (state: AppState) => !!state.settings.customContent;
 const allDecksSelector = (state: AppState) => state.decks.all;
 
@@ -172,43 +173,45 @@ export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
   allDecksSelector,
-  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
-    filter(
-      values(allCampaigns),
-      campaign => {
-        return (!campaign.linkedCampaignUuid && !campaign.serverId);
-      }
-    ),
-    (campaign: Campaign) => {
-      if (campaign.linkUuid) {
-        const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
-        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
-        if (campaignA && campaignB) {
-          const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
-          const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
-          return new MiniLinkedCampaignRedux(
-            campaign,
-            getCampaignLastUpdated(campaign),
-            campaignA,
-            decksA,
-            getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
-            campaignB,
-            decksB,
-            getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
-          );
+  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
+    return map(
+      filter(
+        values(allCampaigns),
+        campaign => {
+          return (!campaign.linkedCampaignUuid && !campaign.serverId);
         }
+      ),
+      (campaign: Campaign) => {
+        if (campaign.linkUuid) {
+          const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
+          const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
+          if (campaignA && campaignB) {
+            const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
+            const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
+            return new MiniLinkedCampaignRedux(
+              campaign,
+              getCampaignLastUpdated(campaign),
+              campaignA,
+              decksA,
+              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+              campaignB,
+              decksB,
+              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+            );
+          }
+        }
+        return new MiniCampaignRedux(
+          campaign,
+          flatMap(campaign.deckIds, id => {
+            const deck = getDeck(allDecks, id);
+            const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
+            return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
+          }),
+          getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
+        );
       }
-      return new MiniCampaignRedux(
-        campaign,
-        flatMap(campaign.deckIds, id => {
-          const deck = getDeck(allDecks, id);
-          const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
-          return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
-        }),
-        getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
-      );
-    }
-  )
+    );
+  }
 );
 
 export const getBackupData = createSelector(
@@ -242,12 +245,13 @@ export function getPackFetchDate(state: AppState) {
 
 export const getAllPacks = createSelector(
   allPacksSelector,
+  customPacksSelector,
   showCustomContentSelector,
-  (allPacks, showCustomContent) => sortBy(
+  (allPacks, customPacks, showCustomContent) => sortBy(
     sortBy(
       concat(
         allPacks || DEFAULT_PACK_LIST,
-        showCustomContent ? map([
+        showCustomContent ? (customPacks?.length ? customPacks : map([
           {
             code: 'zbh',
             cycle_code: 'fan',
@@ -255,40 +259,76 @@ export const getAllPacks = createSelector(
             position: 1,
           },
           {
+            code: 'zbt',
+            cycle_code: 'fan',
+            name: t`Beta`,
+            position: 2,
+          },
+          {
+            code: 'zcu',
+            cycle_code: 'fan',
+            name: c('investigator').t`Custom`,
+            position: 3,
+          },
+          {
             code: 'zdm',
             cycle_code: 'fan',
             name: t`Dark Matter`,
-            position: 2,
+            position: 4,
           },
           {
             code: 'zaw',
             cycle_code: 'fan',
             name: t`Alice in Wonderland`,
-            position: 3,
+            position: 5,
           },
           {
             code: 'zce',
             cycle_code: 'fan',
             name: t`The Crown of Egil`,
-            position: 4,
+            position: 6,
           },
           {
             code: 'zcp',
             cycle_code: 'fan',
             name: t`Call of the Plaguebearer`,
-            position: 5,
+            position: 7,
           },
           {
             code: 'zcc',
             cycle_code: 'fan',
             name: t`Consternation on the Constellation`,
-            position: 6,
+            position: 8,
           },
           {
             code: 'zez',
             cycle_code: 'fan',
             name: t`Symphony of Erich Zann`,
-            position: 7,
+            position: 9,
+          },
+          {
+            code: 'zcos',
+            cycle_code: 'fan',
+            name: t`The Colour Out of Space`,
+            position: 10,
+          },
+          {
+            code: 'zjc',
+            cycle_code: 'fan',
+            name: t`Jenny's Choice`,
+            position: 11,
+          },
+          {
+            code: 'zhu',
+            cycle_code: 'fan',
+            name: t`The Fall of the House of Usher`,
+            position: 12,
+          },
+          {
+            code: 'zatw',
+            cycle_code: 'fan',
+            name: t`Against the Wendigo`,
+            position: 13,
           },
         ], (p): Pack => {
           return {
@@ -302,7 +342,7 @@ export const getAllPacks = createSelector(
             total: 0,
             url: 'https://arkhamcards.com',
           };
-        }) : []
+        })) : []
       ), pack => pack.position),
     pack => pack.cycle_position
   )

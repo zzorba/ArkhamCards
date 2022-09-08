@@ -64,7 +64,7 @@ function CardCostIcon({ card, inverted, linked }: Props) {
 
   const color = card.faction2_code ? colors.faction.dual.text : colors.faction[card.factionCode()].text;
   const textColor = !inverted ? colors.background : 'white';
-  const level = (card.xp === null || card.xp === undefined) ? 'none' : `${card.xp}`;
+  const level = (card.xp === null || card.xp === undefined || (card.xp === 0 && card.customization_options)) ? 'none' : `${card.xp}`;
   const scaleFactor = ((fontScale - 1) / 2 + 1);
   const ICON_SIZE = 32 * scaleFactor;
   const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };

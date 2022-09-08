@@ -29,6 +29,7 @@ interface ExecutedScenario {
 export default class ScenarioGuide {
   id: string;
   campaignGuide: CampaignGuide;
+  sideScenario: boolean;
   private scenario: Scenario;
   private scenarioStartCampaignLog: GuidedCampaignLog;
   private standalone: boolean;
@@ -36,12 +37,14 @@ export default class ScenarioGuide {
   constructor(
     id: string,
     scenario: Scenario,
+    sideScenario: boolean,
     campaignGuide: CampaignGuide,
     campaignLog: GuidedCampaignLog,
     standalone: boolean
   ) {
     this.id = id;
     this.scenario = scenario;
+    this.sideScenario = sideScenario;
     this.campaignGuide = campaignGuide;
     this.scenarioStartCampaignLog = campaignLog;
     this.standalone = standalone;
@@ -82,7 +85,7 @@ export default class ScenarioGuide {
     return this.scenario.full_name;
   }
 
-  scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' {
+  scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' | 'core' {
     return this.scenario.type || 'scenario';
   }
 
@@ -128,6 +131,13 @@ export default class ScenarioGuide {
     if (existingStep) {
       return existingStep;
     }
+    const coreStep = find(
+      this.campaignGuide.findScenarioData('core')?.steps,
+      step => step.id === id
+    );
+    if (coreStep) {
+      return coreStep;
+    }
 
     const fixedStep = getFixedStep(
       id,
@@ -152,7 +162,7 @@ export default class ScenarioGuide {
     scenarioState: ScenarioStateHelper,
     standalone?: boolean
   ): ExecutedScenario {
-    const stepIds = scenarioStepIds(this.scenario, standalone);
+    const stepIds = scenarioStepIds(this.campaignGuide, this.scenario, standalone);
     const steps = this.expandSteps(stepIds, scenarioState, this.scenarioStartCampaignLog);
     const lastStep = last(steps);
     if (!lastStep) {
@@ -163,6 +173,7 @@ export default class ScenarioGuide {
         latestCampaignLog: this.scenarioStartCampaignLog,
       };
     }
+
     const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
     return {
       steps,

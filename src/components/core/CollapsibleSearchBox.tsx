@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { KeyboardAvoidingView, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform, Keyboard } from 'react-native';
+import { NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
 import Animated, { useDerivedValue, interpolate, useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 
 import SearchBox, { SearchBoxHandles, searchBoxHeight } from '@components/core/SearchBox';

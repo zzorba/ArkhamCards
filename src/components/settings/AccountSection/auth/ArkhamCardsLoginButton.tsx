@@ -6,7 +6,6 @@ import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-nativ
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import uuid from 'react-native-uuid';
-import { useDispatch } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 import { t } from 'ttag';
@@ -407,7 +406,7 @@ interface Props {
   handle: string;
 }
 
-export default function ArkhamCardsLoginButton({ showAlert, handle }: Props) {
+export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const { darkMode, typography, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const dispatch = useAppDispatch();

@@ -233,6 +233,7 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
     <InvestigatorSelectorWrapper
       id={id}
       investigator={effect.investigator}
+      fixedInvestigator={effect.fixed_investigator}
       input={input}
       render={renderInvestigators}
       extraArg={undefined}

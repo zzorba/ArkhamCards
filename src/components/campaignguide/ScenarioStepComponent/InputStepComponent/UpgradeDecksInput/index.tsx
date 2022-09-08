@@ -126,7 +126,7 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
       { map(scenarioInvestigators, investigator => {
         if (campaignLog.isEliminated(investigator)) {
           return (
-            <View style={[space.paddingSideS, space.paddingVerticalXs]}>
+            <View style={[space.paddingSideS, space.paddingVerticalXs]} key={investigator.code}>
               <CompactInvestigatorRow
                 key={investigator.code}
                 investigator={investigator}

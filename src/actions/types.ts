@@ -2,7 +2,8 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_CYCLE = 'cycle';
@@ -175,12 +176,24 @@ export type SlotCounts = {
   [slot in SlotCodeType]?: number;
 }
 
+export interface SpecialDiscount {
+  code: string;
+  available: number;
+  used: number;
+}
+
 export interface DeckChanges {
   added: Slots;
   removed: Slots;
   upgraded: Slots;
   exiled: Slots;
+  customized: Slots;
   spentXp: number;
+  specialDiscounts: {
+    usedFreeCards: number;
+    totalFreeCards: number;
+    cards: SpecialDiscount[];
+  };
 }
 
 export interface CardId {
@@ -204,9 +217,20 @@ export interface SplitCards {
 }
 export type CardSplitType = keyof SplitCards;
 
+export interface CustomizationDecision {
+  index: number;
+  spent_xp: number;
+  choice?: string;
+}
+
+export interface Customizations {
+  [code: string]: CustomizationChoice[] | undefined;
+}
+
 export interface ParsedDeck {
   id?: DeckId;
   deck?: Deck;
+  customizations: Customizations;
 
   investigator: Card;
   investigatorFront: Card;
@@ -237,10 +261,10 @@ export interface Pack {
   code: string;
   position: number;
   cycle_position: number;
-  available: string;
+  available?: string;
   known: number;
   total: number;
-  url: string;
+  url?: string;
 }
 
 export interface Trauma {
@@ -324,6 +348,7 @@ export interface ChaosBagResults {
   curseTokens?: number;
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
+  difficulty?: Campaign_Difficulty_Enum;
 }
 
 export interface ScenarioResult {
@@ -381,12 +406,14 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
+export const TSK = 'tsk';
 export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
+export const CYCLOPEAN_FOUNDATIONS = 'zcf';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -405,9 +432,11 @@ export type CampaignCycleCode =
   typeof TDEB |
   typeof TIC |
   typeof EOE |
+  typeof TSK |
   typeof GOB |
   typeof STANDALONE |
   typeof DARK_MATTER |
+  typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
   typeof CALL_OF_THE_PLAGUEBEARER;
@@ -429,12 +458,14 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
   EOE,
   GOB,
+  // TSK,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -458,11 +489,14 @@ export const GUIDED_CAMPAIGNS = new Set([
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
+  TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ]);
 
 export interface CustomCampaignLog {
@@ -598,7 +632,10 @@ export interface SetTabooSetAction {
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
-export type MiscSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'justify' | 'sort_quotes' | 'ignore_collection' | 'beta1' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'custom_content' | 'card_grid' | 'draft_grid' | 'draft_from_collection' | 'campaign_show_deck_id';
+
+export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'draft_from_collection' | 'low_memory';
+export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
@@ -627,6 +664,13 @@ export interface PacksAvailableAction {
   lang: string;
   timestamp: Date;
   lastModified?: string;
+}
+
+export const CUSTOM_PACKS_AVAILABLE = 'CUSTOM_PACKS_AVAILABLE';
+export interface CustomPacksAvailableAction {
+  type: typeof CUSTOM_PACKS_AVAILABLE;
+  packs: Pack[];
+  lang: string;
 }
 
 export interface CardCache {
@@ -662,16 +706,10 @@ export interface SetLanguageChoiceAction {
   choiceLang: string;
 }
 
-export const DISMISS_ONBOARDING = 'DISMISS_ONBOARDING';
-export interface DismissOnboardingAction {
-  type: typeof DISMISS_ONBOARDING;
-  onboarding: string;
-}
-
-
-export const RESET_ONBOARDING = 'RESET_ONBOARDING';
-export interface ResetOnboardingAction {
-  type: typeof RESET_ONBOARDING;
+export const SYNC_DISMISS_ONBOARDING = 'SYNC_DISMISS_ONBOARDING';
+export interface SyncDismissOnboardingAction {
+  type: typeof SYNC_DISMISS_ONBOARDING;
+  updates: { [onboarding: string]: boolean };
 }
 
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';
@@ -870,19 +908,15 @@ export interface MyDecksErrorAction {
   type: typeof MY_DECKS_ERROR;
   error: string;
 }
-export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
-export interface SetInCollectionAction {
-  type: typeof SET_IN_COLLECTION;
-  code?: string;
-  cycle_code?: string;
-  value: boolean;
+export const SYNC_IN_COLLECTION = 'SYNC_IN_COLLECTION';
+export interface SyncInCollectionAction {
+  type: typeof SYNC_IN_COLLECTION;
+  updates: { [key: string]: boolean }
 }
-export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
-export interface SetPackSpoilerAction {
-  type: typeof SET_PACK_SPOILER;
-  code?: string;
-  cycle_code?: string;
-  value: boolean;
+export const SYNC_PACK_SPOILER = 'SYNC_PACK_SPOILER';
+export interface SyncPackSpoilerAction {
+  type: typeof SYNC_PACK_SPOILER;
+  updates: { [key: string]: boolean }
 }
 
 export const SET_PACK_DRAFT = 'SET_PACK_DRAFT';
@@ -1025,20 +1059,11 @@ export interface CampaignRemoveInvestigatorAction {
   now: Date;
 }
 
-export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
-export interface AddCampaignScenarioResultAction {
-  type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
+export const SET_CAMPAIGN_NOTES = 'SET_CAMPAIGN_NOTES';
+export interface SetCampaignNotesAction {
+  type: typeof SET_CAMPAIGN_NOTES;
   campaignId: CampaignId;
-  scenarioResult: ScenarioResult;
-  campaignNotes?: CampaignNotes;
-  now: Date;
-}
-export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
-export interface EditCampaignScenarioResultAction {
-  type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  campaignId: CampaignId;
-  index: number;
-  scenarioResult: ScenarioResult;
+  campaignNotes: CampaignNotes;
   now: Date;
 }
 export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
@@ -1196,9 +1221,17 @@ export interface GuideChoiceInput extends BasicInput {
   choice: number;
 }
 
+export interface EmbarkData {
+  previousScenarioId: string;
+  destination: string;
+  time: number;
+  nextScenario: string;
+}
+
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
   step: undefined;
+  embarkData?: EmbarkData;
 }
 
 export interface GuideInterScenarioInput extends BasicInput {
@@ -1213,6 +1246,7 @@ interface StartSideScenarioInput extends BasicInput {
   scenario: string;
   previousScenarioId: string;
   step: undefined;
+  embarkData?: EmbarkData;
 }
 export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
   sideScenarioType: 'official';
@@ -1377,8 +1411,9 @@ export type PacksActions =
   PacksFetchErrorAction |
   PacksCacheHitAction |
   PacksAvailableAction |
-  SetInCollectionAction |
-  SetPackSpoilerAction |
+  CustomPacksAvailableAction |
+  SyncInCollectionAction |
+  SyncPackSpoilerAction |
   SetPackDraftAction |
   UpdatePromptDismissedAction;
 
@@ -1412,7 +1447,7 @@ export type DecksActions =
   SetCurrentDraftSizeAction |
   UpdateDeckEditAction |
   SetPackDraftAction |
-  SetInCollectionAction;
+  SyncInCollectionAction;
 
 export type DeckEditsActions =
   DeleteDeckAction |
@@ -1439,11 +1474,10 @@ export type CampaignActions =
   UpdateCampaignXpAction |
   UpdateCampaignTraumaAction |
   DeleteCampaignAction |
-  AddCampaignScenarioResultAction |
-  EditCampaignScenarioResultAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
+  SetCampaignNotesAction |
   AdjustBlessCurseAction |
   EnsureUuidAction |
   ReduxMigrationAction;

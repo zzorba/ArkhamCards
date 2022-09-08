@@ -98,7 +98,7 @@ export function fetchCards(
       const state = getState();
       const sqliteVersion = await db.sqliteVersion();
 
-      const cardCache = await syncCards(updateProgress, db, sqliteVersion, anonClient, packs, cardLang, cardsCache(state, cardLang));
+      const cardCache = await syncCards(updateProgress, db, sqliteVersion, anonClient, packs, dispatch, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
           updateProgress,

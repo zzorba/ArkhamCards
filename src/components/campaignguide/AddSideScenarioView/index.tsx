@@ -23,34 +23,65 @@ import { useDialog } from '@components/deck/dialogs';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import useProcessedCampaign from '../useProcessedCampaign';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
+import { EmbarkData } from '@actions/types';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
+  embarkData?: EmbarkData;
+  onEmbarkSide?: (embarkData: EmbarkData, xpCost: number) => EmbarkData | undefined;
 }
 
 type Props = NavigationProps & AddSideScenarioProps;
 
-function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
+function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmbarkSide }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const [customScenarioName, setCustomScenarioName] = useState('');
   const [customXpCost, incCustomXpCost, decCustomXpCost, setCustomXpCost] = useCounter(1, { min: 0 });
   const onPress = useCallback((scenario: Scenario) => {
-    campaignState.startOfficialSideScenario(
-      scenario.id,
-      latestScenarioId,
-    );
+    if (embarkData && onEmbarkSide) {
+      const newEmbarkData = onEmbarkSide(embarkData, scenario.xp_cost || 0);
+      if (newEmbarkData) {
+        // Getting back no data means we were sent somewhere else because we ran out of time.
+        campaignState.startOfficialSideScenario(
+          scenario.id,
+          latestScenarioId,
+          newEmbarkData
+        );
+      }
+    } else {
+      campaignState.startOfficialSideScenario(
+        scenario.id,
+        latestScenarioId,
+        embarkData
+      );
+    }
+    // Always pop
     Navigation.pop(componentId);
-  }, [componentId, latestScenarioId, campaignState]);
+  }, [componentId, latestScenarioId, campaignState, onEmbarkSide, embarkData]);
 
   const saveCustomScenario = useCallback(() => {
-    campaignState.startCustomSideScenario(
-      latestScenarioId,
-      customScenarioName,
-      customXpCost,
-    );
+    if (embarkData && onEmbarkSide) {
+      const newEmbarkData = onEmbarkSide(embarkData, customXpCost || 0);
+      if (newEmbarkData) {
+        campaignState.startCustomSideScenario(
+          latestScenarioId,
+          customScenarioName,
+          customXpCost,
+          newEmbarkData,
+        );
+      }
+    } else {
+      campaignState.startCustomSideScenario(
+        latestScenarioId,
+        customScenarioName,
+        customXpCost,
+        embarkData,
+      );
+    }
+    // Always pop
     Navigation.pop(componentId);
-  }, [componentId, latestScenarioId, campaignState, customScenarioName, customXpCost]);
+  }, [componentId, latestScenarioId, campaignState, customScenarioName, customXpCost, onEmbarkSide, embarkData]);
 
   const cancelCustomScenario = useCallback(() => {
     setCustomScenarioName('');

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { concat, filter, find, forEach, head, map } from 'lodash';
 import { View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
 import { ScenarioResult, CUSTOM } from '@actions/types';

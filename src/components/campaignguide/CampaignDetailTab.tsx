@@ -30,8 +30,7 @@ import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapCom
 import { useLatestDecksCards } from '@components/core/hooks';
 import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
 
-const SHOW_WEAKNESS = false;
-const SHOW_TAROT = false;
+const SHOW_WEAKNESS = true;
 
 interface Props {
   componentId: string;
@@ -73,7 +72,7 @@ export default function CampaignDetailTab({
   }, [campaignState]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
 
-  const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [saving, , saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -186,7 +185,7 @@ export default function CampaignDetailTab({
         },
       },
     });
-  }, [componentId, campaignGuide]);
+  }, [componentId, campaignGuide, campaignId, campaign.tarotReading]);
   const [tarotDialog, showTarotDialog] = useTarotCardReadingPicker({
     value: undefined,
     onValueChange: onTarotPress,
@@ -264,19 +263,16 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
-
-        { SHOW_TAROT && (
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckButton
-              icon="special_cards"
-              title={t`Tarot Readings`}
-              detail={t`Perform readings with the tarot deck`}
-              color="light_gray"
-              onPress={showTarotDialog}
-              bottomMargin={s}
-            />
-          </View>
-        ) }
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          <DeckButton
+            icon="special_cards"
+            title={t`Tarot Readings`}
+            detail={t`Perform readings with the tarot deck`}
+            color="light_gray"
+            onPress={showTarotDialog}
+            bottomMargin={s}
+          />
+        </View>
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckOverlapComponent componentId={componentId} cards={cards} />

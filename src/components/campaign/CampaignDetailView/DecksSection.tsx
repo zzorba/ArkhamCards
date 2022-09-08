@@ -14,7 +14,6 @@ import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import InvestigatorSectionRow from '../CampaignLogSection/InvestigatorSectionRow';
 import InvestigatorCountsSection from '../CampaignLogSection/InvestigatorCountsSection';
-import { useDispatch } from 'react-redux';
 import { updateCampaignNotes } from '../actions';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { SetCampaignNotesAction } from '@data/remote/campaigns';

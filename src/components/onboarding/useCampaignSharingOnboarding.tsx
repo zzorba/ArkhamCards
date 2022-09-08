@@ -32,7 +32,7 @@ export default function useCampaignSharingOnboarding(campaigns: MiniCampaignT[],
           title={t`Sign up with Arkham Cards`}
           body="First you need to sign up for an Arkham Cards account"
           faction="seeker"
-        />
+        />,
       ] : []),
       (
         <OnboardingSlide
@@ -63,6 +63,7 @@ export default function useCampaignSharingOnboarding(campaigns: MiniCampaignT[],
   const [dialog, showDialog] = useOnboardingCarousel(slides);
   return [
     <OnboardingToast
+      key="toast"
       background={colors.faction.mystic.background}
       setting="campaign_sync"
       text={t`Did you know campaigns can be shared with friends using this app?`}

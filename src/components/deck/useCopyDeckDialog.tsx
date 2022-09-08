@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ActivityIndicator, View, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { find, flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +26,7 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import useSingleCard from '@components/card/useSingleCard';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDialog } from './dialogs';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface SelectDeckSwitchPropsProps {
   deckId: DeckId;
@@ -159,9 +160,10 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
       ...keys(d.slots),
     ])
   ), [deck, baseDeck, latestDeck], deck?.deck.taboo_id || 0);
-  const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck?.deck, cards), [cards, deck]);
-  const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards), [cards, baseDeck]);
-  const parsedLatestDeck = useMemo(() => cards && latestDeck && parseBasicDeck(latestDeck, cards), [cards, latestDeck]);
+  const { listSeperator } = useContext(LanguageContext);
+  const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck?.deck, cards, listSeperator), [cards, deck, listSeperator]);
+  const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards, listSeperator), [cards, baseDeck, listSeperator]);
+  const parsedLatestDeck = useMemo(() => cards && latestDeck && parseBasicDeck(latestDeck, cards, listSeperator), [cards, latestDeck, listSeperator]);
 
   const deckSelector = useMemo(() => {
     if (parsedCurrentDeck && !parsedBaseDeck && !parsedLatestDeck) {
@@ -197,7 +199,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         ) : null }
       </>
     );
-  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, typography, selectedDeckIdChanged]);
+  }, [parsedBaseDeck, parsedCurrentDeck, parsedLatestDeck, selectedDeckId, selectedDeckIdChanged]);
 
   const formContent = useMemo(() => {
     if (saving) {
@@ -247,7 +249,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
               onValueChange={onDeckTypeChange}
             />
           }
-          />
+        />
         { !!isCustomContent && (
           <NewDialog.ContentLine
             hideIcon

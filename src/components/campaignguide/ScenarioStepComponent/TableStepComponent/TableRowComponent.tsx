@@ -30,7 +30,7 @@ export default function TableRowComponent({ row, background, last }: Props) {
           idx === row.cells.length - 1 ? { borderRightWidth: 2 } : {},
           last ? { borderBottomWidth: 2 } : {},
         ]} key={idx}>
-          <CampaignGuideTextComponent text={cell.size === 1 ? cell.text : cell.text} />
+          <CampaignGuideTextComponent text={cell.text} />
         </View>
       )) }
     </View>

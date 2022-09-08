@@ -21,6 +21,7 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 5 cards that are not Survivor or Neutral': t`You cannot have more than 5 cards that are not Survivor or Neutral`,
     'You must have at least 7 cards from 3 different factions': t`You must have at least 7 cards from 3 different factions`,
     'You cannot have more than 15 level 0-1 Seeker and/or Mystic cards': t`You cannot have more than 15 level 0-1 Seeker and/or Mystic cards`,
+    'You cannot have more than 15 level 0-1 Guardian and/or Survivor cards': t`You cannot have more than 15 level 0-1 Guardian and/or Survivor cards`,
     'You cannot have more than 5 Guardian and/or Mystic cards': t`You cannot have more than 5 Guardian and/or Mystic cards`,
     'You cannot have more than 5 level 0 Mystic cards': t`You cannot have more than 5 level 0 Mystic cards`,
     'You cannot have more than 5 level 0 Survivor cards': t`You cannot have more than 5 level 0 Survivor cards`,
@@ -175,17 +176,17 @@ export class DeckOptionQueryBuilder {
   filterBuilder: FilterBuilder;
   index: number;
 
-  constructor(option: DeckOption, index: number) {
+  constructor(option: DeckOption, index: number, prefix: string = 'deck') {
     this.option = option;
     this.index = index;
-    this.filterBuilder = new FilterBuilder(`deck${index}`);
+    this.filterBuilder = new FilterBuilder(`${prefix}${index}`);
   }
 
   private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
     if (this.option.faction_select && this.option.faction_select.length) {
       if (meta) {
         const selection = this.option.id ? (meta[this.option.id] as FactionCodeType) : meta.faction_selected;
-        if (selection &&  indexOf(this.option.faction_select, selection) !== -1) {
+        if (selection && indexOf(this.option.faction_select, selection) !== -1) {
           // If we have a deck select ONLY the ones they specified.
           // If not select them all.
           return this.filterBuilder.factionFilter([selection]);
@@ -208,9 +209,17 @@ export class DeckOptionQueryBuilder {
     if (this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
     )) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
+    }
+
+    if (this.option.text && this.option.text.length &&
+      this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage'
+    ) {
+      return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
     return [];
   }

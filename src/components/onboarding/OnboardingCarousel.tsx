@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { Text, View, Platform } from 'react-native';
-import { range } from 'lodash';
+import { View } from 'react-native';
 
-import Carousel from 'react-native-snap-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
 import StyleContext from '@styles/StyleContext';
 import { m } from '@styles/space';
 import { useModal } from '@components/deck/dialogs';
@@ -23,7 +22,7 @@ export function useOnboardingCarousel(slides: React.ReactNode[]): [React.ReactNo
   const { dialog, showDialog, setVisible } = useModal({
     allowDismiss: true,
     alignment: 'center',
-    content: <OnboardingCarousel slides={slides} width={width} onEndReached={onDismiss} />
+    content: <OnboardingCarousel slides={slides} width={width} onEndReached={onDismiss} />,
   });
   setVisibleRef.current = setVisible;
   return [dialog, showDialog];
@@ -34,16 +33,15 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
   const { height } = useContext(StyleContext);
   const renderItem = useCallback(({ item }: {
     index: number;
-    dataIndex: number;
-    item: React.ReactNode;
-  }) => {
+    item: React.ReactElement;
+  }): React.ReactElement => {
     return item;
-  }, [width, height, slides]);
-  const slidesWithDummy = useMemo(() => {
+  }, []);
+  const slidesWithDummy: React.ReactElement[] = useMemo(() => {
     if (slides.length) {
       return [
         ...slides,
-        <View key="finale" />
+        <View key="finale" />,
       ];
     }
     return slides;
@@ -55,20 +53,25 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
   }, [slides.length, onEndReached])
   return (
     <View style={{ width, height: height - m * 2 - NOTCH_BOTTOM_PADDING }}>
-      <Carousel
+      <SnapCarousel
         vertical={false}
         data={slidesWithDummy}
-        firstItem={0}
-        initialNumToRender={1}
-        maxToRenderPerBatch={3}
+        defaultIndex={0}
+        windowSize={3}
         renderItem={renderItem}
-        sliderWidth={width}
-        itemWidth={width}
-        shouldOptimizeUpdates
-        onScrollIndexChanged={onScrollIndexChanged}
-        layout="tinder"
-        layoutCardOffset={24}
-        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
+        width={width}
+        onSnapToItem={onScrollIndexChanged}
+        snapEnabled
+        mode="parallax"
+        modeConfig={{
+          parallaxScrollingScale: 1,
+          parallaxScrollingOffset: 25,
+          parallaxAdjacentItemScale: 0.9,
+        }}
+        scrollAnimationDuration={350}
+        panGestureHandlerProps={{
+          activeOffsetX: [-10, 10],
+        }}
       />
     </View>
   );

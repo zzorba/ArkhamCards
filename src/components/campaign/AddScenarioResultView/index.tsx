@@ -6,7 +6,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -23,11 +22,11 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaignInvestigators, useCampaign } from '@data/hooks';
-import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useAppDispatch } from '@app/store';
+import { useUpdateCampaignActions } from '@data/remote/campaigns';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
@@ -42,7 +41,6 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
-  const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch = useAppDispatch();
 
   const campaign = useCampaign(id);
@@ -50,11 +48,12 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
   const [xp, setXp] = useState(0);
+  const actions = useUpdateCampaignActions();
 
   const doSave = useCallback((showDeckUpgrade: boolean) => {
-    if (scenario) {
+    if (scenario && campaign) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      dispatch(addScenarioResult(userId, id, scenarioResult, campaignNotes));
+      dispatch(addScenarioResult(actions, campaign, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
@@ -82,7 +81,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
         Navigation.pop(componentId);
       }
     }
-  }, [componentId, id, dispatch, userId, scenario, xp, campaignNotes]);
+  }, [componentId, campaign, id, actions, dispatch, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
   useNavigationButtonPressed(({ buttonId }) => {

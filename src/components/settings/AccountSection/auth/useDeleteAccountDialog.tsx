@@ -100,7 +100,7 @@ export default function useDeleteAccountDialog(
     await actuallyDeleteAccount();
     await logout();
     return true;
-  }, [user]);
+  }, [actuallyDeleteAccount, logout]);
   const { dialog, showDialog } = useDialog({
     title: t`Confirm account deletion`,
     confirm: {

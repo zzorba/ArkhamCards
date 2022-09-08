@@ -18,8 +18,8 @@ import {
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import { getTarotCards } from '@app_constants';
+import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
+import CampaignGuide from './CampaignGuide';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -52,7 +52,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
 }
 
 export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
-function chooseResolutionStep(resolutions: Resolution[]): InputStep {
+function chooseResolutionStep(resolutions: Resolution[], scenarioGuide: ScenarioGuide): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
     resolution => resolution.id === 'investigator_defeat'
@@ -73,11 +73,13 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
             large: true,
             text: `<b>${resolution.title}</b>`,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
+            hidden: resolution.hidden,
             steps: [
               investigatorStatusStepId(resolution),
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
               `$r_${resolution.id}`,
               ...resolution.steps,
+              ...(scenarioGuide.sideScenario ? scenarioGuide.campaignGuide.sideScenarioResolutionStepIds() : []),
               INTER_SCENARIO_CHANGES_STEP_ID,
               PROCEED_STEP_ID,
             ],
@@ -96,7 +98,8 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   return step;
 }
 
-const PROCEED_STEP_ID = '$proceed';
+export const PROCEED_STEP_ID = '$proceed';
+export const EMBARK_STEP_ID = '$embark';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
 const chooseInvestigatorsStep: InputStep = {
@@ -159,7 +162,7 @@ function drawStandaloneWeaknessStep(): InputStep {
 }
 
 export const SELECTED_PARTNERS_CAMPAIGN_LOG_ID = '$selected_partners';
-
+export const INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX = '$investigator_partner_';
 const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
 const saveStandaloneDecksStep: InputStep = {
   id: SAVE_STANDALONE_DECKS_ID,
@@ -504,11 +507,16 @@ export function getFixedStep(
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
-      return chooseResolutionStep(scenarioGuide.resolutions());
+      return chooseResolutionStep(scenarioGuide.resolutions(), scenarioGuide);
     case CHECK_TAROT_READING:
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
+    case EMBARK_STEP_ID:
+      return {
+        id: EMBARK_STEP_ID,
+        type: 'internal',
+      };
     case PROCEED_STEP_ID: {
       const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
         campaignState,
@@ -564,13 +572,16 @@ export function getFixedStep(
   }
 }
 
-export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
+export function scenarioStepIds(campaignGuide: CampaignGuide, scenario: Scenario, standalone?: boolean) {
+  const sharedCampaignSetup = campaignGuide.scenarioSetupStepIds();
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
+      ...sharedCampaignSetup,
       ...scenario.setup,
       INTER_SCENARIO_CHANGES_STEP_ID,
       PROCEED_STEP_ID,
     ] : [
+      ...sharedCampaignSetup,
       CHOOSE_INVESTIGATORS_STEP_ID,
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),

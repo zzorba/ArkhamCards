@@ -24,6 +24,7 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function hasUpgrades(
   code: string,
@@ -42,7 +43,7 @@ function hasUpgrades(
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
-      (upgradeCard.pack_code === 'core' || ignoreCollection || inCollection[upgradeCard.pack_code])
+      ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || inCollection[upgradeCard.pack_code])
     )));
 }
 
@@ -518,12 +519,14 @@ export default function useParsedDeckComponent({
       type: 'upgrade',
       deckId: deckId,
       side: item.mode === 'side',
+      editable: !!editable,
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
   }, [mode, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
+  const customizations = parsedDeck?.customizations;
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -532,6 +535,8 @@ export default function useParsedDeckComponent({
         card,
         colors,
         true,
+        deckId,
+        customizations,
         tabooSetId
       );
       return;
@@ -561,20 +566,22 @@ export default function useParsedDeckComponent({
       tabooSetId,
       deckId,
       investigatorFront,
-      editable
+      editable,
+      customizations,
     );
-  }, [componentId, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
-
+  }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
+  const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
       return null;
     }
     const count = getCount(item, deckEditsRef?.current?.ignoreDeckLimitSlots);
+    const cardCustomizations = customizations?.[card.code];
     return (
       <CardSearchResult
         key={item.index}
-        card={card}
+        card={card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
@@ -584,7 +591,7 @@ export default function useParsedDeckComponent({
         noSidePadding
       />
     );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards]);
+  }, [listSeperator, showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
 
   if (!data || !data.length) {
     return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];
@@ -593,8 +600,6 @@ export default function useParsedDeckComponent({
     <>
       { map(data, deckSection => {
         const isLoading = (!!find(deckSection.sections, section => find(section.cards, item => !cards[item.id])));
-
-
         return (
           <View key={deckSection.title} style={space.marginBottomS}>
             <DeckSectionBlock

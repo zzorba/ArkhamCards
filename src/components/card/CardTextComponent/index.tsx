@@ -212,12 +212,14 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: RightNode,
 };
 
-function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
+function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
     order: BASE_ORDER + 2,
-    parse: (capture) => {
-      return { text: capture[1] };
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
     },
     render: UnderlineHtmlTagNode(usePingFang, style),
   };

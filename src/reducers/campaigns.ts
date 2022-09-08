@@ -14,8 +14,7 @@ import {
   CLEAN_BROKEN_CAMPAIGNS,
   UPDATE_CHAOS_BAG_RESULTS,
   DELETE_CAMPAIGN,
-  ADD_CAMPAIGN_SCENARIO_RESULT,
-  EDIT_CAMPAIGN_SCENARIO_RESULT,
+  SET_CAMPAIGN_NOTES,
   REPLACE_LOCAL_DECK,
   NEW_CHAOS_BAG_RESULTS,
   ENSURE_UUID,
@@ -473,39 +472,13 @@ export default function(
       all,
     };
   }
-  if (action.type === EDIT_CAMPAIGN_SCENARIO_RESULT) {
+  if (action.type === SET_CAMPAIGN_NOTES) {
     const campaign = { ...state.all[action.campaignId.campaignId] };
-    const scenarioResults = [
-      ...campaign.scenarioResults || [],
-    ];
-    scenarioResults[action.index] = { ...action.scenarioResult };
     const updatedCampaign = {
       ...campaign,
-      scenarioResults,
       lastUpdated: action.now,
     };
-    return {
-      ...state,
-      all: {
-        ...state.all,
-        [action.campaignId.campaignId]: updatedCampaign,
-      },
-    };
-  }
-  if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
-    const campaign = { ...state.all[action.campaignId.campaignId] };
-    const scenarioResults = [
-      ...(campaign.scenarioResults || []),
-      { ...action.scenarioResult },
-    ];
-    const updatedCampaign = {
-      ...campaign,
-      scenarioResults,
-      lastUpdated: action.now,
-    };
-    if (action.campaignNotes) {
-      updatedCampaign.campaignNotes = action.campaignNotes;
-    }
+    updatedCampaign.campaignNotes = action.campaignNotes;
     return {
       ...state,
       all: {

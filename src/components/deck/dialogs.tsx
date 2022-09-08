@@ -25,6 +25,8 @@ import { useUploadLocalDeckRequest } from '@data/remote/campaigns';
 import Card from '@data/types/Card';
 import AppModal from '@components/core/AppModal';
 import CardTextComponent from '@components/card/CardTextComponent';
+import { parseDeck } from '@lib/parseDeck';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 
 interface ModalOptions {
@@ -187,7 +189,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -461,7 +463,7 @@ export function usePickerDialog<T>({
       );
     }
     return <>{description}</>;
-  }, [description, typography]);
+  }, [description, borderStyle, typography]);
   const content = useMemo(() => {
     return (
       <View>
@@ -487,7 +489,7 @@ export function usePickerDialog<T>({
         )) }
       </View>
     );
-  }, [items, onValuePress, borderStyle, typography, description, selectedValue]);
+  }, [items, onValuePress, descriptionSection, noIcons, selectedValue]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator,
@@ -718,6 +720,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
     deck,
+    previousDeck,
+    cards,
     parsedDeckRef,
     deckEditsRef,
     tabooSetId,
@@ -737,18 +741,30 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     setSaveError(err.message || 'Unknown Error');
   }, [setSaveError, setSaving]);
   const deckActions = useDeckActions();
-
+  const { listSeperator } = useContext(LanguageContext);
   const actuallySaveEdits = useCallback(async(dismissAfterSave: boolean, isRetry?: boolean) => {
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeckRef.current || !deckEditsRef.current) {
+    if (!deck || !cards || !parsedDeckRef.current || !deckEditsRef.current) {
       return;
     }
     setSaving(true);
     try {
       if (hasPendingEdits) {
-        const problem = parsedDeckRef.current.problem;
+        const newParsedDeck = parseDeck(
+          deck.investigator_code,
+          deckEditsRef.current.meta,
+          deckEditsRef.current.slots,
+          deckEditsRef.current.ignoreDeckLimitSlots,
+          deckEditsRef.current.side,
+          cards,
+          listSeperator,
+          previousDeck,
+          deckEditsRef.current.xpAdjustment,
+          deck
+        );
+        const problem = newParsedDeck ? newParsedDeck.problem : parsedDeckRef.current.problem;
         const problemField = problem ? problem.reason : '';
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,
@@ -785,8 +801,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     } catch(e) {
       handleSaveError(e);
     }
-  }, [deck, saving, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
-    dispatch, deckDispatch, handleSaveError, setSaving]);
+  }, [deck, saving, cards, previousDeck, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
+    listSeperator, dispatch, deckDispatch, handleSaveError, setSaving]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
