@@ -29,7 +29,8 @@
     "codegen": "graphql-codegen-esm --config codegen.yml"
   },
   "resolutions": {
-    "cross-undici-fetch": "0.1.20"
+    "cross-undici-fetch": "0.1.20",
+    "react-native-svg": "13.1.0"
   },
   "copyFiles": [
     {

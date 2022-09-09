@@ -10678,10 +10678,10 @@ react-native-document-picker@8.1.1:
   dependencies:
     invariant "^2.2.4"
 
-react-native-fast-image@8.5.11:
-  version "8.5.11"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz#e3dc969d0e4e8df026646bf18194465aa55cbc2b"
-  integrity sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA==
+react-native-fast-image@8.6.1:
+  version "8.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.1.tgz#6a3a11b8ebc7629919265d33a420a04d13c897e0"
+  integrity sha512-ILuP7EuakqHNzTr8ZbumhuxG4tE/wGQ66z4nEEuzc0FlqY6rYaPsnq/UD2ahoyFj6QP1WvA2RIK3odib+VcqWg==
 
 react-native-flip-card@3.5.6:
   version "3.5.6"
@@ -10881,10 +10881,10 @@ react-native-svg-transformer@1.0.0:
     "@svgr/plugin-svgo" "^6.1.2"
     path-dirname "^1.0.2"
 
-react-native-svg@12.4.4, react-native-svg@^12.1.1:
-  version "12.4.4"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.4.4.tgz#2ba684eaea9a7402fbbe0ed9737e77284631d00e"
-  integrity sha512-LpcNlEVCURexqPAvQ9ne8KrPVfYz0wIDygwud8VMRmXLezysXzyQN/DTsjm1BO9lIfYp55WQsr3u3yW/vk6iiA==
+react-native-svg@13.1.0, react-native-svg@^12.1.1:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-13.1.0.tgz#2bad1dbee4c093af4abf45b356571715ae5f1c17"
+  integrity sha512-drYa+0piaQ27xFEp1MxRBSu6eHbR37qQITKTHNOmPv1NhPUyZ5tH4ICWe7aTLlB2u6KEhpSHl63HJi3jpZFtvw==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
