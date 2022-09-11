@@ -103,6 +103,7 @@ function ScrollableCard(props: {
   return (
     <ScrollView
       overScrollMode="never"
+      showsVerticalScrollIndicator={false}
       bounces={false}
       contentContainerStyle={backgroundStyle}
     >
