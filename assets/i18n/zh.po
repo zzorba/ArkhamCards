@@ -27,7 +27,6 @@ msgstr "流浪者"
 msgid "Survivor"
 msgstr "求生者"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "中立"
 
@@ -40,7 +39,6 @@ msgstr "神秘"
 msgid "Unknown"
 msgstr "未知"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "調查員"
 
@@ -3171,18 +3169,6 @@ msgstr "新獨立冒險"
 
 msgid "Create Standalone"
 msgstr "建立獨立冒險"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "The Chameleon"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"這是自定義的調查員，允許創建任意無限制的牌組。\n"
-"[elder_sign]: +X。X是你想要多少就多少。"
 
 msgid "Asset Filters"
 msgstr "支援卡篩選"

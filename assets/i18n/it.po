@@ -27,7 +27,6 @@ msgstr "Canaglia"
 msgid "Survivor"
 msgstr "Sopravvissuto"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "Neutrale"
 
@@ -40,7 +39,6 @@ msgstr "Miti"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "Investigatore"
 
@@ -3342,19 +3340,6 @@ msgstr "Nuovo Scenario autoconclusivo"
 
 msgid "Create Standalone"
 msgstr "Crea Scenario autoconclusivo"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "Il Camaleonte"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"Questo è un investigatore personalizzato per consentire la costruzione di "
-"mazzi arbitrari.\n"
-"[elder_sign]: + X dove X è quello che vuoi che sia."
 
 msgid "Asset Filters"
 msgstr "Filtro Supporti"
