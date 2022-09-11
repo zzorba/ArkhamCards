@@ -38,6 +38,24 @@ query getCards(
   ) {
     ...TabooSet
   }
+  faction_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
+  card_type_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
+  card_subtype_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
   card_encounter_set(
     where: {
       locale: { _eq: $locale }

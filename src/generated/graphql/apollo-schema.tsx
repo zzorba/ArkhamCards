@@ -121,7 +121,7 @@ export type All_Card = {
   is_unique?: Maybe<Scalars['Boolean']>;
   linked?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
-  linked_card: All_Card;
+  linked_card?: Maybe<All_Card>;
   myriad?: Maybe<Scalars['Boolean']>;
   official: Scalars['Boolean'];
   /** An object relationship */
@@ -314,7 +314,7 @@ export type All_Card_Append_Input = {
 /** input type for inserting array relation for remote table "all_card" */
 export type All_Card_Arr_Rel_Insert_Input = {
   data: Array<All_Card_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<All_Card_On_Conflict>;
 };
 
@@ -470,9 +470,9 @@ export type All_Card_Bool_Exp = {
 
 /** unique or primary key constraints on table "all_card" */
 export enum All_Card_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   AllCardIdKey = 'all_card_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   AllCardPkey = 'all_card_pkey'
 }
 
@@ -877,14 +877,14 @@ export type All_Card_Mutation_Response = {
 /** input type for inserting object relation for remote table "all_card" */
 export type All_Card_Obj_Rel_Insert_Input = {
   data: All_Card_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<All_Card_On_Conflict>;
 };
 
-/** on conflict condition type for table "all_card" */
+/** on_conflict condition type for table "all_card" */
 export type All_Card_On_Conflict = {
   constraint: All_Card_Constraint;
-  update_columns: Array<All_Card_Update_Column>;
+  update_columns?: Array<All_Card_Update_Column>;
   where?: InputMaybe<All_Card_Bool_Exp>;
 };
 
@@ -1407,6 +1407,93 @@ export type All_Card_Stddev_Samp_Order_By = {
   xp?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "all_card" */
+export type All_Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Stream_Cursor_Value_Input = {
+  alternate_of_code?: InputMaybe<Scalars['String']>;
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link_id?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  duplicate_of_code?: InputMaybe<Scalars['String']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  errata_date?: InputMaybe<Scalars['String']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  linked?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_customization_change?: InputMaybe<Scalars['String']>;
+  real_customization_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_text_change?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  taboo_set_id?: InputMaybe<Scalars['Int']>;
+  taboo_xp?: InputMaybe<Scalars['Int']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type All_Card_Sum_Fields = {
   __typename?: 'all_card_sum_fields';
@@ -1523,7 +1610,7 @@ export type All_Card_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "all_card_text" */
 export type All_Card_Text_Arr_Rel_Insert_Input = {
   data: Array<All_Card_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<All_Card_Text_On_Conflict>;
 };
 
@@ -1552,7 +1639,7 @@ export type All_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "all_card_text" */
 export enum All_Card_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "locale", "id" */
   AllCardTextPkey = 'all_card_text_pkey'
 }
 
@@ -1667,10 +1754,10 @@ export type All_Card_Text_Mutation_Response = {
   returning: Array<All_Card_Text>;
 };
 
-/** on conflict condition type for table "all_card_text" */
+/** on_conflict condition type for table "all_card_text" */
 export type All_Card_Text_On_Conflict = {
   constraint: All_Card_Text_Constraint;
-  update_columns: Array<All_Card_Text_Update_Column>;
+  update_columns?: Array<All_Card_Text_Update_Column>;
   where?: InputMaybe<All_Card_Text_Bool_Exp>;
 };
 
@@ -1756,6 +1843,34 @@ export type All_Card_Text_Set_Input = {
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
+/** Streaming cursor of the table "all_card_text" */
+export type All_Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  customization_change?: InputMaybe<Scalars['String']>;
+  customization_text?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  taboo_text_change?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** update columns of table "all_card_text" */
 export enum All_Card_Text_Update_Column {
   /** column name */
@@ -1791,6 +1906,12 @@ export enum All_Card_Text_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type All_Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Text_Set_Input>;
+  where: All_Card_Text_Bool_Exp;
+};
 
 /** update columns of table "all_card" */
 export enum All_Card_Update_Column {
@@ -1988,7 +2109,7 @@ export type All_Card_Updated_Bool_Exp = {
 
 /** unique or primary key constraints on table "all_card_updated" */
 export enum All_Card_Updated_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "locale" */
   AllCardUpdatedPkey = 'all_card_updated_pkey'
 }
 
@@ -2024,10 +2145,10 @@ export type All_Card_Updated_Mutation_Response = {
   returning: Array<All_Card_Updated>;
 };
 
-/** on conflict condition type for table "all_card_updated" */
+/** on_conflict condition type for table "all_card_updated" */
 export type All_Card_Updated_On_Conflict = {
   constraint: All_Card_Updated_Constraint;
-  update_columns: Array<All_Card_Updated_Update_Column>;
+  update_columns?: Array<All_Card_Updated_Update_Column>;
   where?: InputMaybe<All_Card_Updated_Bool_Exp>;
 };
 
@@ -2060,6 +2181,21 @@ export type All_Card_Updated_Set_Input = {
   translation_updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
+/** Streaming cursor of the table "all_card_updated" */
+export type All_Card_Updated_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Updated_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Updated_Stream_Cursor_Value_Input = {
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
 /** update columns of table "all_card_updated" */
 export enum All_Card_Updated_Update_Column {
   /** column name */
@@ -2069,6 +2205,30 @@ export enum All_Card_Updated_Update_Column {
   /** column name */
   TranslationUpdatedAt = 'translation_updated_at'
 }
+
+export type All_Card_Updated_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Updated_Set_Input>;
+  where: All_Card_Updated_Bool_Exp;
+};
+
+export type All_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<All_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<All_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<All_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<All_Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<All_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<All_Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Set_Input>;
+  where: All_Card_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type All_Card_Var_Pop_Fields = {
@@ -2454,6 +2614,20 @@ export type Base_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "base_decks" */
+export type Base_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Base_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Base_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Base_Decks_Sum_Fields = {
   __typename?: 'base_decks_sum_fields';
@@ -2465,6 +2639,14 @@ export type Base_Decks_Sum_Fields = {
 export type Base_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Base_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Base_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Base_Decks_Set_Input>;
+  where: Base_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -2559,14 +2741,14 @@ export type Campaign = {
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
   /** An object relationship */
-  link_a_campaign: Campaign;
+  link_a_campaign?: Maybe<Campaign>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
-  link_b_campaign: Campaign;
+  link_b_campaign?: Maybe<Campaign>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
   link_campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
-  linked_campaign: Campaign;
+  linked_campaign?: Maybe<Campaign>;
   name?: Maybe<Scalars['String']>;
   /** An object relationship */
   owner: Users;
@@ -2795,7 +2977,7 @@ export type Campaign_Access_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "campaign_access" */
 export type Campaign_Access_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Access_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Access_On_Conflict>;
 };
 
@@ -2826,9 +3008,9 @@ export type Campaign_Access_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_access" */
 export enum Campaign_Access_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   CampaignAccessPkey = 'campaign_access_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "user_id" */
   CampaignAccessUserIdCampaignIdKey = 'campaign_access_user_id_campaign_id_key'
 }
 
@@ -2886,10 +3068,10 @@ export type Campaign_Access_Mutation_Response = {
   returning: Array<Campaign_Access>;
 };
 
-/** on conflict condition type for table "campaign_access" */
+/** on_conflict condition type for table "campaign_access" */
 export type Campaign_Access_On_Conflict = {
   constraint: Campaign_Access_Constraint;
-  update_columns: Array<Campaign_Access_Update_Column>;
+  update_columns?: Array<Campaign_Access_Update_Column>;
   where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
@@ -2966,6 +3148,22 @@ export type Campaign_Access_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_access" */
+export type Campaign_Access_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Access_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Access_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Access_Sum_Fields = {
   __typename?: 'campaign_access_sum_fields';
@@ -2990,6 +3188,14 @@ export enum Campaign_Access_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type Campaign_Access_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Access_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Access_Set_Input>;
+  where: Campaign_Access_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Access_Var_Pop_Fields = {
@@ -3122,7 +3328,7 @@ export type Campaign_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign" */
 export enum Campaign_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   CampaignDataPkey = 'campaign_data_pkey'
 }
 
@@ -3260,7 +3466,7 @@ export type Campaign_Deck_Append_Input = {
 /** input type for inserting array relation for remote table "campaign_deck" */
 export type Campaign_Deck_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Deck_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
@@ -3311,11 +3517,11 @@ export type Campaign_Deck_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_deck" */
 export enum Campaign_Deck_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "arkhamdb_id" */
   DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "local_uuid", "campaign_id" */
   DeckLocalUuidCampaignIdKey = 'deck_local_uuid_campaign_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   DeckPkey = 'deck_pkey'
 }
 
@@ -3436,14 +3642,14 @@ export type Campaign_Deck_Mutation_Response = {
 /** input type for inserting object relation for remote table "campaign_deck" */
 export type Campaign_Deck_Obj_Rel_Insert_Input = {
   data: Campaign_Deck_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
-/** on conflict condition type for table "campaign_deck" */
+/** on_conflict condition type for table "campaign_deck" */
 export type Campaign_Deck_On_Conflict = {
   constraint: Campaign_Deck_Constraint;
-  update_columns: Array<Campaign_Deck_Update_Column>;
+  update_columns?: Array<Campaign_Deck_Update_Column>;
   where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
@@ -3581,6 +3787,30 @@ export type Campaign_Deck_Stddev_Samp_Order_By = {
   next_deck_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_deck" */
+export type Campaign_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Deck_Stream_Cursor_Value_Input = {
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
+  base?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<Scalars['jsonb']>;
+  content_hash?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  local_uuid?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Deck_Sum_Fields = {
   __typename?: 'campaign_deck_sum_fields';
@@ -3627,6 +3857,24 @@ export enum Campaign_Deck_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Campaign_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Campaign_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Campaign_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Campaign_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Campaign_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Deck_Set_Input>;
+  where: Campaign_Deck_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Deck_Var_Pop_Fields = {
@@ -3753,7 +4001,7 @@ export type Campaign_Difficulty_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_difficulty" */
 export enum Campaign_Difficulty_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   CampaignDifficultyPkey = 'campaign_difficulty_pkey'
 }
 
@@ -3799,10 +4047,10 @@ export type Campaign_Difficulty_Mutation_Response = {
   returning: Array<Campaign_Difficulty>;
 };
 
-/** on conflict condition type for table "campaign_difficulty" */
+/** on_conflict condition type for table "campaign_difficulty" */
 export type Campaign_Difficulty_On_Conflict = {
   constraint: Campaign_Difficulty_Constraint;
-  update_columns: Array<Campaign_Difficulty_Update_Column>;
+  update_columns?: Array<Campaign_Difficulty_Update_Column>;
   where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
 };
 
@@ -3827,11 +4075,30 @@ export type Campaign_Difficulty_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "campaign_difficulty" */
+export type Campaign_Difficulty_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Difficulty_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Difficulty_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "campaign_difficulty" */
 export enum Campaign_Difficulty_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Campaign_Difficulty_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  where: Campaign_Difficulty_Bool_Exp;
+};
 
 /** columns and relationships of "campaign_guide" */
 export type Campaign_Guide = {
@@ -4070,10 +4337,35 @@ export type Campaign_Guide_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "campaign_guide" */
+export type Campaign_Guide_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Guide_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Guide_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Guide_Sum_Fields = {
   __typename?: 'campaign_guide_sum_fields';
   id?: Maybe<Scalars['Int']>;
+};
+
+export type Campaign_Guide_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Guide_Set_Input>;
+  where: Campaign_Guide_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -4201,7 +4493,7 @@ export type Campaign_Investigator_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "campaign_investigator" */
 export type Campaign_Investigator_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Investigator_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Investigator_On_Conflict>;
 };
 
@@ -4224,15 +4516,16 @@ export type Campaign_Investigator_Bool_Exp = {
   campaign?: InputMaybe<Campaign_Bool_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
   investigator?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_investigator" */
 export enum Campaign_Investigator_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   CampaignInvestigatorCampaignIdInvestigatorKey = 'campaign_investigator_campaign_id_investigator_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   CampaignInvestigatorPkey = 'campaign_investigator_pkey'
 }
 
@@ -4293,10 +4586,10 @@ export type Campaign_Investigator_Mutation_Response = {
   returning: Array<Campaign_Investigator>;
 };
 
-/** on conflict condition type for table "campaign_investigator" */
+/** on_conflict condition type for table "campaign_investigator" */
 export type Campaign_Investigator_On_Conflict = {
   constraint: Campaign_Investigator_Constraint;
-  update_columns: Array<Campaign_Investigator_Update_Column>;
+  update_columns?: Array<Campaign_Investigator_Update_Column>;
   where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
@@ -4305,6 +4598,7 @@ export type Campaign_Investigator_Order_By = {
   campaign?: InputMaybe<Campaign_Order_By>;
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
   investigator?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -4368,6 +4662,22 @@ export type Campaign_Investigator_Stddev_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_investigator" */
+export type Campaign_Investigator_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Investigator_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Investigator_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Investigator_Sum_Fields = {
   __typename?: 'campaign_investigator_sum_fields';
@@ -4390,6 +4700,14 @@ export enum Campaign_Investigator_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Campaign_Investigator_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Investigator_Set_Input>;
+  where: Campaign_Investigator_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Investigator_Var_Pop_Fields = {
@@ -4470,14 +4788,14 @@ export type Campaign_Mutation_Response = {
 /** input type for inserting object relation for remote table "campaign" */
 export type Campaign_Obj_Rel_Insert_Input = {
   data: Campaign_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_On_Conflict>;
 };
 
-/** on conflict condition type for table "campaign" */
+/** on_conflict condition type for table "campaign" */
 export type Campaign_On_Conflict = {
   constraint: Campaign_Constraint;
-  update_columns: Array<Campaign_Update_Column>;
+  update_columns?: Array<Campaign_Update_Column>;
   where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
@@ -4637,6 +4955,40 @@ export type Campaign_Stddev_Samp_Fields = {
   link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "campaign" */
+export type Campaign_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  cycleCode?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  difficulty?: InputMaybe<Scalars['String']>;
+  guide_version?: InputMaybe<Scalars['Int']>;
+  guided?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  link_a_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_b_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_campaign_id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  showInterludes?: InputMaybe<Scalars['Boolean']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  tarot_reading?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Sum_Fields = {
   __typename?: 'campaign_sum_fields';
@@ -4694,6 +5046,24 @@ export enum Campaign_Update_Column {
   /** column name */
   WeaknessSet = 'weaknessSet'
 }
+
+export type Campaign_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Campaign_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Campaign_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Campaign_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Campaign_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Campaign_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Set_Input>;
+  where: Campaign_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Var_Pop_Fields = {
@@ -4821,6 +5191,20 @@ export type Campaigns_By_Cycle_Stddev_Pop_Fields = {
 export type Campaigns_By_Cycle_Stddev_Samp_Fields = {
   __typename?: 'campaigns_by_cycle_stddev_samp_fields';
   count?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaigns_By_Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaigns_By_Cycle_Stream_Cursor_Value_Input = {
+  count?: InputMaybe<Scalars['bigint']>;
+  cyclecode?: InputMaybe<Scalars['String']>;
 };
 
 /** aggregate sum on columns */
@@ -5093,7 +5477,7 @@ export type Card_Bool_Exp = {
 
 /** unique or primary key constraints on table "card" */
 export enum Card_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   CardPkey = 'card_pkey'
 }
 
@@ -5182,7 +5566,7 @@ export type Card_Cycle_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_cycle" */
 export enum Card_Cycle_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardCyclePkey = 'card_cycle_pkey'
 }
 
@@ -5231,14 +5615,14 @@ export type Card_Cycle_Mutation_Response = {
 /** input type for inserting object relation for remote table "card_cycle" */
 export type Card_Cycle_Obj_Rel_Insert_Input = {
   data: Card_Cycle_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
 };
 
-/** on conflict condition type for table "card_cycle" */
+/** on_conflict condition type for table "card_cycle" */
 export type Card_Cycle_On_Conflict = {
   constraint: Card_Cycle_Constraint;
-  update_columns: Array<Card_Cycle_Update_Column>;
+  update_columns?: Array<Card_Cycle_Update_Column>;
   where?: InputMaybe<Card_Cycle_Bool_Exp>;
 };
 
@@ -5299,6 +5683,23 @@ export type Card_Cycle_Stddev_Samp_Fields = {
   position?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "card_cycle" */
+export type Card_Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Cycle_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Card_Cycle_Sum_Fields = {
   __typename?: 'card_cycle_sum_fields';
@@ -5318,6 +5719,14 @@ export enum Card_Cycle_Update_Column {
   /** column name */
   Position = 'position'
 }
+
+export type Card_Cycle_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  where: Card_Cycle_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Card_Cycle_Var_Pop_Fields = {
@@ -5399,7 +5808,7 @@ export type Card_Encounter_Set_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "card_encounter_set" */
 export type Card_Encounter_Set_Arr_Rel_Insert_Input = {
   data: Array<Card_Encounter_Set_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
 };
 
@@ -5416,7 +5825,7 @@ export type Card_Encounter_Set_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_encounter_set" */
 export enum Card_Encounter_Set_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardEncounterSetPkey = 'card_encounter_set_pkey'
 }
 
@@ -5467,10 +5876,10 @@ export type Card_Encounter_Set_Mutation_Response = {
   returning: Array<Card_Encounter_Set>;
 };
 
-/** on conflict condition type for table "card_encounter_set" */
+/** on_conflict condition type for table "card_encounter_set" */
 export type Card_Encounter_Set_On_Conflict = {
   constraint: Card_Encounter_Set_Constraint;
-  update_columns: Array<Card_Encounter_Set_Update_Column>;
+  update_columns?: Array<Card_Encounter_Set_Update_Column>;
   where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
 };
 
@@ -5508,6 +5917,22 @@ export type Card_Encounter_Set_Set_Input = {
   official?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** Streaming cursor of the table "card_encounter_set" */
+export type Card_Encounter_Set_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Encounter_Set_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Encounter_Set_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+};
+
 /** update columns of table "card_encounter_set" */
 export enum Card_Encounter_Set_Update_Column {
   /** column name */
@@ -5519,6 +5944,12 @@ export enum Card_Encounter_Set_Update_Column {
   /** column name */
   Official = 'official'
 }
+
+export type Card_Encounter_Set_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
+  where: Card_Encounter_Set_Bool_Exp;
+};
 
 /** input type for incrementing numeric columns in table "card" */
 export type Card_Inc_Input = {
@@ -5701,10 +6132,10 @@ export type Card_Mutation_Response = {
   returning: Array<Card>;
 };
 
-/** on conflict condition type for table "card" */
+/** on_conflict condition type for table "card" */
 export type Card_On_Conflict = {
   constraint: Card_Constraint;
-  update_columns: Array<Card_Update_Column>;
+  update_columns?: Array<Card_Update_Column>;
   where?: InputMaybe<Card_Bool_Exp>;
 };
 
@@ -5825,7 +6256,7 @@ export type Card_Pack_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "card_pack" */
 export type Card_Pack_Arr_Rel_Insert_Input = {
   data: Array<Card_Pack_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
 };
 
@@ -5856,7 +6287,7 @@ export type Card_Pack_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_pack" */
 export enum Card_Pack_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardPackPkey = 'card_pack_pkey'
 }
 
@@ -5923,10 +6354,10 @@ export type Card_Pack_Mutation_Response = {
   returning: Array<Card_Pack>;
 };
 
-/** on conflict condition type for table "card_pack" */
+/** on_conflict condition type for table "card_pack" */
 export type Card_Pack_On_Conflict = {
   constraint: Card_Pack_Constraint;
-  update_columns: Array<Card_Pack_Update_Column>;
+  update_columns?: Array<Card_Pack_Update_Column>;
   where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
@@ -6006,6 +6437,24 @@ export type Card_Pack_Stddev_Samp_Order_By = {
   position?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "card_pack" */
+export type Card_Pack_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Pack_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Pack_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Card_Pack_Sum_Fields = {
   __typename?: 'card_pack_sum_fields';
@@ -6032,6 +6481,14 @@ export enum Card_Pack_Update_Column {
   /** column name */
   Position = 'position'
 }
+
+export type Card_Pack_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Pack_Set_Input>;
+  where: Card_Pack_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Card_Pack_Var_Pop_Fields = {
@@ -6317,6 +6774,214 @@ export type Card_Stddev_Samp_Fields = {
   victory?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "card" */
+export type Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Stream_Cursor_Value_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Scalars['String']>;
+  victory?: InputMaybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "card_subtype_name" */
+export type Card_Subtype_Name = {
+  __typename?: 'card_subtype_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate = {
+  __typename?: 'card_subtype_name_aggregate';
+  aggregate?: Maybe<Card_Subtype_Name_Aggregate_Fields>;
+  nodes: Array<Card_Subtype_Name>;
+};
+
+/** aggregate fields of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate_Fields = {
+  __typename?: 'card_subtype_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Subtype_Name_Max_Fields>;
+  min?: Maybe<Card_Subtype_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "card_subtype_name". All fields are combined with a logical 'AND'. */
+export type Card_Subtype_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Subtype_Name_Bool_Exp>>;
+  _not?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Subtype_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_subtype_name" */
+export enum Card_Subtype_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  CardSubtypeNamePkey = 'card_subtype_name_pkey'
+}
+
+/** input type for inserting data into table "card_subtype_name" */
+export type Card_Subtype_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Subtype_Name_Max_Fields = {
+  __typename?: 'card_subtype_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Card_Subtype_Name_Min_Fields = {
+  __typename?: 'card_subtype_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "card_subtype_name" */
+export type Card_Subtype_Name_Mutation_Response = {
+  __typename?: 'card_subtype_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Subtype_Name>;
+};
+
+/** on_conflict condition type for table "card_subtype_name" */
+export type Card_Subtype_Name_On_Conflict = {
+  constraint: Card_Subtype_Name_Constraint;
+  update_columns?: Array<Card_Subtype_Name_Update_Column>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_subtype_name". */
+export type Card_Subtype_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_subtype_name */
+export type Card_Subtype_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_subtype_name" */
+export enum Card_Subtype_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_subtype_name" */
+export type Card_Subtype_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "card_subtype_name" */
+export type Card_Subtype_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Subtype_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Subtype_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_subtype_name" */
+export enum Card_Subtype_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Card_Subtype_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
 /** aggregate sum on columns */
 export type Card_Sum_Fields = {
   __typename?: 'card_sum_fields';
@@ -6393,7 +7058,7 @@ export type Card_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "card_text" */
 export type Card_Text_Arr_Rel_Insert_Input = {
   data: Array<Card_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Text_On_Conflict>;
 };
 
@@ -6418,9 +7083,9 @@ export type Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_text" */
 export enum Card_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardTextCodeLocaleKey = 'card_text_code_locale_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardTextPkey = 'card_text_pkey'
 }
 
@@ -6515,10 +7180,10 @@ export type Card_Text_Mutation_Response = {
   returning: Array<Card_Text>;
 };
 
-/** on conflict condition type for table "card_text" */
+/** on_conflict condition type for table "card_text" */
 export type Card_Text_On_Conflict = {
   constraint: Card_Text_Constraint;
-  update_columns: Array<Card_Text_Update_Column>;
+  update_columns?: Array<Card_Text_Update_Column>;
   where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
@@ -6588,6 +7253,30 @@ export type Card_Text_Set_Input = {
   traits?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "card_text" */
+export type Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "card_text" */
 export enum Card_Text_Update_Column {
   /** column name */
@@ -6615,6 +7304,12 @@ export enum Card_Text_Update_Column {
   /** column name */
   Traits = 'traits'
 }
+
+export type Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Text_Set_Input>;
+  where: Card_Text_Bool_Exp;
+};
 
 /** columns and relationships of "card_type_code" */
 export type Card_Type_Code = {
@@ -6654,7 +7349,7 @@ export type Card_Type_Code_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_type_code" */
 export enum Card_Type_Code_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   CardTypeCodePkey = 'card_type_code_pkey'
 }
 
@@ -6707,10 +7402,10 @@ export type Card_Type_Code_Mutation_Response = {
   returning: Array<Card_Type_Code>;
 };
 
-/** on conflict condition type for table "card_type_code" */
+/** on_conflict condition type for table "card_type_code" */
 export type Card_Type_Code_On_Conflict = {
   constraint: Card_Type_Code_Constraint;
-  update_columns: Array<Card_Type_Code_Update_Column>;
+  update_columns?: Array<Card_Type_Code_Update_Column>;
   where?: InputMaybe<Card_Type_Code_Bool_Exp>;
 };
 
@@ -6735,11 +7430,174 @@ export type Card_Type_Code_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "card_type_code" */
+export type Card_Type_Code_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Type_Code_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Type_Code_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "card_type_code" */
 export enum Card_Type_Code_Update_Column {
   /** column name */
   Code = 'code'
 }
+
+export type Card_Type_Code_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Type_Code_Set_Input>;
+  where: Card_Type_Code_Bool_Exp;
+};
+
+/** columns and relationships of "card_type_name" */
+export type Card_Type_Name = {
+  __typename?: 'card_type_name';
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_type_name" */
+export type Card_Type_Name_Aggregate = {
+  __typename?: 'card_type_name_aggregate';
+  aggregate?: Maybe<Card_Type_Name_Aggregate_Fields>;
+  nodes: Array<Card_Type_Name>;
+};
+
+/** aggregate fields of "card_type_name" */
+export type Card_Type_Name_Aggregate_Fields = {
+  __typename?: 'card_type_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Type_Name_Max_Fields>;
+  min?: Maybe<Card_Type_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_type_name" */
+export type Card_Type_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "card_type_name". All fields are combined with a logical 'AND'. */
+export type Card_Type_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Type_Name_Bool_Exp>>;
+  _not?: InputMaybe<Card_Type_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Type_Name_Bool_Exp>>;
+  code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_type_name" */
+export enum Card_Type_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  TypeNamePkey = 'type_name_pkey'
+}
+
+/** input type for inserting data into table "card_type_name" */
+export type Card_Type_Name_Insert_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Type_Name_Max_Fields = {
+  __typename?: 'card_type_name_max_fields';
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Card_Type_Name_Min_Fields = {
+  __typename?: 'card_type_name_min_fields';
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "card_type_name" */
+export type Card_Type_Name_Mutation_Response = {
+  __typename?: 'card_type_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Type_Name>;
+};
+
+/** on_conflict condition type for table "card_type_name" */
+export type Card_Type_Name_On_Conflict = {
+  constraint: Card_Type_Name_Constraint;
+  update_columns?: Array<Card_Type_Name_Update_Column>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_type_name". */
+export type Card_Type_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_type_name */
+export type Card_Type_Name_Pk_Columns_Input = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_type_name" */
+export enum Card_Type_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_type_name" */
+export type Card_Type_Name_Set_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "card_type_name" */
+export type Card_Type_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Type_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Type_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_type_name" */
+export enum Card_Type_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Card_Type_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  where: Card_Type_Name_Bool_Exp;
+};
 
 /** update columns of table "card" */
 export enum Card_Update_Column {
@@ -6845,6 +7703,24 @@ export enum Card_Update_Column {
   Victory = 'victory'
 }
 
+export type Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Set_Input>;
+  where: Card_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Card_Var_Pop_Fields = {
   __typename?: 'card_var_pop_fields';
@@ -6940,7 +7816,7 @@ export type Chaos_Bag_Result = {
   sealed: Scalars['jsonb'];
   tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
   /** An object relationship */
-  tarot_mode: Chaos_Bag_Tarot_Mode;
+  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at: Scalars['timestamptz'];
 };
@@ -7011,7 +7887,7 @@ export type Chaos_Bag_Result_Append_Input = {
 /** input type for inserting array relation for remote table "chaos_bag_result" */
 export type Chaos_Bag_Result_Arr_Rel_Insert_Input = {
   data: Array<Chaos_Bag_Result_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
 };
 
@@ -7053,9 +7929,9 @@ export type Chaos_Bag_Result_Bool_Exp = {
 
 /** unique or primary key constraints on table "chaos_bag_result" */
 export enum Chaos_Bag_Result_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ChaosBagPkey = 'chaos_bag_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ChaosBagResultsCampaignIdKey = 'chaos_bag_results_campaign_id_key'
 }
 
@@ -7152,10 +8028,10 @@ export type Chaos_Bag_Result_Mutation_Response = {
   returning: Array<Chaos_Bag_Result>;
 };
 
-/** on conflict condition type for table "chaos_bag_result" */
+/** on_conflict condition type for table "chaos_bag_result" */
 export type Chaos_Bag_Result_On_Conflict = {
   constraint: Chaos_Bag_Result_Constraint;
-  update_columns: Array<Chaos_Bag_Result_Update_Column>;
+  update_columns?: Array<Chaos_Bag_Result_Update_Column>;
   where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
@@ -7275,6 +8151,28 @@ export type Chaos_Bag_Result_Stddev_Samp_Order_By = {
   totalDrawn?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Chaos_Bag_Result_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Chaos_Bag_Result_Stream_Cursor_Value_Input = {
+  bless?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['Int']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  totalDrawn?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Chaos_Bag_Result_Sum_Fields = {
   __typename?: 'chaos_bag_result_sum_fields';
@@ -7315,6 +8213,24 @@ export enum Chaos_Bag_Result_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Chaos_Bag_Result_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Chaos_Bag_Result_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Chaos_Bag_Result_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Chaos_Bag_Result_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Chaos_Bag_Result_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Chaos_Bag_Result_Set_Input>;
+  where: Chaos_Bag_Result_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Chaos_Bag_Result_Var_Pop_Fields = {
@@ -7405,7 +8321,7 @@ export type Chaos_Bag_Tarot_Mode_Bool_Exp = {
 
 /** unique or primary key constraints on table "chaos_bag_tarot_mode" */
 export enum Chaos_Bag_Tarot_Mode_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   ChaosBagTarotModePkey = 'chaos_bag_tarot_mode_pkey'
 }
 
@@ -7452,14 +8368,14 @@ export type Chaos_Bag_Tarot_Mode_Mutation_Response = {
 /** input type for inserting object relation for remote table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input = {
   data: Chaos_Bag_Tarot_Mode_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
-/** on conflict condition type for table "chaos_bag_tarot_mode" */
+/** on_conflict condition type for table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_On_Conflict = {
   constraint: Chaos_Bag_Tarot_Mode_Constraint;
-  update_columns: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
+  update_columns?: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
   where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
@@ -7484,10 +8400,37 @@ export type Chaos_Bag_Tarot_Mode_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Chaos_Bag_Tarot_Mode_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Chaos_Bag_Tarot_Mode_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "chaos_bag_tarot_mode" */
 export enum Chaos_Bag_Tarot_Mode_Update_Column {
   /** column name */
   Value = 'value'
+}
+
+export type Chaos_Bag_Tarot_Mode_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  where: Chaos_Bag_Tarot_Mode_Bool_Exp;
+};
+
+/** ordering argument of a cursor */
+export enum Cursor_Ordering {
+  /** ascending ordering of the cursor */
+  Asc = 'ASC',
+  /** descending ordering of the cursor */
+  Desc = 'DESC'
 }
 
 /** columns and relationships of "cycle" */
@@ -7598,7 +8541,7 @@ export type Cycle_Bool_Exp = {
 
 /** unique or primary key constraints on table "cycle" */
 export enum Cycle_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   CyclePkey = 'cycle_pkey'
 }
 
@@ -7682,7 +8625,7 @@ export type Cycle_Name_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "cycle_name" */
 export type Cycle_Name_Arr_Rel_Insert_Input = {
   data: Array<Cycle_Name_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Cycle_Name_On_Conflict>;
 };
 
@@ -7698,7 +8641,7 @@ export type Cycle_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "cycle_name" */
 export enum Cycle_Name_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CycleNamePkey = 'cycle_name_pkey'
 }
 
@@ -7748,10 +8691,10 @@ export type Cycle_Name_Mutation_Response = {
   returning: Array<Cycle_Name>;
 };
 
-/** on conflict condition type for table "cycle_name" */
+/** on_conflict condition type for table "cycle_name" */
 export type Cycle_Name_On_Conflict = {
   constraint: Cycle_Name_Constraint;
-  update_columns: Array<Cycle_Name_Update_Column>;
+  update_columns?: Array<Cycle_Name_Update_Column>;
   where?: InputMaybe<Cycle_Name_Bool_Exp>;
 };
 
@@ -7785,6 +8728,21 @@ export type Cycle_Name_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "cycle_name" */
+export type Cycle_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Cycle_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Cycle_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "cycle_name" */
 export enum Cycle_Name_Update_Column {
   /** column name */
@@ -7795,17 +8753,23 @@ export enum Cycle_Name_Update_Column {
   Name = 'name'
 }
 
+export type Cycle_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Cycle_Name_Set_Input>;
+  where: Cycle_Name_Bool_Exp;
+};
+
 /** input type for inserting object relation for remote table "cycle" */
 export type Cycle_Obj_Rel_Insert_Input = {
   data: Cycle_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
 };
 
-/** on conflict condition type for table "cycle" */
+/** on_conflict condition type for table "cycle" */
 export type Cycle_On_Conflict = {
   constraint: Cycle_Constraint;
-  update_columns: Array<Cycle_Update_Column>;
+  update_columns?: Array<Cycle_Update_Column>;
   where?: InputMaybe<Cycle_Bool_Exp>;
 };
 
@@ -7862,6 +8826,22 @@ export type Cycle_Stddev_Samp_Fields = {
   position?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "cycle" */
+export type Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Cycle_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Cycle_Sum_Fields = {
   __typename?: 'cycle_sum_fields';
@@ -7880,6 +8860,14 @@ export enum Cycle_Update_Column {
   RealName = 'real_name'
 }
 
+export type Cycle_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Cycle_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Cycle_Set_Input>;
+  where: Cycle_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Cycle_Var_Pop_Fields = {
   __typename?: 'cycle_var_pop_fields';
@@ -7896,6 +8884,152 @@ export type Cycle_Var_Samp_Fields = {
 export type Cycle_Variance_Fields = {
   __typename?: 'cycle_variance_fields';
   position?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "faction_name" */
+export type Faction_Name = {
+  __typename?: 'faction_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "faction_name" */
+export type Faction_Name_Aggregate = {
+  __typename?: 'faction_name_aggregate';
+  aggregate?: Maybe<Faction_Name_Aggregate_Fields>;
+  nodes: Array<Faction_Name>;
+};
+
+/** aggregate fields of "faction_name" */
+export type Faction_Name_Aggregate_Fields = {
+  __typename?: 'faction_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Faction_Name_Max_Fields>;
+  min?: Maybe<Faction_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "faction_name" */
+export type Faction_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "faction_name". All fields are combined with a logical 'AND'. */
+export type Faction_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Faction_Name_Bool_Exp>>;
+  _not?: InputMaybe<Faction_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Faction_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "faction_name" */
+export enum Faction_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  FactionNamePkey = 'faction_name_pkey'
+}
+
+/** input type for inserting data into table "faction_name" */
+export type Faction_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Faction_Name_Max_Fields = {
+  __typename?: 'faction_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Faction_Name_Min_Fields = {
+  __typename?: 'faction_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "faction_name" */
+export type Faction_Name_Mutation_Response = {
+  __typename?: 'faction_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Faction_Name>;
+};
+
+/** on_conflict condition type for table "faction_name" */
+export type Faction_Name_On_Conflict = {
+  constraint: Faction_Name_Constraint;
+  update_columns?: Array<Faction_Name_Update_Column>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "faction_name". */
+export type Faction_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: faction_name */
+export type Faction_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "faction_name" */
+export enum Faction_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "faction_name" */
+export type Faction_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "faction_name" */
+export type Faction_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faction_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faction_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "faction_name" */
+export enum Faction_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Faction_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  where: Faction_Name_Bool_Exp;
 };
 
 /** columns and relationships of "faq" */
@@ -7963,7 +9097,7 @@ export type Faq_Bool_Exp = {
 
 /** unique or primary key constraints on table "faq" */
 export enum Faq_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   FaqPkey = 'faq_pkey'
 }
 
@@ -7997,10 +9131,10 @@ export type Faq_Mutation_Response = {
   returning: Array<Faq>;
 };
 
-/** on conflict condition type for table "faq" */
+/** on_conflict condition type for table "faq" */
 export type Faq_On_Conflict = {
   constraint: Faq_Constraint;
-  update_columns: Array<Faq_Update_Column>;
+  update_columns?: Array<Faq_Update_Column>;
   where?: InputMaybe<Faq_Bool_Exp>;
 };
 
@@ -8026,6 +9160,20 @@ export enum Faq_Select_Column {
 
 /** input type for updating data in table "faq" */
 export type Faq_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "faq" */
+export type Faq_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faq_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faq_Stream_Cursor_Value_Input = {
   code?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
 };
@@ -8070,7 +9218,7 @@ export type Faq_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "faq_text" */
 export type Faq_Text_Arr_Rel_Insert_Input = {
   data: Array<Faq_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Faq_Text_On_Conflict>;
 };
 
@@ -8086,7 +9234,7 @@ export type Faq_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "faq_text" */
 export enum Faq_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   FaqTextPkey = 'faq_text_pkey'
 }
 
@@ -8136,10 +9284,10 @@ export type Faq_Text_Mutation_Response = {
   returning: Array<Faq_Text>;
 };
 
-/** on conflict condition type for table "faq_text" */
+/** on_conflict condition type for table "faq_text" */
 export type Faq_Text_On_Conflict = {
   constraint: Faq_Text_Constraint;
-  update_columns: Array<Faq_Text_Update_Column>;
+  update_columns?: Array<Faq_Text_Update_Column>;
   where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
@@ -8173,6 +9321,21 @@ export type Faq_Text_Set_Input = {
   text?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "faq_text" */
+export type Faq_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faq_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faq_Text_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "faq_text" */
 export enum Faq_Text_Update_Column {
   /** column name */
@@ -8183,6 +9346,12 @@ export enum Faq_Text_Update_Column {
   Text = 'text'
 }
 
+export type Faq_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faq_Text_Set_Input>;
+  where: Faq_Text_Bool_Exp;
+};
+
 /** update columns of table "faq" */
 export enum Faq_Update_Column {
   /** column name */
@@ -8190,6 +9359,12 @@ export enum Faq_Update_Column {
   /** column name */
   Text = 'text'
 }
+
+export type Faq_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faq_Set_Input>;
+  where: Faq_Bool_Exp;
+};
 
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
@@ -8228,6 +9403,7 @@ export type Friend_Status_Bool_Exp = {
   _and?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
   _not?: InputMaybe<Friend_Status_Bool_Exp>;
   _or?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
   status?: InputMaybe<Friend_Status_Type_Enum_Comparison_Exp>;
   user_id_a?: InputMaybe<String_Comparison_Exp>;
   user_id_b?: InputMaybe<String_Comparison_Exp>;
@@ -8235,7 +9411,7 @@ export type Friend_Status_Bool_Exp = {
 
 /** unique or primary key constraints on table "friend_status" */
 export enum Friend_Status_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id_a", "user_id_b" */
   FriendStatusPkey = 'friend_status_pkey'
 }
 
@@ -8269,15 +9445,16 @@ export type Friend_Status_Mutation_Response = {
   returning: Array<Friend_Status>;
 };
 
-/** on conflict condition type for table "friend_status" */
+/** on_conflict condition type for table "friend_status" */
 export type Friend_Status_On_Conflict = {
   constraint: Friend_Status_Constraint;
-  update_columns: Array<Friend_Status_Update_Column>;
+  update_columns?: Array<Friend_Status_Update_Column>;
   where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "friend_status". */
 export type Friend_Status_Order_By = {
+  id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
   user_id_a?: InputMaybe<Order_By>;
   user_id_b?: InputMaybe<Order_By>;
@@ -8301,6 +9478,21 @@ export enum Friend_Status_Select_Column {
 
 /** input type for updating data in table "friend_status" */
 export type Friend_Status_Set_Input = {
+  status?: InputMaybe<Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "friend_status" */
+export type Friend_Status_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Friend_Status_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Friend_Status_Stream_Cursor_Value_Input = {
   status?: InputMaybe<Friend_Status_Type_Enum>;
   user_id_a?: InputMaybe<Scalars['String']>;
   user_id_b?: InputMaybe<Scalars['String']>;
@@ -8344,7 +9536,7 @@ export type Friend_Status_Type_Bool_Exp = {
 
 /** unique or primary key constraints on table "friend_status_type" */
 export enum Friend_Status_Type_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   FriendStatusTypePkey = 'friend_status_type_pkey'
 }
 
@@ -8390,10 +9582,10 @@ export type Friend_Status_Type_Mutation_Response = {
   returning: Array<Friend_Status_Type>;
 };
 
-/** on conflict condition type for table "friend_status_type" */
+/** on_conflict condition type for table "friend_status_type" */
 export type Friend_Status_Type_On_Conflict = {
   constraint: Friend_Status_Type_Constraint;
-  update_columns: Array<Friend_Status_Type_Update_Column>;
+  update_columns?: Array<Friend_Status_Type_Update_Column>;
   where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
@@ -8418,11 +9610,30 @@ export type Friend_Status_Type_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "friend_status_type" */
+export type Friend_Status_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Friend_Status_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Friend_Status_Type_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "friend_status_type" */
 export enum Friend_Status_Type_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Friend_Status_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Friend_Status_Type_Set_Input>;
+  where: Friend_Status_Type_Bool_Exp;
+};
 
 /** update columns of table "friend_status" */
 export enum Friend_Status_Update_Column {
@@ -8433,6 +9644,12 @@ export enum Friend_Status_Update_Column {
   /** column name */
   UserIdB = 'user_id_b'
 }
+
+export type Friend_Status_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Friend_Status_Set_Input>;
+  where: Friend_Status_Bool_Exp;
+};
 
 /** columns and relationships of "full_card" */
 export type Full_Card = {
@@ -8471,7 +9688,7 @@ export type Full_Card = {
   imagesrc?: Maybe<Scalars['String']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
-  linked_card: Full_Card;
+  linked_card?: Maybe<Full_Card>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code: Scalars['String'];
   pack_position: Scalars['Int'];
@@ -8735,7 +9952,7 @@ export type Full_Card_Bool_Exp = {
 
 /** unique or primary key constraints on table "full_card" */
 export enum Full_Card_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   FullCardPkey = 'full_card_pkey'
 }
 
@@ -8979,14 +10196,14 @@ export type Full_Card_Mutation_Response = {
 /** input type for inserting object relation for remote table "full_card" */
 export type Full_Card_Obj_Rel_Insert_Input = {
   data: Full_Card_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Full_Card_On_Conflict>;
 };
 
-/** on conflict condition type for table "full_card" */
+/** on_conflict condition type for table "full_card" */
 export type Full_Card_On_Conflict = {
   constraint: Full_Card_Constraint;
-  update_columns: Array<Full_Card_Update_Column>;
+  update_columns?: Array<Full_Card_Update_Column>;
   where?: InputMaybe<Full_Card_Bool_Exp>;
 };
 
@@ -9356,6 +10573,80 @@ export type Full_Card_Stddev_Samp_Fields = {
   xp?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "full_card" */
+export type Full_Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Full_Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Full_Card_Stream_Cursor_Value_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Full_Card_Sum_Fields = {
   __typename?: 'full_card_sum_fields';
@@ -9435,7 +10726,7 @@ export type Full_Card_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "full_card_text" */
 export type Full_Card_Text_Arr_Rel_Insert_Input = {
   data: Array<Full_Card_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
 };
 
@@ -9460,7 +10751,7 @@ export type Full_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "full_card_text" */
 export enum Full_Card_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   FullCardTextPkey = 'full_card_text_pkey'
 }
 
@@ -9555,10 +10846,10 @@ export type Full_Card_Text_Mutation_Response = {
   returning: Array<Full_Card_Text>;
 };
 
-/** on conflict condition type for table "full_card_text" */
+/** on_conflict condition type for table "full_card_text" */
 export type Full_Card_Text_On_Conflict = {
   constraint: Full_Card_Text_Constraint;
-  update_columns: Array<Full_Card_Text_Update_Column>;
+  update_columns?: Array<Full_Card_Text_Update_Column>;
   where?: InputMaybe<Full_Card_Text_Bool_Exp>;
 };
 
@@ -9628,6 +10919,30 @@ export type Full_Card_Text_Set_Input = {
   traits?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "full_card_text" */
+export type Full_Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Full_Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Full_Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "full_card_text" */
 export enum Full_Card_Text_Update_Column {
   /** column name */
@@ -9655,6 +10970,12 @@ export enum Full_Card_Text_Update_Column {
   /** column name */
   Traits = 'traits'
 }
+
+export type Full_Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Full_Card_Text_Set_Input>;
+  where: Full_Card_Text_Bool_Exp;
+};
 
 /** update columns of table "full_card" */
 export enum Full_Card_Update_Column {
@@ -9783,6 +11104,24 @@ export enum Full_Card_Update_Column {
   /** column name */
   Xp = 'xp'
 }
+
+export type Full_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Full_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Full_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Full_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Full_Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Full_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Full_Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Full_Card_Set_Input>;
+  where: Full_Card_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Full_Card_Var_Pop_Fields = {
@@ -9936,7 +11275,7 @@ export type Guide_Achievement_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "guide_achievement" */
 export type Guide_Achievement_Arr_Rel_Insert_Input = {
   data: Array<Guide_Achievement_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
 };
 
@@ -9970,7 +11309,7 @@ export type Guide_Achievement_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_achievement" */
 export enum Guide_Achievement_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "id" */
   GuideAchievementPkey = 'guide_achievement_pkey'
 }
 
@@ -10043,10 +11382,10 @@ export type Guide_Achievement_Mutation_Response = {
   returning: Array<Guide_Achievement>;
 };
 
-/** on conflict condition type for table "guide_achievement" */
+/** on_conflict condition type for table "guide_achievement" */
 export type Guide_Achievement_On_Conflict = {
   constraint: Guide_Achievement_Constraint;
-  update_columns: Array<Guide_Achievement_Update_Column>;
+  update_columns?: Array<Guide_Achievement_Update_Column>;
   where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
@@ -10136,6 +11475,25 @@ export type Guide_Achievement_Stddev_Samp_Order_By = {
   value?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "guide_achievement" */
+export type Guide_Achievement_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Guide_Achievement_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Guide_Achievement_Stream_Cursor_Value_Input = {
+  bool_value?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  value?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Guide_Achievement_Sum_Fields = {
   __typename?: 'guide_achievement_sum_fields';
@@ -10166,6 +11524,14 @@ export enum Guide_Achievement_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Guide_Achievement_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Guide_Achievement_Set_Input>;
+  where: Guide_Achievement_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Guide_Achievement_Var_Pop_Fields = {
@@ -10280,7 +11646,7 @@ export type Guide_Input_Append_Input = {
 /** input type for inserting array relation for remote table "guide_input" */
 export type Guide_Input_Arr_Rel_Insert_Input = {
   data: Array<Guide_Input_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Guide_Input_On_Conflict>;
 };
 
@@ -10315,7 +11681,7 @@ export type Guide_Input_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "id" */
   GuideInputPkey = 'guide_input_pkey'
 }
 
@@ -10408,10 +11774,10 @@ export type Guide_Input_Mutation_Response = {
   returning: Array<Guide_Input>;
 };
 
-/** on conflict condition type for table "guide_input" */
+/** on_conflict condition type for table "guide_input" */
 export type Guide_Input_On_Conflict = {
   constraint: Guide_Input_Constraint;
-  update_columns: Array<Guide_Input_Update_Column>;
+  update_columns?: Array<Guide_Input_Update_Column>;
   where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
@@ -10510,6 +11876,26 @@ export type Guide_Input_Stddev_Samp_Order_By = {
   inserted_idx?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "guide_input" */
+export type Guide_Input_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Guide_Input_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Guide_Input_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
+  scenario?: InputMaybe<Scalars['String']>;
+  step?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Guide_Input_Sum_Fields = {
   __typename?: 'guide_input_sum_fields';
@@ -10542,6 +11928,24 @@ export enum Guide_Input_Update_Column {
   /** column name */
   Type = 'type'
 }
+
+export type Guide_Input_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Guide_Input_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Guide_Input_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Guide_Input_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Guide_Input_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Guide_Input_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Guide_Input_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Guide_Input_Set_Input>;
+  where: Guide_Input_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Guide_Input_Var_Pop_Fields = {
@@ -10701,7 +12105,7 @@ export type Investigator_Data_Append_Input = {
 /** input type for inserting array relation for remote table "investigator_data" */
 export type Investigator_Data_Arr_Rel_Insert_Input = {
   data: Array<Investigator_Data_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
@@ -10735,6 +12139,7 @@ export type Investigator_Data_Bool_Exp = {
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   cardCounts?: InputMaybe<Jsonb_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
   ignoreStoryAssets?: InputMaybe<Jsonb_Comparison_Exp>;
   insane?: InputMaybe<Boolean_Comparison_Exp>;
   investigator?: InputMaybe<String_Comparison_Exp>;
@@ -10750,7 +12155,7 @@ export type Investigator_Data_Bool_Exp = {
 
 /** unique or primary key constraints on table "investigator_data" */
 export enum Investigator_Data_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   InvestigatorDataPkey = 'investigator_data_pkey'
 }
 
@@ -10876,14 +12281,14 @@ export type Investigator_Data_Mutation_Response = {
 /** input type for inserting object relation for remote table "investigator_data" */
 export type Investigator_Data_Obj_Rel_Insert_Input = {
   data: Investigator_Data_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
-/** on conflict condition type for table "investigator_data" */
+/** on_conflict condition type for table "investigator_data" */
 export type Investigator_Data_On_Conflict = {
   constraint: Investigator_Data_Constraint;
-  update_columns: Array<Investigator_Data_Update_Column>;
+  update_columns?: Array<Investigator_Data_Update_Column>;
   where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
@@ -10895,6 +12300,7 @@ export type Investigator_Data_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   cardCounts?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
   ignoreStoryAssets?: InputMaybe<Order_By>;
   insane?: InputMaybe<Order_By>;
   investigator?: InputMaybe<Order_By>;
@@ -11037,6 +12443,34 @@ export type Investigator_Data_Stddev_Samp_Order_By = {
   spentXp?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "investigator_data" */
+export type Investigator_Data_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Investigator_Data_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Investigator_Data_Stream_Cursor_Value_Input = {
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  spentXp?: InputMaybe<Scalars['Int']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Investigator_Data_Sum_Fields = {
   __typename?: 'investigator_data_sum_fields';
@@ -11091,6 +12525,24 @@ export enum Investigator_Data_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Investigator_Data_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Investigator_Data_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Investigator_Data_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Investigator_Data_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Investigator_Data_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Investigator_Data_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Investigator_Data_Set_Input>;
+  where: Investigator_Data_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Investigator_Data_Var_Pop_Fields = {
@@ -11149,8 +12601,13 @@ export type Investigator_Data_Variance_Order_By = {
   spentXp?: InputMaybe<Order_By>;
 };
 
+export type Jsonb_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
+  _cast?: InputMaybe<Jsonb_Cast_Exp>;
   /** is the column contained in the given json value */
   _contained_in?: InputMaybe<Scalars['jsonb']>;
   /** does the column contain the given json value at the top level */
@@ -11378,6 +12835,21 @@ export type Latest_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "latest_decks" */
+export type Latest_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Latest_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Latest_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Latest_Decks_Sum_Fields = {
   __typename?: 'latest_decks_sum_fields';
@@ -11389,6 +12861,14 @@ export type Latest_Decks_Sum_Fields = {
 export type Latest_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Latest_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Latest_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Latest_Decks_Set_Input>;
+  where: Latest_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -11636,6 +13116,21 @@ export type Local_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "local_decks" */
+export type Local_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Local_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Local_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Local_Decks_Sum_Fields = {
   __typename?: 'local_decks_sum_fields';
@@ -11647,6 +13142,14 @@ export type Local_Decks_Sum_Fields = {
 export type Local_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Local_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Local_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Local_Decks_Set_Input>;
+  where: Local_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -11743,6 +13246,10 @@ export type Mutation_Root = {
   delete_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** delete single row from the table: "card_pack" */
   delete_card_pack_by_pk?: Maybe<Card_Pack>;
+  /** delete data from the table: "card_subtype_name" */
+  delete_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** delete single row from the table: "card_subtype_name" */
+  delete_card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
   /** delete data from the table: "card_text" */
   delete_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** delete single row from the table: "card_text" */
@@ -11751,6 +13258,10 @@ export type Mutation_Root = {
   delete_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** delete single row from the table: "card_type_code" */
   delete_card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** delete data from the table: "card_type_name" */
+  delete_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** delete single row from the table: "card_type_name" */
+  delete_card_type_name_by_pk?: Maybe<Card_Type_Name>;
   /** delete data from the table: "chaos_bag_result" */
   delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_result" */
@@ -11767,6 +13278,10 @@ export type Mutation_Root = {
   delete_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
   /** delete single row from the table: "cycle_name" */
   delete_cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** delete data from the table: "faction_name" */
+  delete_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** delete single row from the table: "faction_name" */
+  delete_faction_name_by_pk?: Maybe<Faction_Name>;
   /** delete data from the table: "faq" */
   delete_faq?: Maybe<Faq_Mutation_Response>;
   /** delete single row from the table: "faq" */
@@ -11899,6 +13414,10 @@ export type Mutation_Root = {
   insert_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** insert a single row into the table: "card_pack" */
   insert_card_pack_one?: Maybe<Card_Pack>;
+  /** insert data into the table: "card_subtype_name" */
+  insert_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** insert a single row into the table: "card_subtype_name" */
+  insert_card_subtype_name_one?: Maybe<Card_Subtype_Name>;
   /** insert data into the table: "card_text" */
   insert_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** insert a single row into the table: "card_text" */
@@ -11907,6 +13426,10 @@ export type Mutation_Root = {
   insert_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** insert a single row into the table: "card_type_code" */
   insert_card_type_code_one?: Maybe<Card_Type_Code>;
+  /** insert data into the table: "card_type_name" */
+  insert_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** insert a single row into the table: "card_type_name" */
+  insert_card_type_name_one?: Maybe<Card_Type_Name>;
   /** insert data into the table: "chaos_bag_result" */
   insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_result" */
@@ -11923,6 +13446,10 @@ export type Mutation_Root = {
   insert_cycle_name_one?: Maybe<Cycle_Name>;
   /** insert a single row into the table: "cycle" */
   insert_cycle_one?: Maybe<Cycle>;
+  /** insert data into the table: "faction_name" */
+  insert_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** insert a single row into the table: "faction_name" */
+  insert_faction_name_one?: Maybe<Faction_Name>;
   /** insert data into the table: "faq" */
   insert_faq?: Maybe<Faq_Mutation_Response>;
   /** insert a single row into the table: "faq" */
@@ -12015,38 +13542,58 @@ export type Mutation_Root = {
   update_all_card?: Maybe<All_Card_Mutation_Response>;
   /** update single row of the table: "all_card" */
   update_all_card_by_pk?: Maybe<All_Card>;
+  /** update multiples rows of table: "all_card" */
+  update_all_card_many?: Maybe<Array<Maybe<All_Card_Mutation_Response>>>;
   /** update data of the table: "all_card_text" */
   update_all_card_text?: Maybe<All_Card_Text_Mutation_Response>;
   /** update single row of the table: "all_card_text" */
   update_all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** update multiples rows of table: "all_card_text" */
+  update_all_card_text_many?: Maybe<Array<Maybe<All_Card_Text_Mutation_Response>>>;
   /** update data of the table: "all_card_updated" */
   update_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** update single row of the table: "all_card_updated" */
   update_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** update multiples rows of table: "all_card_updated" */
+  update_all_card_updated_many?: Maybe<Array<Maybe<All_Card_Updated_Mutation_Response>>>;
   /** update data of the table: "base_decks" */
   update_base_decks?: Maybe<Base_Decks_Mutation_Response>;
+  /** update multiples rows of table: "base_decks" */
+  update_base_decks_many?: Maybe<Array<Maybe<Base_Decks_Mutation_Response>>>;
   /** update data of the table: "campaign" */
   update_campaign?: Maybe<Campaign_Mutation_Response>;
   /** update data of the table: "campaign_access" */
   update_campaign_access?: Maybe<Campaign_Access_Mutation_Response>;
   /** update single row of the table: "campaign_access" */
   update_campaign_access_by_pk?: Maybe<Campaign_Access>;
+  /** update multiples rows of table: "campaign_access" */
+  update_campaign_access_many?: Maybe<Array<Maybe<Campaign_Access_Mutation_Response>>>;
   /** update single row of the table: "campaign" */
   update_campaign_by_pk?: Maybe<Campaign>;
   /** update data of the table: "campaign_deck" */
   update_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** update single row of the table: "campaign_deck" */
   update_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** update multiples rows of table: "campaign_deck" */
+  update_campaign_deck_many?: Maybe<Array<Maybe<Campaign_Deck_Mutation_Response>>>;
   /** update data of the table: "campaign_difficulty" */
   update_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
   /** update single row of the table: "campaign_difficulty" */
   update_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
+  /** update multiples rows of table: "campaign_difficulty" */
+  update_campaign_difficulty_many?: Maybe<Array<Maybe<Campaign_Difficulty_Mutation_Response>>>;
   /** update data of the table: "campaign_guide" */
   update_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
+  /** update multiples rows of table: "campaign_guide" */
+  update_campaign_guide_many?: Maybe<Array<Maybe<Campaign_Guide_Mutation_Response>>>;
   /** update data of the table: "campaign_investigator" */
   update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** update single row of the table: "campaign_investigator" */
   update_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** update multiples rows of table: "campaign_investigator" */
+  update_campaign_investigator_many?: Maybe<Array<Maybe<Campaign_Investigator_Mutation_Response>>>;
+  /** update multiples rows of table: "campaign" */
+  update_campaign_many?: Maybe<Array<Maybe<Campaign_Mutation_Response>>>;
   /** update data of the table: "card" */
   update_card?: Maybe<Card_Mutation_Response>;
   /** update single row of the table: "card" */
@@ -12055,114 +13602,196 @@ export type Mutation_Root = {
   update_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
   /** update single row of the table: "card_cycle" */
   update_card_cycle_by_pk?: Maybe<Card_Cycle>;
+  /** update multiples rows of table: "card_cycle" */
+  update_card_cycle_many?: Maybe<Array<Maybe<Card_Cycle_Mutation_Response>>>;
   /** update data of the table: "card_encounter_set" */
   update_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** update single row of the table: "card_encounter_set" */
   update_card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
+  /** update multiples rows of table: "card_encounter_set" */
+  update_card_encounter_set_many?: Maybe<Array<Maybe<Card_Encounter_Set_Mutation_Response>>>;
+  /** update multiples rows of table: "card" */
+  update_card_many?: Maybe<Array<Maybe<Card_Mutation_Response>>>;
   /** update data of the table: "card_pack" */
   update_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** update single row of the table: "card_pack" */
   update_card_pack_by_pk?: Maybe<Card_Pack>;
+  /** update multiples rows of table: "card_pack" */
+  update_card_pack_many?: Maybe<Array<Maybe<Card_Pack_Mutation_Response>>>;
+  /** update data of the table: "card_subtype_name" */
+  update_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** update single row of the table: "card_subtype_name" */
+  update_card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
+  /** update multiples rows of table: "card_subtype_name" */
+  update_card_subtype_name_many?: Maybe<Array<Maybe<Card_Subtype_Name_Mutation_Response>>>;
   /** update data of the table: "card_text" */
   update_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** update single row of the table: "card_text" */
   update_card_text_by_pk?: Maybe<Card_Text>;
+  /** update multiples rows of table: "card_text" */
+  update_card_text_many?: Maybe<Array<Maybe<Card_Text_Mutation_Response>>>;
   /** update data of the table: "card_type_code" */
   update_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** update single row of the table: "card_type_code" */
   update_card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** update multiples rows of table: "card_type_code" */
+  update_card_type_code_many?: Maybe<Array<Maybe<Card_Type_Code_Mutation_Response>>>;
+  /** update data of the table: "card_type_name" */
+  update_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** update single row of the table: "card_type_name" */
+  update_card_type_name_by_pk?: Maybe<Card_Type_Name>;
+  /** update multiples rows of table: "card_type_name" */
+  update_card_type_name_many?: Maybe<Array<Maybe<Card_Type_Name_Mutation_Response>>>;
   /** update data of the table: "chaos_bag_result" */
   update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** update single row of the table: "chaos_bag_result" */
   update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** update multiples rows of table: "chaos_bag_result" */
+  update_chaos_bag_result_many?: Maybe<Array<Maybe<Chaos_Bag_Result_Mutation_Response>>>;
   /** update data of the table: "chaos_bag_tarot_mode" */
   update_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** update single row of the table: "chaos_bag_tarot_mode" */
   update_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** update multiples rows of table: "chaos_bag_tarot_mode" */
+  update_chaos_bag_tarot_mode_many?: Maybe<Array<Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>>>;
   /** update data of the table: "cycle" */
   update_cycle?: Maybe<Cycle_Mutation_Response>;
   /** update single row of the table: "cycle" */
   update_cycle_by_pk?: Maybe<Cycle>;
+  /** update multiples rows of table: "cycle" */
+  update_cycle_many?: Maybe<Array<Maybe<Cycle_Mutation_Response>>>;
   /** update data of the table: "cycle_name" */
   update_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
   /** update single row of the table: "cycle_name" */
   update_cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** update multiples rows of table: "cycle_name" */
+  update_cycle_name_many?: Maybe<Array<Maybe<Cycle_Name_Mutation_Response>>>;
+  /** update data of the table: "faction_name" */
+  update_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** update single row of the table: "faction_name" */
+  update_faction_name_by_pk?: Maybe<Faction_Name>;
+  /** update multiples rows of table: "faction_name" */
+  update_faction_name_many?: Maybe<Array<Maybe<Faction_Name_Mutation_Response>>>;
   /** update data of the table: "faq" */
   update_faq?: Maybe<Faq_Mutation_Response>;
   /** update single row of the table: "faq" */
   update_faq_by_pk?: Maybe<Faq>;
+  /** update multiples rows of table: "faq" */
+  update_faq_many?: Maybe<Array<Maybe<Faq_Mutation_Response>>>;
   /** update data of the table: "faq_text" */
   update_faq_text?: Maybe<Faq_Text_Mutation_Response>;
   /** update single row of the table: "faq_text" */
   update_faq_text_by_pk?: Maybe<Faq_Text>;
+  /** update multiples rows of table: "faq_text" */
+  update_faq_text_many?: Maybe<Array<Maybe<Faq_Text_Mutation_Response>>>;
   /** update data of the table: "friend_status" */
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
   update_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** update multiples rows of table: "friend_status" */
+  update_friend_status_many?: Maybe<Array<Maybe<Friend_Status_Mutation_Response>>>;
   /** update data of the table: "friend_status_type" */
   update_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
   /** update single row of the table: "friend_status_type" */
   update_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** update multiples rows of table: "friend_status_type" */
+  update_friend_status_type_many?: Maybe<Array<Maybe<Friend_Status_Type_Mutation_Response>>>;
   /** update data of the table: "full_card" */
   update_full_card?: Maybe<Full_Card_Mutation_Response>;
   /** update single row of the table: "full_card" */
   update_full_card_by_pk?: Maybe<Full_Card>;
+  /** update multiples rows of table: "full_card" */
+  update_full_card_many?: Maybe<Array<Maybe<Full_Card_Mutation_Response>>>;
   /** update data of the table: "full_card_text" */
   update_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** update single row of the table: "full_card_text" */
   update_full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** update multiples rows of table: "full_card_text" */
+  update_full_card_text_many?: Maybe<Array<Maybe<Full_Card_Text_Mutation_Response>>>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
   update_guide_achievement_by_pk?: Maybe<Guide_Achievement>;
+  /** update multiples rows of table: "guide_achievement" */
+  update_guide_achievement_many?: Maybe<Array<Maybe<Guide_Achievement_Mutation_Response>>>;
   /** update data of the table: "guide_input" */
   update_guide_input?: Maybe<Guide_Input_Mutation_Response>;
   /** update single row of the table: "guide_input" */
   update_guide_input_by_pk?: Maybe<Guide_Input>;
+  /** update multiples rows of table: "guide_input" */
+  update_guide_input_many?: Maybe<Array<Maybe<Guide_Input_Mutation_Response>>>;
   /** update data of the table: "investigator_data" */
   update_investigator_data?: Maybe<Investigator_Data_Mutation_Response>;
   /** update single row of the table: "investigator_data" */
   update_investigator_data_by_pk?: Maybe<Investigator_Data>;
+  /** update multiples rows of table: "investigator_data" */
+  update_investigator_data_many?: Maybe<Array<Maybe<Investigator_Data_Mutation_Response>>>;
   /** update data of the table: "latest_decks" */
   update_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
+  /** update multiples rows of table: "latest_decks" */
+  update_latest_decks_many?: Maybe<Array<Maybe<Latest_Decks_Mutation_Response>>>;
   /** update data of the table: "local_decks" */
   update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** update multiples rows of table: "local_decks" */
+  update_local_decks_many?: Maybe<Array<Maybe<Local_Decks_Mutation_Response>>>;
   /** update data of the table: "pack" */
   update_pack?: Maybe<Pack_Mutation_Response>;
   /** update single row of the table: "pack" */
   update_pack_by_pk?: Maybe<Pack>;
+  /** update multiples rows of table: "pack" */
+  update_pack_many?: Maybe<Array<Maybe<Pack_Mutation_Response>>>;
   /** update data of the table: "pack_name" */
   update_pack_name?: Maybe<Pack_Name_Mutation_Response>;
   /** update single row of the table: "pack_name" */
   update_pack_name_by_pk?: Maybe<Pack_Name>;
+  /** update multiples rows of table: "pack_name" */
+  update_pack_name_many?: Maybe<Array<Maybe<Pack_Name_Mutation_Response>>>;
   /** update data of the table: "taboo_set" */
   update_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
   /** update single row of the table: "taboo_set" */
   update_taboo_set_by_pk?: Maybe<Taboo_Set>;
+  /** update multiples rows of table: "taboo_set" */
+  update_taboo_set_many?: Maybe<Array<Maybe<Taboo_Set_Mutation_Response>>>;
   /** update data of the table: "user_campaigns" */
   update_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
+  /** update multiples rows of table: "user_campaigns" */
+  update_user_campaigns_many?: Maybe<Array<Maybe<User_Campaigns_Mutation_Response>>>;
   /** update data of the table: "user_flag" */
   update_user_flag?: Maybe<User_Flag_Mutation_Response>;
   /** update single row of the table: "user_flag" */
   update_user_flag_by_pk?: Maybe<User_Flag>;
+  /** update multiples rows of table: "user_flag" */
+  update_user_flag_many?: Maybe<Array<Maybe<User_Flag_Mutation_Response>>>;
   /** update data of the table: "user_flag_type" */
   update_user_flag_type?: Maybe<User_Flag_Type_Mutation_Response>;
   /** update single row of the table: "user_flag_type" */
   update_user_flag_type_by_pk?: Maybe<User_Flag_Type>;
+  /** update multiples rows of table: "user_flag_type" */
+  update_user_flag_type_many?: Maybe<Array<Maybe<User_Flag_Type_Mutation_Response>>>;
   /** update data of the table: "user_friends" */
   update_user_friends?: Maybe<User_Friends_Mutation_Response>;
+  /** update multiples rows of table: "user_friends" */
+  update_user_friends_many?: Maybe<Array<Maybe<User_Friends_Mutation_Response>>>;
   /** update data of the table: "user_received_friend_requests" */
   update_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "user_received_friend_requests" */
+  update_user_received_friend_requests_many?: Maybe<Array<Maybe<User_Received_Friend_Requests_Mutation_Response>>>;
   /** update data of the table: "user_sent_friend_requests" */
   update_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "user_sent_friend_requests" */
+  update_user_sent_friend_requests_many?: Maybe<Array<Maybe<User_Sent_Friend_Requests_Mutation_Response>>>;
   /** update data of the table: "user_settings" */
   update_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** update single row of the table: "user_settings" */
   update_user_settings_by_pk?: Maybe<User_Settings>;
+  /** update multiples rows of table: "user_settings" */
+  update_user_settings_many?: Maybe<Array<Maybe<User_Settings_Mutation_Response>>>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
   update_users_by_pk?: Maybe<Users>;
+  /** update multiples rows of table: "users" */
+  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
 
 
@@ -12328,6 +13957,19 @@ export type Mutation_RootDelete_Card_Pack_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Card_Subtype_NameArgs = {
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Subtype_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Card_TextArgs = {
   where: Card_Text_Bool_Exp;
 };
@@ -12349,6 +13991,19 @@ export type Mutation_RootDelete_Card_Type_CodeArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Card_Type_Code_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Type_NameArgs = {
+  where: Card_Type_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
 };
 
 
@@ -12396,6 +14051,19 @@ export type Mutation_RootDelete_Cycle_NameArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Cycle_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faction_NameArgs = {
+  where: Faction_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faction_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
 };
@@ -12830,6 +14498,20 @@ export type Mutation_RootInsert_Card_Pack_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Card_Subtype_NameArgs = {
+  objects: Array<Card_Subtype_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Subtype_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Subtype_Name_OneArgs = {
+  object: Card_Subtype_Name_Insert_Input;
+  on_conflict?: InputMaybe<Card_Subtype_Name_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Card_TextArgs = {
   objects: Array<Card_Text_Insert_Input>;
   on_conflict?: InputMaybe<Card_Text_On_Conflict>;
@@ -12854,6 +14536,20 @@ export type Mutation_RootInsert_Card_Type_CodeArgs = {
 export type Mutation_RootInsert_Card_Type_Code_OneArgs = {
   object: Card_Type_Code_Insert_Input;
   on_conflict?: InputMaybe<Card_Type_Code_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Type_NameArgs = {
+  objects: Array<Card_Type_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Type_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Type_Name_OneArgs = {
+  object: Card_Type_Name_Insert_Input;
+  on_conflict?: InputMaybe<Card_Type_Name_On_Conflict>;
 };
 
 
@@ -12910,6 +14606,20 @@ export type Mutation_RootInsert_Cycle_Name_OneArgs = {
 export type Mutation_RootInsert_Cycle_OneArgs = {
   object: Cycle_Insert_Input;
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faction_NameArgs = {
+  objects: Array<Faction_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Faction_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faction_Name_OneArgs = {
+  object: Faction_Name_Insert_Input;
+  on_conflict?: InputMaybe<Faction_Name_On_Conflict>;
 };
 
 
@@ -13236,6 +14946,12 @@ export type Mutation_RootUpdate_All_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_All_Card_ManyArgs = {
+  updates: Array<All_Card_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_All_Card_TextArgs = {
   _set?: InputMaybe<All_Card_Text_Set_Input>;
   where: All_Card_Text_Bool_Exp;
@@ -13246,6 +14962,12 @@ export type Mutation_RootUpdate_All_Card_TextArgs = {
 export type Mutation_RootUpdate_All_Card_Text_By_PkArgs = {
   _set?: InputMaybe<All_Card_Text_Set_Input>;
   pk_columns: All_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Text_ManyArgs = {
+  updates: Array<All_Card_Text_Updates>;
 };
 
 
@@ -13264,10 +14986,22 @@ export type Mutation_RootUpdate_All_Card_Updated_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_ManyArgs = {
+  updates: Array<All_Card_Updated_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Base_DecksArgs = {
   _inc?: InputMaybe<Base_Decks_Inc_Input>;
   _set?: InputMaybe<Base_Decks_Set_Input>;
   where: Base_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Base_Decks_ManyArgs = {
+  updates: Array<Base_Decks_Updates>;
 };
 
 
@@ -13297,6 +15031,12 @@ export type Mutation_RootUpdate_Campaign_Access_By_PkArgs = {
   _inc?: InputMaybe<Campaign_Access_Inc_Input>;
   _set?: InputMaybe<Campaign_Access_Set_Input>;
   pk_columns: Campaign_Access_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Access_ManyArgs = {
+  updates: Array<Campaign_Access_Updates>;
 };
 
 
@@ -13340,6 +15080,12 @@ export type Mutation_RootUpdate_Campaign_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_Deck_ManyArgs = {
+  updates: Array<Campaign_Deck_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Campaign_DifficultyArgs = {
   _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
   where: Campaign_Difficulty_Bool_Exp;
@@ -13354,10 +15100,22 @@ export type Mutation_RootUpdate_Campaign_Difficulty_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_Difficulty_ManyArgs = {
+  updates: Array<Campaign_Difficulty_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Campaign_GuideArgs = {
   _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
   _set?: InputMaybe<Campaign_Guide_Set_Input>;
   where: Campaign_Guide_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Guide_ManyArgs = {
+  updates: Array<Campaign_Guide_Updates>;
 };
 
 
@@ -13374,6 +15132,18 @@ export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
   _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
   _set?: InputMaybe<Campaign_Investigator_Set_Input>;
   pk_columns: Campaign_Investigator_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Investigator_ManyArgs = {
+  updates: Array<Campaign_Investigator_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_ManyArgs = {
+  updates: Array<Campaign_Updates>;
 };
 
 
@@ -13420,6 +15190,12 @@ export type Mutation_RootUpdate_Card_Cycle_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_Cycle_ManyArgs = {
+  updates: Array<Card_Cycle_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_Encounter_SetArgs = {
   _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
   where: Card_Encounter_Set_Bool_Exp;
@@ -13430,6 +15206,18 @@ export type Mutation_RootUpdate_Card_Encounter_SetArgs = {
 export type Mutation_RootUpdate_Card_Encounter_Set_By_PkArgs = {
   _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
   pk_columns: Card_Encounter_Set_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Encounter_Set_ManyArgs = {
+  updates: Array<Card_Encounter_Set_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_ManyArgs = {
+  updates: Array<Card_Updates>;
 };
 
 
@@ -13450,6 +15238,32 @@ export type Mutation_RootUpdate_Card_Pack_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_Pack_ManyArgs = {
+  updates: Array<Card_Pack_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_NameArgs = {
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_Name_By_PkArgs = {
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  pk_columns: Card_Subtype_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_Name_ManyArgs = {
+  updates: Array<Card_Subtype_Name_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_TextArgs = {
   _set?: InputMaybe<Card_Text_Set_Input>;
   where: Card_Text_Bool_Exp;
@@ -13464,6 +15278,12 @@ export type Mutation_RootUpdate_Card_Text_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_Text_ManyArgs = {
+  updates: Array<Card_Text_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_Type_CodeArgs = {
   _set?: InputMaybe<Card_Type_Code_Set_Input>;
   where: Card_Type_Code_Bool_Exp;
@@ -13474,6 +15294,32 @@ export type Mutation_RootUpdate_Card_Type_CodeArgs = {
 export type Mutation_RootUpdate_Card_Type_Code_By_PkArgs = {
   _set?: InputMaybe<Card_Type_Code_Set_Input>;
   pk_columns: Card_Type_Code_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Code_ManyArgs = {
+  updates: Array<Card_Type_Code_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_NameArgs = {
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  where: Card_Type_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Name_By_PkArgs = {
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  pk_columns: Card_Type_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Name_ManyArgs = {
+  updates: Array<Card_Type_Name_Updates>;
 };
 
 
@@ -13504,6 +15350,12 @@ export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Result_ManyArgs = {
+  updates: Array<Chaos_Bag_Result_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
   _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   where: Chaos_Bag_Tarot_Mode_Bool_Exp;
@@ -13514,6 +15366,12 @@ export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_By_PkArgs = {
   _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   pk_columns: Chaos_Bag_Tarot_Mode_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_ManyArgs = {
+  updates: Array<Chaos_Bag_Tarot_Mode_Updates>;
 };
 
 
@@ -13534,6 +15392,12 @@ export type Mutation_RootUpdate_Cycle_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Cycle_ManyArgs = {
+  updates: Array<Cycle_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Cycle_NameArgs = {
   _set?: InputMaybe<Cycle_Name_Set_Input>;
   where: Cycle_Name_Bool_Exp;
@@ -13544,6 +15408,32 @@ export type Mutation_RootUpdate_Cycle_NameArgs = {
 export type Mutation_RootUpdate_Cycle_Name_By_PkArgs = {
   _set?: InputMaybe<Cycle_Name_Set_Input>;
   pk_columns: Cycle_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_Name_ManyArgs = {
+  updates: Array<Cycle_Name_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_NameArgs = {
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  where: Faction_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_Name_By_PkArgs = {
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  pk_columns: Faction_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_Name_ManyArgs = {
+  updates: Array<Faction_Name_Updates>;
 };
 
 
@@ -13562,6 +15452,12 @@ export type Mutation_RootUpdate_Faq_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Faq_ManyArgs = {
+  updates: Array<Faq_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Faq_TextArgs = {
   _set?: InputMaybe<Faq_Text_Set_Input>;
   where: Faq_Text_Bool_Exp;
@@ -13572,6 +15468,12 @@ export type Mutation_RootUpdate_Faq_TextArgs = {
 export type Mutation_RootUpdate_Faq_Text_By_PkArgs = {
   _set?: InputMaybe<Faq_Text_Set_Input>;
   pk_columns: Faq_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faq_Text_ManyArgs = {
+  updates: Array<Faq_Text_Updates>;
 };
 
 
@@ -13590,6 +15492,12 @@ export type Mutation_RootUpdate_Friend_Status_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Friend_Status_ManyArgs = {
+  updates: Array<Friend_Status_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   where: Friend_Status_Type_Bool_Exp;
@@ -13600,6 +15508,12 @@ export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
 export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   pk_columns: Friend_Status_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Friend_Status_Type_ManyArgs = {
+  updates: Array<Friend_Status_Type_Updates>;
 };
 
 
@@ -13630,6 +15544,12 @@ export type Mutation_RootUpdate_Full_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Full_Card_ManyArgs = {
+  updates: Array<Full_Card_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Full_Card_TextArgs = {
   _set?: InputMaybe<Full_Card_Text_Set_Input>;
   where: Full_Card_Text_Bool_Exp;
@@ -13640,6 +15560,12 @@ export type Mutation_RootUpdate_Full_Card_TextArgs = {
 export type Mutation_RootUpdate_Full_Card_Text_By_PkArgs = {
   _set?: InputMaybe<Full_Card_Text_Set_Input>;
   pk_columns: Full_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_Card_Text_ManyArgs = {
+  updates: Array<Full_Card_Text_Updates>;
 };
 
 
@@ -13656,6 +15582,12 @@ export type Mutation_RootUpdate_Guide_Achievement_By_PkArgs = {
   _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
   _set?: InputMaybe<Guide_Achievement_Set_Input>;
   pk_columns: Guide_Achievement_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Guide_Achievement_ManyArgs = {
+  updates: Array<Guide_Achievement_Updates>;
 };
 
 
@@ -13686,6 +15618,12 @@ export type Mutation_RootUpdate_Guide_Input_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Guide_Input_ManyArgs = {
+  updates: Array<Guide_Input_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Investigator_DataArgs = {
   _append?: InputMaybe<Investigator_Data_Append_Input>;
   _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
@@ -13712,6 +15650,12 @@ export type Mutation_RootUpdate_Investigator_Data_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Investigator_Data_ManyArgs = {
+  updates: Array<Investigator_Data_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Latest_DecksArgs = {
   _inc?: InputMaybe<Latest_Decks_Inc_Input>;
   _set?: InputMaybe<Latest_Decks_Set_Input>;
@@ -13720,10 +15664,22 @@ export type Mutation_RootUpdate_Latest_DecksArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Latest_Decks_ManyArgs = {
+  updates: Array<Latest_Decks_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Local_DecksArgs = {
   _inc?: InputMaybe<Local_Decks_Inc_Input>;
   _set?: InputMaybe<Local_Decks_Set_Input>;
   where: Local_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Local_Decks_ManyArgs = {
+  updates: Array<Local_Decks_Updates>;
 };
 
 
@@ -13744,6 +15700,12 @@ export type Mutation_RootUpdate_Pack_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Pack_ManyArgs = {
+  updates: Array<Pack_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Pack_NameArgs = {
   _set?: InputMaybe<Pack_Name_Set_Input>;
   where: Pack_Name_Bool_Exp;
@@ -13754,6 +15716,12 @@ export type Mutation_RootUpdate_Pack_NameArgs = {
 export type Mutation_RootUpdate_Pack_Name_By_PkArgs = {
   _set?: InputMaybe<Pack_Name_Set_Input>;
   pk_columns: Pack_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_Name_ManyArgs = {
+  updates: Array<Pack_Name_Updates>;
 };
 
 
@@ -13774,10 +15742,22 @@ export type Mutation_RootUpdate_Taboo_Set_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Taboo_Set_ManyArgs = {
+  updates: Array<Taboo_Set_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_CampaignsArgs = {
   _inc?: InputMaybe<User_Campaigns_Inc_Input>;
   _set?: InputMaybe<User_Campaigns_Set_Input>;
   where: User_Campaigns_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Campaigns_ManyArgs = {
+  updates: Array<User_Campaigns_Updates>;
 };
 
 
@@ -13796,6 +15776,12 @@ export type Mutation_RootUpdate_User_Flag_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Flag_ManyArgs = {
+  updates: Array<User_Flag_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_Flag_TypeArgs = {
   _set?: InputMaybe<User_Flag_Type_Set_Input>;
   where: User_Flag_Type_Bool_Exp;
@@ -13810,9 +15796,21 @@ export type Mutation_RootUpdate_User_Flag_Type_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Flag_Type_ManyArgs = {
+  updates: Array<User_Flag_Type_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_FriendsArgs = {
   _set?: InputMaybe<User_Friends_Set_Input>;
   where: User_Friends_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Friends_ManyArgs = {
+  updates: Array<User_Friends_Updates>;
 };
 
 
@@ -13824,9 +15822,21 @@ export type Mutation_RootUpdate_User_Received_Friend_RequestsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Received_Friend_Requests_ManyArgs = {
+  updates: Array<User_Received_Friend_Requests_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_Sent_Friend_RequestsArgs = {
   _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
   where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Sent_Friend_Requests_ManyArgs = {
+  updates: Array<User_Sent_Friend_Requests_Updates>;
 };
 
 
@@ -13855,6 +15865,12 @@ export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Settings_ManyArgs = {
+  updates: Array<User_Settings_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
@@ -13865,6 +15881,12 @@ export type Mutation_RootUpdate_UsersArgs = {
 export type Mutation_RootUpdate_Users_By_PkArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Users_ManyArgs = {
+  updates: Array<Users_Updates>;
 };
 
 /** column ordering options */
@@ -13991,7 +16013,7 @@ export type Pack_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "pack" */
 export type Pack_Arr_Rel_Insert_Input = {
   data: Array<Pack_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Pack_On_Conflict>;
 };
 
@@ -14023,7 +16045,7 @@ export type Pack_Bool_Exp = {
 
 /** unique or primary key constraints on table "pack" */
 export enum Pack_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   PackPkey = 'pack_pkey'
 }
 
@@ -14127,7 +16149,7 @@ export type Pack_Name_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "pack_name" */
 export type Pack_Name_Arr_Rel_Insert_Input = {
   data: Array<Pack_Name_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Pack_Name_On_Conflict>;
 };
 
@@ -14143,7 +16165,7 @@ export type Pack_Name_Bool_Exp = {
 
 /** unique or primary key constraints on table "pack_name" */
 export enum Pack_Name_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   PackNamePkey = 'pack_name_pkey'
 }
 
@@ -14193,10 +16215,10 @@ export type Pack_Name_Mutation_Response = {
   returning: Array<Pack_Name>;
 };
 
-/** on conflict condition type for table "pack_name" */
+/** on_conflict condition type for table "pack_name" */
 export type Pack_Name_On_Conflict = {
   constraint: Pack_Name_Constraint;
-  update_columns: Array<Pack_Name_Update_Column>;
+  update_columns?: Array<Pack_Name_Update_Column>;
   where?: InputMaybe<Pack_Name_Bool_Exp>;
 };
 
@@ -14230,6 +16252,21 @@ export type Pack_Name_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "pack_name" */
+export type Pack_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Pack_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Pack_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "pack_name" */
 export enum Pack_Name_Update_Column {
   /** column name */
@@ -14240,17 +16277,23 @@ export enum Pack_Name_Update_Column {
   Name = 'name'
 }
 
+export type Pack_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Pack_Name_Set_Input>;
+  where: Pack_Name_Bool_Exp;
+};
+
 /** input type for inserting object relation for remote table "pack" */
 export type Pack_Obj_Rel_Insert_Input = {
   data: Pack_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Pack_On_Conflict>;
 };
 
-/** on conflict condition type for table "pack" */
+/** on_conflict condition type for table "pack" */
 export type Pack_On_Conflict = {
   constraint: Pack_Constraint;
-  update_columns: Array<Pack_Update_Column>;
+  update_columns?: Array<Pack_Update_Column>;
   where?: InputMaybe<Pack_Bool_Exp>;
 };
 
@@ -14327,6 +16370,23 @@ export type Pack_Stddev_Samp_Order_By = {
   position?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "pack" */
+export type Pack_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Pack_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Pack_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Pack_Sum_Fields = {
   __typename?: 'pack_sum_fields';
@@ -14351,6 +16411,14 @@ export enum Pack_Update_Column {
   /** column name */
   RealName = 'real_name'
 }
+
+export type Pack_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Pack_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Pack_Set_Input>;
+  where: Pack_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Pack_Var_Pop_Fields = {
@@ -14471,6 +16539,12 @@ export type Query_Root = {
   card_pack_aggregate: Card_Pack_Aggregate;
   /** fetch data from the table: "card_pack" using primary key columns */
   card_pack_by_pk?: Maybe<Card_Pack>;
+  /** fetch data from the table: "card_subtype_name" */
+  card_subtype_name: Array<Card_Subtype_Name>;
+  /** fetch aggregated fields from the table: "card_subtype_name" */
+  card_subtype_name_aggregate: Card_Subtype_Name_Aggregate;
+  /** fetch data from the table: "card_subtype_name" using primary key columns */
+  card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
@@ -14483,6 +16557,12 @@ export type Query_Root = {
   card_type_code_aggregate: Card_Type_Code_Aggregate;
   /** fetch data from the table: "card_type_code" using primary key columns */
   card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** fetch data from the table: "card_type_name" */
+  card_type_name: Array<Card_Type_Name>;
+  /** fetch aggregated fields from the table: "card_type_name" */
+  card_type_name_aggregate: Card_Type_Name_Aggregate;
+  /** fetch data from the table: "card_type_name" using primary key columns */
+  card_type_name_by_pk?: Maybe<Card_Type_Name>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
@@ -14507,6 +16587,12 @@ export type Query_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** fetch data from the table: "faction_name" */
+  faction_name: Array<Faction_Name>;
+  /** fetch aggregated fields from the table: "faction_name" */
+  faction_name_aggregate: Faction_Name_Aggregate;
+  /** fetch data from the table: "faction_name" using primary key columns */
+  faction_name_by_pk?: Maybe<Faction_Name>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
@@ -14965,6 +17051,30 @@ export type Query_RootCard_Pack_By_PkArgs = {
 };
 
 
+export type Query_RootCard_Subtype_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Subtype_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Subtype_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootCard_TextArgs = {
   distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -15009,6 +17119,30 @@ export type Query_RootCard_Type_Code_AggregateArgs = {
 
 export type Query_RootCard_Type_Code_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Query_RootCard_Type_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
 };
 
 
@@ -15100,6 +17234,30 @@ export type Query_RootCycle_Name_AggregateArgs = {
 
 
 export type Query_RootCycle_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootFaction_NameArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Query_RootFaction_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Query_RootFaction_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
 };
@@ -15596,22 +17754,30 @@ export type Subscription_Root = {
   all_card_aggregate: All_Card_Aggregate;
   /** fetch data from the table: "all_card" using primary key columns */
   all_card_by_pk?: Maybe<All_Card>;
+  /** fetch data from the table in a streaming manner : "all_card" */
+  all_card_stream: Array<All_Card>;
   /** fetch data from the table: "all_card_text" */
   all_card_text: Array<All_Card_Text>;
   /** fetch aggregated fields from the table: "all_card_text" */
   all_card_text_aggregate: All_Card_Text_Aggregate;
   /** fetch data from the table: "all_card_text" using primary key columns */
   all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** fetch data from the table in a streaming manner : "all_card_text" */
+  all_card_text_stream: Array<All_Card_Text>;
   /** fetch data from the table: "all_card_updated" */
   all_card_updated: Array<All_Card_Updated>;
   /** fetch aggregated fields from the table: "all_card_updated" */
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table in a streaming manner : "all_card_updated" */
+  all_card_updated_stream: Array<All_Card_Updated>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "base_decks" */
+  base_decks_stream: Array<Base_Decks>;
   /** fetch data from the table: "campaign" */
   campaign: Array<Campaign>;
   /** fetch data from the table: "campaign_access" */
@@ -15620,6 +17786,8 @@ export type Subscription_Root = {
   campaign_access_aggregate: Campaign_Access_Aggregate;
   /** fetch data from the table: "campaign_access" using primary key columns */
   campaign_access_by_pk?: Maybe<Campaign_Access>;
+  /** fetch data from the table in a streaming manner : "campaign_access" */
+  campaign_access_stream: Array<Campaign_Access>;
   /** fetch aggregated fields from the table: "campaign" */
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
@@ -15630,26 +17798,38 @@ export type Subscription_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table in a streaming manner : "campaign_deck" */
+  campaign_deck_stream: Array<Campaign_Deck>;
   /** fetch data from the table: "campaign_difficulty" */
   campaign_difficulty: Array<Campaign_Difficulty>;
   /** fetch aggregated fields from the table: "campaign_difficulty" */
   campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
   /** fetch data from the table: "campaign_difficulty" using primary key columns */
   campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
+  /** fetch data from the table in a streaming manner : "campaign_difficulty" */
+  campaign_difficulty_stream: Array<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
   campaign_guide_aggregate: Campaign_Guide_Aggregate;
+  /** fetch data from the table in a streaming manner : "campaign_guide" */
+  campaign_guide_stream: Array<Campaign_Guide>;
   /** fetch data from the table: "campaign_investigator" */
   campaign_investigator: Array<Campaign_Investigator>;
   /** fetch aggregated fields from the table: "campaign_investigator" */
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** fetch data from the table in a streaming manner : "campaign_investigator" */
+  campaign_investigator_stream: Array<Campaign_Investigator>;
+  /** fetch data from the table in a streaming manner : "campaign" */
+  campaign_stream: Array<Campaign>;
   /** fetch data from the table: "campaigns_by_cycle" */
   campaigns_by_cycle: Array<Campaigns_By_Cycle>;
   /** fetch aggregated fields from the table: "campaigns_by_cycle" */
   campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
+  /** fetch data from the table in a streaming manner : "campaigns_by_cycle" */
+  campaigns_by_cycle_stream: Array<Campaigns_By_Cycle>;
   /** fetch data from the table: "card" */
   card: Array<Card>;
   /** fetch aggregated fields from the table: "card" */
@@ -15662,42 +17842,74 @@ export type Subscription_Root = {
   card_cycle_aggregate: Card_Cycle_Aggregate;
   /** fetch data from the table: "card_cycle" using primary key columns */
   card_cycle_by_pk?: Maybe<Card_Cycle>;
+  /** fetch data from the table in a streaming manner : "card_cycle" */
+  card_cycle_stream: Array<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
   /** fetch aggregated fields from the table: "card_encounter_set" */
   card_encounter_set_aggregate: Card_Encounter_Set_Aggregate;
   /** fetch data from the table: "card_encounter_set" using primary key columns */
   card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
+  /** fetch data from the table in a streaming manner : "card_encounter_set" */
+  card_encounter_set_stream: Array<Card_Encounter_Set>;
   /** fetch data from the table: "card_pack" */
   card_pack: Array<Card_Pack>;
   /** fetch aggregated fields from the table: "card_pack" */
   card_pack_aggregate: Card_Pack_Aggregate;
   /** fetch data from the table: "card_pack" using primary key columns */
   card_pack_by_pk?: Maybe<Card_Pack>;
+  /** fetch data from the table in a streaming manner : "card_pack" */
+  card_pack_stream: Array<Card_Pack>;
+  /** fetch data from the table in a streaming manner : "card" */
+  card_stream: Array<Card>;
+  /** fetch data from the table: "card_subtype_name" */
+  card_subtype_name: Array<Card_Subtype_Name>;
+  /** fetch aggregated fields from the table: "card_subtype_name" */
+  card_subtype_name_aggregate: Card_Subtype_Name_Aggregate;
+  /** fetch data from the table: "card_subtype_name" using primary key columns */
+  card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
+  /** fetch data from the table in a streaming manner : "card_subtype_name" */
+  card_subtype_name_stream: Array<Card_Subtype_Name>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
   card_text_aggregate: Card_Text_Aggregate;
   /** fetch data from the table: "card_text" using primary key columns */
   card_text_by_pk?: Maybe<Card_Text>;
+  /** fetch data from the table in a streaming manner : "card_text" */
+  card_text_stream: Array<Card_Text>;
   /** fetch data from the table: "card_type_code" */
   card_type_code: Array<Card_Type_Code>;
   /** fetch aggregated fields from the table: "card_type_code" */
   card_type_code_aggregate: Card_Type_Code_Aggregate;
   /** fetch data from the table: "card_type_code" using primary key columns */
   card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** fetch data from the table in a streaming manner : "card_type_code" */
+  card_type_code_stream: Array<Card_Type_Code>;
+  /** fetch data from the table: "card_type_name" */
+  card_type_name: Array<Card_Type_Name>;
+  /** fetch aggregated fields from the table: "card_type_name" */
+  card_type_name_aggregate: Card_Type_Name_Aggregate;
+  /** fetch data from the table: "card_type_name" using primary key columns */
+  card_type_name_by_pk?: Maybe<Card_Type_Name>;
+  /** fetch data from the table in a streaming manner : "card_type_name" */
+  card_type_name_stream: Array<Card_Type_Name>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table in a streaming manner : "chaos_bag_result" */
+  chaos_bag_result_stream: Array<Chaos_Bag_Result>;
   /** fetch data from the table: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode: Array<Chaos_Bag_Tarot_Mode>;
   /** fetch aggregated fields from the table: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
   /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table in a streaming manner : "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode_stream: Array<Chaos_Bag_Tarot_Mode>;
   /** fetch data from the table: "cycle" */
   cycle: Array<Cycle>;
   /** fetch aggregated fields from the table: "cycle" */
@@ -15710,68 +17922,102 @@ export type Subscription_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** fetch data from the table in a streaming manner : "cycle_name" */
+  cycle_name_stream: Array<Cycle_Name>;
+  /** fetch data from the table in a streaming manner : "cycle" */
+  cycle_stream: Array<Cycle>;
+  /** fetch data from the table: "faction_name" */
+  faction_name: Array<Faction_Name>;
+  /** fetch aggregated fields from the table: "faction_name" */
+  faction_name_aggregate: Faction_Name_Aggregate;
+  /** fetch data from the table: "faction_name" using primary key columns */
+  faction_name_by_pk?: Maybe<Faction_Name>;
+  /** fetch data from the table in a streaming manner : "faction_name" */
+  faction_name_stream: Array<Faction_Name>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
   faq_aggregate: Faq_Aggregate;
   /** fetch data from the table: "faq" using primary key columns */
   faq_by_pk?: Maybe<Faq>;
+  /** fetch data from the table in a streaming manner : "faq" */
+  faq_stream: Array<Faq>;
   /** fetch data from the table: "faq_text" */
   faq_text: Array<Faq_Text>;
   /** fetch aggregated fields from the table: "faq_text" */
   faq_text_aggregate: Faq_Text_Aggregate;
   /** fetch data from the table: "faq_text" using primary key columns */
   faq_text_by_pk?: Maybe<Faq_Text>;
+  /** fetch data from the table in a streaming manner : "faq_text" */
+  faq_text_stream: Array<Faq_Text>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table in a streaming manner : "friend_status" */
+  friend_status_stream: Array<Friend_Status>;
   /** fetch data from the table: "friend_status_type" */
   friend_status_type: Array<Friend_Status_Type>;
   /** fetch aggregated fields from the table: "friend_status_type" */
   friend_status_type_aggregate: Friend_Status_Type_Aggregate;
   /** fetch data from the table: "friend_status_type" using primary key columns */
   friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** fetch data from the table in a streaming manner : "friend_status_type" */
+  friend_status_type_stream: Array<Friend_Status_Type>;
   /** fetch data from the table: "full_card" */
   full_card: Array<Full_Card>;
   /** fetch aggregated fields from the table: "full_card" */
   full_card_aggregate: Full_Card_Aggregate;
   /** fetch data from the table: "full_card" using primary key columns */
   full_card_by_pk?: Maybe<Full_Card>;
+  /** fetch data from the table in a streaming manner : "full_card" */
+  full_card_stream: Array<Full_Card>;
   /** fetch data from the table: "full_card_text" */
   full_card_text: Array<Full_Card_Text>;
   /** fetch aggregated fields from the table: "full_card_text" */
   full_card_text_aggregate: Full_Card_Text_Aggregate;
   /** fetch data from the table: "full_card_text" using primary key columns */
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** fetch data from the table in a streaming manner : "full_card_text" */
+  full_card_text_stream: Array<Full_Card_Text>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
   guide_achievement_aggregate: Guide_Achievement_Aggregate;
   /** fetch data from the table: "guide_achievement" using primary key columns */
   guide_achievement_by_pk?: Maybe<Guide_Achievement>;
+  /** fetch data from the table in a streaming manner : "guide_achievement" */
+  guide_achievement_stream: Array<Guide_Achievement>;
   /** fetch data from the table: "guide_input" */
   guide_input: Array<Guide_Input>;
   /** fetch aggregated fields from the table: "guide_input" */
   guide_input_aggregate: Guide_Input_Aggregate;
   /** fetch data from the table: "guide_input" using primary key columns */
   guide_input_by_pk?: Maybe<Guide_Input>;
+  /** fetch data from the table in a streaming manner : "guide_input" */
+  guide_input_stream: Array<Guide_Input>;
   /** An array relationship */
   investigator_data: Array<Investigator_Data>;
   /** An aggregate relationship */
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** fetch data from the table: "investigator_data" using primary key columns */
   investigator_data_by_pk?: Maybe<Investigator_Data>;
+  /** fetch data from the table in a streaming manner : "investigator_data" */
+  investigator_data_stream: Array<Investigator_Data>;
   /** An array relationship */
   latest_decks: Array<Latest_Decks>;
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "latest_decks" */
+  latest_decks_stream: Array<Latest_Decks>;
   /** An array relationship */
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "local_decks" */
+  local_decks_stream: Array<Local_Decks>;
   /** fetch data from the table: "pack" */
   pack: Array<Pack>;
   /** fetch aggregated fields from the table: "pack" */
@@ -15784,52 +18030,74 @@ export type Subscription_Root = {
   pack_name_aggregate: Pack_Name_Aggregate;
   /** fetch data from the table: "pack_name" using primary key columns */
   pack_name_by_pk?: Maybe<Pack_Name>;
+  /** fetch data from the table in a streaming manner : "pack_name" */
+  pack_name_stream: Array<Pack_Name>;
+  /** fetch data from the table in a streaming manner : "pack" */
+  pack_stream: Array<Pack>;
   /** fetch data from the table: "taboo_set" */
   taboo_set: Array<Taboo_Set>;
   /** fetch aggregated fields from the table: "taboo_set" */
   taboo_set_aggregate: Taboo_Set_Aggregate;
   /** fetch data from the table: "taboo_set" using primary key columns */
   taboo_set_by_pk?: Maybe<Taboo_Set>;
+  /** fetch data from the table in a streaming manner : "taboo_set" */
+  taboo_set_stream: Array<Taboo_Set>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
   user_campaigns_aggregate: User_Campaigns_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_campaigns" */
+  user_campaigns_stream: Array<User_Campaigns>;
   /** fetch data from the table: "user_flag" */
   user_flag: Array<User_Flag>;
   /** fetch aggregated fields from the table: "user_flag" */
   user_flag_aggregate: User_Flag_Aggregate;
   /** fetch data from the table: "user_flag" using primary key columns */
   user_flag_by_pk?: Maybe<User_Flag>;
+  /** fetch data from the table in a streaming manner : "user_flag" */
+  user_flag_stream: Array<User_Flag>;
   /** fetch data from the table: "user_flag_type" */
   user_flag_type: Array<User_Flag_Type>;
   /** fetch aggregated fields from the table: "user_flag_type" */
   user_flag_type_aggregate: User_Flag_Type_Aggregate;
   /** fetch data from the table: "user_flag_type" using primary key columns */
   user_flag_type_by_pk?: Maybe<User_Flag_Type>;
+  /** fetch data from the table in a streaming manner : "user_flag_type" */
+  user_flag_type_stream: Array<User_Flag_Type>;
   /** fetch data from the table: "user_friends" */
   user_friends: Array<User_Friends>;
   /** fetch aggregated fields from the table: "user_friends" */
   user_friends_aggregate: User_Friends_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_friends" */
+  user_friends_stream: Array<User_Friends>;
   /** fetch data from the table: "user_received_friend_requests" */
   user_received_friend_requests: Array<User_Received_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_received_friend_requests" */
   user_received_friend_requests_aggregate: User_Received_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_received_friend_requests" */
+  user_received_friend_requests_stream: Array<User_Received_Friend_Requests>;
   /** fetch data from the table: "user_sent_friend_requests" */
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_sent_friend_requests" */
+  user_sent_friend_requests_stream: Array<User_Sent_Friend_Requests>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
   user_settings_aggregate: User_Settings_Aggregate;
   /** fetch data from the table: "user_settings" using primary key columns */
   user_settings_by_pk?: Maybe<User_Settings>;
+  /** fetch data from the table in a streaming manner : "user_settings" */
+  user_settings_stream: Array<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+  /** fetch data from the table in a streaming manner : "users" */
+  users_stream: Array<Users>;
 };
 
 
@@ -15853,6 +18121,13 @@ export type Subscription_RootAll_Card_AggregateArgs = {
 
 export type Subscription_RootAll_Card_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootAll_Card_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
 };
 
 
@@ -15880,6 +18155,13 @@ export type Subscription_RootAll_Card_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootAll_Card_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootAll_Card_UpdatedArgs = {
   distinct_on?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -15903,6 +18185,13 @@ export type Subscription_RootAll_Card_Updated_By_PkArgs = {
 };
 
 
+export type Subscription_RootAll_Card_Updated_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Updated_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
 export type Subscription_RootBase_DecksArgs = {
   distinct_on?: InputMaybe<Array<Base_Decks_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -15917,6 +18206,13 @@ export type Subscription_RootBase_Decks_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootBase_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Base_Decks_Stream_Cursor_Input>>;
   where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
@@ -15950,6 +18246,13 @@ export type Subscription_RootCampaign_Access_AggregateArgs = {
 
 export type Subscription_RootCampaign_Access_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootCampaign_Access_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Access_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
@@ -15990,6 +18293,13 @@ export type Subscription_RootCampaign_Deck_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
+};
+
+
 export type Subscription_RootCampaign_DifficultyArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16013,6 +18323,13 @@ export type Subscription_RootCampaign_Difficulty_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_Difficulty_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Difficulty_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
 export type Subscription_RootCampaign_GuideArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16027,6 +18344,13 @@ export type Subscription_RootCampaign_Guide_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Guide_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Guide_Stream_Cursor_Input>>;
   where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
@@ -16055,6 +18379,20 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_Investigator_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Investigator_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
+};
+
+
 export type Subscription_RootCampaigns_By_CycleArgs = {
   distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16069,6 +18407,13 @@ export type Subscription_RootCampaigns_By_Cycle_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaigns_By_Cycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaigns_By_Cycle_Stream_Cursor_Input>>;
   where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
 };
 
@@ -16120,6 +18465,13 @@ export type Subscription_RootCard_Cycle_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Cycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
 export type Subscription_RootCard_Encounter_SetArgs = {
   distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16141,6 +18493,13 @@ export type Subscription_RootCard_Encounter_Set_AggregateArgs = {
 export type Subscription_RootCard_Encounter_Set_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Encounter_Set_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Encounter_Set_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
 };
 
 
@@ -16168,6 +18527,51 @@ export type Subscription_RootCard_Pack_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Pack_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Pack_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Subtype_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Subtype_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
 export type Subscription_RootCard_TextArgs = {
   distinct_on?: InputMaybe<Array<Card_Text_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16189,6 +18593,13 @@ export type Subscription_RootCard_Text_AggregateArgs = {
 export type Subscription_RootCard_Text_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
 
@@ -16215,6 +18626,44 @@ export type Subscription_RootCard_Type_Code_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Type_Code_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Type_Code_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Type_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Type_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
 export type Subscription_RootChaos_Bag_ResultArgs = {
   distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16238,6 +18687,13 @@ export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
 };
 
 
+export type Subscription_RootChaos_Bag_Result_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Chaos_Bag_Result_Stream_Cursor_Input>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
 export type Subscription_RootChaos_Bag_Tarot_ModeArgs = {
   distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16258,6 +18714,13 @@ export type Subscription_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
 
 export type Subscription_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+export type Subscription_RootChaos_Bag_Tarot_Mode_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Chaos_Bag_Tarot_Mode_Stream_Cursor_Input>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
 
@@ -16308,6 +18771,51 @@ export type Subscription_RootCycle_Name_By_PkArgs = {
 };
 
 
+export type Subscription_RootCycle_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Cycle_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_NameArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootFaction_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faction_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
 export type Subscription_RootFaqArgs = {
   distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16328,6 +18836,13 @@ export type Subscription_RootFaq_AggregateArgs = {
 
 export type Subscription_RootFaq_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootFaq_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faq_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
@@ -16355,6 +18870,13 @@ export type Subscription_RootFaq_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootFaq_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faq_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootFriend_StatusArgs = {
   distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16376,6 +18898,13 @@ export type Subscription_RootFriend_Status_AggregateArgs = {
 export type Subscription_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Subscription_RootFriend_Status_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Friend_Status_Stream_Cursor_Input>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
@@ -16402,6 +18931,13 @@ export type Subscription_RootFriend_Status_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootFriend_Status_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Friend_Status_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
 export type Subscription_RootFull_CardArgs = {
   distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16422,6 +18958,13 @@ export type Subscription_RootFull_Card_AggregateArgs = {
 
 export type Subscription_RootFull_Card_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootFull_Card_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Full_Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
 };
 
 
@@ -16449,6 +18992,13 @@ export type Subscription_RootFull_Card_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootFull_Card_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Full_Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootGuide_AchievementArgs = {
   distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16470,6 +19020,13 @@ export type Subscription_RootGuide_Achievement_AggregateArgs = {
 export type Subscription_RootGuide_Achievement_By_PkArgs = {
   campaign_id: Scalars['Int'];
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootGuide_Achievement_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Guide_Achievement_Stream_Cursor_Input>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
@@ -16497,6 +19054,13 @@ export type Subscription_RootGuide_Input_By_PkArgs = {
 };
 
 
+export type Subscription_RootGuide_Input_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Guide_Input_Stream_Cursor_Input>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
+};
+
+
 export type Subscription_RootInvestigator_DataArgs = {
   distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16521,6 +19085,13 @@ export type Subscription_RootInvestigator_Data_By_PkArgs = {
 };
 
 
+export type Subscription_RootInvestigator_Data_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Investigator_Data_Stream_Cursor_Input>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
+};
+
+
 export type Subscription_RootLatest_DecksArgs = {
   distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16539,6 +19110,13 @@ export type Subscription_RootLatest_Decks_AggregateArgs = {
 };
 
 
+export type Subscription_RootLatest_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Latest_Decks_Stream_Cursor_Input>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
+};
+
+
 export type Subscription_RootLocal_DecksArgs = {
   distinct_on?: InputMaybe<Array<Local_Decks_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16553,6 +19131,13 @@ export type Subscription_RootLocal_Decks_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootLocal_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Local_Decks_Stream_Cursor_Input>>;
   where?: InputMaybe<Local_Decks_Bool_Exp>;
 };
 
@@ -16604,6 +19189,20 @@ export type Subscription_RootPack_Name_By_PkArgs = {
 };
 
 
+export type Subscription_RootPack_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Pack_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Pack_Stream_Cursor_Input>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
 export type Subscription_RootTaboo_SetArgs = {
   distinct_on?: InputMaybe<Array<Taboo_Set_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16627,6 +19226,13 @@ export type Subscription_RootTaboo_Set_By_PkArgs = {
 };
 
 
+export type Subscription_RootTaboo_Set_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Taboo_Set_Stream_Cursor_Input>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_CampaignsArgs = {
   distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16641,6 +19247,13 @@ export type Subscription_RootUser_Campaigns_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Campaigns_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Campaigns_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
@@ -16669,6 +19282,13 @@ export type Subscription_RootUser_Flag_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Flag_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Flag_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_Flag_TypeArgs = {
   distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16692,6 +19312,13 @@ export type Subscription_RootUser_Flag_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Flag_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Flag_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_FriendsArgs = {
   distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16706,6 +19333,13 @@ export type Subscription_RootUser_Friends_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Friends_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Friends_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
@@ -16728,6 +19362,13 @@ export type Subscription_RootUser_Received_Friend_Requests_AggregateArgs = {
 };
 
 
+export type Subscription_RootUser_Received_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Received_Friend_Requests_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_Sent_Friend_RequestsArgs = {
   distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16742,6 +19383,13 @@ export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Sent_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Sent_Friend_Requests_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
@@ -16769,6 +19417,13 @@ export type Subscription_RootUser_Settings_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Settings_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Settings_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
 export type Subscription_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -16789,6 +19444,13 @@ export type Subscription_RootUsers_AggregateArgs = {
 
 export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootUsers_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Users_Stream_Cursor_Input>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 /** columns and relationships of "taboo_set" */
@@ -16879,7 +19541,7 @@ export type Taboo_Set_Bool_Exp = {
 
 /** unique or primary key constraints on table "taboo_set" */
 export enum Taboo_Set_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   TabooSetPkey = 'taboo_set_pkey'
 }
 
@@ -16929,10 +19591,10 @@ export type Taboo_Set_Mutation_Response = {
   returning: Array<Taboo_Set>;
 };
 
-/** on conflict condition type for table "taboo_set" */
+/** on_conflict condition type for table "taboo_set" */
 export type Taboo_Set_On_Conflict = {
   constraint: Taboo_Set_Constraint;
-  update_columns: Array<Taboo_Set_Update_Column>;
+  update_columns?: Array<Taboo_Set_Update_Column>;
   where?: InputMaybe<Taboo_Set_Bool_Exp>;
 };
 
@@ -16999,6 +19661,24 @@ export type Taboo_Set_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "taboo_set" */
+export type Taboo_Set_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Taboo_Set_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Taboo_Set_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  card_count?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  date?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Taboo_Set_Sum_Fields = {
   __typename?: 'taboo_set_sum_fields';
@@ -17021,6 +19701,14 @@ export enum Taboo_Set_Update_Column {
   /** column name */
   Name = 'name'
 }
+
+export type Taboo_Set_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Taboo_Set_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Taboo_Set_Set_Input>;
+  where: Taboo_Set_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Taboo_Set_Var_Pop_Fields = {
@@ -17270,6 +19958,21 @@ export type User_Campaigns_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "user_campaigns" */
+export type User_Campaigns_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Campaigns_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Campaigns_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type User_Campaigns_Sum_Fields = {
   __typename?: 'user_campaigns_sum_fields';
@@ -17281,6 +19984,14 @@ export type User_Campaigns_Sum_Fields = {
 export type User_Campaigns_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type User_Campaigns_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<User_Campaigns_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Campaigns_Set_Input>;
+  where: User_Campaigns_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -17363,7 +20074,7 @@ export type User_Flag_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "user_flag" */
 export type User_Flag_Arr_Rel_Insert_Input = {
   data: Array<User_Flag_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<User_Flag_On_Conflict>;
 };
 
@@ -17379,7 +20090,7 @@ export type User_Flag_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_flag" */
 export enum User_Flag_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "flag", "user_id" */
   UserFlagPkey = 'user_flag_pkey'
 }
 
@@ -17421,10 +20132,10 @@ export type User_Flag_Mutation_Response = {
   returning: Array<User_Flag>;
 };
 
-/** on conflict condition type for table "user_flag" */
+/** on_conflict condition type for table "user_flag" */
 export type User_Flag_On_Conflict = {
   constraint: User_Flag_Constraint;
-  update_columns: Array<User_Flag_Update_Column>;
+  update_columns?: Array<User_Flag_Update_Column>;
   where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
@@ -17451,6 +20162,20 @@ export enum User_Flag_Select_Column {
 
 /** input type for updating data in table "user_flag" */
 export type User_Flag_Set_Input = {
+  flag?: InputMaybe<User_Flag_Type_Enum>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "user_flag" */
+export type User_Flag_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Flag_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Flag_Stream_Cursor_Value_Input = {
   flag?: InputMaybe<User_Flag_Type_Enum>;
   user_id?: InputMaybe<Scalars['String']>;
 };
@@ -17493,7 +20218,7 @@ export type User_Flag_Type_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_flag_type" */
 export enum User_Flag_Type_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   UserFlagTypePkey = 'user_flag_type_pkey'
 }
 
@@ -17538,10 +20263,10 @@ export type User_Flag_Type_Mutation_Response = {
   returning: Array<User_Flag_Type>;
 };
 
-/** on conflict condition type for table "user_flag_type" */
+/** on_conflict condition type for table "user_flag_type" */
 export type User_Flag_Type_On_Conflict = {
   constraint: User_Flag_Type_Constraint;
-  update_columns: Array<User_Flag_Type_Update_Column>;
+  update_columns?: Array<User_Flag_Type_Update_Column>;
   where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
@@ -17566,11 +20291,30 @@ export type User_Flag_Type_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_flag_type" */
+export type User_Flag_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Flag_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Flag_Type_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "user_flag_type" */
 export enum User_Flag_Type_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type User_Flag_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Flag_Type_Set_Input>;
+  where: User_Flag_Type_Bool_Exp;
+};
 
 /** update columns of table "user_flag" */
 export enum User_Flag_Update_Column {
@@ -17579,6 +20323,12 @@ export enum User_Flag_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type User_Flag_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Flag_Set_Input>;
+  where: User_Flag_Bool_Exp;
+};
 
 /** columns and relationships of "user_friends" */
 export type User_Friends = {
@@ -17705,6 +20455,27 @@ export type User_Friends_Set_Input = {
   status?: InputMaybe<Scalars['String']>;
   user_id_a?: InputMaybe<Scalars['String']>;
   user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "user_friends" */
+export type User_Friends_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Friends_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Friends_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Friends_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Friends_Set_Input>;
+  where: User_Friends_Bool_Exp;
 };
 
 /** columns and relationships of "user_received_friend_requests" */
@@ -17834,6 +20605,27 @@ export type User_Received_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_received_friend_requests" */
+export type User_Received_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Received_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Received_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Received_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Received_Friend_Requests_Set_Input>;
+  where: User_Received_Friend_Requests_Bool_Exp;
+};
+
 /** columns and relationships of "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests = {
   __typename?: 'user_sent_friend_requests';
@@ -17961,6 +20753,27 @@ export type User_Sent_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_sent_friend_requests" */
+export type User_Sent_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Sent_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Sent_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Sent_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
+  where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
 /** columns and relationships of "user_settings" */
 export type User_Settings = {
   __typename?: 'user_settings';
@@ -18044,7 +20857,7 @@ export type User_Settings_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_settings" */
 export enum User_Settings_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id" */
   UserSettingsPkey = 'user_settings_pkey'
 }
 
@@ -18105,10 +20918,10 @@ export type User_Settings_Mutation_Response = {
   returning: Array<User_Settings>;
 };
 
-/** on conflict condition type for table "user_settings" */
+/** on_conflict condition type for table "user_settings" */
 export type User_Settings_On_Conflict = {
   constraint: User_Settings_Constraint;
-  update_columns: Array<User_Settings_Update_Column>;
+  update_columns?: Array<User_Settings_Update_Column>;
   where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
@@ -18180,6 +20993,29 @@ export type User_Settings_Set_Input = {
   user_id?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_settings" */
+export type User_Settings_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Settings_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Settings_Stream_Cursor_Value_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "user_settings" */
 export enum User_Settings_Update_Column {
   /** column name */
@@ -18205,6 +21041,22 @@ export enum User_Settings_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type User_Settings_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
 
 /** columns and relationships of "users" */
 export type Users = {
@@ -18450,7 +21302,7 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey'
 }
 
@@ -18500,14 +21352,14 @@ export type Users_Mutation_Response = {
 /** input type for inserting object relation for remote table "users" */
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
-/** on conflict condition type for table "users" */
+/** on_conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
-  update_columns: Array<Users_Update_Column>;
+  update_columns?: Array<Users_Update_Column>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
@@ -18552,6 +21404,22 @@ export type Users_Set_Input = {
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
+/** Streaming cursor of the table "users" */
+export type Users_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Users_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Users_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
 /** update columns of table "users" */
 export enum Users_Update_Column {
   /** column name */
@@ -18563,6 +21431,12 @@ export enum Users_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Users_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Users_Set_Input>;
+  where: Users_Bool_Exp;
+};
 
 export type GetUpdatedCardsQueryVariables = Exact<{
   locale: Scalars['String'];
@@ -18576,7 +21450,7 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, official: boolean, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }>, linked_card: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, official: boolean, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }> } }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any }> };
+export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, official: boolean, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, official: boolean, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }> } | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number }>, faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -18679,7 +21553,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
@@ -18853,7 +21727,7 @@ export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', s
 
 export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
 
 export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> };
 
@@ -18862,14 +21736,14 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
 
 export type GetCampaignQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -18897,7 +21771,7 @@ export type CampaignSubscriptionVariables = Exact<{
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -19650,6 +22524,18 @@ export const GetCardsDocument = gql`
   }
   taboo_set(where: {active: {_eq: true}}) {
     ...TabooSet
+  }
+  faction_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
+  }
+  card_type_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
+  }
+  card_subtype_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
   }
   card_encounter_set(where: {locale: {_eq: $locale}}) {
     ...EncounterSet

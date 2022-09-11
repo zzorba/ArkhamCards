@@ -33,7 +33,7 @@ function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props
           header={children}
           faction="neutral"
           color={campaignColor(campaign.cycleCode, colors)}
-          footer={<RoundedFooterButton color="light" icon="date" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} onPress={debouncedOnPress} />}
+          footer={<RoundedFooterButton color="light" icon="date" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} />}
           noSpace
         >
           { null }

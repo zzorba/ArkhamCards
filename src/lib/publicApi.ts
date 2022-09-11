@@ -1,9 +1,8 @@
-import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, uniqBy, values } from 'lodash';
+import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
 import { Platform } from 'react-native';
-import { t } from 'ttag';
 
-import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE } from '@actions/types';
-import { Rule as JsonRule, TabooSets, TabooSet as JsonTabooSet } from '@data/scenario/types';
+import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
+import { Rule as JsonRule } from '@data/scenario/types';
 import Card, { CARD_NUM_COLUMNS } from '@data/types/Card';
 import Rule from '@data/types/Rule';
 import Database, { SqliteVersion } from '@data/sqlite/Database';
@@ -192,6 +191,7 @@ export const syncCards = async function(
         position: number;
       };
     } = {};
+    const standardPacks: Pack[] = [];
     const customPacks: Pack[] = [];
     forEach(cardsResponse.data.cycle, cycle => {
       const cycle_name = head(cycle.translations)?.name || cycle.real_name;
@@ -212,6 +212,8 @@ export const syncCards = async function(
         packs[pack.code] = pack;
         if (!cycle.official) {
           customPacks.push(pack);
+        } else {
+          standardPacks.push(pack);
         }
       });
       cycles[cycle.code] = {
@@ -219,14 +221,37 @@ export const syncCards = async function(
         position: cycle.position,
       };
     });
+
+    dispatch({
+      type: PACKS_AVAILABLE,
+      packs: standardPacks,
+      lang: lang || 'en',
+      timestamp: new Date(),
+      lastModified: undefined,
+    });
     dispatch({ type: CUSTOM_PACKS_AVAILABLE, packs: customPacks, lang: lang || 'en' });
+
+    const factionNames: { [code: string]: string } = {};
+    forEach(cardsResponse.data.faction_name, faction => {
+      factionNames[faction.code] = faction.name;
+    });
+    const typeNames: { [code: string]: string } = {};
+    forEach(cardsResponse.data.card_type_name, type => {
+      typeNames[type.code] = type.name;
+    });
+
+    const subtypeNames: { [code: string]: string } = {};
+    forEach(cardsResponse.data.card_subtype_name, type => {
+      subtypeNames[type.code] = type.name;
+    });
+
     VERBOSE && console.time('parse');
     const total = cardsResponse.data.all_card.length;
     const allCards = map(cardsResponse.data.all_card, (card, idx) => {
       if (idx % 500 === 0) {
         updateProgress(0.2 + (idx * 1.0 / total * .1));
       }
-      return Card.fromGraphQl(card, lang || 'en', allEncounterSets, packs, cycles);
+      return Card.fromGraphQl(card, lang || 'en', allEncounterSets, packs, cycles, typeNames, subtypeNames, factionNames);
     });
     VERBOSE && console.timeEnd('parse');
     updateProgress(0.3)

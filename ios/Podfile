@@ -1,3 +1,5 @@
+$RNFirebaseAsStaticFramework = true
+
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -6,6 +8,7 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'ArkhamCards' do
   config = use_native_modules!
+  use_frameworks! :linkage => :static
 
   # Flags change depending on the env values.
   flags = get_default_flags()

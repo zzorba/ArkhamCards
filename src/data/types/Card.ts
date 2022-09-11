@@ -1173,35 +1173,17 @@ export default class Card {
         cycle_name: string;
         cycle_position: number;
       };
+    },
+    cardTypeNames: {
+      [type_code: string]: string
+    },
+    subTypeName: {
+      [type_code: string]: string
+    },
+    factionNames: {
+      [faction_code: string]: string
     }
   ) {
-    const cardTypeNames: { [key: string]: string } = {
-      asset: t`Asset`,
-      event: t`Event`,
-      skill: t`Skill`,
-      investigator: t`Investigator`,
-      treachery: t`Treachery`,
-      scenario: t`Scenario`,
-      location: t`Location`,
-      enemy: t`Enemy`,
-      act: t`Act`,
-      agenda: t`Agenda`,
-      story: t`Story`,
-    };
-    const factionNames: { [key: string]: string } = {
-      neutral: t`Neutral`,
-      guardian: t`Guardian`,
-      seeker: t`Seeker`,
-      rogue: t`Rogue`,
-      mystic: t`Mystic`,
-      survivor: t`Survivor`,
-      mythos: t`Mythos`,
-    };
-
-    const subTypeName: { [key: string]: string } = {
-      weakness: t`Weakness`,
-      basicweakness: t`Basic Weakness`,
-    };
     const OMIT_FIELDS = ['__typename', 'real_pack_name', 'real_flavor', 'real_customization_text', 'real_taboo_text_change', 'real_customization_text'];
     const json: any = card.translations.length ? {
       ...omit(card, OMIT_FIELDS),
@@ -1256,11 +1238,20 @@ export default class Card {
         name: string;
         position: number;
       };
+    },
+    types: {
+      [type_code: string]: string
+    },
+    subtypes: {
+      [type_code: string]: string
+    },
+    factions: {
+      [faction_code: string]: string
     }
   ) {
-    const json = Card.gqlToJson(card, encounterSets, packs);
+    const json = Card.gqlToJson(card, encounterSets, packs, types, subtypes, factions);
     if (card.linked_card) {
-      json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs);
+      json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs, types, subtypes, factions);
       json.linked_to_code = json.linked_card.id;
       json.linked_to_name = json.linked_card.real_name;
     }

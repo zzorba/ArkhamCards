@@ -3,7 +3,7 @@ import * as Keychain from 'react-native-keychain';
 
 import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
 
-const VERBOSE = false;
+const VERBOSE = __DEV__;
 // @ts-ignore
 const config: AppAuthConfig = {
   issuer: Config.OAUTH_SITE,

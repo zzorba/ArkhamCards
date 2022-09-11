@@ -90,10 +90,6 @@ export function fetchCards(
     dispatch({
       type: CARD_FETCH_START,
     });
-    VERBOSE && console.log('Fetching packs');
-    const packs = await dispatch(fetchPacks(cardLang));
-    VERBOSE && console.log('Packs fetched');
-
     try {
       const state = getState();
       const sqliteVersion = await db.sqliteVersion();
@@ -126,64 +122,6 @@ export function fetchCards(
     }
   };
 }
-
-type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
-export function fetchPacks(
-  lang: string
-): ThunkAction<Promise<Pack[]>, AppState, unknown, PackActions> {
-  return async(dispatch: Dispatch<PackActions>, getState: () => AppState) => {
-    try {
-      VERBOSE && console.log('entered fetchPacks');
-      dispatch({
-        type: PACKS_FETCH_START,
-      });
-      const state = getState().packs;
-      const lastModified = state.lastModified;
-      const packs = state.all;
-      const headers = new Headers();
-      /* eslint-disable eqeqeq */
-      if (lastModified && packs && packs.length && state.lang == lang) {
-        headers.append('If-Modified-Since', lastModified);
-      }
-      VERBOSE && console.log(`Fetch called: https://arkhamdb.com/api/public/packs/`);
-      const response = await fetch(`${getArkhamDbDomain(lang || 'en')}/api/public/packs/`, {
-        method: 'GET',
-        headers: headers,
-      });
-      VERBOSE && console.log('Got packs response');
-      if (response.status === 304) {
-        VERBOSE && console.log('Packs returned 304');
-        // Cache hit, no change needed.
-        dispatch({
-          type: PACKS_CACHE_HIT,
-          timestamp: new Date(),
-        });
-        return packs;
-      }
-      const newLastModified = response.headers.get('Last-Modified');
-      const json = await response.json();
-      VERBOSE && console.log('Got packs json');
-      const newPacks: Pack[] = json;
-      dispatch({
-        type: PACKS_AVAILABLE,
-        packs: newPacks,
-        lang,
-        timestamp: new Date(),
-        lastModified: newLastModified || undefined,
-      });
-      return newPacks;
-    } catch(err){
-      console.log(err);
-      dispatch({
-        type: PACKS_FETCH_ERROR,
-        error: err.message || err,
-      });
-      return [];
-    }
-  };
-}
-
-
 export function dismissUpdatePrompt() {
   return {
     type: UPDATE_PROMPT_DISMISSED,
@@ -192,7 +130,6 @@ export function dismissUpdatePrompt() {
 }
 
 export default {
-  fetchPacks,
   fetchCards,
   dismissUpdatePrompt,
 };
