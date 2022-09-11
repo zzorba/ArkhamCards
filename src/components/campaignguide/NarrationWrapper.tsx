@@ -8,12 +8,12 @@ import {
   Linking,
   View,
   ViewStyle,
-  TouchableOpacity,
 } from 'react-native';
 import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
 import { StyleContext } from '@styles/StyleContext';

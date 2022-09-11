@@ -38,7 +38,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 126;
+export const CARD_NUM_COLUMNS = 130;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -1161,6 +1161,9 @@ export default class Card {
   private static gqlToJson(
     card: SingleCardFragment & {
       translations: CoreCardTextFragment[];
+      linked_card?: SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      };
     },
     encounterSets: { [code: string]: string | undefined },
     packs: {
@@ -1199,11 +1202,12 @@ export default class Card {
       weakness: t`Weakness`,
       basicweakness: t`Basic Weakness`,
     };
+    const OMIT_FIELDS = ['__typename', 'real_pack_name', 'real_flavor', 'real_customization_text', 'real_taboo_text_change', 'real_customization_text'];
     const json: any = card.translations.length ? {
-      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
+      ...omit(card, OMIT_FIELDS),
       ...omit(card.translations[0], '__typename'),
     } : {
-      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
+      ...omit(card, OMIT_FIELDS),
       flavor: card.real_flavor,
       name: card.real_name,
       slot: card.real_slot,
@@ -1213,10 +1217,15 @@ export default class Card {
       back_flavor: card.real_back_flavor,
       back_name: card.real_back_name,
       back_text: card.real_back_text,
+      customization_text: card.real_customization_text,
+      customization_change: card.real_customization_change,
+      taboo_text_change: card.real_taboo_text_change,
     };
     json.encounter_name = card.encounter_code ? (encounterSets[card.encounter_code] || card.real_encounter_set_name) : undefined;
     json.pack_name = packs[card.pack_code]?.name || card.real_pack_name;
     json.cycle_name = packs[card.pack_code]?.cycle_name;
+    json.extra_xp = json.taboo_xp;
+
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];
     if (card.subtype_code) {
@@ -1227,10 +1236,10 @@ export default class Card {
 
   static fromGraphQl(
     card: SingleCardFragment & {
-      linked_card?: SingleCardFragment & {
-        translations: CoreCardTextFragment[];
-      };
       translations: CoreCardTextFragment[];
+      linked_card: undefined | (SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      });
     },
     lang: string,
     encounterSets: { [code: string]: string | undefined },
@@ -1252,7 +1261,7 @@ export default class Card {
     const json = Card.gqlToJson(card, encounterSets, packs);
     if (card.linked_card) {
       json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs);
-      json.linked_to_code = json.linked_card.code;
+      json.linked_to_code = json.linked_card.id;
       json.linked_to_name = json.linked_card.real_name;
     }
     return Card.fromJson(json, packs, cycles, lang);
@@ -1272,8 +1281,7 @@ export default class Card {
         code?: string;
       };
     },
-    lang: string,
-    noFlipping?: boolean
+    lang: string
   ): Card {
     if (json.code === '02041') {
       json.subtype_code = null;
@@ -1484,28 +1492,6 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (!noFlipping && (
-      (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') ||
-      SICKENING_REALITY_CARDS.has(result.code)
-    )) {
-      result = {
-        ...omit(result.linked_card, ['back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'linked_card']),
-        back_linked: null,
-        hidden: null,
-        linked_to_code: result.code,
-        linked_to_name: result.name,
-        linked_card: {
-          ...omit(result, ['linked_card', 'back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'browse_visible', 'mythos_card']),
-          linked_card: undefined,
-          back_linked: true,
-          hidden: true,
-          linked_to_code: result.linked_card.code,
-          linked_to_name: result.linked_card.name,
-          browse_visible: false,
-          mythos_card: true,
-        },
-      };
-    }
     result.browse_visible = 0;
     if (result.code.startsWith('z')) {
       result.browse_visible += 16;

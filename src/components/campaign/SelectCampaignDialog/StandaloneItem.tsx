@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
 
+import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
 import { StandaloneId } from '@actions/types';
 import ItemContent from './ItemContent';
 
@@ -21,9 +21,9 @@ export default function StandaloneItem({ id, packCode, text, description, disabl
 
   if (!disabled) {
     return (
-      <TouchableOpacity onPress={handleOnPress} key={packCode}>
+      <TouchableShrink onPress={handleOnPress} key={packCode}>
         <ItemContent packCode={packCode} text={text} disabled={disabled} description={description} />
-      </TouchableOpacity>
+      </TouchableShrink>
     );
   }
   return <ItemContent packCode={packCode} text={text} disabled={disabled} description={description} />;

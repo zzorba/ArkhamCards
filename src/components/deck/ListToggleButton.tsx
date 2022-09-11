@@ -2,10 +2,10 @@ import React, { useCallback, useContext } from 'react';
 import {
   Platform,
   StyleSheet,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import { useSettingFlag } from '@components/core/hooks';

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import Card from '@data/types/Card';
@@ -7,6 +7,7 @@ import RadioButton from '../RadioButton';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';
+import { TouchableShrink } from '@components/core/Touchables';
 
 interface BasicProps {
   selected: boolean;
@@ -79,7 +80,7 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
   }, [selected, editable, props, width, description, colors, typography, transparent]);
   return (
     <View style={space.paddingBottomXs}>
-      { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }
+      { editable ? <TouchableShrink onPress={onPress}>{content}</TouchableShrink> : content }
     </View>
   );
 }

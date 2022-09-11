@@ -207,6 +207,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
             return {
               code: card.code,
               name: card.name,
+              description: card.subname,
               limit: card.quantity || 1,
             };
           })}
@@ -225,6 +226,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
             return {
               code: card.code,
               name: card.name,
+              description: card.subname,
               masculine: card.grammarGenderMasculine(),
             };
           })}
@@ -249,6 +251,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
         return {
           code: card.code,
           name: card.name,
+          description: card.subname,
         };
       })}
       min={input.min}

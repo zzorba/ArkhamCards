@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { ngettext, msgid } from 'ttag';
@@ -14,6 +13,7 @@ import {
 } from 'rn-placeholder';
 import { map } from 'lodash';
 
+import { TouchableShrink } from '@components/core/Touchables';
 import { Campaign } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
@@ -275,9 +275,9 @@ export default function NewDeckListRow({
     return contents;
   }
   return (
-    <TouchableOpacity onPress={onDeckPress}>
+    <TouchableShrink onPress={onDeckPress}>
       { contents }
-    </TouchableOpacity>
+    </TouchableShrink>
   );
 }
 

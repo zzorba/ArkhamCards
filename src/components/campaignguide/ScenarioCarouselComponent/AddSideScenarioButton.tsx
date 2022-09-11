@@ -1,9 +1,10 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, findLast, findLastIndex } from 'lodash';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
 import { ShowAlert } from '@components/deck/dialogs';

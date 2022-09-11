@@ -1,3 +1,4 @@
+import { TabooSetFragment } from '@generated/graphql/apollo-schema';
 import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
 
 @Entity('taboo_set')
@@ -23,15 +24,14 @@ export default class TabooSet {
   @Column('text', { nullable: true })
   date_update?: string;
 
-  static fromJson(json: any, cardCount: number): TabooSet {
+  static fromGQL(tabooSet: TabooSetFragment): TabooSet {
     return {
-      id: json.id,
-      code: json.code,
-      name: json.name,
-      cardCount,
-      active: json.active === 1,
-      date_start: json.date_start,
-      date_update: json.date_update,
+      id: tabooSet.id,
+      code: tabooSet.code,
+      cardCount: tabooSet.card_count,
+      active: tabooSet.active,
+      date_start: tabooSet.date,
+      date_update: tabooSet.date,
     };
   }
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
+import { TouchableQuickSize } from '@components/core/Touchables';
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 
@@ -12,26 +13,27 @@ interface Props {
   disabled?: boolean;
   noShadow?: boolean;
   accessibilityLabel: string;
-  useGestureHandler?: boolean;
   wide?: boolean;
 }
 
-export default function RoundButton({ onPress, accessibilityLabel, children, disabled, size = 32, margin = 0, noShadow, useGestureHandler, wide }: Props) {
+export default function RoundButton({ onPress, accessibilityLabel, children, disabled, size = 32, margin = 0, noShadow, wide }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
-    <Ripple accessibilityLabel={accessibilityLabel} style={[
-      noShadow ? undefined : shadow.medium,
-      styles.button,
-      {
-        backgroundColor: colors.L20,
-        width: size * (wide ? 2 : 1),
-        height: size,
-        borderRadius: size / 2,
-        margin,
-      },
-    ]} onPress={onPress} useGestureHandler={useGestureHandler} rippleColor={colors.M} rippleSize={size} disabled={disabled}>
-      { children }
-    </Ripple>
+    <TouchableQuickSize accessibilityLabel={accessibilityLabel} onPress={onPress} disabled={disabled} activeScale={1.1}>
+      <View style={[
+        noShadow ? undefined : shadow.medium,
+        styles.button,
+        {
+          backgroundColor: colors.L20,
+          width: size * (wide ? 2 : 1),
+          height: size,
+          borderRadius: size / 2,
+          margin,
+        },
+      ]}>
+        { children }
+      </View>
+    </TouchableQuickSize>
   );
 }
 

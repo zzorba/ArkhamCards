@@ -10324,6 +10324,11 @@ plural-forms@0.5.3, plural-forms@^0.5.3:
   resolved "https://registry.yarnpkg.com/plural-forms/-/plural-forms-0.5.3.tgz#63c97b0f3be6ead92276d6f6ae81996508997911"
   integrity sha512-t/hkjsTeDwaK9n/z6tUiSHySTC8sPnTiS5YF3Y5p4L+eomzXh7O0vEemkjwb68/82w0Rjw4uED3X84X7vXf9lg==
 
+pod-install@^0.1.38:
+  version "0.1.38"
+  resolved "https://registry.yarnpkg.com/pod-install/-/pod-install-0.1.38.tgz#1c16a800a5fc1abea0cafcc0e190f376368c76ab"
+  integrity sha512-NeDWGigjJRriOIKBOvpW2/tK2tYLfyUT7ia6C6L+oarCAhBNP+IGODWdU+GEAqvfsseqOApcFclpXAJTL0UPzA==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -10656,6 +10661,11 @@ react-native-config@1.4.6:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.6.tgz#2aefebf4d9cf02831e64bbc1307596bd212f6d42"
   integrity sha512-cSLdOfva2IPCxh6HjHN1IDVW9ratAvNnnAUx6ar2Byvr8KQU7++ysdFYPaoNVuJURuYoAKgvjab8ZcnwGZIO6Q==
 
+react-native-console-time-polyfill@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-console-time-polyfill/-/react-native-console-time-polyfill-1.2.3.tgz#1039dab1bb9e2d8040f5e19de68e0da781dc9b60"
+  integrity sha512-C7CUb1c6GsCssqvjtRuqVqnGwlfEHXxXDvCUuGNbq/gpZZt+9YbZD3ODmXBDxis3tDQA0k1lbT1VMTqWQw9rDg==
+
 react-native-deep-linking@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
@@ -10807,6 +10817,11 @@ react-native-progress@5.0.0:
   integrity sha512-KjnGIt3r9i5Kn2biOD9fXLJocf0bwxPRxOyAgXEnZTJQU2O+HyzgGFRCbM5h3izm9kKIkSc1txh8aGmMafCD9A==
   dependencies:
     prop-types "^15.7.2"
+
+react-native-quick-sqlite@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-quick-sqlite/-/react-native-quick-sqlite-4.0.7.tgz#f6edd935eb368b9ebcb4449ed43fb3054e047616"
+  integrity sha512-xzASTSMe9sfuLaAafr170+bD4xDl6KXtoE5n7AtiKry2qUTBn6vZCgx0ToHzqfw1P4Se9ptCT2xvnaTsuRfGgQ==
 
 react-native-reanimated@2.10.0:
   version "2.10.0"

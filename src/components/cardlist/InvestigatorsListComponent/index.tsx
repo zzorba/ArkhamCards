@@ -22,7 +22,7 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from '@components/core/Touchables';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';

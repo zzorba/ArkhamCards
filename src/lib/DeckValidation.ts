@@ -118,20 +118,23 @@ export default class DeckValidation {
       groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
       group => {
         const card = group[0];
-        const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
-        // Let's assume if one is myriad, then they all are.
-        const deck_limit = (card && card.myriad) ? 3 : (
-          // Otherwise take the smallest limit found, to make OYO(3*2) work.
-          (smallestDeckLimitCard && smallestDeckLimitCard.deck_limit) || 0
-        );
-
-        if (!card.restrictions_investigator && specialCards.underworldSupport > 0) {
+        if (!(
+          card.restrictions_investigator ||
+          card.xp === undefined ||
+          card.xp === null
+        ) && specialCards.underworldSupport > 0) {
           return {
             nb_copies: group.length,
             deck_limit: 1,
           };
         }
         const isPreciousMemories = card.code === '08114' || card.code === '08115';
+        const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
+        // Let's assume if one is myriad, then they all are.
+        const deck_limit = (card && card.myriad) ? 3 : (
+          // Otherwise take the smallest limit found, to make OYO(3*2) work.
+          (smallestDeckLimitCard && smallestDeckLimitCard.deck_limit) || 0
+        );
 
         return {
           nb_copies: group.length,

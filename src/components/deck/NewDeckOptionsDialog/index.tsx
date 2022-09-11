@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   Text,
-  TouchableOpacity,
   ScrollView,
   StyleSheet,
   View,
@@ -14,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showCard, showCardSwipe, showDeckModal } from '@components/nav/helper';
 import useNetworkStatus from '@components/core/useNetworkStatus';

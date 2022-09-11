@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
 import { usePickerDialog, Item } from '@components/deck/dialogs';
 import Card from '@data/types/Card';
 import { map } from 'lodash';
@@ -136,7 +137,7 @@ export default function SinglePickerComponent({
           editable && !firstItem ? space.paddingTopXs : undefined,
           editable ? undefined : space.paddingBottomXs,
         ]}>
-          <TouchableOpacity
+          <TouchableShrink
             onPress={showDialog}
             disabled={!editable}
           >
@@ -146,7 +147,7 @@ export default function SinglePickerComponent({
             >
               { selection }
             </CompactInvestigatorRow>
-          </TouchableOpacity>
+          </TouchableShrink>
         </View>
       );
     }

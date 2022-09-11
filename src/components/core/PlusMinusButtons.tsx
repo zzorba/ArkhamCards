@@ -3,14 +3,13 @@ import {
   AccessibilityActionEvent,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
-import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 import { flatten } from 'lodash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { TouchableQuickSize, TouchableOpacity } from '@components/core/Touchables';
 import { xs } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -34,7 +33,6 @@ interface Props {
   dialogStyle?: boolean;
   rounded?: boolean;
   showZeroCount?: boolean;
-  useGestureHandler?: boolean;
   showMax?: boolean;
 }
 
@@ -56,12 +54,10 @@ export default function PlusMinusButtons({
   dialogStyle,
   rounded,
   showZeroCount,
-  useGestureHandler,
   large,
   showMax,
 }: Props
 ) {
-  const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
   const { colors, typography } = useContext(StyleContext);
   const incrementEnabled = !!(!(count === null || (max && (count === max)) || disabled || disablePlus || max === 0) && onIncrement);
   const decrementEnabled = !!((count > (min || 0) || allowNegative) && !disabled && !!onDecrement);
@@ -101,120 +97,69 @@ export default function PlusMinusButtons({
 
   const plusButton = useMemo(() => {
     const width = rounded ? 40 : size * 0.8;
-    if (incrementEnabled) {
-      return (
-        <Touchable onPress={onIncrement}>
-          <View
-            style={[
-              dialogStyle ? { width, height: width } : undefined,
-              rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: roundedColor } : undefined,
-            ]}
-          >
-            { dialogStyle ? (
-              <AppIcon
-                name="plus-button"
-                size={rounded || large ? 36 : 28}
-                color={enabledColor}
-              />
-            ) : (
-              <MaterialCommunityIcons
-                name={noFill ? 'plus-box-outline' : 'plus-box'}
-                size={size}
-                color={enabledColor}
-              />
-            ) }
-          </View>
-        </Touchable>
-      );
-    }
-
-    if (color === 'light' || color === 'white') {
+    if (!incrementEnabled && (color === 'light' || color === 'white')) {
       return (
         <View style={dialogStyle ? { width, height: width } : undefined} />
       );
     }
     return (
-      <Touchable disabled>
+      <TouchableQuickSize disabled={!incrementEnabled} onPress={onIncrement} hitSlop={4} activeScale={rounded ? 1.1 : 1.3}>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
-          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: incrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
-            <View opacity={0.3}>
+            <View opacity={incrementEnabled ? 1 : 0.3}>
               <AppIcon
                 name="plus-button"
                 size={rounded || large ? 36 : 28}
-                color={colors.M}
+                color={incrementEnabled ? enabledColor : colors.M}
               />
             </View>
           ) : (
             <MaterialCommunityIcons
-              name="plus-box-outline"
+              name={!incrementEnabled || noFill ? 'plus-box-outline' : 'plus-box'}
               size={size}
-              color={disabledColor}
+              color={incrementEnabled ? enabledColor : disabledColor}
             />
           ) }
         </View>
-      </Touchable>
+      </TouchableQuickSize>
     );
-  }, [Touchable, large, onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
+  }, [large, onIncrement, noFill, color, dialogStyle, rounded, size, disabledColor, enabledColor, roundedColor, incrementEnabled, colors]);
 
   const minusButton = useMemo(() => {
     const width = rounded ? 40 : size * 0.8;
-    if (decrementEnabled) {
-      return (
-        <Touchable onPress={onDecrement}>
-          <View style={[
-            dialogStyle ? { width, height: width } : undefined,
-            rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: roundedColor } : undefined,
-          ]}>
-            { dialogStyle ? (
-              <AppIcon
-                name="minus-button"
-                size={rounded || large ? 36 : 28}
-                color={enabledColor}
-              />
-            ) : (
-              <MaterialCommunityIcons
-                name={noFill ? 'minus-box-outline' : 'minus-box'}
-                size={size}
-                color={enabledColor}
-              />
-            ) }
-          </View>
-        </Touchable>
-      );
-    }
-    if (color === 'light' || hideDisabledMinus) {
+    if (!decrementEnabled && (color === 'light' || hideDisabledMinus)) {
       return (
         <View style={dialogStyle ? { width, height: width } : undefined} />
       );
     }
     return (
-      <Touchable disabled>
+      <TouchableQuickSize disabled={!decrementEnabled} onPress={onDecrement} hitSlop={4} activeScale={rounded ? 1.1 : 1.3}>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
-          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20 } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: decrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
-            <View opacity={0.3}>
+            <View opacity={decrementEnabled ? 1 : 0.3}>
               <AppIcon
                 name="minus-button"
                 size={rounded || large ? 36 : 28}
-                color={colors.M}
+                color={decrementEnabled ? enabledColor : colors.M}
               />
             </View>
           ) : (
             <MaterialCommunityIcons
-              name="minus-box-outline"
+              name={!decrementEnabled || noFill ? 'minus-box-outline' : 'minus-box'}
               size={size}
-              color={disabledColor}
+              color={decrementEnabled ? enabledColor : disabledColor}
             />
           )}
         </View>
-      </Touchable>
+      </TouchableQuickSize>
     );
-  }, [Touchable, onDecrement, large, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
+  }, [onDecrement, large, noFill, color, hideDisabledMinus, dialogStyle, rounded, size, decrementEnabled, enabledColor, disabledColor, roundedColor, colors]);
 
   const accessibilityActions = useMemo(() => {
     return flatten([

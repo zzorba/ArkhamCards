@@ -17,6 +17,7 @@ export interface ListItem {
   code: string;
   investigator?: Card;
   name: string;
+  description?: string;
   color?: string;
   masculine?: boolean;
 }

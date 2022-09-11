@@ -3,13 +3,12 @@ import { map, range, repeat } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
-  TouchableOpacity,
   Text,
   View,
 } from 'react-native';
-import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import Card from '@data/types/Card';
@@ -214,7 +213,6 @@ function CardSearchResult(props: Props) {
       </View>
     );
   }, [card]);
-  const Touchable = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
 
   const tabooBlock = useMemo(() => {
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
@@ -325,16 +323,10 @@ function CardSearchResult(props: Props) {
         alignItems: 'center',
       },
     ]}>
-      <Touchable
-        activeOpacity={0.7}
-        containerStyle={{ flex: 1 }}
-        style={[styles.row, styles.fullHeight]}
+      <TouchableOpacity
+        style={styles.row}
         onPress={handleCardPress}
         disabled={!onPress && !onPressId}
-        testID={`SearchCard-${card.code}`}
-        delayPressIn={5}
-        delayPressOut={5}
-        delayLongPress={5}
       >
         <View opacity={faded ? 0.5 : 1.0} style={[
           styles.cardTextRow,
@@ -343,7 +335,7 @@ function CardSearchResult(props: Props) {
           <CardIcon card={card} />
           { cardName }
         </View>
-      </Touchable>
+      </TouchableOpacity>
       { !!control && <ControlComponent control={control} card={card} useGestureHandler={useGestureHandler} /> }
     </View>
   );
@@ -377,8 +369,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  fullHeight: {
   },
   skillIcons: {
     flexDirection: 'row',

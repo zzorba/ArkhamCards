@@ -1,11 +1,13 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
 import space, { m, s, xs, isTablet } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TouchableShrink } from '@components/core/Touchables';
 
 interface Props {
   choice: DisplayChoice;
@@ -37,34 +39,25 @@ export default function ChoiceComponent({
     );
   }, [choice]);
   const showBorder = !last && isTablet;
-  const content = useMemo(() => {
-    return (
-      <View style={[
-        styles.row,
-        !editable ? space.paddingLeftS : undefined,
-        showBorder ? borderStyle : undefined,
-        showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
-      ]}>
-        <View style={styles.padding}>
-          <View style={[styles.bullet, styles.radioButton]}>
-            <ArkhamSwitch large value={selected} color="dark" />
-          </View>
+  return (
+    <View style={[
+      styles.row,
+      !editable ? space.paddingLeftS : undefined,
+      showBorder ? borderStyle : undefined,
+      showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
+    ]}>
+      <View style={styles.padding}>
+        <View style={[styles.bullet, styles.radioButton]}>
+          <ArkhamSwitch large value={selected} onValueChange={onPress} type="radio" disabled={!editable} color="dark" />
+        </View>
+        <TouchableShrink style={{ flex: 1 }} onPress={onPress} disabled={!editable}>
           <View style={styles.textBlock}>
             { textContent }
           </View>
-        </View>
+        </TouchableShrink>
       </View>
-    );
-  }, [selected, editable, textContent, showBorder, borderStyle]);
-
-  if (editable) {
-    return (
-      <TouchableOpacity onPress={onPress}>
-        { content }
-      </TouchableOpacity>
-    );
-  }
-  return content;
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

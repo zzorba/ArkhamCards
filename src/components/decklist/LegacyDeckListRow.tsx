@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { ngettext, msgid, t } from 'ttag';
@@ -14,6 +13,7 @@ import {
 } from 'rn-placeholder';
 import { keys, uniq } from 'lodash';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { Campaign, Deck, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';

@@ -29,7 +29,7 @@ import {
   CARD_REQUEST_FETCH,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
-import { syncCards, syncTaboos } from '@lib/publicApi';
+import { syncCards } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
@@ -70,7 +70,7 @@ export function fetchCards(
   anonClient: ApolloClient<NormalizedCacheObject>,
   cardLang: string,
   choiceLang: string,
-  updateProgress: (progress: number, msg?: string) => void
+  updateProgress: (progress: number, estimateMillis?: number, msg?: string) => void
 ): ThunkAction<void, AppState, unknown, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
     VERBOSE && console.log('Fetch Cards called');
@@ -100,18 +100,11 @@ export function fetchCards(
 
       const cardCache = await syncCards(updateProgress, db, sqliteVersion, anonClient, packs, dispatch, cardLang, cardsCache(state, cardLang));
       try {
-        const tabooCache = await syncTaboos(
-          updateProgress,
-          db,
-          sqliteVersion,
-          cardLang,
-          taboosCache(getState(), cardLang)
-        );
         db.reloadPlayerCards();
         dispatch({
           type: CARD_FETCH_SUCCESS,
           cache: cardCache || undefined,
-          tabooCache: tabooCache || undefined,
+          tabooCache: undefined,
           cardLang,
           choiceLang,
         });

@@ -14,6 +14,7 @@ import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigrat
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
 import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
+import { Platform } from 'react-native';
 
 type DatabaseListener = () => void;
 
@@ -31,6 +32,7 @@ async function createDatabaseConnection(recreate: boolean) {
   const connection = await createConnection({
     type: 'react-native',
     database: 'arkham4',
+    driver: Platform.OS === 'android' || true ? require('react-native-quick-sqlite') : undefined,
     location: 'default',
     logging: [
       'error',

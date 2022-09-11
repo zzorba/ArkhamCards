@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { ActivityIndicator, Text, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 import { filter, map } from 'lodash';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { CampaignLogEntry, CampaignLogFreeformEntry, EntrySection } from '@data/scenario/GuidedCampaignLog';
 import TextEntryComponent from './TextEntryComponent';
 import CampaignLogCardEntryComponent from './CampaignLogCardEntryComponent';

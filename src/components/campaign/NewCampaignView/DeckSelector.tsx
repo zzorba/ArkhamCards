@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
+import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';
@@ -34,9 +35,9 @@ function CustomInvestigatorRow({ investigator, onRemove }: { investigator: Card,
         width={width - s * 4}
       >
         { !!onRemove && (
-          <TouchableOpacity onPress={onRemove}>
+          <TouchableQuickSize onPress={onRemove} activeScale={1.1}>
             <AppIcon name="trash" size={40} color={COLORS.L30} />
-          </TouchableOpacity>
+          </TouchableQuickSize>
         ) }
       </CompactInvestigatorRow>
     </View>

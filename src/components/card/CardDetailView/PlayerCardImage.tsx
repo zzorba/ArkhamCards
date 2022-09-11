@@ -2,11 +2,11 @@ import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import FactionIcon from '@icons/FactionIcon';

@@ -1,10 +1,29 @@
-query getCustomCards(
+query getUpdatedCards(
   $locale: String!
 ) {
-  full_card(
-    where: { version: { _lte: 2 } }
+  all_card_updated(
+    where: { locale: { _eq: $locale } }
+  ) {
+    translation_updated_at
+    cards_updated_at
+  }
+}
+
+query getCards(
+  $locale: String!
+) {
+  all_card(
+    where: {
+      version: { _lte: 3 }
+      linked: { _is_null: true }
+    }
   ) {
     ...SingleCard
+    translations(
+      where: { locale: { _eq: $locale }}
+    ) {
+      ...CoreCardText
+    }
     linked_card {
       ...SingleCard
       translations(
@@ -13,26 +32,44 @@ query getCustomCards(
         ...CoreCardText
       }
     }
-    translations(
-      where: { locale: { _eq: $locale }}
-    ) {
-      ...CoreCardText
-    }
+  }
+  taboo_set(
+    where: { active: { _eq: true }}
+  ) {
+    ...TabooSet
   }
   card_encounter_set(
-    where: { locale: { _eq: $locale }}
+    where: {
+      locale: { _eq: $locale }
+    }
   ) {
     ...EncounterSet
   }
-  card_pack(
-    where: { locale: { _eq: $locale }}
-  ) {
-    ...Pack
-  }
-  card_cycle(
-    where: { locale: { _eq: $locale }}
+  cycle(
+    order_by: { position: asc }
   ) {
     ...Cycle
+    translations(
+      where: { locale: { _eq: $locale }}
+    ) {
+      name
+    }
+    packs(
+      order_by: { position: asc }
+    ) {
+      ...Pack
+      translations(
+        where: { locale: { _eq: $locale }}
+      ) {
+        name
+      }
+    }
+  }
+  all_card_updated(
+    where: { locale: { _eq: $locale } }
+  ) {
+    translation_updated_at
+    cards_updated_at
   }
 }
 

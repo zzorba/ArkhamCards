@@ -353,6 +353,10 @@ PODS:
     - React-Core
   - react-native-pager-view (5.4.25):
     - React-Core
+  - react-native-quick-sqlite (4.0.7):
+    - React
+    - React-callinvoker
+    - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
   - react-native-track-player (3.1.0):
@@ -558,6 +562,7 @@ DEPENDENCIES:
   - react-native-keyevent (from `../node_modules/react-native-keyevent`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
+  - react-native-quick-sqlite (from `../node_modules/react-native-quick-sqlite`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - react-native-track-player (from `../node_modules/react-native-track-player`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -689,6 +694,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
+  react-native-quick-sqlite:
+    :path: "../node_modules/react-native-quick-sqlite"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
   react-native-track-player:
@@ -820,6 +827,7 @@ SPEC CHECKSUMS:
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-pager-view: da490aa1f902c9a5aeecf0909cc975ad0e92e53e
+  react-native-quick-sqlite: eb0212cb5c306e330e11cfa9d5a5aa4d5b354e02
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   react-native-track-player: 12c7bdc776f11c382c11fecdade3743ebe0af78c
   React-perflogger: 77947e49d84e31eb87d454d4ef327542dcfeaebc

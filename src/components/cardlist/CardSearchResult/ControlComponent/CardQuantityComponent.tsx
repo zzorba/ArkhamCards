@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useReducer } from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StyleSheet, View } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { rowHeight, toggleButtonMode } from '../constants';
 import space, { xs } from '@styles/space';
@@ -88,7 +88,6 @@ function NormalCardQuantityComponent({ code, locked, count: propsCount, countCha
         dialogStyle
         countRender={<StackedCardCount count={count} showZeroCount={showZeroCount} />}
         showZeroCount={showZeroCount}
-        useGestureHandler={useGestureHandler}
       />
     </View>
   );

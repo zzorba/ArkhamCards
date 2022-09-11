@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { showCard } from '@components/nav/helper';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';

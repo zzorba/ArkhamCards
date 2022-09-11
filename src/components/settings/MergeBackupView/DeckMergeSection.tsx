@@ -1,9 +1,10 @@
 import React, { useContext, useMemo } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { map, sumBy } from 'lodash';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import DeckMergeItem from './DeckMergeItem';
 import { Deck, getDeckId } from '@actions/types';
 import space from '@styles/space';

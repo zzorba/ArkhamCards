@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Options } from 'react-native-navigation';
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';

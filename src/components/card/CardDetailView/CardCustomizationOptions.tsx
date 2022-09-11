@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy, uniqBy } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import Card from '@data/types/Card';
 import CustomizationOption, { AdvancedCustomizationChoice, ChooseCardCustomizationChoice, ChooseTraitCustomizationChoice, CustomizationChoice, RemoveSlotCustomizationChoice } from '@data/types/CustomizationOption';
 import StyleContext from '@styles/StyleContext';

@@ -121,11 +121,8 @@ export default class RippleComponent extends PureComponent<Props, State> {
       rippleSequential = DEFAULT_PROPS.rippleSequential,
     } = this.props;
 
-    if (!rippleSequential || !ripples.length) {
-      this.startRipple(event);
-      if (typeof onPress === 'function') {
-        requestAnimationFrame(() => onPress());
-      }
+    if (typeof onPress === 'function') {
+      requestAnimationFrame(() => onPress());
     }
   };
 

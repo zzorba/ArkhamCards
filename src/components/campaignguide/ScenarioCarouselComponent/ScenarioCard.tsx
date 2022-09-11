@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';

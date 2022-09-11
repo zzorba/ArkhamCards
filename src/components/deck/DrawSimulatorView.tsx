@@ -4,12 +4,12 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { c, t } from 'ttag';
 import { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
+import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import space, { m, s, xs } from '@styles/space';
@@ -78,7 +78,7 @@ function Button({ title, disabled, onPress, square, icon, color = 'light', acces
   }, [color, colors]);
   return (
     <View style={[space.paddingLeftS, !square ? { flex: 1 } : undefined]}>
-      <TouchableOpacity disabled={disabled} onPress={onPress} accessibilityLabel={accessibilityLabel}>
+      <TouchableShrink disabled={disabled} onPress={onPress} accessibilityLabel={accessibilityLabel}>
         <View style={[
           square ? { width: 50, justifyContent: 'center' } : { justifyContent: 'flex-start' },
           { borderRadius: 8, padding: s, height: 50, backgroundColor, flexDirection: 'row', alignItems: 'center' },
@@ -90,7 +90,7 @@ function Button({ title, disabled, onPress, square, icon, color = 'light', acces
             </Text>
           ) }
         </View>
-      </TouchableOpacity>
+      </TouchableShrink>
     </View>
   )
 }
@@ -168,9 +168,9 @@ function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width
       <View style={{ flexDirection: 'column', alignItems: 'center', width: width + s, height: CARD_RATIO * width + 60, paddingRight: s, paddingBottom: m }}>
         <ArkhamSwitch value={item.selected} onValueChange={onToggle} />
         <View style={space.paddingTopXs}>
-          <TouchableOpacity onPress={onGridPress}>
+          <TouchableShrink onPress={onGridPress}>
             <CardImage card={card} width={width} superCompact />
-          </TouchableOpacity>
+          </TouchableShrink>
         </View>
       </View>
     );

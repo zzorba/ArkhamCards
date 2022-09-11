@@ -20,8 +20,9 @@ export interface ListItem {
   name: string;
   description?: string;
   color?: string;
+  trauma?: boolean;
   investigator?: Card;
-  investigatorButton?: React.ReactNode;
+  investigatorButton?: React.ReactElement;
 }
 
 export interface CheckListComponentProps {

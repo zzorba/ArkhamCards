@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
@@ -132,9 +133,9 @@ export default function PickerStyleButton({
     return content;
   }
   return (
-    <TouchableOpacity onPress={handleOnPress}>
+    <TouchableShrink onPress={handleOnPress}>
       { content }
-    </TouchableOpacity>
+    </TouchableShrink>
   );
 }
 

@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, TouchableOpacity, View, LayoutChangeEvent } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
 import { jt, t } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { useAppDispatch } from '@app/store';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { CampaignDifficulty, CampaignId } from '@actions/types';

@@ -1,11 +1,12 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ActivityIndicator, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
 import { find, flatMap, keys, throttle, uniq } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { saveClonedDeck } from './actions';
 import { showDeckModal } from '@components/nav/helper';
 import useNetworkStatus from '@components/core/useNetworkStatus';
