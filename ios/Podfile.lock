@@ -447,7 +447,7 @@ PODS:
     - React-Core
   - RNDeviceInfo (10.0.2):
     - React-Core
-  - RNFastImage (8.5.11):
+  - RNFastImage (8.6.1):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
@@ -510,7 +510,7 @@ PODS:
     - React
   - RNShare (7.6.6):
     - React-Core
-  - RNSVG (12.4.4):
+  - RNSVG (13.1.0):
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
@@ -841,7 +841,7 @@ SPEC CHECKSUMS:
   RNCClipboard: 4b8bec7c195e27bcec746f52dff7601161683249
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
   RNDeviceInfo: 0a7c1d2532aa7691f9b9925a27e43af006db4dae
-  RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
+  RNFastImage: 3207b9eb17c2425d574ca40db35185db6e324f4e
   RNFBApp: 9646e09d041ea159b84584865212e4cf33acd179
   RNFBAuth: af943e3ba071b5f4d18896c31e6cba3a77b1fa08
   RNFBDatabase: 7390a8b320e6f1ea82ac6ecd6e19c5a76a4397f0
@@ -855,7 +855,7 @@ SPEC CHECKSUMS:
   RNReanimated: 60e291d42c77752a0f6d6f358387bdf225a87c6e
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: d56424e3926cbc239db1cc1c168adcb051aad50b
-  RNSVG: ecd661f380a07ba690c9c5929c475a44f432d674
+  RNSVG: 1153e8eeb34c788841016c517dba9f57f20b762f
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
