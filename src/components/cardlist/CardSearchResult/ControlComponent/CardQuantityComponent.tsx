@@ -17,7 +17,6 @@ interface Props {
   showZeroCount?: boolean;
   forceBig?: boolean;
   reversed?: boolean;
-  useGestureHandler?: boolean;
   locked?: boolean;
 }
 
@@ -53,7 +52,7 @@ function TinyCardQuantityComponent({ code, locked, count: propsCount, countChang
   );
 }
 
-function NormalCardQuantityComponent({ code, locked, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, useGestureHandler }: Props) {
+function NormalCardQuantityComponent({ code, locked, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount }: Props) {
   const { fontScale } = useContext(StyleContext);
   const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit, hapticFeedback: true });
   useEffectUpdate(() => {

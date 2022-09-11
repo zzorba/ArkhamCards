@@ -67,7 +67,6 @@ function MyDecksView({ componentId }: NavigationProps) {
                 { t`Hide ArkhamDB decks` }
               </Text>
               <ArkhamSwitch
-                useGestureHandler
                 value={localDecksOnly}
                 onValueChange={toggleLocalDecksOnly}
               />
@@ -78,7 +77,6 @@ function MyDecksView({ componentId }: NavigationProps) {
               { t`Hide campaign decks` }
             </Text>
             <ArkhamSwitch
-              useGestureHandler
               value={hideCampaignDecks}
               onValueChange={toggleHideCampaignDecks}
             />

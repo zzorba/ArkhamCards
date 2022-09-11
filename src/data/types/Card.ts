@@ -1161,9 +1161,9 @@ export default class Card {
   private static gqlToJson(
     card: SingleCardFragment & {
       translations: CoreCardTextFragment[];
-      linked_card?: SingleCardFragment & {
+      linked_card?: null | (SingleCardFragment & {
         translations: CoreCardTextFragment[];
-      };
+      });
     },
     encounterSets: { [code: string]: string | undefined },
     packs: {
@@ -1219,7 +1219,7 @@ export default class Card {
   static fromGraphQl(
     card: SingleCardFragment & {
       translations: CoreCardTextFragment[];
-      linked_card: undefined | (SingleCardFragment & {
+      linked_card?: null | (SingleCardFragment & {
         translations: CoreCardTextFragment[];
       });
     },

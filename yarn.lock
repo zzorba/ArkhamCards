@@ -3360,11 +3360,6 @@ apollo-cache-persist@0.1.1:
   resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.1.1.tgz#e6cfe1983b998982a679aaf05241d3ed395edb1e"
   integrity sha512-/7GAyblPR169ryW3ugbtHqiU0UGkhIt10NeaO2gn2ClxjLHF/nIkJD5mx/0OCF2vLNbbnzLZVDeIO1pf72TrEA==
 
-apollo-link-logger@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/apollo-link-logger/-/apollo-link-logger-2.0.0.tgz#3718d8bf89b8c04c988ee6ce8b48bb85789d2003"
-  integrity sha512-UBiQZM4KAcJokWRsYrMkyqOvWhnHXPEjNhhGMA1D/quHDk8YUjNmnwqf6KQtq8R8qNW3mQx3AeaWWxNRP3Q9+w==
-
 apollo-link-queue@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/apollo-link-queue/-/apollo-link-queue-3.1.0.tgz#58cdc7cc3833b3db9959d384c4f3e584dcfa6b49"

@@ -157,7 +157,6 @@ export const syncCards = async function(
   db: Database,
   sqliteVersion: SqliteVersion,
   anonClient: ApolloClient<NormalizedCacheObject>,
-  packs: Pack[],
   dispatch: Dispatch<PacksActions>,
   lang?: string,
   cache?: CardCache,

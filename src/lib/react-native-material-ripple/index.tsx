@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { pick } from 'lodash';
 import {
   View,
+  Pressable,
   Animated,
   Easing,
   Platform,
-  TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
   I18nManager,
   StyleSheet,
@@ -13,7 +13,6 @@ import {
   GestureResponderEvent,
   ViewProps,
 } from 'react-native';
-import { TouchableWithoutFeedback as GestureHandlerTouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const radius = 10;
 const styles = StyleSheet.create({
@@ -47,7 +46,6 @@ interface OwnProps {
   rippleSequential?: boolean;
   rippleFades?: boolean;
   disabled?: boolean;
-  useGestureHandler?: boolean;
 }
 
 type Props = OwnProps & TouchableWithoutFeedbackProps & ViewProps;
@@ -75,7 +73,6 @@ const DEFAULT_PROPS = {
   rippleSequential: false,
   rippleFades: true,
   disabled: false,
-  useGestureHandler: false,
 };
 
 export default class RippleComponent extends PureComponent<Props, State> {
@@ -271,7 +268,6 @@ export default class RippleComponent extends PureComponent<Props, State> {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleFades = DEFAULT_PROPS.rippleFades,
       style,
-      useGestureHandler,
       ...props
     } = this.props;
 
@@ -301,16 +297,15 @@ export default class RippleComponent extends PureComponent<Props, State> {
       StyleSheet.flatten(style),
       ['borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius']
     );
-    const Touchable = useGestureHandler ? GestureHandlerTouchableWithoutFeedback : TouchableWithoutFeedback;
     return (
-      <Touchable {...touchableProps}>
+      <Pressable {...touchableProps}>
         <Animated.View {...props} style={style} pointerEvents="box-only">
           {children}
           <View style={[styles.container, containerStyle]}>
             { ripples.map(this._renderRipple) }
           </View>
         </Animated.View>
-      </Touchable>
+      </Pressable>
     );
   }
 }

@@ -88,7 +88,6 @@ function SearchOptions({
             { t`Game Text` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={searchText}
             onValueChange={toggleSearchText}
           />
@@ -98,7 +97,6 @@ function SearchOptions({
             { t`Flavor Text` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={searchFlavor}
             onValueChange={toggleSearchFlavor}
           />
@@ -108,7 +106,6 @@ function SearchOptions({
             { t`Card Backs` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={searchBack}
             onValueChange={toggleSearchBack}
           />
@@ -141,7 +138,6 @@ function useExpandModesButtons({
           icon="search"
           onPress={toggleMythosMode}
           title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !!hasFilters && (
@@ -149,7 +145,6 @@ function useExpandModesButtons({
           icon="filter-clear"
           onPress={clearSearchFilters}
           title={t`Clear search filters`}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
     </View>
@@ -192,7 +187,6 @@ function useExpandSearchButtons({
           icon="search"
           onPress={clearSearchTerm}
           title={t`Clear "${searchTerm}" search`}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !searchText && (
@@ -200,7 +194,6 @@ function useExpandSearchButtons({
           icon="search"
           onPress={toggleSearchText}
           title={t`Search game text`}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { !searchBack && (
@@ -208,7 +201,6 @@ function useExpandSearchButtons({
           icon="search"
           onPress={toggleSearchBack}
           title={t`Search card backs`}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       ) }
       { expandModes }

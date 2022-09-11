@@ -32,7 +32,6 @@ export default function ShowNonCollectionFooter({ id, title, onPress, noBorder }
         icon="expand"
         title={title}
         onPress={handleOnPress}
-        useGestureHandler={Platform.OS === 'ios'}
       />
     </View>
   );

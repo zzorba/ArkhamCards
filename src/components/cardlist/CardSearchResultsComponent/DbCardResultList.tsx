@@ -984,7 +984,6 @@ export default function({
             title={item.title}
             onPress={item.onPress}
             icon={item.icon}
-            useGestureHandler={Platform.OS === 'ios'}
           />
         );
       case 'card': {
@@ -1006,7 +1005,6 @@ export default function({
               deckId,
               limit: deck_limit,
             }) : undefined}
-            useGestureHandler={Platform.OS === 'ios'}
           />
         );
       }

@@ -32,7 +32,6 @@ interface Props {
   noBorder?: boolean;
   faded?: boolean;
   noSidePadding?: boolean;
-  useGestureHandler?: boolean;
   onPressDebounce?: number;
 }
 
@@ -147,7 +146,6 @@ function CardSearchResult(props: Props) {
     noBorder,
     faded,
     noSidePadding,
-    useGestureHandler,
     onPressDebounce = 1000,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
@@ -336,7 +334,7 @@ function CardSearchResult(props: Props) {
           { cardName }
         </View>
       </TouchableOpacity>
-      { !!control && <ControlComponent control={control} card={card} useGestureHandler={useGestureHandler} /> }
+      { !!control && <ControlComponent control={control} card={card} /> }
     </View>
   );
 }

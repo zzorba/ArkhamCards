@@ -15,7 +15,6 @@ export default function CardToggle({ value, toggleValue, disabled }: Props) {
         value={!!value}
         onValueChange={toggleValue}
         disabled={disabled}
-        useGestureHandler={Platform.OS === 'ios'}
       />
     </View>
   );

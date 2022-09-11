@@ -60,12 +60,11 @@ export type ControlType = {
 interface Props {
   card: Card;
   control: ControlType;
-  useGestureHandler?: boolean;
 }
-export function ControlComponent({ card, control, useGestureHandler }: Props) {
+export function ControlComponent({ card, control }: Props) {
   switch (control.type) {
     case 'deck':
-      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} useGestureHandler={useGestureHandler} editable />;
+      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} editable />;
     case 'shuffle':
       return <ShuffleButton onPress={control.onShufflePress} />;
     case 'draft':
@@ -101,7 +100,6 @@ export function ControlComponent({ card, control, useGestureHandler }: Props) {
           limit={control.limit}
           showZeroCount={control.showZeroCount}
           reversed={control.reversed}
-          useGestureHandler={useGestureHandler}
         />
       );
     case 'discount':
