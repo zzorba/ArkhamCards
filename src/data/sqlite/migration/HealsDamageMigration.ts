@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
 
 export class HealsDamageMigration1657382994910 implements MigrationInterface {
+  name: string = 'HealsDamageMigration1657382994910';
   async up(queryRunner: QueryRunner): Promise<void> {
     const hasCardsTable = await queryRunner.hasTable('cards')
     if (hasCardsTable) {
