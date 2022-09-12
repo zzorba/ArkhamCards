@@ -3313,7 +3313,7 @@ msgstr "덱 수정 중"
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
-msgstr[0] "카드 ${ normalCards }장"
+msgstr[0] "카드 ${ normalCards }"
 
 msgid "Add scenario XP"
 msgstr "시나리오 경험치 추가"
