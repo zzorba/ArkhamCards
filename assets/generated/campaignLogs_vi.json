@@ -2264,7 +2264,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro đã theo chân các điều tra viên vào các tàn tích."
           },
           {
             "id": "alejandro_is_missing",
@@ -2280,7 +2280,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro đã chọn ở lại trại."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2300,7 +2300,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "các điều tra viên đã mở một con đường dẫn đến các tàn tích Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -2312,7 +2312,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "các điều tra viên đã giành được sự tin tưởng của Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2360,11 +2360,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca cảnh giác với các điều tra viên."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca quan sát sự tiến tới của bạn bằng một sự chú ý mãnh liệt."
           },
           {
             "id": "ichtaca_set_against",
@@ -2448,7 +2448,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "các điều tra viên buộc phải chờ nguồn vật tư dự trữ bổ sung."
           }
         ]
       },
@@ -2578,33 +2578,39 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Mặt dây chuyền",
+        "description": "Vô dụng, nhưng đem lại những kỷ niệm giúp cảm thấy thoải mái hơn khi đi xa nhà.",
         "cost": 1
+      },
+      {
+        "id": "compass",
+        "name": "La bàn",
+        "description": "Có thể dẫn đường cho bạn khi bạn lạc đường trong vô vọng.",
+        "cost": 2
       },
       {
         "id": "canteen",
         "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
       {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "id": "chalk",
+        "name": "Phấn",
+        "description": "Dùng để viết lên bề mặt đá gồ ghề.",
         "cost": 2
       },
       {
@@ -2615,20 +2621,8 @@
       },
       {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Chăn",
+        "description": "Giữ ấm vào ban đêm.",
         "cost": 2
       },
       {
@@ -2638,21 +2632,27 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Ống nhòm",
+        "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "id": "torches",
+        "name": "Đuốc",
+        "description": "Có thể thắp sáng các khu vực tối, hoặc làm bánh.",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Dây thừng",
+        "description": "Vài cuộn dây dài chắc chắn. Rất quan trọng cho việc leo núi và khảo sát hang động.",
         "cost": 3
       }
     ]
@@ -3748,7 +3748,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro đã theo chân các điều tra viên vào các tàn tích."
           },
           {
             "id": "alejandro_is_missing",
@@ -3764,7 +3764,7 @@
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro đã chọn ở lại trại."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -3784,7 +3784,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "các điều tra viên đã mở một con đường dẫn đến các tàn tích Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -3796,7 +3796,7 @@
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "các điều tra viên đã giành được sự tin tưởng của Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -3844,11 +3844,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca cảnh giác với các điều tra viên."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca quan sát sự tiến tới của bạn bằng một sự chú ý mãnh liệt."
           },
           {
             "id": "ichtaca_set_against",
@@ -3928,7 +3928,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "các điều tra viên buộc phải chờ nguồn vật tư dự trữ bổ sung."
           }
         ]
       },
@@ -4029,33 +4029,39 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Mặt dây chuyền",
+        "description": "Vô dụng, nhưng đem lại những kỷ niệm giúp cảm thấy thoải mái hơn khi đi xa nhà.",
         "cost": 1
+      },
+      {
+        "id": "compass",
+        "name": "La bàn",
+        "description": "Có thể dẫn đường cho bạn khi bạn lạc đường trong vô vọng.",
+        "cost": 2
       },
       {
         "id": "canteen",
         "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
       {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "id": "chalk",
+        "name": "Phấn",
+        "description": "Dùng để viết lên bề mặt đá gồ ghề.",
         "cost": 2
       },
       {
@@ -4066,20 +4072,8 @@
       },
       {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Chăn",
+        "description": "Giữ ấm vào ban đêm.",
         "cost": 2
       },
       {
@@ -4089,21 +4083,27 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Ống nhòm",
+        "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "id": "torches",
+        "name": "Đuốc",
+        "description": "Có thể thắp sáng các khu vực tối, hoặc làm bánh.",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Dây thừng",
+        "description": "Vài cuộn dây dài chắc chắn. Rất quan trọng cho việc leo núi và khảo sát hang động.",
         "cost": 3
       }
     ]

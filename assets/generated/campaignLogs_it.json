@@ -72,7 +72,7 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "avete esiliato Silas Bishop"
           },
           {
             "id": "bone_to_pick",
@@ -80,11 +80,11 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# Progenie fuggite nei boschi"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "avete calmato gli abitanti del villaggio."
           },
           {
             "id": "closed_tear",
@@ -136,7 +136,7 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "il dottor Henry Armitage è sopravvissuto all'Eredità di Dunwich"
           },
           {
             "id": "investigators_delayed",
@@ -144,7 +144,7 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "avete posto fine alle sofferenze di Silas Bishop"
           },
           {
             "id": "naomi_has_back",
@@ -152,19 +152,19 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "il Necronomicon è stato rubato"
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Nessuna Progenie è scappata nei boschi"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "avete riportato Silas Bishop alla normalità"
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "il rituale è stato completato."
           },
           {
             "id": "students_rescued",
@@ -180,7 +180,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "avete messo in guardia gli abitanti del villaggio"
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1319,7 +1319,7 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "avete esiliato Silas Bishop"
           },
           {
             "id": "bone_to_pick",
@@ -1327,11 +1327,11 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# Progenie fuggite nei boschi"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "avete calmato gli abitanti del villaggio."
           },
           {
             "id": "closed_tear",
@@ -1383,7 +1383,7 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "il dottor Henry Armitage è sopravvissuto all'Eredità di Dunwich"
           },
           {
             "id": "investigators_delayed",
@@ -1391,7 +1391,7 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "avete posto fine alle sofferenze di Silas Bishop"
           },
           {
             "id": "naomi_has_back",
@@ -1399,19 +1399,19 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "il Necronomicon è stato rubato"
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Nessuna Progenie è scappata nei boschi"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "avete riportato Silas Bishop alla normalità"
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "il rituale è stato completato."
           },
           {
             "id": "students_rescued",
@@ -1427,7 +1427,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "avete messo in guardia gli abitanti del villaggio"
           },
           {
             "id": "warren_rice_kidnapped",
