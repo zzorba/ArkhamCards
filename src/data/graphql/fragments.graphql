@@ -85,7 +85,6 @@ fragment SingleCard on all_card {
   version
   alternate_required_code
   clues_fixed
-  official
   errata_date
   alternate_of_code
   duplicate_of_code
@@ -98,6 +97,8 @@ fragment SingleCard on all_card {
   real_customization_text
   real_customization_change
   real_taboo_text_change
+  preview
+  official
 }
 fragment CoreCardText on all_card_text {
   flavor

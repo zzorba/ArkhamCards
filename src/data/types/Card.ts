@@ -22,6 +22,11 @@ const HEALS_HORROR_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?d
 const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
+export const enum CardStatusType {
+  PREVIEW = 'p',
+  CUSTOM = 'c',
+}
+
 export function searchNormalize(text: string, lang: string) {
   if (!text) {
     return '';
@@ -38,7 +43,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 130;
+export const CARD_NUM_COLUMNS = 131;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -227,6 +232,9 @@ export default class Card {
 
   @Column('simple-array', { nullable: true })
   public reprint_pack_codes?: string[];
+
+  @Column('text', { nullable: true })
+  public status?: CardStatusType;
 
   @Column('text')
   public type_code!: TypeCodeType;
@@ -717,7 +725,9 @@ export default class Card {
   }
 
   public custom(): boolean {
-    return this.code.startsWith('z');
+    return this.status === CardStatusType.CUSTOM ||
+      this.status === CardStatusType.PREVIEW ||
+      this.code.startsWith('z');
   }
 
   public grammarGenderMasculine(): boolean {
@@ -1207,6 +1217,11 @@ export default class Card {
     json.pack_name = packs[card.pack_code]?.name || card.real_pack_name;
     json.cycle_name = packs[card.pack_code]?.cycle_name;
     json.extra_xp = json.taboo_xp;
+    if (!card.official) {
+      json.status = CardStatusType.CUSTOM;
+    } else if (card.preview) {
+      json.status = CardStatusType.PREVIEW;
+    }
 
     json.type_name = cardTypeNames[card.type_code];
     json.faction_name = factionNames[card.faction_code];

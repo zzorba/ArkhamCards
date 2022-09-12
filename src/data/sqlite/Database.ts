@@ -15,6 +15,7 @@ import { CustomizeMigration1657651357621 } from './migration/CustomizationMigrat
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
 import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
 import { Platform } from 'react-native';
+import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
 
 type DatabaseListener = () => void;
 
@@ -44,6 +45,7 @@ async function createDatabaseConnection(recreate: boolean) {
       CustomizeMigration1657651357621,
       RemovableSlot1658075280573,
       AlternateRequiredCodeMigration1660064759967,
+      CardStatusMigration1662999387731,
     ],
     entities: [
       Card,
