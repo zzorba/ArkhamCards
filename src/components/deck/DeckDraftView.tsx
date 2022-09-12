@@ -49,14 +49,13 @@ function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth
   return (
     <Ripple style={[
       shadow.medium,
-      styles.button,
       {
         backgroundColor: colors.L20,
         width: cardWidth,
         height: size,
         borderRadius: size / 2,
       },
-    ]} onPress={debouncedOnPress} rippleColor={colors.M} rippleSize={size}>
+    ]} contentStyle={[styles.button, { height: size }]} onPress={debouncedOnPress} rippleColor={colors.M} rippleSize={size}>
       <AppIcon name="plus-button" size={24} color={colors.M} />
     </Ripple>
   );

@@ -13,7 +13,6 @@ import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apo
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 import { processAdvancedChoice } from '@lib/parseDeck';
 
-const SICKENING_REALITY_CARDS = new Set(['03065b', '03066b', '03067b', '03068b', '03069b'])
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
@@ -1499,7 +1498,7 @@ export default class Card {
       sort_by_cycle,
     };
     result.browse_visible = 0;
-    if (result.code.startsWith('z')) {
+    if (result.code.startsWith('z') || result.status === CardStatusType.PREVIEW || result.status === CardStatusType.CUSTOM) {
       result.browse_visible += 16;
     }
     if (result.code === RANDOM_BASIC_WEAKNESS || result.code === BODY_OF_A_YITHIAN) {

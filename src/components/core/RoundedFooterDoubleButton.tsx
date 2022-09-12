@@ -20,23 +20,25 @@ export default function RoundedFooterDoubleButton({ onPressA, iconA, titleA, onP
   const height = (18 * fontScale) + 22;
   return (
     <View style={[
-      styles.buttonStyle,
       {
         backgroundColor: colors.L10,
         height,
-        paddingLeft: 0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
       },
     ]}>
       <Ripple
-        style={[
-          styles.buttonStyle,
-          {
-            flex: 1,
-            borderBottomRightRadius: 0,
-            backgroundColor: colors.L10,
-            height,
-          },
-        ]}
+        style={{
+          flex: 1,
+          borderBottomLeftRadius: 9,
+          borderBottomRightRadius: 0,
+          backgroundColor: colors.L10,
+          height,
+        }}
+        contentStyle={[styles.buttonContent, { height }]}
         rippleColor={colors.L20}
         onPress={onPressA}
       >
@@ -49,15 +51,14 @@ export default function RoundedFooterDoubleButton({ onPressA, iconA, titleA, onP
       </Ripple>
       <View style={[styles.divider, { height: height - 16, backgroundColor: colors.background }]} />
       <Ripple
-        style={[
-          styles.buttonStyle,
-          {
-            flex: 1,
-            borderBottomLeftRadius: 0,
-            backgroundColor: colors.L10,
-            height,
-          },
-        ]}
+        style={{
+          flex: 1,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 9,
+          backgroundColor: colors.L10,
+          height,
+        }}
+        contentStyle={[styles.buttonContent, { height }]}
         rippleColor={colors.L20}
         onPress={onPressB}
       >
@@ -73,10 +74,8 @@ export default function RoundedFooterDoubleButton({ onPressA, iconA, titleA, onP
 }
 
 const styles = StyleSheet.create({
-  buttonStyle: {
+  buttonContent: {
     paddingLeft: 14,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

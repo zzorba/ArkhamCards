@@ -13,14 +13,14 @@ import {
 } from '@app_constants';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import { isTablet, xs, s, m } from '@styles/space';
+import space, { isTablet, xs, s, m } from '@styles/space';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
-import Card from '@data/types/Card';
+import Card, { CardStatusType } from '@data/types/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
 import PlayerCardImage from '../PlayerCardImage';
@@ -34,6 +34,7 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import { useFlag } from '@components/core/hooks';
 import { MAX_WIDTH } from '@styles/sizes';
+import AppIcon from '@icons/AppIcon';
 
 const SKILL_ICON_SIZE = 24;
 
@@ -69,7 +70,7 @@ interface Props {
 export default function TwoSidedCardComponent(props: Props) {
   const { componentId, card, backCard, linked, notFirst, simple, width } = props;
   const custom = card.custom();
-  const { backgroundStyle, shadow, colors, typography } = useContext(StyleContext);
+  const { backgroundStyle, fontScale, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(false);
   const isHorizontal = card.type_code === 'act' ||
     card.type_code === 'agenda' ||
@@ -410,6 +411,24 @@ export default function TwoSidedCardComponent(props: Props) {
         { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
+        { !simple && (card.status === CardStatusType.PREVIEW) && (
+          <View style={{
+            borderLeftWidth: 2,
+            paddingLeft: s,
+            marginBottom: s,
+            marginRight: s,
+            borderColor: colors.D10,
+          }}>
+            <View style={styles.rowStart}>
+              <View style={space.marginRightXs}>
+                <AppIcon name="logo" size={16 * fontScale} color={colors.D10} />
+              </View>
+              <Text style={typography.small}>
+                { t`This card has not yet been released, and cannot be included on ArkhamDB decks at this time.` }
+              </Text>
+            </View>
+          </View>
+        ) }
         <CardTabooTextBlock card={card} />
       </>
     );
@@ -596,5 +615,9 @@ const styles = StyleSheet.create({
   iconRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+  },
+  rowStart: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
 });

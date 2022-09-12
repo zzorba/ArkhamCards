@@ -826,6 +826,7 @@ export function parseDeck(
         quantity: slots[id] || 0,
         invalid: invalid || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
         limited: validation.isCardLimited(customizedCard),
+        custom: card.custom(),
       };
     });
   const specialCards = cardIds.filter(c =>
@@ -923,5 +924,6 @@ export function parseDeck(
     limitedSlots: !!find(validation.deckOptions(), option =>
       !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
     ),
+    customContent: !!find(normalCards, c => c.custom) || !!find(specialCards, c => c.custom),
   };
 }

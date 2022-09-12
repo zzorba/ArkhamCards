@@ -34,20 +34,19 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   }, [onPressIndex, idx]);
 
   return (
-    <>
-      <Ripple
-        onPress={onPress}
-        rippleColor={colors.L20}
-        style={[
-          styles.button,
-          { height: height - 2, backgroundColor: selected ? colors.L15 : colors.L30 },
-          idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
-          last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
-        ]}
-      >
-        { content.element(selected) }
-      </Ripple>
-    </>
+    <Ripple
+      onPress={onPress}
+      rippleColor={colors.L20}
+      style={[
+        styles.buttonRipple,
+        { height: height - 2,  backgroundColor: selected ? colors.L15 : colors.L30 },
+        idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
+        last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
+      ]}
+      contentStyle={styles.button}
+    >
+      { content.element(selected) }
+    </Ripple>
   );
 }
 
@@ -132,11 +131,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: StyleSheet.hairlineWidth,
   },
-  button: {
+  buttonRipple: {
     flex: 1,
-    padding: 10,
+  },
+  button: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
+    padding: 10,
   },
 });

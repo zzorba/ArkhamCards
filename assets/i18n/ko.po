@@ -5181,21 +5181,6 @@ msgstr ""
 msgid "Deck contains custom content"
 msgstr "커스텀 콘텐츠를 포함한 덱"
 
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-"죄송합니다. 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다.\n"
-"\n"
-"덱 목록에서 모든 팬 제작 카드들을 제거한 뒤에 다시 시도해 주십시오."
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr "주의: 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다."
-
 msgid "Player"
 msgstr "플레이어"
 
@@ -5910,6 +5895,23 @@ msgstr[0] "${ used } / ${ available } 사용"
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
 msgstr "당신은 레벨 0-1 다른 수호자 그리고/또는 생존자 카드를 최대 15장까지만 포함시킬 수 있습니다."
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included on ArkhamDB "
+"decks at this time."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

@@ -41,9 +41,11 @@ function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }
             borderWidth: variant === 'outline' ? 1 : 0,
             borderColor: colors.M,
             borderRadius: height / 2,
-            paddingLeft: height / 4,
           },
         ]}
+        contentStyle={{
+          paddingLeft: height / 4,
+        }}
         rippleColor={colors.L10}
         onPress={wrappedOnPress}
       >

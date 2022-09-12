@@ -4950,18 +4950,6 @@ msgstr ""
 msgid "Deck contains custom content"
 msgstr ""
 
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr ""
-
 msgid "Player"
 msgstr ""
 
@@ -5660,6 +5648,23 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included on ArkhamDB "
+"decks at this time."
 msgstr ""
 
 msgctxt "investigator"

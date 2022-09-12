@@ -124,11 +124,15 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
   return (
     <Ripple
       style={[
-        styles.button,
         {
           backgroundColor: getBackgroundColor(color, colors),
           height: 40,
           borderRadius: 24,
+        },
+      ]}
+      contentStyle={[
+        styles.button,
+        {
           paddingLeft: leftIcon ? 12 : 20,
           paddingRight: rightIcon ? 8 : rightPadding,
         },

@@ -253,6 +253,7 @@ export interface ParsedDeck {
   changes?: DeckChanges;
   problem?: DeckProblem;
   limitedSlots: boolean;
+  customContent: boolean;
 }
 
 export interface Pack {

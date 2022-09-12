@@ -254,7 +254,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         { !!isCustomContent && (
           <NewDialog.ContentLine
             hideIcon
-            text={t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made content.`}
+            text={t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content.`}
             control={null}
             paddingBottom={s}
           />

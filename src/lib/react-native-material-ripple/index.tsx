@@ -12,6 +12,7 @@ import {
   LayoutChangeEvent,
   GestureResponderEvent,
   ViewProps,
+  ViewStyle,
 } from 'react-native';
 
 const radius = 10;
@@ -46,6 +47,7 @@ interface OwnProps {
   rippleSequential?: boolean;
   rippleFades?: boolean;
   disabled?: boolean;
+  contentStyle?: ViewStyle | ViewStyle[];
 }
 
 type Props = OwnProps & TouchableWithoutFeedbackProps & ViewProps;
@@ -268,6 +270,7 @@ export default class RippleComponent extends PureComponent<Props, State> {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       rippleFades = DEFAULT_PROPS.rippleFades,
       style,
+      contentStyle,
       ...props
     } = this.props;
 
@@ -298,8 +301,8 @@ export default class RippleComponent extends PureComponent<Props, State> {
       ['borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius']
     );
     return (
-      <Pressable {...touchableProps}>
-        <Animated.View {...props} style={style} pointerEvents="box-only">
+      <Pressable {...touchableProps} style={style}>
+        <Animated.View {...props} style={contentStyle} pointerEvents="box-only">
           {children}
           <View style={[styles.container, containerStyle]}>
             { ripples.map(this._renderRipple) }
