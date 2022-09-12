@@ -520,7 +520,7 @@ msgstr "초기화"
 #, javascript-format
 msgid "${ count } Card"
 msgid_plural "${ count } Cards"
-msgstr[0] "카드 ${ count }장"
+msgstr[0] "카드 ${ count }"
 
 msgid "Skill Icons"
 msgstr "능력 아이콘"
