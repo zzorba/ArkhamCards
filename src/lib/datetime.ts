@@ -81,7 +81,7 @@ export function toRelativeDateString(date: Date | string, locale: string) {
       default: return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = localizedDate(date, locale);
+  const dateString = localizedDate(date, locale, locale === 'ko');
   return t`Updated ${dateString}`;
 }
 
