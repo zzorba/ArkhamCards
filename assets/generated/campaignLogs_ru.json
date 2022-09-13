@@ -241,8 +241,8 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "погиб при крушении.",
+            "feminine_text": "погибла при крушении."
           },
           {
             "id": "camp_barrier_camp",
@@ -302,7 +302,7 @@
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "сыщики убедили Дайера одобрить экспедицию."
           },
           {
             "id": "cookie_has_confronted_his_demons",
@@ -314,7 +314,7 @@
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "сыщики не поверили отчёту Дайера."
           },
           {
             "id": "discovered_an_ancient_vault",
