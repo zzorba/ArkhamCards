@@ -2895,13 +2895,13 @@ msgid "A Light in the Fog"
 msgstr "안개 속 한 줄기 빛"
 
 msgid "The Lair of Dagon"
-msgstr "데이곤의 처소"
+msgstr "데이곤의 침소"
 
 msgid "Hidden Truths"
 msgstr ""
 
 msgid "Into the Maelstrom"
-msgstr "혼돈의 소용돌이로"
+msgstr "몰아치는 소용돌이 속으로"
 
 msgid "Possible Suspects"
 msgstr ""
@@ -3005,13 +3005,13 @@ msgid "Upgrade with Shrewd Analysis"
 msgstr "'재빠른 분석'으로 향상하기"
 
 msgid "The Pit of Despair"
-msgstr ""
+msgstr "절망의 구렁"
 
 msgid "Puzzle Pieces"
 msgstr ""
 
 msgid "The Vanishing of Elina Harper"
-msgstr ""
+msgstr "엘리나 하퍼의 실종"
 
 msgid "Beneath the Waves"
 msgstr ""
@@ -6993,7 +6993,7 @@ msgstr "사술"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "은신처"
 
 msgctxt "trait"
 msgid "Historical Society"
@@ -7013,7 +7013,7 @@ msgstr "사냥꾼"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "혼혈"
 
 msgctxt "trait"
 msgid "Illicit"
@@ -7053,7 +7053,7 @@ msgstr "악기"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "섬"
 
 msgctxt "trait"
 msgid "Item"
@@ -7121,7 +7121,7 @@ msgstr "미고"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr ""
+msgstr "중심가"
 
 msgctxt "trait"
 msgid "Miskatonic"
@@ -7173,7 +7173,7 @@ msgstr "비술"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "해양"
 
 msgctxt "trait"
 msgid "Omen"
@@ -7313,7 +7313,7 @@ msgstr "강변"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "도로"
 
 msgctxt "trait"
 msgid "Ruins"
@@ -7441,7 +7441,7 @@ msgstr "표면"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "용의자"
 
 msgctxt "trait"
 msgid "Syndicate"
@@ -7525,7 +7525,7 @@ msgstr "계곡"
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "탑승물"
 
 msgctxt "trait"
 msgid "Venice"
@@ -7573,7 +7573,7 @@ msgstr "숲"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr ""
+msgstr "이하 느틀레이"
 
 msgctxt "trait"
 msgid "Yithian"
@@ -7609,11 +7609,11 @@ msgstr "사업가"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "송골매 곶"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "침소"
 
 msgctxt "trait"
 msgid "Nostalgia II"
