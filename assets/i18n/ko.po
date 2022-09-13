@@ -2186,11 +2186,11 @@ msgstr "약점 세트 조정"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
-msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
+msgstr "이 덱은 여러 개의 기본 약점이 포함되어 있습니다."
 
 #. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
-msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
+msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다."
 
 #. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
@@ -5205,10 +5205,10 @@ msgid ""
 msgstr "아컴카드 계정에 로그인하면 기기 간에 캠페인을 백업하고 진행 중인 캠페인을 다른 친구들과 공유할 수 있습니다."
 
 msgid "Recent updates"
-msgstr "최신 업데이트 사항"
+msgstr "최근 업데이트 사항 안내"
 
 msgid "Learn about recently added features"
-msgstr "최근 추가된 기능에 대해 배워보기"
+msgstr "앱에 최근 추가된 기능에 대해 배워보기"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
@@ -5636,7 +5636,7 @@ msgid "Beta"
 msgstr "베타 카드"
 
 msgid "Check for card updates"
-msgstr "카드 업데이트 사항 확인하기"
+msgstr "카드 업데이트 사항 확인 · 적용하기"
 
 msgid "Low memory mode"
 msgstr "메모리 절감 모드"
@@ -5900,6 +5900,8 @@ msgid ""
 "Note: this deck cannot be uploaded to ArkhamDB because it contains "
 "fan-made/preview content."
 msgstr ""
+"알아두기: 이 덱은 팬 제작 또는 비정규 콘텐츠가 포함되어 있어서 아컴디비 "
+"사이트에 업로드할 수 없습니다."
 
 msgid ""
 "Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
@@ -5907,15 +5909,21 @@ msgid ""
 "\n"
 "Please remove these cards from the deck list and try again."
 msgstr ""
+"죄송합니다. 이 덱은 아컴디비 사이트에서 인식하지 못하는 팬 제작 또는 비정규 "
+"콘텐츠가 포함되어 있어서 아컴디비 사이트에 업로드할 수 없습니다.\n"
+"\n"
+"덱 리스트에서 이러한 카드들을 제거하고 다시 시도해 주십시오."
 
 msgid ""
 "This card has not yet been released, and cannot be included on ArkhamDB "
 "decks at this time."
 msgstr ""
+"이 카드는 아직 정식으로 출시되지 않았으므로, 현재는 아컴디비 사이트의 덱에 "
+"포함될 수 없습니다."
 
 msgctxt "investigator"
 msgid "Custom"
-msgstr "커스텀 조사자"
+msgstr "맞춤형 조사자"
 
 #, javascript-format
 msgctxt "masculine"
@@ -7789,7 +7797,7 @@ msgstr "과학자"
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr ""
+msgstr "맞춤형 조사자"
 
 msgctxt "trait"
 msgid "Sister"
