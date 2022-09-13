@@ -38,7 +38,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   }
   return (
     <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <View style={space.paddingTopXs}>
+      <View style={[styles.headerContent, space.paddingTopXs]}>
         <Text style={[typography.header, typography.white]}>
           { title }
         </Text>
