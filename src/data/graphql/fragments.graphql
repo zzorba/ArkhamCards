@@ -99,6 +99,7 @@ fragment SingleCard on all_card {
   real_taboo_text_change
   preview
   official
+  taboo_placeholder
 }
 fragment CoreCardText on all_card_text {
   flavor

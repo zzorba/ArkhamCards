@@ -1523,52 +1523,6 @@ export default class Card {
     return result;
   }
 
-  static placeholderTabooCard(
-    tabooId: number,
-    card: Card
-  ): Card {
-    const result: Card = { ...card } as Card;
-    result.id = `${tabooId}-${card.code}`;
-    result.taboo_set_id = tabooId;
-    result.taboo_placeholder = true;
-    return result;
-  }
-
-  static fromTabooCardJson(
-    tabooId: number,
-    json: any,
-    card: Card
-  ): Card {
-    const code: string = card.code;
-    const result: Card = { ...card } as Card;
-    result.id = `${tabooId}-${code}`;
-    result.taboo_set_id = tabooId;
-    result.taboo_placeholder = false;
-
-    if (json.xp) {
-      result.extra_xp = json.xp;
-    }
-    if (json.text) {
-      result.taboo_text_change = json.text;
-    }
-    if (json.exceptional !== undefined) {
-      result.exceptional = json.exceptional;
-      if (json.exceptional) {
-        result.deck_limit = 1;
-      }
-    }
-    if (json.deck_limit !== undefined) {
-      result.deck_limit = json.deck_limit;
-    }
-    if (json.deck_options) {
-      result.deck_options = DeckOption.parseList(json.deck_options);
-    }
-    if (json.deck_requirements) {
-      result.deck_requirements = DeckRequirement.parse(json.deck_requirements);
-    }
-    return result;
-  }
-
   static querySort(sortIgnoreQuotes: boolean, sort?: SortType): QuerySort[] {
     switch(sort) {
       case SORT_BY_FACTION:
