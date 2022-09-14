@@ -2276,7 +2276,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro đã khôi phục được Relic of Ages."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -2348,7 +2348,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "Harbinger vẫn còn sống (#X# chấn thương thể chất)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2376,7 +2376,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "các điều tra viên đã khôi phục được Relic of Ages."
           },
           {
             "id": "investigators_saved_serpents",
@@ -2456,24 +2456,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3760,7 +3760,7 @@
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro đã khôi phục được Relic of Ages."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -3832,7 +3832,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "Harbinger vẫn còn sống (#X# chấn thương thể chất)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -3860,7 +3860,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "các điều tra viên đã khôi phục được Relic of Ages."
           },
           {
             "id": "investigators_saved_serpents",
@@ -3936,24 +3936,24 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
