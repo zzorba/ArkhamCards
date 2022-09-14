@@ -124,6 +124,8 @@ export default function CheckListItemComponent({
     return (
       <View style={styles.row}>
         <ArkhamSwitch
+          disabledColor={colors.D30}
+          color="dark"
           value={!editable || selected}
           large
         />
