@@ -136,7 +136,9 @@ export function useDeckEdits(
   const reduxDeckEdits = useSimpleDeckEdits(id);
   const deckEditsRef = useRef<EditDeckState>();
   const deckEdits = otherDeckEdits || reduxDeckEdits;
-  deckEditsRef.current = deckEdits;
+  useEffect(() => {
+    deckEditsRef.current = deckEdits;
+  }, [deckEdits]);
   return [deckEdits, deckEditsRef];
 }
 
@@ -154,6 +156,7 @@ export interface ParsedDeckResults {
   parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
   cardsMissing: boolean;
+  dirty: MutableRefObject<boolean>;
 }
 
 function useParsedDeckHelper(
@@ -168,6 +171,7 @@ function useParsedDeckHelper(
     initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
+  const dirtyRef = useRef<boolean>(true);
   const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing ? deck : undefined, initialMode);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.deck.taboo_id || 0);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(() => {
@@ -216,6 +220,7 @@ function useParsedDeckHelper(
       setParsedDeck(pd);
     }
   }, [deck, cards, fetchIfMissing, listSeperator, parsedDeck]);
+
   useDebouncedEffect(() => {
     if (cards && visible && deckEdits && deck) {
       const pd = parseDeck(
@@ -232,6 +237,9 @@ function useParsedDeckHelper(
       );
       parsedDeckRef.current = pd;
       setParsedDeck(pd);
+      dirtyRef.current = false;
+    } else {
+      dirtyRef.current = true;
     }
   }, [cards, deck, listSeperator, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
   return {
@@ -248,6 +256,7 @@ function useParsedDeckHelper(
     editable: !!deckEdits?.editable,
     mode: (deckEdits?.mode) || (initialMode || 'view'),
     cardsMissing: !cardsLoading && cardsMissing,
+    dirty: dirtyRef,
   };
 }
 

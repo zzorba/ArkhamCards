@@ -139,8 +139,7 @@ function DeckDetailView({
   const tabooSet = useTabooSet(tabooSetId);
 
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
-
+  const { savingDialog, saveEdits, handleBackPress, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
   const [
     deletingDialog,
     deleting,
@@ -213,36 +212,6 @@ function DeckDetailView({
     });
   }, [dispatch, id]);
   const [alertDialog, showAlert] = useAlertDialog();
-
-  const handleBackPress = useCallback(() => {
-    if (!visible) {
-      return false;
-    }
-    if (hasPendingEdits) {
-      showAlert(
-        t`Save deck changes?`,
-        t`Looks like you have made some changes that have not been saved.`,
-        [{
-          text: t`Cancel`,
-          style: 'cancel',
-        }, {
-          text: t`Discard Changes`,
-          style: 'destructive',
-          onPress: () => {
-            Navigation.dismissAllModals();
-          },
-        }, {
-          text: t`Save Changes`,
-          onPress: () => {
-            saveEditsAndDismiss();
-          },
-        }],
-      );
-    } else {
-      Navigation.dismissAllModals();
-    }
-    return true;
-  }, [visible, hasPendingEdits, saveEditsAndDismiss, showAlert]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back' || buttonId === 'androidBack') {

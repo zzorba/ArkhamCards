@@ -6112,6 +6112,9 @@ msgid ""
 "decks at this time."
 msgstr ""
 
+msgid "Recomputing deck changes..."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
