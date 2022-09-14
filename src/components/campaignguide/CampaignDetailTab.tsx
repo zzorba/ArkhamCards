@@ -53,7 +53,7 @@ export default function CampaignDetailTab({
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const reLogin = useCallback(() => login(), [login]);
   const arkhamDbError = useArkhamDbError();
-  const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+  const { campaignId, latestDecks, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
   const deckActions = useDeckActions();
   const deckUpgradeCompleted = useCallback(async(deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);
@@ -191,8 +191,8 @@ export default function CampaignDetailTab({
     onValueChange: onTarotPress,
   })
 
-  const latestDecks = campaign.latestDecks();
-  const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+  const latestDecksList = campaign.latestDecks();
+  const [cards] = useLatestDecksCards(latestDecksList, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -275,7 +275,13 @@ export default function CampaignDetailTab({
         </View>
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckOverlapComponent componentId={componentId} cards={cards} />
+            <DeckOverlapComponent
+              componentId={componentId}
+              cards={cards}
+              campaign={campaign}
+              latestDecks={latestDecksList}
+              campaignInvestigators={campaignInvestigators}
+            />
           </View>
         ) }
         { footerButtons }

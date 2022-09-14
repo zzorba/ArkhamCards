@@ -71,10 +71,10 @@ export default function SupplyComponent({
         <View style={[space.paddingLeftS, space.paddingRightXs]}>
           <ArkhamSwitch
             value={(count + existingCount) > 0}
-            onValueChange={onToggleChange}
+            onValueChange={editable ? onToggleChange : undefined}
             color="dark"
             disabledColor={!editable ? colors.D10 : colors.L10}
-            disabled={!editable || (count === 0 && remainingPoints < supply.cost) || existingCount > 0}
+            disabled={(count === 0 && remainingPoints < supply.cost) || existingCount > 0}
           />
         </View>
       ) : (

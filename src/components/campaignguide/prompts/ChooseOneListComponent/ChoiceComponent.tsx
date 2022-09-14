@@ -48,7 +48,13 @@ export default function ChoiceComponent({
     ]}>
       <View style={styles.padding}>
         <View style={[styles.bullet, styles.radioButton]}>
-          <ArkhamSwitch large value={selected} onValueChange={onPress} type="radio" disabled={!editable} color="dark" />
+          <ArkhamSwitch
+            large
+            value={selected}
+            onValueChange={editable ? onPress : undefined}
+            type="radio"
+            color="dark"
+          />
         </View>
         <TouchableShrink style={{ flex: 1 }} onPress={onPress} disabled={!editable}>
           <View style={styles.textBlock}>

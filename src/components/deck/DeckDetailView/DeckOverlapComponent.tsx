@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Text, View, StyleSheet } from 'react-native';
-import { filter, forEach, findIndex, map, groupBy, values, flatMap, sumBy, keys } from 'lodash';
+import { filter, find, forEach, findIndex, map, groupBy, values, flatMap, sumBy, keys } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
@@ -19,6 +19,8 @@ import StyleContext from '@styles/StyleContext';
 import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import space from '@styles/space';
 import InvestigatorImageButton from '@components/core/InvestigatorImageButton';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { LatestDecks } from '@data/scenario';
 
 interface Props {
   parsedDeck?: ParsedDeck;
@@ -67,25 +69,30 @@ function OverlapSectionComponent({
   );
 }
 
-export default function DeckOverlapComponent({ parsedDeck, componentId, cards }: {
+export default function DeckOverlapComponent({ parsedDeck, componentId, cards, campaignInvestigators, latestDecks, campaign }: {
   parsedDeck?: ParsedDeck;
   componentId: string;
   cards: CardsMap;
+  campaign: SingleCampaignT;
+  latestDecks: LatestDeckT[];
+  campaignInvestigators: Card[] | undefined;
 }) {
-  const { campaignInvestigators, latestDecks, campaign } = useContext(CampaignGuideContext);
   const { colors, typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
   const [excludeInvestigators, toggleExcludeInvestigators] = useToggles({});
   const ignore_collection = useSettingValue('ignore_collection');
   const currentInvestigator = parsedDeck?.investigator.code;
-  const activeDeckInvestigators = useMemo(() => {
-    return filter(campaignInvestigators, investigator => {
-      if (investigator.code === currentInvestigator ||
-        investigator.eliminated(campaign.getInvestigatorData(investigator.code))) {
-        return false;
+  const activeDecks = useMemo(() => {
+    return flatMap(latestDecks, deck => {
+      const investigator = find(campaignInvestigators, i => i.code == deck.investigator);
+      if (deck.investigator === currentInvestigator ||
+        (!investigator || investigator.eliminated(campaign.getInvestigatorData(investigator.code)))) {
+        return [];
       }
-      const deck = latestDecks[investigator.code];
-      return !!deck;
+      return {
+        deck,
+        investigator
+      };
     });
   }, [campaignInvestigators, currentInvestigator, latestDecks, campaign]);
   const [overlap] = useMemo(() => {
@@ -94,14 +101,12 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
     }
     const allSlots: Slots = parsedDeck ? { ...parsedDeck.slots } : {};
     const investigatorCards: { [code: string]: Card[] | undefined } = {};
-    forEach(activeDeckInvestigators, investigator => {
+    const investigatorDecks: { [code: string]: LatestDeckT | undefined } = {};
+    forEach(activeDecks, ({ deck, investigator }) => {
       if (excludeInvestigators[investigator.code]) {
         return;
       }
-      const deck = latestDecks[investigator.code];
-      if (!deck) {
-        return;
-      }
+      investigatorDecks[investigator.code] = deck;
       forEach(deck.deck.slots, (quantity, code) => {
         if (!parsedDeck || (allSlots[code] || 0) > 0) {
           allSlots[code] = (allSlots[code] || 0) + quantity;
@@ -148,7 +153,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
         const investigator = g[0].investigator;
         return {
           investigator,
-          deck: investigator ? latestDecks[investigator.code] : undefined,
+          deck: investigator ? investigatorDecks[investigator.code] : undefined,
           conflicts: map(g, o => {
             return {
               id: `${investigator?.code} - ${o.card.code}`,
@@ -173,7 +178,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
       }),
     };
     return [[section], false];
-  }, [excludeInvestigators, activeDeckInvestigators, latestDecks, cards, parsedDeck, ignore_collection, in_collection]);
+  }, [excludeInvestigators, activeDecks, latestDecks, cards, parsedDeck, ignore_collection, in_collection]);
   const [open, toggleOpen] = useFlag(false);
   const singleCardView = useSettingValue('single_card');
   const showCardPressed = useCallback((id: string, card: Card) => {
@@ -214,7 +219,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
         { t`The total number of these cards among decks from this campaign exceeds your card collection.` }
       </Text>
       <View style={[styles.leftRow, space.paddingS, space.paddingBottomM]}>
-        { map(activeDeckInvestigators, investigator => (
+        { map(activeDecks, ({ investigator }) => (
           investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null : (
             <View style={space.paddingRightS} key={investigator.code}>
               <InvestigatorImageButton
@@ -227,7 +232,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
           )
         )) }
         <View style={styles.rightRow}>
-          { map(activeDeckInvestigators, investigator => (
+          { map(activeDecks, ({ investigator }) => (
             investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null : (
               <View style={space.paddingLeftS} key={investigator.code}>
                 <InvestigatorImageButton
@@ -252,19 +257,26 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards }:
   );
 }
 
-export function DeckOverlapComponentForCampaign({ parsedDeck, campaignId, live, componentId, cards }: Props) {
+export function DeckOverlapComponentForCampaign({
+  parsedDeck,
+  campaignId,
+  live,
+  componentId,
+  cards,
+}: Props) {
   const [campaignGuideContext] = useCampaignGuideContext(campaignId, live);
   if (!campaignGuideContext) {
     return null;
   }
   return (
-    <CampaignGuideContext.Provider value={campaignGuideContext}>
-      <DeckOverlapComponent
-        componentId={componentId}
-        parsedDeck={parsedDeck}
-        cards={cards}
-      />
-    </CampaignGuideContext.Provider>
+    <DeckOverlapComponent
+      componentId={componentId}
+      parsedDeck={parsedDeck}
+      cards={cards}
+      campaign={campaignGuideContext.campaign}
+      latestDecks={campaignGuideContext.campaign.latestDecks()}
+      campaignInvestigators={campaignGuideContext.campaignInvestigators}
+    />
   );
 }
 

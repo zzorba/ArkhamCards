@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestig
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed, useWeaknessCards } from '@components/core/hooks';
+import { useLatestDecksCards, useNavigationButtonPressed, useWeaknessCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
@@ -39,6 +39,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { useAppDispatch } from '@app/store';
+import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -264,6 +265,9 @@ function CampaignDetailView(props: Props) {
     cycleCode: campaign?.cycleCode || 'custom',
     processedCampaign: undefined,
   });
+  const latestDecks = useMemo(() => campaign?.latestDecks(), [campaign]);
+  const [cards] = useLatestDecksCards(latestDecks, latestDecks?.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+
   if (!campaign) {
     if (campaignId.serverId) {
       return (
@@ -357,6 +361,19 @@ function CampaignDetailView(props: Props) {
               onPress={drawWeaknessPressed}
               bottomMargin={s}
             />
+          </View>
+            { !!cards && !!latestDecks && (
+              <View style={[space.paddingSideS, space.paddingBottomS]}>
+                <DeckOverlapComponent
+                  componentId={componentId}
+                  cards={cards}
+                  campaign={campaign}
+                  latestDecks={latestDecks}
+                  campaignInvestigators={allInvestigators}
+                />
+              </View>
+            ) }
+          <View style={space.paddingSideS}>
             <View style={[space.paddingBottomS, space.paddingTopS]}>
               <Text style={[typography.large, typography.center, typography.light]}>
                 { `— ${t`Settings`} —` }
