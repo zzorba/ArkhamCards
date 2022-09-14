@@ -133,6 +133,7 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       contentStyle={[
         styles.button,
         {
+          height: 40,
           paddingLeft: leftIcon ? 12 : 20,
           paddingRight: rightIcon ? 8 : rightPadding,
         },
