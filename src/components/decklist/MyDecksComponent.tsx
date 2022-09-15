@@ -48,7 +48,7 @@ function MyDecksComponent({
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { typography, width } = useContext(StyleContext);
+  const { typography, height, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
   }, [login]);
@@ -75,7 +75,7 @@ function MyDecksComponent({
       return null;
     }
     return (
-      <View style={styles.signInFooter}>
+      <View style={[space.paddingSideS, space.paddingBottomL]}>
         <RoundedFactionBlock
           header={<DeckSectionHeader title={t`ArkhamDB Account`} faction="neutral" />}
           footer={<RoundedFooterButton
@@ -121,7 +121,7 @@ function MyDecksComponent({
         { signInFooter }
       </View>
     );
-  }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
+  }, [customFooter, height, signInFooter, renderExpandButton, deckReasons]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
 
   return (
