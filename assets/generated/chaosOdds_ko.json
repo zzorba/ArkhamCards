@@ -3062,7 +3062,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
+          "prompt": "-1 (당신이 위치한 장소가 부분적으로 침수된 상태라면 그 대신 -2, 완전히 침수된 상태라면 그 대신 -3)",
           "min": 1,
           "max": 3
         }
@@ -3091,7 +3091,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
+          "prompt": "-2 (당신이 위치한 장소가 부분적으로 침수된 상태라면 그 대신 -3, 완전히 침수된 상태라면 그 대신 -4)",
           "min": 2,
           "max": 4
         }
@@ -3124,7 +3124,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "현재 주요사건 번호",
           "min": 1
         }
       },
@@ -3152,7 +3152,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "현재 주요사건 번호",
           "min": 1,
           "adjustment": 1
         }
@@ -3185,7 +3185,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "당신이 위치한 장소의 동쪽에 있는 장소의 수 (같은 가로줄에 있는 장소들만 셉니다)",
           "min": 0
         }
       },
@@ -3205,7 +3205,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "당신이 위치한 장소와 이어진 모든 장소 사이에 놓인 방해물 개수 총합",
           "min": 0
         }
       }
@@ -3215,7 +3215,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "당신이 위치한 장소의 동쪽에 있는 장소의 수 (같은 가로줄에 있는 장소들만 셉니다)",
           "min": 0,
           "scale": 2
         }
@@ -3236,7 +3236,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "당신이 위치한 장소와 이어진 모든 장소 사이에 놓인 방해물 개수 총합",
           "min": 0,
           "scale": 2
         }
@@ -3251,7 +3251,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "조사자들이 조종하는 열쇠 개수 총합",
           "min": 0
         }
       },
@@ -3279,7 +3279,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "조사자들이 조종하는 열쇠 개수 총합",
           "min": 0,
           "adjustment": 1
         }
@@ -3317,7 +3317,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "도로 덱에 남은 카드가 6장 이하임",
               "modified_value": {
                 "modifier": -3
               }
@@ -3354,7 +3354,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "도로 덱에 남은 카드가 6장 이하임",
               "modified_value": {
                 "modifier": -4
               }
@@ -3395,7 +3395,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "당신이 위치한 장소가 침수된 상태임",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -3433,7 +3433,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "당신이 위치한 장소가 침수된 상태임",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -3470,7 +3470,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "시나리오 참조 카드에 놓인 열쇠의 수",
           "min": 0
         }
       },
@@ -3484,7 +3484,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "이번 테스트 동안 당신이 [curse] 토큰을 1개 이상 공개함",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3511,7 +3511,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "시나리오 참조 카드에 놓인 열쇠의 수",
           "scale": 2,
           "min": 0
         }
@@ -3526,7 +3526,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "이번 테스트 동안 당신이 [curse] 토큰을 1개 이상 공개함",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3562,7 +3562,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "플레이 영역에 침수되지 않은 [[이하 느틀레이]] 장소가 넷 이상임",
               "modified_value": {
                 "modifier": -3
               }
@@ -3599,7 +3599,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "플레이 영역에 침수되지 않은 [[이하 느틀레이]] 장소가 넷 이상임",
               "modified_value": {
                 "modifier": -4
               }
