@@ -24,7 +24,6 @@ import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useAppDispatch } from '@app/store';
-import { transform } from 'lodash';
 
 const REFETCH_DAYS = 30;
 const REPROMPT_DAYS = 30;
@@ -43,7 +42,7 @@ function ProgressBar({ progress }: { progress: SharedValue<number> }) {
   const style = useAnimatedStyle<ViewStyle>(() => {
     const size = width * 0.6 * (progress.value || 0);
     return {
-      transform: [{ translateX: size / 2 }, { scaleX: size }],
+      width: size,
     };
   }, [width])
   return (
@@ -83,6 +82,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const { anonClient } = useContext(ApolloClientContext);
 
   const doFetch = useCallback(() => {
+    fetchProgress.value = 0;
     dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang, (progress: number, estimateMillis?: number) => {
       fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
     }));
@@ -90,6 +90,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
 
   useEffect(() => {
     if (fetchRequest && promptForUpdate) {
+      fetchProgress.value = 0;
       dispatch(fetchCards(db, anonClient, fetchRequest.card_lang, fetchRequest.choice_lang, (progress: number, estimateMillis?: number) => {
         fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
       }));

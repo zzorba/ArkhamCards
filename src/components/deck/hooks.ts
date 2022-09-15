@@ -236,8 +236,8 @@ function useParsedDeckHelper(
         deck.deck
       );
       parsedDeckRef.current = pd;
-      setParsedDeck(pd);
       dirtyRef.current = false;
+      setParsedDeck(pd);
     } else {
       dirtyRef.current = true;
     }

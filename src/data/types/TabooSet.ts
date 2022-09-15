@@ -27,6 +27,7 @@ export default class TabooSet {
   static fromGQL(tabooSet: TabooSetFragment): TabooSet {
     return {
       id: tabooSet.id,
+      name: tabooSet.name || undefined,
       code: tabooSet.code,
       cardCount: tabooSet.card_count,
       active: tabooSet.active,

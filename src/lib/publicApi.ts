@@ -164,7 +164,6 @@ export const syncCards = async function(
   VERBOSE && console.log('syncCards called');
   try {
     VERBOSE && console.time('download');
-    updateProgress(0.05);
     updateProgress(0.2, 3000);
     const cardsResponse = await anonClient.query<GetCardsQuery, GetCardsQueryVariables>({
       query: GetCardsDocument,
