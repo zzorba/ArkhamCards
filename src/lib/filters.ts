@@ -46,7 +46,7 @@ export interface SkillModifierFilters {
 }
 
 export interface FilterState {
-  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters | SkillModifierFilters;
+  [key: string]: string[] | boolean | number | [number, number] | SkillIconsFilters | SkillModifierFilters;
   factions: FactionCodeType[];
   uses: string[];
   types: string[];
@@ -54,6 +54,7 @@ export interface FilterState {
   xpLevels: string[];
   traits: string[];
   actions: string[];
+  taboo_set: number;
   skillModifiers: SkillModifierFilters;
   skillModifiersEnabled: boolean;
   packCodes: string[];
@@ -146,6 +147,7 @@ export const defaultFilterState: FilterState = {
   xpLevels: [],
   actions: [],
   traits: [],
+  taboo_set: 0,
   skillModifiers: {
     willpower: false,
     intellect: false,
@@ -710,9 +712,19 @@ export default class FilterBuilder {
     );
   }
 
+  tabooSetFilter(taboo_set: number): Brackets[] {
+    if (taboo_set === 0) {
+      return [];
+    }
+    return [
+      where(`(c.taboo_set_id = :taboo_set and c.taboo_placeholder is null)`, { taboo_set })
+    ];
+  }
+
   filterToQuery(filters: FilterState, localizedTraits: boolean): Brackets | undefined {
     return combineQueriesOpt(
       [
+        ...this.tabooSetFilter(filters.taboo_set),
         ...this.factionFilter(filters.factions),
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),

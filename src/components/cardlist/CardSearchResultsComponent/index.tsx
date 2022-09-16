@@ -379,6 +379,7 @@ export default function({
             componentId={componentId}
             deckId={deckId}
             query={query}
+            filters={filters}
             filterQuery={filterQuery || undefined}
             textQuery={textQuery}
             searchTerm={searchTerm}

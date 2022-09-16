@@ -50,6 +50,7 @@ import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import { useAppDispatch } from '@app/store';
+import { FilterState } from '@lib/filters';
 
 interface Props {
   componentId: string;
@@ -57,6 +58,7 @@ interface Props {
   currentDeckOnly?: boolean;
   query?: Brackets;
   filterQuery?: Brackets;
+  filters?: FilterState;
   textQuery?: Brackets;
   sort?: SortType;
   initialSort?: SortType;
@@ -267,6 +269,7 @@ interface SectionFeedProps {
   sort?: SortType;
   tabooSetId?: number;
   filterQuery?: Brackets;
+  filters?: FilterState;
   searchTerm?: string;
   textQuery?: Brackets;
   showAllNonCollection?: boolean;
@@ -305,6 +308,7 @@ function useSectionFeed({
   sort,
   tabooSetId,
   filterQuery,
+  filters,
   searchTerm,
   textQuery,
   showAllNonCollection,
@@ -341,6 +345,7 @@ function useSectionFeed({
     setMainQueryCards({ cards: [], loading: true });
     setDeckCards({ cards: [], loading: true });
   }, [sort]);
+  const theTabooSetId = filters?.taboo_set || tabooSetId;
   useEffect(() => {
     let ignore = false;
     if (!deckQuery) {
@@ -358,7 +363,7 @@ function useSectionFeed({
           ],
           'and'
         ),
-        tabooSetId,
+        theTabooSetId,
         sort
       ).then(cards => {
         if (!ignore) {
@@ -369,7 +374,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, tabooSetId, sort, sideDeck]);
+  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sort, sideDeck]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
   const expandSectionRef = useRef<(sectionId: string) => void>();
@@ -549,7 +554,7 @@ function useSectionFeed({
     db.getPartialCards(
       sortIgnoreQuotes,
       combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
-      tabooSetId,
+      theTabooSetId,
       sort
     ).then((cards: PartialCard[]) => {
       // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
@@ -563,7 +568,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, sort, tabooSetId, sortIgnoreQuotes, db]);
+  }, [query, filterQuery, sort, theTabooSetId, sortIgnoreQuotes, db]);
 
   useDebouncedEffect(() => {
     if (!textQuery || !query) {
@@ -583,7 +588,7 @@ function useSectionFeed({
         ],
         'and'
       ),
-      tabooSetId,
+      theTabooSetId,
       sort
     ).then((cards: PartialCard[]) => {
       if (!ignore) {
@@ -595,7 +600,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, tabooSetId, sortIgnoreQuotes], 500);
+  }, [query, filterQuery, textQuery, sort, theTabooSetId, sortIgnoreQuotes], 500);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
@@ -819,6 +824,7 @@ export default function({
   currentDeckOnly,
   query,
   filterQuery,
+  filters,
   textQuery,
   sort,
   initialSort,
@@ -865,6 +871,7 @@ export default function({
     hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,
     filterQuery,
+    filters,
     textQuery,
     searchTerm,
     showAllNonCollection: showNonCollection,

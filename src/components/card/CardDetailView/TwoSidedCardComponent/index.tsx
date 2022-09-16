@@ -424,7 +424,7 @@ export default function TwoSidedCardComponent(props: Props) {
                 <AppIcon name="logo" size={16 * fontScale} color={colors.D10} />
               </View>
               <Text style={typography.small}>
-                { t`This card has not yet been released, and cannot be included on ArkhamDB decks at this time.` }
+                { t`This card has not yet been released, and cannot be included in ArkhamDB decks at this time.` }
               </Text>
             </View>
           </View>

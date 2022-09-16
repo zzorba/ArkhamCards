@@ -25,6 +25,7 @@ import FixedSetChooserButton from '../FixedSetChooserButton';
 import { slotsTranslations } from '../CardAssetFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import TwoColumnSort, { ToggleItem } from '../TwoColumnSort';
+import useTabooChooser from './useTabooChooser';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -60,6 +61,10 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const allPacks = useSelector(getAllPacks);
   const onPacksPress = useCallback(() => {
     pushFilterView('SearchFilters.Packs');
+  }, [pushFilterView]);
+
+  const onTabooPress = useCallback(() => {
+    pushFilterView('SearchFilters.Taboo');
   }, [pushFilterView]);
 
   const onAssetPress = useCallback(() => {
@@ -136,6 +141,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     skillModifiers,
     skillModifiersEnabled,
   } = filters;
+  const [tabooDialog, tabooButton] = useTabooChooser({ tabooSetId: filters.taboo_set, onFilterChange });
   const selectedPacksText = useMemo(() => {
     if (!allPacks || !packNames || !allPacks.length || !packNames.length) {
       return t`Packs: All`;
@@ -377,215 +383,219 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   }, [lang]);
 
   return (
-    <ScrollView contentContainerStyle={backgroundStyle}>
-      <FactionChooser
-        factions={allFactions}
-        selection={factions}
-        multiClass={multiClass}
-        onFilterChange={onFilterChange}
-        componentId={componentId}
-      />
-      { hasXp && (
-        <XpChooser
-          maxLevel={defaultFilterState.level[1]}
-          levels={level}
-          enabled={levelEnabled}
+    <>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <FactionChooser
+          factions={allFactions}
+          selection={factions}
+          multiClass={multiClass}
           onFilterChange={onFilterChange}
-          onToggleChange={onToggleChange}
-          exceptional={exceptional}
-          nonExceptional={nonExceptional}
           componentId={componentId}
         />
-      ) }
-      { hasXp && (
-        <SliderChooser
-          label={t`Level`}
-          width={width}
-          values={level}
-          enabled={levelEnabled}
-          setting="level"
-          onFilterChange={onFilterChange}
-          toggleName="levelEnabled"
-          onToggleChange={onToggleChange}
-          max={defaultFilterState.level[1]}
-          height={2}
-        >
-          <View style={styles.xpSection}>
-            <ToggleFilter
-              label={t`Exceptional`}
-              setting="exceptional"
-              value={exceptional}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={t`Non-Exceptional`}
-              setting="nonExceptional"
-              value={nonExceptional}
-              onChange={onToggleChange}
-            />
-          </View>
-        </SliderChooser>
-      ) }
-      <View>
-        <FilterChooserButton
-          componentId={componentId}
-          title={t`Types`}
-          all={c('Types').t`All`}
-          field="type_code"
-          selection={types}
-          setting="types"
-          onFilterChange={onFilterChange}
-          query={baseQuery}
-          tabooSetId={tabooSetId}
-          fixedTranslations={{
-            asset: t`Asset`,
-            event: t`Event`,
-            skill: t`Skill`,
-            key: t`Key`,
-            act: t`Act`,
-            agenda: t`Agenda`,
-            story: t`Story`,
-            enemy: t`Enemy`,
-            treachery: t`Treachery`,
-            location: t`Location`,
-            investigator: c('card-type').t`Investigator`,
-            scenario: t`Scenario`,
-          }}
-        />
-        { (subTypes.length > 0 || hasWeakness) && (
+        { hasXp && (
+          <XpChooser
+            maxLevel={defaultFilterState.level[1]}
+            levels={level}
+            enabled={levelEnabled}
+            onFilterChange={onFilterChange}
+            onToggleChange={onToggleChange}
+            exceptional={exceptional}
+            nonExceptional={nonExceptional}
+            componentId={componentId}
+          />
+        ) }
+        { hasXp && (
+          <SliderChooser
+            label={t`Level`}
+            width={width}
+            values={level}
+            enabled={levelEnabled}
+            setting="level"
+            onFilterChange={onFilterChange}
+            toggleName="levelEnabled"
+            onToggleChange={onToggleChange}
+            max={defaultFilterState.level[1]}
+            height={2}
+          >
+            <View style={styles.xpSection}>
+              <ToggleFilter
+                label={t`Exceptional`}
+                setting="exceptional"
+                value={exceptional}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={t`Non-Exceptional`}
+                setting="nonExceptional"
+                value={nonExceptional}
+                onChange={onToggleChange}
+              />
+            </View>
+          </SliderChooser>
+        ) }
+        <View>
           <FilterChooserButton
             componentId={componentId}
-            title={t`SubTypes`}
-            all={c('SubTypes').t`All`}
-            field="subtype_code"
-            selection={subTypes}
-            setting="subTypes"
+            title={t`Types`}
+            all={c('Types').t`All`}
+            field="type_code"
+            selection={types}
+            setting="types"
             onFilterChange={onFilterChange}
             query={baseQuery}
             tabooSetId={tabooSetId}
             fixedTranslations={{
-              weakness: t`Weakness`,
-              basicweakness: t`Basic Weakness`,
+              asset: t`Asset`,
+              event: t`Event`,
+              skill: t`Skill`,
+              key: t`Key`,
+              act: t`Act`,
+              agenda: t`Agenda`,
+              story: t`Story`,
+              enemy: t`Enemy`,
+              treachery: t`Treachery`,
+              location: t`Location`,
+              investigator: c('card-type').t`Investigator`,
+              scenario: t`Scenario`,
             }}
           />
+          { (subTypes.length > 0 || hasWeakness) && (
+            <FilterChooserButton
+              componentId={componentId}
+              title={t`SubTypes`}
+              all={c('SubTypes').t`All`}
+              field="subtype_code"
+              selection={subTypes}
+              setting="subTypes"
+              onFilterChange={onFilterChange}
+              query={baseQuery}
+              tabooSetId={tabooSetId}
+              fixedTranslations={{
+                weakness: t`Weakness`,
+                basicweakness: t`Basic Weakness`,
+              }}
+            />
+          ) }
+        </View>
+        { hasCost && (
+          <SliderChooser
+            label={t`Cost`}
+            width={width}
+            values={cost}
+            enabled={costEnabled}
+            setting="cost"
+            onFilterChange={onFilterChange}
+            toggleName="costEnabled"
+            onToggleChange={onToggleChange}
+            max={defaultFilterState.cost[1]}
+            height={2}
+          >
+            <View style={styles.xpSection}>
+              <ToggleFilter
+                label={c('cost').t`Even`}
+                setting="costEven"
+                value={costEven}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={c('cost').t`Odd`}
+                setting="costOdd"
+                value={costOdd}
+                onChange={onToggleChange}
+              />
+            </View>
+          </SliderChooser>
         ) }
-      </View>
-      { hasCost && (
-        <SliderChooser
-          label={t`Cost`}
-          width={width}
-          values={cost}
-          enabled={costEnabled}
-          setting="cost"
-          onFilterChange={onFilterChange}
-          toggleName="costEnabled"
-          onToggleChange={onToggleChange}
-          max={defaultFilterState.cost[1]}
-          height={2}
-        >
-          <View style={styles.xpSection}>
-            <ToggleFilter
-              label={c('cost').t`Even`}
-              setting="costEven"
-              value={costEven}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={c('cost').t`Odd`}
-              setting="costOdd"
-              value={costOdd}
-              onChange={onToggleChange}
-            />
-          </View>
-        </SliderChooser>
-      ) }
-      { hasSkill && (
-        <SkillIconChooser
-          skillIcons={skillIcons}
-          onFilterChange={onFilterChange}
-          enabled={skillEnabled}
-          onToggleChange={onToggleChange}
-        />
-      ) }
-      <View>
-        <FixedSetChooserButton
-          title={t`Actions`}
-          all={c('Actions').t`All`}
-          componentId={componentId}
-          selection={actions}
-          setting="actions"
-          onFilterChange={onFilterChange}
-          allValues={{
-            'fight': c('action').t`Fight`,
-            'engage': c('action').t`Engage`,
-            'investigate': c('action').t`Investigate`,
-            'play': c('action').t`Play`,
-            'draw': c('action').t`Draw`,
-            'move': c('action').t`Move`,
-            'evade': c('action').t`Evade`,
-            'resource': c('action').t`Resource`,
-          }}
-        />
+        { hasSkill && (
+          <SkillIconChooser
+            skillIcons={skillIcons}
+            onFilterChange={onFilterChange}
+            enabled={skillEnabled}
+            onToggleChange={onToggleChange}
+          />
+        ) }
+        <View>
+          <FixedSetChooserButton
+            title={t`Actions`}
+            all={c('Actions').t`All`}
+            componentId={componentId}
+            selection={actions}
+            setting="actions"
+            onFilterChange={onFilterChange}
+            allValues={{
+              'fight': c('action').t`Fight`,
+              'engage': c('action').t`Engage`,
+              'investigate': c('action').t`Investigate`,
+              'play': c('action').t`Play`,
+              'draw': c('action').t`Draw`,
+              'move': c('action').t`Move`,
+              'evade': c('action').t`Evade`,
+              'resource': c('action').t`Resource`,
+            }}
+          />
+          <FilterChooserButton
+            title={t`Traits`}
+            all={c('Traits').t`All`}
+            componentId={componentId}
+            field={useCardTraits ? 'traits' : 'real_traits'}
+            fixedTranslations={localizedTraits}
+            processValue={splitTraits}
+            selection={traits}
+            setting="traits"
+            onFilterChange={onFilterChange}
+            query={baseQuery}
+            tabooSetId={tabooSetId}
+          />
+          <NavButton
+            text={assetFilterText}
+            onPress={onAssetPress}
+          />
+        </View>
+        <TwoColumnSort items={toggleItems} onToggleChange={onToggleChange} filters={filters} />
+        { hasEnemy && (
+          <NavButton
+            text={enemyFilterText}
+            onPress={onEnemyPress}
+          />
+        ) }
+        { hasLocation && (
+          <NavButton
+            text={locationFilterText}
+            onPress={onLocationPress}
+          />
+        ) }
         <FilterChooserButton
-          title={t`Traits`}
-          all={c('Traits').t`All`}
           componentId={componentId}
-          field={useCardTraits ? 'traits' : 'real_traits'}
-          fixedTranslations={localizedTraits}
-          processValue={splitTraits}
-          selection={traits}
-          setting="traits"
+          title={t`Encounter Sets`}
+          all={c('Encounter Sets').t`All`}
+          field="encounter_name"
+          selection={encounters}
+          setting="encounters"
           onFilterChange={onFilterChange}
           query={baseQuery}
           tabooSetId={tabooSetId}
         />
-        <NavButton
-          text={assetFilterText}
-          onPress={onAssetPress}
+        { (packNames.length > 0 || allPacks.length > 1) && (
+          <NavButton
+            text={selectedPacksText}
+            onPress={onPacksPress}
+          />
+        ) }
+        { tabooButton }
+        <FilterChooserButton
+          componentId={componentId}
+          title={t`Illustrators`}
+          all={c('Illustrators').t`All`}
+          field="illustrator"
+          selection={illustrators}
+          setting="illustrators"
+          onFilterChange={onFilterChange}
+          query={baseQuery}
+          tabooSetId={tabooSetId}
         />
-      </View>
-      <TwoColumnSort items={toggleItems} onToggleChange={onToggleChange} filters={filters} />
-      { hasEnemy && (
-        <NavButton
-          text={enemyFilterText}
-          onPress={onEnemyPress}
-        />
-      ) }
-      { hasLocation && (
-        <NavButton
-          text={locationFilterText}
-          onPress={onLocationPress}
-        />
-      ) }
-      <FilterChooserButton
-        componentId={componentId}
-        title={t`Encounter Sets`}
-        all={c('Encounter Sets').t`All`}
-        field="encounter_name"
-        selection={encounters}
-        setting="encounters"
-        onFilterChange={onFilterChange}
-        query={baseQuery}
-        tabooSetId={tabooSetId}
-      />
-      { (packNames.length > 0 || allPacks.length > 1) && (
-        <NavButton
-          text={selectedPacksText}
-          onPress={onPacksPress}
-        />
-      ) }
-      <FilterChooserButton
-        componentId={componentId}
-        title={t`Illustrators`}
-        all={c('Illustrators').t`All`}
-        field="illustrator"
-        selection={illustrators}
-        setting="illustrators"
-        onFilterChange={onFilterChange}
-        query={baseQuery}
-        tabooSetId={tabooSetId}
-      />
-    </ScrollView>
+      </ScrollView>
+      { tabooDialog }
+    </>
   );
 };
 

@@ -829,21 +829,21 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne "
 "?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -6236,7 +6236,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This card has not yet been released, and cannot be included on ArkhamDB "
+"This card has not yet been released, and cannot be included in ArkhamDB "
 "decks at this time."
 msgstr ""
 
