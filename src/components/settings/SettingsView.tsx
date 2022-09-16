@@ -213,6 +213,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               <DeckCheckboxButton
                 icon="special_cards"
                 title={t`Show fan-made cards`}
+                description={t`Grants access to previewed player cards`}
                 value={customContent}
                 onValueChange={setCustomContent}
               />

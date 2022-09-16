@@ -29,6 +29,16 @@ function linkPressed(url: string) {
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
     {
+      date: new Date('2022-09-20'),
+      title: c('releaseNotes').t`Preview Cards`,
+      faction: 'mystic',
+      lines: [
+        c('releaseNotes').t`This release introduces faster access to previewed cards.`,
+        c('releaseNotes').t`- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion.`,
+        c('releaseNotes').t`- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>.`,
+      ],
+    },
+    {
       date: new Date('2022-08-11'),
       title: c('releaseNotes').t`Cyclopean Foundations`,
       faction: 'rogue',
