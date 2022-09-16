@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';

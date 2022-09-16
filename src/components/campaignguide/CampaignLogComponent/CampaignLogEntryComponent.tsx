@@ -116,6 +116,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
                 entry={entry}
                 text={logEntry.text}
                 feminineText={logEntry.feminineText}
+                nonBinaryText={logEntry.nonbinaryText}
                 crossedOut={crossedOut}
               />
             ))}

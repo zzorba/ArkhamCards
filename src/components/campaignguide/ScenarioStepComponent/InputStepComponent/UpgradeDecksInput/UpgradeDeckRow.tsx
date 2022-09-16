@@ -25,7 +25,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { SpecialXp } from '@data/scenario/types';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
-import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';

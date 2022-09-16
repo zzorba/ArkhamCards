@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, Pressable, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { TouchableQuickSize, TouchableShrink } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';

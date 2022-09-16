@@ -1,12 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
-import { Dispatch } from 'redux';
 
 import { changeLocale } from '@app/i18n';
 import {
-  PACKS_AVAILABLE,
-  PACKS_FETCH_START,
-  PACKS_FETCH_ERROR,
-  PACKS_CACHE_HIT,
   CARD_SET_SCHEMA_VERSION,
   CARD_FETCH_START,
   CARD_FETCH_SUCCESS,
@@ -17,11 +12,6 @@ import {
   CardFetchStartAction,
   CardFetchSuccessAction,
   CardFetchErrorAction,
-  PacksFetchStartAction,
-  PacksFetchErrorAction,
-  PacksCacheHitAction,
-  PacksAvailableAction,
-  Pack,
   CardCache,
   TabooCache,
   CardSetSchemaVersionAction,
@@ -32,7 +22,6 @@ import { getCardLang, AppState } from '@reducers/index';
 import { syncCards } from '@lib/publicApi';
 import Database from '@data/sqlite/Database';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
 
 const VERBOSE = false;
 function shouldFetchCards(state: AppState) {

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GestureResponderEvent, Pressable, ViewStyle, PressableProps } from 'react-native';
-import Animated, { cancelAnimation, Easing, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 
 interface Props extends Omit<PressableProps, 'onPressIn' | 'onPressOut' | 'style' | 'disabled' | 'onPress'> {
   style?: ViewStyle | ViewStyle[];
@@ -15,10 +15,10 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
   const opacity = useSharedValue(1);
   const onPressIn = useCallback(() => {
     opacity.value = withTiming(activeOpacity, { duration: 100 });
-  }, [activeOpacity]);
+  }, [opacity, activeOpacity]);
   const onPressOut = useCallback(() => {
     opacity.value = withTiming(1, { duration: 100 });
-  }, []);
+  }, [opacity]);
   const opacityStyle = useAnimatedStyle(() => {
     return {
       opacity: opacity.value,
@@ -43,13 +43,13 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
 
 export function TouchableQuickSize({ style, children, disabled, onPress, activeScale = 1.5, ...otherProps }: Props) {
   const scale = useSharedValue(1);
-  const onPressIn = useCallback((event: GestureResponderEvent) => {
+  const onPressIn = useCallback(() => {
     cancelAnimation(scale);
     scale.value = withSequence(
       withTiming(activeScale, { duration: 150, easing: Easing.elastic(2) }),
       withTiming(1, { duration: 100, easing: Easing.elastic(1) })
     );
-  }, [activeScale]);
+  }, [activeScale, scale]);
   const animStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
@@ -74,14 +74,14 @@ export function TouchableQuickSize({ style, children, disabled, onPress, activeS
 
 export function TouchableShrink({ style, children, disabled, onPress, activeScale = 0.98, ...otherProps }: Props) {
   const scale = useSharedValue(1);
-  const onPressIn = useCallback((event: GestureResponderEvent) => {
+  const onPressIn = useCallback(() => {
     cancelAnimation(scale);
     scale.value = withTiming(activeScale, { duration: 150, easing: Easing.elastic(2) });
-  }, [activeScale]);
+  }, [activeScale, scale]);
   const onPressOut = useCallback(() => {
     cancelAnimation(scale);
     scale.value = withTiming(1, { duration: 100, easing: Easing.elastic(1) });
-  }, []);
+  }, [scale]);
   const animStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],

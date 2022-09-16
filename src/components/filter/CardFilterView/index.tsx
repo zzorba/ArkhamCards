@@ -441,6 +441,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
             asset: t`Asset`,
             event: t`Event`,
             skill: t`Skill`,
+            key: t`Key`,
             act: t`Act`,
             agenda: t`Agenda`,
             story: t`Story`,

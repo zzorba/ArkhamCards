@@ -9,7 +9,6 @@ import space, { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import TextWithIcons from '../TextWithIcons';
-import { GestureResponderEvent } from 'react-native-modal';
 
 interface Props<T> {
   iconName?: string;
@@ -32,13 +31,13 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
     onValueChange(value);
   }, [onValueChange, value]);
   const scale = useSharedValue(1);
-  const onPressIn = useCallback((event: GestureResponderEvent) => {
+  const onPressIn = useCallback(() => {
     cancelAnimation(scale);
     scale.value = withSequence(
       withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
       withTiming(1, { duration: 100, easing: Easing.elastic(1) })
     );
-  }, []);
+  }, [scale]);
   const animStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],

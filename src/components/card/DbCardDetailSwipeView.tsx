@@ -298,7 +298,7 @@ function DbCardDetailSwipeView(props: Props) {
       item: Card | undefined;
       index: number;
       animationValue?: Animated.SharedValue<number>;
-    }, options: any
+    }
   ): React.ReactElement => {
     return (
       <ScrollableCard

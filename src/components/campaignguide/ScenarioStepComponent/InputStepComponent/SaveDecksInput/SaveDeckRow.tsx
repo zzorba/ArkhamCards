@@ -179,7 +179,7 @@ function SaveDeckRow({
 
   const [unsavedAdjustments, deckChanges] = useMemo(() => {
     return [physicalAdjust !== 0 || mentalAdjust !== 0,
-      !!deck && !!find(storyAssetDeltas, (count: number) => count !== 0)
+      !!deck && !!find(storyAssetDeltas, (count: number) => count !== 0),
     ];
   }, [storyAssetDeltas, physicalAdjust, mentalAdjust, deck]);
 

@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import { Platform, StyleSheet, Text, ScrollView, View } from 'react-native';
 import { map } from 'lodash';
 
-import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
+import { TouchableQuickSize } from '@components/core/Touchables';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';

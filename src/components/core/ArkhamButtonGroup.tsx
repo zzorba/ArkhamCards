@@ -39,7 +39,7 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
       rippleColor={colors.L20}
       style={[
         styles.buttonRipple,
-        { height: height - 2,  backgroundColor: selected ? colors.L15 : colors.L30 },
+        { height: height - 2, backgroundColor: selected ? colors.L15 : colors.L30 },
         idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
         last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
       ]}

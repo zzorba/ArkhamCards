@@ -7,7 +7,6 @@ import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import { ThemeColors } from '@styles/theme';
 import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
-import { GestureResponderEvent } from 'react-native-modal';
 import { useEffectUpdate } from './hooks';
 
 interface OwnProps {
@@ -72,13 +71,13 @@ export default function ArkhamSwitch({ type, disabledColor, value: propValue, on
       }
     }
   }, [propValue]);
-  const onPressIn = useCallback((event: GestureResponderEvent) => {
+  const onPressIn = useCallback(() => {
     cancelAnimation(scale);
     scale.value = withSequence(
       withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
       withTiming(1, { duration: 100, easing: Easing.elastic(1) })
     );
-  }, []);
+  }, [scale]);
   const animStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],

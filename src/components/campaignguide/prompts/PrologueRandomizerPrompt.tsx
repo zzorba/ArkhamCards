@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { head, find, forEach, map, shuffle, values, filter } from 'lodash';
 import { t } from 'ttag';
 
@@ -9,7 +9,7 @@ import ScenarioGuideContext from '../ScenarioGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
 import InputWrapper from './InputWrapper';
 import { DisplayChoiceWithId } from '@data/scenario';
-import space, { s, m } from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { StringChoices } from '@actions/types';
 import useCardList from '@components/card/useCardList';
@@ -33,7 +33,6 @@ function PrologueRow({ item, setChoice, options, decision, editable, card }: {
   decision: undefined | string;
   editable: boolean;
 }) {
-  const { typography, width } = useContext(StyleContext);
   const onPress = useCallback(() => {
     setChoice(item.id);
   }, [item.id, setChoice]);

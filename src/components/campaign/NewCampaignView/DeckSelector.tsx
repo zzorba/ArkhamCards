@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { View } from 'react-native';
 
-import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
+import { TouchableQuickSize } from '@components/core/Touchables';
 import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck, DeckId } from '@actions/types';
 import Card from '@data/types/Card';

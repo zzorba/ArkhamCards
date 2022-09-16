@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';

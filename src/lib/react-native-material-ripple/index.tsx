@@ -113,11 +113,9 @@ export default class RippleComponent extends PureComponent<Props, State> {
     this.setState({ width, height });
   };
 
-  _onPress = (event?: GestureResponderEvent) => {
-    const { ripples } = this.state;
+  _onPress = () => {
     const {
       onPress,
-      rippleSequential = DEFAULT_PROPS.rippleSequential,
     } = this.props;
 
     if (typeof onPress === 'function') {

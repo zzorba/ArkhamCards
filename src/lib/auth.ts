@@ -47,7 +47,7 @@ async function doRefreshToken(refreshToken: string): Promise<string | null> {
       VERBOSE && console.log('Successfully refreshed the token');
       return saveAuthResponse(response);
     }, (e) => {
-      VERBOSE && console.log('Error while refreshing: ' + (e.message || e));
+      VERBOSE && console.log(`Error while refreshing: ${e.message || e}`);
       return null;
     });
     return await _refreshPromise;
@@ -68,9 +68,8 @@ export async function getAccessToken(): Promise<string | null> {
       if (data.refreshToken) {
         VERBOSE && console.log(`Token has expired, trying to refresh the arkhamdb token with: ${data.refreshToken}`);
         return await doRefreshToken(data.refreshToken);
-      } else {
-        VERBOSE && console.log('Our token has expired but we have no refresh token.');
       }
+      VERBOSE && console.log('Our token has expired but we have no refresh token.');
     }
     return data.accessToken;
   }
@@ -98,7 +97,7 @@ export async function signInFlow(): Promise<SignInResult> {
       success: false,
       error: err.message || err,
     };
-  };
+  }
 }
 
 export async function signOutFlow(): Promise<void> {
@@ -116,7 +115,7 @@ export async function signOutFlow(): Promise<void> {
       await revoke(config, refreshToken);
     }
   } catch (e) {
-    //Ignore the error, if any
+    // Ignore the error, if any
   }
   await Keychain.resetGenericPassword();
 }

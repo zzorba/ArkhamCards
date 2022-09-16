@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { TouchableOpacity } from '@components/core/Touchables';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import BorderWrapper from '@components/campaignguide/BorderWrapper';

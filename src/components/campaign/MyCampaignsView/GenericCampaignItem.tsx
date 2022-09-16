@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 
 import { TouchableShrink } from '@components/core/Touchables';
 import { usePressCallback } from '@components/core/hooks';

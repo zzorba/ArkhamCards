@@ -741,7 +741,7 @@ export function useSaveAlert(
         saveEditsAndDismiss();
       },
     }];
-  }, [parsedDeckResults]);
+  }, [parsedDeckResults, saveEditsAndDismiss]);
   const buttons = useMemo(() => {
     return map(currentButtons, (button, idx) => {
       return (

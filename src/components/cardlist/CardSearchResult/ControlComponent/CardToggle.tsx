@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 

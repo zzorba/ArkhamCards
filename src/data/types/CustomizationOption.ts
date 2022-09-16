@@ -1,6 +1,8 @@
+import { SingleCardFragment } from '@generated/graphql/apollo-schema';
 import { map } from 'lodash';
 import { Column } from 'typeorm/browser';
 import Card from './Card';
+import CardTextFields from './CardTextFields';
 import DeckOption from './DeckOption';
 
 const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
@@ -128,13 +130,13 @@ export default class CustomizationOption {
     return option;
   }
 
-  static parseAll(json: any): CustomizationOption[] | undefined {
-    if (!json.customization_options) {
+  static fromGql(card: SingleCardFragment, translation: CardTextFields): CustomizationOption[] | undefined {
+    if (!card.customization_options) {
       return undefined;
     }
-    const lines = (json.customization_text || '').split('\n');
-    const change_lines = (json.customization_change || '').split('\n');
-    return map(json.customization_options as any[], (option, index) => {
+    const lines = (translation.customization_text || '').split('\n');
+    const change_lines = (translation.customization_change || '').split('\n');
+    return map(card.customization_options as any[], (option, index) => {
       return CustomizationOption.parse(option, index, lines, change_lines);
     });
   }

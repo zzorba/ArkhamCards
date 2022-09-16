@@ -5,6 +5,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
 import { ActivityIndicator } from 'react-native';
 import CampaignGuideContext from '../CampaignGuideContext';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   crossedOut?: boolean;
@@ -13,9 +14,10 @@ interface Props {
   entry: CampaignLogEntry;
   text?: string;
   feminineText?: string;
+  nonBinaryText?: string;
 }
 
-export default function CampaignLogCardEntryComponent({ code, crossedOut, entry, text, count, feminineText }: Props) {
+export default function CampaignLogCardEntryComponent({ code, crossedOut, entry, text, count, feminineText, nonBinaryText }: Props) {
   const { colors } = useContext(StyleContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
   const [card] = useSingleCard(code, 'encounter');
@@ -23,11 +25,15 @@ export default function CampaignLogCardEntryComponent({ code, crossedOut, entry,
   if (!card && !fixedCard) {
     return <ActivityIndicator animating size="small" color={colors.lightText} />;
   }
-  const female = (card && !card.grammarGenderMasculine()) || (fixedCard && fixedCard.gender === 'female');
-  const prompt: string | undefined = ((feminineText && female) ? feminineText : text);
+  let prompt: string = text || '#name#';
+  if (feminineText && card?.gender === Gender_Enum.F) {
+    prompt = feminineText;
+  } else if (nonBinaryText && card?.gender === Gender_Enum.Nb) {
+    prompt = nonBinaryText;
+  }
   return (
     <TextEntryComponent
-      text={(prompt || '#name#').replace('#name#', card?.name || fixedCard?.name || '').replace('#X#', `${count}`)}
+      text={prompt.replace('#name#', card?.name || fixedCard?.name || '').replace('#X#', `${count}`)}
       crossedOut={crossedOut}
       entry={entry}
     />

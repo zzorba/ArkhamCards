@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import { StandaloneId } from '@actions/types';
 import ItemContent from './ItemContent';
 

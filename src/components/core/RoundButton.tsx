@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { TouchableQuickSize } from '@components/core/Touchables';
-import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

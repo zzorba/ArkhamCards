@@ -432,7 +432,7 @@ export default function TwoSidedCardComponent(props: Props) {
         <CardTabooTextBlock card={card} />
       </>
     );
-  }, [card, simple, colors, typography, flavorFirst]);
+  }, [card, simple, colors, typography, fontScale, flavorFirst]);
 
   const renderCardFront = useCallback((
     backFirst: boolean,

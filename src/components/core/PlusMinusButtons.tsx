@@ -9,7 +9,7 @@ import {
 import { flatten } from 'lodash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { TouchableQuickSize, TouchableOpacity } from '@components/core/Touchables';
+import { TouchableQuickSize } from '@components/core/Touchables';
 import { xs } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';

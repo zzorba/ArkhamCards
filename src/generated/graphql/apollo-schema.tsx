@@ -81,6 +81,7 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "all_card" */
 export type All_Card = {
   __typename?: 'all_card';
+  alt_art_investigator?: Maybe<Scalars['Boolean']>;
   alternate_of_code?: Maybe<Scalars['String']>;
   alternate_required_code?: Maybe<Scalars['String']>;
   back_link_id?: Maybe<Scalars['String']>;
@@ -112,6 +113,7 @@ export type All_Card = {
   faction2_code?: Maybe<Scalars['String']>;
   faction3_code?: Maybe<Scalars['String']>;
   faction_code: Scalars['String'];
+  gender?: Maybe<Gender_Enum>;
   health?: Maybe<Scalars['Int']>;
   health_per_investigator?: Maybe<Scalars['Boolean']>;
   hidden?: Maybe<Scalars['Boolean']>;
@@ -162,12 +164,16 @@ export type All_Card = {
   stage?: Maybe<Scalars['Int']>;
   subtype_code?: Maybe<Scalars['String']>;
   taboo_placeholder?: Maybe<Scalars['Boolean']>;
+  /** An object relationship */
+  taboo_set?: Maybe<Taboo_Set>;
   taboo_set_id?: Maybe<Scalars['Int']>;
   taboo_xp?: Maybe<Scalars['Int']>;
   /** An array relationship */
   translations: Array<All_Card_Text>;
   /** An aggregate relationship */
   translations_aggregate: All_Card_Text_Aggregate;
+  /** An object relationship */
+  type: Card_Type_Code;
   type_code: Card_Type_Code_Enum;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
@@ -388,6 +394,7 @@ export type All_Card_Bool_Exp = {
   _and?: InputMaybe<Array<All_Card_Bool_Exp>>;
   _not?: InputMaybe<All_Card_Bool_Exp>;
   _or?: InputMaybe<Array<All_Card_Bool_Exp>>;
+  alt_art_investigator?: InputMaybe<Boolean_Comparison_Exp>;
   alternate_of_code?: InputMaybe<String_Comparison_Exp>;
   alternate_required_code?: InputMaybe<String_Comparison_Exp>;
   back_link_id?: InputMaybe<String_Comparison_Exp>;
@@ -416,6 +423,7 @@ export type All_Card_Bool_Exp = {
   faction2_code?: InputMaybe<String_Comparison_Exp>;
   faction3_code?: InputMaybe<String_Comparison_Exp>;
   faction_code?: InputMaybe<String_Comparison_Exp>;
+  gender?: InputMaybe<Gender_Enum_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
   health_per_investigator?: InputMaybe<Boolean_Comparison_Exp>;
   hidden?: InputMaybe<Boolean_Comparison_Exp>;
@@ -461,9 +469,11 @@ export type All_Card_Bool_Exp = {
   stage?: InputMaybe<Int_Comparison_Exp>;
   subtype_code?: InputMaybe<String_Comparison_Exp>;
   taboo_placeholder?: InputMaybe<Boolean_Comparison_Exp>;
+  taboo_set?: InputMaybe<Taboo_Set_Bool_Exp>;
   taboo_set_id?: InputMaybe<Int_Comparison_Exp>;
   taboo_xp?: InputMaybe<Int_Comparison_Exp>;
   translations?: InputMaybe<All_Card_Text_Bool_Exp>;
+  type?: InputMaybe<Card_Type_Code_Bool_Exp>;
   type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   vengeance?: InputMaybe<Int_Comparison_Exp>;
@@ -537,6 +547,7 @@ export type All_Card_Inc_Input = {
 
 /** input type for inserting data into table "all_card" */
 export type All_Card_Insert_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
@@ -565,6 +576,7 @@ export type All_Card_Insert_Input = {
   faction2_code?: InputMaybe<Scalars['String']>;
   faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
   hidden?: InputMaybe<Scalars['Boolean']>;
@@ -610,9 +622,11 @@ export type All_Card_Insert_Input = {
   stage?: InputMaybe<Scalars['Int']>;
   subtype_code?: InputMaybe<Scalars['String']>;
   taboo_placeholder?: InputMaybe<Scalars['Boolean']>;
+  taboo_set?: InputMaybe<Taboo_Set_Obj_Rel_Insert_Input>;
   taboo_set_id?: InputMaybe<Scalars['Int']>;
   taboo_xp?: InputMaybe<Scalars['Int']>;
   translations?: InputMaybe<All_Card_Text_Arr_Rel_Insert_Input>;
+  type?: InputMaybe<Card_Type_Code_Obj_Rel_Insert_Input>;
   type_code?: InputMaybe<Card_Type_Code_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
@@ -896,6 +910,7 @@ export type All_Card_On_Conflict = {
 
 /** Ordering options when selecting data from "all_card". */
 export type All_Card_Order_By = {
+  alt_art_investigator?: InputMaybe<Order_By>;
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
   back_link_id?: InputMaybe<Order_By>;
@@ -924,6 +939,7 @@ export type All_Card_Order_By = {
   faction2_code?: InputMaybe<Order_By>;
   faction3_code?: InputMaybe<Order_By>;
   faction_code?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
   health_per_investigator?: InputMaybe<Order_By>;
   hidden?: InputMaybe<Order_By>;
@@ -969,9 +985,11 @@ export type All_Card_Order_By = {
   stage?: InputMaybe<Order_By>;
   subtype_code?: InputMaybe<Order_By>;
   taboo_placeholder?: InputMaybe<Order_By>;
+  taboo_set?: InputMaybe<Taboo_Set_Order_By>;
   taboo_set_id?: InputMaybe<Order_By>;
   taboo_xp?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<All_Card_Text_Aggregate_Order_By>;
+  type?: InputMaybe<Card_Type_Code_Order_By>;
   type_code?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   vengeance?: InputMaybe<Order_By>;
@@ -995,6 +1013,8 @@ export type All_Card_Prepend_Input = {
 
 /** select columns of table "all_card" */
 export enum All_Card_Select_Column {
+  /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
   /** column name */
   AlternateOfCode = 'alternate_of_code',
   /** column name */
@@ -1049,6 +1069,8 @@ export enum All_Card_Select_Column {
   Faction3Code = 'faction3_code',
   /** column name */
   FactionCode = 'faction_code',
+  /** column name */
+  Gender = 'gender',
   /** column name */
   Health = 'health',
   /** column name */
@@ -1153,6 +1175,7 @@ export enum All_Card_Select_Column {
 
 /** input type for updating data in table "all_card" */
 export type All_Card_Set_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
@@ -1180,6 +1203,7 @@ export type All_Card_Set_Input = {
   faction2_code?: InputMaybe<Scalars['String']>;
   faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
   hidden?: InputMaybe<Scalars['Boolean']>;
@@ -1431,6 +1455,7 @@ export type All_Card_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type All_Card_Stream_Cursor_Value_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
@@ -1458,6 +1483,7 @@ export type All_Card_Stream_Cursor_Value_Input = {
   faction2_code?: InputMaybe<Scalars['String']>;
   faction3_code?: InputMaybe<Scalars['String']>;
   faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
   health?: InputMaybe<Scalars['Int']>;
   health_per_investigator?: InputMaybe<Scalars['Boolean']>;
   hidden?: InputMaybe<Scalars['Boolean']>;
@@ -1932,6 +1958,8 @@ export type All_Card_Text_Updates = {
 /** update columns of table "all_card" */
 export enum All_Card_Update_Column {
   /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
+  /** column name */
   AlternateOfCode = 'alternate_of_code',
   /** column name */
   AlternateRequiredCode = 'alternate_required_code',
@@ -1985,6 +2013,8 @@ export enum All_Card_Update_Column {
   Faction3Code = 'faction3_code',
   /** column name */
   FactionCode = 'faction_code',
+  /** column name */
+  Gender = 'gender',
   /** column name */
   Health = 'health',
   /** column name */
@@ -7422,6 +7452,13 @@ export type Card_Type_Code_Mutation_Response = {
   returning: Array<Card_Type_Code>;
 };
 
+/** input type for inserting object relation for remote table "card_type_code" */
+export type Card_Type_Code_Obj_Rel_Insert_Input = {
+  data: Card_Type_Code_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Card_Type_Code_On_Conflict>;
+};
+
 /** on_conflict condition type for table "card_type_code" */
 export type Card_Type_Code_On_Conflict = {
   constraint: Card_Type_Code_Constraint;
@@ -11233,6 +11270,142 @@ export type Full_Card_Variance_Fields = {
   xp?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "gender" */
+export type Gender = {
+  __typename?: 'gender';
+  code: Scalars['String'];
+};
+
+/** aggregated selection of "gender" */
+export type Gender_Aggregate = {
+  __typename?: 'gender_aggregate';
+  aggregate?: Maybe<Gender_Aggregate_Fields>;
+  nodes: Array<Gender>;
+};
+
+/** aggregate fields of "gender" */
+export type Gender_Aggregate_Fields = {
+  __typename?: 'gender_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Gender_Max_Fields>;
+  min?: Maybe<Gender_Min_Fields>;
+};
+
+
+/** aggregate fields of "gender" */
+export type Gender_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Gender_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "gender". All fields are combined with a logical 'AND'. */
+export type Gender_Bool_Exp = {
+  _and?: InputMaybe<Array<Gender_Bool_Exp>>;
+  _not?: InputMaybe<Gender_Bool_Exp>;
+  _or?: InputMaybe<Array<Gender_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "gender" */
+export enum Gender_Constraint {
+  /** unique or primary key constraint on columns "code" */
+  GenderPkey = 'gender_pkey'
+}
+
+export enum Gender_Enum {
+  F = 'f',
+  M = 'm',
+  Nb = 'nb'
+}
+
+/** Boolean expression to compare columns of type "gender_enum". All fields are combined with logical 'AND'. */
+export type Gender_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Gender_Enum>;
+  _in?: InputMaybe<Array<Gender_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Gender_Enum>;
+  _nin?: InputMaybe<Array<Gender_Enum>>;
+};
+
+/** input type for inserting data into table "gender" */
+export type Gender_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Gender_Max_Fields = {
+  __typename?: 'gender_max_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Gender_Min_Fields = {
+  __typename?: 'gender_min_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "gender" */
+export type Gender_Mutation_Response = {
+  __typename?: 'gender_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Gender>;
+};
+
+/** on_conflict condition type for table "gender" */
+export type Gender_On_Conflict = {
+  constraint: Gender_Constraint;
+  update_columns?: Array<Gender_Update_Column>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "gender". */
+export type Gender_Order_By = {
+  code?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: gender */
+export type Gender_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "gender" */
+export enum Gender_Select_Column {
+  /** column name */
+  Code = 'code'
+}
+
+/** input type for updating data in table "gender" */
+export type Gender_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "gender" */
+export type Gender_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Gender_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Gender_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "gender" */
+export enum Gender_Update_Column {
+  /** column name */
+  Code = 'code'
+}
+
+export type Gender_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Gender_Set_Input>;
+  where: Gender_Bool_Exp;
+};
+
 /** columns and relationships of "guide_achievement" */
 export type Guide_Achievement = {
   __typename?: 'guide_achievement';
@@ -13326,6 +13499,10 @@ export type Mutation_Root = {
   delete_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** delete single row from the table: "full_card_text" */
   delete_full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** delete data from the table: "gender" */
+  delete_gender?: Maybe<Gender_Mutation_Response>;
+  /** delete single row from the table: "gender" */
+  delete_gender_by_pk?: Maybe<Gender>;
   /** delete data from the table: "guide_achievement" */
   delete_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** delete single row from the table: "guide_achievement" */
@@ -13494,6 +13671,10 @@ export type Mutation_Root = {
   insert_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** insert a single row into the table: "full_card_text" */
   insert_full_card_text_one?: Maybe<Full_Card_Text>;
+  /** insert data into the table: "gender" */
+  insert_gender?: Maybe<Gender_Mutation_Response>;
+  /** insert a single row into the table: "gender" */
+  insert_gender_one?: Maybe<Gender>;
   /** insert data into the table: "guide_achievement" */
   insert_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** insert a single row into the table: "guide_achievement" */
@@ -13728,6 +13909,12 @@ export type Mutation_Root = {
   update_full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** update multiples rows of table: "full_card_text" */
   update_full_card_text_many?: Maybe<Array<Maybe<Full_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "gender" */
+  update_gender?: Maybe<Gender_Mutation_Response>;
+  /** update single row of the table: "gender" */
+  update_gender_by_pk?: Maybe<Gender>;
+  /** update multiples rows of table: "gender" */
+  update_gender_many?: Maybe<Array<Maybe<Gender_Mutation_Response>>>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
@@ -14161,6 +14348,18 @@ export type Mutation_RootDelete_Full_Card_TextArgs = {
 export type Mutation_RootDelete_Full_Card_Text_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_GenderArgs = {
+  where: Gender_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Gender_By_PkArgs = {
+  code: Scalars['String'];
 };
 
 
@@ -14724,6 +14923,20 @@ export type Mutation_RootInsert_Full_Card_TextArgs = {
 export type Mutation_RootInsert_Full_Card_Text_OneArgs = {
   object: Full_Card_Text_Insert_Input;
   on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_GenderArgs = {
+  objects: Array<Gender_Insert_Input>;
+  on_conflict?: InputMaybe<Gender_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Gender_OneArgs = {
+  object: Gender_Insert_Input;
+  on_conflict?: InputMaybe<Gender_On_Conflict>;
 };
 
 
@@ -15586,6 +15799,26 @@ export type Mutation_RootUpdate_Full_Card_Text_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Full_Card_Text_ManyArgs = {
   updates: Array<Full_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_GenderArgs = {
+  _set?: InputMaybe<Gender_Set_Input>;
+  where: Gender_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Gender_By_PkArgs = {
+  _set?: InputMaybe<Gender_Set_Input>;
+  pk_columns: Gender_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Gender_ManyArgs = {
+  updates: Array<Gender_Updates>;
 };
 
 
@@ -16649,6 +16882,12 @@ export type Query_Root = {
   full_card_text_aggregate: Full_Card_Text_Aggregate;
   /** fetch data from the table: "full_card_text" using primary key columns */
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** fetch data from the table: "gender" */
+  gender: Array<Gender>;
+  /** fetch aggregated fields from the table: "gender" */
+  gender_aggregate: Gender_Aggregate;
+  /** fetch data from the table: "gender" using primary key columns */
+  gender_by_pk?: Maybe<Gender>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -17424,6 +17663,29 @@ export type Query_RootFull_Card_Text_By_PkArgs = {
 };
 
 
+export type Query_RootGenderArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Query_RootGender_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Query_RootGender_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
 export type Query_RootGuide_AchievementArgs = {
   distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -18002,6 +18264,14 @@ export type Subscription_Root = {
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
   /** fetch data from the table in a streaming manner : "full_card_text" */
   full_card_text_stream: Array<Full_Card_Text>;
+  /** fetch data from the table: "gender" */
+  gender: Array<Gender>;
+  /** fetch aggregated fields from the table: "gender" */
+  gender_aggregate: Gender_Aggregate;
+  /** fetch data from the table: "gender" using primary key columns */
+  gender_by_pk?: Maybe<Gender>;
+  /** fetch data from the table in a streaming manner : "gender" */
+  gender_stream: Array<Gender>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -19019,6 +19289,36 @@ export type Subscription_RootFull_Card_Text_StreamArgs = {
 };
 
 
+export type Subscription_RootGenderArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Subscription_RootGender_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Subscription_RootGender_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootGender_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Gender_Stream_Cursor_Input>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
 export type Subscription_RootGuide_AchievementArgs = {
   distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -19483,6 +19783,7 @@ export type Taboo_Set = {
   /** An aggregate relationship */
   cards_aggregate: All_Card_Aggregate;
   code: Scalars['String'];
+  current: Scalars['Boolean'];
   date: Scalars['String'];
   id: Scalars['Int'];
   name?: Maybe<Scalars['String']>;
@@ -19554,6 +19855,7 @@ export type Taboo_Set_Bool_Exp = {
   card_count?: InputMaybe<Int_Comparison_Exp>;
   cards?: InputMaybe<All_Card_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
+  current?: InputMaybe<Boolean_Comparison_Exp>;
   date?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
@@ -19577,6 +19879,7 @@ export type Taboo_Set_Insert_Input = {
   card_count?: InputMaybe<Scalars['Int']>;
   cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
   code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
   date?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -19611,6 +19914,13 @@ export type Taboo_Set_Mutation_Response = {
   returning: Array<Taboo_Set>;
 };
 
+/** input type for inserting object relation for remote table "taboo_set" */
+export type Taboo_Set_Obj_Rel_Insert_Input = {
+  data: Taboo_Set_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Taboo_Set_On_Conflict>;
+};
+
 /** on_conflict condition type for table "taboo_set" */
 export type Taboo_Set_On_Conflict = {
   constraint: Taboo_Set_Constraint;
@@ -19624,6 +19934,7 @@ export type Taboo_Set_Order_By = {
   card_count?: InputMaybe<Order_By>;
   cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
   code?: InputMaybe<Order_By>;
+  current?: InputMaybe<Order_By>;
   date?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
@@ -19643,6 +19954,8 @@ export enum Taboo_Set_Select_Column {
   /** column name */
   Code = 'code',
   /** column name */
+  Current = 'current',
+  /** column name */
   Date = 'date',
   /** column name */
   Id = 'id',
@@ -19655,6 +19968,7 @@ export type Taboo_Set_Set_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
   card_count?: InputMaybe<Scalars['Int']>;
   code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
   date?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -19694,6 +20008,7 @@ export type Taboo_Set_Stream_Cursor_Value_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
   card_count?: InputMaybe<Scalars['Int']>;
   code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
   date?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -19714,6 +20029,8 @@ export enum Taboo_Set_Update_Column {
   CardCount = 'card_count',
   /** column name */
   Code = 'code',
+  /** column name */
+  Current = 'current',
   /** column name */
   Date = 'date',
   /** column name */
@@ -21470,7 +21787,7 @@ export type GetCardsQueryVariables = Exact<{
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }> } | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number }>, faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any }> };
+export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }> } | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number }>, faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -21715,7 +22032,7 @@ export type PackFragment = { __typename?: 'pack', code: string, cycle_code: stri
 
 export type CycleFragment = { __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean };
 
-export type SingleCardFragment = { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null };
+export type SingleCardFragment = { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null };
 
 export type CoreCardTextFragment = { __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null };
 
@@ -22242,6 +22559,8 @@ export const SingleCardFragmentDoc = gql`
   preview
   official
   taboo_placeholder
+  gender
+  alt_art_investigator
 }
     `;
 export const CoreCardTextFragmentDoc = gql`

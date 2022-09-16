@@ -362,17 +362,17 @@ function CampaignDetailView(props: Props) {
               bottomMargin={s}
             />
           </View>
-            { !!cards && !!latestDecks && (
-              <View style={[space.paddingSideS, space.paddingBottomS]}>
-                <DeckOverlapComponent
-                  componentId={componentId}
-                  cards={cards}
-                  campaign={campaign}
-                  latestDecks={latestDecks}
-                  campaignInvestigators={allInvestigators}
-                />
-              </View>
-            ) }
+          { !!cards && !!latestDecks && (
+            <View style={[space.paddingSideS, space.paddingBottomS]}>
+              <DeckOverlapComponent
+                componentId={componentId}
+                cards={cards}
+                campaign={campaign}
+                latestDecks={latestDecks}
+                campaignInvestigators={allInvestigators}
+              />
+            </View>
+          ) }
           <View style={space.paddingSideS}>
             <View style={[space.paddingBottomS, space.paddingTopS]}>
               <Text style={[typography.large, typography.center, typography.light]}>

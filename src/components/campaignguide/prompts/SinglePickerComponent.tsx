@@ -2,13 +2,13 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import { usePickerDialog, Item } from '@components/deck/dialogs';
 import Card from '@data/types/Card';
 import { map } from 'lodash';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import { DisplayChoice } from '@data/scenario';
+import { DisplayChoice, selectedDisplayChoiceText } from '@data/scenario';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ChoiceIcon } from '@data/scenario/types';
@@ -103,8 +103,7 @@ export default function SinglePickerComponent({
     selectedValue: selectedIndex,
   });
   const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : (
-    (!investigator?.grammarGenderMasculine() && (choices[selectedIndex].selected_feminine_text || choices[selectedIndex].feminine_text)) ||
-    choices[selectedIndex].selected_text || choices[selectedIndex].text
+    selectedDisplayChoiceText(choices[selectedIndex], investigator?.gender)
   );
 
   const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : (choices[selectedIndex].description || choices[selectedIndex].card?.subname);

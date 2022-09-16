@@ -247,105 +247,108 @@ export const getAllPacks = createSelector(
   allPacksSelector,
   customPacksSelector,
   showCustomContentSelector,
-  (allPacks, customPacks, showCustomContent) => sortBy(
-    sortBy(
-      concat(
-        allPacks || DEFAULT_PACK_LIST,
-        showCustomContent ? (customPacks?.length ? customPacks : map([
-          {
-            code: 'zbh',
-            cycle_code: 'fan',
-            name: t`Barkham Horror`,
-            position: 1,
-          },
-          {
-            code: 'zbt',
-            cycle_code: 'fan',
-            name: t`Beta`,
-            position: 2,
-          },
-          {
-            code: 'zcu',
-            cycle_code: 'fan',
-            name: c('investigator').t`Custom`,
-            position: 3,
-          },
-          {
-            code: 'zdm',
-            cycle_code: 'fan',
-            name: t`Dark Matter`,
-            position: 4,
-          },
-          {
-            code: 'zaw',
-            cycle_code: 'fan',
-            name: t`Alice in Wonderland`,
-            position: 5,
-          },
-          {
-            code: 'zce',
-            cycle_code: 'fan',
-            name: t`The Crown of Egil`,
-            position: 6,
-          },
-          {
-            code: 'zcp',
-            cycle_code: 'fan',
-            name: t`Call of the Plaguebearer`,
-            position: 7,
-          },
-          {
-            code: 'zcc',
-            cycle_code: 'fan',
-            name: t`Consternation on the Constellation`,
-            position: 8,
-          },
-          {
-            code: 'zez',
-            cycle_code: 'fan',
-            name: t`Symphony of Erich Zann`,
-            position: 9,
-          },
-          {
-            code: 'zcos',
-            cycle_code: 'fan',
-            name: t`The Colour Out of Space`,
-            position: 10,
-          },
-          {
-            code: 'zjc',
-            cycle_code: 'fan',
-            name: t`Jenny's Choice`,
-            position: 11,
-          },
-          {
-            code: 'zhu',
-            cycle_code: 'fan',
-            name: t`The Fall of the House of Usher`,
-            position: 12,
-          },
-          {
-            code: 'zatw',
-            cycle_code: 'fan',
-            name: t`Against the Wendigo`,
-            position: 13,
-          },
-        ], (p): Pack => {
-          return {
-            id: p.code,
-            name: p.name,
-            code: p.code,
-            position: p.position,
-            cycle_position: 100,
-            available: '2022-01-01',
-            known: 0,
-            total: 0,
-            url: 'https://arkhamcards.com',
-          };
-        })) : []
-      ), pack => pack.position),
-    pack => pack.cycle_position
-  )
+  (allPacks, customPacks, showCustomContent) => {
+    let theCustomPacks: Pack[] = [];
+    if (showCustomContent) {
+      theCustomPacks = customPacks?.length ? customPacks : map([
+        {
+          code: 'zbh',
+          cycle_code: 'fan',
+          name: t`Barkham Horror`,
+          position: 1,
+        },
+        {
+          code: 'zbt',
+          cycle_code: 'fan',
+          name: t`Beta`,
+          position: 2,
+        },
+        {
+          code: 'zcu',
+          cycle_code: 'fan',
+          name: c('investigator').t`Custom`,
+          position: 3,
+        },
+        {
+          code: 'zdm',
+          cycle_code: 'fan',
+          name: t`Dark Matter`,
+          position: 4,
+        },
+        {
+          code: 'zaw',
+          cycle_code: 'fan',
+          name: t`Alice in Wonderland`,
+          position: 5,
+        },
+        {
+          code: 'zce',
+          cycle_code: 'fan',
+          name: t`The Crown of Egil`,
+          position: 6,
+        },
+        {
+          code: 'zcp',
+          cycle_code: 'fan',
+          name: t`Call of the Plaguebearer`,
+          position: 7,
+        },
+        {
+          code: 'zcc',
+          cycle_code: 'fan',
+          name: t`Consternation on the Constellation`,
+          position: 8,
+        },
+        {
+          code: 'zez',
+          cycle_code: 'fan',
+          name: t`Symphony of Erich Zann`,
+          position: 9,
+        },
+        {
+          code: 'zcos',
+          cycle_code: 'fan',
+          name: t`The Colour Out of Space`,
+          position: 10,
+        },
+        {
+          code: 'zjc',
+          cycle_code: 'fan',
+          name: t`Jenny's Choice`,
+          position: 11,
+        },
+        {
+          code: 'zhu',
+          cycle_code: 'fan',
+          name: t`The Fall of the House of Usher`,
+          position: 12,
+        },
+        {
+          code: 'zatw',
+          cycle_code: 'fan',
+          name: t`Against the Wendigo`,
+          position: 13,
+        },
+      ], (p): Pack => {
+        return {
+          id: p.code,
+          name: p.name,
+          code: p.code,
+          position: p.position,
+          cycle_position: 100,
+          available: '2022-01-01',
+          known: 0,
+          total: 0,
+          url: 'https://arkhamcards.com',
+        };
+      });
+    }
+    return sortBy(
+      sortBy(
+        concat(allPacks || DEFAULT_PACK_LIST, theCustomPacks), pack => pack.position),
+      pack => pack.cycle_position
+    );
+  }
 );
 
 /* eslint-disable @typescript-eslint/no-unused-vars */

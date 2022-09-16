@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
 import space, { m, s, xs, isTablet } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { TouchableShrink } from '@components/core/Touchables';
 
 interface Props {

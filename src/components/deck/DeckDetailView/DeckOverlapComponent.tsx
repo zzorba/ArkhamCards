@@ -1,13 +1,12 @@
 import React, { useMemo, useCallback, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Text, View, StyleSheet } from 'react-native';
-import { filter, find, forEach, findIndex, map, groupBy, values, flatMap, sumBy, keys } from 'lodash';
+import { find, forEach, findIndex, map, groupBy, values, flatMap, sumBy, keys } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { CampaignId, ParsedDeck, Slots } from '@actions/types';
 import { useCampaignGuideContext } from '@components/campaignguide/withCampaignGuideContext';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import { useFlag, useSettingValue, useToggles } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
 import Card, { CardsMap } from '@data/types/Card';
@@ -20,7 +19,6 @@ import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import space from '@styles/space';
 import InvestigatorImageButton from '@components/core/InvestigatorImageButton';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { LatestDecks } from '@data/scenario';
 
 interface Props {
   parsedDeck?: ParsedDeck;
@@ -84,14 +82,14 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   const currentInvestigator = parsedDeck?.investigator.code;
   const activeDecks = useMemo(() => {
     return flatMap(latestDecks, deck => {
-      const investigator = find(campaignInvestigators, i => i.code == deck.investigator);
+      const investigator = find(campaignInvestigators, i => i.code === deck.investigator);
       if (deck.investigator === currentInvestigator ||
         (!investigator || investigator.eliminated(campaign.getInvestigatorData(investigator.code)))) {
         return [];
       }
       return {
         deck,
-        investigator
+        investigator,
       };
     });
   }, [campaignInvestigators, currentInvestigator, latestDecks, campaign]);
@@ -178,7 +176,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
       }),
     };
     return [[section], false];
-  }, [excludeInvestigators, activeDecks, latestDecks, cards, parsedDeck, ignore_collection, in_collection]);
+  }, [excludeInvestigators, activeDecks, cards, parsedDeck, ignore_collection, in_collection]);
   const [open, toggleOpen] = useFlag(false);
   const singleCardView = useSettingValue('single_card');
   const showCardPressed = useCallback((id: string, card: Card) => {

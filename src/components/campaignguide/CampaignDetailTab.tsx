@@ -53,7 +53,7 @@ export default function CampaignDetailTab({
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const reLogin = useCallback(() => login(), [login]);
   const arkhamDbError = useArkhamDbError();
-  const { campaignId, latestDecks, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+  const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
   const deckActions = useDeckActions();
   const deckUpgradeCompleted = useCallback(async(deck: Deck, xp: number, id: StepId) => {
     const [choices, , delayedDeckEdit] = campaignState.numberChoices(id.id, id.scenario);

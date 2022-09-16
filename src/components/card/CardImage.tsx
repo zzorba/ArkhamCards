@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { find, map, range } from 'lodash';
 
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import Card from '@data/types/Card';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import StyleContext from '@styles/StyleContext';

@@ -1071,12 +1071,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# одержим.",
-            "feminine_text": "#name# одержима."
+            "feminine_text": "#name# одержима.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1558,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# одержим.",
-            "feminine_text": "#name# одержима."
+            "feminine_text": "#name# одержима.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +1929,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
-            "feminine_text": "#name# присоединилась к флейтистам Азатота."
+            "feminine_text": "#name# присоединилась к флейтистам Азатота.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2465,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -2666,12 +2677,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "atw_bernards_fate",
@@ -3129,7 +3142,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
-            "feminine_text": "#name# присоединилась к флейтистам Азатота."
+            "feminine_text": "#name# присоединилась к флейтистам Азатота.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3415,12 +3429,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "feminine_text": "#name# has broken the law of Ulthar.",
+            "nonbinary_text": "#name# has broken the law of Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "feminine_text": "#name# was captured.",
+            "nonbinary_text": "#name# was captured."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3938,22 +3954,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -4117,7 +4137,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "feminine_text": "#name# possesses a diving suit.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4977,7 +4998,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5307,12 +5329,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5720,12 +5744,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

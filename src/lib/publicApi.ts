@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 
 import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
-import Card, { CARD_NUM_COLUMNS } from '@data/types/Card';
+import Card, { CARD_NUM_COLUMNS, TranslationData } from '@data/types/Card';
 import Rule from '@data/types/Rule';
 import Database, { SqliteVersion } from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
@@ -12,7 +12,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCardsDocument, GetCardsQuery, GetCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { Dispatch } from 'react';
 
-const VERBOSE = false;
+const VERBOSE = true;
 
 const OLD_SQLITE_NUM_VARIABLES = 999;
 const NEW_SQLITE_NUM_VARIABLES = 32766;
@@ -181,12 +181,9 @@ export const syncCards = async function(
       allEncounterSets[encounterSet.code] = encounterSet.name;
     });
     const packs: {
-      [pack_code: string]: Pack & { cycle_name: string };
-    } = {};
-    const cycles: {
-      [cycle_code: string]: {
-        name: string;
-        position: number;
+      [pack_code: string]: Pack & {
+        cycle_code: string;
+        cycle_name: string;
       };
     } = {};
     const standardPacks: Pack[] = [];
@@ -200,6 +197,7 @@ export const syncCards = async function(
           name: head(pack.translations)?.name || pack.real_name,
           position: pack.position || 0,
           cycle_position: cycle.position,
+          cycle_code: cycle.code,
           cycle_name,
           known: 0,
           total: 0,
@@ -214,10 +212,6 @@ export const syncCards = async function(
           standardPacks.push(pack);
         }
       });
-      cycles[cycle.code] = {
-        name: cycle_name,
-        position: cycle.position,
-      };
     });
 
     dispatch({
@@ -238,18 +232,26 @@ export const syncCards = async function(
       typeNames[type.code] = type.name;
     });
 
-    const subtypeNames: { [code: string]: string } = {};
+    const subTypeNames: { [code: string]: string } = {};
     forEach(cardsResponse.data.card_subtype_name, type => {
-      subtypeNames[type.code] = type.name;
+      subTypeNames[type.code] = type.name;
     });
 
     VERBOSE && console.time('parse');
     const total = cardsResponse.data.all_card.length;
+    const translationData: TranslationData = {
+      lang: lang || 'en',
+      encounterSets: allEncounterSets,
+      packs,
+      cardTypeNames: typeNames,
+      subTypeNames,
+      factionNames,
+    };
     const allCards = map(cardsResponse.data.all_card, (card, idx) => {
       if (idx % 500 === 0) {
-        updateProgress(0.2 + (idx * 1.0 / total * .1));
+        updateProgress(0.2 + (idx * 1.0 / total * 0.1));
       }
-      return Card.fromGraphQl(card, lang || 'en', allEncounterSets, packs, cycles, typeNames, subtypeNames, factionNames);
+      return Card.fromGraphQl(card, translationData);
     });
     VERBOSE && console.timeEnd('parse');
     updateProgress(0.3)
@@ -297,7 +299,6 @@ export const syncCards = async function(
     handleDerivativeData(dedupedCards, dupes)
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     VERBOSE && console.timeEnd('derivedData');
-    //const queryRunner = await db.startTransaction();
     try {
       const totalCards = (linkedCards.length + normalCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
@@ -325,8 +326,6 @@ export const syncCards = async function(
       VERBOSE && console.timeEnd('normalCards');
     } finally {
       VERBOSE && console.time('commit');
-      //await queryRunner.commitTransaction();
-      //await queryRunner.release();
       VERBOSE && console.timeEnd('commit');
     }
     updateProgress(0.95);

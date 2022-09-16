@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -86,7 +86,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
     dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang, (progress: number, estimateMillis?: number) => {
       fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
     }));
-  }, [dispatch, db, anonClient, choiceLang, useSystemLang]);
+  }, [dispatch, db, anonClient, choiceLang, useSystemLang, fetchProgress]);
 
   useEffect(() => {
     if (fetchRequest && promptForUpdate) {
@@ -95,6 +95,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
       }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, promptForUpdate, fetchRequest, db, anonClient]);
 
   const ignoreUpdate = useCallback(() => {

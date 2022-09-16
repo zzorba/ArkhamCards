@@ -9,7 +9,7 @@ import {
 import { c, t } from 'ttag';
 import { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import { Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import space, { m, s, xs } from '@styles/space';

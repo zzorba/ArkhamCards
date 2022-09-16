@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { throttle } from 'lodash';
 import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import Card from '@data/types/Card';
@@ -10,7 +9,6 @@ import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import { getMyDecksState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
@@ -26,7 +24,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 function MyDecksView({ componentId }: NavigationProps) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { myDecks } = useSelector(getMyDecksState);
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       Navigation.showModal({

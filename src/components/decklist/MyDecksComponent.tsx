@@ -1,9 +1,5 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -11,7 +7,7 @@ import { t } from 'ttag';
 import Card from '@data/types/Card';
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import { getDeckToCampaignMap } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
@@ -48,7 +44,7 @@ function MyDecksComponent({
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
-  const { typography, height, width } = useContext(StyleContext);
+  const { typography, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
   }, [login]);
@@ -121,7 +117,7 @@ function MyDecksComponent({
         { signInFooter }
       </View>
     );
-  }, [customFooter, height, signInFooter, renderExpandButton, deckReasons]);
+  }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
 
   return (
@@ -142,10 +138,6 @@ function MyDecksComponent({
 export default withLoginState<OwnProps>(MyDecksComponent);
 
 const styles = StyleSheet.create({
-  signInFooter: {
-    padding: s,
-    paddingTop: 0,
-  },
   footer: {
     width: '100%',
     flexDirection: 'column',

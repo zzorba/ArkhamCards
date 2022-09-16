@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 

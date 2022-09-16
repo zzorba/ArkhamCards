@@ -35,6 +35,7 @@ function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, bo
             selected_feminine_text: c('feminine').t`Physical trauma`,
             masculine_text: t`Physical trauma`,
             feminine_text: c('feminine').t`Physical trauma`,
+            nonbinary_text: c('nonbinary').t`Physical trauma`,
           },
           {
             id: 'mental',
@@ -43,6 +44,7 @@ function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, bo
             selected_feminine_text: c('feminine').t`Mental trauma`,
             masculine_text: t`Mental trauma`,
             feminine_text: c('feminine').t`Mental trauma`,
+            nonbinary_text: c('nonbinary').t`Mental trauma`,
           },
         ],
       };
@@ -67,16 +69,20 @@ function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, bo
           icon: 'physical',
           selected_text: t`Physical trauma`,
           selected_feminine_text: c('feminine').t`Physical trauma`,
+          selected_nonbinary_text: c('nonbinary').t`Physical trauma`,
           masculine_text: t`Physical trauma`,
           feminine_text: c('feminine').t`Physical trauma`,
+          nonbinary_text: c('nonbinary').t`Physical trauma`,
         },
         {
           id: 'mental',
           icon: 'mental',
           selected_text: t`Mental trauma`,
           selected_feminine_text: c('feminine').t`Mental trauma`,
+          selected_nonbinary_text: c('nonbinary').t`Mental trauma`,
           masculine_text: t`Mental trauma`,
           feminine_text: c('feminine').t`Mental trauma`,
+          nonbinary_text: c('nonbinary').t`Mental trauma`,
         },
         {
           id: 'none',

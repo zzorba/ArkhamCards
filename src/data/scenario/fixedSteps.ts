@@ -20,6 +20,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
 import CampaignGuide from './CampaignGuide';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -316,32 +317,52 @@ function investigatorStatusStepId(resolution: Resolution): string {
 
 function statusToString(
   status: InvestigatorStatus,
-  gender?: 'masculine' | 'feminine'
+  gender?: Gender_Enum
 ): string {
   switch (status) {
     case 'alive':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Alive` : c('feminine').t`Alive`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Alive`;
+          case Gender_Enum.F: return c('feminine').t`Alive`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Alive`;
+        }
       }
       return t`Alive`;
     case 'resigned':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Resigned` : c('feminine').t`Resigned`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Resigned`;
+          case Gender_Enum.F: return c('feminine').t`Resigned`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Resigned`;
+        }
       }
       return t`Resigned`;
     case 'physical':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: physical trauma` : c('feminine').t`Defeated: physical trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: physical trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: physical trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: physical trauma`;
+        }
       }
       return t`Defeated: physical trauma`;
     case 'mental':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: mental trauma` : c('feminine').t`Defeated: mental trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: mental trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: mental trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: mental trauma`;
+        }
       }
       return t`Defeated: mental trauma`;
     case 'eliminated':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: no trauma` : c('feminine').t`Defeated: no trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: no trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: no trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: no trauma`;
+        }
       }
       return t`Defeated: no trauma`;
   }
@@ -375,6 +396,22 @@ function statusToSelectedFeminineString(status: InvestigatorStatus): string {
       return c('feminine').t`Mental trauma`;
     case 'eliminated':
       return c('feminine').t`Defeated`;
+  }
+}
+
+
+function statusToSelectedNonBinaryString(status: InvestigatorStatus): string {
+  switch (status) {
+    case 'alive':
+      return c('nonbinary').t`Alive`;
+    case 'resigned':
+      return c('nonbinary').t`Resigned`;
+    case 'physical':
+      return c('nonbinary').t`Physical trauma`;
+    case 'mental':
+      return c('nonbinary').t`Mental trauma`;
+    case 'eliminated':
+      return c('nonbinary').t`Defeated`;
   }
 }
 
@@ -443,8 +480,10 @@ export function createInvestigatorStatusStep(
         text: statusToString(status),
         selected_text: statusToSelectedString(status),
         selected_feminine_text: statusToSelectedFeminineString(status),
-        masculine_text: statusToString(status, 'masculine'),
-        feminine_text: statusToString(status, 'feminine'),
+        selected_nonbinary_text: statusToSelectedNonBinaryString(status),
+        masculine_text: statusToString(status, Gender_Enum.M),
+        feminine_text: statusToString(status, Gender_Enum.F),
+        nonbinary_text: statusToString(status, Gender_Enum.Nb),
         effects,
       };
     }
