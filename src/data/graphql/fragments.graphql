@@ -5,6 +5,7 @@ fragment TabooSet on taboo_set {
   active
   date
   card_count
+  current
 }
 fragment EncounterSet on card_encounter_set {
   code

@@ -3,6 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 
 import {
   SET_TABOO_SET,
+  SET_CURRENT_TABOO_SET,
   SET_MISC_SETTING,
   ENSURE_UUID,
   SetTabooSetAction,
@@ -18,13 +19,27 @@ import {
   ChaosBagResults,
   REDUX_MIGRATION,
   MiscSetting,
+  SetCurrentTabooSetAction,
 } from '@actions/types';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 import { AppState } from '@reducers';
 
-export function setTabooSet(tabooId: number): SetTabooSetAction {
+export function setTabooSet(
+  tabooId: number,
+  useCurrentTabooSet: boolean,
+  currentTabooId: number | undefined
+): SetTabooSetAction {
   return {
     type: SET_TABOO_SET,
+    tabooId,
+    useCurrentTabooSet,
+    currentTabooId,
+  };
+}
+
+export function setCurentTabooSet(tabooId?: number): SetCurrentTabooSetAction {
+  return {
+    type: SET_CURRENT_TABOO_SET,
     tabooId,
   };
 }

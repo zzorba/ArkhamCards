@@ -630,6 +630,14 @@ export const SET_TABOO_SET = 'SET_TABOO_SET';
 export interface SetTabooSetAction {
   type: typeof SET_TABOO_SET;
   tabooId?: number;
+  currentTabooId?: number;
+  useCurrentTabooSet?: boolean;
+}
+
+export const SET_CURRENT_TABOO_SET = 'SET_CURRENT_TABOO_SET';
+export interface SetCurrentTabooSetAction {
+  type: typeof SET_CURRENT_TABOO_SET;
+  tabooId?: number;
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';

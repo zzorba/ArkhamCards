@@ -2,6 +2,7 @@ import { uniq, filter, forEach } from 'lodash';
 
 import {
   SET_TABOO_SET,
+  SET_CURRENT_TABOO_SET,
   SET_MISC_SETTING,
   SET_LANGUAGE_CHOICE,
   SetTabooSetAction,
@@ -19,11 +20,14 @@ import {
   SetPlaybackRateAction,
   SyncDismissOnboardingAction,
   SYNC_DISMISS_ONBOARDING,
+  SetCurrentTabooSetAction,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 interface SettingsState {
   tabooId?: number;
+  useCurrentTabooSet?: boolean;
+  currentTabooSetId?: number;
   singleCardView?: boolean;
   ignore_collection?: boolean;
   alphabetizeEncounterSets?: boolean;
@@ -52,6 +56,8 @@ export const CURRENT_REDUX_VERSION = 1;
 const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: CURRENT_REDUX_VERSION,
   tabooId: undefined,
+  useCurrentTabooSet: false,
+  currentTabooSetId: 5,
   singleCardView: false,
   alphabetizeEncounterSets: false,
   colorblind: false,
@@ -73,6 +79,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 
 type SettingAction =
   SetLanguageChoiceAction |
+  SetCurrentTabooSetAction |
   SetTabooSetAction |
   SetMiscSettingAction |
   CardFetchSuccessAction |
@@ -128,6 +135,14 @@ export default function(
       return {
         ...state,
         tabooId: action.tabooId,
+        useCurrentTabooSet: action.useCurrentTabooSet,
+        currentTabooSetId: action.currentTabooId,
+      };
+    }
+    case SET_CURRENT_TABOO_SET: {
+      return {
+        ...state,
+        currentTabooSetId: action.tabooId,
       };
     }
     case SET_PLAYBACK_RATE:

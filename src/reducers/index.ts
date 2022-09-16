@@ -726,11 +726,16 @@ export const makeChaosBagResultsSelector = () =>
 
 export const makeTabooSetSelector = (): (state: AppState, tabooSetOverride?: number) => number | undefined =>
   createSelector(
-    (state: AppState, tabooSetOverride?: number) => state.settings.tabooId,
+    (state: AppState) => state.settings.tabooId,
+    (state: AppState) => state.settings.useCurrentTabooSet,
+    (state: AppState) => state.settings.currentTabooSetId,
     (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
-    (tabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
+    (tabooId: number | undefined, useCurrentTabooSet: boolean | undefined, currentTabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
       if (tabooSetOverride !== undefined) {
         return tabooSetOverride;
+      }
+      if (useCurrentTabooSet && currentTabooId) {
+        return currentTabooId;
       }
       return tabooId;
     }

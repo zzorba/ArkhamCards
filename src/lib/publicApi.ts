@@ -1,4 +1,4 @@
-import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
+import { chunk, find, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
 import { Platform } from 'react-native';
 
 import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
@@ -287,6 +287,7 @@ export const syncCards = async function(
       cardsToInsert.push(card);
     });
     VERBOSE && console.time('tabooSets');
+    const currentTabooSetId = find(cardsResponse.data.taboo_set, tabooSet => tabooSet.current)?.id;
     await tabooSets.insert(map(cardsResponse.data.taboo_set, tabooSet => {
       return TabooSet.fromGQL(tabooSet);
     }));
