@@ -463,7 +463,7 @@ PODS:
     - React-Core
   - RNColorMatrixImageFilters (5.2.14):
     - React-Core
-  - RNDeviceInfo (10.0.2):
+  - RNDeviceInfo (10.1.2):
     - React-Core
   - RNFastImage (8.6.1):
     - React-Core
@@ -486,7 +486,7 @@ PODS:
     - RNFBApp
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.6.0):
+  - RNGestureHandler (2.6.1):
     - React-Core
   - RNGoogleSignin (8.0.0):
     - GoogleSignIn (~> 6.2.2)
@@ -528,7 +528,7 @@ PODS:
     - React
   - RNShare (7.6.6):
     - React-Core
-  - RNSVG (13.1.0):
+  - RNSVG (13.2.0):
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
@@ -874,14 +874,14 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNCClipboard: 4b8bec7c195e27bcec746f52dff7601161683249
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
-  RNDeviceInfo: 0a7c1d2532aa7691f9b9925a27e43af006db4dae
+  RNDeviceInfo: 4a2d995e05823cf364e8791bfa450d8f2f461c42
   RNFastImage: 3207b9eb17c2425d574ca40db35185db6e324f4e
   RNFBApp: a6fca2cd8f392b5efc1f2ab7bd4b3b64a6039abf
   RNFBAuth: e121a1a5b6e6df0348f62da9bf96e5b58fdffa01
   RNFBDatabase: e4f50579abe1687df517ff9f2cb3ef994d41d8e1
   RNFBFunctions: 98794420eb5407c91021f1e9f4430a53f768df4c
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: 920eb17f5b1e15dae6e5ed1904045f8f90e0b11e
+  RNGestureHandler: 28ad20bf02257791f7f137b31beef34b9549f54b
   RNGoogleSignin: b2179ba653c759b936404a7746fc5302f9de6a5a
   RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
   RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
@@ -889,7 +889,7 @@ SPEC CHECKSUMS:
   RNReanimated: 60e291d42c77752a0f6d6f358387bdf225a87c6e
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNShare: d56424e3926cbc239db1cc1c168adcb051aad50b
-  RNSVG: 1153e8eeb34c788841016c517dba9f57f20b762f
+  RNSVG: 07037623c36f12e41312730622d5f6b3656227ca
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
