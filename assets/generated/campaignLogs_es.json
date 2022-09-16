@@ -1072,13 +1072,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1133,7 +1133,7 @@
             "id": "read_act_2",
             "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
             "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leyó el segundo acto de El Rey de Amarillo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1565,7 +1565,7 @@
             "id": "read_act_2",
             "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
             "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leyó el segundo acto de El Rey de Amarillo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1930,7 +1930,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# se ha unido a los flautistas de Azathoth.",
             "feminine_text": "#name# se ha unido a los flautistas de Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# se ha unido a los flautistas de Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -2466,25 +2466,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
             "feminine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "agenda_5",
@@ -2678,13 +2678,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "atw_bernards_fate",
@@ -3143,7 +3143,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# se ha unido a los flautistas de Azathoth.",
             "feminine_text": "#name# se ha unido a los flautistas de Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# se ha unido a los flautistas de Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3436,7 +3436,7 @@
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# ha quebrantado la ley de Ulthar.",
             "feminine_text": "#name# ha quebrantado la ley de Ulthar.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name# ha quebrantado la ley de Ulthar."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3955,25 +3955,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
             "feminine_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# empieza con 1 pista <i>(de la reserva de fichas)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# empieza con 3 recursos menos.",
             "feminine_text": "#name# empieza con 3 recursos menos.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# empieza con 3 recursos menos."
           },
           {
             "id": "agenda_5",
@@ -4138,7 +4138,7 @@
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# tiene un traje de buzo.",
             "feminine_text": "#name# tiene un traje de buzo.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "nonbinary_text": "#name# tiene un traje de buzo."
           },
           {
             "id": "agent_harpers_mission_is_complete",

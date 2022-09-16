@@ -1072,13 +1072,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
             "feminine_text": "#name# взята Бездной.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
             "feminine_text": "#name# взята Бездной.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1127,13 +1127,13 @@
             "id": "possessed",
             "masculine_text": "#name# одержим.",
             "feminine_text": "#name# одержима.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# одержим."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
             "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1559,13 +1559,13 @@
             "id": "possessed",
             "masculine_text": "#name# одержим.",
             "feminine_text": "#name# одержима.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# одержим."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
             "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1930,7 +1930,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
             "feminine_text": "#name# присоединилась к флейтистам Азатота.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# присоединился к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -2466,25 +2466,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
             "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",
@@ -2678,13 +2678,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
             "feminine_text": "#name# взята Бездной.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
             "feminine_text": "#name# взята Бездной.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "atw_bernards_fate",
@@ -3143,7 +3143,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
             "feminine_text": "#name# присоединилась к флейтистам Азатота.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# присоединился к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -3955,25 +3955,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
             "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
             "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",

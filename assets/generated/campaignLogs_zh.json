@@ -1072,13 +1072,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
             "feminine_text": "#name#墜入深淵。",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
             "feminine_text": "#name#墜入深淵。",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1127,13 +1127,13 @@
             "id": "possessed",
             "masculine_text": "#name#被附身。",
             "feminine_text": "#name#被附身。",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name#被附身。"
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
             "feminine_text": "#name#閱讀了《黃衣之王》第二幕。",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1559,13 +1559,13 @@
             "id": "possessed",
             "masculine_text": "#name#被附身。",
             "feminine_text": "#name#被附身。",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name#被附身。"
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
             "feminine_text": "#name#閱讀了《黃衣之王》第二幕。",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1930,7 +1930,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
             "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -2466,25 +2466,25 @@
             "id": "doy_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
             "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
@@ -2678,13 +2678,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
             "feminine_text": "#name#墜入深淵。",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
             "feminine_text": "#name#墜入深淵。",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "atw_bernards_fate",
@@ -3143,7 +3143,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
             "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -3430,13 +3430,13 @@
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name#已打破烏撒的法則。",
             "feminine_text": "#name#已打破烏撒的法則。",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name#已打破烏撒的法則。"
           },
           {
             "id": "captured",
             "masculine_text": "#name#被俘。",
             "feminine_text": "#name#被俘。",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name#被俘。"
           },
           {
             "id": "black_cat_at_your_side",
@@ -3955,25 +3955,25 @@
             "id": "doy_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
             "feminine_text": "#name#冒險開始時少3資源。",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
             "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
@@ -4138,7 +4138,7 @@
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name#有一件潛水服。",
             "feminine_text": "#name#有一件潛水服。",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "nonbinary_text": "#name#有一件潛水服。"
           },
           {
             "id": "agent_harpers_mission_is_complete",

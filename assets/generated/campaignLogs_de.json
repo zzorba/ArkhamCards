@@ -1072,13 +1072,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
             "feminine_text": "#name# wurde vom Abgrund verschlungen.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
             "feminine_text": "#name# wurde vom Abgrund verschlungen.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1133,7 +1133,7 @@
             "id": "possessed",
             "masculine_text": "#name# war besessen.",
             "feminine_text": "#name# war besessen.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# war besessen."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1565,7 +1565,7 @@
             "id": "possessed",
             "masculine_text": "#name# war besessen.",
             "feminine_text": "#name# war besessen.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# war besessen."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1930,7 +1930,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
             "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# schließt sich den Pfeifern von Azathoth an."
           },
           {
             "id": "accepted_fate",
@@ -2466,25 +2466,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
             "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
@@ -2685,13 +2685,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
             "feminine_text": "#name# wurde vom Abgrund verschlungen.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
             "feminine_text": "#name# wurde vom Abgrund verschlungen.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "atw_bernards_fate",
@@ -3150,7 +3150,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
             "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# schließt sich den Pfeifern von Azathoth an."
           },
           {
             "id": "accepted_fate",
@@ -3437,13 +3437,13 @@
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
             "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name# hat das Gesetz von Ulthar gebrochen."
           },
           {
             "id": "captured",
             "masculine_text": "#name# wurde gefangen genommen.",
             "feminine_text": "#name# wurde gefangen genommen.",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name# wurde gefangen genommen."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3962,25 +3962,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
             "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
@@ -4152,7 +4152,7 @@
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# besitzt einen Taucheranzug.",
             "feminine_text": "#name# besitzt einen Taucheranzug.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "nonbinary_text": "#name# besitzt einen Taucheranzug."
           },
           {
             "id": "agent_harpers_mission_is_complete",
