@@ -82,7 +82,7 @@ export default function ArkhamSwitch({ type, disabledColor, value: propValue, on
     return {
       transform: [{ scale: scale.value }],
     };
-  }, []);
+  });
   return (
     <Pressable
       disabled={disabled || !onValueChange || (type === 'radio' && value)}

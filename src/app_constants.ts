@@ -304,6 +304,7 @@ export const ACE_OF_RODS_CODE = '05040';
 export const FORCED_LEARNING_CODE = '08031'; // Deck size +15
 export const UNDERWORLD_SUPPORT_CODE = '08046';
 export const DOWN_THE_RABBIT_HOLE_CODE = '08059';
+export const UNDERWORLD_MARKET_CODE = '09077';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

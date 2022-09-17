@@ -12,7 +12,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -22,6 +22,7 @@ interface SpecialCardCounts {
   versatile: number;
   onYourOwn: number;
   underworldSupport: number;
+  underworldMarket: number;
   forcedLearning: number;
 }
 
@@ -71,6 +72,7 @@ export default class DeckValidation {
       versatile: this.slots[VERSATILE_CODE] || 0,
       onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
+      underworldMarket: this.slots[UNDERWORLD_MARKET_CODE] || 0,
       forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
     };
   }
@@ -89,6 +91,7 @@ export default class DeckValidation {
     }
     return size
       + (5 * (specialCards.versatile + specialCards.ancestralKnowledge + (specialCards.forcedLearning * 3)))
+      + (10 * specialCards.underworldMarket) +
       + sumBy(deckOptions, o => o.size || 0)
       - (5 * specialCards.underworldSupport);
   }

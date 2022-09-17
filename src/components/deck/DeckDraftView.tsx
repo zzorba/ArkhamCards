@@ -144,7 +144,7 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
     return {
       opacity: opacity.value,
     }
-  }, [opacity]);
+  });
   return (
     <Animated.View key={item.key} style={[
       borderStyle,

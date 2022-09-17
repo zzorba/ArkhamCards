@@ -23,7 +23,7 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
     return {
       opacity: opacity.value,
     };
-  }, []);
+  });
   return (
     <Pressable
       style={style}
@@ -54,7 +54,7 @@ export function TouchableQuickSize({ style, children, disabled, onPress, activeS
     return {
       transform: [{ scale: scale.value }],
     };
-  }, []);
+  });
   return (
     <Pressable
       style={style}
@@ -86,7 +86,7 @@ export function TouchableShrink({ style, children, disabled, onPress, activeScal
     return {
       transform: [{ scale: scale.value }],
     };
-  }, []);
+  });
   return (
     <Pressable
       style={style}

@@ -70,7 +70,7 @@ function CardGridItem<ItemT extends GridItem>({
     return {
       opacity: opacity.value,
     }
-  }, [opacity]);
+  });
   return (
     <Animated.View
       entering={item.enterAnimation}

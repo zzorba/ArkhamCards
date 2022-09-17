@@ -42,7 +42,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
     return {
       transform: [{ scale: scale.value }],
     };
-  }, []);
+  });
   const icon = useMemo(() => {
     if (iconNode) {
       return iconNode;

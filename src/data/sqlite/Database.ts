@@ -34,7 +34,7 @@ async function createDatabaseConnection(recreate: boolean) {
   const connection = await createConnection({
     type: 'react-native',
     database: 'arkham4',
-    driver: Platform.OS === 'android' || true ? require('react-native-quick-sqlite') : undefined,
+    driver: Platform.OS === 'android' ? require('react-native-quick-sqlite') : undefined,
     location: 'default',
     logging: [
       'error',
@@ -63,7 +63,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 45;
+  static SCHEMA_VERSION: number = 46;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
