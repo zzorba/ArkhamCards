@@ -2418,29 +2418,29 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-9.3.0.tgz#9792c23341eab5c629566baee016146f4f3f6086"
   integrity sha512-NNdMeIXXqmPCbXrWxVqRzZ1gEZ6L1ykotWnCZLVjQBUgjyGWdL5LiDM/bcIa5DLzqZY7Km08rMgB7BoHUuEmnQ==
 
-"@react-native-firebase/app@15.4.0":
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-15.4.0.tgz#616a6d13956fbed1ee010ca05b9e62969d19b5c5"
-  integrity sha512-1Xf1Q0x6x6dZamRjIpDLCvj4CUwozr1mvH3sc3A4J1avjGUwgqD0RR58DGd7r9akU+JmEXLHB84EZ9Aa68AHDg==
+"@react-native-firebase/app@15.5.0":
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-15.5.0.tgz#9cbef49a140a0c013a27872d5ca6016f1affc58a"
+  integrity sha512-eEjaUmsHEymQkdW8xQxvZx1Uxg76nJZOMl/uIMF6KKL8ALO4a4Kkp+4jZYBHvGZdS8KaahBbKsWkY7SvRFu8Aw==
   dependencies:
     "@expo/config-plugins" "^5.0.1"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@15.4.0":
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-15.4.0.tgz#182ac10af9417d2757adfdcd77bf26f48b5702b2"
-  integrity sha512-8Vm/nJpFzjpBeIbueai+WR4m8WzzUvsOXG7oDyzvPPxAL1CkWAYQ3dKRk6KhcIaqGatvfR9Ue+k3XndRS6jSMA==
+"@react-native-firebase/auth@15.5.0":
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-15.5.0.tgz#9c0de1fde5f5073fc17113092dfb1500708e50dc"
+  integrity sha512-OVFyxIhE9EFx5ix/FWM40+V05RIRPZqrRRKJxCPvHyyyC69z5KLQc9HjKKwpWLyiSIEijKD6IiEap3ACU9IADw==
 
-"@react-native-firebase/database@15.4.0":
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-15.4.0.tgz#379a1a204685c189f2d96c6c0a407bda8d1b8a3a"
-  integrity sha512-mxmTar6FXN0ZTkZImOOpx6apQNMe4qnSlnHvWmDLgyYgcCVLsK7wAIeZzue7ECuDWTpGaISfWdXTCtxw8nk7Hg==
+"@react-native-firebase/database@15.5.0":
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-15.5.0.tgz#d2b94435d3a4e7702a47d3504e1959f6da1d5ed0"
+  integrity sha512-CTEYi0dxDdvzmSuSsd4MTgrCJfz1buW6eomolJh/Khixg5VmlnDvWuvT5hDiOqQ1YNe9f56zog2c5OrkkNYKQA==
 
-"@react-native-firebase/functions@15.4.0":
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-15.4.0.tgz#ed7b243eb1871c2e2591497945c1c6a6a66a4344"
-  integrity sha512-HTXFGPjBUwAQPw+PdjL++6yKQQpd1jkTFI9H0c7/TNAecBsaHRx3bKAizN49PmULM462axUWIQZLksuXICv3Hg==
+"@react-native-firebase/functions@15.5.0":
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-15.5.0.tgz#fbe00599f4b93d7ad9c6c83f2f73e966769bb79d"
+  integrity sha512-vFcyDBzxE4qCcIcBG0qrwydymvZdpA4hJbdeb98JGO2ejooCrA7BwLN5bH+k9NMaT+zF0Ov5fgW0f7w1AW3EFQ==
 
 "@react-native-google-signin/google-signin@8.0.0":
   version "8.0.0"
@@ -10818,10 +10818,10 @@ react-native-quick-sqlite@^4.0.7:
   resolved "https://registry.yarnpkg.com/react-native-quick-sqlite/-/react-native-quick-sqlite-4.0.7.tgz#f6edd935eb368b9ebcb4449ed43fb3054e047616"
   integrity sha512-xzASTSMe9sfuLaAafr170+bD4xDl6KXtoE5n7AtiKry2qUTBn6vZCgx0ToHzqfw1P4Se9ptCT2xvnaTsuRfGgQ==
 
-react-native-reanimated@3.0.0-rc.2:
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.0.0-rc.2.tgz#aadce91407313dd730ed9503102a6abd52903675"
-  integrity sha512-Or8O6PcO2xP+GTNd1fX+InmhpnDWWvrSudByIvzIqVRq99HkVCnyiWDODOZJUz3BqwcLJpFPfMBRfOAhX3YQCQ==
+react-native-reanimated@2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.10.0.tgz#ed53be66bbb553b5b5e93e93ef4217c87b8c73db"
+  integrity sha512-jKm3xz5nX7ABtHzzuuLmawP0pFWP77lXNdIC6AWOceBs23OHUaJ29p4prxr/7Sb588GwTbkPsYkDqVFaE3ezNQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"
