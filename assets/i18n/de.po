@@ -827,19 +827,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -1528,9 +1528,6 @@ msgstr "Multiplayer"
 
 msgid "Standalone"
 msgstr "Einzelspielszenario"
-
-msgid "Debug Card Json"
-msgstr "Karten-Json debuggen"
 
 msgid "Debug"
 msgstr "Debug"
@@ -2221,9 +2218,6 @@ msgstr[1] ""
 
 msgid "Import data"
 msgstr "Daten importieren"
-
-msgid "Side stories"
-msgstr "Nebengeschichte"
 
 #, javascript-format
 msgid ""
@@ -3162,10 +3156,6 @@ msgstr "Regeln durchsuchen"
 
 msgid "Signature Weakness"
 msgstr "Signaturschwäche"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "Kosten: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -4165,9 +4155,6 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Edge of the Earth"
-msgstr ""
-
-msgid "Promotional"
 msgstr ""
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
@@ -6115,6 +6102,26 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -6391,6 +6398,38 @@ msgstr[0] ""
 msgstr[1] ""
 "Da ${ list } alle folgenden Ausrüstungsgegenstand nicht besitzt: ${ "
 "supplyName }, musst du <b>${ sectionName }</b> lesen."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6750,6 +6789,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -8093,6 +8153,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "Alle"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Keine"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr ""
@@ -8190,10 +8263,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Szenario"
 msgstr[1] "Szenarien"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "Keine"
 
 msgctxt "Tarot Card"
 msgid "None"

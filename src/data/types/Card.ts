@@ -1271,10 +1271,11 @@ export default class Card {
     const name = translation.name.replace('', '');
     let renderName = name;
     let renderSubname = translation.subname;
-    if (card.type_code === 'act' && card.stage) {
-      renderSubname = t`Act ${card.stage}`;
-    } else if (card.type_code === 'agenda' && card.stage) {
-      renderSubname = t`Agenda ${card.stage}`;
+    const json = card;
+    if (card.type_code === 'act' && json.stage) {
+      renderSubname = t`Act ${json.stage}`;
+    } else if (card.type_code === 'agenda' && json.stage) {
+      renderSubname = t`Agenda ${json.stage}`;
     } else if (card.type_code === 'scenario') {
       renderSubname = t`Scenario`;
     }

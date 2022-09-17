@@ -838,19 +838,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -1533,9 +1533,6 @@ msgstr "Multiplayer"
 
 msgid "Standalone"
 msgstr "Scenari Autoconclusivi"
-
-msgid "Debug Card Json"
-msgstr "Debug Card Json"
 
 msgid "Debug"
 msgstr "Debug"
@@ -2221,9 +2218,6 @@ msgstr[1] ""
 
 msgid "Import data"
 msgstr "Importa i dati"
-
-msgid "Side stories"
-msgstr "Storie secondarie"
 
 #, javascript-format
 msgid ""
@@ -3156,10 +3150,6 @@ msgstr "Cerca regolamento"
 
 msgid "Signature Weakness"
 msgstr "Debolezza Caratteristica"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "Costo: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -4157,9 +4147,6 @@ msgstr ""
 
 msgid "Fan-Made Campaigns"
 msgstr "Campagne “Fan-made”"
-
-msgid "Promotional"
-msgstr "Promoziale"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "Non puoi avere più di 5 carte che non siano Guardiano o Neutrali"
@@ -6155,6 +6142,26 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -6431,6 +6438,38 @@ msgstr[0] ""
 msgstr[1] ""
 "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ "
 "sectionName }</b>."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6790,6 +6829,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -8133,6 +8193,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "Tutti"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Nessuna"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "Nessuno"
@@ -8230,10 +8303,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Scenario"
 msgstr[1] "Scenari"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "Nessuna"
 
 msgctxt "Tarot Card"
 msgid "None"

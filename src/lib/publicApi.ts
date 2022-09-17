@@ -12,7 +12,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCardsDocument, GetCardsQuery, GetCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { Dispatch } from 'react';
 
-const VERBOSE = true;
+const VERBOSE = false;
 
 const OLD_SQLITE_NUM_VARIABLES = 999;
 const NEW_SQLITE_NUM_VARIABLES = 32766;

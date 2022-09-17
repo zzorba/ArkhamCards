@@ -826,19 +826,19 @@ msgstr "混亂袋"
 msgid "Adjust Weakness Set"
 msgstr "調整弱點牌庫"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "本牌組包含這些基礎弱點"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "本牌組包含此基礎弱點"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "是否將這些弱點卡從本劇本模式之基礎弱點牌庫中移除？"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "是否將此弱點卡從本劇本模式之基礎弱點牌庫中移除？"
 
@@ -1495,9 +1495,6 @@ msgstr "多人遊戲"
 msgid "Standalone"
 msgstr "獨立冒險"
 
-msgid "Debug Card Json"
-msgstr "Debug Card Json"
-
 msgid "Debug"
 msgstr "Debug"
 
@@ -2135,9 +2132,6 @@ msgstr[0] "要進行此冒險，每位調查員需要支付${ entry.xpCost }點�
 
 msgid "Import data"
 msgstr "匯入資料"
-
-msgid "Side stories"
-msgstr "支線劇情"
 
 #, javascript-format
 msgid ""
@@ -2994,10 +2988,6 @@ msgstr "搜尋規則"
 
 msgid "Signature Weakness"
 msgstr "專屬弱點"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "費用: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -3944,9 +3934,6 @@ msgstr "仙境的強度"
 
 msgid "Edge of the Earth"
 msgstr "闇與地球之界"
-
-msgid "Promotional"
-msgstr "推廣"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "你不能加入超過5張守衛者和中立以外的卡牌"
@@ -5830,6 +5817,26 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
@@ -6056,6 +6063,38 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6449,6 +6488,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7792,6 +7852,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "全部"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "無"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "無"
@@ -7878,10 +7951,6 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "冒險"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "無"
 
 msgctxt "Tarot Card"
 msgid "None"

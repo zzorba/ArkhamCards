@@ -827,19 +827,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -1535,9 +1535,6 @@ msgstr "Multijugador"
 msgid "Standalone"
 msgstr "Escenarios independientes"
 
-msgid "Debug Card Json"
-msgstr "Carta de depuración Json"
-
 msgid "Debug"
 msgstr "Depurar"
 
@@ -2215,9 +2212,6 @@ msgstr[1] ""
 
 msgid "Import data"
 msgstr "Importar datos"
-
-msgid "Side stories"
-msgstr "Historias secundarias"
 
 #, javascript-format
 msgid ""
@@ -3153,10 +3147,6 @@ msgstr "Reglas de búsqueda"
 
 msgid "Signature Weakness"
 msgstr "Debilidad característica"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "Coste: ${json.cost}"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -4150,9 +4140,6 @@ msgstr "Fuerza del país de las maravillas"
 
 msgid "Edge of the Earth"
 msgstr "Los confines de la tierra"
-
-msgid "Promotional"
-msgstr "Promocional"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "No puedes llevar más de 5 cartas que no sean Guardián o Neutral"
@@ -6247,6 +6234,26 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
@@ -6523,6 +6530,38 @@ msgstr[0] ""
 msgstr[1] ""
 "Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ "
 "sectionName }</b>."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -7003,6 +7042,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -8346,6 +8406,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "Todos"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Ninguna"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "Ninguno"
@@ -8443,10 +8516,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Escenario"
 msgstr[1] "Escenarios"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "Ninguna"
 
 msgctxt "Tarot Card"
 msgid "None"

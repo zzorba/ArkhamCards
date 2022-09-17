@@ -327,17 +327,11 @@ msgstr "캠페인 데이터를 백업하시겠습니까?"
 msgid "Export Campaign Data"
 msgstr "캠페인 데이터 내보내기"
 
-msgid "Debug Card Json"
-msgstr "카드 Json 디버그"
-
 msgid "Return to..."
 msgstr "돌아온..."
 
 msgid "Investigator Starter Decks"
 msgstr "조사자 확장"
-
-msgid "Side stories"
-msgstr "독립 시나리오"
 
 msgid "Debug"
 msgstr "디버그"
@@ -2184,19 +2178,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러 개의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -3036,10 +3030,6 @@ msgstr "규칙 검색"
 
 msgid "Signature Weakness"
 msgstr "전용 약점"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "비용: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -3996,9 +3986,6 @@ msgstr "이상한 나라의 힘"
 
 msgid "Edge of the Earth"
 msgstr "지구의 끝자락"
-
-msgid "Promotional"
-msgstr "프로모션"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "수호자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
@@ -5920,6 +5907,26 @@ msgstr "이 카드는 아직 정식으로 출시되지 않았으므로, 현재�
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -6162,6 +6169,38 @@ msgid_plural ""
 msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6577,6 +6616,27 @@ msgid ""
 msgstr ""
 "또한 이번 업데이트에서는 “The Colour Out of Space(한국어화 미지원)”라는 팬 제작 독립 시나리오에 대한 지원도 "
 "추가되었습니다."
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
@@ -7919,6 +7979,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "전부"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "없음"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "없음"
@@ -8005,10 +8078,6 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "없음"
 
 msgctxt "Tarot Card"
 msgid "None"

@@ -173,12 +173,6 @@ msgstr ""
 msgid "Investigator Starter Decks"
 msgstr ""
 
-msgid "Side stories"
-msgstr ""
-
-msgid "Promotional"
-msgstr ""
-
 msgid "Parallel"
 msgstr ""
 
@@ -343,10 +337,6 @@ msgid "Agenda ${ linked_card.stage }"
 msgstr ""
 
 msgid "Cost: None"
-msgstr ""
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
 msgstr ""
 
 msgid "N/A"
@@ -749,9 +739,6 @@ msgid ""
 msgstr ""
 
 msgid "Export Diagnostic Data"
-msgstr ""
-
-msgid "Debug Card Json"
 msgstr ""
 
 msgid "Database reset"
@@ -3866,19 +3853,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
@@ -5700,6 +5687,26 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -5948,6 +5955,38 @@ msgid ""
 msgstr ""
 "Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật "
 "Ký Chiến Dịch."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6307,6 +6346,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7650,6 +7710,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr ""
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr ""
@@ -7747,10 +7820,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

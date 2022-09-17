@@ -123,7 +123,7 @@
     "react-native-pan-pinch-view": "1.0.1",
     "react-native-progress": "5.0.0",
     "react-native-quick-sqlite": "^4.0.7",
-    "react-native-reanimated": "2.10.0",
+    "react-native-reanimated": "3.0.0-rc.2",
     "react-native-redash": "18.0.0",
     "react-native-scrubber": "1.0.0",
     "react-native-sha256": "1.4.7",
