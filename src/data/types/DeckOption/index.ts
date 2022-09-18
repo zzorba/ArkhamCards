@@ -67,6 +67,12 @@ export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public text?: string[];
 
+  @Column('boolean', { nullable: true })
+  public heals_horror?: boolean;
+
+  @Column('boolean', { nullable: true })
+  public heals_damage?: boolean;
+
   @Column('simple-array', { nullable: true })
   public slot?: string[];
 
@@ -206,19 +212,23 @@ export class DeckOptionQueryBuilder {
     return [];
   }
   private textClause(): Brackets[] {
-    if (this.option.text && this.option.text.length && (
+    if (this.option.heals_horror || (
+      this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
-    )) {
+      this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+      this.option.text[0] === '[Hh]eals?( that much)?( (\\+?\\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\\d+|all|(X total)))?(\\s|\\/)horror'
+    ))) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
     }
 
-    if (this.option.text && this.option.text.length &&
-      this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage'
-    ) {
+    if (this.option.heals_damage || (
+      this.option.text && this.option.text.length && (
+      this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((((\\+?\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\+?\\d+)|(all)|(X total)) )?damage'
+    ))) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
     return [];

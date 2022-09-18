@@ -18,8 +18,8 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
-const HEALS_HORROR_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?damage (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?horror/;
-const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?damage/;
+const HEALS_HORROR_REGEX = /[Hh]eals?( that much)?( (\+?\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\d+|all|(X total)))?(\s|\/)horror/;
+const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\+?\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\+?\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 
 export const enum CardStatusType {
@@ -1336,12 +1336,13 @@ export default class Card {
     const seal_match = card.real_text && card.real_text.match(SEAL_REGEX);
     const seal = !!seal_match || card.code === SERPENTS_OF_YIG;
 
-    const heals_horror_match = !!(card.real_text && card.real_text.match(HEALS_HORROR_REGEX)) ||
+    const heals_horror_match = card.xp !== null && card.xp !== undefined && !!(card.real_text && card.real_text.match(HEALS_HORROR_REGEX)) ||
       !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_HORROR_REGEX));
     const heals_horror = heals_horror_match ? true : null;
-    const heals_damage_match = !!(card.real_text && card.real_text.match(HEALS_DAMAGE_REGEX)) ||
+    const heals_damage_match = card.xp !== null && card.xp !== undefined && !!(card.real_text && card.real_text.match(HEALS_DAMAGE_REGEX)) ||
       !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_DAMAGE_REGEX));
     const heals_damage = heals_damage_match ? true : null;
+
     const myriad = !!card.real_text && card.real_text.indexOf('Myriad.') !== -1;
     const advanced = !!card.real_text && card.real_text.indexOf('Advanced.') !== -1;
 

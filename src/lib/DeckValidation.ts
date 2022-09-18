@@ -509,6 +509,16 @@ export default class DeckValidation {
         }
 
         if (option.text && option.text.length) {
+          if (option.heals_damage) {
+            if (!card.heals_damage) {
+              continue;
+            }
+          }
+          if (option.heals_horror) {
+            if (!card.heals_horror) {
+              continue;
+            }
+          }
           var text_valid = false;
           for(var j = 0; j < option.text.length; j++){
             var text = option.text[j];
