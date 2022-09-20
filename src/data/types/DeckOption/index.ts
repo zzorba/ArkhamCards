@@ -62,16 +62,13 @@ export default class DeckOption {
   public uses?: string[];
 
   @Column('simple-array', { nullable: true })
+  public tag?: string[];
+
+  @Column('simple-array', { nullable: true })
   public trait?: string[];
 
   @Column('simple-array', { nullable: true })
   public text?: string[];
-
-  @Column('boolean', { nullable: true })
-  public heals_horror?: boolean;
-
-  @Column('boolean', { nullable: true })
-  public heals_damage?: boolean;
 
   @Column('simple-array', { nullable: true })
   public slot?: string[];
@@ -135,6 +132,7 @@ export default class DeckOption {
     deck_option.uses = json.uses || [];
     deck_option.text = json.text || [];
     deck_option.slot = json.slot || [];
+    deck_option.tag = json.tag || [];
     deck_option.trait = json.trait || [];
     deck_option.type_code = json.type || [];
     deck_option.limit = json.limit;
@@ -212,7 +210,7 @@ export class DeckOptionQueryBuilder {
     return [];
   }
   private textClause(): Brackets[] {
-    if (this.option.heals_horror || (
+    if ((this.option.tag?.length && this.option.tag[0] === 'hh') || (
       this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
@@ -224,7 +222,7 @@ export class DeckOptionQueryBuilder {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
     }
 
-    if (this.option.heals_damage || (
+    if ((this.option.tag?.length && this.option.tag[0] === 'hd') || (
       this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage' ||
       this.option.text[0] === '[Hh]eals? (that much )?((((\\+?\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\+?\\d+)|(all)|(X total)) )?damage'

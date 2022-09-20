@@ -103,6 +103,7 @@ fragment SingleCard on all_card {
   taboo_placeholder
   gender
   alt_art_investigator
+  tags
 }
 fragment CoreCardText on all_card_text {
   flavor

@@ -1,4 +1,4 @@
-import { chunk, find, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
+import { chunk, uniq, find, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
 import { Platform } from 'react-native';
 
 import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
@@ -104,7 +104,7 @@ function handleDerivativeData(dedupedCards: Card[], dupes: {
   const playerCards: Card[] = [];
   forEach(flatCards, card => {
     if (dupes[card.code]) {
-      card.reprint_pack_codes = dupes[card.code];
+      card.reprint_pack_codes = uniq(dupes[card.code]);
     }
     if (!card.hidden && card.encounter_code) {
       encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);

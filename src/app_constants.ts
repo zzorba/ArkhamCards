@@ -287,6 +287,8 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
+export const PRECIOUS_MEMENTO_FORMER_CODE = '08114'
+export const PRECIOUS_MEMENTO_FUTURE_CODE = '08115'
 export const RAVEN_QUILL_CODE = '09042';
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';

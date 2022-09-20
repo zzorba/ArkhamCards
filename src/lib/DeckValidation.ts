@@ -12,7 +12,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -131,7 +131,7 @@ export default class DeckValidation {
             deck_limit: 1,
           };
         }
-        const isPreciousMemories = card.code === '08114' || card.code === '08115';
+        const isPreciousMemento = card.code === PRECIOUS_MEMENTO_FORMER_CODE || card.code === PRECIOUS_MEMENTO_FUTURE_CODE;
         const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
         // Let's assume if one is myriad, then they all are.
         const deck_limit = (card && card.myriad) ? 3 : (
@@ -141,7 +141,7 @@ export default class DeckValidation {
 
         return {
           nb_copies: group.length,
-          deck_limit: isPreciousMemories ? 2 : deck_limit,
+          deck_limit: isPreciousMemento ? 2 : deck_limit,
         };
       });
   }
@@ -508,31 +508,21 @@ export default class DeckValidation {
           }
         }
 
-        if (option.text && option.text.length) {
-          if (option.heals_damage) {
-            if (!card.heals_damage) {
-              continue;
-            }
-          }
-          if (option.heals_horror) {
-            if (!card.heals_horror) {
-              continue;
-            }
-          }
-          var text_valid = false;
-          for(var j = 0; j < option.text.length; j++){
-            var text = option.text[j];
-            if (card.real_text && card.real_text.toLowerCase().match(text)){
-              text_valid = true;
+        if (option.tag && option.tag.length) {
+          var tag_valid = false;
+          for(var j = 0; j < option.tag.length; j++){
+            var tag = option.tag[j];
+            if (find(card.tags, t => t === tag)) {
+              tag_valid = true;
             }
             if (card.customization_options && this.all_customizations) {
               // Permissive mode
-              if (find(card.customization_options, o => o.real_text && o.real_text.toLowerCase().match(text))){
-                text_valid = true;
+              if (find(card.customization_options, o => !!find(o.tags, t => t === tag))){
+                tag_valid = true;
               }
             }
           }
-          if (!text_valid) {
+          if (!tag_valid) {
             continue;
           }
         }

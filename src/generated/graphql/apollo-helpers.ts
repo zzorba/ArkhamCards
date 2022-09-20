@@ -1,5 +1,5 @@
 import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
-export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_link_id' | 'backimagesrc' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
+export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_link_id' | 'backimagesrc' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
 export type all_cardFieldPolicy = {
 	alt_art_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -32,6 +32,8 @@ export type all_cardFieldPolicy = {
 	faction3_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	faction_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	gender?: FieldPolicy<any> | FieldReadFunction<any>,
+	heals_damage?: FieldPolicy<any> | FieldReadFunction<any>,
+	heals_horror?: FieldPolicy<any> | FieldReadFunction<any>,
 	health?: FieldPolicy<any> | FieldReadFunction<any>,
 	health_per_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	hidden?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -81,6 +83,7 @@ export type all_cardFieldPolicy = {
 	taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_xp?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -818,8 +821,9 @@ export type campaign_avg_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deckKeySpecifier = ('arkhamdb_id' | 'arkhamdb_user' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | 'previous_decks' | 'previous_decks_aggregate' | 'updated_at' | campaign_deckKeySpecifier)[];
+export type campaign_deckKeySpecifier = ('archived' | 'arkhamdb_id' | 'arkhamdb_user' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | 'previous_decks' | 'previous_decks_aggregate' | 'updated_at' | campaign_deckKeySpecifier)[];
 export type campaign_deckFieldPolicy = {
+	archived?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	base?: FieldPolicy<any> | FieldReadFunction<any>,

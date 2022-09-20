@@ -17,6 +17,7 @@ import { AlternateRequiredCodeMigration1660064759967 } from './migration/Alterna
 import { Platform } from 'react-native';
 import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
 import { GenderMigration1663271269593 } from './migration/GenderMigration';
+import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
 
 type DatabaseListener = () => void;
 
@@ -48,6 +49,7 @@ async function createDatabaseConnection(recreate: boolean) {
       AlternateRequiredCodeMigration1660064759967,
       CardStatusMigration1662999387731,
       GenderMigration1663271269593,
+      CardTagsMigraiton1663617607335,
     ],
     entities: [
       Card,

@@ -1070,15 +1070,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2676,15 +2676,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "atw_bernards_fate",
@@ -3430,13 +3430,13 @@
             "id": "captured",
             "masculine_text": "#name# 조사자가 납치당했다",
             "feminine_text": "#name# 조사자가 납치당했다",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name# 조사자가 납치당했다"
           },
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# 조사자가 울타르의 율법을 어겼다",
             "feminine_text": "#name# 조사자가 울타르의 율법을 어겼다",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name# 조사자가 울타르의 율법을 어겼다"
           },
           {
             "id": "black_cat_at_your_side",
@@ -4999,7 +4999,7 @@
             "id": "took_out_a_loan",
             "masculine_text": "#name# 조사자가 대출을 받았다",
             "feminine_text": "#name# 조사자가 대출을 받았다",
-            "nonbinary_text": "#name# took out a loan."
+            "nonbinary_text": "#name# 조사자가 대출을 받았다"
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5741,13 +5741,13 @@
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
             "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
-            "nonbinary_text": "#name# has been infected by the cybervirus."
+            "nonbinary_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
           },
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# 조사자는 지구에 의해 오염되었다",
             "feminine_text": "#name# 조사자는 지구에 의해 오염되었다",
-            "nonbinary_text": "#name# has been corrupted by the Earth."
+            "nonbinary_text": "#name# 조사자는 지구에 의해 오염되었다"
           },
           {
             "id": "allied_with_the_migo",

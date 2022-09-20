@@ -2014,11 +2014,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện và bị hạ gục."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện và bị hạ gục."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện."
           },
           {
             "id": "heretics_released",
@@ -2279,7 +2279,7 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro đang tiếp tục tự nghiên cứu."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -2315,7 +2315,7 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "các điều tra viên nhận được sự tin tưởng của Alenjandro."
           },
           {
             "id": "earned_ichtacas_trust",
@@ -2335,7 +2335,7 @@
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "bạn đang tạo ra con đường của riêng mình."
           },
           {
             "id": "found_missing_relic",
@@ -2343,11 +2343,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
@@ -2524,7 +2524,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca đã rời đi mà không có bạn."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -2532,7 +2532,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "đã lắng nghe câu chuyện của Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -3215,11 +3215,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện và bị hạ gục."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện và bị hạ gục."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện."
           },
           {
             "id": "heretics_released",
@@ -3772,7 +3772,7 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro đang tiếp tục tự nghiên cứu."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -3808,7 +3808,7 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "các điều tra viên nhận được sự tin tưởng của Alenjandro."
           },
           {
             "id": "earned_ichtacas_trust",
@@ -3828,7 +3828,7 @@
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "bạn đang tạo ra con đường của riêng mình."
           },
           {
             "id": "found_missing_relic",
@@ -3836,11 +3836,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
@@ -4013,7 +4013,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca đã rời đi mà không có bạn."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -4021,7 +4021,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "đã lắng nghe câu chuyện của Ichtaca."
           },
           {
             "id": "tasks_completed",

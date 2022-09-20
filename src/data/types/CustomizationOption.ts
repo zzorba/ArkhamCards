@@ -1,6 +1,7 @@
 import { SingleCardFragment } from '@generated/graphql/apollo-schema';
-import { map } from 'lodash';
+import { map, filter } from 'lodash';
 import { Column } from 'typeorm/browser';
+
 import Card from './Card';
 import CardTextFields from './CardTextFields';
 import DeckOption from './DeckOption';
@@ -53,6 +54,9 @@ export default class CustomizationOption {
 
   @Column('text', { nullable: true })
   public real_text?: string;
+
+  @Column('simple-array', { nullable: true })
+  public tags?: string[];
 
   @Column('integer', { nullable: true })
   public health?: number;
@@ -108,7 +112,7 @@ export default class CustomizationOption {
     option.deck_limit = json.deck_limit;
     option.text_change = json.text_change;
     option.position = json.position;
-
+    option.tags = json.tags;
     option.quantity = json.quantity;
     option.card = json.card ? DeckOption.parse(json.card) : undefined;
 

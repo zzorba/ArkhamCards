@@ -998,12 +998,13 @@ export default function({
         if (renderCard) {
           return renderCard(card);
         }
-        const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
+        const customizedCard = card.withCustomizations(listSeperator, customizations?.[card.code], 'list')
+        const deck_limit: number = customizedCard.collectionDeckLimit(packInCollection, ignore_collection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
             key={item.id}
-            card={card.withCustomizations(listSeperator, customizations?.[card.code], 'list')}
+            card={customizedCard}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
