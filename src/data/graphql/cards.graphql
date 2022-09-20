@@ -1,4 +1,4 @@
-query getUpdatedCards(
+query getCardsCache(
   $locale: String!
 ) {
   all_card_updated(
@@ -6,6 +6,7 @@ query getUpdatedCards(
   ) {
     translation_updated_at
     cards_updated_at
+    card_count
   }
 }
 
@@ -88,6 +89,7 @@ query getCards(
   ) {
     translation_updated_at
     cards_updated_at
+    card_count
   }
 }
 

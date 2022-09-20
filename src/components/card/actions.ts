@@ -32,10 +32,6 @@ function cardsCache(state: AppState, lang: string): undefined | CardCache {
   return getCardLang(state) === lang ? state.cards.cache : undefined;
 }
 
-function taboosCache(state: AppState, lang: string): undefined | TabooCache {
-  return getCardLang(state) === lang ? state.cards.tabooCache : undefined;
-}
-
 export function setLanguageChoice(choiceLang: string): SetLanguageChoiceAction {
   return {
     type: SET_LANGUAGE_CHOICE,

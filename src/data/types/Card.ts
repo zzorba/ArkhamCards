@@ -1254,10 +1254,6 @@ export default class Card {
     data: TranslationData
   ): Card {
     const translation = Card.gqlTextFields(card, data);
-    if (card.code === '02041') {
-      card.subtype_code = undefined;
-      translation.subtype_name = undefined;
-    }
     const deck_requirements = card.deck_requirements ?
       DeckRequirement.parse(card.deck_requirements) :
       null;

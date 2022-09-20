@@ -463,8 +463,9 @@ export type all_card_text_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_updatedKeySpecifier = ('cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updatedKeySpecifier)[];
+export type all_card_updatedKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updatedKeySpecifier)[];
 export type all_card_updatedFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>
@@ -474,20 +475,34 @@ export type all_card_updated_aggregateFieldPolicy = {
 	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	nodes?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_updated_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | all_card_updated_aggregate_fieldsKeySpecifier)[];
+export type all_card_updated_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | all_card_updated_aggregate_fieldsKeySpecifier)[];
 export type all_card_updated_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
 	count?: FieldPolicy<any> | FieldReadFunction<any>,
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
-	min?: FieldPolicy<any> | FieldReadFunction<any>
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_updated_max_fieldsKeySpecifier = ('cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updated_max_fieldsKeySpecifier)[];
+export type all_card_updated_avg_fieldsKeySpecifier = ('card_count' | all_card_updated_avg_fieldsKeySpecifier)[];
+export type all_card_updated_avg_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_max_fieldsKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updated_max_fieldsKeySpecifier)[];
 export type all_card_updated_max_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_updated_min_fieldsKeySpecifier = ('cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updated_min_fieldsKeySpecifier)[];
+export type all_card_updated_min_fieldsKeySpecifier = ('card_count' | 'cards_updated_at' | 'locale' | 'translation_updated_at' | all_card_updated_min_fieldsKeySpecifier)[];
 export type all_card_updated_min_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	translation_updated_at?: FieldPolicy<any> | FieldReadFunction<any>
@@ -496,6 +511,34 @@ export type all_card_updated_mutation_responseKeySpecifier = ('affected_rows' | 
 export type all_card_updated_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_stddev_fieldsKeySpecifier = ('card_count' | all_card_updated_stddev_fieldsKeySpecifier)[];
+export type all_card_updated_stddev_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_stddev_pop_fieldsKeySpecifier = ('card_count' | all_card_updated_stddev_pop_fieldsKeySpecifier)[];
+export type all_card_updated_stddev_pop_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_stddev_samp_fieldsKeySpecifier = ('card_count' | all_card_updated_stddev_samp_fieldsKeySpecifier)[];
+export type all_card_updated_stddev_samp_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_sum_fieldsKeySpecifier = ('card_count' | all_card_updated_sum_fieldsKeySpecifier)[];
+export type all_card_updated_sum_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_var_pop_fieldsKeySpecifier = ('card_count' | all_card_updated_var_pop_fieldsKeySpecifier)[];
+export type all_card_updated_var_pop_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_var_samp_fieldsKeySpecifier = ('card_count' | all_card_updated_var_samp_fieldsKeySpecifier)[];
+export type all_card_updated_var_samp_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type all_card_updated_variance_fieldsKeySpecifier = ('card_count' | all_card_updated_variance_fieldsKeySpecifier)[];
+export type all_card_updated_variance_fieldsFieldPolicy = {
+	card_count?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type all_card_var_pop_fieldsKeySpecifier = ('clues' | 'cost' | 'deck_limit' | 'doom' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'health' | 'pack_position' | 'position' | 'quantity' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'taboo_set_id' | 'taboo_xp' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_var_pop_fieldsKeySpecifier)[];
 export type all_card_var_pop_fieldsFieldPolicy = {
@@ -4699,6 +4742,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | all_card_updated_aggregate_fieldsKeySpecifier | (() => undefined | all_card_updated_aggregate_fieldsKeySpecifier),
 		fields?: all_card_updated_aggregate_fieldsFieldPolicy,
 	},
+	all_card_updated_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_avg_fieldsKeySpecifier | (() => undefined | all_card_updated_avg_fieldsKeySpecifier),
+		fields?: all_card_updated_avg_fieldsFieldPolicy,
+	},
 	all_card_updated_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_card_updated_max_fieldsKeySpecifier | (() => undefined | all_card_updated_max_fieldsKeySpecifier),
 		fields?: all_card_updated_max_fieldsFieldPolicy,
@@ -4710,6 +4757,34 @@ export type StrictTypedTypePolicies = {
 	all_card_updated_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_card_updated_mutation_responseKeySpecifier | (() => undefined | all_card_updated_mutation_responseKeySpecifier),
 		fields?: all_card_updated_mutation_responseFieldPolicy,
+	},
+	all_card_updated_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_stddev_fieldsKeySpecifier | (() => undefined | all_card_updated_stddev_fieldsKeySpecifier),
+		fields?: all_card_updated_stddev_fieldsFieldPolicy,
+	},
+	all_card_updated_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_stddev_pop_fieldsKeySpecifier | (() => undefined | all_card_updated_stddev_pop_fieldsKeySpecifier),
+		fields?: all_card_updated_stddev_pop_fieldsFieldPolicy,
+	},
+	all_card_updated_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_stddev_samp_fieldsKeySpecifier | (() => undefined | all_card_updated_stddev_samp_fieldsKeySpecifier),
+		fields?: all_card_updated_stddev_samp_fieldsFieldPolicy,
+	},
+	all_card_updated_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_sum_fieldsKeySpecifier | (() => undefined | all_card_updated_sum_fieldsKeySpecifier),
+		fields?: all_card_updated_sum_fieldsFieldPolicy,
+	},
+	all_card_updated_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_var_pop_fieldsKeySpecifier | (() => undefined | all_card_updated_var_pop_fieldsKeySpecifier),
+		fields?: all_card_updated_var_pop_fieldsFieldPolicy,
+	},
+	all_card_updated_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_var_samp_fieldsKeySpecifier | (() => undefined | all_card_updated_var_samp_fieldsKeySpecifier),
+		fields?: all_card_updated_var_samp_fieldsFieldPolicy,
+	},
+	all_card_updated_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | all_card_updated_variance_fieldsKeySpecifier | (() => undefined | all_card_updated_variance_fieldsKeySpecifier),
+		fields?: all_card_updated_variance_fieldsFieldPolicy,
 	},
 	all_card_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | all_card_var_pop_fieldsKeySpecifier | (() => undefined | all_card_var_pop_fieldsKeySpecifier),

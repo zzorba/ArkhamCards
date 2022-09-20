@@ -685,6 +685,7 @@ export interface CustomPacksAvailableAction {
 export interface CardCache {
   cardCount: number;
   lastModified?: string;
+  lastModifiedTranslation?: string;
 }
 
 export interface TabooCache {

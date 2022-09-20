@@ -1,4 +1,4 @@
-import { chunk, uniq, find, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
+import { chunk, uniq, concat, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values, uniqBy } from 'lodash';
 import { Platform } from 'react-native';
 
 import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
@@ -9,7 +9,7 @@ import Database, { SqliteVersion } from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import { GetCardsDocument, GetCardsQuery, GetCardsQueryVariables } from '@generated/graphql/apollo-schema';
+import { GetCardsCacheDocument, GetCardsCacheQuery, GetCardsCacheQueryVariables, GetCardsDocument, GetCardsQuery, GetCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { Dispatch } from 'react';
 
 const VERBOSE = false;
@@ -163,6 +163,26 @@ export const syncCards = async function(
 ): Promise<CardCache | null> {
   VERBOSE && console.log('syncCards called');
   try {
+    const cards = await db.cards();
+    if (cache?.lastModified && cache?.lastModifiedTranslation) {
+      const cacheResponse = await anonClient.query<GetCardsCacheQuery, GetCardsCacheQueryVariables>({
+        query: GetCardsCacheDocument,
+        variables: {
+          locale: lang || 'en',
+        },
+        fetchPolicy: 'no-cache',
+        canonizeResults: false,
+      });
+      const cardCount = await cards.count();
+      const serverCache = cacheResponse?.data.all_card_updated[0];
+      if (serverCache.card_count === cardCount &&
+        serverCache.cards_updated_at === cache.lastModified &&
+        serverCache.translation_updated_at === cache.lastModifiedTranslation
+      ) {
+        // Cache hit, no need to download cards our local database is in sync.
+        return cache;
+      }
+    }
     VERBOSE && console.time('download');
     updateProgress(0.2, 3000);
     const cardsResponse = await anonClient.query<GetCardsQuery, GetCardsQueryVariables>({
@@ -257,7 +277,6 @@ export const syncCards = async function(
     updateProgress(0.3)
     VERBOSE && console.time('clear-db');
     const encounterSets = await db.encounterSets();
-    const cards = await db.cards();
     const tabooSets = await db.tabooSets();
     const rules = await db.rules();
 
@@ -287,7 +306,6 @@ export const syncCards = async function(
       cardsToInsert.push(card);
     });
     VERBOSE && console.time('tabooSets');
-    const currentTabooSetId = find(cardsResponse.data.taboo_set, tabooSet => tabooSet.current)?.id;
     await tabooSets.insert(map(cardsResponse.data.taboo_set, tabooSet => {
       return TabooSet.fromGQL(tabooSet);
     }));
@@ -331,14 +349,14 @@ export const syncCards = async function(
     }
     updateProgress(0.95);
     VERBOSE && console.time('countCards');
-    const cardCount = await cards.createQueryBuilder('card')
-      .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
-      .getCount();
+    const cardCount = await cards.count();
     VERBOSE && console.timeEnd('countCards');
 
+    const updated = cardsResponse.data.all_card_updated[0];
     return {
       cardCount,
-      lastModified: undefined,
+      lastModified: updated?.cards_updated_at,
+      lastModifiedTranslation: updated?.translation_updated_at,
     };
   } catch (e) {
     console.log(e);
