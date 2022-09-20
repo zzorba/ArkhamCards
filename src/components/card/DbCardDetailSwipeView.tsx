@@ -12,7 +12,7 @@ import SnapCarousel from 'react-native-snap-carousel';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
-import { find, filter, map, slice } from 'lodash';
+import { find, flatMap, filter, map, slice } from 'lodash';
 
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
@@ -86,10 +86,21 @@ function ScrollableCard(props: {
   const { listSeperator } = useContext(LanguageContext);
   const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
     if (card && deckId) {
-      return (deckCount && customizations[card.code]) || NO_CUSTOMIZATIONS;
+      if (deckCount) {
+        if (customizations[card.code]) {
+          return customizations[card.code];
+        }
+        return flatMap(card.customization_options, (option, idx) => {
+          if (option.xp === 0) {
+            return card.customizationChoice(idx, 0, undefined, undefined) || [];
+          }
+          return [];
+        })
+      }
+      return NO_CUSTOMIZATIONS;
     }
     return undefined;
-  }, [deckId, customizations, card, deckCount])
+  }, [deckId, customizations, card, deckCount]);
   const customizedCard = useMemo(() => {
     return card?.withCustomizations(listSeperator, customizationChoices, 'customizedCard');
   }, [card, listSeperator, customizationChoices]);

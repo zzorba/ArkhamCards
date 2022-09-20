@@ -687,7 +687,7 @@ export function parseCustomizationDecision(value: string | undefined): Customiza
   });
 }
 
-export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: string | undefined, option: CustomizationOption, cards: CardsMap): CustomizationChoice {
+export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: string | undefined, option: CustomizationOption, cards: CardsMap | undefined): CustomizationChoice {
   if (!option.choice) {
     return {
       type: undefined,
@@ -716,7 +716,7 @@ export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: st
         ...basic,
         choice: codes,
         encodedChoice: choice || '',
-        cards: flatMap(codes, code => cards[code] || []),
+        cards: flatMap(codes, code => cards?.[code] || []),
       };
     }
     default:

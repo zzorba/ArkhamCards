@@ -459,7 +459,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
                 onFocus={onFocus}
                 onBlur={onBlur}
               />
-              { focused && (
+              { !!currentTrait && (
                 <View style={space.paddingTopS}>
                   <DeckButton
                     key="save"

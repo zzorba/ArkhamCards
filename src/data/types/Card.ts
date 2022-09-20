@@ -623,7 +623,7 @@ export default class Card {
     return card;
   }
 
-  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap): CustomizationChoice | undefined {
+  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap | undefined): CustomizationChoice | undefined {
     if (!this.customization_options) {
       return undefined;
     }
