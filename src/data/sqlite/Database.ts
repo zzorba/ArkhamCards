@@ -35,7 +35,6 @@ async function createDatabaseConnection(recreate: boolean) {
   const connection = await createConnection({
     type: 'react-native',
     database: 'arkham4',
-    driver: Platform.OS === 'android' ? require('react-native-quick-sqlite') : undefined,
     location: 'default',
     logging: [
       'error',
