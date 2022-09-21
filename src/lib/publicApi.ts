@@ -164,27 +164,36 @@ export const syncCards = async function(
   VERBOSE && console.log('syncCards called');
   try {
     const cards = await db.cards();
-    if (cache?.lastModified && cache?.lastModifiedTranslation) {
-      const cacheResponse = await anonClient.query<GetCardsCacheQuery, GetCardsCacheQueryVariables>({
-        query: GetCardsCacheDocument,
-        variables: {
-          locale: lang || 'en',
-        },
-        fetchPolicy: 'no-cache',
-        canonizeResults: false,
-      });
-      const cardCount = await cards.count();
-      const serverCache = cacheResponse?.data.all_card_updated[0];
-      if (serverCache.card_count === cardCount &&
-        serverCache.cards_updated_at === cache.lastModified &&
-        serverCache.translation_updated_at === cache.lastModifiedTranslation
-      ) {
-        // Cache hit, no need to download cards our local database is in sync.
-        return cache;
+    try {
+      VERBOSE && console.log('Checking cache ')
+      if (cache?.lastModified && cache?.lastModifiedTranslation) {
+        VERBOSE && console.time('cache-check');
+        const cacheResponse = await anonClient.query<GetCardsCacheQuery, GetCardsCacheQueryVariables>({
+          query: GetCardsCacheDocument,
+          variables: {
+            locale: lang || 'en',
+          },
+          fetchPolicy: 'no-cache',
+          canonizeResults: false,
+        });
+        const cardCount = await cards.count();
+        VERBOSE && console.timeEnd('cache-check');
+        const serverCache = cacheResponse?.data.all_card_updated[0];
+        if (serverCache.card_count === cardCount &&
+          serverCache.cards_updated_at === cache.lastModified &&
+          serverCache.translation_updated_at === cache.lastModifiedTranslation
+        ) {
+          VERBOSE && console.log('Cache hit, skipping fetch');
+          // Cache hit, no need to download cards our local database is in sync.
+          return cache;
+        }
       }
+    } catch (e) {
+      console.log(e.message);
     }
+    VERBOSE && console.log('Starting download.');
     VERBOSE && console.time('download');
-    updateProgress(0.2, 3000);
+    updateProgress(0.2, Platform.OS === 'ios' ? 3000 : 5000);
     const cardsResponse = await anonClient.query<GetCardsQuery, GetCardsQueryVariables>({
       query: GetCardsDocument,
       variables: {
@@ -195,6 +204,7 @@ export const syncCards = async function(
     });
     updateProgress(0.2);
     VERBOSE && console.timeEnd('download');
+    VERBOSE && console.log('Download completed!');
 
     const allEncounterSets: { [code: string]: string | undefined } = {};
     forEach(cardsResponse.data.card_encounter_set, encounterSet => {
@@ -318,11 +328,12 @@ export const syncCards = async function(
     handleDerivativeData(dedupedCards, dupes)
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     VERBOSE && console.timeEnd('derivedData');
+    const queryRunner = await db.startTransaction();
     try {
       const totalCards = (linkedCards.length + normalCards.length + sumBy(linkedCards, c => c.linked_card ? 1 : 0)) || 3000;
       let processedCards = 0;
       async function insertCards(c: Card[]) {
-        await cards.insert(c);
+        await queryRunner.manager.insert(Card, c);
         if (processedCards / 200 < (processedCards + c.length) / 200) {
           updateProgress(0.40 + (processedCards / (1.0 * totalCards) * 0.50));
         }
@@ -345,6 +356,7 @@ export const syncCards = async function(
       VERBOSE && console.timeEnd('normalCards');
     } finally {
       VERBOSE && console.time('commit');
+      await queryRunner.commitTransaction();
       VERBOSE && console.timeEnd('commit');
     }
     updateProgress(0.95);
