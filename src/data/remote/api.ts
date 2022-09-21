@@ -6,6 +6,7 @@ import { SimpleUser } from '@data/remote/hooks';
 import { useModifyUserCache } from '@data/apollo/cache';
 
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { getAppleRefreshToken, setAppleRefreshToken } from '@lib/auth';
 
 export interface ErrorResponse {
   error?: string;
@@ -22,12 +23,20 @@ export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(func
 }
 
 interface DeleteAccountRequest {
-
 }
 
 export function useDeleteAccount() {
   const apiCall = useFunction<DeleteAccountRequest>('social-deleteAccount');
   return useCallback(async() => {
+    const appleToken = await getAppleRefreshToken();
+    if (appleToken) {
+      try {
+        await fetch(`https://us-central1-arkhamblob.cloudfunctions.net/apple-revokeToken?refresh_token=${encodeURIComponent(appleToken)}`)
+      } catch (e) {
+        console.log(e.message);
+        await setAppleRefreshToken("");
+      }
+    }
     const data = await apiCall({});
     if (data.error) {
       return data.error;

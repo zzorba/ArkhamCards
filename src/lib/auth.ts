@@ -25,6 +25,18 @@ async function saveAuthResponse(
   return response.accessToken;
 }
 
+export async function setAppleRefreshToken(refreshToken: string): Promise<void> {
+  await Keychain.setGenericPassword('apple-auth', refreshToken, { service: 'apple-auth'});
+}
+
+export async function getAppleRefreshToken(): Promise<string | null> {
+  const creds = await Keychain.getGenericPassword({ service: 'apple-auth' });
+  if (creds) {
+    return creds.password;
+  }
+  return null;
+}
+
 export async function getRefreshToken(): Promise<string | null> {
   const creds = await Keychain.getGenericPassword();
   if (creds) {
