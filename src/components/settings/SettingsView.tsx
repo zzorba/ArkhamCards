@@ -167,7 +167,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     <>
       <SafeAreaView style={[styles.container, backgroundStyle]}>
         <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
-          <AccountSection componentId={componentId} showAlert={showAlert} />
+          <AccountSection
+            componentId={componentId}
+            showAlert={showAlert}
+          />
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
               <View style={[space.paddingTopS, space.paddingBottomS]}>

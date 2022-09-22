@@ -45,22 +45,20 @@ export default function AccountSection({ componentId, showAlert }: Props) {
 
   return (
     <>
-      { enableArkhamCardsAccount && (
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
-          <RoundedFactionBlock faction="mystic" header={<DeckSectionHeader faction="mystic" title={t`Arkham Cards Account`} />}>
-            <ArkhamCardsAccountDetails componentId={componentId} showAlert={showAlert} />
-            <View style={space.paddingTopS}>
-              <DeckButton
-                icon="xp"
-                color={newNotes ? 'gold' : 'default'}
-                title={t`Recent updates`}
-                detail={t`Learn about recently added features`}
-                onPress={showReleaseNotes}
-              />
-            </View>
-          </RoundedFactionBlock>
-        </View>
-      ) }
+      <View style={[space.paddingSideS, space.paddingBottomS]}>
+        <RoundedFactionBlock faction="mystic" header={<DeckSectionHeader faction="mystic" title={t`Arkham Cards Account`} />}>
+          <ArkhamCardsAccountDetails componentId={componentId} showAlert={showAlert} />
+          <View style={space.paddingTopS}>
+            <DeckButton
+              icon="xp"
+              color={newNotes ? 'gold' : 'default'}
+              title={t`Recent updates`}
+              detail={t`Learn about recently added features`}
+              onPress={showReleaseNotes}
+            />
+          </View>
+        </RoundedFactionBlock>
+      </View>
       <View style={[space.paddingSideS, space.paddingBottomS]}>
         <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`ArkhamDB Account`} />}>
           <ArkhamDbLoginButton last showAlert={showAlert} />
