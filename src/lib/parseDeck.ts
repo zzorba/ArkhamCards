@@ -719,6 +719,22 @@ export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: st
         cards: flatMap(codes, code => cards?.[code] || []),
       };
     }
+    case 'choose_skill': {
+      if (choice === 'willpower' || choice === 'intellect' || choice === 'combat' || choice === 'agility') {
+        return {
+          type: 'choose_skill',
+          ...basic,
+          choice,
+          encodedChoice: choice,
+        };
+      }
+      return {
+        type: 'choose_skill',
+        ...basic,
+        choice: undefined,
+        encodedChoice: '',
+      };
+    }
     default:
       return {
         type: undefined,

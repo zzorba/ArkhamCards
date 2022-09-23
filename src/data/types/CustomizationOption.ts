@@ -35,11 +35,18 @@ export interface ChooseTraitCustomizationChoice extends CoreCustomizationChoice 
 export interface ChooseCardCustomizationChoice extends CoreCustomizationChoice {
   type: 'choose_card',
   encodedChoice: string;
-  choice: string[]
+  choice: string[];
   cards: Card[];
 }
 
-export type AdvancedCustomizationChoice = RemoveSlotCustomizationChoice | ChooseTraitCustomizationChoice | ChooseCardCustomizationChoice;
+
+export interface ChooseSkillCustomizationChoice extends CoreCustomizationChoice {
+  type: 'choose_skill',
+  encodedChoice: string;
+  choice: 'willpower' | 'intellect' | 'combat' | 'agility' | undefined;
+}
+
+export type AdvancedCustomizationChoice = RemoveSlotCustomizationChoice | ChooseTraitCustomizationChoice | ChooseCardCustomizationChoice | ChooseSkillCustomizationChoice;
 export type CustomizationChoice = BasicCustomizationChoice | AdvancedCustomizationChoice;
 
 export default class CustomizationOption {
