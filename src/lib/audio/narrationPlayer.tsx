@@ -18,7 +18,7 @@ interface TrackPlayerFunctions {
   getTrack: (id: number) => Promise<Track | null>;
   getState: () => Promise<State>;
   addEventListener: (type: Event, listener: (data: any) => void) => EmitterSubscription;
-  getCurrentTrack: () => Promise<number>;
+  getCurrentTrack: () => Promise<number | null>;
   getRate: () => Promise<number>;
   setRate: (rate: number) => Promise<void>;
   play: () => Promise<void>;
@@ -99,7 +99,7 @@ async function getCurrentTrackDetails(nextTrack?: number): Promise<Track | undef
   const trackPlayer = await narrationPlayer();
   const currentTrack = (nextTrack === undefined) ? await trackPlayer.getCurrentTrack() : nextTrack;
   const queue = await trackPlayer.getQueue();
-  if (currentTrack === -1 || currentTrack >= queue.length) {
+  if (currentTrack === -1 || currentTrack === null || currentTrack >= queue.length) {
     return undefined;
   }
   return queue[currentTrack];

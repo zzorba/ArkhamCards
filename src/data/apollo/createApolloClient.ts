@@ -294,7 +294,17 @@ const wsLink = new WebSocketLink(
 );
 export const apolloQueueLink = new QueueLink();
 apolloQueueLink.close();
-const retryLink = new RetryLink();
+const retryLink = new RetryLink({
+  delay: {
+    initial: 300,
+    max: 5000,
+    jitter: true,
+  },
+  attempts: {
+    max: 5,
+    retryIf: (error, _operation) => !!error,
+  },
+});
 const serializingLink = new SerializingLink();
 
 const link = split(

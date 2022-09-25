@@ -85,7 +85,7 @@ export async function setNarrationQueue(queue: NarrationTrack[]): Promise<void> 
 
   // if current track is in the new queue
   const currentTrackIndex = await trackPlayer.getCurrentTrack();
-  const currentTrackOld = currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
+  const currentTrackOld = currentTrackIndex !== null && currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
   const currentTrackNewIndex = currentTrackOld ? newTrackIds.indexOf(currentTrackOld.narrationId) : -1;
   if (
     currentTrackNewIndex !== -1 &&

@@ -64,7 +64,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 46;
+  static SCHEMA_VERSION: number = Platform.OS === 'ios' ? 46 : 47;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
