@@ -21,6 +21,10 @@ import {
   SyncDismissOnboardingAction,
   SYNC_DISMISS_ONBOARDING,
   SetCurrentTabooSetAction,
+  StartingTabType,
+  BROWSE_DECKS,
+  ChangeTabAction,
+  CHANGE_TAB,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -50,6 +54,7 @@ interface SettingsState {
   dismissedOnboarding?: string[];
   campaignShowDeckId?: boolean;
   lowMemory?: boolean;
+  startingTab?: StartingTabType;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -75,6 +80,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   draftSeparatePacks: false,
   campaignShowDeckId: false,
   lowMemory: false,
+  startingTab: BROWSE_DECKS,
 };
 
 type SettingAction =
@@ -87,7 +93,8 @@ type SettingAction =
   SetFontScaleAction |
   ReduxMigrationAction |
   SetPlaybackRateAction |
-  SyncDismissOnboardingAction;
+  SyncDismissOnboardingAction |
+  ChangeTabAction;
 
 
 export default function(
@@ -95,6 +102,11 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case CHANGE_TAB:
+      return {
+        ...state,
+        startingTab: action.tab,
+      };
     case SYNC_DISMISS_ONBOARDING: {
       let onboarding = [...(state.dismissedOnboarding || [])];
       forEach(action.updates, (value, key) => {

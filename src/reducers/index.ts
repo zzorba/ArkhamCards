@@ -40,6 +40,8 @@ import {
   getLastUpdated,
   UploadedDeck,
   ArkhamDbDeck,
+  StartingTabType,
+  BROWSE_DECKS,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -853,6 +855,12 @@ export const getLangPreference = createSelector(
     }
     return getSystemLanguage();
   }
+);
+
+
+export const getStartingTab = createSelector(
+  (state: AppState) => state.settings.startingTab,
+  (startingTab): StartingTabType => startingTab || BROWSE_DECKS
 );
 
 export const getCardLang = createSelector(
