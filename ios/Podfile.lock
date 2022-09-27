@@ -482,7 +482,7 @@ PODS:
     - RNFBApp
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.6.1):
+  - RNGestureHandler (2.6.2):
     - React-Core
   - RNGoogleSignin (8.0.0):
     - GoogleSignIn (~> 6.2.2)
@@ -873,7 +873,7 @@ SPEC CHECKSUMS:
   RNFBDatabase: 21dca19d1d9215731c386e3b64ecc777817288d2
   RNFBFunctions: e40f95185c7b59721ffe99cb05f0faabc5277d23
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: 28ad20bf02257791f7f137b31beef34b9549f54b
+  RNGestureHandler: 4defbd70b2faf3d6761b82fa7880285241762cb0
   RNGoogleSignin: b2179ba653c759b936404a7746fc5302f9de6a5a
   RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
   RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
