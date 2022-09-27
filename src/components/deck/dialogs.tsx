@@ -201,9 +201,11 @@ export function useDialog({
 
 export interface AlertButton {
   text: string;
+  description?: string;
   onPress?: () => void;
   style?: 'default' | 'cancel' | 'destructive';
   icon?: DeckButtonIcon;
+  loading?: boolean;
 }
 interface AlertState {
   title: string;
@@ -243,9 +245,11 @@ function AlertButtonComponent({ button, onClose }: { button: AlertButton; onClos
   return (
     <DeckButton
       title={button.text}
+      detail={button.description}
       color={color}
+      loading={button.loading}
       onPress={onPress}
-      thin
+      thin={!button.description}
       icon={icon}
     />
   );
@@ -710,16 +714,80 @@ export function useAdjustXpDialog({
   ];
 }
 
+export function useSaveAlert(
+  parsedDeckResults: ParsedDeckResults,
+  saveEditsAndDismiss: () => void,
+): [React.ReactNode, () => void] {
+  const { typography } = useContext(StyleContext);
+  const [visible, setVisible] = useState<boolean>(false);
+  const onClose = useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
+  const currentButtons: AlertButton[] = useMemo(() => {
+    return [{
+      text: t`Cancel`,
+      style: 'cancel',
+    }, {
+      text: t`Discard Changes`,
+      style: 'destructive',
+      onPress: () => {
+        Navigation.dismissAllModals();
+      },
+    }, {
+      text: t`Save Changes`,
+      loading: parsedDeckResults.dirty.current,
+      description: parsedDeckResults.dirty.current ? t`Recomputing deck changes...` : undefined,
+      onPress: () => {
+        saveEditsAndDismiss();
+      },
+    }];
+  }, [parsedDeckResults, saveEditsAndDismiss]);
+  const buttons = useMemo(() => {
+    return map(currentButtons, (button, idx) => {
+      return (
+        <AlertButtonComponent
+          key={idx}
+          button={button}
+          onClose={onClose}
+        />
+      );
+    });
+  }, [currentButtons, onClose]);
+  const dialog = useMemo(() => {
+    return (
+      <NewDialog
+        title={t`Save deck changes?`}
+        dismissable
+        onDismiss={onClose}
+        visible={!!visible}
+        buttons={buttons}
+        alignment="center"
+      >
+        <View style={space.paddingS}>
+          <Text style={typography.small}>
+            { t`Looks like you have made some changes that have not been saved.` }
+          </Text>
+        </View>
+      </NewDialog>
+    );
+  }, [visible, buttons, onClose, typography]);
+  const showAlert = useCallback(() => {
+    setVisible(true);
+  }, [setVisible]);
+  return [dialog, showAlert];
+}
+
 export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditState & {
   saving: boolean;
   saveError: string | undefined;
   saveEdits: () => void;
-  saveEditsAndDismiss: () => void;
+  handleBackPress: () => boolean;
   savingDialog: React.ReactNode;
 } {
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
     deck,
+    visible,
     previousDeck,
     cards,
     parsedDeckRef,
@@ -773,7 +841,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
           side: deckEditsRef.current.side,
           problem: problemField,
-          spentXp: parsedDeckRef.current.changes?.spentXp || 0,
+          spentXp: newParsedDeck?.changes ? newParsedDeck.changes.spentXp : (parsedDeckRef.current.changes?.spentXp || 0),
           xpAdjustment: deckEditsRef.current.xpAdjustment,
           tabooSetId,
           meta: deckEditsRef.current.meta,
@@ -806,12 +874,24 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
+  const [dialog, showAlert] = useSaveAlert(parsedDeckResults, saveEditsAndDismiss);
+  const handleBackPress = useCallback(() => {
+    if (!visible) {
+      return false;
+    }
+    if (hasPendingEdits) {
+      showAlert();
+    } else {
+      Navigation.dismissAllModals();
+    }
+    return true;
+  }, [visible, hasPendingEdits, showAlert]);
   return {
     saving,
     saveEdits,
     saveError,
-    saveEditsAndDismiss,
-    savingDialog,
+    handleBackPress,
+    savingDialog: <>{savingDialog}{dialog}</>,
     slotDeltas,
     hasPendingEdits,
     addedBasicWeaknesses,

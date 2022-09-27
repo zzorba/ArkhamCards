@@ -72,7 +72,7 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "avete esiliato Silas Bishop"
           },
           {
             "id": "bone_to_pick",
@@ -80,11 +80,11 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# Progenie fuggite nei boschi"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "avete calmato gli abitanti del villaggio."
           },
           {
             "id": "closed_tear",
@@ -136,7 +136,7 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "il dottor Henry Armitage è sopravvissuto all'Eredità di Dunwich"
           },
           {
             "id": "investigators_delayed",
@@ -144,7 +144,7 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "avete posto fine alle sofferenze di Silas Bishop"
           },
           {
             "id": "naomi_has_back",
@@ -152,19 +152,19 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "il Necronomicon è stato rubato"
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Nessuna Progenie è scappata nei boschi"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "avete riportato Silas Bishop alla normalità"
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "il rituale è stato completato."
           },
           {
             "id": "students_rescued",
@@ -180,7 +180,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "avete messo in guardia gli abitanti del villaggio"
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1071,12 +1071,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "feminine_text": "#name# read Act 2 of The King in Yellow.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "feminine_text": "#name# was possessed.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1319,7 +1323,7 @@
         "entries": [
           {
             "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
+            "text": "avete esiliato Silas Bishop"
           },
           {
             "id": "bone_to_pick",
@@ -1327,11 +1331,11 @@
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "text": "#X# Progenie fuggite nei boschi"
           },
           {
             "id": "calmed_townsfolk",
-            "text": "you calmed the townsfolk."
+            "text": "avete calmato gli abitanti del villaggio."
           },
           {
             "id": "closed_tear",
@@ -1383,7 +1387,7 @@
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+            "text": "il dottor Henry Armitage è sopravvissuto all'Eredità di Dunwich"
           },
           {
             "id": "investigators_delayed",
@@ -1391,7 +1395,7 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
+            "text": "avete posto fine alle sofferenze di Silas Bishop"
           },
           {
             "id": "naomi_has_back",
@@ -1399,19 +1403,19 @@
           },
           {
             "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
+            "text": "il Necronomicon è stato rubato"
           },
           {
             "id": "no_brood_escaped",
-            "text": "No brood escaped into the wild."
+            "text": "Nessuna Progenie è scappata nei boschi"
           },
           {
             "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
+            "text": "avete riportato Silas Bishop alla normalità"
           },
           {
             "id": "ritual_completed",
-            "text": "the ritual was completed."
+            "text": "il rituale è stato completato."
           },
           {
             "id": "students_rescued",
@@ -1427,7 +1431,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "you warned the townsfolk."
+            "text": "avete messo in guardia gli abitanti del villaggio"
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1554,12 +1558,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# read Act 2 of The King in Yellow.",
-            "feminine_text": "#name# read Act 2 of The King in Yellow."
+            "feminine_text": "#name# read Act 2 of The King in Yellow.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# was possessed.",
-            "feminine_text": "#name# was possessed."
+            "feminine_text": "#name# was possessed.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1922,8 +1928,9 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# has joined the pipers of Azathoth.",
+            "feminine_text": "#name# has joined the pipers of Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2465,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -2666,12 +2677,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "atw_bernards_fate",
@@ -3128,8 +3141,9 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# has joined the pipers of Azathoth.",
+            "feminine_text": "#name# has joined the pipers of Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3415,12 +3429,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "feminine_text": "#name# has broken the law of Ulthar.",
+            "nonbinary_text": "#name# has broken the law of Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "feminine_text": "#name# was captured.",
+            "nonbinary_text": "#name# was captured."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3938,22 +3954,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "feminine_text": "#name# starts with 3 fewer resources.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -4117,7 +4137,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "feminine_text": "#name# possesses a diving suit.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4977,7 +4998,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5307,12 +5329,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5720,12 +5744,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

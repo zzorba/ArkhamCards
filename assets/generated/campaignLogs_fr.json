@@ -1071,12 +1071,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
-            "feminine_text": "#name# a été Prise par l'Abîme."
+            "feminine_text": "#name# a été Prise par l'Abîme.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
-            "feminine_text": "#name# a été Prise par l'Abîme."
+            "feminine_text": "#name# a été Prise par l'Abîme.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
-            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune."
+            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# était possédé.",
-            "feminine_text": "#name# était possédée."
+            "feminine_text": "#name# était possédée.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1558,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
-            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune."
+            "feminine_text": "#name# a lu l'Acte II du Roi en Jaune.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# était possédé.",
-            "feminine_text": "#name# était possédée."
+            "feminine_text": "#name# était possédée.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +1929,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
-            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth."
+            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2465,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
-            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>."
+            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -2666,12 +2677,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
-            "feminine_text": "#name# a été Prise par l'Abîme."
+            "feminine_text": "#name# a été Prise par l'Abîme.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
-            "feminine_text": "#name# a été Prise par l'Abîme."
+            "feminine_text": "#name# a été Prise par l'Abîme.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "atw_bernards_fate",
@@ -3129,7 +3142,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
-            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth."
+            "feminine_text": "#name# a rejoint les flûtistes d’Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3415,12 +3429,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# a enfreint la loi d’Ulthar.",
-            "feminine_text": "#name# a enfreint la loi d’Ulthar."
+            "feminine_text": "#name# a enfreint la loi d’Ulthar.",
+            "nonbinary_text": "#name# has broken the law of Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# a été capturé.",
-            "feminine_text": "#name# a été capturée."
+            "feminine_text": "#name# a été capturée.",
+            "nonbinary_text": "#name# was captured."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3938,22 +3954,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
-            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>."
+            "feminine_text": "#name# débute avec 1 indice <i>(pris dans la réserve de pions)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# débute avec 3 ressources de moins.",
-            "feminine_text": "#name# débute avec 3 ressources de moins."
+            "feminine_text": "#name# débute avec 3 ressources de moins.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "agenda_5",
@@ -4117,7 +4137,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possède un scaphandre.",
-            "feminine_text": "#name# possède un scaphandre."
+            "feminine_text": "#name# possède un scaphandre.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4977,7 +4998,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5307,12 +5329,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5720,12 +5744,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

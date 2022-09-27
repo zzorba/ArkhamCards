@@ -181,7 +181,6 @@ function MyDecksSelectorDialog(props: Props) {
             { t`Hide decks from other campaigns` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={hideOtherCampaignDecks}
             onValueChange={toggleHideOtherCampaignDecks}
           />
@@ -193,7 +192,6 @@ function MyDecksSelectorDialog(props: Props) {
             { t`Hide killed and insane investigators` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={hideEliminatedInvestigators}
             onValueChange={toggleHideEliminatedInvestigators}
           />
@@ -205,7 +203,6 @@ function MyDecksSelectorDialog(props: Props) {
             { t`Only show previous campaign members` }
           </Text>
           <ArkhamSwitch
-            useGestureHandler
             value={onlyShowPreviousCampaignMembers}
             onValueChange={toggleOnlyShowPreviousCampaignMembers}
           />

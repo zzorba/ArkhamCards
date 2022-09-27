@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import TextBoxButton from './TextBoxButton';
 import StyleContext from '@styles/StyleContext';
 

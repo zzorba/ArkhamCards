@@ -11,6 +11,7 @@ import LocationCard from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import CardImageView from '@components/card/CardImageView';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
@@ -26,6 +27,7 @@ interface CardSizes {
   cardWidth: number;
   cardHeight: number;
   betweenPadding: number;
+  verticalPadding: number;
 }
 
 export default function LocationSetupView({ step: { locations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
@@ -52,8 +54,9 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
       cardWidth,
       cardHeight,
       betweenPadding,
+      verticalPadding: TOP_PADDING + (resource_dividers ? 50 : 0),
     };
-  }, [vertical, horizontal, rowCount, height]);
+  }, [vertical, horizontal, resource_dividers, rowCount, height]);
 
   const widthConstrained: CardSizes = useMemo(() => {
     const realCardsPerRow = rowSize / (horizontal === 'half' ? 2 : 1);
@@ -67,8 +70,9 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
       cardWidth,
       cardHeight,
       betweenPadding,
+      verticalPadding: TOP_PADDING + (resource_dividers ? 50 : 0),
     };
-  }, [rowSize, horizontal, width]);
+  }, [rowSize, horizontal, width, resource_dividers]);
 
   const cardDimensions = useMemo(() => {
     if (!isTablet) {
@@ -113,16 +117,24 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
 
   const {
     cardHeight,
+    cardWidth,
+    betweenPadding,
+    verticalPadding,
   } = cardDimensions;
 
-  const rowHeight = TOP_PADDING * 2 + cardHeight * (locations.length / (vertical === 'half' ? 2 : 1)) + GUTTER_SIZE;
+  const rowWidth = (cardWidth + betweenPadding) * ((rowSize + 1) / (horizontal === 'half' ? 2.0 : 1));
+  const rowHeight = TOP_PADDING * 2 + (cardHeight + verticalPadding) * (rowCount + 4) / (vertical === 'half' ? 2.0 : 1) + GUTTER_SIZE;
+
   return (
     <PanPinchView
-      minScale={1}
+      minScale={0.5}
       maxScale={4}
       initialScale={1.0}
       containerDimensions={{ width, height: height - NOTCH_BOTTOM_PADDING }}
-      contentDimensions={{ width: 500, height: height * 3 }}
+      contentDimensions={{
+        width: rowWidth,
+        height: rowHeight,
+      }}
     >
       { !!note && (
         <View style={{ width: width }}>

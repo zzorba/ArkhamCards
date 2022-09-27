@@ -287,6 +287,8 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
+export const PRECIOUS_MEMENTO_FORMER_CODE = '08114'
+export const PRECIOUS_MEMENTO_FUTURE_CODE = '08115'
 export const RAVEN_QUILL_CODE = '09042';
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';
@@ -304,6 +306,7 @@ export const ACE_OF_RODS_CODE = '05040';
 export const FORCED_LEARNING_CODE = '08031'; // Deck size +15
 export const UNDERWORLD_SUPPORT_CODE = '08046';
 export const DOWN_THE_RABBIT_HOLE_CODE = '08059';
+export const UNDERWORLD_MARKET_CODE = '09077';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

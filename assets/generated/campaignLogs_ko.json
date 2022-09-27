@@ -1070,13 +1070,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
-            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "nonbinary_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "nonbinary_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1558,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
-            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "nonbinary_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "nonbinary_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +1929,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
-            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "nonbinary_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2465,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
-            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "nonbinary_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "agenda_5",
@@ -2665,13 +2676,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "atw_bernards_fate",
@@ -3129,7 +3142,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
-            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "nonbinary_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
           },
           {
             "id": "accepted_fate",
@@ -3415,12 +3429,14 @@
           {
             "id": "captured",
             "masculine_text": "#name# 조사자가 납치당했다",
-            "feminine_text": "#name# 조사자가 납치당했다"
+            "feminine_text": "#name# 조사자가 납치당했다",
+            "nonbinary_text": "#name# 조사자가 납치당했다"
           },
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# 조사자가 울타르의 율법을 어겼다",
-            "feminine_text": "#name# 조사자가 울타르의 율법을 어겼다"
+            "feminine_text": "#name# 조사자가 울타르의 율법을 어겼다",
+            "nonbinary_text": "#name# 조사자가 울타르의 율법을 어겼다"
           },
           {
             "id": "black_cat_at_your_side",
@@ -3938,22 +3954,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
-            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "nonbinary_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "agenda_5",
@@ -4117,7 +4137,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "feminine_text": "#name# possesses a diving suit.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4977,7 +4998,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# 조사자가 대출을 받았다",
-            "feminine_text": "#name# 조사자가 대출을 받았다"
+            "feminine_text": "#name# 조사자가 대출을 받았다",
+            "nonbinary_text": "#name# 조사자가 대출을 받았다"
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5303,12 +5325,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5716,12 +5740,14 @@
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
-            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
+            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
+            "nonbinary_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
           },
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# 조사자는 지구에 의해 오염되었다",
-            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다"
+            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다",
+            "nonbinary_text": "#name# 조사자는 지구에 의해 오염되었다"
           },
           {
             "id": "allied_with_the_migo",

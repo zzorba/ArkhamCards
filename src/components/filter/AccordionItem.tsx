@@ -10,6 +10,7 @@ import { t } from 'ttag';
 import ToggleButton from '@components/core/ToggleButton';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useEffectUpdate } from '@components/core/hooks';
 
 interface Props {
   label: string;
@@ -24,7 +25,7 @@ export default function AccordionItem({ label, height, children, enabled, toggle
   const { fontScale, borderStyle, typography } = useContext(StyleContext);
   const heightAnim = useSharedValue(enabled ? 1 : 0);
 
-  useEffect(() => {
+  useEffectUpdate(() => {
     heightAnim.value = withTiming(
       enabled ? 1 : 0,
       {
@@ -32,7 +33,7 @@ export default function AccordionItem({ label, height, children, enabled, toggle
         easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
       }
     );
-  }, [enabled, heightAnim]);
+  }, [enabled]);
 
   const togglePressed = useCallback(() => {
     onToggleChange(toggleName, !enabled);

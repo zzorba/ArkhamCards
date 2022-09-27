@@ -10,6 +10,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import Card from '@data/types/Card';
 import { useContext, useMemo } from 'react';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -63,9 +64,11 @@ export interface DisplayChoice {
   tokens?: ChaosToken[];
   selected_text?: string;
   selected_feminine_text?: string;
+  selected_nonbinary_text?: string;
   icon?: ChoiceIcon | string;
   masculine_text?: string;
   feminine_text?: string;
+  nonbinary_text?: string;
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;
@@ -76,6 +79,20 @@ export interface DisplayChoice {
   image?: string;
   imageOffset?: 'right' | 'left';
   hidden?: boolean;
+}
+
+export function selectedDisplayChoiceText(choice: DisplayChoice, gender?: Gender_Enum) {
+  switch (gender) {
+    case Gender_Enum.F: {
+      return choice.selected_feminine_text || choice.feminine_text || choice.selected_text || choice.text;
+    }
+    case Gender_Enum.Nb: {
+      return choice.selected_nonbinary_text || choice.nonbinary_text || choice.selected_text || choice.text;
+    }
+    case Gender_Enum.M:
+    default:
+      return choice.selected_text || choice.text;
+  }
 }
 
 export interface DisplayChoiceWithId extends DisplayChoice {

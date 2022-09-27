@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy, uniqBy } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import Card from '@data/types/Card';
-import CustomizationOption, { AdvancedCustomizationChoice, ChooseCardCustomizationChoice, ChooseTraitCustomizationChoice, CustomizationChoice, RemoveSlotCustomizationChoice } from '@data/types/CustomizationOption';
+import CustomizationOption, { AdvancedCustomizationChoice, ChooseCardCustomizationChoice, ChooseSkillCustomizationChoice, ChooseTraitCustomizationChoice, CustomizationChoice, RemoveSlotCustomizationChoice } from '@data/types/CustomizationOption';
 import StyleContext from '@styles/StyleContext';
 import CardTextComponent from '../CardTextComponent';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
@@ -30,6 +31,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import NewDialog from '@components/core/NewDialog';
 import RoundButton from '@components/core/RoundButton';
 import DeckButton from '@components/deck/controls/DeckButton';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
   componentId: string;
@@ -103,7 +105,7 @@ function XpControl({ option, choice, xp, onInc, onDec, onSet } : {
             xp={index + 1}
             checked={xp > index}
             onCheck={onSet}
-            disabled={!!choice?.xp_locked && (choice.xp_locked <= index + 1)}
+            disabled={!!choice?.xp_locked && (index + 1 <= choice.xp_locked)}
           />
         ))}
       </View>
@@ -175,6 +177,82 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
           editable={editable}
           title={t`Slot`}
           valueLabel={items[selectedValue].title}
+          onPress={showDialog}
+        />
+      </View>
+      {dialog}
+    </>
+  );
+}
+
+type SkillType = 'willpower' | 'intellect' | 'combat' | 'agility';
+const ALL_SKILLS: SkillType[] = ['willpower', 'intellect', 'combat', 'agility'];
+
+function ChooseSkillAdvancedControl({ card, choice, editable, setChoice, allChoices }: {
+  card: Card;
+  setChoice: (choice: ChooseSkillCustomizationChoice) => void;
+  editable: boolean;
+  choice: ChooseSkillCustomizationChoice;
+  allChoices: CustomizationChoice[] | undefined;
+}) {
+  const [selectedValue, setSelection] = useState(choice.choice);
+  const otherChosenSkills = useMemo(() => {
+    return new Set(flatMap(allChoices, c => {
+      if (c.option.index === choice.option.index || c.type !== 'choose_skill') {
+        return [];
+      }
+      return [c.choice];
+    }));
+  }, [allChoices, choice]);
+  const translations = useMemo(() => {
+    return {
+      willpower: t`Willpower`,
+      intellect: t`Intellect`,
+      combat: t`Combat`,
+      agility: t`Agility`,
+    };
+  }, [])
+  const items = useMemo(() => {
+    return flatMap(ALL_SKILLS, (skill) => {
+      if (otherChosenSkills.has(skill)) {
+        return [];
+      }
+      return {
+        title: translations[skill],
+        value: skill,
+        iconNode: <ArkhamIcon name={skill} size={32} />,
+      };
+    });
+  }, [translations, otherChosenSkills]);
+  const onChange = useCallback((skill: SkillType) => {
+    setSelection(skill);
+    setChoice({
+      ...choice,
+      encodedChoice: `${skill}`,
+      choice: skill,
+    });
+  }, [setChoice, setSelection, choice]);
+  const [dialog, showDialog] = usePickerDialog({
+    title: t`Choose a skill`,
+    items,
+    selectedValue,
+    onValueChange: onChange,
+  });
+  const valueLabel = useMemo(() => {
+    if (!choice.choice) {
+      return undefined;
+    }
+    return `[${choice.choice}] ${translations[choice.choice]} `;
+  }, [choice.choice, translations]);
+  return (
+    <>
+      <View style={space.paddingBottomS}>
+        <DeckPickerStyleButton
+          first
+          last
+          editable={editable}
+          title={t`Skill`}
+          valueLabel={valueLabel ? <CardTextComponent text={valueLabel} /> : undefined}
           onPress={showDialog}
         />
       </View>
@@ -458,7 +536,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
                 onFocus={onFocus}
                 onBlur={onBlur}
               />
-              { focused && (
+              { !!currentTrait && (
                 <View style={space.paddingTopS}>
                   <DeckButton
                     key="save"
@@ -504,13 +582,14 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
   );
 }
 
-function AdvancedControl({ componentId, deckId, card, editable, choice, setChoice }: {
+function AdvancedControl({ componentId, deckId, card, editable, choice, setChoice, allChoices }: {
   componentId: string;
   deckId?: DeckId;
   card: Card;
   editable: boolean;
   choice: AdvancedCustomizationChoice;
   setChoice: (choice: AdvancedCustomizationChoice) => void;
+  allChoices: CustomizationChoice[] | undefined;
 }) {
   const { typography } = useContext(StyleContext);
   switch (choice.type) {
@@ -542,6 +621,16 @@ function AdvancedControl({ componentId, deckId, card, editable, choice, setChoic
           editable={editable}
           choice={choice}
           setChoice={setChoice}
+        />
+      );
+    case 'choose_skill':
+      return (
+        <ChooseSkillAdvancedControl
+          card={card}
+          editable={editable}
+          choice={choice}
+          setChoice={setChoice}
+          allChoices={allChoices}
         />
       );
     default:
@@ -633,6 +722,7 @@ function CustomizationLine({ componentId, card, option, deckId, editable, mode, 
           deckId={deckId}
           choice={choice}
           setChoice={onChoiceChange}
+          allChoices={choices}
         />
       ) }
     </View>

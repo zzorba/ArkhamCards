@@ -2,11 +2,11 @@ import React, { ReactNode, useContext } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { xs, s, isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 

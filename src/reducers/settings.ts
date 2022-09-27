@@ -2,6 +2,7 @@ import { uniq, filter, forEach } from 'lodash';
 
 import {
   SET_TABOO_SET,
+  SET_CURRENT_TABOO_SET,
   SET_MISC_SETTING,
   SET_LANGUAGE_CHOICE,
   SetTabooSetAction,
@@ -19,11 +20,18 @@ import {
   SetPlaybackRateAction,
   SyncDismissOnboardingAction,
   SYNC_DISMISS_ONBOARDING,
+  SetCurrentTabooSetAction,
+  StartingTabType,
+  BROWSE_DECKS,
+  ChangeTabAction,
+  CHANGE_TAB,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 interface SettingsState {
   tabooId?: number;
+  useCurrentTabooSet?: boolean;
+  currentTabooSetId?: number;
   singleCardView?: boolean;
   ignore_collection?: boolean;
   alphabetizeEncounterSets?: boolean;
@@ -46,12 +54,15 @@ interface SettingsState {
   dismissedOnboarding?: string[];
   campaignShowDeckId?: boolean;
   lowMemory?: boolean;
+  startingTab?: StartingTabType;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
   version: CURRENT_REDUX_VERSION,
   tabooId: undefined,
+  useCurrentTabooSet: false,
+  currentTabooSetId: 5,
   singleCardView: false,
   alphabetizeEncounterSets: false,
   colorblind: false,
@@ -69,10 +80,12 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   draftSeparatePacks: false,
   campaignShowDeckId: false,
   lowMemory: false,
+  startingTab: BROWSE_DECKS,
 };
 
 type SettingAction =
   SetLanguageChoiceAction |
+  SetCurrentTabooSetAction |
   SetTabooSetAction |
   SetMiscSettingAction |
   CardFetchSuccessAction |
@@ -80,7 +93,8 @@ type SettingAction =
   SetFontScaleAction |
   ReduxMigrationAction |
   SetPlaybackRateAction |
-  SyncDismissOnboardingAction;
+  SyncDismissOnboardingAction |
+  ChangeTabAction;
 
 
 export default function(
@@ -88,6 +102,11 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case CHANGE_TAB:
+      return {
+        ...state,
+        startingTab: action.tab,
+      };
     case SYNC_DISMISS_ONBOARDING: {
       let onboarding = [...(state.dismissedOnboarding || [])];
       forEach(action.updates, (value, key) => {
@@ -128,6 +147,14 @@ export default function(
       return {
         ...state,
         tabooId: action.tabooId,
+        useCurrentTabooSet: action.useCurrentTabooSet,
+        currentTabooSetId: action.currentTabooId,
+      };
+    }
+    case SET_CURRENT_TABOO_SET: {
+      return {
+        ...state,
+        currentTabooSetId: action.tabooId,
       };
     }
     case SET_PLAYBACK_RATE:

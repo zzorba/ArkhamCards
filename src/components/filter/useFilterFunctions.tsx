@@ -85,7 +85,7 @@ export default function useFilterFunctions({
         ],
         'and'
       ),
-      tabooSetId
+      currentFilters?.taboo_set || tabooSetId
     ).then(count => {
       if (!canceled) {
         setCount(count);

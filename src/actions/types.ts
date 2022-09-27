@@ -16,6 +16,13 @@ export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
 export const SORT_BY_ENCOUNTER_SET = 'encounter_set';
 
+
+export const BROWSE_CARDS = 'BROWSE_CARDS';
+export const BROWSE_DECKS = 'BROWSE_DECKS';
+export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
+export const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
+
+export type StartingTabType = typeof BROWSE_CARDS | typeof BROWSE_DECKS | typeof BROWSE_CAMPAIGNS | typeof BROWSE_SETTINGS;
 export type SortType =
   typeof SORT_BY_TYPE |
   typeof SORT_BY_FACTION |
@@ -253,6 +260,7 @@ export interface ParsedDeck {
   changes?: DeckChanges;
   problem?: DeckProblem;
   limitedSlots: boolean;
+  customContent: boolean;
 }
 
 export interface Pack {
@@ -629,6 +637,14 @@ export const SET_TABOO_SET = 'SET_TABOO_SET';
 export interface SetTabooSetAction {
   type: typeof SET_TABOO_SET;
   tabooId?: number;
+  currentTabooId?: number;
+  useCurrentTabooSet?: boolean;
+}
+
+export const SET_CURRENT_TABOO_SET = 'SET_CURRENT_TABOO_SET';
+export interface SetCurrentTabooSetAction {
+  type: typeof SET_CURRENT_TABOO_SET;
+  tabooId?: number;
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
@@ -640,6 +656,12 @@ export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
   value: boolean;
+}
+
+export const CHANGE_TAB = 'CHANGE_TAB';
+export interface ChangeTabAction {
+  type: typeof CHANGE_TAB;
+  tab: StartingTabType;
 }
 
 export const SET_PLAYBACK_RATE = 'SET_PLAYBACK_RATE';
@@ -676,6 +698,7 @@ export interface CustomPacksAvailableAction {
 export interface CardCache {
   cardCount: number;
   lastModified?: string;
+  lastModifiedTranslation?: string;
 }
 
 export interface TabooCache {

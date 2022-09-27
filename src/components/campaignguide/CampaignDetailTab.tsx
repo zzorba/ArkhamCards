@@ -191,8 +191,8 @@ export default function CampaignDetailTab({
     onValueChange: onTarotPress,
   })
 
-  const latestDecks = campaign.latestDecks();
-  const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+  const latestDecksList = campaign.latestDecks();
+  const [cards] = useLatestDecksCards(latestDecksList, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -275,7 +275,13 @@ export default function CampaignDetailTab({
         </View>
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckOverlapComponent componentId={componentId} cards={cards} />
+            <DeckOverlapComponent
+              componentId={componentId}
+              cards={cards}
+              campaign={campaign}
+              latestDecks={latestDecksList}
+              campaignInvestigators={campaignInvestigators}
+            />
           </View>
         ) }
         { footerButtons }

@@ -1071,12 +1071,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "feminine_text": "#name# wurde vom Abgrund verschlungen.",
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "feminine_text": "#name# wurde vom Abgrund verschlungen.",
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
-            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# war besessen.",
-            "feminine_text": "#name# war besessen."
+            "feminine_text": "#name# war besessen.",
+            "nonbinary_text": "#name# war besessen."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1558,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
-            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# war besessen.",
-            "feminine_text": "#name# war besessen."
+            "feminine_text": "#name# war besessen.",
+            "nonbinary_text": "#name# war besessen."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +1929,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
-            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
+            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+            "nonbinary_text": "#name# schließt sich den Pfeifern von Azathoth an."
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2465,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
-            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
@@ -2673,12 +2684,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "feminine_text": "#name# wurde vom Abgrund verschlungen.",
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# wurde vom Abgrund verschlungen.",
-            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+            "feminine_text": "#name# wurde vom Abgrund verschlungen.",
+            "nonbinary_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "atw_bernards_fate",
@@ -3136,7 +3149,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
-            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
+            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+            "nonbinary_text": "#name# schließt sich den Pfeifern von Azathoth an."
           },
           {
             "id": "accepted_fate",
@@ -3422,12 +3436,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
-            "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen."
+            "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
+            "nonbinary_text": "#name# hat das Gesetz von Ulthar gebrochen."
           },
           {
             "id": "captured",
             "masculine_text": "#name# wurde gefangen genommen.",
-            "feminine_text": "#name# wurde gefangen genommen."
+            "feminine_text": "#name# wurde gefangen genommen.",
+            "nonbinary_text": "#name# wurde gefangen genommen."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3945,22 +3961,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
-            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
+            "feminine_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 1 Hinweis <i>(aus dem Markervorrat)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
-            "feminine_text": "beginnt das Spiel mit 3 Ressourcen weniger."
+            "feminine_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger.",
+            "nonbinary_text": "#name# beginnt das Spiel mit 3 Ressourcen weniger."
           },
           {
             "id": "agenda_5",
@@ -4131,7 +4151,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# besitzt einen Taucheranzug.",
-            "feminine_text": "#name# besitzt einen Taucheranzug."
+            "feminine_text": "#name# besitzt einen Taucheranzug.",
+            "nonbinary_text": "#name# besitzt einen Taucheranzug."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4991,7 +5012,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5321,12 +5343,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5734,12 +5758,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

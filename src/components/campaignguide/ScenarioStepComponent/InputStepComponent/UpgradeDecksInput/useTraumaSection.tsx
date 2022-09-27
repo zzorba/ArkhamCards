@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
-import { useCounter } from '@components/core/hooks';
 import InputCounterRow from '../InputCounterRow';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import Card from '@data/types/Card';

@@ -112,7 +112,6 @@ msgstr ""
 msgid "Survivor"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr ""
 
@@ -125,7 +124,6 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr ""
 
@@ -315,16 +313,10 @@ msgstr ""
 msgid "Export Campaign Data"
 msgstr ""
 
-msgid "Debug Card Json"
-msgstr ""
-
 msgid "Return to..."
 msgstr ""
 
 msgid "Investigator Starter Decks"
-msgstr ""
-
-msgid "Side stories"
 msgstr ""
 
 msgid "Debug"
@@ -2918,10 +2910,6 @@ msgid "Signature Weakness"
 msgstr ""
 
 #, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr ""
-
-#, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] ""
@@ -3094,16 +3082,6 @@ msgid "New Standalone"
 msgstr ""
 
 msgid "Create Standalone"
-msgstr ""
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr ""
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 
 msgid "Asset Filters"
@@ -3855,9 +3833,6 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Edge of the Earth"
-msgstr ""
-
-msgid "Promotional"
 msgstr ""
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
@@ -4969,18 +4944,6 @@ msgstr ""
 msgid "Deck contains custom content"
 msgstr ""
 
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr ""
-
 msgid "Player"
 msgstr ""
 
@@ -5681,6 +5644,46 @@ msgstr[1] ""
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
 msgstr ""
 
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr ""
+
+msgid "Recomputing deck changes..."
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -5921,6 +5924,38 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6280,6 +6315,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7623,6 +7679,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr ""
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr ""
@@ -7720,10 +7789,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

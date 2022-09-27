@@ -64,6 +64,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
                 id: card.code,
                 code: card.code,
                 text: card.name,
+                description: card.subname,
               };
             }
           ),

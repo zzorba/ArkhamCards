@@ -7,7 +7,6 @@ import { setContext } from '@apollo/client/link/context';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
-import loggerLink from 'apollo-link-logger';
 import QueueLink from 'apollo-link-queue';
 import deepEqual from 'deep-equal';
 import SerializingLink from 'apollo-link-serialize';
@@ -260,6 +259,7 @@ const authLink = setContext(async(req, { headers }) => {
       headers: {
         ...headers,
         Authorization: `Bearer ${hasuraToken}`,
+        // 'Accept-Encoding': 'gzip',
       },
     };
   }
@@ -294,7 +294,17 @@ const wsLink = new WebSocketLink(
 );
 export const apolloQueueLink = new QueueLink();
 apolloQueueLink.close();
-const retryLink = new RetryLink();
+const retryLink = new RetryLink({
+  delay: {
+    initial: 300,
+    max: 5000,
+    jitter: true,
+  },
+  attempts: {
+    max: 5,
+    retryIf: (error, _operation) => !!error,
+  },
+});
 const serializingLink = new SerializingLink();
 
 const link = split(
@@ -306,11 +316,9 @@ const link = split(
   httpsLink
 );
 export default function createApolloClient(store: Store): [ApolloClient<NormalizedCacheObject>, ApolloClient<NormalizedCacheObject>] {
-  const links = __DEV__ ? [loggerLink] : [];
   const authClient = new ApolloClient({
     cache,
     link: ApolloLink.from([
-      ...links,
       errorLink,
       trackerLink(store.dispatch),
       apolloQueueLink,
@@ -320,15 +328,16 @@ export default function createApolloClient(store: Store): [ApolloClient<Normaliz
     ]),
     assumeImmutableResults: true,
   });
-
   const anonClient = new ApolloClient({
     cache: anonCache,
     link: ApolloLink.from([
-      ...links,
       errorLink,
       retryLink,
       new HttpLink({
         uri: `https://${GRAPHQL_SERVER}/graphql`,
+        headers: {
+          // 'Accept-Encoding': 'gzip',
+        },
       }),
     ]),
     assumeImmutableResults: true,

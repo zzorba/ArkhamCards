@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
 
 export class AlternateRequiredCodeMigration1660064759967 implements MigrationInterface {
+  name: string = 'AlternateRequiredCodeMigration1660064759967';
   async up(queryRunner: QueryRunner): Promise<void> {
     const hasCardsTable = await queryRunner.hasTable('cards')
     if (hasCardsTable) {

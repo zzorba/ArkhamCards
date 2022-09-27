@@ -51,7 +51,7 @@ function MythosButton({ filterId }: Props) {
 
   const investigatorStyle = useAnimatedStyle(() => {
     return {
-      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [dark,dark, light, light]) as string,
+      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [dark, dark, light, light]) as string,
     };
   }, [dark, light]);
   const mythosStyle = useAnimatedStyle(() => {

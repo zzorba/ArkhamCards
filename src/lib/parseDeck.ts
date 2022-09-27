@@ -687,7 +687,7 @@ export function parseCustomizationDecision(value: string | undefined): Customiza
   });
 }
 
-export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: string | undefined, option: CustomizationOption, cards: CardsMap): CustomizationChoice {
+export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: string | undefined, option: CustomizationOption, cards: CardsMap | undefined): CustomizationChoice {
   if (!option.choice) {
     return {
       type: undefined,
@@ -716,7 +716,23 @@ export function processAdvancedChoice(basic: CoreCustomizationChoice, choice: st
         ...basic,
         choice: codes,
         encodedChoice: choice || '',
-        cards: flatMap(codes, code => cards[code] || []),
+        cards: flatMap(codes, code => cards?.[code] || []),
+      };
+    }
+    case 'choose_skill': {
+      if (choice === 'willpower' || choice === 'intellect' || choice === 'combat' || choice === 'agility') {
+        return {
+          type: 'choose_skill',
+          ...basic,
+          choice,
+          encodedChoice: choice,
+        };
+      }
+      return {
+        type: 'choose_skill',
+        ...basic,
+        choice: undefined,
+        encodedChoice: '',
       };
     }
     default:
@@ -826,6 +842,7 @@ export function parseDeck(
         quantity: slots[id] || 0,
         invalid: invalid || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
         limited: validation.isCardLimited(customizedCard),
+        custom: card.custom(),
       };
     });
   const specialCards = cardIds.filter(c =>
@@ -923,5 +940,6 @@ export function parseDeck(
     limitedSlots: !!find(validation.deckOptions(), option =>
       !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
     ),
+    customContent: !!find(normalCards, c => c.custom) || !!find(specialCards, c => c.custom),
   };
 }

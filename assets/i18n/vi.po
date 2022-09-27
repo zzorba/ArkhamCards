@@ -2,16 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2022-03-26 11:56-0400\n"
-"PO-Revision-Date: 2022-04-26 12:56+0700\n"
+"PO-Revision-Date: 2022-09-13 08:25-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi\n"
-"mime-version: 1.0\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Frost"
 msgstr ""
@@ -171,31 +173,13 @@ msgstr ""
 msgid "Investigator Starter Decks"
 msgstr ""
 
-msgid "Side stories"
-msgstr ""
-
-msgid "Promotional"
-msgstr ""
-
 msgid "Parallel"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr ""
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
-msgstr ""
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr ""
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
 msgstr ""
 
 #, javascript-format
@@ -355,51 +339,47 @@ msgstr ""
 msgid "Cost: None"
 msgstr ""
 
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr ""
-
 msgid "N/A"
 msgstr ""
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài không phải là Guardian hoặc Neutral"
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài không phải là Seeker hoặc Neutral"
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài không phải là Rogue hoặc Neutral"
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài không phải là Mystic hoặc Neutral"
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài không phải là Survivor hoặc Neutral"
 
 msgid "You must have at least 7 cards from 3 different factions"
-msgstr ""
+msgstr "Bạn phải có tối thiểu 7 lá bài từ 3 faction khác nhau"
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 15 lá bài Seeker và/hoặc Mystic cấp độ 0-1"
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Guardian và/hoặc Mystic"
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Mystic cấp độ 0"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Survivor cấp độ 0"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Guardian cấp độ 0"
 
 msgid "You cannot have more than 5 level 0 Seeker cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Seeker cấp độ 0"
 
 msgid "You cannot have more than 5 level 0 Rogue cards"
-msgstr ""
+msgstr "Bạn không thể có nhiều hơn 5 lá bài Rogue cấp độ 0"
 
 msgid "Secondary Class"
 msgstr ""
@@ -429,6 +409,8 @@ msgid ""
 "Each investigator earns experience equal to the Victory X value of each "
 "card in the victory display."
 msgstr ""
+"Mỗi điều tra viên nhận điểm kinh nghiệm bằng tổng giá trị Victory của các "
+"lá bài trong khu vực trưng bày thành tích."
 
 msgid "Victory display:"
 msgstr ""
@@ -506,10 +488,10 @@ msgid "In your Campaign Log, record that:"
 msgstr "Trong Nhật ký Chiến dịch của bạn, hãy ghi lại rằng:"
 
 msgid "Choose lead investigator"
-msgstr ""
+msgstr "Chọn trưởng nhóm"
 
 msgid "Lead Investigator"
-msgstr ""
+msgstr "Trưởng Nhóm"
 
 msgid "Alive"
 msgstr ""
@@ -757,9 +739,6 @@ msgid ""
 msgstr ""
 
 msgid "Export Diagnostic Data"
-msgstr ""
-
-msgid "Debug Card Json"
 msgstr ""
 
 msgid "Database reset"
@@ -2124,9 +2103,9 @@ msgstr ""
 
 msgid ""
 "Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
+"fan-made/preview content that ArkhamDB does not recognize.\n"
 "\n"
-"Please remove all fan-made cards from the deck list and try again."
+"Please remove these cards from the deck list and try again."
 msgstr ""
 
 msgid "Upload to ArkhamDB"
@@ -2292,8 +2271,8 @@ msgid "Deck Type"
 msgstr ""
 
 msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
 msgstr ""
 
 msgid ""
@@ -2549,7 +2528,7 @@ msgid "Drawing a mythos card with surge"
 msgstr ""
 
 msgid "Placing doom on the agenda"
-msgstr ""
+msgstr "Đặt doom vào trên agenda"
 
 msgid "Reticulating spines"
 msgstr ""
@@ -2558,7 +2537,7 @@ msgid "Trying to make sense of the Time Warp FAQ"
 msgstr ""
 
 msgid "Taking three damage and three horror"
-msgstr ""
+msgstr "Nhận 3 chấn thương thể chất và 3 chấn thương tinh thần"
 
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr ""
@@ -2943,10 +2922,10 @@ msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed
 msgstr ""
 
 msgid "Investigators"
-msgstr ""
+msgstr "Điều Tra Viên"
 
 msgid "Add Investigator"
-msgstr ""
+msgstr "Thêm Điều Tra Viên"
 
 msgid "Killed and Insane Investigators"
 msgstr ""
@@ -3036,7 +3015,7 @@ msgid "The investigators must decide (choose one):"
 msgstr "Điều tra viên phải đưa ra quyết định (chọn một):"
 
 msgid "Continue"
-msgstr ""
+msgstr "Tiếp tục"
 
 msgid "Add new"
 msgstr ""
@@ -3088,8 +3067,7 @@ msgstr[0] "Tập hợp tất cả lá bài từ các bộ bài encounter ${ enco
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ startText } Các bộ bài này được xác định bằng biểu tượng sau:"
 
 msgid "Narrate"
 msgstr ""
@@ -3320,7 +3298,7 @@ msgid "Edit campaign log"
 msgstr ""
 
 msgid "Scenario Ended"
-msgstr ""
+msgstr "Màn chơi Kết thúc"
 
 msgid "Proceed to Resolutions"
 msgstr ""
@@ -3333,18 +3311,20 @@ msgstr "Bắt đầu màn chơi."
 
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name } (Advanced)."
-msgstr ""
+msgstr "${ investigator.name } nhận được ${ card.name } (Advanced)."
 
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name }."
-msgstr ""
+msgstr "${ investigator.name } nhận được ${ card.name }."
 
 msgid "Add ${ card.name }:"
-msgstr ""
+msgstr "Thêm ${ card.name }:"
 
 #, javascript-format
 msgid "Choose an investigator to add ${ card.name } to their deck:"
 msgstr ""
+"Chọn một điều tra viên để thêm ${ card.name } vào chồng bài của điều tra "
+"viên đó:"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
@@ -3353,68 +3333,82 @@ msgstr ""
 "#name#. "
 
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr ""
+msgstr "Trong Nhật ký Chiến dịch của bạn, gạch bỏ <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", gạch "
+"bỏ <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", gạch "
+"bỏ <i>${ logEntry.text }</i>."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr ""
+msgstr "Trong Nhật ký Chiến dịch của bạn, ghi lại <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", ghi "
+"lại <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", ghi "
+"lại <i>${ logEntry.text }</i>."
 
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr ""
+msgstr "Trong Nhật ký Chiến dịch của bạn, ghi lại <i>${ text }</i>"
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr ""
+msgstr "${ tokens[0] } và ${ tokens[1] }"
 
 msgid "Add ${ tokenString } to the chaos bag."
-msgstr ""
+msgstr "Thêm ${ tokenString } vào túi hỗn mang."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr ""
+msgstr "Loại bỏ ${ tokenString } khỏi túi hỗn mang."
 
 msgid "Expedition Team"
-msgstr ""
+msgstr "Đội Thám Hiểm"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
 msgstr ""
+"Trong phần ${ sectionName } của Nhật ký Chiến Dịch, gạch bỏ ${ partnerName "
+"},"
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
+"Trong phần ${ sectionName } của Nhật ký Chiến Dịch, viết \"MIA\" kế bên ${ "
+"partnerName }."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
+"Trong phần ${ sectionName } của Nhật ký Chiến Dịch, gạch bỏ \"MIA\" kế bên "
+"${ partnerName }."
 
 #, javascript-format
 msgid ""
@@ -3424,14 +3418,14 @@ msgstr ""
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
-msgstr ""
+msgstr "${ investigator.name } loại bỏ ${ card.name } (Advanced)"
 
 msgid "${ investigator.name } removes ${ card.name }"
-msgstr ""
+msgstr "${ investigator.name } loại bỏ ${ card.name }"
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
-msgstr ""
+msgstr "Loại bỏ ${ card.name } (${ input.length })"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
 msgstr ""
@@ -3454,7 +3448,7 @@ msgid "Chosen trauma type"
 msgstr ""
 
 msgid "Draw random weakness"
-msgstr ""
+msgstr "Rút một điểm yếu ngẫu nhiên"
 
 msgid "All weaknesses have been assigned."
 msgstr ""
@@ -3472,7 +3466,7 @@ msgid "Edit selection"
 msgstr ""
 
 msgid "Do you want to use the app to randomize weaknesses?"
-msgstr ""
+msgstr "Bạn có muốn sử dụng app để ngẫu nhiên điểm yếu?"
 
 msgid "Easy"
 msgstr ""
@@ -3488,14 +3482,14 @@ msgstr ""
 
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr ""
+msgstr "Bởi vì bạn đang chơi ở độ khó <b>${ difficulty }</b>:"
 
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr ""
+msgstr "Bởi vì bạn đã hoàn thành <b>${ scenarioName }</b>:"
 
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr ""
+msgstr "Bởi vì bạn chưa hoàn thành <b>${ scenarioName }</b>:"
 
 #, javascript-format
 msgid ""
@@ -3524,51 +3518,51 @@ msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
 
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr ""
+msgstr "Có bất kỳ điều tra viên nào có \"${ cardName }\" trong chồng bài của họ?"
 
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr ""
+"Có một điều tra viên nào có \"${ cardName }\" trong chồng bài của mình khi "
+"bị hạ gục?"
 
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr ""
+msgstr "Cho mỗi điều tra viên với \"${ cardName }\" trong chồng bài của họ:"
 
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigators } phải đọc <b>${ prompt }</b>."
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bởi vì có ${ playerCount } người chơi trong màn chơi:"
 
 msgid "If the lead investigator was <b>killed</b>."
-msgstr ""
+msgstr "Nếu trưởng nhóm <b>bị giết</b>."
 
 msgid "If all investigators were <b>killed</b>."
-msgstr ""
+msgstr "Nếu tất cả điều tra viên <b>killed</b>."
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr ""
+msgstr "Nếu trưởng nhóm trở nên <b>điên loạn</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr ""
+msgstr "Nếu tất cả điều tra viên trở nên <b>điên loạn</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr ""
+msgstr "Nếu trưởng nhóm vẫn còn sống."
 
 msgid "If all investigatore are still alive."
-msgstr ""
+msgstr "Nếu tất cả điều tra viên vẫn còn sống."
 
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "Kiểm tra Nhật ký Chiến dịch. <i>Nếu ${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr ""
+msgstr "Kiểm tra ${ logEntry.section }. <i>Nếu ${ logEntry.text }</i>"
 
 msgid "Can't add side scenario right now."
 msgstr ""
@@ -5683,6 +5677,34 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr "Bạn không thể có nhiều hơn 15 lá bài Guardian và/hoặc Survivor cấp độ 0-1"
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr ""
+
+msgid "Recomputing deck changes..."
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
 msgstr ""
 
 msgctxt "investigator"
@@ -5712,17 +5734,17 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } đọc <b>${ sectionName }</b>"
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr ""
+msgstr "${ investigator.name } trở nên <b>điên loạn</b>."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr ""
+msgstr "${ investigator.name } <b>bị giết</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5796,6 +5818,8 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Nếu <i>${ card.name }</i> không được liệt kê dưới ‘${ entry.section }’ "
+"trong Nhật Ký Chiến Dịch."
 
 #, javascript-format
 msgctxt "masculine"
@@ -5803,6 +5827,8 @@ msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật "
+"Ký Chiến Dịch."
 
 msgctxt "feminine"
 msgid "Alive"
@@ -5838,15 +5864,15 @@ msgstr ""
 
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr ""
+msgstr "${ investigator.name } đọc <b>${ sectionName }</b>"
 
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr ""
+msgstr "${ investigator.name } trở nên<b>điên loạn</b>."
 
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr ""
+msgstr "${ investigator.name } <b>bị giết</b>."
 
 msgctxt "feminine"
 msgid ""
@@ -5918,12 +5944,48 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
+"Nếu <i>${ card.name }</i> không được liệt kê dưới ‘${ entry.section }’ "
+"trong Nhật Ký Chiến Dịch."
 
 #, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
+msgstr ""
+"Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật "
+"Ký Chiến Dịch."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
 msgstr ""
 
 msgctxt "Traits"
@@ -6284,6 +6346,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7627,6 +7710,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr ""
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr ""
@@ -7724,10 +7820,6 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

@@ -218,7 +218,7 @@ export interface Campaign {
   cards?: {
     code: string;
     name: string;
-    gender?: "male" | "female";
+    gender?: "m" | "f";
     description?: string;
   }[];
   campaign_log: CampaignLogSectionDefinition[];
@@ -459,6 +459,7 @@ export interface CampaignLogCardsEffect {
   text?: string;
   masculine_text?: string;
   feminine_text?: string;
+  nonbinary_text?: string;
   cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value" | "$fixed_codes";
   codes?: string[];
   cross_out?: boolean;
@@ -586,6 +587,7 @@ export interface CheckCampaignLogCardsEffect {
   text?: string;
   masculine_text?: string;
   feminine_text?: string;
+  nonbinary_text?: string;
   bullet_type?: BulletType;
 }
 export interface CheckCampaignLogCountEffect {
@@ -877,6 +879,7 @@ export interface Choice {
   confirm_text?: string;
   feminine_text?: string;
   masculine_text?: string;
+  nonbinary_text?: string;
   description?: string;
   steps?: string[];
   border?: boolean;
@@ -955,7 +958,7 @@ export interface BinaryConditionalChoice {
   text: string;
   icon?: string;
   style?: "interlude";
-  gender?: "masculine" | "feminine";
+  gender?: "m" | "f";
   tokens?: ChaosToken[];
   description?: string;
   condition?: BinaryChoiceCondition;

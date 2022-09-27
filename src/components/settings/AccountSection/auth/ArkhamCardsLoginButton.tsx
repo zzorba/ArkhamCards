@@ -24,6 +24,7 @@ import { useApolloClient } from '@apollo/client';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useAppDispatch } from '@app/store';
 import useDeleteAccountDialog from './useDeleteAccountDialog';
+import { getAppleRefreshToken, setAppleRefreshToken } from '@lib/auth';
 
 function arkhamCardsLogin(user: string): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch) => {
@@ -66,13 +67,24 @@ async function onAppleButtonPress() {
     if (!appleAuthRequestResponse.identityToken) {
       throw new Error('Apple Sign-In failed - no identify token returned');
     }
+    const authCode = appleAuthRequestResponse.authorizationCode
 
     // Create a Firebase credential from the response
     const { identityToken, nonce } = appleAuthRequestResponse;
     const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
 
     // Sign the user in with the credential
-    return auth().signInWithCredential(appleCredential);
+    const result = await auth().signInWithCredential(appleCredential);
+    if (authCode) {
+      const response = await fetch(`https://us-central1-arkhamblob.cloudfunctions.net/apple-getRefreshToken?code=${encodeURIComponent(authCode)}`)
+      if (response.status === 200) {
+        const refreshToken = await response.text();
+        await setAppleRefreshToken(refreshToken);
+      } else {
+        console.log('Error: ' + response.status);
+      }
+    }
+    return result;
   }
 
   const rawNonce = uuid.v4();
@@ -417,6 +429,10 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const apollo = useApolloClient();
   const doLogout = useCallback(async() => {
     await auth().signOut();
+    // Clear the apple refresh token when logging out.
+    if (await getAppleRefreshToken()) {
+      await setAppleRefreshToken("");
+    }
     apollo.clearStore();
     dispatch(logout());
   }, [dispatch, apollo]);

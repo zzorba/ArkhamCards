@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 import {
@@ -8,6 +8,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import FactionIcon from '@icons/FactionIcon';

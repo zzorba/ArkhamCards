@@ -139,8 +139,7 @@ function DeckDetailView({
   const tabooSet = useTabooSet(tabooSetId);
 
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
-  const { savingDialog, saveEdits, saveEditsAndDismiss, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
-
+  const { savingDialog, saveEdits, handleBackPress, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
   const [
     deletingDialog,
     deleting,
@@ -213,36 +212,6 @@ function DeckDetailView({
     });
   }, [dispatch, id]);
   const [alertDialog, showAlert] = useAlertDialog();
-
-  const handleBackPress = useCallback(() => {
-    if (!visible) {
-      return false;
-    }
-    if (hasPendingEdits) {
-      showAlert(
-        t`Save deck changes?`,
-        t`Looks like you have made some changes that have not been saved.`,
-        [{
-          text: t`Cancel`,
-          style: 'cancel',
-        }, {
-          text: t`Discard Changes`,
-          style: 'destructive',
-          onPress: () => {
-            Navigation.dismissAllModals();
-          },
-        }, {
-          text: t`Save Changes`,
-          onPress: () => {
-            saveEditsAndDismiss();
-          },
-        }],
-      );
-    } else {
-      Navigation.dismissAllModals();
-    }
-    return true;
-  }, [visible, hasPendingEdits, saveEditsAndDismiss, showAlert]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back' || buttonId === 'androidBack') {
@@ -745,6 +714,7 @@ function DeckDetailView({
     });
   }, [componentId, cardsByName, parsedDeck, id, colors]);
 
+  const customContent = parsedDeck?.customContent;
   const uploadToArkhamDB = useCallback(() => {
     if (!deck) {
       return;
@@ -771,11 +741,11 @@ function DeckDetailView({
         ],
       );
     } else {
-      const hasCustomContent = find([...keys(deck.slots), ...keys(deck.sideSlots), ...keys(deck.ignoreDeckLimitSlots)], code => code.startsWith('z'));
+      const hasCustomContent = customContent || find([...keys(deck.slots), ...keys(deck.sideSlots), ...keys(deck.ignoreDeckLimitSlots)], code => code.startsWith('z'));
       if (hasCustomContent) {
         showAlert(
           t`Deck contains custom content`,
-          t`Sorry, this deck cannot be uploaded to ArkhamDB because it contains fan-made content.\n\nPlease remove all fan-made cards from the deck list and try again.`
+          t`Sorry, this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content that ArkhamDB does not recognize.\n\nPlease remove these cards from the deck list and try again.`
         );
       } else {
         showAlert(
@@ -788,7 +758,7 @@ function DeckDetailView({
         );
       }
     }
-  }, [signedIn, login, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
+  }, [signedIn, login, deck, customContent, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
     if (deck && !deck.local) {

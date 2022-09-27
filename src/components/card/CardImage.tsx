@@ -1,8 +1,9 @@
 import React, { useCallback, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { find, map, range } from 'lodash';
 
+import { TouchableShrink } from '@components/core/Touchables';
 import Card from '@data/types/Card';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import StyleContext from '@styles/StyleContext';
@@ -142,9 +143,9 @@ export default function CardImage({ card, width, superCompact }: Props) {
 export function TouchableCardImage({ onPress, ...props }: Props & { onPress: (card: Card) => void }) {
   const handleOnPress = useCallback(() => onPress(props.card), [props.card, onPress]);
   return (
-    <TouchableOpacity onPress={handleOnPress}>
+    <TouchableShrink onPress={handleOnPress}>
       <CardImage {...props} />
-    </TouchableOpacity>
+    </TouchableShrink>
   );
 }
 

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import {
-  StyleSheet, Text, TextProps, TextStyle, TouchableOpacity, View, ViewProps, ViewStyle,
+  StyleSheet, Text, TextProps, TextStyle, View, ViewProps, ViewStyle,
 } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import StyleContext from '@styles/StyleContext';
 
 const style = StyleSheet.create({

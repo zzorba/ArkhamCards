@@ -1,9 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import {
-  Platform,
-  View,
-  StyleSheet,
-} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
@@ -32,7 +28,6 @@ export default function ShowNonCollectionFooter({ id, title, onPress, noBorder }
         icon="expand"
         title={title}
         onPress={handleOnPress}
-        useGestureHandler={Platform.OS === 'ios'}
       />
     </View>
   );

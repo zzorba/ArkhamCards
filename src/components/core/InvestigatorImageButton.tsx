@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import Card from '@data/types/Card';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from '@components/core/Touchables';
 import InvestigatorImage from './InvestigatorImage';
 
 interface Props {

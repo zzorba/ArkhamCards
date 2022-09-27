@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Platform, TouchableOpacity, View } from 'react-native';
-import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
+import { View } from 'react-native';
 
+import { TouchableShrink } from '@components/core/Touchables';
 import { usePressCallback } from '@components/core/hooks';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import space, { s } from '@styles/space';
@@ -26,20 +26,19 @@ function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props
   const { lang } = useContext(LanguageContext);
   const { colors } = useContext(StyleContext);
   const debouncedOnPress = usePressCallback(onPress);
-  const Touchable = Platform.OS === 'ios' ? GestureHandlerTouchableOpacity : TouchableOpacity;
   return (
     <View style={[space.paddingSideS, space.paddingBottomS]}>
-      <Touchable onPress={debouncedOnPress}>
+      <TouchableShrink onPress={debouncedOnPress}>
         <RoundedFactionBlock
           header={children}
           faction="neutral"
           color={campaignColor(campaign.cycleCode, colors)}
-          footer={<RoundedFooterButton color="light" icon="date" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} onPress={debouncedOnPress} />}
+          footer={<RoundedFooterButton color="light" icon="date" title={lastUpdated ? toRelativeDateString(lastUpdated, lang) : `???`} />}
           noSpace
         >
           { null }
         </RoundedFactionBlock>
-      </Touchable>
+      </TouchableShrink>
     </View>
   );
 }

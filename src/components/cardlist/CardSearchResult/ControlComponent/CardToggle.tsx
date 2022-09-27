@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
@@ -15,7 +15,6 @@ export default function CardToggle({ value, toggleValue, disabled }: Props) {
         value={!!value}
         onValueChange={toggleValue}
         disabled={disabled}
-        useGestureHandler={Platform.OS === 'ios'}
       />
     </View>
   );

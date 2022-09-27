@@ -12,6 +12,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import space from '@styles/space';
 
 interface OwnProps {
   id: string;
@@ -39,16 +40,18 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
     drawRandomWeakness(investigator, index);
   }, [index, drawRandomWeakness]);
   return (
-    <InvestigatorButton
-      investigator={investigator}
-      value={choice === undefined ?
-        t`Draw random weakness` :
-        (choiceCard?.name || 'Missing Card')
-      }
-      onPress={onPress}
-      disabled={disabled}
-      widget="shuffle"
-    />
+    <View style={space.paddingXs}>
+      <InvestigatorButton
+        investigator={investigator}
+        value={choice === undefined ?
+          t`Draw random weakness` :
+          (choiceCard?.name || 'Missing Card')
+        }
+        onPress={onPress}
+        disabled={disabled}
+        widget="shuffle"
+      />
+    </View>
   );
 }
 

@@ -4,23 +4,28 @@ import { forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, 
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
-import { SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
-import { CoreCardTextFragment, SingleCardFragment } from '@generated/graphql/apollo-schema';
+import { CoreCardTextFragment, Gender_Enum, SingleCardFragment } from '@generated/graphql/apollo-schema';
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 import { processAdvancedChoice } from '@lib/parseDeck';
+import CardTextFields from './CardTextFields';
 
-const SICKENING_REALITY_CARDS = new Set(['03065b', '03066b', '03067b', '03068b', '03069b'])
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
-const HEALS_HORROR_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?damage (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?horror/;
-const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\d+)|(all)|(X total)) )?damage/;
+export const HEALS_HORROR_REGEX = /[Hh]eals?( that much)?( (\+?\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\d+|all|(X total)))?(\s|\/)horror/;
+export const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\+?\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\+?\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
+
+export const enum CardStatusType {
+  PREVIEW = 'p',
+  CUSTOM = 'c',
+}
 
 export function searchNormalize(text: string, lang: string) {
   if (!text) {
@@ -38,7 +43,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 126;
+export const CARD_NUM_COLUMNS = 132;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -99,6 +104,7 @@ const FEMININE_INVESTIGATORS = new Set([
   '07003', // Trish
   '08001', // Daniella
   '08020', // Lily Chen
+  '09010', // Amina
   '60301', // Wini
   '60401', // Jacqueline
   '60501', // Stella
@@ -109,6 +115,27 @@ const FEMININE_INVESTIGATORS = new Set([
   '98010', // Alt-Carolyn
   '99001', // Old Marie
 ]);
+
+
+export interface TranslationData {
+  lang: string;
+  encounterSets: { [code: string]: string | undefined };
+  packs: {
+    [pack_code: string]: Pack & {
+      cycle_code: string;
+      cycle_name: string;
+    };
+  };
+  cardTypeNames: {
+    [type_code: string]: string
+  };
+  subTypeNames: {
+    [type_code: string]: string
+  };
+  factionNames: {
+    [faction_code: string]: string
+  };
+}
 
 const HEADER_SELECT = {
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
@@ -189,6 +216,11 @@ export class PartialCard {
   }
 }
 
+interface CardRestrictions {
+  restrictions_all_investigators: string[];
+  restrictions_investigator?: string;
+}
+
 @Entity('card')
 @Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
 @Index('player_cards', ['browse_visible'])
@@ -227,6 +259,12 @@ export default class Card {
 
   @Column('simple-array', { nullable: true })
   public reprint_pack_codes?: string[];
+
+  @Column('text', { nullable: true })
+  public status?: CardStatusType;
+
+  @Column('text', { nullable: true })
+  public gender?: Gender_Enum;
 
   @Column('text')
   public type_code!: TypeCodeType;
@@ -353,6 +391,8 @@ export default class Card {
   public cost?: number;
   @Column('text', { nullable: true })
   public real_text?: string;
+  @Column('simple-array', { nullable: true })
+  public tags?: string[];
   @Column('text', { nullable: true })
   public back_name?: string;
   @Column('text', { nullable: true })
@@ -583,7 +623,7 @@ export default class Card {
     return card;
   }
 
-  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap): CustomizationChoice | undefined {
+  public customizationChoice(index: number, xp: number, choice: string | undefined, cards: CardsMap | undefined): CustomizationChoice | undefined {
     if (!this.customization_options) {
       return undefined;
     }
@@ -633,6 +673,12 @@ export default class Card {
       }
       if (option.real_traits) {
         card.real_traits = option.real_traits;
+      }
+      if (option.tags?.length) {
+        card.tags = [
+          ...(card.tags || []),
+          ...option.tags,
+        ];
       }
       let text_edit = option.text_edit || '';
       if (option.text_change && option.choice) {
@@ -717,7 +763,9 @@ export default class Card {
   }
 
   public custom(): boolean {
-    return this.code.startsWith('z');
+    return this.status === CardStatusType.CUSTOM ||
+      this.status === CardStatusType.PREVIEW ||
+      this.code.startsWith('z');
   }
 
   public grammarGenderMasculine(): boolean {
@@ -767,10 +815,6 @@ export default class Card {
   isBasicWeakness(): boolean {
     return this.type_code !== 'scenario' &&
       this.subtype_code === 'basicweakness';
-  }
-
-  factionPackSortHeader() {
-    return `${Card.factionSortHeader(this)} - ${this.cycle_name}`;
   }
 
   factionCode(): FactionCodeType {
@@ -941,7 +985,10 @@ export default class Card {
     investigator?: {
       [key: string]: string;
     };
-  }): Partial<Card> | undefined {
+  }): {
+    restrictions_all_investigators: string[];
+    restrictions_investigator?: string;
+  } | undefined {
     if (json && json.investigator && keys(json.investigator).length) {
       const investigators = keys(json.investigator);
       const mainInvestigator = min(investigators);
@@ -1004,35 +1051,35 @@ export default class Card {
     }
   }
 
-  static factionSortHeader(json: any) {
-    if (json.spoiler) {
+  static factionSortHeader(card: SingleCardFragment, translation: CardTextFields, restrictions?: CardRestrictions) {
+    if (card.spoiler) {
       return t`Mythos`;
     }
-    switch(json.subtype_code) {
+    switch(card.subtype_code) {
       case 'basicweakness':
         return t`Basic Weakness`;
       case 'weakness':
-        if (json.restrictions || json.has_restrictions) {
+        if (card.restrictions || restrictions?.restrictions_investigator) {
           return t`Signature Weakness`;
         }
         return t`Weakness`;
       default: {
-        if (!json.faction_code || !json.faction_name) {
+        if (!card.faction_code || !translation.faction_name) {
           return t`Unknown`;
         }
-        if (json.faction2_code && json.faction2_name) {
+        if (card.faction2_code && translation.faction2_name) {
           const factions = Card.basicFactions();
-          const faction1 = Card.factionCodeToName(json.faction_code, json.faction_name);
-          const faction2 = Card.factionCodeToName(json.faction2_code, json.faction2_name);
-          if (json.faction3_code && json.faction3_name) {
-            const faction3 = Card.factionCodeToName(json.faction3_code, json.faction3_name);
+          const faction1 = Card.factionCodeToName(card.faction_code, translation.faction_name);
+          const faction2 = Card.factionCodeToName(card.faction2_code, translation.faction2_name);
+          if (card.faction3_code && translation.faction3_name) {
+            const faction3 = Card.factionCodeToName(card.faction3_code, translation.faction3_name);
             const [f1, f2, f3] = sortBy([faction1, faction2, faction3], x => indexOf(factions, x))
             return `${f1} / ${f2} / ${f3}`;
           }
           const [f1, f2] = sortBy([faction1, faction2], x => indexOf(factions, x));
           return `${f1} / ${f2}`;
         }
-        return Card.factionCodeToName(json.faction_code, json.faction_name);
+        return Card.factionCodeToName(card.faction_code, translation.faction_name);
       }
     }
   }
@@ -1080,34 +1127,38 @@ export default class Card {
     ];
   }
 
-  static typeSortHeader(json: any, basic?: boolean): string {
-    if (json.hidden && json.linked_card) {
-      return Card.typeSortHeader(json.linked_card, basic);
+  static typeSortHeader(
+    card: SingleCardFragment & { linked_card?: SingleCardFragment | null },
+    restrictions: CardRestrictions | undefined,
+    basic?: boolean
+  ): string {
+    if (card.hidden && card.linked_card) {
+      return Card.typeSortHeader(card.linked_card, restrictions, basic);
     }
-    switch(json.subtype_code) {
+    switch(card.subtype_code) {
       case 'basicweakness':
         return t`Basic Weakness`;
       case 'weakness':
-        if (json.spoiler) {
+        if (card.spoiler) {
           return t`Story`;
         }
-        if (json.restrictions || json.has_restrictions) {
+        if (card.restrictions || restrictions?.restrictions_investigator) {
           return t`Signature Weakness`;
         }
         return t`Weakness`;
       default:
-        switch(json.type_code) {
+        switch(card.type_code) {
           case 'asset':
-            if (json.spoiler || json.encounter_code) {
+            if (card.spoiler || card.encounter_code) {
               return t`Story`;
             }
             if (basic) {
               return t`Asset`;
             }
-            if (json.permanent || json.double_sided) {
+            if (card.permanent || card.double_sided) {
               return t`Asset: Permanent`;
             }
-            switch(json.real_slot) {
+            switch(card.real_slot) {
               case 'Hand':
                 return t`Asset: Hand`;
               case 'Hand x2':
@@ -1138,17 +1189,17 @@ export default class Card {
                 return t`Asset: Other`;
             }
           case 'event':
-            if (json.spoiler) {
+            if (card.spoiler) {
               return t`Story`;
             }
             return t`Event`;
           case 'skill':
-            if (json.spoiler) {
+            if (card.spoiler) {
               return t`Story`;
             }
             return t`Skill`;
           case 'investigator':
-            if (json.spoiler) {
+            if (card.spoiler) {
               return t`Story`;
             }
             return t`Investigator`;
@@ -1158,161 +1209,86 @@ export default class Card {
     }
   }
 
-  private static gqlToJson(
+  private static gqlTextFields(
     card: SingleCardFragment & {
       translations: CoreCardTextFragment[];
+      linked_card?: null | (SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      });
     },
-    encounterSets: { [code: string]: string | undefined },
-    packs: {
-      [pack_code: string]: {
-        name: string;
-        position: number;
-        cycle_name: string;
-        cycle_position: number;
-      };
-    }
-  ) {
-    const cardTypeNames: { [key: string]: string } = {
-      asset: t`Asset`,
-      event: t`Event`,
-      skill: t`Skill`,
-      investigator: t`Investigator`,
-      treachery: t`Treachery`,
-      scenario: t`Scenario`,
-      location: t`Location`,
-      enemy: t`Enemy`,
-      act: t`Act`,
-      agenda: t`Agenda`,
-      story: t`Story`,
-    };
-    const factionNames: { [key: string]: string } = {
-      neutral: t`Neutral`,
-      guardian: t`Guardian`,
-      seeker: t`Seeker`,
-      rogue: t`Rogue`,
-      mystic: t`Mystic`,
-      survivor: t`Survivor`,
-      mythos: t`Mythos`,
-    };
+    data: TranslationData
+  ): CardTextFields {
+    const t = card.translations.length ? card.translations[0] : undefined;
+    return {
+      name: t ? t.name : card.real_name,
+      pack_name: data.packs[card.pack_code]?.name || card.real_pack_name,
+      type_name: data.cardTypeNames[card.type_code],
+      faction_name: data.factionNames[card.faction_code],
+      faction2_name: card.faction2_code ? data.factionNames[card.faction2_code] : undefined,
+      faction3_name: card.faction3_code ? data.factionNames[card.faction3_code] : undefined,
 
-    const subTypeName: { [key: string]: string } = {
-      weakness: t`Weakness`,
-      basicweakness: t`Basic Weakness`,
+      flavor: (t ? t.flavor : card.real_flavor) || undefined,
+      slot: (t ? t.slot : card.real_slot) || undefined,
+      subname: (t ? t.subname : card.real_subname) || undefined,
+      text: (t ? t.text : card.real_text) || undefined,
+      traits: (t ? t.traits : card.real_traits) || undefined,
+      back_flavor: (t ? t.back_flavor : card.real_back_flavor) || undefined,
+      back_name: (t ? t.back_name : card.real_back_name) || undefined,
+      back_text: (t ? t.back_text : card.real_back_text) || undefined,
+      customization_text: (t ? t.customization_text : card.real_customization_text) || undefined,
+      customization_change: (t ? t.customization_change : card.real_customization_change) || undefined,
+      taboo_text_change: (t ? t.taboo_text_change : card.real_taboo_text_change) || undefined,
+
+      encounter_name: card.encounter_code ? (data.encounterSets[card.encounter_code] || card.real_encounter_set_name || undefined) : undefined,
+      subtype_name: card.subtype_code ? data.subTypeNames[card.subtype_code] : undefined,
     };
-    const json: any = card.translations.length ? {
-      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
-      ...omit(card.translations[0], '__typename'),
-    } : {
-      ...omit(card, '__typename', 'real_pack_name', 'real_flavor'),
-      flavor: card.real_flavor,
-      name: card.real_name,
-      slot: card.real_slot,
-      subname: card.real_subname,
-      text: card.real_text,
-      traits: card.real_traits,
-      back_flavor: card.real_back_flavor,
-      back_name: card.real_back_name,
-      back_text: card.real_back_text,
-    };
-    json.encounter_name = card.encounter_code ? (encounterSets[card.encounter_code] || card.real_encounter_set_name) : undefined;
-    json.pack_name = packs[card.pack_code]?.name || card.real_pack_name;
-    json.cycle_name = packs[card.pack_code]?.cycle_name;
-    json.type_name = cardTypeNames[card.type_code];
-    json.faction_name = factionNames[card.faction_code];
-    if (card.subtype_code) {
-      json.subtype_name = subTypeName[card.subtype_code];
-    }
-    return json;
   }
 
   static fromGraphQl(
     card: SingleCardFragment & {
-      linked_card?: SingleCardFragment & {
-        translations: CoreCardTextFragment[];
-      };
       translations: CoreCardTextFragment[];
+      linked_card?: null | (SingleCardFragment & {
+        translations: CoreCardTextFragment[];
+      });
     },
-    lang: string,
-    encounterSets: { [code: string]: string | undefined },
-    packs: {
-      [pack_code: string]: {
-        name: string;
-        position: number;
-        cycle_position: number;
-        cycle_name: string;
-      };
-    },
-    cycles: {
-      [cycle_code: string]: {
-        name: string;
-        position: number;
-      };
-    }
-  ) {
-    const json = Card.gqlToJson(card, encounterSets, packs);
-    if (card.linked_card) {
-      json.linked_card = Card.gqlToJson(card.linked_card, encounterSets, packs);
-      json.linked_to_code = json.linked_card.code;
-      json.linked_to_name = json.linked_card.real_name;
-    }
-    return Card.fromJson(json, packs, cycles, lang);
-  }
-
-  static fromJson(
-    json: any,
-    packsByCode: {
-      [pack_code: string]: {
-        position: number;
-        cycle_position: number;
-      };
-    },
-    cycleNames: {
-      [cycle_code: string]: {
-        name?: string;
-        code?: string;
-      };
-    },
-    lang: string,
-    noFlipping?: boolean
+    data: TranslationData
   ): Card {
-    if (json.code === '02041') {
-      json.subtype_code = null;
-      json.subtype_name = null;
-    }
-    const deck_requirements = json.deck_requirements ?
-      DeckRequirement.parse(json.deck_requirements) :
+    const translation = Card.gqlTextFields(card, data);
+    const deck_requirements = card.deck_requirements ?
+      DeckRequirement.parse(card.deck_requirements) :
       null;
-    const deck_options = json.deck_options ?
-      DeckOption.parseList(typeof json.deck_options === 'string' ? JSON.parse(json.deck_options) : json.deck_options) :
+    const deck_options = card.deck_options ?
+      DeckOption.parseList(card.deck_options) :
       [];
 
-    const wild = json.skill_wild || 0;
+    const wild = card.skill_wild || 0;
     const eskills: any = {};
-    if (json.type_code !== 'investigator' && wild > 0) {
+    if (card.type_code !== 'investigator' && wild > 0) {
       forEach(BASIC_SKILLS, skill => {
-        const value = json[`skill_${skill}`] || 0;
+        const value = card[`skill_${skill}`] || 0;
         if (value > 0) {
           eskills[`eskill_${skill}`] = value + wild;
         }
       });
     }
 
-    const name = json.name.replace('', '');
+    const name = translation.name.replace('', '');
     let renderName = name;
-    let renderSubname = json.subname;
-    if (json.type_code === 'act' && json.stage) {
+    let renderSubname = translation.subname;
+    const json = card;
+    if (card.type_code === 'act' && json.stage) {
       renderSubname = t`Act ${json.stage}`;
-    } else if (json.type_code === 'agenda' && json.stage) {
+    } else if (card.type_code === 'agenda' && json.stage) {
       renderSubname = t`Agenda ${json.stage}`;
-    } else if (json.type_code === 'scenario') {
+    } else if (card.type_code === 'scenario') {
       renderSubname = t`Scenario`;
     }
-    const linked_card = json.linked_card && json.code !== '86024' ?
-      Card.fromJson(json.linked_card, packsByCode, cycleNames, lang) :
+    const linked_card = card.linked_card ?
+      Card.fromGraphQl(card.linked_card, data) :
       null;
     if (linked_card) {
       linked_card.back_linked = true;
-      if (json.hidden && !linked_card.hidden) {
+      if (card.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
         if (linked_card.type_code === 'act' && linked_card.stage) {
           renderSubname = t`Act ${linked_card.stage}`;
@@ -1323,115 +1299,120 @@ export default class Card {
         }
       }
     }
-    const customization_options = CustomizationOption.parseAll(json);
+    const customization_options = CustomizationOption.fromGql(card, translation);
     const removable_slot = !!find(customization_options, option => option.choice === 'remove_slot');
-    const real_traits = find(customization_options, t => !!t.real_traits)?.real_traits || json.real_traits;
+    const real_traits = find(customization_options, t => !!t.real_traits)?.real_traits || card.real_traits;
     const real_traits_normalized = real_traits ? map(
       filter(
         map(real_traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
-    const traits_normalized = json.traits ? map(
+    const traits_normalized = translation.traits ? map(
       filter(
-        map(json.traits.split('.'), trait => trait.toLowerCase().trim()),
+        map(translation.traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
-    const real_slot = json.real_slot || json.slot;
-    const real_slots_normalized = real_slot ? map(
+    const real_slots_normalized = card.real_slot ? map(
       filter(
-        map(real_slot.split('.'), s => s.toLowerCase().trim()),
+        map(card.real_slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
       ),
       slot => `#${slot}#`
     ).join(',') : null;
-    const slot = json.slot || null;
-    const slots_normalized = json.slot ? map(
+    const slots_normalized = translation.slot ? map(
       filter(
-        map(json.slot.split('.'), s => s.toLowerCase().trim()),
+        map(translation.slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
       ),
       s => `#${s}#`).join(',') : null;
 
 
-    const restrictions = Card.parseRestrictions(json.restrictions);
-    const uses_match = json.code === '08062' ?
+    const restrictions = Card.parseRestrictions(card.restrictions);
+    const uses_match = card.code === '08062' ?
       ['foo', 'bar', 'charges'] :
-      (json.real_text && json.real_text.match(USES_REGEX));
+      (card.real_text && card.real_text.match(USES_REGEX));
     const usesRaw = uses_match ? uses_match[2].toLowerCase() : null;
     const uses = usesRaw === 'charge' ? 'charges' : usesRaw;
 
-    const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
+    const bonded_match = card.real_text && card.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
 
-    const seal_match = json.real_text && json.real_text.match(SEAL_REGEX);
-    const seal = !!seal_match || json.code === SERPENTS_OF_YIG;
+    const seal_match = card.real_text && card.real_text.match(SEAL_REGEX);
+    const seal = !!seal_match || card.code === SERPENTS_OF_YIG;
 
-    const heals_horror_match = !!(json.real_text && json.real_text.match(HEALS_HORROR_REGEX)) ||
-      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_HORROR_REGEX));
-    const heals_horror = heals_horror_match ? true : null;
-    const heals_damage_match = !!(json.real_text && json.real_text.match(HEALS_DAMAGE_REGEX)) ||
-      !!customization_options?.find(option => !!option.real_text && option.real_text.match(HEALS_DAMAGE_REGEX));
-    const heals_damage = heals_damage_match ? true : null;
-    const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
-    const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
+    const heals_horror = !!find(card.tags, t => t === 'hh') ||
+      !!find(customization_options, option => !!find(option.tags, t => t === 'hh'));
+    const heals_damage = !!find(card.tags, t => t === 'hd') ||
+      !!find(customization_options, option => !!find(option.tags, t => t === 'hd'));
 
-    const sort_by_type_header = Card.typeSortHeader(json);
+    const myriad = !!card.real_text && card.real_text.indexOf('Myriad.') !== -1;
+    const advanced = !!card.real_text && card.real_text.indexOf('Advanced.') !== -1;
+
+    const sort_by_type_header = Card.typeSortHeader(card, restrictions);
     const sort_by_type = Card.typeHeaderOrder().indexOf(sort_by_type_header);
-    const sort_by_faction_header = Card.factionSortHeader(json);
+    const sort_by_faction_header = Card.factionSortHeader(card, translation, restrictions);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
-    const pack = packsByCode[json.pack_code] || null;
+    const pack = data.packs[card.pack_code] || null;
     const cycle_position = pack?.cycle_position || 0;
     const sort_by_faction_pack = sort_by_faction * 10000 + (cycle_position * 20) + (cycle_position >= 50 ? pack.position : 0);
-    const sort_by_faction_pack_header = `${sort_by_faction_header} - ${json.pack_name}`;
+    const sort_by_faction_pack_header = `${sort_by_faction_header} - ${translation.pack_name}`;
 
-    const basic_type_header = Card.typeSortHeader(json, true);
-    const sort_by_faction_xp = (sort_by_faction * 1000) + (typeof json.xp === 'number' ? json.xp : 6) * 100 + Card.basicTypeHeaderOrder().indexOf(basic_type_header);
-    const sort_by_faction_xp_header = typeof json.xp === 'number' ?
-      `${sort_by_faction_header} (${json.xp}) - ${basic_type_header}` :
+    const basic_type_header = Card.typeSortHeader(card, restrictions, true);
+    const sort_by_faction_xp = (sort_by_faction * 1000) + (typeof card.xp === 'number' ? card.xp : 6) * 100 + Card.basicTypeHeaderOrder().indexOf(basic_type_header);
+    const sort_by_faction_xp_header = typeof card.xp === 'number' ?
+      `${sort_by_faction_header} (${card.xp}) - ${basic_type_header}` :
       `${sort_by_faction_header} - ${basic_type_header}`;
 
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const sort_by_cycle = (pack ? pack.cycle_position : 100) * 1000 + sort_by_faction * 100 + sort_by_type;
-    const sort_by_cost_header = (json.cost === null || json.cost === undefined) ? t`Cost: None` : t`Cost: ${json.cost}`;
-    const sort_by_encounter_set_header = json.encounter_name ||
+    const sort_by_cost_header = (card.cost === null || card.cost === undefined) ? t`Cost: None` : t`Cost: ${card.cost}`;
+    const sort_by_encounter_set_header = translation.encounter_name ||
       (linked_card && linked_card.encounter_name) ||
       t`N/A`;
-    const cycle_pack = pack ? cycleNames[pack.cycle_position] : null;
-    const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
-    const enemy_horror = json.type_code === 'enemy' ? (json.enemy_horror || 0) : null;
-    const enemy_damage = json.type_code === 'enemy' ? (json.enemy_damage || 0) : null;
-    const firstName = json.type_code === 'investigator' && json.name.indexOf(' ') !== -1 ?
-      json.name.substring(0, json.name.indexOf(' ')).replace(/"/g, '') :
-      json.name;
+    const spoiler = !!(card.spoiler || (linked_card && linked_card.spoiler));
+    const enemy_horror = card.type_code === 'enemy' ? (card.enemy_horror || 0) : null;
+    const enemy_damage = card.type_code === 'enemy' ? (card.enemy_damage || 0) : null;
+    const firstName = card.type_code === 'investigator' && translation.name.indexOf(' ') !== -1 ?
+      translation.name.substring(0, translation.name.indexOf(' ')).replace(/"/g, '') :
+      translation.name;
 
-    const altArtInvestigator =
-      !!json.alternate_of_code ||
-      json.code === '98001' || // Jenny
-      json.code === '98004' || // Roland
-      json.code === '98010' || // Carolyn
-      json.code === '98013' || // Silas
-      json.code === '98016' || // Dexter
-      json.code === '98007' || // Norman
-      json.code === '99001'; // PROMO Marie
+    const altArtInvestigator = card.alt_art_investigator;
+    let status: CardStatusType | undefined = undefined;
+    if (!card.official) {
+      status = CardStatusType.CUSTOM;
+    } else if (card.preview) {
+      status = CardStatusType.PREVIEW;
+    }
+    const s_search_name = searchNormalize(filter([renderName, renderSubname], x => !!x).join(' '), data.lang);
+    const s_search_name_back = searchNormalize(filter([name, translation.subname, translation.back_name], x => !!x).join(' '), data.lang);
+    const s_search_game = searchNormalize(filter([translation.text, translation.traits], x => !!x).join(' '), data.lang);
+    const s_search_game_back = ((translation.back_text && searchNormalize(translation.back_text, data.lang)) || '');
+    const s_search_flavor = ((translation.flavor && searchNormalize(translation.flavor, data.lang)) || '');
+    const s_search_flavor_back = ((translation.back_flavor && searchNormalize(translation.back_flavor, data.lang)) || '');
 
-    const alternate_of_code = json.alternate_of_code && json.duplicate_of_code && json.alternate_of_code === json.duplicate_of_code ? undefined : json.alternate_of_code;
-
-    const s_search_name = searchNormalize(filter([renderName, renderSubname], x => !!x).join(' '), lang);
-    const s_search_name_back = searchNormalize(filter([name, json.subname, json.back_name], x => !!x).join(' '), lang);
-    const s_search_game = searchNormalize(filter([json.text, json.traits], x => !!x).join(' '), lang);
-    const s_search_game_back = ((json.back_text && searchNormalize(json.back_text, lang)) || '');
-    const s_search_flavor = ((json.flavor && searchNormalize(json.flavor, lang)) || '');
-    const s_search_flavor_back = ((json.back_flavor && searchNormalize(json.back_flavor, lang)) || '');
-
-    const s_search_real_name = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
-    const s_search_real_name_back = searchNormalize(filter([json.real_name, json.real_subname], x => !!x).join(' '), 'en');
-    const s_search_real_game = searchNormalize(filter([json.real_text, real_traits], x => !!x).join(' '), 'en');
-    let result = {
-      ...omit(json, ['customization_options', 'customization_text', 'deck_options', 'deck_requirements', 'alternate_of_code']),
+    const s_search_real_name = searchNormalize(filter([card.real_name, card.real_subname], x => !!x).join(' '), 'en');
+    const s_search_real_name_back = searchNormalize(filter([card.real_name, card.real_subname], x => !!x).join(' '), 'en');
+    const s_search_real_game = searchNormalize(filter([card.real_text, real_traits], x => !!x).join(' '), 'en');
+    const result = {
+      ...omit(card, [
+        'customization_options',
+        'customization_text',
+        'deck_options',
+        'deck_requirements',
+        'alt_art_investigator',
+        'taboo_xp',
+        'official',
+        'preview',
+        'real_pack_name',
+        'real_flavor',
+        'real_customization_text',
+        'real_taboo_text_change',
+        'real_customization_text',
+      ]),
+      ...translation,
       ...eskills,
-      alternate_of_code,
-      id: json.code,
-      tabooSetId: null,
+      id: card.id,
+      extra_xp: card.taboo_xp,
       s_search_name,
       s_search_name_back,
       s_search_game,
@@ -1452,17 +1433,16 @@ export default class Card {
       traits_normalized,
       customization_options,
       real_traits_normalized,
-      real_slot,
       real_slots_normalized,
-      slot,
       slots_normalized,
       uses,
       bonded_name,
-      cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
-      cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
+      cycle_name: pack.cycle_name,
+      cycle_code: pack.cycle_code,
       has_restrictions: !!restrictions && !!restrictions.restrictions_investigator,
       ...restrictions,
       seal,
+      status,
       myriad,
       removable_slot,
       advanced,
@@ -1484,30 +1464,8 @@ export default class Card {
       sort_by_faction_xp_header,
       sort_by_cycle,
     };
-    if (!noFlipping && (
-      (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') ||
-      SICKENING_REALITY_CARDS.has(result.code)
-    )) {
-      result = {
-        ...omit(result.linked_card, ['back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'linked_card']),
-        back_linked: null,
-        hidden: null,
-        linked_to_code: result.code,
-        linked_to_name: result.name,
-        linked_card: {
-          ...omit(result, ['linked_card', 'back_linked', 'hidden', 'linked_to_code', 'linked_to_name', 'browse_visible', 'mythos_card']),
-          linked_card: undefined,
-          back_linked: true,
-          hidden: true,
-          linked_to_code: result.linked_card.code,
-          linked_to_name: result.linked_card.name,
-          browse_visible: false,
-          mythos_card: true,
-        },
-      };
-    }
     result.browse_visible = 0;
-    if (result.code.startsWith('z')) {
+    if (result.code.startsWith('z') || result.status === CardStatusType.PREVIEW || result.status === CardStatusType.CUSTOM) {
       result.browse_visible += 16;
     }
     if (result.code === RANDOM_BASIC_WEAKNESS || result.code === BODY_OF_A_YITHIAN) {
@@ -1529,52 +1487,6 @@ export default class Card {
     }
     result.mythos_card = !!result.encounter_code || !!result.linked_card?.encounter_code;
     result.spoiler = result.spoiler || (result.linked_card && result.linked_card.spoiler);
-    return result;
-  }
-
-  static placeholderTabooCard(
-    tabooId: number,
-    card: Card
-  ): Card {
-    const result: Card = { ...card } as Card;
-    result.id = `${tabooId}-${card.code}`;
-    result.taboo_set_id = tabooId;
-    result.taboo_placeholder = true;
-    return result;
-  }
-
-  static fromTabooCardJson(
-    tabooId: number,
-    json: any,
-    card: Card
-  ): Card {
-    const code: string = card.code;
-    const result: Card = { ...card } as Card;
-    result.id = `${tabooId}-${code}`;
-    result.taboo_set_id = tabooId;
-    result.taboo_placeholder = false;
-
-    if (json.xp) {
-      result.extra_xp = json.xp;
-    }
-    if (json.text) {
-      result.taboo_text_change = json.text;
-    }
-    if (json.exceptional !== undefined) {
-      result.exceptional = json.exceptional;
-      if (json.exceptional) {
-        result.deck_limit = 1;
-      }
-    }
-    if (json.deck_limit !== undefined) {
-      result.deck_limit = json.deck_limit;
-    }
-    if (json.deck_options) {
-      result.deck_options = DeckOption.parseList(json.deck_options);
-    }
-    if (json.deck_requirements) {
-      result.deck_requirements = DeckRequirement.parse(json.deck_requirements);
-    }
     return result;
   }
 

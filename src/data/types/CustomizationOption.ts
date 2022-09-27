@@ -1,6 +1,9 @@
-import { map } from 'lodash';
+import { SingleCardFragment } from '@generated/graphql/apollo-schema';
+import { map, filter } from 'lodash';
 import { Column } from 'typeorm/browser';
+
 import Card from './Card';
+import CardTextFields from './CardTextFields';
 import DeckOption from './DeckOption';
 
 const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
@@ -32,11 +35,18 @@ export interface ChooseTraitCustomizationChoice extends CoreCustomizationChoice 
 export interface ChooseCardCustomizationChoice extends CoreCustomizationChoice {
   type: 'choose_card',
   encodedChoice: string;
-  choice: string[]
+  choice: string[];
   cards: Card[];
 }
 
-export type AdvancedCustomizationChoice = RemoveSlotCustomizationChoice | ChooseTraitCustomizationChoice | ChooseCardCustomizationChoice;
+
+export interface ChooseSkillCustomizationChoice extends CoreCustomizationChoice {
+  type: 'choose_skill',
+  encodedChoice: string;
+  choice: 'willpower' | 'intellect' | 'combat' | 'agility' | undefined;
+}
+
+export type AdvancedCustomizationChoice = RemoveSlotCustomizationChoice | ChooseTraitCustomizationChoice | ChooseCardCustomizationChoice | ChooseSkillCustomizationChoice;
 export type CustomizationChoice = BasicCustomizationChoice | AdvancedCustomizationChoice;
 
 export default class CustomizationOption {
@@ -51,6 +61,9 @@ export default class CustomizationOption {
 
   @Column('text', { nullable: true })
   public real_text?: string;
+
+  @Column('simple-array', { nullable: true })
+  public tags?: string[];
 
   @Column('integer', { nullable: true })
   public health?: number;
@@ -106,7 +119,7 @@ export default class CustomizationOption {
     option.deck_limit = json.deck_limit;
     option.text_change = json.text_change;
     option.position = json.position;
-
+    option.tags = json.tags;
     option.quantity = json.quantity;
     option.card = json.card ? DeckOption.parse(json.card) : undefined;
 
@@ -128,13 +141,13 @@ export default class CustomizationOption {
     return option;
   }
 
-  static parseAll(json: any): CustomizationOption[] | undefined {
-    if (!json.customization_options) {
+  static fromGql(card: SingleCardFragment, translation: CardTextFields): CustomizationOption[] | undefined {
+    if (!card.customization_options) {
       return undefined;
     }
-    const lines = (json.customization_text || '').split('\n');
-    const change_lines = (json.customization_change || '').split('\n');
-    return map(json.customization_options as any[], (option, index) => {
+    const lines = (translation.customization_text || '').split('\n');
+    const change_lines = (translation.customization_change || '').split('\n');
+    return map(card.customization_options as any[], (option, index) => {
       return CustomizationOption.parse(option, index, lines, change_lines);
     });
   }

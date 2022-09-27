@@ -107,7 +107,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
     return {
       transform: [{ translateY }],
     };
-  }, [advancedOptionsHeight, advancedToggleAnim, searchBarHeight]);
+  }, [advancedOptionsHeight, searchBarHeight]);
 
   const advancedOptionsBlock = useMemo(() => {
     if (!advancedOptions) {
@@ -148,7 +148,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
     return {
       transform: [{ translateY }],
     }
-  }, [searchBarHeight, scrollAnimPos, advancedOpen]);
+  }, [searchBarHeight, advancedOpen]);
   const isAndroid = Platform.OS === 'android';
   const shadowColor = useDerivedValue(() => colors.L20, [colors.L20]);
   const shadowStyle = useAnimatedStyle(() => {
@@ -170,7 +170,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
     const shadowOpacity = interpolate(advancedToggleAnim.value, [0, 1], [0.25, 0]) *
       interpolate(scrollAnim.value, [0, 1], [0, 1]);
     return { shadowOpacity: shadowOpacity };
-  }, [advancedToggleAnim, scrollAnim, isAndroid, shadowColor]);
+  }, [isAndroid, shadowColor]);
   return (
 
     <View style={[styles.wrapper, backgroundStyle]}>

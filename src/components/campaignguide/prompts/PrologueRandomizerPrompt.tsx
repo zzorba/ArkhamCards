@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { head, find, forEach, map, shuffle, values, filter } from 'lodash';
 import { t } from 'ttag';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import { PrologueRandomizer, StringOption } from '@data/scenario/types';
@@ -10,13 +9,12 @@ import ScenarioGuideContext from '../ScenarioGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
 import InputWrapper from './InputWrapper';
 import { DisplayChoiceWithId } from '@data/scenario';
-import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import space, { s, m } from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import COLORS from '@styles/colors';
 import { StringChoices } from '@actions/types';
 import useCardList from '@components/card/useCardList';
 import Card from '@data/types/Card';
+import InvestigatorButton from '../InvestigatorButton';
 
 interface Props {
   id: string;
@@ -35,34 +33,23 @@ function PrologueRow({ item, setChoice, options, decision, editable, card }: {
   decision: undefined | string;
   editable: boolean;
 }) {
-  const { typography, width } = useContext(StyleContext);
   const onPress = useCallback(() => {
     setChoice(item.id);
   }, [item.id, setChoice]);
-  const selection = useMemo(() => decision && find(options, o => o.condition === decision), [decision, options]);
+  const selection = useMemo(() => (decision && find(options, o => o.condition === decision)) || undefined, [decision, options]);
   if (!card) {
     return null;
   }
   return (
     <View style={space.paddingVerticalXs}>
-      <TouchableOpacity onPress={onPress} disabled={!editable}>
-        <CompactInvestigatorRow
-          investigator={card}
-          color="dark"
-          width={width - s * (editable ? 4 : 2)}
-        >
-          { !!selection && <Text style={[typography.gameFont, typography.white]} >{selection.prompt}</Text>}
-          { editable && (
-            <View style={space.marginLeftXs}>
-              <MaterialCommunityIcons
-                name="shuffle-variant"
-                size={24}
-                color={COLORS.white}
-              />
-            </View>
-          )}
-        </CompactInvestigatorRow>
-      </TouchableOpacity>
+      <InvestigatorButton
+        investigator={card}
+        color="dark"
+        onPress={onPress}
+        disabled={!editable}
+        value={selection?.prompt}
+        widget="shuffle"
+      />
     </View>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useCallback, useMemo, ReactNode } from 'react';
-import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -29,6 +30,19 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
     ReactNativeHapticFeedback.trigger('impactLight');
     onValueChange(value);
   }, [onValueChange, value]);
+  const scale = useSharedValue(1);
+  const onPressIn = useCallback(() => {
+    cancelAnimation(scale);
+    scale.value = withSequence(
+      withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
+      withTiming(1, { duration: 100, easing: Easing.elastic(1) })
+    );
+  }, [scale]);
+  const animStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+    };
+  });
   const icon = useMemo(() => {
     if (iconNode) {
       return iconNode;
@@ -42,7 +56,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
     return null;
   }, [iconNode, iconName, colors]);
   return (
-    <TouchableOpacity onPress={onPress} disabled={disabled}>
+    <Pressable onPress={onPress} onPressIn={onPressIn} disabled={disabled}>
       <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
         <View style={styles.contentRow}>
           <View style={styles.leadRow}>
@@ -69,16 +83,16 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
           { !!rightNode && rightNode }
           { indicator !== 'none' && (
             indicator === 'radio' ? (
-              <View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }]}>
+              <Animated.View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }, animStyle]}>
                 { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
-              </View>
+              </Animated.View>
             ) : (
               <ArkhamSwitch value={selected} color="dark" />
             )
           ) }
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

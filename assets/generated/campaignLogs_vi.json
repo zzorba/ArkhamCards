@@ -1071,12 +1071,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1126,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# bị chiếm hữu.",
-            "feminine_text": "#name# bị chiếm hữu."
+            "feminine_text": "#name# bị chiếm hữu.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
-            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1558,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# bị chiếm hữu.",
-            "feminine_text": "#name# bị chiếm hữu."
+            "feminine_text": "#name# bị chiếm hữu.",
+            "nonbinary_text": "#name# was possessed."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
-            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng."
+            "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
+            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1798,7 +1804,7 @@
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah đã chết."
           },
           {
             "id": "on_gavriellas_trail",
@@ -1835,7 +1841,7 @@
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids đã chết."
           },
           {
             "id": "on_jeromes_trail",
@@ -1872,7 +1878,7 @@
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas đã chết."
           },
           {
             "id": "on_valentinos_trail",
@@ -1909,7 +1915,7 @@
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White đã chết."
           },
           {
             "id": "on_pennys_trail",
@@ -1922,8 +1928,9 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -1935,35 +1942,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette đã dạy cho bạn những phép thuật cổ."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "các điều tra viên đã bắt giữ Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "các điều tra viên đã bắt giữ Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "các điều tra viên yêu cầu Anette hỗ trợ mình."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "các điều tra viên đã yêu cầu Sanford hỗ trợ."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "các điều tra viên đã nắm quyền kiểm soát Silver Twilight Lodge."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth đã nuốt chửng cả vũ trụ."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth thiu thiu ngủ... cho lúc này."
           },
           {
             "id": "being_hunted",
@@ -1975,7 +1982,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "các điều tra viên tiếp tục một mình."
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
@@ -1991,7 +1998,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "diệt vong ngày càng đến gần."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -2007,11 +2014,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện và bị hạ gục."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện và bị hạ gục."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện."
           },
           {
             "id": "heretics_released",
@@ -2055,7 +2062,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "con đường uốn lượn trước mặt bạn: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2079,7 +2086,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "các điều tra viên ký vào Cuốn sách Hắc ám của Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -2264,7 +2271,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro đã theo chân các điều tra viên vào các tàn tích."
           },
           {
             "id": "alejandro_is_missing",
@@ -2272,15 +2279,15 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro đang tiếp tục tự nghiên cứu."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro đã khôi phục được Relic of Ages."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro đã chọn ở lại trại."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -2300,7 +2307,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "các điều tra viên đã mở một con đường dẫn đến các tàn tích Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -2308,11 +2315,11 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "các điều tra viên nhận được sự tin tưởng của Alenjandro."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "các điều tra viên đã giành được sự tin tưởng của Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -2328,7 +2335,7 @@
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "bạn đang tạo ra con đường của riêng mình."
           },
           {
             "id": "found_missing_relic",
@@ -2336,11 +2343,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
@@ -2348,7 +2355,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "Harbinger vẫn còn sống (#X# chấn thương thể chất)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -2360,11 +2367,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca cảnh giác với các điều tra viên."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca quan sát sự tiến tới của bạn bằng một sự chú ý mãnh liệt."
           },
           {
             "id": "ichtaca_set_against",
@@ -2376,7 +2383,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "các điều tra viên đã khôi phục được Relic of Ages."
           },
           {
             "id": "investigators_saved_serpents",
@@ -2448,7 +2455,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "các điều tra viên buộc phải chờ nguồn vật tư dự trữ bổ sung."
           }
         ]
       },
@@ -2456,24 +2463,28 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -2513,7 +2524,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca đã rời đi mà không có bạn."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -2521,7 +2532,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "đã lắng nghe câu chuyện của Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -2578,33 +2589,39 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Mặt dây chuyền",
+        "description": "Vô dụng, nhưng đem lại những kỷ niệm giúp cảm thấy thoải mái hơn khi đi xa nhà.",
         "cost": 1
+      },
+      {
+        "id": "compass",
+        "name": "La bàn",
+        "description": "Có thể dẫn đường cho bạn khi bạn lạc đường trong vô vọng.",
+        "cost": 2
       },
       {
         "id": "canteen",
         "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
       {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "id": "chalk",
+        "name": "Phấn",
+        "description": "Dùng để viết lên bề mặt đá gồ ghề.",
         "cost": 2
       },
       {
@@ -2615,20 +2632,8 @@
       },
       {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Chăn",
+        "description": "Giữ ấm vào ban đêm.",
         "cost": 2
       },
       {
@@ -2638,21 +2643,27 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Ống nhòm",
+        "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "id": "torches",
+        "name": "Đuốc",
+        "description": "Có thể thắp sáng các khu vực tối, hoặc làm bánh.",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Dây thừng",
+        "description": "Vài cuộn dây dài chắc chắn. Rất quan trọng cho việc leo núi và khảo sát hang động.",
         "cost": 3
       }
     ]
@@ -2666,12 +2677,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss."
+            "feminine_text": "#name# was taken by the abyss.",
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "atw_bernards_fate",
@@ -3004,7 +3017,7 @@
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah đã chết."
           },
           {
             "id": "on_gavriellas_trail",
@@ -3041,7 +3054,7 @@
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids đã chết."
           },
           {
             "id": "on_jeromes_trail",
@@ -3078,7 +3091,7 @@
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas đã chết."
           },
           {
             "id": "on_valentinos_trail",
@@ -3115,7 +3128,7 @@
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White đã chết."
           },
           {
             "id": "on_pennys_trail",
@@ -3128,8 +3141,9 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# joins the pipers of Azathoth.",
-            "feminine_text": "#name# joins the pipers of Azathoth."
+            "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
+            "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3141,35 +3155,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette đã dạy cho bạn những phép thuật cổ."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "các điều tra viên đã bắt giữ Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "các điều tra viên đã bắt giữ Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "các điều tra viên yêu cầu Anette hỗ trợ mình."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "các điều tra viên đã yêu cầu Sanford hỗ trợ."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "các điều tra viên đã nắm quyền kiểm soát Silver Twilight Lodge."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth đã nuốt chửng cả vũ trụ."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth thiu thiu ngủ... cho lúc này."
           },
           {
             "id": "being_hunted",
@@ -3181,7 +3195,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "các điều tra viên tiếp tục một mình."
           },
           {
             "id": "deceiving_the_lodge",
@@ -3193,7 +3207,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "diệt vong ngày càng đến gần."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -3201,11 +3215,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện và bị hạ gục."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện và bị hạ gục."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "kẻ giám hộ cái bẫy đã xuất hiện."
+            "text": "quái vật canh giữ cái bẫy đã xuất hiện."
           },
           {
             "id": "heretics_released",
@@ -3249,7 +3263,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "con đường uốn lượn trước mặt bạn: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -3273,7 +3287,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "các điều tra viên ký vào Cuốn sách Hắc ám của Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -3415,12 +3429,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "feminine_text": "#name# has broken the law of Ulthar.",
+            "nonbinary_text": "#name# has broken the law of Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "feminine_text": "#name# was captured.",
+            "nonbinary_text": "#name# was captured."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3748,7 +3764,7 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro đã theo chân các điều tra viên vào các tàn tích."
           },
           {
             "id": "alejandro_is_missing",
@@ -3756,15 +3772,15 @@
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro đang tiếp tục tự nghiên cứu."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro đã khôi phục được Relic of Ages."
           },
           {
             "id": "alejandro_remained_at_camp",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Alejandro đã chọn ở lại trại."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -3784,7 +3800,7 @@
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "các điều tra viên đã mở một con đường dẫn đến các tàn tích Eztli."
           },
           {
             "id": "cooperated_with_yithians",
@@ -3792,11 +3808,11 @@
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "các điều tra viên nhận được sự tin tưởng của Alenjandro."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "các điều tra viên đã giành được sự tin tưởng của Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
@@ -3812,7 +3828,7 @@
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "bạn đang tạo ra con đường của riêng mình."
           },
           {
             "id": "found_missing_relic",
@@ -3820,11 +3836,11 @@
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "các điều tra viên giao việc canh giữ cổ vật cho Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
@@ -3832,7 +3848,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "Harbinger vẫn còn sống (#X# chấn thương thể chất)."
           },
           {
             "id": "ichtaca_has_confidence",
@@ -3844,11 +3860,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca cảnh giác với các điều tra viên."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca quan sát sự tiến tới của bạn bằng một sự chú ý mãnh liệt."
           },
           {
             "id": "ichtaca_set_against",
@@ -3860,7 +3876,7 @@
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "các điều tra viên đã khôi phục được Relic of Ages."
           },
           {
             "id": "investigators_saved_serpents",
@@ -3928,7 +3944,7 @@
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "các điều tra viên buộc phải chờ nguồn vật tư dự trữ bổ sung."
           }
         ]
       },
@@ -3936,24 +3952,28 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
-          },
-          {
             "id": "doy_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "eztli_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
           },
           {
             "id": "hote_fewer_resources",
-            "masculine_text": "#name# starts with 3 fewer resources.",
-            "feminine_text": "#name# starts with 3 fewer resources."
+            "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
+            "nonbinary_text": "#name# starts with 3 fewer resources."
+          },
+          {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
+            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -3993,7 +4013,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca đã rời đi mà không có bạn."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -4001,7 +4021,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "đã lắng nghe câu chuyện của Ichtaca."
           },
           {
             "id": "tasks_completed",
@@ -4029,33 +4049,39 @@
       {
         "id": "provisions",
         "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
         "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Mặt dây chuyền",
+        "description": "Vô dụng, nhưng đem lại những kỷ niệm giúp cảm thấy thoải mái hơn khi đi xa nhà.",
         "cost": 1
+      },
+      {
+        "id": "compass",
+        "name": "La bàn",
+        "description": "Có thể dẫn đường cho bạn khi bạn lạc đường trong vô vọng.",
+        "cost": 2
       },
       {
         "id": "canteen",
         "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
+        "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
       {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
+        "id": "chalk",
+        "name": "Phấn",
+        "description": "Dùng để viết lên bề mặt đá gồ ghề.",
         "cost": 2
       },
       {
@@ -4066,20 +4092,8 @@
       },
       {
         "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Chăn",
+        "description": "Giữ ấm vào ban đêm.",
         "cost": 2
       },
       {
@@ -4089,21 +4103,27 @@
         "cost": 2
       },
       {
-        "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
+        "id": "binoculars",
+        "name": "Ống nhòm",
+        "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
       },
       {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "id": "torches",
+        "name": "Đuốc",
+        "description": "Có thể thắp sáng các khu vực tối, hoặc làm bánh.",
         "cost": 3
       },
       {
         "id": "map",
         "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Dây thừng",
+        "description": "Vài cuộn dây dài chắc chắn. Rất quan trọng cho việc leo núi và khảo sát hang động.",
         "cost": 3
       }
     ]
@@ -4117,7 +4137,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "feminine_text": "#name# possesses a diving suit.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4977,7 +4998,8 @@
           {
             "id": "took_out_a_loan",
             "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan."
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
           },
           {
             "id": "architects_project_was_fully_completed",
@@ -5307,12 +5329,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5720,12 +5744,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

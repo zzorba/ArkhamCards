@@ -19,6 +19,7 @@ type CampaignLogEntry = {
   text: undefined;
   masculine_text: string;
   feminine_text: string;
+  nonbinary_text: string;
 };
 
 export interface CampaignLogSection {
@@ -48,6 +49,7 @@ export interface LogEntryText extends LogSection {
   type: 'text';
   text: string;
   feminineText?: string;
+  nonbinaryText?: string;
 }
 
 interface LogEntrySupplies extends LogSection {
@@ -140,7 +142,7 @@ export default class CampaignGuide {
     );
   }
 
-  card(code: string): { code: string; name: string; gender?: 'male' | 'female'; description?: string } | undefined {
+  card(code: string): { code: string; name: string; gender?: 'm' | 'f'; description?: string } | undefined {
     return find(this.campaign.campaign.cards, c => c.code === code);
   }
 
@@ -706,6 +708,7 @@ export default class CampaignGuide {
             section: section.title,
             text: entry.masculine_text,
             feminineText: entry.feminine_text,
+            nonbinaryText: entry.nonbinary_text,
           };
         }
         return {

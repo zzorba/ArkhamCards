@@ -27,7 +27,6 @@ msgstr "流浪者"
 msgid "Survivor"
 msgstr "求生者"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "中立"
 
@@ -40,7 +39,6 @@ msgstr "神秘"
 msgid "Unknown"
 msgstr "未知"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "調查員"
 
@@ -1497,9 +1495,6 @@ msgstr "多人遊戲"
 msgid "Standalone"
 msgstr "獨立冒險"
 
-msgid "Debug Card Json"
-msgstr "Debug Card Json"
-
 msgid "Debug"
 msgstr "Debug"
 
@@ -2137,9 +2132,6 @@ msgstr[0] "要進行此冒險，每位調查員需要支付${ entry.xpCost }點�
 
 msgid "Import data"
 msgstr "匯入資料"
-
-msgid "Side stories"
-msgstr "支線劇情"
 
 #, javascript-format
 msgid ""
@@ -2998,10 +2990,6 @@ msgid "Signature Weakness"
 msgstr "專屬弱點"
 
 #, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "費用: ${ json.cost }"
-
-#, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "顯示${ nonCollectionCount }張不在收藏中的卡牌"
@@ -3171,18 +3159,6 @@ msgstr "新獨立冒險"
 
 msgid "Create Standalone"
 msgstr "建立獨立冒險"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "The Chameleon"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"這是自定義的調查員，允許創建任意無限制的牌組。\n"
-"[elder_sign]: +X。X是你想要多少就多少。"
 
 msgid "Asset Filters"
 msgstr "支援卡篩選"
@@ -3958,9 +3934,6 @@ msgstr "仙境的強度"
 
 msgid "Edge of the Earth"
 msgstr "闇與地球之界"
-
-msgid "Promotional"
-msgstr "推廣"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "你不能加入超過5張守衛者和中立以外的卡牌"
@@ -5113,18 +5086,6 @@ msgstr ""
 msgid "Deck contains custom content"
 msgstr ""
 
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr ""
-
 msgid "Player"
 msgstr ""
 
@@ -5836,6 +5797,46 @@ msgstr[1] ""
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
 msgstr ""
 
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr ""
+
+msgid "Recomputing deck changes..."
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
@@ -6062,6 +6063,38 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -6455,6 +6488,27 @@ msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made "
 "standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7798,6 +7852,19 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "全部"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "無"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
+
 msgctxt "slots"
 msgid "None"
 msgstr "無"
@@ -7884,10 +7951,6 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "冒險"
-
-msgctxt "Taboo List"
-msgid "None"
-msgstr "無"
 
 msgctxt "Tarot Card"
 msgid "None"

@@ -49,7 +49,7 @@ export default function ArkhamLargeList<Item>({
   onScroll,
   heightForItem,
 }: Props<Item>) {
-  const { fontScale, colors } = useContext(StyleContext);
+  const { fontScale, height, colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
   const [debouncedRefreshing] = [refreshing || fakeRefresh];
   const isRefreshing = useRef(debouncedRefreshing);
@@ -122,6 +122,7 @@ export default function ArkhamLargeList<Item>({
     return (
       <FlatList
         data={flatData}
+        contentContainerStyle={{ minHeight: height }}
         refreshControl={
           <RefreshControl
             progressViewOffset={noSearch ? 0 : searchBarHeight}

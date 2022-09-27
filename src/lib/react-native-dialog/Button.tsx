@@ -1,6 +1,7 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, TextProps, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Text, TextProps } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import COLORS from '@styles/colors';
 
 const COLOR = Platform.OS === 'ios' ? COLORS.navButton : '#169689';
