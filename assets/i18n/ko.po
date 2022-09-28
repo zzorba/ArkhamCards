@@ -2892,22 +2892,22 @@ msgid "The Lair of Dagon"
 msgstr "데이곤의 침소"
 
 msgid "Hidden Truths"
-msgstr ""
+msgstr "숨은 진실"
 
 msgid "Into the Maelstrom"
 msgstr "몰아치는 소용돌이 속으로"
 
 msgid "Possible Suspects"
-msgstr ""
+msgstr "유력한 용의자"
 
 msgid "Possible Hideouts"
-msgstr ""
+msgstr "유력한 은신처"
 
 msgid "In Bag"
 msgstr "주머니 내부"
 
 msgid "The Syzygy"
-msgstr ""
+msgstr "천체 정렬"
 
 msgid "Coming soon"
 msgstr "조만간 개봉합니다"
@@ -3006,16 +3006,16 @@ msgid "The Pit of Despair"
 msgstr "절망의 구렁"
 
 msgid "Puzzle Pieces"
-msgstr ""
+msgstr "기억을 짜맞추다"
 
 msgid "The Vanishing of Elina Harper"
 msgstr "엘리나 하퍼의 실종"
 
 msgid "Beneath the Waves"
-msgstr ""
+msgstr "파도 아래에"
 
 msgid "Memories Recovered"
-msgstr ""
+msgstr "되찾은 기억"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
