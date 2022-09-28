@@ -5930,7 +5930,7 @@ msgid "Specific taboo set"
 msgstr "특정 금기 목록"
 
 msgid "Deleteing ArkhamDB accounts"
-msgstr ""
+msgstr "아컴디비 사이트 계정 삭제 중"
 
 msgid ""
 "ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
@@ -5939,15 +5939,20 @@ msgid ""
 "If you would like to delete your account, please contact the webmaster of "
 "ArkhamDB at arkhamdb@kamalisk.com"
 msgstr ""
+"아컴디비 사이트는 아컴카드 앱과 무관한 제 3자 웹사이트입니다. 앱을 사용하면 기존의 "
+"아컴디비 사이트 계정에만 로그인할 수 있습니다.\n"
+"\n"
+"만약 계정을 삭제하고 싶다면, 아컴디비 사이트 관리자 메일(arkhamdb@kamalisk.com)로 "
+"연락해 주시기 바랍니다."
 
 msgid "Requeset Account Deletion"
-msgstr ""
+msgstr "계정 삭제 요청"
 
 msgid "Delete Account"
-msgstr ""
+msgstr "계정 삭제"
 
 msgid "Choose a skill"
-msgstr ""
+msgstr "능력 선택"
 
 msgctxt "investigator"
 msgid "Custom"
