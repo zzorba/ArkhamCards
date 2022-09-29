@@ -161,7 +161,7 @@ interface CardFetcher {
  * This function turns partial cards into real cards, and provides a manual fetchMore function.
  * @param visibleCards list of partial cards that are trying to be rendered
  */
-function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
+function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolean): CardFetcher {
   const { db } = useContext(DatabaseContext);
   const [cards, updateCards] = useCards('id');
   const beingFetched = useRef(new Set<string>());
@@ -180,9 +180,9 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
         if (fetchSize.current < 100) {
           fetchSize.current = 100;
         }
-        // const start = new Date();
+        //const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
-          // console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
+          //console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
       }
@@ -194,13 +194,15 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
   useEffect(() => {
     if (visibleCards.length) {
       if (!fetchedOne.current || !lowMemoryMode) {
-        fetchedOne.current = true;
+        if (!partialCardsLoading) {
+          fetchedOne.current = true;
+        }
         // Initial fetch when we get back first set of results.
         fetchMore();
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards, lowMemoryMode]);
+  }, [visibleCards, cards, lowMemoryMode, partialCardsLoading]);
   const expandCards = useCallback(() => {
     fetchedOne.current = false;
   }, []);
@@ -336,7 +338,7 @@ function useSectionFeed({
     loading: !!deckQuery,
   });
   const [{ cards: mainQueryCards, loading: mainQueryCardsLoading }, setMainQueryCards] = useState<LoadedState>({ cards: [], loading: true });
-  const [{ cards: textQueryCards, textQuery: textQueryCardsTextQuery }, setTextQueryCards] = useState<LoadedState>({
+  const [{ cards: textQueryCards, loading: textQueryCardsLoading, textQuery: textQueryCardsTextQuery }, setTextQueryCards] = useState<LoadedState>({
     cards: [],
     loading: true,
   });
@@ -375,7 +377,7 @@ function useSectionFeed({
       ignore = true;
     };
   }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sort, sideDeck]);
-  const partialCards = textQuery ? textQueryCards : mainQueryCards;
+  const [partialCards, partialCardsLoading] = textQuery ? [textQueryCards, textQueryCardsLoading] : [mainQueryCards, mainQueryCardsLoading];
   const [showSpoilers, setShowSpoilers] = useState(false);
   const expandSectionRef = useRef<(sectionId: string) => void>();
   const editCollectionSettings = useCallback(() => {
@@ -501,7 +503,7 @@ function useSectionFeed({
     sideDeck, investigator, showAllNonCollection,
     editCollectionSettings, refreshDeck]);
 
-  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards);
+  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards, partialCardsLoading);
   useEffect(() => {
     expandSectionRef.current = (sectionId: string) => {
       expandCards();

@@ -13,7 +13,6 @@ import {
   CardFetchSuccessAction,
   CardFetchErrorAction,
   CardCache,
-  TabooCache,
   CardSetSchemaVersionAction,
   CardRequestFetchAction,
   CARD_REQUEST_FETCH,

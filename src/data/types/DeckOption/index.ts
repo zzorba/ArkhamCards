@@ -212,21 +212,23 @@ export class DeckOptionQueryBuilder {
   private textClause(): Brackets[] {
     if ((this.option.tag?.length && this.option.tag[0] === 'hh') || (
       this.option.text && this.option.text.length && (
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals?( that much)?( (\\+?\\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\\d+|all|(X total)))?(\\s|\\/)horror'
-    ))) {
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals?( that much)?( (\\+?\\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\\d+|all|(X total)))?(\\s|\\/)horror'
+      )
+    )) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
     }
 
     if ((this.option.tag?.length && this.option.tag[0] === 'hd') || (
       this.option.text && this.option.text.length && (
-      this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((((\\+?\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\+?\\d+)|(all)|(X total)) )?damage'
-    ))) {
+        this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((((\\+?\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\+?\\d+)|(all)|(X total)) )?damage'
+      )
+    )) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
     return [];

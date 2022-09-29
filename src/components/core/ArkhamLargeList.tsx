@@ -169,7 +169,7 @@ export default function ArkhamLargeList<Item>({
         renderItem={renderFlatItem}
         scrollsToTop
         onEndReached={onLoading}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.4}
         removeClippedSubviews
         getItemLayout={heightForItem ? getItemLayout : undefined}
         ListHeaderComponent={renderRealHeader}

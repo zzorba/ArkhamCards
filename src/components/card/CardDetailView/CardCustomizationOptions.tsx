@@ -188,8 +188,7 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
 type SkillType = 'willpower' | 'intellect' | 'combat' | 'agility';
 const ALL_SKILLS: SkillType[] = ['willpower', 'intellect', 'combat', 'agility'];
 
-function ChooseSkillAdvancedControl({ card, choice, editable, setChoice, allChoices }: {
-  card: Card;
+function ChooseSkillAdvancedControl({ choice, editable, setChoice, allChoices }: {
   setChoice: (choice: ChooseSkillCustomizationChoice) => void;
   editable: boolean;
   choice: ChooseSkillCustomizationChoice;
@@ -510,13 +509,6 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
       ...selectedTraits.slice(index + 1),
     ]);
   }, [selectedTraits, setSelectedTraits]);
-  const [focused, setFocused] = useState(false);
-  const onFocus = useCallback(() => {
-    setFocused(true);
-  }, [setFocused]);
-  const onBlur = useCallback(() => {
-    setFocused(false);
-  }, [setFocused]);
   const content = useMemo(() => {
     const canSelectMore = (choice.option.quantity || 1) > selectedTraits.length;
     const canSubmit = !!currentTrait.replace(/[\^|,]/g, '').trim();
@@ -533,8 +525,6 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
                 placeholder={t`Add trait`}
                 onChangeText={setCurrentTrait}
                 onSubmit={saveCurrentTrait}
-                onFocus={onFocus}
-                onBlur={onBlur}
               />
               { !!currentTrait && (
                 <View style={space.paddingTopS}>
@@ -554,7 +544,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
         </View>
       </View>
     );
-  }, [choice, selectedTraits, currentTrait, setCurrentTrait, editable, focused, onBlur, onFocus, onRemoveTrait, onSaveCurrent, saveCurrentTrait])
+  }, [choice, selectedTraits, currentTrait, setCurrentTrait, editable, onRemoveTrait, onSaveCurrent, saveCurrentTrait])
   const { dialog, showDialog, setVisible } = useDialog({
     title,
     content,
@@ -626,7 +616,6 @@ function AdvancedControl({ componentId, deckId, card, editable, choice, setChoic
     case 'choose_skill':
       return (
         <ChooseSkillAdvancedControl
-          card={card}
           editable={editable}
           choice={choice}
           setChoice={setChoice}

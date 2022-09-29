@@ -63,10 +63,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     pushFilterView('SearchFilters.Packs');
   }, [pushFilterView]);
 
-  const onTabooPress = useCallback(() => {
-    pushFilterView('SearchFilters.Taboo');
-  }, [pushFilterView]);
-
   const onAssetPress = useCallback(() => {
     pushFilterView('SearchFilters.Asset');
   }, [pushFilterView]);

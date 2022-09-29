@@ -337,7 +337,7 @@ export default class FilterBuilder {
       // Kick out investigators because they re-use the same field
       // and by definition cannot have skill icons.
       return [
-        new Brackets(qb => qb.where(`(c.type_code != 'investigator')`)
+        new Brackets(qb => qb.where(`c.type_code != 'investigator'`)
           .andWhere(`(${parts.join(' OR ')})`)),
       ];
     }
@@ -717,7 +717,7 @@ export default class FilterBuilder {
       return [];
     }
     return [
-      where(`(c.taboo_set_id = :taboo_set and c.taboo_placeholder is null)`, { taboo_set })
+      where(`c.taboo_set_id = :taboo_set AND c.taboo_placeholder is null`, { taboo_set }),
     ];
   }
 
