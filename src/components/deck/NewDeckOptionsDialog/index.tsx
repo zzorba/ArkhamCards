@@ -128,6 +128,11 @@ function NewDeckOptionsDialog({
     setSlots(undefined);
   }, [setMetaField, setSlots, metaState]);
   const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
+  const isCustomContent = useMemo(() =>!!(
+    investigatorId === CUSTOM_INVESTIGATOR ||
+    investigatorId.startsWith('z') ||
+    !!investigator?.custom()
+  ), [investigator, investigatorId]);
   const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
 
   const [investigatorFront, investigatorBack] = useMemo(() => [
@@ -315,7 +320,7 @@ function NewDeckOptionsDialog({
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
-      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
+      const local = (offlineDeck || !signedIn || !isConnected || isCustomContent || networkType === NetInfoStateType.none);
       const slots = {
         ...(specialDeckMode === 'chaos' ? chaosSlots : {}),
         ...requiredSlots,
@@ -338,7 +343,7 @@ function NewDeckOptionsDialog({
         );
       }, 0);
     }
-  }, [signedIn, dispatch, showNewDeck, deckActions, userId,
+  }, [signedIn, dispatch, showNewDeck, deckActions, userId, isCustomContent,
     chaosSlots,
     requiredSlots, meta, networkType, isConnected, offlineDeck, saving, specialDeckMode, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
@@ -497,8 +502,9 @@ function NewDeckOptionsDialog({
               <DeckCheckboxButton
                 icon="world"
                 title={t`Create on ArkhamDB`}
-                value={!offlineDeck}
-                disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
+                description={!!isCustomContent ?  t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content.` : undefined}
+                value={!isCustomContent && !offlineDeck}
+                disabled={!signedIn || isCustomContent ||  !isConnected || networkType === NetInfoStateType.none}
                 onValueChange={toggleOfflineDeck}
                 last
               />
@@ -547,7 +553,7 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [investigatorId, signedIn,
+  }, [investigatorId, signedIn, isCustomContent,
     networkType, isConnected, chaosSlots, specialDeckMode, parsedDeckComponent,
     offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
     setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck,
