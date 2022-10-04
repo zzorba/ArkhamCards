@@ -34,7 +34,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -225,7 +225,7 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     switch (this.step.type) {
       case 'internal':
-        if (this.step.id === EMBARK_STEP_ID) {
+        if (this.step.id === EMBARK_STEP_ID || this.step.id === EMBARK_RETURN_STEP_ID) {
           const embarkData = scenarioState.embarkData();
           const effectsWithInput: EffectsWithInput[] = [];
 
@@ -250,6 +250,7 @@ export default class ScenarioStep {
                   type: 'campaign_data',
                   setting: 'embark',
                   location: embarkData.destination,
+                  may_return: this.step.id === EMBARK_RETURN_STEP_ID,
                 },
                 ...nextScenarioLink,
               ],
@@ -354,7 +355,6 @@ export default class ScenarioStep {
       case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':
-      case 'campaign_log_count':
       case 'xp_count':
         return this.proceedToNextStep(
           this.remainingStepIds,

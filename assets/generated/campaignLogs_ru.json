@@ -246,55 +246,55 @@
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Лагерь — Лагерь на шельфе (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Лагерь — Снежные поля (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Лагерь — Место крушения (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Лагерь — Кристаллическая пещера (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Лагерь — Стылая пещера (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Лагерь — Мёрзлые берега (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Лагерь — "
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Лагерь — Ледяные пустоши (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Лагерь — Неустойчивый ледник (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Лагерь — Остатки лагеря Лейка (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Лагерь — Скалистые утёсы (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Лагерь — Снежные могилы (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Лагерь — Ненадёжная тропа (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -330,11 +330,11 @@
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "Кенслер на пороге открытия."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "Кенслер делится с вами результатами исследований."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
@@ -378,7 +378,7 @@
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "сыщики разведали окраины города."
           },
           {
             "id": "scouted_the_forked_passage",
@@ -386,7 +386,7 @@
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "сыщики разведали горный проход."
           },
           {
             "id": "studied_the_mural_carvings",
@@ -410,7 +410,7 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "сыщики едва сбежали с шельфового ледника."
           },
           {
             "id": "team_climbed_to_the_summit",
@@ -418,7 +418,7 @@
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "сыщики одолели напавших на них существ."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,7 +426,7 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "сыщики сбежали в горы."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# пропал без вести.",
+            "masculine_text": "#name# пропал без вести.",
+            "feminine_text": "#name# пропала без вести."
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Лагерь на шельфе"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Снежные поля"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Место крушения"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Кристаллическая пещера"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Стылая пещера"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Мёрзлые берега"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Ледокол"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Ледяные пустоши"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Неустойчивый ледник"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Остатки лагеря Лейка"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Скалистые утёсы"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Снежные могилы"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Ненадёжная тропа"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Динамит"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Зелёный мыльный камень"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Скверностный кристалл"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Образцы минералов"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Радиопередатчик"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Запасные части"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Деревянные сани"
           }
         ]
       }

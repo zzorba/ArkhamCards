@@ -15,6 +15,8 @@ import { BranchStep } from '@data/scenario/types';
 import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
 import CampaignLogCardsSwitchConditionComponent from './CampaignLogCardsSwitchConditionComponent';
 import PartnerStatusConditionComponent from './PartnerStatusConditionComponent';
+import LocationConditionComponent from './LocationConditionComponent';
+import { cond } from 'lodash';
 
 interface Props {
   step: BranchStep;
@@ -132,5 +134,14 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
           condition={condition}
         />
       );
+    case 'location': {
+      return (
+        <LocationConditionComponent
+          step={step}
+          condition={condition}
+          campaignLog={campaignLog}
+        />
+      );
+    }
   }
 }

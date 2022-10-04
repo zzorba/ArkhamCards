@@ -86,7 +86,7 @@ export default function CampaignLogComponent({
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { colon } = useContext(LanguageContext);
-  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner', partners?: Partner[]) => {
+  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner' | 'scarlet_keys', partners?: Partner[]) => {
     switch (type) {
       case 'header': {
         return (
@@ -150,6 +150,12 @@ export default function CampaignLogComponent({
           </View>
         );
       }
+      case 'scarlet_keys':
+        return (
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader inverted title={title} />
+          </View>
+        );
       default: {
         const section = campaignLog.sections[id];
         if (CARD_REGEX.test(id)) {

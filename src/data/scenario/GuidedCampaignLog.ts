@@ -147,6 +147,8 @@ interface CampaignData {
   embark?: boolean;
   location?: string;
   visitedLocations: string[];
+  unlockedLocations: string[];
+  unlockedDossiers: string[];
 }
 
 export default class GuidedCampaignLog {
@@ -235,6 +237,8 @@ export default class GuidedCampaignLog {
         everyStoryAsset: [],
         redirect_experience: '',
         visitedLocations: [],
+        unlockedLocations: [],
+        unlockedDossiers: [],
       };
       this.chaosBag = {};
       this.swapChaosBag = {};
@@ -1276,10 +1280,27 @@ export default class GuidedCampaignLog {
         this.campaignData.redirect_experience = effect.investigator_count;
         break;
       }
+      case 'lock_location':
+        this.campaignData.unlockedLocations = filter(
+          this.campaignData.unlockedLocations,
+          id => id !== effect.value
+        );
+        break;
+      case 'unlock_location':
+        this.campaignData.unlockedLocations = [
+          ...this.campaignData.unlockedLocations,
+          effect.value,
+        ];
+      case 'unlock_dossier':
+        this.campaignData.unlockedDossiers = [
+          ...this.campaignData.unlockedDossiers,
+          effect.value,
+        ];
+        break;
       case 'embark': {
         if (effect.location) {
           this.campaignData.location = effect.location;
-          if (!effect.starting_location) {
+          if (!effect.may_return) {
             this.campaignData.visitedLocations = [
               ...this.campaignData.visitedLocations,
               effect.location,

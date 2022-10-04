@@ -101,6 +101,7 @@ function chooseResolutionStep(resolutions: Resolution[], scenarioGuide: Scenario
 
 export const PROCEED_STEP_ID = '$proceed';
 export const EMBARK_STEP_ID = '$embark';
+export const EMBARK_RETURN_STEP_ID = '$embark_return';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
 const chooseInvestigatorsStep: InputStep = {
@@ -552,8 +553,9 @@ export function getFixedStep(
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
     case EMBARK_STEP_ID:
+    case EMBARK_RETURN_STEP_ID:
       return {
-        id: EMBARK_STEP_ID,
+        id,
         type: 'internal',
       };
     case PROCEED_STEP_ID: {

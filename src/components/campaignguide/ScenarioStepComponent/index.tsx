@@ -97,8 +97,6 @@ function ScenarioStepComponentContent({
       return <RuleReminderStepComponent step={step} />;
     case 'resolution':
       return <ResolutionStepComponent step={step} />;
-    case 'campaign_log_count':
-      return null;
     case 'xp_count':
       return (
         <XpCountComponent

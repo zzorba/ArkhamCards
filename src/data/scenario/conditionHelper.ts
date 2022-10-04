@@ -47,6 +47,7 @@ import {
   InvestigatorChoiceCondition,
   ScenarioDataInvestigatorStatusCondition,
   CampaignDataNextScenarioCondition,
+  LocationCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -500,13 +501,17 @@ export function campaignDataScenarioConditionResult(
 function investigatorConditionMatches(
   investigatorData: 'trait' | 'faction' | 'code',
   options: StringOption[],
+  excludeInvestigators: string[] | undefined,
   campaignLog: GuidedCampaignLog
 ): InvestigatorResult {
   const investigators = campaignLog.investigators(false);
   const investigatorChoices: StringChoices = {};
-
+  const excluded = new Set(excludeInvestigators || []);
   for (let i = 0; i < investigators.length; i++) {
     const card = investigators[i];
+    if (excluded.has(card.code)) {
+      continue;
+    }
     const matches = filter(
       options,
       option => investigatorDataMatches(card, investigatorData, option.condition)
@@ -533,6 +538,7 @@ export function investigatorConditionResult(
   return investigatorConditionMatches(
     condition.investigator_data,
     condition.options,
+    undefined,
     campaignLog
   );
 }
@@ -557,6 +563,7 @@ export function campaignDataInvestigatorConditionResult(
   const result = investigatorConditionMatches(
     condition.investigator_data,
     condition.options,
+    condition.exclude_investigators,
     campaignLog
   );
   let match: OptionWithId | undefined = undefined;
@@ -652,6 +659,7 @@ export function multiConditionResult(
             case 'scenario_completed':
             case 'scenario_replayed':
             case 'next_scenario':
+            case 'investigator':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
@@ -746,11 +754,12 @@ function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampai
   switch (condition.operation) {
     case 'equals':
       return mathEqualsConditionResult(condition, campaignLog);
-    case 'sum': {
+    case 'sum':
+    case 'divide': {
       const opA = getOperand(condition.opA, campaignLog);
       const opB = getOperand(condition.opB, campaignLog);
       return numberConditionResult(
-        opA + opB,
+        condition.operation === 'sum' ? (opA + opB) : (opA / opB),
         condition.options,
         condition.default_option
       );
@@ -853,7 +862,16 @@ export function conditionResult(
     }
     case 'partner_status':
       return partnerStatusConditionResult(condition, campaignLog);
+    case 'location':
+      return locationConditionResult(condition, campaignLog);
   }
+}
+
+export function locationConditionResult(condition: LocationCondition, campaignLog: GuidedCampaignLog) {
+  return binaryConditionResult(
+    !!find(campaignLog.campaignData.visitedLocations, loc => loc === condition.location),
+    condition.options
+  );
 }
 
 

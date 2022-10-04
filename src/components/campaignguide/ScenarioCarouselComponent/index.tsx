@@ -176,6 +176,7 @@ export default function ScenarioCarouselComponent({
       currentTime: processedCampaign.campaignLog.count('time', '$count'),
       onSelect: onEmbark,
       visitedLocations: processedCampaign.campaignLog.campaignData.visitedLocations,
+      unlockedLocations: processedCampaign.campaignLog.campaignData.unlockedLocations,
     };
     const location = campaignMap && find(campaignMap.locations, location => location.id === currentLocationId)?.name;
     Navigation.showModal<CampaignMapProps>({

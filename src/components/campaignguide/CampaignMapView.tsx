@@ -18,6 +18,7 @@ import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
+import { TouchableQuickSize } from '@components/core/Touchables';
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
@@ -103,6 +104,7 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   currentLocation: string | undefined;
   currentTime: number | undefined;
   visitedLocations: string[];
+  unlockedLocations: string[];
 }
 
 
@@ -202,6 +204,7 @@ interface PointOfInterestProps {
   heightRatio: number;
   onSelect: (location: MapLocation) => void;
   visited: boolean;
+  status: 'standard' | 'locked' | 'side';
 }
 function PointOfInterest({
   campaignWidth,
@@ -211,9 +214,10 @@ function PointOfInterest({
   heightRatio,
   onSelect,
   visited,
+  status,
 }: PointOfInterestProps) {
   const borderRadius = widthRatio * 1.25;
-  const dotRadius = widthRatio * (location.status === 'side' ? 6 : 8);
+  const dotRadius = widthRatio * (status === 'side' ? 6 : 8);
   const onPress = useCallback(() => {
     onSelect(location);
   }, [location, onSelect]);
@@ -224,6 +228,11 @@ function PointOfInterest({
       height: event.nativeEvent.layout.height,
     });
   }, [setTextDimensions]);
+
+  if (status === 'locked' && location.hidden) {
+    // Hidden locations.
+    return null;
+  }
   return (
     <View style={[{
       position: 'absolute',
@@ -233,8 +242,8 @@ function PointOfInterest({
     } : {
       left: location.x * widthRatio - dotRadius - 4,
     }]}>
-      <Pressable onPress={onPress}>
-        <BorderBox locked={location.status === 'locked'} visited={visited && !currentLocation}>
+      <TouchableQuickSize onPress={onPress} activeScale={1.05}>
+        <BorderBox locked={status === 'locked'} visited={visited && !currentLocation}>
           <View style={{
             flexDirection: location.direction === 'left' ? 'row' : 'row-reverse',
             justifyContent: 'flex-end',
@@ -258,7 +267,7 @@ function PointOfInterest({
             ]}>
               <Text style={[
                 { fontFamily: 'TT2020 Style E' },
-                { color: location.status === 'locked' ? '#E6E1D3' : '#24303C' },
+                { color: status === 'locked' ? '#E6E1D3' : '#24303C' },
                 visited && !currentLocation ? { opacity: 0.5 } : undefined,
                 {
                   fontSize: dotRadius * 2 * 0.90,
@@ -279,14 +288,14 @@ function PointOfInterest({
               opacity={visited && !currentLocation ? 0.5 : 1}
             >
               <AppIcon
-                color={statusColors[location.status]}
+                color={statusColors[status]}
                 size={dotRadius * 2}
-                name={`poi_${location.status}`}
+                name={`poi_${status}`}
               />
             </View>
           </View>
         </BorderBox>
-      </Pressable>
+      </TouchableQuickSize>
     </View>
   );
 }
@@ -330,7 +339,7 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
           // Side locations only cost 1 time even when you pass through them.
           queue.add({
             path: [...shortestCurrent.path, location],
-            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1),
+            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1) - (startLocation.hidden ? 1 : 0),
           });
         }
       })
@@ -404,12 +413,14 @@ function LocationContent({
   currentLocation,
   setCurrentLocation,
   visited,
+  status,
 }: {
   allLocations?: MapLocation[];
   location: MapLocation;
   currentLocation: MapLocation | undefined;
   visited: boolean;
   setCurrentLocation?: (location: MapLocation, distance: number | undefined) => void;
+  status: 'standard' | 'side' | 'locked';
 }) {
   const { colors, typography, width } = useContext(StyleContext);
   const travelDistance = useMemo(() => {
@@ -440,7 +451,7 @@ function LocationContent({
       );
     }
 
-    if (location.status === 'locked') {
+    if (status === 'locked') {
       return (
         <>
           <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
@@ -453,7 +464,7 @@ function LocationContent({
     if ((!currentLocation || !atLocation) && !visited) {
       return (
         <>
-          { location.status === 'side' && (
+          { status === 'side' && (
             <>
               <Text style={typography.text}>
                 { t`You may stop at this location to play a side-story. Passing through this location costs no additional time.` }
@@ -514,7 +525,7 @@ function LocationContent({
 
 
 function CampaignMapView(props: CampaignMapProps & NavigationProps) {
-  const { componentId, onSelect, visitedLocations } = props;
+  const { componentId, onSelect, visitedLocations, unlockedLocations } = props;
   const { campaignGuide } = useContext(CampaignGuideContext);
   const campaignMap = campaignGuide.campaignMap();
   const currentLocation = useMemo(() => {
@@ -560,6 +571,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
         setCurrentLocation={onSelect ? moveToLocation : undefined}
         allLocations={campaignMap?.locations}
         visited={!!find(visitedLocations, loc => loc === selectedLocation.id)}
+        status={(selectedLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation.status}
       />
     ),
     dismiss: {
@@ -639,6 +651,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               heightRatio={heightRatio}
               onSelect={setSelectedLocation}
               visited={!!find(visitedLocations, loc => loc === location.id)}
+              status={(location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status}
             />
           )) }
         </View>
