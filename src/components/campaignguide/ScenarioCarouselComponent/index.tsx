@@ -98,7 +98,7 @@ export default function ScenarioCarouselComponent({
       processedCampaign
     );
   }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
-  const currentLocationId = processedCampaign.campaignLog.campaignData.location;
+  const currentLocationId = processedCampaign.campaignLog.campaignData.scarlet.location;
   const interScenarioId = useMemo(() => {
     if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
       !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed')) {
@@ -175,8 +175,8 @@ export default function ScenarioCarouselComponent({
       currentLocation: currentLocationId,
       currentTime: processedCampaign.campaignLog.count('time', '$count'),
       onSelect: onEmbark,
-      visitedLocations: processedCampaign.campaignLog.campaignData.visitedLocations,
-      unlockedLocations: processedCampaign.campaignLog.campaignData.unlockedLocations,
+      visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
+      unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
     };
     const location = campaignMap && find(campaignMap.locations, location => location.id === currentLocationId)?.name;
     Navigation.showModal<CampaignMapProps>({
@@ -218,7 +218,7 @@ export default function ScenarioCarouselComponent({
       };
     });
     const noInProgress = !find(processedCampaign.scenarios, scenario => scenario.type === 'started');
-    if (noInProgress && processedCampaign.campaignLog.campaignData.embark) {
+    if (noInProgress && processedCampaign.campaignLog.campaignData.scarlet.embark) {
       items.push({
         type: 'embark',
       });
@@ -243,9 +243,9 @@ export default function ScenarioCarouselComponent({
   const numScenarios = processedCampaign.scenarios.length;
   const lastCompletedIndex = dropRightWhile(processedCampaign.scenarios, s => s.type === 'skipped').length - 1;
   const currentLocation = useMemo(() => {
-    const current = processedCampaign.campaignLog.campaignData.location;
+    const current = processedCampaign.campaignLog.campaignData.scarlet.location;
     return current ? find(campaignGuide.campaignMap()?.locations, location => location.id === current) : undefined;
-  }, [campaignGuide, processedCampaign.campaignLog.campaignData.location]);
+  }, [campaignGuide, processedCampaign.campaignLog.campaignData.scarlet.location]);
   const renderScenario = useCallback(({ item, index }: { item: CarouselItem; index: number }) => {
     switch (item.type) {
       case 'scenario':

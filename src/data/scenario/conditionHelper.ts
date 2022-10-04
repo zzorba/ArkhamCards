@@ -48,6 +48,7 @@ import {
   ScenarioDataInvestigatorStatusCondition,
   CampaignDataNextScenarioCondition,
   LocationCondition,
+  ScarletKeyCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -864,12 +865,32 @@ export function conditionResult(
       return partnerStatusConditionResult(condition, campaignLog);
     case 'location':
       return locationConditionResult(condition, campaignLog);
+    case 'scarlet_key':
+      return scarletKeyConditionResult(condition, campaignLog);
+  }
+}
+
+export function scarletKeyConditionResult(condition: ScarletKeyCondition, campaignLog: GuidedCampaignLog) {
+  const key = campaignLog.campaignData.scarlet.keyStatus[condition.scarlet_key];
+  switch (condition.status) {
+    case 'enemy':
+      return binaryConditionResult(
+        !!key?.enemy,
+        condition.options,
+        key?.enemy ? [key.enemy] : []
+      );
+    case 'investigator':
+      return binaryConditionResult(
+        !!key?.investigator,
+        condition.options,
+        key?.investigator ? [key.investigator] : []
+      );
   }
 }
 
 export function locationConditionResult(condition: LocationCondition, campaignLog: GuidedCampaignLog) {
   return binaryConditionResult(
-    !!find(campaignLog.campaignData.visitedLocations, loc => loc === condition.location),
+    !!find(campaignLog.campaignData.scarlet.visitedLocations, loc => loc === condition.location),
     condition.options
   );
 }

@@ -37,7 +37,8 @@ export type Condition =
   | CampaignLogCardsCondition
   | CampaignLogCardsSwitchCondition
   | PartnerStatusCondition
-  | LocationCondition;
+  | LocationCondition
+  | ScarletKeyCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -187,7 +188,8 @@ export type BinaryChoiceCondition =
   | CampaignLogSectionExistsCondition
   | MultiCondition
   | PartnerStatusCondition
-  | LocationCondition;
+  | LocationCondition
+  | ScarletKeyCondition;
 export type LocationConnector =
   | "purple_moon"
   | "blue_triangle"
@@ -616,10 +618,9 @@ export interface CheckCampaignLogCountEffect {
 export interface ScarletKeyEffect {
   type: "scarlet_key";
   section: string;
-  scarlet_key: "$input_value" | "$fixed_key";
-  fixed_key?: string;
-  bearer_type: "investigator" | "enemy" | "none";
-  enemy?: string;
+  scarlet_key: string;
+  bearer_type: "investigator" | "enemy" | "steal" | "return";
+  enemy_code?: string;
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -840,6 +841,12 @@ export interface LocationCondition {
   type: "location";
   status: "visited";
   location: string;
+  options: BoolOption[];
+}
+export interface ScarletKeyCondition {
+  type: "scarlet_key";
+  scarlet_key: string;
+  status: "investigator" | "enemy";
   options: BoolOption[];
 }
 export interface Narration {

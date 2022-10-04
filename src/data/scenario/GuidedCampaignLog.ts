@@ -48,6 +48,7 @@ import {
   Partner,
   PartnerStatus,
   SetCardCountEffect,
+  ScarletKeyEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -113,6 +114,11 @@ interface CountSection {
 interface PlayingScenarioItem {
   investigator: string;
 }
+
+interface KeyStatus {
+  investigator?: string;
+  enemy?: string;
+}
 interface ScenarioData {
   resolution?: string;
   leadInvestigator?: string;
@@ -143,12 +149,15 @@ interface CampaignData {
   };
   redirect_experience: string;
 
-  // TSK stuff;
-  embark?: boolean;
-  location?: string;
-  visitedLocations: string[];
-  unlockedLocations: string[];
-  unlockedDossiers: string[];
+  scarlet: {
+    // TSK stuff;
+    embark?: boolean;
+    location?: string;
+    visitedLocations: string[];
+    unlockedLocations: string[];
+    unlockedDossiers: string[];
+    keyStatus: { [key: string]: KeyStatus | undefined };
+  };
 }
 
 export default class GuidedCampaignLog {
@@ -196,6 +205,7 @@ export default class GuidedCampaignLog {
       case 'gain_supplies':
       case 'lose_supplies':
       case 'partner_status':
+      case 'scarlet_key':
         return true;
       default:
         return false;
@@ -236,9 +246,12 @@ export default class GuidedCampaignLog {
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
         redirect_experience: '',
-        visitedLocations: [],
-        unlockedLocations: [],
-        unlockedDossiers: [],
+        scarlet: {
+          visitedLocations: [],
+          unlockedLocations: [],
+          unlockedDossiers: [],
+          keyStatus: {},
+        },
       };
       this.chaosBag = {};
       this.swapChaosBag = {};
@@ -367,6 +380,9 @@ export default class GuidedCampaignLog {
               break;
             case 'partner_status':
               this.handlePartnerStatusEffect(effect, input);
+              break;
+            case 'scarlet_key':
+              this.handleScarletKeyEffect(effect, input);
               break;
             default:
               break;
@@ -1093,6 +1109,40 @@ export default class GuidedCampaignLog {
     );
   }
 
+  private handleScarletKeyEffect(effect: ScarletKeyEffect, input?: string[]) {
+    const inputValue = (input || [])[0];
+    switch (effect.bearer_type) {
+      case 'investigator':
+        if (inputValue) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            investigator: inputValue
+          };
+        }
+        break;
+      case 'enemy':
+        if (effect.enemy_code) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            enemy: effect.enemy_code
+          };
+        }
+        break;
+      case 'steal':
+        if (inputValue) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            investigator: this.campaignData.scarlet.keyStatus[effect.scarlet_key]?.investigator,
+            enemy: inputValue,
+          };
+        }
+        break;
+      case 'return':
+        this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+          investigator: this.campaignData.scarlet.keyStatus[effect.scarlet_key]?.investigator,
+          // Drop the enemy from it.
+        };
+        break;
+    }
+  }
+
   private handlePartnerStatusEffect(effect: PartnerStatusEffect, input?: string[]) {
     const partners = ((effect.partner === '$fixed_partner' && effect.fixed_partner) ? [effect.fixed_partner] : input) || [];
     forEach(partners, code => {
@@ -1281,34 +1331,34 @@ export default class GuidedCampaignLog {
         break;
       }
       case 'lock_location':
-        this.campaignData.unlockedLocations = filter(
-          this.campaignData.unlockedLocations,
+        this.campaignData.scarlet.unlockedLocations = filter(
+          this.campaignData.scarlet.unlockedLocations,
           id => id !== effect.value
         );
         break;
       case 'unlock_location':
-        this.campaignData.unlockedLocations = [
-          ...this.campaignData.unlockedLocations,
+        this.campaignData.scarlet.unlockedLocations = [
+          ...this.campaignData.scarlet.unlockedLocations,
           effect.value,
         ];
       case 'unlock_dossier':
-        this.campaignData.unlockedDossiers = [
-          ...this.campaignData.unlockedDossiers,
+        this.campaignData.scarlet.unlockedDossiers = [
+          ...this.campaignData.scarlet.unlockedDossiers,
           effect.value,
         ];
         break;
       case 'embark': {
         if (effect.location) {
-          this.campaignData.location = effect.location;
+          this.campaignData.scarlet.location = effect.location;
           if (!effect.may_return) {
-            this.campaignData.visitedLocations = [
-              ...this.campaignData.visitedLocations,
+            this.campaignData.scarlet.visitedLocations = [
+              ...this.campaignData.scarlet.visitedLocations,
               effect.location,
             ];
           }
-          this.campaignData.embark = false;
+          this.campaignData.scarlet.embark = false;
         } else {
-          this.campaignData.embark = true;
+          this.campaignData.scarlet.embark = true;
         }
         break;
       }

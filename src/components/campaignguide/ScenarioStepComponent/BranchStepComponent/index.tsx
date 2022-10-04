@@ -11,16 +11,38 @@ import TraumaConditionComponent from './TraumaConditionComponent';
 import HasCardConditionComponent from './HasCardConditionComponent';
 import CampaignLogConditionComponent from './CampaignLogConditionComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { BranchStep } from '@data/scenario/types';
+import { BranchStep, LocationCondition, ScarletKeyCondition } from '@data/scenario/types';
 import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
 import CampaignLogCardsSwitchConditionComponent from './CampaignLogCardsSwitchConditionComponent';
 import PartnerStatusConditionComponent from './PartnerStatusConditionComponent';
-import LocationConditionComponent from './LocationConditionComponent';
-import { cond } from 'lodash';
+import { locationConditionResult, scarletKeyConditionResult } from '@data/scenario/conditionHelper';
+import BinaryResult from '@components/campaignguide/BinaryResult';
 
 interface Props {
   step: BranchStep;
   campaignLog: GuidedCampaignLog;
+}
+
+function LocationConditionComponent({ step, condition, campaignLog }: Props & { condition: LocationCondition }) {
+  const result = locationConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
+}
+
+function ScarletKeyConditionComponent({ condition, step, campaignLog }: Props & { condition: ScarletKeyCondition }) {
+  const result = scarletKeyConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
 }
 
 export default function BranchStepComponent({ step, campaignLog }: Props) {
@@ -137,6 +159,15 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
     case 'location': {
       return (
         <LocationConditionComponent
+          step={step}
+          condition={condition}
+          campaignLog={campaignLog}
+        />
+      );
+    }
+    case 'scarlet_key': {
+      return (
+        <ScarletKeyConditionComponent
           step={step}
           condition={condition}
           campaignLog={campaignLog}

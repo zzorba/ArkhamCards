@@ -20,6 +20,7 @@ import {
   partnerStatusConditionResult,
   investigatorChoiceConditionResult,
   locationConditionResult,
+  scarletKeyConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -162,5 +163,7 @@ export function calculateBinaryConditionResult(
     }
     case 'location':
       return locationConditionResult(condition, campaignLog);
+    case 'scarlet_key':
+      return scarletKeyConditionResult(condition, campaignLog);
   }
 }
