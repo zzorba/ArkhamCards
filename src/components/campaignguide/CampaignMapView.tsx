@@ -306,7 +306,22 @@ function PointOfInterest({
   );
 }
 
-function CurrentLocationPin({ location, campaignWidth, campaignHeight, widthRatio, heightRatio }: { location: MapLocation; campaignWidth: number; campaignHeight: number; widthRatio: number; heightRatio: number }) {
+function CurrentLocationPin({
+  location,
+  campaignWidth,
+  campaignHeight,
+  widthRatio,
+  heightRatio,
+  status,
+}: {
+  location: MapLocation;
+  campaignWidth: number;
+  campaignHeight: number;
+  widthRatio: number;
+  heightRatio: number;
+  status: 'standard' | 'locked' | 'side';
+}) {
+  const invert = status === 'locked';
   const pinSize = widthRatio * 8;
   return (
     <>
@@ -335,7 +350,7 @@ function CurrentLocationPin({ location, campaignWidth, campaignHeight, widthRati
             },
           },
       ]}>
-        <AppIcon name={`${location.current || 'up'}_pin`} size={pinSize * 4} color={COLORS.D20} />
+        <AppIcon name={`${location.current || 'up'}_pin`} size={pinSize * 4} color={invert ? COLORS.L20 : COLORS.D20} />
       </Text>
 
       <View style={[
@@ -351,7 +366,11 @@ function CurrentLocationPin({ location, campaignWidth, campaignHeight, widthRati
           bottom: (campaignHeight - location.y) * heightRatio + pinSize * 1.5,
         },
       ]}>
-        <AppIcon name="investigator" size={pinSize * 2} color={COLORS.L30} />
+        <AppIcon
+          name="investigator"
+          size={pinSize * 2}
+          color={invert ? COLORS.D20 : COLORS.L30}
+        />
       </View>
     </>
   );
@@ -800,6 +819,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               campaignHeight={campaignMap.height}
               widthRatio={widthRatio}
               heightRatio={heightRatio}
+              status={(currentLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === currentLocation.id) ? 'standard' : undefined) || currentLocation.status}
            />
           ) }
         </View>
@@ -822,7 +842,7 @@ const styles = StyleSheet.create({
   },
   textWithShadow:{
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowRadius: 2,
+    textShadowRadius: 4,
     elevation: 2,
   }
 });
