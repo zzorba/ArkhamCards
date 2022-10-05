@@ -304,7 +304,7 @@ function PointOfInterest({
             >
               <AppIcon
                 color={statusColors[status]}
-                size={dotRadius * (Platform.OS === 'android' ? 1.85 : 2)}
+                size={dotRadius * (Platform.OS === 'android' ? 1.85 : 1.9)}
                 name={`poi_${status}`}
               />
             </View>
