@@ -349,9 +349,23 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'encounter_sets':
+        if (this.step.effects?.length) {
+          return this.maybeCreateEffectsStep(
+            this.step.id,
+            this.remainingStepIds,
+            [{ effects: this.step.effects }],
+            scenarioState,
+            {}
+          );
+        }
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          scenarioState,
+          this.campaignLog
+        );
       case 'table':
       case 'story':
-      case 'encounter_sets':
       case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':

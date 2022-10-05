@@ -1135,6 +1135,7 @@ export interface EncounterSetsStep {
   bullet_type?: BulletType;
   narration?: Narration;
   remove?: boolean;
+  effects?: Effect[];
 }
 export interface GenericStep {
   border_only?: boolean;
