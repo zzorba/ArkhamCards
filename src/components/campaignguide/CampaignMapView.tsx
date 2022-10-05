@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useRef, useEffect, useMemo, useState } from 'react';
-import { LayoutChangeEvent, Pressable, StyleSheet, Text, TextStyle, View } from 'react-native';
+import { LayoutChangeEvent, Platform, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
@@ -55,8 +55,10 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
       onLayout={onLayout}
     >
       <View
-        style={{ position: 'absolute', top: 0, left: 0, width: dimensions?.width, height: dimensions?.height }}
-        opacity={opacity}
+        style={{ position: 'absolute', top: 0, left: 0, width: dimensions?.width, height: dimensions?.height, opacity }}
+        needsOffscreenAlphaCompositing
+        renderToHardwareTextureAndroid
+        removeClippedSubviews={false}
       >
         { !!dimensions && (
           <>
@@ -76,10 +78,10 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
         <>
           { !!dimensions && (
             <>
-              <View style={{ position: 'absolute', top: size - 1, left: 1, width: 1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', top: size - 1, right: 1, width: 1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', top: 1, left: size - 1, width: dimensions.width - size * 2 + 2, height: 1, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', bottom: 1, left: size - 1, width: dimensions.width - size * 2 + 2, height: 1, backgroundColor: '#656C6F' }} />
+              <View style={{ position: 'absolute', top: size - 1, left: 0.9, width: Platform.OS === 'ios' ? 1 : 1.1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
+              <View style={{ position: 'absolute', top: size - 1, right: 0.9, width: Platform.OS === 'ios' ? 1 : 1.1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
+              <View style={{ position: 'absolute', top: 0.9, left: size - 1, width: dimensions.width - size * 2 + 2, height: Platform.OS === 'ios' ? 1 : 1.1, backgroundColor: '#656C6F' }} />
+              <View style={{ position: 'absolute', bottom: 0.9, left: size - 1, width: dimensions.width - size * 2 + 2, height: Platform.OS === 'ios' ? 1 : 1.1, backgroundColor: '#656C6F' }} />
             </>
           ) }
           <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}>
@@ -111,46 +113,50 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   unlockedDossiers: string[]
 }
 
+function getMapLabelStyles(widthRatio: number) {
+  return {
+    connection: {
+      fontSize: 18 * widthRatio,
+      lineHeight: 20 * widthRatio,
+      opacity: 0.7,
+    },
+    ocean: {
+      fontSize: 28 * widthRatio,
+      lineHeight: 30 * widthRatio,
+      letterSpacing: 4,
+      fontStyle: 'italic',
+      opacity: 0.2,
+    },
+    small_ocean: {
+      fontSize: 20 * widthRatio,
+      lineHeight: 22 * widthRatio,
+      letterSpacing: 1.5,
+      fontStyle: 'italic',
+      opacity: 0.2,
+    },
+    country: {
+      fontSize: 20 * widthRatio,
+      lineHeight: 22 * widthRatio,
+      letterSpacing: 1.5,
+      opacity: 0.2,
+    },
+    continent: {
+      fontSize: 28 * widthRatio,
+      lineHeight: 30 * widthRatio,
+      letterSpacing: 3,
+      opacity: 0.2,
+    },
+  };
+}
+
+type MapLabelStyles = ReturnType<typeof getMapLabelStyles>;
 
 interface MapLabelProps {
   label: MapLabel;
   campaignWidth: number;
   widthRatio: number;
   heightRatio: number;
-}
-
-const fontTypeStyles = {
-  connection: {
-    fontSize: 18,
-    lineHeight: 20,
-    opacity: 0.7,
-  },
-  ocean: {
-    fontSize: 28,
-    lineHeight: 30,
-    letterSpacing: 4,
-    fontStyle: 'italic',
-    opacity: 0.2,
-  },
-  small_ocean: {
-    fontSize: 20,
-    lineHeight: 22,
-    letterSpacing: 1.5,
-    fontStyle: 'italic',
-    opacity: 0.2,
-  },
-  country: {
-    fontSize: 20,
-    lineHeight: 22,
-    letterSpacing: 1.5,
-    opacity: 0.2,
-  },
-  continent: {
-    fontSize: 28,
-    lineHeight: 30,
-    letterSpacing: 3,
-    opacity: 0.2,
-  },
+  mapLabelStyles: MapLabelStyles;
 }
 
 const fontDirectionStyle: { [key: string]: TextStyle } = {
@@ -169,8 +175,9 @@ function MapLabelComponent({
   label,
   widthRatio,
   heightRatio,
+  mapLabelStyles,
 }: MapLabelProps) {
-  const lineHeight = fontTypeStyles[label.type].lineHeight;
+  const lineHeight = mapLabelStyles[label.type].lineHeight;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
   return (
     <View style={[{
@@ -186,7 +193,7 @@ function MapLabelComponent({
           fontFamily: 'Times New Roman',
           color: '#24303C',
         },
-        fontTypeStyles[label.type],
+        mapLabelStyles[label.type],
         fontDirectionStyle[label.direction],
       ]}>
         {label.name}
@@ -259,7 +266,8 @@ function PointOfInterest({
             <View style={[
               {
                 position: 'relative',
-                alignItems: 'center',
+                flexDirection: 'row',
+                alignItems: 'flex-end',
               },
               location.direction === 'left' ? {
                 marginRight: 2,
@@ -270,14 +278,15 @@ function PointOfInterest({
                 paddingRight: borderRadius * 2,
                 justifyContent: 'flex-start',
               },
+
             ]}>
               <Text style={[
-                { fontFamily: 'TT2020 Style E' },
+                { fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular' },
                 { color: status === 'locked' ? '#E6E1D3' : '#24303C' },
                 visited && !currentLocation ? { opacity: 0.5 } : undefined,
                 {
                   fontSize: dotRadius * 2 * 0.90,
-                  lineHeight: dotRadius * 2,
+                  lineHeight: dotRadius * 2 * 0.90,
                   textAlign: location.direction === 'left' ? 'right' : 'left',
                 },
               ]} onLayout={onLayoutLabel}>
@@ -295,7 +304,7 @@ function PointOfInterest({
             >
               <AppIcon
                 color={statusColors[status]}
-                size={dotRadius * 2}
+                size={dotRadius * (Platform.OS === 'android' ? 1.85 : 2)}
                 name={`poi_${status}`}
               />
             </View>
@@ -435,9 +444,10 @@ function DossierImage({
   ratio: number;
   width: number;
 }) {
+  const { darkMode } = useContext(StyleContext);
   return (
     <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
-      <View style={{ padding: 8, paddingBottom: 32, backgroundColor: COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
+      <View style={{ padding: 8, paddingBottom: 32, backgroundColor: darkMode ? COLORS.D10 : COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
           source={{ uri: `https://img.arkhamcards.com${uri}` }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
@@ -490,16 +500,14 @@ function DossierEntryComponent({
             <CampaignGuideTextComponent text={text} />
           </View>
         ) }
-        { !!image && (
-          <View style={space.marginBottomS}>
-            <DossierImage
-              uri={image.uri}
-              ratio={image.ratio}
-              alignment={image.alignment}
-              width={(width - s * 4) / 2.5}
-            />
-          </View>
-        ) }
+        <View style={space.marginBottomS}>
+          <DossierImage
+            uri={image.uri}
+            ratio={image.ratio}
+            alignment={image.alignment}
+            width={(width - s * 4) / 2.5}
+          />
+        </View>
       </View>
     );
   }
@@ -594,17 +602,14 @@ function LocationContent({
       return (
         <>
           { status === 'side' && (
-            <>
+            <View style={space.paddingTopM}>
               <Text style={typography.text}>
-                { t`You may stop at this location to play a side-story. Passing through this location costs no additional time.` }
+                { t`This is a side-story location.`}
               </Text>
-              <Text style={typography.text}>
-                { t`As an additional cost to play the side-story, you must spend one time for each XP cost of the scenario.` }
-              </Text>
-            </>
+            </View>
           ) }
           { !!travelDistance && !!currentLocation && (
-            <Text style={[typography.text, { }]} textBreakStrategy="highQuality">
+            <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
               { t`Travel time:`} { ngettext(msgid`${travelDistance} day`, `${travelDistance} days`, travelDistance) }
             </Text>
           ) }
@@ -767,6 +772,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLocation]);
+  const labelStyles = useMemo(() => getMapLabelStyles(widthRatio), [widthRatio]);
   if (!campaignMap) {
     return <Text>No map</Text>;
   }
@@ -789,6 +795,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               label={label}
               widthRatio={widthRatio}
               heightRatio={heightRatio}
+              mapLabelStyles={labelStyles}
             />
           )) }
           <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
