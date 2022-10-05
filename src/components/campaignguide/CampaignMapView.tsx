@@ -26,6 +26,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
+import colors from '@styles/colors';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -203,6 +204,7 @@ interface PointOfInterestProps {
   location: MapLocation;
   currentLocation: boolean;
   campaignWidth: number;
+  campaignHeight: number;
   widthRatio: number;
   heightRatio: number;
   onSelect: (location: MapLocation) => void;
@@ -211,6 +213,7 @@ interface PointOfInterestProps {
 }
 function PointOfInterest({
   campaignWidth,
+  campaignHeight,
   location,
   currentLocation,
   widthRatio,
@@ -300,6 +303,57 @@ function PointOfInterest({
         </BorderBox>
       </TouchableQuickSize>
     </View>
+  );
+}
+
+function CurrentLocationPin({ location, campaignWidth, campaignHeight, widthRatio, heightRatio }: { location: MapLocation; campaignWidth: number; campaignHeight: number; widthRatio: number; heightRatio: number }) {
+  const pinSize = widthRatio * 8;
+  return (
+    <>
+      <Text style={[
+        styles.textWithShadow,
+        space.paddingSideS,
+        { position: 'absolute', flexDirection: 'row', justifyContent: 'center' },
+          location.direction === 'left' ? {
+            right: (campaignWidth - location.x) * widthRatio - pinSize - 2 - s,
+          } : {
+            left: location.x * widthRatio - pinSize - 2 - s,
+          },
+          location.current === 'down' ? {
+            top: location.y * heightRatio - s,
+            paddingTop: s,
+            textShadowOffset: {
+              width: 0,
+              height: -2,
+            },
+          } : {
+            bottom: (campaignHeight - location.y) * heightRatio - s,
+            paddingBottom: s,
+            textShadowOffset: {
+              width: 0,
+              height: 2,
+            },
+          },
+      ]}>
+        <AppIcon name={`${location.current || 'up'}_pin`} size={pinSize * 4} color={COLORS.D20} />
+      </Text>
+
+      <View style={[
+        { position: 'absolute', },
+        location.direction === 'left' ? {
+          right: (campaignWidth - location.x) * widthRatio - pinSize,
+        } : {
+          left: location.x * widthRatio - pinSize,
+        },
+        location.current === 'down' ? {
+          top: location.y * heightRatio + pinSize * 1.5,
+        } : {
+          bottom: (campaignHeight - location.y) * heightRatio + pinSize * 1.5,
+        },
+      ]}>
+        <AppIcon name="investigator" size={pinSize * 2} color={COLORS.L30} />
+      </View>
+    </>
   );
 }
 
@@ -730,6 +784,7 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               key={location.id}
               currentLocation={!!currentLocation && currentLocation.id === location.id}
               campaignWidth={campaignMap.width}
+              campaignHeight={campaignMap.height}
               location={location}
               widthRatio={widthRatio}
               heightRatio={heightRatio}
@@ -738,6 +793,15 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
               status={(location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status}
             />
           )) }
+          { !!currentLocation && (
+            <CurrentLocationPin
+              location={currentLocation}
+              campaignWidth={campaignMap.width}
+              campaignHeight={campaignMap.height}
+              widthRatio={widthRatio}
+              heightRatio={heightRatio}
+           />
+          ) }
         </View>
       </PanPinchView>
       { dialog }
@@ -756,4 +820,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
   },
+  textWithShadow:{
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowRadius: 2,
+    elevation: 2,
+  }
 });

@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, forEach, map, range } from 'lodash';
+import { flatMap, forEach, map, range, shuffle } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -17,6 +17,13 @@ interface Props {
 }
 
 const SCALE_FACTOR = [1, 1, 0.95, 0.85, 0.75, 0.75]
+const RANDOM_CHECKS = shuffle([
+  'a','b','c','d','e','f',
+  'a','b','c','d','e','f',
+  'a','b','c','d','e','f',
+  'a','b','c','d','e','f',
+  'a','b','c','d','e','f',
+  'a','b','c','d','e','f']);
 
 function SymbolEntries({ entries, size }: { entries: string[]; size: number }) {
   const { typography } = useContext(StyleContext);
@@ -76,17 +83,22 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
               borderLeftWidth: col !== 0 ? 1: 0,
               position: 'relative',
               flexDirection: 'column',
-            }}>
-              <View style={styles.headerRow}>
+            }} removeClippedSubviews={false}>
+              <View style={[styles.headerRow, { position: 'relative' }]}>
                 <View style={[styles.checkbox, {
                   width: boxSize,
                   height: boxSize,
                   borderColor: colors.D30,
-                }]}>
-                  { time >= day && (
-                    <AppIcon name="dismiss" size={boxSize} color={colors.D30} />
-                  ) }
-                </View>
+                }]} />
+                { time >= day && (
+                  <View style={{ position: 'absolute', top: -boxSize * 0.1, left: -boxSize * 0.1 }}>
+                    <AppIcon
+                      name={`cross_${RANDOM_CHECKS[day - 1]}`}
+                      size={boxSize * 1.2}
+                      color={colors.campaign.text.resolution}
+                    />
+                  </View>
+                ) }
                 <View style={[styles.date, { marginRight: 3 }]}>
                   <Text style={typography.small}>{day}</Text>
                 </View>
@@ -124,6 +136,11 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderBottomRightRadius: 2,
+  },
+  check: {
+    position: 'absolute',
+    top: -2,
+    left: -2,
   },
   date: {
     flexDirection: 'row',
