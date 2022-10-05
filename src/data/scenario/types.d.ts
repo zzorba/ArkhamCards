@@ -255,11 +255,11 @@ export interface MapLocation {
   y: number;
   name: string;
   scenario: string;
-  current?: "up" | "down";
   dossier?: Dossier[];
   hidden?: boolean;
   details: LocationDetails;
   status: "locked" | "standard" | "side";
+  current?: "up" | "down";
   direction: "left" | "right";
   connections: string[];
 }
