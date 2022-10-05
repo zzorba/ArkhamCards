@@ -238,6 +238,20 @@ export default class ScenarioStep {
                   scenario: embarkData.nextScenario,
                 },
               ];
+            if (embarkData.fast) {
+              const fastCode = this.scenarioGuide.campaignGuide.campaignMap()?.fast_code;
+              if (fastCode) {
+                effectsWithInput.push({
+                  effects: [
+                    {
+                      type: 'remove_card',
+                      card: fastCode,
+                      hidden: true,
+                    },
+                  ],
+                });
+              }
+            }
             effectsWithInput.push({
               numberInput: [embarkData.time],
               effects: [

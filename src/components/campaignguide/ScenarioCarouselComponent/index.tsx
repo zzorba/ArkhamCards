@@ -108,12 +108,13 @@ export default function ScenarioCarouselComponent({
   }, [processedCampaign]);
   const currentTime = processedCampaign.campaignLog.count('time', '$count');
 
-  const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
+  const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario, fast }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
     const embarkData: EmbarkData = {
       destination,
       previousScenarioId,
       nextScenario,
       time: time + xp_cost,
+      fast,
     };
     if (campaignMap) {
       if (currentTime + embarkData.time >= campaignMap.max_time) {
@@ -125,13 +126,14 @@ export default function ScenarioCarouselComponent({
     return embarkData;
   }, [campaignState, currentTime, campaignMap])
 
-  const onEmbark = useCallback((location: MapLocation, timeSpent: number) => {
+  const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
       const embarkData: EmbarkData = {
         destination: location.id,
         time: timeSpent,
         previousScenarioId: interScenarioId.encodedScenarioId,
         nextScenario: location.scenario,
+        fast,
       };
       if (currentTime + timeSpent >= campaignMap.max_time) {
         // You got redirected fool, out of time sucker...
@@ -170,6 +172,8 @@ export default function ScenarioCarouselComponent({
 
   const onShowEmbark = useCallback(() => {
     scenarioPressed.current = true;
+    const investigators = processedCampaign.campaignLog.investigatorCodes(false);
+    const hasFast = !!(campaignMap && find(investigators, code => processedCampaign.campaignLog.hasCard(code, campaignMap.fast_code)));
     const passProps: CampaignMapProps = {
       campaignId,
       currentLocation: currentLocationId,
@@ -177,6 +181,8 @@ export default function ScenarioCarouselComponent({
       onSelect: onEmbark,
       visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
       unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
+      unlockedDossiers: processedCampaign.campaignLog.campaignData.scarlet.unlockedDossiers,
+      hasFast,
     };
     const location = campaignMap && find(campaignMap.locations, location => location.id === currentLocationId)?.name;
     Navigation.showModal<CampaignMapProps>({

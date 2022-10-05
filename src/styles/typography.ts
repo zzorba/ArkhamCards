@@ -30,6 +30,7 @@ export interface Typography {
   bold: TextStyle;
   boldItalic: TextStyle;
   italic: TextStyle;
+  simpleTitleFont: TextStyle;
   gameFont: TextStyle;
   mediumGameFont: TextStyle;
   bigGameFont: TextStyle;
@@ -178,6 +179,12 @@ export default function(
       fontFamily: gameFont,
       fontSize: Math.ceil(24 * fontScale),
       lineHeight: Math.ceil(30 * fontScale),
+      color: colors.darkText,
+    },
+    simpleTitleFont: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: Math.ceil(28 * fontScale),
+      lineHeight: Math.ceil(36 * fontScale),
       color: colors.darkText,
     },
     bigGameFont: {

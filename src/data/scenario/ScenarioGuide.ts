@@ -149,6 +149,7 @@ export default class ScenarioGuide {
     if (fixedStep) {
       return fixedStep;
     }
+    console.error(`Could not find step: ${id}`);
     throw new Error(`Could not find step: ${id}`);
   }
 

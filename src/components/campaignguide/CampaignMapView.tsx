@@ -3,7 +3,7 @@ import { LayoutChangeEvent, Pressable, StyleSheet, Text, TextStyle, View } from 
 import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
-import { find, forEach, indexOf, map, sumBy } from 'lodash';
+import { filter, find, forEach, indexOf, map, sumBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 import FastImage from 'react-native-fast-image';
 
@@ -26,6 +26,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
+
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
 function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
@@ -100,11 +101,13 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
 }
 
 export interface CampaignMapProps extends CampaignGuideInputProps {
-  onSelect?: (location: MapLocation, time: number) => void;
+  onSelect?: (location: MapLocation, time: number, fast: boolean) => void;
   currentLocation: string | undefined;
   currentTime: number | undefined;
+  hasFast: boolean;
   visitedLocations: string[];
   unlockedLocations: string[];
+  unlockedDossiers: string[]
 }
 
 
@@ -373,38 +376,77 @@ function DossierImage({
 }
 
 
-function DossierComponent({ dossier }: { dossier: Dossier; idx: number }) {
-  const { colors } = useContext(StyleContext);
+function DossierComponent({ dossier, showCity }: { dossier: Dossier; idx: number; showCity: (city: string) => void }) {
+  const { colors, typography } = useContext(StyleContext);
   return (
     <View style={[
       { flexDirection: 'column', backgroundColor: colors.L20 },
       space.paddingM,
       space.marginBottomM,
     ]}>
-      { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} />)}
+      <Text style={[typography.text, typography.bold]}>{dossier.title}</Text>
+      { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} showCity={showCity} />)}
     </View>
   );
 }
+
+
 
 function DossierEntryComponent({
   element: {
     image,
     text,
+    reference,
   },
+  showCity,
 }: {
+  showCity: (city: string) => void;
   element: DossierElement;
 }) {
   const { width } = useContext(StyleContext);
-  return (
-    <View style={{ flexDirection: image?.alignment === 'left' ? 'row-reverse' : 'row' }}>
-      { !!text && <View style={{ flex: 1 }}><CampaignGuideTextComponent text={text} /></View> }
-      { !!image && (
-        <View style={space.marginBottomS}>
-          <DossierImage uri={image.uri} ratio={image.ratio} alignment={image.alignment} width={(width - s * 4) / 2.5} />
-        </View>
-      ) }
-    </View>
-  )
+  const onPress = useCallback(() => {
+    if (reference) {
+      showCity(reference.city);
+    }
+  }, [reference, showCity]);
+  if (image) {
+    return (
+      <View style={{ flexDirection: image?.alignment === 'left' ? 'row-reverse' : 'row' }}>
+        { !!text && (
+          <View style={{ flex: 1 }}>
+            <CampaignGuideTextComponent text={text} />
+          </View>
+        ) }
+        { !!image && (
+          <View style={space.marginBottomS}>
+            <DossierImage
+              uri={image.uri}
+              ratio={image.ratio}
+              alignment={image.alignment}
+              width={(width - s * 4) / 2.5}
+            />
+          </View>
+        ) }
+      </View>
+    );
+  }
+  if (text) {
+    return (
+      <CampaignGuideTextComponent text={text} />
+    );
+  }
+  if (reference) {
+    return (
+      <View style={space.paddingTopS}>
+        <DeckButton
+          icon="search"
+          title={reference.name}
+          onPress={onPress}
+        />
+      </View>
+    );
+  }
+  return null;
 }
 
 function LocationContent({
@@ -414,13 +456,19 @@ function LocationContent({
   setCurrentLocation,
   visited,
   status,
+  hasFast,
+  showCity,
+  unlockedDossiers,
 }: {
   allLocations?: MapLocation[];
   location: MapLocation;
   currentLocation: MapLocation | undefined;
+  unlockedDossiers: string[],
   visited: boolean;
-  setCurrentLocation?: (location: MapLocation, distance: number | undefined) => void;
+  setCurrentLocation?: (location: MapLocation, distance: number | undefined, fast: boolean) => void;
   status: 'standard' | 'side' | 'locked';
+  hasFast: boolean;
+  showCity: (city: string) => void;
 }) {
   const { colors, typography, width } = useContext(StyleContext);
   const travelDistance = useMemo(() => {
@@ -429,12 +477,20 @@ function LocationContent({
     }
     const shortestPath = findShortestPath(currentLocation.id, location.id, allLocations);
     return shortestPath?.time || 0;
-  }, [currentLocation, allLocations, location])
+  }, [currentLocation, allLocations, location]);
   const makeCurrent = useCallback(() => {
-    setCurrentLocation?.(location, travelDistance);
+    setCurrentLocation?.(location, travelDistance, false);
   }, [setCurrentLocation, location, travelDistance]);
-  const atLocation = currentLocation?.id === location.id;
+  const makeCurrentFast = useCallback(() => {
+    setCurrentLocation?.(location, 1, true);
+  }, [setCurrentLocation, location]);
 
+  const atLocation = currentLocation?.id === location.id;
+  const dossier = useMemo(() => {
+    return filter(location.dossier, d => {
+      return !d.locked || !!find(unlockedDossiers, u => u === d.locked);
+    })
+  }, [location.dossier, unlockedDossiers]);
   const travelSection = useMemo(() => {
     if (atLocation) {
       return (
@@ -481,7 +537,14 @@ function LocationContent({
           ) }
           { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
             <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-              <DeckButton shrink thin icon="map" title={t`Travel here`} onPress={makeCurrent} />
+              <DeckButton
+                shrink
+                thin
+                icon="map"
+                title={t`Travel here`}
+                onPress={makeCurrent}
+              />
+              { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} onPress={makeCurrentFast} /> }
             </View>
           ) }
         </>
@@ -507,14 +570,13 @@ function LocationContent({
           </Text>
         ) }
         {travelSection}
-
-        { !!location.dossier && (
+        { !!dossier.length && status !== 'locked' && (
           <View>
             <View style={space.paddingBottomS}>
-              <CardDetailSectionHeader title={ngettext(msgid`Dossier`, `Dossiers`, location.dossier.length)} />
+              <CardDetailSectionHeader title={ngettext(msgid`Information`, `Information`, dossier.length)} />
             </View>
-            { map(location.dossier, (entry, idx) => (
-              <DossierComponent key={idx} dossier={entry} idx={idx} />
+            { map(dossier, (entry, idx) => (
+              <DossierComponent key={idx} dossier={entry} idx={idx} showCity={showCity} />
             )) }
           </View>
         ) }
@@ -525,7 +587,7 @@ function LocationContent({
 
 
 function CampaignMapView(props: CampaignMapProps & NavigationProps) {
-  const { componentId, onSelect, visitedLocations, unlockedLocations } = props;
+  const { componentId, onSelect, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
   const { campaignGuide } = useContext(CampaignGuideContext);
   const campaignMap = campaignGuide.campaignMap();
   const currentLocation = useMemo(() => {
@@ -541,9 +603,9 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
     return true;
   }, [componentId]);
 
-  const moveToLocation = useCallback((location: MapLocation, distance: number | undefined) => {
+  const moveToLocation = useCallback((location: MapLocation, distance: number | undefined, fast: boolean) => {
     if (onSelect) {
-      onSelect(location, distance || 1);
+      onSelect(location, distance || 1, fast);
       onDismiss();
     }
   }, [onSelect, onDismiss]);
@@ -554,6 +616,25 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
     }
   }, componentId, [onDismiss]);
   useBackButton(onDismiss);
+
+  const showCity = useCallback((city: string) => {
+    const location = find(campaignMap?.locations, l => l.id === city)
+    if (location && pinchRef.current) {
+      const campaignWidth = campaignMap?.width || 1;
+      const campaignHeight = campaignMap?.height || 1;
+
+      const x = interpolate(location.x * 1.0 / campaignWidth,
+        [0, 1.0],
+        [0, width - theWidth]
+      );
+      const y = interpolate(
+        location.y * 1.0 / campaignHeight,
+        [0, 1.0],
+        [0, height - theHeight]);
+      pinchRef.current.translateTo(x, y, false);
+      setSelectedLocation(location);
+    }
+  }, [campaignMap, setSelectedLocation])
 
   const [theWidth, theHeight] = useMemo(() => {
     if (!campaignMap) {
@@ -570,8 +651,11 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
         currentLocation={currentLocation}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
         allLocations={campaignMap?.locations}
+        hasFast={hasFast}
+        unlockedDossiers={unlockedDossiers}
         visited={!!find(visitedLocations, loc => loc === selectedLocation.id)}
         status={(selectedLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation.status}
+        showCity={showCity}
       />
     ),
     dismiss: {

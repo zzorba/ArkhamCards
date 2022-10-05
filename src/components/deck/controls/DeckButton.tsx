@@ -58,6 +58,7 @@ export type DeckButtonIcon =
   'email' |
   'login' |
   'logo' |
+  'search' |
   'xp';
 
 export type DeckButtonColor = 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';

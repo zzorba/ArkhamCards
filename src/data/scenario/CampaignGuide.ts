@@ -142,7 +142,7 @@ export default class CampaignGuide {
     );
   }
 
-  card(code: string): { code: string; name: string; gender?: 'm' | 'f'; description?: string } | undefined {
+  card(code: string): { code: string; name: string; gender?: 'm' | 'f' | 'nb'; description?: string } | undefined {
     return find(this.campaign.campaign.cards, c => c.code === code);
   }
 
@@ -160,6 +160,10 @@ export default class CampaignGuide {
 
   campaignName() {
     return this.campaign.campaign.name;
+  }
+
+  campaignNoSideScenarioXp() {
+    return !!this.campaign.campaign.no_side_scenario_xp;
   }
 
   campaignVersion() {
@@ -559,6 +563,7 @@ export default class CampaignGuide {
               type: 'earn_xp',
               investigator: 'all',
               bonus: -entry.xpCost,
+              side_scenario_cost: true,
             },
           ],
         },

@@ -51,35 +51,49 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
   if (input.special_mode === 'sequential') {
     const investigatorOffset = iteration;
     return (
-      <InvestigatorChoicePrompt
-        id={step.id}
-        text={step.text}
-        promptType={step.prompt_type}
-        confirmText={input.confirm_text}
-        bulletType={step.bullet_type}
-        options={investigatorChoiceInputChoices(input, campaignLog)}
-        hideInvestigatorSection
-        detailed
-        investigator={investigators[investigatorOffset]}
-        investigators={slice(
-          investigators,
-          investigatorOffset,
-          investigatorOffset + 1
-        )}
-        optional={input.investigator === 'choice'}
-      />
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <InvestigatorChoicePrompt
+          id={step.id}
+          text={step.text}
+          promptType={step.prompt_type}
+          confirmText={input.confirm_text}
+          bulletType={step.bullet_type}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          hideInvestigatorSection
+          detailed
+          investigator={investigators[investigatorOffset]}
+          investigators={slice(
+            investigators,
+            investigatorOffset,
+            investigatorOffset + 1
+          )}
+          optional={input.investigator === 'choice'}
+        />
+      </>
     );
   }
   if (input.investigator === 'any') {
     const choice = input.choices[0];
     return (
-      <ChooseInvestigatorPrompt
-        id={step.id}
-        title={choice.text}
-        choiceId={choice.id}
-        investigators={investigatorCodes}
-        required
-      />
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <ChooseInvestigatorPrompt
+          id={step.id}
+          title={choice.text}
+          choiceId={choice.id}
+          investigators={investigatorCodes}
+          required
+        />
+      </>
     );
   }
   if (input.choices.length === 1 && (
@@ -110,15 +124,22 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
   }
   const options = investigatorChoiceInputChoices(input, campaignLog);
   return (
-    <InvestigatorChoicePrompt
-      id={step.id}
-      text={step.text}
-      promptType={step.prompt_type}
-      bulletType={step.bullet_type}
-      investigators={investigators}
-      options={options}
-      detailed={input.special_mode === 'detailed'}
-      optional={input.investigator === 'choice'}
-    />
+    <>
+      { !!step.text && (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent text={step.text} />
+        </SetupStepWrapper>
+      ) }
+      <InvestigatorChoicePrompt
+        id={step.id}
+        text={step.text}
+        promptType={step.prompt_type}
+        bulletType={step.bullet_type}
+        investigators={investigators}
+        options={options}
+        detailed={input.special_mode === 'detailed'}
+        optional={input.investigator === 'choice'}
+      />
+    </>
   );
 }

@@ -219,11 +219,12 @@ export interface Campaign {
   tarot?: string[];
   version: number;
   position: number;
+  no_side_scenario_xp?: boolean;
   map?: CampaignMap;
   cards?: {
     code: string;
     name: string;
-    gender?: "m" | "f";
+    gender?: "m" | "f" | "nb";
     description?: string;
   }[];
   campaign_log: CampaignLogSectionDefinition[];
@@ -243,6 +244,7 @@ export interface CampaignMap {
   width: number;
   height: number;
   max_time: number;
+  fast_code: string;
   final_scenario: string;
   locations: MapLocation[];
   labels: MapLabel[];
@@ -272,6 +274,10 @@ export interface DossierElement {
     alignment: "left" | "right";
   };
   text?: string;
+  reference?: {
+    city: string;
+    name: string;
+  };
 }
 export interface LocationDetails {
   region: {
@@ -293,6 +299,7 @@ export interface CampaignLogSectionDefinition {
   title: string;
   type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "scarlet_keys" | "hidden";
   partners?: Partner[];
+  calendar?: CalendarEntry[];
   scarlet_keys?: ScarletKey[];
 }
 export interface Partner {
@@ -305,6 +312,11 @@ export interface Partner {
   img_offset?: "left" | "right";
   resolute_health?: number;
   resolute_sanity?: number;
+}
+export interface CalendarEntry {
+  symbol: string;
+  time?: number;
+  entry?: string;
 }
 export interface ScarletKey {
   id: string;
@@ -369,6 +381,7 @@ export interface EarnXpEffect {
   fixed_investigator?: string;
   bonus?: number;
   input_scale?: number;
+  side_scenario_cost?: boolean;
   special_xp?: SpecialXp;
   transfer_special_xp?: SpecialXp;
 }
@@ -1184,6 +1197,7 @@ export interface StoryStep {
   border_color?: BorderColor;
   border_only?: boolean;
   title?: string;
+  title_font?: "status";
   text: string;
   bullets?: {
     text: string;

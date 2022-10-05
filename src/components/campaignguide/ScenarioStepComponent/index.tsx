@@ -179,6 +179,7 @@ export default function ScenarioStepComponent({
       { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
         <TitleComponent
           title={step.step.title}
+          simpleTitleFont={step.step.type === 'story' && step.step.title_font === 'status'}
           border_color={(step.step.type === 'story' && step.step.border_color) || (resolution ? 'resolution' : 'setup')}
           center={border}
         />

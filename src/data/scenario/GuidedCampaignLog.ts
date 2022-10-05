@@ -937,6 +937,10 @@ export default class GuidedCampaignLog {
     input?: string[],
     numberInput?: number[]
   ) {
+    if (effect.side_scenario_cost && this.campaignGuide.campaignNoSideScenarioXp()) {
+      // This one is a freebie, because its paid for in other ways.
+      return;
+    }
     const baseXp = (effect.input_scale || 1) * (numberInput ? numberInput[0] : 0);
     const totalXp = baseXp + (effect.bonus || 0);
     forEach(
@@ -1349,13 +1353,19 @@ export default class GuidedCampaignLog {
         break;
       case 'embark': {
         if (effect.location) {
-          this.campaignData.scarlet.location = effect.location;
-          if (!effect.may_return) {
-            this.campaignData.scarlet.visitedLocations = [
-              ...this.campaignData.scarlet.visitedLocations,
-              effect.location,
-            ];
+          this.campaignData.scarlet.visitedLocations = [
+            ...this.campaignData.scarlet.visitedLocations,
+            effect.location,
+          ];
+          if (effect.may_return) {
+            // Filter out the 'current location' if you are 'leaving' but can return.
+            this.campaignData.scarlet.visitedLocations = filter(
+              this.campaignData.scarlet.visitedLocations,
+              loc => loc !== this.campaignData.scarlet.location
+            );
           }
+          // Now update current location
+          this.campaignData.scarlet.location = effect.location;
           this.campaignData.scarlet.embark = false;
         } else {
           this.campaignData.scarlet.embark = true;
