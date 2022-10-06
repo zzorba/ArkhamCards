@@ -6,12 +6,18 @@ import PriorityQueue from 'priority-queue-typescript';
 import { filter, find, forEach, indexOf, map, sumBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 import FastImage from 'react-native-fast-image';
+import {
+  Defs,
+  Svg,
+  Mask,
+  Path,
+} from 'react-native-svg';
 
 import { NavigationProps } from '@components/nav/types';
 import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
-import { DossierElement, Dossier, MapLabel, MapLocation } from '@data/scenario/types';
+import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
@@ -26,76 +32,94 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
-import colors from '@styles/colors';
+import CampaignGuide from '@data/scenario/CampaignGuide';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
-function BorderBox({ children, locked, visited }: { children: React.ReactNode; locked: boolean; visited: boolean }) {
+function BackgroundSvg({ width, height, fill, opacity }: { width: number; height: number; fill: string; opacity: number }) {
+  return (
+    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
+      <Path
+        opacity={opacity}
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d={`M${width - 4} 0H4C4 2.20914 2.20914 4 0 4V${height - 4}C2.20914 ${height - 4} 4 ${height - 3}.7909 4 ${height}H${width - 4}C${width - 4} ${height - 3}.7909 ${width - 3}.791 ${height - 4} ${width} ${height - 4}V4C${width - 3}.791 4 ${width - 4} 2.20914 ${width - 4} 0Z`}
+        fill={fill}
+      />
+    </Svg>
+  );
+}
+
+function BorderSvg({ width, height, fill }: { width: number, height: number; fill: string }) {
+  return (
+    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
+      <Defs>
+        <Mask id="clip" fill="white">
+          <Path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d={`M${width - 5}.1 1H4.89998C4.5023 2.95913 2.95913 4.5023 1 4.89998V${height - 5}.1C2.95913 ${height - 5}.4977 4.5023 ${height - 3}.0409 4.89998 ${height - 1}H${width - 5}.1C${width - 5}.498 ${height - 3}.0409 ${width - 3}.041 ${height - 5}.4977 ${width - 1} ${height - 5}.1V4.89998C${width - 3}.041 4.5023 ${width - 5}.498 2.95913 ${width - 5}.1 1Z`}
+          />
+        </Mask>
+      </Defs>
+      <Path
+        d={`M${width - 5}.1 1L${width - 4}.08 0.801068L${width - 5}.917 0H${width - 5}.1V1ZM4.89998 1V0H4.08258L3.91997 0.801068L4.89998 1ZM1 4.89998L0.801068 3.91997L0 4.08258V4.89998H1ZM1 ${height - 5}.1H0V${height - 5}.9174L0.801068 ${height - 4}.08L1 ${height - 5}.1ZM4.89998 ${height - 1}L3.91997 ${height - 1}.1989L4.08258 ${height}H4.89998V${height - 1}ZM${width - 5}.1 ${height - 1}V${height}H${width - 5}.917L${width - 4}.08 ${height - 1}.1989L${width - 5}.1 ${height - 1}ZM${width - 1} ${height - 5}.1L${width - 1}.199 ${height - 4}.08L${width} ${height - 5}.9174V${height - 5}.1H${width - 1}ZM${width - 1} 4.89998H${width}V4.08258L${width - 1}.199 3.91997L${width - 1} 4.89998ZM${width - 5}.1 0H4.89998V2H${width - 5}.1V0ZM3.91997 0.801068C3.60218 2.36661 2.36661 3.60218 0.801068 3.91997L1.19893 5.88C3.55165 5.40242 5.40242 3.55165 5.88 1.19893L3.91997 0.801068ZM0 4.89998V${height - 5}.1H2V4.89998H0ZM0.801068 ${height - 4}.08C2.36661 ${height - 4}.3978 3.60218 ${height - 3}.6334 3.91997 ${height - 1}.1989L5.87999 ${height - 2}.8011C5.40242 ${height - 4}.4484 3.55165 ${height - 6}.5976 1.19893 ${height - 6}.12L0.801068 ${height - 4}.08ZM4.89998 ${height}H${width - 5}.1V${height - 2}H4.89998V44ZM${width - 4}.08 ${height - 1}.1989C${width - 4}.398 ${height - 3}.6334 ${width - 3}.633 ${height - 4}.3978 ${width - 1}.199 ${height - 4}.08L${width - 2}.801 ${height - 6}.12C${width - 4}.448 ${height - 6}.5976 ${width - 6}.598 ${height - 4}.4484 ${width - 6}.12 ${height - 2}.8011L${width - 4}.08 ${height - 1}.1989ZM${width} ${height - 5}.1V4.89998H${width - 2}V${height - 5}.1H${width}ZM${width - 1}.199 3.91997C${width - 3}.633 3.60218 ${width - 4}.398 2.36661 ${width - 4}.08 0.801068L${width - 6}.12 1.19893C${width - 6}.598 3.55165 ${width - 4}.448 5.40242 ${width - 2}.801 5.87999L${width - 1}.199 3.91997Z`}
+        fill={fill}
+        opacity={1}
+        mask="url(#clip)"
+      />
+    </Svg>
+  );
+}
+
+function BorderBox({ children, locked, visited, height, side }: { children: React.ReactNode; locked: boolean; visited: boolean; height: number; side: boolean }) {
   const bgColor = locked ? '#394852' : '#F5F0E1';
-  const size = 6;
   const [dimensions, setDimensions] = useState<{ width: number; height: number}>();
   const onLayout = useCallback((event: LayoutChangeEvent) => {
-    setDimensions({ width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height });
+    setDimensions({ width: Math.ceil(event.nativeEvent.layout.width), height: Math.ceil(event.nativeEvent.layout.height) });
   }, [setDimensions]);
   const opacity = useMemo(() => {
     if (!dimensions) {
       return 0;
     }
     return visited ? 0.5 : 0.8;
-  }, [dimensions, visited])
+  }, [dimensions, visited]);
+  const trueHeight = Math.ceil(height + (side ? 3 : 4));
   return (
     <View
       style={{
         position: 'relative',
         flexDirection: 'row',
-        padding: 2,
+        paddingTop: side ? 1.5 : 2,
+        paddingBottom: side ? 1.5 : 2,
         paddingLeft: 4,
         paddingRight: 4,
       }}
       onLayout={onLayout}
     >
-      <View
-        style={{ position: 'absolute', top: 0, left: 0, width: dimensions?.width, height: dimensions?.height, opacity }}
-        needsOffscreenAlphaCompositing
-        renderToHardwareTextureAndroid
-        removeClippedSubviews={false}
-      >
-        { !!dimensions && (
-          <>
-            <View style={{ position: 'absolute', top: size - 1, left: 0, width: size, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
-            <View style={{ position: 'absolute', top: size - 1, right: 0, width: size, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
-            <View style={{ position: 'absolute', top: 0, left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: size, backgroundColor: bgColor }} />
-            <View style={{ position: 'absolute', bottom: 0, left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: size, backgroundColor: bgColor }} />
-            <View style={{ position: 'absolute', top: size - 1 , left: size - 1, width: Math.ceil(dimensions.width - size * 2) + 2, height: Math.ceil(dimensions.height - size * 2) + 2, backgroundColor: bgColor }} />
-          </>
-        ) }
-        <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}><AppIcon name="label_tl_bg" color={bgColor} size={size} /></View>
-        <View style={{ position: 'absolute', top: 0, right: 0, width: size, height: size }}><AppIcon name="label_tr_bg" color={bgColor} size={size} /></View>
-        <View style={{ position: 'absolute', bottom: 0, left: 0, width: size, height: size }}><AppIcon name="label_bl_bg" color={bgColor} size={size} /></View>
-        <View style={{ position: 'absolute', bottom: 0, right: 0, width: size, height: size }}><AppIcon name="label_br_bg" color={bgColor} size={size} /></View>
-      </View>
-      { !locked && (
+      { !!dimensions && (
         <>
-          { !!dimensions && (
-            <>
-              <View style={{ position: 'absolute', top: size - 1, left: 0.9, width: Platform.OS === 'ios' ? 1 : 1.1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', top: size - 1, right: 0.9, width: Platform.OS === 'ios' ? 1 : 1.1, height: dimensions.height - size * 2 + 2, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', top: 0.9, left: size - 1, width: dimensions.width - size * 2 + 2, height: Platform.OS === 'ios' ? 1 : 1.1, backgroundColor: '#656C6F' }} />
-              <View style={{ position: 'absolute', bottom: 0.9, left: size - 1, width: dimensions.width - size * 2 + 2, height: Platform.OS === 'ios' ? 1 : 1.1, backgroundColor: '#656C6F' }} />
-            </>
+          <View style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: dimensions.width, height: trueHeight }} renderToHardwareTextureAndroid>
+            <BackgroundSvg
+              width={dimensions.width}
+              height={trueHeight}
+              fill={bgColor}
+              opacity={opacity}
+            />
+          </View>
+          { !locked && (
+            <View style={{ position: 'absolute', top: 0, left: 0, width: dimensions.width, height: trueHeight }} renderToHardwareTextureAndroid>
+              <BorderSvg
+                width={dimensions.width}
+                height={trueHeight}
+                fill="#656C6F"
+              />
+            </View>
           ) }
-          <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}>
-            <AppIcon name="label_tl_bd" color="#656C6F" size={size} />
-          </View>
-          <View style={{ position: 'absolute', top: 0, right: 0, width: size, height: size }}>
-            <AppIcon name="label_tr_bd" color="#656C6F" size={size} />
-          </View>
-          <View style={{ position: 'absolute', bottom: 0, left: 0, width: size, height: size }}>
-            <AppIcon name="label_bl_bd" color="#656C6F" size={size} />
-          </View>
-          <View style={{ position: 'absolute', bottom: 0, right: 0, width: size, height: size }}>
-            <AppIcon name="label_br_bd" color="#656C6F" size={size} />
-          </View>
         </>
       ) }
       { children }
@@ -104,6 +128,7 @@ function BorderBox({ children, locked, visited }: { children: React.ReactNode; l
 }
 
 export interface CampaignMapProps extends CampaignGuideInputProps {
+  campaignMap: CampaignMap;
   onSelect?: (location: MapLocation, time: number, fast: boolean) => void;
   currentLocation: string | undefined;
   currentTime: number | undefined;
@@ -256,7 +281,12 @@ function PointOfInterest({
       left: location.x * widthRatio - dotRadius - 4,
     }]}>
       <TouchableQuickSize onPress={onPress} activeScale={1.05}>
-        <BorderBox locked={status === 'locked'} visited={visited && !currentLocation}>
+        <BorderBox
+          locked={status === 'locked'}
+          visited={visited && !currentLocation}
+          height={dotRadius * 2 + 2}
+          side={status === 'side'}
+        >
           <View style={{
             flexDirection: location.direction === 'left' ? 'row' : 'row-reverse',
             justifyContent: 'flex-end',
@@ -278,15 +308,15 @@ function PointOfInterest({
                 paddingRight: borderRadius * 2,
                 justifyContent: 'flex-start',
               },
-
             ]}>
               <Text style={[
                 { fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular' },
                 { color: status === 'locked' ? '#E6E1D3' : '#24303C' },
+                location.direction === 'left' ? { paddingLeft: 2 } : { paddingRight: 1 },
                 visited && !currentLocation ? { opacity: 0.5 } : undefined,
                 {
                   fontSize: dotRadius * 2 * 0.90,
-                  lineHeight: dotRadius * 2 * 0.90,
+                  lineHeight: dotRadius * 2 * (Platform.OS === 'ios' ? 1 : 0.85),
                   textAlign: location.direction === 'left' ? 'right' : 'left',
                 },
               ]} onLayout={onLayoutLabel}>
@@ -385,12 +415,12 @@ function CurrentLocationPin({
   );
 }
 
-interface Path {
+interface TravelPath {
   time: number;
   path: string[];
 }
 
-function findShortestPath(start: string, end: string, allLocations: MapLocation[]): Path | undefined{
+function findShortestPath(start: string, end: string, allLocations: MapLocation[]): TravelPath | undefined{
   if (start === end) {
     return {
       path: [start],
@@ -402,7 +432,7 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
     locationsById[l.id] = l;
   });
 
-  const queue = new PriorityQueue<Path>(10, (pathA: Path, pathB: Path) => pathA.time - pathB.time);
+  const queue = new PriorityQueue<TravelPath>(10, (pathA: TravelPath, pathB: TravelPath) => pathA.time - pathB.time);
   const startLocation = locationsById[start];
   forEach(startLocation.connections, connection => {
     queue.add({
@@ -411,7 +441,7 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
     });
   });
   while (!queue.empty()) {
-    const shortestCurrent: Path | null = queue.poll();
+    const shortestCurrent: TravelPath | null = queue.poll();
     if (shortestCurrent) {
       if (indexOf(shortestCurrent.path, end) !== -1) {
         return shortestCurrent;
@@ -663,11 +693,8 @@ function LocationContent({
   );
 }
 
-
-function CampaignMapView(props: CampaignMapProps & NavigationProps) {
-  const { componentId, onSelect, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
-  const { campaignGuide } = useContext(CampaignGuideContext);
-  const campaignMap = campaignGuide.campaignMap();
+export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
+  const { componentId, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
   const currentLocation = useMemo(() => {
     return find(campaignMap?.locations, location => location.id === (props.currentLocation || 'london'));
   }, [campaignMap, props.currentLocation]);
@@ -835,11 +862,6 @@ function CampaignMapView(props: CampaignMapProps & NavigationProps) {
     </View>
   );
 }
-
-export default withCampaignGuideContext(
-  CampaignMapView,
-  { rootView: false }
-);
 
 const styles = StyleSheet.create({
   texture: {

@@ -1337,7 +1337,7 @@ export interface Scenario {
   header: string;
   icon?: string;
   xp_cost?: number;
-  side_scenario_type?: "challenge" | "standalone";
+  side_scenario_type?: "challenge" | "standalone" | "side_story";
   challenge?: ChallengeData;
   custom?: CustomData;
   setup: string[];

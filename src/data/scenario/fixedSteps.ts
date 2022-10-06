@@ -617,13 +617,13 @@ export function scenarioStepIds(campaignGuide: CampaignGuide, scenario: Scenario
   const sharedCampaignSetup = campaignGuide.scenarioSetupStepIds();
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
-      ...sharedCampaignSetup,
+      ...(scenario.side_scenario_type ? sharedCampaignSetup : []),
       ...scenario.setup,
       INTER_SCENARIO_CHANGES_STEP_ID,
       PROCEED_STEP_ID,
     ] : [
-      ...sharedCampaignSetup,
       CHOOSE_INVESTIGATORS_STEP_ID,
+      ...(scenario.side_scenario_type ? sharedCampaignSetup : []),
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];

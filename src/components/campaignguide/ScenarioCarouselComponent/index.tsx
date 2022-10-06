@@ -107,6 +107,7 @@ export default function ScenarioCarouselComponent({
     return undefined;
   }, [processedCampaign]);
   const currentTime = processedCampaign.campaignLog.count('time', '$count');
+  const campaignLog = processedCampaign.campaignLog;
 
   const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario, fast }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
     const embarkData: EmbarkData = {
@@ -125,14 +126,18 @@ export default function ScenarioCarouselComponent({
     }
     return embarkData;
   }, [campaignState, currentTime, campaignMap])
-
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
+      const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
+        (campaignLog.campaignData.scenarioReplayCount[location.scenario] || 0) + 1 :
+        undefined;
+      console.log(attempt, campaignLog.scenarioStatus(location.scenario), campaignLog.campaignData.scenarioReplayCount[location.scenario])
+      const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {
         destination: location.id,
         time: timeSpent,
         previousScenarioId: interScenarioId.encodedScenarioId,
-        nextScenario: location.scenario,
+        nextScenario,
         fast,
       };
       if (currentTime + timeSpent >= campaignMap.max_time) {
@@ -165,55 +170,61 @@ export default function ScenarioCarouselComponent({
           },
         });
       } else {
-        campaignState.startScenario(location.scenario, embarkData);
+        campaignState.startScenario(nextScenario, embarkData);
       }
     }
-  }, [onEmbarkSide, componentId, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
+  }, [
+    onEmbarkSide,
+    componentId,
+    campaignLog, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
 
   const onShowEmbark = useCallback(() => {
-    scenarioPressed.current = true;
-    const investigators = processedCampaign.campaignLog.investigatorCodes(false);
-    const hasFast = !!(campaignMap && find(investigators, code => processedCampaign.campaignLog.hasCard(code, campaignMap.fast_code)));
-    const passProps: CampaignMapProps = {
-      campaignId,
-      currentLocation: currentLocationId,
-      currentTime: processedCampaign.campaignLog.count('time', '$count'),
-      onSelect: onEmbark,
-      visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
-      unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
-      unlockedDossiers: processedCampaign.campaignLog.campaignData.scarlet.unlockedDossiers,
-      hasFast,
-    };
-    const location = campaignMap && find(campaignMap.locations, location => location.id === currentLocationId)?.name;
-    Navigation.showModal<CampaignMapProps>({
-      stack: {
-        children: [{
-          component: {
-            name: 'Campaign.Map',
-            passProps,
-            options: {
-              topBar: {
-                title: {
-                  text: t`Map`,
+    if (campaignMap) {
+      scenarioPressed.current = true;
+      const investigators = processedCampaign.campaignLog.investigatorCodes(false);
+      const hasFast = !!find(investigators, code => processedCampaign.campaignLog.hasCard(code, campaignMap.fast_code));
+      const passProps: CampaignMapProps = {
+        campaignId,
+        campaignMap,
+        currentLocation: currentLocationId,
+        currentTime: processedCampaign.campaignLog.count('time', '$count'),
+        onSelect: onEmbark,
+        visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
+        unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
+        unlockedDossiers: processedCampaign.campaignLog.campaignData.scarlet.unlockedDossiers,
+        hasFast,
+      };
+      const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
+      Navigation.showModal<CampaignMapProps>({
+        stack: {
+          children: [{
+            component: {
+              name: 'Campaign.Map',
+              passProps,
+              options: {
+                topBar: {
+                  title: {
+                    text: t`Map`,
+                  },
+                  subtitle: {
+                    text: location ? t`Departing from ${location}` : undefined,
+                  },
+                  leftButtons: [{
+                    icon: iconsMap.dismiss,
+                    id: 'close',
+                    color: COLORS.M,
+                    accessibilityLabel: t`Close`,
+                  }],
                 },
-                subtitle: {
-                  text: location ? t`Departing from ${location}` : undefined,
-                },
-                leftButtons: [{
-                  icon: iconsMap.dismiss,
-                  id: 'close',
-                  color: COLORS.M,
-                  accessibilityLabel: t`Close`,
-                }],
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
               },
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
             },
-          },
-        }],
-      },
-    });
+          }],
+        },
+      });
+    }
   }, [campaignId, currentLocationId, campaignMap, onEmbark, processedCampaign]);
 
   const data = useMemo(() => {

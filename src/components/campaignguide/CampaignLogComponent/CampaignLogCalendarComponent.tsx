@@ -65,7 +65,7 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
     return result;
   }, [calendar, campaignLog]);
   return (
-    <View style={[styles.calendar, { width, borderColor: colors.D10 }]}>
+    <View style={[styles.calendar, { width, borderColor: colors.D10, backgroundColor: colors.L20 }]}>
       <View style={[styles.calendarInset, { borderColor: colors.D20 }]}>
         <View style={{ width: size * 7 }}>
           <Text style={[typography.text, { fontSize: 48, lineHeight: 56, fontWeight: '900' }, typography.center, typography.uppercase, space.paddingVerticalS]}>
