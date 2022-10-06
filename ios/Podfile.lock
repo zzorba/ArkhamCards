@@ -363,7 +363,7 @@ PODS:
     - React
   - react-native-keyevent (0.2.8):
     - React
-  - react-native-netinfo (9.3.3):
+  - react-native-netinfo (9.3.4):
     - React-Core
   - react-native-pager-view (6.0.1):
     - React-Core
@@ -524,7 +524,7 @@ PODS:
     - React-Core
   - RNShare (7.6.6):
     - React-Core
-  - RNSVG (13.2.0):
+  - RNSVG (13.3.0):
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
@@ -844,7 +844,7 @@ SPEC CHECKSUMS:
   react-native-document-picker: f68191637788994baed5f57d12994aa32cf8bf88
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-keyevent: f8728b8c73dbfbcb4d2c56d9e78be082c673c456
-  react-native-netinfo: b514dd6d9cd512b90e178c5b7158df1a1c568d47
+  react-native-netinfo: 6ac9bcc7c88dc51717bda3484eb99093acb755e0
   react-native-pager-view: 3051346698a0ba0c4e13e40097cc11b00ee03cca
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   react-native-track-player: 0c26d981b5097910486cbbeb6d8f5352d41be069
@@ -881,7 +881,7 @@ SPEC CHECKSUMS:
   RNReanimated: 40178e702cbef9b9bf2ffd2cafdb4013a3a61469
   RNSha256: 80bea5b2e7005f813f6438cb41e573b3d531146c
   RNShare: d56424e3926cbc239db1cc1c168adcb051aad50b
-  RNSVG: 07037623c36f12e41312730622d5f6b3656227ca
+  RNSVG: 1869ad9534459f24caaa0416a4764548c2aeedad
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
