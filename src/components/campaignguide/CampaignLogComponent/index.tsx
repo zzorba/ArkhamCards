@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { flatMap, keys, sum, values } from 'lodash';
 import { t } from 'ttag';
 
@@ -23,6 +23,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignLogScarletKeysComponent from './CampaignLogScarletKeysComponent';
 import CampaignLogCalendarComponent from './CampaignLogCalendarComponent';
+import { MAX_WIDTH } from '@styles/sizes';
 
 interface Props {
   componentId: string;
@@ -106,16 +107,20 @@ export default function CampaignLogComponent({
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={space.paddingSideS}>
-            <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
-            { !!calendar && (
-              <CampaignLogCalendarComponent
-                calendar={calendar}
-                campaignLog={campaignLog}
-                time={count}
-                width={width - s * 2}
-              />
-            )}
+          <View style={[space.paddingSideS, styles.column]}>
+            <View style={{ width: '100%' }}>
+              <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
+            </View>
+            <View style={{ maxWidth: MAX_WIDTH }}>
+              { !!calendar && (
+                <CampaignLogCalendarComponent
+                  calendar={calendar}
+                  campaignLog={campaignLog}
+                  time={count}
+                  width={Math.min(width - s * 2, MAX_WIDTH)}
+                />
+              )}
+            </View>
           </View>
         );
       }
@@ -154,15 +159,17 @@ export default function CampaignLogComponent({
       }
       case 'partner': {
         return (
-          <View style={[space.paddingSideS, space.paddingBottomM]}>
-            <DeckBubbleHeader inverted title={title} />
-            { !!partners && (
-              <CampaignLogPartnersComponent
-                partners={partners}
-                campaignLog={campaignLog}
-                width={width - s * 2}
-              />
-            ) }
+          <View style={[space.paddingSideS, space.paddingBottomM, styles.column, { width }]}>
+            <View style={{ maxWidth: MAX_WIDTH }}>
+              <DeckBubbleHeader inverted title={title} />
+              { !!partners && (
+                <CampaignLogPartnersComponent
+                  partners={partners}
+                  campaignLog={campaignLog}
+                  width={Math.min(MAX_WIDTH, width - s * 2)}
+                />
+              ) }
+            </View>
           </View>
         );
       }
@@ -281,3 +288,12 @@ export default function CampaignLogComponent({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  column: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});
+
