@@ -161,7 +161,7 @@ interface CardFetcher {
  * This function turns partial cards into real cards, and provides a manual fetchMore function.
  * @param visibleCards list of partial cards that are trying to be rendered
  */
-function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolean): CardFetcher {
+function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolean, textQuery: sring): CardFetcher {
   const { db } = useContext(DatabaseContext);
   const [cards, updateCards] = useCards('id');
   const beingFetched = useRef(new Set<string>());
@@ -190,6 +190,9 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
     [visibleCards, beingFetched, fetchSize, db, updateCards]
   );
   const fetchedOne = useRef(false);
+  useEffect(() => {
+    fetchedOne.current = false;
+  }, [textQuery]);
   const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
@@ -503,7 +506,7 @@ function useSectionFeed({
     sideDeck, investigator, showAllNonCollection,
     editCollectionSettings, refreshDeck]);
 
-  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards, partialCardsLoading);
+  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards, partialCardsLoading, textQuery);
   useEffect(() => {
     expandSectionRef.current = (sectionId: string) => {
       expandCards();
@@ -602,7 +605,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, textQuery, sort, theTabooSetId, sortIgnoreQuotes], 500);
+  }, [setTextQueryCards, filterQuery, textQuery, query, sort, theTabooSetId, sortIgnoreQuotes], 500);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
