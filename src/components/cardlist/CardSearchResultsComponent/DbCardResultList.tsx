@@ -161,7 +161,7 @@ interface CardFetcher {
  * This function turns partial cards into real cards, and provides a manual fetchMore function.
  * @param visibleCards list of partial cards that are trying to be rendered
  */
-function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolean, textQuery: sring): CardFetcher {
+function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolean, deps: any[]): CardFetcher {
   const { db } = useContext(DatabaseContext);
   const [cards, updateCards] = useCards('id');
   const beingFetched = useRef(new Set<string>());
@@ -192,7 +192,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   const fetchedOne = useRef(false);
   useEffect(() => {
     fetchedOne.current = false;
-  }, [textQuery]);
+  }, [deps]);
   const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
@@ -506,7 +506,11 @@ function useSectionFeed({
     sideDeck, investigator, showAllNonCollection,
     editCollectionSettings, refreshDeck]);
 
-  const { cards, fetchMore, expandCards } = useCardFetcher(visibleCards, partialCardsLoading, textQuery);
+  const { cards, fetchMore, expandCards } = useCardFetcher(
+    visibleCards,
+    partialCardsLoading,
+    [textQuery, storyQuery, filterQuery, query]
+  );
   useEffect(() => {
     expandSectionRef.current = (sectionId: string) => {
       expandCards();

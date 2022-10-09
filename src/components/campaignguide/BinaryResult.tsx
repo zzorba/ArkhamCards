@@ -7,10 +7,11 @@ import {
 import ResultIndicatorIcon from './ResultIndicatorIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import SetupStepWrapper from './SetupStepWrapper';
-import { BulletType } from '@data/scenario/types';
+import { BorderColor, BulletType } from '@data/scenario/types';
 
 interface Props {
   bulletType?: BulletType;
+  color?: BorderColor;
   prompt?: string;
   children?: React.ReactNode | React.ReactNode[];
   result: boolean;
@@ -21,11 +22,12 @@ export default function BinaryResult({
   prompt,
   result,
   children,
+  color,
 }: Props) {
   return (
     <View style={styles.row}>
       <View style={styles.step}>
-        <SetupStepWrapper bulletType={bulletType}>
+        <SetupStepWrapper bulletType={bulletType} color={color}>
           { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
           { !!children && children }
         </SetupStepWrapper>

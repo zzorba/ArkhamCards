@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { BulletType } from '@data/scenario/types';
+import { BorderColor, BulletType } from '@data/scenario/types';
 import BinaryResult from '../BinaryResult';
 import InputWrapper from './InputWrapper';
 import ActionButton from './ActionButton';
@@ -15,9 +15,10 @@ interface Props {
   id: string;
   bulletType?: BulletType;
   text?: string;
+  color?: BorderColor;
 }
 
-export default function BinaryPrompt({ id, bulletType, text }: Props) {
+export default function BinaryPrompt({ id, bulletType, text, color }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const yes = useCallback(() => {
     scenarioState.setDecision(id, true);
@@ -40,7 +41,7 @@ export default function BinaryPrompt({ id, bulletType, text }: Props) {
   }, [yes, no]);
   return decision === undefined ? (
     <InputWrapper buttons={buttons} editable>
-      <SetupStepWrapper bulletType={bulletType}>
+      <SetupStepWrapper bulletType={bulletType} color={color}>
         { !!text && <CampaignGuideTextComponent text={text} /> }
       </SetupStepWrapper>
     </InputWrapper>
@@ -49,6 +50,7 @@ export default function BinaryPrompt({ id, bulletType, text }: Props) {
       bulletType={bulletType}
       prompt={text}
       result={decision}
+      color={color}
     />
   );
 }

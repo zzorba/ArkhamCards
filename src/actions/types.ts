@@ -650,7 +650,7 @@ export interface SetCurrentTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 
 export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
-export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'draft_from_collection' | 'low_memory';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'map_list' | 'draft_from_collection' | 'low_memory';
 export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;

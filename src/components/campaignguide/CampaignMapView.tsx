@@ -1,9 +1,9 @@
 import React, { useCallback, useContext, useRef, useEffect, useMemo, useState } from 'react';
-import { LayoutChangeEvent, Platform, StyleSheet, Text, TextStyle, View } from 'react-native';
+import { LayoutChangeEvent, Platform, ScrollView, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
-import { filter, find, forEach, indexOf, map, sumBy } from 'lodash';
+import { filter, flatMap, values, find, sortBy, forEach, indexOf, map, sumBy, groupBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
 import FastImage from 'react-native-fast-image';
 import {
@@ -14,17 +14,16 @@ import {
 } from 'react-native-svg';
 
 import { NavigationProps } from '@components/nav/types';
-import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
-import CampaignGuideContext from './CampaignGuideContext';
+import { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
 import space, { s } from '@styles/space';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalTransitionStyle } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
-import { useBackButton, useNavigationButtonPressed } from '@components/core/hooks';
-import { TouchableQuickSize } from '@components/core/Touchables';
+import { useBackButton, useFlag, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
+import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
 
 import MapSvg from '../../../assets/map.svg';
 import StrikeSvg from '../../../assets/strikethrough.svg';
@@ -32,7 +31,10 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
-import CampaignGuide from '@data/scenario/CampaignGuide';
+import colors from '@styles/colors';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import MapToggleButton from './MapToggleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -420,6 +422,50 @@ interface TravelPath {
   path: string[];
 }
 
+function computeShortestPaths(start: string, allLocations: MapLocation[]): { [city: string]: TravelPath | undefined } {
+  const result: { [city: string]: TravelPath | undefined } = {};
+
+  const locationsById: { [id: string]: MapLocation } = {};
+  forEach(allLocations, l => {
+    locationsById[l.id] = l;
+  });
+  const queue = new PriorityQueue<TravelPath>(10, (pathA: TravelPath, pathB: TravelPath) => pathA.time - pathB.time);
+  const startLocation = locationsById[start];
+  forEach(startLocation.connections, connection => {
+    queue.add({
+      path: [start, connection],
+      time: startLocation.hidden ? 0 : 1,
+    });
+  });
+
+  while (!queue.empty()) {
+    const shortestCurrent: TravelPath | null = queue.poll();
+    if (shortestCurrent) {
+      const last = shortestCurrent.path[shortestCurrent.path.length - 1];
+      if (result[last]) {
+        // Already reached here by a shorter path, so skip it.
+        continue;
+      }
+      result[last] = {
+        path: shortestCurrent.path,
+        time: Math.max(shortestCurrent.time, 1),
+      };
+      const lastLocation = locationsById[last];
+      forEach(lastLocation.connections, location => {
+        if (indexOf(shortestCurrent.path, location) === -1) {
+          // Add it to list if we don't have a loop;
+          // Side locations only cost 1 time even when you pass through them.
+          queue.add({
+            path: [...shortestCurrent.path, location],
+            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1),
+          });
+        }
+      })
+    }
+  }
+  return result;
+}
+
 function findShortestPath(start: string, end: string, allLocations: MapLocation[]): TravelPath | undefined{
   if (start === end) {
     return {
@@ -570,9 +616,11 @@ function LocationContent({
   hasFast,
   showCity,
   unlockedDossiers,
+  travelDistance,
 }: {
   allLocations?: MapLocation[];
   location: MapLocation;
+  travelDistance: number;
   currentLocation: MapLocation | undefined;
   unlockedDossiers: string[],
   visited: boolean;
@@ -582,13 +630,6 @@ function LocationContent({
   showCity: (city: string) => void;
 }) {
   const { colors, typography, width } = useContext(StyleContext);
-  const travelDistance = useMemo(() => {
-    if (!currentLocation || !allLocations) {
-      return undefined;
-    }
-    const shortestPath = findShortestPath(currentLocation.id, location.id, allLocations);
-    return shortestPath?.time || 0;
-  }, [currentLocation, allLocations, location]);
   const makeCurrent = useCallback(() => {
     setCurrentLocation?.(location, travelDistance, false);
   }, [setCurrentLocation, location, travelDistance]);
@@ -640,7 +681,7 @@ function LocationContent({
           ) }
           { !!travelDistance && !!currentLocation && (
             <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
-              { ngettext(msgid`Travel time: ${travelDistance} time`, `Travel time: ${travelDistance} time`, travelDistance) }
+              { ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
             </Text>
           ) }
           { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
@@ -663,7 +704,7 @@ function LocationContent({
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
         <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
-          <EncounterIcon encounter_code={location.id} size={width / 3.5} color={colors.D20} />
+          <EncounterIcon encounter_code={location.id} size={width / 3.2} color={colors.D20} />
         </View>
         <CardDetailSectionHeader title={t`Information`} />
         <Text style={typography.text}>
@@ -693,13 +734,54 @@ function LocationContent({
   );
 }
 
+function LocationLine({ location, status, visited, onSelect }: {
+  location: MapLocation;
+  status: 'locked' | 'standard' | 'side';
+  visited: boolean;
+  onSelect: (location: MapLocation) => void;
+}) {
+  const { width, borderStyle, colors, typography } = useContext(StyleContext);
+  const onPress = useCallback(() => onSelect(location), [onSelect, location]);
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ width }}
+    >
+      <View style={[styles.column, space.marginSideS, space.paddingVerticalS, { position: 'relative', borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+        <View style={{ position: 'absolute', right: 0, top: 0 }}>
+          <EncounterIcon size={54} encounter_code={location.id} color={colors.L10} />
+        </View>
+        <View key={location.id} style={styles.row}>
+          <AppIcon
+            color={statusColors[status]}
+            size={24}
+            name={`poi_${status}`}
+          />
+          <View style={[styles.column, space.paddingLeftS, { flex: 1 }]}>
+            <Text style={[typography.header, typography.regular, visited ? { color: colors.M, textDecorationLine: 'line-through' } : undefined]}>
+              { location.name }
+            </Text>
+            <Text style={[typography.small, typography.italic, typography.light, visited ? { color: colors.M, textDecorationLine: 'line-through' } : undefined]}>
+              {location.details.region.name}
+            </Text>
+          </View>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+}
+
 export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
   const { componentId, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
-  const currentLocation = useMemo(() => {
-    return find(campaignMap?.locations, location => location.id === (props.currentLocation || 'london'));
-  }, [campaignMap, props.currentLocation]);
+  const [currentLocation, visited] = useMemo(() => {
+    return [
+      find(campaignMap?.locations, location => location.id === (props.currentLocation || 'london')),
+      new Set(visitedLocations),
+    ];
+  }, [campaignMap, props.currentLocation, visitedLocations]);
 
-  const { width, height } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
+  const { colors, backgroundStyle, borderStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
   const onDismiss = useCallback(() => {
@@ -707,6 +789,13 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     setTimeout(() => Navigation.dismissModal(componentId), 50);
     return true;
   }, [componentId]);
+
+  const travelDistances = useMemo(() => {
+    if (props.currentLocation) {
+      return computeShortestPaths(props.currentLocation, campaignMap.locations);
+    }
+    return undefined;
+  }, [props.currentLocation, campaignMap.locations]);
 
   const moveToLocation = useCallback((location: MapLocation, distance: number | undefined, fast: boolean) => {
     if (onSelect) {
@@ -754,11 +843,12 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       <LocationContent
         location={selectedLocation}
         currentLocation={currentLocation}
+        travelDistance={travelDistances?.[selectedLocation.id]?.time || 1}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
         allLocations={campaignMap?.locations}
         hasFast={hasFast}
         unlockedDossiers={unlockedDossiers}
-        visited={!!find(visitedLocations, loc => loc === selectedLocation.id)}
+        visited={visited.has(selectedLocation.id)}
         status={(selectedLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation.status}
         showCity={showCity}
       />
@@ -800,65 +890,157 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLocation]);
   const labelStyles = useMemo(() => getMapLabelStyles(widthRatio), [widthRatio]);
-  if (!campaignMap) {
-    return <Text>No map</Text>;
-  }
+  const timeTableMode = useSettingValue('map_list');
+  const locationsByDistance = useMemo(() => {
+    return sortBy(
+      values(
+        groupBy(
+          sortBy(
+            sortBy(
+              filter(campaignMap.locations, location => location.id !== props.currentLocation),
+              location => location.name
+            ),
+            location => travelDistances?.[location.id]?.time || 1
+          ),
+          location => {
+            if (visited.has(location.id)) {
+              return 'visited';
+            }
+            const status = ((location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status);
+            if (status === 'locked') {
+              return 'locked';
+            }
+            return `dist_${travelDistances?.[location.id]?.time || 1}`;
+          }
+        )
+      ), group => {
+        const location = group[0];
+        if (visited.has(location.id)) {
+          return 'visited';
+        }
+        const status = ((location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status);
+        if (status === 'locked') {
+          return 'locked';
+        }
+        return `dist_${travelDistances?.[location.id]?.time || 1}`;
+      }
+    );
+  }, [campaignMap.locations, travelDistances, visited]);
+
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtons: [
+          {
+            id: 'toggle',
+            component: {
+              name: 'MapToggleButton',
+              passProps: {},
+              width: MapToggleButton.WIDTH,
+              height: MapToggleButton.HEIGHT,
+            },
+            accessibilityLabel: t`Map`,
+            enabled: true,
+          },
+        ],
+      },
+    });
+  }, [componentId]);
   return (
     <View style={{ flex: 1, position: 'relative' }}>
-      <PanPinchView
-        ref={pinchRef}
-        minScale={1}
-        maxScale={4}
-        initialScale={1.0}
-        containerDimensions={{ width, height }}
-        contentDimensions={{ width: theWidth, height: theHeight }}
-      >
-        <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
-          <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988" />
-          { map(campaignMap.labels, (label, idx) => (
-            <MapLabelComponent
-              key={idx}
-              campaignWidth={campaignMap.width}
-              label={label}
-              widthRatio={widthRatio}
-              heightRatio={heightRatio}
-              mapLabelStyles={labelStyles}
+      { timeTableMode ? (
+        <ScrollView contentContainerStyle={[backgroundStyle, styles.column]}>
+          { flatMap(locationsByDistance, (locations) => {
+            const first = locations[0];
+            const status = (first.status === 'locked' && !!find(unlockedLocations, loc => loc === first.id) ? 'standard' : undefined) || first.status;
+            const alreadyVisited = visited.has(first.id);
+            const travelDistance = travelDistances?.[first.id]?.time || 1;
+            return (
+              <>
+                <View style={[styles.row, space.paddingS, { backgroundColor: colors.L10 }]}>
+                  <Text style={[typography.subHeaderText, typography.dark, { flex: 1 }]}>
+                    { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` :  ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
+                  </Text>
+                </View>
+                {
+                  map(locations, location => {
+                    const status = (location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status;
+                    if (status === 'locked' && location.hidden) {
+                      return null;
+                    }
+                    return (
+                      <LocationLine
+                        key={location.id}
+                        location={location}
+                        visited={alreadyVisited}
+                        status={status}
+                        onSelect={setSelectedLocation}
+                      />
+                    )
+                  })
+                }
+              </>
+            );
+          }) }
+        </ScrollView>
+      ) : (
+        <PanPinchView
+          ref={pinchRef}
+          minScale={1}
+          maxScale={4}
+          initialScale={1.0}
+          style={{ backgroundColor: '0x8A9284' }}
+          containerDimensions={{ width, height }}
+          contentDimensions={{ width: theWidth, height: theHeight }}
+        >
+          <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
+            <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988" />
+            { map(campaignMap.labels, (label, idx) => (
+              <MapLabelComponent
+                key={idx}
+                campaignWidth={campaignMap.width}
+                label={label}
+                widthRatio={widthRatio}
+                heightRatio={heightRatio}
+                mapLabelStyles={labelStyles}
+              />
+            )) }
+            <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
+              <FastImage
+                source={PAPER_TEXTURE}
+                style={{ width: theWidth, height: theHeight }}
+                resizeMode="cover"
+              />
+            </View>
+            { map(campaignMap.locations, (location) => (
+              <PointOfInterest
+                key={location.id}
+                currentLocation={!!currentLocation && currentLocation.id === location.id}
+                campaignWidth={campaignMap.width}
+                campaignHeight={campaignMap.height}
+                location={location}
+                widthRatio={widthRatio}
+                heightRatio={heightRatio}
+                onSelect={setSelectedLocation}
+                visited={visited.has(location.id)}
+                status={(location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status}
+              />
+            )) }
+            { !!currentLocation && (
+              <CurrentLocationPin
+                location={currentLocation}
+                campaignWidth={campaignMap.width}
+                campaignHeight={campaignMap.height}
+                widthRatio={widthRatio}
+                heightRatio={heightRatio}
+                status={(currentLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === currentLocation.id) ? 'standard' : undefined) || currentLocation.status}
             />
-          )) }
-          <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
-            <FastImage
-              source={PAPER_TEXTURE}
-              style={{ width: theWidth, height: theHeight }}
-              resizeMode="cover"
-            />
+            ) }
           </View>
-          { map(campaignMap.locations, (location) => (
-            <PointOfInterest
-              key={location.id}
-              currentLocation={!!currentLocation && currentLocation.id === location.id}
-              campaignWidth={campaignMap.width}
-              campaignHeight={campaignMap.height}
-              location={location}
-              widthRatio={widthRatio}
-              heightRatio={heightRatio}
-              onSelect={setSelectedLocation}
-              visited={!!find(visitedLocations, loc => loc === location.id)}
-              status={(location.status === 'locked' && !!find(unlockedLocations, loc => loc === location.id) ? 'standard' : undefined) || location.status}
-            />
-          )) }
-          { !!currentLocation && (
-            <CurrentLocationPin
-              location={currentLocation}
-              campaignWidth={campaignMap.width}
-              campaignHeight={campaignMap.height}
-              widthRatio={widthRatio}
-              heightRatio={heightRatio}
-              status={(currentLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === currentLocation.id) ? 'standard' : undefined) || currentLocation.status}
-           />
-          ) }
-        </View>
-      </PanPinchView>
+        </PanPinchView>
+      ) }
       { dialog }
+      { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
     </View>
   );
 }
@@ -873,5 +1055,22 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowRadius: 4,
     elevation: 2,
-  }
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
+  gutter: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 10,
+  },
 });

@@ -684,6 +684,7 @@ export function useSettingValue(setting: MiscSetting): boolean {
 
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
+      case 'map_list': return !!state.settings.mapList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
 
       case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;

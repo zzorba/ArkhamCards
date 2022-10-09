@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
 
-import { BulletType, ChecklistInput } from '@data/scenario/types';
+import { BorderColor, BulletType, ChecklistInput } from '@data/scenario/types';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import CheckListComponent from './CheckListComponent';
 import ScenarioStepContext from '../ScenarioStepContext';
@@ -20,6 +20,8 @@ interface Props {
   bulletType?: BulletType;
   text?: string;
   input: ChecklistInput;
+  color?: BorderColor;
+  border?: boolean;
 }
 
 function RandomCheckListButton({ index, choice, onPress, editable }: { editable: boolean; index: number; choice?: DisplayChoiceWithId; onPress: (index: number) => void }) {
@@ -37,7 +39,7 @@ function RandomCheckListButton({ index, choice, onPress, editable }: { editable:
   );
 }
 
-export default function CheckListPrompt({ id, bulletType, text, input }: Props) {
+export default function CheckListPrompt({ id, bulletType, text, input, color, border }: Props) {
   const { campaignLog, } = useContext(ScenarioStepContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const choices = chooseOneInputChoices(input.choices, campaignLog);
@@ -51,19 +53,20 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
     return (
       <>
         { !!text && (
-          <SetupStepWrapper bulletType={bulletType}>
+          <SetupStepWrapper bulletType={bulletType} color={color}>
             <CampaignGuideTextComponent text={text} />
           </SetupStepWrapper>
         ) }
         <BinaryPrompt
           key="first"
+          color={color}
           id={firstDecisionId}
           bulletType="small"
           text={t`Do you want to use the app to randomize choices?`}
         />
       </>
     );
-  }, [input.random, firstDecisionId, text]);
+  }, [input.random, firstDecisionId, text, color]);
   const [liveChoices, updateLiveChoices] = useReducer((choices: string[], { index, options }: { index: number; options: DisplayChoiceWithId[] }) => {
     const newChoices = [...choices];
     while (newChoices.length <= index) {
@@ -99,6 +102,7 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
           bulletType={bulletType}
           min={input.min}
           max={input.max}
+          border={border}
           items={map(choices, choice => {
             return {
               code: choice.id,
@@ -121,6 +125,7 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
         editable={!hasDecision}
         disabledText={filter(liveChoices, id => !!id).length < (quantity || 0) ? t`Select more` : undefined}
         onSubmit={submit}
+        noDivider={border}
       >
         <>
           { map(range(0, quantity), index => (
@@ -135,7 +140,7 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
         </>
       </InputWrapper>
     );
-  }, [firstDecisionId, drawRandomOption, choices, input, bulletType, text, id]);
+  }, [firstDecisionId, drawRandomOption, choices, input, bulletType, text, id, border]);
   return (
     <>
       { firstPrompt }

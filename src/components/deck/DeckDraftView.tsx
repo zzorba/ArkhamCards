@@ -68,7 +68,7 @@ export function navigationOptions(
   }: {
     lightButton?: boolean;
   }
-){
+) {
   const rightButtons: OptionsTopBarButton[] = [{
     id: 'grid',
     component: {

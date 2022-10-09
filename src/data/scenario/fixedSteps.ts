@@ -84,6 +84,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
 }
 
 export const PROCEED_STEP_ID = '$proceed';
+export const PROCEED_ALT_STEP_ID = '$proceed_alt';
 export const EMBARK_STEP_ID = '$embark';
 export const EMBARK_RETURN_STEP_ID = '$embark_return';
 
@@ -108,7 +109,7 @@ const chooseInvestigatorsStep: InputStep = {
   },
 };
 
-const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
+export const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
 const upgradeDecksStep: InputStep = {
   id: UPGRADE_DECKS_STEP_ID,
   type: 'input',
@@ -576,14 +577,15 @@ export function getFixedStep(
         id,
         type: 'internal',
       };
-    case PROCEED_STEP_ID: {
+    case PROCEED_STEP_ID:
+    case PROCEED_ALT_STEP_ID: {
       const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
         campaignState,
         campaignLog
       );
       if (!nextScenarioName || standalone) {
         return {
-          id: PROCEED_STEP_ID,
+          id,
           hidden: true,
           effects: [
             {
@@ -595,7 +597,7 @@ export function getFixedStep(
         };
       }
       return {
-        id: PROCEED_STEP_ID,
+        id,
         text: t`Proceed to <b>${nextScenarioName}</b>.`,
         effects: [
           {

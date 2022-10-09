@@ -3,7 +3,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
 import { PlayedScenario, ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
-import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID } from './fixedSteps';
+import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID, PROCEED_STEP_ID, UPGRADE_DECKS_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -522,9 +522,9 @@ export default class CampaignGuide {
         PLAY_SCENARIO_STEP_ID,
         '$end_of_scenario_status',
         '$earn_xp',
-        '$upgrade_decks',
+        UPGRADE_DECKS_STEP_ID,
         ...this.sideScenarioResolutionStepIds(),
-        '$proceed',
+        PROCEED_STEP_ID,
       ],
       steps: [
         createInvestigatorStatusStep('$end_of_scenario_status'),

@@ -14,7 +14,7 @@ import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
 import { showScenario } from '../nav';
 import EmbarkCard from './EmbarkCard';
 import { MapLocation } from '@data/scenario/types';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 import { CampaignMapProps } from '../CampaignMapView';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
@@ -118,13 +118,6 @@ export default function ScenarioCarouselComponent({
       time: time + xp_cost,
       fast,
     };
-    if (campaignMap) {
-      if (currentTime + embarkData.time >= campaignMap.max_time) {
-        embarkData.nextScenario = campaignMap.final_scenario;
-        campaignState.startScenario(campaignMap.final_scenario, embarkData);
-        return undefined;
-      }
-    }
     return embarkData;
   }, [campaignState, currentTime, currentLocationId, campaignMap])
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
@@ -142,11 +135,7 @@ export default function ScenarioCarouselComponent({
         nextScenario,
         fast,
       };
-      if (currentTime + timeSpent >= campaignMap.max_time) {
-        // You got redirected fool, out of time sucker...
-        embarkData.nextScenario = campaignMap.final_scenario;
-        campaignState.startScenario(campaignMap.final_scenario, embarkData);
-      } else if (location.scenario === '$side_scenario') {
+      if (location.scenario === '$side_scenario') {
         Navigation.push<AddSideScenarioProps>(componentId, {
           component: {
             name: 'Guide.SideScenario',
@@ -219,9 +208,13 @@ export default function ScenarioCarouselComponent({
                     accessibilityLabel: t`Close`,
                   }],
                 },
+                layout: {
+                  backgroundColor: '0x8A9284',
+                },
                 modalPresentationStyle: Platform.OS === 'ios' ?
                   OptionsModalPresentationStyle.fullScreen :
                   OptionsModalPresentationStyle.overCurrentContext,
+                modalTransitionStyle: OptionsModalTransitionStyle.crossDissolve,
               },
             },
           }],

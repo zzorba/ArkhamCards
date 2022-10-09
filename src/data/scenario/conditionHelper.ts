@@ -908,11 +908,19 @@ export function scarletKeyCountConditionResult(condition: ScarletKeyCountConditi
   return numberConditionResult(count, condition.options, condition.default_option);
 }
 
-export function locationConditionResult(condition: LocationCondition, campaignLog: GuidedCampaignLog) {
-  return binaryConditionResult(
-    !!find(campaignLog.campaignData.scarlet.visitedLocations, loc => loc === condition.location),
-    condition.options
-  );
+export function locationConditionResult(condition: LocationCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  switch (condition.status) {
+    case 'visited':
+      return binaryConditionResult(
+        !!find(campaignLog.campaignData.scarlet.visitedLocations, loc => loc === condition.location),
+        condition.options
+      );
+    case 'current':
+      return binaryConditionResult(
+        campaignLog.campaignData.scarlet.location === condition.location,
+        condition.options
+      );
+  }
 }
 
 

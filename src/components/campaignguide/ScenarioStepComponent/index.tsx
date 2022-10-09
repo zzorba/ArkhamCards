@@ -12,7 +12,7 @@ import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
-import { CHOOSE_RESOLUTION_STEP_ID, PROCEED_STEP_ID } from '@data/scenario/fixedSteps';
+import { CHOOSE_RESOLUTION_STEP_ID, PROCEED_ALT_STEP_ID, PROCEED_STEP_ID } from '@data/scenario/fixedSteps';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
@@ -30,12 +30,14 @@ import ActionButton from '../prompts/ActionButton';
 import BorderStepComponent from './BorderStepComponent';
 import TitleComponent from './TitleComponent';
 import TravelCostStepComponent from './TravelCostStepComponent';
+import { BorderColor } from '@data/scenario/types';
 
 interface Props {
   componentId: string;
   step: ScenarioStep;
   width: number;
   border?: boolean;
+  color?: BorderColor;
   switchCampaignScenario: () => void;
 }
 
@@ -45,6 +47,7 @@ function ScenarioStepComponentContent({
   step: { step, campaignLog },
   border,
   width,
+  color,
   switchCampaignScenario,
 }: Props) {
   const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
@@ -55,7 +58,7 @@ function ScenarioStepComponentContent({
   if (!step.type) {
     return (
       <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
-        <GenericStepComponent step={step} />
+        <GenericStepComponent step={step} color={color} />
       </NarrationStepComponent>
     );
   }
@@ -69,6 +72,7 @@ function ScenarioStepComponentContent({
         <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <BranchStepComponent
             step={step}
+            color={color}
             campaignLog={campaignLog}
           />
         </NarrationStepComponent>
@@ -118,6 +122,8 @@ function ScenarioStepComponentContent({
             step={step}
             campaignLog={campaignLog}
             switchCampaignScenario={switchCampaignScenario}
+            color={color}
+            border={border}
           />
         </NarrationStepComponent>
       );
@@ -160,6 +166,7 @@ export default function ScenarioStepComponent({
   step,
   width,
   border,
+  color,
   switchCampaignScenario,
 }: Props) {
   const { campaignInvestigators } = useContext(CampaignGuideContext);
@@ -196,8 +203,9 @@ export default function ScenarioStepComponent({
         border={border}
         width={width}
         switchCampaignScenario={switchCampaignScenario}
+        color={color}
       />
-      { (step.step.id === PROCEED_STEP_ID) && (
+      { (step.step.id === PROCEED_STEP_ID || step.step.id === PROCEED_ALT_STEP_ID) && (
         <View style={space.paddingS}>
           <ActionButton
             leftIcon="check"

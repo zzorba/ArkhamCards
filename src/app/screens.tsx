@@ -10,6 +10,7 @@ import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import ListToggleButton from '@components/deck/ListToggleButton';
+import MapToggleButton from '@components/campaignguide/MapToggleButton';
 import Toast from '@components/Toast';
 import TarotOverlay from '@components/core/TarotOverlay';
 
@@ -133,6 +134,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
   Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
   Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
+  Navigation.registerComponent('MapToggleButton', providerWrapper(MapToggleButton), () => MapToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 

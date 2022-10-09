@@ -246,9 +246,7 @@ export interface Campaign {
 export interface CampaignMap {
   width: number;
   height: number;
-  max_time: number;
   fast_code: string;
-  final_scenario: string;
   locations: MapLocation[];
   labels: MapLabel[];
 }
@@ -876,7 +874,7 @@ export interface CampaignLogCardsSwitchCondition {
 }
 export interface LocationCondition {
   type: "location";
-  status: "visited";
+  status: "visited" | "current";
   location: string;
   options: BoolOption[];
 }
@@ -1302,6 +1300,7 @@ export interface BorderStep {
   border: boolean;
   border_color?: BorderColor;
   title?: string;
+  title_font?: "status";
   title_strikethrough?: boolean;
   text?: null;
   bullets?: null;
