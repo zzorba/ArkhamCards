@@ -12,6 +12,8 @@ import ScenarioGuideContext from '../ScenarioGuideContext';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import InputWrapper from './InputWrapper';
 import { StringChoices } from '@actions/types';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
+import SetupStepWrapper from '../SetupStepWrapper';
 
 interface Props {
   id: string;
@@ -47,14 +49,21 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
       return null;
     }
     return (
-      <BinaryPrompt
-        key="first"
-        id={firstDecisionId}
-        bulletType="small"
-        text={t`Do you want to use the app to randomize choices?`}
-      />
+      <>
+        { !!text && (
+          <SetupStepWrapper bulletType={bulletType}>
+            <CampaignGuideTextComponent text={text} />
+          </SetupStepWrapper>
+        ) }
+        <BinaryPrompt
+          key="first"
+          id={firstDecisionId}
+          bulletType="small"
+          text={t`Do you want to use the app to randomize choices?`}
+        />
+      </>
     );
-  }, [input.random, firstDecisionId]);
+  }, [input.random, firstDecisionId, text]);
   const [liveChoices, updateLiveChoices] = useReducer((choices: string[], { index, options }: { index: number; options: DisplayChoiceWithId[] }) => {
     const newChoices = [...choices];
     while (newChoices.length <= index) {
@@ -105,10 +114,9 @@ export default function CheckListPrompt({ id, bulletType, text, input }: Props) 
       return null;
     }
     const theChoices = hasDecision ? keys(decision) : liveChoices;
-    const quantity = Math.min(theChoices.length, input.max || 1);
+    const quantity = Math.min(choices.length, input.max || 1);
     return (
       <InputWrapper
-        title={text}
         bulletType={bulletType}
         editable={!hasDecision}
         disabledText={filter(liveChoices, id => !!id).length < (quantity || 0) ? t`Select more` : undefined}
