@@ -174,5 +174,8 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
         />
       );
     }
+    case 'scarlet_key_count':
+      // Just used for control flow
+      return null;
   }
 }

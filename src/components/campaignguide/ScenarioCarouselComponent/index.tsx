@@ -113,6 +113,7 @@ export default function ScenarioCarouselComponent({
     const embarkData: EmbarkData = {
       destination,
       previousScenarioId,
+      departure: currentLocationId,
       nextScenario,
       time: time + xp_cost,
       fast,
@@ -125,7 +126,7 @@ export default function ScenarioCarouselComponent({
       }
     }
     return embarkData;
-  }, [campaignState, currentTime, campaignMap])
+  }, [campaignState, currentTime, currentLocationId, campaignMap])
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
       const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
@@ -135,6 +136,7 @@ export default function ScenarioCarouselComponent({
       const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {
         destination: location.id,
+        departure: currentLocationId,
         time: timeSpent,
         previousScenarioId: interScenarioId.encodedScenarioId,
         nextScenario,
@@ -176,6 +178,7 @@ export default function ScenarioCarouselComponent({
   }, [
     onEmbarkSide,
     componentId,
+    currentLocationId,
     campaignLog, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
 
   const onShowEmbark = useCallback(() => {

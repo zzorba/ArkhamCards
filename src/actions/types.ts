@@ -414,7 +414,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
-export const TSK = 'tsk';
+export const TSK = 'tskc';
 export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
@@ -1210,6 +1210,7 @@ export interface DelayedDeckEdits {
   ignoreStoryCounts: Slots;
   exileCounts: Slots;
   resolved?: boolean;
+  type?: 'save';
 }
 
 export interface GuideNumberChoicesInput extends BasicInput {
@@ -1246,6 +1247,7 @@ export interface GuideChoiceInput extends BasicInput {
 
 export interface EmbarkData {
   previousScenarioId: string;
+  departure?: string;
   destination: string;
   time: number;
   nextScenario: string;

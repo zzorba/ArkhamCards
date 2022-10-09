@@ -21,7 +21,8 @@ export type Step =
   | TableStep
   | XpCountStep
   | InternalStep
-  | BorderStep;
+  | BorderStep
+  | TravelCostStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -38,7 +39,8 @@ export type Condition =
   | CampaignLogCardsSwitchCondition
   | PartnerStatusCondition
   | LocationCondition
-  | ScarletKeyCondition;
+  | ScarletKeyCondition
+  | ScarletKeyCountCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -140,6 +142,7 @@ export type CampaignDataCondition =
   | CampaignDataVersionCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
+  | ScenarioDataHasResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition
   | ScenarioDataFixedInvestigatorStatusCondition;
@@ -353,6 +356,8 @@ export interface MultiCondition {
     | PartnerStatusCondition
     | BasicTraumaCondition
     | CampaignDataInvestigatorCondition
+    | ScarletKeyCondition
+    | ScarletKeyCountCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -595,6 +600,7 @@ export interface UpgradeDecksEffect {
 }
 export interface SaveDecksEffect {
   type: "save_decks";
+  adjust_xp?: boolean;
 }
 export interface GainSuppliesEffect {
   type: "gain_supplies";
@@ -784,6 +790,18 @@ export interface CampaignDataInvestigatorCondition {
   options: StringOption[];
   default_option?: Option;
 }
+export interface ScarletKeyCondition {
+  type: "scarlet_key";
+  scarlet_key: string;
+  status: "investigator" | "enemy";
+  options: BoolOption[];
+}
+export interface ScarletKeyCountCondition {
+  type: "scarlet_key_count";
+  status: "investigator" | "enemy";
+  options: NumOption[];
+  default_option?: DefaultOption;
+}
 export interface CampaignLogInvestigatorCountCondition {
   type: "campaign_log_investigator_count";
   section: string;
@@ -799,6 +817,11 @@ export interface CampaignDataDifficultyCondition {
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
   campaign_data: "linked_campaign";
+  options: BoolOption[];
+}
+export interface ScenarioDataHasResolutionCondition {
+  type: "scenario_data";
+  scenario_data: "has_resolution";
   options: BoolOption[];
 }
 export interface ScenarioDataInvestigatorStatusCondition {
@@ -857,12 +880,6 @@ export interface LocationCondition {
   location: string;
   options: BoolOption[];
 }
-export interface ScarletKeyCondition {
-  type: "scarlet_key";
-  scarlet_key: string;
-  status: "investigator" | "enemy";
-  options: BoolOption[];
-}
 export interface Narration {
   id: string;
   name: string;
@@ -903,7 +920,7 @@ export interface UpgradeDecksInput {
   skip_decks?: boolean;
   special_xp?: SpecialXp;
   counter?: string;
-  story_cards?: [string];
+  story_cards?: [] | [string];
 }
 export interface CardChoiceInput {
   type: "card_choice";
@@ -1114,6 +1131,7 @@ export interface PrologueRandomizer {
 export interface SaveDecksInput {
   type: "save_decks";
   trauma?: boolean;
+  adjust_xp?: boolean;
 }
 export interface TarotReadingInput {
   type: "tarot_reading";
@@ -1293,6 +1311,15 @@ export interface BorderStep {
   narration?: Narration;
   steps: string[];
 }
+export interface TravelCostStep {
+  id: string;
+  type: "travel_cost";
+  text?: string;
+  border_only?: boolean;
+  title?: string;
+  bullet_type?: null;
+  narration?: Narration;
+}
 export interface CustomData {
   creator: string;
   download_link: {
@@ -1428,7 +1455,8 @@ export interface Rule {
   text?: string;
   table?: {
     row: {
-      [k: string]: any;
+      text: string;
+      color?: "grey" | "green" | "red";
     }[];
   }[];
   rules?: Rule[];
@@ -1494,8 +1522,8 @@ export interface Taboo {
   text?: string;
   exceptional?: boolean;
   deck_limit?: number;
-  deck_options?: any[];
+  deck_options?: unknown[];
   deck_requirements?: {
-    [k: string]: any;
+    [k: string]: unknown;
   };
 }

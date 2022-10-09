@@ -640,7 +640,7 @@ function LocationContent({
           ) }
           { !!travelDistance && !!currentLocation && (
             <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
-              { t`Travel time:`} { ngettext(msgid`${travelDistance} day`, `${travelDistance} days`, travelDistance) }
+              { ngettext(msgid`Travel time: ${travelDistance} time`, `Travel time: ${travelDistance} time`, travelDistance) }
             </Text>
           ) }
           { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (

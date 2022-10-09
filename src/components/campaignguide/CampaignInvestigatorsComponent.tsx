@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, StyleSheet, View, Platform } from 'react-native';
-import { filter, find, flatMap, map, partition } from 'lodash';
+import { delay, filter, find, flatMap, map, partition } from 'lodash';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
@@ -17,7 +17,7 @@ import CampaignLogSectionComponent from './CampaignLogComponent/CampaignLogSecti
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 import { updateCampaignXp } from '@components/campaign/actions';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
-import { SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';
+import { SaveDeck, SaveDeckUpgrade } from '@components/deck/useDeckUpgradeAction';
 import { CampaignLogSectionDefinition } from '@data/scenario/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
@@ -36,11 +36,13 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   showAlert: ShowAlert;
   saveDeckUpgrade: SaveDeckUpgrade<StepId>;
+  saveDeck: SaveDeck<StepId>;
 }
 
 function AliveInvestigatorRow({
   componentId, investigator, processedCampaign, investigatorCountSections, suppliesSections, savingDeckUpgrade,
-  login, removeInvestigatorPressed, showChooseDeckForInvestigator, showXpDialogPressed, showTraumaDialog, saveDeckUpgrade,
+  login, removeInvestigatorPressed, showChooseDeckForInvestigator, showXpDialogPressed, showTraumaDialog,
+  saveDeckUpgrade, saveDeck,
 }: {
   componentId: string;
   investigator: Card;
@@ -54,6 +56,7 @@ function AliveInvestigatorRow({
   showXpDialogPressed: (investigator: Card) => void;
   removeInvestigatorPressed: (investigator: Card) => void;
   saveDeckUpgrade: SaveDeckUpgrade<StepId>;
+  saveDeck: SaveDeck<StepId>;
 }) {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [saving, setSaving] = useState(false);
@@ -64,21 +67,41 @@ function AliveInvestigatorRow({
   }, [savingDeckUpgrade, setSaving]);
   const { campaign, campaignGuide, campaignState, latestDecks, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
-  const nextDeckUpgradeStepId = useMemo(() => userId ? campaignState.nextDelayedDeckEdit(investigator.code, userId) : undefined, [campaignState, investigator.code, userId]);
+  const [nextDeckUpgradeStepId, nextDeckUpgradeType] = useMemo(() => {
+    if (!userId) {
+      return [undefined, undefined];
+    }
+    const stepId = campaignState.nextDelayedDeckEdit(investigator.code, userId);
+    if (!stepId) {
+      return [undefined, undefined];
+    }
+    const [,,delayedDeckEdits] = campaignState.numberChoices(stepId.id, stepId.scenario);
+    return [stepId, delayedDeckEdits?.type];
+  }, [campaignState, investigator.code, userId]);
   const deck = latestDecks[investigator.code];
-  const saveNextDeckUpgradePressed = useCallback(() => {
+  const saveNextDeckUpgradePressed = useCallback(async() => {
     if (nextDeckUpgradeStepId && deck) {
-      const [,,deckEdits] = campaignState.numberChoices(nextDeckUpgradeStepId.id, nextDeckUpgradeStepId.scenario);
-      if (deckEdits) {
+      const [,,delayedDeckEdits] = campaignState.numberChoices(nextDeckUpgradeStepId.id, nextDeckUpgradeStepId.scenario);
+      if (delayedDeckEdits) {
         setSaving(true);
-        saveDeckUpgrade(
-          deck,
-          deckEdits.xp,
-          deckEdits.storyCounts,
-          deckEdits.ignoreStoryCounts,
-          deckEdits.exileCounts,
-          nextDeckUpgradeStepId
-        );
+        if (delayedDeckEdits.type === 'save') {
+          await saveDeck(
+            deck,
+            delayedDeckEdits.xp,
+            delayedDeckEdits.storyCounts,
+            nextDeckUpgradeStepId
+          );
+        } else {
+          await saveDeckUpgrade(
+            deck,
+            delayedDeckEdits.xp,
+            delayedDeckEdits.storyCounts,
+            delayedDeckEdits.ignoreStoryCounts,
+            delayedDeckEdits.exileCounts,
+            nextDeckUpgradeStepId
+          );
+        }
+        setSaving(false);
       }
     }
   }, [saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
@@ -124,8 +147,8 @@ function AliveInvestigatorRow({
                 key="deck_upgrade"
                 color="gold"
                 icon="deck"
-                title={t`Claim previous scenario XP`}
-                detail={t`Apply changes from last completed scenario`}
+                title={nextDeckUpgradeType === 'save' ? t`Claim previous rewards` : t`Claim previous scenario XP`}
+                detail={nextDeckUpgradeType === 'save' ? t`Apply changes from last completed scenario or interlude` : t`Apply changes from last completed scenario`}
                 loading={saving}
                 onPress={saveNextDeckUpgradePressed}
               />
@@ -183,7 +206,8 @@ function AliveInvestigatorRow({
 export default function CampaignInvestigatorsComponent(props: Props) {
   const {
     componentId, loading, processedCampaign, actions, savingDeckUpgrade,
-    login, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog, saveDeckUpgrade,
+    login, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog,
+    saveDeckUpgrade, saveDeck,
   } = props;
   const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
   const { typography } = useContext(StyleContext);
@@ -310,6 +334,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
               showXpDialogPressed={showXpDialogPressed}
               showTraumaDialog={betweenScenarios ? showTraumaDialog : disabledShowTraumaPressed}
               saveDeckUpgrade={saveDeckUpgrade}
+              saveDeck={saveDeck}
               savingDeckUpgrade={savingDeckUpgrade}
             />
           )) }

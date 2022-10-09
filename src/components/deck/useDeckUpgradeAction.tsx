@@ -22,10 +22,17 @@ export type SaveDeckUpgrade<T> = (
   d: T
 ) => Promise<void> | undefined;
 
+export type SaveDeck<T> = (
+  deck: LatestDeckT | undefined,
+  xp: number,
+  storyAssetDeltas: Slots,
+  id: T
+) => Promise<void> | undefined;
+
 export default function useDeckUpgradeAction<T = undefined>(
   actions: DeckActions,
-  upgradeCompleted: (deck: Deck, xp: number, id: T) => Promise<void>,
-): [boolean, string | undefined, SaveDeckUpgrade<T>] {
+  deckCompleted: (deck: Deck, xp: number, id: T) => Promise<void>,
+): [boolean, string | undefined, SaveDeckUpgrade<T>, SaveDeck<T>] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const deckDispatch: DeckDispatch = useDispatch();
   const doSaveDeckChanges = useCallback((deck: Deck, changes: SaveDeckChanges): Promise<Deck> => {
@@ -40,8 +47,8 @@ export default function useDeckUpgradeAction<T = undefined>(
   const [error, setError] = useState<string | undefined>();
   const deckUpgradeComplete = useCallback(async(deck: Deck, xp: number, id: T) => {
     setSaving(false);
-    await upgradeCompleted(deck, xp, id);
-  }, [setSaving, upgradeCompleted]);
+    await deckCompleted(deck, xp, id);
+  }, [setSaving, deckCompleted]);
 
   const handleStoryCardChanges = useCallback(async(
     upgradedDeck: Deck,
@@ -125,6 +132,46 @@ export default function useDeckUpgradeAction<T = undefined>(
       });
     }
   }, [doSaveDeckUpgrade, saving, handleStoryCardChanges, setError, setSaving]);
+
+  const saveDeck = useCallback(async(
+    deck: LatestDeckT | undefined,
+    xp: number,
+    storyAssetDeltas: Slots,
+    id: T,
+    isRetry?: boolean,
+  ) => {
+    if (!deck) {
+      return;
+    }
+    if (!saving || isRetry) {
+      setSaving(true);
+      return new Promise<void>((resolve, reject) => {
+        setTimeout(() => {
+          const slots: Slots = { ...deck.deck.slots };
+          forEach(storyAssetDeltas, (delta, code) => {
+            if (code.startsWith('z') && !deck.id.local) {
+              return;
+            }
+            slots[code] = (slots[code] || 0) + delta;
+            if (!slots[code]) {
+              delete slots[code];
+            }
+          });
+          const changes: SaveDeckChanges = { slots };
+          changes.xpAdjustment = (deck.deck.xp_adjustment || 0) + xp;
+          doSaveDeckChanges(deck.deck, changes).then(async(d) => {
+            await deckCompleted(d, xp, id);
+            setSaving(false);
+            resolve();
+          }, (e: Error) => {
+            setError(e.message);
+            setSaving(false);
+            reject(e.message);
+          });
+        }, 0);
+      });
+    }
+  }, [saving])
   const throttledSaveUpgrade: SaveDeckUpgrade<T> = useMemo(() => {
     return debounce((
       deck: LatestDeckT | undefined,
@@ -135,6 +182,14 @@ export default function useDeckUpgradeAction<T = undefined>(
       id: T
     ): Promise<void> => saveUpgrade(deck, xp, storyCounts, ignoreStoryCounts, exileCounts, id), 1000, { leading: true, trailing: false });
   }, [saveUpgrade]);
+  const throttledSaveDeck: SaveDeck<T> = useMemo(() => {
+    return debounce((
+      deck: LatestDeckT | undefined,
+      xp: number,
+      storyAssetDeltas: Slots,
+      id: T
+    ): Promise<void> => saveDeck(deck, xp, storyAssetDeltas, id), 1000, { leading: true, trailing: false });
+  }, [saveDeck]);
 
-  return [saving, error, throttledSaveUpgrade];
+  return [saving, error, throttledSaveUpgrade, throttledSaveDeck];
 }

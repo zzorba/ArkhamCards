@@ -419,7 +419,7 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tic: t`The Innsmouth Conspiracy`,
     eoe: t`Edge of the Earth`,
-    tsk: t`The Scarlet Keys`,
+    tskc: t`The Scarlet Keys`,
     gob: t`Guardians of the Abyss`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
@@ -459,9 +459,10 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
-    case TSK:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
+    case TSK:
+      return colors.campaign.tsk;
     case EOE:
       return colors.campaign.eoe;
     case GOB:
@@ -695,6 +696,13 @@ const EOE_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 1, '-4': 2, '-5': 1, '-7': 1, frost: 3, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+const TSK_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+};
+
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
@@ -786,7 +794,6 @@ export function getChaosBag(
     case RTNOTZ:
     case CUSTOM:
     case STANDALONE:
-    case TSK:
       return NOTZ_BAG[difficulty];
     case DWL:
     case RTDWL:
@@ -810,6 +817,8 @@ export function getChaosBag(
       return TIC_BAG[difficulty];
     case EOE:
       return EOE_BAG[difficulty];
+    case TSK:
+      return TSK_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:

@@ -103,10 +103,12 @@ export default class ScenarioGuide {
     campaignLog: GuidedCampaignLog
   ): Step | undefined {
     if (id.indexOf('#') !== -1) {
+      const parts = id.split('#');
       const step = this.stepHelper(
-        id.split('#')[0],
+        parts[0],
         campaignState,
-        campaignLog
+        campaignLog,
+        parseInt(parts[1], 10),
       );
       if (!step) {
         return undefined;
@@ -116,13 +118,14 @@ export default class ScenarioGuide {
         id,
       };
     }
-    return this.stepHelper(id, campaignState, campaignLog);
+    return this.stepHelper(id, campaignState, campaignLog, undefined);
   }
 
   private stepHelper(
     id: string,
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog,
+    iteration?: number
   ) {
     const existingStep = find(
       this.scenario.steps,
@@ -144,7 +147,8 @@ export default class ScenarioGuide {
       this,
       campaignState,
       campaignLog,
-      this.standalone
+      this.standalone,
+      iteration
     );
     if (fixedStep) {
       return fixedStep;

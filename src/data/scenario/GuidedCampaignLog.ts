@@ -18,6 +18,7 @@ import {
   CampaignDifficulty,
   InvestigatorData,
   Slots,
+  Trauma,
   TraumaAndCardData,
   WeaknessSet,
 } from '@actions/types';
@@ -49,6 +50,7 @@ import {
   PartnerStatus,
   SetCardCountEffect,
   ScarletKeyEffect,
+  SaveDecksEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -376,7 +378,7 @@ export default class GuidedCampaignLog {
               this.handleUpgradeDecksEffect();
               break;
             case 'save_decks':
-              this.handleSaveDecksEffect();
+              this.handleSaveDecksEffect(effect);
               break;
             case 'partner_status':
               this.handlePartnerStatusEffect(effect, input);
@@ -630,6 +632,14 @@ export default class GuidedCampaignLog {
   scenarioResolution(scenarioId: string): string | undefined {
     const data = this.scenarioData[scenarioId];
     return data && data.resolution;
+  }
+
+  hasResolution(): boolean {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('accessed resolution while not playing');
+    }
+    return !!this.latestScenarioData.resolution;
   }
 
   resolution(): string {
@@ -914,16 +924,20 @@ export default class GuidedCampaignLog {
   }
 
 
-  private handleSaveDecksEffect() {
+  private handleSaveDecksEffect(effect: SaveDecksEffect) {
     const investigatorData = cloneDeep(this.campaignData.lastSavedInvestigatorData || {});
     forEach(this.campaignData.investigatorData, (data, code) => {
-      investigatorData[code] = {
+      const updatedData: TraumaAndCardData = {
         ...(investigatorData[code] || {}),
         storyAssets: [...(data?.storyAssets || [])],
         ignoreStoryAssets: [...(data?.ignoreStoryAssets || [])],
         addedCards: [...(data?.addedCards || [])],
         removedCards: [...(data?.removedCards || [])],
       };
+      if (effect.adjust_xp) {
+        updatedData.availableXp = data?.availableXp;
+      }
+      investigatorData[code] = updatedData;
     });
     this.campaignData.lastSavedInvestigatorData = investigatorData;
   }

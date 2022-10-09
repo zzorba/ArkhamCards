@@ -34,7 +34,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, CHECK_CONTINUE_PLAY_SCENARIO } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -384,6 +384,7 @@ export default class ScenarioStep {
       case 'rule_reminder':
       case 'location_setup':
       case 'xp_count':
+      case 'travel_cost':
         return this.proceedToNextStep(
           this.remainingStepIds,
           scenarioState,
@@ -778,7 +779,7 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `${base_step_id}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{
@@ -1223,7 +1224,7 @@ export default class ScenarioStep {
       case 'save_decks': {
         const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
           return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
-        }) || input.trauma;
+        }) || input.trauma || input.adjust_xp;
         if (!hasDeckChanges) {
           return this.proceedToNextStep(
             this.remainingStepIds,
@@ -1287,7 +1288,14 @@ export default class ScenarioStep {
           });
         }
 
-        effectsWithInput.push({ effects: [{ type: 'save_decks' }] });
+        effectsWithInput.push({
+          effects: [
+            {
+              type: 'save_decks',
+              adjust_xp: input.adjust_xp,
+            },
+          ],
+        });
 
         // Finally do the deck 'save' to bank it.
         return this.maybeCreateEffectsStep(

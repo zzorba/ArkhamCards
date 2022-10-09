@@ -171,6 +171,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           id={step.id}
           componentId={componentId}
           includeTrauma={step.input.trauma}
+          adjustXp={step.input.adjust_xp}
         />
       );
     case 'play_scenario':

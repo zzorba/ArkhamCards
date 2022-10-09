@@ -29,6 +29,7 @@ import ScenarioGuideContext from '../ScenarioGuideContext';
 import ActionButton from '../prompts/ActionButton';
 import BorderStepComponent from './BorderStepComponent';
 import TitleComponent from './TitleComponent';
+import TravelCostStepComponent from './TravelCostStepComponent';
 
 interface Props {
   componentId: string;
@@ -37,6 +38,7 @@ interface Props {
   border?: boolean;
   switchCampaignScenario: () => void;
 }
+
 
 function ScenarioStepComponentContent({
   componentId,
@@ -90,6 +92,10 @@ function ScenarioStepComponentContent({
           campaignId={campaignId}
           componentId={componentId}
         />
+      );
+    case 'travel_cost':
+      return (
+        <TravelCostStepComponent campaignGuide={campaignGuide} />
       );
     case 'location_connectors':
       return <LocationConnectorsStepComponent step={step} />;

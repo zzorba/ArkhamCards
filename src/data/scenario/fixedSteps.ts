@@ -53,11 +53,7 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
 }
 
 export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
-function chooseResolutionStep(resolutions: Resolution[], scenarioGuide: ScenarioGuide): InputStep {
-  const hasInvestigatorDefeat = !!find(
-    resolutions,
-    resolution => resolution.id === 'investigator_defeat'
-  );
+function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
@@ -76,20 +72,8 @@ function chooseResolutionStep(resolutions: Resolution[], scenarioGuide: Scenario
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             hidden: resolution.hidden,
             steps: [
-              investigatorStatusStepId(resolution),
-              ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
-              `$r_${resolution.id}`,
-              ...resolution.steps,
-              ...(scenarioGuide.sideScenario ? scenarioGuide.campaignGuide.sideScenarioResolutionStepIds() : []),
-              INTER_SCENARIO_CHANGES_STEP_ID,
-              PROCEED_STEP_ID,
+              `$pr_${resolution.id}`,
             ],
-            effects: [{
-              type: 'scenario_data',
-              setting: 'scenario_status',
-              status: 'resolution',
-              resolution: resolution.id,
-            }],
           };
           return choice;
         }
@@ -240,6 +224,8 @@ const playScenarioStep: InputStep = {
   },
 };
 
+export const CHECK_CONTINUE_PLAY_SCENARIO = '$check_continue_play_scenario';
+
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
   return {
@@ -291,24 +277,55 @@ function leadInvestigatorStep(): InputStep {
   };
 }
 
-function resolutionStep(
+function dynamicResolutionSteps(
   id: string,
-  resolutions: Resolution[]
+  scenarioGuide: ScenarioGuide
 ): Step | undefined {
-  if (!id.startsWith('$r_')) {
-    return undefined;
-  }
-  const statusStep = investigatorStatusStep(id, resolutions);
-  if (statusStep) {
-    return statusStep;
-  }
-  const resolution = id.substring(3);
-  return {
-    id,
-    type: 'resolution',
-    generated: true,
-    resolution,
+  const resolutions = scenarioGuide.resolutions();
+  if (id.startsWith('$r_')) {
+    const statusStep = investigatorStatusStep(id, resolutions);
+    if (statusStep) {
+      return statusStep;
+    }
+    const resolution = id.substring(3);
+    return {
+      id,
+      type: 'resolution',
+      generated: true,
+      resolution,
+    };
   };
+  if (id.startsWith('$pr_')) {
+    const resolutionId = id.substring(4);
+    const resolution = find(resolutions, r => r.id === resolutionId);
+    if (!resolution) {
+      return undefined;
+    }
+    const hasInvestigatorDefeat = !!find(
+      resolutions,
+      resolution => resolution.id === 'investigator_defeat'
+    );
+    return {
+      id,
+      hidden: true,
+      steps: [
+        investigatorStatusStepId(resolution),
+        ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
+        `$r_${resolution.id}`,
+        ...resolution.steps,
+        ...(scenarioGuide.sideScenario ? scenarioGuide.campaignGuide.sideScenarioResolutionStepIds() : []),
+        INTER_SCENARIO_CHANGES_STEP_ID,
+        PROCEED_STEP_ID,
+      ],
+      effects: [{
+        type: 'scenario_data',
+        setting: 'scenario_status',
+        status: 'resolution',
+        resolution: resolution.id,
+      }],
+    };
+  }
+  return undefined;
 }
 
 const INVESTIGATOR_STATUS_STEP_SUFFIX = 'investigator_status';
@@ -543,11 +560,12 @@ export function getFixedStep(
   scenarioGuide: ScenarioGuide,
   campaignState: CampaignStateHelper,
   campaignLog: GuidedCampaignLog,
-  standalone: boolean
+  standalone: boolean,
+  iteration: number | undefined
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
-      return chooseResolutionStep(scenarioGuide.resolutions(), scenarioGuide);
+      return chooseResolutionStep(scenarioGuide.resolutions());
     case CHECK_TAROT_READING:
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
@@ -598,6 +616,24 @@ export function getFixedStep(
       return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
       return playScenarioStep;
+    case CHECK_CONTINUE_PLAY_SCENARIO: {
+      const step: BranchStep = {
+        id: CHECK_CONTINUE_PLAY_SCENARIO,
+        hidden: true,
+        type: 'branch',
+        condition: {
+          type: 'scenario_data',
+          scenario_data: 'has_resolution',
+          options: [
+            {
+              boolCondition: false,
+              steps: [iteration !== undefined ? `${PLAY_SCENARIO_STEP_ID}#${iteration}` : PLAY_SCENARIO_STEP_ID],
+            }
+          ]
+        },
+      };
+      return step;
+    }
     case CHOOSE_INVESTIGATORS_STEP_ID:
       return chooseInvestigatorsStep;
     case UPGRADE_DECKS_STEP_ID:
@@ -609,7 +645,7 @@ export function getFixedStep(
     case RECORD_TRAUMA_STEP_ID:
       return recordTraumaStep();
     default:
-      return resolutionStep(id, scenarioGuide.resolutions());
+      return dynamicResolutionSteps(id, scenarioGuide);
   }
 }
 
