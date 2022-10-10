@@ -9,7 +9,7 @@ import { msgid, ngettext, t } from 'ttag';
 
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
-import { EncounterSetsStep } from '@data/scenario/types';
+import { BorderColor, EncounterSetsStep } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { EncounterCardErrataProps } from '@components/campaignguide/EncounterCardErrataView';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -32,9 +32,10 @@ interface Props {
   campaignId: CampaignId;
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
+  color?: BorderColor;
 }
 
-export default function EncounterSetStepComponent({ componentId, campaignId, step, campaignGuide }: Props) {
+export default function EncounterSetStepComponent({ componentId, color, campaignId, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSettingValue('alphabetize');
   const { colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
@@ -81,7 +82,7 @@ export default function EncounterSetStepComponent({ componentId, campaignId, ste
   const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   return (
     <>
-      <SetupStepWrapper bulletType={step.bullet_type}>
+      <SetupStepWrapper bulletType={step.bullet_type} color={color}>
         <CampaignGuideTextComponent text={text} />
         <SetupStepWrapper bulletType={step.bullet_type} reverseSpacing>
           <View style={[styles.iconPile, space.marginTopM, space.marginBottomS]}>

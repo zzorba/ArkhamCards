@@ -94,6 +94,7 @@ function ScenarioStepComponentContent({
           step={step}
           campaignGuide={campaignGuide}
           campaignId={campaignId}
+          color={color}
           componentId={componentId}
         />
       );

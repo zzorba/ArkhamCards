@@ -55,6 +55,7 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
+import { parse } from 'flatted';
 
 function filterBy(
   cardIds: CardId[],
@@ -677,8 +678,14 @@ export function parseCustomizationDecision(value: string | undefined): Customiza
   if (!value) {
     return [];
   }
-  return map(value.split(','), choice => {
+  return flatMap(value.split(','), choice => {
     const parts = choice.split('|');
+    if (!parts[0] || parts[0] === 'NaN') {
+      return [];
+    }
+    if (parts.length > 1 && (!parts[1] || parts[1] === 'NaN')) {
+      return [];
+    }
     return {
       index: parseInt(parts[0], 10),
       spent_xp: parts.length > 1 ? parseInt(parts[1], 10) : 0,

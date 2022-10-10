@@ -1,4 +1,4 @@
-import { map, filter, forEach, range, sortBy } from 'lodash';
+import { flatMap, map, filter, forEach, range, sortBy } from 'lodash';
 import Config from 'react-native-config';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
@@ -601,7 +601,10 @@ export function updateDeckCustomizationChoice(
       decision,
     ], d => d.index);
     const updatedMeta: DeckMeta = { ...deckEdits.meta };
-    updatedMeta[key] = map(existing, e => {
+    updatedMeta[key] = flatMap(existing, e => {
+      if (!e.spent_xp && !e.choice) {
+        return [];
+      }
       const parts = [`${e.index}`, `${e.spent_xp}`];
       if (e.choice) {
         parts.push(e.choice);

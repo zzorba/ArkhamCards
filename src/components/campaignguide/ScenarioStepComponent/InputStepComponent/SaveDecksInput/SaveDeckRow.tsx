@@ -215,8 +215,8 @@ function SaveDeckRow({
   const traumaSection = useTraumaSection({ campaignLog, investigator, saving, editable, choices, physicalAdjust, incPhysical, decPhysical, mentalAdjust, incMental, decMental });
 
   const [unsavedAdjustments, deckChanges] = useMemo(() => {
-    return [physicalAdjust !== 0 || mentalAdjust !== 0 || adjustXp,
-      !!deck && !!find(storyAssetDeltas, (count: number) => count !== 0),
+    return [physicalAdjust !== 0 || mentalAdjust !== 0,
+      !!deck && (adjustXp || !!find(storyAssetDeltas, (count: number) => count !== 0)),
     ];
   }, [storyAssetDeltas, physicalAdjust, mentalAdjust, deck]);
 
