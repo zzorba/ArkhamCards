@@ -700,13 +700,16 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.scarletIcon('tskc', size, color);
       case 'arkham_ma':
         return this.scarletIcon('arkham', size, color);
+      case 'constantinople':
+      case 'istanbul':
+        return this.scarletIcon('constantinople', size, color);
+      case 'bermuda':
+        return this.scarletIcon('bermuda_2', size, color);
       case 'alexandria':
       case 'anchorage':
-      case 'bermuda':
       case 'bombay':
       case 'buenos_aires':
       case 'cairo':
-      case 'constantinople':
       case 'havana':
       case 'hong_kong':
       case 'kabul':
@@ -732,9 +735,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sydney':
       case 'tokyo':
       case 'tunguska':
-      case 'venice':
       case 'ybor_city':
         return this.scarletIcon(encounter_code, size, color);
+      case 'venice_it':
+        return this.scarletIcon('venice', size, color);
       case 'agents_of_cthugha':
         return this.darkMatterIcon('agents_of_cthugua', size, color);
       case 'agency_survivors':

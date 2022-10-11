@@ -10,6 +10,7 @@ import {
   BranchStep,
   CampaignLogCondition,
   CampaignLogCardsCondition,
+  BorderColor,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
@@ -17,9 +18,10 @@ interface Props {
   step: BranchStep;
   condition: CampaignLogCondition | CampaignLogCardsCondition;
   campaignLog: GuidedCampaignLog;
+  color?: BorderColor;
 }
 
-export default function CampaignLogConditionComponent({ step, condition, campaignLog }: Props) {
+export default function CampaignLogConditionComponent({ step, condition, campaignLog, color }: Props) {
   const { campaignGuide } = useContext(CampaignGuideContext);
   if (every(condition.options, option => option.boolCondition !== undefined)) {
     // It's a binary prompt.
@@ -44,6 +46,7 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
           return (
             <BinaryResult
               prompt={prompt}
+              color={color}
               result={negativeResult ? !result : result}
               bulletType={step.bullet_type}
             />

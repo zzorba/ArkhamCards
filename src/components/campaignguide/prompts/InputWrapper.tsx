@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import ActionButton from './ActionButton';
-import { BulletType } from '@data/scenario/types';
+import { BorderColor, BulletType } from '@data/scenario/types';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import Card from '@data/types/Card';
@@ -26,6 +26,7 @@ interface Props {
   onSubmit?: () => void;
   disabledText?: string;
   children: React.ReactNode;
+  noDivider?: boolean;
 }
 
 function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletType }: { bulletType?: BulletType; titleStyle: 'header' | 'setup'; title?: string; titleNode?: React.ReactNode; titleButton?: React.ReactNode; editable?: boolean }) {
@@ -126,6 +127,7 @@ export default function InputWrapper({
   buttons,
   onSubmit,
   disabledText,
+  noDivider,
 }: Props) {
   const { colors, borderStyle, shadow, width } = useContext(StyleContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
@@ -186,7 +188,7 @@ export default function InputWrapper({
     ]}>
       <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} />
       <View style={bulletType ? space.paddingSideS : undefined}>{ children }</View>
-      <View style={[bulletType ? space.marginSideS : undefined, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]} />
+      <View style={[bulletType ? space.marginSideS : undefined, noDivider ? undefined : { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]} />
     </View>
   );
 }

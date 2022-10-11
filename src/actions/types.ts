@@ -414,7 +414,7 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
-export const TSK = 'tsk';
+export const TSK = 'tskc';
 export const GOB = 'gob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
@@ -466,7 +466,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
   EOE,
   GOB,
-  // TSK,
+  TSK,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -650,7 +650,7 @@ export interface SetCurrentTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 
 export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
-export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'draft_from_collection' | 'low_memory';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'map_list' | 'draft_from_collection' | 'low_memory';
 export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
@@ -1210,6 +1210,7 @@ export interface DelayedDeckEdits {
   ignoreStoryCounts: Slots;
   exileCounts: Slots;
   resolved?: boolean;
+  type?: 'save';
 }
 
 export interface GuideNumberChoicesInput extends BasicInput {
@@ -1246,9 +1247,11 @@ export interface GuideChoiceInput extends BasicInput {
 
 export interface EmbarkData {
   previousScenarioId: string;
+  departure?: string;
   destination: string;
   time: number;
   nextScenario: string;
+  fast: boolean;
 }
 
 export interface GuideStartScenarioInput extends BasicInput {

@@ -578,14 +578,15 @@ export default function useParsedDeckComponent({
     }
     const count = getCount(item, deckEditsRef?.current?.ignoreDeckLimitSlots);
     const cardCustomizations = customizations?.[card.code];
+    const customizedCard = card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')
     return (
       <CardSearchResult
         key={item.index}
-        card={card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')}
+        card={customizedCard}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
-        control={controlForCard(item, card, count)}
+        control={controlForCard(item, customizedCard, count)}
         faded={count === 0}
         noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
         noSidePadding

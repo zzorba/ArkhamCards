@@ -9,7 +9,7 @@ import ItemPickerLine from './ItemPickerLine';
 import TextInputLine from './TextInputLine';
 import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import { TINY_PHONE } from '@styles/sizes';
+import { MAX_WIDTH, TINY_PHONE } from '@styles/sizes';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '../CompactInvestigatorRow';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -76,6 +76,7 @@ function NewDialog(props: Props) {
       <View style={[
         shadow.large,
         styles.dialog,
+        { maxWidth: MAX_WIDTH },
         investigator ? { borderTopLeftRadius: 0, borderTopRightRadius: 0 } : undefined,
         { width: width - s * 2 },
       ]}>

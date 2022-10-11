@@ -64,6 +64,6 @@ export default function useTabooChooser({ tabooSetId, onFilterChange }: Props): 
       key="button"
       text={tabooSetText}
       onPress={showDialog}
-    />
+    />,
   ]
 }

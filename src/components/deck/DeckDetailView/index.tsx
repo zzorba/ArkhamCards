@@ -978,7 +978,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z')) && editable && (
+        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z') || parsedDeck.investigator?.custom()) && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}

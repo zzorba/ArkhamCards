@@ -57,7 +57,7 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [doLogout, loginPressed, showAlert]);
+  }, [doLogout, loginPressed, showAlert, deletePressed]);
 
   const reauthPressed = useCallback(() => {
     const appleButtons: AlertButton[] = Platform.OS === 'ios' ? [{ text: t`Delete Account`, onPress: deletePressed, icon: 'trash', style: 'destructive' }] : [];
@@ -71,7 +71,7 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  }, [doLogout, loginPressed, showAlert]);
+  }, [doLogout, loginPressed, showAlert, deletePressed]);
   const [status, control] = useMemo(() => {
     if (isConnected && error) {
       return [

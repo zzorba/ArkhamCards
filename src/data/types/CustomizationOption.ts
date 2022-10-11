@@ -1,5 +1,5 @@
 import { SingleCardFragment } from '@generated/graphql/apollo-schema';
-import { map, filter } from 'lodash';
+import { map } from 'lodash';
 import { Column } from 'typeorm/browser';
 
 import Card from './Card';

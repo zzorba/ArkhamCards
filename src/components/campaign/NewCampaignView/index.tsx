@@ -25,8 +25,8 @@ import {
   NewCampaignAction,
   NewStandaloneCampaignAction,
   NEW_GUIDED_CAMPAIGNS,
+  BROWSE_CAMPAIGNS,
 } from '@actions/types';
-import { BROWSE_CAMPAIGNS } from '@app/App';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';

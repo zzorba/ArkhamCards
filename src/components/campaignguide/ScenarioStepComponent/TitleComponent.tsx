@@ -8,17 +8,18 @@ import TextWithIcons from '@components/core/TextWithIcons';
 
 interface Props {
   title: string;
+  simpleTitleFont?: boolean,
   border_color?: BorderColor;
   center?: boolean;
   strikethrough?: boolean;
 }
-export default function TitleComponent({ title, center, strikethrough, border_color = 'setup' }: Props) {
+export default function TitleComponent({ title, center, strikethrough, simpleTitleFont, border_color = 'setup' }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const color = colors.campaign.text[border_color];
   return (
     <View style={styles.titleWrapper}>
       <Text style={[
-        typography.bigGameFont,
+        simpleTitleFont ? typography.simpleTitleFont : typography.bigGameFont,
         { color },
         space.paddingTopL,
         center ? typography.center : {},

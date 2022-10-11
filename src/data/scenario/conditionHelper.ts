@@ -8,6 +8,7 @@ import {
   map,
   sumBy,
   maxBy,
+  values,
 } from 'lodash';
 
 import { StringChoices } from '@actions/types';
@@ -47,6 +48,9 @@ import {
   InvestigatorChoiceCondition,
   ScenarioDataInvestigatorStatusCondition,
   CampaignDataNextScenarioCondition,
+  LocationCondition,
+  ScarletKeyCondition,
+  ScarletKeyCountCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -500,13 +504,17 @@ export function campaignDataScenarioConditionResult(
 function investigatorConditionMatches(
   investigatorData: 'trait' | 'faction' | 'code',
   options: StringOption[],
+  excludeInvestigators: string[] | undefined,
   campaignLog: GuidedCampaignLog
 ): InvestigatorResult {
   const investigators = campaignLog.investigators(false);
   const investigatorChoices: StringChoices = {};
-
+  const excluded = new Set(excludeInvestigators || []);
   for (let i = 0; i < investigators.length; i++) {
     const card = investigators[i];
+    if (excluded.has(card.code)) {
+      continue;
+    }
     const matches = filter(
       options,
       option => investigatorDataMatches(card, investigatorData, option.condition)
@@ -533,6 +541,7 @@ export function investigatorConditionResult(
   return investigatorConditionMatches(
     condition.investigator_data,
     condition.options,
+    undefined,
     campaignLog
   );
 }
@@ -557,6 +566,7 @@ export function campaignDataInvestigatorConditionResult(
   const result = investigatorConditionMatches(
     condition.investigator_data,
     condition.options,
+    condition.exclude_investigators,
     campaignLog
   );
   let match: OptionWithId | undefined = undefined;
@@ -652,9 +662,14 @@ export function multiConditionResult(
             case 'scenario_completed':
             case 'scenario_replayed':
             case 'next_scenario':
+            case 'investigator':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
+        case 'scarlet_key':
+          return scarletKeyConditionResult(subCondition, campaignLog).option ? 1 : 0;
+        case 'scarlet_key_count':
+          return scarletKeyCountConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'scenario_data': {
           switch (subCondition.scenario_data) {
             case 'resolution':
@@ -662,8 +677,11 @@ export function multiConditionResult(
                 campaignLog.resolution(),
                 subCondition.options
               ).option ? 1 : 0;
-            default:
-              return 0;
+            case 'player_count':
+              return numberConditionResult(
+                campaignLog.playerCount(),
+                subCondition.options
+              ).option ? 1 : 0;
           }
         }
         case 'math':
@@ -746,11 +764,12 @@ function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampai
   switch (condition.operation) {
     case 'equals':
       return mathEqualsConditionResult(condition, campaignLog);
-    case 'sum': {
+    case 'sum':
+    case 'divide': {
       const opA = getOperand(condition.opA, campaignLog);
       const opB = getOperand(condition.opB, campaignLog);
       return numberConditionResult(
-        opA + opB,
+        condition.operation === 'sum' ? (opA + opB) : (opA / opB),
         condition.options,
         condition.default_option
       );
@@ -831,28 +850,76 @@ export function conditionResult(
       return killedTraumaConditionResult(condition, campaignLog);
     case 'scenario_data': {
       switch (condition.scenario_data) {
-        case 'player_count': {
-          const playerCount = campaignLog.playerCount();
+        case 'player_count':
           return numberConditionResult(
-            playerCount,
+            campaignLog.playerCount(),
             condition.options
           );
-        }
-        case 'resolution': {
+        case 'resolution':
           return stringConditionResult(
             campaignLog.resolution(),
             condition.options
           );
-        }
+        case 'has_resolution':
+          return binaryConditionResult(
+            campaignLog.hasResolution(),
+            condition.options
+          );
         case 'fixed_investigator_status':
           return fixedInvestigatorStatusConditionResult(condition, campaignLog);
-        case 'investigator_status': {
+        case 'investigator_status':
           return investigatorStatusConditionResult(condition, campaignLog);
-        }
       }
     }
     case 'partner_status':
       return partnerStatusConditionResult(condition, campaignLog);
+    case 'location':
+      return locationConditionResult(condition, campaignLog);
+    case 'scarlet_key':
+      return scarletKeyConditionResult(condition, campaignLog);
+    case 'scarlet_key_count':
+      return scarletKeyCountConditionResult(condition, campaignLog);
+  }
+}
+
+export function scarletKeyConditionResult(condition: ScarletKeyCondition, campaignLog: GuidedCampaignLog) {
+  const key = campaignLog.campaignData.scarlet.keyStatus[condition.scarlet_key];
+  switch (condition.status) {
+    case 'enemy':
+      return binaryConditionResult(
+        !!key?.enemy,
+        condition.options,
+        key?.enemy ? [key.enemy] : []
+      );
+    case 'investigator':
+      return binaryConditionResult(
+        !!key?.investigator,
+        condition.options,
+        key?.investigator ? [key.investigator] : []
+      );
+  }
+}
+
+
+export function scarletKeyCountConditionResult(condition: ScarletKeyCountCondition, campaignLog: GuidedCampaignLog) {
+  const count = condition.status === 'enemy' ?
+    sumBy(values(campaignLog.campaignData.scarlet.keyStatus), (status) => status?.enemy ? 1 : 0) :
+    sumBy(values(campaignLog.campaignData.scarlet.keyStatus), (status) => status?.investigator && !status?.enemy ? 1 : 0);
+  return numberConditionResult(count, condition.options, condition.default_option);
+}
+
+export function locationConditionResult(condition: LocationCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  switch (condition.status) {
+    case 'visited':
+      return binaryConditionResult(
+        !!find(campaignLog.campaignData.scarlet.visitedLocations, loc => loc === condition.location),
+        condition.options
+      );
+    case 'current':
+      return binaryConditionResult(
+        campaignLog.campaignData.scarlet.location === condition.location,
+        condition.options
+      );
   }
 }
 

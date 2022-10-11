@@ -11,7 +11,6 @@ import LocationCard from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import CardImageView from '@components/card/CardImageView';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;

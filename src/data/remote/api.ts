@@ -34,7 +34,7 @@ export function useDeleteAccount() {
         await fetch(`https://us-central1-arkhamblob.cloudfunctions.net/apple-revokeToken?refresh_token=${encodeURIComponent(appleToken)}`)
       } catch (e) {
         console.log(e.message);
-        await setAppleRefreshToken("");
+        await setAppleRefreshToken('');
       }
     }
     const data = await apiCall({});

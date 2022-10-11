@@ -348,6 +348,18 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
+  scenarioArriveData(scenarioId: string | undefined): EmbarkData | undefined {
+    const entry = this.state.findLastInput(input => (
+      (input.type === 'start_scenario' || input.type === 'start_side_scenario') &&
+      !!scenarioId &&
+      input.embarkData?.nextScenario === scenarioId
+    ));
+    if (entry && (entry.type === 'start_scenario' || entry.type === 'start_side_scenario')) {
+      return entry.embarkData;
+    }
+    return undefined;
+  }
+
   text(id: string, scenario?: string): string | undefined {
     const entry = this.entry('text', id, scenario);
     if (entry && entry.type === 'text') {

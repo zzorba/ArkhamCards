@@ -11,17 +11,42 @@ import TraumaConditionComponent from './TraumaConditionComponent';
 import HasCardConditionComponent from './HasCardConditionComponent';
 import CampaignLogConditionComponent from './CampaignLogConditionComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { BranchStep } from '@data/scenario/types';
+import { BorderColor, BranchStep, LocationCondition, ScarletKeyCondition } from '@data/scenario/types';
 import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
 import CampaignLogCardsSwitchConditionComponent from './CampaignLogCardsSwitchConditionComponent';
 import PartnerStatusConditionComponent from './PartnerStatusConditionComponent';
+import { locationConditionResult, scarletKeyConditionResult } from '@data/scenario/conditionHelper';
+import BinaryResult from '@components/campaignguide/BinaryResult';
 
 interface Props {
   step: BranchStep;
   campaignLog: GuidedCampaignLog;
+  color?: BorderColor;
 }
 
-export default function BranchStepComponent({ step, campaignLog }: Props) {
+function LocationConditionComponent({ step, condition, campaignLog }: Props & { condition: LocationCondition }) {
+  const result = locationConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
+}
+
+function ScarletKeyConditionComponent({ condition, step, campaignLog }: Props & { condition: ScarletKeyCondition }) {
+  const result = scarletKeyConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
+}
+
+export default function BranchStepComponent({ step, campaignLog, color }: Props) {
   if (step.hidden) {
     return null;
   }
@@ -33,6 +58,7 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
           step={step}
           campaignLog={campaignLog}
           condition={condition}
+          color={color}
         />
       );
     case 'campaign_log_count':
@@ -82,6 +108,7 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
           step={step}
           campaignLog={campaignLog}
           condition={condition}
+          color={color}
         />
       );
     case 'campaign_log_cards_switch':
@@ -132,5 +159,26 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
           condition={condition}
         />
       );
+    case 'location': {
+      return (
+        <LocationConditionComponent
+          step={step}
+          condition={condition}
+          campaignLog={campaignLog}
+        />
+      );
+    }
+    case 'scarlet_key': {
+      return (
+        <ScarletKeyConditionComponent
+          step={step}
+          condition={condition}
+          campaignLog={campaignLog}
+        />
+      );
+    }
+    case 'scarlet_key_count':
+      // Just used for control flow
+      return null;
   }
 }

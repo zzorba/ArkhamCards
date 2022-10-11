@@ -172,7 +172,6 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorBlockquoteHtmlTagNode,
 };
 
-
 function MiniCapsHtmlTagRule(): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),

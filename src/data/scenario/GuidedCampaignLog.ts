@@ -18,6 +18,7 @@ import {
   CampaignDifficulty,
   InvestigatorData,
   Slots,
+  Trauma,
   TraumaAndCardData,
   WeaknessSet,
 } from '@actions/types';
@@ -48,6 +49,8 @@ import {
   Partner,
   PartnerStatus,
   SetCardCountEffect,
+  ScarletKeyEffect,
+  SaveDecksEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -113,6 +116,11 @@ interface CountSection {
 interface PlayingScenarioItem {
   investigator: string;
 }
+
+interface KeyStatus {
+  investigator?: string;
+  enemy?: string;
+}
 interface ScenarioData {
   resolution?: string;
   leadInvestigator?: string;
@@ -143,10 +151,15 @@ interface CampaignData {
   };
   redirect_experience: string;
 
-  // TSK stuff;
-  embark?: boolean;
-  location?: string;
-  visitedLocations: string[];
+  scarlet: {
+    // TSK stuff;
+    embark?: boolean;
+    location?: string;
+    visitedLocations: string[];
+    unlockedLocations: string[];
+    unlockedDossiers: string[];
+    keyStatus: { [key: string]: KeyStatus | undefined };
+  };
 }
 
 export default class GuidedCampaignLog {
@@ -194,6 +207,7 @@ export default class GuidedCampaignLog {
       case 'gain_supplies':
       case 'lose_supplies':
       case 'partner_status':
+      case 'scarlet_key':
         return true;
       default:
         return false;
@@ -234,7 +248,12 @@ export default class GuidedCampaignLog {
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
         redirect_experience: '',
-        visitedLocations: [],
+        scarlet: {
+          visitedLocations: [],
+          unlockedLocations: [],
+          unlockedDossiers: [],
+          keyStatus: {},
+        },
       };
       this.chaosBag = {};
       this.swapChaosBag = {};
@@ -359,10 +378,13 @@ export default class GuidedCampaignLog {
               this.handleUpgradeDecksEffect();
               break;
             case 'save_decks':
-              this.handleSaveDecksEffect();
+              this.handleSaveDecksEffect(effect);
               break;
             case 'partner_status':
               this.handlePartnerStatusEffect(effect, input);
+              break;
+            case 'scarlet_key':
+              this.handleScarletKeyEffect(effect, input);
               break;
             default:
               break;
@@ -610,6 +632,14 @@ export default class GuidedCampaignLog {
   scenarioResolution(scenarioId: string): string | undefined {
     const data = this.scenarioData[scenarioId];
     return data && data.resolution;
+  }
+
+  hasResolution(): boolean {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('accessed resolution while not playing');
+    }
+    return !!this.latestScenarioData.resolution;
   }
 
   resolution(): string {
@@ -894,16 +924,20 @@ export default class GuidedCampaignLog {
   }
 
 
-  private handleSaveDecksEffect() {
+  private handleSaveDecksEffect(effect: SaveDecksEffect) {
     const investigatorData = cloneDeep(this.campaignData.lastSavedInvestigatorData || {});
     forEach(this.campaignData.investigatorData, (data, code) => {
-      investigatorData[code] = {
+      const updatedData: TraumaAndCardData = {
         ...(investigatorData[code] || {}),
         storyAssets: [...(data?.storyAssets || [])],
         ignoreStoryAssets: [...(data?.ignoreStoryAssets || [])],
         addedCards: [...(data?.addedCards || [])],
         removedCards: [...(data?.removedCards || [])],
       };
+      if (effect.adjust_xp) {
+        updatedData.availableXp = data?.availableXp;
+      }
+      investigatorData[code] = updatedData;
     });
     this.campaignData.lastSavedInvestigatorData = investigatorData;
   }
@@ -917,6 +951,10 @@ export default class GuidedCampaignLog {
     input?: string[],
     numberInput?: number[]
   ) {
+    if (effect.side_scenario_cost && this.campaignGuide.campaignNoSideScenarioXp()) {
+      // This one is a freebie, because its paid for in other ways.
+      return;
+    }
     const baseXp = (effect.input_scale || 1) * (numberInput ? numberInput[0] : 0);
     const totalXp = baseXp + (effect.bonus || 0);
     forEach(
@@ -1087,6 +1125,40 @@ export default class GuidedCampaignLog {
         }
       }
     );
+  }
+
+  private handleScarletKeyEffect(effect: ScarletKeyEffect, input?: string[]) {
+    const inputValue = (input || [])[0];
+    switch (effect.bearer_type) {
+      case 'investigator':
+        if (inputValue) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            investigator: inputValue
+          };
+        }
+        break;
+      case 'enemy':
+        if (effect.enemy_code) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            enemy: effect.enemy_code
+          };
+        }
+        break;
+      case 'steal':
+        if (inputValue) {
+          this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+            investigator: this.campaignData.scarlet.keyStatus[effect.scarlet_key]?.investigator,
+            enemy: inputValue,
+          };
+        }
+        break;
+      case 'return':
+        this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
+          investigator: this.campaignData.scarlet.keyStatus[effect.scarlet_key]?.investigator,
+          // Drop the enemy from it.
+        };
+        break;
+    }
   }
 
   private handlePartnerStatusEffect(effect: PartnerStatusEffect, input?: string[]) {
@@ -1276,18 +1348,41 @@ export default class GuidedCampaignLog {
         this.campaignData.redirect_experience = effect.investigator_count;
         break;
       }
+      case 'lock_location':
+        this.campaignData.scarlet.unlockedLocations = filter(
+          this.campaignData.scarlet.unlockedLocations,
+          id => id !== effect.value
+        );
+        break;
+      case 'unlock_location':
+        this.campaignData.scarlet.unlockedLocations = [
+          ...this.campaignData.scarlet.unlockedLocations,
+          effect.value,
+        ];
+      case 'unlock_dossier':
+        this.campaignData.scarlet.unlockedDossiers = [
+          ...this.campaignData.scarlet.unlockedDossiers,
+          effect.value,
+        ];
+        break;
       case 'embark': {
         if (effect.location) {
-          this.campaignData.location = effect.location;
-          if (!effect.starting_location) {
-            this.campaignData.visitedLocations = [
-              ...this.campaignData.visitedLocations,
-              effect.location,
-            ];
+          this.campaignData.scarlet.visitedLocations = [
+            ...this.campaignData.scarlet.visitedLocations,
+            effect.location,
+          ];
+          if (effect.may_return) {
+            // Filter out the 'current location' if you are 'leaving' but can return.
+            this.campaignData.scarlet.visitedLocations = filter(
+              this.campaignData.scarlet.visitedLocations,
+              loc => loc !== this.campaignData.scarlet.location
+            );
           }
-          this.campaignData.embark = false;
+          // Now update current location
+          this.campaignData.scarlet.location = effect.location;
+          this.campaignData.scarlet.embark = false;
         } else {
-          this.campaignData.embark = true;
+          this.campaignData.scarlet.embark = true;
         }
         break;
       }

@@ -1755,8 +1755,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -1765,8 +1765,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -1780,8 +1780,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -1790,8 +1790,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -1817,8 +1817,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -1827,8 +1827,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -1854,8 +1854,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -1864,8 +1864,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -1891,8 +1891,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -1901,8 +1901,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -2275,7 +2275,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro bị mất tích."
           },
           {
             "id": "alejandro_on_his_own",
@@ -2331,7 +2331,7 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "các điều tra viên đã tạo được mối quan hệ với Ichtaca."
           },
           {
             "id": "forging_own_path",
@@ -2339,7 +2339,7 @@
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "các điều tra viên đã tìm thấy cổ vật bị mất tích."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -2439,7 +2439,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "các điều tra viên đã cứu được Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -2580,16 +2580,16 @@
         "multiple": false
       },
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Đủ cho một hành trình dài bằng ô tô.",
         "cost": 1,
         "multiple": true
       },
@@ -2625,12 +2625,6 @@
         "cost": 2
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
         "id": "blanket",
         "name": "Chăn",
         "description": "Giữ ấm vào ban đêm.",
@@ -2639,13 +2633,19 @@
       {
         "id": "pocketknife",
         "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "description": "Quá nhỏ để được sử dụng như một vũ khí đáng tin cậy, nhưng dễ che giấu.",
         "cost": 2
       },
       {
         "id": "binoculars",
         "name": "Ống nhòm",
         "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Cuốc chim",
+        "description": "Để phá vỡ các bề mặt đá.",
         "cost": 2
       },
       {
@@ -2968,8 +2968,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -2978,8 +2978,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -2993,8 +2993,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -3003,8 +3003,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -3030,8 +3030,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -3040,8 +3040,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -3067,8 +3067,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -3077,8 +3077,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -3104,8 +3104,8 @@
         "entries": [
           {
             "id": "taken_by_the_watcher",
-            "masculine_text": "#name# bị Watcher giết chết",
-            "feminine_text": "#name# bị Watcher giết chết"
+            "masculine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)",
+            "feminine_text": "#name# bị Watcher mang đi. (Taken by the Watcher)"
           },
           {
             "id": "disappeared_into_the_mist",
@@ -3114,8 +3114,8 @@
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# bị giết chết bởi các bóng ma",
-            "feminine_text": "#name# bị giết chết bởi các bóng ma"
+            "masculine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)",
+            "feminine_text": "#name# bị giết chết bởi các bóng ma. (Claimed by specters)"
           },
           {
             "id": "pulled_into_the_spectral_realm",
@@ -3768,7 +3768,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro bị mất tích."
           },
           {
             "id": "alejandro_on_his_own",
@@ -3824,7 +3824,7 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "các điều tra viên đã tạo được mối quan hệ với Ichtaca."
           },
           {
             "id": "forging_own_path",
@@ -3832,7 +3832,7 @@
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "các điều tra viên đã tìm thấy cổ vật bị mất tích."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -3928,7 +3928,7 @@
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "các điều tra viên đã cứu được Alejandro."
           },
           {
             "id": "resisted_captivity",
@@ -4040,16 +4040,16 @@
     ],
     "supplies": [
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Đủ cho một hành trình dài bằng ô tô.",
         "cost": 1,
         "multiple": true
       },
@@ -4085,12 +4085,6 @@
         "cost": 2
       },
       {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
         "id": "blanket",
         "name": "Chăn",
         "description": "Giữ ấm vào ban đêm.",
@@ -4099,13 +4093,19 @@
       {
         "id": "pocketknife",
         "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "description": "Quá nhỏ để được sử dụng như một vũ khí đáng tin cậy, nhưng dễ che giấu.",
         "cost": 2
       },
       {
         "id": "binoculars",
         "name": "Ống nhòm",
         "description": "Để giúp bạn nhìn thấy những nơi ở xa.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Cuốc chim",
+        "description": "Để phá vỡ các bề mặt đá.",
         "cost": 2
       },
       {

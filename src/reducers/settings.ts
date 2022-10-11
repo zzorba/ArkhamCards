@@ -49,6 +49,7 @@ interface SettingsState {
   version?: number;
   customContent?: boolean;
   cardGrid?: boolean;
+  mapList?: boolean;
   draftList?: boolean;
   draftSeparatePacks?: boolean;
   dismissedOnboarding?: string[];
@@ -77,6 +78,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   dismissedOnboarding: [],
   cardGrid: false,
   draftList: false,
+  mapList: false,
   draftSeparatePacks: false,
   campaignShowDeckId: false,
   lowMemory: false,
@@ -228,6 +230,11 @@ export default function(
           return {
             ...state,
             draftList: !action.value,
+          };
+        case 'map_list':
+          return {
+            ...state,
+            mapList: action.value,
           };
         case 'draft_from_collection':
           return {

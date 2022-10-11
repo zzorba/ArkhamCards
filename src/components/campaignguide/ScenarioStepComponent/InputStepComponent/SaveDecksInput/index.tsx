@@ -15,10 +15,11 @@ import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 interface Props {
   componentId: string;
   id: string;
-  includeTrauma?: boolean;
+  includeTrauma: boolean | undefined;
+  adjustXp: boolean | undefined;
 }
 
-export default function SaveDecksInput({ componentId, id, includeTrauma }: Props) {
+export default function SaveDecksInput({ componentId, id, includeTrauma, adjustXp }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
@@ -99,8 +100,8 @@ export default function SaveDecksInput({ componentId, id, includeTrauma }: Props
   }, [proceedMessage, actuallySave]);
   const hasChanges = useMemo(() => !!find(scenarioInvestigators, (investigator: Card) => {
     const storyAssetDeltas = campaignLog.storyAssetChanges(investigator.code);
-    return !!find(storyAssetDeltas, (count: number) => count !== 0);
-  }), [campaignLog, scenarioInvestigators]);
+    return !!find(storyAssetDeltas, (count: number) => count !== 0) || !!adjustXp;
+  }), [campaignLog, scenarioInvestigators, adjustXp]);
   if (!hasChanges) {
     return null;
   }
@@ -130,6 +131,7 @@ export default function SaveDecksInput({ componentId, id, includeTrauma }: Props
             deck={latestDecks[investigator.code]}
             editable={!hasDecision}
             includeTrauma={!!includeTrauma}
+            adjustXp={!!adjustXp}
           />
         );
       }) }

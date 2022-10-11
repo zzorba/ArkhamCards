@@ -10,8 +10,6 @@ import ArkhamCardsAccountDetails from './ArkhamCardsAccountDetails';
 import { NavigationProps } from '@components/nav/types';
 import space from '@styles/space';
 import { ShowAlert } from '@components/deck/dialogs';
-import { useSelector } from 'react-redux';
-import { getEnableArkhamCardsAccount } from '@reducers';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useShowOnboarding } from '@components/onboarding/hooks';
 
@@ -22,7 +20,6 @@ interface Props extends NavigationProps {
 const LATEST_RELEASE_NOTES = 'rn-2022-09-20';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
-  const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
   const [newNotes, onSeenNewNotes] = useShowOnboarding(LATEST_RELEASE_NOTES);
   const showReleaseNotes = useCallback(() => {
     onSeenNewNotes();

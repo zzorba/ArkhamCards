@@ -12,7 +12,7 @@ import AddWeaknessEffectComponent from './AddWeaknessEffectComponent';
 import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
-import { EffectsStep, Effect } from '@data/scenario/types';
+import { EffectsStep, Effect, BorderColor } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from '@data/scenario/effectHelper';
 import space from '@styles/space';
 import CheckCampaignLogCardsComponent from './CheckCampaignLogCardsComponent';
@@ -28,12 +28,13 @@ interface Props {
   switchCampaignScenario: () => void;
 }
 
-function SingleEffectComponent({ id, effect, border, input, numberInput, step, width, componentId, campaignLog, switchCampaignScenario }: {
+function SingleEffectComponent({ id, effect, border, input, numberInput, step, width, componentId, campaignLog, switchCampaignScenario, color }: {
   id: string;
   effect: Effect;
   border: boolean;
   input?: string[];
   numberInput?: number[];
+  color?: BorderColor;
 } & Props) {
   const { campaign, campaignState } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
@@ -158,6 +159,7 @@ function SingleEffectComponent({ id, effect, border, input, numberInput, step, w
                 width={width}
                 step={step}
                 border={border}
+                color={color}
                 switchCampaignScenario={switchCampaignScenario}
               />
             )
@@ -217,6 +219,7 @@ export default function EffectsStepComponent(props: Props) {
                     id={id}
                     effect={effect}
                     border={!!effectsWithInput.border}
+                    color={effectsWithInput.border_color}
                     input={effectsWithInput.input}
                     numberInput={effectsWithInput.numberInput}
                     {...props}

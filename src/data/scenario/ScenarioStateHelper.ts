@@ -93,6 +93,9 @@ export default class ScenarioStateHelper {
   embarkData(): EmbarkData | undefined {
     return this.campaignState.scenarioEmbarkData(this.scenarioId);
   }
+  arriveData(): EmbarkData | undefined {
+    return this.campaignState.scenarioArriveData(this.scenarioId);
+  }
 
   setCampaignLink(id: string, decision: string) {
     this.campaignState.setCampaignLink(

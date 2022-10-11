@@ -22,7 +22,7 @@ import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import BinaryPrompt from '@components/campaignguide/prompts/BinaryPrompt';
 import NumberPrompt from '@components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from '@components/campaignguide/prompts/SuppliesPrompt';
-import { InputStep } from '@data/scenario/types';
+import { BorderColor, InputStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
@@ -39,9 +39,11 @@ interface Props {
   componentId: string;
   campaignLog: GuidedCampaignLog;
   switchCampaignScenario: () => void;
+  color?: BorderColor;
+  border?: boolean;
 }
 
-export default function InputStepComponent({ step, componentId, campaignLog, switchCampaignScenario }: Props) {
+export default function InputStepComponent({ step, color, componentId, campaignLog, switchCampaignScenario, border }: Props) {
   const { campaignId } = useContext(CampaignGuideContext);
   const { width } = useContext(StyleContext);
   switch (step.input.type) {
@@ -52,6 +54,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
             id={step.id}
             bulletType={step.bullet_type}
             text={step.input.choices[0].text}
+            color={color}
           />
         );
       }
@@ -71,7 +74,9 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           id={step.id}
           text={step.text}
           bulletType={step.bullet_type}
+          color={color}
           input={step.input}
+          border={border}
         />
       );
     }
@@ -171,6 +176,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           id={step.id}
           componentId={componentId}
           includeTrauma={step.input.trauma}
+          adjustXp={step.input.adjust_xp}
         />
       );
     case 'play_scenario':

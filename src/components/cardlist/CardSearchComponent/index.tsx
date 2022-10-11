@@ -192,8 +192,8 @@ export default function CardSearchComponent(props: Props) {
   }, componentId, [showSortDialog, showFilters]);
 
   const onClearSearchFilters = useCallback(() => {
-    dispatch(clearFilters(componentId));
-  }, [dispatch, componentId]);
+    dispatch(clearFilters(filterId));
+  }, [dispatch, filterId]);
 
   useEffectUpdate(() => {
     if (mythosToggle) {

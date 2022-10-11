@@ -3,7 +3,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
 import { PlayedScenario, ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
-import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID } from './fixedSteps';
+import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID, PROCEED_STEP_ID, UPGRADE_DECKS_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -142,7 +142,7 @@ export default class CampaignGuide {
     );
   }
 
-  card(code: string): { code: string; name: string; gender?: 'm' | 'f'; description?: string } | undefined {
+  card(code: string): { code: string; name: string; gender?: 'm' | 'f' | 'nb'; description?: string } | undefined {
     return find(this.campaign.campaign.cards, c => c.code === code);
   }
 
@@ -160,6 +160,10 @@ export default class CampaignGuide {
 
   campaignName() {
     return this.campaign.campaign.name;
+  }
+
+  campaignNoSideScenarioXp() {
+    return !!this.campaign.campaign.no_side_scenario_xp;
   }
 
   campaignVersion() {
@@ -518,9 +522,9 @@ export default class CampaignGuide {
         PLAY_SCENARIO_STEP_ID,
         '$end_of_scenario_status',
         '$earn_xp',
-        '$upgrade_decks',
+        UPGRADE_DECKS_STEP_ID,
         ...this.sideScenarioResolutionStepIds(),
-        '$proceed',
+        PROCEED_STEP_ID,
       ],
       steps: [
         createInvestigatorStatusStep('$end_of_scenario_status'),
@@ -559,6 +563,7 @@ export default class CampaignGuide {
               type: 'earn_xp',
               investigator: 'all',
               bonus: -entry.xpCost,
+              side_scenario_cost: true,
             },
           ],
         },

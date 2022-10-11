@@ -12,6 +12,7 @@ import CampaignGuideContext from '../CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space, { m } from '@styles/space';
+import { lessOrEq } from 'react-native-reanimated';
 
 interface Props {
   componentId: string;
@@ -27,6 +28,9 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
       processedCampaign.scenarios,
       scenario => scenario.type === 'completed'
     );
+    if (campaignGuide.campaignMap()) {
+      return false;
+    }
     if (processedCampaign.campaignLog.campaignData.result === 'lose') {
       return false;
     }

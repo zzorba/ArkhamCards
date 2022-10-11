@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import { BulletType } from '@data/scenario/types';
+import { BorderColor, BulletType } from '@data/scenario/types';
 import space, { s, m, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ScenarioStepContext from './ScenarioStepContext';
@@ -16,12 +16,13 @@ interface Props {
   reverseSpacing?: boolean;
   children: React.ReactNode | React.ReactNode[];
   border?: boolean;
+  color?: BorderColor;
   hasTitle?: boolean;
 
   noPadding?: boolean;
 }
 
-export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing, children, border, hasTitle }: Props) {
+export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing, children, border, color, hasTitle }: Props) {
   const { colors } = useContext(StyleContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
@@ -48,7 +49,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={resolution ? colors.campaign.text.resolution : colors.campaign.text.setup}
+              color={(color && colors.campaign.text[color]) || (resolution ? colors.campaign.text.resolution : colors.campaign.text.setup)}
             />
           </View>
         );
@@ -58,7 +59,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={resolution ? colors.campaign.text.resolution : colors.campaign.text.setup}
+              color={(color && colors.campaign.text[color]) || (resolution ? colors.campaign.text.resolution : colors.campaign.text.setup)}
             />
           </View>
         );

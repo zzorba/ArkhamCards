@@ -34,7 +34,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, CHECK_CONTINUE_PLAY_SCENARIO, PROCEED_STEP_ID, PROCEED_ALT_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -66,7 +66,7 @@ export default class ScenarioStep {
     return (
       nextCampaignLog &&
       this.remainingStepIds.length === 0 &&
-      this.step.id === '$proceed_effects'
+      this.step.id === `${PROCEED_STEP_ID}_effects` || this.step.id === `${PROCEED_ALT_STEP_ID}_effects`
     );
   }
 
@@ -225,7 +225,7 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     switch (this.step.type) {
       case 'internal':
-        if (this.step.id === EMBARK_STEP_ID) {
+        if (this.step.id === EMBARK_STEP_ID || this.step.id === EMBARK_RETURN_STEP_ID) {
           const embarkData = scenarioState.embarkData();
           const effectsWithInput: EffectsWithInput[] = [];
 
@@ -238,6 +238,20 @@ export default class ScenarioStep {
                   scenario: embarkData.nextScenario,
                 },
               ];
+            if (embarkData.fast) {
+              const fastCode = this.scenarioGuide.campaignGuide.campaignMap()?.fast_code;
+              if (fastCode) {
+                effectsWithInput.push({
+                  effects: [
+                    {
+                      type: 'remove_card',
+                      card: fastCode,
+                      hidden: true,
+                    },
+                  ],
+                });
+              }
+            }
             effectsWithInput.push({
               numberInput: [embarkData.time],
               effects: [
@@ -250,6 +264,7 @@ export default class ScenarioStep {
                   type: 'campaign_data',
                   setting: 'embark',
                   location: embarkData.destination,
+                  may_return: this.step.id === EMBARK_RETURN_STEP_ID,
                 },
                 ...nextScenarioLink,
               ],
@@ -348,14 +363,28 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'encounter_sets':
+        if (this.step.effects?.length) {
+          return this.maybeCreateEffectsStep(
+            this.step.id,
+            this.remainingStepIds,
+            [{ effects: this.step.effects }],
+            scenarioState,
+            {}
+          );
+        }
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          scenarioState,
+          this.campaignLog
+        );
       case 'table':
       case 'story':
-      case 'encounter_sets':
       case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':
-      case 'campaign_log_count':
       case 'xp_count':
+      case 'travel_cost':
         return this.proceedToNextStep(
           this.remainingStepIds,
           scenarioState,
@@ -750,7 +779,7 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `${base_step_id}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{
@@ -1195,7 +1224,7 @@ export default class ScenarioStep {
       case 'save_decks': {
         const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
           return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
-        }) || input.trauma;
+        }) || input.trauma || input.adjust_xp;
         if (!hasDeckChanges) {
           return this.proceedToNextStep(
             this.remainingStepIds,
@@ -1259,7 +1288,14 @@ export default class ScenarioStep {
           });
         }
 
-        effectsWithInput.push({ effects: [{ type: 'save_decks' }] });
+        effectsWithInput.push({
+          effects: [
+            {
+              type: 'save_decks',
+              adjust_xp: input.adjust_xp,
+            },
+          ],
+        });
 
         // Finally do the deck 'save' to bank it.
         return this.maybeCreateEffectsStep(

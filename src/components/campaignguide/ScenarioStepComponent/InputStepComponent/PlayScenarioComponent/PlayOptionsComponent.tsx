@@ -21,6 +21,7 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import StoryButton from './StoryButton';
+import { MAX_WIDTH } from '@styles/sizes';
 
 
 interface Props {
@@ -105,7 +106,7 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
         campaignLog={processedScenario.latestCampaignLog}
         scenarioId={processedScenario.id.scenarioId}
         standalone={standalone}
-        width={width - s * 4}
+        width={Math.min(width, MAX_WIDTH) - s * 4}
         processedCampaign={processedCampaign}
       />
     ),

@@ -81,7 +81,7 @@ async function onAppleButtonPress() {
         const refreshToken = await response.text();
         await setAppleRefreshToken(refreshToken);
       } else {
-        console.log('Error: ' + response.status);
+        console.log(`Error: ${response.status}`);
       }
     }
     return result;
@@ -431,7 +431,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
     await auth().signOut();
     // Clear the apple refresh token when logging out.
     if (await getAppleRefreshToken()) {
-      await setAppleRefreshToken("");
+      await setAppleRefreshToken('');
     }
     apollo.clearStore();
     dispatch(logout());

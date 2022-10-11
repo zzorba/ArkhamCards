@@ -302,7 +302,7 @@ const retryLink = new RetryLink({
   },
   attempts: {
     max: 5,
-    retryIf: (error, _operation) => !!error,
+    retryIf: (error) => !!error,
   },
 });
 const serializingLink = new SerializingLink();

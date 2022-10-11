@@ -32,6 +32,7 @@ import NewDialog from '@components/core/NewDialog';
 import RoundButton from '@components/core/RoundButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import { MAX_WIDTH } from '@styles/sizes';
 
 interface Props {
   componentId: string;
@@ -188,8 +189,7 @@ function RemoveSlotAdvancedControl({ card, choice, editable, setChoice }: {
 type SkillType = 'willpower' | 'intellect' | 'combat' | 'agility';
 const ALL_SKILLS: SkillType[] = ['willpower', 'intellect', 'combat', 'agility'];
 
-function ChooseSkillAdvancedControl({ card, choice, editable, setChoice, allChoices }: {
-  card: Card;
+function ChooseSkillAdvancedControl({ choice, editable, setChoice, allChoices }: {
   setChoice: (choice: ChooseSkillCustomizationChoice) => void;
   editable: boolean;
   choice: ChooseSkillCustomizationChoice;
@@ -510,13 +510,6 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
       ...selectedTraits.slice(index + 1),
     ]);
   }, [selectedTraits, setSelectedTraits]);
-  const [focused, setFocused] = useState(false);
-  const onFocus = useCallback(() => {
-    setFocused(true);
-  }, [setFocused]);
-  const onBlur = useCallback(() => {
-    setFocused(false);
-  }, [setFocused]);
   const content = useMemo(() => {
     const canSelectMore = (choice.option.quantity || 1) > selectedTraits.length;
     const canSubmit = !!currentTrait.replace(/[\^|,]/g, '').trim();
@@ -533,8 +526,6 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
                 placeholder={t`Add trait`}
                 onChangeText={setCurrentTrait}
                 onSubmit={saveCurrentTrait}
-                onFocus={onFocus}
-                onBlur={onBlur}
               />
               { !!currentTrait && (
                 <View style={space.paddingTopS}>
@@ -554,7 +545,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
         </View>
       </View>
     );
-  }, [choice, selectedTraits, currentTrait, setCurrentTrait, editable, focused, onBlur, onFocus, onRemoveTrait, onSaveCurrent, saveCurrentTrait])
+  }, [choice, selectedTraits, currentTrait, setCurrentTrait, editable, onRemoveTrait, onSaveCurrent, saveCurrentTrait])
   const { dialog, showDialog, setVisible } = useDialog({
     title,
     content,
@@ -626,7 +617,6 @@ function AdvancedControl({ componentId, deckId, card, editable, choice, setChoic
     case 'choose_skill':
       return (
         <ChooseSkillAdvancedControl
-          card={card}
           editable={editable}
           choice={choice}
           setChoice={setChoice}
@@ -730,50 +720,54 @@ function CustomizationLine({ componentId, card, option, deckId, editable, mode, 
 }
 
 export default function CardCustomizationOptions({ setChoice, mode, deckId, customizationChoices, card, customizationOptions, width, editable, componentId }: Props) {
-  const { typography, colors } = useContext(StyleContext);
+  const { typography, backgroundStyle, colors, shadow } = useContext(StyleContext);
   const [showAll, toggleShowAll] = useFlag(false);
   const xp = useMemo(() => sumBy(customizationChoices, c => c.xp_spent), [customizationChoices]);
   return (
-    <View style={[{ width }, space.paddingSideS, space.marginBottomL]}>
-      <RoundedFactionHeader faction={card.factionCode()} width={width - s * 2} dualFaction={!!card.faction2_code}>
-        <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
-          <Text style={[typography.cardName, { color: '#FFFFFF', flex: 1 }]}>
-            { t`Customizations`}
-          </Text>
-          { !!deckId && (
-            <Text style={[typography.text, { color: '#FFFFFF' }]}>
-              { ngettext(msgid`${xp} XP`, `${xp} XP`, xp) }
-            </Text>
-          ) }
-        </View>
-      </RoundedFactionHeader>
-      <View style={[styles.main, { borderColor: colors.faction[card.factionCode()].border }]}>
-        { (!deckId || customizationChoices) ? (
-          <View style={space.paddingSideS}>
-            { map(customizationOptions, (option, index) => (
-              <CustomizationLine
-                componentId={componentId}
-                key={option.index}
-                card={card}
-                option={option}
-                mode={mode}
-                choices={customizationChoices}
-                showAll={showAll}
-                deckId={deckId}
-                editable={editable}
-                setChoice={setChoice}
-                last={index === customizationOptions.length - 1}
+    <View style={[{ width }, styles.container, space.paddingSideS, space.marginBottomL]}>
+      <View style={{ maxWidth: MAX_WIDTH }}>
+        <View style={[{ borderRadius: 8 }, backgroundStyle, shadow.large]}>
+          <RoundedFactionHeader faction={card.factionCode()} width={width - s * 2} dualFaction={!!card.faction2_code}>
+            <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
+              <Text style={[typography.cardName, { color: '#FFFFFF', flex: 1 }]}>
+                { t`Customizations`}
+              </Text>
+              { !!deckId && (
+                <Text style={[typography.text, { color: '#FFFFFF' }]}>
+                  { ngettext(msgid`${xp} XP`, `${xp} XP`, xp) }
+                </Text>
+              ) }
+            </View>
+          </RoundedFactionHeader>
+          <View style={[styles.main, { borderColor: colors.faction[card.factionCode()].border }]}>
+            { (!deckId || customizationChoices) ? (
+              <View style={space.paddingSideS}>
+                { map(customizationOptions, (option, index) => (
+                  <CustomizationLine
+                    componentId={componentId}
+                    key={option.index}
+                    card={card}
+                    option={option}
+                    mode={mode}
+                    choices={customizationChoices}
+                    showAll={showAll}
+                    deckId={deckId}
+                    editable={editable}
+                    setChoice={setChoice}
+                    last={index === customizationOptions.length - 1}
+                  />
+                )) }
+              </View>
+            ) : <LoadingSpinner arkham inline /> }
+            { !!deckId && (!mode || mode === 'view') && (
+              <RoundedFooterButton
+                icon={showAll ? 'hide' : 'show'}
+                title={showAll ? t`Show selected customizations` : t`Show all customizations`}
+                onPress={toggleShowAll}
               />
-            )) }
+            ) }
           </View>
-        ) : <LoadingSpinner arkham inline /> }
-        { !!deckId && (!mode || mode === 'view') && (
-          <RoundedFooterButton
-            icon={showAll ? 'hide' : 'show'}
-            title={showAll ? t`Show selected customizations` : t`Show all customizations`}
-            onPress={toggleShowAll}
-          />
-        ) }
+        </View>
       </View>
     </View>
   );
@@ -782,6 +776,12 @@ export default function CardCustomizationOptions({ setChoice, mode, deckId, cust
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
+  },
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   main: {
     borderLeftWidth: 1,

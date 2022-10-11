@@ -72,7 +72,7 @@ export default function CampaignDetailTab({
   }, [campaignState]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
 
-  const [saving, , saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [saving, , saveDeckUpgrade, saveDeck] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -260,6 +260,7 @@ export default function CampaignDetailTab({
             showCountDialog={showCountDialog}
             actions={updateCampaignActions}
             saveDeckUpgrade={saveDeckUpgrade}
+            saveDeck={saveDeck}
             savingDeckUpgrade={saving}
           />
         </View>

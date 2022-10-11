@@ -7,7 +7,7 @@ import { WhereExpressionBuilder } from 'typeorm';
 
 
 export function where(query: string, params?: QueryParams): Brackets {
-  return new Brackets(qb => qb.where(query, params));
+  return new Brackets(qb => qb.where(`(${query})`, params));
 }
 
 export const ON_YOUR_OWN_RESTRICTION = new NotBrackets(

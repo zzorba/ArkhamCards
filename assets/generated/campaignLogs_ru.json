@@ -246,59 +246,59 @@
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Лагерь — Лагерь на шельфе (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Лагерь — Снежные поля (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Лагерь — Место крушения (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Лагерь — Кристаллическая пещера (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Лагерь — Стылая пещера (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Лагерь — Мёрзлые берега (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Лагерь — "
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Лагерь — Ледяные пустоши (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Лагерь — Неустойчивый ледник (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Лагерь — Остатки лагеря Лейка (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Лагерь — Скалистые утёсы (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Лагерь — Снежные могилы (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Лагерь — Ненадёжная тропа (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Клейпул бросил вызов своим демонам."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
@@ -306,11 +306,11 @@
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Сухарь бросил вызов своим демонам."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Данфорт бросил вызов своим демонам."
           },
           {
             "id": "did_not_believe_dyers_report",
@@ -318,135 +318,135 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "Команда обнаружила древнее хранилище."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "у доктора Кенслер есть план."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "Доктор Кенслер бросила вызов своим демонам."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "Кенслер на пороге открытия."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "Кенслер делится с вами результатами исследований."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "Кенслер понимает истинную природу скверны."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "Доктор Синха бросила вызов своим демонам."
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Дайер бросил вызов своим демонам."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Илайя бросил вызов своим демонам."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Эллсворт бросил вызов своим демонам."
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "подземный комплекс уничтожен."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "неименуемое безумие вырвалось на свободу."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "неименуемое безумие сдержано внутри носителя… на какое-то время."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "Команда сфотографировала звёздные карты."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "команда изучила карту."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "сыщики разведали окраины города."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "сыщики разведали развилку в пещере."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "сыщики разведали горный проход."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "команда изучила стенные рельефы."
           },
           {
             "id": "surviving_investigators",
-            "text": "- #name#"
+            "text": "— #name#"
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "«Выжившие члены экспедиции:»"
           },
           {
             "id": "surviving_partners",
-            "text": "- #name#"
+            "text": "— #name#"
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Такада бросила вызов своим демонам."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "сыщики едва сбежали с шельфового ледника."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "сыщики поднялись на вершину."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "сыщики одолели напавших на них существ."
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "сыщики сбежали из подземелья Старцев."
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "сыщики сбежали в горы."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "сыщики нашли иной путь через горы."
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "сыщики нашли тайный ход."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "сыщиков вывели к тайному ходу."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "сыщики использовали печать не по назначению."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "правда о мираже ускользает от вас."
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# пропал без вести.",
+            "masculine_text": "#name# пропал без вести.",
+            "feminine_text": "#name# пропала без вести."
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Лагерь на шельфе"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Снежные поля"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Место крушения"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Кристаллическая пещера"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Стылая пещера"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Мёрзлые берега"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Ледокол"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Ледяные пустоши"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Неустойчивый ледник"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Остатки лагеря Лейка"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Скалистые утёсы"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Снежные могилы"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Ненадёжная тропа"
           }
         ]
       },
@@ -827,75 +827,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Аэродром"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Пустоши Аляски"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "Память о чуждых письменах"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Комната в общежитии"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Кабинет доктора Кенслер"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Аудитория Дайера"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "Память о неудачной охоте"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Госпиталь"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "Память о потерянном пациенте"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "Память о пропавшем отце"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Статуи моаи"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Турецкий фронт"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "Память о разорённой стране"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "Память о скорбной экспедиции"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "Память об ужасном открытии"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Чёрный камень"
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "Память о неразделённой любви"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "Память о невыразимом зле"
           }
         ]
       },
@@ -904,75 +904,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Аэродром"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Пустоши Аляски"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "Базовый лагерь"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Комната в общежитии"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "Прибрежные воды"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "Палуба «Феодосии»"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "Захолустная станция"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Кабинет доктора Кенслер"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Аудитория Дайера"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "Зал Старцев"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "Садовый лабиринт"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Госпиталь"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Статуи моаи"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Турецкий фронт"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "Кинотеатр «Ривервью»"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "Каменные столбы"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Чёрный камень"
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "Университетский коридор"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Динамит"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Зелёный мыльный камень"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Скверностный кристалл"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Образцы минералов"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Радиопередатчик"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Запасные части"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Деревянные сани"
           }
         ]
       }

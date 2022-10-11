@@ -19,10 +19,9 @@ import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
-import { TouchableOpacity, TouchableShrink } from '@components/core/Touchables';
+import { TouchableShrink } from '@components/core/Touchables';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
@@ -178,9 +177,6 @@ export default function InvestigatorsListComponent({
         if (!i) {
           return false;
         }
-        if (i.code === CUSTOM_INVESTIGATOR) {
-          return false;
-        }
         if (i.mythos_card) {
           return false;
         }
@@ -267,19 +263,6 @@ export default function InvestigatorsListComponent({
         // @ts-ignore
         currentBucket.nonCollectionCount = nonCollectionCards.length;
         nonCollectionCards = [];
-      }
-    }
-    if (!hideCustomInvestigator) {
-      const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
-      if (customInvestigator) {
-        results.push({
-          type: 'header',
-          title: c('investigator').t`Custom`,
-        });
-        results.push({
-          type: 'card',
-          card: customInvestigator,
-        });
       }
     }
     return results;

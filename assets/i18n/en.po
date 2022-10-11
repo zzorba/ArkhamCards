@@ -5677,6 +5677,26 @@ msgstr ""
 msgid "Specific taboo set"
 msgstr ""
 
+msgid "Deleteing ArkhamDB accounts"
+msgstr ""
+
+msgid ""
+"ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
+"only allows you to sign into existing ArkhamDB accounts.\n"
+"\n"
+"If you would like to delete your account, please contact the webmaster of "
+"ArkhamDB at arkhamdb@kamalisk.com"
+msgstr ""
+
+msgid "Requeset Account Deletion"
+msgstr ""
+
+msgid "Delete Account"
+msgstr ""
+
+msgid "Choose a skill"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
