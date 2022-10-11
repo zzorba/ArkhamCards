@@ -153,6 +153,7 @@ interface CampaignData {
 
   scarlet: {
     // TSK stuff;
+    showMap?: boolean;
     embark?: boolean;
     location?: string;
     visitedLocations: string[];
@@ -1353,6 +1354,9 @@ export default class GuidedCampaignLog {
           this.campaignData.scarlet.unlockedLocations,
           id => id !== effect.value
         );
+        break;
+      case 'unlock_map':
+        this.campaignData.scarlet.showMap = true;
         break;
       case 'unlock_location':
         this.campaignData.scarlet.unlockedLocations = [

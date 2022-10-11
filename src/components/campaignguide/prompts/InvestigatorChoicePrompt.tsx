@@ -21,7 +21,7 @@ export default function InvestigatorChoicePrompt({ investigators, ...otherProps 
           code: investigator.code,
           investigator,
           name: investigator.name,
-          masculine: investigator.grammarGenderMasculine(),
+          gender: investigator.gender,
           color: colors.faction[investigator.factionCode()].background,
         };
       })}

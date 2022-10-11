@@ -65,7 +65,8 @@ export type Effect =
   | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
-  | ScarletKeyEffect;
+  | ScarletKeyEffect
+  | CampaignDataUnlockMapEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -639,6 +640,10 @@ export interface ScarletKeyEffect {
   scarlet_key: string;
   bearer_type: "investigator" | "enemy" | "steal" | "return";
   enemy_code?: string;
+}
+export interface CampaignDataUnlockMapEffect {
+  type: "campaign_data";
+  setting: "unlock_map";
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";

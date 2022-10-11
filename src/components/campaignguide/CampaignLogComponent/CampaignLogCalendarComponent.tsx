@@ -83,12 +83,13 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
               borderLeftWidth: col !== 0 ? 1: 0,
               position: 'relative',
               flexDirection: 'column',
+              borderColor: colors.D30,
             }} removeClippedSubviews={false}>
               <View style={[styles.headerRow, { position: 'relative' }]}>
                 <View style={[styles.checkbox, {
                   width: boxSize,
                   height: boxSize,
-                  borderColor: colors.D30,
+                  borderColor: colors.D20,
                 }]} />
                 { time >= day && (
                   <View style={{ position: 'absolute', top: -boxSize * 0.1, left: -boxSize * 0.1 }}>

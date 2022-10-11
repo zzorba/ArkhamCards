@@ -43,7 +43,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 132;
+export const CARD_NUM_COLUMNS = 134;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -81,41 +81,6 @@ const REPRINT_CARDS: {
   '05001': ['tftbw'],
   '08004': ['iotv'],
 };
-
-const FEMININE_INVESTIGATORS = new Set([
-  '01002', // Daisy Walker
-  '01004', // Agnes Baker
-  '01005', // Wendy Adams
-  '02001', // Zoey Samaras
-  '02003', // Jenny Barnes
-  '03002', // Mihn Thi Phan
-  '03003', // Sefina Rousseau
-  '03004', // Akachi Onyele
-  '03006', // Lola Hayes
-  '04002', // Ursula Downs
-  '05001', // Carolyn Fern
-  '05004', // Diana
-  '05005', // Rita
-  '05006', // Marie
-  '06002', // Mandy Thompson
-  '06005', // Patrice
-  '07001', // Sister Mary
-  '07002', // Amanda Sharpe
-  '07003', // Trish
-  '08001', // Daniella
-  '08020', // Lily Chen
-  '09010', // Amina
-  '60301', // Wini
-  '60401', // Jacqueline
-  '60501', // Stella
-  '05046', // Gavriella Mizrah
-  '05049', // Penny White
-  '98001', // Alt-Jenny
-  '98019', // Gloria
-  '98010', // Alt-Carolyn
-  '99001', // Old Marie
-]);
-
 
 export interface TranslationData {
   lang: string;
@@ -465,6 +430,11 @@ export default class Card {
   public url?: string;
   @Column('text', { nullable: true })
   public octgn_id?: string;
+
+  @Column('text', { nullable: true })
+  public imageurl?: string;
+  @Column('text', { nullable: true })
+  public backimageurl?: string;
   @Column('text', { nullable: true })
   public imagesrc?: string;
   @Column('text', { nullable: true })
@@ -768,10 +738,6 @@ export default class Card {
       this.code.startsWith('z');
   }
 
-  public grammarGenderMasculine(): boolean {
-    return !FEMININE_INVESTIGATORS.has(this.code);
-  }
-
   public enemyFight(): string {
     return arkham_num(this.enemy_fight);
   }
@@ -797,6 +763,9 @@ export default class Card {
   }
 
   public imageUri(): string | undefined {
+    if (this.imageurl) {
+      return this.imageurl;
+    }
     if (!this.imagesrc) {
       return undefined;
     }
@@ -805,6 +774,9 @@ export default class Card {
     return uri;
   }
   public backImageUri(): string | undefined {
+    if (this.backimageurl) {
+      return this.backimageurl;
+    }
     if (!this.backimagesrc) {
       return undefined;
     }

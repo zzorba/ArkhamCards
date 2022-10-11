@@ -227,7 +227,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
               code: card.code,
               name: card.name,
               description: card.subname,
-              masculine: card.grammarGenderMasculine(),
+              gender: card.gender,
             };
           })}
           loading={loading}

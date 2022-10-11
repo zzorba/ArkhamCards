@@ -12,11 +12,24 @@ import {
   InvestigatorChoiceWithSuppliesInput,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   step: InputStep;
   input: InvestigatorChoiceWithSuppliesInput;
   campaignLog: GuidedCampaignLog;
+}
+
+function getPrompt(investigator: Card, sectionName: string) {
+  switch (investigator.gender) {
+    case Gender_Enum.F:
+      return c('feminine').t`${investigator.name} reads <b>${sectionName}</b>`;
+    case Gender_Enum.Nb:
+      return c('nonbinary').t`${investigator.name} reads <b>${sectionName}</b>`;
+    case Gender_Enum.M:
+    default:
+      return c('masculine').t`${investigator.name} reads <b>${sectionName}</b>`;
+  }
 }
 
 export default function InvestigatorChoiceWithSuppliesInputComponent({ step, input, campaignLog }: Props) {
@@ -42,9 +55,7 @@ export default function InvestigatorChoiceWithSuppliesInputComponent({ step, inp
     const decision = investigatorHasSupply(investigator.code);
     const option = decision ? input.positiveChoice : input.negativeChoice;
     const sectionName = option.text;
-    const prompt = investigator.grammarGenderMasculine() ?
-      c('masculine').t`${investigator.name} reads <b>${sectionName}</b>` :
-      c('feminine').t`${investigator.name} reads <b>${sectionName}</b>`;
+    const prompt = getPrompt(investigator, sectionName);
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent text={prompt} />

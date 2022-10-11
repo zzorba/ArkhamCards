@@ -694,10 +694,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
       case 'tsk':
+      case 'tskc':
       case 'tskp':
         return this.scarletIcon('tsk', size, color);
-      case 'tskc':
-        return this.scarletIcon('tskc', size, color);
+      //case 'tskc':
+      //  return this.scarletIcon('tskc', size, color);
       case 'arkham_ma':
         return this.scarletIcon('arkham', size, color);
       case 'constantinople':
