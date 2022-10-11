@@ -40,7 +40,7 @@ import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
 import COLORS from '@styles/colors';
-import space, { m, s } from '@styles/space';
+import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, useSlots, useWeaknessCards } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
@@ -687,6 +687,7 @@ export default NewCampaignView;
 const styles = StyleSheet.create({
   footer: {
     minHeight: 100,
+    paddingBottom: l,
   },
   block: {
     padding: s,
