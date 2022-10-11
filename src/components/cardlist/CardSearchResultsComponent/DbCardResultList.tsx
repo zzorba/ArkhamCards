@@ -192,7 +192,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   const fetchedOne = useRef(false);
   useEffect(() => {
     fetchedOne.current = false;
-  }, [deps]);
+  }, [visibleCards, ...deps]);
   const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
