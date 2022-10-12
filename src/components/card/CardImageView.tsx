@@ -35,7 +35,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
   if (!card) {
     return null;
   }
-  if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
+  if (card.double_sided || (card.linked_card && card.linked_card.hasImage())) {
     if (!flipped) {
       return (
         <ViewControl
@@ -106,7 +106,7 @@ export default function CardImageView({ componentId, id }: Props) {
     if (!card) {
       return;
     }
-    const doubleCard: boolean = card.double_sided || !!(card.linked_card && card.linked_card.imagesrc);
+    const doubleCard: boolean = card.double_sided || !!(card.linked_card && card.linked_card.hasImage());
     Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: doubleCard ? [{

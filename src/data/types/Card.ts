@@ -437,6 +437,11 @@ export default class Card {
   public backimageurl?: string;
   @Column('text', { nullable: true })
   public imagesrc?: string;
+
+  hasImage(): boolean {
+    return !!this.imageurl || !!this.imagesrc;
+  }
+
   @Column('text', { nullable: true })
   public backimagesrc?: string;
   @Column('integer', { nullable: true })
