@@ -65,8 +65,7 @@ export type Effect =
   | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
-  | ScarletKeyEffect
-  | CampaignDataUnlockMapEffect;
+  | ScarletKeyEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -89,7 +88,8 @@ export type CampaignDataEffect =
   | CampaignDataSwapChaosBagEffect
   | CampaignDataRedirectExperienceEffect
   | CampaignDataEmbarkEffect
-  | CampaignDataUpdateLocationEffect;
+  | CampaignDataUpdateLocationEffect
+  | CampaignDataUnlockMapEffect;
 export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
@@ -559,6 +559,10 @@ export interface CampaignDataUpdateLocationEffect {
   setting: "unlock_location" | "lock_location" | "unlock_dossier";
   value: string;
 }
+export interface CampaignDataUnlockMapEffect {
+  type: "campaign_data";
+  setting: "unlock_map";
+}
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
   setting: "lead_investigator" | "playing_scenario";
@@ -640,10 +644,6 @@ export interface ScarletKeyEffect {
   scarlet_key: string;
   bearer_type: "investigator" | "enemy" | "steal" | "return";
   enemy_code?: string;
-}
-export interface CampaignDataUnlockMapEffect {
-  type: "campaign_data";
-  setting: "unlock_map";
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";

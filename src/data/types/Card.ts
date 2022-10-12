@@ -642,6 +642,7 @@ export default class Card {
       }
       if (option.real_slot) {
         card.real_slot = option.real_slot;
+        card.slot = Card.slotText(card.real_slot);
       }
       if (option.cost) {
         card.cost = (card.cost || 0) + option.cost;
@@ -1183,6 +1184,20 @@ export default class Card {
           default:
             return t`Scenario`;
         }
+    }
+  }
+
+  private static slotText(real_slot: string) {
+    switch (real_slot.toLowerCase()) {
+      case 'hand': return t`Hand`;
+      case 'arcane': return t`Arcane`;
+      case 'accessory': return t`Accessory`;
+      case 'body': return t`Body`;
+      case 'ally': return t`Ally`;
+      case 'tarot': return t`Tarot`;
+      case 'hand x2': return t`Hand x2`;
+      case 'arcane x2': return t`Arcane x2`;
+      default: return undefined;
     }
   }
 

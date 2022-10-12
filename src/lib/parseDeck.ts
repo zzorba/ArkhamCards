@@ -72,11 +72,13 @@ function filterBy(
 
 function groupAssets(
   cardIds: CardId[],
+  listSeperator: string,
+  customizations: Customizations,
   cards: CardsMap
 ): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
-    const card = cards[c.id];
+    const card = cards[c.id]?.withCustomizations(listSeperator, customizations[c.id], 'group');
     if (!card) {
       return t`Other`;
     }
@@ -131,10 +133,10 @@ export function isSpecialCard(card?: Card): boolean {
   );
 }
 
-export function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
+function splitCards(cardIds: CardId[], listSeperator: string, customizations: Customizations, cards: CardsMap): SplitCards {
   const result: SplitCards = {};
 
-  const groupedAssets = groupAssets(cardIds, cards);
+  const groupedAssets = groupAssets(cardIds, listSeperator, customizations, cards);
   if (groupedAssets.length > 0) {
     result.Assets = groupedAssets;
   }
@@ -938,9 +940,9 @@ export function parseDeck(
     costHistogram: costHistogram(cardIds, cards),
     slotCounts,
     skillIconCounts,
-    normalCards: splitCards(normalCards, cards),
-    specialCards: splitCards(specialCards, cards),
-    sideCards: splitCards(sideCards, cards),
+    normalCards: splitCards(normalCards, listSeperator, customizations, cards),
+    specialCards: splitCards(specialCards, listSeperator, customizations,cards),
+    sideCards: splitCards(sideCards, listSeperator, customizations, cards),
     ignoreDeckLimitSlots,
     changes,
     problem,

@@ -13,7 +13,7 @@ interface Props {
   step: BranchStep;
   condition: MultiCondition;
   campaignLog: GuidedCampaignLog;
-  color: BorderColor;
+  color?: BorderColor;
 }
 
 
