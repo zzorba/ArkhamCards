@@ -807,6 +807,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.darkMatterIcon('call_of_the_plaguebearer', size, color);
       case 'zcu':
         return this.appIcon('logo', size, color)
+      case 'zsti':
+        return this.appIcon('investigator', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

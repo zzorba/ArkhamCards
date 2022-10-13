@@ -72,44 +72,50 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
             {t`Time Passed`}
           </Text>
         </View>
-        { flatMap(range(0, 5), row => map(range(0, 7), col => {
-          const day = (row * 7) + col + 1;
-          const entries = calendarEntries[day];
-          return (
-            <View key={row * 7 + col} style={{
-              width: size,
-              height: size,
-              borderTopWidth: 1,
-              borderLeftWidth: col !== 0 ? 1: 0,
-              position: 'relative',
-              flexDirection: 'column',
-              borderColor: colors.D30,
-            }} removeClippedSubviews={false}>
-              <View style={[styles.headerRow, { position: 'relative' }]}>
-                <View style={[styles.checkbox, {
-                  width: boxSize,
-                  height: boxSize,
-                  borderColor: colors.D20,
-                }]} />
-                { time >= day && (
-                  <View style={{ position: 'absolute', top: -boxSize * 0.1, left: -boxSize * 0.1 }}>
-                    <AppIcon
-                      name={`cross_${RANDOM_CHECKS[day - 1]}`}
-                      size={boxSize * 1.2}
-                      color={colors.campaign.text.resolution}
-                    />
+        <View style={{ flexDirection: 'column', width: '100%' }}>
+          { flatMap(range(0, 5), row => (
+            <View key={`row_${row}`} style={{ flexDirection: 'row', width: '100%' }}>
+              { map(range(0, 7), col => {
+                const day = (row * 7) + col + 1;
+                const entries = calendarEntries[day];
+                return (
+                  <View key={row * 7 + col} style={{
+                    flex: 1 / 7.0,
+                    height: size,
+                    borderTopWidth: 1,
+                    borderLeftWidth: col !== 0 ? 1: 0,
+                    position: 'relative',
+                    flexDirection: 'column',
+                    borderColor: colors.D30,
+                  }} removeClippedSubviews={false}>
+                    <View style={[styles.headerRow, { position: 'relative' }]}>
+                      <View style={[styles.checkbox, {
+                        width: boxSize,
+                        height: boxSize,
+                        borderColor: colors.D20,
+                      }]} />
+                      { time >= day && (
+                        <View style={{ position: 'absolute', top: -boxSize * 0.1, left: -boxSize * 0.1 }}>
+                          <AppIcon
+                            name={`cross_${RANDOM_CHECKS[day - 1]}`}
+                            size={boxSize * 1.2}
+                            color={colors.campaign.text.resolution}
+                          />
+                        </View>
+                      ) }
+                      <View style={[styles.date, { marginRight: 3 }]}>
+                        <Text style={typography.small}>{day}</Text>
+                      </View>
+                    </View>
+                    { !!entries?.length && (
+                      <SymbolEntries entries={entries} size={size} />
+                    )}
                   </View>
-                ) }
-                <View style={[styles.date, { marginRight: 3 }]}>
-                  <Text style={typography.small}>{day}</Text>
-                </View>
+                )
+              })}
               </View>
-              { !!entries?.length && (
-                <SymbolEntries entries={entries} size={size} />
-              )}
-            </View>
-          )
-        })) }
+          )) }
+        </View>
       </View>
     </View>
   )

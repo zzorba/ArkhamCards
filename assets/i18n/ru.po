@@ -6195,6 +6195,15 @@ msgstr ""
 msgid "Bearer"
 msgstr ""
 
+msgid "You cannot have more than 5 Seeker and/or Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Mystic and/or Survivor cards"
+msgstr ""
+
+msgid "Fan-made Investigators"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"

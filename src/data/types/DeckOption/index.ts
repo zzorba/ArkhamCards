@@ -23,6 +23,8 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 15 level 0-1 Seeker and/or Mystic cards': t`You cannot have more than 15 level 0-1 Seeker and/or Mystic cards`,
     'You cannot have more than 15 level 0-1 Guardian and/or Survivor cards': t`You cannot have more than 15 level 0-1 Guardian and/or Survivor cards`,
     'You cannot have more than 5 Guardian and/or Mystic cards': t`You cannot have more than 5 Guardian and/or Mystic cards`,
+    'You cannot have more than 5 Seeker and/or Survivor cards': t`You cannot have more than 5 Seeker and/or Survivor cards`,
+    'You cannot have more than 5 Mystic and/or Survivor cards': t`You cannot have more than 5 Mystic and/or Survivor cards`,
     'You cannot have more than 5 level 0 Mystic cards': t`You cannot have more than 5 level 0 Mystic cards`,
     'You cannot have more than 5 level 0 Survivor cards': t`You cannot have more than 5 level 0 Survivor cards`,
     'You cannot have more than 5 level 0 Guardian cards': t`You cannot have more than 5 level 0 Guardian cards`,

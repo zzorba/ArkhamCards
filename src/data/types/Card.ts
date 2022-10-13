@@ -48,8 +48,11 @@ function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
   }
-  if (value < 0) {
+  if (value === -2) {
     return 'X';
+  }
+  if (value === -3) {
+    return '?';
   }
   return `${value}`;
 }

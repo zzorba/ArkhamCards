@@ -636,10 +636,6 @@ export default class GuidedCampaignLog {
   }
 
   hasResolution(): boolean {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      throw new Error('accessed resolution while not playing');
-    }
     return !!this.latestScenarioData.resolution;
   }
 

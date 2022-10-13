@@ -63,6 +63,7 @@ function cycleName(position: string): string {
     case '100': return t`Non-canon Content`;
     case '110': return t`Fan-made Campaigns`;
     case '120': return t`Fan-made Scenarios`;
+    case '130': return t`Fan-made Investigators`;
     default: return 'Unknown';
   }
 }
