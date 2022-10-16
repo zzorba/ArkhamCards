@@ -4363,7 +4363,7 @@ msgid "Fan-made campaign by ${ author }"
 msgstr ""
 
 msgid "Sort ignores punctuation"
-msgstr ""
+msgstr "Sortieren ignoriert Interpunktion"
 
 msgid ""
 "Sorry, you don't seem to be a Mythos Buster patron.\n"
@@ -4436,12 +4436,12 @@ msgid "Disable to choose individual packs to show"
 msgstr ""
 
 msgid "All cards are shown throughout the app"
-msgstr ""
+msgstr "In der gesamten App werden alle Karten angezeigt"
 
 msgid ""
 "Use these controls to limit which cards are visible while searching, building decks, or "
 "upgrading cards to those in your own collection."
-msgstr ""
+msgstr "Wähle aus, welche Erweiterungen du besitzt, damit nur diese beim Suchen von Karten und Bauen oder Verbessern von Decks berücksichtigt werden."
 
 msgid "All Cycles and Packs"
 msgstr ""
@@ -5231,7 +5231,7 @@ msgid "Samsung One UI fix"
 msgstr ""
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
-msgstr ""
+msgstr "Behebt Anzeigefehler in Version 3.0 von Samsung One UI"
 
 msgid "Call of the Plaguebearer"
 msgstr ""
@@ -5280,7 +5280,7 @@ msgid "Show all available cards for parallel"
 msgstr ""
 
 msgid "Show fan-made cards"
-msgstr ""
+msgstr "Fan-made Karten anzeigen"
 
 msgid "Reset onboarding"
 msgstr ""
@@ -5291,10 +5291,10 @@ msgid ""
 msgstr ""
 
 msgid "Recent updates"
-msgstr ""
+msgstr "Neuste Updates"
 
 msgid "Learn about recently added features"
-msgstr ""
+msgstr "Lerne mehr über die neusten Funktionalitäten"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your campaign data "
@@ -5305,7 +5305,7 @@ msgid ""
 msgstr ""
 
 msgid "Sync campaigns to share with friends"
-msgstr ""
+msgstr "Synchronisiere Kampagnen um sie mit Freunden zu teilen"
 
 msgid "Sharing campaigns"
 msgstr ""
@@ -5490,7 +5490,7 @@ msgid ""
 msgstr ""
 
 msgid "Show deck ids on campaigns"
-msgstr ""
+msgstr "Deck IDs in Kampagnen anzeigen"
 
 msgid "Tarot Reading"
 msgstr ""
@@ -5700,7 +5700,7 @@ msgid "Beta"
 msgstr ""
 
 msgid "Check for card updates"
-msgstr ""
+msgstr "Prüfe Verfügbarkeit von neuen Karten"
 
 msgid "Low memory mode"
 msgstr ""
@@ -5722,7 +5722,7 @@ msgid ""
 msgstr ""
 
 msgid "Customizations"
-msgstr ""
+msgstr "Verbesserungen"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -5960,7 +5960,7 @@ msgid "Cost: ${ card.cost }"
 msgstr ""
 
 msgid "Grants access to previewed player cards"
-msgstr ""
+msgstr "Gewährt Zugriff auf nicht-offizielle Karten"
 
 msgid "Key"
 msgstr ""
