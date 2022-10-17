@@ -153,6 +153,7 @@ interface CampaignData {
 
   scarlet: {
     // TSK stuff;
+    showMap?: boolean;
     embark?: boolean;
     location?: string;
     visitedLocations: string[];
@@ -635,10 +636,6 @@ export default class GuidedCampaignLog {
   }
 
   hasResolution(): boolean {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      throw new Error('accessed resolution while not playing');
-    }
     return !!this.latestScenarioData.resolution;
   }
 
@@ -1353,6 +1350,9 @@ export default class GuidedCampaignLog {
           this.campaignData.scarlet.unlockedLocations,
           id => id !== effect.value
         );
+        break;
+      case 'unlock_map':
+        this.campaignData.scarlet.showMap = true;
         break;
       case 'unlock_location':
         this.campaignData.scarlet.unlockedLocations = [

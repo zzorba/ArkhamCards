@@ -43,13 +43,16 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 132;
+export const CARD_NUM_COLUMNS = 134;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
   }
-  if (value < 0) {
+  if (value === -2) {
     return 'X';
+  }
+  if (value === -3) {
+    return '?';
   }
   return `${value}`;
 }
@@ -81,41 +84,6 @@ const REPRINT_CARDS: {
   '05001': ['tftbw'],
   '08004': ['iotv'],
 };
-
-const FEMININE_INVESTIGATORS = new Set([
-  '01002', // Daisy Walker
-  '01004', // Agnes Baker
-  '01005', // Wendy Adams
-  '02001', // Zoey Samaras
-  '02003', // Jenny Barnes
-  '03002', // Mihn Thi Phan
-  '03003', // Sefina Rousseau
-  '03004', // Akachi Onyele
-  '03006', // Lola Hayes
-  '04002', // Ursula Downs
-  '05001', // Carolyn Fern
-  '05004', // Diana
-  '05005', // Rita
-  '05006', // Marie
-  '06002', // Mandy Thompson
-  '06005', // Patrice
-  '07001', // Sister Mary
-  '07002', // Amanda Sharpe
-  '07003', // Trish
-  '08001', // Daniella
-  '08020', // Lily Chen
-  '09010', // Amina
-  '60301', // Wini
-  '60401', // Jacqueline
-  '60501', // Stella
-  '05046', // Gavriella Mizrah
-  '05049', // Penny White
-  '98001', // Alt-Jenny
-  '98019', // Gloria
-  '98010', // Alt-Carolyn
-  '99001', // Old Marie
-]);
-
 
 export interface TranslationData {
   lang: string;
@@ -465,8 +433,18 @@ export default class Card {
   public url?: string;
   @Column('text', { nullable: true })
   public octgn_id?: string;
+
+  @Column('text', { nullable: true })
+  public imageurl?: string;
+  @Column('text', { nullable: true })
+  public backimageurl?: string;
   @Column('text', { nullable: true })
   public imagesrc?: string;
+
+  hasImage(): boolean {
+    return !!this.imageurl || !!this.imagesrc;
+  }
+
   @Column('text', { nullable: true })
   public backimagesrc?: string;
   @Column('integer', { nullable: true })
@@ -667,6 +645,7 @@ export default class Card {
       }
       if (option.real_slot) {
         card.real_slot = option.real_slot;
+        card.slot = Card.slotText(card.real_slot);
       }
       if (option.cost) {
         card.cost = (card.cost || 0) + option.cost;
@@ -768,10 +747,6 @@ export default class Card {
       this.code.startsWith('z');
   }
 
-  public grammarGenderMasculine(): boolean {
-    return !FEMININE_INVESTIGATORS.has(this.code);
-  }
-
   public enemyFight(): string {
     return arkham_num(this.enemy_fight);
   }
@@ -797,6 +772,9 @@ export default class Card {
   }
 
   public imageUri(): string | undefined {
+    if (this.imageurl) {
+      return this.imageurl;
+    }
     if (!this.imagesrc) {
       return undefined;
     }
@@ -805,6 +783,9 @@ export default class Card {
     return uri;
   }
   public backImageUri(): string | undefined {
+    if (this.backimageurl) {
+      return this.backimageurl;
+    }
     if (!this.backimagesrc) {
       return undefined;
     }
@@ -1206,6 +1187,20 @@ export default class Card {
           default:
             return t`Scenario`;
         }
+    }
+  }
+
+  private static slotText(real_slot: string) {
+    switch (real_slot.toLowerCase()) {
+      case 'hand': return t`Hand`;
+      case 'arcane': return t`Arcane`;
+      case 'accessory': return t`Accessory`;
+      case 'body': return t`Body`;
+      case 'ally': return t`Ally`;
+      case 'tarot': return t`Tarot`;
+      case 'hand x2': return t`Hand x2`;
+      case 'arcane x2': return t`Arcane x2`;
+      default: return undefined;
     }
   }
 

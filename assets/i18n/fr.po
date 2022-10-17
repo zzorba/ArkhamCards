@@ -2034,7 +2034,6 @@ msgstr "Si l'investigateur principal a été <b>tué</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "Si tous les investigateurs ont été <b>tués</b>."
 
-#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Vérifiez vos ${ logEntry.section }. <i>Si ${ logEntry.text }..</i>"
 
@@ -4182,26 +4181,8 @@ msgstr "(nouveau total : ${ total })"
 msgid "Earned XP:"
 msgstr "XP reçue :"
 
-msgid "Not deck owner"
-msgstr "Non propriétaire du deck"
-
 msgid "Saved"
 msgstr "Sauvegardé"
-
-#, javascript-format
-msgid ""
-"This deck is owned by ${ deck.owner.handle }. They must open the app on their own device "
-"to save the upgrade"
-msgstr ""
-"Ce deck est la propriété de ${ deck.owner.handle }. Il doit ouvrir l'application sur son "
-"propre appareil pour enregistrer les modifications"
-
-msgid ""
-"This deck is owned by another user. They must open the app on their own device to save "
-"the upgrade"
-msgstr ""
-"Ce deck est la propriété d'un autre utilisateur. Il doit ouvrir l'application sur son "
-"propre appareil pour enregistrer les modifications"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
@@ -4303,6 +4284,7 @@ msgstr "Des faiblesses correspondant à ces traits seront tirées au hasard."
 msgid "Edit selection"
 msgstr "Modifier la sélection"
 
+#, javascript-format
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "Vérifiez votre Carnet de Campagne. <i>Si ${ logEntry.text }</i> :"
 
@@ -5875,12 +5857,6 @@ msgid "Map"
 msgstr ""
 
 #, javascript-format
-msgid "${ travelDistance } day"
-msgid_plural "${ travelDistance } days"
-msgstr[0] ""
-msgstr[1] ""
-
-#, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr ""
 
@@ -5990,29 +5966,11 @@ msgstr ""
 msgid "Already visited"
 msgstr ""
 
-msgid ""
-"You may stop at this location to play a side-story. Passing through this location costs "
-"no additional time."
-msgstr ""
-
-msgid ""
-"As an additional cost to play the side-story, you must spend one time for each XP cost "
-"of the scenario."
-msgstr ""
-
-msgid "Travel time:"
-msgstr ""
-
 msgid "Travel here"
 msgstr ""
 
 msgid "Information"
 msgstr ""
-
-msgid "Dossier"
-msgid_plural "Dossiers"
-msgstr[0] ""
-msgstr[1] ""
 
 #, javascript-format
 msgid "Departing from ${ location }"
@@ -6130,6 +6088,62 @@ msgstr ""
 msgid "Choose a skill"
 msgstr ""
 
+msgid "Use the embark button below"
+msgstr ""
+
+msgid "Review the world map"
+msgstr ""
+
+msgid "Claim previous rewards"
+msgstr ""
+
+msgid "Apply changes from last completed scenario or interlude"
+msgstr ""
+
+msgid "This is a side-story location."
+msgstr ""
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time"
+msgid_plural "Travel cost: ${ travelDistance } time"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Do you want to use the app to randomize choices?"
+msgstr ""
+
+#, javascript-format
+msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
+msgstr ""
+
+msgid "Mark ${ time } <b>time</b> in your Campaign Log."
+msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "This includes the cost of experience cost of playing the side-story."
+msgstr ""
+
+msgid ""
+"This deck is owned by another player. You can record the changes now and they will be "
+"given an opportunity to save them to their deck when they next open the app."
+msgstr ""
+
+msgid "Time Passed"
+msgstr ""
+
+msgid "Bearer"
+msgstr ""
+
+msgid "You cannot have more than 5 Seeker and/or Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Mystic and/or Survivor cards"
+msgstr ""
+
+msgid "Fan-made Investigators"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
@@ -6139,7 +6153,6 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } est devenu <b>dément</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } a été <b>tué</b>."
@@ -6165,6 +6178,7 @@ msgstr[1] ""
 "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect."
 "physical } physiques."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
@@ -6185,6 +6199,7 @@ msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
 msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
@@ -6214,7 +6229,7 @@ msgstr "Vaincu : aucun traumatisme"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>."
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6224,7 +6239,6 @@ msgstr ""
 "Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans "
 "votre Carnet de Campagne."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
@@ -6260,6 +6274,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } est devenue <b>démente</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } a été <b>tuée</b>."
@@ -6291,6 +6306,7 @@ msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
 msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -6331,10 +6347,12 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Vaincue : aucun traumatisme"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>."
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
@@ -6385,37 +6403,108 @@ msgstr[1] ""
 "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, elles doivent "
 "lire <b>${ sectionName }</b>."
 
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } est devenu <b>dément</b>."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } a été <b>tué</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr ""
+"${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } "
+"physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } "
+"physical trauma."
+msgstr[0] ""
+"${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect."
+"physical } physique."
+msgstr[1] ""
+"${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect."
+"physical } physiques."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+
 msgctxt "nonbinary"
 msgid "Alive"
-msgstr ""
+msgstr "Vivant"
 
 msgctxt "nonbinary"
 msgid "Resigned"
-msgstr ""
+msgstr "Abandon"
 
 msgctxt "nonbinary"
 msgid "Defeated: physical trauma"
-msgstr ""
+msgstr "Vaincu : traumatisme physique"
 
 msgctxt "nonbinary"
 msgid "Defeated: mental trauma"
-msgstr ""
+msgstr "Vaincu : traumatisme mental"
 
 msgctxt "nonbinary"
 msgid "Defeated: no trauma"
+msgstr "Vaincu : aucun traumatisme"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
+"Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans "
+"votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr ""
+"Si <i>${ card.name }</i> est inscrit sous la mention « ${ entry.section } » dans votre "
+"Carnet de Campagne."
 
 msgctxt "nonbinary"
 msgid "Physical trauma"
-msgstr ""
+msgstr "Traumatisme physique"
 
 msgctxt "nonbinary"
 msgid "Mental trauma"
-msgstr ""
+msgstr "Traumatismes mentaux"
 
 msgctxt "nonbinary"
 msgid "Defeated"
-msgstr ""
+msgstr "Vaincu"
 
 msgctxt "Traits"
 msgid "All"

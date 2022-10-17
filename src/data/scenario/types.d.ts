@@ -88,7 +88,8 @@ export type CampaignDataEffect =
   | CampaignDataSwapChaosBagEffect
   | CampaignDataRedirectExperienceEffect
   | CampaignDataEmbarkEffect
-  | CampaignDataUpdateLocationEffect;
+  | CampaignDataUpdateLocationEffect
+  | CampaignDataUnlockMapEffect;
 export type CampaignResult = "win" | "lose" | "survived";
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
@@ -557,6 +558,10 @@ export interface CampaignDataUpdateLocationEffect {
   type: "campaign_data";
   setting: "unlock_location" | "lock_location" | "unlock_dossier";
   value: string;
+}
+export interface CampaignDataUnlockMapEffect {
+  type: "campaign_data";
+  setting: "unlock_map";
 }
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";

@@ -663,7 +663,7 @@ function LocationContent({
       return (
         <>
           <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-            <DeckButton shrink thin icon="map" color="light_gray" title={t`Locked`} disabled />
+            <DeckButton shrink thin icon="lock" color="light_gray" title={t`Locked`} disabled />
           </View>
         </>
 
@@ -780,7 +780,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     ];
   }, [campaignMap, props.currentLocation, visitedLocations]);
 
-  const { listSeperator } = useContext(LanguageContext);
   const { colors, backgroundStyle, borderStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();

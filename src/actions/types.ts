@@ -498,7 +498,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  TSK,
+  // TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);

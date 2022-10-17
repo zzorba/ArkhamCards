@@ -131,7 +131,7 @@ export default function PlayerCardImage({ componentId, card }: Props) {
     }
   }, [componentId, card, colors]);
 
-  if (!card.imagesrc) {
+  if (!card.hasImage()) {
     return (
       <View style={styles.container}>
         <ImagePlaceholder card={card} />

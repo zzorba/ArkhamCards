@@ -12,6 +12,7 @@ import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 export interface ListItem {
   code: string;
@@ -19,7 +20,7 @@ export interface ListItem {
   name: string;
   description?: string;
   color?: string;
-  masculine?: boolean;
+  gender?: Gender_Enum;
 }
 
 export interface ChoiceListComponentProps {

@@ -5873,7 +5873,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "場上[[仙境]]地點的數量",
           "min": 0,
           "max": 5
         }
@@ -5890,7 +5890,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "場上[[仙境]]地點的數量",
           "min": 0,
           "adjustment": 1
         }
@@ -5922,7 +5922,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "你所在地點上沒有牡蠣",
               "modified_value": {
                 "modifier": -5
               }
@@ -5939,7 +5939,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "你所在地點上沒有牡蠣",
               "modified_value": {
                 "modifier": -5
               }
@@ -5970,7 +5970,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "你所在地點上沒有牡蠣",
               "modified_value": {
                 "modifier": -6
               }
@@ -5987,7 +5987,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "你所在地點上沒有牡蠣",
               "modified_value": {
                 "modifier": -6
               }
@@ -6026,7 +6026,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "你“餐桌禮儀很糟糕”",
               "modified_value": {
                 "modifier": -4
               }
@@ -6043,7 +6043,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "你“餐桌禮儀很糟糕”",
               "modified_value": {
                 "modifier": -4
               }
@@ -6078,7 +6078,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "你“餐桌禮儀很糟糕”",
               "modified_value": {
                 "modifier": -5
               }
@@ -6095,7 +6095,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "你“餐桌禮儀很糟糕”",
               "modified_value": {
                 "modifier": -5
               }
@@ -6119,7 +6119,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of blame on your copy of Royal Suspicion (rounded up)",
+          "prompt": "你的皇家猜疑上的怪罪數量的一半(向上取整)",
           "min": 0
         }
       },
@@ -6132,7 +6132,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location",
+              "prompt": "紅心皇后位於你所在地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -6156,7 +6156,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "劊子手在場上",
               "modified_value": {
                 "modifier": -4
               }
@@ -6170,7 +6170,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of blame on your copy of Royal Suspicion",
+          "prompt": "你的皇家猜疑上的怪罪數量",
           "min": 0
         }
       },
@@ -6183,7 +6183,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location or a connecting location",
+              "prompt": "紅心皇后位於你所在地點或連接地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -6207,7 +6207,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "劊子手在場上",
               "modified_value": {
                 "modifier": -5
               }
@@ -6225,7 +6225,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "當前密謀上毀滅標記的數量的一半(向上取整)",
           "min": 0
         }
       },
@@ -6238,7 +6238,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "花費一次行動",
               "modified_value": {
                 "modifier": -2
               }
@@ -6261,7 +6261,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "查博蕪基龍在場上",
               "modified_value": {
                 "modifier": -4
               }
@@ -6275,7 +6275,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "當前密謀上毀滅標記的數量的一半(向上取整)",
           "min": 0,
           "adjustment": 1
         }
@@ -6289,7 +6289,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "花費一次行動",
               "modified_value": {
                 "modifier": -3
               }
@@ -6313,7 +6313,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "查博蕪基龍在場上",
               "modified_value": {
                 "modifier": -5
               }
@@ -6336,7 +6336,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "冒險參考卡上總共有至少1[per_investigator]個標記",
               "modified_value": {
                 "modifier": -3
               }
@@ -6353,7 +6353,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "冒險參考卡上的傷害標記和恐懼標記數量不相等",
               "modified_value": {
                 "modifier": -4
               }
@@ -6370,7 +6370,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "冒險參考卡上的傷害標記和恐懼標記數量不相等",
               "modified_value": {
                 "modifier": -4
               }
@@ -6395,7 +6395,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "冒險參考卡上總共有至少1[per_investigator]個標記",
               "modified_value": {
                 "modifier": -4
               }
@@ -6412,7 +6412,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "冒險參考卡上的傷害標記和恐懼標記數量不相等",
               "modified_value": {
                 "modifier": -5
               }
@@ -6429,7 +6429,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "冒險參考卡上的傷害標記和恐懼標記數量不相等",
               "modified_value": {
                 "modifier": -5
               }
@@ -6453,7 +6453,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "場上[[西洋棋]]敵人的數量",
           "min": 0,
           "max": 5
         }
@@ -6467,7 +6467,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "在攻擊或躲避[[西洋棋]]敵人中抽出此標記",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6485,7 +6485,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "在攻擊或躲避[[西洋棋]]敵人中抽出此標記",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6503,7 +6503,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "你位於[[黯影]]地點",
               "modified_value": {
                 "modifier": -3
               }
@@ -6517,7 +6517,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "場上[[西洋棋]]敵人的數量",
           "min": 0
         }
       },
@@ -6530,7 +6530,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "在攻擊或躲避[[西洋棋]]敵人中抽出此標記",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6548,7 +6548,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "在攻擊或躲避[[西洋棋]]敵人中抽出此標記",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6566,7 +6566,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "你位於[[黯影]]地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -6589,7 +6589,7 @@
           },
           "options": [
             {
-              "prompt": "More total damage and horror on Alice than on your investigator",
+              "prompt": "愛麗絲身上的傷害和恐懼總數大於你的調查員",
               "modified_value": {
                 "modifier": -4
               }
@@ -6606,7 +6606,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "位於[[仙境]]或[[黯影]]地點",
               "modified_value": {
                 "modifier": -4
               }
@@ -6623,7 +6623,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "場上的[[仙境]]地點不超過3個",
               "modified_value": {
                 "modifier": -4
               }
@@ -6640,7 +6640,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "古拉斯納卡位於你所在地點",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6660,7 +6660,7 @@
           },
           "options": [
             {
-              "prompt": "There is more total damage and horror on Alice than on your investigator",
+              "prompt": "愛麗絲身上的傷害和恐懼總數大於你的調查員",
               "modified_value": {
                 "modifier": -5
               }
@@ -6677,7 +6677,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "位於[[仙境]]或[[黯影]]地點",
               "modified_value": {
                 "modifier": -5
               }
@@ -6694,7 +6694,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "場上的[[仙境]]地點不超過3個",
               "modified_value": {
                 "modifier": -5
               }
@@ -6711,7 +6711,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "古拉斯納卡位於你所在地點",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1

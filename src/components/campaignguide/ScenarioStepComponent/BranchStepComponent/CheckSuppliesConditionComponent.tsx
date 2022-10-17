@@ -16,6 +16,7 @@ import {
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { checkSuppliesAnyConditionResult, checkSuppliesAllConditionResult } from '@data/scenario/conditionHelper';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   step: BranchStep;
@@ -23,21 +24,21 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-function getGender(cards: Card[]): 'masculine' | 'feminine' | 'mixed' {
-  if (every(cards, c => c.grammarGenderMasculine())) {
-    return 'masculine';
+function getGender(cards: Card[]): Gender_Enum {
+  if (every(cards, c => c.gender === 'm')) {
+    return Gender_Enum.M;
   }
-  if (every(cards, c => !c.grammarGenderMasculine())) {
-    return 'feminine';
+  if (every(cards, c => c.gender === 'f')) {
+    return Gender_Enum.F;
   }
-  return 'mixed';
+  return Gender_Enum.Nb;
 }
 
 function getText(cards: Card[], supplyName: string, sectionName: string, positive: boolean, listSeperator: string) {
   const list = stringList(map(cards, card => card.name), listSeperator);
   const gender = getGender(cards);
   switch(gender) {
-    case 'masculine':
+    case Gender_Enum.M:
       return positive ?
         c('masculine').ngettext(
           msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
@@ -48,7 +49,7 @@ function getText(cards: Card[], supplyName: string, sectionName: string, positiv
           `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
           cards.length
         );
-    case 'feminine':
+    case Gender_Enum.F:
       return positive ?
         c('feminine').ngettext(
           msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
@@ -59,7 +60,7 @@ function getText(cards: Card[], supplyName: string, sectionName: string, positiv
           `Since ${list} do not have a ${supplyName}, they must read <b>${sectionName}</b>.`,
           cards.length
         );
-    case 'mixed':
+    case Gender_Enum.Nb:
       return positive ?
         c('mixed').ngettext(
           msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,

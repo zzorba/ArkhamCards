@@ -31,7 +31,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, SORT_BY_TYPE, DeckId } from '@actions/types';
+import { SortType, Slots, SORT_BY_TYPE, DeckId, Customizations } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
@@ -192,7 +192,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   const fetchedOne = useRef(false);
   useEffect(() => {
     fetchedOne.current = false;
-  }, [deps]);
+  }, [visibleCards, ...deps]);
   const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
@@ -287,6 +287,7 @@ interface SectionFeedProps {
   footerPadding?: number;
   includeBonded?: boolean;
   expandSearchControlsHeight?: number;
+  customizations?: Customizations;
 }
 
 interface SectionFeed {
@@ -324,8 +325,10 @@ function useSectionFeed({
   includeBonded,
   footerPadding = 0,
   expandSearchControlsHeight = 0,
+  customizations,
 }: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
+  const { listSeperator } = useContext(LanguageContext);
   const { fontScale } = useContext(StyleContext);
   const sortIgnoreQuotes = !useSettingValue('sort_quotes');
   const packSpoiler = useSelector(getPackSpoilers);
@@ -689,7 +692,7 @@ function useSectionFeed({
       result.push({
         type: 'card',
         id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
-        card,
+        card: card.withCustomizations(listSeperator, customizations?.[card.code], 'feed'),
       });
     }
     if (!missingCards && spoilerCardsCount > 0 && loadingCount <= 1) {
@@ -734,7 +737,7 @@ function useSectionFeed({
       });
     }
     return [result, !(noCards && cardsLoading), cardsLoading];
-  }, [partialItems, cards, bondedCards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
+  }, [partialItems, cards, bondedCards, showSpoilers, spoilerCardsCount, customizations, listSeperator, editSpoilerSettings]);
 
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const isRefreshing = !hasCards || refreshingResult || deckRefreshing;
@@ -891,6 +894,7 @@ export default function({
     sideDeck,
     expandSearchControlsHeight,
     footerPadding,
+    customizations,
   });
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -1007,13 +1011,12 @@ export default function({
         if (renderCard) {
           return renderCard(card);
         }
-        const customizedCard = card.withCustomizations(listSeperator, customizations?.[card.code], 'list')
-        const deck_limit: number = customizedCard.collectionDeckLimit(packInCollection, ignore_collection);
+        const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
             key={item.id}
-            card={customizedCard}
+            card={card}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"

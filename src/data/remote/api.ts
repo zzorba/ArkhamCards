@@ -50,8 +50,9 @@ interface UpdateHandleRequest {
 export function useUpdateHandle() {
   const [updateCache] = useModifyUserCache();
   const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
-  return useCallback(async(handle: string) => {
-    const data = await apiCall({ handle });
+  return useCallback(async(rawHandle: string) => {
+    const handle = rawHandle.trim();
+    const data = await apiCall({ handle: handle });
     if (data.error) {
       return data.error;
     }
