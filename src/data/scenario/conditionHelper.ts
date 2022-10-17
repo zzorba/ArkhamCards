@@ -618,6 +618,11 @@ export function campaignDataConditionResult(
         condition,
         campaignLog
       );
+    case 'cycle':
+      return stringConditionResult(
+        campaignLog.campaignGuide.campaignCycleCode(),
+        condition.options
+      );
     case 'scenario_replayed':
     case 'next_scenario':
     case 'scenario_completed': {
@@ -663,6 +668,7 @@ export function multiConditionResult(
             case 'scenario_replayed':
             case 'next_scenario':
             case 'investigator':
+            case 'cycle':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }

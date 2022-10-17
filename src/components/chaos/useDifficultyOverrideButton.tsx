@@ -60,7 +60,7 @@ export default function useDifficultyOverrideButton({ chaosBagResults, actions, 
     onValueChange: setDifficulty,
   });
   return [
-    <View style={space.paddingBottomS} key="tarot-button">
+    <View style={space.paddingBottomS} key="difficulty-button">
       <DeckButton
         icon="difficulty"
         title={getDifficultyString(chaosBagResults.difficulty)}

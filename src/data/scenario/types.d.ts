@@ -140,7 +140,8 @@ export type CampaignDataCondition =
   | CampaignDataNextScenarioCondition
   | CampaignDataInvestigatorCondition
   | CampaignDataLinkedCondition
-  | CampaignDataVersionCondition;
+  | CampaignDataVersionCondition
+  | CampaignDataCycleCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataHasResolutionCondition
@@ -355,6 +356,7 @@ export interface MultiCondition {
     | PartnerStatusCondition
     | BasicTraumaCondition
     | CampaignDataInvestigatorCondition
+    | CampaignDataCycleCondition
     | ScarletKeyCondition
     | ScarletKeyCountCondition
   )[];
@@ -792,6 +794,11 @@ export interface CampaignDataInvestigatorCondition {
   exclude_investigators?: string[];
   options: StringOption[];
   default_option?: Option;
+}
+export interface CampaignDataCycleCondition {
+  type: "campaign_data";
+  campaign_data: "cycle";
+  options: StringOption[];
 }
 export interface ScarletKeyCondition {
   type: "scarlet_key";

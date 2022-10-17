@@ -302,7 +302,7 @@
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "les investigateurs ont convaincu Dyer d'autoriser l'expédition."
           },
           {
             "id": "cookie_has_confronted_his_demons",
@@ -314,7 +314,7 @@
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "les investigateurs n'ont pas cru le rapport de Dyer."
           },
           {
             "id": "discovered_an_ancient_vault",
@@ -4138,7 +4138,7 @@
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possède un scaphandre.",
             "feminine_text": "#name# possède un scaphandre.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "nonbinary_text": "#name# possède un scaphandre."
           },
           {
             "id": "agent_harpers_mission_is_complete",

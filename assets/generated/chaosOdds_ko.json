@@ -5212,7 +5212,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "당신이 위치한 장소가 소진됨",
               "modified_value": {
                 "modifier": -4
               }
@@ -5249,7 +5249,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "당신이 위치한 장소가 소진됨",
               "modified_value": {
                 "modifier": -5
               }
@@ -7045,7 +7045,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your distance from Lab Omega",
+          "prompt": "당신과 ‘실험실 오메가’의 거리",
           "min": 0
         }
       },
@@ -7067,7 +7067,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice your distance from Lab Omega",
+          "prompt": "당신과 ‘실험실 오메가’의 거리의 두 배",
           "min": 0
         }
       },
@@ -7093,7 +7093,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with <em>Survivors</em>",
+          "prompt": "<em>생존자</em>가 위치한 장소 개수",
           "min": 0
         }
       },
@@ -7115,7 +7115,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with a <em>Ruin</em> or <em>Survivors</em>",
+          "prompt": "<em>멸망</em> 또는 <em>생존자</em>가 위치한 장소 개수",
           "min": 0
         }
       },
@@ -7141,7 +7141,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "prompt": "플레이 영역에 있는 [[되살아난]] 적이 받은 최대 피해 값",
           "min": 0,
           "max": 5
         }
@@ -7164,7 +7164,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "prompt": "플레이 영역에 있는 [[되살아난]] 적이 받은 최대 피해 값",
           "min": 0,
           "max": 5,
           "adjustment": 2
@@ -7192,7 +7192,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "플레이 영역에 있는 적에 가장 많이 놓인 파멸 토큰의 숫자",
           "min": 0,
           "max": 4
         }
@@ -7206,7 +7206,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "당신이 [[독기]] 장소에 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -7226,7 +7226,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "플레이 영역에 있는 적에 가장 많이 놓인 파멸 토큰의 숫자",
           "min": 0,
           "max": 6,
           "adjustment": 1
@@ -7241,7 +7241,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "당신이 [[독기]] 장소에 있음",
               "modified_value": {
                 "modifier": -6
               }
@@ -7265,7 +7265,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away you are from The Saferoom",
+          "prompt": "‘대피소’와 떨어져 있는 장소의 개수",
           "min": 0
         }
       },
@@ -7293,7 +7293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations away you are from The Saferoom",
+          "prompt": "‘대피소’와 떨어져 있는 장소의 개수",
           "min": 0,
           "adjustment": 2
         }
@@ -7326,7 +7326,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "장소에 놓인 공포나 피해 토큰 중 가장 높은 값",
           "min": 0,
           "max": 4
         }
@@ -7355,7 +7355,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "장소에 놓인 공포나 피해 토큰 중 가장 높은 값",
           "min": 0,
           "max": 6
         }
@@ -7388,7 +7388,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "당신이 위치한 장소의 [[층수]] 값",
           "min": 0
         }
       },
@@ -7416,7 +7416,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "당신이 위치한 장소의 [[층수]] 값",
           "min": 0,
           "adjustment": 2
         }
@@ -7449,7 +7449,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "공포 토큰이 놓인 장소의 숫자",
           "min": 0,
           "max": 4
         }
@@ -7478,7 +7478,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "공포 토큰이 놓인 장소의 숫자",
           "min": 0
         }
       },

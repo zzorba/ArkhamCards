@@ -1,7 +1,7 @@
 [
   {
     "id": "a_confrontation",
-    "name": "A Confrontation"
+    "name": "대립"
   },
   {
     "id": "a_house_divided",
@@ -49,7 +49,7 @@
   },
   {
     "id": "arkham_allied",
-    "name": "Arkham Allied"
+    "name": "아컴 연합군"
   },
   {
     "id": "arkham_in_wonderland",
@@ -193,15 +193,15 @@
   },
   {
     "id": "dead_by_dawn",
-    "name": "Dead by Dawn"
+    "name": "새벽녘의 죽음"
   },
   {
     "id": "dead_or_alive",
-    "name": "Dead or Alive"
+    "name": "죽거나 살거나"
   },
   {
     "id": "death_at_sundown",
-    "name": "Death at Sundown"
+    "name": "해질녘의 최후"
   },
   {
     "id": "devil_reef",
@@ -301,7 +301,7 @@
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "밑바닥 친구들"
   },
   {
     "id": "going_twice",
@@ -329,11 +329,11 @@
   },
   {
     "id": "high_noon_descent",
-    "name": "High Noon Descent"
+    "name": "정오의 강습"
   },
   {
     "id": "history_lesson",
-    "name": "History Lesson"
+    "name": "역사 수업"
   },
   {
     "id": "hong_kong",
@@ -413,7 +413,7 @@
   },
   {
     "id": "late_risers",
-    "name": "Late Risers"
+    "name": "늦잠꾸러기들"
   },
   {
     "id": "london",
@@ -461,7 +461,7 @@
   },
   {
     "id": "mourning_chorus",
-    "name": "Mourning Chorus"
+    "name": "애도의 합창"
   },
   {
     "id": "murder_at_the_excelsior_hotel",
@@ -473,7 +473,7 @@
   },
   {
     "id": "night_on_the_town",
-    "name": "Night on the Town"
+    "name": "기나긴 밤"
   },
   {
     "id": "perth",
@@ -781,7 +781,7 @@
   },
   {
     "id": "the_afternoon_war",
-    "name": "The Afternoon War"
+    "name": "오후의 전쟁"
   },
   {
     "id": "the_attack",
@@ -885,7 +885,7 @@
   },
   {
     "id": "the_midnight_hour",
-    "name": "The Midnight Hour"
+    "name": "자정 시간"
   },
   {
     "id": "the_miskatonic_museum",
