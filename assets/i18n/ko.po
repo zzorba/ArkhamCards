@@ -5194,7 +5194,7 @@ msgstr ""
 "• 원작 아이콘 디자인: ${ visualDesigner }"
 
 msgid "Call of the Plaguebearer"
-msgstr ""
+msgstr "역병전파자의 부름"
 
 msgid "Eliminated"
 msgstr "제거"
@@ -6006,58 +6006,60 @@ msgid "Choose a skill"
 msgstr "능력 선택"
 
 msgid "Use the embark button below"
-msgstr ""
+msgstr "아래의 탑승 버튼을 사용하십시오"
 
 msgid "Review the world map"
-msgstr ""
+msgstr "세계 지도 검토"
 
 msgid "Claim previous rewards"
-msgstr ""
+msgstr "이전 보상 받기"
 
 msgid "Apply changes from last completed scenario or interlude"
-msgstr ""
+msgstr "마지막으로 완료된 시나리오나 막간의 변경점 적용"
 
 msgid "This is a side-story location."
-msgstr ""
+msgstr "이곳은 외전 이야기 장소입니다."
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] ""
+msgstr[0] "여행 비용: ${ travelDistance }시간"
 
 msgid "Do you want to use the app to randomize choices?"
-msgstr ""
+msgstr "앱을 이용하여 선택 항목을 무작위로 지정하시겠습니까?"
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
-msgstr ""
+msgstr "${ departCityName } 위치에서 ${ arriveCityName } 위치로 이동합니다."
 
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
-msgstr[0] ""
+msgstr[0] "캠페인 기록지 아래에 ${ time }<b>시간</b>을 기록하십시오."
 
 msgid "This includes the cost of experience cost of playing the side-story."
-msgstr ""
+msgstr "여기에는 외전 이야기를 즐기기 위한 경험치 비용이 포함됩니다."
 
 msgid ""
 "This deck is owned by another player. You can record the changes now and they will be "
 "given an opportunity to save them to their deck when they next open the app."
 msgstr ""
+"이 덱은 다른 플레이어가 소유하고 있습니다. 지금 변경점을 기록할 수 있으며, 소유주가 다음에 앱을 "
+"열 때 덱에 저장할 수 있는 기회가 주어집니다."
 
 msgid "Time Passed"
-msgstr ""
+msgstr "흐른 시간"
 
 msgid "Bearer"
 msgstr ""
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
-msgstr ""
+msgstr "탐구자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 Mystic and/or Survivor cards"
-msgstr ""
+msgstr "신비주의자 그리고/또는 생존자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Fan-made Investigators"
-msgstr ""
+msgstr "팬 제작 조사자"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6708,7 +6710,7 @@ msgstr "- Crown of Egil (제작자: The Mad Juggler / 한국어화 지원 없음
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr "- Call of the Plaguebearer (제작자: Walker Graves / 한국어화 지원 없음)"
+msgstr "- Call of the Plaguebearer (제작자: Walker Graves / 한국어화: ´허걱이´님)"
 
 msgctxt "releaseNotes"
 msgid "As for standalone scenarios:"
