@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Guardian"
 msgstr "守衛者"
@@ -3849,7 +3849,7 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] }和${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "黑暗物質"
 
 msgid "Impending Doom"
 msgstr ""
@@ -3913,10 +3913,10 @@ msgstr ""
 "我。非官方劇本的支援並不容易，但我會盡己所能的為社群提供支援。"
 
 msgid "Alice in Wonderland"
-msgstr "愛麗絲夢遊仙境"
+msgstr "詭境夢遊"
 
 msgid "Fragments of Alice"
-msgstr "Fragments of Alice"
+msgstr "愛麗絲的碎片"
 
 msgid "Wonderland Boons"
 msgstr "仙境的恩賜"
@@ -4275,7 +4275,7 @@ msgid "All Cycles and Packs"
 msgstr "所有的循環和擴充包"
 
 msgid "Record that..."
-msgstr ""
+msgstr "記錄下……"
 
 msgid "Player card entries only"
 msgstr ""
@@ -5050,7 +5050,7 @@ msgid "Offerings"
 msgstr ""
 
 msgid "Patrol"
-msgstr ""
+msgstr "巡邏"
 
 msgid "Consternation on the Constellation"
 msgstr ""
@@ -5108,7 +5108,7 @@ msgid "Upload a campaign"
 msgstr "上傳劇本"
 
 msgid "Add a friend"
-msgstr ""
+msgstr "新增朋友"
 
 msgid "Enjoy the campaign"
 msgstr ""
@@ -5267,10 +5267,10 @@ msgid "Draft Cards"
 msgstr "抽選卡牌"
 
 msgid "Deck id copied!"
-msgstr ""
+msgstr "已複製牌組id！"
 
 msgid "Link to deck copied!"
-msgstr ""
+msgstr "已複製牌組的連結！"
 
 msgid "Build a deck randomly"
 msgstr "隨機構建牌組"
@@ -5417,54 +5417,54 @@ msgid "The Dodo"
 msgstr "渡渡鳥"
 
 msgid "A Sea of Troubles"
-msgstr ""
+msgstr "麻煩之海"
 
 msgid "The Caterpillar"
 msgstr "毛毛蟲"
 
 msgid "Tempest in a Teapot"
-msgstr ""
+msgstr "壺中風暴"
 
 msgid "The Duchess"
 msgstr "公爵夫人"
 
 msgid "Bleeding Hearts"
-msgstr ""
+msgstr "淌血紅心"
 
 msgid "Gryphon and Mock Turtle"
 msgstr "獅鷲和假海龜"
 
 msgid "Wild Snark Chase"
-msgstr ""
+msgstr "獵捕蛇鯊"
 
 msgid "Humpty Dumpty"
 msgstr "蛋頭先生"
 
 msgid "Sibling Rivalry"
-msgstr ""
+msgstr "兄弟鬩牆"
 
 msgid "The Lion and the Unicorn"
-msgstr ""
+msgstr "獅子和獨角獸"
 
 msgid "Fool's Mate"
-msgstr ""
+msgstr "愚者弈局"
 
 msgid "The White Queen"
-msgstr ""
+msgstr "白棋王后"
 
 msgid "Lucid Nightmare"
-msgstr ""
+msgstr "清醒夢魘"
 
 msgid "Delete your account"
-msgstr ""
+msgstr "刪除你的帳戶"
 
 msgid "Loading account details..."
-msgstr ""
+msgstr "讀取帳戶資料……"
 
 msgid ""
 "Are you sure that you want to <b>permanently</b> delete your account? This <b>cannot be "
 "undone</b>."
-msgstr ""
+msgstr "你確定你要<b>永久</b>刪除你的帳戶？這麼做<b>無法復原</b>。"
 
 #, javascript-format
 msgid "You are currently signed in as <b>${ handle }</b>."
@@ -5477,31 +5477,31 @@ msgid_plural ""
 msgstr[0] ""
 
 msgid "I understand that all data will be deleted permanently."
-msgstr ""
+msgstr "我瞭解所有資料將被永久地刪除。"
 
 msgid "Confirm account deletion"
-msgstr ""
+msgstr "確認刪除帳戶"
 
 msgid "Delete account"
-msgstr ""
+msgstr "刪除帳戶"
 
 msgid "If you choose to delete this account, the following data will be removed."
-msgstr ""
+msgstr "如果你刪除這個帳戶，以下的資料將被移除。"
 
 msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural ""
 "The ${ createdCampaignCount } campaigns that you have uploaded to this account will be "
 "deleted:"
-msgstr[0] ""
+msgstr[0] "你上傳到這個帳戶的劇本資料將被刪除："
 
 msgid "Beta"
 msgstr ""
 
 msgid "Check for card updates"
-msgstr ""
+msgstr "檢查卡牌更新"
 
 msgid "Low memory mode"
-msgstr ""
+msgstr "低記憶體模式"
 
 msgid "Have the app preload fewer cards to help performance on older devices"
 msgstr ""
@@ -5538,7 +5538,7 @@ msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
 msgid "The Scarlet Keys"
-msgstr ""
+msgstr "緋紅密鑰"
 
 #, javascript-format
 msgid "Name ${ quantity } card"
@@ -5654,10 +5654,10 @@ msgid "Non-canon Content"
 msgstr ""
 
 msgid "Fan-made Campaigns"
-msgstr ""
+msgstr "非官方劇本"
 
 msgid "Fan-made Scenarios"
-msgstr ""
+msgstr "非官方冒險"
 
 msgid "Currently here"
 msgstr ""
@@ -5694,10 +5694,10 @@ msgid "Difficulty override"
 msgstr ""
 
 msgid "Easy / Standard"
-msgstr ""
+msgstr "簡單 / 普通"
 
 msgid "Hard / Expert"
-msgstr ""
+msgstr "困難 / 專家"
 
 #, javascript-format
 msgid "Difficulty override: ${ msg[difficulty] }"
@@ -5750,7 +5750,7 @@ msgid "Cost: ${ card.cost }"
 msgstr ""
 
 msgid "Grants access to previewed player cards"
-msgstr ""
+msgstr "授予預覽玩家卡的權限"
 
 msgid "Key"
 msgstr ""
@@ -5780,7 +5780,7 @@ msgid "Requeset Account Deletion"
 msgstr ""
 
 msgid "Delete Account"
-msgstr ""
+msgstr "刪除帳戶"
 
 msgid "Choose a skill"
 msgstr ""
@@ -5837,7 +5837,7 @@ msgid "You cannot have more than 5 Mystic and/or Survivor cards"
 msgstr ""
 
 msgid "Fan-made Investigators"
-msgstr ""
+msgstr "非官方調查員"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6160,7 +6160,7 @@ msgid ""
 msgstr ""
 "從這個版本開始，有一個新設置可以在搜尋卡牌和構建牌組時解鎖一些“非官方”內容。雖然非官方劇"
 "本的支援已經有一段時間了，但與之相關的卡片還無法搜尋。作為開始，首先會加入 《狗鎮奇談》推"
-"廣擴充之中的卡牌，以及The Beard傑出的《愛麗絲夢遊仙境》劇本之中的卡牌。"
+"廣擴充之中的卡牌，以及The Beard傑出的《詭境夢遊》劇本之中的卡牌。"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6382,11 +6382,11 @@ msgstr "我們將會持續加入更多劇本，截至目前為止，我們提供
 
 msgctxt "releaseNotes"
 msgid "- Alice in Wonderland by The Beard"
-msgstr "- The Beard，《愛麗絲夢遊仙境》"
+msgstr "- The Beard，《詭境夢遊》"
 
 msgctxt "releaseNotes"
 msgid "- Dark Matter by Axolotl"
-msgstr ""
+msgstr "- Axolotl，《黑暗物質》"
 
 msgctxt "releaseNotes"
 msgid "- Crown of Egil by The Mad Juggler"
@@ -6475,45 +6475,49 @@ msgstr "- 在實際儲存之前，顯示牌組，因此如果產生了特別不�
 msgctxt "releaseNotes"
 msgid ""
 "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
-msgstr ""
+msgstr "注意：你可能需要重新讀取一次卡牌資料(使用<b>檢查卡牌更新</b>)。"
 
 msgctxt "releaseNotes"
 msgid "Settings synchronization"
-msgstr ""
+msgstr "設置檔同步"
 
 msgctxt "releaseNotes"
 msgid ""
 "Good news for players who use Arkham Cards with more than one device, if you sign into "
 "your Arkham Cards account your settings will now sync between devices automatically!"
 msgstr ""
+"好消息！在超過一個裝置上使用Arkham Cards APP的玩家們，如果你登入Arkham Cards的帳戶，你的"
+"設置資料現在會自動在所有裝置之間同步了！"
 
 msgctxt "releaseNotes"
 msgid ""
 "- This includes your collection + spoiler settings, as well as many general app "
 "preferences."
-msgstr ""
+msgstr "- 包括你的收藏 + 防據透設定，以及其他的app偏好設定。"
 
 msgctxt "releaseNotes"
 msgid ""
 "I've had some reports of slower performance on some devices, and have a new <i>\"Low "
 "Memory Mode\"</i> setting to try out."
-msgstr ""
+msgstr "我收到一些在某些裝置上效能降低的報告，因此嘗試新增了<i>“低記憶體模式”</i>的設定。"
 
 msgctxt "releaseNotes"
 msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
-msgstr ""
+msgstr "- 如果你曾經感到APP有任何卡頓，請嘗試看看。"
 
 msgctxt "releaseNotes"
 msgid ""
 "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear "
 "how it is working in the wild."
 msgstr ""
+"- 如果你嘗試了，請寄封email給我，寄到arkhamcards@gmail.com，我很想知道這個模式廣泛的運作"
+"狀況。"
 
 msgctxt "releaseNotes"
 msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so "
 "stay tuned."
-msgstr ""
+msgstr "順帶一提，在緋紅密鑰中最新發表的新機制的支援已經在開發中了，敬請期待。"
 
 msgctxt "releaseNotes"
 msgid "Cyclopean Foundations"
@@ -6523,31 +6527,31 @@ msgctxt "releaseNotes"
 msgid ""
 "This release adds the newly finished fan-made Cyclopean Foundations campaign by The "
 "Beard."
-msgstr ""
+msgstr "這次更新加入了剛完成的，由The Beard製作的Cyclopean Foundations非官方劇本。"
 
 msgctxt "releaseNotes"
 msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
-msgstr ""
+msgstr "- 加入了完整的劇本模式，包含所有冒險設置和結局文字。"
 
 msgctxt "releaseNotes"
 msgid ""
 "This update also adds support for \"The Colour Out of Space\", a fan-made standalone "
 "scenario."
-msgstr ""
+msgstr "這次更新也加入了一個非官方的獨立冒險\"The Colour Out of Space\"。"
 
 msgctxt "releaseNotes"
 msgid "Preview Cards"
-msgstr ""
+msgstr "卡牌預覽"
 
 msgctxt "releaseNotes"
 msgid "This release introduces faster access to previewed cards."
-msgstr ""
+msgstr "這次更新提供更快速的卡牌預覽。"
 
 msgctxt "releaseNotes"
 msgid ""
 "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator "
 "expansion."
-msgstr ""
+msgstr "- 包括能預覽緋紅密鑰調查員擴展之中的<b>Customizable</b>卡牌。"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6555,6 +6559,8 @@ msgid ""
 "default. You can opt into them by enabling the <b>Show Fan-made cards</b> under "
 "<i>Settings</i>."
 msgstr ""
+"- 為了維持與ArkhamDB的相容性，這些卡牌預設不會顯示。你可以啟用<i>設置</i>底下的<b>顯示非"
+"官方卡牌</b>來調整這些卡牌。"
 
 msgctxt "trait"
 msgid "???"
@@ -6986,7 +6992,7 @@ msgstr "類人"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr "獵人"
+msgstr "獵手"
 
 msgctxt "trait"
 msgid "Hybrid"
@@ -7570,7 +7576,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "祝福?"
 
 msgctxt "trait"
 msgid "Broken"
@@ -7578,7 +7584,7 @@ msgstr "破功"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "撲克牌"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -7602,7 +7608,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "皇室"
 
 msgctxt "trait"
 msgid "Saga"
@@ -7630,7 +7636,7 @@ msgstr "堅毅"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "盟友? 生物"
 
 msgctxt "trait"
 msgid "Bad dog"
@@ -7638,15 +7644,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "城堡"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr ""
+msgstr "椅子"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr ""
+msgstr "西洋棋"
 
 msgctxt "trait"
 msgid "Classy"
@@ -7658,7 +7664,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr ""
+msgstr "屍體"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7670,7 +7676,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr ""
+msgstr "商業區"
 
 msgctxt "trait"
 msgid "Eidolon"
@@ -7730,7 +7736,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Northside"
-msgstr ""
+msgstr "北區"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -7762,11 +7768,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "管制"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "橫列"
 
 msgctxt "trait"
 msgid "Scientist"
@@ -7782,11 +7788,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "斜坡"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "士兵"
 
 msgctxt "trait"
 msgid "Stop"
@@ -7794,7 +7800,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "桌子"
 
 msgctxt "trait"
 msgid "That's bad"
@@ -7806,7 +7812,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "土爾基森林"
 
 msgctxt "trait"
 msgid "Uncharted"
@@ -7822,7 +7828,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "氣象"
 
 msgctxt "trait"
 msgid "What? No"
@@ -7904,11 +7910,11 @@ msgstr "無"
 #, javascript-format
 msgctxt "Taboo List"
 msgid "Current - ${ latestTabooSet.name }"
-msgstr ""
+msgstr "當前 - ${ latestTabooSet.name }"
 
 msgctxt "Taboo List"
 msgid "Current"
-msgstr ""
+msgstr "當前"
 
 msgctxt "slots"
 msgid "None"
@@ -7916,7 +7922,7 @@ msgstr "無"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr ""
+msgstr "怪罪"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
