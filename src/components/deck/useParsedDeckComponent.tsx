@@ -100,6 +100,7 @@ function sectionHeaderTitle(type: TypeCodeType | string, count: number): string 
     case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
     case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
     case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
+    case 'key': return c('header').ngettext(msgid`Key`, `Keys`, count);
     default: return type;
   }
 }

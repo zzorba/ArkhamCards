@@ -416,6 +416,7 @@ export const TIC = 'tic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
 export const GOB = 'gob';
+export const FOF = 'fof';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
@@ -442,6 +443,7 @@ export type CampaignCycleCode =
   typeof EOE |
   typeof TSK |
   typeof GOB |
+  typeof FOF |
   typeof STANDALONE |
   typeof DARK_MATTER |
   typeof CYCLOPEAN_FOUNDATIONS |
@@ -465,8 +467,11 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
+  // TSK,
+];
+export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,
-  TSK,
+  FOF,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
@@ -493,6 +498,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
   EOE,
   GOB,
+  FOF,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,

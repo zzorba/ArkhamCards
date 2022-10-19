@@ -13,6 +13,7 @@ import {
   TFA,
   RTTFA,
   TCU,
+  FOF,
   TDE,
   TDEA,
   TDEB,
@@ -35,6 +36,37 @@ import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
 import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
+
+
+const authors = {
+  [DARK_MATTER]: 'Axolotl',
+  [ALICE_IN_WONDERLAND]: 'The Beard',
+  [CROWN_OF_EGIL]: 'The Mad Juggler',
+  [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
+  [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
+}
+
+export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
+  switch (packCode) {
+    case TDE:
+      return t`Campaign A and Campaign B\nEight-part campaign`;
+    case TDEA:
+      return t`Campaign A\nFour-part campaign`;
+    case TDEB:
+      return t`Campaign B\nFour-part campaign`;
+    case GOB:
+      return t`Two-part campaign variant`;
+    case DARK_MATTER:
+    case ALICE_IN_WONDERLAND:
+    case CROWN_OF_EGIL:
+    case CALL_OF_THE_PLAGUEBEARER:
+    case CYCLOPEAN_FOUNDATIONS:
+      const author = authors[packCode];
+      return t`Fan-made campaign by ${author}`;
+    default:
+      return undefined;
+  }
+}
 
 export function difficultyString(difficulty: CampaignDifficulty | Campaign_Difficulty_Enum): string {
   switch (difficulty) {
@@ -82,6 +114,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     case CROWN_OF_EGIL: return t`Crown of Egil`;
     case GOB: return t`Guardians of the Abyss`;
+    case FOF: return t`Fortune and Folly`;
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
     case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     default: {
@@ -393,6 +426,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case CUSTOM:
     case STANDALONE:
     case GOB:
+    case FOF:
       return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -421,6 +455,7 @@ export function campaignNames() {
     eoe: t`Edge of the Earth`,
     tskc: t`The Scarlet Keys`,
     gob: t`Guardians of the Abyss`,
+    fof: t`Fortune and Folly`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,
@@ -459,6 +494,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case FOF:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
     case TSK:
@@ -608,6 +644,7 @@ export function getCampaignLog(
         ],
       };
     case GOB:
+    case FOF:
     case TSK:
       return {
         sections: [
@@ -741,7 +778,14 @@ const GOB_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 2, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, '-6': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-}
+};
+
+const FOF_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 1, '0': 2, '-1': 1, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 1, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-6': 1, '-7': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-6': 1, '-7': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
 
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
@@ -829,6 +873,8 @@ export function getChaosBag(
       return CALL_OF_THE_PLAGUEBEARER_BAG[difficulty];
     case GOB:
       return GOB_BAG[difficulty];
+    case FOF:
+      return FOF_BAG[difficulty];
     case CYCLOPEAN_FOUNDATIONS:
       return CYCLOPEAN_BAG[difficulty];
     default: {

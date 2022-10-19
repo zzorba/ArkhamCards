@@ -1063,6 +1063,142 @@
     "supplies": []
   },
   {
+    "campaignId": "fof",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# ( #X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (x#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "gob",
     "sections": [
       {
@@ -2751,6 +2887,10 @@
             "text": "el Sujeto 8L-08 devoró todo el universo."
           },
           {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua se retiró para curarse las heridas."
           },
@@ -2769,6 +2909,78 @@
           {
             "id": "constellation_was_saved",
             "text": "el Constelación se salvó."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# ( #X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (x#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2908,7 +3120,51 @@
             "text": "dummy"
           },
           {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
             "text": "dummy"
           },
           {

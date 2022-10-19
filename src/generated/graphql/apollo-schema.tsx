@@ -23011,7 +23011,7 @@ export type GetCardsCacheLazyQueryHookResult = ReturnType<typeof useGetCardsCach
 export type GetCardsCacheQueryResult = Apollo.QueryResult<GetCardsCacheQuery, GetCardsCacheQueryVariables>;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
-  all_card(where: {version: {_lte: 3}, linked: {_is_null: true}}) {
+  all_card(where: {version: {_lte: 4}, linked: {_is_null: true}}) {
     ...SingleCard
     translations(where: {locale: {_eq: $locale}}) {
       ...CoreCardText

@@ -31,7 +31,7 @@ export default function RuleTitleComponent({ title }: Props) {
       matches.push({ type: 'text', text: match[1] });
     }
     if (match.length > 2 && match[2]) {
-      matches.push({ type: 'icon', icon: match[2].substr(1, match[2].length - 2) });
+      matches.push({ type: 'icon', icon: match[2].substring(1, match[2].length - 2) });
     }
     if (match.length > 3 && match[3]) {
       matches.push({ type: 'text', text: match[3] });

@@ -296,6 +296,14 @@
     "name": "Pour le Bien Commun"
   },
   {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
     "id": "fragment_of_carcosa",
     "name": "Fragment of Carcosa"
   },
@@ -353,7 +361,7 @@
   },
   {
     "id": "ice_and_death_part_1",
-    "name": "Ice and Death, Part I"
+    "name": "De Glace et de Mort, Partie I"
   },
   {
     "id": "ice_and_death_part_2",
@@ -817,7 +825,7 @@
   },
   {
     "id": "the_disapperance",
-    "name": "The Disappearance"
+    "name": "La Disparition"
   },
   {
     "id": "the_dodo",

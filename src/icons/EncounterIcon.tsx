@@ -800,6 +800,14 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'lost_cathedral':
         return this.standaloneIcon('lost_cathedral', size, color);
 
+      case 'fof':
+      case 'fortune_and_folly_part_1':
+      case 'fortune_and_folly_part_2':
+        return this.standaloneIcon('roulette', size, color);
+      case 'fortune_and_folly':
+      case 'fortunes_chosen':
+      case 'plan_in_shambles':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'mourning_chorus':
         return this.darkMatterIcon('mourning_stroll', size, color);
       case 'zcp':

@@ -241,60 +241,60 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# a péri dans le crash de l'aéroplane",
+            "feminine_text": "#name# a péri dans le crash de l'aéroplane"
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Camp : Camp de la Barrière (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Camp : Congère Épaisse (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Camp : Lieu de l'Accident (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Camp : Caverne Cristaline (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Camp : Grotte Glaciale (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Camp : Berges Gelées (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Camp : Mouillage du Brise-Glace (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Camp : Désert de Glace (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Camp : Banquise Fragile (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Camp : Vestigre du Camp de Lake (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Camp : Falaises Rocheuses (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Camp : Tombes Enneigées (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Camp : Chemin Périlleux (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -334,7 +334,7 @@
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "le Dr Kensler a partagé ses découvertes avec vous."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
@@ -386,7 +386,7 @@
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "les investigateurs ont repéré un passage dans la montagne."
           },
           {
             "id": "studied_the_mural_carvings",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Camp de la Barrière"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Congère Épaisse"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Lieu de l'Accident"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Caverne Cristaline"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Grotte Glaciale"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Berges Gelées"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Mouillage du Brise-Glace"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Désert de Glace"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Banquise Fragile"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Vestigre du Camp de Lake"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Falaises Rocheuses"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Tombes Enneigées"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Chemin Périlleux"
           }
         ]
       },
@@ -1035,27 +1035,163 @@
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Stéatite Verte"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Cristal Miasmatique"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Échantillon Minéral"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Petite Radio"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Pièces de Rechange"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Traineau en Bois"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "fof",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# ( #X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (x#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "leurre"
           }
         ]
       }
@@ -2751,6 +2887,10 @@
             "text": "le Sujet 8L-08 a dévoré l'univers tout entier."
           },
           {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua s'est retiré pour soigner ses blessures."
           },
@@ -2769,6 +2909,78 @@
           {
             "id": "constellation_was_saved",
             "text": "le Constellation a été sauvé."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# ( #X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (x#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2908,7 +3120,51 @@
             "text": "leurre"
           },
           {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "leurre"
+          },
+          {
             "id": "epic_multiplayer",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fof_stole_keys",
             "text": "leurre"
           },
           {

@@ -22,7 +22,8 @@ export type TypeCodeType =
   'treachery' |
   'location' |
   'investigator' |
-  'scenario';
+  'scenario' |
+  'key';
 
 export type SlotCodeType =
   'hand' |

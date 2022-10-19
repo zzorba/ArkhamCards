@@ -559,7 +559,14 @@
     "id": "Hidden",
     "cycle": ["tcu", "tde"],
     "title": "Hidden",
-    "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.\n- While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you.\n- While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you.\n-A hidden card counts toward your hand size, but it cannot leave your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile.\nFor the best experience, players are encouraged to stay \"in character\" and not share information about hidden cards in their hand."
+    "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.\n- While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you.\n- While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you.\n-A hidden card counts toward your hand size, but it cannot leave your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile.\nFor the best experience, players are encouraged to stay \"in character\" and not share information about hidden cards in their hand.",
+    "rules": [
+      {
+        "id": "Hidden_Cards_in_Hand_When_Eliminated",
+        "title": "Hidden Cards in Hand When Eliminated",
+        "text": "When an investigator is eliminated, each encounter card in their hand with the hidden keyword should be placed in the encounter discard pile, in the same way as encounter cards in their threat area."
+      }
+    ]
   },
   {
     "id": "Hunter",
@@ -663,7 +670,14 @@
   {
     "id": "Location_Cards",
     "title": "Location Cards",
-    "text": "Location cards represent the places the investigators may explore during a scenario.\n- Use each investigator's mini-card to indicate which location he or she is at.\n- While an investigator is at a location, that investigator, each of his or her assets, and each card in that investigator's threat area is at the same location.\n- Locations enter play in an \"unrevealed\" state, so that the side with no shroud value and/or clue value is faceup. Do not read the \"revealed\" side at this time.\n- The first time a location is entered by an investigator, that location is revealed by turning it to its other side and placing a number of clues on it equal to its clue value (this may occur during setup). Most clue values are conveyed as a \"per investigator\" ([per_investigator]) value.\n- A location with its shroud/clue value side faceup is in the \"revealed\" state."
+    "text": "Location cards represent the places the investigators may explore during a scenario.\n- Use each investigator's mini-card to indicate which location he or she is at.\n- While an investigator is at a location, that investigator, each of his or her assets, and each card in that investigator's threat area is at the same location.\n- Locations enter play in an \"unrevealed\" state, so that the side with no shroud value and/or clue value is faceup. Do not read the \"revealed\" side at this time.\n- The first time a location is entered by an investigator, that location is revealed by turning it to its other side and placing a number of clues on it equal to its clue value (this may occur during setup). Most clue values are conveyed as a \"per investigator\" ([per_investigator]) value.\n- A location with its shroud/clue value side faceup is in the \"revealed\" state.",
+    "rules": [
+      {
+        "id": "Being_at_No_Location",
+        "title": "Being at No Location",
+        "text": "Unless explicitly specified by game text, enemies and investigators must always be at a location during gameplay. If an effect (such as a “cannot move” effect) would cause an investigator or enemy to not be at a location, ignore that effect."
+      }
+    ]
   },
   {
     "id": "Lola_and_Roles",

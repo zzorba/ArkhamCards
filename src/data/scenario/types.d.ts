@@ -944,6 +944,7 @@ export interface CardChoiceInput {
 export interface CardSearchQuery {
   source: "scenario" | "deck";
   traits?: string[];
+  types?: string[];
   unique?: boolean;
   vengeance?: boolean;
   exclude_code?: string[];
@@ -1083,6 +1084,7 @@ export interface InvestigatorCounterInput {
   investigator_max?: "physical_trauma" | "mental_trauma";
   investigator_count_min?: string;
   max?: number;
+  min?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {

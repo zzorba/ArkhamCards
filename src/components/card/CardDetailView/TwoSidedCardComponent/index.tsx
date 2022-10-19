@@ -411,7 +411,7 @@ export default function TwoSidedCardComponent(props: Props) {
         { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
-        { !simple && (card.status === CardStatusType.PREVIEW) && (
+        { !simple && (card.status === CardStatusType.PREVIEW && (card.deck_limit || 0) > 0) && (
           <View style={{
             borderLeftWidth: 2,
             paddingLeft: s,

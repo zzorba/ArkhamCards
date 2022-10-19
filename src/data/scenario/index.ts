@@ -1,6 +1,6 @@
-import { find, flatMap, forEach, sortBy } from 'lodash';
+import { find, flatMap, forEach, omit, sortBy } from 'lodash';
 
-import { GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
+import { CampaignCycleCode, CampaignId, GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
@@ -368,7 +368,36 @@ export function getCampaignGuide(
   );
 }
 
-function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], allLogEntries: CampaignLog[]): undefined | {
+export interface StandaloneScenarioInfo {
+  type: 'standalone';
+  id: StandaloneId;
+  name: string;
+  code: string;
+  campaign: string;
+  campaignPosition: number;
+}
+export interface StandaloneCampaignInfo {
+  type: 'campaign';
+  id: CampaignCycleCode;
+  name: string;
+  code: string;
+  campaign: string;
+  campaignPosition: number;
+}
+
+export type StandaloneInfo = StandaloneCampaignInfo | StandaloneScenarioInfo;
+
+interface StandaloneScenarioId extends StandaloneId {
+  type: 'scenario';
+}
+
+interface StandaloneCampaignId {
+  type: 'campaign';
+  campaignId: string;
+}
+
+
+function findStandaloneScenario(id: StandaloneScenarioId, allCampaigns: FullCampaign[], allLogEntries: CampaignLog[]): undefined | {
   logEntries: CampaignLog;
   campaign: FullCampaign;
   scenario: Scenario;
@@ -386,35 +415,62 @@ function findStandaloneScenario(id: StandaloneId, allCampaigns: FullCampaign[], 
   };
 }
 
-export interface StandaloneScenarioInfo {
-  id: StandaloneId;
-  name: string;
-  code: string;
-  campaign: string;
-  campaignPosition: number;
+function findStandaloneCampaign(id: StandaloneCampaignId, allCampaigns: FullCampaign[], allLogEntries: CampaignLog[]): undefined | {
+  logEntries: CampaignLog;
+  campaign: FullCampaign;
+} {
+  const campaign = find(allCampaigns, campaign => campaign.campaign.id === id.campaignId);
+  const logEntries = find(allLogEntries, log => log.campaignId === id.campaignId);
+  if (!campaign || !logEntries) {
+    return undefined;
+  }
+  return {
+    campaign,
+    logEntries,
+  };
 }
 
 export function getStandaloneScenarios(
   lang: string
-): StandaloneScenarioInfo[] {
+): StandaloneInfo[] {
   const {
     allLogEntries,
     allCampaigns,
   } = loadAll(lang);
   const standalones = require('../../../assets/generated/standaloneScenarios.json');
-  return sortBy(flatMap(standalones, (id: StandaloneId) => {
-    const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
-    if (!data) {
-      console.log(`Could not find ${JSON.stringify(id)}`);
-      return [];
+  return sortBy(flatMap(standalones, (id: StandaloneScenarioId | StandaloneCampaignId) => {
+    switch (id.type) {
+      case 'scenario': {
+        const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
+        if (!data) {
+          console.log(`Could not find ${JSON.stringify(id)}`);
+          return [];
+        }
+        return {
+          type: 'standalone',
+          id: { campaignId: id.campaignId, scenarioId: id.scenarioId },
+          name: data.scenario.scenario_name,
+          code: data.scenario.id,
+          campaign: data.campaign.campaign.id,
+          campaignPosition: data.campaign.campaign.position,
+        };
+      }
+      case 'campaign': {
+        const data = findStandaloneCampaign(id, allCampaigns, allLogEntries);
+        if (!data) {
+          console.log(`Could not find ${JSON.stringify(id)}`);
+          return [];
+        }
+        return {
+          type: 'campaign',
+          id: (id.campaignId as CampaignCycleCode),
+          name: data.campaign.campaign.name,
+          code: data.campaign.campaign.id,
+          campaign: 'side',
+          campaignPosition: 0,
+        };
+      }
     }
-    return {
-      id,
-      name: data.scenario.scenario_name,
-      code: data.scenario.id,
-      campaign: data.campaign.campaign.id,
-      campaignPosition: data.campaign.campaign.position,
-    };
   }), scenario => scenario.name);
 }
 

@@ -59,10 +59,12 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       };
     } = {};
     forEach(scenarios, scenario => {
-      if (!result[scenario.id.campaignId]) {
-        result[scenario.id.campaignId] = {};
+      if (scenario.type === 'standalone') {
+        if (!result[scenario.id.campaignId]) {
+          result[scenario.id.campaignId] = {};
+        }
+        result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
       }
-      result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
     });
     return result;
   }, [lang]);

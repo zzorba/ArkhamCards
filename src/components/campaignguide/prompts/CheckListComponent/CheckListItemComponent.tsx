@@ -122,22 +122,22 @@ export default function CheckListItemComponent({
   }, [onChoiceToggle, code]);
   const content = useMemo(() => {
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, { flex: 1 }]}>
         <ArkhamSwitch
           disabledColor={colors.D30}
           color="dark"
           value={!editable || selected}
           large
         />
-        <View style={[styles.column, space.paddingLeftS]}>
+        <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
           { name.startsWith('[') && name.endsWith(']') ? (
-            <ArkhamIcon name={name.substr(1, name.length - 2)} color={colors.D30} size={36} />
+            <ArkhamIcon name={name.substring(1, name.length - 2)} color={colors.D30} size={36} />
           ) : (
             <Text style={[
               typography.mediumGameFont,
               styles.nameText,
               color ? { color: 'white' } : {},
-            ]}>
+            ]} numberOfLines={2} ellipsizeMode="tail">
               { name }
             </Text>
           ) }
@@ -180,7 +180,7 @@ export default function CheckListItemComponent({
       showBorder ? borderStyle : undefined,
       showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
     ]}>
-      <TouchableShrink onPress={onPress} disabled={!editable}>
+      <TouchableShrink onPress={onPress} disabled={!editable} style={{ flex: 1 }}>
         {content}
       </TouchableShrink>
     </View>
