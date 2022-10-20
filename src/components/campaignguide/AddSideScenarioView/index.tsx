@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter, find, map, partition } from 'lodash';
+import { filter, find, map, sortBy, partition } from 'lodash';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
@@ -12,7 +12,7 @@ import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/c
 import useTabView from '@components/core/useTabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
-import { s, m, xs } from '@styles/space';
+import space, { s, m, xs } from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import DownloadParallelCardsButton from './DownloadParallelCardsButton';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -24,6 +24,7 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import useProcessedCampaign from '../useProcessedCampaign';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { EmbarkData } from '@actions/types';
+import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -32,6 +33,39 @@ export interface AddSideScenarioProps extends CampaignGuideInputProps {
 }
 
 type Props = NavigationProps & AddSideScenarioProps;
+
+function SideScenarioList({ scenarios, componentId, onPress }: { scenarios: Scenario[]; componentId: string; onPress: (scenario: Scenario) => void }) {
+  const { borderStyle } = useContext(StyleContext);
+  const [official, custom] = partition(scenarios, s => !s.custom);
+  return (
+    <>
+      { map(official, scenario => (
+        <SideScenarioButton
+          key={scenario.id}
+          componentId={componentId}
+          scenario={scenario}
+          onPress={onPress}
+        />
+      )) }
+      { !!custom.length && (
+        <View style={space.paddingTopM}>
+          <View style={[{ borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle, space.paddingBottomM]}>
+            <CardDetailSectionHeader normalCase color="dark" title={t`Fan-made Scenarios`} />
+          </View>
+          { map(custom, scenario => (
+            <SideScenarioButton
+              key={scenario.id}
+              componentId={componentId}
+              scenario={scenario}
+              onPress={onPress}
+            />
+          )) }
+        </View>
+      )}
+    </>
+  )
+
+}
 
 function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmbarkSide }: Props) {
   const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
@@ -146,13 +180,13 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
 
   const [processedCampaign] = useProcessedCampaign(campaignGuide, campaignState);
   const playableScenarios = useMemo(() => {
-    return filter(campaignGuide.sideScenarios(), scenario => {
+    return sortBy(filter(campaignGuide.sideScenarios(), scenario => {
       const alreadyPlayed = !!find(
         processedCampaign?.scenarios || [],
         playedScenario => playedScenario.id.scenarioId === scenario.id
       );
       return !alreadyPlayed && scenario.side_scenario_type !== 'standalone';
-    });
+    }), scenario => scenario.full_name);
   }, [campaignGuide, processedCampaign?.scenarios]);
   const [playableSideScenarios, playableChallengeScenarios] = useMemo(() => partition(playableScenarios, scenario => scenario.side_scenario_type !== 'challenge'), [playableScenarios]);
   const sideTab = useMemo(() => {
@@ -164,14 +198,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
               text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n- Playing a side-story costs each investigator in the campaign a certain amount of experience, which should be paid when you start the scenario.\n- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n- Each sidestory may only be played once per campaign.\n\n<b>Note:</b> When using this app, the experience required to play these scenarios will be deducted automatically at the <b>end of the scenario</b>, but you should be sure you have sufficient experience set aside to pay for it.`} />
           </SetupStepWrapper>
         </View>
-        { map(playableSideScenarios, scenario => (
-          <SideScenarioButton
-            key={scenario.id}
-            componentId={componentId}
-            scenario={scenario}
-            onPress={onPress}
-          />
-        )) }
+        <SideScenarioList scenarios={playableSideScenarios} componentId={componentId} onPress={onPress} />
         <ArkhamButton
           icon="expand"
           title={t`Custom scenario`}
@@ -190,14 +217,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
           </SetupStepWrapper>
           <DownloadParallelCardsButton />
         </View>
-        { map(playableChallengeScenarios, scenario => (
-          <SideScenarioButton
-            key={scenario.id}
-            componentId={componentId}
-            scenario={scenario}
-            onPress={onPress}
-          />
-        )) }
+        <SideScenarioList scenarios={playableChallengeScenarios} componentId={componentId} onPress={onPress} />
         <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );

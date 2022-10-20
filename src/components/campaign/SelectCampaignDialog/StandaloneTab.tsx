@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
-import { forEach, map, sortBy, head } from 'lodash';
+import { filter, forEach, map, sortBy, head } from 'lodash';
 import { c, t } from 'ttag';
 
 import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId, STANDALONE_CAMPAGINS } from '@actions/types';
@@ -22,17 +22,12 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneInfo[] } = {};
     forEach(scenarios, scenario => {
-      if (!groups[scenario.campaign]) {
-        groups[scenario.campaign] = [];
+      const group = (scenario.type === 'standalone' ? scenario.specialGroup : undefined) ||  scenario.campaign;
+      if (!groups[group]) {
+        groups[group] = [];
       }
-      groups[scenario.campaign].push(scenario);
+      groups[group].push(scenario);
     });
-    forEach(STANDALONE_CAMPAGINS, campaign => {
-      if (!groups.side) {
-        groups.side = [];
-      }
-      groups.side.push()
-    })
 
     const allSections: {
       header: string;
@@ -41,7 +36,7 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
     }[] = [];
     forEach(groups, (group, campaign) => {
       const item = head(group);
-      if (campaign !== 'side' && item) {
+      if (campaign !== 'side' && campaign !== 'challenge' && campaign !== 'custom_side' && item) {
         allSections.push({
           header: campaignName(campaign as CampaignCycleCode) || t`Unknown campaign`,
           scenarios: sortBy(group, s => s.name),
@@ -53,6 +48,16 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
       {
         header: t`Standalone`,
         scenarios: sortBy(groups.side, s => s.name),
+        position: -1,
+      },
+      {
+        header: t`Challenge Scenarios`,
+        scenarios: sortBy(groups.challenge, s => s.name),
+        position: -1,
+      },
+      {
+        header: t`Fan-made Scenarios`,
+        scenarios: sortBy(groups.custom_side, s => s.name),
         position: -1,
       },
       ...sortBy(allSections, s => s.position),

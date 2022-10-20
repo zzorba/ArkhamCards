@@ -1102,7 +1102,7 @@
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (x#X#)"
+            "text": "Stashed: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
@@ -2940,7 +2940,7 @@
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (x#X#)"
+            "text": "Stashed: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
@@ -3049,6 +3049,14 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "the Abyss was saved."
+          },
+          {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
           },
           {
             "id": "zcos_abandoned_the_people_of_eastwick",

@@ -644,7 +644,19 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.aliceIcon('alice_in_wonderland', size, color);
       case 'deep_ones':
       case 'sinking_ship':
+      case 'the_black_stone':
+      case 'occultism':
+      case 'magyar':
+      case 'natural_hazards':
+      case 'wild_beasts':
+      case 'ancient_hunger':
+      case 'witch_cult':
+      case 'tomes':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'legendry':
+        return this.standaloneIcon('legendary', size, color);
+      case 'zbs':
+        return this.standaloneIcon('the_black_stone', size, color);
       case 'consternation_on_the_constellation':
       case 'zcc':
         return this.standaloneIcon('consternation_on_the_constellation', size, color);

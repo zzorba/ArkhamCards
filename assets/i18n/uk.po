@@ -5723,6 +5723,12 @@ msgstr ""
 msgid "Fan-made Investigators"
 msgstr ""
 
+msgid "Fortune and Folly"
+msgstr ""
+
+msgid "Challenge Scenarios"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -7899,6 +7905,13 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "header"
+msgid "Key"
+msgid_plural "Keys"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 msgctxt "Tarot Card"
 msgid "None"

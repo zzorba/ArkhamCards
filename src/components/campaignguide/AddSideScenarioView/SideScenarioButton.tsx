@@ -120,7 +120,7 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
         </View>
         <View style={styles.column}>
           <Text style={typography.text}>
-            { scenario.scenario_name }
+            { scenario.full_name }
           </Text>
           { descriptionLine }
         </View>

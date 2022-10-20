@@ -410,7 +410,7 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "que l'équipe a fui de justesse la barrière de glace."
           },
           {
             "id": "team_climbed_to_the_summit",
@@ -418,7 +418,7 @@
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "l'équipe a vaincu les créatures qui la poursuivaient."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,7 +426,7 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "l'équipe a fui vers les montagnes."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# a disparu",
+            "masculine_text": "#name# a disparu",
+            "feminine_text": "#name# a disparu"
           },
           {
             "id": "camp_shelter",
@@ -1074,7 +1074,7 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# ( #X#)"
+            "text": "Alarm level: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
@@ -1102,7 +1102,7 @@
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (x#X#)"
+            "text": "Stashed: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
@@ -2912,7 +2912,7 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# ( #X#)"
+            "text": "Alarm level: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
@@ -2940,7 +2940,7 @@
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (x#X#)"
+            "text": "Stashed: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
@@ -3049,6 +3049,14 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "l'Abîme a été sauvé."
+          },
+          {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
           },
           {
             "id": "zcos_abandoned_the_people_of_eastwick",

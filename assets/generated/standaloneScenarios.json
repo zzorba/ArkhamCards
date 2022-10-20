@@ -105,6 +105,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "the_black_stone"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "the_colour_out_of_space"
   },
   {

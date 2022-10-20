@@ -296,6 +296,10 @@
     "name": "Ради высшего блага"
   },
   {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
     "id": "fortune_and_folly_part_1",
     "name": "The Stakeout"
   },
@@ -798,6 +802,10 @@
   {
     "id": "the_black_cat",
     "name": "The Black Cat"
+  },
+  {
+    "id": "the_black_stone",
+    "name": "Чёрный камень"
   },
   {
     "id": "the_boundary_beyond",

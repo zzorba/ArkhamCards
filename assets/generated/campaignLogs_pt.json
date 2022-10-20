@@ -3051,6 +3051,14 @@
             "text": "the Abyss was saved."
           },
           {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
+          },
+          {
             "id": "zcos_abandoned_the_people_of_eastwick",
             "text": "you abandoned the people of Eastwick."
           },

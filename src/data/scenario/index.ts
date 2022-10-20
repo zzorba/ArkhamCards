@@ -375,6 +375,7 @@ export interface StandaloneScenarioInfo {
   code: string;
   campaign: string;
   campaignPosition: number;
+  specialGroup?: string;
 }
 export interface StandaloneCampaignInfo {
   type: 'campaign';
@@ -446,6 +447,14 @@ export function getStandaloneScenarios(
           console.log(`Could not find ${JSON.stringify(id)}`);
           return [];
         }
+        let specialGroup = undefined;
+        if (data.campaign.campaign.id === 'side') {
+          if (data.scenario.custom) {
+            specialGroup = 'custom_side';
+          } else if (data.scenario.challenge) {
+            specialGroup = 'challenge';
+          }
+        }
         return {
           type: 'standalone',
           id: { campaignId: id.campaignId, scenarioId: id.scenarioId },
@@ -453,6 +462,7 @@ export function getStandaloneScenarios(
           code: data.scenario.id,
           campaign: data.campaign.campaign.id,
           campaignPosition: data.campaign.campaign.position,
+          specialGroup,
         };
       }
       case 'campaign': {
