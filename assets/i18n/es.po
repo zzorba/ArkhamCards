@@ -5151,7 +5151,7 @@ msgid "Show decks from other campaigns"
 msgstr "Mostrar mazos de otras campañas"
 
 msgid "Trait Choice"
-msgstr "Elección de Rasgo"
+msgstr "Elección de rasgo"
 
 msgid "Blessed"
 msgstr "Bendecido"
@@ -5879,13 +5879,13 @@ msgid "The Colour Out of Space"
 msgstr "El color que cayó del cielo"
 
 msgid "Remove trait"
-msgstr "Eliminar Rasgo"
+msgstr "Eliminar rasgo"
 
 #, javascript-format
 msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
-msgstr[0] "Elige ${ quantity } Rasgo"
-msgstr[1] "Elige ${ quantity } Rasgos"
+msgstr[0] "Elige ${ quantity } rasgo"
+msgstr[1] "Elige ${ quantity } rasgos"
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
@@ -5893,7 +5893,7 @@ msgstr[0] "Rasgo elegido"
 msgstr[1] "Rasgos elegidos"
 
 msgid "Add trait"
-msgstr "Añadir Rasgo"
+msgstr "Añadir rasgo"
 
 #, javascript-format
 msgid "${ quantity } copy"
