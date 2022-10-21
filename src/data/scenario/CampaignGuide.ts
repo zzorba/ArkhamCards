@@ -444,6 +444,7 @@ export default class CampaignGuide {
       return [{
         type: scenarioGuide.scenarioType() === 'placeholder' ? 'placeholder' : 'playable' ,
         id,
+        location: scenario.main_scenario_id ? campaignState.sideScenarioEmbarkData(scenario.main_scenario_id)?.destination : undefined,
         scenarioGuide,
         latestCampaignLog: campaignLog,
         canUndo: false,
@@ -471,7 +472,7 @@ export default class CampaignGuide {
       const executedScenario = scenarioGuide.setupSteps(scenarioState, standalone);
       firstResult = {
         type: executedScenario.inProgress ? 'started' : 'completed',
-        location: campaignState.sideScenarioEmbarkData(id.encodedScenarioId)?.destination,
+        location: campaignState.sideScenarioEmbarkData(scenario.main_scenario_id || id.encodedScenarioId)?.destination,
         id,
         scenarioGuide,
         latestCampaignLog: executedScenario.latestCampaignLog,

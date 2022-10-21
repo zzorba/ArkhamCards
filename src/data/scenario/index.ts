@@ -35,6 +35,7 @@ export interface PlayedScenario extends BasicScenario {
 
 interface UnplayedScenario extends BasicScenario {
   type: 'locked' | 'playable' | 'skipped' | 'placeholder';
+  location?: string;
   canUndo: false;
   closeOnUndo: false;
   steps: ScenarioStep[];

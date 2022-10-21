@@ -1368,6 +1368,7 @@ export interface Ultimatum {
 }
 export interface Scenario {
   id: string;
+  main_scenario_id?: string;
   allow_side_scenario?: boolean;
   chaos_bag_card?: string;
   chaos_bag_card_text?: string;

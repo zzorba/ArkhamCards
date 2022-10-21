@@ -125,7 +125,6 @@ export default function ScenarioCarouselComponent({
       const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
         (campaignLog.campaignData.scenarioReplayCount[location.scenario] || 0) + 1 :
         undefined;
-      console.log(attempt, campaignLog.scenarioStatus(location.scenario), campaignLog.campaignData.scenarioReplayCount[location.scenario])
       const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {
         destination: location.id,

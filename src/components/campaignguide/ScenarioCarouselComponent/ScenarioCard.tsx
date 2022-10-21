@@ -29,11 +29,12 @@ interface Props {
 export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, campaignMap, finalScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
-    const scenarioName = scenario.scenarioGuide.scenarioHeader() || (
-      ((scenario.type === 'started' || scenario.type === 'completed') && scenario.location) ?
-        find(campaignMap?.locations, location => location.id === scenario.location)?.name :
-        undefined
-    );
+    const locationName = scenario.location ?
+      find(campaignMap?.locations, location => location.id === scenario.location)?.name :
+      undefined;
+    const scenarioHeader = scenario.scenarioGuide.scenarioHeader();
+    const scenarioName = scenarioHeader && locationName ?
+      `${locationName}: ${scenarioHeader}` : (scenarioHeader || locationName);
     const actualName = scenario.scenarioGuide.scenarioName();
     if (scenario.id.replayAttempt) {
       const attempt = scenario.id.replayAttempt + 1;
