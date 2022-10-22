@@ -6723,7 +6723,7 @@
     ]
   },
   {
-    "code": "zce001",
+    "code": "zce_00001",
     "scenario": "the_warning",
     "standard": [
       {
@@ -6783,7 +6783,7 @@
     ]
   },
   {
-    "code": "zce018",
+    "code": "zce_00018",
     "scenario": "the_golden_circle",
     "standard": [
       {
@@ -6879,7 +6879,7 @@
     ]
   },
   {
-    "code": "zce040",
+    "code": "zce_00040",
     "scenario": "the_fallen",
     "standard": [
       {
@@ -6959,7 +6959,7 @@
     ]
   },
   {
-    "code": "zce076",
+    "code": "zce_00076",
     "scenario": "the_crown",
     "standard": [
       {
@@ -7038,7 +7038,7 @@
     ]
   },
   {
-    "code": "zcp001",
+    "code": "zcp_00001",
     "scenario": "late_risers",
     "standard": [
       {
@@ -7086,7 +7086,7 @@
     ]
   },
   {
-    "code": "zcp019",
+    "code": "zcp_00019",
     "scenario": "night_on_the_town",
     "standard": [
       {
@@ -7134,7 +7134,7 @@
     ]
   },
   {
-    "code": "zcp047",
+    "code": "zcp_00047",
     "scenario": "dead_by_dawn",
     "standard": [
       {
@@ -7185,7 +7185,7 @@
     ]
   },
   {
-    "code": "zcp083",
+    "code": "zcp_00083",
     "scenario": "mourning_chorus",
     "standard": [
       {
@@ -7258,7 +7258,7 @@
     ]
   },
   {
-    "code": "zcp109",
+    "code": "zcp_00109",
     "scenario": "high_noon_descent",
     "standard": [
       {
@@ -7319,7 +7319,7 @@
     ]
   },
   {
-    "code": "zcp149",
+    "code": "zcp_00149",
     "scenario": "the_afternoon_war",
     "standard": [
       {
@@ -7381,7 +7381,7 @@
     ]
   },
   {
-    "code": "zcp179",
+    "code": "zcp_00179",
     "scenario": "death_at_sundown",
     "standard": [
       {
@@ -7442,7 +7442,7 @@
     ]
   },
   {
-    "code": "zcp211",
+    "code": "zcp_00211",
     "scenario": "the_midnight_hour",
     "standard": [
       {
@@ -7503,7 +7503,7 @@
     ]
   },
   {
-    "code": "zbh022",
+    "code": "zbh_00022",
     "scenario": "meddling_of_meowlathotep",
     "standard": [
       {

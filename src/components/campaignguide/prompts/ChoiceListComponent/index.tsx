@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { every, findIndex, forEach, flatMap, map, filter, uniqBy } from 'lodash';
+import { find, every, findIndex, forEach, flatMap, map, filter, uniqBy } from 'lodash';
 import { t } from 'ttag';
 
 import ChoiceListItemComponent from './ChoiceListItemComponent';
@@ -36,12 +36,13 @@ export interface ChoiceListComponentProps {
   options: Choices;
   loading?: boolean;
   unique?: boolean;
+  defaultChoice?: number;
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-export default function ChoiceListComponent({ id, promptType, investigator, bulletType, unique, text, confirmText, optional, detailed, options, loading, items, hideInvestigatorSection }: Props) {
+export default function ChoiceListComponent({ id, promptType, investigator, bulletType, unique, text, confirmText, optional, detailed, options, loading, items, defaultChoice, hideInvestigatorSection }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, colors, width } = useContext(StyleContext);
   const [selectedChoice, setSelectedChoice] = useState(() => {
@@ -157,6 +158,9 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
     if (detailed && !every(items, item => selectedChoice[item.code] !== undefined)) {
       return t`Continue`;
     }
+    if (defaultChoice !== undefined && find(items, item => selectedChoice[item.code] === defaultChoice)) {
+      return t`Choose an option`;
+    }
     if (unique) {
       const nonNone = filter(items, item => selectedChoice[item.code] !== undefined);
       if (nonNone.length !== uniqBy(nonNone, item => selectedChoice[item.code]).length) {
@@ -164,7 +168,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       }
     }
     return undefined;
-  }, [detailed, items, unique, selectedChoice])
+  }, [detailed, items, unique, selectedChoice, defaultChoice])
   return (
     <InputWrapper
       editable={!hasDecision}

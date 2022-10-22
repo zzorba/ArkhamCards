@@ -5729,6 +5729,12 @@ msgstr ""
 msgid "Challenge Scenarios"
 msgstr ""
 
+msgid "Choose an option"
+msgstr ""
+
+msgid "Choose weakness"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -7911,7 +7917,6 @@ msgid "Key"
 msgid_plural "Keys"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "Tarot Card"
 msgid "None"

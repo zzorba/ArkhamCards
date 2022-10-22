@@ -55,19 +55,23 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
         bulletType="none"
         investigators={investigators}
         id={`${id}_weakness`}
+        defaultChoice={0}
         options={{
           type: 'universal',
-          choices: map(
-            sortBy(cards, card => card.name),
-            card => {
-              return {
-                id: card.code,
-                code: card.code,
-                text: card.name,
-                description: card.subname,
-              };
-            }
-          ),
+          choices: [
+            { id: 'none', text: t`Choose weakness` },
+            ...map(
+              sortBy(cards, card => card.name),
+              card => {
+                return {
+                  id: card.code,
+                  code: card.code,
+                  text: card.name,
+                  description: card.subname,
+                };
+              }
+            ),
+          ],
         }}
       />
     );

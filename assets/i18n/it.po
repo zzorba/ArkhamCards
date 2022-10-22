@@ -6205,6 +6205,12 @@ msgstr ""
 msgid "Challenge Scenarios"
 msgstr ""
 
+msgid "Choose an option"
+msgstr ""
+
+msgid "Choose weakness"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""

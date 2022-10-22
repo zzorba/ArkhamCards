@@ -85,6 +85,51 @@
       ]
     },
     {
+      "encounter_code": "return_to_the_wages_of_sin",
+      "cards": [
+        {
+          "code": ["54040"],
+          "text": "El segundo punto de esta carta debería terminar con: “De lo contrario, colócala en la pila de descartes de Encuentros espectrales.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "return_to_before_the_black_throne",
+      "cards": [
+        {
+          "code": ["54060"],
+          "text": "La última frase de la capacidad <b>Cosmos</b> de esta carta debería decir: “Puedes elegir no moverte a la Fosa sinuosa y colocar 1 ficha de Perdición sobre Azathoth.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "unstable_realm",
+      "cards": [
+        {
+          "code": ["54068"],
+          "text": "La condición de activación del primer efecto Obligado de esta carta debería decir: “Después de que abandones el Lugar vinculado” en lugar de “Cuando abandones el Lugar vinculado”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dark_side_of_the_moon",
+      "cards": [
+        {
+          "code": ["06224"],
+          "text": "La condición de activación del efecto <b>Obligado</b> de esta carta debería decir: “Si Virgil Gray abandona el juego” en lugar de “si Virgil Gray es derrotado”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_search_for_kadath",
+      "cards": [
+        {
+          "code": ["06144"],
+          "text": "La condición de activación del efecto <b>Obligado</b> de esta carta debería decir: “Si Virgil Gray abandona el juego” en lugar de “si Virgil Gray es derrotado”"
+        }
+      ]
+    },
+    {
       "encounter_code": "the_pallid_mask",
       "cards": [
         {
@@ -237,6 +282,42 @@
         {
           "question": "¿Es correcta la instrucción de preparación en cuanto a qué versión del Acto 2 – Los realmente graves deben usar los investigadores? ¿Cómo voy a poder activar la capacidad de negociar de Daniel Chesterfield (…O al menos, lo que queda de él)?",
           "answer": "Sí, es correcta; y no, no hay forma de poder activarla (al menos en esta realidad)."
+        }
+      ]
+    },
+    {
+      "scenario_code": "a_phantom_of_truth",
+      "questions": [
+        {
+          "question": "¿Cuáles son, si las hay, las restricciones/implicaciones de decir “Hastur” (con la intención de recibir horror)? ¿Puedo decir “Hastur” después de revelar una ficha de caos durante una prueba de habilidad para aumentar el valor de mi habilidad?",
+          "answer": "Sí. A todos los efectos debe tratarse como una capacidad <b>Obligado</b>, lo que significa que puede crear una secuencia anidada si se usa durante otra capacidad o durante una prueba de habilidad, y no es necesario que se diga durante una ventana de jugador para que ocurra."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_pallid_mask",
+      "questions": [
+        {
+          "question": "¿Cuáles son, si las hay, las restricciones/implicaciones de decir “Hastur” (con la intención de recibir horror)? ¿Puedo decir “Hastur” después de revelar una ficha de caos durante una prueba de habilidad para aumentar el valor de mi habilidad?",
+          "answer": "Sí. A todos los efectos debe tratarse como una capacidad <b>Obligado</b>, lo que significa que puede crear una secuencia anidada si se usa durante otra capacidad o durante una prueba de habilidad, y no es necesario que se diga durante una ventana de jugador para que ocurra."
+        }
+      ]
+    },
+    {
+      "scenario_code": "black_stars_rise",
+      "questions": [
+        {
+          "question": "¿Cuáles son, si las hay, las restricciones/implicaciones de decir “Hastur” (con la intención de recibir horror)? ¿Puedo decir “Hastur” después de revelar una ficha de caos durante una prueba de habilidad para aumentar el valor de mi habilidad?",
+          "answer": "Sí. A todos los efectos debe tratarse como una capacidad <b>Obligado</b>, lo que significa que puede crear una secuencia anidada si se usa durante otra capacidad o durante una prueba de habilidad, y no es necesario que se diga durante una ventana de jugador para que ocurra."
+        }
+      ]
+    },
+    {
+      "scenario_code": "dim_carcosa",
+      "questions": [
+        {
+          "question": "¿Cuáles son, si las hay, las restricciones/implicaciones de decir “Hastur” (con la intención de recibir horror)? ¿Puedo decir “Hastur” después de revelar una ficha de caos durante una prueba de habilidad para aumentar el valor de mi habilidad?",
+          "answer": "Sí. A todos los efectos debe tratarse como una capacidad <b>Obligado</b>, lo que significa que puede crear una secuencia anidada si se usa durante otra capacidad o durante una prueba de habilidad, y no es necesario que se diga durante una ventana de jugador para que ocurra."
         }
       ]
     },

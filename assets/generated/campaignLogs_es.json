@@ -1208,13 +1208,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2814,13 +2814,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# ha sido atrapada por el Abismo."
+            "nonbinary_text": "#name# was taken by the abyss."
           },
           {
             "id": "atw_bernards_fate",

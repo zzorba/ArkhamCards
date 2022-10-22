@@ -10819,7 +10819,7 @@ react-native-tab-view@3.3.0:
   dependencies:
     use-latest-callback "^0.1.5"
 
-react-native-table-component@1.2.2, react-native-table-component@^1.2.1:
+react-native-table-component@^1.2.1, react-native-table-component@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-native-table-component/-/react-native-table-component-1.2.2.tgz#1c9bdcd8f1fd7edf10d1e93ebc3b7877ecd74def"
   integrity sha512-7bbsi5431iWcjj3toASh8lFHGi6AG/+MTd4M7GuksXKxx/CFs/Qwv1Ys7D2wgyuYKe3hxWNfSVrteFj0tOYXYw==

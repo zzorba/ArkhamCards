@@ -10,6 +10,11 @@
     "text": "Si los jugadores no logran encontrar la respuesta a un conflicto de reglas o de orden de resolución en esta referencia de reglas, el conflicto debe resolverse de la forma que los jugadores consideren la peor posible en ese momento de cara a superar el escenario, y a continuación se prosigue la partida.\nCuando los investigadores deban tomar una decisión y haya varias opciones válidas, el investigador jefe decide entre esas opciones. La regla nefasta no se aplica en estas decisiones.\n<i>Por ejemplo: Puerta cerrada con llave dice: “Vincula esta carta al Lugar que tenga más pistas y que no tenga una Puerta cerrada con llave vinculada.”. Si hay 3 Lugares empatados en cuanto a más pistas y ninguno tiene una Puerta cerrada con llave vinculada, el investigador jefe decide entre esos 3 Lugares. Los jugadores no están obligados a decidir cuál de esas 3 opciones sería la peor opción de forma objetiva.</i>\nLa regla nefasta sólo entra en efecto si los jugadores son incapaces de dar con una respuesta a un conflicto de reglas o de orden de resolución y por lo tanto no pueden seguir jugando la partida. Su intención es permitir que la partida siga en marcha cuando buscar la respuesta correcta fuese a llevar demasiado tiempo o supusiera un inconveniente para los jugadores. La regla nefasta no es una respuesta exhaustiva a los conflictos de reglas/orden de resolución."
   },
   {
+    "id": "The_Silver_Rule",
+    "title": "La regla de plata",
+    "text": "Si el texto de dos cartas se contradice directamente entre sí de una manera que es imposible cumplir ambas, la carta de encuentros tiene prioridad sobre la carta de jugador. Si ambas cartas son cartas de Encuentros o ambas son cartas de Jugador, el investigador jefe decide cuál tiene prioridad."
+  },
+  {
     "id": "A_An",
     "title": "Un, una",
     "text": "Cuando se usan para describir una condición, las palabras “un” o “una” se cumplen si uno o más de los elementos condicionales están presentes. <i>Por ejemplo: un investigador con 3 recursos satisfará la condición de “Cada investigador que tenga un recurso.”</i>"
@@ -130,6 +135,11 @@
         "id": "Control_of_Attachments",
         "title": "Control de cartas vinculadas",
         "text": "Una carta vinculada puede cambiar de control según la carta a la que está vinculada.\n- Si un Investigador vincula una carta de Jugador a una carta de Jugador bajo su control, el Jugador mantiene el control de la carta vinculada.\n- Si un Investigador vincula una carta de Jugador a una carta de Jugador bajo el control de otro Investigador, el otro Investigador toma el control de la carta vinculada.\n- Si una carta de Jugador con una o más cartas de Jugador vinculadas cambia de control, el Investigador que controle la nueva carta tomará el control de las cartas vinculadas a dicha carta.\n- Si un investigador vincula una carta de Jugador a una carta de Encuentro, el Jugador mantiene el control de la carta vinculada (pero no toma el control de la carta de Encuentro a la que se vincula dicha carta)."
+      }
+      {
+        "id": "Moving_Attachments",
+        "title": "Mover vinculadas",
+        "text": "Si un vinculado se “mueve” de un elemento del juego a otro, o se vincula a un elemento del juego mientras ya está vinculado a un elemento del juego, se desconecta de su elemento del juego original y se vincula al nuevo."
       }
     ]
   },
@@ -272,6 +282,11 @@
     "text": "Hay dos tipos de costes en el juego: costes de recursos y costes de capacidad.\nEl coste de recursos de una carta es el valor numérico que debe pagarse en recursos para jugar la carta desde la mano. Para pagar un coste de recursos, un investigador coge la cantidad especificada de recursos de su reserva de recursos y la coloca en la reserva de fichas.\nAlgunas capacidades activadas de las cartas se presentan con una expresión “coste: efecto”. En esta expresión, lo que precede a los dos puntos indica los costes de capacidad que deben pagarse y cualquier condición de activación que deba cumplirse para activar la capacidad. Lo que sigue a los dos puntos es el efecto.\n- Si una carta o capacidad tiene varios costes que haya que pagar, deben pagarse de forma simultánea.\n- Sólo el controlador de una carta o capacidad puede pagar sus costes. Los elementos de juego que controle otro jugador no pueden usarse para pagar un coste.\n- Si un jugador agota, sacrifica o utiliza cartas de cualquier otro modo para pagar costes, sólo puede usar cartas que estén en juego y bajo el control de ese jugador, a menos que el coste especifique un estado fuera del juego.\n- Si un coste requiere un elemento de juego que no esté en juego, el jugador que está pagando el coste sólo puede usar elementos de juego que estén en sus zonas de juego (como su mano o su mazo) para pagar el coste.\n- Si los investigadores deben pagar un coste como grupo, cada investigador (o cada investigador del grupo definido por la capacidad) puede contribuir al pago del coste.\n- Una capacidad no puede iniciarse (y por lo tanto no pueden pagarse sus costes) si la resolución de su efecto no fuese a cambiar el estado de la partida.\n- Si un investigador recibe horror o daño como coste y reasigna cualquier parte de esa cantidad a un Apoyo, el coste se sigue considerando pagado."
   },
   {
+    "id": "Customizable",
+    "title": "Personalizable",
+    "text": "“Personalizable” es una palabra clave que aparece en algunas cartas de Jugador de esta expansión. Las cartas Personalizable pueden parecer bastante corrientes a primera vista, pero tienen un tremendo potencial de mejora a lo largo de una campaña. Mediante el gasto de puntos de experiencia, es posible personalizarlas para que se convertan en potentes herramientas para el mazo de un investigador.\nCada carta Personalizable comienza en nivel 0 y cuenta con una lista aparte de las mejoras que se pueden adquirir con puntos de experiencia. Cada mejora va acompañada de una o más casillas.\nSalvo que el efecto de una carta diga algo distinto, un investigador sólo puede marcar casillas de una lista de mejoras antes o después de un escenario, mientras mejora su mazo o adquiere nuevas cartas para éste. Gastar 1 punto de experiencia permite al investigador marcar una casilla de una de las listas de mejoras de sus cartas.\nPara adquirir una mejora, el investigador debe marcar todas las casillas de dicha mejora. Tras haber adquirido una mejora, se considera que <i>todas las copias</i> de la carta asociada a esa lista tienen esa mejora (como una capacidad de carta obtenida) únicamente para ese investigador.\n<i>Por ejemplo, la Coraza de cazador tiene la siguiente mejora: “□□ <b>Duradera.</b> La Coraza de cazador recibe +2 a salud.”. Si se gasta 1 punto de experiencia para marcar una de las dos casillas que hay junto a Duradera, la mejora no se habrá adquirido aún. Después de haber marcado ambas casillas (lo que cuesta un total de 2 puntos de experiencia), la mejora se habrá adquirido y cada copia de la Coraza de cazador que haya en el mazo de ese investigador se verá afectada por la mejora.</i>\n- El nivel de una carta Personalizable es igual a la mitad de la cantidad total de casillas marcadas en su lista de mejoras, redondeando hacia arriba <i>(por ejemplo, una carta Personalizable que tenga 3 casillas marcadas sería una carta de nivel 2. Si se gastan 3 puntos de experiencia para marcar tres casillas más, la carta pasaría a ser de nivel 3)</i>.\n- <i>Ten en cuenta que esto significa que algunos investigadores no podrán mejorar las cartas Personalizable más allá de un determinado punto si sus opciones de creación de mazos les prohiben incluir la carta en su mazo después de efectuar la mejora.\n- Ninguna lista de mejoras podrá tener más de 10 casillas marcadas en total <i>(lo que significa que la cantidad máxima de puntos de experiencia que pueden gastarse en una misma carta Personalizable es 10, y que su nivel máximo es 5)</i>.\n- Gastar puntos de experiencia en una o más mejoras de una carta Personalizable que ya esté en el mazo de un investigador se considera “mejorar” una carta de cara a efectos de cartas.\n- Un investigador puede comprar directamente una o más copias de una carta Personalizable con 1 o más mejoras gastando únicamente la cantidad de puntos de experiencia necesaria para adquirir esas mejoras <i>(hacer eso cuenta como adquirir una carta nueva, no como mejorar una carta existente)</i>.\n- Las mejoras de las cartas Personalizable se consideran presentes en la carta en todo momento (incluso mientras la carta esté en una zona fuera del juego, como la mano de un investigador o la pila de descartes).\n- Gastar 1 o más puntos de experiencia en mejoras de la lista de mejoras de una carta Personalizable es permanente y no se puede reembolsar.\n- Durante el juego, las listas de mejoras deberían colocarse en una zona fuera del juego cercana para poder consultarlas rápidamente <i>(o, en el caso de jugar con fundas opacas, los investigadores pueden meter la lista de mejoras detrás de la carta que modifica, de modo que puedan acceder a ella cuando lo necesiten)</i>.\n- Existen listas de mejoras adicionales para su descarga e impresión en fantasyflightgames.es."
+  },
+  {
     "id": "Dealing_Damage_Horror",
     "title": "Infligir daño/horror",
     "text": "En el juego hay dos tipos de aflicciones que puede sufrir un investigador: daño y horror. El daño afecta a la salud del investigador, mientras que el horror afecta a su cordura.\nCuando un investigador o Enemigo recibe daño y/u horror, sigue estos pasos en orden:\n1. <b>Asignar daño/horror:</b> determina la cantidad de daño y/u horror que se va a infligir. Coloca tantas fichas de Daño y/o de Horror como la cantidad de daño y horror que se esté infligiendo junto a las cartas que vayan a recibir el daño/horror.\n- Cuando un investigador reciba daño u horror, puede asignárselo a cartas de Apoyo válidas que controle. Para ser válida, una carta de Apoyo debe tener salud para que se le pueda asignar daño, o cordura para que se le pueda asignar horror.\n- No puede asignarse daño a un Apoyo por encima de la cantidad de daño que hiciera falta para derrotar a la carta, ni tampoco horror por encima de la cantidad de horror que hiciera falta para derrotar a la carta.\n- Todo el daño/horror que no pueda ser asignado a un Apoyo debe serle asignado al investigador.\n2. <b>Aplicar daño/horror:</b> todo el daño/horror que no haya sido prevenido se coloca ahora de forma simultánea en las cartas a las que haya sido asignado. Si no se aplica daño/horror en este paso, no se ha infligido con éxito nada de daño/horror.\n- Las capacidades que previenen, reducen o reasignan daño y/u horror que esté siendo infligido se resuelven entre los pasos 1 y 2.\n- Tras aplicar daño/horror, si un investigador tiene una cantidad de daño igual o mayor que su salud o de horror igual o mayor que su cordura, queda derrotado. Cuando un investigador es derrotado, queda eliminado del escenario (ver \"[Eliminación](#Elimination)\").\n- Tras aplicar daño/horror, si un Enemigo tiene una cantidad de daño igual a su salud, queda derrotado y se coloca en la pila de descartes de Encuentros (o en la pila de descartes de su propietario si es una Debilidad).\n- Tras aplicar daño/horror, si un Apoyo tiene una cantidad de daño igual o mayor que su salud o de horror igual o mayor que su cordura, queda derrotado y se coloca en la pila de descartes de su propietario.\n- Cuando una capacidad hace una referencia en segunda persona como respuesta a recibir daño o ser infligido daño, esa referencia también incluye cualesquiera Apoyos que controles.\n<i>Por ejemplo: La capacidad [reaction] del Cuchillo de supervivencia se activa “Después de que el ataque de un Enemigo te inflija daño durante la fase de Enemigos”. Esta capacidad se activa incluso si el daño de ese ataque es asignado a uno o más de tus Apoyos y no a tu carta de Investigador. Sin embargo, si todo el daño de ese ataque es asignado a otro investigador o a sus Apoyos (mediante el uso de un efecto de carta que permita hacer eso), entonces no se te ha infligido daño.</i>"
@@ -317,6 +332,11 @@
     "id": "Difficulty_skill_tests",
     "title": "Dificultad (pruebas de habilidad)",
     "text": "La dificultad de una prueba de habilidad es el número objetivo que el investigador trata de igualar o superar con su valor de habilidad modificado para superar la prueba.\n- Al atacar a un Enemigo, la dificultad básica de la prueba de habilidad es el valor de combate del Enemigo.\n- Al investigar un Lugar, la dificultad básica de la prueba de habilidad es el valor de velo del Lugar.\n- Al intentar evitar a un Enemigo, la dificultad básica de la prueba de habilidad es el valor de evitar del Enemigo.\n- Al resolver una prueba de habilidad creada por la capacidad de una carta, la dificultad básica viene indicada como un valor entre paréntesis precedido de la habilidad que se está poniendo a prueba. <i>Por ejemplo: Intelecto (3)</i>\nConsulta \"[Orden de resolución de las pruebas de habilidad](#Skill_Test_Timing)\" para ver las reglas completas de las pruebas de habilidad."
+  },
+  {
+    "id": "Dilemmas_and_Revelation_Abilities",
+    "title": "Dilemas y capacidades “Revelación”",
+    "text": "Algunas cartas de Jugador de esta expansión (concretamente las que tienen el rasgo [[Dilema]]) poseen capacidades “Revelación”. Al igual que ocurre con las capacidades “Revelación” de otros tipos de carta, estas capacidades se resuelven cuando se roba la carta o cuando ésta entra en tu mano de cualquier otra forma, no cuando se juega la carta.\n- Estas cartas no tienen coste (\"-\") ni se pueden jugar; sus efectos sólo se resuelven al robarlas o añadirlas a tu mano.\n- Después de resolver una capacidad “Revelación” de una carta de Jugador, ponla en la pila de descartes de su propietario.\n- Las capacidades “Revelación” no se resuelven durante la preparación. Si se roban una o más cartas de Jugador con capacidades “Revelación” durante la preparación, espera a que empiece la partida; en ese momento, cada jugador (siguiendo el orden de juego) resuelve todas sus capacidades “Revelación” en el orden que elija."
   },
   {
     "id": "Direct_Damage_Direct_Horror",
@@ -365,6 +385,11 @@
     "id": "Empty_Location",
     "title": "Lugar vacío",
     "text": "Un Lugar vacío es un Lugar que no tiene Enemigos ni investigadores."
+  },
+  {
+    "id": "Encounter_Cards_Vs_Scenario_Cards",
+    "title": "“Cartas de Encuentro” vs “Cartas de escenario”",
+    "text": "Estos dos términos se usan indistintamente para referirse a cualquier carta usada en un escenario que no sea de jugador, como las cartas del mazo de Encuentros, Lugares, Actos, Planes, Carta de referencia del escenario, etc."
   },
   {
     "id": "Encounter_Deck",
@@ -500,6 +525,13 @@
     ],
     "title": "Oculto",
     "text": "Una carta de Encuentro o Debilidad con la palabra clave “Oculto” tiene una capacidad “Revelación” que la añade a tu mano en secreto. Esto debe hacerse sin revelar la carta ni su texto a los demás investigadores.\n- Mientras una Traición Oculto esté en tu mano, trátala como si estuviera en tu zona de amenaza. Sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Mientras un Enemigo Oculto esté en tu mano, no se considera que esté enfrentado a ti ni en tu zona de amenaza, y no ataca salvo que se indique algo distinto. Sin embargo, sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Una carta Oculto cuenta para tu tamaño de la mano, pero no se puede descartar de tu mano por ningún medio excepto mediante los descritos en la carta. Al ser descartadas, las cartas Oculto se colocan en la pila de descartes apropiada.\nPara una mejor experiencia, los jugadores no deberían salirse del personaje ni compartir información sobre las cartas Oculto de su mano."
+    "rules": [
+      {
+        "id": "Hidden_Cards_in_Hand_When_Eliminated",
+        "title": "Hidden Cards in Hand When Eliminated",
+        "text": "Cuando un investigador es eliminado, todas las cartas de Encuentro de su mano que tengan la palabra clave Oculto deberían colocarse en la pila de descartes de Encuentros del mismo modo que las cartas de Encuentro de su zona de amenaza."
+      }
+    ]
   },
   {
     "id": "Hunter",
@@ -578,6 +610,11 @@
     "id": "Leaves_Play",
     "title": "Abandona el juego",
     "text": "La expresión “abandona el juego” se refiere a cualquier momento en el que una carta realice una transición de un estado en juego a un estado fuera del juego (ver \"[En juego y fuera del juego](#In_Play_and_Out_of_Play)\").\nSi una carta abandona el juego, tienen lugar las siguientes consecuencias de forma simultánea al abandono del juego por parte de la carta:\n- ATodas las fichas que hubiera sobre la carta son devueltas a la reserva de fichas.\n- Todas las cartas Vinculadas que hubiera sobre la carta son descartadas.\n- Todos los efectos persistentes y/o postergados que afectaran a la carta mientras estaba en juego terminan para esa carta."
+  },
+  {
+    "id": "Limbo",
+    "title": "Limbo",
+    "text": "Mientras se resuelven los efectos de una carta de evento o de traición, o mientras una habilidad se asigna a una prueba de habilidad, esta carta no está en juego, ni en la pila de descartes ni en la mano de un investigador. A los efectos de la aclaración de reglas, este estado liminal se denomina “limbo.”\nUna carta de evento entra en el limbo durante el paso 3 de la Secuencia de iniciación, después de que se paguen los costes y se realicen los ataques de oportunidad <i>(ver [Apéndice I](#Appendix_I_Initiation_Sequence)</i>. Una carta de traición entra en el limbo después de ser robada, mientras se resuelve su capacidad de revelación. Una carta de habilidad entra en el limbo cuando se asigna a una prueba de habilidad. Mientras está en el limbo, la carta generalmente se coloca sobre la mesa para mostrar que sus efectos se están resolviendo. En ese momento ya no se considera que está en la mano de ningún investigador, pero aún no se ha colocado en ninguna pila de descartes. Técnicamente no está en juego y no cuenta como tal a los efectos de otros efectos de cartas; sin embargo, sus efectos aún pueden alterar el estado del juego. Después de resolver los efectos de la carta por completo, se coloca en la pila de descartes correspondiente y ya no está en el limbo. Si sus efectos hacen que entre en juego (como vincularse a otro elemento del juego o colocarla en el área de juego o amenaza de un investigador), deja el limbo y entra en juego en ese momento."
   },
   {
     "id": "Limits_and_Maximums",
@@ -819,6 +856,18 @@
     "id": "Search",
     "title": "Buscar",
     "text": "Cuando un jugador deba buscar una carta, puede mirar todas las cartas de las zonas en las que está buscando sin revelárselas a los demás jugadores.\n- Si un efecto busca en todo un mazo, tras completar la búsqueda se debe barajar el mazo.\n- Al resolver un efecto de búsqueda, el jugador está obligado a encontrar el objeto de la búsqueda si hay una o más opciones válidas en la zona en la que se está buscando.\n- Mientras se esté buscando en las cartas, no se considera que éstas hayan abandonado la zona de juego donde se encontraban."
+    "rules": [
+      {
+        "id": "Looking_At_Searching_And_Finding",
+        "title": "“Mirar” y “Buscar”",
+        "text": "Estos términos implican examinar las cartas fuera de juego (normalmente el mazo de un investigador o el mazo de Encuentros), pero no significan lo mismo a efectos de otros efectos de cartas. <i>Por ejemplo, si un investigador “mira” las 3 primeras cartas de su mazo, no se trata de un efecto de búsqueda. Además, buscar en áreas fuera de juego no se considera un efecto de búsqueda.</i>"
+      },
+      {
+        "id": "Searching_During_Setup",
+        "title": "Buscar durante la preparación",
+        "text": "Si se le indica a un investigador que busque en un mazo 1 o más cartas durante la preparación, las capacidades que se activan cuando se busca en un mazo (como la capacidad [reaction] de Mandy Thompson o las capacidades en las cartas de [[Investigación]]) no se pueden resolver, ya que el juego aún no ha comenzado."
+      }
+    ]
   },
   {
     "id": "Self_Referential_Text",

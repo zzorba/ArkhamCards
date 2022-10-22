@@ -6189,6 +6189,12 @@ msgstr "Fortuna y locura"
 msgid "Challenge Scenarios"
 msgstr "Escenarios desafío"
 
+msgid "Choose an option"
+msgstr ""
+
+msgid "Choose weakness"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
