@@ -208,6 +208,7 @@ export interface CardId {
   quantity: number;
   invalid: boolean;
   limited: boolean;
+  ignoreCount?: boolean;
 }
 
 export interface AssetGroup {

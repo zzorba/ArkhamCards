@@ -966,31 +966,31 @@ export default function({
       type: 'deck',
       deckId,
       limit: 0,
-      side: !!sideDeck,
+      mode: !!sideDeck ? 'side' : undefined,
     },
     {
       type: 'deck',
       deckId,
       limit: 1,
-      side: !!sideDeck,
+      mode: !!sideDeck ? 'side' : undefined
     },
     {
       type: 'deck',
       deckId,
       limit: 2,
-      side: !!sideDeck,
+      mode: !!sideDeck ? 'side' : undefined
     },
     {
       type: 'deck',
       deckId,
       limit: 3,
-      side: !!sideDeck,
+      mode: !!sideDeck ? 'side' : undefined
     },
     {
       type: 'deck',
       deckId,
       limit: 4,
-      side: !!sideDeck,
+      mode: !!sideDeck ? 'side' : undefined
     },
   ] : [], [deckId, sideDeck]);
   const { lang, listSeperator } = useContext(LanguageContext);

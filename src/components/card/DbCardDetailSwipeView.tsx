@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Platform,
   View,
+  Text,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -38,7 +39,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
-  controls?: ('deck' | 'side' | 'special' | 'bonded')[];
+  controls?: ('deck' | 'side' | 'special' | 'ignore' | 'bonded')[];
   initialCards?: Card[];
   initialIndex: number;
   whiteNav: boolean;
@@ -297,7 +298,7 @@ function DbCardDetailSwipeView(props: Props) {
         code={currentCard.code}
         deckId={deckId}
         limit={deck_limit}
-        side={currentControl === 'side'}
+        mode={(currentControl === 'side' || currentControl === 'ignore') ? currentControl : undefined}
         editable={editable}
       />
     );

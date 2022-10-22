@@ -854,14 +854,37 @@ export function parseDeck(
         custom: card.custom(),
       };
     });
-  const specialCards = cardIds.filter(c =>
-    (isSpecialCard(cards[c.id]) && c.quantity >= 0) || ignoreDeckLimitSlots[c.id] > 0);
-  const normalCards = cardIds.filter(c =>
-    !isSpecialCard(cards[c.id]) && ((
-      c.quantity > (ignoreDeckLimitSlots[c.id] || 0)
-    ) || (
-      (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
-    )));
+  const specialCards = map(
+    filter(cardIds,
+      c => (isSpecialCard(cards[c.id]) && c.quantity >= 0) || ignoreDeckLimitSlots[c.id] > 0
+    ), c => {
+      if (ignoreDeckLimitSlots[c.id] > 0) {
+        return {
+          ...c,
+          quantity: ignoreDeckLimitSlots[c.id],
+          ignoreCount: true,
+        };
+      }
+      return c;
+    }
+  );
+  const normalCards = map(
+    filter(cardIds, c =>
+      !isSpecialCard(cards[c.id]) && ((
+        c.quantity > (ignoreDeckLimitSlots[c.id] || 0)
+      ) || (
+        (ignoreDeckLimitSlots[c.id] || 0) === 0 && c.quantity >= 0
+      ))
+    ), c => {
+      if (ignoreDeckLimitSlots[c.id] > 0) {
+        return {
+          ...c,
+          quantity: c.quantity - ignoreDeckLimitSlots[c.id],
+        };
+      }
+      return c;
+    }
+  );
   const sideCards: CardId[] = flatMap(
     sortBy(
       sortBy(
@@ -926,8 +949,7 @@ export function parseDeck(
     deck: originalDeck,
     slots,
     customizations,
-    normalCardCount: sum(normalCards.map(c =>
-      c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
+    normalCardCount: sumBy(normalCards, c => c.quantity),
     deckSize: validation.getDeckSize(),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,

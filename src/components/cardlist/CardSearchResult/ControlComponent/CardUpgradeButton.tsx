@@ -15,16 +15,16 @@ interface Props {
   onUpgradePress?: (card: Card) => void;
   deckId: DeckId;
   limit: number;
-  side?: boolean;
+  mode: 'side' | 'ignore' | undefined;
   editable: boolean;
 }
 
-export default function CardUpgradeButton({ onUpgradePress, editable, card, deckId, limit, side }: Props) {
+export default function CardUpgradeButton({ onUpgradePress, editable, card, deckId, limit, mode }: Props) {
   const { colors } = useContext(StyleContext);
-  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card])
+  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card]);
   return (
     <View style={styles.countWrapper}>
-      { !side && !!onUpgradePress && (
+      { !mode && !!onUpgradePress && (
         <View style={space.marginRightS}>
           <RoundButton onPress={onPress} accessibilityLabel={t`Show upgrades`}>
             <View style={styles.icon}>
@@ -41,7 +41,7 @@ export default function CardUpgradeButton({ onUpgradePress, editable, card, deck
         code={card.code}
         deckId={deckId}
         limit={limit}
-        side={side}
+        mode={mode}
         editable={editable}
       />
     </View>

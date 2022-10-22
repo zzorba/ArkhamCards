@@ -15,7 +15,7 @@ export type ControlType = {
   type: 'deck';
   deckId: DeckId;
   limit: number;
-  side?: boolean;
+  mode?: 'side' | 'ignore';
 } | {
   type: 'quantity';
   count: number;
@@ -32,7 +32,7 @@ export type ControlType = {
   type: 'upgrade';
   deckId: DeckId;
   limit: number;
-  side?: boolean;
+  mode?: 'side' | 'ignore'
   editable: boolean;
   onUpgradePress?: (card: Card) => void;
 } | {
@@ -64,7 +64,7 @@ interface Props {
 export function ControlComponent({ card, control }: Props) {
   switch (control.type) {
     case 'deck':
-      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} side={control.side} editable />;
+      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} mode={control.mode} editable />;
     case 'shuffle':
       return <ShuffleButton onPress={control.onShufflePress} />;
     case 'draft':
@@ -79,7 +79,7 @@ export function ControlComponent({ card, control }: Props) {
           deckId={control.deckId}
           editable={control.editable}
           limit={control.limit}
-          side={control.side}
+          mode={control.mode}
         />
       );
     case 'toggle':

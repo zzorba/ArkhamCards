@@ -46,7 +46,7 @@ function ChecklistCard({
   checklist: string[];
   pressCard: (card: Card) => void;
 }) {
-  const count = useDeckSlotCount(id, card.code);
+  const [count] = useDeckSlotCount(id, card.code);
   const dispatch = useDispatch();
   const toggleValue = useCallback((value: boolean) => {
     dispatch(setDeckChecklistCard(id, card.code, value));

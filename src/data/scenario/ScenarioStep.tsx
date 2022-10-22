@@ -34,7 +34,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, CHECK_CONTINUE_PLAY_SCENARIO, PROCEED_STEP_ID, PROCEED_ALT_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, PROCEED_STEP_ID, PROCEED_ALT_STEP_ID, DUMMY_END_SCENARIO_STEP_ID, CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -66,7 +66,7 @@ export default class ScenarioStep {
     return (
       nextCampaignLog &&
       this.remainingStepIds.length === 0 &&
-      this.step.id === `${PROCEED_STEP_ID}_effects` || this.step.id === `${PROCEED_ALT_STEP_ID}_effects`
+      this.step.id === `${PROCEED_STEP_ID}_effects` || this.step.id === `${PROCEED_ALT_STEP_ID}_effects` || this.step.id === DUMMY_END_SCENARIO_STEP_ID
     );
   }
 
@@ -779,7 +779,7 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `${CHECK_CONTINUE_PLAY_SCENARIO}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{

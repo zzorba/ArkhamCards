@@ -11,11 +11,11 @@ interface Props {
   deckId: DeckId;
   code: string;
   limit: number;
-  side?: boolean;
+  mode?: 'side' | 'ignore';
   editable?: boolean
 }
 
-export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, side }: Props) {
+export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, mode }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
@@ -23,7 +23,7 @@ export default function FloatingDeckQuantityComponent({ deckId, editable, code, 
         deckId={deckId}
         code={code}
         limit={limit}
-        side={side}
+        mode={mode}
         showZeroCount
         forceBig
         editable={editable}

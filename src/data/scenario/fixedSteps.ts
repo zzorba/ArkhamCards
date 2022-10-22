@@ -225,7 +225,13 @@ const playScenarioStep: InputStep = {
   },
 };
 
-export const CHECK_CONTINUE_PLAY_SCENARIO = '$check_continue_play_scenario';
+export const DUMMY_END_SCENARIO_STEP_ID = '$dummy_end_scenario';
+const dummyEndScenarioStep: GenericStep = {
+  id: DUMMY_END_SCENARIO_STEP_ID,
+  hidden: true,
+};
+
+export const CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID = '$check_continue_play_scenario';
 
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
@@ -618,15 +624,21 @@ export function getFixedStep(
       return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
       return playScenarioStep;
-    case CHECK_CONTINUE_PLAY_SCENARIO: {
+    case DUMMY_END_SCENARIO_STEP_ID:
+      return dummyEndScenarioStep;
+    case CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID: {
       const step: BranchStep = {
-        id: CHECK_CONTINUE_PLAY_SCENARIO,
+        id: CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID,
         hidden: true,
         type: 'branch',
         condition: {
           type: 'scenario_data',
           scenario_data: 'has_resolution',
           options: [
+            {
+              boolCondition: true,
+              steps: [DUMMY_END_SCENARIO_STEP_ID],
+            },
             {
               boolCondition: false,
               steps: [iteration !== undefined ? `${PLAY_SCENARIO_STEP_ID}#${iteration}` : PLAY_SCENARIO_STEP_ID],

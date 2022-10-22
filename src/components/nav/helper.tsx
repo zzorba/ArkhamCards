@@ -216,7 +216,7 @@ export function showDrawSimulator(
 export function showCardSwipe(
   componentId: string,
   codes: string[],
-  controls: undefined | 'side' | ('side' | 'deck' | 'bonded' | 'special')[],
+  controls: undefined | 'side' | ('side' | 'deck' | 'ignore' | 'bonded' | 'special')[],
   index: number,
   colors: ThemeColors,
   initialCards?: Card[],

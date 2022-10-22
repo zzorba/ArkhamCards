@@ -522,35 +522,35 @@ export function setIgnoreDeckSlot(id: DeckId, code: string, value: number): Upda
   };
 }
 
-export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, side?: boolean): UpdateDeckEditCountsAction {
+export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'inc',
     limit,
-    countType: side ? 'side' : 'slots',
+    countType: mode === 'ignore' ? 'ignoreDeckLimitSlots' : (mode || 'slots'),
   };
 }
 
-export function decDeckSlot(id: DeckId, code: string, side?: boolean): UpdateDeckEditCountsAction {
+export function decDeckSlot(id: DeckId, code: string, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'dec',
-    countType: side ? 'side' : 'slots',
+    countType: mode === 'ignore' ? 'ignoreDeckLimitSlots' : (mode || 'slots'),
   };
 }
 
-export function setDeckSlot(id: DeckId, code: string, value: number, side: boolean | undefined): UpdateDeckEditCountsAction {
+export function setDeckSlot(id: DeckId, code: string, value: number, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
     operation: 'set',
     value,
-    countType: side ? 'side' : 'slots',
+    countType: mode === 'ignore' ? 'ignoreDeckLimitSlots' : (mode || 'slots'),
   };
 }
 

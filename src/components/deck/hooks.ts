@@ -83,15 +83,24 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
   }, [meta, slots, previousMeta, cards]);
 }
 
-export function useDeckSlotCount({ uuid }: DeckId, code: string, side?: boolean): number {
+export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' | 'ignore'): [number, number] {
   return useSelector((state: AppState) => {
     if (!state.deckEdits.editting || !state.deckEdits.editting[uuid] || !state.deckEdits.edits || !state.deckEdits.edits[uuid]) {
-      return 0;
+      return [0, 0];
     }
-    if (side) {
-      return state.deckEdits.edits[uuid]?.side[code] || 0;
+    if (mode === 'side') {
+      return [state.deckEdits.edits[uuid]?.side[code] || 0, 0];
     }
-    return state.deckEdits.edits[uuid]?.slots[code] || 0;
+    if (mode === 'ignore') {
+      return [
+        state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
+        0
+      ];
+    }
+    return [
+      state.deckEdits.edits[uuid]?.slots[code] || 0,
+      state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
+    ];
   });
 }
 
