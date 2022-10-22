@@ -139,6 +139,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
         options={options}
         detailed={input.special_mode === 'detailed'}
         optional={input.investigator === 'choice'}
+        unique={input.unique}
       />
     </>
   );

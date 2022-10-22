@@ -135,7 +135,7 @@
         "id": "Control_of_Attachments",
         "title": "Control de cartas vinculadas",
         "text": "Una carta vinculada puede cambiar de control según la carta a la que está vinculada.\n- Si un Investigador vincula una carta de Jugador a una carta de Jugador bajo su control, el Jugador mantiene el control de la carta vinculada.\n- Si un Investigador vincula una carta de Jugador a una carta de Jugador bajo el control de otro Investigador, el otro Investigador toma el control de la carta vinculada.\n- Si una carta de Jugador con una o más cartas de Jugador vinculadas cambia de control, el Investigador que controle la nueva carta tomará el control de las cartas vinculadas a dicha carta.\n- Si un investigador vincula una carta de Jugador a una carta de Encuentro, el Jugador mantiene el control de la carta vinculada (pero no toma el control de la carta de Encuentro a la que se vincula dicha carta)."
-      }
+      },
       {
         "id": "Moving_Attachments",
         "title": "Mover vinculadas",
@@ -524,7 +524,7 @@
       "tde"
     ],
     "title": "Oculto",
-    "text": "Una carta de Encuentro o Debilidad con la palabra clave “Oculto” tiene una capacidad “Revelación” que la añade a tu mano en secreto. Esto debe hacerse sin revelar la carta ni su texto a los demás investigadores.\n- Mientras una Traición Oculto esté en tu mano, trátala como si estuviera en tu zona de amenaza. Sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Mientras un Enemigo Oculto esté en tu mano, no se considera que esté enfrentado a ti ni en tu zona de amenaza, y no ataca salvo que se indique algo distinto. Sin embargo, sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Una carta Oculto cuenta para tu tamaño de la mano, pero no se puede descartar de tu mano por ningún medio excepto mediante los descritos en la carta. Al ser descartadas, las cartas Oculto se colocan en la pila de descartes apropiada.\nPara una mejor experiencia, los jugadores no deberían salirse del personaje ni compartir información sobre las cartas Oculto de su mano."
+    "text": "Una carta de Encuentro o Debilidad con la palabra clave “Oculto” tiene una capacidad “Revelación” que la añade a tu mano en secreto. Esto debe hacerse sin revelar la carta ni su texto a los demás investigadores.\n- Mientras una Traición Oculto esté en tu mano, trátala como si estuviera en tu zona de amenaza. Sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Mientras un Enemigo Oculto esté en tu mano, no se considera que esté enfrentado a ti ni en tu zona de amenaza, y no ataca salvo que se indique algo distinto. Sin embargo, sus capacidades continuas están activas, y se pueden activar sus capacidades, pero sólo puedes hacerlo tú.\n- Una carta Oculto cuenta para tu tamaño de la mano, pero no se puede descartar de tu mano por ningún medio excepto mediante los descritos en la carta. Al ser descartadas, las cartas Oculto se colocan en la pila de descartes apropiada.\nPara una mejor experiencia, los jugadores no deberían salirse del personaje ni compartir información sobre las cartas Oculto de su mano.",
     "rules": [
       {
         "id": "Hidden_Cards_in_Hand_When_Eliminated",
@@ -855,7 +855,7 @@
   {
     "id": "Search",
     "title": "Buscar",
-    "text": "Cuando un jugador deba buscar una carta, puede mirar todas las cartas de las zonas en las que está buscando sin revelárselas a los demás jugadores.\n- Si un efecto busca en todo un mazo, tras completar la búsqueda se debe barajar el mazo.\n- Al resolver un efecto de búsqueda, el jugador está obligado a encontrar el objeto de la búsqueda si hay una o más opciones válidas en la zona en la que se está buscando.\n- Mientras se esté buscando en las cartas, no se considera que éstas hayan abandonado la zona de juego donde se encontraban."
+    "text": "Cuando un jugador deba buscar una carta, puede mirar todas las cartas de las zonas en las que está buscando sin revelárselas a los demás jugadores.\n- Si un efecto busca en todo un mazo, tras completar la búsqueda se debe barajar el mazo.\n- Al resolver un efecto de búsqueda, el jugador está obligado a encontrar el objeto de la búsqueda si hay una o más opciones válidas en la zona en la que se está buscando.\n- Mientras se esté buscando en las cartas, no se considera que éstas hayan abandonado la zona de juego donde se encontraban.",
     "rules": [
       {
         "id": "Looking_At_Searching_And_Finding",

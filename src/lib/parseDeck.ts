@@ -479,10 +479,10 @@ function getDeckChanges(
           return 0;
         }
 
-        // Customizable cards are always Level 0, so if you end up paying XP
-        // for them you get a discount.
+        // Customizable cards are always Level 0, so if you end up paying
+        // to customize, you get to put them in for free.
         if ((customizedXp[addedCard.code] || 0) > 0) {
-          customizedXp[addedCard.code] = customizedXp[addedCard.code] - 1;
+          return downTheRabbitHoleXp;
         }
 
         return 1 + downTheRabbitHoleXp;

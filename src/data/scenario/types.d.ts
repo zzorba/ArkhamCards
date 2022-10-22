@@ -1005,6 +1005,7 @@ export interface InvestigatorChoiceInput {
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
+  unique?: boolean;
   confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
 }

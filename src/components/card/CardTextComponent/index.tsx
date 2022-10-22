@@ -312,8 +312,9 @@ function renderTableCell(cell: InlineNode, row: number, column: number, rowCount
   );
 }
 
-const TableRule = {
-  render: (node: TableNode, output: OutputFunction, state: RenderState, styles: any) => (
+const TableRule: MarkdownRule<TableNode, State> = {
+  order: 0,
+  render: (node: TableNode, output: OutputFunction, state: RenderState & State, styles: any) => (
     <Table key={state.key} borderStyle={{ borderWidth: 1 }} style={{ width: '100%' }}>
       {[<Row id={1} key={1} style={{ flexDirection: 'row' }} data=
         {node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
