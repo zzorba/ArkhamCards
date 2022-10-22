@@ -1100,19 +1100,19 @@ msgid "Cursing at the tentacle token"
 msgstr "Przeklinanie żetonu macek"
 
 msgid "Drawing a mythos card with surge"
-msgstr "Dobranie karty spotkania ze słowem kluczowym Mroczna fala"
+msgstr "Dobieranie karty spotkania ze słowem kluczowym Mroczna fala"
 
 msgid "Placing doom on the agenda"
 msgstr "Umieszczenie żetonu zagłady na karcie tajemnicy"
 
 msgid "Reticulating spines"
-msgstr "Siatkowate kolce"
+msgstr "Siatkowanie kolców"
 
 msgid "Trying to make sense of the Time Warp FAQ"
-msgstr "Próbując zrozumieć Zakrzywienie Czasu FAQ"
+msgstr "Próbując zrozumieć FAQ Zakrzywienia Czasu"
 
 msgid "Taking three damage and three horror"
-msgstr "Otrzymanie 3 pkt obrażenia i 3 pkt przerażenia"
+msgstr "Otrzymywanie 3 pkt obrażenia i 3 pkt przerażenia"
 
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
@@ -1471,7 +1471,7 @@ msgid "Level ${ level }"
 msgstr "Poziom ${ level }"
 
 msgid "In Deck"
-msgstr "W Talii"
+msgstr "W talii"
 
 msgid "All Eligible Cards"
 msgstr "Wszystkie kwalifikujące się Karty"
@@ -1797,8 +1797,7 @@ msgstr "Ostatnia Talia: ${ deck.availableExperience } XP"
 
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
-"???Żadne atuty zajmujące strefę sprzymierzeńca nie są dozwolone dla Na "
-"wlasną rekę."
+"Atuty zajmujące strefę sprzymierzeńca nie są dozwolone przez Zdanego na siebie."
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Za dużo pozaklasowych kart dla atutu: Wszechstronny"
@@ -3611,7 +3610,7 @@ msgid "Looks like there is already an account registered with this email address
 msgstr "Wygląda na to, że istnieje już konto zarejestrowane na ten adres e-mail."
 
 msgid "That doesn't look like a valid email address"
-msgstr "That doesn't look like a valid email address"
+msgstr "To nie wygląda jak poprawny adres e-mail"
 
 msgid "That password seems to be too weak."
 msgstr "To hasło wydaje się być zbyt słabe."
@@ -5204,7 +5203,7 @@ msgstr ""
 "otrzymuje 1 wybraną przez siebie traumę."
 
 msgid "An app update is required to access this campaign."
-msgstr "An app update is required to access this campaign."
+msgstr "Wymagana jest aktualizacja aplikacji w celu uzyskania dostępu do tej kampanii."
 
 msgid ""
 "Note that this is an ArkhamCards account, which is separate from your "
@@ -5246,7 +5245,7 @@ msgid "Collection overlap"
 msgstr "Kolekcja pokrywa się"
 
 msgid "Deck overlap"
-msgstr "Tal nakłada się"
+msgstr "Talia pokrywa się"
 
 msgid "Show collection overlap"
 msgstr "Pokaż pokrywanie się kolekcji"
@@ -5383,7 +5382,7 @@ msgstr ""
 "• hiszpański: ${ spanishTranslators }\n"
 "• francuski: ${ frenchTranslators }\n"
 "• niemiecki: ${ germanTranslators }\n"
-"• r****ki: ${ russianTranslators }\n"
+"• rosyjski: ${ russianTranslators }\n"
 "• koreański: ${ koreanTranslators }"
 
 #, javascript-format
@@ -5396,7 +5395,7 @@ msgid ""
 msgstr ""
 "<b>Współtwórcy:</b>\n"
 "• Projekt wizualny: ${ visualDesigner }\n"
-"• Cyfrowy worek chaosy + kalkulator szans: ${ chaosBagDeveloper }\n"
+"• Cyfrowy worek chaosu + kalkulator szans: ${ chaosBagDeveloper }\n"
 "• Inetegracja audio Dissonant Voices: ${ dissonantVoicesDeveloper }\n"
 "• Wsparcie narzędziowe: ${ toolingDeveloper }"
 
@@ -5415,10 +5414,10 @@ msgid "Fix layout issues on version 3.0 of Samsung One UI"
 msgstr "Napraw problemy z interfejsem w Samsung One UI 3.0"
 
 msgid "Reauthorize ArkhamDB"
-msgstr ""
+msgstr "Autoryzuj ArkhamDB ponownie"
 
 msgid "Login required to save deck upgrade"
-msgstr ""
+msgstr "Logowanie wymagane aby zapisać ulepszenie talii"
 
 msgid "Call of the Plaguebearer"
 msgstr ""
@@ -5436,6 +5435,7 @@ msgid ""
 "Note: this campaign is a fairly new addition to the app and may contain "
 "some mistakes."
 msgstr ""
+"Uwaga: ta kampania jest stosunkowo nowym dodatkiem do aplikacje, stąd może zawierać parę błędów."
 
 msgid "Durability"
 msgstr ""
@@ -5459,27 +5459,29 @@ msgid "Player"
 msgstr ""
 
 msgid "Barkham Horror"
-msgstr ""
+msgstr "Horror w Psiarkam"
 
 msgid "Show all available cards for parallel"
 msgstr ""
 
 msgid "Show fan-made cards"
-msgstr ""
+msgstr "Pokaż fanowskie karty"
 
 msgid "Reset onboarding"
-msgstr ""
+msgstr "Resetuj wprowadzenie"
 
 msgid ""
 "Signing into Arkham Cards will let you backup your campaigns between your "
 "devices and share in-progress campaigns with other friends."
 msgstr ""
+"Zalogowanie się do Arkham Cards pozwoli Ci na zrobienie kopii zapasowej swoich kampanii, "
+"synchronizację między urządzeniami oraz dzielenie się kampaniami ze znajomymi."
 
 msgid "Recent updates"
-msgstr ""
+msgstr "Ostatnie aktualizacje"
 
 msgid "Learn about recently added features"
-msgstr ""
+msgstr "Dowiedz się więcej o nowych funkcjach"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
@@ -5488,27 +5490,31 @@ msgid ""
 "You can also upload in-progress campaigns and share them with friends and "
 "even share a synchronized chaos bag."
 msgstr ""
+"Używanie konta Arkham Cards pozwoli Ci na zrobienie kopii zapasowej oraz synchronizację kampanii między urządzeniami.\n"
+"\n"
+"Możesz również wysłać trwające kampanię i podzielić się z nimi ze znajomymi, bądź nawet podzielić się "
+"zsychronizowanym workiem chaosu."
 
 msgid "Sync campaigns to share with friends"
-msgstr ""
+msgstr "Synchronizuj kampanie, aby udostępnić je znajomym"
 
 msgid "Sharing campaigns"
-msgstr ""
+msgstr "Udostępnianie kampanii"
 
 msgid "Sign up with Arkham Cards"
-msgstr ""
+msgstr "Zaloguj się Arkham Cards"
 
 msgid "Upload a campaign"
-msgstr ""
+msgstr "Wyślij kampanię"
 
 msgid "Add a friend"
-msgstr ""
+msgstr "Dodaj znajomego"
 
 msgid "Enjoy the campaign"
-msgstr ""
+msgstr "Ciesz się kampanią"
 
 msgid "Did you know campaigns can be shared with friends using this app?"
-msgstr ""
+msgstr "Wiedziałeś że możesz udostępnić kampanie znajomym używając tej aplikacji?"
 
 msgid ""
 "This deck contains new cards that the app hasn't seen before.\n"
@@ -5519,16 +5525,16 @@ msgid ""
 msgstr ""
 
 msgid "Other investigator cards"
-msgstr ""
+msgstr "Inne karty badacza"
 
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ultimatum Chaosu"
 
 msgid "Generate deck"
-msgstr ""
+msgstr "Generuj talię"
 
 msgid "- Adjust your card collection in the app settings."
-msgstr ""
+msgstr "- Dopasuj swoją kolekcję kart w ustawieniach aplikacji."
 
 msgid ""
 "- Remove the parallel investigator choice, which might require a larger "
@@ -5543,30 +5549,32 @@ msgid ""
 "Unable to build a random deck for this investigator:\n"
 "${ remedy }"
 msgstr ""
+"Nie można zbudować losowej talii dla tego badacza:\n"
+"${ remedy }"
 
 msgid "Starter deck"
-msgstr ""
+msgstr "Talia startowa"
 
 msgid "Unable to generate deck"
-msgstr ""
+msgstr "Nie można wygenerować talii"
 
 msgid "Suggested starter deck for this investigator from FFG."
-msgstr ""
+msgstr "Sugerowana talia startowa dla tego badacza od FFG"
 
 msgid "An empty deck."
-msgstr ""
+msgstr "Pusta talia."
 
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
-msgstr ""
+msgstr "Wybacz, aplikacja nie może jeszcze wygenerować losowej talii dla tego badacza."
 
 msgid "A fully randomized deck."
-msgstr ""
+msgstr "W pełni losowa talia."
 
 msgid "Special deck"
-msgstr ""
+msgstr "Specjalna talia"
 
 msgid "Re-generate deck"
-msgstr ""
+msgstr "Generuj talię ponownie"
 
 msgid "Draft from card collection"
 msgstr ""
@@ -5578,69 +5586,81 @@ msgid "Draft using your card collection"
 msgstr ""
 
 msgid "Draft Pool"
-msgstr ""
+msgstr "Pula draftu"
 
 msgid "Grid"
-msgstr ""
+msgstr "Siatka"
 
 msgid "Invalid deck"
-msgstr ""
+msgstr "Nieprawidłowa talia"
 
 msgid ""
 "This deck is currently invalid in some way. Please address the issues "
 "before continuing the draft."
 msgstr ""
+"Ta talia jest w jakiś sposób nieprawidłowa. Zajmij się problemami przed kontynowaniem draftu."
 
 msgid "Hand size:"
-msgstr ""
+msgstr "Wielkość ręki:"
 
 msgid "Choose packs"
-msgstr ""
+msgstr "Wybierz zestawy"
 
 msgid ""
 "This tool lets you build a deck progressively, choosing one card at a time "
 "from a limited set of cards."
 msgstr ""
+"To narzędzie pozwala stopniowo budować talię, wybierając jedną kartę na raz"
+"z ograniczonego zestawu kart."
 
 msgid ""
 "Each 'hand' of cards is taken at random from all possible cards that are "
 "allowed given the current investigator + deckbuilding option choices you "
 "have made."
 msgstr ""
+"Każda „ręka” jest losowo wybierana ze wszystkich dozwolonych kart biorąc pod uwagę"
+"aktualnego badacza oraz wymogi tworzenia talii."
 
 msgid ""
 "The drafting process will continue until your deck is full, but you can "
 "stop or change the settings at any time"
 msgstr ""
+"Proces draftowania będzie kontynuowany, dopóki talia nie będzie pełna, ale możesz zatrzymać"
+"lub zmienić ustawienia w dowolnym momencie."
 
 msgid "Begin draft"
-msgstr ""
+msgstr "Rozpocznij draft"
 
 msgid "Selection"
-msgstr ""
+msgstr "Wybór"
 
 msgid "Draft cards"
-msgstr ""
+msgstr "Draft kart"
 
 msgid "Unsupported investigator"
-msgstr ""
+msgstr "Niewspierany badacz"
 
 msgid ""
 "Sorry, given their unique deckbuilding rules, this app does not yet support "
 "drafting for Lola Hayes or Joe Diamond."
 msgstr ""
+"Przepraszamy, biorąc pod uwagę ich unikalne zasady budowania talii, ta aplikacja nie obsługuje jeszcze trybu draftu dla "
+"Loli Hayes lub Joe Diamonda."
 
 msgid "Please correct invalid deck issues"
-msgstr ""
+msgstr "Popraw problemy z nieprawidłową talią"
 
 msgid ""
 "This deck currently contains one or more forbidden cards.\n"
 "\n"
 "Please address these outstanding deck issues before drafting cards."
 msgstr ""
+"Ta talia zawiera obecnie co najmniej jedną zakazaną kartę.\n"
+"\n"
+"Proszę rozwiązać te nierozstrzygnięte problemy z talią przed draftem."
 
 msgid "Deck is full"
-msgstr ""
+msgstr "Talia jest pełna"
 
 msgid ""
 "This deck is full.\n"
@@ -5649,18 +5669,23 @@ msgid ""
 "\n"
 "At the moment it is only possible to draft level 0 cards using the app."
 msgstr ""
+"Ta talia jest pełna.\n"
+"\n"
+"Usuń kilka kart lub utwórz nową talię, jeśli chcesz wykorzystać draft.\n"
+"\n"
+"W tej chwili za pomocą aplikacji można używać draftu tylko do kart poziomu 0."
 
 msgid "Draft Cards"
-msgstr ""
+msgstr "Draft kart"
 
 msgid "Deck id copied!"
-msgstr ""
+msgstr "Id talii skopiowane!"
 
 msgid "Link to deck copied!"
-msgstr ""
+msgstr "Link do talii skopiowany!"
 
 msgid "Build a deck randomly"
-msgstr ""
+msgstr "Zbuduj talię losowo"
 
 msgid "A single core set is always included"
 msgstr ""
@@ -5675,98 +5700,95 @@ msgid ""
 "If you are using the digital chaos bag in the app, be sure to enable the "
 "tarot option on the chaos bag screen."
 msgstr ""
+"Jeśli używasz cyfrowego worka chaosu z aplikacji, pamiętaj aby włączyć tarota na ekranie worka chaosu."
 
 msgid "Show deck ids on campaigns"
-msgstr ""
+msgstr "Pokazuj id talii w kampaniach"
 
 msgid "Tarot Reading"
-msgstr ""
+msgstr "Przepowiednia tarota"
 
 msgid "Tarot Readings"
-msgstr ""
+msgstr "Przepowiednie tarota"
 
 msgid "Perform readings with the tarot deck"
-msgstr ""
+msgstr "Dokonaj przepowiedni z użyciem talii tarota"
 
 msgid "What is this?"
-msgstr ""
+msgstr "Co to jest?"
 
 msgid "Choose two cards to reverse."
-msgstr ""
+msgstr "Wybierz 2 karty do odwrócenia."
 
 msgid "Reverse half of the cards (rounded up)."
-msgstr ""
+msgstr "Odwróć połowę kart (zaokrąglając w górę)."
 
 msgid "Choose one card."
-msgstr ""
+msgstr "Wybierz jedną kartę."
 
 msgid "Draw and reverse cards however you like!"
-msgstr ""
+msgstr "Dobierz i odwróć karty tak, jak lubisz! "
 
 msgid "Reveal"
-msgstr ""
+msgstr "Odkryj"
 
 #, javascript-format
 msgid "${ card.title } - Inverted"
-msgstr ""
+msgstr "${ card.title } - Odwrócona"
 
 msgid "Inverted"
-msgstr ""
+msgstr "Odwrócona"
 
 msgid "Upright"
-msgstr ""
+msgstr "Prosta"
 
 msgid "A single card in a random position."
-msgstr ""
+msgstr "Pojedyncza karta w losowej pozycji."
 
 msgid "Two cards, one upright and one reversed."
-msgstr ""
+msgstr "Dwie karty, jedna w prostej, jedna w odwróconej pozycji."
 
 msgid "Reveal three upright cards, choose two to reverse."
-msgstr ""
+msgstr "Odkryj 3 karty w pozycji prostej, wybierz 2 do odwrócenia."
 
 msgid "A reading for the full campaign."
-msgstr ""
+msgstr "Przepowiednia dla całej kampanii."
 
 msgid "Choose from three upright cards."
-msgstr ""
+msgstr "Wybierz z 3 kart w pozycji prostej."
 
 msgid "A single reversed card."
-msgstr ""
+msgstr "Pojedyncza karta w pozycji odwróconej."
 
 msgid "Draw cards in random positions."
-msgstr ""
+msgstr "Dobierz karty w losowych pozycjach."
 
 msgid "Choose reading type"
-msgstr ""
+msgstr "Wybierz typ przepowiedni"
 
 msgid "You must flip all cards to reveal your fate."
-msgstr ""
+msgstr "Musisz obrócić wszystkie karty by odkryć swój los."
 
 #, javascript-format
-msgid ""
-"Too many card reversed (${ currentReversedCount } / ${ "
-"requiredReversedCount })"
-msgstr ""
+msgid "Too many card reversed (${ currentReversedCount } / ${ requiredReversedCount })"
+msgstr "Za dużo kart odwróconych (${ currentReversedCount } / ${ requiredReversedCount })"
 
 #, javascript-format
-msgid ""
-"Not enough cards reversed (${ currentReversedCount } / ${ "
-"requiredReversedCount })"
-msgstr ""
+msgid "Not enough cards reversed (${ currentReversedCount } / ${ requiredReversedCount })"
+msgstr "Za mało kart odwróconych (${ currentReversedCount } / ${ requiredReversedCount })"
 
 msgid "Reject fate (redraw)"
-msgstr ""
+msgstr "Odrzuć los (powtórz dobieranie)"
 
 msgid "Deck Id"
-msgstr ""
+msgstr "Id talii"
 
 msgid "Symphony of Erich Zann"
 msgstr ""
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
-msgstr ""
+msgstr "${ card.title } (odwrócona)"
 
 msgid "Destiny Tarot Reading"
 msgstr ""
@@ -5847,59 +5869,62 @@ msgid "Lucid Nightmare"
 msgstr ""
 
 msgid "Delete your account"
-msgstr ""
+msgstr "Usuń swoje konto"
 
 msgid "Loading account details..."
-msgstr ""
+msgstr "Ładowanie dane konta..."
 
 msgid ""
 "Are you sure that you want to <b>permanently</b> delete your account? This "
 "<b>cannot be undone</b>."
 msgstr ""
+"Czy na pewno chcesz <b>trwale</b> usunąć swoje konto? Ta operacja <b>nie może być cofnięta</b>."
 
 #, javascript-format
 msgid "You are currently signed in as <b>${ handle }</b>."
-msgstr ""
+msgstr "Jesteś obecnie zalogowany jako <b>${ handle }</b>."
 
 msgid ""
 "The friend's campaign that you have participated in will have your decks "
 "removed:"
 msgid_plural ""
-"The ${ joinedCampaignCount } campaigns from friends that you have "
-"participated in will have your decks removed:"
-msgstr[0] ""
-msgstr[1] ""
+"The ${ joinedCampaignCount } campaigns from friends that you have participated in will "
+"have your decks removed:"
+msgstr[0] "Twoje talie zostaną usunięte z kampanii znajomych, w której brałeś udział:"
+msgstr[1] "Twoje talie zostaną usunięte z ${ joinedCampaignCount } kampanii znajomych, w których brałeś udział:"
+msgstr[2] "Twoje talie zostaną usunięte z ${ joinedCampaignCount } kampanii znajomych, w których brałeś udział:"
 
 msgid "I understand that all data will be deleted permanently."
-msgstr ""
+msgstr "Rozumiem, że wszystkie dane zostaną trwale usunięte"
 
 msgid "Confirm account deletion"
-msgstr ""
+msgstr "Potwierdź usunięcie konta"
 
 msgid "Delete account"
-msgstr ""
+msgstr "Usuń konto"
 
 msgid "If you choose to delete this account, the following data will be removed."
-msgstr ""
+msgstr "Jeśli zdecydujesz się usunąć to konto, następujące dane zostaną usunięte."
 
 msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural ""
-"The ${ createdCampaignCount } campaigns that you have uploaded to this "
-"account will be deleted:"
-msgstr[0] ""
-msgstr[1] ""
+"The ${ createdCampaignCount } campaigns that you have uploaded to this account will be "
+"deleted:"
+msgstr[0] "Kampania przesłana na to konto zostanie usunięta:"
+msgstr[1] "${ createdCampaignCount } kampanie przesłane na to konto zostaną usunięte:"
+msgstr[2] "${ createdCampaignCount } kampanii przesłanych na to konto zostanie usuniętych:"
 
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 msgid "Check for card updates"
-msgstr ""
+msgstr "Aktualizuj dane kart"
 
 msgid "Low memory mode"
-msgstr ""
+msgstr "Tryb małej ilości pamięci"
 
 msgid "Have the app preload fewer cards to help performance on older devices"
-msgstr ""
+msgstr "Wczytuj mniejszą ilość kart, aby zwiększyć wydajność na starszych urządzeniach"
 
 msgid "Choose slot to remove"
 msgstr ""
@@ -5913,48 +5938,54 @@ msgid ""
 "\n"
 "Please check for pending app updates and try again later."
 msgstr ""
+"Przepraszamy, aplikacja nie obsługuje jeszcze przystosowywalnych kart, takich jak ta, ale pracujemy nad tym!\n"
+"\n"
+"Sprawdź oczekujące aktualizacje aplikacji i spróbuj ponownie później."
 
 msgid "Customizations"
-msgstr ""
+msgstr "Przystosowania"
 
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ xp } XP"
+msgstr[1] "${ xp } XP"
+msgstr[2] "${ xp } XP"
 
 msgid "Show selected customizations"
-msgstr ""
+msgstr "Pokaż wybrane przystosowania"
 
 msgid "Show all customizations"
-msgstr ""
+msgstr "Pokaż wszystkie przystosowania"
 
 #, javascript-format
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
-msgstr ""
+msgstr "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 
 msgid "The Scarlet Keys"
-msgstr ""
+msgstr "Szkarłatne Klucze"
 
 #, javascript-format
 msgid "Name ${ quantity } card"
 msgid_plural "Name ${ quantity } cards"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "Named card"
 msgid_plural "Named cards"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "In deck"
-msgstr ""
+msgstr "W talii"
 
 msgid "Select additional cards"
-msgstr ""
+msgstr "Wybierz dodatkowe karty"
 
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
@@ -5964,27 +5995,30 @@ msgid "The Colour Out of Space"
 msgstr ""
 
 msgid "Remove trait"
-msgstr ""
+msgstr "Usuń cechę"
 
 #, javascript-format
 msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wybierz ${ quantity } cechę"
+msgstr[1] "Wybierz ${ quantity } cechy"
+msgstr[2] "Wybierz ${ quantity } cech"
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wybrana cecha"
+msgstr[1] "Wybrane cechy"
+msgstr[2] "Wybrane cechy"
 
 msgid "Add trait"
-msgstr ""
+msgstr "Dodaj cechę"
 
 #, javascript-format
 msgid "${ quantity } copy"
 msgid_plural "${ quantity } copies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ quantity } kopia"
+msgstr[1] "${ quantity } kopie"
+msgstr[2] "${ quantity } kopii"
 
 msgid "Embark"
 msgstr ""
@@ -6089,26 +6123,27 @@ msgid ""
 "${ remainingFreeCards } additional level 0 card may be added to the deck "
 "without spending experience."
 msgid_plural ""
-"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
-"without spending experience."
-msgstr[0] ""
-msgstr[1] ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  without spending "
+"experience."
+msgstr[0] "${ remainingFreeCards } dodatkowa karta o poziomie 0 może zostać dodana to talii bez wydawania punktów doświadczenia."
+msgstr[1] "Do ${ remainingFreeCards } dodatkowych kart o poziomie 0 może zostać dodanych to talii bez wydawania punktów doświadczenia."
+msgstr[2] "Do ${ remainingFreeCards } dodatkowych kart o poziomie 0 może zostać dodanych to talii bez wydawania punktów doświadczenia."
 
 msgid "Difficulty override"
-msgstr ""
+msgstr "Nadpisz poziom trudności"
 
 msgid "Easy / Standard"
-msgstr ""
+msgstr "Łatwy / Standardowy"
 
 msgid "Hard / Expert"
-msgstr ""
+msgstr "Trudny / Ekspercki"
 
 #, javascript-format
 msgid "Difficulty override: ${ msg[difficulty] }"
-msgstr ""
+msgstr "Nadpisany poziom trudności: ${ msg[difficulty] }"
 
 msgid "Select scenario effects difficulty"
-msgstr ""
+msgstr "Wybierz poziom trudności scenariusza"
 
 msgid ""
 "In order to support custom modes like \"Stan-hard\", you may choose to use "
@@ -6117,19 +6152,20 @@ msgid ""
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Wyłączone"
 
 msgid "Use campaign setting"
-msgstr ""
+msgstr "Użyj ustawień kampanii"
 
 #, javascript-format
 msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 15 kart Strażnika i/lub Ocalałego o poziomie 0-1"
 
 msgid ""
 "Note: this deck cannot be uploaded to ArkhamDB because it contains "
@@ -6153,7 +6189,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Cost: ${ card.cost }"
-msgstr ""
+msgstr "Koszt: ${ card.cost }"
 
 msgid "Grants access to previewed player cards"
 msgstr ""
@@ -6162,17 +6198,17 @@ msgid "Key"
 msgstr ""
 
 msgid "Taboo Set"
-msgstr ""
+msgstr "Lista tabu"
 
 #, javascript-format
 msgid "Taboo Set: ${ tabooSetName }"
-msgstr ""
+msgstr "Lista tabu: ${ tabooSetName }"
 
 msgid "Specific taboo set"
 msgstr ""
 
 msgid "Deleteing ArkhamDB accounts"
-msgstr ""
+msgstr "Usuwanie kont ArkhamDB"
 
 msgid ""
 "ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
@@ -6181,12 +6217,17 @@ msgid ""
 "If you would like to delete your account, please contact the webmaster of "
 "ArkhamDB at arkhamdb@kamalisk.com"
 msgstr ""
+"ArkhamDB to serwis niepowiązany z ArkhamCards. Ta aplikacja pozwala tylko na "
+"logowanie się na istniejące konta ArkhamDB.\n"
+"\n"
+"Jeśli chciałbyś usunąć swoje konto, napisz do webmastera ArkhamDB pod "
+"arkhamdb@kamalisk.com"
 
 msgid "Requeset Account Deletion"
-msgstr ""
+msgstr "Poproś o usunięcie konta"
 
 msgid "Delete Account"
-msgstr ""
+msgstr "Usuń konto"
 
 msgid "Choose a skill"
 msgstr ""
@@ -6211,6 +6252,7 @@ msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "Do you want to use the app to randomize choices?"
 msgstr ""
@@ -6223,6 +6265,7 @@ msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "This includes the cost of experience cost of playing the side-story."
 msgstr ""
@@ -6240,13 +6283,13 @@ msgid "Bearer"
 msgstr ""
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 5 kart Poszukiwacza i/lub Ocalałego"
 
 msgid "You cannot have more than 5 Mystic and/or Survivor cards"
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 5 kart Mistyka i/lub Ocalałego"
 
 msgid "Fan-made Investigators"
-msgstr ""
+msgstr "Fanowscy badacze"
 
 msgid "Fortune and Folly"
 msgstr ""
@@ -6588,11 +6631,11 @@ msgstr[2] ""
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } stał się<b>niepoczytalny</b>."
+msgstr "${ investigator.name } stało się <b>niepoczytalne</b>."
 
 msgctxt "nonbinary"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } zostaje <b>zabity</b>."
+msgstr "${ investigator.name } zostaje <b>zabite</b>."
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6662,23 +6705,23 @@ msgstr[2] ""
 
 msgctxt "nonbinary"
 msgid "Alive"
-msgstr "Żywy"
+msgstr "Żywe"
 
 msgctxt "nonbinary"
 msgid "Resigned"
-msgstr "Zrezygnował"
+msgstr "Zrezygnowało"
 
 msgctxt "nonbinary"
 msgid "Defeated: physical trauma"
-msgstr "Pokonany: trauma fizyczna"
+msgstr "Pokonane: trauma fizyczna"
 
 msgctxt "nonbinary"
 msgid "Defeated: mental trauma"
-msgstr "Pokonany: trauma psychiczna"
+msgstr "Pokonane: trauma psychiczna"
 
 msgctxt "nonbinary"
 msgid "Defeated: no trauma"
-msgstr "Pokonany: bez traumy"
+msgstr "Pokonane: bez traumy"
 
 msgctxt "nonbinary"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
@@ -6711,7 +6754,7 @@ msgstr "Trauma psychiczna"
 
 msgctxt "nonbinary"
 msgid "Defeated"
-msgstr "Pokonany"
+msgstr "Pokonane"
 
 msgctxt "Traits"
 msgid "All"
@@ -8385,11 +8428,11 @@ msgstr "Wszystkie"
 
 msgctxt "cost"
 msgid "Even"
-msgstr ""
+msgstr "Parzysty"
 
 msgctxt "cost"
 msgid "Odd"
-msgstr ""
+msgstr "Nieparzysty"
 
 msgctxt "Actions"
 msgid "All"
@@ -8554,7 +8597,7 @@ msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "Scenariusz"
-msgstr[1] "Scenariuszw"
+msgstr[1] "Scenariusze"
 msgstr[2] "Scenariuszy"
 
 msgctxt "header"
@@ -8651,19 +8694,19 @@ msgstr[2] ""
 
 msgctxt "tarot-reading"
 msgid "Chaos"
-msgstr ""
+msgstr "Chaos"
 
 msgctxt "tarot-reading"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "tarot-reading"
 msgid "Choice"
-msgstr ""
+msgstr "Wybór"
 
 msgctxt "tarot-reading"
 msgid "Destiny"
-msgstr ""
+msgstr "Przeznaczenie"
 
 msgctxt "tarot-reading"
 msgid "Observed"
@@ -8675,7 +8718,7 @@ msgstr ""
 
 msgctxt "tarot-reading"
 msgid "Custom"
-msgstr ""
+msgstr "Własna"
 
 msgctxt "trauma"
 msgid "None"
