@@ -24,6 +24,7 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function hasUpgrades(
   code: string,
@@ -99,6 +100,7 @@ function sectionHeaderTitle(type: TypeCodeType | string, count: number): string 
     case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
     case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
     case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
+    case 'key': return c('header').ngettext(msgid`Key`, `Keys`, count);
     default: return type;
   }
 }
@@ -518,6 +520,7 @@ export default function useParsedDeckComponent({
       type: 'upgrade',
       deckId: deckId,
       side: item.mode === 'side',
+      editable: !!editable,
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
@@ -568,7 +571,7 @@ export default function useParsedDeckComponent({
       customizations,
     );
   }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
-
+  const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
@@ -576,20 +579,21 @@ export default function useParsedDeckComponent({
     }
     const count = getCount(item, deckEditsRef?.current?.ignoreDeckLimitSlots);
     const cardCustomizations = customizations?.[card.code];
+    const customizedCard = card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')
     return (
       <CardSearchResult
         key={item.index}
-        card={card.withCustomizations(cardCustomizations)}
+        card={customizedCard}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
-        control={controlForCard(item, card, count)}
+        control={controlForCard(item, customizedCard, count)}
         faded={count === 0}
         noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
         noSidePadding
       />
     );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
+  }, [listSeperator, showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
 
   if (!data || !data.length) {
     return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];

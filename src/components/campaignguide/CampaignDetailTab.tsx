@@ -1,9 +1,10 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { InteractionManager, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 
+import { iconsMap } from '@app/NavIcons';
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -29,9 +30,10 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import { useLatestDecksCards } from '@components/core/hooks';
 import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
+import { CampaignMapProps } from './CampaignMapView';
+import COLORS from '@styles/colors';
 
-const SHOW_WEAKNESS = false;
-const SHOW_TAROT = false;
+const SHOW_WEAKNESS = true;
 
 interface Props {
   componentId: string;
@@ -73,7 +75,7 @@ export default function CampaignDetailTab({
   }, [campaignState]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error: arkhamDbError, reLogin } })
 
-  const [saving, saveDeckError, saveDeckUpgrade] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
+  const [saving, , saveDeckUpgrade, saveDeck] = useDeckUpgradeAction<StepId>(deckActions, deckUpgradeCompleted);
 
   const showAddInvestigator = useCallback(() => {
     campaignState.showChooseDeck();
@@ -148,6 +150,54 @@ export default function CampaignDetailTab({
       },
     })
   }, [componentId, campaignId]);
+  const campaignLog = processedCampaign.campaignLog;
+  const campaignMap = campaignGuide.campaignMap();
+  const showCampaignMap = useCallback(() => {
+    if (campaignMap) {
+      const investigators = campaignLog.investigatorCodes(false);
+      const hasFast = !!find(investigators, code => campaignLog.hasCard(code, campaignMap.fast_code));
+      const passProps: CampaignMapProps = {
+        campaignId,
+        campaignMap,
+        currentLocation: campaignLog.campaignData.scarlet.location,
+        currentTime: campaignLog.count('time', '$count'),
+        visitedLocations: campaignLog.campaignData.scarlet.visitedLocations,
+        unlockedLocations: campaignLog.campaignData.scarlet.unlockedLocations,
+        unlockedDossiers: campaignLog.campaignData.scarlet.unlockedDossiers,
+        hasFast,
+      };
+      Navigation.showModal<CampaignMapProps>({
+        stack: {
+          children: [{
+            component: {
+              name: 'Campaign.Map',
+              passProps,
+              options: {
+                topBar: {
+                  title: {
+                    text: t`Map`,
+                  },
+                  leftButtons: [{
+                    icon: iconsMap.dismiss,
+                    id: 'close',
+                    color: COLORS.M,
+                    accessibilityLabel: t`Close`,
+                  }],
+                },
+                layout: {
+                  backgroundColor: '0x8A9284',
+                },
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+                modalTransitionStyle: OptionsModalTransitionStyle.crossDissolve,
+              },
+            },
+          }],
+        },
+      });
+    }
+  }, [componentId, campaignMap, campaignLog]);
 
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
     componentId,
@@ -192,8 +242,12 @@ export default function CampaignDetailTab({
     onValueChange: onTarotPress,
   })
 
-  const latestDecks = campaign.latestDecks();
-  const [cards] = useLatestDecksCards(latestDecks, latestDecks.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+  const latestDecksList = campaign.latestDecks();
+  const [cards] = useLatestDecksCards(latestDecksList, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
+  const [showMap, embarking] = useMemo(() => [
+    !!campaignGuide.campaignMap() && !!processedCampaign.campaignLog.campaignData.scarlet.showMap,
+    !!processedCampaign.campaignLog.campaignData.scarlet.embark,
+  ], [campaignGuide, processedCampaign.campaignLog]);
   return (
     <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
@@ -212,32 +266,23 @@ export default function CampaignDetailTab({
             onPress={showCampaignLog}
             bottomMargin={s}
           />
-          { campaignGuide.achievements().length > 0 && (
-            <DeckButton
-              icon="finish"
-              title={t`Achievements`}
-              detail={t`Note campaign achievements`}
-              color="light_gray"
-              onPress={showCampaignAchievements}
-              bottomMargin={s}
-            />
-          ) }
           <DeckButton
             icon="chaos_bag"
             title={t`Chaos Bag`}
             detail={chaosBagDisabled ? t`Complete campaign setup` : t`Review and draw tokens`}
             disabled={chaosBagDisabled}
-            color="light_gray"
+            color={chaosBagDisabled ? 'light_gray_outline' : 'light_gray'}
             onPress={showChaosBag}
             bottomMargin={s}
           />
-          { SHOW_WEAKNESS && (
+          { showMap && (
             <DeckButton
-              icon="weakness"
-              title={t`Weakness Set`}
-              detail={t`Review and draw weaknesses`}
-              color="light_gray"
-              onPress={showWeaknessSet}
+              icon="map"
+              title={t`Map`}
+              detail={embarking ? t`Use the embark button below` : t`Review the world map`}
+              disabled={embarking}
+              color={embarking ? 'light_gray_outline' : 'light_gray'}
+              onPress={showCampaignMap}
               bottomMargin={s}
             />
           ) }
@@ -261,25 +306,49 @@ export default function CampaignDetailTab({
             showCountDialog={showCountDialog}
             actions={updateCampaignActions}
             saveDeckUpgrade={saveDeckUpgrade}
+            saveDeck={saveDeck}
             savingDeckUpgrade={saving}
           />
         </View>
-
-        { SHOW_TAROT && (
-          <View style={[space.paddingSideS, space.paddingBottomS]}>
+        <View style={[space.paddingSideS, space.paddingBottomS]}>
+          { SHOW_WEAKNESS && (
             <DeckButton
-              icon="special_cards"
-              title={t`Tarot Readings`}
-              detail={t`Perform readings with the tarot deck`}
+              icon="weakness"
+              title={t`Weakness Set`}
+              detail={t`Review and draw weaknesses`}
               color="light_gray"
-              onPress={showTarotDialog}
+              onPress={showWeaknessSet}
               bottomMargin={s}
             />
-          </View>
-        ) }
+          ) }
+          { campaignGuide.achievements().length > 0 && (
+            <DeckButton
+              icon="finish"
+              title={t`Achievements`}
+              detail={t`Note campaign achievements`}
+              color="light_gray"
+              onPress={showCampaignAchievements}
+              bottomMargin={s}
+            />
+          ) }
+          <DeckButton
+            icon="special_cards"
+            title={t`Tarot Readings`}
+            detail={t`Perform readings with the tarot deck`}
+            color="light_gray"
+            onPress={showTarotDialog}
+            bottomMargin={s}
+          />
+        </View>
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            <DeckOverlapComponent componentId={componentId} cards={cards} />
+            <DeckOverlapComponent
+              componentId={componentId}
+              cards={cards}
+              campaign={campaign}
+              latestDecks={latestDecksList}
+              campaignInvestigators={campaignInvestigators}
+            />
           </View>
         ) }
         { footerButtons }

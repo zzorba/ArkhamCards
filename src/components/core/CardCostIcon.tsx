@@ -3,6 +3,7 @@ import {
   Text,
   StyleSheet,
   View,
+  Platform,
 } from 'react-native';
 import { t } from 'ttag';
 
@@ -88,7 +89,7 @@ function CardCostIcon({ card, inverted, linked }: Props) {
       </View>
       <View style={[styles.levelIcon, style, styles.cost]}>
         { card.type_code === 'skill' ? (
-          <View style={[styles.factionIcon, card.factionCode() === 'neutral' ? { marginBottom: 0 } : {}]}>
+          <View style={[styles.factionIcon, card.factionCode() === 'neutral' || Platform.OS === 'android' ? { marginBottom: 0 } : {}]}>
             <ArkhamIcon
               name={CardCostIcon.factionIcon(card)}
               color={inverted ? 'white' : colors.background}

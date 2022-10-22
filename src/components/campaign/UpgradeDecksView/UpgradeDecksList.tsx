@@ -21,6 +21,7 @@ import { useDeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   lang: string;
@@ -55,6 +56,7 @@ export default function UpgradeDecksList({
 }: Props) {
   const { typography } = useContext(StyleContext);
   const [saved, , setSaved] = useToggles({});
+  const { listSeperator } = useContext(LanguageContext);
   const renderDetails = useCallback((
     deck: Deck,
     cards: CardsMap,
@@ -69,7 +71,7 @@ export default function UpgradeDecksList({
       return null;
     }
     if (!originalDeckUuids.has(getDeckId(deck).uuid)) {
-      const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+      const parsedDeck = parseBasicDeck(deck, cards, listSeperator, previousDeck);
       if (!parsedDeck?.deck) {
         return null;
       }
@@ -91,7 +93,7 @@ export default function UpgradeDecksList({
         onPress={showDeckUpgradeDialog}
       />
     );
-  }, [campaign.investigatorData, originalDeckUuids, typography, showDeckUpgradeDialog]);
+  }, [campaign.investigatorData, originalDeckUuids, typography, listSeperator, showDeckUpgradeDialog]);
 
   const saveXp = useCallback((investigator: Card, xp: number) => {
     updateInvestigatorXp(investigator, xp);

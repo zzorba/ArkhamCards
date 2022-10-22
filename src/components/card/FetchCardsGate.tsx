@@ -1,16 +1,18 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
   View,
   Text,
   ActivityIndicator,
+  ViewStyle,
 } from 'react-native';
+import Animated, { useSharedValue, SharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
+import BasicButton from '@components/core/BasicButton';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
@@ -35,12 +37,18 @@ interface Props {
   children: JSX.Element;
 }
 
-function ProgressBar({ progress }: { progress: number }) {
+function ProgressBar({ progress }: { progress: SharedValue<number> }) {
   const { colors, width } = useContext(StyleContext);
+  const style = useAnimatedStyle<ViewStyle>(() => {
+    const size = width * 0.6 * (progress.value || 0);
+    return {
+      width: size,
+    };
+  }, [width])
   return (
     <View style={[space.marginTopM, { width: width * 0.6 + 2, borderColor: colors.lightText }, styles.progressBarWrapper, styles.progressBar]}>
-      <View style={[styles.progressBar, {
-        width: width * 0.6 * (progress || 0),
+      <Animated.View style={[styles.progressBar, style, {
+        width: 1,
         height: 13,
         backgroundColor: colors.lightText,
         position: 'absolute',
@@ -62,7 +70,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const fetchRequest = useSelector((state: AppState) => state.cards.fetch);
   const { lang: choiceLang } = useContext(LanguageContext);
   const useSystemLang = currentCardLang === 'system';
-  const [fetchProgress, setFetchProgress] = useState(0);
+  const fetchProgress = useSharedValue(0);
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
   const error = useSelector((state: AppState) => state.packs.error || state.cards.error || undefined);
   const dateFetched = useSelector((state: AppState) => state.packs.dateFetched || undefined);
@@ -74,14 +82,21 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const { anonClient } = useContext(ApolloClientContext);
 
   const doFetch = useCallback(() => {
-    dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang, setFetchProgress));
-  }, [dispatch, setFetchProgress, db, anonClient, choiceLang, useSystemLang]);
+    fetchProgress.value = 0;
+    dispatch(fetchCards(db, anonClient, choiceLang, useSystemLang ? 'system' : choiceLang, (progress: number, estimateMillis?: number) => {
+      fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
+    }));
+  }, [dispatch, db, anonClient, choiceLang, useSystemLang, fetchProgress]);
 
   useEffect(() => {
     if (fetchRequest && promptForUpdate) {
-      dispatch(fetchCards(db, anonClient, fetchRequest.card_lang, fetchRequest.choice_lang, setFetchProgress));
+      fetchProgress.value = 0;
+      dispatch(fetchCards(db, anonClient, fetchRequest.card_lang, fetchRequest.choice_lang, (progress: number, estimateMillis?: number) => {
+        fetchProgress.value = withTiming(progress, estimateMillis ? { duration: estimateMillis } : undefined);
+      }));
     }
-  }, [dispatch, setFetchProgress, promptForUpdate, fetchRequest, db, anonClient]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, promptForUpdate, fetchRequest, db, anonClient]);
 
   const ignoreUpdate = useCallback(() => {
     dispatch(dismissUpdatePrompt());

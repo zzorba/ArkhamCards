@@ -4,7 +4,6 @@ import { t } from 'ttag';
 
 import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 
-export const ENABLE_SIDE_DECK = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA = true;
@@ -23,7 +22,8 @@ export type TypeCodeType =
   'treachery' |
   'location' |
   'investigator' |
-  'scenario';
+  'scenario' |
+  'key';
 
 export type SlotCodeType =
   'hand' |
@@ -34,6 +34,25 @@ export type SlotCodeType =
   'body' |
   'ally' |
   'tarot';
+
+export function asSlotCodeType(val: string | undefined): SlotCodeType | undefined {
+  if (!val) {
+    return undefined;
+  }
+  switch (val) {
+    case 'hand':
+    case 'hand x2':
+    case 'arcane':
+    case 'arcane x2':
+    case 'accessory':
+    case 'body':
+    case 'ally':
+    case 'tarot':
+      return val;
+    default:
+      return undefined;
+  }
+}
 
 export const SLOTS: SlotCodeType[] = [
   'hand',
@@ -269,6 +288,9 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
+export const PRECIOUS_MEMENTO_FORMER_CODE = '08114'
+export const PRECIOUS_MEMENTO_FUTURE_CODE = '08115'
+export const RAVEN_QUILL_CODE = '09042';
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';
 export const SHREWD_ANALYSIS_CODE = '04106';
@@ -285,6 +307,7 @@ export const ACE_OF_RODS_CODE = '05040';
 export const FORCED_LEARNING_CODE = '08031'; // Deck size +15
 export const UNDERWORLD_SUPPORT_CODE = '08046';
 export const DOWN_THE_RABBIT_HOLE_CODE = '08059';
+export const UNDERWORLD_MARKET_CODE = '09077';
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

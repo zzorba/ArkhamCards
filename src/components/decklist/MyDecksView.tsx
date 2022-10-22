@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { find, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
-import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import Card from '@data/types/Card';
@@ -10,7 +9,6 @@ import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import { getMyDecksState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
@@ -20,11 +18,12 @@ import { useNavigationButtonPressed, useSettingFlag } from '@components/core/hoo
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 
 
 function MyDecksView({ componentId }: NavigationProps) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const { myDecks } = useSelector(getMyDecksState);
+  const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       Navigation.showModal({
@@ -56,48 +55,34 @@ function MyDecksView({ componentId }: NavigationProps) {
   const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 
   const [searchOptionControls, searchOptionsHeight] = useMemo(() => {
-    const hasLocalDeck = !!find(myDecks, deckId => deckId.id.local);
-    const hasOnlineDeck = !!find(myDecks, deckId => !deckId.id.local);
-    const hasNonCampaignDeck = !!find(myDecks, deckId => !deckId.campaign_id);
-    const hasCampaignDeck = !!find(myDecks, deckId => deckId.campaign_id);
-    const hideLocalDeckToggle = (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck));
-    const hideCampaignDeckToggle = (!hideCampaignDecks && !(hasCampaignDeck && hasNonCampaignDeck));
-    if (hideLocalDeckToggle && hideCampaignDeckToggle) {
-      // need to have both to show the toggle.
-      return [null, 0];
-    }
     return [
       (
         <View style={[styles.column, space.paddingBottomS]} key="controls">
-          { !hideLocalDeckToggle && (
+          { !!arkhamDb && (
             <View style={styles.row}>
               <Text style={[typography.small, styles.searchOption]}>
                 { t`Hide ArkhamDB decks` }
               </Text>
               <ArkhamSwitch
-                useGestureHandler
                 value={localDecksOnly}
                 onValueChange={toggleLocalDecksOnly}
               />
             </View>
           ) }
-          { !hideCampaignDeckToggle && (
-            <View style={styles.row}>
-              <Text style={[typography.small, styles.searchOption]}>
-                { t`Hide campaign decks` }
-              </Text>
-              <ArkhamSwitch
-                useGestureHandler
-                value={hideCampaignDecks}
-                onValueChange={toggleHideCampaignDecks}
-              />
-            </View>
-          ) }
+          <View style={styles.row}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide campaign decks` }
+            </Text>
+            <ArkhamSwitch
+              value={hideCampaignDecks}
+              onValueChange={toggleHideCampaignDecks}
+            />
+          </View>
         </View>
       ),
-      20 + 12 + s + (fontScale * 20 + 8) * ((hideCampaignDeckToggle || hideLocalDeckToggle) ? 1 : 2),
+      20 + 12 + s + (fontScale * 20 + 8) * (arkhamDb ? 2 : 1),
     ];
-  }, [myDecks, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
+  }, [arkhamDb, localDecksOnly, typography, toggleLocalDecksOnly, toggleHideCampaignDecks, hideCampaignDecks, fontScale]);
 
   const customFooter = useMemo(() => {
     return (

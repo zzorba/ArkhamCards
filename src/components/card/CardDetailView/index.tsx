@@ -25,6 +25,7 @@ import useSingleCard from '../useSingleCard';
 import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
 import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -151,8 +152,9 @@ function CardDetailView({
   }, componentId, [componentId, id, showInvestigatorCards]);
   const [originalCard, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
+  const { listSeperator } = useContext(LanguageContext);
   const customizationChoices = customizations[id];
-  const card = useMemo(() => originalCard?.withCustomizations(customizationChoices), [originalCard, customizationChoices]);
+  const card = useMemo(() => originalCard?.withCustomizations(listSeperator, customizationChoices, 'detail'), [listSeperator, originalCard, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
     if (card) {

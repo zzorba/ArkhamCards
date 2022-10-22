@@ -25,7 +25,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { SpecialXp } from '@data/scenario/types';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
-import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
@@ -39,6 +38,7 @@ import InputCounterRow from '../InputCounterRow';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { useAppDispatch } from '@app/store';
+import useTraumaSection from './useTraumaSection';
 
 interface Props {
   componentId: string;
@@ -285,26 +285,6 @@ function UpgradeDeckRow({
     return earnedXp + ((choices.xp && choices.xp[0]) || 0);
   }, [xpAdjust, choices, earnedXp, editable]);
 
-  const physicalTrauma: number = useMemo(() => {
-    if (choices === undefined) {
-      if (!editable) {
-        return 0;
-      }
-      return physicalAdjust;
-    }
-    return (choices.physical && choices.physical[0]) || 0;
-  }, [choices, physicalAdjust, editable]);
-
-  const mentalTrauma: number = useMemo(() => {
-    if (choices === undefined) {
-      if (!editable) {
-        return 0;
-      }
-      return mentalAdjust;
-    }
-    return (choices.mental && choices.mental[0]) || 0;
-  }, [choices, mentalAdjust, editable]);
-
   const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
   const storyCountsForDeck = useMemo(() => {
     if (!deck) {
@@ -388,10 +368,6 @@ function UpgradeDeckRow({
       )
     );
   }, [onCardPress]);
-  const [health, sanity] = useMemo(() => {
-    const traumaAndCardData = campaignLog.traumaAndCardData(investigator.code);
-    return [investigator.getHealth(traumaAndCardData), investigator.getSanity(traumaAndCardData)];
-  }, [campaignLog, investigator]);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
   const allStoryAssetCodes = useMemo(() => flatMap(storyAssets, (count, code) => count > 0 ? code : []), [storyAssets]);
   const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
@@ -446,46 +422,7 @@ function UpgradeDeckRow({
       </View>
     );
   }, [typography, xp, colors, editable, xpAdjust, incXp, decXp, choices, saving]);
-  const baseTrauma = useMemo(() => campaignLog.baseTrauma(investigator.code), [campaignLog, investigator]);
-  const traumaDelta = useMemo(() => campaignLog.traumaChanges(investigator.code), [campaignLog, investigator]);
-
-  const traumaSection = useMemo(() => {
-    const physical = (traumaDelta.physical || 0) + physicalTrauma;
-    const mental = (traumaDelta.mental || 0) + mentalTrauma;
-    const totalPhysical = (baseTrauma.physical || 0) + physical;
-    const totalMental = (baseTrauma.mental || 0) + mental;
-    const locked = (choices !== undefined) || !editable;
-    return (
-      <>
-        <InputCounterRow
-          editable={!locked}
-          bottomBorder
-          disabled={saving}
-          icon={<View style={{ paddingLeft: 2, paddingRight: 1 }}><HealthSanityIcon type="health" size={24} /></View>}
-          title={t`Physical`}
-          count={physical}
-          total={totalPhysical}
-          inc={incPhysical}
-          dec={decPhysical}
-          max={health}
-        />
-        <InputCounterRow
-          editable={!locked}
-          disabled={saving}
-          icon={<View style={space.paddingRightXs}><HealthSanityIcon type="sanity" size={20} /></View>}
-          title={t`Mental`}
-          count={mental}
-          total={totalMental}
-          inc={incMental}
-          dec={decMental}
-          max={sanity}
-        />
-      </>
-    );
-  }, [incMental, decMental, incPhysical, decPhysical, editable, saving,
-    health, sanity, baseTrauma, choices, physicalTrauma, mentalTrauma, traumaDelta]);
-
-
+  const traumaSection = useTraumaSection({ campaignLog, investigator, saving, editable, choices, physicalAdjust, incPhysical, decPhysical, mentalAdjust, incMental, decMental });
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState, investigator]);

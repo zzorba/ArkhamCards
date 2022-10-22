@@ -1,25 +1,26 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
-import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
+import React, { useCallback, useContext, useState } from 'react';
+import { Pressable, StyleSheet, TouchableOpacityProps, View } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import { ThemeColors } from '@styles/theme';
+import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
+import { useEffectUpdate } from './hooks';
 
 interface OwnProps {
-  useGestureHandler?: boolean;
   value: boolean;
   onValueChange?: (checked: boolean) => void;
   accessibilityLabel?: string;
   large?: boolean;
   color?: 'light' | 'dark';
   circleColor?: 'light'
+  type?: 'radio';
   disabledColor?: string
 }
 
-type Props = OwnProps & Omit<TouchableOpacityProps, 'onValueChange'>;
+type Props = OwnProps & Omit<TouchableOpacityProps, 'onValueChange' | 'style'>;
 function getCircleColor(value: boolean, color: 'light' | 'dark' | undefined, circleColor: 'light' | undefined, colors: ThemeColors) {
   switch (color) {
     case 'light':
@@ -40,66 +41,77 @@ function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors)
       return colors.M;
   }
 }
-export default function ArkhamSwitch({ useGestureHandler, disabledColor, value, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
+export default function ArkhamSwitch({ type, disabledColor, value: propValue, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
   const { colors } = useContext(StyleContext);
-
+  const [value, setValue] = useState(propValue);
   const onPress = useCallback(() => {
+    if (type === 'radio' && value) {
+      // Ignore it
+      return;
+    }
     if (onValueChange) {
       ReactNativeHapticFeedback.trigger(!value ? 'impactMedium' : 'impactLight');
-      onValueChange(!value);
+      setValue(!value);
+      setTimeout(() => onValueChange(!value), 0);
     }
-  }, [value, onValueChange]);
+  }, [value, type, onValueChange]);
 
   const theCircleColor = getCircleColor(value, color, circleColor, colors);
   const checkColor = getCheckColor(color, colors);
-  const content = useMemo(() => {
-    return (
-      <View style={[styles.icon, large ? styles.largeIcon : undefined]}>
-        <AppIcon
-          size={large ? 34 : 28}
-          name={large ? 'circle-thin' : 'check-circle'}
-          color={disabled ? (disabledColor || colors.L20) : theCircleColor}
-        />
-        { !!value && (
-          <View style={large ? styles.largeCheck : styles.check}>
+  const scale = useSharedValue(1);
+
+  useEffectUpdate(() => {
+    if (propValue !== value) {
+      setValue(propValue);
+      if (propValue) {
+        scale.value = withSequence(
+          withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
+          withTiming(1, { duration: 100, easing: Easing.elastic(1) })
+        );
+      }
+    }
+  }, [propValue]);
+  const onPressIn = useCallback(() => {
+    cancelAnimation(scale);
+    scale.value = withSequence(
+      withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
+      withTiming(1, { duration: 100, easing: Easing.elastic(1) })
+    );
+  }, [scale]);
+  const animStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+    };
+  });
+  return (
+    <Pressable
+      disabled={disabled || !onValueChange || (type === 'radio' && value)}
+      onPressIn={onPressIn}
+      onPress={onPress}
+      unstable_pressDelay={50}
+      hitSlop={4}
+      accessibilityRole="switch"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ checked: value }}
+      {...props}
+    >
+      <Animated.View style={animStyle}>
+        <View style={[styles.icon, large ? styles.largeIcon : undefined]} opacity={disabled && !disabledColor ? 0.7 : 1}>
+          <AppIcon
+            size={large ? 34 : 28}
+            name={large ? 'circle-thin' : 'check-circle'}
+            color={disabled ? (disabledColor || colors.L20) : theCircleColor}
+          />
+          <View style={large ? styles.largeCheck : styles.check} opacity={!!value ? 1 : 0}>
             <AppIcon
               size={large ? 26 : 20}
               name="check"
               color={disabled ? (disabledColor || colors.L20) : checkColor}
             />
           </View>
-        )}
-      </View>
-    );
-  }, [disabled, large, value, disabledColor, colors, theCircleColor, checkColor]);
-  if (!onValueChange) {
-    return content;
-  }
-  if (useGestureHandler) {
-    return (
-      <GestureHandlerTouchableOpacity
-        onPress={onPress}
-        accessibilityRole="switch"
-        accessibilityLabel={accessibilityLabel}
-        accessibilityState={{ checked: value }}
-        disabled={disabled}
-        {...props}
-      >
-        { content }
-      </GestureHandlerTouchableOpacity>
-    );
-  }
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      accessibilityRole="switch"
-      accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ checked: value }}
-      disabled={disabled}
-      {...props}
-    >
-      { content }
-    </TouchableOpacity>
+        </View>
+      </Animated.View>
+    </Pressable>
   );
 }
 

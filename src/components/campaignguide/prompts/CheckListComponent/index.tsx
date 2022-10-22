@@ -20,8 +20,9 @@ export interface ListItem {
   name: string;
   description?: string;
   color?: string;
+  trauma?: boolean;
   investigator?: Card;
-  investigatorButton?: React.ReactNode;
+  investigatorButton?: React.ReactElement;
 }
 
 export interface CheckListComponentProps {
@@ -43,13 +44,14 @@ export interface CheckListComponentProps {
   extraSave?: () => void;
   onSecondaryChoice?: (code: string) => void;
   syncSelection?: (selection: Toggles) => void;
+  border?: boolean;
 }
 
 interface Props extends CheckListComponentProps {
   items: ListItem[];
 }
 
-export default function CheckListComponent({ extraSave, id, choiceId, defaultState, bulletType, text, checkText, confirmText, fixedMin, min, max, button, loading, items, extraSelected, titleNode, onSecondaryChoice, syncSelection }: Props) {
+export default function CheckListComponent({ extraSave, border, id, choiceId, defaultState, bulletType, text, checkText, confirmText, fixedMin, min, max, button, loading, items, extraSelected, titleNode, onSecondaryChoice, syncSelection }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const [selectedChoice, , onChoiceToggle, ,removeToggle] = useToggles(
@@ -121,6 +123,7 @@ export default function CheckListComponent({ extraSave, id, choiceId, defaultSta
         disabledText={disabledText}
         buttons={!hasDecision && !!button ? button : undefined}
         onSubmit={save}
+        noDivider={border}
       >
         { loading ? (
           <View style={[styles.loadingRow, borderStyle]}>

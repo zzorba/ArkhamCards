@@ -19,10 +19,9 @@ import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableShrink } from '@components/core/Touchables';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
@@ -105,7 +104,7 @@ function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, sh
   if (!children) {
     return (
       <View style={[space.paddingSideS, space.paddingVerticalXs]}>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableShrink onPress={onPress}>
           <CompactInvestigatorRow
             investigator={investigator}
             width={width - s * 2}
@@ -113,13 +112,13 @@ function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, sh
             { investigator.alternate_of_code ? <AppIcon color="#FFFFFF" name="parallel" size={36} /> : null }
             { showFaction ? <FactionIcon defaultColor="white" faction={investigator.factionCode()} size={32} /> : undefined }
           </CompactInvestigatorRow>
-        </TouchableOpacity>
+        </TouchableShrink>
       </View>
     );
   }
   return (
     <View style={[space.paddingSideS, space.paddingVerticalXs]}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableShrink onPress={onPress}>
         <AnimatedCompactInvestigatorRow
           disabled
           open
@@ -128,7 +127,7 @@ function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, sh
         >
           { children }
         </AnimatedCompactInvestigatorRow>
-      </TouchableOpacity>
+      </TouchableShrink>
     </View>
   );
 }
@@ -176,9 +175,6 @@ export default function InvestigatorsListComponent({
       investigators,
       i => {
         if (!i) {
-          return false;
-        }
-        if (i.code === CUSTOM_INVESTIGATOR) {
           return false;
         }
         if (i.mythos_card) {
@@ -267,19 +263,6 @@ export default function InvestigatorsListComponent({
         // @ts-ignore
         currentBucket.nonCollectionCount = nonCollectionCards.length;
         nonCollectionCards = [];
-      }
-    }
-    if (!hideCustomInvestigator) {
-      const customInvestigator = find(investigators, i => i.code === CUSTOM_INVESTIGATOR);
-      if (customInvestigator) {
-        results.push({
-          type: 'header',
-          title: c('investigator').t`Custom`,
-        });
-        results.push({
-          type: 'card',
-          card: customInvestigator,
-        });
       }
     }
     return results;

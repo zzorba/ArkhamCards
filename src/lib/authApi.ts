@@ -3,7 +3,6 @@ import { flatMap, keys, map, omit } from 'lodash';
 
 import { getAccessToken } from './auth';
 import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
-import { ENABLE_SIDE_DECK } from '@app_constants';
 
 interface Params {
   [key: string]: string | number;
@@ -20,7 +19,11 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
     deck.ignoreDeckLimitSlots = {};
   }
   if (deck.meta && typeof(deck.meta) === 'string') {
-    deck.meta = JSON.parse(deck.meta);
+    try {
+      deck.meta = JSON.parse(deck.meta);
+    } catch (e) {
+      deck.meta = {};
+    }
   }
   if (apiDeck.previous_deck) {
     deck.previousDeckId = {
@@ -145,19 +148,24 @@ export async function newCustomDeck(
   meta?: DeckMeta,
   description?: string
 ) {
-  const deck = await newDeck(investigator, name, tabooSetId);
-  return await saveDeck(
-    (deck as ArkhamDbDeck).id,
-    deck.name,
-    slots,
-    ignoreDeckLimitSlots,
-    problem || '',
-    0,
-    0,
-    tabooSetId,
-    meta,
-    description
-  );
+  try {
+    const deck = await newDeck(investigator, name, tabooSetId);
+    return await saveDeck(
+      (deck as ArkhamDbDeck).id,
+      deck.name,
+      slots,
+      ignoreDeckLimitSlots,
+      problem || '',
+      0,
+      0,
+      tabooSetId,
+      meta,
+      description
+    );
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
 }
 
 export async function newDeck(investigator: string, name: string, tabooSetId?: number): Promise<ArkhamDbDeck> {
@@ -180,12 +188,16 @@ export async function newDeck(investigator: string, name: string, tabooSetId?: n
     },
     body: encodeParams(params),
   });
-
-  const json = await response.json();
-  if (!json.success) {
-    throw new Error(json.msg);
+  try {
+    const json = await response.json();
+    if (!json.success) {
+      throw new Error(json.msg);
+    }
+    return await loadDeck(json.msg);
+  } catch (e) {
+    console.log(e);
+    throw e;
   }
-  return await loadDeck(json.msg);
 }
 
 export async function saveDeck(
@@ -225,7 +237,7 @@ export async function saveDeck(
   if (description_md !== undefined) {
     bodyParams.description_md = description_md;
   }
-  if (ENABLE_SIDE_DECK && side !== undefined) {
+  if (side !== undefined) {
     bodyParams.side = JSON.stringify(side);
   }
   const body = encodeParams(bodyParams);

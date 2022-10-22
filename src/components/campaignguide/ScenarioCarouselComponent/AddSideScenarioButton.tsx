@@ -1,9 +1,10 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, findLast, findLastIndex } from 'lodash';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
 import { ShowAlert } from '@components/deck/dialogs';
@@ -11,6 +12,7 @@ import CampaignGuideContext from '../CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space, { m } from '@styles/space';
+import { lessOrEq } from 'react-native-reanimated';
 
 interface Props {
   componentId: string;
@@ -26,6 +28,9 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
       processedCampaign.scenarios,
       scenario => scenario.type === 'completed'
     );
+    if (campaignGuide.campaignMap()) {
+      return false;
+    }
     if (processedCampaign.campaignLog.campaignData.result === 'lose') {
       return false;
     }

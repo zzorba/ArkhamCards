@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
+import { TouchableQuickSize, TouchableShrink } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import space, { isTablet, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -17,7 +18,7 @@ interface Props {
   code: string;
   investigator?: Card;
   trauma?: boolean;
-  investigatorButton?: React.ReactNode;
+  investigatorButton?: React.ReactElement;
   name: string;
   description?: string;
   color?: string;
@@ -40,7 +41,7 @@ function InvesigatorCheckListItemComponent({
 }: {
   code: string;
   investigator: Card;
-  investigatorButton?: React.ReactNode;
+  investigatorButton?: React.ReactElement;
   trauma?: boolean;
   selected: boolean;
   toggle: (value: boolean) => void;
@@ -58,20 +59,18 @@ function InvesigatorCheckListItemComponent({
       return null;
     }
     return (editable ? (
-      <TouchableOpacity
-        style={[space.paddingXs, trauma ? space.paddingLeftS : space.paddingLeftM]}
-        onPress={onSecondaryPress}
-      >
-        { investigatorButton }
-      </TouchableOpacity>
+      <View style={[space.paddingXs, trauma ? space.paddingLeftS : space.paddingLeftM]}>
+        <TouchableQuickSize activeScale={1.1} onPress={onSecondaryPress}>
+          { investigatorButton }
+        </TouchableQuickSize>
+      </View>
     ) : investigatorButton);
   }, [onSecondaryChoice, onSecondaryPress, editable, selected, investigatorButton, trauma]);
   const content = useMemo(() => {
     const switchContent = (editable || selected) && (
       <View style={styles.switch}>
         <ArkhamSwitch
-          onValueChange={toggle}
-          disabled={!editable}
+          onValueChange={editable ? toggle : undefined}
           disabledColor={COLORS.L15}
           value={selected}
           large
@@ -96,11 +95,9 @@ function InvesigatorCheckListItemComponent({
   }, [secondaryButton, width, onSecondaryChoice, editable, toggle, yithian, selected, investigator, trauma, traumaAndCardData]);
   return (
     <View style={space.paddingBottomXs}>
-      { editable ? (
-        <TouchableOpacity onPress={onPress}>
-          { content }
-        </TouchableOpacity>
-      ) : content }
+      <TouchableShrink onPress={onPress} disabled={!editable}>
+        { content }
+      </TouchableShrink>
     </View>
   );
 }
@@ -125,24 +122,22 @@ export default function CheckListItemComponent({
   }, [onChoiceToggle, code]);
   const content = useMemo(() => {
     return (
-      <View style={styles.row}>
-        { editable ? (
-          <ArkhamSwitch
-            value={selected}
-            large
-          />
-        ) : (
-          <ArkhamSwitch value large />
-        ) }
-        <View style={[styles.column, space.paddingLeftS]}>
+      <View style={[styles.row, { flex: 1 }]}>
+        <ArkhamSwitch
+          disabledColor={colors.D30}
+          color="dark"
+          value={!editable || selected}
+          large
+        />
+        <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
           { name.startsWith('[') && name.endsWith(']') ? (
-            <ArkhamIcon name={name.substr(1, name.length - 2)} color={colors.D30} size={36} />
+            <ArkhamIcon name={name.substring(1, name.length - 2)} color={colors.D30} size={36} />
           ) : (
             <Text style={[
               typography.mediumGameFont,
               styles.nameText,
               color ? { color: 'white' } : {},
-            ]}>
+            ]} numberOfLines={2} ellipsizeMode="tail">
               { name }
             </Text>
           ) }
@@ -185,7 +180,9 @@ export default function CheckListItemComponent({
       showBorder ? borderStyle : undefined,
       showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
     ]}>
-      { editable ? <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity> : content }
+      <TouchableShrink onPress={onPress} disabled={!editable} style={{ flex: 1 }}>
+        {content}
+      </TouchableShrink>
     </View>
   );
 }

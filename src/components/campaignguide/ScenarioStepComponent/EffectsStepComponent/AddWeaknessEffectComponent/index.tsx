@@ -64,6 +64,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
                 id: card.code,
                 code: card.code,
                 text: card.name,
+                description: card.subname,
               };
             }
           ),
@@ -140,6 +141,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
       <InvestigatorSelectorWrapper
         id={id}
         investigator={effect.investigator}
+        fixedInvestigator={effect.fixed_investigator}
         input={input}
         render={renderSecondPrompt}
         extraArg={scenarioState}

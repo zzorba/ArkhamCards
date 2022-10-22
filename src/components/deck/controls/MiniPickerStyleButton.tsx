@@ -31,14 +31,16 @@ export default function MiniPickerStyleButton({
       onPress={onPress}
       disabled={!editable}
       style={[
-        space.paddingSideS,
-        space.paddingTopXs,
         first ? styles.roundTop : undefined,
         last ? styles.roundBottom : undefined,
         {
           backgroundColor: colors.L20,
           minHeight: 32,
         },
+      ]}
+      contentStyle={[
+        space.paddingSideS,
+        space.paddingTopXs,
       ]}
       rippleColor={colors.L30}
     >

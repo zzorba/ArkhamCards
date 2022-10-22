@@ -36,6 +36,7 @@ export default function BorderStepComponent({ componentId, switchCampaignScenari
           border_color={step.border_color}
           center
           title={step.title}
+          simpleTitleFont={step.title_font === 'status'}
           strikethrough={step.title_strikethrough}
         />
       ) }
@@ -49,13 +50,14 @@ export default function BorderStepComponent({ componentId, switchCampaignScenari
             scenarioState,
             campaignLog
           ),
-          step => (
+          subStep => (
             <ScenarioStepComponent
-              key={step.step.id}
+              key={subStep.step.id}
               componentId={componentId}
               width={width - l * 2}
-              step={step}
+              step={subStep}
               border
+              color={step.border_color}
               switchCampaignScenario={switchCampaignScenario}
             />
           )

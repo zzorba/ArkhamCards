@@ -23,7 +23,7 @@ export default function useConfirmSignupDialog(): [React.ReactNode, () => void] 
   const updateHandle = useUpdateHandle();
   const doSubmit = useCallback(async(submitValue: string) => {
     setSubmitting(true);
-    const error = await updateHandle(submitValue);
+    const error = await updateHandle(submitValue.trim());
     if (error) {
       setError(error);
       setSubmitting(false);

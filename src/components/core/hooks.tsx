@@ -1,5 +1,5 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { BackHandler, Keyboard } from 'react-native';
+import { BackHandler, Keyboard, Platform } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
@@ -31,7 +31,6 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from '@components/Toast';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
-import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 export function useBackButton(handler: () => boolean) {
   useEffect(() => {
@@ -584,9 +583,14 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
   const [loading, setLoading] = useState(true);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
-    const existingCards = getExistingCards(tabooSetId);
-    if (findIndex(codes, code => !existingCards[code]) === -1) {
-      setCards(existingCards);
+    const knownCards = getExistingCards(tabooSetId);
+    if (findIndex(codes, code => !knownCards[code]) === -1) {
+      const cards: CardsMap = {};
+      forEach(codes, code => {
+        cards[code] = knownCards[code];
+      });
+      setCards(cards);
+      setLoading(false);
       return;
     }
 
@@ -601,6 +605,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
       });
     } else {
       setCards({});
+      setLoading(false);
     }
     return () => {
       canceled = true;
@@ -679,13 +684,14 @@ export function useSettingValue(setting: MiscSetting): boolean {
 
       case 'card_grid': return !!state.settings.cardGrid;
       case 'draft_grid': return !state.settings.draftList;
+      case 'map_list': return !!state.settings.mapList;
       case 'draft_from_collection': return !state.settings.draftSeparatePacks;
 
       case 'hide_campaign_decks': return !!state.settings.hideCampaignDecks;
       case 'hide_arkhamdb_decks': return !!state.settings.hideArkhamDbDecks;
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'low_memory':
-        return LOW_MEMORY_DEVICE ? !state.settings.lowMemory : !!state.settings.lowMemory;
+        return Platform.OS === 'android' || !!state.settings.lowMemory;
     }
   });
 }

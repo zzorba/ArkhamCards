@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
-import Carousel from 'react-native-snap-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
-import { dropRightWhile, findIndex, findLastIndex } from 'lodash';
+import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
+import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -11,6 +12,14 @@ import ScenarioCard from './ScenarioCard';
 import space, { m } from '@styles/space';
 import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
 import { showScenario } from '../nav';
+import EmbarkCard from './EmbarkCard';
+import { MapLocation } from '@data/scenario/types';
+import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
+import { CampaignMapProps } from '../CampaignMapView';
+import { iconsMap } from '@app/NavIcons';
+import COLORS from '@styles/colors';
+import { EmbarkData } from '@actions/types';
+import { AddSideScenarioProps } from '../AddSideScenarioView';
 
 interface Props {
   componentId: string;
@@ -20,22 +29,37 @@ interface Props {
   showAlert: ShowAlert;
 }
 
-function getActiveIndex(scenarios: ProcessedScenario[]) {
-  const index = findIndex(scenarios, s =>
-    s.type === 'playable' || s.type === 'started' || s.type === 'placeholder');
+
+interface ScenarioItem {
+  type: 'scenario';
+  scenario: ProcessedScenario;
+}
+
+interface EmbarkItem {
+  type: 'embark';
+}
+
+type CarouselItem = ScenarioItem | EmbarkItem;
+
+function getActiveIndex(items: CarouselItem[]) {
+  const index = findIndex(items, s => {
+    switch (s.type) {
+      case 'scenario':
+        return (
+          s.scenario.type === 'playable' || s.scenario.type === 'started' || s.scenario.type === 'placeholder'
+        );
+      case 'embark':
+        return true;
+    }
+  });
   if (index !== -1) {
     return index;
   }
-  const lastIndex = findLastIndex(scenarios, s => s.type === 'completed');
+  const lastIndex = findLastIndex(items, s => s.type === 'scenario' && s.scenario.type === 'completed');
   if (lastIndex !== -1) {
     return lastIndex;
   }
-  return scenarios.length - 1;
-}
-
-interface ScenarioItem {
-  item: ProcessedScenario;
-  index: number;
+  return items.length - 1;
 }
 export default function ScenarioCarouselComponent({
   componentId,
@@ -46,7 +70,8 @@ export default function ScenarioCarouselComponent({
 }: Props) {
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
-  const carousel = useRef<Carousel<ProcessedScenario>>(null);
+  const campaignMap = useMemo(() => campaignGuide.campaignMap(), [campaignGuide]);
+  const carousel = useRef<SnapCarousel<CarouselItem>>(null);
   const scenarioPressed = useRef<boolean>(false);
   const visible = useComponentVisible(componentId);
   useEffectUpdate(() => {
@@ -73,14 +98,153 @@ export default function ScenarioCarouselComponent({
       processedCampaign
     );
   }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
-  const activeIndex = useMemo(() => getActiveIndex(processedCampaign.scenarios), [processedCampaign.scenarios]);
+  const currentLocationId = processedCampaign.campaignLog.campaignData.scarlet.location;
+  const interScenarioId = useMemo(() => {
+    if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
+      !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed')) {
+      return findLast(processedCampaign.scenarios, s => s.type === 'completed')?.id;
+    }
+    return undefined;
+  }, [processedCampaign]);
+  const currentTime = processedCampaign.campaignLog.count('time', '$count');
+  const campaignLog = processedCampaign.campaignLog;
+
+  const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario, fast }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
+    const embarkData: EmbarkData = {
+      destination,
+      previousScenarioId,
+      departure: currentLocationId,
+      nextScenario,
+      time: time + xp_cost,
+      fast,
+    };
+    return embarkData;
+  }, [campaignState, currentTime, currentLocationId, campaignMap])
+  const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
+    if (interScenarioId && campaignMap) {
+      const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
+        (campaignLog.campaignData.scenarioReplayCount[location.scenario] || 0) + 1 :
+        undefined;
+      const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
+      const embarkData: EmbarkData = {
+        destination: location.id,
+        departure: currentLocationId,
+        time: timeSpent,
+        previousScenarioId: interScenarioId.encodedScenarioId,
+        nextScenario,
+        fast,
+      };
+      if (location.scenario === '$side_scenario') {
+        Navigation.push<AddSideScenarioProps>(componentId, {
+          component: {
+            name: 'Guide.SideScenario',
+            passProps: {
+              campaignId,
+              latestScenarioId: interScenarioId,
+              embarkData: embarkData,
+              onEmbarkSide,
+            },
+            options: {
+              topBar: {
+                title: {
+                  text: t`Choose Side-Scenario`,
+                },
+                subtitle: {
+                  text: location.name,
+                },
+                backButton: {
+                  title: t`Back`,
+                },
+              },
+            },
+          },
+        });
+      } else {
+        campaignState.startScenario(nextScenario, embarkData);
+      }
+    }
+  }, [
+    onEmbarkSide,
+    componentId,
+    currentLocationId,
+    campaignLog, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
+
+  const onShowEmbark = useCallback(() => {
+    if (campaignMap) {
+      scenarioPressed.current = true;
+      const investigators = processedCampaign.campaignLog.investigatorCodes(false);
+      const hasFast = !!find(investigators, code => processedCampaign.campaignLog.hasCard(code, campaignMap.fast_code));
+      const passProps: CampaignMapProps = {
+        campaignId,
+        campaignMap,
+        currentLocation: currentLocationId,
+        currentTime: processedCampaign.campaignLog.count('time', '$count'),
+        onSelect: onEmbark,
+        visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
+        unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
+        unlockedDossiers: processedCampaign.campaignLog.campaignData.scarlet.unlockedDossiers,
+        hasFast,
+      };
+      const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
+      Navigation.showModal<CampaignMapProps>({
+        stack: {
+          children: [{
+            component: {
+              name: 'Campaign.Map',
+              passProps,
+              options: {
+                topBar: {
+                  title: {
+                    text: t`Map`,
+                  },
+                  subtitle: {
+                    text: location ? t`Departing from ${location}` : undefined,
+                  },
+                  leftButtons: [{
+                    icon: iconsMap.dismiss,
+                    id: 'close',
+                    color: COLORS.M,
+                    accessibilityLabel: t`Close`,
+                  }],
+                },
+                layout: {
+                  backgroundColor: '0x8A9284',
+                },
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+                modalTransitionStyle: OptionsModalTransitionStyle.crossDissolve,
+              },
+            },
+          }],
+        },
+      });
+    }
+  }, [campaignId, currentLocationId, campaignMap, onEmbark, processedCampaign]);
+
+  const data = useMemo(() => {
+    const items: (ScenarioItem | EmbarkItem)[] = map(processedCampaign.scenarios, scenario => {
+      return {
+        type: 'scenario',
+        scenario,
+      };
+    });
+    const noInProgress = !find(processedCampaign.scenarios, scenario => scenario.type === 'started');
+    if (noInProgress && processedCampaign.campaignLog.campaignData.scarlet.embark) {
+      items.push({
+        type: 'embark',
+      });
+    }
+    return items;
+  }, [processedCampaign]);
+  const activeIndex = useMemo(() => getActiveIndex(data), [data]);
   const [selectedIndex, setIndex] = useState(activeIndex);
   useEffectUpdate(() => {
     if (visible) {
       if (scenarioPressed.current) {
         scenarioPressed.current = false;
         if (carousel.current && selectedIndex !== activeIndex) {
-          const activeIndex = getActiveIndex(processedCampaign.scenarios)
+          const activeIndex = getActiveIndex(data)
           carousel.current.snapToItem(activeIndex, true, false);
         }
       }
@@ -90,23 +254,42 @@ export default function ScenarioCarouselComponent({
 
   const numScenarios = processedCampaign.scenarios.length;
   const lastCompletedIndex = dropRightWhile(processedCampaign.scenarios, s => s.type === 'skipped').length - 1;
-  const renderScenario = useCallback(({ item, index }: ScenarioItem) => {
-    return (
-      <ScenarioCard
-        key={index}
-        showScenario={onShowScenario}
-        scenario={item}
-        showAlert={showAlert}
-        processedCampaign={processedCampaign}
-        componentId={componentId}
-        isActive={index === activeIndex}
-        last={index === numScenarios - 1}
-        finalScenario={index === lastCompletedIndex}
-      />
-    );
-  }, [onShowScenario, showAlert, processedCampaign, componentId, lastCompletedIndex, numScenarios, activeIndex]);
+  const currentLocation = useMemo(() => {
+    const current = processedCampaign.campaignLog.campaignData.scarlet.location;
+    return current ? find(campaignGuide.campaignMap()?.locations, location => location.id === current) : undefined;
+  }, [campaignGuide, processedCampaign.campaignLog.campaignData.scarlet.location]);
+  const renderScenario = useCallback(({ item, index }: { item: CarouselItem; index: number }) => {
+    switch (item.type) {
+      case 'scenario':
+        return (
+          <ScenarioCard
+            key={index}
+            showScenario={onShowScenario}
+            scenario={item.scenario}
+            campaignMap={campaignMap}
+            showAlert={showAlert}
+            processedCampaign={processedCampaign}
+            componentId={componentId}
+            isActive={index === activeIndex}
+            last={index === numScenarios - 1}
+            finalScenario={index === lastCompletedIndex}
+          />
+        );
+      case 'embark':
+        return (
+          <EmbarkCard
+            key={index}
+            currentLocation={currentLocation}
+            onPress={onShowEmbark}
+            isActive={index === activeIndex}
+            last={index === numScenarios - 1}
+          />
+        );
+    }
+  }, [onShowScenario, showAlert, onShowEmbark, processedCampaign, componentId,
+    campaignMap,currentLocation, lastCompletedIndex, numScenarios, activeIndex]);
   return (
-    <Carousel
+    <SnapCarousel
       ref={carousel}
       vertical={false}
       itemWidth={width - m * 3}
@@ -117,7 +300,7 @@ export default function ScenarioCarouselComponent({
       useScrollView
       disableIntervalMomentum
       initialNumToRender={processedCampaign.scenarios.length}
-      data={processedCampaign.scenarios}
+      data={data}
       renderItem={renderScenario}
       onSnapToItem={setIndex}
     />

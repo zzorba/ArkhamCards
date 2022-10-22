@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { ngettext, msgid, t } from 'ttag';
@@ -14,6 +13,7 @@ import {
 } from 'rn-placeholder';
 import { keys, uniq } from 'lodash';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { Campaign, Deck, getDeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
@@ -83,7 +83,7 @@ function LegacyDeckListRowDetails({
     ...(previousDeck ? keys(previousDeck.slots) : []),
     ...(previousDeck ? keys(previousDeck.ignoreDeckLimitSlots) : []),
   ]), [deck, previousDeck], deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, previousDeck), [details, deck, cards, previousDeck]);
+  const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, listSeperator, previousDeck), [details, listSeperator, deck, cards, previousDeck]);
   if (details) {
     return (
       <>

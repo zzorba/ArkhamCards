@@ -16,9 +16,10 @@ interface Props {
   deckId: DeckId;
   limit: number;
   side?: boolean;
+  editable: boolean;
 }
 
-export default function CardUpgradeButton({ onUpgradePress, card, deckId, limit, side }: Props) {
+export default function CardUpgradeButton({ onUpgradePress, editable, card, deckId, limit, side }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card])
   return (
@@ -41,6 +42,7 @@ export default function CardUpgradeButton({ onUpgradePress, card, deckId, limit,
         deckId={deckId}
         limit={limit}
         side={side}
+        editable={editable}
       />
     </View>
   );

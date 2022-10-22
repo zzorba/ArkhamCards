@@ -19,6 +19,8 @@ import {
   campaignDataScenarioConditionResult,
   partnerStatusConditionResult,
   investigatorChoiceConditionResult,
+  locationConditionResult,
+  scarletKeyConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -122,6 +124,7 @@ export function calculateBinaryConditionResult(
           return campaignDataInvestigatorConditionResult(condition, campaignLog);
         case 'scenario_completed':
         case 'scenario_replayed':
+        case 'next_scenario':
           return campaignDataScenarioConditionResult(condition, campaignLog);
         case 'chaos_bag': {
           const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
@@ -158,5 +161,9 @@ export function calculateBinaryConditionResult(
         option: head(filter(investigatorResult.options, option => choices.has(option.id))),
       };
     }
+    case 'location':
+      return locationConditionResult(condition, campaignLog);
+    case 'scarlet_key':
+      return scarletKeyConditionResult(condition, campaignLog);
   }
 }

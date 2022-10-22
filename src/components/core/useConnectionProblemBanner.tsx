@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
@@ -39,20 +40,24 @@ export default function useConnectionProblemBanner({ width, arkhamdbState }: Pro
     const height = 4 * 18 * fontScale + s * 2;
     if (error === 'badAccessToken') {
       return [(
-        <TouchableOpacity onPress={reLogin} style={[space.paddingS, styles.error, { width, height }]} key="banner">
-          <AppIcon size={32} color="#FFFFFF" name="warning" />
-          <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
-            { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
-          </Text>
+        <TouchableOpacity onPress={reLogin} key="banner">
+          <View style={[space.paddingS, styles.error, { width, height }]}>
+            <AppIcon size={32} color="#FFFFFF" name="warning" />
+            <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
+              { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
+            </Text>
+          </View>
         </TouchableOpacity>
       ), 0];
     }
     return [(
-      <TouchableOpacity onPress={reLogin} style={[space.paddingS, styles.error, { width, height }]} key="banner">
-        <AppIcon size={32} color="#FFFFFF" name="warning" />
-        <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
-          { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
-        </Text>
+      <TouchableOpacity onPress={reLogin} key="banner">
+        <View style={[space.paddingS, styles.error, { width, height }]}>
+          <AppIcon size={32} color="#FFFFFF" name="warning" />
+          <Text style={[typography.small, typography.white, space.paddingS, { flex: 1 }]} numberOfLines={4}>
+            { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
+          </Text>
+        </View>
       </TouchableOpacity>
     ), 0];
   }

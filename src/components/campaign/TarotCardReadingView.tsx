@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Text, ScrollView, View, Platform } from 'react-native';
 import { find, filter, map, shuffle, take, values, sumBy, findIndex, forEach } from 'lodash';
-import Carousel from 'react-native-snap-carousel';
+import SnapCarousel from 'react-native-snap-carousel';
 import { c, t } from 'ttag';
 
 import { useAppDispatch } from '@app/store';
@@ -398,7 +398,7 @@ function TarotCardReadingView({
     }
     return (
       <View style={{ width: width - s * 2, height: height * 0.7 + m * 2 }}>
-        <Carousel
+        <SnapCarousel
           itemWidth={dialogCardWidth}
           sliderWidth={width + s * 4}
           itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
@@ -426,8 +426,11 @@ function TarotCardReadingView({
         return scenarioNames[scenarios[index]] || card?.title;
       }
     }
-    return card.title;
-  }, [tarotCards, index, readingType, scenarios, scenarioNames]);
+    if (flipped[card.id]) {
+      return card.title;
+    }
+    return t`Reveal`;
+  }, [tarotCards, flipped, index, readingType, scenarios, scenarioNames]);
   const { dialog, showDialog } = useDialog({
     title: dialogTitle,
     content,
@@ -549,7 +552,7 @@ function TarotCardReadingView({
                     </Text>
                   </View>
                 ) }
-                <View style={[space.paddingLeftS, space.paddingTopS]}>
+                <View style={[space.paddingLeftXs, space.paddingRightXs, space.paddingTopS]}>
                   <TarotCardComponent
                     width={cardWidth}
                     card={card}

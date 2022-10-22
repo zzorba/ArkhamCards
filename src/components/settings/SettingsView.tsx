@@ -167,7 +167,10 @@ export default function SettingsView({ componentId }: NavigationProps) {
     <>
       <SafeAreaView style={[styles.container, backgroundStyle]}>
         <ScrollView style={[styles.list, { backgroundColor: colors.L10 }]} keyboardShouldPersistTaps="always">
-          <AccountSection componentId={componentId} showAlert={showAlert} />
+          <AccountSection
+            componentId={componentId}
+            showAlert={showAlert}
+          />
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Cards`} />}>
               <View style={[space.paddingTopS, space.paddingBottomS]}>
@@ -213,6 +216,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               <DeckCheckboxButton
                 icon="special_cards"
                 title={t`Show fan-made cards`}
+                description={t`Grants access to previewed player cards`}
                 value={customContent}
                 onValueChange={setCustomContent}
               />
@@ -246,13 +250,15 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={campaignShowDeckId}
                 onValueChange={setCampaignShowDeckId}
               />
-              <DeckCheckboxButton
-                icon="tools"
-                title={t`Low memory mode`}
-                description={t`Have the app preload fewer cards to help performance on older devices`}
-                value={lowMemory}
-                onValueChange={setLowMemory}
-              />
+              { Platform.OS === 'ios' && (
+                <DeckCheckboxButton
+                  icon="tools"
+                  title={t`Low memory mode`}
+                  description={t`Have the app preload fewer cards to help performance on older devices`}
+                  value={lowMemory}
+                  onValueChange={setLowMemory}
+                />
+              ) }
               { Platform.OS === 'android' && (
                 <DeckCheckboxButton
                   icon="tools"

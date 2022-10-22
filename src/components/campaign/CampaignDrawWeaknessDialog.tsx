@@ -30,6 +30,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
 import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: CampaignId;
@@ -163,6 +164,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   }, [setPendingNextCard, updatePendingAssignedCards]);
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
   const [cards] = useLatestDeckCards(saveWeakness ? undefined : selectedDeck);
+  const { listSeperator } = useContext(LanguageContext);
   const saveDrawnCard = useCallback(() => {
     if (!pendingNextCard) {
       return;
@@ -194,6 +196,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         selectedDeck.deck.ignoreDeckLimitSlots || {},
         selectedDeck.deck.sideSlots || {},
         cards,
+        listSeperator,
         selectedDeck. previousDeck,
         undefined,
         selectedDeck.deck
@@ -220,7 +223,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       });
     }
   }, [pendingNextCard, pendingAssignedCards, campaignId, weaknessSet, cards, selectedDeck, replaceRandomBasicWeakness, alwaysReplaceRandomBasicWeakness, deckSlots,
-    unsavedAssignedCards, userId, deckActions, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
+    unsavedAssignedCards, userId, deckActions, listSeperator, setCampaignWeaknessSet, updateDeckSlots, saveWeakness, dispatch, setSaving, updatePendingAssignedCards, setPendingNextCard]);
 
   const investigatorChooser = useMemo(() => {
     const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
@@ -287,11 +290,13 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
     return null;
   }
 
+  const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
   return (
     <WeaknessDrawComponent
       componentId={componentId}
       playerCount={playerCount}
       campaignMode
+      investigator={investigator}
       customHeader={investigatorChooser}
       customFlippedHeader={flippedHeader}
       weaknessSet={dynamicWeaknessSet}

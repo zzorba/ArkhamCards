@@ -14,11 +14,10 @@ import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, Pack, SYNC_DISMISS_ONBOARDING } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
-import Card from '@data/types/Card';
-import { getBackupData, getAllPacks, getLangChoice, AppState } from '@reducers';
+import { getBackupData, getLangChoice, AppState } from '@reducers';
 import { requestFetchCards } from '@components/card/actions';
 import SettingsItem from './SettingsItem';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -58,7 +57,6 @@ export default function DiagnosticsView() {
   const dispatch = useDispatch();
   const backupData = useSelector(getBackupData);
   const state = useSelector((state: AppState) => state);
-  const packs = useSelector(getAllPacks);
   const langChoice = useSelector(getLangChoice);
   const onboarding = useSelector((state: AppState) => state.settings.dismissedOnboarding);
   const updateRemoteOnboarding = useUpdateOnboarding();
@@ -153,60 +151,6 @@ export default function DiagnosticsView() {
     });
   }, [clearDatabase, doSyncCards]);
 
-  const addDebugCardJson = useCallback((json: string) => {
-    const packsByCode: { [code: string]: Pack } = {};
-    const cycleNames: {
-      [cycle_position: number]: {
-        name?: string;
-        code?: string;
-      };
-    } = {};
-    forEach(packs, pack => {
-      packsByCode[pack.code] = pack;
-      if (pack.position === 1) {
-        cycleNames[pack.cycle_position] = pack;
-      }
-    });
-    cycleNames[8] = { name: t`Edge of the Earth`, code: 'eoe' };
-    cycleNames[9] = { name: t`The Scarlet Keys`, code: 'tsk' };
-    cycleNames[50] = { name: t`Return to...`, code: 'return' };
-    cycleNames[60] = { name: t`Investigator Starter Decks`, code: 'investigator' };
-    cycleNames[70] = { name: t`Side stories`, code: 'side_stories' };
-    cycleNames[80] = { name: t`Promotional`, code: 'promotional' };
-    cycleNames[90] = { name: t`Parallel`, code: 'parallel' };
-    const newCards: Card[] = [];
-    const theJson = JSON.parse(json);
-    if (Array.isArray(theJson)) {
-      forEach(theJson, cardJson => {
-        const newCard = Card.fromJson(cardJson, packsByCode, cycleNames, lang)
-        newCards.push(newCard);
-      });
-    } else {
-      const newCard = Card.fromJson(theJson, packsByCode, cycleNames, lang);
-      newCards.push(newCard)
-    }
-    db.cards().then(async(cards) => {
-      for (let i = 0; i < newCards.length; i++) {
-        const card = newCards[i];
-        await cards.delete(card.id);
-        await cards.insert(card);
-      }
-    });
-  }, [packs, lang, db]);
-
-  const addDebugCard = useCallback(() => {
-    showTextEditDialog(
-      t`Debug Card Json`,
-      '',
-      (json: string) => {
-        Keyboard.dismiss();
-        setTimeout(() => addDebugCardJson(json), 1000);
-      },
-      false,
-      4
-    );
-  }, [showTextEditDialog, addDebugCardJson]);
-
   const crash = useCallback(() => {
     Crashes.generateTestCrash();
   }, []);
@@ -245,10 +189,6 @@ export default function DiagnosticsView() {
           text={'Crash'}
         />
         <SettingsItem
-          onPress={addDebugCard}
-          text={'Add Debug Card'}
-        />
-        <SettingsItem
           onPress={setDissonantVoicesToken}
           text={'Set Dissonant Voices Token'}
         />
@@ -263,7 +203,7 @@ export default function DiagnosticsView() {
         />
       </>
     );
-  }, [crash, addDebugCard, setDissonantVoicesToken]);
+  }, [crash, setDissonantVoicesToken]);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
 
   return (

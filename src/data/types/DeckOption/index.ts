@@ -21,7 +21,10 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 5 cards that are not Survivor or Neutral': t`You cannot have more than 5 cards that are not Survivor or Neutral`,
     'You must have at least 7 cards from 3 different factions': t`You must have at least 7 cards from 3 different factions`,
     'You cannot have more than 15 level 0-1 Seeker and/or Mystic cards': t`You cannot have more than 15 level 0-1 Seeker and/or Mystic cards`,
+    'You cannot have more than 15 level 0-1 Guardian and/or Survivor cards': t`You cannot have more than 15 level 0-1 Guardian and/or Survivor cards`,
     'You cannot have more than 5 Guardian and/or Mystic cards': t`You cannot have more than 5 Guardian and/or Mystic cards`,
+    'You cannot have more than 5 Seeker and/or Survivor cards': t`You cannot have more than 5 Seeker and/or Survivor cards`,
+    'You cannot have more than 5 Mystic and/or Survivor cards': t`You cannot have more than 5 Mystic and/or Survivor cards`,
     'You cannot have more than 5 level 0 Mystic cards': t`You cannot have more than 5 level 0 Mystic cards`,
     'You cannot have more than 5 level 0 Survivor cards': t`You cannot have more than 5 level 0 Survivor cards`,
     'You cannot have more than 5 level 0 Guardian cards': t`You cannot have more than 5 level 0 Guardian cards`,
@@ -59,6 +62,9 @@ export default class DeckOption {
 
   @Column('simple-array', { nullable: true })
   public uses?: string[];
+
+  @Column('simple-array', { nullable: true })
+  public tag?: string[];
 
   @Column('simple-array', { nullable: true })
   public trait?: string[];
@@ -128,6 +134,7 @@ export default class DeckOption {
     deck_option.uses = json.uses || [];
     deck_option.text = json.text || [];
     deck_option.slot = json.slot || [];
+    deck_option.tag = json.tag || [];
     deck_option.trait = json.trait || [];
     deck_option.type_code = json.type || [];
     deck_option.limit = json.limit;
@@ -175,10 +182,10 @@ export class DeckOptionQueryBuilder {
   filterBuilder: FilterBuilder;
   index: number;
 
-  constructor(option: DeckOption, index: number) {
+  constructor(option: DeckOption, index: number, prefix: string = 'deck') {
     this.option = option;
     this.index = index;
-    this.filterBuilder = new FilterBuilder(`deck${index}`);
+    this.filterBuilder = new FilterBuilder(`${prefix}${index}`);
   }
 
   private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
@@ -205,18 +212,25 @@ export class DeckOptionQueryBuilder {
     return [];
   }
   private textClause(): Brackets[] {
-    if (this.option.text && this.option.text.length && (
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror'
+    if ((this.option.tag?.length && this.option.tag[0] === 'hh') || (
+      this.option.text && this.option.text.length && (
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total)) damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all|(X total) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals? (that much )?(((\\d+|all|(X total)) )?damage (from that asset )?(and|or) )?((\\d+|all|(X total)) )?horror' ||
+        this.option.text[0] === '[Hh]eals?( that much)?( (\\+?\\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\\d+|all|(X total)))?(\\s|\\/)horror'
+      )
     )) {
       return [where('c.heals_horror is not null AND c.heals_horror = 1')];
     }
 
-    if (this.option.text && this.option.text.length &&
-      this.option.text[0] === '[Hh]eals? (that much )?(\\d+|all|(X total) )?damage'
-    ) {
+    if ((this.option.tag?.length && this.option.tag[0] === 'hd') || (
+      this.option.text && this.option.text.length && (
+        this.option.text[0] === '[Hh]eals? (that much )?((((\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\d+)|(all)|(X total)) )?damage' ||
+        this.option.text[0] === '[Hh]eals? (that much )?((((\\+?\\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\\+?\\d+)|(all)|(X total)) )?damage'
+      )
+    )) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
     return [];

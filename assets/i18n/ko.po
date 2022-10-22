@@ -6,11 +6,13 @@ msgstr ""
 "Last-Translator: 엘케인, 푸른이\n"
 "Language-Team: \n"
 "Language: ko\n"
-"mime-version: 1.0\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -111,7 +113,6 @@ msgstr "무법자"
 msgid "Survivor"
 msgstr "생존자"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "중립"
 
@@ -124,7 +125,6 @@ msgstr "신화"
 msgid "Unknown"
 msgstr "불명"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "조사자"
 
@@ -327,17 +327,11 @@ msgstr "캠페인 데이터를 백업하시겠습니까?"
 msgid "Export Campaign Data"
 msgstr "캠페인 데이터 내보내기"
 
-msgid "Debug Card Json"
-msgstr "카드 Json 디버그"
-
 msgid "Return to..."
 msgstr "돌아온..."
 
 msgid "Investigator Starter Decks"
 msgstr "조사자 확장"
-
-msgid "Side stories"
-msgstr "독립 시나리오"
 
 msgid "Debug"
 msgstr "디버그"
@@ -1208,7 +1202,7 @@ msgid "In Deck"
 msgstr "덱에 포함된 카드"
 
 msgid "All Eligible Cards"
-msgstr "모든 접근 가능한 카드"
+msgstr "접근 가능한 모든 카드"
 
 msgid "Cost: None"
 msgstr "비용: 없음"
@@ -1623,7 +1617,6 @@ msgstr "대표 조사자가 <b>사망하면</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "모든 조사자가 <b>사망하면</b>."
 
-#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr ""
 "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면, 다음 지시를 "
@@ -1693,7 +1686,7 @@ msgid "Experience cost: ${ xpCost }"
 msgstr "경험치 비용: ${ xpCost }"
 
 msgid "Custom side scenario"
-msgstr "커스텀 외전 시나리오"
+msgstr "비정규 · 팬 제작 외전 시나리오"
 
 msgid "Scenario Name"
 msgstr "시나리오명"
@@ -1705,7 +1698,7 @@ msgid "Add"
 msgstr "더하기"
 
 msgid "Custom scenario"
-msgstr "커스텀 시나리오"
+msgstr "비정규 · 팬 제작 시나리오"
 
 msgid "Add Campaign Log Section"
 msgstr "캠페인 기록지 항목에 추가"
@@ -2036,7 +2029,7 @@ msgid "A Thousand Shapes of Horror"
 msgstr "천 가지 무시무시한 형체"
 
 msgid "Point of No Return"
-msgstr "돌아올 수 없는 다리"
+msgstr "돌아갈 수 없는 다리"
 
 msgid "The Night of the Zealot"
 msgstr "광신도의 밤"
@@ -2186,11 +2179,11 @@ msgstr "약점 세트 조정"
 
 #. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
-msgstr "이 덱은 여러개의 기본 약점이 포함되어 있습니다"
+msgstr "이 덱은 여러 개의 기본 약점이 포함되어 있습니다."
 
 #. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
-msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다"
+msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다."
 
 #. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
@@ -2229,7 +2222,7 @@ msgid "Hide killed and insane investigators"
 msgstr "사망하거나 미친 조사자 숨기기"
 
 msgid "Only show previous campaign members"
-msgstr "이전 캠페인 멤버만 보이기"
+msgstr "이전 캠페인 멤버만 보기"
 
 msgid "Campaigns"
 msgstr "캠페인"
@@ -2373,7 +2366,6 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합�
 msgid "Challenge Scenario"
 msgstr "도전 시나리오"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name }의 도전 시나리오"
 
@@ -2839,17 +2831,17 @@ msgstr "조우 카드 토글"
 msgid "Show all available cards"
 msgstr "모든 사용 가능한 카드 보기"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "전투: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "체력: 조사자당 ${ health }"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "체력: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "회피: ${ evade }"
 
@@ -2896,25 +2888,25 @@ msgid "A Light in the Fog"
 msgstr "안개 속 한 줄기 빛"
 
 msgid "The Lair of Dagon"
-msgstr "데이곤의 처소"
+msgstr "데이곤의 침소"
 
 msgid "Hidden Truths"
-msgstr ""
+msgstr "숨은 진실"
 
 msgid "Into the Maelstrom"
-msgstr "혼돈의 소용돌이로"
+msgstr "몰아치는 소용돌이 속으로"
 
 msgid "Possible Suspects"
-msgstr ""
+msgstr "유력한 용의자"
 
 msgid "Possible Hideouts"
-msgstr ""
+msgstr "유력한 은신처"
 
 msgid "In Bag"
 msgstr "주머니 내부"
 
 msgid "The Syzygy"
-msgstr ""
+msgstr "천체 정렬"
 
 msgid "Coming soon"
 msgstr "조만간 개봉합니다"
@@ -2970,7 +2962,7 @@ msgid_plural ""
 "\n"
 "${ upgradeCards }"
 msgstr[0] ""
-"두개의 카드를 다음 선택지에서 무작위로 선택합니다.\n"
+"두 장의 카드 중에서 무작위로 고릅니다:\n"
 "\n"
 "${ upgradeCards }"
 
@@ -3006,19 +2998,19 @@ msgid "Upgrade with Shrewd Analysis"
 msgstr "'재빠른 분석'으로 향상하기"
 
 msgid "The Pit of Despair"
-msgstr ""
+msgstr "절망의 구렁"
 
 msgid "Puzzle Pieces"
-msgstr ""
+msgstr "기억을 짜맞추다"
 
 msgid "The Vanishing of Elina Harper"
-msgstr ""
+msgstr "엘리나 하퍼의 실종"
 
 msgid "Beneath the Waves"
-msgstr ""
+msgstr "파도 아래에"
 
 msgid "Memories Recovered"
-msgstr ""
+msgstr "되찾은 기억"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
@@ -3037,10 +3029,6 @@ msgstr "규칙 검색"
 
 msgid "Signature Weakness"
 msgstr "전용 약점"
-
-#, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "비용: ${ json.cost }"
 
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
@@ -3141,7 +3129,7 @@ msgid "Parallel front · Parallel back"
 msgstr "평행 앞면 · 평행 뒷면"
 
 msgid "Card count"
-msgstr "카드 개수"
+msgstr "카드 장수"
 
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
@@ -3216,18 +3204,6 @@ msgstr "새로운 독립 시나리오"
 
 msgid "Create Standalone"
 msgstr "독립 시나리오 생성"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "카멜레온"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"임의의 덱 구성을 위한 커스텀 조사자입니다.\n"
-"[elder_sign]: +X. X는 당신이 원하는 숫자입니다."
 
 msgid "Asset Filters"
 msgstr "자산 필터"
@@ -3326,7 +3302,7 @@ msgstr "덱 수정 중"
 #, javascript-format
 msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
-msgstr[0] "카드 ${ normalCards }장"
+msgstr[0] "카드 ${ normalCards }"
 
 msgid "Add scenario XP"
 msgstr "시나리오 경험치 추가"
@@ -3634,7 +3610,7 @@ msgid "Name required"
 msgstr "이름 필요"
 
 msgid "You must specify a name for custom campaigns."
-msgstr "커스텀 캠페인의 이름을 설정하여야 합니다."
+msgstr "비정규 · 팬 제작 캠페인의 이름을 설정하여야 합니다."
 
 msgid "Export diagnostic data"
 msgstr "진단 데이터 내보내기"
@@ -3816,7 +3792,7 @@ msgid "Secrets"
 msgstr "비밀"
 
 msgid "Tickets"
-msgstr ""
+msgstr "티켓"
 
 msgid "Tries"
 msgstr "시도"
@@ -3939,9 +3915,6 @@ msgstr "기억"
 msgid "Fan-Made Campaigns"
 msgstr "팬 제작 캠페인"
 
-msgid "Fan-Made Content"
-msgstr "멍컴호러 및 팬 제작 콘텐츠"
-
 msgid "Fetching account details..."
 msgstr "계정 세부사항을 가져오는 중..."
 
@@ -3992,8 +3965,8 @@ msgid ""
 "campaigns are a fair amount of work, but I'd love to support the community "
 "in anyway I can."
 msgstr ""
-"앱으로 보고 싶은 “완성된” 캠페인을 가진 커스텀 콘텐츠 제작자 분은 arkhamcards@gmail.com 이메일로 연락을 "
-"주십시오(영문). 커스텀 캠페인은 상당한 양의 작업이지만, 커뮤니티를 가능한 지원하고 싶습니다."
+"앱으로 보고 싶은 “완성된” 캠페인을 가진 팬 제작 콘텐츠 제작자 분은 arkhamcards@gmail.com 이메일로 연락을 "
+"주십시오(영문). 팬 제작 캠페인은 상당한 양의 작업이지만, 커뮤니티를 가능한 지원하고 싶습니다."
 
 msgid "Alice in Wonderland"
 msgstr "이상한 나라의 앨리스"
@@ -4012,9 +3985,6 @@ msgstr "이상한 나라의 힘"
 
 msgid "Edge of the Earth"
 msgstr "지구의 끝자락"
-
-msgid "Promotional"
-msgstr "프로모션"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "수호자나 중립이 아닌 카드를 5장보다 많이 포함할 수 없습니다."
@@ -4087,24 +4057,8 @@ msgstr "(새로운 총합: ${ total })"
 msgid "Earned XP:"
 msgstr "획득한 경험치:"
 
-msgid "Not deck owner"
-msgstr "덱 소유자 아님"
-
 msgid "Saved"
 msgstr "저장됨"
-
-#, javascript-format
-msgid ""
-"This deck is owned by ${ deck.owner.handle }. They must open the app on "
-"their own device to save the upgrade"
-msgstr ""
-"이 덱의 소유자는 '${ deck.owner.handle }' 님입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 "
-"합니다."
-
-msgid ""
-"This deck is owned by another user. They must open the app on their own "
-"device to save the upgrade"
-msgstr "이 덱은 다른 사용자의 소유자입니다. 향상 저장을 위해서는 해당 소유자의 장치에서 이 앱을 열어야 합니다."
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
@@ -4150,9 +4104,6 @@ msgstr ""
 
 msgid "Learn more"
 msgstr "더 배워보기"
-
-msgid "Save will update your deck with the card changes listed above."
-msgstr "덱을 향상하려면 아래의 카드 변경점 목록을 저장하십시오."
 
 msgid "Campaign log"
 msgstr "캠페인 기록지"
@@ -4202,6 +4153,7 @@ msgstr "이들 특성과 일치하는 무작위 약점을 뽑습니다."
 msgid "Edit selection"
 msgstr "선택 수정"
 
+#, javascript-format
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "캠페인 기록지를 확인합니다. <i>만약 ${ logEntry.text }</i>"
 
@@ -4356,12 +4308,6 @@ msgstr "어려움 난이도"
 msgid "Expert difficulty"
 msgstr "전문가 난이도"
 
-msgid "— Difficulty —"
-msgstr "— 난이도 —"
-
-msgid "— Available Scenarios —"
-msgstr "— 사용가능한 시나리오 —"
-
 msgid "Scenario settings"
 msgstr "시나리오 설정"
 
@@ -4412,7 +4358,7 @@ msgid "Hide Bless/Curse Odds"
 msgstr "축복/저주 확률 숨기기"
 
 msgid "Show Bless/Curse Odds"
-msgstr "축복/저주 확률 보이기"
+msgstr "축복/저주 확률 보기"
 
 msgid "Faction, Level, Type, Cost"
 msgstr "역할군, 레벨, 유형, 비용"
@@ -4555,7 +4501,7 @@ msgid "Resolute"
 msgstr ""
 
 msgid "MIA"
-msgstr ""
+msgstr "행방불명"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -5169,7 +5115,7 @@ msgstr ""
 "• 원작 아이콘 디자인: ${ visualDesigner }"
 
 msgid "Call of the Plaguebearer"
-msgstr ""
+msgstr "역병전파자의 부름"
 
 msgid "Eliminated"
 msgstr "제거"
@@ -5204,22 +5150,7 @@ msgid "Consternation on the Constellation"
 msgstr ""
 
 msgid "Deck contains custom content"
-msgstr "커스텀 콘텐츠를 포함한 덱"
-
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-"죄송합니다. 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다.\n"
-"\n"
-"덱 목록에서 모든 팬 제작 카드들을 제거한 뒤에 다시 시도해 주십시오."
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr "주의: 이 덱은 팬 제작 콘텐츠를 포함하고 있어 아컴디비에 업로드할 수 없습니다."
+msgstr "비정규 · 팬 제작 콘텐츠를 포함한 덱"
 
 msgid "Player"
 msgstr "플레이어"
@@ -5234,7 +5165,7 @@ msgid "Show all available cards for parallel"
 msgstr "사용가능한 모든 평행 카드 보기"
 
 msgid "Show fan-made cards"
-msgstr "멍컴호러 및 팬 제작 콘텐츠 보기"
+msgstr "멍컴호러 및 비정규 · 팬 제작 콘텐츠 보기"
 
 msgid "Reset onboarding"
 msgstr "튜토리얼 재활성화"
@@ -5245,10 +5176,10 @@ msgid ""
 msgstr "아컴카드 계정에 로그인하면 기기 간에 캠페인을 백업하고 진행 중인 캠페인을 다른 친구들과 공유할 수 있습니다."
 
 msgid "Recent updates"
-msgstr "최신 업데이트 사항"
+msgstr "최근 업데이트 사항 안내"
 
 msgid "Learn about recently added features"
-msgstr "최근 추가된 기능에 대해 배워보기"
+msgstr "앱에 최근 추가된 기능에 대해 배워보기"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your "
@@ -5631,10 +5562,6 @@ msgstr "하얀 여왕"
 msgid "Lucid Nightmare"
 msgstr "자각 악몽"
 
-#, javascript-format
-msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr "${ textModifier }, 다른 것 ${ revealCount }}회 뽑기"
-
 msgid "Delete your account"
 msgstr "계정 삭제"
 
@@ -5680,7 +5607,7 @@ msgid "Beta"
 msgstr "베타 카드"
 
 msgid "Check for card updates"
-msgstr "카드 업데이트 사항 확인하기"
+msgstr "카드 업데이트 사항 확인 · 적용하기"
 
 msgid "Low memory mode"
 msgstr "메모리 절감 모드"
@@ -5705,19 +5632,18 @@ msgstr ""
 "보류 중인 앱 업데이트가 있는지 확인하고 나중에 다시 시도하세요."
 
 msgid "Customizations"
-msgstr "맞춤형 카드"
+msgstr "향상 요소"
 
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "경험치 ${ xp }점"
 
 msgid "Show selected customizations"
-msgstr "선택한 맞춤형 카드만 보기"
+msgstr "구매한 향상 요소만 보기"
 
 msgid "Show all customizations"
-msgstr "모든 맞춤형 카드 보기"
+msgstr "모든 향상 요소 보기"
 
 #, javascript-format
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
@@ -5726,16 +5652,335 @@ msgstr "${ scenario.scenario } (${ resolution }, 경험치 ${ scenarioXp }점)"
 msgid "The Scarlet Keys"
 msgstr "진홍색 열쇠"
 
+#, javascript-format
+msgid "Name ${ quantity } card"
+msgid_plural "Name ${ quantity } cards"
+msgstr[0] "호명할 카드 ${ quantity }장"
+
+msgid "Named card"
+msgid_plural "Named cards"
+msgstr[0] "호명한 카드"
+
+msgid "In deck"
+msgstr "덱에 포함된 카드"
+
+msgid "Select additional cards"
+msgstr "추가 카드 선택"
+
+msgid "Map"
+msgstr "지도"
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }"
+msgstr "${ textModifier }, 다른 것 ${ revealCount }회 뽑기"
+
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr "특성 제거"
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] "특성 ${ quantity }개를 선택하십시오"
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] "선택한 특성"
+
+msgid "Add trait"
+msgstr "특성 추가"
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] "${ quantity }장의 사본"
+
+msgid "Embark"
+msgstr "승선"
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr "출발지: ${ currentLocation.name }"
+
+msgid "Depart"
+msgstr "출발"
+
+msgid "Choose destination"
+msgstr "도착지 선택"
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr "${ investigator.name }의 팬 제작 도전 시나리오 (제작자: ${ scenario.custom.creator })"
+
+msgid "Cyclopean Foundations"
+msgstr "거석의 근간"
+
+msgid "Lost Moorings"
+msgstr "사라진 정박지"
+
+msgid "Going Twice"
+msgstr "입찰 선언"
+
+msgid "Private Lives"
+msgstr "사생활"
+
+msgid "Crumbling Masonry"
+msgstr "무너지는 메이슨"
+
+msgid "A House Divided"
+msgstr "붕괴된 의회"
+
+msgid "Across Dreaful Waters"
+msgstr "공포의 바다 건너"
+
+msgid "Blood From Stones"
+msgstr "돌에서 흐르는 피"
+
+msgid "Pyroclastic Flow"
+msgstr "화쇄류"
+
+msgid "Tomb of Dead Dreams"
+msgstr "잠든 꿈의 묘소"
+
+msgid "Cultists Alive"
+msgstr "살아있는 추종자들"
+
+msgid "Cultists Killed"
+msgstr "숙청된 추종자들"
+
+msgid "Notice"
+msgstr "주목도"
+
+msgid "Jenny's Choice"
+msgstr ""
+
+msgid "The Fall of the House of Usher"
+msgstr ""
+
+msgid "Against the Wendigo"
+msgstr "웬디고에 맞서다"
+
+msgid "Non-canon Content"
+msgstr "비정규 콘텐츠"
+
+msgid "Fan-made Campaigns"
+msgstr "팬 제작 캠페인"
+
+msgid "Fan-made Scenarios"
+msgstr "팬 제작 시나리오"
+
+msgid "Currently here"
+msgstr "현재 위치"
+
+msgid "Already visited"
+msgstr "이미 방문함"
+
+msgid "Travel here"
+msgstr "이곳을 여행하기"
+
+msgid "Information"
+msgstr "정보"
+
+#, javascript-format
+msgid "Departing from ${ location }"
+msgstr "출발지: ${ location }"
+
+msgid "Customization upgrades"
+msgstr "맞춤형 카드 향상"
+
+msgid "Special discounts"
+msgstr "특별 할인"
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] "경험치를 소비하지 않고 추가적인 레벨 0 카드를 ${ remainingFreeCards }장까지 덱에 추가할 수 있습니다."
+
+msgid "Difficulty override"
+msgstr "난이도 덮어쓰기"
+
+msgid "Easy / Standard"
+msgstr "쉬움 / 보통"
+
+msgid "Hard / Expert"
+msgstr "어려움 / 전문가"
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr "난이도 덮어쓰기: ${ msg[difficulty] }"
+
+msgid "Select scenario effects difficulty"
+msgstr "난이도에 따른 시나리오 효과 선택"
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+"참조 카드는 보통 난이도로 사용하고 혼돈 주머니 구성은 어려움 난이도로 하는 “보통-어려움” 등의 사용자 지정 모드를 지원하기 위해 "
+"시나리오 참조 카드의 양쪽 중 하나를 선택하여 토큰 효과와는 다르게 확률 계산기에 표시하도록 앱에서 선택할 수 있습니다."
+
+msgid "Disabled"
+msgstr "비활성화"
+
+msgid "Use campaign setting"
+msgstr "캠페인 설정 사용"
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] "${ used } / ${ available } 사용"
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr "당신은 레벨 0-1 다른 수호자 그리고/또는 생존자 카드를 최대 15장까지만 포함시킬 수 있습니다."
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr "알아두기: 이 덱은 팬 제작 또는 비정규 콘텐츠가 포함되어 있어서 아컴디비 사이트에 업로드할 수 없습니다."
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+"죄송합니다. 이 덱은 아컴디비 사이트에서 인식하지 못하는 팬 제작 또는 비정규 콘텐츠가 포함되어 있어서 아컴디비 사이트에 업로드할 수 "
+"없습니다.\n"
+"\n"
+"덱 리스트에서 이러한 카드들을 제거하고 다시 시도해 주십시오."
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr "이 카드는 아직 정식으로 출시되지 않았으므로, 현재는 아컴디비 사이트의 덱에 포함될 수 없습니다."
+
+msgid "Recomputing deck changes..."
+msgstr "덱 변경사항 다시 계산 중..."
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr "비용: ${ card.cost }"
+
+msgid "Grants access to previewed player cards"
+msgstr "선공개 플레이어 카드에 대한 접근 권한 부여"
+
+msgid "Key"
+msgstr "열쇠"
+
+msgid "Taboo Set"
+msgstr "금기 목록"
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr "금기 목록: ${ tabooSetName }"
+
+msgid "Specific taboo set"
+msgstr "특정 금기 목록"
+
+msgid "Deleteing ArkhamDB accounts"
+msgstr "아컴디비 사이트 계정 삭제 중"
+
+msgid ""
+"ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
+"only allows you to sign into existing ArkhamDB accounts.\n"
+"\n"
+"If you would like to delete your account, please contact the webmaster of "
+"ArkhamDB at arkhamdb@kamalisk.com"
+msgstr ""
+"아컴디비 사이트는 아컴카드 앱과 무관한 제 3자 웹사이트입니다. 앱을 사용하면 기존의 아컴디비 사이트 계정에만 로그인할 수 있습니다.\n"
+"\n"
+"만약 계정을 삭제하고 싶다면, 아컴디비 사이트 관리자 메일(arkhamdb@kamalisk.com)로 연락해 주시기 바랍니다."
+
+msgid "Requeset Account Deletion"
+msgstr "계정 삭제 요청"
+
+msgid "Delete Account"
+msgstr "계정 삭제"
+
+msgid "Choose a skill"
+msgstr "능력 선택"
+
+msgid "Use the embark button below"
+msgstr "아래의 탑승 버튼을 사용하십시오"
+
+msgid "Review the world map"
+msgstr "세계 지도 검토"
+
+msgid "Claim previous rewards"
+msgstr "이전 보상 받기"
+
+msgid "Apply changes from last completed scenario or interlude"
+msgstr "마지막으로 완료된 시나리오나 막간의 변경점 적용"
+
+msgid "This is a side-story location."
+msgstr "이곳은 외전 이야기 장소입니다."
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time"
+msgid_plural "Travel cost: ${ travelDistance } time"
+msgstr[0] "여행 비용: ${ travelDistance }시간"
+
+msgid "Do you want to use the app to randomize choices?"
+msgstr "앱을 이용하여 선택 항목을 무작위로 지정하시겠습니까?"
+
+#, javascript-format
+msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
+msgstr "${ departCityName } 위치에서 ${ arriveCityName } 위치로 이동합니다."
+
+msgid "Mark ${ time } <b>time</b> in your Campaign Log."
+msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
+msgstr[0] "캠페인 기록지 아래에 ${ time }<b>시간</b>을 기록하십시오."
+
+msgid "This includes the cost of experience cost of playing the side-story."
+msgstr "여기에는 외전 이야기를 즐기기 위한 경험치 비용이 포함됩니다."
+
+msgid ""
+"This deck is owned by another player. You can record the changes now and "
+"they will be given an opportunity to save them to their deck when they next "
+"open the app."
+msgstr ""
+"이 덱은 다른 플레이어가 소유하고 있습니다. 지금 변경점을 기록할 수 있으며, 소유주가 다음에 앱을 열 때 덱에 저장할 수 있는 기회가 "
+"주어집니다."
+
+msgid "Time Passed"
+msgstr "흐른 시간"
+
+msgid "Bearer"
+msgstr ""
+
+msgid "You cannot have more than 5 Seeker and/or Survivor cards"
+msgstr "탐구자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "You cannot have more than 5 Mystic and/or Survivor cards"
+msgstr "신비주의자 그리고/또는 생존자인 카드를 5장보다 많이 포함할 수 없습니다."
+
+msgid "Fan-made Investigators"
+msgstr "팬 제작 조사자"
+
+msgid "Fortune and Folly"
+msgstr ""
+
+msgid "Challenge Scenarios"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
-msgstr "커스텀 조사자"
+msgstr "맞춤형 조사자"
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
@@ -5761,6 +6006,7 @@ msgstr[0] ""
 "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 육체적 트라우마를 ${ "
 "effect.physical } 받습니다."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
@@ -5778,6 +6024,7 @@ msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ physical } 회복합니다."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
@@ -5815,7 +6062,6 @@ msgid ""
 "Campaign Log."
 msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
@@ -5850,6 +6096,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
@@ -5880,6 +6127,7 @@ msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -5917,10 +6165,12 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
@@ -5969,6 +6219,104 @@ msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ "
 "sectionName }</b> 항목을 읽어야만 합니다."
 
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr "생존"
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr "후퇴"
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr "쓰러짐: 육체적 트라우마"
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr "쓰러짐: 정신적 트라우마"
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr "쓰러짐: 트라우마 없음"
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr "육체적 트라우마"
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr "정신적 트라우마"
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr "쓰러짐"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+"${ investigator.name } 조사자는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 "
+"선택합니다)</i>."
+
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+"${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 육체적 트라우마를 ${ "
+"effect.physical } 받습니다."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ physical } 회복합니다."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ effect.physical } 받습니다."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
+
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
+
 msgctxt "Traits"
 msgid "All"
 msgstr "전부"
@@ -6016,7 +6364,7 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "Fan-made cards + Barkham Horror"
-msgstr "멍컴호러 및 팬 제작 콘텐츠"
+msgstr "멍컴호러 및 비정규 · 팬 제작 콘텐츠"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6047,8 +6395,8 @@ msgid ""
 "cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, "
 "these custom cards will be hidden."
 msgstr ""
-"- '팬 제작' 카드(<i>멍컴호러</i> 포함)가 포함된 덱은 아컴디비에 업로드하거나 저장할 수 없습니다. 아컴디비 덱을 편집할 때 "
-"이러한 커스텀 카드들은 숨겨집니다."
+"- '비정규 · 팬 제작' 카드(<i>멍컴호러</i> 포함)가 포함된 덱은 아컴디비에 업로드하거나 저장할 수 없습니다. 아컴디비 덱을 "
+"편집할 때 이러한 비정규 · 팬 제작 카드들은 숨겨집니다."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6268,7 +6616,7 @@ msgstr "- Crown of Egil (제작자: The Mad Juggler / 한국어화 지원 없음
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr "- Call of the Plaguebearer (제작자: Walker Graves / 한국어화 지원 없음)"
+msgstr "- Call of the Plaguebearer (제작자: Walker Graves / 한국어화: ´허걱이´님)"
 
 msgctxt "releaseNotes"
 msgid "As for standalone scenarios:"
@@ -6327,48 +6675,85 @@ msgid ""
 "you sign into your Arkham Cards account your settings will now sync between "
 "devices automatically!"
 msgstr ""
-"하나 이상의 장치에서 아컴카드 앱을 사용하는 플레이어에게 희소식입니다. 이제 아컴카드 "
-"계정에 로그인하면 장치 간에 설정 값이 자동으로 동기화됩니다!"
+"하나 이상의 장치에서 아컴카드 앱을 사용하는 플레이어에게 희소식입니다. 이제 아컴카드 계정에 로그인하면 장치 간에 설정 값이 자동으로 "
+"동기화됩니다!"
 
 msgctxt "releaseNotes"
 msgid ""
 "- This includes your collection + spoiler settings, as well as many general "
 "app preferences."
-msgstr ""
-"- 이는 앱의 일반적인 설정 값들 뿐만 아니라, 당신의 보유게임 목록과 조우 스포일러에 대한 "
-"설정 값들을 포함합니다."
+msgstr "- 이는 앱의 일반적인 설정 값들 뿐만 아니라, 당신의 보유게임 목록과 조우 스포일러에 대한 설정 값들을 포함합니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "I've had some reports of slower performance on some devices, and have a new "
 "<i>\"Low Memory Mode\"</i> setting to try out."
-msgstr ""
-"몇몇 장치에 대해 성능이 느리다는 제보를 받아, <i>“메모리 절감 모드”</i>로 동작하도록 "
-"시도하는 설정을 추가하였습니다."
-
+msgstr "몇몇 장치에 대해 성능이 느리다는 제보를 받아, <i>“메모리 절감 모드”</i>로 동작하도록 시도하는 설정을 추가하였습니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "- If you've been experiencing slow app behavior in anyway, please try it "
 "out."
-msgstr ""
-"- 앱 동작이 느려졌던 경험이 있다면, 이 설정을 시도해보시길 바랍니다."
+msgstr "- 앱 동작이 느려졌던 경험이 있다면, 이 설정을 시도해보시길 바랍니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "- And if you try it out, send me an email at arkhamcards@gmail.com, I would "
 "love to hear how it is working in the wild."
-msgstr ""
-"- 만약 이를 시도해보았다면, arkhamcards@gmail.com으로 이메일을 보내주세요. 실제로 "
-"어떻게 작동했는지 듣고 싶습니다."
+msgstr "- 만약 이를 시도해보았다면, arkhamcards@gmail.com으로 이메일을 보내주세요. 실제로 어떻게 작동했는지 듣고 싶습니다."
 
 msgctxt "releaseNotes"
 msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
+msgstr "그 외에도 진홍색 열쇠 확장에서 발표된 새로운 메커니즘을 지원하기 위해 작업 중에 있습니다. 계속 지켜봐주시기 바랍니다."
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr "거석의 근간"
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr "이번 릴리즈에는 “거석의 근간(제작자: The Beard / 한국어화: ´허걱이´님)”이라는 팬 제작 캠페인이 새로이 추가되었습니다."
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr "- 모든 게임 설정 및 결말에 대한 완전한 가이드가 포함되어 있습니다."
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
 msgstr ""
-"그 외에도 진홍색 열쇠 확장에서 발표된 새로운 메커니즘을 지원하기 위해 작업 중에 "
-"있습니다. 계속 지켜봐주시기 바랍니다."
+"또한 이번 업데이트에서는 “The Colour Out of Space(한국어화 미지원)”라는 팬 제작 독립 시나리오에 대한 지원도 "
+"추가되었습니다."
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr "선공개 카드"
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr "이번 릴리즈를 통하여 선공개 카드에 더 빠르게 접근할 수 있습니다."
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr "- 진홍색 열쇠 조사자 확장에서 선공개된 <b>맞춤형</b> 카드를 포함합니다."
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
+msgstr ""
+"- 아컴디비 사이트와의 호환성을 유지하기 위해 이 카드들은 아직 기본적으로는 보이지 않습니다. <i>설정</i> 탭에서 <b>멍컴호러 "
+"및 비정규 · 팬 제작 콘텐츠 보기</b>를 활성화하면 해당 카드들을 선택할 수 있게 됩니다."
 
 msgctxt "trait"
 msgid "???"
@@ -6544,7 +6929,7 @@ msgstr "클로버 클럽"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "해안가"
 
 msgctxt "trait"
 msgid "Composure"
@@ -6784,7 +7169,7 @@ msgstr "사술"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "은신처"
 
 msgctxt "trait"
 msgid "Historical Society"
@@ -6804,7 +7189,7 @@ msgstr "사냥꾼"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "혼혈"
 
 msgctxt "trait"
 msgid "Illicit"
@@ -6844,7 +7229,7 @@ msgstr "악기"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "섬"
 
 msgctxt "trait"
 msgid "Item"
@@ -6912,7 +7297,7 @@ msgstr "미고"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr ""
+msgstr "중심가"
 
 msgctxt "trait"
 msgid "Miskatonic"
@@ -6964,7 +7349,7 @@ msgstr "비술"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "해양"
 
 msgctxt "trait"
 msgid "Omen"
@@ -7104,7 +7489,7 @@ msgstr "강변"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "도로"
 
 msgctxt "trait"
 msgid "Ruins"
@@ -7232,7 +7617,7 @@ msgstr "표면"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "용의자"
 
 msgctxt "trait"
 msgid "Syndicate"
@@ -7316,7 +7701,7 @@ msgstr "계곡"
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "탑승물"
 
 msgctxt "trait"
 msgid "Venice"
@@ -7364,7 +7749,7 @@ msgstr "숲"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr ""
+msgstr "이하 느틀레이"
 
 msgctxt "trait"
 msgid "Yithian"
@@ -7400,11 +7785,11 @@ msgstr "사업가"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "송골매 곶"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "침소"
 
 msgctxt "trait"
 msgid "Nostalgia II"
@@ -7442,6 +7827,206 @@ msgctxt "trait"
 msgid "Resolute"
 msgstr ""
 
+msgctxt "trait"
+msgid "Ally? Creature"
+msgstr "조력자? 생물"
+
+msgctxt "trait"
+msgid "Bad dog"
+msgstr "이 개놈아!"
+
+msgctxt "trait"
+msgid "Castle"
+msgstr "성"
+
+msgctxt "trait"
+msgid "Chair"
+msgstr "의자"
+
+msgctxt "trait"
+msgid "Chess"
+msgstr "체스"
+
+msgctxt "trait"
+msgid "Classy"
+msgstr "세련된"
+
+msgctxt "trait"
+msgid "Consort"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corpse"
+msgstr "시체"
+
+msgctxt "trait"
+msgid "Coterie"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dilemma"
+msgstr "딜레마"
+
+msgctxt "trait"
+msgid "Downtown"
+msgstr "번화가"
+
+msgctxt "trait"
+msgid "Eidolon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Elder Thing"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrance"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fellow Dogs"
+msgstr "개 친구들"
+
+msgctxt "trait"
+msgid "Footwear, but not really"
+msgstr "신발(못 신는다)"
+
+msgctxt "trait"
+msgid "Glacier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Infection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machine"
+msgstr "기계"
+
+msgctxt "trait"
+msgid "Madness?"
+msgstr "정신이상?"
+
+msgctxt "trait"
+msgid "Mainland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mirage"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountains"
+msgstr ""
+
+msgctxt "trait"
+msgid "Music"
+msgstr "음악"
+
+msgctxt "trait"
+msgid "Musician"
+msgstr "음악가"
+
+msgctxt "trait"
+msgid "Northside"
+msgstr "북부"
+
+msgctxt "trait"
+msgid "Parasitic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Past"
+msgstr ""
+
+msgctxt "trait"
+msgid "Possessed"
+msgstr "홀린"
+
+msgctxt "trait"
+msgid "Present"
+msgstr ""
+
+msgctxt "trait"
+msgid "Priestess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pup"
+msgstr "멍멍이"
+
+msgctxt "trait"
+msgid "Resonant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Restricted"
+msgstr "제한구역"
+
+msgctxt "trait"
+msgid "Row"
+msgstr "칸"
+
+msgctxt "trait"
+msgid "Scientist"
+msgstr "과학자"
+
+msgctxt "trait"
+msgid "Shapeshifter"
+msgstr "맞춤형 조사자"
+
+msgctxt "trait"
+msgid "Sister"
+msgstr ""
+
+msgctxt "trait"
+msgid "Slope"
+msgstr "경사"
+
+msgctxt "trait"
+msgid "Soldier"
+msgstr "병사"
+
+msgctxt "trait"
+msgid "Stop"
+msgstr "거기 서!"
+
+msgctxt "trait"
+msgid "Table"
+msgstr "탁자"
+
+msgctxt "trait"
+msgid "That's bad"
+msgstr ""
+
+msgctxt "trait"
+msgid "Traitor"
+msgstr "배신자"
+
+msgctxt "trait"
+msgid "Tulgey Wood"
+msgstr "털진 숲"
+
+msgctxt "trait"
+msgid "Uncharted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Underground"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upper Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weather"
+msgstr "날씨"
+
+msgctxt "trait"
+msgid "What? No"
+msgstr "뭐? 안 돼"
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -7458,6 +8043,14 @@ msgstr "조사자"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "전부"
+
+msgctxt "cost"
+msgid "Even"
+msgstr "짝수"
+
+msgctxt "cost"
+msgid "Odd"
+msgstr "홀수"
 
 msgctxt "Actions"
 msgid "All"
@@ -7503,13 +8096,26 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "전부"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "없음"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr "현재 - ${ latestTabooSet.name }"
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr "현재"
+
 msgctxt "slots"
 msgid "None"
 msgstr "없음"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr ""
+msgstr "비난"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
@@ -7590,9 +8196,26 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "시나리오"
 
-msgctxt "Taboo List"
+msgctxt "header"
+msgid "Key"
+msgid_plural "Keys"
+msgstr[0] ""
+
+msgctxt "Tarot Card"
 msgid "None"
 msgstr "없음"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "심판 · XX (정위치)"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "심판 · XX (역위치)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "VS"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
@@ -7683,21 +8306,9 @@ msgctxt "trauma"
 msgid "None"
 msgstr "없음"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "없음"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "심판 · XX (정위치)"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "심판 · XX (역위치)"
-
 msgctxt "campaign"
 msgid "Custom"
-msgstr "커스텀 캠페인"
+msgstr "비정규 · 팬 제작 캠페인"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
@@ -7707,10 +8318,6 @@ msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "독립 시나리오"
 
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "VS"
-
 msgctxt "scenario"
 msgid "Custom"
-msgstr "커스텀 시나리오"
+msgstr "비정규 · 팬 제작 시나리오"

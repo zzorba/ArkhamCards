@@ -36,6 +36,12 @@ function basicQuery(q: CardSearchQuery): Brackets[] {
   const result: Brackets[] = [
     ...(q.traits ? FILTER_BUILDER.traitFilter(q.traits, false) : []),
   ];
+  if (q.types?.length) {
+    const typeQuery = FILTER_BUILDER.equalsVectorClause(q.types, 'type_code');
+    if (typeQuery.length) {
+      result.push(typeQuery[0]);
+    }
+  }
   if (q.unique) {
     result.push(UNIQUE_FILTER);
   }
@@ -57,7 +63,7 @@ function mainQuery(
 ): Brackets | undefined {
   const queries = flatMap(query, q => {
     if (q.code) {
-      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code']);
+      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code'], true);
     }
     switch (q.source) {
       case 'scenario': {
@@ -168,13 +174,14 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
     if (selectedCards === undefined) {
       // No choice yet, so pull up everything possible.
       const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators, latestDecks);
-      return combineQueriesOpt(
-        [
-          ...(queryOpt ? [queryOpt] : []),
-          ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
-        ],
-        'or'
-      );
+      const parts = [
+        ...(queryOpt ? [queryOpt] : []),
+        ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
+      ];
+      if (!parts.length) {
+        return undefined;
+      }
+      return combineQueriesOpt(parts, 'or');
     }
     // They've already decided, so only fetch what they already chose.
     return where('c.code in (:...codes)', { codes: selectedCards });
@@ -202,14 +209,24 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
         <CounterListComponent
           id={id}
           countText={input.choices[0].text}
-          loading={loading}
+          loading={!!query && loading}
           items={map(filteredCards, card => {
             return {
               code: card.code,
               name: card.name,
+              description: card.subname,
               limit: card.quantity || 1,
             };
           })}
+          button={(nonDeckButton && selectedCards === undefined) ? (
+            <ActionButton
+              color="light"
+              leftIcon="plus-button"
+              title={c('card-chooser').t`Choose additional`}
+              onPress={showOtherCardSelector}
+              shrinkText
+            />
+          ) : undefined}
         />
       </>
     );
@@ -225,7 +242,8 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
             return {
               code: card.code,
               name: card.name,
-              masculine: card.grammarGenderMasculine(),
+              description: card.subname,
+              gender: card.gender,
             };
           })}
           loading={loading}
@@ -249,6 +267,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
         return {
           code: card.code,
           name: card.name,
+          description: card.subname,
         };
       })}
       min={input.min}

@@ -15,15 +15,18 @@ interface Props {
   step: InputStep;
   input: InvestigatorChoiceInput;
   campaignLog: GuidedCampaignLog;
+  min?: number;
+  max?: number;
 }
 
-export default function InvestigatorChoiceInputComponent({ step, input, campaignLog }: Props) {
+export default function InvestigatorChoiceInputComponent({ step, input, campaignLog, min, max }: Props) {
   const [investigators, investigatorCodes] = useMemo(() => {
     const allInvestigators = campaignLog.investigators(false)
     if (!input.condition) {
       const selectedInvestigators = filter(allInvestigators, c => {
         switch (input.investigator) {
           case 'resigned': return campaignLog.resigned(c.code);
+          case 'defeated': return campaignLog.isDefeated(c.code);
           case 'not_defeated': return !campaignLog.isDefeated(c.code);
           default: return true;
         }
@@ -48,35 +51,49 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
   if (input.special_mode === 'sequential') {
     const investigatorOffset = iteration;
     return (
-      <InvestigatorChoicePrompt
-        id={step.id}
-        text={step.text}
-        promptType={step.prompt_type}
-        confirmText={input.confirm_text}
-        bulletType={step.bullet_type}
-        options={investigatorChoiceInputChoices(input, campaignLog)}
-        hideInvestigatorSection
-        detailed
-        investigator={investigators[investigatorOffset]}
-        investigators={slice(
-          investigators,
-          investigatorOffset,
-          investigatorOffset + 1
-        )}
-        optional={input.investigator === 'choice'}
-      />
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <InvestigatorChoicePrompt
+          id={step.id}
+          text={step.text}
+          promptType={step.prompt_type}
+          confirmText={input.confirm_text}
+          bulletType={step.bullet_type}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          hideInvestigatorSection
+          detailed
+          investigator={investigators[investigatorOffset]}
+          investigators={slice(
+            investigators,
+            investigatorOffset,
+            investigatorOffset + 1
+          )}
+          optional={input.investigator === 'choice'}
+        />
+      </>
     );
   }
   if (input.investigator === 'any') {
     const choice = input.choices[0];
     return (
-      <ChooseInvestigatorPrompt
-        id={step.id}
-        title={choice.text}
-        choiceId={choice.id}
-        investigators={investigatorCodes}
-        required
-      />
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <ChooseInvestigatorPrompt
+          id={step.id}
+          title={choice.text}
+          choiceId={choice.id}
+          investigators={investigatorCodes}
+          required
+        />
+      </>
     );
   }
   if (input.choices.length === 1 && (
@@ -99,23 +116,30 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           checkText={choice.text}
           confirmText={choice.selected_text}
           investigators={choices.type === 'personalized' ? keys(choices.perCode) : investigatorCodes}
-          min={input.investigator === 'choice' && !input.optional ? 1 : 0}
-          max={4}
+          min={min || (input.investigator === 'choice' && !input.optional ? 1 : 0)}
+          max={max || 4}
         />
       </>
     );
   }
   const options = investigatorChoiceInputChoices(input, campaignLog);
   return (
-    <InvestigatorChoicePrompt
-      id={step.id}
-      text={step.text}
-      promptType={step.prompt_type}
-      bulletType={step.bullet_type}
-      investigators={investigators}
-      options={options}
-      detailed={input.special_mode === 'detailed'}
-      optional={input.investigator === 'choice'}
-    />
+    <>
+      { !!step.text && (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent text={step.text} />
+        </SetupStepWrapper>
+      ) }
+      <InvestigatorChoicePrompt
+        id={step.id}
+        text={step.text}
+        promptType={step.prompt_type}
+        bulletType={step.bullet_type}
+        investigators={investigators}
+        options={options}
+        detailed={input.special_mode === 'detailed'}
+        optional={input.investigator === 'choice'}
+      />
+    </>
   );
 }

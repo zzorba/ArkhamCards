@@ -1,97 +1,154 @@
 [
   {
+    "type": "campaign",
+    "campaignId": "fof"
+  },
+  {
+    "type": "campaign",
+    "campaignId": "gob"
+  },
+  {
+    "type": "scenario",
     "campaignId": "core",
     "scenarioId": "arkham"
   },
   {
+    "type": "scenario",
     "campaignId": "ptc",
     "scenarioId": "the_last_king"
   },
   {
+    "type": "scenario",
     "campaignId": "ptc",
     "scenarioId": "the_pallid_mask"
   },
   {
+    "type": "scenario",
     "campaignId": "ptc",
     "scenarioId": "the_unspeakable_oath"
   },
   {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "against_the_wendigo"
+  },
+  {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "all_or_nothing"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "bad_blood"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "blob_that_ate_everything"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "by_the_book"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "carnevale_of_horrors"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "consternation_on_the_constellation"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "curse_of_the_rougarou"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "in_the_labyrinths_of_lunacy"
   },
   {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "jennys_choice"
+  },
+  {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "machinations_through_time"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "meddling_of_meowlathotep"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "murder_at_the_excelsior_hotel"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "read_or_die"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "red_tide_rising"
   },
   {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "the_black_stone"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "the_colour_out_of_space"
+  },
+  {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "the_eternal_slumber"
   },
   {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "the_fall_of_the_house_of_usher"
+  },
+  {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "the_nights_usurper"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "the_symphony_of_erich_zann"
   },
   {
+    "type": "scenario",
     "campaignId": "side",
     "scenarioId": "war_of_the_outer_gods"
   },
   {
+    "type": "scenario",
     "campaignId": "tdea",
     "scenarioId": "the_search_for_kadath"
   },
   {
+    "type": "scenario",
     "campaignId": "tfa",
     "scenarioId": "the_depths_of_yoth"
   },
   {
+    "type": "scenario",
     "campaignId": "tfa",
     "scenarioId": "threads_of_fate"
   }

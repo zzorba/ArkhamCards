@@ -44,6 +44,7 @@ export default function useGuideChaosBag({ campaignId, scenarioId, standalone, p
       return undefined;
     }
     const lines = text?.split('\n');
+    console.log(lines);
     if (!lines.length) {
       return undefined;
     }

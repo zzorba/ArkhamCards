@@ -72,7 +72,7 @@ function useAdvancedTextEditDialog({
   const [isCrossedOut, initialText] = useMemo(() => {
     const isCrossedOut = !!(showCrossOut && originalText) && startsWith(originalText, '~');
     setHeight(40);
-    return [isCrossedOut, isCrossedOut ? originalText.substr(1) : originalText];
+    return [isCrossedOut, isCrossedOut ? originalText.substring(1) : originalText];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showCrossOut, originalText, setHeight, visible]);
 

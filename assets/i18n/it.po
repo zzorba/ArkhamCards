@@ -6,11 +6,13 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
-"mime-version: 1.0\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Guardian"
 msgstr "Guardiano"
@@ -27,7 +29,6 @@ msgstr "Canaglia"
 msgid "Survivor"
 msgstr "Sopravvissuto"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "Neutrale"
 
@@ -40,7 +41,6 @@ msgstr "Miti"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "Investigatore"
 
@@ -1536,9 +1536,6 @@ msgstr "Multiplayer"
 msgid "Standalone"
 msgstr "Scenari Autoconclusivi"
 
-msgid "Debug Card Json"
-msgstr "Debug Card Json"
-
 msgid "Debug"
 msgstr "Debug"
 
@@ -2054,7 +2051,6 @@ msgstr "Se l’investigatore capo è <b>ucciso</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "Se tutti gli investigatori sono <b>uccisi</b>."
 
-#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Controllate gli ${ logEntry.section }. Se <i>${ logEntry.text }</i>"
 
@@ -2223,9 +2219,6 @@ msgstr[1] ""
 
 msgid "Import data"
 msgstr "Importa i dati"
-
-msgid "Side stories"
-msgstr "Storie secondarie"
 
 #, javascript-format
 msgid ""
@@ -2454,7 +2447,6 @@ msgstr "${ investigator.name } perde ${ card.name }"
 msgid "Challenge Scenario"
 msgstr "Scenario Sfida"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name } Scenario Sfida"
 
@@ -2949,17 +2941,17 @@ msgstr "Selettore Carte Incontro"
 msgid "Show all available cards"
 msgstr "Mostra tutte le carte disponibili"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "Combatti: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "Salute: ${ health } per investigatore"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "Salute: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "Evadi: ${ evade }"
 
@@ -3161,10 +3153,6 @@ msgid "Signature Weakness"
 msgstr "Debolezza Caratteristica"
 
 #, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "Costo: ${ json.cost }"
-
-#, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "Mostra ${ nonCollectionCount } carta non in collezione"
@@ -3343,19 +3331,6 @@ msgstr "Nuovo Scenario autoconclusivo"
 
 msgid "Create Standalone"
 msgstr "Crea Scenario autoconclusivo"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "Il Camaleonte"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"Questo è un investigatore personalizzato per consentire la costruzione di "
-"mazzi arbitrari.\n"
-"[elder_sign]: + X dove X è quello che vuoi che sia."
 
 msgid "Asset Filters"
 msgstr "Filtro Supporti"
@@ -4082,9 +4057,6 @@ msgstr ""
 msgid "Later"
 msgstr "Più tardi"
 
-msgid "Fan-Made Content"
-msgstr "Contenuto “Fan-made”"
-
 msgid "Fetching account details..."
 msgstr "Recupero i dettagli dell’Account…"
 
@@ -4177,9 +4149,6 @@ msgstr ""
 msgid "Fan-Made Campaigns"
 msgstr "Campagne “Fan-made”"
 
-msgid "Promotional"
-msgstr "Promoziale"
-
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "Non puoi avere più di 5 carte che non siano Guardiano o Neutrali"
 
@@ -4255,26 +4224,8 @@ msgstr "(nuovo totale: ${ total })"
 msgid "Earned XP:"
 msgstr "PE ottenuti:"
 
-msgid "Not deck owner"
-msgstr "Non proprietario del mazzo"
-
 msgid "Saved"
 msgstr "Salvato"
-
-#, javascript-format
-msgid ""
-"This deck is owned by ${ deck.owner.handle }. They must open the app on "
-"their own device to save the upgrade"
-msgstr ""
-"Il proprietario del mazzo è ${ deck.owner.handle }. Deve aprire l’App sul "
-"proprio dispositivo per salvare l’aggiornamento"
-
-msgid ""
-"This deck is owned by another user. They must open the app on their own "
-"device to save the upgrade"
-msgstr ""
-"Il mazzo è di proprietà di un altro utente. Deve aprire l’App sul proprio "
-"dispositivo per salvare l’aggiornamento"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
@@ -4328,9 +4279,6 @@ msgstr ""
 msgid "Learn more"
 msgstr "Maggiori informazioni"
 
-msgid "Save will update your deck with the card changes listed above."
-msgstr "“Salva” aggiornerà il mazzo con le modifiche alla carte elencate sopra."
-
 msgid "Campaign log"
 msgstr "Diario della Campagna"
 
@@ -4379,6 +4327,7 @@ msgstr "Saranno pescate debolezze casuali che corrispondono a questi tratti."
 msgid "Edit selection"
 msgstr "Modifica la selezione"
 
+#, javascript-format
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "Controllate il Diario della Campagna. <i>Se ${ logEntry.text }</i>"
 
@@ -4536,12 +4485,6 @@ msgstr "Difficoltà: Difficile"
 
 msgid "Expert difficulty"
 msgstr "Difficoltà: Esperto"
-
-msgid "— Difficulty —"
-msgstr "— Difficoltà —"
-
-msgid "— Available Scenarios —"
-msgstr "— Scenari Disponibili —"
 
 msgid "Scenario settings"
 msgstr "Impostazioni dello scenario"
@@ -5463,18 +5406,6 @@ msgstr ""
 msgid "Deck contains custom content"
 msgstr ""
 
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
-msgstr ""
-
 msgid "Player"
 msgstr ""
 
@@ -5866,10 +5797,6 @@ msgstr ""
 msgid "Lucid Nightmare"
 msgstr ""
 
-#, javascript-format
-msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr ""
-
 msgid "Delete your account"
 msgstr ""
 
@@ -5960,6 +5887,324 @@ msgstr ""
 msgid "The Scarlet Keys"
 msgstr ""
 
+#, javascript-format
+msgid "Name ${ quantity } card"
+msgid_plural "Name ${ quantity } cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Named card"
+msgid_plural "Named cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "In deck"
+msgstr ""
+
+msgid "Select additional cards"
+msgstr ""
+
+msgid "Map"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }"
+msgstr ""
+
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr ""
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add trait"
+msgstr ""
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Embark"
+msgstr ""
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr ""
+
+msgid "Depart"
+msgstr ""
+
+msgid "Choose destination"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr ""
+
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgid "Lost Moorings"
+msgstr ""
+
+msgid "Going Twice"
+msgstr ""
+
+msgid "Private Lives"
+msgstr ""
+
+msgid "Crumbling Masonry"
+msgstr ""
+
+msgid "A House Divided"
+msgstr ""
+
+msgid "Across Dreaful Waters"
+msgstr ""
+
+msgid "Blood From Stones"
+msgstr ""
+
+msgid "Pyroclastic Flow"
+msgstr ""
+
+msgid "Tomb of Dead Dreams"
+msgstr ""
+
+msgid "Cultists Alive"
+msgstr ""
+
+msgid "Cultists Killed"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Jenny's Choice"
+msgstr ""
+
+msgid "The Fall of the House of Usher"
+msgstr ""
+
+msgid "Against the Wendigo"
+msgstr ""
+
+msgid "Non-canon Content"
+msgstr ""
+
+msgid "Fan-made Campaigns"
+msgstr ""
+
+msgid "Fan-made Scenarios"
+msgstr ""
+
+msgid "Currently here"
+msgstr ""
+
+msgid "Already visited"
+msgstr ""
+
+msgid "Travel here"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+#, javascript-format
+msgid "Departing from ${ location }"
+msgstr ""
+
+msgid "Customization upgrades"
+msgstr ""
+
+msgid "Special discounts"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Difficulty override"
+msgstr ""
+
+msgid "Easy / Standard"
+msgstr ""
+
+msgid "Hard / Expert"
+msgstr ""
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr ""
+
+msgid "Select scenario effects difficulty"
+msgstr ""
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Use campaign setting"
+msgstr ""
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr ""
+
+msgid "Recomputing deck changes..."
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
+msgid "Deleteing ArkhamDB accounts"
+msgstr ""
+
+msgid ""
+"ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
+"only allows you to sign into existing ArkhamDB accounts.\n"
+"\n"
+"If you would like to delete your account, please contact the webmaster of "
+"ArkhamDB at arkhamdb@kamalisk.com"
+msgstr ""
+
+msgid "Requeset Account Deletion"
+msgstr ""
+
+msgid "Delete Account"
+msgstr ""
+
+msgid "Choose a skill"
+msgstr ""
+
+msgid "Use the embark button below"
+msgstr ""
+
+msgid "Review the world map"
+msgstr ""
+
+msgid "Claim previous rewards"
+msgstr ""
+
+msgid "Apply changes from last completed scenario or interlude"
+msgstr ""
+
+msgid "This is a side-story location."
+msgstr ""
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time"
+msgid_plural "Travel cost: ${ travelDistance } time"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Do you want to use the app to randomize choices?"
+msgstr ""
+
+#, javascript-format
+msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
+msgstr ""
+
+msgid "Mark ${ time } <b>time</b> in your Campaign Log."
+msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "This includes the cost of experience cost of playing the side-story."
+msgstr ""
+
+msgid ""
+"This deck is owned by another player. You can record the changes now and "
+"they will be given an opportunity to save them to their deck when they next "
+"open the app."
+msgstr ""
+
+msgid "Time Passed"
+msgstr ""
+
+msgid "Bearer"
+msgstr ""
+
+msgid "You cannot have more than 5 Seeker and/or Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Mystic and/or Survivor cards"
+msgstr ""
+
+msgid "Fan-made Investigators"
+msgstr ""
+
+msgid "Fortune and Folly"
+msgstr ""
+
+msgid "Challenge Scenarios"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -5969,7 +6214,6 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzito</b>."
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } è <b>ucciso</b>."
@@ -5998,6 +6242,7 @@ msgstr[1] ""
 "${ investigator.name } subisce ${ effect.mental } traumi mentali e ${ "
 "effect.physical } traumi fisici."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
@@ -6018,6 +6263,7 @@ msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } cura ${ physical } trauma fisico."
 msgstr[1] "${ investigator.name } cura ${ physical } traumi fisici."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
@@ -6058,7 +6304,6 @@ msgstr ""
 "Se <i>${ card.name }</i> non è presente nel Diario della Campagna alla voce "
 "“${ entry.section }”."
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
@@ -6101,6 +6346,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } è <b>impazzita</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } è <b>uccisa</b>."
@@ -6135,6 +6381,7 @@ msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } cura ${ mental } trauma mentale."
 msgstr[1] "${ investigator.name } cura ${ mental } traumi mentali."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -6175,10 +6422,12 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "Sconfitta: nessun trauma"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } reads <b>${ sectionName }</b>"
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
@@ -6236,6 +6485,115 @@ msgstr[0] ""
 msgstr[1] ""
 "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ "
 "sectionName }</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } è <b>impazzito</b>."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } è <b>ucciso</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+"${ investigator.name } subisce 1 trauma fisico o mentale <i>(a sua "
+"scelta)</i>."
+
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+"${ investigator.name } subisce ${ effect.mental } trauma mentale e ${ "
+"effect.physical } trauma fisico."
+msgstr[1] ""
+"${ investigator.name } subisce ${ effect.mental } traumi mentali e ${ "
+"effect.physical } traumi fisici."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } cura ${ mental } trauma mentale."
+msgstr[1] "${ investigator.name } cura ${ mental } traumi mentali."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } subisce ${ effect.mental } trauma mentale."
+msgstr[1] "${ investigator.name } subisce ${ effect.mental } traumi mentali."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } cura ${ physical } trauma fisico."
+msgstr[1] "${ investigator.name } cura ${ physical } traumi fisici."
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } subisce ${ effect.physical } trauma fisico."
+msgstr[1] "${ investigator.name } subisce ${ effect.physical } traumi fisici."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr "Vivo"
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr "Abbandonato"
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr "Sconfitto: trauma fisico"
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr "Sconfitto: trauma mentale"
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr "Sconfitto: nessuna trauma"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } legge <b>${ sectionName }</b>"
+
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+"Se <i>${ card.name }</i> non è presente nel Diario della Campagna alla voce "
+"“${ entry.section }”."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr ""
+"Se <i>${ card.name }</i> è presente nel Diario della Campagna alla voce “${ "
+"entry.section }”."
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr "Traumi Fisici"
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr "Traumi Mentali"
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr "Sconfitto"
 
 msgctxt "Traits"
 msgid "All"
@@ -6573,6 +6931,49 @@ msgctxt "releaseNotes"
 msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
 msgstr ""
 
 msgctxt "trait"
@@ -7647,6 +8048,206 @@ msgctxt "trait"
 msgid "Resolute"
 msgstr ""
 
+msgctxt "trait"
+msgid "Ally? Creature"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bad dog"
+msgstr ""
+
+msgctxt "trait"
+msgid "Castle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Classy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Consort"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corpse"
+msgstr ""
+
+msgctxt "trait"
+msgid "Coterie"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dilemma"
+msgstr ""
+
+msgctxt "trait"
+msgid "Downtown"
+msgstr ""
+
+msgctxt "trait"
+msgid "Eidolon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Elder Thing"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrance"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fellow Dogs"
+msgstr ""
+
+msgctxt "trait"
+msgid "Footwear, but not really"
+msgstr ""
+
+msgctxt "trait"
+msgid "Glacier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Infection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machine"
+msgstr ""
+
+msgctxt "trait"
+msgid "Madness?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mainland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mirage"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountains"
+msgstr ""
+
+msgctxt "trait"
+msgid "Music"
+msgstr ""
+
+msgctxt "trait"
+msgid "Musician"
+msgstr ""
+
+msgctxt "trait"
+msgid "Northside"
+msgstr ""
+
+msgctxt "trait"
+msgid "Parasitic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Past"
+msgstr ""
+
+msgctxt "trait"
+msgid "Possessed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Present"
+msgstr ""
+
+msgctxt "trait"
+msgid "Priestess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pup"
+msgstr ""
+
+msgctxt "trait"
+msgid "Resonant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Restricted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Row"
+msgstr ""
+
+msgctxt "trait"
+msgid "Scientist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shapeshifter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sister"
+msgstr ""
+
+msgctxt "trait"
+msgid "Slope"
+msgstr ""
+
+msgctxt "trait"
+msgid "Soldier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stop"
+msgstr ""
+
+msgctxt "trait"
+msgid "Table"
+msgstr ""
+
+msgctxt "trait"
+msgid "That's bad"
+msgstr ""
+
+msgctxt "trait"
+msgid "Traitor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tulgey Wood"
+msgstr ""
+
+msgctxt "trait"
+msgid "Uncharted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Underground"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upper Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weather"
+msgstr ""
+
+msgctxt "trait"
+msgid "What? No"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -7663,6 +8264,14 @@ msgstr "Investigatore"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "Tutti"
+
+msgctxt "cost"
+msgid "Even"
+msgstr ""
+
+msgctxt "cost"
+msgid "Odd"
+msgstr ""
 
 msgctxt "Actions"
 msgid "All"
@@ -7707,6 +8316,19 @@ msgstr "Tutti"
 msgctxt "Illustrators"
 msgid "All"
 msgstr "Tutti"
+
+msgctxt "Taboo List"
+msgid "None"
+msgstr "Nessuna"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr ""
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr ""
 
 msgctxt "slots"
 msgid "None"
@@ -7806,9 +8428,27 @@ msgid_plural "Scenarios"
 msgstr[0] "Scenario"
 msgstr[1] "Scenari"
 
-msgctxt "Taboo List"
+msgctxt "header"
+msgid "Key"
+msgid_plural "Keys"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "Tarot Card"
 msgid "None"
-msgstr "Nessuna"
+msgstr "Nessuno"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "Il Giudizio · XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "Il Giudizio · XX (Rovesciato)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "VS"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
@@ -7905,18 +8545,6 @@ msgctxt "trauma"
 msgid "None"
 msgstr "Nessuno"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "Nessuno"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "Il Giudizio · XX"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "Il Giudizio · XX (Rovesciato)"
-
 msgctxt "campaign"
 msgid "Custom"
 msgstr "Campagne"
@@ -7928,10 +8556,6 @@ msgstr ""
 msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "Scenari Autoconclusivi"
-
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"

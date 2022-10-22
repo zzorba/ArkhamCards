@@ -241,212 +241,212 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "погиб при крушении.",
+            "feminine_text": "погибла при крушении."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Лагерь — Лагерь на шельфе (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Лагерь — Снежные поля (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Лагерь — Место крушения (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Лагерь — Кристаллическая пещера (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Лагерь — Стылая пещера (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Лагерь — Мёрзлые берега (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Лагерь — "
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Лагерь — Ледяные пустоши (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Лагерь — Неустойчивый ледник (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Лагерь — Остатки лагеря Лейка (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Лагерь — Скалистые утёсы (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Лагерь — Снежные могилы (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Лагерь — Ненадёжная тропа (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Клейпул бросил вызов своим демонам."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "сыщики убедили Дайера одобрить экспедицию."
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Сухарь бросил вызов своим демонам."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Данфорт бросил вызов своим демонам."
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "сыщики не поверили отчёту Дайера."
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "Команда обнаружила древнее хранилище."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "у доктора Кенслер есть план."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "Доктор Кенслер бросила вызов своим демонам."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "Кенслер на пороге открытия."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "Кенслер делится с вами результатами исследований."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "Кенслер понимает истинную природу скверны."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "Доктор Синха бросила вызов своим демонам."
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Дайер бросил вызов своим демонам."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Илайя бросил вызов своим демонам."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Эллсворт бросил вызов своим демонам."
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "подземный комплекс уничтожен."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "неименуемое безумие вырвалось на свободу."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "неименуемое безумие сдержано внутри носителя… на какое-то время."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "Команда сфотографировала звёздные карты."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "команда изучила карту."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "сыщики разведали окраины города."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "сыщики разведали развилку в пещере."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "сыщики разведали горный проход."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "команда изучила стенные рельефы."
           },
           {
             "id": "surviving_investigators",
-            "text": "- #name#"
+            "text": "— #name#"
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "«Выжившие члены экспедиции:»"
           },
           {
             "id": "surviving_partners",
-            "text": "- #name#"
+            "text": "— #name#"
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Такада бросила вызов своим демонам."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "сыщики едва сбежали с шельфового ледника."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "сыщики поднялись на вершину."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "сыщики одолели напавших на них существ."
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "сыщики сбежали из подземелья Старцев."
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "сыщики сбежали в горы."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "сыщики нашли иной путь через горы."
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "сыщики нашли тайный ход."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "сыщиков вывели к тайному ходу."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "сыщики использовали печать не по назначению."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "правда о мираже ускользает от вас."
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# пропал без вести.",
+            "masculine_text": "#name# пропал без вести.",
+            "feminine_text": "#name# пропала без вести."
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Лагерь на шельфе"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Снежные поля"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Место крушения"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Кристаллическая пещера"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Стылая пещера"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Мёрзлые берега"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Ледокол"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Ледяные пустоши"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Неустойчивый ледник"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Остатки лагеря Лейка"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Скалистые утёсы"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Снежные могилы"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Ненадёжная тропа"
           }
         ]
       },
@@ -827,75 +827,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Аэродром"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Пустоши Аляски"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "Память о чуждых письменах"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Комната в общежитии"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Кабинет доктора Кенслер"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Аудитория Дайера"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "Память о неудачной охоте"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Госпиталь"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "Память о потерянном пациенте"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "Память о пропавшем отце"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Статуи моаи"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Турецкий фронт"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "Память о разорённой стране"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "Память о скорбной экспедиции"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "Память об ужасном открытии"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Чёрный камень"
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "Память о неразделённой любви"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "Память о невыразимом зле"
           }
         ]
       },
@@ -904,75 +904,75 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Аэродром"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Пустоши Аляски"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "Базовый лагерь"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Комната в общежитии"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "Прибрежные воды"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "Палуба «Феодосии»"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "Захолустная станция"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Кабинет доктора Кенслер"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Аудитория Дайера"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "Зал Старцев"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "Садовый лабиринт"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Госпиталь"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Статуи моаи"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Турецкий фронт"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "Кинотеатр «Ривервью»"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "Каменные столбы"
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "Чёрный камень"
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "Университетский коридор"
           }
         ]
       },
@@ -1031,31 +1031,167 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Динамит"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Зелёный мыльный камень"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Скверностный кристалл"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Образцы минералов"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Радиопередатчик"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Запасные части"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Деревянные сани"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "fof",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "dummy"
           }
         ]
       }
@@ -1071,12 +1207,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1262,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# одержим.",
-            "feminine_text": "#name# одержима."
+            "feminine_text": "#name# одержима.",
+            "nonbinary_text": "#name# одержим."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "nonbinary_text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1694,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name# одержим.",
-            "feminine_text": "#name# одержима."
+            "feminine_text": "#name# одержима.",
+            "nonbinary_text": "#name# одержим."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
-            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "nonbinary_text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +2065,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
-            "feminine_text": "#name# присоединилась к флейтистам Азатота."
+            "feminine_text": "#name# присоединилась к флейтистам Азатота.",
+            "nonbinary_text": "#name# присоединился к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2601,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "nonbinary_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",
@@ -2666,12 +2813,70 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# взят Бездной."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# взят Бездной.",
-            "feminine_text": "#name# взята Бездной."
+            "feminine_text": "#name# взята Бездной.",
+            "nonbinary_text": "#name# взят Бездной."
+          },
+          {
+            "id": "atw_bernards_fate",
+            "text": "you have discovered Bernard's fate."
+          },
+          {
+            "id": "atw_custodian_of_knowledge",
+            "text": "you are the custodian of Ithaqua's knowledge."
+          },
+          {
+            "id": "atw_defeated_the_wendigo",
+            "text": "you defated the Wendigo."
+          },
+          {
+            "id": "atw_discovered_the_fate_of_the_students",
+            "text": "you have discovered the fate of Dr. Nadelmann's students."
+          },
+          {
+            "id": "atw_found_the_gold",
+            "text": "you have found Hanninah's gold."
+          },
+          {
+            "id": "atw_have_enough_evidence",
+            "text": "you have enoughe evidence to clear Dr. Nadelmann."
+          },
+          {
+            "id": "atw_norman_alive",
+            "text": "Norman is alive."
+          },
+          {
+            "id": "atw_norman_dead",
+            "text": "You let Norman die."
+          },
+          {
+            "id": "atw_normans_fate",
+            "text": "you have discovered Norman's fate."
+          },
+          {
+            "id": "atw_sarcee_are_hunting",
+            "text": "the Sarcee are hunting you down."
+          },
+          {
+            "id": "atw_saved_charlie",
+            "text": "you saved Charlie."
+          },
+          {
+            "id": "atw_saved_the_gold_prospector",
+            "text": "you saved the gold prospector."
+          },
+          {
+            "id": "atw_sylvias_fate",
+            "text": "you have discovered Sylvia's fate."
+          },
+          {
+            "id": "atw_wendigo_still_roams",
+            "text": "you know that the Wendigo still roams the North Hanninah valley."
           },
           {
             "id": "blob_contained",
@@ -2680,6 +2885,10 @@
           {
             "id": "blob_devoured_universe",
             "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2700,6 +2909,78 @@
           {
             "id": "constellation_was_saved",
             "text": "«Созвездие» спасено."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2770,8 +3051,36 @@
             "text": "Бездна спасена."
           },
           {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
+          },
+          {
+            "id": "zcos_abandoned_the_people_of_eastwick",
+            "text": "you abandoned the people of Eastwick."
+          },
+          {
+            "id": "zcos_fended_off_an_alien_entity",
+            "text": "you fended off an alien entity."
+          },
+          {
+            "id": "zcos_slaughtered_the_people_of_eastwick",
+            "text": "you slaughtered the people of Eastwick."
+          },
+          {
             "id": "zez_all_is_quiet",
-            "text": "улица д'Осейль затихла... На время."
+            "text": "улица д'Осейль затихла… На время."
+          },
+          {
+            "id": "zhu_avenged_the_house_of_usher",
+            "text": "the investigators avenged the House of Usher."
+          },
+          {
+            "id": "zhu_house_of_usher_has_fallen",
+            "text": "the House of Usher has fallen."
           }
         ]
       },
@@ -2788,6 +3097,10 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "atw_added_tablet",
             "text": "dummy"
           },
           {
@@ -2815,7 +3128,51 @@
             "text": "dummy"
           },
           {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
             "text": "dummy"
           },
           {
@@ -2856,6 +3213,10 @@
           },
           {
             "id": "meh_the_truth",
+            "text": "dummy"
+          },
+          {
+            "id": "zjc_killed_jenny",
             "text": "dummy"
           }
         ]
@@ -3045,7 +3406,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# присоединился к флейтистам Азатота.",
-            "feminine_text": "#name# присоединилась к флейтистам Азатота."
+            "feminine_text": "#name# присоединилась к флейтистам Азатота.",
+            "nonbinary_text": "#name# присоединился к флейтистам Азатота."
           },
           {
             "id": "accepted_fate",
@@ -3331,12 +3693,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar."
+            "feminine_text": "#name# has broken the law of Ulthar.",
+            "nonbinary_text": "#name# has broken the law of Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured."
+            "feminine_text": "#name# was captured.",
+            "nonbinary_text": "#name# was captured."
           },
           {
             "id": "black_cat_at_your_side",
@@ -3854,22 +4218,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
-            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
+            "feminine_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>.",
+            "nonbinary_text": "#name# начинает игру с 1 уликой <i>(из резерва жетонов)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
-            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
+            "feminine_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше.",
+            "nonbinary_text": "При подготовке к сценарию #name# получает на 3 ресурса меньше."
           },
           {
             "id": "agenda_5",
@@ -4033,7 +4401,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "feminine_text": "#name# possesses a diving suit.",
+            "nonbinary_text": "#name# possesses a diving suit."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4410,6 +4779,34 @@
           {
             "id": "marsh",
             "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "the investigators reached Falcon Point after sunrise."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
           }
         ]
       }
@@ -4857,6 +5254,258 @@
     "supplies": []
   },
   {
+    "campaignId": "zcf",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "took_out_a_loan",
+            "masculine_text": "#name# took out a loan.",
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
+          },
+          {
+            "id": "architects_project_was_fully_completed",
+            "text": "the architects' project was fully completed."
+          },
+          {
+            "id": "architects_project_was_sabotaged",
+            "text": "the architects's project was sabotaged."
+          },
+          {
+            "id": "arrived_on_schedule",
+            "text": "the investigators arrived on schedule."
+          },
+          {
+            "id": "chose_the_least_predictable_route",
+            "text": "the investigators chose the least predictable route."
+          },
+          {
+            "id": "chose_the_most_direct_route",
+            "text": "the investigators chose the most direct route."
+          },
+          {
+            "id": "chose_the_most_populous_route",
+            "text": "the investigators chose the most popular route."
+          },
+          {
+            "id": "cthulhu_reigns",
+            "text": "Cthulhu reigns over all humankind."
+          },
+          {
+            "id": "cthulhu_slumbers",
+            "text": "Cthulhu slumbers in the deep once more."
+          },
+          {
+            "id": "cults_project_nears_completion",
+            "text": "the cult's project nears completion."
+          },
+          {
+            "id": "escaped_rlyeh",
+            "text": "the investigators escaped from R'lyeh."
+          },
+          {
+            "id": "expelled_the_traitors",
+            "text": "the investigators expelled the traitors."
+          },
+          {
+            "id": "explored_the_myra_louise",
+            "text": "the investigators explored the Myra Louise."
+          },
+          {
+            "id": "exposed_the_traitors",
+            "text": "the investigators exposed the traitors."
+          },
+          {
+            "id": "failed_to_find_the_myra_louise",
+            "text": "the investigators failed to find the Myra Louise."
+          },
+          {
+            "id": "failed_to_stop_the_traitors_plan",
+            "text": "the investigators failed to stop the traitors' plan."
+          },
+          {
+            "id": "forced_to_withdraw",
+            "text": "the investigators were forced to withdraw."
+          },
+          {
+            "id": "found_the_missing_artifacts",
+            "text": "the investigators found the missing artifacts."
+          },
+          {
+            "id": "found_the_myra_louise",
+            "text": "the investigators found the Myra Louise."
+          },
+          {
+            "id": "have_been_observed",
+            "text": "the investigators have been observed."
+          },
+          {
+            "id": "interviewed_the_broker",
+            "text": "the investigators interviewed the broker."
+          },
+          {
+            "id": "know_the_full_story",
+            "text": "the investigators know the full story."
+          },
+          {
+            "id": "left_the_auction_early",
+            "text": "the investigators left the auction early."
+          },
+          {
+            "id": "severely_delayed",
+            "text": "the investigators were severely delayed."
+          },
+          {
+            "id": "understand_the_truth",
+            "text": "the investigators understand the truth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_alive",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "cultists_killed",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallace Thorpe"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "auction_lots",
+            "text": "dummy"
+          },
+          {
+            "id": "auction_lots_in_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "end_of_the_line",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_cooperate",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_ruckus",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_took_time",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "luther_alive",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_4",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_5",
+            "text": "dummy"
+          },
+          {
+            "id": "repaid_loans",
+            "text": "dummy"
+          },
+          {
+            "id": "two_impossible_pillars",
+            "text": "dummy"
+          },
+          {
+            "id": "zgt_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zcp",
     "sections": [
       {
@@ -4944,12 +5593,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5357,12 +6008,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

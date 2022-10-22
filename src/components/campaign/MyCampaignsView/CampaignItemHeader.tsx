@@ -12,6 +12,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import AppIcon from '@icons/AppIcon';
 import FactionPattern from '@components/core/RoundedFactionHeader/FactionPattern';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
+import COLORS from '@styles/colors';
 
 interface Props {
   campaign: MiniCampaignT;
@@ -42,7 +43,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
         <EncounterIcon
           encounter_code={standaloneId.scenarioId}
           size={40}
-          color={colors.L30}
+          color={COLORS.white}
         />
       );
     }
@@ -50,7 +51,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
       <EncounterIcon
         encounter_code={cycleCode}
         size={40}
-        color={colors.L30}
+        color={COLORS.white}
       />
     );
   }, [colors, cycleCode, standaloneId]);

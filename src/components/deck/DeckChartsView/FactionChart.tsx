@@ -47,10 +47,10 @@ const DEFAULT_ITEM = {
 };
 
 function getDualValue({ datum }: { datum: Item}) {
-  return datum.dual;
+  return `${datum.dual}`;
 }
 function getTotalValue({ datum }: { datum: Item}) {
-  return datum.total;
+  return `${datum.total}`;
 }
 
 export default function FactionChart({ parsedDeck, width }: Props) {
@@ -124,6 +124,7 @@ export default function FactionChart({ parsedDeck, width }: Props) {
             labels={getTotalValue}
             style={{
               data: {
+                // @ts-ignore
                 fill: colorFill,
               },
               labels: {

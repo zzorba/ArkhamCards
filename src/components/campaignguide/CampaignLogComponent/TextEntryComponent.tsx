@@ -34,7 +34,7 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
       <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
         { actualText.startsWith('[') && actualText.endsWith(']') ? (
-          <ArkhamIcon name={actualText.substr(1, actualText.length - 2)} color={colors.D30} size={36} />
+          <ArkhamIcon name={actualText.substring(1, actualText.length - 2)} color={colors.D30} size={36} />
         ) : (
           <Text style={[
             icon ? typography.menuText : typography.large,

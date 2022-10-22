@@ -57,7 +57,8 @@ export default function ScenarioDataConditionComponent({ step, condition, campai
         );
       }
       return null;
-    case 'resolution': {
+    case 'resolution':
+    case 'has_resolution': {
       // Only used for control flow right now.
       return null;
     }

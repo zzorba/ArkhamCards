@@ -1,19 +1,21 @@
 import React, { useContext, useMemo } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, Text, ScrollView, View } from 'react-native';
 import { map } from 'lodash';
 
+import { TouchableQuickSize } from '@components/core/Touchables';
 import NewDialogContentLine from './NewDialogContentLine';
 import StyleContext from '@styles/StyleContext';
 import ItemPickerLine from './ItemPickerLine';
 import TextInputLine from './TextInputLine';
 import space, { s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
-import { TINY_PHONE } from '@styles/sizes';
+import { MAX_WIDTH, TINY_PHONE } from '@styles/sizes';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '../CompactInvestigatorRow';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import AppModal from '../AppModal';
 import SectionHeader from './SectionHeader';
+import COLORS from '@styles/colors';
 
 interface Props {
   title: string;
@@ -53,13 +55,13 @@ function NewDialog(props: Props) {
     }
     return (
       <View style={investigator ? space.paddingRightS : styles.closeButton}>
-        <TouchableOpacity onPress={onDismiss}>
+        <TouchableQuickSize onPress={onDismiss}>
           <AppIcon
             name="dismiss"
             size={18}
-            color={colors.L30}
+            color={investigator ? COLORS.white : colors.L30}
           />
-        </TouchableOpacity>
+        </TouchableQuickSize>
       </View>
     );
   }, [dismissable, investigator, onDismiss, colors]);
@@ -74,6 +76,7 @@ function NewDialog(props: Props) {
       <View style={[
         shadow.large,
         styles.dialog,
+        { maxWidth: MAX_WIDTH },
         investigator ? { borderTopLeftRadius: 0, borderTopRightRadius: 0 } : undefined,
         { width: width - s * 2 },
       ]}>

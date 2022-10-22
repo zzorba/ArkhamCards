@@ -4,6 +4,10 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
     "name": "A Light in the Fog"
   },
@@ -20,8 +24,24 @@
     "name": "A Thousand Shapes of Horror"
   },
   {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "All or Nothing"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -68,6 +88,10 @@
     "name": "Beneath the Waves"
   },
   {
+    "id": "bermuda",
+    "name": "Bermuda"
+  },
+  {
     "id": "beyond_the_gates_of_sleep",
     "name": "Beyond the Gates of Sleep"
   },
@@ -84,8 +108,20 @@
     "name": "The Blob That Ate Everything"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Máu trên Tế Đàn"
+  },
+  {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
   },
   {
     "id": "by_the_book",
@@ -104,12 +140,32 @@
     "name": "Lời mở đầu"
   },
   {
+    "id": "cf_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "City of the Elder Things"
   },
   {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
+  },
+  {
     "id": "consternation_on_the_constellation",
     "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "The Scarlet Keys"
   },
   {
     "id": "cp_epilogue",
@@ -118,6 +174,10 @@
   {
     "id": "cp_prologue",
     "name": "Lời mở đầu"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -236,6 +296,18 @@
     "name": "For the Greater Good"
   },
   {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
     "id": "fragment_of_carcosa",
     "name": "Fragment of Carcosa"
   },
@@ -244,8 +316,16 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
     "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "havana",
+    "name": "Havana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -266,6 +346,10 @@
   {
     "id": "history_lesson",
     "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Hong Kong"
   },
   {
     "id": "horror_in_high_gear",
@@ -320,12 +404,40 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
   {
+    "id": "london",
+    "name": "London"
+  },
+  {
     "id": "lost_in_time_and_space",
     "name": "Lost in Time and Space"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
   },
   {
     "id": "lost_quantum",
@@ -340,12 +452,24 @@
     "name": "Machinations Through Time"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Marrakesh"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "The Meddling of Meowlathotep"
   },
   {
     "id": "mission_briefing",
     "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -356,12 +480,24 @@
     "name": "Murder at the Excelsior Hotel"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
   },
   {
+    "id": "perth",
+    "name": "Perth"
+  },
+  {
     "id": "point_of_no_return",
     "name": "Point of No Return"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
   },
   {
     "id": "ptc_epilogue",
@@ -386,6 +522,18 @@
   {
     "id": "puzzle_pieces",
     "name": "Puzzle Pieces"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
   },
   {
     "id": "read_or_die",
@@ -548,6 +696,30 @@
     "name": "Return to Where Doom Awaits"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "Shattered Aeons"
   },
@@ -560,8 +732,16 @@
     "name": "Starfall"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -589,11 +769,11 @@
   },
   {
     "id": "tfa_interlude1",
-    "name": "Restless Nights"
+    "name": "Những Đêm Trằn Trọc"
   },
   {
     "id": "tfa_interlude2",
-    "name": "Expedition's End"
+    "name": "Cuộc thám hiểm kết thúc"
   },
   {
     "id": "tfa_interlude3",
@@ -624,6 +804,10 @@
     "name": "The Black Cat"
   },
   {
+    "id": "the_black_stone",
+    "name": "The Black Stone"
+  },
+  {
     "id": "the_boundary_beyond",
     "name": "The Boundary Beyond"
   },
@@ -634,6 +818,10 @@
   {
     "id": "the_city_of_archives",
     "name": "The City of Archives"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
   },
   {
     "id": "the_crown",
@@ -658,6 +846,10 @@
   {
     "id": "the_eternal_slumber",
     "name": "The Eternal Slumber"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
   },
   {
     "id": "the_fallen",
@@ -737,7 +929,7 @@
   },
   {
     "id": "the_price_of_progress",
-    "name": "The Price of Progress"
+    "name": "Cái Giá của Sự Tiến Bộ"
   },
   {
     "id": "the_search_for_kadath",
@@ -796,12 +988,28 @@
     "name": "To the Forbidden Peaks"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
+  },
+  {
     "id": "torch",
     "name": "The Gathering"
   },
   {
     "id": "traces_of_egil",
     "name": "Traces of Egil"
+  },
+  {
+    "id": "tsk_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -846,5 +1054,9 @@
   {
     "id": "wilds",
     "name": "The Untamed Wilds"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

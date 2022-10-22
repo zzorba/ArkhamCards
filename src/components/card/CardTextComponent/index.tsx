@@ -212,12 +212,14 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: RightNode,
 };
 
-function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
+function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
     order: BASE_ORDER + 2,
-    parse: (capture) => {
-      return { text: capture[1] };
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
     },
     render: UnderlineHtmlTagNode(usePingFang, style),
   };
@@ -269,7 +271,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
     cleanTextA.replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     ).replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
-
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);

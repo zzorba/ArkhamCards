@@ -74,12 +74,14 @@ export default function LanguageProvider({ children }: Props) {
       return 'dv';
     }
     switch (lang) {
+      // these are all free
       case 'ru':
-        // RU is free.
         return 'ru';
+      case 'pl':
+        return 'pl';
       case 'de':
-        // DE is free
         return 'de';
+      // This requires access
       case 'es':
         if (find(profile?.flags, f => f === User_Flag_Type_Enum.EsDv)) {
           // ES requires special ArkhamCards access

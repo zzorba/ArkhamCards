@@ -15,9 +15,10 @@ interface Props {
   limit: number;
   locked?: boolean;
   last?: boolean;
+  disabled?: boolean;
 }
 
-export default function CardToggleRow({ card, count, onChange, onPress, limit, locked, last }: Props) {
+export default function CardToggleRow({ card, count, onChange, onPress, limit, locked, last, disabled }: Props) {
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
   const [three, toggleThree] = useFlag(count > 2);
@@ -58,6 +59,7 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
           type: 'toggle',
           value: one,
           toggleValue: toggleOne,
+          disabled,
         }}
         noBorder={last && limit === 1}
       />
@@ -70,6 +72,7 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
             type: 'toggle',
             value: two,
             toggleValue: toggleTwo,
+            disabled,
           }}
           noBorder={last && limit === 2}
         />
@@ -83,6 +86,7 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
             type: 'toggle',
             value: three,
             toggleValue: toggleThree,
+            disabled,
           }}
           noBorder={last && limit === 3}
         />
@@ -96,6 +100,7 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
             type: 'toggle',
             value: four,
             toggleValue: toggleFour,
+            disabled,
           }}
           noBorder={last && limit === 4}
         />

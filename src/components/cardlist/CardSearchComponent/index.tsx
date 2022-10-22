@@ -1,24 +1,47 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Platform, Text, View, StyleSheet, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
 import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { iconsMap } from '@app/NavIcons';
 import { DeckId, SortType } from '@actions/types';
 import Card from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
 import { FilterState } from '@lib/filters';
-import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
+import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter, updateCardSort } from '@components/filter/actions';
 import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
 import TuneButton from './TuneButton';
-import SortButton from './SortButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
-import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
+import { useComponentVisible, useEffectUpdate, useNavigationButtonPressed } from '@components/core/hooks';
+import COLORS from '@styles/colors';
+import { useFilterButton } from '../hooks';
+import { useSortDialog } from '../CardSortDialog';
+
+
+export function useFilterSortDialog(filterId: string): [React.ReactNode, () => void] {
+  const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
+  const sortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
+  const mythosMode = useSelector(mythosModeSelector);
+  const sort = useSelector(sortSelector);
+  const dispatch = useDispatch();
+
+  const sortChanged = useCallback((sort: SortType) => {
+    dispatch(updateCardSort(filterId, sort));
+  }, [dispatch, filterId]);
+  const [sortDialog, showSortDialog] = useSortDialog(sortChanged, sort, mythosMode);
+  const onPress = useCallback(() => {
+    Keyboard.dismiss();
+    showSortDialog();
+  }, [showSortDialog]);
+  return [sortDialog, onPress];
+}
+
 
 interface Props {
   componentId: string;
@@ -69,7 +92,7 @@ export function navigationOptions(
     accessibilityLabel: t`Encounter Card Toggle`,
   };
 
-  const rightButtons: OptionsTopBarButton[] = [{
+  const filterButton: OptionsTopBarButton = Platform.OS === 'ios' ? {
     id: 'filter',
     component: {
       name: 'TuneButton',
@@ -85,19 +108,22 @@ export function navigationOptions(
     },
     accessibilityLabel: t`Filters`,
     enabled: true,
-  }, {
-    id: 'sort',
-    component: {
-      name: 'SortButton',
-      passProps: {
-        filterId,
-        lightButton,
-      },
-      width: SortButton.WIDTH,
-      height: SortButton.HEIGHT,
+  } : {
+    id: 'filter',
+    icon: iconsMap.filter,
+    color: lightButton ? 'white' : COLORS.M,
+    accessibilityLabel: t`Filters`,
+  };
+
+  const rightButtons: OptionsTopBarButton[] = [
+    filterButton,
+    {
+      id: 'sort',
+      icon: iconsMap.sort,
+      color: lightButton ? 'white' : COLORS.M,
+      accessibilityLabel: t`Sort`,
     },
-    accessibilityLabel: t`Sort`,
-  }];
+  ];
   const topBarOptions: OptionsTopBar = {
     rightButtons,
   };
@@ -144,7 +170,8 @@ export default function CardSearchComponent(props: Props) {
           mythosToggle,
           lightButton: deckId !== undefined,
         }
-      ));
+      )
+    );
     return function cleanup() {
       if (!deckId) {
         dispatch(removeFilterSet(filterId));
@@ -153,9 +180,20 @@ export default function CardSearchComponent(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [, showFilters] = useFilterButton({ componentId, filterId, baseQuery, modal: false });
+
+  const [dialog, showSortDialog] = useFilterSortDialog(filterId);
+  useNavigationButtonPressed((event) => {
+    if (event.buttonId === 'sort') {
+      showSortDialog();
+    } else if (event.buttonId === 'filter') {
+      showFilters();
+    }
+  }, componentId, [showSortDialog, showFilters]);
+
   const onClearSearchFilters = useCallback(() => {
-    dispatch(clearFilters(componentId));
-  }, [dispatch, componentId]);
+    dispatch(clearFilters(filterId));
+  }, [dispatch, filterId]);
 
   useEffectUpdate(() => {
     if (mythosToggle) {
@@ -220,25 +258,28 @@ export default function CardSearchComponent(props: Props) {
   }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, componentId, typography, onFilterChange, onToggleChange]);
 
   return (
-    <CardSearchResultsComponent
-      componentId={componentId}
-      deckId={deckId}
-      baseQuery={baseQuery}
-      mythosToggle={mythosToggle}
-      mythosMode={mythosMode}
-      showNonCollection={showNonCollection}
-      selectedSort={selectedSort}
-      filters={filters}
-      toggleMythosMode={onToggleMythosMode}
-      clearSearchFilters={onClearSearchFilters}
-      investigator={investigator}
-      headerItems={headerItems}
-      headerHeight={headerHeight}
-      visible={visible}
-      mode={mode}
-      initialSort={sort}
-      includeDuplicates={includeDuplicates}
-    />
+    <>
+      <CardSearchResultsComponent
+        componentId={componentId}
+        deckId={deckId}
+        baseQuery={baseQuery}
+        mythosToggle={mythosToggle}
+        mythosMode={mythosMode}
+        showNonCollection={showNonCollection}
+        selectedSort={selectedSort}
+        filters={filters}
+        toggleMythosMode={onToggleMythosMode}
+        clearSearchFilters={onClearSearchFilters}
+        investigator={investigator}
+        headerItems={headerItems}
+        headerHeight={headerHeight}
+        visible={visible}
+        mode={mode}
+        initialSort={sort}
+        includeDuplicates={includeDuplicates}
+      />
+      {dialog}
+    </>
   );
 }
 

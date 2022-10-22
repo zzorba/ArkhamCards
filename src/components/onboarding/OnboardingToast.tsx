@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import StyleContext from '@styles/StyleContext';
 import { useShowOnboarding } from './hooks';
 import space, { s } from '@styles/space';

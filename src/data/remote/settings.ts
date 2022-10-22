@@ -8,17 +8,28 @@ import { AppState } from '@reducers';
 import { setMiscSetting } from '@components/settings/actions';
 import { MiscRemoteSetting, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { syncPackSettings } from '@actions';
+import { useEffectUpdate } from '@components/core/hooks';
 
 export function useRemoteSettings(live?: boolean): void {
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const downSynced = useRef(false);
   const synced = useRef(false);
-  const { data, loading, error } = useGetSettingsQuery({
+  const { data, loading, error, refetch } = useGetSettingsQuery({
     variables: {
       userId: userId || '',
     },
     skip: !userId,
     fetchPolicy: live ? 'network-only' : 'cache-only',
   });
+
+  useEffectUpdate(() => {
+    if (userId) {
+      refetch({ userId });
+    } else {
+      // Logged out, so clear the settings so we reload them.
+      downSynced.current = false;
+    }
+  }, [userId]);
 
   const [upsertSettings] = useUpsertSettingsMutation();
   const { settings, in_collection, show_spoilers } = useSelector((state: AppState) => {
@@ -56,7 +67,7 @@ export function useRemoteSettings(live?: boolean): void {
     }
   }, [live, userId, data, loading, error, upsertSettings, settings, in_collection, show_spoilers]);
   const dispatch = useDispatch();
-  const downSynced = useRef(false);
+
   useEffect(() => {
     if (live && userId && !error && !loading && data?.user_settings_by_pk && !downSynced.current) {
       downSynced.current = true;

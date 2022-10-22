@@ -22,7 +22,7 @@ import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
 import BinaryPrompt from '@components/campaignguide/prompts/BinaryPrompt';
 import NumberPrompt from '@components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from '@components/campaignguide/prompts/SuppliesPrompt';
-import { InputStep } from '@data/scenario/types';
+import { BorderColor, InputStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
@@ -32,15 +32,18 @@ import PartnerTraumaComponent from './PartnerTraumaComponent';
 import InvestigatorChoicePartnerComponent from './InvestigatorChoicePartnerComponent';
 import PartnerChoiceComponent from './PartnerChoiceComponent';
 import ChoiceListPrompt from './ChoiceListPrompt';
+import { getOperand } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: InputStep;
   componentId: string;
   campaignLog: GuidedCampaignLog;
   switchCampaignScenario: () => void;
+  color?: BorderColor;
+  border?: boolean;
 }
 
-export default function InputStepComponent({ step, componentId, campaignLog, switchCampaignScenario }: Props) {
+export default function InputStepComponent({ step, color, componentId, campaignLog, switchCampaignScenario, border }: Props) {
   const { campaignId } = useContext(CampaignGuideContext);
   const { width } = useContext(StyleContext);
   switch (step.input.type) {
@@ -51,6 +54,7 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
             id={step.id}
             bulletType={step.bullet_type}
             text={step.input.choices[0].text}
+            color={color}
           />
         );
       }
@@ -70,7 +74,9 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           id={step.id}
           text={step.text}
           bulletType={step.bullet_type}
+          color={color}
           input={step.input}
+          border={border}
         />
       );
     }
@@ -93,8 +99,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           longLived={!!step.input.long_lived}
           delta={!!step.input.delta}
           confirmText={step.input.confirm_text}
-          min={step.input.min}
-          max={step.input.max}
+          min={step.input.min ? getOperand(step.input.min, campaignLog) : undefined}
+          max={step.input.max ? getOperand(step.input.max, campaignLog) : undefined}
           text={step.text}
         />
       );
@@ -141,6 +147,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           step={step}
           input={step.input}
           campaignLog={campaignLog}
+          min={step.input.min ? getOperand(step.input.min, campaignLog) : undefined}
+          max={step.input.max ? getOperand(step.input.max, campaignLog) : undefined}
         />
       );
     case 'investigator_choice_supplies':
@@ -167,6 +175,8 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
         <SaveDecksInput
           id={step.id}
           componentId={componentId}
+          includeTrauma={step.input.trauma}
+          adjustXp={step.input.adjust_xp}
         />
       );
     case 'play_scenario':

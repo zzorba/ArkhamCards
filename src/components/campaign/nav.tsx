@@ -1,8 +1,8 @@
 import { Campaign, CampaignCycleCode, CampaignId } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { CampaignLogProps } from '@components/campaignguide/CampaignLogView';
-import { GuideDrawChaosBagProps } from '@components/campaignguide/GuideDrawChaosBagView';
-import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
+import { GuideDrawChaosBagProps } from '@components/chaos/GuideDrawChaosBagView';
+import { GuideOddsCalculatorProps } from '@components/chaos/GuideOddsCalculatorView';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -11,11 +11,11 @@ import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { AddScenarioResultProps } from './AddScenarioResultView';
-import { CampaignDrawChaosBagProps } from './CampaignDrawChaosBagView';
+import { CampaignDrawChaosBagProps } from '../chaos/CampaignDrawChaosBagView';
 import { CampaignDrawWeaknessProps } from './CampaignDrawWeaknessDialog';
 
-import { EditChaosBagProps } from './EditChaosBagDialog';
-import { OddsCalculatorProps } from './OddsCalculatorView';
+import { EditChaosBagProps } from '../chaos/EditChaosBagDialog';
+import { OddsCalculatorProps } from '../chaos/OddsCalculatorView';
 
 export function showAddScenarioResult(componentId: string, campaignId: CampaignId, scenarioCode?: string) {
   Navigation.push<AddScenarioResultProps>(componentId, {

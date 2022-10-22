@@ -13,6 +13,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { LogEntryText } from '@data/scenario/CampaignGuide';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   effect: CampaignLogEffect | FreeformCampaignLogEffect | CampaignLogCardsEffect;
@@ -21,7 +22,7 @@ interface Props {
   bulletType?: BulletType;
 }
 
-function CardTextReplace({ code, text, feminineText }: { code: string; text: string; feminineText?: string }) {
+function CardTextReplace({ code, text, feminineText, nonBinaryText }: { code: string; text: string; feminineText?: string; nonBinaryText?: string; }) {
   const { campaignGuide } = useContext(CampaignGuideContext);
   const { colors, typography } = useContext(StyleContext);
   const [card, loading] = useSingleCard(code, 'encounter');
@@ -36,9 +37,18 @@ function CardTextReplace({ code, text, feminineText }: { code: string; text: str
       </Text>
     );
   }
-  const female = (card && !card.grammarGenderMasculine()) || (fixedCard && fixedCard.gender === 'female');
-  const theText = (female && feminineText) || text;
-  return <CampaignGuideTextComponent text={theText.replace('#name#', card?.name || fixedCard?.name || '')} />;
+  let theText = text;
+  if (card?.gender === Gender_Enum.F && feminineText) {
+    theText = feminineText;
+  }
+  if (card?.gender === Gender_Enum.Nb && nonBinaryText) {
+    theText = nonBinaryText;
+  }
+  return (
+    <CampaignGuideTextComponent
+      text={theText.replace('#name#', card?.name || fixedCard?.name || '')}
+    />
+  );
 }
 
 function CardEffectContent({ code, section }: { code: string; section: string }) {
@@ -50,21 +60,19 @@ function CardEffectContent({ code, section }: { code: string; section: string })
   );
 }
 
-function genderizeText(logEntry: LogEntryText, gen: (logEntry: { text: string; section: string }) => string): [string, string] {
-  if (logEntry.feminineText) {
-    return [
-      gen(logEntry),
-      gen({ ...logEntry, text: logEntry.feminineText }),
-    ];
-  }
+function genderizeText(logEntry: LogEntryText, gen: (logEntry: { text: string; section: string }) => string): [string, string, string] {
   const entry = gen(logEntry);
-  return [entry, entry];
+  return [
+    entry,
+    logEntry.feminineText ? gen({ ...logEntry, text: logEntry.feminineText }) : entry,
+    logEntry.nonbinaryText ? gen({ ...logEntry, text: logEntry.nonbinaryText }) : entry,
+  ];
 }
 
 function getText(
   effect: CampaignLogEffect | CampaignLogCardsEffect,
   logEntry: LogEntryText
-): undefined | [string, string] {
+): undefined | [string, string, string] {
   switch (logEntry.type) {
     case 'text':
       if (effect.cross_out) {
@@ -122,12 +130,26 @@ function CampaignLogEffectsContent({ effect, input }: {
         if (!textEntry) {
           return null;
         }
-        const [text, feminineText] = textEntry;
+        const [text, feminineText, nonBinaryText] = textEntry;
         if (cardSection) {
-          return <CardTextReplace code={cardSection} text={text} feminineText={feminineText} />
+          return (
+            <CardTextReplace
+              code={cardSection}
+              text={text}
+              feminineText={feminineText}
+              nonBinaryText={nonBinaryText}
+            />
+          );
         }
         if (cardEntry) {
-          return <CardTextReplace code={cardEntry} text={text} feminineText={feminineText} />;
+          return (
+            <CardTextReplace
+              code={cardEntry}
+              text={text}
+              feminineText={feminineText}
+              nonBinaryText={nonBinaryText}
+            />
+          );
         }
         return (
           <CampaignGuideTextComponent text={text} />

@@ -6,6 +6,7 @@ import useCardList from '@components/card/useCardList';
 import { CheckCampaignLogCardsEffect } from '@data/scenario/types'
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   effect: CheckCampaignLogCardsEffect;
@@ -16,7 +17,7 @@ interface Props {
 export default function CheckCampaignLogCardsComponent({ effect, input, numberInput }: Props) {
   const codes = useMemo(() => input || [], [input]);
   const { campaignGuide } = useContext(CampaignGuideContext);
-  const fixedCards: { code: string; gender?: 'male' | 'female'; name: string }[] = useMemo(() => {
+  const fixedCards: { code: string; gender?: 'm' | 'f' | 'nb'; name: string }[] = useMemo(() => {
     return flatMap(codes, code => {
       const card = campaignGuide.card(code);
       return card ? card : [];
@@ -33,7 +34,7 @@ export default function CheckCampaignLogCardsComponent({ effect, input, numberIn
             card: {
               code: card.code,
               name: card.name,
-              gender: card.grammarGenderMasculine() ? 'male' : 'female',
+              gender: card.gender,
             },
             count: count || 1,
           };
@@ -55,7 +56,7 @@ export default function CheckCampaignLogCardsComponent({ effect, input, numberIn
           card: {
             code: card.code,
             name: card.name,
-            gender: card.grammarGenderMasculine() ? 'male' : 'female',
+            gender: card.gender,
           },
           count: 1,
         };
@@ -72,7 +73,20 @@ export default function CheckCampaignLogCardsComponent({ effect, input, numberIn
   return (
     <>
       { map(cardWithCounts, ({ card, count }) => {
-        const text = (card.gender === 'male' ? effect.masculine_text : effect.feminine_text) || effect.text || '';
+        let text: string = effect.text || '';
+        if (card.gender) {
+          switch (card.gender) {
+            case Gender_Enum.M:
+              text = effect.masculine_text || text;
+              break;
+            case Gender_Enum.F:
+              text = effect.feminine_text || text;
+              break;
+            case Gender_Enum.Nb:
+              text = effect.nonbinary_text || text;
+              break;
+          }
+        }
         return (
           <SetupStepWrapper key={card.code} bulletType={effect.bullet_type}>
             <CampaignGuideTextComponent text={text.replace('#name#', card.name).replace('#X#', `${count}`)} />

@@ -35,7 +35,7 @@ function specialCost(index: number) {
 }
 
 function getValue({ datum }: { datum: Item }) {
-  return datum.value;
+  return `${datum.value}`;
 }
 
 function getCostData(index: number, costHistogram: number[]): Item {
