@@ -190,8 +190,8 @@ export default function TwoSidedCardComponent(props: Props) {
       return null;
     }
     return (
-      <View style={styles.iconRow} accessibilityLabel={t`Slot: ${card.slot}`}>
-        { map(card.real_slot.split('.'), slot => <SlotIcon key={slot} slot={slot.trim()} />) }
+      <View style={styles.iconColumn} accessibilityLabel={t`Slot: ${card.slot}`}>
+        { map(card.real_slot.split('.'), slot => <View style={space.paddingTopXs} key={slot}><SlotIcon slot={slot.trim()} /></View>) }
       </View>
     );
   }, [card]);
@@ -209,7 +209,6 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
         <View style={styles.row}>
           { testIcons }
-          { slotIcon }
         </View>
         { card.type_code === 'investigator' && (
           <View style={styles.statLineRow}>
@@ -229,7 +228,7 @@ export default function TwoSidedCardComponent(props: Props) {
         ) }
       </View>
     );
-  }, [card, typography, typeLine, slotIcon, testIcons]);
+  }, [card, typography, typeLine, testIcons]);
 
   const playdataBlock = useMemo(() => {
     if (card.type_code === 'scenario') {
@@ -488,6 +487,7 @@ export default function TwoSidedCardComponent(props: Props) {
                   }
                   { isTablet && cardText }
                 </View>
+                { slotIcon }
                 { image }
               </View>
               { !isTablet && cardText }
@@ -513,7 +513,7 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
       </View>
     );
-  }, [card, simple, width, linked, cardText, shadow.large, custom,
+  }, [card, simple, width, linked, cardText, shadow.large, custom, slotIcon,
     cardFooter, colors, backgroundStyle, showBack, flavorFirst, image, metadataBlock, playdataBlock,
     toggleShowBack, showFaq, showTaboo]);
   const backFirst = !linked &&
@@ -614,6 +614,10 @@ const styles = StyleSheet.create({
   },
   iconRow: {
     flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  iconColumn: {
+    flexDirection: 'column',
     justifyContent: 'flex-end',
   },
   rowStart: {
