@@ -5955,7 +5955,7 @@ msgid "Time Passed"
 msgstr "흐른 시간"
 
 msgid "Bearer"
-msgstr ""
+msgstr "여권 소지자"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
 msgstr "탐구자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
@@ -5970,13 +5970,13 @@ msgid "Fortune and Folly"
 msgstr ""
 
 msgid "Challenge Scenarios"
-msgstr ""
+msgstr "도전 시나리오"
 
 msgid "Choose an option"
-msgstr ""
+msgstr "하나 선택하기"
 
 msgid "Choose weakness"
-msgstr ""
+msgstr "약점 선택"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6622,7 +6622,7 @@ msgstr "- Crown of Egil (제작자: The Mad Juggler / 한국어화 지원 없음
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr "- Call of the Plaguebearer (제작자: Walker Graves / 한국어화: ´허걱이´님)"
+msgstr "- 역병전파자의 부름 (제작자: Walker Graves / 한국어화: ´허걱이´님)"
 
 msgctxt "releaseNotes"
 msgid "As for standalone scenarios:"
@@ -8205,7 +8205,7 @@ msgstr[0] "시나리오"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] ""
+msgstr[0] "열쇠"
 msgstr[1] ""
 
 msgctxt "Tarot Card"
