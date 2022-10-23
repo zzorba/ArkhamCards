@@ -611,7 +611,7 @@ export default class FilterBuilder {
           where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode`, { packCode: `%${packCode}%` }),
           [
             ...map(otherCodes, (c, idx) =>
-              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx}`, { [`${packCode}${idx}`]: `%${c}%` }),
+              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx}`, { [`packCode${idx}`]: `%${c}%` }),
             ),
             ...packClause,
           ],
