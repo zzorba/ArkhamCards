@@ -315,12 +315,14 @@ export default class DeckValidation {
         dynamic: true,
       }));
     }
-    deck_options.push({
-      limit: 1,
-      trait: ['Covenant'],
-      error: t`Limit 1 Covenant per deck.`,
-      dynamic: true,
-    });
+    if (!this.all_options) {
+      deck_options.push({
+        limit: 1,
+        trait: ['Covenant'],
+        error: t`Limit 1 Covenant per deck.`,
+        dynamic: true,
+      });
+    }
     if (specialCards.ancestralKnowledge) {
       deck_options.push(
         DeckOption.parse({
@@ -585,7 +587,6 @@ export default class DeckValidation {
         }
       }
     }
-
     return undefined;
   }
 }

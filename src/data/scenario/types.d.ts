@@ -1138,6 +1138,7 @@ export interface RandomLocationInput {
 export interface PrologueRandomizer {
   type: "prologue_randomizer";
   prompt: string;
+  random_only?: boolean;
   choices: BinaryConditionalChoice[];
   options: StringOption[];
 }
