@@ -84,7 +84,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
         mode: 'import',
         copyTo: 'cachesDirectory',
       });
-      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
+      if (!res.name?.endsWith('.acb') && !res.name?.endsWith('.json') && !res.name?.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,
           t`This app expects an Arkham Cards backup file (.acb/.json)`,

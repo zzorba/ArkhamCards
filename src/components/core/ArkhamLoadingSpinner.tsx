@@ -32,7 +32,7 @@ export function colorizeLottie(json: any, colorByPath: Record<string, string>) {
 }
 
 interface Props {
-  progress?: Animated.AnimatedInterpolation;
+  progress?: Animated.AnimatedInterpolation<number>;
   autoPlay?: boolean;
   loop?: boolean;
   lottieRef?: React.Ref<LottieView> | React.LegacyRef<LottieView>;

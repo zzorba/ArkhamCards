@@ -1361,7 +1361,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
+            "text": "các điều tra viên đã ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
@@ -1793,7 +1793,7 @@
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "các điều tra viên ngăn chặn Hastur thoát khỏi nhà tù của hắn."
+            "text": "các điều tra viên đã ngăn chặn Hastur thoát khỏi nhà tù của hắn."
           },
           {
             "id": "slayed_the_monsters",
@@ -2074,7 +2074,7 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason bị quỷ ám."
+            "text": "Anette Mason bị chiếm hữu bởi con quỷ."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -2495,11 +2495,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca có niềm tin vào bạn."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca ở trong bóng tối"
           },
           {
             "id": "ichtaca_is_wary",
@@ -3415,7 +3415,7 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason bị quỷ ám."
+            "text": "Anette Mason bị chiếm hữu bởi con quỷ."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -4116,11 +4116,11 @@
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca có niềm tin vào bạn."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca ở trong bóng tối"
           },
           {
             "id": "ichtaca_is_wary",

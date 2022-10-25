@@ -522,7 +522,7 @@ export function setIgnoreDeckSlot(id: DeckId, code: string, value: number): Upda
   };
 }
 
-export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -533,7 +533,7 @@ export function incDeckSlot(id: DeckId, code: string, limit: number | undefined,
   };
 }
 
-export function decDeckSlot(id: DeckId, code: string, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function decDeckSlot(id: DeckId, code: string, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -543,7 +543,7 @@ export function decDeckSlot(id: DeckId, code: string, mode: 'side' | 'ignore' | 
   };
 }
 
-export function setDeckSlot(id: DeckId, code: string, value: number, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function setDeckSlot(id: DeckId, code: string, value: number, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -640,7 +640,7 @@ export function updateDeckMeta(
         const slotUpdates = specialMetaSlots(investigator_code, update);
         if (slotUpdates) {
           forEach(slotUpdates, (count, code) => {
-            dispatch(setDeckSlot(id, code, count, false));
+            dispatch(setDeckSlot(id, code, count));
           });
         }
       }
