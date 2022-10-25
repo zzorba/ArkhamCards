@@ -6211,6 +6211,12 @@ msgstr ""
 msgid "Choose weakness"
 msgstr ""
 
+msgid "Do you want to use the app to draw random tarot cards?"
+msgstr ""
+
+msgid "Choose tarot card"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
