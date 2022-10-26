@@ -1208,13 +1208,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
             "feminine_text": "#name# a été Prise par l'Abîme.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# a été pris(e) par les abysses."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
             "feminine_text": "#name# a été Prise par l'Abîme.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# a été pris(e) par les abysses."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1263,13 +1263,13 @@
             "id": "read_act_2",
             "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
             "feminine_text": "#name# a lu l'Acte II du Roi en Jaune.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# a lu l'Acte II du Roi en Jaune."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# était possédé.",
             "feminine_text": "#name# était possédée.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# était possédé(e)."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1695,13 +1695,13 @@
             "id": "read_act_2",
             "masculine_text": "#name# a lu l'Acte II du Roi en Jaune.",
             "feminine_text": "#name# a lu l'Acte II du Roi en Jaune.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# a lu l'Acte II du Roi en Jaune."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# était possédé.",
             "feminine_text": "#name# était possédée.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# était possédé(e)."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -2066,7 +2066,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
             "feminine_text": "#name# a rejoint les flûtistes d’Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# a rejoint les flûtistes d’Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -2814,13 +2814,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
             "feminine_text": "#name# a été Prise par l'Abîme.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# a été pris(e) par les abysses."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# a été Pris par l'Abîme.",
             "feminine_text": "#name# a été Prise par l'Abîme.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# a été pris(e) par les abysses."
           },
           {
             "id": "atw_bernards_fate",
@@ -3407,7 +3407,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# a rejoint les flûtistes d’Azathoth.",
             "feminine_text": "#name# a rejoint les flûtistes d’Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# a rejoint les flûtistes d’Azathoth."
           },
           {
             "id": "accepted_fate",
