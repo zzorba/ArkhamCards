@@ -39,7 +39,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
-  controls?: ('deck' | 'side' | 'special' | 'ignore' | 'bonded')[];
+  controls?: ('deck' | 'side' | 'special' | 'ignore' | 'bonded' | 'checklist')[];
   initialCards?: Card[];
   initialIndex: number;
   whiteNav: boolean;
@@ -298,7 +298,7 @@ function DbCardDetailSwipeView(props: Props) {
         code={currentCard.code}
         deckId={deckId}
         limit={deck_limit}
-        mode={(currentControl === 'side' || currentControl === 'ignore') ? currentControl : undefined}
+        mode={(currentControl === 'side' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
         editable={editable}
       />
     );

@@ -241,8 +241,8 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# wurde beim Flugzeugabsturz getötet",
-            "feminine_text": "#name# wurde beim Flugzeugabsturz getötet"
+            "masculine_text": "#name# wurde beim Flugzeugabsturz getötet.",
+            "feminine_text": "#name# wurde beim Flugzeugabsturz getötet."
           },
           {
             "id": "camp_barrier_camp",

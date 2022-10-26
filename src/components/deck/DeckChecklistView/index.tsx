@@ -36,25 +36,28 @@ export interface DeckChecklistProps {
 type Props = DeckChecklistProps & NavigationProps;
 
 function ChecklistCard({
+  deckId,
   id,
   card,
   checklist,
   pressCard,
 }: {
-  id: DeckId,
+  deckId: DeckId;
+  id: string;
   card: Card;
   checklist: string[];
-  pressCard: (card: Card) => void;
+  pressCard: (code: string, card: Card) => void;
 }) {
-  const [count] = useDeckSlotCount(id, card.code);
+  const [count] = useDeckSlotCount(deckId, card.code);
   const dispatch = useDispatch();
   const toggleValue = useCallback((value: boolean) => {
-    dispatch(setDeckChecklistCard(id, card.code, value));
-  }, [dispatch, id, card.code]);
+    dispatch(setDeckChecklistCard(deckId, card.code, value));
+  }, [dispatch, deckId, card.code]);
   return (
     <CardSearchResult
       card={card}
-      onPress={pressCard}
+      onPressId={pressCard}
+      id={id}
       backgroundColor="transparent"
       control={{
         type: 'count_with_toggle',
@@ -101,13 +104,14 @@ function DeckChecklistView({
     );
   }, [id, deckEditsRef, parsedDeckRef, componentId, colors]);
 
-  const renderCard = useCallback((card: Card) => {
+  const renderCard = useCallback((card: Card, cardId: string, onPressId: (id: string, card: Card) => void) => {
     return (
       <ChecklistCard
         key={card.code}
-        id={id}
+        deckId={id}
+        id={cardId}
         card={card}
-        pressCard={pressCard}
+        pressCard={onPressId}
         checklist={checklist}
       />
     );
@@ -149,6 +153,7 @@ function DeckChecklistView({
         headerHeight={headerHeight}
         renderCard={renderCard}
         noSearch
+        specialMode="checklist"
         currentDeckOnly
         footerPadding={NOTCH_BOTTOM_PADDING}
       />

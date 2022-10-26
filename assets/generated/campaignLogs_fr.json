@@ -241,8 +241,8 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# a péri dans le crash de l'aéroplane",
-            "feminine_text": "#name# a péri dans le crash de l'aéroplane"
+            "masculine_text": "#name# a péri dans le crash de l'aéroplane.",
+            "feminine_text": "#name# a péri dans le crash de l'aéroplane."
           },
           {
             "id": "camp_barrier_camp",
@@ -318,11 +318,11 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "L’équipe à découvert une ancienne chambre forte."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "le Dr Kensler a un plan."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -330,7 +330,7 @@
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "le Dr Kensler est sur le point de tout comprendre"
+            "text": "le Dr Kensler est sur le point de tout comprendre."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
@@ -338,7 +338,7 @@
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "Le Dr Kensler a compris la véritable nature du miasme."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
@@ -358,31 +358,31 @@
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "le complexe a été détruit."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "que la folie sans nom s’est échappée."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "que la folie sans nom est contenue dans son hôte…. pour le moment."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "L’équipe a photographié les cartes astronomique."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "l'équipe à consulté la carte."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "les investigateurs ont exploré les alentours de la cité"
+            "text": "les investigateurs ont exploré les alentours de la cité."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "les investigateurs ont exploré la bifurcation."
           },
           {
             "id": "scouted_the_mountain_pass",
@@ -390,7 +390,7 @@
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "l'équipe à étudié les bas-reliefs."
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "es survivants de l'expédition sont :"
           },
           {
             "id": "surviving_partners",
@@ -422,7 +422,7 @@
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "l’équipe s’est échappée du complexe."
           },
           {
             "id": "team_fled_to_the_mountains",
@@ -434,19 +434,19 @@
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "l’équipe a trouvé le tunnel caché."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "que l’équipe a été guidée vers le tunnel caché."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "le sceau a été… mal utilisé."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "la véritable nature du mirage vous échappe."
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# a disparu",
-            "masculine_text": "#name# a disparu",
-            "feminine_text": "#name# a disparu"
+            "text": "#name# a disparu.",
+            "masculine_text": "#name# a disparu.",
+            "feminine_text": "#name# a disparu."
           },
           {
             "id": "camp_shelter",

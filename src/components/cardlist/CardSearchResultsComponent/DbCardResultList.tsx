@@ -68,14 +68,15 @@ interface Props {
   expandSearchControlsHeight?: number;
   investigator?: Card;
   cardPressed?: (card: Card) => void;
-  renderCard?: (card: Card) => JSX.Element;
+  renderCard?: (card: Card, id: string, onPressId: (id: string, card: Card) => void) => JSX.Element;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
   noSearch?: boolean;
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
   storyOnly?: boolean;
-  sideDeck?: boolean;
+  specialMode?: 'side' | 'checklist';
+
   showNonCollection?: boolean;
   footerPadding?: number;
 }
@@ -852,7 +853,7 @@ export default function({
   handleScroll,
   showHeader,
   storyOnly,
-  sideDeck,
+  specialMode,
   showNonCollection,
   footerPadding,
 }: Props) {
@@ -887,11 +888,11 @@ export default function({
     textQuery,
     searchTerm,
     showAllNonCollection: showNonCollection,
-    deckCardCounts: sideDeck ? deckEdits?.side : deckEdits?.slots,
-    originalDeckSlots: (currentDeckOnly && (sideDeck ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
+    deckCardCounts: specialMode === 'side' ? deckEdits?.side : deckEdits?.slots,
+    originalDeckSlots: (currentDeckOnly && (specialMode === 'side' ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
     includeBonded: currentDeckOnly,
     storyOnly,
-    sideDeck,
+    sideDeck: specialMode === 'side',
     expandSearchControlsHeight,
     footerPadding,
     customizations,
@@ -949,7 +950,7 @@ export default function({
     showCardSwipe(
       componentId,
       codes,
-      sideDeck ? 'side' : undefined,
+      specialMode,
       index,
       colors,
       cards,
@@ -960,39 +961,42 @@ export default function({
       true,
       customizations
     );
-  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
-  const deckLimits: ControlType[] = useMemo(() => deckId ? [
-    {
-      type: 'deck',
-      deckId,
-      limit: 0,
-      mode: !!sideDeck ? 'side' : undefined,
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 1,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 2,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 3,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 4,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-  ] : [], [deckId, sideDeck]);
+  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
+  const deckLimits: ControlType[] = useMemo(() => {
+    const mode = specialMode === 'side' ? 'side' : undefined;
+    return deckId ? [
+      {
+        type: 'deck',
+        deckId,
+        limit: 0,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 1,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 2,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 3,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 4,
+        mode,
+      },
+    ] : [];
+  }, [deckId, specialMode]);
   const { lang, listSeperator } = useContext(LanguageContext);
 
   const renderItem = useCallback((item: Item) => {
@@ -1009,7 +1013,7 @@ export default function({
       case 'card': {
         const card = item.card;
         if (renderCard) {
-          return renderCard(card);
+          return renderCard(card, item.id, cardOnPressId);
         }
         const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;

@@ -26,8 +26,19 @@ function linkPressed(url: string) {
   Linking.openURL(url);
 }
 
-function getReleaseNotes(width: number): ReleaseNote[] {
+function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
+  const eoeRu: ReleaseNote = {
+    date: new Date('2022-10-26'),
+    title: 'Озвучка «На краю земли»',
+    faction: 'survivor',
+    lines: [
+      'Друзья, мы сделали это!',
+      'Мы собрали достаточно средств, чтобы записать профессиональную озвучку кампании «На краю земли» голосом Алексея Тихонова, который вы могли слышать в играх «Особняки безумия» и «Тайны Аркхэма». И эта озвучка уже доступна в приложении!',
+      'Если вы хотите помочь со сбором денег на озвучку других циклов (у нас ещё не озвучен «Данвич» и грядут гигантские «Алые Ключи»), вы найдёте ссылку на актуальный сбор на экране настроек приложения.',
+    ],
+  };
   return [
+    ...(lang === 'ru' ? [eoeRu] : []),
     {
       date: new Date('2022-09-20'),
       title: c('releaseNotes').t`Preview Cards`,
@@ -257,7 +268,8 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
 }
 export default function ReleaseNotesView({ componentId }: { componentId: string }) {
   const { backgroundStyle, width } = useContext(StyleContext);
-  const releaseNotes = useMemo(() => getReleaseNotes(width - s * 4), [width]);
+  const { lang } = useContext(LanguageContext);
+  const releaseNotes = useMemo(() => getReleaseNotes(lang, width - s * 4), [width]);
   return (
     <View style={[{ flex: 1 }, backgroundStyle]}>
       <ScrollView style={[backgroundStyle, space.paddingSideS, space.paddingTopS]}>

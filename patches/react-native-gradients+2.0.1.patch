@@ -1,3 +1,21 @@
+diff --git a/node_modules/react-native-gradients/dist/typescript/RadialGradient.d.ts b/node_modules/react-native-gradients/dist/typescript/RadialGradient.d.ts
+index 1021a19..a4588ec 100644
+--- a/node_modules/react-native-gradients/dist/typescript/RadialGradient.d.ts
++++ b/node_modules/react-native-gradients/dist/typescript/RadialGradient.d.ts
+@@ -2,9 +2,9 @@
+ import { Color } from './types';
+ export declare const RadialGradient: ({ colorList, x, y, rx, ry }: {
+     colorList: Color[];
+-    x: number;
+-    y: number;
+-    rx: number;
+-    ry: number;
++    x: string;
++    y: string;
++    rx: string;
++    ry: string;
+ }) => JSX.Element;
+ //# sourceMappingURL=RadialGradient.d.ts.map
 diff --git a/node_modules/react-native-gradients/src/RadialGradient.tsx b/node_modules/react-native-gradients/src/RadialGradient.tsx
 index 9ac4a70..9658a2d 100644
 --- a/node_modules/react-native-gradients/src/RadialGradient.tsx

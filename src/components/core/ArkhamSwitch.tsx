@@ -18,6 +18,7 @@ interface OwnProps {
   circleColor?: 'light'
   type?: 'radio';
   disabledColor?: string
+  animateTouchOnly?: boolean;
 }
 
 type Props = OwnProps & Omit<TouchableOpacityProps, 'onValueChange' | 'style'>;
@@ -41,7 +42,7 @@ function getCheckColor(color: 'light' | 'dark' | undefined, colors: ThemeColors)
       return colors.M;
   }
 }
-export default function ArkhamSwitch({ type, disabledColor, value: propValue, onValueChange, accessibilityLabel, disabled, large, color, circleColor, ...props }: Props) {
+export default function ArkhamSwitch({ type, disabledColor, value: propValue, onValueChange, accessibilityLabel, disabled, large, color, circleColor, animateTouchOnly, ...props }: Props) {
   const { colors } = useContext(StyleContext);
   const [value, setValue] = useState(propValue);
   const onPress = useCallback(() => {
@@ -64,10 +65,12 @@ export default function ArkhamSwitch({ type, disabledColor, value: propValue, on
     if (propValue !== value) {
       setValue(propValue);
       if (propValue) {
-        scale.value = withSequence(
-          withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
-          withTiming(1, { duration: 100, easing: Easing.elastic(1) })
-        );
+        if (!animateTouchOnly) {
+          scale.value = withSequence(
+            withTiming(1.15, { duration: 150, easing: Easing.elastic(2) }),
+            withTiming(1, { duration: 100, easing: Easing.elastic(1) })
+          );
+        }
       }
     }
   }, [propValue]);
