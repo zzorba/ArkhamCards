@@ -2438,29 +2438,32 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-9.3.5.tgz#0c60c798b5e0e14dd3b3fbab629a6e9609f709fd"
   integrity sha512-Mqbh/J8YCfc+EqSjq5OJn2USmcD8On4048pKEfyCsCDty3lQs1SNcmHqJdu9idNU2v//aM73T8F+re59cf78Ig==
 
-"@react-native-firebase/app@16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-16.2.0.tgz#67b8910e6847db0ba122fbff7736aff2bedf8503"
-  integrity sha512-EokTfI8ANqtpBSdf3fxKsBQ00JR9lFQZ8bwaTkjqdazVnGeVFq4RX8XrL3hHB+WwZp67Ml2Kbt0i1+85Wj76qg==
+"@react-native-firebase/app@16.4.0":
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-16.4.0.tgz#42a250294d83f5ad5dd21cc85e75767a8bd374c5"
+  integrity sha512-eJuAeHQMly6Ylml0VX3OpBXyMGKt51W7YwcDgVQstpBtIUMBrmOebjqbmuZLwFLLuVP3AV0EbrjOQv4+rJvdEQ==
   dependencies:
     "@expo/config-plugins" "^5.0.1"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-16.2.0.tgz#dd7064bbe6b0ac5d5b86c5f10d34c4e6e2f02e4c"
-  integrity sha512-1oh5Tbqj2MPfGLIR4AasQ2AmVnRUwlZlc+x861WGWIe63l3TO8AmUoWq8HBCxOokZGTP8i1YUrxAGwOrF1aaLA==
+"@react-native-firebase/auth@16.4.0":
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-16.4.0.tgz#97a6b4732fb13ea6347e44cb97541e34c170c94c"
+  integrity sha512-TOWsxaPOvNGxvlOgj3Ms6DwRaMdCbQJSYWRGUDf/r8hhIhqb+kEg8n8vVQFl1IWkbcDbBeFfg0zymyqn/H0o4A==
+  dependencies:
+    "@expo/config-plugins" "^5.0.1"
+    plist "^3.0.5"
 
-"@react-native-firebase/database@16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-16.2.0.tgz#4782a12ded3edb327a7b060a99a69e3687c1e312"
-  integrity sha512-5eCdB+XqFxHfb5t/xnCaI+Huu5O6hKxG+5sEeWAFzNzSEE6VH3ch81k+G0+2zkTemZJbRav6FoSFhqqUcWh3nA==
+"@react-native-firebase/database@16.4.0":
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-16.4.0.tgz#cf5d17a52cbe050765140c54cab960ed4b5b1e27"
+  integrity sha512-rVOMBbfq6R/Ls7DmOHQce7htEfky7r/vi9s7HuO18HudqEGJ9o7DYtZtjGwdtEqht0/iRU0VvD+DSsJfkigqqg==
 
-"@react-native-firebase/functions@16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-16.2.0.tgz#ee13651859f326073634fe2f52cbfd26b0260311"
-  integrity sha512-BVl+BCK66+xks/1RWBszzFPMPmcN/Ujc3Fn3IEOzuqR19suNZqPciQqW4o4vFX7Eu2kj0tPGF+lsn0FHsTi34A==
+"@react-native-firebase/functions@16.4.0":
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-16.4.0.tgz#29d8213fef6572174e48425b5b71a8d2fd68f9d5"
+  integrity sha512-r5HSIg65La9lC2Rn7F7Mr7jx9yruCJpaheVGnvwvbHU6D+h+qG8+ZpSJXEiGn7wel4R/ESlQiq6awc++XicNKQ==
 
 "@react-native-google-signin/google-signin@8.0.0":
   version "8.0.0"
@@ -10608,10 +10611,10 @@ react-native-document-picker@8.1.2:
   dependencies:
     invariant "^2.2.4"
 
-react-native-fast-image@8.6.1:
-  version "8.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.1.tgz#6a3a11b8ebc7629919265d33a420a04d13c897e0"
-  integrity sha512-ILuP7EuakqHNzTr8ZbumhuxG4tE/wGQ66z4nEEuzc0FlqY6rYaPsnq/UD2ahoyFj6QP1WvA2RIK3odib+VcqWg==
+react-native-fast-image@8.6.3:
+  version "8.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
+  integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
 
 react-native-flip-card@3.5.6:
   version "3.5.6"
@@ -10738,10 +10741,10 @@ react-native-progress@5.0.0:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-reanimated@2.11.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.11.0.tgz#415ef668440d1b7d8b2b36a20342b1035432dd80"
-  integrity sha512-/QnujrXSNyXasv7v8K3eu5Z4XGRYMPRa0+x0RjNr6Z5/KEuPHwrg1Xm7UZ2YSm6jCF2b1BW6ceqP/1d626gvhQ==
+react-native-reanimated@2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.12.0.tgz#5821eecfb1769b1617a67a2d4dec12fdeedb2b6e"
+  integrity sha512-nrlPyw+Hx9u4iJhZk9PoTvDo/QmVAd+bo7OK9Tv3hveNEF9++5oig/g3Uv9V93shy9avTYGsUprUvAEt/xdzeQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

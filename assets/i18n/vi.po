@@ -5764,6 +5764,9 @@ msgstr ""
 msgid "Choose tarot card"
 msgstr ""
 
+msgid "Choose supplies:"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
