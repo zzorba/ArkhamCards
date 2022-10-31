@@ -2545,7 +2545,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of cards in your hand (rounded up)",
+          "prompt": "Половина числа карт в вашей руке",
           "min": 0
         }
       },
@@ -2577,7 +2577,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed [[Woods]] locations",
+          "prompt": "Число открытых локаций-[[лесов]]",
           "min": 0
         }
       },
@@ -2602,7 +2602,7 @@
           },
           "options": [
             {
-              "prompt": "Engaged with a [[Staff]] enemy",
+              "prompt": "Сражаетесь с врагом-[[Персоналом]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -2636,7 +2636,7 @@
           },
           "options": [
             {
-              "prompt": "Engaged with a [[Staff]] enemy",
+              "prompt": "Сражаетесь с врагом-[[Персоналом]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -4242,7 +4242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Число карт сюжета на победном счету",
           "min": 0,
           "adjustment": 1
         }
@@ -4256,7 +4256,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "В Тиндале",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4293,7 +4293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Число карт сюжета на победном счету",
           "min": 0,
           "adjustment": 2
         }
@@ -4307,7 +4307,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "В Тиндале",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4723,7 +4723,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "Половина значения Убежища вашей локации (округляя вверх)"
         }
       },
       {
@@ -4744,7 +4744,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "Значение убежища вашей локации"
         }
       },
       {
@@ -4769,7 +4769,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "Число карт сюжета на победном счету"
         }
       },
       {
@@ -4796,7 +4796,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "Номер замысла плюс число карт сюжета на победном счету"
         }
       },
       {
@@ -4827,7 +4827,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "Уровень вашей локации"
         }
       },
       {
@@ -4854,7 +4854,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location",
+          "prompt": "Уровень вашей локации",
           "min": 0,
           "adjustment": 2
         }
@@ -4887,7 +4887,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "Число ключей под вашим контролем"
         }
       },
       {
@@ -4905,7 +4905,7 @@
           },
           "options": [
             {
-              "prompt": "[frost] token was revealed",
+              "prompt": "Вытянут жетон [frost]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4925,7 +4925,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control",
+          "prompt": "Число ключей под вашим контролем",
           "min": 0,
           "adjustment": 2
         }
@@ -4945,7 +4945,7 @@
           },
           "options": [
             {
-              "prompt": "[frost] token was revealed",
+              "prompt": "Вытянут жетон [frost]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4974,7 +4974,7 @@
           },
           "options": [
             {
-              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "prompt": "В вашей локации есть враг-[[Древний]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -5011,7 +5011,7 @@
           },
           "options": [
             {
-              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "prompt": "В вашей локации есть враг-[[Древний]]",
               "modified_value": {
                 "modifier": -4
               }

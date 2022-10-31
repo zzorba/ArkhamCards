@@ -19,6 +19,7 @@ import AppIcon from '@icons/AppIcon';
 
 interface Props {
   title: string;
+  component?: React.ReactNode;
   description?: string;
   choices: DisplayChoice[];
   formatLabel?: (index: number) => string;
@@ -58,6 +59,7 @@ function getIcon(icon?: ChoiceIcon | string, card?: Card, image?: string, imageO
 export default function SinglePickerComponent({
   onChoiceChange,
   investigator,
+  component,
   selectedIndex,
   width,
   title,
@@ -144,6 +146,11 @@ export default function SinglePickerComponent({
               investigator={investigator}
               width={width}
             >
+              { !!component && editable && (
+                <View style={space.marginRightM}>
+                  { component }
+                </View>
+              ) }
               { selection }
             </CompactInvestigatorRow>
           </TouchableShrink>
@@ -159,7 +166,7 @@ export default function SinglePickerComponent({
         value={selectedLabel}
       />
     );
-  }, [investigator, showDialog, firstItem, selection, title, editable, width, selectedLabel]);
+  }, [investigator, component, showDialog, firstItem, selection, title, editable, width, selectedLabel]);
   return (
     <>
       { button }

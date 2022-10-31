@@ -111,6 +111,7 @@ function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, bo
         text={heal ? t`Choose heal type` : t`Choose trauma type`}
         confirmText={heal ? t`Chosen heal type` : t`Chosen trauma type`}
         promptType="header"
+        includeTrauma
         investigators={investigators}
         options={options}
       />

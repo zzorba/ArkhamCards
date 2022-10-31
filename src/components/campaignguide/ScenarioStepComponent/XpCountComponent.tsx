@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { map } from 'lodash';
-import { msgid, ngettext } from 'ttag';
+import { t, msgid, ngettext } from 'ttag';
 
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -16,6 +16,10 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import { useLatestDeckCards } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import TraumaSummary from '@components/campaign/TraumaSummary';
+import CollapsibleFactionBlock from '@components/core/CollapsibleFactionBlock';
+import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
 
 interface Props {
   step: XpCountStep;
@@ -108,30 +112,51 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
       )}
       { map(campaignLog.investigators(false), (investigator, idx) => {
         const resupplyPointsString = specialString(investigator);
+        const trauma = campaignLog.traumaAndCardData(investigator.code);
+        const hasTrauma = (trauma.physical || 0) > 0 || (trauma.mental || 0) > 0;
         return (
-          <View style={space.paddingSideS}>
+          <View key={investigator.code} style={[space.paddingSideS, space.paddingBottomS]}>
             <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
               { (xp: number) => (
-                <ChoiceListItemComponent
-                  key={investigator.code}
-                  investigator={investigator}
-                  code={investigator.code}
-                  name={investigator.name}
-                  color={colors.faction[investigator.factionCode()].background}
-                  choices={[{
-                    text: ngettext(
-                      msgid`${xp} general / ${resupplyPointsString} XP`,
-                      `${xp} general / ${resupplyPointsString} XP`,
-                      xp
-                    ),
-                  }]}
-                  onChoiceChange={onChoiceChange}
-                  choice={0}
-                  editable={false}
-                  optional={false}
-                  width={width - s * 2}
-                  firstItem={idx === 0}
-                />
+
+                <CollapsibleFactionBlock
+                  faction={investigator.factionCode()}
+                  renderHeader={() => (
+                    <CompactInvestigatorRow
+                      investigator={investigator}
+                      width={width - s * 2}
+                      open={hasTrauma}
+                    >
+                      <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+                          <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
+                            { ngettext(
+                                msgid`${xp} general / ${resupplyPointsString} XP`,
+                                `${xp} general / ${resupplyPointsString} XP`,
+                                xp
+                              )
+                            }
+                          </Text>
+                        </View>
+                      </View>
+                    </CompactInvestigatorRow>
+                  )}
+                  open={hasTrauma}
+                  disabled
+                  noShadow
+                >
+                  { !!hasTrauma && (
+                    <View style={space.paddingS}>
+                      <MiniPickerStyleButton
+                        title={t`Trauma`}
+                        valueLabel={<TraumaSummary trauma={trauma} investigator={investigator} />}
+                        first
+                        last
+                        editable={false}
+                      />
+                    </View>
+                  ) }
+                </CollapsibleFactionBlock>
               ) }
             </SpentXpComponent>
           </View>

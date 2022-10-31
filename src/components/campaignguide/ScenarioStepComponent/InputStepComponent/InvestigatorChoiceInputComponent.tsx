@@ -125,7 +125,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
   const options = investigatorChoiceInputChoices(input, campaignLog);
   return (
     <>
-      { !!step.text && (
+      { !!step.text && step.prompt_type !== 'header' && (
         <SetupStepWrapper bulletType={step.bullet_type}>
           <CampaignGuideTextComponent text={step.text} />
         </SetupStepWrapper>
@@ -139,6 +139,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
         options={options}
         detailed={input.special_mode === 'detailed'}
         optional={input.investigator === 'choice'}
+        includeTrauma={input.include_trauma}
         unique={input.unique}
       />
     </>

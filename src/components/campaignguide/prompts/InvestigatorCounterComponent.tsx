@@ -4,6 +4,7 @@ import { map } from 'lodash';
 import CounterListComponent from './CounterListComponent';
 import ScenarioStepContext from '../ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props {
   id: string;
@@ -23,7 +24,7 @@ interface Props {
 export default function InvestigatorCounterComponent({
   id, maxLimits, minLimits, requiredTotal, countText, description,
 }: Props) {
-  const { scenarioInvestigators } = useContext(ScenarioStepContext);
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const { colors } = useContext(StyleContext);
   return (
     <CounterListComponent

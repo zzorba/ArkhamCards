@@ -4,7 +4,8 @@ import { map } from 'lodash';
 import { ChoicelistInput, InputStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
-import ChoiceListComponent, { ListItem } from '@components/campaignguide/prompts/ChoiceListComponent';
+import ChoiceListComponent from '@components/campaignguide/prompts/ChoiceListComponent';
+import { ListItem } from '@components/campaignguide/prompts/CheckListComponent';
 import { UniversalChoices } from '@data/scenario';
 
 interface Props {

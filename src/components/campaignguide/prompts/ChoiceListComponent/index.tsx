@@ -12,16 +12,7 @@ import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
-import { Gender_Enum } from '@generated/graphql/apollo-schema';
-
-export interface ListItem {
-  code: string;
-  investigator?: Card;
-  name: string;
-  description?: string;
-  color?: string;
-  gender?: Gender_Enum;
-}
+import ListItem from './ListItem';
 
 export interface ChoiceListComponentProps {
   id: string;
@@ -112,7 +103,6 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
     }
     return detailed ? undefined : -1;
   }, [detailed, selectedChoice]);
-
   const choicesComponent = useMemo(() => {
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
