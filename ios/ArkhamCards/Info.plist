@@ -117,6 +117,7 @@
 		<string>scarlet.ttf</string>
 		<string>TT2020StyleE-Regular.ttf</string>
 		<string>cyclopean.ttf</string>
+		<string>AlegreyaSC-Medium.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
