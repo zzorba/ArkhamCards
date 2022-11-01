@@ -1470,8 +1470,7 @@
       {
         "token": "elder_thing",
         "value": {
-          "modifier": 0,
-          "reveal_another": 1
+          "modifier": -2
         }
       }
     ],
