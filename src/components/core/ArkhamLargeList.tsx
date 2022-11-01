@@ -177,6 +177,7 @@ export default function ArkhamLargeList<Item>({
         initialNumToRender={20}
         maxToRenderPerBatch={40}
         updateCellsBatchingPeriod={10}
+        bounces={Platform.OS === 'ios'}
       />
     </RefreshableWrapper>
   );
