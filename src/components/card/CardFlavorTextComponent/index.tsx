@@ -29,6 +29,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import FlavorMiniCapsNode from './FlavorMiniCapsNode';
 import FlavorStrikeNode from './FlavorStrikeNode';
 import FlavorRedNode from './FlavorRedNode';
+import FlavorTypewriterNode from './FlavorTypewriterNode';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -113,6 +114,20 @@ function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   };
 }
 
+const TypewriterHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<typewriter>([\\s\\S]+?)<\\/typewriter>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorTypewriterNode(style),
+  };
+};
+
+
 const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>([\\s\\S]+?)<\\/fancy>')),
@@ -172,18 +187,6 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorBlockquoteHtmlTagNode,
 };
 
-function MiniCapsHtmlTagRule(): MarkdownRule<WithChildren, State> {
-  return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
-    order: 2,
-    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-      return {
-        children: nestedParse(capture[1], state),
-      };
-    },
-    render: FlavorMiniCapsNode(),
-  };
-}
 function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
@@ -194,6 +197,19 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
       };
     },
     render: FlavorSmallCapsNode(style),
+  };
+}
+
+function MiniCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorMiniCapsNode,
   };
 }
 
@@ -286,7 +302,8 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
-        miniCapsTag: MiniCapsHtmlTagRule(),
+        miniCapsTag: MiniCapsHtmlTagRule(context),
+        typewriterTag: TypewriterHtmlTagRule(context),
         innsmouthTag: InnsmouthTagRule(context, sizeScale),
         gameTag: GameTagRule(context, sizeScale),
       }}
@@ -368,6 +385,34 @@ export default function CardFlavorTextComponent(
           },
         },
         Caveat: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'TT2020 Style E': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'TT2020StyleE-Regular': {
           fontWeights: {
             300: 'Regular',
             400: 'Regular',

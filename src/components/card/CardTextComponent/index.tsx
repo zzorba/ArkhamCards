@@ -32,6 +32,7 @@ import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import RedNode from './RedNode';
+import FlavorMiniCapsNode from '../CardFlavorTextComponent/FlavorMiniCapsNode';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -115,6 +116,20 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
       };
     },
     render: SmallCapsNode(style),
+  };
+}
+
+
+function MiniCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
+    order: BASE_ORDER + 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorMiniCapsNode,
   };
 }
 
