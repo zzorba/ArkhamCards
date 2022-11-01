@@ -135,7 +135,7 @@ msgid "${ parsedDeck.experience } experience required"
 msgstr "${ parsedDeck.experience } punti esperienza richiesti"
 
 msgid "Not enough cards."
-msgstr "Non abbastanza carte."
+msgstr "Non ci sono abbastanza carte."
 
 msgid "Too many cards."
 msgstr "Troppe carte."
@@ -3395,7 +3395,7 @@ msgstr "Nome del mazzo"
 
 #, javascript-format
 msgid "Not enough cards (${ drawDeckSize } / ${ size })."
-msgstr "Non abbastanza carte (${ drawDeckSize } / ${ size })."
+msgstr "Non ci sono abbastanza carte (${ drawDeckSize } / ${ size })."
 
 #, javascript-format
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
@@ -3496,7 +3496,7 @@ msgid ""
 "But signing in will allow you to sync campaigns between devices, with more features "
 "planned for the future."
 msgstr ""
-"Questa App funziona perfettamente senza un Account.\n"
+"Questa App funziona perfettamente anche senza un Account.\n"
 "Tuttavia effettuando l’accesso potrai sincronizzare le campagne su più dispositivi, "
 "ulteriori funzionalità sono previste in futuro."
 
@@ -5275,7 +5275,7 @@ msgid "Samsung One UI fix"
 msgstr "Correzione Samsung One UI"
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
-msgstr "Correggi gli errori di layout sulla versione 3.0 di Samsung One UI"
+msgstr "Correggi gli errori di layout sul Samsung One UI versione 3.0"
 
 msgid "Call of the Plaguebearer"
 msgstr ""
@@ -5547,13 +5547,13 @@ msgid "Show deck ids on campaigns"
 msgstr "Mostra ID mazzo nelle campagne"
 
 msgid "Tarot Reading"
-msgstr ""
+msgstr "Lettura dei Tarocchi"
 
 msgid "Tarot Readings"
-msgstr ""
+msgstr "Lettura dei Tarocchi"
 
 msgid "Perform readings with the tarot deck"
-msgstr ""
+msgstr "Fai la lettura del mazzo tarocchi"
 
 msgid "What is this?"
 msgstr ""
@@ -5605,7 +5605,7 @@ msgid "Draw cards in random positions."
 msgstr ""
 
 msgid "Choose reading type"
-msgstr ""
+msgstr "Scegli il tipo di lettura"
 
 msgid "You must flip all cards to reveal your fate."
 msgstr ""
@@ -5617,7 +5617,8 @@ msgstr ""
 #, javascript-format
 msgid "Not enough cards reversed (${ currentReversedCount } / ${ requiredReversedCount })"
 msgstr ""
-"Non abbastanza carte invertite (${ currentReversedCount } / ${ requiredReversedCount })"
+"Non ci sono abbastanza carte invertite (${ currentReversedCount } / "
+"${ requiredReversedCount })"
 
 msgid "Reject fate (redraw)"
 msgstr ""
@@ -5909,7 +5910,7 @@ msgid "Notice"
 msgstr ""
 
 msgid "Jenny's Choice"
-msgstr "La scelta di Jenny"
+msgstr "Jenny's Choice"
 
 msgid "The Fall of the House of Usher"
 msgstr ""
@@ -6025,7 +6026,7 @@ msgid "Cost: ${ card.cost }"
 msgstr "Costo: ${ card.cost }"
 
 msgid "Grants access to previewed player cards"
-msgstr ""
+msgstr "Ottieni l'accesso alle carte giocatore in anteprima"
 
 msgid "Key"
 msgstr ""
