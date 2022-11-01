@@ -15,6 +15,7 @@
 		6506962425D05D5300B134B0 /* tokens.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6506962325D05D5300B134B0 /* tokens.ttf */; };
 		650DBD8426EFA507006170CC /* edge.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650DBD8326EFA507006170CC /* edge.ttf */; };
 		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
+		651E8AC92911A8B600A48E56 /* AlegreyaSC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
@@ -77,6 +78,7 @@
 		6506962325D05D5300B134B0 /* tokens.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tokens.ttf; path = ../assets/tokens.ttf; sourceTree = "<group>"; };
 		650DBD8326EFA507006170CC /* edge.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = edge.ttf; path = ../assets/edge.ttf; sourceTree = "<group>"; };
 		651B383A251ACF8900D9D054 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
+		651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlegreyaSC-Medium.ttf"; path = "../assets/AlegreyaSC-Medium.ttf"; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */,
 				13B07FAE1A68108700A75B9A /* ArkhamCards */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -372,6 +375,7 @@
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
 				657276D0265984A200157DE3 /* alice.ttf in Resources */,
+				651E8AC92911A8B600A48E56 /* AlegreyaSC-Medium.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,

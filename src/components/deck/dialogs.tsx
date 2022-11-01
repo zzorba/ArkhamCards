@@ -77,6 +77,7 @@ export function useModal({
 
 interface DialogOptions {
   title: string;
+  description?: string;
   investigator?: Card;
   confirm?: {
     title: string;
@@ -103,6 +104,7 @@ interface DialogOptions {
 
 export function useDialog({
   title,
+  description,
   investigator,
   confirm,
   dismiss,
@@ -175,6 +177,7 @@ export function useDialog({
     return (
       <NewDialog
         title={title}
+        description={description}
         investigator={investigator}
         dismissable={!!dismiss || allowDismiss}
         onDismiss={onDismiss}

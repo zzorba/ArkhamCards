@@ -19,6 +19,7 @@ import COLORS from '@styles/colors';
 
 interface Props {
   title: string;
+  description?: string;
   investigator?: Card;
   visible: boolean;
   dismissable?: boolean;
@@ -34,6 +35,7 @@ interface Props {
 function NewDialog(props: Props) {
   const {
     title,
+    description,
     investigator,
     visible,
     dismissable,
@@ -90,7 +92,10 @@ function NewDialog(props: Props) {
           </CompactInvestigatorRow>
         ) : (
           <View style={[styles.header, { backgroundColor: colors.D20 }]}>
-            <Text style={[typography.large, typography.inverted]}>{title}</Text>
+            <View style={styles.columnCenter}>
+              <Text style={[typography.large, typography.inverted]}>{title}</Text>
+              { !!description && <Text style={[space.paddingTopXs, typography.small, typography.invertedLight]}>{description}</Text> }
+            </View>
             { dismissButton }
           </View>
         ) }
@@ -176,5 +181,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  columnCenter: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

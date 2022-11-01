@@ -119,15 +119,12 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
-
-function MiniCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function MiniCapsHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
-    order: BASE_ORDER + 2,
+    order: 2,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-      return {
-        children: nestedParse(capture[1], state),
-      };
+      return { text: capture[1] };
     },
     render: FlavorMiniCapsNode,
   };
@@ -376,6 +373,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       iTag: ItalicHtmlTagRule(usePingFang, context),
       table: TableRule,
       smallcapsTag: SmallCapsHtmlTagRule(context),
+      minicapsTag: MiniCapsHtmlTagRule(),
       center: CenterHtmlTagRule,
       right: RightHtmlTagRule,
       arkhamIcon: ArkhamIconRule(usePingFang, context, sizeScale, !!onLinkPress),
@@ -485,6 +483,21 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             900: 'Black',
             normal: 'Regular',
             bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'Alegreya SC': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
           },
           fontStyles: {
             normal: '',

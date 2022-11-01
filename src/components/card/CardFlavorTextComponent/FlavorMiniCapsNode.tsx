@@ -1,26 +1,21 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
-import { WithChildren } from '../CardTextComponent/types';
+import { WithText } from '../CardTextComponent/types';
 
-export default function FlavorMiniCapsNode() {
+export default function FlavorMiniCapsNode(
+  node: Node & WithText,
+  output: OutputFunction,
+  state: RenderState
+) {
   return (
-    node: Node & WithChildren,
-    output: OutputFunction,
-    state: RenderState
-  ) => {
-    return (
-      <MarkdownText key={state.key} style={styles.text}>
-        { output(node.children, state) }
-      </MarkdownText>
-    );
-  };
+    <MarkdownText key={state.key} style={{
+      fontFamily: 'Alegreya SC',
+      fontWeight: '700',
+      fontStyle: 'normal',
+      fontVariants: ['small_caps'],
+    }}>
+      { node.text }
+    </MarkdownText>
+  );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontStyle: 'normal',
-    fontVariant: ['small-caps'],
-  },
-});

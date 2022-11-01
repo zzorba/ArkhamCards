@@ -7,6 +7,7 @@ export interface TypographyColors {
   D30: ColorValue;
   L30: ColorValue;
   L20: ColorValue;
+  L10: ColorValue;
   lightText: ColorValue;
   darkText: ColorValue;
 }
@@ -47,6 +48,7 @@ export interface Typography {
   dark: TextStyle;
   light: TextStyle;
   inverted: TextStyle;
+  invertedLight: TextStyle,
 }
 
 const ITALIC_FONT_STYLE = Platform.OS === 'ios' ? 'italic' : undefined;
@@ -223,6 +225,9 @@ export default function(
     },
     inverted: {
       color: colors.L30,
+    },
+    invertedLight: {
+      color: colors.L10,
     },
     white: {
       color: COLORS.white,

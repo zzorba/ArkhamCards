@@ -257,6 +257,7 @@ export interface MapLocation {
   x: number;
   y: number;
   name: string;
+  file_name?: string;
   scenario: string;
   dossier?: Dossier[];
   hidden?: boolean;

@@ -200,14 +200,12 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
-function MiniCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+function MiniCapsHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
     order: 2,
     parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-      return {
-        children: nestedParse(capture[1], state),
-      };
+      return { text: capture[1] };
     },
     render: FlavorMiniCapsNode,
   };
@@ -302,7 +300,7 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
-        miniCapsTag: MiniCapsHtmlTagRule(context),
+        miniCapsTag: MiniCapsHtmlTagRule(),
         typewriterTag: TypewriterHtmlTagRule(context),
         innsmouthTag: InnsmouthTagRule(context, sizeScale),
         gameTag: GameTagRule(context, sizeScale),
@@ -396,6 +394,21 @@ export default function CardFlavorTextComponent(
           fontStyles: {
             normal: '',
             italic: '',
+          },
+        },
+        'Alegreya SC': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
           },
         },
         'TT2020 Style E': {

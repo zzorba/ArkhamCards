@@ -18,7 +18,7 @@ import { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
-import space, { s } from '@styles/space';
+import space, { s, m, l } from '@styles/space';
 import { Navigation, OptionsModalTransitionStyle } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
@@ -666,7 +666,6 @@ function LocationContent({
             <DeckButton shrink thin icon="lock" color="light_gray" title={t`Locked`} disabled />
           </View>
         </>
-
       );
     }
     if ((!currentLocation || !atLocation) && !visited) {
@@ -684,7 +683,7 @@ function LocationContent({
               { ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
             </Text>
           ) }
-          { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
+          { (currentLocation?.id !== location.id && !!setCurrentLocation && !visited) ? (
             <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
               <DeckButton
                 shrink
@@ -695,10 +694,11 @@ function LocationContent({
               />
               { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} onPress={makeCurrentFast} /> }
             </View>
-          ) }
+          ) : <View style={{ height: l }} /> }
         </>
       );
     }
+    return <View style={{ height: l }} />;
   }, [location, makeCurrent, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
@@ -836,9 +836,11 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     return [campaignMap.width * 1.0 / campaignMap.height * height, height];
   }, [campaignMap, height]);
   const clearSelection = useCallback(() => setSelectedLocation(undefined), []);
+  const selectedStatus = (selectedLocation?.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation?.status;
   const { dialog, showDialog, setVisible } = useDialog({
     title: selectedLocation?.name || '',
-    content: !!selectedLocation && (
+    description: selectedStatus !== 'locked' ? selectedLocation?.file_name : undefined,
+    content: !!selectedLocation && !!selectedStatus && (
       <LocationContent
         location={selectedLocation}
         currentLocation={currentLocation}
@@ -848,7 +850,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         hasFast={hasFast}
         unlockedDossiers={unlockedDossiers}
         visited={visited.has(selectedLocation.id)}
-        status={(selectedLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation.status}
+        status={selectedStatus}
         showCity={showCity}
       />
     ),
@@ -958,7 +960,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
               <>
                 <View style={[styles.row, space.paddingS, { backgroundColor: colors.L10 }]}>
                   <Text style={[typography.subHeaderText, typography.dark, { flex: 1 }]}>
-                    { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` :  ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
+                    { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` : ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
                   </Text>
                 </View>
                 {
