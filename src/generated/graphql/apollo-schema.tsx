@@ -8803,6 +8803,7 @@ export type Cycle_Name = {
   code: Scalars['String'];
   locale: Scalars['String'];
   name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
 };
 
 /** aggregated selection of "cycle_name" */
@@ -8849,6 +8850,7 @@ export type Cycle_Name_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "cycle_name" */
@@ -8862,6 +8864,7 @@ export type Cycle_Name_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -8870,6 +8873,7 @@ export type Cycle_Name_Max_Fields = {
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "cycle_name" */
@@ -8877,6 +8881,7 @@ export type Cycle_Name_Max_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -8885,6 +8890,7 @@ export type Cycle_Name_Min_Fields = {
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "cycle_name" */
@@ -8892,6 +8898,7 @@ export type Cycle_Name_Min_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "cycle_name" */
@@ -8915,6 +8922,7 @@ export type Cycle_Name_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: cycle_name */
@@ -8930,7 +8938,9 @@ export enum Cycle_Name_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "cycle_name" */
@@ -8938,6 +8948,7 @@ export type Cycle_Name_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "cycle_name" */
@@ -8953,6 +8964,7 @@ export type Cycle_Name_Stream_Cursor_Value_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "cycle_name" */
@@ -8962,7 +8974,9 @@ export enum Cycle_Name_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Cycle_Name_Updates = {
@@ -16525,6 +16539,7 @@ export type Pack_Name = {
   code: Scalars['String'];
   locale: Scalars['String'];
   name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
 };
 
 /** aggregated selection of "pack_name" */
@@ -16571,6 +16586,7 @@ export type Pack_Name_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "pack_name" */
@@ -16584,6 +16600,7 @@ export type Pack_Name_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -16592,6 +16609,7 @@ export type Pack_Name_Max_Fields = {
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "pack_name" */
@@ -16599,6 +16617,7 @@ export type Pack_Name_Max_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -16607,6 +16626,7 @@ export type Pack_Name_Min_Fields = {
   code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "pack_name" */
@@ -16614,6 +16634,7 @@ export type Pack_Name_Min_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "pack_name" */
@@ -16637,6 +16658,7 @@ export type Pack_Name_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: pack_name */
@@ -16652,7 +16674,9 @@ export enum Pack_Name_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** input type for updating data in table "pack_name" */
@@ -16660,6 +16684,7 @@ export type Pack_Name_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** Streaming cursor of the table "pack_name" */
@@ -16675,6 +16700,7 @@ export type Pack_Name_Stream_Cursor_Value_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "pack_name" */
@@ -16684,7 +16710,9 @@ export enum Pack_Name_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 export type Pack_Name_Updates = {

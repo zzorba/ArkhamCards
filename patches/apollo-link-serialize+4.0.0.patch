@@ -1,0 +1,10 @@
+diff --git a/node_modules/apollo-link-serialize/src/SerializingLink.ts b/node_modules/apollo-link-serialize/src/SerializingLink.ts
+index a1c12ed..2e1f633 100644
+--- a/node_modules/apollo-link-serialize/src/SerializingLink.ts
++++ b/node_modules/apollo-link-serialize/src/SerializingLink.ts
+@@ -1,4 +1,4 @@
+-import { ApolloLink, FetchResult, NextLink, Observable, Operation } from '@apollo/client/core';
++import { ApolloLink, FetchResult, NextLink, Observable, Operation } from '@apollo/client';
+ import { Observer } from 'zen-observable-ts';
+ import { extractKey } from './extractKey';
+ 

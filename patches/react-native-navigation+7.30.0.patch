@@ -1,0 +1,129 @@
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
+index 121b64e..0eccdd3 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
+@@ -31,6 +31,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+     private PermissionListener mPermissionListener;
+ 
+     protected Navigator navigator;
++    protected RootPresenter rootPresenter;
+ 
+     @Override
+     protected void onCreate(@Nullable Bundle savedInstanceState) {
+@@ -39,11 +40,12 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+             return;
+         }
+         addDefaultSplashLayout();
++        rootPresenter = new RootPresenter();
+         navigator = new Navigator(this,
+                 new ChildControllersRegistry(),
+                 new ModalStack(this),
+                 new OverlayManager(),
+-                new RootPresenter()
++                rootPresenter
+         );
+         navigator.bindViews();
+         getReactGateway().onActivityCreated(this);
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/stack/topbar/button/ButtonPresenter.kt b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/stack/topbar/button/ButtonPresenter.kt
+index 785fcbe..93b3b8e 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/stack/topbar/button/ButtonPresenter.kt
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/stack/topbar/button/ButtonPresenter.kt
+@@ -79,7 +79,7 @@ open class ButtonPresenter(private val context: Context, private val button: But
+     private fun applyAccessibilityLabel(menuItem: MenuItem) {
+         if (button.accessibilityLabel.hasValue()) {
+             if (button.component.hasValue()) {
+-                menuItem.actionView.contentDescription = button.accessibilityLabel.get()
++                menuItem.actionView?.contentDescription = button.accessibilityLabel.get()
+             } else {
+                 MenuItemCompat.setContentDescription(menuItem, button.accessibilityLabel.get())
+             }
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
+index 17c81ad..1f60865 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
+@@ -19,6 +19,7 @@ public class RootPresenter {
+     private final RootAnimator animator;
+     private CoordinatorLayout rootLayout;
+     private final LayoutDirectionApplier layoutDirectionApplier;
++    private boolean setRootCalled = false;
+ 
+     public void setRootContainer(CoordinatorLayout rootLayout) {
+         this.rootLayout = rootLayout;
+@@ -33,8 +34,12 @@ public class RootPresenter {
+         this.animator = animator;
+         this.layoutDirectionApplier = layoutDirectionApplier;
+     }
++    public boolean setRootCalled() {
++        return setRootCalled;
++    }
+ 
+     public void setRoot(ViewController appearingRoot, ViewController<?> disappearingRoot, Options defaultOptions, CommandListener listener, ReactInstanceManager reactInstanceManager) {
++        setRootCalled = true;
+         layoutDirectionApplier.apply(appearingRoot, defaultOptions, reactInstanceManager);
+         rootLayout.addView(appearingRoot.getView(), matchParentWithBehaviour(new BehaviourDelegate(appearingRoot)));
+         Options options = appearingRoot.resolveCurrentOptions(defaultOptions);
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/animations/BaseViewAnimator.kt b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/animations/BaseViewAnimator.kt
+index 8d6c256..c30fcad 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/animations/BaseViewAnimator.kt
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/animations/BaseViewAnimator.kt
+@@ -43,17 +43,17 @@ open class BaseViewAnimator<T : View>(
+     private inner class AnimatorListener(private val startState: AnimationState, private val endVisibility: Int) : AnimatorListenerAdapter() {
+         var isCancelled = false
+ 
+-        override fun onAnimationStart(animation: Animator?) {
++        override fun onAnimationStart(animation: Animator) {
+             view.resetViewProperties()
+             view.visibility = View.VISIBLE
+             animationState = startState
+         }
+ 
+-        override fun onAnimationCancel(animation: Animator?) {
++        override fun onAnimationCancel(animation: Animator) {
+             isCancelled = true
+         }
+ 
+-        override fun onAnimationEnd(animation: Animator?) {
++        override fun onAnimationEnd(animation: Animator) {
+             if (!isCancelled) {
+                 animationState = AnimationState.Idle
+                 view.visibility = endVisibility
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/stack/topbar/titlebar/IconBackgroundDrawable.kt b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/stack/topbar/titlebar/IconBackgroundDrawable.kt
+index a469d4c..e3f606a 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/stack/topbar/titlebar/IconBackgroundDrawable.kt
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/views/stack/topbar/titlebar/IconBackgroundDrawable.kt
+@@ -68,7 +68,7 @@ class IconBackgroundDrawable(
+         super.setBounds(r)
+     }
+ 
+-    override fun onBoundsChange(bounds: Rect?) {
++    override fun onBoundsChange(bounds: Rect) {
+         if (bounds != null) {
+             backgroundRect = Rect((bounds.width() - backgroundWidth) / 2,
+                     (bounds.height() - backgroundHeight) / 2,
+diff --git a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+index 1ec6a7b..529dad8 100644
+--- a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
++++ b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+@@ -10,7 +10,9 @@ - (UITabBarItem *)createTabBarItem:(UITabBarItem *)mergeItem {
+ }
+ 
+ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary *)titleAttributes {
+-    tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
++        tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes =
+         titleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.normal.titleTextAttributes = titleAttributes;
+@@ -18,8 +20,9 @@ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary
+ 
+ - (void)setSelectedTitleAttributes:(UITabBarItem *)tabItem
+            selectedTitleAttributes:(NSDictionary *)selectedTitleAttributes {
+-    tabItem.standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes =
+-        selectedTitleAttributes;
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
++        tabItem.standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedTitleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.selected.titleTextAttributes =
+         selectedTitleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.selected.titleTextAttributes =

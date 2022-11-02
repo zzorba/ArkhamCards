@@ -2270,11 +2270,12 @@ export type cycle_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_nameKeySpecifier = ('code' | 'locale' | 'name' | cycle_nameKeySpecifier)[];
+export type cycle_nameKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_nameKeySpecifier)[];
 export type cycle_nameFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type cycle_name_aggregateKeySpecifier = ('aggregate' | 'nodes' | cycle_name_aggregateKeySpecifier)[];
 export type cycle_name_aggregateFieldPolicy = {
@@ -2287,17 +2288,19 @@ export type cycle_name_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | cycle_name_max_fieldsKeySpecifier)[];
+export type cycle_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_name_max_fieldsKeySpecifier)[];
 export type cycle_name_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | cycle_name_min_fieldsKeySpecifier)[];
+export type cycle_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_name_min_fieldsKeySpecifier)[];
 export type cycle_name_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type cycle_name_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | cycle_name_mutation_responseKeySpecifier)[];
 export type cycle_name_mutation_responseFieldPolicy = {
@@ -3859,11 +3862,12 @@ export type pack_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_nameKeySpecifier = ('code' | 'locale' | 'name' | pack_nameKeySpecifier)[];
+export type pack_nameKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_nameKeySpecifier)[];
 export type pack_nameFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type pack_name_aggregateKeySpecifier = ('aggregate' | 'nodes' | pack_name_aggregateKeySpecifier)[];
 export type pack_name_aggregateFieldPolicy = {
@@ -3876,17 +3880,19 @@ export type pack_name_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | pack_name_max_fieldsKeySpecifier)[];
+export type pack_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_name_max_fieldsKeySpecifier)[];
 export type pack_name_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | pack_name_min_fieldsKeySpecifier)[];
+export type pack_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_name_min_fieldsKeySpecifier)[];
 export type pack_name_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type pack_name_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | pack_name_mutation_responseKeySpecifier)[];
 export type pack_name_mutation_responseFieldPolicy = {
