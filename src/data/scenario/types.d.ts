@@ -297,7 +297,7 @@ export interface MapLabel {
   y: number;
   name: string;
   direction: "left" | "center" | "right";
-  type: "connection" | "ocean" | "small_ocean" | "continent" | "country";
+  type: "connection" | "ocean" | "small_ocean" | "sea" | "continent" | "country";
 }
 export interface CampaignLogSectionDefinition {
   id: string;

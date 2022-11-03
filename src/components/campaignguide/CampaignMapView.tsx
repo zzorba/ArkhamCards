@@ -148,30 +148,48 @@ function getMapLabelStyles(widthRatio: number) {
       opacity: 0.7,
     },
     ocean: {
-      fontSize: 28 * widthRatio,
-      lineHeight: 30 * widthRatio,
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
+      fontSize: 20 * widthRatio,
+      lineHeight: 22 * widthRatio,
       letterSpacing: 4,
       fontStyle: 'italic',
-      opacity: 0.2,
+      opacity: 0.4,
     },
     small_ocean: {
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
       fontSize: 20 * widthRatio,
       lineHeight: 22 * widthRatio,
       letterSpacing: 1.5,
       fontStyle: 'italic',
-      opacity: 0.2,
+      opacity: 0.4,
+    },
+    sea: {
+      fontFamily: 'DM Serif Display',
+      color: '#624614',
+      fontSize: 8 * widthRatio,
+      lineHeight: 9 * widthRatio,
+      letterSpacing: 1.5,
+      fontStyle: 'italic',
+      opacity: 0.6,
     },
     country: {
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
+      fontSize: 14 * widthRatio,
+      lineHeight: 16 * widthRatio,
       letterSpacing: 1.5,
-      opacity: 0.2,
+      opacity: 0.4,
     },
     continent: {
-      fontSize: 28 * widthRatio,
-      lineHeight: 30 * widthRatio,
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
+      fontWeight: '700',
+      fontSize: 20 * widthRatio,
+      lineHeight: 22 * widthRatio,
       letterSpacing: 3,
-      opacity: 0.2,
+      opacity: 0.8,
     },
   };
 }
@@ -780,7 +798,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     ];
   }, [campaignMap, props.currentLocation, visitedLocations]);
 
-  const { colors, backgroundStyle, borderStyle, typography, width, height } = useContext(StyleContext);
+  const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
   const onDismiss = useCallback(() => {
@@ -991,7 +1009,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
           maxScale={4}
           initialScale={1.0}
           style={{ backgroundColor: '0x8A9284' }}
-          containerDimensions={{ width, height }}
+          containerDimensions={{ width, height: height - 80 }}
           contentDimensions={{ width: theWidth, height: theHeight }}
         >
           <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
