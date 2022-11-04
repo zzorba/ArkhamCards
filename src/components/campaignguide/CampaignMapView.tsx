@@ -140,54 +140,62 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   unlockedDossiers: string[]
 }
 
+const italicStyle = {
+  fontFamily: Platform.OS === 'ios' ? 'DM Serif Display' : 'DMSerifDisplay-Italic',
+  fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
+};
+
+const bigSize = Platform.OS === 'ios' ? 20 : 18;
+const mediumSize = Platform.OS === 'ios' ? 14 : 12;
+const smallSize = Platform.OS === 'ios' ? 8 : 7;
+
 function getMapLabelStyles(widthRatio: number) {
   return {
     connection: {
+      fontFamily: Platform.OS === 'ios' ? 'Times New Roman' : 'serif',
+      color: '#24303C',
       fontSize: 18 * widthRatio,
       lineHeight: 20 * widthRatio,
       opacity: 0.7,
     },
     ocean: {
       color: '#624614',
-      fontFamily: 'DM Serif Display',
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      ...italicStyle,
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 4,
-      fontStyle: 'italic',
       opacity: 0.4,
     },
     small_ocean: {
       color: '#624614',
-      fontFamily: 'DM Serif Display',
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      ...italicStyle,
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 1.5,
-      fontStyle: 'italic',
       opacity: 0.4,
     },
     sea: {
-      fontFamily: 'DM Serif Display',
+      ...italicStyle,
       color: '#624614',
-      fontSize: 8 * widthRatio,
-      lineHeight: 9 * widthRatio,
+      fontSize: smallSize * widthRatio,
+      lineHeight: (smallSize + 1) * widthRatio,
       letterSpacing: 1.5,
-      fontStyle: 'italic',
       opacity: 0.6,
     },
     country: {
       color: '#624614',
       fontFamily: 'DM Serif Display',
-      fontSize: 14 * widthRatio,
-      lineHeight: 16 * widthRatio,
+      fontSize: mediumSize * widthRatio,
+      lineHeight: (mediumSize + 2) * widthRatio,
       letterSpacing: 1.5,
       opacity: 0.4,
     },
     continent: {
       color: '#624614',
       fontFamily: 'DM Serif Display',
-      fontWeight: '700',
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      fontWeight: Platform.OS === 'ios' ? '700' : '400',
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 3,
       opacity: 0.8,
     },
@@ -234,10 +242,6 @@ function MapLabelComponent({
       left: label.x * widthRatio,
     }]}>
       <Text style={[
-        {
-          fontFamily: 'Times New Roman',
-          color: '#24303C',
-        },
         mapLabelStyles[label.type],
         fontDirectionStyle[label.direction],
       ]}>
