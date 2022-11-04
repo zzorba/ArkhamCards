@@ -5982,10 +5982,10 @@ msgid "Do you want to use the app to draw random tarot cards?"
 msgstr "앱을 통해 무작위로 타로 카드를 뽑으시겠습니까?"
 
 msgid "Choose tarot card"
-msgstr ""
+msgstr "타로 카드 선택"
 
 msgid "Choose supplies:"
-msgstr ""
+msgstr "탐험물자 선택:"
 
 msgctxt "investigator"
 msgid "Custom"
