@@ -936,16 +936,22 @@ export default class Card {
   }
 
   collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
+    let quantity = (this.quantity || 0);
     if (this.pack_code === 'core') {
-      if (packInCollection.core || ignore_collection) {
-        return (this.quantity || 0) * 2;
-      }
-      const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
-      if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
-        return (this.quantity || 0) * 2;
+      if (packInCollection.core) {
+        // Second core set is indicated.
+        quantity *= 2;
+      } else if (ignore_collection) {
+        quantity = Math.max(this.deck_limit || 0, this.quantity || 0);
       }
     }
-    return this.quantity || 0;
+
+    forEach(this.reprint_pack_codes || REPRINT_CARDS[this.code], pack => {
+      if (!!packInCollection[pack]) {
+        quantity += Math.max(this.quantity || 0, this.deck_limit || 0);
+      }
+    });
+    return quantity;
   }
 
   collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
