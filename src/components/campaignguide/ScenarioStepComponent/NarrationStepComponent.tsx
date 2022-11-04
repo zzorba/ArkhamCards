@@ -99,6 +99,8 @@ export function NarrationInlineControls({ narration }: IconProps) {
   const onPressNarration = useCallback(() => {
     if (isPlaying) {
       narrationPlayer().then(trackPlayer => trackPlayer.pause());
+    } else if (isCurrentTrack && playerState === State.Paused) {
+      narrationPlayer().then(trackPlayer => trackPlayer.play());
     } else {
       playNarrationTrack(narration.id);
     }
