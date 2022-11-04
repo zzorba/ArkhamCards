@@ -4347,7 +4347,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산의 수",
+          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산 개수",
           "min": 0
         }
       },
@@ -4376,7 +4376,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산의 수",
+          "prompt": "‘데이지 워커’가 조종하는 [[서적]] 자산 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -4554,7 +4554,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "승점 더미에 있는 [[추종자]] 적의 수",
+          "prompt": "승점 더미에 있는 [[추종자]] 적 수",
           "min": 0,
           "max": 5
         }
@@ -4595,7 +4595,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "승점 더미에 있는 [[추종자]] 적의 수",
+          "prompt": "승점 더미에 있는 [[추종자]] 적 수",
           "min": 0,
           "adjustment": 1
         }
