@@ -1563,7 +1563,7 @@ msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 이미 완료했다�
 
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 아직 완료하지 않다면:"
+msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 아직 완료하지 않았다면:"
 
 #, javascript-format
 msgid ""
@@ -1572,7 +1572,7 @@ msgid ""
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
-msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 빗금이 ${ count }개입니까?"
+msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래에 표시된 빗금이 ${ count }개입니까?"
 
 msgid ""
 "Check Campaign Log. Because there is ${ count } entry under '${ "
@@ -1580,7 +1580,7 @@ msgid ""
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ "
 "logEntry.section }'"
-msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 항목이 ${ count }개입니까?"
+msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래에 표시된 항목이 ${ count }개입니까?"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
@@ -1607,13 +1607,13 @@ msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자는: "
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있습니까?"
+msgstr[0] "이 게임을 ${ playerCount }명의 조사자로 진행하고 있습니까?"
 
 msgid "If the lead investigator was <b>killed</b>."
-msgstr "대표 조사자가 <b>사망하면</b>."
+msgstr "대표 조사자가 <b>사망</b>했습니까?"
 
 msgid "If all investigators were <b>killed</b>."
-msgstr "모든 조사자가 <b>사망하면</b>."
+msgstr "모든 조사자가 <b>사망</b>했습니까?"
 
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있습니까?"
