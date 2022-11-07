@@ -1556,14 +1556,14 @@ msgstr "앱을 이용해서 약점을 무작위로 선택하기를 원하십니�
 
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr "당신이 <b>${ difficulty }</b> 난이도를 즐기고 있기 때문에:"
+msgstr "당신이 <b>${ difficulty }</b> 난이도를 즐기고 있다면:"
 
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr "당신이 이미 <b>${ scenarioName }</b> 시나리오를 완료했기 때문에:"
+msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 이미 완료했다면:"
 
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "당신이 아직 <b>${ scenarioName }</b> 시나리오를 완료하지 않았기 때문에:"
+msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 아직 완료하지 않다면:"
 
 #, javascript-format
 msgid ""
@@ -1572,9 +1572,7 @@ msgid ""
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ "
 "logEntry.section }'"
-msgstr[0] ""
-"캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 마크가 ${ count }개이므로 다음 지시를 "
-"수행합니다."
+msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 빗금이 ${ count }개입니까?"
 
 msgid ""
 "Check Campaign Log. Because there is ${ count } entry under '${ "
@@ -1582,11 +1580,11 @@ msgid ""
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ "
 "logEntry.section }'"
-msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 항목이 ${ count }개이므로"
+msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 항목이 ${ count }개입니까?"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있으므로, 다음 지시를 수행합니다."
+msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있습니까?"
 
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr "캠페인 기록지를 확인합니다. <i>${ logEntry.section }</i> 항목이 X로 표기되어 있지 않습니까?"
@@ -1609,7 +1607,7 @@ msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자는: "
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로, 다음 지시를 수행합니다."
+msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있습니까?"
 
 msgid "If the lead investigator was <b>killed</b>."
 msgstr "대표 조사자가 <b>사망하면</b>."
@@ -1618,9 +1616,7 @@ msgid "If all investigators were <b>killed</b>."
 msgstr "모든 조사자가 <b>사망하면</b>."
 
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr ""
-"${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면, 다음 지시를 "
-"수행합니다."
+msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있습니까?"
 
 msgid "Choose Side-Scenario"
 msgstr "외전 시나리오 선택"
@@ -5967,7 +5963,7 @@ msgid "Fan-made Investigators"
 msgstr "팬 제작 조사자"
 
 msgid "Fortune and Folly"
-msgstr ""
+msgstr "한탕과 허탕"
 
 msgid "Challenge Scenarios"
 msgstr "도전 시나리오"
@@ -6075,13 +6071,13 @@ msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없습니까?"
 
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있습니까?"
 
 #, javascript-format
 msgctxt "masculine"
@@ -6190,14 +6186,14 @@ msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없습니까?"
 
 #, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있습니까?"
 
 msgctxt "feminine"
 msgid "Physical trauma"
@@ -6323,14 +6319,14 @@ msgctxt "nonbinary"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없습니까?"
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
 "Campaign Log."
-msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있다면"
+msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있습니까?"
 
 msgctxt "Traits"
 msgid "All"
