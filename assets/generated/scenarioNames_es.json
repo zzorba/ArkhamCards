@@ -532,10 +532,6 @@
     "name": "Quito"
   },
   {
-    "id": "rain_and_riddles",
-    "name": "Rain and Riddles"
-  },
-  {
     "id": "read_or_die",
     "name": "Lee o muere"
   },
@@ -700,6 +696,10 @@
     "name": "Reikiavik"
   },
   {
+    "id": "riddles_and_rain",
+    "name": "Riddles and Rain"
+  },
+  {
     "id": "rio_de_janiero",
     "name": "Río de Janeiro"
   },
@@ -854,6 +854,10 @@
   {
     "id": "the_fallen",
     "name": "The Fallen"
+  },
+  {
+    "id": "the_foundation",
+    "name": "The Foundation"
   },
   {
     "id": "the_golden_circle",
