@@ -49,6 +49,12 @@ export function localizeOptionName(real_name: string): string {
       return t`Cursed`;
     case 'Blessed and Cursed':
       return t`Blessed and Cursed`;
+    case 'Asset Class Choice':
+      return t`Asset Class Choice`;
+    case 'Skill Class Choice':
+      return t`Skill Class Choie`;
+    case 'Event Class Choice':
+      return t`Event Class Choice`;
     default:
       return real_name;
   }
