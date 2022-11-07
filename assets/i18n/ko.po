@@ -5983,6 +5983,15 @@ msgstr "타로 카드 선택"
 msgid "Choose supplies:"
 msgstr "탐험물자 선택:"
 
+msgid "Asset Class Choice"
+msgstr ""
+
+msgid "Skill Class Choie"
+msgstr ""
+
+msgid "Event Class Choice"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"

@@ -5737,6 +5737,15 @@ msgstr ""
 msgid "Choose supplies:"
 msgstr ""
 
+msgid "Asset Class Choice"
+msgstr ""
+
+msgid "Skill Class Choie"
+msgstr ""
+
+msgid "Event Class Choice"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
