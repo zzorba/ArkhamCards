@@ -5984,13 +5984,13 @@ msgid "Choose supplies:"
 msgstr "탐험물자 선택:"
 
 msgid "Asset Class Choice"
-msgstr ""
+msgstr "선택한 자산 카드의 역할군"
 
 msgid "Skill Class Choie"
-msgstr ""
+msgstr "선택한 능력 카드의 역할군"
 
 msgid "Event Class Choice"
-msgstr ""
+msgstr "선택한 이벤트 카드의 역할군"
 
 msgctxt "investigator"
 msgid "Custom"
