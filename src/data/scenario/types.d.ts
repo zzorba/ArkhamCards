@@ -969,6 +969,7 @@ export interface Choice {
   border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
+  allow_duplicates?: boolean;
 }
 export interface SuppliesInput {
   type: "supplies";
@@ -1030,6 +1031,7 @@ export interface InvestigatorConditionalChoice {
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
+  allow_duplicates?: boolean;
 }
 export interface ChooseOneInput {
   type: "choose_one";

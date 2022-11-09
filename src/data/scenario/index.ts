@@ -80,6 +80,7 @@ export interface DisplayChoice {
   image?: string;
   imageOffset?: 'right' | 'left';
   hidden?: boolean;
+  allow_duplicates?: boolean;
 }
 
 export function selectedDisplayChoiceText(choice: DisplayChoice, gender?: Gender_Enum) {

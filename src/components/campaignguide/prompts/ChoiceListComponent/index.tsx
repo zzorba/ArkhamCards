@@ -152,7 +152,13 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       return t`Choose an option`;
     }
     if (unique) {
-      const nonNone = filter(items, item => selectedChoice[item.code] !== undefined);
+      const nonNone = filter(
+        filter(items, item => selectedChoice[item.code] !== undefined),
+        item => {
+          const choice = selectedChoice[item.code];
+          return choice !== undefined && !options.choices[choice].allow_duplicates;
+        }
+      );
       if (nonNone.length !== uniqBy(nonNone, item => selectedChoice[item.code]).length) {
         return t`Fix duplicates`;
       }
