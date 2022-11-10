@@ -1510,15 +1510,15 @@ msgid "In your Campaign Log, record that <i>${ text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ text }</i> 라고 기록합니다."
 
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 취소선을 긋습니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${ logEntry.text }</i> "
-"항목에 X표시를 합니다."
+"당신의 캠페인 기록지 중 “${ logEntry.section }” 항목 아래의 <i>${ logEntry.text }</i> "
+"항목에 취소선을 긋습니다."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 라고 기록합니다."
@@ -1528,7 +1528,7 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래에 <i>${ logEntry.text }</i> 라고 "
+"당신의 캠페인 기록지 중 “${ logEntry.section }” 아래에 <i>${ logEntry.text }</i> 항목을 "
 "기록합니다."
 
 msgid "Add ${ tokenString } to the chaos bag."
@@ -4164,22 +4164,22 @@ msgstr "텔레그램"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
-msgstr "캠페인 기록지 중 \"${ section }\" 항목 아래에 #name# 이름을 기록합니다."
+msgstr "캠페인 기록지 중 “${ section }” 아래에 #name# 이름을 기록합니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 항목에 "
-"X표시를 합니다."
+"캠페인 기록지 중 “${ logEntry.section }” 아래의 <i>${logEntry.text }</i> 항목에 "
+"취소선을 긋습니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"캠페인 기록지 중 \"${ logEntry.section }\" 항목 아래의 <i>${logEntry.text }</i> 라고 "
+"캠페인 기록지 중 “${ logEntry.section }” 아래에 <i>${logEntry.text }</i> 항목을 "
 "기록합니다."
 
 msgid "Unarchive campaign"
@@ -4461,22 +4461,22 @@ msgstr "탐사대"
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr "캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름에 X표시를 합니다."
+msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름에 취소선을 긋습니다."
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목에 있는 “MIA” 옆에 ${ partnerName } 동행 조력자 이름을 "
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆에 “행방불명”을 "
 "기입합니다."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목에 있는 “MIA” 옆에 ${ partnerName } 동행 조력자 이름에 X표시를 "
-"합니다."
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆의 “행방불명”에 "
+"취소선을 긋습니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
 msgstr "대표 조사자가 <b>미쳤으면</b>."
@@ -6554,7 +6554,7 @@ msgstr "새롭게 디자인된 혼돈 주머니 확률 계산기 "
 
 msgctxt "releaseNotes"
 msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
-msgstr "<center>\"절대 확률을 말하지 마세요!\" - 한 솔로</center>"
+msgstr "<center>“절대 확률을 말하지 마세요!” - 한 솔로</center>"
 
 msgctxt "releaseNotes"
 msgid ""
