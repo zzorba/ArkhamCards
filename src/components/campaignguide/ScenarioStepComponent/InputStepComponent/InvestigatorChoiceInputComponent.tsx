@@ -132,8 +132,8 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
       ) }
       <InvestigatorChoicePrompt
         id={step.id}
-        text={step.text}
-        promptType={step.prompt_type}
+        text={step.prompt_type === 'header' ? step.text : input.confirm_text}
+        promptType={input.confirm_text ? 'header' : step.prompt_type}
         bulletType={step.bullet_type}
         investigators={investigators}
         options={options}
