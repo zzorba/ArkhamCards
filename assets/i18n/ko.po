@@ -1517,8 +1517,8 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>"
 msgstr ""
-"당신의 캠페인 기록지 중 “${ logEntry.section }” 항목 아래의 <i>${ logEntry.text }</i> "
-"항목에 취소선을 긋습니다."
+"당신의 캠페인 기록지 중 “${ logEntry.section }” 항목 아래의 <i>${ logEntry.text }</i> 항목에 "
+"취소선을 긋습니다."
 
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 라고 기록합니다."
@@ -1677,7 +1677,6 @@ msgstr "조사자 추가"
 msgid "Killed and Insane Investigators"
 msgstr "사망하거나 미친 조사자"
 
-#, javascript-format
 msgid "Experience cost: ${ xpCost }"
 msgstr "경험치 비용: ${ xpCost }"
 
@@ -2173,19 +2172,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러 개의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -4171,16 +4170,14 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
-"캠페인 기록지 중 “${ logEntry.section }” 아래의 <i>${logEntry.text }</i> 항목에 "
-"취소선을 긋습니다."
+"캠페인 기록지 중 “${ logEntry.section }” 아래의 <i>${logEntry.text }</i> 항목에 취소선을 "
+"긋습니다."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
-msgstr ""
-"캠페인 기록지 중 “${ logEntry.section }” 아래에 <i>${logEntry.text }</i> 항목을 "
-"기록합니다."
+msgstr "캠페인 기록지 중 “${ logEntry.section }” 아래에 <i>${logEntry.text }</i> 항목을 기록합니다."
 
 msgid "Unarchive campaign"
 msgstr "캠페인 보관 취소"
@@ -5920,7 +5917,6 @@ msgstr "마지막으로 완료된 시나리오나 막간의 변경점 적용"
 msgid "This is a side-story location."
 msgstr "이곳은 외전 이야기 장소입니다."
 
-#, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
 msgstr[0] "여행 비용: ${ travelDistance }시간"
@@ -5991,6 +5987,38 @@ msgstr "선택한 능력 카드의 역할군"
 
 msgid "Event Class Choice"
 msgstr "선택한 이벤트 카드의 역할군"
+
+msgid ""
+"If you wish to add a side-story to this campaign, you may travel to this "
+"location and spend additional time equal to the normal experience for "
+"playing that side story."
+msgstr ""
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time + side story cost"
+msgid_plural "Travel cost: ${ travelDistance } time + side story cost"
+msgstr[0] ""
+
+msgid "Use expedited ticket"
+msgstr ""
+
+#, javascript-format
+msgid "Time cost: ${ xpCost }"
+msgstr ""
+
+#, javascript-format
+msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story "
+"costs a certain amount of <b>time</b> instead of experience.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each side-story may only be played once per campaign."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

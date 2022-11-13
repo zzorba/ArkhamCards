@@ -831,19 +831,19 @@ msgstr "Worek Chaosu"
 msgid "Adjust Weakness Set"
 msgstr "Dopasuj Zestaw Osłabień"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ta talia zawiera kilka podstawowych osłabień"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ta talia zawiera podstawowe osłabienie"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
@@ -2342,7 +2342,6 @@ msgstr ""
 "Możesz jednak zdecydować, aby nie brał udziału w przyszłych scenariuszach "
 "tej kampanii."
 
-#, javascript-format
 msgid "Experience cost: ${ xpCost }"
 msgstr "Koszt doświadczenia: ${ xpCost }"
 
@@ -6280,7 +6279,6 @@ msgstr ""
 msgid "This is a side-story location."
 msgstr ""
 
-#, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
 msgstr[0] ""
@@ -6350,6 +6348,40 @@ msgid "Skill Class Choie"
 msgstr ""
 
 msgid "Event Class Choice"
+msgstr ""
+
+msgid ""
+"If you wish to add a side-story to this campaign, you may travel to this "
+"location and spend additional time equal to the normal experience for "
+"playing that side story."
+msgstr ""
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time + side story cost"
+msgid_plural "Travel cost: ${ travelDistance } time + side story cost"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Use expedited ticket"
+msgstr ""
+
+#, javascript-format
+msgid "Time cost: ${ xpCost }"
+msgstr ""
+
+#, javascript-format
+msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story "
+"costs a certain amount of <b>time</b> instead of experience.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each side-story may only be played once per campaign."
 msgstr ""
 
 msgctxt "investigator"
