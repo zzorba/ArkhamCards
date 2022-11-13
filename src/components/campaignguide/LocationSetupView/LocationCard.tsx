@@ -72,6 +72,9 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
 export default function LocationCard({ annotation, code, height, width, left, top, name, resource_dividers }: Props) {
   const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
   const rotate = code.indexOf('_rotate') !== -1;
+  const mini = code.indexOf('_mini') !== -1;
+
+  const [theWidth, theHeight] = mini ? [width * 0.75, height * 0.75] : [width, height];
   const image = useMemo(() => {
     switch (code) {
       case 'blank':
@@ -105,15 +108,17 @@ export default function LocationCard({ annotation, code, height, width, left, to
         );
       default:
         return (
-          <LocationCardImage
-            name={name}
-            code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '')}
-            back={code.indexOf('_back') !== -1}
-            width={width}
-            height={height}
-            rotateLeft={code.indexOf('_rotate_left') !== -1}
-            rotate={rotate}
-          />
+          <View style={mini ? { paddingTop: height * 0.1, paddingBottom: height * 0.1, paddingLeft: width * 0.1, paddingRight: width * 0.1 } : undefined}>
+            <LocationCardImage
+              name={name}
+              code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '').replace('_mini', '')}
+              back={code.indexOf('_back') !== -1}
+              width={theWidth}
+              height={theHeight}
+              rotateLeft={code.indexOf('_rotate_left') !== -1}
+              rotate={rotate}
+            />
+          </View>
         );
     }
   }, [colors, borderStyle, code, name, height, rotate, width]);

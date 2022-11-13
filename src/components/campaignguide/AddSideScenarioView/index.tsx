@@ -34,7 +34,7 @@ export interface AddSideScenarioProps extends CampaignGuideInputProps {
 
 type Props = NavigationProps & AddSideScenarioProps;
 
-function SideScenarioList({ scenarios, componentId, onPress }: { scenarios: Scenario[]; componentId: string; onPress: (scenario: Scenario) => void }) {
+function SideScenarioList({ scenarios, componentId, onPress, useTime }: { scenarios: Scenario[]; componentId: string; onPress: (scenario: Scenario) => void; useTime: boolean }) {
   const { borderStyle } = useContext(StyleContext);
   const [official, custom] = partition(scenarios, s => !s.custom);
   return (
@@ -45,6 +45,7 @@ function SideScenarioList({ scenarios, componentId, onPress }: { scenarios: Scen
           componentId={componentId}
           scenario={scenario}
           onPress={onPress}
+          useTime={useTime}
         />
       )) }
       { !!custom.length && (
@@ -58,6 +59,7 @@ function SideScenarioList({ scenarios, componentId, onPress }: { scenarios: Scen
               componentId={componentId}
               scenario={scenario}
               onPress={onPress}
+              useTime={useTime}
             />
           )) }
         </View>
@@ -195,10 +197,17 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
         <View style={[styles.header, borderStyle]}>
           <SetupStepWrapper bulletType="none">
             <CampaignGuideTextComponent
-              text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n- Playing a side-story costs each investigator in the campaign a certain amount of experience, which should be paid when you start the scenario.\n- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n- Each sidestory may only be played once per campaign.\n\n<b>Note:</b> When using this app, the experience required to play these scenarios will be deducted automatically at the <b>end of the scenario</b>, but you should be sure you have sufficient experience set aside to pay for it.`} />
+              text={onEmbarkSide ?
+                t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story costs a certain amount of <b>time</b> instead of experience.\n- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n- Each side-story may only be played once per campaign.`
+                : t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n- Playing a side-story costs each investigator in the campaign a certain amount of experience, which should be paid when you start the scenario.\n- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n- Each side-story may only be played once per campaign.\n\n<b>Note:</b> When using this app, the experience required to play these scenarios will be deducted automatically at the <b>end of the scenario</b>, but you should be sure you have sufficient experience set aside to pay for it.`} />
           </SetupStepWrapper>
         </View>
-        <SideScenarioList scenarios={playableSideScenarios} componentId={componentId} onPress={onPress} />
+        <SideScenarioList
+          scenarios={playableSideScenarios}
+          componentId={componentId}
+          onPress={onPress}
+          useTime={!!onEmbarkSide}
+        />
         <ArkhamButton
           icon="expand"
           title={t`Custom scenario`}
@@ -207,7 +216,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
         <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
-  }, [borderStyle, backgroundStyle, playableSideScenarios, componentId, onPress, customScenarioPressed]);
+  }, [borderStyle, backgroundStyle, playableSideScenarios, componentId, onPress, onEmbarkSide, customScenarioPressed]);
   const challengeTab = useMemo(() => {
     return (
       <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
@@ -217,11 +226,16 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
           </SetupStepWrapper>
           <DownloadParallelCardsButton />
         </View>
-        <SideScenarioList scenarios={playableChallengeScenarios} componentId={componentId} onPress={onPress} />
+        <SideScenarioList
+          scenarios={playableChallengeScenarios}
+          componentId={componentId}
+          onPress={onPress}
+          useTime={!!onEmbarkSide}
+        />
         <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
-  }, [backgroundStyle, borderStyle, playableChallengeScenarios, componentId, onPress]);
+  }, [backgroundStyle, onEmbarkSide, borderStyle, playableChallengeScenarios, componentId, onPress]);
   const tabs = useMemo(() => [
     {
       key: 'scenarios',

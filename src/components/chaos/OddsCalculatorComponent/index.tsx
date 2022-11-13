@@ -92,11 +92,13 @@ function parseSpecialTokenValuesText(
     forEach(
       scenarioText.replace(/<br\/>/g, '\n').split('\n'),
       line => {
-        const token = find(SPECIAL_TOKENS, token =>
+        const tokens = filter(SPECIAL_TOKENS, token =>
           line.indexOf(`[${token}]`) !== -1
         );
-        if (token) {
-          linesByToken[token] = line;
+        if (tokens.length) {
+          forEach(tokens, token => {
+            linesByToken[token] = line;
+          });
         }
       });
     SPECIAL_TOKENS.forEach(token => {
@@ -129,7 +131,7 @@ function parseSpecialTokenValuesText(
           if (line) {
             const effectText = line.indexOf(':') !== -1 ? tail(line.split(':')).join(':') : tail(line.split(']')).join(']');
             tokenText[token] = effectText;
-            const valueRegex = new RegExp(`\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
+            const valueRegex = new RegExp(`(\\[[^\\]]+\\] or )?\\[(${token})\\][^:]*?:?\\s([-+][0-9X])(\\. )?(.*)`);
             if (valueRegex.test(line)) {
               const match = line.match(valueRegex);
               if (match) {

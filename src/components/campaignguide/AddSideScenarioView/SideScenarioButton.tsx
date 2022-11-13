@@ -15,16 +15,18 @@ interface Props {
   componentId: string;
   scenario: Scenario;
   onPress: (scenario: Scenario) => void;
+  useTime: boolean;
 }
 
-function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge: ChallengeData }) {
+function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; challenge: ChallengeData; useTime: boolean }) {
   const { typography } = useContext(StyleContext);
   const [investigator] = useSingleCard(challenge.investigator, 'player');
   if (!investigator) {
     return null;
   }
   const xpCost = scenario.xp_cost || 0;
-  const challengeCost = xpCost + challenge.xp_cost;
+  const additionalXpCost = challenge.xp_cost;
+  const challengeCost = xpCost + additionalXpCost;
   return (
     <View style={styles.flex}>
       <Text style={[typography.small, space.paddingTopS]}>
@@ -33,14 +35,25 @@ function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge
           t`${investigator.name} Challenge Scenario`
         }
       </Text>
-      <Text style={[typography.small, typography.light, space.paddingTopS]}>
-        { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
-      </Text>
+      { useTime ? (
+        <>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
+            { t`Time cost: ${xpCost}` }
+          </Text>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
+            { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
+          </Text>
+        </>
+      ) : (
+        <Text style={[typography.small, typography.light, space.paddingTopS]}>
+          { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
+        </Text>
+      ) }
     </View>
   );
 }
 
-function CustomBlock({ scenario, custom }: { scenario: Scenario; custom: CustomData }) {
+function CustomBlock({ scenario, custom, useTime }: { scenario: Scenario; custom: CustomData; useTime: boolean }) {
   const { typography } = useContext(StyleContext);
   const xpCost = scenario.xp_cost || 0;
   return (
@@ -49,12 +62,12 @@ function CustomBlock({ scenario, custom }: { scenario: Scenario; custom: CustomD
         { t`Fan-made scenario by ${custom.creator}` }
       </Text>
       <Text style={[typography.small, typography.light, space.paddingTopS]}>
-        { t`Experience cost: ${xpCost}` }
+        { useTime ? t`Time cost: ${xpCost}` : t`Experience cost: ${xpCost}` }
       </Text>
     </View>
   );
 }
-export default function SideScenarioButton({ scenario, onPress, componentId }: Props) {
+export default function SideScenarioButton({ scenario, onPress, componentId, useTime }: Props) {
   const { typography, colors } = useContext(StyleContext);
 
   const _onPress = () => {
@@ -92,17 +105,17 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
   const descriptionLine = useMemo(() => {
     if (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) {
       return (
-        <ChallengeBlock challenge={scenario.challenge} scenario={scenario} />
+        <ChallengeBlock challenge={scenario.challenge} scenario={scenario} useTime={useTime} />
       );
     }
     if (scenario.custom) {
       return (
-        <CustomBlock custom={scenario.custom} scenario={scenario} />
+        <CustomBlock custom={scenario.custom} scenario={scenario} useTime={useTime} />
       );
     }
     return (
       <Text style={[typography.small, typography.light, space.paddingTopS]}>
-        { t`Experience cost: ${xpCost}` }
+        { useTime ? t`Time cost: ${xpCost}` : t`Experience cost: ${xpCost}` }
       </Text>
     );
   }, [xpCost, scenario, typography]);
