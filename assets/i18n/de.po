@@ -829,19 +829,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -4695,7 +4695,7 @@ msgid ""
 "amount of experience, which should be paid when you start the scenario.\n"
 "- Weaknesses, trauma, experience, and rewards granted by playing a "
 "side-story stay with the investigators for the remainder of the campaign.\n"
-"- Each sidestory may only be played once per campaign.\n"
+"- Each side-story may only be played once per campaign.\n"
 "\n"
 "<b>Note:</b> When using this app, the experience required to play these "
 "scenarios will be deducted automatically at the <b>end of the scenario</b>, "
