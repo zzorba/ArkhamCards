@@ -33,6 +33,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import RedNode from './RedNode';
 import FlavorMiniCapsNode from '../CardFlavorTextComponent/FlavorMiniCapsNode';
+import FlavorTypewriterNode from '../CardFlavorTextComponent/FlavorTypewriterNode';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -231,6 +232,19 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
 };
 
 
+const TypewriterHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<typewriter>([\\s\\S]+?)<\\/typewriter>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorTypewriterNode(style),
+  };
+};
+
 function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
@@ -372,6 +386,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       emTag: EmphasisHtmlTagRule(usePingFang, context),
       iTag: ItalicHtmlTagRule(usePingFang, context),
       table: TableRule,
+      typewriterTag: TypewriterHtmlTagRule(context),
       smallcapsTag: SmallCapsHtmlTagRule(context),
       minicapsTag: MiniCapsHtmlTagRule(),
       center: CenterHtmlTagRule,
@@ -456,6 +471,34 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
           fontStyles: {
             normal: '',
             italic: 'Light',
+          },
+        },
+        'TT2020 Style E': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'TT2020StyleE-Regular': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
           },
         },
         Courier: {

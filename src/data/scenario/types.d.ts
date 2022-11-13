@@ -269,20 +269,22 @@ export interface MapLocation {
 }
 export interface Dossier {
   title: string;
+  title_font?: "file";
   entries: DossierElement[];
   locked?: string;
 }
 export interface DossierElement {
-  image?: {
-    ratio: number;
-    uri: string;
-    alignment: "left" | "right";
-  };
+  image?: Image;
   text?: string;
   reference?: {
     city: string;
     name: string;
   };
+}
+export interface Image {
+  ratio: number;
+  uri: string;
+  alignment: "left" | "right" | "top" | "bottom";
 }
 export interface LocationDetails {
   region: {
@@ -1220,6 +1222,11 @@ export interface RuleReminderStep {
   border_only?: boolean;
   text?: string;
   title?: string;
+  images?: {
+    image: Image;
+    width: "full" | "half" | "quarter";
+    text?: string;
+  }[];
   bullets?: {
     text: string;
   }[];
@@ -1253,6 +1260,7 @@ export interface LocationSetupStep {
   vertical: "half" | "normal";
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
+  annotations?: LocationAnnotation[];
   resource_dividers?: {
     right?: number;
     bottom?: number;
@@ -1263,6 +1271,12 @@ export interface LocationSetupStep {
   }[];
   bullet_type?: null;
   narration?: Narration;
+}
+export interface LocationAnnotation {
+  text: string;
+  x: number;
+  y: number;
+  position: "top" | "bottom";
 }
 export interface LocationConnectorsStep {
   id: string;

@@ -8,11 +8,13 @@ import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { LocationAnnotation } from '@data/scenario/types';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
 
 interface Props {
+  annotation?: LocationAnnotation;
   code: string;
   height: number;
   width: number;
@@ -67,8 +69,8 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
   );
 }
 
-export default function LocationCard({ code, height, width, left, top, name, resource_dividers }: Props) {
-  const { borderStyle, colors } = useContext(StyleContext);
+export default function LocationCard({ annotation, code, height, width, left, top, name, resource_dividers }: Props) {
+  const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
   const rotate = code.indexOf('_rotate') !== -1;
   const image = useMemo(() => {
     switch (code) {
@@ -143,13 +145,20 @@ export default function LocationCard({ code, height, width, left, top, name, res
       </>
     );
   }, [resource_dividers, width, height, left, top, colors]);
-
+  const annotationLineHeight = fontScale * 24;
   return (
     <>
       <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }]}>
         { image }
       </View>
       { resourceDividers }
+      { !!annotation && (
+        <View style={[styles.annotation, { width, top: annotation.position === 'top' ? top - annotationLineHeight : top + height, left }]}>
+          <Text numberOfLines={1} style={[typography.text, typography.center, { lineHeight: annotationLineHeight, fontSize: fontScale * 22 }, typography.bold]}>
+            { annotation.text }
+          </Text>
+        </View>
+      )}
     </>
   );
 }
@@ -188,5 +197,8 @@ const styles = StyleSheet.create({
   },
   resource: {
     paddingBottom: s,
+  },
+  annotation: {
+    position: 'absolute'
   },
 });

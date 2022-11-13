@@ -105,7 +105,7 @@ function ScenarioStepComponentContent({
     case 'location_connectors':
       return <LocationConnectorsStepComponent step={step} />;
     case 'rule_reminder':
-      return <RuleReminderStepComponent step={step} />;
+      return <RuleReminderStepComponent step={step} width={width} />;
     case 'resolution':
       return <ResolutionStepComponent step={step} />;
     case 'xp_count':

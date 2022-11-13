@@ -468,7 +468,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
-  // TSK,
+  TSK,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,
@@ -505,13 +505,14 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  // TSK,
+  TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  TSK,
 ]);
 
 export interface CustomCampaignLog {

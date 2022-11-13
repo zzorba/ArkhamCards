@@ -531,6 +531,13 @@ function findShortestPath(start: string, end: string, allLocations: MapLocation[
   return undefined;
 }
 
+const IMAGE_SPACING = {
+  left: space.marginRightM,
+  right: space.marginLeftM,
+  top: space.marginBottomM,
+  bottom: space.marginTopM,
+}
+
 function DossierImage({
   uri,
   ratio,
@@ -538,14 +545,18 @@ function DossierImage({
   alignment,
 }: {
   uri: string;
-  alignment: 'right' | 'left';
+  alignment: 'right' | 'left' | 'top' | 'bottom';
   ratio: number;
   width: number;
 }) {
   const { darkMode } = useContext(StyleContext);
   return (
-    <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
-      <View style={{ padding: 8, paddingBottom: 32, backgroundColor: darkMode ? COLORS.D10 : COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
+    <View style={IMAGE_SPACING[alignment]}>
+      <View style={{
+        padding: 8,
+        paddingBottom: 32,
+        backgroundColor: darkMode ? COLORS.D10 : COLORS.white,
+        transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
           source={{ uri: `https://img.arkhamcards.com${uri}` }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
@@ -558,19 +569,35 @@ function DossierImage({
 
 
 function DossierComponent({ dossier, showCity }: { dossier: Dossier; idx: number; showCity: (city: string) => void }) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   return (
     <View style={[
       { flexDirection: 'column', backgroundColor: colors.L20 },
       space.paddingM,
       space.marginBottomM,
     ]}>
-      <Text style={[typography.text, typography.bold]}>{dossier.title}</Text>
+      <Text style={
+        dossier.title_font === 'file' ?
+        {
+          fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
+          fontSize: 20 * fontScale,
+          lineHeight: 24 * fontScale,
+          textDecorationLine: 'underline',
+          fontWeight: '700',
+        } : [typography.text, typography.bold]}>
+        {dossier.title}
+      </Text>
       { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} showCity={showCity} />)}
     </View>
   );
 }
 
+const IMAGE_DIRECTION: { [key: string]: 'row' | 'row-reverse' | 'column' | 'column-reverse' } = {
+  left: 'row-reverse',
+  right: 'row',
+  top: 'column',
+  bottom: 'column-reverse',
+};
 
 
 function DossierEntryComponent({
@@ -592,7 +619,7 @@ function DossierEntryComponent({
   }, [reference, showCity]);
   if (image) {
     return (
-      <View style={{ flexDirection: image?.alignment === 'left' ? 'row-reverse' : 'row' }}>
+      <View style={{ flexDirection: IMAGE_DIRECTION[image?.alignment || 'right'] }}>
         { !!text && (
           <View style={{ flex: 1 }}>
             <CampaignGuideTextComponent text={text} />
@@ -696,13 +723,20 @@ function LocationContent({
           { status === 'side' && (
             <View style={space.paddingTopM}>
               <Text style={typography.text}>
-                { t`This is a side-story location.`}
+                { t`This is a side-story location.` }
               </Text>
+              { !!travelDistance && !!currentLocation && !!setCurrentLocation && !visited && (
+                <Text style={[typography.text, space.paddingTopS]}>
+                  { t`If you wish to add a side-story to this campaign, you may travel to this location and spend additional time equal to the normal experience for playing that side story.` }
+                </Text>
+              ) }
             </View>
           ) }
           { !!travelDistance && !!currentLocation && (
             <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
-              { ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
+              { status === 'side' ?
+                ngettext(msgid`Travel cost: ${travelDistance} time + side story cost`, `Travel cost: ${travelDistance} time + side story cost`, travelDistance) :
+                ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
             </Text>
           ) }
           { (currentLocation?.id !== location.id && !!setCurrentLocation && !visited) ? (
@@ -714,7 +748,7 @@ function LocationContent({
                 title={t`Travel here`}
                 onPress={makeCurrent}
               />
-              { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} onPress={makeCurrentFast} /> }
+              { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} detail={t`Use expedited ticket`} onPress={makeCurrentFast} /> }
             </View>
           ) : <View style={{ height: l }} /> }
         </>
@@ -728,7 +762,7 @@ function LocationContent({
         <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
           <EncounterIcon encounter_code={location.id} size={width / 3.2} color={colors.D20} />
         </View>
-        <CardDetailSectionHeader title={t`Information`} />
+        <CardDetailSectionHeader title={t`Location`} />
         <Text style={typography.text}>
           {location.name}
         </Text>

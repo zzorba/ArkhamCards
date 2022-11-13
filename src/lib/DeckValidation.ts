@@ -319,6 +319,7 @@ export default class DeckValidation {
       deck_options.push({
         limit: 1,
         trait: ['Covenant'],
+        ignore_match: true,
         error: t`Limit 1 Covenant per deck.`,
         dynamic: true,
       });
@@ -576,6 +577,9 @@ export default class DeckValidation {
           if (processDeckCounts && option.limit) {
             if (finalOption || this.deck_options_counts[i].limit < option.limit) {
               this.deck_options_counts[i].limit += 1;
+              if (option.ignore_match) {
+                continue;
+              }
               return option;
             }
           } else {
