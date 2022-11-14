@@ -547,6 +547,22 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             italic: 'Italic',
           },
         },
+        'AlegreyaSC-Medium': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            500: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
         'Teutonic RU': {
           fontWeights: {
             300: 'Regular',

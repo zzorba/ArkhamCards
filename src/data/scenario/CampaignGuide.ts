@@ -596,8 +596,8 @@ export default class CampaignGuide {
       return {
         ...scenario,
         steps: [
-          ...scenario.steps,
           ...this.campaign.campaign.side_scenario_steps || [],
+          ...scenario.steps,
         ],
       };
     }
@@ -605,8 +605,8 @@ export default class CampaignGuide {
     return {
       ...scenario,
       steps: [
-        ...filter(scenario.steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
         ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
+        ...filter(scenario.steps, step => step.id !== PLAY_SCENARIO_STEP_ID),
         {
           id: PLAY_SCENARIO_STEP_ID,
           type: 'input',

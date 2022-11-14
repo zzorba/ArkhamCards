@@ -43,6 +43,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;
+    case 'Guide.ExileSelector': return require('@components/campaignguide/SelectExileCardsView').default;
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
     case 'Guide.ScenarioFaq': return require('@components/campaignguide/ScenarioFaqView').default;
     case 'Guide.ChallengeScenario': return require('@components/campaignguide/ChallengeScenarioView').default;

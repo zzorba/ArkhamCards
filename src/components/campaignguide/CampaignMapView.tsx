@@ -35,6 +35,7 @@ import colors from '@styles/colors';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import MapToggleButton from './MapToggleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { MAX_WIDTH } from '@styles/sizes';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -137,7 +138,7 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   hasFast: boolean;
   visitedLocations: string[];
   unlockedLocations: string[];
-  unlockedDossiers: string[]
+  unlockedDossiers: string[];
 }
 
 const italicStyle = {
@@ -152,10 +153,10 @@ const smallSize = Platform.OS === 'ios' ? 8 : 7;
 function getMapLabelStyles(widthRatio: number) {
   return {
     connection: {
-      fontFamily: Platform.OS === 'ios' ? 'Times New Roman' : 'serif',
+      fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
       color: '#24303C',
-      fontSize: 18 * widthRatio,
-      lineHeight: 20 * widthRatio,
+      fontSize: 14 * widthRatio,
+      lineHeight: 16 * widthRatio,
       opacity: 0.7,
     },
     ocean: {
@@ -233,14 +234,18 @@ function MapLabelComponent({
   const lineHeight = mapLabelStyles[label.type].lineHeight;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
   return (
-    <View style={[{
-      position: 'absolute',
-      top: label.y * heightRatio - lineHeight * numLines,
-    }, label.direction === 'left' ? {
-      right: (campaignWidth - label.x) * widthRatio,
-    } : {
-      left: label.x * widthRatio,
-    }]}>
+    <View style={[
+      {
+        position: 'absolute',
+        top: label.y * heightRatio - lineHeight * numLines,
+      },
+      label.direction === 'left' ? {
+        right: (campaignWidth - label.x) * widthRatio,
+      } : {
+        left: label.x * widthRatio,
+      },
+      label.rotation ? { transform: [{ rotate: label.rotation }] } : undefined,
+    ]}>
       <Text style={[
         mapLabelStyles[label.type],
         fontDirectionStyle[label.direction],
@@ -576,15 +581,17 @@ function DossierComponent({ dossier, showCity }: { dossier: Dossier; idx: number
       space.paddingM,
       space.marginBottomM,
     ]}>
-      <Text style={
-        dossier.title_font === 'file' ?
-        {
+      <Text style={[
+        dossier.title_font === 'file' ? {
           fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
           fontSize: 20 * fontScale,
           lineHeight: 24 * fontScale,
           textDecorationLine: 'underline',
-          fontWeight: '700',
-        } : [typography.text, typography.bold]}>
+          fontWeight: Platform.OS === 'ios' ? '700' : undefined,
+        } : undefined,
+        dossier.title_font !== 'file' ? typography.text : undefined,
+        dossier.title_font !== 'file' ? typography.bold : undefined,
+        typography.dark]}>
         {dossier.title}
       </Text>
       { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} showCity={showCity} />)}
@@ -696,7 +703,7 @@ function LocationContent({
     if (atLocation) {
       return (
         <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-          <DeckButton shrink thin icon="check-thin" color="light_gray" title={t`Currently here`} disabled />
+          <DeckButton shrink thin icon="per_investigator" color="light_gray" title={t`Currently here`} disabled />
         </View>
       );
     }
@@ -712,7 +719,15 @@ function LocationContent({
       return (
         <>
           <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-            <DeckButton shrink thin icon="lock" color="light_gray" title={t`Locked`} disabled />
+            <DeckButton
+              shrink
+              thin
+              icon="lock"
+              color="red_outline"
+              title={t`Secret / Locked`}
+              detail={setCurrentLocation ? t`Cannot stop here until unlocked` : undefined}
+              disabled
+            />
           </View>
         </>
       );
@@ -732,13 +747,6 @@ function LocationContent({
               ) }
             </View>
           ) }
-          { !!travelDistance && !!currentLocation && (
-            <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
-              { status === 'side' ?
-                ngettext(msgid`Travel cost: ${travelDistance} time + side story cost`, `Travel cost: ${travelDistance} time + side story cost`, travelDistance) :
-                ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
-            </Text>
-          ) }
           { (currentLocation?.id !== location.id && !!setCurrentLocation && !visited) ? (
             <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
               <DeckButton
@@ -746,9 +754,20 @@ function LocationContent({
                 thin
                 icon="map"
                 title={t`Travel here`}
+                detail={ngettext(msgid`Mark ${travelDistance} time`, `Mark ${travelDistance} time`, travelDistance)}
                 onPress={makeCurrent}
               />
-              { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} detail={t`Use expedited ticket`} onPress={makeCurrentFast} /> }
+              { !!hasFast && (
+                <DeckButton
+                  leftMargin={s}
+                  shrink
+                  thin
+                  icon="map"
+                  title={t`Use expedited ticket`}
+                  detail={t`Mark 1 time`}
+                  onPress={makeCurrentFast}
+                />
+              ) }
             </View>
           ) : <View style={{ height: l }} /> }
         </>
@@ -760,18 +779,23 @@ function LocationContent({
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
         <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
-          <EncounterIcon encounter_code={location.id} size={width / 3.2} color={colors.D20} />
+          <EncounterIcon encounter_code={location.id} size={Math.min(width, MAX_WIDTH) / 3.2} color={colors.D20} />
         </View>
         <CardDetailSectionHeader title={t`Location`} />
-        <Text style={typography.text}>
+        <Text style={[typography.text, typography.italic]}>
           {location.name}
         </Text>
-        <Text style={typography.text}>
+        <Text style={[typography.text, typography.italic]}>
           {location.details.region.name}
         </Text>
         { !!location.details.country && (
-          <Text style={typography.text}>
+          <Text style={[typography.text, typography.italic]}>
             {location.details.country.name}
+          </Text>
+        ) }
+        { !!currentLocation && currentLocation.id !== location.id && (
+          <Text style={[typography.text, space.marginTopS]}>
+            { ngettext(msgid`Travel time: ${travelDistance}`, `Travel time: ${travelDistance}`, travelDistance)}
           </Text>
         ) }
         {travelSection}
@@ -868,19 +892,21 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
 
   const showCity = useCallback((city: string) => {
     const location = find(campaignMap?.locations, l => l.id === city)
-    if (location && pinchRef.current) {
-      const campaignWidth = campaignMap?.width || 1;
-      const campaignHeight = campaignMap?.height || 1;
+    if (location) {
+      if (pinchRef.current) {
+        const campaignWidth = campaignMap?.width || 1;
+        const campaignHeight = campaignMap?.height || 1;
 
-      const x = interpolate(location.x * 1.0 / campaignWidth,
-        [0, 1.0],
-        [0, width - theWidth]
-      );
-      const y = interpolate(
-        location.y * 1.0 / campaignHeight,
-        [0, 1.0],
-        [0, height - theHeight]);
-      pinchRef.current.translateTo(x, y, false);
+        const x = interpolate(location.x * 1.0 / campaignWidth,
+          [0, 1.0],
+          [0, width - theWidth]
+        );
+        const y = interpolate(
+          location.y * 1.0 / campaignHeight,
+          [0, 1.0],
+          [0, height - theHeight]);
+        pinchRef.current.translateTo(x, y, false);
+      }
       setSelectedLocation(location);
     }
   }, [campaignMap, setSelectedLocation])
@@ -1003,17 +1029,21 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       },
     });
   }, [componentId]);
+  const [viewHeight, setViewHeight] = useState(height - 80);
+  const onLayout = useCallback((event: LayoutChangeEvent) => {
+    setViewHeight(event.nativeEvent.layout.height);
+  }, [setViewHeight]);
   return (
-    <View style={{ flex: 1, position: 'relative' }}>
+    <View style={{ flex: 1, position: 'relative' }} onLayout={onLayout}>
       { timeTableMode ? (
         <ScrollView contentContainerStyle={[backgroundStyle, styles.column]}>
-          { flatMap(locationsByDistance, (locations) => {
+          { flatMap(locationsByDistance, (locations, idx) => {
             const first = locations[0];
             const status = (first.status === 'locked' && !!find(unlockedLocations, loc => loc === first.id) ? 'standard' : undefined) || first.status;
             const alreadyVisited = visited.has(first.id);
             const travelDistance = travelDistances?.[first.id]?.time || 1;
             return (
-              <>
+              <View key={idx}>
                 <View style={[styles.row, space.paddingS, { backgroundColor: colors.L10 }]}>
                   <Text style={[typography.subHeaderText, typography.dark, { flex: 1 }]}>
                     { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` : ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
@@ -1036,7 +1066,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                     )
                   })
                 }
-              </>
+              </View>
             );
           }) }
         </ScrollView>
@@ -1046,9 +1076,9 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
           minScale={1}
           maxScale={4}
           initialScale={1.0}
-          style={{ backgroundColor: '0x8A9284' }}
-          containerDimensions={{ width, height: height - 80 }}
+          containerDimensions={{ width, height: viewHeight }}
           contentDimensions={{ width: theWidth, height: theHeight }}
+          backgroundStyle={{ backgroundColor: '#7a897f' }}
         >
           <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
             <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988" />

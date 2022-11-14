@@ -300,6 +300,7 @@ export interface MapLabel {
   name: string;
   direction: "left" | "center" | "right";
   type: "connection" | "ocean" | "small_ocean" | "sea" | "continent" | "country";
+  rotation?: string;
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -561,7 +562,7 @@ export interface CampaignDataEmbarkEffect {
 }
 export interface CampaignDataUpdateLocationEffect {
   type: "campaign_data";
-  setting: "unlock_location" | "lock_location" | "unlock_dossier";
+  setting: "unlock_location" | "lock_location" | "unlock_dossier" | "hide_dossier";
   value: string;
 }
 export interface CampaignDataUnlockMapEffect {
@@ -933,6 +934,8 @@ export interface UpgradeDecksInput {
   skip_decks?: boolean;
   special_xp?: SpecialXp;
   counter?: string;
+  exile?: boolean;
+  hide_xp?: boolean;
   story_cards?: [] | [string];
 }
 export interface CardChoiceInput {
@@ -949,6 +952,7 @@ export interface CardSearchQuery {
   traits?: string[];
   types?: string[];
   unique?: boolean;
+  non_story_only?: boolean;
   vengeance?: boolean;
   exclude_code?: string[];
   code?: null;

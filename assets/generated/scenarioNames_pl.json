@@ -33,7 +33,7 @@
   },
   {
     "id": "alexandria",
-    "name": "Alexandria"
+    "name": "Dogs of War"
   },
   {
     "id": "all_or_nothing",
@@ -41,7 +41,7 @@
   },
   {
     "id": "anchorage",
-    "name": "Anchorage"
+    "name": "On Thin Ice"
   },
   {
     "id": "arkham",
@@ -89,7 +89,11 @@
   },
   {
     "id": "bermuda",
-    "name": "Bermuda"
+    "name": "The Great Work"
+  },
+  {
+    "id": "bermuda_triangle",
+    "name": "Without a Trace"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -117,11 +121,11 @@
   },
   {
     "id": "bombay",
-    "name": "Bombay"
+    "name": "Strange Architecture"
   },
   {
     "id": "buenos_aires",
-    "name": "Buenos Aires"
+    "name": "Sanguine Shadows"
   },
   {
     "id": "by_the_book",
@@ -150,14 +154,6 @@
   {
     "id": "city_of_the_elder_things",
     "name": "Miasto Starszych Istot"
-  },
-  {
-    "id": "congress_of_the_keys",
-    "name": "Congress of the Keys"
-  },
-  {
-    "id": "constantinople",
-    "name": "Constantinople"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -325,7 +321,7 @@
   },
   {
     "id": "havana",
-    "name": "Havana"
+    "name": "Dancing Mad"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -349,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Hong Kong"
+    "name": "Blood, Sweat, and Tea"
   },
   {
     "id": "horror_in_high_gear",
@@ -404,24 +400,28 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "istanbul",
+    "name": "Dealings in the Dark"
+  },
+  {
     "id": "jennys_choice",
     "name": "Jenny's Choice"
   },
   {
     "id": "kabul",
-    "name": "Kabul"
+    "name": "Ruses and Reclamations"
   },
   {
     "id": "kathmandu",
-    "name": "Kathmandu"
+    "name": "Whistle On the Wind"
   },
   {
     "id": "kuala_lampur",
-    "name": "Kuala Lampur"
+    "name": "Shades of Suffering"
   },
   {
     "id": "lagos",
-    "name": "Lagos"
+    "name": "Special Delivery"
   },
   {
     "id": "late_risers",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "London"
+    "name": "Dead and Gone"
   },
   {
     "id": "lost_in_time_and_space",
@@ -453,11 +453,11 @@
   },
   {
     "id": "manokwari",
-    "name": "Manokwari"
+    "name": "Metamorphosis"
   },
   {
     "id": "marrakesh",
-    "name": "Marrakesh"
+    "name": "Dead Heat"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -469,7 +469,7 @@
   },
   {
     "id": "moscow",
-    "name": "Moscow"
+    "name": "Quid Pro Quo"
   },
   {
     "id": "mourning_chorus",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Nairobi"
+    "name": "Infernal Machinery"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Perth"
+    "name": "Paranatural Selection"
   },
   {
     "id": "point_of_no_return",
@@ -529,7 +529,7 @@
   },
   {
     "id": "quito",
-    "name": "Quito"
+    "name": "Ruses and Reclamations"
   },
   {
     "id": "read_or_die",
@@ -693,7 +693,7 @@
   },
   {
     "id": "reykjavik",
-    "name": "Reykjavik"
+    "name": "Ruses and Reclamations"
   },
   {
     "id": "riddles_and_rain",
@@ -701,23 +701,23 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Rio de Janiero"
+    "name": "Theory of Annihiliation"
   },
   {
     "id": "rome",
-    "name": "Rome"
+    "name": "Romulus and Remus"
   },
   {
     "id": "san_francisco",
-    "name": "San Francisco"
+    "name": "Quid Pro Quo"
   },
   {
     "id": "san_juan",
-    "name": "San Juan"
+    "name": "Ruses and Reclamations"
   },
   {
     "id": "shanghai",
-    "name": "Shanghai"
+    "name": "The Coiled Serpent"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +733,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Stockholm"
+    "name": "Strange Architecture"
   },
   {
     "id": "strange_moons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Sydney"
+    "name": "Ringing Hollow"
   },
   {
     "id": "tcu_epilogue",
@@ -993,7 +993,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Tokyo"
+    "name": "Special Delivery"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1008,12 +1008,12 @@
     "name": "Ślady Egila"
   },
   {
-    "id": "tsk_prologue",
-    "name": "Prolog"
+    "id": "tsk_epilogue",
+    "name": "Epilog"
   },
   {
     "id": "tunguska",
-    "name": "Tunguska"
+    "name": "Congress of the Keys"
   },
   {
     "id": "turn_back_time",
@@ -1061,6 +1061,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "Ybor City"
+    "name": "The Safehouse"
   }
 ]

@@ -1359,6 +1359,12 @@ export default class GuidedCampaignLog {
           ...this.campaignData.scarlet.unlockedLocations,
           effect.value,
         ];
+        break;
+      case 'hide_dossier':
+        this.campaignData.scarlet.unlockedDossiers = filter(this.campaignData.scarlet.unlockedDossiers,
+          x => x !== effect.value
+        );
+        break;
       case 'unlock_dossier':
         this.campaignData.scarlet.unlockedDossiers = [
           ...this.campaignData.scarlet.unlockedDossiers,

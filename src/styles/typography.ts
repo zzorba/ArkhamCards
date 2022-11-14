@@ -13,6 +13,7 @@ export interface TypographyColors {
 }
 
 export interface Typography {
+  cursive: TextStyle;
   searchLabel: TextStyle;
   smallLabel: TextStyle;
   smallButtonLabel: TextStyle;
@@ -61,6 +62,12 @@ export default function(
   lang: string
 ): Typography {
   return StyleSheet.create({
+    cursive: {
+      fontFamily: 'Caveat',
+      fontSize: Math.ceil(22 * fontScale),
+      lineHeight: Math.ceil(24 * fontScale),
+      color: colors.D30,
+    },
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(16 * fontScale),

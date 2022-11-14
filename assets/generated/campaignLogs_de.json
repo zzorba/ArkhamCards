@@ -4800,14 +4800,330 @@
     "supplies": []
   },
   {
-    "campaignId": "tsk",
+    "campaignId": "tskc",
     "sections": [
       {
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "reached_falcon_point_after_sunrise",
-            "text": "Die Ermittler haben Falcon Point nach Sonnenaufgang erreicht."
+            "id": "agent_flint_is_dead",
+            "text": "Agent Flint is dead."
+          },
+          {
+            "id": "agent_flint_is_missing",
+            "text": "Agent Flint is missing."
+          },
+          {
+            "id": "agent_quinn_does_not_trust_the_cell",
+            "text": "Agent Quinn does not trust the cell."
+          },
+          {
+            "id": "agent_quinn_has_your_back",
+            "text": "Agent Quinn has your back."
+          },
+          {
+            "id": "agent_quinn_vanished_from_existence",
+            "text": "Agent Quinn vanished from existence."
+          },
+          {
+            "id": "aliki_is_on_your_side",
+            "text": "Aliki is on your side."
+          },
+          {
+            "id": "amaranth_has_left_the_coterie",
+            "text": "Amaranth has left the Coterie."
+          },
+          {
+            "id": "cell_aided_in_flints_investigation",
+            "text": "the cell aided in Flint’s investigation."
+          },
+          {
+            "id": "cell_aided_the_knight",
+            "text": "the cell aided the knight."
+          },
+          {
+            "id": "cell_appreciated_the_architecture",
+            "text": "the cell appreciated the architecture."
+          },
+          {
+            "id": "cell_blew_the_whistle",
+            "text": "the cell blew the whistle."
+          },
+          {
+            "id": "cell_did_not_discover_the_truth_in_havana",
+            "text": "the cell didn’t discover the truth in Havana."
+          },
+          {
+            "id": "cell_escaped_the_red_coterie",
+            "text": "the cell escaped the Red Coterie."
+          },
+          {
+            "id": "cell_failed_to_fend_off_the_beast",
+            "text": "the cell failed to fend off the Beast."
+          },
+          {
+            "id": "cell_has_been_ambushed",
+            "text": "the cell has been ambushed!"
+          },
+          {
+            "id": "cell_hid_the_truth_from_taylor",
+            "text": "the cell hid the truth from Taylor."
+          },
+          {
+            "id": "cell_is_assisting_agent_sirry",
+            "text": "the cell is assisting Agent Sirry."
+          },
+          {
+            "id": "cell_is_deceiving_ece",
+            "text": "the cell is deceiving Ece."
+          },
+          {
+            "id": "cell_is_delivering_foundation_intel",
+            "text": "the cell is delivering Foundation intel."
+          },
+          {
+            "id": "cell_is_off_mission",
+            "text": "the cell is off-mission."
+          },
+          {
+            "id": "cell_is_working_with_ece",
+            "text": "the cell is working with Ece."
+          },
+          {
+            "id": "cell_joined_the_red_coterie",
+            "text": "the cell joined the Red Coterie."
+          },
+          {
+            "id": "cell_knows_amaranths_real_name",
+            "text": "the cell knows Amaranth’s real name."
+          },
+          {
+            "id": "cell_knows_desis_past",
+            "text": "the cell knows Desi’s past"
+          },
+          {
+            "id": "cell_knows_the_true_nature_of_the_coterie",
+            "text": "the cell knows the true nature of the Coterie."
+          },
+          {
+            "id": "cell_made_a_deal_with_desi",
+            "text": "the cell made a deal with Desi."
+          },
+          {
+            "id": "cell_made_a_deal_with_the_claret_knight",
+            "text": "the cell made a deal with the Claret Knight."
+          },
+          {
+            "id": "cell_made_a_deal_with_thorne",
+            "text": "the cell made a deal with Thorne."
+          },
+          {
+            "id": "cell_met_dr_irawan",
+            "text": "the cell met Dr. Irawan."
+          },
+          {
+            "id": "cell_overthrew_the_red_coterie",
+            "text": "the cell overthrew the Red Coterie."
+          },
+          {
+            "id": "cell_possesses_a_mysterious_whistle",
+            "text": "the cell possesses a mysterious whistle."
+          },
+          {
+            "id": "cell_refused_alikis_offer",
+            "text": "the cell refused Aliki’s offer."
+          },
+          {
+            "id": "cell_refused_eces_offer",
+            "text": "the cell refused Ece's offer."
+          },
+          {
+            "id": "cell_threw_away_the_whistle",
+            "text": "the cell threw away the whistle."
+          },
+          {
+            "id": "cell_told_the_truth_to_taylor",
+            "text": "the cell told the truth to Taylor."
+          },
+          {
+            "id": "cell_was_dismantled",
+            "text": "the cell was dismantled."
+          },
+          {
+            "id": "cell_was_given_a_permanent_position",
+            "text": "the cell was given a permanent position."
+          },
+          {
+            "id": "cell_was_hollowed",
+            "text": "the cell was hollowed."
+          },
+          {
+            "id": "chica_roja_is_on_your_side",
+            "text": "La Chica Roja is on your side."
+          },
+          {
+            "id": "deception",
+            "text": "Cell Deception: #X#"
+          },
+          {
+            "id": "desi_is_in_your_debt",
+            "text": "Desi is in your debt."
+          },
+          {
+            "id": "dogs_are_at_war",
+            "text": "the dogs are at war."
+          },
+          {
+            "id": "dr_irawan_joined_the_cell",
+            "text": "Dr. Irawan joined the cell."
+          },
+          {
+            "id": "dr_irawan_traveled_to_new_guinea",
+            "text": "Dr. Irawan traveled to New Guinea."
+          },
+          {
+            "id": "dr_irawan_vanished_from_existence",
+            "text": "Dr. Irawan vanished from existence."
+          },
+          {
+            "id": "ece_does_not_trust_the_cell",
+            "text": "Ece does not trust the cell."
+          },
+          {
+            "id": "ece_trusts_the_cell",
+            "text": "Ece trusts the cell."
+          },
+          {
+            "id": "erased_from_existence_dm",
+            "text": "erased from existence: #name#"
+          },
+          {
+            "id": "erased_from_existence_oti",
+            "text": "erased from existence: #name#"
+          },
+          {
+            "id": "flint_abandoned_his_search",
+            "text": "Flint abandoned his search."
+          },
+          {
+            "id": "flint_is_working_solo",
+            "text": "Flint is working solo."
+          },
+          {
+            "id": "flint_rejoined_the_cell",
+            "text": "Flint rejoined the cell."
+          },
+          {
+            "id": "flint_traveled_to_kuala_lampur",
+            "text": "Flint traveled to Kuala Lumpur."
+          },
+          {
+            "id": "foundation_remains_in_the_dark",
+            "text": "the Foundation remains in the dark."
+          },
+          {
+            "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
+            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+          },
+          {
+            "id": "have_not_seen_the_last_of_amaranth",
+            "text": "you haven't seen the last of Amaranth."
+          },
+          {
+            "id": "have_not_seen_the_last_of_desi",
+            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+          },
+          {
+            "id": "have_not_seen_the_last_of_la_chica_roja",
+            "text": "you haven't seen the last of La Chica Roja."
+          },
+          {
+            "id": "have_not_seen_the_last_of_the_beast",
+            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+          },
+          {
+            "id": "have_not_seen_the_last_of_the_claret_knight",
+            "text": "you haven’t seen the last of the Claret Knight."
+          },
+          {
+            "id": "have_not_seen_the_last_of_the_red_gloved_man",
+            "text": "you haven’t seen the last of the Red-Gloved Man."
+          },
+          {
+            "id": "have_not_seen_the_last_of_the_sanguine_watcher",
+            "text": "you haven't seen the last of The Sanguine Watcher."
+          },
+          {
+            "id": "have_not_seen_the_last_of_thorne",
+            "text": "you haven’t seen the last of Thorne."
+          },
+          {
+            "id": "have_not_seen_the_last_of_tzu_san_niang",
+            "text": "you haven’t seen the last of Tzu San Niang."
+          },
+          {
+            "id": "know_the_passphrase",
+            "text": "you know the passphrase."
+          },
+          {
+            "id": "lovers_are_reunited",
+            "text": "the lovers are reunited."
+          },
+          {
+            "id": "nothing_of_note_in_anchorage",
+            "text": "there is nothing of note in Anchorage."
+          },
+          {
+            "id": "outsiders_were_stopped",
+            "text": "the Outsiders were stopped."
+          },
+          {
+            "id": "red_coterie_spared_the_cell",
+            "text": "the Red Coterie spared the cell."
+          },
+          {
+            "id": "red_coterie_was_destroyed_from_within",
+            "text": "the Red Coterie was destroyed from within."
+          },
+          {
+            "id": "sanguine_watchers_torment_continues",
+            "text": "The Sanguine Watcher's torment continues."
+          },
+          {
+            "id": "thorne_disappeared",
+            "text": "Thorne disappeared."
+          },
+          {
+            "id": "trust",
+            "text": "Foundation Trust: #X#"
+          },
+          {
+            "id": "tuwile_masai_fled_to_bermuda",
+            "text": "Tuwile Masai fled to Bermuda."
+          },
+          {
+            "id": "tuwile_masai_is_on_your_side",
+            "text": "Tuwile Masai is on your side."
+          },
+          {
+            "id": "tzu_san_niang_has_you_under_her_sway",
+            "text": "Tzu San Niang has you under her sway."
+          },
+          {
+            "id": "tzu_san_niang_is_under_your_sway",
+            "text": "Tzu San Niang is under your sway."
+          },
+          {
+            "id": "void_chimera_escaped",
+            "text": "the Void Chimera escaped."
+          },
+          {
+            "id": "work_together",
+            "text": "the Red Coterie and The Foundation agreed to work together."
+          },
+          {
+            "id": "wrong_leads",
+            "text": "Wrong leads: #X#"
           }
         ]
       },
@@ -4815,11 +5131,239 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "read_sr_1",
+            "id": "aliki_eerily_silent",
             "text": "dummy"
           },
           {
-            "id": "read_sr_2",
+            "id": "aliki_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "aliki_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "always_true",
+            "text": "dummy"
+          },
+          {
+            "id": "amaranth_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "bale_engine_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "beast_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "bolivar_does_not_trust_you",
+            "text": "dummy"
+          },
+          {
+            "id": "bolivar_trusts_you",
+            "text": "dummy"
+          },
+          {
+            "id": "cast_a_light",
+            "text": "dummy"
+          },
+          {
+            "id": "chica_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "chica_roja_has_no_targets",
+            "text": "dummy"
+          },
+          {
+            "id": "chica_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "cotk_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "delivered_intel",
+            "text": "dummy"
+          },
+          {
+            "id": "desi_eerily_silent",
+            "text": "dummy"
+          },
+          {
+            "id": "desi_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "desi_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "ditd_act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "dogs_of_war",
+            "text": "dummy"
+          },
+          {
+            "id": "ece_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "eerily_silent_votes",
+            "text": "dummy"
+          },
+          {
+            "id": "eye_of_ravens_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "investigator_has_sable_glass",
+            "text": "dummy"
+          },
+          {
+            "id": "join_coterie",
+            "text": "dummy"
+          },
+          {
+            "id": "join_votes",
+            "text": "dummy"
+          },
+          {
+            "id": "key_thief",
+            "text": "#name#"
+          },
+          {
+            "id": "knight_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "knight_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "last_blossom_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "light_of_pharos_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "mirroring_blade_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "nay_votes",
+            "text": "dummy"
+          },
+          {
+            "id": "niang_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "on_thin_ice_doom",
+            "text": "dummy"
+          },
+          {
+            "id": "overthrow_coterie",
+            "text": "dummy"
+          },
+          {
+            "id": "overthrow_vote",
+            "text": "dummy"
+          },
+          {
+            "id": "raw_deal",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_alpha",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_beta",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_epsilon",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_gamma",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_omega",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_psi",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_theta",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_zeta",
+            "text": "dummy"
+          },
+          {
+            "id": "ruinous_chime_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "sable_glass_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "sanguine_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "seeing_red",
+            "text": "dummy"
+          },
+          {
+            "id": "shade_reaper_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "the_bomoh",
+            "text": "dummy"
+          },
+          {
+            "id": "thorne_eerily_silent",
+            "text": "dummy"
+          },
+          {
+            "id": "thorne_nay",
+            "text": "dummy"
+          },
+          {
+            "id": "thorne_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "twisted_antiprism_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "weeping_lady_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "wellpspring_of_fortune_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "yay_votes",
             "text": "dummy"
           }
         ]

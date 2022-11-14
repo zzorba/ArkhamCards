@@ -18,11 +18,11 @@ interface Props extends NavigationProps {
   showAlert: ShowAlert;
 }
 
-const LATEST_RELEASE_NOTES = 'rn-2022-09-20';
+const LATEST_RELEASE_NOTES = 'rn-2022-11-18';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
   const { lang } = useContext(LanguageContext);
-  const [newNotes, onSeenNewNotes] = useShowOnboarding(lang === 'ru' ? 'rn-2022-10-26' : LATEST_RELEASE_NOTES);
+  const [newNotes, onSeenNewNotes] = useShowOnboarding(LATEST_RELEASE_NOTES);
   const showReleaseNotes = useCallback(() => {
     onSeenNewNotes();
     Navigation.push(componentId, {

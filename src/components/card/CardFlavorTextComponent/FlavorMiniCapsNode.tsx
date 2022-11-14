@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform, Text } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithText } from '../CardTextComponent/types';
@@ -9,12 +10,13 @@ export default function FlavorMiniCapsNode(
   state: RenderState
 ) {
   return (
-    <MarkdownText key={state.key} style={{
-      fontFamily: 'Alegreya SC',
-      fontWeight: '700',
-      fontStyle: 'normal',
-      fontVariants: ['small_caps'],
-    }}>
+    <MarkdownText key={state.key}
+      style={{
+        fontFamily: Platform.OS === 'ios' ? 'Alegreya SC' : 'AlegreyaSC-Medium',
+        fontWeight: Platform.OS === 'ios' ? '700' : '500',
+        fontStyle: 'normal',
+        fontVariant: ['small-caps'],
+      }}>
       { node.text }
     </MarkdownText>
   );

@@ -24,10 +24,12 @@ interface Props {
   skipDeckSave?: boolean;
   specialXp?: SpecialXp;
   storyCards?: string[]
+  exile?: boolean;
+  hideXp?: boolean;
   investigatorCounter?: string;
 }
 
-export default function UpgradeDecksInput({ componentId, id, skipDeckSave, specialXp, investigatorCounter, storyCards }: Props) {
+export default function UpgradeDecksInput({ componentId, id, exile, hideXp, skipDeckSave, specialXp, investigatorCounter, storyCards }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { typography, width } = useContext(StyleContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
@@ -154,6 +156,8 @@ export default function UpgradeDecksInput({ componentId, id, skipDeckSave, speci
             editable={!hasDecision}
             actions={deckActions}
             skipDeckSave={skipDeckSave}
+            exile={exile}
+            hideXp={hideXp}
             specialXp={specialXp}
             storyCards={storyCards}
             investigatorCounter={investigatorCounter}

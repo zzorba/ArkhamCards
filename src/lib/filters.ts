@@ -235,6 +235,7 @@ export const defaultFilterState: FilterState = {
 
 export const VENGEANCE_FILTER: Brackets = where('c.vengeance >= 0 or linked_card.vengeance >= 0');
 export const UNIQUE_FILTER: Brackets = where('c.is_unique = 1');
+export const NON_STORY_FILTER: Brackets = where('c.xp is not null');
 
 export default class FilterBuilder {
   prefix: string;

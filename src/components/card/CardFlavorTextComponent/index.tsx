@@ -411,6 +411,22 @@ export default function CardFlavorTextComponent(
             italic: 'Italic',
           },
         },
+        'AlegreyaSC-Medium': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            500: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
         'TT2020 Style E': {
           fontWeights: {
             300: 'Regular',
