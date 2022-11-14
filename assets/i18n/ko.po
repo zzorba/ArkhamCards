@@ -5917,6 +5917,7 @@ msgstr "마지막으로 완료된 시나리오나 막간의 변경점 적용"
 msgid "This is a side-story location."
 msgstr "이곳은 외전 이야기 장소입니다."
 
+#, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
 msgstr[0] "여행 비용: ${ travelDistance }시간"
@@ -5994,11 +5995,6 @@ msgid ""
 "playing that side story."
 msgstr ""
 
-#, javascript-format
-msgid "Travel cost: ${ travelDistance } time + side story cost"
-msgid_plural "Travel cost: ${ travelDistance } time + side story cost"
-msgstr[0] ""
-
 msgid "Use expedited ticket"
 msgstr ""
 
@@ -6018,6 +6014,36 @@ msgid ""
 "- Weaknesses, trauma, experience, and rewards granted by playing a "
 "side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
+msgstr ""
+
+#, javascript-format
+msgid "Mark ${ travelDistance } time"
+msgid_plural "Mark ${ travelDistance } time"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Mark 1 time"
+msgstr ""
+
+#, javascript-format
+msgid "Travel time: ${ travelDistance }"
+msgid_plural "Travel time: ${ travelDistance }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Secret / Locked"
+msgstr ""
+
+msgid "Cannot stop here until unlocked"
+msgstr ""
+
+msgid "Select cards to exile"
+msgstr ""
+
+msgid "Exile other cards"
+msgstr ""
+
+msgid "Name of Paradimensional Artifact"
 msgstr ""
 
 msgctxt "investigator"
@@ -6802,6 +6828,49 @@ msgid ""
 msgstr ""
 "- 아컴디비 사이트와의 호환성을 유지하기 위해 이 카드들은 아직 기본적으로는 보이지 않습니다. <i>설정</i> 탭에서 <b>멍컴호러 "
 "및 비정규 · 팬 제작 콘텐츠 보기</b>를 활성화하면 해당 카드들을 선택할 수 있게 됩니다."
+
+msgctxt "releaseNotes"
+msgid "The Scarlet Keys Campaign"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds support for the newly released Scarlet Keys campaign "
+"expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- As you may know (or will soon find out), this is by far the most "
+"ambitious campaign we've ever seen in Arkham. I've done my best to handle "
+"the new features as faithfully as I can in the app, and am pretty pleased "
+"with the implementation."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- I've done my best to test the corners of this campaign, but it is quite "
+"possible there will be some mistakes or bugs in the implementation still - "
+"if you find any please let me know at "
+"[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix "
+"them as quickly as possible. But given the expansive nature of the "
+"campaign, it is possible in a worst case scenario that some progress might "
+"need to be re-entered."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- I've also taken the liberty of including some small story reminders when "
+"map locations become unlocked through the course of play. I tried my best "
+"to capture the story text, and hope you find it helpful (in case like me "
+"you sometimes go weeks between game sessions)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"As always, many thanks to my many supporters on Patreon -- I appreciate "
+"your support which helps make all of this possible."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
