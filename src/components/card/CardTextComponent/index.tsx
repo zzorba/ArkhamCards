@@ -353,19 +353,34 @@ const TableRule: MarkdownRule<TableNode, State> = {
   ),
 }
 
+const WEIRD_BULLET_REGEX = /\\u2022/g;
+const ICON_HTML_REGEX = /<span class="icon-([^"]+?)"><\/span>/g;
+const ARRAY_XML_REGEX = /&rarr;/g;
+const BAD_LINEBREAK_REGEX = /\/n/g;
+const DIVIDER_REGEX = /^---*$/gm;
+const INDENTED_BULLET_REGEX = /(^\s?--|^-—\s+)([^0-9].+)$/gm;
+const BULLET_REGEX = /(^\s?-|^—\s+)([^0-9].+)$/gm;
+const GUIDE_BULLET_REGEX = /(^\s?=|^=\s+)([^0-9].+)$/gm;
+const PARAGRAPH_BULLET_REGEX = /(<p>- )|(<p>–)/gm;
+
 export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
   const cleanTextA = text
-    .replace(/\\u2022/g, '•')
-    .replace(/<span class="icon-([^"]+?)"><\/span>/g, '[$1]')
-    .replace(/&rarr;/g, '→')
-    .replace(/\/n/g, '\n')
-    .replace(/^---*$/gm, '<hr>');
+    .replace(WEIRD_BULLET_REGEX, '•')
+    .replace(ICON_HTML_REGEX, '[$1]')
+    .replace(ARRAY_XML_REGEX, '→')
+    .replace(BAD_LINEBREAK_REGEX, '\n')
+    .replace(DIVIDER_REGEX, '<hr>');
   const cleanText = noBullet ? cleanTextA :
-    cleanTextA.replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
+    cleanTextA.replace(INDENTED_BULLET_REGEX,
+      onLinkPress ? '\t<span class="icon-bullet"></span> $2' : '\t[bullet] $2'
+    ).replace(BULLET_REGEX,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    ).replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+    ).replace(GUIDE_BULLET_REGEX,
+      onLinkPress ? '<span class="icon-guide_bullet"></span> $2' : '[guide_bullet] $2'
+    ).replace(PARAGRAPH_BULLET_REGEX, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);

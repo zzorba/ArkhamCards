@@ -6408,6 +6408,39 @@ msgstr ""
 msgid "Name of Paradimensional Artifact"
 msgstr ""
 
+msgid "Prologue: Rain and Riddles"
+msgstr ""
+
+msgid "Dead Heat"
+msgstr ""
+
+msgid "Sanguine Shadows"
+msgstr ""
+
+msgid "Dealings in the Dark"
+msgstr ""
+
+msgid "Dancing Mad"
+msgstr ""
+
+msgid "On Thin Ice"
+msgstr ""
+
+msgid "Dogs of War"
+msgstr ""
+
+msgid "Shades of Suffering"
+msgstr ""
+
+msgid "Without a Trace"
+msgstr ""
+
+msgid "Congress of the Keys"
+msgstr ""
+
+msgid "Unlocked Locations"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

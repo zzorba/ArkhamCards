@@ -546,7 +546,7 @@ const IMAGE_SPACING = {
 function DossierImage({
   uri,
   ratio,
-  width,
+  width: theWidth,
   alignment,
 }: {
   uri: string;
@@ -554,6 +554,7 @@ function DossierImage({
   ratio: number;
   width: number;
 }) {
+  const width = Math.min(theWidth, 150);
   const { darkMode } = useContext(StyleContext);
   return (
     <View style={IMAGE_SPACING[alignment]}>
@@ -637,7 +638,7 @@ function DossierEntryComponent({
             uri={image.uri}
             ratio={image.ratio}
             alignment={image.alignment}
-            width={(width - s * 4) / 2.5}
+            width={(Math.min(width, MAX_WIDTH) - s * 4) / 2.5}
           />
         </View>
       </View>
@@ -863,8 +864,10 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const hiding = useRef<boolean>(false);
   const onDismiss = useCallback(() => {
     setDialogVisibleRef.current?.(false);
+    hiding.current = true;
     setTimeout(() => Navigation.dismissModal(componentId), 50);
     return true;
   }, [componentId]);
@@ -1031,7 +1034,9 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   }, [componentId]);
   const [viewHeight, setViewHeight] = useState(height - 80);
   const onLayout = useCallback((event: LayoutChangeEvent) => {
-    setViewHeight(event.nativeEvent.layout.height);
+    if (!hiding.current) {
+      setViewHeight(event.nativeEvent.layout.height);
+    }
   }, [setViewHeight]);
   return (
     <View style={{ flex: 1, position: 'relative' }} onLayout={onLayout}>

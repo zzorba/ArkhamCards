@@ -8039,5 +8039,789 @@
         }
       }
     ]
+  },
+  {
+    "code": "09501",
+    "scenario": "riddles_and_rain",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "You have 2 or more clues",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "A concealed mini-card is at your location",
+            "modified_value": {
+              "modifier": -1,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "You have 2 or more clues",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "A concealed mini-card is at your location",
+            "modified_value": {
+              "modifier": -2,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "09520",
+    "scenario": "dead_heat",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [per_investigator] civilians slain.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [per_investigator] civilians slain.",
+          "min": 0,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "09545",
+    "scenario": "sanguine_shadows",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of targets on the scenario reference card.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of targets on the scenario reference card.",
+          "adjustment": 1,
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -7
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2,
+          "cancel_modifiers": true
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "09566",
+    "scenario": "dealings_in_the_dark",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [{
+            "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+            "modified_value": {
+              "modifier": -1
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -7
+          },
+          "options": [{
+            "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ]
+  },
+  {
+    "code": "09591",
+    "scenario": "dancing_mad",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of enemies in the shadows",
+          "min": 0,
+          "max": 3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of enemies in the shadows",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    "code": "09609",
+    "scenario": "on_thin_ice",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Hazard]] treacheries in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Void Chimera is at your location",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Hazard]] treacheries in play",
+          "adjustment": 1,
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Void Chimera is at your location",
+            "modified_value": {
+              "modifier": "auto_fail"
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "09625",
+    "scenario": "dogs_of_war",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "You are at a location with a Key Locus",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "You are at a location with a Key Locus",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "09660",
+    "scenario": "shades_of_suffering",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of charges on Shade Reaper (rounded up)",
+          "min": 0,
+          "max": 6
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "You are at a location with a [[Geist]] enemy",
+            "modified_value": {
+              "modifier": -1,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "Place 1 charge on The Shade Reaper",
+            "modified_value": {
+              "modifier": 0
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of charges on Shade Reaper",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "You are at a location with a [[Geist]] enemy",
+            "modified_value": {
+              "modifier": "auto_fail"
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "options": [{
+            "prompt": "Place 1 charge on The Shade Reaper",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    "code": "09681",
+    "scenario": "without_a_trace",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of locations in play (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of set-aside hollows you own",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of set-aside hollows you own",
+          "adjustment": 1,
+          "min": 0
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+
+
+  {
+    "code": "09694",
+    "scenario": "congress_of_the_keys",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [{
+            "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+            "modified_value": {
+              "modifier": -2
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Attack against a ready [[Outsider]] enemy",
+            "modified_value": {
+              "modifier": "auto_fail"
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3,
+          "cancel_modifiers": true
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -7
+          },
+          "options": [{
+            "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "There is a ready [[Outsider]] enemy at your location",
+            "modified_value": {
+              "modifier": "auto_fail"
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4,
+          "cancel_modifiers": true
+        }
+      }
+    ]
   }
 ]

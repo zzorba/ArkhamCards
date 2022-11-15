@@ -2695,16 +2695,16 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Substance visqueuse",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "id": "key_of_eztli",
+        "name": "Clé des Eztli",
+        "description": "La Clé des Eztli.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "key_of_eztli",
-        "name": "Clé des Eztli",
-        "description": "La Clé des Eztli.",
+        "id": "sticky_goop",
+        "name": "Substance visqueuse",
+        "description": "La substance visqueuse que vous avez trouvée dans le Marais Souterrain.",
         "cost": 0,
         "multiple": false
       },
@@ -3694,13 +3694,13 @@
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# a enfreint la loi d’Ulthar.",
             "feminine_text": "#name# a enfreint la loi d’Ulthar.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name# a enfreint la loi d’Ulthar."
           },
           {
             "id": "captured",
             "masculine_text": "#name# a été capturé.",
             "feminine_text": "#name# a été capturée.",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name# a été capturé(e)."
           },
           {
             "id": "black_cat_at_your_side",
