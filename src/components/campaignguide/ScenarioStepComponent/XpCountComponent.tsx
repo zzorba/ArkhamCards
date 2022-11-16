@@ -5,7 +5,6 @@ import { t, msgid, ngettext } from 'ttag';
 
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceListComponent/ChoiceListItemComponent';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
@@ -73,8 +72,58 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
-function onChoiceChange() {
-  // intentionally empty.
+function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPointsString }: { investigator: Card; campaignLog: GuidedCampaignLog; width: number; resupplyPointsString: string | undefined }) {
+  const { typography } = useContext(StyleContext);
+  const trauma = campaignLog.traumaAndCardData(investigator.code);
+  const hasTrauma = (trauma.physical || 0) > 0 || (trauma.mental || 0) > 0;
+  const renderXpHeader = useCallback((xp: number) => {
+    return () => (
+      <CompactInvestigatorRow
+        investigator={investigator}
+        width={width - s * 2}
+        open={hasTrauma}
+      >
+        <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+            <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
+              { ngettext(
+                msgid`${xp} general / ${resupplyPointsString} XP`,
+                `${xp} general / ${resupplyPointsString} XP`,
+                xp
+              )}
+            </Text>
+          </View>
+        </View>
+      </CompactInvestigatorRow>
+    );
+  }, [typography, hasTrauma, investigator, resupplyPointsString, width]);
+  return (
+    <View key={investigator.code} style={[space.paddingSideS, space.paddingBottomS]}>
+      <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
+        { (xp: number) => (
+          <CollapsibleFactionBlock
+            faction={investigator.factionCode()}
+            renderHeader={renderXpHeader(xp)}
+            open={hasTrauma}
+            disabled
+            noShadow
+          >
+            { !!hasTrauma && (
+              <View style={space.paddingS}>
+                <MiniPickerStyleButton
+                  title={t`Trauma`}
+                  valueLabel={<TraumaSummary trauma={trauma} investigator={investigator} />}
+                  first
+                  last
+                  editable={false}
+                />
+              </View>
+            ) }
+          </CollapsibleFactionBlock>
+        ) }
+      </SpentXpComponent>
+    </View>
+  );
 }
 
 export default function XpCountComponent({ step, campaignLog }: Props) {
@@ -90,6 +139,8 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
         return ngettext(msgid`${count} supply point`,
           `${count} supply points`,
           count);
+      default:
+        return undefined;
     }
   }, [step, campaignLog]);
   return (
@@ -110,56 +161,16 @@ export default function XpCountComponent({ step, campaignLog }: Props) {
           <CampaignGuideTextComponent text={step.text} />
         </SetupStepWrapper>
       )}
-      { map(campaignLog.investigators(false), (investigator, idx) => {
+      { map(campaignLog.investigators(false), (investigator) => {
         const resupplyPointsString = specialString(investigator);
-        const trauma = campaignLog.traumaAndCardData(investigator.code);
-        const hasTrauma = (trauma.physical || 0) > 0 || (trauma.mental || 0) > 0;
         return (
-          <View key={investigator.code} style={[space.paddingSideS, space.paddingBottomS]}>
-            <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
-              { (xp: number) => (
-
-                <CollapsibleFactionBlock
-                  faction={investigator.factionCode()}
-                  renderHeader={() => (
-                    <CompactInvestigatorRow
-                      investigator={investigator}
-                      width={width - s * 2}
-                      open={hasTrauma}
-                    >
-                      <View style={[{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }]}>
-                        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
-                          <Text numberOfLines={2} ellipsizeMode="head" style={[typography.button, investigator ? typography.white : undefined]} >
-                            { ngettext(
-                                msgid`${xp} general / ${resupplyPointsString} XP`,
-                                `${xp} general / ${resupplyPointsString} XP`,
-                                xp
-                              )
-                            }
-                          </Text>
-                        </View>
-                      </View>
-                    </CompactInvestigatorRow>
-                  )}
-                  open={hasTrauma}
-                  disabled
-                  noShadow
-                >
-                  { !!hasTrauma && (
-                    <View style={space.paddingS}>
-                      <MiniPickerStyleButton
-                        title={t`Trauma`}
-                        valueLabel={<TraumaSummary trauma={trauma} investigator={investigator} />}
-                        first
-                        last
-                        editable={false}
-                      />
-                    </View>
-                  ) }
-                </CollapsibleFactionBlock>
-              ) }
-            </SpentXpComponent>
-          </View>
+          <InvestigatorXpComponent
+            key={investigator.code}
+            investigator={investigator}
+            width={width}
+            campaignLog={campaignLog}
+            resupplyPointsString={resupplyPointsString}
+          />
         );
       })}
     </>

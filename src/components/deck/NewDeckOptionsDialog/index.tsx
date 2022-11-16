@@ -502,9 +502,9 @@ function NewDeckOptionsDialog({
               <DeckCheckboxButton
                 icon="world"
                 title={t`Create on ArkhamDB`}
-                description={!!isCustomContent ?  t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content.` : undefined}
+                description={!!isCustomContent ? t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content.` : undefined}
                 value={!isCustomContent && !offlineDeck}
-                disabled={!signedIn || isCustomContent ||  !isConnected || networkType === NetInfoStateType.none}
+                disabled={!signedIn || isCustomContent || !isConnected || networkType === NetInfoStateType.none}
                 onValueChange={toggleOfflineDeck}
                 last
               />

@@ -204,7 +204,7 @@ function MiniCapsHtmlTagRule(): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
     order: 2,
-    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    parse: (capture: RegexComponents) => {
       return { text: capture[1] };
     },
     render: FlavorMiniCapsNode,

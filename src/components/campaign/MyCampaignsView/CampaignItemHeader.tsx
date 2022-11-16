@@ -54,7 +54,7 @@ function CampaignItemHeader({ campaign, hideScenario, investigators, standaloneN
         color={COLORS.white}
       />
     );
-  }, [colors, cycleCode, standaloneId]);
+  }, [cycleCode, standaloneId]);
   const campaignSection = useMemo(() => {
     const text = cycleCode === CUSTOM ? campaign.name : campaignNames()[cycleCode];
     const campaignName = (cycleCode === STANDALONE && standaloneName) || text;

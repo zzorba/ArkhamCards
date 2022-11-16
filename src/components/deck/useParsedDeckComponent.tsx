@@ -16,7 +16,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
-import { Slots, DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState } from '@actions/types';
+import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState } from '@actions/types';
 import { TypeCodeType, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
@@ -298,7 +298,7 @@ interface Props {
 
 
 export default function useParsedDeckComponent({
-  deckEditsRef, componentId, tabooSetId, parsedDeck, cardsByName,
+  componentId, tabooSetId, parsedDeck, cardsByName,
   mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
   showDrawWeakness, showEditSpecial, showEditCards, showEditSide, showCardUpgradeDialog, showDraftCards,
 }: Props): [React.ReactNode, number] {

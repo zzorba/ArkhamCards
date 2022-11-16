@@ -8,7 +8,6 @@ import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
 import ListItem from './ListItem';

@@ -164,7 +164,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       }
     }
     return undefined;
-  }, [detailed, items, unique, selectedChoice, defaultChoice])
+  }, [detailed, items, unique, selectedChoice, defaultChoice, options.choices])
   return (
     <InputWrapper
       editable={!hasDecision}

@@ -61,8 +61,8 @@ export default function RuleReminderStepComponent({ step, width }: Props) {
       { !!step.images && (
         <SetupStepWrapper bulletType="none">
           { map(step.images, (image, idx) => (
-              <RuleImage key={idx} text={image.text} scale={image.width} image={image.image} width={width - 8 * 2} />
-            )) }
+            <RuleImage key={idx} text={image.text} scale={image.width} image={image.image} width={width - 8 * 2} />
+          )) }
         </SetupStepWrapper>
       ) }
     </>

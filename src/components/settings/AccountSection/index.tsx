@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -12,7 +12,6 @@ import space from '@styles/space';
 import { ShowAlert } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useShowOnboarding } from '@components/onboarding/hooks';
-import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props extends NavigationProps {
   showAlert: ShowAlert;
@@ -21,7 +20,6 @@ interface Props extends NavigationProps {
 const LATEST_RELEASE_NOTES = 'rn-2022-11-18';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
-  const { lang } = useContext(LanguageContext);
   const [newNotes, onSeenNewNotes] = useShowOnboarding(LATEST_RELEASE_NOTES);
   const showReleaseNotes = useCallback(() => {
     onSeenNewNotes();

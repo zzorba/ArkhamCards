@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { ScrollView } from 'react-native';
-import { t } from 'ttag';
 
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';

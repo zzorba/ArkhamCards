@@ -197,7 +197,7 @@ export default function CampaignDetailTab({
         },
       });
     }
-  }, [componentId, campaignMap, campaignLog]);
+  }, [campaignId, campaignMap, campaignLog]);
 
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
     componentId,

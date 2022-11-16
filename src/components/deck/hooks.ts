@@ -94,7 +94,7 @@ export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' |
     if (mode === 'ignore') {
       return [
         state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-        0
+        0,
       ];
     }
     return [

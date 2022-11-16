@@ -55,7 +55,6 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
-import { parse } from 'flatted';
 
 function filterBy(
   cardIds: CardId[],

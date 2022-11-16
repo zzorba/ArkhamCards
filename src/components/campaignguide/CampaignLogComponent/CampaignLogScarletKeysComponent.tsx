@@ -1,6 +1,6 @@
 import React, { useMemo, useContext } from 'react';
 import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
-import { find, flatMap, map, stubString } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -27,7 +27,7 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
   }
   return (
     <>
-      <View style={[styles.mainRow, space.marginBottomS, space.paddingSideS, space.marginSideS]}>
+      <View style={[styles.mainRow, space.marginBottomS, space.paddingSideS]}>
         <Text style={[typography.cursive, typography.underline, { color: colors.faction.survivor.text }]}>
           { t`Name of Paradimensional Artifact` }
         </Text>
@@ -43,12 +43,12 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
         return (
           <View key={id} style={[styles.mainRow, space.paddingBottomS, space.paddingSideS, { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.D10 }, space.marginBottomS]}>
             <View style={styles.row}>
-              <View style={[styles.box, { borderColor: colors.faction.survivor.text }]}>
+              <View style={[styles.box, { borderColor: colors.D20 }]}>
                 { !!(status?.enemy || status?.investigator) && (
                   <View style={styles.icon}><AppIcon name={status.enemy ? 'dismiss' : 'check-thin'} size={24} color={colors.D30} /></View>
                 ) }
               </View>
-              <Text style={[typography.cursive, { color: colors.faction.survivor.text }, space.paddingLeftS]}>
+              <Text style={[typography.cursive, space.paddingLeftS]}>
                 { name }
               </Text>
             </View>

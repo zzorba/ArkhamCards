@@ -38,7 +38,7 @@ function PrologueRow({ item, setChoice, options, decision, editable, card, rando
 }) {
   const onPress = useCallback(() => {
     setChoice(item);
-  }, [item.id, setChoice]);
+  }, [item, setChoice]);
   const selection = useMemo(() => (decision && find(options, o => o.condition === decision)) || undefined, [decision, options]);
   if (!card) {
     return null;

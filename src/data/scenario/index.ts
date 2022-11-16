@@ -1,6 +1,6 @@
-import { find, flatMap, forEach, omit, sortBy } from 'lodash';
+import { find, flatMap, forEach, sortBy } from 'lodash';
 
-import { CampaignCycleCode, CampaignId, GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
+import { CampaignCycleCode, GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
 import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';

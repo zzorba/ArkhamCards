@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import StyleContext from '@styles/StyleContext';
 import space, { s, xs } from '@styles/space';
 import ActionButton from './ActionButton';
-import { BorderColor, BulletType } from '@data/scenario/types';
+import { BulletType } from '@data/scenario/types';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import Card from '@data/types/Card';

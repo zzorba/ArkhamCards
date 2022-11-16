@@ -22,7 +22,8 @@ export type Step =
   | XpCountStep
   | InternalStep
   | BorderStep
-  | TravelCostStep;
+  | TravelCostStep
+  | InvestigatorSetupStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -1356,6 +1357,18 @@ export interface TravelCostStep {
   title?: string;
   bullet_type?: null;
   narration?: Narration;
+}
+export interface InvestigatorSetupStep {
+  border_only?: boolean;
+  id: string;
+  type: "investigator_setup";
+  text?: string;
+  title?: string;
+  steps?: string[];
+  effects?: ScenarioDataStatusEffect[];
+  bullet_type?: null;
+  narration?: Narration;
+  sections: "scarlet_keys"[];
 }
 export interface CustomData {
   creator: string;

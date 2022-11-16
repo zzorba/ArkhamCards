@@ -301,7 +301,7 @@ function dynamicResolutionSteps(
       generated: true,
       resolution,
     };
-  };
+  }
   if (id.startsWith('$pr_')) {
     const resolutionId = id.substring(4);
     const resolution = find(resolutions, r => r.id === resolutionId);
@@ -642,8 +642,8 @@ export function getFixedStep(
             {
               boolCondition: false,
               steps: [iteration !== undefined ? `${PLAY_SCENARIO_STEP_ID}#${iteration}` : PLAY_SCENARIO_STEP_ID],
-            }
-          ]
+            },
+          ],
         },
       };
       return step;

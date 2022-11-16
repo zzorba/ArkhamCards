@@ -103,8 +103,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
-  countText: {
-    fontWeight: '900',
-    width: 30,
-  },
 });

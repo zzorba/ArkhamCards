@@ -192,7 +192,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, description, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,

@@ -630,7 +630,7 @@ function UpgradeDeckRow({
       );
     }
     return specialExileSection;
-  }, [deck, exile, componentId, saving, onExileCountChange, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
+  }, [deck, componentId, saving, onExileCountChange, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
   const campaignSection = useMemo(() => {
     return (
       <>

@@ -118,7 +118,7 @@ export default function SideScenarioButton({ scenario, onPress, componentId, use
         { useTime ? t`Time cost: ${xpCost}` : t`Experience cost: ${xpCost}` }
       </Text>
     );
-  }, [xpCost, scenario, typography]);
+  }, [xpCost, scenario, typography, useTime]);
   return (
     <NavButton
       onPress={scenario.side_scenario_type === 'challenge' && scenario.challenge ? _onPressChallenge : _onPress}

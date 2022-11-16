@@ -18,11 +18,11 @@ import { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
-import space, { s, m, l } from '@styles/space';
-import { Navigation, OptionsModalTransitionStyle } from 'react-native-navigation';
+import space, { s, l } from '@styles/space';
+import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
-import { useBackButton, useFlag, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
+import { useBackButton, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
 import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
 
 import MapSvg from '../../../assets/map.svg';
@@ -31,10 +31,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
-import colors from '@styles/colors';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import MapToggleButton from './MapToggleButton';
-import LanguageContext from '@lib/i18n/LanguageContext';
 import { MAX_WIDTH } from '@styles/sizes';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
@@ -265,7 +262,6 @@ interface PointOfInterestProps {
   location: MapLocation;
   currentLocation: boolean;
   campaignWidth: number;
-  campaignHeight: number;
   widthRatio: number;
   heightRatio: number;
   onSelect: (location: MapLocation) => void;
@@ -274,7 +270,6 @@ interface PointOfInterestProps {
 }
 function PointOfInterest({
   campaignWidth,
-  campaignHeight,
   location,
   currentLocation,
   widthRatio,
@@ -396,33 +391,37 @@ function CurrentLocationPin({
       <Text style={[
         styles.textWithShadow,
         space.paddingSideS,
-        { position: 'absolute', flexDirection: 'row', justifyContent: 'center' },
-          location.direction === 'left' ? {
-            right: (campaignWidth - location.x) * widthRatio - pinSize - 2 - s,
-          } : {
-            left: location.x * widthRatio - pinSize - 2 - s,
+        {
+          position: 'absolute',
+          flexDirection: 'row',
+          justifyContent: 'center',
+        },
+        location.direction === 'left' ? {
+          right: (campaignWidth - location.x) * widthRatio - pinSize - 2 - s,
+        } : {
+          left: location.x * widthRatio - pinSize - 2 - s,
+        },
+        location.current === 'down' ? {
+          top: location.y * heightRatio - s,
+          paddingTop: s,
+          textShadowOffset: {
+            width: 0,
+            height: -2,
           },
-          location.current === 'down' ? {
-            top: location.y * heightRatio - s,
-            paddingTop: s,
-            textShadowOffset: {
-              width: 0,
-              height: -2,
-            },
-          } : {
-            bottom: (campaignHeight - location.y) * heightRatio - s,
-            paddingBottom: s,
-            textShadowOffset: {
-              width: 0,
-              height: 2,
-            },
+        } : {
+          bottom: (campaignHeight - location.y) * heightRatio - s,
+          paddingBottom: s,
+          textShadowOffset: {
+            width: 0,
+            height: 2,
           },
+        },
       ]}>
         <AppIcon name={`${location.current || 'up'}_pin`} size={pinSize * 4} color={invert ? COLORS.L20 : COLORS.D20} />
       </Text>
 
       <View style={[
-        { position: 'absolute', },
+        { position: 'absolute' },
         location.direction === 'left' ? {
           right: (campaignWidth - location.x) * widthRatio - pinSize,
         } : {
@@ -491,49 +490,6 @@ function computeShortestPaths(start: string, allLocations: MapLocation[]): { [ci
     }
   }
   return result;
-}
-
-function findShortestPath(start: string, end: string, allLocations: MapLocation[]): TravelPath | undefined{
-  if (start === end) {
-    return {
-      path: [start],
-      time: 0,
-    };
-  }
-  const locationsById: { [id: string]: MapLocation } = {};
-  forEach(allLocations, l => {
-    locationsById[l.id] = l;
-  });
-
-  const queue = new PriorityQueue<TravelPath>(10, (pathA: TravelPath, pathB: TravelPath) => pathA.time - pathB.time);
-  const startLocation = locationsById[start];
-  forEach(startLocation.connections, connection => {
-    queue.add({
-      path: [start, connection],
-      time: 1,
-    });
-  });
-  while (!queue.empty()) {
-    const shortestCurrent: TravelPath | null = queue.poll();
-    if (shortestCurrent) {
-      if (indexOf(shortestCurrent.path, end) !== -1) {
-        return shortestCurrent;
-      }
-      const last = shortestCurrent.path[shortestCurrent.path.length - 1];
-      const lastLocation = locationsById[last];
-      forEach(lastLocation.connections, location => {
-        if (indexOf(shortestCurrent.path, location) === -1) {
-          // Add it to list if we don't have a loop;
-          // Side locations only cost 1 time even when you pass through them.
-          queue.add({
-            path: [...shortestCurrent.path, location],
-            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1) - (startLocation.hidden ? 1 : 0),
-          });
-        }
-      })
-    }
-  }
-  return undefined;
 }
 
 const IMAGE_SPACING = {
@@ -665,7 +621,6 @@ function DossierEntryComponent({
 
 function LocationContent({
   location,
-  allLocations,
   currentLocation,
   setCurrentLocation,
   visited,
@@ -675,7 +630,6 @@ function LocationContent({
   unlockedDossiers,
   travelDistance,
 }: {
-  allLocations?: MapLocation[];
   location: MapLocation;
   travelDistance: number;
   currentLocation: MapLocation | undefined;
@@ -775,7 +729,7 @@ function LocationContent({
       );
     }
     return <View style={{ height: l }} />;
-  }, [location, makeCurrent, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
+  }, [location, makeCurrentFast, makeCurrent, hasFast, status, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
@@ -852,6 +806,17 @@ function LocationLine({ location, status, visited, onSelect }: {
   );
 }
 
+function visitMessage(alreadyVisited: boolean, status: 'locked' | 'side' | 'standard', travelDistance: number) {
+  if (alreadyVisited) {
+    return t`Already visited`;
+  }
+  if (status === 'locked') {
+    return t`Locked`;
+  }
+  return ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance);
+}
+
+
 export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
   const { componentId, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
   const [currentLocation, visited] = useMemo(() => {
@@ -893,6 +858,13 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   }, componentId, [onDismiss]);
   useBackButton(onDismiss);
 
+  const [theWidth, theHeight] = useMemo(() => {
+    if (!campaignMap) {
+      return [1, 1];
+    }
+    return [campaignMap.width * 1.0 / campaignMap.height * height, height];
+  }, [campaignMap, height]);
+
   const showCity = useCallback((city: string) => {
     const location = find(campaignMap?.locations, l => l.id === city)
     if (location) {
@@ -912,14 +884,8 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       }
       setSelectedLocation(location);
     }
-  }, [campaignMap, setSelectedLocation])
+  }, [campaignMap, height, theHeight, theWidth, width, setSelectedLocation])
 
-  const [theWidth, theHeight] = useMemo(() => {
-    if (!campaignMap) {
-      return [1, 1];
-    }
-    return [campaignMap.width * 1.0 / campaignMap.height * height, height];
-  }, [campaignMap, height]);
   const clearSelection = useCallback(() => setSelectedLocation(undefined), []);
   const selectedStatus = (selectedLocation?.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation?.status;
   const { dialog, showDialog, setVisible } = useDialog({
@@ -1011,7 +977,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         return `dist_${travelDistances?.[location.id]?.time || 1}`;
       }
     );
-  }, [campaignMap.locations, travelDistances, visited]);
+  }, [campaignMap.locations, props.currentLocation, unlockedLocations, travelDistances, visited]);
 
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
@@ -1051,7 +1017,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
               <View key={idx}>
                 <View style={[styles.row, space.paddingS, { backgroundColor: colors.L10 }]}>
                   <Text style={[typography.subHeaderText, typography.dark, { flex: 1 }]}>
-                    { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` : ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
+                    { visitMessage(alreadyVisited, status, travelDistance) }
                   </Text>
                 </View>
                 {
@@ -1109,7 +1075,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                 key={location.id}
                 currentLocation={!!currentLocation && currentLocation.id === location.id}
                 campaignWidth={campaignMap.width}
-                campaignHeight={campaignMap.height}
                 location={location}
                 widthRatio={widthRatio}
                 heightRatio={heightRatio}
@@ -1126,7 +1091,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                 widthRatio={widthRatio}
                 heightRatio={heightRatio}
                 status={(currentLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === currentLocation.id) ? 'standard' : undefined) || currentLocation.status}
-            />
+              />
             ) }
           </View>
         </PanPinchView>
@@ -1143,7 +1108,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
   },
-  textWithShadow:{
+  textWithShadow: {
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowRadius: 4,
     elevation: 2,
@@ -1158,7 +1123,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-
   gutter: {
     position: 'absolute',
     top: 0,

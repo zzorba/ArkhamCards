@@ -3,7 +3,6 @@ import { find } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import { TravelCostStep } from '@data/scenario/types';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -27,9 +26,11 @@ export default function TravelCostStepComponent({ campaignGuide }: { campaignGui
       `Mark ${time} <b>time</b> in your Campaign Log.`,
       time
     );
-    return [`${travelSentence} ${costSentence}`, sideScenario ? [{ text: t`This includes the cost of experience cost of playing the side-story.`}] : undefined];
-
-  }, [embarkData, sideScenario, theMap])
+    return [
+      `${travelSentence} ${costSentence}`,
+      sideScenario ? [{ text: t`This includes the cost of experience cost of playing the side-story.` }] : undefined,
+    ];
+  }, [embarkData, sideScenario, theMap]);
   if (!message) {
     return null;
   }

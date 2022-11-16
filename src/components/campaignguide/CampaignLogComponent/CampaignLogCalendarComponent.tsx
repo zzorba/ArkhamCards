@@ -83,7 +83,7 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
                     flex: 1 / 7.0,
                     height: size,
                     borderTopWidth: 1,
-                    borderLeftWidth: col !== 0 ? 1: 0,
+                    borderLeftWidth: col !== 0 ? 1 : 0,
                     position: 'relative',
                     flexDirection: 'column',
                     borderColor: colors.D30,
@@ -109,11 +109,11 @@ export default function CampaignLogCalendarComponent({ calendar, campaignLog, ti
                     </View>
                     { !!entries?.length && (
                       <SymbolEntries entries={entries} size={size} />
-                    )}
+                    ) }
                   </View>
-                )
+                );
               })}
-              </View>
+            </View>
           )) }
         </View>
       </View>
@@ -125,11 +125,6 @@ const styles = StyleSheet.create({
   calendar: {
     borderWidth: 1,
     padding: 3,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   calendarInset: {
     borderWidth: 2,
@@ -143,11 +138,6 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderBottomRightRadius: 2,
-  },
-  check: {
-    position: 'absolute',
-    top: -2,
-    left: -2,
   },
   date: {
     flexDirection: 'row',

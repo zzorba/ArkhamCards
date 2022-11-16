@@ -121,7 +121,7 @@ export default function LocationCard({ annotation, code, height, width, left, to
           </View>
         );
     }
-  }, [colors, borderStyle, code, name, height, rotate, width]);
+  }, [colors, borderStyle, mini, theHeight, theWidth, code, name, height, rotate, width]);
 
   const resourceDividers = useMemo(() => {
     if (!resource_dividers) {
@@ -204,6 +204,6 @@ const styles = StyleSheet.create({
     paddingBottom: s,
   },
   annotation: {
-    position: 'absolute'
+    position: 'absolute',
   },
 });

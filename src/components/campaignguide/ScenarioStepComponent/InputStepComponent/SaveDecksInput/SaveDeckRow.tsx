@@ -1,13 +1,10 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { AppState, StyleSheet, Text, View } from 'react-native';
-import { flatMap, find, forEach, map, sortBy, keys } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { flatMap, find, map, sortBy } from 'lodash';
 import { t } from 'ttag';
-import { Action } from 'redux';
-import { useDispatch } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 
 import COLORS from '@styles/colors';
-import { Deck, Slots, getDeckId, DeckId, NumberChoices } from '@actions/types';
+import { Deck, Slots, getDeckId, NumberChoices } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { useCounter, useFlag } from '@components/core/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -64,7 +61,6 @@ interface Props {
   includeTrauma: boolean;
   adjustXp: boolean;
 }
-type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 function computeChoiceId(stepId: string, investigator: Card) {
   return `${stepId}#${investigator.code}`;
@@ -85,7 +81,6 @@ function SaveDeckRow({
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
-  const deckDispatch: DeckDispatch = useDispatch();
   const dispatch = useAppDispatch();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
@@ -112,7 +107,7 @@ function SaveDeckRow({
   const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
   const saveDeck = useCallback(async(deck: LatestDeckT) => {
     await doSaveDeck(deck, xp || 0, storyAssetDeltas, undefined);
-  }, [adjustXp, xp, userId, actions, deckDispatch, storyAssetDeltas, saveCampaignLog]);
+  }, [doSaveDeck, xp, storyAssetDeltas]);
 
   const saveDelayedDeck = useCallback(async(ownerId: string) => {
     const choices: NumberChoices = includeTrauma ? {
@@ -127,7 +122,7 @@ function SaveDeckRow({
       ignoreStoryCounts: {},
       storyCounts: storyAssetDeltas,
     });
-  }, [xp, includeTrauma, physicalAdjust, mentalAdjust, storyAssetDeltas, campaignLog, investigator.code, choiceId, scenarioState]);
+  }, [xp, includeTrauma, campaignLog, investigator.code, physicalAdjust, mentalAdjust, storyAssetDeltas, choiceId, scenarioState]);
 
   const save = useCallback(async() => {
     if (deck) {
@@ -210,7 +205,7 @@ function SaveDeckRow({
         </Text>
       </View>
     );
-  }, [typography, xp, colors, editable, choices, saving]);
+  }, [typography, xp, colors]);
 
   const traumaSection = useTraumaSection({ campaignLog, investigator, saving, editable, choices, physicalAdjust, incPhysical, decPhysical, mentalAdjust, incMental, decMental });
 
@@ -218,7 +213,7 @@ function SaveDeckRow({
     return [physicalAdjust !== 0 || mentalAdjust !== 0,
       !!deck && (adjustXp || !!find(storyAssetDeltas, (count: number) => count !== 0)),
     ];
-  }, [storyAssetDeltas, physicalAdjust, mentalAdjust, deck]);
+  }, [storyAssetDeltas, physicalAdjust, mentalAdjust, adjustXp, deck]);
 
   const [secondSection, secondMessage] = useMemo(() => {
     const show = (deck ? choices !== undefined : choices === undefined);
@@ -323,11 +318,6 @@ const styles = StyleSheet.create({
   startRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  startColumn: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   betweenRow: {

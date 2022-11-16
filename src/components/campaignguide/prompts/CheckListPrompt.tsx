@@ -40,7 +40,7 @@ function RandomCheckListButton({ index, choice, onPress, editable }: { editable:
 }
 
 export default function CheckListPrompt({ id, bulletType, text, input, color, border }: Props) {
-  const { campaignLog, } = useContext(ScenarioStepContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const choices = chooseOneInputChoices(input.choices, campaignLog);
   const decision = scenarioState.stringChoices(id);
@@ -66,7 +66,7 @@ export default function CheckListPrompt({ id, bulletType, text, input, color, bo
         />
       </>
     );
-  }, [input.random, firstDecisionId, text, color]);
+  }, [input.random, bulletType, firstDecisionId, text, color]);
   const [liveChoices, updateLiveChoices] = useReducer((choices: string[], { index, options }: { index: number; options: DisplayChoiceWithId[] }) => {
     const newChoices = [...choices];
     while (newChoices.length <= index) {
@@ -140,7 +140,7 @@ export default function CheckListPrompt({ id, bulletType, text, input, color, bo
         </>
       </InputWrapper>
     );
-  }, [firstDecisionId, drawRandomOption, choices, input, bulletType, text, id, border]);
+  }, [firstDecisionId, decision, hasDecision, liveChoices, scenarioState, submit, drawRandomOption, choices, input, bulletType, text, id, border]);
   return (
     <>
       { firstPrompt }

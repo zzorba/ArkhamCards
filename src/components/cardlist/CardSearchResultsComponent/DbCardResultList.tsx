@@ -181,9 +181,9 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
         if (fetchSize.current < 100) {
           fetchSize.current = 100;
         }
-        //const start = new Date();
+        // const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
-          //console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
+          // console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
       }
@@ -997,7 +997,7 @@ export default function({
       },
     ] : [];
   }, [deckId, specialMode]);
-  const { lang, listSeperator } = useContext(LanguageContext);
+  const { lang } = useContext(LanguageContext);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
@@ -1076,7 +1076,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [customizations, listSeperator, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

@@ -104,7 +104,7 @@ export function NarrationInlineControls({ narration }: IconProps) {
     } else {
       playNarrationTrack(narration.id);
     }
-  }, [narration, isPlaying]);
+  }, [narration, isPlaying, isCurrentTrack, playerState]);
   const onPlayPausePress = usePressCallback(onPressNarration);
   return (
     <View style={[space.marginSideM, space.marginTopS]}>

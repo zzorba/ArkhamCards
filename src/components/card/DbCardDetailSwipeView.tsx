@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Platform,
   View,
-  Text,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';

@@ -10,7 +10,6 @@ import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
-import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
@@ -76,7 +75,7 @@ function DeckChecklistView({
 }: Props) {
   const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
   const deck = useCampaignDeck(id, campaignId);
-  const { deckEdits, deckEditsRef, parsedDeckRef } = useParsedDeck(id, componentId);
+  const { deckEdits } = useParsedDeck(id, componentId);
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
@@ -87,22 +86,6 @@ function DeckChecklistView({
       showSortDialog();
     }
   }, componentId, [sort, setSort]);
-
-  const pressCard = useCallback((card: Card) => {
-    if (!deckEditsRef.current) {
-      return;
-    }
-    showCard(
-      componentId,
-      card.code,
-      card,
-      colors,
-      true,
-      id,
-      parsedDeckRef.current?.customizations,
-      deckEditsRef.current.tabooSetChange
-    );
-  }, [id, deckEditsRef, parsedDeckRef, componentId, colors]);
 
   const renderCard = useCallback((card: Card, cardId: string, onPressId: (id: string, card: Card) => void) => {
     return (
@@ -115,7 +98,7 @@ function DeckChecklistView({
         checklist={checklist}
       />
     );
-  }, [id, pressCard, checklist]);
+  }, [id, checklist]);
 
   const clearChecklist = useCallback(() => {
     dispatch(resetDeckChecklist(id));
