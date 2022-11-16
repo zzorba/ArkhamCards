@@ -6362,6 +6362,11 @@ msgstr ""
 msgid "Unlocked Locations"
 msgstr ""
 
+msgid ""
+"Each investigator who is the bearer of 1 or more key attaches those keys to "
+"their investigator card:"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
