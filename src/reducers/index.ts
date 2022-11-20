@@ -42,6 +42,7 @@ import {
   ArkhamDbDeck,
   StartingTabType,
   BROWSE_DECKS,
+  SORT_BY_PACK,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -785,6 +786,13 @@ export const getCardSort = createSelector(
   (state: AppState, filterId: string) => filterId,
   (sorts, filterId): SortType => {
     return sorts[filterId] || SORT_BY_TYPE;
+  }
+);
+
+export const getInvestigatorSort = createSelector(
+  (state: AppState) => state.settings.investigatorSort,
+  (sort): SortType => {
+    return sort || SORT_BY_PACK;
   }
 );
 

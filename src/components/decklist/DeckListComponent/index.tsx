@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { find, filter, map, sortBy, partition, flatMap, uniq } from 'lodash';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
@@ -15,6 +16,11 @@ import space, { s, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Toggles, useToggles } from '@components/core/hooks';
+import TagChiclet from '@components/deck/TagChiclet';
+import ArkhamButton from '@components/core/ArkhamButton';
+import colors from '@styles/colors';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -28,6 +34,52 @@ interface Props {
   isEmpty?: boolean;
 }
 
+function DeckTagPile({ deckIds, syncToggles }: {
+  deckIds: MiniDeckT[];
+  syncToggles: (toggles: Toggles) => void;
+}) {
+  const { typography } = useContext(StyleContext);
+  const delayedSync = useCallback((toggles: Toggles) => {
+    setTimeout(() => {
+      syncToggles(toggles);
+    }, 100);
+  }, [syncToggles]);
+  const [selection, onSelectTag] = useToggles({}, delayedSync);
+  const [selectedTags, otherTags] = useMemo(() => {
+    const allTags = uniq(flatMap(deckIds, d => d.tags || []));
+    const [selected, other] = partition(
+      sortBy(allTags, t => Card.factionCodeToName(t, t)),
+      t => !!selection[t]
+    );
+    return [selected, other];
+  }, [deckIds, selection]);
+  const possibleOtherTags = useMemo(() => {
+    if (selectedTags.length === 0) {
+      return otherTags;
+    }
+    const s = new Set(selectedTags);
+    const eligibleDecks = filter(deckIds, d => !!find(d.tags, t => s.has(t)));
+    const eligibleTags = new Set(flatMap(eligibleDecks, d => d.tags || []));
+    return filter(otherTags, t => eligibleTags.has(t));
+  }, [selectedTags, otherTags, deckIds]);
+  return (
+    <>
+      { !!selectedTags.length && (
+        <View style={[{ flexDirection: 'column' }, space.paddingTopS]}>
+          <ScrollView overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[space.paddingSideXs, { flexDirection: 'row', alignItems: 'center' }]}>
+            { map(selectedTags, t => <TagChiclet key={t} selected onSelectTag={onSelectTag} tag={t} showIcon />) }
+          </ScrollView>
+        </View>
+      ) }
+      { !!possibleOtherTags.length && (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[space.paddingTopS, space.paddingSideXs]}>
+          { map(possibleOtherTags, t => <TagChiclet key={t} selected={false} onSelectTag={onSelectTag} tag={t} />) }
+        </ScrollView>
+      ) }
+    </>
+  );
+}
+
 export default function DeckListComponent({
   deckIds,
   deckToCampaign,
@@ -39,18 +91,41 @@ export default function DeckListComponent({
   searchOptions,
   isEmpty,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { width, typography } = useContext(StyleContext);
   const [searchTerm, setSearchTerm] = useState('');
   const handleDeckClick = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
     Keyboard.dismiss();
     deckClicked(deck, investigator);
   }, [deckClicked]);
 
+  const [selectedTags, setSelectedTags] = useState<Toggles>({});
   const header = useMemo(() => (
     <View style={styles.header}>
       { !!connectionProblemBanner && connectionProblemBanner }
+      <DeckTagPile
+        syncToggles={setSelectedTags}
+        deckIds={deckIds}
+      />
     </View>
-  ), [connectionProblemBanner]);
+  ), [connectionProblemBanner, deckIds, setSelectedTags, colors]);
+  const clearSelectedTags = useCallback(() => {
+    setSelectedTags({})
+  }, [setSelectedTags]);
+  const tagButton = useMemo(() => {
+    if (find(selectedTags, t => !!t)) {
+      return (
+        <View style={{ flex: 1, width, paddingLeft: 12 }}>
+          <ArkhamButton
+            icon="filter-clear"
+            title={t`Clear tags`}
+            onPress={clearSelectedTags}
+            grow
+          />
+        </View>
+      )
+    }
+    return null;
+  }, [selectedTags, clearSelectedTags, width]);
 
   const renderFooter = useCallback((empty: boolean) => {
     if (isEmpty && !refreshing) {
@@ -61,6 +136,7 @@ export default function DeckListComponent({
               { t`No decks yet.\n\nUse the + button to create a new one.` }
             </Text>
           </View>
+          { tagButton }
           { customFooter }
         </View>
       );
@@ -73,16 +149,18 @@ export default function DeckListComponent({
               { t`No matching decks for "${searchTerm}".` }
             </Text>
           </View>
+          { tagButton }
           { customFooter }
         </View>
       );
     }
     return (
       <View style={styles.footer}>
+        { tagButton }
         { customFooter }
       </View>
     );
-  }, [isEmpty, refreshing, customFooter, searchTerm, typography]);
+  }, [isEmpty, refreshing, customFooter, searchTerm, typography, tagButton]);
   return (
     <CollapsibleSearchBox
       searchTerm={searchTerm}
@@ -96,6 +174,7 @@ export default function DeckListComponent({
           header={header}
           footer={renderFooter}
           searchTerm={searchTerm}
+          selectedTags={selectedTags}
           deckToCampaign={deckToCampaign}
           onRefresh={onRefresh}
           refreshing={refreshing}

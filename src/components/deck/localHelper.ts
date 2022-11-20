@@ -37,12 +37,13 @@ export function updateLocalDeck(
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   problem: DeckProblemType,
-  spentXp?: number,
-  xp_adjustment?: number,
-  tabooSetId?: number,
-  meta?: DeckMeta,
-  description_md?: string,
-  sideSlots?: Slots
+  spentXp: number | undefined,
+  xp_adjustment: number | undefined,
+  tabooSetId: number | undefined,
+  meta: DeckMeta | undefined,
+  description_md: string | undefined,
+  sideSlots: Slots | undefined,
+  tags: string | undefined
 ): Deck {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
@@ -62,6 +63,7 @@ export function updateLocalDeck(
     meta,
     description_md,
     sideSlots,
+    tags,
   };
 }
 

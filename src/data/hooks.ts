@@ -125,11 +125,11 @@ export function useArkhamDbError(): string | undefined {
   return refreshing ? undefined : error;
 }
 
-export function useMyDecks(deckActions: DeckActions): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
+export function useMyDecks(deckActions: DeckActions, live?: boolean): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
   const dispatch: ThunkDispatch<AppState, unknown, Action> = useDispatch();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
-  const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] = useMyDecksRemote(deckActions);
+  const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] = useMyDecksRemote(deckActions, live);
   const onRefresh = useCallback(async(cacheArkhamDb: boolean) => {
     if (!refreshing) {
       const remoteDecksPromise = userId && refreshRemoteDecks();

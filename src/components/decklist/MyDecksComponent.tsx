@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { partition, map, uniq, flatMap } from 'lodash';
+import { keys, forEach, partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -20,6 +20,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
+import { DeckId } from '@actions/types';
 
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
@@ -28,6 +29,7 @@ interface OwnProps {
   renderExpandButton?: (reason: string) => React.ReactNode | null;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
+  live?: boolean;
 }
 
 type Props = OwnProps & LoginStateProps;
@@ -41,6 +43,7 @@ function MyDecksComponent({
   customFooter,
   login,
   signedIn,
+  live,
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
@@ -54,7 +57,8 @@ function MyDecksComponent({
     myDecksUpdated,
     refreshing,
     error,
-  }, onRefresh] = useMyDecks(deckActions);
+  }, onRefresh] = useMyDecks(deckActions, live);
+
   useEffect(() => {
     const now = new Date();
     const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
@@ -119,7 +123,6 @@ function MyDecksComponent({
     );
   }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
-
   return (
     <DeckListComponent
       searchOptions={searchOptions}

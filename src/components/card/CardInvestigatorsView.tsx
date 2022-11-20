@@ -66,7 +66,6 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
         sort={selectedSort}
         onPress={onPress}
         filterInvestigator={filterInvestigator}
-        hideCustomInvestigator
         includeParallelInvestigators
       />
       { sortDialog }

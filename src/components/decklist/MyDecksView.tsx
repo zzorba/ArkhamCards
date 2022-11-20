@@ -115,6 +115,7 @@ function MyDecksView({ componentId }: NavigationProps) {
       customFooter={customFooter}
       deckClicked={deckNavClicked}
       filterDeck={filterDeck}
+      live
     />
   );
 }

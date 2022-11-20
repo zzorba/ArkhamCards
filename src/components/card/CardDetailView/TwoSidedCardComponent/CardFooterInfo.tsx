@@ -14,7 +14,7 @@ interface Props {
 }
 export default function CardFooterInfo({ card }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const quantity = card.quantity || 1;
+  const quantity = card.quantity || 0;
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }, TINY_PHONE ? { flexDirection: 'column', alignItems: 'flex-end' } : {}]}>
       <View style={styles.left}>

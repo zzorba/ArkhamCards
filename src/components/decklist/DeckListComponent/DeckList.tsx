@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { filter, map, take, uniq } from 'lodash';
+import { find, values, filter, map, take, uniq, flatMap, every } from 'lodash';
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigators, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
+import { Toggles, useInvestigators, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
 import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -25,6 +25,7 @@ interface Props {
   refreshing?: boolean;
   onScroll: (...args: any[]) => void;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  selectedTags: Toggles;
 }
 
 function DeckListItem({
@@ -60,13 +61,18 @@ const MemoDeckListItem = React.memo(DeckListItem);
 export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
+  selectedTags,
 }: Props) {
   const lowMemory = useSettingValue('low_memory');
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
   const allItems = useMemo(() => {
+    const chosenTags = flatMap(selectedTags, (v, tag) => !!v ? tag : []);
     return map(
       filter(deckIds, deckId => {
+        if (chosenTags.length && !every(chosenTags, tag => !!find(deckId.tags, t => tag === t))) {
+          return false;
+        }
         const investigator = investigators && investigators[deckId.investigator];
         if (!investigator) {
           return true;
@@ -79,7 +85,7 @@ export default function DeckList({
           deckClicked,
         };
       });
-  }, [deckIds, deckClicked, investigators, searchTerm]);
+  }, [deckIds, deckClicked, investigators, searchTerm, selectedTags]);
   const [numDecks, setNumDecks] = useState(10);
   const items = useMemo(() => {
     if (!lowMemory) {

@@ -938,15 +938,19 @@ export default class Card {
   collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
     let quantity = (this.quantity || 0);
     if (this.pack_code === 'core') {
-      if (packInCollection.core) {
+      if (packInCollection.no_core) {
+        quantity = 0;
+      } else if (packInCollection.core) {
         // Second core set is indicated.
         quantity *= 2;
       } else if (ignore_collection) {
         quantity = Math.max(this.deck_limit || 0, this.quantity || 0);
       }
+    } else if (!ignore_collection && !packInCollection[this.pack_code]) {
+      quantity = 0;
     }
 
-    forEach(this.reprint_pack_codes || REPRINT_CARDS[this.code], pack => {
+    forEach(this.reprint_pack_codes, pack => {
       if (!!packInCollection[pack]) {
         quantity += Math.max(this.quantity || 0, this.deck_limit || 0);
       }

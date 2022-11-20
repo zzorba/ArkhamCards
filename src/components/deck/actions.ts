@@ -39,6 +39,9 @@ import {
   LocalDeck,
   GroupedUploadedDecks,
   CustomizationDecision,
+  SortType,
+  SET_INVESTIGATOR_SORT,
+  SetInvestigatorSortAction,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -48,12 +51,19 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import specialMetaSlots from '@data/deck/specialMetaSlots';
 import { parseCustomizationDecision } from '@lib/parseDeck';
 
+export function setInvestigatorSort(sort: SortType): SetInvestigatorSortAction {
+  return {
+    type: SET_INVESTIGATOR_SORT,
+    sort,
+  };
+}
 export interface ServerDeck {
   deckId: DeckId;
   hash: string | undefined;
   nextDeckId: DeckId | undefined;
   campaignId: UploadedCampaignId;
 }
+
 
 export function setServerDecks(
   uploadedDecks: GroupedUploadedDecks
@@ -285,6 +295,7 @@ export const saveDeckUpgrade = (
 export interface SaveDeckChanges {
   name?: string;
   description?: string;
+  tags?: string;
   slots?: Slots;
   ignoreDeckLimitSlots?: Slots;
   side?: Slots,
@@ -316,6 +327,7 @@ export const saveDeckChanges = (
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
           changes.side || deck.sideSlots || {},
+          changes.tags === undefined ? deck.tags : changes.tags,
         );
         dispatch(updateDeck(userId, actions, getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
@@ -334,6 +346,7 @@ export const saveDeckChanges = (
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
           changes.side || deck.sideSlots || {},
+          changes.tags === undefined ? deck.tags : changes.tags,
         );
         handleAuthErrors<Deck>(
           savePromise,

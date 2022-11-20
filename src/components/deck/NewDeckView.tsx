@@ -14,6 +14,9 @@ import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInvestigatorSort } from '@reducers/index';
+import { setInvestigatorSort } from './actions';
 
 export interface NewDeckProps {
   campaignId: CampaignId | undefined;
@@ -26,7 +29,11 @@ type Props = NewDeckProps & NavigationProps;
 
 function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_PACK);
+  const selectedSort = useSelector(getInvestigatorSort);
+  const dispatch = useDispatch();
+  const sortChanged = useCallback((sort: SortType) => {
+    dispatch(setInvestigatorSort(sort))
+  }, [dispatch]);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();

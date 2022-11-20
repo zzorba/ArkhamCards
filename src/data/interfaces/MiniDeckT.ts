@@ -6,4 +6,5 @@ export default interface MiniDeckT {
   investigator: string;
   date_update: string;
   campaign_id?: CampaignId;
+  tags?: string[];
 }
