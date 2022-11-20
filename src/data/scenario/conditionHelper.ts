@@ -775,7 +775,7 @@ function mathConditionResult(condition: MathCondition, campaignLog: GuidedCampai
       const opA = getOperand(condition.opA, campaignLog);
       const opB = getOperand(condition.opB, campaignLog);
       return numberConditionResult(
-        condition.operation === 'sum' ? (opA + opB) : (opA / opB),
+        condition.operation === 'sum' ? (opA + opB) : Math.floor(opA / opB),
         condition.options,
         condition.default_option
       );
