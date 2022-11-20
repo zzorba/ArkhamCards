@@ -867,6 +867,7 @@ export interface EditDeckState {
   nameChange?: string;
   descriptionChange?: string;
   tabooSetChange?: number;
+  tagsChange?: string;
   xpAdjustment: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
@@ -1427,6 +1428,12 @@ interface ReduxMigrationV1Action {
   chaosBags: {
     [uuid: string]: ChaosBagResults;
   };
+}
+
+export const SET_INVESTIGATOR_SORT = 'SET_INVESTIGATOR_SORT';
+export interface SetInvestigatorSortAction {
+  type: typeof SET_INVESTIGATOR_SORT;
+  sort: SortType;
 }
 
 export type ReduxMigrationAction = ReduxMigrationV1Action;

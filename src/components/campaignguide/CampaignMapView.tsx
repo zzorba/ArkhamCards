@@ -897,7 +897,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         currentLocation={currentLocation}
         travelDistance={travelDistances?.[selectedLocation.id]?.time || 1}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
-        allLocations={campaignMap?.locations}
         hasFast={hasFast}
         unlockedDossiers={unlockedDossiers}
         visited={visited.has(selectedLocation.id)}

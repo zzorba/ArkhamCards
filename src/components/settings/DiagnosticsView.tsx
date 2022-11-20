@@ -122,6 +122,8 @@ export default function DiagnosticsView() {
               decks: state.decks,
               campaigns: state.campaigns_2,
               guides: state.guides,
+              deckEdits: state.deckEdits,
+              filters: state.filters,
             }),
           });
         },

@@ -403,12 +403,12 @@ function parseAllDeck(allDecks: AllDeckFragment[]): GroupedUploadedDecks {
   return uploadedDecks;
 }
 
-export function useMyDecksRemote(actions: DeckActions): [MiniDeckT[], boolean, () => Promise<GroupedUploadedDecks>] {
+export function useMyDecksRemote(actions: DeckActions, live?: boolean): [MiniDeckT[], boolean, () => Promise<GroupedUploadedDecks>] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
   const dispatch = useAppDispatch();
   const checkForSync = useRef(false);
   const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: live ? 'cache-and-network' : 'cache-only',
     variables: {
       userId: userId || '',
     },

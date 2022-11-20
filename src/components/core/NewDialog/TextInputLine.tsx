@@ -19,8 +19,9 @@ interface Props {
   disabled?: boolean;
 
   returnKeyType?: ReturnKeyType;
+  shrink?: boolean;
 }
-export default function TextInputLine({ value, onChangeText, returnKeyType, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit, onFocus, onBlur }: Props) {
+export default function TextInputLine({ shrink, value, onChangeText, returnKeyType, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit, onFocus, onBlur }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const onSubmitEditting = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -33,7 +34,8 @@ export default function TextInputLine({ value, onChangeText, returnKeyType, disa
         ref={textInputRef}
         autoCorrect={false}
         style={[
-          { padding: s, paddingTop: xs + s, width: '100%', borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20, marginBottom: paddingBottom },
+          { padding: s, paddingTop: xs + s, borderRadius: 4, borderWidth: StyleSheet.hairlineWidth, borderColor: colors.M, backgroundColor: colors.L20, marginBottom: paddingBottom },
+          shrink ? { flex: 1 } : { width: '100%' },
           typography.text,
           error ? { borderColor: colors.warn } : undefined,
         ]}

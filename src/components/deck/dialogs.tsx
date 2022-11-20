@@ -840,6 +840,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,
           description: deckEditsRef.current.descriptionChange,
+          tags: deckEditsRef.current.tagsChange,
           slots: deckEditsRef.current.slots,
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
           side: deckEditsRef.current.side,

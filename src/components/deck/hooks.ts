@@ -389,6 +389,7 @@ export function useDeckEditState({
     const metaChanged = !deepEqual(deckEdits.meta, deck.meta || {});
     setHasPendingEdits(
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tagsChange !== undefined && deck.tags !== deckEdits.tagsChange) ||
       (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
       (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
       (deck.previousDeckId && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
