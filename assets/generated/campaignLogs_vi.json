@@ -2515,7 +2515,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "Niềm tin của Ichtaca được khôi phục."
           },
           {
             "id": "investigators_recovered_relic",
@@ -2531,11 +2531,11 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "khu rừng đang theo dõi (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "các điều tra viên vạch ra con đường tiến về phía trước."
           },
           {
             "id": "mended_tear_in_time",
@@ -2547,7 +2547,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# con đường bạn đã biết."
           },
           {
             "id": "process_backfired",
@@ -2599,6 +2599,12 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>.",
+            "feminine_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>.",
+            "nonbinary_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>."
+          },
+          {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
@@ -2615,12 +2621,6 @@
             "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "nonbinary_text": "#name# starts with 3 fewer resources."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -2717,21 +2717,21 @@
       },
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Khẩu phần ăn",
         "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
+        "name": "Bình xăng",
         "description": "Đủ cho một hành trình dài bằng ô tô.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Thuốc",
         "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
@@ -2750,7 +2750,7 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Bi đông",
         "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
@@ -2792,7 +2792,7 @@
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Bản đồ",
         "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
         "cost": 3
       },
@@ -4136,7 +4136,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "Niềm tin của Ichtaca được khôi phục."
           },
           {
             "id": "investigators_recovered_relic",
@@ -4152,11 +4152,11 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "khu rừng đang theo dõi (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "các điều tra viên vạch ra con đường tiến về phía trước."
           },
           {
             "id": "mended_tear_in_time",
@@ -4168,7 +4168,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "#X# con đường bạn đã biết."
           },
           {
             "id": "process_backfired",
@@ -4216,6 +4216,12 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "hote_start_with_clue",
+            "masculine_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>.",
+            "feminine_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>.",
+            "nonbinary_text": "#name# bắt đầu với 1 manh mối <i>(từ kho manh mối)</i>."
+          },
+          {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
@@ -4232,12 +4238,6 @@
             "masculine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "feminine_text": "#name# bắt đầu với ít hơn 3 tài nguyên.",
             "nonbinary_text": "#name# starts with 3 fewer resources."
-          },
-          {
-            "id": "hote_start_with_clue",
-            "masculine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "feminine_text": "#name# starts with 1 clue <i>(from the token bank)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
           },
           {
             "id": "agenda_5",
@@ -4305,21 +4305,21 @@
     "supplies": [
       {
         "id": "provisions",
-        "name": "Provisions",
+        "name": "Khẩu phần ăn",
         "description": "Phần thức ăn và nước uống cho một người. Đồ phải có cho bất kỳ cuộc hành trình nào.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "gasoline",
-        "name": "Gasoline",
+        "name": "Bình xăng",
         "description": "Đủ cho một hành trình dài bằng ô tô.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
+        "name": "Thuốc",
         "description": "Để ngăn ngừa bệnh tật, nhiễm trùng hoặc nọc độc.",
         "cost": 2,
         "multiple": true
@@ -4338,7 +4338,7 @@
       },
       {
         "id": "canteen",
-        "name": "Canteen",
+        "name": "Bi đông",
         "description": "Có thể làm đầy lại tại các con sông suối.",
         "cost": 2
       },
@@ -4380,7 +4380,7 @@
       },
       {
         "id": "map",
-        "name": "Map",
+        "name": "Bản đồ",
         "description": "Hiện chưa được đánh dấu, nhưng theo thời gian, bạn có thể vạch ra khu vực xung quanh mình.",
         "cost": 3
       },
@@ -5262,6 +5262,10 @@
           },
           {
             "id": "overthrow_vote",
+            "text": "dummy"
+          },
+          {
+            "id": "rar_mark_time",
             "text": "dummy"
           },
           {
