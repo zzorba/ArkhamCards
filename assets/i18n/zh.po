@@ -6,11 +6,13 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh\n"
-"mime-version: 1.0\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Guardian"
 msgstr "守衛者"
@@ -27,7 +29,6 @@ msgstr "流浪者"
 msgid "Survivor"
 msgstr "求生者"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Neutral"
 msgstr "中立"
 
@@ -40,7 +41,6 @@ msgstr "神秘"
 msgid "Unknown"
 msgstr "未知"
 
-#. console.log(`${await cards.count() } cards after delete`);
 msgid "Investigator"
 msgstr "調查員"
 
@@ -1497,9 +1497,6 @@ msgstr "多人遊戲"
 msgid "Standalone"
 msgstr "獨立冒險"
 
-msgid "Debug Card Json"
-msgstr "Debug Card Json"
-
 msgid "Debug"
 msgstr "Debug"
 
@@ -1980,7 +1977,6 @@ msgstr "如果隊長<b>陣亡</b>。"
 msgid "If all investigators were <b>killed</b>."
 msgstr "如果所有調查員都<b>陣亡</b>。"
 
-#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "檢查${ logEntry.section }。如果<i>${ logEntry.text }</i>"
 
@@ -2137,9 +2133,6 @@ msgstr[0] "要進行此冒險，每位調查員需要支付${ entry.xpCost }點�
 
 msgid "Import data"
 msgstr "匯入資料"
-
-msgid "Side stories"
-msgstr "支線劇情"
 
 #, javascript-format
 msgid ""
@@ -2347,7 +2340,6 @@ msgstr "${ investigator.name }移除${ card.name }。"
 msgid "Challenge Scenario"
 msgstr "挑戰劇情"
 
-#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name }挑戰劇情"
 
@@ -2801,17 +2793,17 @@ msgstr ""
 msgid "Show all available cards"
 msgstr "顯示所有可用卡牌"
 
-#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr "攻擊: ${ fight }"
 
+#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr "生命值: ${ health }倍調查員數量"
 
-#, javascript-format
 msgid "Health: ${ health }"
 msgstr "生命值: ${ health }"
 
+#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr "躲避值: ${ evade }"
 
@@ -2999,10 +2991,6 @@ msgid "Signature Weakness"
 msgstr "專屬弱點"
 
 #, javascript-format
-msgid "Cost: ${ json.cost }"
-msgstr "費用: ${ json.cost }"
-
-#, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "顯示${ nonCollectionCount }張不在收藏中的卡牌"
@@ -3172,18 +3160,6 @@ msgstr "新獨立冒險"
 
 msgid "Create Standalone"
 msgstr "建立獨立冒險"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid "The Chameleon"
-msgstr "The Chameleon"
-
-#. console.log(`${await cards.count() } cards after delete`);
-msgid ""
-"This is a custom investigator to allow for building of arbitrary decks.\n"
-"[elder_sign]: +X where X is whatever you want it to be."
-msgstr ""
-"這是自定義的調查員，允許創建任意無限制的牌組。\n"
-"[elder_sign]: +X。X是你想要多少就多少。"
 
 msgid "Asset Filters"
 msgstr "支援卡篩選"
@@ -3878,7 +3854,7 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] }和${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "黑暗物質"
 
 msgid "Impending Doom"
 msgstr ""
@@ -3888,9 +3864,6 @@ msgstr "記憶"
 
 msgid "Fan-Made Campaigns"
 msgstr "非官方劇本"
-
-msgid "Fan-Made Content"
-msgstr "非官方內容"
 
 msgid "Fetching account details..."
 msgstr "取得帳戶資料…"
@@ -3946,10 +3919,10 @@ msgstr ""
 "com聯繫我。非官方劇本的支援並不容易，但我會盡己所能的為社群提供支援。"
 
 msgid "Alice in Wonderland"
-msgstr "愛麗絲夢遊仙境"
+msgstr "詭境夢遊"
 
 msgid "Fragments of Alice"
-msgstr "Fragments of Alice"
+msgstr "愛麗絲的碎片"
 
 msgid "Wonderland Boons"
 msgstr "仙境的恩賜"
@@ -3962,9 +3935,6 @@ msgstr "仙境的強度"
 
 msgid "Edge of the Earth"
 msgstr "闇與地球之界"
-
-msgid "Promotional"
-msgstr "推廣"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "你不能加入超過5張守衛者和中立以外的卡牌"
@@ -4037,22 +4007,8 @@ msgstr "(新的總數: ${ total })"
 msgid "Earned XP:"
 msgstr "已獲得XP:"
 
-msgid "Not deck owner"
-msgstr "非牌組的持有者"
-
 msgid "Saved"
 msgstr "已儲存"
-
-#, javascript-format
-msgid ""
-"This deck is owned by ${ deck.owner.handle }. They must open the app on "
-"their own device to save the upgrade"
-msgstr "這副牌組屬於${ deck.owner.handle }。他們必須在自己的裝置上打開APP才能儲存升級。"
-
-msgid ""
-"This deck is owned by another user. They must open the app on their own "
-"device to save the upgrade"
-msgstr "這副牌組屬於其他玩家。他們必須在自己的裝置上打開APP才能儲存升級。"
 
 msgid ""
 "This investigator does not have a deck associated with it.\n"
@@ -4096,9 +4052,6 @@ msgstr ""
 
 msgid "Learn more"
 msgstr "瞭解更多"
-
-msgid "Save will update your deck with the card changes listed above."
-msgstr "以上的變更將會儲存到你的牌組。"
 
 msgid "Campaign log"
 msgstr "冒險日誌"
@@ -4148,6 +4101,7 @@ msgstr "抽取符合這些屬性的隨機弱點。"
 msgid "Edit selection"
 msgstr "編輯選擇"
 
+#, javascript-format
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "查看冒險日誌。<i>如果${ logEntry.text }</i>"
 
@@ -4296,12 +4250,6 @@ msgstr "困難"
 msgid "Expert difficulty"
 msgstr "專家"
 
-msgid "— Difficulty —"
-msgstr "— 難度 —"
-
-msgid "— Available Scenarios —"
-msgstr "— 可進行的冒險 —"
-
 msgid "Scenario settings"
 msgstr "冒險設置"
 
@@ -4334,7 +4282,7 @@ msgid "All Cycles and Packs"
 msgstr "所有的循環和擴充包"
 
 msgid "Record that..."
-msgstr ""
+msgstr "記錄下……"
 
 msgid "Player card entries only"
 msgstr ""
@@ -5118,24 +5066,12 @@ msgid "Offerings"
 msgstr ""
 
 msgid "Patrol"
-msgstr ""
+msgstr "巡邏"
 
 msgid "Consternation on the Constellation"
 msgstr ""
 
 msgid "Deck contains custom content"
-msgstr ""
-
-msgid ""
-"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
-"fan-made content.\n"
-"\n"
-"Please remove all fan-made cards from the deck list and try again."
-msgstr ""
-
-msgid ""
-"Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made "
-"content."
 msgstr ""
 
 msgid "Player"
@@ -5188,7 +5124,7 @@ msgid "Upload a campaign"
 msgstr "上傳劇本"
 
 msgid "Add a friend"
-msgstr ""
+msgstr "新增朋友"
 
 msgid "Enjoy the campaign"
 msgstr ""
@@ -5348,10 +5284,10 @@ msgid "Draft Cards"
 msgstr "抽選卡牌"
 
 msgid "Deck id copied!"
-msgstr ""
+msgstr "已複製牌組id！"
 
 msgid "Link to deck copied!"
-msgstr ""
+msgstr "已複製牌組的連結！"
 
 msgid "Build a deck randomly"
 msgstr "隨機構建牌組"
@@ -5502,58 +5438,54 @@ msgid "The Dodo"
 msgstr "渡渡鳥"
 
 msgid "A Sea of Troubles"
-msgstr ""
+msgstr "麻煩之海"
 
 msgid "The Caterpillar"
 msgstr "毛毛蟲"
 
 msgid "Tempest in a Teapot"
-msgstr ""
+msgstr "壺中風暴"
 
 msgid "The Duchess"
 msgstr "公爵夫人"
 
 msgid "Bleeding Hearts"
-msgstr ""
+msgstr "淌血紅心"
 
 msgid "Gryphon and Mock Turtle"
 msgstr "獅鷲和假海龜"
 
 msgid "Wild Snark Chase"
-msgstr ""
+msgstr "獵捕蛇鯊"
 
 msgid "Humpty Dumpty"
 msgstr "蛋頭先生"
 
 msgid "Sibling Rivalry"
-msgstr ""
+msgstr "兄弟鬩牆"
 
 msgid "The Lion and the Unicorn"
-msgstr ""
+msgstr "獅子和獨角獸"
 
 msgid "Fool's Mate"
-msgstr ""
+msgstr "愚者弈局"
 
 msgid "The White Queen"
-msgstr ""
+msgstr "白棋王后"
 
 msgid "Lucid Nightmare"
-msgstr ""
-
-#, javascript-format
-msgid "${ textModifier }, draws another ${ revealCount }}"
-msgstr ""
+msgstr "清醒夢魘"
 
 msgid "Delete your account"
-msgstr ""
+msgstr "刪除你的帳戶"
 
 msgid "Loading account details..."
-msgstr ""
+msgstr "讀取帳戶資料……"
 
 msgid ""
 "Are you sure that you want to <b>permanently</b> delete your account? This "
 "<b>cannot be undone</b>."
-msgstr ""
+msgstr "你確定你要<b>永久</b>刪除你的帳戶？這麼做<b>無法復原</b>。"
 
 #, javascript-format
 msgid "You are currently signed in as <b>${ handle }</b>."
@@ -5569,32 +5501,31 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "I understand that all data will be deleted permanently."
-msgstr ""
+msgstr "我瞭解所有資料將被永久地刪除。"
 
 msgid "Confirm account deletion"
-msgstr ""
+msgstr "確認刪除帳戶"
 
 msgid "Delete account"
-msgstr ""
+msgstr "刪除帳戶"
 
 msgid "If you choose to delete this account, the following data will be removed."
-msgstr ""
+msgstr "如果你刪除這個帳戶，以下的資料將被移除。"
 
 msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural ""
 "The ${ createdCampaignCount } campaigns that you have uploaded to this "
 "account will be deleted:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "你上傳到這個帳戶的劇本資料將被刪除："
 
 msgid "Beta"
 msgstr ""
 
 msgid "Check for card updates"
-msgstr ""
+msgstr "檢查卡牌更新"
 
 msgid "Low memory mode"
-msgstr ""
+msgstr "低記憶體模式"
 
 msgid "Have the app preload fewer cards to help performance on older devices"
 msgstr ""
@@ -5632,6 +5563,330 @@ msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
 msgid "The Scarlet Keys"
+msgstr "緋紅密鑰"
+
+#, javascript-format
+msgid "Name ${ quantity } card"
+msgid_plural "Name ${ quantity } cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Named card"
+msgid_plural "Named cards"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "In deck"
+msgstr ""
+
+msgid "Select additional cards"
+msgstr ""
+
+msgid "Map"
+msgstr ""
+
+#, javascript-format
+msgid "${ textModifier }, draws another ${ revealCount }"
+msgstr ""
+
+msgid "The Colour Out of Space"
+msgstr ""
+
+msgid "Remove trait"
+msgstr ""
+
+#, javascript-format
+msgid "Choose ${ quantity } trait"
+msgid_plural "Choose ${ quantity } traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Chosen trait"
+msgid_plural "Chosen traits"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add trait"
+msgstr ""
+
+#, javascript-format
+msgid "${ quantity } copy"
+msgid_plural "${ quantity } copies"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Embark"
+msgstr ""
+
+#, javascript-format
+msgid "Depart from ${ currentLocation.name }"
+msgstr ""
+
+msgid "Depart"
+msgstr ""
+
+msgid "Choose destination"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ investigator.name } Fan-Made Challenge Scenario by ${ "
+"scenario.custom.creator }"
+msgstr ""
+
+msgid "Cyclopean Foundations"
+msgstr ""
+
+msgid "Lost Moorings"
+msgstr ""
+
+msgid "Going Twice"
+msgstr ""
+
+msgid "Private Lives"
+msgstr ""
+
+msgid "Crumbling Masonry"
+msgstr ""
+
+msgid "A House Divided"
+msgstr ""
+
+msgid "Across Dreaful Waters"
+msgstr ""
+
+msgid "Blood From Stones"
+msgstr ""
+
+msgid "Pyroclastic Flow"
+msgstr ""
+
+msgid "Tomb of Dead Dreams"
+msgstr ""
+
+msgid "Cultists Alive"
+msgstr ""
+
+msgid "Cultists Killed"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Jenny's Choice"
+msgstr ""
+
+msgid "The Fall of the House of Usher"
+msgstr ""
+
+msgid "Against the Wendigo"
+msgstr ""
+
+msgid "Non-canon Content"
+msgstr ""
+
+msgid "Fan-made Campaigns"
+msgstr "非官方劇本"
+
+msgid "Fan-made Scenarios"
+msgstr "非官方冒險"
+
+msgid "Currently here"
+msgstr ""
+
+msgid "Already visited"
+msgstr ""
+
+msgid "Travel here"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+#, javascript-format
+msgid "Departing from ${ location }"
+msgstr ""
+
+msgid "Customization upgrades"
+msgstr ""
+
+msgid "Special discounts"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"${ remainingFreeCards } additional level 0 card may be added to the deck "
+"without spending experience."
+msgid_plural ""
+"Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
+"without spending experience."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Difficulty override"
+msgstr ""
+
+msgid "Easy / Standard"
+msgstr "簡單 / 普通"
+
+msgid "Hard / Expert"
+msgstr "困難 / 專家"
+
+#, javascript-format
+msgid "Difficulty override: ${ msg[difficulty] }"
+msgstr ""
+
+msgid "Select scenario effects difficulty"
+msgstr ""
+
+msgid ""
+"In order to support custom modes like \"Stan-hard\", you may choose to use "
+"either side of the scenario reference card to show token effects and odds "
+"calculations in the app."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Use campaign setting"
+msgstr ""
+
+#, javascript-format
+msgid "${ used } / ${ available } used"
+msgid_plural "${ used } / ${ available } used"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
+msgstr ""
+
+msgid ""
+"Note: this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content."
+msgstr ""
+
+msgid ""
+"Sorry, this deck cannot be uploaded to ArkhamDB because it contains "
+"fan-made/preview content that ArkhamDB does not recognize.\n"
+"\n"
+"Please remove these cards from the deck list and try again."
+msgstr ""
+
+msgid ""
+"This card has not yet been released, and cannot be included in ArkhamDB "
+"decks at this time."
+msgstr ""
+
+msgid "Recomputing deck changes..."
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ card.cost }"
+msgstr ""
+
+msgid "Grants access to previewed player cards"
+msgstr "授予預覽玩家卡的權限"
+
+msgid "Key"
+msgstr ""
+
+msgid "Taboo Set"
+msgstr ""
+
+#, javascript-format
+msgid "Taboo Set: ${ tabooSetName }"
+msgstr ""
+
+msgid "Specific taboo set"
+msgstr ""
+
+msgid "Deleteing ArkhamDB accounts"
+msgstr ""
+
+msgid ""
+"ArkhamDB is a third party website unaffiliated with ArkhamCards. This app "
+"only allows you to sign into existing ArkhamDB accounts.\n"
+"\n"
+"If you would like to delete your account, please contact the webmaster of "
+"ArkhamDB at arkhamdb@kamalisk.com"
+msgstr ""
+
+msgid "Requeset Account Deletion"
+msgstr ""
+
+msgid "Delete Account"
+msgstr "刪除帳戶"
+
+msgid "Choose a skill"
+msgstr ""
+
+msgid "Use the embark button below"
+msgstr ""
+
+msgid "Review the world map"
+msgstr ""
+
+msgid "Claim previous rewards"
+msgstr ""
+
+msgid "Apply changes from last completed scenario or interlude"
+msgstr ""
+
+msgid "This is a side-story location."
+msgstr ""
+
+#, javascript-format
+msgid "Travel cost: ${ travelDistance } time"
+msgid_plural "Travel cost: ${ travelDistance } time"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Do you want to use the app to randomize choices?"
+msgstr ""
+
+#, javascript-format
+msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
+msgstr ""
+
+msgid "Mark ${ time } <b>time</b> in your Campaign Log."
+msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "This includes the cost of experience cost of playing the side-story."
+msgstr ""
+
+msgid ""
+"This deck is owned by another player. You can record the changes now and "
+"they will be given an opportunity to save them to their deck when they next "
+"open the app."
+msgstr ""
+
+msgid "Time Passed"
+msgstr ""
+
+msgid "Bearer"
+msgstr ""
+
+msgid "You cannot have more than 5 Seeker and/or Survivor cards"
+msgstr ""
+
+msgid "You cannot have more than 5 Mystic and/or Survivor cards"
+msgstr ""
+
+msgid "Fan-made Investigators"
+msgstr "非官方調查員"
+
+msgid "Fortune and Folly"
+msgstr ""
+
+msgid "Challenge Scenarios"
+msgstr ""
+
+msgid "Choose an option"
+msgstr ""
+
+msgid "Choose weakness"
 msgstr ""
 
 msgctxt "investigator"
@@ -5643,7 +5898,6 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
 
-#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name }已<b>陣亡</b>。"
@@ -5665,6 +5919,7 @@ msgid_plural ""
 "effect.physical } physical trauma."
 msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
@@ -5682,6 +5937,7 @@ msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name }治癒${ physical }點肉體創傷。"
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
@@ -5719,7 +5975,6 @@ msgid ""
 "Campaign Log."
 msgstr "如果<i>${ card.name }</i>不在冒險日誌中的‘${ entry.section }’底下。"
 
-#, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
@@ -5750,6 +6005,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name }已<b>發瘋</b>。"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name }已<b>陣亡</b>。"
@@ -5776,6 +6032,7 @@ msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name }治癒${ mental }點精神創傷。"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -5813,10 +6070,12 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "被擊敗: 沒有創傷"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name }閱讀<b>${ sectionName }</b>"
 
+#, javascript-format
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
@@ -5861,6 +6120,100 @@ msgid_plural ""
 "sectionName }</b>."
 msgstr[0] "由於${ list }之中沒有${ supplyName }，玩家必須閱讀<b>${ sectionName }</b>。"
 
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name }已<b>發瘋</b>。"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name }已<b>陣亡</b>。"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr "${ investigator.name }受到1點肉體或精神創傷<i>(自行選擇)</i>。"
+
+msgctxt "nonbinary"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷和${ effect.physical }點肉體創傷。"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name }治癒${ mental }點精神創傷。"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name }受到${ effect.mental }點精神創傷。"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name }治癒${ physical }點肉體創傷。"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name }受到${ effect.physical }點肉體創傷。"
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr "倖存"
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr "已撤退"
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr "被擊敗: 肉體創傷"
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr "被擊敗: 精神創傷"
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr "被擊敗: 沒有創傷"
+
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name }閱讀<b>${ sectionName }</b>"
+
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "如果<i>${ card.name }</i>不在冒險日誌中的‘${ entry.section }’底下。"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid ""
+"If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your "
+"Campaign Log."
+msgstr "如果<i>${ card.name }</i>在冒險日誌中的‘${ entry.section }’底下。"
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr "肉體創傷"
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr "精神創傷"
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr "被擊敗"
+
 msgctxt "Traits"
 msgid "All"
 msgstr "全部"
@@ -5879,7 +6232,7 @@ msgid ""
 "the excellent <i>Alice in Wonderland</i> campaign by The Beard."
 msgstr ""
 "從這個版本開始，有一個新設置可以在搜尋卡牌和構建牌組時解鎖一些“非官方”內容。雖然非官方劇本的支援已經有一段時間了，但與之相關的卡片還無法搜尋。作為開始"
-"，首先會加入 《狗鎮奇談》推廣擴充之中的卡牌，以及The Beard傑出的《愛麗絲夢遊仙境》劇本之中的卡牌。"
+"，首先會加入 《狗鎮奇談》推廣擴充之中的卡牌，以及The Beard傑出的《詭境夢遊》劇本之中的卡牌。"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6095,11 +6448,11 @@ msgstr "我們將會持續加入更多劇本，截至目前為止，我們提供
 
 msgctxt "releaseNotes"
 msgid "- Alice in Wonderland by The Beard"
-msgstr "- The Beard，《愛麗絲夢遊仙境》"
+msgstr "- The Beard，《詭境夢遊》"
 
 msgctxt "releaseNotes"
 msgid "- Dark Matter by Axolotl"
-msgstr ""
+msgstr "- Axolotl，《黑暗物質》"
 
 msgctxt "releaseNotes"
 msgid "- Crown of Egil by The Mad Juggler"
@@ -6190,11 +6543,11 @@ msgctxt "releaseNotes"
 msgid ""
 "Note: You might need to refresh the cards once (using <b>Check for card "
 "updates</b>)."
-msgstr ""
+msgstr "注意：你可能需要重新讀取一次卡牌資料(使用<b>檢查卡牌更新</b>)。"
 
 msgctxt "releaseNotes"
 msgid "Settings synchronization"
-msgstr ""
+msgstr "設置檔同步"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -6202,36 +6555,81 @@ msgid ""
 "you sign into your Arkham Cards account your settings will now sync between "
 "devices automatically!"
 msgstr ""
+"好消息！在超過一個裝置上使用Arkham Cards APP的玩家們，如果你登入Arkham "
+"Cards的帳戶，你的設置資料現在會自動在所有裝置之間同步了！"
 
 msgctxt "releaseNotes"
 msgid ""
 "- This includes your collection + spoiler settings, as well as many general "
 "app preferences."
-msgstr ""
+msgstr "- 包括你的收藏 + 防據透設定，以及其他的app偏好設定。"
 
 msgctxt "releaseNotes"
 msgid ""
 "I've had some reports of slower performance on some devices, and have a new "
 "<i>\"Low Memory Mode\"</i> setting to try out."
-msgstr ""
+msgstr "我收到一些在某些裝置上效能降低的報告，因此嘗試新增了<i>“低記憶體模式”</i>的設定。"
 
 msgctxt "releaseNotes"
 msgid ""
 "- If you've been experiencing slow app behavior in anyway, please try it "
 "out."
-msgstr ""
+msgstr "- 如果你曾經感到APP有任何卡頓，請嘗試看看。"
 
 msgctxt "releaseNotes"
 msgid ""
 "- And if you try it out, send me an email at arkhamcards@gmail.com, I would "
 "love to hear how it is working in the wild."
-msgstr ""
+msgstr "- 如果你嘗試了，請寄封email給我，寄到arkhamcards@gmail.com，我很想知道這個模式廣泛的運作狀況。"
 
 msgctxt "releaseNotes"
 msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
+msgstr "順帶一提，在緋紅密鑰中最新發表的新機制的支援已經在開發中了，敬請期待。"
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
 msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds the newly finished fan-made Cyclopean Foundations "
+"campaign by The Beard."
+msgstr "這次更新加入了剛完成的，由The Beard製作的Cyclopean Foundations非官方劇本。"
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes a fully guided mode, with all setup and resolution text "
+"accounted for."
+msgstr "- 加入了完整的劇本模式，包含所有冒險設置和結局文字。"
+
+msgctxt "releaseNotes"
+msgid ""
+"This update also adds support for \"The Colour Out of Space\", a fan-made "
+"standalone scenario."
+msgstr "這次更新也加入了一個非官方的獨立冒險\"The Colour Out of Space\"。"
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr "卡牌預覽"
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr "這次更新提供更快速的卡牌預覽。"
+
+msgctxt "releaseNotes"
+msgid ""
+"- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys "
+"investigator expansion."
+msgstr "- 包括能預覽緋紅密鑰調查員擴展之中的<b>Customizable</b>卡牌。"
+
+msgctxt "releaseNotes"
+msgid ""
+"- In order to maintain compatibility with ArkhamDB, these cards are not "
+"shown by default. You can opt into them by enabling the <b>Show Fan-made "
+"cards</b> under <i>Settings</i>."
+msgstr "- 為了維持與ArkhamDB的相容性，這些卡牌預設不會顯示。你可以啟用<i>設置</i>底下的<b>顯示非官方卡牌</b>來調整這些卡牌。"
 
 msgctxt "trait"
 msgid "???"
@@ -6663,7 +7061,7 @@ msgstr "類人"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr "獵人"
+msgstr "獵手"
 
 msgctxt "trait"
 msgid "Hybrid"
@@ -7247,7 +7645,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "祝福?"
 
 msgctxt "trait"
 msgid "Broken"
@@ -7255,7 +7653,7 @@ msgstr "破功"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "撲克牌"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -7279,7 +7677,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "皇室"
 
 msgctxt "trait"
 msgid "Saga"
@@ -7305,6 +7703,206 @@ msgctxt "trait"
 msgid "Resolute"
 msgstr "堅毅"
 
+msgctxt "trait"
+msgid "Ally? Creature"
+msgstr "盟友? 生物"
+
+msgctxt "trait"
+msgid "Bad dog"
+msgstr ""
+
+msgctxt "trait"
+msgid "Castle"
+msgstr "城堡"
+
+msgctxt "trait"
+msgid "Chair"
+msgstr "椅子"
+
+msgctxt "trait"
+msgid "Chess"
+msgstr "西洋棋"
+
+msgctxt "trait"
+msgid "Classy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Consort"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corpse"
+msgstr "屍體"
+
+msgctxt "trait"
+msgid "Coterie"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dilemma"
+msgstr ""
+
+msgctxt "trait"
+msgid "Downtown"
+msgstr "商業區"
+
+msgctxt "trait"
+msgid "Eidolon"
+msgstr ""
+
+msgctxt "trait"
+msgid "Elder Thing"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrance"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fellow Dogs"
+msgstr ""
+
+msgctxt "trait"
+msgid "Footwear, but not really"
+msgstr ""
+
+msgctxt "trait"
+msgid "Glacier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Infection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machine"
+msgstr ""
+
+msgctxt "trait"
+msgid "Madness?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mainland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mirage"
+msgstr ""
+
+msgctxt "trait"
+msgid "Mountains"
+msgstr ""
+
+msgctxt "trait"
+msgid "Music"
+msgstr ""
+
+msgctxt "trait"
+msgid "Musician"
+msgstr ""
+
+msgctxt "trait"
+msgid "Northside"
+msgstr "北區"
+
+msgctxt "trait"
+msgid "Parasitic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Past"
+msgstr ""
+
+msgctxt "trait"
+msgid "Possessed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Present"
+msgstr ""
+
+msgctxt "trait"
+msgid "Priestess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pup"
+msgstr ""
+
+msgctxt "trait"
+msgid "Resonant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Restricted"
+msgstr "管制"
+
+msgctxt "trait"
+msgid "Row"
+msgstr "橫列"
+
+msgctxt "trait"
+msgid "Scientist"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shapeshifter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sister"
+msgstr ""
+
+msgctxt "trait"
+msgid "Slope"
+msgstr "斜坡"
+
+msgctxt "trait"
+msgid "Soldier"
+msgstr "士兵"
+
+msgctxt "trait"
+msgid "Stop"
+msgstr ""
+
+msgctxt "trait"
+msgid "Table"
+msgstr "桌子"
+
+msgctxt "trait"
+msgid "That's bad"
+msgstr ""
+
+msgctxt "trait"
+msgid "Traitor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tulgey Wood"
+msgstr "土爾基森林"
+
+msgctxt "trait"
+msgid "Uncharted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Underground"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upper Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weather"
+msgstr "氣象"
+
+msgctxt "trait"
+msgid "What? No"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -7321,6 +7919,14 @@ msgstr "調查員"
 msgctxt "SubTypes"
 msgid "All"
 msgstr "全部"
+
+msgctxt "cost"
+msgid "Even"
+msgstr ""
+
+msgctxt "cost"
+msgid "Odd"
+msgstr ""
 
 msgctxt "Actions"
 msgid "All"
@@ -7366,13 +7972,26 @@ msgctxt "Illustrators"
 msgid "All"
 msgstr "全部"
 
+msgctxt "Taboo List"
+msgid "None"
+msgstr "無"
+
+#, javascript-format
+msgctxt "Taboo List"
+msgid "Current - ${ latestTabooSet.name }"
+msgstr "當前 - ${ latestTabooSet.name }"
+
+msgctxt "Taboo List"
+msgid "Current"
+msgstr "當前"
+
 msgctxt "slots"
 msgid "None"
 msgstr "無"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr ""
+msgstr "怪罪"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
@@ -7453,9 +8072,27 @@ msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] "冒險"
 
-msgctxt "Taboo List"
+msgctxt "header"
+msgid "Key"
+msgid_plural "Keys"
+msgstr[0] ""
+msgstr[1] ""
+
+msgctxt "Tarot Card"
 msgid "None"
 msgstr "無"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX"
+msgstr "審判·XX"
+
+msgctxt "Tarot Card"
+msgid "Judgement · XX (Inverted)"
+msgstr "審判·XX(逆位)"
+
+msgctxt "versus abbreviation"
+msgid "VS"
+msgstr "VS"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
@@ -7542,18 +8179,6 @@ msgctxt "trauma"
 msgid "None"
 msgstr "無"
 
-msgctxt "Tarot Card"
-msgid "None"
-msgstr "無"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX"
-msgstr "審判·XX"
-
-msgctxt "Tarot Card"
-msgid "Judgement · XX (Inverted)"
-msgstr "審判·XX(逆位)"
-
 msgctxt "campaign"
 msgid "Custom"
 msgstr "自訂"
@@ -7565,10 +8190,6 @@ msgstr "劇本"
 msgctxt "new_campaign_type"
 msgid "Standalones"
 msgstr "獨立冒險"
-
-msgctxt "versus abbreviation"
-msgid "VS"
-msgstr "VS"
 
 msgctxt "scenario"
 msgid "Custom"

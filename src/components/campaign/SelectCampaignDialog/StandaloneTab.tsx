@@ -1,39 +1,42 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
-import { forEach, map, sortBy, head } from 'lodash';
-import { t } from 'ttag';
+import { filter, forEach, map, sortBy, head } from 'lodash';
+import { c, t } from 'ttag';
 
-import { CampaignCycleCode, StandaloneId } from '@actions/types';
+import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId, STANDALONE_CAMPAGINS } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import { getStandaloneScenarios, StandaloneScenarioInfo } from '@data/scenario';
+import { getStandaloneScenarios, StandaloneInfo, StandaloneScenarioInfo } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
-import { campaignName } from '../constants';
+import { campaignDescription, campaignName } from '../constants';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import CycleItem from './CycleItem';
 
 export interface SelectCampagaignProps {
   standaloneChanged: (id: StandaloneId, text: string, hasGuide: boolean) => void;
+  campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
 }
 
-export default function StandaloneTab({ standaloneChanged }: SelectCampagaignProps) {
+export default function StandaloneTab({ campaignChanged, standaloneChanged }: SelectCampagaignProps) {
   const { lang } = useContext(LanguageContext);
   const scenarios = useMemo(() => getStandaloneScenarios(lang), [lang]);
   const sections = useMemo(() => {
-    const groups: { [campaign: string]: StandaloneScenarioInfo[] } = {};
+    const groups: { [campaign: string]: StandaloneInfo[] } = {};
     forEach(scenarios, scenario => {
-      if (!groups[scenario.campaign]) {
-        groups[scenario.campaign] = [];
+      const group = (scenario.type === 'standalone' ? scenario.specialGroup : undefined) ||  scenario.campaign;
+      if (!groups[group]) {
+        groups[group] = [];
       }
-      groups[scenario.campaign].push(scenario);
+      groups[group].push(scenario);
     });
 
     const allSections: {
       header: string;
-      scenarios: StandaloneScenarioInfo[];
+      scenarios: StandaloneInfo[];
       position: number;
     }[] = [];
     forEach(groups, (group, campaign) => {
       const item = head(group);
-      if (campaign !== 'side' && item) {
+      if (campaign !== 'side' && campaign !== 'challenge' && campaign !== 'custom_side' && item) {
         allSections.push({
           header: campaignName(campaign as CampaignCycleCode) || t`Unknown campaign`,
           scenarios: sortBy(group, s => s.name),
@@ -47,6 +50,16 @@ export default function StandaloneTab({ standaloneChanged }: SelectCampagaignPro
         scenarios: sortBy(groups.side, s => s.name),
         position: -1,
       },
+      {
+        header: t`Challenge Scenarios`,
+        scenarios: sortBy(groups.challenge, s => s.name),
+        position: -1,
+      },
+      {
+        header: t`Fan-made Scenarios`,
+        scenarios: sortBy(groups.custom_side, s => s.name),
+        position: -1,
+      },
       ...sortBy(allSections, s => s.position),
     ];
   }, [scenarios]);
@@ -57,16 +70,32 @@ export default function StandaloneTab({ standaloneChanged }: SelectCampagaignPro
   }, [standaloneChanged]);
 
 
-  const renderStandalone = useCallback((scenario: StandaloneScenarioInfo) => {
-    return (
-      <StandaloneItem
-        id={scenario.id}
-        key={scenario.code}
-        packCode={scenario.code}
-        onPress={onPress}
-        text={scenario.name}
-      />
-    );
+  const onPressCampaign = useCallback((campaignCode: CampaignCycleCode, text: string) => {
+    campaignChanged(campaignCode, text, GUIDED_CAMPAIGNS.has(campaignCode));
+  }, [campaignChanged]);
+
+  const renderStandalone = useCallback((scenario: StandaloneInfo) => {
+    if (scenario.type === 'standalone') {
+      return (
+        <StandaloneItem
+          id={scenario.id}
+          key={scenario.code}
+          packCode={scenario.code}
+          onPress={onPress}
+          text={scenario.name}
+        />
+      );
+    } else {
+      return (
+        <CycleItem
+          key={scenario.code}
+          packCode={scenario.id}
+          onPress={onPressCampaign}
+          text={campaignName(scenario.id) || c('campaign').t`Custom`}
+          description={campaignDescription(scenario.id)}
+        />
+      )
+    }
   }, [onPress]);
   return (
     <>

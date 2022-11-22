@@ -86,7 +86,7 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaig
       title: c('new_campaign_type').t`Standalones`,
       node: (
         <ScrollView style={[styles.flex, backgroundStyle]}>
-          <StandaloneTab standaloneChanged={standaloneChanged} />
+          <StandaloneTab standaloneChanged={standaloneChanged} campaignChanged={campaignChanged} />
           <ArkhamButton
             icon="edit"
             onPress={editCollection}

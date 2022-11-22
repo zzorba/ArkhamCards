@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
+    <style name="AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splashBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_icon</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
     <style name="AppTheme" parent="ArkhamCards.DayNight">
         <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:forceDarkAllowed">false</item>
-    </style>
-    <style name="SplashScreen" parent="ArkhamCards.DayNight">
-        <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:forceDarkAllowed">false</item>
     </style>
 </resources>

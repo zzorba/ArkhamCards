@@ -24,6 +24,7 @@ import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function hasUpgrades(
   code: string,
@@ -46,20 +47,23 @@ function hasUpgrades(
     )));
 }
 
-function getCount(item: SectionCardId, ignoreDeckLimitSlots: Slots | undefined) {
-  if (item.mode === 'special') {
-    if ((ignoreDeckLimitSlots?.[item.id] || 0) > 0) {
-      return ignoreDeckLimitSlots?.[item.id] || 0;
-    }
-  } else if (item.mode === 'side' || item.mode === 'bonded') {
-    return item.quantity;
+function getCount(item: SectionCardId): [number, 'side' | 'ignore' | undefined] {
+  if (item.ignoreCount) {
+    return [item.quantity, 'ignore'];
+  } else if (item.mode === 'side') {
+    return [item.quantity, 'side'];
+  } else if (item.mode === 'bonded') {
+    return [item.quantity, undefined];
   }
-  return item.quantity - (ignoreDeckLimitSlots?.[item.id] || 0);
+  return [
+    item.quantity,
+    undefined,
+  ];
 }
 
 
 interface SectionCardId extends CardId {
-  mode: 'special' | 'side' | 'bonded' | undefined;
+  mode: 'special' | 'side' | 'bonded' | 'ignore' | undefined;
   hasUpgrades: boolean;
   index: number;
 }
@@ -99,6 +103,7 @@ function sectionHeaderTitle(type: TypeCodeType | string, count: number): string 
     case 'agenda': return c('header').ngettext(msgid`Agenda`, `Agendas`, count);
     case 'investigator': return c('header').ngettext(msgid`Investigator`, `Investigators`, count);
     case 'scenario': return c('header').ngettext(msgid`Scenario`, `Scenarios`, count);
+    case 'key': return c('header').ngettext(msgid`Key`, `Keys`, count);
     default: return type;
   }
 }
@@ -151,7 +156,7 @@ function deckToSections(
           return {
             ...c,
             index: index++,
-            mode,
+            mode: mode === 'special' && c.ignoreCount ? 'ignore' : mode,
             hasUpgrades: !!cardsByName && hasUpgrades(
               c.id,
               cards,
@@ -207,7 +212,7 @@ function deckToSections(
           return {
             ...c,
             index: index++,
-            mode,
+            mode: mode === 'special' && c.ignoreCount ? 'ignore' : mode,
             hasUpgrades: !!cardsByName && hasUpgrades(
               c.id,
               cards,
@@ -496,7 +501,7 @@ export default function useParsedDeckComponent({
     return null;
   }, [faction]);
   const deckId = parsedDeck?.id;
-  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined): ControlType | undefined => {
+  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined, countMode: 'ignore' | 'side' | undefined): ControlType | undefined => {
     if (card.code === RANDOM_BASIC_WEAKNESS && editable && showDrawWeakness) {
       return {
         type: 'shuffle',
@@ -517,7 +522,8 @@ export default function useParsedDeckComponent({
     return {
       type: 'upgrade',
       deckId: deckId,
-      side: item.mode === 'side',
+      mode: countMode,
+      editable: !!editable,
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
     };
@@ -541,7 +547,7 @@ export default function useParsedDeckComponent({
     }
     const index = parseInt(id, 10);
     const visibleCards: Card[] = [];
-    const controls: ('deck' | 'side' | 'special' | 'bonded')[] = [];
+    const controls: ('deck' | 'side' | 'special' | 'ignore' | 'bonded')[] = [];
     forEach(data, deckSection => {
       forEach(deckSection.sections, section => {
         forEach(section.cards, item => {
@@ -568,28 +574,29 @@ export default function useParsedDeckComponent({
       customizations,
     );
   }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
-
+  const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {
       return null;
     }
-    const count = getCount(item, deckEditsRef?.current?.ignoreDeckLimitSlots);
+    const [count, mode] = getCount(item);
     const cardCustomizations = customizations?.[card.code];
+    const customizedCard = card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')
     return (
       <CardSearchResult
         key={item.index}
-        card={card.withCustomizations(cardCustomizations)}
+        card={customizedCard}
         id={`${item.index}`}
         invalid={item.invalid}
         onPressId={showSwipeCard}
-        control={controlForCard(item, card, count)}
+        control={controlForCard(item, customizedCard, count, mode)}
         faded={count === 0}
         noBorder={!isLoading && section.last && index === (section.cards.length - 1)}
         noSidePadding
       />
     );
-  }, [showSwipeCard, deckEditsRef, controlForCard, cards, customizations]);
+  }, [listSeperator, showSwipeCard, controlForCard, cards, customizations]);
 
   if (!data || !data.length) {
     return [<ArkhamLoadingSpinner key="loader" autoPlay loop />, bondedCardsCount];

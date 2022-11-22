@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-native-side-menu-updated/index.d.ts b/node_modules/react-native-side-menu-updated/index.d.ts
+index 9f06c08..dd40f54 100644
+--- a/node_modules/react-native-side-menu-updated/index.d.ts
++++ b/node_modules/react-native-side-menu-updated/index.d.ts
+@@ -4,7 +4,7 @@
+ //                 Matt Pawley <https://github.com/toughdeveloper>
+ // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+ 
+-import { ReactNode, Component } from 'react';
++import React, { ReactNode, Component } from 'react';
+ import { GestureResponderEvent, PanResponderGestureState, Animated, ViewStyle } from 'react-native';
+ 
+ export interface ReactNativeSideMenuProps {
+@@ -89,6 +89,8 @@ export interface ReactNativeSideMenuProps {
+      * @default transparent
+      */
+     overlayColor?: string
++
++    children?: React.ReactNode;
+ }
+ 
+ export default class SideMenu extends Component<ReactNativeSideMenuProps> {

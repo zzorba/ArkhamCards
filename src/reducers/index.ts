@@ -40,6 +40,8 @@ import {
   getLastUpdated,
   UploadedDeck,
   ArkhamDbDeck,
+  StartingTabType,
+  BROWSE_DECKS,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -161,6 +163,7 @@ const DEFAULT_PACK_LIST: Pack[] = [];
 const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allGuidesSelector = (state: AppState) => state.guides.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
+const customPacksSelector = (state: AppState) => state.packs.custom;
 const showCustomContentSelector = (state: AppState) => !!state.settings.customContent;
 const allDecksSelector = (state: AppState) => state.decks.all;
 
@@ -172,43 +175,45 @@ export const getCampaigns = createSelector(
   allCampaignsSelector,
   allGuidesSelector,
   allDecksSelector,
-  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => map(
-    filter(
-      values(allCampaigns),
-      campaign => {
-        return (!campaign.linkedCampaignUuid && !campaign.serverId);
-      }
-    ),
-    (campaign: Campaign) => {
-      if (campaign.linkUuid) {
-        const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
-        const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
-        if (campaignA && campaignB) {
-          const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
-          const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
-          return new MiniLinkedCampaignRedux(
-            campaign,
-            getCampaignLastUpdated(campaign),
-            campaignA,
-            decksA,
-            getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
-            campaignB,
-            decksB,
-            getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
-          );
+  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
+    return map(
+      filter(
+        values(allCampaigns),
+        campaign => {
+          return (!campaign.linkedCampaignUuid && !campaign.serverId);
         }
+      ),
+      (campaign: Campaign) => {
+        if (campaign.linkUuid) {
+          const campaignA = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdA, serverId: campaign.serverId });
+          const campaignB = getCampaign(allCampaigns, { campaignId: campaign.linkUuid.campaignIdB, serverId: campaign.serverId });
+          if (campaignA && campaignB) {
+            const decksA = flatMap(campaignA.deckIds, id => getDeck(allDecks, id) || []);
+            const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
+            return new MiniLinkedCampaignRedux(
+              campaign,
+              getCampaignLastUpdated(campaign),
+              campaignA,
+              decksA,
+              getCampaignLastUpdated(campaignA, allGuides[campaignA.uuid]),
+              campaignB,
+              decksB,
+              getCampaignLastUpdated(campaignB, allGuides[campaignB.uuid])
+            );
+          }
+        }
+        return new MiniCampaignRedux(
+          campaign,
+          flatMap(campaign.deckIds, id => {
+            const deck = getDeck(allDecks, id);
+            const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
+            return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
+          }),
+          getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
+        );
       }
-      return new MiniCampaignRedux(
-        campaign,
-        flatMap(campaign.deckIds, id => {
-          const deck = getDeck(allDecks, id);
-          const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
-          return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
-        }),
-        getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
-      );
-    }
-  )
+    );
+  }
 );
 
 export const getBackupData = createSelector(
@@ -242,82 +247,110 @@ export function getPackFetchDate(state: AppState) {
 
 export const getAllPacks = createSelector(
   allPacksSelector,
+  customPacksSelector,
   showCustomContentSelector,
-  (allPacks, showCustomContent) => sortBy(
-    sortBy(
-      concat(
-        allPacks || DEFAULT_PACK_LIST,
-        showCustomContent ? map([
-          {
-            code: 'zbh',
-            cycle_code: 'fan',
-            name: t`Barkham Horror`,
-            position: 1,
-          },
-          {
-            code: 'zbt',
-            cycle_code: 'fan',
-            name: t`Beta`,
-            position: 2,
-          },
-          {
-            code: 'zcu',
-            cycle_code: 'fan',
-            name: c('investigator').t`Custom`,
-            position: 3,
-          },
-          {
-            code: 'zdm',
-            cycle_code: 'fan',
-            name: t`Dark Matter`,
-            position: 4,
-          },
-          {
-            code: 'zaw',
-            cycle_code: 'fan',
-            name: t`Alice in Wonderland`,
-            position: 5,
-          },
-          {
-            code: 'zce',
-            cycle_code: 'fan',
-            name: t`The Crown of Egil`,
-            position: 6,
-          },
-          {
-            code: 'zcp',
-            cycle_code: 'fan',
-            name: t`Call of the Plaguebearer`,
-            position: 7,
-          },
-          {
-            code: 'zcc',
-            cycle_code: 'fan',
-            name: t`Consternation on the Constellation`,
-            position: 8,
-          },
-          {
-            code: 'zez',
-            cycle_code: 'fan',
-            name: t`Symphony of Erich Zann`,
-            position: 9,
-          },
-        ], (p): Pack => {
-          return {
-            id: p.code,
-            name: p.name,
-            code: p.code,
-            position: p.position,
-            cycle_position: 100,
-            available: '2022-01-01',
-            known: 0,
-            total: 0,
-            url: 'https://arkhamcards.com',
-          };
-        }) : []
-      ), pack => pack.position),
-    pack => pack.cycle_position
-  )
+  (allPacks, customPacks, showCustomContent) => {
+    let theCustomPacks: Pack[] = [];
+    if (showCustomContent) {
+      theCustomPacks = customPacks?.length ? customPacks : map([
+        {
+          code: 'zbh',
+          cycle_code: 'fan',
+          name: t`Barkham Horror`,
+          position: 1,
+        },
+        {
+          code: 'zbt',
+          cycle_code: 'fan',
+          name: t`Beta`,
+          position: 2,
+        },
+        {
+          code: 'zcu',
+          cycle_code: 'fan',
+          name: c('investigator').t`Custom`,
+          position: 3,
+        },
+        {
+          code: 'zdm',
+          cycle_code: 'fan',
+          name: t`Dark Matter`,
+          position: 4,
+        },
+        {
+          code: 'zaw',
+          cycle_code: 'fan',
+          name: t`Alice in Wonderland`,
+          position: 5,
+        },
+        {
+          code: 'zce',
+          cycle_code: 'fan',
+          name: t`The Crown of Egil`,
+          position: 6,
+        },
+        {
+          code: 'zcp',
+          cycle_code: 'fan',
+          name: t`Call of the Plaguebearer`,
+          position: 7,
+        },
+        {
+          code: 'zcc',
+          cycle_code: 'fan',
+          name: t`Consternation on the Constellation`,
+          position: 8,
+        },
+        {
+          code: 'zez',
+          cycle_code: 'fan',
+          name: t`Symphony of Erich Zann`,
+          position: 9,
+        },
+        {
+          code: 'zcos',
+          cycle_code: 'fan',
+          name: t`The Colour Out of Space`,
+          position: 10,
+        },
+        {
+          code: 'zjc',
+          cycle_code: 'fan',
+          name: t`Jenny's Choice`,
+          position: 11,
+        },
+        {
+          code: 'zhu',
+          cycle_code: 'fan',
+          name: t`The Fall of the House of Usher`,
+          position: 12,
+        },
+        {
+          code: 'zatw',
+          cycle_code: 'fan',
+          name: t`Against the Wendigo`,
+          position: 13,
+        },
+      ], (p): Pack => {
+        return {
+          id: p.code,
+          name: p.name,
+          code: p.code,
+          position: p.position,
+          cycle_position: 100,
+          available: '2022-01-01',
+          known: 0,
+          total: 0,
+          url: 'https://arkhamcards.com',
+        };
+      });
+    }
+    return sortBy(
+      sortBy(
+        concat(allPacks || DEFAULT_PACK_LIST, theCustomPacks), pack => pack.position),
+      pack => pack.cycle_position
+    );
+  }
 );
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -695,11 +728,16 @@ export const makeChaosBagResultsSelector = () =>
 
 export const makeTabooSetSelector = (): (state: AppState, tabooSetOverride?: number) => number | undefined =>
   createSelector(
-    (state: AppState, tabooSetOverride?: number) => state.settings.tabooId,
+    (state: AppState) => state.settings.tabooId,
+    (state: AppState) => state.settings.useCurrentTabooSet,
+    (state: AppState) => state.settings.currentTabooSetId,
     (state: AppState, tabooSetOverride?: number) => tabooSetOverride,
-    (tabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
+    (tabooId: number | undefined, useCurrentTabooSet: boolean | undefined, currentTabooId: number | undefined, tabooSetOverride: number | undefined): number | undefined => {
       if (tabooSetOverride !== undefined) {
         return tabooSetOverride;
+      }
+      if (useCurrentTabooSet && currentTabooId) {
+        return currentTabooId;
       }
       return tabooId;
     }
@@ -817,6 +855,12 @@ export const getLangPreference = createSelector(
     }
     return getSystemLanguage();
   }
+);
+
+
+export const getStartingTab = createSelector(
+  (state: AppState) => state.settings.startingTab,
+  (startingTab): StartingTabType => startingTab || BROWSE_DECKS
 );
 
 export const getCardLang = createSelector(

@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { isBig, xs, s } from '@styles/space';
+import space, { isBig, s } from '@styles/space';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTextComponent from '@components/card/CardTextComponent';
 import Card from '@data/types/Card';
@@ -26,7 +26,7 @@ export default function CardTabooTextBlock({ card }: Props) {
   return (
     <View style={[styles.tabooTextBlock, { borderColor: colors.taboo }]}>
       <View style={styles.tabooRow}>
-        <View style={styles.tabooIcon}>
+        <View style={space.marginRightXs}>
           <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={colors.taboo} />
         </View>
         <Text style={typography.small}>
@@ -51,9 +51,6 @@ const styles = StyleSheet.create({
   tabooRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  tabooIcon: {
-    marginRight: xs,
   },
   tabooTextBlock: {
     borderLeftWidth: 2,

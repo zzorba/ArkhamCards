@@ -34,7 +34,7 @@ import { BinaryResult, conditionResult, NumberResult, StringResult } from '@data
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID, LEAD_INVESTIGATOR_STEP_ID, SELECTED_PARTNERS_CAMPAIGN_LOG_ID, EMBARK_RETURN_STEP_ID, EMBARK_STEP_ID, INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, PROCEED_STEP_ID, PROCEED_ALT_STEP_ID, DUMMY_END_SCENARIO_STEP_ID, CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -66,7 +66,7 @@ export default class ScenarioStep {
     return (
       nextCampaignLog &&
       this.remainingStepIds.length === 0 &&
-      this.step.id === '$proceed_effects'
+      this.step.id === `${PROCEED_STEP_ID}_effects` || this.step.id === `${PROCEED_ALT_STEP_ID}_effects` || this.step.id === DUMMY_END_SCENARIO_STEP_ID
     );
   }
 
@@ -118,6 +118,7 @@ export default class ScenarioStep {
           if (input === '$fixed_investigator') {
             switch (specialEffect.type) {
               case 'earn_xp':
+              case 'trauma':
               case 'remove_card':
               case 'add_card': {
                 result.push({
@@ -224,6 +225,69 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     switch (this.step.type) {
       case 'internal':
+        if (this.step.id === EMBARK_STEP_ID || this.step.id === EMBARK_RETURN_STEP_ID) {
+          const embarkData = scenarioState.embarkData();
+          const effectsWithInput: EffectsWithInput[] = [];
+
+          if (embarkData) {
+            const nextScenarioLink: Effect[] = embarkData.nextScenario === '$side_scenario' ?
+              [] : [
+                {
+                  type: 'campaign_data',
+                  setting: 'next_scenario',
+                  scenario: embarkData.nextScenario,
+                },
+              ];
+            if (embarkData.fast) {
+              const fastCode = this.scenarioGuide.campaignGuide.campaignMap()?.fast_code;
+              if (fastCode) {
+                effectsWithInput.push({
+                  effects: [
+                    {
+                      type: 'remove_card',
+                      card: fastCode,
+                      hidden: true,
+                    },
+                  ],
+                });
+              }
+            }
+            effectsWithInput.push({
+              numberInput: [embarkData.time],
+              effects: [
+                {
+                  type: 'campaign_log_count',
+                  section: 'time',
+                  operation: 'add_input',
+                },
+                {
+                  type: 'campaign_data',
+                  setting: 'embark',
+                  location: embarkData.destination,
+                  may_return: this.step.id === EMBARK_RETURN_STEP_ID,
+                },
+                ...nextScenarioLink,
+              ],
+            });
+          } else {
+            // No data yet, so mark that we want some.
+            effectsWithInput.push({
+              effects: [
+                {
+                  type: 'campaign_data',
+                  setting: 'embark',
+                },
+              ],
+            });
+          }
+          return this.maybeCreateEffectsStep(
+            this.step.id,
+            this.remainingStepIds,
+            effectsWithInput,
+            scenarioState,
+            {}
+          );
+        }
         if (this.step.id === INTER_SCENARIO_CHANGES_STEP_ID) {
           const investigatorData = scenarioState.interScenarioInvestigatorData();
           const effectsWithInput: EffectsWithInput[] = [];
@@ -299,14 +363,28 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'encounter_sets':
+        if (this.step.effects?.length) {
+          return this.maybeCreateEffectsStep(
+            this.step.id,
+            this.remainingStepIds,
+            [{ effects: this.step.effects }],
+            scenarioState,
+            {}
+          );
+        }
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          scenarioState,
+          this.campaignLog
+        );
       case 'table':
       case 'story':
-      case 'encounter_sets':
       case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':
-      case 'campaign_log_count':
       case 'xp_count':
+      case 'travel_cost':
         return this.proceedToNextStep(
           this.remainingStepIds,
           scenarioState,
@@ -701,7 +779,7 @@ export default class ScenarioStep {
               step.id,
               [
                 ...branchSteps,
-                `${base_step_id}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [{
@@ -907,14 +985,14 @@ export default class ScenarioStep {
               const effect: CampaignLogCardsEffect = partners ? {
                 type: 'campaign_log_cards',
                 section: input.condition.section,
-                id: `$investigator_partner_${investigator}`,
+                id: `${INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX}${investigator}`,
                 cards: '$input_value',
               } : {
                 type: 'campaign_log_cards',
                 section: input.condition.section,
-                id: `$investigator_partner_${investigator}`,
+                id: `${INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX}${investigator}`,
                 cards: '$fixed_codes',
-                codes: [],
+                codes: ['none'],
               };
               return {
                 input: partners,
@@ -966,8 +1044,7 @@ export default class ScenarioStep {
         const supplies = investigatorSupplies[investigator];
         const hasSupply = !!(
           supplies &&
-          !supplies.crossedOut[input.id] &&
-          find(supplies.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0)
+          find(supplies.entries, entry => entry.id === input.id && entry.type === 'count' && !entry.crossedOut && entry.count > 0)
         );
         return this.binaryBranch(
           hasSupply,
@@ -1147,7 +1224,7 @@ export default class ScenarioStep {
       case 'save_decks': {
         const hasDeckChanges = find(this.campaignLog.investigatorCodes(false), (code: string) => {
           return !!find(values(this.campaignLog.storyAssetChanges(code)), count => count !== 0);
-        });
+        }) || input.trauma || input.adjust_xp;
         if (!hasDeckChanges) {
           return this.proceedToNextStep(
             this.remainingStepIds,
@@ -1160,11 +1237,71 @@ export default class ScenarioStep {
           return undefined;
         }
 
+        const effectsWithInput: EffectsWithInput[] = [];
+        if (input.trauma) {
+          const investigators = this.campaignLog.investigators(false);
+          forEach(investigators, investigator => {
+            const choices = scenarioState.numberChoices(`${this.step.id}#${investigator.code}`);
+            if (choices !== undefined) {
+              const effects: Effect[] = [];
+              const physicalAdjust = (choices.physical && choices.physical[0]) || 0;
+              if (physicalAdjust !== 0) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  physical: physicalAdjust,
+                  hidden: true,
+                });
+              }
+              if (choices.killed && choices.killed[0]) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  killed: true,
+                  hidden: true,
+                });
+              }
+              const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
+              if (mentalAdjust !== 0) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  mental: mentalAdjust,
+                  hidden: true,
+                });
+              }
+              if (choices.insane && choices.insane[0]) {
+                effects.push({
+                  type: 'trauma',
+                  investigator: '$input_value',
+                  insane: true,
+                  hidden: true,
+                });
+              }
+              if (effects.length) {
+                effectsWithInput.push({
+                  input: [investigator.code],
+                  effects,
+                });
+              }
+            }
+          });
+        }
+
+        effectsWithInput.push({
+          effects: [
+            {
+              type: 'save_decks',
+              adjust_xp: input.adjust_xp,
+            },
+          ],
+        });
+
         // Finally do the deck 'save' to bank it.
         return this.maybeCreateEffectsStep(
           this.step.id,
           this.remainingStepIds,
-          [{ effects: [{ type: 'save_decks' }] }],
+          effectsWithInput,
           scenarioState,
           {}
         );

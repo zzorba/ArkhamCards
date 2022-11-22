@@ -1,14 +1,14 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
+import { find } from 'lodash';
 
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
-import { find } from 'lodash';
 
 export default function useProcessedCampaign(
   campaignGuide?: CampaignGuide,
   campaignState?: CampaignStateHelper,
-  standalone?: boolean | undefined,
+  standaloneId?: string | undefined,
   skip?: boolean | undefined,
   initialProcessedCampaign?: ProcessedCampaign
 ): [ProcessedCampaign | undefined, string | undefined] {
@@ -17,9 +17,11 @@ export default function useProcessedCampaign(
     if (!campaignGuide || !campaignState || skip) {
       return [undefined, undefined];
     }
-    return campaignGuide.processAllScenarios(campaignState, standalone, previousCampaign.current);
-  }, [campaignGuide, campaignState, standalone, skip]);
-  previousCampaign.current = processedCampaign;
+    return campaignGuide.processAllScenarios(campaignState, standaloneId, previousCampaign.current);
+  }, [campaignGuide, campaignState, standaloneId, skip]);
+  useEffect(() => {
+    previousCampaign.current = processedCampaign;
+  }, [processedCampaign]);
   return [processedCampaign, processedCampaignError];
 }
 
@@ -30,10 +32,11 @@ export function useProcessedScenario(
   campaignState?: CampaignStateHelper,
   initialProcessedCampaign?: ProcessedCampaign
 ): [ProcessedScenario | undefined, ProcessedCampaign | undefined, string | undefined] {
-  const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState, standalone, false, initialProcessedCampaign);
+  const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState, standalone ? id : undefined, false, initialProcessedCampaign);
   if (!processedCampaign || !id) {
     return [undefined, processedCampaign, processedCampaignError];
   }
+
   return [find(
     processedCampaign.scenarios,
     scenario => scenario.scenarioGuide.id === id

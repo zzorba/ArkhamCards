@@ -72,11 +72,13 @@ export default function DeckPickerStyleButton({
       onPress={onPress}
       disabled={!editable}
       style={[
-        space.paddingSideS,
-        space.paddingTopS,
         first ? styles.roundTop : undefined,
         last ? styles.roundBottom : undefined,
         { backgroundColor: theme === 'light' ? colors.L20 : colors.D20 },
+      ]}
+      contentStyle={[
+        space.paddingSideS,
+        space.paddingTopS,
       ]}
       rippleColor={theme === 'light' ? colors.L30 : colors.D10}
     >

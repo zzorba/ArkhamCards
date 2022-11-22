@@ -12,7 +12,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 
@@ -22,6 +22,7 @@ interface SpecialCardCounts {
   versatile: number;
   onYourOwn: number;
   underworldSupport: number;
+  underworldMarket: number;
   forcedLearning: number;
 }
 
@@ -71,6 +72,7 @@ export default class DeckValidation {
       versatile: this.slots[VERSATILE_CODE] || 0,
       onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
+      underworldMarket: this.slots[UNDERWORLD_MARKET_CODE] || 0,
       forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
     };
   }
@@ -80,14 +82,16 @@ export default class DeckValidation {
     const specialCards = this.specialCardCounts();
     var size: number = 30;
     if (this.investigator.deck_requirements) {
-      if (this.meta && this.meta.deck_size_selected) {
-        size = parseInt(this.meta.deck_size_selected, 10);
-      } else if (this.investigator.deck_requirements.size) {
+      if (this.investigator.deck_requirements.size) {
         size = this.investigator.deck_requirements.size;
+      }
+      if (this.meta && this.meta.deck_size_selected && deckOptions.find(option => option.deck_size_select?.length)) {
+        size = parseInt(this.meta.deck_size_selected, 10);
       }
     }
     return size
       + (5 * (specialCards.versatile + specialCards.ancestralKnowledge + (specialCards.forcedLearning * 3)))
+      + (10 * specialCards.underworldMarket) +
       + sumBy(deckOptions, o => o.size || 0)
       - (5 * specialCards.underworldSupport);
   }
@@ -117,6 +121,17 @@ export default class DeckValidation {
       groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
       group => {
         const card = group[0];
+        if (!(
+          card.restrictions_investigator ||
+          card.xp === undefined ||
+          card.xp === null
+        ) && specialCards.underworldSupport > 0) {
+          return {
+            nb_copies: group.length,
+            deck_limit: 1,
+          };
+        }
+        const isPreciousMemento = card.code === PRECIOUS_MEMENTO_FORMER_CODE || card.code === PRECIOUS_MEMENTO_FUTURE_CODE;
         const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
         // Let's assume if one is myriad, then they all are.
         const deck_limit = (card && card.myriad) ? 3 : (
@@ -124,17 +139,9 @@ export default class DeckValidation {
           (smallestDeckLimitCard && smallestDeckLimitCard.deck_limit) || 0
         );
 
-        if (!card.restrictions_investigator && specialCards.underworldSupport > 0) {
-          return {
-            nb_copies: group.length,
-            deck_limit: 1,
-          };
-        }
-        const isPreciousMemories = card.code === '08114' || card.code === '08115';
-
         return {
           nb_copies: group.length,
-          deck_limit: isPreciousMemories ? 2 : deck_limit,
+          deck_limit: isPreciousMemento ? 2 : deck_limit,
         };
       });
   }
@@ -161,6 +168,7 @@ export default class DeckValidation {
       if (card.deck_requirements.card) {
         if (find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
+          !find(cards, theCard => theCard.alternate_required_code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
         )) {
           return INVESTIGATOR_PROBLEM;
@@ -500,21 +508,21 @@ export default class DeckValidation {
           }
         }
 
-        if (option.text && option.text.length) {
-          var text_valid = false;
-          for(var j = 0; j < option.text.length; j++){
-            var text = option.text[j];
-            if (card.real_text && card.real_text.toLowerCase().match(text)){
-              text_valid = true;
+        if (option.tag && option.tag.length) {
+          var tag_valid = false;
+          for(var j = 0; j < option.tag.length; j++){
+            var tag = option.tag[j];
+            if (find(card.tags, t => t === tag)) {
+              tag_valid = true;
             }
             if (card.customization_options && this.all_customizations) {
               // Permissive mode
-              if (find(card.customization_options, o => o.real_text && o.real_text.toLowerCase().match(text))){
-                text_valid = true;
+              if (find(card.customization_options, o => !!find(o.tags, t => t === tag))){
+                tag_valid = true;
               }
             }
           }
-          if (!text_valid) {
+          if (!tag_valid) {
             continue;
           }
         }

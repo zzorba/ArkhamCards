@@ -170,22 +170,64 @@ export default function(
       };
     }
     const currentSlots = getCurrentSlots(currentEdits, action.countType);
+    const updatedEdits = { ...currentEdits };
+
     switch (action.operation) {
-      case 'set':
+      case 'set': {
         currentSlots[action.code] = action.value;
+        switch (action.countType) {
+          case 'ignoreDeckLimitSlots':
+            if (currentSlots[action.code] > (currentEdits.slots[action.code] || 0)) {
+              updatedEdits.slots = {
+                ...currentEdits.slots,
+                [action.code]: currentSlots[action.code],
+              };
+            }
+            break;
+          case 'slots':
+            if (currentSlots[action.code] < (currentEdits.ignoreDeckLimitSlots[action.code] || 0)) {
+              updatedEdits.ignoreDeckLimitSlots = {
+                ...currentEdits.ignoreDeckLimitSlots,
+                [action.code]: currentSlots[action.code],
+              };
+            }
+            break;
+        }
         break;
-      case 'dec':
+      }
+      case 'dec': {
         currentSlots[action.code] = Math.max((currentSlots[action.code] || 0) - 1, 0);
+        switch (action.countType) {
+          case 'slots':
+            if (currentSlots[action.code] < (currentEdits.ignoreDeckLimitSlots[action.code] || 0)) {
+              updatedEdits.ignoreDeckLimitSlots = {
+                ...currentEdits.ignoreDeckLimitSlots,
+                [action.code]: currentSlots[action.code],
+              };
+            }
+            break;
+        }
         break;
-      case 'inc':
+      }
+      case 'inc': {
         currentSlots[action.code] = Math.min((currentSlots[action.code] || 0) + 1, action.limit || 2);
+        switch (action.countType) {
+          case 'ignoreDeckLimitSlots':
+            if (currentSlots[action.code] > (currentEdits.slots[action.code] || 0)) {
+              updatedEdits.slots = {
+                ...currentEdits.slots,
+                [action.code]: currentSlots[action.code],
+              };
+            }
+            break;
+        }
         break;
+      }
     }
     if (!currentSlots[action.code]) {
       delete currentSlots[action.code];
     }
 
-    const updatedEdits = { ...currentEdits };
     switch (action.countType) {
       case 'slots':
         updatedEdits.slots = currentSlots;

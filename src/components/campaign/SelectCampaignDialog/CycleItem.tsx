@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
 
+import { TouchableShrink } from '@components/core/Touchables';
 import { CampaignCycleCode } from '@actions/types';
 import ItemContent from './ItemContent';
 
@@ -18,9 +18,9 @@ export default function CycleItem({ packCode, text, description, disabled, onPre
 
   if (!disabled) {
     return (
-      <TouchableOpacity onPress={handleOnPress} key={packCode}>
+      <TouchableShrink onPress={handleOnPress} key={packCode}>
         <ItemContent packCode={packCode} text={text} disabled={disabled} description={description} />
-      </TouchableOpacity>
+      </TouchableShrink>
     );
   }
   return <ItemContent packCode={packCode} text={text} disabled={disabled} description={description} />;

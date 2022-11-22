@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {
@@ -11,6 +10,7 @@ import {
   Fade,
 } from 'rn-placeholder';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';

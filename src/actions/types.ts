@@ -2,7 +2,7 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { CardFilterData, FilterState } from '@lib/filters';
 import Card from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 export const SORT_BY_TYPE = 'type';
@@ -16,6 +16,13 @@ export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
 export const SORT_BY_ENCOUNTER_SET = 'encounter_set';
 
+
+export const BROWSE_CARDS = 'BROWSE_CARDS';
+export const BROWSE_DECKS = 'BROWSE_DECKS';
+export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
+export const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
+
+export type StartingTabType = typeof BROWSE_CARDS | typeof BROWSE_DECKS | typeof BROWSE_CAMPAIGNS | typeof BROWSE_SETTINGS;
 export type SortType =
   typeof SORT_BY_TYPE |
   typeof SORT_BY_FACTION |
@@ -176,12 +183,24 @@ export type SlotCounts = {
   [slot in SlotCodeType]?: number;
 }
 
+export interface SpecialDiscount {
+  code: string;
+  available: number;
+  used: number;
+}
+
 export interface DeckChanges {
   added: Slots;
   removed: Slots;
   upgraded: Slots;
   exiled: Slots;
+  customized: Slots;
   spentXp: number;
+  specialDiscounts: {
+    usedFreeCards: number;
+    totalFreeCards: number;
+    cards: SpecialDiscount[];
+  };
 }
 
 export interface CardId {
@@ -189,6 +208,7 @@ export interface CardId {
   quantity: number;
   invalid: boolean;
   limited: boolean;
+  ignoreCount?: boolean;
 }
 
 export interface AssetGroup {
@@ -241,6 +261,7 @@ export interface ParsedDeck {
   changes?: DeckChanges;
   problem?: DeckProblem;
   limitedSlots: boolean;
+  customContent: boolean;
 }
 
 export interface Pack {
@@ -249,10 +270,10 @@ export interface Pack {
   code: string;
   position: number;
   cycle_position: number;
-  available: string;
+  available?: string;
   known: number;
   total: number;
-  url: string;
+  url?: string;
 }
 
 export interface Trauma {
@@ -336,6 +357,7 @@ export interface ChaosBagResults {
   curseTokens?: number;
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
+  difficulty?: Campaign_Difficulty_Enum;
 }
 
 export interface ScenarioResult {
@@ -393,13 +415,15 @@ export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
 export const EOE = 'eoe';
-export const TSK = 'tsk';
+export const TSK = 'tskc';
 export const GOB = 'gob';
+export const FOF = 'fof';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
+export const CYCLOPEAN_FOUNDATIONS = 'zcf';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -420,8 +444,10 @@ export type CampaignCycleCode =
   typeof EOE |
   typeof TSK |
   typeof GOB |
+  typeof FOF |
   typeof STANDALONE |
   typeof DARK_MATTER |
+  typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
   typeof CALL_OF_THE_PLAGUEBEARER;
@@ -442,13 +468,18 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
+  // TSK,
+];
+export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,
+  FOF,
 ];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -468,15 +499,19 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
   EOE,
   GOB,
+  FOF,
   ALICE_IN_WONDERLAND,
   DARK_MATTER,
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
+  // TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER,
+  CYCLOPEAN_FOUNDATIONS,
 ]);
 
 export interface CustomCampaignLog {
@@ -609,17 +644,31 @@ export const SET_TABOO_SET = 'SET_TABOO_SET';
 export interface SetTabooSetAction {
   type: typeof SET_TABOO_SET;
   tabooId?: number;
+  currentTabooId?: number;
+  useCurrentTabooSet?: boolean;
+}
+
+export const SET_CURRENT_TABOO_SET = 'SET_CURRENT_TABOO_SET';
+export interface SetCurrentTabooSetAction {
+  type: typeof SET_CURRENT_TABOO_SET;
+  tabooId?: number;
 }
 
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 
 export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
-export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'draft_from_collection' | 'low_memory';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'map_list' | 'draft_from_collection' | 'low_memory';
 export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
   setting: MiscSetting;
   value: boolean;
+}
+
+export const CHANGE_TAB = 'CHANGE_TAB';
+export interface ChangeTabAction {
+  type: typeof CHANGE_TAB;
+  tab: StartingTabType;
 }
 
 export const SET_PLAYBACK_RATE = 'SET_PLAYBACK_RATE';
@@ -646,9 +695,17 @@ export interface PacksAvailableAction {
   lastModified?: string;
 }
 
+export const CUSTOM_PACKS_AVAILABLE = 'CUSTOM_PACKS_AVAILABLE';
+export interface CustomPacksAvailableAction {
+  type: typeof CUSTOM_PACKS_AVAILABLE;
+  packs: Pack[];
+  lang: string;
+}
+
 export interface CardCache {
   cardCount: number;
   lastModified?: string;
+  lastModifiedTranslation?: string;
 }
 
 export interface TabooCache {
@@ -1032,20 +1089,11 @@ export interface CampaignRemoveInvestigatorAction {
   now: Date;
 }
 
-export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
-export interface AddCampaignScenarioResultAction {
-  type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
+export const SET_CAMPAIGN_NOTES = 'SET_CAMPAIGN_NOTES';
+export interface SetCampaignNotesAction {
+  type: typeof SET_CAMPAIGN_NOTES;
   campaignId: CampaignId;
-  scenarioResult: ScenarioResult;
-  campaignNotes?: CampaignNotes;
-  now: Date;
-}
-export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
-export interface EditCampaignScenarioResultAction {
-  type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
-  campaignId: CampaignId;
-  index: number;
-  scenarioResult: ScenarioResult;
+  campaignNotes: CampaignNotes;
   now: Date;
 }
 export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
@@ -1169,6 +1217,7 @@ export interface DelayedDeckEdits {
   ignoreStoryCounts: Slots;
   exileCounts: Slots;
   resolved?: boolean;
+  type?: 'save';
 }
 
 export interface GuideNumberChoicesInput extends BasicInput {
@@ -1203,9 +1252,19 @@ export interface GuideChoiceInput extends BasicInput {
   choice: number;
 }
 
+export interface EmbarkData {
+  previousScenarioId: string;
+  departure?: string;
+  destination: string;
+  time: number;
+  nextScenario: string;
+  fast: boolean;
+}
+
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
   step: undefined;
+  embarkData?: EmbarkData;
 }
 
 export interface GuideInterScenarioInput extends BasicInput {
@@ -1220,6 +1279,7 @@ interface StartSideScenarioInput extends BasicInput {
   scenario: string;
   previousScenarioId: string;
   step: undefined;
+  embarkData?: EmbarkData;
 }
 export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
   sideScenarioType: 'official';
@@ -1384,6 +1444,7 @@ export type PacksActions =
   PacksFetchErrorAction |
   PacksCacheHitAction |
   PacksAvailableAction |
+  CustomPacksAvailableAction |
   SyncInCollectionAction |
   SyncPackSpoilerAction |
   SetPackDraftAction |
@@ -1446,11 +1507,10 @@ export type CampaignActions =
   UpdateCampaignXpAction |
   UpdateCampaignTraumaAction |
   DeleteCampaignAction |
-  AddCampaignScenarioResultAction |
-  EditCampaignScenarioResultAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
+  SetCampaignNotesAction |
   AdjustBlessCurseAction |
   EnsureUuidAction |
   ReduxMigrationAction;

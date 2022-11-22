@@ -1,10 +1,8 @@
 import React, { useCallback, useContext } from 'react';
-import {
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { CampaignId, ScenarioResult } from '@actions/types';
 import { Scenario } from '../constants';
 import { EditScenarioResultProps } from '../EditScenarioResultView';

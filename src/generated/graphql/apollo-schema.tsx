@@ -13,6 +13,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  bigint: any;
   jsonb: any;
   timestamp: any;
   timestamptz: any;
@@ -75,6 +76,2541 @@ export type String_Comparison_Exp = {
   _regex?: InputMaybe<Scalars['String']>;
   /** does the column match the given SQL regular expression */
   _similar?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "all_card" */
+export type All_Card = {
+  __typename?: 'all_card';
+  alt_art_investigator?: Maybe<Scalars['Boolean']>;
+  alternate_of_code?: Maybe<Scalars['String']>;
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link_id?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  clues_fixed?: Maybe<Scalars['Boolean']>;
+  code: Scalars['String'];
+  cost?: Maybe<Scalars['Int']>;
+  customization_options?: Maybe<Scalars['jsonb']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  deck_options?: Maybe<Scalars['jsonb']>;
+  deck_requirements?: Maybe<Scalars['jsonb']>;
+  doom?: Maybe<Scalars['Int']>;
+  double_sided?: Maybe<Scalars['Boolean']>;
+  duplicate_of_code?: Maybe<Scalars['String']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  /** An array relationship */
+  encounter_sets: Array<Card_Encounter_Set>;
+  /** An aggregate relationship */
+  encounter_sets_aggregate: Card_Encounter_Set_Aggregate;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  errata_date?: Maybe<Scalars['String']>;
+  exceptional?: Maybe<Scalars['Boolean']>;
+  exile?: Maybe<Scalars['Boolean']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code: Scalars['String'];
+  gender?: Maybe<Gender_Enum>;
+  heals_damage?: Maybe<Scalars['Boolean']>;
+  heals_horror?: Maybe<Scalars['Boolean']>;
+  health?: Maybe<Scalars['Int']>;
+  health_per_investigator?: Maybe<Scalars['Boolean']>;
+  hidden?: Maybe<Scalars['Boolean']>;
+  id: Scalars['String'];
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  imageurl?: Maybe<Scalars['String']>;
+  is_unique?: Maybe<Scalars['Boolean']>;
+  linked?: Maybe<Scalars['Boolean']>;
+  /** An object relationship */
+  linked_card?: Maybe<All_Card>;
+  myriad?: Maybe<Scalars['Boolean']>;
+  official: Scalars['Boolean'];
+  /** An object relationship */
+  pack: Pack;
+  pack_code: Scalars['String'];
+  pack_position: Scalars['Int'];
+  /** An array relationship */
+  packs: Array<Card_Pack>;
+  /** An aggregate relationship */
+  packs_aggregate: Card_Pack_Aggregate;
+  permanent?: Maybe<Scalars['Boolean']>;
+  position: Scalars['Int'];
+  preview?: Maybe<Scalars['Boolean']>;
+  quantity: Scalars['Int'];
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_customization_change?: Maybe<Scalars['String']>;
+  real_customization_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name: Scalars['String'];
+  real_pack_name: Scalars['String'];
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_taboo_text_change?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<Scalars['jsonb']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  spoiler?: Maybe<Scalars['Boolean']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  taboo_placeholder?: Maybe<Scalars['Boolean']>;
+  /** An object relationship */
+  taboo_set?: Maybe<Taboo_Set>;
+  taboo_set_id?: Maybe<Scalars['Int']>;
+  taboo_xp?: Maybe<Scalars['Int']>;
+  tags?: Maybe<Scalars['jsonb']>;
+  /** An array relationship */
+  translations: Array<All_Card_Text>;
+  /** An aggregate relationship */
+  translations_aggregate: All_Card_Text_Aggregate;
+  /** An object relationship */
+  type: Card_Type_Code;
+  type_code: Card_Type_Code_Enum;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version: Scalars['Int'];
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardCustomization_OptionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardDeck_OptionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardDeck_RequirementsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardEncounter_SetsArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardEncounter_Sets_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Encounter_Set_Order_By>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardPacksArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardPacks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardRestrictionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardTagsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardTranslationsArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+/** columns and relationships of "all_card" */
+export type All_CardTranslations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+/** aggregated selection of "all_card" */
+export type All_Card_Aggregate = {
+  __typename?: 'all_card_aggregate';
+  aggregate?: Maybe<All_Card_Aggregate_Fields>;
+  nodes: Array<All_Card>;
+};
+
+/** aggregate fields of "all_card" */
+export type All_Card_Aggregate_Fields = {
+  __typename?: 'all_card_aggregate_fields';
+  avg?: Maybe<All_Card_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<All_Card_Max_Fields>;
+  min?: Maybe<All_Card_Min_Fields>;
+  stddev?: Maybe<All_Card_Stddev_Fields>;
+  stddev_pop?: Maybe<All_Card_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<All_Card_Stddev_Samp_Fields>;
+  sum?: Maybe<All_Card_Sum_Fields>;
+  var_pop?: Maybe<All_Card_Var_Pop_Fields>;
+  var_samp?: Maybe<All_Card_Var_Samp_Fields>;
+  variance?: Maybe<All_Card_Variance_Fields>;
+};
+
+
+/** aggregate fields of "all_card" */
+export type All_Card_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<All_Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "all_card" */
+export type All_Card_Aggregate_Order_By = {
+  avg?: InputMaybe<All_Card_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<All_Card_Max_Order_By>;
+  min?: InputMaybe<All_Card_Min_Order_By>;
+  stddev?: InputMaybe<All_Card_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<All_Card_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<All_Card_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<All_Card_Sum_Order_By>;
+  var_pop?: InputMaybe<All_Card_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<All_Card_Var_Samp_Order_By>;
+  variance?: InputMaybe<All_Card_Variance_Order_By>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type All_Card_Append_Input = {
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** input type for inserting array relation for remote table "all_card" */
+export type All_Card_Arr_Rel_Insert_Input = {
+  data: Array<All_Card_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<All_Card_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type All_Card_Avg_Fields = {
+  __typename?: 'all_card_avg_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "all_card" */
+export type All_Card_Avg_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "all_card". All fields are combined with a logical 'AND'. */
+export type All_Card_Bool_Exp = {
+  _and?: InputMaybe<Array<All_Card_Bool_Exp>>;
+  _not?: InputMaybe<All_Card_Bool_Exp>;
+  _or?: InputMaybe<Array<All_Card_Bool_Exp>>;
+  alt_art_investigator?: InputMaybe<Boolean_Comparison_Exp>;
+  alternate_of_code?: InputMaybe<String_Comparison_Exp>;
+  alternate_required_code?: InputMaybe<String_Comparison_Exp>;
+  back_link_id?: InputMaybe<String_Comparison_Exp>;
+  backimagesrc?: InputMaybe<String_Comparison_Exp>;
+  backimageurl?: InputMaybe<String_Comparison_Exp>;
+  clues?: InputMaybe<Int_Comparison_Exp>;
+  clues_fixed?: InputMaybe<Boolean_Comparison_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  cost?: InputMaybe<Int_Comparison_Exp>;
+  customization_options?: InputMaybe<Jsonb_Comparison_Exp>;
+  deck_limit?: InputMaybe<Int_Comparison_Exp>;
+  deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
+  deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  doom?: InputMaybe<Int_Comparison_Exp>;
+  double_sided?: InputMaybe<Boolean_Comparison_Exp>;
+  duplicate_of_code?: InputMaybe<String_Comparison_Exp>;
+  encounter_code?: InputMaybe<String_Comparison_Exp>;
+  encounter_position?: InputMaybe<Int_Comparison_Exp>;
+  encounter_sets?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  enemy_damage?: InputMaybe<Int_Comparison_Exp>;
+  enemy_evade?: InputMaybe<Int_Comparison_Exp>;
+  enemy_fight?: InputMaybe<Int_Comparison_Exp>;
+  enemy_horror?: InputMaybe<Int_Comparison_Exp>;
+  errata_date?: InputMaybe<String_Comparison_Exp>;
+  exceptional?: InputMaybe<Boolean_Comparison_Exp>;
+  exile?: InputMaybe<Boolean_Comparison_Exp>;
+  faction2_code?: InputMaybe<String_Comparison_Exp>;
+  faction3_code?: InputMaybe<String_Comparison_Exp>;
+  faction_code?: InputMaybe<String_Comparison_Exp>;
+  gender?: InputMaybe<Gender_Enum_Comparison_Exp>;
+  heals_damage?: InputMaybe<Boolean_Comparison_Exp>;
+  heals_horror?: InputMaybe<Boolean_Comparison_Exp>;
+  health?: InputMaybe<Int_Comparison_Exp>;
+  health_per_investigator?: InputMaybe<Boolean_Comparison_Exp>;
+  hidden?: InputMaybe<Boolean_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  illustrator?: InputMaybe<String_Comparison_Exp>;
+  imagesrc?: InputMaybe<String_Comparison_Exp>;
+  imageurl?: InputMaybe<String_Comparison_Exp>;
+  is_unique?: InputMaybe<Boolean_Comparison_Exp>;
+  linked?: InputMaybe<Boolean_Comparison_Exp>;
+  linked_card?: InputMaybe<All_Card_Bool_Exp>;
+  myriad?: InputMaybe<Boolean_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
+  pack?: InputMaybe<Pack_Bool_Exp>;
+  pack_code?: InputMaybe<String_Comparison_Exp>;
+  pack_position?: InputMaybe<Int_Comparison_Exp>;
+  packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  permanent?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  preview?: InputMaybe<Boolean_Comparison_Exp>;
+  quantity?: InputMaybe<Int_Comparison_Exp>;
+  real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_name?: InputMaybe<String_Comparison_Exp>;
+  real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_customization_change?: InputMaybe<String_Comparison_Exp>;
+  real_customization_text?: InputMaybe<String_Comparison_Exp>;
+  real_encounter_set_name?: InputMaybe<String_Comparison_Exp>;
+  real_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  real_pack_name?: InputMaybe<String_Comparison_Exp>;
+  real_slot?: InputMaybe<String_Comparison_Exp>;
+  real_subname?: InputMaybe<String_Comparison_Exp>;
+  real_taboo_text_change?: InputMaybe<String_Comparison_Exp>;
+  real_text?: InputMaybe<String_Comparison_Exp>;
+  real_traits?: InputMaybe<String_Comparison_Exp>;
+  restrictions?: InputMaybe<Jsonb_Comparison_Exp>;
+  sanity?: InputMaybe<Int_Comparison_Exp>;
+  shroud?: InputMaybe<Int_Comparison_Exp>;
+  skill_agility?: InputMaybe<Int_Comparison_Exp>;
+  skill_combat?: InputMaybe<Int_Comparison_Exp>;
+  skill_intellect?: InputMaybe<Int_Comparison_Exp>;
+  skill_wild?: InputMaybe<Int_Comparison_Exp>;
+  skill_willpower?: InputMaybe<Int_Comparison_Exp>;
+  spoiler?: InputMaybe<Boolean_Comparison_Exp>;
+  stage?: InputMaybe<Int_Comparison_Exp>;
+  subtype_code?: InputMaybe<String_Comparison_Exp>;
+  taboo_placeholder?: InputMaybe<Boolean_Comparison_Exp>;
+  taboo_set?: InputMaybe<Taboo_Set_Bool_Exp>;
+  taboo_set_id?: InputMaybe<Int_Comparison_Exp>;
+  taboo_xp?: InputMaybe<Int_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
+  translations?: InputMaybe<All_Card_Text_Bool_Exp>;
+  type?: InputMaybe<Card_Type_Code_Bool_Exp>;
+  type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  vengeance?: InputMaybe<Int_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
+  victory?: InputMaybe<Int_Comparison_Exp>;
+  xp?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "all_card" */
+export enum All_Card_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  AllCardIdKey = 'all_card_id_key',
+  /** unique or primary key constraint on columns "id" */
+  AllCardPkey = 'all_card_pkey'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type All_Card_Delete_At_Path_Input = {
+  customization_options?: InputMaybe<Array<Scalars['String']>>;
+  deck_options?: InputMaybe<Array<Scalars['String']>>;
+  deck_requirements?: InputMaybe<Array<Scalars['String']>>;
+  restrictions?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type All_Card_Delete_Elem_Input = {
+  customization_options?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['Int']>;
+  deck_requirements?: InputMaybe<Scalars['Int']>;
+  restrictions?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type All_Card_Delete_Key_Input = {
+  customization_options?: InputMaybe<Scalars['String']>;
+  deck_options?: InputMaybe<Scalars['String']>;
+  deck_requirements?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['String']>;
+  tags?: InputMaybe<Scalars['String']>;
+};
+
+/** input type for incrementing numeric columns in table "all_card" */
+export type All_Card_Inc_Input = {
+  clues?: InputMaybe<Scalars['Int']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  health?: InputMaybe<Scalars['Int']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  taboo_set_id?: InputMaybe<Scalars['Int']>;
+  taboo_xp?: InputMaybe<Scalars['Int']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "all_card" */
+export type All_Card_Insert_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
+  alternate_of_code?: InputMaybe<Scalars['String']>;
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link_id?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  duplicate_of_code?: InputMaybe<Scalars['String']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  encounter_sets?: InputMaybe<Card_Encounter_Set_Arr_Rel_Insert_Input>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  errata_date?: InputMaybe<Scalars['String']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
+  heals_damage?: InputMaybe<Scalars['Boolean']>;
+  heals_horror?: InputMaybe<Scalars['Boolean']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  linked?: InputMaybe<Scalars['Boolean']>;
+  linked_card?: InputMaybe<All_Card_Obj_Rel_Insert_Input>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  pack?: InputMaybe<Pack_Obj_Rel_Insert_Input>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  packs?: InputMaybe<Card_Pack_Arr_Rel_Insert_Input>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_customization_change?: InputMaybe<Scalars['String']>;
+  real_customization_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_text_change?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  taboo_placeholder?: InputMaybe<Scalars['Boolean']>;
+  taboo_set?: InputMaybe<Taboo_Set_Obj_Rel_Insert_Input>;
+  taboo_set_id?: InputMaybe<Scalars['Int']>;
+  taboo_xp?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  translations?: InputMaybe<All_Card_Text_Arr_Rel_Insert_Input>;
+  type?: InputMaybe<Card_Type_Code_Obj_Rel_Insert_Input>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type All_Card_Max_Fields = {
+  __typename?: 'all_card_max_fields';
+  alternate_of_code?: Maybe<Scalars['String']>;
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link_id?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  duplicate_of_code?: Maybe<Scalars['String']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  errata_date?: Maybe<Scalars['String']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  imageurl?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_customization_change?: Maybe<Scalars['String']>;
+  real_customization_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_taboo_text_change?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  taboo_set_id?: Maybe<Scalars['Int']>;
+  taboo_xp?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "all_card" */
+export type All_Card_Max_Order_By = {
+  alternate_of_code?: InputMaybe<Order_By>;
+  alternate_required_code?: InputMaybe<Order_By>;
+  back_link_id?: InputMaybe<Order_By>;
+  backimagesrc?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  duplicate_of_code?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  errata_date?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_customization_change?: InputMaybe<Order_By>;
+  real_customization_text?: InputMaybe<Order_By>;
+  real_encounter_set_name?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_taboo_text_change?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type All_Card_Min_Fields = {
+  __typename?: 'all_card_min_fields';
+  alternate_of_code?: Maybe<Scalars['String']>;
+  alternate_required_code?: Maybe<Scalars['String']>;
+  back_link_id?: Maybe<Scalars['String']>;
+  backimagesrc?: Maybe<Scalars['String']>;
+  backimageurl?: Maybe<Scalars['String']>;
+  clues?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  duplicate_of_code?: Maybe<Scalars['String']>;
+  encounter_code?: Maybe<Scalars['String']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  errata_date?: Maybe<Scalars['String']>;
+  faction2_code?: Maybe<Scalars['String']>;
+  faction3_code?: Maybe<Scalars['String']>;
+  faction_code?: Maybe<Scalars['String']>;
+  health?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
+  illustrator?: Maybe<Scalars['String']>;
+  imagesrc?: Maybe<Scalars['String']>;
+  imageurl?: Maybe<Scalars['String']>;
+  pack_code?: Maybe<Scalars['String']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  real_back_flavor?: Maybe<Scalars['String']>;
+  real_back_name?: Maybe<Scalars['String']>;
+  real_back_text?: Maybe<Scalars['String']>;
+  real_customization_change?: Maybe<Scalars['String']>;
+  real_customization_text?: Maybe<Scalars['String']>;
+  real_encounter_set_name?: Maybe<Scalars['String']>;
+  real_flavor?: Maybe<Scalars['String']>;
+  real_name?: Maybe<Scalars['String']>;
+  real_pack_name?: Maybe<Scalars['String']>;
+  real_slot?: Maybe<Scalars['String']>;
+  real_subname?: Maybe<Scalars['String']>;
+  real_taboo_text_change?: Maybe<Scalars['String']>;
+  real_text?: Maybe<Scalars['String']>;
+  real_traits?: Maybe<Scalars['String']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  subtype_code?: Maybe<Scalars['String']>;
+  taboo_set_id?: Maybe<Scalars['Int']>;
+  taboo_xp?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "all_card" */
+export type All_Card_Min_Order_By = {
+  alternate_of_code?: InputMaybe<Order_By>;
+  alternate_required_code?: InputMaybe<Order_By>;
+  back_link_id?: InputMaybe<Order_By>;
+  backimagesrc?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  duplicate_of_code?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  errata_date?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_customization_change?: InputMaybe<Order_By>;
+  real_customization_text?: InputMaybe<Order_By>;
+  real_encounter_set_name?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_taboo_text_change?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "all_card" */
+export type All_Card_Mutation_Response = {
+  __typename?: 'all_card_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<All_Card>;
+};
+
+/** input type for inserting object relation for remote table "all_card" */
+export type All_Card_Obj_Rel_Insert_Input = {
+  data: All_Card_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<All_Card_On_Conflict>;
+};
+
+/** on_conflict condition type for table "all_card" */
+export type All_Card_On_Conflict = {
+  constraint: All_Card_Constraint;
+  update_columns?: Array<All_Card_Update_Column>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "all_card". */
+export type All_Card_Order_By = {
+  alt_art_investigator?: InputMaybe<Order_By>;
+  alternate_of_code?: InputMaybe<Order_By>;
+  alternate_required_code?: InputMaybe<Order_By>;
+  back_link_id?: InputMaybe<Order_By>;
+  backimagesrc?: InputMaybe<Order_By>;
+  backimageurl?: InputMaybe<Order_By>;
+  clues?: InputMaybe<Order_By>;
+  clues_fixed?: InputMaybe<Order_By>;
+  code?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  customization_options?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  deck_options?: InputMaybe<Order_By>;
+  deck_requirements?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  double_sided?: InputMaybe<Order_By>;
+  duplicate_of_code?: InputMaybe<Order_By>;
+  encounter_code?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  encounter_sets_aggregate?: InputMaybe<Card_Encounter_Set_Aggregate_Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  errata_date?: InputMaybe<Order_By>;
+  exceptional?: InputMaybe<Order_By>;
+  exile?: InputMaybe<Order_By>;
+  faction2_code?: InputMaybe<Order_By>;
+  faction3_code?: InputMaybe<Order_By>;
+  faction_code?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  heals_damage?: InputMaybe<Order_By>;
+  heals_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  health_per_investigator?: InputMaybe<Order_By>;
+  hidden?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  illustrator?: InputMaybe<Order_By>;
+  imagesrc?: InputMaybe<Order_By>;
+  imageurl?: InputMaybe<Order_By>;
+  is_unique?: InputMaybe<Order_By>;
+  linked?: InputMaybe<Order_By>;
+  linked_card?: InputMaybe<All_Card_Order_By>;
+  myriad?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
+  pack?: InputMaybe<Pack_Order_By>;
+  pack_code?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Order_By>;
+  permanent?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  preview?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  real_back_flavor?: InputMaybe<Order_By>;
+  real_back_name?: InputMaybe<Order_By>;
+  real_back_text?: InputMaybe<Order_By>;
+  real_customization_change?: InputMaybe<Order_By>;
+  real_customization_text?: InputMaybe<Order_By>;
+  real_encounter_set_name?: InputMaybe<Order_By>;
+  real_flavor?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  real_pack_name?: InputMaybe<Order_By>;
+  real_slot?: InputMaybe<Order_By>;
+  real_subname?: InputMaybe<Order_By>;
+  real_taboo_text_change?: InputMaybe<Order_By>;
+  real_text?: InputMaybe<Order_By>;
+  real_traits?: InputMaybe<Order_By>;
+  restrictions?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  spoiler?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  subtype_code?: InputMaybe<Order_By>;
+  taboo_placeholder?: InputMaybe<Order_By>;
+  taboo_set?: InputMaybe<Taboo_Set_Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
+  translations_aggregate?: InputMaybe<All_Card_Text_Aggregate_Order_By>;
+  type?: InputMaybe<Card_Type_Code_Order_By>;
+  type_code?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: all_card */
+export type All_Card_Pk_Columns_Input = {
+  id: Scalars['String'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type All_Card_Prepend_Input = {
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "all_card" */
+export enum All_Card_Select_Column {
+  /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
+  /** column name */
+  AlternateOfCode = 'alternate_of_code',
+  /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackLinkId = 'back_link_id',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Backimageurl = 'backimageurl',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  CustomizationOptions = 'customization_options',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  DuplicateOfCode = 'duplicate_of_code',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  ErrataDate = 'errata_date',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Gender = 'gender',
+  /** column name */
+  HealsDamage = 'heals_damage',
+  /** column name */
+  HealsHorror = 'heals_horror',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Imageurl = 'imageurl',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Linked = 'linked',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Preview = 'preview',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealCustomizationChange = 'real_customization_change',
+  /** column name */
+  RealCustomizationText = 'real_customization_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealTabooTextChange = 'real_taboo_text_change',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Spoiler = 'spoiler',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TabooPlaceholder = 'taboo_placeholder',
+  /** column name */
+  TabooSetId = 'taboo_set_id',
+  /** column name */
+  TabooXp = 'taboo_xp',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
+}
+
+/** input type for updating data in table "all_card" */
+export type All_Card_Set_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
+  alternate_of_code?: InputMaybe<Scalars['String']>;
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link_id?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  duplicate_of_code?: InputMaybe<Scalars['String']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  errata_date?: InputMaybe<Scalars['String']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
+  heals_damage?: InputMaybe<Scalars['Boolean']>;
+  heals_horror?: InputMaybe<Scalars['Boolean']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  linked?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_customization_change?: InputMaybe<Scalars['String']>;
+  real_customization_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_text_change?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  taboo_placeholder?: InputMaybe<Scalars['Boolean']>;
+  taboo_set_id?: InputMaybe<Scalars['Int']>;
+  taboo_xp?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type All_Card_Stddev_Fields = {
+  __typename?: 'all_card_stddev_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "all_card" */
+export type All_Card_Stddev_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type All_Card_Stddev_Pop_Fields = {
+  __typename?: 'all_card_stddev_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "all_card" */
+export type All_Card_Stddev_Pop_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type All_Card_Stddev_Samp_Fields = {
+  __typename?: 'all_card_stddev_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "all_card" */
+export type All_Card_Stddev_Samp_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "all_card" */
+export type All_Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Stream_Cursor_Value_Input = {
+  alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
+  alternate_of_code?: InputMaybe<Scalars['String']>;
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link_id?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  backimageurl?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  customization_options?: InputMaybe<Scalars['jsonb']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  duplicate_of_code?: InputMaybe<Scalars['String']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  errata_date?: InputMaybe<Scalars['String']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Gender_Enum>;
+  heals_damage?: InputMaybe<Scalars['Boolean']>;
+  heals_horror?: InputMaybe<Scalars['Boolean']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  imageurl?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  linked?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_customization_change?: InputMaybe<Scalars['String']>;
+  real_customization_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_taboo_text_change?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  taboo_placeholder?: InputMaybe<Scalars['Boolean']>;
+  taboo_set_id?: InputMaybe<Scalars['Int']>;
+  taboo_xp?: InputMaybe<Scalars['Int']>;
+  tags?: InputMaybe<Scalars['jsonb']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate sum on columns */
+export type All_Card_Sum_Fields = {
+  __typename?: 'all_card_sum_fields';
+  clues?: Maybe<Scalars['Int']>;
+  cost?: Maybe<Scalars['Int']>;
+  deck_limit?: Maybe<Scalars['Int']>;
+  doom?: Maybe<Scalars['Int']>;
+  encounter_position?: Maybe<Scalars['Int']>;
+  enemy_damage?: Maybe<Scalars['Int']>;
+  enemy_evade?: Maybe<Scalars['Int']>;
+  enemy_fight?: Maybe<Scalars['Int']>;
+  enemy_horror?: Maybe<Scalars['Int']>;
+  health?: Maybe<Scalars['Int']>;
+  pack_position?: Maybe<Scalars['Int']>;
+  position?: Maybe<Scalars['Int']>;
+  quantity?: Maybe<Scalars['Int']>;
+  sanity?: Maybe<Scalars['Int']>;
+  shroud?: Maybe<Scalars['Int']>;
+  skill_agility?: Maybe<Scalars['Int']>;
+  skill_combat?: Maybe<Scalars['Int']>;
+  skill_intellect?: Maybe<Scalars['Int']>;
+  skill_wild?: Maybe<Scalars['Int']>;
+  skill_willpower?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Scalars['Int']>;
+  taboo_set_id?: Maybe<Scalars['Int']>;
+  taboo_xp?: Maybe<Scalars['Int']>;
+  vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
+  victory?: Maybe<Scalars['Int']>;
+  xp?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "all_card" */
+export type All_Card_Sum_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** columns and relationships of "all_card_text" */
+export type All_Card_Text = {
+  __typename?: 'all_card_text';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  customization_change?: Maybe<Scalars['String']>;
+  customization_text?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  taboo_text_change?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregated selection of "all_card_text" */
+export type All_Card_Text_Aggregate = {
+  __typename?: 'all_card_text_aggregate';
+  aggregate?: Maybe<All_Card_Text_Aggregate_Fields>;
+  nodes: Array<All_Card_Text>;
+};
+
+/** aggregate fields of "all_card_text" */
+export type All_Card_Text_Aggregate_Fields = {
+  __typename?: 'all_card_text_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<All_Card_Text_Max_Fields>;
+  min?: Maybe<All_Card_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "all_card_text" */
+export type All_Card_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "all_card_text" */
+export type All_Card_Text_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<All_Card_Text_Max_Order_By>;
+  min?: InputMaybe<All_Card_Text_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "all_card_text" */
+export type All_Card_Text_Arr_Rel_Insert_Input = {
+  data: Array<All_Card_Text_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<All_Card_Text_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "all_card_text". All fields are combined with a logical 'AND'. */
+export type All_Card_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<All_Card_Text_Bool_Exp>>;
+  _not?: InputMaybe<All_Card_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<All_Card_Text_Bool_Exp>>;
+  back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_name?: InputMaybe<String_Comparison_Exp>;
+  back_text?: InputMaybe<String_Comparison_Exp>;
+  customization_change?: InputMaybe<String_Comparison_Exp>;
+  customization_text?: InputMaybe<String_Comparison_Exp>;
+  encounter_name?: InputMaybe<String_Comparison_Exp>;
+  flavor?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  slot?: InputMaybe<String_Comparison_Exp>;
+  subname?: InputMaybe<String_Comparison_Exp>;
+  taboo_text_change?: InputMaybe<String_Comparison_Exp>;
+  text?: InputMaybe<String_Comparison_Exp>;
+  traits?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "all_card_text" */
+export enum All_Card_Text_Constraint {
+  /** unique or primary key constraint on columns "locale", "id" */
+  AllCardTextPkey = 'all_card_text_pkey'
+}
+
+/** input type for inserting data into table "all_card_text" */
+export type All_Card_Text_Insert_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  customization_change?: InputMaybe<Scalars['String']>;
+  customization_text?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  taboo_text_change?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type All_Card_Text_Max_Fields = {
+  __typename?: 'all_card_text_max_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  customization_change?: Maybe<Scalars['String']>;
+  customization_text?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  taboo_text_change?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "all_card_text" */
+export type All_Card_Text_Max_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  customization_change?: InputMaybe<Order_By>;
+  customization_text?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  taboo_text_change?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type All_Card_Text_Min_Fields = {
+  __typename?: 'all_card_text_min_fields';
+  back_flavor?: Maybe<Scalars['String']>;
+  back_name?: Maybe<Scalars['String']>;
+  back_text?: Maybe<Scalars['String']>;
+  customization_change?: Maybe<Scalars['String']>;
+  customization_text?: Maybe<Scalars['String']>;
+  encounter_name?: Maybe<Scalars['String']>;
+  flavor?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['String']>;
+  subname?: Maybe<Scalars['String']>;
+  taboo_text_change?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  traits?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "all_card_text" */
+export type All_Card_Text_Min_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  customization_change?: InputMaybe<Order_By>;
+  customization_text?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  taboo_text_change?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "all_card_text" */
+export type All_Card_Text_Mutation_Response = {
+  __typename?: 'all_card_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<All_Card_Text>;
+};
+
+/** on_conflict condition type for table "all_card_text" */
+export type All_Card_Text_On_Conflict = {
+  constraint: All_Card_Text_Constraint;
+  update_columns?: Array<All_Card_Text_Update_Column>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "all_card_text". */
+export type All_Card_Text_Order_By = {
+  back_flavor?: InputMaybe<Order_By>;
+  back_name?: InputMaybe<Order_By>;
+  back_text?: InputMaybe<Order_By>;
+  customization_change?: InputMaybe<Order_By>;
+  customization_text?: InputMaybe<Order_By>;
+  encounter_name?: InputMaybe<Order_By>;
+  flavor?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  slot?: InputMaybe<Order_By>;
+  subname?: InputMaybe<Order_By>;
+  taboo_text_change?: InputMaybe<Order_By>;
+  text?: InputMaybe<Order_By>;
+  traits?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: all_card_text */
+export type All_Card_Text_Pk_Columns_Input = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "all_card_text" */
+export enum All_Card_Text_Select_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  CustomizationChange = 'customization_change',
+  /** column name */
+  CustomizationText = 'customization_text',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  TabooTextChange = 'taboo_text_change',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "all_card_text" */
+export type All_Card_Text_Set_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  customization_change?: InputMaybe<Scalars['String']>;
+  customization_text?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  taboo_text_change?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** Streaming cursor of the table "all_card_text" */
+export type All_Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  customization_change?: InputMaybe<Scalars['String']>;
+  customization_text?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  taboo_text_change?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "all_card_text" */
+export enum All_Card_Text_Update_Column {
+  /** column name */
+  BackFlavor = 'back_flavor',
+  /** column name */
+  BackName = 'back_name',
+  /** column name */
+  BackText = 'back_text',
+  /** column name */
+  CustomizationChange = 'customization_change',
+  /** column name */
+  CustomizationText = 'customization_text',
+  /** column name */
+  EncounterName = 'encounter_name',
+  /** column name */
+  Flavor = 'flavor',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  Subname = 'subname',
+  /** column name */
+  TabooTextChange = 'taboo_text_change',
+  /** column name */
+  Text = 'text',
+  /** column name */
+  Traits = 'traits',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type All_Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Text_Set_Input>;
+  where: All_Card_Text_Bool_Exp;
+};
+
+/** update columns of table "all_card" */
+export enum All_Card_Update_Column {
+  /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
+  /** column name */
+  AlternateOfCode = 'alternate_of_code',
+  /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackLinkId = 'back_link_id',
+  /** column name */
+  Backimagesrc = 'backimagesrc',
+  /** column name */
+  Backimageurl = 'backimageurl',
+  /** column name */
+  Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Cost = 'cost',
+  /** column name */
+  CustomizationOptions = 'customization_options',
+  /** column name */
+  DeckLimit = 'deck_limit',
+  /** column name */
+  DeckOptions = 'deck_options',
+  /** column name */
+  DeckRequirements = 'deck_requirements',
+  /** column name */
+  Doom = 'doom',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  DuplicateOfCode = 'duplicate_of_code',
+  /** column name */
+  EncounterCode = 'encounter_code',
+  /** column name */
+  EncounterPosition = 'encounter_position',
+  /** column name */
+  EnemyDamage = 'enemy_damage',
+  /** column name */
+  EnemyEvade = 'enemy_evade',
+  /** column name */
+  EnemyFight = 'enemy_fight',
+  /** column name */
+  EnemyHorror = 'enemy_horror',
+  /** column name */
+  ErrataDate = 'errata_date',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  Faction2Code = 'faction2_code',
+  /** column name */
+  Faction3Code = 'faction3_code',
+  /** column name */
+  FactionCode = 'faction_code',
+  /** column name */
+  Gender = 'gender',
+  /** column name */
+  HealsDamage = 'heals_damage',
+  /** column name */
+  HealsHorror = 'heals_horror',
+  /** column name */
+  Health = 'health',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Illustrator = 'illustrator',
+  /** column name */
+  Imagesrc = 'imagesrc',
+  /** column name */
+  Imageurl = 'imageurl',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Linked = 'linked',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  PackCode = 'pack_code',
+  /** column name */
+  PackPosition = 'pack_position',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  Preview = 'preview',
+  /** column name */
+  Quantity = 'quantity',
+  /** column name */
+  RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackName = 'real_back_name',
+  /** column name */
+  RealBackText = 'real_back_text',
+  /** column name */
+  RealCustomizationChange = 'real_customization_change',
+  /** column name */
+  RealCustomizationText = 'real_customization_text',
+  /** column name */
+  RealEncounterSetName = 'real_encounter_set_name',
+  /** column name */
+  RealFlavor = 'real_flavor',
+  /** column name */
+  RealName = 'real_name',
+  /** column name */
+  RealPackName = 'real_pack_name',
+  /** column name */
+  RealSlot = 'real_slot',
+  /** column name */
+  RealSubname = 'real_subname',
+  /** column name */
+  RealTabooTextChange = 'real_taboo_text_change',
+  /** column name */
+  RealText = 'real_text',
+  /** column name */
+  RealTraits = 'real_traits',
+  /** column name */
+  Restrictions = 'restrictions',
+  /** column name */
+  Sanity = 'sanity',
+  /** column name */
+  Shroud = 'shroud',
+  /** column name */
+  SkillAgility = 'skill_agility',
+  /** column name */
+  SkillCombat = 'skill_combat',
+  /** column name */
+  SkillIntellect = 'skill_intellect',
+  /** column name */
+  SkillWild = 'skill_wild',
+  /** column name */
+  SkillWillpower = 'skill_willpower',
+  /** column name */
+  Spoiler = 'spoiler',
+  /** column name */
+  Stage = 'stage',
+  /** column name */
+  SubtypeCode = 'subtype_code',
+  /** column name */
+  TabooPlaceholder = 'taboo_placeholder',
+  /** column name */
+  TabooSetId = 'taboo_set_id',
+  /** column name */
+  TabooXp = 'taboo_xp',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  TypeCode = 'type_code',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  Vengeance = 'vengeance',
+  /** column name */
+  Version = 'version',
+  /** column name */
+  Victory = 'victory',
+  /** column name */
+  Xp = 'xp'
+}
+
+/** columns and relationships of "all_card_updated" */
+export type All_Card_Updated = {
+  __typename?: 'all_card_updated';
+  card_count?: Maybe<Scalars['Int']>;
+  cards_updated_at: Scalars['timestamp'];
+  locale: Scalars['String'];
+  translation_updated_at: Scalars['timestamp'];
+};
+
+/** aggregated selection of "all_card_updated" */
+export type All_Card_Updated_Aggregate = {
+  __typename?: 'all_card_updated_aggregate';
+  aggregate?: Maybe<All_Card_Updated_Aggregate_Fields>;
+  nodes: Array<All_Card_Updated>;
+};
+
+/** aggregate fields of "all_card_updated" */
+export type All_Card_Updated_Aggregate_Fields = {
+  __typename?: 'all_card_updated_aggregate_fields';
+  avg?: Maybe<All_Card_Updated_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<All_Card_Updated_Max_Fields>;
+  min?: Maybe<All_Card_Updated_Min_Fields>;
+  stddev?: Maybe<All_Card_Updated_Stddev_Fields>;
+  stddev_pop?: Maybe<All_Card_Updated_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<All_Card_Updated_Stddev_Samp_Fields>;
+  sum?: Maybe<All_Card_Updated_Sum_Fields>;
+  var_pop?: Maybe<All_Card_Updated_Var_Pop_Fields>;
+  var_samp?: Maybe<All_Card_Updated_Var_Samp_Fields>;
+  variance?: Maybe<All_Card_Updated_Variance_Fields>;
+};
+
+
+/** aggregate fields of "all_card_updated" */
+export type All_Card_Updated_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type All_Card_Updated_Avg_Fields = {
+  __typename?: 'all_card_updated_avg_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "all_card_updated". All fields are combined with a logical 'AND'. */
+export type All_Card_Updated_Bool_Exp = {
+  _and?: InputMaybe<Array<All_Card_Updated_Bool_Exp>>;
+  _not?: InputMaybe<All_Card_Updated_Bool_Exp>;
+  _or?: InputMaybe<Array<All_Card_Updated_Bool_Exp>>;
+  card_count?: InputMaybe<Int_Comparison_Exp>;
+  cards_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  translation_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "all_card_updated" */
+export enum All_Card_Updated_Constraint {
+  /** unique or primary key constraint on columns "locale" */
+  AllCardUpdatedPkey = 'all_card_updated_pkey'
+}
+
+/** input type for incrementing numeric columns in table "all_card_updated" */
+export type All_Card_Updated_Inc_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "all_card_updated" */
+export type All_Card_Updated_Insert_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type All_Card_Updated_Max_Fields = {
+  __typename?: 'all_card_updated_max_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']>;
+  locale?: Maybe<Scalars['String']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregate min on columns */
+export type All_Card_Updated_Min_Fields = {
+  __typename?: 'all_card_updated_min_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']>;
+  locale?: Maybe<Scalars['String']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']>;
+};
+
+/** response of any mutation on the table "all_card_updated" */
+export type All_Card_Updated_Mutation_Response = {
+  __typename?: 'all_card_updated_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<All_Card_Updated>;
+};
+
+/** on_conflict condition type for table "all_card_updated" */
+export type All_Card_Updated_On_Conflict = {
+  constraint: All_Card_Updated_Constraint;
+  update_columns?: Array<All_Card_Updated_Update_Column>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "all_card_updated". */
+export type All_Card_Updated_Order_By = {
+  card_count?: InputMaybe<Order_By>;
+  cards_updated_at?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  translation_updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: all_card_updated */
+export type All_Card_Updated_Pk_Columns_Input = {
+  locale: Scalars['String'];
+};
+
+/** select columns of table "all_card_updated" */
+export enum All_Card_Updated_Select_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at'
+}
+
+/** input type for updating data in table "all_card_updated" */
+export type All_Card_Updated_Set_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate stddev on columns */
+export type All_Card_Updated_Stddev_Fields = {
+  __typename?: 'all_card_updated_stddev_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type All_Card_Updated_Stddev_Pop_Fields = {
+  __typename?: 'all_card_updated_stddev_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type All_Card_Updated_Stddev_Samp_Fields = {
+  __typename?: 'all_card_updated_stddev_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "all_card_updated" */
+export type All_Card_Updated_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Updated_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Updated_Stream_Cursor_Value_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']>;
+  locale?: InputMaybe<Scalars['String']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate sum on columns */
+export type All_Card_Updated_Sum_Fields = {
+  __typename?: 'all_card_updated_sum_fields';
+  card_count?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "all_card_updated" */
+export enum All_Card_Updated_Update_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at'
+}
+
+export type All_Card_Updated_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<All_Card_Updated_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Updated_Set_Input>;
+  where: All_Card_Updated_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type All_Card_Updated_Var_Pop_Fields = {
+  __typename?: 'all_card_updated_var_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type All_Card_Updated_Var_Samp_Fields = {
+  __typename?: 'all_card_updated_var_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type All_Card_Updated_Variance_Fields = {
+  __typename?: 'all_card_updated_variance_fields';
+  card_count?: Maybe<Scalars['Float']>;
+};
+
+export type All_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<All_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<All_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<All_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<All_Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<All_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<All_Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Set_Input>;
+  where: All_Card_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type All_Card_Var_Pop_Fields = {
+  __typename?: 'all_card_var_pop_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "all_card" */
+export type All_Card_Var_Pop_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type All_Card_Var_Samp_Fields = {
+  __typename?: 'all_card_var_samp_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "all_card" */
+export type All_Card_Var_Samp_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type All_Card_Variance_Fields = {
+  __typename?: 'all_card_variance_fields';
+  clues?: Maybe<Scalars['Float']>;
+  cost?: Maybe<Scalars['Float']>;
+  deck_limit?: Maybe<Scalars['Float']>;
+  doom?: Maybe<Scalars['Float']>;
+  encounter_position?: Maybe<Scalars['Float']>;
+  enemy_damage?: Maybe<Scalars['Float']>;
+  enemy_evade?: Maybe<Scalars['Float']>;
+  enemy_fight?: Maybe<Scalars['Float']>;
+  enemy_horror?: Maybe<Scalars['Float']>;
+  health?: Maybe<Scalars['Float']>;
+  pack_position?: Maybe<Scalars['Float']>;
+  position?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Float']>;
+  sanity?: Maybe<Scalars['Float']>;
+  shroud?: Maybe<Scalars['Float']>;
+  skill_agility?: Maybe<Scalars['Float']>;
+  skill_combat?: Maybe<Scalars['Float']>;
+  skill_intellect?: Maybe<Scalars['Float']>;
+  skill_wild?: Maybe<Scalars['Float']>;
+  skill_willpower?: Maybe<Scalars['Float']>;
+  stage?: Maybe<Scalars['Float']>;
+  taboo_set_id?: Maybe<Scalars['Float']>;
+  taboo_xp?: Maybe<Scalars['Float']>;
+  vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
+  victory?: Maybe<Scalars['Float']>;
+  xp?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "all_card" */
+export type All_Card_Variance_Order_By = {
+  clues?: InputMaybe<Order_By>;
+  cost?: InputMaybe<Order_By>;
+  deck_limit?: InputMaybe<Order_By>;
+  doom?: InputMaybe<Order_By>;
+  encounter_position?: InputMaybe<Order_By>;
+  enemy_damage?: InputMaybe<Order_By>;
+  enemy_evade?: InputMaybe<Order_By>;
+  enemy_fight?: InputMaybe<Order_By>;
+  enemy_horror?: InputMaybe<Order_By>;
+  health?: InputMaybe<Order_By>;
+  pack_position?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  quantity?: InputMaybe<Order_By>;
+  sanity?: InputMaybe<Order_By>;
+  shroud?: InputMaybe<Order_By>;
+  skill_agility?: InputMaybe<Order_By>;
+  skill_combat?: InputMaybe<Order_By>;
+  skill_intellect?: InputMaybe<Order_By>;
+  skill_wild?: InputMaybe<Order_By>;
+  skill_willpower?: InputMaybe<Order_By>;
+  stage?: InputMaybe<Order_By>;
+  taboo_set_id?: InputMaybe<Order_By>;
+  taboo_xp?: InputMaybe<Order_By>;
+  vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+  victory?: InputMaybe<Order_By>;
+  xp?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "base_decks" */
@@ -272,6 +2808,20 @@ export type Base_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "base_decks" */
+export type Base_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Base_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Base_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Base_Decks_Sum_Fields = {
   __typename?: 'base_decks_sum_fields';
@@ -283,6 +2833,14 @@ export type Base_Decks_Sum_Fields = {
 export type Base_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Base_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Base_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Base_Decks_Set_Input>;
+  where: Base_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -322,6 +2880,19 @@ export type Base_Decks_Variance_Fields = {
 export type Base_Decks_Variance_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
+export type Bigint_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['bigint']>;
+  _gt?: InputMaybe<Scalars['bigint']>;
+  _gte?: InputMaybe<Scalars['bigint']>;
+  _in?: InputMaybe<Array<Scalars['bigint']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['bigint']>;
+  _lte?: InputMaybe<Scalars['bigint']>;
+  _neq?: InputMaybe<Scalars['bigint']>;
+  _nin?: InputMaybe<Array<Scalars['bigint']>>;
 };
 
 /** columns and relationships of "campaign" */
@@ -364,14 +2935,14 @@ export type Campaign = {
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
   /** An object relationship */
-  link_a_campaign: Campaign;
+  link_a_campaign?: Maybe<Campaign>;
   link_a_campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
-  link_b_campaign: Campaign;
+  link_b_campaign?: Maybe<Campaign>;
   link_b_campaign_id?: Maybe<Scalars['Int']>;
   link_campaign_id?: Maybe<Scalars['Int']>;
   /** An object relationship */
-  linked_campaign: Campaign;
+  linked_campaign?: Maybe<Campaign>;
   name?: Maybe<Scalars['String']>;
   /** An object relationship */
   owner: Users;
@@ -600,7 +3171,7 @@ export type Campaign_Access_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "campaign_access" */
 export type Campaign_Access_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Access_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Access_On_Conflict>;
 };
 
@@ -631,9 +3202,9 @@ export type Campaign_Access_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_access" */
 export enum Campaign_Access_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   CampaignAccessPkey = 'campaign_access_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "user_id" */
   CampaignAccessUserIdCampaignIdKey = 'campaign_access_user_id_campaign_id_key'
 }
 
@@ -691,10 +3262,10 @@ export type Campaign_Access_Mutation_Response = {
   returning: Array<Campaign_Access>;
 };
 
-/** on conflict condition type for table "campaign_access" */
+/** on_conflict condition type for table "campaign_access" */
 export type Campaign_Access_On_Conflict = {
   constraint: Campaign_Access_Constraint;
-  update_columns: Array<Campaign_Access_Update_Column>;
+  update_columns?: Array<Campaign_Access_Update_Column>;
   where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
@@ -771,6 +3342,22 @@ export type Campaign_Access_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_access" */
+export type Campaign_Access_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Access_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Access_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Access_Sum_Fields = {
   __typename?: 'campaign_access_sum_fields';
@@ -795,6 +3382,14 @@ export enum Campaign_Access_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type Campaign_Access_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Access_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Access_Set_Input>;
+  where: Campaign_Access_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Access_Var_Pop_Fields = {
@@ -927,13 +3522,14 @@ export type Campaign_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign" */
 export enum Campaign_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   CampaignDataPkey = 'campaign_data_pkey'
 }
 
 /** columns and relationships of "campaign_deck" */
 export type Campaign_Deck = {
   __typename?: 'campaign_deck';
+  archived?: Maybe<Scalars['Boolean']>;
   arkhamdb_id?: Maybe<Scalars['Int']>;
   arkhamdb_user?: Maybe<Scalars['Int']>;
   base?: Maybe<Scalars['Boolean']>;
@@ -1065,7 +3661,7 @@ export type Campaign_Deck_Append_Input = {
 /** input type for inserting array relation for remote table "campaign_deck" */
 export type Campaign_Deck_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Deck_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
@@ -1093,6 +3689,7 @@ export type Campaign_Deck_Bool_Exp = {
   _and?: InputMaybe<Array<Campaign_Deck_Bool_Exp>>;
   _not?: InputMaybe<Campaign_Deck_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Deck_Bool_Exp>>;
+  archived?: InputMaybe<Boolean_Comparison_Exp>;
   arkhamdb_id?: InputMaybe<Int_Comparison_Exp>;
   arkhamdb_user?: InputMaybe<Int_Comparison_Exp>;
   base?: InputMaybe<Boolean_Comparison_Exp>;
@@ -1116,11 +3713,11 @@ export type Campaign_Deck_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_deck" */
 export enum Campaign_Deck_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "arkhamdb_id" */
   DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "local_uuid", "campaign_id" */
   DeckLocalUuidCampaignIdKey = 'deck_local_uuid_campaign_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   DeckPkey = 'deck_pkey'
 }
 
@@ -1150,6 +3747,7 @@ export type Campaign_Deck_Inc_Input = {
 
 /** input type for inserting data into table "campaign_deck" */
 export type Campaign_Deck_Insert_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']>;
   base?: InputMaybe<Scalars['Boolean']>;
@@ -1241,19 +3839,20 @@ export type Campaign_Deck_Mutation_Response = {
 /** input type for inserting object relation for remote table "campaign_deck" */
 export type Campaign_Deck_Obj_Rel_Insert_Input = {
   data: Campaign_Deck_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Deck_On_Conflict>;
 };
 
-/** on conflict condition type for table "campaign_deck" */
+/** on_conflict condition type for table "campaign_deck" */
 export type Campaign_Deck_On_Conflict = {
   constraint: Campaign_Deck_Constraint;
-  update_columns: Array<Campaign_Deck_Update_Column>;
+  update_columns?: Array<Campaign_Deck_Update_Column>;
   where?: InputMaybe<Campaign_Deck_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "campaign_deck". */
 export type Campaign_Deck_Order_By = {
+  archived?: InputMaybe<Order_By>;
   arkhamdb_id?: InputMaybe<Order_By>;
   arkhamdb_user?: InputMaybe<Order_By>;
   base?: InputMaybe<Order_By>;
@@ -1288,6 +3887,8 @@ export type Campaign_Deck_Prepend_Input = {
 /** select columns of table "campaign_deck" */
 export enum Campaign_Deck_Select_Column {
   /** column name */
+  Archived = 'archived',
+  /** column name */
   ArkhamdbId = 'arkhamdb_id',
   /** column name */
   ArkhamdbUser = 'arkhamdb_user',
@@ -1315,6 +3916,7 @@ export enum Campaign_Deck_Select_Column {
 
 /** input type for updating data in table "campaign_deck" */
 export type Campaign_Deck_Set_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']>;
   base?: InputMaybe<Scalars['Boolean']>;
@@ -1386,6 +3988,31 @@ export type Campaign_Deck_Stddev_Samp_Order_By = {
   next_deck_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_deck" */
+export type Campaign_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Deck_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  arkhamdb_id?: InputMaybe<Scalars['Int']>;
+  arkhamdb_user?: InputMaybe<Scalars['Int']>;
+  base?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<Scalars['jsonb']>;
+  content_hash?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  local_uuid?: InputMaybe<Scalars['String']>;
+  next_deck_id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Deck_Sum_Fields = {
   __typename?: 'campaign_deck_sum_fields';
@@ -1407,6 +4034,8 @@ export type Campaign_Deck_Sum_Order_By = {
 
 /** update columns of table "campaign_deck" */
 export enum Campaign_Deck_Update_Column {
+  /** column name */
+  Archived = 'archived',
   /** column name */
   ArkhamdbId = 'arkhamdb_id',
   /** column name */
@@ -1432,6 +4061,24 @@ export enum Campaign_Deck_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Campaign_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Campaign_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Campaign_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Campaign_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Campaign_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Campaign_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Deck_Set_Input>;
+  where: Campaign_Deck_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Deck_Var_Pop_Fields = {
@@ -1518,6 +4165,143 @@ export type Campaign_Delete_Key_Input = {
   standaloneId?: InputMaybe<Scalars['String']>;
   tarot_reading?: InputMaybe<Scalars['String']>;
   weaknessSet?: InputMaybe<Scalars['String']>;
+};
+
+/** columns and relationships of "campaign_difficulty" */
+export type Campaign_Difficulty = {
+  __typename?: 'campaign_difficulty';
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate = {
+  __typename?: 'campaign_difficulty_aggregate';
+  aggregate?: Maybe<Campaign_Difficulty_Aggregate_Fields>;
+  nodes: Array<Campaign_Difficulty>;
+};
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_Fields = {
+  __typename?: 'campaign_difficulty_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Campaign_Difficulty_Max_Fields>;
+  min?: Maybe<Campaign_Difficulty_Min_Fields>;
+};
+
+
+/** aggregate fields of "campaign_difficulty" */
+export type Campaign_Difficulty_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "campaign_difficulty". All fields are combined with a logical 'AND'. */
+export type Campaign_Difficulty_Bool_Exp = {
+  _and?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  _not?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaign_Difficulty_Bool_Exp>>;
+  value?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "campaign_difficulty" */
+export enum Campaign_Difficulty_Constraint {
+  /** unique or primary key constraint on columns "value" */
+  CampaignDifficultyPkey = 'campaign_difficulty_pkey'
+}
+
+export enum Campaign_Difficulty_Enum {
+  Easy = 'easy',
+  Expert = 'expert',
+  Hard = 'hard',
+  Standard = 'standard'
+}
+
+/** Boolean expression to compare columns of type "campaign_difficulty_enum". All fields are combined with logical 'AND'. */
+export type Campaign_Difficulty_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _in?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Campaign_Difficulty_Enum>;
+  _nin?: InputMaybe<Array<Campaign_Difficulty_Enum>>;
+};
+
+/** input type for inserting data into table "campaign_difficulty" */
+export type Campaign_Difficulty_Insert_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Campaign_Difficulty_Max_Fields = {
+  __typename?: 'campaign_difficulty_max_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaign_Difficulty_Min_Fields = {
+  __typename?: 'campaign_difficulty_min_fields';
+  value?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "campaign_difficulty" */
+export type Campaign_Difficulty_Mutation_Response = {
+  __typename?: 'campaign_difficulty_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Campaign_Difficulty>;
+};
+
+/** on_conflict condition type for table "campaign_difficulty" */
+export type Campaign_Difficulty_On_Conflict = {
+  constraint: Campaign_Difficulty_Constraint;
+  update_columns?: Array<Campaign_Difficulty_Update_Column>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "campaign_difficulty". */
+export type Campaign_Difficulty_Order_By = {
+  value?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: campaign_difficulty */
+export type Campaign_Difficulty_Pk_Columns_Input = {
+  value: Scalars['String'];
+};
+
+/** select columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Select_Column {
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "campaign_difficulty" */
+export type Campaign_Difficulty_Set_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "campaign_difficulty" */
+export type Campaign_Difficulty_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Difficulty_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Difficulty_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "campaign_difficulty" */
+export enum Campaign_Difficulty_Update_Column {
+  /** column name */
+  Value = 'value'
+}
+
+export type Campaign_Difficulty_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  where: Campaign_Difficulty_Bool_Exp;
 };
 
 /** columns and relationships of "campaign_guide" */
@@ -1757,10 +4541,35 @@ export type Campaign_Guide_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "campaign_guide" */
+export type Campaign_Guide_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Guide_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Guide_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Guide_Sum_Fields = {
   __typename?: 'campaign_guide_sum_fields';
   id?: Maybe<Scalars['Int']>;
+};
+
+export type Campaign_Guide_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Guide_Set_Input>;
+  where: Campaign_Guide_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -1888,7 +4697,7 @@ export type Campaign_Investigator_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "campaign_investigator" */
 export type Campaign_Investigator_Arr_Rel_Insert_Input = {
   data: Array<Campaign_Investigator_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_Investigator_On_Conflict>;
 };
 
@@ -1911,15 +4720,16 @@ export type Campaign_Investigator_Bool_Exp = {
   campaign?: InputMaybe<Campaign_Bool_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
   investigator?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "campaign_investigator" */
 export enum Campaign_Investigator_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   CampaignInvestigatorCampaignIdInvestigatorKey = 'campaign_investigator_campaign_id_investigator_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   CampaignInvestigatorPkey = 'campaign_investigator_pkey'
 }
 
@@ -1980,10 +4790,10 @@ export type Campaign_Investigator_Mutation_Response = {
   returning: Array<Campaign_Investigator>;
 };
 
-/** on conflict condition type for table "campaign_investigator" */
+/** on_conflict condition type for table "campaign_investigator" */
 export type Campaign_Investigator_On_Conflict = {
   constraint: Campaign_Investigator_Constraint;
-  update_columns: Array<Campaign_Investigator_Update_Column>;
+  update_columns?: Array<Campaign_Investigator_Update_Column>;
   where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
 };
 
@@ -1992,6 +4802,7 @@ export type Campaign_Investigator_Order_By = {
   campaign?: InputMaybe<Campaign_Order_By>;
   campaign_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
   investigator?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -2055,6 +4866,22 @@ export type Campaign_Investigator_Stddev_Samp_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "campaign_investigator" */
+export type Campaign_Investigator_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Investigator_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Investigator_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Investigator_Sum_Fields = {
   __typename?: 'campaign_investigator_sum_fields';
@@ -2077,6 +4904,14 @@ export enum Campaign_Investigator_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Campaign_Investigator_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Investigator_Set_Input>;
+  where: Campaign_Investigator_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Campaign_Investigator_Var_Pop_Fields = {
@@ -2157,14 +4992,14 @@ export type Campaign_Mutation_Response = {
 /** input type for inserting object relation for remote table "campaign" */
 export type Campaign_Obj_Rel_Insert_Input = {
   data: Campaign_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Campaign_On_Conflict>;
 };
 
-/** on conflict condition type for table "campaign" */
+/** on_conflict condition type for table "campaign" */
 export type Campaign_On_Conflict = {
   constraint: Campaign_Constraint;
-  update_columns: Array<Campaign_Update_Column>;
+  update_columns?: Array<Campaign_Update_Column>;
   where?: InputMaybe<Campaign_Bool_Exp>;
 };
 
@@ -2324,6 +5159,40 @@ export type Campaign_Stddev_Samp_Fields = {
   link_campaign_id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "campaign" */
+export type Campaign_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaign_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaign_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']>;
+  campaignNotes?: InputMaybe<Scalars['jsonb']>;
+  chaosBag?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  cycleCode?: InputMaybe<Scalars['String']>;
+  deleted?: InputMaybe<Scalars['Boolean']>;
+  difficulty?: InputMaybe<Scalars['String']>;
+  guide_version?: InputMaybe<Scalars['Int']>;
+  guided?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['Int']>;
+  link_a_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_b_campaign_id?: InputMaybe<Scalars['Int']>;
+  link_campaign_id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+  scenarioResults?: InputMaybe<Scalars['jsonb']>;
+  showInterludes?: InputMaybe<Scalars['Boolean']>;
+  standaloneId?: InputMaybe<Scalars['jsonb']>;
+  tarot_reading?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  uuid?: InputMaybe<Scalars['String']>;
+  weaknessSet?: InputMaybe<Scalars['jsonb']>;
+};
+
 /** aggregate sum on columns */
 export type Campaign_Sum_Fields = {
   __typename?: 'campaign_sum_fields';
@@ -2382,6 +5251,24 @@ export enum Campaign_Update_Column {
   WeaknessSet = 'weaknessSet'
 }
 
+export type Campaign_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Campaign_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Campaign_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Campaign_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Campaign_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Campaign_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Campaign_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Campaign_Set_Input>;
+  where: Campaign_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Campaign_Var_Pop_Fields = {
   __typename?: 'campaign_var_pop_fields';
@@ -2410,6 +5297,142 @@ export type Campaign_Variance_Fields = {
   link_a_campaign_id?: Maybe<Scalars['Float']>;
   link_b_campaign_id?: Maybe<Scalars['Float']>;
   link_campaign_id?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle = {
+  __typename?: 'campaigns_by_cycle';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate = {
+  __typename?: 'campaigns_by_cycle_aggregate';
+  aggregate?: Maybe<Campaigns_By_Cycle_Aggregate_Fields>;
+  nodes: Array<Campaigns_By_Cycle>;
+};
+
+/** aggregate fields of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate_Fields = {
+  __typename?: 'campaigns_by_cycle_aggregate_fields';
+  avg?: Maybe<Campaigns_By_Cycle_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Campaigns_By_Cycle_Max_Fields>;
+  min?: Maybe<Campaigns_By_Cycle_Min_Fields>;
+  stddev?: Maybe<Campaigns_By_Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Campaigns_By_Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Campaigns_By_Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Campaigns_By_Cycle_Sum_Fields>;
+  var_pop?: Maybe<Campaigns_By_Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Campaigns_By_Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Campaigns_By_Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Campaigns_By_Cycle_Avg_Fields = {
+  __typename?: 'campaigns_by_cycle_avg_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "campaigns_by_cycle". All fields are combined with a logical 'AND'. */
+export type Campaigns_By_Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Campaigns_By_Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Campaigns_By_Cycle_Bool_Exp>>;
+  count?: InputMaybe<Bigint_Comparison_Exp>;
+  cyclecode?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Campaigns_By_Cycle_Max_Fields = {
+  __typename?: 'campaigns_by_cycle_max_fields';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Campaigns_By_Cycle_Min_Fields = {
+  __typename?: 'campaigns_by_cycle_min_fields';
+  count?: Maybe<Scalars['bigint']>;
+  cyclecode?: Maybe<Scalars['String']>;
+};
+
+/** Ordering options when selecting data from "campaigns_by_cycle". */
+export type Campaigns_By_Cycle_Order_By = {
+  count?: InputMaybe<Order_By>;
+  cyclecode?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "campaigns_by_cycle" */
+export enum Campaigns_By_Cycle_Select_Column {
+  /** column name */
+  Count = 'count',
+  /** column name */
+  Cyclecode = 'cyclecode'
+}
+
+/** aggregate stddev on columns */
+export type Campaigns_By_Cycle_Stddev_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Campaigns_By_Cycle_Stddev_Pop_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_pop_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Campaigns_By_Cycle_Stddev_Samp_Fields = {
+  __typename?: 'campaigns_by_cycle_stddev_samp_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "campaigns_by_cycle" */
+export type Campaigns_By_Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Campaigns_By_Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Campaigns_By_Cycle_Stream_Cursor_Value_Input = {
+  count?: InputMaybe<Scalars['bigint']>;
+  cyclecode?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Campaigns_By_Cycle_Sum_Fields = {
+  __typename?: 'campaigns_by_cycle_sum_fields';
+  count?: Maybe<Scalars['bigint']>;
+};
+
+/** aggregate var_pop on columns */
+export type Campaigns_By_Cycle_Var_Pop_Fields = {
+  __typename?: 'campaigns_by_cycle_var_pop_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Campaigns_By_Cycle_Var_Samp_Fields = {
+  __typename?: 'campaigns_by_cycle_var_samp_fields';
+  count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Campaigns_By_Cycle_Variance_Fields = {
+  __typename?: 'campaigns_by_cycle_variance_fields';
+  count?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "card" */
@@ -2658,9 +5681,274 @@ export type Card_Bool_Exp = {
 
 /** unique or primary key constraints on table "card" */
 export enum Card_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   CardPkey = 'card_pkey'
 }
+
+/** columns and relationships of "card_cycle" */
+export type Card_Cycle = {
+  __typename?: 'card_cycle';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+  official: Scalars['Boolean'];
+  /** An array relationship */
+  packs: Array<Card_Pack>;
+  /** An aggregate relationship */
+  packs_aggregate: Card_Pack_Aggregate;
+  position: Scalars['Int'];
+};
+
+
+/** columns and relationships of "card_cycle" */
+export type Card_CyclePacksArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "card_cycle" */
+export type Card_CyclePacks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Pack_Order_By>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+/** aggregated selection of "card_cycle" */
+export type Card_Cycle_Aggregate = {
+  __typename?: 'card_cycle_aggregate';
+  aggregate?: Maybe<Card_Cycle_Aggregate_Fields>;
+  nodes: Array<Card_Cycle>;
+};
+
+/** aggregate fields of "card_cycle" */
+export type Card_Cycle_Aggregate_Fields = {
+  __typename?: 'card_cycle_aggregate_fields';
+  avg?: Maybe<Card_Cycle_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Card_Cycle_Max_Fields>;
+  min?: Maybe<Card_Cycle_Min_Fields>;
+  stddev?: Maybe<Card_Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Card_Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Card_Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Card_Cycle_Sum_Fields>;
+  var_pop?: Maybe<Card_Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Card_Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Card_Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "card_cycle" */
+export type Card_Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Card_Cycle_Avg_Fields = {
+  __typename?: 'card_cycle_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "card_cycle". All fields are combined with a logical 'AND'. */
+export type Card_Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Card_Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Cycle_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
+  packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_cycle" */
+export enum Card_Cycle_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  CardCyclePkey = 'card_cycle_pkey'
+}
+
+/** input type for incrementing numeric columns in table "card_cycle" */
+export type Card_Cycle_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "card_cycle" */
+export type Card_Cycle_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  packs?: InputMaybe<Card_Pack_Arr_Rel_Insert_Input>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Card_Cycle_Max_Fields = {
+  __typename?: 'card_cycle_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Card_Cycle_Min_Fields = {
+  __typename?: 'card_cycle_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** response of any mutation on the table "card_cycle" */
+export type Card_Cycle_Mutation_Response = {
+  __typename?: 'card_cycle_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Cycle>;
+};
+
+/** input type for inserting object relation for remote table "card_cycle" */
+export type Card_Cycle_Obj_Rel_Insert_Input = {
+  data: Card_Cycle_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
+};
+
+/** on_conflict condition type for table "card_cycle" */
+export type Card_Cycle_On_Conflict = {
+  constraint: Card_Cycle_Constraint;
+  update_columns?: Array<Card_Cycle_Update_Column>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_cycle". */
+export type Card_Cycle_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Order_By>;
+  position?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_cycle */
+export type Card_Cycle_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_cycle" */
+export enum Card_Cycle_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position'
+}
+
+/** input type for updating data in table "card_cycle" */
+export type Card_Cycle_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Card_Cycle_Stddev_Fields = {
+  __typename?: 'card_cycle_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Card_Cycle_Stddev_Pop_Fields = {
+  __typename?: 'card_cycle_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Card_Cycle_Stddev_Samp_Fields = {
+  __typename?: 'card_cycle_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "card_cycle" */
+export type Card_Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Cycle_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate sum on columns */
+export type Card_Cycle_Sum_Fields = {
+  __typename?: 'card_cycle_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "card_cycle" */
+export enum Card_Cycle_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position'
+}
+
+export type Card_Cycle_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  where: Card_Cycle_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Card_Cycle_Var_Pop_Fields = {
+  __typename?: 'card_cycle_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Card_Cycle_Var_Samp_Fields = {
+  __typename?: 'card_cycle_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Card_Cycle_Variance_Fields = {
+  __typename?: 'card_cycle_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Card_Delete_At_Path_Input = {
@@ -2689,6 +5977,7 @@ export type Card_Encounter_Set = {
   code: Scalars['String'];
   locale: Scalars['String'];
   name: Scalars['String'];
+  official: Scalars['Boolean'];
 };
 
 /** aggregated selection of "card_encounter_set" */
@@ -2723,7 +6012,7 @@ export type Card_Encounter_Set_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "card_encounter_set" */
 export type Card_Encounter_Set_Arr_Rel_Insert_Input = {
   data: Array<Card_Encounter_Set_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
 };
 
@@ -2735,11 +6024,12 @@ export type Card_Encounter_Set_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_encounter_set" */
 export enum Card_Encounter_Set_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardEncounterSetPkey = 'card_encounter_set_pkey'
 }
 
@@ -2748,6 +6038,7 @@ export type Card_Encounter_Set_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate max on columns */
@@ -2789,10 +6080,10 @@ export type Card_Encounter_Set_Mutation_Response = {
   returning: Array<Card_Encounter_Set>;
 };
 
-/** on conflict condition type for table "card_encounter_set" */
+/** on_conflict condition type for table "card_encounter_set" */
 export type Card_Encounter_Set_On_Conflict = {
   constraint: Card_Encounter_Set_Constraint;
-  update_columns: Array<Card_Encounter_Set_Update_Column>;
+  update_columns?: Array<Card_Encounter_Set_Update_Column>;
   where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
 };
 
@@ -2801,6 +6092,7 @@ export type Card_Encounter_Set_Order_By = {
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_encounter_set */
@@ -2816,7 +6108,9 @@ export enum Card_Encounter_Set_Select_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Official = 'official'
 }
 
 /** input type for updating data in table "card_encounter_set" */
@@ -2824,6 +6118,23 @@ export type Card_Encounter_Set_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Streaming cursor of the table "card_encounter_set" */
+export type Card_Encounter_Set_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Encounter_Set_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Encounter_Set_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** update columns of table "card_encounter_set" */
@@ -2833,8 +6144,16 @@ export enum Card_Encounter_Set_Update_Column {
   /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Official = 'official'
 }
+
+export type Card_Encounter_Set_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
+  where: Card_Encounter_Set_Bool_Exp;
+};
 
 /** input type for incrementing numeric columns in table "card" */
 export type Card_Inc_Input = {
@@ -3017,10 +6336,10 @@ export type Card_Mutation_Response = {
   returning: Array<Card>;
 };
 
-/** on conflict condition type for table "card" */
+/** on_conflict condition type for table "card" */
 export type Card_On_Conflict = {
   constraint: Card_Constraint;
-  update_columns: Array<Card_Update_Column>;
+  update_columns?: Array<Card_Update_Column>;
   where?: InputMaybe<Card_Bool_Exp>;
 };
 
@@ -3084,8 +6403,13 @@ export type Card_Order_By = {
 export type Card_Pack = {
   __typename?: 'card_pack';
   code: Scalars['String'];
+  /** An object relationship */
+  cycle?: Maybe<Card_Cycle>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale: Scalars['String'];
   name: Scalars['String'];
+  official: Scalars['Boolean'];
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** aggregated selection of "card_pack" */
@@ -3098,9 +6422,17 @@ export type Card_Pack_Aggregate = {
 /** aggregate fields of "card_pack" */
 export type Card_Pack_Aggregate_Fields = {
   __typename?: 'card_pack_aggregate_fields';
+  avg?: Maybe<Card_Pack_Avg_Fields>;
   count: Scalars['Int'];
   max?: Maybe<Card_Pack_Max_Fields>;
   min?: Maybe<Card_Pack_Min_Fields>;
+  stddev?: Maybe<Card_Pack_Stddev_Fields>;
+  stddev_pop?: Maybe<Card_Pack_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Card_Pack_Stddev_Samp_Fields>;
+  sum?: Maybe<Card_Pack_Sum_Fields>;
+  var_pop?: Maybe<Card_Pack_Var_Pop_Fields>;
+  var_samp?: Maybe<Card_Pack_Var_Samp_Fields>;
+  variance?: Maybe<Card_Pack_Variance_Fields>;
 };
 
 
@@ -3112,16 +6444,35 @@ export type Card_Pack_Aggregate_FieldsCountArgs = {
 
 /** order by aggregate values of table "card_pack" */
 export type Card_Pack_Aggregate_Order_By = {
+  avg?: InputMaybe<Card_Pack_Avg_Order_By>;
   count?: InputMaybe<Order_By>;
   max?: InputMaybe<Card_Pack_Max_Order_By>;
   min?: InputMaybe<Card_Pack_Min_Order_By>;
+  stddev?: InputMaybe<Card_Pack_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Card_Pack_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Card_Pack_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Card_Pack_Sum_Order_By>;
+  var_pop?: InputMaybe<Card_Pack_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Card_Pack_Var_Samp_Order_By>;
+  variance?: InputMaybe<Card_Pack_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "card_pack" */
 export type Card_Pack_Arr_Rel_Insert_Input = {
   data: Array<Card_Pack_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Pack_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Card_Pack_Avg_Fields = {
+  __typename?: 'card_pack_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "card_pack" */
+export type Card_Pack_Avg_Order_By = {
+  position?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "card_pack". All fields are combined with a logical 'AND'. */
@@ -3130,51 +6481,72 @@ export type Card_Pack_Bool_Exp = {
   _not?: InputMaybe<Card_Pack_Bool_Exp>;
   _or?: InputMaybe<Array<Card_Pack_Bool_Exp>>;
   code?: InputMaybe<String_Comparison_Exp>;
+  cycle?: InputMaybe<Card_Cycle_Bool_Exp>;
+  cycle_code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_pack" */
 export enum Card_Pack_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardPackPkey = 'card_pack_pkey'
 }
+
+/** input type for incrementing numeric columns in table "card_pack" */
+export type Card_Pack_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
 
 /** input type for inserting data into table "card_pack" */
 export type Card_Pack_Insert_Input = {
   code?: InputMaybe<Scalars['String']>;
+  cycle?: InputMaybe<Card_Cycle_Obj_Rel_Insert_Input>;
+  cycle_code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
 export type Card_Pack_Max_Fields = {
   __typename?: 'card_pack_max_fields';
   code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "card_pack" */
 export type Card_Pack_Max_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Card_Pack_Min_Fields = {
   __typename?: 'card_pack_min_fields';
   code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "card_pack" */
 export type Card_Pack_Min_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "card_pack" */
@@ -3186,18 +6558,22 @@ export type Card_Pack_Mutation_Response = {
   returning: Array<Card_Pack>;
 };
 
-/** on conflict condition type for table "card_pack" */
+/** on_conflict condition type for table "card_pack" */
 export type Card_Pack_On_Conflict = {
   constraint: Card_Pack_Constraint;
-  update_columns: Array<Card_Pack_Update_Column>;
+  update_columns?: Array<Card_Pack_Update_Column>;
   where?: InputMaybe<Card_Pack_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "card_pack". */
 export type Card_Pack_Order_By = {
   code?: InputMaybe<Order_By>;
+  cycle?: InputMaybe<Card_Cycle_Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_pack */
@@ -3211,16 +6587,87 @@ export enum Card_Pack_Select_Column {
   /** column name */
   Code = 'code',
   /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position'
 }
 
 /** input type for updating data in table "card_pack" */
 export type Card_Pack_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Card_Pack_Stddev_Fields = {
+  __typename?: 'card_pack_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Card_Pack_Stddev_Pop_Fields = {
+  __typename?: 'card_pack_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Card_Pack_Stddev_Samp_Fields = {
+  __typename?: 'card_pack_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "card_pack" */
+export type Card_Pack_Stddev_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "card_pack" */
+export type Card_Pack_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Pack_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Pack_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** aggregate sum on columns */
+export type Card_Pack_Sum_Fields = {
+  __typename?: 'card_pack_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "card_pack" */
+export type Card_Pack_Sum_Order_By = {
+  position?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "card_pack" */
@@ -3228,10 +6675,57 @@ export enum Card_Pack_Update_Column {
   /** column name */
   Code = 'code',
   /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
   Locale = 'locale',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position'
 }
+
+export type Card_Pack_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Pack_Set_Input>;
+  where: Card_Pack_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Card_Pack_Var_Pop_Fields = {
+  __typename?: 'card_pack_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "card_pack" */
+export type Card_Pack_Var_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Card_Pack_Var_Samp_Fields = {
+  __typename?: 'card_pack_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "card_pack" */
+export type Card_Pack_Var_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Card_Pack_Variance_Fields = {
+  __typename?: 'card_pack_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "card_pack" */
+export type Card_Pack_Variance_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
 
 /** primary key columns input for table: card */
 export type Card_Pk_Columns_Input = {
@@ -3484,6 +6978,214 @@ export type Card_Stddev_Samp_Fields = {
   victory?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "card" */
+export type Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Stream_Cursor_Value_Input = {
+  back_link?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Scalars['String']>;
+  victory?: InputMaybe<Scalars['Int']>;
+};
+
+/** columns and relationships of "card_subtype_name" */
+export type Card_Subtype_Name = {
+  __typename?: 'card_subtype_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate = {
+  __typename?: 'card_subtype_name_aggregate';
+  aggregate?: Maybe<Card_Subtype_Name_Aggregate_Fields>;
+  nodes: Array<Card_Subtype_Name>;
+};
+
+/** aggregate fields of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate_Fields = {
+  __typename?: 'card_subtype_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Subtype_Name_Max_Fields>;
+  min?: Maybe<Card_Subtype_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_subtype_name" */
+export type Card_Subtype_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "card_subtype_name". All fields are combined with a logical 'AND'. */
+export type Card_Subtype_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Subtype_Name_Bool_Exp>>;
+  _not?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Subtype_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_subtype_name" */
+export enum Card_Subtype_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  CardSubtypeNamePkey = 'card_subtype_name_pkey'
+}
+
+/** input type for inserting data into table "card_subtype_name" */
+export type Card_Subtype_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Subtype_Name_Max_Fields = {
+  __typename?: 'card_subtype_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Card_Subtype_Name_Min_Fields = {
+  __typename?: 'card_subtype_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "card_subtype_name" */
+export type Card_Subtype_Name_Mutation_Response = {
+  __typename?: 'card_subtype_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Subtype_Name>;
+};
+
+/** on_conflict condition type for table "card_subtype_name" */
+export type Card_Subtype_Name_On_Conflict = {
+  constraint: Card_Subtype_Name_Constraint;
+  update_columns?: Array<Card_Subtype_Name_Update_Column>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_subtype_name". */
+export type Card_Subtype_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_subtype_name */
+export type Card_Subtype_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_subtype_name" */
+export enum Card_Subtype_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_subtype_name" */
+export type Card_Subtype_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "card_subtype_name" */
+export type Card_Subtype_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Subtype_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Subtype_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_subtype_name" */
+export enum Card_Subtype_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Card_Subtype_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
 /** aggregate sum on columns */
 export type Card_Sum_Fields = {
   __typename?: 'card_sum_fields';
@@ -3560,7 +7262,7 @@ export type Card_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "card_text" */
 export type Card_Text_Arr_Rel_Insert_Input = {
   data: Array<Card_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Card_Text_On_Conflict>;
 };
 
@@ -3585,9 +7287,9 @@ export type Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_text" */
 export enum Card_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardTextCodeLocaleKey = 'card_text_code_locale_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   CardTextPkey = 'card_text_pkey'
 }
 
@@ -3682,10 +7384,10 @@ export type Card_Text_Mutation_Response = {
   returning: Array<Card_Text>;
 };
 
-/** on conflict condition type for table "card_text" */
+/** on_conflict condition type for table "card_text" */
 export type Card_Text_On_Conflict = {
   constraint: Card_Text_Constraint;
-  update_columns: Array<Card_Text_Update_Column>;
+  update_columns?: Array<Card_Text_Update_Column>;
   where?: InputMaybe<Card_Text_Bool_Exp>;
 };
 
@@ -3755,6 +7457,30 @@ export type Card_Text_Set_Input = {
   traits?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "card_text" */
+export type Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "card_text" */
 export enum Card_Text_Update_Column {
   /** column name */
@@ -3782,6 +7508,12 @@ export enum Card_Text_Update_Column {
   /** column name */
   Traits = 'traits'
 }
+
+export type Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Text_Set_Input>;
+  where: Card_Text_Bool_Exp;
+};
 
 /** columns and relationships of "card_type_code" */
 export type Card_Type_Code = {
@@ -3821,7 +7553,7 @@ export type Card_Type_Code_Bool_Exp = {
 
 /** unique or primary key constraints on table "card_type_code" */
 export enum Card_Type_Code_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   CardTypeCodePkey = 'card_type_code_pkey'
 }
 
@@ -3832,6 +7564,7 @@ export enum Card_Type_Code_Enum {
   Enemy = 'enemy',
   Event = 'event',
   Investigator = 'investigator',
+  Key = 'key',
   Location = 'location',
   Scenario = 'scenario',
   Skill = 'skill',
@@ -3874,10 +7607,17 @@ export type Card_Type_Code_Mutation_Response = {
   returning: Array<Card_Type_Code>;
 };
 
-/** on conflict condition type for table "card_type_code" */
+/** input type for inserting object relation for remote table "card_type_code" */
+export type Card_Type_Code_Obj_Rel_Insert_Input = {
+  data: Card_Type_Code_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Card_Type_Code_On_Conflict>;
+};
+
+/** on_conflict condition type for table "card_type_code" */
 export type Card_Type_Code_On_Conflict = {
   constraint: Card_Type_Code_Constraint;
-  update_columns: Array<Card_Type_Code_Update_Column>;
+  update_columns?: Array<Card_Type_Code_Update_Column>;
   where?: InputMaybe<Card_Type_Code_Bool_Exp>;
 };
 
@@ -3902,11 +7642,174 @@ export type Card_Type_Code_Set_Input = {
   code?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "card_type_code" */
+export type Card_Type_Code_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Type_Code_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Type_Code_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "card_type_code" */
 export enum Card_Type_Code_Update_Column {
   /** column name */
   Code = 'code'
 }
+
+export type Card_Type_Code_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Type_Code_Set_Input>;
+  where: Card_Type_Code_Bool_Exp;
+};
+
+/** columns and relationships of "card_type_name" */
+export type Card_Type_Name = {
+  __typename?: 'card_type_name';
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "card_type_name" */
+export type Card_Type_Name_Aggregate = {
+  __typename?: 'card_type_name_aggregate';
+  aggregate?: Maybe<Card_Type_Name_Aggregate_Fields>;
+  nodes: Array<Card_Type_Name>;
+};
+
+/** aggregate fields of "card_type_name" */
+export type Card_Type_Name_Aggregate_Fields = {
+  __typename?: 'card_type_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Card_Type_Name_Max_Fields>;
+  min?: Maybe<Card_Type_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "card_type_name" */
+export type Card_Type_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "card_type_name". All fields are combined with a logical 'AND'. */
+export type Card_Type_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Card_Type_Name_Bool_Exp>>;
+  _not?: InputMaybe<Card_Type_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Card_Type_Name_Bool_Exp>>;
+  code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "card_type_name" */
+export enum Card_Type_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  TypeNamePkey = 'type_name_pkey'
+}
+
+/** input type for inserting data into table "card_type_name" */
+export type Card_Type_Name_Insert_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Card_Type_Name_Max_Fields = {
+  __typename?: 'card_type_name_max_fields';
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Card_Type_Name_Min_Fields = {
+  __typename?: 'card_type_name_min_fields';
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "card_type_name" */
+export type Card_Type_Name_Mutation_Response = {
+  __typename?: 'card_type_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Card_Type_Name>;
+};
+
+/** on_conflict condition type for table "card_type_name" */
+export type Card_Type_Name_On_Conflict = {
+  constraint: Card_Type_Name_Constraint;
+  update_columns?: Array<Card_Type_Name_Update_Column>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "card_type_name". */
+export type Card_Type_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: card_type_name */
+export type Card_Type_Name_Pk_Columns_Input = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+/** select columns of table "card_type_name" */
+export enum Card_Type_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "card_type_name" */
+export type Card_Type_Name_Set_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "card_type_name" */
+export type Card_Type_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Card_Type_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Card_Type_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Card_Type_Code_Enum>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "card_type_name" */
+export enum Card_Type_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Card_Type_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  where: Card_Type_Name_Bool_Exp;
+};
 
 /** update columns of table "card" */
 export enum Card_Update_Column {
@@ -4012,6 +7915,24 @@ export enum Card_Update_Column {
   Victory = 'victory'
 }
 
+export type Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Card_Set_Input>;
+  where: Card_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Card_Var_Pop_Fields = {
   __typename?: 'card_var_pop_fields';
@@ -4101,12 +8022,13 @@ export type Chaos_Bag_Result = {
   campaign: Campaign;
   created_at: Scalars['timestamptz'];
   curse: Scalars['Int'];
+  difficulty?: Maybe<Campaign_Difficulty_Enum>;
   drawn: Scalars['jsonb'];
   id: Scalars['Int'];
   sealed: Scalars['jsonb'];
   tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
   /** An object relationship */
-  tarot_mode: Chaos_Bag_Tarot_Mode;
+  tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode>;
   totalDrawn?: Maybe<Scalars['Int']>;
   updated_at: Scalars['timestamptz'];
 };
@@ -4177,7 +8099,7 @@ export type Chaos_Bag_Result_Append_Input = {
 /** input type for inserting array relation for remote table "chaos_bag_result" */
 export type Chaos_Bag_Result_Arr_Rel_Insert_Input = {
   data: Array<Chaos_Bag_Result_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
 };
 
@@ -4207,6 +8129,7 @@ export type Chaos_Bag_Result_Bool_Exp = {
   campaign?: InputMaybe<Campaign_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   curse?: InputMaybe<Int_Comparison_Exp>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum_Comparison_Exp>;
   drawn?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   sealed?: InputMaybe<Jsonb_Comparison_Exp>;
@@ -4218,9 +8141,9 @@ export type Chaos_Bag_Result_Bool_Exp = {
 
 /** unique or primary key constraints on table "chaos_bag_result" */
 export enum Chaos_Bag_Result_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ChaosBagPkey = 'chaos_bag_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ChaosBagResultsCampaignIdKey = 'chaos_bag_results_campaign_id_key'
 }
 
@@ -4256,6 +8179,7 @@ export type Chaos_Bag_Result_Insert_Input = {
   campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4316,10 +8240,10 @@ export type Chaos_Bag_Result_Mutation_Response = {
   returning: Array<Chaos_Bag_Result>;
 };
 
-/** on conflict condition type for table "chaos_bag_result" */
+/** on_conflict condition type for table "chaos_bag_result" */
 export type Chaos_Bag_Result_On_Conflict = {
   constraint: Chaos_Bag_Result_Constraint;
-  update_columns: Array<Chaos_Bag_Result_Update_Column>;
+  update_columns?: Array<Chaos_Bag_Result_Update_Column>;
   where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
 };
 
@@ -4329,6 +8253,7 @@ export type Chaos_Bag_Result_Order_By = {
   campaign?: InputMaybe<Campaign_Order_By>;
   created_at?: InputMaybe<Order_By>;
   curse?: InputMaybe<Order_By>;
+  difficulty?: InputMaybe<Order_By>;
   drawn?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sealed?: InputMaybe<Order_By>;
@@ -4358,6 +8283,8 @@ export enum Chaos_Bag_Result_Select_Column {
   /** column name */
   Curse = 'curse',
   /** column name */
+  Difficulty = 'difficulty',
+  /** column name */
   Drawn = 'drawn',
   /** column name */
   Id = 'id',
@@ -4376,6 +8303,7 @@ export type Chaos_Bag_Result_Set_Input = {
   bless?: InputMaybe<Scalars['Int']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   sealed?: InputMaybe<Scalars['jsonb']>;
@@ -4435,6 +8363,28 @@ export type Chaos_Bag_Result_Stddev_Samp_Order_By = {
   totalDrawn?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "chaos_bag_result" */
+export type Chaos_Bag_Result_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Chaos_Bag_Result_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Chaos_Bag_Result_Stream_Cursor_Value_Input = {
+  bless?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  curse?: InputMaybe<Scalars['Int']>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
+  drawn?: InputMaybe<Scalars['jsonb']>;
+  id?: InputMaybe<Scalars['Int']>;
+  sealed?: InputMaybe<Scalars['jsonb']>;
+  tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  totalDrawn?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Chaos_Bag_Result_Sum_Fields = {
   __typename?: 'chaos_bag_result_sum_fields';
@@ -4461,6 +8411,8 @@ export enum Chaos_Bag_Result_Update_Column {
   /** column name */
   Curse = 'curse',
   /** column name */
+  Difficulty = 'difficulty',
+  /** column name */
   Drawn = 'drawn',
   /** column name */
   Id = 'id',
@@ -4473,6 +8425,24 @@ export enum Chaos_Bag_Result_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Chaos_Bag_Result_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Chaos_Bag_Result_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Chaos_Bag_Result_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Chaos_Bag_Result_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Chaos_Bag_Result_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Chaos_Bag_Result_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Chaos_Bag_Result_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Chaos_Bag_Result_Set_Input>;
+  where: Chaos_Bag_Result_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Chaos_Bag_Result_Var_Pop_Fields = {
@@ -4563,7 +8533,7 @@ export type Chaos_Bag_Tarot_Mode_Bool_Exp = {
 
 /** unique or primary key constraints on table "chaos_bag_tarot_mode" */
 export enum Chaos_Bag_Tarot_Mode_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   ChaosBagTarotModePkey = 'chaos_bag_tarot_mode_pkey'
 }
 
@@ -4610,14 +8580,14 @@ export type Chaos_Bag_Tarot_Mode_Mutation_Response = {
 /** input type for inserting object relation for remote table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_Obj_Rel_Insert_Input = {
   data: Chaos_Bag_Tarot_Mode_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
 };
 
-/** on conflict condition type for table "chaos_bag_tarot_mode" */
+/** on_conflict condition type for table "chaos_bag_tarot_mode" */
 export type Chaos_Bag_Tarot_Mode_On_Conflict = {
   constraint: Chaos_Bag_Tarot_Mode_Constraint;
-  update_columns: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
+  update_columns?: Array<Chaos_Bag_Tarot_Mode_Update_Column>;
   where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
 };
 
@@ -4642,11 +8612,637 @@ export type Chaos_Bag_Tarot_Mode_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "chaos_bag_tarot_mode" */
+export type Chaos_Bag_Tarot_Mode_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Chaos_Bag_Tarot_Mode_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Chaos_Bag_Tarot_Mode_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "chaos_bag_tarot_mode" */
 export enum Chaos_Bag_Tarot_Mode_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Chaos_Bag_Tarot_Mode_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
+  where: Chaos_Bag_Tarot_Mode_Bool_Exp;
+};
+
+/** ordering argument of a cursor */
+export enum Cursor_Ordering {
+  /** ascending ordering of the cursor */
+  Asc = 'ASC',
+  /** descending ordering of the cursor */
+  Desc = 'DESC'
+}
+
+/** columns and relationships of "cycle" */
+export type Cycle = {
+  __typename?: 'cycle';
+  code: Scalars['String'];
+  official: Scalars['Boolean'];
+  /** An array relationship */
+  packs: Array<Pack>;
+  /** An aggregate relationship */
+  packs_aggregate: Pack_Aggregate;
+  position: Scalars['Int'];
+  real_name: Scalars['String'];
+  /** An array relationship */
+  translations: Array<Cycle_Name>;
+  /** An aggregate relationship */
+  translations_aggregate: Cycle_Name_Aggregate;
+};
+
+
+/** columns and relationships of "cycle" */
+export type CyclePacksArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cycle" */
+export type CyclePacks_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cycle" */
+export type CycleTranslationsArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cycle" */
+export type CycleTranslations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+/** aggregated selection of "cycle" */
+export type Cycle_Aggregate = {
+  __typename?: 'cycle_aggregate';
+  aggregate?: Maybe<Cycle_Aggregate_Fields>;
+  nodes: Array<Cycle>;
+};
+
+/** aggregate fields of "cycle" */
+export type Cycle_Aggregate_Fields = {
+  __typename?: 'cycle_aggregate_fields';
+  avg?: Maybe<Cycle_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Cycle_Max_Fields>;
+  min?: Maybe<Cycle_Min_Fields>;
+  stddev?: Maybe<Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Cycle_Sum_Fields>;
+  var_pop?: Maybe<Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "cycle" */
+export type Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Cycle_Avg_Fields = {
+  __typename?: 'cycle_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "cycle". All fields are combined with a logical 'AND'. */
+export type Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Cycle_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
+  packs?: InputMaybe<Pack_Bool_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  translations?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+/** unique or primary key constraints on table "cycle" */
+export enum Cycle_Constraint {
+  /** unique or primary key constraint on columns "code" */
+  CyclePkey = 'cycle_pkey'
+}
+
+/** input type for incrementing numeric columns in table "cycle" */
+export type Cycle_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "cycle" */
+export type Cycle_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  packs?: InputMaybe<Pack_Arr_Rel_Insert_Input>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Cycle_Name_Arr_Rel_Insert_Input>;
+};
+
+/** aggregate max on columns */
+export type Cycle_Max_Fields = {
+  __typename?: 'cycle_max_fields';
+  code?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  real_name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Cycle_Min_Fields = {
+  __typename?: 'cycle_min_fields';
+  code?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  real_name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "cycle" */
+export type Cycle_Mutation_Response = {
+  __typename?: 'cycle_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Cycle>;
+};
+
+/** columns and relationships of "cycle_name" */
+export type Cycle_Name = {
+  __typename?: 'cycle_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "cycle_name" */
+export type Cycle_Name_Aggregate = {
+  __typename?: 'cycle_name_aggregate';
+  aggregate?: Maybe<Cycle_Name_Aggregate_Fields>;
+  nodes: Array<Cycle_Name>;
+};
+
+/** aggregate fields of "cycle_name" */
+export type Cycle_Name_Aggregate_Fields = {
+  __typename?: 'cycle_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Cycle_Name_Max_Fields>;
+  min?: Maybe<Cycle_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "cycle_name" */
+export type Cycle_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "cycle_name" */
+export type Cycle_Name_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cycle_Name_Max_Order_By>;
+  min?: InputMaybe<Cycle_Name_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cycle_name" */
+export type Cycle_Name_Arr_Rel_Insert_Input = {
+  data: Array<Cycle_Name_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Cycle_Name_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "cycle_name". All fields are combined with a logical 'AND'. */
+export type Cycle_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Cycle_Name_Bool_Exp>>;
+  _not?: InputMaybe<Cycle_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Cycle_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "cycle_name" */
+export enum Cycle_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  CycleNamePkey = 'cycle_name_pkey'
+}
+
+/** input type for inserting data into table "cycle_name" */
+export type Cycle_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Cycle_Name_Max_Fields = {
+  __typename?: 'cycle_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "cycle_name" */
+export type Cycle_Name_Max_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Cycle_Name_Min_Fields = {
+  __typename?: 'cycle_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "cycle_name" */
+export type Cycle_Name_Min_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "cycle_name" */
+export type Cycle_Name_Mutation_Response = {
+  __typename?: 'cycle_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Cycle_Name>;
+};
+
+/** on_conflict condition type for table "cycle_name" */
+export type Cycle_Name_On_Conflict = {
+  constraint: Cycle_Name_Constraint;
+  update_columns?: Array<Cycle_Name_Update_Column>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "cycle_name". */
+export type Cycle_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: cycle_name */
+export type Cycle_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "cycle_name" */
+export enum Cycle_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "cycle_name" */
+export type Cycle_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "cycle_name" */
+export type Cycle_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Cycle_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Cycle_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "cycle_name" */
+export enum Cycle_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Cycle_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Cycle_Name_Set_Input>;
+  where: Cycle_Name_Bool_Exp;
+};
+
+/** input type for inserting object relation for remote table "cycle" */
+export type Cycle_Obj_Rel_Insert_Input = {
+  data: Cycle_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Cycle_On_Conflict>;
+};
+
+/** on_conflict condition type for table "cycle" */
+export type Cycle_On_Conflict = {
+  constraint: Cycle_Constraint;
+  update_columns?: Array<Cycle_Update_Column>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "cycle". */
+export type Cycle_Order_By = {
+  code?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
+  packs_aggregate?: InputMaybe<Pack_Aggregate_Order_By>;
+  position?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  translations_aggregate?: InputMaybe<Cycle_Name_Aggregate_Order_By>;
+};
+
+/** primary key columns input for table: cycle */
+export type Cycle_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "cycle" */
+export enum Cycle_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  RealName = 'real_name'
+}
+
+/** input type for updating data in table "cycle" */
+export type Cycle_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Cycle_Stddev_Fields = {
+  __typename?: 'cycle_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Cycle_Stddev_Pop_Fields = {
+  __typename?: 'cycle_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Cycle_Stddev_Samp_Fields = {
+  __typename?: 'cycle_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "cycle" */
+export type Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Cycle_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Cycle_Sum_Fields = {
+  __typename?: 'cycle_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "cycle" */
+export enum Cycle_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  RealName = 'real_name'
+}
+
+export type Cycle_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Cycle_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Cycle_Set_Input>;
+  where: Cycle_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Cycle_Var_Pop_Fields = {
+  __typename?: 'cycle_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Cycle_Var_Samp_Fields = {
+  __typename?: 'cycle_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Cycle_Variance_Fields = {
+  __typename?: 'cycle_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "faction_name" */
+export type Faction_Name = {
+  __typename?: 'faction_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "faction_name" */
+export type Faction_Name_Aggregate = {
+  __typename?: 'faction_name_aggregate';
+  aggregate?: Maybe<Faction_Name_Aggregate_Fields>;
+  nodes: Array<Faction_Name>;
+};
+
+/** aggregate fields of "faction_name" */
+export type Faction_Name_Aggregate_Fields = {
+  __typename?: 'faction_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Faction_Name_Max_Fields>;
+  min?: Maybe<Faction_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "faction_name" */
+export type Faction_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "faction_name". All fields are combined with a logical 'AND'. */
+export type Faction_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Faction_Name_Bool_Exp>>;
+  _not?: InputMaybe<Faction_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Faction_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "faction_name" */
+export enum Faction_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  FactionNamePkey = 'faction_name_pkey'
+}
+
+/** input type for inserting data into table "faction_name" */
+export type Faction_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Faction_Name_Max_Fields = {
+  __typename?: 'faction_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Faction_Name_Min_Fields = {
+  __typename?: 'faction_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "faction_name" */
+export type Faction_Name_Mutation_Response = {
+  __typename?: 'faction_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Faction_Name>;
+};
+
+/** on_conflict condition type for table "faction_name" */
+export type Faction_Name_On_Conflict = {
+  constraint: Faction_Name_Constraint;
+  update_columns?: Array<Faction_Name_Update_Column>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "faction_name". */
+export type Faction_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: faction_name */
+export type Faction_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "faction_name" */
+export enum Faction_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "faction_name" */
+export type Faction_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "faction_name" */
+export type Faction_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faction_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faction_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "faction_name" */
+export enum Faction_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Faction_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  where: Faction_Name_Bool_Exp;
+};
 
 /** columns and relationships of "faq" */
 export type Faq = {
@@ -4713,7 +9309,7 @@ export type Faq_Bool_Exp = {
 
 /** unique or primary key constraints on table "faq" */
 export enum Faq_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   FaqPkey = 'faq_pkey'
 }
 
@@ -4747,10 +9343,10 @@ export type Faq_Mutation_Response = {
   returning: Array<Faq>;
 };
 
-/** on conflict condition type for table "faq" */
+/** on_conflict condition type for table "faq" */
 export type Faq_On_Conflict = {
   constraint: Faq_Constraint;
-  update_columns: Array<Faq_Update_Column>;
+  update_columns?: Array<Faq_Update_Column>;
   where?: InputMaybe<Faq_Bool_Exp>;
 };
 
@@ -4776,6 +9372,20 @@ export enum Faq_Select_Column {
 
 /** input type for updating data in table "faq" */
 export type Faq_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "faq" */
+export type Faq_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faq_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faq_Stream_Cursor_Value_Input = {
   code?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
 };
@@ -4820,7 +9430,7 @@ export type Faq_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "faq_text" */
 export type Faq_Text_Arr_Rel_Insert_Input = {
   data: Array<Faq_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Faq_Text_On_Conflict>;
 };
 
@@ -4836,7 +9446,7 @@ export type Faq_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "faq_text" */
 export enum Faq_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   FaqTextPkey = 'faq_text_pkey'
 }
 
@@ -4886,10 +9496,10 @@ export type Faq_Text_Mutation_Response = {
   returning: Array<Faq_Text>;
 };
 
-/** on conflict condition type for table "faq_text" */
+/** on_conflict condition type for table "faq_text" */
 export type Faq_Text_On_Conflict = {
   constraint: Faq_Text_Constraint;
-  update_columns: Array<Faq_Text_Update_Column>;
+  update_columns?: Array<Faq_Text_Update_Column>;
   where?: InputMaybe<Faq_Text_Bool_Exp>;
 };
 
@@ -4923,6 +9533,21 @@ export type Faq_Text_Set_Input = {
   text?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "faq_text" */
+export type Faq_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Faq_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Faq_Text_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "faq_text" */
 export enum Faq_Text_Update_Column {
   /** column name */
@@ -4933,6 +9558,12 @@ export enum Faq_Text_Update_Column {
   Text = 'text'
 }
 
+export type Faq_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faq_Text_Set_Input>;
+  where: Faq_Text_Bool_Exp;
+};
+
 /** update columns of table "faq" */
 export enum Faq_Update_Column {
   /** column name */
@@ -4940,6 +9571,12 @@ export enum Faq_Update_Column {
   /** column name */
   Text = 'text'
 }
+
+export type Faq_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Faq_Set_Input>;
+  where: Faq_Bool_Exp;
+};
 
 /** columns and relationships of "friend_status" */
 export type Friend_Status = {
@@ -4978,6 +9615,7 @@ export type Friend_Status_Bool_Exp = {
   _and?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
   _not?: InputMaybe<Friend_Status_Bool_Exp>;
   _or?: InputMaybe<Array<Friend_Status_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
   status?: InputMaybe<Friend_Status_Type_Enum_Comparison_Exp>;
   user_id_a?: InputMaybe<String_Comparison_Exp>;
   user_id_b?: InputMaybe<String_Comparison_Exp>;
@@ -4985,7 +9623,7 @@ export type Friend_Status_Bool_Exp = {
 
 /** unique or primary key constraints on table "friend_status" */
 export enum Friend_Status_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id_a", "user_id_b" */
   FriendStatusPkey = 'friend_status_pkey'
 }
 
@@ -5019,15 +9657,16 @@ export type Friend_Status_Mutation_Response = {
   returning: Array<Friend_Status>;
 };
 
-/** on conflict condition type for table "friend_status" */
+/** on_conflict condition type for table "friend_status" */
 export type Friend_Status_On_Conflict = {
   constraint: Friend_Status_Constraint;
-  update_columns: Array<Friend_Status_Update_Column>;
+  update_columns?: Array<Friend_Status_Update_Column>;
   where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "friend_status". */
 export type Friend_Status_Order_By = {
+  id?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
   user_id_a?: InputMaybe<Order_By>;
   user_id_b?: InputMaybe<Order_By>;
@@ -5051,6 +9690,21 @@ export enum Friend_Status_Select_Column {
 
 /** input type for updating data in table "friend_status" */
 export type Friend_Status_Set_Input = {
+  status?: InputMaybe<Friend_Status_Type_Enum>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "friend_status" */
+export type Friend_Status_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Friend_Status_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Friend_Status_Stream_Cursor_Value_Input = {
   status?: InputMaybe<Friend_Status_Type_Enum>;
   user_id_a?: InputMaybe<Scalars['String']>;
   user_id_b?: InputMaybe<Scalars['String']>;
@@ -5094,7 +9748,7 @@ export type Friend_Status_Type_Bool_Exp = {
 
 /** unique or primary key constraints on table "friend_status_type" */
 export enum Friend_Status_Type_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   FriendStatusTypePkey = 'friend_status_type_pkey'
 }
 
@@ -5140,10 +9794,10 @@ export type Friend_Status_Type_Mutation_Response = {
   returning: Array<Friend_Status_Type>;
 };
 
-/** on conflict condition type for table "friend_status_type" */
+/** on_conflict condition type for table "friend_status_type" */
 export type Friend_Status_Type_On_Conflict = {
   constraint: Friend_Status_Type_Constraint;
-  update_columns: Array<Friend_Status_Type_Update_Column>;
+  update_columns?: Array<Friend_Status_Type_Update_Column>;
   where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
 };
 
@@ -5168,11 +9822,30 @@ export type Friend_Status_Type_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "friend_status_type" */
+export type Friend_Status_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Friend_Status_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Friend_Status_Type_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "friend_status_type" */
 export enum Friend_Status_Type_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Friend_Status_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Friend_Status_Type_Set_Input>;
+  where: Friend_Status_Type_Bool_Exp;
+};
 
 /** update columns of table "friend_status" */
 export enum Friend_Status_Update_Column {
@@ -5184,12 +9857,20 @@ export enum Friend_Status_Update_Column {
   UserIdB = 'user_id_b'
 }
 
+export type Friend_Status_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Friend_Status_Set_Input>;
+  where: Friend_Status_Bool_Exp;
+};
+
 /** columns and relationships of "full_card" */
 export type Full_Card = {
   __typename?: 'full_card';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
+  clues_fixed?: Maybe<Scalars['Boolean']>;
   code: Scalars['String'];
   cost?: Maybe<Scalars['Int']>;
   deck_limit?: Maybe<Scalars['Int']>;
@@ -5219,7 +9900,7 @@ export type Full_Card = {
   imagesrc?: Maybe<Scalars['String']>;
   is_unique?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
-  linked_card: Full_Card;
+  linked_card?: Maybe<Full_Card>;
   myriad?: Maybe<Scalars['Boolean']>;
   pack_code: Scalars['String'];
   pack_position: Scalars['Int'];
@@ -5258,6 +9939,7 @@ export type Full_Card = {
   type_code: Card_Type_Code_Enum;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version: Scalars['Int'];
   victory?: Maybe<Scalars['Int']>;
   xp?: Maybe<Scalars['Int']>;
 };
@@ -5402,6 +10084,7 @@ export type Full_Card_Avg_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
 };
@@ -5411,9 +10094,11 @@ export type Full_Card_Bool_Exp = {
   _and?: InputMaybe<Array<Full_Card_Bool_Exp>>;
   _not?: InputMaybe<Full_Card_Bool_Exp>;
   _or?: InputMaybe<Array<Full_Card_Bool_Exp>>;
+  alternate_required_code?: InputMaybe<String_Comparison_Exp>;
   back_link?: InputMaybe<String_Comparison_Exp>;
   backimagesrc?: InputMaybe<String_Comparison_Exp>;
   clues?: InputMaybe<Int_Comparison_Exp>;
+  clues_fixed?: InputMaybe<Boolean_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
   deck_limit?: InputMaybe<Int_Comparison_Exp>;
@@ -5472,13 +10157,14 @@ export type Full_Card_Bool_Exp = {
   type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   vengeance?: InputMaybe<Int_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
   victory?: InputMaybe<Int_Comparison_Exp>;
   xp?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "full_card" */
 export enum Full_Card_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code" */
   FullCardPkey = 'full_card_pkey'
 }
 
@@ -5527,15 +10213,18 @@ export type Full_Card_Inc_Input = {
   skill_willpower?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Scalars['Int']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
   xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "full_card" */
 export type Full_Card_Insert_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -5594,6 +10283,7 @@ export type Full_Card_Insert_Input = {
   type_code?: InputMaybe<Card_Type_Code_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
   xp?: InputMaybe<Scalars['Int']>;
 };
@@ -5601,6 +10291,7 @@ export type Full_Card_Insert_Input = {
 /** aggregate max on columns */
 export type Full_Card_Max_Fields = {
   __typename?: 'full_card_max_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
@@ -5646,6 +10337,7 @@ export type Full_Card_Max_Fields = {
   subtype_code?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
   xp?: Maybe<Scalars['Int']>;
 };
@@ -5653,6 +10345,7 @@ export type Full_Card_Max_Fields = {
 /** aggregate min on columns */
 export type Full_Card_Min_Fields = {
   __typename?: 'full_card_min_fields';
+  alternate_required_code?: Maybe<Scalars['String']>;
   back_link?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   clues?: Maybe<Scalars['Int']>;
@@ -5698,6 +10391,7 @@ export type Full_Card_Min_Fields = {
   subtype_code?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
   xp?: Maybe<Scalars['Int']>;
 };
@@ -5714,22 +10408,24 @@ export type Full_Card_Mutation_Response = {
 /** input type for inserting object relation for remote table "full_card" */
 export type Full_Card_Obj_Rel_Insert_Input = {
   data: Full_Card_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Full_Card_On_Conflict>;
 };
 
-/** on conflict condition type for table "full_card" */
+/** on_conflict condition type for table "full_card" */
 export type Full_Card_On_Conflict = {
   constraint: Full_Card_Constraint;
-  update_columns: Array<Full_Card_Update_Column>;
+  update_columns?: Array<Full_Card_Update_Column>;
   where?: InputMaybe<Full_Card_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "full_card". */
 export type Full_Card_Order_By = {
+  alternate_required_code?: InputMaybe<Order_By>;
   back_link?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   clues?: InputMaybe<Order_By>;
+  clues_fixed?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
   deck_limit?: InputMaybe<Order_By>;
@@ -5788,6 +10484,7 @@ export type Full_Card_Order_By = {
   type_code?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   vengeance?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
   victory?: InputMaybe<Order_By>;
   xp?: InputMaybe<Order_By>;
 };
@@ -5807,11 +10504,15 @@ export type Full_Card_Prepend_Input = {
 /** select columns of table "full_card" */
 export enum Full_Card_Select_Column {
   /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
   BackLink = 'back_link',
   /** column name */
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -5921,6 +10622,8 @@ export enum Full_Card_Select_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
+  Version = 'version',
+  /** column name */
   Victory = 'victory',
   /** column name */
   Xp = 'xp'
@@ -5928,9 +10631,11 @@ export enum Full_Card_Select_Column {
 
 /** input type for updating data in table "full_card" */
 export type Full_Card_Set_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
   back_link?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
   code?: InputMaybe<Scalars['String']>;
   cost?: InputMaybe<Scalars['Int']>;
   deck_limit?: InputMaybe<Scalars['Int']>;
@@ -5985,6 +10690,7 @@ export type Full_Card_Set_Input = {
   type_code?: InputMaybe<Card_Type_Code_Enum>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
   victory?: InputMaybe<Scalars['Int']>;
   xp?: InputMaybe<Scalars['Int']>;
 };
@@ -6014,6 +10720,7 @@ export type Full_Card_Stddev_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
 };
@@ -6043,6 +10750,7 @@ export type Full_Card_Stddev_Pop_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
 };
@@ -6072,8 +10780,83 @@ export type Full_Card_Stddev_Samp_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "full_card" */
+export type Full_Card_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Full_Card_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Full_Card_Stream_Cursor_Value_Input = {
+  alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_link?: InputMaybe<Scalars['String']>;
+  backimagesrc?: InputMaybe<Scalars['String']>;
+  clues?: InputMaybe<Scalars['Int']>;
+  clues_fixed?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  cost?: InputMaybe<Scalars['Int']>;
+  deck_limit?: InputMaybe<Scalars['Int']>;
+  deck_options?: InputMaybe<Scalars['jsonb']>;
+  deck_requirements?: InputMaybe<Scalars['jsonb']>;
+  doom?: InputMaybe<Scalars['Int']>;
+  double_sided?: InputMaybe<Scalars['Boolean']>;
+  encounter_code?: InputMaybe<Scalars['String']>;
+  encounter_position?: InputMaybe<Scalars['Int']>;
+  enemy_damage?: InputMaybe<Scalars['Int']>;
+  enemy_evade?: InputMaybe<Scalars['Int']>;
+  enemy_fight?: InputMaybe<Scalars['Int']>;
+  enemy_horror?: InputMaybe<Scalars['Int']>;
+  exceptional?: InputMaybe<Scalars['Boolean']>;
+  exile?: InputMaybe<Scalars['Boolean']>;
+  faction2_code?: InputMaybe<Scalars['String']>;
+  faction3_code?: InputMaybe<Scalars['String']>;
+  faction_code?: InputMaybe<Scalars['String']>;
+  health?: InputMaybe<Scalars['Int']>;
+  health_per_investigator?: InputMaybe<Scalars['Boolean']>;
+  hidden?: InputMaybe<Scalars['Boolean']>;
+  illustrator?: InputMaybe<Scalars['String']>;
+  imagesrc?: InputMaybe<Scalars['String']>;
+  is_unique?: InputMaybe<Scalars['Boolean']>;
+  myriad?: InputMaybe<Scalars['Boolean']>;
+  pack_code?: InputMaybe<Scalars['String']>;
+  pack_position?: InputMaybe<Scalars['Int']>;
+  permanent?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  real_back_flavor?: InputMaybe<Scalars['String']>;
+  real_back_name?: InputMaybe<Scalars['String']>;
+  real_back_text?: InputMaybe<Scalars['String']>;
+  real_encounter_set_name?: InputMaybe<Scalars['String']>;
+  real_flavor?: InputMaybe<Scalars['String']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  real_pack_name?: InputMaybe<Scalars['String']>;
+  real_slot?: InputMaybe<Scalars['String']>;
+  real_subname?: InputMaybe<Scalars['String']>;
+  real_text?: InputMaybe<Scalars['String']>;
+  real_traits?: InputMaybe<Scalars['String']>;
+  restrictions?: InputMaybe<Scalars['jsonb']>;
+  sanity?: InputMaybe<Scalars['Int']>;
+  shroud?: InputMaybe<Scalars['Int']>;
+  skill_agility?: InputMaybe<Scalars['Int']>;
+  skill_combat?: InputMaybe<Scalars['Int']>;
+  skill_intellect?: InputMaybe<Scalars['Int']>;
+  skill_wild?: InputMaybe<Scalars['Int']>;
+  skill_willpower?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Scalars['Int']>;
+  subtype_code?: InputMaybe<Scalars['String']>;
+  type_code?: InputMaybe<Card_Type_Code_Enum>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  vengeance?: InputMaybe<Scalars['Int']>;
+  version?: InputMaybe<Scalars['Int']>;
+  victory?: InputMaybe<Scalars['Int']>;
+  xp?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate sum on columns */
@@ -6101,6 +10884,7 @@ export type Full_Card_Sum_Fields = {
   skill_willpower?: Maybe<Scalars['Int']>;
   stage?: Maybe<Scalars['Int']>;
   vengeance?: Maybe<Scalars['Int']>;
+  version?: Maybe<Scalars['Int']>;
   victory?: Maybe<Scalars['Int']>;
   xp?: Maybe<Scalars['Int']>;
 };
@@ -6154,7 +10938,7 @@ export type Full_Card_Text_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "full_card_text" */
 export type Full_Card_Text_Arr_Rel_Insert_Input = {
   data: Array<Full_Card_Text_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Full_Card_Text_On_Conflict>;
 };
 
@@ -6179,7 +10963,7 @@ export type Full_Card_Text_Bool_Exp = {
 
 /** unique or primary key constraints on table "full_card_text" */
 export enum Full_Card_Text_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "code", "locale" */
   FullCardTextPkey = 'full_card_text_pkey'
 }
 
@@ -6274,10 +11058,10 @@ export type Full_Card_Text_Mutation_Response = {
   returning: Array<Full_Card_Text>;
 };
 
-/** on conflict condition type for table "full_card_text" */
+/** on_conflict condition type for table "full_card_text" */
 export type Full_Card_Text_On_Conflict = {
   constraint: Full_Card_Text_Constraint;
-  update_columns: Array<Full_Card_Text_Update_Column>;
+  update_columns?: Array<Full_Card_Text_Update_Column>;
   where?: InputMaybe<Full_Card_Text_Bool_Exp>;
 };
 
@@ -6347,6 +11131,30 @@ export type Full_Card_Text_Set_Input = {
   traits?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "full_card_text" */
+export type Full_Card_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Full_Card_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Full_Card_Text_Stream_Cursor_Value_Input = {
+  back_flavor?: InputMaybe<Scalars['String']>;
+  back_name?: InputMaybe<Scalars['String']>;
+  back_text?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']>;
+  encounter_name?: InputMaybe<Scalars['String']>;
+  flavor?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  slot?: InputMaybe<Scalars['String']>;
+  subname?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  traits?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "full_card_text" */
 export enum Full_Card_Text_Update_Column {
   /** column name */
@@ -6375,14 +11183,24 @@ export enum Full_Card_Text_Update_Column {
   Traits = 'traits'
 }
 
+export type Full_Card_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Full_Card_Text_Set_Input>;
+  where: Full_Card_Text_Bool_Exp;
+};
+
 /** update columns of table "full_card" */
 export enum Full_Card_Update_Column {
+  /** column name */
+  AlternateRequiredCode = 'alternate_required_code',
   /** column name */
   BackLink = 'back_link',
   /** column name */
   Backimagesrc = 'backimagesrc',
   /** column name */
   Clues = 'clues',
+  /** column name */
+  CluesFixed = 'clues_fixed',
   /** column name */
   Code = 'code',
   /** column name */
@@ -6492,10 +11310,30 @@ export enum Full_Card_Update_Column {
   /** column name */
   Vengeance = 'vengeance',
   /** column name */
+  Version = 'version',
+  /** column name */
   Victory = 'victory',
   /** column name */
   Xp = 'xp'
 }
+
+export type Full_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Full_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Full_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Full_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Full_Card_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Full_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Full_Card_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Full_Card_Set_Input>;
+  where: Full_Card_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Full_Card_Var_Pop_Fields = {
@@ -6522,6 +11360,7 @@ export type Full_Card_Var_Pop_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
 };
@@ -6551,6 +11390,7 @@ export type Full_Card_Var_Samp_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
 };
@@ -6580,8 +11420,145 @@ export type Full_Card_Variance_Fields = {
   skill_willpower?: Maybe<Scalars['Float']>;
   stage?: Maybe<Scalars['Float']>;
   vengeance?: Maybe<Scalars['Float']>;
+  version?: Maybe<Scalars['Float']>;
   victory?: Maybe<Scalars['Float']>;
   xp?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "gender" */
+export type Gender = {
+  __typename?: 'gender';
+  code: Scalars['String'];
+};
+
+/** aggregated selection of "gender" */
+export type Gender_Aggregate = {
+  __typename?: 'gender_aggregate';
+  aggregate?: Maybe<Gender_Aggregate_Fields>;
+  nodes: Array<Gender>;
+};
+
+/** aggregate fields of "gender" */
+export type Gender_Aggregate_Fields = {
+  __typename?: 'gender_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Gender_Max_Fields>;
+  min?: Maybe<Gender_Min_Fields>;
+};
+
+
+/** aggregate fields of "gender" */
+export type Gender_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Gender_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "gender". All fields are combined with a logical 'AND'. */
+export type Gender_Bool_Exp = {
+  _and?: InputMaybe<Array<Gender_Bool_Exp>>;
+  _not?: InputMaybe<Gender_Bool_Exp>;
+  _or?: InputMaybe<Array<Gender_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "gender" */
+export enum Gender_Constraint {
+  /** unique or primary key constraint on columns "code" */
+  GenderPkey = 'gender_pkey'
+}
+
+export enum Gender_Enum {
+  F = 'f',
+  M = 'm',
+  Nb = 'nb'
+}
+
+/** Boolean expression to compare columns of type "gender_enum". All fields are combined with logical 'AND'. */
+export type Gender_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Gender_Enum>;
+  _in?: InputMaybe<Array<Gender_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Gender_Enum>;
+  _nin?: InputMaybe<Array<Gender_Enum>>;
+};
+
+/** input type for inserting data into table "gender" */
+export type Gender_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Gender_Max_Fields = {
+  __typename?: 'gender_max_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Gender_Min_Fields = {
+  __typename?: 'gender_min_fields';
+  code?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "gender" */
+export type Gender_Mutation_Response = {
+  __typename?: 'gender_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Gender>;
+};
+
+/** on_conflict condition type for table "gender" */
+export type Gender_On_Conflict = {
+  constraint: Gender_Constraint;
+  update_columns?: Array<Gender_Update_Column>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "gender". */
+export type Gender_Order_By = {
+  code?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: gender */
+export type Gender_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "gender" */
+export enum Gender_Select_Column {
+  /** column name */
+  Code = 'code'
+}
+
+/** input type for updating data in table "gender" */
+export type Gender_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "gender" */
+export type Gender_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Gender_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Gender_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "gender" */
+export enum Gender_Update_Column {
+  /** column name */
+  Code = 'code'
+}
+
+export type Gender_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Gender_Set_Input>;
+  where: Gender_Bool_Exp;
 };
 
 /** columns and relationships of "guide_achievement" */
@@ -6646,7 +11623,7 @@ export type Guide_Achievement_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "guide_achievement" */
 export type Guide_Achievement_Arr_Rel_Insert_Input = {
   data: Array<Guide_Achievement_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
 };
 
@@ -6680,7 +11657,7 @@ export type Guide_Achievement_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_achievement" */
 export enum Guide_Achievement_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "id" */
   GuideAchievementPkey = 'guide_achievement_pkey'
 }
 
@@ -6753,10 +11730,10 @@ export type Guide_Achievement_Mutation_Response = {
   returning: Array<Guide_Achievement>;
 };
 
-/** on conflict condition type for table "guide_achievement" */
+/** on_conflict condition type for table "guide_achievement" */
 export type Guide_Achievement_On_Conflict = {
   constraint: Guide_Achievement_Constraint;
-  update_columns: Array<Guide_Achievement_Update_Column>;
+  update_columns?: Array<Guide_Achievement_Update_Column>;
   where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
@@ -6846,6 +11823,25 @@ export type Guide_Achievement_Stddev_Samp_Order_By = {
   value?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "guide_achievement" */
+export type Guide_Achievement_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Guide_Achievement_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Guide_Achievement_Stream_Cursor_Value_Input = {
+  bool_value?: InputMaybe<Scalars['Boolean']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  value?: InputMaybe<Scalars['Int']>;
+};
+
 /** aggregate sum on columns */
 export type Guide_Achievement_Sum_Fields = {
   __typename?: 'guide_achievement_sum_fields';
@@ -6876,6 +11872,14 @@ export enum Guide_Achievement_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type Guide_Achievement_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Guide_Achievement_Set_Input>;
+  where: Guide_Achievement_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Guide_Achievement_Var_Pop_Fields = {
@@ -6990,7 +11994,7 @@ export type Guide_Input_Append_Input = {
 /** input type for inserting array relation for remote table "guide_input" */
 export type Guide_Input_Arr_Rel_Insert_Input = {
   data: Array<Guide_Input_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Guide_Input_On_Conflict>;
 };
 
@@ -7025,7 +12029,7 @@ export type Guide_Input_Bool_Exp = {
 
 /** unique or primary key constraints on table "guide_input" */
 export enum Guide_Input_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "id" */
   GuideInputPkey = 'guide_input_pkey'
 }
 
@@ -7118,10 +12122,10 @@ export type Guide_Input_Mutation_Response = {
   returning: Array<Guide_Input>;
 };
 
-/** on conflict condition type for table "guide_input" */
+/** on_conflict condition type for table "guide_input" */
 export type Guide_Input_On_Conflict = {
   constraint: Guide_Input_Constraint;
-  update_columns: Array<Guide_Input_Update_Column>;
+  update_columns?: Array<Guide_Input_Update_Column>;
   where?: InputMaybe<Guide_Input_Bool_Exp>;
 };
 
@@ -7220,6 +12224,26 @@ export type Guide_Input_Stddev_Samp_Order_By = {
   inserted_idx?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "guide_input" */
+export type Guide_Input_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Guide_Input_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Guide_Input_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['String']>;
+  inserted_idx?: InputMaybe<Scalars['Int']>;
+  payload?: InputMaybe<Scalars['jsonb']>;
+  scenario?: InputMaybe<Scalars['String']>;
+  step?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Guide_Input_Sum_Fields = {
   __typename?: 'guide_input_sum_fields';
@@ -7252,6 +12276,24 @@ export enum Guide_Input_Update_Column {
   /** column name */
   Type = 'type'
 }
+
+export type Guide_Input_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Guide_Input_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Guide_Input_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Guide_Input_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Guide_Input_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Guide_Input_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Guide_Input_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Guide_Input_Set_Input>;
+  where: Guide_Input_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Guide_Input_Var_Pop_Fields = {
@@ -7411,7 +12453,7 @@ export type Investigator_Data_Append_Input = {
 /** input type for inserting array relation for remote table "investigator_data" */
 export type Investigator_Data_Arr_Rel_Insert_Input = {
   data: Array<Investigator_Data_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
@@ -7445,6 +12487,7 @@ export type Investigator_Data_Bool_Exp = {
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   cardCounts?: InputMaybe<Jsonb_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<String_Comparison_Exp>;
   ignoreStoryAssets?: InputMaybe<Jsonb_Comparison_Exp>;
   insane?: InputMaybe<Boolean_Comparison_Exp>;
   investigator?: InputMaybe<String_Comparison_Exp>;
@@ -7460,7 +12503,7 @@ export type Investigator_Data_Bool_Exp = {
 
 /** unique or primary key constraints on table "investigator_data" */
 export enum Investigator_Data_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "campaign_id", "investigator" */
   InvestigatorDataPkey = 'investigator_data_pkey'
 }
 
@@ -7586,14 +12629,14 @@ export type Investigator_Data_Mutation_Response = {
 /** input type for inserting object relation for remote table "investigator_data" */
 export type Investigator_Data_Obj_Rel_Insert_Input = {
   data: Investigator_Data_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Investigator_Data_On_Conflict>;
 };
 
-/** on conflict condition type for table "investigator_data" */
+/** on_conflict condition type for table "investigator_data" */
 export type Investigator_Data_On_Conflict = {
   constraint: Investigator_Data_Constraint;
-  update_columns: Array<Investigator_Data_Update_Column>;
+  update_columns?: Array<Investigator_Data_Update_Column>;
   where?: InputMaybe<Investigator_Data_Bool_Exp>;
 };
 
@@ -7605,6 +12648,7 @@ export type Investigator_Data_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   cardCounts?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
   ignoreStoryAssets?: InputMaybe<Order_By>;
   insane?: InputMaybe<Order_By>;
   investigator?: InputMaybe<Order_By>;
@@ -7747,6 +12791,34 @@ export type Investigator_Data_Stddev_Samp_Order_By = {
   spentXp?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "investigator_data" */
+export type Investigator_Data_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Investigator_Data_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Investigator_Data_Stream_Cursor_Value_Input = {
+  addedCards?: InputMaybe<Scalars['jsonb']>;
+  availableXp?: InputMaybe<Scalars['Int']>;
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  cardCounts?: InputMaybe<Scalars['jsonb']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  ignoreStoryAssets?: InputMaybe<Scalars['jsonb']>;
+  insane?: InputMaybe<Scalars['Boolean']>;
+  investigator?: InputMaybe<Scalars['String']>;
+  killed?: InputMaybe<Scalars['Boolean']>;
+  mental?: InputMaybe<Scalars['Int']>;
+  physical?: InputMaybe<Scalars['Int']>;
+  removedCards?: InputMaybe<Scalars['jsonb']>;
+  specialXp?: InputMaybe<Scalars['jsonb']>;
+  spentXp?: InputMaybe<Scalars['Int']>;
+  storyAssets?: InputMaybe<Scalars['jsonb']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Investigator_Data_Sum_Fields = {
   __typename?: 'investigator_data_sum_fields';
@@ -7801,6 +12873,24 @@ export enum Investigator_Data_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+export type Investigator_Data_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Investigator_Data_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Investigator_Data_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Investigator_Data_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Investigator_Data_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Investigator_Data_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Investigator_Data_Set_Input>;
+  where: Investigator_Data_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Investigator_Data_Var_Pop_Fields = {
@@ -7859,8 +12949,13 @@ export type Investigator_Data_Variance_Order_By = {
   spentXp?: InputMaybe<Order_By>;
 };
 
+export type Jsonb_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
 export type Jsonb_Comparison_Exp = {
+  _cast?: InputMaybe<Jsonb_Cast_Exp>;
   /** is the column contained in the given json value */
   _contained_in?: InputMaybe<Scalars['jsonb']>;
   /** does the column contain the given json value at the top level */
@@ -8088,6 +13183,21 @@ export type Latest_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "latest_decks" */
+export type Latest_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Latest_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Latest_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Latest_Decks_Sum_Fields = {
   __typename?: 'latest_decks_sum_fields';
@@ -8099,6 +13209,14 @@ export type Latest_Decks_Sum_Fields = {
 export type Latest_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Latest_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Latest_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Latest_Decks_Set_Input>;
+  where: Latest_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -8346,6 +13464,21 @@ export type Local_Decks_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "local_decks" */
+export type Local_Decks_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Local_Decks_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Local_Decks_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  owner_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Local_Decks_Sum_Fields = {
   __typename?: 'local_decks_sum_fields';
@@ -8357,6 +13490,14 @@ export type Local_Decks_Sum_Fields = {
 export type Local_Decks_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type Local_Decks_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Local_Decks_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Local_Decks_Set_Input>;
+  where: Local_Decks_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -8401,6 +13542,18 @@ export type Local_Decks_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  /** delete data from the table: "all_card" */
+  delete_all_card?: Maybe<All_Card_Mutation_Response>;
+  /** delete single row from the table: "all_card" */
+  delete_all_card_by_pk?: Maybe<All_Card>;
+  /** delete data from the table: "all_card_text" */
+  delete_all_card_text?: Maybe<All_Card_Text_Mutation_Response>;
+  /** delete single row from the table: "all_card_text" */
+  delete_all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** delete data from the table: "all_card_updated" */
+  delete_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
+  /** delete single row from the table: "all_card_updated" */
+  delete_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
   /** delete data from the table: "base_decks" */
   delete_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** delete data from the table: "campaign" */
@@ -8415,6 +13568,10 @@ export type Mutation_Root = {
   delete_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** delete single row from the table: "campaign_deck" */
   delete_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** delete data from the table: "campaign_difficulty" */
+  delete_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** delete single row from the table: "campaign_difficulty" */
+  delete_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** delete data from the table: "campaign_guide" */
   delete_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** delete data from the table: "campaign_investigator" */
@@ -8425,6 +13582,10 @@ export type Mutation_Root = {
   delete_card?: Maybe<Card_Mutation_Response>;
   /** delete single row from the table: "card" */
   delete_card_by_pk?: Maybe<Card>;
+  /** delete data from the table: "card_cycle" */
+  delete_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** delete single row from the table: "card_cycle" */
+  delete_card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** delete data from the table: "card_encounter_set" */
   delete_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** delete single row from the table: "card_encounter_set" */
@@ -8433,6 +13594,10 @@ export type Mutation_Root = {
   delete_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** delete single row from the table: "card_pack" */
   delete_card_pack_by_pk?: Maybe<Card_Pack>;
+  /** delete data from the table: "card_subtype_name" */
+  delete_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** delete single row from the table: "card_subtype_name" */
+  delete_card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
   /** delete data from the table: "card_text" */
   delete_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** delete single row from the table: "card_text" */
@@ -8441,6 +13606,10 @@ export type Mutation_Root = {
   delete_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** delete single row from the table: "card_type_code" */
   delete_card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** delete data from the table: "card_type_name" */
+  delete_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** delete single row from the table: "card_type_name" */
+  delete_card_type_name_by_pk?: Maybe<Card_Type_Name>;
   /** delete data from the table: "chaos_bag_result" */
   delete_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_result" */
@@ -8449,6 +13618,18 @@ export type Mutation_Root = {
   delete_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** delete single row from the table: "chaos_bag_tarot_mode" */
   delete_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** delete data from the table: "cycle" */
+  delete_cycle?: Maybe<Cycle_Mutation_Response>;
+  /** delete single row from the table: "cycle" */
+  delete_cycle_by_pk?: Maybe<Cycle>;
+  /** delete data from the table: "cycle_name" */
+  delete_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
+  /** delete single row from the table: "cycle_name" */
+  delete_cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** delete data from the table: "faction_name" */
+  delete_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** delete single row from the table: "faction_name" */
+  delete_faction_name_by_pk?: Maybe<Faction_Name>;
   /** delete data from the table: "faq" */
   delete_faq?: Maybe<Faq_Mutation_Response>;
   /** delete single row from the table: "faq" */
@@ -8473,6 +13654,10 @@ export type Mutation_Root = {
   delete_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** delete single row from the table: "full_card_text" */
   delete_full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** delete data from the table: "gender" */
+  delete_gender?: Maybe<Gender_Mutation_Response>;
+  /** delete single row from the table: "gender" */
+  delete_gender_by_pk?: Maybe<Gender>;
   /** delete data from the table: "guide_achievement" */
   delete_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** delete single row from the table: "guide_achievement" */
@@ -8489,6 +13674,18 @@ export type Mutation_Root = {
   delete_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
   /** delete data from the table: "local_decks" */
   delete_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** delete data from the table: "pack" */
+  delete_pack?: Maybe<Pack_Mutation_Response>;
+  /** delete single row from the table: "pack" */
+  delete_pack_by_pk?: Maybe<Pack>;
+  /** delete data from the table: "pack_name" */
+  delete_pack_name?: Maybe<Pack_Name_Mutation_Response>;
+  /** delete single row from the table: "pack_name" */
+  delete_pack_name_by_pk?: Maybe<Pack_Name>;
+  /** delete data from the table: "taboo_set" */
+  delete_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
+  /** delete single row from the table: "taboo_set" */
+  delete_taboo_set_by_pk?: Maybe<Taboo_Set>;
   /** delete data from the table: "user_campaigns" */
   delete_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** delete data from the table: "user_flag" */
@@ -8513,6 +13710,18 @@ export type Mutation_Root = {
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
   delete_users_by_pk?: Maybe<Users>;
+  /** insert data into the table: "all_card" */
+  insert_all_card?: Maybe<All_Card_Mutation_Response>;
+  /** insert a single row into the table: "all_card" */
+  insert_all_card_one?: Maybe<All_Card>;
+  /** insert data into the table: "all_card_text" */
+  insert_all_card_text?: Maybe<All_Card_Text_Mutation_Response>;
+  /** insert a single row into the table: "all_card_text" */
+  insert_all_card_text_one?: Maybe<All_Card_Text>;
+  /** insert data into the table: "all_card_updated" */
+  insert_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
+  /** insert a single row into the table: "all_card_updated" */
+  insert_all_card_updated_one?: Maybe<All_Card_Updated>;
   /** insert data into the table: "base_decks" */
   insert_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** insert a single row into the table: "base_decks" */
@@ -8527,6 +13736,10 @@ export type Mutation_Root = {
   insert_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** insert a single row into the table: "campaign_deck" */
   insert_campaign_deck_one?: Maybe<Campaign_Deck>;
+  /** insert data into the table: "campaign_difficulty" */
+  insert_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** insert a single row into the table: "campaign_difficulty" */
+  insert_campaign_difficulty_one?: Maybe<Campaign_Difficulty>;
   /** insert data into the table: "campaign_guide" */
   insert_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
   /** insert a single row into the table: "campaign_guide" */
@@ -8539,6 +13752,10 @@ export type Mutation_Root = {
   insert_campaign_one?: Maybe<Campaign>;
   /** insert data into the table: "card" */
   insert_card?: Maybe<Card_Mutation_Response>;
+  /** insert data into the table: "card_cycle" */
+  insert_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** insert a single row into the table: "card_cycle" */
+  insert_card_cycle_one?: Maybe<Card_Cycle>;
   /** insert data into the table: "card_encounter_set" */
   insert_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** insert a single row into the table: "card_encounter_set" */
@@ -8549,6 +13766,10 @@ export type Mutation_Root = {
   insert_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** insert a single row into the table: "card_pack" */
   insert_card_pack_one?: Maybe<Card_Pack>;
+  /** insert data into the table: "card_subtype_name" */
+  insert_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** insert a single row into the table: "card_subtype_name" */
+  insert_card_subtype_name_one?: Maybe<Card_Subtype_Name>;
   /** insert data into the table: "card_text" */
   insert_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** insert a single row into the table: "card_text" */
@@ -8557,6 +13778,10 @@ export type Mutation_Root = {
   insert_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** insert a single row into the table: "card_type_code" */
   insert_card_type_code_one?: Maybe<Card_Type_Code>;
+  /** insert data into the table: "card_type_name" */
+  insert_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** insert a single row into the table: "card_type_name" */
+  insert_card_type_name_one?: Maybe<Card_Type_Name>;
   /** insert data into the table: "chaos_bag_result" */
   insert_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_result" */
@@ -8565,6 +13790,18 @@ export type Mutation_Root = {
   insert_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** insert a single row into the table: "chaos_bag_tarot_mode" */
   insert_chaos_bag_tarot_mode_one?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** insert data into the table: "cycle" */
+  insert_cycle?: Maybe<Cycle_Mutation_Response>;
+  /** insert data into the table: "cycle_name" */
+  insert_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
+  /** insert a single row into the table: "cycle_name" */
+  insert_cycle_name_one?: Maybe<Cycle_Name>;
+  /** insert a single row into the table: "cycle" */
+  insert_cycle_one?: Maybe<Cycle>;
+  /** insert data into the table: "faction_name" */
+  insert_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** insert a single row into the table: "faction_name" */
+  insert_faction_name_one?: Maybe<Faction_Name>;
   /** insert data into the table: "faq" */
   insert_faq?: Maybe<Faq_Mutation_Response>;
   /** insert a single row into the table: "faq" */
@@ -8589,6 +13826,10 @@ export type Mutation_Root = {
   insert_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** insert a single row into the table: "full_card_text" */
   insert_full_card_text_one?: Maybe<Full_Card_Text>;
+  /** insert data into the table: "gender" */
+  insert_gender?: Maybe<Gender_Mutation_Response>;
+  /** insert a single row into the table: "gender" */
+  insert_gender_one?: Maybe<Gender>;
   /** insert data into the table: "guide_achievement" */
   insert_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** insert a single row into the table: "guide_achievement" */
@@ -8609,6 +13850,18 @@ export type Mutation_Root = {
   insert_local_decks?: Maybe<Local_Decks_Mutation_Response>;
   /** insert a single row into the table: "local_decks" */
   insert_local_decks_one?: Maybe<Local_Decks>;
+  /** insert data into the table: "pack" */
+  insert_pack?: Maybe<Pack_Mutation_Response>;
+  /** insert data into the table: "pack_name" */
+  insert_pack_name?: Maybe<Pack_Name_Mutation_Response>;
+  /** insert a single row into the table: "pack_name" */
+  insert_pack_name_one?: Maybe<Pack_Name>;
+  /** insert a single row into the table: "pack" */
+  insert_pack_one?: Maybe<Pack>;
+  /** insert data into the table: "taboo_set" */
+  insert_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
+  /** insert a single row into the table: "taboo_set" */
+  insert_taboo_set_one?: Maybe<Taboo_Set>;
   /** insert data into the table: "user_campaigns" */
   insert_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
   /** insert a single row into the table: "user_campaigns" */
@@ -8641,118 +13894,303 @@ export type Mutation_Root = {
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
+  /** update data of the table: "all_card" */
+  update_all_card?: Maybe<All_Card_Mutation_Response>;
+  /** update single row of the table: "all_card" */
+  update_all_card_by_pk?: Maybe<All_Card>;
+  /** update multiples rows of table: "all_card" */
+  update_all_card_many?: Maybe<Array<Maybe<All_Card_Mutation_Response>>>;
+  /** update data of the table: "all_card_text" */
+  update_all_card_text?: Maybe<All_Card_Text_Mutation_Response>;
+  /** update single row of the table: "all_card_text" */
+  update_all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** update multiples rows of table: "all_card_text" */
+  update_all_card_text_many?: Maybe<Array<Maybe<All_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "all_card_updated" */
+  update_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
+  /** update single row of the table: "all_card_updated" */
+  update_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** update multiples rows of table: "all_card_updated" */
+  update_all_card_updated_many?: Maybe<Array<Maybe<All_Card_Updated_Mutation_Response>>>;
   /** update data of the table: "base_decks" */
   update_base_decks?: Maybe<Base_Decks_Mutation_Response>;
+  /** update multiples rows of table: "base_decks" */
+  update_base_decks_many?: Maybe<Array<Maybe<Base_Decks_Mutation_Response>>>;
   /** update data of the table: "campaign" */
   update_campaign?: Maybe<Campaign_Mutation_Response>;
   /** update data of the table: "campaign_access" */
   update_campaign_access?: Maybe<Campaign_Access_Mutation_Response>;
   /** update single row of the table: "campaign_access" */
   update_campaign_access_by_pk?: Maybe<Campaign_Access>;
+  /** update multiples rows of table: "campaign_access" */
+  update_campaign_access_many?: Maybe<Array<Maybe<Campaign_Access_Mutation_Response>>>;
   /** update single row of the table: "campaign" */
   update_campaign_by_pk?: Maybe<Campaign>;
   /** update data of the table: "campaign_deck" */
   update_campaign_deck?: Maybe<Campaign_Deck_Mutation_Response>;
   /** update single row of the table: "campaign_deck" */
   update_campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** update multiples rows of table: "campaign_deck" */
+  update_campaign_deck_many?: Maybe<Array<Maybe<Campaign_Deck_Mutation_Response>>>;
+  /** update data of the table: "campaign_difficulty" */
+  update_campaign_difficulty?: Maybe<Campaign_Difficulty_Mutation_Response>;
+  /** update single row of the table: "campaign_difficulty" */
+  update_campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
+  /** update multiples rows of table: "campaign_difficulty" */
+  update_campaign_difficulty_many?: Maybe<Array<Maybe<Campaign_Difficulty_Mutation_Response>>>;
   /** update data of the table: "campaign_guide" */
   update_campaign_guide?: Maybe<Campaign_Guide_Mutation_Response>;
+  /** update multiples rows of table: "campaign_guide" */
+  update_campaign_guide_many?: Maybe<Array<Maybe<Campaign_Guide_Mutation_Response>>>;
   /** update data of the table: "campaign_investigator" */
   update_campaign_investigator?: Maybe<Campaign_Investigator_Mutation_Response>;
   /** update single row of the table: "campaign_investigator" */
   update_campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** update multiples rows of table: "campaign_investigator" */
+  update_campaign_investigator_many?: Maybe<Array<Maybe<Campaign_Investigator_Mutation_Response>>>;
+  /** update multiples rows of table: "campaign" */
+  update_campaign_many?: Maybe<Array<Maybe<Campaign_Mutation_Response>>>;
   /** update data of the table: "card" */
   update_card?: Maybe<Card_Mutation_Response>;
   /** update single row of the table: "card" */
   update_card_by_pk?: Maybe<Card>;
+  /** update data of the table: "card_cycle" */
+  update_card_cycle?: Maybe<Card_Cycle_Mutation_Response>;
+  /** update single row of the table: "card_cycle" */
+  update_card_cycle_by_pk?: Maybe<Card_Cycle>;
+  /** update multiples rows of table: "card_cycle" */
+  update_card_cycle_many?: Maybe<Array<Maybe<Card_Cycle_Mutation_Response>>>;
   /** update data of the table: "card_encounter_set" */
   update_card_encounter_set?: Maybe<Card_Encounter_Set_Mutation_Response>;
   /** update single row of the table: "card_encounter_set" */
   update_card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
+  /** update multiples rows of table: "card_encounter_set" */
+  update_card_encounter_set_many?: Maybe<Array<Maybe<Card_Encounter_Set_Mutation_Response>>>;
+  /** update multiples rows of table: "card" */
+  update_card_many?: Maybe<Array<Maybe<Card_Mutation_Response>>>;
   /** update data of the table: "card_pack" */
   update_card_pack?: Maybe<Card_Pack_Mutation_Response>;
   /** update single row of the table: "card_pack" */
   update_card_pack_by_pk?: Maybe<Card_Pack>;
+  /** update multiples rows of table: "card_pack" */
+  update_card_pack_many?: Maybe<Array<Maybe<Card_Pack_Mutation_Response>>>;
+  /** update data of the table: "card_subtype_name" */
+  update_card_subtype_name?: Maybe<Card_Subtype_Name_Mutation_Response>;
+  /** update single row of the table: "card_subtype_name" */
+  update_card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
+  /** update multiples rows of table: "card_subtype_name" */
+  update_card_subtype_name_many?: Maybe<Array<Maybe<Card_Subtype_Name_Mutation_Response>>>;
   /** update data of the table: "card_text" */
   update_card_text?: Maybe<Card_Text_Mutation_Response>;
   /** update single row of the table: "card_text" */
   update_card_text_by_pk?: Maybe<Card_Text>;
+  /** update multiples rows of table: "card_text" */
+  update_card_text_many?: Maybe<Array<Maybe<Card_Text_Mutation_Response>>>;
   /** update data of the table: "card_type_code" */
   update_card_type_code?: Maybe<Card_Type_Code_Mutation_Response>;
   /** update single row of the table: "card_type_code" */
   update_card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** update multiples rows of table: "card_type_code" */
+  update_card_type_code_many?: Maybe<Array<Maybe<Card_Type_Code_Mutation_Response>>>;
+  /** update data of the table: "card_type_name" */
+  update_card_type_name?: Maybe<Card_Type_Name_Mutation_Response>;
+  /** update single row of the table: "card_type_name" */
+  update_card_type_name_by_pk?: Maybe<Card_Type_Name>;
+  /** update multiples rows of table: "card_type_name" */
+  update_card_type_name_many?: Maybe<Array<Maybe<Card_Type_Name_Mutation_Response>>>;
   /** update data of the table: "chaos_bag_result" */
   update_chaos_bag_result?: Maybe<Chaos_Bag_Result_Mutation_Response>;
   /** update single row of the table: "chaos_bag_result" */
   update_chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** update multiples rows of table: "chaos_bag_result" */
+  update_chaos_bag_result_many?: Maybe<Array<Maybe<Chaos_Bag_Result_Mutation_Response>>>;
   /** update data of the table: "chaos_bag_tarot_mode" */
   update_chaos_bag_tarot_mode?: Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>;
   /** update single row of the table: "chaos_bag_tarot_mode" */
   update_chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** update multiples rows of table: "chaos_bag_tarot_mode" */
+  update_chaos_bag_tarot_mode_many?: Maybe<Array<Maybe<Chaos_Bag_Tarot_Mode_Mutation_Response>>>;
+  /** update data of the table: "cycle" */
+  update_cycle?: Maybe<Cycle_Mutation_Response>;
+  /** update single row of the table: "cycle" */
+  update_cycle_by_pk?: Maybe<Cycle>;
+  /** update multiples rows of table: "cycle" */
+  update_cycle_many?: Maybe<Array<Maybe<Cycle_Mutation_Response>>>;
+  /** update data of the table: "cycle_name" */
+  update_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
+  /** update single row of the table: "cycle_name" */
+  update_cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** update multiples rows of table: "cycle_name" */
+  update_cycle_name_many?: Maybe<Array<Maybe<Cycle_Name_Mutation_Response>>>;
+  /** update data of the table: "faction_name" */
+  update_faction_name?: Maybe<Faction_Name_Mutation_Response>;
+  /** update single row of the table: "faction_name" */
+  update_faction_name_by_pk?: Maybe<Faction_Name>;
+  /** update multiples rows of table: "faction_name" */
+  update_faction_name_many?: Maybe<Array<Maybe<Faction_Name_Mutation_Response>>>;
   /** update data of the table: "faq" */
   update_faq?: Maybe<Faq_Mutation_Response>;
   /** update single row of the table: "faq" */
   update_faq_by_pk?: Maybe<Faq>;
+  /** update multiples rows of table: "faq" */
+  update_faq_many?: Maybe<Array<Maybe<Faq_Mutation_Response>>>;
   /** update data of the table: "faq_text" */
   update_faq_text?: Maybe<Faq_Text_Mutation_Response>;
   /** update single row of the table: "faq_text" */
   update_faq_text_by_pk?: Maybe<Faq_Text>;
+  /** update multiples rows of table: "faq_text" */
+  update_faq_text_many?: Maybe<Array<Maybe<Faq_Text_Mutation_Response>>>;
   /** update data of the table: "friend_status" */
   update_friend_status?: Maybe<Friend_Status_Mutation_Response>;
   /** update single row of the table: "friend_status" */
   update_friend_status_by_pk?: Maybe<Friend_Status>;
+  /** update multiples rows of table: "friend_status" */
+  update_friend_status_many?: Maybe<Array<Maybe<Friend_Status_Mutation_Response>>>;
   /** update data of the table: "friend_status_type" */
   update_friend_status_type?: Maybe<Friend_Status_Type_Mutation_Response>;
   /** update single row of the table: "friend_status_type" */
   update_friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** update multiples rows of table: "friend_status_type" */
+  update_friend_status_type_many?: Maybe<Array<Maybe<Friend_Status_Type_Mutation_Response>>>;
   /** update data of the table: "full_card" */
   update_full_card?: Maybe<Full_Card_Mutation_Response>;
   /** update single row of the table: "full_card" */
   update_full_card_by_pk?: Maybe<Full_Card>;
+  /** update multiples rows of table: "full_card" */
+  update_full_card_many?: Maybe<Array<Maybe<Full_Card_Mutation_Response>>>;
   /** update data of the table: "full_card_text" */
   update_full_card_text?: Maybe<Full_Card_Text_Mutation_Response>;
   /** update single row of the table: "full_card_text" */
   update_full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** update multiples rows of table: "full_card_text" */
+  update_full_card_text_many?: Maybe<Array<Maybe<Full_Card_Text_Mutation_Response>>>;
+  /** update data of the table: "gender" */
+  update_gender?: Maybe<Gender_Mutation_Response>;
+  /** update single row of the table: "gender" */
+  update_gender_by_pk?: Maybe<Gender>;
+  /** update multiples rows of table: "gender" */
+  update_gender_many?: Maybe<Array<Maybe<Gender_Mutation_Response>>>;
   /** update data of the table: "guide_achievement" */
   update_guide_achievement?: Maybe<Guide_Achievement_Mutation_Response>;
   /** update single row of the table: "guide_achievement" */
   update_guide_achievement_by_pk?: Maybe<Guide_Achievement>;
+  /** update multiples rows of table: "guide_achievement" */
+  update_guide_achievement_many?: Maybe<Array<Maybe<Guide_Achievement_Mutation_Response>>>;
   /** update data of the table: "guide_input" */
   update_guide_input?: Maybe<Guide_Input_Mutation_Response>;
   /** update single row of the table: "guide_input" */
   update_guide_input_by_pk?: Maybe<Guide_Input>;
+  /** update multiples rows of table: "guide_input" */
+  update_guide_input_many?: Maybe<Array<Maybe<Guide_Input_Mutation_Response>>>;
   /** update data of the table: "investigator_data" */
   update_investigator_data?: Maybe<Investigator_Data_Mutation_Response>;
   /** update single row of the table: "investigator_data" */
   update_investigator_data_by_pk?: Maybe<Investigator_Data>;
+  /** update multiples rows of table: "investigator_data" */
+  update_investigator_data_many?: Maybe<Array<Maybe<Investigator_Data_Mutation_Response>>>;
   /** update data of the table: "latest_decks" */
   update_latest_decks?: Maybe<Latest_Decks_Mutation_Response>;
+  /** update multiples rows of table: "latest_decks" */
+  update_latest_decks_many?: Maybe<Array<Maybe<Latest_Decks_Mutation_Response>>>;
   /** update data of the table: "local_decks" */
   update_local_decks?: Maybe<Local_Decks_Mutation_Response>;
+  /** update multiples rows of table: "local_decks" */
+  update_local_decks_many?: Maybe<Array<Maybe<Local_Decks_Mutation_Response>>>;
+  /** update data of the table: "pack" */
+  update_pack?: Maybe<Pack_Mutation_Response>;
+  /** update single row of the table: "pack" */
+  update_pack_by_pk?: Maybe<Pack>;
+  /** update multiples rows of table: "pack" */
+  update_pack_many?: Maybe<Array<Maybe<Pack_Mutation_Response>>>;
+  /** update data of the table: "pack_name" */
+  update_pack_name?: Maybe<Pack_Name_Mutation_Response>;
+  /** update single row of the table: "pack_name" */
+  update_pack_name_by_pk?: Maybe<Pack_Name>;
+  /** update multiples rows of table: "pack_name" */
+  update_pack_name_many?: Maybe<Array<Maybe<Pack_Name_Mutation_Response>>>;
+  /** update data of the table: "taboo_set" */
+  update_taboo_set?: Maybe<Taboo_Set_Mutation_Response>;
+  /** update single row of the table: "taboo_set" */
+  update_taboo_set_by_pk?: Maybe<Taboo_Set>;
+  /** update multiples rows of table: "taboo_set" */
+  update_taboo_set_many?: Maybe<Array<Maybe<Taboo_Set_Mutation_Response>>>;
   /** update data of the table: "user_campaigns" */
   update_user_campaigns?: Maybe<User_Campaigns_Mutation_Response>;
+  /** update multiples rows of table: "user_campaigns" */
+  update_user_campaigns_many?: Maybe<Array<Maybe<User_Campaigns_Mutation_Response>>>;
   /** update data of the table: "user_flag" */
   update_user_flag?: Maybe<User_Flag_Mutation_Response>;
   /** update single row of the table: "user_flag" */
   update_user_flag_by_pk?: Maybe<User_Flag>;
+  /** update multiples rows of table: "user_flag" */
+  update_user_flag_many?: Maybe<Array<Maybe<User_Flag_Mutation_Response>>>;
   /** update data of the table: "user_flag_type" */
   update_user_flag_type?: Maybe<User_Flag_Type_Mutation_Response>;
   /** update single row of the table: "user_flag_type" */
   update_user_flag_type_by_pk?: Maybe<User_Flag_Type>;
+  /** update multiples rows of table: "user_flag_type" */
+  update_user_flag_type_many?: Maybe<Array<Maybe<User_Flag_Type_Mutation_Response>>>;
   /** update data of the table: "user_friends" */
   update_user_friends?: Maybe<User_Friends_Mutation_Response>;
+  /** update multiples rows of table: "user_friends" */
+  update_user_friends_many?: Maybe<Array<Maybe<User_Friends_Mutation_Response>>>;
   /** update data of the table: "user_received_friend_requests" */
   update_user_received_friend_requests?: Maybe<User_Received_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "user_received_friend_requests" */
+  update_user_received_friend_requests_many?: Maybe<Array<Maybe<User_Received_Friend_Requests_Mutation_Response>>>;
   /** update data of the table: "user_sent_friend_requests" */
   update_user_sent_friend_requests?: Maybe<User_Sent_Friend_Requests_Mutation_Response>;
+  /** update multiples rows of table: "user_sent_friend_requests" */
+  update_user_sent_friend_requests_many?: Maybe<Array<Maybe<User_Sent_Friend_Requests_Mutation_Response>>>;
   /** update data of the table: "user_settings" */
   update_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** update single row of the table: "user_settings" */
   update_user_settings_by_pk?: Maybe<User_Settings>;
+  /** update multiples rows of table: "user_settings" */
+  update_user_settings_many?: Maybe<Array<Maybe<User_Settings_Mutation_Response>>>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
   update_users_by_pk?: Maybe<Users>;
+  /** update multiples rows of table: "users" */
+  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_CardArgs = {
+  where: All_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_TextArgs = {
+  where: All_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_UpdatedArgs = {
+  where: All_Card_Updated_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Updated_By_PkArgs = {
+  locale: Scalars['String'];
 };
 
 
@@ -8799,6 +14237,18 @@ export type Mutation_RootDelete_Campaign_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Campaign_DifficultyArgs = {
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Campaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Campaign_GuideArgs = {
   where: Campaign_Guide_Bool_Exp;
 };
@@ -8830,6 +14280,19 @@ export type Mutation_RootDelete_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Card_CycleArgs = {
+  where: Card_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Card_Encounter_SetArgs = {
   where: Card_Encounter_Set_Bool_Exp;
 };
@@ -8850,6 +14313,19 @@ export type Mutation_RootDelete_Card_PackArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Card_Pack_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Subtype_NameArgs = {
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Subtype_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
 };
@@ -8881,6 +14357,19 @@ export type Mutation_RootDelete_Card_Type_Code_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Card_Type_NameArgs = {
+  where: Card_Type_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Card_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Chaos_Bag_ResultArgs = {
   where: Chaos_Bag_Result_Bool_Exp;
 };
@@ -8901,6 +14390,44 @@ export type Mutation_RootDelete_Chaos_Bag_Tarot_ModeArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Chaos_Bag_Tarot_Mode_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_CycleArgs = {
+  where: Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Cycle_NameArgs = {
+  where: Cycle_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Cycle_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faction_NameArgs = {
+  where: Faction_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Faction_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -8980,6 +14507,18 @@ export type Mutation_RootDelete_Full_Card_Text_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_GenderArgs = {
+  where: Gender_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Gender_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_Guide_AchievementArgs = {
   where: Guide_Achievement_Bool_Exp;
 };
@@ -9027,6 +14566,43 @@ export type Mutation_RootDelete_Latest_DecksArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Local_DecksArgs = {
   where: Local_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_PackArgs = {
+  where: Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Pack_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Pack_NameArgs = {
+  where: Pack_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Pack_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Taboo_SetArgs = {
+  where: Taboo_Set_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Taboo_Set_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -9104,6 +14680,48 @@ export type Mutation_RootDelete_Users_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_All_CardArgs = {
+  objects: Array<All_Card_Insert_Input>;
+  on_conflict?: InputMaybe<All_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_OneArgs = {
+  object: All_Card_Insert_Input;
+  on_conflict?: InputMaybe<All_Card_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_TextArgs = {
+  objects: Array<All_Card_Text_Insert_Input>;
+  on_conflict?: InputMaybe<All_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_Text_OneArgs = {
+  object: All_Card_Text_Insert_Input;
+  on_conflict?: InputMaybe<All_Card_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_UpdatedArgs = {
+  objects: Array<All_Card_Updated_Insert_Input>;
+  on_conflict?: InputMaybe<All_Card_Updated_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_Updated_OneArgs = {
+  object: All_Card_Updated_Insert_Input;
+  on_conflict?: InputMaybe<All_Card_Updated_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Base_DecksArgs = {
   objects: Array<Base_Decks_Insert_Input>;
 };
@@ -9151,6 +14769,20 @@ export type Mutation_RootInsert_Campaign_Deck_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Campaign_DifficultyArgs = {
+  objects: Array<Campaign_Difficulty_Insert_Input>;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Campaign_Difficulty_OneArgs = {
+  object: Campaign_Difficulty_Insert_Input;
+  on_conflict?: InputMaybe<Campaign_Difficulty_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Campaign_GuideArgs = {
   objects: Array<Campaign_Guide_Insert_Input>;
 };
@@ -9191,6 +14823,20 @@ export type Mutation_RootInsert_CardArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Card_CycleArgs = {
+  objects: Array<Card_Cycle_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Cycle_OneArgs = {
+  object: Card_Cycle_Insert_Input;
+  on_conflict?: InputMaybe<Card_Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Card_Encounter_SetArgs = {
   objects: Array<Card_Encounter_Set_Insert_Input>;
   on_conflict?: InputMaybe<Card_Encounter_Set_On_Conflict>;
@@ -9226,6 +14872,20 @@ export type Mutation_RootInsert_Card_Pack_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Card_Subtype_NameArgs = {
+  objects: Array<Card_Subtype_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Subtype_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Subtype_Name_OneArgs = {
+  object: Card_Subtype_Name_Insert_Input;
+  on_conflict?: InputMaybe<Card_Subtype_Name_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Card_TextArgs = {
   objects: Array<Card_Text_Insert_Input>;
   on_conflict?: InputMaybe<Card_Text_On_Conflict>;
@@ -9254,6 +14914,20 @@ export type Mutation_RootInsert_Card_Type_Code_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Card_Type_NameArgs = {
+  objects: Array<Card_Type_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Card_Type_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Card_Type_Name_OneArgs = {
+  object: Card_Type_Name_Insert_Input;
+  on_conflict?: InputMaybe<Card_Type_Name_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Chaos_Bag_ResultArgs = {
   objects: Array<Chaos_Bag_Result_Insert_Input>;
   on_conflict?: InputMaybe<Chaos_Bag_Result_On_Conflict>;
@@ -9278,6 +14952,48 @@ export type Mutation_RootInsert_Chaos_Bag_Tarot_ModeArgs = {
 export type Mutation_RootInsert_Chaos_Bag_Tarot_Mode_OneArgs = {
   object: Chaos_Bag_Tarot_Mode_Insert_Input;
   on_conflict?: InputMaybe<Chaos_Bag_Tarot_Mode_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_CycleArgs = {
+  objects: Array<Cycle_Insert_Input>;
+  on_conflict?: InputMaybe<Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Cycle_NameArgs = {
+  objects: Array<Cycle_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Cycle_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Cycle_Name_OneArgs = {
+  object: Cycle_Name_Insert_Input;
+  on_conflict?: InputMaybe<Cycle_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Cycle_OneArgs = {
+  object: Cycle_Insert_Input;
+  on_conflict?: InputMaybe<Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faction_NameArgs = {
+  objects: Array<Faction_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Faction_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Faction_Name_OneArgs = {
+  object: Faction_Name_Insert_Input;
+  on_conflict?: InputMaybe<Faction_Name_On_Conflict>;
 };
 
 
@@ -9366,6 +15082,20 @@ export type Mutation_RootInsert_Full_Card_Text_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_GenderArgs = {
+  objects: Array<Gender_Insert_Input>;
+  on_conflict?: InputMaybe<Gender_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Gender_OneArgs = {
+  object: Gender_Insert_Input;
+  on_conflict?: InputMaybe<Gender_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_Guide_AchievementArgs = {
   objects: Array<Guide_Achievement_Insert_Input>;
   on_conflict?: InputMaybe<Guide_Achievement_On_Conflict>;
@@ -9428,6 +15158,48 @@ export type Mutation_RootInsert_Local_DecksArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Local_Decks_OneArgs = {
   object: Local_Decks_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_PackArgs = {
+  objects: Array<Pack_Insert_Input>;
+  on_conflict?: InputMaybe<Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Pack_NameArgs = {
+  objects: Array<Pack_Name_Insert_Input>;
+  on_conflict?: InputMaybe<Pack_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Pack_Name_OneArgs = {
+  object: Pack_Name_Insert_Input;
+  on_conflict?: InputMaybe<Pack_Name_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Pack_OneArgs = {
+  object: Pack_Insert_Input;
+  on_conflict?: InputMaybe<Pack_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Taboo_SetArgs = {
+  objects: Array<Taboo_Set_Insert_Input>;
+  on_conflict?: InputMaybe<Taboo_Set_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Taboo_Set_OneArgs = {
+  object: Taboo_Set_Insert_Input;
+  on_conflict?: InputMaybe<Taboo_Set_On_Conflict>;
 };
 
 
@@ -9536,10 +15308,90 @@ export type Mutation_RootInsert_Users_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_All_CardArgs = {
+  _append?: InputMaybe<All_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<All_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<All_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<All_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<All_Card_Inc_Input>;
+  _prepend?: InputMaybe<All_Card_Prepend_Input>;
+  _set?: InputMaybe<All_Card_Set_Input>;
+  where: All_Card_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_By_PkArgs = {
+  _append?: InputMaybe<All_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<All_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<All_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<All_Card_Delete_Key_Input>;
+  _inc?: InputMaybe<All_Card_Inc_Input>;
+  _prepend?: InputMaybe<All_Card_Prepend_Input>;
+  _set?: InputMaybe<All_Card_Set_Input>;
+  pk_columns: All_Card_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_ManyArgs = {
+  updates: Array<All_Card_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_TextArgs = {
+  _set?: InputMaybe<All_Card_Text_Set_Input>;
+  where: All_Card_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Text_By_PkArgs = {
+  _set?: InputMaybe<All_Card_Text_Set_Input>;
+  pk_columns: All_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Text_ManyArgs = {
+  updates: Array<All_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_UpdatedArgs = {
+  _inc?: InputMaybe<All_Card_Updated_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_Set_Input>;
+  where: All_Card_Updated_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_PkArgs = {
+  _inc?: InputMaybe<All_Card_Updated_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_Set_Input>;
+  pk_columns: All_Card_Updated_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_ManyArgs = {
+  updates: Array<All_Card_Updated_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Base_DecksArgs = {
   _inc?: InputMaybe<Base_Decks_Inc_Input>;
   _set?: InputMaybe<Base_Decks_Set_Input>;
   where: Base_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Base_Decks_ManyArgs = {
+  updates: Array<Base_Decks_Updates>;
 };
 
 
@@ -9569,6 +15421,12 @@ export type Mutation_RootUpdate_Campaign_Access_By_PkArgs = {
   _inc?: InputMaybe<Campaign_Access_Inc_Input>;
   _set?: InputMaybe<Campaign_Access_Set_Input>;
   pk_columns: Campaign_Access_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Access_ManyArgs = {
+  updates: Array<Campaign_Access_Updates>;
 };
 
 
@@ -9612,10 +15470,42 @@ export type Mutation_RootUpdate_Campaign_Deck_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Campaign_Deck_ManyArgs = {
+  updates: Array<Campaign_Deck_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_DifficultyArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  where: Campaign_Difficulty_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Difficulty_By_PkArgs = {
+  _set?: InputMaybe<Campaign_Difficulty_Set_Input>;
+  pk_columns: Campaign_Difficulty_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Difficulty_ManyArgs = {
+  updates: Array<Campaign_Difficulty_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Campaign_GuideArgs = {
   _inc?: InputMaybe<Campaign_Guide_Inc_Input>;
   _set?: InputMaybe<Campaign_Guide_Set_Input>;
   where: Campaign_Guide_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Guide_ManyArgs = {
+  updates: Array<Campaign_Guide_Updates>;
 };
 
 
@@ -9632,6 +15522,18 @@ export type Mutation_RootUpdate_Campaign_Investigator_By_PkArgs = {
   _inc?: InputMaybe<Campaign_Investigator_Inc_Input>;
   _set?: InputMaybe<Campaign_Investigator_Set_Input>;
   pk_columns: Campaign_Investigator_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_Investigator_ManyArgs = {
+  updates: Array<Campaign_Investigator_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Campaign_ManyArgs = {
+  updates: Array<Campaign_Updates>;
 };
 
 
@@ -9662,6 +15564,28 @@ export type Mutation_RootUpdate_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_CycleArgs = {
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  where: Card_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Cycle_By_PkArgs = {
+  _inc?: InputMaybe<Card_Cycle_Inc_Input>;
+  _set?: InputMaybe<Card_Cycle_Set_Input>;
+  pk_columns: Card_Cycle_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Cycle_ManyArgs = {
+  updates: Array<Card_Cycle_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_Encounter_SetArgs = {
   _set?: InputMaybe<Card_Encounter_Set_Set_Input>;
   where: Card_Encounter_Set_Bool_Exp;
@@ -9676,7 +15600,20 @@ export type Mutation_RootUpdate_Card_Encounter_Set_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_Encounter_Set_ManyArgs = {
+  updates: Array<Card_Encounter_Set_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_ManyArgs = {
+  updates: Array<Card_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_PackArgs = {
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
   _set?: InputMaybe<Card_Pack_Set_Input>;
   where: Card_Pack_Bool_Exp;
 };
@@ -9684,8 +15621,35 @@ export type Mutation_RootUpdate_Card_PackArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Card_Pack_By_PkArgs = {
+  _inc?: InputMaybe<Card_Pack_Inc_Input>;
   _set?: InputMaybe<Card_Pack_Set_Input>;
   pk_columns: Card_Pack_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Pack_ManyArgs = {
+  updates: Array<Card_Pack_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_NameArgs = {
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  where: Card_Subtype_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_Name_By_PkArgs = {
+  _set?: InputMaybe<Card_Subtype_Name_Set_Input>;
+  pk_columns: Card_Subtype_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Subtype_Name_ManyArgs = {
+  updates: Array<Card_Subtype_Name_Updates>;
 };
 
 
@@ -9704,6 +15668,12 @@ export type Mutation_RootUpdate_Card_Text_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Card_Text_ManyArgs = {
+  updates: Array<Card_Text_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Card_Type_CodeArgs = {
   _set?: InputMaybe<Card_Type_Code_Set_Input>;
   where: Card_Type_Code_Bool_Exp;
@@ -9714,6 +15684,32 @@ export type Mutation_RootUpdate_Card_Type_CodeArgs = {
 export type Mutation_RootUpdate_Card_Type_Code_By_PkArgs = {
   _set?: InputMaybe<Card_Type_Code_Set_Input>;
   pk_columns: Card_Type_Code_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Code_ManyArgs = {
+  updates: Array<Card_Type_Code_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_NameArgs = {
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  where: Card_Type_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Name_By_PkArgs = {
+  _set?: InputMaybe<Card_Type_Name_Set_Input>;
+  pk_columns: Card_Type_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Card_Type_Name_ManyArgs = {
+  updates: Array<Card_Type_Name_Updates>;
 };
 
 
@@ -9744,6 +15740,12 @@ export type Mutation_RootUpdate_Chaos_Bag_Result_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Result_ManyArgs = {
+  updates: Array<Chaos_Bag_Result_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
   _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   where: Chaos_Bag_Tarot_Mode_Bool_Exp;
@@ -9754,6 +15756,74 @@ export type Mutation_RootUpdate_Chaos_Bag_Tarot_ModeArgs = {
 export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_By_PkArgs = {
   _set?: InputMaybe<Chaos_Bag_Tarot_Mode_Set_Input>;
   pk_columns: Chaos_Bag_Tarot_Mode_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_ManyArgs = {
+  updates: Array<Chaos_Bag_Tarot_Mode_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_CycleArgs = {
+  _inc?: InputMaybe<Cycle_Inc_Input>;
+  _set?: InputMaybe<Cycle_Set_Input>;
+  where: Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_By_PkArgs = {
+  _inc?: InputMaybe<Cycle_Inc_Input>;
+  _set?: InputMaybe<Cycle_Set_Input>;
+  pk_columns: Cycle_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_ManyArgs = {
+  updates: Array<Cycle_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_NameArgs = {
+  _set?: InputMaybe<Cycle_Name_Set_Input>;
+  where: Cycle_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_Name_By_PkArgs = {
+  _set?: InputMaybe<Cycle_Name_Set_Input>;
+  pk_columns: Cycle_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Cycle_Name_ManyArgs = {
+  updates: Array<Cycle_Name_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_NameArgs = {
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  where: Faction_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_Name_By_PkArgs = {
+  _set?: InputMaybe<Faction_Name_Set_Input>;
+  pk_columns: Faction_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faction_Name_ManyArgs = {
+  updates: Array<Faction_Name_Updates>;
 };
 
 
@@ -9772,6 +15842,12 @@ export type Mutation_RootUpdate_Faq_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Faq_ManyArgs = {
+  updates: Array<Faq_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Faq_TextArgs = {
   _set?: InputMaybe<Faq_Text_Set_Input>;
   where: Faq_Text_Bool_Exp;
@@ -9782,6 +15858,12 @@ export type Mutation_RootUpdate_Faq_TextArgs = {
 export type Mutation_RootUpdate_Faq_Text_By_PkArgs = {
   _set?: InputMaybe<Faq_Text_Set_Input>;
   pk_columns: Faq_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Faq_Text_ManyArgs = {
+  updates: Array<Faq_Text_Updates>;
 };
 
 
@@ -9800,6 +15882,12 @@ export type Mutation_RootUpdate_Friend_Status_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Friend_Status_ManyArgs = {
+  updates: Array<Friend_Status_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   where: Friend_Status_Type_Bool_Exp;
@@ -9810,6 +15898,12 @@ export type Mutation_RootUpdate_Friend_Status_TypeArgs = {
 export type Mutation_RootUpdate_Friend_Status_Type_By_PkArgs = {
   _set?: InputMaybe<Friend_Status_Type_Set_Input>;
   pk_columns: Friend_Status_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Friend_Status_Type_ManyArgs = {
+  updates: Array<Friend_Status_Type_Updates>;
 };
 
 
@@ -9840,6 +15934,12 @@ export type Mutation_RootUpdate_Full_Card_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Full_Card_ManyArgs = {
+  updates: Array<Full_Card_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Full_Card_TextArgs = {
   _set?: InputMaybe<Full_Card_Text_Set_Input>;
   where: Full_Card_Text_Bool_Exp;
@@ -9850,6 +15950,32 @@ export type Mutation_RootUpdate_Full_Card_TextArgs = {
 export type Mutation_RootUpdate_Full_Card_Text_By_PkArgs = {
   _set?: InputMaybe<Full_Card_Text_Set_Input>;
   pk_columns: Full_Card_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Full_Card_Text_ManyArgs = {
+  updates: Array<Full_Card_Text_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_GenderArgs = {
+  _set?: InputMaybe<Gender_Set_Input>;
+  where: Gender_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Gender_By_PkArgs = {
+  _set?: InputMaybe<Gender_Set_Input>;
+  pk_columns: Gender_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Gender_ManyArgs = {
+  updates: Array<Gender_Updates>;
 };
 
 
@@ -9866,6 +15992,12 @@ export type Mutation_RootUpdate_Guide_Achievement_By_PkArgs = {
   _inc?: InputMaybe<Guide_Achievement_Inc_Input>;
   _set?: InputMaybe<Guide_Achievement_Set_Input>;
   pk_columns: Guide_Achievement_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Guide_Achievement_ManyArgs = {
+  updates: Array<Guide_Achievement_Updates>;
 };
 
 
@@ -9896,6 +16028,12 @@ export type Mutation_RootUpdate_Guide_Input_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Guide_Input_ManyArgs = {
+  updates: Array<Guide_Input_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Investigator_DataArgs = {
   _append?: InputMaybe<Investigator_Data_Append_Input>;
   _delete_at_path?: InputMaybe<Investigator_Data_Delete_At_Path_Input>;
@@ -9922,10 +16060,22 @@ export type Mutation_RootUpdate_Investigator_Data_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Investigator_Data_ManyArgs = {
+  updates: Array<Investigator_Data_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Latest_DecksArgs = {
   _inc?: InputMaybe<Latest_Decks_Inc_Input>;
   _set?: InputMaybe<Latest_Decks_Set_Input>;
   where: Latest_Decks_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Latest_Decks_ManyArgs = {
+  updates: Array<Latest_Decks_Updates>;
 };
 
 
@@ -9938,10 +16088,86 @@ export type Mutation_RootUpdate_Local_DecksArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Local_Decks_ManyArgs = {
+  updates: Array<Local_Decks_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_PackArgs = {
+  _inc?: InputMaybe<Pack_Inc_Input>;
+  _set?: InputMaybe<Pack_Set_Input>;
+  where: Pack_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_By_PkArgs = {
+  _inc?: InputMaybe<Pack_Inc_Input>;
+  _set?: InputMaybe<Pack_Set_Input>;
+  pk_columns: Pack_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_ManyArgs = {
+  updates: Array<Pack_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_NameArgs = {
+  _set?: InputMaybe<Pack_Name_Set_Input>;
+  where: Pack_Name_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_Name_By_PkArgs = {
+  _set?: InputMaybe<Pack_Name_Set_Input>;
+  pk_columns: Pack_Name_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Pack_Name_ManyArgs = {
+  updates: Array<Pack_Name_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Taboo_SetArgs = {
+  _inc?: InputMaybe<Taboo_Set_Inc_Input>;
+  _set?: InputMaybe<Taboo_Set_Set_Input>;
+  where: Taboo_Set_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Taboo_Set_By_PkArgs = {
+  _inc?: InputMaybe<Taboo_Set_Inc_Input>;
+  _set?: InputMaybe<Taboo_Set_Set_Input>;
+  pk_columns: Taboo_Set_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Taboo_Set_ManyArgs = {
+  updates: Array<Taboo_Set_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_CampaignsArgs = {
   _inc?: InputMaybe<User_Campaigns_Inc_Input>;
   _set?: InputMaybe<User_Campaigns_Set_Input>;
   where: User_Campaigns_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Campaigns_ManyArgs = {
+  updates: Array<User_Campaigns_Updates>;
 };
 
 
@@ -9960,6 +16186,12 @@ export type Mutation_RootUpdate_User_Flag_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Flag_ManyArgs = {
+  updates: Array<User_Flag_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_Flag_TypeArgs = {
   _set?: InputMaybe<User_Flag_Type_Set_Input>;
   where: User_Flag_Type_Bool_Exp;
@@ -9974,9 +16206,21 @@ export type Mutation_RootUpdate_User_Flag_Type_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Flag_Type_ManyArgs = {
+  updates: Array<User_Flag_Type_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_FriendsArgs = {
   _set?: InputMaybe<User_Friends_Set_Input>;
   where: User_Friends_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Friends_ManyArgs = {
+  updates: Array<User_Friends_Updates>;
 };
 
 
@@ -9988,9 +16232,21 @@ export type Mutation_RootUpdate_User_Received_Friend_RequestsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Received_Friend_Requests_ManyArgs = {
+  updates: Array<User_Received_Friend_Requests_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_User_Sent_Friend_RequestsArgs = {
   _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
   where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Sent_Friend_Requests_ManyArgs = {
+  updates: Array<User_Sent_Friend_Requests_Updates>;
 };
 
 
@@ -10019,6 +16275,12 @@ export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Settings_ManyArgs = {
+  updates: Array<User_Settings_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
@@ -10029,6 +16291,12 @@ export type Mutation_RootUpdate_UsersArgs = {
 export type Mutation_RootUpdate_Users_By_PkArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Users_ManyArgs = {
+  updates: Array<Users_Updates>;
 };
 
 /** column ordering options */
@@ -10047,8 +16315,574 @@ export enum Order_By {
   DescNullsLast = 'desc_nulls_last'
 }
 
+/** columns and relationships of "pack" */
+export type Pack = {
+  __typename?: 'pack';
+  /** An array relationship */
+  cards: Array<All_Card>;
+  /** An aggregate relationship */
+  cards_aggregate: All_Card_Aggregate;
+  code: Scalars['String'];
+  /** An object relationship */
+  cycle: Cycle;
+  cycle_code: Scalars['String'];
+  official: Scalars['Boolean'];
+  position: Scalars['Int'];
+  real_name: Scalars['String'];
+  /** An array relationship */
+  translations: Array<Pack_Name>;
+  /** An aggregate relationship */
+  translations_aggregate: Pack_Name_Aggregate;
+};
+
+
+/** columns and relationships of "pack" */
+export type PackCardsArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+/** columns and relationships of "pack" */
+export type PackCards_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+/** columns and relationships of "pack" */
+export type PackTranslationsArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+/** columns and relationships of "pack" */
+export type PackTranslations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+/** aggregated selection of "pack" */
+export type Pack_Aggregate = {
+  __typename?: 'pack_aggregate';
+  aggregate?: Maybe<Pack_Aggregate_Fields>;
+  nodes: Array<Pack>;
+};
+
+/** aggregate fields of "pack" */
+export type Pack_Aggregate_Fields = {
+  __typename?: 'pack_aggregate_fields';
+  avg?: Maybe<Pack_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Pack_Max_Fields>;
+  min?: Maybe<Pack_Min_Fields>;
+  stddev?: Maybe<Pack_Stddev_Fields>;
+  stddev_pop?: Maybe<Pack_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Pack_Stddev_Samp_Fields>;
+  sum?: Maybe<Pack_Sum_Fields>;
+  var_pop?: Maybe<Pack_Var_Pop_Fields>;
+  var_samp?: Maybe<Pack_Var_Samp_Fields>;
+  variance?: Maybe<Pack_Variance_Fields>;
+};
+
+
+/** aggregate fields of "pack" */
+export type Pack_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Pack_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "pack" */
+export type Pack_Aggregate_Order_By = {
+  avg?: InputMaybe<Pack_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Pack_Max_Order_By>;
+  min?: InputMaybe<Pack_Min_Order_By>;
+  stddev?: InputMaybe<Pack_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Pack_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Pack_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Pack_Sum_Order_By>;
+  var_pop?: InputMaybe<Pack_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Pack_Var_Samp_Order_By>;
+  variance?: InputMaybe<Pack_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "pack" */
+export type Pack_Arr_Rel_Insert_Input = {
+  data: Array<Pack_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Pack_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Pack_Avg_Fields = {
+  __typename?: 'pack_avg_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "pack" */
+export type Pack_Avg_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "pack". All fields are combined with a logical 'AND'. */
+export type Pack_Bool_Exp = {
+  _and?: InputMaybe<Array<Pack_Bool_Exp>>;
+  _not?: InputMaybe<Pack_Bool_Exp>;
+  _or?: InputMaybe<Array<Pack_Bool_Exp>>;
+  cards?: InputMaybe<All_Card_Bool_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  cycle?: InputMaybe<Cycle_Bool_Exp>;
+  cycle_code?: InputMaybe<String_Comparison_Exp>;
+  official?: InputMaybe<Boolean_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  real_name?: InputMaybe<String_Comparison_Exp>;
+  translations?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+/** unique or primary key constraints on table "pack" */
+export enum Pack_Constraint {
+  /** unique or primary key constraint on columns "code" */
+  PackPkey = 'pack_pkey'
+}
+
+/** input type for incrementing numeric columns in table "pack" */
+export type Pack_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "pack" */
+export type Pack_Insert_Input = {
+  cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
+  code?: InputMaybe<Scalars['String']>;
+  cycle?: InputMaybe<Cycle_Obj_Rel_Insert_Input>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+  translations?: InputMaybe<Pack_Name_Arr_Rel_Insert_Input>;
+};
+
+/** aggregate max on columns */
+export type Pack_Max_Fields = {
+  __typename?: 'pack_max_fields';
+  code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  real_name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "pack" */
+export type Pack_Max_Order_By = {
+  code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Pack_Min_Fields = {
+  __typename?: 'pack_min_fields';
+  code?: Maybe<Scalars['String']>;
+  cycle_code?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Int']>;
+  real_name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "pack" */
+export type Pack_Min_Order_By = {
+  code?: InputMaybe<Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "pack" */
+export type Pack_Mutation_Response = {
+  __typename?: 'pack_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Pack>;
+};
+
+/** columns and relationships of "pack_name" */
+export type Pack_Name = {
+  __typename?: 'pack_name';
+  code: Scalars['String'];
+  locale: Scalars['String'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "pack_name" */
+export type Pack_Name_Aggregate = {
+  __typename?: 'pack_name_aggregate';
+  aggregate?: Maybe<Pack_Name_Aggregate_Fields>;
+  nodes: Array<Pack_Name>;
+};
+
+/** aggregate fields of "pack_name" */
+export type Pack_Name_Aggregate_Fields = {
+  __typename?: 'pack_name_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Pack_Name_Max_Fields>;
+  min?: Maybe<Pack_Name_Min_Fields>;
+};
+
+
+/** aggregate fields of "pack_name" */
+export type Pack_Name_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "pack_name" */
+export type Pack_Name_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Pack_Name_Max_Order_By>;
+  min?: InputMaybe<Pack_Name_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "pack_name" */
+export type Pack_Name_Arr_Rel_Insert_Input = {
+  data: Array<Pack_Name_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Pack_Name_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "pack_name". All fields are combined with a logical 'AND'. */
+export type Pack_Name_Bool_Exp = {
+  _and?: InputMaybe<Array<Pack_Name_Bool_Exp>>;
+  _not?: InputMaybe<Pack_Name_Bool_Exp>;
+  _or?: InputMaybe<Array<Pack_Name_Bool_Exp>>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "pack_name" */
+export enum Pack_Name_Constraint {
+  /** unique or primary key constraint on columns "code", "locale" */
+  PackNamePkey = 'pack_name_pkey'
+}
+
+/** input type for inserting data into table "pack_name" */
+export type Pack_Name_Insert_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Pack_Name_Max_Fields = {
+  __typename?: 'pack_name_max_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "pack_name" */
+export type Pack_Name_Max_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Pack_Name_Min_Fields = {
+  __typename?: 'pack_name_min_fields';
+  code?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "pack_name" */
+export type Pack_Name_Min_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "pack_name" */
+export type Pack_Name_Mutation_Response = {
+  __typename?: 'pack_name_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Pack_Name>;
+};
+
+/** on_conflict condition type for table "pack_name" */
+export type Pack_Name_On_Conflict = {
+  constraint: Pack_Name_Constraint;
+  update_columns?: Array<Pack_Name_Update_Column>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "pack_name". */
+export type Pack_Name_Order_By = {
+  code?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: pack_name */
+export type Pack_Name_Pk_Columns_Input = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+/** select columns of table "pack_name" */
+export enum Pack_Name_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "pack_name" */
+export type Pack_Name_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "pack_name" */
+export type Pack_Name_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Pack_Name_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Pack_Name_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "pack_name" */
+export enum Pack_Name_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name'
+}
+
+export type Pack_Name_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Pack_Name_Set_Input>;
+  where: Pack_Name_Bool_Exp;
+};
+
+/** input type for inserting object relation for remote table "pack" */
+export type Pack_Obj_Rel_Insert_Input = {
+  data: Pack_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Pack_On_Conflict>;
+};
+
+/** on_conflict condition type for table "pack" */
+export type Pack_On_Conflict = {
+  constraint: Pack_Constraint;
+  update_columns?: Array<Pack_Update_Column>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "pack". */
+export type Pack_Order_By = {
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
+  code?: InputMaybe<Order_By>;
+  cycle?: InputMaybe<Cycle_Order_By>;
+  cycle_code?: InputMaybe<Order_By>;
+  official?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  real_name?: InputMaybe<Order_By>;
+  translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Order_By>;
+};
+
+/** primary key columns input for table: pack */
+export type Pack_Pk_Columns_Input = {
+  code: Scalars['String'];
+};
+
+/** select columns of table "pack" */
+export enum Pack_Select_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  RealName = 'real_name'
+}
+
+/** input type for updating data in table "pack" */
+export type Pack_Set_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Pack_Stddev_Fields = {
+  __typename?: 'pack_stddev_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "pack" */
+export type Pack_Stddev_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Pack_Stddev_Pop_Fields = {
+  __typename?: 'pack_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "pack" */
+export type Pack_Stddev_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Pack_Stddev_Samp_Fields = {
+  __typename?: 'pack_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "pack" */
+export type Pack_Stddev_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "pack" */
+export type Pack_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Pack_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Pack_Stream_Cursor_Value_Input = {
+  code?: InputMaybe<Scalars['String']>;
+  cycle_code?: InputMaybe<Scalars['String']>;
+  official?: InputMaybe<Scalars['Boolean']>;
+  position?: InputMaybe<Scalars['Int']>;
+  real_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Pack_Sum_Fields = {
+  __typename?: 'pack_sum_fields';
+  position?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "pack" */
+export type Pack_Sum_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "pack" */
+export enum Pack_Update_Column {
+  /** column name */
+  Code = 'code',
+  /** column name */
+  CycleCode = 'cycle_code',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  RealName = 'real_name'
+}
+
+export type Pack_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Pack_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Pack_Set_Input>;
+  where: Pack_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Pack_Var_Pop_Fields = {
+  __typename?: 'pack_var_pop_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "pack" */
+export type Pack_Var_Pop_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Pack_Var_Samp_Fields = {
+  __typename?: 'pack_var_samp_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "pack" */
+export type Pack_Var_Samp_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Pack_Variance_Fields = {
+  __typename?: 'pack_variance_fields';
+  position?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "pack" */
+export type Pack_Variance_Order_By = {
+  position?: InputMaybe<Order_By>;
+};
+
 export type Query_Root = {
   __typename?: 'query_root';
+  /** fetch data from the table: "all_card" */
+  all_card: Array<All_Card>;
+  /** fetch aggregated fields from the table: "all_card" */
+  all_card_aggregate: All_Card_Aggregate;
+  /** fetch data from the table: "all_card" using primary key columns */
+  all_card_by_pk?: Maybe<All_Card>;
+  /** fetch data from the table: "all_card_text" */
+  all_card_text: Array<All_Card_Text>;
+  /** fetch aggregated fields from the table: "all_card_text" */
+  all_card_text_aggregate: All_Card_Text_Aggregate;
+  /** fetch data from the table: "all_card_text" using primary key columns */
+  all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** fetch data from the table: "all_card_updated" */
+  all_card_updated: Array<All_Card_Updated>;
+  /** fetch aggregated fields from the table: "all_card_updated" */
+  all_card_updated_aggregate: All_Card_Updated_Aggregate;
+  /** fetch data from the table: "all_card_updated" using primary key columns */
+  all_card_updated_by_pk?: Maybe<All_Card_Updated>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -10071,6 +16905,12 @@ export type Query_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
@@ -10081,12 +16921,22 @@ export type Query_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** fetch data from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle: Array<Campaigns_By_Cycle>;
+  /** fetch aggregated fields from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
   /** fetch data from the table: "card" */
   card: Array<Card>;
   /** fetch aggregated fields from the table: "card" */
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_cycle" */
+  card_cycle: Array<Card_Cycle>;
+  /** fetch aggregated fields from the table: "card_cycle" */
+  card_cycle_aggregate: Card_Cycle_Aggregate;
+  /** fetch data from the table: "card_cycle" using primary key columns */
+  card_cycle_by_pk?: Maybe<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
   /** fetch aggregated fields from the table: "card_encounter_set" */
@@ -10099,6 +16949,12 @@ export type Query_Root = {
   card_pack_aggregate: Card_Pack_Aggregate;
   /** fetch data from the table: "card_pack" using primary key columns */
   card_pack_by_pk?: Maybe<Card_Pack>;
+  /** fetch data from the table: "card_subtype_name" */
+  card_subtype_name: Array<Card_Subtype_Name>;
+  /** fetch aggregated fields from the table: "card_subtype_name" */
+  card_subtype_name_aggregate: Card_Subtype_Name_Aggregate;
+  /** fetch data from the table: "card_subtype_name" using primary key columns */
+  card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
@@ -10111,6 +16967,12 @@ export type Query_Root = {
   card_type_code_aggregate: Card_Type_Code_Aggregate;
   /** fetch data from the table: "card_type_code" using primary key columns */
   card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** fetch data from the table: "card_type_name" */
+  card_type_name: Array<Card_Type_Name>;
+  /** fetch aggregated fields from the table: "card_type_name" */
+  card_type_name_aggregate: Card_Type_Name_Aggregate;
+  /** fetch data from the table: "card_type_name" using primary key columns */
+  card_type_name_by_pk?: Maybe<Card_Type_Name>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
@@ -10123,6 +16985,24 @@ export type Query_Root = {
   chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
   /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table: "cycle" */
+  cycle: Array<Cycle>;
+  /** fetch aggregated fields from the table: "cycle" */
+  cycle_aggregate: Cycle_Aggregate;
+  /** fetch data from the table: "cycle" using primary key columns */
+  cycle_by_pk?: Maybe<Cycle>;
+  /** fetch data from the table: "cycle_name" */
+  cycle_name: Array<Cycle_Name>;
+  /** fetch aggregated fields from the table: "cycle_name" */
+  cycle_name_aggregate: Cycle_Name_Aggregate;
+  /** fetch data from the table: "cycle_name" using primary key columns */
+  cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** fetch data from the table: "faction_name" */
+  faction_name: Array<Faction_Name>;
+  /** fetch aggregated fields from the table: "faction_name" */
+  faction_name_aggregate: Faction_Name_Aggregate;
+  /** fetch data from the table: "faction_name" using primary key columns */
+  faction_name_by_pk?: Maybe<Faction_Name>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
@@ -10159,6 +17039,12 @@ export type Query_Root = {
   full_card_text_aggregate: Full_Card_Text_Aggregate;
   /** fetch data from the table: "full_card_text" using primary key columns */
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** fetch data from the table: "gender" */
+  gender: Array<Gender>;
+  /** fetch aggregated fields from the table: "gender" */
+  gender_aggregate: Gender_Aggregate;
+  /** fetch data from the table: "gender" using primary key columns */
+  gender_by_pk?: Maybe<Gender>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
@@ -10185,6 +17071,24 @@ export type Query_Root = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table: "pack" */
+  pack: Array<Pack>;
+  /** fetch aggregated fields from the table: "pack" */
+  pack_aggregate: Pack_Aggregate;
+  /** fetch data from the table: "pack" using primary key columns */
+  pack_by_pk?: Maybe<Pack>;
+  /** fetch data from the table: "pack_name" */
+  pack_name: Array<Pack_Name>;
+  /** fetch aggregated fields from the table: "pack_name" */
+  pack_name_aggregate: Pack_Name_Aggregate;
+  /** fetch data from the table: "pack_name" using primary key columns */
+  pack_name_by_pk?: Maybe<Pack_Name>;
+  /** fetch data from the table: "taboo_set" */
+  taboo_set: Array<Taboo_Set>;
+  /** fetch aggregated fields from the table: "taboo_set" */
+  taboo_set_aggregate: Taboo_Set_Aggregate;
+  /** fetch data from the table: "taboo_set" using primary key columns */
+  taboo_set_by_pk?: Maybe<Taboo_Set>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
@@ -10225,6 +17129,76 @@ export type Query_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+export type Query_RootAll_CardArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Query_RootAll_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootAll_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_By_PkArgs = {
+  locale: Scalars['String'];
 };
 
 
@@ -10315,6 +17289,29 @@ export type Query_RootCampaign_Deck_By_PkArgs = {
 };
 
 
+export type Query_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Query_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
 export type Query_RootCampaign_GuideArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10357,6 +17354,24 @@ export type Query_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Query_RootCampaigns_By_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCampaigns_By_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
 export type Query_RootCardArgs = {
   distinct_on?: InputMaybe<Array<Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10377,6 +17392,30 @@ export type Query_RootCard_AggregateArgs = {
 
 export type Query_RootCard_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Query_RootCard_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -10423,6 +17462,30 @@ export type Query_RootCard_Pack_AggregateArgs = {
 
 
 export type Query_RootCard_Pack_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootCard_Subtype_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Subtype_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Subtype_Name_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
 };
@@ -10475,6 +17538,30 @@ export type Query_RootCard_Type_Code_By_PkArgs = {
 };
 
 
+export type Query_RootCard_Type_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCard_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+
 export type Query_RootChaos_Bag_ResultArgs = {
   distinct_on?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10518,6 +17605,77 @@ export type Query_RootChaos_Bag_Tarot_Mode_AggregateArgs = {
 
 export type Query_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
   value: Scalars['String'];
+};
+
+
+export type Query_RootCycleArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Order_By>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Order_By>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootCycle_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Query_RootCycle_NameArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCycle_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Query_RootCycle_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootFaction_NameArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Query_RootFaction_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Query_RootFaction_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
 };
 
 
@@ -10662,6 +17820,29 @@ export type Query_RootFull_Card_Text_By_PkArgs = {
 };
 
 
+export type Query_RootGenderArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Query_RootGender_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Query_RootGender_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
 export type Query_RootGuide_AchievementArgs = {
   distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -10767,6 +17948,76 @@ export type Query_RootLocal_Decks_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Local_Decks_Order_By>>;
   where?: InputMaybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Query_RootPackArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Query_RootPack_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Query_RootPack_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Query_RootPack_NameArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Query_RootPack_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Query_RootPack_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Query_RootTaboo_SetArgs = {
+  distinct_on?: InputMaybe<Array<Taboo_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Taboo_Set_Order_By>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
+export type Query_RootTaboo_Set_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Taboo_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Taboo_Set_Order_By>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
+export type Query_RootTaboo_Set_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -10936,10 +18187,36 @@ export type Query_RootUsers_By_PkArgs = {
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
+  /** fetch data from the table: "all_card" */
+  all_card: Array<All_Card>;
+  /** fetch aggregated fields from the table: "all_card" */
+  all_card_aggregate: All_Card_Aggregate;
+  /** fetch data from the table: "all_card" using primary key columns */
+  all_card_by_pk?: Maybe<All_Card>;
+  /** fetch data from the table in a streaming manner : "all_card" */
+  all_card_stream: Array<All_Card>;
+  /** fetch data from the table: "all_card_text" */
+  all_card_text: Array<All_Card_Text>;
+  /** fetch aggregated fields from the table: "all_card_text" */
+  all_card_text_aggregate: All_Card_Text_Aggregate;
+  /** fetch data from the table: "all_card_text" using primary key columns */
+  all_card_text_by_pk?: Maybe<All_Card_Text>;
+  /** fetch data from the table in a streaming manner : "all_card_text" */
+  all_card_text_stream: Array<All_Card_Text>;
+  /** fetch data from the table: "all_card_updated" */
+  all_card_updated: Array<All_Card_Updated>;
+  /** fetch aggregated fields from the table: "all_card_updated" */
+  all_card_updated_aggregate: All_Card_Updated_Aggregate;
+  /** fetch data from the table: "all_card_updated" using primary key columns */
+  all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table in a streaming manner : "all_card_updated" */
+  all_card_updated_stream: Array<All_Card_Updated>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "base_decks" */
+  base_decks_stream: Array<Base_Decks>;
   /** fetch data from the table: "campaign" */
   campaign: Array<Campaign>;
   /** fetch data from the table: "campaign_access" */
@@ -10948,6 +18225,8 @@ export type Subscription_Root = {
   campaign_access_aggregate: Campaign_Access_Aggregate;
   /** fetch data from the table: "campaign_access" using primary key columns */
   campaign_access_by_pk?: Maybe<Campaign_Access>;
+  /** fetch data from the table in a streaming manner : "campaign_access" */
+  campaign_access_stream: Array<Campaign_Access>;
   /** fetch aggregated fields from the table: "campaign" */
   campaign_aggregate: Campaign_Aggregate;
   /** fetch data from the table: "campaign" using primary key columns */
@@ -10958,160 +18237,405 @@ export type Subscription_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
+  /** fetch data from the table in a streaming manner : "campaign_deck" */
+  campaign_deck_stream: Array<Campaign_Deck>;
+  /** fetch data from the table: "campaign_difficulty" */
+  campaign_difficulty: Array<Campaign_Difficulty>;
+  /** fetch aggregated fields from the table: "campaign_difficulty" */
+  campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
+  /** fetch data from the table: "campaign_difficulty" using primary key columns */
+  campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
+  /** fetch data from the table in a streaming manner : "campaign_difficulty" */
+  campaign_difficulty_stream: Array<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
   campaign_guide_aggregate: Campaign_Guide_Aggregate;
+  /** fetch data from the table in a streaming manner : "campaign_guide" */
+  campaign_guide_stream: Array<Campaign_Guide>;
   /** fetch data from the table: "campaign_investigator" */
   campaign_investigator: Array<Campaign_Investigator>;
   /** fetch aggregated fields from the table: "campaign_investigator" */
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
+  /** fetch data from the table in a streaming manner : "campaign_investigator" */
+  campaign_investigator_stream: Array<Campaign_Investigator>;
+  /** fetch data from the table in a streaming manner : "campaign" */
+  campaign_stream: Array<Campaign>;
+  /** fetch data from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle: Array<Campaigns_By_Cycle>;
+  /** fetch aggregated fields from the table: "campaigns_by_cycle" */
+  campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
+  /** fetch data from the table in a streaming manner : "campaigns_by_cycle" */
+  campaigns_by_cycle_stream: Array<Campaigns_By_Cycle>;
   /** fetch data from the table: "card" */
   card: Array<Card>;
   /** fetch aggregated fields from the table: "card" */
   card_aggregate: Card_Aggregate;
   /** fetch data from the table: "card" using primary key columns */
   card_by_pk?: Maybe<Card>;
+  /** fetch data from the table: "card_cycle" */
+  card_cycle: Array<Card_Cycle>;
+  /** fetch aggregated fields from the table: "card_cycle" */
+  card_cycle_aggregate: Card_Cycle_Aggregate;
+  /** fetch data from the table: "card_cycle" using primary key columns */
+  card_cycle_by_pk?: Maybe<Card_Cycle>;
+  /** fetch data from the table in a streaming manner : "card_cycle" */
+  card_cycle_stream: Array<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
   /** fetch aggregated fields from the table: "card_encounter_set" */
   card_encounter_set_aggregate: Card_Encounter_Set_Aggregate;
   /** fetch data from the table: "card_encounter_set" using primary key columns */
   card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
+  /** fetch data from the table in a streaming manner : "card_encounter_set" */
+  card_encounter_set_stream: Array<Card_Encounter_Set>;
   /** fetch data from the table: "card_pack" */
   card_pack: Array<Card_Pack>;
   /** fetch aggregated fields from the table: "card_pack" */
   card_pack_aggregate: Card_Pack_Aggregate;
   /** fetch data from the table: "card_pack" using primary key columns */
   card_pack_by_pk?: Maybe<Card_Pack>;
+  /** fetch data from the table in a streaming manner : "card_pack" */
+  card_pack_stream: Array<Card_Pack>;
+  /** fetch data from the table in a streaming manner : "card" */
+  card_stream: Array<Card>;
+  /** fetch data from the table: "card_subtype_name" */
+  card_subtype_name: Array<Card_Subtype_Name>;
+  /** fetch aggregated fields from the table: "card_subtype_name" */
+  card_subtype_name_aggregate: Card_Subtype_Name_Aggregate;
+  /** fetch data from the table: "card_subtype_name" using primary key columns */
+  card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
+  /** fetch data from the table in a streaming manner : "card_subtype_name" */
+  card_subtype_name_stream: Array<Card_Subtype_Name>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
   /** fetch aggregated fields from the table: "card_text" */
   card_text_aggregate: Card_Text_Aggregate;
   /** fetch data from the table: "card_text" using primary key columns */
   card_text_by_pk?: Maybe<Card_Text>;
+  /** fetch data from the table in a streaming manner : "card_text" */
+  card_text_stream: Array<Card_Text>;
   /** fetch data from the table: "card_type_code" */
   card_type_code: Array<Card_Type_Code>;
   /** fetch aggregated fields from the table: "card_type_code" */
   card_type_code_aggregate: Card_Type_Code_Aggregate;
   /** fetch data from the table: "card_type_code" using primary key columns */
   card_type_code_by_pk?: Maybe<Card_Type_Code>;
+  /** fetch data from the table in a streaming manner : "card_type_code" */
+  card_type_code_stream: Array<Card_Type_Code>;
+  /** fetch data from the table: "card_type_name" */
+  card_type_name: Array<Card_Type_Name>;
+  /** fetch aggregated fields from the table: "card_type_name" */
+  card_type_name_aggregate: Card_Type_Name_Aggregate;
+  /** fetch data from the table: "card_type_name" using primary key columns */
+  card_type_name_by_pk?: Maybe<Card_Type_Name>;
+  /** fetch data from the table in a streaming manner : "card_type_name" */
+  card_type_name_stream: Array<Card_Type_Name>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
   /** An aggregate relationship */
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
+  /** fetch data from the table in a streaming manner : "chaos_bag_result" */
+  chaos_bag_result_stream: Array<Chaos_Bag_Result>;
   /** fetch data from the table: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode: Array<Chaos_Bag_Tarot_Mode>;
   /** fetch aggregated fields from the table: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
   /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table in a streaming manner : "chaos_bag_tarot_mode" */
+  chaos_bag_tarot_mode_stream: Array<Chaos_Bag_Tarot_Mode>;
+  /** fetch data from the table: "cycle" */
+  cycle: Array<Cycle>;
+  /** fetch aggregated fields from the table: "cycle" */
+  cycle_aggregate: Cycle_Aggregate;
+  /** fetch data from the table: "cycle" using primary key columns */
+  cycle_by_pk?: Maybe<Cycle>;
+  /** fetch data from the table: "cycle_name" */
+  cycle_name: Array<Cycle_Name>;
+  /** fetch aggregated fields from the table: "cycle_name" */
+  cycle_name_aggregate: Cycle_Name_Aggregate;
+  /** fetch data from the table: "cycle_name" using primary key columns */
+  cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** fetch data from the table in a streaming manner : "cycle_name" */
+  cycle_name_stream: Array<Cycle_Name>;
+  /** fetch data from the table in a streaming manner : "cycle" */
+  cycle_stream: Array<Cycle>;
+  /** fetch data from the table: "faction_name" */
+  faction_name: Array<Faction_Name>;
+  /** fetch aggregated fields from the table: "faction_name" */
+  faction_name_aggregate: Faction_Name_Aggregate;
+  /** fetch data from the table: "faction_name" using primary key columns */
+  faction_name_by_pk?: Maybe<Faction_Name>;
+  /** fetch data from the table in a streaming manner : "faction_name" */
+  faction_name_stream: Array<Faction_Name>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
   /** fetch aggregated fields from the table: "faq" */
   faq_aggregate: Faq_Aggregate;
   /** fetch data from the table: "faq" using primary key columns */
   faq_by_pk?: Maybe<Faq>;
+  /** fetch data from the table in a streaming manner : "faq" */
+  faq_stream: Array<Faq>;
   /** fetch data from the table: "faq_text" */
   faq_text: Array<Faq_Text>;
   /** fetch aggregated fields from the table: "faq_text" */
   faq_text_aggregate: Faq_Text_Aggregate;
   /** fetch data from the table: "faq_text" using primary key columns */
   faq_text_by_pk?: Maybe<Faq_Text>;
+  /** fetch data from the table in a streaming manner : "faq_text" */
+  faq_text_stream: Array<Faq_Text>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
   /** fetch aggregated fields from the table: "friend_status" */
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
+  /** fetch data from the table in a streaming manner : "friend_status" */
+  friend_status_stream: Array<Friend_Status>;
   /** fetch data from the table: "friend_status_type" */
   friend_status_type: Array<Friend_Status_Type>;
   /** fetch aggregated fields from the table: "friend_status_type" */
   friend_status_type_aggregate: Friend_Status_Type_Aggregate;
   /** fetch data from the table: "friend_status_type" using primary key columns */
   friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
+  /** fetch data from the table in a streaming manner : "friend_status_type" */
+  friend_status_type_stream: Array<Friend_Status_Type>;
   /** fetch data from the table: "full_card" */
   full_card: Array<Full_Card>;
   /** fetch aggregated fields from the table: "full_card" */
   full_card_aggregate: Full_Card_Aggregate;
   /** fetch data from the table: "full_card" using primary key columns */
   full_card_by_pk?: Maybe<Full_Card>;
+  /** fetch data from the table in a streaming manner : "full_card" */
+  full_card_stream: Array<Full_Card>;
   /** fetch data from the table: "full_card_text" */
   full_card_text: Array<Full_Card_Text>;
   /** fetch aggregated fields from the table: "full_card_text" */
   full_card_text_aggregate: Full_Card_Text_Aggregate;
   /** fetch data from the table: "full_card_text" using primary key columns */
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
+  /** fetch data from the table in a streaming manner : "full_card_text" */
+  full_card_text_stream: Array<Full_Card_Text>;
+  /** fetch data from the table: "gender" */
+  gender: Array<Gender>;
+  /** fetch aggregated fields from the table: "gender" */
+  gender_aggregate: Gender_Aggregate;
+  /** fetch data from the table: "gender" using primary key columns */
+  gender_by_pk?: Maybe<Gender>;
+  /** fetch data from the table in a streaming manner : "gender" */
+  gender_stream: Array<Gender>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
   /** fetch aggregated fields from the table: "guide_achievement" */
   guide_achievement_aggregate: Guide_Achievement_Aggregate;
   /** fetch data from the table: "guide_achievement" using primary key columns */
   guide_achievement_by_pk?: Maybe<Guide_Achievement>;
+  /** fetch data from the table in a streaming manner : "guide_achievement" */
+  guide_achievement_stream: Array<Guide_Achievement>;
   /** fetch data from the table: "guide_input" */
   guide_input: Array<Guide_Input>;
   /** fetch aggregated fields from the table: "guide_input" */
   guide_input_aggregate: Guide_Input_Aggregate;
   /** fetch data from the table: "guide_input" using primary key columns */
   guide_input_by_pk?: Maybe<Guide_Input>;
+  /** fetch data from the table in a streaming manner : "guide_input" */
+  guide_input_stream: Array<Guide_Input>;
   /** An array relationship */
   investigator_data: Array<Investigator_Data>;
   /** An aggregate relationship */
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** fetch data from the table: "investigator_data" using primary key columns */
   investigator_data_by_pk?: Maybe<Investigator_Data>;
+  /** fetch data from the table in a streaming manner : "investigator_data" */
+  investigator_data_stream: Array<Investigator_Data>;
   /** An array relationship */
   latest_decks: Array<Latest_Decks>;
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "latest_decks" */
+  latest_decks_stream: Array<Latest_Decks>;
   /** An array relationship */
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  /** fetch data from the table in a streaming manner : "local_decks" */
+  local_decks_stream: Array<Local_Decks>;
+  /** fetch data from the table: "pack" */
+  pack: Array<Pack>;
+  /** fetch aggregated fields from the table: "pack" */
+  pack_aggregate: Pack_Aggregate;
+  /** fetch data from the table: "pack" using primary key columns */
+  pack_by_pk?: Maybe<Pack>;
+  /** fetch data from the table: "pack_name" */
+  pack_name: Array<Pack_Name>;
+  /** fetch aggregated fields from the table: "pack_name" */
+  pack_name_aggregate: Pack_Name_Aggregate;
+  /** fetch data from the table: "pack_name" using primary key columns */
+  pack_name_by_pk?: Maybe<Pack_Name>;
+  /** fetch data from the table in a streaming manner : "pack_name" */
+  pack_name_stream: Array<Pack_Name>;
+  /** fetch data from the table in a streaming manner : "pack" */
+  pack_stream: Array<Pack>;
+  /** fetch data from the table: "taboo_set" */
+  taboo_set: Array<Taboo_Set>;
+  /** fetch aggregated fields from the table: "taboo_set" */
+  taboo_set_aggregate: Taboo_Set_Aggregate;
+  /** fetch data from the table: "taboo_set" using primary key columns */
+  taboo_set_by_pk?: Maybe<Taboo_Set>;
+  /** fetch data from the table in a streaming manner : "taboo_set" */
+  taboo_set_stream: Array<Taboo_Set>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
   user_campaigns_aggregate: User_Campaigns_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_campaigns" */
+  user_campaigns_stream: Array<User_Campaigns>;
   /** fetch data from the table: "user_flag" */
   user_flag: Array<User_Flag>;
   /** fetch aggregated fields from the table: "user_flag" */
   user_flag_aggregate: User_Flag_Aggregate;
   /** fetch data from the table: "user_flag" using primary key columns */
   user_flag_by_pk?: Maybe<User_Flag>;
+  /** fetch data from the table in a streaming manner : "user_flag" */
+  user_flag_stream: Array<User_Flag>;
   /** fetch data from the table: "user_flag_type" */
   user_flag_type: Array<User_Flag_Type>;
   /** fetch aggregated fields from the table: "user_flag_type" */
   user_flag_type_aggregate: User_Flag_Type_Aggregate;
   /** fetch data from the table: "user_flag_type" using primary key columns */
   user_flag_type_by_pk?: Maybe<User_Flag_Type>;
+  /** fetch data from the table in a streaming manner : "user_flag_type" */
+  user_flag_type_stream: Array<User_Flag_Type>;
   /** fetch data from the table: "user_friends" */
   user_friends: Array<User_Friends>;
   /** fetch aggregated fields from the table: "user_friends" */
   user_friends_aggregate: User_Friends_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_friends" */
+  user_friends_stream: Array<User_Friends>;
   /** fetch data from the table: "user_received_friend_requests" */
   user_received_friend_requests: Array<User_Received_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_received_friend_requests" */
   user_received_friend_requests_aggregate: User_Received_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_received_friend_requests" */
+  user_received_friend_requests_stream: Array<User_Received_Friend_Requests>;
   /** fetch data from the table: "user_sent_friend_requests" */
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
+  /** fetch data from the table in a streaming manner : "user_sent_friend_requests" */
+  user_sent_friend_requests_stream: Array<User_Sent_Friend_Requests>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
   user_settings_aggregate: User_Settings_Aggregate;
   /** fetch data from the table: "user_settings" using primary key columns */
   user_settings_by_pk?: Maybe<User_Settings>;
+  /** fetch data from the table in a streaming manner : "user_settings" */
+  user_settings_stream: Array<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+  /** fetch data from the table in a streaming manner : "users" */
+  users_stream: Array<Users>;
+};
+
+
+export type Subscription_RootAll_CardArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootAll_Card_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_TextArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Text_Order_By>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Text_By_PkArgs = {
+  id: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootAll_Card_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_UpdatedArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_PkArgs = {
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootAll_Card_Updated_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<All_Card_Updated_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Updated_Bool_Exp>;
 };
 
 
@@ -11129,6 +18653,13 @@ export type Subscription_RootBase_Decks_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Base_Decks_Order_By>>;
+  where?: InputMaybe<Base_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootBase_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Base_Decks_Stream_Cursor_Input>>;
   where?: InputMaybe<Base_Decks_Bool_Exp>;
 };
 
@@ -11162,6 +18693,13 @@ export type Subscription_RootCampaign_Access_AggregateArgs = {
 
 export type Subscription_RootCampaign_Access_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootCampaign_Access_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Access_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Access_Bool_Exp>;
 };
 
 
@@ -11202,6 +18740,43 @@ export type Subscription_RootCampaign_Deck_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_Deck_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_DifficultyArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaign_Difficulty_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaign_Difficulty_Order_By>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Difficulty_By_PkArgs = {
+  value: Scalars['String'];
+};
+
+
+export type Subscription_RootCampaign_Difficulty_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Difficulty_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Difficulty_Bool_Exp>;
+};
+
+
 export type Subscription_RootCampaign_GuideArgs = {
   distinct_on?: InputMaybe<Array<Campaign_Guide_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11216,6 +18791,13 @@ export type Subscription_RootCampaign_Guide_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Campaign_Guide_Order_By>>;
+  where?: InputMaybe<Campaign_Guide_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_Guide_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Guide_Stream_Cursor_Input>>;
   where?: InputMaybe<Campaign_Guide_Bool_Exp>;
 };
 
@@ -11244,6 +18826,45 @@ export type Subscription_RootCampaign_Investigator_By_PkArgs = {
 };
 
 
+export type Subscription_RootCampaign_Investigator_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Investigator_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaign_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaign_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaign_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaigns_By_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaigns_By_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Campaigns_By_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Campaigns_By_Cycle_Order_By>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCampaigns_By_Cycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Campaigns_By_Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Campaigns_By_Cycle_Bool_Exp>;
+};
+
+
 export type Subscription_RootCardArgs = {
   distinct_on?: InputMaybe<Array<Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11264,6 +18885,37 @@ export type Subscription_RootCard_AggregateArgs = {
 
 export type Subscription_RootCard_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Cycle_Order_By>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Cycle_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Cycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Cycle_Bool_Exp>;
 };
 
 
@@ -11291,6 +18943,13 @@ export type Subscription_RootCard_Encounter_Set_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Encounter_Set_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Encounter_Set_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+};
+
+
 export type Subscription_RootCard_PackArgs = {
   distinct_on?: InputMaybe<Array<Card_Pack_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11312,6 +18971,51 @@ export type Subscription_RootCard_Pack_AggregateArgs = {
 export type Subscription_RootCard_Pack_By_PkArgs = {
   code: Scalars['String'];
   locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Pack_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Pack_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Subtype_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Subtype_Name_Order_By>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Subtype_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Subtype_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Subtype_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Subtype_Name_Bool_Exp>;
 };
 
 
@@ -11339,6 +19043,13 @@ export type Subscription_RootCard_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootCard_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootCard_Type_CodeArgs = {
   distinct_on?: InputMaybe<Array<Card_Type_Code_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11359,6 +19070,44 @@ export type Subscription_RootCard_Type_Code_AggregateArgs = {
 
 export type Subscription_RootCard_Type_Code_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Type_Code_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Type_Code_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Type_Code_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_NameArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Card_Type_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Card_Type_Name_Order_By>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCard_Type_Name_By_PkArgs = {
+  code: Card_Type_Code_Enum;
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCard_Type_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Card_Type_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Card_Type_Name_Bool_Exp>;
 };
 
 
@@ -11385,6 +19134,13 @@ export type Subscription_RootChaos_Bag_Result_By_PkArgs = {
 };
 
 
+export type Subscription_RootChaos_Bag_Result_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Chaos_Bag_Result_Stream_Cursor_Input>>;
+  where?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+};
+
+
 export type Subscription_RootChaos_Bag_Tarot_ModeArgs = {
   distinct_on?: InputMaybe<Array<Chaos_Bag_Tarot_Mode_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11408,6 +19164,105 @@ export type Subscription_RootChaos_Bag_Tarot_Mode_By_PkArgs = {
 };
 
 
+export type Subscription_RootChaos_Bag_Tarot_Mode_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Chaos_Bag_Tarot_Mode_Stream_Cursor_Input>>;
+  where?: InputMaybe<Chaos_Bag_Tarot_Mode_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycleArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Order_By>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Order_By>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootCycle_NameArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cycle_Name_Order_By>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootCycle_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Cycle_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Cycle_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootCycle_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_NameArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Faction_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Faction_Name_Order_By>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootFaction_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootFaction_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faction_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faction_Name_Bool_Exp>;
+};
+
+
 export type Subscription_RootFaqArgs = {
   distinct_on?: InputMaybe<Array<Faq_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11428,6 +19283,13 @@ export type Subscription_RootFaq_AggregateArgs = {
 
 export type Subscription_RootFaq_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootFaq_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faq_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faq_Bool_Exp>;
 };
 
 
@@ -11455,6 +19317,13 @@ export type Subscription_RootFaq_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootFaq_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Faq_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Faq_Text_Bool_Exp>;
+};
+
+
 export type Subscription_RootFriend_StatusArgs = {
   distinct_on?: InputMaybe<Array<Friend_Status_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11476,6 +19345,13 @@ export type Subscription_RootFriend_Status_AggregateArgs = {
 export type Subscription_RootFriend_Status_By_PkArgs = {
   user_id_a: Scalars['String'];
   user_id_b: Scalars['String'];
+};
+
+
+export type Subscription_RootFriend_Status_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Friend_Status_Stream_Cursor_Input>>;
+  where?: InputMaybe<Friend_Status_Bool_Exp>;
 };
 
 
@@ -11502,6 +19378,13 @@ export type Subscription_RootFriend_Status_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootFriend_Status_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Friend_Status_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Friend_Status_Type_Bool_Exp>;
+};
+
+
 export type Subscription_RootFull_CardArgs = {
   distinct_on?: InputMaybe<Array<Full_Card_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11522,6 +19405,13 @@ export type Subscription_RootFull_Card_AggregateArgs = {
 
 export type Subscription_RootFull_Card_By_PkArgs = {
   code: Scalars['String'];
+};
+
+
+export type Subscription_RootFull_Card_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Full_Card_Stream_Cursor_Input>>;
+  where?: InputMaybe<Full_Card_Bool_Exp>;
 };
 
 
@@ -11549,6 +19439,43 @@ export type Subscription_RootFull_Card_Text_By_PkArgs = {
 };
 
 
+export type Subscription_RootFull_Card_Text_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Full_Card_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Full_Card_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootGenderArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Subscription_RootGender_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gender_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gender_Order_By>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
+export type Subscription_RootGender_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootGender_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Gender_Stream_Cursor_Input>>;
+  where?: InputMaybe<Gender_Bool_Exp>;
+};
+
+
 export type Subscription_RootGuide_AchievementArgs = {
   distinct_on?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11570,6 +19497,13 @@ export type Subscription_RootGuide_Achievement_AggregateArgs = {
 export type Subscription_RootGuide_Achievement_By_PkArgs = {
   campaign_id: Scalars['Int'];
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootGuide_Achievement_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Guide_Achievement_Stream_Cursor_Input>>;
+  where?: InputMaybe<Guide_Achievement_Bool_Exp>;
 };
 
 
@@ -11597,6 +19531,13 @@ export type Subscription_RootGuide_Input_By_PkArgs = {
 };
 
 
+export type Subscription_RootGuide_Input_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Guide_Input_Stream_Cursor_Input>>;
+  where?: InputMaybe<Guide_Input_Bool_Exp>;
+};
+
+
 export type Subscription_RootInvestigator_DataArgs = {
   distinct_on?: InputMaybe<Array<Investigator_Data_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11621,6 +19562,13 @@ export type Subscription_RootInvestigator_Data_By_PkArgs = {
 };
 
 
+export type Subscription_RootInvestigator_Data_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Investigator_Data_Stream_Cursor_Input>>;
+  where?: InputMaybe<Investigator_Data_Bool_Exp>;
+};
+
+
 export type Subscription_RootLatest_DecksArgs = {
   distinct_on?: InputMaybe<Array<Latest_Decks_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11635,6 +19583,13 @@ export type Subscription_RootLatest_Decks_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Latest_Decks_Order_By>>;
+  where?: InputMaybe<Latest_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootLatest_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Latest_Decks_Stream_Cursor_Input>>;
   where?: InputMaybe<Latest_Decks_Bool_Exp>;
 };
 
@@ -11657,6 +19612,104 @@ export type Subscription_RootLocal_Decks_AggregateArgs = {
 };
 
 
+export type Subscription_RootLocal_Decks_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Local_Decks_Stream_Cursor_Input>>;
+  where?: InputMaybe<Local_Decks_Bool_Exp>;
+};
+
+
+export type Subscription_RootPackArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Order_By>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_By_PkArgs = {
+  code: Scalars['String'];
+};
+
+
+export type Subscription_RootPack_NameArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_Name_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Pack_Name_Order_By>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_Name_By_PkArgs = {
+  code: Scalars['String'];
+  locale: Scalars['String'];
+};
+
+
+export type Subscription_RootPack_Name_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Pack_Name_Stream_Cursor_Input>>;
+  where?: InputMaybe<Pack_Name_Bool_Exp>;
+};
+
+
+export type Subscription_RootPack_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Pack_Stream_Cursor_Input>>;
+  where?: InputMaybe<Pack_Bool_Exp>;
+};
+
+
+export type Subscription_RootTaboo_SetArgs = {
+  distinct_on?: InputMaybe<Array<Taboo_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Taboo_Set_Order_By>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
+export type Subscription_RootTaboo_Set_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Taboo_Set_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Taboo_Set_Order_By>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
+export type Subscription_RootTaboo_Set_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootTaboo_Set_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Taboo_Set_Stream_Cursor_Input>>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_CampaignsArgs = {
   distinct_on?: InputMaybe<Array<User_Campaigns_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11671,6 +19724,13 @@ export type Subscription_RootUser_Campaigns_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Campaigns_Order_By>>;
+  where?: InputMaybe<User_Campaigns_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Campaigns_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Campaigns_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Campaigns_Bool_Exp>;
 };
 
@@ -11699,6 +19759,13 @@ export type Subscription_RootUser_Flag_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Flag_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Flag_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Flag_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_Flag_TypeArgs = {
   distinct_on?: InputMaybe<Array<User_Flag_Type_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11722,6 +19789,13 @@ export type Subscription_RootUser_Flag_Type_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Flag_Type_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Flag_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Flag_Type_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_FriendsArgs = {
   distinct_on?: InputMaybe<Array<User_Friends_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11736,6 +19810,13 @@ export type Subscription_RootUser_Friends_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Friends_Order_By>>;
+  where?: InputMaybe<User_Friends_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Friends_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Friends_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Friends_Bool_Exp>;
 };
 
@@ -11758,6 +19839,13 @@ export type Subscription_RootUser_Received_Friend_Requests_AggregateArgs = {
 };
 
 
+export type Subscription_RootUser_Received_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Received_Friend_Requests_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+};
+
+
 export type Subscription_RootUser_Sent_Friend_RequestsArgs = {
   distinct_on?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11772,6 +19860,13 @@ export type Subscription_RootUser_Sent_Friend_Requests_AggregateArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<User_Sent_Friend_Requests_Order_By>>;
+  where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+};
+
+
+export type Subscription_RootUser_Sent_Friend_Requests_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Sent_Friend_Requests_Stream_Cursor_Input>>;
   where?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
 };
 
@@ -11799,6 +19894,13 @@ export type Subscription_RootUser_Settings_By_PkArgs = {
 };
 
 
+export type Subscription_RootUser_Settings_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Settings_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
+};
+
+
 export type Subscription_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -11819,6 +19921,308 @@ export type Subscription_RootUsers_AggregateArgs = {
 
 export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['String'];
+};
+
+
+export type Subscription_RootUsers_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Users_Stream_Cursor_Input>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
+
+/** columns and relationships of "taboo_set" */
+export type Taboo_Set = {
+  __typename?: 'taboo_set';
+  active: Scalars['Boolean'];
+  card_count: Scalars['Int'];
+  /** An array relationship */
+  cards: Array<All_Card>;
+  /** An aggregate relationship */
+  cards_aggregate: All_Card_Aggregate;
+  code: Scalars['String'];
+  current: Scalars['Boolean'];
+  date: Scalars['String'];
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "taboo_set" */
+export type Taboo_SetCardsArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+/** columns and relationships of "taboo_set" */
+export type Taboo_SetCards_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+/** aggregated selection of "taboo_set" */
+export type Taboo_Set_Aggregate = {
+  __typename?: 'taboo_set_aggregate';
+  aggregate?: Maybe<Taboo_Set_Aggregate_Fields>;
+  nodes: Array<Taboo_Set>;
+};
+
+/** aggregate fields of "taboo_set" */
+export type Taboo_Set_Aggregate_Fields = {
+  __typename?: 'taboo_set_aggregate_fields';
+  avg?: Maybe<Taboo_Set_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Taboo_Set_Max_Fields>;
+  min?: Maybe<Taboo_Set_Min_Fields>;
+  stddev?: Maybe<Taboo_Set_Stddev_Fields>;
+  stddev_pop?: Maybe<Taboo_Set_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Taboo_Set_Stddev_Samp_Fields>;
+  sum?: Maybe<Taboo_Set_Sum_Fields>;
+  var_pop?: Maybe<Taboo_Set_Var_Pop_Fields>;
+  var_samp?: Maybe<Taboo_Set_Var_Samp_Fields>;
+  variance?: Maybe<Taboo_Set_Variance_Fields>;
+};
+
+
+/** aggregate fields of "taboo_set" */
+export type Taboo_Set_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Taboo_Set_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Taboo_Set_Avg_Fields = {
+  __typename?: 'taboo_set_avg_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "taboo_set". All fields are combined with a logical 'AND'. */
+export type Taboo_Set_Bool_Exp = {
+  _and?: InputMaybe<Array<Taboo_Set_Bool_Exp>>;
+  _not?: InputMaybe<Taboo_Set_Bool_Exp>;
+  _or?: InputMaybe<Array<Taboo_Set_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  card_count?: InputMaybe<Int_Comparison_Exp>;
+  cards?: InputMaybe<All_Card_Bool_Exp>;
+  code?: InputMaybe<String_Comparison_Exp>;
+  current?: InputMaybe<Boolean_Comparison_Exp>;
+  date?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "taboo_set" */
+export enum Taboo_Set_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  TabooSetPkey = 'taboo_set_pkey'
+}
+
+/** input type for incrementing numeric columns in table "taboo_set" */
+export type Taboo_Set_Inc_Input = {
+  card_count?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "taboo_set" */
+export type Taboo_Set_Insert_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  card_count?: InputMaybe<Scalars['Int']>;
+  cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
+  code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
+  date?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Taboo_Set_Max_Fields = {
+  __typename?: 'taboo_set_max_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Taboo_Set_Min_Fields = {
+  __typename?: 'taboo_set_min_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  code?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "taboo_set" */
+export type Taboo_Set_Mutation_Response = {
+  __typename?: 'taboo_set_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Taboo_Set>;
+};
+
+/** input type for inserting object relation for remote table "taboo_set" */
+export type Taboo_Set_Obj_Rel_Insert_Input = {
+  data: Taboo_Set_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Taboo_Set_On_Conflict>;
+};
+
+/** on_conflict condition type for table "taboo_set" */
+export type Taboo_Set_On_Conflict = {
+  constraint: Taboo_Set_Constraint;
+  update_columns?: Array<Taboo_Set_Update_Column>;
+  where?: InputMaybe<Taboo_Set_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "taboo_set". */
+export type Taboo_Set_Order_By = {
+  active?: InputMaybe<Order_By>;
+  card_count?: InputMaybe<Order_By>;
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
+  code?: InputMaybe<Order_By>;
+  current?: InputMaybe<Order_By>;
+  date?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: taboo_set */
+export type Taboo_Set_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "taboo_set" */
+export enum Taboo_Set_Select_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Current = 'current',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "taboo_set" */
+export type Taboo_Set_Set_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  card_count?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
+  date?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Taboo_Set_Stddev_Fields = {
+  __typename?: 'taboo_set_stddev_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Taboo_Set_Stddev_Pop_Fields = {
+  __typename?: 'taboo_set_stddev_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Taboo_Set_Stddev_Samp_Fields = {
+  __typename?: 'taboo_set_stddev_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "taboo_set" */
+export type Taboo_Set_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Taboo_Set_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Taboo_Set_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  card_count?: InputMaybe<Scalars['Int']>;
+  code?: InputMaybe<Scalars['String']>;
+  current?: InputMaybe<Scalars['Boolean']>;
+  date?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Taboo_Set_Sum_Fields = {
+  __typename?: 'taboo_set_sum_fields';
+  card_count?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "taboo_set" */
+export enum Taboo_Set_Update_Column {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  Code = 'code',
+  /** column name */
+  Current = 'current',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+export type Taboo_Set_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Taboo_Set_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Taboo_Set_Set_Input>;
+  where: Taboo_Set_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Taboo_Set_Var_Pop_Fields = {
+  __typename?: 'taboo_set_var_pop_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Taboo_Set_Var_Samp_Fields = {
+  __typename?: 'taboo_set_var_samp_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Taboo_Set_Variance_Fields = {
+  __typename?: 'taboo_set_variance_fields';
+  card_count?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
@@ -12048,6 +20452,21 @@ export type User_Campaigns_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "user_campaigns" */
+export type User_Campaigns_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Campaigns_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Campaigns_Stream_Cursor_Value_Input = {
+  campaign_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type User_Campaigns_Sum_Fields = {
   __typename?: 'user_campaigns_sum_fields';
@@ -12059,6 +20478,14 @@ export type User_Campaigns_Sum_Fields = {
 export type User_Campaigns_Sum_Order_By = {
   campaign_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+};
+
+export type User_Campaigns_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<User_Campaigns_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Campaigns_Set_Input>;
+  where: User_Campaigns_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
@@ -12141,7 +20568,7 @@ export type User_Flag_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "user_flag" */
 export type User_Flag_Arr_Rel_Insert_Input = {
   data: Array<User_Flag_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<User_Flag_On_Conflict>;
 };
 
@@ -12157,7 +20584,7 @@ export type User_Flag_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_flag" */
 export enum User_Flag_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "flag", "user_id" */
   UserFlagPkey = 'user_flag_pkey'
 }
 
@@ -12199,10 +20626,10 @@ export type User_Flag_Mutation_Response = {
   returning: Array<User_Flag>;
 };
 
-/** on conflict condition type for table "user_flag" */
+/** on_conflict condition type for table "user_flag" */
 export type User_Flag_On_Conflict = {
   constraint: User_Flag_Constraint;
-  update_columns: Array<User_Flag_Update_Column>;
+  update_columns?: Array<User_Flag_Update_Column>;
   where?: InputMaybe<User_Flag_Bool_Exp>;
 };
 
@@ -12229,6 +20656,20 @@ export enum User_Flag_Select_Column {
 
 /** input type for updating data in table "user_flag" */
 export type User_Flag_Set_Input = {
+  flag?: InputMaybe<User_Flag_Type_Enum>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "user_flag" */
+export type User_Flag_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Flag_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Flag_Stream_Cursor_Value_Input = {
   flag?: InputMaybe<User_Flag_Type_Enum>;
   user_id?: InputMaybe<Scalars['String']>;
 };
@@ -12271,7 +20712,7 @@ export type User_Flag_Type_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_flag_type" */
 export enum User_Flag_Type_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "value" */
   UserFlagTypePkey = 'user_flag_type_pkey'
 }
 
@@ -12316,10 +20757,10 @@ export type User_Flag_Type_Mutation_Response = {
   returning: Array<User_Flag_Type>;
 };
 
-/** on conflict condition type for table "user_flag_type" */
+/** on_conflict condition type for table "user_flag_type" */
 export type User_Flag_Type_On_Conflict = {
   constraint: User_Flag_Type_Constraint;
-  update_columns: Array<User_Flag_Type_Update_Column>;
+  update_columns?: Array<User_Flag_Type_Update_Column>;
   where?: InputMaybe<User_Flag_Type_Bool_Exp>;
 };
 
@@ -12344,11 +20785,30 @@ export type User_Flag_Type_Set_Input = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_flag_type" */
+export type User_Flag_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Flag_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Flag_Type_Stream_Cursor_Value_Input = {
+  value?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "user_flag_type" */
 export enum User_Flag_Type_Update_Column {
   /** column name */
   Value = 'value'
 }
+
+export type User_Flag_Type_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Flag_Type_Set_Input>;
+  where: User_Flag_Type_Bool_Exp;
+};
 
 /** update columns of table "user_flag" */
 export enum User_Flag_Update_Column {
@@ -12357,6 +20817,12 @@ export enum User_Flag_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type User_Flag_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Flag_Set_Input>;
+  where: User_Flag_Bool_Exp;
+};
 
 /** columns and relationships of "user_friends" */
 export type User_Friends = {
@@ -12483,6 +20949,27 @@ export type User_Friends_Set_Input = {
   status?: InputMaybe<Scalars['String']>;
   user_id_a?: InputMaybe<Scalars['String']>;
   user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "user_friends" */
+export type User_Friends_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Friends_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Friends_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Friends_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Friends_Set_Input>;
+  where: User_Friends_Bool_Exp;
 };
 
 /** columns and relationships of "user_received_friend_requests" */
@@ -12612,6 +21099,27 @@ export type User_Received_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_received_friend_requests" */
+export type User_Received_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Received_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Received_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Received_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Received_Friend_Requests_Set_Input>;
+  where: User_Received_Friend_Requests_Bool_Exp;
+};
+
 /** columns and relationships of "user_sent_friend_requests" */
 export type User_Sent_Friend_Requests = {
   __typename?: 'user_sent_friend_requests';
@@ -12739,6 +21247,27 @@ export type User_Sent_Friend_Requests_Set_Input = {
   user_id_b?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_sent_friend_requests" */
+export type User_Sent_Friend_Requests_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Sent_Friend_Requests_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Sent_Friend_Requests_Stream_Cursor_Value_Input = {
+  status?: InputMaybe<Scalars['String']>;
+  user_id_a?: InputMaybe<Scalars['String']>;
+  user_id_b?: InputMaybe<Scalars['String']>;
+};
+
+export type User_Sent_Friend_Requests_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Sent_Friend_Requests_Set_Input>;
+  where: User_Sent_Friend_Requests_Bool_Exp;
+};
+
 /** columns and relationships of "user_settings" */
 export type User_Settings = {
   __typename?: 'user_settings';
@@ -12822,7 +21351,7 @@ export type User_Settings_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_settings" */
 export enum User_Settings_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id" */
   UserSettingsPkey = 'user_settings_pkey'
 }
 
@@ -12883,10 +21412,10 @@ export type User_Settings_Mutation_Response = {
   returning: Array<User_Settings>;
 };
 
-/** on conflict condition type for table "user_settings" */
+/** on_conflict condition type for table "user_settings" */
 export type User_Settings_On_Conflict = {
   constraint: User_Settings_Constraint;
-  update_columns: Array<User_Settings_Update_Column>;
+  update_columns?: Array<User_Settings_Update_Column>;
   where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
@@ -12958,6 +21487,29 @@ export type User_Settings_Set_Input = {
   user_id?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "user_settings" */
+export type User_Settings_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Settings_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Settings_Stream_Cursor_Value_Input = {
+  alphabetize?: InputMaybe<Scalars['Boolean']>;
+  campaign_show_deck_id?: InputMaybe<Scalars['Boolean']>;
+  colorblind?: InputMaybe<Scalars['Boolean']>;
+  custom_content?: InputMaybe<Scalars['Boolean']>;
+  ignore_collection?: InputMaybe<Scalars['Boolean']>;
+  in_collection?: InputMaybe<Scalars['jsonb']>;
+  onboarding?: InputMaybe<Scalars['jsonb']>;
+  show_spoilers?: InputMaybe<Scalars['jsonb']>;
+  single_card?: InputMaybe<Scalars['Boolean']>;
+  sort_quotes?: InputMaybe<Scalars['Boolean']>;
+  user_id?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "user_settings" */
 export enum User_Settings_Update_Column {
   /** column name */
@@ -12983,6 +21535,22 @@ export enum User_Settings_Update_Column {
   /** column name */
   UserId = 'user_id'
 }
+
+export type User_Settings_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<User_Settings_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<User_Settings_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<User_Settings_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<User_Settings_Delete_Key_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<User_Settings_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
 
 /** columns and relationships of "users" */
 export type Users = {
@@ -13228,7 +21796,7 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey'
 }
 
@@ -13278,14 +21846,14 @@ export type Users_Mutation_Response = {
 /** input type for inserting object relation for remote table "users" */
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
-/** on conflict condition type for table "users" */
+/** on_conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
-  update_columns: Array<Users_Update_Column>;
+  update_columns?: Array<Users_Update_Column>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
@@ -13330,6 +21898,22 @@ export type Users_Set_Input = {
   updated_at?: InputMaybe<Scalars['timestamp']>;
 };
 
+/** Streaming cursor of the table "users" */
+export type Users_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Users_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Users_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  handle?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamp']>;
+};
+
 /** update columns of table "users" */
 export enum Users_Update_Column {
   /** column name */
@@ -13342,12 +21926,25 @@ export enum Users_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
-export type GetCustomCardsQueryVariables = Exact<{
+export type Users_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Users_Set_Input>;
+  where: Users_Bool_Exp;
+};
+
+export type GetCardsCacheQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type GetCustomCardsQuery = { __typename?: 'query_root', full_card: Array<{ __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, linked_card: { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }, encounter_sets: Array<{ __typename?: 'card_encounter_set', name: string }>, packs: Array<{ __typename?: 'card_pack', name: string }>, translations: Array<{ __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null }> }> };
+export type GetCardsCacheQuery = { __typename?: 'query_root', all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
+
+export type GetCardsQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null }> } | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean }>, faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String'];
@@ -13365,10 +21962,11 @@ export type UploadChaosBagResultsMutationVariables = Exact<{
   sealed: Scalars['jsonb'];
   totalDrawn: Scalars['Int'];
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
 }>;
 
 
-export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13421,6 +22019,14 @@ export type ChaosBagSetTarotMutationVariables = Exact<{
 
 export type ChaosBagSetTarotMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
 
+export type ChaosBagSetDifficultyMutationVariables = Exact<{
+  campaign_id: Scalars['Int'];
+  difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
+}>;
+
+
+export type ChaosBagSetDifficultyMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, difficulty?: Campaign_Difficulty_Enum | null } | null };
+
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int'];
   cycleCode: Scalars['String'];
@@ -13441,7 +22047,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
@@ -13575,9 +22181,17 @@ export type GetDeckHistoryQueryVariables = Exact<{
 
 export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
-export type SingleCardFragment = { __typename?: 'full_card', code: string, cost?: number | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exile?: boolean | null, faction_code: string, faction2_code?: string | null, faction3_code?: string | null, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, stage?: number | null, doom?: number | null, clues?: number | null, double_sided?: boolean | null, illustrator?: string | null, real_back_flavor?: string | null, real_back_text?: string | null, real_back_name?: string | null, shroud?: number | null, victory?: number | null, vengeance?: number | null, back_link?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_requirements?: any | null, deck_options?: any | null, restrictions?: any | null, imagesrc?: string | null, backimagesrc?: string | null, xp?: number | null };
+export type TabooSetFragment = { __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean };
 
-export type CoreCardTextFragment = { __typename?: 'full_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null };
+export type EncounterSetFragment = { __typename?: 'card_encounter_set', code: string, name: string };
+
+export type PackFragment = { __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean };
+
+export type CycleFragment = { __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean };
+
+export type SingleCardFragment = { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null };
+
+export type CoreCardTextFragment = { __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null };
 
 export type UserInfoFragment = { __typename?: 'users', id: string, handle?: string | null };
 
@@ -13587,7 +22201,7 @@ export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: s
 
 export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null };
 
 export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
@@ -13607,7 +22221,7 @@ export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', s
 
 export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
 
 export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> };
 
@@ -13616,14 +22230,14 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> }, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
 
 export type GetCampaignQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13644,14 +22258,14 @@ export type GetChaosBagResultsQueryVariables = Exact<{
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign: { __typename?: 'campaign', id: number, uuid: string }, link_b_campaign: { __typename?: 'campaign', id: number, uuid: string }, linked_campaign: { __typename?: 'campaign', id: number, uuid: string } } | null };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -13672,7 +22286,7 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null } | null };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
 export type GetSettingsQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -13991,20 +22605,60 @@ export type RemoveCampaignInvestigatorMutationVariables = Exact<{
 
 export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null, campaign_id: number, investigator: string }> } | null };
 
+export const TabooSetFragmentDoc = gql`
+    fragment TabooSet on taboo_set {
+  id
+  name
+  code
+  active
+  date
+  card_count
+  current
+}
+    `;
+export const EncounterSetFragmentDoc = gql`
+    fragment EncounterSet on card_encounter_set {
+  code
+  name
+}
+    `;
+export const PackFragmentDoc = gql`
+    fragment Pack on pack {
+  code
+  cycle_code
+  real_name
+  position
+  official
+}
+    `;
+export const CycleFragmentDoc = gql`
+    fragment Cycle on cycle {
+  code
+  real_name
+  position
+  official
+}
+    `;
 export const SingleCardFragmentDoc = gql`
-    fragment SingleCard on full_card {
+    fragment SingleCard on all_card {
+  id
   code
   cost
+  clues
+  doom
+  stage
+  illustrator
+  double_sided
   deck_limit
   encounter_code
   encounter_position
+  exceptional
   exile
   faction_code
-  faction2_code
-  faction3_code
   health
   health_per_investigator
   is_unique
+  myriad
   pack_code
   pack_position
   permanent
@@ -14017,6 +22671,9 @@ export const SingleCardFragmentDoc = gql`
   real_subname
   real_text
   real_traits
+  real_back_name
+  real_back_text
+  real_back_flavor
   real_encounter_set_name
   sanity
   skill_agility
@@ -14026,35 +22683,47 @@ export const SingleCardFragmentDoc = gql`
   skill_wild
   subtype_code
   type_code
-  stage
-  doom
-  clues
-  double_sided
-  illustrator
-  real_back_flavor
-  real_back_text
-  real_back_name
-  doom
-  illustrator
-  shroud
   victory
-  vengeance
-  back_link
+  shroud
+  back_link_id
   enemy_horror
   enemy_damage
   enemy_evade
   enemy_fight
   hidden
-  deck_requirements
   deck_options
+  deck_requirements
   restrictions
-  imagesrc
-  backimagesrc
+  imageurl
+  backimageurl
+  faction2_code
+  faction3_code
   xp
+  version
+  alternate_required_code
+  clues_fixed
+  errata_date
+  alternate_of_code
+  duplicate_of_code
+  spoiler
+  vengeance
+  customization_options
+  taboo_set_id
+  taboo_xp
+  errata_date
+  real_customization_text
+  real_customization_change
+  real_taboo_text_change
+  preview
+  official
+  taboo_placeholder
+  gender
+  alt_art_investigator
+  tags
 }
     `;
 export const CoreCardTextFragmentDoc = gql`
-    fragment CoreCardText on full_card_text {
+    fragment CoreCardText on all_card_text {
   flavor
   name
   slot
@@ -14064,6 +22733,9 @@ export const CoreCardTextFragmentDoc = gql`
   back_flavor
   back_text
   back_name
+  customization_change
+  customization_text
+  taboo_text_change
 }
     `;
 export const FullChaosBagResultFragmentDoc = gql`
@@ -14075,6 +22747,7 @@ export const FullChaosBagResultFragmentDoc = gql`
   sealed
   totalDrawn
   tarot
+  difficulty
 }
     `;
 export const IdDeckFragmentDoc = gql`
@@ -14299,57 +22972,127 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 }
     ${GuideInputFragmentDoc}
 ${GuideAchievementFragmentDoc}`;
-export const GetCustomCardsDocument = gql`
-    query getCustomCards($locale: String!) {
-  full_card {
+export const GetCardsCacheDocument = gql`
+    query getCardsCache($locale: String!) {
+  all_card_updated(where: {locale: {_eq: $locale}}) {
+    translation_updated_at
+    cards_updated_at
+    card_count
+  }
+}
+    `;
+
+/**
+ * __useGetCardsCacheQuery__
+ *
+ * To run a query within a React component, call `useGetCardsCacheQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardsCacheQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCardsCacheQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetCardsCacheQuery(baseOptions: Apollo.QueryHookOptions<GetCardsCacheQuery, GetCardsCacheQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCardsCacheQuery, GetCardsCacheQueryVariables>(GetCardsCacheDocument, options);
+      }
+export function useGetCardsCacheLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardsCacheQuery, GetCardsCacheQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCardsCacheQuery, GetCardsCacheQueryVariables>(GetCardsCacheDocument, options);
+        }
+export type GetCardsCacheQueryHookResult = ReturnType<typeof useGetCardsCacheQuery>;
+export type GetCardsCacheLazyQueryHookResult = ReturnType<typeof useGetCardsCacheLazyQuery>;
+export type GetCardsCacheQueryResult = Apollo.QueryResult<GetCardsCacheQuery, GetCardsCacheQueryVariables>;
+export const GetCardsDocument = gql`
+    query getCards($locale: String!) {
+  all_card(where: {version: {_lte: 4}, linked: {_is_null: true}}) {
     ...SingleCard
+    translations(where: {locale: {_eq: $locale}}) {
+      ...CoreCardText
+    }
     linked_card {
       ...SingleCard
       translations(where: {locale: {_eq: $locale}}) {
         ...CoreCardText
       }
     }
-    encounter_sets(where: {locale: {_eq: $locale}}) {
-      name
-    }
-    packs(where: {locale: {_eq: $locale}}) {
-      name
-    }
+  }
+  taboo_set(where: {active: {_eq: true}}) {
+    ...TabooSet
+  }
+  faction_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
+  }
+  card_type_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
+  }
+  card_subtype_name(where: {locale: {_eq: $locale}}) {
+    code
+    name
+  }
+  card_encounter_set(where: {locale: {_eq: $locale}}) {
+    ...EncounterSet
+  }
+  cycle(order_by: {position: asc}) {
+    ...Cycle
     translations(where: {locale: {_eq: $locale}}) {
-      ...CoreCardText
+      name
     }
+    packs(order_by: {position: asc}) {
+      ...Pack
+      translations(where: {locale: {_eq: $locale}}) {
+        name
+      }
+    }
+  }
+  all_card_updated(where: {locale: {_eq: $locale}}) {
+    translation_updated_at
+    cards_updated_at
+    card_count
   }
 }
     ${SingleCardFragmentDoc}
-${CoreCardTextFragmentDoc}`;
+${CoreCardTextFragmentDoc}
+${TabooSetFragmentDoc}
+${EncounterSetFragmentDoc}
+${CycleFragmentDoc}
+${PackFragmentDoc}`;
 
 /**
- * __useGetCustomCardsQuery__
+ * __useGetCardsQuery__
  *
- * To run a query within a React component, call `useGetCustomCardsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCustomCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCustomCardsQuery({
+ * const { data, loading, error } = useGetCardsQuery({
  *   variables: {
  *      locale: // value for 'locale'
  *   },
  * });
  */
-export function useGetCustomCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCustomCardsQuery, GetCustomCardsQueryVariables>) {
+export function useGetCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCustomCardsQuery, GetCustomCardsQueryVariables>(GetCustomCardsDocument, options);
+        return Apollo.useQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
       }
-export function useGetCustomCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCustomCardsQuery, GetCustomCardsQueryVariables>) {
+export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCustomCardsQuery, GetCustomCardsQueryVariables>(GetCustomCardsDocument, options);
+          return Apollo.useLazyQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
         }
-export type GetCustomCardsQueryHookResult = ReturnType<typeof useGetCustomCardsQuery>;
-export type GetCustomCardsLazyQueryHookResult = ReturnType<typeof useGetCustomCardsLazyQuery>;
-export type GetCustomCardsQueryResult = Apollo.QueryResult<GetCustomCardsQuery, GetCustomCardsQueryVariables>;
+export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
+export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
+export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
 export const GetCardFaqDocument = gql`
     query getCardFaq($code: String!, $locale: String!) {
   faq_by_pk(code: $code) {
@@ -14393,10 +23136,10 @@ export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
-    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum) {
+    mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
   update_chaos_bag_result_by_pk(
     pk_columns: {id: $id}
-    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot}
+    _set: {bless: $bless, curse: $curse, drawn: $drawn, sealed: $sealed, totalDrawn: $totalDrawn, tarot: $tarot, difficulty: $difficulty}
   ) {
     ...FullChaosBagResult
   }
@@ -14424,6 +23167,7 @@ export type UploadChaosBagResultsMutationFn = Apollo.MutationFunction<UploadChao
  *      sealed: // value for 'sealed'
  *      totalDrawn: // value for 'totalDrawn'
  *      tarot: // value for 'tarot'
+ *      difficulty: // value for 'difficulty'
  *   },
  * });
  */
@@ -14673,6 +23417,44 @@ export function useChaosBagSetTarotMutation(baseOptions?: Apollo.MutationHookOpt
 export type ChaosBagSetTarotMutationHookResult = ReturnType<typeof useChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationResult = Apollo.MutationResult<ChaosBagSetTarotMutation>;
 export type ChaosBagSetTarotMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetTarotMutation, ChaosBagSetTarotMutationVariables>;
+export const ChaosBagSetDifficultyDocument = gql`
+    mutation chaosBagSetDifficulty($campaign_id: Int!, $difficulty: campaign_difficulty_enum) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {difficulty: $difficulty}
+  ) {
+    id
+    difficulty
+  }
+}
+    `;
+export type ChaosBagSetDifficultyMutationFn = Apollo.MutationFunction<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
+
+/**
+ * __useChaosBagSetDifficultyMutation__
+ *
+ * To run a mutation, you first call `useChaosBagSetDifficultyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChaosBagSetDifficultyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [chaosBagSetDifficultyMutation, { data, loading, error }] = useChaosBagSetDifficultyMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      difficulty: // value for 'difficulty'
+ *   },
+ * });
+ */
+export function useChaosBagSetDifficultyMutation(baseOptions?: Apollo.MutationHookOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>(ChaosBagSetDifficultyDocument, options);
+      }
+export type ChaosBagSetDifficultyMutationHookResult = ReturnType<typeof useChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationResult = Apollo.MutationResult<ChaosBagSetDifficultyMutation>;
+export type ChaosBagSetDifficultyMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $tarotReading: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {

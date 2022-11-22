@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -39,7 +39,6 @@ function SearchOptions({
           { t`Show archived campaigns` }
         </Text>
         <ArkhamSwitch
-          useGestureHandler
           value={showArchived}
           onValueChange={toggleShowArchived}
         />
@@ -60,10 +59,12 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       };
     } = {};
     forEach(scenarios, scenario => {
-      if (!result[scenario.id.campaignId]) {
-        result[scenario.id.campaignId] = {};
+      if (scenario.type === 'standalone') {
+        if (!result[scenario.id.campaignId]) {
+          result[scenario.id.campaignId] = {};
+        }
+        result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
       }
-      result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
     });
     return result;
   }, [lang]);
@@ -94,7 +95,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       showNewCampaignDialog();
     }
   }, componentId, [showNewCampaignDialog]);
-
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     const [archived, unarchived] = partition(flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
@@ -152,7 +152,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
           icon="expand"
           title={t`Show archived campaigns`}
           onPress={toggleShowArchived}
-          useGestureHandler={Platform.OS === 'ios'}
         />
       );
     }
@@ -162,7 +161,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         icon="campaign"
         title={t`New Campaign`}
         onPress={showNewCampaignDialog}
-        useGestureHandler={Platform.OS === 'ios'}
       />
     );
     return result;

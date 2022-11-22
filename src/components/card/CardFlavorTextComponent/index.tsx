@@ -126,6 +126,19 @@ const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, S
   };
 };
 
+const FancyUHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy_u>([\\s\\S]+?)<\\/fancy_u>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorFancyNode(style, true),
+  };
+};
+
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
   order: 3,
@@ -158,7 +171,6 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   },
   render: FlavorBlockquoteHtmlTagNode,
 };
-
 
 function MiniCapsHtmlTagRule(): MarkdownRule<WithChildren, State> {
   return {
@@ -269,6 +281,7 @@ export default function CardFlavorTextComponent(
         strikeTag: StrikeHtmlTagRule(),
         citeTag: CiteTagRule(context),
         fancyTag: FancyHtmlTagRule(context),
+        fancyUTag: FancyUHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),

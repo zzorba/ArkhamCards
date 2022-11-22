@@ -46,7 +46,7 @@ export interface SkillModifierFilters {
 }
 
 export interface FilterState {
-  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters | SkillModifierFilters;
+  [key: string]: string[] | boolean | number | [number, number] | SkillIconsFilters | SkillModifierFilters;
   factions: FactionCodeType[];
   uses: string[];
   types: string[];
@@ -54,6 +54,7 @@ export interface FilterState {
   xpLevels: string[];
   traits: string[];
   actions: string[];
+  taboo_set: number;
   skillModifiers: SkillModifierFilters;
   skillModifiersEnabled: boolean;
   packCodes: string[];
@@ -66,6 +67,8 @@ export interface FilterState {
   exceptional: boolean;
   nonExceptional: boolean;
   costEnabled: boolean;
+  costEven: boolean;
+  costOdd: boolean;
   victory: boolean;
   multiClass: boolean;
   skillEnabled: boolean;
@@ -144,6 +147,7 @@ export const defaultFilterState: FilterState = {
   xpLevels: [],
   actions: [],
   traits: [],
+  taboo_set: 0,
   skillModifiers: {
     willpower: false,
     intellect: false,
@@ -161,6 +165,8 @@ export const defaultFilterState: FilterState = {
   exceptional: false,
   nonExceptional: false,
   costEnabled: false,
+  costEven: false,
+  costOdd: false,
   victory: false,
   skillEnabled: false,
   unique: false,
@@ -331,7 +337,7 @@ export default class FilterBuilder {
       // Kick out investigators because they re-use the same field
       // and by definition cannot have skill icons.
       return [
-        new Brackets(qb => qb.where(`(c.type_code != 'investigator')`)
+        new Brackets(qb => qb.where(`c.type_code != 'investigator'`)
           .andWhere(`(${parts.join(' OR ')})`)),
       ];
     }
@@ -555,20 +561,40 @@ export default class FilterBuilder {
   costFilter(filters: FilterState): Brackets[] {
     const {
       costEnabled,
+      costEven,
+      costOdd,
       cost,
     } = filters;
     if (costEnabled) {
-      return this.rangeFilter('cost', cost, false);
+      const costQuery = this.rangeFilter('cost', cost, false);
+      if (costEven || costOdd) {
+        if (costEven && costOdd) {
+          return costQuery;
+        }
+        if (costEven) {
+          return [combineQueries(
+            where('c.cost is not null AND c.cost % 2 = 0'),
+            costQuery,
+            'and'
+          )];
+        }
+        return [combineQueries(
+          where('c.cost is not null AND c.cost % 2 = 1'),
+          costQuery,
+          'and'
+        )];
+      }
+      return costQuery;
     }
     return [];
   }
 
-  equalsVectorClause(values: string[], field: string, valuePrefix?: string[]): Brackets[] {
+  equalsVectorClause(values: string[], field: string, valuePrefix?: string[], noLinked?: boolean): Brackets[] {
     if (values.length) {
       const valueName = this.fieldName([...(valuePrefix || []), field]);
       return [
         where(
-          `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
+          noLinked ? `c.${field} IN (:...${valueName})` : `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
           { [valueName]: values }
         ),
       ];
@@ -578,11 +604,17 @@ export default class FilterBuilder {
 
   packCodes(packCodes: string[]): Brackets[] {
     const packClause = this.equalsVectorClause(packCodes, 'pack_code');
-    if (packClause.length) {
+    if (packClause.length && packCodes.length) {
+      const [packCode, ...otherCodes] = packCodes;
       return [
         combineQueries(
-          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCodes`, { packCodes: map(packCodes, c => `%${c}%`).join('') }),
-          packClause,
+          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode`, { packCode: `%${packCode}%` }),
+          [
+            ...map(otherCodes, (c, idx) =>
+              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx}`, { [`packCode${idx}`]: `%${c}%` }),
+            ),
+            ...packClause,
+          ],
           'or'
         ),
       ];
@@ -680,9 +712,19 @@ export default class FilterBuilder {
     );
   }
 
+  tabooSetFilter(taboo_set: number): Brackets[] {
+    if (taboo_set === 0) {
+      return [];
+    }
+    return [
+      where(`c.taboo_set_id = :taboo_set AND c.taboo_placeholder is null`, { taboo_set }),
+    ];
+  }
+
   filterToQuery(filters: FilterState, localizedTraits: boolean): Brackets | undefined {
     return combineQueriesOpt(
       [
+        ...this.tabooSetFilter(filters.taboo_set),
         ...this.factionFilter(filters.factions),
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),

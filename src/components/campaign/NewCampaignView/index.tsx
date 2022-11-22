@@ -25,8 +25,8 @@ import {
   NewCampaignAction,
   NewStandaloneCampaignAction,
   NEW_GUIDED_CAMPAIGNS,
+  BROWSE_CAMPAIGNS,
 } from '@actions/types';
-import { BROWSE_CAMPAIGNS } from '@app/App';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
@@ -38,9 +38,9 @@ import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPac
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
-import { EditChaosBagProps } from '../EditChaosBagDialog';
+import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
 import COLORS from '@styles/colors';
-import space, { m, s } from '@styles/space';
+import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useNavigationButtonPressed, useSlots, useWeaknessCards } from '@components/core/hooks';
 import { CampaignSelection } from '../SelectCampaignDialog';
@@ -400,7 +400,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     });
   }, [setCampaignChoice]);
   const [open, toggleOpen] = useFlag(false);
-  const renderWeaknessHeader = useCallback((icon: React.ReactFragment) => {
+  const renderWeaknessHeader = useCallback((icon: React.ReactNode) => {
     return (
       <View style={[
         styles.block,
@@ -687,6 +687,7 @@ export default NewCampaignView;
 const styles = StyleSheet.create({
   footer: {
     minHeight: 100,
+    paddingBottom: l,
   },
   block: {
     padding: s,

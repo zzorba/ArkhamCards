@@ -1063,6 +1063,142 @@
     "supplies": []
   },
   {
+    "campaignId": "fof",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "gob",
     "sections": [
       {
@@ -1070,13 +1206,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1262,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
-            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "nonbinary_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "nonbinary_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1694,14 @@
           {
             "id": "read_act_2",
             "masculine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
-            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
+            "feminine_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다.",
+            "nonbinary_text": "#name# 조사자는 『황색의 왕』 제2막을 읽었다."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# 조사자는 꼭두각시로 전락했다",
-            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다"
+            "feminine_text": "#name# 조사자는 꼭두각시로 전락했다",
+            "nonbinary_text": "#name# 조사자는 꼭두각시로 전락했다"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +2065,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
-            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "nonbinary_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2601,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
-            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "nonbinary_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "agenda_5",
@@ -2665,13 +2812,71 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name#의 존재가 심연으로 끌려갔다.",
-            "feminine_text": "#name#의 존재가 심연으로 끌려갔다."
+            "masculine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "feminine_text": "#name#의 존재가 심연으로 끌려갔다",
+            "nonbinary_text": "#name#의 존재가 심연으로 끌려갔다"
+          },
+          {
+            "id": "atw_bernards_fate",
+            "text": "버나드의 운명을 알아냈다"
+          },
+          {
+            "id": "atw_custodian_of_knowledge",
+            "text": "당신은 이타쿠아의 지식의 관리인이다"
+          },
+          {
+            "id": "atw_defeated_the_wendigo",
+            "text": "웬디고를 쓰러트렸다"
+          },
+          {
+            "id": "atw_discovered_the_fate_of_the_students",
+            "text": "나델만 박사 휘하 학생들의 운명을 알아냈다"
+          },
+          {
+            "id": "atw_found_the_gold",
+            "text": "한니나의 금 광맥을 찾았다"
+          },
+          {
+            "id": "atw_have_enough_evidence",
+            "text": "나델만 박사의 무죄를 입증하기 위한 증거를 수집했다"
+          },
+          {
+            "id": "atw_norman_alive",
+            "text": "노먼이 살아있다"
+          },
+          {
+            "id": "atw_norman_dead",
+            "text": "노먼을 죽게 내버려 두었다"
+          },
+          {
+            "id": "atw_normans_fate",
+            "text": "노먼의 운명을 알아냈다"
+          },
+          {
+            "id": "atw_sarcee_are_hunting",
+            "text": "사르시족이 당신을 사냥하고 있다"
+          },
+          {
+            "id": "atw_saved_charlie",
+            "text": "찰리를 구했다"
+          },
+          {
+            "id": "atw_saved_the_gold_prospector",
+            "text": "금광 광부를 구했다"
+          },
+          {
+            "id": "atw_sylvias_fate",
+            "text": "실비아의 운명을 알아냈다"
+          },
+          {
+            "id": "atw_wendigo_still_roams",
+            "text": "웬디고가 아직 북 한니나 계곡을 배회하고 있음을 알고 있다"
           },
           {
             "id": "blob_contained",
@@ -2680,6 +2885,10 @@
           {
             "id": "blob_devoured_universe",
             "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2700,6 +2909,78 @@
           {
             "id": "constellation_was_saved",
             "text": "the Constellation was saved."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2770,8 +3051,36 @@
             "text": "심연을 구했다"
           },
           {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
+          },
+          {
+            "id": "zcos_abandoned_the_people_of_eastwick",
+            "text": "you abandoned the people of Eastwick."
+          },
+          {
+            "id": "zcos_fended_off_an_alien_entity",
+            "text": "you fended off an alien entity."
+          },
+          {
+            "id": "zcos_slaughtered_the_people_of_eastwick",
+            "text": "you slaughtered the people of Eastwick."
+          },
+          {
             "id": "zez_all_is_quiet",
             "text": "오세이유 거리의 모든 것이 조용하다……. 지금은."
+          },
+          {
+            "id": "zhu_avenged_the_house_of_usher",
+            "text": "the investigators avenged the House of Usher."
+          },
+          {
+            "id": "zhu_house_of_usher_has_fallen",
+            "text": "the House of Usher has fallen."
           }
         ]
       },
@@ -2788,6 +3097,10 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "atw_added_tablet",
             "text": "dummy"
           },
           {
@@ -2815,7 +3128,51 @@
             "text": "dummy"
           },
           {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
             "text": "dummy"
           },
           {
@@ -2856,6 +3213,10 @@
           },
           {
             "id": "meh_the_truth",
+            "text": "dummy"
+          },
+          {
+            "id": "zjc_killed_jenny",
             "text": "dummy"
           }
         ]
@@ -3045,7 +3406,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
-            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
+            "feminine_text": "#name# 조사자는 아자토스의 피리꾼이 되었다",
+            "nonbinary_text": "#name# 조사자는 아자토스의 피리꾼이 되었다"
           },
           {
             "id": "accepted_fate",
@@ -3331,12 +3693,14 @@
           {
             "id": "captured",
             "masculine_text": "#name# 조사자가 납치당했다",
-            "feminine_text": "#name# 조사자가 납치당했다"
+            "feminine_text": "#name# 조사자가 납치당했다",
+            "nonbinary_text": "#name# 조사자가 납치당했다"
           },
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# 조사자가 울타르의 율법을 어겼다",
-            "feminine_text": "#name# 조사자가 울타르의 율법을 어겼다"
+            "feminine_text": "#name# 조사자가 울타르의 율법을 어겼다",
+            "nonbinary_text": "#name# 조사자가 울타르의 율법을 어겼다"
           },
           {
             "id": "black_cat_at_your_side",
@@ -3854,22 +4218,26 @@
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
-            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
+            "feminine_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>.",
+            "nonbinary_text": "#name# 조사자는 단서 1개를 가지고 시작합니다<i>(토큰 저장소에서 가져옵니다)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
-            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
+            "feminine_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 자원을 3개 적게 갖고 시작합니다."
           },
           {
             "id": "agenda_5",
@@ -4032,144 +4400,145 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "feminine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "nonbinary_text": "#name# 조사자가 잠수복을 갖고 있다"
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "하퍼 요원이 맡은 임무를 완수했다"
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "하퍼 요원이 맡은 임무를 완수했지만…그 대가는 무엇일까요?"
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "제이덕 엘렌이 복수의 칼을 갈고 있다"
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "브라이언 버넘이 복수의 칼을 갈고 있다"
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "데이곤이 깨어났다"
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "데이곤이 아직 잠들어 있다"
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "심해인이 지구상에서 번영하게 되었다"
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "조사자들이 이하 느틀레이에서 탈출했다"
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "대홍수가 시작되었다"
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "로버트 프렌들리가 복수의 칼을 갈고 있다"
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "수문장이 쓰러졌다"
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "이하 느틀레이의 관문이 당신을 정당한 계승자로 받아들인다"
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "오테라 길먼이 복수의 칼을 갈고 있다"
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "이하 느틀레이의 수호자가 죽었다"
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "머리관이 등대로 옮겨졌다"
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "우상이 등대로 옮겨졌다"
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "인스머스가 밀물에 집어삼켜졌다"
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "조이스 리틀이 복수의 칼을 갈고 있다"
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "조사자들이 안전하게 차량에 도착했다"
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "망토가 등대로 옮겨졌다"
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "바나버스 마쉬가 복수의 칼을 갈고 있다"
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "임무에 실패했다"
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "임무를 달성했다"
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "밀교회의 의식을 방해했다"
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "심해인의 음모를 저지했다"
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "조사자들이 이하 느틀레이의 지도를 갖고 있다"
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "조사자들이 이하 느틀레이의 열쇠를 갖고 있다"
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "조사자들이 동튼 후에야 송골매 곶에 도착했다"
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "조사자들이 동트기 전에 송골매 곶에 도착했다"
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "심해의 보화는 영원히 소실되었으나…그 대가는 무엇일까요?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "심해의 보화는 영원히 소실되었다"
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "악마의 암초에 도사린 공포가 죽었다"
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "악마의 암초에 도사린 공포가 아직 살아 있다"
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "밀물이 더욱 높이 차올랐다"
           }
         ]
       },
@@ -4178,51 +4547,51 @@
         "entries": [
           {
             "id": "accuse_allen",
-            "text": "Zadok Allen"
+            "text": "제이덕 엘렌"
           },
           {
             "id": "accuse_burnham",
-            "text": "Brian Burnham"
+            "text": "브라이언 버넘"
           },
           {
             "id": "accuse_friendly",
-            "text": "Robert Friendly"
+            "text": "로버트 프렌들리"
           },
           {
             "id": "accuse_gilman",
-            "text": "Othera Gilman"
+            "text": "오레나 길먼"
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "워터 가에 있는 집"
           },
           {
             "id": "accuse_little",
-            "text": "Joyce Little"
+            "text": "조이스 리틀"
           },
           {
             "id": "accuse_marsh",
-            "text": "Barnabas Marsh"
+            "text": "바나버스 마쉬"
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "뉴 처치 그린"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "데이곤 밀교회당"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "인스머스 감옥"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "쏘본 골목"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "해안 빈민가"
           },
           {
             "id": "act_2_setup",
@@ -4295,63 +4664,63 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "조 사전트와의 거래"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "이어진 실마리"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "탈옥"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "간섭"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "무시무시한 악마와의 전투"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "무어 선장과의 대화"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "함께 수색하기로 결정"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "신비한 유물을 발견함"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "기묘한 우상을 발견함"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "불경스러운 망토를 발견함"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "비의적인 사교집단과의 조우"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "무시무시한 진실"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "“심해인”의 생활사"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "토머스 도슨과의 만남"
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "씁쓸한 배신"
           }
         ]
       },
@@ -4360,27 +4729,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "워터 가에 있는 집"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "인스머스 감옥"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "뉴 처치 그린"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "데이곤 밀교회당"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "쏘본 골목"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "해안 빈민가"
           }
         ]
       },
@@ -4389,27 +4758,55 @@
         "entries": [
           {
             "id": "allen",
-            "text": "Zadok Allen"
+            "text": "제이덕 엘렌"
           },
           {
             "id": "burnham",
-            "text": "Brian Burnham"
+            "text": "브라이언 버넘"
           },
           {
             "id": "friendly",
-            "text": "Robert Friendly"
+            "text": "로버트 프렌들리"
           },
           {
             "id": "gilman",
-            "text": "Othera Gilman"
+            "text": "오레나 길먼"
           },
           {
             "id": "little",
-            "text": "Joyce Little"
+            "text": "조이스 리틀"
           },
           {
             "id": "marsh",
-            "text": "Barnabas Marsh"
+            "text": "바나버스 마쉬"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "조사자들이 동튼 후에야 송골매 곶에 도착했다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
           }
         ]
       }
@@ -4460,7 +4857,7 @@
           },
           {
             "id": "intimidated_the_snark",
-            "text": "조사자들은 스나크 에게 겁을 주었다"
+            "text": "조사자들은 스나크에게 겁을 주었다"
           },
           {
             "id": "intrigued_the_snark",
@@ -4556,7 +4953,7 @@
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "하얀 기사가 붉은 여왕과 의 싸움에서 쓰러졌다"
+            "text": "하얀 기사가 붉은 여왕과의 싸움에서 쓰러졌다"
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
@@ -4857,6 +5254,254 @@
     "supplies": []
   },
   {
+    "campaignId": "zcf",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "took_out_a_loan",
+            "masculine_text": "#name# 조사자가 대출을 받았다",
+            "feminine_text": "#name# 조사자가 대출을 받았다",
+            "nonbinary_text": "#name# 조사자가 대출을 받았다"
+          },
+          {
+            "id": "architects_project_was_fully_completed",
+            "text": "설계자의 계획이 완전히 결실을 맺었다"
+          },
+          {
+            "id": "architects_project_was_sabotaged",
+            "text": "설계자의 계획이 방해받았다"
+          },
+          {
+            "id": "arrived_on_schedule",
+            "text": "조사자들이 예정대로 도착했다"
+          },
+          {
+            "id": "chose_the_least_predictable_route",
+            "text": "조사자들은 예측 가능성이 낮은 경로를 선택했다"
+          },
+          {
+            "id": "chose_the_most_direct_route",
+            "text": "조사자들은 직항로를 선택했다"
+          },
+          {
+            "id": "chose_the_most_populous_route",
+            "text": "조사자들은 유동 인구가 많은 경로를 선택했다"
+          },
+          {
+            "id": "cthulhu_reigns",
+            "text": "크툴루가 전 인류를 통치한다"
+          },
+          {
+            "id": "cthulhu_slumbers",
+            "text": "크툴루가 다시 한 번 깊은 곳에서 잠에 빠져 들었다"
+          },
+          {
+            "id": "cults_project_nears_completion",
+            "text": "이교도의 계획이 막바지에 도달했다"
+          },
+          {
+            "id": "escaped_rlyeh",
+            "text": "조사자들이 르리예에서 탈출했다"
+          },
+          {
+            "id": "expelled_the_traitors",
+            "text": "조사자들이 배신자를 축출했다"
+          },
+          {
+            "id": "explored_the_myra_louise",
+            "text": "조사자들이 마이라 루이스호를 탐사했다"
+          },
+          {
+            "id": "exposed_the_traitors",
+            "text": "조사자들이 배신자를 드러냈다"
+          },
+          {
+            "id": "failed_to_find_the_myra_louise",
+            "text": "조사자들이 마이라 루이스호를 찾는데 실패했다"
+          },
+          {
+            "id": "failed_to_stop_the_traitors_plan",
+            "text": "조사자들이 배신자들의 계획을 막는데 실패했다"
+          },
+          {
+            "id": "forced_to_withdraw",
+            "text": "조사자들이 철수할 수 밖에 없었다"
+          },
+          {
+            "id": "found_the_missing_artifacts",
+            "text": "조사자들이 잃어버린 유물을 찾았다"
+          },
+          {
+            "id": "found_the_myra_louise",
+            "text": "조사자들이 마이라 루이스호를 찾았다"
+          },
+          {
+            "id": "have_been_observed",
+            "text": "조사자들이 감시당했다"
+          },
+          {
+            "id": "interviewed_the_broker",
+            "text": "조사자들이 브로커를 추궁했다"
+          },
+          {
+            "id": "know_the_full_story",
+            "text": "조사자들이 사건의 모든 전말을 알아냈다"
+          },
+          {
+            "id": "left_the_auction_early",
+            "text": "조사자들이 일찍 경매장을 떠났다"
+          },
+          {
+            "id": "severely_delayed",
+            "text": "조사자들이 크게 지체되었다"
+          },
+          {
+            "id": "understand_the_truth",
+            "text": "조사자들이 사건의 진상을 알아냈다"
+          }
+        ]
+      },
+      {
+        "section": "cultists_alive",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "글렌 콘로이"
+          },
+          {
+            "id": "hector",
+            "text": "헥터 서턴"
+          },
+          {
+            "id": "paul",
+            "text": "폴 켈러먼"
+          },
+          {
+            "id": "rodney",
+            "text": "로드니 듀발"
+          },
+          {
+            "id": "ulysses",
+            "text": "율리시스 힐"
+          },
+          {
+            "id": "wallace",
+            "text": "윌리스 소프"
+          }
+        ]
+      },
+      {
+        "section": "cultists_killed",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "글렌 콘로이"
+          },
+          {
+            "id": "hector",
+            "text": "헥터 서턴"
+          },
+          {
+            "id": "paul",
+            "text": "폴 켈러먼"
+          },
+          {
+            "id": "rodney",
+            "text": "로드니 듀발"
+          },
+          {
+            "id": "ulysses",
+            "text": "율리시스 힐"
+          },
+          {
+            "id": "wallace",
+            "text": "윌리스 소프"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "auction_lots",
+            "text": "dummy"
+          },
+          {
+            "id": "auction_lots_in_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "end_of_the_line",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_cooperate",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_ruckus",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_took_time",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "luther_alive",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_4",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_5",
+            "text": "dummy"
+          },
+          {
+            "id": "repaid_loans",
+            "text": "dummy"
+          },
+          {
+            "id": "two_impossible_pillars",
+            "text": "dummy"
+          },
+          {
+            "id": "zgt_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zcp",
     "sections": [
       {
@@ -4864,7 +5509,7 @@
         "entries": [
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "infected",
@@ -4877,15 +5522,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -4893,15 +5538,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -4910,15 +5555,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -4926,15 +5571,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -4943,133 +5588,135 @@
         "entries": [
           {
             "id": "heeded_the_call",
-            "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "masculine_text": "#name# 조사자는 부름에 응답했다",
+            "feminine_text": "#name# 조사자는 부름에 응답했다",
+            "nonbinary_text": "#name# 조사자는 부름에 응답했다"
           },
           {
             "id": "injected_a_cardinal_reagant",
-            "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "masculine_text": "#name# 조사자는 시약을 주입했다",
+            "feminine_text": "#name# 조사자는 시약을 주입했다",
+            "nonbinary_text": "#name# 조사자는 시약을 주입했다"
           },
           {
             "id": "arkham_stands_united",
-            "text": "Arkham stands united."
+            "text": "아컴이 연합되었다"
           },
           {
             "id": "baalshandor_struck_the_first_blow",
-            "text": "Baalshandor struck the first blow."
+            "text": "바알샨도르가 선제공격을 시작했다"
           },
           {
             "id": "collection_was_saved",
-            "text": "the collection was saved."
+            "text": "수집품이 보존되었다"
           },
           {
             "id": "death_conquered_herbert_west",
-            "text": "Death conquered Herbert West."
+            "text": "죽음이 허버트 웨스트를 지배했다"
           },
           {
             "id": "earned_greysons_respect",
-            "text": "you earned Greyson's respect."
+            "text": "그레이슨의 신임을 얻었다"
           },
           {
             "id": "found_the_hidden_paths",
-            "text": "you have found the hidden paths."
+            "text": "당신은 숨겨진 경로를 찾았다"
           },
           {
             "id": "greyson_cut_ties",
-            "text": "Greyson cut ties."
+            "text": "그레이슨이 배신했다"
           },
           {
             "id": "herbert_west_is_leading_the_way",
-            "text": "Herbert West is leading the way."
+            "text": "허버트 웨스트가 앞장서고 있다"
           },
           {
             "id": "herbert_west_was_taken_against_his_will",
-            "text": "Herbert West was taken against his will."
+            "text": "허버트 웨스트가 끌려갔다"
           },
           {
             "id": "hibbs_has_your_back",
-            "text": "Hibbs has your back."
+            "text": "히브가 당신을 돕는다"
           },
           {
             "id": "hibbs_is_here_to_help",
-            "text": "Hibbs is here to help."
+            "text": "히브가 도우러 왔다"
           },
           {
             "id": "investigators_learned_the_secrets_of_the_roadhouse",
-            "text": "the investigators learned the secrets of the roadhouse."
+            "text": "조사자들이 가로변 식당의 비밀을 알게 되었다"
           },
           {
             "id": "learned_the_killing_words",
-            "text": "you learned the killing words."
+            "text": "당신은 말살의 주언을 배웠다"
           },
           {
             "id": "made_sure_the_first_was_dead",
-            "text": "you made sure the First was dead."
+            "text": "우월한 자의 죽음을 확인했다"
           },
           {
             "id": "received_a_cryptic_riddle",
-            "text": "you received a cryptic riddle."
+            "text": "당신은 알 수 없는 수수께끼를 들었다"
           },
           {
             "id": "saw_a_vision_of_the_portals",
-            "text": "you saw a vision of the portals."
+            "text": "당신은 차원문의 환영을 보았다"
           },
           {
             "id": "tailors_contained_the_problem",
-            "text": "the Tailors contained the problem."
+            "text": "테일러들이 사건을 은폐했다"
           },
           {
             "id": "the_blood_runs_in_your_veins",
-            "text": "the blood runs in your veins."
+            "text": "당신의 혈관에 피가 흐른다"
           },
           {
             "id": "the_first_claimed_the_facility",
-            "text": "the First claimed The Facility."
+            "text": "우월한 자가 시설을 차지했다"
           },
           {
             "id": "the_monster_was_buried_under_tons_of_concrete",
-            "text": "the monster was buried under tons of concrete."
+            "text": "괴물이 콘크리트 더미에 파묻혔다"
           },
           {
             "id": "the_plaguebearer_was_bound_anew",
-            "text": "the Plaguebearer was bound anew."
+            "text": "역병전파자가 다시 봉인되었다"
           },
           {
             "id": "the_plaguebearer_was_destroyed",
-            "text": "the Plaguebearer was destroyed."
+            "text": "역병전파자를 쓰러트렸다"
           },
           {
             "id": "transported_to_the_lurkers_realm",
-            "text": "you were transported to the Lurker's realm."
+            "text": "당신은 잠복자의 영토로 이동했다"
           },
           {
             "id": "tripped_the_facility_alarms",
-            "text": "you tripped the Facility alarms."
+            "text": "당신은 시설 경보를 작동시켰다"
           },
           {
             "id": "west_conquered_death",
-            "text": "West conquered Death."
+            "text": "웨스트가 죽음을 지배했다"
           },
           {
             "id": "west_has_recovered_the_reagant",
-            "text": "West has recoverred the reagant."
+            "text": "웨스트가 시약을 회수했다"
           },
           {
             "id": "you_conquered_death",
-            "text": "you conquered Death."
+            "text": "당신은 죽음을 지배했다"
           },
           {
             "id": "you_have_been_warned",
-            "text": "you have been warned."
+            "text": "당신은 경고를 받았다"
           },
           {
             "id": "you_have_received_a_twisted_gift",
-            "text": "you have received a twisted gift."
+            "text": "당신은 뒤틀린 선물을 받았다"
           },
           {
             "id": "you_hid_the_briefcase",
-            "text": "you hid the briefcase."
+            "text": "당신은 서류 가방을 숨겼다"
           }
         ]
       },
@@ -5078,39 +5725,39 @@
         "entries": [
           {
             "id": "armitage",
-            "text": "Henry Armitage"
+            "text": "헨리 아미티지"
           },
           {
             "id": "beecher",
-            "text": "Miram Beecher"
+            "text": "미리암 비처"
           },
           {
             "id": "doyle",
-            "text": "Doyle Jeffries"
+            "text": "도일 제프리"
           },
           {
             "id": "hibbs",
-            "text": "Hibbs"
+            "text": "히브"
           },
           {
             "id": "ma",
-            "text": "Ma Matheson"
+            "text": "마 매시슨"
           },
           {
             "id": "priest_of_plagues",
-            "text": "Priest of Plagues"
+            "text": "역병의 사제"
           },
           {
             "id": "the_loving_couple",
-            "text": "The Loving Couple"
+            "text": "다정한 부부"
           },
           {
             "id": "thing_in_water",
-            "text": "The Thing in the Water"
+            "text": "물 속에 있는 것"
           },
           {
             "id": "vice_president",
-            "text": "The Vice President"
+            "text": "부 은행장"
           }
         ]
       },
@@ -5119,15 +5766,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5135,15 +5782,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -5152,15 +5799,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5168,15 +5815,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -5218,15 +5865,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5234,15 +5881,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -5251,15 +5898,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5267,15 +5914,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -5284,15 +5931,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5300,15 +5947,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       },
@@ -5317,15 +5964,15 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "해방의 구덩이"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "방어됨"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "불길에 휩싸임"
           },
           {
             "id": "infected",
@@ -5333,15 +5980,15 @@
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "광기에 휩싸임"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "결집됨"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "해방의 장소"
           }
         ]
       }
@@ -5357,12 +6004,14 @@
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
-            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
+            "feminine_text": "#name# 조사자는 사이버 바이러스에 감염되었다",
+            "nonbinary_text": "#name# 조사자는 사이버 바이러스에 감염되었다"
           },
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# 조사자는 지구에 의해 오염되었다",
-            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다"
+            "feminine_text": "#name# 조사자는 지구에 의해 오염되었다",
+            "nonbinary_text": "#name# 조사자는 지구에 의해 오염되었다"
           },
           {
             "id": "allied_with_the_migo",

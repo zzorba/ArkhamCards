@@ -5100,6 +5100,106 @@
     ]
   },
   {
+    "code": "zcos_00001",
+    "scenario": "the_colour_out_of_space",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "Your location is <b>Infected</b>",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is <b>Infected</b>",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
     "code": "zcc_00001",
     "scenario": "consternation_on_the_constellation",
     "standard": [
@@ -6623,7 +6723,7 @@
     ]
   },
   {
-    "code": "zce001",
+    "code": "zce_00001",
     "scenario": "the_warning",
     "standard": [
       {
@@ -6683,7 +6783,7 @@
     ]
   },
   {
-    "code": "zce018",
+    "code": "zce_00018",
     "scenario": "the_golden_circle",
     "standard": [
       {
@@ -6779,7 +6879,7 @@
     ]
   },
   {
-    "code": "zce040",
+    "code": "zce_00040",
     "scenario": "the_fallen",
     "standard": [
       {
@@ -6859,7 +6959,7 @@
     ]
   },
   {
-    "code": "zce076",
+    "code": "zce_00076",
     "scenario": "the_crown",
     "standard": [
       {
@@ -6938,7 +7038,7 @@
     ]
   },
   {
-    "code": "zcp001",
+    "code": "zcp_00001",
     "scenario": "late_risers",
     "standard": [
       {
@@ -6986,7 +7086,7 @@
     ]
   },
   {
-    "code": "zcp019",
+    "code": "zcp_00019",
     "scenario": "night_on_the_town",
     "standard": [
       {
@@ -7034,7 +7134,7 @@
     ]
   },
   {
-    "code": "zcp047",
+    "code": "zcp_00047",
     "scenario": "dead_by_dawn",
     "standard": [
       {
@@ -7085,7 +7185,7 @@
     ]
   },
   {
-    "code": "zcp083",
+    "code": "zcp_00083",
     "scenario": "mourning_chorus",
     "standard": [
       {
@@ -7158,7 +7258,7 @@
     ]
   },
   {
-    "code": "zcp109",
+    "code": "zcp_00109",
     "scenario": "high_noon_descent",
     "standard": [
       {
@@ -7219,7 +7319,7 @@
     ]
   },
   {
-    "code": "zcp149",
+    "code": "zcp_00149",
     "scenario": "the_afternoon_war",
     "standard": [
       {
@@ -7281,14 +7381,14 @@
     ]
   },
   {
-    "code": "zcp179",
+    "code": "zcp_00179",
     "scenario": "death_at_sundown",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "The [[Floor]] of your location",
           "min": 0
         }
       },
@@ -7316,7 +7416,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "The [[Floor]] of your location",
           "min": 0,
           "adjustment": 2
         }
@@ -7342,7 +7442,7 @@
     ]
   },
   {
-    "code": "zcp211",
+    "code": "zcp_00211",
     "scenario": "the_midnight_hour",
     "standard": [
       {
@@ -7403,7 +7503,7 @@
     ]
   },
   {
-    "code": "zbh022",
+    "code": "zbh_00022",
     "scenario": "meddling_of_meowlathotep",
     "standard": [
       {
@@ -7458,6 +7558,770 @@
         "token": "elder_thing",
         "value": {
           "modifier": -7
+        }
+      }
+    ]
+  },
+  {
+    "code": "88001",
+    "scenario": "fortune_and_folly",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half your alarm level, rounded down.",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [
+            {
+              "prompt": "Raise your alarm level by 1",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your alarm level",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "options": [
+            {
+              "prompt": "Raise your alarm level by 1",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zbs_00001",
+    "scenario": "the_black_stone",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The [[Altered]] value of your location.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The [[Altered]] value of your location.",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00001",
+    "scenario": "lost_moorings",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00028",
+    "scenario": "going_twice",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Auction Deck",
+          "min": 0,
+          "adjustment": 4,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "No resources on an Auction Lot card in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Auction Deck",
+          "min": 0,
+          "adjustment": 5,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "No resources on an Auction Lot card in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00067",
+    "scenario": "private_lives",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed locations with no clues on them",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed locations with no clues on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00095",
+    "scenario": "crumbling_masonry",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Traitor Deck",
+          "min": 0,
+          "adjustment": 4,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "There is a [[Traitor]] enemy in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Traitor Deck",
+          "min": 0,
+          "adjustment": 5,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "There is a [[Traitor]] enemy in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00143",
+    "scenario": "across_dreadful_waters",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of doom in play, rounded up",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of the current act",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of doom in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00213",
+    "scenario": "blood_from_stones",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 5 [[Notice]] in your Campaign Log",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 4 [[Notice]] in your Campaign Log",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00247",
+    "scenario": "pyroclastic_flow",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Non-Euclidean effects on your location",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Non-Euclidean effects on your location",
+          "min": 0,
+          "adjustment": 3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00291",
+    "scenario": "tomb_of_dead_dreams",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Inescapable Reach cards in play",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Cthulhu is at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Inescapable Reach cards in play",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Cthulhu is at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ]

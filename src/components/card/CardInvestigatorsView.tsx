@@ -16,7 +16,6 @@ import Card from '@data/types/Card';
 import { showCard } from '@components/nav/helper';
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { iconsMap } from '@app/NavIcons';
-import { CUSTOM_INVESTIGATOR } from '@app_constants';
 
 export interface CardInvestigatorProps {
   code: string;
@@ -35,7 +34,6 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
   const filterInvestigator = useCallback((investigator: Card) => {
     if (
       investigator.duplicate_of_code ||
-      investigator.code === CUSTOM_INVESTIGATOR ||
       (investigator.altArtInvestigator && !investigator.alternate_of_code) ||
       !card
     ) {

@@ -14,8 +14,10 @@ import { useFlag, useSettingValue, useSlots, useWeaknessCards } from '@component
 import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
+import Card from '@data/types/Card';
 
 export interface DrawWeaknessProps {
+  investigator: Card | undefined;
   saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
   slots: Slots;
   alwaysReplaceRandomBasicWeakness?: boolean;
@@ -23,7 +25,7 @@ export interface DrawWeaknessProps {
 
 type Props = NavigationProps & DrawWeaknessProps;
 
-export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: originalSlots, alwaysReplaceRandomBasicWeakness }: Props) {
+export default function WeaknessDrawDialog({ componentId, investigator, saveWeakness, slots: originalSlots, alwaysReplaceRandomBasicWeakness }: Props) {
   const { borderStyle } = useContext(StyleContext);
   const [replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness] = useFlag(true);
   const [slots, updateSlots] = useSlots(originalSlots);
@@ -106,6 +108,7 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
   return (
     <WeaknessDrawComponent
       componentId={componentId}
+      investigator={investigator}
       customFlippedHeader={flippedHeader}
       customHeader={customHeader}
       weaknessSet={weaknessSetFromCollection}

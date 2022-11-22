@@ -3,13 +3,13 @@ import {
   Alert,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { Pack } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
@@ -111,35 +111,37 @@ export default function PackRow({ packId, componentId, description, pack, cycle,
         borderColor: colors.divider,
       } : undefined,
     ]}>
-      <TouchableOpacity style={styles.touchable} onPress={onPress}>
-        <View style={styles.touchableContent}>
-          <View style={styles.icon}>
-            <EncounterIcon
-              encounter_code={pack.code}
-              size={iconSize}
-              color={colors.darkText}
-            />
-          </View>
-          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>
-            <Text
-              style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
-              numberOfLines={2}
-              ellipsizeMode="tail"
-            >
-              { nameOverride || pack.name }
-            </Text>
-            { !!description && (
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity style={styles.touchable} onPress={onPress}>
+          <View style={styles.touchableContent}>
+            <View style={styles.icon}>
+              <EncounterIcon
+                encounter_code={pack.code}
+                size={iconSize}
+                color={colors.darkText}
+              />
+            </View>
+            <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>
               <Text
-                style={[typography.small, typography.italic, { color: colors.lightText, fontSize, lineHeight }]}
+                style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
                 numberOfLines={2}
                 ellipsizeMode="tail"
               >
-                { description }
+                { nameOverride || pack.name }
               </Text>
-            ) }
+              { !!description && (
+                <Text
+                  style={[typography.small, typography.italic, { color: colors.lightText, fontSize, lineHeight }]}
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                >
+                  { description }
+                </Text>
+              ) }
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
       { (!!setChecked || checked) && (
         <View style={[styles.checkbox, { height: rowHeight }]}>
           <ArkhamSwitch
@@ -162,13 +164,11 @@ const styles = StyleSheet.create({
   },
   touchable: {
     height: 50,
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   touchableContent: {
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',

@@ -17,17 +17,15 @@ interface DeckCardQuantityProps {
   deckId: DeckId;
   code: string;
   limit: number;
-  side?: boolean;
+  mode?: 'side' | 'ignore';
   showZeroCount?: boolean;
   forceBig?: boolean;
-  useGestureHandler?: boolean;
   editable?: boolean;
 }
 
-function DeckQuantityComponent(props: DeckCardQuantityProps) {
+function DeckQuantityComponent({ deckId, editable, code, limit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
   const { colors } = useContext(StyleContext);
-  const { deckId, editable, code, limit, showZeroCount, forceBig, useGestureHandler, side } = props;
-  const actualCount = useDeckSlotCount(deckId, code, side);
+  const [actualCount, ignoreCount] = useDeckSlotCount(deckId, code, mode);
   const [count, setCount] = useState(actualCount);
   useEffectUpdate(() => {
     setCount(actualCount)
@@ -41,28 +39,28 @@ function DeckQuantityComponent(props: DeckCardQuantityProps) {
     return {
       setSlot: (code: string, count: number) => {
         setCount(count);
-        setTimeout(() => dispatch(setDeckSlot(deckId, code, count, side)), 20);
+        setTimeout(() => dispatch(setDeckSlot(deckId, code, count, mode)), 20);
       },
       incSlot: (code: string) => {
         setCount(Math.min(limit, countRef.current + 1));
-        setTimeout(() => dispatch(incDeckSlot(deckId, code, limit, side)), 20);
+        setTimeout(() => dispatch(incDeckSlot(deckId, code, limit, mode)), 20);
       },
       decSlot: (code: string) => {
         setCount(Math.max(0, countRef.current - 1));
-        setTimeout(() => dispatch(decDeckSlot(deckId, code, side)), 20);
+        setTimeout(() => dispatch(decDeckSlot(deckId, code, mode)), 20);
       },
     };
-  }, [dispatch, deckId, limit, side, setCount]);
+  }, [dispatch, deckId, limit, mode, setCount]);
   const onSidePress = useCallback(() => {
     setCount(Math.max(0, countRef.current - 1));
     setTimeout(() => {
-      dispatch(decDeckSlot(deckId, code, true));
-      dispatch(incDeckSlot(deckId, code, limit, false));
+      dispatch(decDeckSlot(deckId, code, 'side'));
+      dispatch(incDeckSlot(deckId, code, limit, undefined));
     }, 20);
   }, [dispatch, deckId, code, limit]);
   return (
     <>
-      { !!side && count > 0 && !!editable && (
+      { mode === 'side' && count > 0 && !!editable && (
         <View style={space.marginRightS}>
           <RoundButton onPress={onSidePress} accessibilityLabel={t`Move to deck`}>
             <View style={styles.icon}>
@@ -80,9 +78,9 @@ function DeckQuantityComponent(props: DeckCardQuantityProps) {
         limit={limit}
         countChanged={countChanged}
         count={count || 0}
+        adjustment={-ignoreCount}
         showZeroCount={showZeroCount}
         forceBig={forceBig}
-        useGestureHandler={useGestureHandler}
         locked={!editable}
       />
     </>

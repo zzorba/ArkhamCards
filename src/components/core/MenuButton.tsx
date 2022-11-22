@@ -1,8 +1,10 @@
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+import space from '@styles/space';
+import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import space from '@styles/space';
 
 interface Props {
   icon?: string;

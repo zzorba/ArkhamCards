@@ -7,7 +7,7 @@ import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext from '../../ScenarioGuideContext';
 import { NumberChoices } from '@actions/types';
 import { m } from '@styles/space';
-import { useCounters } from '@components/core/hooks';
+import { Counters, useCounters } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
@@ -29,12 +29,20 @@ interface Props {
   requiredTotal?: number;
   loading?: boolean;
   showDelta?: boolean;
+  button?: React.ReactNode;
 }
 
-export default function CounterListComponent({ id, items, countText, requiredTotal, loading, showDelta }: Props) {
+export default function CounterListComponent({ id, items, countText, requiredTotal, loading, showDelta, button }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, borderStyle } = useContext(StyleContext);
-  const [counts, onInc, onDec] = useCounters({});
+  const startingCounts = useMemo(() => {
+    const counters: Counters = {};
+    forEach(items, i => {
+      counters[i.code] = i.min || 0;
+    });
+    return counters;
+  }, [items]);
+  const [counts, onInc, onDec] = useCounters(startingCounts);
 
   const save = useCallback(async() => {
     const choices: NumberChoices = {};
@@ -77,6 +85,7 @@ export default function CounterListComponent({ id, items, countText, requiredTot
       title={countText}
       onSubmit={save}
       disabledText={disabledText}
+      buttons={!hasDecision && !!button ? button : undefined}
       editable={!hasDecision}
     >
       { loading ? (

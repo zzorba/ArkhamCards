@@ -22,6 +22,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
       <Ripple
         onPress={throttleOnPress}
         style={[styles.header, { backgroundColor: colors.faction[faction].background }]}
+        contentStyle={[styles.headerContent, { flex: 1 }]}
         rippleColor={colors.faction[faction].text}
       >
         <View style={space.paddingTopXs}>
@@ -37,7 +38,7 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   }
   return (
     <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <View style={space.paddingTopXs}>
+      <View style={[styles.headerContent, space.paddingTopXs]}>
         <Text style={[typography.header, typography.white]}>
           { title }
         </Text>
@@ -52,10 +53,13 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 8,
     borderTopWidth: 0,
     minHeight: 40,
+    position: 'relative',
+  },
+  headerContent: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative',
+    minHeight: 40,
   },
   icon: {
     position: 'absolute',

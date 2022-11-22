@@ -1,19 +1,16 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import { t } from 'ttag';
 
 import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 import TuneButton from '@components/cardlist/CardSearchComponent/TuneButton';
-import SortButton from '@components/cardlist/CardSearchComponent/SortButton';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import SettingsView from '@components/settings/SettingsView';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
-import BottomTabNameCorrector from '@components/core/BottomTabNameCorrector';
-import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS } from './App';
 import ListToggleButton from '@components/deck/ListToggleButton';
+import MapToggleButton from '@components/campaignguide/MapToggleButton';
 import Toast from '@components/Toast';
 import TarotOverlay from '@components/core/TarotOverlay';
 
@@ -42,14 +39,15 @@ function getStandardComponent(componentName: string | number) {
     case 'Card.Investigators': return require('@components/card/CardInvestigatorsView').default;
     case 'Campaign.Access': return require('@components/campaign/CampaignAccessView').default;
     case 'Campaign.Log': return require('@components/campaign/CampaignLogView').default;
+    case 'Campaign.Map': return require('@components/campaignguide/CampaignMapView').default;
     case 'Campaign.Scenarios': return require('@components/campaign/CampaignScenariosView').default;
     case 'Campaign.AddResult': return require('@components/campaign/AddScenarioResultView').default;
     case 'Guide.SideScenario': return require('@components/campaignguide/AddSideScenarioView').default;
     case 'Guide.CardErrata': return require('@components/campaignguide/EncounterCardErrataView').default;
     case 'Guide.ScenarioFaq': return require('@components/campaignguide/ScenarioFaqView').default;
     case 'Guide.ChallengeScenario': return require('@components/campaignguide/ChallengeScenarioView').default;
-    case 'Guide.DrawChaosBag': return require('@components/campaignguide/GuideDrawChaosBagView').default;
-    case 'Guide.OddsCalculator': return require('@components/campaignguide/GuideOddsCalculatorView').default;
+    case 'Guide.DrawChaosBag': return require('@components/chaos/GuideDrawChaosBagView').default;
+    case 'Guide.OddsCalculator': return require('@components/chaos/GuideOddsCalculatorView').default;
     case 'Guide.Achievements': return require('@components/campaignguide/CampaignAchievementsView').default;
     case 'Guide.Log': return require('@components/campaignguide/CampaignLogView').default;
     case 'Guide.LocationSetup': return require('@components/campaignguide/LocationSetupView').default;
@@ -59,8 +57,8 @@ function getStandardComponent(componentName: string | number) {
     case 'Campaign.Tarot': return require('@components/campaign/TarotCardReadingView').default;
     case 'Campaign.UpgradeDecks': return require('@components/campaign/UpgradeDecksView').default;
     case 'Campaign.EditResult': return require('@components/campaign/EditScenarioResultView').default;
-    case 'Campaign.DrawChaosBag': return require('@components/campaign/CampaignDrawChaosBagView').default;
-    case 'OddsCalculator': return require('@components/campaign/OddsCalculatorView').default;
+    case 'Campaign.DrawChaosBag': return require('@components/chaos/CampaignDrawChaosBagView').default;
+    case 'OddsCalculator': return require('@components/chaos/OddsCalculatorView').default;
     case 'Settings.Diagnostics': return require('@components/settings/DiagnosticsView').default;
     case 'Settings.ReleaseNotes': return require('@components/settings/ReleaseNotesView').default;
     case 'Settings.Backup': return require('@components/settings/BackupView').default;
@@ -76,7 +74,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Pack': return require('@components/settings/PackCardsView').default;
     case 'My.Spoilers': return require('@components/settings/SpoilersView').default;
     case 'Dialog.CardUpgrade': return require('@components/deck/CardUpgradeDialog').default;
-    case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
+    case 'Dialog.EditChaosBag': return require('@components/chaos/EditChaosBagDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;
@@ -128,15 +126,15 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     );
   }
 
-  Navigation.registerComponent('Browse.Cards', providerWrapper(BottomTabNameCorrector(BROWSE_CARDS, () => t`Cards`, BrowseCardsView)), () => BrowseCardsView);
-  Navigation.registerComponent('My.Campaigns', providerWrapper(BottomTabNameCorrector(BROWSE_CAMPAIGNS, () => t`Campaigns`, MyCampaignsView)), () => MyCampaignsView);
-  Navigation.registerComponent('My.Decks', providerWrapper(BottomTabNameCorrector(BROWSE_DECKS, () => t`Decks`, MyDecksView)), () => MyDecksView);
-  Navigation.registerComponent('Settings', providerWrapper(BottomTabNameCorrector(BROWSE_SETTINGS, () => t`Settings`, SettingsView)), () => SettingsView);
-  Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
+  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView), () => BrowseCardsView);
+  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView), () => MyCampaignsView);
+  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView), () => MyDecksView);
+  Navigation.registerComponent('Settings', providerWrapper(SettingsView), () => SettingsView);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('Toast', providerNoGestureHandler(Toast), () => Toast);
   Navigation.registerComponent('Tarot', providerNoGestureHandler(TarotOverlay), () => TarotOverlay);
   Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
+  Navigation.registerComponent('MapToggleButton', providerWrapper(MapToggleButton), () => MapToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 

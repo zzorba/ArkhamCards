@@ -10,13 +10,9 @@ import { t } from 'ttag';
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
-import { getLangPreference, AppState, getThemeOverride } from '@reducers';
+import { getLangPreference, AppState, getThemeOverride, getStartingTab } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
-
-export const BROWSE_CARDS = 'BROWSE_CARDS';
-export const BROWSE_DECKS = 'BROWSE_DECKS';
-export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
-export const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
+import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS, CHANGE_TAB, StartingTabType } from '@actions/types';
 
 // @ts-ignore ts2339
 TouchableOpacity.defaultProps = {
@@ -25,6 +21,7 @@ TouchableOpacity.defaultProps = {
   delayPressIn: 0,
 };
 
+const ALL_TABS = [BROWSE_CARDS, BROWSE_DECKS, BROWSE_CAMPAIGNS, BROWSE_SETTINGS];
 export default class App {
   started: boolean;
   currentLang: string;
@@ -37,6 +34,12 @@ export default class App {
 
     store.subscribe(this.onStoreUpdate.bind(this, store));
     addLangEventListener('change', () => this.onStoreUpdate(store));
+    Navigation.events().registerBottomTabSelectedListener((event) => {
+      store.dispatch({
+        type: CHANGE_TAB,
+        tab: ALL_TABS[event.selectedTabIndex],
+      });
+    });
     this.initialAppStart(store).then(safeMode => {
       if (!safeMode) {
         this.setupAppEventHandlers(true);
@@ -101,6 +104,7 @@ export default class App {
       const state = store.getState();
       const lang = getLangPreference(state);
       const themeOverride = getThemeOverride(state);
+      const startingTab = getStartingTab(state);
       // handle a root change
       // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
       if (!this.started || this.currentLang !== lang) {
@@ -108,7 +112,7 @@ export default class App {
         this.currentLang = lang;
         this.currentThemeOverride = themeOverride;
         iconsLoaded.then(() => {
-          this.startApp(lang);
+          this.startApp(lang, startingTab);
         }).catch(error => console.log(error));
         // tslint:disable-next-line
       } else if (this.currentThemeOverride !== themeOverride) {
@@ -192,7 +196,7 @@ export default class App {
     };
     Navigation.setDefaultOptions(defaultOptions);
     if (changeUpdate) {
-      forEach([BROWSE_CARDS, BROWSE_DECKS, BROWSE_CAMPAIGNS, BROWSE_SETTINGS], componentId => {
+      forEach(ALL_TABS, componentId => {
         Navigation.mergeOptions(componentId, defaultOptions);
       });
     }
@@ -201,6 +205,7 @@ export default class App {
   startSafeMode(store: Store<AppState, Action<string>>) {
     const state = store.getState();
     const lang = getLangPreference(state);
+    const startingTab = getStartingTab(state);
     changeLocale(lang || 'en');
     this.started = true;
     this.currentLang = lang;
@@ -218,7 +223,7 @@ export default class App {
               },
               passProps: {
                 startApp: () => {
-                  this.startApp(lang);
+                  this.startApp(lang, startingTab);
                 },
               },
             },
@@ -228,7 +233,7 @@ export default class App {
     });
   }
 
-  startApp(lang?: string) {
+  startApp(lang: string | undefined, startingTab: StartingTabType) {
     changeLocale(lang || 'en');
     if (__DEV__) {
       LogBox.ignoreLogs([
@@ -360,14 +365,13 @@ export default class App {
     }];
 
     this.setDefaultOptions(appearance);
-
     Navigation.setRoot({
       root: {
         bottomTabs: {
           children: tabs,
           options: {
             bottomTabs: {
-              currentTabId: BROWSE_DECKS,
+              currentTabId: startingTab,
               tabsAttachMode: 'afterInitialTab',
             },
           },

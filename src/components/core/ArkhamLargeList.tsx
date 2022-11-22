@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
-import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native';
+import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
 import RefreshableWrapper from 'react-native-fresh-refresh';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 import { map } from 'lodash';
@@ -7,7 +7,6 @@ import { map } from 'lodash';
 import { searchBoxHeight } from './SearchBox';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 import StyleContext from '@styles/StyleContext';
-import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
 interface Props<Item> {
   heightForItem?: (item: Item) => number;
@@ -50,7 +49,7 @@ export default function ArkhamLargeList<Item>({
   onScroll,
   heightForItem,
 }: Props<Item>) {
-  const { fontScale, colors } = useContext(StyleContext);
+  const { fontScale, height, colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
   const [debouncedRefreshing] = [refreshing || fakeRefresh];
   const isRefreshing = useRef(debouncedRefreshing);
@@ -119,12 +118,14 @@ export default function ArkhamLargeList<Item>({
       </View>
     );
   }, [noSearch, loader, renderHeader]);
-  if (LOW_MEMORY_DEVICE) {
+  if (Platform.OS === 'android') {
     return (
       <FlatList
         data={flatData}
+        contentContainerStyle={{ minHeight: height }}
         refreshControl={
           <RefreshControl
+            progressViewOffset={noSearch ? 0 : searchBarHeight}
             refreshing={debouncedRefreshing}
             onRefresh={handleRefresh}
             tintColor={colors.lightText}
@@ -168,7 +169,7 @@ export default function ArkhamLargeList<Item>({
         renderItem={renderFlatItem}
         scrollsToTop
         onEndReached={onLoading}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.4}
         removeClippedSubviews
         getItemLayout={heightForItem ? getItemLayout : undefined}
         ListHeaderComponent={renderRealHeader}

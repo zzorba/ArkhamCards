@@ -34,6 +34,7 @@ import { parseDeck } from '@lib/parseDeck';
 import { useAlertDialog } from './dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { CollectionEditProps } from '@components/settings/CollectionEditView';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -48,14 +49,13 @@ function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth
   return (
     <Ripple style={[
       shadow.medium,
-      styles.button,
       {
         backgroundColor: colors.L20,
         width: cardWidth,
         height: size,
         borderRadius: size / 2,
       },
-    ]} onPress={debouncedOnPress} rippleColor={colors.M} rippleSize={size}>
+    ]} contentStyle={[styles.button, { height: size }]} onPress={debouncedOnPress} rippleColor={colors.M} rippleSize={size}>
       <AppIcon name="plus-button" size={24} color={colors.M} />
     </Ripple>
   );
@@ -68,7 +68,7 @@ export function navigationOptions(
   }: {
     lightButton?: boolean;
   }
-){
+) {
   const rightButtons: OptionsTopBarButton[] = [{
     id: 'grid',
     component: {
@@ -144,7 +144,7 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
     return {
       opacity: opacity.value,
     }
-  }, [opacity]);
+  });
   return (
     <Animated.View key={item.key} style={[
       borderStyle,
@@ -218,11 +218,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
   }, [allPossibleCodes]);
 
   const [alertDialog, showAlert] = useAlertDialog();
+  const { listSeperator } = useContext(LanguageContext);
   const onDraftNewCards = useCallback(() => {
     if (!meta || !investigatorBack) {
       return;
     }
-    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards);
+    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards, listSeperator);
     if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
       setDraftCards([]);
       showAlert(
@@ -243,11 +244,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       possibleCodes.current,
       cards,
       in_collection,
-      ignore_collection
+      ignore_collection,
+      listSeperator
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, showAlert, setDraftCards, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
 
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);

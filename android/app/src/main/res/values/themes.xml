@@ -39,5 +39,6 @@
 		<item name="selectedToggleButtonColor">@color/selectedToggleButtonColor</item>
 		<item name="dividerColor">@color/dividerColor</item>
 		<item name="disabledOverlayColor">@color/disabledOverlayColor</item>
+		<item name="splashBackground">@color/splashBackground</item>
 	</style>
 </resources>

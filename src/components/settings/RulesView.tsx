@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { TouchableOpacity, StyleSheet, ListRenderItemInfo, View, Platform } from 'react-native';
+import { StyleSheet, ListRenderItemInfo, View, Platform } from 'react-native';
 import { t } from 'ttag';
 import { Brackets } from 'typeorm/browser';
 import Animated from 'react-native-reanimated';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import Rule from '@data/types/Rule';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
@@ -58,7 +59,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
     <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} sizeScale={1.2} />
-        { rule.rules && rule.rules.length > 0 && (
+        { !!(rule.rules && rule.rules.length > 0) && (
           <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(listSeperator)} />
         ) }
       </TouchableOpacity>

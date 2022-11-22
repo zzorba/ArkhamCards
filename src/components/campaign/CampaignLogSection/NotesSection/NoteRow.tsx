@@ -2,11 +2,11 @@ import React, { useCallback, useMemo } from 'react';
 import { startsWith } from 'lodash';
 import {
   StyleSheet,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import TextBoxButton from '@components/core/TextBoxButton';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';

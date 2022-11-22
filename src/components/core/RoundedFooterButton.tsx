@@ -32,6 +32,7 @@ function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {
           borderColor: backgroundColor,
         },
       ]}
+      contentStyle={[styles.buttonContent, { height }]}
       rippleColor={rippleColor}
       onPress={onPress}
       disabled={!onPress}
@@ -52,14 +53,16 @@ export default RoundedFooterButton;
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    paddingLeft: 14,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     borderWidth: 1,
+  },
+  buttonContent: {
+    paddingLeft: 14,
+    paddingTop: 2,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 2,
   },
   row: {
     flexDirection: 'row',

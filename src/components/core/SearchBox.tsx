@@ -5,11 +5,11 @@ import {
   Platform,
   StyleSheet,
   TextInputSubmitEditingEventData,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import ToggleButton from '@components/core/ToggleButton';
 import StyleContext from '@styles/StyleContext';
@@ -58,11 +58,13 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
       return null;
     }
     return (
-      <TouchableOpacity style={space.marginRightS} onPress={clear}>
-        <View style={styles.dismissIcon}>
-          <AppIcon name="dismiss" size={28 * fontScale} color={colors.D20} />
-        </View>
-      </TouchableOpacity>
+      <View style={space.marginRightS}>
+        <TouchableOpacity onPress={clear}>
+          <View style={styles.dismissIcon}>
+            <AppIcon name="dismiss" size={28 * fontScale} color={colors.D20} />
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }, [value, colors, clear, fontScale]);
 
@@ -121,8 +123,9 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
             flex: 1,
             color: colors.darkText,
             textAlignVertical: 'center',
+            borderBottomColor: 'transparent',
           }}
-          underlineColorAndroid="rgba(0,0,0,0)"
+          underlineColorAndroid="transparent"
           onChangeText={onSearchUpdated}
           placeholder={placeholder}
           placeholderTextColor={colors.D20}

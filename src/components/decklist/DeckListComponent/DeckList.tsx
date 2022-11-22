@@ -92,7 +92,7 @@ export default function DeckList({
   }, [numDecks, setNumDecks]);
 
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
-  const renderItem = useCallback(({ deckId }) => {
+  const renderItem = useCallback(({ deckId }: { deckId: MiniDeckT }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}

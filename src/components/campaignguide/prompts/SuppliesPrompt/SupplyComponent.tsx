@@ -40,14 +40,10 @@ export default function SupplyComponent({
       return 0;
     }
     const section = (processedScenario.latestCampaignLog.investigatorSections[sectionId] || {})[investigator.code] || {};
-    const crossed_out = !!(section.crossedOut || {})[supply.id];
-    if (crossed_out) {
-      return 0;
-    }
     const entry = find(section.entries || [],
       e => e.id === supply.id && e.type === 'count'
     );
-    if (!entry || entry.type !== 'count') {
+    if (!entry || entry.type !== 'count' || entry.crossedOut) {
       return 0;
     }
     return entry.count;
@@ -75,10 +71,10 @@ export default function SupplyComponent({
         <View style={[space.paddingLeftS, space.paddingRightXs]}>
           <ArkhamSwitch
             value={(count + existingCount) > 0}
-            onValueChange={onToggleChange}
+            onValueChange={editable ? onToggleChange : undefined}
             color="dark"
             disabledColor={!editable ? colors.D10 : colors.L10}
-            disabled={!editable || (count === 0 && remainingPoints < supply.cost) || existingCount > 0}
+            disabled={(count === 0 && remainingPoints < supply.cost) || existingCount > 0}
           />
         </View>
       ) : (

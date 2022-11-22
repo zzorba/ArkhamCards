@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -10,6 +11,8 @@ import EncounterIcon from '@icons/EncounterIcon';
 import space, { m } from '@styles/space';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { ShowAlert } from '@components/deck/dialogs';
+import { CampaignMap } from '@data/scenario/types';
+import { find } from 'lodash';
 
 interface Props {
   componentId: string;
@@ -20,19 +23,25 @@ interface Props {
   isActive: boolean;
   finalScenario?: boolean;
   last?: boolean;
+  campaignMap: CampaignMap | undefined;
 }
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, finalScenario, last, isActive }: Props) {
+export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, campaignMap, finalScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
-    const scenarioName = scenario.scenarioGuide.scenarioHeader();
+    const locationName = scenario.location ?
+      find(campaignMap?.locations, location => location.id === scenario.location)?.name :
+      undefined;
+    const scenarioHeader = scenario.scenarioGuide.scenarioHeader();
+    const scenarioName = scenarioHeader && locationName ?
+      `${locationName}: ${scenarioHeader}` : (scenarioHeader || locationName);
     const actualName = scenario.scenarioGuide.scenarioName();
     if (scenario.id.replayAttempt) {
       const attempt = scenario.id.replayAttempt + 1;
       return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];
     }
     return [scenarioName, actualName];
-  }, [scenario.scenarioGuide, scenario.id]);
+  }, [scenario, campaignMap]);
   const onPress = useCallback(() => {
     showScenario(scenario);
   }, [showScenario, scenario]);

@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 import { forEach, map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import { useMyProfile, useProfile, SimpleUser, UserProfile } from '@data/remote/hooks';
 import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 import StyleContext from '@styles/StyleContext';
@@ -97,7 +97,6 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
           onPress={onAcceptPress}
           disabled={!!submitting}
           accessibilityLabel={status === FriendStatus.RECEIVED ? t`Accept friend request` : t`Send friend request`}
-          useGestureHandler={Platform.OS === 'ios'}
         >
           { submitting === 'accept' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
@@ -117,7 +116,6 @@ function FriendControlsComponent({ user, status, refetchMyProfile, acceptRequest
           onPress={onRejectPress}
           disabled={!!submitting}
           accessibilityLabel={status === FriendStatus.RECEIVED ? t`Reject friend request` : t`Revoke friend request`}
-          useGestureHandler={Platform.OS === 'ios'}
         >
           { submitting === 'reject' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
@@ -165,7 +163,6 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
           onPress={onRemovePress}
           disabled={!!submitting}
           accessibilityLabel={t`Reject friend request`}
-          useGestureHandler={Platform.OS === 'ios'}
         >
           { submitting === 'remove' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
@@ -178,7 +175,6 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
           onPress={onInvitePress}
           disabled={!!submitting}
           accessibilityLabel={t`Send friend request`}
-          useGestureHandler={Platform.OS === 'ios'}
         >
           { submitting === 'invite' ? (
             <ActivityIndicator size="small" animating color={colors.D30} />
@@ -238,15 +234,16 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
         return null;
     }
   }, [user, status, controls, refetchMyProfile]);
-  const Touchable = Platform.OS === 'ios' ? GestureHandlerTouchableOpacity : TouchableOpacity;
   return (
     <View style={[styles.userRow, borderStyle, space.paddingM, { height: userRowHeight(fontScale, lang) }]}>
       { user.handle ? (
-        <Touchable style={styles.pressable} onPress={onPress} disabled={!showUser}>
-          <Text style={typography.large}>
-            { user.handle }
-          </Text>
-        </Touchable>
+        <View style={styles.pressable}>
+          <TouchableOpacity style={styles.pressable} onPress={onPress} disabled={!showUser}>
+            <Text style={typography.large}>
+              { user.handle }
+            </Text>
+          </TouchableOpacity>
+        </View>
       ) : (
         <Placeholder Animation={fadeAnim}>
           <PlaceholderLine noMargin style={styles.textPlaceholder} color={colors.M} />
@@ -348,7 +345,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         );
       case 'button':
         return (
-          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} useGestureHandler={Platform.OS === 'ios'} />
+          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} />
         );
       case 'placeholder':
         return (

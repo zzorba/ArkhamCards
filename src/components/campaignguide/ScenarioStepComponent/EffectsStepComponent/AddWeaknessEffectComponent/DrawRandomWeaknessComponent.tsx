@@ -12,6 +12,7 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
+import space from '@styles/space';
 
 interface OwnProps {
   id: string;
@@ -33,22 +34,24 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   choiceCard?: Card;
   index: number;
   disabled: boolean;
-  drawRandomWeakness: (investigator: string, index: number) => void;
+  drawRandomWeakness: (investigator: Card, index: number) => void;
 }) {
-  const onPress = useCallback((code: string) => {
-    drawRandomWeakness(code, index);
+  const onPress = useCallback((investigator: Card) => {
+    drawRandomWeakness(investigator, index);
   }, [index, drawRandomWeakness]);
   return (
-    <InvestigatorButton
-      investigator={investigator}
-      value={choice === undefined ?
-        t`Draw random weakness` :
-        (choiceCard?.name || 'Missing Card')
-      }
-      onPress={onPress}
-      disabled={disabled}
-      widget="shuffle"
-    />
+    <View style={space.paddingXs}>
+      <InvestigatorButton
+        investigator={investigator}
+        value={choice === undefined ?
+          t`Draw random weakness` :
+          (choiceCard?.name || 'Missing Card')
+        }
+        onPress={onPress}
+        disabled={disabled}
+        widget="shuffle"
+      />
+    </View>
   );
 }
 
@@ -66,8 +69,9 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
     );
   }, [weaknessCards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
-  const drawRandomWeakness = useCallback((code: string, index: number) => {
+  const drawRandomWeakness = useCallback((investigator: Card, index: number) => {
     const card = drawWeakness(
+      investigator,
       effectiveWeaknessSet,
       weaknessCards,
       {
@@ -82,8 +86,8 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
     } else {
       setChoices({
         ...choices,
-        [code]: {
-          ...(choices[code] || {}),
+        [investigator.code]: {
+          ...(choices[investigator.code] || {}),
           [index]: [card.code],
         },
       });

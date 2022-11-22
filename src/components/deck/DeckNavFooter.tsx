@@ -3,11 +3,11 @@ import DeviceInfo from 'react-native-device-info';
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 import { t } from 'ttag';
 
+import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

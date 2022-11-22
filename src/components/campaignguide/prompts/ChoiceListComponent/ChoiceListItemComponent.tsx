@@ -10,6 +10,7 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
   code: string;
@@ -17,7 +18,7 @@ interface Props {
   investigator?: Card;
   name: string;
   color?: string;
-  masculine?: boolean;
+  gender?: Gender_Enum;
   choices: DisplayChoice[];
   choice?: number;
   optional: boolean;
@@ -34,7 +35,7 @@ export default function ChoiceListItemComponent({
   noInvestigatorItems,
   name,
   color,
-  masculine,
+  gender,
   choices,
   choice,
   optional,
@@ -53,15 +54,31 @@ export default function ChoiceListItemComponent({
   }, [onChoiceChange, code]);
   const genderedChoices = useMemo(() => {
     return map(choices, choice => {
-      if (choice.masculine_text && choice.feminine_text) {
-        return {
-          ...choice,
-          text: masculine ? choice.masculine_text : choice.feminine_text,
-        };
+      if (choice.masculine_text && choice.feminine_text && gender) {
+        switch (gender) {
+          case Gender_Enum.M: {
+            return {
+              ...choice,
+              text: choice.masculine_text,
+            }
+          }
+          case Gender_Enum.F: {
+            return {
+              ...choice,
+              text: choice.feminine_text,
+            };
+          }
+          case Gender_Enum.Nb: {
+            return {
+              ...choice,
+              text: choice.nonbinary_text || choice.masculine_text,
+            };
+          }
+        }
       }
       return choice;
     });
-  }, [choices, masculine]);
+  }, [choices, gender]);
   if (detailed) {
     return (
       <>

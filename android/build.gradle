@@ -1,14 +1,12 @@
-import org.apache.tools.ant.taskdefs.condition.Os
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     ext {
-        kotlinVersion = "1.5.31"
+        kotlinVersion = "1.7.10"
         RNNKotlinVersion = kotlinVersion
         buildToolsVersion = "31.0.0"
         minSdkVersion = 21
-        compileSdkVersion = 31
+        compileSdkVersion = 33
         targetSdkVersion = 31
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
@@ -23,11 +21,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.4")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("de.undercouch:gradle-download-task:4.1.2")
-	classpath("com.google.gms:google-services:4.3.10")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.android.tools.build:gradle:7.2.1")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("de.undercouch:gradle-download-task:5.0.1")
+	    classpath("com.google.gms:google-services:4.3.13")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -56,11 +54,6 @@ allprojects {
             content {
                 includeGroup("com.google.android.exoplayer")
             }
-        }
-	configurations.all {
-            resolutionStrategy {
-                force "com.facebook.soloader:soloader:0.10.1"
-	    }
         }
     }
 }

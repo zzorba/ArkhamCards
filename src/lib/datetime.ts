@@ -81,13 +81,21 @@ export function toRelativeDateString(date: Date | string, locale: string) {
       default: return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = localizedDate(date, locale);
+  const dateString = localizedDate(date, locale, locale === 'ko');
   return t`Updated ${dateString}`;
 }
 
 export function localizedDate(date: Date, locale: string, noDayOfWeek: boolean = false) {
   if (noDayOfWeek) {
-    return format(date, (locale === 'fr' || locale === 'it') ? 'd MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+    switch (locale) {
+      case 'fr':
+      case 'it':
+        return format(date, 'd MMMM yyyy', LOCALE_MAP[locale]);
+      case 'ko':
+        return format(date, 'y년 M월 d일', LOCALE_MAP[locale]);
+      default:
+        return format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
+    }
   }
   return format(date, !noDayOfWeek && (locale === 'fr' || locale === 'it') ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
 }

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { find } from 'lodash';
 import Scrubber from 'react-native-scrubber'
 import { c, t } from 'ttag';
@@ -9,9 +9,10 @@ import { State, usePlaybackState, useProgress } from 'react-native-track-player'
 
 import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';
+import { TouchableOpacity } from '@components/core/Touchables';
 import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
-import { narrationPlayer, useAudioAccess, useCurrentTrack, usePlaybackRate, useTrackDetails } from '@lib/audio/narrationPlayer';
+import { narrationPlayer, useAudioAccess, useCurrentTrackDetails, usePlaybackRate } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { SET_PLAYBACK_RATE } from '@actions/types';
@@ -60,12 +61,12 @@ export function NarrationInlineControls({ narration }: IconProps) {
   const { colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
   const playerState = usePlaybackState();
-  const currentTrackIndex = useCurrentTrack();
-  const currentTrack = useTrackDetails(currentTrackIndex);
+  const currentTrack = useCurrentTrackDetails();
   const rate = usePlaybackRate();
   const { position, buffered, duration } = useProgress(1000);
   const posTime = parseTime(position);
   const durTime = parseTime(duration);
+
 
   const isCurrentTrack = currentTrack && currentTrack.narrationId === narration.id;
   // tslint:disable-next-line: strict-comparisons
@@ -107,11 +108,14 @@ export function NarrationInlineControls({ narration }: IconProps) {
     <View style={[space.marginSideM, space.marginTopS]}>
       <View style={styles.narrationControls}>
         <View style={styles.leftControls}>
-          <TouchableOpacity onPress={onPlayPausePress} accessibilityLabel={isPlaying ? c('narration').t`Pause` : c('narration').t`Play`}>
-            <View style={[styles.button, { backgroundColor: colors.L20 }]}>
+          <TouchableOpacity hitSlop={4} onPress={onPlayPausePress} accessibilityLabel={isPlaying ? c('narration').t`Pause` : c('narration').t`Play`}>
+            <View style={[
+              styles.button,
+              { backgroundColor: colors.L20 },
+            ]}>
               <AppIcon
                 name={isPlaying ? 'pause' : 'play'}
-                size={40}
+                size={Platform.OS === 'android' ? 36 : 40}
                 color={colors.M}
               />
             </View>
@@ -119,17 +123,21 @@ export function NarrationInlineControls({ narration }: IconProps) {
           { isCurrentTrack ? (
             <>
               <View style={space.marginLeftXs}>
-                <TouchableOpacity onPress={onJumpBackPress} accessibilityLabel={c('narration').t`Jump back`}>
+                <TouchableOpacity hitSlop={4} onPress={onJumpBackPress} accessibilityLabel={c('narration').t`Jump back`}>
                   <View style={[styles.button, { backgroundColor: colors.L20 }]}>
-                    <AppIcon name="repeat" size={40} color={colors.M} />
+                    <AppIcon
+                      name="repeat"
+                      size={Platform.OS === 'android' ? 32 : 40}
+                      color={colors.M}
+                    />
                   </View>
                 </TouchableOpacity>
               </View>
               { isCurrentTrack && (
                 <View style={space.marginLeftXs}>
-                  <TouchableOpacity onPress={onRatePress} accessibilityLabel={c('narration').t`Audio speed: ${rate}`}>
+                  <TouchableOpacity hitSlop={4} onPress={onRatePress} accessibilityLabel={c('narration').t`Audio speed: ${rate}`}>
                     <View style={[styles.button, { backgroundColor: colors.L20 }]}>
-                      <Text style={[typography.button, { color: colors.M }]}>{rateToString(rate)}x</Text>
+                      <Text style={[typography.button, { color: colors.M, textAlignVertical: 'center' }]}>{rateToString(rate)}x</Text>
                     </View>
                   </TouchableOpacity>
                 </View>

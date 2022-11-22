@@ -28,7 +28,10 @@ function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge
   return (
     <View style={styles.flex}>
       <Text style={[typography.small, space.paddingTopS]}>
-        { t`${investigator.name} Challenge Scenario` }
+        { scenario.custom ?
+          t`${investigator.name} Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
+          t`${investigator.name} Challenge Scenario`
+        }
       </Text>
       <Text style={[typography.small, typography.light, space.paddingTopS]}>
         { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
@@ -117,7 +120,7 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
         </View>
         <View style={styles.column}>
           <Text style={typography.text}>
-            { scenario.scenario_name }
+            { scenario.full_name }
           </Text>
           { descriptionLine }
         </View>

@@ -1,7 +1,11 @@
 [
   {
     "id": "a_confrontation",
-    "name": "A Confrontation"
+    "name": "대립"
+  },
+  {
+    "id": "a_house_divided",
+    "name": "붕괴된 의회"
   },
   {
     "id": "a_light_in_the_fog",
@@ -20,8 +24,24 @@
     "name": "천 가지 무시무시한 형체"
   },
   {
+    "id": "across_dreadful_waters",
+    "name": "공포의 바다 건너"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "웬디고에 맞서다"
+  },
+  {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "모 아니면 도"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -29,7 +49,7 @@
   },
   {
     "id": "arkham_allied",
-    "name": "Arkham Allied"
+    "name": "아컴 연합군"
   },
   {
     "id": "arkham_in_wonderland",
@@ -65,7 +85,11 @@
   },
   {
     "id": "beneath_the_waves",
-    "name": "Beneath the Waves"
+    "name": "파도 아래에"
+  },
+  {
+    "id": "bermuda",
+    "name": "Bermuda"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -84,8 +108,20 @@
     "name": "모든 것을 집어삼키는 멍울"
   },
   {
+    "id": "blood_from_stones",
+    "name": "돌에서 흐르는 피"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "제단에 흘린 피"
+  },
+  {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
   },
   {
     "id": "by_the_book",
@@ -104,12 +140,32 @@
     "name": "서막"
   },
   {
+    "id": "cf_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "서막"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "옛것의 도시"
   },
   {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
+  },
+  {
     "id": "consternation_on_the_constellation",
     "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "진홍색 열쇠"
   },
   {
     "id": "cp_epilogue",
@@ -118,6 +174,10 @@
   {
     "id": "cp_prologue",
     "name": "서막"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "무너지는 메이슨"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -133,15 +193,15 @@
   },
   {
     "id": "dead_by_dawn",
-    "name": "Dead by Dawn"
+    "name": "새벽녘의 죽음"
   },
   {
     "id": "dead_or_alive",
-    "name": "Dead or Alive"
+    "name": "죽거나 살거나"
   },
   {
     "id": "death_at_sundown",
-    "name": "Death at Sundown"
+    "name": "해질녘의 최후"
   },
   {
     "id": "devil_reef",
@@ -236,16 +296,36 @@
     "name": "대의를 위하여"
   },
   {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
     "id": "fragment_of_carcosa",
     "name": "카르코사의 파편"
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "밑바닥 친구들"
+  },
+  {
+    "id": "going_twice",
+    "name": "입찰 선언"
   },
   {
     "id": "gryphon_and_mock_turtle",
     "name": "그리폰과 가짜 거북"
+  },
+  {
+    "id": "havana",
+    "name": "Havana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -257,15 +337,19 @@
   },
   {
     "id": "hidden_truths",
-    "name": "Hidden Truths"
+    "name": "숨은 진실"
   },
   {
     "id": "high_noon_descent",
-    "name": "High Noon Descent"
+    "name": "정오의 강습"
   },
   {
     "id": "history_lesson",
-    "name": "History Lesson"
+    "name": "역사 수업"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Hong Kong"
   },
   {
     "id": "horror_in_high_gear",
@@ -309,7 +393,7 @@
   },
   {
     "id": "into_the_maelstrom",
-    "name": "혼돈의 소용돌이로"
+    "name": "몰아치는 소용돌이 속으로"
   },
   {
     "id": "introspection",
@@ -320,12 +404,40 @@
     "name": "자아성찰 (계속)"
   },
   {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
-    "name": "Late Risers"
+    "name": "늦잠꾸러기들"
+  },
+  {
+    "id": "london",
+    "name": "London"
   },
   {
     "id": "lost_in_time_and_space",
     "name": "시공간을 헤매다"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "사라진 정박지"
   },
   {
     "id": "lost_quantum",
@@ -340,6 +452,14 @@
     "name": "시간을 초월한 음모"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Marrakesh"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "냐옹라토텝의 역습"
   },
@@ -348,20 +468,36 @@
     "name": "임무 브리핑"
   },
   {
+    "id": "moscow",
+    "name": "Moscow"
+  },
+  {
     "id": "mourning_chorus",
-    "name": "Mourning Chorus"
+    "name": "애도의 합창"
   },
   {
     "id": "murder_at_the_excelsior_hotel",
     "name": "엑셀시어 호텔 살인사건"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
-    "name": "Night on the Town"
+    "name": "기나긴 밤"
+  },
+  {
+    "id": "perth",
+    "name": "Perth"
   },
   {
     "id": "point_of_no_return",
-    "name": "돌아올 수 없는 다리"
+    "name": "돌아갈 수 없는 다리"
+  },
+  {
+    "id": "private_lives",
+    "name": "사생활"
   },
   {
     "id": "ptc_epilogue",
@@ -385,7 +521,19 @@
   },
   {
     "id": "puzzle_pieces",
-    "name": "Puzzle Pieces"
+    "name": "기억을 짜맞추다"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "화쇄류"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
   },
   {
     "id": "read_or_die",
@@ -548,6 +696,30 @@
     "name": "돌아온 파멸이 기다리는 곳"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "산산조각난 영겁"
   },
@@ -560,8 +732,16 @@
     "name": "저무는 별"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "기묘한 위성"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -613,7 +793,7 @@
   },
   {
     "id": "the_afternoon_war",
-    "name": "The Afternoon War"
+    "name": "오후의 전쟁"
   },
   {
     "id": "the_attack",
@@ -622,6 +802,10 @@
   {
     "id": "the_black_cat",
     "name": "검은 고양이"
+  },
+  {
+    "id": "the_black_stone",
+    "name": "The Black Stone"
   },
   {
     "id": "the_boundary_beyond",
@@ -634,6 +818,10 @@
   {
     "id": "the_city_of_archives",
     "name": "기록물의 도시"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
   },
   {
     "id": "the_crown",
@@ -658,6 +846,10 @@
   {
     "id": "the_eternal_slumber",
     "name": "영원한 잠"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
   },
   {
     "id": "the_fallen",
@@ -693,7 +885,7 @@
   },
   {
     "id": "the_lair_of_dagon",
-    "name": "데이곤의 처소"
+    "name": "데이곤의 침소"
   },
   {
     "id": "the_last_king",
@@ -709,7 +901,7 @@
   },
   {
     "id": "the_midnight_hour",
-    "name": "The Midnight Hour"
+    "name": "자정 시간"
   },
   {
     "id": "the_miskatonic_museum",
@@ -733,7 +925,7 @@
   },
   {
     "id": "the_pit_of_despair",
-    "name": "The Pit of Despair"
+    "name": "절망의 구렁"
   },
   {
     "id": "the_price_of_progress",
@@ -753,7 +945,7 @@
   },
   {
     "id": "the_syzygy",
-    "name": "The Syzygy"
+    "name": "천체 정렬"
   },
   {
     "id": "the_tatterdemalion",
@@ -765,7 +957,7 @@
   },
   {
     "id": "the_vanishing_of_elina_harper",
-    "name": "The Vanishing of Elina Harper"
+    "name": "엘리나 하퍼의 실종"
   },
   {
     "id": "the_wages_of_sin",
@@ -796,12 +988,28 @@
     "name": "금단의 봉우리를 향해"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "잠든 꿈의 묘소"
+  },
+  {
     "id": "torch",
     "name": "회합"
   },
   {
     "id": "traces_of_egil",
     "name": "Traces of Egil"
+  },
+  {
+    "id": "tsk_prologue",
+    "name": "서막"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -846,5 +1054,9 @@
   {
     "id": "wilds",
     "name": "길들지 않은 야생"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

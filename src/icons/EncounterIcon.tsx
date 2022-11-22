@@ -3,6 +3,7 @@ import React from 'react';
 import ArkhamIcon from './ArkhamIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
+import CyclopeanIcon from './CyclopeanIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
 import DarkMatterIcon from './DarkMatterIcon';
@@ -43,6 +44,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   darkMatterIcon(name: string, size: number, color: string) {
     return (<DarkMatterIcon name={name} size={size} color={color} />);
+  }
+
+  cyclopeanIcon(name: string, size: number, color: string) {
+    return (<CyclopeanIcon name={name} size={size} color={color} />);
   }
 
   dunwichIcon(name: string, size: number, color: string) {
@@ -309,6 +314,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'excelsior_management':
       case 'sins_of_the_past':
       case 'vile_experiments':
+      case 'meteoric_phenomenon':
+      case 'unnatural_disturbances':
+      case 'inhospitable_locality':
+      case 'made_flesh':
         return this.standaloneIcon(encounter_code, size, color);
       case 'hotel':
         return this.standaloneIcon('excelsior', size, color);
@@ -580,6 +589,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_symphony_of_erich_zann':
       case 'the_symphony_of_erich_zahn':
         return this.standaloneIcon('zez', size, color);
+      case 'the_colour_out_of_space':
+        return this.standaloneIcon('meteoric_phenomenon', size, color);
       case 'a_sea_of_troubles':
       case 'gurathnakas_shadows':
       case 'arkham_in_wonderland':
@@ -633,7 +644,19 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.aliceIcon('alice_in_wonderland', size, color);
       case 'deep_ones':
       case 'sinking_ship':
+      case 'the_black_stone':
+      case 'occultism':
+      case 'magyar':
+      case 'natural_hazards':
+      case 'wild_beasts':
+      case 'ancient_hunger':
+      case 'witch_cult':
+      case 'tomes':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'legendry':
+        return this.standaloneIcon('legendary', size, color);
+      case 'zbs':
+        return this.standaloneIcon('the_black_stone', size, color);
       case 'consternation_on_the_constellation':
       case 'zcc':
         return this.standaloneIcon('consternation_on_the_constellation', size, color);
@@ -683,9 +706,52 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
       case 'tsk':
-      case 'tskp':
       case 'tskc':
+      case 'tskp':
         return this.scarletIcon('tsk', size, color);
+      //case 'tskc':
+      //  return this.scarletIcon('tskc', size, color);
+      case 'arkham_ma':
+        return this.scarletIcon('arkham', size, color);
+      case 'constantinople':
+      case 'istanbul':
+        return this.scarletIcon('constantinople', size, color);
+      case 'bermuda':
+        return this.scarletIcon('bermuda_2', size, color);
+      case 'alexandria':
+      case 'anchorage':
+      case 'bombay':
+      case 'buenos_aires':
+      case 'cairo':
+      case 'havana':
+      case 'hong_kong':
+      case 'kabul':
+      case 'kathmandu':
+      case 'kuala_lampur':
+      case 'lagos':
+      case 'london':
+      case 'manokwari':
+      case 'marrakesh':
+      case 'monte_carlo':
+      case 'moscow':
+      case 'nairobi':
+      case 'new_orleans':
+      case 'perth':
+      case 'quito':
+      case 'reykjavik':
+      case 'rio_de_janiero':
+      case 'rome':
+      case 'san_francisco':
+      case 'san_juan':
+      case 'shanghai':
+      case 'stockholm':
+      case 'sydney':
+      case 'tokyo':
+      case 'tunguska':
+      case 'ybor_city':
+        return this.scarletIcon(encounter_code, size, color);
+      case 'venice_it':
+        return this.scarletIcon('venice', size, color);
       case 'agents_of_cthugha':
         return this.darkMatterIcon('agents_of_cthugua', size, color);
       case 'agency_survivors':
@@ -704,6 +770,56 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'death_at_sundown':
       case 'the_midnight_hour':
         return this.darkMatterIcon(encounter_code, size, color);
+      case 'zcf':
+      case 'across_dreadful_waters':
+      case 'archaic_evils':
+      case 'architects_of_chaos':
+      case 'awakened_madness':
+      case 'blood_from_stones':
+      case 'countermeasures':
+      case 'crumbling_masonry':
+      case 'cult_of_cthulhu':
+      case 'deep_dreams':
+      case 'going_twice':
+      case 'grand_compass':
+      case 'lost_moorings':
+      case 'private_lives':
+      case 'pyroclastic_flow':
+      case 'shadowy_agents':
+      case 'storm_and_sea':
+      case 'tomb_of_dead_dreams':
+      case 'unfriendly_ports':
+      case 'unnatural_stone':
+        return this.cyclopeanIcon(encounter_code, size, color);
+
+      case 'spawn_of_rlyeh':
+      case 'spawn_of_ryleh':
+        return this.cyclopeanIcon('spawn_of_ryleh', size, color);
+
+      case 'zhu':
+      case 'the_fall_of_the_house_of_usher':
+        return this.standaloneIcon('the_fall_of_the_house_of_usher', size, color);
+      case 'zatw':
+      case 'against_the_wendigo':
+        return this.standaloneIcon('wendigo', size, color);
+      case 'hanninah_valley':
+      case 'hannihah_valley':
+        return this.standaloneIcon('hannihah_valley', size, color);
+      case 'wendigos_myth':
+        return this.standaloneIcon('wendigos_myth', size, color);
+      case 'zjc':
+      case 'jennys_choice':
+      case 'lost_cathedral':
+        return this.standaloneIcon('lost_cathedral', size, color);
+
+      case 'fof':
+      case 'fortune_and_folly_part_1':
+      case 'fortune_and_folly_part_2':
+        return this.standaloneIcon('roulette', size, color);
+      case 'fortune_and_folly':
+      case 'fortunes_chosen':
+      case 'plan_in_shambles':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'mourning_chorus':
         return this.darkMatterIcon('mourning_stroll', size, color);
       case 'zcp':
@@ -711,6 +827,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.darkMatterIcon('call_of_the_plaguebearer', size, color);
       case 'zcu':
         return this.appIcon('logo', size, color)
+      case 'zsti':
+        return this.appIcon('investigator', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

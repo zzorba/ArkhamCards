@@ -13,6 +13,12 @@ import { SortType } from '@actions/types';
 import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
+import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
+import { Platform } from 'react-native';
+import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
+import { GenderMigration1663271269593 } from './migration/GenderMigration';
+import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
+import { ImageMigration1665529094145 } from './migration/ImageMigration'
 
 type DatabaseListener = () => void;
 
@@ -40,6 +46,11 @@ async function createDatabaseConnection(recreate: boolean) {
       HealsDamageMigration1657382994910,
       CustomizeMigration1657651357621,
       RemovableSlot1658075280573,
+      AlternateRequiredCodeMigration1660064759967,
+      CardStatusMigration1662999387731,
+      GenderMigration1663271269593,
+      CardTagsMigraiton1663617607335,
+      ImageMigration1665529094145,
     ],
     entities: [
       Card,
@@ -55,7 +66,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 41;
+  static SCHEMA_VERSION: number = Platform.OS === 'ios' ? 46 : 47;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;

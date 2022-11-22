@@ -1,16 +1,48 @@
-fragment SingleCard on full_card {
+fragment TabooSet on taboo_set {
+  id
+  name
+  code
+  active
+  date
+  card_count
+  current
+}
+fragment EncounterSet on card_encounter_set {
+  code
+  name
+}
+fragment Pack on pack {
+  code
+  cycle_code
+  real_name
+  position
+  official
+}
+fragment Cycle on cycle {
+  code
+  real_name
+  position
+  official
+}
+fragment SingleCard on all_card {
+  id
   code
   cost
+  clues
+  doom
+  stage
+  illustrator
+  double_sided
   deck_limit
   encounter_code
   encounter_position
+  exceptional
   exile
   faction_code
-  faction2_code
-  faction3_code
   health
   health_per_investigator
   is_unique
+  myriad
   pack_code
   pack_position
   permanent
@@ -23,6 +55,9 @@ fragment SingleCard on full_card {
   real_subname
   real_text
   real_traits
+  real_back_name
+  real_back_text
+  real_back_flavor
   real_encounter_set_name
   sanity
   skill_agility
@@ -32,33 +67,45 @@ fragment SingleCard on full_card {
   skill_wild
   subtype_code
   type_code
-  stage
-  doom
-  clues
-  double_sided
-  illustrator
-  real_back_flavor
-  real_back_text
-  real_back_name
-  doom
-  illustrator
-  shroud
   victory
-  vengeance
-  back_link
+  shroud
+  back_link_id
   enemy_horror
   enemy_damage
   enemy_evade
   enemy_fight
   hidden
-  deck_requirements
   deck_options
+  deck_requirements
   restrictions
-  imagesrc
-  backimagesrc
+  imageurl
+  backimageurl
+  faction2_code
+  faction3_code
   xp
+  version
+  alternate_required_code
+  clues_fixed
+  errata_date
+  alternate_of_code
+  duplicate_of_code
+  spoiler
+  vengeance
+  customization_options
+  taboo_set_id
+  taboo_xp
+  errata_date
+  real_customization_text
+  real_customization_change
+  real_taboo_text_change
+  preview
+  official
+  taboo_placeholder
+  gender
+  alt_art_investigator
+  tags
 }
-fragment CoreCardText on full_card_text {
+fragment CoreCardText on all_card_text {
   flavor
   name
   slot
@@ -68,6 +115,9 @@ fragment CoreCardText on full_card_text {
   back_flavor
   back_text
   back_name
+  customization_change
+  customization_text
+  taboo_text_change
 }
 fragment UserInfo on users {
   id
@@ -107,6 +157,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   sealed
   totalDrawn
   tarot
+  difficulty
 }
 
 fragment MiniDeck on campaign_deck {

@@ -1063,6 +1063,142 @@
     "supplies": []
   },
   {
+    "campaignId": "fof",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "gob",
     "sections": [
       {
@@ -1071,12 +1207,14 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
-            "feminine_text": "#name#墜入深淵。"
+            "feminine_text": "#name#墜入深淵。",
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
-            "feminine_text": "#name#墜入深淵。"
+            "feminine_text": "#name#墜入深淵。",
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1124,12 +1262,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name#被附身。",
-            "feminine_text": "#name#被附身。"
+            "feminine_text": "#name#被附身。",
+            "nonbinary_text": "#name#被附身。"
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
-            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
+            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。",
+            "nonbinary_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1554,12 +1694,14 @@
           {
             "id": "possessed",
             "masculine_text": "#name#被附身。",
-            "feminine_text": "#name#被附身。"
+            "feminine_text": "#name#被附身。",
+            "nonbinary_text": "#name#被附身。"
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name#閱讀了《黃衣之王》第二幕。",
-            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。"
+            "feminine_text": "#name#閱讀了《黃衣之王》第二幕。",
+            "nonbinary_text": "#name#閱讀了《黃衣之王》第二幕。"
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1923,7 +2065,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
-            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。"
+            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
+            "nonbinary_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -2458,22 +2601,26 @@
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
-            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
+            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
+            "nonbinary_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
@@ -2666,12 +2813,70 @@
           {
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
-            "feminine_text": "#name#墜入深淵。"
+            "feminine_text": "#name#墜入深淵。",
+            "nonbinary_text": "#name#墜入深淵。"
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name#墜入深淵。",
-            "feminine_text": "#name#墜入深淵。"
+            "feminine_text": "#name#墜入深淵。",
+            "nonbinary_text": "#name#墜入深淵。"
+          },
+          {
+            "id": "atw_bernards_fate",
+            "text": "you have discovered Bernard's fate."
+          },
+          {
+            "id": "atw_custodian_of_knowledge",
+            "text": "you are the custodian of Ithaqua's knowledge."
+          },
+          {
+            "id": "atw_defeated_the_wendigo",
+            "text": "you defated the Wendigo."
+          },
+          {
+            "id": "atw_discovered_the_fate_of_the_students",
+            "text": "you have discovered the fate of Dr. Nadelmann's students."
+          },
+          {
+            "id": "atw_found_the_gold",
+            "text": "you have found Hanninah's gold."
+          },
+          {
+            "id": "atw_have_enough_evidence",
+            "text": "you have enoughe evidence to clear Dr. Nadelmann."
+          },
+          {
+            "id": "atw_norman_alive",
+            "text": "Norman is alive."
+          },
+          {
+            "id": "atw_norman_dead",
+            "text": "You let Norman die."
+          },
+          {
+            "id": "atw_normans_fate",
+            "text": "you have discovered Norman's fate."
+          },
+          {
+            "id": "atw_sarcee_are_hunting",
+            "text": "the Sarcee are hunting you down."
+          },
+          {
+            "id": "atw_saved_charlie",
+            "text": "you saved Charlie."
+          },
+          {
+            "id": "atw_saved_the_gold_prospector",
+            "text": "you saved the gold prospector."
+          },
+          {
+            "id": "atw_sylvias_fate",
+            "text": "you have discovered Sylvia's fate."
+          },
+          {
+            "id": "atw_wendigo_still_roams",
+            "text": "you know that the Wendigo still roams the North Hanninah valley."
           },
           {
             "id": "blob_contained",
@@ -2680,6 +2885,10 @@
           {
             "id": "blob_devoured_universe",
             "text": "個體代號8L-08吞噬了整個宇宙。"
+          },
+          {
+            "id": "cell_meddled_in_abarrans_affairs",
+            "text": "the cell meddled in Abarran’s affairs."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2700,6 +2909,78 @@
           {
             "id": "constellation_was_saved",
             "text": "the Constellation was saved."
+          },
+          {
+            "id": "fof_alarm_level",
+            "text": "Alarm level: #name# (#X#)"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "the investigators cleaned out the house."
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "the investigators convinced Isamara to participate in the heist."
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "the investigators found a vent."
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "the investigators impersonated a high roller."
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "the investigators need time to rest."
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "the investigators obtained an employee uniform."
+          },
+          {
+            "id": "fof_stashed",
+            "text": "Stashed: #name# (#X#)"
+          },
+          {
+            "id": "fof_stole_keys",
+            "text": "the investigators stole Abarran's keys."
+          },
+          {
+            "id": "fof_the_face",
+            "text": "#name#: The Face"
+          },
+          {
+            "id": "fof_the_face_practiced",
+            "text": "#name#: The Face (Practiced)"
+          },
+          {
+            "id": "fof_the_grifter",
+            "text": "#name#: The Grifter"
+          },
+          {
+            "id": "fof_the_grifter_practiced",
+            "text": "#name#: The Grifter (Practiced)"
+          },
+          {
+            "id": "fof_the_muscle",
+            "text": "#name#: The Muscle"
+          },
+          {
+            "id": "fof_the_muscle_practiced",
+            "text": "#name#: The Muscle (Practiced)"
+          },
+          {
+            "id": "fof_the_thief",
+            "text": "#name#: The Thief"
+          },
+          {
+            "id": "fof_the_thief_practiced",
+            "text": "#name#: The Thief (Practiced)"
+          },
+          {
+            "id": "fof_wellspring_clues",
+            "text": "Clues on The Wellspring of Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -2770,8 +3051,36 @@
             "text": "深淵得到拯救。"
           },
           {
+            "id": "zbs_have_seen_and_understood",
+            "text": "you have seen, and understood."
+          },
+          {
+            "id": "zbs_the_monolith_broods_in_silence",
+            "text": "the monolith broods in silence."
+          },
+          {
+            "id": "zcos_abandoned_the_people_of_eastwick",
+            "text": "you abandoned the people of Eastwick."
+          },
+          {
+            "id": "zcos_fended_off_an_alien_entity",
+            "text": "you fended off an alien entity."
+          },
+          {
+            "id": "zcos_slaughtered_the_people_of_eastwick",
+            "text": "you slaughtered the people of Eastwick."
+          },
+          {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil... for now."
+            "text": "all is quiet at Rue d'Auseil… for now."
+          },
+          {
+            "id": "zhu_avenged_the_house_of_usher",
+            "text": "the investigators avenged the House of Usher."
+          },
+          {
+            "id": "zhu_house_of_usher_has_fallen",
+            "text": "the House of Usher has fallen."
           }
         ]
       },
@@ -2788,6 +3097,10 @@
           },
           {
             "id": "act_3_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "atw_added_tablet",
             "text": "dummy"
           },
           {
@@ -2815,7 +3128,51 @@
             "text": "dummy"
           },
           {
+            "id": "continue_fortune_and_folly_part_2",
+            "text": "dummy"
+          },
+          {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_cleaned_out_the_house",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_convinced_isamara",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_found_a_vent",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_heist_tasks",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_impersonated_a_high_roller",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_need_time_to_rest",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_obtained_an_uniform",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_play_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_skip_part_1",
+            "text": "dummy"
+          },
+          {
+            "id": "fof_stole_keys",
             "text": "dummy"
           },
           {
@@ -2856,6 +3213,10 @@
           },
           {
             "id": "meh_the_truth",
+            "text": "dummy"
+          },
+          {
+            "id": "zjc_killed_jenny",
             "text": "dummy"
           }
         ]
@@ -3045,7 +3406,8 @@
           {
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
-            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。"
+            "feminine_text": "#name#加入阿撒托斯的吹笛人隊伍。",
+            "nonbinary_text": "#name#加入阿撒托斯的吹笛人隊伍。"
           },
           {
             "id": "accepted_fate",
@@ -3331,12 +3693,14 @@
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name#已打破烏撒的法則。",
-            "feminine_text": "#name#已打破烏撒的法則。"
+            "feminine_text": "#name#已打破烏撒的法則。",
+            "nonbinary_text": "#name#已打破烏撒的法則。"
           },
           {
             "id": "captured",
             "masculine_text": "#name#被俘。",
-            "feminine_text": "#name#被俘。"
+            "feminine_text": "#name#被俘。",
+            "nonbinary_text": "#name#被俘。"
           },
           {
             "id": "black_cat_at_your_side",
@@ -3854,22 +4218,26 @@
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name#冒險開始時少3資源。",
-            "feminine_text": "#name#冒險開始時少3資源。"
+            "feminine_text": "#name#冒險開始時少3資源。",
+            "nonbinary_text": "#name#冒險開始時少3資源。"
           },
           {
             "id": "hote_start_with_clue",
             "masculine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
-            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
+            "feminine_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。",
+            "nonbinary_text": "#name#冒險開始時帶有1個線索<i>(從供應堆拿取)</i>。"
           },
           {
             "id": "agenda_5",
@@ -4033,7 +4401,8 @@
           {
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name#有一件潛水服。",
-            "feminine_text": "#name#有一件潛水服。"
+            "feminine_text": "#name#有一件潛水服。",
+            "nonbinary_text": "#name#有一件潛水服。"
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4417,6 +4786,34 @@
     "supplies": []
   },
   {
+    "campaignId": "tsk",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "調查員在日出後抵達了獵鷹岬。"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "read_sr_1",
+            "text": "dummy"
+          },
+          {
+            "id": "read_sr_2",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {
@@ -4424,119 +4821,119 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "Alice perished and Wonderland has been lost forever."
+            "text": "愛麗絲已死，仙境已永遠消失。"
           },
           {
             "id": "controlled_the_snark",
-            "text": "the investigators controlled the Snark."
+            "text": "調查員控制了蛇鯊。"
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "Gurathnaka and its shadows consumed the earth."
+            "text": "古拉斯納卡和它的暗影們吞噬了地球。"
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "Gurathnaka and its shadows were banished from Arkham."
+            "text": "古拉斯納卡和它的暗影已被逐出阿卡姆。"
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "三月兔和帽匠非常享受有你作伴。"
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "三月兔和帽匠被扔進暗影。"
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "三月兔無法承受帽匠的死。"
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "三月兔、帽匠和睡鼠被暗影吞噬。"
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "帽匠無法承受三月兔的死。"
           },
           {
             "id": "intimidated_the_snark",
-            "text": "the investigators intimidated the Snark."
+            "text": "調查員恫嚇了蛇鯊。"
           },
           {
             "id": "intrigued_the_snark",
-            "text": "the investigators intrigued the Snark."
+            "text": "調查員吸引了蛇鯊。"
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "the Jabberwock still haunts the Tulgey Wood."
+            "text": "查博蕪基龍仍在土爾基森林裡遊蕩。"
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "one of the Tweedles learned about the cost of war."
+            "text": "其中一個崔德兄弟學到了戰爭的代價。"
           },
           {
             "id": "puzzled_the_snark",
-            "text": "the investigators puzzled the Snark."
+            "text": "調查員迷惑了蛇鯊。"
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "the Queen destroyed the shadows in a fit of rage."
+            "text": "皇后在盛怒之下摧毀了暗影。"
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "the Queen's castle was consumed by shadows."
+            "text": "皇后的城堡被陰影吞噬。"
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "the investigators separated Alice's dreams from the real world."
+            "text": "調查員將愛麗絲的夢境與現實世界分離。"
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "the shadows grow stronger with each passing moment."
+            "text": "隨著時間流逝，暗影的力量愈發增強。"
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "the shadows maintain their grip on Alice's dreams."
+            "text": "暗影持續掌握著愛麗絲的夢境。"
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "the shadows have been weakened by Wonderland's instability."
+            "text": "仙境的不穩定削弱了暗影。"
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "the Snark and its hunters were never met with again."
+            "text": "再也沒人看過蛇鯊和那些獵人。"
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "the investigators took the Jabberwock's head."
+            "text": "調查員砍下了查博蕪基龍的頭。"
           },
           {
             "id": "tricked_the_snark",
-            "text": "the investigators tricked the Snark."
+            "text": "調查員戲弄了蛇鯊。"
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "the Tweedles learned that there are worse things than fighting each other."
+            "text": "崔德兄弟學到還有比互相爭鬥更糟糕的事情。"
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "the Tweedles perished in their bloody battle."
+            "text": "崔德兄弟在他們血腥的戰鬥中喪命。"
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "the Tweedles' war was brought to an end."
+            "text": "崔德兄弟之戰已經落幕。"
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "海象和木匠吃下了他們的最後一餐。"
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "海象和木匠已經失去了胃口。"
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "海象和木匠已被完全消滅。"
           },
           {
             "id": "went_down_the_rabbit_hole",
@@ -4548,27 +4945,27 @@
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "the White King celebrates a grand victory."
+            "text": "白棋國王慶祝偉大的勝利。"
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "the White King was slain by the red pieces."
+            "text": "白棋國王被紅棋殺死。"
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "the White Knight has fallen in battle to the Red Queen."
+            "text": "白棋騎士在與紅棋王后的戰鬥中殞落。"
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "the White Knight revels in your victory over the Red Queen."
+            "text": "白棋騎士沉浸於你對紅棋王后的勝利。"
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "白兔被暗影吞噬。"
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "白兔在怪物的攻擊中倖存。"
           }
         ]
       },
@@ -4577,27 +4974,27 @@
         "entries": [
           {
             "id": "compassion",
-            "text": "Compassion"
+            "text": "同情"
           },
           {
             "id": "courage",
-            "text": "Courage"
+            "text": "勇氣"
           },
           {
             "id": "curiosity",
-            "text": "Curiosity"
+            "text": "好奇"
           },
           {
             "id": "intuition",
-            "text": "Intuition"
+            "text": "直覺"
           },
           {
             "id": "patience",
-            "text": "Patience"
+            "text": "耐心"
           },
           {
             "id": "reason",
-            "text": "Reason"
+            "text": "理智"
           }
         ]
       },
@@ -4623,7 +5020,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "獅鷲和假海龜"
           },
           {
             "id": "humpty_dumpty",
@@ -4631,7 +5028,7 @@
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "獅子和獨角獸"
           },
           {
             "id": "the_caterpillar",
@@ -4647,7 +5044,7 @@
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "白棋王后"
           }
         ]
       },
@@ -4656,7 +5053,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "獅鷲和假海龜"
           },
           {
             "id": "humpty_dumpty",
@@ -4664,7 +5061,7 @@
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "獅子和獨角獸"
           },
           {
             "id": "the_caterpillar",
@@ -4680,7 +5077,7 @@
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "白棋王后"
           }
         ]
       }
@@ -4857,6 +5254,258 @@
     "supplies": []
   },
   {
+    "campaignId": "zcf",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "took_out_a_loan",
+            "masculine_text": "#name# took out a loan.",
+            "feminine_text": "#name# took out a loan.",
+            "nonbinary_text": "#name# took out a loan."
+          },
+          {
+            "id": "architects_project_was_fully_completed",
+            "text": "the architects' project was fully completed."
+          },
+          {
+            "id": "architects_project_was_sabotaged",
+            "text": "the architects's project was sabotaged."
+          },
+          {
+            "id": "arrived_on_schedule",
+            "text": "the investigators arrived on schedule."
+          },
+          {
+            "id": "chose_the_least_predictable_route",
+            "text": "the investigators chose the least predictable route."
+          },
+          {
+            "id": "chose_the_most_direct_route",
+            "text": "the investigators chose the most direct route."
+          },
+          {
+            "id": "chose_the_most_populous_route",
+            "text": "the investigators chose the most popular route."
+          },
+          {
+            "id": "cthulhu_reigns",
+            "text": "Cthulhu reigns over all humankind."
+          },
+          {
+            "id": "cthulhu_slumbers",
+            "text": "Cthulhu slumbers in the deep once more."
+          },
+          {
+            "id": "cults_project_nears_completion",
+            "text": "the cult's project nears completion."
+          },
+          {
+            "id": "escaped_rlyeh",
+            "text": "the investigators escaped from R'lyeh."
+          },
+          {
+            "id": "expelled_the_traitors",
+            "text": "the investigators expelled the traitors."
+          },
+          {
+            "id": "explored_the_myra_louise",
+            "text": "the investigators explored the Myra Louise."
+          },
+          {
+            "id": "exposed_the_traitors",
+            "text": "the investigators exposed the traitors."
+          },
+          {
+            "id": "failed_to_find_the_myra_louise",
+            "text": "the investigators failed to find the Myra Louise."
+          },
+          {
+            "id": "failed_to_stop_the_traitors_plan",
+            "text": "the investigators failed to stop the traitors' plan."
+          },
+          {
+            "id": "forced_to_withdraw",
+            "text": "the investigators were forced to withdraw."
+          },
+          {
+            "id": "found_the_missing_artifacts",
+            "text": "the investigators found the missing artifacts."
+          },
+          {
+            "id": "found_the_myra_louise",
+            "text": "the investigators found the Myra Louise."
+          },
+          {
+            "id": "have_been_observed",
+            "text": "the investigators have been observed."
+          },
+          {
+            "id": "interviewed_the_broker",
+            "text": "the investigators interviewed the broker."
+          },
+          {
+            "id": "know_the_full_story",
+            "text": "the investigators know the full story."
+          },
+          {
+            "id": "left_the_auction_early",
+            "text": "the investigators left the auction early."
+          },
+          {
+            "id": "severely_delayed",
+            "text": "the investigators were severely delayed."
+          },
+          {
+            "id": "understand_the_truth",
+            "text": "the investigators understand the truth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_alive",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "cultists_killed",
+        "entries": [
+          {
+            "id": "glen",
+            "text": "Glen Conroy"
+          },
+          {
+            "id": "hector",
+            "text": "Hector Sutton"
+          },
+          {
+            "id": "paul",
+            "text": "Paul Kellerman"
+          },
+          {
+            "id": "rodney",
+            "text": "Rodney Duvall"
+          },
+          {
+            "id": "ulysses",
+            "text": "Ulysses Hill"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallace Thorpe"
+          },
+          {
+            "id": "wallace",
+            "text": "Wallce Thorpe"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "auction_lots",
+            "text": "dummy"
+          },
+          {
+            "id": "auction_lots_in_victory_display",
+            "text": "dummy"
+          },
+          {
+            "id": "end_of_the_line",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_cooperate",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_ruckus",
+            "text": "dummy"
+          },
+          {
+            "id": "gt_took_time",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "lm_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "luther_alive",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_1",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_2",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_3",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_4",
+            "text": "dummy"
+          },
+          {
+            "id": "pl_evidence_5",
+            "text": "dummy"
+          },
+          {
+            "id": "repaid_loans",
+            "text": "dummy"
+          },
+          {
+            "id": "two_impossible_pillars",
+            "text": "dummy"
+          },
+          {
+            "id": "zgt_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zcp",
     "sections": [
       {
@@ -4944,12 +5593,14 @@
           {
             "id": "heeded_the_call",
             "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call."
+            "feminine_text": "#name# has heeded the call.",
+            "nonbinary_text": "#name# has heeded the call."
           },
           {
             "id": "injected_a_cardinal_reagant",
             "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant."
+            "feminine_text": "#name# has injected a cardinal reagant.",
+            "nonbinary_text": "#name# has injected a cardinal reagant."
           },
           {
             "id": "arkham_stands_united",
@@ -5357,12 +6008,14 @@
           {
             "id": "has_been_corrupted_by_the_earth",
             "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth."
+            "feminine_text": "#name# has been corrupted by the Earth.",
+            "nonbinary_text": "#name# has been corrupted by the Earth."
           },
           {
             "id": "infected_by_cybervirus",
             "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus."
+            "feminine_text": "#name# has been infected by the cybervirus.",
+            "nonbinary_text": "#name# has been infected by the cybervirus."
           },
           {
             "id": "allied_with_the_migo",

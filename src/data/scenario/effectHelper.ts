@@ -34,6 +34,9 @@ export function getSpecialEffectChoiceList(
       if (effect.mental_or_physical) {
         return `${id}_trauma`;
       }
+      if (effect.investigator === '$fixed_investigator') {
+        return '$fixed_investigator';
+      }
       return undefined;
     case 'add_weakness':
       return `${id}_weakness`;

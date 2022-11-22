@@ -4,6 +4,10 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
     "name": "A Light in the Fog"
   },
@@ -20,8 +24,24 @@
     "name": "A Thousand Shapes of Horror"
   },
   {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "All or Nothing"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -68,6 +88,10 @@
     "name": "Beneath the Waves"
   },
   {
+    "id": "bermuda",
+    "name": "Bermuda"
+  },
+  {
     "id": "beyond_the_gates_of_sleep",
     "name": "Beyond the Gates of Sleep"
   },
@@ -84,8 +108,20 @@
     "name": "The Blob That Ate Everything"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Кровь на алтаре"
+  },
+  {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
   },
   {
     "id": "by_the_book",
@@ -104,12 +140,32 @@
     "name": "Пролог"
   },
   {
+    "id": "cf_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "Пролог"
+  },
+  {
     "id": "city_of_the_elder_things",
-    "name": "City of the Elder Things"
+    "name": "Город Старцев"
+  },
+  {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
   },
   {
     "id": "consternation_on_the_constellation",
     "name": "Застывшее «Созвездие»"
+  },
+  {
+    "id": "core",
+    "name": "Алые ключи"
   },
   {
     "id": "cp_epilogue",
@@ -118,6 +174,10 @@
   {
     "id": "cp_prologue",
     "name": "Пролог"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -189,7 +249,7 @@
   },
   {
     "id": "endless_night",
-    "name": "Endless Night"
+    "name": "Бесконечная ночь"
   },
   {
     "id": "eoe_epilogue",
@@ -213,19 +273,19 @@
   },
   {
     "id": "fatal_mirage",
-    "name": "Fatal Mirage"
+    "name": "Роковой мираж"
   },
   {
     "id": "fatal_mirage_2",
-    "name": "Fatal Mirage"
+    "name": "Роковой мираж"
   },
   {
     "id": "fatal_mirage_3",
-    "name": "Fatal Mirage"
+    "name": "Роковой мираж"
   },
   {
     "id": "final_night",
-    "name": "Final Night"
+    "name": "Последняя ночь"
   },
   {
     "id": "fools_mate",
@@ -236,6 +296,18 @@
     "name": "Ради высшего блага"
   },
   {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
     "id": "fragment_of_carcosa",
     "name": "Fragment of Carcosa"
   },
@@ -244,8 +316,16 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
     "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "havana",
+    "name": "Havana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -268,6 +348,10 @@
     "name": "History Lesson"
   },
   {
+    "id": "hong_kong",
+    "name": "Hong Kong"
+  },
+  {
     "id": "horror_in_high_gear",
     "name": "Horror in High Gear"
   },
@@ -277,19 +361,19 @@
   },
   {
     "id": "ice_and_death",
-    "name": "Ice and Death"
+    "name": "Лёд и смерть"
   },
   {
     "id": "ice_and_death_part_1",
-    "name": "Ice and Death, Part I"
+    "name": "Лёд и смерть, часть I"
   },
   {
     "id": "ice_and_death_part_2",
-    "name": "Ice and Death, Part II"
+    "name": "Лёд и смерть, часть II"
   },
   {
     "id": "ice_and_death_part_3",
-    "name": "Ice and Death, Part III"
+    "name": "Лёд и смерть, часть III"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -320,12 +404,40 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
   {
+    "id": "london",
+    "name": "London"
+  },
+  {
     "id": "lost_in_time_and_space",
     "name": "Потерянные во времени и пространстве"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
   },
   {
     "id": "lost_quantum",
@@ -340,12 +452,24 @@
     "name": "Machinations Through Time"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Marrakesh"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "Козни Мяулапхотепа"
   },
   {
     "id": "mission_briefing",
     "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -356,12 +480,24 @@
     "name": "Убийство в отеле «Эксельсиор»"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
   },
   {
+    "id": "perth",
+    "name": "Perth"
+  },
+  {
     "id": "point_of_no_return",
     "name": "Point of No Return"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
   },
   {
     "id": "ptc_epilogue",
@@ -388,6 +524,18 @@
     "name": "Puzzle Pieces"
   },
   {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
+  },
+  {
     "id": "read_or_die",
     "name": "Прочти или умри"
   },
@@ -397,7 +545,7 @@
   },
   {
     "id": "restful_night",
-    "name": "Restful Night"
+    "name": "Спокойная ночь"
   },
   {
     "id": "return_to_a_phantom_of_truth",
@@ -417,7 +565,7 @@
   },
   {
     "id": "return_to_blood_on_the_altar",
-    "name": "Return to Blood on the Altar"
+    "name": "Кровь на алтаре. Возвращение"
   },
   {
     "id": "return_to_curtain_call",
@@ -433,11 +581,11 @@
   },
   {
     "id": "return_to_essex_county_express",
-    "name": "Return to The Essex County Express"
+    "name": "Экспресс округа Эссекс. Возвращение"
   },
   {
     "id": "return_to_extracurricular_activity",
-    "name": "Return to Extracurricular Activities"
+    "name": "Факультативные занятия. Возвращение"
   },
   {
     "id": "return_to_for_the_greater_good",
@@ -457,7 +605,7 @@
   },
   {
     "id": "return_to_lost_in_time_and_space",
-    "name": "Return to Lost in Time and Space"
+    "name": "Потерянные во времени и пространстве. Возвращение"
   },
   {
     "id": "return_to_shattered_aeons",
@@ -489,7 +637,7 @@
   },
   {
     "id": "return_to_the_house_always_wins",
-    "name": "Return to The House Always Wins"
+    "name": "Казино всегда в выигрыше. Возвращение"
   },
   {
     "id": "return_to_the_last_king",
@@ -501,7 +649,7 @@
   },
   {
     "id": "return_to_the_miskatonic_museum",
-    "name": "Return to The Miskatonic Museum"
+    "name": "Мискатоникский музей. Возвращение"
   },
   {
     "id": "return_to_the_pallid_mask",
@@ -537,7 +685,7 @@
   },
   {
     "id": "return_to_undimensioned_and_unseen",
-    "name": "Return to Undimensioned and Unseen"
+    "name": "Неизмеримые и невидимые. Возвращение"
   },
   {
     "id": "return_to_union_and_disillusion",
@@ -545,7 +693,31 @@
   },
   {
     "id": "return_to_where_doom_awaits",
-    "name": "Return to Where Doom Awaits"
+    "name": "Там, где ждёт погибель. Возвращение"
+  },
+  {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
   },
   {
     "id": "shattered_aeons",
@@ -560,8 +732,16 @@
     "name": "Starfall"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -617,11 +797,15 @@
   },
   {
     "id": "the_attack",
-    "name": "The Attack"
+    "name": "Нападение"
   },
   {
     "id": "the_black_cat",
     "name": "The Black Cat"
+  },
+  {
+    "id": "the_black_stone",
+    "name": "Чёрный камень"
   },
   {
     "id": "the_boundary_beyond",
@@ -636,6 +820,10 @@
     "name": "Город архивов"
   },
   {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
+  },
+  {
     "id": "the_crown",
     "name": "The Crown"
   },
@@ -645,7 +833,7 @@
   },
   {
     "id": "the_disapperance",
-    "name": "The Disappearance"
+    "name": "Исчезновение"
   },
   {
     "id": "the_dodo",
@@ -658,6 +846,10 @@
   {
     "id": "the_eternal_slumber",
     "name": "Беспробудный сон"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
   },
   {
     "id": "the_fallen",
@@ -673,15 +865,15 @@
   },
   {
     "id": "the_heart_of_madness",
-    "name": "The Heart of Madness"
+    "name": "Сердце безумия"
   },
   {
     "id": "the_heart_of_madness_part_1",
-    "name": "The Heart of Madness, Part I"
+    "name": "Сердце безумия, часть I"
   },
   {
     "id": "the_heart_of_madness_part_2",
-    "name": "The Heart of Madness, Part II"
+    "name": "Сердце безумия, часть II"
   },
   {
     "id": "the_house_always_wins",
@@ -725,7 +917,7 @@
   },
   {
     "id": "the_other_side",
-    "name": "The Other Side"
+    "name": "По ту сторону"
   },
   {
     "id": "the_pallid_mask",
@@ -793,7 +985,15 @@
   },
   {
     "id": "to_the_forbidden_peaks",
-    "name": "To the Forbidden Peaks"
+    "name": "К запретным вершинам"
+  },
+  {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
   },
   {
     "id": "torch",
@@ -802,6 +1002,14 @@
   {
     "id": "traces_of_egil",
     "name": "Traces of Egil"
+  },
+  {
+    "id": "tsk_prologue",
+    "name": "Пролог"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -846,5 +1054,9 @@
   {
     "id": "wilds",
     "name": "Дремучие джунгли"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

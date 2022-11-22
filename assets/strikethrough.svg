@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="76"
+   height="4"
+   viewBox="0 0 76 4"
+   fill="none"
+   version="1.1"
+   id="svg564"
+   sodipodi:docname="strikethrough.svg"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs568" />
+  <sodipodi:namedview
+     id="namedview566"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="14.828947"
+     inkscape:cx="26.569654"
+     inkscape:cy="5.7657498"
+     inkscape:window-width="1296"
+     inkscape:window-height="859"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg564" />
+  <path
+     d="M1 3.5C11.9291 2.76895 22.6397 1.03031 33.631 0.586708C38.0687 0.407604 42.4852 0.556667 46.9208 0.586708C39.7974 1.50005 20.3533 2.89725 20.3533 2.89725C20.3533 2.89725 30.6333 3.27602 42.3007 2.74656C52.6902 2.2751 64.6815 1.20889 75 2.74656"
+     stroke="#141920"
+     stroke-linejoin="bevel"
+     id="path562" />
+</svg>

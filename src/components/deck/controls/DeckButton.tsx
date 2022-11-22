@@ -12,6 +12,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
+  'map' |
   'kofi' |
   'resign' |
   'addcard' |
@@ -57,9 +58,10 @@ export type DeckButtonIcon =
   'email' |
   'login' |
   'logo' |
+  'search' |
   'xp';
 
-export type DeckButtonColor = 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray';
+export type DeckButtonColor = 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray' | 'light_gray_outline';
 
 interface Props {
   title: string;
@@ -147,6 +149,7 @@ export default function DeckButton({
     default: colors.D10,
     light_gray: colors.L20,
     dark_gray: colors.L10,
+    light_gray_outline: '#00000000',
   };
   const rippleColor = {
     red_outline: colors.D10,
@@ -155,6 +158,7 @@ export default function DeckButton({
     default: colors.M,
     light_gray: colors.L30,
     dark_gray: colors.L20,
+    light_gray_outline: colors.L30,
   };
   const iconColor = {
     red_outline: colors.warn,
@@ -163,6 +167,7 @@ export default function DeckButton({
     default: colors.L10,
     light_gray: colors.M,
     dark_gray: colors.D10,
+    light_gray_outline: colors.M,
   };
   const textColor = {
     red_outline: colors.L30,
@@ -171,6 +176,7 @@ export default function DeckButton({
     default: colors.L30,
     light_gray: colors.D20,
     dark_gray: colors.D20,
+    light_gray_outline: colors.D20,
   };
   const detailTextColor = {
     red_outline: colors.L30,
@@ -179,6 +185,7 @@ export default function DeckButton({
     default: colors.L30,
     light_gray: colors.D10,
     dark_gray: colors.D10,
+    light_gray_outline: colors.D10,
   };
   const disabledTextColor = {
     red_outline: colors.L10,
@@ -187,6 +194,7 @@ export default function DeckButton({
     default: colors.L10,
     light_gray: colors.D10,
     dark_gray: colors.D10,
+    light_gray_outline: colors.D10,
   };
   const theIconColor = iconColor[color];
   const iconContent = useMemo(() => {
@@ -229,6 +237,7 @@ export default function DeckButton({
           borderRadius: color === 'dark_gray' || color === 'light_gray' ? 8 : 4,
           backgroundColor: backgroundColors[color],
         },
+        color === 'light_gray_outline' ? { borderWidth: 1, borderColor: colors.L10 } : undefined,
         color === 'dark_gray' && !noShadow ? shadow.large : undefined,
         shrink ? undefined : styles.grow,
         leftMargin ? { marginLeft: leftMargin } : undefined,

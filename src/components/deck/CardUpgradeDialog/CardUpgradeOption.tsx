@@ -76,14 +76,13 @@ export default function CardUpgradeOption({ card, code, count, ignoreCount, onIn
               { t`Keep level ${level} after upgrade\nWon't count towards deck size` }
             </Text>
           </View>
-          <Text style={[typography.dialogLabel, styles.countText]}>
-            { ignoreCount }
-          </Text>
           <PlusMinusButtons
             count={ignoreCount}
-            max={count}
+            max={card.deck_limit || 2}
             onIncrement={incIgnore}
             onDecrement={decIgnore}
+            countRender={<StackedCardCount count={ignoreCount} showZeroCount />}
+            dialogStyle
             size={36}
             color="dark"
           />

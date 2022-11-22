@@ -13,28 +13,29 @@ interface Props {
 const SCALE = 0.1;
 export default function StepBorder({ type, width, margin, color = 'setup' }: Props) {
   const { colors } = useContext(StyleContext);
-  const lineWidth = width * (1 - 2.3 * SCALE) - margin * 2;
+  const cornerSize = Math.min(50, width * SCALE)
+  const lineWidth = width * (1 - 0.2 * SCALE) - cornerSize * 2 - margin * 2;
   const backgroundColor = colors.campaign.text[color];
   return (
     <View style={styles.wrapper}>
       { type === 'top' ? (
         <>
           <View style={[styles.topLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_top_left" />
+            <AppIcon size={cornerSize} color={backgroundColor} name="fleur_top_left" />
           </View>
           <View style={[styles.topLine, { backgroundColor, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.topRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_top_right" />
+            <AppIcon size={cornerSize} color={backgroundColor} name="fleur_top_right" />
           </View>
         </>
       ) : (
         <>
           <View style={[styles.bottomLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_bottom_left" />
+            <AppIcon size={cornerSize} color={backgroundColor} name="fleur_bottom_left" />
           </View>
           <View style={[styles.bottomLine, { backgroundColor, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.bottomRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={backgroundColor} name="fleur_bottom_right" />
+            <AppIcon size={cornerSize} color={backgroundColor} name="fleur_bottom_right" />
           </View>
         </>
       ) }

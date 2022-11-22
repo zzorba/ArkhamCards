@@ -8,7 +8,7 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
-import { EditChaosBagProps } from '../EditChaosBagDialog';
+import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
 import Card from '@data/types/Card';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
@@ -19,6 +19,7 @@ import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 import { ProcessedCampaign } from '@data/scenario';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { useAppDispatch } from '@app/store';
+import { MAX_WIDTH } from '@styles/sizes';
 
 interface Props {
   componentId: string;
@@ -159,7 +160,7 @@ export default function useChaosBagDialog({
         <View style={space.marginS}>
           <ChaosBagLine
             chaosBag={chaosBag}
-            width={width - m * 2}
+            width={Math.min(width, MAX_WIDTH) - m * 2}
           />
         </View>
 

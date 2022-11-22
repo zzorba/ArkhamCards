@@ -4,6 +4,10 @@
     "name": "A Confrontation"
   },
   {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
     "id": "a_light_in_the_fog",
     "name": "Światło pośród mgieł"
   },
@@ -20,8 +24,24 @@
     "name": "Koszmar Tysiąca Wcieleń"
   },
   {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "Alexandria"
+  },
+  {
     "id": "all_or_nothing",
     "name": "Wszystko albo nic"
+  },
+  {
+    "id": "anchorage",
+    "name": "Anchorage"
   },
   {
     "id": "arkham",
@@ -68,6 +88,10 @@
     "name": "Pod falami"
   },
   {
+    "id": "bermuda",
+    "name": "Bermuda"
+  },
+  {
     "id": "beyond_the_gates_of_sleep",
     "name": "Przez Wrota Snu"
   },
@@ -84,8 +108,20 @@
     "name": "Śluz, który pożarł wszystko"
   },
   {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Krew na ołtarzu"
+  },
+  {
+    "id": "bombay",
+    "name": "Bombay"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires"
   },
   {
     "id": "by_the_book",
@@ -104,12 +140,32 @@
     "name": "Prolog"
   },
   {
+    "id": "cf_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "Prolog"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "Miasto Starszych Istot"
   },
   {
+    "id": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "constantinople",
+    "name": "Constantinople"
+  },
+  {
     "id": "consternation_on_the_constellation",
     "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "Szkarłatne Klucze"
   },
   {
     "id": "cp_epilogue",
@@ -118,6 +174,10 @@
   {
     "id": "cp_prologue",
     "name": "Prolog"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -236,6 +296,18 @@
     "name": "Dla Większego Dobra"
   },
   {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
     "id": "fragment_of_carcosa",
     "name": "Fragment of Carcosa"
   },
@@ -244,8 +316,16 @@
     "name": "Friends in Low Places"
   },
   {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
     "id": "gryphon_and_mock_turtle",
     "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "havana",
+    "name": "Havana"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -266,6 +346,10 @@
   {
     "id": "history_lesson",
     "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Hong Kong"
   },
   {
     "id": "horror_in_high_gear",
@@ -320,12 +404,40 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Kabul"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Kathmandu"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Kuala Lampur"
+  },
+  {
+    "id": "lagos",
+    "name": "Lagos"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
   {
+    "id": "london",
+    "name": "London"
+  },
+  {
     "id": "lost_in_time_and_space",
     "name": "Zagubieni w Czasie i Przestrzeni"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
   },
   {
     "id": "lost_quantum",
@@ -340,12 +452,24 @@
     "name": "Machinacje w czasie"
   },
   {
+    "id": "manokwari",
+    "name": "Manokwari"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Marrakesh"
+  },
+  {
     "id": "meddling_of_meowlathotep",
     "name": "Intrygi Miaulathotepa"
   },
   {
     "id": "mission_briefing",
     "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow"
   },
   {
     "id": "mourning_chorus",
@@ -356,12 +480,24 @@
     "name": "Morderstwo w Hotelu Excelsior"
   },
   {
+    "id": "nairobi",
+    "name": "Nairobi"
+  },
+  {
     "id": "night_on_the_town",
     "name": "Night on the Town"
   },
   {
+    "id": "perth",
+    "name": "Perth"
+  },
+  {
     "id": "point_of_no_return",
     "name": "Nie Ma Odwrotu"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
   },
   {
     "id": "ptc_epilogue",
@@ -386,6 +522,18 @@
   {
     "id": "puzzle_pieces",
     "name": "Fragmenty układanki"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "Quito"
+  },
+  {
+    "id": "rain_and_riddles",
+    "name": "Rain and Riddles"
   },
   {
     "id": "read_or_die",
@@ -548,6 +696,30 @@
     "name": "Powrót Gdzie Czeka Zagłada"
   },
   {
+    "id": "reykjavik",
+    "name": "Reykjavik"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Rio de Janiero"
+  },
+  {
+    "id": "rome",
+    "name": "Rome"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai"
+  },
+  {
     "id": "shattered_aeons",
     "name": "Rozbita Wieczność"
   },
@@ -560,8 +732,16 @@
     "name": "Starfall"
   },
   {
+    "id": "stockholm",
+    "name": "Stockholm"
+  },
+  {
     "id": "strange_moons",
     "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Sydney"
   },
   {
     "id": "tcu_epilogue",
@@ -624,6 +804,10 @@
     "name": "Czarny kot"
   },
   {
+    "id": "the_black_stone",
+    "name": "Czarny obelisk"
+  },
+  {
     "id": "the_boundary_beyond",
     "name": "Poza Granicami Czasu"
   },
@@ -634,6 +818,10 @@
   {
     "id": "the_city_of_archives",
     "name": "Miasto Archiwów"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
   },
   {
     "id": "the_crown",
@@ -658,6 +846,10 @@
   {
     "id": "the_eternal_slumber",
     "name": "Wieczny Sen"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
   },
   {
     "id": "the_fallen",
@@ -796,12 +988,28 @@
     "name": "Na zakazane szczyty"
   },
   {
+    "id": "tokyo",
+    "name": "Tokyo"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
+  },
+  {
     "id": "torch",
     "name": "Zgromadzenie"
   },
   {
     "id": "traces_of_egil",
     "name": "Ślady Egila"
+  },
+  {
+    "id": "tsk_prologue",
+    "name": "Prolog"
+  },
+  {
+    "id": "tunguska",
+    "name": "Tunguska"
   },
   {
     "id": "turn_back_time",
@@ -846,5 +1054,9 @@
   {
     "id": "wilds",
     "name": "Dzikie Ostępy"
+  },
+  {
+    "id": "ybor_city",
+    "name": "Ybor City"
   }
 ]

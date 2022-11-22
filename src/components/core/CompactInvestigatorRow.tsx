@@ -91,7 +91,7 @@ export function AnimatedCompactInvestigatorRow({
   disabled?: boolean;
   headerContent?: React.ReactNode;
 }) {
-  const renderHeader = useCallback((icon: React.ReactFragment) => (
+  const renderHeader = useCallback((icon: React.ReactNode) => (
     <CompactInvestigatorRow investigator={investigator} open={open} {...props}>
       <>
         { headerContent }

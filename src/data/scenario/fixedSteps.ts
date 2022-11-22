@@ -19,6 +19,8 @@ import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { RANDOM_BASIC_WEAKNESS, getTarotCards } from '@app_constants';
+import CampaignGuide from './CampaignGuide';
+import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 export const enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -52,10 +54,6 @@ function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
 
 export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 function chooseResolutionStep(resolutions: Resolution[]): InputStep {
-  const hasInvestigatorDefeat = !!find(
-    resolutions,
-    resolution => resolution.id === 'investigator_defeat'
-  );
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
@@ -74,19 +72,8 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             hidden: resolution.hidden,
             steps: [
-              investigatorStatusStepId(resolution),
-              ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
-              `$r_${resolution.id}`,
-              ...resolution.steps,
-              INTER_SCENARIO_CHANGES_STEP_ID,
-              PROCEED_STEP_ID,
+              `$pr_${resolution.id}`,
             ],
-            effects: [{
-              type: 'scenario_data',
-              setting: 'scenario_status',
-              status: 'resolution',
-              resolution: resolution.id,
-            }],
           };
           return choice;
         }
@@ -96,7 +83,10 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   return step;
 }
 
-const PROCEED_STEP_ID = '$proceed';
+export const PROCEED_STEP_ID = '$proceed';
+export const PROCEED_ALT_STEP_ID = '$proceed_alt';
+export const EMBARK_STEP_ID = '$embark';
+export const EMBARK_RETURN_STEP_ID = '$embark_return';
 
 const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
 const chooseInvestigatorsStep: InputStep = {
@@ -119,7 +109,7 @@ const chooseInvestigatorsStep: InputStep = {
   },
 };
 
-const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
+export const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
 const upgradeDecksStep: InputStep = {
   id: UPGRADE_DECKS_STEP_ID,
   type: 'input',
@@ -159,7 +149,7 @@ function drawStandaloneWeaknessStep(): InputStep {
 }
 
 export const SELECTED_PARTNERS_CAMPAIGN_LOG_ID = '$selected_partners';
-
+export const INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX = '$investigator_partner_';
 const SAVE_STANDALONE_DECKS_ID = '$save_standalone_decks';
 const saveStandaloneDecksStep: InputStep = {
   id: SAVE_STANDALONE_DECKS_ID,
@@ -235,6 +225,14 @@ const playScenarioStep: InputStep = {
   },
 };
 
+export const DUMMY_END_SCENARIO_STEP_ID = '$dummy_end_scenario';
+const dummyEndScenarioStep: GenericStep = {
+  id: DUMMY_END_SCENARIO_STEP_ID,
+  hidden: true,
+};
+
+export const CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID = '$check_continue_play_scenario';
+
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
   return {
@@ -286,24 +284,55 @@ function leadInvestigatorStep(): InputStep {
   };
 }
 
-function resolutionStep(
+function dynamicResolutionSteps(
   id: string,
-  resolutions: Resolution[]
+  scenarioGuide: ScenarioGuide
 ): Step | undefined {
-  if (!id.startsWith('$r_')) {
-    return undefined;
-  }
-  const statusStep = investigatorStatusStep(id, resolutions);
-  if (statusStep) {
-    return statusStep;
-  }
-  const resolution = id.substring(3);
-  return {
-    id,
-    type: 'resolution',
-    generated: true,
-    resolution,
+  const resolutions = scenarioGuide.resolutions();
+  if (id.startsWith('$r_')) {
+    const statusStep = investigatorStatusStep(id, resolutions);
+    if (statusStep) {
+      return statusStep;
+    }
+    const resolution = id.substring(3);
+    return {
+      id,
+      type: 'resolution',
+      generated: true,
+      resolution,
+    };
   };
+  if (id.startsWith('$pr_')) {
+    const resolutionId = id.substring(4);
+    const resolution = find(resolutions, r => r.id === resolutionId);
+    if (!resolution) {
+      return undefined;
+    }
+    const hasInvestigatorDefeat = !!find(
+      resolutions,
+      resolution => resolution.id === 'investigator_defeat'
+    );
+    return {
+      id,
+      hidden: true,
+      steps: [
+        investigatorStatusStepId(resolution),
+        ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
+        `$r_${resolution.id}`,
+        ...resolution.steps,
+        ...(scenarioGuide.sideScenario ? scenarioGuide.campaignGuide.sideScenarioResolutionStepIds() : []),
+        INTER_SCENARIO_CHANGES_STEP_ID,
+        PROCEED_STEP_ID,
+      ],
+      effects: [{
+        type: 'scenario_data',
+        setting: 'scenario_status',
+        status: 'resolution',
+        resolution: resolution.id,
+      }],
+    };
+  }
+  return undefined;
 }
 
 const INVESTIGATOR_STATUS_STEP_SUFFIX = 'investigator_status';
@@ -313,32 +342,52 @@ function investigatorStatusStepId(resolution: Resolution): string {
 
 function statusToString(
   status: InvestigatorStatus,
-  gender?: 'masculine' | 'feminine'
+  gender?: Gender_Enum
 ): string {
   switch (status) {
     case 'alive':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Alive` : c('feminine').t`Alive`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Alive`;
+          case Gender_Enum.F: return c('feminine').t`Alive`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Alive`;
+        }
       }
       return t`Alive`;
     case 'resigned':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Resigned` : c('feminine').t`Resigned`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Resigned`;
+          case Gender_Enum.F: return c('feminine').t`Resigned`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Resigned`;
+        }
       }
       return t`Resigned`;
     case 'physical':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: physical trauma` : c('feminine').t`Defeated: physical trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: physical trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: physical trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: physical trauma`;
+        }
       }
       return t`Defeated: physical trauma`;
     case 'mental':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: mental trauma` : c('feminine').t`Defeated: mental trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: mental trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: mental trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: mental trauma`;
+        }
       }
       return t`Defeated: mental trauma`;
     case 'eliminated':
       if (gender) {
-        return (gender === 'masculine') ? c('masculine').t`Defeated: no trauma` : c('feminine').t`Defeated: no trauma`;
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Defeated: no trauma`;
+          case Gender_Enum.F: return c('feminine').t`Defeated: no trauma`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Defeated: no trauma`;
+        }
       }
       return t`Defeated: no trauma`;
   }
@@ -372,6 +421,22 @@ function statusToSelectedFeminineString(status: InvestigatorStatus): string {
       return c('feminine').t`Mental trauma`;
     case 'eliminated':
       return c('feminine').t`Defeated`;
+  }
+}
+
+
+function statusToSelectedNonBinaryString(status: InvestigatorStatus): string {
+  switch (status) {
+    case 'alive':
+      return c('nonbinary').t`Alive`;
+    case 'resigned':
+      return c('nonbinary').t`Resigned`;
+    case 'physical':
+      return c('nonbinary').t`Physical trauma`;
+    case 'mental':
+      return c('nonbinary').t`Mental trauma`;
+    case 'eliminated':
+      return c('nonbinary').t`Defeated`;
   }
 }
 
@@ -440,8 +505,10 @@ export function createInvestigatorStatusStep(
         text: statusToString(status),
         selected_text: statusToSelectedString(status),
         selected_feminine_text: statusToSelectedFeminineString(status),
-        masculine_text: statusToString(status, 'masculine'),
-        feminine_text: statusToString(status, 'feminine'),
+        selected_nonbinary_text: statusToSelectedNonBinaryString(status),
+        masculine_text: statusToString(status, Gender_Enum.M),
+        feminine_text: statusToString(status, Gender_Enum.F),
+        nonbinary_text: statusToString(status, Gender_Enum.Nb),
         effects,
       };
     }
@@ -500,7 +567,8 @@ export function getFixedStep(
   scenarioGuide: ScenarioGuide,
   campaignState: CampaignStateHelper,
   campaignLog: GuidedCampaignLog,
-  standalone: boolean
+  standalone: boolean,
+  iteration: number | undefined
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
@@ -509,14 +577,21 @@ export function getFixedStep(
       return checkTarotReadingStep(scenarioGuide, campaignState);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
-    case PROCEED_STEP_ID: {
+    case EMBARK_STEP_ID:
+    case EMBARK_RETURN_STEP_ID:
+      return {
+        id,
+        type: 'internal',
+      };
+    case PROCEED_STEP_ID:
+    case PROCEED_ALT_STEP_ID: {
       const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
         campaignState,
         campaignLog
       );
       if (!nextScenarioName || standalone) {
         return {
-          id: PROCEED_STEP_ID,
+          id,
           hidden: true,
           effects: [
             {
@@ -528,7 +603,7 @@ export function getFixedStep(
         };
       }
       return {
-        id: PROCEED_STEP_ID,
+        id,
         text: t`Proceed to <b>${nextScenarioName}</b>.`,
         effects: [
           {
@@ -549,6 +624,30 @@ export function getFixedStep(
       return drawStandaloneWeaknessStep();
     case PLAY_SCENARIO_STEP_ID:
       return playScenarioStep;
+    case DUMMY_END_SCENARIO_STEP_ID:
+      return dummyEndScenarioStep;
+    case CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID: {
+      const step: BranchStep = {
+        id: CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID,
+        hidden: true,
+        type: 'branch',
+        condition: {
+          type: 'scenario_data',
+          scenario_data: 'has_resolution',
+          options: [
+            {
+              boolCondition: true,
+              steps: [DUMMY_END_SCENARIO_STEP_ID],
+            },
+            {
+              boolCondition: false,
+              steps: [iteration !== undefined ? `${PLAY_SCENARIO_STEP_ID}#${iteration}` : PLAY_SCENARIO_STEP_ID],
+            }
+          ]
+        },
+      };
+      return step;
+    }
     case CHOOSE_INVESTIGATORS_STEP_ID:
       return chooseInvestigatorsStep;
     case UPGRADE_DECKS_STEP_ID:
@@ -560,18 +659,21 @@ export function getFixedStep(
     case RECORD_TRAUMA_STEP_ID:
       return recordTraumaStep();
     default:
-      return resolutionStep(id, scenarioGuide.resolutions());
+      return dynamicResolutionSteps(id, scenarioGuide);
   }
 }
 
-export function scenarioStepIds(scenario: Scenario, standalone?: boolean) {
+export function scenarioStepIds(campaignGuide: CampaignGuide, scenario: Scenario, standalone?: boolean) {
+  const sharedCampaignSetup = campaignGuide.scenarioSetupStepIds();
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
+      ...(scenario.side_scenario_type ? sharedCampaignSetup : []),
       ...scenario.setup,
       INTER_SCENARIO_CHANGES_STEP_ID,
       PROCEED_STEP_ID,
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,
+      ...(scenario.side_scenario_type ? sharedCampaignSetup : []),
       ...(standalone ? [DRAW_STANDALONE_WEAKNESS_STEP_ID, SAVE_STANDALONE_DECKS_ID] : []),
       ...((standalone && scenario.standalone_setup) || scenario.setup),
     ];

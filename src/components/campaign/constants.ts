@@ -13,6 +13,7 @@ import {
   TFA,
   RTTFA,
   TCU,
+  FOF,
   TDE,
   TDEA,
   TDEB,
@@ -29,17 +30,58 @@ import {
   EOE,
   CROWN_OF_EGIL,
   TSK,
+  CYCLOPEAN_FOUNDATIONS,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
+import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 
-export function difficultyString(difficulty: CampaignDifficulty): string {
+
+const authors = {
+  [DARK_MATTER]: 'Axolotl',
+  [ALICE_IN_WONDERLAND]: 'The Beard',
+  [CROWN_OF_EGIL]: 'The Mad Juggler',
+  [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
+  [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
+}
+
+export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
+  switch (packCode) {
+    case TDE:
+      return t`Campaign A and Campaign B\nEight-part campaign`;
+    case TDEA:
+      return t`Campaign A\nFour-part campaign`;
+    case TDEB:
+      return t`Campaign B\nFour-part campaign`;
+    case GOB:
+      return t`Two-part campaign variant`;
+    case DARK_MATTER:
+    case ALICE_IN_WONDERLAND:
+    case CROWN_OF_EGIL:
+    case CALL_OF_THE_PLAGUEBEARER:
+    case CYCLOPEAN_FOUNDATIONS:
+      const author = authors[packCode];
+      return t`Fan-made campaign by ${author}`;
+    default:
+      return undefined;
+  }
+}
+
+export function difficultyString(difficulty: CampaignDifficulty | Campaign_Difficulty_Enum): string {
   switch (difficulty) {
-    case CampaignDifficulty.EASY: return t`Easy`;
-    case CampaignDifficulty.STANDARD: return t`Standard`;
-    case CampaignDifficulty.HARD: return t`Hard`;
-    case CampaignDifficulty.EXPERT: return t`Expert`;
+    case CampaignDifficulty.EASY:
+    case Campaign_Difficulty_Enum.Easy:
+      return t`Easy`;
+    case CampaignDifficulty.STANDARD:
+    case Campaign_Difficulty_Enum.Standard:
+      return t`Standard`;
+    case CampaignDifficulty.HARD:
+    case Campaign_Difficulty_Enum.Hard:
+      return t`Hard`;
+    case CampaignDifficulty.EXPERT:
+    case Campaign_Difficulty_Enum.Expert:
+      return t`Expert`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = difficulty;
@@ -72,7 +114,9 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case ALICE_IN_WONDERLAND: return t`Alice in Wonderland`;
     case CROWN_OF_EGIL: return t`Crown of Egil`;
     case GOB: return t`Guardians of the Abyss`;
+    case FOF: return t`Fortune and Folly`;
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
+    case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -339,6 +383,21 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
         { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
       ];
+
+    case CYCLOPEAN_FOUNDATIONS:
+      return [
+        { name: t`Prologue`, code: 'cf_prologue', pack_code: 'zcf', interlude: true },
+        { name: t`Lost Moorings`, code: 'lost_moorings', pack_code: 'zcf' },
+        { name: t`Going Twice`, code: 'going_twice', pack_code: 'zcf' },
+        { name: t`Private Lives`, code: 'private_lives', pack_code: 'zcf' },
+        { name: t`Crumbling Masonry`, code: 'crumbling_masonry', pack_code: 'zcf' },
+        { name: t`A House Divided`, code: 'a_house_divided', pack_code: 'zcf', interlude: true },
+        { name: t`Across Dreaful Waters`, code: 'across_dreadful_waters', pack_code: 'zcf' },
+        { name: t`Blood From Stones`, code: 'blood_from_stones', pack_code: 'zcf' },
+        { name: t`Pyroclastic Flow`, code: 'pyroclastic_flow', pack_code: 'zcf' },
+        { name: t`Tomb of Dead Dreams`, code: 'tomb_of_dead_dreams', pack_code: 'zcf' },
+        { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zcf', interlude: true },
+      ];
     case ALICE_IN_WONDERLAND:
       return [
         { name: t`Prologue`, code: 'aw_prologue', pack_code: 'zaw', interlude: true },
@@ -367,6 +426,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case CUSTOM:
     case STANDALONE:
     case GOB:
+    case FOF:
       return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -393,12 +453,14 @@ export function campaignNames() {
     tdeb: t`The Web of Dreams`,
     tic: t`The Innsmouth Conspiracy`,
     eoe: t`Edge of the Earth`,
-    tsk: t`The Scarlet Keys`,
+    tskc: t`The Scarlet Keys`,
     gob: t`Guardians of the Abyss`,
+    fof: t`Fortune and Folly`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
     zce: t`The Crown of Egil`,
     standalone: t`Standalone`,
+    zcf: t`Cyclopean Foundations`,
     zcp: t`Call of the Plaguebearer`,
   };
 }
@@ -412,6 +474,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DWL:
     case RTDWL:
     case CROWN_OF_EGIL:
+    case CYCLOPEAN_FOUNDATIONS:
       return colors.campaign.dwl;
     case PTC:
     case RTPTC:
@@ -431,8 +494,11 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case FOF:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
+    case TSK:
+      return colors.campaign.tsk;
     case EOE:
       return colors.campaign.eoe;
     case GOB:
@@ -578,11 +644,21 @@ export function getCampaignLog(
         ],
       };
     case GOB:
+    case FOF:
     case TSK:
       return {
         sections: [
           t`Campaign Notes`,
         ],
+      };
+    case CYCLOPEAN_FOUNDATIONS:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Cultists Alive`,
+          t`Cultists Killed`,
+        ],
+        counts: [t`Notice`],
       };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -657,6 +733,13 @@ const EOE_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 1, '-4': 2, '-5': 1, '-7': 1, frost: 3, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+const TSK_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+};
+
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
@@ -669,6 +752,13 @@ const ALICE_IN_WONDERLAND_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '+1': 1, '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 1, '-3': 1, '-4': 1, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
+const CYCLOPEAN_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, '-7': 1, skull: 3, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const CROWN_OF_EGIL_BAG: ChaosBagByDifficulty = {
@@ -688,7 +778,14 @@ const GOB_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 2, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, '-6': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '+1': 1, '0': 2, '-1': 3, '-2': 3, '-3': 2, '-4': 2, '-5': 1, '-7': 1, skull: 3, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-}
+};
+
+const FOF_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 1, '0': 2, '-1': 1, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 1, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-6': 1, '-7': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-6': 1, '-7': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
 
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
@@ -741,7 +838,6 @@ export function getChaosBag(
     case RTNOTZ:
     case CUSTOM:
     case STANDALONE:
-    case TSK:
       return NOTZ_BAG[difficulty];
     case DWL:
     case RTDWL:
@@ -765,6 +861,8 @@ export function getChaosBag(
       return TIC_BAG[difficulty];
     case EOE:
       return EOE_BAG[difficulty];
+    case TSK:
+      return TSK_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:
@@ -775,6 +873,10 @@ export function getChaosBag(
       return CALL_OF_THE_PLAGUEBEARER_BAG[difficulty];
     case GOB:
       return GOB_BAG[difficulty];
+    case FOF:
+      return FOF_BAG[difficulty];
+    case CYCLOPEAN_FOUNDATIONS:
+      return CYCLOPEAN_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

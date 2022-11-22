@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { flatMap, keys, sum, values } from 'lodash';
 import { t } from 'ttag';
 
@@ -18,9 +18,12 @@ import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@compone
 import useSingleCard from '@components/card/useSingleCard';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
-import { Partner } from '@data/scenario/types';
+import { CalendarEntry, Partner, ScarletKey } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { ProcessedCampaign } from '@data/scenario';
+import CampaignLogScarletKeysComponent from './CampaignLogScarletKeysComponent';
+import CampaignLogCalendarComponent from './CampaignLogCalendarComponent';
+import { MAX_WIDTH } from '@styles/sizes';
 
 interface Props {
   componentId: string;
@@ -86,7 +89,13 @@ export default function CampaignLogComponent({
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { colon } = useContext(LanguageContext);
-  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner', partners?: Partner[]) => {
+  const renderLogEntrySectionContent = useCallback((
+    id: string,
+    title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner' | 'scarlet_keys',
+    partners?: Partner[],
+    calendar?: CalendarEntry[],
+    keys?: ScarletKey[]
+  ) => {
     switch (type) {
       case 'header': {
         return (
@@ -98,8 +107,20 @@ export default function CampaignLogComponent({
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={space.paddingSideS}>
-            <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
+          <View style={[space.paddingSideS, styles.column]}>
+            <View style={{ width: '100%' }}>
+              <DeckBubbleHeader inverted title={`${title}${colon}${count}`} />
+            </View>
+            <View style={{ maxWidth: MAX_WIDTH }}>
+              { !!calendar && (
+                <CampaignLogCalendarComponent
+                  calendar={calendar}
+                  campaignLog={campaignLog}
+                  time={count}
+                  width={Math.min(width - s * 2, MAX_WIDTH)}
+                />
+              )}
+            </View>
           </View>
         );
       }
@@ -138,18 +159,32 @@ export default function CampaignLogComponent({
       }
       case 'partner': {
         return (
-          <View style={[space.paddingSideS, space.paddingBottomM]}>
-            <DeckBubbleHeader inverted title={title} />
-            { !!partners && (
-              <CampaignLogPartnersComponent
-                partners={partners}
-                campaignLog={campaignLog}
-                width={width - s * 2}
-              />
-            ) }
+          <View style={[space.paddingSideS, space.paddingBottomM, styles.column, { width }]}>
+            <View style={{ maxWidth: MAX_WIDTH }}>
+              <DeckBubbleHeader inverted title={title} />
+              { !!partners && (
+                <CampaignLogPartnersComponent
+                  partners={partners}
+                  campaignLog={campaignLog}
+                  width={Math.min(MAX_WIDTH, width - s * 2)}
+                />
+              ) }
+            </View>
           </View>
         );
       }
+      case 'scarlet_keys':
+        return (
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader inverted title={title} />
+            { !!keys && (
+              <CampaignLogScarletKeysComponent
+                keys={keys}
+                campaignLog={campaignLog}
+              />
+            )}
+          </View>
+        );
       default: {
         const section = campaignLog.sections[id];
         if (CARD_REGEX.test(id)) {
@@ -246,10 +281,19 @@ export default function CampaignLogComponent({
         }
         return (
           <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type, log.partners) }
+            { renderLogEntrySectionContent(log.id, log.title, log.type, log.partners, log.calendar, log.scarlet_keys) }
           </View>
         );
       }) }
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  column: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+});
+

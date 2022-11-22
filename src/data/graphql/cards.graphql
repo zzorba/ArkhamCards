@@ -1,8 +1,30 @@
-query getCustomCards(
+query getCardsCache(
   $locale: String!
 ) {
-  full_card {
+  all_card_updated(
+    where: { locale: { _eq: $locale } }
+  ) {
+    translation_updated_at
+    cards_updated_at
+    card_count
+  }
+}
+
+query getCards(
+  $locale: String!
+) {
+  all_card(
+    where: {
+      version: { _lte: 4 }
+      linked: { _is_null: true }
+    }
+  ) {
     ...SingleCard
+    translations(
+      where: { locale: { _eq: $locale }}
+    ) {
+      ...CoreCardText
+    }
     linked_card {
       ...SingleCard
       translations(
@@ -11,21 +33,63 @@ query getCustomCards(
         ...CoreCardText
       }
     }
-    encounter_sets(
+  }
+  taboo_set(
+    where: { active: { _eq: true }}
+  ) {
+    ...TabooSet
+  }
+  faction_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
+  card_type_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
+  card_subtype_name(
+    where: { locale: { _eq: $locale }}
+  ) {
+    code
+    name
+  }
+  card_encounter_set(
+    where: {
+      locale: { _eq: $locale }
+    }
+  ) {
+    ...EncounterSet
+  }
+  cycle(
+    order_by: { position: asc }
+  ) {
+    ...Cycle
+    translations(
       where: { locale: { _eq: $locale }}
     ) {
       name
     }
     packs(
-      where: { locale: { _eq: $locale }}
+      order_by: { position: asc }
     ) {
-      name
+      ...Pack
+      translations(
+        where: { locale: { _eq: $locale }}
+      ) {
+        name
+      }
     }
-    translations(
-      where: { locale: { _eq: $locale }}
-    ) {
-      ...CoreCardText
-    }
+  }
+  all_card_updated(
+    where: { locale: { _eq: $locale } }
+  ) {
+    translation_updated_at
+    cards_updated_at
+    card_count
   }
 }
 

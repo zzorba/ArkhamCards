@@ -6,7 +6,13 @@ import {
   RegexComponents,
   NestedParseFunction,
   ParseState,
+  TableNode,
+  OutputFunction,
+  RenderState,
+  InlineNode,
 } from 'react-native-markdown-view';
+import { Table, Cell, Row, TableWrapper } from 'react-native-table-component';
+
 
 import { WithChildren, WithIconName, WithText, State } from './types';
 import ArkhamIconNode from './ArkhamIconNode';
@@ -24,7 +30,7 @@ import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { TextStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import RedNode from './RedNode';
 
 const BASE_ORDER = 0;
@@ -212,12 +218,15 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: RightNode,
 };
 
-function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithText, State> {
+
+function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
     order: BASE_ORDER + 2,
-    parse: (capture) => {
-      return { text: capture[1] };
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
     },
     render: UnderlineHtmlTagNode(usePingFang, style),
   };
@@ -256,6 +265,68 @@ interface Props {
   noBullet?: boolean;
 }
 
+
+
+function renderTableCell(cell: InlineNode, row: number, column: number, rowCount: number, columnCount: number, output: OutputFunction, state: RenderState, styles: any) {
+  const cellStyle: ViewStyle[] = [styles.tableCell]
+  const contentStyle: TextStyle[] = [styles.tableCellContent]
+
+  if (row % 2 == 0) {
+    cellStyle.push(styles.tableCellEvenRow)
+    contentStyle.push(styles.tableCellContentEvenRow)
+  } else {
+    cellStyle.push(styles.tableCellOddRow)
+    contentStyle.push(styles.tableCellContentOddRow)
+  }
+
+  if (column % 2 == 0) {
+    cellStyle.push(styles.tableCellEvenColumn)
+    contentStyle.push(styles.tableCellContentEvenColumn)
+  } else {
+    cellStyle.push(styles.tableCellOddColumn)
+    contentStyle.push(styles.tableCellContentOddColumn)
+  }
+
+  if (row == 1) {
+    cellStyle.push(styles.tableHeaderCell)
+    contentStyle.push(styles.tableHeaderCellContent)
+  } else if (row == rowCount) {
+    cellStyle.push(styles.tableCellLastRow)
+    contentStyle.push(styles.tableCellContentLastRow)
+  }
+
+  if (column == columnCount) {
+    cellStyle.push(styles.tableCellLastColumn)
+    contentStyle.push(styles.tableCellContentLastColumn)
+  }
+
+  return (
+    <Cell
+      rowId={row}
+      id={column}
+      key={column}
+      style={cellStyle}
+      textStyle={contentStyle}
+      data={output(cell, state)}
+    />
+  );
+}
+
+const TableRule: MarkdownRule<TableNode, State> = {
+  order: 0,
+  render: (node: TableNode, output: OutputFunction, state: RenderState & State, styles: any) => (
+    <Table key={state.key} borderStyle={{ borderWidth: 1 }} style={{ width: '100%' }}>
+      {[<Row id={1} key={1} style={{ flexDirection: 'row' }} data=
+        {node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
+      />].concat(node.cells.map((cells, row) => (
+        <Row id={row + 2} key={row + 2} style={{ flexDirection: 'row' }} data=
+          {cells.map((cell, column) => renderTableCell(cell, row + 2, column + 1, node.cells.length + 1, cells.length, output, state, styles))}
+        />
+      )))}
+    </Table>
+  ),
+}
+
 export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
@@ -269,7 +340,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
     cleanTextA.replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     ).replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
-
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);
@@ -289,6 +359,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       uTag: UnderlineHtmlTagRule(usePingFang, context),
       emTag: EmphasisHtmlTagRule(usePingFang, context),
       iTag: ItalicHtmlTagRule(usePingFang, context),
+      table: TableRule,
       smallcapsTag: SmallCapsHtmlTagRule(context),
       center: CenterHtmlTagRule,
       right: RightHtmlTagRule,
@@ -354,8 +425,8 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
           fontStyle: 'normal',
           margin: 0,
           padding: 16,
-          paddingTop: 16,
-          paddingBottom: 16,
+          paddingTop: 8,
+          paddingBottom: 8,
         },
       }}
       fonts={{

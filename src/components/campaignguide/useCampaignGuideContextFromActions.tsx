@@ -18,6 +18,7 @@ import {
   DeckId,
   CampaignId,
   DelayedDeckEdits,
+  EmbarkData,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
@@ -42,7 +43,7 @@ export default function useCampaignGuideContextFromActions(
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
-  const campaignChooseDeck = useChooseDeck(createDeckActions, updateCampaignActions);
+  const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
@@ -64,12 +65,16 @@ export default function useCampaignGuideContextFromActions(
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator, deckId));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
+  const addInvestigator = useCallback((investigator: string, deckId?: DeckId) => {
+    campaignAddInvestigator(campaignId, investigator, deckId);
+  }, [campaignAddInvestigator, campaignId]);
+
   const removeInvestigator = useCallback((investigator: Card) => {
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
-  const startScenario = useCallback((scenarioId: string) => {
-    dispatch(guideActions.startScenario(userId, remoteGuideActions, campaignId, scenarioId));
+  const startScenario = useCallback((scenarioId: string, embarkData: EmbarkData | undefined) => {
+    dispatch(guideActions.startScenario(userId, remoteGuideActions, campaignId, scenarioId, embarkData));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
   const startSideScenario = useCallback((scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput) => {
@@ -166,14 +171,18 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setInterScenarioData = useCallback((investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries?: string[]) => {
+  const setInterScenarioData = useCallback((
+    investigatorData: InvestigatorTraumaData,
+    scenarioId: undefined | string,
+    campaignLogEntries: string[] | undefined
+  ) => {
     dispatch(guideActions.setInterScenarioData(
       userId,
       remoteGuideActions,
       campaignId,
       investigatorData,
       scenarioId,
-      campaignLogEntries,
+      campaignLogEntries
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
@@ -210,6 +219,7 @@ export default function useCampaignGuideContextFromActions(
     return {
       showChooseDeck,
       removeDeck,
+      addInvestigator,
       removeInvestigator,
       startScenario,
       startSideScenario,
@@ -227,7 +237,7 @@ export default function useCampaignGuideContextFromActions(
       setBinaryAchievement,
       setCountAchievement,
     };
-  }, [showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
+  }, [addInvestigator, showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
   const investigators = useMemo(() => {
@@ -333,7 +343,6 @@ export default function useCampaignGuideContextFromActions(
     }
   }, [userId, campaign, campaignGuide, campaignId, dispatch, updateCampaignActions]);
   return useMemo(() => {
-    // console.log(`useCampaignGuideContextFromActions campaignId: ${JSON.stringify(campaignId)} campaign: ${!!campaign}, campaignGuide: ${!!campaignGuide}, campaignStateHelper: ${!!campaignStateHelper}, campaignInvestigators: ${!!campaignInvestigators}, cards: ${!!cards}`);
     if (!campaign || !campaignGuide || !campaignStateHelper) {
       return undefined;
     }

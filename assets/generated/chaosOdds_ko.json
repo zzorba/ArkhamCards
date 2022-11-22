@@ -3062,7 +3062,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
+          "prompt": "-1 (당신이 위치한 장소가 부분적으로 침수된 상태라면 그 대신 -2, 완전히 침수된 상태라면 그 대신 -3)",
           "min": 1,
           "max": 3
         }
@@ -3091,7 +3091,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
+          "prompt": "-2 (당신이 위치한 장소가 부분적으로 침수된 상태라면 그 대신 -3, 완전히 침수된 상태라면 그 대신 -4)",
           "min": 2,
           "max": 4
         }
@@ -3124,7 +3124,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "현재 주요사건 번호",
           "min": 1
         }
       },
@@ -3152,7 +3152,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number",
+          "prompt": "현재 주요사건 번호",
           "min": 1,
           "adjustment": 1
         }
@@ -3185,7 +3185,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "당신이 위치한 장소의 동쪽에 있는 장소의 수 (같은 가로줄에 있는 장소들만 셉니다)",
           "min": 0
         }
       },
@@ -3205,7 +3205,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "당신이 위치한 장소와 이어진 모든 장소 사이에 놓인 방해물 개수 총합",
           "min": 0
         }
       }
@@ -3215,7 +3215,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations to the east of your location (on the same row)",
+          "prompt": "당신이 위치한 장소의 동쪽에 있는 장소의 수 (같은 가로줄에 있는 장소들만 셉니다)",
           "min": 0,
           "scale": 2
         }
@@ -3236,7 +3236,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Number of barriers between your location and all connecting locations",
+          "prompt": "당신이 위치한 장소와 이어진 모든 장소 사이에 놓인 방해물 개수 총합",
           "min": 0,
           "scale": 2
         }
@@ -3251,7 +3251,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "조사자들이 조종하는 열쇠 개수 총합",
           "min": 0
         }
       },
@@ -3279,7 +3279,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys the investigators control",
+          "prompt": "조사자들이 조종하는 열쇠 개수 총합",
           "min": 0,
           "adjustment": 1
         }
@@ -3317,7 +3317,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "도로 덱에 남은 카드가 6장 이하임",
               "modified_value": {
                 "modifier": -3
               }
@@ -3354,7 +3354,7 @@
           },
           "options": [
             {
-              "prompt": "6 or fewer locations remaining in the Road deck",
+              "prompt": "도로 덱에 남은 카드가 6장 이하임",
               "modified_value": {
                 "modifier": -4
               }
@@ -3395,7 +3395,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "당신이 위치한 장소가 침수된 상태임",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -3433,7 +3433,7 @@
           },
           "options": [
             {
-              "prompt": "Location is flooded",
+              "prompt": "당신이 위치한 장소가 침수된 상태임",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -3470,7 +3470,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "시나리오 참조 카드에 놓인 열쇠의 수",
           "min": 0
         }
       },
@@ -3484,7 +3484,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "이번 테스트 동안 당신이 [curse] 토큰을 1개 이상 공개함",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3511,7 +3511,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of keys on the scenario reference card",
+          "prompt": "시나리오 참조 카드에 놓인 열쇠의 수",
           "scale": 2,
           "min": 0
         }
@@ -3526,7 +3526,7 @@
           },
           "options": [
             {
-              "prompt": "Curse revealed (before or after)",
+              "prompt": "이번 테스트 동안 당신이 [curse] 토큰을 1개 이상 공개함",
               "modified_value": {
                 "modifier": "auto_fail",
                 "reveal_another": 1
@@ -3562,7 +3562,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "플레이 영역에 침수되지 않은 [[이하 느틀레이]] 장소가 넷 이상임",
               "modified_value": {
                 "modifier": -3
               }
@@ -3599,7 +3599,7 @@
           },
           "options": [
             {
-              "prompt": "4 or more unflooded [[Y'ha-nthlei]] locations in play",
+              "prompt": "플레이 영역에 침수되지 않은 [[이하 느틀레이]] 장소가 넷 이상임",
               "modified_value": {
                 "modifier": -4
               }
@@ -5100,6 +5100,106 @@
     ]
   },
   {
+    "code": "zcos_00001",
+    "scenario": "the_colour_out_of_space",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "Your location is <b>Infected</b>",
+              "modified_value": {
+                "modifier": -3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is <b>Infected</b>",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
     "code": "zcc_00001",
     "scenario": "consternation_on_the_constellation",
     "standard": [
@@ -5112,7 +5212,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "당신이 위치한 장소가 소진됨",
               "modified_value": {
                 "modifier": -4
               }
@@ -5149,7 +5249,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "당신이 위치한 장소가 소진됨",
               "modified_value": {
                 "modifier": -5
               }
@@ -6623,7 +6723,7 @@
     ]
   },
   {
-    "code": "zce001",
+    "code": "zce_00001",
     "scenario": "the_warning",
     "standard": [
       {
@@ -6683,7 +6783,7 @@
     ]
   },
   {
-    "code": "zce018",
+    "code": "zce_00018",
     "scenario": "the_golden_circle",
     "standard": [
       {
@@ -6779,7 +6879,7 @@
     ]
   },
   {
-    "code": "zce040",
+    "code": "zce_00040",
     "scenario": "the_fallen",
     "standard": [
       {
@@ -6859,7 +6959,7 @@
     ]
   },
   {
-    "code": "zce076",
+    "code": "zce_00076",
     "scenario": "the_crown",
     "standard": [
       {
@@ -6938,14 +7038,14 @@
     ]
   },
   {
-    "code": "zcp001",
+    "code": "zcp_00001",
     "scenario": "late_risers",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your distance from Lab Omega",
+          "prompt": "당신과 ‘실험실 오메가’의 거리",
           "min": 0
         }
       },
@@ -6967,7 +7067,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice your distance from Lab Omega",
+          "prompt": "당신과 ‘실험실 오메가’의 거리의 두 배",
           "min": 0
         }
       },
@@ -6986,14 +7086,14 @@
     ]
   },
   {
-    "code": "zcp019",
+    "code": "zcp_00019",
     "scenario": "night_on_the_town",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with <em>Survivors</em>",
+          "prompt": "<em>생존자</em>가 위치한 장소 개수",
           "min": 0
         }
       },
@@ -7015,7 +7115,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with a <em>Ruin</em> or <em>Survivors</em>",
+          "prompt": "<em>멸망</em> 또는 <em>생존자</em>가 위치한 장소 개수",
           "min": 0
         }
       },
@@ -7034,14 +7134,14 @@
     ]
   },
   {
-    "code": "zcp047",
+    "code": "zcp_00047",
     "scenario": "dead_by_dawn",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "prompt": "플레이 영역에 있는 [[되살아난]] 적이 받은 최대 피해 값",
           "min": 0,
           "max": 5
         }
@@ -7064,7 +7164,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The greatest damage on a [[Re-Animated]] enemy in play",
+          "prompt": "플레이 영역에 있는 [[되살아난]] 적이 받은 최대 피해 값",
           "min": 0,
           "max": 5,
           "adjustment": 2
@@ -7085,14 +7185,14 @@
     ]
   },
   {
-    "code": "zcp083",
+    "code": "zcp_00083",
     "scenario": "mourning_chorus",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "플레이 영역에 있는 적에 가장 많이 놓인 파멸 토큰의 숫자",
           "min": 0,
           "max": 4
         }
@@ -7106,7 +7206,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "당신이 [[독기]] 장소에 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -7126,7 +7226,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "플레이 영역에 있는 적에 가장 많이 놓인 파멸 토큰의 숫자",
           "min": 0,
           "max": 6,
           "adjustment": 1
@@ -7141,7 +7241,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "당신이 [[독기]] 장소에 있음",
               "modified_value": {
                 "modifier": -6
               }
@@ -7158,14 +7258,14 @@
     ]
   },
   {
-    "code": "zcp109",
+    "code": "zcp_00109",
     "scenario": "high_noon_descent",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away you are from The Saferoom",
+          "prompt": "‘대피소’와 떨어져 있는 장소의 개수",
           "min": 0
         }
       },
@@ -7193,7 +7293,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations away you are from The Saferoom",
+          "prompt": "‘대피소’와 떨어져 있는 장소의 개수",
           "min": 0,
           "adjustment": 2
         }
@@ -7219,14 +7319,14 @@
     ]
   },
   {
-    "code": "zcp149",
+    "code": "zcp_00149",
     "scenario": "the_afternoon_war",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "장소에 놓인 공포나 피해 토큰 중 가장 높은 값",
           "min": 0,
           "max": 4
         }
@@ -7255,7 +7355,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "장소에 놓인 공포나 피해 토큰 중 가장 높은 값",
           "min": 0,
           "max": 6
         }
@@ -7281,14 +7381,14 @@
     ]
   },
   {
-    "code": "zcp179",
+    "code": "zcp_00179",
     "scenario": "death_at_sundown",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "당신이 위치한 장소의 [[층수]] 값",
           "min": 0
         }
       },
@@ -7316,7 +7416,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The the [[Floor]] of your location",
+          "prompt": "당신이 위치한 장소의 [[층수]] 값",
           "min": 0,
           "adjustment": 2
         }
@@ -7342,14 +7442,14 @@
     ]
   },
   {
-    "code": "zcp211",
+    "code": "zcp_00211",
     "scenario": "the_midnight_hour",
     "standard": [
       {
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "공포 토큰이 놓인 장소의 숫자",
           "min": 0,
           "max": 4
         }
@@ -7378,7 +7478,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "공포 토큰이 놓인 장소의 숫자",
           "min": 0
         }
       },
@@ -7403,7 +7503,7 @@
     ]
   },
   {
-    "code": "zbh022",
+    "code": "zbh_00022",
     "scenario": "meddling_of_meowlathotep",
     "standard": [
       {
@@ -7458,6 +7558,770 @@
         "token": "elder_thing",
         "value": {
           "modifier": -7
+        }
+      }
+    ]
+  },
+  {
+    "code": "88001",
+    "scenario": "fortune_and_folly",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half your alarm level, rounded down.",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [
+            {
+              "prompt": "Raise your alarm level by 1",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "경보 수치",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "options": [
+            {
+              "prompt": "Raise your alarm level by 1",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zbs_00001",
+    "scenario": "the_black_stone",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The [[Altered]] value of your location.",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The [[Altered]] value of your location.",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": 0,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00001",
+    "scenario": "lost_moorings",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "현재 주요목적 번호",
+          "min": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "현재 주요목적 번호",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00028",
+    "scenario": "going_twice",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Auction Deck",
+          "min": 0,
+          "adjustment": 4,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "No resources on an Auction Lot card in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Auction Deck",
+          "min": 0,
+          "adjustment": 5,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "No resources on an Auction Lot card in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00067",
+    "scenario": "private_lives",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed locations with no clues on them",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of revealed locations with no clues on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00095",
+    "scenario": "crumbling_masonry",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Traitor Deck",
+          "min": 0,
+          "adjustment": 4,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "There is a [[Traitor]] enemy in play",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of cards in the Traitor Deck",
+          "min": 0,
+          "adjustment": 5,
+          "scale": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "There is a [[Traitor]] enemy in play",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00143",
+    "scenario": "across_dreadful_waters",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "현재 주요목적 번호",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of doom in play, rounded up",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "현재 주요목적 번호",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "플레이 상태인 파멸 개수",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00213",
+    "scenario": "blood_from_stones",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 5 [[Notice]] in your Campaign Log",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 for every 4 [[Notice]] in your Campaign Log",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Your location is Non-Euclidean",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00247",
+    "scenario": "pyroclastic_flow",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Non-Euclidean effects on your location",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Non-Euclidean effects on your location",
+          "min": 0,
+          "adjustment": 3
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "zcf_00291",
+    "scenario": "tomb_of_dead_dreams",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Inescapable Reach cards in play",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Cthulhu is at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of Inescapable Reach cards in play",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Cthulhu is at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ]

@@ -2,7 +2,7 @@ import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, Tr
 import { uniq, concat, flatMap, sumBy, find, findLast, maxBy, map, last, forEach, findLastIndex, filter } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
-import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment, Chaos_Bag_Tarot_Mode_Enum, Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { ChaosBag, ChaosTokenType } from '@app_constants';
@@ -374,6 +374,7 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
   curseTokens: number;
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
+  difficulty?: Campaign_Difficulty_Enum;
 
   constructor(chaosBagResults: FullChaosBagResultFragment) {
     this.drawnTokens = chaosBagResults.drawn || [];
@@ -382,5 +383,6 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
     this.curseTokens = chaosBagResults.curse || 0;
     this.totalDrawnTokens = chaosBagResults.totalDrawn || 0;
     this.tarot = chaosBagResults.tarot || undefined;
+    this.difficulty = chaosBagResults.difficulty || undefined;
   }
 }

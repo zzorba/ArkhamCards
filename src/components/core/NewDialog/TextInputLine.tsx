@@ -13,12 +13,14 @@ interface Props {
   error?: string;
 
   onSubmit?: (text: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   paddingBottom?: number;
   disabled?: boolean;
 
   returnKeyType?: ReturnKeyType;
 }
-export default function TextInputLine({ value, onChangeText, returnKeyType, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit }: Props) {
+export default function TextInputLine({ value, onChangeText, returnKeyType, disabled, textInputRef, error, placeholder, paddingBottom, onSubmit, onFocus, onBlur }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const onSubmitEditting = useCallback((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -41,6 +43,8 @@ export default function TextInputLine({ value, onChangeText, returnKeyType, disa
         placeholder={placeholder}
         placeholderTextColor={colors.lightText}
         onChangeText={onChangeText}
+        onFocus={onFocus}
+        onBlur={onBlur}
         onSubmitEditing={onSubmit ? onSubmitEditting : undefined}
         returnKeyType={onSubmit ? 'done' : returnKeyType}
       />

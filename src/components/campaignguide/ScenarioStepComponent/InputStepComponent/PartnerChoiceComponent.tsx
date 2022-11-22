@@ -121,7 +121,7 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
       <InputWrapper
         title={input.prompt}
         editable={!hasDecision}
-        disabledText={find(liveChoices, code => !code) ? t`Select more` : undefined}
+        disabledText={filter(liveChoices, code => !!code).length < (quantity || 0) ? t`Select more` : undefined}
         onSubmit={submit}
       >
         <>

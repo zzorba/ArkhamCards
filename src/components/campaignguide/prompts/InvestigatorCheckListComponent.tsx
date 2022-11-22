@@ -119,11 +119,11 @@ export default function InvestigatorCheckListComponent({
     }
   }, [leadInvestigatorState, scenarioState]);
   const selectedRadioButton = useMemo(() => <RadioButton color="light" icon="per_investigator" selected />, []);
-  const defaultRadioButton = useMemo(() => !hasDecision && <RadioButton color="light" icon="per_investigator" />, [hasDecision]);
+  const defaultRadioButton = useMemo(() => (!hasDecision && <RadioButton color="light" icon="per_investigator" />) || undefined, [hasDecision]);
   const items: ListItem[] = useMemo(() => {
     return map(
       investigators,
-      investigator => {
+      (investigator): ListItem => {
         return {
           investigator: investigator,
           investigatorButton: investigator.code === leadInvestigator ? selectedRadioButton : defaultRadioButton,

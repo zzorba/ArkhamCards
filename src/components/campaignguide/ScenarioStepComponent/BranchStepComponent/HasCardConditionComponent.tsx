@@ -41,7 +41,7 @@ function investigatorCardPrompt(
   }
 }
 
-function renderInvestigators(investigatorCards: Card[], option: BoolOption, listSeperator: string): Element | null {
+function renderInvestigators(investigatorCards: Card[], option: BoolOption, listSeperator: string): React.ReactNode {
   const investigators = stringList(map(investigatorCards, card => card.name), listSeperator);
   const prompt = option && option.prompt;
   return (

@@ -94,6 +94,7 @@ function CardSectionHeader({ investigator, section }: Props) {
               backgroundColor: colors.faction[investigator.factionCode()].background,
             },
           ]}
+          contentStyle={[styles.superHeaderContent, { height }]}
           rippleColor={colors.faction[investigator.factionCode()].text}
         >
           { renderSuperTitle(section.superTitle) }
@@ -173,11 +174,13 @@ const styles = StyleSheet.create({
   },
   superHeaderRow: {
     borderBottomWidth: 1,
-    paddingLeft: s,
-    paddingRight: xs,
+  },
+  superHeaderContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: s,
+    paddingRight: xs,
   },
   subHeaderRow: {
     paddingLeft: m,

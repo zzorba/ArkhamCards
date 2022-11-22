@@ -12,7 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { localizedDate } from '@lib/datetime';
 import { useFlag } from '@components/core/hooks';
-import ChaosToken from '@components/campaign/ChaosToken';
+import ChaosToken from '@components/chaos/ChaosToken';
 import FastImage from 'react-native-fast-image';
 
 interface ReleaseNote {
@@ -28,6 +28,26 @@ function linkPressed(url: string) {
 
 function getReleaseNotes(width: number): ReleaseNote[] {
   return [
+    {
+      date: new Date('2022-09-20'),
+      title: c('releaseNotes').t`Preview Cards`,
+      faction: 'mystic',
+      lines: [
+        c('releaseNotes').t`This release introduces faster access to previewed cards.`,
+        c('releaseNotes').t`- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion.`,
+        c('releaseNotes').t`- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>.`,
+      ],
+    },
+    {
+      date: new Date('2022-08-11'),
+      title: c('releaseNotes').t`Cyclopean Foundations`,
+      faction: 'rogue',
+      lines: [
+        c('releaseNotes').t`This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard.`,
+        c('releaseNotes').t`- Includes a fully guided mode, with all setup and resolution text accounted for.`,
+        c('releaseNotes').t`This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario.`,
+      ],
+    },
     {
       date: new Date('2022-07-20'),
       title: c('releaseNotes').t`Settings synchronization`,
@@ -188,7 +208,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
       </Text>
     </View>
   ), [date, lang, colors, typography]);
-  const renderHeader = useCallback((icon: React.ReactFragment) => {
+  const renderHeader = useCallback((icon: React.ReactNode): React.ReactNode => {
     return (
       <View style={[{
         borderTopLeftRadius: 8,
@@ -228,7 +248,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
       <View style={[space.paddingS, styles.noteBody]}>
         { map(lines, (t, tidx) => (
           <View key={tidx}>
-            { typeof t === 'string' ? <CardTextComponent onLinkPress={linkPressed} text={t} sizeScale={1} /> : t }
+            { typeof t === 'string' ? <CardTextComponent onLinkPress={linkPressed} text={t} /> : t }
           </View>
         ))}
       </View>

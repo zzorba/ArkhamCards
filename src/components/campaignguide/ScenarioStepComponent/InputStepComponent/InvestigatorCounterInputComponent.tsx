@@ -18,22 +18,26 @@ interface Props {
 export default function InvestigatorCounterInputComponent({ step, input, campaignLog }: Props) {
   const { scenarioInvestigators } = useContext(ScenarioStepContext);
   const investigatorCounterMinLimits = useMemo(() => {
-    if (!input.investigator_count_min) {
+    if (!input.min && !input.investigator_count_min) {
       return undefined;
     }
     const limits: { [key: string]: number } = {};
-    const section = campaignLog.investigatorSections[input.investigator_count_min] || {};
+    const section = (input.investigator_count_min ? campaignLog.investigatorSections[input.investigator_count_min] : undefined) || {};
+
     forEach(scenarioInvestigators, investigator => {
-      const entry = find(section[investigator.code]?.entries || [], e => e.id === '$count' && e.type === 'count');
-      if (entry?.type === 'count') {
-        limits[investigator.code] = -entry.count;
+      if (input.min) {
+        limits[investigator.code] = input.min;
       } else {
-        limits[investigator.code] = 0;
+        const entry = find(section[investigator.code]?.entries || [], e => e.id === '$count' && e.type === 'count');
+        if (entry?.type === 'count') {
+          limits[investigator.code] = -entry.count;
+        } else {
+          limits[investigator.code] = 0;
+        }
       }
     });
     return limits;
-
-  }, [scenarioInvestigators, input.investigator_count_min, campaignLog.investigatorSections]);
+  }, [scenarioInvestigators, input.min, input.investigator_count_min, campaignLog.investigatorSections]);
   const investigatorCounterMaxLimits = useMemo(() => {
     if (!input.max && !input.investigator_max) {
       return undefined;

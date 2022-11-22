@@ -2,6 +2,7 @@ import { SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
 import {
+  Campaign_Difficulty_Enum,
   Chaos_Bag_Tarot_Mode_Enum,
   FullChaosBagResultFragment,
   FullChaosBagResultFragmentDoc,
@@ -10,6 +11,7 @@ import {
   useChaosBagResetBlessCurseMutation,
   useChaosBagSealTokensMutation,
   useChaosBagSetBlessCurseMutation,
+  useChaosBagSetDifficultyMutation,
   useChaosBagSetTarotMutation,
 } from '@generated/graphql/apollo-schema'
 import { optimisticUpdates } from './apollo';
@@ -23,6 +25,7 @@ export interface ChaosBagActions {
   releaseAllSealed: (campaignId: UploadedCampaignId) => Promise<void>;
   setBlessCurse: (campaignId: UploadedCampaignId, bless: number, curse: number) => Promise<void>;
   setTarot: (campaignId: UploadedCampaignId, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => Promise<void>;
+  setDifficultyOverride: (campaignId: UploadedCampaignId, difficulty: Campaign_Difficulty_Enum | undefined) => Promise<void>;
 }
 
 export function useChaosBagActions(): ChaosBagActions {
@@ -31,6 +34,7 @@ export function useChaosBagActions(): ChaosBagActions {
   const [clearTokensReq] = useChaosBagClearTokensMutation();
   const [setBlessCurseReq] = useChaosBagSetBlessCurseMutation();
   const [setTarotReq] = useChaosBagSetTarotMutation();
+  const [setDifficultyReq] = useChaosBagSetDifficultyMutation();
 
   const [drawTokenReq] = useChaosBagDrawTokenMutation();
   const [sealTokensReq] = useChaosBagSealTokensMutation();
@@ -106,6 +110,29 @@ export function useChaosBagActions(): ChaosBagActions {
       update: optimisticUpdates.chaosBagSetTarot.update,
     })
   }, [setTarotReq]);
+
+
+  const setDifficultyOverride = useCallback(async(campaignId: UploadedCampaignId, difficulty: Campaign_Difficulty_Enum | undefined) => {
+    await setDifficultyReq({
+      optimisticResponse: {
+        __typename: 'mutation_root',
+        update_chaos_bag_result_by_pk: {
+          __typename: 'chaos_bag_result',
+          id: campaignId.serverId,
+          difficulty: difficulty || null,
+        },
+      },
+      variables: {
+        campaign_id: campaignId.serverId,
+        difficulty,
+      },
+      context: {
+        serializationKey: campaignId.serverId,
+        collapseKey: `${campaignId.serverId}-chaosBagTarot`,
+      },
+      update: optimisticUpdates.chaosBagSetDifficulty.update,
+    })
+  }, [setDifficultyReq]);
 
   const drawToken = useCallback(async(campaignId: UploadedCampaignId, drawn: ChaosTokenType[]) => {
     const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
@@ -195,5 +222,6 @@ export function useChaosBagActions(): ChaosBagActions {
     resetBlessCurse,
     releaseAllSealed,
     setTarot,
+    setDifficultyOverride,
   };
 }
