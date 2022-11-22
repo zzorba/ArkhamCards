@@ -122,7 +122,7 @@ function SaveDeckRow({
       ignoreStoryCounts: {},
       storyCounts: storyAssetDeltas,
     });
-  }, [xp, includeTrauma, campaignLog, investigator.code, physicalAdjust, mentalAdjust, storyAssetDeltas, choiceId, scenarioState]);
+  }, [xp, includeTrauma, physicalAdjust, mentalAdjust, storyAssetDeltas, choiceId, scenarioState]);
 
   const save = useCallback(async() => {
     if (deck) {

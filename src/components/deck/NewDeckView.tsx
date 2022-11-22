@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
-import { SORT_BY_PACK, SortType , Deck, CampaignId } from '@actions/types';
+import { SortType , Deck, CampaignId } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';

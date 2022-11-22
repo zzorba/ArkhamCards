@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { find, values, filter, map, take, uniq, flatMap, every } from 'lodash';
+import { find, filter, map, take, uniq, flatMap, every } from 'lodash';
 
 import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
@@ -46,8 +46,8 @@ function DeckListItem({
   }
   return (
     <NewDeckListRow
-      lang={lang}
       key={deckId.id.uuid}
+      lang={lang}
       deck={deck}
       investigator={investigator}
       onPress={deckClicked}

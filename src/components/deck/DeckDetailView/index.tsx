@@ -22,7 +22,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, EditDeckState, getDeckId, SORT_BY_TYPE, ToggleFilterAction, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, EditDeckState, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '../DeckEditView';
@@ -59,7 +59,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '../DeckDraftView';
 import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
-import TagChiclet from '../TagChiclet';
+import { TagChicletButton } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import TextInputLine from '@components/core/NewDialog/TextInputLine';
 
@@ -111,7 +111,7 @@ function useTagsDialog(
   deckActions: DeckActions,
   editable: boolean
 ): [React.ReactNode, string, () => void] {
-  const { listSeperator } = useContext(LanguageContext);
+  const { listSeperator, lang } = useContext(LanguageContext);
   const [{ myDecks }] = useMyDecks(deckActions);
   const dispatch = useDispatch();
   const allTags = useMemo(() => {
@@ -135,7 +135,7 @@ function useTagsDialog(
         !!find(deck?.tags, t => !toggles[t]) ||
         !!find(toggles, (value, t) => !!value && !find(deck?.tags, t2 => t === t2));
       if (hasDiff) {
-        const tagsChange = flatMap(toggles, (value, t) => value ? t : []).join(',');
+        const tagsChange = flatMap(toggles, (value, t) => value ? t : []).join(' ');
         if (deckEditsRef.current.tagsChange !== tagsChange) {
           dispatch({
             type: UPDATE_DECK_EDIT,
@@ -157,7 +157,7 @@ function useTagsDialog(
         }
       }
     }
-  }, [deck]);
+  }, [deck, deckEditsRef, dispatch]);
   const [deckTags, toggleDeckTag,setDeckTag,syncTags] = useToggles(() => {
     if (deck?.tags) {
       const r: Toggles = {};
@@ -184,9 +184,14 @@ function useTagsDialog(
     setNewTag('');
   }, [setAddVisible, setNewTag]);
   const onSubmitTag = useCallback(() => {
-    setDeckTag(trim(newTag.replace(/,/g, '')), true);
+    const tag = trim(newTag.replace(/,/g, '')).replace(' ', '-');
+    const fixedTag = find(
+      ['guardian', 'seeker', 'rogue', 'mystic', 'survivor', 'neutral'],
+      t => t.toLocaleLowerCase(lang) === tag.toLocaleLowerCase(lang) || Card.factionCodeToName(t, t).toLocaleLowerCase(lang) === tag.toLocaleLowerCase(lang)
+    );
+    setDeckTag(fixedTag || tag, true);
     setAddVisible(false);
-  }, [setDeckTag, setAddVisible, newTag]);
+  }, [setDeckTag, setAddVisible, lang, newTag]);
   const sortedTags = useMemo(() => {
     return sortBy(
       uniq(
@@ -209,7 +214,7 @@ function useTagsDialog(
         <View style={[{ flexDirection: 'row', flexWrap: 'wrap' }, space.paddingBottomS]}>
           { map(sortedTags, t => (
             <View style={space.paddingBottomXs} key={t}>
-              <TagChiclet
+              <TagChicletButton
                 tag={t}
                 onSelectTag={toggleDeckTag}
                 selected={!!deckTags[t]}
@@ -218,7 +223,7 @@ function useTagsDialog(
             </View>
           )) }
           { !addVisible && editable && (
-            <TagChiclet
+            <TagChicletButton
               tag={t`+ Add`}
               selected={false}
               onSelectTag={onShowAdd}
@@ -288,7 +293,7 @@ function DeckDetailView({
   initialMode,
   fromCampaign,
 }: Props) {
-  const { lang, arkhamDbDomain, listSeperator } = useContext(LanguageContext);
+  const { lang, arkhamDbDomain } = useContext(LanguageContext);
   const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);

@@ -18,9 +18,8 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Toggles, useToggles } from '@components/core/hooks';
-import TagChiclet from '@components/deck/TagChiclet';
+import { TagChicletButton } from '@components/deck/TagChiclet';
 import ArkhamButton from '@components/core/ArkhamButton';
-import colors from '@styles/colors';
 
 interface Props {
   deckIds: MiniDeckT[];
@@ -34,17 +33,13 @@ interface Props {
   isEmpty?: boolean;
 }
 
-function DeckTagPile({ deckIds, syncToggles }: {
-  deckIds: MiniDeckT[];
-  syncToggles: (toggles: Toggles) => void;
-}) {
-  const { typography } = useContext(StyleContext);
+function useDeckTagPile(deckIds: MiniDeckT[], syncToggles: (toggles: Toggles) => void): [React.ReactNode, () => void] {
   const delayedSync = useCallback((toggles: Toggles) => {
     setTimeout(() => {
       syncToggles(toggles);
     }, 100);
   }, [syncToggles]);
-  const [selection, onSelectTag] = useToggles({}, delayedSync);
+  const [selection, onSelectTag,, setTags] = useToggles({}, delayedSync);
   const [selectedTags, otherTags] = useMemo(() => {
     const allTags = uniq(flatMap(deckIds, d => d.tags || []));
     const [selected, other] = partition(
@@ -62,22 +57,23 @@ function DeckTagPile({ deckIds, syncToggles }: {
     const eligibleTags = new Set(flatMap(eligibleDecks, d => d.tags || []));
     return filter(otherTags, t => eligibleTags.has(t));
   }, [selectedTags, otherTags, deckIds]);
-  return (
+  const clear = useCallback(() => setTags({}), [setTags]);
+  return [(
     <>
       { !!selectedTags.length && (
         <View style={[{ flexDirection: 'column' }, space.paddingTopS]}>
           <ScrollView overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[space.paddingSideXs, { flexDirection: 'row', alignItems: 'center' }]}>
-            { map(selectedTags, t => <TagChiclet key={t} selected onSelectTag={onSelectTag} tag={t} showIcon />) }
+            { map(selectedTags, t => <TagChicletButton key={t} selected onSelectTag={onSelectTag} tag={t} showIcon />) }
           </ScrollView>
         </View>
       ) }
       { !!possibleOtherTags.length && (
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[space.paddingTopS, space.paddingSideXs]}>
-          { map(possibleOtherTags, t => <TagChiclet key={t} selected={false} onSelectTag={onSelectTag} tag={t} />) }
+          { map(possibleOtherTags, t => <TagChicletButton key={t} selected={false} onSelectTag={onSelectTag} tag={t} />) }
         </ScrollView>
       ) }
     </>
-  );
+  ), clear];
 }
 
 export default function DeckListComponent({
@@ -99,18 +95,13 @@ export default function DeckListComponent({
   }, [deckClicked]);
 
   const [selectedTags, setSelectedTags] = useState<Toggles>({});
+  const [deckTagNode, clearSelectedTags] = useDeckTagPile(deckIds, setSelectedTags);
   const header = useMemo(() => (
     <View style={styles.header}>
       { !!connectionProblemBanner && connectionProblemBanner }
-      <DeckTagPile
-        syncToggles={setSelectedTags}
-        deckIds={deckIds}
-      />
+      { deckTagNode }
     </View>
-  ), [connectionProblemBanner, deckIds, setSelectedTags, colors]);
-  const clearSelectedTags = useCallback(() => {
-    setSelectedTags({})
-  }, [setSelectedTags]);
+  ), [deckTagNode, connectionProblemBanner]);
   const tagButton = useMemo(() => {
     if (find(selectedTags, t => !!t)) {
       return (

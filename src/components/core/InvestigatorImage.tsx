@@ -33,6 +33,7 @@ interface Props {
   noShadow?: boolean;
   arkhamCardsImg?: string;
   imageOffset?: 'right' | 'left';
+  round?: boolean;
 }
 
 const IMAGE_SIZE = {
@@ -68,6 +69,7 @@ function InvestigatorImage({
   tabooSetId,
   noShadow,
   imageOffset,
+  round,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -147,11 +149,21 @@ function InvestigatorImage({
     const size = IMAGE_SIZE[impliedSize];
     if (!card) {
       return (
-        <View style={[styles.container, { width: size, height: size }]}>
+        <View style={[
+          styles.container,
+          round ? { borderRadius: size / 2 } : undefined,
+          { width: size, height: size },
+        ]}>
           <Placeholder Animation={loadingAnimation}>
             <PlaceholderMedia
               color={colors.L10}
-              style={[styles.container, { width: size, height: size }, styles.border, { borderColor: border ? colors.M : colors.L10 }]}
+              style={[
+                styles.container,
+                { width: size, height: size },
+                styles.border,
+                round ? { borderRadius: size / 2 } : undefined,
+                { borderColor: border ? colors.M : colors.L10 },
+              ]}
             />
           </Placeholder>
         </View>
@@ -162,6 +174,7 @@ function InvestigatorImage({
         <View style={[
           styles.container,
           border ? styles.border : undefined,
+          round ? { borderRadius: size / 2 } : undefined,
           {
             width: size,
             height: size,
@@ -198,13 +211,24 @@ function InvestigatorImage({
           ) }
         </View>
         { !!badge && (
-          <View style={{ position: 'absolute', bottom: - size / 8 + 2, right: -size / 8, width: size / 2, height: size / 2, borderRadius: size / 4, backgroundColor: colors.upgrade, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{
+            position: 'absolute',
+            bottom: - size / 8 + 2,
+            right: -size / 8,
+            width: size / 2,
+            height: size / 2,
+            borderRadius: size / 4,
+            backgroundColor: colors.upgrade,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
             <AppIcon size={size / 2.3} color={COLORS.D20} name={badge} />
           </View>
         ) }
       </View>
     );
-  }, [card, imgUri, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
+  }, [card, round, imgUri, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
 
   if (componentId && card) {
     return (

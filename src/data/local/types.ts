@@ -242,7 +242,7 @@ export class MiniDeckRedux implements MiniDeckT {
     this.investigator = deck.investigator_code;
     this.date_update = deck.date_update;
     this.campaign_id = campaign ? getCampaignId(campaign) : undefined;
-    this.tags = deck.tags === '{}' ? [] : filter(map((deck.tags || '').split(','), t => trim(t)), x => !!x);
+    this.tags = deck.tags === '{}' ? [] : filter(map((deck.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
   }
 }
 

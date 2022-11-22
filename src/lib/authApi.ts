@@ -29,7 +29,7 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
     if (deck.tags === '{}') {
       deck.tags = undefined;
     } else {
-      deck.tags = filter(map(deck.tags.split(','), x => trim(x)), x => !!x).join(',');
+      deck.tags = filter(map(deck.tags.split(/[, ]/), x => trim(x)), x => !!x).join(' ');
     }
   }
   if (apiDeck.previous_deck) {

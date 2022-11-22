@@ -335,7 +335,7 @@ export class MiniDeckRemote implements MiniDeckT {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,
     } : undefined;
-    this.tags = deck.content.tags === '{}' ? [] : filter(map((deck.content.tags || '').split(','), t => trim(t)), x => !!x);
+    this.tags = deck.content.tags === '{}' ? [] : filter(map((deck.content.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
   }
 }
 

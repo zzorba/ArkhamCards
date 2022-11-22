@@ -17,31 +17,32 @@ interface Props {
   whiteText?: boolean;
   hideNone?: boolean;
   textStyle?: TextStyle | TextStyle[];
+  tiny?: boolean;
 }
 
-export function TraumaIconPile({ physical, mental, whiteText, paddingTop }: { physical: number; mental: number; whiteText?: boolean; paddingTop?: number }) {
+export function TraumaIconPile({ physical, mental, whiteText, paddingTop, tiny }: { physical: number; mental: number; whiteText?: boolean; paddingTop?: number; tiny?: boolean; }) {
   const textColorStyle = whiteText ? { color: '#FFF' } : undefined;
   const { typography } = useContext(StyleContext);
   if (physical + mental > (TINY_PHONE ? 2 : 3)) {
     // compact mode;
     return (
       <View style={[styles.row, { paddingTop }]}>
-        { (physical > 0) && <HealthSanityIcon type="health" size={24} /> }
+        { (physical > 0) && <HealthSanityIcon type="health" size={tiny ? 18 : 24} /> }
         { (physical > 1) && <Text style={[typography.subHeaderText, space.marginRightS, textColorStyle]}>×{physical}</Text> }
-        { (mental > 0) && <HealthSanityIcon type="sanity" size={24} /> }
+        { (mental > 0) && <HealthSanityIcon type="sanity" size={tiny ? 18 : 24} /> }
         { (mental > 1) && <Text style={[space.marginLeftXs, typography.subHeaderText, textColorStyle]}>×{mental}</Text> }
       </View>
     );
   }
   return (
     <View style={[styles.row, { paddingTop }]}>
-      { (physical > 0) && map(range(0, physical), idx => <HealthSanityIcon key={idx} type="health" size={24} />) }
-      { (mental > 0) && map(range(0, mental), idx => <HealthSanityIcon key={idx} type="sanity" size={24} />) }
+      { (physical > 0) && map(range(0, physical), idx => <HealthSanityIcon key={idx} type="health" size={tiny ? 18 : 24} />) }
+      { (mental > 0) && map(range(0, mental), idx => <HealthSanityIcon key={idx} type="sanity" size={tiny ? 18 : 24} />) }
     </View>
   );
 }
 
-export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle }: Props) {
+export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle, tiny }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
@@ -58,7 +59,15 @@ export default function TraumaSummary({ trauma, investigator, whiteText, hideNon
     }
     return <Text style={[typography.subHeaderText, textColorStyle]}>{c('trauma').t`None`}</Text>;
   }
-  return <TraumaIconPile physical={physical} mental={mental} whiteText={whiteText} paddingTop={textStyle ? xs : undefined} />
+  return (
+    <TraumaIconPile
+      physical={physical}
+      mental={mental}
+      whiteText={whiteText}
+      paddingTop={textStyle && !tiny ? xs : undefined}
+      tiny={tiny}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

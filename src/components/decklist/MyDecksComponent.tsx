@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { keys, forEach, partition, map, uniq, flatMap } from 'lodash';
+import { partition, map, uniq, flatMap } from 'lodash';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -20,7 +20,6 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
-import { DeckId } from '@actions/types';
 
 interface OwnProps {
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
