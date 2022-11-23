@@ -102,7 +102,7 @@ function ScrollableCard(props: {
     return undefined;
   }, [deckId, customizations, card, deckCount]);
   const customizedCard = useMemo(() => {
-    return card?.withCustomizations(listSeperator, customizationChoices, 'customizedCard');
+    return card?.withCustomizations(listSeperator, customizationChoices);
   }, [card, listSeperator, customizationChoices]);
   if (!customizedCard) {
     return (
@@ -168,7 +168,7 @@ function DbCardDetailSwipeView(props: Props) {
 
   const currentCard = useMemo(() => {
     const card = cards[currentCode];
-    return card && card.withCustomizations(listSeperator, customizations[currentCode], 'currentCard');
+    return card && card.withCustomizations(listSeperator, customizations[currentCode]);
   }, [listSeperator, customizations, currentCode, cards]);
   useEffect(() => {
     const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));

@@ -29,7 +29,7 @@ const DIGIT_REGEX = /^[0-9]+$/;
 interface Props {
   componentId: string;
   deckId?: DeckId;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSort?: SortType;
@@ -324,7 +324,7 @@ export default function({
       }
     }
     if (baseQuery) {
-      queryParts.push(baseQuery);
+      queryParts.push(baseQuery(filters));
     }
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));

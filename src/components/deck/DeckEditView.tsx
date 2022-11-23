@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
-import FilterBuilder, { defaultFilterState } from '@lib/filters';
+import FilterBuilder, { defaultFilterState, FilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/sqlite/query';
 import { NavigationProps } from '@components/nav/types';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
@@ -39,14 +39,14 @@ export default function DeckEditView({
   const onYourOwn = deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
   const queryOpt = useMemo(() => {
     if (weaknessOnly) {
-      return combineQueries(
+      return () => combineQueries(
         STORY_CARDS_QUERY,
         [where(`c.subtype_code is not null AND c.encounter_code is null`)],
         'and'
       );
     }
     if (storyOnly) {
-      return combineQueries(
+      return () => combineQueries(
         STORY_CARDS_QUERY,
         [where(`c.subtype_code is null OR c.subtype_code != 'basicweakness'`)],
         'and'
@@ -55,33 +55,35 @@ export default function DeckEditView({
     if (!investigator) {
       return undefined;
     }
-    const investigatorPart = investigator && queryForInvestigator(investigator, deckEdits?.meta);
-    const parts: Brackets[] = [
-      ...(investigatorPart ? [investigatorPart] : []),
-    ];
-    if (versatile) {
-      const versatileQuery = new FilterBuilder('versatile').filterToQuery({
-        ...defaultFilterState,
-        factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
-        level: [0, 0],
-        levelEnabled: true,
-      }, false);
-      if (versatileQuery) {
-        const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta);
-        if (invertedClause) {
-          parts.push(
-            new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
-          );
-        } else {
-          parts.push(versatileQuery);
+    return (filters: FilterState | undefined) => {
+      const investigatorPart = investigator && queryForInvestigator(investigator, deckEdits?.meta, filters);
+      const parts: Brackets[] = [
+        ...(investigatorPart ? [investigatorPart] : []),
+      ];
+      if (versatile && (!filters?.levelEnabled || filters?.level[0] === 0)) {
+        const versatileQuery = new FilterBuilder('versatile').filterToQuery({
+          ...defaultFilterState,
+          factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
+          level: [0, 0],
+          levelEnabled: true,
+        }, false);
+        if (versatileQuery) {
+          const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta);
+          if (invertedClause) {
+            parts.push(
+              new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
+            );
+          } else {
+            parts.push(versatileQuery);
+          }
         }
       }
+      const joinedQuery = combineQueries(STORY_CARDS_QUERY, parts, 'or');
+      if (onYourOwn) {
+        return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
+      }
+      return joinedQuery;
     }
-    const joinedQuery = combineQueries(STORY_CARDS_QUERY, parts, 'or');
-    if (onYourOwn) {
-      return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
-    }
-    return joinedQuery;
   }, [deckEdits?.meta, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
   const mode = useMemo(() => {
     if (storyOnly) {

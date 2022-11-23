@@ -618,7 +618,11 @@ export default class Card {
     }, choice, option, cards);
   }
 
-  public withCustomizations(listSeperator: string, customizations: CustomizationChoice[] | undefined, location: string): Card {
+  public withCustomizations(
+    listSeperator: string,
+    customizations: CustomizationChoice[] | undefined,
+    extraTicks?: number
+  ): Card {
     if (!this.customization_options) {
       return this;
     }
@@ -626,7 +630,7 @@ export default class Card {
       return this;
     }
     const card = this.clone();
-    const xp_spent = sumBy(customizations, c => c.xp_spent);
+    const xp_spent = sumBy(customizations, c => c.xp_spent) + (extraTicks || 0);
     card.xp = Math.floor((xp_spent + 1) / 2.0);
     const unlocked = sortBy(filter(customizations, c => c.unlocked), c => c.option.index);
     const lines = (card.text || '').split('\n');

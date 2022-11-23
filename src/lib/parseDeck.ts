@@ -77,7 +77,7 @@ function groupAssets(
 ): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
-    const card = cards[c.id]?.withCustomizations(listSeperator, customizations[c.id], 'group');
+    const card = cards[c.id]?.withCustomizations(listSeperator, customizations[c.id]);
     if (!card) {
       return t`Other`;
     }
@@ -272,7 +272,7 @@ export function getCards(
     if (!card) {
       return [];
     }
-    const customizedCard = card.withCustomizations(listSeperator, customizations[card.code], 'getCards');
+    const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
     return map(
       range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
       () => customizedCard
@@ -843,7 +843,7 @@ export function parseDeck(
       if (!card) {
         return [];
       }
-      const customizedCard = card.withCustomizations(listSeperator, customizations[card.code], 'quantityParse');
+      const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
       const invalid = !validation.canIncludeCard(customizedCard, false);
       return {
         id,

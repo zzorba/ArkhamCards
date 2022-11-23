@@ -693,7 +693,7 @@ function useSectionFeed({
       result.push({
         type: 'card',
         id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
-        card: card.withCustomizations(listSeperator, customizations?.[card.code], 'feed'),
+        card: card.withCustomizations(listSeperator, customizations?.[card.code]),
       });
     }
     if (!missingCards && spoilerCardsCount > 0 && loadingCount <= 1) {

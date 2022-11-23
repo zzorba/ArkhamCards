@@ -45,7 +45,7 @@ export function useFilterSortDialog(filterId: string): [React.ReactNode, () => v
 
 interface Props {
   componentId: string;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   sort?: SortType;
@@ -64,7 +64,7 @@ interface CardSearchNavigationOptions {
   modal?: boolean;
   lightButton?: boolean;
   mythosToggle?: boolean;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
   title?: string;
 }
 export function navigationOptions(
@@ -76,7 +76,7 @@ export function navigationOptions(
     mythosToggle,
     baseQuery,
   }: CardSearchNavigationOptions
-){
+) {
   const mythosButton: OptionsTopBarButton = {
     id: 'mythos',
     component: {
@@ -256,7 +256,6 @@ export default function CardSearchComponent(props: Props) {
     }
     return [result, headerHeight];
   }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, componentId, typography, onFilterChange, onToggleChange]);
-
   return (
     <>
       <CardSearchResultsComponent

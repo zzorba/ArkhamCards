@@ -373,6 +373,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       { label: t`Permanent`, setting: 'permanent' },
       { label: t`Myriad`, setting: 'myriad' },
       { label: t`Bonded`, setting: 'bonded' },
+      { label: t`Customizable`, setting: 'customizable' },
       { label: t`Exceptional`, setting: 'exceptional' },
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps

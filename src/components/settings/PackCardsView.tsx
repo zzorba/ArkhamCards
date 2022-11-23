@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import CardSearchComponent from '../cardlist/CardSearchComponent';
@@ -17,7 +17,7 @@ export default function PackCardsView({
   pack_code,
   baseQuery,
 }: Props) {
-  const query = useMemo(() => {
+  const query = useCallback(() => {
     return combineQueries(
       where(`c.pack_code = '${pack_code}' AND (c.hidden is null OR not c.hidden)`),
       baseQuery ? [baseQuery] : [],
