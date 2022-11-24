@@ -41,7 +41,7 @@ function useDeckTagPile(deckIds: MiniDeckT[], syncToggles: (toggles: Toggles) =>
   }, [syncToggles]);
   const [selection, onSelectTag,, setTags] = useToggles({}, delayedSync);
   const [selectedTags, otherTags] = useMemo(() => {
-    const allTags = uniq(flatMap(deckIds, d => d.tags || []));
+    const allTags = uniq(flatMap(deckIds, d => d?.tags || []));
     const [selected, other] = partition(
       sortBy(allTags, t => Card.factionCodeToName(t, t)),
       t => !!selection[t]
@@ -53,8 +53,8 @@ function useDeckTagPile(deckIds: MiniDeckT[], syncToggles: (toggles: Toggles) =>
       return otherTags;
     }
     const s = new Set(selectedTags);
-    const eligibleDecks = filter(deckIds, d => !!find(d.tags, t => s.has(t)));
-    const eligibleTags = new Set(flatMap(eligibleDecks, d => d.tags || []));
+    const eligibleDecks = filter(deckIds, d => !!find(d?.tags, t => s.has(t)));
+    const eligibleTags = new Set(flatMap(eligibleDecks, d => d?.tags || []));
     return filter(otherTags, t => eligibleTags.has(t));
   }, [selectedTags, otherTags, deckIds]);
   const clear = useCallback(() => setTags({}), [setTags]);

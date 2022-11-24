@@ -70,7 +70,10 @@ export default function DeckList({
     const chosenTags = flatMap(selectedTags, (v, tag) => !!v ? tag : []);
     return map(
       filter(deckIds, deckId => {
-        if (chosenTags.length && !every(chosenTags, tag => !!find(deckId.tags, t => tag === t))) {
+        if (!deckId) {
+          return false;
+        }
+        if (chosenTags.length && !every(chosenTags, tag => !!find(deckId.tags || [], t => tag === t))) {
           return false;
         }
         const investigator = investigators && investigators[deckId.investigator];

@@ -117,7 +117,7 @@ function useTagsDialog(
   const allTags = useMemo(() => {
     const r: { [tag: string]: DeckId[] | undefined } = {};
     forEach(myDecks, d => {
-      if (d.tags) {
+      if (d.tags?.length) {
         forEach(d.tags, t => {
           if (!r[t]) {
             r[t] = [d.id];
