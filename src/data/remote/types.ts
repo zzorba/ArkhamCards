@@ -365,6 +365,7 @@ export class LatestDeckRemote extends MiniDeckRemote implements LatestDeckT {
         killed: deck.investigator_data?.killed || undefined,
         insane: deck.investigator_data?.insane || undefined,
       },
+      cycleCode: (deck.campaign.cycleCode || 'core') as CampaignCycleCode,
     } : undefined;
   }
 }

@@ -84,6 +84,7 @@ export type All_Card = {
   alt_art_investigator?: Maybe<Scalars['Boolean']>;
   alternate_of_code?: Maybe<Scalars['String']>;
   alternate_required_code?: Maybe<Scalars['String']>;
+  back_illustrator?: Maybe<Scalars['String']>;
   back_link_id?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   backimageurl?: Maybe<Scalars['String']>;
@@ -145,6 +146,7 @@ export type All_Card = {
   real_back_flavor?: Maybe<Scalars['String']>;
   real_back_name?: Maybe<Scalars['String']>;
   real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
   real_customization_change?: Maybe<Scalars['String']>;
   real_customization_text?: Maybe<Scalars['String']>;
   real_encounter_set_name?: Maybe<Scalars['String']>;
@@ -284,6 +286,33 @@ export type All_Card_Aggregate = {
   nodes: Array<All_Card>;
 };
 
+export type All_Card_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<All_Card_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<All_Card_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<All_Card_Aggregate_Bool_Exp_Count>;
+};
+
+export type All_Card_Aggregate_Bool_Exp_Bool_And = {
+  arguments: All_Card_Select_Column_All_Card_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<All_Card_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type All_Card_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: All_Card_Select_Column_All_Card_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<All_Card_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type All_Card_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<All_Card_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<All_Card_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "all_card" */
 export type All_Card_Aggregate_Fields = {
   __typename?: 'all_card_aggregate_fields';
@@ -409,6 +438,7 @@ export type All_Card_Bool_Exp = {
   alt_art_investigator?: InputMaybe<Boolean_Comparison_Exp>;
   alternate_of_code?: InputMaybe<String_Comparison_Exp>;
   alternate_required_code?: InputMaybe<String_Comparison_Exp>;
+  back_illustrator?: InputMaybe<String_Comparison_Exp>;
   back_link_id?: InputMaybe<String_Comparison_Exp>;
   backimagesrc?: InputMaybe<String_Comparison_Exp>;
   backimageurl?: InputMaybe<String_Comparison_Exp>;
@@ -426,6 +456,7 @@ export type All_Card_Bool_Exp = {
   encounter_code?: InputMaybe<String_Comparison_Exp>;
   encounter_position?: InputMaybe<Int_Comparison_Exp>;
   encounter_sets?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  encounter_sets_aggregate?: InputMaybe<Card_Encounter_Set_Aggregate_Bool_Exp>;
   enemy_damage?: InputMaybe<Int_Comparison_Exp>;
   enemy_evade?: InputMaybe<Int_Comparison_Exp>;
   enemy_fight?: InputMaybe<Int_Comparison_Exp>;
@@ -455,6 +486,7 @@ export type All_Card_Bool_Exp = {
   pack_code?: InputMaybe<String_Comparison_Exp>;
   pack_position?: InputMaybe<Int_Comparison_Exp>;
   packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Bool_Exp>;
   permanent?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   preview?: InputMaybe<Boolean_Comparison_Exp>;
@@ -462,6 +494,7 @@ export type All_Card_Bool_Exp = {
   real_back_flavor?: InputMaybe<String_Comparison_Exp>;
   real_back_name?: InputMaybe<String_Comparison_Exp>;
   real_back_text?: InputMaybe<String_Comparison_Exp>;
+  real_back_traits?: InputMaybe<String_Comparison_Exp>;
   real_customization_change?: InputMaybe<String_Comparison_Exp>;
   real_customization_text?: InputMaybe<String_Comparison_Exp>;
   real_encounter_set_name?: InputMaybe<String_Comparison_Exp>;
@@ -490,6 +523,7 @@ export type All_Card_Bool_Exp = {
   taboo_xp?: InputMaybe<Int_Comparison_Exp>;
   tags?: InputMaybe<Jsonb_Comparison_Exp>;
   translations?: InputMaybe<All_Card_Text_Bool_Exp>;
+  translations_aggregate?: InputMaybe<All_Card_Text_Aggregate_Bool_Exp>;
   type?: InputMaybe<Card_Type_Code_Bool_Exp>;
   type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -570,6 +604,7 @@ export type All_Card_Insert_Input = {
   alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_illustrator?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   backimageurl?: InputMaybe<Scalars['String']>;
@@ -623,6 +658,7 @@ export type All_Card_Insert_Input = {
   real_back_flavor?: InputMaybe<Scalars['String']>;
   real_back_name?: InputMaybe<Scalars['String']>;
   real_back_text?: InputMaybe<Scalars['String']>;
+  real_back_traits?: InputMaybe<Scalars['String']>;
   real_customization_change?: InputMaybe<Scalars['String']>;
   real_customization_text?: InputMaybe<Scalars['String']>;
   real_encounter_set_name?: InputMaybe<Scalars['String']>;
@@ -665,6 +701,7 @@ export type All_Card_Max_Fields = {
   __typename?: 'all_card_max_fields';
   alternate_of_code?: Maybe<Scalars['String']>;
   alternate_required_code?: Maybe<Scalars['String']>;
+  back_illustrator?: Maybe<Scalars['String']>;
   back_link_id?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   backimageurl?: Maybe<Scalars['String']>;
@@ -696,6 +733,7 @@ export type All_Card_Max_Fields = {
   real_back_flavor?: Maybe<Scalars['String']>;
   real_back_name?: Maybe<Scalars['String']>;
   real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
   real_customization_change?: Maybe<Scalars['String']>;
   real_customization_text?: Maybe<Scalars['String']>;
   real_encounter_set_name?: Maybe<Scalars['String']>;
@@ -729,6 +767,7 @@ export type All_Card_Max_Fields = {
 export type All_Card_Max_Order_By = {
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
+  back_illustrator?: InputMaybe<Order_By>;
   back_link_id?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -760,6 +799,7 @@ export type All_Card_Max_Order_By = {
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
+  real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
   real_customization_text?: InputMaybe<Order_By>;
   real_encounter_set_name?: InputMaybe<Order_By>;
@@ -794,6 +834,7 @@ export type All_Card_Min_Fields = {
   __typename?: 'all_card_min_fields';
   alternate_of_code?: Maybe<Scalars['String']>;
   alternate_required_code?: Maybe<Scalars['String']>;
+  back_illustrator?: Maybe<Scalars['String']>;
   back_link_id?: Maybe<Scalars['String']>;
   backimagesrc?: Maybe<Scalars['String']>;
   backimageurl?: Maybe<Scalars['String']>;
@@ -825,6 +866,7 @@ export type All_Card_Min_Fields = {
   real_back_flavor?: Maybe<Scalars['String']>;
   real_back_name?: Maybe<Scalars['String']>;
   real_back_text?: Maybe<Scalars['String']>;
+  real_back_traits?: Maybe<Scalars['String']>;
   real_customization_change?: Maybe<Scalars['String']>;
   real_customization_text?: Maybe<Scalars['String']>;
   real_encounter_set_name?: Maybe<Scalars['String']>;
@@ -858,6 +900,7 @@ export type All_Card_Min_Fields = {
 export type All_Card_Min_Order_By = {
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
+  back_illustrator?: InputMaybe<Order_By>;
   back_link_id?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -889,6 +932,7 @@ export type All_Card_Min_Order_By = {
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
+  real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
   real_customization_text?: InputMaybe<Order_By>;
   real_encounter_set_name?: InputMaybe<Order_By>;
@@ -946,6 +990,7 @@ export type All_Card_Order_By = {
   alt_art_investigator?: InputMaybe<Order_By>;
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
+  back_illustrator?: InputMaybe<Order_By>;
   back_link_id?: InputMaybe<Order_By>;
   backimagesrc?: InputMaybe<Order_By>;
   backimageurl?: InputMaybe<Order_By>;
@@ -999,6 +1044,7 @@ export type All_Card_Order_By = {
   real_back_flavor?: InputMaybe<Order_By>;
   real_back_name?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
+  real_back_traits?: InputMaybe<Order_By>;
   real_customization_change?: InputMaybe<Order_By>;
   real_customization_text?: InputMaybe<Order_By>;
   real_encounter_set_name?: InputMaybe<Order_By>;
@@ -1058,6 +1104,8 @@ export enum All_Card_Select_Column {
   AlternateOfCode = 'alternate_of_code',
   /** column name */
   AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackIllustrator = 'back_illustrator',
   /** column name */
   BackLinkId = 'back_link_id',
   /** column name */
@@ -1157,6 +1205,8 @@ export enum All_Card_Select_Column {
   /** column name */
   RealBackText = 'real_back_text',
   /** column name */
+  RealBackTraits = 'real_back_traits',
+  /** column name */
   RealCustomizationChange = 'real_customization_change',
   /** column name */
   RealCustomizationText = 'real_customization_text',
@@ -1222,11 +1272,88 @@ export enum All_Card_Select_Column {
   Xp = 'xp'
 }
 
+/** select "all_card_aggregate_bool_exp_bool_and_arguments_columns" columns of table "all_card" */
+export enum All_Card_Select_Column_All_Card_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  HealsDamage = 'heals_damage',
+  /** column name */
+  HealsHorror = 'heals_horror',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Linked = 'linked',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Preview = 'preview',
+  /** column name */
+  Spoiler = 'spoiler',
+  /** column name */
+  TabooPlaceholder = 'taboo_placeholder'
+}
+
+/** select "all_card_aggregate_bool_exp_bool_or_arguments_columns" columns of table "all_card" */
+export enum All_Card_Select_Column_All_Card_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  AltArtInvestigator = 'alt_art_investigator',
+  /** column name */
+  CluesFixed = 'clues_fixed',
+  /** column name */
+  DoubleSided = 'double_sided',
+  /** column name */
+  Exceptional = 'exceptional',
+  /** column name */
+  Exile = 'exile',
+  /** column name */
+  HealsDamage = 'heals_damage',
+  /** column name */
+  HealsHorror = 'heals_horror',
+  /** column name */
+  HealthPerInvestigator = 'health_per_investigator',
+  /** column name */
+  Hidden = 'hidden',
+  /** column name */
+  IsUnique = 'is_unique',
+  /** column name */
+  Linked = 'linked',
+  /** column name */
+  Myriad = 'myriad',
+  /** column name */
+  Official = 'official',
+  /** column name */
+  Permanent = 'permanent',
+  /** column name */
+  Preview = 'preview',
+  /** column name */
+  Spoiler = 'spoiler',
+  /** column name */
+  TabooPlaceholder = 'taboo_placeholder'
+}
+
 /** input type for updating data in table "all_card" */
 export type All_Card_Set_Input = {
   alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_illustrator?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   backimageurl?: InputMaybe<Scalars['String']>;
@@ -1276,6 +1403,7 @@ export type All_Card_Set_Input = {
   real_back_flavor?: InputMaybe<Scalars['String']>;
   real_back_name?: InputMaybe<Scalars['String']>;
   real_back_text?: InputMaybe<Scalars['String']>;
+  real_back_traits?: InputMaybe<Scalars['String']>;
   real_customization_change?: InputMaybe<Scalars['String']>;
   real_customization_text?: InputMaybe<Scalars['String']>;
   real_encounter_set_name?: InputMaybe<Scalars['String']>;
@@ -1512,6 +1640,7 @@ export type All_Card_Stream_Cursor_Value_Input = {
   alt_art_investigator?: InputMaybe<Scalars['Boolean']>;
   alternate_of_code?: InputMaybe<Scalars['String']>;
   alternate_required_code?: InputMaybe<Scalars['String']>;
+  back_illustrator?: InputMaybe<Scalars['String']>;
   back_link_id?: InputMaybe<Scalars['String']>;
   backimagesrc?: InputMaybe<Scalars['String']>;
   backimageurl?: InputMaybe<Scalars['String']>;
@@ -1561,6 +1690,7 @@ export type All_Card_Stream_Cursor_Value_Input = {
   real_back_flavor?: InputMaybe<Scalars['String']>;
   real_back_name?: InputMaybe<Scalars['String']>;
   real_back_text?: InputMaybe<Scalars['String']>;
+  real_back_traits?: InputMaybe<Scalars['String']>;
   real_customization_change?: InputMaybe<Scalars['String']>;
   real_customization_text?: InputMaybe<Scalars['String']>;
   real_encounter_set_name?: InputMaybe<Scalars['String']>;
@@ -1664,6 +1794,7 @@ export type All_Card_Text = {
   back_flavor?: Maybe<Scalars['String']>;
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
@@ -1684,6 +1815,17 @@ export type All_Card_Text_Aggregate = {
   __typename?: 'all_card_text_aggregate';
   aggregate?: Maybe<All_Card_Text_Aggregate_Fields>;
   nodes: Array<All_Card_Text>;
+};
+
+export type All_Card_Text_Aggregate_Bool_Exp = {
+  count?: InputMaybe<All_Card_Text_Aggregate_Bool_Exp_Count>;
+};
+
+export type All_Card_Text_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<All_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<All_Card_Text_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "all_card_text" */
@@ -1723,6 +1865,7 @@ export type All_Card_Text_Bool_Exp = {
   back_flavor?: InputMaybe<String_Comparison_Exp>;
   back_name?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
+  back_traits?: InputMaybe<String_Comparison_Exp>;
   customization_change?: InputMaybe<String_Comparison_Exp>;
   customization_text?: InputMaybe<String_Comparison_Exp>;
   encounter_name?: InputMaybe<String_Comparison_Exp>;
@@ -1749,6 +1892,7 @@ export type All_Card_Text_Insert_Input = {
   back_flavor?: InputMaybe<Scalars['String']>;
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
@@ -1770,6 +1914,7 @@ export type All_Card_Text_Max_Fields = {
   back_flavor?: Maybe<Scalars['String']>;
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
@@ -1790,6 +1935,7 @@ export type All_Card_Text_Max_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
@@ -1811,6 +1957,7 @@ export type All_Card_Text_Min_Fields = {
   back_flavor?: Maybe<Scalars['String']>;
   back_name?: Maybe<Scalars['String']>;
   back_text?: Maybe<Scalars['String']>;
+  back_traits?: Maybe<Scalars['String']>;
   customization_change?: Maybe<Scalars['String']>;
   customization_text?: Maybe<Scalars['String']>;
   encounter_name?: Maybe<Scalars['String']>;
@@ -1831,6 +1978,7 @@ export type All_Card_Text_Min_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
@@ -1867,6 +2015,7 @@ export type All_Card_Text_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
   back_name?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
+  back_traits?: InputMaybe<Order_By>;
   customization_change?: InputMaybe<Order_By>;
   customization_text?: InputMaybe<Order_By>;
   encounter_name?: InputMaybe<Order_By>;
@@ -1896,6 +2045,8 @@ export enum All_Card_Text_Select_Column {
   BackName = 'back_name',
   /** column name */
   BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
   /** column name */
   CustomizationChange = 'customization_change',
   /** column name */
@@ -1929,6 +2080,7 @@ export type All_Card_Text_Set_Input = {
   back_flavor?: InputMaybe<Scalars['String']>;
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
@@ -1957,6 +2109,7 @@ export type All_Card_Text_Stream_Cursor_Value_Input = {
   back_flavor?: InputMaybe<Scalars['String']>;
   back_name?: InputMaybe<Scalars['String']>;
   back_text?: InputMaybe<Scalars['String']>;
+  back_traits?: InputMaybe<Scalars['String']>;
   customization_change?: InputMaybe<Scalars['String']>;
   customization_text?: InputMaybe<Scalars['String']>;
   encounter_name?: InputMaybe<Scalars['String']>;
@@ -1980,6 +2133,8 @@ export enum All_Card_Text_Update_Column {
   BackName = 'back_name',
   /** column name */
   BackText = 'back_text',
+  /** column name */
+  BackTraits = 'back_traits',
   /** column name */
   CustomizationChange = 'customization_change',
   /** column name */
@@ -2022,6 +2177,8 @@ export enum All_Card_Update_Column {
   AlternateOfCode = 'alternate_of_code',
   /** column name */
   AlternateRequiredCode = 'alternate_required_code',
+  /** column name */
+  BackIllustrator = 'back_illustrator',
   /** column name */
   BackLinkId = 'back_link_id',
   /** column name */
@@ -2120,6 +2277,8 @@ export enum All_Card_Update_Column {
   RealBackName = 'real_back_name',
   /** column name */
   RealBackText = 'real_back_text',
+  /** column name */
+  RealBackTraits = 'real_back_traits',
   /** column name */
   RealCustomizationChange = 'real_customization_change',
   /** column name */
@@ -2631,6 +2790,17 @@ export type Base_Decks_Aggregate = {
   nodes: Array<Base_Decks>;
 };
 
+export type Base_Decks_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Base_Decks_Aggregate_Bool_Exp_Count>;
+};
+
+export type Base_Decks_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Base_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Base_Decks_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "base_decks" */
 export type Base_Decks_Aggregate_Fields = {
   __typename?: 'base_decks_aggregate_fields';
@@ -3130,6 +3300,33 @@ export type Campaign_Access_Aggregate = {
   nodes: Array<Campaign_Access>;
 };
 
+export type Campaign_Access_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Campaign_Access_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Campaign_Access_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Campaign_Access_Aggregate_Bool_Exp_Count>;
+};
+
+export type Campaign_Access_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Campaign_Access_Select_Column_Campaign_Access_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Access_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Campaign_Access_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Campaign_Access_Select_Column_Campaign_Access_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Access_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Campaign_Access_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Campaign_Access_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Access_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "campaign_access" */
 export type Campaign_Access_Aggregate_Fields = {
   __typename?: 'campaign_access_aggregate_fields';
@@ -3293,6 +3490,18 @@ export enum Campaign_Access_Select_Column {
   Id = 'id',
   /** column name */
   UserId = 'user_id'
+}
+
+/** select "campaign_access_aggregate_bool_exp_bool_and_arguments_columns" columns of table "campaign_access" */
+export enum Campaign_Access_Select_Column_Campaign_Access_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Hidden = 'hidden'
+}
+
+/** select "campaign_access_aggregate_bool_exp_bool_or_arguments_columns" columns of table "campaign_access" */
+export enum Campaign_Access_Select_Column_Campaign_Access_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Hidden = 'hidden'
 }
 
 /** input type for updating data in table "campaign_access" */
@@ -3486,12 +3695,15 @@ export type Campaign_Bool_Exp = {
   _not?: InputMaybe<Campaign_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Bool_Exp>>;
   access?: InputMaybe<Campaign_Access_Bool_Exp>;
+  access_aggregate?: InputMaybe<Campaign_Access_Aggregate_Bool_Exp>;
   archived?: InputMaybe<Boolean_Comparison_Exp>;
   base_decks?: InputMaybe<Base_Decks_Bool_Exp>;
+  base_decks_aggregate?: InputMaybe<Base_Decks_Aggregate_Bool_Exp>;
   campaignNotes?: InputMaybe<Jsonb_Comparison_Exp>;
   campaign_guide?: InputMaybe<Campaign_Guide_Bool_Exp>;
   chaosBag?: InputMaybe<Jsonb_Comparison_Exp>;
   chaos_bag_result?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+  chaos_bag_result_aggregate?: InputMaybe<Chaos_Bag_Result_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   cycleCode?: InputMaybe<String_Comparison_Exp>;
   deleted?: InputMaybe<Boolean_Comparison_Exp>;
@@ -3500,8 +3712,11 @@ export type Campaign_Bool_Exp = {
   guided?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   investigator_data?: InputMaybe<Investigator_Data_Bool_Exp>;
+  investigator_data_aggregate?: InputMaybe<Investigator_Data_Aggregate_Bool_Exp>;
   investigators?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+  investigators_aggregate?: InputMaybe<Campaign_Investigator_Aggregate_Bool_Exp>;
   latest_decks?: InputMaybe<Latest_Decks_Bool_Exp>;
+  latest_decks_aggregate?: InputMaybe<Latest_Decks_Aggregate_Bool_Exp>;
   link_a_campaign?: InputMaybe<Campaign_Bool_Exp>;
   link_a_campaign_id?: InputMaybe<Int_Comparison_Exp>;
   link_b_campaign?: InputMaybe<Campaign_Bool_Exp>;
@@ -3615,6 +3830,33 @@ export type Campaign_Deck_Aggregate = {
   nodes: Array<Campaign_Deck>;
 };
 
+export type Campaign_Deck_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp_Count>;
+};
+
+export type Campaign_Deck_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Campaign_Deck_Select_Column_Campaign_Deck_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Campaign_Deck_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Campaign_Deck_Select_Column_Campaign_Deck_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Campaign_Deck_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Campaign_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "campaign_deck" */
 export type Campaign_Deck_Aggregate_Fields = {
   __typename?: 'campaign_deck_aggregate_fields';
@@ -3704,10 +3946,12 @@ export type Campaign_Deck_Bool_Exp = {
   next_deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
   next_deck_id?: InputMaybe<Int_Comparison_Exp>;
   other_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  other_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp>;
   owner?: InputMaybe<Users_Bool_Exp>;
   owner_id?: InputMaybe<String_Comparison_Exp>;
   previous_deck?: InputMaybe<Campaign_Deck_Bool_Exp>;
   previous_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  previous_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -3912,6 +4156,22 @@ export enum Campaign_Deck_Select_Column {
   OwnerId = 'owner_id',
   /** column name */
   UpdatedAt = 'updated_at'
+}
+
+/** select "campaign_deck_aggregate_bool_exp_bool_and_arguments_columns" columns of table "campaign_deck" */
+export enum Campaign_Deck_Select_Column_Campaign_Deck_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  Base = 'base'
+}
+
+/** select "campaign_deck_aggregate_bool_exp_bool_or_arguments_columns" columns of table "campaign_deck" */
+export enum Campaign_Deck_Select_Column_Campaign_Deck_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  Base = 'base'
 }
 
 /** input type for updating data in table "campaign_deck" */
@@ -4428,9 +4688,12 @@ export type Campaign_Guide_Bool_Exp = {
   _not?: InputMaybe<Campaign_Guide_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Guide_Bool_Exp>>;
   access?: InputMaybe<Campaign_Access_Bool_Exp>;
+  access_aggregate?: InputMaybe<Campaign_Access_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   guide_achievements?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  guide_achievements_aggregate?: InputMaybe<Guide_Achievement_Aggregate_Bool_Exp>;
   guide_inputs?: InputMaybe<Guide_Input_Bool_Exp>;
+  guide_inputs_aggregate?: InputMaybe<Guide_Input_Aggregate_Bool_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   owner?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -4654,6 +4917,17 @@ export type Campaign_Investigator_Aggregate = {
   __typename?: 'campaign_investigator_aggregate';
   aggregate?: Maybe<Campaign_Investigator_Aggregate_Fields>;
   nodes: Array<Campaign_Investigator>;
+};
+
+export type Campaign_Investigator_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Campaign_Investigator_Aggregate_Bool_Exp_Count>;
+};
+
+export type Campaign_Investigator_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Campaign_Investigator_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Campaign_Investigator_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "campaign_investigator" */
@@ -5651,6 +5925,7 @@ export type Card_Bool_Exp = {
   pack_code?: InputMaybe<String_Comparison_Exp>;
   pack_position?: InputMaybe<Int_Comparison_Exp>;
   packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Bool_Exp>;
   permanent?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
@@ -5675,6 +5950,7 @@ export type Card_Bool_Exp = {
   stage?: InputMaybe<Int_Comparison_Exp>;
   subtype_code?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Card_Text_Bool_Exp>;
+  translations_aggregate?: InputMaybe<Card_Text_Aggregate_Bool_Exp>;
   type_code?: InputMaybe<String_Comparison_Exp>;
   victory?: InputMaybe<Int_Comparison_Exp>;
 };
@@ -5765,6 +6041,7 @@ export type Card_Cycle_Bool_Exp = {
   name?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
   packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Bool_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
 };
 
@@ -5987,6 +6264,33 @@ export type Card_Encounter_Set_Aggregate = {
   nodes: Array<Card_Encounter_Set>;
 };
 
+export type Card_Encounter_Set_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Card_Encounter_Set_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Card_Encounter_Set_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Card_Encounter_Set_Aggregate_Bool_Exp_Count>;
+};
+
+export type Card_Encounter_Set_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Card_Encounter_Set_Select_Column_Card_Encounter_Set_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Card_Encounter_Set_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Card_Encounter_Set_Select_Column_Card_Encounter_Set_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Card_Encounter_Set_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Card_Encounter_Set_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "card_encounter_set" */
 export type Card_Encounter_Set_Aggregate_Fields = {
   __typename?: 'card_encounter_set_aggregate_fields';
@@ -6109,6 +6413,18 @@ export enum Card_Encounter_Set_Select_Column {
   Locale = 'locale',
   /** column name */
   Name = 'name',
+  /** column name */
+  Official = 'official'
+}
+
+/** select "card_encounter_set_aggregate_bool_exp_bool_and_arguments_columns" columns of table "card_encounter_set" */
+export enum Card_Encounter_Set_Select_Column_Card_Encounter_Set_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Official = 'official'
+}
+
+/** select "card_encounter_set_aggregate_bool_exp_bool_or_arguments_columns" columns of table "card_encounter_set" */
+export enum Card_Encounter_Set_Select_Column_Card_Encounter_Set_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
   /** column name */
   Official = 'official'
 }
@@ -6419,6 +6735,33 @@ export type Card_Pack_Aggregate = {
   nodes: Array<Card_Pack>;
 };
 
+export type Card_Pack_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Card_Pack_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Card_Pack_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Card_Pack_Aggregate_Bool_Exp_Count>;
+};
+
+export type Card_Pack_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Card_Pack_Select_Column_Card_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Pack_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Card_Pack_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Card_Pack_Select_Column_Card_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Pack_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Card_Pack_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Card_Pack_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Pack_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "card_pack" */
 export type Card_Pack_Aggregate_Fields = {
   __typename?: 'card_pack_aggregate_fields';
@@ -6596,6 +6939,18 @@ export enum Card_Pack_Select_Column {
   Official = 'official',
   /** column name */
   Position = 'position'
+}
+
+/** select "card_pack_aggregate_bool_exp_bool_and_arguments_columns" columns of table "card_pack" */
+export enum Card_Pack_Select_Column_Card_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Official = 'official'
+}
+
+/** select "card_pack_aggregate_bool_exp_bool_or_arguments_columns" columns of table "card_pack" */
+export enum Card_Pack_Select_Column_Card_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Official = 'official'
 }
 
 /** input type for updating data in table "card_pack" */
@@ -7235,6 +7590,17 @@ export type Card_Text_Aggregate = {
   __typename?: 'card_text_aggregate';
   aggregate?: Maybe<Card_Text_Aggregate_Fields>;
   nodes: Array<Card_Text>;
+};
+
+export type Card_Text_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Card_Text_Aggregate_Bool_Exp_Count>;
+};
+
+export type Card_Text_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Card_Text_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "card_text" */
@@ -8052,6 +8418,17 @@ export type Chaos_Bag_Result_Aggregate = {
   nodes: Array<Chaos_Bag_Result>;
 };
 
+export type Chaos_Bag_Result_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Chaos_Bag_Result_Aggregate_Bool_Exp_Count>;
+};
+
+export type Chaos_Bag_Result_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Chaos_Bag_Result_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Chaos_Bag_Result_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "chaos_bag_result" */
 export type Chaos_Bag_Result_Aggregate_Fields = {
   __typename?: 'chaos_bag_result_aggregate_fields';
@@ -8746,9 +9123,11 @@ export type Cycle_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
   packs?: InputMaybe<Pack_Bool_Exp>;
+  packs_aggregate?: InputMaybe<Pack_Aggregate_Bool_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Cycle_Name_Bool_Exp>;
+  translations_aggregate?: InputMaybe<Cycle_Name_Aggregate_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "cycle" */
@@ -8811,6 +9190,17 @@ export type Cycle_Name_Aggregate = {
   __typename?: 'cycle_name_aggregate';
   aggregate?: Maybe<Cycle_Name_Aggregate_Fields>;
   nodes: Array<Cycle_Name>;
+};
+
+export type Cycle_Name_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Cycle_Name_Aggregate_Bool_Exp_Count>;
+};
+
+export type Cycle_Name_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Cycle_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Cycle_Name_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "cycle_name" */
@@ -9318,6 +9708,7 @@ export type Faq_Bool_Exp = {
   _or?: InputMaybe<Array<Faq_Bool_Exp>>;
   code?: InputMaybe<String_Comparison_Exp>;
   faq_texts?: InputMaybe<Faq_Text_Bool_Exp>;
+  faq_texts_aggregate?: InputMaybe<Faq_Text_Aggregate_Bool_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -9417,6 +9808,17 @@ export type Faq_Text_Aggregate = {
   __typename?: 'faq_text_aggregate';
   aggregate?: Maybe<Faq_Text_Aggregate_Fields>;
   nodes: Array<Faq_Text>;
+};
+
+export type Faq_Text_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Faq_Text_Aggregate_Bool_Exp_Count>;
+};
+
+export type Faq_Text_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Faq_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Faq_Text_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "faq_text" */
@@ -10123,6 +10525,7 @@ export type Full_Card_Bool_Exp = {
   encounter_code?: InputMaybe<String_Comparison_Exp>;
   encounter_position?: InputMaybe<Int_Comparison_Exp>;
   encounter_sets?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
+  encounter_sets_aggregate?: InputMaybe<Card_Encounter_Set_Aggregate_Bool_Exp>;
   enemy_damage?: InputMaybe<Int_Comparison_Exp>;
   enemy_evade?: InputMaybe<Int_Comparison_Exp>;
   enemy_fight?: InputMaybe<Int_Comparison_Exp>;
@@ -10143,6 +10546,7 @@ export type Full_Card_Bool_Exp = {
   pack_code?: InputMaybe<String_Comparison_Exp>;
   pack_position?: InputMaybe<Int_Comparison_Exp>;
   packs?: InputMaybe<Card_Pack_Bool_Exp>;
+  packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Bool_Exp>;
   permanent?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
@@ -10168,6 +10572,7 @@ export type Full_Card_Bool_Exp = {
   stage?: InputMaybe<Int_Comparison_Exp>;
   subtype_code?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Full_Card_Text_Bool_Exp>;
+  translations_aggregate?: InputMaybe<Full_Card_Text_Aggregate_Bool_Exp>;
   type_code?: InputMaybe<Card_Type_Code_Enum_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   vengeance?: InputMaybe<Int_Comparison_Exp>;
@@ -10927,6 +11332,17 @@ export type Full_Card_Text_Aggregate = {
   nodes: Array<Full_Card_Text>;
 };
 
+export type Full_Card_Text_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Full_Card_Text_Aggregate_Bool_Exp_Count>;
+};
+
+export type Full_Card_Text_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Full_Card_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Full_Card_Text_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "full_card_text" */
 export type Full_Card_Text_Aggregate_Fields = {
   __typename?: 'full_card_text_aggregate_fields';
@@ -11596,6 +12012,33 @@ export type Guide_Achievement_Aggregate = {
   nodes: Array<Guide_Achievement>;
 };
 
+export type Guide_Achievement_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Guide_Achievement_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Guide_Achievement_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Guide_Achievement_Aggregate_Bool_Exp_Count>;
+};
+
+export type Guide_Achievement_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Guide_Achievement_Select_Column_Guide_Achievement_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Guide_Achievement_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Guide_Achievement_Select_Column_Guide_Achievement_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Guide_Achievement_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Guide_Achievement_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Guide_Achievement_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "guide_achievement" */
 export type Guide_Achievement_Aggregate_Fields = {
   __typename?: 'guide_achievement_aggregate_fields';
@@ -11787,6 +12230,18 @@ export enum Guide_Achievement_Select_Column {
   Value = 'value'
 }
 
+/** select "guide_achievement_aggregate_bool_exp_bool_and_arguments_columns" columns of table "guide_achievement" */
+export enum Guide_Achievement_Select_Column_Guide_Achievement_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  BoolValue = 'bool_value'
+}
+
+/** select "guide_achievement_aggregate_bool_exp_bool_or_arguments_columns" columns of table "guide_achievement" */
+export enum Guide_Achievement_Select_Column_Guide_Achievement_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  BoolValue = 'bool_value'
+}
+
 /** input type for updating data in table "guide_achievement" */
 export type Guide_Achievement_Set_Input = {
   bool_value?: InputMaybe<Scalars['Boolean']>;
@@ -11960,6 +12415,17 @@ export type Guide_Input_Aggregate = {
   __typename?: 'guide_input_aggregate';
   aggregate?: Maybe<Guide_Input_Aggregate_Fields>;
   nodes: Array<Guide_Input>;
+};
+
+export type Guide_Input_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Guide_Input_Aggregate_Bool_Exp_Count>;
+};
+
+export type Guide_Input_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Guide_Input_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Guide_Input_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "guide_input" */
@@ -12416,6 +12882,33 @@ export type Investigator_Data_Aggregate = {
   nodes: Array<Investigator_Data>;
 };
 
+export type Investigator_Data_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Investigator_Data_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Investigator_Data_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Investigator_Data_Aggregate_Bool_Exp_Count>;
+};
+
+export type Investigator_Data_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Investigator_Data_Select_Column_Investigator_Data_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Investigator_Data_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Investigator_Data_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Investigator_Data_Select_Column_Investigator_Data_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Investigator_Data_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Investigator_Data_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Investigator_Data_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Investigator_Data_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "investigator_data" */
 export type Investigator_Data_Aggregate_Fields = {
   __typename?: 'investigator_data_aggregate_fields';
@@ -12728,6 +13221,22 @@ export enum Investigator_Data_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** select "investigator_data_aggregate_bool_exp_bool_and_arguments_columns" columns of table "investigator_data" */
+export enum Investigator_Data_Select_Column_Investigator_Data_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Insane = 'insane',
+  /** column name */
+  Killed = 'killed'
+}
+
+/** select "investigator_data_aggregate_bool_exp_bool_or_arguments_columns" columns of table "investigator_data" */
+export enum Investigator_Data_Select_Column_Investigator_Data_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Insane = 'insane',
+  /** column name */
+  Killed = 'killed'
+}
+
 /** input type for updating data in table "investigator_data" */
 export type Investigator_Data_Set_Input = {
   addedCards?: InputMaybe<Scalars['jsonb']>;
@@ -13010,6 +13519,17 @@ export type Latest_Decks_Aggregate = {
   nodes: Array<Latest_Decks>;
 };
 
+export type Latest_Decks_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Latest_Decks_Aggregate_Bool_Exp_Count>;
+};
+
+export type Latest_Decks_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Latest_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Latest_Decks_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "latest_decks" */
 export type Latest_Decks_Aggregate_Fields = {
   __typename?: 'latest_decks_aggregate_fields';
@@ -13289,6 +13809,17 @@ export type Local_Decks_Aggregate = {
   __typename?: 'local_decks_aggregate';
   aggregate?: Maybe<Local_Decks_Aggregate_Fields>;
   nodes: Array<Local_Decks>;
+};
+
+export type Local_Decks_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Local_Decks_Aggregate_Bool_Exp_Count>;
+};
+
+export type Local_Decks_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Local_Decks_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Local_Decks_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "local_decks" */
@@ -16396,6 +16927,33 @@ export type Pack_Aggregate = {
   nodes: Array<Pack>;
 };
 
+export type Pack_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Pack_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Pack_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Pack_Aggregate_Bool_Exp_Count>;
+};
+
+export type Pack_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Pack_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Pack_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Pack_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Pack_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Pack_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Pack_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "pack" */
 export type Pack_Aggregate_Fields = {
   __typename?: 'pack_aggregate_fields';
@@ -16458,6 +17016,7 @@ export type Pack_Bool_Exp = {
   _not?: InputMaybe<Pack_Bool_Exp>;
   _or?: InputMaybe<Array<Pack_Bool_Exp>>;
   cards?: InputMaybe<All_Card_Bool_Exp>;
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cycle?: InputMaybe<Cycle_Bool_Exp>;
   cycle_code?: InputMaybe<String_Comparison_Exp>;
@@ -16465,6 +17024,7 @@ export type Pack_Bool_Exp = {
   position?: InputMaybe<Int_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
   translations?: InputMaybe<Pack_Name_Bool_Exp>;
+  translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "pack" */
@@ -16547,6 +17107,17 @@ export type Pack_Name_Aggregate = {
   __typename?: 'pack_name_aggregate';
   aggregate?: Maybe<Pack_Name_Aggregate_Fields>;
   nodes: Array<Pack_Name>;
+};
+
+export type Pack_Name_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Pack_Name_Aggregate_Bool_Exp_Count>;
+};
+
+export type Pack_Name_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Pack_Name_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Pack_Name_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "pack_name" */
@@ -16764,6 +17335,18 @@ export enum Pack_Select_Column {
   Position = 'position',
   /** column name */
   RealName = 'real_name'
+}
+
+/** select "pack_aggregate_bool_exp_bool_and_arguments_columns" columns of table "pack" */
+export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Official = 'official'
+}
+
+/** select "pack_aggregate_bool_exp_bool_or_arguments_columns" columns of table "pack" */
+export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Official = 'official'
 }
 
 /** input type for updating data in table "pack" */
@@ -18221,7 +18804,7 @@ export type Subscription_Root = {
   all_card_aggregate: All_Card_Aggregate;
   /** fetch data from the table: "all_card" using primary key columns */
   all_card_by_pk?: Maybe<All_Card>;
-  /** fetch data from the table in a streaming manner : "all_card" */
+  /** fetch data from the table in a streaming manner: "all_card" */
   all_card_stream: Array<All_Card>;
   /** fetch data from the table: "all_card_text" */
   all_card_text: Array<All_Card_Text>;
@@ -18229,7 +18812,7 @@ export type Subscription_Root = {
   all_card_text_aggregate: All_Card_Text_Aggregate;
   /** fetch data from the table: "all_card_text" using primary key columns */
   all_card_text_by_pk?: Maybe<All_Card_Text>;
-  /** fetch data from the table in a streaming manner : "all_card_text" */
+  /** fetch data from the table in a streaming manner: "all_card_text" */
   all_card_text_stream: Array<All_Card_Text>;
   /** fetch data from the table: "all_card_updated" */
   all_card_updated: Array<All_Card_Updated>;
@@ -18237,13 +18820,13 @@ export type Subscription_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
-  /** fetch data from the table in a streaming manner : "all_card_updated" */
+  /** fetch data from the table in a streaming manner: "all_card_updated" */
   all_card_updated_stream: Array<All_Card_Updated>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
   base_decks_aggregate: Base_Decks_Aggregate;
-  /** fetch data from the table in a streaming manner : "base_decks" */
+  /** fetch data from the table in a streaming manner: "base_decks" */
   base_decks_stream: Array<Base_Decks>;
   /** fetch data from the table: "campaign" */
   campaign: Array<Campaign>;
@@ -18253,7 +18836,7 @@ export type Subscription_Root = {
   campaign_access_aggregate: Campaign_Access_Aggregate;
   /** fetch data from the table: "campaign_access" using primary key columns */
   campaign_access_by_pk?: Maybe<Campaign_Access>;
-  /** fetch data from the table in a streaming manner : "campaign_access" */
+  /** fetch data from the table in a streaming manner: "campaign_access" */
   campaign_access_stream: Array<Campaign_Access>;
   /** fetch aggregated fields from the table: "campaign" */
   campaign_aggregate: Campaign_Aggregate;
@@ -18265,7 +18848,7 @@ export type Subscription_Root = {
   campaign_deck_aggregate: Campaign_Deck_Aggregate;
   /** fetch data from the table: "campaign_deck" using primary key columns */
   campaign_deck_by_pk?: Maybe<Campaign_Deck>;
-  /** fetch data from the table in a streaming manner : "campaign_deck" */
+  /** fetch data from the table in a streaming manner: "campaign_deck" */
   campaign_deck_stream: Array<Campaign_Deck>;
   /** fetch data from the table: "campaign_difficulty" */
   campaign_difficulty: Array<Campaign_Difficulty>;
@@ -18273,13 +18856,13 @@ export type Subscription_Root = {
   campaign_difficulty_aggregate: Campaign_Difficulty_Aggregate;
   /** fetch data from the table: "campaign_difficulty" using primary key columns */
   campaign_difficulty_by_pk?: Maybe<Campaign_Difficulty>;
-  /** fetch data from the table in a streaming manner : "campaign_difficulty" */
+  /** fetch data from the table in a streaming manner: "campaign_difficulty" */
   campaign_difficulty_stream: Array<Campaign_Difficulty>;
   /** fetch data from the table: "campaign_guide" */
   campaign_guide: Array<Campaign_Guide>;
   /** fetch aggregated fields from the table: "campaign_guide" */
   campaign_guide_aggregate: Campaign_Guide_Aggregate;
-  /** fetch data from the table in a streaming manner : "campaign_guide" */
+  /** fetch data from the table in a streaming manner: "campaign_guide" */
   campaign_guide_stream: Array<Campaign_Guide>;
   /** fetch data from the table: "campaign_investigator" */
   campaign_investigator: Array<Campaign_Investigator>;
@@ -18287,15 +18870,15 @@ export type Subscription_Root = {
   campaign_investigator_aggregate: Campaign_Investigator_Aggregate;
   /** fetch data from the table: "campaign_investigator" using primary key columns */
   campaign_investigator_by_pk?: Maybe<Campaign_Investigator>;
-  /** fetch data from the table in a streaming manner : "campaign_investigator" */
+  /** fetch data from the table in a streaming manner: "campaign_investigator" */
   campaign_investigator_stream: Array<Campaign_Investigator>;
-  /** fetch data from the table in a streaming manner : "campaign" */
+  /** fetch data from the table in a streaming manner: "campaign" */
   campaign_stream: Array<Campaign>;
   /** fetch data from the table: "campaigns_by_cycle" */
   campaigns_by_cycle: Array<Campaigns_By_Cycle>;
   /** fetch aggregated fields from the table: "campaigns_by_cycle" */
   campaigns_by_cycle_aggregate: Campaigns_By_Cycle_Aggregate;
-  /** fetch data from the table in a streaming manner : "campaigns_by_cycle" */
+  /** fetch data from the table in a streaming manner: "campaigns_by_cycle" */
   campaigns_by_cycle_stream: Array<Campaigns_By_Cycle>;
   /** fetch data from the table: "card" */
   card: Array<Card>;
@@ -18309,7 +18892,7 @@ export type Subscription_Root = {
   card_cycle_aggregate: Card_Cycle_Aggregate;
   /** fetch data from the table: "card_cycle" using primary key columns */
   card_cycle_by_pk?: Maybe<Card_Cycle>;
-  /** fetch data from the table in a streaming manner : "card_cycle" */
+  /** fetch data from the table in a streaming manner: "card_cycle" */
   card_cycle_stream: Array<Card_Cycle>;
   /** fetch data from the table: "card_encounter_set" */
   card_encounter_set: Array<Card_Encounter_Set>;
@@ -18317,7 +18900,7 @@ export type Subscription_Root = {
   card_encounter_set_aggregate: Card_Encounter_Set_Aggregate;
   /** fetch data from the table: "card_encounter_set" using primary key columns */
   card_encounter_set_by_pk?: Maybe<Card_Encounter_Set>;
-  /** fetch data from the table in a streaming manner : "card_encounter_set" */
+  /** fetch data from the table in a streaming manner: "card_encounter_set" */
   card_encounter_set_stream: Array<Card_Encounter_Set>;
   /** fetch data from the table: "card_pack" */
   card_pack: Array<Card_Pack>;
@@ -18325,9 +18908,9 @@ export type Subscription_Root = {
   card_pack_aggregate: Card_Pack_Aggregate;
   /** fetch data from the table: "card_pack" using primary key columns */
   card_pack_by_pk?: Maybe<Card_Pack>;
-  /** fetch data from the table in a streaming manner : "card_pack" */
+  /** fetch data from the table in a streaming manner: "card_pack" */
   card_pack_stream: Array<Card_Pack>;
-  /** fetch data from the table in a streaming manner : "card" */
+  /** fetch data from the table in a streaming manner: "card" */
   card_stream: Array<Card>;
   /** fetch data from the table: "card_subtype_name" */
   card_subtype_name: Array<Card_Subtype_Name>;
@@ -18335,7 +18918,7 @@ export type Subscription_Root = {
   card_subtype_name_aggregate: Card_Subtype_Name_Aggregate;
   /** fetch data from the table: "card_subtype_name" using primary key columns */
   card_subtype_name_by_pk?: Maybe<Card_Subtype_Name>;
-  /** fetch data from the table in a streaming manner : "card_subtype_name" */
+  /** fetch data from the table in a streaming manner: "card_subtype_name" */
   card_subtype_name_stream: Array<Card_Subtype_Name>;
   /** fetch data from the table: "card_text" */
   card_text: Array<Card_Text>;
@@ -18343,7 +18926,7 @@ export type Subscription_Root = {
   card_text_aggregate: Card_Text_Aggregate;
   /** fetch data from the table: "card_text" using primary key columns */
   card_text_by_pk?: Maybe<Card_Text>;
-  /** fetch data from the table in a streaming manner : "card_text" */
+  /** fetch data from the table in a streaming manner: "card_text" */
   card_text_stream: Array<Card_Text>;
   /** fetch data from the table: "card_type_code" */
   card_type_code: Array<Card_Type_Code>;
@@ -18351,7 +18934,7 @@ export type Subscription_Root = {
   card_type_code_aggregate: Card_Type_Code_Aggregate;
   /** fetch data from the table: "card_type_code" using primary key columns */
   card_type_code_by_pk?: Maybe<Card_Type_Code>;
-  /** fetch data from the table in a streaming manner : "card_type_code" */
+  /** fetch data from the table in a streaming manner: "card_type_code" */
   card_type_code_stream: Array<Card_Type_Code>;
   /** fetch data from the table: "card_type_name" */
   card_type_name: Array<Card_Type_Name>;
@@ -18359,7 +18942,7 @@ export type Subscription_Root = {
   card_type_name_aggregate: Card_Type_Name_Aggregate;
   /** fetch data from the table: "card_type_name" using primary key columns */
   card_type_name_by_pk?: Maybe<Card_Type_Name>;
-  /** fetch data from the table in a streaming manner : "card_type_name" */
+  /** fetch data from the table in a streaming manner: "card_type_name" */
   card_type_name_stream: Array<Card_Type_Name>;
   /** An array relationship */
   chaos_bag_result: Array<Chaos_Bag_Result>;
@@ -18367,7 +18950,7 @@ export type Subscription_Root = {
   chaos_bag_result_aggregate: Chaos_Bag_Result_Aggregate;
   /** fetch data from the table: "chaos_bag_result" using primary key columns */
   chaos_bag_result_by_pk?: Maybe<Chaos_Bag_Result>;
-  /** fetch data from the table in a streaming manner : "chaos_bag_result" */
+  /** fetch data from the table in a streaming manner: "chaos_bag_result" */
   chaos_bag_result_stream: Array<Chaos_Bag_Result>;
   /** fetch data from the table: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode: Array<Chaos_Bag_Tarot_Mode>;
@@ -18375,7 +18958,7 @@ export type Subscription_Root = {
   chaos_bag_tarot_mode_aggregate: Chaos_Bag_Tarot_Mode_Aggregate;
   /** fetch data from the table: "chaos_bag_tarot_mode" using primary key columns */
   chaos_bag_tarot_mode_by_pk?: Maybe<Chaos_Bag_Tarot_Mode>;
-  /** fetch data from the table in a streaming manner : "chaos_bag_tarot_mode" */
+  /** fetch data from the table in a streaming manner: "chaos_bag_tarot_mode" */
   chaos_bag_tarot_mode_stream: Array<Chaos_Bag_Tarot_Mode>;
   /** fetch data from the table: "cycle" */
   cycle: Array<Cycle>;
@@ -18389,9 +18972,9 @@ export type Subscription_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
-  /** fetch data from the table in a streaming manner : "cycle_name" */
+  /** fetch data from the table in a streaming manner: "cycle_name" */
   cycle_name_stream: Array<Cycle_Name>;
-  /** fetch data from the table in a streaming manner : "cycle" */
+  /** fetch data from the table in a streaming manner: "cycle" */
   cycle_stream: Array<Cycle>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
@@ -18399,7 +18982,7 @@ export type Subscription_Root = {
   faction_name_aggregate: Faction_Name_Aggregate;
   /** fetch data from the table: "faction_name" using primary key columns */
   faction_name_by_pk?: Maybe<Faction_Name>;
-  /** fetch data from the table in a streaming manner : "faction_name" */
+  /** fetch data from the table in a streaming manner: "faction_name" */
   faction_name_stream: Array<Faction_Name>;
   /** fetch data from the table: "faq" */
   faq: Array<Faq>;
@@ -18407,7 +18990,7 @@ export type Subscription_Root = {
   faq_aggregate: Faq_Aggregate;
   /** fetch data from the table: "faq" using primary key columns */
   faq_by_pk?: Maybe<Faq>;
-  /** fetch data from the table in a streaming manner : "faq" */
+  /** fetch data from the table in a streaming manner: "faq" */
   faq_stream: Array<Faq>;
   /** fetch data from the table: "faq_text" */
   faq_text: Array<Faq_Text>;
@@ -18415,7 +18998,7 @@ export type Subscription_Root = {
   faq_text_aggregate: Faq_Text_Aggregate;
   /** fetch data from the table: "faq_text" using primary key columns */
   faq_text_by_pk?: Maybe<Faq_Text>;
-  /** fetch data from the table in a streaming manner : "faq_text" */
+  /** fetch data from the table in a streaming manner: "faq_text" */
   faq_text_stream: Array<Faq_Text>;
   /** fetch data from the table: "friend_status" */
   friend_status: Array<Friend_Status>;
@@ -18423,7 +19006,7 @@ export type Subscription_Root = {
   friend_status_aggregate: Friend_Status_Aggregate;
   /** fetch data from the table: "friend_status" using primary key columns */
   friend_status_by_pk?: Maybe<Friend_Status>;
-  /** fetch data from the table in a streaming manner : "friend_status" */
+  /** fetch data from the table in a streaming manner: "friend_status" */
   friend_status_stream: Array<Friend_Status>;
   /** fetch data from the table: "friend_status_type" */
   friend_status_type: Array<Friend_Status_Type>;
@@ -18431,7 +19014,7 @@ export type Subscription_Root = {
   friend_status_type_aggregate: Friend_Status_Type_Aggregate;
   /** fetch data from the table: "friend_status_type" using primary key columns */
   friend_status_type_by_pk?: Maybe<Friend_Status_Type>;
-  /** fetch data from the table in a streaming manner : "friend_status_type" */
+  /** fetch data from the table in a streaming manner: "friend_status_type" */
   friend_status_type_stream: Array<Friend_Status_Type>;
   /** fetch data from the table: "full_card" */
   full_card: Array<Full_Card>;
@@ -18439,7 +19022,7 @@ export type Subscription_Root = {
   full_card_aggregate: Full_Card_Aggregate;
   /** fetch data from the table: "full_card" using primary key columns */
   full_card_by_pk?: Maybe<Full_Card>;
-  /** fetch data from the table in a streaming manner : "full_card" */
+  /** fetch data from the table in a streaming manner: "full_card" */
   full_card_stream: Array<Full_Card>;
   /** fetch data from the table: "full_card_text" */
   full_card_text: Array<Full_Card_Text>;
@@ -18447,7 +19030,7 @@ export type Subscription_Root = {
   full_card_text_aggregate: Full_Card_Text_Aggregate;
   /** fetch data from the table: "full_card_text" using primary key columns */
   full_card_text_by_pk?: Maybe<Full_Card_Text>;
-  /** fetch data from the table in a streaming manner : "full_card_text" */
+  /** fetch data from the table in a streaming manner: "full_card_text" */
   full_card_text_stream: Array<Full_Card_Text>;
   /** fetch data from the table: "gender" */
   gender: Array<Gender>;
@@ -18455,7 +19038,7 @@ export type Subscription_Root = {
   gender_aggregate: Gender_Aggregate;
   /** fetch data from the table: "gender" using primary key columns */
   gender_by_pk?: Maybe<Gender>;
-  /** fetch data from the table in a streaming manner : "gender" */
+  /** fetch data from the table in a streaming manner: "gender" */
   gender_stream: Array<Gender>;
   /** fetch data from the table: "guide_achievement" */
   guide_achievement: Array<Guide_Achievement>;
@@ -18463,7 +19046,7 @@ export type Subscription_Root = {
   guide_achievement_aggregate: Guide_Achievement_Aggregate;
   /** fetch data from the table: "guide_achievement" using primary key columns */
   guide_achievement_by_pk?: Maybe<Guide_Achievement>;
-  /** fetch data from the table in a streaming manner : "guide_achievement" */
+  /** fetch data from the table in a streaming manner: "guide_achievement" */
   guide_achievement_stream: Array<Guide_Achievement>;
   /** fetch data from the table: "guide_input" */
   guide_input: Array<Guide_Input>;
@@ -18471,7 +19054,7 @@ export type Subscription_Root = {
   guide_input_aggregate: Guide_Input_Aggregate;
   /** fetch data from the table: "guide_input" using primary key columns */
   guide_input_by_pk?: Maybe<Guide_Input>;
-  /** fetch data from the table in a streaming manner : "guide_input" */
+  /** fetch data from the table in a streaming manner: "guide_input" */
   guide_input_stream: Array<Guide_Input>;
   /** An array relationship */
   investigator_data: Array<Investigator_Data>;
@@ -18479,19 +19062,19 @@ export type Subscription_Root = {
   investigator_data_aggregate: Investigator_Data_Aggregate;
   /** fetch data from the table: "investigator_data" using primary key columns */
   investigator_data_by_pk?: Maybe<Investigator_Data>;
-  /** fetch data from the table in a streaming manner : "investigator_data" */
+  /** fetch data from the table in a streaming manner: "investigator_data" */
   investigator_data_stream: Array<Investigator_Data>;
   /** An array relationship */
   latest_decks: Array<Latest_Decks>;
   /** An aggregate relationship */
   latest_decks_aggregate: Latest_Decks_Aggregate;
-  /** fetch data from the table in a streaming manner : "latest_decks" */
+  /** fetch data from the table in a streaming manner: "latest_decks" */
   latest_decks_stream: Array<Latest_Decks>;
   /** An array relationship */
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
-  /** fetch data from the table in a streaming manner : "local_decks" */
+  /** fetch data from the table in a streaming manner: "local_decks" */
   local_decks_stream: Array<Local_Decks>;
   /** fetch data from the table: "pack" */
   pack: Array<Pack>;
@@ -18505,9 +19088,9 @@ export type Subscription_Root = {
   pack_name_aggregate: Pack_Name_Aggregate;
   /** fetch data from the table: "pack_name" using primary key columns */
   pack_name_by_pk?: Maybe<Pack_Name>;
-  /** fetch data from the table in a streaming manner : "pack_name" */
+  /** fetch data from the table in a streaming manner: "pack_name" */
   pack_name_stream: Array<Pack_Name>;
-  /** fetch data from the table in a streaming manner : "pack" */
+  /** fetch data from the table in a streaming manner: "pack" */
   pack_stream: Array<Pack>;
   /** fetch data from the table: "taboo_set" */
   taboo_set: Array<Taboo_Set>;
@@ -18515,13 +19098,13 @@ export type Subscription_Root = {
   taboo_set_aggregate: Taboo_Set_Aggregate;
   /** fetch data from the table: "taboo_set" using primary key columns */
   taboo_set_by_pk?: Maybe<Taboo_Set>;
-  /** fetch data from the table in a streaming manner : "taboo_set" */
+  /** fetch data from the table in a streaming manner: "taboo_set" */
   taboo_set_stream: Array<Taboo_Set>;
   /** fetch data from the table: "user_campaigns" */
   user_campaigns: Array<User_Campaigns>;
   /** fetch aggregated fields from the table: "user_campaigns" */
   user_campaigns_aggregate: User_Campaigns_Aggregate;
-  /** fetch data from the table in a streaming manner : "user_campaigns" */
+  /** fetch data from the table in a streaming manner: "user_campaigns" */
   user_campaigns_stream: Array<User_Campaigns>;
   /** fetch data from the table: "user_flag" */
   user_flag: Array<User_Flag>;
@@ -18529,7 +19112,7 @@ export type Subscription_Root = {
   user_flag_aggregate: User_Flag_Aggregate;
   /** fetch data from the table: "user_flag" using primary key columns */
   user_flag_by_pk?: Maybe<User_Flag>;
-  /** fetch data from the table in a streaming manner : "user_flag" */
+  /** fetch data from the table in a streaming manner: "user_flag" */
   user_flag_stream: Array<User_Flag>;
   /** fetch data from the table: "user_flag_type" */
   user_flag_type: Array<User_Flag_Type>;
@@ -18537,25 +19120,25 @@ export type Subscription_Root = {
   user_flag_type_aggregate: User_Flag_Type_Aggregate;
   /** fetch data from the table: "user_flag_type" using primary key columns */
   user_flag_type_by_pk?: Maybe<User_Flag_Type>;
-  /** fetch data from the table in a streaming manner : "user_flag_type" */
+  /** fetch data from the table in a streaming manner: "user_flag_type" */
   user_flag_type_stream: Array<User_Flag_Type>;
   /** fetch data from the table: "user_friends" */
   user_friends: Array<User_Friends>;
   /** fetch aggregated fields from the table: "user_friends" */
   user_friends_aggregate: User_Friends_Aggregate;
-  /** fetch data from the table in a streaming manner : "user_friends" */
+  /** fetch data from the table in a streaming manner: "user_friends" */
   user_friends_stream: Array<User_Friends>;
   /** fetch data from the table: "user_received_friend_requests" */
   user_received_friend_requests: Array<User_Received_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_received_friend_requests" */
   user_received_friend_requests_aggregate: User_Received_Friend_Requests_Aggregate;
-  /** fetch data from the table in a streaming manner : "user_received_friend_requests" */
+  /** fetch data from the table in a streaming manner: "user_received_friend_requests" */
   user_received_friend_requests_stream: Array<User_Received_Friend_Requests>;
   /** fetch data from the table: "user_sent_friend_requests" */
   user_sent_friend_requests: Array<User_Sent_Friend_Requests>;
   /** fetch aggregated fields from the table: "user_sent_friend_requests" */
   user_sent_friend_requests_aggregate: User_Sent_Friend_Requests_Aggregate;
-  /** fetch data from the table in a streaming manner : "user_sent_friend_requests" */
+  /** fetch data from the table in a streaming manner: "user_sent_friend_requests" */
   user_sent_friend_requests_stream: Array<User_Sent_Friend_Requests>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
@@ -18563,7 +19146,7 @@ export type Subscription_Root = {
   user_settings_aggregate: User_Settings_Aggregate;
   /** fetch data from the table: "user_settings" using primary key columns */
   user_settings_by_pk?: Maybe<User_Settings>;
-  /** fetch data from the table in a streaming manner : "user_settings" */
+  /** fetch data from the table in a streaming manner: "user_settings" */
   user_settings_stream: Array<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
@@ -18571,7 +19154,7 @@ export type Subscription_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
-  /** fetch data from the table in a streaming manner : "users" */
+  /** fetch data from the table in a streaming manner: "users" */
   users_stream: Array<Users>;
 };
 
@@ -20039,6 +20622,7 @@ export type Taboo_Set_Bool_Exp = {
   active?: InputMaybe<Boolean_Comparison_Exp>;
   card_count?: InputMaybe<Int_Comparison_Exp>;
   cards?: InputMaybe<All_Card_Bool_Exp>;
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   current?: InputMaybe<Boolean_Comparison_Exp>;
   date?: InputMaybe<String_Comparison_Exp>;
@@ -20294,6 +20878,17 @@ export type User_Campaigns_Aggregate = {
   __typename?: 'user_campaigns_aggregate';
   aggregate?: Maybe<User_Campaigns_Aggregate_Fields>;
   nodes: Array<User_Campaigns>;
+};
+
+export type User_Campaigns_Aggregate_Bool_Exp = {
+  count?: InputMaybe<User_Campaigns_Aggregate_Bool_Exp_Count>;
+};
+
+export type User_Campaigns_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<User_Campaigns_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<User_Campaigns_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "user_campaigns" */
@@ -20569,6 +21164,17 @@ export type User_Flag_Aggregate = {
   __typename?: 'user_flag_aggregate';
   aggregate?: Maybe<User_Flag_Aggregate_Fields>;
   nodes: Array<User_Flag>;
+};
+
+export type User_Flag_Aggregate_Bool_Exp = {
+  count?: InputMaybe<User_Flag_Aggregate_Bool_Exp_Count>;
+};
+
+export type User_Flag_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<User_Flag_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<User_Flag_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "user_flag" */
@@ -20869,6 +21475,17 @@ export type User_Friends_Aggregate = {
   nodes: Array<User_Friends>;
 };
 
+export type User_Friends_Aggregate_Bool_Exp = {
+  count?: InputMaybe<User_Friends_Aggregate_Bool_Exp_Count>;
+};
+
+export type User_Friends_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<User_Friends_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<User_Friends_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "user_friends" */
 export type User_Friends_Aggregate_Fields = {
   __typename?: 'user_friends_aggregate_fields';
@@ -21017,6 +21634,17 @@ export type User_Received_Friend_Requests_Aggregate = {
   nodes: Array<User_Received_Friend_Requests>;
 };
 
+export type User_Received_Friend_Requests_Aggregate_Bool_Exp = {
+  count?: InputMaybe<User_Received_Friend_Requests_Aggregate_Bool_Exp_Count>;
+};
+
+export type User_Received_Friend_Requests_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<User_Received_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "user_received_friend_requests" */
 export type User_Received_Friend_Requests_Aggregate_Fields = {
   __typename?: 'user_received_friend_requests_aggregate_fields';
@@ -21163,6 +21791,17 @@ export type User_Sent_Friend_Requests_Aggregate = {
   __typename?: 'user_sent_friend_requests_aggregate';
   aggregate?: Maybe<User_Sent_Friend_Requests_Aggregate_Fields>;
   nodes: Array<User_Sent_Friend_Requests>;
+};
+
+export type User_Sent_Friend_Requests_Aggregate_Bool_Exp = {
+  count?: InputMaybe<User_Sent_Friend_Requests_Aggregate_Bool_Exp_Count>;
+};
+
+export type User_Sent_Friend_Requests_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<User_Sent_Friend_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "user_sent_friend_requests" */
@@ -21809,16 +22448,24 @@ export type Users_Bool_Exp = {
   _not?: InputMaybe<Users_Bool_Exp>;
   _or?: InputMaybe<Array<Users_Bool_Exp>>;
   all_decks?: InputMaybe<Campaign_Deck_Bool_Exp>;
+  all_decks_aggregate?: InputMaybe<Campaign_Deck_Aggregate_Bool_Exp>;
   campaigns?: InputMaybe<User_Campaigns_Bool_Exp>;
+  campaigns_aggregate?: InputMaybe<User_Campaigns_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   decks?: InputMaybe<Latest_Decks_Bool_Exp>;
+  decks_aggregate?: InputMaybe<Latest_Decks_Aggregate_Bool_Exp>;
   flags?: InputMaybe<User_Flag_Bool_Exp>;
+  flags_aggregate?: InputMaybe<User_Flag_Aggregate_Bool_Exp>;
   friends?: InputMaybe<User_Friends_Bool_Exp>;
+  friends_aggregate?: InputMaybe<User_Friends_Aggregate_Bool_Exp>;
   handle?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   local_decks?: InputMaybe<Local_Decks_Bool_Exp>;
+  local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Bool_Exp>;
   received_requests?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
+  received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Bool_Exp>;
   sent_requests?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
+  sent_requests_aggregate?: InputMaybe<User_Sent_Friend_Requests_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
 };
 
@@ -22075,7 +22722,7 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']>;
@@ -22089,7 +22736,7 @@ export type InsertNewDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type InsertNextLocalDeckMutationVariables = Exact<{
   previous_local_uuid?: InputMaybe<Scalars['String']>;
@@ -22161,7 +22808,7 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
+export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type DeleteArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int'];
@@ -22169,14 +22816,14 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
+export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null };
+export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null };
 
 export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -22184,7 +22831,7 @@ export type GetLatestLocalDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
+export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestArkhamDbDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -22192,14 +22839,14 @@ export type GetLatestArkhamDbDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
+export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestDeckQueryVariables = Exact<{
   deckId: Scalars['Int'];
 }>;
 
 
-export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type GetDeckHistoryQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -22239,7 +22886,7 @@ export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: nu
 
 export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
+export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
 
 export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
@@ -22249,7 +22896,7 @@ export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', s
 
 export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
 
 export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> };
 
@@ -22265,7 +22912,7 @@ export type GetCampaignQueryVariables = Exact<{
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -22293,7 +22940,7 @@ export type CampaignSubscriptionVariables = Exact<{
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int'];
@@ -22906,6 +23553,7 @@ export const LatestDeckFragmentDoc = gql`
     id
     uuid
     name
+    cycleCode
   }
   investigator_data {
     id

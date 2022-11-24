@@ -14,6 +14,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
 import useSingleCard from '@components/card/useSingleCard';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
+import ThinDeckListRow from './ThinDeckListRow';
 
 interface Props {
   deckIds: MiniDeckT[];

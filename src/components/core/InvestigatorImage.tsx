@@ -151,7 +151,7 @@ function InvestigatorImage({
       return (
         <View style={[
           styles.container,
-          round ? { borderRadius: size / 2 } : undefined,
+          round ? { borderRadius: size / 2, backgroundColor: colors.M, } : undefined,
           { width: size, height: size },
         ]}>
           <Placeholder Animation={loadingAnimation}>

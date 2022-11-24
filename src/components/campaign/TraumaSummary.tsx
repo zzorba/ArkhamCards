@@ -10,7 +10,6 @@ import space, { xs } from '@styles/space';
 import Card from '@data/types/Card';
 import { TINY_PHONE } from '@styles/sizes';
 
-
 interface Props {
   trauma: TraumaAndCardData;
   investigator: Card;
@@ -41,6 +40,7 @@ export function TraumaIconPile({ physical, mental, whiteText, paddingTop, tiny }
     </View>
   );
 }
+
 
 export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle, tiny }: Props) {
   const { colors, typography } = useContext(StyleContext);

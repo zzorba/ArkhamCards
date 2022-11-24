@@ -260,6 +260,7 @@ export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
       id: getCampaignId(campaign),
       name: campaign.name,
       trauma: campaign.investigatorData?.[deck.investigator_code] || {},
+      cycleCode: campaign.cycleCode,
     } : undefined;
   }
 }

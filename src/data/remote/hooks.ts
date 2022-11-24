@@ -525,6 +525,7 @@ export function useDeckHistoryRemote(id: DeckId, investigator: string, campaign:
           id: campaign.id.serverId,
           uuid: campaign.id.campaignId,
           name: campaign.name,
+          cycleCode: campaign.cycleCode,
         },
       }));
       deck = previousDeck;

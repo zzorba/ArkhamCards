@@ -235,6 +235,19 @@ function getCampaignName(cache: ApolloCache<unknown>, campaignId: number): strin
   }, true)?.name || '';
 }
 
+
+function getCampaignCycleCode(cache: ApolloCache<unknown>, campaignId: number): string {
+  return cache.readFragment<MiniCampaignFragment>({
+    fragment: MiniCampaignFragmentDoc,
+    fragmentName: 'MiniCampaign',
+    id: cache.identify({
+      __typename: 'campaign',
+      id: campaignId,
+    }),
+    returnPartialData: true,
+  }, true)?.cycleCode || '';
+}
+
 function getDeckCache(cache: ApolloCache<unknown>, userId: string | undefined): DeckCache {
   const cacheData = cache.readQuery<GetMyDecksQuery>({
     query: GetMyDecksDocument,
@@ -584,6 +597,7 @@ export function useDeckActions(): DeckActions {
     }
     const handle = getUserHandle(cache.current, userId);
     const campaignName = getCampaignName(cache.current, campaignId.serverId);
+    const cycleCode = getCampaignCycleCode(cache.current, campaignId.serverId);
     const content_hash = await hashDeck(deck);
     const variables = {
       campaign_id: campaignId.serverId,
@@ -618,6 +632,7 @@ export function useDeckActions(): DeckActions {
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             name: campaignName,
+            cycleCode,
           },
         },
       },

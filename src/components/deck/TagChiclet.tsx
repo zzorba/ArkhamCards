@@ -42,7 +42,7 @@ function TagChicletItem({ tag, selected, showIcon, includeShadow }: { tag: strin
 
 export default function TagChiclet({ tag }: ChicletProps) {
   return (
-    <View style={space.marginXs}>
+    <View style={[space.marginLeftXs, space.marginTopXs]}>
       <TagChicletItem tag={tag} />
     </View>
   );

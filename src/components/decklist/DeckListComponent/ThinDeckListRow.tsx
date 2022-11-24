@@ -11,7 +11,7 @@ import { map } from 'lodash';
 
 import { TouchableShrink } from '@components/core/Touchables';
 import TagChiclet from '@components/deck/TagChiclet';
-import { Campaign } from '@actions/types';
+import { Campaign, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { toRelativeDateString } from '@lib/datetime';
@@ -27,6 +27,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import TraumaSummary from '@components/campaign/TraumaSummary';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import AppIcon from '@icons/AppIcon';
+import EncounterIcon from '@icons/EncounterIcon';
+import COLORS from '@styles/colors';
+import TraumaPile from '@components/campaign/TraumaPile';
 
 interface Props {
   lang: string;
@@ -40,13 +43,14 @@ interface DetailProps {
   investigator?: Card;
   campaign?: Campaign;
   deck: LatestDeckT;
+  parsedDeck: ParsedDeck | undefined;
   lang: string;
 }
 
-function CircleIcon({ background, name, color }: { background: string; name: string; color: string }) {
+function CircleIcon({ background, name, color, size }: { background: string; name: string; color: string; size?: 'small' }) {
   return (
-    <View style={{ borderRadius: 14, width: 28, height: 28, backgroundColor: background, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-      <AppIcon name={name} size={22} color={color} />
+    <View style={{ borderRadius: size === 'small' ? 9 : 14, width: size === 'small' ? 18 : 28, height: size === 'small' ? 18 : 28, backgroundColor: background, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      <AppIcon name={name} size={size === 'small' ? 17 : 24} color={color} />
     </View>
   );
 }
@@ -54,18 +58,10 @@ function CircleIcon({ background, name, color }: { background: string; name: str
 function DeckListRowDetails({
   investigator,
   deck,
+  parsedDeck,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const [cards] = useLatestDeckCards(deck);
-  const { listSeperator } = useContext(LanguageContext);
-  const parsedDeck = useMemo(() => {
-    if (deck && cards) {
-      return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
-    }
-    return undefined;
-  }, [deck, cards, listSeperator]);
-  const traumaData = useMemo(() => deck.campaign?.trauma || {}, [deck.campaign]);
   const xpString = useMemo(() => {
     if (!parsedDeck) {
       return undefined;
@@ -84,8 +80,8 @@ function DeckListRowDetails({
 
   if (!parsedDeck || !xpString || !investigator) {
     return (
-      <Placeholder Animation={loadingAnimation}>
-        <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+      <Placeholder Animation={loadingAnimation}  style={[space.marginSideS, space.marginTopS]}>
+        <PlaceholderLine color={colors.L10} height={12} width={80} />
       </Placeholder>
     );
   }
@@ -93,40 +89,43 @@ function DeckListRowDetails({
     <View style={[
       styles.row,
       styles.footer,
-      { alignItems: 'center', flex: 1 },
+      { alignItems: 'flex-end', flex: 1 },
     ]}>
-      { deck.campaign ? (
-        <>
-          <CircleIcon background={colors.L10} color={colors.D30} name="book" />
-          <Text
-            style={[space.marginLeftXs, typography.text, { color: colors.D20 }, typography.italic, { flex: 1 }]}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-          >
-            { deck.campaign.name }
-          </Text>
-        </>
-      ) : (
-        <Text style={[typography.text, typography.italic, { color: colors.D10, flex: 1 }]}>
+      { !deck.campaign ? (
+        <Text style={[typography.text, typography.italic, space.paddingTopXs, { color: colors.D15, flex: 1 }]}>
           { t`No campaign` }
         </Text>
-      )}
-      <View style={space.paddingLeftS}>
-        <CircleIcon background={colors.L30} color={colors.D20} name="xp" />
-      </View>
-      <Text style={[typography.text, typography.italic, typography.dark]}>
-        { xpString }
-      </Text>
-      { !!parsedDeck.changes && parsedDeck.availableExperience > 0 && parsedDeck.changes.spentXp === 0 && (
-        <View style={space.marginLeftS}>
-          <CircleIcon background={colors.upgrade} color={colors.D30} name="upgrade" />
-        </View>
+      ) : (
+        <>
+          <View style={[styles.row, { alignItems: 'center', flex: 1 }]}>
+            <EncounterIcon color={colors.D20} size={20} encounter_code={deck.campaign.cycleCode || 'core'} />
+            <Text
+              style={[space.marginLeftXs, typography.text, { color: colors.D15 }, typography.italic, { flex: 1 }]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              { deck.campaign.name }
+            </Text>
+            <TraumaPile
+              investigator={investigator}
+              trauma={deck.campaign.trauma}
+            />
+            { !!parsedDeck.changes && (
+              <View style={[space.paddingLeftS, { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }]}>
+                <AppIcon name="xp-bold" size={24} color={colors.faction.dual.background} />
+                <Text style={[typography.text, typography.boldItalic, typography.dark]}>
+                  { (parsedDeck.availableExperience - parsedDeck.changes.spentXp > 0) ? `${parsedDeck.availableExperience - parsedDeck.changes.spentXp}` : `+${parsedDeck.availableExperience - parsedDeck.changes.spentXp}` }
+                </Text>
+              </View>
+            ) }
+          </View>
+          { !!parsedDeck.changes && parsedDeck.availableExperience > 0 && parsedDeck.changes.spentXp === 0 && (
+            <View style={space.marginLeftS}>
+              <CircleIcon background={colors.upgrade} color={colors.D30} name="upgrade" />
+            </View>
+          ) }
+        </>
       ) }
-      { !!deck.deck.problem && (
-        <View style={space.marginLeftS}>
-          <CircleIcon background={colors.warn} color={colors.D30} name="warning" />
-        </View>
-      )}
     </View>
   );
 }
@@ -151,7 +150,14 @@ export default function ThinDeckListRow({
     }
     return investigator.eliminated(deck.campaign?.trauma);
   }, [investigator, deck]);
-  const traumaData = useMemo(() => deck.campaign?.trauma || {}, [deck.campaign]);
+  const [cards] = useLatestDeckCards(deck);
+  const { listSeperator } = useContext(LanguageContext);
+  const parsedDeck = useMemo(() => {
+    if (deck && cards) {
+      return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
+    }
+    return undefined;
+  }, [deck, cards, listSeperator]);
 
   const contents = useMemo(() => {
     const faction = investigator?.factionCode();
@@ -169,9 +175,8 @@ export default function ThinDeckListRow({
 
     const date: undefined | string = deck.deck.date_update || deck.deck.date_creation;
     const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
-    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
     return (
-      <View style={[space.paddingSideS, space.paddingTopS]}>
+      <View style={[space.paddingSideS, space.paddingBottomXs]}>
         <View style={{ position: 'relative' }}>
           <RoundedFactionBlock
             faction={faction || 'neutral'}
@@ -187,26 +192,49 @@ export default function ThinDeckListRow({
                       <Text style={[typography.smallLabel, typography.italic, typography.white, { flex: 1 }]}>
                         { investigator?.name || '' }
                       </Text>
-                      <TraumaSummary
-                        investigator={investigator}
-                        trauma={traumaData}
-                        hideNone
-                        textStyle={[typography.smallLabel, typography.italic, typography.dark, space.paddingTopXs]}
-                        tiny
-                        whiteText
-                      />
+                      { !!parsedDeck && (
+                        <>
+                          { parsedDeck.experience > 0 && (
+                            <>
+                              <View style={[space.marginLeftS, { marginRight: 1 }]}>
+                                <AppIcon name="xp-bold" size={18} color={COLORS.white} />
+                              </View>
+                              <Text style={[typography.smallLabel, typography.boldItalic, typography.white]}>
+                                { t`${parsedDeck.experience} XP` }
+                              </Text>
+                            </>
+                          ) }
+                          <View style={[space.marginLeftS, { marginRight: 1 }]}>
+                            <AppIcon name="card-outline-bold" size={18} color={COLORS.white} />
+                          </View>
+                          <Text style={[typography.smallLabel, typography.boldItalic, typography.white]}>
+                            { t`×${parsedDeck.totalCardCount}` }
+                          </Text>
+                        </>
+                      ) }
+                      { !!deck.deck.problem && (
+                        <View style={space.marginLeftXs}>
+                          <CircleIcon
+                            size="small"
+                            background={investigator.faction_code === 'survivor' ? COLORS.white : colors.warn} color={colors.D30}
+                            name="warning-bold"
+                          />
+                        </View>
+                      )}
                     </View>
                   ) : (
                     <Placeholder Animation={loadingAnimation}>
-                      <PlaceholderLine color={colors.M} height={10} width={25} style={{ marginTop: 4, marginBottom: 2 }} />
+                      <PlaceholderLine color={colors.M} height={10} width={40} style={{ marginTop: 4, marginBottom: 2 }} />
                     </Placeholder>
                   ) }
+
                 </View>
               </RoundedFactionHeader>
             )}
             footer={(
               <DeckListRowDetails
                 deck={deck}
+                parsedDeck={parsedDeck}
                 investigator={investigator}
                 lang={lang}
               />
@@ -216,7 +244,7 @@ export default function ThinDeckListRow({
               <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                 <View style={{ width: 56 + s * 2 }} />
                 <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <AppIcon name="tag" size={20} color={colors.M} />
+                  <AppIcon name="tag-bold" size={20} color={colors.D15} />
                 </View>
                 { deck.tags?.length === 0 ? <TagChiclet tag={investigator?.factionCode() || 'neutral'} /> : map(deck.tags, tag => <TagChiclet tag={tag} />)}
               </View>
@@ -235,7 +263,7 @@ export default function ThinDeckListRow({
         </View>
       </View>
     );
-  }, [colors, yithian, eliminated, loadingAnimation, deck, investigator, lang, fontScale, width, typography]);
+  }, [parsedDeck, colors, yithian, eliminated, loadingAnimation, deck, investigator, lang, fontScale, width, typography]);
 
   if (!deck) {
     return (

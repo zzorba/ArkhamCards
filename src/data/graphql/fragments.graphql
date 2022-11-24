@@ -208,6 +208,7 @@ fragment LatestDeck on campaign_deck {
     id
     uuid
     name
+    cycleCode
   }
   investigator_data {
     id
