@@ -484,7 +484,13 @@ function getDeckChanges(
           return downTheRabbitHoleXp;
         }
 
-        return 1 + downTheRabbitHoleXp;
+        // DTRH satisfies the 1 minimum cost;
+        if (downTheRabbitHoleXp > 0) {
+          return downTheRabbitHoleXp;
+        }
+
+        // Alas, you have to pay the 1XP cost for this L0 card, sucker.
+        return 1;
       }
 
       // Check if this is a deja-vu eligible exile card.
