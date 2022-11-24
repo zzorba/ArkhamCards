@@ -940,7 +940,7 @@ export default class Card {
   }
 
   collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
-    if (this.encounter_code) {
+    if (this.encounter_code || this.subtype_code) {
       return this.quantity || 0;
     }
 
