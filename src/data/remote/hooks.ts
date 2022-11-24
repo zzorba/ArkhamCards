@@ -408,7 +408,7 @@ export function useMyDecksRemote(actions: DeckActions, live?: boolean): [MiniDec
   const dispatch = useAppDispatch();
   const checkForSync = useRef(false);
   const { data, loading: dataLoading, refetch } = useGetMyDecksQuery({
-    fetchPolicy: live ? 'cache-and-network' : 'cache-only',
+    fetchPolicy: 'cache-and-network',
     variables: {
       userId: userId || '',
     },
