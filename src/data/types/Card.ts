@@ -940,6 +940,10 @@ export default class Card {
   }
 
   collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
+    if (this.encounter_code) {
+      return this.quantity || 0;
+    }
+
     let quantity = (this.quantity || 0);
     if (this.pack_code === 'core') {
       if (packInCollection.no_core) {
