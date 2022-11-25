@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { keys, map, filter, findIndex, find } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import CheckListComponent, { ListItem } from './CheckListComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -141,7 +141,9 @@ export default function InvestigatorCheckListComponent({
     return (
       <View style={styles.row}>
         <ArkhamIcon name="per_investigator" size={16} color={colors.D10} />
-        <Text style={[typography.gameFont, space.paddingLeftXs, space.paddingTopXs]}>{t`Lead`}</Text>
+        <Text style={[typography.gameFont, space.paddingLeftXs, space.paddingTopXs]}>
+          { c('lead-investigator').t`Lead` }
+        </Text>
       </View>
     )
   }, [includeLeadInvestigator, typography, colors]);

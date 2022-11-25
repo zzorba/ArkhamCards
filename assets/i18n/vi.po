@@ -3020,9 +3020,6 @@ msgstr "Tiếp tục"
 msgid "Add new"
 msgstr ""
 
-msgid "Lead"
-msgstr ""
-
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr ""
@@ -5870,6 +5867,50 @@ msgid ""
 "their investigator card:"
 msgstr ""
 
+msgid "Customizable"
+msgstr ""
+
+msgid "0 XP"
+msgstr ""
+
+msgid "No campaign"
+msgstr ""
+
+#, javascript-format
+msgid "${ parsedDeck.experience } XP"
+msgstr ""
+
+msgid "×${ parsedDeck.totalCardCount }"
+msgstr ""
+
+msgid ""
+"Your ArkhamDB login has expired.\n"
+"\n"
+"You will need to login again on the Settings tab before you can save "
+"changes to this deck."
+msgstr ""
+
+msgid "Edit deck tags"
+msgstr ""
+
+msgid "Clear tags"
+msgstr ""
+
+msgid "Solo"
+msgstr ""
+
+msgid "Beginner"
+msgstr ""
+
+msgid "+ Add"
+msgstr ""
+
+msgid "Deck tags"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -8104,6 +8145,18 @@ msgid_plural "Keys"
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "tags"
+msgid "Add"
+msgstr ""
+
+msgctxt "tags"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "tags"
+msgid "None"
+msgstr ""
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -8122,6 +8175,10 @@ msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"
+msgstr ""
+
+msgctxt "lead-investigator"
+msgid "Lead"
 msgstr ""
 
 msgctxt "narration"
