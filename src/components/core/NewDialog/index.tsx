@@ -96,7 +96,7 @@ function NewDialog(props: Props) {
         ) : (
           <View style={[styles.header, { backgroundColor: backgroundColor || colors.D20 }]}>
             <View style={styles.columnCenter}>
-              <Text style={[typography.large, typography.inverted]}>{title}</Text>
+              <Text style={[typography.large, backgroundColor ? typography.white : typography.inverted]}>{title}</Text>
               { !!description && <Text style={[space.paddingTopXs, typography.small, backgroundColor ? typography.white : typography.invertedLight]}>{description}</Text> }
             </View>
             { dismissButton }

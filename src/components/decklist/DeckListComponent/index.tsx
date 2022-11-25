@@ -128,7 +128,6 @@ function useDeckTagPile(
       </View>
     ),
     allowDismiss: !dirty,
-    alignment: 'bottom',
     confirm: {
       disabled: !dirty,
       title: t`Save`,
