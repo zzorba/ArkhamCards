@@ -157,7 +157,8 @@ export async function newCustomDeck(
   problem: DeckProblemType | undefined,
   tabooSetId: number | undefined,
   meta: DeckMeta | undefined,
-  description: string | undefined
+  description: string | undefined,
+  tags: string | undefined
 ) {
   try {
     const deck = await newDeck(investigator, name, tabooSetId);
@@ -173,7 +174,7 @@ export async function newCustomDeck(
       meta,
       description,
       undefined,
-      deck.tags
+      tags
     );
   } catch (e) {
     console.log(e);

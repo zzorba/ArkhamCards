@@ -1,10 +1,11 @@
 import React, { useContext, useCallback } from 'react';
 import { View, Text } from 'react-native';
+import { find } from 'lodash';
+import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { TouchableShrink } from '@components/core/Touchables';
-import Card from '@data/types/Card';
 import AppIcon from '@icons/AppIcon';
 
 interface ChicletProps {
@@ -16,6 +17,53 @@ interface ButtonProps {
   selected: boolean;
   showIcon?: boolean;
   disabled?: boolean;
+}
+
+export const FIXED_TAGS = [
+  'guardian',
+  'rogue',
+  'seeker',
+  'survivor',
+  'neutral',
+  'solo',
+  'multiplayer',
+  'beginner',
+  'theme',
+];
+
+function translateTag(tag: string) {
+  switch(tag) {
+    case 'guardian':
+      return t`Guardian`;
+    case 'rogue':
+      return t`Rogue`;
+    case 'mystic':
+      return t`Mystic`;
+    case 'seeker':
+      return t`Seeker`;
+    case 'survivor':
+      return t`Survivor`;
+    case 'neutral':
+      return t`Neutral`;
+    case 'solo':
+      return t`Solo`;
+    case 'multiplayer':
+      return t`Multiplayer`;
+    case 'beginner':
+      return t`Beginner`;
+    case 'theme':
+      return t`Theme`;
+    default:
+      return undefined;
+  }
+}
+
+export function localizeTag(tag: string) {
+  return translateTag(tag) || tag;
+}
+
+export function unlocalizeTag(tag: string, lang: string): string {
+  return find(FIXED_TAGS, t => t === tag || translateTag(t)?.toLocaleLowerCase(lang) === tag.toLocaleLowerCase(lang)) || tag;
 }
 
 function TagChicletItem({ tag, selected, showIcon, includeShadow }: { tag: string; includeShadow?: boolean; selected?: boolean; showIcon?: boolean }) {
@@ -33,7 +81,7 @@ function TagChicletItem({ tag, selected, showIcon, includeShadow }: { tag: strin
       showIcon ? space.paddingRightS : space.paddingRightM, space.paddingLeftM,
     ]}>
       <Text style={[typography.text, selected ? { color: colors.L30 } : undefined]}>
-        { Card.factionCodeToName(tag, tag) }
+        { localizeTag(tag) }
       </Text>
       { !!showIcon && <AppIcon name={selected ? 'dismiss' : 'plus-thin'} size={18} color={selected ? colors.L30 : colors.D30} /> }
     </View>

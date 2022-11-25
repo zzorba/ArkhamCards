@@ -151,7 +151,7 @@ function InvestigatorImage({
       return (
         <View style={[
           styles.container,
-          round ? { borderRadius: size / 2, backgroundColor: colors.M, } : undefined,
+          round ? { borderRadius: size / 2, backgroundColor: colors.M } : undefined,
           { width: size, height: size },
         ]}>
           <Placeholder Animation={loadingAnimation}>
@@ -178,7 +178,7 @@ function InvestigatorImage({
           {
             width: size,
             height: size,
-            borderColor: colors.faction[card.factionCode()].border,
+            borderColor: round ? colors.faction[card.factionCode()].background : colors.faction[card.factionCode()].border,
             overflow: 'hidden',
           },
         ]}>
@@ -221,7 +221,7 @@ function InvestigatorImage({
             backgroundColor: colors.upgrade,
             flexDirection: 'row',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
           }}>
             <AppIcon size={size / 2.3} color={COLORS.D20} name={badge} />
           </View>

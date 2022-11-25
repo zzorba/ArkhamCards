@@ -335,6 +335,7 @@ function NewDeckOptionsDialog({
           slots,
           tabooSetId,
           problem: specialDeckMode === 'none' ? 'too_few_cards' : undefined,
+          tags: investigator.factionCode(),
         })).then(
           showNewDeck,
           () => {

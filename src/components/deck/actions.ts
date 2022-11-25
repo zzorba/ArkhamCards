@@ -380,6 +380,7 @@ export interface NewDeckParams {
   meta?: DeckMeta;
   problem?: DeckProblemType;
   description?: string;
+  tags?: string;
 }
 export const saveNewDeck = (
   userId: string | undefined,
@@ -396,7 +397,8 @@ export const saveNewDeck = (
           params.tabooSetId,
           params.meta,
           params.problem,
-          params.description
+          params.description,
+          params.tags
         );
         dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
         setTimeout(() => {
@@ -411,7 +413,8 @@ export const saveNewDeck = (
           params.problem,
           params.tabooSetId,
           params.meta,
-          params.description
+          params.description,
+          params.tags
         );
         handleAuthErrors<Deck>(
           newDeckPromise,

@@ -79,6 +79,7 @@ interface DialogOptions {
   title: string;
   description?: string;
   investigator?: Card;
+  backgroundColor?: string;
   confirm?: {
     title: string;
     icon?: DeckButtonIcon;
@@ -106,6 +107,7 @@ export function useDialog({
   title,
   description,
   investigator,
+  backgroundColor,
   confirm,
   dismiss,
   content,
@@ -177,6 +179,7 @@ export function useDialog({
     return (
       <NewDialog
         title={title}
+        backgroundColor={backgroundColor}
         description={description}
         investigator={investigator}
         dismissable={!!dismiss || allowDismiss}
@@ -192,7 +195,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, description, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [backgroundColor, forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, description, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,

@@ -126,6 +126,7 @@ function MyDecksComponent({
     <DeckListComponent
       searchOptions={searchOptions}
       customFooter={footer}
+      deckActions={deckActions}
       connectionProblemBanner={connectionProblemBanner}
       deckIds={deckIds}
       deckClicked={deckClicked}

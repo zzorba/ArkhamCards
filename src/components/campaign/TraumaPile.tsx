@@ -1,22 +1,17 @@
 import React, { useContext } from 'react';
 import { Text, TextStyle, View } from 'react-native';
-import { forEach, range, map } from 'lodash';
-import { c, t } from 'ttag';
+import { range, map } from 'lodash';
+import { t } from 'ttag';
 
 import { TraumaAndCardData } from '@actions/types';
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
-import space, { xs } from '@styles/space';
+import space from '@styles/space';
 import Card from '@data/types/Card';
-import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
   trauma: TraumaAndCardData;
   investigator: Card;
-  whiteText?: boolean;
-  hideNone?: boolean;
-  textStyle?: TextStyle | TextStyle[];
-  tiny?: boolean;
 }
 
 const HEART_WIDTH = 15;
@@ -64,8 +59,8 @@ function IconPile({ physical, mental }: { physical: number; mental: number }) {
 }
 
 
-export default function TraumaPile({ trauma, investigator }: { trauma: TraumaAndCardData; investigator: Card }) {
-  const { colors, typography } = useContext(StyleContext);
+export default function TraumaPile({ trauma, investigator }: Props) {
+  const { typography } = useContext(StyleContext);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   if (investigator.killed(trauma)) {

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import CardSearchComponent from '../cardlist/CardSearchComponent';

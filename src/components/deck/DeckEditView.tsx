@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';

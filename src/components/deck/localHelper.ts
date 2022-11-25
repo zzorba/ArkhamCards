@@ -11,7 +11,8 @@ export function newLocalDeck(
   tabooSetId?: number,
   meta?: DeckMeta,
   problem?: DeckProblemType,
-  description_md?: string
+  description_md?: string,
+  tags?: string
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
@@ -28,6 +29,7 @@ export function newLocalDeck(
     local: true,
     problem,
     version: '0.1',
+    tags,
   };
 }
 

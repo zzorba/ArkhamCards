@@ -353,6 +353,8 @@ export default function useParsedDeckComponent({
   }, [slots, cards, bondedCardsByName]);
   const limitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
   const [data, setData] = useState<DeckSection[]>([]);
+  const customizations = parsedDeck?.customizations;
+
   useEffect(() => {
     if (!parsedDeck?.investigatorBack || !visible) {
       return;
@@ -497,7 +499,7 @@ export default function useParsedDeckComponent({
     }
     currentIndex = sideIndex;
     setData(newData);
-  }, [requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
+  }, [customizations, requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
     showDraftCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';
@@ -553,7 +555,6 @@ export default function useParsedDeckComponent({
   }, [mode, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
-  const customizations = parsedDeck?.customizations;
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(

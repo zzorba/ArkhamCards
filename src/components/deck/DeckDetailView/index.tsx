@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { concat, find, forEach, flatMap, uniqBy, keys, map, filter, sortBy, trim, uniq } from 'lodash';
+import { find, forEach, flatMap, uniqBy, keys, map, filter, sortBy } from 'lodash';
 import {
   Linking,
   Platform,
@@ -15,6 +15,7 @@ import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t, c } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import ActionButton from 'react-native-action-button';
+import { format } from 'date-fns';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -25,10 +26,10 @@ import { deleteDeckAction } from '@components/deck/actions';
 import { CampaignId, CardId, DeckId, EditDeckState, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
-import { EditDeckProps } from '../DeckEditView';
-import { UpgradeDeckProps } from '../DeckUpgradeDialog';
-import { DeckHistoryProps } from '../DeckHistoryView';
-import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
+import { EditDeckProps } from '@components/deck/DeckEditView';
+import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
+import { DeckHistoryProps } from '@components/deck/DeckHistoryView';
+import { EditSpecialCardsProps } from '@components/deck/EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { AppState } from '@reducers';
@@ -40,28 +41,27 @@ import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/ho
 import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog, useDialog } from '@components/deck/dialogs';
 import { Toggles, useBackButton, useCopyAction, useEffectUpdate, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet, useToggles } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
-import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import DeckButton from '../controls/DeckButton';
-import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
-import DeckProblemBanner from '../DeckProblemBanner';
+import DeckButton from '@components/deck/controls/DeckButton';
+import { CardUpgradeDialogProps } from '@components/deck/CardUpgradeDialog';
+import DeckProblemBanner from '@components/deck/DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaign, useMyDecks } from '@data/hooks';
 import { DeckActions, useDeckActions } from '@data/remote/decks';
-import { format } from 'date-fns';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { DeckDraftProps } from '../DeckDraftView';
+import { DeckDraftProps } from '@components/deck/DeckDraftView';
 import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
-import { TagChicletButton } from '@components/deck/TagChiclet';
+import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import TextInputLine from '@components/core/NewDialog/TextInputLine';
+import useTagPile from '@components/deck/useTagPile';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -111,7 +111,7 @@ function useTagsDialog(
   deckActions: DeckActions,
   editable: boolean
 ): [React.ReactNode, string, () => void] {
-  const { listSeperator, lang } = useContext(LanguageContext);
+  const { listSeperator } = useContext(LanguageContext);
   const [{ myDecks }] = useMyDecks(deckActions);
   const dispatch = useDispatch();
   const allTags = useMemo(() => {
@@ -158,7 +158,7 @@ function useTagsDialog(
       }
     }
   }, [deck, deckEditsRef, dispatch]);
-  const [deckTags, toggleDeckTag,setDeckTag,syncTags] = useToggles(() => {
+  const [deckTags, toggleDeckTag, setDeckTag, syncTags] = useToggles(() => {
     if (deck?.tags) {
       const r: Toggles = {};
       forEach(deck.tags, t => {
@@ -177,101 +177,18 @@ function useTagsDialog(
       syncTags(r);
     }
   }, [deck]);
-  const [addVisible, setAddVisible] = useState(false);
-  const [newTag, setNewTag] = useState('');
-  const onShowAdd = useCallback(() => {
-    setAddVisible(true);
-    setNewTag('');
-  }, [setAddVisible, setNewTag]);
-  const onSubmitTag = useCallback(() => {
-    const tag = trim(newTag.replace(/,/g, '')).replace(' ', '-');
-    const fixedTag = find(
-      ['guardian', 'seeker', 'rogue', 'mystic', 'survivor', 'neutral'],
-      t => t.toLocaleLowerCase(lang) === tag.toLocaleLowerCase(lang) || Card.factionCodeToName(t, t).toLocaleLowerCase(lang) === tag.toLocaleLowerCase(lang)
-    );
-    setDeckTag(fixedTag || tag, true);
-    setAddVisible(false);
-  }, [setDeckTag, setAddVisible, lang, newTag]);
-  const sortedTags = useMemo(() => {
-    return sortBy(
-      uniq(
-        concat(
-          keys(allTags),
-          flatMap(deckTags, (value, tag) => value ? tag : []),
-          ['guardian', 'seeker', 'rogue', 'mystic', 'survivor', 'neutral']
-        )
-      ),
-      t => Card.factionCodeToName(t, t)
-    );
-  }, [allTags, deckTags]);
-  const cancelAddTag = useCallback(() => {
-    setAddVisible(false);
-  }, [setAddVisible]);
+  const allTagsList = useMemo(() => keys(allTags), [allTags]);
+  const [tagPile, setAddVisible] = useTagPile({ deckTags, toggleDeckTag, setDeckTag, allTags: allTagsList, editable });
   const { dialog, showDialog } = useDialog({
     title: editable ? t`Edit deck tags` : t`Deck tags`,
-    content: (
-      <View style={{ flexDirection: 'column' }}>
-        <View style={[{ flexDirection: 'row', flexWrap: 'wrap' }, space.paddingBottomS]}>
-          { map(sortedTags, t => (
-            <View style={space.paddingBottomXs} key={t}>
-              <TagChicletButton
-                tag={t}
-                onSelectTag={toggleDeckTag}
-                selected={!!deckTags[t]}
-                disabled={!editable}
-              />
-            </View>
-          )) }
-          { !addVisible && editable && (
-            <TagChicletButton
-              tag={t`+ Add`}
-              selected={false}
-              onSelectTag={onShowAdd}
-            />
-          )}
-        </View>
-        { !!addVisible && editable && (
-          <>
-            <TextInputLine
-              onSubmit={onSubmitTag}
-              value={newTag}
-              onChangeText={setNewTag}
-              shrink
-            />
-            <View style={[{ flexDirection: 'row' }, space.paddingTopS]}>
-              <DeckButton
-                thin
-                icon="plus-button"
-                title={c('tags').t`Add`}
-                onPress={onSubmitTag}
-                disabled={!newTag}
-                color={!newTag ? 'light_gray_outline' : 'dark_gray'}
-                noShadow
-              />
-              <DeckButton
-                thin
-                icon="dismiss"
-                leftMargin={s}
-                title={c('tags').t`Cancel`}
-                onPress={cancelAddTag}
-                color="light_gray"
-                noShadow
-              />
-            </View>
-          </>
-        ) }
-      </View>
-    ),
+    content: tagPile,
     allowDismiss: true,
   });
   const tagString = useMemo(() => {
     if (!deck?.tags) {
       return c('tags').t`None`;
     }
-    return map(
-      deck.tags,
-      t => Card.factionCodeToName(t, t)
-    ).join(listSeperator);
+    return sortBy(map(deck.tags, t => localizeTag(t)), t => t).join(listSeperator);
   }, [deck?.tags, listSeperator]);
   const showTheDialog = useCallback(() => {
     setAddVisible(false);

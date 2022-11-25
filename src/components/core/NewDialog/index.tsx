@@ -16,6 +16,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import AppModal from '../AppModal';
 import SectionHeader from './SectionHeader';
 import COLORS from '@styles/colors';
+import SpinnerLine from './SpinnerLine';
 
 interface Props {
   title: string;
@@ -31,6 +32,7 @@ interface Props {
   forceVerticalButtons?: boolean;
   maxHeightPercent?: number;
   noPadding?: boolean;
+  backgroundColor?: string;
 }
 function NewDialog(props: Props) {
   const {
@@ -47,6 +49,7 @@ function NewDialog(props: Props) {
     forceVerticalButtons,
     maxHeightPercent = 0.5,
     noPadding,
+    backgroundColor,
   } = props;
   const { lang } = useContext(LanguageContext);
   const { backgroundStyle, colors, shadow, typography, width, height } = useContext(StyleContext);
@@ -91,10 +94,10 @@ function NewDialog(props: Props) {
             { dismissButton }
           </CompactInvestigatorRow>
         ) : (
-          <View style={[styles.header, { backgroundColor: colors.D20 }]}>
+          <View style={[styles.header, { backgroundColor: backgroundColor || colors.D20 }]}>
             <View style={styles.columnCenter}>
               <Text style={[typography.large, typography.inverted]}>{title}</Text>
-              { !!description && <Text style={[space.paddingTopXs, typography.small, typography.invertedLight]}>{description}</Text> }
+              { !!description && <Text style={[space.paddingTopXs, typography.small, backgroundColor ? typography.white : typography.invertedLight]}>{description}</Text> }
             </View>
             { dismissButton }
           </View>
@@ -141,6 +144,7 @@ NewDialog.SectionHeader = SectionHeader;
 NewDialog.ContentLine = NewDialogContentLine;
 NewDialog.PickerItem = ItemPickerLine;
 NewDialog.TextInput = TextInputLine;
+NewDialog.SpinnerLine = SpinnerLine;
 export default NewDialog;
 
 const styles = StyleSheet.create({

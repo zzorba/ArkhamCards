@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch } from '@app/store';
 import { CampaignId, Customizations, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
-import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
+import { Toggles, useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import { parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
@@ -542,4 +542,91 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
   }, [componentId, campaignId, investigator, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
 
   return campaignId ? showCampaignWeaknessDialog : drawWeakness;
+}
+
+
+interface UpdateDeckAction {
+  type: 'update-deck';
+  initialTags: string[];
+}
+
+interface SetToggleAction {
+  type: 'set-toggle';
+  key: string | number;
+  value: boolean;
+}
+
+interface ToggleAction {
+  type: 'toggle';
+  key: string;
+}
+
+interface DeckTagsState {
+  deckTags: Toggles;
+  initialTags: string[];
+  dirty: boolean;
+}
+
+type DeckTagsAction = UpdateDeckAction | SetToggleAction | ToggleAction;
+
+function isDirty(originalDeckTags: string[], tags: Toggles) {
+  return !!find(originalDeckTags, t => !tags[t]) ||
+    !!find(tags, (value, t) => !!value && !find(originalDeckTags, t2 => t === t2));
+}
+
+interface DeckTagsResult {
+  deckTags: Toggles;
+  toggleDeckTag: (tag: string) => void;
+  setDeckTag: (tag: string, value: boolean) => void;
+  setInitialTags: (tags: string[]) => void;
+  dirty: boolean;
+}
+
+export function useDeckTags(): DeckTagsResult {
+  const [{ deckTags, dirty }, updateTags] = useReducer(
+    (state: DeckTagsState, action: DeckTagsAction): DeckTagsState => {
+      switch (action.type) {
+        case 'set-toggle':
+        case 'toggle': {
+          const toggles = {
+            ...state.deckTags,
+            [action.key]: action.type === 'set-toggle' ? action.value : !state.deckTags[action.key],
+          };
+          return {
+            initialTags: state.initialTags,
+            deckTags: toggles,
+            dirty: isDirty(state.initialTags, toggles),
+          };
+        }
+        case 'update-deck': {
+          const toggles: Toggles = {};
+          forEach(action.initialTags, t => {
+            toggles[t] = true;
+          });
+          return {
+            initialTags: action.initialTags,
+            deckTags: toggles,
+            dirty: false,
+          };
+        }
+      }
+    },
+    { initialTags: [], deckTags: {}, dirty: false },
+  );
+  const toggleDeckTag = useCallback((tag: string) => {
+    updateTags({ type: 'toggle', key: tag })
+  }, [updateTags]);
+  const setDeckTag = useCallback((tag: string, value: boolean) => {
+    updateTags({ type: 'set-toggle', key: tag, value });
+  }, [updateTags]);
+  const setInitialTags = useCallback((initialTags: string[]) => {
+    updateTags({ type: 'update-deck', initialTags });
+  }, [updateTags]);
+  return {
+    deckTags,
+    dirty,
+    toggleDeckTag,
+    setDeckTag,
+    setInitialTags,
+  };
 }

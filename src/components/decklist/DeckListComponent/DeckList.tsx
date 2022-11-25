@@ -6,7 +6,6 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { Toggles, useInvestigators, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
-import NewDeckListRow from './NewDeckListRow';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
@@ -27,15 +26,18 @@ interface Props {
   onScroll: (...args: any[]) => void;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   selectedTags: Toggles;
+  onEditDeckTags: (deck: LatestDeckT, investigator: Card | undefined) => void;
 }
 
 function DeckListItem({
   deckId,
   deckClicked,
   deckToCampaign,
+  editDeckTags,
 }: {
   deckId: MiniDeckT;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  editDeckTags: (deck: LatestDeckT, investigator: Card | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
 }) {
   const { width } = useContext(StyleContext);
@@ -46,12 +48,13 @@ function DeckListItem({
     return null;
   }
   return (
-    <NewDeckListRow
+    <ThinDeckListRow
       key={deckId.id.uuid}
       lang={lang}
       deck={deck}
       investigator={investigator}
       onPress={deckClicked}
+      editDeckTags={editDeckTags}
       width={width}
     />
   );
@@ -63,6 +66,7 @@ export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,
   footer, onRefresh, onScroll, deckClicked,
   selectedTags,
+  onEditDeckTags,
 }: Props) {
   const lowMemory = useSettingValue('low_memory');
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
@@ -74,12 +78,12 @@ export default function DeckList({
         if (!deckId) {
           return false;
         }
-        if (chosenTags.length && !every(chosenTags, tag => !!find(deckId.tags || [], t => tag === t))) {
-          return false;
-        }
         const investigator = investigators && investigators[deckId.investigator];
         if (!investigator) {
           return true;
+        }
+        if (chosenTags.length && !every(chosenTags, tag => deckId.tags?.length ? !!find(deckId.tags || [], t => tag === t) : tag === investigator.factionCode())) {
+          return false;
         }
         return searchMatchesText(searchTerm, [deckId.name, investigator.name]);
       }), deckId => {
@@ -109,9 +113,10 @@ export default function DeckList({
         deckId={deckId}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
+        editDeckTags={onEditDeckTags}
       />
     );
-  }, [deckClicked, deckToCampaign]);
+  }, [deckClicked, onEditDeckTags, deckToCampaign]);
   const [debouncedRefreshing] = useDebounce(!!refreshing, 100, { leading: true });
   const renderHeader = useCallback(() => header || null, [header]);
   const renderFooter = useCallback(() => footer(items.length === 0), [footer, items.length]);

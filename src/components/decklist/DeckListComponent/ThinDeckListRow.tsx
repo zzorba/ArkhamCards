@@ -14,22 +14,20 @@ import TagChiclet from '@components/deck/TagChiclet';
 import { Campaign, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
-import { TINY_PHONE } from '@styles/sizes';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import TraumaSummary from '@components/campaign/TraumaSummary';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import TraumaPile from '@components/campaign/TraumaPile';
+import Ripple from '@lib/react-native-material-ripple';
 
 interface Props {
   lang: string;
@@ -37,6 +35,7 @@ interface Props {
   investigator?: Card;
   onPress?: (deck: LatestDeckT, investigator: Card | undefined) => void;
   width: number;
+  editDeckTags?: (deck: LatestDeckT, investigator: Card | undefined) => void;
 }
 
 interface DetailProps {
@@ -80,7 +79,7 @@ function DeckListRowDetails({
 
   if (!parsedDeck || !xpString || !investigator) {
     return (
-      <Placeholder Animation={loadingAnimation}  style={[space.marginSideS, space.marginTopS]}>
+      <Placeholder Animation={loadingAnimation} style={[space.marginSideS, space.marginTopS]}>
         <PlaceholderLine color={colors.L10} height={12} width={80} />
       </Placeholder>
     );
@@ -89,18 +88,19 @@ function DeckListRowDetails({
     <View style={[
       styles.row,
       styles.footer,
-      { alignItems: 'flex-end', flex: 1 },
+      { alignItems: 'flex-end' },
+      styles.flex,
     ]}>
       { !deck.campaign ? (
-        <Text style={[typography.text, typography.italic, space.paddingTopXs, { color: colors.D15, flex: 1 }]}>
+        <Text style={[typography.text, typography.italic, space.paddingTopXs, { color: colors.D15 }, styles.flex]}>
           { t`No campaign` }
         </Text>
       ) : (
         <>
-          <View style={[styles.row, { alignItems: 'center', flex: 1 }]}>
+          <View style={[styles.row, { alignItems: 'center' }, styles.flex]}>
             <EncounterIcon color={colors.D20} size={20} encounter_code={deck.campaign.cycleCode || 'core'} />
             <Text
-              style={[space.marginLeftXs, typography.text, { color: colors.D15 }, typography.italic, { flex: 1 }]}
+              style={[space.marginLeftXs, typography.text, { color: colors.D15 }, typography.italic, styles.flex]}
               numberOfLines={1}
               ellipsizeMode="tail"
             >
@@ -136,6 +136,7 @@ export default function ThinDeckListRow({
   investigator,
   onPress,
   width,
+  editDeckTags,
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
@@ -143,6 +144,9 @@ export default function ThinDeckListRow({
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
+  const onEditDeckTags = useCallback(() => {
+    editDeckTags?.(deck, investigator);
+  }, [editDeckTags, deck, investigator]);
   const yithian = useMemo(() => !!deck.deck.slots && (deck.deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.deck.slots]);
   const eliminated = useMemo(() => {
     if (!investigator) {
@@ -158,6 +162,15 @@ export default function ThinDeckListRow({
     }
     return undefined;
   }, [deck, cards, listSeperator]);
+  const tags = useMemo(() => {
+    if (deck?.tags?.length) {
+      return deck.tags;
+    }
+    if (!investigator) {
+      return undefined;
+    }
+    return [investigator.factionCode()];
+  }, [deck, investigator])
 
   const contents = useMemo(() => {
     const faction = investigator?.factionCode();
@@ -172,9 +185,6 @@ export default function ThinDeckListRow({
         </View>
       );
     }
-
-    const date: undefined | string = deck.deck.date_update || deck.deck.date_creation;
-    const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
     return (
       <View style={[space.paddingSideS, space.paddingBottomXs]}>
         <View style={{ position: 'relative' }}>
@@ -183,13 +193,13 @@ export default function ThinDeckListRow({
             noSpace
             header={(
               <RoundedFactionHeader faction={faction} width={width - s * 2}>
-                <View style={[space.paddingLeftS, { marginLeft: 65 + s, flexDirection: 'column', flex: 1 }]}>
+                <View style={[space.paddingLeftS, { marginLeft: 60 + s, flexDirection: 'column' }, styles.flex]}>
                   <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
                     { deck.deck.name }
                   </Text>
                   { investigator?.name ? (
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={[typography.smallLabel, typography.italic, typography.white, { flex: 1 }]}>
+                      <Text style={[typography.smallLabel, typography.italic, typography.white, styles.flex]}>
                         { investigator?.name || '' }
                       </Text>
                       { !!parsedDeck && (
@@ -241,13 +251,26 @@ export default function ThinDeckListRow({
             )}
           >
             <View style={styles.deckRow}>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              <View style={[{ flexDirection: 'row', flexWrap: 'wrap' }, styles.flex]}>
                 <View style={{ width: 56 + s * 2 }} />
                 <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <AppIcon name="tag-bold" size={20} color={colors.D15} />
+                  <AppIcon name="tag-bold" size={18 * fontScale} color={colors.M} />
                 </View>
-                { deck.tags?.length === 0 ? <TagChiclet tag={investigator?.factionCode() || 'neutral'} /> : map(deck.tags, tag => <TagChiclet tag={tag} />)}
+                { !!tags ? map(tags, tag => <TagChiclet key={tag} tag={tag} />) : (
+                  <Placeholder style={styles.flex} Animation={loadingAnimation}>
+                    <PlaceholderLine color={colors.L10} height={30} width={40} style={{ marginLeft: 4, marginTop: 4, marginBottom: 2, borderRadius: 16 }} />
+                  </Placeholder>
+                )}
               </View>
+              { !!editDeckTags && (
+                <View style={[space.marginLeftXs, space.marginRightXs, space.marginTopXs]}>
+                  <Ripple onPress={onEditDeckTags} style={{ width: 32, height: 32, borderRadius: 16 }} rippleColor={colors.L10}>
+                    <View style={{ minWidth: 32, minHeight: 32, borderRadius: 16, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <AppIcon name="extra" size={24} color={colors.D10} />
+                    </View>
+                  </Ripple>
+                </View>
+              ) }
             </View>
           </RoundedFactionBlock>
           <View style={styles.image}>
@@ -263,7 +286,7 @@ export default function ThinDeckListRow({
         </View>
       </View>
     );
-  }, [parsedDeck, colors, yithian, eliminated, loadingAnimation, deck, investigator, lang, fontScale, width, typography]);
+  }, [parsedDeck, colors, yithian, eliminated, editDeckTags, onEditDeckTags, tags, loadingAnimation, deck, investigator, lang, fontScale, width, typography]);
 
   if (!deck) {
     return (
@@ -287,32 +310,12 @@ export default function ThinDeckListRow({
 }
 
 const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-  },
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  investigatorBlockRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  investigatorBlock: {
-    paddingTop: s,
-    paddingBottom: s,
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
   loading: {
     marginLeft: 10,
-  },
-  titleColumn: {
-    flex: 1,
   },
   image: {
     position: 'absolute',
@@ -331,11 +334,6 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     paddingRight: 6,
     paddingBottom: 6,
-  },
-  detailLine: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
   flex: {
     flex: 1,
