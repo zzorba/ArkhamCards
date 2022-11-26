@@ -43,6 +43,7 @@ interface Props {
   searchOptions?: SearchOptions;
   isEmpty?: boolean;
   deckActions: DeckActions;
+  tagsEditable?: boolean;
 }
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action>;
@@ -183,6 +184,7 @@ export default function DeckListComponent({
   searchOptions,
   isEmpty,
   deckActions,
+  tagsEditable,
 }: Props) {
   const { width, typography } = useContext(StyleContext);
   const [searchTerm, setSearchTerm] = useState('');
@@ -269,7 +271,7 @@ export default function DeckListComponent({
             refreshing={refreshing}
             onScroll={onScroll}
             deckClicked={handleDeckClick}
-            onEditDeckTags={onEditDeckTags}
+            onEditDeckTags={tagsEditable ? onEditDeckTags : undefined}
           />
         ) }
       </CollapsibleSearchBox>

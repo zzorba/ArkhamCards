@@ -134,6 +134,7 @@ function MyDecksComponent({
       onRefresh={signedIn || userId ? doRefresh : undefined}
       refreshing={refreshing}
       isEmpty={myDecks.length === 0}
+      tagsEditable={live}
     />
   );
 }

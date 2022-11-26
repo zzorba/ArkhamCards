@@ -26,7 +26,7 @@ interface Props {
   onScroll: (...args: any[]) => void;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
   selectedTags: Toggles;
-  onEditDeckTags: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  onEditDeckTags?: (deck: LatestDeckT, investigator: Card | undefined) => void;
 }
 
 function DeckListItem({
@@ -37,7 +37,7 @@ function DeckListItem({
 }: {
   deckId: MiniDeckT;
   deckClicked: (deck: LatestDeckT, investigator: Card | undefined) => void;
-  editDeckTags: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  editDeckTags?: (deck: LatestDeckT, investigator: Card | undefined) => void;
   deckToCampaign?: { [uuid: string]: Campaign };
 }) {
   const { width } = useContext(StyleContext);
