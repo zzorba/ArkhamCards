@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 
 msgid "Guardian"
 msgstr "Guardiano"
@@ -5190,7 +5190,7 @@ msgid "Two-part campaign variant"
 msgstr ""
 
 msgid "Claim previous scenario XP"
-msgstr "Reclama gli XP dello scenario precedente"
+msgstr "Reclama i PE dallo scenario precedente"
 
 msgid "Apply changes from last completed scenario"
 msgstr "Applica le modifiche dall'ultimo scenario completato"
@@ -5783,8 +5783,8 @@ msgstr ""
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] "${ xp } XP"
-msgstr[1] "${ xp } XP"
+msgstr[0] "${ xp } PE"
+msgstr[1] "${ xp } PE"
 
 msgid "Show selected customizations"
 msgstr "Mostra le personalizzazioni selezionate"
@@ -5794,7 +5794,7 @@ msgstr "Mostra tutte le personalizzazioni"
 
 #, javascript-format
 msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
-msgstr "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
+msgstr "${ scenario.scenario } (${ resolution }, ${ scenarioXp } PE)"
 
 msgid "The Scarlet Keys"
 msgstr ""
@@ -6246,14 +6246,14 @@ msgid "Customizable"
 msgstr ""
 
 msgid "0 XP"
-msgstr ""
+msgstr "0 PE"
 
 msgid "No campaign"
 msgstr ""
 
 #, javascript-format
 msgid "${ parsedDeck.experience } XP"
-msgstr ""
+msgstr "${ parsedDeck.experience } PE"
 
 msgid "×${ parsedDeck.totalCardCount }"
 msgstr ""
