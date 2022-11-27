@@ -5888,6 +5888,13 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
+#, javascript-format
+msgid "${ scenarioName }: Visit ${ attempt }"
+msgid_plural "${ scenarioName }: Visit ${ attempt }"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""

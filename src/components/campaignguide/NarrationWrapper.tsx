@@ -214,7 +214,7 @@ function showDeKofi() {
 }
 
 function showRuDonate() {
-  Linking.openURL('https://www.tinkoff.ru/cf/5Cbm7NvL1uF');
+  Linking.openURL('https://www.tinkoff.ru/cf/7jxHy5hZGXH');
 }
 
 function PlayerView({ style }: PlayerProps) {
