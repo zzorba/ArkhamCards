@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import SnapCarousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
-import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
+import { dropRightWhile, find, findIndex, findLast, findLastIndex, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -122,7 +122,7 @@ export default function ScenarioCarouselComponent({
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
       const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
-        (campaignLog.campaignData.scenarioReplayCount[location.scenario] || 0) + 1 :
+        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === location.scenario ? 1 : 0):
         undefined;
       const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {
@@ -165,6 +165,7 @@ export default function ScenarioCarouselComponent({
   }, [
     onEmbarkSide,
     componentId,
+    processedCampaign,
     currentLocationId,
     campaignLog, campaignId, campaignState, interScenarioId, campaignMap]);
 
