@@ -692,6 +692,8 @@ export function useSettingValue(setting: MiscSetting): boolean {
       case 'android_one_ui_fix': return !!state.settings.androidOneUiFix;
       case 'low_memory':
         return Platform.OS === 'android' || !!state.settings.lowMemory;
+      case 'search_english':
+        return !!state.settings.searchEnglish;
     }
   });
 }

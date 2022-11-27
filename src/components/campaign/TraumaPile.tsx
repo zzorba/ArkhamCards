@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text, TextStyle, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { range, map } from 'lodash';
 import { t } from 'ttag';
 

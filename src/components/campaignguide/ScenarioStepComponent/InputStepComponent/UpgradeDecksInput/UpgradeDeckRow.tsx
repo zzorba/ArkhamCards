@@ -589,7 +589,7 @@ function UpgradeDeckRow({
     }
   }, [deck?.id, onExileCountChange, exileCounts, componentId])
   const specialExileSection = useMemo(() => {
-    const exileOtherButton = (choices === undefined && deck?.id.local && (exile || (exileCounts[BURN_AFTER_READING_CODE] || 0 > 0)) && !saving) ? (
+    const exileOtherButton = (choices === undefined && deck?.id.local && (exile || (exileCounts[BURN_AFTER_READING_CODE] || 0) > 0) && !saving) ? (
       <ArkhamButton
         icon="card"
         title={t`Exile other cards`}

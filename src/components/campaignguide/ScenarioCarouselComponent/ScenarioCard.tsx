@@ -46,7 +46,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       ];
     }
     return [scenarioName, actualName];
-  }, [campaignMap, scenario, campaignMap]);
+  }, [scenario, campaignMap]);
   const onPress = useCallback(() => {
     showScenario(scenario);
   }, [showScenario, scenario]);

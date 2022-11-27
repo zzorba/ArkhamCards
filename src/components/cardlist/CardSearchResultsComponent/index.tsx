@@ -234,6 +234,7 @@ export default function({
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
   const customContent = useSettingValue('custom_content');
+  const searchEnglish = useSettingValue('search_english');
   const showCustomContent = customContent && (!deckId || deckId.local);
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
   const [searchState, setSearchState] = useState<SearchState>(EMPTY_SEARCH_STATE);
@@ -266,12 +267,18 @@ export default function({
       return combineQueriesOpt(parts, 'and');
     }
     const safeSearchTerm = `%${searchNormalize(searchTerm, lang)}%`;
-    parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
+    const searchRealName = lang !== 'en' && searchEnglish;
+    parts.push(where(
+      searchRealName ?
+        '(c.s_search_name like :searchTerm OR c.s_search_real_name like :searchTerm)' :
+        'c.s_search_name like :searchTerm',
+      { searchTerm: safeSearchTerm }
+    ));
     if (searchBack) {
       parts.push(where([
-        'c.s_search_name_back like :searchTerm',
-        '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
-        '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
+        searchRealName ? 'c.s_search_name_back like :searchTerm OR c.s_search_real_name_back like :searchTerm' : 'c.s_search_name_back like :searchTerm',
+        searchRealName ? '(c.linked_card is not null AND (linked_card.s_search_name like :searchTerm OR linked_card.s_search_real_name like :searchTerm))' : '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
+        searchRealName ? '(c.linked_card is not null AND (linked_card.s_search_name_back like :searchTerm OR linked_card.s_search_real_name_back like :searchTerm))' : '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
       ].join(' OR '), { searchTerm: safeSearchTerm }
       ));
     }
@@ -296,7 +303,7 @@ export default function({
       }
     }
     return combineQueriesOpt(parts, 'or');
-  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang]);
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang, searchEnglish]);
 
   const controls = (
     <SearchOptions

@@ -122,7 +122,7 @@ export default function ScenarioCarouselComponent({
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
       const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
-        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === location.scenario ? 1 : 0):
+        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === location.scenario ? 1 : 0) :
         undefined;
       const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {

@@ -156,6 +156,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
 
   const [campaignShowDeckId, setCampaignShowDeckId] = useRemoteSettingFlag('campaign_show_deck_id', updateRemoteSetting);
   const [lowMemory, setLowMemory] = useSettingFlag('low_memory');
+  const [searchEnglish, setSearchEnglish] = useSettingFlag('search_english');
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -257,6 +258,15 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   description={t`Have the app preload fewer cards to help performance on older devices`}
                   value={lowMemory}
                   onValueChange={setLowMemory}
+                />
+              ) }
+              { lang !== 'en' && (
+                <DeckCheckboxButton
+                  icon="search"
+                  title={t`Search english card names`}
+                  description={t`Include english results when searching`}
+                  value={searchEnglish}
+                  onValueChange={setSearchEnglish}
                 />
               ) }
               { Platform.OS === 'android' && (

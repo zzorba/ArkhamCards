@@ -6492,7 +6492,12 @@ msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+
+msgid "Search english card names"
+msgstr ""
+
+msgid "Include english results when searching"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

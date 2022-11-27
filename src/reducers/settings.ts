@@ -59,6 +59,7 @@ interface SettingsState {
   dismissedOnboarding?: string[];
   campaignShowDeckId?: boolean;
   lowMemory?: boolean;
+  searchEnglish?: boolean;
   startingTab?: StartingTabType;
   investigatorSort?: SortType;
 }
@@ -262,6 +263,11 @@ export default function(
           return {
             ...state,
             lowMemory: LOW_MEMORY_DEVICE ? !action.value : action.value,
+          };
+        case 'search_english':
+          return {
+            ...state,
+            searchEnglish: action.value,
           };
       }
       return state;
