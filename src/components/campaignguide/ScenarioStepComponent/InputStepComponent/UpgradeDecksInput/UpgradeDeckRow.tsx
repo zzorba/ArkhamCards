@@ -8,7 +8,7 @@ import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showCard } from '@components/nav/helper';
-import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { BODY_OF_A_YITHIAN, BURN_AFTER_READING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
@@ -589,30 +589,35 @@ function UpgradeDeckRow({
     }
   }, [deck?.id, onExileCountChange, exileCounts, componentId])
   const specialExileSection = useMemo(() => {
+    const exileOtherButton = (choices === undefined && deck?.id.local && (exile || (exileCounts[BURN_AFTER_READING_CODE] || 0 > 0)) && !saving) ? (
+      <ArkhamButton
+        icon="card"
+        title={t`Exile other cards`}
+        onPress={onExileMorePressed}
+      />
+    ) : null;
     if ((choices === undefined && editable ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
       return (
-        <CardSelectorComponent
-          componentId={componentId}
-          slots={specialExileSlots}
-          counts={specialExile}
-          filterCard={isExile}
-          updateCount={updateSpecialExileCount}
-          header={(choices !== undefined || !deck) && !exile && (
-            <View style={space.paddingSideS}>
-              <DeckSlotHeader title={editable && choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
-            </View>
-          )}
-          locked={saving || !!choices || !editable}
-        />
+        <>
+          <CardSelectorComponent
+            componentId={componentId}
+            slots={specialExileSlots}
+            counts={specialExile}
+            filterCard={isExile}
+            updateCount={updateSpecialExileCount}
+            header={(choices !== undefined || !deck) && !exile && (
+              <View style={space.paddingSideS}>
+                <DeckSlotHeader title={editable && choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
+              </View>
+            )}
+            locked={saving || !!choices || !editable}
+          />
+          { exileOtherButton }
+        </>
       );
     }
-    if (choices === undefined && exile && deck?.id.local && !saving) {
-      return (
-        <ArkhamButton icon="card" title={t`Exile other cards`} onPress={onExileMorePressed} />
-      );
-    }
-    return null;
-  }, [choices, exile, onExileMorePressed, editable, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving]);
+    return exileOtherButton;
+  }, [choices, exile, onExileMorePressed, editable, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving, exileCounts]);
 
   const exileSection = useMemo(() => {
     if (deck && (choices === undefined || keys(savedExileCounts).length > 0)) {
