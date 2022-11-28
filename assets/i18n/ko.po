@@ -5688,7 +5688,7 @@ msgid_plural "${ quantity } copies"
 msgstr[0] "${ quantity }장의 사본"
 
 msgid "Embark"
-msgstr "승선"
+msgstr "탑승"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
@@ -5900,7 +5900,7 @@ msgid "Choose a skill"
 msgstr "능력 선택"
 
 msgid "Use the embark button below"
-msgstr "아래의 승선 기능을 사용하십시오"
+msgstr "아래의 탑승 기능을 사용하십시오"
 
 msgid "Review the world map"
 msgstr "세계 지도 검토"
@@ -6087,20 +6087,20 @@ msgid ""
 msgstr "하나 이상의 열쇠 소지자인 모든 조사자는 자신의 조사자 카드에 그 열쇠를 부착합니다:"
 
 msgid "Customizable"
-msgstr ""
+msgstr "맞춤형"
 
 msgid "0 XP"
-msgstr ""
+msgstr "경험치 0점"
 
 msgid "No campaign"
-msgstr ""
+msgstr "참여 중인 게임 없음"
 
 #, javascript-format
 msgid "${ parsedDeck.experience } XP"
-msgstr ""
+msgstr "경험치 ${ parsedDeck.experience }점"
 
 msgid "×${ parsedDeck.totalCardCount }"
-msgstr ""
+msgstr "총 ${ parsedDeck.totalCardCount }장"
 
 msgid ""
 "Your ArkhamDB login has expired.\n"
@@ -6108,39 +6108,44 @@ msgid ""
 "You will need to login again on the Settings tab before you can save "
 "changes to this deck."
 msgstr ""
+"아컴디비 사이트 로그인이 만료되었습니다.\n"
+"\n"
+"덱 변경점을 저장하기 전에 하단의 설정 탭에서 아컴디비 사이트에 다시 로그인해야 합니다."
 
 msgid "Edit deck tags"
-msgstr ""
+msgstr "덱 태그 수정"
 
 msgid "Clear tags"
-msgstr ""
+msgstr "태그 초기화"
 
 msgid "Solo"
-msgstr ""
+msgstr "1인"
 
 msgid "Beginner"
-msgstr ""
+msgstr "초심자"
 
 msgid "+ Add"
-msgstr ""
+msgstr "+ 추가"
 
 msgid "Deck tags"
-msgstr ""
+msgstr "덱 태그"
 
 msgid "Tags"
-msgstr ""
+msgstr "태그"
 
 #, javascript-format
 msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ scenarioName }: 방문 ${ attempt }회"
+
+msgid "${ scenarioName } (Attempt ${ attempt })"
+msgstr[0] "${ scenarioName } (시도 ${ attempt }회)"
 
 msgid "Search english card names"
-msgstr ""
+msgstr "영문으로 카드 이름 검색"
 
 msgid "Include english results when searching"
-msgstr ""
+msgstr "영문 검색 결과 포함"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8424,15 +8429,15 @@ msgstr[0] "열쇠"
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "추가"
 
 msgctxt "tags"
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 msgctxt "tags"
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 msgctxt "Tarot Card"
 msgid "None"
