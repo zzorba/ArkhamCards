@@ -494,7 +494,7 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "[reaction] свойство этой карты следует читать: «После того как вы успешно исследовали, поверните „Доктора Милана Кристофера“…»"
       },
       {
         "code": "02002",
@@ -640,7 +640,7 @@
       },
       {
         "code": "08055",
-        "text": "This card's gains: \"Max once per round.\""
+        "text": "Максимум 1 раз в раунд."
       },
       {
         "code": "08098",

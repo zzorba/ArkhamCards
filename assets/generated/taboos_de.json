@@ -494,7 +494,7 @@
       },
       {
         "code": "01033",
-        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+        "text": "Die [reaction]-Fähigkeit dieser Karte lautet jetzt: „Nachdem du erfolgreich ermittelt hast, erschöpfe Dr. Milan Christopher: Erhalte 1 Ressource.“"
       },
       {
         "code": "02002",
@@ -640,7 +640,7 @@
       },
       {
         "code": "08055",
-        "text": "This card's gains: \"Max once per round.\""
+        "text": "Diese Karte erhält folgenden zusätzlichen Text: „(Max. 1 pro Runde.)“"
       },
       {
         "code": "08098",
