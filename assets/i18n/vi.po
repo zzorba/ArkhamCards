@@ -1668,10 +1668,6 @@ msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr ""
 
 #, javascript-format
-msgid "${ adjustedXp } XP"
-msgstr ""
-
-#, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr ""
 
@@ -1760,13 +1756,10 @@ msgstr ""
 msgid "Adjust XP"
 msgstr ""
 
-#, javascript-format
-msgid "${ _adjustedXp } XP"
-msgstr ""
-
 msgid "0 unspent"
 msgstr ""
 
+#, javascript-format
 msgid "${ overspent } overspent"
 msgstr ""
 
@@ -5423,12 +5416,6 @@ msgstr ""
 msgid "Customizations"
 msgstr ""
 
-#, javascript-format
-msgid "${ xp } XP"
-msgid_plural "${ xp } XP"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Show selected customizations"
 msgstr ""
 
@@ -5877,9 +5864,6 @@ msgid "No campaign"
 msgstr ""
 
 #, javascript-format
-msgid "${ parsedDeck.experience } XP"
-msgstr ""
-
 msgid "×${ parsedDeck.totalCardCount }"
 msgstr ""
 
@@ -5922,6 +5906,11 @@ msgstr ""
 
 msgid "Include english results when searching"
 msgstr ""
+
+#, javascript-format
+msgid "${ xp } XP"
+msgid_plural "${ xp } XP"
+msgstr[0] ""
 
 msgctxt "investigator"
 msgid "Custom"

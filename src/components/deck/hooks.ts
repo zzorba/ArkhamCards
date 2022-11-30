@@ -29,6 +29,10 @@ import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
+
+export function xpString(xp: number): string {
+  return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
+}
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
     if (!parsedDeck) {
@@ -38,17 +42,29 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
       const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
       const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
-        return [t`${adjustedXp} XP`, t`0 unspent`];
+        return [
+          xpString(adjustedXp),
+          t`0 unspent`,
+        ];
       }
       if (unspent < 0) {
         const overspent = Math.abs(unspent);
-        return [t`${adjustedXp} XP`, t`${overspent} overspent`];
+        return [
+          xpString(adjustedXp),
+          t`${overspent} overspent`,
+        ];
       }
       const unspentXpStr = unspent;
-      return [t`${adjustedXp} XP`, ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspent)];
+      return [
+        xpString(adjustedXp),
+        ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspent),
+      ];
     }
     const adjustedXp = parsedDeck.experience;
-    return [t`${adjustedXp} XP`, undefined];
+    return [
+      xpString(adjustedXp),
+      undefined,
+    ];
   }, [parsedDeck, totalXp]);
 }
 

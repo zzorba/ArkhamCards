@@ -5,14 +5,14 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import RoundButton from '@components/core/RoundButton';
-import { ParsedDeckResults, useDeckEditState, useParsedDeck } from '@components/deck/hooks';
+import { ParsedDeckResults, useDeckEditState, useParsedDeck, xpString } from '@components/deck/hooks';
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { DeckId } from '@actions/types';
 import { TINY_PHONE } from '@styles/sizes';
@@ -54,7 +54,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, deckEdits } = parsedDeckObj;
   const { mode } = useDeckEditState(parsedDeckObj);
-  const xpString = useMemo(() => {
+  const theXpString = useMemo(() => {
     if (!parsedDeck) {
       return [undefined, undefined];
     }
@@ -64,7 +64,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
       return t`${spentXP} of ${adjustedXp} XP spent`;
     }
     const adjustedXp = parsedDeck.experience;
-    return t`${adjustedXp} XP`;
+    return xpString(adjustedXp);
   }, [parsedDeck]);
 
   const cardString = useMemo(() => {
@@ -79,7 +79,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
     if (!deckEdits?.editable || !deck || !deck.previousDeckId) {
       return (
         <Text style={[typography.button, typography.bold, typography.inverted]} allowFontScaling={false}>
-          { xpString }
+          { theXpString }
         </Text>
       );
     }
@@ -87,7 +87,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
       <TouchableOpacity onPress={showXpAdjustmentDialog}>
         <View style={styles.row}>
           <Text style={[typography.button, typography.bold, typography.inverted]} allowFontScaling={false}>
-            { xpString }
+            { theXpString }
           </Text>
           <View style={space.marginLeftS}>
             <AppIcon
@@ -99,7 +99,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
         </View>
       </TouchableOpacity>
     );
-  }, [deckEdits, xpString, deck, showXpAdjustmentDialog, typography, colors]);
+  }, [deckEdits, theXpString, deck, showXpAdjustmentDialog, typography, colors]);
   if (mode === 'view' && !forceShow) {
     return null;
   }

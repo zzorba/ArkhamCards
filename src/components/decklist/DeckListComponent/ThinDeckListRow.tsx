@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
 import { Placeholder, PlaceholderLine, Fade } from 'rn-placeholder';
 import { map } from 'lodash';
 
@@ -28,6 +28,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import TraumaPile from '@components/campaign/TraumaPile';
 import Ripple from '@lib/react-native-material-ripple';
+import { xpString } from '@components/deck/hooks';
 
 interface Props {
   lang: string;
@@ -210,7 +211,7 @@ export default function ThinDeckListRow({
                                 <AppIcon name="xp-bold" size={18} color={COLORS.white} />
                               </View>
                               <Text style={[typography.smallLabel, typography.boldItalic, typography.white]}>
-                                { t`${parsedDeck.experience} XP` }
+                                { xpString(parsedDeck.experience) }
                               </Text>
                             </>
                           ) }
