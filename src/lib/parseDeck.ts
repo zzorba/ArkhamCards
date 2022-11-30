@@ -55,6 +55,7 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
+import { normal } from 'react-native-color-matrix-image-filters';
 
 function filterBy(
   cardIds: CardId[],
@@ -280,71 +281,19 @@ export function getCards(
   });
 }
 
-function getDeckChanges(
+function getDeckChangesHelper(
   cards: CardsMap,
-  validation: DeckValidation,
-  deck: Deck,
   slots: Slots,
-  ignoreDeckLimitSlots: Slots,
-  listSeperator: string,
-  customizations: Customizations,
-  previousDeck?: Deck,
-  previousCustomizations?: Customizations,
-): DeckChanges | undefined {
-  const exiledCards = deck.exile_string ? mapValues(
-    groupBy(deck.exile_string.split(',')),
-    items => items.length) : {};
+  extraDeckSize: number,
+  totalFreeCards: number,
+  changedCards: Slots,
+  exiledCards: Slots,
+  customizedSlots: Slots,
+  customizedXp: Slots,
+  invalidCards: Card[],
+  dtrFirst: boolean
+): DeckChanges {
   const totalExiledCards = sum(values(exiledCards));
-  if (!previousDeck) {
-    return undefined;
-  }
-  const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
-    previousDeck.investigator_code;
-  const previousInvestigator = cards[previous_investigator_code];
-  if (!previousInvestigator) {
-    return undefined;
-  }
-  const oldDeckSize = new DeckValidation(
-    previousInvestigator,
-    previousDeck.slots || {},
-    previousDeck.meta
-  ).getDeckSize();
-  const previousDeckCards: Card[] = getCards(cards,
-    previousDeck.slots || {},
-    previousDeck.ignoreDeckLimitSlots || {},
-    listSeperator,
-    customizations
-  );
-  const invalidCards = validation.getInvalidCards(previousDeckCards);
-  const newDeckSize = validation.getDeckSize();
-  let extraDeckSize = newDeckSize - oldDeckSize;
-  let totalFreeCards = extraDeckSize + totalExiledCards;
-
-  const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
-  const changedCards: Slots = {};
-  forEach(
-    uniq(union(keys(slots), keys(previousDeck.slots))),
-    code => {
-      const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
-      const exiledCount = exiledCards[code] || 0;
-      const newCount = slots[code] || 0;
-      const oldCount = previousDeck.slots?.[code] || 0;
-      const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
-      if (delta !== 0) {
-        changedCards[code] = delta;
-      }
-    });
-  const customizedXp: Slots = {};
-  const customizedSlots: Slots = {};
-  forEach(keys(slots), code => {
-    const customXp = sumBy(customizations[code], c => c.xp_spent);
-    const previousXp = sumBy(previousCustomizations?.[code] || [], c => c.xp_spent);
-    if (customXp > previousXp) {
-      customizedXp[code] = customXp - previousXp;
-      customizedSlots[code] = customXp - previousXp;
-    }
-  });
-
   const exiledSlots: Card[] = [];
   forEach(exiledCards,
     (exileCount, code) => {
@@ -530,11 +479,15 @@ function getDeckChanges(
             removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
             addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
             let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+            if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+              xpCost--;
+              downTheRabitHoleUses--;
+            }
             while (xpCost > 0 && arcaneResearchUses > 0) {
               xpCost--;
               arcaneResearchUses--;
             }
-            if (xpCost > 0 && downTheRabitHoleUses > 0) {
+            if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
               xpCost--;
               downTheRabitHoleUses--;
             }
@@ -567,6 +520,10 @@ function getDeckChanges(
     if (!card) {
       return xpCost;
     }
+    if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+      xpCost--;
+      downTheRabitHoleUses--;
+    }
     if (arcaneResearchUses > 0 &&
       card.real_traits_normalized &&
       card.real_traits_normalized.indexOf('#spell#') !== -1
@@ -576,7 +533,7 @@ function getDeckChanges(
         arcaneResearchUses--;
       }
     }
-    if (xpCost > 0 && downTheRabitHoleUses > 0) {
+    if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
       xpCost--;
       downTheRabitHoleUses--;
     }
@@ -627,6 +584,103 @@ function getDeckChanges(
       cards: specialDiscounts,
     },
   };
+}
+
+function getDeckChanges(
+  cards: CardsMap,
+  validation: DeckValidation,
+  deck: Deck,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots,
+  listSeperator: string,
+  customizations: Customizations,
+  previousDeck?: Deck,
+  previousCustomizations?: Customizations,
+): DeckChanges | undefined {
+  const exiledCards = deck.exile_string ? mapValues(
+    groupBy(deck.exile_string.split(',')),
+    items => items.length) : {};
+  const totalExiledCards = sum(values(exiledCards));
+  if (!previousDeck) {
+    return undefined;
+  }
+  const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
+    previousDeck.investigator_code;
+  const previousInvestigator = cards[previous_investigator_code];
+  if (!previousInvestigator) {
+    return undefined;
+  }
+  const oldDeckSize = new DeckValidation(
+    previousInvestigator,
+    previousDeck.slots || {},
+    previousDeck.meta
+  ).getDeckSize();
+  const previousDeckCards: Card[] = getCards(cards,
+    previousDeck.slots || {},
+    previousDeck.ignoreDeckLimitSlots || {},
+    listSeperator,
+    customizations
+  );
+  const invalidCards = validation.getInvalidCards(previousDeckCards);
+  const newDeckSize = validation.getDeckSize();
+  let extraDeckSize = newDeckSize - oldDeckSize;
+  let totalFreeCards = extraDeckSize + totalExiledCards;
+
+  const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
+  const changedCards: Slots = {};
+  forEach(
+    uniq(union(keys(slots), keys(previousDeck.slots))),
+    code => {
+      const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
+      const exiledCount = exiledCards[code] || 0;
+      const newCount = slots[code] || 0;
+      const oldCount = previousDeck.slots?.[code] || 0;
+      const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
+      if (delta !== 0) {
+        changedCards[code] = delta;
+      }
+    });
+  const customizedXp: Slots = {};
+  const customizedSlots: Slots = {};
+  forEach(keys(slots), code => {
+    const customXp = sumBy(customizations[code], c => c.xp_spent);
+    const previousXp = sumBy(previousCustomizations?.[code] || [], c => c.xp_spent);
+    if (customXp > previousXp) {
+      customizedXp[code] = customXp - previousXp;
+      customizedSlots[code] = customXp - previousXp;
+    }
+  });
+
+  const normalChanges = getDeckChangesHelper(
+    cards,
+    slots,
+    extraDeckSize,
+    totalFreeCards,
+    changedCards,
+    exiledCards,
+    customizedSlots,
+    customizedXp,
+    invalidCards,
+    false
+  );
+  if (slots[DOWN_THE_RABBIT_HOLE_CODE] && slots[ARCANE_RESEARCH_CODE]) {
+    const altChanges = getDeckChangesHelper(
+      cards,
+      slots,
+      extraDeckSize,
+      totalFreeCards,
+      changedCards,
+      exiledCards,
+      customizedSlots,
+      customizedXp,
+      invalidCards,
+      true
+    );
+    if (altChanges.spentXp < normalChanges.spentXp) {
+      return altChanges;
+    }
+  }
+  return normalChanges;
 }
 
 function calculateTotalXp(
