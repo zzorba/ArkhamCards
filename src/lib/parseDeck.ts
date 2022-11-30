@@ -295,15 +295,14 @@ function getDeckChangesHelper(
 ): DeckChanges {
   const totalExiledCards = sum(values(exiledCards));
   const exiledSlots: Card[] = [];
-  forEach(exiledCards,
-    (exileCount, code) => {
-      if (exileCount > 0) {
-        const card = cards[code];
-        if (card) {
-          forEach(range(0, exileCount), () => exiledSlots.push(card));
-        }
+  forEach(exiledCards, (exileCount, code) => {
+    if (exileCount > 0) {
+      const card = cards[code];
+      if (card) {
+        forEach(range(0, exileCount), () => exiledSlots.push(card));
       }
-    });
+    }
+  });
   forEach(invalidCards, invalidCard => {
     exiledSlots.push(invalidCard);
   });
