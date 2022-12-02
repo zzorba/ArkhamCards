@@ -6126,8 +6126,8 @@ msgstr "Este lugar corresponde a una historia secundaria."
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] "Coste del viaje: ${ travelDistance } tiempo"
-msgstr[1] "Coste del viaje: ${ travelDistance } tiempo"
+msgstr[0] "Coste del viaje: ${ travelDistance } de tiempo"
+msgstr[1] "Coste del viaje: ${ travelDistance } de tiempo"
 
 msgid "Do you want to use the app to randomize choices?"
 msgstr "¿Quieres usar la aplicación para aleatorizar las elecciones?"
@@ -6200,17 +6200,20 @@ msgid ""
 "If you wish to add a side-story to this campaign, you may travel to this location and "
 "spend additional time equal to the normal experience for playing that side story."
 msgstr ""
+"Si quieres incorporar una historia secundaria a esta campaña, viaja a esta ubicación y "
+"gasta una cantidad de tiempo adicional equivalente al coste de experiencia normal por "
+"jugar esa historia secundaria."
 
 msgid "Use expedited ticket"
 msgstr ""
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
-msgstr ""
+msgstr "Coste de tiempo: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
-msgstr ""
+msgstr "Costes de experiencia adicional para ${ investigator.name }: ${ additionalXpCost }"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
@@ -6221,27 +6224,34 @@ msgid ""
 "the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
 msgstr ""
+"Una historia secundaria es un escenario que se puede jugar entre dos escenarios de una "
+"campaña de <i>Arkham Horror: El juego de cartas</i>.\n"
+"- Como estás jugando la campaña <i>Las llaves escarlata</i>, una historia secundaria "
+"cuesta una cierta cantidad de <b>tiempo</b> en lugar de experiencia.\n"
+"- Las Debilidades, traumas, puntos de experiencia y recompensas obtenidas durante una "
+"historia secundaria permanecen con los investigadores durante el resto de la campaña.\n"
+"- Cada historia secundaria sólo puede jugarse una vez por campaña."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Marcar ${ travelDistance } de tiempo"
+msgstr[1] "Marcar ${ travelDistance } de tiempo"
 
 msgid "Mark 1 time"
-msgstr ""
+msgstr "Marcar 1 de tiempo"
 
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
 msgid_plural "Travel time: ${ travelDistance }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tiempo de viaje: ${ travelDistance }"
+msgstr[1] "Tiempo de viaje: ${ travelDistance }"
 
 msgid "Secret / Locked"
-msgstr ""
+msgstr "Secreto / Bloqueado"
 
 msgid "Cannot stop here until unlocked"
-msgstr ""
+msgstr "No puedes detenerte aquí hasta que se desbloquee"
 
 msgid "Select cards to exile"
 msgstr ""
@@ -6250,45 +6260,47 @@ msgid "Exile other cards"
 msgstr ""
 
 msgid "Name of Paradimensional Artifact"
-msgstr ""
+msgstr "Nombre del artefacto paradimensional"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "Prólogo: Acertijos y lluvia"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "Calor muerto"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "Sombras sanguinas"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "Tratos en la oscuridad"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "Bailar como locos"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "Sobre hielo peligroso"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "Perros de guerra"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "Sombras de sufrimiento"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "Sin rastro"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "El congreso de las Llaves"
 
 msgid "Unlocked Locations"
-msgstr ""
+msgstr "Ubicaciones desbloqueadas"
 
 msgid ""
 "Each investigator who is the bearer of 1 or more key attaches those keys to their "
 "investigator card:"
 msgstr ""
+"Cada investigador que sea el portador de 1 o más Llaves las vincula a su carta de "
+"investigador:"
 
 msgid "Customizable"
 msgstr ""
