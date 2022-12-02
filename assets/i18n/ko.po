@@ -691,26 +691,26 @@ msgid "Hide ArkhamDB decks"
 msgstr "아컴디비에 업로드된 덱 숨기기"
 
 msgid "Original Deck"
-msgstr "원래 덱"
+msgstr "초기 덱"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr "최신 덱: ${ deck.changes.spentXp }/${ deck.availableExperience } 경험치"
+msgstr "최신 덱: 잔여 경험치 ${ deck.availableExperience }점 중 ${ deck.changes.spentXp }점 소비"
 
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr "최신 덱: ${ deck.availableExperience } 경험치"
+msgstr "최신 덱: 잔여 경험치 ${ deck.availableExperience }점"
 
 #, javascript-format
 msgid ""
 "Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ deck."
 "availableExperience } XP"
 msgstr ""
-"${ humanVersionNumber } 향상:  ${ deck.changes.spentXp }/${ deck.availableExperience } 경"
-"험치"
+"${ humanVersionNumber }번째 향상: 잔여 경험치 ${ deck.availableExperience "
+"}점 중 ${ deck.changes.spentXp }점 소비"
 
 #, javascript-format
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
-msgstr "${ humanVersionNumber } 향상: ${ deck.availableExperience } 경험치"
+msgstr "${ humanVersionNumber }번째 향상: 잔여 경험치 ${ deck.availableExperience }점"
 
 msgid "Saving..."
 msgstr "저장 중..."
@@ -964,7 +964,7 @@ msgstr "삭제 중"
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
-msgstr "${ xp } (${ adjustment }) 경험치"
+msgstr "경험치 ${ xp } (${ adjustment })점"
 
 msgid "Taboo List"
 msgstr "금기 목록"
@@ -1025,7 +1025,7 @@ msgid ""
 "${ parsedBaseDeck.experience } XP"
 msgstr ""
 "기본 버전\n"
-"${ parsedBaseDeck.experience } 경험치"
+"경험치 ${ parsedBaseDeck.experience }점"
 
 #, javascript-format
 msgid ""
@@ -1033,20 +1033,20 @@ msgid ""
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
 "현재 버전 ${ parsedCurrentDeck.deck.version }\n"
-"${ parsedCurrentDeck.experience } 경험치"
+"경험치 ${ parsedCurrentDeck.experience }점"
 
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
 msgstr ""
 "최신 버전 ${ parsedLatestDeck.deck.version }\n"
-"${ parsedLatestDeck.experience } 경험치"
+"경험치 ${ parsedLatestDeck.experience }점"
 
 msgid "New Name"
 msgstr "새로운 이름"
 
 msgid "Required"
-msgstr "요구사항"
+msgstr "필수사항"
 
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or choose different "
@@ -3157,7 +3157,7 @@ msgstr[0] "결속 ${ bondedCardCount }장"
 
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
-msgstr[0] "${ unspentXpStr } 미사용"
+msgstr[0] "미사용 ${ unspentXpStr }점"
 
 msgid "Deck is invalid"
 msgstr "덱 구성 조건을 만족하지 않습니다"
@@ -3176,7 +3176,7 @@ msgid "${ count } of ${ limitSlotCount }"
 msgstr "${ limitSlotCount }장 중 ${ count }장 포함"
 
 msgid "0 unspent"
-msgstr "0 미사용"
+msgstr "미사용 0점"
 
 #, javascript-format
 msgid "${ overspent } overspent"
@@ -3267,7 +3267,7 @@ msgstr ""
 "때 포함하지 않습니다)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr "${ _adjustedXp } 경험치 중 ${ spentXP } 소비"
+msgstr "잔여 경험치 ${ _adjustedXp }점 중 ${ spentXP }점 소비"
 
 msgid "Upgrading"
 msgstr "향상 중"
@@ -3741,7 +3741,7 @@ msgstr "시나리오 이름"
 
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
-msgstr[0] "${ unspentXp } 경험치 남음"
+msgstr[0] "잔여 경험치 ${ unspentXp }점"
 
 msgid "Tap to draw"
 msgstr "탭하여 뽑기"
@@ -5764,7 +5764,7 @@ msgstr "특성 추가"
 #, javascript-format
 msgid "${ quantity } copy"
 msgid_plural "${ quantity } copies"
-msgstr[0] "${ quantity }장의 사본"
+msgstr[0] "사본 ${ quantity }장"
 
 msgid "Embark"
 msgstr "탑승"
