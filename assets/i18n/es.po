@@ -8718,7 +8718,7 @@ msgstr "Cancelar"
 
 msgctxt "tags"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "Tarot Card"
 msgid "None"
