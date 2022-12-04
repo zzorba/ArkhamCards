@@ -1208,13 +1208,13 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapade por el Abismo."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapade por el Abismo."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1263,7 +1263,7 @@
             "id": "possessed",
             "masculine_text": "#name# fue poseído.",
             "feminine_text": "#name# fue poseída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# fue poseíde."
           },
           {
             "id": "read_act_2",
@@ -1695,7 +1695,7 @@
             "id": "possessed",
             "masculine_text": "#name# fue poseído.",
             "feminine_text": "#name# fue poseída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# fue poseíde."
           },
           {
             "id": "read_act_2",
@@ -2814,69 +2814,69 @@
             "id": "tes_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapade por el Abismo."
           },
           {
             "id": "tnu_taken_by_the_abyss",
             "masculine_text": "#name# ha sido atrapado por el Abismo.",
             "feminine_text": "#name# ha sido atrapada por el Abismo.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "nonbinary_text": "#name# ha sido atrapade por el Abismo."
           },
           {
             "id": "atw_bernards_fate",
-            "text": "you have discovered Bernard's fate."
+            "text": "has descubierto el destino de Bernard."
           },
           {
             "id": "atw_custodian_of_knowledge",
-            "text": "you are the custodian of Ithaqua's knowledge."
+            "text": "eres el custodio del conocimiento de Ithaqua."
           },
           {
             "id": "atw_defeated_the_wendigo",
-            "text": "you defated the Wendigo."
+            "text": "has derrotado al Wendigo."
           },
           {
             "id": "atw_discovered_the_fate_of_the_students",
-            "text": "you have discovered the fate of Dr. Nadelmann's students."
+            "text": "has descubierto el destino de los estudiantes del Dr. Nadelmann."
           },
           {
             "id": "atw_found_the_gold",
-            "text": "you have found Hanninah's gold."
+            "text": "has encontrado el oro de Hanninah."
           },
           {
             "id": "atw_have_enough_evidence",
-            "text": "you have enoughe evidence to clear Dr. Nadelmann."
+            "text": "tienes suficientes evidencias para exculpar al Dr. Nadelmann."
           },
           {
             "id": "atw_norman_alive",
-            "text": "Norman is alive."
+            "text": "Norman está vivo."
           },
           {
             "id": "atw_norman_dead",
-            "text": "You let Norman die."
+            "text": "Dejaste morir a Norman."
           },
           {
             "id": "atw_normans_fate",
-            "text": "you have discovered Norman's fate."
+            "text": "has descubierto el destino de Norman."
           },
           {
             "id": "atw_sarcee_are_hunting",
-            "text": "the Sarcee are hunting you down."
+            "text": "los Sarsi te están dando caza."
           },
           {
             "id": "atw_saved_charlie",
-            "text": "you saved Charlie."
+            "text": "salvaste a Charlie."
           },
           {
             "id": "atw_saved_the_gold_prospector",
-            "text": "you saved the gold prospector."
+            "text": "salvaste al buscador de oro."
           },
           {
             "id": "atw_sylvias_fate",
-            "text": "you have discovered Sylvia's fate."
+            "text": "has descubierto el destino de Sylvia."
           },
           {
             "id": "atw_wendigo_still_roams",
-            "text": "you know that the Wendigo still roams the North Hanninah valley."
+            "text": "el Wendigo todavía vaga por el valle de Hanninah del Norte."
           },
           {
             "id": "blob_contained",
@@ -3694,7 +3694,7 @@
             "id": "captured",
             "masculine_text": "#name# fue capturado.",
             "feminine_text": "#name# fue capturada.",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name# fue capturade."
           },
           {
             "id": "broken_the_law_of_ulthar",
@@ -4801,7 +4801,7 @@
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "la agente Quinn no se fía de la célula."
           },
           {
             "id": "agent_quinn_has_your_back",
@@ -4809,7 +4809,7 @@
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "la agente Quinn se desvaneció de la existencia."
           },
           {
             "id": "aliki_is_on_your_side",
@@ -4837,7 +4837,7 @@
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "la célula no descubrió la verdad en La Habana."
           },
           {
             "id": "cell_escaped_the_red_coterie",
@@ -4849,11 +4849,11 @@
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "la célula ha sufrido una emboscada."
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "la célula le ocultó la verdad a Taylor."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
@@ -4865,11 +4865,11 @@
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "la célula va a entregar una información."
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "la célula se ha salido de la misión."
           },
           {
             "id": "cell_is_working_with_ece",
@@ -4893,7 +4893,7 @@
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "la célula hizo un trato con Desi."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
@@ -4901,7 +4901,7 @@
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "la célula hizo un trato con Thorne."
           },
           {
             "id": "cell_met_dr_irawan",
@@ -4929,7 +4929,7 @@
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "la célula le dijo la verdad a Taylor."
           },
           {
             "id": "cell_was_dismantled",
@@ -4953,7 +4953,7 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi está en deuda con los investigadores."
           },
           {
             "id": "dogs_are_at_war",
@@ -5005,7 +5005,7 @@
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "la Fundación sigue sin saber nada."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
@@ -5017,7 +5017,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "no será la última vez que los investigadores ven a Desiderio Delgado Álvarez."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
@@ -5033,7 +5033,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "no será la última vez que los investigadores ven al hombre de los guantes rojos."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
@@ -5041,7 +5041,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "no será la última vez que los investigadores ven a Thorne."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
@@ -5049,7 +5049,7 @@
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "los investigadores conocen la contraseña."
           },
           {
             "id": "lovers_are_reunited",
@@ -5057,7 +5057,7 @@
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "no hay nada reseñable en Anchorage."
           },
           {
             "id": "outsiders_were_stopped",
@@ -5077,7 +5077,7 @@
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "Thorne desapareció."
           },
           {
             "id": "trust",
@@ -5101,7 +5101,7 @@
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "la quimera del vacío escapó."
           },
           {
             "id": "work_together",
@@ -5109,7 +5109,7 @@
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "Pistas falsas: #X#"
           }
         ]
       },
@@ -5190,6 +5190,22 @@
           },
           {
             "id": "desi_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_slain_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_slain_civilians",
             "text": "dummy"
           },
           {

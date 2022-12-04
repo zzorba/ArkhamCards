@@ -258,7 +258,7 @@
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp : Caverne Cristaline (8)"
+            "text": "Camp : Caverne Cristalline (8)"
           },
           {
             "id": "camp_frigid_cave",
@@ -282,7 +282,7 @@
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp : Vestigre du Camp de Lake (7)"
+            "text": "Camp : Vestiges du Camp de Lake (7)"
           },
           {
             "id": "camp_rocky_crags",
@@ -782,7 +782,7 @@
           },
           {
             "id": "crystalline_cavern",
-            "text": "Caverne Cristaline"
+            "text": "Caverne Cristalline"
           },
           {
             "id": "frigid_cave",
@@ -806,7 +806,7 @@
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Vestigre du Camp de Lake"
+            "text": "Vestiges du Camp de Lake"
           },
           {
             "id": "rocky_crags",
@@ -5190,6 +5190,22 @@
           },
           {
             "id": "desi_yay",
+            "text": "leurre"
+          },
+          {
+            "id": "dh_double_rescued_civilians",
+            "text": "leurre"
+          },
+          {
+            "id": "dh_double_slain_civilians",
+            "text": "leurre"
+          },
+          {
+            "id": "dh_rescued_civilians",
+            "text": "leurre"
+          },
+          {
+            "id": "dh_slain_civilians",
             "text": "leurre"
           },
           {

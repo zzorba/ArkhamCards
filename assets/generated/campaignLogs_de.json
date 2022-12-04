@@ -5207,6 +5207,22 @@
             "text": "dummy"
           },
           {
+            "id": "dh_double_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_slain_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_slain_civilians",
+            "text": "dummy"
+          },
+          {
             "id": "ditd_act_2_setup",
             "text": "dummy"
           },
