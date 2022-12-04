@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -1690,7 +1690,7 @@ msgid "Deck Cards"
 msgstr "Cartas del mazo"
 
 msgid "Save changes before upgrading"
-msgstr "Guarda cambios antes de actualizar"
+msgstr "Guarda antes de actualizar"
 
 msgid "Number of clues on your location"
 msgstr "Número de pistas en tu ubicación"
@@ -2517,7 +2517,7 @@ msgid "Scenario or Interlude"
 msgstr "Escenario o Interludio"
 
 msgid "Alphabetize guide encounter sets"
-msgstr "Alfabetizar conjuntos encuentros"
+msgstr "Alfabetizar encuentros"
 
 msgid "Draw Weakness"
 msgstr "Robar Debilidad"
@@ -3048,8 +3048,8 @@ msgstr ""
 "<b>Análisis astuto</b>: Si cumples los requisitos, puedes utilizar Análisis astuto para "
 "elegir al azar dos versiones mejoradas, pagando la experiencia de una sola mejora.\n"
 "\n"
-"<i>Nota: La aplicación ajustará la experiencia para tener en cuenta la mejora \"gratuita"
-"\".</i>"
+"<i>Nota: La aplicación ajustará la experiencia para tener en cuenta la mejora "
+"\"gratuita\".</i>"
 
 msgid "Upgrade results"
 msgstr "Mejoras resultantes"
@@ -3157,13 +3157,13 @@ msgid "For balancing and evaluating"
 msgstr "Para balancear y evaluar"
 
 msgid "Check your deck stability"
-msgstr "Revisa la consistencia del mazo"
+msgstr "Revisa la consistencia"
 
 msgid "For easy deck assembly"
-msgstr "Para montar fácilmente el mazo"
+msgstr "Monta fácilmente el mazo"
 
 msgid "Story assets and weaknesses"
-msgstr "Apoyos y Debilidades de historia"
+msgstr "Cartas de historia"
 
 msgid "Clone deck"
 msgstr "Clonar mazo"
@@ -3630,7 +3630,7 @@ msgid "Narration enabled"
 msgstr "Narración activada"
 
 msgid "Audio narration"
-msgstr "Narración campañas"
+msgstr "Narración inglés"
 
 msgid "Dissonant Voices"
 msgstr "Dissonant Voices"
@@ -3737,7 +3737,7 @@ msgid "Asset: Body. Arcane"
 msgstr "Apoyo: Cuerpo. Arcano"
 
 msgid "Color blind friendly icons"
-msgstr "Iconos amigables para daltónicos"
+msgstr "Iconos para daltónicos"
 
 msgid "Uploading"
 msgstr "Subiendo"
@@ -5274,7 +5274,7 @@ msgid "Samsung One UI fix"
 msgstr "Fix para Samsung One UI"
 
 msgid "Fix layout issues on version 3.0 of Samsung One UI"
-msgstr "Arregla problemas de diseño en la versión 3.0 de Samsung One UI"
+msgstr "Arregla problemas de diseño en la versión 3.0"
 
 msgid "Call of the Plaguebearer"
 msgstr "La llamada del Portador de la plaga"
@@ -5572,7 +5572,7 @@ msgstr ""
 "habilitada la opción de la carta de tarot en la pantalla de la bolsa de caos."
 
 msgid "Show deck ids on campaigns"
-msgstr "Mostrar id del mazo en campañas"
+msgstr "Mostrar id en campañas"
 
 msgid "Tarot Reading"
 msgstr "Lectura de tarot"
@@ -5934,16 +5934,16 @@ msgid "Tomb of Dead Dreams"
 msgstr ""
 
 msgid "Cultists Alive"
-msgstr ""
+msgstr "Sectarios vivos"
 
 msgid "Cultists Killed"
-msgstr ""
+msgstr "Sectarios muertos"
 
 msgid "Notice"
 msgstr ""
 
 msgid "Jenny's Choice"
-msgstr ""
+msgstr "La decisión de Jenny"
 
 msgid "The Fall of the House of Usher"
 msgstr "La caída de la Casa Usher"
@@ -6068,7 +6068,7 @@ msgid "Cost: ${ card.cost }"
 msgstr "Coste: ${ card.cost }"
 
 msgid "Grants access to previewed player cards"
-msgstr "Otorga acceso a las cartas de jugador no publicadas"
+msgstr "Accede a cartas de jugador no publicadas"
 
 msgid "Key"
 msgstr "Llave"
@@ -6167,34 +6167,34 @@ msgid "Fan-made Investigators"
 msgstr "Investigadores fanmade"
 
 msgid "Fortune and Folly"
-msgstr "Fortuna y locura"
+msgstr "Fortuna e insensatez"
 
 msgid "Challenge Scenarios"
 msgstr "Escenarios desafío"
 
 msgid "Choose an option"
-msgstr ""
+msgstr "Elige una opción"
 
 msgid "Choose weakness"
-msgstr ""
+msgstr "Elige debilidad"
 
 msgid "Do you want to use the app to draw random tarot cards?"
-msgstr ""
+msgstr "¿Quieres usar la app para robar cartas de tarot al azar?"
 
 msgid "Choose tarot card"
-msgstr ""
+msgstr "Elige carta de tarot"
 
 msgid "Choose supplies:"
-msgstr ""
+msgstr "Elige suministros:"
 
 msgid "Asset Class Choice"
-msgstr ""
+msgstr "Clase de Apoyo elegida"
 
 msgid "Skill Class Choie"
-msgstr ""
+msgstr "Clase de Habilidad elegida"
 
 msgid "Event Class Choice"
-msgstr ""
+msgstr "Clase de Evento elegida"
 
 msgid ""
 "If you wish to add a side-story to this campaign, you may travel to this location and "
@@ -6254,10 +6254,10 @@ msgid "Cannot stop here until unlocked"
 msgstr "No puedes detenerte aquí hasta que se desbloquee"
 
 msgid "Select cards to exile"
-msgstr ""
+msgstr "Elige cartas a exiliar"
 
 msgid "Exile other cards"
-msgstr ""
+msgstr "Exiliar otras cartas"
 
 msgid "Name of Paradimensional Artifact"
 msgstr "Nombre del artefacto paradimensional"
@@ -6303,17 +6303,17 @@ msgstr ""
 "investigador:"
 
 msgid "Customizable"
-msgstr ""
+msgstr "Personalizable"
 
 msgid "0 XP"
-msgstr ""
+msgstr "0 XP"
 
 msgid "No campaign"
-msgstr ""
+msgstr "Sin campaña"
 
 #, javascript-format
 msgid "×${ parsedDeck.totalCardCount }"
-msgstr ""
+msgstr "×${ parsedDeck.totalCardCount }"
 
 msgid ""
 "Your ArkhamDB login has expired.\n"
@@ -6321,39 +6321,43 @@ msgid ""
 "You will need to login again on the Settings tab before you can save changes to this "
 "deck."
 msgstr ""
+"Tu sesión de ArkhamDB ha expirado.\n"
+"\n"
+"Es necesario que inicies sesión de nuevo en Ajustes antes de guardar cambios en este "
+"mazo."
 
 msgid "Edit deck tags"
-msgstr ""
+msgstr "Editar etiquetas del mazo"
 
 msgid "Clear tags"
-msgstr ""
+msgstr "Limpiar etiquetas"
 
 msgid "Solo"
-msgstr ""
+msgstr "Solo"
 
 msgid "Beginner"
-msgstr ""
+msgstr "Principiante"
 
 msgid "+ Add"
-msgstr ""
+msgstr "+ Añadir"
 
 msgid "Deck tags"
-msgstr ""
+msgstr "Etiquetas del mazo"
 
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #, javascript-format
 msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ scenarioName }: ${ attempt } visita"
+msgstr[1] "${ scenarioName }: ${ attempt } visita"
 
 msgid "Search english card names"
-msgstr ""
+msgstr "Buscar cartas en inglés"
 
 msgid "Include english results when searching"
-msgstr ""
+msgstr "Incluir resultados en inglés al buscar"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -7192,11 +7196,13 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "The Scarlet Keys Campaign"
-msgstr ""
+msgstr "Campaña Las llaves escarlata"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
 msgstr ""
+"Esta versión añade soporte para la recién salida expansión de campaña Las llaves "
+"escarlata."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -7204,6 +7210,10 @@ msgid ""
 "we've ever seen in Arkham. I've done my best to handle the new features as faithfully as "
 "I can in the app, and am pretty pleased with the implementation."
 msgstr ""
+"- Como sabréis, o pronto descubriréis, esta es, de lejos, la campaña más ambiciosa que "
+"nunca hayamos visto en Arkham. He hecho el máximo esfuerzo para incluir en la aplicación "
+"las nuevas funciones tan fielmente como he podido, y estoy bastante satisfecho con el "
+"resultado."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -7213,6 +7223,11 @@ msgid ""
 "them as quickly as possible. But given the expansive nature of the campaign, it is "
 "possible in a worst case scenario that some progress might need to be re-entered."
 msgstr ""
+"- He hecho todo lo posible para buscar las costuras de la implementación de la campaña, "
+"pero es posible que todavía existan algunos errores. Si encuentras alguno, házmelo saber "
+"por favor a [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) y trataré de "
+"arreglarlo tan rápido como pueda. Dada la naturaleza de esta campaña, es posible que en "
+"el peor de los casos tengas que volver atrás y reintroducir algunos de tus avances."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -7221,12 +7236,19 @@ msgid ""
 "and hope you find it helpful (in case like me you sometimes go weeks between game "
 "sessions)."
 msgstr ""
+"- También me he tomado la libertad de incluir algunos pequeños recordatorios de la "
+"historia cuando las localizaciones del mapa se desbloquean a lo largo de la partida. He "
+"hecho todo lo posible para capturar el texto de la historia y espero que te resulte "
+"útil, sobre todo si, como me pasa a mi, a veces pasan semanas entre tus sesiones de "
+"juego."
 
 msgctxt "releaseNotes"
 msgid ""
 "As always, many thanks to my many supporters on Patreon -- I appreciate your support "
 "which helps make all of this possible."
 msgstr ""
+"Como siempre, muchas gracias a los muchos suscriptores de Patreon. Realmente os "
+"agradezco la ayuda que hace que esto sea posible."
 
 msgctxt "trait"
 msgid "???"
@@ -8688,15 +8710,15 @@ msgstr[1] "Llaves"
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 msgctxt "tags"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "tags"
 msgid "None"
-msgstr ""
+msgstr "Ninguna"
 
 msgctxt "Tarot Card"
 msgid "None"
