@@ -22,7 +22,7 @@ export default function CardFooterInfo({ card }: Props) {
           { !!card.illustrator && (
             <>
               <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D20} />
-              <Text style={typography.tiny}>
+              <Text style={typography.tiny} ellipsizeMode="tail" numberOfLines={1}>
                 { ` ${card.illustrator}` }
               </Text>
             </>
@@ -37,7 +37,7 @@ export default function CardFooterInfo({ card }: Props) {
           </View>
         ) }
       </View>
-      <View style={styles.cardNumber}>
+      <View style={[styles.cardNumber, { flex: 1 }]}>
         { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
           <View style={[styles.row, styles.encounterRow]}>
             <Text style={typography.tiny}>
@@ -58,7 +58,7 @@ export default function CardFooterInfo({ card }: Props) {
           </View>
         )}
         <View style={styles.row}>
-          <Text style={typography.tiny}>
+          <Text style={[typography.tiny, typography.right, { flex: 1 }]} ellipsizeMode="tail" numberOfLines={1}>
             { card.cycle_name }
           </Text>
           <View style={styles.icon}>
@@ -76,7 +76,7 @@ export default function CardFooterInfo({ card }: Props) {
           // tslint:disable-next-line
           !card.encounter_name && card.pack_name !== card.cycle_name && (
             <View style={[styles.row, styles.encounterRow]}>
-              <Text style={typography.tiny}>
+              <Text style={typography.tiny} ellipsizeMode="tail" numberOfLines={2}>
                 { card.pack_name }
               </Text>
             </View>
