@@ -41,7 +41,9 @@ export default function ThemePicker() {
     },
   ];
   const onFontScaleChange = useCallback((value: number) => {
-    dispatch(setFontSize(value));
+    setTimeout(() => {
+      dispatch(setFontSize(value));
+    }, 150);
   }, [dispatch]);
 
 
