@@ -964,7 +964,7 @@ msgstr "삭제 중"
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
-msgstr "경험치 ${ xp } (${ adjustment })점"
+msgstr "${ xp } (${ adjustment })점"
 
 msgid "Taboo List"
 msgstr "금기 목록"
@@ -2445,7 +2445,7 @@ msgstr "경험치 저장"
 
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
-msgstr "사용 가능 경험치 ${ xp }점, (${ parsedDeck.changes.spentXp } 소비함)"
+msgstr "사용 가능 경험치 ${ xp }점, (${ parsedDeck.changes.spentXp }점 소비함)"
 
 msgid " (Per Investigator)"
 msgstr " (조사자 당)"
@@ -6232,7 +6232,7 @@ msgstr "영문 검색 결과 포함"
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] "경험치 ${ xp }점"
+msgstr[0] "${ xp }점"
 
 msgctxt "investigator"
 msgid "Custom"
