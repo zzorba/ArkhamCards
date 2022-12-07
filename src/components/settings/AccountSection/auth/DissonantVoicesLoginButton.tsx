@@ -41,6 +41,7 @@ export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
     <View>
       <DeckActionRow
         icon="mythos-busters"
+        larger
         title={status ? t`Narration enabled` : t`Audio narration`}
         description={t`Dissonant Voices`}
         growControl

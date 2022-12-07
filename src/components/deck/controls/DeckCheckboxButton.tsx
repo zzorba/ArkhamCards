@@ -13,9 +13,10 @@ interface Props {
   loading?: boolean;
   disabled?: boolean;
   last?: boolean;
+  larger?: boolean;
 }
 
-export default function DeckCheckboxButton({ title, description, icon, value, onValueChange, disabled, loading, last }: Props) {
+export default function DeckCheckboxButton({ title, larger, description, icon, value, onValueChange, disabled, loading, last }: Props) {
   const [liveValue, setLiveValue] = useState(value);
   const onUpdate = useCallback((value: boolean) => {
     setLiveValue(value);
@@ -33,6 +34,7 @@ export default function DeckCheckboxButton({ title, description, icon, value, on
       description={description}
       icon={icon}
       last={last}
+      larger={larger}
       loading={loading}
       control={<ArkhamSwitch value={liveValue} onValueChange={onUpdate} disabled={disabled} />}
     />

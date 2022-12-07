@@ -76,7 +76,7 @@ export default function(
     },
     smallLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: Math.ceil(14 * fontScale),
+      fontSize: Math.ceil(15 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       letterSpacing: 0.3,
       color: colors.lightText,
