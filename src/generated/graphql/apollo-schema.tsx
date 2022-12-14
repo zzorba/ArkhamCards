@@ -22407,11 +22407,15 @@ export type Rangers_Campaign = {
   created_at: Scalars['timestamptz'];
   /** An object relationship */
   creator: Rangers_Users;
+  current_location?: Maybe<Scalars['String']>;
+  current_path_terrain?: Maybe<Scalars['String']>;
+  events?: Maybe<Scalars['jsonb']>;
   id: Scalars['Int'];
   /** An array relationship */
   latest_decks: Array<Rangers_Latest_Deck>;
   /** An aggregate relationship */
   latest_decks_aggregate: Rangers_Latest_Deck_Aggregate;
+  missions: Scalars['jsonb'];
   name: Scalars['String'];
   rewards: Scalars['jsonb'];
   updated_at: Scalars['timestamptz'];
@@ -22444,6 +22448,12 @@ export type Rangers_CampaignAccess_AggregateArgs = {
 
 
 /** columns and relationships of "rangers.campaign" */
+export type Rangers_CampaignEventsArgs = {
+  path?: InputMaybe<Scalars['String']>;
+};
+
+
+/** columns and relationships of "rangers.campaign" */
 export type Rangers_CampaignLatest_DecksArgs = {
   distinct_on?: InputMaybe<Array<Rangers_Latest_Deck_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -22460,6 +22470,12 @@ export type Rangers_CampaignLatest_Decks_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Rangers_Latest_Deck_Order_By>>;
   where?: InputMaybe<Rangers_Latest_Deck_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.campaign" */
+export type Rangers_CampaignMissionsArgs = {
+  path?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -22812,6 +22828,8 @@ export type Rangers_Campaign_Aggregate_FieldsCountArgs = {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Rangers_Campaign_Append_Input = {
+  events?: InputMaybe<Scalars['jsonb']>;
+  missions?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -22830,9 +22848,13 @@ export type Rangers_Campaign_Bool_Exp = {
   access_aggregate?: InputMaybe<Rangers_User_Campaign_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   creator?: InputMaybe<Rangers_Users_Bool_Exp>;
+  current_location?: InputMaybe<String_Comparison_Exp>;
+  current_path_terrain?: InputMaybe<String_Comparison_Exp>;
+  events?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   latest_decks?: InputMaybe<Rangers_Latest_Deck_Bool_Exp>;
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Bool_Exp>;
+  missions?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   rewards?: InputMaybe<Jsonb_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -22849,16 +22871,22 @@ export enum Rangers_Campaign_Constraint {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Rangers_Campaign_Delete_At_Path_Input = {
+  events?: InputMaybe<Array<Scalars['String']>>;
+  missions?: InputMaybe<Array<Scalars['String']>>;
   rewards?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Rangers_Campaign_Delete_Elem_Input = {
+  events?: InputMaybe<Scalars['Int']>;
+  missions?: InputMaybe<Scalars['Int']>;
   rewards?: InputMaybe<Scalars['Int']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Rangers_Campaign_Delete_Key_Input = {
+  events?: InputMaybe<Scalars['String']>;
+  missions?: InputMaybe<Scalars['String']>;
   rewards?: InputMaybe<Scalars['String']>;
 };
 
@@ -22872,8 +22900,12 @@ export type Rangers_Campaign_Insert_Input = {
   access?: InputMaybe<Rangers_User_Campaign_Arr_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   creator?: InputMaybe<Rangers_Users_Obj_Rel_Insert_Input>;
+  current_location?: InputMaybe<Scalars['String']>;
+  current_path_terrain?: InputMaybe<Scalars['String']>;
+  events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
   latest_decks?: InputMaybe<Rangers_Latest_Deck_Arr_Rel_Insert_Input>;
+  missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -22885,6 +22917,8 @@ export type Rangers_Campaign_Insert_Input = {
 export type Rangers_Campaign_Max_Fields = {
   __typename?: 'rangers_campaign_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
+  current_location?: Maybe<Scalars['String']>;
+  current_path_terrain?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -22895,6 +22929,8 @@ export type Rangers_Campaign_Max_Fields = {
 export type Rangers_Campaign_Min_Fields = {
   __typename?: 'rangers_campaign_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
+  current_location?: Maybe<Scalars['String']>;
+  current_path_terrain?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -22929,8 +22965,12 @@ export type Rangers_Campaign_Order_By = {
   access_aggregate?: InputMaybe<Rangers_User_Campaign_Aggregate_Order_By>;
   created_at?: InputMaybe<Order_By>;
   creator?: InputMaybe<Rangers_Users_Order_By>;
+  current_location?: InputMaybe<Order_By>;
+  current_path_terrain?: InputMaybe<Order_By>;
+  events?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Order_By>;
+  missions?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   rewards?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -22945,6 +22985,8 @@ export type Rangers_Campaign_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Rangers_Campaign_Prepend_Input = {
+  events?: InputMaybe<Scalars['jsonb']>;
+  missions?: InputMaybe<Scalars['jsonb']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
 };
 
@@ -22953,7 +22995,15 @@ export enum Rangers_Campaign_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  CurrentLocation = 'current_location',
+  /** column name */
+  CurrentPathTerrain = 'current_path_terrain',
+  /** column name */
+  Events = 'events',
+  /** column name */
   Id = 'id',
+  /** column name */
+  Missions = 'missions',
   /** column name */
   Name = 'name',
   /** column name */
@@ -22967,7 +23017,11 @@ export enum Rangers_Campaign_Select_Column {
 /** input type for updating data in table "rangers.campaign" */
 export type Rangers_Campaign_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  current_location?: InputMaybe<Scalars['String']>;
+  current_path_terrain?: InputMaybe<Scalars['String']>;
+  events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
+  missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -23003,7 +23057,11 @@ export type Rangers_Campaign_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Rangers_Campaign_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  current_location?: InputMaybe<Scalars['String']>;
+  current_path_terrain?: InputMaybe<Scalars['String']>;
+  events?: InputMaybe<Scalars['jsonb']>;
   id?: InputMaybe<Scalars['Int']>;
+  missions?: InputMaybe<Scalars['jsonb']>;
   name?: InputMaybe<Scalars['String']>;
   rewards?: InputMaybe<Scalars['jsonb']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -23021,7 +23079,15 @@ export enum Rangers_Campaign_Update_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  CurrentLocation = 'current_location',
+  /** column name */
+  CurrentPathTerrain = 'current_path_terrain',
+  /** column name */
+  Events = 'events',
+  /** column name */
   Id = 'id',
+  /** column name */
+  Missions = 'missions',
   /** column name */
   Name = 'name',
   /** column name */
@@ -23099,6 +23165,7 @@ export type Rangers_Card = {
   quantity: Scalars['Int'];
   set_id: Scalars['String'];
   set_position: Scalars['Int'];
+  spoiler?: Maybe<Scalars['Boolean']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -23225,6 +23292,7 @@ export type Rangers_Card_Bool_Exp = {
   quantity?: InputMaybe<Int_Comparison_Exp>;
   set_id?: InputMaybe<String_Comparison_Exp>;
   set_position?: InputMaybe<Int_Comparison_Exp>;
+  spoiler?: InputMaybe<Boolean_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   token_count?: InputMaybe<Int_Comparison_Exp>;
   token_id?: InputMaybe<String_Comparison_Exp>;
@@ -23305,6 +23373,7 @@ export type Rangers_Card_Insert_Input = {
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -23360,6 +23429,7 @@ export type Rangers_Card_Localized = {
   set_size?: Maybe<Scalars['Int']>;
   set_type_id?: Maybe<Scalars['String']>;
   set_type_name?: Maybe<Scalars['String']>;
+  spoiler?: Maybe<Scalars['Boolean']>;
   text?: Maybe<Scalars['String']>;
   token_count?: Maybe<Scalars['Int']>;
   token_id?: Maybe<Scalars['String']>;
@@ -23477,6 +23547,7 @@ export type Rangers_Card_Localized_Bool_Exp = {
   set_size?: InputMaybe<Int_Comparison_Exp>;
   set_type_id?: InputMaybe<String_Comparison_Exp>;
   set_type_name?: InputMaybe<String_Comparison_Exp>;
+  spoiler?: InputMaybe<Boolean_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   token_count?: InputMaybe<Int_Comparison_Exp>;
   token_id?: InputMaybe<String_Comparison_Exp>;
@@ -23643,6 +23714,7 @@ export type Rangers_Card_Localized_Order_By = {
   set_size?: InputMaybe<Order_By>;
   set_type_id?: InputMaybe<Order_By>;
   set_type_name?: InputMaybe<Order_By>;
+  spoiler?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   token_count?: InputMaybe<Order_By>;
   token_id?: InputMaybe<Order_By>;
@@ -23742,6 +23814,8 @@ export enum Rangers_Card_Localized_Select_Column {
   SetTypeId = 'set_type_id',
   /** column name */
   SetTypeName = 'set_type_name',
+  /** column name */
+  Spoiler = 'spoiler',
   /** column name */
   Text = 'text',
   /** column name */
@@ -23881,6 +23955,7 @@ export type Rangers_Card_Localized_Stream_Cursor_Value_Input = {
   set_size?: InputMaybe<Scalars['Int']>;
   set_type_id?: InputMaybe<Scalars['String']>;
   set_type_name?: InputMaybe<Scalars['String']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -24100,6 +24175,7 @@ export type Rangers_Card_Order_By = {
   quantity?: InputMaybe<Order_By>;
   set_id?: InputMaybe<Order_By>;
   set_position?: InputMaybe<Order_By>;
+  spoiler?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   token_count?: InputMaybe<Order_By>;
   token_id?: InputMaybe<Order_By>;
@@ -24178,6 +24254,8 @@ export enum Rangers_Card_Select_Column {
   /** column name */
   SetPosition = 'set_position',
   /** column name */
+  Spoiler = 'spoiler',
+  /** column name */
   Text = 'text',
   /** column name */
   TokenCount = 'token_count',
@@ -24221,6 +24299,7 @@ export type Rangers_Card_Set_Input = {
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -24327,6 +24406,7 @@ export type Rangers_Card_Stream_Cursor_Value_Input = {
   quantity?: InputMaybe<Scalars['Int']>;
   set_id?: InputMaybe<Scalars['String']>;
   set_position?: InputMaybe<Scalars['Int']>;
+  spoiler?: InputMaybe<Scalars['Boolean']>;
   text?: InputMaybe<Scalars['String']>;
   token_count?: InputMaybe<Scalars['Int']>;
   token_id?: InputMaybe<Scalars['String']>;
@@ -24668,6 +24748,8 @@ export enum Rangers_Card_Update_Column {
   SetId = 'set_id',
   /** column name */
   SetPosition = 'set_position',
+  /** column name */
+  Spoiler = 'spoiler',
   /** column name */
   Text = 'text',
   /** column name */
