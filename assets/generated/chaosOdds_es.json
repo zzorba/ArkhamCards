@@ -8338,7 +8338,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "Tienes 2 o más pistas",
               "modified_value": {
                 "modifier": -3
               }
@@ -8355,7 +8355,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "Hay una carta pequeña Encubierto en tu Lugar",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8381,7 +8381,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "Tienes 2 o más pistas",
               "modified_value": {
                 "modifier": -4
               }
@@ -8398,7 +8398,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "Hay una carta pequeña Encubierto en tu Lugar",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -8629,7 +8629,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "Número de enemigos en las sombras",
           "min": 0,
           "max": 3
         }
@@ -8669,7 +8669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "Número de enemigos en las sombras",
           "min": 0,
           "max": 5
         }

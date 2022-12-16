@@ -19,6 +19,7 @@ import { CardStatusMigration1662999387731 } from './migration/CardStatusMigratio
 import { GenderMigration1663271269593 } from './migration/GenderMigration';
 import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
 import { ImageMigration1665529094145 } from './migration/ImageMigration'
+import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuantityMigration';
 
 type DatabaseListener = () => void;
 
@@ -51,6 +52,7 @@ async function createDatabaseConnection(recreate: boolean) {
       GenderMigration1663271269593,
       CardTagsMigraiton1663617607335,
       ImageMigration1665529094145,
+      ReprintQuantityMigration1671202311300,
     ],
     entities: [
       Card,

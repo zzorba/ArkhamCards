@@ -13,6 +13,7 @@ import { CoreCardTextFragment, Gender_Enum, SingleCardFragment } from '@generate
 import CustomizationOption, { CustomizationChoice } from './CustomizationOption';
 import { processAdvancedChoice } from '@lib/parseDeck';
 import CardTextFields from './CardTextFields';
+import CardReprintInfo from './CardReprintInfo';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
@@ -227,6 +228,9 @@ export default class Card {
 
   @Column('simple-array', { nullable: true })
   public reprint_pack_codes?: string[];
+
+  @Column('simple-json', { nullable: true })
+  public reprint_info?: CardReprintInfo[];
 
   @Column('text', { nullable: true })
   public status?: CardStatusType;
@@ -957,12 +961,19 @@ export default class Card {
     } else if (!ignore_collection && !packInCollection[this.pack_code]) {
       quantity = 0;
     }
-
-    forEach(this.reprint_pack_codes, pack => {
-      if (!!packInCollection[pack]) {
-        quantity += Math.max(this.quantity || 0, this.deck_limit || 0);
-      }
-    });
+    if (this.reprint_info) {
+      forEach(this.reprint_info, reprint => {
+        if (reprint.pack_code && !!packInCollection[reprint.pack_code]) {
+          quantity += Math.max(reprint.quantity || 0, this.deck_limit || 0);
+        }
+      });
+    } else {
+      forEach(this.reprint_pack_codes, pack => {
+        if (!!packInCollection[pack]) {
+          quantity += Math.max(this.quantity || 0, this.deck_limit || 0);
+        }
+      });
+    }
     return quantity;
   }
 

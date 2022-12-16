@@ -11,6 +11,7 @@ import FaqEntry from '@data/types/FaqEntry';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetCardsCacheDocument, GetCardsCacheQuery, GetCardsCacheQueryVariables, GetCardsDocument, GetCardsQuery, GetCardsQueryVariables } from '@generated/graphql/apollo-schema';
 import { Dispatch } from 'react';
+import CardReprintInfo from '@data/types/CardReprintInfo';
 
 const VERBOSE = false;
 
@@ -92,7 +93,7 @@ export const syncRules = async function(
 
 
 function handleDerivativeData(dedupedCards: Card[], dupes: {
-  [code: string]: string[] | undefined;
+  [code: string]: Card[] | undefined;
 }) {
   const flatCards = flatMap(dedupedCards, (c: Card) => {
     return c.linked_card ? [c, c.linked_card] : [c];
@@ -106,7 +107,8 @@ function handleDerivativeData(dedupedCards: Card[], dupes: {
   const playerCards: Card[] = [];
   forEach(flatCards, card => {
     if (dupes[card.code]) {
-      card.reprint_pack_codes = uniq(dupes[card.code]);
+      card.reprint_pack_codes = uniq(map(dupes[card.code], c => c.pack_code));
+      card.reprint_info = uniq(map(dupes[card.code], c => CardReprintInfo.parse(c)));
     }
     if (!card.hidden && card.encounter_code) {
       encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
@@ -306,13 +308,13 @@ export const syncCards = async function(
     VERBOSE && console.timeEnd('rules');
     const cardsToInsert: Card[] = [];
     const dupes: {
-      [code: string]: string[] | undefined;
+      [code: string]: Card[] | undefined;
     } = {};
     forEach(allCards, card => {
       if (card.duplicate_of_code) {
         dupes[card.duplicate_of_code] = [
           ...(dupes[card.duplicate_of_code] || []),
-          card.pack_code,
+          card,
         ];
       }
       cardsToInsert.push(card);
