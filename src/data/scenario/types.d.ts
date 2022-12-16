@@ -301,6 +301,16 @@ export interface MapLabel {
   name: string;
   direction: "left" | "center" | "right";
   type: "connection" | "ocean" | "small_ocean" | "sea" | "continent" | "country";
+  lang_position?: {
+    es?: {
+      x: number;
+      y: number;
+    };
+    ko?: {
+      x: number;
+      y: number;
+    };
+  };
   rotation?: string;
 }
 export interface CampaignLogSectionDefinition {

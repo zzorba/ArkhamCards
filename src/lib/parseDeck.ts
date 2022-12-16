@@ -814,7 +814,8 @@ export function parseCustomizations(
   meta: DeckMeta,
   slots: Slots,
   cards: CardsMap,
-  previousMeta: DeckMeta | undefined
+  previousMeta: DeckMeta | undefined,
+  previousSlots: Slots | undefined
 ): [Customizations, Customizations | undefined] {
   const previousCustomizations: Customizations = {};
   const result: Customizations = {};
@@ -824,7 +825,7 @@ export function parseCustomizations(
       return;
     }
     const value = meta[`cus_${code}`] || '';
-    const previousEntry = previousMeta?.[`cus_${code}`];
+    const previousEntry = (previousSlots?.[code] || 0) > 0 ? previousMeta?.[`cus_${code}`] : undefined;
     const previousDecisions = previousEntry ? parseCustomizationDecision(previousEntry) : [];
     const decisions = parseCustomizationDecision(value);
 
@@ -875,7 +876,7 @@ export function parseDeck(
   xpAdjustment?: number,
   originalDeck?: Deck
 ): ParsedDeck | undefined {
-  const [customizations, previousCustomizations] = parseCustomizations(meta, slots, cards, previousDeck?.meta);
+  const [customizations, previousCustomizations] = parseCustomizations(meta, slots, cards, previousDeck?.meta, previousDeck?.slots);
   const investigator_front_code = meta.alternate_front || investigator_code;
   const investigator_back_code = meta.alternate_back || investigator_code;
   const investigator: Card | undefined = cards[investigator_back_code];

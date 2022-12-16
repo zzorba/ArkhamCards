@@ -194,10 +194,9 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   useEffect(() => {
     fetchedOne.current = false;
   }, [visibleCards, ...deps]);
-  const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
-      if (!fetchedOne.current || !lowMemoryMode) {
+      if (!fetchedOne.current) {
         if (!partialCardsLoading) {
           fetchedOne.current = true;
         }
@@ -206,7 +205,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards, lowMemoryMode, partialCardsLoading]);
+  }, [visibleCards, cards, partialCardsLoading]);
   const expandCards = useCallback(() => {
     fetchedOne.current = false;
   }, []);

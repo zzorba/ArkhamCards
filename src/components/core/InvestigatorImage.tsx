@@ -48,6 +48,78 @@ const ICON_SIZE = {
   large: 65,
 };
 
+const INVESTIGATOR_VERTICAL_OFFSET: { [key: string]: number | undefined } = {
+  '09008': 1.5,
+  '06001': 0.9,
+  '03001': 0.95,
+  '04001': 0.9,
+  '08001': 0.95,
+  '05001': 0.95,
+  '03004': 0.95,
+  '07004': 0.9,
+  '04004': 0.9,
+  'zbh_00010': 0.9,
+  '02004': 0.92,
+  '02005': 0.95,
+  '08016': 1.2,
+  '04005': 0.9,
+  '09015': 0.95,
+  'zbh_00013': 1.8,
+  '07005': 0.9,
+  '01005': 0.95,
+  '03006': 0.95,
+  '09018': 0.95,
+  'zsti_00004': 1.5,
+};
+const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
+  'zbh_00001': 1.2,
+  'zaw_00304': 1.6,
+  '05001': 1.3,
+  '08001': 0.9,
+  '04001': 1.4,
+  '03001': 0.7,
+  '60101': 1.3,
+  '07001': 1.9,
+  '06001': 0.5,
+  '02001': 1.2,
+  '07002': 1.7,
+  '60201': 1.2,
+  '05002': 0.3,
+  'zbh_00004': 1.8,
+  '06002': 1.3,
+  '03002': 0.9,
+  '08004': 1.2,
+  '04002': 0.8,
+  'zsti_00010': 1.3,
+  '04003': 0.3,
+  'zjc_00027': 1.5,
+  'zbh_00007': 0.8,
+  '02003': 1.3,
+  '09004': 0.8,
+  '06003': 0.5,
+  '03004': 0.2,
+  '09011': 1.7,
+  '04004': 0.5,
+  'zbh_00010': 0.6,
+  '60401': 1.4,
+  '02004': 0.5,
+  '08010': 0.4,
+  '06004': 0.8,
+  '05006': 1.6,
+  '02005': 0.2,
+  '08016': 0.1,
+  '04005': 0.8,
+  'zbh_00013': 1.4,
+  '06005': 0.1,
+  '05005': 1.8,
+  'zsti_00022': 0.5,
+  '07005': 0.5,
+  '01005': 0.8,
+  '09018': 0.7,
+  '03006': 0.7,
+  'zsti_00004': 1.4,
+}
+
 function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
   if (size === 'small' || size === 'tiny') {
     return size;
@@ -96,10 +168,17 @@ function InvestigatorImage({
         case 'large': return imageOffset === 'right' ? styles.largeRightAsset : styles.largeAsset;
       }
     }
+    if (yithian) {
+      switch (impliedSize) {
+        case 'tiny': return styles.yithianTiny;
+        case 'small': return styles.yithianSmall;
+        case 'large': return styles.yithianLarge;
+      }
+    }
     switch (impliedSize) {
-      case 'tiny': return yithian ? styles.yithianTiny : styles.tiny;
-      case 'small': return yithian ? styles.yithianSmall : styles.small;
-      case 'large': return yithian ? styles.yithianLarge : styles.large;
+      case 'tiny': return styles.tiny;
+      case 'small': return styles.small;
+      case 'large': return styles.large;
     }
   }, [impliedSize, imageOffset, yithian, card]);
   const imgUri = useMemo(() => {
@@ -117,9 +196,17 @@ function InvestigatorImage({
 
   const investigatorImage = useMemo(() => {
     if (imgUri) {
+      const leftOffset = (card?.code && INVESTIGATOR_HORIZONTAL_OFFSET[card.code]) || 1;
+      const topOffset = (card?.code && INVESTIGATOR_VERTICAL_OFFSET[card.code]) || 1;
       return (
         <FastImage
-          style={imageStyle}
+          style={[
+            imageStyle,
+            {
+              left: imageStyle.left * leftOffset,
+              top: imageStyle.top * topOffset ,
+            },
+          ]}
           source={{
             uri: imgUri,
           }}

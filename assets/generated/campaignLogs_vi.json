@@ -2427,11 +2427,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro nhớ mọi thứ."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro chống lại bạn."
           },
           {
             "id": "braziers_are_lit",
@@ -2447,7 +2447,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "các điều tra viên đã hợp tác với sinh vật Yithians."
           },
           {
             "id": "earned_alejandros_trust",
@@ -2487,7 +2487,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "các điều tra viên đã bị xóa trí nhớ."
           },
           {
             "id": "harbinger_alive",
@@ -2551,19 +2551,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "phương thức đã phản tác dụng."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "phương thức đã phản tác dụng một cách ngoạn mục."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "quá trình đã được hoàn thiện."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "quá trình đã thành công."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -2579,7 +2579,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "các điều tra viên đã chống lại việc bị giam cầm."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -2680,7 +2680,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# nhiệm vụ đã được hoàn thành"
           },
           {
             "id": "thc_reminder",
@@ -4048,11 +4048,11 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro nhớ mọi thứ."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro chống lại bạn."
           },
           {
             "id": "braziers_are_lit",
@@ -4068,7 +4068,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "các điều tra viên đã hợp tác với sinh vật Yithians."
           },
           {
             "id": "earned_alejandros_trust",
@@ -4108,7 +4108,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "các điều tra viên đã bị xóa trí nhớ."
           },
           {
             "id": "harbinger_alive",
@@ -4172,19 +4172,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "phương thức đã phản tác dụng."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "phương thức đã phản tác dụng một cách ngoạn mục."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "quá trình đã được hoàn thiện."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "quá trình đã thành công."
           },
           {
             "id": "relic_is_missing",
@@ -4196,7 +4196,7 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "các điều tra viên đã chống lại việc bị giam cầm."
           },
           {
             "id": "sealed_relic_of_ages_forever",
@@ -4289,7 +4289,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "#X# nhiệm vụ đã được hoàn thành"
           },
           {
             "id": "thc_reminder",
@@ -5141,10 +5141,6 @@
             "text": "dummy"
           },
           {
-            "id": "beast_nay",
-            "text": "dummy"
-          },
-          {
             "id": "beast_yay",
             "text": "dummy"
           },
@@ -5177,6 +5173,10 @@
             "text": "dummy"
           },
           {
+            "id": "dead_heat_skipped",
+            "text": "dummy"
+          },
+          {
             "id": "delivered_intel",
             "text": "dummy"
           },
@@ -5190,6 +5190,22 @@
           },
           {
             "id": "desi_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_slain_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_slain_civilians",
             "text": "dummy"
           },
           {

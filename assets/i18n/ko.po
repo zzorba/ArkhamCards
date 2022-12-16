@@ -691,26 +691,26 @@ msgid "Hide ArkhamDB decks"
 msgstr "아컴디비에 업로드된 덱 숨기기"
 
 msgid "Original Deck"
-msgstr "원래 덱"
+msgstr "초기 덱"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr "최신 덱: ${ deck.changes.spentXp }/${ deck.availableExperience } 경험치"
+msgstr "최신 덱: ${ deck.availableExperience }점 중 ${ deck.changes.spentXp }점 소비"
 
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr "최신 덱: ${ deck.availableExperience } 경험치"
+msgstr "최신 덱: ${ deck.availableExperience }점"
 
 #, javascript-format
 msgid ""
 "Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ deck."
 "availableExperience } XP"
 msgstr ""
-"${ humanVersionNumber } 향상:  ${ deck.changes.spentXp }/${ deck.availableExperience } 경"
-"험치"
+"${ humanVersionNumber }번째 향상: ${ deck.availableExperience "
+"}점 중 ${ deck.changes.spentXp }점 소비"
 
 #, javascript-format
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
-msgstr "${ humanVersionNumber } 향상: ${ deck.availableExperience } 경험치"
+msgstr "${ humanVersionNumber }번째 향상: ${ deck.availableExperience }점"
 
 msgid "Saving..."
 msgstr "저장 중..."
@@ -964,7 +964,7 @@ msgstr "삭제 중"
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
-msgstr "${ xp } (${ adjustment }) 경험치"
+msgstr "${ xp } (${ adjustment })점"
 
 msgid "Taboo List"
 msgstr "금기 목록"
@@ -1025,7 +1025,7 @@ msgid ""
 "${ parsedBaseDeck.experience } XP"
 msgstr ""
 "기본 버전\n"
-"${ parsedBaseDeck.experience } 경험치"
+"경험치 ${ parsedBaseDeck.experience }점"
 
 #, javascript-format
 msgid ""
@@ -1033,20 +1033,20 @@ msgid ""
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
 "현재 버전 ${ parsedCurrentDeck.deck.version }\n"
-"${ parsedCurrentDeck.experience } 경험치"
+"경험치 ${ parsedCurrentDeck.experience }점"
 
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
 msgstr ""
 "최신 버전 ${ parsedLatestDeck.deck.version }\n"
-"${ parsedLatestDeck.experience } 경험치"
+"경험치 ${ parsedLatestDeck.experience }점"
 
 msgid "New Name"
 msgstr "새로운 이름"
 
 msgid "Required"
-msgstr "요구사항"
+msgstr "필수사항"
 
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or choose different "
@@ -1695,7 +1695,7 @@ msgid "Scenario Name"
 msgstr "시나리오명"
 
 msgid "Experience Cost"
-msgstr "경험치 지용"
+msgstr "경험치 비용"
 
 msgid "Add"
 msgstr "더하기"
@@ -2093,7 +2093,7 @@ msgstr "다리의 진척도"
 
 #, javascript-format
 msgid "${ totalXp } total"
-msgstr "전체 ${ totalXp } 경험치"
+msgstr "전체 ${ totalXp }점"
 
 msgid "Upgrade deck"
 msgstr "덱 향상"
@@ -2445,7 +2445,7 @@ msgstr "경험치 저장"
 
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
-msgstr "사용 가능 경험치 ${ xp }, (${ parsedDeck.changes.spentXp } 소비함)"
+msgstr "사용 가능 경험치 ${ xp }점, (${ parsedDeck.changes.spentXp }점 소비함)"
 
 msgid " (Per Investigator)"
 msgstr " (조사자 당)"
@@ -2469,7 +2469,7 @@ msgstr ""
 
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
-msgstr "${ totalXp } 중 ${ spentXp } 소비"
+msgstr "${ totalXp }점 중 ${ spentXp }점 소비"
 
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
@@ -2517,7 +2517,7 @@ msgstr[0] "${ count } 물자 점수"
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
-msgstr[0] "${ xp } 일반적 / ${ resupplyPointsString } 경험치"
+msgstr[0] "${ xp }점 / 재보급 ${ resupplyPointsString }점"
 
 msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario and following "
@@ -2966,7 +2966,7 @@ msgstr "재빠른 분석 규칙"
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
-msgstr[0] "이 향상은 ${ xpCost } 경험치가 필요합니다."
+msgstr[0] "이 향상은 경험치 ${ xpCost }점이 필요합니다."
 
 #, javascript-format
 msgid ""
@@ -3157,7 +3157,7 @@ msgstr[0] "결속 ${ bondedCardCount }장"
 
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
-msgstr[0] "${ unspentXpStr } 미사용"
+msgstr[0] "미사용 ${ unspentXpStr }점"
 
 msgid "Deck is invalid"
 msgstr "덱 구성 조건을 만족하지 않습니다"
@@ -3176,7 +3176,7 @@ msgid "${ count } of ${ limitSlotCount }"
 msgstr "${ limitSlotCount }장 중 ${ count }장 포함"
 
 msgid "0 unspent"
-msgstr "0 미사용"
+msgstr "미사용 0점"
 
 #, javascript-format
 msgid "${ overspent } overspent"
@@ -3267,7 +3267,7 @@ msgstr ""
 "때 포함하지 않습니다)."
 
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr "${ _adjustedXp } 경험치 중 ${ spentXP } 소비"
+msgstr "${ _adjustedXp }점 중 ${ spentXP }점 소비"
 
 msgid "Upgrading"
 msgstr "향상 중"
@@ -3741,7 +3741,7 @@ msgstr "시나리오 이름"
 
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
-msgstr[0] "${ unspentXp } 경험치 남음"
+msgstr[0] "잔여 ${ unspentXp }점"
 
 msgid "Tap to draw"
 msgstr "탭하여 뽑기"
@@ -3776,7 +3776,7 @@ msgstr "봉인된 토큰"
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
-msgstr "${ _totalXp } 경험치 중 ${ _spentXp } 소비"
+msgstr "${ _totalXp }점 중 ${ _spentXp }점 소비"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
@@ -4681,11 +4681,11 @@ msgid ""
 "Each investigator not defeated during this game earns +2 experience during its "
 "resolution."
 msgstr ""
-"이번 게임 동안 쓰러지지 않은 모든 조사자는 결말을 해결하는 동안 +2 경험치를 얻습니다."
+"이번 게임 동안 쓰러지지 않은 모든 조사자는 결말을 해결하는 동안 경험치에 +2점을 적용합니다."
 
 msgid ""
 "Each investigator defeated during this game earns -2 experience during its resolution."
-msgstr "이번 게임 동안 쓰러진 모든 조사자는 결말을 해결하는 동안 -2 경험치를 얻습니다."
+msgstr "이번 게임 동안 쓰러진 모든 조사자는 결말을 해결하는 동안 경험치에 -2점을 적용합니다."
 
 msgid "The Magician · I"
 msgstr "마법사 · I"
@@ -5764,7 +5764,7 @@ msgstr "특성 추가"
 #, javascript-format
 msgid "${ quantity } copy"
 msgid_plural "${ quantity } copies"
-msgstr[0] "${ quantity }장의 사본"
+msgstr[0] "사본 ${ quantity }장"
 
 msgid "Embark"
 msgstr "탑승"
@@ -6089,7 +6089,7 @@ msgstr "시간 비용: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
-msgstr "‘${ investigator.name }’ 조사자의 추가 경험치 비용: ${ additionalXpCost }"
+msgstr "‘${ investigator.name }’ 조사자의 추가 경험치 비용: ${ additionalXpCost }점"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
@@ -6232,7 +6232,7 @@ msgstr "영문 검색 결과 포함"
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] "${xp} 경험치"
+msgstr[0] "${ xp }점"
 
 msgctxt "investigator"
 msgid "Custom"

@@ -95,7 +95,7 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
     if (!meta || !slots || !cards) {
       return undefined;
     }
-    return parseCustomizations(meta, slots, cards, previousMeta)[0];
+    return parseCustomizations(meta, slots, cards, previousMeta, deck?.previousDeck?.slots)[0];
   }, [meta, slots, previousMeta, cards]);
 }
 

@@ -68,7 +68,6 @@ export default function DeckList({
   selectedTags,
   onEditDeckTags,
 }: Props) {
-  const lowMemory = useSettingValue('low_memory');
   const investigatorCodes = useMemo(() => uniq(map(deckIds, deckId => deckId.investigator)), [deckIds]);
   const investigators = useInvestigators(investigatorCodes);
   const allItems = useMemo(() => {
@@ -96,11 +95,8 @@ export default function DeckList({
   }, [deckIds, deckClicked, investigators, searchTerm, selectedTags]);
   const [numDecks, setNumDecks] = useState(10);
   const items = useMemo(() => {
-    if (!lowMemory) {
-      return allItems;
-    }
     return take(allItems, numDecks);
-  }, [lowMemory, allItems, numDecks])
+  }, [allItems, numDecks])
   const onLoadMore = useCallback(() => {
     setNumDecks(numDecks + 10);
   }, [numDecks, setNumDecks]);
@@ -125,7 +121,7 @@ export default function DeckList({
       refreshing={debouncedRefreshing}
       onRefresh={onRefresh}
       onScroll={onScroll}
-      onLoading={lowMemory && numDecks < allItems.length ? onLoadMore : undefined}
+      onLoading={numDecks < allItems.length ? onLoadMore : undefined}
       data={items}
       renderItem={renderItem}
       renderHeader={renderHeader}

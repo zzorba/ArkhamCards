@@ -33,7 +33,7 @@
   },
   {
     "id": "alexandria",
-    "name": "Dogs of War"
+    "name": "Perros de guerra"
   },
   {
     "id": "all_or_nothing",
@@ -41,7 +41,7 @@
   },
   {
     "id": "anchorage",
-    "name": "On Thin Ice"
+    "name": "Sobre hielo peligroso"
   },
   {
     "id": "arkham",
@@ -89,11 +89,11 @@
   },
   {
     "id": "bermuda",
-    "name": "The Great Work"
+    "name": "La gran obra"
   },
   {
     "id": "bermuda_triangle",
-    "name": "Without a Trace"
+    "name": "Sin rastro"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -121,11 +121,11 @@
   },
   {
     "id": "bombay",
-    "name": "Strange Architecture"
+    "name": "Arquitectura extraña"
   },
   {
     "id": "buenos_aires",
-    "name": "Sanguine Shadows"
+    "name": "Sombras sanguinas"
   },
   {
     "id": "by_the_book",
@@ -321,7 +321,7 @@
   },
   {
     "id": "havana",
-    "name": "Dancing Mad"
+    "name": "Bailar como locos"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -345,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "Sangre, sudor y té"
   },
   {
     "id": "horror_in_high_gear",
@@ -401,7 +401,7 @@
   },
   {
     "id": "istanbul",
-    "name": "Dealings in the Dark"
+    "name": "Tratos en la oscuridad"
   },
   {
     "id": "jennys_choice",
@@ -409,19 +409,19 @@
   },
   {
     "id": "kabul",
-    "name": "Ruses and Reclamations"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Silbido en el viento"
   },
   {
     "id": "kuala_lampur",
-    "name": "Shades of Suffering"
+    "name": "Sombras de sufrimiento"
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "Entrega especial"
   },
   {
     "id": "late_risers",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "Dead and Gone"
+    "name": "Muerto y desaparecido"
   },
   {
     "id": "lost_in_time_and_space",
@@ -453,11 +453,11 @@
   },
   {
     "id": "manokwari",
-    "name": "Metamorphosis"
+    "name": "Metarmofosis"
   },
   {
     "id": "marrakesh",
-    "name": "Dead Heat"
+    "name": "Calor muerto"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -469,7 +469,7 @@
   },
   {
     "id": "moscow",
-    "name": "Quid Pro Quo"
+    "name": "Quid por quo"
   },
   {
     "id": "mourning_chorus",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "Maquinaria infernal"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "Selección paranatural"
   },
   {
     "id": "point_of_no_return",
@@ -529,7 +529,7 @@
   },
   {
     "id": "quito",
-    "name": "Ruses and Reclamations"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "read_or_die",
@@ -693,31 +693,31 @@
   },
   {
     "id": "reykjavik",
-    "name": "Ruses and Reclamations"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "riddles_and_rain",
-    "name": "Riddles and Rain"
+    "name": "Acertijos y lluvia"
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "Teoría de la aniquilación"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Rómulo y Remo"
   },
   {
     "id": "san_francisco",
-    "name": "Quid Pro Quo"
+    "name": "Quid por quo"
   },
   {
     "id": "san_juan",
-    "name": "Ruses and Reclamations"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "La serpiente enroscada"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +733,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Strange Architecture"
+    "name": "Arquitectura extraña"
   },
   {
     "id": "strange_moons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "Sonido hueco"
   },
   {
     "id": "tcu_epilogue",
@@ -857,7 +857,7 @@
   },
   {
     "id": "the_foundation",
-    "name": "The Foundation"
+    "name": "La Fundación"
   },
   {
     "id": "the_golden_circle",
@@ -993,7 +993,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "Entrega especial"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "tunguska",
-    "name": "Congress of the Keys"
+    "name": "El congreso de las Llaves"
   },
   {
     "id": "turn_back_time",
@@ -1061,6 +1061,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "El refugio"
   }
 ]

@@ -33,6 +33,7 @@ import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailS
 import DeckButton from '@components/deck/controls/DeckButton';
 import MapToggleButton from './MapToggleButton';
 import { MAX_WIDTH } from '@styles/sizes';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -221,6 +222,20 @@ const fontDirectionStyle: { [key: string]: TextStyle } = {
     textAlign: 'center',
   },
 }
+
+function labelPos(label: MapLabel, lang: string): [number, number] {
+  switch (lang) {
+    case 'es':
+    case 'ko': {
+      const pos = label.lang_position?.[lang];
+      if (pos) {
+        return [pos.x, pos.y];
+      }
+      break;
+    }
+  }
+  return [label.x, label.y];
+}
 function MapLabelComponent({
   campaignWidth,
   label,
@@ -228,18 +243,20 @@ function MapLabelComponent({
   heightRatio,
   mapLabelStyles,
 }: MapLabelProps) {
+  const { lang } = useContext(LanguageContext);
   const lineHeight = mapLabelStyles[label.type].lineHeight;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
+  const [x, y] = labelPos(label, lang);
   return (
     <View style={[
       {
         position: 'absolute',
-        top: label.y * heightRatio - lineHeight * numLines,
+        top: y * heightRatio - lineHeight * numLines,
       },
       label.direction === 'left' ? {
-        right: (campaignWidth - label.x) * widthRatio,
+        right: (campaignWidth - x) * widthRatio,
       } : {
-        left: label.x * widthRatio,
+        left: x * widthRatio,
       },
       label.rotation ? { transform: [{ rotate: label.rotation }] } : undefined,
     ]}>

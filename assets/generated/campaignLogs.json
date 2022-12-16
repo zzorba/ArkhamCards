@@ -5141,10 +5141,6 @@
             "text": "dummy"
           },
           {
-            "id": "beast_nay",
-            "text": "dummy"
-          },
-          {
             "id": "beast_yay",
             "text": "dummy"
           },
@@ -5177,6 +5173,10 @@
             "text": "dummy"
           },
           {
+            "id": "dead_heat_skipped",
+            "text": "dummy"
+          },
+          {
             "id": "delivered_intel",
             "text": "dummy"
           },
@@ -5190,6 +5190,22 @@
           },
           {
             "id": "desi_yay",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_double_slain_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_rescued_civilians",
+            "text": "dummy"
+          },
+          {
+            "id": "dh_slain_civilians",
             "text": "dummy"
           },
           {
