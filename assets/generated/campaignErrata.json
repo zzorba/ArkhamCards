@@ -213,7 +213,7 @@
       "cards": [
         {
           "code": ["09546"],
-          "text": "Agenda 1b should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\" instead of \"Find the location with a target on it nearest to La Chica Roja's mini card.\""
+          "text": "Agenda 1b should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\" instead of \"Find the location with a target on it nearest to La Chica Roja's mini-card.\""
         }
       ]
     }
