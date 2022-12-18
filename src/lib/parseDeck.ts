@@ -55,7 +55,6 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
-import { normal } from 'react-native-color-matrix-image-filters';
 
 function filterBy(
   cardIds: CardId[],
@@ -622,8 +621,8 @@ function getDeckChanges(
   );
   const invalidCards = validation.getInvalidCards(previousDeckCards);
   const newDeckSize = validation.getDeckSize();
-  let extraDeckSize = newDeckSize - oldDeckSize;
-  let totalFreeCards = extraDeckSize + totalExiledCards;
+  const extraDeckSize = newDeckSize - oldDeckSize;
+  const totalFreeCards = extraDeckSize + totalExiledCards;
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};

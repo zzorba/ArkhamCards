@@ -96,7 +96,7 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
       return undefined;
     }
     return parseCustomizations(meta, slots, cards, previousMeta, deck?.previousDeck?.slots)[0];
-  }, [meta, slots, previousMeta, cards]);
+  }, [meta, slots, previousMeta, cards, deck?.previousDeck?.slots]);
 }
 
 export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' | 'ignore'): [number, number] {

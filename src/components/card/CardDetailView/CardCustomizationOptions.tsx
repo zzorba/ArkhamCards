@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy, uniqBy } from 'lodash';
-import { c, msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import Card from '@data/types/Card';

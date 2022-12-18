@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ngettext, msgid } from 'ttag';
 import { flatMap } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';
@@ -14,7 +13,7 @@ interface Props {
   card: Card;
 }
 export default function CardFooterInfo({ card }: Props) {
-  const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   const quantity = card.quantity || 0;
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }, TINY_PHONE ? { flexDirection: 'column', alignItems: 'flex-end' } : {}]}>
@@ -53,14 +52,16 @@ export default function CardFooterInfo({ card }: Props) {
         <View style={styles.column}>
           { !!card.reprint_info?.length && flatMap(card.reprint_info, (info, idx) => {
             return (!!info.pack_name && !!info.pack_code && !!info.position) && (
-              <View style={[styles.row]}>
-                { !!info.cycle_name && (<Text
-                  style={[typography.tiny, typography.right, { flex: 1 }]}
-                  ellipsizeMode="tail"
-                  numberOfLines={1}
-                >
-                  { info.pack_name }
-                </Text> )}
+              <View style={[styles.row]} key={idx}>
+                { !!info.cycle_name && (
+                  <Text
+                    style={[typography.tiny, typography.right, { flex: 1 }]}
+                    ellipsizeMode="tail"
+                    numberOfLines={1}
+                  >
+                    { info.pack_name }
+                  </Text>
+                ) }
                 { !!info.pack_code && (
                   <View style={styles.icon}>
                     <EncounterIcon
