@@ -14,7 +14,7 @@ interface Props {
   card: Card;
 }
 export default function CardFooterInfo({ card }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
   const quantity = card.quantity || 0;
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }, TINY_PHONE ? { flexDirection: 'column', alignItems: 'flex-end' } : {}]}>
@@ -53,7 +53,7 @@ export default function CardFooterInfo({ card }: Props) {
         <View style={styles.column}>
           { !!card.reprint_info?.length && flatMap(card.reprint_info, (info, idx) => {
             return (!!info.pack_name && !!info.pack_code && !!info.position) && (
-              <View style={styles.row} key={idx}>
+              <View style={[styles.row]}>
                 { !!info.cycle_name && (<Text
                   style={[typography.tiny, typography.right, { flex: 1 }]}
                   ellipsizeMode="tail"
@@ -76,9 +76,9 @@ export default function CardFooterInfo({ card }: Props) {
                   </Text>
                 ) }
                 { !card.encounter_code && card.type_code !== 'investigator' && !!info.quantity && (
-                  <View style={[styles.row, styles.encounterRow, space.marginLeftS]}>
+                  <View style={[styles.row, styles.encounterRow, space.marginLeftXs]}>
                     <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
-                    <Text style={typography.tiny}>
+                    <Text style={typography.small}>
                       ×{info.quantity}
                     </Text>
                   </View>
@@ -105,9 +105,9 @@ export default function CardFooterInfo({ card }: Props) {
               { (card.position || 0) % 1000 }
             </Text>
             { !card.encounter_code && card.type_code !== 'investigator' && (
-              <View style={[styles.row, styles.encounterRow, space.marginLeftS]}>
+              <View style={[styles.row, styles.encounterRow, space.marginLeftXs]}>
                 <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
-                <Text style={typography.tiny}>
+                <Text style={typography.small}>
                   ×{quantity}
                 </Text>
               </View>
