@@ -4793,11 +4793,11 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "el agente Flint ha muerto."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "el agente Flint ha desaparecido."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
@@ -4805,7 +4805,7 @@
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "la Agente Quinn respalda a los investigadores."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
@@ -4813,11 +4813,11 @@
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki está de parte de los investigadores."
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Amaranth ha abandonado la Camarilla."
           },
           {
             "id": "cell_aided_in_flints_investigation",
@@ -4833,7 +4833,7 @@
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "la célula tocó el silbato."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
@@ -4889,7 +4889,7 @@
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "la célula conoce la verdadera naturaleza de la Camarilla."
           },
           {
             "id": "cell_made_a_deal_with_desi",
@@ -4925,7 +4925,7 @@
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "la célula tiró el silbato."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
@@ -4933,23 +4933,23 @@
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "la célula fue desmantelada."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "la célula recibió un puesto permanente."
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "la célula ha quedado vaciada."
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "La chica roja está de parte de los investigadores."
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Engaños de la célula: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
@@ -4997,7 +4997,7 @@
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint volvió a unirse a la célula."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
@@ -5009,11 +5009,11 @@
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "no será la última vez que los investigadores ven a Aliki Zoni Uperetria."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "no será la última vez que los investigadores ven a Amaranth."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
@@ -5021,7 +5021,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "no será la última vez que los investigadores ven a la chica roja."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
@@ -5037,7 +5037,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "no será la última vez que los investigadores ven a el observador sanguinario."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
@@ -5045,7 +5045,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "no será la última vez que los investigadores ven a Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
@@ -5053,7 +5053,7 @@
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "los amantes se reunieron."
           },
           {
             "id": "nothing_of_note_in_anchorage",
@@ -5073,7 +5073,7 @@
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "el tormento del observador sanguinario continúa."
           },
           {
             "id": "thorne_disappeared",
@@ -5081,7 +5081,7 @@
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Confianza de la Fundación: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
@@ -5089,15 +5089,15 @@
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Masai está de parte de los investigadores."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "Tzu San Niang tiene a los investigadores bajo su influjo."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang está bajo el influjo de los investigadores."
           },
           {
             "id": "void_chimera_escaped",
@@ -5105,7 +5105,7 @@
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "la Camarilla Roja y la Fundación aceptaron colaborar."
           },
           {
             "id": "wrong_leads",
