@@ -675,10 +675,16 @@ export default class Card {
             text_edit = traits ? text_edit.replace('_____', `<u>${traits}</u>`) : text_edit;
             break;
           }
-          case 'choose_card':
+          case 'choose_card': {
             const cardNames = change.cards.map(card => card.name).join(listSeperator)
             text_edit = cardNames ? `${text_edit} <u>${cardNames}</u>` : text_edit;
             break;
+          }
+          case 'choose_skill': {
+            const skill = change.choice;
+            text_edit = skill ? text_edit.replace('_____', `[${skill}]`) : text_edit;
+            break;
+          }
         }
       }
       text_edits.push(text_edit);
