@@ -348,7 +348,7 @@ msgid "Enemy Filters"
 msgstr "Filtry Wrogów"
 
 msgid "Shroud"
-msgstr "Osłona"
+msgstr "Zasłona"
 
 msgid "Clues"
 msgstr "Wskazówki"
@@ -357,7 +357,7 @@ msgid "Haunted"
 msgstr "Nawiedzona"
 
 msgid "Location Filters"
-msgstr "Filtry Lokacji"
+msgstr "Filtry Lokalizacji"
 
 msgid "Core Set"
 msgstr "Zestaw Podstawowy"
@@ -397,11 +397,11 @@ msgid "Fixed Clues"
 msgstr "Stałe Wskazówki"
 
 msgid "Locations: All"
-msgstr "Lokacje: Wszystkie"
+msgstr "Lokalizacje: Wszystkie"
 
 #, javascript-format
 msgid "Locations: ${ searchParts }"
-msgstr "Lokacje: ${ searchParts }"
+msgstr "Lokalizacje: ${ searchParts }"
 
 msgid "Level"
 msgstr "Poziom"
@@ -1157,7 +1157,7 @@ msgid "Test Icons: "
 msgstr "Testuj Ikony: "
 
 msgid "Show back"
-msgstr "Pokaż z powrotem"
+msgstr "Pokaż tył"
 
 #, javascript-format
 msgid "Victory: ${ card.victory }."
@@ -1706,7 +1706,7 @@ msgid "Number of resources you have"
 msgstr "Ilość posiadanych zasobów"
 
 msgid "Damage on Mark Harrigan"
-msgstr "Obrażenie na Marka Harrigana"
+msgstr "Obrażenia na karcie Marka Harrigana"
 
 msgid "Number of exhausted enemies in play"
 msgstr "Ilość wyczerpanych wrogów w grze"
