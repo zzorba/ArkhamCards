@@ -76,19 +76,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "o bando de O’Bannion tem uma dívida para acertar com os investigadores."
+            "text": "a gangue de O’Bannion quer acertar as contas com os investigadores."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaparam para a selva."
+            "text": "#X# proles ficaram à solta."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "você acalmou os habitantes."
+            "text": "vocês acalmaram os moradores."
           },
           {
             "id": "closed_tear",
-            "text": "os investigadores fecharam a fenda da realidade."
+            "text": "os investigadores fecharam a fenda na realidade."
           },
           {
             "id": "destroyed_necronomicon",
@@ -96,7 +96,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
+            "text": "Earl Sawyer sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -108,11 +108,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "os investigadores falharam ao recuperar o Necronomicon."
+            "text": "os investigadores falharam em recuperar o Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "os investigadores falharam ao salvar os estudantes."
+            "text": "os investigadores falharam em salvar os estudantes."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -124,7 +124,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
+            "text": "o Dr. Francis Morgan sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -132,23 +132,23 @@
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "os investigadores resgataram Dr. Henry Armitage."
+            "text": "os investigadores resgataram o Dr. Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage sobreviveu ao Legado de Dunwich."
+            "text": "Dr. Henry Armitage sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "os investigadores atrasaram no caminho até Dunwich."
+            "text": "os investigadores se atrasaram a caminho de Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "os investigadores, colocaram Silas Bishop fora de sua miséria."
+            "text": "os investigadores acabaram com o sofrimento de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi deu cobertura aos investigadores."
+            "text": "Naomi está dando cobertura aos investigadores."
           },
           {
             "id": "necronomicon_stolen",
@@ -156,31 +156,31 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "Nenhuma nenhuma cria escapou na selva."
+            "text": "Nenhuma prole ficou à solta."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "os investigadores recuperaram Silas Bishop."
+            "text": "os investigadores restauraram Silas Bishop."
           },
           {
             "id": "ritual_completed",
-            "text": "o ritual está completo."
+            "text": "o ritual foi completado."
           },
           {
             "id": "students_rescued",
-            "text": "os estudantes foram resgatados."
+            "text": "os estudantes foram resgatados"
           },
           {
             "id": "took_necronomicon",
-            "text": "os investigadores mantiveram a posse do Necronomicon."
+            "text": "os investigadores ficaram com o Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "os investigadores ficaram inconscientes por vários horas."
+            "text": "os investigadores ficaram inconscientes por várias horas."
           },
           {
             "id": "warned_townsfolk",
-            "text": "você avisou os habitantes da cidade."
+            "text": "vocês alertaram os moradores."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -192,15 +192,15 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
+            "text": "o Professor Warren Rice sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rompeu a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rasgou em dois a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_fled",
@@ -208,7 +208,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
+            "text": "Zebulon Whateley sobreviveu a O Legado de Dunwich."
           }
         ]
       },
@@ -1463,19 +1463,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "o bando de O’Bannion tem uma dívida para acertar com os investigadores."
+            "text": "a gangue de O’Bannion quer acertar as contas com os investigadores."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaparam para a selva."
+            "text": "#X# proles ficaram à solta."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "você acalmou os habitantes."
+            "text": "vocês acalmaram os moradores."
           },
           {
             "id": "closed_tear",
-            "text": "os investigadores fecharam a fenda da realidade."
+            "text": "os investigadores fecharam a fenda na realidade."
           },
           {
             "id": "destroyed_necronomicon",
@@ -1483,7 +1483,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
+            "text": "Earl Sawyer sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -1495,11 +1495,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "os investigadores falharam ao recuperar o Necronomicon."
+            "text": "os investigadores falharam em recuperar o Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "os investigadores falharam ao salvar os estudantes."
+            "text": "os investigadores falharam em salvar os estudantes."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -1511,7 +1511,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
+            "text": "o Dr. Francis Morgan sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -1519,23 +1519,23 @@
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "os investigadores resgataram Dr. Henry Armitage."
+            "text": "os investigadores resgataram o Dr. Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage sobreviveu ao Legado de Dunwich."
+            "text": "Dr. Henry Armitage sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "os investigadores atrasaram no caminho até Dunwich."
+            "text": "os investigadores se atrasaram a caminho de Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "os investigadores, colocaram Silas Bishop fora de sua miséria."
+            "text": "os investigadores acabaram com o sofrimento de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi deu cobertura aos investigadores."
+            "text": "Naomi está dando cobertura aos investigadores."
           },
           {
             "id": "necronomicon_stolen",
@@ -1543,31 +1543,31 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "Nenhuma nenhuma cria escapou na selva."
+            "text": "Nenhuma prole ficou à solta."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "os investigadores recuperaram Silas Bishop."
+            "text": "os investigadores restauraram Silas Bishop."
           },
           {
             "id": "ritual_completed",
-            "text": "o ritual está completo."
+            "text": "o ritual foi completado."
           },
           {
             "id": "students_rescued",
-            "text": "os estudantes foram resgatados."
+            "text": "os estudantes foram resgatados"
           },
           {
             "id": "took_necronomicon",
-            "text": "os investigadores mantiveram a posse do Necronomicon."
+            "text": "os investigadores ficaram com o Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "os investigadores ficaram inconscientes por vários horas."
+            "text": "os investigadores ficaram inconscientes por várias horas."
           },
           {
             "id": "warned_townsfolk",
-            "text": "você avisou os habitantes da cidade."
+            "text": "vocês alertaram os moradores."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1579,15 +1579,15 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
+            "text": "o Professor Warren Rice sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rompeu a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rasgou em dois a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_fled",
@@ -1595,7 +1595,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
+            "text": "Zebulon Whateley sobreviveu a O Legado de Dunwich."
           }
         ]
       },

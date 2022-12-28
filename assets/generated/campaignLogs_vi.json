@@ -2427,7 +2427,7 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro nhớ mọi thứ."
+            "text": "Alejandro ghi nhớ mọi thứ."
           },
           {
             "id": "alejandro_set_against",
@@ -2463,7 +2463,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "các điều tra viên ngã xuống vực sâu."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -2543,7 +2543,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "nexus ở gần kề."
           },
           {
             "id": "paths_known",
@@ -2551,19 +2551,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "phương thức đã phản tác dụng."
+            "text": "quá trình chuyển đổi đã phản tác dụng."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "phương thức đã phản tác dụng một cách ngoạn mục."
+            "text": "quá trình chuyển đổi đã phản tác dụng một cách ngoạn mục."
           },
           {
             "id": "process_was_perfected",
-            "text": "quá trình đã được hoàn thiện."
+            "text": "quá trình chuyển đổi đã thành công một cách hoàn hảo."
           },
           {
             "id": "process_was_successful",
-            "text": "quá trình đã thành công."
+            "text": "quá trình chuyển đổi đã thành công."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -2640,7 +2640,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# độ sâu"
           },
           {
             "id": "hote_consult_alejandro",
@@ -4048,7 +4048,7 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro nhớ mọi thứ."
+            "text": "Alejandro ghi nhớ mọi thứ."
           },
           {
             "id": "alejandro_set_against",
@@ -4084,7 +4084,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "các điều tra viên ngã xuống vực sâu."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -4164,7 +4164,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "nexus ở gần kề."
           },
           {
             "id": "paths_known",
@@ -4172,19 +4172,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "phương thức đã phản tác dụng."
+            "text": "quá trình chuyển đổi đã phản tác dụng."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "phương thức đã phản tác dụng một cách ngoạn mục."
+            "text": "quá trình chuyển đổi đã phản tác dụng một cách ngoạn mục."
           },
           {
             "id": "process_was_perfected",
-            "text": "quá trình đã được hoàn thiện."
+            "text": "quá trình chuyển đổi đã thành công một cách hoàn hảo."
           },
           {
             "id": "process_was_successful",
-            "text": "quá trình đã thành công."
+            "text": "quá trình chuyển đổi đã thành công."
           },
           {
             "id": "relic_is_missing",
@@ -4257,7 +4257,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "#X# độ sâu"
           },
           {
             "id": "hote_consult_alejandro",
