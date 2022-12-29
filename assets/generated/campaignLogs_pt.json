@@ -1285,7 +1285,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "você escolheu não ir à polícia."
+            "text": "vocês decidiram não ir até a polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -1305,7 +1305,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "você fugiu do jantar."
+            "text": "vocês fugiram do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1333,7 +1333,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "você se intrometeu em uma reunião secreta."
+            "text": "vocês vislumbraram uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
@@ -1357,7 +1357,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "a polícia suspeita de você."
+            "text": "a polícia suspeita de vocês."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1365,11 +1365,11 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "você matou os monstros no jantar."
+            "text": "vocês mataram os monstros na festa."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "o Estranho está atrás de você."
+            "text": "o Estranho está de olho em vocês."
           },
           {
             "id": "took_onyx_clasp",
@@ -1377,7 +1377,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "você tentou avisar a polícia."
+            "text": "vocês tentaram alertar a polícia. "
           },
           {
             "id": "unable_to_find_nigel",
@@ -1717,7 +1717,7 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "você escolheu não ir à polícia."
+            "text": "vocês decidiram não ir até a polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
@@ -1737,7 +1737,7 @@
           },
           {
             "id": "fled_dinner_party",
-            "text": "você fugiu do jantar."
+            "text": "vocês fugiram do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
@@ -1765,7 +1765,7 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "você se intrometeu em uma reunião secreta."
+            "text": "vocês vislumbraram uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
@@ -1789,7 +1789,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "a polícia suspeita de você."
+            "text": "a polícia suspeita de vocês."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1797,11 +1797,11 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "você matou os monstros no jantar."
+            "text": "vocês mataram os monstros na festa."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "o Estranho está atrás de você."
+            "text": "o Estranho está de olho em vocês."
           },
           {
             "id": "took_onyx_clasp",
@@ -1809,7 +1809,7 @@
           },
           {
             "id": "tried_to_warn_police",
-            "text": "você tentou avisar a polícia."
+            "text": "vocês tentaram alertar a polícia. "
           },
           {
             "id": "unable_to_find_nigel",
