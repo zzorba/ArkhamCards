@@ -1263,25 +1263,25 @@
             "id": "possessed",
             "masculine_text": "#name# estava possuído.",
             "feminine_text": "#name# estava possuída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# foi possuído."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "os investigadores foram atacados quando escaparam do Asilo."
+            "text": "os investigadores foram atacados enquanto fugiam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "você acordou dentro das catacumbas."
+            "text": "vocês acordaram nas catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
+            "text": "o reino de Carcosa se fundiu com o de vocês, e Hastur governa ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1289,19 +1289,19 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "você destruiu the oathspeaker."
+            "text": "você destruiu o juramentado."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "você não escapou do olhar do fantasma."
+            "text": "vocês não escaparam do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "você entrou nas catacumbas por conta própria."
+            "text": "vocês entraram nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "os investigadores escaparam do Asilo."
+            "text": "os investigadores fugiram do Asilo."
           },
           {
             "id": "fled_dinner_party",
@@ -1309,27 +1309,27 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "os seguidores do sinal encontraram o caminho."
+            "text": "os seguidores do símbolo encontraram uma forma de prosseguir."
           },
           {
             "id": "found_nigel_engram",
-            "text": "você encontrou Nigel Engram."
+            "text": "vocês encontraram Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "você encontrou a casa de Nigel."
+            "text": "vocês encontraram a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur tem você em suas mãos."
+            "text": "Hastur os têm sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "você atendeu ao aviso de Daniel."
+            "text": "vocês deram ouvidos aos alertas de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "você ignorou o aviso de Daniel."
+            "text": "vocês ignoraram os alertas de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1337,23 +1337,23 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "o rei reivindicou suas vítimas."
+            "text": "o Rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "você conhece o local do portão."
+            "text": "vocês conhecem o local do portal."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "você deixou the onyx clasp para trás."
+            "text": "vocês deixaram o broche de ônix para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "você abriu o caminho acima."
+            "text": "vocês abriram o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "você abriu o caminho abaixo."
+            "text": "vocês abriram o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
@@ -1373,7 +1373,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "você pegou the onyx clasp."
+            "text": "vocês pegaram o broche de ônix."
           },
           {
             "id": "tried_to_warn_police",
@@ -1381,7 +1381,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "você não conseguiu encontrar Nigel."
+            "text": "vocês não conseguiram encontrar Nigel."
           }
         ]
       },
@@ -1695,25 +1695,25 @@
             "id": "possessed",
             "masculine_text": "#name# estava possuído.",
             "feminine_text": "#name# estava possuída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# foi possuído."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "os investigadores foram atacados quando escaparam do Asilo."
+            "text": "os investigadores foram atacados enquanto fugiam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "você acordou dentro das catacumbas."
+            "text": "vocês acordaram nas catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
+            "text": "o reino de Carcosa se fundiu com o de vocês, e Hastur governa ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1721,19 +1721,19 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "você destruiu the oathspeaker."
+            "text": "você destruiu o juramentado."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "você não escapou do olhar do fantasma."
+            "text": "vocês não escaparam do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "você entrou nas catacumbas por conta própria."
+            "text": "vocês entraram nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "os investigadores escaparam do Asilo."
+            "text": "os investigadores fugiram do Asilo."
           },
           {
             "id": "fled_dinner_party",
@@ -1741,27 +1741,27 @@
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "os seguidores do sinal encontraram o caminho."
+            "text": "os seguidores do símbolo encontraram uma forma de prosseguir."
           },
           {
             "id": "found_nigel_engram",
-            "text": "você encontrou Nigel Engram."
+            "text": "vocês encontraram Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "você encontrou a casa de Nigel."
+            "text": "vocês encontraram a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur tem você em suas mãos."
+            "text": "Hastur os têm sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "você atendeu ao aviso de Daniel."
+            "text": "vocês deram ouvidos aos alertas de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "você ignorou o aviso de Daniel."
+            "text": "vocês ignoraram os alertas de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1769,23 +1769,23 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "o rei reivindicou suas vítimas."
+            "text": "o Rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "você conhece o local do portão."
+            "text": "vocês conhecem o local do portal."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "você deixou the onyx clasp para trás."
+            "text": "vocês deixaram o broche de ônix para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "você abriu o caminho acima."
+            "text": "vocês abriram o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "você abriu o caminho abaixo."
+            "text": "vocês abriram o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
@@ -1805,7 +1805,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "você pegou the onyx clasp."
+            "text": "vocês pegaram o broche de ônix."
           },
           {
             "id": "tried_to_warn_police",
@@ -1813,7 +1813,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "você não conseguiu encontrar Nigel."
+            "text": "vocês não conseguiram encontrar Nigel."
           }
         ]
       },
