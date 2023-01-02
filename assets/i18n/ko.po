@@ -2508,16 +2508,16 @@ msgstr "연락하기"
 #, javascript-format
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
-msgstr[0] "${ count } 재보급"
+msgstr[0] "재보급 전용 ${ count }"
 
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
-msgstr[0] "${ count } 물자 점수"
+msgstr[0] "물자 점수 ${ count }"
 
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
-msgstr[0] "${ xp }점 / 재보급 ${ resupplyPointsString }점"
+msgstr[0] "${ xp }점 / ${ resupplyPointsString }점"
 
 msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario and following "
@@ -6137,7 +6137,7 @@ msgid "Name of Paradimensional Artifact"
 msgstr "준차원 인공물 이름"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "서막: Rain and Riddles"
 
 msgid "Dead Heat"
 msgstr ""
@@ -8263,7 +8263,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Past"
-msgstr ""
+msgstr "과거"
 
 msgctxt "trait"
 msgid "Possessed"
@@ -8271,7 +8271,7 @@ msgstr "홀린"
 
 msgctxt "trait"
 msgid "Present"
-msgstr ""
+msgstr "현재"
 
 msgctxt "trait"
 msgid "Priestess"
