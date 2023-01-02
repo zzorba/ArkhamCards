@@ -236,4 +236,4 @@ msgstr[1] ""
 "handlesString }"
 
 msgid "Minimum search size is 2 characters."
-msgstr ""
+msgstr "La taille minimale de la recherche est de 2 caractères."
