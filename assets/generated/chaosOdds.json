@@ -522,7 +522,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Number of Brood of Yog-Sothoth in play",
           "min": 0,
           "scale": 2
         }

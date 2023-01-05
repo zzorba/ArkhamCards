@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cantidad de Lugares en juego que no tengan ninguna carta de Encuentro debajo",
+          "prompt": "Cantidad de Progenies de Yog-Sothoth en juego",
           "min": 0,
           "scale": 2
         }

@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de locais em jogo sem cartas de encontro embaixo dela",
+          "prompt": "Número de Prole de Yog-Sothoth em jogo",
           "min": 0,
           "scale": 2
         }

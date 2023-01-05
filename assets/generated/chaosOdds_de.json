@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Anzahl der Ort im Spiel ohne Begegnungskarten darunter",
+          "prompt": "Anzahl von Brut von Yog-Sothoth im Spiel",
           "min": 0,
           "scale": 2
         }
