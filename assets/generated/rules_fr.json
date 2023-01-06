@@ -1,6 +1,6 @@
 [
   {
-    "id": "The_Golden_Rule",
+    "id": "The_Golden_Rules",
     "title": "Les Règles d'Or",
     "text": "Si le texte de ce Guide de Référence contredit directement le texte du Livret d’Apprentissage, le texte du Guide de Référence a préséance.\nSi le texte d’une carte contredit le texte du Guide de Référence ou du Livret d’Apprentissage, le texte de la carte a préséance.\nS’il est possible de respecter à la fois le texte de la carte et le texte des règles, les deux sont à respecter."
   },
@@ -91,7 +91,14 @@
     "id": "Hidden",
     "cycle": ["tcu", "tde"],
     "title": "Cachée",
-    "text": "Une carte Rencontre ou une faiblesse avec le mot-clé Cachée a une capacité <b>Révélation</b> qui l’ajoute secrètement à votre main sans révéler cette carte ni son texte aux autres investigateurs.\n- Tant qu’une carte Traîtrise avec le mot-clé Cachée est dans votre main, traitez-la comme si elle était dans votre zone de menace. Ses capacités permanentes sont actives et les capacités inscrites dessus peuvent être déclenchées, mais seulement par vous.\n- Tant qu’une carte Ennemi avec le mot-clé Cachée est dans votre main, cet ennemi n’est pas considéré comme étant engagé avec vous ou dans votre zone de menace et il n’attaque pas, sauf si le contraire est spécifié. Cependant, ses capacités permanentes sont actives et les capacités inscrites dessus peuvent être déclenchées, mais seulement par vous.\n- Une carte Cachée compte dans la taille de votre main mais ne peut en être défaussée par aucun moyen, excepté celui inscrit sur la carte. Quand une carte Cachée est défaussée, elle est placée dans la pile de défausse appropriée.\nPour profiter de la meilleure expérience de jeu possible, les joueurs sont encouragés à « jouer le jeu » et à ne rien partager des informations sur les cartes Cachée dans leur main."
+    "text": "Une carte Rencontre ou une faiblesse avec le mot-clé Cachée a une capacité <b>Révélation</b> qui l’ajoute secrètement à votre main sans révéler cette carte ni son texte aux autres investigateurs.\n- Tant qu’une carte Traîtrise avec le mot-clé Cachée est dans votre main, traitez-la comme si elle était dans votre zone de menace. Ses capacités permanentes sont actives et les capacités inscrites dessus peuvent être déclenchées, mais seulement par vous.\n- Tant qu’une carte Ennemi avec le mot-clé Cachée est dans votre main, cet ennemi n’est pas considéré comme étant engagé avec vous ou dans votre zone de menace et il n’attaque pas, sauf si le contraire est spécifié. Cependant, ses capacités permanentes sont actives et les capacités inscrites dessus peuvent être déclenchées, mais seulement par vous.\n- Une carte Cachée compte dans la taille de votre main mais ne peut en être défaussée par aucun moyen, excepté celui inscrit sur la carte. Quand une carte Cachée est défaussée, elle est placée dans la pile de défausse appropriée.\nPour profiter de la meilleure expérience de jeu possible, les joueurs sont encouragés à « jouer le jeu » et à ne rien partager des informations sur les cartes Cachée dans leur main.",
+    "rules": [
+      {
+        "id": "Hidden_Cards_in_Hand_When_Eliminated",
+        "title": "Cartes « Cachées » en Main et Élimination de Joueur",
+        "text": "Quand un investigateur est éliminé, chaque carte Rencontre dotée du mot-clé « Cachée » qu’il a en main sont à placer dans la pile de défausse Rencontre, tout comme les cartes Rencontre qu’il possède dans sa zone de menace."
+      }
+    ]
   },
   {
     "id": "Ability",
@@ -174,7 +181,14 @@
   {
     "id": "Location_Cards",
     "title": "Cartes Lieu",
-    "text": "Les cartes Lieu représentent les différents endroits que les investigateurs pourront explorer durant un scénario.\n- Utilisez la mini-carte de chaque investigateur afin d’indiquer dans quel lieu il se trouve.\n- Tant qu’un investigateur est dans un lieu, chacun de ses soutiens et chaque carte dans sa zone de menace sont dans le même lieu.\n- Les lieux entrent en jeu « non-révélés », de sorte que la face sans valeur occulte ni valeur d’indice soit visible. Ne lisez pas la face « révélée » à ce moment-là.\n- La première fois qu’un investigateur entre dans un lieu, celui-ci est révélé en le retournant sur l’autre face et en plaçant dessus un nombre d’indices égal à sa valeur d’indice (cela peut se produire pendant la mise en place). La plupart des valeurs d’indice sont exprimées à travers une valeur « par investigateur » ([per_investigator]).\n- Un lieu dont la face qui comporte les valeurs occulte/d’indice est visible se trouve dans son état « révélé »."
+    "text": "Les cartes Lieu représentent les différents endroits que les investigateurs pourront explorer durant un scénario.\n- Utilisez la mini-carte de chaque investigateur afin d’indiquer dans quel lieu il se trouve.\n- Tant qu’un investigateur est dans un lieu, chacun de ses soutiens et chaque carte dans sa zone de menace sont dans le même lieu.\n- Les lieux entrent en jeu « non-révélés », de sorte que la face sans valeur occulte ni valeur d’indice soit visible. Ne lisez pas la face « révélée » à ce moment-là.\n- La première fois qu’un investigateur entre dans un lieu, celui-ci est révélé en le retournant sur l’autre face et en plaçant dessus un nombre d’indices égal à sa valeur d’indice (cela peut se produire pendant la mise en place). La plupart des valeurs d’indice sont exprimées à travers une valeur « par investigateur » ([per_investigator]).\n- Un lieu dont la face qui comporte les valeurs occulte/d’indice est visible se trouve dans son état « révélé ».",
+    "rules": [
+      {
+        "id": "Being_at_No_Location",
+        "title": "Être dans Aucun Lieu",
+        "text": "Lors d’une partie, les ennemies et les investigateurs doivent toujours être présents dans un lieu (sauf si un effet de jeu mentionne explicitement le contraire). Si un effet, tel que « ne peut pas se déplacer », obligeait un ennemi ou un investigateur à ne pas être dans un lieu, ignorez cet effet."
+      }
+    ]
   },
   {
     "id": "Multiclass_Cards",
@@ -437,6 +451,12 @@
     "title": "Équipement",
     "cycle": ["tfa"],
     "text": "À certains moments pendant la campagne <i>La Civilisation Oubliée</i>, les investigateurs ont l’opportunité de choisir de l’équipement à emporter dans leurs expéditions en terre sauvage. Cet équipement est inscrit dans le Carnet de Campagne sous la section « Équipement » propre à chaque investigateur.\nL’équipement s’achète avec les points d’équipement qui sont accordés aux investigateurs à chaque fois qu’ils ont l’opportunité de se procurer de l’équipement. Les points d’équipement non dépensés ne sont pas conservés et sont défnitivement perdus.\nDe l’équipement d’un investigateur dépendront différentes options de jeu proposées tout au long de cette campagne. L’équipement n’a aucun effet en lui-même. Certains effets de cartes, options narratives ou conclusions peuvent être modifiés ou devenir disponibles en fonction de l’équipement transporté par le ou les investigateur(s)."
+  },
+  {
+    "id": "Researched",
+    "title": "Étudiée",
+    "cycle": ["eoe"],
+    "text": "« Étudiée » est une capacité de type mot-clé qui apparaît sur certaines cartes de haut niveau (surtout des cartes Chercheur).\nPour être incluse dans le deck d'un investigateur, une carte avec le mot-clé Étudiée doit d'abord être « identifiée » ou « traduite » en effectuant la tâche demandée sur la version de niveau inférieur de cette carte et en inscrivant le résultat dans votre Carnet de Campagne.\n- Vous ne pouvez inclure une carte Étudiée dans votre deck qu'en améliorant sa version de niveau inférieur.\n- Vous ne pouvez inclure une carte Étudiée dans votre deck qui si, dans votre Carnet de Campagne, vous avez indiqué avoir achevé la tâche décrite sur la version de niveau inférieur de cette carte.\n- Après qu'un investigateur a achevé cette tâche et l'a indiqué dans le Carnet de Campagne, n'importe quel investigateur de cette campagne peut améliorer la carte concernée en suivant les règles normales pour améliorer les cartes Joueur.\n<i>Exemple : Étrange Solution (Mélange Revigorant) a le mot-clé Étudiée. Un investigateur ne peut donc pas l'inclure dans son deck directement. Il doit l'améliorer depuis l'Étrange Solution (Non-Identifiée) et uniquement s'il a « identifié la solution ».</i>"
   },
   {
     "id": "Evade",
@@ -704,6 +724,12 @@
     "text": "Quand une condition de déclenchement se résout, les investigateurs se voient offrir l’opportunité de résoudre des capacités [reaction] en réponse à cette condition de déclenchement. Ce n’est qu’après que tous les investigateurs ont passé leur opportunité de réaction que la partie peut se poursuivre.\nUtiliser une capacité [reaction] en réponse à une condition de déclenchement n’empêche pas l’utilisation d’autres capacités [reaction] en réponse à cette même condition de déclenchement.\n<i>Exemple : [Roland](/card/01001) vient juste de vaincre un ennemi et souhaite déclencher sa capacité [reaction] : « Après que vous avez vaincu un ennemi : découvrez 1 indice dans votre lieu. » Il découvre 1 indice dans son lieu. Il a ensuite le droit de jouer [Preuve !](/card/01022) en réponse pour avoir vaincu cet ennemi. Comme les deux cartes ont la même condition de déclenchement (« Après que vous avez vaincu un\nennemi »), activer l’une de ces réactions n’empêche pas Roland d’activer l’autre.</i>"
   },
   {
+    "id": "Partner",
+    "title": "Partenaire",
+    "cycle": ["eoe"],
+    "text": "Partenaire est une capacité de type mot-clé qui apparaît sur les neuf soutiens d'histoire du set de rencontre <i>Membres de l'Expédition</i>. Chacun de ces soutiens représente un puissant allié que les investigateurs peuvent emmener avec eux pour augmenter leurs chances de réussite. Cependant, emmener un soutien avec le mot-clé Partenaire le met en danger, au risque de le perdre définitivement.\n- Au début de chaque scénario de cette campagne, chaque investigateur a le droit de choisir un soutien partenaire et de le mettre en jeu. Les soutiens partenaire ne peuvent pas être ajoutés au deck d'un investigateur. Un investigateur a le droit de prendre un partenaire différent (ou pas de partenaire du tout) à chaque fois qu'il se voit présenter cette opportunité.\n- Un soutien partenaire ne peut quitter le jeu que s'il est vaincu (il ne peut donc pas être défaussé par des effets de carte sauf ceux qui indiquent spécifiquement qu'il est vaincu). Si un investigateur est vaincu, tout soutien partenaire qu'il avait avec lui est également vaincu.\n- Si un soutien partenaire est vaincu, retirez-le de la partie. Ensuite, barrez le nom de ce personnage dans la section « Membres de l'Expédition » du Carnet de Campagne.\n- Les dégâts ou les horreurs sur un soutien partenaire sont enregistrés dans la section « Membres de l'Expédition » du Carnet de Campagne à la fin de chaque partie.<i>(Le Guide de Campagne vous indiquera quand le faire.)</i>\n- Si un investigateur abandonne lors d'un scénario, son soutien partenaire quitte le jeu, mais n'est pas vaincu. Conservez tous les dégâts et horreurs sur lui, car ils seront enregistrés dans le Carnet de Campagne à la fin de la partie."
+  },
+  {
     "id": "Patrol",
     "cycle": ["side", "eoe"],
     "title": "Patrouille",
@@ -780,16 +806,22 @@
     "text": "Quand il est demandé à un joueur de piocher une ou plusieurs cartes, celles-ci sont piochées du dessus de son deck Investigateur et ajoutées à sa main.\nQuand il est demandé à un joueur de piocher une ou plusieurs cartes Rencontre, ces cartes sont piochées du dessus du deck Rencontre et résolues en suivant les règles de pioche des cartes Rencontre de l’étape [1.4 Chaque investigateur pioche 1 carte Rencontre](#Mythos_Phase).\n- Quand un joueur pioche au moins deux cartes comme résultat d’une même capacité ou étape de jeu, ces cartes sont piochées simultanément. Si un deck est épuisé alors que toutes les cartes n’ont pas été piochées, reformez le deck et continuez de piocher.\n- Il n’existe pas de limite au nombre de cartes qu’un joueur peut piocher lors de chaque round.\n- Si un investigateur dont le deck Investigateur est vide doit piocher une carte, il mélange sa pile de défausse afin de reformer un deck, pioche la carte puis, après la fin de la pioche, subit 1 horreur."
   },
   {
-    "id": "Bless_and_Curse_Tokens",
-    "cycle": ["tic"],
-    "title": "Pions Béni et Maudit",
-    "text": "Cette extension propose deux nouveaux types de pions Chaos : les pions Béni ([bless]) et Maudit ([curse]). Par défaut, la réserve du Chaos ne contient aucun pion [bless] ou [curse]. Cependant, certains effets de carte peuvent ajouter ou retirer ces pions de la réserve du Chaos.\n- Les pions [bless] révélés lors d'un test de compétence ont les effets suivants : « +2. Révélez un autre pion. Au lieu de remettre ce pion [bless] dans la réserve du Chaos, renvoyez-le dans la réserve de pions. »\nÀ aucun moment il ne peut y avoir plus de 10 pions [bless] dans la réserve du Chaos et/ou scellés sur des cartes en jeu.\n- Les pions [curse] révélés lors d'un test de compétence ont les effets suivants : « –2. Révélez un autre pion. Au lieu de remettre ce pion [curse] dans la réserve du Chaos, renvoyez-le dans la réserve de pions. »\nÀ aucun moment il ne peut y avoir plus de 10 pions [curse] dans la réserve du Chaos et/ou scellés sur des cartes en jeu.\n- Les pions [bless] ou [curse] révélés en dehors d'un test de compétence n'ont aucun effet par eux-mêmes à moins que le contraire ne soit précisé par un effet de carte.\nFAQ :\n- <i>Les pions [bless] et [curse] ont-ils un modificateur ou une valeur lorsqu'ils sont révélés en dehors d'un test de compétence ?</i>\nNon. Les pions [bless] et [curse] n’ont ni modificateur ni valeur quand ils sont révélés en dehors d’un test de compétence.\n- <i>Si ajouter à la réserve du Chaos un certain nombre de pions [bless] ou [curse] fait partie de l’effet d’une capacité, mais qu’il n’y a pas assez de pions [bless] ou [curse] restants pour remplir cet effet, que se passe-t-il ?</i>\nVous effectuez autant que possible la capacité en ajoutant des pions [bless] ou [curse] jusqu’à ce qu’il n’en reste plus.\n- <i>Si ajouter à la réserve du Chaos un certain nombre de pions [bless] ou [curse] fait partie du coût d’une capacité/carte, mais qu’il n’y a pas assez de pions [bless] ou [curse] restants pour payer ce coût, que se passe-t-il ?</i>\nSi le coût ne peut pas être payé, la carte/capacité ne peut pas être jouée/déclenchée.\n- <i>Lors d'une campagne, les pions [bless] et [curse] sont-ils conservés dans la réserve du Chaos d'un scénario à l'autre ?</i>\nNon, les pions [bless] et [curse] ne sont pas conservés d'un scénario à l'autre."
-  },
-  {
     "id": "Chaos_Tokens",
     "title": "Pions Chaos",
     "text": "Les pions Chaos sont révélés de la réserve du Chaos lors d’un test de compétence, afin de modifier ou influer le résultat du test.\n[skull] [cultist] [elder_thing] [tablet] – Si n’importe lequel de ces pions est révélé pour un test de compétence, résolvez l’effet correspondant à ce symbole comme indiqué sur la carte de Référence du Scénario en cours.\n[auto_fail] – C’est un pion d’échec automatique. Si ce pion est révélé pour un test de compétence, il signifie que l’investigateur échoue automatiquement au test (voir [Réussite/Échec Automatique](#Automatic_Failure_Success)).\n[elder_sign] – C’est un pion Signe des Anciens. Si ce pion est révélé pour un test de compétence, résolvez l’effet [elder_sign] sur la carte Investigateur appartenant au joueur qui effectue le test de compétence.\nVoir [TC.3 Révéler un pion Chaos](#Skill_Test_Timing).",
     "rules": [
+      {
+        "id": "Bless_and_Curse_Tokens",
+        "cycle": ["tic"],
+        "title": "Pions Béni et Maudit",
+        "text": "Cette extension propose deux nouveaux types de pions Chaos : les pions Béni ([bless]) et Maudit ([curse]). Par défaut, la réserve du Chaos ne contient aucun pion [bless] ou [curse]. Cependant, certains effets de carte peuvent ajouter ou retirer ces pions de la réserve du Chaos.\n- Les pions [bless] révélés lors d'un test de compétence ont les effets suivants : « +2. Révélez un autre pion. Au lieu de remettre ce pion [bless] dans la réserve du Chaos, renvoyez-le dans la réserve de pions. »\nÀ aucun moment il ne peut y avoir plus de 10 pions [bless] dans la réserve du Chaos et/ou scellés sur des cartes en jeu.\n- Les pions [curse] révélés lors d'un test de compétence ont les effets suivants : « –2. Révélez un autre pion. Au lieu de remettre ce pion [curse] dans la réserve du Chaos, renvoyez-le dans la réserve de pions. »\nÀ aucun moment il ne peut y avoir plus de 10 pions [curse] dans la réserve du Chaos et/ou scellés sur des cartes en jeu.\n- Les pions [bless] ou [curse] révélés en dehors d'un test de compétence n'ont aucun effet par eux-mêmes à moins que le contraire ne soit précisé par un effet de carte.\nFAQ :\n- <i>Les pions [bless] et [curse] ont-ils un modificateur ou une valeur lorsqu'ils sont révélés en dehors d'un test de compétence ?</i>\nNon. Les pions [bless] et [curse] n’ont ni modificateur ni valeur quand ils sont révélés en dehors d’un test de compétence.\n- <i>Si ajouter à la réserve du Chaos un certain nombre de pions [bless] ou [curse] fait partie de l’effet d’une capacité, mais qu’il n’y a pas assez de pions [bless] ou [curse] restants pour remplir cet effet, que se passe-t-il ?</i>\nVous effectuez autant que possible la capacité en ajoutant des pions [bless] ou [curse] jusqu’à ce qu’il n’en reste plus.\n- <i>Si ajouter à la réserve du Chaos un certain nombre de pions [bless] ou [curse] fait partie du coût d’une capacité/carte, mais qu’il n’y a pas assez de pions [bless] ou [curse] restants pour payer ce coût, que se passe-t-il ?</i>\nSi le coût ne peut pas être payé, la carte/capacité ne peut pas être jouée/déclenchée.\n- <i>Lors d'une campagne, les pions [bless] et [curse] sont-ils conservés dans la réserve du Chaos d'un scénario à l'autre ?</i>\nNon, les pions [bless] et [curse] ne sont pas conservés d'un scénario à l'autre."
+      },
+      {
+        "id": "Frost_Tokens",
+        "cycle": ["eoe"],
+        "title": "Pions Gel",
+        "text": "Cette extension introduit un nouveau type de pions Chaos : le pion Gel ([frost]). Au début de la campagne <i>Aux Confins de la Terre</i>, la réserve du Chaos ne contient pas, ou peu, de pions [frost] et ils sont relativement inoffensifs. Plus l'expédition avance, plus les décisions des investigateurs peuvent ajouter (ou enlever) des pions [frost] à la réserve du Chaos, modifiant ainsi la difficulté des tests effectués par les investigateurs. Plus il y a de pions Gel dans la réserve du Chaos, plus leur effet devient handicapant.\n- Le premier pion [frost] révélé de la réserve du Chaos lors d'un test de compétence possède l'effet suivant: « -1. Révélez un autre pion. » Si un autre pion [frost] est révélé de la réserve du Chaos lors du même test, mettez immédiatement fin à l'étape de révélation des pions Chaos du test de compétence et résolvez le test en tant qu'échec automatique. <i>(Après la fin du test, remettez dans la réserve du Chaos tous les pions [frost] révélés)</i>\n<i>Exemple : Jean enquête dans un lieu et il y a deux pions [frost] dans la réserve du Chaos. Lors de sa première tentative d'enquête, il révèle un pion [frost]. Cela réduit de 1 sa valeur de compétence et lui fait révéler un autre pion Chaos. L'autre pion Chaos révélé est un +1. Le modificateur total est de O. Jean réussit ! Enhardi par cette prouesse, Jean tente d'enquêter une seconde fois. Cette fois, il révèle un pion [frost] suivi d'un second pion [frost]. Jean arrête immédiatement de révéler des pions et son enquête échoue automatiquement.</i>\n- Il ne peut pas y avoir plus de 8 pions [frost] à la fois dans la réserve du Chaos et/ou scellés sur des cartes en jeu.\n- Un pion [frost] révélé en dehors d'un test de compétence n'a aucun effet à moins qu'un effet de carte ne spécifie le contraire.\n- Un pion [frost] ajouté à la réserve du Chaos reste dans la réserve du Chaos d'un scénario à l'autre à moins qu'il n'en soit retiré par un effet de carte ou un effet de jeu. Utilisez la section « Réserve du Chaos » du Carnet de Campagne pour enregistrer la composition actuelle de votre réserve du Chaos."
+      },
       {
         "id": "Resolving_Multiple_Revealed_Chaos_Tokens",
         "title": "Résoudre Plusieurs Pions Chaos Révélés",
@@ -807,6 +839,12 @@
     "id": "Tokens",
     "title": "Pions, Être à Court de",
     "text": "Il n’existe pas de limite au nombre de pions (de n’importe quel type) qui peuvent se trouver dans la zone de jeu à tout moment. Si la réserve de pions est épuisée, d’autres pions, marqueurs ou pièces peuvent être utilisés."
+  },
+  {
+    "id": "Checkpoints",
+    "cycle": ["eoe"],
+    "title": "Points de Contrôle",
+    "text": "Certains scénarios de la campagne <i>Aux Confins de la Terre</i> sont divisés en plusieurs parties. Les joueurs peuvent choisir de jouer ces parties une à la fois (en faisant des pauses entre chaque partie) ou de les jouer en une seule fois lors d'une longue session de jeu. Chaque partie possède sa propre mise en place et sa propre conclusion.\nAprès avoir terminé une partie d'un scénario, le guide de campagne dirige les investigateurs vers un Point de Contrôle qui leur indique la manière de procéder pour sauvegarder la partie et préparer la suite du scénario. Si les investigateurs souhaitent faire une pause et reprendre lors d'une prochaine session de jeu, le Point de Contrôle leur indiquera les informations à enregistrer dans le Carnet de Campagne pour mettre en place facilement et rapidement la prochaine session."
   },
   {
     "id": "Priority_of_Simultaneous_Resolution",
@@ -943,6 +981,12 @@
     "id": "Hand_Size",
     "title": "Taille de la Main",
     "text": "Voir [IV. Phase d'Entretien](#Upkeep_Phase)."
+  },
+  {
+    "id": "Tekelili",
+    "title": "Tekeli-li !",
+    "cycle": ["eoe"],
+    "text": "Cette campagne inclut un set de rencontre constitué de 16 faiblesses, toutes appelées « Tekeli-li ». Lors de la mise en place de chaque scénario, ces cartes sont mélangées ensemble afin de former un deck spécial, le deck Tekeli-li.\nComme pour les faiblesses habituelles, si l'une de ces cartes est ajoutée au deck d'un investigateur, elle demeure partie intégrante du deck de cet investigateur au fil des scénarios. Cependant, la résolution de chaque faiblesse Tekeli-li demande à l'investigateur de la renvoyer dans le deck Tekeli-li (ce qui la retire de son propre deck). Par conséquent, le nombre de cartes dans le deck Tekeli-li varie en fonction du nombre de ses cartes actuellement présentes dans le deck d'un investigateur.\n<i>Attention: les cartes Tekeli-li ont toutes le même titre, mais leurs effets sont différents.</i>"
   },
   {
     "id": "Skill_Tests",
