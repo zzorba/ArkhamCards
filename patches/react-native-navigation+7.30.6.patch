@@ -1,8 +1,8 @@
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-index 121b64e..0eccdd3 100644
+index 226d3bf..ddcf310 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-@@ -31,6 +31,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+@@ -32,6 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
      private PermissionListener mPermissionListener;
  
      protected Navigator navigator;
@@ -10,17 +10,12 @@ index 121b64e..0eccdd3 100644
  
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
-@@ -39,11 +40,12 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
-             return;
-         }
-         addDefaultSplashLayout();
-+        rootPresenter = new RootPresenter();
-         navigator = new Navigator(this,
+@@ -44,7 +45,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
                  new ChildControllersRegistry(),
                  new ModalStack(this),
                  new OverlayManager(),
 -                new RootPresenter()
-+                rootPresenter
++                rootPresenter = new RootPresenter()
          );
          navigator.bindViews();
          getReactGateway().onActivityCreated(this);
