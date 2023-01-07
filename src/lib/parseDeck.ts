@@ -287,6 +287,7 @@ function getDeckChangesHelper(
   totalFreeCards: number,
   changedCards: Slots,
   exiledCards: Slots,
+  ignoredChanges: Slots,
   customizedSlots: Slots,
   customizedXp: Slots,
   invalidCards: Card[],
@@ -317,6 +318,18 @@ function getDeckChangesHelper(
 
   const addedCards: Card[] = [];
   const removedCards: Card[] = [];
+  const ignoredCards: Card[] = [];
+  forEach(ignoredChanges, (count, code) => {
+    const card = cards[code];
+    if (!card) {
+      return;
+    }
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        ignoredCards.push(card);
+      }
+    }
+  });
   forEach(changedCards, (count, code) => {
     const card = cards[code];
     if (!card) {
@@ -456,17 +469,21 @@ function getDeckChangesHelper(
 
       // XP higher than 0.
       // See if there's a lower version card that counts as an upgrade.
-      for (let i = 0; i < removedCards.length; i++) {
-        const removedCard = removedCards[i];
+      for (let i = 0; i < removedCards.length + ignoredCards.length; i++) {
+        const removedCard = i < removedCards.length ? removedCards[i] : ignoredCards[i - removedCards.length];
         if (
           addedCard.real_name === removedCard.real_name &&
           addedCard.xp !== undefined &&
           removedCard.xp !== undefined &&
           addedCard.xp > removedCard.xp
         ) {
-          decSlot(upgraded, removedCards[i]);
           incSlot(upgraded, addedCard);
-          pullAt(removedCards, [i]);
+          if (i < removedCards.length) {
+            decSlot(upgraded, removedCard);
+            pullAt(removedCards, [i]);
+          } else {
+            pullAt(ignoredCards, [i - removedCards.length]);
+          }
 
           // If you have unspent uses of arcaneResearchUses,
           // and its a spell, you get a 1 XP discount on upgrade of
@@ -625,11 +642,15 @@ function getDeckChanges(
   const totalFreeCards = extraDeckSize + totalExiledCards;
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
+  const ignoredCards: Slots = {};
   const changedCards: Slots = {};
   forEach(
     uniq(union(keys(slots), keys(previousDeck.slots))),
     code => {
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
+      if (ignoreDelta !== 0) {
+        ignoredCards[code] = ignoreDelta;
+      }
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
       const oldCount = previousDeck.slots?.[code] || 0;
@@ -656,6 +677,7 @@ function getDeckChanges(
     totalFreeCards,
     changedCards,
     exiledCards,
+    ignoredCards,
     customizedSlots,
     customizedXp,
     invalidCards,
@@ -669,6 +691,7 @@ function getDeckChanges(
       totalFreeCards,
       changedCards,
       exiledCards,
+      ignoredCards,
       customizedSlots,
       customizedXp,
       invalidCards,
