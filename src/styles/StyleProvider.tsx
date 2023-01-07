@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { Appearance, Dimensions, Platform, ScaledSize } from 'react-native';
+import { Appearance, Dimensions, Platform, ScaledSize, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { throttle } from 'lodash';
 
@@ -38,63 +38,13 @@ interface Props {
   children: React.ReactNode;
 }
 
-function useDimensions(): [ScaledSize, ScaledSize] {
-  const [windowDimensions, setWindowDimensions] = useState(() => Dimensions.get('window'));
-  const [screenDimensions, setScreenDimensions] = useState(() => Dimensions.get('screen'));
-  useEffect(() => {
-    function handleChange({
-      window,
-      screen,
-    }: { window: ScaledSize; screen: ScaledSize }) {
-      if (
-        windowDimensions.width !== window.width ||
-        windowDimensions.height !== window.height ||
-        windowDimensions.scale !== window.scale ||
-        windowDimensions.fontScale !== window.fontScale
-      ) {
-        setWindowDimensions(window);
-      }
-      if (
-        screenDimensions.width !== screen.width ||
-        screenDimensions.height !== screen.height ||
-        screenDimensions.scale !== screen.scale ||
-        screenDimensions.fontScale !== screen.fontScale
-      ) {
-        setScreenDimensions(screen);
-      }
-    }
-    const subscription = Dimensions.addEventListener('change', handleChange);
-    // Read one last time, in case stuff 'moved' between last read and this.
-    handleChange({ window: Dimensions.get('window'), screen: Dimensions.get('screen') });
-    return () => {
-      subscription.remove();
-    };
-  }, [windowDimensions, screenDimensions]);
-
-  return [windowDimensions, screenDimensions];
-}
-
 export default function StyleProvider({ children } : Props) {
   const { lang, usePingFang } = useContext(LanguageContext);
   const themeOverride = useSelector(getThemeOverride);
   const appFontScale = useSelector(getAppFontScale);
   const colorScheme = useColorScheme();
-  const androidOneUiFix = useSettingValue('android_one_ui_fix');
   const justifyContent = false;
-  const [
-    { fontScale, width: windowWidth, height: windowHeight, scale: windowScale },
-    { scale: screenScale },
-  ] = useDimensions();
-  const [width, height] = useMemo(() => {
-    if (windowScale !== 0 && androidOneUiFix && Platform.OS === 'android') {
-      const scaleFactor = screenScale / windowScale;
-      return [
-        windowWidth * scaleFactor,
-        windowHeight * scaleFactor,
-      ];
-    }
-    return [windowWidth, windowHeight];
-  }, [windowWidth, windowHeight, windowScale, screenScale, androidOneUiFix]);
+  const { fontScale, width, height } = useWindowDimensions();
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';

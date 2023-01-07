@@ -84,7 +84,6 @@ export default function SettingsView({ componentId }: NavigationProps) {
   const [customContent, setCustomContent] = useRemoteSettingFlag('custom_content', updateRemoteSetting);
 
   const [colorblind, setColorblind] = useRemoteSettingFlag('colorblind', updateRemoteSetting);
-  const [androidOneUiFix, setAndroidOneUiFix] = useSettingFlag('android_one_ui_fix');
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
   const [sortRespectQuotes, setSortRespectQuotes] = useRemoteSettingFlag('sort_quotes', updateRemoteSetting);
   const cardsError = useSelector((state: AppState) => state.cards.error || undefined);
@@ -260,15 +259,6 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onValueChange={setSearchEnglish}
                 />
               ) }
-              { Platform.OS === 'android' && (
-                <DeckCheckboxButton
-                  icon="tools"
-                  title={t`Samsung One UI fix`}
-                  description={t`Fix layout issues on version 3.0 of Samsung One UI`}
-                  value={androidOneUiFix}
-                  onValueChange={setAndroidOneUiFix}
-                />
-              )}
               { lang === 'de' && (
                 <>
                   <View style={space.paddingS}>
