@@ -20,10 +20,17 @@ index 226d3bf..ddcf310 100644
          navigator.bindViews();
          getReactGateway().onActivityCreated(this);
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
-index e61df57..b79675b 100644
+index e61df57..e7d3122 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
-@@ -9,6 +9,8 @@ import android.view.ViewGroup;
+@@ -3,12 +3,15 @@ package com.reactnativenavigation.viewcontrollers.bottomtabs;
+ import android.animation.Animator;
+ import android.app.Activity;
+ import android.content.res.Configuration;
++import android.os.Build;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
  import androidx.annotation.NonNull;
  import androidx.annotation.RestrictTo;
  import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -32,14 +39,17 @@ index e61df57..b79675b 100644
  
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-@@ -108,6 +110,12 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
+@@ -108,6 +111,15 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
          bottomTabs.setCurrentItem(initialTabIndex, false);
      }
  
 +    @Override
 +    protected WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat insets) {
-+        ViewCompat.onApplyWindowInsets(view, insets);
-+        return insets;
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
++            ViewCompat.onApplyWindowInsets(view, insets);
++            return insets;
++        }
++        return super.onApplyWindowInsets(view, insets);
 +    }
 +
      @NonNull
