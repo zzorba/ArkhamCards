@@ -27,31 +27,31 @@ export const TINY_TOKEN_SIZE = 48;
 export const EXTRA_TINY_TOKEN_SIZE = 36;
 
 const DEFAULT_GRADIENT = [
-  { offset: '60%', color: '#FFFBF2' },
-  { offset: '100%', color: '#D6CFB9' },
+  { offset: '60%', color: '#FFFBF2', opacity: '100%' },
+  { offset: '100%', color: '#D6CFB9', opacity: '100%' },
 ];
 
-const GRADIENTS: { [token: string]: {offset: string; color: string}[] | undefined } = {
+const GRADIENTS: { [token: string]: {offset: string; color: string; opacity: string }[] | undefined } = {
   frost: [
-    { offset: '66%', color: '#3D3A63' },
-    { offset: '100%', color: '#495483' },
+    { offset: '66%', color: '#3D3A63', opacity: '100%' },
+    { offset: '100%', color: '#495483', opacity: '100%' },
   ],
   auto_fail: [
-    { offset: '75%', color: '#8D181E' },
-    { offset: '100%', color: '#6A0B10' },
+    { offset: '75%', color: '#8D181E', opacity: '100%' },
+    { offset: '100%', color: '#6A0B10', opacity: '100%' },
   ],
   elder_sign: [
-    { offset: '0%', color: '#33A1FB' },
-    { offset: '50%', color: '#3C8AC9' },
-    { offset: '100%', color: '#457398' },
+    { offset: '0%', color: '#33A1FB', opacity: '100%' },
+    { offset: '50%', color: '#3C8AC9', opacity: '100%' },
+    { offset: '100%', color: '#457398', opacity: '100%' },
   ],
   bless: [
-    { offset: '25%', color: '#9C702A' },
-    { offset: '100%', color: '#695823' },
+    { offset: '25%', color: '#9C702A', opacity: '100%' },
+    { offset: '100%', color: '#695823', opacity: '100%' },
   ],
   curse: [
-    { offset: '25%', color: '#362330' },
-    { offset: '100%', color: '#3B224A' },
+    { offset: '25%', color: '#362330', opacity: '100%' },
+    { offset: '100%', color: '#3B224A', opacity: '100%' },
   ],
 };
 
@@ -185,8 +185,6 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
     <View style={[{ width: size, height: size, borderRadius: size / 2 }, shadowStyle]}>
       <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', position: 'relative' }}>
         <RadialGradient
-          style={{ width: size, height: size, borderRadius: size / 2 }}
-          key={iconKey}
           colorList={gradientParams || DEFAULT_GRADIENT}
           x="50%"
           y="50%"

@@ -20,7 +20,7 @@ export interface FilterFunctionProps {
   filterId: string;
   tabooSetId?: number;
   modal?: boolean;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
 }
 
 export interface WithFilterFunctionsOptions {
@@ -79,7 +79,7 @@ export default function useFilterFunctions({
     db.getCardCount(
       combineQueriesOpt(
         [
-          ...(baseQuery ? [baseQuery as Brackets] : []),
+          ...(baseQuery ? [baseQuery(currentFilters)] : []),
           NO_CUSTOM_CARDS_QUERY,
           ...(filterParts ? [filterParts] : []),
         ],

@@ -5,7 +5,7 @@ import { c, t } from 'ttag';
 
 import BinaryResult from '@components/campaignguide/BinaryResult';
 import { LogEntryCard } from '@data/scenario/CampaignGuide';
-import { BranchStep, CampaignLogCondition, CampaignLogCardsCondition, LogEntry } from '@data/scenario/types';
+import { BranchStep, CampaignLogCondition, CampaignLogCardsCondition } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';

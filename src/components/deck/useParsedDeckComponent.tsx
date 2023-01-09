@@ -16,7 +16,7 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
-import { Slots, DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState } from '@actions/types';
+import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations } from '@actions/types';
 import { TypeCodeType, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
@@ -47,6 +47,20 @@ function hasUpgrades(
     )));
 }
 
+function hasCustomizationUpgrades(
+  code: string,
+  cards: CardsMap,
+  customizations: Customizations | undefined,
+  validation: DeckValidation
+) {
+  const card = cards[code];
+  return !!(
+    card &&
+    card.customization_options &&
+    validation.canIncludeCard(card.withCustomizations(',', customizations?.[code], 1), false)
+  );
+}
+
 function getCount(item: SectionCardId): [number, 'side' | 'ignore' | undefined] {
   if (item.ignoreCount) {
     return [item.quantity, 'ignore'];
@@ -65,6 +79,7 @@ function getCount(item: SectionCardId): [number, 'side' | 'ignore' | undefined] 
 interface SectionCardId extends CardId {
   mode: 'special' | 'side' | 'bonded' | 'ignore' | undefined;
   hasUpgrades: boolean;
+  customizable: boolean;
   index: number;
 }
 
@@ -117,6 +132,7 @@ function deckToSections(
   cards: CardsMap,
   cardsByName: undefined | { [name: string]: Card[] },
   validation: DeckValidation,
+  customizations: Customizations | undefined,
   mode: 'special' | 'side' | undefined,
   inCollection: { [pack_code: string]: boolean },
   ignoreCollection: boolean,
@@ -165,6 +181,7 @@ function deckToSections(
               inCollection,
               ignoreCollection
             ),
+            customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
         }),
       });
@@ -221,6 +238,7 @@ function deckToSections(
               inCollection,
               ignoreCollection
             ),
+            customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
         }),
       });
@@ -256,6 +274,7 @@ function bondedSections(
         hasUpgrades: false,
         limited: false,
         invalid: false,
+        customizable: false,
       };
     }),
     last: true,
@@ -298,7 +317,7 @@ interface Props {
 
 
 export default function useParsedDeckComponent({
-  deckEditsRef, componentId, tabooSetId, parsedDeck, cardsByName,
+  componentId, tabooSetId, parsedDeck, cardsByName,
   mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
   showDrawWeakness, showEditSpecial, showEditCards, showEditSide, showCardUpgradeDialog, showDraftCards,
 }: Props): [React.ReactNode, number] {
@@ -334,6 +353,8 @@ export default function useParsedDeckComponent({
   }, [slots, cards, bondedCardsByName]);
   const limitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
   const [data, setData] = useState<DeckSection[]>([]);
+  const customizations = parsedDeck?.customizations;
+
   useEffect(() => {
     if (!parsedDeck?.investigatorBack || !visible) {
       return;
@@ -376,6 +397,7 @@ export default function useParsedDeckComponent({
       cards,
       cardsByName,
       validation,
+      customizations,
       undefined,
       inCollection,
       ignore_collection,
@@ -390,6 +412,7 @@ export default function useParsedDeckComponent({
       cards,
       cardsByName,
       validation,
+      customizations,
       'special',
       inCollection,
       ignore_collection,
@@ -429,6 +452,7 @@ export default function useParsedDeckComponent({
             inCollection,
             ignore_collection
           ),
+          customizable: hasCustomizationUpgrades(card.id, cards, customizations, validation),
         };
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
@@ -464,6 +488,7 @@ export default function useParsedDeckComponent({
       cards,
       cardsByName,
       validation,
+      customizations,
       'side',
       inCollection,
       ignore_collection,
@@ -474,7 +499,7 @@ export default function useParsedDeckComponent({
     }
     currentIndex = sideIndex;
     setData(newData);
-  }, [requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
+  }, [customizations, requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
     showDraftCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';
@@ -517,7 +542,6 @@ export default function useParsedDeckComponent({
     if (!deckId) {
       return undefined;
     }
-
     const upgradeEnabled = editable && item.hasUpgrades;
     return {
       type: 'upgrade',
@@ -525,12 +549,12 @@ export default function useParsedDeckComponent({
       mode: countMode,
       editable: !!editable,
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
-      onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+      onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : (undefined),
+      customizable: !!editable && item.customizable,
     };
   }, [mode, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
-  const customizations = parsedDeck?.customizations;
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -582,7 +606,7 @@ export default function useParsedDeckComponent({
     }
     const [count, mode] = getCount(item);
     const cardCustomizations = customizations?.[card.code];
-    const customizedCard = card.withCustomizations(listSeperator, cardCustomizations, 'parsedDeck')
+    const customizedCard = card.withCustomizations(listSeperator, cardCustomizations)
     return (
       <CardSearchResult
         key={item.index}

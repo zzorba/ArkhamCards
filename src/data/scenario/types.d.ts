@@ -22,7 +22,8 @@ export type Step =
   | XpCountStep
   | InternalStep
   | BorderStep
-  | TravelCostStep;
+  | TravelCostStep
+  | InvestigatorSetupStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -257,6 +258,7 @@ export interface MapLocation {
   x: number;
   y: number;
   name: string;
+  file_name?: string;
   scenario: string;
   dossier?: Dossier[];
   hidden?: boolean;
@@ -268,20 +270,22 @@ export interface MapLocation {
 }
 export interface Dossier {
   title: string;
+  title_font?: "file";
   entries: DossierElement[];
   locked?: string;
 }
 export interface DossierElement {
-  image?: {
-    ratio: number;
-    uri: string;
-    alignment: "left" | "right";
-  };
+  image?: Image;
   text?: string;
   reference?: {
     city: string;
     name: string;
   };
+}
+export interface Image {
+  ratio: number;
+  uri: string;
+  alignment: "left" | "right" | "top" | "bottom";
 }
 export interface LocationDetails {
   region: {
@@ -296,7 +300,18 @@ export interface MapLabel {
   y: number;
   name: string;
   direction: "left" | "center" | "right";
-  type: "connection" | "ocean" | "small_ocean" | "continent" | "country";
+  type: "connection" | "ocean" | "small_ocean" | "sea" | "continent" | "country";
+  lang_position?: {
+    es?: {
+      x: number;
+      y: number;
+    };
+    ko?: {
+      x: number;
+      y: number;
+    };
+  };
+  rotation?: string;
 }
 export interface CampaignLogSectionDefinition {
   id: string;
@@ -558,7 +573,7 @@ export interface CampaignDataEmbarkEffect {
 }
 export interface CampaignDataUpdateLocationEffect {
   type: "campaign_data";
-  setting: "unlock_location" | "lock_location" | "unlock_dossier";
+  setting: "unlock_location" | "lock_location" | "unlock_dossier" | "hide_dossier";
   value: string;
 }
 export interface CampaignDataUnlockMapEffect {
@@ -930,6 +945,8 @@ export interface UpgradeDecksInput {
   skip_decks?: boolean;
   special_xp?: SpecialXp;
   counter?: string;
+  exile?: boolean;
+  hide_xp?: boolean;
   story_cards?: [] | [string];
 }
 export interface CardChoiceInput {
@@ -946,6 +963,7 @@ export interface CardSearchQuery {
   traits?: string[];
   types?: string[];
   unique?: boolean;
+  non_story_only?: boolean;
   vengeance?: boolean;
   exclude_code?: string[];
   code?: null;
@@ -968,6 +986,7 @@ export interface Choice {
   border_color?: BorderColor;
   pre_border_effects?: Effect[];
   effects?: Effect[];
+  allow_duplicates?: boolean;
 }
 export interface SuppliesInput {
   type: "supplies";
@@ -1005,6 +1024,7 @@ export interface InvestigatorChoiceInput {
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
   special_mode?: "detailed" | "sequential";
+  include_trauma?: boolean;
   unique?: boolean;
   confirm_text?: string;
   choices: InvestigatorConditionalChoice[];
@@ -1028,6 +1048,7 @@ export interface InvestigatorConditionalChoice {
   pre_border_effects?: Effect[];
   steps?: string[];
   effects?: Effect[];
+  allow_duplicates?: boolean;
 }
 export interface ChooseOneInput {
   type: "choose_one";
@@ -1138,6 +1159,7 @@ export interface RandomLocationInput {
 export interface PrologueRandomizer {
   type: "prologue_randomizer";
   prompt: string;
+  random_only?: boolean;
   choices: BinaryConditionalChoice[];
   options: StringOption[];
 }
@@ -1215,6 +1237,11 @@ export interface RuleReminderStep {
   border_only?: boolean;
   text?: string;
   title?: string;
+  images?: {
+    image: Image;
+    width: "full" | "half" | "quarter";
+    text?: string;
+  }[];
   bullets?: {
     text: string;
   }[];
@@ -1248,6 +1275,7 @@ export interface LocationSetupStep {
   vertical: "half" | "normal";
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
+  annotations?: LocationAnnotation[];
   resource_dividers?: {
     right?: number;
     bottom?: number;
@@ -1258,6 +1286,12 @@ export interface LocationSetupStep {
   }[];
   bullet_type?: null;
   narration?: Narration;
+}
+export interface LocationAnnotation {
+  text: string;
+  x: number;
+  y: number;
+  position: "top" | "bottom";
 }
 export interface LocationConnectorsStep {
   id: string;
@@ -1333,6 +1367,18 @@ export interface TravelCostStep {
   title?: string;
   bullet_type?: null;
   narration?: Narration;
+}
+export interface InvestigatorSetupStep {
+  border_only?: boolean;
+  id: string;
+  type: "investigator_setup";
+  text?: string;
+  title?: string;
+  steps?: string[];
+  effects?: ScenarioDataStatusEffect[];
+  bullet_type?: null;
+  narration?: Narration;
+  sections: "scarlet_keys"[];
 }
 export interface CustomData {
   creator: string;

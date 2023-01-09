@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { flatMap, find, forEach, keys, map, omit, sortBy, pick } from 'lodash';
 import { t } from 'ttag';
 
@@ -7,7 +8,7 @@ import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showCard } from '@components/nav/helper';
-import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { BODY_OF_A_YITHIAN, BURN_AFTER_READING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
@@ -39,6 +40,8 @@ import { ControlType } from '@components/cardlist/CardSearchResult/ControlCompon
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { useAppDispatch } from '@app/store';
 import useTraumaSection from './useTraumaSection';
+import { SelectExileCardsProps } from '@components/campaignguide/SelectExileCardsView';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface Props {
   componentId: string;
@@ -55,6 +58,8 @@ interface Props {
   skipDeckSave?: boolean;
   specialXp?: SpecialXp;
   investigatorCounter?: string;
+  exile?: boolean;
+  hideXp?: boolean;
 }
 
 function computeChoiceId(stepId: string, investigator: Card) {
@@ -140,6 +145,8 @@ function UpgradeDeckRow({
   actions,
   setUnsavedEdits,
   editable,
+  exile,
+  hideXp,
 }: Props) {
   const investigatorCounter = originalInvestigatorCounter || campaignLog.campaignData.redirect_experience || undefined;
   const { colors, typography, width } = useContext(StyleContext);
@@ -147,11 +154,14 @@ function UpgradeDeckRow({
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const { campaignGuide } = useContext(CampaignGuideContext);
   const earnedXp = useMemo(() => {
+    if (hideXp) {
+      return 0;
+    }
     if (specialXp) {
       return campaignLog.specialXp(investigator.code, specialXp);
     }
     return campaignLog.earnedXp(investigator.code);
-  }, [campaignLog, investigator, specialXp]);
+  }, [hideXp, campaignLog, investigator, specialXp]);
 
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
@@ -386,6 +396,9 @@ function UpgradeDeckRow({
   }, [storyAssetDeltas, storyAssetCards, renderDeltas, campaignGuide, storyCards, storyCardSlots, storyCardSlotActions, choices, editable]);
 
   const xpSection = useMemo(() => {
+    if (hideXp) {
+      return null;
+    }
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <View style={[space.marginS, styles.xpBlock, styles.betweenRow, { backgroundColor: colors.upgrade }]}>
@@ -421,7 +434,7 @@ function UpgradeDeckRow({
         )}
       </View>
     );
-  }, [typography, xp, colors, editable, xpAdjust, incXp, decXp, choices, saving]);
+  }, [hideXp, typography, xp, colors, editable, xpAdjust, incXp, decXp, choices, saving]);
   const traumaSection = useTraumaSection({ campaignLog, investigator, saving, editable, choices, physicalAdjust, incPhysical, decPhysical, mentalAdjust, incMental, decMental });
   const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
@@ -551,26 +564,61 @@ function UpgradeDeckRow({
     });
     return slots;
   }, [allStoryAssetCards, storyAssets, deck]);
+  const onExileMorePressed = useCallback(() => {
+    if (deck?.id) {
+      Navigation.push<SelectExileCardsProps>(componentId, {
+        component: {
+          name: 'Guide.ExileSelector',
+          passProps: {
+            deckId: deck.id,
+            selection: exileCounts,
+            onExileCountChange,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Select cards to exile`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          },
+        },
+      });
+    }
+  }, [deck?.id, onExileCountChange, exileCounts, componentId])
   const specialExileSection = useMemo(() => {
+    const exileOtherButton = (choices === undefined && deck?.id.local && (exile || (exileCounts[BURN_AFTER_READING_CODE] || 0) > 0) && !saving) ? (
+      <ArkhamButton
+        icon="card"
+        title={t`Exile other cards`}
+        onPress={onExileMorePressed}
+      />
+    ) : null;
     if ((choices === undefined && editable ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
       return (
-        <CardSelectorComponent
-          componentId={componentId}
-          slots={specialExileSlots}
-          counts={specialExile}
-          filterCard={isExile}
-          updateCount={updateSpecialExileCount}
-          header={(choices !== undefined || !deck) && (
-            <View style={space.paddingSideS}>
-              <DeckSlotHeader title={editable && choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
-            </View>
-          )}
-          locked={saving || !!choices || !editable}
-        />
+        <>
+          <CardSelectorComponent
+            componentId={componentId}
+            slots={specialExileSlots}
+            counts={specialExile}
+            filterCard={isExile}
+            updateCount={updateSpecialExileCount}
+            header={(choices !== undefined || !deck) && !exile && (
+              <View style={space.paddingSideS}>
+                <DeckSlotHeader title={editable && choices !== undefined ? t`Exiled story cards` : t`Exile story cards` } />
+              </View>
+            )}
+            locked={saving || !!choices || !editable}
+          />
+          { exileOtherButton }
+        </>
       );
     }
-    return null;
-  }, [choices, editable, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving]);
+    return exileOtherButton;
+  }, [choices, exile, onExileMorePressed, editable, specialExileSlots, specialExile, componentId, updateSpecialExileCount, deck, saving, exileCounts]);
+
   const exileSection = useMemo(() => {
     if (deck && (choices === undefined || keys(savedExileCounts).length > 0)) {
       return (

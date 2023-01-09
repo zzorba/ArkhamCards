@@ -64,7 +64,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
           </View>
         );
     }
-  }, [bulletType, resolution, noPadding, colors]);
+  }, [bulletType, color, resolution, noPadding, colors]);
 
   if (reverseSpacing) {
     return (

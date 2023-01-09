@@ -35,6 +35,7 @@ export type ControlType = {
   mode?: 'side' | 'ignore'
   editable: boolean;
   onUpgradePress?: (card: Card) => void;
+  customizable: boolean;
 } | {
   type: 'toggle';
   value: boolean;
@@ -60,8 +61,9 @@ export type ControlType = {
 interface Props {
   card: Card;
   control: ControlType;
+  handleCardPress?: () => void;
 }
-export function ControlComponent({ card, control }: Props) {
+export function ControlComponent({ card, control, handleCardPress }: Props) {
   switch (control.type) {
     case 'deck':
       return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} mode={control.mode} editable />;
@@ -74,7 +76,7 @@ export function ControlComponent({ card, control }: Props) {
     case 'upgrade':
       return (
         <CardUpgradeButton
-          onUpgradePress={control.onUpgradePress}
+          onUpgradePress={control.customizable ? handleCardPress : control.onUpgradePress}
           card={card}
           deckId={control.deckId}
           editable={control.editable}

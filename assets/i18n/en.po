@@ -2176,7 +2176,6 @@ msgid ""
 "this campaign."
 msgstr ""
 
-#, javascript-format
 msgid "Experience cost: ${ xpCost }"
 msgstr ""
 
@@ -2952,10 +2951,6 @@ msgstr ""
 msgid "Latest upgrade"
 msgstr ""
 
-#, javascript-format
-msgid "${ adjustedXp } XP"
-msgstr ""
-
 msgid "Add cards"
 msgstr ""
 
@@ -3035,13 +3030,10 @@ msgstr ""
 msgid "${ count } of ${ limitSlotCount }"
 msgstr ""
 
-#, javascript-format
-msgid "${ _adjustedXp } XP"
-msgstr ""
-
 msgid "0 unspent"
 msgstr ""
 
+#, javascript-format
 msgid "${ overspent } overspent"
 msgstr ""
 
@@ -3872,9 +3864,6 @@ msgstr ""
 msgid "Add new"
 msgstr ""
 
-msgid "Lead"
-msgstr ""
-
 msgid "Changes have been recorded."
 msgstr ""
 
@@ -4328,7 +4317,7 @@ msgid ""
 "amount of experience, which should be paid when you start the scenario.\n"
 "- Weaknesses, trauma, experience, and rewards granted by playing a "
 "side-story stay with the investigators for the remainder of the campaign.\n"
-"- Each sidestory may only be played once per campaign.\n"
+"- Each side-story may only be played once per campaign.\n"
 "\n"
 "<b>Note:</b> When using this app, the experience required to play these "
 "scenarios will be deducted automatically at the <b>end of the scenario</b>, "
@@ -5385,12 +5374,6 @@ msgstr ""
 msgid "Customizations"
 msgstr ""
 
-#, javascript-format
-msgid "${ xp } XP"
-msgid_plural "${ xp } XP"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Show selected customizations"
 msgstr ""
 
@@ -5727,6 +5710,178 @@ msgstr ""
 
 msgid "Choose weakness"
 msgstr ""
+
+msgid "Do you want to use the app to draw random tarot cards?"
+msgstr ""
+
+msgid "Choose tarot card"
+msgstr ""
+
+msgid "Choose supplies:"
+msgstr ""
+
+msgid "Asset Class Choice"
+msgstr ""
+
+msgid "Skill Class Choie"
+msgstr ""
+
+msgid "Event Class Choice"
+msgstr ""
+
+msgid ""
+"If you wish to add a side-story to this campaign, you may travel to this "
+"location and spend additional time equal to the normal experience for "
+"playing that side story."
+msgstr ""
+
+msgid "Use expedited ticket"
+msgstr ""
+
+#, javascript-format
+msgid "Time cost: ${ xpCost }"
+msgstr ""
+
+#, javascript-format
+msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
+msgstr ""
+
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign.\n"
+"- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story "
+"costs a certain amount of <b>time</b> instead of experience.\n"
+"- Weaknesses, trauma, experience, and rewards granted by playing a "
+"side-story stay with the investigators for the remainder of the campaign.\n"
+"- Each side-story may only be played once per campaign."
+msgstr ""
+
+#, javascript-format
+msgid "Mark ${ travelDistance } time"
+msgid_plural "Mark ${ travelDistance } time"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Mark 1 time"
+msgstr ""
+
+#, javascript-format
+msgid "Travel time: ${ travelDistance }"
+msgid_plural "Travel time: ${ travelDistance }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Secret / Locked"
+msgstr ""
+
+msgid "Cannot stop here until unlocked"
+msgstr ""
+
+msgid "Select cards to exile"
+msgstr ""
+
+msgid "Exile other cards"
+msgstr ""
+
+msgid "Name of Paradimensional Artifact"
+msgstr ""
+
+msgid "Prologue: Rain and Riddles"
+msgstr ""
+
+msgid "Dead Heat"
+msgstr ""
+
+msgid "Sanguine Shadows"
+msgstr ""
+
+msgid "Dealings in the Dark"
+msgstr ""
+
+msgid "Dancing Mad"
+msgstr ""
+
+msgid "On Thin Ice"
+msgstr ""
+
+msgid "Dogs of War"
+msgstr ""
+
+msgid "Shades of Suffering"
+msgstr ""
+
+msgid "Without a Trace"
+msgstr ""
+
+msgid "Congress of the Keys"
+msgstr ""
+
+msgid "Unlocked Locations"
+msgstr ""
+
+msgid ""
+"Each investigator who is the bearer of 1 or more key attaches those keys to "
+"their investigator card:"
+msgstr ""
+
+msgid "Customizable"
+msgstr ""
+
+msgid "0 XP"
+msgstr ""
+
+msgid "No campaign"
+msgstr ""
+
+#, javascript-format
+msgid "×${ parsedDeck.totalCardCount }"
+msgstr ""
+
+msgid ""
+"Your ArkhamDB login has expired.\n"
+"\n"
+"You will need to login again on the Settings tab before you can save "
+"changes to this deck."
+msgstr ""
+
+msgid "Edit deck tags"
+msgstr ""
+
+msgid "Clear tags"
+msgstr ""
+
+msgid "Solo"
+msgstr ""
+
+msgid "Beginner"
+msgstr ""
+
+msgid "+ Add"
+msgstr ""
+
+msgid "Deck tags"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+#, javascript-format
+msgid "${ scenarioName }: Visit ${ attempt }"
+msgid_plural "${ scenarioName }: Visit ${ attempt }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Search english card names"
+msgstr ""
+
+msgid "Include english results when searching"
+msgstr ""
+
+#, javascript-format
+msgid "${ xp } XP"
+msgid_plural "${ xp } XP"
+msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6451,6 +6606,49 @@ msgid ""
 "- In order to maintain compatibility with ArkhamDB, these cards are not "
 "shown by default. You can opt into them by enabling the <b>Show Fan-made "
 "cards</b> under <i>Settings</i>."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "The Scarlet Keys Campaign"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"This release adds support for the newly released Scarlet Keys campaign "
+"expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- As you may know (or will soon find out), this is by far the most "
+"ambitious campaign we've ever seen in Arkham. I've done my best to handle "
+"the new features as faithfully as I can in the app, and am pretty pleased "
+"with the implementation."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- I've done my best to test the corners of this campaign, but it is quite "
+"possible there will be some mistakes or bugs in the implementation still - "
+"if you find any please let me know at "
+"[arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix "
+"them as quickly as possible. But given the expansive nature of the "
+"campaign, it is possible in a worst case scenario that some progress might "
+"need to be re-entered."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"- I've also taken the liberty of including some small story reminders when "
+"map locations become unlocked through the course of play. I tried my best "
+"to capture the story text, and hope you find it helpful (in case like me "
+"you sometimes go weeks between game sessions)."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid ""
+"As always, many thanks to my many supporters on Patreon -- I appreciate "
+"your support which helps make all of this possible."
 msgstr ""
 
 msgctxt "trait"
@@ -7911,6 +8109,18 @@ msgid_plural "Keys"
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "tags"
+msgid "Add"
+msgstr ""
+
+msgctxt "tags"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "tags"
+msgid "None"
+msgstr ""
+
 msgctxt "Tarot Card"
 msgid "None"
 msgstr ""
@@ -7929,6 +8139,10 @@ msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"
+msgstr ""
+
+msgctxt "lead-investigator"
+msgid "Lead"
 msgstr ""
 
 msgctxt "narration"

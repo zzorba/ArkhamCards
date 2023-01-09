@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { map, find, repeat, flatMap, range, sumBy, forEach, uniq, filter, sortBy, uniqBy } from 'lodash';
-import { msgid, ngettext, t } from 'ttag';
+import { c, msgid, ngettext, t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import Card from '@data/types/Card';
@@ -24,7 +24,7 @@ import { DeckOptionQueryBuilder } from '@data/types/DeckOption';
 import { Navigation } from 'react-native-navigation';
 import { CardSelectorProps } from '@components/campaignguide/CardSelectorView';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useSimpleDeckEdits } from '@components/deck/hooks';
+import { useSimpleDeckEdits, xpString } from '@components/deck/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -722,7 +722,7 @@ function CustomizationLine({ componentId, card, option, deckId, editable, mode, 
 export default function CardCustomizationOptions({ setChoice, mode, deckId, customizationChoices, card, customizationOptions, width, editable, componentId }: Props) {
   const { typography, backgroundStyle, colors, shadow } = useContext(StyleContext);
   const [showAll, toggleShowAll] = useFlag(false);
-  const xp = useMemo(() => sumBy(customizationChoices, c => c.xp_spent), [customizationChoices]);
+  const xp = useMemo(() => sumBy(customizationChoices, c => c.xp_spent) || 0, [customizationChoices]);
   return (
     <View style={[{ width }, styles.container, space.paddingSideS, space.marginBottomL]}>
       <View style={{ maxWidth: MAX_WIDTH }}>
@@ -734,7 +734,7 @@ export default function CardCustomizationOptions({ setChoice, mode, deckId, cust
               </Text>
               { !!deckId && (
                 <Text style={[typography.text, { color: '#FFFFFF' }]}>
-                  { ngettext(msgid`${xp} XP`, `${xp} XP`, xp) }
+                  { xpString(xp) }
                 </Text>
               ) }
             </View>

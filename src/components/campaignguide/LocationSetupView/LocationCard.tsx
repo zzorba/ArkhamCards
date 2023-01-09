@@ -8,11 +8,13 @@ import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { LocationAnnotation } from '@data/scenario/types';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
 
 interface Props {
+  annotation?: LocationAnnotation;
   code: string;
   height: number;
   width: number;
@@ -67,9 +69,12 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
   );
 }
 
-export default function LocationCard({ code, height, width, left, top, name, resource_dividers }: Props) {
-  const { borderStyle, colors } = useContext(StyleContext);
+export default function LocationCard({ annotation, code, height, width, left, top, name, resource_dividers }: Props) {
+  const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
   const rotate = code.indexOf('_rotate') !== -1;
+  const mini = code.indexOf('_mini') !== -1;
+
+  const [theWidth, theHeight] = mini ? [width * 0.75, height * 0.75] : [width, height];
   const image = useMemo(() => {
     switch (code) {
       case 'blank':
@@ -103,18 +108,20 @@ export default function LocationCard({ code, height, width, left, top, name, res
         );
       default:
         return (
-          <LocationCardImage
-            name={name}
-            code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '')}
-            back={code.indexOf('_back') !== -1}
-            width={width}
-            height={height}
-            rotateLeft={code.indexOf('_rotate_left') !== -1}
-            rotate={rotate}
-          />
+          <View style={mini ? { paddingTop: height * 0.1, paddingBottom: height * 0.1, paddingLeft: width * 0.1, paddingRight: width * 0.1 } : undefined}>
+            <LocationCardImage
+              name={name}
+              code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '').replace('_mini', '')}
+              back={code.indexOf('_back') !== -1}
+              width={theWidth}
+              height={theHeight}
+              rotateLeft={code.indexOf('_rotate_left') !== -1}
+              rotate={rotate}
+            />
+          </View>
         );
     }
-  }, [colors, borderStyle, code, name, height, rotate, width]);
+  }, [colors, borderStyle, mini, theHeight, theWidth, code, name, height, rotate, width]);
 
   const resourceDividers = useMemo(() => {
     if (!resource_dividers) {
@@ -143,13 +150,20 @@ export default function LocationCard({ code, height, width, left, top, name, res
       </>
     );
   }, [resource_dividers, width, height, left, top, colors]);
-
+  const annotationLineHeight = fontScale * 24;
   return (
     <>
       <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }]}>
         { image }
       </View>
       { resourceDividers }
+      { !!annotation && (
+        <View style={[styles.annotation, { width, top: annotation.position === 'top' ? top - annotationLineHeight : top + height, left }]}>
+          <Text numberOfLines={1} style={[typography.text, typography.center, { lineHeight: annotationLineHeight, fontSize: fontScale * 22 }, typography.bold]}>
+            { annotation.text }
+          </Text>
+        </View>
+      )}
     </>
   );
 }
@@ -188,5 +202,8 @@ const styles = StyleSheet.create({
   },
   resource: {
     paddingBottom: s,
+  },
+  annotation: {
+    position: 'absolute',
   },
 });

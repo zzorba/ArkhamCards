@@ -25,6 +25,10 @@ import {
   BROWSE_DECKS,
   ChangeTabAction,
   CHANGE_TAB,
+  SortType,
+  SORT_BY_PACK,
+  SetInvestigatorSortAction,
+  SET_INVESTIGATOR_SORT,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -55,7 +59,9 @@ interface SettingsState {
   dismissedOnboarding?: string[];
   campaignShowDeckId?: boolean;
   lowMemory?: boolean;
+  searchEnglish?: boolean;
   startingTab?: StartingTabType;
+  investigatorSort?: SortType;
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -83,6 +89,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   campaignShowDeckId: false,
   lowMemory: false,
   startingTab: BROWSE_DECKS,
+  investigatorSort: SORT_BY_PACK,
 };
 
 type SettingAction =
@@ -96,7 +103,8 @@ type SettingAction =
   ReduxMigrationAction |
   SetPlaybackRateAction |
   SyncDismissOnboardingAction |
-  ChangeTabAction;
+  ChangeTabAction |
+  SetInvestigatorSortAction;
 
 
 export default function(
@@ -108,6 +116,11 @@ export default function(
       return {
         ...state,
         startingTab: action.tab,
+      };
+    case SET_INVESTIGATOR_SORT:
+      return {
+        ...state,
+        investigatorSort: action.sort,
       };
     case SYNC_DISMISS_ONBOARDING: {
       let onboarding = [...(state.dismissedOnboarding || [])];
@@ -250,6 +263,11 @@ export default function(
           return {
             ...state,
             lowMemory: LOW_MEMORY_DEVICE ? !action.value : action.value,
+          };
+        case 'search_english':
+          return {
+            ...state,
+            searchEnglish: action.value,
           };
       }
       return state;

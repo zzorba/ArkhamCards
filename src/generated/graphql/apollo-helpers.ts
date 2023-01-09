@@ -1,9 +1,10 @@
 import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
-export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
+export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
 export type all_cardFieldPolicy = {
 	alt_art_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -59,6 +60,7 @@ export type all_cardFieldPolicy = {
 	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_encounter_set_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -145,10 +147,11 @@ export type all_card_avg_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_max_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_max_fieldsKeySpecifier)[];
+export type all_card_max_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_max_fieldsKeySpecifier)[];
 export type all_card_max_fieldsFieldPolicy = {
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -180,6 +183,7 @@ export type all_card_max_fieldsFieldPolicy = {
 	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_encounter_set_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -208,10 +212,11 @@ export type all_card_max_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_min_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_min_fieldsKeySpecifier)[];
+export type all_card_min_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_min_fieldsKeySpecifier)[];
 export type all_card_min_fieldsFieldPolicy = {
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_link_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
 	backimageurl?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -243,6 +248,7 @@ export type all_card_min_fieldsFieldPolicy = {
 	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_encounter_set_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -396,11 +402,12 @@ export type all_card_sum_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_textKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_textKeySpecifier)[];
+export type all_card_textKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_textKeySpecifier)[];
 export type all_card_textFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -426,11 +433,12 @@ export type all_card_text_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_text_max_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_max_fieldsKeySpecifier)[];
+export type all_card_text_max_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_max_fieldsKeySpecifier)[];
 export type all_card_text_max_fieldsFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -445,11 +453,12 @@ export type all_card_text_max_fieldsFieldPolicy = {
 	traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_text_min_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_min_fieldsKeySpecifier)[];
+export type all_card_text_min_fieldsKeySpecifier = ('back_flavor' | 'back_name' | 'back_text' | 'back_traits' | 'customization_change' | 'customization_text' | 'encounter_name' | 'flavor' | 'id' | 'locale' | 'name' | 'slot' | 'subname' | 'taboo_text_change' | 'text' | 'traits' | 'updated_at' | all_card_text_min_fieldsKeySpecifier)[];
 export type all_card_text_min_fieldsFieldPolicy = {
 	back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_traits?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	customization_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	encounter_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2270,11 +2279,12 @@ export type cycle_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_nameKeySpecifier = ('code' | 'locale' | 'name' | cycle_nameKeySpecifier)[];
+export type cycle_nameKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_nameKeySpecifier)[];
 export type cycle_nameFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type cycle_name_aggregateKeySpecifier = ('aggregate' | 'nodes' | cycle_name_aggregateKeySpecifier)[];
 export type cycle_name_aggregateFieldPolicy = {
@@ -2287,17 +2297,19 @@ export type cycle_name_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | cycle_name_max_fieldsKeySpecifier)[];
+export type cycle_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_name_max_fieldsKeySpecifier)[];
 export type cycle_name_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | cycle_name_min_fieldsKeySpecifier)[];
+export type cycle_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | cycle_name_min_fieldsKeySpecifier)[];
 export type cycle_name_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type cycle_name_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | cycle_name_mutation_responseKeySpecifier)[];
 export type cycle_name_mutation_responseFieldPolicy = {
@@ -3100,7 +3112,7 @@ export type guide_achievement_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	value?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_inputKeySpecifier = ('campaign' | 'campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'payload' | 'scenario' | 'step' | 'type' | guide_inputKeySpecifier)[];
+export type guide_inputKeySpecifier = ('campaign' | 'campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'payload' | 'scenario' | 'step' | 'type' | 'updated_at' | guide_inputKeySpecifier)[];
 export type guide_inputFieldPolicy = {
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3110,7 +3122,8 @@ export type guide_inputFieldPolicy = {
 	payload?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
 	step?: FieldPolicy<any> | FieldReadFunction<any>,
-	type?: FieldPolicy<any> | FieldReadFunction<any>
+	type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type guide_input_aggregateKeySpecifier = ('aggregate' | 'nodes' | guide_input_aggregateKeySpecifier)[];
 export type guide_input_aggregateFieldPolicy = {
@@ -3136,7 +3149,7 @@ export type guide_input_avg_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	inserted_idx?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'scenario' | 'step' | 'type' | guide_input_max_fieldsKeySpecifier)[];
+export type guide_input_max_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'scenario' | 'step' | 'type' | 'updated_at' | guide_input_max_fieldsKeySpecifier)[];
 export type guide_input_max_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3144,9 +3157,10 @@ export type guide_input_max_fieldsFieldPolicy = {
 	inserted_idx?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
 	step?: FieldPolicy<any> | FieldReadFunction<any>,
-	type?: FieldPolicy<any> | FieldReadFunction<any>
+	type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type guide_input_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'scenario' | 'step' | 'type' | guide_input_min_fieldsKeySpecifier)[];
+export type guide_input_min_fieldsKeySpecifier = ('campaign_id' | 'created_at' | 'id' | 'inserted_idx' | 'scenario' | 'step' | 'type' | 'updated_at' | guide_input_min_fieldsKeySpecifier)[];
 export type guide_input_min_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3154,7 +3168,8 @@ export type guide_input_min_fieldsFieldPolicy = {
 	inserted_idx?: FieldPolicy<any> | FieldReadFunction<any>,
 	scenario?: FieldPolicy<any> | FieldReadFunction<any>,
 	step?: FieldPolicy<any> | FieldReadFunction<any>,
-	type?: FieldPolicy<any> | FieldReadFunction<any>
+	type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type guide_input_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | guide_input_mutation_responseKeySpecifier)[];
 export type guide_input_mutation_responseFieldPolicy = {
@@ -3495,7 +3510,7 @@ export type local_decks_variance_fieldsFieldPolicy = {
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_all_card' | 'delete_all_card_by_pk' | 'delete_all_card_text' | 'delete_all_card_text_by_pk' | 'delete_all_card_updated' | 'delete_all_card_updated_by_pk' | 'delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_difficulty' | 'delete_campaign_difficulty_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_cycle' | 'delete_card_cycle_by_pk' | 'delete_card_encounter_set' | 'delete_card_encounter_set_by_pk' | 'delete_card_pack' | 'delete_card_pack_by_pk' | 'delete_card_subtype_name' | 'delete_card_subtype_name_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_card_type_code' | 'delete_card_type_code_by_pk' | 'delete_card_type_name' | 'delete_card_type_name_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_chaos_bag_tarot_mode' | 'delete_chaos_bag_tarot_mode_by_pk' | 'delete_cycle' | 'delete_cycle_by_pk' | 'delete_cycle_name' | 'delete_cycle_name_by_pk' | 'delete_faction_name' | 'delete_faction_name_by_pk' | 'delete_faq' | 'delete_faq_by_pk' | 'delete_faq_text' | 'delete_faq_text_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_full_card' | 'delete_full_card_by_pk' | 'delete_full_card_text' | 'delete_full_card_text_by_pk' | 'delete_gender' | 'delete_gender_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_pack' | 'delete_pack_by_pk' | 'delete_pack_name' | 'delete_pack_name_by_pk' | 'delete_taboo_set' | 'delete_taboo_set_by_pk' | 'delete_user_campaigns' | 'delete_user_flag' | 'delete_user_flag_by_pk' | 'delete_user_flag_type' | 'delete_user_flag_type_by_pk' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_user_settings' | 'delete_user_settings_by_pk' | 'delete_users' | 'delete_users_by_pk' | 'insert_all_card' | 'insert_all_card_one' | 'insert_all_card_text' | 'insert_all_card_text_one' | 'insert_all_card_updated' | 'insert_all_card_updated_one' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_difficulty' | 'insert_campaign_difficulty_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_cycle' | 'insert_card_cycle_one' | 'insert_card_encounter_set' | 'insert_card_encounter_set_one' | 'insert_card_one' | 'insert_card_pack' | 'insert_card_pack_one' | 'insert_card_subtype_name' | 'insert_card_subtype_name_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_card_type_code' | 'insert_card_type_code_one' | 'insert_card_type_name' | 'insert_card_type_name_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_chaos_bag_tarot_mode' | 'insert_chaos_bag_tarot_mode_one' | 'insert_cycle' | 'insert_cycle_name' | 'insert_cycle_name_one' | 'insert_cycle_one' | 'insert_faction_name' | 'insert_faction_name_one' | 'insert_faq' | 'insert_faq_one' | 'insert_faq_text' | 'insert_faq_text_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_full_card' | 'insert_full_card_one' | 'insert_full_card_text' | 'insert_full_card_text_one' | 'insert_gender' | 'insert_gender_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_pack' | 'insert_pack_name' | 'insert_pack_name_one' | 'insert_pack_one' | 'insert_taboo_set' | 'insert_taboo_set_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_flag' | 'insert_user_flag_one' | 'insert_user_flag_type' | 'insert_user_flag_type_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_user_settings' | 'insert_user_settings_one' | 'insert_users' | 'insert_users_one' | 'update_all_card' | 'update_all_card_by_pk' | 'update_all_card_many' | 'update_all_card_text' | 'update_all_card_text_by_pk' | 'update_all_card_text_many' | 'update_all_card_updated' | 'update_all_card_updated_by_pk' | 'update_all_card_updated_many' | 'update_base_decks' | 'update_base_decks_many' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_access_many' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_deck_many' | 'update_campaign_difficulty' | 'update_campaign_difficulty_by_pk' | 'update_campaign_difficulty_many' | 'update_campaign_guide' | 'update_campaign_guide_many' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_campaign_investigator_many' | 'update_campaign_many' | 'update_card' | 'update_card_by_pk' | 'update_card_cycle' | 'update_card_cycle_by_pk' | 'update_card_cycle_many' | 'update_card_encounter_set' | 'update_card_encounter_set_by_pk' | 'update_card_encounter_set_many' | 'update_card_many' | 'update_card_pack' | 'update_card_pack_by_pk' | 'update_card_pack_many' | 'update_card_subtype_name' | 'update_card_subtype_name_by_pk' | 'update_card_subtype_name_many' | 'update_card_text' | 'update_card_text_by_pk' | 'update_card_text_many' | 'update_card_type_code' | 'update_card_type_code_by_pk' | 'update_card_type_code_many' | 'update_card_type_name' | 'update_card_type_name_by_pk' | 'update_card_type_name_many' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_chaos_bag_result_many' | 'update_chaos_bag_tarot_mode' | 'update_chaos_bag_tarot_mode_by_pk' | 'update_chaos_bag_tarot_mode_many' | 'update_cycle' | 'update_cycle_by_pk' | 'update_cycle_many' | 'update_cycle_name' | 'update_cycle_name_by_pk' | 'update_cycle_name_many' | 'update_faction_name' | 'update_faction_name_by_pk' | 'update_faction_name_many' | 'update_faq' | 'update_faq_by_pk' | 'update_faq_many' | 'update_faq_text' | 'update_faq_text_by_pk' | 'update_faq_text_many' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_many' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_friend_status_type_many' | 'update_full_card' | 'update_full_card_by_pk' | 'update_full_card_many' | 'update_full_card_text' | 'update_full_card_text_by_pk' | 'update_full_card_text_many' | 'update_gender' | 'update_gender_by_pk' | 'update_gender_many' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_achievement_many' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_guide_input_many' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_investigator_data_many' | 'update_latest_decks' | 'update_latest_decks_many' | 'update_local_decks' | 'update_local_decks_many' | 'update_pack' | 'update_pack_by_pk' | 'update_pack_many' | 'update_pack_name' | 'update_pack_name_by_pk' | 'update_pack_name_many' | 'update_taboo_set' | 'update_taboo_set_by_pk' | 'update_taboo_set_many' | 'update_user_campaigns' | 'update_user_campaigns_many' | 'update_user_flag' | 'update_user_flag_by_pk' | 'update_user_flag_many' | 'update_user_flag_type' | 'update_user_flag_type_by_pk' | 'update_user_flag_type_many' | 'update_user_friends' | 'update_user_friends_many' | 'update_user_received_friend_requests' | 'update_user_received_friend_requests_many' | 'update_user_sent_friend_requests' | 'update_user_sent_friend_requests_many' | 'update_user_settings' | 'update_user_settings_by_pk' | 'update_user_settings_many' | 'update_users' | 'update_users_by_pk' | 'update_users_many' | mutation_rootKeySpecifier)[];
+export type mutation_rootKeySpecifier = ('delete_all_card' | 'delete_all_card_by_pk' | 'delete_all_card_text' | 'delete_all_card_text_by_pk' | 'delete_all_card_updated' | 'delete_all_card_updated_by_pk' | 'delete_base_decks' | 'delete_campaign' | 'delete_campaign_access' | 'delete_campaign_access_by_pk' | 'delete_campaign_by_pk' | 'delete_campaign_deck' | 'delete_campaign_deck_by_pk' | 'delete_campaign_difficulty' | 'delete_campaign_difficulty_by_pk' | 'delete_campaign_guide' | 'delete_campaign_investigator' | 'delete_campaign_investigator_by_pk' | 'delete_card' | 'delete_card_by_pk' | 'delete_card_cycle' | 'delete_card_cycle_by_pk' | 'delete_card_encounter_set' | 'delete_card_encounter_set_by_pk' | 'delete_card_pack' | 'delete_card_pack_by_pk' | 'delete_card_subtype_name' | 'delete_card_subtype_name_by_pk' | 'delete_card_text' | 'delete_card_text_by_pk' | 'delete_card_type_code' | 'delete_card_type_code_by_pk' | 'delete_card_type_name' | 'delete_card_type_name_by_pk' | 'delete_chaos_bag_result' | 'delete_chaos_bag_result_by_pk' | 'delete_chaos_bag_tarot_mode' | 'delete_chaos_bag_tarot_mode_by_pk' | 'delete_cycle' | 'delete_cycle_by_pk' | 'delete_cycle_name' | 'delete_cycle_name_by_pk' | 'delete_faction_name' | 'delete_faction_name_by_pk' | 'delete_faq' | 'delete_faq_by_pk' | 'delete_faq_text' | 'delete_faq_text_by_pk' | 'delete_friend_status' | 'delete_friend_status_by_pk' | 'delete_friend_status_type' | 'delete_friend_status_type_by_pk' | 'delete_full_card' | 'delete_full_card_by_pk' | 'delete_full_card_text' | 'delete_full_card_text_by_pk' | 'delete_gender' | 'delete_gender_by_pk' | 'delete_guide_achievement' | 'delete_guide_achievement_by_pk' | 'delete_guide_input' | 'delete_guide_input_by_pk' | 'delete_investigator_data' | 'delete_investigator_data_by_pk' | 'delete_latest_decks' | 'delete_local_decks' | 'delete_pack' | 'delete_pack_by_pk' | 'delete_pack_name' | 'delete_pack_name_by_pk' | 'delete_rangers_area' | 'delete_rangers_area_by_pk' | 'delete_rangers_area_text' | 'delete_rangers_area_text_by_pk' | 'delete_rangers_aspect' | 'delete_rangers_aspect_by_pk' | 'delete_rangers_aspect_text' | 'delete_rangers_aspect_text_by_pk' | 'delete_rangers_campaign' | 'delete_rangers_campaign_access' | 'delete_rangers_campaign_access_by_pk' | 'delete_rangers_campaign_by_pk' | 'delete_rangers_card' | 'delete_rangers_card_by_pk' | 'delete_rangers_card_text' | 'delete_rangers_card_text_by_pk' | 'delete_rangers_deck' | 'delete_rangers_deck_by_pk' | 'delete_rangers_deck_like' | 'delete_rangers_deck_like_by_pk' | 'delete_rangers_friend_status' | 'delete_rangers_friend_status_by_pk' | 'delete_rangers_friend_status_type' | 'delete_rangers_friend_status_type_by_pk' | 'delete_rangers_latest_deck' | 'delete_rangers_locale' | 'delete_rangers_locale_by_pk' | 'delete_rangers_pack' | 'delete_rangers_pack_by_pk' | 'delete_rangers_pack_text' | 'delete_rangers_pack_text_by_pk' | 'delete_rangers_set' | 'delete_rangers_set_by_pk' | 'delete_rangers_set_text' | 'delete_rangers_set_text_by_pk' | 'delete_rangers_set_type' | 'delete_rangers_set_type_by_pk' | 'delete_rangers_set_type_text' | 'delete_rangers_set_type_text_by_pk' | 'delete_rangers_token' | 'delete_rangers_token_by_pk' | 'delete_rangers_token_text' | 'delete_rangers_token_text_by_pk' | 'delete_rangers_type' | 'delete_rangers_type_by_pk' | 'delete_rangers_type_text' | 'delete_rangers_type_text_by_pk' | 'delete_rangers_user_friends' | 'delete_rangers_user_received_friend_requests' | 'delete_rangers_user_role' | 'delete_rangers_user_role_by_pk' | 'delete_rangers_user_sent_friend_requests' | 'delete_rangers_user_settings' | 'delete_rangers_user_settings_by_pk' | 'delete_rangers_users' | 'delete_rangers_users_by_pk' | 'delete_taboo_set' | 'delete_taboo_set_by_pk' | 'delete_user_campaigns' | 'delete_user_flag' | 'delete_user_flag_by_pk' | 'delete_user_flag_type' | 'delete_user_flag_type_by_pk' | 'delete_user_friends' | 'delete_user_received_friend_requests' | 'delete_user_sent_friend_requests' | 'delete_user_settings' | 'delete_user_settings_by_pk' | 'delete_users' | 'delete_users_by_pk' | 'insert_all_card' | 'insert_all_card_one' | 'insert_all_card_text' | 'insert_all_card_text_one' | 'insert_all_card_updated' | 'insert_all_card_updated_one' | 'insert_base_decks' | 'insert_base_decks_one' | 'insert_campaign' | 'insert_campaign_access' | 'insert_campaign_access_one' | 'insert_campaign_deck' | 'insert_campaign_deck_one' | 'insert_campaign_difficulty' | 'insert_campaign_difficulty_one' | 'insert_campaign_guide' | 'insert_campaign_guide_one' | 'insert_campaign_investigator' | 'insert_campaign_investigator_one' | 'insert_campaign_one' | 'insert_card' | 'insert_card_cycle' | 'insert_card_cycle_one' | 'insert_card_encounter_set' | 'insert_card_encounter_set_one' | 'insert_card_one' | 'insert_card_pack' | 'insert_card_pack_one' | 'insert_card_subtype_name' | 'insert_card_subtype_name_one' | 'insert_card_text' | 'insert_card_text_one' | 'insert_card_type_code' | 'insert_card_type_code_one' | 'insert_card_type_name' | 'insert_card_type_name_one' | 'insert_chaos_bag_result' | 'insert_chaos_bag_result_one' | 'insert_chaos_bag_tarot_mode' | 'insert_chaos_bag_tarot_mode_one' | 'insert_cycle' | 'insert_cycle_name' | 'insert_cycle_name_one' | 'insert_cycle_one' | 'insert_faction_name' | 'insert_faction_name_one' | 'insert_faq' | 'insert_faq_one' | 'insert_faq_text' | 'insert_faq_text_one' | 'insert_friend_status' | 'insert_friend_status_one' | 'insert_friend_status_type' | 'insert_friend_status_type_one' | 'insert_full_card' | 'insert_full_card_one' | 'insert_full_card_text' | 'insert_full_card_text_one' | 'insert_gender' | 'insert_gender_one' | 'insert_guide_achievement' | 'insert_guide_achievement_one' | 'insert_guide_input' | 'insert_guide_input_one' | 'insert_investigator_data' | 'insert_investigator_data_one' | 'insert_latest_decks' | 'insert_latest_decks_one' | 'insert_local_decks' | 'insert_local_decks_one' | 'insert_pack' | 'insert_pack_name' | 'insert_pack_name_one' | 'insert_pack_one' | 'insert_rangers_area' | 'insert_rangers_area_one' | 'insert_rangers_area_text' | 'insert_rangers_area_text_one' | 'insert_rangers_aspect' | 'insert_rangers_aspect_one' | 'insert_rangers_aspect_text' | 'insert_rangers_aspect_text_one' | 'insert_rangers_campaign' | 'insert_rangers_campaign_access' | 'insert_rangers_campaign_access_one' | 'insert_rangers_campaign_one' | 'insert_rangers_card' | 'insert_rangers_card_one' | 'insert_rangers_card_text' | 'insert_rangers_card_text_one' | 'insert_rangers_deck' | 'insert_rangers_deck_like' | 'insert_rangers_deck_like_one' | 'insert_rangers_deck_one' | 'insert_rangers_friend_status' | 'insert_rangers_friend_status_one' | 'insert_rangers_friend_status_type' | 'insert_rangers_friend_status_type_one' | 'insert_rangers_latest_deck' | 'insert_rangers_latest_deck_one' | 'insert_rangers_locale' | 'insert_rangers_locale_one' | 'insert_rangers_pack' | 'insert_rangers_pack_one' | 'insert_rangers_pack_text' | 'insert_rangers_pack_text_one' | 'insert_rangers_set' | 'insert_rangers_set_one' | 'insert_rangers_set_text' | 'insert_rangers_set_text_one' | 'insert_rangers_set_type' | 'insert_rangers_set_type_one' | 'insert_rangers_set_type_text' | 'insert_rangers_set_type_text_one' | 'insert_rangers_token' | 'insert_rangers_token_one' | 'insert_rangers_token_text' | 'insert_rangers_token_text_one' | 'insert_rangers_type' | 'insert_rangers_type_one' | 'insert_rangers_type_text' | 'insert_rangers_type_text_one' | 'insert_rangers_user_friends' | 'insert_rangers_user_friends_one' | 'insert_rangers_user_received_friend_requests' | 'insert_rangers_user_received_friend_requests_one' | 'insert_rangers_user_role' | 'insert_rangers_user_role_one' | 'insert_rangers_user_sent_friend_requests' | 'insert_rangers_user_sent_friend_requests_one' | 'insert_rangers_user_settings' | 'insert_rangers_user_settings_one' | 'insert_rangers_users' | 'insert_rangers_users_one' | 'insert_taboo_set' | 'insert_taboo_set_one' | 'insert_user_campaigns' | 'insert_user_campaigns_one' | 'insert_user_flag' | 'insert_user_flag_one' | 'insert_user_flag_type' | 'insert_user_flag_type_one' | 'insert_user_friends' | 'insert_user_friends_one' | 'insert_user_received_friend_requests' | 'insert_user_received_friend_requests_one' | 'insert_user_sent_friend_requests' | 'insert_user_sent_friend_requests_one' | 'insert_user_settings' | 'insert_user_settings_one' | 'insert_users' | 'insert_users_one' | 'rangers_upgrade_deck' | 'update_all_card' | 'update_all_card_by_pk' | 'update_all_card_many' | 'update_all_card_text' | 'update_all_card_text_by_pk' | 'update_all_card_text_many' | 'update_all_card_updated' | 'update_all_card_updated_by_pk' | 'update_all_card_updated_many' | 'update_base_decks' | 'update_base_decks_many' | 'update_campaign' | 'update_campaign_access' | 'update_campaign_access_by_pk' | 'update_campaign_access_many' | 'update_campaign_by_pk' | 'update_campaign_deck' | 'update_campaign_deck_by_pk' | 'update_campaign_deck_many' | 'update_campaign_difficulty' | 'update_campaign_difficulty_by_pk' | 'update_campaign_difficulty_many' | 'update_campaign_guide' | 'update_campaign_guide_many' | 'update_campaign_investigator' | 'update_campaign_investigator_by_pk' | 'update_campaign_investigator_many' | 'update_campaign_many' | 'update_card' | 'update_card_by_pk' | 'update_card_cycle' | 'update_card_cycle_by_pk' | 'update_card_cycle_many' | 'update_card_encounter_set' | 'update_card_encounter_set_by_pk' | 'update_card_encounter_set_many' | 'update_card_many' | 'update_card_pack' | 'update_card_pack_by_pk' | 'update_card_pack_many' | 'update_card_subtype_name' | 'update_card_subtype_name_by_pk' | 'update_card_subtype_name_many' | 'update_card_text' | 'update_card_text_by_pk' | 'update_card_text_many' | 'update_card_type_code' | 'update_card_type_code_by_pk' | 'update_card_type_code_many' | 'update_card_type_name' | 'update_card_type_name_by_pk' | 'update_card_type_name_many' | 'update_chaos_bag_result' | 'update_chaos_bag_result_by_pk' | 'update_chaos_bag_result_many' | 'update_chaos_bag_tarot_mode' | 'update_chaos_bag_tarot_mode_by_pk' | 'update_chaos_bag_tarot_mode_many' | 'update_cycle' | 'update_cycle_by_pk' | 'update_cycle_many' | 'update_cycle_name' | 'update_cycle_name_by_pk' | 'update_cycle_name_many' | 'update_faction_name' | 'update_faction_name_by_pk' | 'update_faction_name_many' | 'update_faq' | 'update_faq_by_pk' | 'update_faq_many' | 'update_faq_text' | 'update_faq_text_by_pk' | 'update_faq_text_many' | 'update_friend_status' | 'update_friend_status_by_pk' | 'update_friend_status_many' | 'update_friend_status_type' | 'update_friend_status_type_by_pk' | 'update_friend_status_type_many' | 'update_full_card' | 'update_full_card_by_pk' | 'update_full_card_many' | 'update_full_card_text' | 'update_full_card_text_by_pk' | 'update_full_card_text_many' | 'update_gender' | 'update_gender_by_pk' | 'update_gender_many' | 'update_guide_achievement' | 'update_guide_achievement_by_pk' | 'update_guide_achievement_many' | 'update_guide_input' | 'update_guide_input_by_pk' | 'update_guide_input_many' | 'update_investigator_data' | 'update_investigator_data_by_pk' | 'update_investigator_data_many' | 'update_latest_decks' | 'update_latest_decks_many' | 'update_local_decks' | 'update_local_decks_many' | 'update_pack' | 'update_pack_by_pk' | 'update_pack_many' | 'update_pack_name' | 'update_pack_name_by_pk' | 'update_pack_name_many' | 'update_rangers_area' | 'update_rangers_area_by_pk' | 'update_rangers_area_many' | 'update_rangers_area_text' | 'update_rangers_area_text_by_pk' | 'update_rangers_area_text_many' | 'update_rangers_aspect' | 'update_rangers_aspect_by_pk' | 'update_rangers_aspect_many' | 'update_rangers_aspect_text' | 'update_rangers_aspect_text_by_pk' | 'update_rangers_aspect_text_many' | 'update_rangers_campaign' | 'update_rangers_campaign_access' | 'update_rangers_campaign_access_by_pk' | 'update_rangers_campaign_access_many' | 'update_rangers_campaign_by_pk' | 'update_rangers_campaign_many' | 'update_rangers_card' | 'update_rangers_card_by_pk' | 'update_rangers_card_many' | 'update_rangers_card_text' | 'update_rangers_card_text_by_pk' | 'update_rangers_card_text_many' | 'update_rangers_deck' | 'update_rangers_deck_by_pk' | 'update_rangers_deck_like' | 'update_rangers_deck_like_by_pk' | 'update_rangers_deck_like_many' | 'update_rangers_deck_many' | 'update_rangers_friend_status' | 'update_rangers_friend_status_by_pk' | 'update_rangers_friend_status_many' | 'update_rangers_friend_status_type' | 'update_rangers_friend_status_type_by_pk' | 'update_rangers_friend_status_type_many' | 'update_rangers_latest_deck' | 'update_rangers_latest_deck_many' | 'update_rangers_locale' | 'update_rangers_locale_by_pk' | 'update_rangers_locale_many' | 'update_rangers_pack' | 'update_rangers_pack_by_pk' | 'update_rangers_pack_many' | 'update_rangers_pack_text' | 'update_rangers_pack_text_by_pk' | 'update_rangers_pack_text_many' | 'update_rangers_set' | 'update_rangers_set_by_pk' | 'update_rangers_set_many' | 'update_rangers_set_text' | 'update_rangers_set_text_by_pk' | 'update_rangers_set_text_many' | 'update_rangers_set_type' | 'update_rangers_set_type_by_pk' | 'update_rangers_set_type_many' | 'update_rangers_set_type_text' | 'update_rangers_set_type_text_by_pk' | 'update_rangers_set_type_text_many' | 'update_rangers_token' | 'update_rangers_token_by_pk' | 'update_rangers_token_many' | 'update_rangers_token_text' | 'update_rangers_token_text_by_pk' | 'update_rangers_token_text_many' | 'update_rangers_type' | 'update_rangers_type_by_pk' | 'update_rangers_type_many' | 'update_rangers_type_text' | 'update_rangers_type_text_by_pk' | 'update_rangers_type_text_many' | 'update_rangers_user_friends' | 'update_rangers_user_friends_many' | 'update_rangers_user_received_friend_requests' | 'update_rangers_user_received_friend_requests_many' | 'update_rangers_user_role' | 'update_rangers_user_role_by_pk' | 'update_rangers_user_role_many' | 'update_rangers_user_sent_friend_requests' | 'update_rangers_user_sent_friend_requests_many' | 'update_rangers_user_settings' | 'update_rangers_user_settings_by_pk' | 'update_rangers_user_settings_many' | 'update_rangers_users' | 'update_rangers_users_by_pk' | 'update_rangers_users_many' | 'update_taboo_set' | 'update_taboo_set_by_pk' | 'update_taboo_set_many' | 'update_user_campaigns' | 'update_user_campaigns_many' | 'update_user_flag' | 'update_user_flag_by_pk' | 'update_user_flag_many' | 'update_user_flag_type' | 'update_user_flag_type_by_pk' | 'update_user_flag_type_many' | 'update_user_friends' | 'update_user_friends_many' | 'update_user_received_friend_requests' | 'update_user_received_friend_requests_many' | 'update_user_sent_friend_requests' | 'update_user_sent_friend_requests_many' | 'update_user_settings' | 'update_user_settings_by_pk' | 'update_user_settings_many' | 'update_users' | 'update_users_by_pk' | 'update_users_many' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
 	delete_all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_all_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3567,6 +3582,62 @@ export type mutation_rootFieldPolicy = {
 	delete_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_pack_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_area?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_area_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_area_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_area_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_aspect?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_aspect_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_aspect_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_aspect_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_card?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_deck_like?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_deck_like_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_latest_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_locale_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_pack_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_pack_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_set_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_token_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_token_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_token_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_role_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_sent_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_users?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_rangers_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_taboo_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3655,6 +3726,66 @@ export type mutation_rootFieldPolicy = {
 	insert_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_pack_name_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_pack_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_area?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_area_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_area_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_area_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_aspect?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_aspect_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_aspect_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_aspect_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_campaign_access_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_campaign_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_card?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_card_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_card_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_deck_like?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_deck_like_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_deck_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_friend_status_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_friend_status_type_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_latest_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_latest_deck_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_locale_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_pack_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_pack_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_pack_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_type_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_set_type_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_token_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_token_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_token_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_type_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_type_text_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_friends_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_received_friend_requests_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_role_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_sent_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_sent_friend_requests_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_user_settings_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_users?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_rangers_users_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_taboo_set_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_user_campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3673,6 +3804,7 @@ export type mutation_rootFieldPolicy = {
 	insert_user_settings_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_users?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_users_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_upgrade_deck?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_all_card_many?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3780,6 +3912,92 @@ export type mutation_rootFieldPolicy = {
 	update_pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_pack_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_pack_name_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_area_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_aspect_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign_access_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_campaign_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_card_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck_like?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck_like_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck_like_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_deck_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_friend_status_type_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_latest_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_latest_deck_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_locale_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_locale_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_pack_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_set_type_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_token_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_type_text_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_friends_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_received_friend_requests_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_role_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_role_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_sent_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_sent_friend_requests_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_user_settings_many?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_users?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_rangers_users_many?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_taboo_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_taboo_set_many?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -3859,11 +4077,12 @@ export type pack_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_nameKeySpecifier = ('code' | 'locale' | 'name' | pack_nameKeySpecifier)[];
+export type pack_nameKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_nameKeySpecifier)[];
 export type pack_nameFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type pack_name_aggregateKeySpecifier = ('aggregate' | 'nodes' | pack_name_aggregateKeySpecifier)[];
 export type pack_name_aggregateFieldPolicy = {
@@ -3876,17 +4095,19 @@ export type pack_name_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | pack_name_max_fieldsKeySpecifier)[];
+export type pack_name_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_name_max_fieldsKeySpecifier)[];
 export type pack_name_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | pack_name_min_fieldsKeySpecifier)[];
+export type pack_name_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | 'updated_at' | pack_name_min_fieldsKeySpecifier)[];
 export type pack_name_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type pack_name_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | pack_name_mutation_responseKeySpecifier)[];
 export type pack_name_mutation_responseFieldPolicy = {
@@ -3921,7 +4142,7 @@ export type pack_variance_fieldsKeySpecifier = ('position' | pack_variance_field
 export type pack_variance_fieldsFieldPolicy = {
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'users' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4032,6 +4253,108 @@ export type query_rootFieldPolicy = {
 	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_updated_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_rank?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_rank_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_latest_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_latest_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_friends_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_received_friend_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_sent_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_sent_friend_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4056,7 +4379,2461 @@ export type query_rootFieldPolicy = {
 	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_stream' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_text_stream' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_stream' | 'base_decks' | 'base_decks_aggregate' | 'base_decks_stream' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_access_stream' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_deck_stream' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_difficulty_stream' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_guide_stream' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaign_investigator_stream' | 'campaign_stream' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'campaigns_by_cycle_stream' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_cycle_stream' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_encounter_set_stream' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_pack_stream' | 'card_stream' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_subtype_name_stream' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_text_stream' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_code_stream' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'card_type_name_stream' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_result_stream' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'chaos_bag_tarot_mode_stream' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'cycle_name_stream' | 'cycle_stream' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faction_name_stream' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_stream' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'faq_text_stream' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_stream' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'friend_status_type_stream' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_stream' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'full_card_text_stream' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'gender_stream' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_achievement_stream' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'guide_input_stream' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'investigator_data_stream' | 'latest_decks' | 'latest_decks_aggregate' | 'latest_decks_stream' | 'local_decks' | 'local_decks_aggregate' | 'local_decks_stream' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'pack_name_stream' | 'pack_stream' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'taboo_set_stream' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_campaigns_stream' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_stream' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_flag_type_stream' | 'user_friends' | 'user_friends_aggregate' | 'user_friends_stream' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_received_friend_requests_stream' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_sent_friend_requests_stream' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'user_settings_stream' | 'users' | 'users_aggregate' | 'users_by_pk' | 'users_stream' | subscription_rootKeySpecifier)[];
+export type rangers_areaKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_areaKeySpecifier)[];
+export type rangers_areaFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_area_aggregateKeySpecifier)[];
+export type rangers_area_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_area_aggregate_fieldsKeySpecifier)[];
+export type rangers_area_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_max_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_area_max_fieldsKeySpecifier)[];
+export type rangers_area_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_min_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_area_min_fieldsKeySpecifier)[];
+export type rangers_area_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_area_mutation_responseKeySpecifier)[];
+export type rangers_area_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_textKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_area_textKeySpecifier)[];
+export type rangers_area_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_area_text_aggregateKeySpecifier)[];
+export type rangers_area_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_area_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_area_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_area_text_max_fieldsKeySpecifier)[];
+export type rangers_area_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_area_text_min_fieldsKeySpecifier)[];
+export type rangers_area_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_area_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_area_text_mutation_responseKeySpecifier)[];
+export type rangers_area_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspectKeySpecifier = ('id' | 'name' | 'short_name' | 'updated_at' | rangers_aspectKeySpecifier)[];
+export type rangers_aspectFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_aspect_aggregateKeySpecifier)[];
+export type rangers_aspect_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_aspect_aggregate_fieldsKeySpecifier)[];
+export type rangers_aspect_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_localizedKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'real_short_name' | 'short_name' | 'updated_at' | rangers_aspect_localizedKeySpecifier)[];
+export type rangers_aspect_localizedFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_localized_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_aspect_localized_aggregateKeySpecifier)[];
+export type rangers_aspect_localized_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_localized_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_aspect_localized_aggregate_fieldsKeySpecifier)[];
+export type rangers_aspect_localized_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_localized_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'real_short_name' | 'short_name' | 'updated_at' | rangers_aspect_localized_max_fieldsKeySpecifier)[];
+export type rangers_aspect_localized_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_localized_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'real_short_name' | 'short_name' | 'updated_at' | rangers_aspect_localized_min_fieldsKeySpecifier)[];
+export type rangers_aspect_localized_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_max_fieldsKeySpecifier = ('id' | 'name' | 'short_name' | 'updated_at' | rangers_aspect_max_fieldsKeySpecifier)[];
+export type rangers_aspect_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_min_fieldsKeySpecifier = ('id' | 'name' | 'short_name' | 'updated_at' | rangers_aspect_min_fieldsKeySpecifier)[];
+export type rangers_aspect_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_aspect_mutation_responseKeySpecifier)[];
+export type rangers_aspect_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_textKeySpecifier = ('id' | 'locale' | 'name' | 'short_name' | 'updated_at' | rangers_aspect_textKeySpecifier)[];
+export type rangers_aspect_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_aspect_text_aggregateKeySpecifier)[];
+export type rangers_aspect_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_aspect_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_aspect_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'short_name' | 'updated_at' | rangers_aspect_text_max_fieldsKeySpecifier)[];
+export type rangers_aspect_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'short_name' | 'updated_at' | rangers_aspect_text_min_fieldsKeySpecifier)[];
+export type rangers_aspect_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_aspect_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_aspect_text_mutation_responseKeySpecifier)[];
+export type rangers_aspect_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaignKeySpecifier = ('access' | 'access_aggregate' | 'created_at' | 'creator' | 'current_location' | 'current_path_terrain' | 'events' | 'id' | 'latest_decks' | 'latest_decks_aggregate' | 'missions' | 'name' | 'rewards' | 'updated_at' | 'user_id' | 'users' | 'users_aggregate' | rangers_campaignKeySpecifier)[];
+export type rangers_campaignFieldPolicy = {
+	access?: FieldPolicy<any> | FieldReadFunction<any>,
+	access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	creator?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	events?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	latest_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	latest_decks_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	missions?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	rewards?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	users?: FieldPolicy<any> | FieldReadFunction<any>,
+	users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_accessKeySpecifier = ('campaign' | 'campaign_id' | 'user' | 'user_id' | rangers_campaign_accessKeySpecifier)[];
+export type rangers_campaign_accessFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_campaign_access_aggregateKeySpecifier)[];
+export type rangers_campaign_access_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_campaign_access_aggregate_fieldsKeySpecifier)[];
+export type rangers_campaign_access_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_avg_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_avg_fieldsKeySpecifier)[];
+export type rangers_campaign_access_avg_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_max_fieldsKeySpecifier = ('campaign_id' | 'user_id' | rangers_campaign_access_max_fieldsKeySpecifier)[];
+export type rangers_campaign_access_max_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_min_fieldsKeySpecifier = ('campaign_id' | 'user_id' | rangers_campaign_access_min_fieldsKeySpecifier)[];
+export type rangers_campaign_access_min_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_campaign_access_mutation_responseKeySpecifier)[];
+export type rangers_campaign_access_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_stddev_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_stddev_fieldsKeySpecifier)[];
+export type rangers_campaign_access_stddev_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_stddev_pop_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_campaign_access_stddev_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_stddev_samp_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_campaign_access_stddev_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_sum_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_sum_fieldsKeySpecifier)[];
+export type rangers_campaign_access_sum_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_var_pop_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_var_pop_fieldsKeySpecifier)[];
+export type rangers_campaign_access_var_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_var_samp_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_var_samp_fieldsKeySpecifier)[];
+export type rangers_campaign_access_var_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_access_variance_fieldsKeySpecifier = ('campaign_id' | rangers_campaign_access_variance_fieldsKeySpecifier)[];
+export type rangers_campaign_access_variance_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_campaign_aggregateKeySpecifier)[];
+export type rangers_campaign_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_campaign_aggregate_fieldsKeySpecifier)[];
+export type rangers_campaign_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_avg_fieldsKeySpecifier = ('id' | rangers_campaign_avg_fieldsKeySpecifier)[];
+export type rangers_campaign_avg_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_max_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_max_fieldsKeySpecifier)[];
+export type rangers_campaign_max_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_min_fieldsKeySpecifier = ('created_at' | 'current_location' | 'current_path_terrain' | 'id' | 'name' | 'updated_at' | 'user_id' | rangers_campaign_min_fieldsKeySpecifier)[];
+export type rangers_campaign_min_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_location?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_path_terrain?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_campaign_mutation_responseKeySpecifier)[];
+export type rangers_campaign_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_stddev_fieldsKeySpecifier = ('id' | rangers_campaign_stddev_fieldsKeySpecifier)[];
+export type rangers_campaign_stddev_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_stddev_pop_fieldsKeySpecifier = ('id' | rangers_campaign_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_campaign_stddev_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_stddev_samp_fieldsKeySpecifier = ('id' | rangers_campaign_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_campaign_stddev_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_sum_fieldsKeySpecifier = ('id' | rangers_campaign_sum_fieldsKeySpecifier)[];
+export type rangers_campaign_sum_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_var_pop_fieldsKeySpecifier = ('id' | rangers_campaign_var_pop_fieldsKeySpecifier)[];
+export type rangers_campaign_var_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_var_samp_fieldsKeySpecifier = ('id' | rangers_campaign_var_samp_fieldsKeySpecifier)[];
+export type rangers_campaign_var_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_campaign_variance_fieldsKeySpecifier = ('id' | rangers_campaign_variance_fieldsKeySpecifier)[];
+export type rangers_campaign_variance_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_cardKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locations' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'set_id' | 'set_position' | 'spoiler' | 'text' | 'token_count' | 'token_id' | 'traits' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_cardKeySpecifier)[];
+export type rangers_cardFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	locations?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress_fixed?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	spoiler?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_card_aggregateKeySpecifier)[];
+export type rangers_card_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_card_aggregate_fieldsKeySpecifier)[];
+export type rangers_card_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_avg_fieldsKeySpecifier)[];
+export type rangers_card_avg_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localizedKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'locations' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'progress_fixed' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'spoiler' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localizedKeySpecifier)[];
+export type rangers_card_localizedFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	locations?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress_fixed?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	spoiler?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_card_localized_aggregateKeySpecifier)[];
+export type rangers_card_localized_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_card_localized_aggregate_fieldsKeySpecifier)[];
+export type rangers_card_localized_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_avg_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_avg_fieldsKeySpecifier)[];
+export type rangers_card_localized_avg_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_max_fieldsKeySpecifier)[];
+export type rangers_card_localized_max_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'area_name' | 'aspect_id' | 'aspect_name' | 'aspect_short_name' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'locale' | 'name' | 'objective' | 'pack_id' | 'pack_name' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'real_flavor' | 'real_name' | 'real_objective' | 'real_text' | 'real_traits' | 'set_id' | 'set_name' | 'set_position' | 'set_size' | 'set_type_id' | 'set_type_name' | 'text' | 'token_count' | 'token_id' | 'token_name' | 'token_plurals' | 'traits' | 'type_id' | 'type_name' | 'updated_at' | rangers_card_localized_min_fieldsKeySpecifier)[];
+export type rangers_card_localized_min_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_short_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_pop_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_card_localized_stddev_samp_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_sum_fieldsKeySpecifier)[];
+export type rangers_card_localized_sum_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_pop_fieldsKeySpecifier)[];
+export type rangers_card_localized_var_pop_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_var_samp_fieldsKeySpecifier)[];
+export type rangers_card_localized_var_samp_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_localized_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'pack_position' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'set_size' | 'token_count' | rangers_card_localized_variance_fieldsKeySpecifier)[];
+export type rangers_card_localized_variance_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_size?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_max_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_max_fieldsKeySpecifier)[];
+export type rangers_card_max_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_min_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'area_id' | 'aspect_id' | 'back_card_id' | 'cost' | 'deck_limit' | 'equip' | 'flavor' | 'guide_entry' | 'harm' | 'id' | 'illustrator' | 'imagesrc' | 'level' | 'name' | 'objective' | 'pack_id' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_id' | 'set_position' | 'text' | 'token_count' | 'token_id' | 'traits' | 'type_id' | 'updated_at' | rangers_card_min_fieldsKeySpecifier)[];
+export type rangers_card_min_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	area_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	aspect_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	back_card_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	guide_entry?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	imagesrc?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	pack_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_card_mutation_responseKeySpecifier)[];
+export type rangers_card_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_stddev_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_fieldsKeySpecifier)[];
+export type rangers_card_stddev_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_stddev_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_card_stddev_pop_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_stddev_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_card_stddev_samp_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_sum_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_sum_fieldsKeySpecifier)[];
+export type rangers_card_sum_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_textKeySpecifier = ('flavor' | 'id' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_textKeySpecifier)[];
+export type rangers_card_textFieldPolicy = {
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_card_text_aggregateKeySpecifier)[];
+export type rangers_card_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_card_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_card_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_text_max_fieldsKeySpecifier = ('flavor' | 'id' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_text_max_fieldsKeySpecifier)[];
+export type rangers_card_text_max_fieldsFieldPolicy = {
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_text_min_fieldsKeySpecifier = ('flavor' | 'id' | 'locale' | 'name' | 'objective' | 'text' | 'traits' | 'updated_at' | rangers_card_text_min_fieldsKeySpecifier)[];
+export type rangers_card_text_min_fieldsFieldPolicy = {
+	flavor?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	objective?: FieldPolicy<any> | FieldReadFunction<any>,
+	text?: FieldPolicy<any> | FieldReadFunction<any>,
+	traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_card_text_mutation_responseKeySpecifier)[];
+export type rangers_card_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_updatedKeySpecifier = ('locale' | 'updated_at' | rangers_card_updatedKeySpecifier)[];
+export type rangers_card_updatedFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_updated_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_card_updated_aggregateKeySpecifier)[];
+export type rangers_card_updated_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_updated_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_card_updated_aggregate_fieldsKeySpecifier)[];
+export type rangers_card_updated_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_updated_max_fieldsKeySpecifier = ('locale' | 'updated_at' | rangers_card_updated_max_fieldsKeySpecifier)[];
+export type rangers_card_updated_max_fieldsFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_updated_min_fieldsKeySpecifier = ('locale' | 'updated_at' | rangers_card_updated_min_fieldsKeySpecifier)[];
+export type rangers_card_updated_min_fieldsFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_var_pop_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_pop_fieldsKeySpecifier)[];
+export type rangers_card_var_pop_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_var_samp_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_var_samp_fieldsKeySpecifier)[];
+export type rangers_card_var_samp_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_card_variance_fieldsKeySpecifier = ('approach_conflict' | 'approach_connection' | 'approach_exploration' | 'approach_reason' | 'cost' | 'deck_limit' | 'equip' | 'harm' | 'level' | 'position' | 'presence' | 'progress' | 'quantity' | 'set_position' | 'token_count' | rangers_card_variance_fieldsKeySpecifier)[];
+export type rangers_card_variance_fieldsFieldPolicy = {
+	approach_conflict?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_connection?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_exploration?: FieldPolicy<any> | FieldReadFunction<any>,
+	approach_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	cost?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	equip?: FieldPolicy<any> | FieldReadFunction<any>,
+	harm?: FieldPolicy<any> | FieldReadFunction<any>,
+	level?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	presence?: FieldPolicy<any> | FieldReadFunction<any>,
+	progress?: FieldPolicy<any> | FieldReadFunction<any>,
+	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
+	set_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deckKeySpecifier = ('awa' | 'base_deck' | 'base_deck_id' | 'campaign' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'liked_by_user' | 'meta' | 'name' | 'next_deck' | 'next_deck_id' | 'previous_deck' | 'published' | 'rank' | 'side_slots' | 'slots' | 'spi' | 'updated_at' | 'upgrade' | 'user' | 'user_id' | 'version' | rangers_deckKeySpecifier)[];
+export type rangers_deckFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	liked_by_user?: FieldPolicy<any> | FieldReadFunction<any>,
+	meta?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	previous_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	published?: FieldPolicy<any> | FieldReadFunction<any>,
+	rank?: FieldPolicy<any> | FieldReadFunction<any>,
+	side_slots?: FieldPolicy<any> | FieldReadFunction<any>,
+	slots?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	upgrade?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_deck_aggregateKeySpecifier)[];
+export type rangers_deck_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_deck_aggregate_fieldsKeySpecifier)[];
+export type rangers_deck_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_avg_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_avg_fieldsKeySpecifier)[];
+export type rangers_deck_avg_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_likeKeySpecifier = ('created_at' | 'deck' | 'deck_id' | 'liked' | 'user_id' | rangers_deck_likeKeySpecifier)[];
+export type rangers_deck_likeFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	liked?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_deck_like_aggregateKeySpecifier)[];
+export type rangers_deck_like_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_deck_like_aggregate_fieldsKeySpecifier)[];
+export type rangers_deck_like_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_avg_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_avg_fieldsKeySpecifier)[];
+export type rangers_deck_like_avg_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_max_fieldsKeySpecifier = ('created_at' | 'deck_id' | 'user_id' | rangers_deck_like_max_fieldsKeySpecifier)[];
+export type rangers_deck_like_max_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_min_fieldsKeySpecifier = ('created_at' | 'deck_id' | 'user_id' | rangers_deck_like_min_fieldsKeySpecifier)[];
+export type rangers_deck_like_min_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_deck_like_mutation_responseKeySpecifier)[];
+export type rangers_deck_like_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_stddev_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_stddev_fieldsKeySpecifier)[];
+export type rangers_deck_like_stddev_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_stddev_pop_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_deck_like_stddev_pop_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_stddev_samp_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_deck_like_stddev_samp_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_sum_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_sum_fieldsKeySpecifier)[];
+export type rangers_deck_like_sum_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_var_pop_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_var_pop_fieldsKeySpecifier)[];
+export type rangers_deck_like_var_pop_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_var_samp_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_var_samp_fieldsKeySpecifier)[];
+export type rangers_deck_like_var_samp_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_like_variance_fieldsKeySpecifier = ('deck_id' | rangers_deck_like_variance_fieldsKeySpecifier)[];
+export type rangers_deck_like_variance_fieldsFieldPolicy = {
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_max_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_max_fieldsKeySpecifier)[];
+export type rangers_deck_max_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_min_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'created_at' | 'description' | 'fit' | 'foc' | 'id' | 'name' | 'next_deck_id' | 'spi' | 'updated_at' | 'user_id' | 'version' | rangers_deck_min_fieldsKeySpecifier)[];
+export type rangers_deck_min_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_deck_mutation_responseKeySpecifier)[];
+export type rangers_deck_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rankKeySpecifier = ('deck' | 'id' | 'score' | rangers_deck_rankKeySpecifier)[];
+export type rangers_deck_rankFieldPolicy = {
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_deck_rank_aggregateKeySpecifier)[];
+export type rangers_deck_rank_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_deck_rank_aggregate_fieldsKeySpecifier)[];
+export type rangers_deck_rank_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_avg_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_avg_fieldsKeySpecifier)[];
+export type rangers_deck_rank_avg_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_max_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_max_fieldsKeySpecifier)[];
+export type rangers_deck_rank_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_min_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_min_fieldsKeySpecifier)[];
+export type rangers_deck_rank_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_stddev_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_stddev_fieldsKeySpecifier)[];
+export type rangers_deck_rank_stddev_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_stddev_pop_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_deck_rank_stddev_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_stddev_samp_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_deck_rank_stddev_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_sum_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_sum_fieldsKeySpecifier)[];
+export type rangers_deck_rank_sum_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_var_pop_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_var_pop_fieldsKeySpecifier)[];
+export type rangers_deck_rank_var_pop_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_var_samp_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_var_samp_fieldsKeySpecifier)[];
+export type rangers_deck_rank_var_samp_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_rank_variance_fieldsKeySpecifier = ('id' | 'score' | rangers_deck_rank_variance_fieldsKeySpecifier)[];
+export type rangers_deck_rank_variance_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	score?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_stddev_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_stddev_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_pop_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_stddev_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_deck_stddev_samp_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_sum_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_sum_fieldsKeySpecifier)[];
+export type rangers_deck_sum_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_var_pop_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_pop_fieldsKeySpecifier)[];
+export type rangers_deck_var_pop_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_var_samp_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_var_samp_fieldsKeySpecifier)[];
+export type rangers_deck_var_samp_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_deck_variance_fieldsKeySpecifier = ('awa' | 'base_deck_id' | 'campaign_id' | 'fit' | 'foc' | 'id' | 'next_deck_id' | 'spi' | 'version' | rangers_deck_variance_fieldsKeySpecifier)[];
+export type rangers_deck_variance_fieldsFieldPolicy = {
+	awa?: FieldPolicy<any> | FieldReadFunction<any>,
+	base_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fit?: FieldPolicy<any> | FieldReadFunction<any>,
+	foc?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	spi?: FieldPolicy<any> | FieldReadFunction<any>,
+	version?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_statusKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_friend_statusKeySpecifier)[];
+export type rangers_friend_statusFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_friend_status_aggregateKeySpecifier)[];
+export type rangers_friend_status_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_friend_status_aggregate_fieldsKeySpecifier)[];
+export type rangers_friend_status_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_max_fieldsKeySpecifier = ('user_id_a' | 'user_id_b' | rangers_friend_status_max_fieldsKeySpecifier)[];
+export type rangers_friend_status_max_fieldsFieldPolicy = {
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_min_fieldsKeySpecifier = ('user_id_a' | 'user_id_b' | rangers_friend_status_min_fieldsKeySpecifier)[];
+export type rangers_friend_status_min_fieldsFieldPolicy = {
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_friend_status_mutation_responseKeySpecifier)[];
+export type rangers_friend_status_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_typeKeySpecifier = ('value' | rangers_friend_status_typeKeySpecifier)[];
+export type rangers_friend_status_typeFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_type_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_friend_status_type_aggregateKeySpecifier)[];
+export type rangers_friend_status_type_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_type_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_friend_status_type_aggregate_fieldsKeySpecifier)[];
+export type rangers_friend_status_type_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_type_max_fieldsKeySpecifier = ('value' | rangers_friend_status_type_max_fieldsKeySpecifier)[];
+export type rangers_friend_status_type_max_fieldsFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_type_min_fieldsKeySpecifier = ('value' | rangers_friend_status_type_min_fieldsKeySpecifier)[];
+export type rangers_friend_status_type_min_fieldsFieldPolicy = {
+	value?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_friend_status_type_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_friend_status_type_mutation_responseKeySpecifier)[];
+export type rangers_friend_status_type_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deckKeySpecifier = ('campaign' | 'campaign_id' | 'deck' | 'deck_id' | 'user' | 'user_id' | rangers_latest_deckKeySpecifier)[];
+export type rangers_latest_deckFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_latest_deck_aggregateKeySpecifier)[];
+export type rangers_latest_deck_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_latest_deck_aggregate_fieldsKeySpecifier)[];
+export type rangers_latest_deck_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_avg_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_avg_fieldsKeySpecifier)[];
+export type rangers_latest_deck_avg_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_max_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | 'user_id' | rangers_latest_deck_max_fieldsKeySpecifier)[];
+export type rangers_latest_deck_max_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_min_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | 'user_id' | rangers_latest_deck_min_fieldsKeySpecifier)[];
+export type rangers_latest_deck_min_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_latest_deck_mutation_responseKeySpecifier)[];
+export type rangers_latest_deck_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_stddev_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_stddev_fieldsKeySpecifier)[];
+export type rangers_latest_deck_stddev_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_stddev_pop_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_latest_deck_stddev_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_stddev_samp_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_latest_deck_stddev_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_sum_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_sum_fieldsKeySpecifier)[];
+export type rangers_latest_deck_sum_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_var_pop_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_var_pop_fieldsKeySpecifier)[];
+export type rangers_latest_deck_var_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_var_samp_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_var_samp_fieldsKeySpecifier)[];
+export type rangers_latest_deck_var_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_latest_deck_variance_fieldsKeySpecifier = ('campaign_id' | 'deck_id' | rangers_latest_deck_variance_fieldsKeySpecifier)[];
+export type rangers_latest_deck_variance_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	deck_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_localeKeySpecifier = ('locale' | rangers_localeKeySpecifier)[];
+export type rangers_localeFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_locale_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_locale_aggregateKeySpecifier)[];
+export type rangers_locale_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_locale_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_locale_aggregate_fieldsKeySpecifier)[];
+export type rangers_locale_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_locale_max_fieldsKeySpecifier = ('locale' | rangers_locale_max_fieldsKeySpecifier)[];
+export type rangers_locale_max_fieldsFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_locale_min_fieldsKeySpecifier = ('locale' | rangers_locale_min_fieldsKeySpecifier)[];
+export type rangers_locale_min_fieldsFieldPolicy = {
+	locale?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_locale_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_locale_mutation_responseKeySpecifier)[];
+export type rangers_locale_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_packKeySpecifier = ('id' | 'name' | 'position' | 'translations' | 'translations_aggregate' | 'updated_at' | rangers_packKeySpecifier)[];
+export type rangers_packFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_pack_aggregateKeySpecifier)[];
+export type rangers_pack_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_pack_aggregate_fieldsKeySpecifier)[];
+export type rangers_pack_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_avg_fieldsKeySpecifier = ('position' | rangers_pack_avg_fieldsKeySpecifier)[];
+export type rangers_pack_avg_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_max_fieldsKeySpecifier = ('id' | 'name' | 'position' | 'updated_at' | rangers_pack_max_fieldsKeySpecifier)[];
+export type rangers_pack_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_min_fieldsKeySpecifier = ('id' | 'name' | 'position' | 'updated_at' | rangers_pack_min_fieldsKeySpecifier)[];
+export type rangers_pack_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_pack_mutation_responseKeySpecifier)[];
+export type rangers_pack_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_stddev_fieldsKeySpecifier = ('position' | rangers_pack_stddev_fieldsKeySpecifier)[];
+export type rangers_pack_stddev_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_stddev_pop_fieldsKeySpecifier = ('position' | rangers_pack_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_pack_stddev_pop_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_stddev_samp_fieldsKeySpecifier = ('position' | rangers_pack_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_pack_stddev_samp_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_sum_fieldsKeySpecifier = ('position' | rangers_pack_sum_fieldsKeySpecifier)[];
+export type rangers_pack_sum_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_textKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_pack_textKeySpecifier)[];
+export type rangers_pack_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_pack_text_aggregateKeySpecifier)[];
+export type rangers_pack_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_pack_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_pack_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_pack_text_max_fieldsKeySpecifier)[];
+export type rangers_pack_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_pack_text_min_fieldsKeySpecifier)[];
+export type rangers_pack_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_pack_text_mutation_responseKeySpecifier)[];
+export type rangers_pack_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_var_pop_fieldsKeySpecifier = ('position' | rangers_pack_var_pop_fieldsKeySpecifier)[];
+export type rangers_pack_var_pop_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_var_samp_fieldsKeySpecifier = ('position' | rangers_pack_var_samp_fieldsKeySpecifier)[];
+export type rangers_pack_var_samp_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_pack_variance_fieldsKeySpecifier = ('position' | rangers_pack_variance_fieldsKeySpecifier)[];
+export type rangers_pack_variance_fieldsFieldPolicy = {
+	position?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_setKeySpecifier = ('id' | 'name' | 'size' | 'translations' | 'translations_aggregate' | 'type_id' | 'updated_at' | rangers_setKeySpecifier)[];
+export type rangers_setFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_aggregateKeySpecifier)[];
+export type rangers_set_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_set_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_avg_fieldsKeySpecifier = ('size' | rangers_set_avg_fieldsKeySpecifier)[];
+export type rangers_set_avg_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localizedKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'size' | 'type_id' | 'type_name' | 'updated_at' | rangers_set_localizedKeySpecifier)[];
+export type rangers_set_localizedFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_localized_aggregateKeySpecifier)[];
+export type rangers_set_localized_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_set_localized_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_localized_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_avg_fieldsKeySpecifier = ('size' | rangers_set_localized_avg_fieldsKeySpecifier)[];
+export type rangers_set_localized_avg_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'size' | 'type_id' | 'type_name' | 'updated_at' | rangers_set_localized_max_fieldsKeySpecifier)[];
+export type rangers_set_localized_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'size' | 'type_id' | 'type_name' | 'updated_at' | rangers_set_localized_min_fieldsKeySpecifier)[];
+export type rangers_set_localized_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_stddev_fieldsKeySpecifier = ('size' | rangers_set_localized_stddev_fieldsKeySpecifier)[];
+export type rangers_set_localized_stddev_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_stddev_pop_fieldsKeySpecifier = ('size' | rangers_set_localized_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_set_localized_stddev_pop_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_stddev_samp_fieldsKeySpecifier = ('size' | rangers_set_localized_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_set_localized_stddev_samp_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_sum_fieldsKeySpecifier = ('size' | rangers_set_localized_sum_fieldsKeySpecifier)[];
+export type rangers_set_localized_sum_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_var_pop_fieldsKeySpecifier = ('size' | rangers_set_localized_var_pop_fieldsKeySpecifier)[];
+export type rangers_set_localized_var_pop_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_var_samp_fieldsKeySpecifier = ('size' | rangers_set_localized_var_samp_fieldsKeySpecifier)[];
+export type rangers_set_localized_var_samp_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_localized_variance_fieldsKeySpecifier = ('size' | rangers_set_localized_variance_fieldsKeySpecifier)[];
+export type rangers_set_localized_variance_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_max_fieldsKeySpecifier = ('id' | 'name' | 'size' | 'type_id' | 'updated_at' | rangers_set_max_fieldsKeySpecifier)[];
+export type rangers_set_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_min_fieldsKeySpecifier = ('id' | 'name' | 'size' | 'type_id' | 'updated_at' | rangers_set_min_fieldsKeySpecifier)[];
+export type rangers_set_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_set_mutation_responseKeySpecifier)[];
+export type rangers_set_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_stddev_fieldsKeySpecifier = ('size' | rangers_set_stddev_fieldsKeySpecifier)[];
+export type rangers_set_stddev_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_stddev_pop_fieldsKeySpecifier = ('size' | rangers_set_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_set_stddev_pop_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_stddev_samp_fieldsKeySpecifier = ('size' | rangers_set_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_set_stddev_samp_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_sum_fieldsKeySpecifier = ('size' | rangers_set_sum_fieldsKeySpecifier)[];
+export type rangers_set_sum_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_textKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_textKeySpecifier)[];
+export type rangers_set_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_text_aggregateKeySpecifier)[];
+export type rangers_set_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_set_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_text_max_fieldsKeySpecifier)[];
+export type rangers_set_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_text_min_fieldsKeySpecifier)[];
+export type rangers_set_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_set_text_mutation_responseKeySpecifier)[];
+export type rangers_set_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_typeKeySpecifier = ('id' | 'name' | 'translations' | 'translations_aggregate' | 'updated_at' | rangers_set_typeKeySpecifier)[];
+export type rangers_set_typeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations?: FieldPolicy<any> | FieldReadFunction<any>,
+	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_type_aggregateKeySpecifier)[];
+export type rangers_set_type_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_set_type_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_type_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_localizedKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'sets' | 'sets_aggregate' | 'updated_at' | rangers_set_type_localizedKeySpecifier)[];
+export type rangers_set_type_localizedFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	sets?: FieldPolicy<any> | FieldReadFunction<any>,
+	sets_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_localized_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_type_localized_aggregateKeySpecifier)[];
+export type rangers_set_type_localized_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_localized_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_set_type_localized_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_type_localized_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_localized_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'updated_at' | rangers_set_type_localized_max_fieldsKeySpecifier)[];
+export type rangers_set_type_localized_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_localized_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'updated_at' | rangers_set_type_localized_min_fieldsKeySpecifier)[];
+export type rangers_set_type_localized_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_max_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_set_type_max_fieldsKeySpecifier)[];
+export type rangers_set_type_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_min_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_set_type_min_fieldsKeySpecifier)[];
+export type rangers_set_type_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_set_type_mutation_responseKeySpecifier)[];
+export type rangers_set_type_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_textKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_type_textKeySpecifier)[];
+export type rangers_set_type_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_set_type_text_aggregateKeySpecifier)[];
+export type rangers_set_type_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_set_type_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_set_type_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_type_text_max_fieldsKeySpecifier)[];
+export type rangers_set_type_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_set_type_text_min_fieldsKeySpecifier)[];
+export type rangers_set_type_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_type_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_set_type_text_mutation_responseKeySpecifier)[];
+export type rangers_set_type_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_var_pop_fieldsKeySpecifier = ('size' | rangers_set_var_pop_fieldsKeySpecifier)[];
+export type rangers_set_var_pop_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_var_samp_fieldsKeySpecifier = ('size' | rangers_set_var_samp_fieldsKeySpecifier)[];
+export type rangers_set_var_samp_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_set_variance_fieldsKeySpecifier = ('size' | rangers_set_variance_fieldsKeySpecifier)[];
+export type rangers_set_variance_fieldsFieldPolicy = {
+	size?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_tokenKeySpecifier = ('id' | 'name' | 'plurals' | 'updated_at' | rangers_tokenKeySpecifier)[];
+export type rangers_tokenFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_token_aggregateKeySpecifier)[];
+export type rangers_token_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_token_aggregate_fieldsKeySpecifier)[];
+export type rangers_token_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_max_fieldsKeySpecifier = ('id' | 'name' | 'plurals' | 'updated_at' | rangers_token_max_fieldsKeySpecifier)[];
+export type rangers_token_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_min_fieldsKeySpecifier = ('id' | 'name' | 'plurals' | 'updated_at' | rangers_token_min_fieldsKeySpecifier)[];
+export type rangers_token_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_token_mutation_responseKeySpecifier)[];
+export type rangers_token_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_textKeySpecifier = ('id' | 'locale' | 'name' | 'plurals' | 'updated_at' | rangers_token_textKeySpecifier)[];
+export type rangers_token_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_token_text_aggregateKeySpecifier)[];
+export type rangers_token_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_token_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_token_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'plurals' | 'updated_at' | rangers_token_text_max_fieldsKeySpecifier)[];
+export type rangers_token_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'plurals' | 'updated_at' | rangers_token_text_min_fieldsKeySpecifier)[];
+export type rangers_token_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	plurals?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_token_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_token_text_mutation_responseKeySpecifier)[];
+export type rangers_token_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_typeKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_typeKeySpecifier)[];
+export type rangers_typeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_type_aggregateKeySpecifier)[];
+export type rangers_type_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_type_aggregate_fieldsKeySpecifier)[];
+export type rangers_type_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_localizedKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'updated_at' | rangers_type_localizedKeySpecifier)[];
+export type rangers_type_localizedFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_localized_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_type_localized_aggregateKeySpecifier)[];
+export type rangers_type_localized_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_localized_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_type_localized_aggregate_fieldsKeySpecifier)[];
+export type rangers_type_localized_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_localized_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'updated_at' | rangers_type_localized_max_fieldsKeySpecifier)[];
+export type rangers_type_localized_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_localized_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'real_name' | 'updated_at' | rangers_type_localized_min_fieldsKeySpecifier)[];
+export type rangers_type_localized_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_max_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_type_max_fieldsKeySpecifier)[];
+export type rangers_type_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_min_fieldsKeySpecifier = ('id' | 'name' | 'updated_at' | rangers_type_min_fieldsKeySpecifier)[];
+export type rangers_type_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_type_mutation_responseKeySpecifier)[];
+export type rangers_type_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_textKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_type_textKeySpecifier)[];
+export type rangers_type_textFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_text_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_type_text_aggregateKeySpecifier)[];
+export type rangers_type_text_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_text_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_type_text_aggregate_fieldsKeySpecifier)[];
+export type rangers_type_text_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_text_max_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_type_text_max_fieldsKeySpecifier)[];
+export type rangers_type_text_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_text_min_fieldsKeySpecifier = ('id' | 'locale' | 'name' | 'updated_at' | rangers_type_text_min_fieldsKeySpecifier)[];
+export type rangers_type_text_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_type_text_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_type_text_mutation_responseKeySpecifier)[];
+export type rangers_type_text_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaignKeySpecifier = ('campaign' | 'campaign_id' | 'updated_at' | 'user' | 'user_id' | rangers_user_campaignKeySpecifier)[];
+export type rangers_user_campaignFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_campaign_aggregateKeySpecifier)[];
+export type rangers_user_campaign_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | rangers_user_campaign_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_campaign_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_avg_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_avg_fieldsKeySpecifier)[];
+export type rangers_user_campaign_avg_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_max_fieldsKeySpecifier = ('campaign_id' | 'updated_at' | 'user_id' | rangers_user_campaign_max_fieldsKeySpecifier)[];
+export type rangers_user_campaign_max_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_min_fieldsKeySpecifier = ('campaign_id' | 'updated_at' | 'user_id' | rangers_user_campaign_min_fieldsKeySpecifier)[];
+export type rangers_user_campaign_min_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_stddev_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_stddev_fieldsKeySpecifier)[];
+export type rangers_user_campaign_stddev_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_stddev_pop_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_stddev_pop_fieldsKeySpecifier)[];
+export type rangers_user_campaign_stddev_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_stddev_samp_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_stddev_samp_fieldsKeySpecifier)[];
+export type rangers_user_campaign_stddev_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_sum_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_sum_fieldsKeySpecifier)[];
+export type rangers_user_campaign_sum_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_var_pop_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_var_pop_fieldsKeySpecifier)[];
+export type rangers_user_campaign_var_pop_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_var_samp_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_var_samp_fieldsKeySpecifier)[];
+export type rangers_user_campaign_var_samp_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_campaign_variance_fieldsKeySpecifier = ('campaign_id' | rangers_user_campaign_variance_fieldsKeySpecifier)[];
+export type rangers_user_campaign_variance_fieldsFieldPolicy = {
+	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friendsKeySpecifier = ('status' | 'user' | 'user_id_a' | 'user_id_b' | rangers_user_friendsKeySpecifier)[];
+export type rangers_user_friendsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friends_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_friends_aggregateKeySpecifier)[];
+export type rangers_user_friends_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friends_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_user_friends_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_friends_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friends_max_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_friends_max_fieldsKeySpecifier)[];
+export type rangers_user_friends_max_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friends_min_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_friends_min_fieldsKeySpecifier)[];
+export type rangers_user_friends_min_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_friends_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_user_friends_mutation_responseKeySpecifier)[];
+export type rangers_user_friends_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requestsKeySpecifier = ('status' | 'user' | 'user_id_a' | 'user_id_b' | rangers_user_received_friend_requestsKeySpecifier)[];
+export type rangers_user_received_friend_requestsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requests_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_received_friend_requests_aggregateKeySpecifier)[];
+export type rangers_user_received_friend_requests_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requests_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_user_received_friend_requests_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_received_friend_requests_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requests_max_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_received_friend_requests_max_fieldsKeySpecifier)[];
+export type rangers_user_received_friend_requests_max_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requests_min_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_received_friend_requests_min_fieldsKeySpecifier)[];
+export type rangers_user_received_friend_requests_min_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_received_friend_requests_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_user_received_friend_requests_mutation_responseKeySpecifier)[];
+export type rangers_user_received_friend_requests_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_roleKeySpecifier = ('id' | rangers_user_roleKeySpecifier)[];
+export type rangers_user_roleFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_role_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_role_aggregateKeySpecifier)[];
+export type rangers_user_role_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_role_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_user_role_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_role_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_role_max_fieldsKeySpecifier = ('id' | rangers_user_role_max_fieldsKeySpecifier)[];
+export type rangers_user_role_max_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_role_min_fieldsKeySpecifier = ('id' | rangers_user_role_min_fieldsKeySpecifier)[];
+export type rangers_user_role_min_fieldsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_role_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_user_role_mutation_responseKeySpecifier)[];
+export type rangers_user_role_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requestsKeySpecifier = ('status' | 'user' | 'user_id_a' | 'user_id_b' | rangers_user_sent_friend_requestsKeySpecifier)[];
+export type rangers_user_sent_friend_requestsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requests_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_sent_friend_requests_aggregateKeySpecifier)[];
+export type rangers_user_sent_friend_requests_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requests_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_user_sent_friend_requests_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_sent_friend_requests_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requests_max_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_sent_friend_requests_max_fieldsKeySpecifier)[];
+export type rangers_user_sent_friend_requests_max_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requests_min_fieldsKeySpecifier = ('status' | 'user_id_a' | 'user_id_b' | rangers_user_sent_friend_requests_min_fieldsKeySpecifier)[];
+export type rangers_user_sent_friend_requests_min_fieldsFieldPolicy = {
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_a?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id_b?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_sent_friend_requests_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_user_sent_friend_requests_mutation_responseKeySpecifier)[];
+export type rangers_user_sent_friend_requests_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settingsKeySpecifier = ('private_decks' | 'user_id' | rangers_user_settingsKeySpecifier)[];
+export type rangers_user_settingsFieldPolicy = {
+	private_decks?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settings_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_user_settings_aggregateKeySpecifier)[];
+export type rangers_user_settings_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settings_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_user_settings_aggregate_fieldsKeySpecifier)[];
+export type rangers_user_settings_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settings_max_fieldsKeySpecifier = ('user_id' | rangers_user_settings_max_fieldsKeySpecifier)[];
+export type rangers_user_settings_max_fieldsFieldPolicy = {
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settings_min_fieldsKeySpecifier = ('user_id' | rangers_user_settings_min_fieldsKeySpecifier)[];
+export type rangers_user_settings_min_fieldsFieldPolicy = {
+	user_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_user_settings_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_user_settings_mutation_responseKeySpecifier)[];
+export type rangers_user_settings_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_usersKeySpecifier = ('campaigns' | 'campaigns_aggregate' | 'created_at' | 'friends' | 'friends_aggregate' | 'handle' | 'id' | 'normalized_handle' | 'received_requests' | 'received_requests_aggregate' | 'role' | 'sent_requests' | 'sent_requests_aggregate' | 'settings' | 'updated_at' | rangers_usersKeySpecifier)[];
+export type rangers_usersFieldPolicy = {
+	campaigns?: FieldPolicy<any> | FieldReadFunction<any>,
+	campaigns_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	friends_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	received_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	received_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	role?: FieldPolicy<any> | FieldReadFunction<any>,
+	sent_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	sent_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_users_aggregateKeySpecifier = ('aggregate' | 'nodes' | rangers_users_aggregateKeySpecifier)[];
+export type rangers_users_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_users_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | rangers_users_aggregate_fieldsKeySpecifier)[];
+export type rangers_users_aggregate_fieldsFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_users_max_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'normalized_handle' | 'updated_at' | rangers_users_max_fieldsKeySpecifier)[];
+export type rangers_users_max_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_users_min_fieldsKeySpecifier = ('created_at' | 'handle' | 'id' | 'normalized_handle' | 'updated_at' | rangers_users_min_fieldsKeySpecifier)[];
+export type rangers_users_min_fieldsFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	normalized_handle?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type rangers_users_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | rangers_users_mutation_responseKeySpecifier)[];
+export type rangers_users_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type subscription_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_stream' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_text_stream' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_stream' | 'base_decks' | 'base_decks_aggregate' | 'base_decks_stream' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_access_stream' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_deck_stream' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_difficulty_stream' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_guide_stream' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaign_investigator_stream' | 'campaign_stream' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'campaigns_by_cycle_stream' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_cycle_stream' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_encounter_set_stream' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_pack_stream' | 'card_stream' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_subtype_name_stream' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_text_stream' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_code_stream' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'card_type_name_stream' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_result_stream' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'chaos_bag_tarot_mode_stream' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'cycle_name_stream' | 'cycle_stream' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faction_name_stream' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_stream' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'faq_text_stream' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_stream' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'friend_status_type_stream' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_stream' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'full_card_text_stream' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'gender_stream' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_achievement_stream' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'guide_input_stream' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'investigator_data_stream' | 'latest_decks' | 'latest_decks_aggregate' | 'latest_decks_stream' | 'local_decks' | 'local_decks_aggregate' | 'local_decks_stream' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'pack_name_stream' | 'pack_stream' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_stream' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_area_text_stream' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_localized_stream' | 'rangers_aspect_stream' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_aspect_text_stream' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_access_stream' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_campaign_stream' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_localized_stream' | 'rangers_card_stream' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_text_stream' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_card_updated_stream' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_stream' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_rank_stream' | 'rangers_deck_stream' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_stream' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_friend_status_type_stream' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_latest_deck_stream' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_locale_stream' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_stream' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_pack_text_stream' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_localized_stream' | 'rangers_set_stream' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_text_stream' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_localized_stream' | 'rangers_set_type_stream' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_set_type_text_stream' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_stream' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_token_text_stream' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_localized_stream' | 'rangers_type_stream' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_type_text_stream' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_campaign_stream' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_friends_stream' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_received_friend_requests_stream' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_role_stream' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_sent_friend_requests_stream' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_user_settings_stream' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'rangers_users_stream' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'taboo_set_stream' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_campaigns_stream' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_stream' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_flag_type_stream' | 'user_friends' | 'user_friends_aggregate' | 'user_friends_stream' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_received_friend_requests_stream' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_sent_friend_requests_stream' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'user_settings_stream' | 'users' | 'users_aggregate' | 'users_by_pk' | 'users_stream' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
 	all_card?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4205,6 +6982,146 @@ export type subscription_rootFieldPolicy = {
 	pack_name_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_name_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_area_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_localized_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_aspect_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_access_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_campaign_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_localized_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_updated?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_updated_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_card_updated_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_like_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_rank?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_rank_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_rank_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_deck_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_friend_status_type_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_latest_deck?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_latest_deck_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_latest_deck_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_locale_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_pack_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_localized_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_localized_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_set_type_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_token_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_localized?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_localized_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_localized_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_type_text_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_campaign?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_campaign_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_campaign_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_friends?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_friends_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_friends_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_received_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_received_friend_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_received_friend_requests_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_role_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_sent_friend_requests?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_sent_friend_requests_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_sent_friend_requests_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_user_settings_stream?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	rangers_users_stream?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	taboo_set_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6255,6 +9172,1270 @@ export type StrictTypedTypePolicies = {
 	query_root?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | query_rootKeySpecifier | (() => undefined | query_rootKeySpecifier),
 		fields?: query_rootFieldPolicy,
+	},
+	rangers_area?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_areaKeySpecifier | (() => undefined | rangers_areaKeySpecifier),
+		fields?: rangers_areaFieldPolicy,
+	},
+	rangers_area_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_aggregateKeySpecifier | (() => undefined | rangers_area_aggregateKeySpecifier),
+		fields?: rangers_area_aggregateFieldPolicy,
+	},
+	rangers_area_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_aggregate_fieldsKeySpecifier | (() => undefined | rangers_area_aggregate_fieldsKeySpecifier),
+		fields?: rangers_area_aggregate_fieldsFieldPolicy,
+	},
+	rangers_area_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_max_fieldsKeySpecifier | (() => undefined | rangers_area_max_fieldsKeySpecifier),
+		fields?: rangers_area_max_fieldsFieldPolicy,
+	},
+	rangers_area_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_min_fieldsKeySpecifier | (() => undefined | rangers_area_min_fieldsKeySpecifier),
+		fields?: rangers_area_min_fieldsFieldPolicy,
+	},
+	rangers_area_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_mutation_responseKeySpecifier | (() => undefined | rangers_area_mutation_responseKeySpecifier),
+		fields?: rangers_area_mutation_responseFieldPolicy,
+	},
+	rangers_area_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_textKeySpecifier | (() => undefined | rangers_area_textKeySpecifier),
+		fields?: rangers_area_textFieldPolicy,
+	},
+	rangers_area_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_text_aggregateKeySpecifier | (() => undefined | rangers_area_text_aggregateKeySpecifier),
+		fields?: rangers_area_text_aggregateFieldPolicy,
+	},
+	rangers_area_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_area_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_area_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_area_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_text_max_fieldsKeySpecifier | (() => undefined | rangers_area_text_max_fieldsKeySpecifier),
+		fields?: rangers_area_text_max_fieldsFieldPolicy,
+	},
+	rangers_area_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_text_min_fieldsKeySpecifier | (() => undefined | rangers_area_text_min_fieldsKeySpecifier),
+		fields?: rangers_area_text_min_fieldsFieldPolicy,
+	},
+	rangers_area_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_area_text_mutation_responseKeySpecifier | (() => undefined | rangers_area_text_mutation_responseKeySpecifier),
+		fields?: rangers_area_text_mutation_responseFieldPolicy,
+	},
+	rangers_aspect?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspectKeySpecifier | (() => undefined | rangers_aspectKeySpecifier),
+		fields?: rangers_aspectFieldPolicy,
+	},
+	rangers_aspect_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_aggregateKeySpecifier | (() => undefined | rangers_aspect_aggregateKeySpecifier),
+		fields?: rangers_aspect_aggregateFieldPolicy,
+	},
+	rangers_aspect_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_aggregate_fieldsKeySpecifier | (() => undefined | rangers_aspect_aggregate_fieldsKeySpecifier),
+		fields?: rangers_aspect_aggregate_fieldsFieldPolicy,
+	},
+	rangers_aspect_localized?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_localizedKeySpecifier | (() => undefined | rangers_aspect_localizedKeySpecifier),
+		fields?: rangers_aspect_localizedFieldPolicy,
+	},
+	rangers_aspect_localized_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_localized_aggregateKeySpecifier | (() => undefined | rangers_aspect_localized_aggregateKeySpecifier),
+		fields?: rangers_aspect_localized_aggregateFieldPolicy,
+	},
+	rangers_aspect_localized_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_localized_aggregate_fieldsKeySpecifier | (() => undefined | rangers_aspect_localized_aggregate_fieldsKeySpecifier),
+		fields?: rangers_aspect_localized_aggregate_fieldsFieldPolicy,
+	},
+	rangers_aspect_localized_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_localized_max_fieldsKeySpecifier | (() => undefined | rangers_aspect_localized_max_fieldsKeySpecifier),
+		fields?: rangers_aspect_localized_max_fieldsFieldPolicy,
+	},
+	rangers_aspect_localized_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_localized_min_fieldsKeySpecifier | (() => undefined | rangers_aspect_localized_min_fieldsKeySpecifier),
+		fields?: rangers_aspect_localized_min_fieldsFieldPolicy,
+	},
+	rangers_aspect_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_max_fieldsKeySpecifier | (() => undefined | rangers_aspect_max_fieldsKeySpecifier),
+		fields?: rangers_aspect_max_fieldsFieldPolicy,
+	},
+	rangers_aspect_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_min_fieldsKeySpecifier | (() => undefined | rangers_aspect_min_fieldsKeySpecifier),
+		fields?: rangers_aspect_min_fieldsFieldPolicy,
+	},
+	rangers_aspect_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_mutation_responseKeySpecifier | (() => undefined | rangers_aspect_mutation_responseKeySpecifier),
+		fields?: rangers_aspect_mutation_responseFieldPolicy,
+	},
+	rangers_aspect_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_textKeySpecifier | (() => undefined | rangers_aspect_textKeySpecifier),
+		fields?: rangers_aspect_textFieldPolicy,
+	},
+	rangers_aspect_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_text_aggregateKeySpecifier | (() => undefined | rangers_aspect_text_aggregateKeySpecifier),
+		fields?: rangers_aspect_text_aggregateFieldPolicy,
+	},
+	rangers_aspect_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_aspect_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_aspect_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_aspect_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_text_max_fieldsKeySpecifier | (() => undefined | rangers_aspect_text_max_fieldsKeySpecifier),
+		fields?: rangers_aspect_text_max_fieldsFieldPolicy,
+	},
+	rangers_aspect_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_text_min_fieldsKeySpecifier | (() => undefined | rangers_aspect_text_min_fieldsKeySpecifier),
+		fields?: rangers_aspect_text_min_fieldsFieldPolicy,
+	},
+	rangers_aspect_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_aspect_text_mutation_responseKeySpecifier | (() => undefined | rangers_aspect_text_mutation_responseKeySpecifier),
+		fields?: rangers_aspect_text_mutation_responseFieldPolicy,
+	},
+	rangers_campaign?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaignKeySpecifier | (() => undefined | rangers_campaignKeySpecifier),
+		fields?: rangers_campaignFieldPolicy,
+	},
+	rangers_campaign_access?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_accessKeySpecifier | (() => undefined | rangers_campaign_accessKeySpecifier),
+		fields?: rangers_campaign_accessFieldPolicy,
+	},
+	rangers_campaign_access_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_aggregateKeySpecifier | (() => undefined | rangers_campaign_access_aggregateKeySpecifier),
+		fields?: rangers_campaign_access_aggregateFieldPolicy,
+	},
+	rangers_campaign_access_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_aggregate_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_aggregate_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_aggregate_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_avg_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_avg_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_avg_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_max_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_max_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_max_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_min_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_min_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_min_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_mutation_responseKeySpecifier | (() => undefined | rangers_campaign_access_mutation_responseKeySpecifier),
+		fields?: rangers_campaign_access_mutation_responseFieldPolicy,
+	},
+	rangers_campaign_access_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_stddev_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_stddev_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_stddev_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_sum_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_sum_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_sum_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_var_pop_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_var_pop_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_var_pop_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_var_samp_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_var_samp_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_var_samp_fieldsFieldPolicy,
+	},
+	rangers_campaign_access_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_access_variance_fieldsKeySpecifier | (() => undefined | rangers_campaign_access_variance_fieldsKeySpecifier),
+		fields?: rangers_campaign_access_variance_fieldsFieldPolicy,
+	},
+	rangers_campaign_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_aggregateKeySpecifier | (() => undefined | rangers_campaign_aggregateKeySpecifier),
+		fields?: rangers_campaign_aggregateFieldPolicy,
+	},
+	rangers_campaign_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_aggregate_fieldsKeySpecifier | (() => undefined | rangers_campaign_aggregate_fieldsKeySpecifier),
+		fields?: rangers_campaign_aggregate_fieldsFieldPolicy,
+	},
+	rangers_campaign_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_avg_fieldsKeySpecifier | (() => undefined | rangers_campaign_avg_fieldsKeySpecifier),
+		fields?: rangers_campaign_avg_fieldsFieldPolicy,
+	},
+	rangers_campaign_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_max_fieldsKeySpecifier | (() => undefined | rangers_campaign_max_fieldsKeySpecifier),
+		fields?: rangers_campaign_max_fieldsFieldPolicy,
+	},
+	rangers_campaign_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_min_fieldsKeySpecifier | (() => undefined | rangers_campaign_min_fieldsKeySpecifier),
+		fields?: rangers_campaign_min_fieldsFieldPolicy,
+	},
+	rangers_campaign_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_mutation_responseKeySpecifier | (() => undefined | rangers_campaign_mutation_responseKeySpecifier),
+		fields?: rangers_campaign_mutation_responseFieldPolicy,
+	},
+	rangers_campaign_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_stddev_fieldsKeySpecifier | (() => undefined | rangers_campaign_stddev_fieldsKeySpecifier),
+		fields?: rangers_campaign_stddev_fieldsFieldPolicy,
+	},
+	rangers_campaign_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_campaign_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_campaign_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_campaign_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_campaign_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_campaign_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_campaign_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_sum_fieldsKeySpecifier | (() => undefined | rangers_campaign_sum_fieldsKeySpecifier),
+		fields?: rangers_campaign_sum_fieldsFieldPolicy,
+	},
+	rangers_campaign_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_var_pop_fieldsKeySpecifier | (() => undefined | rangers_campaign_var_pop_fieldsKeySpecifier),
+		fields?: rangers_campaign_var_pop_fieldsFieldPolicy,
+	},
+	rangers_campaign_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_var_samp_fieldsKeySpecifier | (() => undefined | rangers_campaign_var_samp_fieldsKeySpecifier),
+		fields?: rangers_campaign_var_samp_fieldsFieldPolicy,
+	},
+	rangers_campaign_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_campaign_variance_fieldsKeySpecifier | (() => undefined | rangers_campaign_variance_fieldsKeySpecifier),
+		fields?: rangers_campaign_variance_fieldsFieldPolicy,
+	},
+	rangers_card?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_cardKeySpecifier | (() => undefined | rangers_cardKeySpecifier),
+		fields?: rangers_cardFieldPolicy,
+	},
+	rangers_card_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_aggregateKeySpecifier | (() => undefined | rangers_card_aggregateKeySpecifier),
+		fields?: rangers_card_aggregateFieldPolicy,
+	},
+	rangers_card_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_aggregate_fieldsKeySpecifier | (() => undefined | rangers_card_aggregate_fieldsKeySpecifier),
+		fields?: rangers_card_aggregate_fieldsFieldPolicy,
+	},
+	rangers_card_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_avg_fieldsKeySpecifier | (() => undefined | rangers_card_avg_fieldsKeySpecifier),
+		fields?: rangers_card_avg_fieldsFieldPolicy,
+	},
+	rangers_card_localized?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localizedKeySpecifier | (() => undefined | rangers_card_localizedKeySpecifier),
+		fields?: rangers_card_localizedFieldPolicy,
+	},
+	rangers_card_localized_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_aggregateKeySpecifier | (() => undefined | rangers_card_localized_aggregateKeySpecifier),
+		fields?: rangers_card_localized_aggregateFieldPolicy,
+	},
+	rangers_card_localized_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_aggregate_fieldsKeySpecifier | (() => undefined | rangers_card_localized_aggregate_fieldsKeySpecifier),
+		fields?: rangers_card_localized_aggregate_fieldsFieldPolicy,
+	},
+	rangers_card_localized_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_avg_fieldsKeySpecifier | (() => undefined | rangers_card_localized_avg_fieldsKeySpecifier),
+		fields?: rangers_card_localized_avg_fieldsFieldPolicy,
+	},
+	rangers_card_localized_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_max_fieldsKeySpecifier | (() => undefined | rangers_card_localized_max_fieldsKeySpecifier),
+		fields?: rangers_card_localized_max_fieldsFieldPolicy,
+	},
+	rangers_card_localized_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_min_fieldsKeySpecifier | (() => undefined | rangers_card_localized_min_fieldsKeySpecifier),
+		fields?: rangers_card_localized_min_fieldsFieldPolicy,
+	},
+	rangers_card_localized_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_stddev_fieldsKeySpecifier | (() => undefined | rangers_card_localized_stddev_fieldsKeySpecifier),
+		fields?: rangers_card_localized_stddev_fieldsFieldPolicy,
+	},
+	rangers_card_localized_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_card_localized_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_card_localized_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_card_localized_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_card_localized_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_card_localized_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_card_localized_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_sum_fieldsKeySpecifier | (() => undefined | rangers_card_localized_sum_fieldsKeySpecifier),
+		fields?: rangers_card_localized_sum_fieldsFieldPolicy,
+	},
+	rangers_card_localized_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_var_pop_fieldsKeySpecifier | (() => undefined | rangers_card_localized_var_pop_fieldsKeySpecifier),
+		fields?: rangers_card_localized_var_pop_fieldsFieldPolicy,
+	},
+	rangers_card_localized_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_var_samp_fieldsKeySpecifier | (() => undefined | rangers_card_localized_var_samp_fieldsKeySpecifier),
+		fields?: rangers_card_localized_var_samp_fieldsFieldPolicy,
+	},
+	rangers_card_localized_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_localized_variance_fieldsKeySpecifier | (() => undefined | rangers_card_localized_variance_fieldsKeySpecifier),
+		fields?: rangers_card_localized_variance_fieldsFieldPolicy,
+	},
+	rangers_card_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_max_fieldsKeySpecifier | (() => undefined | rangers_card_max_fieldsKeySpecifier),
+		fields?: rangers_card_max_fieldsFieldPolicy,
+	},
+	rangers_card_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_min_fieldsKeySpecifier | (() => undefined | rangers_card_min_fieldsKeySpecifier),
+		fields?: rangers_card_min_fieldsFieldPolicy,
+	},
+	rangers_card_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_mutation_responseKeySpecifier | (() => undefined | rangers_card_mutation_responseKeySpecifier),
+		fields?: rangers_card_mutation_responseFieldPolicy,
+	},
+	rangers_card_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_stddev_fieldsKeySpecifier | (() => undefined | rangers_card_stddev_fieldsKeySpecifier),
+		fields?: rangers_card_stddev_fieldsFieldPolicy,
+	},
+	rangers_card_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_card_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_card_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_card_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_card_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_card_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_card_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_sum_fieldsKeySpecifier | (() => undefined | rangers_card_sum_fieldsKeySpecifier),
+		fields?: rangers_card_sum_fieldsFieldPolicy,
+	},
+	rangers_card_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_textKeySpecifier | (() => undefined | rangers_card_textKeySpecifier),
+		fields?: rangers_card_textFieldPolicy,
+	},
+	rangers_card_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_text_aggregateKeySpecifier | (() => undefined | rangers_card_text_aggregateKeySpecifier),
+		fields?: rangers_card_text_aggregateFieldPolicy,
+	},
+	rangers_card_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_card_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_card_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_card_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_text_max_fieldsKeySpecifier | (() => undefined | rangers_card_text_max_fieldsKeySpecifier),
+		fields?: rangers_card_text_max_fieldsFieldPolicy,
+	},
+	rangers_card_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_text_min_fieldsKeySpecifier | (() => undefined | rangers_card_text_min_fieldsKeySpecifier),
+		fields?: rangers_card_text_min_fieldsFieldPolicy,
+	},
+	rangers_card_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_text_mutation_responseKeySpecifier | (() => undefined | rangers_card_text_mutation_responseKeySpecifier),
+		fields?: rangers_card_text_mutation_responseFieldPolicy,
+	},
+	rangers_card_updated?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_updatedKeySpecifier | (() => undefined | rangers_card_updatedKeySpecifier),
+		fields?: rangers_card_updatedFieldPolicy,
+	},
+	rangers_card_updated_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_updated_aggregateKeySpecifier | (() => undefined | rangers_card_updated_aggregateKeySpecifier),
+		fields?: rangers_card_updated_aggregateFieldPolicy,
+	},
+	rangers_card_updated_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_updated_aggregate_fieldsKeySpecifier | (() => undefined | rangers_card_updated_aggregate_fieldsKeySpecifier),
+		fields?: rangers_card_updated_aggregate_fieldsFieldPolicy,
+	},
+	rangers_card_updated_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_updated_max_fieldsKeySpecifier | (() => undefined | rangers_card_updated_max_fieldsKeySpecifier),
+		fields?: rangers_card_updated_max_fieldsFieldPolicy,
+	},
+	rangers_card_updated_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_updated_min_fieldsKeySpecifier | (() => undefined | rangers_card_updated_min_fieldsKeySpecifier),
+		fields?: rangers_card_updated_min_fieldsFieldPolicy,
+	},
+	rangers_card_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_var_pop_fieldsKeySpecifier | (() => undefined | rangers_card_var_pop_fieldsKeySpecifier),
+		fields?: rangers_card_var_pop_fieldsFieldPolicy,
+	},
+	rangers_card_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_var_samp_fieldsKeySpecifier | (() => undefined | rangers_card_var_samp_fieldsKeySpecifier),
+		fields?: rangers_card_var_samp_fieldsFieldPolicy,
+	},
+	rangers_card_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_card_variance_fieldsKeySpecifier | (() => undefined | rangers_card_variance_fieldsKeySpecifier),
+		fields?: rangers_card_variance_fieldsFieldPolicy,
+	},
+	rangers_deck?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deckKeySpecifier | (() => undefined | rangers_deckKeySpecifier),
+		fields?: rangers_deckFieldPolicy,
+	},
+	rangers_deck_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_aggregateKeySpecifier | (() => undefined | rangers_deck_aggregateKeySpecifier),
+		fields?: rangers_deck_aggregateFieldPolicy,
+	},
+	rangers_deck_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_aggregate_fieldsKeySpecifier | (() => undefined | rangers_deck_aggregate_fieldsKeySpecifier),
+		fields?: rangers_deck_aggregate_fieldsFieldPolicy,
+	},
+	rangers_deck_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_avg_fieldsKeySpecifier | (() => undefined | rangers_deck_avg_fieldsKeySpecifier),
+		fields?: rangers_deck_avg_fieldsFieldPolicy,
+	},
+	rangers_deck_like?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_likeKeySpecifier | (() => undefined | rangers_deck_likeKeySpecifier),
+		fields?: rangers_deck_likeFieldPolicy,
+	},
+	rangers_deck_like_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_aggregateKeySpecifier | (() => undefined | rangers_deck_like_aggregateKeySpecifier),
+		fields?: rangers_deck_like_aggregateFieldPolicy,
+	},
+	rangers_deck_like_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_aggregate_fieldsKeySpecifier | (() => undefined | rangers_deck_like_aggregate_fieldsKeySpecifier),
+		fields?: rangers_deck_like_aggregate_fieldsFieldPolicy,
+	},
+	rangers_deck_like_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_avg_fieldsKeySpecifier | (() => undefined | rangers_deck_like_avg_fieldsKeySpecifier),
+		fields?: rangers_deck_like_avg_fieldsFieldPolicy,
+	},
+	rangers_deck_like_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_max_fieldsKeySpecifier | (() => undefined | rangers_deck_like_max_fieldsKeySpecifier),
+		fields?: rangers_deck_like_max_fieldsFieldPolicy,
+	},
+	rangers_deck_like_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_min_fieldsKeySpecifier | (() => undefined | rangers_deck_like_min_fieldsKeySpecifier),
+		fields?: rangers_deck_like_min_fieldsFieldPolicy,
+	},
+	rangers_deck_like_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_mutation_responseKeySpecifier | (() => undefined | rangers_deck_like_mutation_responseKeySpecifier),
+		fields?: rangers_deck_like_mutation_responseFieldPolicy,
+	},
+	rangers_deck_like_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_stddev_fieldsKeySpecifier | (() => undefined | rangers_deck_like_stddev_fieldsKeySpecifier),
+		fields?: rangers_deck_like_stddev_fieldsFieldPolicy,
+	},
+	rangers_deck_like_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_like_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_like_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_like_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_like_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_like_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_like_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_sum_fieldsKeySpecifier | (() => undefined | rangers_deck_like_sum_fieldsKeySpecifier),
+		fields?: rangers_deck_like_sum_fieldsFieldPolicy,
+	},
+	rangers_deck_like_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_var_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_like_var_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_like_var_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_like_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_var_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_like_var_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_like_var_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_like_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_like_variance_fieldsKeySpecifier | (() => undefined | rangers_deck_like_variance_fieldsKeySpecifier),
+		fields?: rangers_deck_like_variance_fieldsFieldPolicy,
+	},
+	rangers_deck_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_max_fieldsKeySpecifier | (() => undefined | rangers_deck_max_fieldsKeySpecifier),
+		fields?: rangers_deck_max_fieldsFieldPolicy,
+	},
+	rangers_deck_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_min_fieldsKeySpecifier | (() => undefined | rangers_deck_min_fieldsKeySpecifier),
+		fields?: rangers_deck_min_fieldsFieldPolicy,
+	},
+	rangers_deck_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_mutation_responseKeySpecifier | (() => undefined | rangers_deck_mutation_responseKeySpecifier),
+		fields?: rangers_deck_mutation_responseFieldPolicy,
+	},
+	rangers_deck_rank?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rankKeySpecifier | (() => undefined | rangers_deck_rankKeySpecifier),
+		fields?: rangers_deck_rankFieldPolicy,
+	},
+	rangers_deck_rank_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_aggregateKeySpecifier | (() => undefined | rangers_deck_rank_aggregateKeySpecifier),
+		fields?: rangers_deck_rank_aggregateFieldPolicy,
+	},
+	rangers_deck_rank_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_aggregate_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_aggregate_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_aggregate_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_avg_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_avg_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_avg_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_max_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_max_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_max_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_min_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_min_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_min_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_stddev_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_stddev_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_stddev_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_sum_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_sum_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_sum_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_var_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_var_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_var_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_var_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_var_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_var_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_rank_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_rank_variance_fieldsKeySpecifier | (() => undefined | rangers_deck_rank_variance_fieldsKeySpecifier),
+		fields?: rangers_deck_rank_variance_fieldsFieldPolicy,
+	},
+	rangers_deck_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_stddev_fieldsKeySpecifier | (() => undefined | rangers_deck_stddev_fieldsKeySpecifier),
+		fields?: rangers_deck_stddev_fieldsFieldPolicy,
+	},
+	rangers_deck_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_sum_fieldsKeySpecifier | (() => undefined | rangers_deck_sum_fieldsKeySpecifier),
+		fields?: rangers_deck_sum_fieldsFieldPolicy,
+	},
+	rangers_deck_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_var_pop_fieldsKeySpecifier | (() => undefined | rangers_deck_var_pop_fieldsKeySpecifier),
+		fields?: rangers_deck_var_pop_fieldsFieldPolicy,
+	},
+	rangers_deck_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_var_samp_fieldsKeySpecifier | (() => undefined | rangers_deck_var_samp_fieldsKeySpecifier),
+		fields?: rangers_deck_var_samp_fieldsFieldPolicy,
+	},
+	rangers_deck_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_deck_variance_fieldsKeySpecifier | (() => undefined | rangers_deck_variance_fieldsKeySpecifier),
+		fields?: rangers_deck_variance_fieldsFieldPolicy,
+	},
+	rangers_friend_status?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_statusKeySpecifier | (() => undefined | rangers_friend_statusKeySpecifier),
+		fields?: rangers_friend_statusFieldPolicy,
+	},
+	rangers_friend_status_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_aggregateKeySpecifier | (() => undefined | rangers_friend_status_aggregateKeySpecifier),
+		fields?: rangers_friend_status_aggregateFieldPolicy,
+	},
+	rangers_friend_status_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_aggregate_fieldsKeySpecifier | (() => undefined | rangers_friend_status_aggregate_fieldsKeySpecifier),
+		fields?: rangers_friend_status_aggregate_fieldsFieldPolicy,
+	},
+	rangers_friend_status_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_max_fieldsKeySpecifier | (() => undefined | rangers_friend_status_max_fieldsKeySpecifier),
+		fields?: rangers_friend_status_max_fieldsFieldPolicy,
+	},
+	rangers_friend_status_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_min_fieldsKeySpecifier | (() => undefined | rangers_friend_status_min_fieldsKeySpecifier),
+		fields?: rangers_friend_status_min_fieldsFieldPolicy,
+	},
+	rangers_friend_status_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_mutation_responseKeySpecifier | (() => undefined | rangers_friend_status_mutation_responseKeySpecifier),
+		fields?: rangers_friend_status_mutation_responseFieldPolicy,
+	},
+	rangers_friend_status_type?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_typeKeySpecifier | (() => undefined | rangers_friend_status_typeKeySpecifier),
+		fields?: rangers_friend_status_typeFieldPolicy,
+	},
+	rangers_friend_status_type_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_type_aggregateKeySpecifier | (() => undefined | rangers_friend_status_type_aggregateKeySpecifier),
+		fields?: rangers_friend_status_type_aggregateFieldPolicy,
+	},
+	rangers_friend_status_type_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_type_aggregate_fieldsKeySpecifier | (() => undefined | rangers_friend_status_type_aggregate_fieldsKeySpecifier),
+		fields?: rangers_friend_status_type_aggregate_fieldsFieldPolicy,
+	},
+	rangers_friend_status_type_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_type_max_fieldsKeySpecifier | (() => undefined | rangers_friend_status_type_max_fieldsKeySpecifier),
+		fields?: rangers_friend_status_type_max_fieldsFieldPolicy,
+	},
+	rangers_friend_status_type_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_type_min_fieldsKeySpecifier | (() => undefined | rangers_friend_status_type_min_fieldsKeySpecifier),
+		fields?: rangers_friend_status_type_min_fieldsFieldPolicy,
+	},
+	rangers_friend_status_type_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_friend_status_type_mutation_responseKeySpecifier | (() => undefined | rangers_friend_status_type_mutation_responseKeySpecifier),
+		fields?: rangers_friend_status_type_mutation_responseFieldPolicy,
+	},
+	rangers_latest_deck?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deckKeySpecifier | (() => undefined | rangers_latest_deckKeySpecifier),
+		fields?: rangers_latest_deckFieldPolicy,
+	},
+	rangers_latest_deck_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_aggregateKeySpecifier | (() => undefined | rangers_latest_deck_aggregateKeySpecifier),
+		fields?: rangers_latest_deck_aggregateFieldPolicy,
+	},
+	rangers_latest_deck_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_aggregate_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_aggregate_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_aggregate_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_avg_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_avg_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_avg_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_max_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_max_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_max_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_min_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_min_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_min_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_mutation_responseKeySpecifier | (() => undefined | rangers_latest_deck_mutation_responseKeySpecifier),
+		fields?: rangers_latest_deck_mutation_responseFieldPolicy,
+	},
+	rangers_latest_deck_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_stddev_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_stddev_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_stddev_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_sum_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_sum_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_sum_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_var_pop_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_var_pop_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_var_pop_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_var_samp_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_var_samp_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_var_samp_fieldsFieldPolicy,
+	},
+	rangers_latest_deck_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_latest_deck_variance_fieldsKeySpecifier | (() => undefined | rangers_latest_deck_variance_fieldsKeySpecifier),
+		fields?: rangers_latest_deck_variance_fieldsFieldPolicy,
+	},
+	rangers_locale?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_localeKeySpecifier | (() => undefined | rangers_localeKeySpecifier),
+		fields?: rangers_localeFieldPolicy,
+	},
+	rangers_locale_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_locale_aggregateKeySpecifier | (() => undefined | rangers_locale_aggregateKeySpecifier),
+		fields?: rangers_locale_aggregateFieldPolicy,
+	},
+	rangers_locale_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_locale_aggregate_fieldsKeySpecifier | (() => undefined | rangers_locale_aggregate_fieldsKeySpecifier),
+		fields?: rangers_locale_aggregate_fieldsFieldPolicy,
+	},
+	rangers_locale_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_locale_max_fieldsKeySpecifier | (() => undefined | rangers_locale_max_fieldsKeySpecifier),
+		fields?: rangers_locale_max_fieldsFieldPolicy,
+	},
+	rangers_locale_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_locale_min_fieldsKeySpecifier | (() => undefined | rangers_locale_min_fieldsKeySpecifier),
+		fields?: rangers_locale_min_fieldsFieldPolicy,
+	},
+	rangers_locale_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_locale_mutation_responseKeySpecifier | (() => undefined | rangers_locale_mutation_responseKeySpecifier),
+		fields?: rangers_locale_mutation_responseFieldPolicy,
+	},
+	rangers_pack?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_packKeySpecifier | (() => undefined | rangers_packKeySpecifier),
+		fields?: rangers_packFieldPolicy,
+	},
+	rangers_pack_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_aggregateKeySpecifier | (() => undefined | rangers_pack_aggregateKeySpecifier),
+		fields?: rangers_pack_aggregateFieldPolicy,
+	},
+	rangers_pack_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_aggregate_fieldsKeySpecifier | (() => undefined | rangers_pack_aggregate_fieldsKeySpecifier),
+		fields?: rangers_pack_aggregate_fieldsFieldPolicy,
+	},
+	rangers_pack_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_avg_fieldsKeySpecifier | (() => undefined | rangers_pack_avg_fieldsKeySpecifier),
+		fields?: rangers_pack_avg_fieldsFieldPolicy,
+	},
+	rangers_pack_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_max_fieldsKeySpecifier | (() => undefined | rangers_pack_max_fieldsKeySpecifier),
+		fields?: rangers_pack_max_fieldsFieldPolicy,
+	},
+	rangers_pack_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_min_fieldsKeySpecifier | (() => undefined | rangers_pack_min_fieldsKeySpecifier),
+		fields?: rangers_pack_min_fieldsFieldPolicy,
+	},
+	rangers_pack_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_mutation_responseKeySpecifier | (() => undefined | rangers_pack_mutation_responseKeySpecifier),
+		fields?: rangers_pack_mutation_responseFieldPolicy,
+	},
+	rangers_pack_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_stddev_fieldsKeySpecifier | (() => undefined | rangers_pack_stddev_fieldsKeySpecifier),
+		fields?: rangers_pack_stddev_fieldsFieldPolicy,
+	},
+	rangers_pack_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_pack_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_pack_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_pack_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_pack_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_pack_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_pack_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_sum_fieldsKeySpecifier | (() => undefined | rangers_pack_sum_fieldsKeySpecifier),
+		fields?: rangers_pack_sum_fieldsFieldPolicy,
+	},
+	rangers_pack_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_textKeySpecifier | (() => undefined | rangers_pack_textKeySpecifier),
+		fields?: rangers_pack_textFieldPolicy,
+	},
+	rangers_pack_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_text_aggregateKeySpecifier | (() => undefined | rangers_pack_text_aggregateKeySpecifier),
+		fields?: rangers_pack_text_aggregateFieldPolicy,
+	},
+	rangers_pack_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_pack_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_pack_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_pack_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_text_max_fieldsKeySpecifier | (() => undefined | rangers_pack_text_max_fieldsKeySpecifier),
+		fields?: rangers_pack_text_max_fieldsFieldPolicy,
+	},
+	rangers_pack_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_text_min_fieldsKeySpecifier | (() => undefined | rangers_pack_text_min_fieldsKeySpecifier),
+		fields?: rangers_pack_text_min_fieldsFieldPolicy,
+	},
+	rangers_pack_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_text_mutation_responseKeySpecifier | (() => undefined | rangers_pack_text_mutation_responseKeySpecifier),
+		fields?: rangers_pack_text_mutation_responseFieldPolicy,
+	},
+	rangers_pack_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_var_pop_fieldsKeySpecifier | (() => undefined | rangers_pack_var_pop_fieldsKeySpecifier),
+		fields?: rangers_pack_var_pop_fieldsFieldPolicy,
+	},
+	rangers_pack_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_var_samp_fieldsKeySpecifier | (() => undefined | rangers_pack_var_samp_fieldsKeySpecifier),
+		fields?: rangers_pack_var_samp_fieldsFieldPolicy,
+	},
+	rangers_pack_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_pack_variance_fieldsKeySpecifier | (() => undefined | rangers_pack_variance_fieldsKeySpecifier),
+		fields?: rangers_pack_variance_fieldsFieldPolicy,
+	},
+	rangers_set?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_setKeySpecifier | (() => undefined | rangers_setKeySpecifier),
+		fields?: rangers_setFieldPolicy,
+	},
+	rangers_set_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_aggregateKeySpecifier | (() => undefined | rangers_set_aggregateKeySpecifier),
+		fields?: rangers_set_aggregateFieldPolicy,
+	},
+	rangers_set_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_avg_fieldsKeySpecifier | (() => undefined | rangers_set_avg_fieldsKeySpecifier),
+		fields?: rangers_set_avg_fieldsFieldPolicy,
+	},
+	rangers_set_localized?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localizedKeySpecifier | (() => undefined | rangers_set_localizedKeySpecifier),
+		fields?: rangers_set_localizedFieldPolicy,
+	},
+	rangers_set_localized_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_aggregateKeySpecifier | (() => undefined | rangers_set_localized_aggregateKeySpecifier),
+		fields?: rangers_set_localized_aggregateFieldPolicy,
+	},
+	rangers_set_localized_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_localized_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_localized_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_localized_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_avg_fieldsKeySpecifier | (() => undefined | rangers_set_localized_avg_fieldsKeySpecifier),
+		fields?: rangers_set_localized_avg_fieldsFieldPolicy,
+	},
+	rangers_set_localized_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_max_fieldsKeySpecifier | (() => undefined | rangers_set_localized_max_fieldsKeySpecifier),
+		fields?: rangers_set_localized_max_fieldsFieldPolicy,
+	},
+	rangers_set_localized_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_min_fieldsKeySpecifier | (() => undefined | rangers_set_localized_min_fieldsKeySpecifier),
+		fields?: rangers_set_localized_min_fieldsFieldPolicy,
+	},
+	rangers_set_localized_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_stddev_fieldsKeySpecifier | (() => undefined | rangers_set_localized_stddev_fieldsKeySpecifier),
+		fields?: rangers_set_localized_stddev_fieldsFieldPolicy,
+	},
+	rangers_set_localized_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_set_localized_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_set_localized_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_set_localized_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_set_localized_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_set_localized_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_set_localized_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_sum_fieldsKeySpecifier | (() => undefined | rangers_set_localized_sum_fieldsKeySpecifier),
+		fields?: rangers_set_localized_sum_fieldsFieldPolicy,
+	},
+	rangers_set_localized_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_var_pop_fieldsKeySpecifier | (() => undefined | rangers_set_localized_var_pop_fieldsKeySpecifier),
+		fields?: rangers_set_localized_var_pop_fieldsFieldPolicy,
+	},
+	rangers_set_localized_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_var_samp_fieldsKeySpecifier | (() => undefined | rangers_set_localized_var_samp_fieldsKeySpecifier),
+		fields?: rangers_set_localized_var_samp_fieldsFieldPolicy,
+	},
+	rangers_set_localized_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_localized_variance_fieldsKeySpecifier | (() => undefined | rangers_set_localized_variance_fieldsKeySpecifier),
+		fields?: rangers_set_localized_variance_fieldsFieldPolicy,
+	},
+	rangers_set_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_max_fieldsKeySpecifier | (() => undefined | rangers_set_max_fieldsKeySpecifier),
+		fields?: rangers_set_max_fieldsFieldPolicy,
+	},
+	rangers_set_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_min_fieldsKeySpecifier | (() => undefined | rangers_set_min_fieldsKeySpecifier),
+		fields?: rangers_set_min_fieldsFieldPolicy,
+	},
+	rangers_set_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_mutation_responseKeySpecifier | (() => undefined | rangers_set_mutation_responseKeySpecifier),
+		fields?: rangers_set_mutation_responseFieldPolicy,
+	},
+	rangers_set_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_stddev_fieldsKeySpecifier | (() => undefined | rangers_set_stddev_fieldsKeySpecifier),
+		fields?: rangers_set_stddev_fieldsFieldPolicy,
+	},
+	rangers_set_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_set_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_set_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_set_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_set_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_set_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_set_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_sum_fieldsKeySpecifier | (() => undefined | rangers_set_sum_fieldsKeySpecifier),
+		fields?: rangers_set_sum_fieldsFieldPolicy,
+	},
+	rangers_set_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_textKeySpecifier | (() => undefined | rangers_set_textKeySpecifier),
+		fields?: rangers_set_textFieldPolicy,
+	},
+	rangers_set_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_text_aggregateKeySpecifier | (() => undefined | rangers_set_text_aggregateKeySpecifier),
+		fields?: rangers_set_text_aggregateFieldPolicy,
+	},
+	rangers_set_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_text_max_fieldsKeySpecifier | (() => undefined | rangers_set_text_max_fieldsKeySpecifier),
+		fields?: rangers_set_text_max_fieldsFieldPolicy,
+	},
+	rangers_set_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_text_min_fieldsKeySpecifier | (() => undefined | rangers_set_text_min_fieldsKeySpecifier),
+		fields?: rangers_set_text_min_fieldsFieldPolicy,
+	},
+	rangers_set_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_text_mutation_responseKeySpecifier | (() => undefined | rangers_set_text_mutation_responseKeySpecifier),
+		fields?: rangers_set_text_mutation_responseFieldPolicy,
+	},
+	rangers_set_type?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_typeKeySpecifier | (() => undefined | rangers_set_typeKeySpecifier),
+		fields?: rangers_set_typeFieldPolicy,
+	},
+	rangers_set_type_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_aggregateKeySpecifier | (() => undefined | rangers_set_type_aggregateKeySpecifier),
+		fields?: rangers_set_type_aggregateFieldPolicy,
+	},
+	rangers_set_type_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_type_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_type_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_type_localized?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_localizedKeySpecifier | (() => undefined | rangers_set_type_localizedKeySpecifier),
+		fields?: rangers_set_type_localizedFieldPolicy,
+	},
+	rangers_set_type_localized_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_localized_aggregateKeySpecifier | (() => undefined | rangers_set_type_localized_aggregateKeySpecifier),
+		fields?: rangers_set_type_localized_aggregateFieldPolicy,
+	},
+	rangers_set_type_localized_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_localized_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_type_localized_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_type_localized_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_type_localized_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_localized_max_fieldsKeySpecifier | (() => undefined | rangers_set_type_localized_max_fieldsKeySpecifier),
+		fields?: rangers_set_type_localized_max_fieldsFieldPolicy,
+	},
+	rangers_set_type_localized_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_localized_min_fieldsKeySpecifier | (() => undefined | rangers_set_type_localized_min_fieldsKeySpecifier),
+		fields?: rangers_set_type_localized_min_fieldsFieldPolicy,
+	},
+	rangers_set_type_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_max_fieldsKeySpecifier | (() => undefined | rangers_set_type_max_fieldsKeySpecifier),
+		fields?: rangers_set_type_max_fieldsFieldPolicy,
+	},
+	rangers_set_type_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_min_fieldsKeySpecifier | (() => undefined | rangers_set_type_min_fieldsKeySpecifier),
+		fields?: rangers_set_type_min_fieldsFieldPolicy,
+	},
+	rangers_set_type_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_mutation_responseKeySpecifier | (() => undefined | rangers_set_type_mutation_responseKeySpecifier),
+		fields?: rangers_set_type_mutation_responseFieldPolicy,
+	},
+	rangers_set_type_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_textKeySpecifier | (() => undefined | rangers_set_type_textKeySpecifier),
+		fields?: rangers_set_type_textFieldPolicy,
+	},
+	rangers_set_type_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_text_aggregateKeySpecifier | (() => undefined | rangers_set_type_text_aggregateKeySpecifier),
+		fields?: rangers_set_type_text_aggregateFieldPolicy,
+	},
+	rangers_set_type_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_set_type_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_set_type_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_set_type_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_text_max_fieldsKeySpecifier | (() => undefined | rangers_set_type_text_max_fieldsKeySpecifier),
+		fields?: rangers_set_type_text_max_fieldsFieldPolicy,
+	},
+	rangers_set_type_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_text_min_fieldsKeySpecifier | (() => undefined | rangers_set_type_text_min_fieldsKeySpecifier),
+		fields?: rangers_set_type_text_min_fieldsFieldPolicy,
+	},
+	rangers_set_type_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_type_text_mutation_responseKeySpecifier | (() => undefined | rangers_set_type_text_mutation_responseKeySpecifier),
+		fields?: rangers_set_type_text_mutation_responseFieldPolicy,
+	},
+	rangers_set_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_var_pop_fieldsKeySpecifier | (() => undefined | rangers_set_var_pop_fieldsKeySpecifier),
+		fields?: rangers_set_var_pop_fieldsFieldPolicy,
+	},
+	rangers_set_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_var_samp_fieldsKeySpecifier | (() => undefined | rangers_set_var_samp_fieldsKeySpecifier),
+		fields?: rangers_set_var_samp_fieldsFieldPolicy,
+	},
+	rangers_set_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_set_variance_fieldsKeySpecifier | (() => undefined | rangers_set_variance_fieldsKeySpecifier),
+		fields?: rangers_set_variance_fieldsFieldPolicy,
+	},
+	rangers_token?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_tokenKeySpecifier | (() => undefined | rangers_tokenKeySpecifier),
+		fields?: rangers_tokenFieldPolicy,
+	},
+	rangers_token_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_aggregateKeySpecifier | (() => undefined | rangers_token_aggregateKeySpecifier),
+		fields?: rangers_token_aggregateFieldPolicy,
+	},
+	rangers_token_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_aggregate_fieldsKeySpecifier | (() => undefined | rangers_token_aggregate_fieldsKeySpecifier),
+		fields?: rangers_token_aggregate_fieldsFieldPolicy,
+	},
+	rangers_token_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_max_fieldsKeySpecifier | (() => undefined | rangers_token_max_fieldsKeySpecifier),
+		fields?: rangers_token_max_fieldsFieldPolicy,
+	},
+	rangers_token_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_min_fieldsKeySpecifier | (() => undefined | rangers_token_min_fieldsKeySpecifier),
+		fields?: rangers_token_min_fieldsFieldPolicy,
+	},
+	rangers_token_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_mutation_responseKeySpecifier | (() => undefined | rangers_token_mutation_responseKeySpecifier),
+		fields?: rangers_token_mutation_responseFieldPolicy,
+	},
+	rangers_token_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_textKeySpecifier | (() => undefined | rangers_token_textKeySpecifier),
+		fields?: rangers_token_textFieldPolicy,
+	},
+	rangers_token_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_text_aggregateKeySpecifier | (() => undefined | rangers_token_text_aggregateKeySpecifier),
+		fields?: rangers_token_text_aggregateFieldPolicy,
+	},
+	rangers_token_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_token_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_token_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_token_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_text_max_fieldsKeySpecifier | (() => undefined | rangers_token_text_max_fieldsKeySpecifier),
+		fields?: rangers_token_text_max_fieldsFieldPolicy,
+	},
+	rangers_token_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_text_min_fieldsKeySpecifier | (() => undefined | rangers_token_text_min_fieldsKeySpecifier),
+		fields?: rangers_token_text_min_fieldsFieldPolicy,
+	},
+	rangers_token_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_token_text_mutation_responseKeySpecifier | (() => undefined | rangers_token_text_mutation_responseKeySpecifier),
+		fields?: rangers_token_text_mutation_responseFieldPolicy,
+	},
+	rangers_type?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_typeKeySpecifier | (() => undefined | rangers_typeKeySpecifier),
+		fields?: rangers_typeFieldPolicy,
+	},
+	rangers_type_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_aggregateKeySpecifier | (() => undefined | rangers_type_aggregateKeySpecifier),
+		fields?: rangers_type_aggregateFieldPolicy,
+	},
+	rangers_type_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_aggregate_fieldsKeySpecifier | (() => undefined | rangers_type_aggregate_fieldsKeySpecifier),
+		fields?: rangers_type_aggregate_fieldsFieldPolicy,
+	},
+	rangers_type_localized?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_localizedKeySpecifier | (() => undefined | rangers_type_localizedKeySpecifier),
+		fields?: rangers_type_localizedFieldPolicy,
+	},
+	rangers_type_localized_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_localized_aggregateKeySpecifier | (() => undefined | rangers_type_localized_aggregateKeySpecifier),
+		fields?: rangers_type_localized_aggregateFieldPolicy,
+	},
+	rangers_type_localized_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_localized_aggregate_fieldsKeySpecifier | (() => undefined | rangers_type_localized_aggregate_fieldsKeySpecifier),
+		fields?: rangers_type_localized_aggregate_fieldsFieldPolicy,
+	},
+	rangers_type_localized_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_localized_max_fieldsKeySpecifier | (() => undefined | rangers_type_localized_max_fieldsKeySpecifier),
+		fields?: rangers_type_localized_max_fieldsFieldPolicy,
+	},
+	rangers_type_localized_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_localized_min_fieldsKeySpecifier | (() => undefined | rangers_type_localized_min_fieldsKeySpecifier),
+		fields?: rangers_type_localized_min_fieldsFieldPolicy,
+	},
+	rangers_type_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_max_fieldsKeySpecifier | (() => undefined | rangers_type_max_fieldsKeySpecifier),
+		fields?: rangers_type_max_fieldsFieldPolicy,
+	},
+	rangers_type_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_min_fieldsKeySpecifier | (() => undefined | rangers_type_min_fieldsKeySpecifier),
+		fields?: rangers_type_min_fieldsFieldPolicy,
+	},
+	rangers_type_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_mutation_responseKeySpecifier | (() => undefined | rangers_type_mutation_responseKeySpecifier),
+		fields?: rangers_type_mutation_responseFieldPolicy,
+	},
+	rangers_type_text?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_textKeySpecifier | (() => undefined | rangers_type_textKeySpecifier),
+		fields?: rangers_type_textFieldPolicy,
+	},
+	rangers_type_text_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_text_aggregateKeySpecifier | (() => undefined | rangers_type_text_aggregateKeySpecifier),
+		fields?: rangers_type_text_aggregateFieldPolicy,
+	},
+	rangers_type_text_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_text_aggregate_fieldsKeySpecifier | (() => undefined | rangers_type_text_aggregate_fieldsKeySpecifier),
+		fields?: rangers_type_text_aggregate_fieldsFieldPolicy,
+	},
+	rangers_type_text_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_text_max_fieldsKeySpecifier | (() => undefined | rangers_type_text_max_fieldsKeySpecifier),
+		fields?: rangers_type_text_max_fieldsFieldPolicy,
+	},
+	rangers_type_text_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_text_min_fieldsKeySpecifier | (() => undefined | rangers_type_text_min_fieldsKeySpecifier),
+		fields?: rangers_type_text_min_fieldsFieldPolicy,
+	},
+	rangers_type_text_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_type_text_mutation_responseKeySpecifier | (() => undefined | rangers_type_text_mutation_responseKeySpecifier),
+		fields?: rangers_type_text_mutation_responseFieldPolicy,
+	},
+	rangers_user_campaign?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaignKeySpecifier | (() => undefined | rangers_user_campaignKeySpecifier),
+		fields?: rangers_user_campaignFieldPolicy,
+	},
+	rangers_user_campaign_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_aggregateKeySpecifier | (() => undefined | rangers_user_campaign_aggregateKeySpecifier),
+		fields?: rangers_user_campaign_aggregateFieldPolicy,
+	},
+	rangers_user_campaign_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_avg_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_avg_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_avg_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_max_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_max_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_max_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_min_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_min_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_min_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_stddev_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_stddev_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_stddev_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_stddev_pop_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_stddev_pop_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_stddev_pop_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_stddev_samp_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_stddev_samp_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_stddev_samp_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_sum_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_sum_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_sum_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_var_pop_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_var_pop_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_var_pop_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_var_samp_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_var_samp_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_var_samp_fieldsFieldPolicy,
+	},
+	rangers_user_campaign_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_campaign_variance_fieldsKeySpecifier | (() => undefined | rangers_user_campaign_variance_fieldsKeySpecifier),
+		fields?: rangers_user_campaign_variance_fieldsFieldPolicy,
+	},
+	rangers_user_friends?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friendsKeySpecifier | (() => undefined | rangers_user_friendsKeySpecifier),
+		fields?: rangers_user_friendsFieldPolicy,
+	},
+	rangers_user_friends_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friends_aggregateKeySpecifier | (() => undefined | rangers_user_friends_aggregateKeySpecifier),
+		fields?: rangers_user_friends_aggregateFieldPolicy,
+	},
+	rangers_user_friends_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friends_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_friends_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_friends_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_friends_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friends_max_fieldsKeySpecifier | (() => undefined | rangers_user_friends_max_fieldsKeySpecifier),
+		fields?: rangers_user_friends_max_fieldsFieldPolicy,
+	},
+	rangers_user_friends_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friends_min_fieldsKeySpecifier | (() => undefined | rangers_user_friends_min_fieldsKeySpecifier),
+		fields?: rangers_user_friends_min_fieldsFieldPolicy,
+	},
+	rangers_user_friends_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_friends_mutation_responseKeySpecifier | (() => undefined | rangers_user_friends_mutation_responseKeySpecifier),
+		fields?: rangers_user_friends_mutation_responseFieldPolicy,
+	},
+	rangers_user_received_friend_requests?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requestsKeySpecifier | (() => undefined | rangers_user_received_friend_requestsKeySpecifier),
+		fields?: rangers_user_received_friend_requestsFieldPolicy,
+	},
+	rangers_user_received_friend_requests_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requests_aggregateKeySpecifier | (() => undefined | rangers_user_received_friend_requests_aggregateKeySpecifier),
+		fields?: rangers_user_received_friend_requests_aggregateFieldPolicy,
+	},
+	rangers_user_received_friend_requests_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requests_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_received_friend_requests_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_received_friend_requests_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_received_friend_requests_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requests_max_fieldsKeySpecifier | (() => undefined | rangers_user_received_friend_requests_max_fieldsKeySpecifier),
+		fields?: rangers_user_received_friend_requests_max_fieldsFieldPolicy,
+	},
+	rangers_user_received_friend_requests_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requests_min_fieldsKeySpecifier | (() => undefined | rangers_user_received_friend_requests_min_fieldsKeySpecifier),
+		fields?: rangers_user_received_friend_requests_min_fieldsFieldPolicy,
+	},
+	rangers_user_received_friend_requests_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_received_friend_requests_mutation_responseKeySpecifier | (() => undefined | rangers_user_received_friend_requests_mutation_responseKeySpecifier),
+		fields?: rangers_user_received_friend_requests_mutation_responseFieldPolicy,
+	},
+	rangers_user_role?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_roleKeySpecifier | (() => undefined | rangers_user_roleKeySpecifier),
+		fields?: rangers_user_roleFieldPolicy,
+	},
+	rangers_user_role_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_role_aggregateKeySpecifier | (() => undefined | rangers_user_role_aggregateKeySpecifier),
+		fields?: rangers_user_role_aggregateFieldPolicy,
+	},
+	rangers_user_role_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_role_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_role_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_role_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_role_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_role_max_fieldsKeySpecifier | (() => undefined | rangers_user_role_max_fieldsKeySpecifier),
+		fields?: rangers_user_role_max_fieldsFieldPolicy,
+	},
+	rangers_user_role_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_role_min_fieldsKeySpecifier | (() => undefined | rangers_user_role_min_fieldsKeySpecifier),
+		fields?: rangers_user_role_min_fieldsFieldPolicy,
+	},
+	rangers_user_role_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_role_mutation_responseKeySpecifier | (() => undefined | rangers_user_role_mutation_responseKeySpecifier),
+		fields?: rangers_user_role_mutation_responseFieldPolicy,
+	},
+	rangers_user_sent_friend_requests?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requestsKeySpecifier | (() => undefined | rangers_user_sent_friend_requestsKeySpecifier),
+		fields?: rangers_user_sent_friend_requestsFieldPolicy,
+	},
+	rangers_user_sent_friend_requests_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requests_aggregateKeySpecifier | (() => undefined | rangers_user_sent_friend_requests_aggregateKeySpecifier),
+		fields?: rangers_user_sent_friend_requests_aggregateFieldPolicy,
+	},
+	rangers_user_sent_friend_requests_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requests_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_sent_friend_requests_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_sent_friend_requests_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_sent_friend_requests_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requests_max_fieldsKeySpecifier | (() => undefined | rangers_user_sent_friend_requests_max_fieldsKeySpecifier),
+		fields?: rangers_user_sent_friend_requests_max_fieldsFieldPolicy,
+	},
+	rangers_user_sent_friend_requests_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requests_min_fieldsKeySpecifier | (() => undefined | rangers_user_sent_friend_requests_min_fieldsKeySpecifier),
+		fields?: rangers_user_sent_friend_requests_min_fieldsFieldPolicy,
+	},
+	rangers_user_sent_friend_requests_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_sent_friend_requests_mutation_responseKeySpecifier | (() => undefined | rangers_user_sent_friend_requests_mutation_responseKeySpecifier),
+		fields?: rangers_user_sent_friend_requests_mutation_responseFieldPolicy,
+	},
+	rangers_user_settings?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settingsKeySpecifier | (() => undefined | rangers_user_settingsKeySpecifier),
+		fields?: rangers_user_settingsFieldPolicy,
+	},
+	rangers_user_settings_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settings_aggregateKeySpecifier | (() => undefined | rangers_user_settings_aggregateKeySpecifier),
+		fields?: rangers_user_settings_aggregateFieldPolicy,
+	},
+	rangers_user_settings_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settings_aggregate_fieldsKeySpecifier | (() => undefined | rangers_user_settings_aggregate_fieldsKeySpecifier),
+		fields?: rangers_user_settings_aggregate_fieldsFieldPolicy,
+	},
+	rangers_user_settings_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settings_max_fieldsKeySpecifier | (() => undefined | rangers_user_settings_max_fieldsKeySpecifier),
+		fields?: rangers_user_settings_max_fieldsFieldPolicy,
+	},
+	rangers_user_settings_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settings_min_fieldsKeySpecifier | (() => undefined | rangers_user_settings_min_fieldsKeySpecifier),
+		fields?: rangers_user_settings_min_fieldsFieldPolicy,
+	},
+	rangers_user_settings_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_user_settings_mutation_responseKeySpecifier | (() => undefined | rangers_user_settings_mutation_responseKeySpecifier),
+		fields?: rangers_user_settings_mutation_responseFieldPolicy,
+	},
+	rangers_users?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_usersKeySpecifier | (() => undefined | rangers_usersKeySpecifier),
+		fields?: rangers_usersFieldPolicy,
+	},
+	rangers_users_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_users_aggregateKeySpecifier | (() => undefined | rangers_users_aggregateKeySpecifier),
+		fields?: rangers_users_aggregateFieldPolicy,
+	},
+	rangers_users_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_users_aggregate_fieldsKeySpecifier | (() => undefined | rangers_users_aggregate_fieldsKeySpecifier),
+		fields?: rangers_users_aggregate_fieldsFieldPolicy,
+	},
+	rangers_users_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_users_max_fieldsKeySpecifier | (() => undefined | rangers_users_max_fieldsKeySpecifier),
+		fields?: rangers_users_max_fieldsFieldPolicy,
+	},
+	rangers_users_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_users_min_fieldsKeySpecifier | (() => undefined | rangers_users_min_fieldsKeySpecifier),
+		fields?: rangers_users_min_fieldsFieldPolicy,
+	},
+	rangers_users_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | rangers_users_mutation_responseKeySpecifier | (() => undefined | rangers_users_mutation_responseKeySpecifier),
+		fields?: rangers_users_mutation_responseFieldPolicy,
 	},
 	subscription_root?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | subscription_rootKeySpecifier | (() => undefined | subscription_rootKeySpecifier),

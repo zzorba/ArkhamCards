@@ -7,7 +7,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
-import Card, { cardInCollection } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { TraumaEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { PersonalizedChoices, UniversalChoices } from '@data/scenario';
@@ -111,6 +111,7 @@ function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, bo
         text={heal ? t`Choose heal type` : t`Choose trauma type`}
         confirmText={heal ? t`Chosen heal type` : t`Chosen trauma type`}
         promptType="header"
+        includeTrauma
         investigators={investigators}
         options={options}
       />
@@ -222,7 +223,7 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
               physical
             );
           case 'f':
-           return c('feminine').ngettext(
+            return c('feminine').ngettext(
               msgid`${investigator.name} heals ${physical} physical trauma.`,
               `${investigator.name} heals ${physical} physical trauma.`,
               physical

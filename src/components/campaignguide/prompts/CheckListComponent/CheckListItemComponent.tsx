@@ -131,7 +131,11 @@ export default function CheckListItemComponent({
         />
         <View style={[styles.column, { flex: 1 }, space.paddingLeftS]}>
           { name.startsWith('[') && name.endsWith(']') ? (
-            <ArkhamIcon name={name.substring(1, name.length - 2)} color={colors.D30} size={36} />
+            <ArkhamIcon
+              name={name.substring(1, name.length - 1)}
+              color={colors.D30}
+              size={36}
+            />
           ) : (
             <Text style={[
               typography.mediumGameFont,

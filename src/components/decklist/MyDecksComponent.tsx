@@ -28,6 +28,7 @@ interface OwnProps {
   renderExpandButton?: (reason: string) => React.ReactNode | null;
   searchOptions?: SearchOptions;
   customFooter?: ReactNode;
+  live?: boolean;
 }
 
 type Props = OwnProps & LoginStateProps;
@@ -41,6 +42,7 @@ function MyDecksComponent({
   customFooter,
   login,
   signedIn,
+  live,
 }: Props) {
   const deckActions = useDeckActions();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
@@ -54,7 +56,8 @@ function MyDecksComponent({
     myDecksUpdated,
     refreshing,
     error,
-  }, onRefresh] = useMyDecks(deckActions);
+  }, onRefresh] = useMyDecks(deckActions, live);
+
   useEffect(() => {
     const now = new Date();
     const cacheArkhamDb = !((!myDecks || myDecks.length === 0 || !myDecksUpdated || (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)) && signedIn);
@@ -119,11 +122,11 @@ function MyDecksComponent({
     );
   }, [customFooter, signInFooter, renderExpandButton, deckReasons]);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } })
-
   return (
     <DeckListComponent
       searchOptions={searchOptions}
       customFooter={footer}
+      deckActions={deckActions}
       connectionProblemBanner={connectionProblemBanner}
       deckIds={deckIds}
       deckClicked={deckClicked}
@@ -131,6 +134,7 @@ function MyDecksComponent({
       onRefresh={signedIn || userId ? doRefresh : undefined}
       refreshing={refreshing}
       isEmpty={myDecks.length === 0}
+      tagsEditable={live}
     />
   );
 }

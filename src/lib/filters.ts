@@ -69,6 +69,7 @@ export interface FilterState {
   costEnabled: boolean;
   costEven: boolean;
   costOdd: boolean;
+  customizable: boolean;
   victory: boolean;
   multiClass: boolean;
   skillEnabled: boolean;
@@ -173,6 +174,7 @@ export const defaultFilterState: FilterState = {
   permanent: false,
   fast: false,
   bonded: false,
+  customizable: false,
   fightAction: false,
   investigateAction: false,
   evadeAction: false,
@@ -235,6 +237,7 @@ export const defaultFilterState: FilterState = {
 
 export const VENGEANCE_FILTER: Brackets = where('c.vengeance >= 0 or linked_card.vengeance >= 0');
 export const UNIQUE_FILTER: Brackets = where('c.is_unique = 1');
+export const NON_STORY_FILTER: Brackets = where('c.xp is not null');
 
 export default class FilterBuilder {
   prefix: string;
@@ -266,15 +269,13 @@ export default class FilterBuilder {
     }
     const minFieldName = this.fieldName([field, 'min']);
     const maxFieldName = this.fieldName([field, 'max']);
-    return [
-      where(
-        `(c.${field} >= :${minFieldName} AND c.${field} <= :${maxFieldName})${linked ? ` OR (linked_card.${field} is not null AND (linked_card.${field} >= :${minFieldName} AND linked_card.${field} <= :${maxFieldName}))` : ''}`,
-        {
-          [minFieldName]: values[0],
-          [maxFieldName]: values[1],
-        },
-      ),
-    ];
+    return [where(
+      `(c.${field} >= :${minFieldName} AND c.${field} <= :${maxFieldName})${linked ? ` OR (linked_card.${field} is not null AND (linked_card.${field} >= :${minFieldName} AND linked_card.${field} <= :${maxFieldName}))` : ''}`,
+      {
+        [minFieldName]: values[0],
+        [maxFieldName]: values[1],
+      },
+    )];
   }
 
   complexVectorClause(
@@ -306,6 +307,13 @@ export default class FilterBuilder {
     }
     const noneClause: Brackets = where(`c.real_slots_normalized is null AND c.type_code = 'asset' and NOT c.permanent`);
     return [combineQueries(noneClause, clause, 'or')];
+  }
+
+  customizableFilter(filters: FilterState): Brackets[] {
+    if (!filters.customizable) {
+      return [];
+    }
+    return [where('c.customization_options is not null')];
   }
 
   traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
@@ -541,14 +549,29 @@ export default class FilterBuilder {
     return result;
   }
 
-  levelFilter(filters: FilterState): Brackets[] {
+  xpFilter(filters: FilterState): Brackets[] {
     const {
       levelEnabled,
       level,
+    } = filters;
+    if (!levelEnabled) {
+      return [];
+    }
+    const q = this.rangeFilter('xp', level, false);
+    if (level[0] > 0) {
+      return [
+        combineQueries(where(`c.customization_options is not null`), q, 'or'),
+      ];
+    }
+    return q;
+  }
+
+  levelFilter(filters: FilterState): Brackets[] {
+    const {
       exceptional,
       nonExceptional,
     } = filters;
-    const result = !levelEnabled ? [] : this.rangeFilter('xp', level, false);
+    const result = this.xpFilter(filters);
     if (exceptional && !nonExceptional) {
       result.push(where(`c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'`));
     }
@@ -735,6 +758,7 @@ export default class FilterBuilder {
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
         ...this.costFilter(filters),
+        ...this.customizableFilter(filters),
         ...this.traitFilter(filters.traits, localizedTraits),
         ...this.assetFilters(filters),
         ...this.enemyFilters(filters),

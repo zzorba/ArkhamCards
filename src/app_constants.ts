@@ -288,6 +288,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
+export const BURN_AFTER_READING_CODE = '08076';
 export const PRECIOUS_MEMENTO_FORMER_CODE = '08114'
 export const PRECIOUS_MEMENTO_FUTURE_CODE = '08115'
 export const RAVEN_QUILL_CODE = '09042';

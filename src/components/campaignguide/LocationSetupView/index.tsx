@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { forEach, map } from 'lodash';
+import { find, forEach, map } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
@@ -9,7 +9,7 @@ import { NavigationProps } from '@components/nav/types';
 import { LocationSetupStep } from '@data/scenario/types';
 import LocationCard from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import { isTablet } from '@styles/space';
+import { isTablet, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 export interface LocationSetupProps {
@@ -29,7 +29,7 @@ interface CardSizes {
   verticalPadding: number;
 }
 
-export default function LocationSetupView({ step: { locations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
+export default function LocationSetupView({ step: { locations, annotations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
   const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;
   const rowSize = locations[0].length;
@@ -99,6 +99,7 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
       const left = (horizontal === 'half' ? (cardWidthWithPadding / 2) * x : cardWidthWithPadding * x) + (
         resource_dividers ? 50 * x : 0
       );
+      const annotation = find(annotations, a => a.x === x && a.y === rowNumber);
       return (
         <LocationCard
           key={`${rowNumber}x${x}`}
@@ -108,11 +109,12 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
           left={SIDE_PADDING + left}
           height={cardHeight}
           width={cardWidth}
+          annotation={annotation}
           resource_dividers={resource_dividers ? resource_dividers[rowNumber][x] : undefined}
         />
       );
     });
-  }, [vertical, horizontal, cardDimensions, names, resource_dividers]);
+  }, [vertical, annotations, horizontal, cardDimensions, names, resource_dividers]);
 
   const {
     cardHeight,
@@ -129,10 +131,10 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
       minScale={0.5}
       maxScale={4}
       initialScale={1.0}
-      containerDimensions={{ width, height: height - NOTCH_BOTTOM_PADDING }}
+      containerDimensions={{ width: width, height: height - NOTCH_BOTTOM_PADDING }}
       contentDimensions={{
-        width: rowWidth,
-        height: rowHeight,
+        width: rowWidth + m * 4,
+        height: rowHeight + m * 4,
       }}
     >
       { !!note && (
@@ -142,8 +144,8 @@ export default function LocationSetupView({ step: { locations, vertical, horizon
           </SetupStepWrapper>
         </View>
       ) }
-      <View style={[styles.container, { height: rowHeight }]}>
-        { map(locations, renderRow) }
+      <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
+        { map(locations, (locs, row) => renderRow(locs, row)) }
       </View>
     </PanPinchView>
   );

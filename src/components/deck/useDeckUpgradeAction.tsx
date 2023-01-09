@@ -171,7 +171,7 @@ export default function useDeckUpgradeAction<T = undefined>(
         }, 0);
       });
     }
-  }, [saving])
+  }, [saving, deckCompleted, doSaveDeckChanges])
   const throttledSaveUpgrade: SaveDeckUpgrade<T> = useMemo(() => {
     return debounce((
       deck: LatestDeckT | undefined,

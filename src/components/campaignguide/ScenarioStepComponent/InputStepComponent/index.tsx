@@ -168,6 +168,8 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           specialXp={step.input.special_xp}
           storyCards={step.input.story_cards}
           investigatorCounter={step.input.counter}
+          exile={step.input.exile}
+          hideXp={step.input.hide_xp}
         />
       );
     case 'save_decks':

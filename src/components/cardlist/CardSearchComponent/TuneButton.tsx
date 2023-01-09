@@ -10,6 +10,7 @@ import { TouchableOpacity } from '@components/core/Touchables';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import { useFilterButton } from '../hooks';
+import { FilterState } from '@lib/filters';
 
 const SIZE = 36;
 
@@ -17,7 +18,7 @@ interface Props {
   parentComponentId: string;
   filterId: string;
   lightButton?: boolean;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
   modal?: boolean;
 }
 

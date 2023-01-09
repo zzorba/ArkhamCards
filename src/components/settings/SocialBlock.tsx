@@ -20,11 +20,11 @@ function vkPressed() {
   Linking.openURL('https://vk.com/arkham_cardgame');
 }
 function telegramPressed() {
-  Linking.openURL('https://t.me/Arkham_Cardgame');
+  Linking.openURL('https://t.me/arkhamhorrorlcg_ru_chat');
 }
 
-function tipPressed() {
-  Linking.openURL('https://www.tinkoff.ru/sl/6EktRkjsRap');
+function ruTipPressed() {
+  Linking.openURL('https://www.tinkoff.ru/cf/7jxHy5hZGXH');
 }
 
 function esYoutubePressed() {
@@ -63,7 +63,7 @@ export default function SocialBlock() {
           <DeckButton
             icon="headset"
             color="gold"
-            onPress={tipPressed}
+            onPress={ruTipPressed}
             title="Донат на аудио"
             detail="Поддержать авторов аудиосопровождения"
           />

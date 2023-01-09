@@ -26,8 +26,32 @@ function linkPressed(url: string) {
   Linking.openURL(url);
 }
 
-function getReleaseNotes(width: number): ReleaseNote[] {
+function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
+  const eoeRu: ReleaseNote = {
+    date: new Date('2022-10-26'),
+    title: 'Озвучка «На краю земли»',
+    faction: 'neutral',
+    lines: [
+      'Друзья, мы сделали это!',
+      'Мы собрали достаточно средств, чтобы записать профессиональную озвучку кампании «На краю земли» голосом Алексея Тихонова, который вы могли слышать в играх «Особняки безумия» и «Тайны Аркхэма». И эта озвучка уже доступна в приложении!',
+      'Если вы хотите помочь со сбором денег на озвучку других циклов (у нас ещё не озвучен «Данвич» и грядут гигантские «Алые Ключи»), вы найдёте ссылку на актуальный сбор на экране настроек приложения.',
+    ],
+  };
   return [
+
+    {
+      date: new Date('2022-11-18'),
+      title: c('releaseNotes').t`The Scarlet Keys Campaign`,
+      faction: 'survivor',
+      lines: [
+        c('releaseNotes').t`This release adds support for the newly released Scarlet Keys campaign expansion.`,
+        c('releaseNotes').t`- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation.`,
+        c('releaseNotes').t`- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered.`,
+        c('releaseNotes').t`- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions).`,
+        c('releaseNotes').t`As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible.`,
+      ],
+    },
+    ...(lang === 'ru' ? [eoeRu] : []),
     {
       date: new Date('2022-09-20'),
       title: c('releaseNotes').t`Preview Cards`,
@@ -257,7 +281,8 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
 }
 export default function ReleaseNotesView({ componentId }: { componentId: string }) {
   const { backgroundStyle, width } = useContext(StyleContext);
-  const releaseNotes = useMemo(() => getReleaseNotes(width - s * 4), [width]);
+  const { lang } = useContext(LanguageContext);
+  const releaseNotes = useMemo(() => getReleaseNotes(lang, width - s * 4), [width, lang]);
   return (
     <View style={[{ flex: 1 }, backgroundStyle]}>
       <ScrollView style={[backgroundStyle, space.paddingSideS, space.paddingTopS]}>

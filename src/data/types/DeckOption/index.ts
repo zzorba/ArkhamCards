@@ -7,7 +7,7 @@ import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from '@app_constants';
 import FilterBuilder from '@lib/filters';
-import { combineQueriesOpt, where } from '@data/sqlite/query';
+import { combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
 
 export function localizeDeckOptionError(error?: string): undefined | string {
   if (!error) {
@@ -49,6 +49,12 @@ export function localizeOptionName(real_name: string): string {
       return t`Cursed`;
     case 'Blessed and Cursed':
       return t`Blessed and Cursed`;
+    case 'Asset Class Choice':
+      return t`Asset Class Choice`;
+    case 'Skill Class Choice':
+      return t`Skill Class Choie`;
+    case 'Event Class Choice':
+      return t`Event Class Choice`;
     default:
       return real_name;
   }
@@ -245,7 +251,15 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
-      ...(this.option.level ? this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true) : []),
+      ...(this.option.level ?
+        [
+          combineQueries(
+            where('c.customization_options is not null'),
+            this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true),
+            'or'
+          ),
+        ] : []
+      ),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);

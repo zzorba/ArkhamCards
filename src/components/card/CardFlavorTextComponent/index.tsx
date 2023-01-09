@@ -29,6 +29,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import FlavorMiniCapsNode from './FlavorMiniCapsNode';
 import FlavorStrikeNode from './FlavorStrikeNode';
 import FlavorRedNode from './FlavorRedNode';
+import FlavorTypewriterNode from './FlavorTypewriterNode';
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -113,6 +114,20 @@ function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   };
 }
 
+const TypewriterHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<typewriter>([\\s\\S]+?)<\\/typewriter>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorTypewriterNode(style),
+  };
+};
+
+
 const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>([\\s\\S]+?)<\\/fancy>')),
@@ -172,18 +187,6 @@ const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorBlockquoteHtmlTagNode,
 };
 
-function MiniCapsHtmlTagRule(): MarkdownRule<WithChildren, State> {
-  return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
-    order: 2,
-    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-      return {
-        children: nestedParse(capture[1], state),
-      };
-    },
-    render: FlavorMiniCapsNode(),
-  };
-}
 function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
@@ -194,6 +197,17 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
       };
     },
     render: FlavorSmallCapsNode(style),
+  };
+}
+
+function MiniCapsHtmlTagRule(): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
+    order: 2,
+    parse: (capture: RegexComponents) => {
+      return { text: capture[1] };
+    },
+    render: FlavorMiniCapsNode,
   };
 }
 
@@ -287,6 +301,7 @@ export default function CardFlavorTextComponent(
         iTag: ItalicHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
         miniCapsTag: MiniCapsHtmlTagRule(),
+        typewriterTag: TypewriterHtmlTagRule(context),
         innsmouthTag: InnsmouthTagRule(context, sizeScale),
         gameTag: GameTagRule(context, sizeScale),
       }}
@@ -368,6 +383,65 @@ export default function CardFlavorTextComponent(
           },
         },
         Caveat: {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'Alegreya SC': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'AlegreyaSC-Medium': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            500: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'TT2020 Style E': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'TT2020StyleE-Regular': {
           fontWeights: {
             300: 'Regular',
             400: 'Regular',

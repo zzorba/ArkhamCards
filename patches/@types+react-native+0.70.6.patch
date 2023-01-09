@@ -1,11 +1,12 @@
 diff --git a/node_modules/@types/react-native/index.d.ts b/node_modules/@types/react-native/index.d.ts
-index b301eee..65b54a6 100755
+index e9cced2..d8ed279 100755
 --- a/node_modules/@types/react-native/index.d.ts
 +++ b/node_modules/@types/react-native/index.d.ts
-@@ -2386,6 +2386,8 @@ export interface ViewProps
-         Touchable,
+@@ -2566,6 +2566,9 @@ export interface ViewProps
+         PointerEvents,
          AccessibilityProps {
      children?: React.ReactNode;
++
 +    opacity?: number;
 +
      /**

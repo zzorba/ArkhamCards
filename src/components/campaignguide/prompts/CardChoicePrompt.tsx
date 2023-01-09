@@ -15,7 +15,7 @@ import ScenarioStepContext from '../ScenarioStepContext';
 import { CardChoiceInput, CardSearchQuery, CardQuery } from '@data/scenario/types';
 import { LatestDecks, ProcessedScenario } from '@data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
-import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
+import FilterBuilder, { NON_STORY_FILTER, UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/types/Card';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
@@ -47,6 +47,9 @@ function basicQuery(q: CardSearchQuery): Brackets[] {
   }
   if (q.vengeance) {
     result.push(VENGEANCE_FILTER);
+  }
+  if (q.non_story_only) {
+    result.push(NON_STORY_FILTER);
   }
   if (q.exclude_code) {
     const codeParts = map(q.exclude_code, code => `(c.code != '${code}')`).join(' AND ');

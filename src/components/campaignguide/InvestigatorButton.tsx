@@ -12,7 +12,7 @@ import { TouchableShrink } from '@components/core/Touchables';
 interface Props {
   investigator: Card;
   value: string | undefined;
-  widget: 'shuffle';
+  widget?: 'shuffle';
   disabled?: boolean;
   color?: 'dark' | 'light';
   onPress: (investigator: Card) => void;
@@ -48,7 +48,7 @@ export default function InvestigatorButton({
               color={COLORS.white}
             />
           </View>
-        )}
+        ) }
       </CompactInvestigatorRow>
     </TouchableShrink>
   );

@@ -7,11 +7,13 @@ export interface TypographyColors {
   D30: ColorValue;
   L30: ColorValue;
   L20: ColorValue;
+  L10: ColorValue;
   lightText: ColorValue;
   darkText: ColorValue;
 }
 
 export interface Typography {
+  cursive: TextStyle;
   searchLabel: TextStyle;
   smallLabel: TextStyle;
   smallButtonLabel: TextStyle;
@@ -47,6 +49,7 @@ export interface Typography {
   dark: TextStyle;
   light: TextStyle;
   inverted: TextStyle;
+  invertedLight: TextStyle,
 }
 
 const ITALIC_FONT_STYLE = Platform.OS === 'ios' ? 'italic' : undefined;
@@ -59,6 +62,12 @@ export default function(
   lang: string
 ): Typography {
   return StyleSheet.create({
+    cursive: {
+      fontFamily: 'Caveat',
+      fontSize: Math.ceil(22 * fontScale),
+      lineHeight: Math.ceil(24 * fontScale),
+      color: colors.D30,
+    },
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(16 * fontScale),
@@ -67,7 +76,7 @@ export default function(
     },
     smallLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: Math.ceil(14 * fontScale),
+      fontSize: Math.ceil(15 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       letterSpacing: 0.3,
       color: colors.lightText,
@@ -223,6 +232,9 @@ export default function(
     },
     inverted: {
       color: colors.L30,
+    },
+    invertedLight: {
+      color: colors.L10,
     },
     white: {
       color: COLORS.white,

@@ -11,8 +11,8 @@ import {
   RenderState,
   InlineNode,
 } from 'react-native-markdown-view';
-import { Table, Cell, Row, TableWrapper } from 'react-native-table-component';
-
+import { TextStyle, ViewStyle } from 'react-native';
+import { Table, Cell, Row } from 'react-native-table-component';
 
 import { WithChildren, WithIconName, WithText, State } from './types';
 import ArkhamIconNode from './ArkhamIconNode';
@@ -30,8 +30,9 @@ import SmallCapsNode from './SmallCapsNode';
 import CenterNode from './CenterNode';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import RedNode from './RedNode';
+import FlavorMiniCapsNode from '../CardFlavorTextComponent/FlavorMiniCapsNode';
+import FlavorTypewriterNode from '../CardFlavorTextComponent/FlavorTypewriterNode';
 
 const BASE_ORDER = 0;
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
@@ -115,6 +116,17 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
       };
     },
     render: SmallCapsNode(style),
+  };
+}
+
+function MiniCapsHtmlTagRule(): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<minicaps>([\\s\\S]+?)<\\/minicaps>')),
+    order: 2,
+    parse: (capture: RegexComponents) => {
+      return { text: capture[1] };
+    },
+    render: FlavorMiniCapsNode,
   };
 }
 
@@ -219,6 +231,19 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
 };
 
 
+const TypewriterHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<typewriter>([\\s\\S]+?)<\\/typewriter>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorTypewriterNode(style),
+  };
+};
+
 function UnderlineHtmlTagRule(usePingFang: boolean, style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
@@ -265,13 +290,11 @@ interface Props {
   noBullet?: boolean;
 }
 
-
-
 function renderTableCell(cell: InlineNode, row: number, column: number, rowCount: number, columnCount: number, output: OutputFunction, state: RenderState, styles: any) {
   const cellStyle: ViewStyle[] = [styles.tableCell]
   const contentStyle: TextStyle[] = [styles.tableCellContent]
 
-  if (row % 2 == 0) {
+  if (row % 2 === 0) {
     cellStyle.push(styles.tableCellEvenRow)
     contentStyle.push(styles.tableCellContentEvenRow)
   } else {
@@ -279,7 +302,7 @@ function renderTableCell(cell: InlineNode, row: number, column: number, rowCount
     contentStyle.push(styles.tableCellContentOddRow)
   }
 
-  if (column % 2 == 0) {
+  if (column % 2 === 0) {
     cellStyle.push(styles.tableCellEvenColumn)
     contentStyle.push(styles.tableCellContentEvenColumn)
   } else {
@@ -287,15 +310,15 @@ function renderTableCell(cell: InlineNode, row: number, column: number, rowCount
     contentStyle.push(styles.tableCellContentOddColumn)
   }
 
-  if (row == 1) {
+  if (row === 1) {
     cellStyle.push(styles.tableHeaderCell)
     contentStyle.push(styles.tableHeaderCellContent)
-  } else if (row == rowCount) {
+  } else if (row === rowCount) {
     cellStyle.push(styles.tableCellLastRow)
     contentStyle.push(styles.tableCellContentLastRow)
   }
 
-  if (column == columnCount) {
+  if (column === columnCount) {
     cellStyle.push(styles.tableCellLastColumn)
     contentStyle.push(styles.tableCellContentLastColumn)
   }
@@ -316,30 +339,53 @@ const TableRule: MarkdownRule<TableNode, State> = {
   order: 0,
   render: (node: TableNode, output: OutputFunction, state: RenderState & State, styles: any) => (
     <Table key={state.key} borderStyle={{ borderWidth: 1 }} style={{ width: '100%' }}>
-      {[<Row id={1} key={1} style={{ flexDirection: 'row' }} data=
-        {node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
-      />].concat(node.cells.map((cells, row) => (
-        <Row id={row + 2} key={row + 2} style={{ flexDirection: 'row' }} data=
-          {cells.map((cell, column) => renderTableCell(cell, row + 2, column + 1, node.cells.length + 1, cells.length, output, state, styles))}
+      {[
+        <Row
+          id={1}
+          key={1}
+          style={{ flexDirection: 'row' }}
+          data={node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
+        />,
+      ].concat(node.cells.map((cells, row) => (
+        <Row
+          id={row + 2}
+          key={row + 2}
+          style={{ flexDirection: 'row' }}
+          data={cells.map((cell, column) => renderTableCell(cell, row + 2, column + 1, node.cells.length + 1, cells.length, output, state, styles))}
         />
       )))}
     </Table>
   ),
 }
 
+const WEIRD_BULLET_REGEX = /\\u2022/g;
+const ICON_HTML_REGEX = /<span class="icon-([^"]+?)"><\/span>/g;
+const ARRAY_XML_REGEX = /&rarr;/g;
+const BAD_LINEBREAK_REGEX = /\/n/g;
+const DIVIDER_REGEX = /^---*$/gm;
+const INDENTED_BULLET_REGEX = /(^\s?--|^-—\s+)([^0-9].+)$/gm;
+const BULLET_REGEX = /(^\s?-|^—\s+)([^0-9].+)$/gm;
+const GUIDE_BULLET_REGEX = /(^\s?=|^=\s+)([^0-9].+)$/gm;
+const PARAGRAPH_BULLET_REGEX = /(<p>- )|(<p>–)/gm;
+
 export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
   const cleanTextA = text
-    .replace(/\\u2022/g, '•')
-    .replace(/<span class="icon-([^"]+?)"><\/span>/g, '[$1]')
-    .replace(/&rarr;/g, '→')
-    .replace(/\/n/g, '\n')
-    .replace(/^---*$/gm, '<hr>');
+    .replace(WEIRD_BULLET_REGEX, '•')
+    .replace(ICON_HTML_REGEX, '[$1]')
+    .replace(ARRAY_XML_REGEX, '→')
+    .replace(BAD_LINEBREAK_REGEX, '\n')
+    .replace(DIVIDER_REGEX, '<hr>');
   const cleanText = noBullet ? cleanTextA :
-    cleanTextA.replace(/(^\s?-|^—\s+)([^0-9].+)$/gm,
+    cleanTextA.replace(INDENTED_BULLET_REGEX,
+      onLinkPress ? '\t<span class="icon-bullet"></span> $2' : '\t[bullet] $2'
+    ).replace(BULLET_REGEX,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    ).replace(/(<p>- )|(<p>–)/gm, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+    ).replace(GUIDE_BULLET_REGEX,
+      onLinkPress ? '<span class="icon-guide_bullet"></span> $2' : '[guide_bullet] $2'
+    ).replace(PARAGRAPH_BULLET_REGEX, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
+
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
   }, [onLinkPress, context]);
@@ -360,7 +406,9 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       emTag: EmphasisHtmlTagRule(usePingFang, context),
       iTag: ItalicHtmlTagRule(usePingFang, context),
       table: TableRule,
+      typewriterTag: TypewriterHtmlTagRule(context),
       smallcapsTag: SmallCapsHtmlTagRule(context),
+      minicapsTag: MiniCapsHtmlTagRule(),
       center: CenterHtmlTagRule,
       right: RightHtmlTagRule,
       arkhamIcon: ArkhamIconRule(usePingFang, context, sizeScale, !!onLinkPress),
@@ -445,6 +493,34 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             italic: 'Light',
           },
         },
+        'TT2020 Style E': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
+        'TT2020StyleE-Regular': {
+          fontWeights: {
+            300: 'Regular',
+            400: 'Regular',
+            500: 'Regular',
+            600: 'Regular',
+            700: 'Regular',
+            normal: 'Regular',
+          },
+          fontStyles: {
+            normal: '',
+            italic: '',
+          },
+        },
         Courier: {
           fontWeights: {
             300: 'Light',
@@ -470,6 +546,37 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             900: 'Black',
             normal: 'Regular',
             bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'Alegreya SC': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'AlegreyaSC-Medium': {
+          fontWeights: {
+            300: 'Medium',
+            400: 'Medium',
+            500: 'Medium',
+            700: 'Medium',
+            800: 'Medium',
+            900: 'Medium',
+            normal: 'Medium',
+            bold: 'Medium',
           },
           fontStyles: {
             normal: '',

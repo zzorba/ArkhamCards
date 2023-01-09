@@ -706,11 +706,39 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'seeping_nightmares':
         return this.edgeIcon('sleeping_nightmares', size, color);
       case 'tsk':
-      case 'tskc':
       case 'tskp':
         return this.scarletIcon('tsk', size, color);
-      //case 'tskc':
-      //  return this.scarletIcon('tskc', size, color);
+      case 'tskc':
+      case 'riddles_and_rain':
+      case 'mysteries_abound':
+      case 'agents_of_the_outside':
+      case 'beyond_the_beyond':
+      case 'congress_of_the_keys':
+      case 'dancing_mad':
+      case 'dead_heat':
+      case 'dogs_of_war':
+      case 'outsiders':
+      case 'scarlet_sorcery':
+      case 'spatial_anomaly':
+      case 'strange_happening':
+      case 'secret_war':
+      case 'shadow_of_a_doubt':
+      case 'without_a_trace':
+      case 'agents_of_yuggoth':
+      case 'cleanup_crew':
+      case 'crimson_conspiracy':
+      case 'dark_veiling':
+      case 'dealings_in_the_dark':
+      case 'globetrotting':
+      case 'on_thin_ice':
+      case 'strange_happenings':
+      case 'red_coterie':
+      case 'sanguine_shadows':
+      case 'spreading_corruption':
+        return this.scarletIcon(encounter_code, size, color);
+      case 'shades_of_suffering':
+      case 'shades_of_sorrow':
+        return this.scarletIcon('shades_of_sorrow', size, color);
       case 'arkham_ma':
         return this.scarletIcon('arkham', size, color);
       case 'constantinople':
@@ -718,6 +746,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.scarletIcon('constantinople', size, color);
       case 'bermuda':
         return this.scarletIcon('bermuda_2', size, color);
+      case 'bermuda_triangle':
+        return this.scarletIcon('bermuda', size, color);
       case 'alexandria':
       case 'anchorage':
       case 'bombay':

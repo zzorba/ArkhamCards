@@ -4,12 +4,12 @@ import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import FilterBuilder, { CardFilterData } from '@lib/filters';
+import FilterBuilder, { CardFilterData, FilterState } from '@lib/filters';
 import { getFilterState, getCardFilterData, AppState } from '@reducers';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
-export function useFilterButton({ componentId, filterId, baseQuery, modal }: { componentId: string, filterId: string, baseQuery?: Brackets, modal?: boolean }): [boolean, () => void] {
+export function useFilterButton({ componentId, filterId, baseQuery, modal }: { componentId: string, filterId: string, baseQuery?: (filters: FilterState | undefined) => Brackets, modal?: boolean }): [boolean, () => void] {
   const { useCardTraits } = useContext(LanguageContext);
   const filterSelector = useCallback((state: AppState): [boolean, CardFilterData | undefined] => {
     const cardData = getCardFilterData(state, filterId);

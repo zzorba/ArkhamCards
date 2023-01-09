@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { filter, forEach, find } from 'lodash';
+import { filter, forEach } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { msgid, ngettext, t, c } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
@@ -37,7 +37,6 @@ interface Props {
   onlyInvestigators?: string[];
   searchOptions?: SearchOptions;
   customFooter?: React.ReactNode;
-  hideCustomInvestigator?: boolean;
   includeParallelInvestigators?: boolean;
 }
 
@@ -141,7 +140,6 @@ export default function InvestigatorsListComponent({
   onlyInvestigators,
   searchOptions,
   customFooter,
-  hideCustomInvestigator,
   includeParallelInvestigators,
 }: Props) {
   const { typography } = useContext(StyleContext);
@@ -266,7 +264,7 @@ export default function InvestigatorsListComponent({
       }
     }
     return results;
-  }, [filterInvestigator, hideCustomInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
+  }, [filterInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
   const renderSectionFooter = useCallback((item: FooterItem) => {
     if (!item.nonCollectionCount) {

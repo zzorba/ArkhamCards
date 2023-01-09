@@ -368,6 +368,19 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Fatal Mirage`, code: 'fatal_mirage_2', pack_code: 'eoec' },
       { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
     ];
+    case TSK:
+      return [
+        { name: t`Prologue: Rain and Riddles`, code: 'riddles_and_rain', pack_code: 'tskc' },
+        { name: t`Dead Heat`, code: 'marrakesh', pack_code: 'tskc' },
+        { name: t`Sanguine Shadows`, code: 'buenos_aires', pack_code: 'tskc' },
+        { name: t`Dealings in the Dark`, code: 'istanbul', pack_code: 'tskc' },
+        { name: t`Dancing Mad`, code: 'havana', pack_code: 'tskc' },
+        { name: t`On Thin Ice`, code: 'anchorage', pack_code: 'tskc' },
+        { name: t`Dogs of War`, code: 'alexandria', pack_code: 'tskc' },
+        { name: t`Shades of Suffering`, code: 'kuala_lampur', pack_code: 'tskc' },
+        { name: t`Without a Trace`, code: 'bermuda_triangle', pack_code: 'tskc' },
+        { name: t`Congress of the Keys`, code: 'tunguska', pack_code: 'tskc' },
+      ];
     case DARK_MATTER:
       return [
         { name: t`Prologue`, code: 'dm_prologue', pack_code: 'zdm', interlude: true },
@@ -383,7 +396,6 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
         { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
       ];
-
     case CYCLOPEAN_FOUNDATIONS:
       return [
         { name: t`Prologue`, code: 'cf_prologue', pack_code: 'zcf', interlude: true },
@@ -420,9 +432,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       ];
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
-    case DARK_MATTER:
     case TDE:
-    case TSK:
     case CUSTOM:
     case STANDALONE:
     case GOB:
@@ -643,9 +653,17 @@ export function getCampaignLog(
           t`Expedition Team`,
         ],
       };
+    case TSK:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Keys`,
+          t`Unlocked Locations`,
+        ],
+        counts: [t`Time Passed`],
+      };
     case GOB:
     case FOF:
-    case TSK:
       return {
         sections: [
           t`Campaign Notes`,
@@ -734,10 +752,10 @@ const EOE_BAG: ChaosBagByDifficulty = {
 };
 
 const TSK_BAG: ChaosBagByDifficulty = {
-  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
-  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
-  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
-  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {

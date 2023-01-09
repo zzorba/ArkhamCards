@@ -468,7 +468,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
   TIC,
   EOE,
-  // TSK,
+  TSK,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,
@@ -505,13 +505,14 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  // TSK,
+  TSK,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  TSK,
 ]);
 
 export interface CustomCampaignLog {
@@ -657,7 +658,7 @@ export interface SetCurrentTabooSetAction {
 export const SET_MISC_SETTING = 'SET_MISC_SETTING';
 
 export type MiscRemoteSetting = 'single_card' | 'alphabetize' | 'colorblind' | 'sort_quotes' | 'ignore_collection' | 'custom_content' | 'campaign_show_deck_id';
-export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'map_list' | 'draft_from_collection' | 'low_memory';
+export type MiscLocalSetting = 'justify' | 'hide_campaign_decks' | 'hide_arkhamdb_decks' | 'android_one_ui_fix' | 'card_grid' | 'beta1' | 'draft_grid' | 'map_list' | 'draft_from_collection' | 'low_memory' | 'search_english';
 export type MiscSetting = MiscRemoteSetting | MiscLocalSetting;
 export interface SetMiscSettingAction {
   type: typeof SET_MISC_SETTING;
@@ -866,6 +867,7 @@ export interface EditDeckState {
   nameChange?: string;
   descriptionChange?: string;
   tabooSetChange?: number;
+  tagsChange?: string;
   xpAdjustment: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
@@ -1426,6 +1428,12 @@ interface ReduxMigrationV1Action {
   chaosBags: {
     [uuid: string]: ChaosBagResults;
   };
+}
+
+export const SET_INVESTIGATOR_SORT = 'SET_INVESTIGATOR_SORT';
+export interface SetInvestigatorSortAction {
+  type: typeof SET_INVESTIGATOR_SORT;
+  sort: SortType;
 }
 
 export type ReduxMigrationAction = ReduxMigrationV1Action;

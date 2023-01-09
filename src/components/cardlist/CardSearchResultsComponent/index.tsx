@@ -29,7 +29,7 @@ const DIGIT_REGEX = /^[0-9]+$/;
 interface Props {
   componentId: string;
   deckId?: DeckId;
-  baseQuery?: Brackets;
+  baseQuery?: (filters: FilterState | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSort?: SortType;
@@ -234,6 +234,7 @@ export default function({
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
   const customContent = useSettingValue('custom_content');
+  const searchEnglish = useSettingValue('search_english');
   const showCustomContent = customContent && (!deckId || deckId.local);
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
   const [searchState, setSearchState] = useState<SearchState>(EMPTY_SEARCH_STATE);
@@ -266,12 +267,18 @@ export default function({
       return combineQueriesOpt(parts, 'and');
     }
     const safeSearchTerm = `%${searchNormalize(searchTerm, lang)}%`;
-    parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
+    const searchRealName = lang !== 'en' && searchEnglish;
+    parts.push(where(
+      searchRealName ?
+        '(c.s_search_name like :searchTerm OR c.s_search_real_name like :searchTerm)' :
+        'c.s_search_name like :searchTerm',
+      { searchTerm: safeSearchTerm }
+    ));
     if (searchBack) {
       parts.push(where([
-        'c.s_search_name_back like :searchTerm',
-        '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
-        '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
+        searchRealName ? 'c.s_search_name_back like :searchTerm OR c.s_search_real_name_back like :searchTerm' : 'c.s_search_name_back like :searchTerm',
+        searchRealName ? '(c.linked_card is not null AND (linked_card.s_search_name like :searchTerm OR linked_card.s_search_real_name like :searchTerm))' : '(c.linked_card is not null AND linked_card.s_search_name like :searchTerm)',
+        searchRealName ? '(c.linked_card is not null AND (linked_card.s_search_name_back like :searchTerm OR linked_card.s_search_real_name_back like :searchTerm))' : '(c.linked_card is not null AND linked_card.s_search_name_back like :searchTerm)',
       ].join(' OR '), { searchTerm: safeSearchTerm }
       ));
     }
@@ -296,7 +303,7 @@ export default function({
       }
     }
     return combineQueriesOpt(parts, 'or');
-  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang]);
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang, searchEnglish]);
 
   const controls = (
     <SearchOptions
@@ -324,7 +331,7 @@ export default function({
       }
     }
     if (baseQuery) {
-      queryParts.push(baseQuery);
+      queryParts.push(baseQuery(filters));
     }
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
@@ -340,7 +347,7 @@ export default function({
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosMode, includeDuplicates, showCustomContent]);
+  }, [baseQuery, filters, mythosToggle, selectedSort, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
   const renderFabIcon = useCallback(() => (
@@ -393,7 +400,7 @@ export default function({
             headerHeight={headerHeight}
             showNonCollection={showNonCollection}
             storyOnly={mode === 'story'}
-            sideDeck={mode === 'side'}
+            specialMode={mode === 'side' ? mode : undefined}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
             footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}

@@ -12,7 +12,6 @@ import CampaignGuideContext from '../CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space, { m } from '@styles/space';
-import { lessOrEq } from 'react-native-reanimated';
 
 interface Props {
   componentId: string;

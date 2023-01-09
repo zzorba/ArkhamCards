@@ -14,6 +14,7 @@ interface Props {
   loading?: boolean;
   growControl?: boolean;
   titleFirst?: boolean;
+  larger?: boolean;
 }
 
 function iconSize(icon: string) {
@@ -26,7 +27,7 @@ function iconSize(icon: string) {
       return 28;
   }
 }
-export default function DeckActionRow({ title, titleFirst, description, icon, last, control, loading, growControl }: Props) {
+export default function DeckActionRow({ title, titleFirst, description, icon, last, control, larger, loading, growControl }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, space.paddingRightS, { paddingTop: xs + s, paddingBottom: xs + s }, borderStyle, !last ? styles.border : undefined]}>
@@ -37,13 +38,13 @@ export default function DeckActionRow({ title, titleFirst, description, icon, la
           ) : icon }
         </View>
         <View style={styles.column}>
-          { !!description && !titleFirst && <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }
+          { !!description && !titleFirst && <Text style={[larger ? typography.text : typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }
           <View style={styles.row}>
             <Text style={[typography.large]}>
               { title }
             </Text>
           </View>
-          { !!description && !!titleFirst && <Text style={[typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }
+          { !!description && !!titleFirst && <Text style={[larger ? typography.text : typography.smallLabel, typography.italic, typography.dark]}>{ description }</Text> }
         </View>
       </View>
       { loading ? (

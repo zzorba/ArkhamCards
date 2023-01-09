@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch } from '@app/store';
 import { CampaignId, Customizations, Deck, DeckId, EditDeckState, ParsedDeck, Slots } from '@actions/types';
 import { useDeck } from '@data/hooks';
-import { useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
+import { Toggles, useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import { parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
@@ -29,6 +29,10 @@ import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
+
+export function xpString(xp: number): string {
+  return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
+}
 export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [string | undefined, string | undefined] {
   return useMemo(() => {
     if (!parsedDeck) {
@@ -38,17 +42,29 @@ export function useDeckXpStrings(parsedDeck?: ParsedDeck, totalXp?: boolean): [s
       const adjustedXp = totalXp ? parsedDeck.experience : parsedDeck.availableExperience;
       const unspent = parsedDeck.availableExperience - (parsedDeck.changes?.spentXp || 0);
       if (unspent === 0) {
-        return [t`${adjustedXp} XP`, t`0 unspent`];
+        return [
+          xpString(adjustedXp),
+          t`0 unspent`,
+        ];
       }
       if (unspent < 0) {
         const overspent = Math.abs(unspent);
-        return [t`${adjustedXp} XP`, t`${overspent} overspent`];
+        return [
+          xpString(adjustedXp),
+          t`${overspent} overspent`,
+        ];
       }
       const unspentXpStr = unspent;
-      return [t`${adjustedXp} XP`, ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspent)];
+      return [
+        xpString(adjustedXp),
+        ngettext(msgid`${unspentXpStr} unspent`, `${unspentXpStr} unspent`, unspent),
+      ];
     }
     const adjustedXp = parsedDeck.experience;
-    return [t`${adjustedXp} XP`, undefined];
+    return [
+      xpString(adjustedXp),
+      undefined,
+    ];
   }, [parsedDeck, totalXp]);
 }
 
@@ -79,7 +95,7 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
     if (!meta || !slots || !cards) {
       return undefined;
     }
-    return parseCustomizations(meta, slots, cards, previousMeta)[0];
+    return parseCustomizations(meta, slots, cards, previousMeta, deck?.previousDeck?.slots)[0];
   }, [meta, slots, previousMeta, cards]);
 }
 
@@ -94,7 +110,7 @@ export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' |
     if (mode === 'ignore') {
       return [
         state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-        0
+        0,
       ];
     }
     return [
@@ -389,6 +405,7 @@ export function useDeckEditState({
     const metaChanged = !deepEqual(deckEdits.meta, deck.meta || {});
     setHasPendingEdits(
       (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tagsChange !== undefined && deck.tags !== deckEdits.tagsChange) ||
       (deckEdits.descriptionChange && deck.description_md !== deckEdits.descriptionChange) ||
       (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
       (deck.previousDeckId && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
@@ -541,4 +558,91 @@ export function useShowDrawWeakness({ componentId, id, campaignId, deck, showAle
   }, [componentId, campaignId, investigator, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
 
   return campaignId ? showCampaignWeaknessDialog : drawWeakness;
+}
+
+
+interface UpdateDeckAction {
+  type: 'update-deck';
+  initialTags: string[];
+}
+
+interface SetToggleAction {
+  type: 'set-toggle';
+  key: string | number;
+  value: boolean;
+}
+
+interface ToggleAction {
+  type: 'toggle';
+  key: string;
+}
+
+interface DeckTagsState {
+  deckTags: Toggles;
+  initialTags: string[];
+  dirty: boolean;
+}
+
+type DeckTagsAction = UpdateDeckAction | SetToggleAction | ToggleAction;
+
+function isDirty(originalDeckTags: string[], tags: Toggles) {
+  return !!find(originalDeckTags, t => !tags[t]) ||
+    !!find(tags, (value, t) => !!value && !find(originalDeckTags, t2 => t === t2));
+}
+
+interface DeckTagsResult {
+  deckTags: Toggles;
+  toggleDeckTag: (tag: string) => void;
+  setDeckTag: (tag: string, value: boolean) => void;
+  setInitialTags: (tags: string[]) => void;
+  dirty: boolean;
+}
+
+export function useDeckTags(): DeckTagsResult {
+  const [{ deckTags, dirty }, updateTags] = useReducer(
+    (state: DeckTagsState, action: DeckTagsAction): DeckTagsState => {
+      switch (action.type) {
+        case 'set-toggle':
+        case 'toggle': {
+          const toggles = {
+            ...state.deckTags,
+            [action.key]: action.type === 'set-toggle' ? action.value : !state.deckTags[action.key],
+          };
+          return {
+            initialTags: state.initialTags,
+            deckTags: toggles,
+            dirty: isDirty(state.initialTags, toggles),
+          };
+        }
+        case 'update-deck': {
+          const toggles: Toggles = {};
+          forEach(action.initialTags, t => {
+            toggles[t] = true;
+          });
+          return {
+            initialTags: action.initialTags,
+            deckTags: toggles,
+            dirty: false,
+          };
+        }
+      }
+    },
+    { initialTags: [], deckTags: {}, dirty: false },
+  );
+  const toggleDeckTag = useCallback((tag: string) => {
+    updateTags({ type: 'toggle', key: tag })
+  }, [updateTags]);
+  const setDeckTag = useCallback((tag: string, value: boolean) => {
+    updateTags({ type: 'set-toggle', key: tag, value });
+  }, [updateTags]);
+  const setInitialTags = useCallback((initialTags: string[]) => {
+    updateTags({ type: 'update-deck', initialTags });
+  }, [updateTags]);
+  return {
+    deckTags,
+    dirty,
+    toggleDeckTag,
+    setDeckTag,
+    setInitialTags,
+  };
 }

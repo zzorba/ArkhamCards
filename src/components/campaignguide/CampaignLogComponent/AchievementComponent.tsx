@@ -54,7 +54,7 @@ export default function AchievementComponent({ achievement }: Props) {
             <ArkhamSwitch value={binaryValue} onValueChange={onBinaryToggle} />
           </View>
           <View style={[space.paddingLeftM, styles.column]}>
-            <Text style={[typography.text, typography.bold]}>{ achievement.title }</Text>
+            <CardTextComponent sizeScale={1.1} text={`<b>${achievement.title}</b>`} />
             <CardTextComponent text={achievement.text} />
           </View>
         </View>

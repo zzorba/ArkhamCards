@@ -17,14 +17,14 @@ export default function CampaignGuideTextComponent({ text, flavor, sizeScale }: 
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
         color={colors.darkText}
-        sizeScale={sizeScale || 1.05}
+        sizeScale={sizeScale || 1.1}
       />
     );
   }
   return (
     <CardTextComponent
       text={text.replace(/\n/g, '\n\n')}
-      sizeScale={sizeScale || 1.05}
+      sizeScale={sizeScale || 1.1}
     />
   );
 }

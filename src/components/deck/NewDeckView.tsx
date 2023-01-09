@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
-import { SORT_BY_PACK, SortType , Deck, CampaignId } from '@actions/types';
+import { SortType , Deck, CampaignId } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';
@@ -14,6 +14,9 @@ import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInvestigatorSort } from '@reducers/index';
+import { setInvestigatorSort } from './actions';
 
 export interface NewDeckProps {
   campaignId: CampaignId | undefined;
@@ -26,7 +29,11 @@ type Props = NewDeckProps & NavigationProps;
 
 function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_PACK);
+  const selectedSort = useSelector(getInvestigatorSort);
+  const dispatch = useDispatch();
+  const sortChanged = useCallback((sort: SortType) => {
+    dispatch(setInvestigatorSort(sort))
+  }, [dispatch]);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();

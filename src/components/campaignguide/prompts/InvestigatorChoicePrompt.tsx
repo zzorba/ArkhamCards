@@ -5,13 +5,15 @@ import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListCompo
 import ScenarioStepContext from '../ScenarioStepContext';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
+import TraumaSummary from '@components/campaign/TraumaSummary';
 
 interface Props extends ChoiceListComponentProps {
   investigators?: Card[];
+  includeTrauma?: boolean;
 }
 
-export default function InvestigatorChoicePrompt({ investigators, ...otherProps }: Props) {
-  const { scenarioInvestigators } = useContext(ScenarioStepContext);
+export default function InvestigatorChoicePrompt({ investigators, includeTrauma, ...otherProps }: Props) {
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const { colors } = useContext(StyleContext);
   return (
     <ChoiceListComponent
@@ -23,6 +25,7 @@ export default function InvestigatorChoicePrompt({ investigators, ...otherProps 
           name: investigator.name,
           gender: investigator.gender,
           color: colors.faction[investigator.factionCode()].background,
+          component: includeTrauma ? <TraumaSummary trauma={campaignLog.traumaAndCardData(investigator.code)} investigator={investigator} whiteText hideNone /> : undefined,
         };
       })}
     />

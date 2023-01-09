@@ -103,6 +103,18 @@ function navigationOptions(
   };
 }
 
+const SPECIAL_SCENARIOS: { [code: string]: string | undefined } = {
+  marrakesh: 'dead_heat',
+  buenos_aires: 'sanguine_shadows',
+  istanbul: 'dealings_in_the_dark',
+  havana: 'dancing_mad',
+  anchorage: 'on_thin_ice',
+  alexandria: 'dogs_of_war',
+  kuala_lampur: 'shades_of_suffering',
+  bermuda_triangle: 'without_a_trace',
+  tunguska: 'congress_of_the_keys',
+}
+
 function TarotCardButton({
   card,
   flipped,
@@ -129,7 +141,7 @@ function TarotCardButton({
     showTarotCard(card.id);
   }, [card.id, showTarotCard]);
   const [icon, title, valueLabel] = useMemo(() => {
-    const scenarioIcon = scenario ? <EncounterIcon encounter_code={scenario} size={24} color={colors.M} /> : undefined;
+    const scenarioIcon = scenario ? <EncounterIcon encounter_code={SPECIAL_SCENARIOS[scenario] || scenario} size={24} color={colors.M} /> : undefined;
     if (!flipped) {
       return [
         scenarioIcon || 'special_cards',

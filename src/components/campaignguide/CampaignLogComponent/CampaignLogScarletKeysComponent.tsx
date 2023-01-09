@@ -1,6 +1,6 @@
 import React, { useMemo, useContext } from 'react';
 import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
-import { find, flatMap, map, stubString } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -27,12 +27,12 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
   }
   return (
     <>
-      <View style={[styles.mainRow, { borderBottomWidth: 2, borderColor: colors.D10 }, space.marginBottomS, space.paddingSideS, space.marginSideS]}>
-        <Text style={[typography.mediumGameFont]}>
-          { t`Key` }
+      <View style={[styles.mainRow, space.marginBottomS, space.paddingSideS]}>
+        <Text style={[typography.cursive, typography.underline, { color: colors.faction.survivor.text }]}>
+          { t`Name of Paradimensional Artifact` }
         </Text>
         <View style={styles.flexRow}>
-          <Text style={typography.mediumGameFont}>
+          <Text style={[typography.cursive, typography.underline, { color: colors.faction.survivor.text }]}>
             { t`Bearer` }
           </Text>
         </View>
@@ -41,19 +41,19 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
         const status = keyStatus[id];
         const bearer = status?.enemy ? campaignLog.campaignGuide.card(status.enemy)?.name : (status?.investigator && cards[status.investigator]?.name);
         return (
-          <View key={id} style={[styles.mainRow, space.paddingBottomS, space.paddingSideS]}>
+          <View key={id} style={[styles.mainRow, space.paddingBottomS, space.paddingSideS, { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.D10 }, space.marginBottomS]}>
             <View style={styles.row}>
-              <View style={[styles.box, { borderColor: colors.D10 }]}>
+              <View style={[styles.box, { borderColor: colors.D20 }]}>
                 { !!(status?.enemy || status?.investigator) && (
                   <View style={styles.icon}><AppIcon name={status.enemy ? 'dismiss' : 'check-thin'} size={24} color={colors.D30} /></View>
                 ) }
               </View>
-              <Text style={[typography.mediumGameFont, space.paddingLeftS]}>
+              <Text style={[typography.cursive, space.paddingLeftS]}>
                 { name }
               </Text>
             </View>
             <View style={styles.flexRow}>
-              <Text style={typography.text}>
+              <Text style={[typography.cursive]}>
                 { bearer }
               </Text>
             </View>

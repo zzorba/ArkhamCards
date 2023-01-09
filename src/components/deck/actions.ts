@@ -39,6 +39,9 @@ import {
   LocalDeck,
   GroupedUploadedDecks,
   CustomizationDecision,
+  SortType,
+  SET_INVESTIGATOR_SORT,
+  SetInvestigatorSortAction,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -48,12 +51,19 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import specialMetaSlots from '@data/deck/specialMetaSlots';
 import { parseCustomizationDecision } from '@lib/parseDeck';
 
+export function setInvestigatorSort(sort: SortType): SetInvestigatorSortAction {
+  return {
+    type: SET_INVESTIGATOR_SORT,
+    sort,
+  };
+}
 export interface ServerDeck {
   deckId: DeckId;
   hash: string | undefined;
   nextDeckId: DeckId | undefined;
   campaignId: UploadedCampaignId;
 }
+
 
 export function setServerDecks(
   uploadedDecks: GroupedUploadedDecks
@@ -285,6 +295,7 @@ export const saveDeckUpgrade = (
 export interface SaveDeckChanges {
   name?: string;
   description?: string;
+  tags?: string;
   slots?: Slots;
   ignoreDeckLimitSlots?: Slots;
   side?: Slots,
@@ -316,6 +327,7 @@ export const saveDeckChanges = (
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
           changes.side || deck.sideSlots || {},
+          changes.tags === undefined ? deck.tags : changes.tags,
         );
         dispatch(updateDeck(userId, actions, getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
@@ -334,6 +346,7 @@ export const saveDeckChanges = (
           (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta,
           (changes.description !== undefined && changes.description !== null) ? changes.description : deck.description_md,
           changes.side || deck.sideSlots || {},
+          changes.tags === undefined ? deck.tags : changes.tags,
         );
         handleAuthErrors<Deck>(
           savePromise,
@@ -367,6 +380,7 @@ export interface NewDeckParams {
   meta?: DeckMeta;
   problem?: DeckProblemType;
   description?: string;
+  tags?: string;
 }
 export const saveNewDeck = (
   userId: string | undefined,
@@ -383,7 +397,8 @@ export const saveNewDeck = (
           params.tabooSetId,
           params.meta,
           params.problem,
-          params.description
+          params.description,
+          params.tags
         );
         dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
         setTimeout(() => {
@@ -398,7 +413,8 @@ export const saveNewDeck = (
           params.problem,
           params.tabooSetId,
           params.meta,
-          params.description
+          params.description,
+          params.tags
         );
         handleAuthErrors<Deck>(
           newDeckPromise,
@@ -522,7 +538,7 @@ export function setIgnoreDeckSlot(id: DeckId, code: string, value: number): Upda
   };
 }
 
-export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function incDeckSlot(id: DeckId, code: string, limit: number | undefined, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -533,7 +549,7 @@ export function incDeckSlot(id: DeckId, code: string, limit: number | undefined,
   };
 }
 
-export function decDeckSlot(id: DeckId, code: string, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function decDeckSlot(id: DeckId, code: string, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -543,7 +559,7 @@ export function decDeckSlot(id: DeckId, code: string, mode: 'side' | 'ignore' | 
   };
 }
 
-export function setDeckSlot(id: DeckId, code: string, value: number, mode: 'side' | 'ignore' | undefined): UpdateDeckEditCountsAction {
+export function setDeckSlot(id: DeckId, code: string, value: number, mode?: 'side' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
@@ -640,7 +656,7 @@ export function updateDeckMeta(
         const slotUpdates = specialMetaSlots(investigator_code, update);
         if (slotUpdates) {
           forEach(slotUpdates, (count, code) => {
-            dispatch(setDeckSlot(id, code, count, false));
+            dispatch(setDeckSlot(id, code, count));
           });
         }
       }

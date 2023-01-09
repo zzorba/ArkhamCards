@@ -1,5 +1,5 @@
 import Config from 'react-native-config';
-import { flatMap, keys, map, omit } from 'lodash';
+import { flatMap, filter, keys, map, omit, trim } from 'lodash';
 
 import { getAccessToken } from './auth';
 import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
@@ -23,6 +23,17 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
       deck.meta = JSON.parse(deck.meta);
     } catch (e) {
       deck.meta = {};
+    }
+  }
+  if (deck.tags) {
+    if (deck.tags === '{}') {
+      deck.tags = undefined;
+    } else {
+      try {
+        deck.tags = filter(map(deck.tags.split(/[, ]/), x => trim(x)), x => !!x).join(' ');
+      } catch (e) {
+        deck.tags = undefined;
+      }
     }
   }
   if (apiDeck.previous_deck) {
@@ -143,10 +154,11 @@ export async function newCustomDeck(
   name: string,
   slots: { [code: string]: number },
   ignoreDeckLimitSlots: { [code: string]: number },
-  problem?: DeckProblemType,
-  tabooSetId?: number,
-  meta?: DeckMeta,
-  description?: string
+  problem: DeckProblemType | undefined,
+  tabooSetId: number | undefined,
+  meta: DeckMeta | undefined,
+  description: string | undefined,
+  tags: string | undefined
 ) {
   try {
     const deck = await newDeck(investigator, name, tabooSetId);
@@ -160,7 +172,9 @@ export async function newCustomDeck(
       0,
       tabooSetId,
       meta,
-      description
+      description,
+      undefined,
+      tags
     );
   } catch (e) {
     console.log(e);
@@ -207,11 +221,12 @@ export async function saveDeck(
   ignoreDeckLimitSlots: { [code: string]: number },
   problem: string,
   spentXp: number,
-  xpAdjustment?: number,
-  tabooSetId?: number,
-  meta?: DeckMeta,
-  description_md?: string,
-  side?: { [code: string]: number }
+  xpAdjustment: number | undefined,
+  tabooSetId: number | undefined,
+  meta: DeckMeta | undefined,
+  description_md: string | undefined,
+  side: { [code: string]: number } | undefined,
+  tags: string | undefined
 ): Promise<Deck> {
   const accessToken = await getAccessToken();
   if (!accessToken) {
@@ -239,6 +254,9 @@ export async function saveDeck(
   }
   if (side !== undefined) {
     bodyParams.side = JSON.stringify(side);
+  }
+  if (tags !== undefined) {
+    bodyParams.tags = tags;
   }
   const body = encodeParams(bodyParams);
   const json = await fetch(uri, {

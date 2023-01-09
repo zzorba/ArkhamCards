@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { filter, map, partition } from 'lodash';
+import { map, partition } from 'lodash';
 import { useSelector } from 'react-redux';
 import { c, t } from 'ttag';
 
@@ -9,13 +9,7 @@ import {
   TDE,
   TDEA,
   TDEB,
-  GOB,
   CampaignCycleCode,
-  DARK_MATTER,
-  ALICE_IN_WONDERLAND,
-  CROWN_OF_EGIL,
-  CALL_OF_THE_PLAGUEBEARER,
-  CYCLOPEAN_FOUNDATIONS,
   EOE,
 } from '@actions/types';
 import CycleItem from './CycleItem';
@@ -30,7 +24,6 @@ export interface SelectCampagaignProps {
   segment?: boolean;
   includeCustom?: boolean;
 }
-
 
 export default function CampaignTab({ campaignChanged, campaigns, segment, includeCustom }: SelectCampagaignProps) {
   const in_collection = useSelector(getPacksInCollection);

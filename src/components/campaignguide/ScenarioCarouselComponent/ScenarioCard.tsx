@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -38,7 +38,12 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
     const actualName = scenario.scenarioGuide.scenarioName();
     if (scenario.id.replayAttempt) {
       const attempt = scenario.id.replayAttempt + 1;
-      return [t`${ scenarioName } (Attempt ${ attempt })`, actualName];
+      return [
+        campaignMap ?
+          ngettext(msgid`${ scenarioName}: Visit ${ attempt }`, `${ scenarioName}: Visit ${ attempt }`, attempt) :
+          t`${ scenarioName } (Attempt ${ attempt })`,
+        actualName,
+      ];
     }
     return [scenarioName, actualName];
   }, [scenario, campaignMap]);

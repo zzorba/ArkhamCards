@@ -8,17 +8,12 @@ import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
+import ListItem from './ListItem';
 
-interface Props {
-  code: string;
+interface Props extends ListItem {
   noInvestigatorItems?: boolean;
-  investigator?: Card;
-  name: string;
-  color?: string;
-  gender?: Gender_Enum;
   choices: DisplayChoice[];
   choice?: number;
   optional: boolean;
@@ -32,6 +27,7 @@ interface Props {
 export default function ChoiceListItemComponent({
   code,
   investigator,
+  component,
   noInvestigatorItems,
   name,
   color,
@@ -115,6 +111,7 @@ export default function ChoiceListItemComponent({
   return (
     <SinglePickerComponent
       investigator={investigator}
+      component={component}
       choices={genderedChoices}
       selectedIndex={choice === undefined ? -1 : choice}
       editable={editable}

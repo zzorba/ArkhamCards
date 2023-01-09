@@ -334,7 +334,7 @@ function CardSearchResult(props: Props) {
           { cardName }
         </View>
       </TouchableOpacity>
-      { !!control && <ControlComponent control={control} card={card} /> }
+      { !!control && <ControlComponent control={control} card={card} handleCardPress={handleCardPress} /> }
     </View>
   );
 }

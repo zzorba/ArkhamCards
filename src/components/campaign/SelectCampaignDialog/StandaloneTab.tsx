@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
-import { filter, forEach, map, sortBy, head } from 'lodash';
+import { forEach, map, sortBy, head } from 'lodash';
 import { c, t } from 'ttag';
 
-import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId, STANDALONE_CAMPAGINS } from '@actions/types';
+import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import { getStandaloneScenarios, StandaloneInfo, StandaloneScenarioInfo } from '@data/scenario';
+import { getStandaloneScenarios, StandaloneInfo } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
 import { campaignDescription, campaignName } from '../constants';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -22,7 +22,7 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneInfo[] } = {};
     forEach(scenarios, scenario => {
-      const group = (scenario.type === 'standalone' ? scenario.specialGroup : undefined) ||  scenario.campaign;
+      const group = (scenario.type === 'standalone' ? scenario.specialGroup : undefined) || scenario.campaign;
       if (!groups[group]) {
         groups[group] = [];
       }
@@ -85,18 +85,17 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
           text={scenario.name}
         />
       );
-    } else {
-      return (
-        <CycleItem
-          key={scenario.code}
-          packCode={scenario.id}
-          onPress={onPressCampaign}
-          text={campaignName(scenario.id) || c('campaign').t`Custom`}
-          description={campaignDescription(scenario.id)}
-        />
-      )
     }
-  }, [onPress]);
+    return (
+      <CycleItem
+        key={scenario.code}
+        packCode={scenario.id}
+        onPress={onPressCampaign}
+        text={campaignName(scenario.id) || c('campaign').t`Custom`}
+        description={campaignDescription(scenario.id)}
+      />
+    );
+  }, [onPress, onPressCampaign]);
   return (
     <>
       { map(sections, (section, idx) => {

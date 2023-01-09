@@ -7,27 +7,38 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import EncounterIcon from '@icons/EncounterIcon';
 import { TINY_PHONE } from '@styles/sizes';
+import space from '@styles/space';
 
 interface Props {
   card: Card;
 }
 export default function CardFooterInfo({ card }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
-  const quantity = card.quantity || 1;
+  const quantity = card.quantity || 0;
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }, TINY_PHONE ? { flexDirection: 'column', alignItems: 'flex-end' } : {}]}>
-      <View style={styles.illustrator}>
-        { !!card.illustrator && (
-          <>
-            <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D20} />
-            <Text style={typography.tiny}>
-              { ` ${card.illustrator}` }
+      <View style={styles.left}>
+        <View style={styles.illustrator}>
+          { !!card.illustrator && (
+            <>
+              <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D20} />
+              <Text style={typography.tiny} ellipsizeMode="tail" numberOfLines={1}>
+                { ` ${card.illustrator}` }
+              </Text>
+            </>
+          ) }
+        </View>
+        { !card.encounter_code && card.type_code !== 'investigator' && (
+          <View style={[styles.row, styles.encounterRow]}>
+            <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
+            <Text style={[typography.tiny, space.marginLeftXs]}>
+              { ngettext(msgid`${quantity} copy`, `${quantity} copies`, quantity) }
             </Text>
-          </>
+          </View>
         ) }
       </View>
-      <View style={styles.cardNumber}>
-        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) ? (
+      <View style={[styles.cardNumber, { flex: 1 }]}>
+        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
           <View style={[styles.row, styles.encounterRow]}>
             <Text style={typography.tiny}>
               { card.encounter_name }
@@ -45,23 +56,14 @@ export default function CardFooterInfo({ card }: Props) {
                 card.encounter_position } / {card.encounter_size || 0}
             </Text>
           </View>
-        ) : (
-          card.subtype_code === 'basicweakness' && (
-            <View style={[styles.row, styles.encounterRow]}>
-              <Text style={typography.tiny}>
-                { ngettext(msgid`${quantity} copy`, `${quantity} copies`, quantity) }
-              </Text>
-            </View>
-          )
-        ) }
-
+        )}
         <View style={styles.row}>
-          <Text style={typography.tiny}>
+          <Text style={[typography.tiny, typography.right, { flex: 1 }]} ellipsizeMode="tail" numberOfLines={1}>
             { card.cycle_name }
           </Text>
           <View style={styles.icon}>
             <EncounterIcon
-              encounter_code={card.cycle_code || card.pack_code}
+              encounter_code={card.custom() ? card.pack_code : (card.cycle_code || card.pack_code)}
               size={14 * fontScale}
               color={colors.darkText}
             />
@@ -74,7 +76,7 @@ export default function CardFooterInfo({ card }: Props) {
           // tslint:disable-next-line
           !card.encounter_name && card.pack_name !== card.cycle_name && (
             <View style={[styles.row, styles.encounterRow]}>
-              <Text style={typography.tiny}>
+              <Text style={typography.tiny} ellipsizeMode="tail" numberOfLines={2}>
                 { card.pack_name }
               </Text>
             </View>
@@ -91,10 +93,13 @@ const styles = StyleSheet.create({
     marginTop: 16,
     width: '100%',
     paddingTop: 6,
-    paddingBottom: 4,
     borderTopWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  left: {
+    flexDirection: 'column',
     alignItems: 'flex-start',
   },
   illustrator: {

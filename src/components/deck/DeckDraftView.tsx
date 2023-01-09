@@ -297,7 +297,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     setTimeout(() => {
       onDraftNewCards();
     }, 250);
-    dispatch(incDeckSlot(id, card.code, card.deck_limit || 0, false));
+    dispatch(incDeckSlot(id, card.code, card.deck_limit || 0));
   }, [dispatch, draftHistory, id, onDraftNewCards]);
 
   const gridView = useSettingValue('draft_grid');

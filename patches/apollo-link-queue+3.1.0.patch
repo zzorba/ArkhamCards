@@ -1,7 +1,16 @@
 diff --git a/node_modules/apollo-link-queue/src/QueueLink.ts b/node_modules/apollo-link-queue/src/QueueLink.ts
-index 55064d8..3a5b041 100644
+index 55064d8..8df1097 100644
 --- a/node_modules/apollo-link-queue/src/QueueLink.ts
 +++ b/node_modules/apollo-link-queue/src/QueueLink.ts
+@@ -3,7 +3,7 @@ import {
+     Operation,
+     FetchResult,
+     NextLink,
+-} from '@apollo/client/link/core';
++} from '@apollo/client';
+ import {
+     Observable,
+     Observer,
 @@ -41,11 +41,19 @@ export default class QueueLink extends ApolloLink {
          }
          return new Observable<FetchResult>((observer: Observer<FetchResult>) => {

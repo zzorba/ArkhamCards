@@ -18,7 +18,6 @@ import {
   CampaignDifficulty,
   InvestigatorData,
   Slots,
-  Trauma,
   TraumaAndCardData,
   WeaknessSet,
 } from '@actions/types';
@@ -1130,14 +1129,14 @@ export default class GuidedCampaignLog {
       case 'investigator':
         if (inputValue) {
           this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
-            investigator: inputValue
+            investigator: inputValue,
           };
         }
         break;
       case 'enemy':
         if (effect.enemy_code) {
           this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
-            enemy: effect.enemy_code
+            enemy: effect.enemy_code,
           };
         }
         break;
@@ -1359,6 +1358,12 @@ export default class GuidedCampaignLog {
           ...this.campaignData.scarlet.unlockedLocations,
           effect.value,
         ];
+        break;
+      case 'hide_dossier':
+        this.campaignData.scarlet.unlockedDossiers = filter(this.campaignData.scarlet.unlockedDossiers,
+          x => x !== effect.value
+        );
+        break;
       case 'unlock_dossier':
         this.campaignData.scarlet.unlockedDossiers = [
           ...this.campaignData.scarlet.unlockedDossiers,

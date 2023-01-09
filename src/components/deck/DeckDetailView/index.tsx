@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { find, forEach, flatMap, uniqBy, keys, map, filter } from 'lodash';
+import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { find, forEach, flatMap, uniqBy, keys, map, filter, sortBy } from 'lodash';
 import {
   Linking,
   Platform,
@@ -12,9 +12,10 @@ import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
-import { ngettext, msgid, t } from 'ttag';
+import { ngettext, msgid, t, c } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import ActionButton from 'react-native-action-button';
+import { format } from 'date-fns';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -22,13 +23,13 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, EditDeckState, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
-import { EditDeckProps } from '../DeckEditView';
-import { UpgradeDeckProps } from '../DeckUpgradeDialog';
-import { DeckHistoryProps } from '../DeckHistoryView';
-import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
+import { EditDeckProps } from '@components/deck/DeckEditView';
+import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
+import { DeckHistoryProps } from '@components/deck/DeckHistoryView';
+import { EditSpecialCardsProps } from '@components/deck/EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { AppState } from '@reducers';
@@ -37,28 +38,30 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { useParsedDeckWithFetch, useShowDrawWeakness } from '@components/deck/hooks';
-import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog } from '@components/deck/dialogs';
-import { useBackButton, useCopyAction, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet } from '@components/core/hooks';
+import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSaveDialog, useSimpleTextDialog, useUploadLocalDeckDialog, useDialog } from '@components/deck/dialogs';
+import { Toggles, useBackButton, useCopyAction, useEffectUpdate, useFlag, useNavigationButtonPressed, useRequiredCards, useSettingValue, useTabooSet, useToggles } from '@components/core/hooks';
 import { NavigationProps } from '@components/nav/types';
-import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import DeckButton from '../controls/DeckButton';
-import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
-import DeckProblemBanner from '../DeckProblemBanner';
+import DeckButton from '@components/deck/controls/DeckButton';
+import { CardUpgradeDialogProps } from '@components/deck/CardUpgradeDialog';
+import DeckProblemBanner from '@components/deck/DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useCampaign } from '@data/hooks';
-import { useDeckActions } from '@data/remote/decks';
-import { format } from 'date-fns';
+import { useCampaign, useMyDecks } from '@data/hooks';
+import { DeckActions, useDeckActions } from '@data/remote/decks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { DeckDraftProps } from '../DeckDraftView';
+import { DeckDraftProps } from '@components/deck/DeckDraftView';
 import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
+import { localizeTag } from '@components/deck/TagChiclet';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import useTagPile from '@components/deck/useTagPile';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -100,6 +103,98 @@ function useUpgradeCardsByName(cards: Card[], tabooSetOverride?: number): [Card[
     useMemo(() => uniqBy([...upgradeCards, ...cards], c => c.code), [upgradeCards, cards]),
     loading,
   ];
+}
+
+function useTagsDialog(
+  deck: LatestDeckT | undefined,
+  deckEditsRef: MutableRefObject<EditDeckState | undefined>,
+  deckActions: DeckActions,
+  editable: boolean
+): [React.ReactNode, string, () => void] {
+  const { listSeperator } = useContext(LanguageContext);
+  const [{ myDecks }] = useMyDecks(deckActions);
+  const dispatch = useDispatch();
+  const allTags = useMemo(() => {
+    const r: { [tag: string]: DeckId[] | undefined } = {};
+    forEach(myDecks, d => {
+      if (d && d.tags?.length) {
+        forEach(d.tags, t => {
+          if (!r[t]) {
+            r[t] = [d.id];
+          } else {
+            r[t]?.push(d.id);
+          }
+        });
+      }
+    });
+    return r;
+  }, [myDecks]);
+  const onTagsUpdate = useCallback((toggles: Toggles) => {
+    if (deck && deckEditsRef.current) {
+      const hasDiff =
+        !!find(deck?.tags, t => !toggles[t]) ||
+        !!find(toggles, (value, t) => !!value && !find(deck?.tags, t2 => t === t2));
+      if (hasDiff) {
+        const tagsChange = flatMap(toggles, (value, t) => value ? t : []).join(' ');
+        if (deckEditsRef.current.tagsChange !== tagsChange) {
+          dispatch({
+            type: UPDATE_DECK_EDIT,
+            id: deck?.id,
+            updates: {
+              tagsChange,
+            },
+          });
+        }
+      } else {
+        if (deckEditsRef.current.tagsChange !== undefined && deckEditsRef.current.tagsChange !== (deck.tags?.join(',') || '')) {
+          dispatch({
+            type: UPDATE_DECK_EDIT,
+            id: deck?.id,
+            updates: {
+              tagsChange: deck.tags,
+            },
+          });
+        }
+      }
+    }
+  }, [deck, deckEditsRef, dispatch]);
+  const [deckTags, toggleDeckTag, setDeckTag, syncTags] = useToggles(() => {
+    if (deck?.tags) {
+      const r: Toggles = {};
+      forEach(deck.tags, t => {
+        r[t] = true;
+      });
+      return r;
+    }
+    return {};
+  }, onTagsUpdate);
+  useEffectUpdate(() => {
+    if (deck) {
+      const r: Toggles = {};
+      forEach(deck.tags, t => {
+        r[t] = true;
+      });
+      syncTags(r);
+    }
+  }, [deck]);
+  const allTagsList = useMemo(() => keys(allTags), [allTags]);
+  const [tagPile, setAddVisible] = useTagPile({ deckTags, toggleDeckTag, setDeckTag, allTags: allTagsList, editable });
+  const { dialog, showDialog } = useDialog({
+    title: editable ? t`Edit deck tags` : t`Deck tags`,
+    content: tagPile,
+    allowDismiss: true,
+  });
+  const tagString = useMemo(() => {
+    if (!deck?.tags) {
+      return c('tags').t`None`;
+    }
+    return sortBy(map(deck.tags, t => localizeTag(t)), t => t).join(listSeperator);
+  }, [deck?.tags, listSeperator]);
+  const showTheDialog = useCallback(() => {
+    setAddVisible(false);
+    showDialog();
+  }, [setAddVisible, showDialog]);
+  return [dialog, tagString, showTheDialog];
 }
 
 
@@ -292,7 +387,6 @@ function DeckDetailView({
     }
   }, [modal, hasInvestigator, darkMode, componentId, mode, colors, factionColor, name, subtitle, title]);
   const [uploadLocalDeckDialog, uploadLocalDeck] = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
-
   useEffect(() => {
     if (!deck) {
       if (!deleting && !id.local && !id.serverId) {
@@ -847,6 +941,18 @@ function DeckDetailView({
     setMenuOpen(false);
     copyDeckUrl();
   }, [copyDeckUrl, setMenuOpen]);
+
+  const [tagsDialog, tagString, showTagsDialog] = useTagsDialog(
+    deckT,
+    deckEditsRef,
+    deckActions,
+    editable
+  );
+
+  const onShowTagsDialog = useCallback(() => {
+    setMenuOpen(false);
+    showTagsDialog();
+  }, [setMenuOpen, showTagsDialog]);
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -879,6 +985,12 @@ function DeckDetailView({
             />
           </>
         ) }
+        <MenuButton
+          title={t`Tags`}
+          description={tagString}
+          onPress={onShowTagsDialog}
+          icon="tag"
+        />
         <MenuButton
           title={t`Notes`}
           description={t`Free-form text records`}
@@ -1010,7 +1122,8 @@ function DeckDetailView({
   }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
-    onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl,
+    onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl, tagString,
+    onShowTagsDialog,
   ]);
 
   const fabIcon = useCallback(() => {
@@ -1246,6 +1359,7 @@ function DeckDetailView({
       { deletingDialog }
       { copyDialog }
       { alertDialog }
+      { tagsDialog }
     </View>
   );
 }

@@ -1,5 +1,5 @@
 import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading } from '@actions/types';
-import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter } from 'lodash';
+import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter, trim } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -234,6 +234,7 @@ export class MiniDeckRedux implements MiniDeckT {
   investigator: string;
   date_update: string;
   campaign_id?: CampaignId;
+  tags?: string[];
 
   constructor(deck: Deck, campaign: Campaign | undefined) {
     this.id = getDeckId(deck);
@@ -241,6 +242,7 @@ export class MiniDeckRedux implements MiniDeckT {
     this.investigator = deck.investigator_code;
     this.date_update = deck.date_update;
     this.campaign_id = campaign ? getCampaignId(campaign) : undefined;
+    this.tags = deck.tags === '{}' ? [] : filter(map((deck.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
   }
 }
 
@@ -258,6 +260,7 @@ export class LatestDeckRedux extends MiniDeckRedux implements LatestDeckT {
       id: getCampaignId(campaign),
       name: campaign.name,
       trauma: campaign.investigatorData?.[deck.investigator_code] || {},
+      cycleCode: campaign.cycleCode,
     } : undefined;
   }
 }

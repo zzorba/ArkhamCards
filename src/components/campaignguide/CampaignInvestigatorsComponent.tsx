@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Text, StyleSheet, View, Platform } from 'react-native';
-import { delay, filter, find, flatMap, map, partition } from 'lodash';
+import { filter, find, flatMap, map, partition } from 'lodash';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
@@ -104,7 +104,7 @@ function AliveInvestigatorRow({
         setSaving(false);
       }
     }
-  }, [saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
+  }, [saveDeck, saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
   const arkhamDbError = useArkhamDbError();
   const needsArkhamDbReauth = !deck?.deck.local && arkhamDbError === 'badAccessToken';
   const traumaAndCardData = useMemo(() =>

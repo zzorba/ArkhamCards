@@ -612,10 +612,6 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     borderRadius: 8,
   },
-  iconRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
   iconColumn: {
     flexDirection: 'column',
     justifyContent: 'flex-end',

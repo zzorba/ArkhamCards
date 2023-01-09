@@ -77,7 +77,9 @@ export function useModal({
 
 interface DialogOptions {
   title: string;
+  description?: string;
   investigator?: Card;
+  backgroundColor?: string;
   confirm?: {
     title: string;
     icon?: DeckButtonIcon;
@@ -103,7 +105,9 @@ interface DialogOptions {
 
 export function useDialog({
   title,
+  description,
   investigator,
+  backgroundColor,
   confirm,
   dismiss,
   content,
@@ -175,6 +179,8 @@ export function useDialog({
     return (
       <NewDialog
         title={title}
+        backgroundColor={backgroundColor}
+        description={description}
         investigator={investigator}
         dismissable={!!dismiss || allowDismiss}
         onDismiss={onDismiss}
@@ -189,7 +195,7 @@ export function useDialog({
         { content }
       </NewDialog>
     );
-  }, [forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
+  }, [backgroundColor, forceVerticalButtons, maxHeightPercent, noPadding, title, dismiss, description, visible, alignment, customButtons, onDismiss, buttons, investigator, content, allowDismiss, avoidKeyboard]);
   const showDialog = useCallback(() => setVisible(true), [setVisible]);
   return {
     visible,
@@ -837,6 +843,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
         const deckChanges: SaveDeckChanges = {
           name: deckEditsRef.current.nameChange,
           description: deckEditsRef.current.descriptionChange,
+          tags: deckEditsRef.current.tagsChange,
           slots: deckEditsRef.current.slots,
           ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
           side: deckEditsRef.current.side,

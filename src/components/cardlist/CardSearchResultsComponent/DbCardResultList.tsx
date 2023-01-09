@@ -68,14 +68,15 @@ interface Props {
   expandSearchControlsHeight?: number;
   investigator?: Card;
   cardPressed?: (card: Card) => void;
-  renderCard?: (card: Card) => JSX.Element;
+  renderCard?: (card: Card, id: string, onPressId: (id: string, card: Card) => void) => JSX.Element;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
   noSearch?: boolean;
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
   storyOnly?: boolean;
-  sideDeck?: boolean;
+  specialMode?: 'side' | 'checklist';
+
   showNonCollection?: boolean;
   footerPadding?: number;
 }
@@ -180,9 +181,9 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
         if (fetchSize.current < 100) {
           fetchSize.current = 100;
         }
-        //const start = new Date();
+        // const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
-          //console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
+          // console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
       }
@@ -193,10 +194,9 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   useEffect(() => {
     fetchedOne.current = false;
   }, [visibleCards, ...deps]);
-  const lowMemoryMode = useSettingValue('low_memory');
   useEffect(() => {
     if (visibleCards.length) {
-      if (!fetchedOne.current || !lowMemoryMode) {
+      if (!fetchedOne.current) {
         if (!partialCardsLoading) {
           fetchedOne.current = true;
         }
@@ -205,7 +205,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleCards, cards, lowMemoryMode, partialCardsLoading]);
+  }, [visibleCards, cards, partialCardsLoading]);
   const expandCards = useCallback(() => {
     fetchedOne.current = false;
   }, []);
@@ -692,7 +692,7 @@ function useSectionFeed({
       result.push({
         type: 'card',
         id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
-        card: card.withCustomizations(listSeperator, customizations?.[card.code], 'feed'),
+        card: card.withCustomizations(listSeperator, customizations?.[card.code]),
       });
     }
     if (!missingCards && spoilerCardsCount > 0 && loadingCount <= 1) {
@@ -852,7 +852,7 @@ export default function({
   handleScroll,
   showHeader,
   storyOnly,
-  sideDeck,
+  specialMode,
   showNonCollection,
   footerPadding,
 }: Props) {
@@ -887,11 +887,11 @@ export default function({
     textQuery,
     searchTerm,
     showAllNonCollection: showNonCollection,
-    deckCardCounts: sideDeck ? deckEdits?.side : deckEdits?.slots,
-    originalDeckSlots: (currentDeckOnly && (sideDeck ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
+    deckCardCounts: specialMode === 'side' ? deckEdits?.side : deckEdits?.slots,
+    originalDeckSlots: (currentDeckOnly && (specialMode === 'side' ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
     includeBonded: currentDeckOnly,
     storyOnly,
-    sideDeck,
+    sideDeck: specialMode === 'side',
     expandSearchControlsHeight,
     footerPadding,
     customizations,
@@ -949,7 +949,7 @@ export default function({
     showCardSwipe(
       componentId,
       codes,
-      sideDeck ? 'side' : undefined,
+      specialMode,
       index,
       colors,
       cards,
@@ -960,40 +960,43 @@ export default function({
       true,
       customizations
     );
-  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, sideDeck, cardPressed]);
-  const deckLimits: ControlType[] = useMemo(() => deckId ? [
-    {
-      type: 'deck',
-      deckId,
-      limit: 0,
-      mode: !!sideDeck ? 'side' : undefined,
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 1,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 2,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 3,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-    {
-      type: 'deck',
-      deckId,
-      limit: 4,
-      mode: !!sideDeck ? 'side' : undefined
-    },
-  ] : [], [deckId, sideDeck]);
-  const { lang, listSeperator } = useContext(LanguageContext);
+  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
+  const deckLimits: ControlType[] = useMemo(() => {
+    const mode = specialMode === 'side' ? 'side' : undefined;
+    return deckId ? [
+      {
+        type: 'deck',
+        deckId,
+        limit: 0,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 1,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 2,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 3,
+        mode,
+      },
+      {
+        type: 'deck',
+        deckId,
+        limit: 4,
+        mode,
+      },
+    ] : [];
+  }, [deckId, specialMode]);
+  const { lang } = useContext(LanguageContext);
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
@@ -1009,7 +1012,7 @@ export default function({
       case 'card': {
         const card = item.card;
         if (renderCard) {
-          return renderCard(card);
+          return renderCard(card, item.id, cardOnPressId);
         }
         const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
@@ -1072,7 +1075,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [customizations, listSeperator, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

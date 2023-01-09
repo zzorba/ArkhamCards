@@ -52,7 +52,7 @@ function showDeKofi() {
 }
 
 function showRuDonate() {
-  Linking.openURL('https://www.tinkoff.ru/cf/5Cbm7NvL1uF');
+  Linking.openURL('https://www.tinkoff.ru/cf/7jxHy5hZGXH');
 }
 
 export default function SettingsView({ componentId }: NavigationProps) {
@@ -155,7 +155,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
   }, [setSortRespectQuotes]);
 
   const [campaignShowDeckId, setCampaignShowDeckId] = useRemoteSettingFlag('campaign_show_deck_id', updateRemoteSetting);
-  const [lowMemory, setLowMemory] = useSettingFlag('low_memory');
+  const [searchEnglish, setSearchEnglish] = useSettingFlag('search_english');
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -214,6 +214,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 <FontSizePicker />
               </View>
               <DeckCheckboxButton
+                larger
                 icon="special_cards"
                 title={t`Show fan-made cards`}
                 description={t`Grants access to previewed player cards`}
@@ -250,13 +251,13 @@ export default function SettingsView({ componentId }: NavigationProps) {
                 value={campaignShowDeckId}
                 onValueChange={setCampaignShowDeckId}
               />
-              { Platform.OS === 'ios' && (
+              { lang !== 'en' && (
                 <DeckCheckboxButton
-                  icon="tools"
-                  title={t`Low memory mode`}
-                  description={t`Have the app preload fewer cards to help performance on older devices`}
-                  value={lowMemory}
-                  onValueChange={setLowMemory}
+                  icon="search"
+                  title={t`Search english card names`}
+                  description={t`Include english results when searching`}
+                  value={searchEnglish}
+                  onValueChange={setSearchEnglish}
                 />
               ) }
               { Platform.OS === 'android' && (
@@ -302,7 +303,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
               <View style={[space.paddingTopS, space.paddingSideS]}>
                 <Text style={[typography.text]}>
                   { Platform.OS === 'ios' ?
-                    jt`This app is made possible by the continued support of our fans on Patreon and the ${mythosBustersLink} podcast.` :
+                    jt`This app is made possible by the continued support of our fans on Patreon and the Mythos Busters podcast.` :
                     jt`This app is made possible by the continued support of our fans on ${patreonLink} and the ${mythosBustersLink} podcast.` }
                 </Text>
               </View>

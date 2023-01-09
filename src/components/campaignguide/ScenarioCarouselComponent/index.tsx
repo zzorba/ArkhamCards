@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
 import SnapCarousel from 'react-native-snap-carousel';
 import { Platform } from 'react-native';
-import { dropRightWhile, find, findIndex, findLast, findLastIndex, map } from 'lodash';
+import { dropRightWhile, find, findIndex, findLast, findLastIndex, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
@@ -106,7 +106,6 @@ export default function ScenarioCarouselComponent({
     }
     return undefined;
   }, [processedCampaign]);
-  const currentTime = processedCampaign.campaignLog.count('time', '$count');
   const campaignLog = processedCampaign.campaignLog;
 
   const onEmbarkSide = useCallback(({ destination, time, previousScenarioId, nextScenario, fast }: EmbarkData, xp_cost: number): EmbarkData | undefined => {
@@ -119,11 +118,11 @@ export default function ScenarioCarouselComponent({
       fast,
     };
     return embarkData;
-  }, [campaignState, currentTime, currentLocationId, campaignMap])
+  }, [currentLocationId])
   const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
     if (interScenarioId && campaignMap) {
       const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
-        (campaignLog.campaignData.scenarioReplayCount[location.scenario] || 0) + 1 :
+        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === location.scenario ? 1 : 0) :
         undefined;
       const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
       const embarkData: EmbarkData = {
@@ -166,8 +165,9 @@ export default function ScenarioCarouselComponent({
   }, [
     onEmbarkSide,
     componentId,
+    processedCampaign,
     currentLocationId,
-    campaignLog, campaignId, campaignState, interScenarioId, currentTime, campaignMap]);
+    campaignLog, campaignId, campaignState, interScenarioId, campaignMap]);
 
   const onShowEmbark = useCallback(() => {
     if (campaignMap) {

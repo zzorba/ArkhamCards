@@ -31,6 +31,7 @@ import BorderStepComponent from './BorderStepComponent';
 import TitleComponent from './TitleComponent';
 import TravelCostStepComponent from './TravelCostStepComponent';
 import { BorderColor } from '@data/scenario/types';
+import InvestigatorSetupComponent from './InvestigatorSetupComponent';
 
 interface Props {
   componentId: string;
@@ -105,12 +106,19 @@ function ScenarioStepComponentContent({
     case 'location_connectors':
       return <LocationConnectorsStepComponent step={step} />;
     case 'rule_reminder':
-      return <RuleReminderStepComponent step={step} />;
+      return <RuleReminderStepComponent step={step} width={width} />;
     case 'resolution':
       return <ResolutionStepComponent step={step} />;
     case 'xp_count':
       return (
         <XpCountComponent
+          step={step}
+          campaignLog={campaignLog}
+        />
+      );
+    case 'investigator_setup':
+      return (
+        <InvestigatorSetupComponent
           step={step}
           campaignLog={campaignLog}
         />

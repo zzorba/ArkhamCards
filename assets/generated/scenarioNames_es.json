@@ -33,7 +33,7 @@
   },
   {
     "id": "alexandria",
-    "name": "Alejandría"
+    "name": "Perros de guerra"
   },
   {
     "id": "all_or_nothing",
@@ -41,7 +41,7 @@
   },
   {
     "id": "anchorage",
-    "name": "Anchorage"
+    "name": "Sobre hielo peligroso"
   },
   {
     "id": "arkham",
@@ -89,7 +89,11 @@
   },
   {
     "id": "bermuda",
-    "name": "Las Bermudas"
+    "name": "La gran obra"
+  },
+  {
+    "id": "bermuda_triangle",
+    "name": "Sin rastro"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -117,11 +121,11 @@
   },
   {
     "id": "bombay",
-    "name": "Bombay"
+    "name": "Arquitectura extraña"
   },
   {
     "id": "buenos_aires",
-    "name": "Buenos Aires"
+    "name": "Sombras sanguinas"
   },
   {
     "id": "by_the_book",
@@ -150,14 +154,6 @@
   {
     "id": "city_of_the_elder_things",
     "name": "Ciudad de los Antiguos"
-  },
-  {
-    "id": "congress_of_the_keys",
-    "name": "Congress of the Keys"
-  },
-  {
-    "id": "constantinople",
-    "name": "Constantinopla"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -325,7 +321,7 @@
   },
   {
     "id": "havana",
-    "name": "La Habana"
+    "name": "Bailar como locos"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -349,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Hong Kong"
+    "name": "Sangre, sudor y té"
   },
   {
     "id": "horror_in_high_gear",
@@ -404,24 +400,28 @@
     "name": "Introspection (continued)"
   },
   {
+    "id": "istanbul",
+    "name": "Tratos en la oscuridad"
+  },
+  {
     "id": "jennys_choice",
     "name": "La elección de Jenny"
   },
   {
     "id": "kabul",
-    "name": "Kabul"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "kathmandu",
-    "name": "Katmandú"
+    "name": "Silbido en el viento"
   },
   {
     "id": "kuala_lampur",
-    "name": "Kuala Lumpur"
+    "name": "Sombras de sufrimiento"
   },
   {
     "id": "lagos",
-    "name": "Lagos"
+    "name": "Entrega especial"
   },
   {
     "id": "late_risers",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "Londres"
+    "name": "Muerto y desaparecido"
   },
   {
     "id": "lost_in_time_and_space",
@@ -453,11 +453,11 @@
   },
   {
     "id": "manokwari",
-    "name": "Manokwari"
+    "name": "Metarmofosis"
   },
   {
     "id": "marrakesh",
-    "name": "Marrakesh"
+    "name": "Calor muerto"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -469,7 +469,7 @@
   },
   {
     "id": "moscow",
-    "name": "Moscú"
+    "name": "Quid por quo"
   },
   {
     "id": "mourning_chorus",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Nairobi"
+    "name": "Maquinaria infernal"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Perth"
+    "name": "Selección paranatural"
   },
   {
     "id": "point_of_no_return",
@@ -529,11 +529,7 @@
   },
   {
     "id": "quito",
-    "name": "Quito"
-  },
-  {
-    "id": "rain_and_riddles",
-    "name": "Rain and Riddles"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "read_or_die",
@@ -697,27 +693,31 @@
   },
   {
     "id": "reykjavik",
-    "name": "Reikiavik"
+    "name": "Estratagemas y recuperación"
+  },
+  {
+    "id": "riddles_and_rain",
+    "name": "Acertijos y lluvia"
   },
   {
     "id": "rio_de_janiero",
-    "name": "Río de Janeiro"
+    "name": "Teoría de la aniquilación"
   },
   {
     "id": "rome",
-    "name": "Roma"
+    "name": "Rómulo y Remo"
   },
   {
     "id": "san_francisco",
-    "name": "San Francisco"
+    "name": "Quid por quo"
   },
   {
     "id": "san_juan",
-    "name": "San Juan"
+    "name": "Estratagemas y recuperación"
   },
   {
     "id": "shanghai",
-    "name": "Shanghái"
+    "name": "La serpiente enroscada"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +733,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Estocolmo"
+    "name": "Arquitectura extraña"
   },
   {
     "id": "strange_moons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Sídney"
+    "name": "Sonido hueco"
   },
   {
     "id": "tcu_epilogue",
@@ -854,6 +854,10 @@
   {
     "id": "the_fallen",
     "name": "The Fallen"
+  },
+  {
+    "id": "the_foundation",
+    "name": "La Fundación"
   },
   {
     "id": "the_golden_circle",
@@ -989,7 +993,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Tokio"
+    "name": "Entrega especial"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1004,12 +1008,12 @@
     "name": "Huellas de Egil"
   },
   {
-    "id": "tsk_prologue",
-    "name": "Prólogo"
+    "id": "tsk_epilogue",
+    "name": "Epílogo"
   },
   {
     "id": "tunguska",
-    "name": "Tunguska"
+    "name": "El congreso de las Llaves"
   },
   {
     "id": "turn_back_time",
@@ -1057,6 +1061,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "Ybor City"
+    "name": "El refugio"
   }
 ]

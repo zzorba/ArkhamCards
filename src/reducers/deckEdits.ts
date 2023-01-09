@@ -71,6 +71,7 @@ export default function(
       ...state.edits || {},
       [action.id.uuid]: {
         nameChange: undefined,
+        tagsChange: undefined,
         meta: action.deck.meta || {},
         slots: action.deck.slots || {},
         side: action.deck.sideSlots || {},
@@ -111,6 +112,9 @@ export default function(
 
     if (action.updates.nameChange !== undefined) {
       updatedEdits.nameChange = action.updates.nameChange;
+    }
+    if (action.updates.tagsChange !== undefined) {
+      updatedEdits.tagsChange = action.updates.tagsChange;
     }
     if (action.updates.tabooSetChange !== undefined) {
       updatedEdits.tabooSetChange = action.updates.tabooSetChange;
@@ -295,6 +299,7 @@ export default function(
           ...(state.edits || {}),
           [action.id.uuid]: {
             nameChange: undefined,
+            tagsChange: undefined,
             tabooSetChange: undefined,
             slots: action.deck.slots || {},
             side: action.deck.sideSlots || {},

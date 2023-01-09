@@ -618,7 +618,11 @@ export default class Card {
     }, choice, option, cards);
   }
 
-  public withCustomizations(listSeperator: string, customizations: CustomizationChoice[] | undefined, location: string): Card {
+  public withCustomizations(
+    listSeperator: string,
+    customizations: CustomizationChoice[] | undefined,
+    extraTicks?: number
+  ): Card {
     if (!this.customization_options) {
       return this;
     }
@@ -626,7 +630,7 @@ export default class Card {
       return this;
     }
     const card = this.clone();
-    const xp_spent = sumBy(customizations, c => c.xp_spent);
+    const xp_spent = sumBy(customizations, c => c.xp_spent) + (extraTicks || 0);
     card.xp = Math.floor((xp_spent + 1) / 2.0);
     const unlocked = sortBy(filter(customizations, c => c.unlocked), c => c.option.index);
     const lines = (card.text || '').split('\n');
@@ -936,16 +940,30 @@ export default class Card {
   }
 
   collectionQuantity(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {
-    if (this.pack_code === 'core') {
-      if (packInCollection.core || ignore_collection) {
-        return (this.quantity || 0) * 2;
-      }
-      const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
-      if (reprintPacks && find(reprintPacks, pack => !!packInCollection[pack])) {
-        return (this.quantity || 0) * 2;
-      }
+    if (this.encounter_code || this.subtype_code) {
+      return this.quantity || 0;
     }
-    return this.quantity || 0;
+
+    let quantity = (this.quantity || 0);
+    if (this.pack_code === 'core') {
+      if (packInCollection.no_core) {
+        quantity = 0;
+      } else if (packInCollection.core) {
+        // Second core set is indicated.
+        quantity *= 2;
+      } else if (ignore_collection) {
+        quantity = Math.max(this.deck_limit || 0, this.quantity || 0);
+      }
+    } else if (!ignore_collection && !packInCollection[this.pack_code]) {
+      quantity = 0;
+    }
+
+    forEach(this.reprint_pack_codes, pack => {
+      if (!!packInCollection[pack]) {
+        quantity += Math.max(this.quantity || 0, this.deck_limit || 0);
+      }
+    });
+    return quantity;
   }
 
   collectionDeckLimit(packInCollection: { [pack_code: string]: boolean | undefined }, ignore_collection: boolean): number {

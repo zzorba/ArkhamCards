@@ -18,11 +18,11 @@ import { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
-import space, { s } from '@styles/space';
-import { Navigation, OptionsModalTransitionStyle } from 'react-native-navigation';
+import space, { s, l } from '@styles/space';
+import { Navigation } from 'react-native-navigation';
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
-import { useBackButton, useFlag, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
+import { useBackButton, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
 import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
 
 import MapSvg from '../../../assets/map.svg';
@@ -31,9 +31,8 @@ import EncounterIcon from '@icons/EncounterIcon';
 import COLORS from '@styles/colors';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
-import colors from '@styles/colors';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import MapToggleButton from './MapToggleButton';
+import { MAX_WIDTH } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
@@ -137,41 +136,67 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   hasFast: boolean;
   visitedLocations: string[];
   unlockedLocations: string[];
-  unlockedDossiers: string[]
+  unlockedDossiers: string[];
 }
+
+const italicStyle = {
+  fontFamily: Platform.OS === 'ios' ? 'DM Serif Display' : 'DMSerifDisplay-Italic',
+  fontStyle: Platform.OS === 'ios' ? 'italic' : undefined,
+};
+
+const bigSize = Platform.OS === 'ios' ? 20 : 18;
+const mediumSize = Platform.OS === 'ios' ? 14 : 12;
+const smallSize = Platform.OS === 'ios' ? 8 : 7;
 
 function getMapLabelStyles(widthRatio: number) {
   return {
     connection: {
-      fontSize: 18 * widthRatio,
-      lineHeight: 20 * widthRatio,
+      fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
+      color: '#24303C',
+      fontSize: 14 * widthRatio,
+      lineHeight: 16 * widthRatio,
       opacity: 0.7,
     },
     ocean: {
-      fontSize: 28 * widthRatio,
-      lineHeight: 30 * widthRatio,
+      color: '#624614',
+      ...italicStyle,
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 4,
-      fontStyle: 'italic',
-      opacity: 0.2,
+      opacity: 0.4,
     },
     small_ocean: {
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      color: '#624614',
+      ...italicStyle,
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 1.5,
-      fontStyle: 'italic',
-      opacity: 0.2,
+      opacity: 0.4,
+    },
+    sea: {
+      ...italicStyle,
+      color: '#624614',
+      fontSize: smallSize * widthRatio,
+      lineHeight: (smallSize + 1) * widthRatio,
+      letterSpacing: 1.5,
+      opacity: 0.6,
     },
     country: {
-      fontSize: 20 * widthRatio,
-      lineHeight: 22 * widthRatio,
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
+      fontSize: mediumSize * widthRatio,
+      lineHeight: (mediumSize + 2) * widthRatio,
       letterSpacing: 1.5,
-      opacity: 0.2,
+      opacity: 0.4,
     },
     continent: {
-      fontSize: 28 * widthRatio,
-      lineHeight: 30 * widthRatio,
+      color: '#624614',
+      fontFamily: 'DM Serif Display',
+      fontWeight: Platform.OS === 'ios' ? '700' : '400',
+      fontSize: bigSize * widthRatio,
+      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 3,
-      opacity: 0.2,
+      opacity: 0.8,
     },
   };
 }
@@ -197,6 +222,20 @@ const fontDirectionStyle: { [key: string]: TextStyle } = {
     textAlign: 'center',
   },
 }
+
+function labelPos(label: MapLabel, lang: string): [number, number] {
+  switch (lang) {
+    case 'es':
+    case 'ko': {
+      const pos = label.lang_position?.[lang];
+      if (pos) {
+        return [pos.x, pos.y];
+      }
+      break;
+    }
+  }
+  return [label.x, label.y];
+}
 function MapLabelComponent({
   campaignWidth,
   label,
@@ -204,22 +243,24 @@ function MapLabelComponent({
   heightRatio,
   mapLabelStyles,
 }: MapLabelProps) {
+  const { lang } = useContext(LanguageContext);
   const lineHeight = mapLabelStyles[label.type].lineHeight;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
+  const [x, y] = labelPos(label, lang);
   return (
-    <View style={[{
-      position: 'absolute',
-      top: label.y * heightRatio - lineHeight * numLines,
-    }, label.direction === 'left' ? {
-      right: (campaignWidth - label.x) * widthRatio,
-    } : {
-      left: label.x * widthRatio,
-    }]}>
+    <View style={[
+      {
+        position: 'absolute',
+        top: y * heightRatio - lineHeight * numLines,
+      },
+      label.direction === 'left' ? {
+        right: (campaignWidth - x) * widthRatio,
+      } : {
+        left: x * widthRatio,
+      },
+      label.rotation ? { transform: [{ rotate: label.rotation }] } : undefined,
+    ]}>
       <Text style={[
-        {
-          fontFamily: 'Times New Roman',
-          color: '#24303C',
-        },
         mapLabelStyles[label.type],
         fontDirectionStyle[label.direction],
       ]}>
@@ -238,7 +279,6 @@ interface PointOfInterestProps {
   location: MapLocation;
   currentLocation: boolean;
   campaignWidth: number;
-  campaignHeight: number;
   widthRatio: number;
   heightRatio: number;
   onSelect: (location: MapLocation) => void;
@@ -247,7 +287,6 @@ interface PointOfInterestProps {
 }
 function PointOfInterest({
   campaignWidth,
-  campaignHeight,
   location,
   currentLocation,
   widthRatio,
@@ -369,33 +408,37 @@ function CurrentLocationPin({
       <Text style={[
         styles.textWithShadow,
         space.paddingSideS,
-        { position: 'absolute', flexDirection: 'row', justifyContent: 'center' },
-          location.direction === 'left' ? {
-            right: (campaignWidth - location.x) * widthRatio - pinSize - 2 - s,
-          } : {
-            left: location.x * widthRatio - pinSize - 2 - s,
+        {
+          position: 'absolute',
+          flexDirection: 'row',
+          justifyContent: 'center',
+        },
+        location.direction === 'left' ? {
+          right: (campaignWidth - location.x) * widthRatio - pinSize - 2 - s,
+        } : {
+          left: location.x * widthRatio - pinSize - 2 - s,
+        },
+        location.current === 'down' ? {
+          top: location.y * heightRatio - s,
+          paddingTop: s,
+          textShadowOffset: {
+            width: 0,
+            height: -2,
           },
-          location.current === 'down' ? {
-            top: location.y * heightRatio - s,
-            paddingTop: s,
-            textShadowOffset: {
-              width: 0,
-              height: -2,
-            },
-          } : {
-            bottom: (campaignHeight - location.y) * heightRatio - s,
-            paddingBottom: s,
-            textShadowOffset: {
-              width: 0,
-              height: 2,
-            },
+        } : {
+          bottom: (campaignHeight - location.y) * heightRatio - s,
+          paddingBottom: s,
+          textShadowOffset: {
+            width: 0,
+            height: 2,
           },
+        },
       ]}>
         <AppIcon name={`${location.current || 'up'}_pin`} size={pinSize * 4} color={invert ? COLORS.L20 : COLORS.D20} />
       </Text>
 
       <View style={[
-        { position: 'absolute', },
+        { position: 'absolute' },
         location.direction === 'left' ? {
           right: (campaignWidth - location.x) * widthRatio - pinSize,
         } : {
@@ -466,64 +509,33 @@ function computeShortestPaths(start: string, allLocations: MapLocation[]): { [ci
   return result;
 }
 
-function findShortestPath(start: string, end: string, allLocations: MapLocation[]): TravelPath | undefined{
-  if (start === end) {
-    return {
-      path: [start],
-      time: 0,
-    };
-  }
-  const locationsById: { [id: string]: MapLocation } = {};
-  forEach(allLocations, l => {
-    locationsById[l.id] = l;
-  });
-
-  const queue = new PriorityQueue<TravelPath>(10, (pathA: TravelPath, pathB: TravelPath) => pathA.time - pathB.time);
-  const startLocation = locationsById[start];
-  forEach(startLocation.connections, connection => {
-    queue.add({
-      path: [start, connection],
-      time: 1,
-    });
-  });
-  while (!queue.empty()) {
-    const shortestCurrent: TravelPath | null = queue.poll();
-    if (shortestCurrent) {
-      if (indexOf(shortestCurrent.path, end) !== -1) {
-        return shortestCurrent;
-      }
-      const last = shortestCurrent.path[shortestCurrent.path.length - 1];
-      const lastLocation = locationsById[last];
-      forEach(lastLocation.connections, location => {
-        if (indexOf(shortestCurrent.path, location) === -1) {
-          // Add it to list if we don't have a loop;
-          // Side locations only cost 1 time even when you pass through them.
-          queue.add({
-            path: [...shortestCurrent.path, location],
-            time: shortestCurrent.time + (lastLocation.status === 'side' ? 0 : 1) - (startLocation.hidden ? 1 : 0),
-          });
-        }
-      })
-    }
-  }
-  return undefined;
+const IMAGE_SPACING = {
+  left: space.marginRightM,
+  right: space.marginLeftM,
+  top: space.marginBottomM,
+  bottom: space.marginTopM,
 }
 
 function DossierImage({
   uri,
   ratio,
-  width,
+  width: theWidth,
   alignment,
 }: {
   uri: string;
-  alignment: 'right' | 'left';
+  alignment: 'right' | 'left' | 'top' | 'bottom';
   ratio: number;
   width: number;
 }) {
+  const width = Math.min(theWidth, 150);
   const { darkMode } = useContext(StyleContext);
   return (
-    <View style={alignment === 'left' ? space.marginRightM : space.marginLeftM}>
-      <View style={{ padding: 8, paddingBottom: 32, backgroundColor: darkMode ? COLORS.D10 : COLORS.white, transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
+    <View style={IMAGE_SPACING[alignment]}>
+      <View style={{
+        padding: 8,
+        paddingBottom: 32,
+        backgroundColor: darkMode ? COLORS.D10 : COLORS.white,
+        transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
           source={{ uri: `https://img.arkhamcards.com${uri}` }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
@@ -536,19 +548,37 @@ function DossierImage({
 
 
 function DossierComponent({ dossier, showCity }: { dossier: Dossier; idx: number; showCity: (city: string) => void }) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   return (
     <View style={[
       { flexDirection: 'column', backgroundColor: colors.L20 },
       space.paddingM,
       space.marginBottomM,
     ]}>
-      <Text style={[typography.text, typography.bold]}>{dossier.title}</Text>
+      <Text style={[
+        dossier.title_font === 'file' ? {
+          fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
+          fontSize: 20 * fontScale,
+          lineHeight: 24 * fontScale,
+          textDecorationLine: 'underline',
+          fontWeight: Platform.OS === 'ios' ? '700' : undefined,
+        } : undefined,
+        dossier.title_font !== 'file' ? typography.text : undefined,
+        dossier.title_font !== 'file' ? typography.bold : undefined,
+        typography.dark]}>
+        {dossier.title}
+      </Text>
       { map(dossier.entries, (entry, idx) => <DossierEntryComponent element={entry} key={idx} showCity={showCity} />)}
     </View>
   );
 }
 
+const IMAGE_DIRECTION: { [key: string]: 'row' | 'row-reverse' | 'column' | 'column-reverse' } = {
+  left: 'row-reverse',
+  right: 'row',
+  top: 'column',
+  bottom: 'column-reverse',
+};
 
 
 function DossierEntryComponent({
@@ -570,7 +600,7 @@ function DossierEntryComponent({
   }, [reference, showCity]);
   if (image) {
     return (
-      <View style={{ flexDirection: image?.alignment === 'left' ? 'row-reverse' : 'row' }}>
+      <View style={{ flexDirection: IMAGE_DIRECTION[image?.alignment || 'right'] }}>
         { !!text && (
           <View style={{ flex: 1 }}>
             <CampaignGuideTextComponent text={text} />
@@ -581,7 +611,7 @@ function DossierEntryComponent({
             uri={image.uri}
             ratio={image.ratio}
             alignment={image.alignment}
-            width={(width - s * 4) / 2.5}
+            width={(Math.min(width, MAX_WIDTH) - s * 4) / 2.5}
           />
         </View>
       </View>
@@ -608,7 +638,6 @@ function DossierEntryComponent({
 
 function LocationContent({
   location,
-  allLocations,
   currentLocation,
   setCurrentLocation,
   visited,
@@ -618,7 +647,6 @@ function LocationContent({
   unlockedDossiers,
   travelDistance,
 }: {
-  allLocations?: MapLocation[];
   location: MapLocation;
   travelDistance: number;
   currentLocation: MapLocation | undefined;
@@ -647,7 +675,7 @@ function LocationContent({
     if (atLocation) {
       return (
         <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-          <DeckButton shrink thin icon="check-thin" color="light_gray" title={t`Currently here`} disabled />
+          <DeckButton shrink thin icon="per_investigator" color="light_gray" title={t`Currently here`} disabled />
         </View>
       );
     }
@@ -663,10 +691,17 @@ function LocationContent({
       return (
         <>
           <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-            <DeckButton shrink thin icon="lock" color="light_gray" title={t`Locked`} disabled />
+            <DeckButton
+              shrink
+              thin
+              icon="lock"
+              color="red_outline"
+              title={t`Secret / Locked`}
+              detail={setCurrentLocation ? t`Cannot stop here until unlocked` : undefined}
+              disabled
+            />
           </View>
         </>
-
       );
     }
     if ((!currentLocation || !atLocation) && !visited) {
@@ -675,47 +710,64 @@ function LocationContent({
           { status === 'side' && (
             <View style={space.paddingTopM}>
               <Text style={typography.text}>
-                { t`This is a side-story location.`}
+                { t`This is a side-story location.` }
               </Text>
+              { !!travelDistance && !!currentLocation && !!setCurrentLocation && !visited && (
+                <Text style={[typography.text, space.paddingTopS]}>
+                  { t`If you wish to add a side-story to this campaign, you may travel to this location and spend additional time equal to the normal experience for playing that side story.` }
+                </Text>
+              ) }
             </View>
           ) }
-          { !!travelDistance && !!currentLocation && (
-            <Text style={[typography.text, space.paddingTopS]} textBreakStrategy="highQuality">
-              { ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance) }
-            </Text>
-          ) }
-          { currentLocation?.id !== location.id && !!setCurrentLocation && !visited && (
+          { (currentLocation?.id !== location.id && !!setCurrentLocation && !visited) ? (
             <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
               <DeckButton
                 shrink
                 thin
                 icon="map"
                 title={t`Travel here`}
+                detail={ngettext(msgid`Mark ${travelDistance} time`, `Mark ${travelDistance} time`, travelDistance)}
                 onPress={makeCurrent}
               />
-              { !!hasFast && <DeckButton leftMargin={s} shrink thin icon="map" title={t`Travel here`} onPress={makeCurrentFast} /> }
+              { !!hasFast && (
+                <DeckButton
+                  leftMargin={s}
+                  shrink
+                  thin
+                  icon="map"
+                  title={t`Use expedited ticket`}
+                  detail={t`Mark 1 time`}
+                  onPress={makeCurrentFast}
+                />
+              ) }
             </View>
-          ) }
+          ) : <View style={{ height: l }} /> }
         </>
       );
     }
-  }, [location, makeCurrent, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
+    return <View style={{ height: l }} />;
+  }, [location, makeCurrentFast, makeCurrent, hasFast, status, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
         <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
-          <EncounterIcon encounter_code={location.id} size={width / 3.2} color={colors.D20} />
+          <EncounterIcon encounter_code={location.id} size={Math.min(width, MAX_WIDTH) / 3.2} color={colors.D20} />
         </View>
-        <CardDetailSectionHeader title={t`Information`} />
-        <Text style={typography.text}>
+        <CardDetailSectionHeader title={t`Location`} />
+        <Text style={[typography.text, typography.italic]}>
           {location.name}
         </Text>
-        <Text style={typography.text}>
+        <Text style={[typography.text, typography.italic]}>
           {location.details.region.name}
         </Text>
         { !!location.details.country && (
-          <Text style={typography.text}>
+          <Text style={[typography.text, typography.italic]}>
             {location.details.country.name}
+          </Text>
+        ) }
+        { !!currentLocation && currentLocation.id !== location.id && (
+          <Text style={[typography.text, space.marginTopS]}>
+            { ngettext(msgid`Travel time: ${travelDistance}`, `Travel time: ${travelDistance}`, travelDistance)}
           </Text>
         ) }
         {travelSection}
@@ -771,6 +823,17 @@ function LocationLine({ location, status, visited, onSelect }: {
   );
 }
 
+function visitMessage(alreadyVisited: boolean, status: 'locked' | 'side' | 'standard', travelDistance: number) {
+  if (alreadyVisited) {
+    return t`Already visited`;
+  }
+  if (status === 'locked') {
+    return t`Locked`;
+  }
+  return ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance);
+}
+
+
 export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
   const { componentId, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
   const [currentLocation, visited] = useMemo(() => {
@@ -780,11 +843,13 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     ];
   }, [campaignMap, props.currentLocation, visitedLocations]);
 
-  const { colors, backgroundStyle, borderStyle, typography, width, height } = useContext(StyleContext);
+  const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const hiding = useRef<boolean>(false);
   const onDismiss = useCallback(() => {
     setDialogVisibleRef.current?.(false);
+    hiding.current = true;
     setTimeout(() => Navigation.dismissModal(componentId), 50);
     return true;
   }, [componentId]);
@@ -810,45 +875,49 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   }, componentId, [onDismiss]);
   useBackButton(onDismiss);
 
-  const showCity = useCallback((city: string) => {
-    const location = find(campaignMap?.locations, l => l.id === city)
-    if (location && pinchRef.current) {
-      const campaignWidth = campaignMap?.width || 1;
-      const campaignHeight = campaignMap?.height || 1;
-
-      const x = interpolate(location.x * 1.0 / campaignWidth,
-        [0, 1.0],
-        [0, width - theWidth]
-      );
-      const y = interpolate(
-        location.y * 1.0 / campaignHeight,
-        [0, 1.0],
-        [0, height - theHeight]);
-      pinchRef.current.translateTo(x, y, false);
-      setSelectedLocation(location);
-    }
-  }, [campaignMap, setSelectedLocation])
-
   const [theWidth, theHeight] = useMemo(() => {
     if (!campaignMap) {
       return [1, 1];
     }
     return [campaignMap.width * 1.0 / campaignMap.height * height, height];
   }, [campaignMap, height]);
+
+  const showCity = useCallback((city: string) => {
+    const location = find(campaignMap?.locations, l => l.id === city)
+    if (location) {
+      if (pinchRef.current) {
+        const campaignWidth = campaignMap?.width || 1;
+        const campaignHeight = campaignMap?.height || 1;
+
+        const x = interpolate(location.x * 1.0 / campaignWidth,
+          [0, 1.0],
+          [0, width - theWidth]
+        );
+        const y = interpolate(
+          location.y * 1.0 / campaignHeight,
+          [0, 1.0],
+          [0, height - theHeight]);
+        pinchRef.current.translateTo(x, y, false);
+      }
+      setSelectedLocation(location);
+    }
+  }, [campaignMap, height, theHeight, theWidth, width, setSelectedLocation])
+
   const clearSelection = useCallback(() => setSelectedLocation(undefined), []);
+  const selectedStatus = (selectedLocation?.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation?.status;
   const { dialog, showDialog, setVisible } = useDialog({
     title: selectedLocation?.name || '',
-    content: !!selectedLocation && (
+    description: selectedStatus !== 'locked' ? selectedLocation?.file_name : undefined,
+    content: !!selectedLocation && !!selectedStatus && (
       <LocationContent
         location={selectedLocation}
         currentLocation={currentLocation}
         travelDistance={travelDistances?.[selectedLocation.id]?.time || 1}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
-        allLocations={campaignMap?.locations}
         hasFast={hasFast}
         unlockedDossiers={unlockedDossiers}
         visited={visited.has(selectedLocation.id)}
-        status={(selectedLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === selectedLocation.id) ? 'standard' : undefined) || selectedLocation.status}
+        status={selectedStatus}
         showCity={showCity}
       />
     ),
@@ -924,7 +993,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         return `dist_${travelDistances?.[location.id]?.time || 1}`;
       }
     );
-  }, [campaignMap.locations, travelDistances, visited]);
+  }, [campaignMap.locations, props.currentLocation, unlockedLocations, travelDistances, visited]);
 
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
@@ -945,20 +1014,26 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       },
     });
   }, [componentId]);
+  const [viewHeight, setViewHeight] = useState(height - 80);
+  const onLayout = useCallback((event: LayoutChangeEvent) => {
+    if (!hiding.current) {
+      setViewHeight(event.nativeEvent.layout.height);
+    }
+  }, [setViewHeight]);
   return (
-    <View style={{ flex: 1, position: 'relative' }}>
+    <View style={{ flex: 1, position: 'relative' }} onLayout={onLayout}>
       { timeTableMode ? (
         <ScrollView contentContainerStyle={[backgroundStyle, styles.column]}>
-          { flatMap(locationsByDistance, (locations) => {
+          { flatMap(locationsByDistance, (locations, idx) => {
             const first = locations[0];
             const status = (first.status === 'locked' && !!find(unlockedLocations, loc => loc === first.id) ? 'standard' : undefined) || first.status;
             const alreadyVisited = visited.has(first.id);
             const travelDistance = travelDistances?.[first.id]?.time || 1;
             return (
-              <>
+              <View key={idx}>
                 <View style={[styles.row, space.paddingS, { backgroundColor: colors.L10 }]}>
                   <Text style={[typography.subHeaderText, typography.dark, { flex: 1 }]}>
-                    { alreadyVisited ? t`Already visited` : (status === 'locked' ? t`Locked` :  ngettext(msgid`Travel cost: ${travelDistance} time`, `Travel cost: ${travelDistance} time`, travelDistance)) }
+                    { visitMessage(alreadyVisited, status, travelDistance) }
                   </Text>
                 </View>
                 {
@@ -978,7 +1053,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                     )
                   })
                 }
-              </>
+              </View>
             );
           }) }
         </ScrollView>
@@ -988,9 +1063,9 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
           minScale={1}
           maxScale={4}
           initialScale={1.0}
-          style={{ backgroundColor: '0x8A9284' }}
-          containerDimensions={{ width, height }}
+          containerDimensions={{ width, height: viewHeight }}
           contentDimensions={{ width: theWidth, height: theHeight }}
+          backgroundStyle={{ backgroundColor: '#7a897f' }}
         >
           <View style={{ width: theWidth, height: theHeight, position: 'relative' }}>
             <MapSvg width={theWidth} height={theHeight} viewBox="0 0 1893 988" />
@@ -1016,7 +1091,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                 key={location.id}
                 currentLocation={!!currentLocation && currentLocation.id === location.id}
                 campaignWidth={campaignMap.width}
-                campaignHeight={campaignMap.height}
                 location={location}
                 widthRatio={widthRatio}
                 heightRatio={heightRatio}
@@ -1033,7 +1107,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                 widthRatio={widthRatio}
                 heightRatio={heightRatio}
                 status={(currentLocation.status === 'locked' && !!find(unlockedLocations, loc => loc === currentLocation.id) ? 'standard' : undefined) || currentLocation.status}
-            />
+              />
             ) }
           </View>
         </PanPinchView>
@@ -1050,7 +1124,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
   },
-  textWithShadow:{
+  textWithShadow: {
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowRadius: 4,
     elevation: 2,
@@ -1065,7 +1139,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-
   gutter: {
     position: 'absolute',
     top: 0,

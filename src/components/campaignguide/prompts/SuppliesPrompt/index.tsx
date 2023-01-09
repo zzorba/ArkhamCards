@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
 import { Text, View } from 'react-native';
 import { forEach, keys, map, filter, sumBy } from 'lodash';
-import { jt } from 'ttag';
+import { t, jt } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import SupplyComponent from './SupplyComponent';
@@ -13,6 +13,8 @@ import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import InputWrapper from '../InputWrapper';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 
 interface Props {
   id: string;
@@ -88,62 +90,67 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
   const supplyCounts = suppliesInput !== undefined ? suppliesInput : counts;
   const supplyIcon = <AppIcon key="resource" name="resource" size={15} color="#FFFFFF" />;
   return (
-    <InputWrapper
-      bulletType={bulletType || 'default'}
-      title={text}
-      titleStyle="setup"
-      editable={suppliesInput === undefined}
-      onSubmit={save}
-    >
-      { map(scenarioInvestigators, (investigator, idx) => {
-        const total = baseTotal + (input.special_xp ? campaignLog.specialXp(investigator.code, input.special_xp) : 0);
-        const counts = supplyCounts[investigator.code] || {};
-        const spent = sumBy(keys(counts), id => {
-          const count = counts[id];
-          const supply = supplies[id];
-          return count * (supply ? supply.cost : 1);
-        });
-        return (
-          <View style={space.paddingBottomXs} key={idx}>
-            <RoundedFactionBlock
-              faction={investigator.factionCode()}
-              header={
-                <CompactInvestigatorRow
-                  investigator={investigator}
-                  width={width - s * (suppliesInput === undefined ? 4 : 2)}
-                  open
-                >
-                  { <Text style={[typography.button, typography.white]}>{jt`${spent} of ${supplyIcon} ${total}`}</Text> }
-                </CompactInvestigatorRow>
-              }
-              noSpace
-              noShadow
-            >
-              <View style={[space.paddingBottomS, { backgroundColor: colors.L20, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
-                { map(filter(input.supplies, (supply) => {
-                  const count = counts[supply.id] || 0;
-                  return (suppliesInput === undefined || count > 0);
-                }), (supply, idx2) => {
-                  const count = counts[supply.id] || 0;
-                  return (
-                    <SupplyComponent
-                      key={`${supply.id}-${idx2}`}
-                      sectionId={input.section}
-                      investigator={investigator}
-                      supply={supply}
-                      count={count}
-                      inc={incrementSupply}
-                      dec={decrementSupply}
-                      remainingPoints={Math.max(total - spent, 0)}
-                      editable={suppliesInput === undefined}
-                    />
-                  );
-                }) }
-              </View>
-            </RoundedFactionBlock>
-          </View>
-        );
-      }) }
-    </InputWrapper>
+    <>
+      { !!text && (
+        <SetupStepWrapper bulletType={bulletType || 'default'}>
+          <CampaignGuideTextComponent text={text} />
+        </SetupStepWrapper>
+      ) }
+      <InputWrapper
+        title={t`Choose supplies:`}
+        editable={suppliesInput === undefined}
+        onSubmit={save}
+      >
+        { map(scenarioInvestigators, (investigator, idx) => {
+          const total = baseTotal + (input.special_xp ? campaignLog.specialXp(investigator.code, input.special_xp) : 0);
+          const counts = supplyCounts[investigator.code] || {};
+          const spent = sumBy(keys(counts), id => {
+            const count = counts[id];
+            const supply = supplies[id];
+            return count * (supply ? supply.cost : 1);
+          });
+          return (
+            <View style={space.paddingBottomXs} key={idx}>
+              <RoundedFactionBlock
+                faction={investigator.factionCode()}
+                header={
+                  <CompactInvestigatorRow
+                    investigator={investigator}
+                    width={width - s * (suppliesInput === undefined ? 4 : 2)}
+                    open
+                  >
+                    { <Text style={[typography.button, typography.white]}>{jt`${spent} of ${supplyIcon} ${total}`}</Text> }
+                  </CompactInvestigatorRow>
+                }
+                noSpace
+                noShadow
+              >
+                <View style={[space.paddingBottomS, { backgroundColor: colors.L20, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }]}>
+                  { map(filter(input.supplies, (supply) => {
+                    const count = counts[supply.id] || 0;
+                    return (suppliesInput === undefined || count > 0);
+                  }), (supply, idx2) => {
+                    const count = counts[supply.id] || 0;
+                    return (
+                      <SupplyComponent
+                        key={`${supply.id}-${idx2}`}
+                        sectionId={input.section}
+                        investigator={investigator}
+                        supply={supply}
+                        count={count}
+                        inc={incrementSupply}
+                        dec={decrementSupply}
+                        remainingPoints={Math.max(total - spent, 0)}
+                        editable={suppliesInput === undefined}
+                      />
+                    );
+                  }) }
+                </View>
+              </RoundedFactionBlock>
+            </View>
+          );
+        }) }
+      </InputWrapper>
+    </>
   );
 }
