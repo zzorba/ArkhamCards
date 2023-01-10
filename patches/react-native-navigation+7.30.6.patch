@@ -20,10 +20,10 @@ index 226d3bf..ddcf310 100644
          navigator.bindViews();
          getReactGateway().onActivityCreated(this);
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
-index e61df57..e7d3122 100644
+index e61df57..4151f53 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
-@@ -3,12 +3,15 @@ package com.reactnativenavigation.viewcontrollers.bottomtabs;
+@@ -3,12 +3,16 @@ package com.reactnativenavigation.viewcontrollers.bottomtabs;
  import android.animation.Animator;
  import android.app.Activity;
  import android.content.res.Configuration;
@@ -34,20 +34,25 @@ index e61df57..e7d3122 100644
  import androidx.annotation.NonNull;
  import androidx.annotation.RestrictTo;
  import androidx.coordinatorlayout.widget.CoordinatorLayout;
++import androidx.core.graphics.Insets;
 +import androidx.core.view.ViewCompat;
 +import androidx.core.view.WindowInsetsCompat;
  
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-@@ -108,6 +111,15 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
+@@ -108,6 +112,19 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
          bottomTabs.setCurrentItem(initialTabIndex, false);
      }
  
 +    @Override
 +    protected WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat insets) {
 +        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-+            ViewCompat.onApplyWindowInsets(view, insets);
-+            return insets;
++            WindowInsetsCompat finalInsets = new WindowInsetsCompat.Builder()
++                    .setInsets(WindowInsetsCompat.Type.systemBars(),
++                            Insets.of(0, 0, 0, insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
++                    )
++                    .build();
++            ViewCompat.onApplyWindowInsets(view, finalInsets);
 +        }
 +        return super.onApplyWindowInsets(view, insets);
 +    }
