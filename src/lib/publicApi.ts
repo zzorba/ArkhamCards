@@ -311,7 +311,7 @@ export const syncCards = async function(
       [code: string]: Card[] | undefined;
     } = {};
     forEach(allCards, card => {
-      if (card.duplicate_of_code) {
+      if (!card.taboo_set_id && card.duplicate_of_code) {
         dupes[card.duplicate_of_code] = [
           ...(dupes[card.duplicate_of_code] || []),
           card,
