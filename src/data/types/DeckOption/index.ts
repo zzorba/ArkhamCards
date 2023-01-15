@@ -253,7 +253,7 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
       ...(this.option.level ?
         [
-          !!this.option.not ? combineQueries(
+          !this.option.not ? combineQueries(
             where('c.customization_options is not null'),
             this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true),
             'or'
