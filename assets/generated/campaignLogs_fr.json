@@ -4853,7 +4853,7 @@
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "la cellule a caché la vérité à Taylor."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
@@ -4929,7 +4929,7 @@
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "cellule a dit la vérité à Taylor."
           },
           {
             "id": "cell_was_dismantled",
@@ -5033,7 +5033,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "que vous n'avez pas fini d'entendre parler de L'Homme aux Gants Rouges."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
@@ -5165,10 +5165,6 @@
             "text": "leurre"
           },
           {
-            "id": "chica_yay",
-            "text": "leurre"
-          },
-          {
             "id": "cotk_setup",
             "text": "leurre"
           },
@@ -5274,6 +5270,10 @@
           },
           {
             "id": "on_thin_ice_doom",
+            "text": "leurre"
+          },
+          {
+            "id": "oti_swap_xp",
             "text": "leurre"
           },
           {

@@ -5179,10 +5179,6 @@
             "text": "dummy"
           },
           {
-            "id": "chica_yay",
-            "text": "dummy"
-          },
-          {
             "id": "cotk_setup",
             "text": "dummy"
           },
@@ -5288,6 +5284,10 @@
           },
           {
             "id": "on_thin_ice_doom",
+            "text": "dummy"
+          },
+          {
+            "id": "oti_swap_xp",
             "text": "dummy"
           },
           {

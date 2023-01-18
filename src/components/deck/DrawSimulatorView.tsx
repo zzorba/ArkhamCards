@@ -10,7 +10,7 @@ import { c, t } from 'ttag';
 import { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 import { TouchableShrink } from '@components/core/Touchables';
-import { Slots } from '@actions/types';
+import { Customizations, Slots } from '@actions/types';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -26,9 +26,11 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardImage from '@components/card/CardImage';
 import { CARD_RATIO } from '@styles/sizes';
 import CardGridComponent from '@components/cardlist/CardGridComponent';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface DrawSimulatorProps {
   slots: Slots;
+  customizations: Customizations;
 }
 
 interface Item {
@@ -125,7 +127,6 @@ export function navigationOptions(
   };
 }
 
-
 function drawHelper(drawState: DrawnState, count: number | 'all'): {
   shuffledDeck: string[];
   drawnCards: string[];
@@ -191,7 +192,7 @@ function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width
   );
 }
 
-export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorProps & NavigationProps) {
+export default function DrawSimulatorView({ componentId, customizations, slots }: DrawSimulatorProps & NavigationProps) {
   const { backgroundStyle, colors, typography, width } = useContext(StyleContext);
   useEffect(() => {
     Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
@@ -364,10 +365,9 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
     );
   }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
 
-
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
-  }, [componentId, colors]);
+    showCard(componentId, card.code, card, colors, true, undefined, customizations);
+  }, [componentId, colors, customizations]);
   const cardWidth = useMemo(() => {
     let cardsPerRow = 10;
     let cardWidth = (width - s) / cardsPerRow - s;
@@ -380,7 +380,7 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
     }
     return cardWidth;
   }, [width]);
-
+  const { listSeperator } = useContext(LanguageContext);
   const renderCardItem = useCallback(({ item }: { item: Item }) => {
     const card = cards && cards[item.code];
     if (!card) {
@@ -392,12 +392,12 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
         width={cardWidth}
         grid={gridView}
         item={item}
-        card={card}
+        card={card.withCustomizations(listSeperator, customizations[card.code])}
         onPress={onCardPress}
         toggleSelection={toggleSelection}
       />
     );
-  }, [cards, cardWidth, gridView, onCardPress, toggleSelection]);
+  }, [cards, cardWidth, gridView, listSeperator, customizations, onCardPress, toggleSelection]);
 
   const selectedSet = useMemo(() => new Set(drawState.selectedCards), [drawState.selectedCards]);
   const data = useMemo(() => flatMap(drawState.drawnCards, cardKey => {
@@ -416,7 +416,10 @@ export default function DrawSimulatorView({ slots, componentId }: DrawSimulatorP
 
   const renderGridControl = useCallback((item: Item) => {
     return (
-      <GridControl item={item} toggleSelection={toggleSelection} />
+      <GridControl
+        item={item}
+        toggleSelection={toggleSelection}
+      />
     );
   }, [toggleSelection]);
   return (

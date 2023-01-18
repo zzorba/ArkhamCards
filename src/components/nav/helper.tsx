@@ -195,6 +195,7 @@ export function showDrawSimulator(
 ) {
   const {
     slots,
+    customizations,
     investigator,
   } = parsedDeck;
   Navigation.push<DrawSimulatorProps>(componentId, {
@@ -202,6 +203,7 @@ export function showDrawSimulator(
       name: 'Deck.DrawSimulator',
       passProps: {
         slots,
+        customizations,
       },
       options: getDeckOptions(
         colors,

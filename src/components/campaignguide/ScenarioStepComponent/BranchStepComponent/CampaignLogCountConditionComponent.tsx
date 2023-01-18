@@ -41,10 +41,6 @@ export default function CampaignLogCountConditionComponent({ step, condition, ca
         return 'Some other count condition';
     }
   }, [campaignGuide, condition, campaignLog]);
-
-  if (condition.section === 'hidden') {
-    return null;
-  }
   const count = campaignLog.count(condition.section, condition.id);
   return (
     <SetupStepWrapper bulletType={step.bullet_type}>

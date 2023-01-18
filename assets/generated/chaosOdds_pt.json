@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Maior número de perdição em um inimigo [[Cultist]] em jogo",
+          "prompt": "Maior número de perdição em um inimigo [[Cultist]] em jogo.",
           "min": 0
         }
       },
@@ -170,7 +170,7 @@
           },
           "options": [
             {
-              "prompt": "10 ou mais cartas na sua pilha de descarte",
+              "prompt": "10 ou mais cartas na sua pilha de descartes",
               "modified_value": {
                 "modifier": -3
               }
@@ -203,7 +203,7 @@
           },
           "options": [
             {
-              "prompt": "10 ou mais cartas na sua pilha de descarte",
+              "prompt": "10 ou mais cartas na sua pilha de descartes",
               "modified_value": {
                 "modifier": -5
               }
@@ -300,7 +300,7 @@
           },
           "options": [
             {
-              "prompt": "Hunting Horror está na sua localização",
+              "prompt": "Horror Caçador está na sua localização",
               "modified_value": {
                 "modifier": -3
               }
@@ -337,7 +337,7 @@
           },
           "options": [
             {
-              "prompt": "Hunting Horror está na sua localização",
+              "prompt": "Horror Caçador está na sua localização",
               "modified_value": {
                 "modifier": -4
               }
@@ -435,7 +435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de locais em jogo sem carta de encontro embaixo",
+          "prompt": "Número de locais em jogo sem cartas de encontro embaixo dela",
           "min": 0,
           "max": 4
         }
@@ -464,7 +464,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de locais em jogo sem carta de encontro embaixo",
+          "prompt": "Número de locais em jogo sem cartas de encontro embaixo dela",
           "min": 0
         }
       },
@@ -516,7 +516,7 @@
           },
           "options": [
             {
-              "prompt": "Remova todas as fichas de pista de Brood of Yog-Sothoth em jogo",
+              "prompt": "Remova todas as fichas de pista de Proles de Yog-Sothoth em jogo",
               "modified_value": {
                 "modifier": 0
               }
@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de locais em jogo sem carta de encontro embaixo",
+          "prompt": "Número de Prole de Yog-Sothoth em jogo",
           "min": 0,
           "scale": 2
         }
@@ -557,7 +557,7 @@
           },
           "options": [
             {
-              "prompt": "Remova todas as fichas de pista de Brood of Yog-Sothoth em jogo",
+              "prompt": "Remova todas as fichas de pista de Proles de Yog-Sothoth em jogo",
               "modified_value": {
                 "modifier": 0
               }
@@ -687,7 +687,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Extradimensional]] locais em jogo",
+          "prompt": "Número de locais [[Extradimensional]] em jogo",
           "min": 0,
           "max": 5
         }
@@ -719,7 +719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Extradimensional]] locais em jogo",
+          "prompt": "Número de locais [[Extradimensional]] em jogo",
           "min": 0
         }
       },
@@ -760,7 +760,7 @@
           },
           "options": [
             {
-              "prompt": "Tenha 3 ou mais horrores em você",
+              "prompt": "Tem 3 ou mais horrores em você",
               "modified_value": {
                 "modifier": -3
               }
@@ -973,7 +973,7 @@
           },
           "options": [
             {
-              "prompt": "Escolha aleatoriamente um inimigo entre os inimigos [[Monster]] reservados e coloque-o abaixo do ato\"",
+              "prompt": "Escolha aleatoriamente um inimigo entre os inimigos separados [[Monster]] e coloque-o embaixo do ato",
               "modified_value": {
                 "modifier": 0
               }
@@ -1015,7 +1015,7 @@
           },
           "options": [
             {
-              "prompt": "Escolha aleatoriamente um inimigo entre os inimigos [[Monster]] reservados e coloque-o abaixo do ato\"",
+              "prompt": "Escolha aleatoriamente um inimigo entre os inimigos separados [[Monster]] e coloque-o embaixo do ato",
               "modified_value": {
                 "modifier": 0
               }
@@ -1033,7 +1033,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Quantidade de perdição em jogo",
           "min": 0,
           "max": 5
         }
@@ -1063,7 +1063,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Quantidade de perdição em jogo",
           "min": 0
         }
       },
@@ -1171,7 +1171,7 @@
           },
           "options": [
             {
-              "prompt": "Ataque ou tentativa de evasão contra um inimigo com perdição",
+              "prompt": "Ataque ou tentativa de evasão contra um inimigo com perdição nele",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1212,7 +1212,7 @@
           },
           "options": [
             {
-              "prompt": "Um inimigo com 1 ou mais perdição em sua localização",
+              "prompt": "Um inimigo com 1 ou mais perdição em seu local",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1248,7 +1248,7 @@
           },
           "options": [
             {
-              "prompt": "Nenhuma sanidade restante restante",
+              "prompt": "Nenhuma sanidade restante",
               "modified_value": {
                 "modifier": -4
               }
@@ -1314,7 +1314,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de pontos de vingança no painel de vitória",
+          "prompt": "Número de pontos de vingança no painel de vitórias",
           "min": 0
         }
       },
@@ -1359,7 +1359,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de pontos de vingança no painel de vitória",
+          "prompt": "Número de pontos de vingança no painel de vitórias",
           "min": 0,
           "adjustment": 1
         }
@@ -1412,7 +1412,7 @@
           },
           "options": [
             {
-              "prompt": "Perdição em sua localização",
+              "prompt": "Perdição no seu local",
               "modified_value": {
                 "modifier": -3
               }
@@ -1454,7 +1454,7 @@
           },
           "options": [
             {
-              "prompt": "Perdição em sua localização",
+              "prompt": "Perdição no seu local",
               "modified_value": {
                 "modifier": -4
               }
@@ -1560,7 +1560,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Ancient]] location",
+              "prompt": "Em um local [[Ancient]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1599,7 +1599,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Ancient]] location",
+              "prompt": "Em um local [[Ancient]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1720,7 +1720,7 @@
           },
           "options": [
             {
-              "prompt": "Tenha 5 ou mais cartas na mão",
+              "prompt": "Tem 5 ou mais cartas na mão",
               "modified_value": {
                 "modifier": -5
               }
@@ -1757,7 +1757,7 @@
           },
           "options": [
             {
-              "prompt": "Tenha 5 ou mais cartas na mão",
+              "prompt": "Tem 5 ou mais cartas na mão",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1820,7 +1820,7 @@
           },
           "options": [
             {
-              "prompt": "3 ou mais pontos de vingança no painel de vitória",
+              "prompt": "3 ou mais pontos de vingança no painel de vitórias",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1861,7 +1861,7 @@
           },
           "options": [
             {
-              "prompt": "3 ou mais pontos de vingança no painel de vitória",
+              "prompt": "3 ou mais pontos de vingança no painel de vitórias",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -2062,7 +2062,7 @@
           },
           "options": [
             {
-              "prompt": "Sua localização é assombrada",
+              "prompt": "Seu local é assombrado",
               "modified_value": {
                 "modifier": -3
               }
@@ -2093,7 +2093,7 @@
           },
           "options": [
             {
-              "prompt": "Sua localização é assombrada",
+              "prompt": "Seu local é assombrado",
               "modified_value": {
                 "modifier": -4
               }
@@ -2203,7 +2203,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de negócios inacabados no painel de vitória",
+          "prompt": "O número de Negócios Inacabados no painel de vitórias",
           "min": 0,
           "adjustment": 1
         }
@@ -2232,7 +2232,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de negócios inacabados no painel de vitória",
+          "prompt": "O número de Negócios Inacabados no painel de vitórias",
           "min": 0,
           "reveal_another": 1
         }
@@ -2294,7 +2294,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número total de perdição entre [[Cultist]] inimigos em jogo",
+          "prompt": "Número total de perdição entre inimigos [[Cultist]] em jogo",
           "min": 0
         }
       },
@@ -2320,7 +2320,7 @@
           },
           "options": [
             {
-              "prompt": "Nenhum inimigo [[Cultist]] em jogo tem a perdição sobre eles",
+              "prompt": "Nenhum inimigo [[Cultist]] em jogo tem perdição sobre eles",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -2419,7 +2419,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número total de perdição e brechas em sua localização",
+          "prompt": "Número total de perdição e brechas em seu local",
           "min": 0
         }
       },
@@ -2448,7 +2448,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número total de perdição e brechas em sua localização",
+          "prompt": "Número total de perdição e brechas em seu local",
           "min": 0,
           "adjustment": 1
         }
@@ -2482,7 +2482,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Metade da perdição em Azathoth (arredondado)",
+          "prompt": "Metade da perdição em Azathoth (arredondado para cima)",
           "min": 2
         }
       },
@@ -2552,7 +2552,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Número de locais da Enchanted Woods revelados",
+          "prompt": "Número de locais da Florestas Encantadas revelados",
           "min": 0
         }
       },
@@ -2601,7 +2601,7 @@
           },
           "options": [
             {
-              "prompt": "Envolvido com um inimigo [[Staff]]",
+              "prompt": "Engajado com um inimigo [[Staff]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -2635,7 +2635,7 @@
           },
           "options": [
             {
-              "prompt": "Envolvido com um inimigo [[Staff]]",
+              "prompt": "Engajado com um inimigo [[Staff]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -3204,7 +3204,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Número de barreiras entre sua localização e todos os locais de conexão",
+          "prompt": "Número de barreiras entre sua localização e todos os locais conectados",
           "min": 0
         }
       }
@@ -3235,7 +3235,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Número de barreiras entre sua localização e todos os locais de conexão",
+          "prompt": "Número de barreiras entre sua localização e todos os locais conectados",
           "min": 0,
           "scale": 2
         }
@@ -3316,7 +3316,7 @@
           },
           "options": [
             {
-              "prompt": "6 ou menos locais restantes no baralho de estrada",
+              "prompt": "6 ou menos locais restantes no baralho de Estrada",
               "modified_value": {
                 "modifier": -3
               }
@@ -3353,7 +3353,7 @@
           },
           "options": [
             {
-              "prompt": "6 ou menos locais restantes no baralho de estrada",
+              "prompt": "6 ou menos locais restantes no baralho de Estrada",
               "modified_value": {
                 "modifier": -4
               }
@@ -4014,7 +4014,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de [[Guest]] inimigos em jogo",
+          "prompt": "O número de inimigos [[Guest]] em jogo",
           "min": 0
         }
       },
@@ -4045,7 +4045,7 @@
           },
           "options": [
             {
-              "prompt": "Coloque uma de suas pistas em sua localização",
+              "prompt": "Coloque uma de suas pistas no seu local",
               "modified_value": {
                 "modifier": -1
               }
@@ -4065,7 +4065,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de [[Innocent]] inimigos em jogo",
+          "prompt": "O número de inimigos [[Innocent]] em jogo",
           "min": 0
         }
       },
@@ -4096,7 +4096,7 @@
           },
           "options": [
             {
-              "prompt": "Coloque uma de suas pistas em sua localização",
+              "prompt": "Coloque uma de suas pistas no seu local",
               "modified_value": {
                 "modifier": -2
               }
@@ -4120,7 +4120,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 para cada 5 cartas que o indivíduo 8L-08 devorou",
+          "prompt": "1 para cada 5 cartas que o Indivíduo 8L-08 devorou",
           "min": 0
         }
       },
@@ -4148,7 +4148,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 para cada 3 cartas que o indivíduo 8L-08 devorou",
+          "prompt": "1 para cada 3 cartas que o Indivíduo 8L-08 devorou",
           "min": 0
         }
       },
@@ -4272,7 +4272,7 @@
           },
           "options": [
             {
-              "prompt": "Um ativo [[Scientist]] está no seu local",
+              "prompt": "Um ativo de [[Scientist]] está no seu local",
               "modified_value": {
                 "modifier": -4
               }
@@ -4323,7 +4323,7 @@
           },
           "options": [
             {
-              "prompt": "Um ativo [[Scientist]] está no seu local",
+              "prompt": "Um ativo de [[Scientist]] está no seu local",
               "modified_value": {
                 "modifier": -6
               }
@@ -4347,7 +4347,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Tome]] ativos que Daisy Walker controla",
+          "prompt": "Número de ativos de [[Tome]] que Daisy Walker controla",
           "min": 0
         }
       },
@@ -4376,7 +4376,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Tome]] ativos que Daisy Walker controla",
+          "prompt": "Número de ativos de [[Tome]] que Daisy Walker controla",
           "min": 0,
           "adjustment": 1
         }
@@ -4554,7 +4554,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Cultist]] inimigos no painel de vitória",
+          "prompt": "Número de inimigos [[Cultist]] no painel de vitória",
           "min": 0,
           "max": 5
         }
@@ -4595,7 +4595,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de [[Cultist]] inimigos no painel de vitória",
+          "prompt": "Número de inimigos [[Cultist]] no painel de vitória",
           "min": 0,
           "adjustment": 1
         }
@@ -4640,7 +4640,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Metade do número de cartas [[Suspect]] e [[Hideout]] no painel de vitória (arredondado para cima)",
+          "prompt": "Metade do número de cartas [[Suspect]] e [[Hideout]] no painel de vitórias (arredondado para cima)",
           "min": 0
         }
       },
@@ -4653,7 +4653,7 @@
           },
           "options": [
             {
-              "prompt": "Você está negociando com um inimigo [[Suspect]] ou investigando um local [[Hideout]]",
+              "prompt": "Você está negociando com um inimigo [[Suspect]] ou investigando um local de [[Hideout]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -4679,7 +4679,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de cartas [[Suspect]] e [[Hideout]] no painel de vitória",
+          "prompt": "O número de cartas de [[Suspect]] e de [[Hideout]] no painel de vitórias",
           "min": 0
         }
       },
@@ -4692,7 +4692,7 @@
           },
           "options": [
             {
-              "prompt": "Você está negociando com um inimigo [[Suspect]] ou investigando um local [[Hideout]]",
+              "prompt": "Você está negociando com um inimigo [[Suspect]] ou investigando um local de [[Hideout]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -4722,7 +4722,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Metade do valor do abrigo da sua localização (arredondado)"
+          "prompt": "Metade do valor do abrigo do seu local (arredondado para cima)"
         }
       },
       {
@@ -4743,7 +4743,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O valor de abrigo da sua localização"
+          "prompt": "O valor de abrigo do seu local"
         }
       },
       {
@@ -4768,7 +4768,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número de cartas de história no painel de vitória"
+          "prompt": "O número de cartas de história no painel de vitórias"
         }
       },
       {
@@ -4795,7 +4795,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O número da agenda atual mais o número de cartas de história no painel de vitória"
+          "prompt": "O número da agenda atual mais o número de cartas de história no painel de vitórias"
         }
       },
       {
@@ -4826,7 +4826,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O nível da sua localização"
+          "prompt": "O nível do seu local"
         }
       },
       {
@@ -4853,7 +4853,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "O nível da sua localização",
+          "prompt": "O nível do seu local",
           "min": 0,
           "adjustment": 2
         }
@@ -4904,7 +4904,7 @@
           },
           "options": [
             {
-              "prompt": "ficha [frost] foi revelada",
+              "prompt": "Ficha de [frost] foi revelada",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4944,7 +4944,7 @@
           },
           "options": [
             {
-              "prompt": "ficha [frost] foi revelada",
+              "prompt": "Ficha de [frost] foi revelada",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8035,7 +8035,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "Quantidade de perdição em jogo",
           "min": 0
         }
       },

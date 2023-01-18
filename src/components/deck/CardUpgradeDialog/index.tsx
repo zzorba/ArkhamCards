@@ -120,6 +120,8 @@ export default function CardUpgradeDialog({
     dispatch(decIgnoreDeckSlot(id, code));
   }, [dispatch, id]);
 
+  const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
+
   const onIncrement = useCallback((code: string) => {
     if (!deckEdits) {
       return;
@@ -132,11 +134,16 @@ export default function CardUpgradeDialog({
         (card.xp || 0) < (cards[code]?.xp || 0)
       );
     });
+    const card = cards[code];
     dispatch(incDeckSlot(id, code, undefined));
-    if (possibleDecrement) {
+    if ((
+      !ignoreData ||
+      !card ||
+      !find(ignoreData.traits, trait => !!(card.real_traits_normalized && card.real_traits_normalized.indexOf(trait) !== -1))
+    ) && possibleDecrement) {
       dispatch(decDeckSlot(id, possibleDecrement.code, undefined));
     }
-  }, [deckEdits, dispatch, cards, namedCards, id]);
+  }, [deckEdits, dispatch, cards, namedCards, ignoreData, id]);
 
   const onDecrement = useCallback((code: string) => {
     dispatch(decDeckSlot(id, code));
@@ -166,7 +173,6 @@ export default function CardUpgradeDialog({
     );
   }, [inCollection, showNonCollection, ignore_collection]);
 
-  const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
 
   const specialIgnoreRule = useCallback((card: Card, highestLevel: boolean) => {
     return (!!ignoreData &&

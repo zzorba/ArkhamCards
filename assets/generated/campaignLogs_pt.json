@@ -76,19 +76,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "o bando de O’Bannion tem uma dívida para acertar com os investigadores."
+            "text": "a gangue de O’Bannion quer acertar as contas com os investigadores."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaparam para a selva."
+            "text": "#X# proles ficaram à solta."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "você acalmou os habitantes."
+            "text": "vocês acalmaram os moradores."
           },
           {
             "id": "closed_tear",
-            "text": "os investigadores fecharam a fenda da realidade."
+            "text": "os investigadores fecharam a fenda na realidade."
           },
           {
             "id": "destroyed_necronomicon",
@@ -96,7 +96,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
+            "text": "Earl Sawyer sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -108,11 +108,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "os investigadores falharam ao recuperar o Necronomicon."
+            "text": "os investigadores falharam em recuperar o Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "os investigadores falharam ao salvar os estudantes."
+            "text": "os investigadores falharam em salvar os estudantes."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -124,7 +124,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
+            "text": "o Dr. Francis Morgan sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -132,23 +132,23 @@
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "os investigadores resgataram Dr. Henry Armitage."
+            "text": "os investigadores resgataram o Dr. Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage sobreviveu ao Legado de Dunwich."
+            "text": "Dr. Henry Armitage sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "os investigadores atrasaram no caminho até Dunwich."
+            "text": "os investigadores se atrasaram a caminho de Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "os investigadores, colocaram Silas Bishop fora de sua miséria."
+            "text": "os investigadores acabaram com o sofrimento de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi deu cobertura aos investigadores."
+            "text": "Naomi está dando cobertura aos investigadores."
           },
           {
             "id": "necronomicon_stolen",
@@ -156,31 +156,31 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "Nenhuma nenhuma cria escapou na selva."
+            "text": "Nenhuma prole ficou à solta."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "os investigadores recuperaram Silas Bishop."
+            "text": "os investigadores restauraram Silas Bishop."
           },
           {
             "id": "ritual_completed",
-            "text": "o ritual está completo."
+            "text": "o ritual foi completado."
           },
           {
             "id": "students_rescued",
-            "text": "os estudantes foram resgatados."
+            "text": "os estudantes foram resgatados"
           },
           {
             "id": "took_necronomicon",
-            "text": "os investigadores mantiveram a posse do Necronomicon."
+            "text": "os investigadores ficaram com o Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "os investigadores ficaram inconscientes por vários horas."
+            "text": "os investigadores ficaram inconscientes por várias horas."
           },
           {
             "id": "warned_townsfolk",
-            "text": "você avisou os habitantes da cidade."
+            "text": "vocês alertaram os moradores."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -192,15 +192,15 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
+            "text": "o Professor Warren Rice sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rompeu a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rasgou em dois a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_fled",
@@ -208,7 +208,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
+            "text": "Zebulon Whateley sobreviveu a O Legado de Dunwich."
           }
         ]
       },
@@ -1263,101 +1263,101 @@
             "id": "possessed",
             "masculine_text": "#name# estava possuído.",
             "feminine_text": "#name# estava possuída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# foi possuído."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "os investigadores foram atacados quando escaparam do Asilo."
+            "text": "os investigadores foram atacados enquanto fugiam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "você acordou dentro das catacumbas."
+            "text": "vocês acordaram nas catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
+            "text": "o reino de Carcosa se fundiu com o de vocês, e Hastur governa ambos."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "você escolheu não ir à polícia."
+            "text": "vocês decidiram não ir até a polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "você destruiu the oathspeaker."
+            "text": "você destruiu o juramentado."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "você não escapou do olhar do fantasma."
+            "text": "vocês não escaparam do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "você entrou nas catacumbas por conta própria."
+            "text": "vocês entraram nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "os investigadores escaparam do Asilo."
+            "text": "os investigadores fugiram do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "você fugiu do jantar."
+            "text": "vocês fugiram do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "os seguidores do sinal encontraram o caminho."
+            "text": "os seguidores do símbolo encontraram uma forma de prosseguir."
           },
           {
             "id": "found_nigel_engram",
-            "text": "você encontrou Nigel Engram."
+            "text": "vocês encontraram Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "você encontrou a casa de Nigel."
+            "text": "vocês encontraram a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur tem você em suas mãos."
+            "text": "Hastur os têm sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "você atendeu ao aviso de Daniel."
+            "text": "vocês deram ouvidos aos alertas de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "você ignorou o aviso de Daniel."
+            "text": "vocês ignoraram os alertas de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "você se intrometeu em uma reunião secreta."
+            "text": "vocês vislumbraram uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "o rei reivindicou suas vítimas."
+            "text": "o Rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "você conhece o local do portão."
+            "text": "vocês conhecem o local do portal."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "você deixou the onyx clasp para trás."
+            "text": "vocês deixaram o broche de ônix para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "você abriu o caminho acima."
+            "text": "vocês abriram o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "você abriu o caminho abaixo."
+            "text": "vocês abriram o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
-            "text": "a polícia suspeita de você."
+            "text": "a polícia suspeita de vocês."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1365,23 +1365,23 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "você matou os monstros no jantar."
+            "text": "vocês mataram os monstros na festa."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "o Estranho está atrás de você."
+            "text": "o Estranho está de olho em vocês."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "você pegou the onyx clasp."
+            "text": "vocês pegaram o broche de ônix."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "você tentou avisar a polícia."
+            "text": "vocês tentaram alertar a polícia. "
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "você não conseguiu encontrar Nigel."
+            "text": "vocês não conseguiram encontrar Nigel."
           }
         ]
       },
@@ -1463,19 +1463,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "o bando de O’Bannion tem uma dívida para acertar com os investigadores."
+            "text": "a gangue de O’Bannion quer acertar as contas com os investigadores."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# brood escaparam para a selva."
+            "text": "#X# proles ficaram à solta."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "você acalmou os habitantes."
+            "text": "vocês acalmaram os moradores."
           },
           {
             "id": "closed_tear",
-            "text": "os investigadores fecharam a fenda da realidade."
+            "text": "os investigadores fecharam a fenda na realidade."
           },
           {
             "id": "destroyed_necronomicon",
@@ -1483,7 +1483,7 @@
           },
           {
             "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer sobreviveu ao Legado de Dunwich."
+            "text": "Earl Sawyer sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "entered_the_gate",
@@ -1495,11 +1495,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "os investigadores falharam ao recuperar o Necronomicon."
+            "text": "os investigadores falharam em recuperar o Necronomicon."
           },
           {
             "id": "failed_to_save_students",
-            "text": "os investigadores falharam ao salvar os estudantes."
+            "text": "os investigadores falharam em salvar os estudantes."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -1511,7 +1511,7 @@
           },
           {
             "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan sobreviveu ao Legado de Dunwich."
+            "text": "o Dr. Francis Morgan sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "henry_armitage_kidnapped",
@@ -1519,23 +1519,23 @@
           },
           {
             "id": "henry_armitage_rescued",
-            "text": "os investigadores resgataram Dr. Henry Armitage."
+            "text": "os investigadores resgataram o Dr. Henry Armitage."
           },
           {
             "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage sobreviveu ao Legado de Dunwich."
+            "text": "Dr. Henry Armitage sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "investigators_delayed",
-            "text": "os investigadores atrasaram no caminho até Dunwich."
+            "text": "os investigadores se atrasaram a caminho de Dunwich."
           },
           {
             "id": "killed_silas_bishop",
-            "text": "os investigadores, colocaram Silas Bishop fora de sua miséria."
+            "text": "os investigadores acabaram com o sofrimento de Silas Bishop."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi deu cobertura aos investigadores."
+            "text": "Naomi está dando cobertura aos investigadores."
           },
           {
             "id": "necronomicon_stolen",
@@ -1543,31 +1543,31 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "Nenhuma nenhuma cria escapou na selva."
+            "text": "Nenhuma prole ficou à solta."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "os investigadores recuperaram Silas Bishop."
+            "text": "os investigadores restauraram Silas Bishop."
           },
           {
             "id": "ritual_completed",
-            "text": "o ritual está completo."
+            "text": "o ritual foi completado."
           },
           {
             "id": "students_rescued",
-            "text": "os estudantes foram resgatados."
+            "text": "os estudantes foram resgatados"
           },
           {
             "id": "took_necronomicon",
-            "text": "os investigadores mantiveram a posse do Necronomicon."
+            "text": "os investigadores ficaram com o Necronomicon."
           },
           {
             "id": "unconscious_for_several_hours",
-            "text": "os investigadores ficaram inconscientes por vários horas."
+            "text": "os investigadores ficaram inconscientes por várias horas."
           },
           {
             "id": "warned_townsfolk",
-            "text": "você avisou os habitantes da cidade."
+            "text": "vocês alertaram os moradores."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -1579,15 +1579,15 @@
           },
           {
             "id": "warren_rice_survived",
-            "text": "Professor Warren Rice sobreviveu ao Legado de Dunwich."
+            "text": "o Professor Warren Rice sobreviveu a O Legado de Dunwich."
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rompeu a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rasgou em dois a barreira entre os mundos, e tornou-se um com toda a realidade."
+            "text": "Yog-Sothoth rasgou a barreira entre os mundos e se tornou um com a realidade."
           },
           {
             "id": "yog_sothoth_fled",
@@ -1595,7 +1595,7 @@
           },
           {
             "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley sobreviveu ao Legado de Dunwich."
+            "text": "Zebulon Whateley sobreviveu a O Legado de Dunwich."
           }
         ]
       },
@@ -1695,101 +1695,101 @@
             "id": "possessed",
             "masculine_text": "#name# estava possuído.",
             "feminine_text": "#name# estava possuída.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# foi possuído."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
             "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "os investigadores foram atacados quando escaparam do Asilo."
+            "text": "os investigadores foram atacados enquanto fugiam do Asilo."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "você acordou dentro das catacumbas."
+            "text": "vocês acordaram nas catacumbas."
           },
           {
             "id": "carcosa_merged",
-            "text": "o reino de Carcosa se fundiu com o nosso, e Hastur governa sobre ambos."
+            "text": "o reino de Carcosa se fundiu com o de vocês, e Hastur governa ambos."
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "você escolheu não ir à polícia."
+            "text": "vocês decidiram não ir até a polícia."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "você destruiu the oathspeaker."
+            "text": "você destruiu o juramentado."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "você não escapou do olhar do fantasma."
+            "text": "vocês não escaparam do olhar do fantasma."
           },
           {
             "id": "entered_catacombs",
-            "text": "você entrou nas catacumbas por conta própria."
+            "text": "vocês entraram nas catacumbas por conta própria."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "os investigadores escaparam do Asilo."
+            "text": "os investigadores fugiram do Asilo."
           },
           {
             "id": "fled_dinner_party",
-            "text": "você fugiu do jantar."
+            "text": "vocês fugiram do jantar."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "os seguidores do sinal encontraram o caminho."
+            "text": "os seguidores do símbolo encontraram uma forma de prosseguir."
           },
           {
             "id": "found_nigel_engram",
-            "text": "você encontrou Nigel Engram."
+            "text": "vocês encontraram Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "você encontrou a casa de Nigel."
+            "text": "vocês encontraram a casa de Nigel."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur tem você em suas mãos."
+            "text": "Hastur os têm sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "você atendeu ao aviso de Daniel."
+            "text": "vocês deram ouvidos aos alertas de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "você ignorou o aviso de Daniel."
+            "text": "vocês ignoraram os alertas de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "você se intrometeu em uma reunião secreta."
+            "text": "vocês vislumbraram uma reunião secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "o rei reivindicou suas vítimas."
+            "text": "o Rei reivindicou suas vítimas."
           },
           {
             "id": "know_site_of_gate",
-            "text": "você conhece o local do portão."
+            "text": "vocês conhecem o local do portal."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "você deixou the onyx clasp para trás."
+            "text": "vocês deixaram o broche de ônix para trás."
           },
           {
             "id": "opened_path_above",
-            "text": "você abriu o caminho acima."
+            "text": "vocês abriram o caminho acima."
           },
           {
             "id": "opened_path_below",
-            "text": "você abriu o caminho abaixo."
+            "text": "vocês abriram o caminho abaixo."
           },
           {
             "id": "police_are_suspicious",
-            "text": "a polícia suspeita de você."
+            "text": "a polícia suspeita de vocês."
           },
           {
             "id": "prevented_hasturs_escape",
@@ -1797,23 +1797,23 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "você matou os monstros no jantar."
+            "text": "vocês mataram os monstros na festa."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "o Estranho está atrás de você."
+            "text": "o Estranho está de olho em vocês."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "você pegou the onyx clasp."
+            "text": "vocês pegaram o broche de ônix."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "você tentou avisar a polícia."
+            "text": "vocês tentaram alertar a polícia. "
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "você não conseguiu encontrar Nigel."
+            "text": "vocês não conseguiram encontrar Nigel."
           }
         ]
       },
@@ -5165,10 +5165,6 @@
             "text": "dummy"
           },
           {
-            "id": "chica_yay",
-            "text": "dummy"
-          },
-          {
             "id": "cotk_setup",
             "text": "dummy"
           },
@@ -5274,6 +5270,10 @@
           },
           {
             "id": "on_thin_ice_doom",
+            "text": "dummy"
+          },
+          {
+            "id": "oti_swap_xp",
             "text": "dummy"
           },
           {

@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de lieux en jeu sans carte Rencontre en dessous d'eux",
+          "prompt": "Nombre de Rejetons de Yog-Sothoth en jeu",
           "min": 0,
           "scale": 2
         }

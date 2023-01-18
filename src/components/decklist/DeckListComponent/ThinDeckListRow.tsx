@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { ngettext, msgid, t } from 'ttag';
+import { t } from 'ttag';
 import { Placeholder, PlaceholderLine, Fade } from 'rn-placeholder';
 import { map } from 'lodash';
 

@@ -217,7 +217,7 @@ function InvestigatorImage({
     return (
       <View style={[imageStyle, { backgroundColor: colors.L20 }]} />
     );
-  }, [imgUri, colors, imageStyle]);
+  }, [imgUri, colors, imageStyle, card?.code]);
 
   const styledImage = useMemo(() => {
     if (killedOrInsane) {

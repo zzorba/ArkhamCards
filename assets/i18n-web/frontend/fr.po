@@ -976,4 +976,4 @@ msgstr "Obtenez-le sur Google Play"
 
 #, javascript-format
 msgid "${ date } at ${ time }"
-msgstr ""
+msgstr "${ date } à ${ time }"

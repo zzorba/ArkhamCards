@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ngettext, msgid } from 'ttag';
+import { flatMap } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';
 import Card from '@data/types/Card';
@@ -28,14 +28,6 @@ export default function CardFooterInfo({ card }: Props) {
             </>
           ) }
         </View>
-        { !card.encounter_code && card.type_code !== 'investigator' && (
-          <View style={[styles.row, styles.encounterRow]}>
-            <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
-            <Text style={[typography.tiny, space.marginLeftXs]}>
-              { ngettext(msgid`${quantity} copy`, `${quantity} copies`, quantity) }
-            </Text>
-          </View>
-        ) }
       </View>
       <View style={[styles.cardNumber, { flex: 1 }]}>
         { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
@@ -57,24 +49,75 @@ export default function CardFooterInfo({ card }: Props) {
             </Text>
           </View>
         )}
-        <View style={styles.row}>
-          <Text style={[typography.tiny, typography.right, { flex: 1 }]} ellipsizeMode="tail" numberOfLines={1}>
-            { card.cycle_name }
-          </Text>
-          <View style={styles.icon}>
-            <EncounterIcon
-              encounter_code={card.custom() ? card.pack_code : (card.cycle_code || card.pack_code)}
-              size={14 * fontScale}
-              color={colors.darkText}
-            />
+        <View style={styles.column}>
+          { !!card.reprint_info?.length && flatMap(card.reprint_info, (info, idx) => {
+            return (!!info.pack_name && !!info.pack_code && !!info.position) && (
+              <View style={[styles.row]} key={idx}>
+                { !!info.cycle_name && (
+                  <Text
+                    style={[typography.tiny, typography.right, { flex: 1 }]}
+                    ellipsizeMode="tail"
+                    numberOfLines={1}
+                  >
+                    { info.pack_name }
+                  </Text>
+                ) }
+                { !!info.pack_code && (
+                  <View style={styles.icon}>
+                    <EncounterIcon
+                      encounter_code={info.pack_code}
+                      size={14 * fontScale}
+                      color={colors.darkText}
+                    />
+                  </View>
+                ) }
+                { !!info.position && (
+                  <Text style={typography.tiny}>
+                    { (info.position || 0) % 1000 }
+                  </Text>
+                ) }
+                { !card.encounter_code && card.type_code !== 'investigator' && !!info.quantity && (
+                  <View style={[styles.row, styles.encounterRow, space.marginLeftXs]}>
+                    <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
+                    <Text style={typography.small}>
+                      ×{info.quantity}
+                    </Text>
+                  </View>
+                ) }
+              </View>
+            );
+          })}
+          <View style={styles.row}>
+            <Text
+              style={[typography.tiny, typography.right, { flex: 1 }]}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              { card.cycle_name }
+            </Text>
+            <View style={styles.icon}>
+              <EncounterIcon
+                encounter_code={card.custom() ? card.pack_code : (card.cycle_code || card.pack_code)}
+                size={14 * fontScale}
+                color={colors.darkText}
+              />
+            </View>
+            <Text style={typography.tiny}>
+              { (card.position || 0) % 1000 }
+            </Text>
+            { !card.encounter_code && card.type_code !== 'investigator' && (
+              <View style={[styles.row, styles.encounterRow, space.marginLeftXs]}>
+                <AppIcon name="card-outline" size={14 * fontScale} color={colors.D20} />
+                <Text style={typography.small}>
+                  ×{quantity}
+                </Text>
+              </View>
+            ) }
           </View>
-          <Text style={typography.tiny}>
-            { (card.position || 0) % 1000 }
-          </Text>
         </View>
         {
           // tslint:disable-next-line
-          !card.encounter_name && card.pack_name !== card.cycle_name && (
+          !card.encounter_name && card.pack_name !== card.cycle_name && card.cycle_code !== 'core' && (
             <View style={[styles.row, styles.encounterRow]}>
               <Text style={typography.tiny} ellipsizeMode="tail" numberOfLines={2}>
                 { card.pack_name }
@@ -114,6 +157,12 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+  },
+
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
   },
   encounterRow: {
     marginBottom: 4,

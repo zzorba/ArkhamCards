@@ -509,11 +509,7 @@ export const GUIDED_CAMPAIGNS = new Set([
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
-export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
-  CALL_OF_THE_PLAGUEBEARER,
-  CYCLOPEAN_FOUNDATIONS,
-  TSK,
-]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 
 export interface CustomCampaignLog {
   sections?: string[];

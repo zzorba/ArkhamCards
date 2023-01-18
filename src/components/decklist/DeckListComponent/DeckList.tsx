@@ -5,7 +5,7 @@ import { Campaign } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { Toggles, useInvestigators, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
+import { Toggles, useInvestigators, usePlayerCardsFunc } from '@components/core/hooks';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';

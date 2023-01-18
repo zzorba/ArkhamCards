@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba lokalizacji w grze, pod którą nie ma karty spotkania",
+          "prompt": "Liczba Pomiotów Yog-Sothotha w grze",
           "min": 0,
           "scale": 2
         }

@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "場上底下無遭遇卡的地點的數量",
+          "prompt": "場上猶格·索托斯之子的數量",
           "min": 0,
           "scale": 2
         }
