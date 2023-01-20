@@ -4793,15 +4793,15 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "弗林特探員死亡。"
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "弗林特探員失蹤。"
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "在劇本日誌劃掉失去奎茵探員的信任。"
           },
           {
             "id": "agent_quinn_has_your_back",
@@ -4809,7 +4809,7 @@
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "奎茵探員消失。"
           },
           {
             "id": "aliki_is_on_your_side",
@@ -4817,19 +4817,19 @@
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "永生花離開結社。"
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "協助弗林特調查。"
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "協助騎士。"
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "檢視過奇異建築。"
           },
           {
             "id": "cell_blew_the_whistle",
@@ -4837,7 +4837,7 @@
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "未發現哈瓦那的真相。"
           },
           {
             "id": "cell_escaped_the_red_coterie",
@@ -4845,35 +4845,35 @@
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "未能成功抵禦野獸。"
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "遭受伏擊！"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "對泰勒隱瞞真相。"
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "協助西里探員。"
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "欺騙艾潔。"
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "運送基石情報。"
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "脫離任務。"
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "與艾潔合作。"
           },
           {
             "id": "cell_joined_the_red_coterie",
@@ -4881,11 +4881,11 @@
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "在劇本日誌中，記錄下得知永生花的真名。"
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "得知德西的過往"
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
@@ -4893,19 +4893,19 @@
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "與德西達成交易。"
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "與酒紅騎士達成交易。"
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "與索恩達成交易。"
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "與伊拉萬博士會面。"
           },
           {
             "id": "cell_overthrew_the_red_coterie",
@@ -4913,15 +4913,15 @@
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "獲得神秘哨子。"
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "拒絕阿利琪。"
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "拒絕艾潔。"
           },
           {
             "id": "cell_threw_away_the_whistle",
@@ -4929,7 +4929,7 @@
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "告知泰勒真相。"
           },
           {
             "id": "cell_was_dismantled",
@@ -4945,7 +4945,7 @@
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "跟紅姑娘成為盟友。"
           },
           {
             "id": "deception",
@@ -4953,31 +4953,31 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "德西欠下人情。"
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "戰爭肆虐。"
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "伊拉萬博士成為夥伴。"
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "伊拉萬博士前往新幾內亞。"
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "伊拉萬博士消失。"
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "失去艾潔的信任。"
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "贏得艾潔的信任。"
           },
           {
             "id": "erased_from_existence_dm",
@@ -4989,23 +4989,23 @@
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "弗林特放棄調查。"
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "弗林特單獨行動。"
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "弗林特歸隊。"
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "弗林特前往吉隆坡。"
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "持續隱瞞基石。"
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
@@ -5013,51 +5013,51 @@
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "未得知永生花最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "在劇本日誌中，記錄下未得知德西德里奧·德爾加多·阿瓦雷茲最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "未得知紅姑娘最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "未得知猩紅斗篷下的野獸最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "未得知酒紅騎士最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "未得知戴紅手套的男子最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "未得知訕笑監視者最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "未得知索恩最後的下落。"
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "未得知梓三娘最後的下落。"
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "得知暗號。"
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "愛侶重逢。"
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "在安克拉治無跡可尋。"
           },
           {
             "id": "outsiders_were_stopped",
@@ -5073,11 +5073,11 @@
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "訕笑監視者持續肆虐。"
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "索恩消失。"
           },
           {
             "id": "trust",
@@ -5089,19 +5089,19 @@
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "與圖維勒·馬賽結盟。"
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "生死於梓三娘掌握中。"
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "掌握梓三娘的生死。"
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "虛空混源體逃脫。"
           },
           {
             "id": "work_together",
@@ -5109,7 +5109,7 @@
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "錯誤線索：#X#"
           }
         ]
       },
