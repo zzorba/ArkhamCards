@@ -1249,15 +1249,24 @@ function DeckDetailView({
     return requiredCardIds
   }, [requiredCards, mode, parsedDeck?.slots, deck?.slots]);
 
+  const [showDeleteBrokenDeck, setShowDeleteBrokenDeck] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowDeleteBrokenDeck(true);
+    }, 3000);
+  }, [setShowDeleteBrokenDeck]);
+
   if (!deck) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <LoadingSpinner inline />
-        <BasicButton
-          title={t`Delete Deck`}
-          onPress={deleteBrokenDeck}
-          color={COLORS.red}
-        />
+        <LoadingSpinner large inline />
+        { !!showDeleteBrokenDeck && (
+          <BasicButton
+            title={t`Delete Deck`}
+            onPress={deleteBrokenDeck}
+            color={COLORS.red}
+          />
+        ) }
       </View>
     );
   }

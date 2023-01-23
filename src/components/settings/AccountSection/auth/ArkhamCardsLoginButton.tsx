@@ -300,8 +300,8 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
           placeholder={t`Email address`}
           style={[typography.text, { flex: 1 }]}
           placeholderTextColor={colors.lightText}
-          autoComplete="email"
-          textContentType="emailAddress"
+          autoComplete={mode === 'create' ? 'username-new' : 'username'}
+          textContentType="username"
           autoCapitalize="none"
           autoCorrect={false}
           value={emailAddress}
@@ -331,7 +331,7 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
           placeholderTextColor={colors.lightText}
           secureTextEntry
           value={password}
-          autoComplete="password"
+          autoComplete={mode === 'create' ? 'password-new' : 'password'}
           textContentType={mode === 'create' && Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) >= 12 ? 'newPassword' : 'password'}
           onChangeText={setPassword}
           returnKeyType="send"

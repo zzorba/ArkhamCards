@@ -251,15 +251,14 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
-      ...(this.option.level ?
-        [
-          !this.option.not ? combineQueries(
+      ...(this.option.level ? (
+        !this.option.not ? [
+          combineQueries(
             where('c.customization_options is not null'),
             this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true),
             'or'
-          ) : this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true),
-        ] : []
-      ),
+          )] : this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true)
+        ) : []),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);
