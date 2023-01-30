@@ -6,7 +6,6 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
-  Share,
   StyleSheet,
 } from 'react-native';
 import database from '@react-native-firebase/database';
@@ -30,6 +29,8 @@ import { useSimpleTextDialog } from '@components/deck/dialogs';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
 import { useSettingFlag } from '@components/core/hooks';
 import { useUpdateOnboarding } from '@data/remote/settings';
+import { format } from 'date-fns';
+import { saveFile } from '@lib/files';
 
 
 function goOffline() {
@@ -106,26 +107,36 @@ export default function DiagnosticsView() {
         style: 'cancel',
       }, {
         text: t`Export Campaign Data`,
-        onPress: () => {
-          Share.share({
-            message: JSON.stringify(backupData),
-          });
+        onPress: async() => {
+          const date = format(new Date(), 'yyyy-MM-dd');
+          const filename = `CampaignData-${date}`;
+          const data = JSON.stringify(backupData);
+          try {
+            await saveFile(filename, data, 'json', t`Export Campaign Data`);
+          } catch (e) {
+            console.log(e);
+          }
         },
       }, {
         text: t`Export Diagnostic Data`,
-        onPress: () => {
-          Share.share({
-            message: JSON.stringify({
-              legacyDecks: state.legacyDecks,
-              legacyCampaigns: state.campaigns,
-              legacyGuides: state.legacyGuides,
-              decks: state.decks,
-              campaigns: state.campaigns_2,
-              guides: state.guides,
-              deckEdits: state.deckEdits,
-              filters: state.filters,
-            }),
+        onPress: async() => {
+          const date = format(new Date(), 'yyyy-MM-dd');
+          const filename = `DiagnosticData-${date}`;
+          const data = JSON.stringify({
+            legacyDecks: state.legacyDecks,
+            legacyCampaigns: state.campaigns,
+            legacyGuides: state.legacyGuides,
+            decks: state.decks,
+            campaigns: state.campaigns_2,
+            guides: state.guides,
+            deckEdits: state.deckEdits,
+            filters: state.filters,
           });
+          try {
+            await saveFile(filename, data, 'json', t`Export Diagnostic Data`);
+          } catch (e) {
+            console.log(e);
+          }
         },
       }],
     );

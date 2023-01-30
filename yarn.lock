@@ -11013,10 +11013,10 @@ react-native-sha256@1.4.9:
   resolved "https://registry.yarnpkg.com/react-native-sha256/-/react-native-sha256-1.4.9.tgz#39760f50513deb5cdd9fd872cf632f9889e68c92"
   integrity sha512-J5NPOAQmqlmBAtEkN3FBrmCwdTGw+5t+Q82YQlujbhx17qMe/7EL47c8boHNE6K+BIsd48NOhbP0quGUiJvOLQ==
 
-react-native-share@7.6.6:
-  version "7.6.6"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.6.6.tgz#85137c994cde6a286da1eb84530de2d0751e2408"
-  integrity sha512-nhNjiNvTxg3PKmOg3/tQnWJjw2NpjcimxorEIV3JFEPcU6vE/bO2vWTf0OGOLMHMqyV2B6M0/7KwqET8yWk1rA==
+react-native-share@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-8.1.0.tgz#34c9977e5aa49254b191f19d779bb4cff43fe2da"
+  integrity sha512-gME+6+FkQQ5/Ss4ulPjxwtgyZsF/YqBvG3qIVWN1urUhFFG2m2kycrNB0fPLLZy517/G6aDyUMioVZtPQArRHQ==
 
 react-native-side-menu-updated@1.3.2:
   version "1.3.2"
