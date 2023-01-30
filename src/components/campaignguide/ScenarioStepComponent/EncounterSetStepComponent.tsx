@@ -38,7 +38,7 @@ interface Props {
 export default function EncounterSetStepComponent({ componentId, color, campaignId, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSettingValue('alphabetize');
   const { colors } = useContext(StyleContext);
-  const { listSeperator } = useContext(LanguageContext);
+  const { lang, listSeperator } = useContext(LanguageContext);
 
   const _viewEncounterErrata = useCallback(() => {
     Navigation.push<EncounterCardErrataProps>(componentId, {
@@ -61,7 +61,7 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
       };
     }
   ), [step.encounter_sets, campaignGuide]);
-  const encounterSets = useMemo(() => alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name || '???') : rawEncounterSets, [alphabetizeEncounterSets, rawEncounterSets]);
+  const encounterSets = useMemo(() => alphabetizeEncounterSets ? sortBy(rawEncounterSets, set => set.name?.toLocaleLowerCase(lang) || '???') : rawEncounterSets, [lang, alphabetizeEncounterSets, rawEncounterSets]);
   const encounterSetString = useMemo(() => stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name'), listSeperator), [encounterSets, listSeperator]);
   const leadText = step.aside ?
     ngettext(
