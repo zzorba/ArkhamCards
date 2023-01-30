@@ -28,7 +28,7 @@ export default function TokenInput({
       { !!text && <TokenTextLine symbol={symbol} text={text} /> }
       <View style={[styles.input, { backgroundColor: colors.L20, minHeight: 36 + s * 2 }, space.marginSideS, !text ? space.marginTopS : undefined]}>
         <View style={[styles.row, space.paddingS]}>
-          { !prompt ? (
+          { (!prompt || !text) ? (
             <ChaosToken iconKey={symbol} size="extraTiny" />
           ) : (
             <View style={{ width: 36 }}>
