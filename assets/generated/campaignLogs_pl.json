@@ -1263,13 +1263,13 @@
             "id": "read_act_2",
             "masculine_text": "#name# przeczytał Akt II Króla w Żółci.",
             "feminine_text": "#name# przeczytała Akt II Króla w Żółci.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# przeczytało Akt II Króla w Żółci."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# został opętany.",
             "feminine_text": "#name# została opętana.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# zostało opętane."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -1695,13 +1695,13 @@
             "id": "read_act_2",
             "masculine_text": "#name# przeczytał Akt II Króla w Żółci.",
             "feminine_text": "#name# przeczytała Akt II Króla w Żółci.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# przeczytało Akt II Króla w Żółci."
           },
           {
             "id": "possessed",
             "masculine_text": "#name# został opętany.",
             "feminine_text": "#name# została opętana.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# zostało opętane."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -2066,7 +2066,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
             "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
           },
           {
             "id": "accepted_fate",
@@ -2602,25 +2602,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
             "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "agenda_5",
@@ -3407,7 +3407,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
             "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
           },
           {
             "id": "accepted_fate",
@@ -3694,13 +3694,13 @@
             "id": "captured",
             "masculine_text": "#name# został pojmany.",
             "feminine_text": "#name# została pojmana.",
-            "nonbinary_text": "#name# was captured."
+            "nonbinary_text": "#name# zostało pojmane."
           },
           {
             "id": "broken_the_law_of_ulthar",
             "masculine_text": "#name# złamał prawo Ultharu.",
             "feminine_text": "#name# złamała prawo Ultharu.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "nonbinary_text": "#name# złamało prawo Ultharu."
           },
           {
             "id": "black_cat_at_your_side",
@@ -4219,25 +4219,25 @@
             "id": "hote_start_with_clue",
             "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
             "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "nonbinary_text": "#name# starts with 1 clue <i>(from the token bank)</i>."
+            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
           },
           {
             "id": "doy_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "eztli_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "hote_fewer_resources",
             "masculine_text": "#name# startuje z 3 żetonami zasobów mniej.",
             "feminine_text": "#name# startuje z 3 żetonami zasobów mniej.",
-            "nonbinary_text": "#name# starts with 3 fewer resources."
+            "nonbinary_text": "#name# startuje z 3 żetonami zasobów mniej."
           },
           {
             "id": "agenda_5",
