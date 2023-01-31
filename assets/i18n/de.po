@@ -190,7 +190,7 @@ msgid "Decks"
 msgstr "Decks"
 
 msgid "Hide ArkhamDB decks"
-msgstr "Zeige ArkhamDB Decks nicht an"
+msgstr "ArkhamDB Decks verstecken"
 
 msgid "New Deck"
 msgstr "Neues Deck"
@@ -4085,7 +4085,7 @@ msgid "Strength of Wonderland"
 msgstr ""
 
 msgid "Edge of the Earth"
-msgstr ""
+msgstr "Am Rande der Welt"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
 msgstr "Du kannst nicht mehr als 5 Karten haben die nicht Wächter oder Neutral sind"
@@ -4465,7 +4465,7 @@ msgid "Show Bless/Curse Odds"
 msgstr ""
 
 msgid "Faction, Level, Type, Cost"
-msgstr ""
+msgstr "Klasse, Stufe, Typ, Kosten"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Du darfst nicht mehr als 5 Level 0 Überlebender Karten haben"
@@ -4480,7 +4480,7 @@ msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr "Du darfst nicht mehr als 5 Level 0 Schurken Karten haben"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
+msgstr "Zum Aktivieren bei Arkham Cards auf dem Tab Einstellungen anmelden"
 
 msgid "Asset: Hand x2. Arcane"
 msgstr "Vorteil: Hand x2. Arkan"
@@ -4519,7 +4519,7 @@ msgid ""
 "This app is made possible by the continued support of our fans on ${ patreonLink } and "
 "the ${ mythosBustersLink } podcast."
 msgstr ""
-"Die App wird durch die fortwährende Unterstützung der Fans auf ${ patreonLink }und den "
+"Die App wird durch die fortwährende Unterstützung der Fans auf ${ patreonLink } und den "
 "${ mythosBustersLink } Podcast ermöglicht."
 
 msgid ""
@@ -4692,10 +4692,10 @@ msgid "Assigned weaknesses"
 msgstr "Schwäche zuweisen"
 
 msgid "Review and draw weaknesses"
-msgstr ""
+msgstr "Schwächen anschauen und ziehen"
 
 msgid "Choose expansions for basic weakness"
-msgstr ""
+msgstr "Erweiterungen für Grundschwächen wählen"
 
 msgid "Uploading campaign"
 msgstr "Kampagne hochladen"
@@ -5068,6 +5068,7 @@ msgstr ""
 msgid ""
 "Note that this is an ArkhamCards account, which is separate from your ArkhamDB account."
 msgstr ""
+"Hinweis: Dies ist ein ArkhamCards-Konto, welches unabhängig von deinem ArkhamDB-Konto ist."
 
 msgid "Side Deck"
 msgstr ""
@@ -5160,7 +5161,7 @@ msgid "Apply changes from last completed scenario"
 msgstr ""
 
 msgid "Hide campaign decks"
-msgstr ""
+msgstr "Kampagnen-Decks verstecken"
 
 msgid "Select Standalone"
 msgstr ""
@@ -5325,7 +5326,7 @@ msgid ""
 msgstr ""
 
 msgid "Other investigator cards"
-msgstr ""
+msgstr "Andere Ermittlerkarten"
 
 msgid "Ultimatum of Chaos"
 msgstr ""
@@ -5359,7 +5360,7 @@ msgid "Suggested starter deck for this investigator from FFG."
 msgstr ""
 
 msgid "An empty deck."
-msgstr ""
+msgstr "Ein leeres Deck."
 
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr ""
@@ -5368,7 +5369,7 @@ msgid "A fully randomized deck."
 msgstr ""
 
 msgid "Special deck"
-msgstr ""
+msgstr "Spezial-Deck"
 
 msgid "Re-generate deck"
 msgstr ""
@@ -5397,10 +5398,10 @@ msgid ""
 msgstr ""
 
 msgid "Hand size:"
-msgstr ""
+msgstr "Handkartenlimit:"
 
 msgid "Choose packs"
-msgstr ""
+msgstr "Erweiterungen auswählen"
 
 msgid ""
 "This tool lets you build a deck progressively, choosing one card at a time from a "
@@ -5418,16 +5419,16 @@ msgid ""
 msgstr ""
 
 msgid "Begin draft"
-msgstr ""
+msgstr "Draft beginnen"
 
 msgid "Selection"
-msgstr ""
+msgstr "Auswahl"
 
 msgid "Draft cards"
-msgstr ""
+msgstr "Karten draften"
 
 msgid "Unsupported investigator"
-msgstr ""
+msgstr "Ermittler wird nicht unterstützt"
 
 msgid ""
 "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for "
@@ -5444,7 +5445,7 @@ msgid ""
 msgstr ""
 
 msgid "Deck is full"
-msgstr ""
+msgstr "Deck ist voll"
 
 msgid ""
 "This deck is full.\n"
@@ -5453,18 +5454,23 @@ msgid ""
 "\n"
 "At the moment it is only possible to draft level 0 cards using the app."
 msgstr ""
+"Dieses Deck ist voll.\n"
+"\n"
+"Entferne ein paar Karten oder erstelle ein neues Deck wenn du Karten draften möchtest.\n"
+"\n"
+"Im Moment kann man in der App nur Stufe 0 Karten draften."
 
 msgid "Draft Cards"
-msgstr ""
+msgstr "Karten draften"
 
 msgid "Deck id copied!"
-msgstr ""
+msgstr "Deck ID kopiert!"
 
 msgid "Link to deck copied!"
-msgstr ""
+msgstr "Link zum Deck kopiert!"
 
 msgid "Build a deck randomly"
-msgstr ""
+msgstr "Deck zufällig erstellen"
 
 msgid "A single core set is always included"
 msgstr ""
@@ -5726,7 +5732,7 @@ msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr ""
 
 msgid "The Scarlet Keys"
-msgstr ""
+msgstr "Die scharlachroten Schlüssel"
 
 #, javascript-format
 msgid "Name ${ quantity } card"
@@ -6161,13 +6167,13 @@ msgid ""
 msgstr ""
 
 msgid "Customizable"
-msgstr ""
+msgstr "Individualisierbar"
 
 msgid "0 XP"
 msgstr ""
 
 msgid "No campaign"
-msgstr ""
+msgstr "Keine Kampagne"
 
 #, javascript-format
 msgid "×${ parsedDeck.totalCardCount }"
@@ -6181,7 +6187,7 @@ msgid ""
 msgstr ""
 
 msgid "Edit deck tags"
-msgstr ""
+msgstr "Tags bearbeiten"
 
 msgid "Clear tags"
 msgstr ""
@@ -6193,13 +6199,13 @@ msgid "Beginner"
 msgstr ""
 
 msgid "+ Add"
-msgstr ""
+msgstr "+ Hinzufügen"
 
 msgid "Deck tags"
-msgstr ""
+msgstr "Deck Tags"
 
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #, javascript-format
 msgid "${ scenarioName }: Visit ${ attempt }"
@@ -6208,10 +6214,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Search english card names"
-msgstr ""
+msgstr "Englische Kartennamen suchen"
 
 msgid "Include english results when searching"
-msgstr ""
+msgstr "Englische Ergebnisse bei der Suche miteinbeziehen"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -8446,11 +8452,11 @@ msgstr[1] ""
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 msgctxt "tags"
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 msgctxt "tags"
 msgid "None"
