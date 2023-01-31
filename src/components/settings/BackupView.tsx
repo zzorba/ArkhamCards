@@ -6,7 +6,6 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
-  Share as LegacyShare,
 } from 'react-native';
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
@@ -14,10 +13,7 @@ import { forEach, values } from 'lodash';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
 import { useDispatch, useSelector } from 'react-redux';
-import base64 from 'react-native-base64';
-import Share from 'react-native-share';
 import { t } from 'ttag';
-import utf8 from 'utf8';
 
 import { MergeBackupProps } from './MergeBackupView';
 import { BackupState, Campaign, LegacyBackupState, LegacyCampaign } from '@actions/types';
@@ -28,6 +24,7 @@ import { ensureUuid } from './actions';
 import { campaignFromJson } from '@components/settings/MergeBackupView/backupHelper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
+import { saveFile } from '@lib/files';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -157,43 +154,11 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
       }, {
         text: t`Export Campaign Data`,
         onPress: async() => {
+          const date = format(new Date(), 'yyyy-MM-dd');
+          const filename = `ACB-${date}`;
+          const data = JSON.stringify(backupData);
           try {
-            if (!await hasFileSystemPermission(false)) {
-              return;
-            }
-            const date = format(new Date(), 'yyyy-MM-dd');
-            const filename = `ACB-${date}`;
-            if (Platform.OS === 'ios') {
-              const path = `${RNFS.CachesDirectoryPath }/${ filename }.acb`;
-              await RNFS.writeFile(
-                path,
-                JSON.stringify(backupData),
-                'utf8'
-              );
-              if (Platform.Version && parseInt(`${Platform.Version}`, 10) < 13) {
-                await LegacyShare.share({
-                  url: `file://${path}`,
-                });
-              } else {
-                await Share.open({
-                  url: `file://${path}`,
-                  saveToFiles: true,
-                  filename,
-                  title: filename,
-                  type: 'text/json',
-                });
-              }
-            } else {
-              await Share.open({
-                title: t`Save backup`,
-                message: filename,
-                url: `data:application/json;base64,${base64.encode(utf8.encode(JSON.stringify(backupData)))}`,
-                type: 'data:application/json',
-                filename,
-                failOnCancel: false,
-                showAppsToView: true,
-              });
-            }
+            await saveFile(filename, data, 'acb', t`Save backup`);
           } catch (e) {
             console.log(e);
           }

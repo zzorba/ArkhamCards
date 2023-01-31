@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Text, ScrollView, View, Platform } from 'react-native';
-import { find, filter, map, shuffle, take, values, sumBy, findIndex, forEach } from 'lodash';
+import { find, filter, map, shuffle, take, values, sumBy, findIndex, forEach, random } from 'lodash';
 import SnapCarousel from 'react-native-snap-carousel';
 import { c, t } from 'ttag';
 
@@ -290,7 +290,7 @@ function TarotCardReadingView({
     switch (readingType) {
       case 'chaos': {
         const cards = take(allTarotCards, 1);
-        setReversed(cards[0].id, Math.random() < 0.5);
+        setReversed(cards[0].id, !!random(0, 1));
         setTarotCards(cards);
         break;
       }
@@ -322,7 +322,7 @@ function TarotCardReadingView({
       case 'custom': {
         const cards = take(allTarotCards, 1);
         resetReversed({});
-        setReversed(cards[0].id, Math.random() < 0.5);
+        setReversed(cards[0].id, !!random(0, 1));
         setTarotCards(cards);
         break;
       }
@@ -351,7 +351,7 @@ function TarotCardReadingView({
       ...(tarotCards || []),
       ...cards,
     ]);
-    setReversed(cards[0].id, Math.random() < 0.5);
+    setReversed(cards[0].id, !!random(0, 1));
   }, [setTarotCards, setReversed, tarotCards]);
   const scenarioNames = useScenarioNames();
   const onInvert = readingType === 'custom' || readingType === 'choice' || readingType === 'destiny' ? setReversed : undefined;

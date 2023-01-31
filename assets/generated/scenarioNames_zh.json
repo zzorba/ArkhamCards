@@ -89,7 +89,7 @@
   },
   {
     "id": "bermuda",
-    "name": "The Great Work"
+    "name": "遠大目標"
   },
   {
     "id": "bermuda_triangle",
@@ -121,7 +121,7 @@
   },
   {
     "id": "bombay",
-    "name": "Strange Architecture"
+    "name": "奇異建築"
   },
   {
     "id": "buenos_aires",
@@ -345,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "血汗帝國"
   },
   {
     "id": "horror_in_high_gear",
@@ -409,11 +409,11 @@
   },
   {
     "id": "kabul",
-    "name": "Ruses and Reclamations"
+    "name": "重奪失物"
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "風中哨音"
   },
   {
     "id": "kuala_lampur",
@@ -421,7 +421,7 @@
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "特別快遞"
   },
   {
     "id": "late_risers",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "Dead and Gone"
+    "name": "逝者已矣"
   },
   {
     "id": "lost_in_time_and_space",
@@ -469,7 +469,7 @@
   },
   {
     "id": "moscow",
-    "name": "Quid Pro Quo"
+    "name": "交換情報"
   },
   {
     "id": "mourning_chorus",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "地獄機械"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "悖常天擇"
   },
   {
     "id": "point_of_no_return",
@@ -529,7 +529,7 @@
   },
   {
     "id": "quito",
-    "name": "Ruses and Reclamations"
+    "name": "重奪失物"
   },
   {
     "id": "read_or_die",
@@ -693,7 +693,7 @@
   },
   {
     "id": "reykjavik",
-    "name": "Ruses and Reclamations"
+    "name": "重奪失物"
   },
   {
     "id": "riddles_and_rain",
@@ -701,23 +701,23 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "湮滅理論"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "羅馬雙子"
   },
   {
     "id": "san_francisco",
-    "name": "Quid Pro Quo"
+    "name": "交換情報"
   },
   {
     "id": "san_juan",
-    "name": "Ruses and Reclamations"
+    "name": "重奪失物"
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "盤據之蛇"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +733,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Strange Architecture"
+    "name": "奇異建築"
   },
   {
     "id": "strange_moons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "空洞回聲"
   },
   {
     "id": "tcu_epilogue",
@@ -857,7 +857,7 @@
   },
   {
     "id": "the_foundation",
-    "name": "The Foundation"
+    "name": "基石"
   },
   {
     "id": "the_golden_circle",
@@ -993,7 +993,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "特別快遞"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1061,6 +1061,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "芝麻開門"
   }
 ]

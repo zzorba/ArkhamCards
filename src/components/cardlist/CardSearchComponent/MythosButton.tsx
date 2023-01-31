@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: Platform.OS === 'android' ? 3 : 0,
+    paddingTop:  0,
   },
   circle: {
     borderRadius: SIZE / 2,
     width: SIZE,
     height: SIZE,
     position: 'absolute',
-    top: Platform.OS === 'android' ? 3.5 : 1,
+    top: 1,
     left: 1,
   },
   buttonFrame: {

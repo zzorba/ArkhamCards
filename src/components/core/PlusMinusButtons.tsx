@@ -59,7 +59,7 @@ export default function PlusMinusButtons({
 }: Props
 ) {
   const { colors, typography } = useContext(StyleContext);
-  const incrementEnabled = !!(!(count === null || (max && (count === max)) || disabled || disablePlus || max === 0) && onIncrement);
+  const incrementEnabled = !!(!(count === null || (max && (count >= max)) || disabled || disablePlus || max === 0) && onIncrement);
   const decrementEnabled = !!((count > (min || 0) || allowNegative) && !disabled && !!onDecrement);
   const disabledColor = useMemo(() => {
     switch (color) {

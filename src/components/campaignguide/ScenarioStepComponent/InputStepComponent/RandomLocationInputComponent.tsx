@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useReducer } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { filter, flatMap, map, throttle, shuffle } from 'lodash';
+import { filter, flatMap, map, throttle, shuffle, random } from 'lodash';
 import { t } from 'ttag';
 
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -37,7 +37,7 @@ export default function RandomLocationInputComponent({ input }: Props) {
             shuffle(remainingCards)[0],
           ];
         }
-        const choice = Math.floor(Math.random() * input.cards.length);
+        const choice = random(0, input.cards.length - 1, false);
         return state.length ? [] : [choice];
       }
       case 'clear':

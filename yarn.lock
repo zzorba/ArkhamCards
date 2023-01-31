@@ -11013,10 +11013,10 @@ react-native-sha256@1.4.9:
   resolved "https://registry.yarnpkg.com/react-native-sha256/-/react-native-sha256-1.4.9.tgz#39760f50513deb5cdd9fd872cf632f9889e68c92"
   integrity sha512-J5NPOAQmqlmBAtEkN3FBrmCwdTGw+5t+Q82YQlujbhx17qMe/7EL47c8boHNE6K+BIsd48NOhbP0quGUiJvOLQ==
 
-react-native-share@7.6.6:
-  version "7.6.6"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-7.6.6.tgz#85137c994cde6a286da1eb84530de2d0751e2408"
-  integrity sha512-nhNjiNvTxg3PKmOg3/tQnWJjw2NpjcimxorEIV3JFEPcU6vE/bO2vWTf0OGOLMHMqyV2B6M0/7KwqET8yWk1rA==
+react-native-share@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-8.1.0.tgz#34c9977e5aa49254b191f19d779bb4cff43fe2da"
+  integrity sha512-gME+6+FkQQ5/Ss4ulPjxwtgyZsF/YqBvG3qIVWN1urUhFFG2m2kycrNB0fPLLZy517/G6aDyUMioVZtPQArRHQ==
 
 react-native-side-menu-updated@1.3.2:
   version "1.3.2"
@@ -12882,9 +12882,9 @@ typescript@4.7.4:
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 ua-parser-js@^0.7.30:
-  version "0.7.31"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.31.tgz#649a656b191dffab4f21d5e053e27ca17cbff5c6"
-  integrity sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==
+  version "0.7.33"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.33.tgz#1d04acb4ccef9293df6f70f2c3d22f3030d8b532"
+  integrity sha512-s8ax/CeZdK9R/56Sui0WM6y9OFREJarMRHqLB2EwkovemBxNQ+Bqu8GAsUnVcXKgphb++ghr/B2BZx4mahujPw==
 
 uglify-es@^3.1.9:
   version "3.3.9"

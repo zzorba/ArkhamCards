@@ -213,7 +213,7 @@ export function useDeckFromRemote(id: DeckId | undefined, fetch: boolean): Lates
       deckId: id?.serverId || 0,
     },
     // Negative indicates a local deck, so no point fetching it from remote as it DOES NOT EXIST yet.
-    fetchPolicy: (fetch && id?.serverId && id.serverId >= 0) ? 'cache-and-network' : 'cache-only',
+    fetchPolicy: (!fetch || !id?.serverId || id.serverId < 0) ? 'cache-only' : undefined,
     skip: !id?.serverId,
   });
 

@@ -1,3 +1,35 @@
+diff --git a/node_modules/react-native-navigation/lib/android/app/build.gradle b/node_modules/react-native-navigation/lib/android/app/build.gradle
+index 9d9e368..598c641 100644
+--- a/node_modules/react-native-navigation/lib/android/app/build.gradle
++++ b/node_modules/react-native-navigation/lib/android/app/build.gradle
+@@ -167,27 +167,6 @@ List reactNativeVersionComponents(rnPackageJsonFile) {
+     return reactNativeVersion.tokenize('-')[0].tokenize('.')
+ }
+ 
+-task installBuildToolsAndRenameD8IfNeeded {
+-    def buildToolsVersion = android.getBuildToolsVersion()
+-    def sdkDir = android.sdkDirectory
+-    def buildToolsDir = new File(sdkDir, "/build-tools/" + buildToolsVersion)
+-
+-    if (!buildToolsDir.exists()) {
+-        def command = sdkDir.absolutePath + "/cmdline-tools/latest/bin/sdkmanager build-tools;" + buildToolsVersion
+-        command.execute().waitForProcessOutput(System.out, System.err)
+-    }
+-
+-    def d8File = new File(buildToolsDir, "d8")
+-    def dxFile = new File(buildToolsDir, "dx")
+-    d8File.renameTo(dxFile)
+-
+-    def buildToolsLibDir = new File(buildToolsDir, "lib")
+-    d8File = new File(buildToolsLibDir, "d8.jar")
+-    dxFile = new File(buildToolsLibDir, "dx.jar")
+-    d8File.renameTo(dxFile)
+-}
+-build.dependsOn installBuildToolsAndRenameD8IfNeeded
+-
+ dependencies {
+ 
+     implementation "androidx.core:core-ktx:1.6.0"
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
 index 226d3bf..ddcf310 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
@@ -89,7 +121,7 @@ diff --git a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCr
 index 1ec6a7b..529dad8 100644
 --- a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
 +++ b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
-@@ -10,7 +10,9 @@ - (UITabBarItem *)createTabBarItem:(UITabBarItem *)mergeItem {
+@@ -10,7 +10,9 @@
  }
  
  - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary *)titleAttributes {
@@ -100,7 +132,7 @@ index 1ec6a7b..529dad8 100644
      tabItem.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes =
          titleAttributes;
      tabItem.standardAppearance.inlineLayoutAppearance.normal.titleTextAttributes = titleAttributes;
-@@ -18,8 +20,9 @@ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary
+@@ -18,8 +20,9 @@
  
  - (void)setSelectedTitleAttributes:(UITabBarItem *)tabItem
             selectedTitleAttributes:(NSDictionary *)selectedTitleAttributes {
