@@ -1052,6 +1052,7 @@ export interface InvestigatorConditionalChoice {
 }
 export interface ChooseOneInput {
   type: "choose_one";
+  random?: boolean;
   default_choice?: string;
   confirm_text?: string;
   choices: BinaryConditionalChoice[];
@@ -1061,6 +1062,7 @@ export interface BinaryConditionalChoice {
   large?: boolean;
   text: string;
   icon?: string;
+  probability?: number;
   style?: "interlude";
   gender?: "m" | "f";
   tokens?: ChaosToken[];
