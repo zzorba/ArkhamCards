@@ -1,6 +1,6 @@
 import StyleContext from '@styles/StyleContext';
 import React, { useCallback, useContext, useReducer } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, InteractionManager } from 'react-native';
 import { filter, map, findIndex } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
@@ -60,6 +60,11 @@ interface ToggleIndex {
   interaction?: 'radio';
 }
 type IndexAction = ToggleIndex | SyncIndexes;
+
+interface LocalState {
+  indexes: number[];
+  dirty: boolean;
+}
 export default function ArkhamButtonGroup({
   buttons,
   selectedIndexes,
@@ -68,30 +73,38 @@ export default function ArkhamButtonGroup({
   interaction,
 }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
-  const [localSelectedIndexes, updateLocalSelectedIndexes] = useReducer((indexes: number[], action: IndexAction) => {
+  const [localState, updateLocalSelectedIndexes] = useReducer((state: LocalState, action: IndexAction) => {
     switch (action.type) {
       case 'sync':
-        if (deepEqual(indexes, action.indexes)) {
-          return indexes;
+        if (deepEqual(state.indexes, action.indexes)) {
+          return state;
         }
-        return action.indexes;
+        return {
+          indexes: action.indexes,
+          dirty: false,
+        }
       case 'toggle': {
-        const selected = findIndex(indexes, idx => idx === action.idx) !== -1;
-        let newSelection = indexes;
+        const selected = findIndex(state.indexes, idx => idx === action.idx) !== -1;
+        let newSelection = state.indexes;
         if (action.interaction === 'radio') {
           newSelection = selected ? [] : [action.idx];
         } else {
           newSelection = selected ?
-            filter(indexes, x => x !== action.idx) :
-            [...indexes, action.idx];
+            filter(state.indexes, x => x !== action.idx) :
+            [...state.indexes, action.idx];
         }
-        return newSelection;
+        return {
+          indexes: newSelection,
+          dirty: true,
+        }
       }
     }
-  }, selectedIndexes);
+  }, { indexes: selectedIndexes, dirty: false });
   useEffectUpdate(() => {
-    onPress(localSelectedIndexes);
-  }, [localSelectedIndexes]);
+    if (localState.dirty) {
+      onPress(localState.indexes);
+    }
+  }, [localState]);
   useComponentDidAppear(() => {
     updateLocalSelectedIndexes({ type: 'sync', indexes: selectedIndexes });
   }, componentId, [updateLocalSelectedIndexes, selectedIndexes]);
@@ -104,7 +117,7 @@ export default function ArkhamButtonGroup({
       <View style={[styles.buttonWrapper, { borderColor: colors.M, borderRadius: height / 2, height, backgroundColor: colors.L30 }]}>
         { map(buttons, (button, idx) => {
           const last = idx === (buttons.length - 1);
-          const selected = findIndex(localSelectedIndexes, x => x === idx) !== -1;
+          const selected = findIndex(localState.indexes, x => x === idx) !== -1;
           return (
             <SingleButton
               idx={idx}
