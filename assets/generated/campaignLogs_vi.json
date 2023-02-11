@@ -3692,31 +3692,31 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name# vi phạm luật của Ulthar.",
+            "feminine_text": "#name# vi phạm luật của Ulthar.",
+            "nonbinary_text": "#name# vi phạm luật của Ulthar."
           },
           {
             "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured.",
-            "nonbinary_text": "#name# was captured."
+            "masculine_text": "#name# đã bị bắt giữ.",
+            "feminine_text": "#name# đã bị bắt giữ.",
+            "nonbinary_text": "#name# đã bị bắt giữ."
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "con mèo đen ở bên cạnh bạn."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "con mèo đen ở bên cạnh bạn."
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "con mèo đen đã đưa tin về hoàn cảnh của bạn."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "con mèo đen có linh cảm."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3728,7 +3728,7 @@
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "con mèo đen đã chia sẻ tri thức về Vùng đất giấc mơ."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
@@ -3740,7 +3740,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "con mèo đen đã cảnh báo cho những người khác."
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -3748,7 +3748,7 @@
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "những con mèo đã thu thập cống phẩm của chúng từ Zoogs."
           },
           {
             "id": "dreamers_awoke",
@@ -3764,7 +3764,7 @@
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "người nằm mơ ngày càng yếu đi."
           },
           {
             "id": "dreamers_know_of_another_path",
@@ -3780,7 +3780,7 @@
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "các điều tra viên cưỡng ép tiến vào ngôi đền."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -3788,7 +3788,7 @@
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "các điều tra viên đã đàm phán với Zoogs."
           },
           {
             "id": "possess_silver_key",
@@ -3800,7 +3800,7 @@
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph trốn thoát việc bị bắt giữ."
           },
           {
             "id": "randolph_survived_the_voyage",
@@ -3808,19 +3808,19 @@
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph đã bị bắt giữ."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "các điều tra viên được cứu bởi Randolph Carter."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "những người nằm mơ đi lạc khỏi con đường."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "được rồi, tốt thôi, thế thì cứ làm theo cách của bạn."
           },
           {
             "id": "travelled_to_the_cold_wastes",
@@ -3828,11 +3828,11 @@
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil đã bị bắt giữ."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "tự làm tự chịu đi."
           }
         ]
       },
@@ -3892,15 +3892,15 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "con mèo đen ở bên cạnh bạn."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "con mèo đen ở bên cạnh bạn."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "con mèo đen có linh cảm."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
@@ -3920,7 +3920,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "con mèo đen đã cảnh báo cho những người khác."
           },
           {
             "id": "bridge_was_completed",
@@ -3932,23 +3932,23 @@
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "Bác sĩ Maheswaran còn sống."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "Bác sĩ Maheswaran bị mất tích."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "Bác sĩ Maheswaran đã tham gia cuộc điều tra."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "Bác sĩ Maheswaran đã ở lại với bệnh nhân của cô ấy."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "Tình trạng của Bác sĩ Maheswaran chưa được xác định."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
@@ -3960,7 +3960,7 @@
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "bạn phải tự mình làm."
           },
           {
             "id": "possess_silver_key",
@@ -3968,19 +3968,19 @@
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph đã không sống sót sau khi hạ xuống."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph đã tự mình trốn khỏi bệnh viện."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph đã trốn khỏi bệnh viện cùng với các điều tra viên."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph sống sót sau khi hạ xuống."
           },
           {
             "id": "returned_to_reality",
@@ -3996,7 +3996,7 @@
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "tự làm tự chịu đi."
           }
         ]
       },
