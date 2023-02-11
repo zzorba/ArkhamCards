@@ -188,7 +188,7 @@ export function setCountAchievement(
         type: GUIDE_UPDATE_ACHIEVEMENT,
         campaignId,
         id: achievementId,
-        operation: 'set',
+        operation: 'set_value',
         value,
         now: new Date(),
       }));
