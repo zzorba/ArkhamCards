@@ -711,6 +711,10 @@ function DeckDetailView({
     setMenuOpen(false);
   }, [setMenuOpen, setFabOpen, setTabooOpen]);
 
+  const hideTabooPicker = useCallback(() => {
+    setTabooOpen(false);
+  }, [setTabooOpen]);
+
   const updateDeckName = useCallback((name: string) => {
     dispatch({
       type: UPDATE_DECK_EDIT,
@@ -1320,6 +1324,7 @@ function DeckDetailView({
               tabooSetId={tabooSetId}
               showTaboo={showTaboo}
               tabooOpen={tabooOpen}
+              hideTabooPicker={hideTabooPicker}
               singleCardView={singleCardView}
               parsedDeck={parsedDeck}
               problem={problem}

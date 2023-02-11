@@ -14,6 +14,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 interface Props {
   tabooSetId?: number;
   setTabooSet: (tabooSet: number, useCurrent: boolean, currentTabooId: number | undefined) => void;
+  hideTabooPicker?: () => void;
   disabled?: boolean;
   open?: boolean;
   first?: boolean;
@@ -31,7 +32,7 @@ async function fetchTaboos(db: Database) {
   return tabooSets;
 }
 
-export default function DeckTabooPickerButton({ tabooSetId, includeCurrent, setTabooSet, disabled, loading, show, open, first, last }: Props) {
+export default function DeckTabooPickerButton({ tabooSetId, includeCurrent, setTabooSet, hideTabooPicker, disabled, loading, show, open, first, last }: Props) {
   const settingsTabooSetId = useSelector((state: AppState) => state.settings.tabooId);
   const { lang } = useContext(LanguageContext);
   const tabooSets = useDbData(fetchTaboos);
@@ -56,12 +57,13 @@ export default function DeckTabooPickerButton({ tabooSetId, includeCurrent, setT
   }, [tabooSets, includeCurrent, lang]);
 
   const onTabooChange = useCallback((tabooId: number | null) => {
+    hideTabooPicker?.();
     if (!tabooSets || tabooId === null) {
       // No change, so just drop it.
       return;
     }
     setTabooSet(tabooId, tabooId === 100, maxBy(tabooSets, t => t.id)?.id);
-  }, [tabooSets, setTabooSet]);
+  }, [tabooSets, setTabooSet, hideTabooPicker]);
   const selectedValue = !tabooSetId ? 0 : tabooSetId;
   const [dialog, showDialog] = usePickerDialog({
     title: t`Select Taboo List`,

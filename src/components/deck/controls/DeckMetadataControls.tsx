@@ -11,6 +11,7 @@ interface Props {
   tabooOpen?: boolean;
   editable: boolean;
   setTabooSet?: (tabooSet: number) => void;
+  hideTabooPicker?: () => void;
   tabooSetId: number;
   hasPreviousDeck?: boolean;
   showTaboo?: boolean;
@@ -30,6 +31,7 @@ export default function DeckMetadataControls({
   setMeta,
   setParallel,
   setTabooSet,
+  hideTabooPicker,
   tabooSetId,
   firstElement,
   hasPreviousDeck,
@@ -51,6 +53,7 @@ export default function DeckMetadataControls({
           disabled={!editable}
           tabooSetId={tabooSetId}
           setTabooSet={setTabooSet}
+          hideTabooPicker={hideTabooPicker}
           first={!firstElement}
           last={!hasOptions}
         />

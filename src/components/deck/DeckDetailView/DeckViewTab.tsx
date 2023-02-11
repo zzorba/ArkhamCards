@@ -65,6 +65,7 @@ interface Props {
   singleCardView: boolean;
   tabooSetId?: number;
   showTaboo: boolean;
+  hideTabooPicker: () => void;
   signedIn: boolean;
   login: () => void;
   problem?: DeckProblem;
@@ -108,6 +109,7 @@ export default function DeckViewTab(props: Props) {
     buttons,
     campaignId,
     showDeckHistory,
+    hideTabooPicker,
     deckEdits,
     deckEditsRef,
     mode,
@@ -175,6 +177,7 @@ export default function DeckViewTab(props: Props) {
           editable={editable}
           tabooSetId={tabooSetId || 0}
           setTabooSet={hasTabooPicker ? setTabooSet : undefined}
+          hideTabooPicker={hideTabooPicker}
           meta={deckEdits.meta}
           investigatorCode={deck?.investigator_code}
           setMeta={setMeta}
