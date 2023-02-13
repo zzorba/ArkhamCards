@@ -5896,7 +5896,7 @@ msgstr "Wyrusz"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
-msgstr "Opuść { currentLocation.name }"
+msgstr "Opuść ${ currentLocation.name }"
 
 msgid "Depart"
 msgstr "Opuść"
