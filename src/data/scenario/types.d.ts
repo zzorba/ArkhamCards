@@ -120,7 +120,8 @@ export type Operand =
   | ChaosBagOperand
   | ConstantOperand
   | MostXpEarnedOperand
-  | PartnerStatusCondition;
+  | PartnerStatusCondition
+  | PlayerCountOperand;
 export type PartnerStatus =
   | "eliminated"
   | "alive"
@@ -780,6 +781,10 @@ export interface PartnerStatusCondition {
   status: PartnerStatus[];
   operation: "any" | "all";
   options: BoolOption[];
+}
+export interface PlayerCountOperand {
+  type: "scenario_data";
+  scenario_data: "player_count";
 }
 export interface MathOpCondition {
   type: "math";

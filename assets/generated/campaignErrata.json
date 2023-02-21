@@ -143,10 +143,10 @@
       ]
     },
     {
-      "encounter_code": "at_deaths_doorstep",
+      "encounter_code": "the_wages_of_sin",
       "cards": [
         {
-          "code": ["05068"],
+          "code": ["05163"],
           "text": "This card’s ability should read: “Locations cannot be flipped to their non-[[Spectral]] side.”"
         }
       ]

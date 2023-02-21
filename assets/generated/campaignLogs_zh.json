@@ -2122,7 +2122,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "凱夏的女巫集會掌控世界。"
           },
           {
             "id": "deceiving_the_lodge",
@@ -2142,11 +2142,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "伊琳加入了調查員。"
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "伊琳想要會面。"
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2356,7 +2356,7 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "血樹雕刻"
           },
           {
             "id": "corn_husk_doll",
@@ -2384,7 +2384,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "怪異咒語"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -5222,6 +5222,10 @@
           },
           {
             "id": "eye_of_ravens_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "gathered_spawn",
             "text": "dummy"
           },
           {

@@ -4402,7 +4402,7 @@
             "id": "possesses_a_diving_suit",
             "masculine_text": "#name# zdobył skafander.",
             "feminine_text": "#name# zdobyła skafander.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "nonbinary_text": "#name# zdobyło skafander."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -5222,6 +5222,10 @@
           },
           {
             "id": "eye_of_ravens_stolen",
+            "text": "dummy"
+          },
+          {
+            "id": "gathered_spawn",
             "text": "dummy"
           },
           {

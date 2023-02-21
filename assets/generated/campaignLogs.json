@@ -5225,6 +5225,10 @@
             "text": "dummy"
           },
           {
+            "id": "gathered_spawn",
+            "text": "dummy"
+          },
+          {
             "id": "investigator_has_sable_glass",
             "text": "dummy"
           },

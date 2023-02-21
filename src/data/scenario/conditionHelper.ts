@@ -185,6 +185,12 @@ export function getOperand(
       const partnerResult = partnerStatusConditionResult(op, campaignLog);
       return keys(partnerResult.investigatorChoices).length;
     }
+    case 'scenario_data': {
+      if (op.scenario_data === 'player_count') {
+        return campaignLog.playerCount();
+      }
+      return 0;
+    }
   }
 }
 

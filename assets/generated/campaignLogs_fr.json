@@ -4829,7 +4829,7 @@
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "La cellule a apprécié cette architecture."
           },
           {
             "id": "cell_blew_the_whistle",
@@ -4865,7 +4865,7 @@
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "La cellule convoie des informations pour la Fondation."
           },
           {
             "id": "cell_is_off_mission",
@@ -4881,11 +4881,11 @@
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "La cellule connais le véritable nom d'Amaranth."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "La cellule connaît le passé de Desi"
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
@@ -5222,6 +5222,10 @@
           },
           {
             "id": "eye_of_ravens_stolen",
+            "text": "leurre"
+          },
+          {
+            "id": "gathered_spawn",
             "text": "leurre"
           },
           {

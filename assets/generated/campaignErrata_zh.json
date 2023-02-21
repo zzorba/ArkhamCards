@@ -72,6 +72,51 @@
       ]
     },
     {
+      "encounter_code": "return_to_the_wages_of_sin",
+      "cards": [
+        {
+          "code": [ "54040" ],
+          "text": "此卡牌的第二個項目最後應加上：“否則，將其放到幽靈遭遇棄牌堆。”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "return_to_before_the_black_throne",
+      "cards": [
+        {
+          "code": [ "54060" ],
+          "text": "此卡牌的“宇宙”能力最後一句話應改為：“你可以選擇不移動到曲折深壑，改為在阿薩托斯上放置1個毀滅標記。”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "unstable_realm",
+      "cards": [
+        {
+          "code": [ "54068" ],
+          "text": "此卡牌的第一項強制能力的觸發條件應改為：“在你離開疊加地點後”而不是“在你離開疊加地點時”。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dark_side_of_the_moon",
+      "cards": [
+        {
+          "code": [ "06224" ],
+          "text": "該卡牌的<b>強制</b>能力的觸發條件應改為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_search_for_kadath",
+      "cards": [
+        {
+          "code": [ "06144" ],
+          "text": "該卡牌的<b>強制</b>能力的觸發條件應改為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
+        }
+      ]
+    },
+    {
       "encounter_code": "the_pallid_mask",
       "cards": [
         {
@@ -150,7 +195,29 @@
       "cards": [
         {
           "code": [ "07315" ],
-          "text": "此卡牌的<b>目標</b>能力應修正為：\"……you may choose to advance” instead of “……advance.\""
+          "text": "此卡牌的<b>目標</b>能力應修正為：“……你可以選擇推進場景”而不是“……推進場景”。"
+        },
+        {
+          "code": [ "07330a", "07331a" ],
+          "text": "此卡牌強制能力的觸發條件應改為：“當調查階段結束時”而不是“當一輪結束時”。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "sanguine_shadows",
+      "cards": [
+        {
+          "code": [ "09546" ],
+          "text": "Agenda 1b should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\" instead of \"Find the location with a target on it nearest to La Chica Roja's mini-card.\""
+        }
+      ]
+    },
+    {
+      "encounter_code": "without_a_trace",
+      "cards": [
+        {
+          "code": [ "09688" ],
+          "text": "Add the add the following to the “Resign” ability: “If each surviving investigator has resigned, immediately advance to Act 3b.”"
         }
       ]
     }
