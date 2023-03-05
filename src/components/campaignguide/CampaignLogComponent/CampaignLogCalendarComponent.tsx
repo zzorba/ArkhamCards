@@ -11,7 +11,7 @@ import AppIcon from '@icons/AppIcon';
 
 interface Props {
   campaignLog: GuidedCampaignLog;
-  calendar: CalendarEntry[];
+  sectionId: string;
   time: number;
   width: number;
 }
@@ -37,33 +37,20 @@ function SymbolEntries({ entries, size }: { entries: string[]; size: number }) {
     </View>
   );
 }
-export default function CampaignLogCalendarComponent({ calendar, campaignLog, time, width }: Props) {
+export default function CampaignLogCalendarComponent({ sectionId, campaignLog, time, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const size = (width - 6 * 2) / 7.0;
   const boxSize = size / 3.5;
   const calendarEntries = useMemo(() => {
     const result: { [key: string]: string[] | undefined; } = {};
-    forEach(calendar, c => {
-      if (c.time) {
-        if (!result[c.time]) {
-          result[c.time] = [];
-        }
-        result[c.time]?.push(c.symbol);
-        return;
+    campaignLog.calendarEntries(sectionId).forEach(c => {
+      if (!result[c.time]) {
+        result[c.time] = [];
       }
-      if (c.entry) {
-        const count = campaignLog.count('hidden', c.entry);
-        if (count) {
-          if (!result[count]) {
-            result[count] = [];
-          }
-          result[count]?.push(c.symbol);
-        }
-        return;
-      }
+      result[c.time]?.push(c.symbol);
     });
     return result;
-  }, [calendar, campaignLog]);
+  }, [sectionId, campaignLog]);
   return (
     <View style={[styles.calendar, { width, borderColor: colors.D10, backgroundColor: colors.L20 }]}>
       <View style={[styles.calendarInset, { borderColor: colors.D20 }]}>

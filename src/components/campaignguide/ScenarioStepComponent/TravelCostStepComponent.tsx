@@ -20,6 +20,16 @@ export default function TravelCostStepComponent({ campaignGuide }: { campaignGui
       return [undefined, undefined];
     }
     const time = embarkData.time;
+    if (embarkData.transit) {
+      return [
+        ngettext(
+          msgid`Mark ${time} <b>time</b> as the cell travels from ${departCityName} to ${arriveCityName} on the way to somewhere else.`,
+          `Mark ${time} <b>time</b> as the cell travels from ${departCityName} to ${arriveCityName} on the way to somewhere else.`,
+          time
+        ),
+        undefined,
+      ];
+    }
     const travelSentence = t`The cell travels from ${departCityName} to ${arriveCityName}.`;
     const costSentence = ngettext(
       msgid`Mark ${time} <b>time</b> in your Campaign Log.`,

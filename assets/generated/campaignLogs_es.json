@@ -5409,23 +5409,23 @@
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "la Liebre y el Sombrerero disfrutaron enormemente de tu compañía."
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "la Liebre y el Sombrerero fueron arrojados a las sombras."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "la Liebre no pudo sobreponerse a la muerte del Sombrerero."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "la Liebre, el Sombrerero y el Lirón fueron consumidos por las sombras."
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "el Sombrerero no pudo sobreponerse a la muerte de la Liebre ."
           },
           {
             "id": "intimidated_the_snark",
@@ -5497,23 +5497,23 @@
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "la morsa y el carpintero tomaron su última comida."
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "la morsa y el carpintero perdieron el apetito."
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "la morsa y el carpintero fueron borrados completamente."
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "los investigadores descendieron por la madriguera de conejo."
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "los investigadores cruzaron a través del espejo."
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
@@ -5533,11 +5533,11 @@
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "el Conejo Blanco fue consumido por las sombras."
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "el Conejo Blanco sobrevivió al ataque del monstruo."
           }
         ]
       },
@@ -5558,11 +5558,11 @@
           },
           {
             "id": "intuition",
-            "text": "Intuition"
+            "text": "Intuición"
           },
           {
             "id": "patience",
-            "text": "Patience"
+            "text": "Paciencia"
           },
           {
             "id": "reason",
@@ -5592,7 +5592,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "El Grifo y la Falsa Tortuga"
           },
           {
             "id": "humpty_dumpty",
@@ -5625,7 +5625,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "El Grifo y la Falsa Tortuga"
           },
           {
             "id": "humpty_dumpty",

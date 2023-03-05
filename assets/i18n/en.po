@@ -2713,17 +2713,17 @@ msgstr ""
 msgid "Show all available cards"
 msgstr ""
 
+#, javascript-format
 msgid "Fight: ${ fight }"
 msgstr ""
 
-#, javascript-format
 msgid "Health: ${ health } per investigator"
 msgstr ""
 
+#, javascript-format
 msgid "Health: ${ health }"
 msgstr ""
 
-#, javascript-format
 msgid "Evade: ${ evade }"
 msgstr ""
 
@@ -4223,11 +4223,6 @@ msgstr ""
 
 #, javascript-format
 msgid ""
-"This app is made possible by the continued support of our fans on Patreon "
-"and the ${ mythosBustersLink } podcast."
-msgstr ""
-
-msgid ""
 "This app is made possible by the continued support of our fans on ${ "
 "patreonLink } and the ${ mythosBustersLink } podcast."
 msgstr ""
@@ -4868,12 +4863,6 @@ msgid ""
 "• Original icon designs: ${ visualDesigner }"
 msgstr ""
 
-msgid "Samsung One UI fix"
-msgstr ""
-
-msgid "Fix layout issues on version 3.0 of Samsung One UI"
-msgstr ""
-
 msgid "Call of the Plaguebearer"
 msgstr ""
 
@@ -5352,12 +5341,6 @@ msgstr ""
 msgid "Check for card updates"
 msgstr ""
 
-msgid "Low memory mode"
-msgstr ""
-
-msgid "Have the app preload fewer cards to help performance on older devices"
-msgstr ""
-
 msgid "Choose slot to remove"
 msgstr ""
 
@@ -5430,12 +5413,6 @@ msgstr[1] ""
 
 msgid "Add trait"
 msgstr ""
-
-#, javascript-format
-msgid "${ quantity } copy"
-msgid_plural "${ quantity } copies"
-msgstr[0] ""
-msgstr[1] ""
 
 msgid "Embark"
 msgstr ""
@@ -5880,6 +5857,30 @@ msgstr ""
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid ""
+"This app is made possible by the continued support of our fans on Patreon "
+"and the Mythos Busters podcast."
+msgstr ""
+
+msgid "Travel here without stopping"
+msgstr ""
+
+#, javascript-format
+msgid "Read status report: ${ reportSymbols }"
+msgid_plural "Read status reports: ${ reportSymbols }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid ""
+"Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
+"${ arriveCityName } on the way to somewhere else."
+msgid_plural ""
+"Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
+"${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
 msgstr[1] ""
 

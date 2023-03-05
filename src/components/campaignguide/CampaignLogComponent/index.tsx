@@ -114,7 +114,7 @@ export default function CampaignLogComponent({
             <View style={{ maxWidth: MAX_WIDTH }}>
               { !!calendar && (
                 <CampaignLogCalendarComponent
-                  calendar={calendar}
+                  sectionId={id}
                   campaignLog={campaignLog}
                   time={count}
                   width={Math.min(width - s * 2, MAX_WIDTH)}

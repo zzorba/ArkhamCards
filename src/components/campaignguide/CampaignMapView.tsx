@@ -34,9 +34,17 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import MapToggleButton from './MapToggleButton';
 import { MAX_WIDTH } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { VisibleCalendarEntry } from '@data/scenario/GuidedCampaignLog';
+import { trigger } from 'react-native-haptic-feedback';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
+interface TravelInfo {
+  location: MapLocation;
+  distance: number | undefined;
+  fast: boolean;
+  transitOnly: boolean;
+}
 function BackgroundSvg({ width, height, fill, opacity }: { width: number; height: number; fill: string; opacity: number }) {
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
@@ -130,10 +138,11 @@ function BorderBox({ children, locked, visited, height, side }: { children: Reac
 
 export interface CampaignMapProps extends CampaignGuideInputProps {
   campaignMap: CampaignMap;
-  onSelect?: (location: MapLocation, time: number, fast: boolean) => void;
+  onSelect?: (location: MapLocation, time: number, fast: boolean, transitOnly: boolean) => void;
   currentLocation: string | undefined;
-  currentTime: number | undefined;
+  currentTime: number;
   hasFast: boolean;
+  statusReports: VisibleCalendarEntry[];
   visitedLocations: string[];
   unlockedLocations: string[];
   unlockedDossiers: string[];
@@ -643,6 +652,9 @@ function LocationContent({
   visited,
   status,
   hasFast,
+  nextStatusReportTime,
+  statusReports,
+  currentTime,
   showCity,
   unlockedDossiers,
   travelDistance,
@@ -652,17 +664,39 @@ function LocationContent({
   currentLocation: MapLocation | undefined;
   unlockedDossiers: string[],
   visited: boolean;
-  setCurrentLocation?: (location: MapLocation, distance: number | undefined, fast: boolean) => void;
+  setCurrentLocation?: (travelInfo: TravelInfo) => void;
   status: 'standard' | 'side' | 'locked';
   hasFast: boolean;
+  statusReports: VisibleCalendarEntry[];
+  currentTime: number;
+  nextStatusReportTime: number | undefined;
   showCity: (city: string) => void;
 }) {
+  const { listSeperator } = useContext(LanguageContext);
   const { colors, typography, width } = useContext(StyleContext);
   const makeCurrent = useCallback(() => {
-    setCurrentLocation?.(location, travelDistance, false);
+    setCurrentLocation?.({
+      location,
+      distance: travelDistance,
+      fast: false,
+      transitOnly: false,
+    });
   }, [setCurrentLocation, location, travelDistance]);
   const makeCurrentFast = useCallback(() => {
-    setCurrentLocation?.(location, 1, true);
+    setCurrentLocation?.({
+      location,
+      distance: 1,
+      fast: true,
+      transitOnly: false,
+    });
+  }, [setCurrentLocation, location]);
+  const makeCurrentTransit = useCallback(() => {
+    setCurrentLocation?.({
+      location,
+      distance: travelDistance,
+      fast: false,
+      transitOnly: true,
+    });
   }, [setCurrentLocation, location]);
 
   const atLocation = currentLocation?.id === location.id;
@@ -671,6 +705,33 @@ function LocationContent({
       return !d.locked || !!find(unlockedDossiers, u => u === d.locked);
     })
   }, [location.dossier, unlockedDossiers]);
+  const travelWithoutStopButton = useMemo(() => {
+    if (!setCurrentLocation || !nextStatusReportTime || (currentTime + travelDistance) < nextStatusReportTime) {
+      return null;
+    }
+    const triggeredReports = map(
+      filter(statusReports, report => (report.time > currentTime) && report.time < (currentTime + travelDistance)),
+      report => report.symbol
+    );
+    const reportSymbols = triggeredReports.join(listSeperator);
+    return (
+      <DeckButton
+        topMargin={s}
+        shrink
+        thin
+        icon="map"
+        color="light_gray"
+        title={t`Travel here without stopping`}
+        detail={ngettext(
+          msgid`Read status report: ${reportSymbols}`,
+          `Read status reports: ${reportSymbols}`,
+          triggeredReports.length,
+        )}
+        onPress={makeCurrentTransit}
+      />
+    );
+
+  }, [setCurrentLocation, makeCurrentTransit, travelDistance, listSeperator, nextStatusReportTime, currentTime, statusReports]);
   const travelSection = useMemo(() => {
     if (atLocation) {
       return (
@@ -681,27 +742,27 @@ function LocationContent({
     }
     if (visited) {
       return (
-        <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+        <View style={[{ flexDirection: 'column' }, space.paddingTopS, space.paddingBottomS]}>
           <DeckButton shrink thin icon="check-thin" color="light_gray" title={t`Already visited`} disabled />
+          { travelWithoutStopButton }
         </View>
       );
     }
 
     if (status === 'locked') {
       return (
-        <>
-          <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
-            <DeckButton
-              shrink
-              thin
-              icon="lock"
-              color="red_outline"
-              title={t`Secret / Locked`}
-              detail={setCurrentLocation ? t`Cannot stop here until unlocked` : undefined}
-              disabled
-            />
-          </View>
-        </>
+        <View style={[{ flexDirection: 'column' }, space.paddingTopS, space.paddingBottomS]}>
+          <DeckButton
+            shrink
+            thin
+            icon="lock"
+            color="red_outline"
+            title={t`Secret / Locked`}
+            detail={setCurrentLocation ? t`Cannot stop here until unlocked` : undefined}
+            disabled
+          />
+          { travelWithoutStopButton }
+        </View>
       );
     }
     if ((!currentLocation || !atLocation) && !visited) {
@@ -720,7 +781,7 @@ function LocationContent({
             </View>
           ) }
           { (currentLocation?.id !== location.id && !!setCurrentLocation && !visited) ? (
-            <View style={[{ flexDirection: 'row' }, space.paddingTopS, space.paddingBottomS]}>
+            <View style={[{ flexDirection: 'column' }, space.paddingTopS, space.paddingBottomS]}>
               <DeckButton
                 shrink
                 thin
@@ -731,7 +792,7 @@ function LocationContent({
               />
               { !!hasFast && (
                 <DeckButton
-                  leftMargin={s}
+                  topMargin={s}
                   shrink
                   thin
                   icon="map"
@@ -740,13 +801,14 @@ function LocationContent({
                   onPress={makeCurrentFast}
                 />
               ) }
+              { travelWithoutStopButton }
             </View>
           ) : <View style={{ height: l }} /> }
         </>
       );
     }
     return <View style={{ height: l }} />;
-  }, [location, makeCurrentFast, makeCurrent, hasFast, status, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
+  }, [location,, travelWithoutStopButton, makeCurrentFast, makeCurrent, hasFast, status, typography, travelDistance, currentLocation, visited, atLocation, setCurrentLocation]);
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
@@ -835,13 +897,19 @@ function visitMessage(alreadyVisited: boolean, status: 'locked' | 'side' | 'stan
 
 
 export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
-  const { componentId, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
+  const { componentId, statusReports, currentTime, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
   const [currentLocation, visited] = useMemo(() => {
     return [
       find(campaignMap?.locations, location => location.id === (props.currentLocation || 'london')),
       new Set(visitedLocations),
     ];
   }, [campaignMap, props.currentLocation, visitedLocations]);
+  const nextStatusReportTime: number | undefined = useMemo(() => find(
+      sortBy(statusReports, report => report.time),
+      report => report.time > currentTime
+    )?.time,
+    [currentTime, statusReports]
+  );
 
   const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
@@ -861,9 +929,12 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
     return undefined;
   }, [props.currentLocation, campaignMap.locations]);
 
-  const moveToLocation = useCallback((location: MapLocation, distance: number | undefined, fast: boolean) => {
+  const moveToLocation = useCallback((info: TravelInfo) => {
+    const {
+      location, distance, fast, transitOnly,
+    } = info;
     if (onSelect) {
-      onSelect(location, distance || 1, fast);
+      onSelect(location, distance || 1, fast, transitOnly);
       onDismiss();
     }
   }, [onSelect, onDismiss]);
@@ -915,6 +986,9 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         travelDistance={travelDistances?.[selectedLocation.id]?.time || 1}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
         hasFast={hasFast}
+        nextStatusReportTime={nextStatusReportTime}
+        statusReports={statusReports}
+        currentTime={currentTime}
         unlockedDossiers={unlockedDossiers}
         visited={visited.has(selectedLocation.id)}
         status={selectedStatus}

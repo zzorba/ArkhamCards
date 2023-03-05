@@ -119,12 +119,18 @@ export default function ScenarioCarouselComponent({
     };
     return embarkData;
   }, [currentLocationId])
-  const onEmbark = useCallback((location: MapLocation, timeSpent: number, fast: boolean) => {
+  const onEmbark = useCallback((
+    location: MapLocation,
+    timeSpent: number,
+    fast: boolean,
+    transitOnly: boolean,
+  ) => {
     if (interScenarioId && campaignMap) {
-      const attempt = campaignLog.scenarioStatus(location.scenario) === 'completed' ?
-        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === location.scenario ? 1 : 0) :
+      const scenarioId = transitOnly ? 'travelling' : location.scenario;
+      const attempt = campaignLog.scenarioStatus(scenarioId) === 'completed' ?
+        sumBy(processedCampaign.scenarios, s => s.id.scenarioId === scenarioId ? 1 : 0) :
         undefined;
-      const nextScenario = attempt ? `${location.scenario}#${attempt}` : location.scenario;
+      const nextScenario = attempt ? `${scenarioId}#${attempt}` : scenarioId;
       const embarkData: EmbarkData = {
         destination: location.id,
         departure: currentLocationId,
@@ -132,8 +138,9 @@ export default function ScenarioCarouselComponent({
         previousScenarioId: interScenarioId.encodedScenarioId,
         nextScenario,
         fast,
+        transit: transitOnly,
       };
-      if (location.scenario === '$side_scenario') {
+      if (scenarioId === '$side_scenario') {
         Navigation.push<AddSideScenarioProps>(componentId, {
           component: {
             name: 'Guide.SideScenario',
@@ -178,7 +185,8 @@ export default function ScenarioCarouselComponent({
         campaignId,
         campaignMap,
         currentLocation: currentLocationId,
-        currentTime: processedCampaign.campaignLog.count('time', '$count'),
+        currentTime: campaignLog.count('time', '$count'),
+        statusReports: campaignLog.calendarEntries('time'),
         onSelect: onEmbark,
         visitedLocations: processedCampaign.campaignLog.campaignData.scarlet.visitedLocations,
         unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,

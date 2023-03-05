@@ -36,7 +36,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
     const scenarioName = scenarioHeader && locationName ?
       `${locationName}: ${scenarioHeader}` : (scenarioHeader || locationName);
     const actualName = scenario.scenarioGuide.scenarioName();
-    if (scenario.id.replayAttempt) {
+    if (scenario.id.replayAttempt && scenarioName) {
       const attempt = scenario.id.replayAttempt + 1;
       return [
         campaignMap ?

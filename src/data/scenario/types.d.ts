@@ -571,6 +571,7 @@ export interface CampaignDataEmbarkEffect {
   setting: "embark";
   location?: string;
   may_return?: boolean;
+  transit?: boolean;
 }
 export interface CampaignDataUpdateLocationEffect {
   type: "campaign_data";

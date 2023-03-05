@@ -162,6 +162,11 @@ interface CampaignData {
   };
 }
 
+export interface VisibleCalendarEntry {
+  symbol: string;
+  time: number;
+}
+
 export default class GuidedCampaignLog {
   scenarioId?: string;
   sections: {
@@ -690,6 +695,31 @@ export default class GuidedCampaignLog {
       this.investigatorCodes(includeEliminated),
       code => this.investigatorCards[code] || []
     );
+  }
+
+  calendarEntries(sectionId: string): VisibleCalendarEntry[] {
+    const result: VisibleCalendarEntry[] = [];
+    const section = find(this.campaignGuide.campaignLogSections(), section => section.id === sectionId);
+    if (!section || section.type !== 'count' || !section.calendar) {
+      return result;
+    }
+    forEach(section.calendar, c => {
+      if (c.time) {
+        result.push({
+          time: c.time,
+          symbol: c.symbol,
+          });
+      } else if (c.entry) {
+        const count = this.count('hidden', c.entry);
+        if (count) {
+          result.push({
+            time: count,
+            symbol: c.symbol,
+          })
+        }
+      }
+    });
+    return result;
   }
 
   count(sectionId: string, id: string): number {
@@ -1372,10 +1402,12 @@ export default class GuidedCampaignLog {
         break;
       case 'embark': {
         if (effect.location) {
-          this.campaignData.scarlet.visitedLocations = [
-            ...this.campaignData.scarlet.visitedLocations,
-            effect.location,
-          ];
+          if (!effect.transit) {
+            this.campaignData.scarlet.visitedLocations = [
+              ...this.campaignData.scarlet.visitedLocations,
+              effect.location,
+            ];
+          }
           if (effect.may_return) {
             // Filter out the 'current location' if you are 'leaving' but can return.
             this.campaignData.scarlet.visitedLocations = filter(

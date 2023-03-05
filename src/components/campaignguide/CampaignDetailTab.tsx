@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { InteractionManager, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, findLast, find, keys, last } from 'lodash';
+import { filter, findLast, find, keys, last, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 
@@ -161,6 +161,7 @@ export default function CampaignDetailTab({
         campaignMap,
         currentLocation: campaignLog.campaignData.scarlet.location,
         currentTime: campaignLog.count('time', '$count'),
+        statusReports: campaignLog.calendarEntries('time'),
         visitedLocations: campaignLog.campaignData.scarlet.visitedLocations,
         unlockedLocations: campaignLog.campaignData.scarlet.unlockedLocations,
         unlockedDossiers: campaignLog.campaignData.scarlet.unlockedDossiers,

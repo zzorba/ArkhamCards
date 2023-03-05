@@ -1737,13 +1737,13 @@
       {
         "token": "tablet",
         "value": {
-          "modifier": -2
+          "modifier": -3
         }
       },
       {
         "token": "elder_thing",
         "value": {
-          "modifier": -3
+          "modifier": -2
         }
       }
     ],
@@ -1774,13 +1774,13 @@
       {
         "token": "tablet",
         "value": {
-          "modifier": -2
+          "modifier": -3
         }
       },
       {
         "token": "elder_thing",
         "value": {
-          "modifier": -3
+          "modifier": -2
         }
       }
     ]

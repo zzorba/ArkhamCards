@@ -1257,6 +1257,7 @@ export interface EmbarkData {
   time: number;
   nextScenario: string;
   fast: boolean;
+  transit: boolean;
 }
 
 export interface GuideStartScenarioInput extends BasicInput {
