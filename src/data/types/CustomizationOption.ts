@@ -6,6 +6,7 @@ import Card from './Card';
 import CardTextFields from './CardTextFields';
 import DeckOption from './DeckOption';
 
+// TODO: remove the ? after closing bold tag when chinese is fixed.
 const LINE_REGEX = /□+\s*\<b\>?(.+?)。?\<\/b\>\s*(.+)/;
 
 export interface CoreCustomizationChoice {
