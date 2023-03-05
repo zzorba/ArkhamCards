@@ -6,7 +6,7 @@ import Card from './Card';
 import CardTextFields from './CardTextFields';
 import DeckOption from './DeckOption';
 
-const LINE_REGEX = /□+\s+\<b\>(.+?)\<\/b\>\s+(.+)/;
+const LINE_REGEX = /□+\s*\<b\>?(.+?)。?\<\/b\>\s*(.+)/;
 
 export interface CoreCustomizationChoice {
   xp_spent: number;
