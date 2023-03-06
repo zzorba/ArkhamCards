@@ -15,7 +15,11 @@ interface Props {
 export default function HealthSanityLine({ investigator }: Props) {
   return (
     <View style={styles.skillRow}>
-      <HealthSanityNumberIcon count={investigator.health} type="health" />
+      <HealthSanityNumberIcon
+        count={investigator.health}
+        type="health"
+        perInvestigator={investigator.health_per_investigator}
+      />
       <HealthSanityNumberIcon count={investigator.sanity} type="sanity" />
     </View>
   );
