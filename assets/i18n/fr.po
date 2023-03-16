@@ -3898,7 +3898,7 @@ msgstr[0] "${ unspentXp } XP non dépensée"
 msgstr[1] "${ unspentXp } XP non dépensée"
 
 msgid "Tap to draw"
-msgstr "Appuyez ici pour révéler un pion"
+msgstr "Appuyer pour piocher"
 
 msgid "Draw another"
 msgstr "Révéler un autre pion"
