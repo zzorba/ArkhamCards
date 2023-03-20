@@ -5912,7 +5912,7 @@ msgid "Bearer"
 msgstr "소지자"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
-msgstr "탐구자 그리고/또는 신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
+msgstr "탐구자 그리고/또는 생존자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 Mystic and/or Survivor cards"
 msgstr "신비주의자 그리고/또는 생존자인 카드를 5장보다 많이 포함할 수 없습니다."
@@ -6114,14 +6114,16 @@ msgid ""
 "This app is made possible by the continued support of our fans on Patreon "
 "and the Mythos Busters podcast."
 msgstr ""
+"이 앱은 Patreon과 Mythos Busters 팟캐스트에 보내주신 팬 여러분의 지속적인 성원에 "
+"힘입어 만들어졌습니다."
 
 msgid "Travel here without stopping"
-msgstr ""
+msgstr "멈추지 않고 여행하기"
 
 #, javascript-format
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
-msgstr[0] ""
+msgstr[0] "상태 보고서 읽기: ${ reportSymbols }"
 
 #, javascript-format
 msgid ""
@@ -6131,6 +6133,8 @@ msgid_plural ""
 "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
+"셀이 다른 곳으로 이동하는 도중에 ${ departCityName }에서 ${ arriveCityName }으로 "
+"이동하는 경우 ${ time } <b>시간</b>으로 표시합니다."
 
 msgctxt "investigator"
 msgid "Custom"
