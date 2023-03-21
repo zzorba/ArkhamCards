@@ -449,7 +449,7 @@
   {
     "id": "Play",
     "title": "Giocare una Carta",
-    "text": "Per giocare una carta, un investigatore deve pagare il costo in risorse di quella carta e soddisfare ogni restrizione e condizione di gioco applicabile. La maggior parte delle carte può essere giocata soltanto effettuando un’azione di gioco (vedi alla voce [“Gioco”](#Play)).\n\nUna carta con Veloce non viene giocata durante un’azione di gioco, ma può essere giocata in qualsiasi momento in cui la sua specifica condizione innescante sia soddisfatta o, se non possiede condizioni innescanti, durante una finestra del giocatore appropriata (vedi alla voce [“Veloce”](#Fast)).\n\nOgni volta che una carta evento viene giocata, i suoi effetti vengono risolti e la carta viene poi collocata nella pila degli scarti del suo proprietario.\n\nOgni volta che un supporto viene giocato, deve essere collocato nell’area di gioco dell’investigatore e rimane in gioco finché una capacità o un effetto di gioco non ne causano l’uscita dal gioco. Mentre è in gioco, la maggior parte dei supporti occupa 1 o più slot (vedi alla voce [“Slot”](#Slots)).\n\nLe carte abilità non vengono giocate. Per risolvere le loro capacità, le carte abilità devono invece essere investite in una prova di abilità.\nVedi anche alle voci: [“Sequenza di Lancio”](#Appendix_I_Initiation_Sequence) dell’Appendice I, [“Restrizioni, Permessi e Istruzioni di Gioco”](#Play_Restrictions_Permissions_and_Instructions)."
+    "text": "Per giocare una carta, un investigatore deve pagare il costo in risorse di quella carta e soddisfare ogni restrizione e condizione di gioco applicabile. La maggior parte delle carte può essere giocata soltanto effettuando un’azione di gioco (vedi alla voce [“Gioco”](#Play_Action)).\n\nUna carta con Veloce non viene giocata durante un’azione di gioco, ma può essere giocata in qualsiasi momento in cui la sua specifica condizione innescante sia soddisfatta o, se non possiede condizioni innescanti, durante una finestra del giocatore appropriata (vedi alla voce [“Veloce”](#Fast)).\n\nOgni volta che una carta evento viene giocata, i suoi effetti vengono risolti e la carta viene poi collocata nella pila degli scarti del suo proprietario.\n\nOgni volta che un supporto viene giocato, deve essere collocato nell’area di gioco dell’investigatore e rimane in gioco finché una capacità o un effetto di gioco non ne causano l’uscita dal gioco. Mentre è in gioco, la maggior parte dei supporti occupa 1 o più slot (vedi alla voce [“Slot”](#Slots)).\n\nLe carte abilità non vengono giocate. Per risolvere le loro capacità, le carte abilità devono invece essere investite in una prova di abilità.\nVedi anche alle voci: [“Sequenza di Lancio”](#Appendix_I_Initiation_Sequence) dell’Appendice I, [“Restrizioni, Permessi e Istruzioni di Gioco”](#Play_Restrictions_Permissions_and_Instructions)."
   },
   {
     "id": "Active_Player",
@@ -499,7 +499,7 @@
   },
   {
     "id": "Engage_Action",
-    "title": "Impegno (Azione)",
+    "title": "Impegno (azione)",
     "text": "Questa azione può essere effettuata da un investigatore durante il proprio turno nella Fase degli Investigatori.\nPer impegnare un nemico nel suo stesso luogo (<i>per esempio, un nemico esaurito, un nemico sfuggente o un nemico impegnato con un altro investigatore</i>), un investigatore colloca il nemico scelto nella propria area di minaccia. L’investigatore e il nemico sono ora impegnati.\n- Un investigatore può effettuare l’azione di impegno con un nemico impegnato con un investigatore diverso nello stesso luogo. Il nemico si disimpegna dall’investigatore precedente e simultaneamente impegna l’investigatore che effettua l’azione.\n- Un investigatore non può usare l’azione di impegno per impegnare un nemico con cui è già impegnato."
   },
   {
@@ -1101,6 +1101,11 @@
     "text": "Il valore base è il valore di un elemento prima dell’applicazione di qualsiasi modificatore. Salvo dove specificato diversamente, il valore base di un elemento derivato da una carta è il valore stampato su quella carta."
   },
   {
+    "id": "Fast",
+    "title": "Veloce",
+    "text": "Veloce è una capacità di parola chiave. Giocare una carta con Veloce non costa azioni e non richiede l’uso dell’azione di gioco.\n* Un evento con Veloce può essere giocato dalla mano di un giocatore ogni volta che le sue istruzioni di gioco lo specificano.\nSe le istruzioni specificano un punto di tempistica “quando” o “dopo”, la carta può essere giocata come se il punto di tempistica descritto fosse una condizione innescante per giocarla. Se le istruzioni specificano una durata o un periodo di tempo, la carta può essere giocata durante qualsiasi finestra del giocatore entro quel periodo di tempo. Se le istruzioni specificano sia un punto di tempistica “quando” o “dopo” che una durata o un periodo di tempo, la carta può essere giocata in riferimento a qualsiasi caso della condizione innescante specificata entro quel periodo di tempo.\n* Un supporto con Veloce può essere giocato da un investigatore durante una qualsiasi finestra del giocatore nel proprio turno.\n* Dal momento che giocare carte con Veloce non costa azioni, esse non provocano attacchi di opportunità (vedi alla voce “[Attacco di Opportunità](#Attack_of_Opportunity)”)."
+  },
+  {
     "id": "Vengeance_X",
     "title": "Vengeance X",
     "cycle": ["tfa"],
@@ -1128,7 +1133,7 @@
   },
   {
     "id": "Appendix_I_Initiation_Sequence",
-    "title": "Appendix I: Sequenza di Lancio",
+    "title": "Appendice I: Sequenza di Lancio",
     "text": "Quando un giocatore desidera lanciare una capacità innescata o giocare una carta, per prima cosa quel giocatore dichiara il suo intento. Ci sono due conferme preliminari da effettuare prima che abbia inizio la procedura con cui vengono lanciate capacità o giocate carte, e sono le seguenti:\n- Controllare le restrizioni di gioco. Determinare se la carta può essere giocata, o se la capacità può essere lanciata, in questo momento (questo include verificare se la risoluzione dell’effetto ha il potenziale di cambiare lo stato di gioco). Se le restrizioni di gioco non sono soddisfatte, questa procedura è annullata.\n- Determinare i costi per giocare la carta o lanciare la capacità. Se viene stabilito che il costo (tenendo conto dei modificatori) può essere pagato, procedere con i passi rimanenti di questa sequenza.\n\nUna volta che le conferme soprastanti sono state effettuate, svolgere i passi seguenti nell’ordine indicato:\n1. Applicare qualsiasi modificatore ai costi.\n2. Pagare i costi. Se quando viene raggiunto questo passo i costi non possono essere pagati, questa procedura viene annullata senza pagare alcun costo.\n- Una volta completato questo passo, risolvere gli attacchi di opportunità, se ve ne sono.\n3. La carta inizia a essere giocata, o si tentano di lanciare gli effetti della capacità.\n4. Gli effetti della capacità (se non sono stati annullati al passo 3) completano il loro lancio e vengono risolti. La carta è considerata come giocata e collocata in gioco (o nella pila degli scarti del suo proprietario, se si tratta di un evento) e la capacità è considerata risolta simultaneamente con il completamento di questo passo.\n- Se la capacità che viene lanciata si trova su una carta in gioco, il completamento della sequenza non viene interrotto se quella carta esce dal gioco durante questa sequenza."
   },
   {

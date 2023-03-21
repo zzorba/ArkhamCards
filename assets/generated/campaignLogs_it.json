@@ -1890,24 +1890,24 @@
         "section": "$input_value",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           }
         ]
       },
@@ -1915,24 +1915,24 @@
         "section": "05046",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -1944,7 +1944,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "gli investigatori sono sulle tracce di Gavriella."
           }
         ]
       },
@@ -1952,24 +1952,24 @@
         "section": "05047",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -1981,7 +1981,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "gli investigatori sono sulle tracce di Jerome."
           }
         ]
       },
@@ -1989,24 +1989,24 @@
         "section": "05048",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -2018,7 +2018,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "gli investigatori sono sulle tracce di Valentino."
           }
         ]
       },
@@ -2026,24 +2026,24 @@
         "section": "05049",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -2055,7 +2055,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "gli investigatori sono sulle tracce di Penny."
           }
         ]
       },
@@ -2070,7 +2070,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "avete accettato la vostra sorte."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -2110,7 +2110,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "vi danno la caccia."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2126,7 +2126,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "state cercando di ingannare la Loggia."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -2138,15 +2138,15 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "siete nemici della Loggia."
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Erynn si è unita a voi."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Erynn vuole incontrarvi."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2158,11 +2158,11 @@
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# eretiche sono state scatenate ad Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "avete celato alla Loggia le vostre conoscenze sulla congrega."
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -2170,15 +2170,15 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "siete sfuggiti dal reame spettrale."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Josef è scomparso nella nebbia."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Josef è vivo e vegeto."
           },
           {
             "id": "kept_mementos_hidden",
@@ -2186,15 +2186,15 @@
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "non avete scoperto alcunché sulle trame della Loggia."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "siete membri della Loggia."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "siete scomparsi per sempre senza lasciare tracce."
           },
           {
             "id": "path_winds_before_you",
@@ -2202,15 +2202,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# prove sono state lasciate."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "avete rifiutato la vostra sorte."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "avete salvato Josef"
           },
           {
             "id": "sided_with_the_coven",
@@ -2226,11 +2226,11 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "siete sopravvissuti all'abbraccio dell'Osservatore."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "avete parlato della congrega alla Loggia."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -2238,11 +2238,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "l'incantesimo delle streghe è stato spezzato."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "l'incantesimo delle streghe è stato completato."
           }
         ]
       },
@@ -2356,43 +2356,43 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "Incisioni Sanguinolente sull'Albero"
           },
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Bambola di Foglie di Pannocchia"
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Diario di Gilman"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Formula di Keziah"
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Flauto Ipnotico"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Componenti del Rituale"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Frammento dell'Ombra Squarciata"
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Incantesimo Misterioso"
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Sbuffo di Foschia Spettrale"
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Crocifisso Consumato"
           }
         ]
       }
@@ -3231,24 +3231,24 @@
         "section": "$input_value",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           }
         ]
       },
@@ -3256,24 +3256,24 @@
         "section": "05046",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -3285,7 +3285,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "gli investigatori sono sulle tracce di Gavriella."
           }
         ]
       },
@@ -3293,24 +3293,24 @@
         "section": "05047",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -3322,7 +3322,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "gli investigatori sono sulle tracce di Jerome."
           }
         ]
       },
@@ -3330,24 +3330,24 @@
         "section": "05048",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -3359,7 +3359,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "gli investigatori sono sulle tracce di Valentino."
           }
         ]
       },
@@ -3367,24 +3367,24 @@
         "section": "05049",
         "entries": [
           {
+            "id": "taken_by_the_watcher",
+            "masculine_text": "#name# è stato preso dall'Osservatore.",
+            "feminine_text": "#name# was taken by the Watcher."
+          },
+          {
             "id": "disappeared_into_the_mist",
-            "masculine_text": "#name# disappeared into the mist.",
-            "feminine_text": "#name# disappeared into the mist."
+            "masculine_text": "#name# è scomparso nella nebbia.",
+            "feminine_text": "#name# è scomparsa nella nebbia."
           },
           {
             "id": "claimed_by_specters",
-            "masculine_text": "#name# was claimed by specters.",
-            "feminine_text": "#name# was claimed by specters."
+            "masculine_text": "#name# è stato portato via dagli spettri.",
+            "feminine_text": "#name# è stata portata via dagli spettri."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "masculine_text": "#name# was pulled into the spectral realm.",
-            "feminine_text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "taken_by_the_watcher",
-            "masculine_text": "#name# was taken by the Watcher.",
-            "feminine_text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# è stato trascinato nel reame spettrale.",
+            "feminine_text": "#name# è stata trascinata nel reame spettrale."
           },
           {
             "id": "alive",
@@ -3396,7 +3396,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "gli investigatori sono sulle tracce di Penny."
           }
         ]
       },
@@ -3411,7 +3411,7 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "avete accettato la vostra sorte."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -3451,7 +3451,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "vi danno la caccia."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -3463,7 +3463,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "state cercando di ingannare la Loggia."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -3475,7 +3475,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "siete nemici della Loggia."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -3487,11 +3487,11 @@
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# eretiche sono state scatenate ad Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "avete celato alla Loggia le vostre conoscenze sulla congrega."
           },
           {
             "id": "inducted_into_the_inner_circle",
@@ -3499,15 +3499,15 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "siete sfuggiti dal reame spettrale."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Josef è scomparso nella nebbia."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Josef è vivo e vegeto."
           },
           {
             "id": "kept_mementos_hidden",
@@ -3515,15 +3515,15 @@
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "non avete scoperto alcunché sulle trame della Loggia."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "siete membri della Loggia."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "siete scomparsi per sempre senza lasciare tracce."
           },
           {
             "id": "path_winds_before_you",
@@ -3531,15 +3531,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# prove sono state lasciate."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "avete rifiutato la vostra sorte."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "avete salvato Josef"
           },
           {
             "id": "sided_with_the_coven",
@@ -3555,11 +3555,11 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "siete sopravvissuti all'abbraccio dell'Osservatore."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "avete parlato della congrega alla Loggia."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -3567,11 +3567,11 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "l'incantesimo delle streghe è stato spezzato."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "l'incantesimo delle streghe è stato completato."
           }
         ]
       },
@@ -3649,35 +3649,35 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Bambola di Foglie di Pannocchia"
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Diario di Gilman"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Formula di Keziah"
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Flauto Ipnotico"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Componenti del Rituale"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Frammento dell'Ombra Squarciata"
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Sbuffo di Foschia Spettrale"
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Crocifisso Consumato"
           }
         ]
       }
