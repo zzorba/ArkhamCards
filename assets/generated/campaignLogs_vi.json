@@ -3924,11 +3924,11 @@
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "cây cầu đã hoàn thành."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "cây cầu đã bị phá hủy."
           },
           {
             "id": "doctor_is_alive",
@@ -3956,7 +3956,7 @@
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "các điều tra viên không bao giờ trốn thoát."
           },
           {
             "id": "on_your_own",
@@ -3984,15 +3984,15 @@
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "các điều tra viên đã trở lại thực tại."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "các điều tra viên vẫn đang ở trong Vùng đất Giấc mơ."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "các điều tra viên bị mắc kẹt trong địa hạt của Atlach-Nacha."
           },
           {
             "id": "you_asked_for_it",

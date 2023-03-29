@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2023-01-31 23:30+0300\n"
+"PO-Revision-Date: 2023-03-29 16:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -14,7 +14,7 @@ msgstr ""
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -5911,17 +5911,17 @@ msgid "Add trait"
 msgstr "Добавить черту"
 
 msgid "Embark"
-msgstr ""
+msgstr "Отправиться"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
-msgstr ""
+msgstr "Отправиться из ${ currentLocation.name }"
 
 msgid "Depart"
-msgstr ""
+msgstr "Отправиться"
 
 msgid "Choose destination"
-msgstr ""
+msgstr "Выберите цель путешествия"
 
 #, javascript-format
 msgid ""
@@ -5987,20 +5987,20 @@ msgid "Fan-made Scenarios"
 msgstr "Фанатские сценарии"
 
 msgid "Currently here"
-msgstr ""
+msgstr "Вы находитесь здесь"
 
 msgid "Already visited"
-msgstr ""
+msgstr "Уже посещено"
 
 msgid "Travel here"
-msgstr ""
+msgstr "Отправиться сюда"
 
 msgid "Information"
-msgstr ""
+msgstr "Информация"
 
 #, javascript-format
 msgid "Departing from ${ location }"
-msgstr ""
+msgstr "Отправляемся из ${ location }"
 
 msgid "Customization upgrades"
 msgstr "Улучшения-адаптации"
@@ -6140,40 +6140,42 @@ msgid "Choose a skill"
 msgstr "Выберите навык"
 
 msgid "Use the embark button below"
-msgstr ""
+msgstr "Используйте кнопку ниже, чтобы отправиться."
 
 msgid "Review the world map"
-msgstr ""
+msgstr "Посмотреть карту мира"
 
 msgid "Claim previous rewards"
-msgstr ""
+msgstr "Получить прошлые награды"
 
 msgid "Apply changes from last completed scenario or interlude"
-msgstr ""
+msgstr "Применить изменения из последнего завершённого сценария или интерлюдии"
 
 msgid "This is a side-story location."
-msgstr ""
+msgstr "Это локация сценария-ответвления."
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отправиться сюда стоит ${ travelDistance } время"
+msgstr[1] "Отправиться сюда стоит ${ travelDistance } времени"
+msgstr[2] "Отправиться сюда стоит ${ travelDistance } времени"
 
 msgid "Do you want to use the app to randomize choices?"
-msgstr ""
+msgstr "Хотите использовать приложение, чтобы сделать выборы случайным образом?"
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
-msgstr ""
+msgstr "Ячейка отправляется из ${ departCityName } в ${ arriveCityName }."
 
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отметьте ${ time } <b>время</b> в журнале кампании."
+msgstr[1] "Отметьте ${ time } <b>времени</b> в журнале кампании."
+msgstr[2] "Отметьте ${ time } <b>времени</b> в журнале кампании."
 
 msgid "This includes the cost of experience cost of playing the side-story."
-msgstr ""
+msgstr "Это включает в себя цену в опыте для сценария-ответвления."
 
 msgid ""
 "This deck is owned by another player. You can record the changes now and "
@@ -6184,7 +6186,7 @@ msgstr ""
 "и её владелец сможет применить их в приложении на своём устройстве."
 
 msgid "Time Passed"
-msgstr ""
+msgstr "Прошедшее время"
 
 msgid "Bearer"
 msgstr "Носитель"
@@ -6199,19 +6201,19 @@ msgid "Fan-made Investigators"
 msgstr "Фанатские сыщики"
 
 msgid "Fortune and Folly"
-msgstr ""
+msgstr "Фортуна и безрассудство"
 
 msgid "Challenge Scenarios"
 msgstr "Сценарии-испытания"
 
 msgid "Choose an option"
-msgstr ""
+msgstr "Выберите вариант"
 
 msgid "Choose weakness"
-msgstr ""
+msgstr "Выберите слабость"
 
 msgid "Do you want to use the app to draw random tarot cards?"
-msgstr ""
+msgstr "Хотите использовать приложение, чтобы взять случайные карты таро?"
 
 msgid "Choose tarot card"
 msgstr ""
@@ -6233,17 +6235,22 @@ msgid ""
 "location and spend additional time equal to the normal experience for "
 "playing that side story."
 msgstr ""
+"Если вы хотите добавить сценарий-ответвление в эту кампанию, вы можете "
+"отправиться в его локацию и потратить дополнительное время, равное цене в "
+"опыте для включения этого сценария."
 
 msgid "Use expedited ticket"
-msgstr ""
+msgstr "Использовать курьерский билет."
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
-msgstr ""
+msgstr "Цена во времени: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
 msgstr ""
+"Дополнительная цена в опыте для ${ investigator.name }: ${ additionalXpCost "
+"}"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -6254,74 +6261,85 @@ msgid ""
 "side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
 msgstr ""
+"Ответвление — это сценарий, который можно сыграть между двумя любыми "
+"сценариями в рамках сюжетной кампании карточной игры «Ужас Аркхэма».\n"
+"- Так как вы играете в кампанию <i>«Алые ключи»</i>, цена "
+"сценария-ответвления выплачивается во <b>времени</b>, а не в опыте.\n"
+"- Слабости, травмы, опыт и награды сценариев-ответвлений остаются с "
+"сыщиками до конца кампании.\n"
+"- Каждый сценарий-ответвление можно сыграть только один раз за кампанию."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отметьте ${ travelDistance } время"
+msgstr[1] "Отметьте ${ travelDistance } времени"
+msgstr[2] "Отметьте ${ travelDistance } времени"
 
 msgid "Mark 1 time"
-msgstr ""
+msgstr "Отметьте 1 время"
 
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
 msgid_plural "Travel time: ${ travelDistance }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Время в пути: ${ travelDistance }"
+msgstr[1] "Время в пути: ${ travelDistance }"
+msgstr[2] "Время в пути: ${ travelDistance }"
 
 msgid "Secret / Locked"
-msgstr ""
+msgstr "Заблокировано"
 
 msgid "Cannot stop here until unlocked"
-msgstr ""
+msgstr "Нельзя останавливаться здесь, пока эта локация не будет разблокирована"
 
 msgid "Select cards to exile"
-msgstr ""
+msgstr "Выберите карты для изгнания"
 
 msgid "Exile other cards"
-msgstr ""
+msgstr "Изгнать другие карты"
 
 msgid "Name of Paradimensional Artifact"
-msgstr ""
+msgstr "Название парапространственного артефакта"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "Пролог: Загадки и дождь"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "Смертельная жара"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "Кровавые тени"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "Сделки во мраке"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "Безумные танцы"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "По тонкому льду"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "Псы войны"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "Оттенки страдания"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "Без следа"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "Конгресс ключей"
 
 msgid "Unlocked Locations"
-msgstr ""
+msgstr "Разблокированные локации"
 
 msgid ""
 "Each investigator who is the bearer of 1 or more key attaches those keys to "
 "their investigator card:"
 msgstr ""
+"Каждый сыщик, являющийся носителем 1 и более ключей прикрепляет те ключи к "
+"своей карте сыщика:"
 
 msgid "Customizable"
 msgstr "Адаптация"

@@ -6032,6 +6032,7 @@ msgstr ""
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
 msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgid ""
@@ -6041,6 +6042,7 @@ msgid_plural ""
 "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "investigator"
 msgid "Custom"

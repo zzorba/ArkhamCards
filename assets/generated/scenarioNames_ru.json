@@ -89,7 +89,7 @@
   },
   {
     "id": "bermuda",
-    "name": "The Great Work"
+    "name": "Великое дело"
   },
   {
     "id": "bermuda_triangle",
@@ -121,7 +121,7 @@
   },
   {
     "id": "bombay",
-    "name": "Strange Architecture"
+    "name": "Чудная архитектура"
   },
   {
     "id": "buenos_aires",
@@ -345,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "Кровь, пот и чай"
   },
   {
     "id": "horror_in_high_gear",
@@ -409,11 +409,11 @@
   },
   {
     "id": "kabul",
-    "name": "Ruses and Reclamations"
+    "name": "Интриги и претензии"
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Свист на ветру"
   },
   {
     "id": "kuala_lampur",
@@ -421,7 +421,7 @@
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "Срочная доставка"
   },
   {
     "id": "late_risers",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "Dead and Gone"
+    "name": "Мертвым мертво"
   },
   {
     "id": "lost_in_time_and_space",
@@ -453,7 +453,7 @@
   },
   {
     "id": "manokwari",
-    "name": "Metamorphosis"
+    "name": "Превращение"
   },
   {
     "id": "marrakesh",
@@ -469,7 +469,7 @@
   },
   {
     "id": "moscow",
-    "name": "Quid Pro Quo"
+    "name": "Услуга за услугу"
   },
   {
     "id": "mourning_chorus",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "Дьявольский механизм"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "Неестественный отбор"
   },
   {
     "id": "point_of_no_return",
@@ -529,7 +529,7 @@
   },
   {
     "id": "quito",
-    "name": "Ruses and Reclamations"
+    "name": "Интриги и претензии"
   },
   {
     "id": "read_or_die",
@@ -693,7 +693,7 @@
   },
   {
     "id": "reykjavik",
-    "name": "Ruses and Reclamations"
+    "name": "Интриги и претензии"
   },
   {
     "id": "riddles_and_rain",
@@ -701,23 +701,23 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "Теория аннигиляции"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Ромул и Рем"
   },
   {
     "id": "san_francisco",
-    "name": "Quid Pro Quo"
+    "name": "Услуга за услугу"
   },
   {
     "id": "san_juan",
-    "name": "Ruses and Reclamations"
+    "name": "Интриги и претензии"
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "Свернувшийся змея"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +733,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Strange Architecture"
+    "name": "Чудная архитектура"
   },
   {
     "id": "strange_moons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "Звенящая пустота"
   },
   {
     "id": "tcu_epilogue",
@@ -857,7 +857,7 @@
   },
   {
     "id": "the_foundation",
-    "name": "The Foundation"
+    "name": "Организация"
   },
   {
     "id": "the_golden_circle",
@@ -993,7 +993,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "Срочная доставка"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "«Путешествуя…»"
   },
   {
     "id": "tsk_epilogue",
@@ -1065,6 +1065,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "Убежище"
   }
 ]

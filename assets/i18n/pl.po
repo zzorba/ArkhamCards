@@ -6484,7 +6484,6 @@ msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid ""
@@ -6495,7 +6494,6 @@ msgid_plural ""
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "investigator"
 msgid "Custom"

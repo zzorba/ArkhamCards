@@ -1936,11 +1936,11 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Gavriella è viva."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah è morta."
           },
           {
             "id": "on_gavriellas_trail",
@@ -1973,11 +1973,11 @@
           },
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Jerome è vivo."
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids è morto."
           },
           {
             "id": "on_jeromes_trail",
@@ -2010,11 +2010,11 @@
           },
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Valentino è vivo."
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas è morto."
           },
           {
             "id": "on_valentinos_trail",
@@ -2047,11 +2047,11 @@
           },
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Penny è viva."
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White è morta."
           },
           {
             "id": "on_pennys_trail",
@@ -2074,7 +2074,7 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Anete Mason è posseduta dal male."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -2114,7 +2114,7 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Carl Sanford detiene i segreti dell'universo."
           },
           {
             "id": "continued_alone",
@@ -2122,7 +2122,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "la congrega di Keziah ha il mondo in pugno."
           },
           {
             "id": "deceiving_the_lodge",
@@ -2130,7 +2130,7 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "avete scoperto come aprire la scatola del rompicapo."
           },
           {
             "id": "doom_draws_ever_closer",
@@ -2150,11 +2150,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "il guardiano della trappola è comparso ed è stato sconfitto."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "il guardiano della trappola è comparso."
           },
           {
             "id": "heretics_released",
@@ -2166,7 +2166,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "siete stati introdotti nella Cerchia Interna."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -2182,7 +2182,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "avete tenuto nascosti i vostri reperti."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -2214,11 +2214,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "vi siete schierati con la congrega."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "vi siete schierati con la Loggia."
           },
           {
             "id": "signed_the_black_book",
@@ -2234,7 +2234,7 @@
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "la vera missione della Loggia del Crepuscolo d'Argento è iniziata."
           },
           {
             "id": "witches_spell_broken",
@@ -2624,11 +2624,11 @@
           },
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "nascosto"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "nascosto"
           },
           {
             "id": "doy_cross_off_rope",
@@ -3277,11 +3277,11 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Gavriella è viva."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah è morta."
           },
           {
             "id": "on_gavriellas_trail",
@@ -3314,11 +3314,11 @@
           },
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Jerome è vivo."
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids è morto."
           },
           {
             "id": "on_jeromes_trail",
@@ -3351,11 +3351,11 @@
           },
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Valentino è vivo."
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas è morto."
           },
           {
             "id": "on_valentinos_trail",
@@ -3388,11 +3388,11 @@
           },
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Penny è viva."
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White è morta."
           },
           {
             "id": "on_pennys_trail",
@@ -3415,7 +3415,7 @@
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Anete Mason è posseduta dal male."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -3455,7 +3455,7 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Carl Sanford detiene i segreti dell'universo."
           },
           {
             "id": "continued_alone",
@@ -3467,7 +3467,7 @@
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "avete scoperto come aprire la scatola del rompicapo."
           },
           {
             "id": "doom_draws_ever_closer",
@@ -3479,11 +3479,11 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "il guardiano della trappola è comparso ed è stato sconfitto."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "il guardiano della trappola è comparso."
           },
           {
             "id": "heretics_released",
@@ -3495,7 +3495,7 @@
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "siete stati introdotti nella Cerchia Interna."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -3511,7 +3511,7 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "avete tenuto nascosti i vostri reperti."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
@@ -3543,11 +3543,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "vi siete schierati con la congrega."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "vi siete schierati con la Loggia."
           },
           {
             "id": "signed_the_black_book",
@@ -3563,7 +3563,7 @@
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "la vera missione della Loggia del Crepuscolo d'Argento è iniziata."
           },
           {
             "id": "witches_spell_broken",
@@ -4241,11 +4241,11 @@
           },
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "nascosto"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "nascosto"
           },
           {
             "id": "doy_cross_off_rope",

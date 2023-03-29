@@ -4793,323 +4793,323 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "агент Флинт мёртв."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "агент Флинт пропал."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "Агент Куинн не доверяет ячейке."
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "агент Куинн прикрывает вас."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "агент Куинн исчезла без следа."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Алики на вашей стороне."
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Амарант покинула Клику."
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "Ячейка помогла Флинту в его расследовании."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "Ячейка помогла Рыцарю."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "Ячейка прониклась архитектурой."
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "ячейка дунула в свисток."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "Ячейка не узнала правду в Гаване."
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "Ячейка сбежала от Клики."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "Ячейка не смогла противостоять Зверю."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "Ячейка попала в засаду!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "ячейка утаила правду от Тейлор."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "Ячейка помогает агенту Сирри."
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "Ячейка обманывает Эдже."
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "Ячейка доставляет разведданные Организации."
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "Ячейка ослушалась приказа."
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "Ячейка работает с Эдже."
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "Ячейка присоединилась к Красной Клике."
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "Ячейка знает настоящее имя Амарант."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "Ячейка знает о прошлом Дези."
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "Ячейка знает истинную природу Клики."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "Ячейка и Дези заключили сделку."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "Ячейка и Бордовый рыцарь заключили сделку."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "Ячейка и Торн заключили сделку."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "Ячейка встретила доктора Ираван."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "Ячейка устроила переворот в Клике."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "Ячейка завладела загадочным свистком."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "Ячейка отказалась от дара Алики."
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "Ячейка отказала Эдже."
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "ячейка выбросила свисток."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "ячейка сообщила Тейлор правду."
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "Ячейка была распущена."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "Ячейка получила постоянные должности в Организации."
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "ячейка утрачена."
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "Девица в красном на вашей стороне."
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Ложь ячейки: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Дези у вас в долгу."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "псы грызутся."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "доктор Ираван присоединилась к ячейке."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "доктор Ираван отправилась в Новую Гвинею."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "доктор Ираван исчезла без следа."
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "Эдже не доверяет ячейке."
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "Эдже доверяет ячейке."
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "стёрты из существования: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "стёрты из существования: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Флинт оставил свои поиски."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Флинт работает в одиночку."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Флинт вернулся в ячейку."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Флинт отправился в Куала-Лумпур."
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "Организация остаётся в неведении."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "Алики Зони Ипиретриа ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "Амарант ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "Дезидерио Дельгадо Альварес ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "Девица в красном ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "Зверь в багровой рясе ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "Бордовый рыцарь ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "Человек в красных перчатках ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "Сангиновый Страж ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "Торн ещё встретится вам."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "Цзы Саньнян ещё встретится вам."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "вы знаете пароль."
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "возлюбленные воссоединились."
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "в Анкоридже нет ничего примечательного."
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "Внешних удалось остановить."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "Красная Клика пощадила ячейку"
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "Красная Клика была уничтожена изнутри."
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "Пытки Сангинового Стража продолжаются."
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "никто не знает где Торн."
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Доверие Организации: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Твейл Масаи сбежал на Бермуды."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Твейл Масаи на вашей стороне."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "вы во власти Цзы Саньнян."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Цзы Саньнян в вашей власти."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "Химера из пустоты сбежала."
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "Красная Клика и Организация договорились о совместной работе."
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "Ложный след: #X#"
           }
         ]
       },
