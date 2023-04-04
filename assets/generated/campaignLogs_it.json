@@ -2064,8 +2064,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# has joined the pipers of Azathoth.",
-            "feminine_text": "#name# has joined the pipers of Azathoth.",
+            "masculine_text": "#name# si è unito ai pifferai di Azathoth.",
+            "feminine_text": "#name# si è unita ai pifferai di Azathoth.",
             "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
@@ -2078,35 +2078,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette vi ha insegnato gli incantesimi dei tempi che furono."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "avete arrestato Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "avete arrestato Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "avete chiesto aiuto ad Anette."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "avete chiesto aiuto a Sanford."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "avete preso il controllo della Loggia del Crepuscolo d'Argento."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth ha divorato l'universo."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth continuna a dormire… per ora."
           },
           {
             "id": "being_hunted",
@@ -2118,7 +2118,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "avete deciso di proseguire da soli."
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
@@ -2134,7 +2134,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "la fine di ogni cosa si avvicina."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -2198,7 +2198,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "il sentiero si snoda davanti a voi: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2222,7 +2222,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "avete firmato il Libro Nero di Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
@@ -3405,8 +3405,8 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# has joined the pipers of Azathoth.",
-            "feminine_text": "#name# has joined the pipers of Azathoth.",
+            "masculine_text": "#name# si è unito ai pifferai di Azathoth.",
+            "feminine_text": "#name# si è unita ai pifferai di Azathoth.",
             "nonbinary_text": "#name# has joined the pipers of Azathoth."
           },
           {
@@ -3419,35 +3419,35 @@
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette vi ha insegnato gli incantesimi dei tempi che furono."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "avete arrestato Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "avete arrestato Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "avete chiesto aiuto ad Anette."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "avete chiesto aiuto a Sanford."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "avete preso il controllo della Loggia del Crepuscolo d'Argento."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth ha divorato l'universo."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth continuna a dormire… per ora."
           },
           {
             "id": "being_hunted",
@@ -3459,7 +3459,7 @@
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "avete deciso di proseguire da soli."
           },
           {
             "id": "deceiving_the_lodge",
@@ -3471,7 +3471,7 @@
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "la fine di ogni cosa si avvicina."
           },
           {
             "id": "enemies_of_the_lodge",
@@ -3527,7 +3527,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "il sentiero si snoda davanti a voi: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -3551,7 +3551,7 @@
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "avete firmato il Libro Nero di Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",

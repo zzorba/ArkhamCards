@@ -2435,11 +2435,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "các lò than được thắp sáng."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "các lò than không được thắp sáng."
           },
           {
             "id": "cleared_path_to_temple",
@@ -2459,7 +2459,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "sợi chỉ của thời gian bị thay đổi."
           },
           {
             "id": "fell_into_depths",
@@ -2523,11 +2523,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "các điều tra viên đã cứu nền văn minh của Serpents."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "các nhà điều tra đã cứu nền văn minh của người Yithian."
           },
           {
             "id": "jungle_watches",
@@ -2539,7 +2539,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "các điều tra viên đã vá lại vết rách thời gian kịp thời."
           },
           {
             "id": "nexus_is_near",
@@ -2587,7 +2587,7 @@
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "các điều tra viên đã quay ngược thời gian."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -4056,11 +4056,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "các lò than được thắp sáng."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "các lò than không được thắp sáng."
           },
           {
             "id": "cleared_path_to_temple",
@@ -4080,7 +4080,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "sợi chỉ của thời gian bị thay đổi."
           },
           {
             "id": "fell_into_depths",
@@ -4144,11 +4144,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "các điều tra viên đã cứu nền văn minh của Serpents."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "các nhà điều tra đã cứu nền văn minh của người Yithian."
           },
           {
             "id": "jungle_watches",
@@ -4160,7 +4160,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "các điều tra viên đã vá lại vết rách thời gian kịp thời."
           },
           {
             "id": "nexus_is_near",
@@ -4204,7 +4204,7 @@
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "các điều tra viên đã quay ngược thời gian."
           },
           {
             "id": "wait_for_additional_supplies",

@@ -52,6 +52,8 @@ import {
   SlotCodeType,
   SkillCodeType,
   ACE_OF_RODS_CODE,
+  PARALLEL_AGNES_CODE,
+  PARALLEL_SKIDS_CODE,
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
@@ -286,6 +288,7 @@ function getDeckChangesHelper(
   extraDeckSize: number,
   totalFreeCards: number,
   changedCards: Slots,
+  ignoredCardsDelta: Slots,
   exiledCards: Slots,
   customizedSlots: Slots,
   customizedXp: Slots,
@@ -317,6 +320,7 @@ function getDeckChangesHelper(
 
   const addedCards: Card[] = [];
   const removedCards: Card[] = [];
+  const ignoredRemovedCards: Card[] = [];
   forEach(changedCards, (count, code) => {
     const card = cards[code];
     if (!card) {
@@ -334,6 +338,17 @@ function getDeckChangesHelper(
           // added this card to your deck.
           arcaneResearchUses--;
         }
+      }
+    }
+  });
+  forEach(ignoredCardsDelta, (count, code) => {
+    const card = cards[code];
+    if (!card) {
+      return;
+    }
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        ignoredRemovedCards.push(card);
       }
     }
   });
@@ -506,6 +521,56 @@ function getDeckChangesHelper(
         }
       }
 
+      // See if parallel agnes/skids shenanigans is happening.
+      for (let i = 0; i < ignoredRemovedCards.length; i++) {
+        const removedCard = ignoredRemovedCards[i];
+        if (
+          addedCard.real_name === removedCard.real_name &&
+          addedCard.xp !== undefined &&
+          removedCard.xp !== undefined &&
+          addedCard.xp > removedCard.xp
+        ) {
+          incSlot(upgraded, addedCard);
+          pullAt(ignoredRemovedCards, [i]);
+
+          // If you have unspent uses of arcaneResearchUses,
+          // and its a spell, you get a 1 XP discount on upgrade of
+          // a spell to a spell.
+          if (arcaneResearchUses > 0 &&
+            removedCard.real_traits_normalized &&
+            addedCard.real_traits_normalized &&
+            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+            addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
+            let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+            if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+              xpCost--;
+              downTheRabitHoleUses--;
+            }
+            while (xpCost > 0 && arcaneResearchUses > 0) {
+              xpCost--;
+              arcaneResearchUses--;
+            }
+            if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+              xpCost--;
+              downTheRabitHoleUses--;
+            }
+            return xpCost;
+          }
+          if (addedCard.permanent && !removedCard.permanent) {
+            // If we added in a permanent upgrade, let swaps happen for free.
+            extraDeckSize++;
+            totalFreeCards++;
+          }
+          // Upgrade of the same name, so you only pay the delta.
+          let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+          if (xpCost > 0 && downTheRabitHoleUses > 0) {
+            xpCost--;
+            downTheRabitHoleUses--;
+          }
+          return xpCost;
+        }
+      }
+
       incSlot(added, addedCard);
       return computeXp(addedCard) + downTheRabbitHoleXp;
     }
@@ -626,6 +691,7 @@ function getDeckChanges(
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
+  const ignoredCardsDelta: Slots = {};
   forEach(
     uniq(union(keys(slots), keys(previousDeck.slots))),
     code => {
@@ -636,6 +702,12 @@ function getDeckChanges(
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
+      }
+      if (ignoreDelta != 0 && code !== ACE_OF_RODS_CODE && (
+        validation.investigator.code == PARALLEL_AGNES_CODE ||
+        validation.investigator.code === PARALLEL_SKIDS_CODE
+      )) {
+        ignoredCardsDelta[code] = ignoreDelta;
       }
     });
   const customizedXp: Slots = {};
@@ -655,6 +727,7 @@ function getDeckChanges(
     extraDeckSize,
     totalFreeCards,
     changedCards,
+    ignoredCardsDelta,
     exiledCards,
     customizedSlots,
     customizedXp,
@@ -668,6 +741,7 @@ function getDeckChanges(
       extraDeckSize,
       totalFreeCards,
       changedCards,
+      ignoredCardsDelta,
       exiledCards,
       customizedSlots,
       customizedXp,
