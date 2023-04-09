@@ -1287,6 +1287,10 @@ export default class Card {
     const deck_requirements = card.deck_requirements ?
       DeckRequirement.parse(card.deck_requirements) :
       null;
+
+    if (card.code === '03004') {
+      card.deck_options = [{"faction":["mystic","neutral"],"level":{"min":0,"max":5}},{"tag": ["uc"],"level":{"min":0,"max":4}},{"uses":["charges","charge"],"level":{"min":0,"max":4}},{"trait":["occult"],"level":{"min":0,"max":0}}]
+    }
     const deck_options = card.deck_options ?
       DeckOption.parseList(card.deck_options) :
       [];

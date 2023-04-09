@@ -902,3 +902,187 @@ export function getChaosBag(
     }
   }
 }
+
+
+interface RussianLocation {
+  nominative: string;
+  genitive: string;
+  dative: string;
+}
+export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation } = {
+  anchorage: {
+    nominative: 'Анкоридж',
+    genitive: 'Анкориджа',
+    dative: 'Анкоридж'
+  },
+  san_francisco: {
+    nominative: 'Сан-Франциско',
+    genitive: 'Сан-Франциско',
+    dative: 'Сан-Франциско',
+  },
+  new_orleans: {
+    nominative: 'Новый Орлеан',
+    genitive: 'Нового Орлеана',
+    dative: 'Новый Орлеан',
+  },
+  arkham: {
+    nominative: 'Аркхэм',
+    genitive: 'Аркхэма',
+    dative: 'Аркхэм',
+  },
+  ybor_city: {
+    nominative: 'Ибор-Сити',
+    genitive: 'Ибор-Сити',
+    dative: 'Ибор-Сити',
+  },
+  bermuda: {
+    nominative: 'Бермуды',
+    genitive: 'Бермуд',
+    dative: 'Бермуды',
+  },
+  bermuda_triangle: {
+    nominative: 'Бермудский треугольник',
+    genitive: 'Бермудский треугольник',
+    dative: 'Бермудский треугольник',
+  },
+  havana: {
+    nominative: 'Гавана',
+    genitive: 'Гаваны',
+    dative: 'Гавану',
+  },
+  san_juan: {
+    nominative: 'Сан-Хуан',
+    genitive: 'Сан-Хуана',
+    dative: 'Сан-Хуан',
+  },
+  rio_de_janiero: {
+    nominative: 'Рио-де-Жанейро',
+    genitive: 'Рио-де-Жанейро',
+    dative: 'Рио-де-Жанейро',
+  },
+  buenos_aires: {
+    nominative: 'Буэнос-Айрес',
+    genitive: 'Буэнос-Айреса',
+    dative: 'Буэнос-Айрес',
+  },
+  quito: {
+    nominative: 'Кито',
+    genitive: 'Кито',
+    dative: 'Кито',
+  },
+  reykjavik: {
+    nominative: 'Рейкьявик',
+    genitive: 'Рейкьявика',
+    dative: 'Рейкьявик',
+  },
+  london: {
+    nominative: 'Лондон',
+    genitive: 'Лондона',
+    dative: 'Лондон',
+  },
+  monte_carlo: {
+    nominative: 'Монте-Карло',
+    genitive: 'Монте-Карло',
+    dative: 'Монте-Карло',
+  },
+  venice: {
+    nominative: 'Венеция',
+    genitive: 'Венеции',
+    dative: 'Венецию',
+  },
+  rome: {
+    nominative: 'Рим',
+    genitive: 'Рима',
+    dative: 'Рим',
+  },
+  moscow: {
+    nominative: 'Москва',
+    genitive: 'Москвы',
+    dative: 'Москву',
+  },
+  instanbul: {
+    nominative: 'Константинополь',
+    genitive: 'Константинополя',
+    dative: 'Константинополь',
+  },
+  kabul: {
+    nominative: 'Кабул',
+    genitive: 'Кабула',
+    dative: 'Кабул',
+  },
+  bombay: {
+    nominative: 'Бомбей',
+    genitive: 'Бомбея',
+    dative: 'Бомбей',
+  },
+  kathmandu: {
+    nominative: 'Катманду',
+    genitive: 'Катманду',
+    dative: 'Катманду',
+  },
+  tunguska: {
+    nominative: 'Тунгуска',
+    genitive: 'Тунгуски',
+    dative: 'Тунгуску',
+  },
+  kuala_lampur: {
+    nominative: 'Куала-Лумпур',
+    genitive: 'Куала-Лумпура',
+    dative: 'Куала-Лумпур',
+  },
+  shanghai: {
+    nominative: 'Шанхай',
+    genitive: 'Шанхая',
+    dative: 'Шанхай',
+  },
+  hong_kong: {
+    nominative: 'Гонконг',
+    genitive: 'Гонконга',
+    dative: 'Гонконг',
+  },
+  tokyo: {
+    nominative: 'Токио',
+    genitive: 'Токио',
+    dative: 'Токио',
+  },
+  manokwari: {
+    nominative: 'Маноквари',
+    genitive: 'Маноквари',
+    dative: 'Маноквари',
+  },
+  perth: {
+    nominative: 'Перт',
+    genitive: 'Перта',
+    dative: 'Перт',
+  },
+  sydney: {
+    nominative: 'Сидней',
+    genitive: 'Сиднея',
+    dative: 'Сидней',
+  },
+  marrakesh: {
+    nominative: 'Марракеш',
+    genitive: 'Марракеша',
+    dative: 'Марракеш',
+  },
+  alexandria: {
+    nominative: 'Александрия',
+    genitive: 'Александрии',
+    dative: 'Александрию',
+  },
+  nairobi: {
+    nominative: 'Найроби',
+    genitive: 'Найроби',
+    dative: 'Найроби',
+  },
+  lagos: {
+    nominative: 'Лагос',
+    genitive: 'Лагоса',
+    dative: 'Лагос',
+  },
+  cairo: {
+    nominative: 'Каир',
+    genitive: 'Каира',
+    dative: 'Каир',
+  },
+};

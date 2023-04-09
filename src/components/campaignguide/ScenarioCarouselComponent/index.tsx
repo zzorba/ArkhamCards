@@ -20,6 +20,8 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { EmbarkData } from '@actions/types';
 import { AddSideScenarioProps } from '../AddSideScenarioView';
+import { RUSSIAN_LOCATIONS } from '@components/campaign/constants';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   componentId: string;
@@ -40,6 +42,13 @@ interface EmbarkItem {
 }
 
 type CarouselItem = ScenarioItem | EmbarkItem;
+
+
+function russianDeparture(id: string) {
+  const location = RUSSIAN_LOCATIONS[id].genitive;
+  return t`Departing from ${location}`
+}
+
 
 function getActiveIndex(items: CarouselItem[]) {
   const index = findIndex(items, s => {
@@ -68,6 +77,7 @@ export default function ScenarioCarouselComponent({
   showLinkedScenario,
   showAlert,
 }: Props) {
+  const { lang } = useContext(LanguageContext);
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
   const campaignMap = useMemo(() => campaignGuide.campaignMap(), [campaignGuide]);
@@ -116,6 +126,7 @@ export default function ScenarioCarouselComponent({
       nextScenario,
       time: time + xp_cost,
       fast,
+      transit: false,
     };
     return embarkData;
   }, [currentLocationId])
@@ -194,6 +205,10 @@ export default function ScenarioCarouselComponent({
         hasFast,
       };
       const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
+      let subtitle = location ? t`Departing from ${location}` : undefined;
+      if (lang === 'ru' && currentLocation?.id) {
+        subtitle = russianDeparture(currentLocation.id);
+      }
       Navigation.showModal<CampaignMapProps>({
         stack: {
           children: [{
@@ -206,7 +221,7 @@ export default function ScenarioCarouselComponent({
                     text: t`Map`,
                   },
                   subtitle: {
-                    text: location ? t`Departing from ${location}` : undefined,
+                    text: subtitle,
                   },
                   leftButtons: [{
                     icon: iconsMap.dismiss,
@@ -228,7 +243,7 @@ export default function ScenarioCarouselComponent({
         },
       });
     }
-  }, [campaignId, currentLocationId, campaignMap, onEmbark, processedCampaign]);
+  }, [campaignId, currentLocationId, campaignMap, lang, onEmbark, processedCampaign]);
 
   const data = useMemo(() => {
     const items: (ScenarioItem | EmbarkItem)[] = map(processedCampaign.scenarios, scenario => {

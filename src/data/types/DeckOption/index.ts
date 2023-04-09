@@ -251,6 +251,7 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
+      ...this.filterBuilder.tagFilter(this.option.tag || []),
       ...(this.option.level ? (
         !this.option.not ? [
           combineQueries(

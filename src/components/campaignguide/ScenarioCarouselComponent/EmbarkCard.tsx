@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
@@ -7,6 +7,8 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import AppIcon from '@icons/AppIcon';
 import space, { m } from '@styles/space';
 import { MapLocation } from '@data/scenario/types';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { RUSSIAN_LOCATIONS } from '@components/campaign/constants';
 
 interface Props {
   currentLocation?: MapLocation;
@@ -15,11 +17,24 @@ interface Props {
   last?: boolean;
 }
 
+function russianDeparture(id: string) {
+  const genitiveCityName = RUSSIAN_LOCATIONS[id].genitive;
+  const currentLocation = { name: genitiveCityName};
+  return t`Depart from ${currentLocation.name}`;
+}
+
 export default function EmbarkCard({ onPress, last, currentLocation }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const light = colors.D10;
   const color = colors.D30;
   const background = colors.L10;
+  const departText = useMemo(() => {
+    if (lang !== 'ru' || !currentLocation) {
+      return currentLocation ? t`Depart from ${currentLocation.name}` : t`Depart`;
+    }
+    return russianDeparture(currentLocation.id);
+  }, [currentLocation, lang]);
   return (
     <View style={[
       space.paddingTopM,
@@ -38,7 +53,7 @@ export default function EmbarkCard({ onPress, last, currentLocation }: Props) {
         { t`Embark` }
       </Text>
       <Text style={[typography.mediumGameFont, { color: color, marginRight: 80 }, space.marginBottomS]} numberOfLines={2}>
-        { currentLocation ? t`Depart from ${currentLocation.name}` : t`Depart` }
+        { departText }
       </Text>
       <View style={[styles.button, space.paddingBottomM]}>
         <DeckButton

@@ -7,15 +7,22 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import BulletsComponent from './BulletsComponent';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { RUSSIAN_LOCATIONS } from '@components/campaign/constants';
 
 export default function TravelCostStepComponent({ campaignGuide }: { campaignGuide: CampaignGuide }) {
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
+  const { lang } = useContext(LanguageContext);
   const embarkData = scenarioState.arriveData();
   const sideScenario = processedScenario.scenarioGuide.sideScenario;
   const theMap = campaignGuide.campaignMap();
   const [message, sideStory] = useMemo(() => {
-    const arriveCityName = find(theMap?.locations, location => location.id === embarkData?.destination)?.name;
-    const departCityName = find(theMap?.locations, location => location.id === embarkData?.departure)?.name;
+    const arriveCityName = lang === 'ru' && embarkData?.destination?
+      RUSSIAN_LOCATIONS[embarkData.destination].dative :
+      find(theMap?.locations, location => location.id === embarkData?.destination)?.name;
+    const departCityName = lang === 'ru' && embarkData?.departure ?
+      RUSSIAN_LOCATIONS[embarkData.destination].genitive :
+      find(theMap?.locations, location => location.id === embarkData?.departure)?.name;
     if (!embarkData || !arriveCityName) {
       return [undefined, undefined];
     }

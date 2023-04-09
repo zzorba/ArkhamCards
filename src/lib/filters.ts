@@ -325,6 +325,14 @@ export default class FilterBuilder {
     );
   }
 
+  tagFilter(tags: string[]): Brackets[] {
+    return this.complexVectorClause(
+      'tag',
+      map(tags, tag => `%${tag}%`),
+      (valueName: string) => `c.tags LIKE :${valueName} OR (linked_card.tags is not null AND linked_card.tags LIKE :${valueName})`
+    );
+  }
+
   skillIconFilter(filters: FilterState): Brackets[] {
     if (!filters.skillEnabled) {
       return [];
