@@ -293,15 +293,15 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "El plan"
   },
   {
     "id": "fortune_and_folly_part_1",
-    "name": "The Stakeout"
+    "name": "La vigilancia"
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "El golpe"
   },
   {
     "id": "fragment_of_carcosa",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "Mientras viajas…"
   },
   {
     "id": "tsk_epilogue",

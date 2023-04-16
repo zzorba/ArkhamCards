@@ -22,6 +22,7 @@ const SEAL_REGEX = /.*Seal \(.+\)\..*/;
 export const HEALS_HORROR_REGEX = /[Hh]eals?( that much)?( (\+?\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\d+|all|(X total)))?(\s|\/)horror/;
 export const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\+?\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\+?\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
+const RUSSIAN_E_REGEX = /ё/g
 
 export const enum CardStatusType {
   PREVIEW = 'p',
@@ -32,7 +33,7 @@ export function searchNormalize(text: string, lang: string) {
   if (!text) {
     return '';
   }
-  const r = text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '');
+  const r = text.toLocaleLowerCase(lang).replace(SEARCH_REGEX, '').replace(RUSSIAN_E_REGEX,'е');
   try {
     if (Platform.OS === 'ios') {
       return removeDiacriticalMarks(r);

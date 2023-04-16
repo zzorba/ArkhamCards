@@ -7569,7 +7569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level, rounded down.",
+          "prompt": "La mitad de tu nivel de alarma (redondeando hacia arriba).",
           "min": 1
         }
       },
@@ -7595,7 +7595,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Aumenta tu nivel de alarma en 1.",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7635,7 +7635,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Aumenta tu nivel de alarma en 1.",
               "modified_value": {
                 "modifier": "auto_succeed"
               }

@@ -2202,7 +2202,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# prove sono state lasciate."
+            "text": "sono state lasciate #X# prove."
           },
           {
             "id": "rejected_fate",
@@ -3531,7 +3531,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# prove sono state lasciate."
+            "text": "sono state lasciate #X# prove."
           },
           {
             "id": "rejected_fate",

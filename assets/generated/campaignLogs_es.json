@@ -1070,79 +1070,79 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "la célula se inmiscuyó en los asuntos de Abarran."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Nivel de alarma: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "los investigadores han dejado limpio al casino."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "los investigadores convencieron a Isamara para que participe en el golpe."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "los investigadores han encontrado un conducto de ventilación."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "los investigadores se han hecho pasar por jugadores de altos vuelos."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "los investigadores necesitan tiempo para descansar."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "los investigadores han obtenido un uniforme de empleado."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Escondido: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "los investigadores han robado las llaves de Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: El rostro"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: El rostro (Experimentado)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: El estafador"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: El estafador (Experimentado)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: El músculo"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: El músculo (Experimentado)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: El ladrón"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: El ladrón (Experimentado)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Pistas en El manantial de fortuna: #X#"
           }
         ]
       },
@@ -2888,7 +2888,7 @@
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "la célula se inmiscuyó en los asuntos de Abarran."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2912,75 +2912,75 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Nivel de alarma: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "los investigadores han dejado limpio al casino."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "los investigadores convencieron a Isamara para que participe en el golpe."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "los investigadores han encontrado un conducto de ventilación."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "los investigadores se han hecho pasar por jugadores de altos vuelos."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "los investigadores necesitan tiempo para descansar."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "los investigadores han obtenido un uniforme de empleado."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Escondido: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "los investigadores han robado las llaves de Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: El rostro"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: El rostro (Experimentado)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: El estafador"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: El estafador (Experimentado)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: El músculo"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: El músculo (Experimentado)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: El ladrón"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: El ladrón (Experimentado)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Pistas en El manantial de fortuna: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
