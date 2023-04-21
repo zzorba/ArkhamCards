@@ -4861,7 +4861,7 @@
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "la cellule a trahi Ece."
           },
           {
             "id": "cell_is_delivering_foundation_intel",
@@ -4873,7 +4873,7 @@
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "la cellule travaille avec Ece."
           },
           {
             "id": "cell_joined_the_red_coterie",
@@ -4921,7 +4921,7 @@
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "a cellule a refusé l'offre d'Ece."
           },
           {
             "id": "cell_threw_away_the_whistle",
@@ -4945,7 +4945,7 @@
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "La Chica Roja est de votre côté."
           },
           {
             "id": "deception",
@@ -4973,11 +4973,11 @@
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "Ece ne fa it pas confiance à la cellule."
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "Ece fait confiance à la cellule."
           },
           {
             "id": "erased_from_existence_dm",
@@ -5021,7 +5021,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "vous n'avez pas fini d'entendre parler de La Chica Roja."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
@@ -5037,7 +5037,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "vous n'avez pas fini d'entendre parler du Guetteur Sanglant."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
@@ -5073,7 +5073,7 @@
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "Le Guetteur Sanglant continue de tourmenter la ville."
           },
           {
             "id": "thorne_disappeared",
@@ -5089,7 +5089,7 @@
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Tuwile Masai est de votre côté."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
@@ -5109,7 +5109,7 @@
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "Mauvaises pistes : #X#"
           }
         ]
       },

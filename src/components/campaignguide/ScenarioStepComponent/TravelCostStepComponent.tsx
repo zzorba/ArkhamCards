@@ -21,7 +21,7 @@ export default function TravelCostStepComponent({ campaignGuide }: { campaignGui
       RUSSIAN_LOCATIONS[embarkData.destination].dative :
       find(theMap?.locations, location => location.id === embarkData?.destination)?.name;
     const departCityName = lang === 'ru' && embarkData?.departure ?
-      RUSSIAN_LOCATIONS[embarkData.destination].genitive :
+      RUSSIAN_LOCATIONS[embarkData.departure].genitive :
       find(theMap?.locations, location => location.id === embarkData?.departure)?.name;
     if (!embarkData || !arriveCityName) {
       return [undefined, undefined];

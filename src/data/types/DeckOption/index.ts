@@ -30,6 +30,7 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 5 level 0 Guardian cards': t`You cannot have more than 5 level 0 Guardian cards`,
     'You cannot have more than 5 level 0 Seeker cards': t`You cannot have more than 5 level 0 Seeker cards`,
     'You cannot have more than 5 level 0 Rogue cards': t`You cannot have more than 5 level 0 Rogue cards`,
+    'You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.': t`You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.`,
   };
   return LOCALIZED_OPTIONS[error] || error;
 }
