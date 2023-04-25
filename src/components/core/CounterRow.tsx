@@ -35,8 +35,7 @@ export default function CounterRow({ inc, dec, value, label, max, min }: Props) 
           min={min}
           max={max}
           count={value}
-          countRender={count}
-        />
+        >{count}</PlusMinusButtons>
       </View>
     </BasicListRow>
   );

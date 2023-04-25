@@ -77,13 +77,14 @@ function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'cu
       <PlusMinusButtons
         dialogStyle
         large
-        countRender={element}
         count={value}
         max={10}
         min={min}
         onIncrement={inc}
         onDecrement={dec}
-      />
+      >
+        {element}
+      </PlusMinusButtons>
     </View>
   );
 }

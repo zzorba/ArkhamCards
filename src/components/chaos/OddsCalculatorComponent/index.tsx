@@ -328,15 +328,14 @@ function NumberInput({ title, value, color, inc, dec }: {
           size={36}
           onIncrement={inc}
           onDecrement={dec}
-          countRender={
-            <View style={[space.marginSideXs, styles.center, { borderRadius: size / 2, width: size, height: size, backgroundColor: color === 'red' ? colors.warn : colors.green }]}>
-              <Text style={[typography.counter, typography.center, typography.bold, { color: color === 'red' ? colors.L30 : colors.D30 }]}>
-                { value }
-              </Text>
-            </View>
-          }
           color="dark"
-        />
+        >
+          <View style={[space.marginSideXs, styles.center, { borderRadius: size / 2, width: size, height: size, backgroundColor: color === 'red' ? colors.warn : colors.green }]}>
+            <Text style={[typography.counter, typography.center, typography.bold, { color: color === 'red' ? colors.L30 : colors.D30 }]}>
+              { value }
+            </Text>
+          </View>
+        </PlusMinusButtons>
       </View>
       <Text style={[space.marginTopS, space.paddingSideS, typography.small, typography.center, typography.italic, { flex: 1 }]} numberOfLines={2} ellipsizeMode="clip">
         { title }

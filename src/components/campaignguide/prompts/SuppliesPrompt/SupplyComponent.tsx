@@ -97,14 +97,13 @@ export default function SupplyComponent({
         hideDisabledMinus
         dialogStyle
         rounded
-        countRender={(
-          <View style={space.paddingSideXs}>
-            <Text style={[typography.counter, typography.center, { minWidth: 26 }]}>
-              { existingCount > 0 ? `(${existingCount}) + ` : ''}{ count }
-            </Text>
-          </View>
-        )}
-      />
+      >
+        <View style={space.paddingSideXs}>
+          <Text style={[typography.counter, typography.center, { minWidth: 26 }]}>
+            { existingCount > 0 ? `(${existingCount}) + ` : ''}{ count }
+          </Text>
+        </View>
+      </PlusMinusButtons>
     ) : (
       <Text style={[space.paddingSideM, typography.text, typography.bold, typography.center]}>
         +{ count }

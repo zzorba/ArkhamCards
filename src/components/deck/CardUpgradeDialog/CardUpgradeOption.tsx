@@ -65,9 +65,10 @@ export default function CardUpgradeOption({ card, code, count, ignoreCount, onIn
           onDecrement={dec}
           size={36}
           dialogStyle
-          countRender={<StackedCardCount count={count} showZeroCount />}
           color="dark"
-        />
+        >
+          <StackedCardCount count={count} showZeroCount />
+        </PlusMinusButtons>
       </View>
       { !!onIgnore && (
         <View style={[styles.buttonsRow, space.paddingSideS]}>
@@ -81,11 +82,12 @@ export default function CardUpgradeOption({ card, code, count, ignoreCount, onIn
             max={card.deck_limit || 2}
             onIncrement={incIgnore}
             onDecrement={decIgnore}
-            countRender={<StackedCardCount count={ignoreCount} showZeroCount />}
             dialogStyle
             size={36}
             color="dark"
-          />
+          >
+            <StackedCardCount count={ignoreCount} showZeroCount />
+          </PlusMinusButtons>
         </View>
       ) }
     </View>

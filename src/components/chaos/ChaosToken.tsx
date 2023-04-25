@@ -237,7 +237,7 @@ export function getChaosTokenSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
   }
 }
 
-export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow, total }: Props) {
+export default function   ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow, total }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
   const size = getChaosTokenSize(iconSize);
   if (!iconKey) {

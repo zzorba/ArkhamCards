@@ -38,7 +38,7 @@ import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPac
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
-import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
+import { EditChaosBagProps, useEditChaosBagDialog } from '../../chaos/EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -358,7 +358,12 @@ function NewCampaignView({ componentId }: NavigationProps) {
     }
   }, componentId, [savePressed]);
 
-  const showChaosBagDialog = useCallback(() => {
+  const { dialog: chaosBagDialog, showDialog: showChaosBagDialog } = useEditChaosBagDialog({ chaosBag: customChaosBag,
+    updateChaosBag: setCustomChaosBag,
+    cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
+    difficulty,
+  });
+   /*useCallback(() => {
     Navigation.push<EditChaosBagProps>(componentId, {
       component: {
         name: 'Dialog.EditChaosBag',
@@ -379,7 +384,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       },
     });
-  }, [componentId, customChaosBag, setCustomChaosBag, selection]);
+  }, [componentId, customChaosBag, setCustomChaosBag, selection]);*/
   const [difficultyDialog, showDifficultyDialog] = usePickerDialog({
     title: t`Difficulty`,
     items: map(DIFFICULTIES, difficulty => {
@@ -668,6 +673,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       { difficultyDialog }
       { dialog }
       { alertDialog }
+      { chaosBagDialog }
     </View>
   );
 }

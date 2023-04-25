@@ -85,9 +85,10 @@ function NormalCardQuantityComponent({ code, locked, adjustment = 0, count: prop
         max={limit}
         hideDisabledMinus
         dialogStyle
-        countRender={<StackedCardCount count={count + adjustment} showZeroCount={showZeroCount} />}
         showZeroCount={showZeroCount}
-      />
+      >
+        <StackedCardCount count={count + adjustment} showZeroCount={showZeroCount} />
+      </PlusMinusButtons>
     </View>
   );
 }
