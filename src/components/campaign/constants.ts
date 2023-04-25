@@ -915,6 +915,11 @@ export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation } = {
     genitive: 'Анкориджа',
     dative: 'Анкоридж'
   },
+  constantinople: {
+    nominative: 'Константинополь',
+    genitive: 'Константинополя',
+    dative: 'Константинополь',
+  },
   san_francisco: {
     nominative: 'Сан-Франциско',
     genitive: 'Сан-Франциско',

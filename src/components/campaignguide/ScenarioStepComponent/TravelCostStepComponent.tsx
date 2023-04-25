@@ -17,11 +17,10 @@ export default function TravelCostStepComponent({ campaignGuide }: { campaignGui
   const sideScenario = processedScenario.scenarioGuide.sideScenario;
   const theMap = campaignGuide.campaignMap();
   const [message, sideStory] = useMemo(() => {
-    const arriveCityName = lang === 'ru' && embarkData?.destination?
-      RUSSIAN_LOCATIONS[embarkData.destination].dative :
+    const arriveCityName = (lang === 'ru' && embarkData?.destination && RUSSIAN_LOCATIONS[embarkData.destination]?.dative) ||
       find(theMap?.locations, location => location.id === embarkData?.destination)?.name;
-    const departCityName = lang === 'ru' && embarkData?.departure ?
-      RUSSIAN_LOCATIONS[embarkData.departure].genitive :
+    const departCityName = (lang === 'ru' && embarkData?.departure &&
+      RUSSIAN_LOCATIONS[embarkData.departure]?.genitive) ||
       find(theMap?.locations, location => location.id === embarkData?.departure)?.name;
     if (!embarkData || !arriveCityName) {
       return [undefined, undefined];
