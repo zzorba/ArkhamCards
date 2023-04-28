@@ -1005,7 +1005,7 @@ export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation } = {
     genitive: 'Москвы',
     dative: 'Москву',
   },
-  instanbul: {
+  istanbul: {
     nominative: 'Константинополь',
     genitive: 'Константинополя',
     dative: 'Константинополь',

@@ -1070,79 +1070,79 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "La cellules s'est mêlée des affaires d'Abarran."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Niveau d'alarme: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "Les investigateurs ont fait sauté la banque"
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "Les investigateurs ont convaincu Isamara de participer au cambriolage."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "Les investigateurs ont découvert une bouche d'aération."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "Les investigateurs ont incarné un flambeur."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "les investigateurs ont besoin de temps pour se reposer."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "Les investigateurs ont obtenu un uniforme d'un employé."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Planqué: #name# (#X#) "
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "Les investigateurs ont volé la clé d'Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Le Visage"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Le Visage (Entraîné)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: L'Escroc"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: L'Escroc (Entraîné)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Les Muscles"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Les Muscles (Entraîné)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Le Voleur"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Le Voleur (Entraîné)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Indice sur la Source de Fortune: #X#"
           }
         ]
       },
@@ -2888,7 +2888,7 @@
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "La cellules s'est mêlée des affaires d'Abarran."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -2912,75 +2912,75 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Niveau d'alarme: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "Les investigateurs ont fait sauté la banque"
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "Les investigateurs ont convaincu Isamara de participer au cambriolage."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "Les investigateurs ont découvert une bouche d'aération."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "Les investigateurs ont incarné un flambeur."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "les investigateurs ont besoin de temps pour se reposer."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "Les investigateurs ont obtenu un uniforme d'un employé."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Planqué: #name# (#X#) "
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "Les investigateurs ont volé la clé d'Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Le Visage"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Le Visage (Entraîné)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: L'Escroc"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: L'Escroc (Entraîné)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Les Muscles"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Les Muscles (Entraîné)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Le Voleur"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Le Voleur (Entraîné)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Indice sur la Source de Fortune: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -4793,27 +4793,27 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "l'Agent Flint est mort"
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "l'Agent Flint a disparu."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "l'Agente Quinn ne fait pas confiance à la cellule."
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "L'Agente Quinn vous couvre."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "L'Agente Quinn a été effacée de toute existence."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki est de votre côté."
           },
           {
             "id": "amaranth_has_left_the_coterie",
@@ -4821,11 +4821,11 @@
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "la cellule a aidé Flint dans son enquête."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "La cellule a aidé le chevalier."
           },
           {
             "id": "cell_appreciated_the_architecture",
@@ -4833,11 +4833,11 @@
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "la cellule a soujflé dans le sifflet."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "la cellule n'a pas découvert la vérité à La Havane."
           },
           {
             "id": "cell_escaped_the_red_coterie",
@@ -4845,11 +4845,11 @@
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "La cellule a échoué à repousser la Bête."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "la cellule a été victime d'une embuscade !"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
@@ -4857,7 +4857,7 @@
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "la cellule assiste l'Agent Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
@@ -4869,7 +4869,7 @@
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "la cellule n'est plus en mission."
           },
           {
             "id": "cell_is_working_with_ece",
@@ -4889,23 +4889,23 @@
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "La cellule connaît la véritable nature de la Coterie."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "la cellule a passé un accord avec Desi."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "la cellule a conclu un accord avec le Chevalier Almandin."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "la cellule a passé un accord avec Thorne ."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "la cellule a rencontré le Dr Irawan."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
@@ -4913,11 +4913,11 @@
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "la cellule possède un mystérieux sifflet."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "cellule a refusé l'offre d'Aliki."
           },
           {
             "id": "cell_refused_eces_offer",
@@ -4925,7 +4925,7 @@
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "la cellule a jeté le sifflet."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
@@ -4941,7 +4941,7 @@
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "la cellule a disparu."
           },
           {
             "id": "chica_roja_is_on_your_side",
@@ -4953,23 +4953,23 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi vous doit une fière chandelle."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "les chiens sont en guerre."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "le Dr Irawan a rejoint la cellule"
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "le Dr Irawan est partie pour la Nouvelle Guinée."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "Dr Irawan a été effacée de toute existence."
           },
           {
             "id": "ece_does_not_trust_the_cell",
@@ -4981,35 +4981,35 @@
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "Effacé de l'existence : #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "Effacé de l'existence : #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint a abandonné ses recherches"
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint travaille en solo"
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint a rejoint la cellule."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Flint a voyagé a Kuala Lumpur."
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "la Fondation reste dans le noir."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "Vous n'avez pas fini d'entendre parler d'Aliki Zani Uperetria."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
@@ -5017,7 +5017,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "vous n'avez pas fini d'entendre parler de Desiderio Delgado Álvarez."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
@@ -5025,11 +5025,11 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "Vous n'avez pas fini d'entendre parler de la Bête au Châle Pourpre."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "vous n'avez pas fini d'entendre parler du Chevalier Almandin."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
@@ -5041,15 +5041,15 @@
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "vous n'avez pas fini d'en tendre parler de Th orne."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "vous n'avez pas fini d 'entendre pader de Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "vous connaissez le mot de passe."
           },
           {
             "id": "lovers_are_reunited",
@@ -5057,7 +5057,7 @@
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "il n'y a rien d'intéressant à Anchorage."
           },
           {
             "id": "outsiders_were_stopped",
@@ -5077,7 +5077,7 @@
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "Thorne a disparu."
           },
           {
             "id": "trust",
@@ -5085,7 +5085,7 @@
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Tuwile Masai s'est envolé pour les Bermudes."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
@@ -5093,15 +5093,15 @@
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "vous êtes sous le contrôle de Tzu San Niang."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang est sous votre contrôle."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "La Chimère du Vide s'est échappée."
           },
           {
             "id": "work_together",

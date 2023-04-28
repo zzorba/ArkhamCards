@@ -293,15 +293,15 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "Le Plan"
   },
   {
     "id": "fortune_and_folly_part_1",
-    "name": "The Stakeout"
+    "name": "L'Observation"
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "Le Cambriolage"
   },
   {
     "id": "fragment_of_carcosa",
@@ -345,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "De la Sueur, du Sang et du Thé"
   },
   {
     "id": "horror_in_high_gear",
@@ -413,7 +413,7 @@
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Siffler Dans le Vent"
   },
   {
     "id": "kuala_lampur",
@@ -429,7 +429,7 @@
   },
   {
     "id": "london",
-    "name": "Dead and Gone"
+    "name": "Mort et Enterré"
   },
   {
     "id": "lost_in_time_and_space",
@@ -453,7 +453,7 @@
   },
   {
     "id": "manokwari",
-    "name": "Metamorphosis"
+    "name": "Métamorphose"
   },
   {
     "id": "marrakesh",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "Machinerie Infernale"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "Sélection Paranaturelle"
   },
   {
     "id": "point_of_no_return",
@@ -701,11 +701,11 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "La Théorie de l'Annihilation"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Romulus et Rémus"
   },
   {
     "id": "san_francisco",
@@ -717,7 +717,7 @@
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "Le Serpent Enroulé"
   },
   {
     "id": "shattered_aeons",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "Quelque Chose Sonne Creux"
   },
   {
     "id": "tcu_epilogue",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "Pendant le voyage…"
   },
   {
     "id": "tsk_epilogue",
@@ -1065,6 +1065,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "Le Refuge"
   }
 ]
