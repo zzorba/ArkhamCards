@@ -358,33 +358,13 @@ function NewCampaignView({ componentId }: NavigationProps) {
     }
   }, componentId, [savePressed]);
 
-  const { dialog: chaosBagDialog, showDialog: showChaosBagDialog } = useEditChaosBagDialog({ chaosBag: customChaosBag,
+  const { dialog: chaosBagDialog, showDialog: showChaosBagDialog } = useEditChaosBagDialog({
+    chaosBag: customChaosBag,
     updateChaosBag: setCustomChaosBag,
     cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
     difficulty,
+    setDifficulty,
   });
-   /*useCallback(() => {
-    Navigation.push<EditChaosBagProps>(componentId, {
-      component: {
-        name: 'Dialog.EditChaosBag',
-        passProps: {
-          chaosBag: customChaosBag,
-          updateChaosBag: setCustomChaosBag,
-          cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, customChaosBag, setCustomChaosBag, selection]);*/
   const [difficultyDialog, showDifficultyDialog] = usePickerDialog({
     title: t`Difficulty`,
     items: map(DIFFICULTIES, difficulty => {
@@ -578,7 +558,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
             <DeckPickerStyleButton
               icon="difficulty"
               title={t`Difficulty`}
-              onPress={showDifficultyDialog}
+              onPress={!hasDefinedChaosBag ? showChaosBagDialog : showDifficultyDialog}
               valueLabel={difficultyString(difficulty)}
               editable
               first

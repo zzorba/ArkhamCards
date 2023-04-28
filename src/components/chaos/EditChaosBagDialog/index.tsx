@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
 import { find, filter, map, sortBy, throttle } from 'lodash';
 import {
   Platform,
@@ -24,7 +24,7 @@ import {
 } from '@app_constants';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useBackButton, useComponentVisible, useNavigationButtonPressed } from '@components/core/hooks';
+import { useBackButton, useComponentVisible, useEffectUpdate, useNavigationButtonPressed } from '@components/core/hooks';
 import { useAlertDialog, useDialog } from '@components/deck/dialogs';
 import { CampaignCycleCode, CampaignDifficulty, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
@@ -125,8 +125,14 @@ function DifficultyButton({ difficulty, title, onPress, selection }: {
   );
 }
 
-export function useEditChaosBagDialog({ chaosBag: originalChaosBag, cycleCode, difficulty: originalDifficulty }: EditChaosBagProps & { difficulty: CampaignDifficulty }) {
-  const { colors, fontScale } = useContext(StyleContext);
+export function useEditChaosBagDialog({
+  chaosBag: originalChaosBag,
+  cycleCode,
+  difficulty: originalDifficulty,
+  updateChaosBag,
+  setDifficulty: saveDifficulty,
+}: EditChaosBagProps & { difficulty: CampaignDifficulty; setDifficulty?: (difficulty: CampaignDifficulty) => void }) {
+  const { colors } = useContext(StyleContext);
   const [difficulty, setDifficulty] = useState<CampaignDifficulty>(originalDifficulty);
   const [chaosBag, mutateChaosBag] = useReducer((state: ChaosBag, action: IncAction | DecAction | SetAction) => {
     switch (action.type) {
@@ -161,6 +167,14 @@ export function useEditChaosBagDialog({ chaosBag: originalChaosBag, cycleCode, d
   return useDialog({
     title: t`Edit chaos bag`,
     allowDismiss: true,
+    dismiss: {
+      onPress: () => {
+        updateChaosBag(chaosBag);
+        if (saveDifficulty) {
+          saveDifficulty(difficulty);
+        }
+      },
+    },
     maxHeightPercent: 0.8,
     alignment: 'bottom',
     content: <View style={[{ flexDirection: 'column', alignItems: 'center' }, space.paddingSideXs]}>
