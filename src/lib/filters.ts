@@ -220,6 +220,7 @@ export const defaultFilterState: FilterState = {
   enemyPatrol: false,
   enemyVictory: false,
   enemyVengeance: false,
+  xpCostEnabled: false,
   // Slider controls that are dynamically sized
   level: [0, 5],
   xpCost: [0, 10],
