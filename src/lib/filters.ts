@@ -64,6 +64,7 @@ export interface FilterState {
   encounters: string[];
   illustrators: string[];
   levelEnabled: boolean;
+  xpCostEnabled: boolean;
   exceptional: boolean;
   nonExceptional: boolean;
   costEnabled: boolean;
@@ -114,6 +115,7 @@ export interface FilterState {
   enemyVengeance: boolean;
   // Slider controls that are dynamically sized
   level: [number, number];
+  xpCost: [number, number];
   cost: [number, number];
   shroud: [number, number];
   clues: [number, number];
@@ -220,6 +222,7 @@ export const defaultFilterState: FilterState = {
   enemyVengeance: false,
   // Slider controls that are dynamically sized
   level: [0, 5],
+  xpCost: [0, 10],
   cost: [0, 6],
   shroud: [0, 6],
   clues: [0, 6],
@@ -256,13 +259,14 @@ export default class FilterBuilder {
   rangeFilter(
     field: string,
     values: [number, number],
-    linked: boolean
+    linked: boolean,
+    formula: (model: string, field: string, ) => string = (model: string, field: string): string => `${model}.${field}`
   ): Brackets[] {
     if (values[0] === values[1]) {
       const fieldName = this.fieldName([field, 'value']);
       return [
         where(
-          `c.${field} = :${fieldName}${linked ? ` OR (linked_card.${field} is not null AND linked_card.${field} = :${fieldName})` : ''}`,
+          `${formula('c', field)} = :${fieldName}${linked ? ` OR (linked_card.${field} is not null AND ${formula('linked_card', field)} = :${fieldName})` : ''}`,
           { [fieldName]: values[0] },
         ),
       ];
@@ -270,7 +274,7 @@ export default class FilterBuilder {
     const minFieldName = this.fieldName([field, 'min']);
     const maxFieldName = this.fieldName([field, 'max']);
     return [where(
-      `(c.${field} >= :${minFieldName} AND c.${field} <= :${maxFieldName})${linked ? ` OR (linked_card.${field} is not null AND (linked_card.${field} >= :${minFieldName} AND linked_card.${field} <= :${maxFieldName}))` : ''}`,
+      `(${formula('c', field)} >= :${minFieldName} AND ${formula('c', field)} <= :${maxFieldName})${linked ? ` OR (linked_card.${field} is not null AND (${formula('linked_card', field)} >= :${minFieldName} AND ${formula('linked_card', field)} <= :${maxFieldName}))` : ''}`,
       {
         [minFieldName]: values[0],
         [maxFieldName]: values[1],
@@ -557,7 +561,26 @@ export default class FilterBuilder {
     return result;
   }
 
-  xpFilter(filters: FilterState): Brackets[] {
+  xpCostFilter(filters: FilterState): Brackets[] {
+    const {
+      xpCostEnabled,
+      xpCost,
+    } = filters;
+    if (!xpCostEnabled) {
+      return [];
+    }
+    const q = this.rangeFilter('xp', xpCost, false, (model: string, field: string) => {
+      return `((${model}.${field}) * (case ${model}.exceptional when TRUE then 1 else 0 end)) + COALESCE(${model}.extra_xp, 0)`;
+    });
+    if (xpCost[0] > 0) {
+      return [
+        combineQueries(where(`c.customization_options is not null`), q, 'or'),
+      ];
+    }
+    return q;
+  }
+
+  xpLevelFilter(filters: FilterState): Brackets[] {
     const {
       levelEnabled,
       level,
@@ -579,7 +602,7 @@ export default class FilterBuilder {
       exceptional,
       nonExceptional,
     } = filters;
-    const result = this.xpFilter(filters);
+    const result = this.xpLevelFilter(filters);
     if (exceptional && !nonExceptional) {
       result.push(where(`c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'`));
     }

@@ -2248,6 +2248,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@miblanchard/react-native-slider@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@miblanchard/react-native-slider/-/react-native-slider-2.3.1.tgz#79e0f1f9b1ce43ef25ee51ee9256c012e5dfa412"
+  integrity sha512-J/hZDBWmXq8fJeOnTVHqIUVDHshqMSpJVxJ4WqwuCBKl5Rke9OBYXIdkSlgi75OgtScAr8FKK5KNkDKHUf6JIg==
+
 "@n1ru4l/graphql-live-query@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@n1ru4l/graphql-live-query/-/graphql-live-query-0.10.0.tgz#2306151630b0e74b017cc1067ebbea351acf56f8"
@@ -10746,6 +10751,11 @@ react-lifecycles-compat@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
+
+react-native-a11y-slider@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-a11y-slider/-/react-native-a11y-slider-1.2.0.tgz#927c79c5239cd1f444c09a94eae403c887d4458e"
+  integrity sha512-MVnQ85r794Ae4AjlSpSWa2NI4Bh8sRwvBktsAxEjionthxUmburtKm9RorkEUntzphrTT23iwD9+3oJt1MiPGg==
 
 "react-native-action-button@https://github.com/mastermoo/react-native-action-button.git#ad8c7e5d482296ab4f92aebcf9dcfd28481d7e15":
   version "2.9.0"

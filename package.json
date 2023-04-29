@@ -60,7 +60,7 @@
   "dependencies": {
     "@apollo/client": "3.7.3",
     "@invertase/react-native-apple-authentication": "2.2.2",
-    "@ptomasroos/react-native-multi-slider": "2.2.2",
+    "@miblanchard/react-native-slider": "^2.3.1",
     "@react-hook/debounce": "4.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.17.11",
