@@ -253,29 +253,55 @@ type IncCounter = (code: string, max?: number) => void;
 type DecCounter = (code: string, min?: number) => void;
 type SetCounter = (code: string, value: number) => void;
 type ResetCounters = (values: Counters) => void;
-export function useCounters(initialValue: Counters): [Counters, IncCounter, DecCounter, SetCounter, ResetCounters] {
+type CheckConstraints = (code: string, values: Counters) => Counters;
+export function useCounters(initialValue: Counters, extra?: {
+  checkConstraints?: CheckConstraints;
+  onChange?: (values: Counters) => void;
+}): [Counters, IncCounter, DecCounter, SetCounter, ResetCounters] {
   const [value, updateValue] = useReducer((
     state: Counters,
     action: IncCountAction | DecCountAction | SetCountAction | SyncCountAction
   ) => {
     switch (action.type) {
       case 'set':
-        return {
+      let newState = {
           ...state,
           [action.key]: action.value,
         };
+
+        if (extra?.checkConstraints) {
+          newState = extra.checkConstraints(action.key, newState);
+        }
+        if (extra?.onChange) {
+          extra.onChange(newState);
+        }
+        return newState;
       case 'inc': {
         const newValue = (state[action.key] || 0) + 1;
-        return {
+        let newState = {
           ...state,
           [action.key]: action.max !== undefined ? Math.min(action.max, newValue) : newValue,
         };
+        if (extra?.checkConstraints) {
+          newState = extra.checkConstraints(action.key, newState);
+        }
+        if (extra?.onChange) {
+          extra.onChange(newState);
+        }
+        return newState;
       }
       case 'dec': {
-        return {
+        let newState = {
           ...state,
           [action.key]: Math.max(action.min || 0, (state[action.key] || 0) - 1),
         };
+        if (extra?.checkConstraints) {
+          newState = extra.checkConstraints(action.key, newState);
+        }
+        if (extra?.onChange) {
+          extra.onChange(newState);
+        }
+        return newState;
       }
       case 'sync':
         return {
