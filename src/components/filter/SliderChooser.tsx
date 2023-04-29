@@ -72,7 +72,7 @@ export default function SliderChooser({
 
   useEffectUpdate(() => {
     if (shouldSync.current) {
-      sync({ min: values[0], max: values[1] });
+      setTimeout(() => sync({ min: values[0], max: values[1] }), 0);
     }
     shouldSync.current = true;
   }, [values[0], values[1]]);
