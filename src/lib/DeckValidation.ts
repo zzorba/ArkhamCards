@@ -333,6 +333,7 @@ export default class DeckValidation {
             types: 1,
             min: 10,
           },
+          restrictions: false,
           error: t`Decks with Ancestral Knowledge must include at least 10 skills.`,
         })
       );
@@ -411,6 +412,11 @@ export default class DeckValidation {
         var option = deck_options[i];
         if (DeckOption.deckSizeOnly(option)) {
           continue;
+        }
+        if (option.restrictions != undefined) {
+          if (option.restrictions != !!card.restrictions_investigator) {
+            continue;
+          }
         }
         if (option.faction && option.faction.length){
           // needs to match at least one faction

@@ -44,9 +44,9 @@ interface EmbarkItem {
 type CarouselItem = ScenarioItem | EmbarkItem;
 
 
-function russianDeparture(id: string) {
-  const location = RUSSIAN_LOCATIONS[id].genitive;
-  return t`Departing from ${location}`
+function russianDeparture(id: string, name: string | undefined) {
+  const location = RUSSIAN_LOCATIONS[id]?.genitive ?? name;
+  return t`Departing from ${location}`;
 }
 
 
@@ -207,7 +207,7 @@ export default function ScenarioCarouselComponent({
       const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
       let subtitle = location ? t`Departing from ${location}` : undefined;
       if (lang === 'ru' && currentLocation?.id) {
-        subtitle = russianDeparture(currentLocation.id);
+        subtitle = russianDeparture(currentLocation.id, location);
       }
       Navigation.showModal<CampaignMapProps>({
         stack: {

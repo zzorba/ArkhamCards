@@ -17,9 +17,9 @@ interface Props {
   last?: boolean;
 }
 
-function russianDeparture(id: string) {
-  const genitiveCityName = RUSSIAN_LOCATIONS[id].genitive;
-  const currentLocation = { name: genitiveCityName};
+function russianDeparture(location: MapLocation) {
+  const genitiveCityName = RUSSIAN_LOCATIONS[location.id]?.genitive;
+  const currentLocation = { name: genitiveCityName || location.name};
   return t`Depart from ${currentLocation.name}`;
 }
 
@@ -33,7 +33,7 @@ export default function EmbarkCard({ onPress, last, currentLocation }: Props) {
     if (lang !== 'ru' || !currentLocation) {
       return currentLocation ? t`Depart from ${currentLocation.name}` : t`Depart`;
     }
-    return russianDeparture(currentLocation.id);
+    return russianDeparture(currentLocation);
   }, [currentLocation, lang]);
   return (
     <View style={[

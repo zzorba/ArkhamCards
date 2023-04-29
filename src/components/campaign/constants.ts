@@ -909,16 +909,11 @@ interface RussianLocation {
   genitive: string;
   dative: string;
 }
-export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation } = {
+export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation | undefined } = {
   anchorage: {
     nominative: 'Анкоридж',
     genitive: 'Анкориджа',
     dative: 'Анкоридж'
-  },
-  constantinople: {
-    nominative: 'Константинополь',
-    genitive: 'Константинополя',
-    dative: 'Константинополь',
   },
   san_francisco: {
     nominative: 'Сан-Франциско',
@@ -1089,5 +1084,10 @@ export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation } = {
     nominative: 'Каир',
     genitive: 'Каира',
     dative: 'Каир',
+  },
+  stockholm: {
+    nominative: 'Стокгольм',
+    genitive: 'Стокгольма',
+    dative: 'Стокгольм',
   },
 };

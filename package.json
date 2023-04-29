@@ -101,7 +101,7 @@
     "react-native-base64": "0.2.1",
     "react-native-collapsible": "1.6.0",
     "react-native-color-matrix-image-filters": "6.0.3",
-    "react-native-config": "1.4.11",
+    "react-native-config": "1.5.0",
     "react-native-console-time-polyfill": "^1.2.3",
     "react-native-deep-linking": "2.2.0",
     "react-native-device-info": "10.3.0",

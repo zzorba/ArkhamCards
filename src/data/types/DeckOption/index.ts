@@ -98,6 +98,9 @@ export default class DeckOption {
   public not?: boolean;
 
   @Column('boolean', { nullable: true })
+  public restrictions?: boolean;
+
+  @Column('boolean', { nullable: true })
   public ignore_match?: boolean;
 
   // These fields are used for choice ones.
@@ -148,6 +151,7 @@ export default class DeckOption {
     deck_option.error = json.error;
     deck_option.id = json.id;
     deck_option.size = json.size;
+    deck_option.restrictions = json.restrictions;
     deck_option.not = json.not ? true : undefined;
     deck_option.ignore_match = json.ignore_match ? true : undefined;
     deck_option.real_name = json.name || json.real_name || undefined;
