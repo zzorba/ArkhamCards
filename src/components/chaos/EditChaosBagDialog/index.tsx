@@ -1,12 +1,11 @@
-import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
-import { find, filter, map, sortBy, throttle } from 'lodash';
+import React, { useCallback, useContext, useMemo, useReducer, useState } from 'react';
+import { find, filter, map, sortBy, throttle, range } from 'lodash';
 import {
   Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  Touchable,
   View,
 } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
@@ -29,7 +28,7 @@ import { useAlertDialog, useDialog } from '@components/deck/dialogs';
 import { CampaignCycleCode, CampaignDifficulty, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import ChaosToken from '@components/chaos/ChaosToken';
+import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
 import { getChaosBag } from '@components/campaign/constants';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -54,6 +53,7 @@ function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }:
   const { colors, typography } = useContext(StyleContext);
   const onIncrement = useCallback(() => onInc(token, limit), [onInc, token]);
   const onDecrement = useCallback(() => onDec(token), [onDec, token]);
+  const tokenSpacing = fullWidth ? 0.2 : 0.15;
   return (
     <View style={[
       fullWidth ? { flexBasis: '100%' } : { flexBasis: '50%', paddingRight: left ? 0 : xs, paddingLeft: left ? xs : 0 },
@@ -73,11 +73,23 @@ function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }:
           count={count}
           dialogStyle
         >
-          <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }, space.paddingSideS]}>
-            <Text style={[typography.counter, typography.center, { color: colors.D30, minWidth: 28 }, space.marginRightS]}>
+          <View style={[{ flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'center' }, space.paddingSideS]}>
+            <Text style={[typography.counter, typography.center, { color: colors.D30, minWidth: 20 }, space.marginRightS]}>
               ×{ count }
             </Text>
-            <ChaosToken iconKey={token} size="extraTiny" />
+            <View style={{ flex: fullWidth ? undefined : 1, justifyContent: 'center', alignItems: 'center' }}>
+              { count === 0 ? (
+                <ChaosToken iconKey={token} size="extraTiny" sealed border />
+              ) : (
+                <View style={{ position: 'relative', width: EXTRA_TINY_TOKEN_SIZE + (count - 1) * EXTRA_TINY_TOKEN_SIZE * tokenSpacing,  height: EXTRA_TINY_TOKEN_SIZE }}>
+                  { map(range(0, count), idx => (
+                    <View key={idx} style={{ position: 'absolute', top: 0, left: (EXTRA_TINY_TOKEN_SIZE * tokenSpacing) * idx }}>
+                      <ChaosToken iconKey={token} size="extraTiny" sealed={count === 0} border />
+                    </View>
+                  )) }
+                </View>
+              ) }
+            </View>
           </View>
         </PlusMinusButtons>
       </View>
@@ -350,6 +362,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   presetButton: {
     flexDirection: 'column',

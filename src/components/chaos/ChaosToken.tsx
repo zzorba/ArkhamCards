@@ -9,17 +9,17 @@ import TokenIcon from '@icons/TokenIcon';
 import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 import space from '@styles/space';
+import COLORS from '@styles/colors';
 
-interface OwnProps {
+interface Props {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
   size?: 'small' | 'tiny' | 'extraTiny';
   sealed?: boolean;
   shadow?: boolean;
   status?: 'added' | 'removed';
   total?: number;
+  border?: boolean;
 }
-
-type Props = OwnProps;
 
 const CIRCLE_LARGE = TINY_PHONE ? 100 : 150;
 export const SMALL_TOKEN_SIZE = TINY_PHONE ? 48 : 64;
@@ -63,11 +63,20 @@ function ChaosTokenPart({ name, size, color }: { name: string; size: number; col
   );
 }
 
-function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
+function ChaosTokenBordeer({ size }: { size: number; }) {
+  return (
+    <View style={{ position: 'absolute', top: 0, left: 0, width: size, height: size }}>
+      <View style={{ borderRadius: size / 2, width: size, height: size, borderWidth: 1, borderColor: COLORS.M }} />
+    </View>
+  );
+}
+
+function NormalChaosToken({ iconKey, size, shadowStyle, status, border }: {
   iconKey: ChaosTokenType | 'another' | 'return' | 'odds' | 'bag';
   size: number;
   shadowStyle?: ViewStyle;
   status?: 'added' | 'removed',
+  border?: boolean;
 }) {
   const { colors } = useContext(StyleContext);
   const icon = useMemo(() => {
@@ -100,6 +109,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name="token_symbol_fill" color="#394852" size={size} />
               <ChaosTokenPart name="token_number_overlay" color="#ECBA59" size={size} />
               <ChaosTokenPart name="token_1_highlight" color="#FFFBF2" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
             </>
           );
         case '0':
@@ -116,6 +126,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name="token_symbol_fill" color="#394852" size={size} />
               <ChaosTokenPart name="token_number_overlay" color="#E6E1D3" size={size} />
               <ChaosTokenPart name={`token_${iconKey}_highlight`} color="#FFFBF2" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
             </>
           );
         case 'skull':
@@ -127,6 +138,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name={`token_${iconKey === 'skull' ? 'symbol' : iconKey}_fill`} color={SPECIAL_COLORS[iconKey] || '#000000'} size={size} />
               <ChaosTokenPart name={`token_${iconKey}_overlay`} color="#E6E1D3" size={size} />
               <ChaosTokenPart name={`token_${iconKey}_highlight`} color="#FFFBF2" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
             </>
           );
         case 'auto_fail':
@@ -150,6 +162,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
               <ChaosTokenPart name="token_number_fill" color="#3D3A63" size={size} />
               <ChaosTokenPart name="token_frost_overlay" color="#E6E1D3" size={size} />
               <ChaosTokenPart name="token_frost_highlight" color="#FFFBF2" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
             </>
           );
         case 'bless':
@@ -203,12 +216,12 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status }: {
   );
 }
 
-function SealedChaosToken({ iconKey, size }: { iconKey: ChaosTokenType; size: number }) {
+function SealedChaosToken({ iconKey, size, border }: { iconKey: ChaosTokenType; size: number; border: boolean }) {
   const { colors } = useContext(StyleContext);
   const color = colors.token[iconKey] || colors.D20;
   return (
     <View style={{ width: size, height: size, position: 'relative' }}>
-      <ChaosTokenPart name="token_sealed_outline" color={color} size={size} />
+      <ChaosTokenPart name={border ? 'token_sealed_outline' : 'token_sealed_outline_no_border'} color={color} size={size} />
       <ChaosTokenPart name={`token_${iconKey === '+1' ? 1 : iconKey}_sealed`} color={color} size={size} />
     </View>
   );
@@ -237,7 +250,7 @@ export function getChaosTokenSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {
   }
 }
 
-export default function   ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow, total }: Props) {
+export default function ChaosToken({ iconKey, size: iconSize, sealed, status, shadow: useShadow, total, border }: Props) {
   const { colors, typography, shadow } = useContext(StyleContext);
   const size = getChaosTokenSize(iconSize);
   if (!iconKey) {
@@ -281,11 +294,11 @@ export default function   ChaosToken({ iconKey, size: iconSize, sealed, status, 
     default:
       if (sealed) {
         return (
-          <SealedChaosToken iconKey={iconKey} size={size} />
+          <SealedChaosToken iconKey={iconKey} size={size} border={!border} />
         );
       }
       return (
-        <NormalChaosToken iconKey={iconKey} size={size} shadowStyle={useShadow ? shadow.drop : undefined} status={status} />
+        <NormalChaosToken border={border} iconKey={iconKey} size={size} shadowStyle={useShadow ? shadow.drop : undefined} status={status} />
       );
   }
 }
