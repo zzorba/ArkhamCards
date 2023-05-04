@@ -1,9 +1,9 @@
 PODS:
-  - AppAuth (1.6.1):
-    - AppAuth/Core (= 1.6.1)
-    - AppAuth/ExternalUserAgent (= 1.6.1)
-  - AppAuth/Core (1.6.1)
-  - AppAuth/ExternalUserAgent (1.6.1):
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
     - AppAuth/Core
   - appcenter-core (4.4.5):
     - AppCenterReactNativeShared (~> 4.0)
@@ -523,7 +523,7 @@ PODS:
     - React-Core
   - RNReactNativeHapticFeedback (1.14.0):
     - React-Core
-  - RNReanimated (2.13.0):
+  - RNReanimated (3.1.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -814,7 +814,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppAuth: e48b432bb4ba88b10cb2bcc50d7f3af21e78b9c2
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   AppCenter: 3fd04aa1b166e16fdb03ec81dabe488aece83fbd
   appcenter-core: c593b2e4ac28d6a21b6a217c4a5e6b3de7b0b00f
   appcenter-crashes: d9ae1c9296974c1c433600fa2f320e0ba1f12bdf
@@ -902,7 +902,7 @@ SPEC CHECKSUMS:
   RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
   RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   RNReactNativeHapticFeedback: 1e3efeca9628ff9876ee7cdd9edec1b336913f8c
-  RNReanimated: d8d9d3d3801bda5e35e85cdffc871577d044dc2e
+  RNReanimated: b1220a0e5168745283ff5d53bfc7d2144b2cee1b
   RNSha256: a6bc3640a34eb41907e363828b9ec742c274298d
   RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
