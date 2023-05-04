@@ -218,7 +218,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status, border }: {
 
 function SealedChaosToken({ iconKey, size, border }: { iconKey: ChaosTokenType; size: number; border: boolean }) {
   const { colors } = useContext(StyleContext);
-  const color = colors.token[iconKey] || colors.D20;
+  const color = !border ? colors.D20 : (colors.token[iconKey] || colors.D20);
   return (
     <View style={{ width: size, height: size, position: 'relative' }}>
       <ChaosTokenPart name={border ? 'token_sealed_outline' : 'token_sealed_outline_no_border'} color={color} size={size} />

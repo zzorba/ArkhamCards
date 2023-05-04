@@ -100,7 +100,7 @@ export default function ChangesFromPreviousDeck({
           card: card.card,
         };
       }),
-      getCards(changes.upgraded, 'upgraded'),
+      getCards(changes.upgraded, 'upgrade'),
       getCards(changes.added, 'added'),
       getCards(changes.removed, 'removed'),
       getCards(changes.customized, 'customized'),
@@ -109,6 +109,7 @@ export default function ChangesFromPreviousDeck({
   }, [changes, discountCards, getCards]);
 
   const showCardPressed = useCallback((id: string, card: Card) => {
+    console.log(id, card.code, map(allCards, c => c.id));
     if (singleCardView) {
       showCard(componentId, card.code, card, colors, true, parsedDeck.id, parsedDeck.customizations);
     } else {
