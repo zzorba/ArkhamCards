@@ -5242,8 +5242,8 @@ msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
 msgstr ""
-"Całkowita liczba tych kart w taliach z tej kampanii przekracza twoją "
-"kolekcję kart."
+"Całkowita liczba tych kart w taliach tej kampanii przekracza liczbę "
+"kart z twojej kolekcji kart."
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
@@ -5292,7 +5292,7 @@ msgid "Claim previous scenario XP"
 msgstr "Odbierz XP z poprzedniego scenariusza"
 
 msgid "Apply changes from last completed scenario"
-msgstr "Apply changes from last completed scenario"
+msgstr "Zastosuj zmiany z ostatniego rozegranego scenariusza"
 
 msgid "Hide campaign decks"
 msgstr "Ukryj talie kampanii"
@@ -5436,7 +5436,7 @@ msgid "Deck contains custom content"
 msgstr ""
 
 msgid "Player"
-msgstr ""
+msgstr "Gracz"
 
 msgid "Barkham Horror"
 msgstr "Horror w Psiarkam"
@@ -6226,10 +6226,10 @@ msgid "Review the world map"
 msgstr "Przejrzyj mapę świata"
 
 msgid "Claim previous rewards"
-msgstr ""
+msgstr "Odbierz ostatnie nagrody"
 
 msgid "Apply changes from last completed scenario or interlude"
-msgstr ""
+msgstr "Zastosuj zmiany z ostatniego rozegranego scenariusza lub antraktu"
 
 msgid "This is a side-story location."
 msgstr "To jest poboczna lokalizacja."
@@ -6237,8 +6237,8 @@ msgstr "To jest poboczna lokalizacja."
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Koszt podróży: ${ travelDistance } pole czasu"
+msgstr[1] "Koszt podróży: ${ travelDistance } pola czasu"
 
 msgid "Do you want to use the app to randomize choices?"
 msgstr ""
@@ -6266,7 +6266,7 @@ msgid "Time Passed"
 msgstr "Mijający czas"
 
 msgid "Bearer"
-msgstr ""
+msgstr "Posiadacz"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
 msgstr "Nie możesz mieć więcej niż 5 kart Poszukiwacza i/lub Ocalałego"
@@ -6278,7 +6278,7 @@ msgid "Fan-made Investigators"
 msgstr "Fanowscy badacze"
 
 msgid "Fortune and Folly"
-msgstr ""
+msgstr "Szczęście i szaleństwo"
 
 msgid "Challenge Scenarios"
 msgstr ""
@@ -6361,43 +6361,43 @@ msgid "Cannot stop here until unlocked"
 msgstr "Nie możecie się tu zatrzymać przed odblokowaniem"
 
 msgid "Select cards to exile"
-msgstr ""
+msgstr "Wybierz karty do wygnania"
 
 msgid "Exile other cards"
-msgstr ""
+msgstr "Wygnaj inne karty"
 
 msgid "Name of Paradimensional Artifact"
-msgstr ""
+msgstr "Nazwa międzywymiarowego artefaktu"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "Prolog: Deszczowa zagadka"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "Morderczy upał"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "Krwawe cienie"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "Szemrane interesy"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "Szalańczy twist"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "Po cienkim lodzie"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "Psy wojny"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "Odcienie cierpienia"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "Bez śladu"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "Zgromadzenie Kluczy"
 
 msgid "Unlocked Locations"
 msgstr ""
@@ -6414,11 +6414,11 @@ msgid "0 XP"
 msgstr ""
 
 msgid "No campaign"
-msgstr ""
+msgstr "Brak kampanii"
 
 #, javascript-format
 msgid "×${ parsedDeck.totalCardCount }"
-msgstr ""
+msgstr "×${ parsedDeck.totalCardCount }"
 
 msgid ""
 "Your ArkhamDB login has expired.\n"
@@ -6477,13 +6477,13 @@ msgid ""
 msgstr ""
 
 msgid "Travel here without stopping"
-msgstr ""
+msgstr "Podróżuj tutaj bez zatrzymywania się"
 
 #, javascript-format
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Przeczytaj raport sytuacyjny: ${ reportSymbols }"
+msgstr[1] "Przeczytaj raporty sytuacyjne: ${ reportSymbols }"
 
 #, javascript-format
 msgid ""
