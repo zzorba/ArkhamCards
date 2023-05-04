@@ -71,11 +71,6 @@ export default function InputCounterRow({
         { editable ? (
           <PlusMinusButtons
             count={total}
-            countRender={(
-              <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
-                {!hideTotal && count > 0 && editable ? '+' : ''}{ count }
-              </Text>
-            )}
             onIncrement={inc}
             onDecrement={dec}
             showZeroCount
@@ -84,7 +79,11 @@ export default function InputCounterRow({
             disabled={disabled}
             rounded
             dialogStyle
-          />
+          >
+            <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+              {!hideTotal && count > 0 && editable ? '+' : ''}{ count }
+            </Text>
+          </PlusMinusButtons>
         ) : (
           <Text style={[typography.counter, { color: colors.lightText }]}>
             { total }

@@ -11,7 +11,9 @@ import {
   sumBy,
   uniq,
   zip,
+  last,
   concat,
+  dropRight,
 } from 'lodash';
 
 import {
@@ -142,7 +144,7 @@ interface CampaignData {
   };
   result?: 'win' | 'lose' | 'survived';
   difficulty?: CampaignDifficulty;
-  nextScenario?: string;
+  nextScenario: string[];
   investigatorData: InvestigatorData;
   everyStoryAsset: string[];
   lastSavedInvestigatorData: {
@@ -247,6 +249,7 @@ export default class GuidedCampaignLog {
       this.investigatorSections = {};
       this.scenarioData = {};
       this.campaignData = {
+        nextScenario: [],
         scenarioStatus: {},
         scenarioReplayCount: {},
         investigatorData: {},
@@ -302,8 +305,8 @@ export default class GuidedCampaignLog {
       this.campaignData = cloneDeep(readThrough.campaignData);
       this.latestScenarioData = cloneDeep(readThrough.latestScenarioData);
 
-      if (scenarioId && this.campaignData.nextScenario && this.campaignData.nextScenario === scenarioId) {
-        this.campaignData.nextScenario = undefined;
+      if (scenarioId && this.campaignData.nextScenario.length && last(this.campaignData.nextScenario) === scenarioId) {
+        this.campaignData.nextScenario = dropRight(this.campaignData.nextScenario, 1);
       }
     }
     if (hasRelevantEffects) {
@@ -548,11 +551,12 @@ export default class GuidedCampaignLog {
   }
 
   campaignNextScenarioId(): string | undefined {
-    if (this.campaignData.nextScenario &&
-      this.scenarioId !== this.campaignData.nextScenario
-    ) {
+    if (this.campaignData.nextScenario.length) {
+      const scenario = last(this.campaignData.nextScenario);
+      if (this.scenarioId !== scenario) {
       // The campaign told us where to go next!
-      return this.campaignData.nextScenario;
+      return scenario;
+      }
     }
 
     if (!this.scenarioId) {
@@ -1358,7 +1362,7 @@ export default class GuidedCampaignLog {
         break;
       }
       case 'next_scenario':
-        this.campaignData.nextScenario = effect.scenario;
+        this.campaignData.nextScenario = [...this.campaignData.nextScenario, effect.scenario];
         break;
       case 'swap_chaos_bag': {
         const swap = this.swapChaosBag;
@@ -1435,8 +1439,11 @@ export default class GuidedCampaignLog {
       throw new Error(`Cannot set scenario_data effects outside of scenarios.`);
     }
     if (effect.setting === 'scenario_status') {
-      if (this.campaignData.nextScenario === scenarioId && effect.status === 'started') {
-        this.campaignData.nextScenario = undefined;
+      if (this.campaignData.nextScenario.length &&
+        last(this.campaignData.nextScenario) === scenarioId &&
+        effect.status === 'started'
+      ) {
+        this.campaignData.nextScenario = dropRight(this.campaignData.nextScenario, 1);
       }
       this.campaignData.scenarioStatus[scenarioId] = effect.status;
 

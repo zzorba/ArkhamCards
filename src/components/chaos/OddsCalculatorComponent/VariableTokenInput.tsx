@@ -49,13 +49,14 @@ export default function VariableTokenInput({
         count={value * (negate ? -1 : 1)}
         size={36}
         dialogStyle
-        countRender={<Text style={[typography.text, styles.counterText, typography.center]}>{ value * (negate ? -1 : 1) }</Text>}
         onIncrement={negate ? dec : inc}
         onDecrement={negate ? inc : dec}
         min={min}
         max={max}
         color="dark"
-      />
+      >
+        <Text style={[typography.text, styles.counterText, typography.center]}>{ value * (negate ? -1 : 1) }</Text>
+      </PlusMinusButtons>
     </TokenInput>
   );
 }

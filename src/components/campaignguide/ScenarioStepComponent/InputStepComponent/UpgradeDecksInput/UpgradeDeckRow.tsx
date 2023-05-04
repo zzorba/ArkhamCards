@@ -414,18 +414,17 @@ function UpgradeDeckRow({
           <View style={space.marginRightXs}>
             <PlusMinusButtons
               count={xpAdjust}
-              countRender={(
-                <Text style={[typography.counter, typography.center, { color: COLORS.D30, minWidth: 28 }]}>
-                  { xp }
-                </Text>
-              )}
               onIncrement={incXp}
               onDecrement={decXp}
               color="light"
               dialogStyle
               rounded
               disabled={saving}
-            />
+            >
+              <Text style={[typography.counter, typography.center, { color: COLORS.D30, minWidth: 28 }]}>
+                { xp }
+              </Text>
+            </PlusMinusButtons>
           </View>
         ) : (
           <Text style={[typography.counter, { color: COLORS.D30 }, space.paddingRightS]}>

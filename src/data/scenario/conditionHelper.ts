@@ -485,7 +485,7 @@ export function campaignDataScenarioConditionResult(
 ): BinaryResult {
   switch (condition.campaign_data) {
     case 'next_scenario': {
-      const hasNextScenario = !!campaignLog.campaignData.nextScenario;
+      const hasNextScenario = !!campaignLog.campaignData.nextScenario.length;
       const currentScenarioId = campaignLog.scenarioId ? campaignLog.campaignGuide.parseScenarioId(campaignLog.scenarioId) : undefined;
       const replayRequired = !!currentScenarioId && (
         (currentScenarioId.replayAttempt || 0) < (campaignLog.campaignData.scenarioReplayCount[currentScenarioId.scenarioId] || 0)

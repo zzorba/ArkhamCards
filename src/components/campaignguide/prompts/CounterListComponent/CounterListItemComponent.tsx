@@ -51,12 +51,13 @@ export default function CounterListItemComponent({ code, investigator, name, des
               min={min}
               onIncrement={inc}
               onDecrement={dec}
-              countRender={count}
               color={color ? 'light' : 'dark'}
               hideDisabledMinus
               dialogStyle
               rounded
-            />
+            >
+              {count}
+            </PlusMinusButtons>
           ) : (
             count
           ) }
@@ -86,12 +87,11 @@ export default function CounterListItemComponent({ code, investigator, name, des
           min={min}
           onIncrement={inc}
           onDecrement={dec}
-          countRender={count}
           color={color ? 'light' : 'dark'}
           hideDisabledMinus
           dialogStyle
           rounded
-        />
+        >{count}</PlusMinusButtons>
       ) : (
         count
       ) }

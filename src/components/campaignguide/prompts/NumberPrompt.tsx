@@ -119,14 +119,13 @@ export default function NumberPrompt({
               max={max}
               onIncrement={inc}
               onDecrement={dec}
-              countRender={(
-                <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
-                  <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
-                    { delta && currentValue >= 0 ? '+ ' : '' }{ currentValue }
-                  </Text>
-                </View>
-              )}
-            />
+            >
+              <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
+                <Text style={[typography.counter, typography.center, { minWidth: 28 }]}>
+                  { delta && currentValue >= 0 ? '+ ' : '' }{ currentValue }
+                </Text>
+              </View>
+            </PlusMinusButtons>
           ) }
         </View>
       </InputWrapper>

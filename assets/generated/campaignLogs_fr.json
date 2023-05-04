@@ -4841,7 +4841,7 @@
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "la cellule a échappé à La Coterie Rouge."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
@@ -4877,7 +4877,7 @@
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "la cellule a rejoint la Coterie Rouge."
           },
           {
             "id": "cell_knows_amaranths_real_name",
@@ -4909,7 +4909,7 @@
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "La cellule a renversé La Coterie Rouge."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
@@ -4933,11 +4933,11 @@
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "la cellule a été dissoute."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "la cellule à obtenu une position permanente."
           },
           {
             "id": "cell_was_hollowed",
@@ -4949,7 +4949,7 @@
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Trahison de la Cellule : #X#"
           },
           {
             "id": "desi_is_in_your_debt",
@@ -5061,15 +5061,15 @@
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "vous avez déjoué les plans de Ceux d'Ailleurs."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "la Coterie Rouge a épargné la cellule."
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "La Coterie Rouge a été détruite de l'intérieur."
           },
           {
             "id": "sanguine_watchers_torment_continues",
@@ -5081,7 +5081,7 @@
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Confiance de la Fondation : #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
@@ -5105,7 +5105,7 @@
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "la Coterie Rouge et la Fondation ont accepté de travailler ensemble."
           },
           {
             "id": "wrong_leads",

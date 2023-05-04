@@ -38,7 +38,7 @@ import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPac
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
-import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
+import { EditChaosBagProps, useEditChaosBagDialog } from '../../chaos/EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -358,28 +358,13 @@ function NewCampaignView({ componentId }: NavigationProps) {
     }
   }, componentId, [savePressed]);
 
-  const showChaosBagDialog = useCallback(() => {
-    Navigation.push<EditChaosBagProps>(componentId, {
-      component: {
-        name: 'Dialog.EditChaosBag',
-        passProps: {
-          chaosBag: customChaosBag,
-          updateChaosBag: setCustomChaosBag,
-          cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, customChaosBag, setCustomChaosBag, selection]);
+  const { dialog: chaosBagDialog, showDialog: showChaosBagDialog } = useEditChaosBagDialog({
+    chaosBag: customChaosBag,
+    updateChaosBag: setCustomChaosBag,
+    cycleCode: selection.type === 'campaign' ? selection.code : 'custom',
+    difficulty,
+    setDifficulty,
+  });
   const [difficultyDialog, showDifficultyDialog] = usePickerDialog({
     title: t`Difficulty`,
     items: map(DIFFICULTIES, difficulty => {
@@ -573,7 +558,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
             <DeckPickerStyleButton
               icon="difficulty"
               title={t`Difficulty`}
-              onPress={showDifficultyDialog}
+              onPress={!hasDefinedChaosBag ? showChaosBagDialog : showDifficultyDialog}
               valueLabel={difficultyString(difficulty)}
               editable
               first
@@ -668,6 +653,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
       { difficultyDialog }
       { dialog }
       { alertDialog }
+      { chaosBagDialog }
     </View>
   );
 }

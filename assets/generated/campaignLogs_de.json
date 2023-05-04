@@ -4831,7 +4831,7 @@
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Amaranth hat die Coterie verlassen."
           },
           {
             "id": "cell_aided_in_flints_investigation",
@@ -4959,7 +4959,7 @@
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "La Chica Roja ist auf deiner Seite."
           },
           {
             "id": "deception",
@@ -5027,7 +5027,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "du hast Amaranth nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
@@ -5035,7 +5035,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "du hast La Chica Roja nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
@@ -5051,7 +5051,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "du hast den Blutroten Beobachter nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
@@ -5067,7 +5067,7 @@
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "die Liebenden sind wiedervereint."
           },
           {
             "id": "nothing_of_note_in_anchorage",
@@ -5087,7 +5087,7 @@
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "Die Tortur des Blutroten Beobachters geht weiter."
           },
           {
             "id": "thorne_disappeared",
@@ -5123,7 +5123,7 @@
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "Falsche Spuren: #X#"
           }
         ]
       },

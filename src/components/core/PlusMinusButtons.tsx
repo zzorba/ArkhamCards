@@ -28,12 +28,12 @@ interface Props {
   color?: 'light' | 'dark' | 'white';
   noFill?: boolean;
   allowNegative?: boolean;
-  countRender?: React.ReactNode;
   hideDisabledMinus?: boolean;
   dialogStyle?: boolean;
   rounded?: boolean;
   showZeroCount?: boolean;
   showMax?: boolean;
+  children?: React.ReactNode;
 }
 
 export default function PlusMinusButtons({
@@ -49,7 +49,7 @@ export default function PlusMinusButtons({
   color,
   noFill,
   allowNegative,
-  countRender,
+  children,
   hideDisabledMinus,
   dialogStyle,
   rounded,
@@ -177,8 +177,8 @@ export default function PlusMinusButtons({
   }, [onIncrement, onDecrement]);
 
   const countBlock = useMemo(() => {
-    if (countRender) {
-      return countRender;
+    if (children) {
+      return children;
     }
     if (dialogStyle) {
       if (!showZeroCount && count === 0) {
@@ -201,7 +201,7 @@ export default function PlusMinusButtons({
       );
     }
     return null;
-  }, [countRender, showMax, max, rounded, count, dialogStyle, allowNegative, showZeroCount, typography]);
+  }, [children, showMax, max, rounded, count, dialogStyle, allowNegative, showZeroCount, typography]);
 
   return (
     <View
