@@ -6501,6 +6501,29 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+msgid ""
+"You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
+"traited."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "EASY"
+msgstr ""
+
+msgid "STND"
+msgstr ""
+
+msgid "HARD"
+msgstr ""
+
+msgid "EXPT"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"

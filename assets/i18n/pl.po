@@ -5242,8 +5242,8 @@ msgid ""
 "The total number of these cards among decks from this campaign exceeds your "
 "card collection."
 msgstr ""
-"Całkowita liczba tych kart w taliach tej kampanii przekracza liczbę "
-"kart z twojej kolekcji kart."
+"Całkowita liczba tych kart w taliach tej kampanii przekracza liczbę kart z "
+"twojej kolekcji kart."
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
@@ -6494,6 +6494,29 @@ msgid_plural ""
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
 msgstr[1] ""
+
+msgid ""
+"You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
+"traited."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "EASY"
+msgstr ""
+
+msgid "STND"
+msgstr ""
+
+msgid "HARD"
+msgstr ""
+
+msgid "EXPT"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
