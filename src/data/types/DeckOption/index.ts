@@ -56,6 +56,8 @@ export function localizeOptionName(real_name: string): string {
       return t`Skill Class Choie`;
     case 'Event Class Choice':
       return t`Event Class Choice`;
+    case 'Class Choice':
+      return t`Class Choice`;
     default:
       return real_name;
   }
