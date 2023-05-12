@@ -24,7 +24,6 @@ interface Props {
 export default function AccordionItem({ label, height, children, enabled, toggleName, onToggleChange }: Props) {
   const { fontScale, borderStyle, typography } = useContext(StyleContext);
   const heightAnim = useSharedValue(enabled ? 1 : 0);
-
   useEffectUpdate(() => {
     heightAnim.value = withTiming(
       enabled ? 1 : 0,
@@ -56,7 +55,7 @@ export default function AccordionItem({ label, height, children, enabled, toggle
     );
   }, [label, enabled, typography, togglePressed]);
 
-  const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
+  const COLLAPSED_HEIGHT = 22 + 18 * fontScale;
   const containerStyle = useAnimatedStyle(() => {
     return {
       height: interpolate(heightAnim.value, [0, 1], [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height]),

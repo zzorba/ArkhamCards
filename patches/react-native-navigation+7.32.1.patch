@@ -1,16 +1,17 @@
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-index 8ddc3d5..001dc1f 100644
+index 8ddc3d5..70dba79 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-@@ -32,6 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+@@ -32,7 +32,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
      private PermissionListener mPermissionListener;
  
      protected Navigator navigator;
+-
 +    protected RootPresenter rootPresenter;
- 
      private OnBackPressedCallback callback;
  
-@@ -46,7 +47,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+     @Override
+@@ -46,7 +46,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
                  new ChildControllersRegistry(),
                  new ModalStack(this),
                  new OverlayManager(),
@@ -20,7 +21,7 @@ index 8ddc3d5..001dc1f 100644
          navigator.bindViews();
          getReactGateway().onActivityCreated(this);
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
-index e61df57..3423676 100644
+index e61df57..e822949 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/bottomtabs/BottomTabsController.java
 @@ -3,12 +3,16 @@ package com.reactnativenavigation.viewcontrollers.bottomtabs;
@@ -40,10 +41,10 @@ index e61df57..3423676 100644
  
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
  import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-@@ -107,6 +111,18 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
-         }
+@@ -108,6 +112,19 @@ public class BottomTabsController extends ParentController<BottomTabsLayout> imp
          bottomTabs.setCurrentItem(initialTabIndex, false);
      }
+ 
 +    @Override
 +    protected WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat insets) {
 +        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -56,14 +57,15 @@ index e61df57..3423676 100644
 +        }
 +        return super.onApplyWindowInsets(view, insets);
 +    }
- 
++
      @NonNull
      protected BottomTabsContainer createBottomTabsContainer() {
+         return new BottomTabsContainer(getActivity(), createBottomTabs());
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
-index 17c81ad..cb080a6 100644
+index 17c81ad..b4d8944 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
-@@ -19,6 +19,7 @@ public class RootPresenter {
+@@ -19,11 +19,16 @@ public class RootPresenter {
      private final RootAnimator animator;
      private CoordinatorLayout rootLayout;
      private final LayoutDirectionApplier layoutDirectionApplier;
@@ -71,14 +73,18 @@ index 17c81ad..cb080a6 100644
  
      public void setRootContainer(CoordinatorLayout rootLayout) {
          this.rootLayout = rootLayout;
-@@ -34,7 +35,12 @@ public class RootPresenter {
-         this.layoutDirectionApplier = layoutDirectionApplier;
      }
  
 +    public boolean setRootCalled() {
 +        return setRootCalled;
 +    }
 +
+     public RootPresenter() {
+         this(new RootAnimator(), new LayoutDirectionApplier());
+     }
+@@ -35,6 +40,7 @@ public class RootPresenter {
+     }
+ 
      public void setRoot(ViewController appearingRoot, ViewController<?> disappearingRoot, Options defaultOptions, CommandListener listener, ReactInstanceManager reactInstanceManager) {
 +        setRootCalled = true;
          layoutDirectionApplier.apply(appearingRoot, defaultOptions, reactInstanceManager);

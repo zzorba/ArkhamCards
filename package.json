@@ -32,7 +32,8 @@
   "resolutions": {
     "@apollo/client": "3.7.3",
     "cross-undici-fetch": "0.1.20",
-    "react-native-gesture-handler": "2.9.0",
+    "react-native-gesture-handler": "2.10.0",
+    "react-native-reanimated": "3.1.0",
     "react-native-svg": "13.9.0"
   },
   "copyFiles": [
@@ -110,7 +111,7 @@
     "react-native-flip-card": "3.5.6",
     "react-native-fresh-refresh": "2.1.1",
     "react-native-fs": "2.20.0",
-    "react-native-gesture-handler": "2.9.0",
+    "react-native-gesture-handler": "2.10.0",
     "react-native-gradients": "2.0.1",
     "react-native-haptic-feedback": "1.14.0",
     "react-native-keep-awake": "4.0.0",
@@ -119,7 +120,7 @@
     "react-native-localize": "2.2.4",
     "react-native-markdown-view": "https://github.com/zzorba/react-native-markdown-view#1.1.23",
     "react-native-modal": "13.0.1",
-    "react-native-navigation": "7.31.1",
+    "react-native-navigation": "7.32.1",
     "react-native-navigation-hooks": "6.3.0",
     "react-native-pager-view": "6.2.0",
     "react-native-pan-pinch-view": "1.0.1",

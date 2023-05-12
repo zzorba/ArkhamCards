@@ -10664,10 +10664,10 @@ react-native-fs@2.20.0:
     base-64 "^0.1.0"
     utf8 "^3.0.0"
 
-react-native-gesture-handler@2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz#2f63812e523c646f25b9ad660fc6f75948e51241"
-  integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==
+react-native-gesture-handler@2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.10.0.tgz#54a1840cccac1dc4d5a48b8dc703eac30f077b3d"
+  integrity sha512-vuNupfa8+6MAUMgbZMk5jSxrmqWyNnR/gR77/iuhdx6cPg1z2MJeeJNmqEtKQcF0InvHp45dOoyRK62peqTJ3Q==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
@@ -10736,10 +10736,10 @@ react-native-navigation-hooks@6.3.0:
   dependencies:
     hoist-non-react-statics "3.3.2"
 
-react-native-navigation@7.31.1:
-  version "7.31.1"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.31.1.tgz#915f1bd3af083137a904feea6207984d7f8d5b70"
-  integrity sha512-thChSqaoi/QHGGofG/4CEyO2v6ko41RsbjQrJzAnHkp7iw1K8pjxkW3KX0qx2rlR/A69kA31VskOLj8kl+7sQw==
+react-native-navigation@7.32.1:
+  version "7.32.1"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.32.1.tgz#29dd95dae6f4afb6dcbc756dae1849dbbdab2a54"
+  integrity sha512-qqpccWh6MqTG0hn/XeggKonSYg+h64kOsYBot/+g2EUC/Usp8TZsKi1B2gzsUrDQy8EmsF9iTBoZMIgjxFG/WQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

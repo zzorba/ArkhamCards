@@ -7,7 +7,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Counters, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
+import space, { isBig } from '@styles/space';
+import { isTablet } from 'react-native-device-info';
 
 interface Props {
   label: string;
@@ -94,45 +95,43 @@ export default function SliderChooser({
   return (
     <AccordionItem
       label={formattedLabel}
-      height={40 + (children && height ? (height * 48) : 10)}
+      height={40 + (children && height ? (height * 48 * (isTablet() ? 1.25 : 1)) : 10)}
       enabled={enabled}
       toggleName={toggleName}
       onToggleChange={onToggleChange}
     >
-      { !!enabled && (
-        <View style={[styles.row, { width }, space.paddingSideS, space.paddingVerticalS]}>
-          <View style={[styles.counter, { borderColor: colors.L10 }, space.paddingS]}>
-            <Text style={[typography.counter, space.marginSideS]}>{t`Min`}</Text>
-            <PlusMinusButtons
-              min={0}
-              max={max}
-              onIncrement={incMin}
-              onDecrement={decMin}
-              dialogStyle
-              showZeroCount
-              count={liveValues['min'] || 0}
-            >
-              <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['min'] || 0}</Text>
-            </PlusMinusButtons>
-          </View>
-          <View style={[styles.counter, { borderColor: colors.L10 }, space.paddingS]}>
-          <Text style={[typography.counter, space.marginSideS]}>{t`Max`}</Text>
-            <PlusMinusButtons
-              min={0}
-              max={max}
-              onIncrement={incMax}
-              onDecrement={decMax}
-              dialogStyle
-
-              showZeroCount
-              count={liveValues['max'] || 0}
-              >
-              <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['max'] || 0}</Text>
-            </PlusMinusButtons>
-          </View>
+      <View style={[styles.row, { width }, space.paddingSideS, space.paddingVerticalS]}>
+        <View style={[styles.counter, { borderColor: colors.L10 }, space.paddingS]}>
+          <Text style={[typography.counter, space.marginSideS]}>{t`Min`}</Text>
+          <PlusMinusButtons
+            min={0}
+            max={max}
+            onIncrement={incMin}
+            onDecrement={decMin}
+            dialogStyle
+            showZeroCount
+            count={liveValues['min'] || 0}
+          >
+            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['min'] || 0}</Text>
+          </PlusMinusButtons>
         </View>
-      ) }
-      { enabled && children }
+        <View style={[styles.counter, { borderColor: colors.L10 }, space.paddingS]}>
+        <Text style={[typography.counter, space.marginSideS]}>{t`Max`}</Text>
+          <PlusMinusButtons
+            min={0}
+            max={max}
+            onIncrement={incMax}
+            onDecrement={decMax}
+            dialogStyle
+
+            showZeroCount
+            count={liveValues['max'] || 0}
+          >
+            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['max'] || 0}</Text>
+          </PlusMinusButtons>
+        </View>
+      </View>
+      { children }
     </AccordionItem>
   );
 }
