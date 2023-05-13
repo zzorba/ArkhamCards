@@ -1,14 +1,12 @@
-import React, { useContext, useCallback, useMemo, ReactNode } from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import React, { useContext, useCallback, ReactNode } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 
-import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import space, { s } from '@styles/space';
+import { s } from '@styles/space';
 import ArkhamSwitch from '../ArkhamSwitch';
-import ArkhamIcon from '@icons/ArkhamIcon';
-import TextWithIcons from '../TextWithIcons';
+import LineItem from './LineItem';
 
 interface Props<T> {
   iconName?: string;
@@ -23,9 +21,8 @@ interface Props<T> {
   last: boolean;
   indicator?: 'check' | 'radio' | 'none';
 }
-const ARKHAM_ICONS = new Set(['weakness', 'wild']);
 export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange }: Props<T>) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');
     onValueChange(value);
@@ -43,55 +40,26 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
       transform: [{ scale: scale.value }],
     };
   });
-  const icon = useMemo(() => {
-    if (iconNode) {
-      return iconNode;
-    }
-    if (iconName) {
-      if (ARKHAM_ICONS.has(iconName)) {
-        return <ArkhamIcon name={iconName} size={32} color={colors.M} />;
-      }
-      return <AppIcon name={iconName} size={32} color={colors.M} />;
-    }
-    return null;
-  }, [iconNode, iconName, colors]);
   return (
     <Pressable onPress={onPress} onPressIn={onPressIn} disabled={disabled}>
-      <View style={[styles.row, !last ? borderStyle : { borderBottomWidth: 0 }]}>
-        <View style={styles.contentRow}>
-          <View style={styles.leadRow}>
-            { !!icon && (
-              <View style={[styles.icon, space.marginRightS]}>
-                { !disabled && icon }
-              </View>
-            ) }
-            { description ? (
-              <View style={styles.column}>
-                <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
-                  { text }
-                </Text>
-                <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={3} ellipsizeMode="clip">
-                  <TextWithIcons size={16} color={colors.lightText} text={description} />
-                </Text>
-              </View>
-            ) : (
-              <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
-                { text }
-              </Text>
-            ) }
-          </View>
-          { !!rightNode && rightNode }
-          { indicator !== 'none' && (
-            indicator === 'radio' ? (
-              <Animated.View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }, animStyle]}>
-                { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
-              </Animated.View>
-            ) : (
-              <ArkhamSwitch value={selected} color="dark" />
-            )
-          ) }
-        </View>
-      </View>
+      <LineItem
+        iconName={iconName}
+        iconNode={iconNode}
+        rightNode={rightNode}
+        indicatorNode={indicator !== 'none' && (
+          indicator === 'radio' ? (
+            <Animated.View style={[styles.circle, { borderColor: disabled ? colors.L20 : colors.L10 }, animStyle]}>
+              { !!selected && <View style={[styles.circleFill, { backgroundColor: colors.M }]} />}
+            </Animated.View>
+          ) : (
+            <ArkhamSwitch value={selected} color="dark" />
+          )
+        ) || undefined}
+        text={text}
+        disabled={disabled}
+        description={description}
+        last={last}
+      />
     </Pressable>
   );
 }

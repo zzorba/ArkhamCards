@@ -33,14 +33,14 @@ export function toggleMythosMode(
   };
 }
 
-export function updateCardSort(
+export function updateCardSorts(
   id: string,
-  sort: SortType
+  sorts: SortType[]
 ): UpdateCardSortAction {
   return {
     type: UPDATE_CARD_SORT,
     id,
-    sort,
+    sorts,
   };
 }
 

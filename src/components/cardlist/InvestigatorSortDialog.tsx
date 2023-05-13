@@ -13,7 +13,7 @@ import {
 function sortToCopy(sort: SortType) {
   switch (sort) {
     case SORT_BY_TITLE: return t`Title`;
-    case SORT_BY_FACTION: return t`Faction`;
+    case SORT_BY_FACTION: return t`Class`;
     case SORT_BY_PACK: return t`Pack`;
     default:
       return 'Unknown Sort';

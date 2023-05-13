@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { iconsMap } from '@app/NavIcons';
-import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId } from '@actions/types';
+import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId, DEFAULT_SORT } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
@@ -77,15 +77,15 @@ function DeckChecklistView({
   const deck = useCampaignDeck(id, campaignId);
   const { deckEdits } = useParsedDeck(id, componentId);
   const dispatch = useDispatch();
-  const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
+  const [sorts, setSorts] = useState<SortType[]>(DEFAULT_SORT);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
   const checklist = useSelector(checklistSelector);
-  const [sortDialog, showSortDialog] = useSortDialog(setSort, sort, false);
+  const [sortDialog, showSortDialog] = useSortDialog(setSorts, sorts, false);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
       showSortDialog();
     }
-  }, componentId, [sort, setSort]);
+  }, componentId, [sorts, setSorts]);
 
   const renderCard = useCallback((card: Card, cardId: string, onPressId: (id: string, card: Card) => void) => {
     return (
@@ -131,7 +131,7 @@ function DeckChecklistView({
         componentId={componentId}
         deckId={id}
         investigator={investigator}
-        sort={sort}
+        sorts={sorts}
         headerItems={headerItems}
         headerHeight={headerHeight}
         renderCard={renderCard}

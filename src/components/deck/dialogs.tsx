@@ -101,6 +101,7 @@ interface DialogOptions {
   maxHeightPercent?: number;
   noPadding?: boolean;
   forceVerticalButtons?: boolean;
+  noScroll?: boolean;
 }
 
 export function useDialog({
@@ -118,6 +119,7 @@ export function useDialog({
   maxHeightPercent,
   noPadding,
   forceVerticalButtons,
+  noScroll,
 }: DialogOptions): {
   dialog: React.ReactNode;
   visible: boolean;
@@ -191,6 +193,7 @@ export function useDialog({
         forceVerticalButtons={!!customButtons || forceVerticalButtons}
         maxHeightPercent={maxHeightPercent}
         noPadding={noPadding}
+        noScroll={noScroll}
       >
         { content }
       </NewDialog>

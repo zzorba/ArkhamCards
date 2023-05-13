@@ -15,6 +15,8 @@ export const SORT_BY_COST = 'cost';
 export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
 export const SORT_BY_ENCOUNTER_SET = 'encounter_set';
+export const SORT_BY_XP = 'xp';
+export const SORT_BY_CARD_ID = 'id'
 
 
 export const BROWSE_CARDS = 'BROWSE_CARDS';
@@ -32,7 +34,12 @@ export type SortType =
   typeof SORT_BY_COST |
   typeof SORT_BY_PACK |
   typeof SORT_BY_TITLE |
-  typeof SORT_BY_ENCOUNTER_SET;
+  typeof SORT_BY_XP |
+  typeof SORT_BY_ENCOUNTER_SET |
+  typeof SORT_BY_CYCLE |
+  typeof SORT_BY_CARD_ID;
+
+export const DEFAULT_SORT: SortType[] = [SORT_BY_TYPE];
 
 export interface Slots {
   [code: string]: number;
@@ -1161,7 +1168,7 @@ export const UPDATE_CARD_SORT = 'UPDATE_CARD_SORT';
 export interface UpdateCardSortAction {
   type: typeof UPDATE_CARD_SORT;
   id: string;
-  sort: SortType;
+  sorts: SortType[];
 }
 
 export const ADD_FILTER_SET = 'ADD_FILTER_SET';
@@ -1169,7 +1176,7 @@ export interface AddFilterSetAction {
   type: typeof ADD_FILTER_SET;
   id: string;
   filters: FilterState;
-  sort?: SortType;
+  sorts?: SortType[];
   mythosToggle?: boolean;
   cardData: CardFilterData;
 }

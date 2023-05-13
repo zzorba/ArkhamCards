@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Platform, StyleSheet, Text, ScrollView, View } from 'react-native';
+import { NestableScrollContainer } from 'react-native-draggable-flatlist';
 import { map } from 'lodash';
 
 import { TouchableQuickSize } from '@components/core/Touchables';
@@ -17,6 +18,7 @@ import AppModal from '../AppModal';
 import SectionHeader from './SectionHeader';
 import COLORS from '@styles/colors';
 import SpinnerLine from './SpinnerLine';
+import LineItem from './LineItem';
 
 interface Props {
   title: string;
@@ -33,6 +35,7 @@ interface Props {
   maxHeightPercent?: number;
   noPadding?: boolean;
   backgroundColor?: string;
+  noScroll?: boolean;
 }
 function NewDialog(props: Props) {
   const {
@@ -50,6 +53,7 @@ function NewDialog(props: Props) {
     maxHeightPercent = 0.5,
     noPadding,
     backgroundColor,
+    noScroll,
   } = props;
   const { lang } = useContext(LanguageContext);
   const { backgroundStyle, colors, shadow, typography, width, height } = useContext(StyleContext);
@@ -103,16 +107,22 @@ function NewDialog(props: Props) {
           </View>
         ) }
         <View style={[styles.body, noPadding ? undefined : space.paddingSideS, backgroundStyle]}>
-          <ScrollView
-            overScrollMode="never"
-            keyboardShouldPersistTaps="always"
-            bounces={false}
-            showsVerticalScrollIndicator
-            style={{ maxHeight: height * maxHeightPercent }}
-            contentContainerStyle={noPadding ? undefined : [space.paddingTopS, space.paddingBottomS]}
-          >
-            { children }
-          </ScrollView>
+          { noScroll ? (
+            <View style={[{ maxHeight: height * maxHeightPercent }, noPadding ? undefined : [space.paddingTopS, space.paddingBottomS]]}>
+              { children }
+            </View>
+          ) : (
+            <NestableScrollContainer
+              overScrollMode="never"
+              keyboardShouldPersistTaps="always"
+              bounces={false}
+              showsVerticalScrollIndicator
+              style={{ maxHeight: height * maxHeightPercent }}
+              contentContainerStyle={noPadding ? undefined : [space.paddingTopS, space.paddingBottomS]}
+            >
+              { children }
+            </NestableScrollContainer>
+          ) }
           { (buttons.length > 0) && (
             <View style={[styles.actionButtons, space.paddingBottomS, {
               flexDirection: verticalButtons ? 'column' : 'row',
@@ -143,6 +153,7 @@ function NewDialog(props: Props) {
 NewDialog.SectionHeader = SectionHeader;
 NewDialog.ContentLine = NewDialogContentLine;
 NewDialog.PickerItem = ItemPickerLine;
+NewDialog.LineItem = LineItem;
 NewDialog.TextInput = TextInputLine;
 NewDialog.SpinnerLine = SpinnerLine;
 export default NewDialog;

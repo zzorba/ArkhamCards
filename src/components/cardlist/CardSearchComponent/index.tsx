@@ -11,7 +11,7 @@ import Card from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
 import { FilterState } from '@lib/filters';
-import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter, updateCardSort } from '@components/filter/actions';
+import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter, updateCardSorts } from '@components/filter/actions';
 import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
 import TuneButton from './TuneButton';
@@ -28,13 +28,13 @@ export function useFilterSortDialog(filterId: string): [React.ReactNode, () => v
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
   const sortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
   const mythosMode = useSelector(mythosModeSelector);
-  const sort = useSelector(sortSelector);
+  const sorts = useSelector(sortSelector);
   const dispatch = useDispatch();
 
-  const sortChanged = useCallback((sort: SortType) => {
-    dispatch(updateCardSort(filterId, sort));
+  const sortChanged = useCallback((sorts: SortType[]) => {
+    dispatch(updateCardSorts(filterId, sorts));
   }, [dispatch, filterId]);
-  const [sortDialog, showSortDialog] = useSortDialog(sortChanged, sort, mythosMode);
+  const [sortDialog, showSortDialog] = useSortDialog(sortChanged, sorts, mythosMode);
   const onPress = useCallback(() => {
     Keyboard.dismiss();
     showSortDialog();
@@ -158,7 +158,7 @@ export default function CardSearchComponent(props: Props) {
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
   const mythosMode = useSelector(mythosModeSelector);
   const selectedSortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
-  const selectedSort = useSelector(selectedSortSelector);
+  const selectedSorts = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     Navigation.mergeOptions(componentId,
@@ -265,7 +265,7 @@ export default function CardSearchComponent(props: Props) {
         mythosToggle={mythosToggle}
         mythosMode={mythosMode}
         showNonCollection={showNonCollection}
-        selectedSort={selectedSort}
+        selectedSorts={selectedSorts}
         filters={filters}
         toggleMythosMode={onToggleMythosMode}
         clearSearchFilters={onClearSearchFilters}

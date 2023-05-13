@@ -31,7 +31,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, SORT_BY_TYPE, DeckId, Customizations } from '@actions/types';
+import { SortType, Slots, SORT_BY_TYPE, DeckId, Customizations, DEFAULT_SORT } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
@@ -60,7 +60,7 @@ interface Props {
   filterQuery?: Brackets;
   filters?: FilterState;
   textQuery?: Brackets;
-  sort?: SortType;
+  sorts?: SortType[];
   initialSort?: SortType;
   mythosToggle?: boolean;
   searchTerm?: string;
@@ -271,7 +271,7 @@ function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brack
 interface SectionFeedProps {
   componentId: string;
   query?: Brackets;
-  sort?: SortType;
+  sorts?: SortType[];
   tabooSetId?: number;
   filterQuery?: Brackets;
   filters?: FilterState;
@@ -311,7 +311,7 @@ function useSectionFeed({
   hasHeader,
   query,
   investigator,
-  sort,
+  sorts,
   tabooSetId,
   filterQuery,
   filters,
@@ -352,7 +352,7 @@ function useSectionFeed({
   useEffectUpdate(() => {
     setMainQueryCards({ cards: [], loading: true });
     setDeckCards({ cards: [], loading: true });
-  }, [sort]);
+  }, [sorts]);
   const theTabooSetId = filters?.taboo_set || tabooSetId;
   useEffect(() => {
     let ignore = false;
@@ -372,7 +372,7 @@ function useSectionFeed({
           'and'
         ),
         theTabooSetId,
-        sort
+        sorts
       ).then(cards => {
         if (!ignore) {
           setDeckCards({ cards, textQuery: searchTextQuery, loading: false });
@@ -382,7 +382,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sort, sideDeck]);
+  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts, sideDeck]);
   const [partialCards, partialCardsLoading] = textQuery ? [textQueryCards, textQueryCardsLoading] : [mainQueryCards, mainQueryCardsLoading];
   const [showSpoilers, setShowSpoilers] = useState(false);
   const expandSectionRef = useRef<(sectionId: string) => void>();
@@ -528,7 +528,7 @@ function useSectionFeed({
     }
     return [];
   }, [cards, includeBonded]);
-  const [bondedCards] = useBondedFromCards(flatDeckCards, sort || SORT_BY_TYPE, tabooSetId);
+  const [bondedCards] = useBondedFromCards(flatDeckCards, sorts || DEFAULT_SORT, tabooSetId);
 
   const [refreshing, setRefreshing] = useState(true);
   const [deckRefreshing, setDeckRefreshing] = useState(false);
@@ -567,7 +567,7 @@ function useSectionFeed({
       sortIgnoreQuotes,
       combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
       theTabooSetId,
-      sort
+      sorts
     ).then((cards: PartialCard[]) => {
       // console.log(`Fetched partial cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
       if (!ignore) {
@@ -580,7 +580,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, sort, theTabooSetId, sortIgnoreQuotes, db]);
+  }, [query, filterQuery, sorts, theTabooSetId, sortIgnoreQuotes, db]);
 
   useDebouncedEffect(() => {
     if (!textQuery || !query) {
@@ -601,7 +601,7 @@ function useSectionFeed({
         'and'
       ),
       theTabooSetId,
-      sort
+      sorts
     ).then((cards: PartialCard[]) => {
       if (!ignore) {
         // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
@@ -612,7 +612,7 @@ function useSectionFeed({
       ignore = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setTextQueryCards, filterQuery, textQuery, query, sort, theTabooSetId, sortIgnoreQuotes], 500);
+  }, [setTextQueryCards, filterQuery, textQuery, query, sorts, theTabooSetId, sortIgnoreQuotes], 500);
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
@@ -838,7 +838,7 @@ export default function({
   filterQuery,
   filters,
   textQuery,
-  sort,
+  sorts,
   initialSort,
   searchTerm,
   expandSearchControls,
@@ -879,7 +879,7 @@ export default function({
     componentId,
     investigator,
     query,
-    sort,
+    sorts,
     hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,
     filterQuery,
@@ -901,7 +901,7 @@ export default function({
     // showHeader when somethings drastic happens, and get a new error message.
     showHeader && showHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, filterQuery, tabooSetId, sort]);
+  }, [query, filterQuery, tabooSetId, sorts]);
   const filterId = deckId?.uuid || componentId;
   useEffect(() => {
     dispatch(addDbFilterSet(filterId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));

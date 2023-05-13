@@ -12,13 +12,15 @@ import {
   UPDATE_CARD_SORT,
   FilterActions,
   SortType,
+  DEFAULT_SORT,
 } from '@actions/types';
 
 interface FiltersState {
   all: { [componentId: string]: FilterState | undefined };
   defaults: { [componentId: string]: FilterState };
   mythos: { [componentId: string]: boolean | undefined };
-  sorts: { [componentId: string]: SortType | undefined };
+  sorts?: { [componentId: string]: SortType | undefined };
+  newSorts?: { [componentId: string]: SortType[] | undefined };
   cardData: { [componentId: string]: CardFilterData | undefined };
 }
 
@@ -27,6 +29,7 @@ const DEFAULT_STATE: FiltersState = {
   defaults: {},
   mythos: {},
   sorts: {},
+  newSorts: {},
   cardData: {},
 };
 
@@ -61,9 +64,10 @@ export default function(
       mythos: {
         ...state.mythos,
       },
-      sorts: {
-        ...state.sorts,
-        [action.id]: action.sort || SORT_BY_TYPE,
+      sorts: {},
+      newSorts: {
+        ...(state.newSorts || {}),
+        [action.id]: action.sorts || DEFAULT_SORT,
       },
       cardData: {
         ...state.cardData,
@@ -84,7 +88,7 @@ export default function(
     const all = { ...state.all };
     const defaults = { ...state.defaults };
     const mythos = { ...state.mythos };
-    const sorts = { ...state.sorts };
+    const newSorts = { ...(state.newSorts || {}) };
     const cardData = { ...state.cardData };
     if (all[action.id]) {
       delete all[action.id];
@@ -93,13 +97,14 @@ export default function(
       delete defaults[action.id];
     }
     delete mythos[action.id];
-    delete sorts[action.id];
+    delete newSorts[action.id];
     delete cardData[action.id];
     return {
       all,
       defaults,
       mythos,
-      sorts,
+      sorts: {},
+      newSorts,
       cardData,
     };
   }
@@ -119,9 +124,9 @@ export default function(
   if (action.type === UPDATE_CARD_SORT) {
     return {
       ...state,
-      sorts: {
-        ...state.sorts,
-        [action.id]: action.sort,
+      newSorts: {
+        ...(state.newSorts || {}),
+        [action.id]: action.sorts,
       },
     };
   }

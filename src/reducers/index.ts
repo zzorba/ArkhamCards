@@ -43,6 +43,7 @@ import {
   StartingTabType,
   BROWSE_DECKS,
   SORT_BY_PACK,
+  DEFAULT_SORT,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -782,10 +783,10 @@ export const getMythosMode = createSelector(
 );
 
 export const getCardSort = createSelector(
-  (state: AppState) => state.filters.sorts,
+  (state: AppState) => state.filters.newSorts,
   (state: AppState, filterId: string) => filterId,
-  (sorts, filterId): SortType => {
-    return sorts[filterId] || SORT_BY_TYPE;
+  (sorts, filterId): SortType[] => {
+    return sorts?.[filterId] || DEFAULT_SORT;
   }
 );
 

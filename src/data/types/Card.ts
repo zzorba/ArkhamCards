@@ -1,10 +1,10 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
+import { head, forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { t } from 'ttag';
 
-import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -118,6 +118,9 @@ const HEADER_SELECT = {
   [SORT_BY_TITLE]: '"0" as headerId',
   [SORT_BY_TYPE]: 'c.sort_by_type as headerId, c.sort_by_type_header as headerTitle',
   [SORT_BY_CYCLE]: 'c.sort_by_cycle as headerId, c.cycle_name as headerTitle',
+  [SORT_BY_XP]: 'c.xp as headerId, c.xp as headerTitle',
+  [SORT_BY_CYCLE]: 'c.cycle_code as headerId, c.cycle_name as headerTitle',
+  [SORT_BY_CARD_ID]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
 };
 
 export class PartialCard {
@@ -154,7 +157,23 @@ export class PartialCard {
     this.spoiler = spoiler;
   }
 
-  public static selectStatement(sort?: SortType): string {
+  public static headerSort(sorts?: SortType[]): SortType {
+    if (!sorts || !sorts.length) {
+      return SORT_BY_TYPE;
+    }
+    if (sorts.length >= 2 && sorts[0] == SORT_BY_FACTION) {
+      if (sorts[1] === SORT_BY_PACK) {
+        return SORT_BY_FACTION_PACK;
+      }
+      if (sorts[1] === SORT_BY_XP) {
+        if (sorts)
+        return SORT_BY_FACTION_XP;
+      }
+    }
+    return head(sorts) || SORT_BY_TYPE;
+  }
+
+  public static selectStatement(sorts?: SortType[]): string {
     const parts: string[] = [
       `c.id as id`,
       `c.code as code`,
@@ -163,19 +182,30 @@ export class PartialCard {
       `c.pack_code as pack_code`,
       `c.reprint_pack_codes as reprint_pack_codes`,
       `c.spoiler as spoiler`,
-      HEADER_SELECT[sort || SORT_BY_TYPE],
+      HEADER_SELECT[PartialCard.headerSort(sorts)],
     ];
     return parts.join(', ');
   }
 
   public static fromRaw(raw: any, sort?: SortType): PartialCard | undefined {
     if (raw.id !== null && raw.code !== null && raw.renderName !== null && raw.pack_code !== null) {
+      let header = raw.headerTitle;
+      switch (sort) {
+        case SORT_BY_TITLE:
+          header = t`All Cards`;
+          break;
+        case SORT_BY_XP: {
+          const level = raw.headerTitle;
+          header = t`Level ${level}`;
+          break;
+        }
+      }
       return new PartialCard(
         raw.id,
         raw.code,
         raw.renderName,
         (raw.headerId === null || raw.headerId === undefined) ? 'null' : `${raw.headerId}`,
-        sort === SORT_BY_TITLE ? t`All Cards` : raw.headerTitle,
+        header,
         raw.pack_code,
         raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
@@ -1399,7 +1429,7 @@ export default class Card {
       `${sort_by_faction_header} - ${basic_type_header}`;
 
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
-    const sort_by_cycle = (pack ? pack.cycle_position : 100) * 1000 + sort_by_faction * 100 + sort_by_type;
+    const sort_by_cycle = (pack ? pack.cycle_position : 100);
     const sort_by_cost_header = (card.cost === null || card.cost === undefined) ? t`Cost: None` : t`Cost: ${card.cost}`;
     const sort_by_encounter_set_header = translation.encounter_name ||
       (linked_card && linked_card.encounter_name) ||
@@ -1525,61 +1555,58 @@ export default class Card {
     return result;
   }
 
-  static querySort(sortIgnoreQuotes: boolean, sort?: SortType): QuerySort[] {
-    switch(sort) {
-      case SORT_BY_FACTION:
-        return [
-          { s: 'c.sort_by_faction', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_PACK:
-        return [
-          { s: 'c.sort_by_faction_pack', direction: 'ASC' },
-          { s: 'c.code', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_XP:
-        return [
-          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.code', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_XP_TYPE_COST:
-        return [
-          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
-          { s: 'c.cost', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-        ];
-      case SORT_BY_COST:
-        return [
-          { s: 'c.cost', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_PACK:
-        return [
-          { s: 'c.sort_by_pack', direction: 'ASC' },
-          { s: 'c.position', direction: 'ASC' },
-        ];
-      case SORT_BY_ENCOUNTER_SET:
-        return [
-          { s: 'c.sort_by_pack', direction: 'ASC' },
-          { s: 'c.encounter_code', direction: 'ASC' },
-          { s: 'c.encounter_position', direction: 'ASC' },
-        ];
-      case SORT_BY_TITLE:
-        return [
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_TYPE:
-      default:
-        return [
-          { s: 'c.sort_by_type', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
+  static querySort(sortIgnoreQuotes: boolean, sorts?: SortType[]): QuerySort[] {
+    const result: QuerySort[] = [];
+    let sortByName = true;
+    let sortByXp = true;
+    forEach(sorts, sort => {
+      switch(sort) {
+        case SORT_BY_TYPE:
+          result.push(
+            { s: 'c.sort_by_type', direction: 'ASC' },
+          );
+          break;
+        case SORT_BY_FACTION:
+          result.push({ s: 'c.sort_by_faction', direction: 'ASC' });
+          break;
+        case SORT_BY_XP:
+          sortByXp = false;
+          result.push({ s: 'c.xp', direction: 'ASC' });
+          break;
+        case SORT_BY_COST:
+          result.push({ s: 'c.cost', direction: 'ASC' });
+          break;
+        case SORT_BY_PACK:
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
+          break;
+        case SORT_BY_CARD_ID:
+          result.push({ s: 'c.code', direction: 'ASC' });
+          break;
+        case SORT_BY_TITLE:
+          sortByName = false;
+          result.push({ s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' });
+          break;
+        case SORT_BY_ENCOUNTER_SET:
+          sortByName = false;
+          sortByXp = false;
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
+          result.push({ s: 'c.encounter_code', direction: 'ASC' });
+          result.push({ s: 'c.encounter_position', direction: 'ASC' });
+          break;
+        case SORT_BY_CYCLE:
+          result.push({ s: 'c.sort_by_cycle', direction: 'ASC' });
+          break;
+        default:
+          break;
+      }
+    });
+    if (sortByName) {
+      result.push({ s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' });
     }
+    if (sortByXp) {
+      result.push({ s: 'c.xp', direction: 'ASC' });
+    }
+    return result;
   }
 }
 
