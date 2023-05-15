@@ -356,7 +356,7 @@ function UpgradeDeckRow({
 
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
+    showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [componentId, colors]);
 
   const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {

@@ -131,7 +131,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
   }, [width, maxCardsPerRow]);
 
   const onCardPress = useCallback((card: Card) => {
-    componentId && showCard(componentId, card.code, card, colors, true);
+    componentId && showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [componentId, colors]);
 
   const renderCardItem = useCallback((item: ItemT) => {

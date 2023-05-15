@@ -9,7 +9,7 @@ import Rule from '../types/Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
-import { SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
 import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
@@ -68,7 +68,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = Platform.OS === 'ios' ? 46 : 47;
+  static SCHEMA_VERSION: number = 48;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;

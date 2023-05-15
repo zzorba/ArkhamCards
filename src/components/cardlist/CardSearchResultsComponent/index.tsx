@@ -57,6 +57,7 @@ interface Props {
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
+  filterId: string;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -238,6 +239,7 @@ export default function({
   mode,
   initialSort,
   includeDuplicates,
+  filterId,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
@@ -360,7 +362,7 @@ export default function({
     );
   }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
-  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
+  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />
@@ -396,6 +398,7 @@ export default function({
           <DbCardResultList
             componentId={componentId}
             deckId={deckId}
+            filterId={filterId}
             query={query}
             filters={filters}
             filterQuery={filterQuery || undefined}

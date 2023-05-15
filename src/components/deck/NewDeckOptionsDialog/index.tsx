@@ -426,10 +426,7 @@ function NewDeckOptionsDialog({
         card.code,
         card,
         colors,
-        true,
-        undefined,
-        undefined,
-        tabooSetId
+        { showSpoilers: true, tabooSetId }
       );
       return;
     }

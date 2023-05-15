@@ -6,18 +6,18 @@ import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 
 export const SORT_BY_TYPE = 'type';
+export const SORT_BY_TYPE_SLOT = 'type_slot';
 export const SORT_BY_CYCLE = 'cycle';
 export const SORT_BY_FACTION = 'faction';
 export const SORT_BY_FACTION_PACK = 'faction_pack';
 export const SORT_BY_FACTION_XP = 'faction_xp';
-export const SORT_BY_FACTION_XP_TYPE_COST = 'faction_xp_type_cost';
 export const SORT_BY_COST = 'cost';
 export const SORT_BY_PACK = 'pack';
 export const SORT_BY_TITLE = 'title';
 export const SORT_BY_ENCOUNTER_SET = 'encounter_set';
 export const SORT_BY_XP = 'xp';
 export const SORT_BY_CARD_ID = 'id'
-
+export const SORT_BY_SLOT = 'slot';
 
 export const BROWSE_CARDS = 'BROWSE_CARDS';
 export const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -28,18 +28,22 @@ export type StartingTabType = typeof BROWSE_CARDS | typeof BROWSE_DECKS | typeof
 export type SortType =
   typeof SORT_BY_TYPE |
   typeof SORT_BY_FACTION |
-  typeof SORT_BY_FACTION_PACK |
-  typeof SORT_BY_FACTION_XP |
-  typeof SORT_BY_FACTION_XP_TYPE_COST |
   typeof SORT_BY_COST |
   typeof SORT_BY_PACK |
   typeof SORT_BY_TITLE |
   typeof SORT_BY_XP |
-  typeof SORT_BY_ENCOUNTER_SET |
   typeof SORT_BY_CYCLE |
-  typeof SORT_BY_CARD_ID;
+  typeof SORT_BY_CARD_ID |
+  typeof SORT_BY_SLOT |
+  typeof SORT_BY_ENCOUNTER_SET;
 
-export const DEFAULT_SORT: SortType[] = [SORT_BY_TYPE];
+export type ExtendedSortType =
+  SortType |
+  typeof SORT_BY_TYPE_SLOT |
+  typeof SORT_BY_FACTION_PACK |
+  typeof SORT_BY_FACTION_XP ;
+
+export const DEFAULT_SORT: SortType[] = [SORT_BY_TYPE, SORT_BY_SLOT];
 
 export interface Slots {
   [code: string]: number;
@@ -1176,7 +1180,7 @@ export interface AddFilterSetAction {
   type: typeof ADD_FILTER_SET;
   id: string;
   filters: FilterState;
-  sorts?: SortType[];
+  sorts: SortType[];
   mythosToggle?: boolean;
   cardData: CardFilterData;
 }

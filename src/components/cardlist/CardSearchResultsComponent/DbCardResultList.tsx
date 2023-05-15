@@ -76,6 +76,7 @@ interface Props {
   showHeader?: () => void;
   storyOnly?: boolean;
   specialMode?: 'side' | 'checklist';
+  filterId: string;
 
   showNonCollection?: boolean;
   footerPadding?: number;
@@ -855,6 +856,7 @@ export default function({
   specialMode,
   showNonCollection,
   footerPadding,
+  filterId,
 }: Props) {
   const { db } = useContext(DatabaseContext);
   const deck = useDeck(deckId);
@@ -902,9 +904,8 @@ export default function({
     showHeader && showHeader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, tabooSetId, sorts]);
-  const filterId = deckId?.uuid || componentId;
   useEffect(() => {
-    dispatch(addDbFilterSet(filterId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
+    dispatch(addDbFilterSet(filterId, db, query, initialSort, tabooSetId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, tabooSetId]);
 
@@ -926,10 +927,7 @@ export default function({
         card.code,
         card,
         colors,
-        true,
-        deckId,
-        customizations,
-        tabooSetOverride
+        { showSpoilers: true, deckId, initialCustomizations: customizations, tabooSetId: tabooSetOverride }
       );
       return;
     }

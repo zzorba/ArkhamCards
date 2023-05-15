@@ -567,11 +567,11 @@ export default class FilterBuilder {
       xpCostEnabled,
       xpCost,
     } = filters;
-    if (!xpCostEnabled) {
+    if (!xpCostEnabled || !xpCost) {
       return [];
     }
     const q = this.rangeFilter('xp', xpCost, false, (model: string, field: string) => {
-      return `((${model}.${field}) * (case ${model}.exceptional when TRUE then 1 else 0 end)) + COALESCE(${model}.extra_xp, 0)`;
+      return `(((${model}.${field}) * (case ${model}.exceptional when TRUE then 2 else 1 end)) + COALESCE(${model}.extra_xp, 0))`;
     });
     if (xpCost[0] > 0) {
       return [
@@ -789,6 +789,7 @@ export default class FilterBuilder {
         ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
+        ...this.xpCostFilter(filters),
         ...this.costFilter(filters),
         ...this.customizableFilter(filters),
         ...this.traitFilter(filters.traits, localizedTraits),

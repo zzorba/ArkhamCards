@@ -45,6 +45,7 @@ export function useFilterSortDialog(filterId: string): [React.ReactNode, () => v
 
 interface Props {
   componentId: string;
+  filterId?: string;
   baseQuery?: (filters: FilterState | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -152,7 +153,7 @@ export default function CardSearchComponent(props: Props) {
   } = props;
   const { fontScale, typography, width } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
-  const filterId = deckId?.uuid || componentId;
+  const filterId = deckId?.uuid || props.filterId || componentId;
   const filterSelector = useCallback((state: AppState) => getFilterState(state, filterId), [filterId]);
   const filters = useSelector(filterSelector);
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
@@ -261,6 +262,7 @@ export default function CardSearchComponent(props: Props) {
       <CardSearchResultsComponent
         componentId={componentId}
         deckId={deckId}
+        filterId={filterId}
         baseQuery={baseQuery}
         mythosToggle={mythosToggle}
         mythosMode={mythosMode}

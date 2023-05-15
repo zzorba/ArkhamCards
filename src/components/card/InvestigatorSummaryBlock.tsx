@@ -31,11 +31,11 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
           investigator.code,
           investigator,
           colors,
-          false,
-          undefined,
-          undefined,
-          tabooSetId,
-          investigatorBack?.code
+          {
+            showSpoilers: false,
+            tabooSetId,
+            backCode: investigatorBack?.code,
+          }
         );
       }
     } else {

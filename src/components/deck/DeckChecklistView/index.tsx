@@ -130,6 +130,7 @@ function DeckChecklistView({
       <DbCardResultList
         componentId={componentId}
         deckId={id}
+        filterId={id.uuid}
         investigator={investigator}
         sorts={sorts}
         headerItems={headerItems}

@@ -29,6 +29,10 @@ import {
   SORT_BY_PACK,
   SetInvestigatorSortAction,
   SET_INVESTIGATOR_SORT,
+  DEFAULT_SORT,
+  UpdateCardSortAction,
+  UPDATE_CARD_SORT,
+  BROWSE_CARDS,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -62,6 +66,7 @@ interface SettingsState {
   searchEnglish?: boolean;
   startingTab?: StartingTabType;
   investigatorSort?: SortType;
+  cardSort?: SortType[];
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -90,6 +95,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   lowMemory: false,
   startingTab: BROWSE_DECKS,
   investigatorSort: SORT_BY_PACK,
+  cardSort: DEFAULT_SORT,
 };
 
 type SettingAction =
@@ -104,7 +110,8 @@ type SettingAction =
   SetPlaybackRateAction |
   SyncDismissOnboardingAction |
   ChangeTabAction |
-  SetInvestigatorSortAction;
+  SetInvestigatorSortAction |
+  UpdateCardSortAction;
 
 
 export default function(
@@ -277,6 +284,15 @@ export default function(
         lang: action.choiceLang,
       };
     }
+    case UPDATE_CARD_SORT:
+      console.log(action);
+      if (action.id !== BROWSE_CARDS) {
+        return state;
+      }
+      return {
+        ...state,
+        cardSort: action.sorts,
+      };
     default: {
       return state;
     }

@@ -14,10 +14,10 @@ import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
   SORT_BY_FACTION_XP,
-  SORT_BY_FACTION_XP_TYPE_COST,
   SORT_BY_XP,
   SORT_BY_CYCLE,
   SORT_BY_CARD_ID,
+  SORT_BY_SLOT,
 } from '@actions/types';
 import { useDialog } from '@components/deck/dialogs';
 import NewDialog from '@components/core/NewDialog';
@@ -28,12 +28,6 @@ function sortToCopy(sort: SortType): string {
       return t`Type`;
     case SORT_BY_FACTION:
       return t`Class`;
-    case SORT_BY_FACTION_PACK:
-      return t`Faction, Pack`;
-    case SORT_BY_FACTION_XP:
-      return t`Faction, Level, Type`;
-    case SORT_BY_FACTION_XP_TYPE_COST:
-      return t`Faction, Level, Type, Cost`;
     case SORT_BY_COST:
       return t`Cost`;
     case SORT_BY_PACK:
@@ -48,6 +42,8 @@ function sortToCopy(sort: SortType): string {
       return t`Level`;
     case SORT_BY_CARD_ID:
       return t`Card number`;
+    case SORT_BY_SLOT:
+      return t`Slot`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = sort;
@@ -78,12 +74,14 @@ export function useSortDialog(
   const items: Item[] = useMemo(() => {
     const sorts: SortType[] = [
       SORT_BY_TYPE,
+      SORT_BY_SLOT,
       SORT_BY_FACTION,
       SORT_BY_COST,
       SORT_BY_CYCLE,
       SORT_BY_PACK,
       SORT_BY_TITLE,
       SORT_BY_XP,
+      SORT_BY_CARD_ID,
     ];
     if (hasEncounterCards || find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       sorts.push(SORT_BY_ENCOUNTER_SET);
@@ -97,12 +95,12 @@ export function useSortDialog(
       ...otherSorts,
     ];
   }, [hasEncounterCards, selectedSorts]);
-  const onDragEnd = useCallback((data: Item[]) => {
+  const onChanged = useCallback((data: Item[]) => {
     const newItems = flatMap(takeWhile(data, (item) => item.type !== 'header'), (item) => item.type === 'sort' ? [item.sort] : []);
     sortChanged(newItems);
   }, [sortChanged]);
 
-  const renderItem = useCallback(({ item, index, onStartDrag, onEndDrag, isActive }: DraggableListRenderInfo<Item>) => {
+  const renderItem = useCallback(({ item, getIndex, drag }: DraggableListRenderInfo<Item>) => {
     if (item.type === 'header') {
       return (
         <NewDialog.SectionHeader
@@ -111,6 +109,7 @@ export function useSortDialog(
         />
       );
     }
+    const index = getIndex() || 0;
     const content = (
       <NewDialog.LineItem
         iconName="menu"
@@ -118,21 +117,10 @@ export function useSortDialog(
         last={index === items.length - 1 || items[index + 1]?.type === 'header'}
       />
     );
-    if (Platform.OS === 'android') {
-      return (
-        <TouchableOpacity
-          onPressIn={onStartDrag}
-          onPressOut={onEndDrag}
-          key={item.sort}
-        >
-          {content}
-        </TouchableOpacity>
-      );
-    }
     return (
       <Pressable
         key={item.sort}
-        onPressIn={onStartDrag}
+        onPressIn={drag}
       >
         {content}
       </Pressable>
@@ -143,13 +131,12 @@ export function useSortDialog(
     allowDismiss: true,
     alignment: 'bottom',
     maxHeightPercent: 0.80,
-    noScroll: Platform.OS === 'android',
     content: (
       <View>
         <NewDialog.SectionHeader text={t`Selected`} />
         <DraggableList
           data={items}
-          onDragEnd={onDragEnd}
+          onChanged={onChanged}
           renderItem={renderItem}
           keyExtractor={(item) => item.type == 'sort' ? item.sort : item.title}
         />

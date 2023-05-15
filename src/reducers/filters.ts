@@ -2,7 +2,6 @@ import { pick } from 'lodash';
 
 import { CardFilterData, FilterState } from '@lib/filters';
 import {
-  SORT_BY_TYPE,
   CLEAR_FILTER,
   TOGGLE_FILTER,
   UPDATE_FILTER,
@@ -13,6 +12,7 @@ import {
   FilterActions,
   SortType,
   DEFAULT_SORT,
+  BROWSE_CARDS,
 } from '@actions/types';
 
 interface FiltersState {
@@ -67,7 +67,7 @@ export default function(
       sorts: {},
       newSorts: {
         ...(state.newSorts || {}),
-        [action.id]: action.sorts || DEFAULT_SORT,
+        [action.id]: action.sorts,
       },
       cardData: {
         ...state.cardData,

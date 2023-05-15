@@ -597,10 +597,7 @@ export default function useParsedDeckComponent({
         card.code,
         card,
         colors,
-        true,
-        deckId,
-        customizations,
-        tabooSetId
+        { showSpoilers: true, deckId, initialCustomizations: customizations, tabooSetId },
       );
       return;
     }

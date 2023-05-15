@@ -306,7 +306,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     return <DraftButton item={item} card={card} cardWidth={cardWidth} onDraft={onDraft} />
   }, [onDraft]);
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
+    showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [componentId, colors]);
 
   const renderCardItem = useCallback(({ item }: { item: GridItem }) => {

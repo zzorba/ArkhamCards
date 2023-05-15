@@ -23,7 +23,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, SORT_BY_TYPE, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '@components/deck/DeckEditView';

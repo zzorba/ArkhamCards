@@ -51,7 +51,7 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
 
 
   const onPress = useCallback((investigator: Card) => {
-    showCard(componentId, investigator.code, investigator, colors, false);
+    showCard(componentId, investigator.code, investigator, colors, { showSpoilers: false });
   }, [componentId, colors]);
 
   if (loading || !card) {

@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 interface Props {
   children: React.ReactNode;
@@ -37,7 +38,9 @@ export default function AppModal({ children, avoidKeyboard, alignment, visible, 
         padding: s,
       }]}
     >
-      { children }
+      <GestureHandlerRootView>
+        { children }
+      </GestureHandlerRootView>
     </Modal>
   );
 }

@@ -4,6 +4,7 @@ import { Brackets } from 'typeorm/browser';
 import CardSearchComponent from '../cardlist/CardSearchComponent';
 import { NavigationProps } from '@components/nav/types';
 import { combineQueries, where } from '@data/sqlite/query';
+import { SORT_BY_PACK } from '@actions/types';
 
 export interface PackCardsProps {
   pack_code: string;
@@ -28,7 +29,7 @@ export default function PackCardsView({
     <CardSearchComponent
       componentId={componentId}
       baseQuery={query}
-      sort="pack"
+      sort={SORT_BY_PACK}
       showNonCollection
       includeDuplicates
     />
