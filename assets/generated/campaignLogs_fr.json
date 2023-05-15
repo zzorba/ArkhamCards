@@ -326,7 +326,7 @@
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler a affronté ses démons."
+            "text": "Dr Kensler a affronté ses démons."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
@@ -342,7 +342,7 @@
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha a affronté ses démons."
+            "text": "Dr Sinha a affronté ses démons."
           },
           {
             "id": "dyer_has_confronted_his_demons",
@@ -362,15 +362,15 @@
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "que la folie sans nom s’est échappée."
+            "text": "la folie sans nom s’est échappée."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "que la folie sans nom est contenue dans son hôte…. pour le moment."
+            "text": "la folie sans nom est contenue dans son hôte…. pour le moment."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "L’équipe a photographié les cartes astronomique."
+            "text": "L’équipe a photographié les cartes astronomiques."
           },
           {
             "id": "read_the_map",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "es survivants de l'expédition sont :"
+            "text": "les survivants de l'expédition sont :"
           },
           {
             "id": "surviving_partners",
@@ -410,7 +410,7 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "que l'équipe a fui de justesse la barrière de glace."
+            "text": "l'équipe a fui de justesse la barrière de glace."
           },
           {
             "id": "team_climbed_to_the_summit",
@@ -438,7 +438,7 @@
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "que l’équipe a été guidée vers le tunnel caché."
+            "text": "l’équipe a été guidée vers le tunnel caché."
           },
           {
             "id": "the_seal_was_used_improperly",
@@ -867,7 +867,7 @@
           },
           {
             "id": "moai_statues",
-            "text": "Statut Moaï"
+            "text": "Statues Moaï"
           },
           {
             "id": "ottoman_front",
@@ -891,7 +891,7 @@
           },
           {
             "id": "unrequited_love",
-            "text": "Souvenir d'un Amour déçu"
+            "text": "Souvenir d'un Amour Déçu"
           },
           {
             "id": "unspeakable_evil",
@@ -920,11 +920,11 @@
           },
           {
             "id": "coastal_waters",
-            "text": "Eaix Côtières"
+            "text": "Eaux Côtières"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Pont du theodosia"
+            "text": "Pont du Theodosia"
           },
           {
             "id": "deserted_station",
@@ -952,7 +952,7 @@
           },
           {
             "id": "moai_statues",
-            "text": "Statut Moaï"
+            "text": "Statues Moaï"
           },
           {
             "id": "ottoman_front",
@@ -960,7 +960,7 @@
           },
           {
             "id": "riverview_theatre",
-            "text": "Théatre Riverview"
+            "text": "Théâtre Riverview"
           },
           {
             "id": "standing_stones",
@@ -972,7 +972,7 @@
           },
           {
             "id": "university_halls",
-            "text": "Couloir de l'Université"
+            "text": "Couloirs de l'Université"
           }
         ]
       },
@@ -1055,7 +1055,7 @@
           },
           {
             "id": "wooden_sledge",
-            "text": "Traineau en Bois"
+            "text": "Traîneau en Bois"
           }
         ]
       }
@@ -4450,7 +4450,7 @@
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "la porte de Y'ha-nthlei vous reconnait comme son gardien légitime."
+            "text": "la porte de Y'ha-nthlei vous reconnaît comme son gardien légitime."
           },
           {
             "id": "gilman_out_for_blood",
@@ -4506,11 +4506,11 @@
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "les investigateurs possèdent une carte de Y' ha-nthlei."
+            "text": "les investigateurs possèdent une carte de Y'ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "que les investigateurs possèdent la clé de Y'hâ-hthlei."
+            "text": "les investigateurs possèdent la clé de Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
@@ -4575,7 +4575,7 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "Square de New Chruch"
+            "text": "Square de New Church"
           },
           {
             "id": "accuse_order_of_dagon",
@@ -4737,7 +4737,7 @@
           },
           {
             "id": "new_church_green",
-            "text": "Square de New Chruch"
+            "text": "Square de New Church"
           },
           {
             "id": "order_of_dagon",
