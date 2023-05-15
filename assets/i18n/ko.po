@@ -806,7 +806,7 @@ msgid "${ investigator.name } on the Road"
 msgstr "방랑하는 ${ investigator.name }"
 
 msgid "${ investigator.name } Does It All"
-msgstr "${ investigator.name }는 무엇이든 잘해요"
+msgstr "${ investigator.name } 씨는 무엇이든 잘해요"
 
 msgid "Name"
 msgstr "이름"
@@ -6138,27 +6138,28 @@ msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
 "traited."
 msgstr ""
+"탐구자나 중립 카드도 아니고 [[역설]] 특성도 없는 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Min"
-msgstr ""
+msgstr "최소"
 
 msgid "Max"
-msgstr ""
+msgstr "최대"
 
 msgid "EASY"
-msgstr ""
+msgstr "쉬움"
 
 msgid "STND"
-msgstr ""
+msgstr "보통"
 
 msgid "HARD"
-msgstr ""
+msgstr "어려움"
 
 msgid "EXPT"
-msgstr ""
+msgstr "전문가"
 
 msgid "Class Choice"
-msgstr ""
+msgstr "역할군 선택"
 
 msgctxt "investigator"
 msgid "Custom"
