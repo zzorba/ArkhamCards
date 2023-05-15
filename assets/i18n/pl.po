@@ -179,9 +179,6 @@ msgstr "Sortuj"
 msgid "Title"
 msgstr "Nazwa"
 
-msgid "Faction"
-msgstr "Klasa"
-
 msgid "Pack"
 msgstr "Zestaw"
 
@@ -1466,7 +1463,6 @@ msgstr ""
 "Możesz wyrazić zgodę na to, aby zawsze widzieć tabu i tworzyć talie z nimi "
 "w Ustawieniach."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Poziom ${ level }"
 
@@ -2248,12 +2244,6 @@ msgstr "Usuń talię"
 
 msgid "Parallel"
 msgstr "Z równoległego świata"
-
-msgid "Faction, Name"
-msgstr "Klasa, Nazwa"
-
-msgid "Faction, Pack"
-msgstr "Klasa, Zestaw"
 
 msgid "Random location"
 msgstr "Losowa lokalizacja"
@@ -3931,9 +3921,6 @@ msgstr "Wydano ${ _spentXp } z ${ _totalXp }"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Talie z Wiedzą przodków muszą zawierać co najmniej 10 umiejętności."
 
-msgid "Faction, Level, Type"
-msgstr "Klasa, Poziom, Typ"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "Ilość kart: ${ normalCardCount } / ${ deckSize }"
@@ -4565,9 +4552,6 @@ msgstr "Pokaż wyniki z Błogosławieństwem/Klątwą"
 
 msgid "Show Bless/Curse Odds"
 msgstr "Ukryj wyniki z Błogosławieństwem/Klątwą"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "Klasa, Poziom, Typ, Koszt"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Nie możesz mieć więcej niż 5 kart Ocalałego poziomu 0"
@@ -6519,6 +6503,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

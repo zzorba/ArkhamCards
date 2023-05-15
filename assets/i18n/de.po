@@ -177,9 +177,6 @@ msgstr "Sortieren nach"
 msgid "Title"
 msgstr "Name"
 
-msgid "Faction"
-msgstr "Klasse"
-
 msgid "Pack"
 msgstr "Erweiterung"
 
@@ -1470,7 +1467,6 @@ msgstr ""
 "Es kann jederzeit in den Einstellungen gewählt werden, die Tabuliste "
 "anzuzeigen und bei der Deckerstellung zu verwenden."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Stufe ${level}"
 
@@ -2243,12 +2239,6 @@ msgstr "Deck löschen"
 
 msgid "Parallel"
 msgstr "Parallel"
-
-msgid "Faction, Name"
-msgstr "Klasse, Name"
-
-msgid "Faction, Pack"
-msgstr "Klasse, Pack"
 
 msgid "Random location"
 msgstr "Zufälliger Ort"
@@ -3915,9 +3905,6 @@ msgstr "${ _spentXp } von ${ _totalXp } ausgegeben"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Decks mit Wissen der Ahnen müssen mindestens 10 Fertigkeiten enthalten."
 
-msgid "Faction, Level, Type"
-msgstr "Klasse, Stufe, Typ"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } Karten"
@@ -4535,9 +4522,6 @@ msgstr ""
 msgid "Show Bless/Curse Odds"
 msgstr ""
 
-msgid "Faction, Level, Type, Cost"
-msgstr "Klasse, Stufe, Typ, Kosten"
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Du darfst nicht mehr als 5 Level 0 Überlebender Karten haben"
 
@@ -4689,19 +4673,19 @@ msgid ""
 "it."
 msgstr ""
 "Eine Nebengeschichte ist ein Szenario, das zwischen zwei beliebigen "
-"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> "
-"gespielt werden kann.\n"
-"- Das Spielen einer Nebengeschichte kostet jeden Ermittler in der "
-"Kampagne eine bestimmte Menge Erfahrungspunkte.\n"
+"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> gespielt "
+"werden kann.\n"
+"- Das Spielen einer Nebengeschichte kostet jeden Ermittler in der Kampagne "
+"eine bestimmte Menge Erfahrungspunkte.\n"
 "- Die Ermittler behalten Schwächen, Traumata, Erfahrungspunkte und "
 "Belohnungen für das Spielen einer Nebengeschichte für den Rest der "
 "Kampagne.\n"
 "- Jede Nebengeschichte darf nur ein Mal pro Kampagne gespielt werden.\n"
 "\n"
 "<b>Hinweis:</b> Bei Verwendung der App werden die erforderlichen "
-"Erfahrungspunkte automatisch am <b>Ende des Szenarios</b> abgezogen, "
-"aber du solltest sicherstellen, dass du bereits über genügend "
-"Erfahrungspunkte verfügst, um dies zu begleichen."
+"Erfahrungspunkte automatisch am <b>Ende des Szenarios</b> abgezogen, aber "
+"du solltest sicherstellen, dass du bereits über genügend Erfahrungspunkte "
+"verfügst, um dies zu begleichen."
 
 msgid "Ice and Death: Part 1"
 msgstr "Eis und Tod, Teil I"
@@ -6122,8 +6106,7 @@ msgstr[0] "Streiche ${ time } <b>Zeit</b> im Kampagnenlogbuch ab."
 msgstr[1] "Streiche ${ time } <b>Zeit</b> im Kampagnenlogbuch ab."
 
 msgid "This includes the cost of experience cost of playing the side-story."
-msgstr "Dies beinhaltet die Erfahrungspunktekosten zum Spielen der "
-"Nebengeschichte."
+msgstr "Dies beinhaltet die Erfahrungspunktekosten zum Spielen der Nebengeschichte."
 
 msgid ""
 "This deck is owned by another player. You can record the changes now and "
@@ -6191,7 +6174,8 @@ msgstr "Zeitkosten: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
-msgstr "Zusätzliche Erfahrungspunktekosten für ${ investigator.name }: ${ "
+msgstr ""
+"Zusätzliche Erfahrungspunktekosten für ${ investigator.name }: ${ "
 "additionalXpCost }"
 
 msgid ""
@@ -6204,10 +6188,10 @@ msgid ""
 "- Each side-story may only be played once per campaign."
 msgstr ""
 "Eine Nebengeschichte ist ein Szenario, das zwischen zwei beliebigen "
-"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> "
-"gespielt werden kann.\n"
-"- Weil du die Kampagne <i>Die Scharlachroten Schlüssel</i> spielst,  "
-"kostet eine Nebengeschichte eine bestimmte Menge <b>Zeit</b> anstatt "
+"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> gespielt "
+"werden kann.\n"
+"- Weil du die Kampagne <i>Die Scharlachroten Schlüssel</i> spielst,  kostet "
+"eine Nebengeschichte eine bestimmte Menge <b>Zeit</b> anstatt "
 "Erfahrungspunkte.\n"
 "- Die Ermittler behalten Schwächen, Traumata, Erfahrungspunkte und "
 "Belohnungen für das Spielen einer Nebengeschichte für den Rest der "
@@ -6364,13 +6348,12 @@ msgid ""
 msgid_plural ""
 "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
 "${ arriveCityName } on the way to somewhere else."
-msgstr[0] "Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ "
-"departCityName } nach ${ arriveCityName } auf dem Weg zu einem anderen Ort "
-"reist."
-msgstr[1] "Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ "
-"departCityName } nach ${ arriveCityName } auf dem Weg zu einem anderen Ort "
-"reist."
-
+msgstr[0] ""
+"Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ departCityName } "
+"nach ${ arriveCityName } auf dem Weg zu einem anderen Ort reist."
+msgstr[1] ""
+"Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ departCityName } "
+"nach ${ arriveCityName } auf dem Weg zu einem anderen Ort reist."
 
 msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
@@ -6396,6 +6379,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

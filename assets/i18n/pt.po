@@ -1921,7 +1921,6 @@ msgstr ""
 "Faça uma cópia do seu baralho para que assim você possa usá-lo em uma "
 "campanha diferente ou escolher atualizações diferentes."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Nível ${ level }"
 
@@ -2122,12 +2121,6 @@ msgstr "Paralelo"
 msgid "Type"
 msgstr "Tipo"
 
-msgid "Faction, Name"
-msgstr "Facção, Nome"
-
-msgid "Faction, Pack"
-msgstr "Facção, Pacote"
-
 msgid "Pack"
 msgstr "Pacote"
 
@@ -2139,9 +2132,6 @@ msgstr "Conjunto de Encontro"
 
 msgid "Sort by"
 msgstr "Ordenar por"
-
-msgid "Faction"
-msgstr "Facção"
 
 msgid "Apply"
 msgstr "Aplicar"
@@ -3891,9 +3881,6 @@ msgstr "${ _spentXp } de ${ _totalXp } spent"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Baralhos com Conhecimento Ancestral devem incluir pelo menos 10 perícias."
 
-msgid "Faction, Level, Type"
-msgstr "Facção, Nível, Tipo"
-
 msgid "Ammo"
 msgstr "Munição"
 
@@ -4528,9 +4515,6 @@ msgstr "Ocultar probabilidades de Bênção/Maldição"
 
 msgid "Show Bless/Curse Odds"
 msgstr "Mostrar probabilidades de Bênção/Maldição"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "Facção, Nível, Tipo, Custo"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Você não pode ter mais de 5 cartas de Sobrevivente de nível 0"
@@ -6369,6 +6353,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

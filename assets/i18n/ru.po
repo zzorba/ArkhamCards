@@ -1123,7 +1123,6 @@ msgstr ""
 "Скопируйте колоду, чтобы использовать её в другой кампании или чтобы "
 "попробовать другие улучшения."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Уровень ${ level }"
 
@@ -1216,12 +1215,6 @@ msgstr "Сортировка по"
 msgid "Type"
 msgstr "Типу"
 
-msgid "Faction, Name"
-msgstr "Класс, название"
-
-msgid "Faction, Pack"
-msgstr "Класс, доп"
-
 msgid "Pack"
 msgstr "Доп"
 
@@ -1230,9 +1223,6 @@ msgstr "Название"
 
 msgid "Encounter Set"
 msgstr "Набор контактов"
-
-msgid "Faction"
-msgstr "Класс"
 
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Нет сыщиков по запросу «${ searchTerm }»."
@@ -3924,9 +3914,6 @@ msgstr "Потрачено ${ _spentXp } из ${ _totalXp }"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 
-msgid "Faction, Level, Type"
-msgstr "Класс, Уровень, Тип"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } карт"
@@ -4537,9 +4524,6 @@ msgstr "Скрыть благословения/проклятия"
 
 msgid "Show Bless/Curse Odds"
 msgstr "Показать благословения/проклятия"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "Класс, Уровень, Тип, Цена"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Нельзя включить больше 5 карт Выживших уровня 0"
@@ -6462,6 +6446,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

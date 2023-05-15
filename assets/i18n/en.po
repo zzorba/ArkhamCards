@@ -169,9 +169,6 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-msgid "Faction"
-msgstr ""
-
 msgid "Pack"
 msgstr ""
 
@@ -1389,7 +1386,6 @@ msgid ""
 "Settings."
 msgstr ""
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr ""
 
@@ -2102,12 +2098,6 @@ msgid "Delete Deck"
 msgstr ""
 
 msgid "Parallel"
-msgstr ""
-
-msgid "Faction, Name"
-msgstr ""
-
-msgid "Faction, Pack"
 msgstr ""
 
 msgid "Random location"
@@ -3611,9 +3601,6 @@ msgstr ""
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 
-msgid "Faction, Level, Type"
-msgstr ""
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr ""
@@ -4176,9 +4163,6 @@ msgid "Hide Bless/Curse Odds"
 msgstr ""
 
 msgid "Show Bless/Curse Odds"
-msgstr ""
-
-msgid "Faction, Level, Type, Cost"
 msgstr ""
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
@@ -5908,6 +5892,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

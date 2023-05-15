@@ -2262,7 +2262,6 @@ msgid ""
 "choose different upgrades."
 msgstr ""
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr ""
 
@@ -2455,18 +2454,6 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-msgid "Faction, Name"
-msgstr ""
-
-msgid "Faction, Pack"
-msgstr ""
-
-msgid "Faction, Level, Type"
-msgstr ""
-
-msgid "Faction, Level, Type, Cost"
-msgstr ""
-
 msgid "Pack"
 msgstr ""
 
@@ -2477,9 +2464,6 @@ msgid "Encounter Set"
 msgstr ""
 
 msgid "Sort by"
-msgstr ""
-
-msgid "Faction"
 msgstr ""
 
 msgid "Apply"
@@ -5938,6 +5922,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

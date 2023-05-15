@@ -1047,7 +1047,6 @@ msgid ""
 "choose different upgrades."
 msgstr "덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있습니다."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "${ level } 레벨"
 
@@ -1137,12 +1136,6 @@ msgstr "정렬하기"
 msgid "Type"
 msgstr "종류"
 
-msgid "Faction, Name"
-msgstr "역할군, 이름"
-
-msgid "Faction, Pack"
-msgstr "역할군, 팩"
-
 msgid "Pack"
 msgstr "팩"
 
@@ -1151,9 +1144,6 @@ msgstr "명칭"
 
 msgid "Encounter Set"
 msgstr "조우 세트"
-
-msgid "Faction"
-msgstr "역할군"
 
 msgid "Search"
 msgstr "검색"
@@ -3751,9 +3741,6 @@ msgstr "${ _totalXp }점 중 ${ _spentXp }점 소비"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Ancestral Knowledge 카드가 있는 덱은 반드시 10장 이상의 능력 카드를 포함하여야 합니다."
 
-msgid "Faction, Level, Type"
-msgstr "역할군, 레벨, 유형"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } 카드"
@@ -4342,9 +4329,6 @@ msgstr "축복/저주 확률 숨기기"
 
 msgid "Show Bless/Curse Odds"
 msgstr "축복/저주 확률 보기"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "역할군, 레벨, 유형, 비용"
 
 msgid "You cannot have more than 5 level 0 Guardian cards"
 msgstr "수호자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
@@ -6137,8 +6121,7 @@ msgstr[0] ""
 msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
 "traited."
-msgstr ""
-"탐구자나 중립 카드도 아니고 [[역설]] 특성도 없는 카드를 5장보다 많이 포함할 수 없습니다."
+msgstr "탐구자나 중립 카드도 아니고 [[역설]] 특성도 없는 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Min"
 msgstr "최소"
@@ -6160,6 +6143,22 @@ msgstr "전문가"
 
 msgid "Class Choice"
 msgstr "역할군 선택"
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

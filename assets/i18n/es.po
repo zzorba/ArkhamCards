@@ -177,9 +177,6 @@ msgstr "Ordenar por"
 msgid "Title"
 msgstr "Título"
 
-msgid "Faction"
-msgstr "Clase"
-
 msgid "Pack"
 msgstr "Pack"
 
@@ -1476,7 +1473,6 @@ msgstr ""
 "Puedes registrarte para ver siempre tabúes y mazos con ellos en "
 "configuración."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Nivel ${ level }"
 
@@ -2237,12 +2233,6 @@ msgstr "Borrar mazo"
 
 msgid "Parallel"
 msgstr "Paralelo"
-
-msgid "Faction, Name"
-msgstr "Clase, Nombre"
-
-msgid "Faction, Pack"
-msgstr "Clase, Pack"
 
 msgid "Random location"
 msgstr "Lugar aleatorio"
@@ -3901,9 +3891,6 @@ msgstr "${ _spentXp } de ${ _totalXp } gastada"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Los mazos con Conocimiento ancestral deben incluir al menos 10 Habilidades."
 
-msgid "Faction, Level, Type"
-msgstr "Clase, Nivel, Tipo"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } cartas"
@@ -4529,9 +4516,6 @@ msgstr "Ocultar probabilidades Bendición/Maldición"
 
 msgid "Show Bless/Curse Odds"
 msgstr "Mostrar probabilidades Bendición/Maldición"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "Clase, Nivel, Tipo, Coste"
 
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Superviviente"
@@ -6525,6 +6509,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"

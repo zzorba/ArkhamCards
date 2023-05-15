@@ -177,9 +177,6 @@ msgstr "Ordina per"
 msgid "Title"
 msgstr "Titolo"
 
-msgid "Faction"
-msgstr "Classe"
-
 msgid "Pack"
 msgstr "Pack"
 
@@ -1473,7 +1470,6 @@ msgstr ""
 "Puoi scegliere di vedere sempre i Tabù e di utilizzarli nella costruzione "
 "dei mazzi dalle Impostazioni."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Livello ${ level }"
 
@@ -2243,12 +2239,6 @@ msgstr "Elimina Mazzo"
 
 msgid "Parallel"
 msgstr "Parallelo"
-
-msgid "Faction, Name"
-msgstr "Classe, Nome"
-
-msgid "Faction, Pack"
-msgstr "Classe, Pack"
 
 msgid "Random location"
 msgstr "Luogo casuale"
@@ -3906,9 +3896,6 @@ msgstr "${ _spentXp } di ${ _totalXp } spesi"
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "I mazzi con Conoscenza Ancestrale devono includere almeno 10 abilità."
 
-msgid "Faction, Level, Type"
-msgstr "Classe, Livello, Tipo"
-
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } carte"
@@ -4533,9 +4520,6 @@ msgstr "Rifiuta la richiesta di amicizia"
 
 msgid "Revoke friend request"
 msgstr "Annulla la richiesta di amicizia"
-
-msgid "Faction, Level, Type, Cost"
-msgstr "Fazione, Livello, Tipo, Costo"
 
 msgid "Show upgrades"
 msgstr "Mostra gli aggiornamenti"
@@ -6431,6 +6415,22 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
+msgstr ""
+
+msgid "Asset: Arcane. Accessory"
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Cycle"
+msgstr ""
+
+msgid "Card number"
+msgstr ""
+
+#. noScroll: Platform.OS === 'android',
+msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
