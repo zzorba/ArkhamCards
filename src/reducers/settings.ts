@@ -285,7 +285,6 @@ export default function(
       };
     }
     case UPDATE_CARD_SORT:
-      console.log(action);
       if (action.id !== BROWSE_CARDS) {
         return state;
       }
