@@ -16,7 +16,7 @@ import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, Deck, SortType, SORT_BY_PACK } from '@actions/types';
+import { CampaignId, Deck, SortType, SORT_BY_PACK, SORT_BY_CARD_ID } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
@@ -97,7 +97,7 @@ function MyDecksSelectorDialog(props: Props) {
   const [hideOtherCampaignDecks, toggleHideOtherCampaignDecks] = useFlag(true);
   const [onlyShowPreviousCampaignMembers, toggleOnlyShowPreviousCampaignMembers] = useFlag(false);
   const [hideEliminatedInvestigators, toggleHideEliminatedInvestigators] = useFlag(true);
-  const [selectedSort, setSelectedSort] = useState<SortType>(SORT_BY_PACK);
+  const [selectedSort, setSelectedSort] = useState<SortType[]>([SORT_BY_PACK, SORT_BY_CARD_ID]);
   const campaignInvestigators = useMemo(() => onlyShowSelected ? [] : keys(campaign?.investigatorData || {}), [campaign?.investigatorData, onlyShowSelected]);
   const investigators = useInvestigators(campaignInvestigators);
   const filterInvestigators = useMemo(() => {

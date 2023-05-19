@@ -4,7 +4,7 @@ import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, Comp
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, SORT_BY_CARD_ID, SORT_BY_PACK, SORT_BY_TYPE, Slots, SortType } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -765,7 +765,7 @@ export function useRemoteSettingFlag(
 
 export function useAllInvestigators(
   tabooSetOverride?: number,
-  sortType?: SortType
+  sortType?: SortType[]
 ): [Card[], boolean] {
   const customContent = useSettingValue('custom_content');
   const sort = useMemo(() => sortType ? Card.querySort(true, sortType) : undefined, [sortType]);

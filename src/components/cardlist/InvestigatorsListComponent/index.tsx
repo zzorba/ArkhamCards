@@ -30,7 +30,7 @@ import AppIcon from '@icons/AppIcon';
 interface Props {
   componentId: string;
   hideDeckbuildingRules?: boolean;
-  sort: SortType;
+  sort: SortType[];
   onPress: (investigator: Card) => void;
   filterInvestigator?: (investigator: Card) => boolean;
   filterInvestigators?: string[];
@@ -200,7 +200,7 @@ export default function InvestigatorsListComponent({
     let nonCollectionCards: Card[] = [];
     let currentBucket: Section | undefined = undefined;
     forEach(allInvestigators, i => {
-      const header = headerForInvestigator(sort, i);
+      const header = headerForInvestigator(sort[0], i);
       if (!currentBucket || currentBucket.title !== header) {
         if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {

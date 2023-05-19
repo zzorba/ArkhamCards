@@ -10,7 +10,7 @@ interface Props {
   componentId: string;
   onInvestigatorSelect: (card: Card) => void;
   searchOptions?: SearchOptions;
-  sort: SortType;
+  sort: SortType[];
   filterInvestigators: string[];
 }
 

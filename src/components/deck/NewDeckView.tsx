@@ -31,8 +31,8 @@ function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvest
   const { backgroundStyle, colors } = useContext(StyleContext);
   const selectedSort = useSelector(getInvestigatorSort);
   const dispatch = useDispatch();
-  const sortChanged = useCallback((sort: SortType) => {
-    dispatch(setInvestigatorSort(sort))
+  const sortChanged = useCallback((sort: SortType[]) => {
+    dispatch(setInvestigatorSort(sort[0]))
   }, [dispatch]);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
   const showSortDialog = useCallback(() => {
