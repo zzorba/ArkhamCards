@@ -183,48 +183,6 @@ msgstr "Mythos"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-msgid "Asset: Hand"
-msgstr "Posse: Mão"
-
-msgid "Asset: Hand x2"
-msgstr "Posse: Mão x2"
-
-msgid "Asset: Accessory"
-msgstr "Posse: Acessório"
-
-msgid "Asset: Ally"
-msgstr "Posse: Aliado"
-
-msgid "Asset: Arcane"
-msgstr "Posse: Arcano"
-
-msgid "Asset: Arcane x2"
-msgstr "Posse: Arcano x2"
-
-msgid "Asset: Body"
-msgstr "Posse: Corpo"
-
-msgid "Asset: Permanent"
-msgstr "Posse: Permanente"
-
-msgid "Asset: Tarot"
-msgstr "Posse: Tarô"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Posse: Aliado. Arcano"
-
-msgid "Asset: Body. Arcane"
-msgstr "Posse: Corpo. Arcano"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Posse: Mão. Arcano"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Posse: Corpo. Mão x2"
-
-msgid "Asset: Other"
-msgstr "Posse: Outro"
-
 msgid "Event"
 msgstr "Evento"
 
@@ -2118,17 +2076,11 @@ msgstr "Livros"
 msgid "Parallel"
 msgstr "Paralelo"
 
-msgid "Type"
-msgstr "Tipo"
-
 msgid "Pack"
 msgstr "Pacote"
 
 msgid "Title"
 msgstr "Título"
-
-msgid "Encounter Set"
-msgstr "Conjunto de Encontro"
 
 msgid "Sort by"
 msgstr "Ordenar por"
@@ -4531,9 +4483,6 @@ msgstr "Você não pode ter mais de 5 cartas de Ladino nível 0"
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Faça login no Arkham Cards na guia Configurações para ativar"
 
-msgid "Asset: Hand x2. Arcane"
-msgstr "Recurso: Mão x2. Arcano"
-
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
 msgstr ""
@@ -6355,25 +6304,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
+
+msgctxt "slots"
+msgid "None"
+msgstr ""
 
 msgctxt "masculine"
 msgid "Alive"
@@ -8531,10 +8474,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr ""
 
-msgctxt "slots"
-msgid "None"
-msgstr ""
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -8662,6 +8601,46 @@ msgstr ""
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

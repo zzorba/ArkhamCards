@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
+import { reduce } from 'lodash';
 import {
   MarkdownView,
   MarkdownRule,
@@ -11,7 +12,7 @@ import {
   RenderState,
   InlineNode,
 } from 'react-native-markdown-view';
-import { TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Table, Cell, Row } from 'react-native-table-component';
 
 import { WithChildren, WithIconName, WithText, State } from './types';
@@ -326,10 +327,10 @@ function renderTableCell(cell: InlineNode, row: number, column: number, rowCount
   return (
     <Cell
       rowId={row}
-      id={column}
+      id={`${column}`}
       key={column}
-      style={cellStyle}
-      textStyle={contentStyle}
+      style={StyleSheet.flatten(cellStyle)}
+      textStyle={StyleSheet.flatten(contentStyle)}
       data={output(cell, state)}
     />
   );
@@ -341,14 +342,14 @@ const TableRule: MarkdownRule<TableNode, State> = {
     <Table key={state.key} borderStyle={{ borderWidth: 1 }} style={{ width: '100%' }}>
       {[
         <Row
-          id={1}
+          id="1"
           key={1}
           style={{ flexDirection: 'row' }}
           data={node.header.map((cell, column) => renderTableCell(cell, 1, column + 1, node.cells.length + 1, node.header.length, output, state, styles))}
         />,
       ].concat(node.cells.map((cells, row) => (
         <Row
-          id={row + 2}
+          id={`${row + 2}`}
           key={row + 2}
           style={{ flexDirection: 'row' }}
           data={cells.map((cell, column) => renderTableCell(cell, row + 2, column + 1, node.cells.length + 1, cells.length, output, state, styles))}

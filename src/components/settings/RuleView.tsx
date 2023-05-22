@@ -33,7 +33,11 @@ function RuleTable({ table }: { table: RuleTableRow[] }) {
           <Row
             key={idx}
             data={map(row.row, (cell, idx) => (
-              <Cell key={idx} style={{ backgroundColor: cell.color && specialColors[cell.color], padding: s }} data={<CardTextComponent text={cell.text} />} />
+              <Cell
+                key={idx}
+                style={{ backgroundColor: cell.color && specialColors[cell.color], padding: s }}
+                data={<CardTextComponent text={cell.text} />}
+              />
             ))}
           />
         );

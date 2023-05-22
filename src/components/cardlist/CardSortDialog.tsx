@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { Platform, TouchableOpacity, View, Pressable, UIManager, Touchable } from 'react-native';
 import { map, flatMap, filter, find, takeWhile } from 'lodash';
-import { t } from 'ttag';
+import { t, c } from 'ttag';
 
 import DraggableList, { DraggableListRenderInfo } from '@components/core/DraggableList';
 import {
@@ -25,25 +25,25 @@ import NewDialog from '@components/core/NewDialog';
 function sortToCopy(sort: SortType): string {
   switch (sort) {
     case SORT_BY_TYPE:
-      return t`Type`;
+      return c('sort').t`Type`;
     case SORT_BY_FACTION:
-      return t`Class`;
+      return c('sort').t`Class`;
     case SORT_BY_COST:
-      return t`Cost`;
+      return c('sort').t`Cost`;
     case SORT_BY_PACK:
-      return t`Pack`;
+      return c('sort').t`Pack`;
     case SORT_BY_CYCLE:
-      return t`Cycle`;
+      return c('sort').t`Cycle`;
     case SORT_BY_TITLE:
-      return t`Title`;
+      return c('sort').t`Title`;
     case SORT_BY_ENCOUNTER_SET:
-      return t`Encounter Set`;
+      return c('sort').t`Encounter Set`;
     case SORT_BY_XP:
-      return t`Level`;
+      return c('sort').t`Level`;
     case SORT_BY_CARD_ID:
-      return t`Card number`;
+      return c('sort').t`Card number`;
     case SORT_BY_SLOT:
-      return t`Slot`;
+      return c('sort').t`Slot`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = sort;

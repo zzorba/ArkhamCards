@@ -45,42 +45,6 @@ msgstr "Nieznany"
 msgid "Investigator"
 msgstr "Badacze"
 
-msgid "Asset: Hand"
-msgstr "Atut: Ręka"
-
-msgid "Asset: Hand x2"
-msgstr "Atut: Ręka x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Atut: Ręka. Mistyczny"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Atut: Ciało. Ręka x2"
-
-msgid "Asset: Accessory"
-msgstr "Atut: Drobiazg"
-
-msgid "Asset: Ally"
-msgstr "Atut: Sprzymierzeniec"
-
-msgid "Asset: Arcane"
-msgstr "Atut: Mistyczny"
-
-msgid "Asset: Arcane x2"
-msgstr "Atut: Mistyczny x2"
-
-msgid "Asset: Body"
-msgstr "Atut: Ciało"
-
-msgid "Asset: Permanent"
-msgstr "Atut: Trwały"
-
-msgid "Asset: Tarot"
-msgstr "Atut: Tarot"
-
-msgid "Asset: Other"
-msgstr "Atut: Inny"
-
 msgid "Event"
 msgstr "Wydarzenie"
 
@@ -1084,12 +1048,6 @@ msgstr ""
 "Utwórz kopię Talii w celu użycia jej w innej Kampanii lub wyboru innych "
 "ulepszeń."
 
-msgid "Type"
-msgstr "Typ"
-
-msgid "Encounter Set"
-msgstr "Zestaw Spotkań"
-
 msgid "Investigating for clues"
 msgstr "Badanie wskazówek"
 
@@ -1798,9 +1756,6 @@ msgstr ""
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Za dużo pozaklasowych kart dla atutu: Wszechstronny"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Atut: Sprzymierzeniec. Mistyczny"
 
 msgid "Arcane x2"
 msgstr "Mistyczny x2"
@@ -3814,9 +3769,6 @@ msgstr ""
 "Jeśli napotkasz jakiekolwiek problemy z tym przeniesieniem, skontaktuj się "
 "z arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Atut: Ciało. Mistyczny"
-
 msgid "Color blind friendly icons"
 msgstr "Symbole dla daltonistów"
 
@@ -4567,9 +4519,6 @@ msgstr "Nie możesz mieć więcej niż 5 kart Łotra poziomu 0"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Zaloguj się do Arkham Cards w zakładce Ustawienia, aby włączyć"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Atut: Ręka x2. Mistyczny"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6505,25 +6454,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Brak"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8758,10 +8701,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr ""
 
-msgctxt "slots"
-msgid "None"
-msgstr "Brak"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -8900,6 +8839,46 @@ msgstr "Sąd Ostateczny · XX (Odwrócony)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

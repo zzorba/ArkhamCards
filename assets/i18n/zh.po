@@ -44,42 +44,6 @@ msgstr "未知"
 msgid "Investigator"
 msgstr "調查員"
 
-msgid "Asset: Hand"
-msgstr "支援: 手部"
-
-msgid "Asset: Hand x2"
-msgstr "支援: 手部x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "支援: 手部. 法術"
-
-msgid "Asset: Body. Hand x2"
-msgstr "支援: 服裝. 手部x2"
-
-msgid "Asset: Accessory"
-msgstr "支援: 飾品"
-
-msgid "Asset: Ally"
-msgstr "支援: 盟友"
-
-msgid "Asset: Arcane"
-msgstr "支援: 法術"
-
-msgid "Asset: Arcane x2"
-msgstr "支援: 法術x2"
-
-msgid "Asset: Body"
-msgstr "支援: 服裝"
-
-msgid "Asset: Permanent"
-msgstr "支援: 永久"
-
-msgid "Asset: Tarot"
-msgstr "支援: 塔羅"
-
-msgid "Asset: Other"
-msgstr "支援: 其他"
-
 msgid "Event"
 msgstr "事件"
 
@@ -1077,12 +1041,6 @@ msgid ""
 "choose different upgrades."
 msgstr "製作一份牌組複製。可將複製的牌組用於新的劇本模式，或者用於選擇不同的升級。"
 
-msgid "Type"
-msgstr "種類"
-
-msgid "Encounter Set"
-msgstr "遭遇組"
-
 msgid "Investigating for clues"
 msgstr "正在調查新線索"
 
@@ -1757,9 +1715,6 @@ msgstr "使用自食其力時，不允許使用占用盟友槽位的支援卡。
 
 msgid "Too many off-class cards for Versatile"
 msgstr "多才多藝有太多不符合職階的卡牌"
-
-msgid "Asset: Ally. Arcane"
-msgstr "支援: 盟友. 法術"
 
 msgid "Arcane x2"
 msgstr "法術 x2"
@@ -3594,9 +3549,6 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr "如果本次這次搬移遇到任何問題，請聯繫arkhamcards@gmail.com。"
 
-msgid "Asset: Body. Arcane"
-msgstr "支援: 服裝. 法術"
-
 msgid "Color blind friendly icons"
 msgstr "色覺辨認友善圖標"
 
@@ -4298,9 +4250,6 @@ msgstr "你不能加入超過5張等級0的流浪者卡牌"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "在設置頁面登入Arkham Cards以啟用"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "支援: 手部 x2. 法術"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6057,25 +6006,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
+
+msgctxt "slots"
+msgid "None"
+msgstr "無"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8217,10 +8160,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr "當前"
 
-msgctxt "slots"
-msgid "None"
-msgstr "無"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr "怪罪"
@@ -8337,6 +8276,46 @@ msgstr "審判·XX(逆位)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

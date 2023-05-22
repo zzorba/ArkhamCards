@@ -44,42 +44,6 @@ msgstr "Desconocido"
 msgid "Investigator"
 msgstr "Investigador"
 
-msgid "Asset: Hand"
-msgstr "Apoyo: Mano"
-
-msgid "Asset: Hand x2"
-msgstr "Apoyo: Dos manos"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Apoyo: Mano. Arcano"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Apoyo: Cuerpo. Dos manos"
-
-msgid "Asset: Accessory"
-msgstr "Apoyo: Accesorio"
-
-msgid "Asset: Ally"
-msgstr "Apoyo: Aliado"
-
-msgid "Asset: Arcane"
-msgstr "Apoyo: Arcano"
-
-msgid "Asset: Arcane x2"
-msgstr "Apoyo: Dos arcanos"
-
-msgid "Asset: Body"
-msgstr "Apoyo: Cuerpo"
-
-msgid "Asset: Permanent"
-msgstr "Apoyo: Permanente"
-
-msgid "Asset: Tarot"
-msgstr "Apoyo: Tarot"
-
-msgid "Asset: Other"
-msgstr "Apoyo: Otros"
-
 msgid "Event"
 msgstr "Evento"
 
@@ -1083,12 +1047,6 @@ msgstr ""
 "Haz una copia de un mazo para que puedas usarlo en una campaña diferente o "
 "elegir diferentes mejoras."
 
-msgid "Type"
-msgstr "Tipo"
-
-msgid "Encounter Set"
-msgstr "Conjunto de Encuentros"
-
 msgid "Investigating for clues"
 msgstr "Investigando pistas"
 
@@ -1795,9 +1753,6 @@ msgstr ""
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Demasiadas cartas de otras clases para Versátil"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Apoyo: Aliado. Arcano"
 
 msgid "Arcane x2"
 msgstr "Arcano x2"
@@ -3785,9 +3740,6 @@ msgstr ""
 "Si tienes problemas con la migración, por favor contacta con nosotros en "
 "arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Apoyo: Cuerpo. Arcano"
-
 msgid "Color blind friendly icons"
 msgstr "Iconos para daltónicos"
 
@@ -4531,9 +4483,6 @@ msgstr "No puedes incluir más de 5 cartas de nivel 0 de clase Rebelde"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Inicia sesión en Arkham Cards en la pestaña Ajustes para habilitarlo"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Apoyo: Mano x2. Arcano"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6511,25 +6460,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Ninguno"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8849,10 +8792,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr "Actual"
 
-msgctxt "slots"
-msgid "None"
-msgstr "Ninguno"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr "Culpa"
@@ -8980,6 +8919,46 @@ msgstr "El Juicio · XX (Invertida)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "vs."
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

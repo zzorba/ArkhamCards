@@ -44,42 +44,6 @@ msgstr "Inconnu"
 msgid "Investigator"
 msgstr "Investigateurs"
 
-msgid "Asset: Hand"
-msgstr "Soutien : Main"
-
-msgid "Asset: Hand x2"
-msgstr "Soutien : Main x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Soutien : Main – Arcane"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Soutien : Corps – Main x2"
-
-msgid "Asset: Accessory"
-msgstr "Soutien : Accessoire"
-
-msgid "Asset: Ally"
-msgstr "Soutien : Allié"
-
-msgid "Asset: Arcane"
-msgstr "Soutien : Arcane"
-
-msgid "Asset: Arcane x2"
-msgstr "Soutien : Arcane x2"
-
-msgid "Asset: Body"
-msgstr "Soutien : Corps"
-
-msgid "Asset: Permanent"
-msgstr "Soutien : Permanent"
-
-msgid "Asset: Tarot"
-msgstr "Soutien : Tarot"
-
-msgid "Asset: Other"
-msgstr "Soutien : Autre"
-
 msgid "Event"
 msgstr "Événement"
 
@@ -1091,12 +1055,6 @@ msgstr ""
 "Copiez ce deck afin de pouvoir l’utiliser dans une autre campagne ou pour "
 "l'améliorer d'autres façons."
 
-msgid "Type"
-msgstr "Type"
-
-msgid "Encounter Set"
-msgstr "Set de rencontre"
-
 msgid "Investigating for clues"
 msgstr "Enquête pour trouver des indices"
 
@@ -1814,9 +1772,6 @@ msgstr "Aucun soutien prenant un emplacement d'allié n'est autorisé."
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Il y a trop de cartes « extra-classe » pour l'effet de Versatile."
-
-msgid "Asset: Ally. Arcane"
-msgstr "Soutien : Allié – Arcane"
 
 msgid "Arcane x2"
 msgstr "Arcane x2"
@@ -3819,9 +3774,6 @@ msgstr ""
 "Si vous rencontrez des problèmes avec cette migration, veuillez contacter "
 "l'adresse arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Soutien : Corps – Arcane"
-
 msgid "Color blind friendly icons"
 msgstr "Icônes adaptées aux daltoniens"
 
@@ -4586,9 +4538,6 @@ msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr ""
 "Connectez-vous à Arkham Cards dans les Paramètres pour activer cette "
 "fonctionnalité."
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Soutien : Main x2 – Arcane"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6578,25 +6527,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Aucun"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8937,10 +8880,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr "Actuelle"
 
-msgctxt "slots"
-msgid "None"
-msgstr "Aucun"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -9068,6 +9007,46 @@ msgstr "XX · Le Jugement (à l'envers)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "CONTRE"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

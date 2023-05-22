@@ -262,51 +262,6 @@ msgstr ""
 msgid "Story"
 msgstr ""
 
-msgid "Asset: Hand"
-msgstr ""
-
-msgid "Asset: Hand x2"
-msgstr ""
-
-msgid "Asset: Accessory"
-msgstr ""
-
-msgid "Asset: Ally"
-msgstr ""
-
-msgid "Asset: Arcane"
-msgstr ""
-
-msgid "Asset: Arcane x2"
-msgstr ""
-
-msgid "Asset: Body"
-msgstr ""
-
-msgid "Asset: Permanent"
-msgstr ""
-
-msgid "Asset: Tarot"
-msgstr ""
-
-msgid "Asset: Ally. Arcane"
-msgstr ""
-
-msgid "Asset: Body. Arcane"
-msgstr ""
-
-msgid "Asset: Hand. Arcane"
-msgstr ""
-
-msgid "Asset: Hand x2. Arcane"
-msgstr ""
-
-msgid "Asset: Body. Hand x2"
-msgstr ""
-
-msgid "Asset: Other"
-msgstr ""
-
 msgid "Treachery"
 msgstr ""
 
@@ -2451,16 +2406,10 @@ msgstr ""
 msgid "Books"
 msgstr ""
 
-msgid "Type"
-msgstr ""
-
 msgid "Pack"
 msgstr ""
 
 msgid "Title"
-msgstr ""
-
-msgid "Encounter Set"
 msgstr ""
 
 msgid "Sort by"
@@ -5924,24 +5873,18 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 msgctxt "masculine"
@@ -8070,10 +8013,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr ""
 
-msgctxt "slots"
-msgid "None"
-msgstr ""
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -8200,6 +8139,46 @@ msgstr ""
 
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
 msgstr ""
 
 msgctxt "card-chooser"

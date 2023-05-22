@@ -141,45 +141,6 @@ msgstr "Неизвестно"
 msgid "Investigator"
 msgstr "Сыщик"
 
-msgid "Asset: Hand"
-msgstr "Актив: Рука"
-
-msgid "Asset: Hand x2"
-msgstr "Актив: Рука ×2"
-
-msgid "Asset: Accessory"
-msgstr "Актив: Аксессуар"
-
-msgid "Asset: Ally"
-msgstr "Актив: Союзник"
-
-msgid "Asset: Arcane"
-msgstr "Актив: Мистический"
-
-msgid "Asset: Arcane x2"
-msgstr "Актив: Мистический ×2"
-
-msgid "Asset: Body"
-msgstr "Актив: Одежда"
-
-msgid "Asset: Permanent"
-msgstr "Актив: Постоянный"
-
-msgid "Asset: Tarot"
-msgstr "Актив: Таро"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Актив: Союзник. Мистический"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Актив: Рука. Мистический"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Актив: Одежда. Рука ×2"
-
-msgid "Asset: Other"
-msgstr "Актив: Без слота"
-
 msgid "Event"
 msgstr "Событие"
 
@@ -1212,17 +1173,11 @@ msgstr "Альтернативные"
 msgid "Sort by"
 msgstr "Сортировка по"
 
-msgid "Type"
-msgstr "Типу"
-
 msgid "Pack"
 msgstr "Доп"
 
 msgid "Title"
 msgstr "Название"
-
-msgid "Encounter Set"
-msgstr "Набор контактов"
 
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Нет сыщиков по запросу «${ searchTerm }»."
@@ -3718,9 +3673,6 @@ msgstr "Сейчас нельзя добавить сценарий-ответв
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Мешок хаоса (${ tokenCount })"
 
-msgid "Asset: Body. Arcane"
-msgstr "Актив: Одежда. Мистический"
-
 msgid "Export diagnostic data"
 msgstr "Выгрузить данные для диагностики"
 
@@ -4539,9 +4491,6 @@ msgstr "Нельзя включить больше 5 карт Ловкачей �
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Войдите в аккаунт Arkham Cards в настройках"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Актив: Рука×2. Магический"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6448,25 +6397,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Нет"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8794,10 +8737,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr "Актуальный"
 
-msgctxt "slots"
-msgid "None"
-msgstr "Нет"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -8937,6 +8876,46 @@ msgstr ""
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

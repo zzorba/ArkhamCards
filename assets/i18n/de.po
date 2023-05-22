@@ -44,42 +44,6 @@ msgstr "Unbekannt"
 msgid "Investigator"
 msgstr "Ermittler"
 
-msgid "Asset: Hand"
-msgstr "Vorteil: Hand"
-
-msgid "Asset: Hand x2"
-msgstr "Vorteil: Hand x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Vorteil: Hand. Arkan"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Vorteil: Körper. Hand x2"
-
-msgid "Asset: Accessory"
-msgstr "Vorteil: Zubehör"
-
-msgid "Asset: Ally"
-msgstr "Vorteil: Verbündeter"
-
-msgid "Asset: Arcane"
-msgstr "Vorteil: Arkan"
-
-msgid "Asset: Arcane x2"
-msgstr "Vorteil: Arkan x2"
-
-msgid "Asset: Body"
-msgstr "Vorteil: Körper"
-
-msgid "Asset: Permanent"
-msgstr "Vorteil: Dauerhaft"
-
-msgid "Asset: Tarot"
-msgstr "Vorteil: Tarot"
-
-msgid "Asset: Other"
-msgstr "Vorteil: Sonstiges"
-
 msgid "Event"
 msgstr "Ereignis"
 
@@ -1083,12 +1047,6 @@ msgstr ""
 "Erstelle eine Kopie eines Decks, sodass du es in einer anderen Kampagne "
 "verwenden oder andere Upgrades wählen kannst."
 
-msgid "Type"
-msgstr "Typ"
-
-msgid "Encounter Set"
-msgstr "Begegnungsset"
-
 msgid "Investigating for clues"
 msgstr "Suche nach Hinweisen"
 
@@ -1801,9 +1759,6 @@ msgstr ""
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Zu viele Off-Class-Karten für \"Vielseitig\""
-
-msgid "Asset: Ally. Arcane"
-msgstr "Vorteil: Verbündeter. Arkan"
 
 msgid "Arcane x2"
 msgstr "Arkan x2"
@@ -3799,9 +3754,6 @@ msgstr ""
 "Falls bei dieser Migration irgendwelche Probleme auftreten, kontaktiere "
 "bitte arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Vorteil: Körper. Arkan"
-
 msgid "Color blind friendly icons"
 msgstr "Farbenblindenfreundliche Symbole"
 
@@ -4536,9 +4488,6 @@ msgstr "Du darfst nicht mehr als 5 Level 0 Schurken Karten haben"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Zum Aktivieren bei Arkham Cards auf dem Tab Einstellungen anmelden"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Vorteil: Hand x2. Arkan"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6381,24 +6330,18 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 #, javascript-format
@@ -8565,10 +8508,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr ""
 
-msgctxt "slots"
-msgid "None"
-msgstr ""
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr ""
@@ -8695,6 +8634,46 @@ msgstr "Das Gericht · XX (auf dem Kopf stehend)"
 
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
 msgstr ""
 
 msgctxt "card-chooser"

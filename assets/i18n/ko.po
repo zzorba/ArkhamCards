@@ -128,45 +128,6 @@ msgstr "불명"
 msgid "Investigator"
 msgstr "조사자"
 
-msgid "Asset: Hand"
-msgstr "자산: 손"
-
-msgid "Asset: Hand x2"
-msgstr "자산: 손 x2"
-
-msgid "Asset: Accessory"
-msgstr "자산: 액세서리"
-
-msgid "Asset: Ally"
-msgstr "자산: 조력자"
-
-msgid "Asset: Arcane"
-msgstr "자산: 마법"
-
-msgid "Asset: Arcane x2"
-msgstr "자산: 마법 x2"
-
-msgid "Asset: Body"
-msgstr "자산: 신체"
-
-msgid "Asset: Permanent"
-msgstr "자산: 영속"
-
-msgid "Asset: Tarot"
-msgstr "자산: 타로"
-
-msgid "Asset: Ally. Arcane"
-msgstr "자산: 조력자. 마법"
-
-msgid "Asset: Hand. Arcane"
-msgstr "자산: 손. 마법"
-
-msgid "Asset: Body. Hand x2"
-msgstr "자산: 신체. 손 x2"
-
-msgid "Asset: Other"
-msgstr "자산: 기타"
-
 msgid "Event"
 msgstr "이벤트"
 
@@ -1133,17 +1094,11 @@ msgstr "인스머스에 드리운 음모"
 msgid "Sort by"
 msgstr "정렬하기"
 
-msgid "Type"
-msgstr "종류"
-
 msgid "Pack"
 msgstr "팩"
 
 msgid "Title"
 msgstr "명칭"
-
-msgid "Encounter Set"
-msgstr "조우 세트"
 
 msgid "Search"
 msgstr "검색"
@@ -3636,9 +3591,6 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr "만약 이 마이그레이션 중에 어떤 오류라도 맞닥뜨리게 된다면, arkhamcards@gmail.com 이메일로 연락해 주십시오."
 
-msgid "Asset: Body. Arcane"
-msgstr "자산: 신체. 마법"
-
 msgid "Color blind friendly icons"
 msgstr "색맹 친화적 아이콘"
 
@@ -4344,9 +4296,6 @@ msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "해당 기능을 활성화하려면 설정 탭에서 아컴카드 계정에 로그인 하십시오."
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "자산: 손 x2. 마법"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6144,25 +6093,19 @@ msgstr "전문가"
 msgid "Class Choice"
 msgstr "역할군 선택"
 
-msgid "Asset: Arcane. Accessory"
-msgstr ""
-
 msgid "Class"
 msgstr ""
 
-msgid "Cycle"
-msgstr ""
-
-msgid "Card number"
-msgstr ""
-
-#. noScroll: Platform.OS === 'android',
 msgid "Selected"
 msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
+
+msgctxt "slots"
+msgid "None"
+msgstr "없음"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8348,10 +8291,6 @@ msgctxt "Taboo List"
 msgid "Current"
 msgstr "현재"
 
-msgctxt "slots"
-msgid "None"
-msgstr "없음"
-
 msgctxt "fan-made-uses"
 msgid "Blame"
 msgstr "비난"
@@ -8467,6 +8406,46 @@ msgstr "심판 · XX (역위치)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"
