@@ -7947,10 +7947,6 @@ msgid "Historical Society"
 msgstr "Société des Historiens"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "Humanoïde"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "Humanoïde"
 
@@ -8033,10 +8029,6 @@ msgstr "Leng"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "Loge"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "Aliéné"
 
 msgctxt "trait"
 msgid "Madness"
@@ -8535,20 +8527,8 @@ msgid "Zoog"
 msgstr "Zoog"
 
 msgctxt "trait"
-msgid "AI"
-msgstr "I.A."
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr "Béni ?"
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "Interrompu"
-
-msgctxt "trait"
-msgid "Card"
-msgstr "Carte"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -8563,26 +8543,6 @@ msgid "Lair"
 msgstr "Antre"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr "Nostalgie II"
-
-msgctxt "trait"
-msgid "Retired"
-msgstr "Retraité"
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr "Royauté"
-
-msgctxt "trait"
-msgid "Saga"
-msgstr "Aventure Épique"
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr "Ombre"
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "Synergie"
 
@@ -8591,44 +8551,8 @@ msgid "Unbroken"
 msgstr "Ininterrompu"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr "Pays des Merveilles"
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr "Déterminé"
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr "Allié ? Créature"
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr "Vilain chien"
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr "Chic"
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr ""
 
 msgctxt "trait"
 msgid "Coterie"
@@ -8639,10 +8563,6 @@ msgid "Dilemma"
 msgstr "Dilemme"
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr "Eidolon"
 
@@ -8651,32 +8571,8 @@ msgid "Elder Thing"
 msgstr "Chose Très Ancienne"
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr "Chiens Domestiques"
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr "Paire de chaussures, enfin plus vraiment"
-
-msgctxt "trait"
 msgid "Glacier"
 msgstr "Glacier"
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
-msgstr ""
 
 msgctxt "trait"
 msgid "Mainland"
@@ -8691,22 +8587,6 @@ msgid "Mountains"
 msgstr "Montagnes"
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr "Passé"
 
@@ -8719,84 +8599,20 @@ msgid "Present"
 msgstr "Présent"
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr "Chiot"
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
 msgstr "Scientifique"
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr "C'est vilain"
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
-msgstr ""
 
 msgctxt "trait"
 msgid "Uncharted"
 msgstr "Inexploré"
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
+msgid "Double"
 msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
-msgstr "Quoi ? Non"
 
 #, javascript-format
 msgctxt "filter"

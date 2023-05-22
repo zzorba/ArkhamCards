@@ -7227,10 +7227,6 @@ msgid "Historical Society"
 msgstr "歷史協會"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "人類"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "類人"
 
@@ -7313,10 +7309,6 @@ msgstr "冷原"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "秘社"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "狂人"
 
 msgctxt "trait"
 msgid "Madness"
@@ -7815,20 +7807,8 @@ msgid "Zoog"
 msgstr "祖格鼠"
 
 msgctxt "trait"
-msgid "AI"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr "祝福?"
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "破功"
-
-msgctxt "trait"
-msgid "Card"
-msgstr "撲克牌"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -7843,26 +7823,6 @@ msgid "Lair"
 msgstr "巢穴"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr ""
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr "皇室"
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr "黯影"
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "協作"
 
@@ -7871,44 +7831,8 @@ msgid "Unbroken"
 msgstr "運功"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr "仙境"
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr "堅毅"
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr "盟友? 生物"
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr ""
-
-msgctxt "trait"
-msgid "Castle"
-msgstr "城堡"
-
-msgctxt "trait"
-msgid "Chair"
-msgstr "椅子"
-
-msgctxt "trait"
-msgid "Chess"
-msgstr "西洋棋"
-
-msgctxt "trait"
-msgid "Classy"
-msgstr ""
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr "屍體"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7919,10 +7843,6 @@ msgid "Dilemma"
 msgstr ""
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr "商業區"
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -7931,31 +7851,7 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr ""
-
-msgctxt "trait"
 msgid "Glacier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
 msgstr ""
 
 msgctxt "trait"
@@ -7971,22 +7867,6 @@ msgid "Mountains"
 msgstr ""
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr "北區"
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr ""
 
@@ -7999,83 +7879,19 @@ msgid "Present"
 msgstr ""
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr ""
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr "管制"
-
-msgctxt "trait"
-msgid "Row"
-msgstr "橫列"
-
-msgctxt "trait"
 msgid "Scientist"
 msgstr ""
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr "斜坡"
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr "士兵"
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr "桌子"
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
-msgstr "土爾基森林"
 
 msgctxt "trait"
 msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr "氣象"
-
-msgctxt "trait"
-msgid "What? No"
+msgid "Double"
 msgstr ""
 
 #, javascript-format

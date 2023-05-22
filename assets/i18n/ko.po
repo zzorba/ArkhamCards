@@ -7358,10 +7358,6 @@ msgid "Historical Society"
 msgstr "사학회"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "인간형"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "인간형"
 
@@ -7444,10 +7440,6 @@ msgstr "렝"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "집회소"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "광인"
 
 msgctxt "trait"
 msgid "Madness"
@@ -7946,20 +7938,8 @@ msgid "Zoog"
 msgstr "주그"
 
 msgctxt "trait"
-msgid "AI"
-msgstr "AI"
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr "축복받은?"
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "깨진"
-
-msgctxt "trait"
-msgid "Card"
-msgstr "카드"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -7974,26 +7954,6 @@ msgid "Lair"
 msgstr "침소"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr "향수 2호"
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr "귀족"
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr "그림자"
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "시너지"
 
@@ -8002,44 +7962,8 @@ msgid "Unbroken"
 msgstr "깨지지 않은"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr "이상한 나라"
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr ""
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr "조력자? 생물"
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr "이 개놈아!"
-
-msgctxt "trait"
-msgid "Castle"
-msgstr "성"
-
-msgctxt "trait"
-msgid "Chair"
-msgstr "의자"
-
-msgctxt "trait"
-msgid "Chess"
-msgstr "체스"
-
-msgctxt "trait"
-msgid "Classy"
-msgstr "세련된"
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr "시체"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -8050,10 +7974,6 @@ msgid "Dilemma"
 msgstr "딜레마"
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr "번화가"
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -8062,32 +7982,8 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr "개 친구들"
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr "신발(못 신는다)"
-
-msgctxt "trait"
 msgid "Glacier"
 msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr "기계"
-
-msgctxt "trait"
-msgid "Madness?"
-msgstr "정신이상?"
 
 msgctxt "trait"
 msgid "Mainland"
@@ -8099,22 +7995,6 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
-
-msgctxt "trait"
-msgid "Music"
-msgstr "음악"
-
-msgctxt "trait"
-msgid "Musician"
-msgstr "음악가"
-
-msgctxt "trait"
-msgid "Northside"
-msgstr "북부"
-
-msgctxt "trait"
-msgid "Parasitic"
 msgstr ""
 
 msgctxt "trait"
@@ -8130,84 +8010,20 @@ msgid "Present"
 msgstr "현재"
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr "멍멍이"
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr "제한구역"
-
-msgctxt "trait"
-msgid "Row"
-msgstr "칸"
-
-msgctxt "trait"
 msgid "Scientist"
 msgstr "과학자"
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr "맞춤형 조사자"
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr "경사"
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr "병사"
-
-msgctxt "trait"
-msgid "Stop"
-msgstr "거기 서!"
-
-msgctxt "trait"
-msgid "Table"
-msgstr "탁자"
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr "배신자"
-
-msgctxt "trait"
-msgid "Tulgey Wood"
-msgstr "털진 숲"
 
 msgctxt "trait"
 msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
+msgid "Double"
 msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr "날씨"
-
-msgctxt "trait"
-msgid "What? No"
-msgstr "뭐? 안 돼"
 
 #, javascript-format
 msgctxt "filter"
