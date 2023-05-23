@@ -108,7 +108,7 @@ export interface TranslationData {
 }
 
 const HEADER_SELECT = {
-  [SORT_BY_TYPE_SLOT]: 'c.sort_by_type * 1000 + c.sort_by_slot as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot',
+  [SORT_BY_TYPE_SLOT]: '(c.sort_by_type * 1000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent',
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
   [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 1000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, c.pack_name as headerPackName',
   [SORT_BY_FACTION_XP]: 'c.sort_by_faction * 1000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp',
@@ -197,7 +197,11 @@ export class PartialCard {
       let header = raw.headerTitle;
       switch (sort) {
         case SORT_BY_TYPE_SLOT:
-          header = raw.headerSlot ? `${raw.headerTitle}: ${raw.headerSlot}` : raw.headerTitle;
+          if (raw.headerPermanent) {
+            header = `${raw.headerTitle}: ${t`Permanent`}`;
+          } else {
+            header = raw.headerSlot ? `${raw.headerTitle}: ${raw.headerSlot}` : raw.headerTitle;
+          }
           break;
         case SORT_BY_FACTION_PACK:
           header = `${raw.headerTitle} - ${raw.headerPackName}`;
@@ -1172,6 +1176,9 @@ export default class Card {
     if (card.hidden && card.linked_card) {
       return Card.slotPosition(card.linked_card);
     }
+    if (card.permanent) {
+      return 99;
+    }
     if (card.real_slot) {
       switch(card.real_slot) {
         case 'Hand':
@@ -1203,7 +1210,7 @@ export default class Card {
         case 'Arcane. Accessory':
           return 14;
         default:
-          return 15;
+          return 16;
       }
     }
     return 100;
@@ -1563,6 +1570,7 @@ export default class Card {
           break;
         case SORT_BY_SLOT:
           result.push({ s: 'c.sort_by_slot', direction: 'ASC' });
+          result.push({ s: 'c.permanent', direction: 'DESC', });
           break;
         case SORT_BY_ENCOUNTER_SET:
           sortByName = false;

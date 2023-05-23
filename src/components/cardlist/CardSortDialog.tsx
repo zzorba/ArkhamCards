@@ -7,13 +7,11 @@ import DraggableList, { DraggableListRenderInfo } from '@components/core/Draggab
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
-  SORT_BY_FACTION_PACK,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-  SORT_BY_FACTION_XP,
   SORT_BY_XP,
   SORT_BY_CYCLE,
   SORT_BY_CARD_ID,
