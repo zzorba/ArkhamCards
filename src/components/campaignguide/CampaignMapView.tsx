@@ -836,7 +836,7 @@ function LocationContent({
         { !!dossier.length && status !== 'locked' && (
           <View>
             <View style={space.paddingBottomS}>
-              <CardDetailSectionHeader title={ngettext(msgid`Information`, `Information`, dossier.length)} />
+              <CardDetailSectionHeader title={t`Information`} />
             </View>
             { map(dossier, (entry, idx) => (
               <DossierComponent key={idx} dossier={entry} idx={idx} showCity={showCity} />
