@@ -6094,10 +6094,10 @@ msgid "Class Choice"
 msgstr "역할군 선택"
 
 msgid "Class"
-msgstr ""
+msgstr "역할군"
 
 msgid "Selected"
-msgstr ""
+msgstr "선택함"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8225,43 +8225,43 @@ msgstr "VS"
 
 msgctxt "sort"
 msgid "Type"
-msgstr ""
+msgstr "종류"
 
 msgctxt "sort"
 msgid "Class"
-msgstr ""
+msgstr "역할군"
 
 msgctxt "sort"
 msgid "Cost"
-msgstr ""
+msgstr "비용"
 
 msgctxt "sort"
 msgid "Pack"
-msgstr ""
+msgstr "팩"
 
 msgctxt "sort"
 msgid "Cycle"
-msgstr ""
+msgstr "사이클"
 
 msgctxt "sort"
 msgid "Title"
-msgstr ""
+msgstr "명칭"
 
 msgctxt "sort"
 msgid "Encounter Set"
-msgstr ""
+msgstr "조우 세트"
 
 msgctxt "sort"
 msgid "Level"
-msgstr ""
+msgstr "레벨"
 
 msgctxt "sort"
 msgid "Card number"
-msgstr ""
+msgstr "카드 번호"
 
 msgctxt "sort"
 msgid "Slot"
-msgstr ""
+msgstr "슬롯"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
