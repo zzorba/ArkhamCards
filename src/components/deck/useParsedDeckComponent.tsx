@@ -188,7 +188,7 @@ function deckToSections(
       const assets = sectionHeaderTitle('asset', assetCount);
       result.push({
         id: `assets${mode ? `-${mode}` : ''}`,
-        subTitle: sumXp ? `— ${assets} · ${xp} · ${assetCount} —` : `— ${assets} · ${assetCount} —`,
+        subTitle: sumXp ? `— ${assets} · ${assetCount} · ${xp} —` : `— ${assets} · ${assetCount} —`,
         cards: [],
       });
     }
@@ -254,7 +254,7 @@ function deckToSections(
       const xp = xpString(sumXp ? calculateSideDeckXp(cardIds) : 0);
       result.push({
         id: `${cardType}-${mode ? `-${mode}` : ''}`,
-        subTitle: sumXp ? `— ${localizedName} · ${xp} · ${count} —` : `— ${localizedName} · ${count} —`,
+        subTitle: sumXp ? `— ${localizedName} · ${count} · ${xp} —` : `— ${localizedName} · ${count} —`,
         cards: map(cardIds, c => {
           return {
             ...c,
