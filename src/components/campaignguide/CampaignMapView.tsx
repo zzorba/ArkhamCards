@@ -706,7 +706,7 @@ function LocationContent({
     })
   }, [location.dossier, unlockedDossiers]);
   const travelWithoutStopButton = useMemo(() => {
-    if (!setCurrentLocation || !nextStatusReportTime || (currentTime + travelDistance) < nextStatusReportTime) {
+    if (!setCurrentLocation) {
       return null;
     }
     const triggeredReports = map(
@@ -722,11 +722,11 @@ function LocationContent({
         icon="map"
         color="light_gray"
         title={t`Travel here without stopping`}
-        detail={ngettext(
+        detail={triggeredReports.length ? ngettext(
           msgid`Read status report: ${reportSymbols}`,
           `Read status reports: ${reportSymbols}`,
           triggeredReports.length,
-        )}
+        ) : t`Take the scenic route to mark time`}
         onPress={makeCurrentTransit}
       />
     );
