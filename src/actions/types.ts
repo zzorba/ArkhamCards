@@ -744,6 +744,12 @@ export interface SetLanguageChoiceAction {
   choiceLang: string;
 }
 
+export const SET_AUDIO_LANGUAGE_CHOICE = 'SET_AUDIO_LANGUAGE_CHOICE';
+export interface SetAudioLanguageChoiceAction {
+  type: typeof SET_AUDIO_LANGUAGE_CHOICE;
+  choiceLang: string;
+}
+
 export const SYNC_DISMISS_ONBOARDING = 'SYNC_DISMISS_ONBOARDING';
 export interface SyncDismissOnboardingAction {
   type: typeof SYNC_DISMISS_ONBOARDING;

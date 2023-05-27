@@ -21,7 +21,8 @@ import space, { m } from '@styles/space';
 import { narrationPlayer, useAudioAccess, useCurrentTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 import { useDialog } from '@components/deck/dialogs';
-import LanguageContext from '@lib/i18n/LanguageContext';
+import { useSelector } from 'react-redux';
+import { getAudioLangPreference } from '@reducers/index';
 
 
 function Divider() {
@@ -218,7 +219,7 @@ function showRuDonate() {
 }
 
 function PlayerView({ style }: PlayerProps) {
-  const { lang } = useContext(LanguageContext);
+  const lang = useSelector(getAudioLangPreference);
   const { colors, typography } = useContext(StyleContext);
   const track = useCurrentTrackDetails();
   const queue = useTrackPlayerQueue();

@@ -858,10 +858,39 @@ export const getLangChoice = createSelector(
   }
 );
 
+export const getAudioLangChoice = createSelector(
+  (state: AppState) => state.settings.audioLang,
+  (audioLang: string | undefined) => {
+    return audioLang || 'system';
+  }
+);
+
 export const getLangPreference = createSelector(
   (state: AppState) => state.settings.lang,
   (state: AppState) => state.cards.lang,
   (settingsLang, cardsLang): string => {
+    if (settingsLang === 'system') {
+      return getSystemLanguage();
+    }
+    if (settingsLang) {
+      return settingsLang;
+    }
+    if (cardsLang) {
+      return cardsLang;
+    }
+    return getSystemLanguage();
+  }
+);
+
+
+export const getAudioLangPreference = createSelector(
+  (state: AppState) => state.settings.lang,
+  (state: AppState) => state.cards.lang,
+  (state: AppState) => state.settings.audioLang,
+  (settingsLang, cardsLang, audioLang): string => {
+    if (audioLang && audioLang !== 'system') {
+      return audioLang;
+    }
     if (settingsLang === 'system') {
       return getSystemLanguage();
     }

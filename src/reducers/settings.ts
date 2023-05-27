@@ -33,6 +33,8 @@ import {
   UpdateCardSortAction,
   UPDATE_CARD_SORT,
   BROWSE_CARDS,
+  SET_AUDIO_LANGUAGE_CHOICE,
+  SetAudioLanguageChoiceAction,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -45,6 +47,7 @@ interface SettingsState {
   alphabetizeEncounterSets?: boolean;
   colorblind?: boolean;
   lang?: string;
+  audioLang?: string;
   theme?: 'dark' | 'light';
   fontScale?: number;
   justifyContent?: boolean;
@@ -80,6 +83,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   colorblind: false,
   ignore_collection: false,
   lang: 'system',
+  audioLang: undefined,
   fontScale: undefined,
   justifyContent: false,
   sortRespectQuotes: false,
@@ -100,6 +104,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 
 type SettingAction =
   SetLanguageChoiceAction |
+  SetAudioLanguageChoiceAction |
   SetCurrentTabooSetAction |
   SetTabooSetAction |
   SetMiscSettingAction |
@@ -163,6 +168,13 @@ export default function(
       return {
         ...state,
         lang: action.choiceLang,
+      };
+    }
+
+    case SET_AUDIO_LANGUAGE_CHOICE: {
+      return {
+        ...state,
+        audioLang: action.choiceLang,
       };
     }
     case SET_TABOO_SET: {

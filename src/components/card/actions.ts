@@ -16,6 +16,8 @@ import {
   CardSetSchemaVersionAction,
   CardRequestFetchAction,
   CARD_REQUEST_FETCH,
+  SET_AUDIO_LANGUAGE_CHOICE,
+  SetAudioLanguageChoiceAction,
 } from '@actions/types';
 import { getCardLang, AppState } from '@reducers/index';
 import { syncCards } from '@lib/publicApi';
@@ -34,6 +36,14 @@ function cardsCache(state: AppState, lang: string): undefined | CardCache {
 export function setLanguageChoice(choiceLang: string): SetLanguageChoiceAction {
   return {
     type: SET_LANGUAGE_CHOICE,
+    choiceLang,
+  };
+}
+
+
+export function setAudioLanguageChoice(choiceLang: string): SetAudioLanguageChoiceAction {
+  return {
+    type: SET_AUDIO_LANGUAGE_CHOICE,
     choiceLang,
   };
 }

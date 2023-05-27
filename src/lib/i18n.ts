@@ -6,14 +6,22 @@ export const ALL_LANGUAGES = [
   'en',
   'de',
   'fr',
-  'it',
+  'pl',
   'zh',
   'ko',
+  'it',
   'pt',
-  'uk',
-  'pl',
   'vi',
+  'uk',
 ];
+
+export const AUDIO_LANGUAGES = [
+  'en',
+  'ru',
+  'de',
+  'pl',
+  'es',
+]
 
 export function getSystemLanguage() {
   const systemLang = findBestAvailableLanguage(ALL_LANGUAGES);

@@ -3,9 +3,9 @@ import { find, map } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { requestFetchCards, setLanguageChoice } from '@components/card/actions';
-import { AppState } from '@reducers';
-import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
+import { requestFetchCards, setAudioLanguageChoice, setLanguageChoice } from '@components/card/actions';
+import { AppState, getAudioLangChoice } from '@reducers';
+import { getSystemLanguage, localizedName, ALL_LANGUAGES, AUDIO_LANGUAGES } from '@lib/i18n';
 import { ShowAlert, usePickerDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -16,6 +16,21 @@ function languages() {
   return [
     { title: t`Default (${systemLanguage})`, value: 'system', valueLabel: systemLanguage },
     ...map(ALL_LANGUAGES, lang => {
+      const label = localizedName(lang);
+      return {
+        title: label,
+        value: lang,
+        valueLabel: label,
+      };
+    }),
+  ];
+}
+
+function audioLanguages(appLang: string) {
+  const appLanguage = localizedName(appLang);
+  return [
+    { title: t`App language: ${appLanguage}`, value: 'system', valueLabel: appLanguage },
+    ...map(AUDIO_LANGUAGES, lang => {
       const label = localizedName(lang);
       return {
         title: label,
@@ -177,6 +192,45 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
         icon="world"
         editable={!cardsLoading}
         loading={cardsLoading}
+        onPress={showDialog}
+        valueLabel={find(items, option => option.value === selectedValue)?.valueLabel || 'Unknown'}
+        first={first}
+        last={last}
+      />
+      { dialog }
+    </>
+  );
+}
+
+
+export function NarrationLanguagePicker({ first, last }: { first?: boolean; last?: boolean; }) {
+  const { lang } = useContext(LanguageContext);
+  const langChoice = useSelector(getAudioLangChoice);
+  const dispatch = useDispatch();
+  const appLang = useSelector((state: AppState) => !state.settings.lang || state.settings.lang === 'system' ? getSystemLanguage() : state.settings.lang);
+  const useAppLang = useSelector((state: AppState) => state.settings.audioLang === 'system');
+  const items = useMemo(() => audioLanguages(appLang), [lang]);
+  const onLanguageChange = useCallback((newLang: string) => {
+    dispatch(setAudioLanguageChoice(newLang));
+  }, [dispatch]);
+
+  const selectedValue = useMemo(() => {
+    return useAppLang ? 'system' : langChoice;
+  }, [useAppLang, langChoice]);
+
+  const [dialog, showDialog] = usePickerDialog<string>({
+    title: t`Narration Language`,
+    items,
+    selectedValue,
+    onValueChange: onLanguageChange,
+  });
+
+  return (
+    <>
+      <DeckPickerStyleButton
+        title={t`Narration Language`}
+        icon="voiceover"
+        editable
         onPress={showDialog}
         valueLabel={find(items, option => option.value === selectedValue)?.valueLabel || 'Unknown'}
         first={first}

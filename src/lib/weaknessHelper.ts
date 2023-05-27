@@ -1,4 +1,4 @@
-import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
+import { filter, find, flatMap, head, map, range, random, sumBy } from 'lodash';
 
 import { WeaknessSet } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
@@ -66,15 +66,19 @@ export function drawWeakness(
   criteria: WeaknessCriteria,
   realTraits: boolean
 ): Card | undefined {
-  const cards = shuffle(
+  const uniqueCards = matchingWeaknesses(investigator, set, allWeaknesses, criteria, realTraits);
+  const cards = (
     flatMap(
-      matchingWeaknesses(investigator, set, allWeaknesses, criteria, realTraits),
+      uniqueCards,
       card => {
         return map(
           range(0, (card.quantity || 0) - (set.assignedCards[card.code] || 0)),
           () => card);
       }));
-  return head(cards);
+  if (cards.length < 2) {
+    return head(cards);
+  }
+  return cards[random(0, cards.length - 1, false)];
 }
 
 export default {

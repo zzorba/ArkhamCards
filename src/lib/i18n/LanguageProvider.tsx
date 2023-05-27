@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import LanguageContext from './LanguageContext';
 import { getSystemLanguage } from '@lib/i18n';
-import { getLangChoice, hasDissonantVoices } from '@reducers';
+import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@reducers';
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
 
@@ -65,16 +65,17 @@ export default function LanguageProvider({ children }: Props) {
   }, []);
   const langChoice = useSelector(getLangChoice);
   const lang = langChoice === 'system' ? systemLang : langChoice;
+  const audioLangChoice = useSelector(getAudioLangPreference);
 
   const hasDV = useSelector(hasDissonantVoices);
   const [profile] = useMyProfile(true);
   const audioLang = useMemo(() => {
-    if (hasDV) {
-      // DV sign in controls everything here.
-      return 'dv';
-    }
-    switch (lang) {
-      // these are all free
+    switch (audioLangChoice) {
+      case 'en':
+        if (hasDV) {
+          return 'dv';
+        }
+        return undefined;
       case 'ru':
         return 'ru';
       case 'pl':
@@ -91,7 +92,7 @@ export default function LanguageProvider({ children }: Props) {
       default:
         return undefined;
     }
-  }, [hasDV, profile, lang]);
+  }, [hasDV, profile, audioLangChoice]);
 
   const context = useMemo(() => {
     const majorVersionIOS = Platform.OS === 'ios' ? parseInt(Platform.Version, 10) : 0;
