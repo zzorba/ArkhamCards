@@ -5906,13 +5906,13 @@ msgstr "Informationen"
 
 #, javascript-format
 msgid "Departing from ${ location }"
-msgstr ""
+msgstr "Abreise aus ${ location }"
 
 msgid "Customization upgrades"
-msgstr ""
+msgstr "Individualisierbarkeits-Verbesserungen"
 
 msgid "Special discounts"
-msgstr ""
+msgstr "Sonderrabatte"
 
 #, javascript-format
 msgid ""
@@ -5922,7 +5922,11 @@ msgid_plural ""
 "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
 "without spending experience."
 msgstr[0] ""
+"${ remainingFreeCards } zusätzliche Level 0 Karte darf zum Deck "
+"hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
 msgstr[1] ""
+"Bis zu ${ remainingFreeCards } zusätzliche Level 0 Karten dürfen zum Deck "
+"hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
 
 msgid "Difficulty override"
 msgstr ""
@@ -6113,6 +6117,10 @@ msgid ""
 "location and spend additional time equal to the normal experience for "
 "playing that side story."
 msgstr ""
+"Wenn du eine Nebengeschichte in diese Kampagne integrieren willst, dann "
+"reise zu diesem Ort auf der Weltkarte und gib zusätzliche Zeit in Höhe der "
+"normalen Erfahrungspunkte aus, die für das Spielen der Nebengeschichte "
+"angegeben sind (anstatt die geforderten Erfahrungspunkte auszugeben)."
 
 msgid "Use expedited ticket"
 msgstr ""
@@ -6166,7 +6174,7 @@ msgid "Secret / Locked"
 msgstr "Geheim / Verschlossen"
 
 msgid "Cannot stop here until unlocked"
-msgstr "Kann hier nicht anhalten, bis es freigeschaltet wurde"
+msgstr "Muss freigeschaltet werden"
 
 msgid "Select cards to exile"
 msgstr ""
