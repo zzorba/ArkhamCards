@@ -8,7 +8,7 @@ import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming, interpo
 import { t } from 'ttag';
 
 import ToggleButton from '@components/core/ToggleButton';
-import { isBig, s, xs } from '@styles/space';
+import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
 

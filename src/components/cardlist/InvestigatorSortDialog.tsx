@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 
 import { useOptionDialog } from '@components/nav/helper';
 import {
+  SORT_BY_CARD_ID,
   SORT_BY_FACTION,
   SORT_BY_PACK,
   SORT_BY_TITLE,
@@ -13,7 +14,7 @@ import {
 function sortToCopy(sort: SortType) {
   switch (sort) {
     case SORT_BY_TITLE: return t`Title`;
-    case SORT_BY_FACTION: return t`Faction`;
+    case SORT_BY_FACTION: return t`Class`;
     case SORT_BY_PACK: return t`Pack`;
     default:
       return 'Unknown Sort';
@@ -21,8 +22,8 @@ function sortToCopy(sort: SortType) {
 }
 
 export function useInvestigatorSortDialog(
-  sort: SortType,
-  sortChanged: (sort: SortType) => void
+  selection: SortType[],
+  sortChanged: (sort: SortType[]) => void
 ) {
   const [sortCopy, sorts] = useMemo(() => {
     const sorts: SortType[] = [
@@ -37,10 +38,14 @@ export function useInvestigatorSortDialog(
   }, []);
   return useOptionDialog(
     t`Sort by`,
-    findIndex(sorts, x => x === sort),
+    findIndex(sorts, x => x === selection[0]),
     sortCopy,
     (index: number) => {
-      sortChanged(sorts[index]);
+      switch (sorts[index]) {
+        case SORT_BY_TITLE: sortChanged([SORT_BY_TITLE]); break;
+        case SORT_BY_FACTION: sortChanged([SORT_BY_FACTION, SORT_BY_TITLE]); break;
+        case SORT_BY_PACK: sortChanged([SORT_BY_PACK, SORT_BY_CARD_ID]); break;
+      }
     }
   );
 }

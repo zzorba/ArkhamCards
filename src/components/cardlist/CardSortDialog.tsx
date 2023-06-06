@@ -1,42 +1,47 @@
-import { findIndex, map } from 'lodash';
-import { t } from 'ttag';
-import { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { Platform, TouchableOpacity, View, Pressable, UIManager, Touchable } from 'react-native';
+import { map, flatMap, filter, find, takeWhile } from 'lodash';
+import { t, c } from 'ttag';
 
+import DraggableList, { DraggableListRenderInfo } from '@components/core/DraggableList';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
-  SORT_BY_FACTION_PACK,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-  SORT_BY_FACTION_XP,
-  SORT_BY_FACTION_XP_TYPE_COST,
+  SORT_BY_XP,
+  SORT_BY_CYCLE,
+  SORT_BY_CARD_ID,
+  SORT_BY_SLOT,
 } from '@actions/types';
-import { useOptionDialog } from '@components/nav/helper';
-
+import { useDialog } from '@components/deck/dialogs';
+import NewDialog from '@components/core/NewDialog';
 
 function sortToCopy(sort: SortType): string {
   switch (sort) {
     case SORT_BY_TYPE:
-      return t`Type`;
+      return c('sort').t`Type`;
     case SORT_BY_FACTION:
-      return t`Faction, Name`;
-    case SORT_BY_FACTION_PACK:
-      return t`Faction, Pack`;
-    case SORT_BY_FACTION_XP:
-      return t`Faction, Level, Type`;
-    case SORT_BY_FACTION_XP_TYPE_COST:
-      return t`Faction, Level, Type, Cost`;
+      return c('sort').t`Class`;
     case SORT_BY_COST:
-      return t`Cost`;
+      return c('sort').t`Cost`;
     case SORT_BY_PACK:
-      return t`Pack`;
+      return c('sort').t`Pack`;
+    case SORT_BY_CYCLE:
+      return c('sort').t`Cycle`;
     case SORT_BY_TITLE:
-      return t`Title`;
+      return c('sort').t`Title`;
     case SORT_BY_ENCOUNTER_SET:
-      return t`Encounter Set`;
+      return c('sort').t`Encounter Set`;
+    case SORT_BY_XP:
+      return c('sort').t`Level`;
+    case SORT_BY_CARD_ID:
+      return c('sort').t`Card number`;
+    case SORT_BY_SLOT:
+      return c('sort').t`Slot`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = sort;
@@ -44,38 +49,97 @@ function sortToCopy(sort: SortType): string {
     }
   }
 }
+if (Platform.OS === 'android') {
+  UIManager.setLayoutAnimationEnabledExperimental &&
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
+interface SortItem {
+  type: 'sort';
+  sort: SortType;
+}
+interface HeaderItem {
+  type: 'header';
+  title: string;
+}
+type Item = SortItem | HeaderItem;
 
 export function useSortDialog(
-  sortChanged: (sort: SortType) => void,
-  selectedSort: SortType,
+  sortChanged: (sort: SortType[]) => void,
+  selectedSorts: SortType[],
   hasEncounterCards: boolean
-) {
-  const [sortCopy, sorts] = useMemo(() => {
+): [React.ReactNode, () => void] {
+  const items: Item[] = useMemo(() => {
     const sorts: SortType[] = [
       SORT_BY_TYPE,
+      SORT_BY_SLOT,
       SORT_BY_FACTION,
-      SORT_BY_FACTION_PACK,
-      SORT_BY_FACTION_XP,
-      SORT_BY_FACTION_XP_TYPE_COST,
       SORT_BY_COST,
+      SORT_BY_CYCLE,
       SORT_BY_PACK,
       SORT_BY_TITLE,
+      SORT_BY_XP,
+      SORT_BY_CARD_ID,
     ];
-    if (hasEncounterCards || selectedSort === SORT_BY_ENCOUNTER_SET) {
+    if (hasEncounterCards || find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       sorts.push(SORT_BY_ENCOUNTER_SET);
     }
+    const chosenSorts: SortItem[] = map(selectedSorts, sort => { return { type: 'sort', sort }; });
+    const otherSorts: SortItem[] = map(filter(sorts, s => !find(selectedSorts, s2 => s2 === s)),  sort => { return { type: 'sort', sort }; });
+    const availableHeader: HeaderItem = { type: 'header', title: t`Other` };
     return [
-      map(sorts, sortToCopy),
-      sorts,
+      ...chosenSorts,
+      ...(otherSorts.length ? [availableHeader] : []),
+      ...otherSorts,
     ];
-  }, [hasEncounterCards, selectedSort]);
-  return useOptionDialog(
-    t`Sort by`,
-    findIndex(sorts, x => x === selectedSort),
-    sortCopy,
-    (index: number) => {
-      sortChanged(sorts[index]);
+  }, [hasEncounterCards, selectedSorts]);
+  const onChanged = useCallback((data: Item[]) => {
+    const newItems = flatMap(takeWhile(data, (item) => item.type !== 'header'), (item) => item.type === 'sort' ? [item.sort] : []);
+    sortChanged(newItems);
+  }, [sortChanged]);
+
+  const renderItem = useCallback(({ item, getIndex, drag }: DraggableListRenderInfo<Item>) => {
+    if (item.type === 'header') {
+      return (
+        <NewDialog.SectionHeader
+          key={item.title}
+          text={item.title}
+        />
+      );
     }
-  );
+    const index = getIndex() || 0;
+    const content = (
+      <NewDialog.LineItem
+        iconName="menu"
+        text={sortToCopy(item.sort)}
+        last={index === items.length - 1 || items[index + 1]?.type === 'header'}
+      />
+    );
+    return (
+      <Pressable
+        key={item.sort}
+        onPressIn={drag}
+      >
+        {content}
+      </Pressable>
+    );
+  }, [items]);
+  const { dialog, showDialog} = useDialog({
+    title: t`Sort by`,
+    allowDismiss: true,
+    alignment: 'bottom',
+    maxHeightPercent: 0.80,
+    content: (
+      <View>
+        <NewDialog.SectionHeader text={t`Selected`} />
+        <DraggableList
+          data={items}
+          onChanged={onChanged}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.type == 'sort' ? item.sort : item.title}
+        />
+      </View>
+    ),
+  });
+  return [dialog, showDialog];
 }

@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { find } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';
@@ -9,7 +10,17 @@ import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt, BROWSE_CARDS_WITH_DUPLICATES_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY } from '@data/sqlite/query';
+import {
+  BASIC_QUERY,
+  BROWSE_CARDS_QUERY,
+  MYTHOS_CARDS_QUERY,
+  BROWSE_CARDS_WITH_DUPLICATES_QUERY,
+  NO_CUSTOM_CARDS_QUERY,
+  NO_DUPLICATES_QUERY,
+  where,
+  combineQueries,
+  combineQueriesOpt,
+} from '@data/sqlite/query';
 import Card, { searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -32,7 +43,7 @@ interface Props {
   baseQuery?: (filters: FilterState | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
-  selectedSort?: SortType;
+  selectedSorts?: SortType[];
   filters?: FilterState;
   mythosMode?: boolean;
   visible: boolean;
@@ -46,6 +57,7 @@ interface Props {
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
+  filterId: string;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -216,7 +228,7 @@ export default function({
   baseQuery,
   mythosToggle,
   showNonCollection,
-  selectedSort,
+  selectedSorts,
   filters,
   mythosMode,
   toggleMythosMode,
@@ -227,6 +239,7 @@ export default function({
   mode,
   initialSort,
   includeDuplicates,
+  filterId,
 }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
@@ -333,7 +346,7 @@ export default function({
     if (baseQuery) {
       queryParts.push(baseQuery(filters));
     }
-    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+    if (find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     if (!showCustomContent) {
@@ -347,9 +360,9 @@ export default function({
       queryParts,
       'and'
     );
-  }, [baseQuery, filters, mythosToggle, selectedSort, mythosMode, includeDuplicates, showCustomContent]);
+  }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
-  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId: deckId?.uuid || componentId, baseQuery });
+  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
   const renderFabIcon = useCallback(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />
@@ -385,12 +398,13 @@ export default function({
           <DbCardResultList
             componentId={componentId}
             deckId={deckId}
+            filterId={filterId}
             query={query}
             filters={filters}
             filterQuery={filterQuery || undefined}
             textQuery={textQuery}
             searchTerm={searchTerm}
-            sort={selectedSort}
+            sorts={selectedSorts}
             investigator={investigator}
             handleScroll={handleScroll}
             showHeader={showHeader}

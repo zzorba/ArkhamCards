@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -43,42 +43,6 @@ msgstr "Inconnu"
 
 msgid "Investigator"
 msgstr "Investigateurs"
-
-msgid "Asset: Hand"
-msgstr "Soutien : Main"
-
-msgid "Asset: Hand x2"
-msgstr "Soutien : Main x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Soutien : Main – Arcane"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Soutien : Corps – Main x2"
-
-msgid "Asset: Accessory"
-msgstr "Soutien : Accessoire"
-
-msgid "Asset: Ally"
-msgstr "Soutien : Allié"
-
-msgid "Asset: Arcane"
-msgstr "Soutien : Arcane"
-
-msgid "Asset: Arcane x2"
-msgstr "Soutien : Arcane x2"
-
-msgid "Asset: Body"
-msgstr "Soutien : Corps"
-
-msgid "Asset: Permanent"
-msgstr "Soutien : Permanent"
-
-msgid "Asset: Tarot"
-msgstr "Soutien : Tarot"
-
-msgid "Asset: Other"
-msgstr "Soutien : Autre"
 
 msgid "Event"
 msgstr "Événement"
@@ -178,9 +142,6 @@ msgstr "Trier par"
 
 msgid "Title"
 msgstr "Nom"
-
-msgid "Faction"
-msgstr "Classe"
 
 msgid "Pack"
 msgstr "Collection"
@@ -1094,12 +1055,6 @@ msgstr ""
 "Copiez ce deck afin de pouvoir l’utiliser dans une autre campagne ou pour "
 "l'améliorer d'autres façons."
 
-msgid "Type"
-msgstr "Type"
-
-msgid "Encounter Set"
-msgstr "Set de rencontre"
-
 msgid "Investigating for clues"
 msgstr "Enquête pour trouver des indices"
 
@@ -1483,7 +1438,6 @@ msgstr ""
 "Vous pouvez choisir de toujours voir les Tabous et les decks construits "
 "avec eux dans les paramètres."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Niveau ${level}"
 
@@ -1818,9 +1772,6 @@ msgstr "Aucun soutien prenant un emplacement d'allié n'est autorisé."
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Il y a trop de cartes « extra-classe » pour l'effet de Versatile."
-
-msgid "Asset: Ally. Arcane"
-msgstr "Soutien : Allié – Arcane"
 
 msgid "Arcane x2"
 msgstr "Arcane x2"
@@ -2182,7 +2133,7 @@ msgid ""
 "logEntry.text }</i>."
 msgstr ""
 "Dans votre Carnet de Campagne, sous la mention « ${ logEntry.section } », "
-"notez que <i>${ logEntry.text }</i>."
+"notez <i>${ logEntry.text }</i>."
 
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Ajoutez un pion ${ tokenString } dans la réserve du Chaos."
@@ -2254,12 +2205,6 @@ msgstr "Supprimer ce deck"
 
 msgid "Parallel"
 msgstr "Parallèle"
-
-msgid "Faction, Name"
-msgstr "Classe, Nom"
-
-msgid "Faction, Pack"
-msgstr "Classe, Paquet"
 
 msgid "Random location"
 msgstr "Lieu aléatoire"
@@ -3225,7 +3170,7 @@ msgid "Latest upgrade"
 msgstr "Dernière amélioration"
 
 msgid "Add cards"
-msgstr "Ajouter des cartes"
+msgstr "Ajout de cartes"
 
 #, javascript-format
 msgid "Deck #${ deck.id }"
@@ -3829,9 +3774,6 @@ msgstr ""
 "Si vous rencontrez des problèmes avec cette migration, veuillez contacter "
 "l'adresse arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Soutien : Corps – Arcane"
-
 msgid "Color blind friendly icons"
 msgstr "Icônes adaptées aux daltoniens"
 
@@ -3928,7 +3870,7 @@ msgstr ""
 "réserve du Chaos"
 
 msgid "Sealed tokens"
-msgstr "Pions scellés"
+msgstr "Choisissez les pions à sceller"
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
@@ -3938,9 +3880,6 @@ msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
 "Les decks avec la Connaissance Ancestrale doivent inclure au moins 10 "
 "compétences."
-
-msgid "Faction, Level, Type"
-msgstr "Classe, Niveau, Type"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4393,7 +4332,7 @@ msgid ""
 "logEntry.text }</i>"
 msgstr ""
 "Dans votre Carnet de Campagne, sous la mention « ${ logEntry.section } », "
-"notez que <i>${ logEntry.text }</i>"
+"notez <i>${ logEntry.text }</i>"
 
 msgid "Unarchive campaign"
 msgstr "Désarchiver cette campagne"
@@ -4583,9 +4522,6 @@ msgstr "Cacher les probabilités de piocher un pion Béni/Maudit"
 msgid "Show Bless/Curse Odds"
 msgstr "Afficher les probabilités de Béni/Maudit"
 
-msgid "Faction, Level, Type, Cost"
-msgstr "Classe, Niveau, Type, Coût"
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Vous ne pouvez pas avoir plus de 5 cartes Survivant de niveau 0."
 
@@ -4602,9 +4538,6 @@ msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr ""
 "Connectez-vous à Arkham Cards dans les Paramètres pour activer cette "
 "fonctionnalité."
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Soutien : Main x2 – Arcane"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -5548,7 +5481,7 @@ msgstr ""
 "Quand c'est terminé, vous pouvez essayer de charger le deck à nouveau."
 
 msgid "Other investigator cards"
-msgstr "Autres cartes d'investigateur"
+msgstr "Cartes alternatives"
 
 msgid "Ultimatum of Chaos"
 msgstr "Ultimatum du Chaos"
@@ -5631,10 +5564,10 @@ msgstr ""
 "continuer la préparation."
 
 msgid "Hand size:"
-msgstr "Taille de la main :"
+msgstr "Cartes en main :"
 
 msgid "Choose packs"
-msgstr "Choix de paquets"
+msgstr "Paquets"
 
 msgid ""
 "This tool lets you build a deck progressively, choosing one card at a time "
@@ -5710,7 +5643,7 @@ msgstr ""
 "avec l'application."
 
 msgid "Draft Cards"
-msgstr "Préparer les Cartes"
+msgstr "Préparation"
 
 msgid "Deck id copied!"
 msgstr "Identifiant du deck copié !"
@@ -5719,7 +5652,7 @@ msgid "Link to deck copied!"
 msgstr "Lien vers le deck copié !"
 
 msgid "Build a deck randomly"
-msgstr "Construire"
+msgstr "Deck aléatoire"
 
 msgid "A single core set is always included"
 msgstr "La boîte de base est toujours intégrée"
@@ -5784,7 +5717,7 @@ msgid "Two cards, one upright and one reversed."
 msgstr "Deux cartes : une à l'endroit et une à l'envers."
 
 msgid "Reveal three upright cards, choose two to reverse."
-msgstr "Révélez trois cartes et choisissez-en deux à inverser."
+msgstr "Révélez trois cartes et inversez-en deux."
 
 msgid "A reading for the full campaign."
 msgstr "Un tirage pour toute la campagne."
@@ -6238,7 +6171,7 @@ msgid "Cost: ${ card.cost }"
 msgstr "Coût : ${ card.cost }"
 
 msgid "Grants access to previewed player cards"
-msgstr "Vous donne un aperçu de ces cartes Joueur"
+msgstr "Ces cartes apparaîtront dans l'application"
 
 msgid "Key"
 msgstr "Clé"
@@ -6433,10 +6366,10 @@ msgid "Cannot stop here until unlocked"
 msgstr "Impossible de s'arrêter ici avant d'avoir déverrouillé"
 
 msgid "Select cards to exile"
-msgstr "Sélectionnez les cartes à exiler"
+msgstr "Sélectionnez les cartes à bannir"
 
 msgid "Exile other cards"
-msgstr "Exilez d'autres cartes"
+msgstr "Bannir d'autres cartes"
 
 msgid "Name of Paradimensional Artifact"
 msgstr "Nom de l'Artefact Paradimensionnel"
@@ -6594,9 +6527,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
+msgid "Class"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Aucun"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8004,10 +7947,6 @@ msgid "Historical Society"
 msgstr "Société des Historiens"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "Humanoïde"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "Humanoïde"
 
@@ -8090,10 +8029,6 @@ msgstr "Leng"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "Loge"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "Aliéné"
 
 msgctxt "trait"
 msgid "Madness"
@@ -8592,20 +8527,8 @@ msgid "Zoog"
 msgstr "Zoog"
 
 msgctxt "trait"
-msgid "AI"
-msgstr "I.A."
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr "Béni ?"
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "Interrompu"
-
-msgctxt "trait"
-msgid "Card"
-msgstr "Carte"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -8620,26 +8543,6 @@ msgid "Lair"
 msgstr "Antre"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr "Nostalgie II"
-
-msgctxt "trait"
-msgid "Retired"
-msgstr "Retraité"
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr "Royauté"
-
-msgctxt "trait"
-msgid "Saga"
-msgstr "Aventure Épique"
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr "Ombre"
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "Synergie"
 
@@ -8648,44 +8551,8 @@ msgid "Unbroken"
 msgstr "Ininterrompu"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr "Pays des Merveilles"
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr "Déterminé"
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr "Allié ? Créature"
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr "Vilain chien"
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr "Chic"
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr ""
 
 msgctxt "trait"
 msgid "Coterie"
@@ -8696,10 +8563,6 @@ msgid "Dilemma"
 msgstr "Dilemme"
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr "Eidolon"
 
@@ -8708,32 +8571,8 @@ msgid "Elder Thing"
 msgstr "Chose Très Ancienne"
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr "Chiens Domestiques"
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr "Paire de chaussures, enfin plus vraiment"
-
-msgctxt "trait"
 msgid "Glacier"
 msgstr "Glacier"
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
-msgstr ""
 
 msgctxt "trait"
 msgid "Mainland"
@@ -8748,22 +8587,6 @@ msgid "Mountains"
 msgstr "Montagnes"
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr "Passé"
 
@@ -8776,84 +8599,20 @@ msgid "Present"
 msgstr "Présent"
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr "Chiot"
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
 msgstr "Scientifique"
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr "C'est vilain"
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
-msgstr ""
 
 msgctxt "trait"
 msgid "Uncharted"
 msgstr "Inexploré"
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
+msgid "Double"
 msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
-msgstr "Quoi ? Non"
 
 #, javascript-format
 msgctxt "filter"
@@ -8936,10 +8695,6 @@ msgstr "Actuelle - ${ latestTabooSet.name }"
 msgctxt "Taboo List"
 msgid "Current"
 msgstr "Actuelle"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Aucun"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
@@ -9038,8 +8793,8 @@ msgstr[1] "Scénarios"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Clé"
+msgstr[1] "Clés"
 
 msgctxt "tags"
 msgid "Cancel"
@@ -9068,6 +8823,46 @@ msgstr "XX · Le Jugement (à l'envers)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "CONTRE"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

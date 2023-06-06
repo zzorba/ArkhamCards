@@ -1,10 +1,10 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
+import { head, forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
-import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_FACTION_XP_TYPE_COST, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData } from '@actions/types';
+import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID, SORT_BY_SLOT, ExtendedSortType, SORT_BY_TYPE_SLOT } from '@actions/types';
 import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -108,16 +108,19 @@ export interface TranslationData {
 }
 
 const HEADER_SELECT = {
+  [SORT_BY_TYPE_SLOT]: '(c.sort_by_type * 1000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent',
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
-  [SORT_BY_FACTION_PACK]: 'c.sort_by_faction_pack as headerId, c.sort_by_faction_pack_header as headerTitle',
-  [SORT_BY_FACTION_XP]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
-  [SORT_BY_FACTION_XP_TYPE_COST]: 'c.sort_by_faction_xp as headerId, c.sort_by_faction_xp_header as headerTitle',
-  [SORT_BY_COST]: 'c.cost as headerId, c.sort_by_cost_header as headerTitle',
+  [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 1000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, c.pack_name as headerPackName',
+  [SORT_BY_FACTION_XP]: 'c.sort_by_faction * 1000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp',
+  [SORT_BY_COST]: 'c.cost as headerId, c.cost as headerTitle',
   [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
   [SORT_BY_TITLE]: '"0" as headerId',
   [SORT_BY_TYPE]: 'c.sort_by_type as headerId, c.sort_by_type_header as headerTitle',
   [SORT_BY_CYCLE]: 'c.sort_by_cycle as headerId, c.cycle_name as headerTitle',
+  [SORT_BY_XP]: 'c.xp as headerId, c.xp as headerTitle',
+  [SORT_BY_CARD_ID]: 'c.sort_by_cycle as headerId, c.cycle_name as headerTitle',
+  [SORT_BY_SLOT]: 'c.sort_by_slot as headerId, c.slot as headerTitle',
 };
 
 export class PartialCard {
@@ -154,7 +157,28 @@ export class PartialCard {
     this.spoiler = spoiler;
   }
 
-  public static selectStatement(sort?: SortType): string {
+  public static headerSort(sorts?: SortType[]): ExtendedSortType {
+    if (!sorts || !sorts.length) {
+      return SORT_BY_TYPE;
+    }
+    if (sorts.length >= 2) {
+      if (sorts[0] == SORT_BY_FACTION) {
+        if (sorts[1] === SORT_BY_PACK) {
+          return SORT_BY_FACTION_PACK;
+        }
+        if (sorts[1] === SORT_BY_XP) {
+          return SORT_BY_FACTION_XP;
+        }
+      } else if (sorts[0] === SORT_BY_TYPE) {
+        if (sorts[1] === SORT_BY_SLOT) {
+          return SORT_BY_TYPE_SLOT;
+        }
+      }
+    }
+    return head(sorts) || SORT_BY_TYPE;
+  }
+
+  public static selectStatement(sorts?: SortType[]): string {
     const parts: string[] = [
       `c.id as id`,
       `c.code as code`,
@@ -163,19 +187,51 @@ export class PartialCard {
       `c.pack_code as pack_code`,
       `c.reprint_pack_codes as reprint_pack_codes`,
       `c.spoiler as spoiler`,
-      HEADER_SELECT[sort || SORT_BY_TYPE],
+      HEADER_SELECT[PartialCard.headerSort(sorts)],
     ];
     return parts.join(', ');
   }
 
-  public static fromRaw(raw: any, sort?: SortType): PartialCard | undefined {
+  public static fromRaw(raw: any, sort?: ExtendedSortType): PartialCard | undefined {
     if (raw.id !== null && raw.code !== null && raw.renderName !== null && raw.pack_code !== null) {
+      let header = raw.headerTitle;
+      switch (sort) {
+        case SORT_BY_TYPE_SLOT:
+          if (raw.headerPermanent) {
+            header = `${raw.headerTitle}: ${t`Permanent`}`;
+          } else {
+            header = raw.headerSlot ? `${raw.headerTitle}: ${raw.headerSlot}` : raw.headerTitle;
+          }
+          break;
+        case SORT_BY_FACTION_PACK:
+          header = `${raw.headerTitle} - ${raw.headerPackName}`;
+          break;
+        case SORT_BY_FACTION_XP:
+          header = typeof raw.headerXp === 'number' ? `${raw.headerTitle} (${raw.headerXp})` : raw.headerTitle;
+          break;
+        case SORT_BY_TITLE:
+          header = t`All Cards`;
+          break;
+        case SORT_BY_COST: {
+          const card = { cost: raw.headerCost || null };
+          header = card.cost === null ? t`Cost: None` : t`Cost: ${card.cost}`;
+          break;
+        }
+        case SORT_BY_XP: {
+          const level = raw.headerTitle;
+          header = t`Level ${level}`;
+          break;
+        }
+        case SORT_BY_SLOT:
+          header = raw.headerTitle === null ? c('slots').t`None` : raw.headerTitle;
+          break;
+      }
       return new PartialCard(
         raw.id,
         raw.code,
         raw.renderName,
         (raw.headerId === null || raw.headerId === undefined) ? 'null' : `${raw.headerId}`,
-        sort === SORT_BY_TITLE ? t`All Cards` : raw.headerTitle,
+        header,
         raw.pack_code,
         raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
@@ -196,8 +252,6 @@ interface CardRestrictions {
 @Index('player_cards', ['browse_visible'])
 @Index('sort_type', ['browse_visible', 'taboo_set_id', 'sort_by_type', 'renderName', 'xp'])
 @Index('sort_faction', ['browse_visible', 'taboo_set_id', 'sort_by_faction', 'renderName', 'xp'])
-@Index('sort_faction_pack', ['browse_visible', 'taboo_set_id', 'sort_by_faction_pack', 'code'])
-@Index('sort_faction_xp', ['browse_visible', 'taboo_set_id', 'sort_by_faction_xp', 'renderName'])
 @Index('sort_cost', ['browse_visible', 'taboo_set_id', 'cost', 'renderName', 'xp'])
 @Index('sort_pack', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'position'])
 @Index('sort_pack_encounter', ['browse_visible', 'taboo_set_id', 'sort_by_pack', 'encounter_code', 'encounter_position'])
@@ -542,22 +596,14 @@ export default class Card {
   public sort_by_faction?: number;
   @Column('text', { nullable: true, select: false })
   public sort_by_faction_header?: string;
-  @Column('integer', { nullable: true, select: false })
-  public sort_by_faction_pack?: number;
-  @Column('text', { nullable: true, select: false })
-  public sort_by_faction_pack_header?: string;
-  @Column('integer', { nullable: true, select: false })
-  public sort_by_faction_xp?: number;
-  @Column('text', { nullable: true, select: false })
-  public sort_by_faction_xp_header?: string;
-  @Column('text', { nullable: true, select: false })
-  public sort_by_cost_header?: string;
   @Column('text', { nullable: true, select: false })
   public sort_by_encounter_set_header?: string;
   @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
   @Column('integer', { nullable: true, select: false })
   public sort_by_cycle?: number;
+  @Column('integer', { nullable: true, select: false })
+  public sort_by_slot?: number;
 
   @Column('integer', { nullable: true, select: false })
   public browse_visible!: number;
@@ -578,11 +624,6 @@ export default class Card {
     'c.sort_by_type_header',
     'c.sort_by_faction',
     'c.sort_by_faction_header',
-    'c.sort_by_faction_pack',
-    'c.sort_by_faction_pack_header',
-    'c.sort_by_faction_xp',
-    'c.sort_by_faction_xp_header',
-    'c.sort_by_cost_header',
     'c.sort_by_encounter_set_header',
     'c.sort_by_pack',
     'c.browse_visible',
@@ -1115,25 +1156,10 @@ export default class Card {
     ];
   }
 
-
   static typeHeaderOrder() {
     return [
       t`Investigator`,
-      t`Asset: Hand`,
-      t`Asset: Hand x2`,
-      t`Asset: Accessory`,
-      t`Asset: Ally`,
-      t`Asset: Arcane`,
-      t`Asset: Arcane x2`,
-      t`Asset: Body`,
-      t`Asset: Permanent`,
-      t`Asset: Tarot`,
-      t`Asset: Ally. Arcane`,
-      t`Asset: Body. Arcane`,
-      t`Asset: Hand. Arcane`,
-      t`Asset: Hand x2. Arcane`,
-      t`Asset: Body. Hand x2`,
-      t`Asset: Other`,
+      t`Asset`,
       t`Event`,
       t`Skill`,
       t`Basic Weakness`,
@@ -1144,13 +1170,58 @@ export default class Card {
     ];
   }
 
+  static slotPosition(
+    card: SingleCardFragment & { linked_card?: SingleCardFragment | null },
+  ): number {
+    if (card.hidden && card.linked_card) {
+      return Card.slotPosition(card.linked_card);
+    }
+    if (card.permanent) {
+      return 99;
+    }
+    if (card.real_slot) {
+      switch(card.real_slot) {
+        case 'Hand':
+          return 1;
+        case 'Hand x2':
+          return 2;
+        case 'Accessory':
+          return 3;
+        case 'Ally':
+          return 4;
+        case 'Arcane':
+          return 5;
+        case 'Arcane x2':
+          return 6;
+        case 'Body':
+          return 7;
+        case 'Tarot':
+          return 8;
+        case 'Body. Arcane':
+          return 9;
+        case 'Body. Hand x2':
+          return 10;
+        case 'Hand. Arcane':
+          return 11;
+        case 'Hand x2. Arcane':
+          return 12;
+        case 'Ally. Arcane':
+          return 13;
+        case 'Arcane. Accessory':
+          return 14;
+        default:
+          return 16;
+      }
+    }
+    return 100;
+  }
+
   static typeSortHeader(
     card: SingleCardFragment & { linked_card?: SingleCardFragment | null },
-    restrictions: CardRestrictions | undefined,
-    basic?: boolean
+    restrictions: CardRestrictions | undefined
   ): string {
     if (card.hidden && card.linked_card) {
-      return Card.typeSortHeader(card.linked_card, restrictions, basic);
+      return Card.typeSortHeader(card.linked_card, restrictions);
     }
     switch(card.subtype_code) {
       case 'basicweakness':
@@ -1164,62 +1235,14 @@ export default class Card {
         }
         return t`Weakness`;
       default:
+        if (card.spoiler || card.encounter_code) {
+          return t`Story`;
+        }
         switch(card.type_code) {
-          case 'asset':
-            if (card.spoiler || card.encounter_code) {
-              return t`Story`;
-            }
-            if (basic) {
-              return t`Asset`;
-            }
-            if (card.permanent || card.double_sided) {
-              return t`Asset: Permanent`;
-            }
-            switch(card.real_slot) {
-              case 'Hand':
-                return t`Asset: Hand`;
-              case 'Hand x2':
-                return t`Asset: Hand x2`;
-              case 'Accessory':
-                return t`Asset: Accessory`;
-              case 'Ally':
-                return t`Asset: Ally`;
-              case 'Arcane':
-                return t`Asset: Arcane`;
-              case 'Arcane x2':
-                return t`Asset: Arcane x2`;
-              case 'Body':
-                return t`Asset: Body`;
-              case 'Tarot':
-                return t`Asset: Tarot`;
-              case 'Body. Arcane':
-                return t`Asset: Body. Arcane`;
-              case 'Body. Hand x2':
-                return t`Asset: Body. Hand x2`;
-              case 'Hand. Arcane':
-                return t`Asset: Hand. Arcane`;
-              case 'Hand x2. Arcane':
-                return t`Asset: Hand x2. Arcane`;
-              case 'Ally. Arcane':
-                return t`Asset: Ally. Arcane`;
-              default:
-                return t`Asset: Other`;
-            }
-          case 'event':
-            if (card.spoiler) {
-              return t`Story`;
-            }
-            return t`Event`;
-          case 'skill':
-            if (card.spoiler) {
-              return t`Story`;
-            }
-            return t`Skill`;
-          case 'investigator':
-            if (card.spoiler) {
-              return t`Story`;
-            }
-            return t`Investigator`;
+          case 'asset': return t`Asset`;
+          case 'event': return t`Event`;
+          case 'skill': return t`Skill`;
+          case 'investigator': return t`Investigator`;
           default:
             return t`Scenario`;
         }
@@ -1388,22 +1411,12 @@ export default class Card {
     const sort_by_faction_header = Card.factionSortHeader(card, translation, restrictions);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = data.packs[card.pack_code] || null;
-    const cycle_position = pack?.cycle_position || 0;
-    const sort_by_faction_pack = sort_by_faction * 10000 + (cycle_position * 20) + (cycle_position >= 50 ? pack.position : 0);
-    const sort_by_faction_pack_header = `${sort_by_faction_header} - ${translation.pack_name}`;
-
-    const basic_type_header = Card.typeSortHeader(card, restrictions, true);
-    const sort_by_faction_xp = (sort_by_faction * 1000) + (typeof card.xp === 'number' ? card.xp : 6) * 100 + Card.basicTypeHeaderOrder().indexOf(basic_type_header);
-    const sort_by_faction_xp_header = typeof card.xp === 'number' ?
-      `${sort_by_faction_header} (${card.xp}) - ${basic_type_header}` :
-      `${sort_by_faction_header} - ${basic_type_header}`;
-
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
-    const sort_by_cycle = (pack ? pack.cycle_position : 100) * 1000 + sort_by_faction * 100 + sort_by_type;
-    const sort_by_cost_header = (card.cost === null || card.cost === undefined) ? t`Cost: None` : t`Cost: ${card.cost}`;
+    const sort_by_cycle = pack?.cycle_position || 0;
     const sort_by_encounter_set_header = translation.encounter_name ||
       (linked_card && linked_card.encounter_name) ||
       t`N/A`;
+    const sort_by_slot = Card.slotPosition(card);
     const spoiler = !!(card.spoiler || (linked_card && linked_card.spoiler));
     const enemy_horror = card.type_code === 'enemy' ? (card.enemy_horror || 0) : null;
     const enemy_damage = card.type_code === 'enemy' ? (card.enemy_damage || 0) : null;
@@ -1483,21 +1496,17 @@ export default class Card {
       advanced,
       heals_horror,
       heals_damage,
-      sort_by_type,
-      sort_by_faction,
-      sort_by_faction_pack,
-      sort_by_faction_xp,
-      sort_by_pack,
       enemy_horror,
       enemy_damage,
       altArtInvestigator,
-      sort_by_cost_header,
+      sort_by_type,
+      sort_by_faction,
+      sort_by_pack,
+      sort_by_cycle,
       sort_by_type_header,
       sort_by_faction_header,
       sort_by_encounter_set_header,
-      sort_by_faction_pack_header,
-      sort_by_faction_xp_header,
-      sort_by_cycle,
+      sort_by_slot,
     };
     result.browse_visible = 0;
     if (result.code.startsWith('z') || result.status === CardStatusType.PREVIEW || result.status === CardStatusType.CUSTOM) {
@@ -1525,61 +1534,65 @@ export default class Card {
     return result;
   }
 
-  static querySort(sortIgnoreQuotes: boolean, sort?: SortType): QuerySort[] {
-    switch(sort) {
-      case SORT_BY_FACTION:
-        return [
-          { s: 'c.sort_by_faction', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_PACK:
-        return [
-          { s: 'c.sort_by_faction_pack', direction: 'ASC' },
-          { s: 'c.code', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_XP:
-        return [
-          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.code', direction: 'ASC' },
-        ];
-      case SORT_BY_FACTION_XP_TYPE_COST:
-        return [
-          { s: 'c.sort_by_faction_xp', direction: 'ASC' },
-          { s: 'c.cost', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-        ];
-      case SORT_BY_COST:
-        return [
-          { s: 'c.cost', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_PACK:
-        return [
-          { s: 'c.sort_by_pack', direction: 'ASC' },
-          { s: 'c.position', direction: 'ASC' },
-        ];
-      case SORT_BY_ENCOUNTER_SET:
-        return [
-          { s: 'c.sort_by_pack', direction: 'ASC' },
-          { s: 'c.encounter_code', direction: 'ASC' },
-          { s: 'c.encounter_position', direction: 'ASC' },
-        ];
-      case SORT_BY_TITLE:
-        return [
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
-      case SORT_BY_TYPE:
-      default:
-        return [
-          { s: 'c.sort_by_type', direction: 'ASC' },
-          { s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' },
-        ];
+  static querySort(sortIgnoreQuotes: boolean, sorts?: SortType[]): QuerySort[] {
+    const result: QuerySort[] = [];
+    let sortByName = true;
+    let sortByXp = true;
+    forEach(sorts, sort => {
+      switch(sort) {
+        case SORT_BY_TYPE:
+          result.push(
+            { s: 'c.sort_by_type', direction: 'ASC' },
+          );
+          break;
+        case SORT_BY_FACTION:
+          result.push({ s: 'c.sort_by_faction', direction: 'ASC' });
+          break;
+        case SORT_BY_COST:
+          result.push({ s: 'c.cost', direction: 'ASC' });
+          break;
+        case SORT_BY_PACK:
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
+          break;
+        case SORT_BY_TITLE:
+          sortByName = false;
+          result.push({ s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' });
+          break;
+        case SORT_BY_XP:
+          sortByXp = false;
+          result.push({ s: 'c.xp', direction: 'ASC' });
+          break;
+        case SORT_BY_CYCLE:
+          result.push({ s: 'c.sort_by_cycle', direction: 'ASC' });
+          break;
+        case SORT_BY_CARD_ID:
+          result.push({ s: 'c.code', direction: 'ASC' });
+          break;
+        case SORT_BY_SLOT:
+          result.push({ s: 'c.sort_by_slot', direction: 'ASC' });
+          result.push({ s: 'c.permanent', direction: 'DESC', });
+          break;
+        case SORT_BY_ENCOUNTER_SET:
+          sortByName = false;
+          sortByXp = false;
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
+          result.push({ s: 'c.encounter_code', direction: 'ASC' });
+          result.push({ s: 'c.encounter_position', direction: 'ASC' });
+          break;
+        default:
+          /* eslint-disable @typescript-eslint/no-unused-vars */
+          const _exhaustiveCheck: never = sort;
+
+          break;
+      }
+    });
+    if (sortByName) {
+      result.push({ s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName', direction: 'ASC' });
     }
+    if (sortByXp) {
+      result.push({ s: 'c.xp', direction: 'ASC' });
+    }
+    return result;
   }
 }
 

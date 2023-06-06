@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2023-04-15 22:23+0300\n"
+"PO-Revision-Date: 2023-05-22 22:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -140,45 +140,6 @@ msgstr "Неизвестно"
 
 msgid "Investigator"
 msgstr "Сыщик"
-
-msgid "Asset: Hand"
-msgstr "Актив: Рука"
-
-msgid "Asset: Hand x2"
-msgstr "Актив: Рука ×2"
-
-msgid "Asset: Accessory"
-msgstr "Актив: Аксессуар"
-
-msgid "Asset: Ally"
-msgstr "Актив: Союзник"
-
-msgid "Asset: Arcane"
-msgstr "Актив: Мистический"
-
-msgid "Asset: Arcane x2"
-msgstr "Актив: Мистический ×2"
-
-msgid "Asset: Body"
-msgstr "Актив: Одежда"
-
-msgid "Asset: Permanent"
-msgstr "Актив: Постоянный"
-
-msgid "Asset: Tarot"
-msgstr "Актив: Таро"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Актив: Союзник. Мистический"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Актив: Рука. Мистический"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Актив: Одежда. Рука ×2"
-
-msgid "Asset: Other"
-msgstr "Актив: Без слота"
 
 msgid "Event"
 msgstr "Событие"
@@ -1123,7 +1084,6 @@ msgstr ""
 "Скопируйте колоду, чтобы использовать её в другой кампании или чтобы "
 "попробовать другие улучшения."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Уровень ${ level }"
 
@@ -1213,26 +1173,11 @@ msgstr "Альтернативные"
 msgid "Sort by"
 msgstr "Сортировка по"
 
-msgid "Type"
-msgstr "Типу"
-
-msgid "Faction, Name"
-msgstr "Класс, название"
-
-msgid "Faction, Pack"
-msgstr "Класс, доп"
-
 msgid "Pack"
 msgstr "Доп"
 
 msgid "Title"
 msgstr "Название"
-
-msgid "Encounter Set"
-msgstr "Набор контактов"
-
-msgid "Faction"
-msgstr "Класс"
 
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Нет сыщиков по запросу «${ searchTerm }»."
@@ -2138,28 +2083,28 @@ msgid "Dim Carcosa"
 msgstr "Туманная Каркоза"
 
 msgid "Return to Curtain Call"
-msgstr ""
+msgstr "Дайте занавес. Возвращение"
 
 msgid "Return to The Last King"
-msgstr ""
+msgstr "Последний король. Возвращение"
 
 msgid "Return to Echoes of the Past"
-msgstr ""
+msgstr "Отголоски прошлого. Возвращение"
 
 msgid "Return to The Unspeakable Oath"
-msgstr ""
+msgstr "Невыразимая клятва. Возвращение"
 
 msgid "Return to A Phantom of Truth"
-msgstr ""
+msgstr "Призрак истины. Возвращение"
 
 msgid "Return to The Pallid Mask"
-msgstr ""
+msgstr "Бледная маска. Возвращение"
 
 msgid "Return to Black Stars Rise"
-msgstr ""
+msgstr "Восход чёрных звёзд. Возвращение"
 
 msgid "Return to Dim Carcosa"
-msgstr ""
+msgstr "Туманная Каркоза. Возвращение"
 
 msgid "The Untamed Wilds"
 msgstr "Дремучие джунгли"
@@ -3728,9 +3673,6 @@ msgstr "Сейчас нельзя добавить сценарий-ответв
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Мешок хаоса (${ tokenCount })"
 
-msgid "Asset: Body. Arcane"
-msgstr "Актив: Одежда. Мистический"
-
 msgid "Export diagnostic data"
 msgstr "Выгрузить данные для диагностики"
 
@@ -3923,9 +3865,6 @@ msgstr "Потрачено ${ _spentXp } из ${ _totalXp }"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr ""
-
-msgid "Faction, Level, Type"
-msgstr "Класс, Уровень, Тип"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4538,9 +4477,6 @@ msgstr "Скрыть благословения/проклятия"
 msgid "Show Bless/Curse Odds"
 msgstr "Показать благословения/проклятия"
 
-msgid "Faction, Level, Type, Cost"
-msgstr "Класс, Уровень, Тип, Цена"
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Нельзя включить больше 5 карт Выживших уровня 0"
 
@@ -4555,9 +4491,6 @@ msgstr "Нельзя включить больше 5 карт Ловкачей �
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Войдите в аккаунт Arkham Cards в настройках"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Актив: Рука×2. Магический"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6464,9 +6397,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
+msgid "Class"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Нет"
 
 #, javascript-format
 msgctxt "masculine"
@@ -7502,7 +7445,7 @@ msgstr "Ассистент"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "Наступление"
 
 msgctxt "trait"
 msgid "Augury"
@@ -7861,10 +7804,6 @@ msgid "Historical Society"
 msgstr "Историческое общество"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "Гуманоид"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "Гуманоид"
 
@@ -7898,7 +7837,7 @@ msgstr "Невинный"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "Инсмут"
 
 msgctxt "trait"
 msgid "Insect"
@@ -7914,7 +7853,7 @@ msgstr "Инструмент"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "Остров"
 
 msgctxt "trait"
 msgid "Item"
@@ -7930,7 +7869,7 @@ msgstr "Джунгли"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "Кадат"
 
 msgctxt "trait"
 msgid "Key"
@@ -7942,15 +7881,11 @@ msgstr "Зацепка"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr ""
+msgstr "Лэнг"
 
 msgctxt "trait"
 msgid "Lodge"
 msgstr "Ложа"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "Безумец"
 
 msgctxt "trait"
 msgid "Madness"
@@ -7958,7 +7893,7 @@ msgstr "Безумие"
 
 msgctxt "trait"
 msgid "Manifold"
-msgstr ""
+msgstr "Реплика"
 
 msgctxt "trait"
 msgid "Mask"
@@ -7990,7 +7925,7 @@ msgstr "Мискатоник"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "Мнар"
 
 msgctxt "trait"
 msgid "Monster"
@@ -8034,7 +7969,7 @@ msgstr "Оккультный"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "Океан"
 
 msgctxt "trait"
 msgid "Omen"
@@ -8046,15 +7981,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ooze"
-msgstr ""
+msgstr "Слизь"
 
 msgctxt "trait"
 msgid "Oozified"
-msgstr ""
+msgstr "Поглощённая"
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr ""
+msgstr "Ориаб"
 
 msgctxt "trait"
 msgid "Otherworld"
@@ -8102,7 +8037,7 @@ msgstr "Полиция"
 
 msgctxt "trait"
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 msgctxt "trait"
 msgid "Portal"
@@ -8154,7 +8089,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Return"
-msgstr ""
+msgstr "Возвращение"
 
 msgctxt "trait"
 msgid "Ritual"
@@ -8174,7 +8109,7 @@ msgstr "Риверсайд"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "Дорога"
 
 msgctxt "trait"
 msgid "Ruins"
@@ -8234,7 +8169,7 @@ msgstr "Расколотая"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr ""
+msgstr "Корабль"
 
 msgctxt "trait"
 msgid "Shoggoth"
@@ -8270,7 +8205,7 @@ msgstr "Заклинание"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "Паук"
 
 msgctxt "trait"
 msgid "Spirit"
@@ -8278,7 +8213,7 @@ msgstr "Дух"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr ""
+msgstr "Собор Святой Марии"
 
 msgctxt "trait"
 msgid "Staff"
@@ -8286,7 +8221,7 @@ msgstr "Персонал"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr ""
+msgstr "Ступени"
 
 msgctxt "trait"
 msgid "Summon"
@@ -8298,11 +8233,11 @@ msgstr "Запас"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr ""
+msgstr "Поверхность"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "Подозреваемый"
 
 msgctxt "trait"
 msgid "Syndicate"
@@ -8326,7 +8261,7 @@ msgstr "Задача"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr ""
+msgstr "Храм"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
@@ -8358,7 +8293,7 @@ msgstr "Инструмент"
 
 msgctxt "trait"
 msgid "Town"
-msgstr ""
+msgstr "Город"
 
 msgctxt "trait"
 msgid "Train"
@@ -8386,7 +8321,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "Транспорт"
 
 msgctxt "trait"
 msgid "Venice"
@@ -8398,7 +8333,7 @@ msgstr "Ветеран"
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "Пустота"
 
 msgctxt "trait"
 msgid "Warden"
@@ -8406,7 +8341,7 @@ msgstr "Служитель"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr ""
+msgstr "Пустошь"
 
 msgctxt "trait"
 msgid "Wayfarer"
@@ -8446,23 +8381,11 @@ msgstr "Йот"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
-
-msgctxt "trait"
-msgid "AI"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr ""
+msgstr "Зуг"
 
 msgctxt "trait"
 msgid "Broken"
 msgstr "Сломленная"
-
-msgctxt "trait"
-msgid "Card"
-msgstr ""
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -8477,26 +8400,6 @@ msgid "Lair"
 msgstr ""
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr ""
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr ""
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr ""
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "Синергия"
 
@@ -8505,44 +8408,8 @@ msgid "Unbroken"
 msgstr "Несломленная"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr ""
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr "Неколебимый"
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr ""
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr ""
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr ""
 
 msgctxt "trait"
 msgid "Coterie"
@@ -8553,10 +8420,6 @@ msgid "Dilemma"
 msgstr "Дилемма"
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr "Фантом"
 
@@ -8565,32 +8428,8 @@ msgid "Elder Thing"
 msgstr "Старец"
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr ""
-
-msgctxt "trait"
 msgid "Glacier"
 msgstr "Ледник"
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
-msgstr ""
 
 msgctxt "trait"
 msgid "Mainland"
@@ -8605,22 +8444,6 @@ msgid "Mountains"
 msgstr "Горы"
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr ""
 
@@ -8633,63 +8456,7 @@ msgid "Present"
 msgstr ""
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr ""
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
 msgstr ""
 
 msgctxt "trait"
@@ -8697,19 +8464,11 @@ msgid "Uncharted"
 msgstr "Неизведанная"
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
+msgid "Double"
 msgstr ""
 
 #, javascript-format
@@ -8793,10 +8552,6 @@ msgstr "Актуальный — ${ latestTabooSet.name }"
 msgctxt "Taboo List"
 msgid "Current"
 msgstr "Актуальный"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Нет"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
@@ -8937,6 +8692,46 @@ msgstr ""
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr "По типу"
+
+msgctxt "sort"
+msgid "Class"
+msgstr "По классу"
+
+msgctxt "sort"
+msgid "Cost"
+msgstr "По цене"
+
+msgctxt "sort"
+msgid "Pack"
+msgstr "По дополнению"
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr "По циклу"
+
+msgctxt "sort"
+msgid "Title"
+msgstr "По названию"
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr "По набору контактов"
+
+msgctxt "sort"
+msgid "Level"
+msgstr "По уровню"
+
+msgctxt "sort"
+msgid "Card number"
+msgstr "По номеру"
+
+msgctxt "sort"
+msgid "Slot"
+msgstr "По слоту"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

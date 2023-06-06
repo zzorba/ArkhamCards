@@ -11,7 +11,7 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from './useSingleCard';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import { NavigationProps } from '@components/nav/types';
-import { SortType, SORT_BY_FACTION } from '@actions/types';
+import { SortType, SORT_BY_FACTION, SORT_BY_TITLE } from '@actions/types';
 import Card from '@data/types/Card';
 import { showCard } from '@components/nav/helper';
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
@@ -24,7 +24,7 @@ export interface CardInvestigatorProps {
 function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & NavigationProps) {
   const { colors } = useContext(StyleContext);
   const [card, loading] = useSingleCard(code, 'player');
-  const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_FACTION);
+  const [selectedSort, sortChanged] = useState<SortType[]>([SORT_BY_FACTION, SORT_BY_TITLE]);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
@@ -51,7 +51,7 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
 
 
   const onPress = useCallback((investigator: Card) => {
-    showCard(componentId, investigator.code, investigator, colors, false);
+    showCard(componentId, investigator.code, investigator, colors, { showSpoilers: false });
   }, [componentId, colors]);
 
   if (loading || !card) {

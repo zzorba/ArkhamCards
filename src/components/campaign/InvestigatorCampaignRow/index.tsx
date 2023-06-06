@@ -97,7 +97,7 @@ export default function InvestigatorCampaignRow({
   const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
+    showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [componentId, colors]);
   const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
 

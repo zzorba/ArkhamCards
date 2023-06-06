@@ -150,7 +150,7 @@ function InvestigatorImage({
       if (imageLink) {
         showCardImage(componentId, card, colors);
       } else {
-        showCard(componentId, card.code, card, colors, true, undefined, undefined, tabooSetId, backCard?.code);
+        showCard(componentId, card.code, card, colors, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
       }
     }
   }, [card, backCard, tabooSetId, componentId, imageLink, colors]);

@@ -109,9 +109,8 @@ export default function ChangesFromPreviousDeck({
   }, [changes, discountCards, getCards]);
 
   const showCardPressed = useCallback((id: string, card: Card) => {
-    console.log(id, card.code, map(allCards, c => c.id));
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, true, parsedDeck.id, parsedDeck.customizations);
+      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, initialCustomizations: parsedDeck.customizations });
     } else {
       showCardSwipe(
         componentId,

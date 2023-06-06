@@ -1,4 +1,4 @@
-import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
+import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq, head } from 'lodash';
 import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
 import Card, { CardsMap, PartialCard } from '../types/Card';
@@ -9,7 +9,7 @@ import Rule from '../types/Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
-import { SortType } from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
 import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
@@ -68,7 +68,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = Platform.OS === 'ios' ? 46 : 47;
+  static SCHEMA_VERSION: number = 48;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -276,17 +276,29 @@ export default class Database {
     sortIgnoreQuotes: boolean,
     query?: Brackets,
     tabooSetId?: number,
-    sort?: SortType,
+    sorts?: SortType[],
   ): Promise<PartialCard[]> {
     const cards = await this.cards();
+    const primarySort = PartialCard.headerSort(sorts);
     let cardsQuery = cards.createQueryBuilder('c')
-      .select(PartialCard.selectStatement(sort))
+      .select(PartialCard.selectStatement(sorts))
       .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
     if (query) {
       cardsQuery = cardsQuery.andWhere(query);
     }
-    const sortQuery = Card.querySort(sortIgnoreQuotes, sort);
+    if (primarySort) {
+      // The primarySort sometimes impacts how we sort things.
+      switch (primarySort) {
+        case SORT_BY_XP:
+          cardsQuery = cardsQuery.andWhere(where('c.xp is not null'));
+          break;
+        case SORT_BY_ENCOUNTER_SET:
+          cardsQuery = cardsQuery.andWhere(where('c.encounter_code is not null'));
+          break;
+      }
+    }
+    const sortQuery = Card.querySort(sortIgnoreQuotes, sorts);
     if (sortQuery.length) {
       const orderBy: OrderByCondition = {};
       forEach(sortQuery, ({ s, direction }) => {
@@ -295,7 +307,7 @@ export default class Database {
       cardsQuery.orderBy(orderBy);
     }
     const result = await cardsQuery.getRawMany();
-    return flatMap(result, raw => PartialCard.fromRaw(raw, sort) || []);
+    return flatMap(result, raw => PartialCard.fromRaw(raw, primarySort) || []);
   }
 
   async getCards(

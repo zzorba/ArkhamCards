@@ -25,6 +25,7 @@ import { campaignFromJson } from '@components/settings/MergeBackupView/backupHel
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import { saveFile } from '@lib/files';
+import { isAndroidVersion } from '@components/DeckNavFooter/constants';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -41,6 +42,9 @@ async function safeReadFile(file: string): Promise<string> {
 
 async function hasFileSystemPermission(read: boolean) {
   if (Platform.OS === 'ios') {
+    return true;
+  }
+  if (isAndroidVersion(13)) {
     return true;
   }
   try {

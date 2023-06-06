@@ -44,42 +44,6 @@ msgstr "Sconosciuto"
 msgid "Investigator"
 msgstr "Investigatore"
 
-msgid "Asset: Hand"
-msgstr "Supporto: Mano"
-
-msgid "Asset: Hand x2"
-msgstr "Supporto: Mano x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Supporto: Mano. Arcano"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Supporto: Corpo. Mano x2"
-
-msgid "Asset: Accessory"
-msgstr "Supporto: Accessorio"
-
-msgid "Asset: Ally"
-msgstr "Supporto: Alleato"
-
-msgid "Asset: Arcane"
-msgstr "Supporto: Arcano"
-
-msgid "Asset: Arcane x2"
-msgstr "Supporto: Arcano x2"
-
-msgid "Asset: Body"
-msgstr "Supporto: Corpo"
-
-msgid "Asset: Permanent"
-msgstr "Supporto: Permanente"
-
-msgid "Asset: Tarot"
-msgstr "Supporto: Tarocco"
-
-msgid "Asset: Other"
-msgstr "Supporto: Altro"
-
 msgid "Event"
 msgstr "Evento"
 
@@ -176,9 +140,6 @@ msgstr "Ordina per"
 
 msgid "Title"
 msgstr "Titolo"
-
-msgid "Faction"
-msgstr "Classe"
 
 msgid "Pack"
 msgstr "Pack"
@@ -1100,12 +1061,6 @@ msgstr ""
 "Fai una copia del mazzo in modo che possa usarlo in un’altra campagna o "
 "scegliere aggiornamenti diversi."
 
-msgid "Type"
-msgstr "Tipo"
-
-msgid "Encounter Set"
-msgstr "Set Incontri"
-
 msgid "Investigating for clues"
 msgstr "Cerco indizi"
 
@@ -1473,7 +1428,6 @@ msgstr ""
 "Puoi scegliere di vedere sempre i Tabù e di utilizzarli nella costruzione "
 "dei mazzi dalle Impostazioni."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Livello ${ level }"
 
@@ -1806,9 +1760,6 @@ msgstr "“Tutto da Solo” non consente risorse che occupino uno slot alleato."
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Troppe carte neutre per Versatile"
-
-msgid "Asset: Ally. Arcane"
-msgstr "Supporto: Alleato. Arcano"
 
 msgid "Arcane x2"
 msgstr "Arcano x2"
@@ -2243,12 +2194,6 @@ msgstr "Elimina Mazzo"
 
 msgid "Parallel"
 msgstr "Parallelo"
-
-msgid "Faction, Name"
-msgstr "Classe, Nome"
-
-msgid "Faction, Pack"
-msgstr "Classe, Pack"
 
 msgid "Random location"
 msgstr "Luogo casuale"
@@ -3800,9 +3745,6 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr "Se riscontri problemi con questa migrazione, contatta arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Supporto: Corpo. Arcano"
-
 msgid "Color blind friendly icons"
 msgstr "Icone speciali per daltonici"
 
@@ -3905,9 +3847,6 @@ msgstr "${ _spentXp } di ${ _totalXp } spesi"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "I mazzi con Conoscenza Ancestrale devono includere almeno 10 abilità."
-
-msgid "Faction, Level, Type"
-msgstr "Classe, Livello, Tipo"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4534,9 +4473,6 @@ msgstr "Rifiuta la richiesta di amicizia"
 msgid "Revoke friend request"
 msgstr "Annulla la richiesta di amicizia"
 
-msgid "Faction, Level, Type, Cost"
-msgstr "Fazione, Livello, Tipo, Costo"
-
 msgid "Show upgrades"
 msgstr "Mostra gli aggiornamenti"
 
@@ -4554,9 +4490,6 @@ msgstr "Mostra le probabilità Benedizione/Maledizione"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Accedi ad Arkham Cards nelle Impostazioni per abilitare"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Supporto: Mano x2. Arcano"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6433,9 +6366,19 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
+msgid "Class"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "Nessuno"
 
 #, javascript-format
 msgctxt "masculine"
@@ -7668,10 +7611,6 @@ msgid "Historical Society"
 msgstr ""
 
 msgctxt "trait"
-msgid "Human"
-msgstr ""
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "Umanoide"
 
@@ -7754,10 +7693,6 @@ msgstr ""
 msgctxt "trait"
 msgid "Lodge"
 msgstr ""
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "Pazzo"
 
 msgctxt "trait"
 msgid "Madness"
@@ -8256,20 +8191,8 @@ msgid "Zoog"
 msgstr ""
 
 msgctxt "trait"
-msgid "AI"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr ""
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "Interrotto"
-
-msgctxt "trait"
-msgid "Card"
-msgstr ""
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -8284,26 +8207,6 @@ msgid "Lair"
 msgstr ""
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr ""
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr ""
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr ""
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "Sinergia"
 
@@ -8312,43 +8215,7 @@ msgid "Unbroken"
 msgstr "Integro"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr ""
-
-msgctxt "trait"
 msgid "Resolute"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr ""
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr ""
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
 msgstr ""
 
 msgctxt "trait"
@@ -8360,10 +8227,6 @@ msgid "Dilemma"
 msgstr ""
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -8372,31 +8235,7 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr ""
-
-msgctxt "trait"
 msgid "Glacier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
 msgstr ""
 
 msgctxt "trait"
@@ -8412,22 +8251,6 @@ msgid "Mountains"
 msgstr ""
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr ""
 
@@ -8440,63 +8263,7 @@ msgid "Present"
 msgstr ""
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr ""
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
 msgstr ""
 
 msgctxt "trait"
@@ -8504,19 +8271,11 @@ msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
+msgid "Double"
 msgstr ""
 
 #, javascript-format
@@ -8600,10 +8359,6 @@ msgstr ""
 msgctxt "Taboo List"
 msgid "Current"
 msgstr ""
-
-msgctxt "slots"
-msgid "None"
-msgstr "Nessuno"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
@@ -8732,6 +8487,46 @@ msgstr "Il Giudizio · XX (Rovesciato)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
+msgstr ""
 
 msgctxt "card-chooser"
 msgid "Choose additional"

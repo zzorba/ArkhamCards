@@ -36,9 +36,12 @@ interface Props {
   customEditPressed?: () => void;
 }
 
-export function useSimpleChaosBagDialog(chaosBag: ChaosBag, tarot?: Chaos_Bag_Tarot_Mode_Enum): [React.ReactNode, () => void] {
+export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, tarot?: Chaos_Bag_Tarot_Mode_Enum): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
   const content = useMemo(() => {
+    if (!chaosBag) {
+      return null;
+    }
     return (
       <View style={space.marginS}>
         <ChaosBagLine
@@ -85,7 +88,7 @@ export default function useChaosBagDialog({
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone, processedCampaign);
+      showGuideDrawChaosBag(componentId, campaignId, map(allInvestigators, c => c.code), scenarioId, !!standalone);
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
     }

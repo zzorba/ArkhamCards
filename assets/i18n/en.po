@@ -36,42 +36,6 @@ msgstr ""
 msgid "Investigator"
 msgstr ""
 
-msgid "Asset: Hand"
-msgstr ""
-
-msgid "Asset: Hand x2"
-msgstr ""
-
-msgid "Asset: Hand. Arcane"
-msgstr ""
-
-msgid "Asset: Body. Hand x2"
-msgstr ""
-
-msgid "Asset: Accessory"
-msgstr ""
-
-msgid "Asset: Ally"
-msgstr ""
-
-msgid "Asset: Arcane"
-msgstr ""
-
-msgid "Asset: Arcane x2"
-msgstr ""
-
-msgid "Asset: Body"
-msgstr ""
-
-msgid "Asset: Permanent"
-msgstr ""
-
-msgid "Asset: Tarot"
-msgstr ""
-
-msgid "Asset: Other"
-msgstr ""
-
 msgid "Event"
 msgstr ""
 
@@ -167,9 +131,6 @@ msgid "Sort by"
 msgstr ""
 
 msgid "Title"
-msgstr ""
-
-msgid "Faction"
 msgstr ""
 
 msgid "Pack"
@@ -1074,12 +1035,6 @@ msgid ""
 "choose different upgrades."
 msgstr ""
 
-msgid "Type"
-msgstr ""
-
-msgid "Encounter Set"
-msgstr ""
-
 msgid "Investigating for clues"
 msgstr ""
 
@@ -1389,7 +1344,6 @@ msgid ""
 "Settings."
 msgstr ""
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr ""
 
@@ -1708,9 +1662,6 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 
 msgid "Too many off-class cards for Versatile"
-msgstr ""
-
-msgid "Asset: Ally. Arcane"
 msgstr ""
 
 msgid "Arcane x2"
@@ -2102,12 +2053,6 @@ msgid "Delete Deck"
 msgstr ""
 
 msgid "Parallel"
-msgstr ""
-
-msgid "Faction, Name"
-msgstr ""
-
-msgid "Faction, Pack"
 msgstr ""
 
 msgid "Random location"
@@ -3505,9 +3450,6 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr ""
 
-msgid "Asset: Body. Arcane"
-msgstr ""
-
 msgid "Color blind friendly icons"
 msgstr ""
 
@@ -3609,9 +3551,6 @@ msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr ""
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
-msgstr ""
-
-msgid "Faction, Level, Type"
 msgstr ""
 
 #, javascript-format
@@ -4178,9 +4117,6 @@ msgstr ""
 msgid "Show Bless/Curse Odds"
 msgstr ""
 
-msgid "Faction, Level, Type, Cost"
-msgstr ""
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr ""
 
@@ -4194,9 +4130,6 @@ msgid "You cannot have more than 5 level 0 Rogue cards"
 msgstr ""
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
-msgstr ""
-
-msgid "Asset: Hand x2. Arcane"
 msgstr ""
 
 #, javascript-format
@@ -5910,8 +5843,18 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
+msgid "Class"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 #, javascript-format
@@ -7099,10 +7042,6 @@ msgid "Historical Society"
 msgstr ""
 
 msgctxt "trait"
-msgid "Human"
-msgstr ""
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr ""
 
@@ -7184,10 +7123,6 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
-
-msgctxt "trait"
-msgid "Lunatic"
 msgstr ""
 
 msgctxt "trait"
@@ -7687,19 +7622,7 @@ msgid "Zoog"
 msgstr ""
 
 msgctxt "trait"
-msgid "AI"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr ""
-
-msgctxt "trait"
 msgid "Broken"
-msgstr ""
-
-msgctxt "trait"
-msgid "Card"
 msgstr ""
 
 msgctxt "trait"
@@ -7715,26 +7638,6 @@ msgid "Lair"
 msgstr ""
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr ""
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr ""
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr ""
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr ""
 
@@ -7743,43 +7646,7 @@ msgid "Unbroken"
 msgstr ""
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr ""
-
-msgctxt "trait"
 msgid "Resolute"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr ""
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr ""
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
 msgstr ""
 
 msgctxt "trait"
@@ -7791,10 +7658,6 @@ msgid "Dilemma"
 msgstr ""
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -7803,31 +7666,7 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr ""
-
-msgctxt "trait"
 msgid "Glacier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
 msgstr ""
 
 msgctxt "trait"
@@ -7843,22 +7682,6 @@ msgid "Mountains"
 msgstr ""
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr ""
 
@@ -7871,63 +7694,7 @@ msgid "Present"
 msgstr ""
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr ""
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
 msgstr ""
 
 msgctxt "trait"
@@ -7935,19 +7702,11 @@ msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
+msgid "Double"
 msgstr ""
 
 #, javascript-format
@@ -8030,10 +7789,6 @@ msgstr ""
 
 msgctxt "Taboo List"
 msgid "Current"
-msgstr ""
-
-msgctxt "slots"
-msgid "None"
 msgstr ""
 
 msgctxt "fan-made-uses"
@@ -8162,6 +7917,46 @@ msgstr ""
 
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
 msgstr ""
 
 msgctxt "card-chooser"

@@ -4815,7 +4815,7 @@
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "Agent Quinn vertraut der Zelle nicht."
           },
           {
             "id": "agent_quinn_has_your_back",
@@ -4883,7 +4883,7 @@
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "die Zelle befindet sich auf einer Mission auf Abwegen."
           },
           {
             "id": "cell_is_working_with_ece",
@@ -4895,11 +4895,11 @@
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "die Zelle kennt Amaranths wahren Namen."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "die Zelle kennt Desis Vergangenheit."
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
@@ -5019,7 +5019,7 @@
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "du lässt die Foundation im Dunklen."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",

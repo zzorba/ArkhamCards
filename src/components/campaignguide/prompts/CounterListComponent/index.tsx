@@ -38,7 +38,7 @@ export default function CounterListComponent({ id, items, countText, requiredTot
   const startingCounts = useMemo(() => {
     const counters: Counters = {};
     forEach(items, i => {
-      counters[i.code] = i.min || 0;
+      counters[i.code] = i.min ? Math.max(0, i.min) : 0;
     });
     return counters;
   }, [items]);

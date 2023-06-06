@@ -44,42 +44,6 @@ msgstr "Unbekannt"
 msgid "Investigator"
 msgstr "Ermittler"
 
-msgid "Asset: Hand"
-msgstr "Vorteil: Hand"
-
-msgid "Asset: Hand x2"
-msgstr "Vorteil: Hand x2"
-
-msgid "Asset: Hand. Arcane"
-msgstr "Vorteil: Hand. Arkan"
-
-msgid "Asset: Body. Hand x2"
-msgstr "Vorteil: Körper. Hand x2"
-
-msgid "Asset: Accessory"
-msgstr "Vorteil: Zubehör"
-
-msgid "Asset: Ally"
-msgstr "Vorteil: Verbündeter"
-
-msgid "Asset: Arcane"
-msgstr "Vorteil: Arkan"
-
-msgid "Asset: Arcane x2"
-msgstr "Vorteil: Arkan x2"
-
-msgid "Asset: Body"
-msgstr "Vorteil: Körper"
-
-msgid "Asset: Permanent"
-msgstr "Vorteil: Dauerhaft"
-
-msgid "Asset: Tarot"
-msgstr "Vorteil: Tarot"
-
-msgid "Asset: Other"
-msgstr "Vorteil: Sonstiges"
-
 msgid "Event"
 msgstr "Ereignis"
 
@@ -176,9 +140,6 @@ msgstr "Sortieren nach"
 
 msgid "Title"
 msgstr "Name"
-
-msgid "Faction"
-msgstr "Klasse"
 
 msgid "Pack"
 msgstr "Erweiterung"
@@ -1086,12 +1047,6 @@ msgstr ""
 "Erstelle eine Kopie eines Decks, sodass du es in einer anderen Kampagne "
 "verwenden oder andere Upgrades wählen kannst."
 
-msgid "Type"
-msgstr "Typ"
-
-msgid "Encounter Set"
-msgstr "Begegnungsset"
-
 msgid "Investigating for clues"
 msgstr "Suche nach Hinweisen"
 
@@ -1470,7 +1425,6 @@ msgstr ""
 "Es kann jederzeit in den Einstellungen gewählt werden, die Tabuliste "
 "anzuzeigen und bei der Deckerstellung zu verwenden."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "Stufe ${level}"
 
@@ -1805,9 +1759,6 @@ msgstr ""
 
 msgid "Too many off-class cards for Versatile"
 msgstr "Zu viele Off-Class-Karten für \"Vielseitig\""
-
-msgid "Asset: Ally. Arcane"
-msgstr "Vorteil: Verbündeter. Arkan"
 
 msgid "Arcane x2"
 msgstr "Arkan x2"
@@ -2243,12 +2194,6 @@ msgstr "Deck löschen"
 
 msgid "Parallel"
 msgstr "Parallel"
-
-msgid "Faction, Name"
-msgstr "Klasse, Name"
-
-msgid "Faction, Pack"
-msgstr "Klasse, Pack"
 
 msgid "Random location"
 msgstr "Zufälliger Ort"
@@ -3809,9 +3754,6 @@ msgstr ""
 "Falls bei dieser Migration irgendwelche Probleme auftreten, kontaktiere "
 "bitte arkhamcards@gmail.com."
 
-msgid "Asset: Body. Arcane"
-msgstr "Vorteil: Körper. Arkan"
-
 msgid "Color blind friendly icons"
 msgstr "Farbenblindenfreundliche Symbole"
 
@@ -3914,9 +3856,6 @@ msgstr "${ _spentXp } von ${ _totalXp } ausgegeben"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Decks mit Wissen der Ahnen müssen mindestens 10 Fertigkeiten enthalten."
-
-msgid "Faction, Level, Type"
-msgstr "Klasse, Stufe, Typ"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4346,12 +4285,16 @@ msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
 "logEntry.text }</i>."
 msgstr ""
+"Im Kampagnenlogbuch unter \"${ logEntry.section }\" wird <i>${ "
+"logEntry.text }</i> durchgestrichen."
 
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
 "logEntry.text }</i>"
 msgstr ""
+"Im Kampagnenlogbuch unter \"${ logEntry.section }\" wird <i>${ "
+"logEntry.text }</i> notiert"
 
 msgid "Unarchive campaign"
 msgstr "Kampagne aus dem Archiv zurückholen"
@@ -4531,9 +4474,6 @@ msgstr ""
 msgid "Show Bless/Curse Odds"
 msgstr ""
 
-msgid "Faction, Level, Type, Cost"
-msgstr "Klasse, Stufe, Typ, Kosten"
-
 msgid "You cannot have more than 5 level 0 Survivor cards"
 msgstr "Du darfst nicht mehr als 5 Level 0 Überlebender Karten haben"
 
@@ -4548,9 +4488,6 @@ msgstr "Du darfst nicht mehr als 5 Level 0 Schurken Karten haben"
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "Zum Aktivieren bei Arkham Cards auf dem Tab Einstellungen anmelden"
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "Vorteil: Hand x2. Arkan"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -4684,6 +4621,20 @@ msgid ""
 "but you should be sure you have sufficient experience set aside to pay for "
 "it."
 msgstr ""
+"Eine Nebengeschichte ist ein Szenario, das zwischen zwei beliebigen "
+"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> gespielt "
+"werden kann.\n"
+"- Das Spielen einer Nebengeschichte kostet jeden Ermittler in der Kampagne "
+"eine bestimmte Menge Erfahrungspunkte.\n"
+"- Die Ermittler behalten Schwächen, Traumata, Erfahrungspunkte und "
+"Belohnungen für das Spielen einer Nebengeschichte für den Rest der "
+"Kampagne.\n"
+"- Jede Nebengeschichte darf nur ein Mal pro Kampagne gespielt werden.\n"
+"\n"
+"<b>Hinweis:</b> Bei Verwendung der App werden die erforderlichen "
+"Erfahrungspunkte automatisch am <b>Ende des Szenarios</b> abgezogen, aber "
+"du solltest sicherstellen, dass du bereits über genügend Erfahrungspunkte "
+"verfügst, um dies zu begleichen."
 
 msgid "Ice and Death: Part 1"
 msgstr "Eis und Tod, Teil I"
@@ -5839,7 +5790,7 @@ msgid "Select additional cards"
 msgstr ""
 
 msgid "Map"
-msgstr ""
+msgstr "Weltkarte"
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
@@ -5849,34 +5800,34 @@ msgid "The Colour Out of Space"
 msgstr ""
 
 msgid "Remove trait"
-msgstr ""
+msgstr "Merkmal entfernen"
 
 #, javascript-format
 msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wähle ${ quantity } Merkmal"
+msgstr[1] "Wähle ${ quantity } Merkmale"
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gewähltes Merkmal"
+msgstr[1] "Gewählte Merkmale"
 
 msgid "Add trait"
-msgstr ""
+msgstr "Merkmal hinzufügen"
 
 msgid "Embark"
-msgstr ""
+msgstr "Auf die Reise begeben"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
-msgstr ""
+msgstr "Abreise aus ${ currentLocation.name }"
 
 msgid "Depart"
-msgstr ""
+msgstr "Abreise"
 
 msgid "Choose destination"
-msgstr ""
+msgstr "Reiseziel wählen"
 
 #, javascript-format
 msgid ""
@@ -5942,26 +5893,26 @@ msgid "Fan-made Scenarios"
 msgstr ""
 
 msgid "Currently here"
-msgstr ""
+msgstr "Aktuell hier"
 
 msgid "Already visited"
-msgstr ""
+msgstr "Bereits besucht"
 
 msgid "Travel here"
-msgstr ""
+msgstr "Hierher reisen"
 
 msgid "Information"
-msgstr ""
+msgstr "Informationen"
 
 #, javascript-format
 msgid "Departing from ${ location }"
-msgstr ""
+msgstr "Abreise aus ${ location }"
 
 msgid "Customization upgrades"
-msgstr ""
+msgstr "Individualisierbarkeits-Verbesserungen"
 
 msgid "Special discounts"
-msgstr ""
+msgstr "Sonderrabatte"
 
 #, javascript-format
 msgid ""
@@ -5971,7 +5922,11 @@ msgid_plural ""
 "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
 "without spending experience."
 msgstr[0] ""
+"${ remainingFreeCards } zusätzliche Level 0 Karte darf zum Deck "
+"hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
 msgstr[1] ""
+"Bis zu ${ remainingFreeCards } zusätzliche Level 0 Karten dürfen zum Deck "
+"hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
 
 msgid "Difficulty override"
 msgstr ""
@@ -6071,7 +6026,7 @@ msgid "Choose a skill"
 msgstr ""
 
 msgid "Use the embark button below"
-msgstr ""
+msgstr "Verwende den Button Auf die Reise begeben unten"
 
 msgid "Review the world map"
 msgstr ""
@@ -6083,28 +6038,28 @@ msgid "Apply changes from last completed scenario or interlude"
 msgstr ""
 
 msgid "This is a side-story location."
-msgstr ""
+msgstr "Dies ein Ort mit einer möglichen Nebengeschichte."
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Reisekosten: ${ travelDistance } Zeit"
+msgstr[1] "Reisekosten: ${ travelDistance } Zeit"
 
 msgid "Do you want to use the app to randomize choices?"
 msgstr ""
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
-msgstr ""
+msgstr "Die Zelle reist von ${ departCityName } nach ${ arriveCityName }."
 
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Streiche ${ time } <b>Zeit</b> im Kampagnenlogbuch ab."
+msgstr[1] "Streiche ${ time } <b>Zeit</b> im Kampagnenlogbuch ab."
 
 msgid "This includes the cost of experience cost of playing the side-story."
-msgstr ""
+msgstr "Dies beinhaltet die Erfahrungspunktekosten zum Spielen der Nebengeschichte."
 
 msgid ""
 "This deck is owned by another player. You can record the changes now and "
@@ -6113,10 +6068,10 @@ msgid ""
 msgstr ""
 
 msgid "Time Passed"
-msgstr ""
+msgstr "Verstrichene Zeit"
 
 msgid "Bearer"
-msgstr ""
+msgstr "Träger"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
 msgstr ""
@@ -6162,17 +6117,23 @@ msgid ""
 "location and spend additional time equal to the normal experience for "
 "playing that side story."
 msgstr ""
+"Wenn du eine Nebengeschichte in diese Kampagne integrieren willst, dann "
+"reise zu diesem Ort auf der Weltkarte und gib zusätzliche Zeit in Höhe der "
+"normalen Erfahrungspunkte aus, die für das Spielen der Nebengeschichte "
+"angegeben sind (anstatt die geforderten Erfahrungspunkte auszugeben)."
 
 msgid "Use expedited ticket"
 msgstr ""
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
-msgstr ""
+msgstr "Zeitkosten: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
 msgstr ""
+"Zusätzliche Erfahrungspunktekosten für ${ investigator.name }: ${ "
+"additionalXpCost }"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -6183,27 +6144,37 @@ msgid ""
 "side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
 msgstr ""
+"Eine Nebengeschichte ist ein Szenario, das zwischen zwei beliebigen "
+"Szenarien einer Kampagne von <i>Arkham Horror: Das Kartenspiel</i> gespielt "
+"werden kann.\n"
+"- Weil du die Kampagne <i>Die Scharlachroten Schlüssel</i> spielst,  kostet "
+"eine Nebengeschichte eine bestimmte Menge <b>Zeit</b> anstatt "
+"Erfahrungspunkte.\n"
+"- Die Ermittler behalten Schwächen, Traumata, Erfahrungspunkte und "
+"Belohnungen für das Spielen einer Nebengeschichte für den Rest der "
+"Kampagne.\n"
+"- Jede Nebengeschichte darf nur ein Mal pro Kampagne gespielt werden."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Streiche ${ travelDistance } Zeit ab"
+msgstr[1] "Streiche ${ travelDistance } Zeit ab"
 
 msgid "Mark 1 time"
-msgstr ""
+msgstr "Streiche 1 Zeit ab"
 
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
 msgid_plural "Travel time: ${ travelDistance }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Reisezeit: ${ travelDistance }"
+msgstr[1] "Reizezeit: ${ travelDistance }"
 
 msgid "Secret / Locked"
-msgstr ""
+msgstr "Geheim / Verschlossen"
 
 msgid "Cannot stop here until unlocked"
-msgstr ""
+msgstr "Muss freigeschaltet werden"
 
 msgid "Select cards to exile"
 msgstr ""
@@ -6212,45 +6183,47 @@ msgid "Exile other cards"
 msgstr ""
 
 msgid "Name of Paradimensional Artifact"
-msgstr ""
+msgstr "Name des paradimensionalen Artefakts"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "Prolog: Rätsel im Regen"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "Tödliche Hitze"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "Blutrote Schatten"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "Dunkle Machenschaften"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "Wilder Tanz"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "Auf dünnem Eis"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "Hunde des Krieges"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "Schattierungen des Leidens"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "Spurlos"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "Zusammenkunft der Schlüssel"
 
 msgid "Unlocked Locations"
-msgstr ""
+msgstr "Freigeschaltete Orte"
 
 msgid ""
 "Each investigator who is the bearer of 1 or more key attaches those keys to "
 "their investigator card:"
 msgstr ""
+"Jeder Ermittler, der Träger mindestens eines Schlüssels ist, hängt jene "
+"Schlüssel an die Ermittlerkarte an:"
 
 msgid "Customizable"
 msgstr "Individualisierbar"
@@ -6317,13 +6290,13 @@ msgid ""
 msgstr ""
 
 msgid "Travel here without stopping"
-msgstr ""
+msgstr "Reise hierher ohne anzuhalten"
 
 #, javascript-format
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gelesener Statusbericht: ${ reportSymbols }"
+msgstr[1] "Gelesene Statusberichte: ${ reportSymbols }"
 
 #, javascript-format
 msgid ""
@@ -6333,7 +6306,11 @@ msgid_plural ""
 "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
+"Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ departCityName } "
+"nach ${ arriveCityName } auf dem Weg zu einem anderen Ort reist."
 msgstr[1] ""
+"Streiche ${ time } <b>Zeit</b> ab, da die Zelle von ${ departCityName } "
+"nach ${ arriveCityName } auf dem Weg zu einem anderen Ort reist."
 
 msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
@@ -6361,8 +6338,18 @@ msgstr ""
 msgid "Class Choice"
 msgstr ""
 
+msgid "Class"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 #, javascript-format
@@ -7596,10 +7583,6 @@ msgid "Historical Society"
 msgstr "Gesellschaft für Geschichte"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "Mensch"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "Humanoid"
 
@@ -7682,10 +7665,6 @@ msgstr "Leng"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "Loge"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "Verrückt"
 
 msgctxt "trait"
 msgid "Madness"
@@ -8184,19 +8163,7 @@ msgid "Zoog"
 msgstr "Zoog"
 
 msgctxt "trait"
-msgid "AI"
-msgstr ""
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr ""
-
-msgctxt "trait"
 msgid "Broken"
-msgstr ""
-
-msgctxt "trait"
-msgid "Card"
 msgstr ""
 
 msgctxt "trait"
@@ -8212,26 +8179,6 @@ msgid "Lair"
 msgstr "Unterschlupf"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr ""
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr ""
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr ""
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr ""
 
@@ -8240,43 +8187,7 @@ msgid "Unbroken"
 msgstr ""
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr ""
-
-msgctxt "trait"
 msgid "Resolute"
-msgstr ""
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr ""
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr ""
-
-msgctxt "trait"
-msgid "Castle"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chair"
-msgstr ""
-
-msgctxt "trait"
-msgid "Chess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Classy"
-msgstr ""
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
 msgstr ""
 
 msgctxt "trait"
@@ -8288,10 +8199,6 @@ msgid "Dilemma"
 msgstr ""
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr ""
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -8300,31 +8207,7 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr ""
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr ""
-
-msgctxt "trait"
 msgid "Glacier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr ""
-
-msgctxt "trait"
-msgid "Madness?"
 msgstr ""
 
 msgctxt "trait"
@@ -8340,22 +8223,6 @@ msgid "Mountains"
 msgstr ""
 
 msgctxt "trait"
-msgid "Music"
-msgstr ""
-
-msgctxt "trait"
-msgid "Musician"
-msgstr ""
-
-msgctxt "trait"
-msgid "Northside"
-msgstr ""
-
-msgctxt "trait"
-msgid "Parasitic"
-msgstr ""
-
-msgctxt "trait"
 msgid "Past"
 msgstr ""
 
@@ -8368,63 +8235,7 @@ msgid "Present"
 msgstr ""
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr ""
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr ""
-
-msgctxt "trait"
-msgid "Row"
-msgstr ""
-
-msgctxt "trait"
 msgid "Scientist"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr ""
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr ""
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr ""
-
-msgctxt "trait"
-msgid "Stop"
-msgstr ""
-
-msgctxt "trait"
-msgid "Table"
-msgstr ""
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Tulgey Wood"
 msgstr ""
 
 msgctxt "trait"
@@ -8432,19 +8243,11 @@ msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
-msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr ""
-
-msgctxt "trait"
-msgid "What? No"
+msgid "Double"
 msgstr ""
 
 #, javascript-format
@@ -8527,10 +8330,6 @@ msgstr ""
 
 msgctxt "Taboo List"
 msgid "Current"
-msgstr ""
-
-msgctxt "slots"
-msgid "None"
 msgstr ""
 
 msgctxt "fan-made-uses"
@@ -8630,8 +8429,8 @@ msgstr[1] "Szenarien"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Schlüssel"
+msgstr[1] "Schlüssel"
 
 msgctxt "tags"
 msgid "Add"
@@ -8659,6 +8458,46 @@ msgstr "Das Gericht · XX (auf dem Kopf stehend)"
 
 msgctxt "versus abbreviation"
 msgid "VS"
+msgstr ""
+
+msgctxt "sort"
+msgid "Type"
+msgstr ""
+
+msgctxt "sort"
+msgid "Class"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cost"
+msgstr ""
+
+msgctxt "sort"
+msgid "Pack"
+msgstr ""
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr ""
+
+msgctxt "sort"
+msgid "Title"
+msgstr ""
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr ""
+
+msgctxt "sort"
+msgid "Level"
+msgstr ""
+
+msgctxt "sort"
+msgid "Card number"
+msgstr ""
+
+msgctxt "sort"
+msgid "Slot"
 msgstr ""
 
 msgctxt "card-chooser"

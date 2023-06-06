@@ -43,6 +43,10 @@ import {
   StartingTabType,
   BROWSE_DECKS,
   SORT_BY_PACK,
+  DEFAULT_SORT,
+  SORT_BY_TITLE,
+  SORT_BY_FACTION,
+  SORT_BY_CARD_ID,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -782,17 +786,23 @@ export const getMythosMode = createSelector(
 );
 
 export const getCardSort = createSelector(
-  (state: AppState) => state.filters.sorts,
+  (state: AppState) => state.filters.newSorts,
   (state: AppState, filterId: string) => filterId,
-  (sorts, filterId): SortType => {
-    return sorts[filterId] || SORT_BY_TYPE;
+  (sorts, filterId): SortType[] => {
+    return sorts?.[filterId] || DEFAULT_SORT;
   }
 );
 
 export const getInvestigatorSort = createSelector(
   (state: AppState) => state.settings.investigatorSort,
-  (sort): SortType => {
-    return sort || SORT_BY_PACK;
+  (sort): SortType[] => {
+    switch (sort || SORT_BY_PACK) {
+      case SORT_BY_TITLE: return [SORT_BY_TITLE];
+      case SORT_BY_FACTION: return [SORT_BY_FACTION, SORT_BY_TITLE];
+      case SORT_BY_PACK:
+      default:
+        return [SORT_BY_PACK, SORT_BY_CARD_ID];
+    }
   }
 );
 
@@ -848,10 +858,39 @@ export const getLangChoice = createSelector(
   }
 );
 
+export const getAudioLangChoice = createSelector(
+  (state: AppState) => state.settings.audioLang,
+  (audioLang: string | undefined) => {
+    return audioLang || 'system';
+  }
+);
+
 export const getLangPreference = createSelector(
   (state: AppState) => state.settings.lang,
   (state: AppState) => state.cards.lang,
   (settingsLang, cardsLang): string => {
+    if (settingsLang === 'system') {
+      return getSystemLanguage();
+    }
+    if (settingsLang) {
+      return settingsLang;
+    }
+    if (cardsLang) {
+      return cardsLang;
+    }
+    return getSystemLanguage();
+  }
+);
+
+
+export const getAudioLangPreference = createSelector(
+  (state: AppState) => state.settings.lang,
+  (state: AppState) => state.cards.lang,
+  (state: AppState) => state.settings.audioLang,
+  (settingsLang, cardsLang, audioLang): string => {
+    if (audioLang && audioLang !== 'system') {
+      return audioLang;
+    }
     if (settingsLang === 'system') {
       return getSystemLanguage();
     }

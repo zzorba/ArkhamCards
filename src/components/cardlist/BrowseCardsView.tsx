@@ -1,25 +1,24 @@
 import React from 'react';
 
-import { SortType, SORT_BY_TYPE } from '@actions/types';
+import { SortType, SORT_BY_TYPE, BROWSE_CARDS } from '@actions/types';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 
 interface Props {
   componentId: string;
-  sort?: SortType;
 }
 
-function CardSearchView({ componentId, sort }: Props) {
+function BrowseCardsView({ componentId }: Props) {
   return (
     <CardSearchComponent
       componentId={componentId}
       mythosToggle
-      sort={sort || SORT_BY_TYPE}
+      filterId={BROWSE_CARDS}
     />
   );
 }
 
 export default withFetchCardsGate<Props>(
-  CardSearchView,
+  BrowseCardsView,
   { promptForUpdate: false }
 );

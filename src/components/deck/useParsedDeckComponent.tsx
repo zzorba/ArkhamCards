@@ -16,8 +16,8 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
-import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations } from '@actions/types';
-import { TypeCodeType, RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations, Slots } from '@actions/types';
+import { TypeCodeType, RANDOM_BASIC_WEAKNESS, DOWN_THE_RABBIT_HOLE_CODE } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
@@ -25,6 +25,7 @@ import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { xpString } from './hooks';
 
 function hasUpgrades(
   code: string,
@@ -137,10 +138,36 @@ function deckToSections(
   inCollection: { [pack_code: string]: boolean },
   ignoreCollection: boolean,
   limitedSlots: boolean,
-  limitedSlotsOnly?: boolean,
-  extraSections?: ExtraSection[]
+  options?: {
+    limitedSlotsOnly?: boolean;
+    extraSections?: ExtraSection[];
+    sumXp?: boolean;
+    existingSlots?: Slots;
+  }
 ): [DeckSection, number] {
+  const { limitedSlotsOnly, extraSections, sumXp, existingSlots } = options || {};
   const result: CardSection[] = [];
+
+  function calculateSideDeckXp(cardIds: CardId[]) {
+    return sumBy(cardIds, cardId => {
+      const card = cards[cardId.id];
+      if (!card) {
+        return 0;
+      }
+
+      let existingXp = 0;
+      if (cardsByName && existingSlots) {
+        const byName = cardsByName[card.real_name.toLowerCase()] || [];
+        forEach(byName, otherCard => {
+          const count = existingSlots[otherCard.code];
+          if (count > 0) {
+            existingXp += count * ((otherCard?.xp || 0) * (otherCard?.exceptional ? 2 : 1) + (card?.extra_xp || 0));
+          }
+        });
+      }
+      return cardId.quantity * ((card?.xp || 0) * (card?.exceptional ? 2 : 1) + (card?.extra_xp || 0)) - existingXp;
+    });
+  }
   if (halfDeck.Assets) {
     const assets = flatMap(halfDeck.Assets, subAssets => {
       const data = filter(subAssets.data, c => limitedSlotsOnly ? c.limited : (!c.limited || !limitedSlots));
@@ -156,11 +183,12 @@ function deckToSections(
       assets,
       subAssets => sum(subAssets.data.map(c => c.quantity))
     );
+    const xp = xpString(sumXp ? sumBy(assets, subAssets => calculateSideDeckXp(subAssets.data)) : 0);
     if (assetCount > 0) {
       const assets = sectionHeaderTitle('asset', assetCount);
       result.push({
         id: `assets${mode ? `-${mode}` : ''}`,
-        subTitle: `— ${assets} · ${assetCount} —`,
+        subTitle: sumXp ? `— ${assets} · ${assetCount} · ${xp} —` : `— ${assets} · ${assetCount} —`,
         cards: [],
       });
     }
@@ -168,6 +196,7 @@ function deckToSections(
       result.push({
         id: `asset${mode ? `-${mode}` : ''}-${idx}`,
         title: subAssets.type,
+
         cards: map(subAssets.data, c => {
           return {
             ...c,
@@ -222,9 +251,10 @@ function deckToSections(
       }
       const count = sumBy(cardIds, c => c.quantity);
       const localizedName = sectionHeaderTitle(cardType, count);
+      const xp = xpString(sumXp ? calculateSideDeckXp(cardIds) : 0);
       result.push({
         id: `${cardType}-${mode ? `-${mode}` : ''}`,
-        subTitle: `— ${localizedName} · ${count} —`,
+        subTitle: sumXp ? `— ${localizedName} · ${count} · ${xp} —` : `— ${localizedName} · ${count} —`,
         cards: map(cardIds, c => {
           return {
             ...c,
@@ -417,11 +447,12 @@ export default function useParsedDeckComponent({
       inCollection,
       ignore_collection,
       false,
-      undefined,
-      requiredCards && [{
-        title: t`Other investigator cards`,
-        codes: requiredCards,
-      }]
+      {
+        extraSections: requiredCards && [{
+          title: t`Other investigator cards`,
+          codes: requiredCards,
+        }]
+      },
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     let currentIndex = specialIndex;
@@ -492,7 +523,11 @@ export default function useParsedDeckComponent({
       'side',
       inCollection,
       ignore_collection,
-      false
+      false,
+      {
+        sumXp: true,
+        existingSlots: slots,
+      }
     );
     if (editable || sideSection.sections.length) {
       newData.push(sideSection);
@@ -562,10 +597,7 @@ export default function useParsedDeckComponent({
         card.code,
         card,
         colors,
-        true,
-        deckId,
-        customizations,
-        tabooSetId
+        { showSpoilers: true, deckId, initialCustomizations: customizations, tabooSetId },
       );
       return;
     }

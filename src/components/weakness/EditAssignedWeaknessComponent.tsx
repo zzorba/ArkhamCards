@@ -25,7 +25,7 @@ function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssigne
   const weaknessCards = useWeaknessCards();
   const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, updateAssignedCards);
   const cardPressed = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
+    showCard(componentId, card.code, card, colors, { showSpoilers: false });
   }, [componentId, colors]);
 
   const data: Card[] = useMemo(() => {

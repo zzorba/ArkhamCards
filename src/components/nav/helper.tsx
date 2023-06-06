@@ -140,12 +140,15 @@ export function showCard(
   code: string,
   card: Card,
   colors: ThemeColors,
-  showSpoilers: undefined | boolean,
-  deckId?: DeckId,
-  initialCustomizations?: Customizations,
-  tabooSetId?: number,
-  backCode?: string,
+  options: {
+    showSpoilers: undefined | boolean,
+    deckId?: DeckId,
+    initialCustomizations?: Customizations,
+    tabooSetId?: number,
+    backCode?: string,
+  }
 ) {
+  const { showSpoilers, deckId, initialCustomizations, tabooSetId, backCode } = options;
   Navigation.push<CardDetailProps>(componentId, {
     component: {
       name: 'Card',
@@ -328,7 +331,7 @@ export async function openUrl(
       tabooSetId
     );
     if (card) {
-      showCard(componentId, code, card, context.colors, false);
+      showCard(componentId, code, card, context.colors, { showSpoilers: false });
       return;
     }
   }

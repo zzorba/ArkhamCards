@@ -181,7 +181,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   const singleCardView = useSettingValue('single_card');
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, true);
+      showCard(componentId, card.code, card, colors, { showSpoilers: true });
     } else {
       const allCards = flatMap(overlap, o => o.conflicts);
       showCardSwipe(

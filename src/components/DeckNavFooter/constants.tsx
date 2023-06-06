@@ -10,3 +10,7 @@ export const LOW_MEMORY_DEVICE = (
   Platform.OS === 'android' &&
   parseInt(DeviceInfo.getSystemVersion().split('.')[0], 10) < 9
 );
+
+export function isAndroidVersion(version: number) {
+  return Platform.OS === 'android' && parseInt(DeviceInfo.getSystemVersion().split(',')[0], 10) >= version;
+}

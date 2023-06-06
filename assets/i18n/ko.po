@@ -128,45 +128,6 @@ msgstr "불명"
 msgid "Investigator"
 msgstr "조사자"
 
-msgid "Asset: Hand"
-msgstr "자산: 손"
-
-msgid "Asset: Hand x2"
-msgstr "자산: 손 x2"
-
-msgid "Asset: Accessory"
-msgstr "자산: 액세서리"
-
-msgid "Asset: Ally"
-msgstr "자산: 조력자"
-
-msgid "Asset: Arcane"
-msgstr "자산: 마법"
-
-msgid "Asset: Arcane x2"
-msgstr "자산: 마법 x2"
-
-msgid "Asset: Body"
-msgstr "자산: 신체"
-
-msgid "Asset: Permanent"
-msgstr "자산: 영속"
-
-msgid "Asset: Tarot"
-msgstr "자산: 타로"
-
-msgid "Asset: Ally. Arcane"
-msgstr "자산: 조력자. 마법"
-
-msgid "Asset: Hand. Arcane"
-msgstr "자산: 손. 마법"
-
-msgid "Asset: Body. Hand x2"
-msgstr "자산: 신체. 손 x2"
-
-msgid "Asset: Other"
-msgstr "자산: 기타"
-
 msgid "Event"
 msgstr "이벤트"
 
@@ -806,7 +767,7 @@ msgid "${ investigator.name } on the Road"
 msgstr "방랑하는 ${ investigator.name }"
 
 msgid "${ investigator.name } Does It All"
-msgstr "${ investigator.name }는 무엇이든 잘해요"
+msgstr "${ investigator.name } 씨는 무엇이든 잘해요"
 
 msgid "Name"
 msgstr "이름"
@@ -1047,7 +1008,6 @@ msgid ""
 "choose different upgrades."
 msgstr "덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있습니다."
 
-#, javascript-format
 msgid "Level ${ level }"
 msgstr "${ level } 레벨"
 
@@ -1134,26 +1094,11 @@ msgstr "인스머스에 드리운 음모"
 msgid "Sort by"
 msgstr "정렬하기"
 
-msgid "Type"
-msgstr "종류"
-
-msgid "Faction, Name"
-msgstr "역할군, 이름"
-
-msgid "Faction, Pack"
-msgstr "역할군, 팩"
-
 msgid "Pack"
 msgstr "팩"
 
 msgid "Title"
 msgstr "명칭"
-
-msgid "Encounter Set"
-msgstr "조우 세트"
-
-msgid "Faction"
-msgstr "역할군"
 
 msgid "Search"
 msgstr "검색"
@@ -3646,9 +3591,6 @@ msgid ""
 "arkhamcards@gmail.com."
 msgstr "만약 이 마이그레이션 중에 어떤 오류라도 맞닥뜨리게 된다면, arkhamcards@gmail.com 이메일로 연락해 주십시오."
 
-msgid "Asset: Body. Arcane"
-msgstr "자산: 신체. 마법"
-
 msgid "Color blind friendly icons"
 msgstr "색맹 친화적 아이콘"
 
@@ -3750,9 +3692,6 @@ msgstr "${ _totalXp }점 중 ${ _spentXp }점 소비"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Ancestral Knowledge 카드가 있는 덱은 반드시 10장 이상의 능력 카드를 포함하여야 합니다."
-
-msgid "Faction, Level, Type"
-msgstr "역할군, 레벨, 유형"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
@@ -4343,9 +4282,6 @@ msgstr "축복/저주 확률 숨기기"
 msgid "Show Bless/Curse Odds"
 msgstr "축복/저주 확률 보기"
 
-msgid "Faction, Level, Type, Cost"
-msgstr "역할군, 레벨, 유형, 비용"
-
 msgid "You cannot have more than 5 level 0 Guardian cards"
 msgstr "수호자 0레벨 카드를 5장보다 많이 포함할 수 없습니다."
 
@@ -4360,9 +4296,6 @@ msgstr "생존자 0레벨 카드를 5장보다 많이 포함할 수 없습니다
 
 msgid "Sign into Arkham Cards on the Settings tab to enable"
 msgstr "해당 기능을 활성화하려면 설정 탭에서 아컴카드 계정에 로그인 하십시오."
-
-msgid "Asset: Hand x2. Arcane"
-msgstr "자산: 손 x2. 마법"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
@@ -6137,32 +6070,42 @@ msgstr[0] ""
 msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
 "traited."
-msgstr ""
+msgstr "탐구자나 중립 카드도 아니고 [[역설]] 특성도 없는 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "Min"
-msgstr ""
+msgstr "최소"
 
 msgid "Max"
-msgstr ""
+msgstr "최대"
 
 msgid "EASY"
-msgstr ""
+msgstr "쉬움"
 
 msgid "STND"
-msgstr ""
+msgstr "보통"
 
 msgid "HARD"
-msgstr ""
+msgstr "어려움"
 
 msgid "EXPT"
-msgstr ""
+msgstr "전문가"
 
 msgid "Class Choice"
-msgstr ""
+msgstr "역할군 선택"
+
+msgid "Class"
+msgstr "역할군"
+
+msgid "Selected"
+msgstr "선택함"
 
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
+
+msgctxt "slots"
+msgid "None"
+msgstr "없음"
 
 #, javascript-format
 msgctxt "masculine"
@@ -7415,10 +7358,6 @@ msgid "Historical Society"
 msgstr "사학회"
 
 msgctxt "trait"
-msgid "Human"
-msgstr "인간형"
-
-msgctxt "trait"
 msgid "Humanoid"
 msgstr "인간형"
 
@@ -7501,10 +7440,6 @@ msgstr "렝"
 msgctxt "trait"
 msgid "Lodge"
 msgstr "집회소"
-
-msgctxt "trait"
-msgid "Lunatic"
-msgstr "광인"
 
 msgctxt "trait"
 msgid "Madness"
@@ -8003,20 +7938,8 @@ msgid "Zoog"
 msgstr "주그"
 
 msgctxt "trait"
-msgid "AI"
-msgstr "AI"
-
-msgctxt "trait"
-msgid "Blessed?"
-msgstr "축복받은?"
-
-msgctxt "trait"
 msgid "Broken"
 msgstr "깨진"
-
-msgctxt "trait"
-msgid "Card"
-msgstr "카드"
 
 msgctxt "trait"
 msgid "Entrepreneur"
@@ -8031,26 +7954,6 @@ msgid "Lair"
 msgstr "침소"
 
 msgctxt "trait"
-msgid "Nostalgia II"
-msgstr "향수 2호"
-
-msgctxt "trait"
-msgid "Retired"
-msgstr ""
-
-msgctxt "trait"
-msgid "Royalty"
-msgstr "귀족"
-
-msgctxt "trait"
-msgid "Saga"
-msgstr ""
-
-msgctxt "trait"
-msgid "Shadow"
-msgstr "그림자"
-
-msgctxt "trait"
 msgid "Synergy"
 msgstr "시너지"
 
@@ -8059,44 +7962,8 @@ msgid "Unbroken"
 msgstr "깨지지 않은"
 
 msgctxt "trait"
-msgid "Wonderland"
-msgstr "이상한 나라"
-
-msgctxt "trait"
 msgid "Resolute"
 msgstr ""
-
-msgctxt "trait"
-msgid "Ally? Creature"
-msgstr "조력자? 생물"
-
-msgctxt "trait"
-msgid "Bad dog"
-msgstr "이 개놈아!"
-
-msgctxt "trait"
-msgid "Castle"
-msgstr "성"
-
-msgctxt "trait"
-msgid "Chair"
-msgstr "의자"
-
-msgctxt "trait"
-msgid "Chess"
-msgstr "체스"
-
-msgctxt "trait"
-msgid "Classy"
-msgstr "세련된"
-
-msgctxt "trait"
-msgid "Consort"
-msgstr ""
-
-msgctxt "trait"
-msgid "Corpse"
-msgstr "시체"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -8107,10 +7974,6 @@ msgid "Dilemma"
 msgstr "딜레마"
 
 msgctxt "trait"
-msgid "Downtown"
-msgstr "번화가"
-
-msgctxt "trait"
 msgid "Eidolon"
 msgstr ""
 
@@ -8119,32 +7982,8 @@ msgid "Elder Thing"
 msgstr ""
 
 msgctxt "trait"
-msgid "Entrance"
-msgstr ""
-
-msgctxt "trait"
-msgid "Fellow Dogs"
-msgstr "개 친구들"
-
-msgctxt "trait"
-msgid "Footwear, but not really"
-msgstr "신발(못 신는다)"
-
-msgctxt "trait"
 msgid "Glacier"
 msgstr ""
-
-msgctxt "trait"
-msgid "Infection"
-msgstr ""
-
-msgctxt "trait"
-msgid "Machine"
-msgstr "기계"
-
-msgctxt "trait"
-msgid "Madness?"
-msgstr "정신이상?"
 
 msgctxt "trait"
 msgid "Mainland"
@@ -8156,22 +7995,6 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
-
-msgctxt "trait"
-msgid "Music"
-msgstr "음악"
-
-msgctxt "trait"
-msgid "Musician"
-msgstr "음악가"
-
-msgctxt "trait"
-msgid "Northside"
-msgstr "북부"
-
-msgctxt "trait"
-msgid "Parasitic"
 msgstr ""
 
 msgctxt "trait"
@@ -8187,84 +8010,20 @@ msgid "Present"
 msgstr "현재"
 
 msgctxt "trait"
-msgid "Priestess"
-msgstr ""
-
-msgctxt "trait"
-msgid "Pup"
-msgstr "멍멍이"
-
-msgctxt "trait"
-msgid "Resonant"
-msgstr ""
-
-msgctxt "trait"
-msgid "Restricted"
-msgstr "제한구역"
-
-msgctxt "trait"
-msgid "Row"
-msgstr "칸"
-
-msgctxt "trait"
 msgid "Scientist"
 msgstr "과학자"
-
-msgctxt "trait"
-msgid "Shapeshifter"
-msgstr "맞춤형 조사자"
-
-msgctxt "trait"
-msgid "Sister"
-msgstr ""
-
-msgctxt "trait"
-msgid "Slope"
-msgstr "경사"
-
-msgctxt "trait"
-msgid "Soldier"
-msgstr "병사"
-
-msgctxt "trait"
-msgid "Stop"
-msgstr "거기 서!"
-
-msgctxt "trait"
-msgid "Table"
-msgstr "탁자"
-
-msgctxt "trait"
-msgid "That's bad"
-msgstr ""
-
-msgctxt "trait"
-msgid "Traitor"
-msgstr "배신자"
-
-msgctxt "trait"
-msgid "Tulgey Wood"
-msgstr "털진 숲"
 
 msgctxt "trait"
 msgid "Uncharted"
 msgstr ""
 
 msgctxt "trait"
-msgid "Underground"
+msgid "Casino"
 msgstr ""
 
 msgctxt "trait"
-msgid "Upper Floor"
+msgid "Double"
 msgstr ""
-
-msgctxt "trait"
-msgid "Weather"
-msgstr "날씨"
-
-msgctxt "trait"
-msgid "What? No"
-msgstr "뭐? 안 돼"
 
 #, javascript-format
 msgctxt "filter"
@@ -8347,10 +8106,6 @@ msgstr "현재 - ${ latestTabooSet.name }"
 msgctxt "Taboo List"
 msgid "Current"
 msgstr "현재"
-
-msgctxt "slots"
-msgid "None"
-msgstr "없음"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
@@ -8467,6 +8222,46 @@ msgstr "심판 · XX (역위치)"
 msgctxt "versus abbreviation"
 msgid "VS"
 msgstr "VS"
+
+msgctxt "sort"
+msgid "Type"
+msgstr "종류"
+
+msgctxt "sort"
+msgid "Class"
+msgstr "역할군"
+
+msgctxt "sort"
+msgid "Cost"
+msgstr "비용"
+
+msgctxt "sort"
+msgid "Pack"
+msgstr "팩"
+
+msgctxt "sort"
+msgid "Cycle"
+msgstr "사이클"
+
+msgctxt "sort"
+msgid "Title"
+msgstr "명칭"
+
+msgctxt "sort"
+msgid "Encounter Set"
+msgstr "조우 세트"
+
+msgctxt "sort"
+msgid "Level"
+msgstr "레벨"
+
+msgctxt "sort"
+msgid "Card number"
+msgstr "카드 번호"
+
+msgctxt "sort"
+msgid "Slot"
+msgstr "슬롯"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

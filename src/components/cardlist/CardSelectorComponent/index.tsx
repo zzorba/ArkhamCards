@@ -33,7 +33,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   }, [updateCount, toggleCard]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true);
+    showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [colors, componentId]);
   const initialCards = useMemo(() => uniq(concat(keys(slots), flatMap(counts, (count, code) => count > 0 ? code : []))), [slots, counts])
   const [cards] = usePlayerCards(initialCards);

@@ -92,22 +92,18 @@ export function showGuideCampaignLog(
 export function showGuideDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  chaosBag: ChaosBag,
   investigatorIds: string[],
   scenarioId: string | undefined,
   standalone: boolean | undefined,
-  processedCampaign: ProcessedCampaign | undefined
 ) {
   Navigation.push<GuideDrawChaosBagProps>(componentId, {
     component: {
       name: 'Guide.DrawChaosBag',
       passProps: {
         campaignId,
-        chaosBag,
         investigatorIds,
         scenarioId,
         standalone,
-        processedCampaign,
       },
       options: {
         topBar: {

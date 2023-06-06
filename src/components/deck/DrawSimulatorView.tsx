@@ -366,7 +366,7 @@ export default function DrawSimulatorView({ componentId, customizations, slots }
   }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, true, undefined, customizations);
+    showCard(componentId, card.code, card, colors, { showSpoilers: true, initialCustomizations: customizations });
   }, [componentId, colors, customizations]);
   const cardWidth = useMemo(() => {
     let cardsPerRow = 10;

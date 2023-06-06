@@ -16,11 +16,11 @@ import { msgid, ngettext, t, jt } from 'ttag';
 import ThemePicker from './ThemePicker';
 import FontSizePicker from './FontSizePicker';
 import SocialBlock from './SocialBlock';
-import LanguagePicker from './LanguagePicker';
+import LanguagePicker, { NarrationLanguagePicker } from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { requestFetchCards } from '@components/card/actions';
 import { prefetch } from '@lib/auth';
-import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks } from '@reducers';
+import { AppState, getLangChoice, getPacksInCollection, getPackSpoilers, getAllPacks, getAudioLangPreference } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
 import AccountSection from './AccountSection';
@@ -155,6 +155,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
 
   const [campaignShowDeckId, setCampaignShowDeckId] = useRemoteSettingFlag('campaign_show_deck_id', updateRemoteSetting);
   const [searchEnglish, setSearchEnglish] = useSettingFlag('search_english');
+  const audioLang = useSelector(getAudioLangPreference);
 
   const rulesPressed = useCallback(() => {
     navButtonPressed('Rules', t`Rules`);
@@ -259,7 +260,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onValueChange={setSearchEnglish}
                 />
               ) }
-              { lang === 'de' && (
+              <NarrationLanguagePicker first last />
+              { audioLang === 'de' && (
                 <>
                   <View style={space.paddingS}>
                     <Text style={typography.text}>
@@ -274,7 +276,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   />
                 </>
               ) }
-              { lang === 'ru' && (
+              { audioLang === 'ru' && (
                 <>
                   <View style={space.paddingS}>
                     <Text style={typography.text}>
@@ -284,7 +286,7 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   </View>
                 </>
               ) }
-              { lang !== 'ru' && lang !== 'de' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+              { audioLang == 'en' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
             </RoundedFactionBlock>
           </View>
           <SocialBlock />

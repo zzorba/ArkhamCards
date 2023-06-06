@@ -29,6 +29,12 @@ import {
   SORT_BY_PACK,
   SetInvestigatorSortAction,
   SET_INVESTIGATOR_SORT,
+  DEFAULT_SORT,
+  UpdateCardSortAction,
+  UPDATE_CARD_SORT,
+  BROWSE_CARDS,
+  SET_AUDIO_LANGUAGE_CHOICE,
+  SetAudioLanguageChoiceAction,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -41,6 +47,7 @@ interface SettingsState {
   alphabetizeEncounterSets?: boolean;
   colorblind?: boolean;
   lang?: string;
+  audioLang?: string;
   theme?: 'dark' | 'light';
   fontScale?: number;
   justifyContent?: boolean;
@@ -62,6 +69,7 @@ interface SettingsState {
   searchEnglish?: boolean;
   startingTab?: StartingTabType;
   investigatorSort?: SortType;
+  cardSort?: SortType[];
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -75,6 +83,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   colorblind: false,
   ignore_collection: false,
   lang: 'system',
+  audioLang: undefined,
   fontScale: undefined,
   justifyContent: false,
   sortRespectQuotes: false,
@@ -90,10 +99,12 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   lowMemory: false,
   startingTab: BROWSE_DECKS,
   investigatorSort: SORT_BY_PACK,
+  cardSort: DEFAULT_SORT,
 };
 
 type SettingAction =
   SetLanguageChoiceAction |
+  SetAudioLanguageChoiceAction |
   SetCurrentTabooSetAction |
   SetTabooSetAction |
   SetMiscSettingAction |
@@ -104,7 +115,8 @@ type SettingAction =
   SetPlaybackRateAction |
   SyncDismissOnboardingAction |
   ChangeTabAction |
-  SetInvestigatorSortAction;
+  SetInvestigatorSortAction |
+  UpdateCardSortAction;
 
 
 export default function(
@@ -156,6 +168,13 @@ export default function(
       return {
         ...state,
         lang: action.choiceLang,
+      };
+    }
+
+    case SET_AUDIO_LANGUAGE_CHOICE: {
+      return {
+        ...state,
+        audioLang: action.choiceLang,
       };
     }
     case SET_TABOO_SET: {
@@ -277,6 +296,14 @@ export default function(
         lang: action.choiceLang,
       };
     }
+    case UPDATE_CARD_SORT:
+      if (action.id !== BROWSE_CARDS) {
+        return state;
+      }
+      return {
+        ...state,
+        cardSort: action.sorts,
+      };
     default: {
       return state;
     }

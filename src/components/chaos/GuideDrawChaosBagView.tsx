@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
@@ -12,17 +12,25 @@ import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ProcessedCampaign } from '@data/scenario';
 import { useChaosBagResults } from '@data/hooks';
+import withCampaignGuideContext, { InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
+import { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import useProcessedCampaign from '@components/campaignguide/useProcessedCampaign';
 
-export interface GuideDrawChaosBagProps {
-  campaignId: CampaignId;
+export interface GuideDrawChaosBagProps extends CampaignGuideInputProps {
   scenarioId?: string;
   standalone?: boolean;
-  chaosBag: ChaosBag;
   investigatorIds: string[];
-  processedCampaign?: ProcessedCampaign;
 }
 
-export default function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, chaosBag, investigatorIds, processedCampaign }: GuideDrawChaosBagProps & NavigationProps) {
+type Props = GuideDrawChaosBagProps & InjectedCampaignGuideContextProps;
+
+function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, investigatorIds }: Props & NavigationProps) {
+  const campaignData = useContext(CampaignGuideContext);
+  const { campaignGuide, campaignState } = campaignData;
+  const [processedCampaign] = useProcessedCampaign(campaignGuide, campaignState);
+  const chaosBag = processedCampaign?.campaignLog.chaosBag;
+
   const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag] = useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign });
   useEffect(() => {
     if (scenarioCard) {
@@ -39,9 +47,11 @@ export default function GuideDrawChaosBagView({ componentId, campaignId, scenari
   const chaosBagResults = useChaosBagResults(campaignId);
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults.tarot);
   const showOdds = useCallback(() => {
-    showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
+    if (theChaosBag) {
+      showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
+    }
   }, [componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign]);
-  if (loading) {
+  if (loading || !theChaosBag) {
     return <LoadingSpinner />
   }
   return (
@@ -67,3 +77,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 });
+
+export default withCampaignGuideContext(GuideDrawChaosBagView, { rootView: false });

@@ -26,6 +26,8 @@ import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
 import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
+import { flatMap } from 'lodash';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -101,8 +103,10 @@ function showFaq(componentId: string, id: string) {
   });
 }
 
+const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
 function CardDetailView({
-  componentId, id,
+  componentId,
+  id,
   back_id,
   pack_code,
   showSpoilers: propsShowSpoilers,
@@ -150,26 +154,43 @@ function CardDetailView({
       Navigation.pop(componentId);
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
-  const [originalCard, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
+  const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
   const { listSeperator } = useContext(LanguageContext);
-  const customizationChoices = customizations[id];
-  const card = useMemo(() => originalCard?.withCustomizations(listSeperator, customizationChoices), [listSeperator, originalCard, customizationChoices]);
+  const parsedDeckObj = useParsedDeck(deckId, componentId);
+  const deckCount = card && parsedDeckObj.deckEdits?.slots[card.code];
+  const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
+    if (card && deckId) {
+      if (deckCount) {
+        if (customizations[card.code]) {
+          return customizations[card.code];
+        }
+        return flatMap(card.customization_options, (option, idx) => {
+          if (option.xp === 0) {
+            return card.customizationChoice(idx, 0, undefined, undefined) || [];
+          }
+          return [];
+        })
+      }
+      return NO_CUSTOMIZATIONS;
+    }
+    return undefined;
+  }, [deckId, customizations, card, deckCount]);
+  const customizedCard = useMemo(() => card?.withCustomizations(listSeperator, customizationChoices), [listSeperator, card, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
-    if (card) {
+    if (customizedCard) {
       Navigation.mergeOptions(componentId, {
         topBar: {
-          rightButtons: rightButtonsForCard(card),
+          rightButtons: rightButtonsForCard(customizedCard),
         },
       });
     }
-  }, [card, componentId]);
-  const parsedDeckObj = useParsedDeck(deckId, componentId);
+  }, [customizedCard, componentId]);
   if (loading) {
     return <View style={[styles.wrapper, backgroundStyle]} />;
   }
-  if (!card) {
+  if (!customizedCard) {
     const code = id;
     return (
       <Text style={[typography.text, space.paddingM]}>
@@ -182,22 +203,22 @@ function CardDetailView({
       <CardDetailComponent
         width={width}
         componentId={componentId}
-        card={card}
+        card={customizedCard}
         backCard={backCard}
         showSpoilers={showSpoilersSetting || showSpoilers}
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
       />
-      { !!card.customization_options && !!originalCard && (
+      { !!customizedCard.customization_options && !!card && (
         <CardCustomizationOptions
           componentId={componentId}
-          card={originalCard}
+          card={card}
+          mode={parsedDeckObj.deckEdits?.mode}
           deckId={deckId}
-          customizationOptions={card.customization_options}
+          customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
           width={width}
           editable={parsedDeckObj.editable}
-          mode={parsedDeckObj.deckEdits?.mode}
           setChoice={setChoice}
         />
       ) }

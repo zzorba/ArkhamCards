@@ -226,13 +226,11 @@ export default function CampaignLogComponent({
     showGuideDrawChaosBag(
       componentId,
       campaignId,
-      campaignLog.chaosBag,
       campaignLog.investigatorCodesSafe(),
       scenarioId,
       standalone,
-      processedCampaign
     );
-  }, [componentId, campaignId, campaignLog, scenarioId, standalone, processedCampaign]);
+  }, [componentId, campaignId, campaignLog, scenarioId, standalone]);
 
   const chaosBagSection = useMemo(() => {
     if (hideChaosBag) {

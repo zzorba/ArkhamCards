@@ -4,9 +4,13 @@ import RNFS from 'react-native-fs';
 import base64 from 'react-native-base64';
 import utf8 from 'utf8';
 import { t } from 'ttag';
+import { isAndroidVersion } from '@components/DeckNavFooter/constants';
 
 async function hasFileSystemPermission(read: boolean) {
   if (Platform.OS === 'ios') {
+    return true;
+  }
+  if (isAndroidVersion(13)) {
     return true;
   }
   try {
