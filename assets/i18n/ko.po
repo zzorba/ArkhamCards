@@ -6099,6 +6099,15 @@ msgstr "역할군"
 msgid "Selected"
 msgstr "선택함"
 
+msgid "App language: ${ appLanguage }"
+msgstr ""
+
+msgid "Narration Language"
+msgstr ""
+
+msgid "Take the scenic route to mark time"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"

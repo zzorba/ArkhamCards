@@ -5922,8 +5922,8 @@ msgid_plural ""
 "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  "
 "without spending experience."
 msgstr[0] ""
-"${ remainingFreeCards } zusätzliche Level 0 Karte darf zum Deck "
-"hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
+"${ remainingFreeCards } zusätzliche Level 0 Karte darf zum Deck hinzugefügt "
+"werden ohne Erfahrungspunkte zu verbrauchen."
 msgstr[1] ""
 "Bis zu ${ remainingFreeCards } zusätzliche Level 0 Karten dürfen zum Deck "
 "hinzugefügt werden ohne Erfahrungspunkte zu verbrauchen."
@@ -6342,6 +6342,15 @@ msgid "Class"
 msgstr ""
 
 msgid "Selected"
+msgstr ""
+
+msgid "App language: ${ appLanguage }"
+msgstr ""
+
+msgid "Narration Language"
+msgstr ""
+
+msgid "Take the scenic route to mark time"
 msgstr ""
 
 msgctxt "investigator"
