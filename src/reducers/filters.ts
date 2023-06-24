@@ -11,8 +11,7 @@ import {
   UPDATE_CARD_SORT,
   FilterActions,
   SortType,
-  DEFAULT_SORT,
-  BROWSE_CARDS,
+  CardScreenType,
 } from '@actions/types';
 
 interface FiltersState {
@@ -21,6 +20,8 @@ interface FiltersState {
   mythos: { [componentId: string]: boolean | undefined };
   sorts?: { [componentId: string]: SortType | undefined };
   newSorts?: { [componentId: string]: SortType[] | undefined };
+  gSorts?: { [type in CardScreenType as string]: SortType[] | undefined };
+  gMythosSorts?: { [type in CardScreenType as string]: SortType[] | undefined };
   cardData: { [componentId: string]: CardFilterData | undefined };
 }
 
@@ -31,6 +32,8 @@ const DEFAULT_STATE: FiltersState = {
   sorts: {},
   newSorts: {},
   cardData: {},
+  gSorts: {},
+  gMythosSorts: {},
 };
 
 export default function(
@@ -65,14 +68,13 @@ export default function(
         ...state.mythos,
       },
       sorts: {},
-      newSorts: {
-        ...(state.newSorts || {}),
-        [action.id]: action.sorts,
-      },
+      newSorts: {},
       cardData: {
         ...state.cardData,
         [action.id]: action.cardData,
       },
+      gSorts: state.gSorts,
+      gMythosSorts: state.gMythosSorts,
     };
   }
   if (action.type === TOGGLE_MYTHOS) {
@@ -88,7 +90,6 @@ export default function(
     const all = { ...state.all };
     const defaults = { ...state.defaults };
     const mythos = { ...state.mythos };
-    const newSorts = { ...(state.newSorts || {}) };
     const cardData = { ...state.cardData };
     if (all[action.id]) {
       delete all[action.id];
@@ -97,15 +98,16 @@ export default function(
       delete defaults[action.id];
     }
     delete mythos[action.id];
-    delete newSorts[action.id];
     delete cardData[action.id];
     return {
       all,
       defaults,
       mythos,
       sorts: {},
-      newSorts,
+      newSorts: {},
       cardData,
+      gSorts: state.gSorts,
+      gMythosSorts: state.gMythosSorts,
     };
   }
   if (action.type === TOGGLE_FILTER) {
@@ -122,11 +124,20 @@ export default function(
     };
   }
   if (action.type === UPDATE_CARD_SORT) {
+    if (action.mythosMode) {
+      return {
+        ...state,
+        gMythosSorts: {
+          ...state.gMythosSorts,
+          [action.cardScreen]: action.sorts,
+        },
+      };
+    }
     return {
       ...state,
-      newSorts: {
-        ...(state.newSorts || {}),
-        [action.id]: action.sorts,
+      gSorts: {
+        ...state.gSorts,
+        [action.cardScreen]: action.sorts,
       },
     };
   }

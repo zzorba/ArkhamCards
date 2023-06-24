@@ -47,6 +47,8 @@ import {
   SORT_BY_TITLE,
   SORT_BY_FACTION,
   SORT_BY_CARD_ID,
+  CardScreenType,
+  DEFAULT_MYTHOS_SORT,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -786,10 +788,11 @@ export const getMythosMode = createSelector(
 );
 
 export const getCardSort = createSelector(
-  (state: AppState) => state.filters.newSorts,
-  (state: AppState, filterId: string) => filterId,
-  (sorts, filterId): SortType[] => {
-    return sorts?.[filterId] || DEFAULT_SORT;
+  (state: AppState, screen: CardScreenType, mythosMode: boolean) => mythosMode ? state.filters.gMythosSorts : state.filters.gSorts,
+  (state: AppState, screen: CardScreenType) => screen,
+  (state: AppState, screen: CardScreenType, mythosMode: boolean) => mythosMode ? DEFAULT_MYTHOS_SORT : DEFAULT_SORT,
+  (sorts, screen, defaultSort): SortType[] => {
+    return sorts?.[screen] ?? defaultSort;
   }
 );
 

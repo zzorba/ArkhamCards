@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import { TouchableOpacity } from '@components/core/Touchables';
 import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId, DEFAULT_SORT } from '@actions/types';
-import { AppState, getDeckChecklist } from '@reducers';
+import { AppState, getCardSort, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -24,6 +24,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import KeepAwake from 'react-native-keep-awake';
+import { updateCardSorts } from '@components/filter/actions';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -77,7 +78,12 @@ function DeckChecklistView({
   const deck = useCampaignDeck(id, campaignId);
   const { deckEdits } = useParsedDeck(id, componentId);
   const dispatch = useDispatch();
-  const [sorts, setSorts] = useState<SortType[]>(DEFAULT_SORT);
+  const sortSelector = useCallback((state: AppState) => getCardSort(state, 'checklist', false), []);
+  const sorts = useSelector(sortSelector);
+  const setSorts = useCallback((sorts: SortType[]) => {
+    dispatch(updateCardSorts(sorts, 'checklist', false));
+  }, [dispatch]);
+
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
   const checklist = useSelector(checklistSelector);
   const [sortDialog, showSortDialog] = useSortDialog(setSorts, sorts, false);

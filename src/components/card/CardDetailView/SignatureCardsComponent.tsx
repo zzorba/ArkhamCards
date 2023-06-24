@@ -11,6 +11,7 @@ import BondedCardsComponent from './BondedCardsComponent';
 import Card from '@data/types/Card';
 import space from '@styles/space';
 import useCardList from '../useCardList';
+import { LILY_CODE } from '@data/deck/specialCards';
 
 interface Props {
   componentId?: string;
@@ -20,7 +21,10 @@ interface Props {
 
 export default function SignatureCardsComponent({ componentId, investigator, width }: Props) {
   const requiredCodes = useMemo(() => {
-    return flatMap(investigator.deck_requirements?.card || [], req => req.code ? [req.code] : []);
+    return [
+      ...flatMap(investigator.deck_requirements?.card || [], req => req.code ? [req.code] : []),
+      ...(investigator.code === LILY_CODE ? ['08011a', '08011b', '08011c', '08011d'] : []),
+    ];
   }, [investigator]);
   const [requiredCards, requiredCardsLoading] = useCardList(requiredCodes, 'player');
   const alternateCodes = useMemo(() => {
