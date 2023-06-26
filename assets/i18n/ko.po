@@ -6100,13 +6100,13 @@ msgid "Selected"
 msgstr "선택함"
 
 msgid "App language: ${ appLanguage }"
-msgstr ""
+msgstr "앱 언어: ${ appLanguage }"
 
 msgid "Narration Language"
-msgstr ""
+msgstr "내레이션 언어"
 
 msgid "Take the scenic route to mark time"
-msgstr ""
+msgstr "시나리오 경로로 시간 표시"
 
 msgctxt "investigator"
 msgid "Custom"
