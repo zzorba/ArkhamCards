@@ -4404,13 +4404,13 @@ msgid "If all investigatore are still alive."
 msgstr "모든 조사자들이 아직 살아 있으면."
 
 msgid "The Entity"
-msgstr ""
+msgstr "실체"
 
 msgid "Resolute"
-msgstr ""
+msgstr "결연한"
 
 msgid "MIA"
-msgstr "행방불명"
+msgstr "실종됨"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4468,22 +4468,22 @@ msgid "Fatal Mirage"
 msgstr "치명적인 신기루"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "치명적인 신기루 - 발견한 기억"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "치명적인 신기루 - 사라진 기억"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "얼음과 죽음 - 공개된 장소"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "얼음과 죽음 - 수복한 물자"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "광기의 심장부 - 배치한 봉인"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "광기의 심장부 - 회수한 봉인"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
 msgstr "각 조사자는 육체적 또는 정신적 트라우마 중에 선택하여 하나 회복합니다."
@@ -7972,7 +7972,7 @@ msgstr "깨지지 않은"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "결연한"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7984,27 +7984,27 @@ msgstr "딜레마"
 
 msgctxt "trait"
 msgid "Eidolon"
-msgstr ""
+msgstr "허깨비"
 
 msgctxt "trait"
 msgid "Elder Thing"
-msgstr ""
+msgstr "옛것"
 
 msgctxt "trait"
 msgid "Glacier"
-msgstr ""
+msgstr "빙하"
 
 msgctxt "trait"
 msgid "Mainland"
-msgstr ""
+msgstr "본토"
 
 msgctxt "trait"
 msgid "Mirage"
-msgstr ""
+msgstr "신기루"
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
+msgstr "산맥"
 
 msgctxt "trait"
 msgid "Past"
@@ -8024,7 +8024,7 @@ msgstr "과학자"
 
 msgctxt "trait"
 msgid "Uncharted"
-msgstr ""
+msgstr "미개척지"
 
 msgctxt "trait"
 msgid "Casino"
