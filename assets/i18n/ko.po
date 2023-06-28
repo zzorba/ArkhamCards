@@ -4359,7 +4359,7 @@ msgid "Fix duplicates"
 msgstr "복사본 수정"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr "앱을 사용하여 무작위로 동행 조력자를 선택하시겠습니까?"
+msgstr "앱을 사용하여 무작위로 동행을 선택하시겠습니까?"
 
 msgid "Select more"
 msgstr "더 선택하기"
@@ -4374,14 +4374,14 @@ msgstr "탐사대"
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름에 취소선을 긋습니다."
+msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름에 취소선을 긋습니다."
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆에 “행방불명”을 "
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆에 “실종”을 "
 "기입합니다."
 
 msgid ""
@@ -4404,13 +4404,13 @@ msgid "If all investigatore are still alive."
 msgstr "모든 조사자들이 아직 살아 있으면."
 
 msgid "The Entity"
-msgstr "실체"
+msgstr "독기의 실체"
 
 msgid "Resolute"
 msgstr "결연한"
 
 msgid "MIA"
-msgstr "실종됨"
+msgstr "실종"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4493,7 +4493,7 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 체크 표시를 하나 "
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 이름 옆에 체크 표시를 하나 "
 "합니다."
 
 msgid "Choose heal type"
