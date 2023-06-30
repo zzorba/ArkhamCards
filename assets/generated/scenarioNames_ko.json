@@ -33,7 +33,7 @@
   },
   {
     "id": "alexandria",
-    "name": "Dogs of War"
+    "name": "전쟁의 사냥개"
   },
   {
     "id": "all_or_nothing",
@@ -41,7 +41,7 @@
   },
   {
     "id": "anchorage",
-    "name": "On Thin Ice"
+    "name": "살얼음판"
   },
   {
     "id": "arkham",
@@ -93,7 +93,7 @@
   },
   {
     "id": "bermuda_triangle",
-    "name": "Without a Trace"
+    "name": "흔적도 없이"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -125,7 +125,7 @@
   },
   {
     "id": "buenos_aires",
-    "name": "Sanguine Shadows"
+    "name": "핏빛 그림자"
   },
   {
     "id": "by_the_book",
@@ -321,7 +321,7 @@
   },
   {
     "id": "havana",
-    "name": "Dancing Mad"
+    "name": "춤추는 광기"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -361,15 +361,15 @@
   },
   {
     "id": "ice_and_death_part_1",
-    "name": "얼음과 죽음, 1부"
+    "name": "얼음과 죽음(1부)"
   },
   {
     "id": "ice_and_death_part_2",
-    "name": "얼음과 죽음, 2부"
+    "name": "얼음과 죽음(2부)"
   },
   {
     "id": "ice_and_death_part_3",
-    "name": "얼음과 죽음, 3부"
+    "name": "얼음과 죽음(3부)"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -401,7 +401,7 @@
   },
   {
     "id": "istanbul",
-    "name": "Dealings in the Dark"
+    "name": "어둠 속의 거래"
   },
   {
     "id": "jennys_choice",
@@ -417,7 +417,7 @@
   },
   {
     "id": "kuala_lampur",
-    "name": "Shades of Suffering"
+    "name": "비통의 그늘"
   },
   {
     "id": "lagos",
@@ -457,7 +457,7 @@
   },
   {
     "id": "marrakesh",
-    "name": "Dead Heat"
+    "name": "죽음과 혹서"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -697,7 +697,7 @@
   },
   {
     "id": "riddles_and_rain",
-    "name": "Riddles and Rain"
+    "name": "비와 수수께끼"
   },
   {
     "id": "rio_de_janiero",
@@ -833,7 +833,7 @@
   },
   {
     "id": "the_disapperance",
-    "name": "The Disappearance"
+    "name": "실종"
   },
   {
     "id": "the_dodo",
@@ -873,11 +873,11 @@
   },
   {
     "id": "the_heart_of_madness_part_1",
-    "name": "광기의 심장부, 1부"
+    "name": "광기의 심장부(1부)"
   },
   {
     "id": "the_heart_of_madness_part_2",
-    "name": "광기의 심장부, 2부"
+    "name": "광기의 심장부(2부)"
   },
   {
     "id": "the_house_always_wins",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "여행하는 동안..."
   },
   {
     "id": "tsk_epilogue",
@@ -1017,7 +1017,7 @@
   },
   {
     "id": "tunguska",
-    "name": "Congress of the Keys"
+    "name": "열쇠 의회"
   },
   {
     "id": "turn_back_time",
