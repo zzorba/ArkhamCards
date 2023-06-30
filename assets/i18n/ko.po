@@ -4388,7 +4388,7 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆의 “행방불명”에 "
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆의 “실종”에 "
 "취소선을 긋습니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
@@ -4435,13 +4435,13 @@ msgstr ""
 "공제되지만, 시나리오를 시작하기 전에 지불할 충분한 경험치가 있는지 확인하여야 합니다."
 
 msgid "Ice and Death: Part 1"
-msgstr "얼음과 죽음, 1부"
+msgstr "얼음과 죽음(1부)"
 
 msgid "Ice and Death: Part 2"
-msgstr "얼음과 죽음, 2부"
+msgstr "얼음과 죽음(2부)"
 
 msgid "Ice and Death: Part 3"
-msgstr "얼음과 죽음, 3부"
+msgstr "얼음과 죽음(3부)"
 
 msgid "Restful Night"
 msgstr "평온한 밤"
@@ -4459,10 +4459,10 @@ msgid "Final Night"
 msgstr "마지막 밤"
 
 msgid "The Heart of Madness: Part 1"
-msgstr "광기의 심장부, 1부"
+msgstr "광기의 심장부(1부)"
 
 msgid "The Heart of Madness: Part 2"
-msgstr "광기의 심장부, 2부"
+msgstr "광기의 심장부(2부)"
 
 msgid "Fatal Mirage"
 msgstr "치명적인 신기루"
@@ -5946,34 +5946,34 @@ msgid "Name of Paradimensional Artifact"
 msgstr "준차원 인공물 이름"
 
 msgid "Prologue: Rain and Riddles"
-msgstr "서막: Rain and Riddles"
+msgstr "서막: 비와 수수께끼"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "죽음과 혹서"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "핏빛 그림자"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "어둠 속의 거래"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "춤추는 광기"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "살얼음판"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "전쟁의 사냥개"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "비통의 그늘"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "흔적도 없이"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "열쇠 의회"
 
 msgid "Unlocked Locations"
 msgstr "잠긴 장소"

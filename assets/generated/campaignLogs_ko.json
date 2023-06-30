@@ -241,80 +241,80 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# 동행이 비행기 추락으로 인해 사망했다",
+            "feminine_text": "#name# 동행이 비행기 추락으로 인해 사망했다"
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "야영지 - 빙벽 야영지 (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "야영지 - 드넓은 설원 (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "야영지 - 추락지 (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "야영지 - 수정 동굴 (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "야영지 - 차디찬 동굴 (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "야영지 - 얼어붙은 해안 (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "야영지 - 쇄빙선 상륙지 (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "야영지 - 얼음투성이 황무지 (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "야영지 - 위태로운 빙상 (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "야영지 - 레이크 교수의 야영지 잔해 (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "야영지 - 험준한 산 사면 (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "야영지 - 눈으로 쌓아 올린 봉분 (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "야영지 - 위험천만한 길 (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "크레이풀은 자신의 번민과 마주했다"
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "조사자들은 다이어 교수가 탐사를 허가하도록 설득했다"
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "쿠키는 자신의 번민과 마주했다"
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "댄포스는 자신의 번민과 마주했다"
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "조사자들은 다이어 교수의 보고서를 믿지 않았다"
           },
           {
             "id": "discovered_an_ancient_vault",
@@ -322,51 +322,51 @@
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "켄슬러 박사가 모종의 계획을 세웠다"
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "켄슬러 박사는 자신의 번민과 마주했다"
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "켄슬러 박사가 진실을 목전에 두고 있다"
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "켄슬러 박사가 연구 결과를 공유해 주었다"
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "켄슬러 박사가 독기의 본질에 대해 알아냈다"
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "산하는 자신의 번민과 마주했다"
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "다이어는 자신의 번민과 마주했다"
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "앨리야는 자신의 번민과 마주했다"
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "엘스워스는 자신의 번민과 마주했다"
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "고대 시설이 파괴되었다"
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "형언치 못할 광기가 풀려나고 말았다"
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "형언치 못할 광기는 그 숙주 안에 갇힌 채로 안전히 격리되었다… 적어도 지금은"
           },
           {
             "id": "photographed_the_astronomical_charts",
@@ -378,15 +378,15 @@
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "조사자들이 교외 지역을 정찰했다"
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "조사자들이 갈림길을 정찰했다"
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "조사자들이 고갯길을 정찰했다"
           },
           {
             "id": "studied_the_mural_carvings",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "탐사대 생존자:"
           },
           {
             "id": "surviving_partners",
@@ -406,47 +406,47 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "타카다는 자신의 번민과 마주했다"
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "탐사대가 빙붕에서 간신히 탈출했다"
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "탐사대가 정상까지 등반했다"
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "탐사대가 추적해오는 괴수들을 쓰러뜨렸다"
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "탐사대가 고대 시설에서 탈출했다"
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "탐사대가 산맥을 향해 달아났다"
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "탐사대가 산맥을 지나는 다른 길을 찾아냈다"
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "탐사대가 비밀 통로를 찾아냈다"
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "탐사대가 독기의 구체를 따라 비밀 통로에 도달했다"
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "봉인을 부적절하게… 사용했다"
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "신기루의 본질은 모호하기만 하다"
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# 동행은 실종되었다",
+            "masculine_text": "#name# 동행은 실종되었다",
+            "feminine_text": "#name# 동행은 실종되었다"
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "빙벽 야영지"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "드넓은 설원"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "추락지"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "수정 동굴"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "차디찬 동굴"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "얼어붙은 해안"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "쇄빙선 상륙지"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "얼음투성이 황무지"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "위태로운 빙상"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "레이크 교수의 야영지 잔해"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "험준한 산 사면"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "눈으로 쌓아 올린 봉분"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "위험천만한 길"
           }
         ]
       },
@@ -827,31 +827,31 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "비행장"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "알래스카 설원"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "외계 언어를 해석한 기억"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "어수선한 기숙사"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "켄슬러 박사의 교수실"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "다이어 교수의 강의실"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "사냥에 실패했던 기억"
           },
           {
             "id": "infirmary",
@@ -859,31 +859,31 @@
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "환자를 잃었던 기억"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "실종된 아버지에 대한 기억"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "모아이 석상"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "오스만 제국 전선"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "파괴된 나라에 대한 기억"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "후회스러운 탐사의 기억"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "끔찍한 발견을 한 기억"
           },
           {
             "id": "the_black_stone",
@@ -891,11 +891,11 @@
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "짝사랑의 기억"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "형언할 수 없는 악에 대한 기억"
           }
         ]
       },
@@ -904,43 +904,43 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "비행장"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "알래스카 설원"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "베이스캠프"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "어수선한 기숙사"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "남극 연안"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "테오도시아 갑판"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "한산한 기차역"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "켄슬러 박사의 교수실"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "다이어 교수의 강의실"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "고대 석실"
           },
           {
             "id": "hedge_maze",
@@ -952,19 +952,19 @@
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "모아이 석상"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "오스만 제국 전선"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "리버뷰 극장"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "선돌"
           },
           {
             "id": "the_black_stone",
@@ -972,7 +972,7 @@
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "미스캐토닉 대학 복도"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "다이너마이트"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "녹색 활석"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "독기 서린 수정"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "광물질 표본"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "소형 무선 통신장치"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "예비 부품"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "나무 썰매"
           }
         ]
       }
