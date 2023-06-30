@@ -2567,7 +2567,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "<i>avete ottenuto l’aiuto di un altra spedizione</i>."
           },
           {
             "id": "relic_is_missing",
@@ -2695,23 +2695,23 @@
     ],
     "supplies": [
       {
+        "id": "key_of_eztli",
+        "name": "Chiave di Eztli",
+        "description": "La Chiave di Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "name": "Scettro Misterioso",
+        "description": "Un misterioso scettro che avete trovato nella Sala del Trono.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A sticky goop you found in a subterranean swamp.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Melma Appiccicosa",
+        "description": "Una melma appiccicosa che avete trovato in una palude sotterranea.",
         "cost": 0,
         "multiple": false
       },
@@ -3692,147 +3692,147 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name# ha infranto le leggi di Ulthar.",
+            "feminine_text": "#name# ha infranto le leggi di Ulthar.",
+            "nonbinary_text": "#name# ha infranto le leggi di Ulthar."
           },
           {
             "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured.",
-            "nonbinary_text": "#name# was captured."
+            "masculine_text": "#name# è stato catturato.",
+            "feminine_text": "#name# è stata catturata.",
+            "nonbinary_text": "#name# è stato catturato."
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "il gatto nero è al vostro fianco."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "il gatto nero è al vostro fianco."
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "il gatto nero ha riferito della vostra sorte."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "il gatto nero ha un presentimento."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "il gatto nero cerca la verità."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "il gatto nero conosce la verità."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "il gatto nero ha condiviso la conoscenza del Mondo dei Sogni."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "il gatto nero ha parlato di Atlach-Nacha."
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "il gatto nero ha parlato di Nyarlathotep."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "il gatto nero ha messo in guardia gli altri."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "gli investigatori sono stati portati nel Deserto Gelato."
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "<i>i gatti hanno riscosso il tributo dagli zoog</i>."
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "i sognatori si sono svegliati."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "i sognatori hanno esiliato Nyarlathotep."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "i sognatori sono sfuggiti alle grinfie di Nyarlathotep."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "i sognatori sono sempre più deboli"
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "i sognatori conoscono un'altro percorso."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "i sognatori sono rimasti nel Mondo dei Sogni per sempre."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monastery."
+            "text": "i sognatori si sono recati sotto al monastero."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "gli investigatori si sono fatti strada con la forza all’interno del tempio."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "l’invasione di Nyarlathotep è iniziata."
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "<i>gli investigatori hanno parlato con gli zoog</i>."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "un investigatore possiede la Chiave d'Argento."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Randolph Carter non è sopravvissuto al viaggio."
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph è sfuggito alla cattura."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Randolph è sopravvissuto al viaggio."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph è stato catturato."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "<i>gli investigatori sono stati salvati da Randolph Carter</i>."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "i sognatori hanno deviato dal sentiero."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "okay, va bene, fate come vi pare."
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "gli investigatori hanno viaggiato fino al Deserto Gelato."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil è stato catturato."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "l’avete voluto voi."
           }
         ]
       },
@@ -3892,111 +3892,111 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "il gatto nero è al vostro fianco."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "il gatto nero è al vostro fianco."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "il gatto nero ha un presentimento."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "il gatto nero cerca la verità."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "il gatto nero conosce la verità."
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "il gatto nero ha richiesto l'aiuto degli altri"
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "il gatto nero ha condiviso la conoscenza del Mondo di Sotto."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "il gatto nero ha messo in guardia gli altri."
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "il ponte è stato completato"
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "il ponte è stato distrutto."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "la dott.ssa Maheswaran è viva"
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "la dott.ssa Maheswaran è scomparsa"
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "La dott.ssa Maheswaran vi accompagna nel corso delle indagini."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "La dott.ssa Maheswaran è rimasta con i suoi pazienti."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "il fato della dott.ssa Maheswaran vi è ignoto"
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "gli investigatori hanno trovato una via d'uscita dal Mondo dei Sogni."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "gli investigatori non sono mai fuggiti."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "ora siete soli."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "un investigatore possiede la Chiave d'Argento."
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph non è sopravvissuto alla discesa."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph ha lasciato la sua stanza d'ospedale in autonomia."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph ha lasciato la sua stanza d'ospedale insieme agli investigatori."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph è sopravvissuto alla discesa."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "gli investigatori sono tornati alla realtà."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "gli investigatori sono ancora nel Mondo dei Sogni."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "gli investigatori sono intrappolati nel reame di Atlach Nacha."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "l’avete voluto voi."
           }
         ]
       },
