@@ -106,6 +106,7 @@ export default function DeckEditView({
       hideVersatile={hideVersatile}
       setHideVersatile={hasVersatile ? setHideVersatile : undefined}
       mode={mode}
+      screenType="deck"
     />
   );
 }

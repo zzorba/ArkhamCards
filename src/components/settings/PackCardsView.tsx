@@ -32,6 +32,7 @@ export default function PackCardsView({
       sort={SORT_BY_PACK}
       showNonCollection
       includeDuplicates
+      screenType="pack"
     />
   );
 }

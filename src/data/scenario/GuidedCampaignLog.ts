@@ -135,6 +135,7 @@ interface ScenarioData {
 }
 
 interface CampaignData {
+  standalone: boolean;
   scenarios?: string[];
   scenarioStatus: {
     [code: string]: ScenarioStatus | undefined;
@@ -225,6 +226,7 @@ export default class GuidedCampaignLog {
     effectsWithInput: EffectsWithInput[],
     campaignGuide: CampaignGuide,
     campaignState: CampaignStateHelper,
+    standalone: boolean,
     readThrough?: GuidedCampaignLog,
     scenarioId?: string
   ) {
@@ -249,6 +251,7 @@ export default class GuidedCampaignLog {
       this.investigatorSections = {};
       this.scenarioData = {};
       this.campaignData = {
+        standalone,
         nextScenario: [],
         scenarioStatus: {},
         scenarioReplayCount: {},

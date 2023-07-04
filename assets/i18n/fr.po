@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -3895,7 +3895,7 @@ msgid "Charges"
 msgstr "Charges"
 
 msgid "Keys"
-msgstr "Clés"
+msgstr "Clefs"
 
 msgid "Locks"
 msgstr "Verrous"
@@ -6279,7 +6279,7 @@ msgid "Choose weakness"
 msgstr "Choisissez une faiblesse"
 
 msgid "Fortune and Folly"
-msgstr ""
+msgstr "Fortune et Folie"
 
 msgid "Challenge Scenarios"
 msgstr ""
@@ -6412,7 +6412,7 @@ msgid ""
 "their investigator card:"
 msgstr ""
 "Chaque investigateur qui est détenteur d'une ou plusieurs clés attache ces "
-"clés à sa carte d'investigateur :"
+"clés à sa carte Investigateur :"
 
 msgid "Customizable"
 msgstr "Personnalisable"
@@ -6466,10 +6466,10 @@ msgstr[0] "${ scenarioName }: ${ attempt } tentative"
 msgstr[1] "${ scenarioName }: ${ attempt } tentatives"
 
 msgid "Search english card names"
-msgstr "Recherche de noms de cartes en anglais"
+msgstr "Rechercher les noms des cartes en anglais"
 
 msgid "Include english results when searching"
-msgstr "Inclure les résultats en anglais lors d'une recherche"
+msgstr "Inclut les noms anglais lors d'une recherche de carte"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -6513,24 +6513,33 @@ msgid "Max"
 msgstr ""
 
 msgid "EASY"
-msgstr ""
+msgstr "FACILE"
 
 msgid "STND"
 msgstr ""
 
 msgid "HARD"
-msgstr ""
+msgstr "DIFFICILE"
 
 msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
-msgstr ""
+msgstr "Classe choisie"
 
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 msgid "Selected"
+msgstr "Sélection :"
+
+msgid "App language: ${ appLanguage }"
+msgstr ""
+
+msgid "Narration Language"
+msgstr ""
+
+msgid "Take the scenic route to mark time"
 msgstr ""
 
 msgctxt "investigator"
@@ -7405,7 +7414,7 @@ msgid ""
 "BTW, support for the newly announced mechanic from The Scarlet Keys is in "
 "the works, so stay tuned."
 msgstr ""
-"Le support pour le mécanisme nouvellement annoncé de «les clés écarlates» "
+"Le support pour le mécanisme nouvellement annoncé des « Clefs Écarlates » "
 "est en cours de réalisation, alors restez à l'écoute."
 
 msgctxt "releaseNotes"
@@ -7450,7 +7459,7 @@ msgid ""
 "investigator expansion."
 msgstr ""
 "- Comprend les cartes <b>Personnalisables</b> en avant-première de "
-"l'extension investigateur «Les Clés écarlates.»"
+"l'extension investigateur « Les Clefs Écarlates. »"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -7464,15 +7473,15 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "The Scarlet Keys Campaign"
-msgstr "Les Clés écarlates - Campagne"
+msgstr "Les Clefs Écarlates - Campagne"
 
 msgctxt "releaseNotes"
 msgid ""
 "This release adds support for the newly released Scarlet Keys campaign "
 "expansion."
 msgstr ""
-"Cette version ajoute la prise en charge de l'extension de campagne Les Clés "
-"écarlates récemment publiée."
+"Cette version ajoute la prise en charge de l'extension de campagne Les "
+"Clefs Écarlates récemment publiée."
 
 msgctxt "releaseNotes"
 msgid ""
@@ -8556,7 +8565,7 @@ msgstr "Déterminé"
 
 msgctxt "trait"
 msgid "Coterie"
-msgstr ""
+msgstr "Coterie"
 
 msgctxt "trait"
 msgid "Dilemma"
@@ -8608,11 +8617,11 @@ msgstr "Inexploré"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr ""
+msgstr "Casino"
 
 msgctxt "trait"
 msgid "Double"
-msgstr ""
+msgstr "Double"
 
 #, javascript-format
 msgctxt "filter"
@@ -8806,7 +8815,7 @@ msgstr "Aucun"
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 msgctxt "Tarot Card"
 msgid "None"
@@ -8826,43 +8835,43 @@ msgstr "CONTRE"
 
 msgctxt "sort"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "sort"
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 msgctxt "sort"
 msgid "Cost"
-msgstr ""
+msgstr "Coût en ressources"
 
 msgctxt "sort"
 msgid "Pack"
-msgstr ""
+msgstr "Paquet"
 
 msgctxt "sort"
 msgid "Cycle"
-msgstr ""
+msgstr "Campagne"
 
 msgctxt "sort"
 msgid "Title"
-msgstr ""
+msgstr "Nom"
 
 msgctxt "sort"
 msgid "Encounter Set"
-msgstr ""
+msgstr "Set de rencontre"
 
 msgctxt "sort"
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 msgctxt "sort"
 msgid "Card number"
-msgstr ""
+msgstr "Numéro de carte"
 
 msgctxt "sort"
 msgid "Slot"
-msgstr ""
+msgstr "Emplacement"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

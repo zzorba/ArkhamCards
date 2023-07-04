@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { Platform, TouchableOpacity, View, Pressable, UIManager, Touchable } from 'react-native';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { Platform, View, Pressable, UIManager, Text } from 'react-native';
 import { map, flatMap, filter, find, takeWhile } from 'lodash';
 import { t, c } from 'ttag';
 
@@ -16,9 +16,15 @@ import {
   SORT_BY_CYCLE,
   SORT_BY_CARD_ID,
   SORT_BY_SLOT,
+  DEFAULT_MYTHOS_SORT,
+  DEFAULT_SORT,
 } from '@actions/types';
 import { useDialog } from '@components/deck/dialogs';
 import NewDialog from '@components/core/NewDialog';
+import StyleContext from '@styles/StyleContext';
+import { TouchableOpacity } from '@components/core/Touchables';
+import space from '@styles/space';
+import deepEqual from 'deep-equal';
 
 function sortToCopy(sort: SortType): string {
   switch (sort) {
@@ -65,10 +71,16 @@ interface HeaderItem {
 type Item = SortItem | HeaderItem;
 
 export function useSortDialog(
-  sortChanged: (sort: SortType[]) => void,
-  selectedSorts: SortType[],
-  hasEncounterCards: boolean
+  saveSorts: (sort: SortType[]) => void,
+  savedSorts: SortType[],
+  mythosMode: boolean,
 ): [React.ReactNode, () => void] {
+  const { typography } = useContext(StyleContext);
+
+  const [selectedSorts, sortChanged] = useState<SortType[]>(savedSorts);
+  useEffect(() => {
+    sortChanged(savedSorts);
+  }, [savedSorts]);
   const items: Item[] = useMemo(() => {
     const sorts: SortType[] = [
       SORT_BY_TYPE,
@@ -81,7 +93,7 @@ export function useSortDialog(
       SORT_BY_XP,
       SORT_BY_CARD_ID,
     ];
-    if (hasEncounterCards || find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
+    if (mythosMode || find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       sorts.push(SORT_BY_ENCOUNTER_SET);
     }
     const chosenSorts: SortItem[] = map(selectedSorts, sort => { return { type: 'sort', sort }; });
@@ -89,10 +101,12 @@ export function useSortDialog(
     const availableHeader: HeaderItem = { type: 'header', title: t`Other` };
     return [
       ...chosenSorts,
-      ...(otherSorts.length ? [availableHeader] : []),
+      availableHeader,
       ...otherSorts,
     ];
-  }, [hasEncounterCards, selectedSorts]);
+  }, [mythosMode, selectedSorts]);
+
+
   const onChanged = useCallback((data: Item[]) => {
     const newItems = flatMap(takeWhile(data, (item) => item.type !== 'header'), (item) => item.type === 'sort' ? [item.sort] : []);
     sortChanged(newItems);
@@ -124,6 +138,18 @@ export function useSortDialog(
       </Pressable>
     );
   }, [items]);
+  const resetSort = useCallback(() => {
+    sortChanged(mythosMode ? DEFAULT_MYTHOS_SORT : DEFAULT_SORT);
+  }, [sortChanged, mythosMode]);
+  const isDirty = useMemo(() => {
+    return !deepEqual(selectedSorts, savedSorts);
+  }, [selectedSorts, savedSorts]);
+  const onSave = useCallback(() => {
+    saveSorts(selectedSorts);
+  }, [saveSorts, selectedSorts]);
+  const onCancel = useCallback(() => {
+    sortChanged(savedSorts);
+  }, [sortChanged, saveSorts]);
   const { dialog, showDialog} = useDialog({
     title: t`Sort by`,
     allowDismiss: true,
@@ -131,6 +157,13 @@ export function useSortDialog(
     maxHeightPercent: 0.80,
     content: (
       <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <TouchableOpacity onPress={resetSort}>
+            <View style={space.paddingS}>
+              <Text style={typography.subHeaderText}>{t`Reset`}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
         <NewDialog.SectionHeader text={t`Selected`} />
         <DraggableList
           data={items}
@@ -140,6 +173,15 @@ export function useSortDialog(
         />
       </View>
     ),
+    dismiss: {
+      title: t`Cancel`,
+      onPress: onCancel,
+    },
+    confirm: {
+      title: t`Apply`,
+      onPress: onSave,
+      disabled: !isDirty,
+    },
   });
   return [dialog, showDialog];
 }

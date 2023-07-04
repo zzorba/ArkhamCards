@@ -44,6 +44,7 @@ export type ExtendedSortType =
   typeof SORT_BY_FACTION_XP ;
 
 export const DEFAULT_SORT: SortType[] = [SORT_BY_TYPE, SORT_BY_SLOT];
+export const DEFAULT_MYTHOS_SORT: SortType[] = [SORT_BY_ENCOUNTER_SET];
 
 export interface Slots {
   [code: string]: number;
@@ -1174,10 +1175,14 @@ export interface ToggleMythosAction {
   id: string;
   value: boolean;
 }
+
+export type CardScreenType = 'browse' | 'investigator' | 'deck' | 'checklist' | 'pack';
+
 export const UPDATE_CARD_SORT = 'UPDATE_CARD_SORT';
 export interface UpdateCardSortAction {
   type: typeof UPDATE_CARD_SORT;
-  id: string;
+  cardScreen: CardScreenType;
+  mythosMode: boolean;
   sorts: SortType[];
 }
 
@@ -1186,7 +1191,6 @@ export interface AddFilterSetAction {
   type: typeof ADD_FILTER_SET;
   id: string;
   filters: FilterState;
-  sorts: SortType[];
   mythosToggle?: boolean;
   cardData: CardFilterData;
 }

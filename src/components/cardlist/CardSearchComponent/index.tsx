@@ -6,7 +6,7 @@ import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-nav
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
-import { DeckId, SortType } from '@actions/types';
+import { CardScreenType, DeckId, SortType } from '@actions/types';
 import Card from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
@@ -24,16 +24,16 @@ import { useFilterButton } from '../hooks';
 import { useSortDialog } from '../CardSortDialog';
 
 
-export function useFilterSortDialog(filterId: string): [React.ReactNode, () => void] {
+export function useFilterSortDialog(filterId: string, screenType: CardScreenType): [React.ReactNode, () => void] {
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
-  const sortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
   const mythosMode = useSelector(mythosModeSelector);
+  const sortSelector = useCallback((state: AppState) => getCardSort(state, screenType, mythosMode), [screenType, mythosMode]);
   const sorts = useSelector(sortSelector);
   const dispatch = useDispatch();
 
   const sortChanged = useCallback((sorts: SortType[]) => {
-    dispatch(updateCardSorts(filterId, sorts));
-  }, [dispatch, filterId]);
+    dispatch(updateCardSorts(sorts, screenType, mythosMode));
+  }, [dispatch, screenType, mythosMode]);
   const [sortDialog, showSortDialog] = useSortDialog(sortChanged, sorts, mythosMode);
   const onPress = useCallback(() => {
     Keyboard.dismiss();
@@ -50,6 +50,8 @@ interface Props {
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   sort?: SortType;
+
+  screenType: CardScreenType;
 
   investigator?: Card;
   deckId?: DeckId;
@@ -150,6 +152,7 @@ export default function CardSearchComponent(props: Props) {
     setHideVersatile,
     mode,
     includeDuplicates,
+    screenType,
   } = props;
   const { fontScale, typography, width } = useContext(StyleContext);
   const visible = useComponentVisible(componentId);
@@ -158,7 +161,9 @@ export default function CardSearchComponent(props: Props) {
   const filters = useSelector(filterSelector);
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
   const mythosMode = useSelector(mythosModeSelector);
-  const selectedSortSelector = useCallback((state: AppState) => getCardSort(state, filterId), [filterId]);
+  const selectedSortSelector = useCallback(
+    (state: AppState) => getCardSort(state, screenType, mythosMode),
+    [screenType, mythosMode]);
   const selectedSorts = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -183,7 +188,7 @@ export default function CardSearchComponent(props: Props) {
 
   const [, showFilters] = useFilterButton({ componentId, filterId, baseQuery, modal: false });
 
-  const [dialog, showSortDialog] = useFilterSortDialog(filterId);
+  const [dialog, showSortDialog] = useFilterSortDialog(filterId, screenType);
   useNavigationButtonPressed((event) => {
     if (event.buttonId === 'sort') {
       showSortDialog();

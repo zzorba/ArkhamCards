@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play."
+          "prompt": "Numero totale di segnalini destino in gioco."
         }
       },
       {
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Monster]] enemies in play.",
+          "prompt": "Numero totale di [[Mostri]] in gioco.",
           "min": 0
         }
       },
@@ -170,7 +170,7 @@
           },
           "options": [
             {
-              "prompt": "10 or more cards in your discard pile",
+              "prompt": "10 o più carte nella tua pila degli scarti.",
               "modified_value": {
                 "modifier": -3
               }
@@ -203,7 +203,7 @@
           },
           "options": [
             {
-              "prompt": "10 or more cards in your discard pile",
+              "prompt": "10 o più carte nella tua pila degli scarti.",
               "modified_value": {
                 "modifier": -5
               }
@@ -234,7 +234,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 2 resources to treat this token as a 0",
+              "prompt": "Spendi 2 risorse per trasformare questo token in 0",
               "modified_value": {
                 "modifier": 0
               }
@@ -265,7 +265,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 3 resources to treat this token as a 0",
+              "prompt": "Spendi 3 risorse per trasformare questo token in 0",
               "modified_value": {
                 "modifier": 0
               }
@@ -709,7 +709,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Valore di Oscurità del tuo luogo",
           "min": 0
         }
       }
@@ -740,7 +740,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Valore di Oscurità del tuo luogo",
           "min": 0,
           "scale": 2
         }
@@ -760,7 +760,7 @@
           },
           "options": [
             {
-              "prompt": "Have 3 or more horror on you",
+              "prompt": "Hai 3 o più orrori",
               "modified_value": {
                 "modifier": -3
               }
@@ -843,7 +843,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Valore di Oscurità del tuo luogo",
           "min": 0
         }
       }
@@ -872,7 +872,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Shroud value of your location",
+          "prompt": "Valore di Oscurità del tuo luogo",
           "min": 0
         }
       }
@@ -1560,7 +1560,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Ancient]] location",
+              "prompt": "A un luogo [[Antico]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1599,7 +1599,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Ancient]] location",
+              "prompt": "A un luogo [[Antico]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1642,7 +1642,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Cave]] location",
+              "prompt": "A un luogo [[Caverna]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1679,7 +1679,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Cave]] location",
+              "prompt": "A un luogo [[Caverna]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1720,7 +1720,7 @@
           },
           "options": [
             {
-              "prompt": "Have 5 or more cards in your hand",
+              "prompt": "5 o più carte nella tua mano",
               "modified_value": {
                 "modifier": -5
               }
@@ -1757,7 +1757,7 @@
           },
           "options": [
             {
-              "prompt": "Have 5 or more cards in your hand",
+              "prompt": "5 o più carte nella tua mano",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1793,7 +1793,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Livello Profondità attuale",
           "min": 1
         }
       },
@@ -1834,7 +1834,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current depth level",
+          "prompt": "Livello Profondità attuale",
           "min": 1
         }
       },

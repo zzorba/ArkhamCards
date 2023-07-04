@@ -282,16 +282,21 @@ export function getCards(
   });
 }
 
+interface DeckSlotChanges {
+  changedCards: Slots;
+  ignoredCardsDelta: Slots;
+  exiledCards: Slots;
+  customizedSlots: Slots;
+  customizedXp: Slots;
+  unchangedSlots: Slots;
+}
+
 function getDeckChangesHelper(
   cards: CardsMap,
   slots: Slots,
   extraDeckSize: number,
   totalFreeCards: number,
-  changedCards: Slots,
-  ignoredCardsDelta: Slots,
-  exiledCards: Slots,
-  customizedSlots: Slots,
-  customizedXp: Slots,
+  { changedCards, ignoredCardsDelta, exiledCards, customizedSlots, customizedXp, unchangedSlots }: DeckSlotChanges,
   invalidCards: Card[],
   dtrFirst: boolean
 ): DeckChanges {
@@ -317,7 +322,6 @@ function getDeckChangesHelper(
   let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);
   const downTheRabbitHoleXp = (slots[DOWN_THE_RABBIT_HOLE_CODE] || 0) > 0 ? 1 : 0;
   let downTheRabitHoleUses = downTheRabbitHoleXp * 2;
-
   const addedCards: Card[] = [];
   const removedCards: Card[] = [];
   const ignoredRemovedCards: Card[] = [];
@@ -341,6 +345,18 @@ function getDeckChangesHelper(
       }
     }
   });
+  const unchangedCards: Card[] = [];
+  forEach(unchangedSlots, (count, code) => {
+    const card = cards[code];
+    if (!card) {
+      return;
+    }
+    if (count > 0) {
+      for (let i = 0; i < count; i++) {
+        unchangedCards.push(card);
+      }
+    }
+  })
   forEach(ignoredCardsDelta, (count, code) => {
     const card = cards[code];
     if (!card) {
@@ -359,222 +375,226 @@ function getDeckChangesHelper(
     [name: string]: boolean;
   } = {};
   const [addedStoryCards, addedNormalCards] = partition(addedCards, card => card.xp === null);
+
   forEach(addedStoryCards, addedCard => incSlot(added, addedCard));
 
-  const spentXp = sum(map(
-    sortBy(
-      sortBy(
-        addedNormalCards,
-        // Put customizable cards AFTER other L0 cards,
-        // to maximize chance Adaptable/Exile gives you Free swaps of them
-        // since normally you get to check a box if its customizable
-        card => card.customization_options ? 1 : 0
-      ),
-      // null cards are story assets, so putting them in is free.
-      card => -((card.xp || 0) + (card.extra_xp || 0))
-    ),
-    addedCard => {
-      if (addedCard.myriad) {
-        const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
-        if (myriadBuys[myriadKey]) {
-          // Already paid for a myriad of this level
-          // So this one is free.
-          incSlot(added, addedCard);
-          if (addedCard.xp === 0) {
-            if (extraDeckSize > 0) {
-              extraDeckSize--;
-            }
-          }
-          return 0;
-        }
-        myriadBuys[myriadKey] = true;
-      }
-      if (addedCard.xp === 0) {
-        // We visit cards from high XP to low XP, so if there's 0 XP card,
-        // we've found matches for all the other cards already.
-        // Only 0 XP cards are left, so it's safe to apply adaptable changes.
-        if (exiledSlots.length > 0) {
-          // Every exiled card gives you one free '0' cost insert.
-          pullAt(exiledSlots, [0]);
-          incSlot(added, addedCard);
+  const basicAddedCards: Card[] = [];
+  const extraAddedCards: Card[] = [];
 
-          // But you still have to pay the TABOO xp.
-          return (addedCard.extra_xp || 0);
-        }
-
-        // You can use adaptable to swap in to level 0s.
-        // It is okay even if you just took adaptable this time.
-        if (adaptableUses > 0) {
-          for (let i = 0; i < removedCards.length; i++) {
-            const removedCard = removedCards[i];
-            if (removedCard.xp !== null && removedCard.xp === 0) {
-              decSlot(removed, removedCards[i]);
-              incSlot(added, addedCard);
-
-              pullAt(removedCards, [i]);
-
-              adaptableUses--;
-              return 0;
-            }
-          }
-          // Couldn't find a 0 cost card to remove, it's weird that you
-          // chose to take away an XP card -- or maybe you are just adding cards.
-        }
-
+  function computeAddedXp(addedCard: Card, { delayUnmodified } : { delayUnmodified: boolean }) {
+    if (addedCard.myriad) {
+      const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
+      if (myriadBuys[myriadKey]) {
+        // Already paid for a myriad of this level
+        // So this one is free.
         incSlot(added, addedCard);
-        const tabooCost = addedCard.extra_xp || 0;
-        if (tabooCost > 0) {
-          // If a card has taboo, you don't pay 1 for the swap of 0 -> 0.
-          // Also doesn't eat a slot in case of versatile, since you are paying
-          // full cost for it.
-          if (extraDeckSize > 0 && downTheRabbitHoleXp) {
+        if (addedCard.xp === 0) {
+          if (extraDeckSize > 0) {
             extraDeckSize--;
-            // Swap ins don't get the Down the Rabbit Hole XP bonus.
-            return tabooCost;
           }
-          return tabooCost + downTheRabbitHoleXp;
         }
-        if (extraDeckSize > 0) {
-          // If your deck grew in size you can swap in extra cards for free.
-          extraDeckSize--;
-          return 0;
-        }
+        return 0;
+      }
+      myriadBuys[myriadKey] = true;
+    }
+    if (addedCard.xp === 0) {
+      // We visit cards from high XP to low XP, so if there's 0 XP card,
+      // we've found matches for all the other cards already.
+      // Only 0 XP cards are left, so it's safe to apply adaptable changes.
+      if (exiledSlots.length > 0) {
+        // Every exiled card gives you one free '0' cost insert.
+        pullAt(exiledSlots, [0]);
+        incSlot(added, addedCard);
 
-        // Customizable cards are always Level 0, so if you end up paying
-        // to customize, you get to put them in for free.
-        if ((customizedXp[addedCard.code] || 0) > 0) {
-          return downTheRabbitHoleXp;
-        }
-
-        // DTRH satisfies the 1 minimum cost;
-        if (downTheRabbitHoleXp > 0) {
-          return downTheRabbitHoleXp;
-        }
-
-        // Alas, you have to pay the 1XP cost for this L0 card, sucker.
-        return 1;
+        // But you still have to pay the TABOO xp.
+        return (addedCard.extra_xp || 0);
       }
 
-      // Check if this is a deja-vu eligible exile card.
-      if ((dejaVuCardUses[addedCard.code] || 0) > 0 && dejaVuUses > 0) {
-        const discount = Math.min(
-          addedCard.xp || 0,
-          Math.min(dejaVuUses, dejaVuMaxDiscount)
-        );
-        if (discount > 0) {
-          dejaVuCardUses[addedCard.code]--;
-          dejaVuUses -= discount;
-          incSlot(added, addedCard);
-          return computeXp(addedCard) - discount + downTheRabbitHoleXp;
+      // You can use adaptable to swap in to level 0s.
+      // It is okay even if you just took adaptable this time.
+      if (adaptableUses > 0) {
+        for (let i = 0; i < removedCards.length; i++) {
+          const removedCard = removedCards[i];
+          if (removedCard.xp !== null && removedCard.xp === 0) {
+            decSlot(removed, removedCards[i]);
+            incSlot(added, addedCard);
+
+            pullAt(removedCards, [i]);
+
+            adaptableUses--;
+            return 0;
+          }
         }
-      }
-
-      // XP higher than 0.
-      // See if there's a lower version card that counts as an upgrade.
-      for (let i = 0; i < removedCards.length; i++) {
-        const removedCard = removedCards[i];
-        if (
-          addedCard.real_name === removedCard.real_name &&
-          addedCard.xp !== undefined &&
-          removedCard.xp !== undefined &&
-          addedCard.xp > removedCard.xp
-        ) {
-          decSlot(upgraded, removedCards[i]);
-          incSlot(upgraded, addedCard);
-          pullAt(removedCards, [i]);
-
-          // If you have unspent uses of arcaneResearchUses,
-          // and its a spell, you get a 1 XP discount on upgrade of
-          // a spell to a spell.
-          if (arcaneResearchUses > 0 &&
-            removedCard.real_traits_normalized &&
-            addedCard.real_traits_normalized &&
-            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
-            addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
-            let xpCost = (computeXp(addedCard) - computeXp(removedCard));
-            if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
-              xpCost--;
-              downTheRabitHoleUses--;
-            }
-            while (xpCost > 0 && arcaneResearchUses > 0) {
-              xpCost--;
-              arcaneResearchUses--;
-            }
-            if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
-              xpCost--;
-              downTheRabitHoleUses--;
-            }
-            return xpCost;
-          }
-          if (addedCard.permanent && !removedCard.permanent) {
-            // If we added in a permanent upgrade, let swaps happen for free.
-            extraDeckSize++;
-            totalFreeCards++;
-          }
-          // Upgrade of the same name, so you only pay the delta.
-          let xpCost = (computeXp(addedCard) - computeXp(removedCard));
-          if (xpCost > 0 && downTheRabitHoleUses > 0) {
-            xpCost--;
-            downTheRabitHoleUses--;
-          }
-          return xpCost;
-        }
-      }
-
-      // See if parallel agnes/skids shenanigans is happening.
-      for (let i = 0; i < ignoredRemovedCards.length; i++) {
-        const removedCard = ignoredRemovedCards[i];
-        if (
-          addedCard.real_name === removedCard.real_name &&
-          addedCard.xp !== undefined &&
-          removedCard.xp !== undefined &&
-          addedCard.xp > removedCard.xp
-        ) {
-          incSlot(upgraded, addedCard);
-          pullAt(ignoredRemovedCards, [i]);
-
-          // If you have unspent uses of arcaneResearchUses,
-          // and its a spell, you get a 1 XP discount on upgrade of
-          // a spell to a spell.
-          if (arcaneResearchUses > 0 &&
-            removedCard.real_traits_normalized &&
-            addedCard.real_traits_normalized &&
-            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
-            addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
-            let xpCost = (computeXp(addedCard) - computeXp(removedCard));
-            if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
-              xpCost--;
-              downTheRabitHoleUses--;
-            }
-            while (xpCost > 0 && arcaneResearchUses > 0) {
-              xpCost--;
-              arcaneResearchUses--;
-            }
-            if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
-              xpCost--;
-              downTheRabitHoleUses--;
-            }
-            return xpCost;
-          }
-          if (addedCard.permanent && !removedCard.permanent) {
-            // If we added in a permanent upgrade, let swaps happen for free.
-            extraDeckSize++;
-            totalFreeCards++;
-          }
-          // Upgrade of the same name, so you only pay the delta.
-          let xpCost = (computeXp(addedCard) - computeXp(removedCard));
-          if (xpCost > 0 && downTheRabitHoleUses > 0) {
-            xpCost--;
-            downTheRabitHoleUses--;
-          }
-          return xpCost;
-        }
+        // Couldn't find a 0 cost card to remove, it's weird that you
+        // chose to take away an XP card -- or maybe you are just adding cards.
       }
 
       incSlot(added, addedCard);
-      return computeXp(addedCard) + downTheRabbitHoleXp;
+      const tabooCost = addedCard.extra_xp || 0;
+      if (tabooCost > 0) {
+        // If a card has taboo, you don't pay 1 for the swap of 0 -> 0.
+        // Also doesn't eat a slot in case of versatile, since you are paying
+        // full cost for it.
+        if (extraDeckSize > 0 && downTheRabbitHoleXp) {
+          extraDeckSize--;
+          // Swap ins don't get the Down the Rabbit Hole XP bonus.
+          return tabooCost;
+        }
+        return tabooCost + downTheRabbitHoleXp;
+      }
+      if (extraDeckSize > 0) {
+        // If your deck grew in size you can swap in extra cards for free.
+        extraDeckSize--;
+        return 0;
+      }
+
+      // Customizable cards are always Level 0, so if you end up paying
+      // to customize, you get to put them in for free.
+      if ((customizedXp[addedCard.code] || 0) > 0) {
+        return downTheRabbitHoleXp;
+      }
+
+      // DTRH satisfies the 1 minimum cost;
+      if (downTheRabbitHoleXp > 0) {
+        return downTheRabbitHoleXp;
+      }
+
+      // Alas, you have to pay the 1XP cost for this L0 card, sucker.
+      return 1;
     }
-  ));
+
+    // Check if this is a deja-vu eligible exile card.
+    if ((dejaVuCardUses[addedCard.code] || 0) > 0 && dejaVuUses > 0) {
+      const discount = Math.min(
+        addedCard.xp || 0,
+        Math.min(dejaVuUses, dejaVuMaxDiscount)
+      );
+      if (discount > 0) {
+        dejaVuCardUses[addedCard.code]--;
+        dejaVuUses -= discount;
+        incSlot(added, addedCard);
+        return computeXp(addedCard) - discount + downTheRabbitHoleXp;
+      }
+    }
+
+
+    function computeDiscountedXpCost(removedCard: Card) {
+      // If you have unspent uses of arcaneResearchUses,
+      // and its a spell, you get a 1 XP discount on upgrade of
+      // a spell to a spell.
+      if (arcaneResearchUses > 0 &&
+        removedCard.real_traits_normalized &&
+        addedCard.real_traits_normalized &&
+        removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+        addedCard.real_traits_normalized.indexOf('#spell#') !== -1
+      ) {
+        let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+        if (dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+          xpCost--;
+          downTheRabitHoleUses--;
+        }
+        while (xpCost > 0 && arcaneResearchUses > 0) {
+          xpCost--;
+          arcaneResearchUses--;
+        }
+        if (!dtrFirst && (xpCost > 0 && downTheRabitHoleUses > 0)) {
+          xpCost--;
+          downTheRabitHoleUses--;
+        }
+        return xpCost;
+      }
+      if (addedCard.permanent && !removedCard.permanent) {
+        // If we added in a permanent upgrade, let swaps happen for free.
+        extraDeckSize++;
+        totalFreeCards++;
+      }
+      // Upgrade of the same name, so you only pay the delta.
+      let xpCost = (computeXp(addedCard) - computeXp(removedCard));
+      if (xpCost > 0 && downTheRabitHoleUses > 0) {
+        xpCost--;
+        downTheRabitHoleUses--;
+      }
+      return xpCost;
+    }
+    // XP higher than 0.
+    // See if there's a lower version card that counts as an upgrade.
+    for (let i = 0; i < removedCards.length; i++) {
+      const removedCard = removedCards[i];
+      if (
+        addedCard.real_name === removedCard.real_name &&
+        addedCard.xp !== undefined &&
+        removedCard.xp !== undefined &&
+        addedCard.xp > removedCard.xp
+      ) {
+        decSlot(upgraded, removedCards[i]);
+        incSlot(upgraded, addedCard);
+        pullAt(removedCards, [i]);
+        return computeDiscountedXpCost(removedCard);
+      }
+    }
+
+    // See if parallel agnes/skids shenanigans is happening.
+    for (let i = 0; i < ignoredRemovedCards.length; i++) {
+      const removedCard = ignoredRemovedCards[i];
+      if (
+        addedCard.real_name === removedCard.real_name &&
+        addedCard.xp !== undefined &&
+        removedCard.xp !== undefined &&
+        addedCard.xp > removedCard.xp
+      ) {
+        incSlot(upgraded, addedCard);
+        pullAt(ignoredRemovedCards, [i]);
+
+        return computeDiscountedXpCost(removedCard);
+      }
+    }
+
+    if (delayUnmodified) {
+      basicAddedCards.push(addedCard);
+      return 0;
+    }
+    // See if we still have a lower version of the card in our deck, which means we could do a swap + add.
+    for (let i = 0; i < unchangedCards.length; i++) {
+      const removedCard = unchangedCards[i];
+      if (
+        addedCard.real_name === removedCard.real_name &&
+        addedCard.xp !== undefined &&
+        removedCard.xp !== undefined &&
+        addedCard.xp > removedCard.xp &&
+        // DTR makes doing an upgrade + swap in Lower Level one cheaper than adding the larger one.
+        // Two uses of AranceResearch also make this cheaper.
+        (downTheRabitHoleUses > 0 || (
+          arcaneResearchUses > 1 &&
+          removedCard.real_traits_normalized &&
+          addedCard.real_traits_normalized &&
+          removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+          addedCard.real_traits_normalized.indexOf('#spell#') !== -1
+        ))
+      ) {
+        incSlot(upgraded, addedCard);
+        extraAddedCards.push(removedCard);
+        pullAt(unchangedCards, [i]);
+
+        return computeDiscountedXpCost(removedCard);
+      }
+    }
+    incSlot(added, addedCard);
+    return computeXp(addedCard) + downTheRabbitHoleXp;
+  }
+
+  const [aCustomizeCards, aCards] = partition(addedNormalCards, card => !!card.customization_options);
+  const spentXp = sumBy(
+    sortBy(
+      aCards,
+      // null cards are story assets, so putting them in is free.
+      card => -((card.xp || 0) + (card.extra_xp || 0))
+    ),
+    addedCard => computeAddedXp(addedCard, { delayUnmodified: true })
+  ) + sumBy(basicAddedCards, card => computeAddedXp(card, { delayUnmodified: false})) +
+    sumBy(extraAddedCards, card => computeAddedXp(card, { delayUnmodified: false })) +
+    sumBy(aCustomizeCards, addedCard => computeAddedXp(addedCard, { delayUnmodified: false }));
+
+
   forEach(removedCards, removedCard => decSlot(removed, removedCard));
 
   const totalCustomizationXp = sumBy(keys(customizedXp), (code) => {
@@ -689,6 +709,7 @@ function getDeckChanges(
   const extraDeckSize = newDeckSize - oldDeckSize;
   const totalFreeCards = extraDeckSize + totalExiledCards;
 
+  const unchangedSlots: Slots = { ...previousDeck.slots || {} };
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
   const ignoredCardsDelta: Slots = {};
@@ -702,6 +723,7 @@ function getDeckChanges(
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
+        unchangedSlots[code] = (unchangedSlots[code] || 0) + delta;
       }
       if (ignoreDelta != 0 && code !== ACE_OF_RODS_CODE && (
         validation.investigator.code == PARALLEL_AGNES_CODE ||
@@ -726,11 +748,14 @@ function getDeckChanges(
     slots,
     extraDeckSize,
     totalFreeCards,
-    changedCards,
-    ignoredCardsDelta,
-    exiledCards,
-    customizedSlots,
-    customizedXp,
+    {
+      changedCards,
+      ignoredCardsDelta,
+      exiledCards,
+      customizedSlots,
+      customizedXp,
+      unchangedSlots,
+    },
     invalidCards,
     false
   );
@@ -740,11 +765,14 @@ function getDeckChanges(
       slots,
       extraDeckSize,
       totalFreeCards,
-      changedCards,
-      ignoredCardsDelta,
-      exiledCards,
-      customizedSlots,
-      customizedXp,
+      {
+        changedCards,
+        ignoredCardsDelta,
+        exiledCards,
+        customizedSlots,
+        customizedXp,
+        unchangedSlots,
+      },
       invalidCards,
       true
     );

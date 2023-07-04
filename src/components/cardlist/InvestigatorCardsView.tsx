@@ -27,6 +27,7 @@ export default function InvestigatorCardsView({ investigatorCode, componentId }:
     <CardSearchComponent
       componentId={componentId}
       baseQuery={query}
+      screenType="investigator"
     />
   );
 }

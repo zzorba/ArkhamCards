@@ -143,7 +143,8 @@ export type CampaignDataCondition =
   | CampaignDataInvestigatorCondition
   | CampaignDataLinkedCondition
   | CampaignDataVersionCondition
-  | CampaignDataCycleCondition;
+  | CampaignDataCycleCondition
+  | CampaignDataStandaloneCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataHasResolutionCondition
@@ -848,6 +849,11 @@ export interface CampaignDataDifficultyCondition {
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
   campaign_data: "linked_campaign";
+  options: BoolOption[];
+}
+export interface CampaignDataStandaloneCondition {
+  type: "campaign_data";
+  campaign_data: "standalone";
   options: BoolOption[];
 }
 export interface ScenarioDataHasResolutionCondition {

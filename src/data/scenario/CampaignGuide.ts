@@ -221,7 +221,8 @@ export default class CampaignGuide {
       let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
         [],
         this,
-        campaignState
+        campaignState,
+        !!standaloneId,
       );
       if (standaloneId) {
         const scenario = this.findScenario(standaloneId);

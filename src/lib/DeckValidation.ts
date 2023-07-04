@@ -118,7 +118,7 @@ export default class DeckValidation {
   getCopiesAndDeckLimit(cards: Card[]) {
     const specialCards = this.specialCardCounts();
     return mapValues(
-      groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
+      groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.subtype_code === 'basicweakness' ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
       group => {
         const card = group[0];
         if (!(

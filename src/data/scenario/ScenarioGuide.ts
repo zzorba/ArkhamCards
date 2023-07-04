@@ -208,6 +208,7 @@ export default class ScenarioGuide {
         [],
         this.campaignGuide,
         scenarioState.campaignState,
+        campaignLog.campaignData.standalone,
         campaignLog,
         this.id
       ),

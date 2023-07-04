@@ -4359,7 +4359,7 @@ msgid "Fix duplicates"
 msgstr "복사본 수정"
 
 msgid "Do you want to use the app to choose a random partner?"
-msgstr "앱을 사용하여 무작위로 동행 조력자를 선택하시겠습니까?"
+msgstr "앱을 사용하여 무작위로 동행을 선택하시겠습니까?"
 
 msgid "Select more"
 msgstr "더 선택하기"
@@ -4374,21 +4374,21 @@ msgstr "탐사대"
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out ${ "
 "partnerName },"
-msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름에 취소선을 긋습니다."
+msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름에 취소선을 긋습니다."
 
 #, javascript-format
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆에 “행방불명”을 "
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆에 “실종”을 "
 "기입합니다."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 조력자 이름 옆의 “행방불명”에 "
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆의 “실종”에 "
 "취소선을 긋습니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
@@ -4404,13 +4404,13 @@ msgid "If all investigatore are still alive."
 msgstr "모든 조사자들이 아직 살아 있으면."
 
 msgid "The Entity"
-msgstr ""
+msgstr "독기의 실체"
 
 msgid "Resolute"
-msgstr ""
+msgstr "결연한"
 
 msgid "MIA"
-msgstr "행방불명"
+msgstr "실종"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
@@ -4435,13 +4435,13 @@ msgstr ""
 "공제되지만, 시나리오를 시작하기 전에 지불할 충분한 경험치가 있는지 확인하여야 합니다."
 
 msgid "Ice and Death: Part 1"
-msgstr "얼음과 죽음, 1부"
+msgstr "얼음과 죽음(1부)"
 
 msgid "Ice and Death: Part 2"
-msgstr "얼음과 죽음, 2부"
+msgstr "얼음과 죽음(2부)"
 
 msgid "Ice and Death: Part 3"
-msgstr "얼음과 죽음, 3부"
+msgstr "얼음과 죽음(3부)"
 
 msgid "Restful Night"
 msgstr "평온한 밤"
@@ -4459,31 +4459,31 @@ msgid "Final Night"
 msgstr "마지막 밤"
 
 msgid "The Heart of Madness: Part 1"
-msgstr "광기의 심장부, 1부"
+msgstr "광기의 심장부(1부)"
 
 msgid "The Heart of Madness: Part 2"
-msgstr "광기의 심장부, 2부"
+msgstr "광기의 심장부(2부)"
 
 msgid "Fatal Mirage"
 msgstr "치명적인 신기루"
 
 msgid "Fatal Mirage - Memories Discovered"
-msgstr ""
+msgstr "치명적인 신기루 - 발견한 기억"
 
 msgid "Fatal Mirage - Memories Banished"
-msgstr ""
+msgstr "치명적인 신기루 - 사라진 기억"
 
 msgid "Ice and Death - Locations Revealed"
-msgstr ""
+msgstr "얼음과 죽음 - 공개된 장소"
 
 msgid "Ice and Death - Supplies Recovered"
-msgstr ""
+msgstr "얼음과 죽음 - 수복한 물자"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr ""
+msgstr "광기의 심장부 - 배치한 봉인"
 
 msgid "The Heart of Madness - Seals Recovered"
-msgstr ""
+msgstr "광기의 심장부 - 회수한 봉인"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
 msgstr "각 조사자는 육체적 또는 정신적 트라우마 중에 선택하여 하나 회복합니다."
@@ -4493,7 +4493,7 @@ msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 조력자 이름 옆에 체크 표시를 하나 "
+"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 이름 옆에 체크 표시를 하나 "
 "합니다."
 
 msgid "Choose heal type"
@@ -5946,34 +5946,34 @@ msgid "Name of Paradimensional Artifact"
 msgstr "준차원 인공물 이름"
 
 msgid "Prologue: Rain and Riddles"
-msgstr "서막: Rain and Riddles"
+msgstr "서막: 비와 수수께끼"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "죽음과 혹서"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "핏빛 그림자"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "어둠 속의 거래"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "춤추는 광기"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "살얼음판"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "전쟁의 사냥개"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "비통의 그늘"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "흔적도 없이"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "열쇠 의회"
 
 msgid "Unlocked Locations"
 msgstr "잠긴 장소"
@@ -6098,6 +6098,15 @@ msgstr "역할군"
 
 msgid "Selected"
 msgstr "선택함"
+
+msgid "App language: ${ appLanguage }"
+msgstr "앱 언어: ${ appLanguage }"
+
+msgid "Narration Language"
+msgstr "내레이션 언어"
+
+msgid "Take the scenic route to mark time"
+msgstr "시나리오 경로로 시간 표시"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7963,7 +7972,7 @@ msgstr "깨지지 않은"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "결연한"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7975,27 +7984,27 @@ msgstr "딜레마"
 
 msgctxt "trait"
 msgid "Eidolon"
-msgstr ""
+msgstr "허깨비"
 
 msgctxt "trait"
 msgid "Elder Thing"
-msgstr ""
+msgstr "옛것"
 
 msgctxt "trait"
 msgid "Glacier"
-msgstr ""
+msgstr "빙하"
 
 msgctxt "trait"
 msgid "Mainland"
-msgstr ""
+msgstr "본토"
 
 msgctxt "trait"
 msgid "Mirage"
-msgstr ""
+msgstr "신기루"
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
+msgstr "산맥"
 
 msgctxt "trait"
 msgid "Past"
@@ -8015,7 +8024,7 @@ msgstr "과학자"
 
 msgctxt "trait"
 msgid "Uncharted"
-msgstr ""
+msgstr "미개척지"
 
 msgctxt "trait"
 msgid "Casino"

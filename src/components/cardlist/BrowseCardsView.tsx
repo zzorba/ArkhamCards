@@ -14,6 +14,7 @@ function BrowseCardsView({ componentId }: Props) {
       componentId={componentId}
       mythosToggle
       filterId={BROWSE_CARDS}
+      screenType="browse"
     />
   );
 }

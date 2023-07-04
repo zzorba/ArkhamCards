@@ -30,9 +30,6 @@ import {
   SetInvestigatorSortAction,
   SET_INVESTIGATOR_SORT,
   DEFAULT_SORT,
-  UpdateCardSortAction,
-  UPDATE_CARD_SORT,
-  BROWSE_CARDS,
   SET_AUDIO_LANGUAGE_CHOICE,
   SetAudioLanguageChoiceAction,
 } from '@actions/types';
@@ -115,8 +112,7 @@ type SettingAction =
   SetPlaybackRateAction |
   SyncDismissOnboardingAction |
   ChangeTabAction |
-  SetInvestigatorSortAction |
-  UpdateCardSortAction;
+  SetInvestigatorSortAction;
 
 
 export default function(
@@ -296,14 +292,6 @@ export default function(
         lang: action.choiceLang,
       };
     }
-    case UPDATE_CARD_SORT:
-      if (action.id !== BROWSE_CARDS) {
-        return state;
-      }
-      return {
-        ...state,
-        cardSort: action.sorts,
-      };
     default: {
       return state;
     }

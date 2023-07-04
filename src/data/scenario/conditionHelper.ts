@@ -640,6 +640,12 @@ export function campaignDataConditionResult(
         condition.options
       );
     }
+    case 'standalone': {
+      return binaryConditionResult(
+        campaignLog.campaignData.standalone,
+        condition.options,
+      );
+    }
     case 'chaos_bag': {
       return campaignDataChaosBagConditionResult(condition, campaignLog);
     }
@@ -675,6 +681,7 @@ export function multiConditionResult(
             case 'next_scenario':
             case 'investigator':
             case 'cycle':
+            case 'standalone':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
