@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -5982,7 +5982,7 @@ msgid "Add trait"
 msgstr "Ajouter un trait"
 
 msgid "Embark"
-msgstr "Embarquez"
+msgstr "Embarquer"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
@@ -6066,7 +6066,7 @@ msgid "Already visited"
 msgstr "Déjà visité"
 
 msgid "Travel here"
-msgstr "Voyagez ici"
+msgstr "Voyager jusqu'ici"
 
 msgid "Information"
 msgstr "Information"
@@ -6213,7 +6213,7 @@ msgid "Choose a skill"
 msgstr "Choisissez une compétence"
 
 msgid "Use the embark button below"
-msgstr "Utilisez le bouton embarquez ci-dessous"
+msgstr "Utilisez le bouton Embarquer ci-dessous"
 
 msgid "Review the world map"
 msgstr "Revoir la carte du monde"
@@ -6225,7 +6225,7 @@ msgid "Apply changes from last completed scenario or interlude"
 msgstr "Appliquer les modifications liées au dernier interlude ou scénario joué"
 
 msgid "This is a side-story location."
-msgstr "C'est une destination d'aventure annexe."
+msgstr "LIEU D'AVENTURE ANNEXE"
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
@@ -6238,12 +6238,12 @@ msgstr "Voulez-vous utiliser l'application pour faire des choix aléatoires ?"
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
-msgstr "La cellule se déplace de ${ departCityName } à ${ arriveCityName }."
+msgstr "La cellule voyage depuis ${ departCityName } jusqu'à ${ arriveCityName }."
 
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
-msgstr[0] "Cochez ${ time } case <b>temps</b> dans votre journal de campagne."
-msgstr[1] "Cochez ${ time } cases <b>temps</b> dans votre journal de campagne."
+msgstr[0] "Cochez ${ time } case <b>Temps</b> dans le Carnet de Campagne."
+msgstr[1] "Cochez ${ time } cases <b>Temps</b> dans le Carnet de Campagne."
 
 msgid "This includes the cost of experience cost of playing the side-story."
 msgstr "Cela inclut le coût de l'expérience du jeu de l'aventure annexe."
@@ -6309,9 +6309,10 @@ msgid ""
 "location and spend additional time equal to the normal experience for "
 "playing that side story."
 msgstr ""
-"Si vous souhaitez ajouter une aventure annexe à cette campagne, vous pouvez "
-"vous rendre à cet endroit et passer un temps supplémentaire égal à "
-"l'expérience normale pour jouer cette histoire annexe."
+"Si vous souhaitez incorporer une aventure annexe à votre campagne, il vous "
+"suffit de voyager vers ce lieu et de cocher un nombre de cases <b>Temps</b> "
+"supplémentaires égal au coût en expérience requis pour jouer cette aventure "
+"annexe (à la place de dépenser des points d'expériences)."
 
 msgid "Use expedited ticket"
 msgstr "Utilisez le Billet Express"
@@ -6347,11 +6348,11 @@ msgstr ""
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
-msgstr[0] "Cochez ${ travelDistance } case temps"
-msgstr[1] "Cochez ${ travelDistance } cases temps"
+msgstr[0] "Cochez ${ travelDistance } case Temps"
+msgstr[1] "Cochez ${ travelDistance } cases Temps"
 
 msgid "Mark 1 time"
-msgstr "Cochez 1 case temps"
+msgstr "Cochez 1 case <b>Temps</b>"
 
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
@@ -6483,7 +6484,7 @@ msgid ""
 msgstr ""
 
 msgid "Travel here without stopping"
-msgstr ""
+msgstr "Voyager ici sans faire escale"
 
 #, javascript-format
 msgid "Read status report: ${ reportSymbols }"
@@ -6499,12 +6500,20 @@ msgid_plural ""
 "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to "
 "${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
+"Cochez ${ time } case <b>Temps</b> pour que la cellule voyage entre ${ "
+"departCityName } et ${ arriveCityName } puis continue vers une autre "
+"destination."
 msgstr[1] ""
+"Cochez ${ time } cases <b>Temps</b> pour que la cellule voyage entre ${ "
+"departCityName } et ${ arriveCityName } puis continue vers une autre "
+"destination."
 
 msgid ""
 "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox "
 "traited."
 msgstr ""
+"Vous ne pouvez pas avoir plus de 5 cartes qui ne sont pas Chercheur, Neutre "
+"ou avec le trait Paradoxe."
 
 msgid "Min"
 msgstr ""
@@ -6534,12 +6543,18 @@ msgid "Selected"
 msgstr "Sélection :"
 
 msgid "App language: ${ appLanguage }"
-msgstr ""
+msgstr "Langue de l'application : ${ appLanguage }"
 
 msgid "Narration Language"
 msgstr ""
 
 msgid "Take the scenic route to mark time"
+msgstr ""
+
+msgid "Manual Backup"
+msgstr ""
+
+msgid "Automatic Backup"
 msgstr ""
 
 msgctxt "investigator"
