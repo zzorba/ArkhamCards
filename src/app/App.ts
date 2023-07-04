@@ -13,6 +13,7 @@ import COLORS from '@styles/colors';
 import { getLangPreference, AppState, getThemeOverride, getStartingTab } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS, CHANGE_TAB, StartingTabType } from '@actions/types';
+import { maybeSaveAutomaticBackup } from './autoBackup';
 
 // @ts-ignore ts2339
 TouchableOpacity.defaultProps = {
@@ -96,6 +97,7 @@ export default class App {
     }
     // Start normally
     this.onStoreUpdate(store, true);
+    maybeSaveAutomaticBackup(store.getState());
     return false;
   }
 

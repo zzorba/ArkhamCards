@@ -6471,6 +6471,12 @@ msgstr ""
 msgid "Take the scenic route to mark time"
 msgstr ""
 
+msgid "Manual Backup"
+msgstr ""
+
+msgid "Automatic Backup"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   PermissionsAndroid,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
-import { forEach, values } from 'lodash';
+import { forEach, map, values } from 'lodash';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +26,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import { saveFile } from '@lib/files';
 import { isAndroidVersion } from '@components/DeckNavFooter/constants';
+import { AutomaticBackupFile, loadBackupFiles } from '@app/autoBackup';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -67,13 +68,61 @@ async function hasFileSystemPermission(read: boolean) {
   }
 }
 
+function AutommaticBackupItem({ componentId, backup }: { backup: AutomaticBackupFile } & NavigationProps) {
+  const onPress = useCallback(async () => {
+    const json = JSON.parse(await safeReadFile(backup.file.path));
+    const campaigns: Campaign[] = [];
+    forEach(values(json.campaigns), campaign => {
+      campaigns.push(campaignFromJson(campaign));
+    });
+
+    const backupData: BackupState | LegacyBackupState = json.version && json.version === 1 ? {
+      version: 1,
+      guides: json.guides,
+      decks: json.decks,
+      campaigns: json.campaigns,
+    } : {
+      version: undefined,
+      guides: json.guides,
+      decks: values(json.decks),
+      campaigns: campaigns as LegacyCampaign[],
+      deckIds: json.deckIds,
+      campaignIds: json.campaignIds,
+    };
+    Navigation.push<MergeBackupProps>(componentId, {
+      component: {
+        name: 'Settings.MergeBackup',
+        passProps: {
+          backupData,
+        },
+      },
+    });
+  }, [backup]);
+  return <SettingsItem onPress={onPress} text={format(backup.date, 'yyyy-MM-dd')} />
+}
+
 export default function BackupView({ componentId, safeMode }: BackupProps & NavigationProps) {
   const { colors } = useContext(StyleContext);
   const dispatch = useDispatch();
   useEffect(() => {
+
     dispatch(ensureUuid());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [autoBackups, setAutoBackups] = useState<AutomaticBackupFile[] | null>(null);
+  useEffect(() => {
+    let unmounted = false;
+    if (!safeMode) {
+      loadBackupFiles().then((backupFiles) => {
+        if (!unmounted) {
+          setAutoBackups(backupFiles)
+        }
+      });
+    }
+    return () => {
+      unmounted = true;
+    };
+  }, [setAutoBackups]);
   const backupData = useSelector(getBackupData);
   const pickBackupFile = useCallback(async() => {
     if (!await hasFileSystemPermission(true)) {
@@ -174,7 +223,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
       <ScrollView style={{ backgroundColor: colors.L20 }}>
-        <CardSectionHeader section={{ title: t`Backup` }} />
+        <CardSectionHeader section={{ title: t`Manual Backup` }} />
         <SettingsItem
           onPress={exportCampaignData}
           text={t`Backup Campaign Data`}
@@ -184,6 +233,12 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
             onPress={importCampaignData}
             text={t`Restore Campaign Data`}
           />
+        ) }
+        { !!autoBackups && (
+          <>
+            <CardSectionHeader section={{ title: t`Automatic Backup` }} />
+            { map(autoBackups, backup => <AutommaticBackupItem key={backup.date.toString()} componentId={componentId} backup={backup} />)}
+          </>
         ) }
       </ScrollView>
     </SafeAreaView>

@@ -964,7 +964,7 @@
           },
           {
             "id": "standing_stones",
-            "text": "Pierre Dressées"
+            "text": "Pierres Dressées"
           },
           {
             "id": "the_black_stone",
@@ -4793,7 +4793,7 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "l'Agent Flint est mort"
+            "text": "l'Agent Flint est mort."
           },
           {
             "id": "agent_flint_is_missing",
@@ -4825,7 +4825,7 @@
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "La cellule a aidé le chevalier."
+            "text": "la cellule a aidé le chevalier."
           },
           {
             "id": "cell_appreciated_the_architecture",
@@ -4845,7 +4845,7 @@
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "La cellule a échoué à repousser la Bête."
+            "text": "la cellule a échoué à repousser la Bête."
           },
           {
             "id": "cell_has_been_ambushed",
@@ -4973,7 +4973,7 @@
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece ne fa it pas confiance à la cellule."
+            "text": "Ece ne fait pas confiance à la cellule."
           },
           {
             "id": "ece_trusts_the_cell",
@@ -4981,19 +4981,19 @@
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "Effacé de l'existence : #name#"
+            "text": "Rayé de la réalité : #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "Effacé de l'existence : #name#"
+            "text": "Rayé de la réalité : #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint a abandonné ses recherches"
+            "text": "Flint a abandonné ses recherches."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint travaille en solo"
+            "text": "Flint travaille en solo."
           },
           {
             "id": "flint_rejoined_the_cell",
@@ -5025,7 +5025,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "Vous n'avez pas fini d'entendre parler de la Bête au Châle Pourpre."
+            "text": "vous n'avez pas fini d'entendre parler de la Bête au Châle Pourpre."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
@@ -5045,7 +5045,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "vous n'avez pas fini d 'entendre pader de Tzu San Niang."
+            "text": "vous n'avez pas fini d'entendre parler de Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
@@ -5053,7 +5053,7 @@
           },
           {
             "id": "lovers_are_reunited",
-            "text": "les amants sont réunis"
+            "text": "les amants sont réunis."
           },
           {
             "id": "nothing_of_note_in_anchorage",

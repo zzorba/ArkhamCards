@@ -4380,16 +4380,14 @@ msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ pa
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to "
 "${ partnerName }."
-msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆에 “실종”을 "
-"기입합니다."
+msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆에 “실종”을 기입합니다."
 
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next "
 "to ${ partnerName }."
 msgstr ""
-"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆의 “실종”에 "
-"취소선을 긋습니다."
+"캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆의 “실종”에 취소선을 "
+"긋습니다."
 
 msgid "If the lead investigator was driven <b>insane</b>."
 msgstr "대표 조사자가 <b>미쳤으면</b>."
@@ -4492,9 +4490,7 @@ msgstr "각 조사자는 육체적 또는 정신적 트라우마 중에 선택�
 msgid ""
 "In the ${ sectionName } section of the Campaign Log, draw a check mark next "
 "to ${ partnerName }."
-msgstr ""
-"캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 이름 옆에 체크 표시를 하나 "
-"합니다."
+msgstr "캠페인 기록지 중 ${ sectionName } 항목 아래의 ${ partnerName } 동행 이름 옆에 체크 표시를 하나 합니다."
 
 msgid "Choose heal type"
 msgstr "회복 유형을 선택하십시오"
@@ -6107,6 +6103,12 @@ msgstr "내레이션 언어"
 
 msgid "Take the scenic route to mark time"
 msgstr "시나리오 경로로 시간 표시"
+
+msgid "Manual Backup"
+msgstr ""
+
+msgid "Automatic Backup"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
