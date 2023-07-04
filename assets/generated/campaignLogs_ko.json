@@ -318,7 +318,7 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "탐사대가 고대 지하묘를 발견했다"
           },
           {
             "id": "dr_kensler_has_a_plan",
@@ -370,11 +370,11 @@
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "탐사대가 천문도를 촬영했다"
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "탐사대가 지도를 살펴보았다"
           },
           {
             "id": "scouted_the_city_outskirts",
@@ -390,7 +390,7 @@
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "탐사대가 벽화를 연구했다"
           },
           {
             "id": "surviving_investigators",

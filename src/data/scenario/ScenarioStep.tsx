@@ -213,6 +213,7 @@ export default class ScenarioStep {
         effects,
         this.scenarioGuide.campaignGuide,
         scenarioState.campaignState,
+        this.campaignLog.campaignData.standalone,
         this.campaignLog,
         this.scenarioGuide.id
       );
