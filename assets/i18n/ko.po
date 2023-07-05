@@ -6105,10 +6105,10 @@ msgid "Take the scenic route to mark time"
 msgstr "시나리오 경로로 시간 표시"
 
 msgid "Manual Backup"
-msgstr ""
+msgstr "수동 백업"
 
 msgid "Automatic Backup"
-msgstr ""
+msgstr "자동 백업"
 
 msgctxt "investigator"
 msgid "Custom"
