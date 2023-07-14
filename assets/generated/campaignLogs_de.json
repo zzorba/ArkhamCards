@@ -4807,11 +4807,11 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "Agent Flint ist tot."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "Agent Flint wird vermisst."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
@@ -4835,15 +4835,15 @@
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "die Zelle hat Flint bei seinen Ermittlungen geholfen."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "die Zelle hat dem Ritter geholfen."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "die Zelle hat die Architektur bewundert."
           },
           {
             "id": "cell_blew_the_whistle",
@@ -4851,7 +4851,7 @@
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "die Zelle hat in Havanna nicht die Wahrheit aufdecken können."
           },
           {
             "id": "cell_escaped_the_red_coterie",
@@ -4859,11 +4859,11 @@
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "die Zelle konnte die Bestie nicht abwehren."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "die Zelle gerät in einen Hinterhalt!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
@@ -4871,7 +4871,7 @@
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "die Zelle assistiert Agent Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
@@ -4879,7 +4879,7 @@
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "die Zelle überbringt Geheiminformationen."
           },
           {
             "id": "cell_is_off_mission",
@@ -4907,19 +4907,19 @@
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "die Zelle hat mit Desi einen Deal vereinbart."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "die Zelle hat einen Deal mit dem Weinroten Ritter vereinbart."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "die Zelle hat mit Thorne einen Deal vereinbart."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "die Zelle hat Dr. Irawan getroffen."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
@@ -4967,23 +4967,23 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi steht in deiner Schuld."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "die Hunde sind im Krieg."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "Dr. Irawan hat sich der Zelle angeschlossen."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "Dr. Irawan ist nach Neuguinea gereist."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "Dr. Irawans Existenz wurde ausgelöscht."
           },
           {
             "id": "ece_does_not_trust_the_cell",
@@ -4995,23 +4995,23 @@
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "Existenz ausgelöscht: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "Existenz ausgelöscht: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint hat seine Suche aufgegeben."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint arbeitet allein."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint hat sich wieder der Zelle angeschlossen."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
@@ -5031,7 +5031,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "du hast Desi nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
@@ -5039,11 +5039,11 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "du hast die Bestie in der purpurroten Kutte nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "du hast den Weinroten Ritter nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
@@ -5055,15 +5055,15 @@
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "du hast Thorne nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "du hast Tzu San Niang nicht zum letzten Mal gesehen."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "du kennst das Passwort."
           },
           {
             "id": "lovers_are_reunited",
@@ -5071,7 +5071,7 @@
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "in Anchorage gibt es nichts Bemerkenswertes."
           },
           {
             "id": "outsiders_were_stopped",
@@ -5091,7 +5091,7 @@
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "Thorne ist verschwunden."
           },
           {
             "id": "trust",
@@ -5107,15 +5107,15 @@
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "Du stehst unter Tzu San Niangs Einfluss."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang steht unter deinem Einfluss."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "die Chimäre der Leere ist entkommen."
           },
           {
             "id": "work_together",
