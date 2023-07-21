@@ -15,7 +15,7 @@ query getCards(
 ) {
   all_card(
     where: {
-      version: { _lte: 4 }
+      version: { _lte: 6 }
       linked: { _is_null: true }
     }
   ) {

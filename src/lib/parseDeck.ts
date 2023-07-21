@@ -985,6 +985,10 @@ export function parseDeck(
     return undefined;
   }
   const validation = new DeckValidation(investigator, slots, meta);
+
+  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
+  const problem = validation.getProblem(deckCards) || undefined;
+  const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
   const cardIds = flatMap(
     sortBy(
       sortBy(
@@ -1009,7 +1013,7 @@ export function parseDeck(
       return {
         id,
         quantity: slots[id] || 0,
-        invalid: invalid || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
+        invalid: invalid || invalidCodes.has(id) || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
         limited: validation.isCardLimited(customizedCard),
         custom: card.custom(),
       };
@@ -1073,8 +1077,6 @@ export function parseDeck(
     }
   );
 
-  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
-  const problem = validation.getProblem(deckCards) || undefined;
 
   const changes = originalDeck && getDeckChanges(
     cards,

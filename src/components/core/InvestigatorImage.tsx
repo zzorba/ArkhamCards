@@ -257,9 +257,10 @@ function InvestigatorImage({
       );
     }
     return (
-      <View style={[{ width: size, height: size, position: 'relative' }, border && impliedSize === 'tiny' && !noShadow ? shadow.large : undefined]}>
+      <View style={[{ width: size, height: size, position: 'relative' }]}>
         <View style={[
           styles.container,
+          border && impliedSize === 'tiny' && !noShadow ? shadow.large : undefined,
           border ? styles.border : undefined,
           round ? { borderRadius: size / 2 } : undefined,
           {
@@ -267,6 +268,7 @@ function InvestigatorImage({
             height: size,
             borderColor: round ? colors.faction[card.factionCode()].background : colors.faction[card.factionCode()].border,
             overflow: 'hidden',
+            backgroundColor: colors.background,
           },
         ]}>
           <View style={styles.relative}>

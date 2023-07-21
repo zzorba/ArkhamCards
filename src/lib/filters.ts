@@ -331,6 +331,9 @@ export default class FilterBuilder {
   }
 
   tagFilter(tags: string[]): Brackets[] {
+    if (tags.length === 1 && tags[0] === 'the_insane') {
+      return [];
+    }
     return this.complexVectorClause(
       'tag',
       map(tags, tag => `%${tag}%`),

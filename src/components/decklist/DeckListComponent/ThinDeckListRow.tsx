@@ -227,7 +227,8 @@ export default function ThinDeckListRow({
                         <View style={space.marginLeftXs}>
                           <CircleIcon
                             size="small"
-                            background={investigator.faction_code === 'survivor' ? COLORS.white : colors.warn} color={colors.D30}
+                            background={investigator.faction_code === 'survivor' ? COLORS.white : colors.warn}
+                            color={investigator.faction_code === 'survivor' ? colors.warn : colors.D30}
                             name="warning-bold"
                           />
                         </View>

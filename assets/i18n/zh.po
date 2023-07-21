@@ -5158,11 +5158,6 @@ msgstr "抽選卡牌"
 msgid "Unsupported investigator"
 msgstr "不支援的調查員"
 
-msgid ""
-"Sorry, given their unique deckbuilding rules, this app does not yet support "
-"drafting for Lola Hayes or Joe Diamond."
-msgstr "很抱歉，由於蘿拉·海耶斯和喬·戴蒙德有獨特的牌組規則，這個APP還無法替他們抽選卡牌。"
-
 msgid "Please correct invalid deck issues"
 msgstr "請修正牌組有衝突的問題"
 
@@ -6025,6 +6020,19 @@ msgid "Manual Backup"
 msgstr ""
 
 msgid "Automatic Backup"
+msgstr ""
+
+msgid "You must have at least 7 cards from each class"
+msgstr ""
+
+msgid ""
+"More off-class card than the number of weaknesses in your deck and bonded "
+"cards."
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgctxt "investigator"

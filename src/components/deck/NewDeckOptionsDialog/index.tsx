@@ -21,7 +21,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, DeckMeta, getDeckId, Slots } from '@actions/types';
-import { CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/types/Card';
 import { AppState } from '@reducers';
 import space, { m, s } from '@styles/space';
@@ -47,7 +47,7 @@ import specialMetaSlots from '@data/deck/specialMetaSlots';
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
 import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
-import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
+import { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface NewDeckOptionsProps {
@@ -200,12 +200,16 @@ function NewDeckOptionsDialog({
   }, [investigator]);
 
   const requiredCardCodes = useMemo(() => {
-    return flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
+    return [
+      RANDOM_BASIC_WEAKNESS,
+      ...(investigator?.deck_requirements?.choice ? [BASIC_WEAKNESS_CHOICE] : []),
+      ...flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
       return [
         ...(cardRequirement.code ? [cardRequirement.code] : []),
         ...(cardRequirement.alternates || []),
       ];
-    });
+    }),
+  ];
   }, [investigator]);
   const [cards] = useCardMap(requiredCardCodes, 'player', tabooSetId);
   const requiredCardOptions = useMemo(() => {
@@ -236,8 +240,16 @@ function NewDeckOptionsDialog({
         }
       }
     );
+    if (investigator.deck_requirements?.choice) {
+      const choiceCard = cards[BASIC_WEAKNESS_CHOICE];
+      if (choiceCard) {
+        forEach(result, r => r.push(choiceCard));
+      }
+    }
     return map(result, r => uniqBy(r, x => x.code));
   }, [cards, investigator]);
+  const randomWeaknessCount = useMemo(() => sumBy(investigator?.deck_requirements?.random, t => t.target === 'subtype' && t.value === 'basicweakness' ? 1 : 0) ?? 0, [investigator]);
+
   const meta = useMemo((): DeckMeta =>{
     if (specialDeckMode === 'starter') {
       const starterDeckMeta = investigator && starterDecks.meta[investigator.code];
@@ -253,10 +265,17 @@ function NewDeckOptionsDialog({
     if (specialDeckMode === 'starter' && investigator && starterDecks.cards[investigator.code]) {
       return starterDecks.cards[investigator.code] || {};
     }
-    const result: Slots = {
-      // Random basic weakness.
-      [RANDOM_BASIC_WEAKNESS]: 1,
-    };
+    const result: Slots = {};
+    forEach(investigator?.deck_requirements?.random, random => {
+      if (random.target === 'subtype' && random.value === 'basicweakness') {
+        result[RANDOM_BASIC_WEAKNESS] = 1 + (result[RANDOM_BASIC_WEAKNESS] ?? 0);
+      }
+    });
+    forEach(investigator?.deck_requirements?.choice, choice => {
+      if (choice.target === 'subtype' && choice.value === 'basicweakness') {
+        result[BASIC_WEAKNESS_CHOICE] = 1 + (result[BASIC_WEAKNESS_CHOICE] ?? 0);
+      }
+    });
 
     // Seed all the 'basic' requirements from the investigator.
     if (cards && investigatorBack && investigatorBack.deck_requirements) {
@@ -373,7 +392,7 @@ function NewDeckOptionsDialog({
       description: t`Suggested starter deck for this investigator from FFG.`,
       value: 'starter',
     }] : [];
-    const noUltimatum = investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE;
+    const noUltimatum = investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
     return [
       {
         title: specialDeckModeLabel('none'),
@@ -542,6 +561,8 @@ function NewDeckOptionsDialog({
                       value={optionSelected[index] || false}
                       onValueChange={toggleOptionsSelected}
                       last={index === (requiredCardOptions.length - 1)}
+                      randomBasicWeakness={cards[RANDOM_BASIC_WEAKNESS]}
+                      randomBasicWeaknessCount={randomWeaknessCount}
                     />
                   );
                 }) }
@@ -551,7 +572,7 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [investigatorId, signedIn, isCustomContent,
+  }, [investigatorId, signedIn, isCustomContent, randomWeaknessCount, cards,
     networkType, isConnected, chaosSlots, specialDeckMode, parsedDeckComponent,
     offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
     setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck,

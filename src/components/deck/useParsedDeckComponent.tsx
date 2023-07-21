@@ -26,6 +26,7 @@ import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { xpString } from './hooks';
+import { BONDED_WEAKNESS_COUNTS } from '@data/deck/specialCards';
 
 function hasUpgrades(
   code: string,
@@ -286,6 +287,7 @@ function deckToSections(
 
 function bondedSections(
   uniqBondedCards: Card[],
+  counts: Slots,
   count: number,
   index: number,
 ): [DeckSection | undefined, number] {
@@ -297,7 +299,7 @@ function bondedSections(
     cards: map(uniqBondedCards, c => {
       return {
         id: c.code,
-        quantity: c.quantity || 0,
+        quantity: counts[c.code] ?? 0,
         index: index++,
         mode: 'bonded',
         bonded: true,
@@ -358,11 +360,12 @@ export default function useParsedDeckComponent({
 
   const slots = parsedDeck?.slots;
   const investigatorBack = parsedDeck?.investigatorBack;
-  const [uniqueBondedCards, bondedCardsCount] = useMemo((): [Card[], number] => {
+  const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
-      return [[], 0];
+      return [[], {}, 0];
     }
     const bondedCards: Card[] = [];
+    const bondedCounts: Slots = {};
     forEach(slots, (count, code) => {
       const card = cards[code];
       if (count > 0 && card) {
@@ -370,16 +373,18 @@ export default function useParsedDeckComponent({
         if (possibleBondedCards && possibleBondedCards.length) {
           forEach(possibleBondedCards, bonded => {
             bondedCards.push(bonded);
+            bondedCounts[bonded.code] = ((BONDED_WEAKNESS_COUNTS[card.code] ?? 0) * count) || (bonded.quantity ?? 0);
           });
         }
       }
     });
+
     if (!bondedCards.length) {
-      return [[], 0];
+      return [[], {}, 0];
     }
     const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
-    const bondedCardsCount = sumBy(uniqueBondedCards, card => card.quantity || 0);
-    return [uniqueBondedCards, bondedCardsCount];
+    const bondedCardsCount = sumBy(uniqueBondedCards, card => bondedCounts[card.code]);
+    return [uniqueBondedCards, bondedCounts, bondedCardsCount];
   }, [slots, cards, bondedCardsByName]);
   const limitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
   const [data, setData] = useState<DeckSection[]>([]);
@@ -456,7 +461,7 @@ export default function useParsedDeckComponent({
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     let currentIndex = specialIndex;
-    const [bonded, bondedIndex] = bondedSections(uniqueBondedCards, bondedCardsCount, currentIndex);
+    const [bonded, bondedIndex] = bondedSections(uniqueBondedCards, bondedCounts, bondedCardsCount, currentIndex);
     if (bonded) {
       newData.push(bonded);
       currentIndex = bondedIndex;
@@ -565,6 +570,7 @@ export default function useParsedDeckComponent({
     if (card.code === RANDOM_BASIC_WEAKNESS && editable && showDrawWeakness) {
       return {
         type: 'shuffle',
+        count,
         onShufflePress: () => showDrawWeakness(true),
       };
     }

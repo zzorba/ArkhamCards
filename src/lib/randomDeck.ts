@@ -25,7 +25,6 @@ function randomAllowedCardHelper(
   while (true) {
     if (card && card.xp !== undefined) {
       validation.slots[code] = (validation.slots[code] || 0) + 1;
-      const invalidCards: Card[] = validation.getInvalidCards([...deckCards, card]);
       const problem = validation.getProblem([...deckCards, card], true);
 
       // Put it back the way it was.
@@ -36,8 +35,7 @@ function randomAllowedCardHelper(
 
       if (
         (!problem || problem.reason === TOO_FEW_CARDS) &&
-        card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0) &&
-        !invalidCards.length
+        card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0)
       ) {
         // Found a good card
         break;

@@ -10,6 +10,7 @@ import {
   partition,
   uniq,
   concat,
+  range,
   keys,
   values,
 } from 'lodash';
@@ -31,7 +32,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, SORT_BY_TYPE, DeckId, Customizations, DEFAULT_SORT } from '@actions/types';
+import { SortType, Slots, DeckId, Customizations, DEFAULT_SORT } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
@@ -51,6 +52,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useBondedFromCards } from '@components/card/CardDetailView/BondedCardsComponent';
 import { useAppDispatch } from '@app/store';
 import { FilterState } from '@lib/filters';
+import DeckValidation from '@lib/DeckValidation';
+import { THE_INSANE_CODE } from '@data/deck/specialCards';
 
 interface Props {
   componentId: string;
@@ -338,7 +341,6 @@ function useSectionFeed({
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
   const storyQuery = storyOnly ? query : undefined;
-
   const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
   const [{ cards: deckCards, textQuery: deckCardsTextQuery, loading: deckCardsLoading }, setDeckCards] = useState<LoadedState>({
     cards: [],
@@ -515,6 +517,26 @@ function useSectionFeed({
     partialCardsLoading,
     [textQuery, storyQuery, filterQuery, query]
   );
+
+  const theInsaneStuff = useMemo(() => {
+    if (investigator?.code !== THE_INSANE_CODE || !deckCardCounts) {
+      return undefined;
+    }
+    const deckValidation = new DeckValidation(investigator, deckCardCounts, undefined);
+    const theCards = flatMap(keys(deckCardCounts), key => {
+      const card = cards[key];
+      if (!card) {
+        return [];
+      }
+      return map(range(0, deckCardCounts[key] ?? 0), (_) => card);
+    });
+    return {
+      deckValidation,
+      insaneData: deckValidation.getInsaneData(theCards),
+      slots: deckCardCounts,
+    };
+  }, [cards, investigator, deckCardCounts]);
+
   useEffect(() => {
     expandSectionRef.current = (sectionId: string) => {
       expandCards();
@@ -688,6 +710,31 @@ function useSectionFeed({
         }
         continue;
       }
+      if (theInsaneStuff && !item.prefix) {
+        const faction = card.factionCode();
+        if (
+          !theInsaneStuff.slots[card.code] &&
+          !find(card.tags, t => t === 'bw') &&
+          !card.encounter_code &&
+          !card.subtype_code &&
+          !card.restrictions_all_investigators &&
+          faction !== 'neutral' &&
+          faction !== 'survivor' &&
+          (card.xp ?? 0) <= 2
+        ) {
+          // This is a splash card.
+          const uniqueTrait = find(
+            theInsaneStuff.deckValidation.getTraits(card),
+            t => (theInsaneStuff.insaneData.traits[t] ?? 0) < 2
+          );
+          if (!uniqueTrait) {
+            console.log(`${card.name} is rejected, all traits are duped`);
+            continue;
+          }
+          console.log(`${card.name} is allowed with unique trait: ${uniqueTrait}`);
+        }
+      }
+
       noCards = false;
       loadingSection = false;
       result.push({
@@ -738,7 +785,7 @@ function useSectionFeed({
       });
     }
     return [result, !(noCards && cardsLoading), cardsLoading];
-  }, [partialItems, cards, bondedCards, showSpoilers, spoilerCardsCount, customizations, listSeperator, editSpoilerSettings]);
+  }, [theInsaneStuff, partialItems, cards, bondedCards, showSpoilers, spoilerCardsCount, customizations, listSeperator, editSpoilerSettings]);
 
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const isRefreshing = !hasCards || refreshingResult || deckRefreshing;

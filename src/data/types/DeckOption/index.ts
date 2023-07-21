@@ -31,6 +31,8 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 5 level 0 Seeker cards': t`You cannot have more than 5 level 0 Seeker cards`,
     'You cannot have more than 5 level 0 Rogue cards': t`You cannot have more than 5 level 0 Rogue cards`,
     'You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.': t`You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.`,
+    'You must have at least 7 cards from each class': t`You must have at least 7 cards from each class`,
+    'More off-class card than the number of weaknesses in your deck and bonded cards.': t`More off-class card than the number of weaknesses in your deck and bonded cards.`
   };
   return LOCALIZED_OPTIONS[error] || error;
 }
@@ -90,6 +92,9 @@ export default class DeckOption {
   @Column('simple-json')
   public level?: DeckOptionLevel;
 
+  @Column('simple-json')
+  public base_level?: DeckOptionLevel;
+
   @Column('integer', { nullable: true })
   public limit?: number;
 
@@ -101,6 +106,9 @@ export default class DeckOption {
 
   @Column('boolean', { nullable: true })
   public restrictions?: boolean;
+
+  @Column('boolean', { nullable: true })
+  public permanent?: boolean;
 
   @Column('boolean', { nullable: true })
   public ignore_match?: boolean;
@@ -152,6 +160,9 @@ export default class DeckOption {
     deck_option.limit = json.limit;
     deck_option.error = json.error;
     deck_option.id = json.id;
+    if (json.permanent !== null && json.permanent !== undefined) {
+      deck_option.permanent = json.permanent;
+    }
     deck_option.size = json.size;
     deck_option.restrictions = json.restrictions;
     deck_option.not = json.not ? true : undefined;
@@ -165,6 +176,12 @@ export default class DeckOption {
           real_name: o.name,
         };
       });
+    }
+    if (json.base_level) {
+      const level = new DeckOptionLevel();
+      level.min = json.base_level.min;
+      level.max = json.base_level.max;
+      deck_option.base_level = level;
     }
 
     if (json.level) {
@@ -216,6 +233,15 @@ export class DeckOptionQueryBuilder {
     return [];
   }
 
+  private permanentFilter() {
+    if (this.option.permanent !== null && this.option.permanent !== undefined) {
+      return [
+        where('c.permanent = :permanent', { permanent: this.option.permanent ? 1 : 0}),
+      ];
+    }
+    return [];
+  }
+
   private selectedOptionFilter(meta?: DeckMeta): Brackets[] {
     if (this.option.option_select && this.option.option_select.length) {
       const option = find(this.option.option_select, o => o.id === meta?.option_selected) || this.option.option_select[0];
@@ -248,8 +274,20 @@ export class DeckOptionQueryBuilder {
     }
     return [];
   }
+  private levelFilter(isUpgrade?: boolean): Brackets[] {
+    if (!this.option.level) {
+      return [];
+    }
+    const level = (!this.option.base_level || isUpgrade) ? this.option.level : this.option.base_level;
+    return  !this.option.not ? [
+        combineQueries(
+          where('c.customization_options is not null'),
+          this.filterBuilder.rangeFilter('xp', [level.min, level.max], true),
+          'or'
+        )] : this.filterBuilder.rangeFilter('xp', [level.min, level.max], true);
+  }
 
-  toQuery(meta?: DeckMeta): Brackets | undefined {
+  toQuery(meta?: DeckMeta, isUpgrade?: boolean): Brackets | undefined {
     const clauses: Brackets[] = [
       ...this.filterBuilder.factionFilter(this.option.faction || []),
       ...this.selectedFactionFilter(meta),
@@ -257,16 +295,10 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.slotFilter(this.option.slot || []),
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
       ...this.textClause(),
+      ...this.permanentFilter(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
       ...this.filterBuilder.tagFilter(this.option.tag || []),
-      ...(this.option.level ? (
-        !this.option.not ? [
-          combineQueries(
-            where('c.customization_options is not null'),
-            this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true),
-            'or'
-          )] : this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true)
-        ) : []),
+      ...this.levelFilter(isUpgrade),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);

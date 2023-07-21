@@ -58,7 +58,7 @@ import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '@components/deck/DeckDraftView';
-import { JOE_DIAMOND_CODE, LOLA_CODE } from '@data/deck/specialCards';
+import { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards';
 import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
@@ -564,10 +564,10 @@ function DeckDetailView({
     }
     setFabOpen(false);
     setMenuOpen(false);
-    if (deck.investigator_code === LOLA_CODE || deck.investigator_code === JOE_DIAMOND_CODE) {
+    if (deck.investigator_code === LOLA_CODE || deck.investigator_code === JOE_DIAMOND_CODE || deck.investigator_code == SUZI_CODE) {
       showAlert(
         t`Unsupported investigator`,
-        t`Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes or Joe Diamond.`
+        t`Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21.`
       );
       return;
     }

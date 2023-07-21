@@ -67,6 +67,7 @@ export type DeckProblemType =
 export interface DeckProblem {
   reason: DeckProblemType;
   problems?: string[];
+  invalidCards: Card[];
 }
 
 export interface DeckMeta {

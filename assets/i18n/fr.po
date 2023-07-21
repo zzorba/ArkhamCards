@@ -5605,13 +5605,6 @@ msgstr "Préparer"
 msgid "Unsupported investigator"
 msgstr "Investigateur non-supporté"
 
-msgid ""
-"Sorry, given their unique deckbuilding rules, this app does not yet support "
-"drafting for Lola Hayes or Joe Diamond."
-msgstr ""
-"Désolé, les règles de construction de deck spécifiques de Lola Hayes et Joe "
-"Diamond ne permettent pas à l'application de préparer leur deck."
-
 msgid "Please correct invalid deck issues"
 msgstr "Veuillez corriger les problèmes du deck invalide"
 
@@ -6555,6 +6548,19 @@ msgid "Manual Backup"
 msgstr ""
 
 msgid "Automatic Backup"
+msgstr ""
+
+msgid "You must have at least 7 cards from each class"
+msgstr ""
+
+msgid ""
+"More off-class card than the number of weaknesses in your deck and bonded "
+"cards."
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgctxt "investigator"

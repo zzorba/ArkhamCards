@@ -75,6 +75,18 @@ export default function useXpSection({
   }, [deck, uploading, listSeperator, showDeckUpgrade, cards]);
   if (deck && !uploading) {
     if (!parsedDeck) {
+      if (unspentXp > 0) {
+        return [
+          <MiniPickerStyleButton
+            key="unspent"
+            title={t`Unspent XP`}
+            valueLabel={t`${unspentXp} saved`}
+            last={last && !showDeckUpgrade}
+            editable={false}
+          />,
+          false,
+        ];
+      }
       return [null, false];
     }
     const { changes } = parsedDeck;

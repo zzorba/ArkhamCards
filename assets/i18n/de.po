@@ -5467,11 +5467,6 @@ msgstr "Karten draften"
 msgid "Unsupported investigator"
 msgstr "Ermittler wird nicht unterstützt"
 
-msgid ""
-"Sorry, given their unique deckbuilding rules, this app does not yet support "
-"drafting for Lola Hayes or Joe Diamond."
-msgstr ""
-
 msgid "Please correct invalid deck issues"
 msgstr ""
 
@@ -6357,6 +6352,19 @@ msgid "Manual Backup"
 msgstr ""
 
 msgid "Automatic Backup"
+msgstr ""
+
+msgid "You must have at least 7 cards from each class"
+msgstr ""
+
+msgid ""
+"More off-class card than the number of weaknesses in your deck and bonded "
+"cards."
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgctxt "investigator"

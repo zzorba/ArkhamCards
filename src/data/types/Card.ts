@@ -1512,6 +1512,10 @@ export default class Card {
     if (result.code.startsWith('z') || result.status === CardStatusType.PREVIEW || result.status === CardStatusType.CUSTOM) {
       result.browse_visible += 16;
     }
+    if (result.code === RANDOM_BASIC_WEAKNESS) {
+     result.deck_limit = 5;
+     result.quantity = 5;
+    }
     if (result.code === RANDOM_BASIC_WEAKNESS || result.code === BODY_OF_A_YITHIAN) {
       result.browse_visible += 3;
     } else if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {

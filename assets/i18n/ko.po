@@ -5235,11 +5235,6 @@ msgstr "드래프트 카드"
 msgid "Unsupported investigator"
 msgstr "지원되지 않는 조사자"
 
-msgid ""
-"Sorry, given their unique deckbuilding rules, this app does not yet support "
-"drafting for Lola Hayes or Joe Diamond."
-msgstr "죄송합니다. 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’나 ‘조 다이아몬드’에 대해서는 아직 해당 기능을 지원하지 않습니다."
-
 msgid "Please correct invalid deck issues"
 msgstr "유효하지 않은 덱 문제를 올바르게 수정하세요."
 
@@ -6109,6 +6104,19 @@ msgstr "수동 백업"
 
 msgid "Automatic Backup"
 msgstr "자동 백업"
+
+msgid "You must have at least 7 cards from each class"
+msgstr ""
+
+msgid ""
+"More off-class card than the number of weaknesses in your deck and bonded "
+"cards."
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

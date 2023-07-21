@@ -345,7 +345,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "Blut, Schweiß und Tee"
   },
   {
     "id": "horror_in_high_gear",
@@ -413,7 +413,7 @@
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Pfeifen im Wind"
   },
   {
     "id": "kuala_lampur",
@@ -481,7 +481,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "Die Höllenmaschine"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +489,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "Paranatürliche Selektion"
   },
   {
     "id": "point_of_no_return",
@@ -509,7 +509,7 @@
   },
   {
     "id": "ptc_interlude1_reprint",
-    "name": "Reality's Shadow"
+    "name": "Der Schatten der Realität"
   },
   {
     "id": "ptc_interlude2",
@@ -705,7 +705,7 @@
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Romulus und Remus"
   },
   {
     "id": "san_francisco",
@@ -741,7 +741,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "Hohler Klang"
   },
   {
     "id": "tcu_epilogue",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "Während der Reise..."
   },
   {
     "id": "tsk_epilogue",
@@ -1065,6 +1065,6 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "Das Safehouse"
   }
 ]

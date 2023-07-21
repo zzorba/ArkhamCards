@@ -191,6 +191,7 @@ export type BinaryChoiceCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataNextScenarioCondition
+  | CampaignDataStandaloneCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
@@ -367,6 +368,7 @@ export interface MultiCondition {
     | CampaignDataScenarioCondition
     | ScenarioDataResolutionCondition
     | ScenarioDataPlayerCountCondition
+    | CampaignDataStandaloneCondition
     | InvestigatorCardCondition
     | BinaryCardCondition
     | MathCondition
@@ -740,6 +742,11 @@ export interface ScenarioDataPlayerCountCondition {
   scenario_data: "player_count";
   options: NumOption[];
 }
+export interface CampaignDataStandaloneCondition {
+  type: "campaign_data";
+  campaign_data: "standalone";
+  options: BoolOption[];
+}
 export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
@@ -849,11 +856,6 @@ export interface CampaignDataDifficultyCondition {
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
   campaign_data: "linked_campaign";
-  options: BoolOption[];
-}
-export interface CampaignDataStandaloneCondition {
-  type: "campaign_data";
-  campaign_data: "standalone";
   options: BoolOption[];
 }
 export interface ScenarioDataHasResolutionCondition {

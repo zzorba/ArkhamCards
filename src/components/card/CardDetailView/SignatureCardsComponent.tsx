@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { flatMap, map, partition, uniq } from 'lodash';
+import { flatMap, map, partition, uniq, sumBy } from 'lodash';
 import {
   View,
 } from 'react-native';
@@ -12,6 +12,7 @@ import Card from '@data/types/Card';
 import space from '@styles/space';
 import useCardList from '../useCardList';
 import { LILY_CODE } from '@data/deck/specialCards';
+import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 
 interface Props {
   componentId?: string;

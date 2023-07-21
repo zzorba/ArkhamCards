@@ -18,7 +18,16 @@ export const LILY_CODE = '08010';
 export const ROLAND_CODE = '01001';
 export const PARALLEL_ROLAND_CODE = '90024';
 export const LOLA_CODE = '03006';
+export const THE_INSANE_CODE = 'zci_00001';
 export const JOE_DIAMOND_CODE = '05002';
+export const SUZI_CODE = '89001';
+
+export const BONDED_WEAKNESS_COUNTS: { [code: string]: number | undefined } =  {
+  '06018': 3, // Hungering Blade
+  '06024': 1, // Crystallizer of Dreams
+  '06282': 1, // Summoned Hound
+  '06330': 3, // Nightmare Bauble
+};
 
 const specialCards: AllSpecialCards = {
   [PARALLEL_WENDY_CODE]: {

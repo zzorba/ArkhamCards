@@ -5558,14 +5558,6 @@ msgstr "Draft kart"
 msgid "Unsupported investigator"
 msgstr "Niewspierany badacz"
 
-msgid ""
-"Sorry, given their unique deckbuilding rules, this app does not yet support "
-"drafting for Lola Hayes or Joe Diamond."
-msgstr ""
-"Przepraszamy, biorąc pod uwagę ich unikalne zasady budowania talii, ta "
-"aplikacja nie obsługuje jeszcze trybu draftu dla Loli Hayes lub Joe "
-"Diamonda."
-
 msgid "Please correct invalid deck issues"
 msgstr "Popraw problemy z nieprawidłową talią"
 
@@ -6475,6 +6467,19 @@ msgid "Manual Backup"
 msgstr ""
 
 msgid "Automatic Backup"
+msgstr ""
+
+msgid "You must have at least 7 cards from each class"
+msgstr ""
+
+msgid ""
+"More off-class card than the number of weaknesses in your deck and bonded "
+"cards."
+msgstr ""
+
+msgid ""
+"Sorry, given their unique deckbuilding rules, this app does not yet support "
+"drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgctxt "investigator"

@@ -15,10 +15,12 @@ interface Props {
   value: boolean;
   onValueChange: (index: number, value: boolean) => void;
   last?: boolean;
+  randomBasicWeakness?: Card;
+  randomBasicWeaknessCount: number;
   onPress: (card: Card) => void;
 }
 
-export default function RequiredCardSwitch({ index, disabled, cards, value, onValueChange, onPress, last }: Props) {
+export default function RequiredCardSwitch({ index, disabled, cards, value, onValueChange, onPress, last, randomBasicWeakness,randomBasicWeaknessCount  }: Props) {
   const { borderStyle } = useContext(StyleContext);
 
   const handleOnValueChange = useCallback((value: boolean) => {
@@ -28,7 +30,18 @@ export default function RequiredCardSwitch({ index, disabled, cards, value, onVa
   return (
     <View style={[styles.row, space.paddingTopS, space.paddingBottomS, borderStyle, !last ? styles.border : undefined]}>
       <View style={styles.flex}>
-        { map(cards, card => <CardSearchResult noBorder key={card.code} onPress={onPress} card={card} />) }
+        { map(cards, card => {
+          const count = card.deck_limit ?? 0;
+          return <CardSearchResult noBorder key={card.code} onPress={onPress} card={card} control={count > 1 ? { type: 'count', count } : undefined} />;
+        }) }
+        { !!randomBasicWeakness && (
+          <CardSearchResult
+            noBorder
+            onPress={onPress}
+            card={randomBasicWeakness}
+            control={randomBasicWeaknessCount > 1 ? { type: 'count', count: randomBasicWeaknessCount } : undefined}
+          />
+        ) }
       </View>
       <ArkhamSwitch value={value} onValueChange={handleOnValueChange} disabled={disabled} large />
     </View>
