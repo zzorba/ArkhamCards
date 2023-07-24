@@ -6106,17 +6106,21 @@ msgid "Automatic Backup"
 msgstr "자동 백업"
 
 msgid "You must have at least 7 cards from each class"
-msgstr ""
+msgstr "반드시 서로 다른 역할군에서 각각 7장 이상의 카드를 포함하여야 합니다."
 
 msgid ""
 "More off-class card than the number of weaknesses in your deck and bonded "
 "cards."
 msgstr ""
+"덱 구성 선택지를 벗어난 카드의 수가 당신의 덱 또는 결속 카드에 있는 약점 카드 수를 "
+"초과하였습니다."
 
 msgid ""
 "Sorry, given their unique deckbuilding rules, this app does not yet support "
 "drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
+"죄송합니다. 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’, ‘조 다이아몬드’, ‘피험체 5U-21’에 "
+"대해서는 아직 해당 기능을 지원하지 않습니다."
 
 msgctxt "investigator"
 msgid "Custom"
