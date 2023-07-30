@@ -6495,6 +6495,9 @@ msgstr ""
 "Tut mir Leid, wegen deren einmaligen Deckbauregeln unterstützt die App "
 "derzeit kein Draft für Lola Hayes, Joe Diamond, und Subject 5U-21."
 
+msgid "Concealed"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -8461,6 +8464,10 @@ msgstr "Entkommen"
 msgctxt "action"
 msgid "Resource"
 msgstr "Ressource"
+
+msgctxt "parley"
+msgid "Parley"
+msgstr ""
 
 msgctxt "Encounter Sets"
 msgid "All"

@@ -6563,6 +6563,9 @@ msgid ""
 "drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
+msgid "Concealed"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
@@ -8704,6 +8707,10 @@ msgstr "Échapper à"
 msgctxt "action"
 msgid "Resource"
 msgstr "Ressource"
+
+msgctxt "parley"
+msgid "Parley"
+msgstr ""
 
 msgctxt "Encounter Sets"
 msgid "All"

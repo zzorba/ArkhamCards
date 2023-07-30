@@ -6424,6 +6424,9 @@ msgid ""
 "drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
+msgid "Concealed"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"
@@ -8552,6 +8555,10 @@ msgstr "Уход"
 msgctxt "action"
 msgid "Resource"
 msgstr "Взять ресурс"
+
+msgctxt "parley"
+msgid "Parley"
+msgstr ""
 
 msgctxt "Encounter Sets"
 msgid "All"
