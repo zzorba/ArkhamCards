@@ -1274,6 +1274,29 @@ function DeckDetailView({
       </View>
     );
   }
+  /*
+  if (parsedDeck?.problem) {
+    forEach(keys(parsedDeck.slots), (code) => {
+      const count = parsedDeck.slots[code];
+      if (!find([
+        ...(parsedDeck.normalCards.Assets ?? []),
+        ...(parsedDeck.specialCards.Assets ?? []),
+      ], (group) => !!find(group.data, cardId => cardId.id == code)) &&
+        !find([
+          ...parsedDeck.normalCards.Enemy ?? [],
+          ...parsedDeck.normalCards.Event ?? [],
+          ...parsedDeck.normalCards.Skill ?? [],
+          ...parsedDeck.normalCards.Treachery ?? [],
+          ...parsedDeck.specialCards.Enemy ?? [],
+          ...parsedDeck.specialCards.Event ?? [],
+          ...parsedDeck.specialCards.Skill ?? [],
+          ...parsedDeck.specialCards.Treachery ?? [],
+        ] , (cardId) => cardId.id == code)
+      ) {
+        console.log(`Couuld not find card ${code}`);
+      }
+    });
+  }*/
   if (!parsedDeck || !cards || cardsMissing) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>

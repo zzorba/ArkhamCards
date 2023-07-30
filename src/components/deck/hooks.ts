@@ -191,8 +191,10 @@ function useParsedDeckHelper(
   {
     initialMode,
     fetchIfMissing,
+    waitForEdits,
   }: {
     fetchIfMissing?: boolean;
+    waitForEdits?: boolean;
     initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
@@ -208,9 +210,11 @@ function useParsedDeckHelper(
         }
         return choice.choice?.split('^') || [];
       });
-
     return uniq([
       ...(deck ? [deck.investigator] : []),
+      ...(deck ? keys(deck.deck.slots) : []),
+      ...(deck ? keys(deck.deck.sideSlots) : []),
+      ...(deck ? keys(deck.deck.ignoreDeckLimitSlots) : []),
       ...keys(deckEdits?.side),
       ...keys(deckEdits?.slots),
       ...keys(deckEdits?.ignoreDeckLimitSlots),
@@ -227,7 +231,7 @@ function useParsedDeckHelper(
   const parsedDeckRef = useRef<ParsedDeck | undefined>(parsedDeck);
   const { listSeperator } = useContext(LanguageContext);
   useEffect(() => {
-    if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current) {
+    if (deck && cards && fetchIfMissing && !parsedDeck && !initialized.current && (deckEdits || !waitForEdits)) {
       initialized.current = true;
       const pd = parseDeck(
         deck.deck.investigator_code,
@@ -292,7 +296,7 @@ export function useParsedDeckWithFetch(
   initialMode?: 'upgrade' | 'edit',
 ): ParsedDeckResults {
   const deck = useDeckWithFetch(id, actions);
-  return useParsedDeckHelper(id, componentId, deck, { initialMode, fetchIfMissing: true });
+  return useParsedDeckHelper(id, componentId, deck, { initialMode, fetchIfMissing: true, waitForEdits: true });
 }
 
 export function useParsedDeck(
