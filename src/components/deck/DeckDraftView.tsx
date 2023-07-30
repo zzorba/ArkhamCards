@@ -18,7 +18,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
 import { useDraftableCards } from './useChaosDeckGenerator';
 import { AppState, getDraftPacks } from '@reducers';
-import { useCounter, useEffectUpdate, usePressCallback, useSettingValue } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useLatestDeckCards, usePressCallback, useSettingValue } from '@components/core/hooks';
 import { getDraftCards } from '@lib/randomDeck';
 import DeckButton from './controls/DeckButton';
 import space, { s, xs } from '@styles/space';
@@ -210,6 +210,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     ignore_collection,
     disabled: !visible && editingPack,
   });
+  const [deckCards, ] = useLatestDeckCards(deck);
   const possibleCodes = useRef<string[]>([]);
   useEffect(() => {
     if (allPossibleCodes) {
@@ -223,9 +224,11 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     if (!meta || !investigatorBack) {
       return;
     }
-    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards, listSeperator);
+    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, {
+      ...cards,
+      ...deckCards,
+    }, listSeperator);
     if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
-      console.log(currentParsedDeck?.problem?.reason);
       setDraftCards([]);
       showAlert(
         t`Invalid deck`,
@@ -246,11 +249,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       cards,
       in_collection,
       ignore_collection,
-      listSeperator
+      listSeperator,
+      deckCards
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, deckCards, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
 
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);

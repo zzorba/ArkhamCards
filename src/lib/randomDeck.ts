@@ -66,12 +66,16 @@ export function getDraftCards(
   cards: CardsMap,
   in_collection: { [pack_code: string]: boolean },
   ignore_collection: boolean,
-  listSeperator: string
+  listSeperator: string,
+  allDeckCards: CardsMap | undefined
 ): [Card[], string[]] {
   const validation = new DeckValidation(investigatorBack, slots, meta);
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
-  const deckCards: Card[] = getCards(cards, slots, {}, listSeperator, {});
+  const deckCards: Card[] = getCards({
+    ...cards,
+    ...allDeckCards,
+  }, slots, {}, listSeperator, {});
   while (draftCards.length < count) {
     const [draftCard, newPossibleCodes] = randomAllowedCardHelper(
       validation,
@@ -106,7 +110,7 @@ export default function randomDeck(
   const deckCards: Card[] = [];
   let localPossibleCards: string[] = [...possibleCodes];
   const slots: Slots = {};
-  const validation = new DeckValidation(investigatorBack, slots, meta);
+  const validation = new DeckValidation(investigatorBack, slots, meta, { random_deck: true });
   let deckSize = 0;
   while (deckSize < validation.getDeckSize()) {
     const [card, newPossibleCards] = randomAllowedCardHelper(validation, localPossibleCards, cards, deckCards, in_collection, ignore_collection);

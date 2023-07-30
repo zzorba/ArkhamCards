@@ -55,6 +55,7 @@ export default class DeckValidation {
   deck_options_counts: DeckOptionsCount[] = [];
   all_options: boolean;
   all_customizations: boolean;
+  random_deck: boolean;
   insane_data: InsaneData | undefined;
 
   /**
@@ -68,13 +69,14 @@ export default class DeckValidation {
     investigator: Card,
     slots: Slots,
     meta: DeckMeta | undefined,
-    { all_options, all_customizations }: { all_options?: boolean; all_customizations?: boolean } = {}
+    { all_options, all_customizations, random_deck }: { all_options?: boolean; all_customizations?: boolean, random_deck?: boolean } = {}
   ) {
     this.investigator = investigator;
     this.slots = slots;
     this.meta = meta;
     this.all_options = all_options || false;
     this.all_customizations = all_customizations || false;
+    this.random_deck = random_deck || false;
   }
 
 
@@ -141,6 +143,7 @@ export default class DeckValidation {
         return;
       }
       weaknessCount += (BONDED_WEAKNESS_COUNTS[c.code] ?? 0);
+
       if (!c.encounter_code) {
         // Story cards and weakness cards don't count for traits.
         forEach(this.getTraits(c), t => {
@@ -150,7 +153,7 @@ export default class DeckValidation {
     });
     return {
       traits: result,
-      weaknessCount,
+      weaknessCount: weaknessCount + (this.random_deck ? 5 : 0),
     };
   }
 

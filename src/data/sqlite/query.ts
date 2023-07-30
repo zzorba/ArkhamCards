@@ -16,6 +16,7 @@ export const ON_YOUR_OWN_RESTRICTION = new NotBrackets(
 
 export const BASIC_QUERY = where('c.browse_visible != 0');
 export const NO_CUSTOM_CARDS_QUERY = where('c.browse_visible < 16');
+export const NO_BARKHAM_CARDS_QUERY = where('c.pack_code != "zbh"');
 export const NO_DUPLICATES_QUERY = where('c.browse_visible < 8 OR (c.browse_visible > 16 AND c.browse_visible < 24)')
 
 export const SCENARIO_CARDS_QUERY = where('c.type_code = "scenario"');
