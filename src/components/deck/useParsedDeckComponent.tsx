@@ -1,7 +1,7 @@
 import React, { MutableRefObject, useEffect, useMemo, useState, useContext, useCallback } from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { flatMap, find, filter, flatten, sumBy, sum, forEach, map, uniqBy } from 'lodash';
+import { flatMap, find, filter, flatten, keys, range, sumBy, sum, forEach, map, uniqBy } from 'lodash';
 import { c, t, msgid } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
@@ -26,7 +26,7 @@ import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { xpString } from './hooks';
-import { BONDED_WEAKNESS_COUNTS } from '@data/deck/specialCards';
+import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 
 function hasUpgrades(
   code: string,
@@ -386,7 +386,7 @@ export default function useParsedDeckComponent({
     const bondedCardsCount = sumBy(uniqueBondedCards, card => bondedCounts[card.code]);
     return [uniqueBondedCards, bondedCounts, bondedCardsCount];
   }, [slots, cards, bondedCardsByName]);
-  const limitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
+  const theLimitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
   const [data, setData] = useState<DeckSection[]>([]);
   const customizations = parsedDeck?.customizations;
 
@@ -466,7 +466,7 @@ export default function useParsedDeckComponent({
       newData.push(bonded);
       currentIndex = bondedIndex;
     }
-    if (limitSlotCount > 0) {
+    if (theLimitSlotCount > 0) {
       let index = currentIndex;
       const limitedCards: SectionCardId[] = map(filter(flatten([
         ...flatMap(normalCards.Assets || [], cards => cards.data),
@@ -493,6 +493,15 @@ export default function useParsedDeckComponent({
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
       if (count > 0) {
+        const limitSlotCount = (validation.investigator.code === THE_INSANE_CODE ?
+          validation.getInsaneData(flatMap(keys(slots), (code) => {
+            const card = cards[code];
+            const count = (slots[code] ?? 0);
+            if (!card || count <= 0) {
+              return [];
+            }
+            return map(range(0, count), () => card);
+          })).weaknessCount : undefined) ?? theLimitSlotCount;
         newData.push({
           title: t`Limited Slots`,
           toggleCollapsed: toggleLimitedSlots,
@@ -539,7 +548,7 @@ export default function useParsedDeckComponent({
     }
     currentIndex = sideIndex;
     setData(newData);
-  }, [customizations, requiredCards, limitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
+  }, [customizations, requiredCards, theLimitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
     showDraftCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';

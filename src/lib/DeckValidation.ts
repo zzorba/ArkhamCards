@@ -219,11 +219,12 @@ export default class DeckValidation {
       //console.log(card.deck_requirements);
       // must have the required cards
       if (card.deck_requirements.card) {
-        if (find(card.deck_requirements.card, req =>
+        const failedReq = find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
           !find(cards, theCard => theCard.alternate_required_code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
-        )) {
+        );
+        if (failedReq) {
           return {
             reason: INVESTIGATOR_PROBLEM,
             invalidCards,
@@ -261,6 +262,7 @@ export default class DeckValidation {
           if (error) {
             this.problem_list.push(error);
           }
+
           return {
             reason: INVESTIGATOR_PROBLEM,
             invalidCards,
@@ -298,6 +300,7 @@ export default class DeckValidation {
             if (error){
               this.problem_list.push(error);
             }
+
             return {
               reason: INVESTIGATOR_PROBLEM,
               invalidCards,

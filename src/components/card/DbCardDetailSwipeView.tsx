@@ -222,6 +222,7 @@ function DbCardDetailSwipeView(props: Props) {
   }, [componentId]);
 
   const showInvestigators = useCallback((code: string) => {
+    console.log('Show investigators');
     Navigation.push<CardInvestigatorProps>(componentId, {
       component: {
         name: 'Card.Investigators',
@@ -248,6 +249,7 @@ function DbCardDetailSwipeView(props: Props) {
     Navigation.mergeOptions(componentId, options(props));
   }, componentId, [componentId]);
   useNavigationButtonPressed(({ buttonId }) => {
+    console.log(buttonId);
     if (currentCard) {
       if (buttonId === 'share') {
         Linking.openURL(`https://arkhamdb.com/card/${currentCard.code}#reviews-header`);
@@ -276,7 +278,11 @@ function DbCardDetailSwipeView(props: Props) {
         showInvestigators(currentCard.code);
       } else if (buttonId === 'back') {
         Navigation.pop(componentId);
+      } else {
+        console.log(buttonId);
       }
+    } else {
+      console.log('No card')
     }
   }, componentId, [currentCard, showInvestigators, showInvestigatorCards]);
 

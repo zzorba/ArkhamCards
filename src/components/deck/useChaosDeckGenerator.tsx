@@ -69,7 +69,7 @@ export function useDraftableCards({
         where('c.xp = 0 OR c.xp is null'),
         where('c.extra_xp is null OR c.extra_xp = 0'),
         NO_DUPLICATES_QUERY,
-        NO_CUSTOM_CARDS_QUERY,
+        ...(investigatorBack.custom() ? [] : [NO_CUSTOM_CARDS_QUERY]),
       ],
       'and'
     );

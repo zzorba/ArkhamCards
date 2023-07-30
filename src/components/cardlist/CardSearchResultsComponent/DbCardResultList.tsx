@@ -728,10 +728,8 @@ function useSectionFeed({
             t => (theInsaneStuff.insaneData.traits[t] ?? 0) < 2
           );
           if (!uniqueTrait) {
-            console.log(`${card.name} is rejected, all traits are duped`);
             continue;
           }
-          console.log(`${card.name} is allowed with unique trait: ${uniqueTrait}`);
         }
       }
 

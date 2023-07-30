@@ -382,7 +382,7 @@ function getDeckChangesHelper(
   const extraAddedCards: Card[] = [];
 
   function computeAddedXp(addedCard: Card, { delayUnmodified } : { delayUnmodified: boolean }) {
-    if (addedCard.myriad) {
+    if ((addedCard.xp === 0 || !delayUnmodified) && addedCard.myriad) {
       const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
       if (myriadBuys[myriadKey]) {
         // Already paid for a myriad of this level

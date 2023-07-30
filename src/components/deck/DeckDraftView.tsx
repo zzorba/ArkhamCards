@@ -225,6 +225,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     }
     const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards, listSeperator);
     if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
+      console.log(currentParsedDeck?.problem?.reason);
       setDraftCards([]);
       showAlert(
         t`Invalid deck`,
