@@ -158,7 +158,7 @@ msgid "Agenda ${ linked_card.stage }"
 msgstr "주요사건 ${ linked_card.stage }"
 
 msgid "Secondary Class"
-msgstr "부 역할군"
+msgstr "보조 역할군"
 
 msgid "Deck Size"
 msgstr "덱 크기"
@@ -6121,7 +6121,7 @@ msgstr ""
 "기능을 지원하지 않습니다."
 
 msgid "Concealed"
-msgstr ""
+msgstr "은신"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6659,7 +6659,7 @@ msgstr "덱이 캠페인에 추가된 경우, 해당 캠페인에 포함된 각 
 
 msgctxt "releaseNotes"
 msgid "Edge of the Earth campaign is now out"
-msgstr "지구의 끝자락 캠페인 가이드 출시 (영문)"
+msgstr "지구의 끝자락 캠페인 가이드 출시"
 
 msgctxt "releaseNotes"
 msgid ""
@@ -8112,7 +8112,7 @@ msgstr "자원(획득)"
 
 msgctxt "parley"
 msgid "Parley"
-msgstr ""
+msgstr "협상"
 
 msgctxt "Encounter Sets"
 msgid "All"
