@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { DeviceEventEmitter, Platform } from 'react-native';
+import { AppState, DeviceEventEmitter, Platform } from 'react-native';
 import { find } from 'lodash';
-import * as RNLocalize from 'react-native-localize';
 import { useSelector } from 'react-redux';
 
 import LanguageContext from './LanguageContext';
@@ -51,7 +50,7 @@ export default function LanguageProvider({ children }: Props) {
         currentSystemLang = getSystemLanguage();
         DeviceEventEmitter.emit('langChange', currentSystemLang);
       };
-      RNLocalize.addEventListener('change', callback);
+      AppState.addEventListener('change', callback);
       eventListenerInitialized = true;
     }
     if (!currentSystemLang) {

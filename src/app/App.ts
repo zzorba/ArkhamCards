@@ -4,7 +4,6 @@ import { Navigation, Options } from 'react-native-navigation';
 import { Appearance, TouchableOpacity, Platform, Linking, LogBox, ColorSchemeName } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
-import { addEventListener as addLangEventListener } from 'react-native-localize';
 import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
@@ -14,6 +13,7 @@ import { getLangPreference, AppState, getThemeOverride, getStartingTab } from '@
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS, CHANGE_TAB, StartingTabType } from '@actions/types';
 import { maybeSaveAutomaticBackup } from './autoBackup';
+import { ALL_LANGUAGES } from '@lib/i18n';
 
 // @ts-ignore ts2339
 TouchableOpacity.defaultProps = {
@@ -34,7 +34,6 @@ export default class App {
     this.currentThemeOverride = undefined;
 
     store.subscribe(this.onStoreUpdate.bind(this, store));
-    addLangEventListener('change', () => this.onStoreUpdate(store));
     Navigation.events().registerBottomTabSelectedListener((event) => {
       store.dispatch({
         type: CHANGE_TAB,

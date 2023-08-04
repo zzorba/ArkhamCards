@@ -34,7 +34,7 @@ export function useRemoteSettings(live?: boolean): void {
   const [upsertSettings] = useUpsertSettingsMutation();
   const settings = useSelector((state: AppState) => state.settings);
   const in_collection = useSelector((state: AppState) => state.packs.in_collection);
-  const show_spoilers = useSelector((state: AppState) => state.show_spoilers);
+  const show_spoilers = useSelector((state: AppState) => state.packs.show_spoilers);
   useEffect(() => {
     if (live && userId && !loading && !error && !synced.current) {
       if (!data?.user_settings_by_pk) {

@@ -91,7 +91,7 @@ function ApolloGate({ children }: Props) {
   if (loading || !trackedLoaded) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <ArkhamLoadingSpinner autoPlay loop />
+        <ArkhamLoadingSpinner autoPlay loop size="large" />
         <Text style={[typography.text, space.marginTopS]}>
           { loading ? t`Loading latest cards...` : t`Loading...` }
         </Text>
