@@ -51,7 +51,6 @@ export default function ArkhamLoadingSpinner({
   lottieRef,
   size = 'default',
 }: Props) {
-  return <View/ >;
   const { colors, fontScale } = useContext(StyleContext);
   const colorizedSource = useMemo(() => colorizeLottie(
     loadingAnimation,
