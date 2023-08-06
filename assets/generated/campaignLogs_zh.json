@@ -6830,6 +6830,14 @@
             "text": "you have injured the White Ape."
           },
           {
+            "id": "know_about_miss_promise",
+            "text": "you know about Miss Promise."
+          },
+          {
+            "id": "know_how_to_imprison_the_darkness",
+            "text": "you know how to imprison the Darkness."
+          },
+          {
             "id": "made_a_promise_to_kurtz",
             "text": "you made a promise to Kurtz."
           },

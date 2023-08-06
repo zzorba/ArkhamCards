@@ -106,7 +106,7 @@ export default function PlusMinusButtons({
       <TouchableQuickSize disabled={!incrementEnabled} onPress={onIncrement} hitSlop={4} activeScale={rounded ? 1.1 : 1.3}>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
-          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: incrementEnabled ? roundedColor : undefined } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: width / 2, backgroundColor: incrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
             <View opacity={incrementEnabled ? 1 : 0.3}>
@@ -139,7 +139,7 @@ export default function PlusMinusButtons({
       <TouchableQuickSize disabled={!decrementEnabled} onPress={onDecrement} hitSlop={4} activeScale={rounded ? 1.1 : 1.3}>
         <View style={[
           dialogStyle ? { width, height: width } : undefined,
-          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: decrementEnabled ? roundedColor : undefined } : undefined,
+          rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: width / 2, backgroundColor: decrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
             <View opacity={decrementEnabled ? 1 : 0.3}>

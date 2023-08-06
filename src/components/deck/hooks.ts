@@ -28,6 +28,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { createSelector } from 'reselect';
 
 
 export function xpString(xp: number): string {
@@ -99,25 +100,35 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
   }, [meta, slots, previousMeta, cards, deck?.previousDeck?.slots]);
 }
 
+
+
 export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' | 'ignore'): [number, number] {
-  return useSelector((state: AppState) => {
-    if (!state.deckEdits.editting || !state.deckEdits.editting[uuid] || !state.deckEdits.edits || !state.deckEdits.edits[uuid]) {
-      return [0, 0];
-    }
-    if (mode === 'side') {
-      return [state.deckEdits.edits[uuid]?.side[code] || 0, 0];
-    }
-    if (mode === 'ignore') {
+  const selector = useMemo(() => createSelector(
+    (state: AppState) => state.deckEdits.editting,
+    (state: AppState) => state.deckEdits.edits,
+    (state: AppState, uuid: string) => uuid,
+    (state: AppState, uuid: string, mode?: 'side' | 'ignore') => mode,
+
+    (editting, edits, uuid, mode) => {
+      if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
+        return [0, 0];
+      }
+      if (mode === 'side') {
+        return [edits[uuid]?.side[code] || 0, 0];
+      }
+      if (mode === 'ignore') {
+        return [
+          edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
+          0,
+        ];
+      }
       return [
-        state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-        0,
+        edits[uuid]?.slots[code] || 0,
+        edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
       ];
     }
-    return [
-      state.deckEdits.edits[uuid]?.slots[code] || 0,
-      state.deckEdits.edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-    ];
-  });
+  ), []);
+  return useSelector((state: AppState) => selector(state, uuid, mode));
 }
 
 export function useDeckEdits(

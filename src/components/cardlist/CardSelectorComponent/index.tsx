@@ -49,7 +49,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
           return (
             (locked ? counts[code] > 0 : slots[code] > 0) &&
             !!card &&
-            (!filterCard || filterCard(card) || counts[code] > 0)
+            (!filterCard || filterCard(card))
           );
         }
       ),
