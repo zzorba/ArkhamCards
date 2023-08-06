@@ -6758,5 +6758,329 @@
       }
     ],
     "supplies": []
+  },
+  {
+    "campaignId": "zhod",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "ancestors_approve_of_your_actions",
+            "text": "the ancestors approve of your actions."
+          },
+          {
+            "id": "captain_marlow_is_alive",
+            "text": "Captain Marlow is alive."
+          },
+          {
+            "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
+            "text": "Captain Marlow is in the hands of the ancestors."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Avatar of Darkness freely walks the Earth."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Darkness has descended on the Congo."
+          },
+          {
+            "id": "darkness_stared_back_at_you",
+            "text": "the Darkness stared back at you."
+          },
+          {
+            "id": "deciphered_the_journal_of_the_mad_russian",
+            "text": "you deciphered the journal of a mad Russian."
+          },
+          {
+            "id": "director_does_not_trust_you",
+            "text": "the Director does not trust you."
+          },
+          {
+            "id": "director_is_conspiring_against_kurtz",
+            "text": "the Director is conspiring against Kurtz."
+          },
+          {
+            "id": "drove_off_a_tribe_of_darkness_worshippers",
+            "text": "you drove off a tribe of Darkness worshippers."
+          },
+          {
+            "id": "extracted_a_confession_from_kurtzs_warrior",
+            "text": "you extracted a confession from Kurtz's Warrior."
+          },
+          {
+            "id": "found_a_strange_encrypted_book",
+            "text": "you found a strange encrypted book."
+          },
+          {
+            "id": "found_a_strange_obsidian_status",
+            "text": "you found a strange obsidian statue."
+          },
+          {
+            "id": "found_kurtzs_personal_belongings",
+            "text": "you found Kurtz's personal belongings."
+          },
+          {
+            "id": "have_a_prisoner_on_board",
+            "text": "you have a prisoner on board."
+          },
+          {
+            "id": "have_injured_the_white_ape",
+            "text": "you have injured the White Ape."
+          },
+          {
+            "id": "made_a_promise_to_kurtz",
+            "text": "you made a promise to Kurtz."
+          },
+          {
+            "id": "prisoner_died",
+            "text": "the prisoner died while trying to escape"
+          },
+          {
+            "id": "prisoner_escaped",
+            "text": "the prisoner escaped"
+          },
+          {
+            "id": "questioned_kurtzs_warrior",
+            "text": "you questioned Kurtz's Warrior."
+          },
+          {
+            "id": "returned_from_the_heart_of_darkness",
+            "text": "the investigators have returned from the heart of darkness."
+          },
+          {
+            "id": "saw_a_dark_shadow_in_the_flames",
+            "text": "you saw a dark shadow in the flames."
+          },
+          {
+            "id": "solved_the_mystery_of_freslevens_murder",
+            "text": "you solved the mystery of Fresleven's murder."
+          },
+          {
+            "id": "spent_a_long_time_going_up_the_congo_river",
+            "text": "you spent a long time going up the Congo river."
+          },
+          {
+            "id": "stared_into_the_darkness",
+            "text": "you have stared into the Darkness."
+          },
+          {
+            "id": "the_ancestors_are_proud_of_you",
+            "text": "the Ancestors are proud of you."
+          },
+          {
+            "id": "the_ancestors_are_watching_you",
+            "text": "the Ancestors are watching you."
+          },
+          {
+            "id": "told_about_the_area_around_the_inner_station",
+            "text": "you were told about the area around the Inner Station."
+          },
+          {
+            "id": "treated_at_the_central_stations_infirmary",
+            "text": "you were treated at the Central Station's infirmary."
+          },
+          {
+            "id": "tribe_of_the_black_hand_has_left_their_lands",
+            "text": "the Tribe of the Black Hand has left their lands."
+          },
+          {
+            "id": "unable_to_bring_kurtz_back_alive",
+            "text": "the investigators were unable to bring Kurtz back alive."
+          },
+          {
+            "id": "went_up_the_congo_river",
+            "text": "you went up the Congo river."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "zhd_darkness_1",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_2",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_3",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_4",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_5",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_6",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_darkness_7",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_1",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_10",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_11",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_12",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_13",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_14",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_15",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_16",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_2",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_3",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_4",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_5",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_6",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_7",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_8",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_parley_9",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_1",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_10",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_11",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_12",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_13",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_14",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_15",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_16",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_17",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_18",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_19",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_2",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_20",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_21",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_3",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_4",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_5",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_6",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_7",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_8",
+            "text": "leurre"
+          },
+          {
+            "id": "zhd_river_9",
+            "text": "leurre"
+          },
+          {
+            "id": "zhod_avatar_agenda_6a",
+            "text": "leurre"
+          }
+        ]
+      }
+    ],
+    "supplies": []
   }
 ]

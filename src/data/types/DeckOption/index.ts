@@ -272,6 +272,9 @@ export class DeckOptionQueryBuilder {
     )) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
+    if (this.option.text?.length && this.option.text[0] === '<b>Parley\\.<\\/b>') {
+      return [where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%'`)]
+    }
     return [];
   }
   private levelFilter(isUpgrade?: boolean): Brackets[] {

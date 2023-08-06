@@ -369,6 +369,7 @@ export interface MultiCondition {
     | ScenarioDataResolutionCondition
     | ScenarioDataPlayerCountCondition
     | CampaignDataStandaloneCondition
+    | CampaignDataDifficultyCondition
     | InvestigatorCardCondition
     | BinaryCardCondition
     | MathCondition
@@ -747,6 +748,11 @@ export interface CampaignDataStandaloneCondition {
   campaign_data: "standalone";
   options: BoolOption[];
 }
+export interface CampaignDataDifficultyCondition {
+  type: "campaign_data";
+  campaign_data: "difficulty";
+  options: StringOption[];
+}
 export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
@@ -847,11 +853,6 @@ export interface CampaignLogInvestigatorCountCondition {
   investigator: "any" | "all";
   options: NumOption[];
   default_option?: DefaultOption;
-}
-export interface CampaignDataDifficultyCondition {
-  type: "campaign_data";
-  campaign_data: "difficulty";
-  options: StringOption[];
 }
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
@@ -1123,6 +1124,7 @@ export interface InvestigatorCounterInput {
   investigator_count_min?: string;
   max?: number;
   min?: number;
+  totalMax?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {

@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Against the Wendigo"
   },
@@ -800,6 +804,10 @@
     "name": "The Attack"
   },
   {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
+  },
+  {
     "id": "the_black_cat",
     "name": "The Black Cat"
   },
@@ -992,6 +1000,10 @@
     "name": "To the Forbidden Peaks"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Special Delivery"
   },
@@ -1066,5 +1078,21 @@
   {
     "id": "ybor_city",
     "name": "The Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Epilogue"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prologue"
   }
 ]
