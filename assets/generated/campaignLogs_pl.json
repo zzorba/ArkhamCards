@@ -2805,6 +2805,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# zdobył skafander.",
+            "feminine_text": "#name# zdobyła skafander.",
+            "nonbinary_text": "#name# zdobyło skafander."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "misja agentki Harper została zakończona."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "misja agentki Harper została zakończona… ale za jaką cenę?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen jest żądny zemsty."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham jest żądny zemsty."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagon przebudził się."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon nadal śpi."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "Istoty z Głębin zalały Ziemię."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "badacze uciekli z Y’ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "zaczęła się powódź."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly jest żądny zemsty."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "stróż został pokonany."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "brama do Y’ha-nthlei rozpoznała was jako jej prawowitych strażników."
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman jest żądna zemsty."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "strażnik Y’ha-nthlei został zabity."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "zaniesiono koronę do latarni."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "zaniesiono posążek do latarni."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth zostało pochłonięte przez przypływ."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little jest żądna zemsty."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "badacze bezpiecznie dotarli do swoich pojazdów."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "zaniesiono opończę do latarni."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh jest żądny zemsty."
+          },
+          {
+            "id": "mission_failed",
+            "text": "misja nie powiodła się."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "misja się powiodła."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "rytuał Zakonu został przerwany."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "plany Istot z Głębin zostały pokrzyżowane."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "badacze weszli w posiadanie mapy Y’ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "badacze weszli w posiadanie klucza do Y’ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "badacze dotarli do Sokolego Przylądka po wschodzie słońca."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "badacze dotarli do Sokolego Przylądka przed wschodem słońca."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "skarby głębin zostały zniszczone… ale za jaką cenę?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "skarby głębin przepadły na zawsze."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "Koszmar z Diabelskiej rafy jest martwy."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "Koszmar z Diabelskiej rafy wciąż żyje."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "fale stają się coraz silniejsze."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "Dom przy Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "Skwer New Church Green"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Ezoteryczny Zakon Dagona"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Więzienie w Innsmouth"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Zaułek konowała"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Nadbrzeżne slumsy"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "umowa z Joe Sargentem"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "podążanie za tropem"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "ucieczka z więzienia"
+          },
+          {
+            "id": "an_intervention",
+            "text": "interwencja"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "walka z przerażającym diabłem"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "rozmowa z panem Moorem"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "decyzja o trzymaniu się razem"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "odkrycie mistycznej relikwii"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "odkrycie dziwnego posążka"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "odkrycie nieczystej opończy"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "spotkanie sekretnego kultu"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "przerażająca prawda"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "cykl życia Istoty z Głębin"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "spotkanie z Thomasem Dawsonem"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "bolesna zdrada"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "Dom przy Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Więzienie w Innsmouth"
+          },
+          {
+            "id": "new_church_green",
+            "text": "Skwer New Church Green"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Ezoteryczny Zakon Dagona"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Zaułek konowała"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Nadbrzeżne slumsy"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {

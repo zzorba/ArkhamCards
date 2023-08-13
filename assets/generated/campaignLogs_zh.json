@@ -2805,6 +2805,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name#有一件潛水服。",
+            "feminine_text": "#name#有一件潛水服。",
+            "nonbinary_text": "#name#有一件潛水服。"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "哈珀特工的任務已完成。"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "哈珀特工的任務已完成……但代價是什麼呢？"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "扎多克·艾倫要你血債血償。"
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "布里安·伯納姆要你血債血償。"
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "達貢已甦醒。"
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "達貢仍沉睡。"
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "深潛者淹沒地球。"
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "調查員逃出伊哈·恩斯雷。"
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "洪水已至。"
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "羅伯特·弗蘭得禮要你血債血償。"
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "門閾看守人已被擊敗。"
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "伊哈·恩斯雷認可你為正統的看守人。"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "歐斯拉·吉爾曼要你血債血償。"
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "伊哈·恩斯雷的守衛已消滅。"
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "頭冠被帶到燈塔。"
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "偶像被帶到燈塔。"
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "印斯茅斯被怒潮吞沒。"
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "喬伊斯·小利透要你血債血償。"
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "調查員安全爬上載具。"
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "斗篷被帶到燈塔。"
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "巴納巴斯·馬什要你血債血償。"
+          },
+          {
+            "id": "mission_failed",
+            "text": "任務失敗。"
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "任務成功。"
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "密教的儀式被破壞。"
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "深潛者的圖謀遭瓦解。"
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "調查員有一幅伊哈·恩斯雷的地圖。"
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "調查員有伊哈·恩斯雷的鑰匙。"
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "調查員在日出後抵達了獵鷹岬。"
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "調查員在日出前抵達了獵鷹岬。"
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "深海的財富永遠遺失……但代價是什麼呢？"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "深海的財富永遠遺失。"
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "魔鬼礁石的駭物已死。"
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "魔鬼礁石的駭物還活著。"
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "浪潮愈烈。"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "扎多克·艾倫"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "布里安·伯納姆"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "羅伯特·弗蘭得禮"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "歐斯拉·吉爾曼"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "水街老屋"
+          },
+          {
+            "id": "accuse_little",
+            "text": "喬伊斯·小利透"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "巴納巴斯·馬什"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "新格林教堂"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "達貢密教"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "印斯茅斯監獄"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "鋸骨巷"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "朝岸貧民窟"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "與喬·薩金特的一場交易"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "密切追蹤的一條線索"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "一次越獄"
+          },
+          {
+            "id": "an_intervention",
+            "text": "一次攔路警告"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "與駭人魔鬼的一戰"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "與摩爾船長的一次對話"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "一起行動的決定"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "發現了一件神秘的遺物"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "發現了一尊奇怪的偶像"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "發現了一件邪穢的斗篷"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "與神秘教派的一次相遇"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "可怕的真相"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "“深潛者”的生命週期。"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "與托馬斯·道森的一場會面"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "一場刺痛的背叛"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "水街老屋"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "印斯茅斯監獄"
+          },
+          {
+            "id": "new_church_green",
+            "text": "新格林教堂"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "達貢密教"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "鋸骨巷"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "朝岸貧民窟"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "扎多克·艾倫"
+          },
+          {
+            "id": "burnham",
+            "text": "布里安·伯納姆"
+          },
+          {
+            "id": "friendly",
+            "text": "羅伯特·弗蘭得禮"
+          },
+          {
+            "id": "gilman",
+            "text": "歐斯拉·吉爾曼"
+          },
+          {
+            "id": "little",
+            "text": "喬伊斯·小利透"
+          },
+          {
+            "id": "marsh",
+            "text": "巴納巴斯·馬什"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {

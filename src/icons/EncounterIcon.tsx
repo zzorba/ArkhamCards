@@ -885,22 +885,31 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zrttic':
       case 'rttic':
         return this.innsmouthIcon('rttic', size, color);
+      case 'return_to_the_pit_of_despair':
       case 'zreturn_to_the_pit_of_despair':
         return this.innsmouthIcon('return_to_the_pit_of_despair', size, color);
+      case 'return_to_the_vanishing_of_elina_harper':
       case 'zreturn_to_the_vanishing_of_elina_harper':
         return this.innsmouthIcon('return_to_the_vanishing_of_elina_harper', size, color);
+      case 'return_to_in_too_deep':
       case 'zreturn_to_in_too_deep':
         return this.innsmouthIcon('return_to_in_too_deep', size, color);
+      case 'return_to_devil_reef':
       case 'zreturn_to_devil_reef':
         return this.innsmouthIcon('return_to_devil_reef', size, color);
+      case 'return_to_horror_in_high_gear':
       case 'zreturn_to_horror_in_high_gear':
         return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
+      case 'return_to_horror_in_high_gear':
       case 'zreturn_to_horror_in_high_gear':
         return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
+      case 'return_to_a_light_in_the_fog':
       case 'zreturn_to_a_light_in_the_fog':
         return this.innsmouthIcon('return_to_a_light_in_the_fog', size, color);
+      case 'return_to_the_lair_of_dagon':
       case 'zreturn_to_the_lair_of_dagon':
         return this.innsmouthIcon('return_to_the_lair_of_dagon', size, color);
+      case 'return_to_into_the_maelstrom':
       case 'zreturn_to_into_the_maelstrom':
         return this.innsmouthIcon('return_to_into_the_maelstrom', size, color);
       case 'zstalkers_of_cthulhu':
@@ -909,6 +918,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('rolling_tide', size, color);
       case 'zinnsmouth_haze':
         return this.innsmouthIcon('innsmouth_haze', size, color);
+      case 'zbarricaded_doors':
+        return this.innsmouthIcon('barricaded_doors', size, color);
       case 'zoccultation':
         return this.innsmouthIcon('occultation', size, color);
       case 'zreturn_to_flooded_caverns':

@@ -32,6 +32,7 @@ import {
   TSK,
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
+  RTTIC,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -45,7 +46,8 @@ const authors = {
   [CROWN_OF_EGIL]: 'The Mad Juggler',
   [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
   [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
-  [HEART_OF_DARKNESS]: 'Vinn Quest'
+  [HEART_OF_DARKNESS]: 'Vinn Quest',
+  [RTTIC]: 'DerBK',
 }
 
 export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
@@ -64,6 +66,7 @@ export function campaignDescription(packCode: CampaignCycleCode): string | undef
     case CALL_OF_THE_PLAGUEBEARER:
     case CYCLOPEAN_FOUNDATIONS:
     case HEART_OF_DARKNESS:
+    case RTTIC:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:
@@ -121,6 +124,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
     case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     case HEART_OF_DARKNESS: return t`Heart of Darkness`;
+    case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -355,6 +359,22 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+
+    case RTTIC: return [
+      { name: t`Return to The Pit of Despair`, code: 'zreturn_to_the_pit_of_despair', pack_code: 'tic' },
+      { name: t`Puzzle Pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
+      { name: t`Return to The Vanishing of Elina Harper`, code: 'zreturn_to_the_vanishing_of_elina_harper', pack_code: 'tic' },
+      { name: t`The Syzygy`, code: 'syzygy', pack_code: 'tic', interlude: true },
+      { name: t`Return to In Too Deep`, code: 'zreturn_to_in_too_deep', pack_code: 'itc' },
+      { name: t`Return to Devil Reef`, code: 'zreturn_to_devil_reef', pack_code: 'def' },
+      { name: t`Beneath the Waves`, code: 'beneath_the_waves', pack_code: 'def', interlude: true },
+      { name: t`Return to Horror in High Gear`, code: 'zreturn_to_horror_in_high_gear', pack_code: 'hhg' },
+      { name: t`Return to A Light in the Fog`, code: 'zreturn_to_a_light_in_the_fog', pack_code: 'lif' },
+      { name: t`Return to The Lair of Dagon`, code: 'zreturn_to_lair_of_dagon', pack_code: 'lod' },
+      { name: t`Hidden Truths`, code: 'hidden_truths', pack_code: 'lod', interlude: true },
+      { name: t`Return to Into the Maelstrom`, code: 'zreturn_to_into_the_maelstrom', pack_code: 'itm' },
+      { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
+    ];
     case EOE: return [
       { name: t`Prologue`, code: 'prologue', pack_code: 'eoec', interlude: true },
       { name: t`Ice and Death: Part 1`, code: 'ice_and_death_part_1', pack_code: 'eoec' },
@@ -442,6 +462,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case GOB:
     case FOF:
     case HEART_OF_DARKNESS:
+
       return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -478,6 +499,7 @@ export function campaignNames() {
     zcf: t`Cyclopean Foundations`,
     zcp: t`Call of the Plaguebearer`,
     zhod: t`Heart of Darkness`,
+    rttic: 'The (Unofficial) Return to The Innsmouth Conspiracy',
   };
 }
 
@@ -510,6 +532,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case RTTIC:
     case FOF:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
@@ -599,6 +622,7 @@ export function getCampaignLog(
         ],
       };
     case TIC:
+    case RTTIC:
       return {
         sections: [
           t`Campaign Notes`,
@@ -897,6 +921,7 @@ export function getChaosBag(
     case TDEB:
       return TDEB_BAG[difficulty];
     case TIC:
+    case RTTIC:
       return TIC_BAG[difficulty];
     case EOE:
       return EOE_BAG[difficulty];

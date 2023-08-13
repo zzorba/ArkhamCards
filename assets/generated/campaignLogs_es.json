@@ -2805,6 +2805,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# tiene un traje de buzo.",
+            "feminine_text": "#name# tiene un traje de buzo.",
+            "nonbinary_text": "#name# tiene un traje de buzo."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "la misión de la agente Harper quedó completada."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "la misión de la agente Harper quedó completada… pero ¿a qué precio?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen está sediento de sangre."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham está sediento de sangre."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagón ha despertado."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagón sigue durmiendo."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "los profundos han inundado la Tierra."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "los investigadores escaparon de Y'ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "la inundación ha comenzado."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly está sediento de sangre."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "el guardián de la puerta ha sido derrotado."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "la puerta de Y'ha-nthlei te reconoce como su guardián por derecho."
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman está sediento de sangre."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "el guardián de Y'ha-nthlei ha sido derrotado."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "llevaron la diadema al faro."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "llevaron el ídolo al faro."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth fue consumido por la marea creciente."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little está sediento de sangre."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "los investigadores llegaron a salvo a sus vehículos."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "llevaron el manto al faro."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh está sediento de sangre."
+          },
+          {
+            "id": "mission_failed",
+            "text": "la misión fracasó."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "la misión tuvo éxito."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "el ritual de la Orden quedó desbaratado."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "el plan de los profundos fue frustrado."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "los investigadores tienen un mapa de Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "los investigadores tienen la llave de Y'ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "los investigadores llegaron al Cabo del Halcón tras la salida del sol."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "los investigadores llegaron al Cabo del Halcón antes de la salida del sol."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "las riquezas de las profundidades han sido destruidas… pero ¿a qué precio?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "las riquezas de las profundidades se han perdido para siempre."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "el Terror del Arrecife del Diablo está muerto."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "el Terror del Arrecife del Diablo sigue vivo."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "la marea se ha vuelto más fuerte."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "La casa de Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Orden Esotérica de Dagón"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Cárcel de Innsmouth"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Callejón del Matasanos"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Suburbios ribereños"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "un trato con Joe Sargent"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "una pista seguida"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "una fuga"
+          },
+          {
+            "id": "an_intervention",
+            "text": "una intervención"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "una batalla con un horripilante demonio"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "una conversación con el señor Moore"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "una decisión de no separarse"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "el descubrimiento de una reliquia mística"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "el descubrimiento de un extraño ídolo"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "el descubrimiento de un manto impío"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "un encuentro con una secta secreta"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "la horrible verdad"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "el ciclo vital de un «profundo»"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "una reunión con Thomas Dawson"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "una dolorosa traición"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "La casa de Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Cárcel de Innsmouth"
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Orden Esotérica de Dagón"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Callejón del Matasanos"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Suburbios ribereños"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {

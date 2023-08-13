@@ -2812,6 +2812,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# besitzt einen Taucheranzug.",
+            "feminine_text": "#name# besitzt einen Taucheranzug.",
+            "nonbinary_text": "#name# besitzt einen Taucheranzug."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "Agent Harpers Mission ist abgeschlossen."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "Agent Harpers Mission ist abgeschlossen … aber zu welchem Preis?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen will Blut sehen."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham will Blut sehen."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagon ist erwacht."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon schläft noch."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "Die Tiefen Wesen haben die Erde überflutet."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "Die Ermittler sind aus Y’ha-nthlei entkommen."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "Die Flut hat eingesetzt."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly will Blut sehen."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "Der Hüter des Tores wurde besiegt."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "Das Tor nach Y’ha-nthlei erkennt dich als seinen rechtmäßigen Hüter an"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman will Blut sehen."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "Der Wächter von Y’ha-nthlei wurde beseitigt."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "Der Kopfschmuck wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "Der Götze wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth ist durch die steigende Flut verzehrt worden."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little will Blut sehen."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "Die Ermittler haben es sicher bis zu ihren Fahrzeugen geschafft."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "Der Mantel wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh will Blut sehen."
+          },
+          {
+            "id": "mission_failed",
+            "text": "Die Mission ist gescheitert."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "Die Mission war erfolgreich."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "Das Ritual des Ordens wurde unterbrochen."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "Die Verschwörung der Tiefen Wesen wurde vereitelt."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "Die Ermittler besitzen eine Karte von Y’ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "Die Ermittler besitzen den Schlüssel nach Y’ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "Die Ermittler haben Falcon Point nach Sonnenaufgang erreicht."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "Die Ermittler haben Falcon Point vor Sonnenaufgang erreicht."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "Die Reichtümer der Tiefe sind für immer verloren … aber zu welchem Preis?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "Die Reichtümer der Tiefe sind für immer verloren."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "Der Schrecken des Teufelsriffs ist tot."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "Der Schrecken des Teufelsriffs ist noch am Leben."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "die Gezeiten sind stärker geworden."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "Das Haus an der Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "Neuer Kirchplatz"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Esoterischer Orden von Dagon"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Gefängnis von Innsmouth"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Knochensägergasse"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Elendsviertel an der Küste"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "ein Geschäft mit Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "eine verfolgte Spur."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "ein Gefängnisausbruch."
+          },
+          {
+            "id": "an_intervention",
+            "text": "eine Warnung."
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "ein Kampf mit einem schrecklichen Teufel"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "eine Unterhaltung mit Mr. Moore"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "der Beschluss zusammenzubleiben"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "eine Entdeckung eines mystischen Relikts."
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "eine Entdeckung eines seltsamen Götzen."
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "eine Entdeckung eines unheiligen Mantels."
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "eine Begegnung mit einem Geheimkult"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "die schreckliche Wahrheit"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "der Lebenszyklus eines „Tiefen Wesens“"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "ein Treffen mit Thomas Dawson"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "ein schmerzhafter Verrat"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "Das Haus an der Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Gefängnis von Innsmouth"
+          },
+          {
+            "id": "new_church_green",
+            "text": "Neuer Kirchplatz"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoterischer Orden von Dagon"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Knochensägergasse"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Elendsviertel an der Küste"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {

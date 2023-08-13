@@ -548,6 +548,10 @@
     "name": "Erholsame Nacht"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "Rückkehr zu: Ein Phantom der Wahrheit"
   },
@@ -570,6 +574,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "Rückkehr zu: Ruf vor den Vorhang"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -600,8 +608,20 @@
     "name": "Rückkehr zu: Das Herz der Älteren, Teil 2"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Rückkehr zu: In den Fängen des Chaos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -640,6 +660,10 @@
     "name": "Rückkehr zu: Das Haus gewinnt immer"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Rückkehr zu: Der letzte König"
   },
@@ -656,6 +680,10 @@
     "name": "Rückkehr zu: Die Bleiche Maske"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Rückkehr zu: Der geheime Name"
   },
@@ -666,6 +694,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Rückkehr zu: Die ungezähmte Wildnis"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",

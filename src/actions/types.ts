@@ -427,6 +427,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const RTTIC = 'rttic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
 export const GOB = 'gob';
@@ -465,7 +466,8 @@ export type CampaignCycleCode =
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
   typeof HEART_OF_DARKNESS |
-  typeof CALL_OF_THE_PLAGUEBEARER;
+  typeof CALL_OF_THE_PLAGUEBEARER |
+  typeof RTTIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -496,6 +498,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
+  RTTIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -523,6 +526,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
+  RTTIC,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);

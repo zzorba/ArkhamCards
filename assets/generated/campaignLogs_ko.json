@@ -2805,6 +2805,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "feminine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "nonbinary_text": "#name# 조사자가 잠수복을 갖고 있다"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "하퍼 요원이 맡은 임무를 완수했다"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "하퍼 요원이 맡은 임무를 완수했지만…그 대가는 무엇일까요?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "제이덕 엘렌이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "브라이언 버넘이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "데이곤이 깨어났다"
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "데이곤이 아직 잠들어 있다"
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "심해인이 지구상에서 번영하게 되었다"
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "조사자들이 이하 느틀레이에서 탈출했다"
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "대홍수가 시작되었다"
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "로버트 프렌들리가 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "수문장이 쓰러졌다"
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "이하 느틀레이의 관문이 당신을 정당한 계승자로 받아들인다"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "오테라 길먼이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "이하 느틀레이의 수호자가 죽었다"
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "머리관이 등대로 옮겨졌다"
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "우상이 등대로 옮겨졌다"
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "인스머스가 밀물에 집어삼켜졌다"
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "조이스 리틀이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "조사자들이 안전하게 차량에 도착했다"
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "망토가 등대로 옮겨졌다"
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "바나버스 마쉬가 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "mission_failed",
+            "text": "임무에 실패했다"
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "임무를 달성했다"
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "밀교회의 의식을 방해했다"
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "심해인의 음모를 저지했다"
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "조사자들이 이하 느틀레이의 지도를 갖고 있다"
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "조사자들이 이하 느틀레이의 열쇠를 갖고 있다"
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "조사자들이 동튼 후에야 송골매 곶에 도착했다"
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "조사자들이 동트기 전에 송골매 곶에 도착했다"
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "심해의 보화는 영원히 소실되었으나…그 대가는 무엇일까요?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "심해의 보화는 영원히 소실되었다"
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "악마의 암초에 도사린 공포가 죽었다"
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "악마의 암초에 도사린 공포가 아직 살아 있다"
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "밀물이 더욱 높이 차올랐다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "제이덕 엘렌"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "브라이언 버넘"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "로버트 프렌들리"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "오테라 길먼"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "워터 가에 있는 집"
+          },
+          {
+            "id": "accuse_little",
+            "text": "조이스 리틀"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "바나버스 마쉬"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "뉴 처치 그린"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "데이곤 밀교회당"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "인스머스 감옥"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "쏘본 골목"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "해안 빈민가"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "조 사전트와의 거래"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "이어진 실마리"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "탈옥"
+          },
+          {
+            "id": "an_intervention",
+            "text": "간섭"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "무시무시한 악마와의 전투"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "무어 선장과의 대화"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "함께 수색하기로 결정"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "신비한 유물을 발견함"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "기묘한 우상을 발견함"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "불경스러운 망토를 발견함"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "비의적인 사교집단과의 조우"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "무시무시한 진실"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "“심해인”의 생활사"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "토머스 도슨과의 만남"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "씁쓸한 배신"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "워터 가에 있는 집"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "인스머스 감옥"
+          },
+          {
+            "id": "new_church_green",
+            "text": "뉴 처치 그린"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "데이곤 밀교회당"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "쏘본 골목"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "해안 빈민가"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "제이덕 엘렌"
+          },
+          {
+            "id": "burnham",
+            "text": "브라이언 버넘"
+          },
+          {
+            "id": "friendly",
+            "text": "로버트 프렌들리"
+          },
+          {
+            "id": "gilman",
+            "text": "오테라 길먼"
+          },
+          {
+            "id": "little",
+            "text": "조이스 리틀"
+          },
+          {
+            "id": "marsh",
+            "text": "바나버스 마쉬"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {
