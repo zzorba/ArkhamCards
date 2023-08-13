@@ -15,6 +15,7 @@ export default function SignatureCardItem({ card, componentId, width }: Props) {
       componentId={componentId}
       card={card}
       width={width}
+      showBack
     />
   );
 }

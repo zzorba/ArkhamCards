@@ -65,13 +65,14 @@ interface Props {
   simple?: boolean;
   width: number;
   noImage?: boolean;
+  showBack?: boolean;
 }
 
 export default function TwoSidedCardComponent(props: Props) {
   const { componentId, card, backCard, linked, notFirst, simple, width } = props;
   const custom = card.custom();
   const { backgroundStyle, fontScale, shadow, colors, typography } = useContext(StyleContext);
-  const [showBack, toggleShowBack] = useFlag(false);
+  const [showBack, toggleShowBack] = useFlag(props.showBack ?? false);
   const isHorizontal = card.type_code === 'act' ||
     card.type_code === 'agenda' ||
     card.type_code === 'investigator';
@@ -284,6 +285,7 @@ export default function TwoSidedCardComponent(props: Props) {
             notFirst={!isFirst}
             width={width}
             simple={simple}
+            showBack={props.showBack}
             key="linked"
           />
         </View>

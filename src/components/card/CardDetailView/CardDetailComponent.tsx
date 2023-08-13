@@ -80,6 +80,7 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
         componentId={componentId}
         investigator={card}
         width={width}
+        parallelInvestigator={parallelInvestigator}
       />
     </View>
   );
