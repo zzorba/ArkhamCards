@@ -305,7 +305,8 @@ function getDeckChangesHelper(
   forEach(exiledCards, (exileCount, code) => {
     if (exileCount > 0) {
       const card = cards[code];
-      if (card) {
+      if (card && !card.encounter_code) {
+        // Encounter cards don't get you a free slot to swap.
         forEach(range(0, exileCount), () => exiledSlots.push(card));
       }
     }

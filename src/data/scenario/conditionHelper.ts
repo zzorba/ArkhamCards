@@ -686,6 +686,7 @@ export function multiConditionResult(
             case 'investigator':
             case 'cycle':
             case 'standalone':
+            case 'difficulty':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }

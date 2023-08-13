@@ -1,4 +1,4 @@
-import { findBestAvailableLanguage } from 'react-native-localize';
+import { findBestLanguageTag } from 'react-native-localize';
 import { addLocale, useLocale as ttagUseLocale } from 'ttag';
 
 const ALL_LANGUAGES = [
@@ -43,7 +43,7 @@ export function changeLocale(locale: string) {
 }
 
 export function systemLocale(): string {
-  const tag = findBestAvailableLanguage(ALL_LANGUAGES);
+  const tag = findBestLanguageTag(ALL_LANGUAGES);
   if (tag) {
     return tag.languageTag;
   }

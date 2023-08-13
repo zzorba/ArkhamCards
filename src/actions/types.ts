@@ -437,6 +437,7 @@ export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
 export const CYCLOPEAN_FOUNDATIONS = 'zcf';
+export const HEART_OF_DARKNESS = 'zhod';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -463,6 +464,7 @@ export type CampaignCycleCode =
   typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
+  typeof HEART_OF_DARKNESS |
   typeof CALL_OF_THE_PLAGUEBEARER;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
@@ -493,6 +495,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  HEART_OF_DARKNESS,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -511,6 +514,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEB,
   TIC,
   EOE,
+  TSK,
   GOB,
   FOF,
   ALICE_IN_WONDERLAND,
@@ -518,11 +522,11 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  TSK,
+  HEART_OF_DARKNESS,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
-export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([HEART_OF_DARKNESS]);
 
 export interface CustomCampaignLog {
   sections?: string[];

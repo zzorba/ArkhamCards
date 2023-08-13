@@ -159,7 +159,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
       shadow.large,
       last ? space.marginRightM : undefined,
     ]}>
-      <View style={styles.icon}>
+      <View style={[styles.icon, { backgroundColor: background }]}>
         <EncounterIcon size={80} color={colors.M} encounter_code={scenario.scenarioGuide.scenarioIcon()} />
       </View>
       <Text style={[typography.small, typography.italic, { color: light }]}>

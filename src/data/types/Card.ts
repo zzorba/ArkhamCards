@@ -19,8 +19,6 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
-export const HEALS_HORROR_REGEX = /[Hh]eals?( that much)?( (\+?\d+|all|(X total)))?( damage)?( from that asset)?( (and|or))?( (\d+|all|(X total)))?(\s|\/)horror/;
-export const HEALS_DAMAGE_REGEX = /[Hh]eals? (that much )?((((\+?\d+)|(all)|(X total)) )?horror (from that asset )?(and|or) )?(((\+?\d+)|(all)|(X total)) )?damage/;
 const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
 const RUSSIAN_E_REGEX = /ё/g
 

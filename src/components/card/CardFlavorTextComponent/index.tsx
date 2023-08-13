@@ -255,7 +255,7 @@ interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
   color?: string;
-  width?: string | number;
+  width?: number;
   sizeScale?: number;
 }
 

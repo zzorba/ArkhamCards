@@ -140,16 +140,11 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
   }, [item.draftCycle, item.code, draftHistory]);
-  const style = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    }
-  });
   return (
     <Animated.View key={item.key} style={[
       borderStyle,
       { borderTopWidth: StyleSheet.hairlineWidth },
-      style,
+      { opacity },
     ]} entering={item.enterAnimation} exiting={item.exitAnimation}>
       <CardSearchResult
         id={item.key}

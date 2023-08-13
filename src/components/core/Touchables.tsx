@@ -19,11 +19,6 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
   const onPressOut = useCallback(() => {
     opacity.value = withTiming(1, { duration: 100 });
   }, [opacity]);
-  const opacityStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    };
-  });
   return (
     <Pressable
       style={style}
@@ -34,7 +29,7 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
       unstable_pressDelay={50}
       {...otherProps}
     >
-      <Animated.View style={[style, opacityStyle]}>
+      <Animated.View style={[style, { opacity }]}>
         { children }
       </Animated.View>
     </Pressable>

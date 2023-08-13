@@ -416,6 +416,7 @@ function TarotCardReadingView({
           itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
           sliderHeight={height * 0.7 + m * 2}
           firstItem={jumpIndex}
+          inactiveSlideOpacity={1}
           onScrollIndexChanged={setIndex}
           contentContainerCustomStyle={space.paddingSideS}
           useExperimentalSnap={Platform.OS === 'android'}

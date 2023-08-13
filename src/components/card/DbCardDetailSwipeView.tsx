@@ -347,6 +347,7 @@ function DbCardDetailSwipeView(props: Props) {
         vertical={false}
         data={data}
         firstItem={initialIndex}
+        inactiveSlideOpacity={1}
         initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
         maxToRenderPerBatch={3}
         renderItem={renderCard}

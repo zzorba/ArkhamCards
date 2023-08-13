@@ -861,9 +861,31 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.appIcon('logo', size, color)
       case 'zsti':
         return this.appIcon('investigator', size, color);
+
+      case 'zhod':
+      case 'heart_of_darkness':
+        return this.cyclopeanIcon('heart_of_darkness', size, color);
+      case 'zhod_africa_is_watching':
+      case 'africa_is_watching':
+        return this.cyclopeanIcon('africa_is_watching', size, color);
+      case 'zhod_to_the_heart_of_the_congo':
+      case 'to_the_heart_of_the_congo':
+        return this.cyclopeanIcon('to_the_heart_of_the_congo', size, color);
+      case 'zhod_the_avatar_of_darkness':
+      case 'the_avatar_of_darkness':
+        return this.cyclopeanIcon('the_avatar_of_darkness', size, color);
+      case 'zhod_the_darkness':
+        return this.cyclopeanIcon('the_darkness', size, color);
+      case 'zhod_african_wildlife':
+        return this.cyclopeanIcon('african_wildlife', size, color);
+      case 'zhod_lands_of_the_congo':
+        return this.cyclopeanIcon('lands_of_the_congo', size, color);
+      case 'zhod_cult_of_darkness':
+        return this.cyclopeanIcon('cult_of_darkness', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
+
     }
   }
 }

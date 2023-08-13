@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  extends: '@react-native',
   settings: {
     react: {
       version: 'detect',
@@ -36,7 +36,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   'rules': {
-    'no-unused-vars': 'off',   
+    'no-unused-vars': 'off',
 // Enable additional rules for ESLint:
     // http://eslint.org/docs/rules/
 
