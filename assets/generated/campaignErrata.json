@@ -1,6 +1,15 @@
 {
   "cards": [
     {
+      "encounter_code": "zhod_to_the_heart_of_the_congo",
+      "cards": [
+        {
+          "code": ["zhod_00052", "zhod_00053", "zhod_00054"],
+          "text": "The 3 Savannah locationsshould not have dark red “+” connection symbol (on both sides)."
+        }
+      ]
+    },
+    {
       "encounter_code": "blood_on_the_altar",
       "cards": [
         {

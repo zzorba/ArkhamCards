@@ -4241,7 +4241,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "승점 더미에 있는 이야기 카드 장수",
           "min": 0,
           "adjustment": 1
         }
@@ -4255,7 +4255,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "틴달로스에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4272,7 +4272,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "당신이 위치한 장소에 [[과학자]] 자산이 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -4292,7 +4292,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "승점 더미에 있는 이야기 카드 장수",
           "min": 0,
           "adjustment": 2
         }
@@ -4306,7 +4306,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "틴달로스에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4323,7 +4323,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "당신이 위치한 장소에 [[과학자]] 자산이 있음",
               "modified_value": {
                 "modifier": -6
               }
@@ -4640,7 +4640,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "prompt": "승점 더미에 있는 ‘[[용의자]] 카드 수 + [[은신처]] 카드 수’의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -4653,7 +4653,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "당신이 [[용의자]] 적과 협상하고 있거나 [[은신처]] 장소를 조사하고 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -4679,7 +4679,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "prompt": "승점 더미에 있는 ‘[[용의자]] 카드 수 + [[은신처]] 카드 수’",
           "min": 0
         }
       },
@@ -4692,7 +4692,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "당신이 [[용의자]] 적과 협상하고 있거나 [[은신처]] 장소를 조사하고 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -4722,7 +4722,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the shelter value of your location (rounded up)"
+          "prompt": "당신이 위치한 장소의 피난처 값의 절반(소수점 올림)"
         }
       },
       {
@@ -4743,7 +4743,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The shelter value of your location"
+          "prompt": "당신이 위치한 장소의 피난처 값"
         }
       },
       {
@@ -4768,7 +4768,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of story cards in the victory display"
+          "prompt": "승점 더미에 있는 이야기 카드 장수"
         }
       },
       {
@@ -4795,7 +4795,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current agenda number plus the number of story cards in the victory display"
+          "prompt": "현재 주요사건 번호 + 승점 더미에있는 이야기 카드 장수"
         }
       },
       {
@@ -4826,7 +4826,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location"
+          "prompt": "당신이 위치한 장소의 고도"
         }
       },
       {
@@ -4853,7 +4853,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The level of your location",
+          "prompt": "당신이 위치한 장소의 고도",
           "min": 0,
           "adjustment": 2
         }
@@ -4886,7 +4886,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control"
+          "prompt": "당신이 조종하는 열쇠 개수"
         }
       },
       {
@@ -4904,7 +4904,7 @@
           },
           "options": [
             {
-              "prompt": "[frost] token was revealed",
+              "prompt": "[frost] 토큰이 공개됨",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4924,7 +4924,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of keys you control",
+          "prompt": "당신이 조종하는 열쇠 개수",
           "min": 0,
           "adjustment": 2
         }
@@ -4944,7 +4944,7 @@
           },
           "options": [
             {
-              "prompt": "[frost] token was revealed",
+              "prompt": "[frost] 토큰이 공개됨",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4973,7 +4973,7 @@
           },
           "options": [
             {
-              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "prompt": "당신이 위치한 장소에 [[고대의 존재]] 적이 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -5010,7 +5010,7 @@
           },
           "options": [
             {
-              "prompt": "There is an [[Ancient One]] enemy at your locations",
+              "prompt": "당신이 위치한 장소에 [[고대의 존재]] 적이 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -7753,7 +7753,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Auction Deck",
+          "prompt": "경매 덱에 있는 카드 숫자",
           "min": 0,
           "adjustment": 4,
           "scale": -1
@@ -7774,7 +7774,7 @@
           },
           "options": [
             {
-              "prompt": "No resources on an Auction Lot card in play",
+              "prompt": "플레이 영역에 있는 경매 물품에 자원이 없음",
               "modified_value": {
                 "modifier": -4
               }
@@ -7788,7 +7788,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Auction Deck",
+          "prompt": "경매 덱에 있는 카드 숫자",
           "min": 0,
           "adjustment": 5,
           "scale": -1
@@ -7809,7 +7809,7 @@
           },
           "options": [
             {
-              "prompt": "No resources on an Auction Lot card in play",
+              "prompt": "플레이 영역에 있는 경매 물품에 자원이 없음",
               "modified_value": {
                 "modifier": -5
               }
@@ -7827,7 +7827,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed locations with no clues on them",
+          "prompt": "단서가 없는 공개된 장소의 개수",
           "min": 0,
           "max": 4
         }
@@ -7847,7 +7847,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "당신이 [[비-유클리드]] 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -7867,7 +7867,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed locations with no clues on them",
+          "prompt": "단서가 없는 공개된 장소의 개수",
           "min": 0
         }
       },
@@ -7886,7 +7886,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "당신이 [[비-유클리드]] 장소에 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -7910,7 +7910,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Traitor Deck",
+          "prompt": "배신자 덱에 남아 있는 카드 수",
           "min": 0,
           "adjustment": 4,
           "scale": -1
@@ -7925,7 +7925,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Traitor]] enemy in play",
+              "prompt": "[[배신자]] 적이 플레이 상태",
               "modified_value": {
                 "modifier": -4
               }
@@ -7951,7 +7951,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Traitor Deck",
+          "prompt": "배신자 덱에 남아 있는 카드 수",
           "min": 0,
           "adjustment": 5,
           "scale": -1
@@ -7966,7 +7966,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Traitor]] enemy in play",
+              "prompt": "[[배신자]] 적이 플레이 상태",
               "modified_value": {
                 "modifier": -5
               }
@@ -8004,7 +8004,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom in play, rounded up",
+          "prompt": "플레이 영역에 있는 파멸 토큰 개수의 절반(소수점 올림)",
           "min": 0
         }
       },
@@ -8061,7 +8061,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 5 [[Notice]] in your Campaign Log",
+          "prompt": "캠페인 기록지에 있는 [[주목도]]를 5로 나눈 값(소수점 버림)",
           "min": 0
         }
       },
@@ -8074,7 +8074,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "prompt": "[[음모자]] 적에 대한 테스트이고 피해를 받지 않음",
               "modified_value": {
                 "modifier": -4
               }
@@ -8091,7 +8091,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "prompt": "[[역설]] 카드에 대한 테스트이고 공포를 받지 않음",
               "modified_value": {
                 "modifier": -4
               }
@@ -8108,7 +8108,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "당신이 [[비-유클리드]] 장소에 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -8122,7 +8122,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 4 [[Notice]] in your Campaign Log",
+          "prompt": "캠페인 기록지에 있는 [[주목도]]를 4로 나눈 값(소수점 버림)",
           "min": 0
         }
       },
@@ -8135,7 +8135,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "prompt": "[[음모자]] 적에 대한 테스트이고 피해를 받지 않음",
               "modified_value": {
                 "modifier": -5
               }
@@ -8152,7 +8152,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "prompt": "[[역설]] 카드에 대한 테스트이고 공포를 받지 않음",
               "modified_value": {
                 "modifier": -5
               }
@@ -8169,7 +8169,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "당신이 [[비-유클리드]] 장소에 있음",
               "modified_value": {
                 "modifier": -6
               }
@@ -8187,7 +8187,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Non-Euclidean effects on your location",
+          "prompt": "당신이 위치한 장소의 “<b>비-유클리드</b>” 효과의 수",
           "min": 0,
           "adjustment": 2
         }
@@ -8216,7 +8216,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Non-Euclidean effects on your location",
+          "prompt": "당신이 위치한 장소의 “<b>비-유클리드</b>” 효과의 수",
           "min": 0,
           "adjustment": 3
         }
@@ -8249,7 +8249,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Inescapable Reach cards in play",
+          "prompt": "플레이 영역에 있는 ‘벗어날 수 없는 손아귀’의 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -8275,7 +8275,7 @@
           },
           "options": [
             {
-              "prompt": "Cthulhu is at your location",
+              "prompt": "당신의 장소에 ‘크툴루’가 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8289,7 +8289,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Inescapable Reach cards in play",
+          "prompt": "플레이 영역에 있는 ‘벗어날 수 없는 손아귀’의 개수",
           "min": 0,
           "adjustment": 2
         }
@@ -8315,7 +8315,7 @@
           },
           "options": [
             {
-              "prompt": "Cthulhu is at your location",
+              "prompt": "당신의 장소에 ‘크툴루’가 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }

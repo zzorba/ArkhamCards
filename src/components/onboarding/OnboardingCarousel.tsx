@@ -58,6 +58,7 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
         data={slidesWithDummy}
         defaultIndex={0}
         windowSize={3}
+        inactiveSlideOpacity={1}
         renderItem={renderItem}
         width={width}
         onSnapToItem={onScrollIndexChanged}

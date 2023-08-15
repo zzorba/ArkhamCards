@@ -105,6 +105,7 @@ export interface FilterState {
   enemyParley: boolean;
   enemyRetaliate: boolean;
   enemyAlert: boolean;
+  enemyConcealed: boolean;
   enemySpawn: boolean;
   enemyPrey: boolean;
   enemyAloof: boolean;
@@ -140,6 +141,7 @@ const ACTION_TEXT: { [key: string]: string } = {
   move: '<b>Move.</b>',
   evade: '<b>Evade.</b>',
   resource: '<b>Resource.</b>',
+  parley: '<b>Parley.</b>',
 };
 
 export const defaultFilterState: FilterState = {
@@ -212,6 +214,7 @@ export const defaultFilterState: FilterState = {
   enemyParley: false,
   enemyRetaliate: false,
   enemyAlert: false,
+  enemyConcealed: false,
   enemySpawn: false,
   enemyPrey: false,
   enemyAloof: false,
@@ -331,6 +334,9 @@ export default class FilterBuilder {
   }
 
   tagFilter(tags: string[]): Brackets[] {
+    if (tags.length === 1 && tags[0] === 'the_insane') {
+      return [];
+    }
     return this.complexVectorClause(
       'tag',
       map(tags, tag => `%${tag}%`),
@@ -460,6 +466,7 @@ export default class FilterBuilder {
       enemyNonHunter,
       enemyRetaliate,
       enemyAlert,
+      enemyConcealed,
       enemyParley,
       enemySpawn,
       enemyPrey,
@@ -518,6 +525,10 @@ export default class FilterBuilder {
     }
     if (enemyAloof) {
       result.push(where(`c.real_text LIKE '%Aloof.%' or linked_card.real_text LIKE '%Aloof.%'`));
+    }
+
+    if (enemyConcealed) {
+      result.push(where(`c.real_text LIKE '%Concealed%' or linked_card.real_text LIKE '%Concealed%'`));
     }
     if (enemyParley) {
       result.push(where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%'`));

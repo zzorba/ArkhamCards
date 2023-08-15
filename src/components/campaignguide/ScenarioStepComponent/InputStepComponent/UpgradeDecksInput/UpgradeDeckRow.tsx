@@ -264,7 +264,7 @@ function UpgradeDeckRow({
   const onUpgrade = useCallback(async(deck: Deck, xp: number) => {
     saveCampaignLog(xp, deck);
   }, [saveCampaignLog]);
-  const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, onUpgrade);
+  const [saving, error, saveDeckUpgrade, saveDeckWithoutUpgrade] = useDeckUpgradeAction(actions, onUpgrade);
   useEffect(() => {
     // We only want to save once.
     if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
@@ -324,26 +324,46 @@ function UpgradeDeckRow({
       if (delta !== 0) {
         newSlots[code] = Math.max((deck.deck.slots?.[code] || 0) + delta, 0);
       }
-    })
+    });
+    forEach(exileCounts, (delta, code) => {
+      if (delta !== 0 && storyAssets[code]) {
+        newSlots[code] = newSlots[code] - delta;
+      }
+    });
     return newSlots;
-  }, [deck, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
+  }, [deck, exileCounts, specialExile, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
 
   const saveDelayedDeck = useCallback(async(ownerId: string) => {
     const choices = getChoices(xp);
-    await scenarioState.setNumberChoices(choiceId, choices, undefined, {
-      xp,
-      userId: ownerId,
-      exileCounts,
-      ignoreStoryCounts: campaignLog.ignoreStoryAssets(investigator.code),
-      storyCounts: storyCountsForDeck,
-    });
-  }, [getChoices, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code, choiceId, scenarioState]);
+    if (skipDeckSave) {
+      await scenarioState.setNumberChoices(choiceId, choices, undefined, {
+        type: 'save',
+        xp: 0,
+        userId: ownerId,
+        exileCounts,
+        ignoreStoryCounts: campaignLog.ignoreStoryAssets(investigator.code),
+        storyCounts: storyCountsForDeck,
+      });
+    } else {
+      await scenarioState.setNumberChoices(choiceId, choices, undefined, {
+        xp,
+        userId: ownerId,
+        exileCounts,
+        ignoreStoryCounts: campaignLog.ignoreStoryAssets(investigator.code),
+        storyCounts: storyCountsForDeck,
+      });
+    }
+  }, [skipDeckSave, getChoices, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code, choiceId, scenarioState]);
 
-  const saveDeck = useCallback(() => {
-    saveDeckUpgrade(deck, xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts, undefined);
-  }, [saveDeckUpgrade, deck, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
+  const saveDeck = useCallback(async () => {
+    if (skipDeckSave) {
+      await saveDeckWithoutUpgrade(deck, 0, storyCountsForDeck, undefined, xp);
+    } else {
+      await saveDeckUpgrade(deck, xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), exileCounts, undefined);
+    }
+  }, [skipDeckSave, saveDeckUpgrade, deck, xp, storyCountsForDeck, campaignLog, exileCounts, investigator.code]);
   const save = useCallback(() => {
-    if (deck && !skipDeckSave) {
+    if (deck) {
       if (!deck?.owner || !userId || deck.owner.id === userId) {
         saveDeck();
       } else {
@@ -352,7 +372,7 @@ function UpgradeDeckRow({
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, skipDeckSave, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
+  }, [deck,   skipDeckSave, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
 
 
   const onCardPress = useCallback((card: Card) => {
@@ -406,7 +426,7 @@ function UpgradeDeckRow({
           <View style={space.paddingS}>
             <AppIcon name="upgrade" size={32} color={COLORS.D20} />
           </View>
-          <Text style={[typography.large, { color: COLORS.D30, flexShrink: 1 }]} adjustsFontSizeToFit>
+          <Text style={[typography.large, { color: COLORS.D30, flexShrink: 1 }]}>
             { t`Earned XP:` }
           </Text>
         </View>
@@ -553,11 +573,18 @@ function UpgradeDeckRow({
       code: card.code,
       value,
     });
-  }, [updateSpecialExile]);
+    if (deck && !deck.id.serverId) {
+      updateExileCounts({
+        type: 'set-slot',
+        code: card.code,
+        value,
+      });
+    }
+  }, [updateSpecialExile, updateExileCounts, deck]);
   const specialExileSlots = useMemo(() => {
     const slots: Slots = {};
     forEach(allStoryAssetCards, (card) => {
-      if ((!deck || card.custom()) && !!card.exile && storyAssets[card.code]) {
+      if (!!card.exile && (!deck || card.encounter_code) && storyAssets[card.code]) {
         slots[card.code] = storyAssets[card.code];
       }
     });
@@ -628,13 +655,14 @@ function UpgradeDeckRow({
           exileCounts={choices === undefined ? exileCounts : savedExileCounts}
           updateExileCount={onExileCountChange}
           disabled={!editable || saving || choices !== undefined}
+          storyCards={storyAssets}
         >
           { specialExileSection }
         </ExileCardSelectorComponent>
       );
     }
     return specialExileSection;
-  }, [deck, componentId, saving, onExileCountChange, editable, specialExileSection, savedExileCounts, exileCounts, choices]);
+  }, [deck, componentId, saving, onExileCountChange, editable, storyAssets, specialExileSection, savedExileCounts, exileCounts, choices]);
   const campaignSection = useMemo(() => {
     return (
       <>

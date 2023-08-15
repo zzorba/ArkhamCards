@@ -28,6 +28,7 @@ import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { flatMap } from 'lodash';
+import { CardInvestigatorProps } from '../CardInvestigatorsView';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -51,7 +52,7 @@ export function rightButtonsForCard(card?: Card, color?: string) {
       color: color || COLORS.M,
       accessibilityLabel: t`Deckbuilding Cards`,
     });
-  } else if (card && (card.deck_limit || 0) > 0) {
+  } else if (card && (card.deck_limit ?? 0) > 0) {
     rightButtons.push({
       icon: iconsMap.per_investigator,
       id: 'investigator',
@@ -140,6 +141,28 @@ function CardDetailView({
     });
   }, [componentId, back_id, id]);
 
+
+  const showInvestigators = useCallback(() => {
+    console.log('Show investigators');
+    Navigation.push<CardInvestigatorProps>(componentId, {
+      component: {
+        name: 'Card.Investigators',
+        passProps: {
+          code: id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Investigators`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, id]);
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options());
   }, componentId, []);
@@ -152,6 +175,8 @@ function CardDetailView({
       showFaq(componentId, id);
     } else if (buttonId === 'back') {
       Navigation.pop(componentId);
+    } else if (buttonId === 'investigator') {
+      showInvestigators();
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
   const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);

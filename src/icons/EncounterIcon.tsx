@@ -285,7 +285,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'bayou':
         return this.standaloneIcon('the_bayou', size, color);
       case 'blob':
+      case 'blbe':
       case 'blob_that_ate_everything':
+      case 'blob_that_ate_everything_else':
         return this.standaloneIcon('the_blob_that_ate_everything', size, color);
       case 'migo_incursion':
         return this.standaloneIcon('migo', size, color);
@@ -859,9 +861,73 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.appIcon('logo', size, color)
       case 'zsti':
         return this.appIcon('investigator', size, color);
+
+      case 'zhod':
+      case 'heart_of_darkness':
+        return this.cyclopeanIcon('heart_of_darkness', size, color);
+      case 'zhod_africa_is_watching':
+      case 'africa_is_watching':
+        return this.cyclopeanIcon('africa_is_watching', size, color);
+      case 'zhod_to_the_heart_of_the_congo':
+      case 'to_the_heart_of_the_congo':
+        return this.cyclopeanIcon('to_the_heart_of_the_congo', size, color);
+      case 'zhod_the_avatar_of_darkness':
+      case 'the_avatar_of_darkness':
+        return this.cyclopeanIcon('the_avatar_of_darkness', size, color);
+      case 'zhod_the_darkness':
+        return this.cyclopeanIcon('the_darkness', size, color);
+      case 'zhod_african_wildlife':
+        return this.cyclopeanIcon('african_wildlife', size, color);
+      case 'zhod_lands_of_the_congo':
+        return this.cyclopeanIcon('lands_of_the_congo', size, color);
+      case 'zhod_cult_of_darkness':
+        return this.cyclopeanIcon('cult_of_darkness', size, color);
+      case 'zrttic':
+      case 'rttic':
+        return this.innsmouthIcon('rttic', size, color);
+      case 'return_to_the_pit_of_despair':
+      case 'zreturn_to_the_pit_of_despair':
+        return this.innsmouthIcon('return_to_the_pit_of_despair', size, color);
+      case 'return_to_the_vanishing_of_elina_harper':
+      case 'zreturn_to_the_vanishing_of_elina_harper':
+        return this.innsmouthIcon('return_to_the_vanishing_of_elina_harper', size, color);
+      case 'return_to_in_too_deep':
+      case 'zreturn_to_in_too_deep':
+        return this.innsmouthIcon('return_to_in_too_deep', size, color);
+      case 'return_to_devil_reef':
+      case 'zreturn_to_devil_reef':
+        return this.innsmouthIcon('return_to_devil_reef', size, color);
+      case 'return_to_horror_in_high_gear':
+      case 'zreturn_to_horror_in_high_gear':
+        return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
+      case 'return_to_horror_in_high_gear':
+      case 'zreturn_to_horror_in_high_gear':
+        return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
+      case 'return_to_a_light_in_the_fog':
+      case 'zreturn_to_a_light_in_the_fog':
+        return this.innsmouthIcon('return_to_a_light_in_the_fog', size, color);
+      case 'return_to_the_lair_of_dagon':
+      case 'zreturn_to_the_lair_of_dagon':
+        return this.innsmouthIcon('return_to_the_lair_of_dagon', size, color);
+      case 'return_to_into_the_maelstrom':
+      case 'zreturn_to_into_the_maelstrom':
+        return this.innsmouthIcon('return_to_into_the_maelstrom', size, color);
+      case 'zstalkers_of_cthulhu':
+        return this.innsmouthIcon('stalkers_of_cthulhu', size, color);
+      case 'zrolling_tide':
+        return this.innsmouthIcon('rolling_tide', size, color);
+      case 'zinnsmouth_haze':
+        return this.innsmouthIcon('innsmouth_haze', size, color);
+      case 'zbarricaded_doors':
+        return this.innsmouthIcon('barricaded_doors', size, color);
+      case 'zoccultation':
+        return this.innsmouthIcon('occultation', size, color);
+      case 'zreturn_to_flooded_caverns':
+        return this.innsmouthIcon('return_to_flooded_caverns', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
+
     }
   }
 }

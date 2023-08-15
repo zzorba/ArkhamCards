@@ -143,7 +143,8 @@ export type CampaignDataCondition =
   | CampaignDataInvestigatorCondition
   | CampaignDataLinkedCondition
   | CampaignDataVersionCondition
-  | CampaignDataCycleCondition;
+  | CampaignDataCycleCondition
+  | CampaignDataStandaloneCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataHasResolutionCondition
@@ -190,6 +191,7 @@ export type BinaryChoiceCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataNextScenarioCondition
+  | CampaignDataStandaloneCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
@@ -366,6 +368,8 @@ export interface MultiCondition {
     | CampaignDataScenarioCondition
     | ScenarioDataResolutionCondition
     | ScenarioDataPlayerCountCondition
+    | CampaignDataStandaloneCondition
+    | CampaignDataDifficultyCondition
     | InvestigatorCardCondition
     | BinaryCardCondition
     | MathCondition
@@ -739,6 +743,16 @@ export interface ScenarioDataPlayerCountCondition {
   scenario_data: "player_count";
   options: NumOption[];
 }
+export interface CampaignDataStandaloneCondition {
+  type: "campaign_data";
+  campaign_data: "standalone";
+  options: BoolOption[];
+}
+export interface CampaignDataDifficultyCondition {
+  type: "campaign_data";
+  campaign_data: "difficulty";
+  options: StringOption[];
+}
 export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
@@ -839,11 +853,6 @@ export interface CampaignLogInvestigatorCountCondition {
   investigator: "any" | "all";
   options: NumOption[];
   default_option?: DefaultOption;
-}
-export interface CampaignDataDifficultyCondition {
-  type: "campaign_data";
-  campaign_data: "difficulty";
-  options: StringOption[];
 }
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
@@ -1115,6 +1124,7 @@ export interface InvestigatorCounterInput {
   investigator_count_min?: string;
   max?: number;
   min?: number;
+  totalMax?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {

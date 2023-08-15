@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import { DeckMeta, Slots } from '@actions/types';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import useSingleCard from '@components/card/useSingleCard';
-import { combineQueries, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
+import { combineQueries, NO_BARKHAM_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import randomDeck from '@lib/randomDeck';
 import Card, { CardsMap } from '@data/types/Card';
@@ -69,7 +69,8 @@ export function useDraftableCards({
         where('c.xp = 0 OR c.xp is null'),
         where('c.extra_xp is null OR c.extra_xp = 0'),
         NO_DUPLICATES_QUERY,
-        NO_CUSTOM_CARDS_QUERY,
+        ...(investigatorBack.custom() ? [] : [NO_CUSTOM_CARDS_QUERY]),
+        ...(investigatorBack.pack_code !== 'zbh' ? [NO_BARKHAM_CARDS_QUERY] : []),
       ],
       'and'
     );

@@ -66,11 +66,6 @@ function CardGridItem<ItemT extends GridItem>({
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
   }, [item.draftCycle, item.code, draftHistory]);
-  const style = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    }
-  });
   return (
     <Animated.View
       entering={item.enterAnimation}
@@ -82,7 +77,7 @@ function CardGridItem<ItemT extends GridItem>({
         height: CARD_RATIO * cardWidth + m + controlHeight,
         paddingRight: s,
         paddingBottom: m,
-      }, style]}
+      }, { opacity }]}
     >
       { controlPosition === 'above' && control }
       <View style={space.paddingVerticalXs}>

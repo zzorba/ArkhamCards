@@ -44,6 +44,7 @@ export type ExtendedSortType =
   typeof SORT_BY_FACTION_XP ;
 
 export const DEFAULT_SORT: SortType[] = [SORT_BY_TYPE, SORT_BY_SLOT];
+export const DEFAULT_MYTHOS_SORT: SortType[] = [SORT_BY_ENCOUNTER_SET];
 
 export interface Slots {
   [code: string]: number;
@@ -66,6 +67,7 @@ export type DeckProblemType =
 export interface DeckProblem {
   reason: DeckProblemType;
   problems?: string[];
+  invalidCards: Card[];
 }
 
 export interface DeckMeta {
@@ -425,6 +427,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const RTTIC = 'rttic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
 export const GOB = 'gob';
@@ -435,6 +438,7 @@ export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
 export const CYCLOPEAN_FOUNDATIONS = 'zcf';
+export const HEART_OF_DARKNESS = 'zhod';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -461,7 +465,9 @@ export type CampaignCycleCode =
   typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
-  typeof CALL_OF_THE_PLAGUEBEARER;
+  typeof HEART_OF_DARKNESS |
+  typeof CALL_OF_THE_PLAGUEBEARER |
+  typeof RTTIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -491,6 +497,8 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  HEART_OF_DARKNESS,
+  RTTIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -509,6 +517,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEB,
   TIC,
   EOE,
+  TSK,
   GOB,
   FOF,
   ALICE_IN_WONDERLAND,
@@ -516,11 +525,12 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  TSK,
+  HEART_OF_DARKNESS,
+  RTTIC,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
-export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([HEART_OF_DARKNESS]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -1174,10 +1184,14 @@ export interface ToggleMythosAction {
   id: string;
   value: boolean;
 }
+
+export type CardScreenType = 'browse' | 'investigator' | 'deck' | 'checklist' | 'pack';
+
 export const UPDATE_CARD_SORT = 'UPDATE_CARD_SORT';
 export interface UpdateCardSortAction {
   type: typeof UPDATE_CARD_SORT;
-  id: string;
+  cardScreen: CardScreenType;
+  mythosMode: boolean;
   sorts: SortType[];
 }
 
@@ -1186,7 +1200,6 @@ export interface AddFilterSetAction {
   type: typeof ADD_FILTER_SET;
   id: string;
   filters: FilterState;
-  sorts: SortType[];
   mythosToggle?: boolean;
   cardData: CardFilterData;
 }

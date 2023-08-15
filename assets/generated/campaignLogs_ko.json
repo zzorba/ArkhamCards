@@ -241,156 +241,156 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# 동행이 비행기 추락으로 인해 사망했다",
+            "feminine_text": "#name# 동행이 비행기 추락으로 인해 사망했다"
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "야영지 - 빙벽 야영지 (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "야영지 - 드넓은 설원 (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "야영지 - 추락지 (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "야영지 - 수정 동굴 (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "야영지 - 차디찬 동굴 (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "야영지 - 얼어붙은 해안 (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "야영지 - 쇄빙선 상륙지 (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "야영지 - 얼음투성이 황무지 (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "야영지 - 위태로운 빙상 (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "야영지 - 레이크 교수의 야영지 잔해 (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "야영지 - 험준한 산 사면 (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "야영지 - 눈으로 쌓아 올린 봉분 (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "야영지 - 위험천만한 길 (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "크레이풀은 자신의 번민과 마주했다"
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "조사자들은 다이어 교수가 탐사를 허가하도록 설득했다"
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "쿠키는 자신의 번민과 마주했다"
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "댄포스는 자신의 번민과 마주했다"
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "조사자들은 다이어 교수의 보고서를 믿지 않았다"
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "탐사대가 고대 지하묘를 발견했다"
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "켄슬러 박사가 모종의 계획을 세웠다"
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "켄슬러 박사는 자신의 번민과 마주했다"
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "켄슬러 박사가 진실을 목전에 두고 있다"
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "켄슬러 박사가 연구 결과를 공유해 주었다"
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "켄슬러 박사가 독기의 본질에 대해 알아냈다"
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "신하는 자신의 번민과 마주했다"
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "다이어는 자신의 번민과 마주했다"
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "앨리야는 자신의 번민과 마주했다"
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "엘스워스는 자신의 번민과 마주했다"
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "고대 시설이 파괴되었다"
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "형언치 못할 광기가 풀려나고 말았다"
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "형언치 못할 광기는 그 숙주 안에 갇힌 채로 안전히 격리되었다… 적어도 지금은"
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "탐사대가 천문도를 촬영했다"
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "탐사대가 지도를 살펴보았다"
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "조사자들이 교외 지역을 정찰했다"
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "조사자들이 갈림길을 정찰했다"
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "조사자들이 고갯길을 정찰했다"
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "탐사대가 벽화를 연구했다"
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "탐사대 생존자:"
           },
           {
             "id": "surviving_partners",
@@ -406,47 +406,47 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "타카다는 자신의 번민과 마주했다"
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "탐사대가 빙붕에서 간신히 탈출했다"
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "탐사대가 정상까지 등반했다"
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "탐사대가 추적해오는 괴수들을 쓰러뜨렸다"
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "탐사대가 고대 시설에서 탈출했다"
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "탐사대가 산맥을 향해 달아났다"
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "탐사대가 산맥을 지나는 다른 길을 찾아냈다"
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "탐사대가 비밀 통로를 찾아냈다"
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "탐사대가 독기의 구체를 따라 비밀 통로에 도달했다"
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "봉인을 부적절하게… 사용했다"
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "신기루의 본질은 모호하기만 하다"
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# 동행은 실종되었다",
+            "masculine_text": "#name# 동행은 실종되었다",
+            "feminine_text": "#name# 동행은 실종되었다"
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "빙벽 야영지"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "드넓은 설원"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "추락지"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "수정 동굴"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "차디찬 동굴"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "얼어붙은 해안"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "쇄빙선 상륙지"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "얼음투성이 황무지"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "위태로운 빙상"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "레이크 교수의 야영지 잔해"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "험준한 산 사면"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "눈으로 쌓아 올린 봉분"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "위험천만한 길"
           }
         ]
       },
@@ -827,63 +827,63 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "비행장"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "알래스카 설원"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "외계 언어를 해석한 기억"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "어수선한 기숙사"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "켄슬러 박사의 교수실"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "다이어 교수의 강의실"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "사냥에 실패했던 기억"
           },
           {
             "id": "infirmary",
-            "text": "의무실"
+            "text": "병원"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "환자를 잃었던 기억"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "실종된 아버지에 대한 기억"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "모아이 석상"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "오스만 제국 전선"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "파괴된 나라에 대한 기억"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "후회스러운 탐사의 기억"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "끔찍한 발견을 한 기억"
           },
           {
             "id": "the_black_stone",
@@ -891,11 +891,11 @@
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "짝사랑의 기억"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "형언할 수 없는 악에 대한 기억"
           }
         ]
       },
@@ -904,43 +904,43 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "비행장"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "알래스카 설원"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "베이스캠프"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "어수선한 기숙사"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "남극 연안"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "테오도시아 갑판"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "한산한 기차역"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "켄슬러 박사의 교수실"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "다이어 교수의 강의실"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "고대 석실"
           },
           {
             "id": "hedge_maze",
@@ -948,23 +948,23 @@
           },
           {
             "id": "infirmary",
-            "text": "의무실"
+            "text": "병원"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "모아이 석상"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "오스만 제국 전선"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "리버뷰 극장"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "선돌"
           },
           {
             "id": "the_black_stone",
@@ -972,7 +972,7 @@
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "미스캐토닉 대학 복도"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "다이너마이트"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "녹색 활석"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "독기 서린 수정"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "광물질 표본"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "소형 무선 통신장치"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "예비 부품"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "나무 썰매"
           }
         ]
       }
@@ -2803,6 +2803,407 @@
         "cost": 3
       }
     ]
+  },
+  {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "feminine_text": "#name# 조사자가 잠수복을 갖고 있다",
+            "nonbinary_text": "#name# 조사자가 잠수복을 갖고 있다"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "하퍼 요원이 맡은 임무를 완수했다"
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "하퍼 요원이 맡은 임무를 완수했지만…그 대가는 무엇일까요?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "제이덕 엘렌이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "브라이언 버넘이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "데이곤이 깨어났다"
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "데이곤이 아직 잠들어 있다"
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "심해인이 지구상에서 번영하게 되었다"
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "조사자들이 이하 느틀레이에서 탈출했다"
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "대홍수가 시작되었다"
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "로버트 프렌들리가 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "수문장이 쓰러졌다"
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "이하 느틀레이의 관문이 당신을 정당한 계승자로 받아들인다"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "오테라 길먼이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "이하 느틀레이의 수호자가 죽었다"
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "머리관이 등대로 옮겨졌다"
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "우상이 등대로 옮겨졌다"
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "인스머스가 밀물에 집어삼켜졌다"
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "조이스 리틀이 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "조사자들이 안전하게 차량에 도착했다"
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "망토가 등대로 옮겨졌다"
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "바나버스 마쉬가 복수의 칼을 갈고 있다"
+          },
+          {
+            "id": "mission_failed",
+            "text": "임무에 실패했다"
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "임무를 달성했다"
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "밀교회의 의식을 방해했다"
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "심해인의 음모를 저지했다"
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "조사자들이 이하 느틀레이의 지도를 갖고 있다"
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "조사자들이 이하 느틀레이의 열쇠를 갖고 있다"
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "조사자들이 동튼 후에야 송골매 곶에 도착했다"
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "조사자들이 동트기 전에 송골매 곶에 도착했다"
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "심해의 보화는 영원히 소실되었으나…그 대가는 무엇일까요?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "심해의 보화는 영원히 소실되었다"
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "악마의 암초에 도사린 공포가 죽었다"
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "악마의 암초에 도사린 공포가 아직 살아 있다"
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "밀물이 더욱 높이 차올랐다"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "제이덕 엘렌"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "브라이언 버넘"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "로버트 프렌들리"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "오테라 길먼"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "워터 가에 있는 집"
+          },
+          {
+            "id": "accuse_little",
+            "text": "조이스 리틀"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "바나버스 마쉬"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "뉴 처치 그린"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "데이곤 밀교회당"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "인스머스 감옥"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "쏘본 골목"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "해안 빈민가"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "조 사전트와의 거래"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "이어진 실마리"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "탈옥"
+          },
+          {
+            "id": "an_intervention",
+            "text": "간섭"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "무시무시한 악마와의 전투"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "무어 선장과의 대화"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "함께 수색하기로 결정"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "신비한 유물을 발견함"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "기묘한 우상을 발견함"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "불경스러운 망토를 발견함"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "비의적인 사교집단과의 조우"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "무시무시한 진실"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "“심해인”의 생활사"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "토머스 도슨과의 만남"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "씁쓸한 배신"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "워터 가에 있는 집"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "인스머스 감옥"
+          },
+          {
+            "id": "new_church_green",
+            "text": "뉴 처치 그린"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "데이곤 밀교회당"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "쏘본 골목"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "해안 빈민가"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "제이덕 엘렌"
+          },
+          {
+            "id": "burnham",
+            "text": "브라이언 버넘"
+          },
+          {
+            "id": "friendly",
+            "text": "로버트 프렌들리"
+          },
+          {
+            "id": "gilman",
+            "text": "오테라 길먼"
+          },
+          {
+            "id": "little",
+            "text": "조이스 리틀"
+          },
+          {
+            "id": "marsh",
+            "text": "바나버스 마쉬"
+          }
+        ]
+      }
+    ],
+    "supplies": []
   },
   {
     "campaignId": "side",
@@ -6748,6 +7149,338 @@
           },
           {
             "id": "zdm_side_story",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zhod",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "ancestors_approve_of_your_actions",
+            "text": "the ancestors approve of your actions."
+          },
+          {
+            "id": "captain_marlow_is_alive",
+            "text": "Captain Marlow is alive."
+          },
+          {
+            "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
+            "text": "Captain Marlow is in the hands of the ancestors."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Avatar of Darkness freely walks the Earth."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Darkness has descended on the Congo."
+          },
+          {
+            "id": "darkness_stared_back_at_you",
+            "text": "the Darkness stared back at you."
+          },
+          {
+            "id": "deciphered_the_journal_of_the_mad_russian",
+            "text": "you deciphered the journal of a mad Russian."
+          },
+          {
+            "id": "director_does_not_trust_you",
+            "text": "the Director does not trust you."
+          },
+          {
+            "id": "director_is_conspiring_against_kurtz",
+            "text": "the Director is conspiring against Kurtz."
+          },
+          {
+            "id": "drove_off_a_tribe_of_darkness_worshippers",
+            "text": "you drove off a tribe of Darkness worshippers."
+          },
+          {
+            "id": "extracted_a_confession_from_kurtzs_warrior",
+            "text": "you extracted a confession from Kurtz's Warrior."
+          },
+          {
+            "id": "found_a_strange_encrypted_book",
+            "text": "you found a strange encrypted book."
+          },
+          {
+            "id": "found_a_strange_obsidian_status",
+            "text": "you found a strange obsidian statue."
+          },
+          {
+            "id": "found_kurtzs_personal_belongings",
+            "text": "you found Kurtz's personal belongings."
+          },
+          {
+            "id": "have_a_prisoner_on_board",
+            "text": "you have a prisoner on board."
+          },
+          {
+            "id": "have_injured_the_white_ape",
+            "text": "you have injured the White Ape."
+          },
+          {
+            "id": "know_about_miss_promise",
+            "text": "you know about Miss Promise."
+          },
+          {
+            "id": "know_how_to_imprison_the_darkness",
+            "text": "you know how to imprison the Darkness."
+          },
+          {
+            "id": "made_a_promise_to_kurtz",
+            "text": "you made a promise to Kurtz."
+          },
+          {
+            "id": "prisoner_died",
+            "text": "the prisoner died while trying to escape"
+          },
+          {
+            "id": "prisoner_escaped",
+            "text": "the prisoner escaped"
+          },
+          {
+            "id": "questioned_kurtzs_warrior",
+            "text": "you questioned Kurtz's Warrior."
+          },
+          {
+            "id": "returned_from_the_heart_of_darkness",
+            "text": "the investigators have returned from the heart of darkness."
+          },
+          {
+            "id": "saw_a_dark_shadow_in_the_flames",
+            "text": "you saw a dark shadow in the flames."
+          },
+          {
+            "id": "solved_the_mystery_of_freslevens_murder",
+            "text": "you solved the mystery of Fresleven's murder."
+          },
+          {
+            "id": "spent_a_long_time_going_up_the_congo_river",
+            "text": "you spent a long time going up the Congo river."
+          },
+          {
+            "id": "stared_into_the_darkness",
+            "text": "you have stared into the Darkness."
+          },
+          {
+            "id": "the_ancestors_are_proud_of_you",
+            "text": "the Ancestors are proud of you."
+          },
+          {
+            "id": "the_ancestors_are_watching_you",
+            "text": "the Ancestors are watching you."
+          },
+          {
+            "id": "told_about_the_area_around_the_inner_station",
+            "text": "you were told about the area around the Inner Station."
+          },
+          {
+            "id": "treated_at_the_central_stations_infirmary",
+            "text": "you were treated at the Central Station's infirmary."
+          },
+          {
+            "id": "tribe_of_the_black_hand_has_left_their_lands",
+            "text": "the Tribe of the Black Hand has left their lands."
+          },
+          {
+            "id": "unable_to_bring_kurtz_back_alive",
+            "text": "the investigators were unable to bring Kurtz back alive."
+          },
+          {
+            "id": "went_up_the_congo_river",
+            "text": "you went up the Congo river."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "zhd_darkness_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_17",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_18",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_19",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_20",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_21",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhod_avatar_agenda_6a",
             "text": "dummy"
           }
         ]

@@ -51,6 +51,7 @@ import {
   LocationCondition,
   ScarletKeyCondition,
   ScarletKeyCountCondition,
+  CampaignDataStandaloneCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -640,6 +641,9 @@ export function campaignDataConditionResult(
         condition.options
       );
     }
+    case 'standalone': {
+      return campaignDataStandaloneConditionResult(condition, campaignLog);
+    }
     case 'chaos_bag': {
       return campaignDataChaosBagConditionResult(condition, campaignLog);
     }
@@ -648,6 +652,12 @@ export function campaignDataConditionResult(
   }
 }
 
+export function campaignDataStandaloneConditionResult(condition: CampaignDataStandaloneCondition, campaignLog: GuidedCampaignLog): BinaryResult {
+  return binaryConditionResult(
+    campaignLog.campaignData.standalone,
+    condition.options,
+  );
+}
 export function multiConditionResult(
   condition: MultiCondition,
   campaignLog: GuidedCampaignLog
@@ -675,6 +685,8 @@ export function multiConditionResult(
             case 'next_scenario':
             case 'investigator':
             case 'cycle':
+            case 'standalone':
+            case 'difficulty':
               return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }

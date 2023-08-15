@@ -146,7 +146,7 @@ function DeckListRowDetails({
       { !!deck.deck.problem && (
         <DetailLine
           icon={<WarningIcon size={20} />}
-          text={[getProblemMessage({ reason: deck.deck.problem })]}
+          text={[getProblemMessage({ reason: deck.deck.problem, invalidCards: [] })]}
           last
         />
       ) }

@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { DragEndParams, NestableDraggableFlatList, RenderItemParams, ScaleDecorator } from 'react-native-draggable-flatlist';
-import { DragListRenderItemInfo } from 'react-native-draglist';
 
 export type DraggableListRenderInfo<T> = RenderItemParams<T>
 interface Props<T> {

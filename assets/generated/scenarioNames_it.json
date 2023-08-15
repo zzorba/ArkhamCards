@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Against the Wendigo"
   },
@@ -325,11 +329,11 @@
   },
   {
     "id": "heart_of_the_elders_part_1",
-    "name": "Heart of the Elders, Part 1"
+    "name": "Cuore degli Antichi, Parte 1"
   },
   {
     "id": "heart_of_the_elders_part_2",
-    "name": "Heart of the Elders, Part 2"
+    "name": "Cuore degli Antichi, Parte 2"
   },
   {
     "id": "hidden_truths",
@@ -461,7 +465,7 @@
   },
   {
     "id": "meddling_of_meowlathotep",
-    "name": "The Meddling of Meowlathotep"
+    "name": "Lo Zampino di Miaolathotep"
   },
   {
     "id": "mission_briefing",
@@ -544,6 +548,10 @@
     "name": "Notte Tranquilla"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "Ritorno a… Lo Spettro della Verità"
   },
@@ -568,6 +576,10 @@
     "name": "Ritorno a… Cala il Sipario"
   },
   {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
+  },
+  {
     "id": "return_to_dim_carcosa",
     "name": "Ritorno a… La Cupa Carcosa"
   },
@@ -589,15 +601,27 @@
   },
   {
     "id": "return_to_heart_of_the_elders_part_1",
-    "name": "Return to Heart of the Elders, Part 1"
+    "name": "Ritorno a... Cuore degli Antichi, Parte 1"
   },
   {
     "id": "return_to_heart_of_the_elders_part_2",
-    "name": "Return to Heart of the Elders, Part 2"
+    "name": "Ritorno a... Cuore degli Antichi, Parte 2"
+  },
+  {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
   },
   {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Ritorno a… Nelle Grinfie del Caos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +660,10 @@
     "name": "Ritorno a… Il Banco Vince Sempre"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Ritorno a… L'Ultimo Re"
   },
@@ -652,6 +680,10 @@
     "name": "Ritorno a… La Maschera Pallida"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Ritorno a… Il Nome Segreto"
   },
@@ -662,6 +694,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Ritorno a… La Foresta Inviolata"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -773,7 +809,7 @@
   },
   {
     "id": "tfa_interlude2",
-    "name": "Expedition's End"
+    "name": "Fine della Spedizione"
   },
   {
     "id": "tfa_interlude3",
@@ -798,6 +834,10 @@
   {
     "id": "the_attack",
     "name": "The Attack"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
   },
   {
     "id": "the_black_cat",
@@ -992,6 +1032,10 @@
     "name": "Alle Vette Proibite"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Special Delivery"
   },
@@ -1066,5 +1110,21 @@
   {
     "id": "ybor_city",
     "name": "The Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Epilogo"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prologo"
   }
 ]

@@ -528,6 +528,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               'move': c('action').t`Move`,
               'evade': c('action').t`Evade`,
               'resource': c('action').t`Resource`,
+              'parley': c('parley').t`Parley`,
             }}
           />
           <FilterChooserButton

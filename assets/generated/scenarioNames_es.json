@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Contra el Wendigo"
   },
@@ -544,6 +548,10 @@
     "name": "Noche reposada"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "Regreso a El Fantasma de la Verdad"
   },
@@ -566,6 +574,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "Regreso a Se cierra el telón"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +608,20 @@
     "name": "Regreso a El corazón de los ancianos, segunda parte"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Regreso a En las garras del caos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +660,10 @@
     "name": "Regreso a La casa siempre gana"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Regreso a El Último Rey"
   },
@@ -652,6 +680,10 @@
     "name": "Regreso a La máscara pálida"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Regreso a El nombre secreto"
   },
@@ -662,6 +694,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Regreso a Naturaleza salvaje"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -798,6 +834,10 @@
   {
     "id": "the_attack",
     "name": "El ataque"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
   },
   {
     "id": "the_black_cat",
@@ -992,6 +1032,10 @@
     "name": "Hacia los picos prohibidos"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Entrega especial"
   },
@@ -1066,5 +1110,21 @@
   {
     "id": "ybor_city",
     "name": "El refugio"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Epílogo"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prólogo"
   }
 ]

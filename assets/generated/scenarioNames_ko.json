@@ -28,12 +28,16 @@
     "name": "공포의 바다 건너"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "웬디고에 맞서다"
   },
   {
     "id": "alexandria",
-    "name": "Dogs of War"
+    "name": "전쟁의 사냥개"
   },
   {
     "id": "all_or_nothing",
@@ -41,7 +45,7 @@
   },
   {
     "id": "anchorage",
-    "name": "On Thin Ice"
+    "name": "살얼음판"
   },
   {
     "id": "arkham",
@@ -93,7 +97,7 @@
   },
   {
     "id": "bermuda_triangle",
-    "name": "Without a Trace"
+    "name": "흔적도 없이"
   },
   {
     "id": "beyond_the_gates_of_sleep",
@@ -125,7 +129,7 @@
   },
   {
     "id": "buenos_aires",
-    "name": "Sanguine Shadows"
+    "name": "핏빛 그림자"
   },
   {
     "id": "by_the_book",
@@ -321,7 +325,7 @@
   },
   {
     "id": "havana",
-    "name": "Dancing Mad"
+    "name": "춤추는 광기"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -361,15 +365,15 @@
   },
   {
     "id": "ice_and_death_part_1",
-    "name": "얼음과 죽음, 1부"
+    "name": "얼음과 죽음(1부)"
   },
   {
     "id": "ice_and_death_part_2",
-    "name": "얼음과 죽음, 2부"
+    "name": "얼음과 죽음(2부)"
   },
   {
     "id": "ice_and_death_part_3",
-    "name": "얼음과 죽음, 3부"
+    "name": "얼음과 죽음(3부)"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -401,7 +405,7 @@
   },
   {
     "id": "istanbul",
-    "name": "Dealings in the Dark"
+    "name": "어둠 속의 거래"
   },
   {
     "id": "jennys_choice",
@@ -417,7 +421,7 @@
   },
   {
     "id": "kuala_lampur",
-    "name": "Shades of Suffering"
+    "name": "비통의 그늘"
   },
   {
     "id": "lagos",
@@ -457,7 +461,7 @@
   },
   {
     "id": "marrakesh",
-    "name": "Dead Heat"
+    "name": "죽음과 혹서"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -544,6 +548,10 @@
     "name": "평온한 밤"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "돌아온 진실의 망령"
   },
@@ -566,6 +574,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "돌아온 커튼콜"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +608,20 @@
     "name": "돌아온 고대 문명의 심장부(2부)"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "돌아온 혼돈의 손아귀에서"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +660,10 @@
     "name": "돌아온 도박장은 언제나 이긴다"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "돌아온 마지막 왕"
   },
@@ -652,6 +680,10 @@
     "name": "돌아온 창백한 가면"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "돌아온 비밀 이름"
   },
@@ -662,6 +694,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "돌아온 길들지 않은 야생"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -697,7 +733,7 @@
   },
   {
     "id": "riddles_and_rain",
-    "name": "Riddles and Rain"
+    "name": "비와 수수께끼"
   },
   {
     "id": "rio_de_janiero",
@@ -800,6 +836,10 @@
     "name": "습격"
   },
   {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
+  },
+  {
     "id": "the_black_cat",
     "name": "검은 고양이"
   },
@@ -833,7 +873,7 @@
   },
   {
     "id": "the_disapperance",
-    "name": "The Disappearance"
+    "name": "실종"
   },
   {
     "id": "the_dodo",
@@ -873,11 +913,11 @@
   },
   {
     "id": "the_heart_of_madness_part_1",
-    "name": "광기의 심장부, 1부"
+    "name": "광기의 심장부(1부)"
   },
   {
     "id": "the_heart_of_madness_part_2",
-    "name": "광기의 심장부, 2부"
+    "name": "광기의 심장부(2부)"
   },
   {
     "id": "the_house_always_wins",
@@ -992,6 +1032,10 @@
     "name": "금단의 봉우리를 향해"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Special Delivery"
   },
@@ -1009,7 +1053,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "여행하는 동안..."
   },
   {
     "id": "tsk_epilogue",
@@ -1017,7 +1061,7 @@
   },
   {
     "id": "tunguska",
-    "name": "Congress of the Keys"
+    "name": "열쇠 의회"
   },
   {
     "id": "turn_back_time",
@@ -1066,5 +1110,21 @@
   {
     "id": "ybor_city",
     "name": "The Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "서막"
   }
 ]

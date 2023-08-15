@@ -1,4 +1,4 @@
-import { findBestAvailableLanguage } from 'react-native-localize';
+import { findBestLanguageTag } from 'react-native-localize';
 
 export const ALL_LANGUAGES = [
   'es',
@@ -24,7 +24,7 @@ export const AUDIO_LANGUAGES = [
 ]
 
 export function getSystemLanguage() {
-  const systemLang = findBestAvailableLanguage(ALL_LANGUAGES);
+  const systemLang = findBestLanguageTag(ALL_LANGUAGES);
   if (systemLang) {
     return systemLang.languageTag;
   }

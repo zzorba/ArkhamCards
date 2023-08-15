@@ -5,6 +5,7 @@ import {
   find,
   findKey,
   filter,
+  map,
   minBy,
   indexOf,
   sumBy,
@@ -12,10 +13,12 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
+import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 
+const THE_INSANE_TAG = 'the_insane';
 
 interface SpecialCardCounts {
   ancestralKnowledge: number;
@@ -37,6 +40,13 @@ interface DeckOptionsCount {
   };
 }
 
+interface InsaneData {
+  traits: { [trait: string]: number | undefined };
+  weaknessCount: number;
+}
+
+const SIGNATURE_CARD_OPTION = new DeckOption();
+
 export default class DeckValidation {
   investigator: Card;
   slots: Slots;
@@ -45,6 +55,8 @@ export default class DeckValidation {
   deck_options_counts: DeckOptionsCount[] = [];
   all_options: boolean;
   all_customizations: boolean;
+  random_deck: boolean;
+  insane_data: InsaneData | undefined;
 
   /**
    *
@@ -57,14 +69,16 @@ export default class DeckValidation {
     investigator: Card,
     slots: Slots,
     meta: DeckMeta | undefined,
-    { all_options, all_customizations }: { all_options?: boolean; all_customizations?: boolean } = {}
+    { all_options, all_customizations, random_deck }: { all_options?: boolean; all_customizations?: boolean, random_deck?: boolean } = {}
   ) {
     this.investigator = investigator;
     this.slots = slots;
     this.meta = meta;
     this.all_options = all_options || false;
     this.all_customizations = all_customizations || false;
+    this.random_deck = random_deck || false;
   }
+
 
   specialCardCounts(): SpecialCardCounts {
     return {
@@ -115,10 +129,38 @@ export default class DeckValidation {
     return draw_deck.length;
   }
 
+  getTraits(card: Card): string[] {
+    return filter(map(card.real_traits?.split('.') ?? [], t => t.trim()), t => !!t);
+  }
+
+  getInsaneData(cards: Card[]): InsaneData {
+    const result: { [trait: string]: number | undefined } = {};
+    let weaknessCount = 0;
+    forEach(cards, c => {
+      if (c.subtype_code) {
+        weaknessCount++;
+        // Weaknesses don't count
+        return;
+      }
+      weaknessCount += (BONDED_WEAKNESS_COUNTS[c.code] ?? 0);
+
+      if (!c.encounter_code) {
+        // Story cards and weakness cards don't count for traits.
+        forEach(this.getTraits(c), t => {
+          result[t] = (result[t] ?? 0) + 1;
+        });
+      }
+    });
+    return {
+      traits: result,
+      weaknessCount: weaknessCount + (this.random_deck ? 5 : 0),
+    };
+  }
+
   getCopiesAndDeckLimit(cards: Card[]) {
     const specialCards = this.specialCardCounts();
     return mapValues(
-      groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
+      groupBy(cards, card => card ? `${card.real_name}${card.encounter_code ? card.code : ''}${card.subtype_code === 'basicweakness' ? card.code : ''}${card.has_restrictions ? card.code : ''}` : 'Unknown Card'),
       group => {
         const card = group[0];
         if (!(
@@ -147,48 +189,68 @@ export default class DeckValidation {
   }
 
   getProblem(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblem | null {
-    const reason = this.getProblemHelper(cards, ignoreInvestigatorRequirements);
-    if (!reason) {
+    const problem = this.getProblemHelper(cards, ignoreInvestigatorRequirements);
+    if (!problem) {
       return null;
     }
     return {
-      reason,
+      reason: problem.reason,
+      invalidCards: problem.invalidCards,
       problems: [...this.problem_list],
     };
   }
 
-  getProblemHelper(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblemType | null {
+  getProblemHelper(cards: Card[], ignoreInvestigatorRequirements?: boolean): null | {
+    reason: DeckProblemType;
+    invalidCards: Card[],
+  } {
     // get investigator data
     var card = this.investigator;
+    if (card.code === THE_INSANE_CODE) {
+      this.insane_data = this.getInsaneData(cards);
+    }
+
+    const size = this.getDeckSize();
+
+    // too many copies of one card
+    const copiesAndDeckLimit = this.getCopiesAndDeckLimit(cards);
+    const invalidCards = this.getInvalidCards(cards);
+
     // store list of all problems
     this.problem_list = [];
     if (card && card.deck_requirements && !ignoreInvestigatorRequirements){
       //console.log(card.deck_requirements);
       // must have the required cards
       if (card.deck_requirements.card) {
-        if (find(card.deck_requirements.card, req =>
+        const failedReq = find(card.deck_requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
           !find(cards, theCard => theCard.alternate_required_code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
-        )) {
-          return INVESTIGATOR_PROBLEM;
+        );
+        if (failedReq) {
+          return {
+            reason: INVESTIGATOR_PROBLEM,
+            invalidCards,
+          };
         }
       }
     }
-    const size = this.getDeckSize();
 
-    // too many copies of one card
-    const copiesAndDeckLimit = this.getCopiesAndDeckLimit(cards);
     if(findKey(
         copiesAndDeckLimit,
         value => value.nb_copies > value.deck_limit) != null) {
-      return TOO_MANY_COPIES;
+      return {
+        reason: TOO_MANY_COPIES,
+        invalidCards,
+      };
     }
 
     // no invalid card
-    const invalidCards = this.getInvalidCards(cards);
     if (invalidCards.length > 0) {
-      return INVALID_CARDS;
+      return {
+        reason: INVALID_CARDS,
+        invalidCards,
+      };
     }
 
     const deck_options = this.deckOptions();
@@ -203,7 +265,11 @@ export default class DeckValidation {
           if (error) {
             this.problem_list.push(error);
           }
-          return INVESTIGATOR_PROBLEM;
+
+          return {
+            reason: INVESTIGATOR_PROBLEM,
+            invalidCards,
+          };
         }
       }
       const atleast = option.atleast;
@@ -220,7 +286,10 @@ export default class DeckValidation {
             if (error){
               this.problem_list.push(error);
             }
-            return INVESTIGATOR_PROBLEM;
+            return {
+              reason: INVESTIGATOR_PROBLEM,
+              invalidCards,
+            };
           }
         } else if (atleast.types && atleast.min) {
           var type_count = 0;
@@ -234,7 +303,11 @@ export default class DeckValidation {
             if (error){
               this.problem_list.push(error);
             }
-            return INVESTIGATOR_PROBLEM;
+
+            return {
+              reason: INVESTIGATOR_PROBLEM,
+              invalidCards,
+            };
           }
         }
       }
@@ -245,14 +318,20 @@ export default class DeckValidation {
     if (drawDeckSize < size) {
       const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Not enough cards (${drawDeckSize} / ${size}).`);
-      return TOO_FEW_CARDS;
+      return {
+        reason: TOO_FEW_CARDS,
+        invalidCards,
+      };
     }
 
     // at least 60 others cards
     if (drawDeckSize > size) {
       const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Too many cards (${drawDeckSize} / ${size}).`);
-      return TOO_MANY_CARDS;
+      return {
+        reason: TOO_MANY_CARDS,
+        invalidCards,
+      };
     }
     return null;
   }
@@ -301,7 +380,7 @@ export default class DeckValidation {
 
   isCardLimited(card: Card): boolean {
     const option = this.matchingDeckOption(card, false);
-    return !!(option && option.limit && !option.dynamic);
+    return !!(option && option.limit && !option.dynamic && !option.not);
   }
 
   deckOptions(): DeckOption[] {
@@ -338,9 +417,11 @@ export default class DeckValidation {
         })
       );
     }
-    if (this.investigator &&
-        this.investigator.deck_options &&
-        this.investigator.deck_options.length) {
+    if (
+      this.investigator &&
+      this.investigator.deck_options &&
+      this.investigator.deck_options.length
+    ) {
       forEach(this.investigator.deck_options, deck_option => {
         if (deck_option.option_select) {
           const option = this.meta && this.meta.option_selected ? find(deck_option.option_select, o => o.id === this.meta?.option_selected) : undefined;
@@ -356,6 +437,11 @@ export default class DeckValidation {
               deck_options.push(DeckOption.parse(deck_option.option_select[0]));
             }
           }
+        } else if (this.insane_data && find(deck_option.tag, t => t === THE_INSANE_TAG)) {
+          deck_options.push({
+            ...deck_option,
+            limit: this.insane_data.weaknessCount,
+          });
         } else {
           deck_options.push(deck_option);
         }
@@ -380,7 +466,11 @@ export default class DeckValidation {
     card: Card,
     processDeckCounts: boolean
   ): boolean {
-    return !!this.matchingDeckOption(card, processDeckCounts) || (card.code === BODY_OF_A_YITHIAN);
+    const matchingOption = this.matchingDeckOption(card, processDeckCounts) ;
+    if (matchingOption?.not) {
+      return false;
+    }
+    return !!matchingOption || (card.code === BODY_OF_A_YITHIAN);
   }
 
   private matchingDeckOption(
@@ -398,9 +488,10 @@ export default class DeckValidation {
     }
 
     // reject cards restricted
-    if (card.restrictions_all_investigators &&
-        card.restrictions_all_investigators &&
-        !find(card.restrictions_all_investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
+    if (card.restrictions_all_investigators) {
+      if (find(card.restrictions_all_investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
+        return SIGNATURE_CARD_OPTION;
+      }
       return undefined;
     }
 
@@ -413,8 +504,14 @@ export default class DeckValidation {
         if (DeckOption.deckSizeOnly(option)) {
           continue;
         }
-        if (option.restrictions != undefined) {
+        if (option.restrictions !== undefined) {
           if (option.restrictions != !!card.restrictions_investigator) {
+            continue;
+          }
+        }
+
+        if (option.permanent !== undefined && option.permanent !== null) {
+          if (option.permanent !== (card.permanent ?? false)) {
             continue;
           }
         }
@@ -519,7 +616,7 @@ export default class DeckValidation {
 
         if (option.tag && option.tag.length) {
           var tag_valid = false;
-          for(var j = 0; j < option.tag.length; j++){
+          for(var j = 0; j < option.tag.length; j++) {
             var tag = option.tag[j];
             if (find(card.tags, t => t === tag)) {
               tag_valid = true;
@@ -529,6 +626,33 @@ export default class DeckValidation {
               if (find(card.customization_options, o => !!find(o.tags, t => t === tag))){
                 tag_valid = true;
               }
+            }
+            if (!tag_valid && tag === THE_INSANE_TAG) {
+              if (!this.insane_data) {
+                // Shouldn't happen, but hard to guarantee.
+                continue;
+              }
+              const traits = this.getTraits(card);
+              if (!traits.length) {
+                // No traits, so it can't fulfill the rule.
+                continue;
+              }
+              for(var k = 0; k < traits.length; k++) {
+                const trait = traits[k];
+                if ((this.insane_data.traits[trait] ?? 0) <= 2) {
+                  // There is a trait with less than 2 copies in the deck, so it works!
+                  tag_valid = true;
+                  break;
+                }
+              }
+              if (tag_valid) {
+
+              }
+              if (this.deck_options_counts[i].limit >= this.insane_data.weaknessCount) {
+                // Out of crazy slots;
+                continue;
+              }
+
             }
           }
           if (!tag_valid) {
@@ -552,7 +676,7 @@ export default class DeckValidation {
 
         if (option.not) {
           // Failed a not condition, that's final.
-          return undefined;
+          return option;
         } else {
           if (processDeckCounts && option.atleast && card.faction_code) {
             if (option.atleast.factions) {

@@ -15,6 +15,7 @@ import {
   UpdateCardSortAction,
   SortType,
   DEFAULT_SORT,
+  CardScreenType,
 } from '@actions/types';
 import { ThunkAction } from 'redux-thunk';
 import { FilterState } from '@lib/filters';
@@ -35,13 +36,15 @@ export function toggleMythosMode(
 }
 
 export function updateCardSorts(
-  id: string,
-  sorts: SortType[]
+  sorts: SortType[],
+  cardScreen: CardScreenType,
+  mythosMode: boolean
 ): UpdateCardSortAction {
   return {
     type: UPDATE_CARD_SORT,
-    id,
     sorts,
+    cardScreen,
+    mythosMode,
   };
 }
 
@@ -93,12 +96,10 @@ export function addDbFilterSet(
 ): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
   return async(dispatch, getState) => {
     const [filters, cardData] = await calculateDefaultDbFilterState(db, query, tabooSetId);
-    const defaultSort: SortType[] = getState().settings.cardSort || DEFAULT_SORT;
     const filterAction: AddFilterSetAction = {
       type: ADD_FILTER_SET,
       id,
       filters,
-      sorts: sort ? [sort] : defaultSort,
       mythosToggle,
       cardData,
     };

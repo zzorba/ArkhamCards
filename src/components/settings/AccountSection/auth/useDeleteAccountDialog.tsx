@@ -31,7 +31,7 @@ export default function useDeleteAccountDialog(
       return [(
         <>
           <CardTextComponent text={t`Loading account details...`} />
-          <ArkhamLoadingSpinner autoPlay loop />
+          <ArkhamLoadingSpinner autoPlay loop size="large" />
         </>
       ), false];
     }
