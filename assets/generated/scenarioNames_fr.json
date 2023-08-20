@@ -93,7 +93,7 @@
   },
   {
     "id": "bermuda",
-    "name": "Le grand Œuvre"
+    "name": "Le Grand Œuvre"
   },
   {
     "id": "bermuda_triangle",
@@ -116,6 +116,10 @@
     "name": "Le Dévoreur de Toute Chose"
   },
   {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
     "id": "blood_from_stones",
     "name": "Blood From Stones"
   },
@@ -125,7 +129,7 @@
   },
   {
     "id": "bombay",
-    "name": "Etrange Architecture"
+    "name": "Étrange Architecture"
   },
   {
     "id": "buenos_aires",
@@ -481,7 +485,7 @@
   },
   {
     "id": "murder_at_the_excelsior_hotel",
-    "name": "Meutre à l'Hôtel Excelsior"
+    "name": "Meurtre à l'Hôtel Excelsior"
   },
   {
     "id": "nairobi",
@@ -769,7 +773,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Etrange Architecture"
+    "name": "Étrange Architecture"
   },
   {
     "id": "strange_moons",

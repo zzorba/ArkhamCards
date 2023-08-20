@@ -107,9 +107,9 @@ export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' |
     (state: AppState) => state.deckEdits.editting,
     (state: AppState) => state.deckEdits.edits,
     (state: AppState, uuid: string) => uuid,
-    (state: AppState, uuid: string, mode?: 'side' | 'ignore') => mode,
-
-    (editting, edits, uuid, mode) => {
+    (state: AppState, uuid: string, code: string, mode?: 'side' | 'ignore') => code,
+    (state: AppState, uuid: string, code: string, mode?: 'side' | 'ignore') => mode,
+    (editting, edits, uuid, code, mode): [number, number] => {
       if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
         return [0, 0];
       }
@@ -128,7 +128,7 @@ export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' |
       ];
     }
   ), []);
-  return useSelector((state: AppState) => selector(state, uuid, mode));
+  return useSelector((state: AppState) => selector(state, uuid, code, mode));
 }
 
 export function useDeckEdits(

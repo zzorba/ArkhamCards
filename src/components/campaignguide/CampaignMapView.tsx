@@ -1068,6 +1068,34 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       }
     );
   }, [campaignMap.locations, props.currentLocation, unlockedLocations, travelDistances, visited]);
+/*
+  code to generate all the connections
+  useEffect(() => {
+    forEach(campaignMap.locations, currentLocation => {
+      if (currentLocation) {
+        const travelDistances = computeShortestPaths(currentLocation.id, campaignMap.locations);
+        const sortedLocations = sortBy(
+          sortBy(
+            sortBy(
+              filter(campaignMap.locations, location => location.id !== currentLocation.id),
+              location => location.name
+            ),
+            location => travelDistances?.[location.id]?.time || 1
+          ),
+          location => {
+            return `dist_${travelDistances?.[location.id]?.time || 1}`;
+          }
+        );
+        console.log(currentLocation?.name);
+        console.log('---------------');
+        forEach(sortedLocations, (loc) => {
+          console.log(`${travelDistances[loc.id]?.time} to ${loc.name}`);
+        });
+        console.log('\n');
+      }
+    });
+  }, []);
+*/
 
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
