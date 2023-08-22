@@ -50,6 +50,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "blob_that_ate_everything_else"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "by_the_book"
   },
   {
