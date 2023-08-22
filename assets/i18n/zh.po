@@ -252,7 +252,7 @@ msgid "Spoiler Settings"
 msgstr "劇透設定"
 
 msgid "Elite"
-msgstr "菁英"
+msgstr "精英"
 
 msgid "Hunter"
 msgstr "獵手"
@@ -270,7 +270,7 @@ msgid "Massive"
 msgstr "龐大"
 
 msgid "Non-Elite"
-msgstr "非菁英"
+msgstr "非精英"
 
 msgid "Non-Hunter"
 msgstr "非獵手"
@@ -789,19 +789,19 @@ msgstr "混亂袋"
 msgid "Adjust Weakness Set"
 msgstr "調整弱點牌庫"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "本牌組包含這些基礎弱點"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "本牌組包含此基礎弱點"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "是否將這些弱點卡從本劇本模式之基礎弱點牌庫中移除？"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "是否將此弱點卡從本劇本模式之基礎弱點牌庫中移除？"
 
@@ -1438,7 +1438,7 @@ msgid "Seal"
 msgstr "封印"
 
 msgid "Myriad"
-msgstr "無數"
+msgstr "多重"
 
 msgid "Return to The Path to Carcosa"
 msgstr "重返卡爾克薩之路"
@@ -4270,7 +4270,6 @@ msgstr "劇本上傳中"
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "This deck is owned by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app."
 msgstr ""
@@ -4529,7 +4528,6 @@ msgstr "劇本將會保存在本機裝置，你可以選擇稍後再上傳"
 msgid "(${ count } card)"
 msgid_plural "(${ count } cards)"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Collection overlap"
 msgstr ""
@@ -5095,7 +5093,6 @@ msgstr ""
 msgid "The friend's campaign that you have participated in will have your decks removed:"
 msgid_plural "The ${ joinedCampaignCount } campaigns from friends that you have participated in will have your decks removed:"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "I understand that all data will be deleted permanently."
 msgstr "我瞭解所有資料將被永久地刪除。"
@@ -5151,12 +5148,10 @@ msgstr "緋紅密鑰"
 msgid "Name ${ quantity } card"
 msgid_plural "Name ${ quantity } cards"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Named card"
 msgid_plural "Named cards"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "In deck"
 msgstr ""
@@ -5181,7 +5176,6 @@ msgstr ""
 msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
@@ -5290,7 +5284,6 @@ msgstr ""
 msgid "${ remainingFreeCards } additional level 0 card may be added to the deck without spending experience."
 msgid_plural "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  without spending experience."
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Difficulty override"
 msgstr ""
@@ -5321,7 +5314,6 @@ msgstr ""
 msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
 msgstr ""
@@ -5599,7 +5591,6 @@ msgstr ""
 msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
 msgstr[0] ""
-msgstr[1] ""
 
 msgid "Search english card names"
 msgstr ""
@@ -5622,7 +5613,6 @@ msgstr ""
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
 msgstr[0] ""
-msgstr[1] ""
 
 #, javascript-format
 msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
@@ -7523,7 +7513,6 @@ msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
 msgstr[0] ""
-msgstr[1] ""
 
 msgctxt "tags"
 msgid "Add"
