@@ -233,6 +233,23 @@ function DeckDetailView({
   } = parsedDeckObj;
   const tabooSet = useTabooSet(tabooSetId);
 
+  const [cardsMissingMessage, setCardsMissingMessage] = useState(false);
+  useEffect(() => {
+    if (!cardsMissing) {
+      setCardsMissingMessage(false);
+    } else {
+      let canceled = false;
+      setTimeout(() => {
+        if (!canceled) {
+          setCardsMissingMessage(true);
+        }
+      }, 3000);
+      return () => {
+        canceled = true;
+      };
+    }
+  }, [cardsMissing, cardsMissingMessage]);
+
   const deckId = useMemo(() => deck ? getDeckId(deck) : id, [deck, id]);
   const { savingDialog, saveEdits, handleBackPress, addedBasicWeaknesses, hasPendingEdits, mode } = useSaveDialog(parsedDeckObj);
   const [
@@ -1301,7 +1318,7 @@ function DeckDetailView({
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
         <LoadingSpinner large inline />
-        { cardsMissing && (
+        { cardsMissingMessage && (
           <View style={space.paddingSideM}>
             <Text style={[typography.text, space.paddingBottomS]}>
               {t`This deck contains new cards that the app hasn't seen before.\n\nPlease go to the 'Settings' tab and choose 'Check ArkhamDB for updates.'\n\nWhen it is finished, you can try to load the deck again.`}
