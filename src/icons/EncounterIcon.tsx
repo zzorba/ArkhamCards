@@ -277,6 +277,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'red_tide_rising':
         return this.standaloneIcon('red_tide_rising', size, color);
       case 'parallel':
+      case 'otr':
+      case 'on_the_road_again':
         return this.cardIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
