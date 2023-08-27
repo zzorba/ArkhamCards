@@ -768,8 +768,9 @@ export type campaignFieldPolicy = {
 	uuid?: FieldPolicy<any> | FieldReadFunction<any>,
 	weaknessSet?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_accessKeySpecifier = ('campaign_id' | 'hidden' | 'id' | 'user' | 'user_id' | campaign_accessKeySpecifier)[];
+export type campaign_accessKeySpecifier = ('campaign' | 'campaign_id' | 'hidden' | 'id' | 'user' | 'user_id' | campaign_accessKeySpecifier)[];
 export type campaign_accessFieldPolicy = {
+	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	hidden?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2089,7 +2090,7 @@ export type card_variance_fieldsFieldPolicy = {
 	stage?: FieldPolicy<any> | FieldReadFunction<any>,
 	victory?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type chaos_bag_resultKeySpecifier = ('bless' | 'campaign' | 'created_at' | 'curse' | 'difficulty' | 'drawn' | 'id' | 'sealed' | 'tarot' | 'tarot_mode' | 'totalDrawn' | 'updated_at' | chaos_bag_resultKeySpecifier)[];
+export type chaos_bag_resultKeySpecifier = ('bless' | 'campaign' | 'created_at' | 'curse' | 'difficulty' | 'drawn' | 'history' | 'id' | 'sealed' | 'tarot' | 'tarot_mode' | 'totalDrawn' | 'updated_at' | chaos_bag_resultKeySpecifier)[];
 export type chaos_bag_resultFieldPolicy = {
 	bless?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -2097,6 +2098,7 @@ export type chaos_bag_resultFieldPolicy = {
 	curse?: FieldPolicy<any> | FieldReadFunction<any>,
 	difficulty?: FieldPolicy<any> | FieldReadFunction<any>,
 	drawn?: FieldPolicy<any> | FieldReadFunction<any>,
+	history?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	sealed?: FieldPolicy<any> | FieldReadFunction<any>,
 	tarot?: FieldPolicy<any> | FieldReadFunction<any>,

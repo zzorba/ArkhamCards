@@ -363,6 +363,11 @@ export interface SealedToken {
   icon: ChaosTokenType;
 }
 
+export interface ChaosBagHistory {
+  type: 'draw' | 'add' | 'remove' | 'seal' | 'release';
+  tokens: ChaosTokenType[];
+  active?: boolean;
+}
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
   sealedTokens: SealedToken[];
@@ -371,6 +376,7 @@ export interface ChaosBagResults {
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
   difficulty?: Campaign_Difficulty_Enum;
+  history?: ChaosBagHistory[];
 }
 
 export interface ScenarioResult {

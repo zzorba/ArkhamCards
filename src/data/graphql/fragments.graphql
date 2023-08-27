@@ -158,6 +158,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   totalDrawn
   tarot
   difficulty
+  history
 }
 
 fragment MiniDeck on campaign_deck {

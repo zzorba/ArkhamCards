@@ -19,7 +19,7 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
-const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…]/g;
+const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',‚❮❯\(\)\-\.…¡!?¿]/g;
 const RUSSIAN_E_REGEX = /ё/g
 
 export const enum CardStatusType {

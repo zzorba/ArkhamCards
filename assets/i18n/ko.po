@@ -3505,10 +3505,6 @@ msgstr "모든 축복과 저주 토큰 제거하기"
 msgid "do not remove"
 msgstr "제거하지 마세요"
 
-#, javascript-format
-msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr "되돌리기만 하고 축복/저주는 ${ doNotRemove }"
-
 msgid "View chaos bag"
 msgstr "혼돈 주머니 보기"
 
@@ -5695,6 +5691,40 @@ msgid "Heart of Darkness"
 msgstr ""
 
 msgid "Information on Kurtz"
+msgstr ""
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
+msgstr ""
+
+msgid "Recent token history"
+msgstr ""
+
+msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
+msgstr ""
+
+msgid "Return to The Pit of Despair"
+msgstr ""
+
+msgid "Return to The Vanishing of Elina Harper"
+msgstr ""
+
+msgid "Return to In Too Deep"
+msgstr ""
+
+msgid "Return to Devil Reef"
+msgstr ""
+
+msgid "Return to Horror in High Gear"
+msgstr ""
+
+msgid "Return to A Light in the Fog"
+msgstr ""
+
+msgid "Return to The Lair of Dagon"
+msgstr ""
+
+msgid "Return to Into the Maelstrom"
 msgstr ""
 
 msgctxt "investigator"

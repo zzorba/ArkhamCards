@@ -1,4 +1,4 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, trim, find, findLast, maxBy, map, last, forEach, findLastIndex, filter, isArray } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -386,6 +386,7 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
   difficulty?: Campaign_Difficulty_Enum;
+  history: ChaosBagHistory[];
 
   constructor(chaosBagResults: FullChaosBagResultFragment) {
     this.drawnTokens = chaosBagResults.drawn || [];
@@ -395,5 +396,6 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
     this.totalDrawnTokens = chaosBagResults.totalDrawn || 0;
     this.tarot = chaosBagResults.tarot || undefined;
     this.difficulty = chaosBagResults.difficulty || undefined;
+    this.history = chaosBagResults.history ?? [];
   }
 }

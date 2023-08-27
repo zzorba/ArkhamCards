@@ -3295,6 +3295,8 @@ export type CampaignWeaknessSetArgs = {
 /** columns and relationships of "campaign_access" */
 export type Campaign_Access = {
   __typename?: 'campaign_access';
+  /** An object relationship */
+  campaign: Campaign;
   campaign_id: Scalars['Int']['output'];
   hidden?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['Int']['output'];
@@ -3400,6 +3402,7 @@ export type Campaign_Access_Bool_Exp = {
   _and?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
   _not?: InputMaybe<Campaign_Access_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Access_Bool_Exp>>;
+  campaign?: InputMaybe<Campaign_Bool_Exp>;
   campaign_id?: InputMaybe<Int_Comparison_Exp>;
   hidden?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
@@ -3423,6 +3426,7 @@ export type Campaign_Access_Inc_Input = {
 
 /** input type for inserting data into table "campaign_access" */
 export type Campaign_Access_Insert_Input = {
+  campaign?: InputMaybe<Campaign_Obj_Rel_Insert_Input>;
   campaign_id?: InputMaybe<Scalars['Int']['input']>;
   hidden?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
@@ -3478,6 +3482,7 @@ export type Campaign_Access_On_Conflict = {
 
 /** Ordering options when selecting data from "campaign_access". */
 export type Campaign_Access_Order_By = {
+  campaign?: InputMaybe<Campaign_Order_By>;
   campaign_id?: InputMaybe<Order_By>;
   hidden?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -8418,6 +8423,7 @@ export type Chaos_Bag_Result = {
   curse: Scalars['Int']['output'];
   difficulty?: Maybe<Campaign_Difficulty_Enum>;
   drawn: Scalars['jsonb']['output'];
+  history: Scalars['jsonb']['output'];
   id: Scalars['Int']['output'];
   sealed: Scalars['jsonb']['output'];
   tarot?: Maybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8430,6 +8436,12 @@ export type Chaos_Bag_Result = {
 
 /** columns and relationships of "chaos_bag_result" */
 export type Chaos_Bag_ResultDrawnArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "chaos_bag_result" */
+export type Chaos_Bag_ResultHistoryArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -8498,6 +8510,7 @@ export type Chaos_Bag_Result_Aggregate_Order_By = {
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Append_Input = {
   drawn?: InputMaybe<Scalars['jsonb']['input']>;
+  history?: InputMaybe<Scalars['jsonb']['input']>;
   sealed?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
@@ -8536,6 +8549,7 @@ export type Chaos_Bag_Result_Bool_Exp = {
   curse?: InputMaybe<Int_Comparison_Exp>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum_Comparison_Exp>;
   drawn?: InputMaybe<Jsonb_Comparison_Exp>;
+  history?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   sealed?: InputMaybe<Jsonb_Comparison_Exp>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum_Comparison_Exp>;
@@ -8555,18 +8569,21 @@ export enum Chaos_Bag_Result_Constraint {
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Chaos_Bag_Result_Delete_At_Path_Input = {
   drawn?: InputMaybe<Array<Scalars['String']['input']>>;
+  history?: InputMaybe<Array<Scalars['String']['input']>>;
   sealed?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Chaos_Bag_Result_Delete_Elem_Input = {
   drawn?: InputMaybe<Scalars['Int']['input']>;
+  history?: InputMaybe<Scalars['Int']['input']>;
   sealed?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Chaos_Bag_Result_Delete_Key_Input = {
   drawn?: InputMaybe<Scalars['String']['input']>;
+  history?: InputMaybe<Scalars['String']['input']>;
   sealed?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -8586,6 +8603,7 @@ export type Chaos_Bag_Result_Insert_Input = {
   curse?: InputMaybe<Scalars['Int']['input']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']['input']>;
+  history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   sealed?: InputMaybe<Scalars['jsonb']['input']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8660,6 +8678,7 @@ export type Chaos_Bag_Result_Order_By = {
   curse?: InputMaybe<Order_By>;
   difficulty?: InputMaybe<Order_By>;
   drawn?: InputMaybe<Order_By>;
+  history?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sealed?: InputMaybe<Order_By>;
   tarot?: InputMaybe<Order_By>;
@@ -8676,6 +8695,7 @@ export type Chaos_Bag_Result_Pk_Columns_Input = {
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Chaos_Bag_Result_Prepend_Input = {
   drawn?: InputMaybe<Scalars['jsonb']['input']>;
+  history?: InputMaybe<Scalars['jsonb']['input']>;
   sealed?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
@@ -8691,6 +8711,8 @@ export enum Chaos_Bag_Result_Select_Column {
   Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  History = 'history',
   /** column name */
   Id = 'id',
   /** column name */
@@ -8710,6 +8732,7 @@ export type Chaos_Bag_Result_Set_Input = {
   curse?: InputMaybe<Scalars['Int']['input']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']['input']>;
+  history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   sealed?: InputMaybe<Scalars['jsonb']['input']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8783,6 +8806,7 @@ export type Chaos_Bag_Result_Stream_Cursor_Value_Input = {
   curse?: InputMaybe<Scalars['Int']['input']>;
   difficulty?: InputMaybe<Campaign_Difficulty_Enum>;
   drawn?: InputMaybe<Scalars['jsonb']['input']>;
+  history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   sealed?: InputMaybe<Scalars['jsonb']['input']>;
   tarot?: InputMaybe<Chaos_Bag_Tarot_Mode_Enum>;
@@ -8819,6 +8843,8 @@ export enum Chaos_Bag_Result_Update_Column {
   Difficulty = 'difficulty',
   /** column name */
   Drawn = 'drawn',
+  /** column name */
+  History = 'history',
   /** column name */
   Id = 'id',
   /** column name */
@@ -45180,7 +45206,7 @@ export type UploadChaosBagResultsMutationVariables = Exact<{
 }>;
 
 
-export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
+export type UploadChaosBagResultsMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null, history: any } | null };
 
 export type ChaosBagClearTokensMutationVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -45194,10 +45220,38 @@ export type ChaosBagClearTokensMutation = { __typename?: 'mutation_root', update
 export type ChaosBagDrawTokenMutationVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
   drawn: Scalars['jsonb']['input'];
+  history: Scalars['jsonb']['input'];
 }>;
 
 
-export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null } | null };
+export type ChaosBagDrawTokenMutation = { __typename?: 'mutation_root', remove_elem?: { __typename?: 'chaos_bag_result', id: number } | null, update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null, history: any } | null };
+
+export type UpdateChaosBagDrawTokenMutationVariables = Exact<{
+  campaign_id: Scalars['Int']['input'];
+  drawn: Scalars['jsonb']['input'];
+  history: Scalars['jsonb']['input'];
+}>;
+
+
+export type UpdateChaosBagDrawTokenMutation = { __typename?: 'mutation_root', remove_elem?: { __typename?: 'chaos_bag_result', id: number } | null, update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null, history: any } | null };
+
+export type ReturnChaosBagTokensWithBlurseMutationVariables = Exact<{
+  campaign_id: Scalars['Int']['input'];
+  drawn: Scalars['jsonb']['input'];
+  bless: Scalars['Int']['input'];
+  curse: Scalars['Int']['input'];
+}>;
+
+
+export type ReturnChaosBagTokensWithBlurseMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null, bless: number, curse: number } | null };
+
+export type ReturnChaosBagTokensMutationVariables = Exact<{
+  campaign_id: Scalars['Int']['input'];
+  drawn: Scalars['jsonb']['input'];
+}>;
+
+
+export type ReturnChaosBagTokensMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, drawn: any, totalDrawn?: number | null } | null };
 
 export type ChaosBagResetBlessCurseMutationVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -45415,7 +45469,7 @@ export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: s
 
 export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
-export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null };
+export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null, history: any };
 
 export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
 
@@ -45472,7 +45526,7 @@ export type GetChaosBagResultsQueryVariables = Exact<{
 }>;
 
 
-export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
+export type GetChaosBagResultsQuery = { __typename?: 'query_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null, history: any } | null };
 
 export type CampaignSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -45500,7 +45554,7 @@ export type ChaosBagResultsSubscriptionVariables = Exact<{
 }>;
 
 
-export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null } | null };
+export type ChaosBagResultsSubscription = { __typename?: 'subscription_root', chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null, history: any } | null };
 
 export type GetSettingsQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -45962,6 +46016,7 @@ export const FullChaosBagResultFragmentDoc = gql`
   totalDrawn
   tarot
   difficulty
+  history
 }
     `;
 export const IdDeckFragmentDoc = gql`
@@ -46435,15 +46490,23 @@ export type ChaosBagClearTokensMutationHookResult = ReturnType<typeof useChaosBa
 export type ChaosBagClearTokensMutationResult = Apollo.MutationResult<ChaosBagClearTokensMutation>;
 export type ChaosBagClearTokensMutationOptions = Apollo.BaseMutationOptions<ChaosBagClearTokensMutation, ChaosBagClearTokensMutationVariables>;
 export const ChaosBagDrawTokenDocument = gql`
-    mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!) {
+    mutation chaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!, $history: jsonb!) {
+  remove_elem: update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _delete_elem: {history: 19}
+  ) {
+    id
+  }
   update_chaos_bag_result_by_pk(
     pk_columns: {id: $campaign_id}
     _set: {drawn: $drawn}
+    _prepend: {history: $history}
     _inc: {totalDrawn: 1}
   ) {
     id
     drawn
     totalDrawn
+    history
   }
 }
     `;
@@ -46464,6 +46527,7 @@ export type ChaosBagDrawTokenMutationFn = Apollo.MutationFunction<ChaosBagDrawTo
  *   variables: {
  *      campaign_id: // value for 'campaign_id'
  *      drawn: // value for 'drawn'
+ *      history: // value for 'history'
  *   },
  * });
  */
@@ -46474,6 +46538,139 @@ export function useChaosBagDrawTokenMutation(baseOptions?: Apollo.MutationHookOp
 export type ChaosBagDrawTokenMutationHookResult = ReturnType<typeof useChaosBagDrawTokenMutation>;
 export type ChaosBagDrawTokenMutationResult = Apollo.MutationResult<ChaosBagDrawTokenMutation>;
 export type ChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<ChaosBagDrawTokenMutation, ChaosBagDrawTokenMutationVariables>;
+export const UpdateChaosBagDrawTokenDocument = gql`
+    mutation updateChaosBagDrawToken($campaign_id: Int!, $drawn: jsonb!, $history: jsonb!) {
+  remove_elem: update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _delete_elem: {history: 0}
+  ) {
+    id
+  }
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: $drawn}
+    _prepend: {history: $history}
+    _inc: {totalDrawn: 1}
+  ) {
+    id
+    drawn
+    totalDrawn
+    history
+  }
+}
+    `;
+export type UpdateChaosBagDrawTokenMutationFn = Apollo.MutationFunction<UpdateChaosBagDrawTokenMutation, UpdateChaosBagDrawTokenMutationVariables>;
+
+/**
+ * __useUpdateChaosBagDrawTokenMutation__
+ *
+ * To run a mutation, you first call `useUpdateChaosBagDrawTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateChaosBagDrawTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateChaosBagDrawTokenMutation, { data, loading, error }] = useUpdateChaosBagDrawTokenMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *      history: // value for 'history'
+ *   },
+ * });
+ */
+export function useUpdateChaosBagDrawTokenMutation(baseOptions?: Apollo.MutationHookOptions<UpdateChaosBagDrawTokenMutation, UpdateChaosBagDrawTokenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateChaosBagDrawTokenMutation, UpdateChaosBagDrawTokenMutationVariables>(UpdateChaosBagDrawTokenDocument, options);
+      }
+export type UpdateChaosBagDrawTokenMutationHookResult = ReturnType<typeof useUpdateChaosBagDrawTokenMutation>;
+export type UpdateChaosBagDrawTokenMutationResult = Apollo.MutationResult<UpdateChaosBagDrawTokenMutation>;
+export type UpdateChaosBagDrawTokenMutationOptions = Apollo.BaseMutationOptions<UpdateChaosBagDrawTokenMutation, UpdateChaosBagDrawTokenMutationVariables>;
+export const ReturnChaosBagTokensWithBlurseDocument = gql`
+    mutation returnChaosBagTokensWithBlurse($campaign_id: Int!, $drawn: jsonb!, $bless: Int!, $curse: Int!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: $drawn, bless: $bless, curse: $curse}
+    _inc: {totalDrawn: 1}
+  ) {
+    id
+    drawn
+    totalDrawn
+    bless
+    curse
+  }
+}
+    `;
+export type ReturnChaosBagTokensWithBlurseMutationFn = Apollo.MutationFunction<ReturnChaosBagTokensWithBlurseMutation, ReturnChaosBagTokensWithBlurseMutationVariables>;
+
+/**
+ * __useReturnChaosBagTokensWithBlurseMutation__
+ *
+ * To run a mutation, you first call `useReturnChaosBagTokensWithBlurseMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useReturnChaosBagTokensWithBlurseMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [returnChaosBagTokensWithBlurseMutation, { data, loading, error }] = useReturnChaosBagTokensWithBlurseMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *      bless: // value for 'bless'
+ *      curse: // value for 'curse'
+ *   },
+ * });
+ */
+export function useReturnChaosBagTokensWithBlurseMutation(baseOptions?: Apollo.MutationHookOptions<ReturnChaosBagTokensWithBlurseMutation, ReturnChaosBagTokensWithBlurseMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ReturnChaosBagTokensWithBlurseMutation, ReturnChaosBagTokensWithBlurseMutationVariables>(ReturnChaosBagTokensWithBlurseDocument, options);
+      }
+export type ReturnChaosBagTokensWithBlurseMutationHookResult = ReturnType<typeof useReturnChaosBagTokensWithBlurseMutation>;
+export type ReturnChaosBagTokensWithBlurseMutationResult = Apollo.MutationResult<ReturnChaosBagTokensWithBlurseMutation>;
+export type ReturnChaosBagTokensWithBlurseMutationOptions = Apollo.BaseMutationOptions<ReturnChaosBagTokensWithBlurseMutation, ReturnChaosBagTokensWithBlurseMutationVariables>;
+export const ReturnChaosBagTokensDocument = gql`
+    mutation returnChaosBagTokens($campaign_id: Int!, $drawn: jsonb!) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: {id: $campaign_id}
+    _set: {drawn: $drawn}
+    _inc: {totalDrawn: 1}
+  ) {
+    id
+    drawn
+    totalDrawn
+  }
+}
+    `;
+export type ReturnChaosBagTokensMutationFn = Apollo.MutationFunction<ReturnChaosBagTokensMutation, ReturnChaosBagTokensMutationVariables>;
+
+/**
+ * __useReturnChaosBagTokensMutation__
+ *
+ * To run a mutation, you first call `useReturnChaosBagTokensMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useReturnChaosBagTokensMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [returnChaosBagTokensMutation, { data, loading, error }] = useReturnChaosBagTokensMutation({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      drawn: // value for 'drawn'
+ *   },
+ * });
+ */
+export function useReturnChaosBagTokensMutation(baseOptions?: Apollo.MutationHookOptions<ReturnChaosBagTokensMutation, ReturnChaosBagTokensMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ReturnChaosBagTokensMutation, ReturnChaosBagTokensMutationVariables>(ReturnChaosBagTokensDocument, options);
+      }
+export type ReturnChaosBagTokensMutationHookResult = ReturnType<typeof useReturnChaosBagTokensMutation>;
+export type ReturnChaosBagTokensMutationResult = Apollo.MutationResult<ReturnChaosBagTokensMutation>;
+export type ReturnChaosBagTokensMutationOptions = Apollo.BaseMutationOptions<ReturnChaosBagTokensMutation, ReturnChaosBagTokensMutationVariables>;
 export const ChaosBagResetBlessCurseDocument = gql`
     mutation chaosBagResetBlessCurse($campaign_id: Int!, $drawn: jsonb!, $sealed: jsonb!) {
   update_chaos_bag_result_by_pk(

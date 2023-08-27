@@ -1,4 +1,7 @@
-import { SealedToken, UploadedCampaignId } from '@actions/types'
+import { useCallback } from 'react';
+import { slice } from 'lodash';
+
+import { ChaosBagHistory, SealedToken, UploadedCampaignId } from '@actions/types'
 import { useApolloClient } from '@apollo/client';
 import { ChaosTokenType } from '@app_constants';
 import {
@@ -8,18 +11,26 @@ import {
   FullChaosBagResultFragmentDoc,
   useChaosBagClearTokensMutation,
   useChaosBagDrawTokenMutation,
+  useReturnChaosBagTokensMutation,
+  useReturnChaosBagTokensWithBlurseMutation,
   useChaosBagResetBlessCurseMutation,
   useChaosBagSealTokensMutation,
   useChaosBagSetBlessCurseMutation,
   useChaosBagSetDifficultyMutation,
   useChaosBagSetTarotMutation,
+  useUpdateChaosBagDrawTokenMutation,
 } from '@generated/graphql/apollo-schema'
 import { optimisticUpdates } from './apollo';
-import { useCallback } from 'react';
 
 export interface ChaosBagActions {
   clearTokens: (campaignId: UploadedCampaignId, bless: number, curse: number) => Promise<void>;
-  drawToken: (campaignId: UploadedCampaignId, drawn: ChaosTokenType[]) => Promise<void>;
+  drawToken: (
+    campaignId: UploadedCampaignId,
+    action: 'draw' | 'return',
+    drawn: ChaosTokenType[],
+    isFirst: boolean,
+    blurse?: { bless: number; curse: number }
+  ) => Promise<void>;
   resetBlessCurse: (campaignId: UploadedCampaignId, drawn: ChaosTokenType[], sealed: SealedToken[]) => Promise<void>;
   sealTokens: (campaignId: UploadedCampaignId, sealed: SealedToken[]) => Promise<void>;
   releaseAllSealed: (campaignId: UploadedCampaignId) => Promise<void>;
@@ -35,10 +46,13 @@ export function useChaosBagActions(): ChaosBagActions {
   const [setBlessCurseReq] = useChaosBagSetBlessCurseMutation();
   const [setTarotReq] = useChaosBagSetTarotMutation();
   const [setDifficultyReq] = useChaosBagSetDifficultyMutation();
-
   const [drawTokenReq] = useChaosBagDrawTokenMutation();
+  const [updateDrawTokensReq] = useUpdateChaosBagDrawTokenMutation();
+  const [returnChaosBagTokensReq] = useReturnChaosBagTokensMutation();
+  const [returnChaosBagTokensWithBlurseReq] = useReturnChaosBagTokensWithBlurseMutation();
   const [sealTokensReq] = useChaosBagSealTokensMutation();
   const [resetBlessCurseReq] = useChaosBagResetBlessCurseMutation();
+
   const cache = client.cache;
   const clearTokens = useCallback(async(campaignId: UploadedCampaignId, bless: number, curse: number) => {
     await clearTokensReq({
@@ -134,34 +148,133 @@ export function useChaosBagActions(): ChaosBagActions {
     })
   }, [setDifficultyReq]);
 
-  const drawToken = useCallback(async(campaignId: UploadedCampaignId, drawn: ChaosTokenType[]) => {
+  const drawToken = useCallback(async(
+    campaignId: UploadedCampaignId,
+    action: 'draw' | 'return',
+    drawn: ChaosTokenType[],
+    isFirst: boolean,
+    blurse?: { bless: number; curse: number },
+  ) => {
     const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
     const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
       fragment: FullChaosBagResultFragmentDoc,
       fragmentName: 'FullChaosBagResult',
       id,
     }, true);
-    await drawTokenReq({
-      optimisticResponse: {
-        __typename: 'mutation_root',
-        update_chaos_bag_result_by_pk: {
-          __typename: 'chaos_bag_result',
-          id: campaignId.serverId,
-          drawn,
-          totalDrawn: (existingCacheData?.totalDrawn || 0) + 1,
-        },
-      },
-      variables: {
-        campaign_id: campaignId.serverId,
-        drawn,
-      },
-      context: {
-        serializationKey: campaignId.serverId,
-        collapseKey: `${campaignId.serverId}-chaosBagDraw`,
-      },
-      update: optimisticUpdates.chaosBagDrawToken.update,
-    });
-  }, [drawTokenReq, cache]);
+    switch (action) {
+      case 'return':
+        if (blurse) {
+          await returnChaosBagTokensWithBlurseReq({
+            optimisticResponse: {
+              __typename: 'mutation_root',
+              update_chaos_bag_result_by_pk: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+                drawn,
+                totalDrawn: (existingCacheData?.totalDrawn || 0),
+                bless: blurse.bless,
+                curse: blurse.curse,
+              },
+            },
+            variables: {
+              campaign_id: campaignId.serverId,
+              drawn,
+              bless: blurse.bless,
+              curse: blurse.curse,
+            },
+            context: {
+              serializationKey: campaignId.serverId,
+              collapseKey: `${campaignId.serverId}-chaosBagDrawWithBlurse`,
+            },
+            update: optimisticUpdates.returnChaosBagTokensWithBlurse.update,
+          });
+        } else {
+          await returnChaosBagTokensReq({
+            optimisticResponse: {
+              __typename: 'mutation_root',
+              update_chaos_bag_result_by_pk: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+                drawn,
+                totalDrawn: (existingCacheData?.totalDrawn || 0),
+              },
+            },
+            variables: {
+              campaign_id: campaignId.serverId,
+              drawn,
+            },
+            context: {
+              serializationKey: campaignId.serverId,
+              collapseKey: `${campaignId.serverId}-chaosBagDraw`,
+            },
+            update: optimisticUpdates.returnChaosBagTokens.update,
+          });
+        }
+        break;
+      case 'draw': {
+        const historyEntry: ChaosBagHistory = {
+          type: 'draw',
+          tokens: drawn,
+        };
+        if (isFirst) {
+          await drawTokenReq({
+            optimisticResponse: {
+              __typename: 'mutation_root',
+              remove_elem: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+              },
+              update_chaos_bag_result_by_pk: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+                drawn,
+                totalDrawn: (existingCacheData?.totalDrawn || 0) + 1,
+                history: [historyEntry, ...slice(existingCacheData?.history ?? [], 0, 19)],
+              },
+            },
+            variables: {
+              campaign_id: campaignId.serverId,
+              drawn,
+              history: historyEntry,
+            },
+            context: {
+              serializationKey: campaignId.serverId,
+              collapseKey: `${campaignId.serverId}-chaosBagDraw`,
+            },
+            update: optimisticUpdates.chaosBagDrawToken.update,
+          });
+        } else {
+          await updateDrawTokensReq({
+            optimisticResponse: {
+              __typename: 'mutation_root',
+              remove_elem: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+              },
+              update_chaos_bag_result_by_pk: {
+                __typename: 'chaos_bag_result',
+                id: campaignId.serverId,
+                drawn,
+                totalDrawn: (existingCacheData?.totalDrawn || 0) + 1,
+                history: [historyEntry, ...slice(existingCacheData?.history ?? [], 1)],
+              },
+            },
+            variables: {
+              campaign_id: campaignId.serverId,
+              drawn,
+              history: historyEntry,
+            },
+            context: {
+              serializationKey: campaignId.serverId,
+              collapseKey: `${campaignId.serverId}-updateChaosBagDraw`,
+            },
+            update: optimisticUpdates.updateChaosBagDrawToken.update,
+          });
+        }
+        break;
+      }
+    }
+  }, [drawTokenReq, updateDrawTokensReq, returnChaosBagTokensReq, returnChaosBagTokensWithBlurseReq]);
 
   const sealTokens = useCallback(async(campaignId: UploadedCampaignId, sealed: SealedToken[]) => {
     await sealTokensReq({

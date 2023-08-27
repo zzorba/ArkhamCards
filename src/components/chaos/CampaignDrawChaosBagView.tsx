@@ -16,7 +16,7 @@ import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from '../campaign/nav';
 import Card from '@data/types/Card';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
-import { useChaosBagResults } from '@data/hooks';
+import { useChaosBagResults, useNonGuideChaosBag } from '@data/hooks';
 
 export interface CampaignDrawChaosBagProps {
   campaignId: CampaignId;
@@ -27,9 +27,8 @@ export interface CampaignDrawChaosBagProps {
 type Props = NavigationProps & CampaignDrawChaosBagProps;
 
 function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators, cycleCode }: Props) {
-  const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
   const dispatch = useAppDispatch();
-  const chaosBag = useSelector((state: AppState) => chaosBagSelector(state, campaignId.campaignId));
+  const chaosBag = useNonGuideChaosBag(campaignId);
   const setCampaignChaosBag = useSetCampaignChaosBag();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     dispatch(updateCampaignChaosBag(setCampaignChaosBag, campaignId, chaosBag));
@@ -72,7 +71,6 @@ function CampaignDrawChaosBagView({ componentId, campaignId, allInvestigators, c
     }
   }, componentId, [componentId, showEditChaosBagDialog]);
   const chaosBagResults = useChaosBagResults(campaignId);
-
   return (
     <DrawChaosBagComponent
       campaignId={campaignId}

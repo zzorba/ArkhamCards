@@ -46,7 +46,84 @@ mutation chaosBagClearTokens(
 
 mutation chaosBagDrawToken(
   $campaign_id: Int!,
-  $drawn: jsonb!
+  $drawn: jsonb!,
+  $history: jsonb!
+) {
+
+  remove_elem: update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _delete_elem: { history: 19 }
+  ) {
+    id
+  }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: { drawn: $drawn }
+    _prepend: { history: $history }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    id
+    drawn
+    totalDrawn
+    history
+  }
+}
+
+mutation updateChaosBagDrawToken(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
+  $history: jsonb!
+) {
+  remove_elem: update_chaos_bag_result_by_pk(
+     pk_columns: { id: $campaign_id }
+    _delete_elem: { history: 0 }
+  ) {
+    id
+  }
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: { drawn: $drawn }
+    _prepend: { history: $history }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    id
+    drawn
+    totalDrawn
+    history
+  }
+}
+
+mutation returnChaosBagTokensWithBlurse(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
+  $bless: Int!,
+  $curse: Int!,
+) {
+  update_chaos_bag_result_by_pk(
+    pk_columns: { id: $campaign_id }
+    _set: {
+      drawn: $drawn
+      bless: $bless
+      curse: $curse
+    }
+    _inc: {
+      totalDrawn: 1
+    }
+  ) {
+    id
+    drawn
+    totalDrawn
+    bless
+    curse
+  }
+}
+mutation returnChaosBagTokens(
+  $campaign_id: Int!,
+  $drawn: jsonb!,
 ) {
   update_chaos_bag_result_by_pk(
     pk_columns: { id: $campaign_id }

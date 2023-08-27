@@ -3565,10 +3565,6 @@ msgstr "Удалить все Bless/Curse"
 msgid "do not remove"
 msgstr "оставить"
 
-#, javascript-format
-msgid "Return, but ${ doNotRemove } Bless/Curse"
-msgstr "Вернуть и ${ doNotRemove } Bless/Curse"
-
 msgid "View chaos bag"
 msgstr "Состав мешка"
 
@@ -5804,6 +5800,40 @@ msgid "Heart of Darkness"
 msgstr ""
 
 msgid "Information on Kurtz"
+msgstr ""
+
+#, javascript-format
+msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
+msgstr ""
+
+msgid "Recent token history"
+msgstr ""
+
+msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
+msgstr ""
+
+msgid "Return to The Pit of Despair"
+msgstr ""
+
+msgid "Return to The Vanishing of Elina Harper"
+msgstr ""
+
+msgid "Return to In Too Deep"
+msgstr ""
+
+msgid "Return to Devil Reef"
+msgstr ""
+
+msgid "Return to Horror in High Gear"
+msgstr ""
+
+msgid "Return to A Light in the Fog"
+msgstr ""
+
+msgid "Return to The Lair of Dagon"
+msgstr ""
+
+msgid "Return to Into the Maelstrom"
 msgstr ""
 
 msgctxt "investigator"

@@ -244,6 +244,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
       totalDrawn: chaosBagResults.totalDrawnTokens,
       sealed: chaosBagResults.sealedTokens,
       tarot: chaosBagResults.tarot || null,
+      history: chaosBagResults.history,
     };
     await uploadChaosBagResults({
       optimisticResponse: {

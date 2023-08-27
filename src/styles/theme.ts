@@ -6,7 +6,6 @@ export interface ThemeFonts {
   mediumGameFont: TextStyle;
 }
 
-
 export interface FactionColors {
   invertedText: string;
   text: string;

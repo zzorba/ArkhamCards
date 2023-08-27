@@ -1,4 +1,4 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading, ChaosBagHistory } from '@actions/types';
 import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter, trim } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -273,6 +273,7 @@ export class ChaosBagResultsRedux implements ChaosBagResultsT {
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
   difficulty?: Campaign_Difficulty_Enum;
+  history: ChaosBagHistory[];
 
   constructor(chaosBagResults: ChaosBagResults) {
     this.drawnTokens = chaosBagResults.drawnTokens;
@@ -282,5 +283,6 @@ export class ChaosBagResultsRedux implements ChaosBagResultsT {
     this.totalDrawnTokens = chaosBagResults.totalDrawnTokens;
     this.tarot = chaosBagResults.tarot;
     this.difficulty = chaosBagResults.difficulty;
+    this.history = chaosBagResults.history ?? [];
   }
 }
