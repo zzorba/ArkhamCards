@@ -1605,4 +1605,7 @@ export interface Taboo {
   deck_requirements?: {
     [k: string]: unknown;
   };
+  customization_options?: unknown[];
+  customization_change?: string;
+  customization_text?: string;
 }

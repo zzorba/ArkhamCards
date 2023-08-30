@@ -32,7 +32,7 @@
       },
       {
         "code": "01033",
-        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -106,7 +106,7 @@
       },
       {
         "code": "01033",
-        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -200,7 +200,7 @@
       },
       {
         "code": "01033",
-        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -259,7 +259,7 @@
     "code": "004",
     "name": "Lista tabu",
     "active": 1,
-    "date_start": "2021-06-26",
+    "date_start": "2021-06-28",
     "cards": [
       {
         "code": "01020",
@@ -339,7 +339,7 @@
       },
       {
         "code": "01033",
-        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -398,7 +398,7 @@
     "code": "005",
     "name": "Lista tabu",
     "active": 1,
-    "date_start": "2022-08-28",
+    "date_start": "2022-08-26",
     "cards": [
       {
         "code": "01050",
@@ -494,7 +494,7 @@
       },
       {
         "code": "01033",
-        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -548,39 +548,39 @@
       },
       {
         "code": "02029",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "02269",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "60416",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "02263",
-        "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\""
+        "text": "This card's fight ability now reads “+1 damage” instead of “+2 damage.”"
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\" This card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\""
+        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”"
       },
       {
         "code": "03019",
-        "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\""
+        "text": "This card's revelation ability now reads: “Discard 1 card in your hand or play area of your current role. Then...”"
       },
       {
         "code": "04032",
-        "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\""
+        "text": "This card now reads “a non-[elder_sign] symbol” instead of “a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.”"
       },
       {
         "code": "04110",
-        "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\""
+        "text": "This card now reads “a non-[auto_fail] symbol” instead of “a [skull], [cultist], [tablet], or [elder_thing] chaos token.”"
       },
       {
         "code": "06002",
-        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "text": "This investigator now reads: “Deck Size: 50” and “Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...”",
         "deck_options": [
           {
             "faction": [
@@ -632,11 +632,11 @@
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\""
+        "text": "This card loses the exceptional keyword and gains “Limit 1 per deck.”"
       },
       {
         "code": "08045",
-        "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\""
+        "text": "This card's constant ability now reads: “...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.”"
       },
       {
         "code": "08055",
@@ -644,15 +644,401 @@
       },
       {
         "code": "08098",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+        "text": "This card should read “following basic actions” instead of “following actions.”"
       },
       {
         "code": "08100",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+        "text": "This card should read “following basic actions” instead of “following actions.”"
       },
       {
         "code": "08093",
-        "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\""
+        "text": "This card's parenthetical now reads: “...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)”"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "code": "006",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2023-08-30",
+    "cards": [
+      {
+        "code": "01050",
+        "text": "This card now reads: “Disengage from each enemy engaged with you and move to a connecting location with no enemies.”"
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "This card’s [action] ability gains: “This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.”"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "This card’s [fast] ability is now a [action] ability."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "This card loses the text: “Attached asset cannot be used to attack enemies engaged with you.”"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "This card’s ability gains: “Remove Eucatastrophe from the game.”"
+      },
+      {
+        "code": "06022",
+        "text": "This card’s constant ability now reads: “If this card has no charges, remove it from the game.”"
+      },
+      {
+        "code": "06199",
+        "text": "This card’s ability gains: “Remove each committed copy of Three Aces from the game.”"
+      },
+      {
+        "code": "60318",
+        "text": "Instead of “Shuffle each weakness that was discarded…”, this card’s ability now reads: “After this skill test resolves, draw each weakness discarded by this effect.”"
+      },
+      {
+        "code": "07003",
+        "text": "This card’s [reaction] ability now reads: “After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)"
+      },
+      {
+        "code": "07122",
+        "text": "This card’s [reaction] ability now reads: “When you resolve a [bless] token during a skill test…"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "This card’s [fast] ability now reads: “…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).”"
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Dziedzictwo.</b> Ten atut dostaje -1 do kosztu i zyskuje cechę [[Relikwia]].\n□ <b>Inskrypcja chwały.</b> Dodaj tę inskrypcję: „- <i>Chwała</i> - Jeśli ten atak pokonał wroga, wybierz jedno: dobierz 1 kartę, wylecz 1 obrażenie lub wylecz 1 punkt przerażenia”.\n□ <b>Inskrypcja Starszych Bogów.</b> Dodaj tę inskrypcję: „- <i>Starsi Bogowie</i> - Jeśli ten atak zakończył się sukcesem o liczbę punktów równą lub wyższą od wartości zasłony twojej lokalizacji, odkryj 1 żeton wskazówki w twojej lokalizacji.”\n□□ <b>Inskrypcja łowów.</b> Dodaj tę inskrypcję: „- <i>Łowy</i> - Natychmiast porusz się do połączonej lokalizacji albo wejdź w zwarcie z wrogiem w twojej lokalizacji.”\n□ <b>Inskrypcja furii.</b> Dodaj tę inskrypcję: „- <i>Furia</i> - Jeśli ten atak zakończył się sukcesem, oprócz jego standardowych obrażeń zadaj 1 obrażenie każdemu innemu wrogowi będącemu z tobą w zwarciu”.\n□□□ <b>Starożytna moc.</b> Możesz wzmocnić topór tą samą inskrypcją maksymalnie 3 razy.\n□□□ <b>Saga.</b> Na początku każdej rundy uzupełnij 2 ładunki Runicznego topora (zamiast tylko 1).\n□□□□ <b>Zdwojona siła.</b> Za każdy wydany ładunek możesz wzmocnić topór maksymalnie 2 różnymi inskrypcjami."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "This card’s ability gains: “Remove A Watchful Peace from the game.”"
+      },
+      {
+        "code": "07301",
+        "text": "This card’s ability gains: “Remove Hallow from the game.”"
+      },
+      {
+        "code": "08019",
+        "text": "This card’s <b>Forced</b> effect now reads: “<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…”"
+      },
+      {
+        "code": "08032",
+        "text": ":This card’s ability gains: “(Max twice per game.)”"
+      },
+      {
+        "code": "01033",
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "At the end of its ability, this card gains: “(max once per round).”"
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      },
+      {
+        "code": "04309",
+        "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
+      },
+      {
+        "code": "05116",
+        "text": "This card’s [action] ability is now a [fast] ability."
+      },
+      {
+        "code": "05188",
+        "text": "This card’s [action] ability is now a [fast] ability."
+      },
+      {
+        "code": "05189",
+        "text": "This card’s [action] ability is now a [fast] ability."
+      },
+      {
+        "code": "05020",
+        "text": "This card’s ability now reads “<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…”"
+      },
+      {
+        "code": "06195",
+        "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazane."
+      },
+      {
+        "code": "02029",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02153",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02269",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "60416",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "05113",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02263",
+        "text": "This card's fight ability now reads “+1 damage” instead of “+2 damage.”"
+      },
+      {
+        "code": "03006",
+        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”"
+      },
+      {
+        "code": "03019",
+        "text": "This card's revelation ability now reads: “Discard 1 card in your hand or play area of your current role. Then...”"
+      },
+      {
+        "code": "04032",
+        "text": "This card now reads “a non-[elder_sign] symbol” instead of “a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.”"
+      },
+      {
+        "code": "04105",
+        "text": "This card’s ability now reads “<b>Parley.</b> Choose a non-weakness enemy at your location…”"
+      },
+      {
+        "code": "04110",
+        "text": "This card now reads “a non-[auto_fail] symbol” instead of “a [skull], [cultist], [tablet], or [elder_thing] chaos token.”"
+      },
+      {
+        "code": "06002",
+        "text": "This investigator now reads: “Deck Size: 50” and “Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...”",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        }
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "This card loses the exceptional keyword and gains “Limit 1 per deck.”"
+      },
+      {
+        "code": "08045",
+        "text": "This card's constant ability now reads: “...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.”"
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "08076",
+        "text": "This card’s ability gains “(Max twice per game.)”"
+      },
+      {
+        "code": "08098",
+        "text": "This card should read “following basic actions” instead of “following actions.”"
+      },
+      {
+        "code": "08100",
+        "text": "This card should read “following basic actions” instead of “following actions.”"
+      },
+      {
+        "code": "08093",
+        "text": "This card's parenthetical now reads: “...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)”"
+      },
+      {
+        "code": "09045",
+        "text": "This card’s second ability gains: “(max 3 evidence spent per round).”"
+      },
+      {
+        "code": "09081",
+        "text": "This card’s text box now reads: “[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – “Go.” This enemy moves once in a direction of your choice.”",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga.\n[fast]: Cofnij Potęgę słowa na twoją rękę.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wydaj mu do 2 różnych rozkazów (limit raz na rundę na każdy rozkaz) -\nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa."
       }
     ]
   }

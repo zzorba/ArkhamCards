@@ -32,7 +32,7 @@
       },
       {
         "code": "01033",
-        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -106,7 +106,7 @@
       },
       {
         "code": "01033",
-        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -200,7 +200,7 @@
       },
       {
         "code": "01033",
-        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -259,7 +259,7 @@
     "code": "004",
     "name": "Liste des Tabous",
     "active": 1,
-    "date_start": "2021-06-26",
+    "date_start": "2021-06-28",
     "cards": [
       {
         "code": "01020",
@@ -339,7 +339,7 @@
       },
       {
         "code": "01033",
-        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -398,7 +398,7 @@
     "code": "005",
     "name": "Liste des Tabous",
     "active": 1,
-    "date_start": "2022-08-28",
+    "date_start": "2022-08-26",
     "cards": [
       {
         "code": "01050",
@@ -494,7 +494,7 @@
       },
       {
         "code": "01033",
-        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »"
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
       },
       {
         "code": "02002",
@@ -548,39 +548,39 @@
       },
       {
         "code": "02029",
-        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "02269",
-        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "60416",
-        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués."
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
       },
       {
         "code": "02263",
-        "text": "Mutée.\nLa capacité Combattre de cette carte indique désormais « +1 dégât » au lieu de  « +2 dégâts. »"
+        "text": "This card's fight ability now reads “+1 damage” instead of “+2 damage.”"
       },
       {
         "code": "03006",
-        "text": "Mutée.\nLa capacité Forcé de cette carte est déplacée sur son verso et indique désormais : « <b>Mise en Place Complémentaire</b> : après avoir pioché votre main de départ : choisissez un rôle ([survivor], [guardian], [seeker], [rogue], [mystic] ou neutre). »\nDe plus, le recto de cette carte gagne : « [action]: Changez de rôle. Cette action ne provoque pas d'attaque d'opportunité. »"
+        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”"
       },
       {
         "code": "03019",
-        "text": "Mutée.\nLa capacité Révélation de cette carte indique désormais : « Défaussez une carte de votre rôle actuel depuis votre main ou de votre zone de jeu. Ensuite… »"
+        "text": "This card's revelation ability now reads: “Discard 1 card in your hand or play area of your current role. Then...”"
       },
       {
         "code": "04032",
-        "text": "Mutée.\nCette carte indique désormais « un symbole non-[elder_sign] » au lieu de « un symbole [skull], [cultist], [tablet], [elder_thing] ou [auto_fail]. »"
+        "text": "This card now reads “a non-[elder_sign] symbol” instead of “a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.”"
       },
       {
         "code": "04110",
-        "text": "Mutée.\nCette carte indique désormais « un symbole non-[auto_fail] » au lieu de « un symbole [skull], [cultist], [tablet] ou [elder_thing]. »"
+        "text": "This card now reads “a non-[auto_fail] symbol” instead of “a [skull], [cultist], [tablet], or [elder_thing] chaos token.”"
       },
       {
         "code": "06002",
-        "text": "Mutée.\nCette carte investigateur indique désormais : « Taille du deck : 50 » et « Exigences du deck (ne comptent pas dans la limite de taille du deck) : 3 exemplaires de Preuve Occulte... »\",",
+        "text": "This investigator now reads: “Deck Size: 50” and “Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...”",
         "deck_options": [
           {
             "faction": [
@@ -632,11 +632,11 @@
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »"
+        "text": "This card loses the exceptional keyword and gains “Limit 1 per deck.”"
       },
       {
         "code": "08045",
-        "text": "Mutée.\nLa capacité permanente de cette carte indique désormais : “…vous gagnez +1 [intellect], +1 [agility] et vous avez le droit d'ignorer la première attaque d'opportunité que vous subissez à chaque round.”"
+        "text": "This card's constant ability now reads: “...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.”"
       },
       {
         "code": "08055",
@@ -644,15 +644,401 @@
       },
       {
         "code": "08098",
-        "text": "Mutée.\nCette carte indique désormais « actions basiques suivantes » au lieu de « action suivantes. »"
+        "text": "This card should read “following basic actions” instead of “following actions.”"
       },
       {
         "code": "08100",
-        "text": "Mutée.\nCette carte indique désormais « actions basiques suivantes » au lieu de « action suivantes. »"
+        "text": "This card should read “following basic actions” instead of “following actions.”"
       },
       {
         "code": "08093",
-        "text": "Mutée.\nLe texte entre parenthèses de cette carte indique désormais : « …(En cas de réussite avec une différence de 3 ou plus, vous avez le droit d'incliner le Marteau Cyclopéen pour infliger +2 dégâts et le déplacer jusqu'à 2 lieux en l'éloignant de vous, à la place.) »"
+        "text": "This card's parenthetical now reads: “...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)”"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "code": "006",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2023-08-30",
+    "cards": [
+      {
+        "code": "01050",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais : « Désengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi. »"
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Mutée.\nLa capacité [action] de cette carte gagne : « Cette attaque peut cibler un ennemi non-[[Élite]] éloigné jusqu’à un lieu de sa portée standard, en ignorant les mots-clés Distant et Riposte. »"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Mutée.\nLa capacité [fast] de cette carte est désormais une capacité [action]."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Mutée.\nCette carte perd le texte : « Le soutien attaché ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. »"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Eucatastrophe de la partie. »"
+      },
+      {
+        "code": "06022",
+        "text": "Mutée.\nLa capacité permanente de cette carte indique désormais : « Si cette carte n'a pas de charges, retirez-la de la partie. »"
+      },
+      {
+        "code": "06199",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez de la partie chaque exemplaire de Brelan d'As attribué au test de compétence. »"
+      },
+      {
+        "code": "60318",
+        "text": "Instead of “Shuffle each weakness that was discarded…”, this card’s ability now reads: “After this skill test resolves, draw each weakness discarded by this effect.”"
+      },
+      {
+        "code": "07003",
+        "text": "This card’s [reaction] ability now reads: “After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)"
+      },
+      {
+        "code": "07122",
+        "text": "This card’s [reaction] ability now reads: “When you resolve a [bless] token during a skill test…"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "This card’s [fast] ability now reads: “…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).”"
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Héritage.</b> Réduisez de 1 le coût de la Hache Runique et elle gagne le trait [[Relique]].\n□ <b>Inscription de Gloire.</b> Ajoutez cette inscription : - <i>Gloire</i> – Si un ennemi est vaincu par cette attaque, choisissez une option : piochez 1 carte, soignez 1 dégât ou soignez 1 horreur.\n□ <b>Inscription des Anciens.</b> Ajoutez cette inscription : - <i>Anciens</i> – En cas de réussite de cette attaque avec une différence supérieure ou égale à la valeur occulte de votre lieu, découvrez 1 indice dans votre lieu.\n□□ <b>Inscription de Chasse.</b> Ajoutez cette inscription : - <i>Chasse</i> – Déplacez-vous immédiatement vers un lieu connexe ou engagez un ennemi dans votre lieu.\n□ <b>Inscription de Fureur.</b> Ajoutez cette inscription : - <i>Fureur</i> – En cas de réussite de cette attaque, en plus de ses dégâts standards, infligez 1 dégât à chaque autre ennemi engagé avec vous.\n□□□ <b>Pouvoir Ancestral.</b> Vous avez le droit d'activer la même inscription jusqu'à trois fois.\n□□□ <b>Saga.</b> Reconstituez 2 charges de la Hache Runique au début de chaque round (au lieu d'une seule charge).\n□□□□ <b>Tisseur de Runes.</b> Pour chaque charge dépensée, vous avez le droit d'activer jusqu'à deux inscriptions différentes."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »"
+      },
+      {
+        "code": "07301",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »"
+      },
+      {
+        "code": "08019",
+        "text": "This card’s <b>Forced</b> effect now reads: “<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…”"
+      },
+      {
+        "code": "08032",
+        "text": ":This card’s ability gains: “(Max twice per game.)”"
+      },
+      {
+        "code": "01033",
+        "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher...”"
+      },
+      {
+        "code": "02002",
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d’une fois par round. »"
+      },
+      {
+        "code": "02111",
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »"
+      },
+      {
+        "code": "02229",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. » à la fin de sa capacité."
+      },
+      {
+        "code": "02266",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "03029",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »"
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel."
+      },
+      {
+        "code": "04309",
+        "text": "Mutée.\nCette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité."
+      },
+      {
+        "code": "05116",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast]."
+      },
+      {
+        "code": "05020",
+        "text": "This card’s ability now reads “<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…”"
+      },
+      {
+        "code": "06195",
+        "text": "Mutée.\nLa capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Interdite."
+      },
+      {
+        "code": "02029",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02153",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02269",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "60416",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "05113",
+        "text": "This card now reads “a symbol” instead of the list of indicated symbols."
+      },
+      {
+        "code": "02263",
+        "text": "This card's fight ability now reads “+1 damage” instead of “+2 damage.”"
+      },
+      {
+        "code": "03006",
+        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”"
+      },
+      {
+        "code": "03019",
+        "text": "This card's revelation ability now reads: “Discard 1 card in your hand or play area of your current role. Then...”"
+      },
+      {
+        "code": "04032",
+        "text": "This card now reads “a non-[elder_sign] symbol” instead of “a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.”"
+      },
+      {
+        "code": "04105",
+        "text": "This card’s ability now reads “<b>Parley.</b> Choose a non-weakness enemy at your location…”"
+      },
+      {
+        "code": "04110",
+        "text": "This card now reads “a non-[auto_fail] symbol” instead of “a [skull], [cultist], [tablet], or [elder_thing] chaos token.”"
+      },
+      {
+        "code": "06002",
+        "text": "This investigator now reads: “Deck Size: 50” and “Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...”",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Classe secondaire",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        }
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "This card loses the exceptional keyword and gains “Limit 1 per deck.”"
+      },
+      {
+        "code": "08045",
+        "text": "This card's constant ability now reads: “...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.”"
+      },
+      {
+        "code": "08055",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »"
+      },
+      {
+        "code": "08076",
+        "text": "This card’s ability gains “(Max twice per game.)”"
+      },
+      {
+        "code": "08098",
+        "text": "This card should read “following basic actions” instead of “following actions.”"
+      },
+      {
+        "code": "08100",
+        "text": "This card should read “following basic actions” instead of “following actions.”"
+      },
+      {
+        "code": "08093",
+        "text": "This card's parenthetical now reads: “...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)”"
+      },
+      {
+        "code": "09045",
+        "text": "This card’s second ability gains: “(max 3 evidence spent per round).”"
+      },
+      {
+        "code": "09081",
+        "text": "This card’s text box now reads: “[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – “Go.” This enemy moves once in a direction of your choice.”",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n- <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n[fast] : renvoyez dans votre main Mot de Pouvoir.\nVous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion.</b> Vous avez le droit de donner jusqu'à deux ordres différents (limite d'une fois par round) –\nVous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
+        "customization_text": "□ <b>Trahison.</b> Ajoutez l'ordre : - <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confession.</b> Ajoutez l'ordre : - <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n□ <b>Diversion.</b> Ajoutez l'ordre : - <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n□□ <b>Contrôle Accru.</b> Mot de Pouvoir gagne : « [fast] : renvoyez dans votre main Mot de Pouvoir. »\n□□□ <b>Lié.</b> Vous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n□□□ <b>Virelangue.</b> Quand vous discutez via le Mot de Pouvoir, vous avez le droit de donner jusqu'à deux ordres différents.\n□□□ <b>Trois Paroles.</b> Vous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir."
       }
     ]
   }
