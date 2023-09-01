@@ -1194,9 +1194,6 @@ msgstr "Допустимые карты"
 msgid "Flip Card"
 msgstr "Перевернуть карту"
 
-msgid "Taboo List Changes"
-msgstr "Изменения по табу"
-
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr "Дороже на ${ card.extra_xp } опыта."
@@ -5834,6 +5831,37 @@ msgid "Return to The Lair of Dagon"
 msgstr ""
 
 msgid "Return to Into the Maelstrom"
+msgstr ""
+
+msgid "Chained - "
+msgstr ""
+
+msgid "Unchained - "
+msgstr ""
+
+msgid "Forbidden"
+msgstr ""
+
+msgid "Mutated"
+msgstr ""
+
+msgid "Original card text"
+msgstr ""
+
+msgid "Original card text (back)"
+msgstr ""
+
+#, javascript-format
+msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
+msgstr ""
+
+msgid "This card is no longer on the taboo list."
+msgstr ""
+
+msgid "See taboo list history"
+msgstr ""
+
+msgid "Taboo list history:"
 msgstr ""
 
 msgctxt "investigator"

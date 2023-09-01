@@ -1608,4 +1608,6 @@ export interface Taboo {
   customization_options?: unknown[];
   customization_change?: string;
   customization_text?: string;
+  replacement_text?: string;
+  replacement_back_text?: string;
 }

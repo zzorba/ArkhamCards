@@ -6486,11 +6486,11 @@
         "entries": [
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           }
         ]
       },
@@ -6499,31 +6499,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6532,31 +6532,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6565,19 +6565,19 @@
         "entries": [
           {
             "id": "heeded_the_call",
-            "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call.",
-            "nonbinary_text": "#name# has heeded the call."
+            "masculine_text": "#name# ha escuchado la llamada.",
+            "feminine_text": "#name# ha escuchado la llamada.",
+            "nonbinary_text": "#name# ha escuchado la llamada."
           },
           {
             "id": "injected_a_cardinal_reagant",
-            "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant.",
-            "nonbinary_text": "#name# has injected a cardinal reagant."
+            "masculine_text": "se ha inyectado un reactivo puro.",
+            "feminine_text": "se ha inyectado un reactivo puro.",
+            "nonbinary_text": "se ha inyectado un reactivo puro."
           },
           {
             "id": "arkham_stands_united",
-            "text": "Arkham stands united."
+            "text": "Arkham permanece unida."
           },
           {
             "id": "baalshandor_struck_the_first_blow",
@@ -6585,7 +6585,7 @@
           },
           {
             "id": "collection_was_saved",
-            "text": "the collection was saved."
+            "text": "la colección fue salvada."
           },
           {
             "id": "death_conquered_herbert_west",
@@ -6593,67 +6593,67 @@
           },
           {
             "id": "earned_greysons_respect",
-            "text": "you earned Greyson's respect."
+            "text": "los investigadores se ganaron el respeto de Greyson."
           },
           {
             "id": "found_the_hidden_paths",
-            "text": "you have found the hidden paths."
+            "text": "tú encontraste las sendas ocultas."
           },
           {
             "id": "greyson_cut_ties",
-            "text": "Greyson cut ties."
+            "text": "Greyson cortó lazos."
           },
           {
             "id": "herbert_west_is_leading_the_way",
-            "text": "Herbert West is leading the way."
+            "text": "Herbert West nos guía."
           },
           {
             "id": "herbert_west_was_taken_against_his_will",
-            "text": "Herbert West was taken against his will."
+            "text": "Herbert West fue llevado contra su voluntad."
           },
           {
             "id": "hibbs_has_your_back",
-            "text": "Hibbs has your back."
+            "text": "Hibb te cubre las espaldas."
           },
           {
             "id": "hibbs_is_here_to_help",
-            "text": "Hibbs is here to help."
+            "text": "Hibb está aquí para ayudarte."
           },
           {
             "id": "investigators_learned_the_secrets_of_the_roadhouse",
-            "text": "the investigators learned the secrets of the roadhouse."
+            "text": "los investigadores conocen el secreto del Motel."
           },
           {
             "id": "learned_the_killing_words",
-            "text": "you learned the killing words."
+            "text": "aprendisteis las palabras de muerte."
           },
           {
             "id": "made_sure_the_first_was_dead",
-            "text": "you made sure the First was dead."
+            "text": "te aseguraste de que el Primero murió."
           },
           {
             "id": "received_a_cryptic_riddle",
-            "text": "you received a cryptic riddle."
+            "text": "recibisteis un acertijo críptico."
           },
           {
             "id": "saw_a_vision_of_the_portals",
-            "text": "you saw a vision of the portals."
+            "text": "tuvisteis una visión de los portales."
           },
           {
             "id": "tailors_contained_the_problem",
-            "text": "the Tailors contained the problem."
+            "text": "los Sastres contuvieron la amenaza."
           },
           {
             "id": "the_blood_runs_in_your_veins",
-            "text": "the blood runs in your veins."
+            "text": "la sangre corre por tus venas."
           },
           {
             "id": "the_first_claimed_the_facility",
-            "text": "the First claimed The Facility."
+            "text": "el Primero reclamó la instalación."
           },
           {
             "id": "the_monster_was_buried_under_tons_of_concrete",
-            "text": "the monster was buried under tons of concrete."
+            "text": "el monstruo fue sepultado bajo toneladas de hormigón."
           },
           {
             "id": "the_plaguebearer_was_bound_anew",
@@ -6665,7 +6665,7 @@
           },
           {
             "id": "transported_to_the_lurkers_realm",
-            "text": "you were transported to the Lurker's realm."
+            "text": "tú fuiste transportado al reino del que acecha."
           },
           {
             "id": "tripped_the_facility_alarms",
@@ -6677,7 +6677,7 @@
           },
           {
             "id": "west_has_recovered_the_reagant",
-            "text": "West has recoverred the reagant."
+            "text": "West recuperó los reactivos."
           },
           {
             "id": "you_conquered_death",
@@ -6685,15 +6685,15 @@
           },
           {
             "id": "you_have_been_warned",
-            "text": "you have been warned."
+            "text": "habéis sido advertidos"
           },
           {
             "id": "you_have_received_a_twisted_gift",
-            "text": "you have received a twisted gift."
+            "text": "recibiste un regalo envenenado."
           },
           {
             "id": "you_hid_the_briefcase",
-            "text": "you hid the briefcase."
+            "text": "escondisteis el maletín."
           }
         ]
       },
@@ -6714,7 +6714,7 @@
           },
           {
             "id": "hibbs",
-            "text": "Hibbs"
+            "text": "Hibb"
           },
           {
             "id": "ma",
@@ -6722,19 +6722,19 @@
           },
           {
             "id": "priest_of_plagues",
-            "text": "Priest of Plagues"
+            "text": "Sacerdote de la Plaga"
           },
           {
             "id": "the_loving_couple",
-            "text": "The Loving Couple"
+            "text": "La Pareja de Enamorados"
           },
           {
             "id": "thing_in_water",
-            "text": "The Thing in the Water"
+            "text": "La Cosa del agua"
           },
           {
             "id": "vice_president",
-            "text": "The Vice President"
+            "text": "El Vicepresidente"
           }
         ]
       },
@@ -6743,31 +6743,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6776,31 +6776,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6842,31 +6842,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6875,31 +6875,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6908,31 +6908,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6941,31 +6941,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       }

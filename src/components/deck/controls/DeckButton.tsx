@@ -14,6 +14,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 export type DeckButtonIcon =
   'map' |
   'kofi' |
+  'taboo' |
   'resign' |
   'addcard' |
   'headset' |

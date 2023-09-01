@@ -53,7 +53,7 @@
   },
   {
     "id": "arkham_allied",
-    "name": "Arkham Allied"
+    "name": "Arkham unido"
   },
   {
     "id": "arkham_in_wonderland",
@@ -197,15 +197,15 @@
   },
   {
     "id": "dead_by_dawn",
-    "name": "Dead by Dawn"
+    "name": "Muerte al amanecer"
   },
   {
     "id": "dead_or_alive",
-    "name": "Dead or Alive"
+    "name": "Vivo o muerto"
   },
   {
     "id": "death_at_sundown",
-    "name": "Death at Sundown"
+    "name": "Muerte a la puesta de sol"
   },
   {
     "id": "devil_reef",
@@ -249,7 +249,7 @@
   },
   {
     "id": "electric_nightmare",
-    "name": "Electric Nightmare"
+    "name": "Pesadilla eléctrica"
   },
   {
     "id": "endless_night",
@@ -313,11 +313,11 @@
   },
   {
     "id": "fragment_of_carcosa",
-    "name": "Fragment of Carcosa"
+    "name": "Fragmento de Carcosa"
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "Amigos en los bajos fondos"
   },
   {
     "id": "going_twice",
@@ -345,11 +345,11 @@
   },
   {
     "id": "high_noon_descent",
-    "name": "High Noon Descent"
+    "name": "Descenso al mediodía"
   },
   {
     "id": "history_lesson",
-    "name": "History Lesson"
+    "name": "Lección de historia"
   },
   {
     "id": "hong_kong",
@@ -389,7 +389,7 @@
   },
   {
     "id": "in_the_shadow_of_earth",
-    "name": "In the Shadow of Earth"
+    "name": "La cara oculta de la Tierra"
   },
   {
     "id": "in_too_deep",
@@ -433,7 +433,7 @@
   },
   {
     "id": "late_risers",
-    "name": "Late Risers"
+    "name": "Trasnochadores"
   },
   {
     "id": "london",
@@ -449,7 +449,7 @@
   },
   {
     "id": "lost_quantum",
-    "name": "Lost Quantum"
+    "name": "Perdición cuántica"
   },
   {
     "id": "lucid_nightmare",
@@ -481,7 +481,7 @@
   },
   {
     "id": "mourning_chorus",
-    "name": "Mourning Chorus"
+    "name": "Cantos fúnebres"
   },
   {
     "id": "murder_at_the_excelsior_hotel",
@@ -493,7 +493,7 @@
   },
   {
     "id": "night_on_the_town",
-    "name": "Night on the Town"
+    "name": "Noche en la ciudad"
   },
   {
     "id": "perth",
@@ -553,7 +553,7 @@
   },
   {
     "id": "return_to_a_light_in_the_fog",
-    "name": "Return to A Light in the Fog"
+    "name": "Regreso a Una luz en la niebla"
   },
   {
     "id": "return_to_a_phantom_of_truth",
@@ -581,7 +581,7 @@
   },
   {
     "id": "return_to_devil_reef",
-    "name": "Return to Devil Reef"
+    "name": "Regreso a Arrecife del diablo"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -613,7 +613,7 @@
   },
   {
     "id": "return_to_horror_in_high_gear",
-    "name": "Return to Horror in High Gear"
+    "name": "Regreso a Horror a toda máquina"
   },
   {
     "id": "return_to_in_the_clutches_of_chaos",
@@ -621,11 +621,11 @@
   },
   {
     "id": "return_to_in_too_deep",
-    "name": "Return to In Too Deep"
+    "name": "Regreso a Hasta el cuello"
   },
   {
     "id": "return_to_into_the_maelstrom",
-    "name": "Return to Into the Maelstrom"
+    "name": "Regreso a Hacia el remolino"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -665,7 +665,7 @@
   },
   {
     "id": "return_to_the_lair_of_dagon",
-    "name": "Return to The Lair of Dagon"
+    "name": "Regreso a La guarida de Dagón"
   },
   {
     "id": "return_to_the_last_king",
@@ -685,7 +685,7 @@
   },
   {
     "id": "return_to_the_pit_of_despair",
-    "name": "Return to The Pit of Despair"
+    "name": "Regreso a El pozo de la desesperación"
   },
   {
     "id": "return_to_the_secret_name",
@@ -701,7 +701,7 @@
   },
   {
     "id": "return_to_the_vanishing_of_elina_harper",
-    "name": "Return to The Vanishing of Elina Harper"
+    "name": "Regreso a La desaparición de Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -769,7 +769,7 @@
   },
   {
     "id": "starfall",
-    "name": "Starfall"
+    "name": "Estrella caída"
   },
   {
     "id": "stockholm",
@@ -777,7 +777,7 @@
   },
   {
     "id": "strange_moons",
-    "name": "Strange Moons"
+    "name": "Lunas extrañas"
   },
   {
     "id": "sydney",
@@ -833,7 +833,7 @@
   },
   {
     "id": "the_afternoon_war",
-    "name": "The Afternoon War"
+    "name": "Guerra al atardecer"
   },
   {
     "id": "the_attack",
@@ -945,11 +945,11 @@
   },
   {
     "id": "the_machine_in_yellow",
-    "name": "The Machine in Yellow"
+    "name": "La máquina amarilla"
   },
   {
     "id": "the_midnight_hour",
-    "name": "The Midnight Hour"
+    "name": "La hora bruja"
   },
   {
     "id": "the_miskatonic_museum",
@@ -997,7 +997,7 @@
   },
   {
     "id": "the_tatterdemalion",
-    "name": "The Tatterdemalion"
+    "name": "La Tatterdemalion"
   },
   {
     "id": "the_unspeakable_oath",

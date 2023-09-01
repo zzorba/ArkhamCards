@@ -1471,6 +1471,7 @@ export interface SetInvestigatorSortAction {
 
 export type ReduxMigrationAction = ReduxMigrationV1Action;
 
+export type SettingsActions = SetCurrentTabooSetAction;
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |

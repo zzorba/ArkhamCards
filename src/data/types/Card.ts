@@ -43,7 +43,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 134;
+export const CARD_NUM_COLUMNS = 136;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -308,6 +308,12 @@ export default class Card {
 
   @Column('text', { nullable: true })
   public taboo_text_change?: string;
+
+  @Column('text', { nullable: true })
+  public taboo_original_text?: string;
+
+  @Column('text', { nullable: true })
+  public taboo_original_back_text?: string;
 
   @Index('pack_code')
   @Column('text')
@@ -1290,7 +1296,8 @@ export default class Card {
       customization_text: (t ? t.customization_text : card.real_customization_text) || undefined,
       customization_change: (t ? t.customization_change : card.real_customization_change) || undefined,
       taboo_text_change: (t ? t.taboo_text_change : card.real_taboo_text_change) || undefined,
-
+      taboo_original_text: (t ? t.taboo_original_text : card.real_taboo_original_text) || undefined,
+      taboo_original_back_text: (t ? t.taboo_original_back_text : card.real_taboo_original_back_text) || undefined,
       encounter_name: card.encounter_code ? (data.encounterSets[card.encounter_code] || card.real_encounter_set_name || undefined) : undefined,
       subtype_name: card.subtype_code ? data.subTypeNames[card.subtype_code] : undefined,
     };
@@ -1453,6 +1460,8 @@ export default class Card {
         'real_flavor',
         'real_customization_text',
         'real_taboo_text_change',
+        'real_taboo_original_text_change',
+        'real_taboo_original_back_text_change',
         'real_customization_text',
       ]),
       ...translation,

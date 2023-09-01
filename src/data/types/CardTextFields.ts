@@ -20,4 +20,6 @@ export default interface CardTextFields {
   faction2_name?: string;
   faction3_name?: string;
   subtype_name?: string;
+  taboo_original_text?: string;
+  taboo_original_back_text?: string;
 }

@@ -30,18 +30,29 @@ export default function CardTabooTextBlock({ card }: Props) {
           <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={colors.taboo} />
         </View>
         <Text style={typography.small}>
-          { t`Taboo List Changes` }
+          { t`Taboo List` }
         </Text>
       </View>
       { !!card.extra_xp && (
-        <Text style={typography.small}>
-          { card.extra_xp > 0 ?
-            t`Additional XP: ${card.extra_xp}.` :
-            t`XP Discount: ${card.extra_xp}.` }
-        </Text>
+        <>
+          <Text style={typography.small}>
+            { card.extra_xp > 0 ? t`Chained - ` : t`Unchained - `}
+            { card.extra_xp > 0 ? t`Additional XP: ${card.extra_xp}.` : t`XP Discount: ${card.extra_xp}.` }
+          </Text>
+        </>
       ) }
-      { !!card.taboo_text_change && (
-        <CardTextComponent text={card.taboo_text_change} />
+      { (card.deck_limit === 0) ? (
+        <Text style={typography.small}>
+          { t`Forbidden` }
+        </Text>
+      ) : !!card.taboo_text_change && (
+        <>
+          { !!card.taboo_original_text || !!card.taboo_original_back_text ? (
+            <Text style={typography.small}>{t`Mutated`}</Text>
+          ) : (
+            <CardTextComponent text={card.taboo_text_change} />
+          ) }
+        </>
       ) }
     </View>
   );

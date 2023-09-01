@@ -1,7 +1,7 @@
-import { chunk, uniq, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values } from 'lodash';
+import { chunk, uniq, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, sumBy, values, maxBy } from 'lodash';
 import { Platform } from 'react-native';
 
-import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE } from '@actions/types';
+import { CardCache, Pack, PacksActions, CUSTOM_PACKS_AVAILABLE, PACKS_AVAILABLE, SET_CURRENT_TABOO_SET, SettingsActions } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
 import Card, { CARD_NUM_COLUMNS, TranslationData } from '@data/types/Card';
 import Rule from '@data/types/Rule';
@@ -161,7 +161,7 @@ export const syncCards = async function(
   db: Database,
   sqliteVersion: SqliteVersion,
   anonClient: ApolloClient<NormalizedCacheObject>,
-  dispatch: Dispatch<PacksActions>,
+  dispatch: Dispatch<PacksActions | SettingsActions>,
   lang?: string,
   cache?: CardCache,
 ): Promise<CardCache | null> {
@@ -320,9 +320,19 @@ export const syncCards = async function(
       cardsToInsert.push(card);
     });
     VERBOSE && console.time('tabooSets');
-    await tabooSets.insert(map(cardsResponse.data.taboo_set, tabooSet => {
+    const allTabooSets = map(cardsResponse.data.taboo_set, tabooSet => {
       return TabooSet.fromGQL(tabooSet);
-    }));
+    });
+    await tabooSets.insert(allTabooSets);
+    const largestTabooSetId = maxBy(allTabooSets, tabooSet => tabooSet.id)?.id;
+
+    if (largestTabooSetId !== undefined) {
+      dispatch({
+        type: SET_CURRENT_TABOO_SET,
+        tabooId: largestTabooSetId
+      });
+    }
+
     VERBOSE && console.timeEnd('tabooSets');
 
     updateProgress(0.40);
