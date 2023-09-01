@@ -790,19 +790,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -1547,7 +1547,7 @@ msgid "At Death's Doorstep"
 msgstr "En la puerta de la muerte (Acto 1)"
 
 msgid "Sealed Tokens"
-msgstr "Fichas de caos selladas"
+msgstr "Fichas de Caos selladas"
 
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Descuento de XP: ${ card.extra_xp }."
@@ -1995,7 +1995,7 @@ msgid "Edit campaign log"
 msgstr "Editar registro de campaña"
 
 msgid "Draw chaos tokens"
-msgstr "Robar fichas de caos"
+msgstr "Robar fichas de Caos"
 
 msgid "Draw random basic weakness"
 msgstr "Robar una debilidad básica aleatoria"
@@ -5046,34 +5046,34 @@ msgid "Destiny Tarot Reading"
 msgstr "Lectura de Tarot Destino"
 
 msgid "The Tatterdemalion"
-msgstr ""
+msgstr "La Tatterdemalion"
 
 msgid "Electric Nightmare"
-msgstr ""
+msgstr "Pesadilla eléctrica"
 
 msgid "Mission Briefing"
-msgstr ""
+msgstr "Informe de misión"
 
 msgid "Lost Quantum"
-msgstr ""
+msgstr "Perdición cuántica"
 
 msgid "In the Shadow of Earth"
-msgstr ""
+msgstr "La cara oculta de la Tierra"
 
 msgid "Strange Moons"
-msgstr ""
+msgstr "Lunas extrañas"
 
 msgid "Introspection"
-msgstr ""
+msgstr "Introspección"
 
 msgid "The Machine in Yellow"
-msgstr ""
+msgstr "La máquina amarilla"
 
 msgid "Fragment of Carcosa"
-msgstr ""
+msgstr "Fragmento de Carcosa"
 
 msgid "Starfall"
-msgstr ""
+msgstr "Estrella caída"
 
 msgid "Arkham in Wonderland"
 msgstr "Alicia en el País de las maravillas"
@@ -5731,19 +5731,19 @@ msgid "Automatic Backup"
 msgstr "Copias de seguridad automáticas"
 
 msgid "You must have at least 7 cards from each class"
-msgstr ""
+msgstr "Debes tener al menos 7 cartas de cada clase"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
-msgstr ""
+msgstr "Más cartas fuera de clase que el número de Debilidades en tu mazo"
 
 msgid "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
-msgstr ""
+msgstr "Lamentablemente, debido a la complejidad de sus opciones de creación de mazos, el modo Draft no está disponible para Lola Hayes, Joe Diamond, ni la Sujeto 5U-21."
 
 msgid "Concealed"
-msgstr ""
+msgstr "Encubierto"
 
 msgid "Parallel Cards"
-msgstr ""
+msgstr "Cartas paralelas"
 
 msgid "Heart of Darkness"
 msgstr ""
@@ -5753,37 +5753,37 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Devolver, pero ${ doNotRemove } fichas ${ bless } / ${ curse }"
 
 msgid "Recent token history"
-msgstr ""
+msgstr "Historial de fichas de Caos"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
-msgstr ""
+msgstr "Regreso (no oficial) a La conspiración de Innsmouth"
 
 msgid "Return to The Pit of Despair"
-msgstr ""
+msgstr "Regreso a El pozo de la desesperación"
 
 msgid "Return to The Vanishing of Elina Harper"
-msgstr ""
+msgstr "Regreso a La desaparición de Elina Harper"
 
 msgid "Return to In Too Deep"
-msgstr ""
+msgstr "Regreso a Hasta el cuello"
 
 msgid "Return to Devil Reef"
-msgstr ""
+msgstr "Regreso a Arrecife del diablo"
 
 msgid "Return to Horror in High Gear"
-msgstr ""
+msgstr "Regreso a Horror a toda máquina"
 
 msgid "Return to A Light in the Fog"
-msgstr ""
+msgstr "Regreso a Una luz en la niebla"
 
 msgid "Return to The Lair of Dagon"
-msgstr ""
+msgstr "Regreso a La guarida de Dagón"
 
 msgid "Return to Into the Maelstrom"
-msgstr ""
+msgstr "Regreso a Hacia el remolino"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7522,7 +7522,7 @@ msgstr "Recurso"
 
 msgctxt "parley"
 msgid "Parley"
-msgstr ""
+msgstr "Negociar"
 
 msgctxt "Encounter Sets"
 msgid "All"
