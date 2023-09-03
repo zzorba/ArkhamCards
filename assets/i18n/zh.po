@@ -5759,6 +5759,10 @@ msgstr ""
 msgid "Just a bag. No strings attached."
 msgstr ""
 
+#, javascript-format
+msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
