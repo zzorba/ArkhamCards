@@ -23,6 +23,7 @@ import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import { SimpleChaosBagItem } from './GenericCampaignItem';
 
 function SearchOptions({
   showArchived,
@@ -195,6 +196,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
             refreshing={refreshing}
             footer={footer}
             footerHeight={footerHeight}
+            header={!search ? <SimpleChaosBagItem componentId={componentId} /> : undefined}
           />
         ) }
       </CollapsibleSearchBox>

@@ -801,7 +801,7 @@
         },
         {
             "code": "08032",
-            "text": ":This card's ability gains: \"(Max twice per game.)\"",
+            "text": "This card's ability gains: \"(Max twice per game.)\"",
             "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
         },
         {
@@ -909,7 +909,7 @@
         {
             "code": "03006",
             "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\"",
-            "replacement_text": "Mutated.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
+            "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
             "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
         },
         {

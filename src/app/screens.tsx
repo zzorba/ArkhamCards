@@ -81,6 +81,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Weakness.Draw': return require('@components/weakness/WeaknessDrawDialog').default;
     case 'Rules': return require('@components/settings/RulesView').default;
     case 'Rule': return require('@components/settings/RuleView').default;
+    case 'SimpleChaosBag': return require('@components/chaos/SimpleChaosBagScreen').default;
 
     default: return undefined;
   }

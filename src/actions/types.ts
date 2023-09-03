@@ -357,6 +357,10 @@ export const NEW_CHAOS_BAG_RESULTS = {
   curseTokens: 0,
   totalDrawnTokens: 0,
 };
+export const FIXED_CHAOS_BAG_ID = '11111111-1111-1111-1111-111111111111';
+export const FIXED_CHAOS_BAG_CAMPAIGN_ID: LocalCampaignId = {
+  campaignId: FIXED_CHAOS_BAG_ID,
+};
 
 export interface SealedToken {
   id: string;

@@ -42,7 +42,7 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
   }, [scenarioCard, componentId]);
   const theChaosBag = liveChaosBag || chaosBag;
   const chaosBagResults = useChaosBagResults(campaignId);
-  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults.tarot);
+  const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults);
   const showOdds = useCallback(() => {
     if (theChaosBag) {
       showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);

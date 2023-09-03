@@ -7,7 +7,7 @@ import KeepAwake from 'react-native-keep-awake';
 import VariableTokenInput from './VariableTokenInput';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Scenario, scenarioFromCard } from '@components/campaign/constants';
-import { CampaignDifficulty } from '@actions/types';
+import { CampaignDifficulty, FIXED_CHAOS_BAG_CAMPAIGN_ID } from '@actions/types';
 import { ChaosBag, SPECIAL_TOKENS, ChaosTokenType, getChaosTokenValue } from '@app_constants';
 import Card from '@data/types/Card';
 import space, { isTablet, s } from '@styles/space';
@@ -1089,16 +1089,18 @@ export default function OddsCalculatorComponent({
     <View style={[styles.container, backgroundStyle]}>
       <KeepAwake />
       <ScrollView style={[styles.container, backgroundStyle]} overScrollMode="never" bounces={false}>
-        <View style={space.paddingS}>
-          <DeckButton
-            color="light_gray"
-            title={name || ''}
-            detail={difficulty ? difficultyText[difficulty] : undefined}
-            encounterIcon={code}
-            bigEncounterIcon
-            onPress={showDialog}
-          />
-        </View>
+        { campaign.id.campaignId !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId ? (
+          <View style={space.paddingS}>
+            <DeckButton
+              color="light_gray"
+              title={name || ''}
+              detail={difficulty ? difficultyText[difficulty] : undefined}
+              encounterIcon={code}
+              bigEncounterIcon
+              onPress={showDialog}
+            />
+          </View>
+        ) : <View style={space.paddingBottomS} /> }
         <View style={[styles.blurseRow, space.paddingSideS]}>
           <RoundButton onPress={toggleShowBlurse} noShadow accessibilityLabel={showBlurse ? t`Hide Bless/Curse Odds` : t`Show Bless/Curse Odds`}>
             <AppIcon name={showBlurse ? 'show' : 'hide'} color={colors.M} size={28} />

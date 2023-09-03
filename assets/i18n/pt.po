@@ -5757,6 +5757,12 @@ msgstr ""
 msgid "Taboo list history:"
 msgstr ""
 
+msgid "CHAOS BAG"
+msgstr ""
+
+msgid "Just a bag. No strings attached."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"

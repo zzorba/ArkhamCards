@@ -297,6 +297,19 @@ export default class App {
         },
       },
     };
+
+    const browseChaosBags = {
+      component: {
+        name: 'My.ChaosBag',
+        options: {
+          topBar: {
+            title: {
+              text: t`Chaos Bag`,
+            },
+          },
+        },
+      },
+    };
     const settings = {
       component: {
         name: 'Settings',
@@ -350,7 +363,8 @@ export default class App {
           },
         },
       },
-    }, {
+    },
+    {
       stack: {
         id: BROWSE_SETTINGS,
         children: [settings],

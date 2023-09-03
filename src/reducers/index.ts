@@ -49,6 +49,7 @@ import {
   SORT_BY_CARD_ID,
   CardScreenType,
   DEFAULT_MYTHOS_SORT,
+  FIXED_CHAOS_BAG_CAMPAIGN_ID,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
@@ -187,7 +188,7 @@ export const getCampaigns = createSelector(
       filter(
         values(allCampaigns),
         campaign => {
-          return (!campaign.linkedCampaignUuid && !campaign.serverId);
+          return (!campaign.linkedCampaignUuid && !campaign.serverId && campaign.uuid !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId);
         }
       ),
       (campaign: Campaign) => {
@@ -236,7 +237,7 @@ export const getBackupData = createSelector(
     });
     return {
       version: 1,
-      campaigns: values(campaigns || {}),
+      campaigns: filter(values(campaigns || {}), campaign => campaign.uuid !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId),
       decks: filter(values(decks), deck => !!deck.local) as LocalDeck[],
       guides: flatMap(values(guides || {}), x => x || []),
     };
