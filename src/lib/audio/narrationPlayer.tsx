@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { isEqual } from 'lodash';
 import { EmitterSubscription } from 'react-native';
-import TrackPlayer, { Capability, IOSCategory, Event, Track, State, useTrackPlayerEvents, IOSCategoryMode } from 'react-native-track-player';
+import TrackPlayer, { Capability, IOSCategory, Event, Track, State, useTrackPlayerEvents, IOSCategoryMode, AddTrack, AppKilledPlaybackBehavior } from 'react-native-track-player';
 
 import { useInterval } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -15,18 +15,18 @@ export function useAudioAccess(): [boolean, string | undefined] {
 
 interface TrackPlayerFunctions {
   getQueue: () => Promise<Track[]>;
-  getTrack: (id: number) => Promise<Track | null>;
+  getTrack: (id: number) => Promise<Track | undefined>;
   getState: () => Promise<State>;
   addEventListener: (type: Event, listener: (data: any) => void) => EmitterSubscription;
-  getCurrentTrack: () => Promise<number | null>;
+  getCurrentTrack: () => Promise<number | undefined>;
   getRate: () => Promise<number>;
   setRate: (rate: number) => Promise<void>;
   play: () => Promise<void>;
   pause: () => Promise<void>;
   skipToNext: () => Promise<void>;
   skip: (trackId: number) => Promise<void>;
-  add: (tracks: Track | Track[], insertBeforeId?: number) => Promise<void | number>;
-  remove: (trackIds: number | number[]) => Promise<void>;
+  add: (tracks: AddTrack[], insertBeforeId?: number) => Promise<void | number>;
+  remove: (trackIds: number[]) => Promise<void>;
   reset: () => Promise<void>;
   seekTo: (seconds: number) => Promise<void>;
   skipToPrevious: () => Promise<void>;
@@ -51,7 +51,9 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
           iosCategoryMode: IOSCategoryMode.SpokenAudio,
         }).then(() => {
           TrackPlayer.updateOptions({
-            stoppingAppPausesPlayback: false,
+            android: {
+              appKilledPlaybackBehavior: AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+            },
             capabilities: [
               Capability.Play,
               Capability.Pause,
@@ -67,7 +69,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
           });
           resolve({
             getQueue: TrackPlayer.getQueue,
-            getCurrentTrack: TrackPlayer.getCurrentTrack,
+            getCurrentTrack: TrackPlayer.getActiveTrackIndex,
             getTrack: TrackPlayer.getTrack,
             getRate: TrackPlayer.getRate,
             setRate: TrackPlayer.setRate,
@@ -75,7 +77,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
             play: TrackPlayer.play,
             pause: TrackPlayer.pause,
             skipToNext: TrackPlayer.skipToNext,
-            getState: TrackPlayer.getState,
+            getState: async () => (await TrackPlayer.getPlaybackState()).state,
             skip: TrackPlayer.skip,
             add: TrackPlayer.add,
             remove: TrackPlayer.remove,
@@ -99,7 +101,7 @@ async function getCurrentTrackDetails(nextTrack?: number): Promise<Track | undef
   const trackPlayer = await narrationPlayer();
   const currentTrack = (nextTrack === undefined) ? await trackPlayer.getCurrentTrack() : nextTrack;
   const queue = await trackPlayer.getQueue();
-  if (currentTrack === -1 || currentTrack === null || currentTrack >= queue.length) {
+  if (currentTrack === -1 || currentTrack === undefined || currentTrack >= queue.length) {
     return undefined;
   }
   return queue[currentTrack];
@@ -153,10 +155,8 @@ export function useStopAudioOnUnmount() {
   const [hasAudio] = useAudioAccess();
   useEffect(() => {
     if (hasAudio) {
-      return function() {
-        narrationPlayer().then(trackPlayer => {
-          trackPlayer.pause().then(() => trackPlayer.removeUpcomingTracks());
-        });
+      return () => {
+        narrationPlayer().then((trackPlayer) => trackPlayer.reset());
       };
     }
   }, [hasAudio]);

@@ -643,7 +643,7 @@ function SpecialTokenOdds({ chaosBag, chaosBagResults, specialTokenValues, modif
         return [];
       }
       return {
-        textModifier: t.value.modifier > 0 ? `+${t.value.modifier}` : `${t.value.modifier}`,
+        textModifier: t.value.modifier !== 'auto_fail' && t.value.modifier !== 'auto_succeed' && t.value.modifier > 0 ? `+${t.value.modifier}` : `${t.value.modifier}`,
         modifier: t.value.modifier === 'auto_fail' || t.value.modifier === 'auto_succeed' ? SPECIAL_ODDS[t.value.modifier] : t.value.modifier,
         difficultyModifier: t.value.increase_difficulty,
         token: t.token,
@@ -1046,6 +1046,7 @@ export default function OddsCalculatorComponent({
                 increment={incXValue}
                 decrement={decXValue}
                 negate={token.counter.negate}
+                showPlus
               />
             );
           }

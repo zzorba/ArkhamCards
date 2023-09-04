@@ -17,6 +17,7 @@ export interface Props {
   increment: (symbol: string) => void;
   decrement: (symbol: string) => void;
   negate?: boolean;
+  showPlus?: boolean;
 }
 
 export default function VariableTokenInput({
@@ -29,6 +30,7 @@ export default function VariableTokenInput({
   increment,
   decrement,
   negate,
+  showPlus,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const inc = useCallback(() => {
@@ -39,6 +41,7 @@ export default function VariableTokenInput({
     decrement(symbol);
   }, [decrement, symbol]);
 
+  const theValue = value * (negate ? -1 : 1);
   return (
     <TokenInput
       symbol={symbol}
@@ -55,7 +58,7 @@ export default function VariableTokenInput({
         max={max}
         color="dark"
       >
-        <Text style={[typography.text, styles.counterText, typography.center]}>{ value * (negate ? -1 : 1) }</Text>
+        <Text style={[typography.text, styles.counterText, typography.center]}>{ showPlus && theValue >= 0 ? `+${theValue}` : theValue }</Text>
       </PlusMinusButtons>
     </TokenInput>
   );

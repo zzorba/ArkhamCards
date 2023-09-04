@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
-import { Navigation, NavigationProps } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { chunk, map } from 'lodash';
 
@@ -14,19 +14,14 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import StyleContext from '@styles/StyleContext';
 import { campaignColor, getChaosBag } from '../constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
-import ArkhamIcon from '@icons/ArkhamIcon';
 import AppIcon from '@icons/AppIcon';
 import { useCampaignFromRedux, useChaosBagResultsRedux } from '@data/local/hooks';
 import { CampaignDifficulty, FIXED_CHAOS_BAG_CAMPAIGN_ID } from '@actions/types';
 import { flattenChaosBag } from '../campaignUtil';
 import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
-import { useAppDispatch } from '@app/store';
-import { useSetCampaignChaosBag } from '@data/remote/campaigns';
-import { ChaosBag } from '@app_constants';
-import { updateCampaignChaosBag } from '../actions';
-import { EditChaosBagProps } from '@components/chaos/EditChaosBagDialog';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
+import { NavigationProps } from '@components/nav/types';
 
 interface Props {
   campaign: MiniCampaignT;

@@ -12,7 +12,7 @@ import { TouchableShrink } from '@components/core/Touchables';
 interface Props {
   investigator: Card;
   value: string | undefined;
-  detail: string | undefined;
+  detail?: string;
   widget?: 'shuffle';
   disabled?: boolean;
   color?: 'dark' | 'light';

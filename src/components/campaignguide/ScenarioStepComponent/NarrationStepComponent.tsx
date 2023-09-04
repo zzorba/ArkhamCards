@@ -70,7 +70,7 @@ export function NarrationInlineControls({ narration }: IconProps) {
 
   const isCurrentTrack = currentTrack && currentTrack.narrationId === narration.id;
   // tslint:disable-next-line: strict-comparisons
-  const isPlaying = playerState === State.Playing && isCurrentTrack;
+  const isPlaying = playerState.state === State.Playing && isCurrentTrack;
   const onJumpBackPress = useCallback(async() => {
     try {
       const trackPlayer = await narrationPlayer();
@@ -99,7 +99,7 @@ export function NarrationInlineControls({ narration }: IconProps) {
   const onPressNarration = useCallback(() => {
     if (isPlaying) {
       narrationPlayer().then(trackPlayer => trackPlayer.pause());
-    } else if (isCurrentTrack && playerState === State.Paused) {
+    } else if (isCurrentTrack && playerState.state === State.Paused) {
       narrationPlayer().then(trackPlayer => trackPlayer.play());
     } else {
       playNarrationTrack(narration.id);
