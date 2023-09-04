@@ -5682,7 +5682,7 @@ msgid "Concealed"
 msgstr "은신"
 
 msgid "Parallel Cards"
-msgstr ""
+msgstr "평행 카드"
 
 msgid "Heart of Darkness"
 msgstr ""
@@ -5692,78 +5692,78 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
 
 msgid "Recent token history"
-msgstr ""
+msgstr "최근 토큰 기록"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
-msgstr ""
+msgstr "(비공식) 돌아온 인스머스에 드리운 음모"
 
 msgid "Return to The Pit of Despair"
-msgstr ""
+msgstr "돌아온 절망의 구렁"
 
 msgid "Return to The Vanishing of Elina Harper"
-msgstr ""
+msgstr "돌아온 엘레나 하퍼의 실종"
 
 msgid "Return to In Too Deep"
-msgstr ""
+msgstr "돌아온 너무나 깊은 수렁"
 
 msgid "Return to Devil Reef"
-msgstr ""
+msgstr "돌아온 악마의 암초"
 
 msgid "Return to Horror in High Gear"
-msgstr ""
+msgstr "돌아온 공포의 추격전"
 
 msgid "Return to A Light in the Fog"
-msgstr ""
+msgstr "돌아온 안개 속 한 줄기 빛"
 
 msgid "Return to The Lair of Dagon"
-msgstr ""
+msgstr "돌아온 데이곤의 침소"
 
 msgid "Return to Into the Maelstrom"
-msgstr ""
+msgstr "돌아온 몰아치는 소용돌이 속으로"
 
 msgid "Chained - "
-msgstr ""
+msgstr "속박 - "
 
 msgid "Unchained - "
-msgstr ""
+msgstr "강화 - "
 
 msgid "Forbidden"
-msgstr ""
+msgstr "금지"
 
 msgid "Mutated"
-msgstr ""
+msgstr "변형"
 
 msgid "Original card text"
-msgstr ""
+msgstr "원본 카드 문구"
 
 msgid "Original card text (back)"
-msgstr ""
+msgstr "원본 카드 문구 (뒷면)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "최신 금기 목록: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "이 카드는 더 이상 금기 목록에 없습니다."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "금기 목록 기록 보기"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "금기 목록 기록:"
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "혼돈 주머니"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "주머니 하나만 있으면 됩니다. 아무런 조건이 없습니다."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "봉인됨 (${ chaosBagResults.sealedTokens.length })"
 
 msgctxt "investigator"
 msgid "Custom"
