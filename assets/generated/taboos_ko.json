@@ -666,7 +666,7 @@
       {
         "code": "01050",
         "text": "이 카드의 문구는 다음과 같이 바뀝니다: “당신과 교전 중인 모든 적과 교전이 풀리고, 당신은 적이 없는 이어진 장소 한 곳으로 이동합니다.”",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a connecting location with no enemies."
+        "replacement_text": "변형. 신속. 당신의 차례에만 플레이할 수 있습니다.\n당신과 교전 중인 모든 적과 교전이 풀리고, 당신은 적이 없는 이어진 장소로 한 곳으로 이동합니다."
       },
       {
         "code": "02108",
@@ -675,7 +675,7 @@
       {
         "code": "02226",
         "text": "이 카드의 [action] 기능은 다음 문구를 얻습니다: “이 공격은 일반 사거리보다 최대 1칸까지 더 떨어진 장소의 ‘[[정예]]가 아닌 적’을 대상으로 삼아도 되며, 그렇게 할 경우 ‘냉담한’과 ‘보복’ 키워드를 무시합니다.”",
-        "replacement_text": "Mutated. Uses (3 ammo).\n[action] Spend 1 ammo: Fight. You get +3 [combat] and deal +2 damage for this attack. This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords. Cannot be used to attack enemies engaged with you."
+        "replacement_text": "변형. 사용 (탄약 3발).\n[action] 탄약을 1발 소비합니다: <b>전투.</b> 당신은 이번 공격에서 +3 [combat]을 얻고 +2 피해를 줍니다. 이 공격은 일반 사거리보다 최대 1칸까지 더 떨어진 장소의 ‘[[정예]]가 아닌 적’을 대상으로 삼아도 되며, 그렇게 할 경우 ‘냉담한’과 ‘보복’ 키워드를 무시합니다."
       },
       {
         "code": "04305",
@@ -684,7 +684,7 @@
       {
         "code": "05153",
         "text": "이 카드의 [fast] 기능은 이제 [action] 기능으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[action] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck."
+        "replacement_text": "변형. 사용 (비밀 3개).\n[action] ‘떼까마귀’를 소진하고 비밀을 1개 소비합니다: 당신의 덱 맨 위 카드 3장 (또는) 6장 (또는) 9장 중에서 원하는 카드를 1장 찾아서 뽑습니다. 찾아본 카드 중에 약점이 1장 이상 있다면, 그 약점 중 1장도 함께 뽑습니다. 당신의 덱을 섞습니다."
       },
       {
         "code": "05159",
@@ -693,7 +693,7 @@
       {
         "code": "05230",
         "text": "이 카드는 다음 문구를 잃습니다: “부착된 자산은 당신과 교전 중인 적을 공격하는 데에 사용할 수 없습니다.”",
-        "replacement_text": "Mutated. Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots.\nWhen you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack."
+        "replacement_text": "변형. 신속. 당신이 조종하며 양손 슬롯을 차지하는 [[총]] 자산에 부착합니다.\n[reaction] 당신이 부착된 자산을 사용하여 <b>전투</b> 행동을 수행할 때, 당신과 교전 중인 적이 하나도 없다면 ‘망원 조준경’을 소진합니다: 이번 공격은 이어진 장소에 있는 [[정예]]가 아닌 적 하나를 대상으로 삼을 수 있습니다. 이번 공격에서 ‘냉담한’과 ‘보복’ 키워드를 무시합니다."
       },
       {
         "code": "05231",
@@ -702,32 +702,32 @@
       {
         "code": "05324",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘전화위복'을 게임에서 제거합니다.”",
-        "replacement_text": "Mutated. Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead. Remove Eucatastrophe from the game."
+        "replacement_text": "변형. 신속. 능력 테스트 동안 당신이 혼돈 토큰을 공개할 때, 그 토큰이 당신의 능력값을 0으로 줄이려는 경우에 플레이할 수 있습니다([auto_fail] 토큰을 뽑더라도).\n그 혼돈 토큰을 취소하고, 대신 [elder_sign] 토큰을 공개한 것처럼 간주합니다. ‘전화위복’을 게임에서 제거합니다."
       },
       {
         "code": "06022",
         "text": "이 카드의 상시 기능은 다음과 같이 바뀝니다: “‘여왕의 펜던트'에 더 이상 충전이 없으면, 이 카드를 게임에서 제거합니다.”",
-        "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+        "replacement_text": "변형. 결속 (오닉스 조각). 사용 (충전 3회). ‘여왕의 팬던트’에 충전이 없다면, 이 카드를 게임에서 제거합니다.\n[fast] ‘여왕의 팬던트’를 소진하고 충전을 1회 소비합니다: 공개된 장소 한 곳을 선택하고 다음 중 하나를 해결합니다(그 장소로 이동합니다/그 장소에서 단서를 1개 발견합니다/그 장소에 있는 적 하나를 자동 회피합니다)."
       },
       {
         "code": "06199",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “소모된 ‘에이스 트리플' 사본을 모두 게임에서 제거합니다.”",
-        "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+        "replacement_text": "변형. 무수한.\n당신이 한 번의 능력 테스트에서 ‘에이스 트리플’ 사본을 3장 소모하면, 해당 능력 테스트가 자동 성공합니다<i>(혼돈 주머니에서 혼톤 토큰을 공개하지 않습니다)</i>. 그런 다음, 카드를 3장 뽑고 자원을 3개 획득합니다(테스트당 최대 1번). 소모된 ‘에이스 트리플’ 사본을 모두 게임에서 제거합니다."
       },
       {
         "code": "60318",
         "text": "이 카드의 문구는 “이 효과로 버려진 모든 약점을 당신의 덱에 섞어 넣습니다.”에서 “이번 테스트를 해결한 후, 이 효과로 버려진 모든 약점을 뽑습니다.”로 바뀝니다.",
-        "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+        "replacement_text": "변형. 당신이 ‘저돌적’을 능력 테스트에 소모한 후, 당신이 이번 테스트에 소모할 수 있는 [rogue] 능력 카드 하나가 나올 때까지 당신의 덱 맨 윗장부터 카드를 1장씩 버립니다. 그 카드를 소모합니다. 이번 테스트를 해결한 후, 이 효과로 버려진 모든 약점을 뽑습니다."
       },
       {
         "code": "07003",
         "text": "이 카드의 [reaction] 기능의 문구는 이제 다음과 같이 바뀝니다: “그 장소에서 추가로 단서를 1개 더 발견하거나 그 적이 [[정예]]가 아니라면 그 적을 자동 회피합니다. (라운드당 1번 한정.)”",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "replacement_text": "변형.\n[reaction] 당신이 ‘적 하나가 위치한 장소에 있는 단서’를 1개 이상 발견한 후: 그 장소에서 추가로 단서를 1개 더 발견하거나 그 적이 [[정예]]가 아니라면 그 적을 자동 회피합니다. (라운드당 1번 한정.)\n[elder_sign] 효과: +2. 이번 테스트가 조사라면, 당신은 아무 공개된 장소 한 곳을 선택해도 됩니다. 이제 당신은 원래 장소를 조사하는 것 대신 마치 당신이 선택한 장소에 있는 것처럼 조사합니다."
       },
       {
         "code": "07122",
         "text": "이 카드의 [reaction] 기능의 문구는 이제 다음과 같이 바뀝니다: “능력 테스트 동안, 당신이 [bless] 토큰을 하나 해결할 때…”",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\nWhen you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "변형. 영속. 덱당 [[성약]]은 1장 한정.\n[reaction] 능력 테스트 동안, 당신이 [bless] 토큰을 하나 해결할 때, ‘고대의 성약’을 소진합니다: 해당 [bless] 토큰의 효과로 다른 토큰을 공개하지 않습니다."
       },
       {
         "code": "60233",
@@ -740,7 +740,7 @@
       {
         "code": "03112",
         "text": "이 카드의 [fast] 기능의 문구는 이제 다음과 같이 바뀝니다: “‘데이비드 렌필드’에 놓인 파멸마다 자원을 1개씩 획득합니다(최대 자원 3개까지).”",
-        "replacement_text": "Mutated. While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources)."
+        "replacement_text": "변형. ‘데이비드 렌필드’에게 파멸이 1개 이상 놓여있다면, 당신은 +1 [willpower]를 얻습니다.\n[fast] ‘데이비드 렌필드’를 소진합니다: ‘데이비드 렌필드’에 파멸을 1개 올려놓아도 됩니다. ‘데이비드 렌필드’에 놓인 파멸마다 자원을 1개씩 획득합니다(최대 자원 3개까지)."
       },
       {
         "code": "07308",
@@ -797,7 +797,7 @@
             "position": 1
           }
         ],
-        "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: \"- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.\"\n□ <b>Inscription of the Elders.</b> Add this inscription: \"- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.\"\n□□ <b>Inscription of the Hunt.</b> Add this inscription: \"- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.\"\n□ <b>Inscription of Fury.</b> Add this inscription: \"- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.\"\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
+        "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: “- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.”\n□ <b>Inscription of the Elders.</b> Add this inscription: “- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.”\n□□ <b>Inscription of the Hunt.</b> Add this inscription: “- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.”\n□ <b>Inscription of Fury.</b> Add this inscription: “- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.”\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
         "text": "향상 요소 - <b>사냥의 룬 글귀</b>: +1 경험치"
       },
       {
@@ -807,150 +807,150 @@
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n변형. 신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n변형.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다."
       },
       {
         "code": "08019",
         "text": "이 카드의 <b>강제</b> 기능은 이제 다음과 같이 바뀝니다: “<b>강제</b> - 게임에서 당신의 첫 번째 차례를 시작할 때: 당신의 손에서 [[물품]] 자산을 (한 번에 1장씩) 최대 5장까지 플레이합니다.”",
-        "replacement_text": "Mutated. Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take."
+        "replacement_text": "변형. 영속. 덱당 1장 한정. 덱 구성 시에만 구매 가능.\n<b>강제</b> - 게임에서 당신의 첫 번째 차례를 시작할 때: 당신의 손에서 [[물품]] 자산을 (한 번에 1장씩) 최대 5장까지 플레이합니다. 이렇게 플레이하는 모든 자산의 비용을 1씩 낮춥니다. 이번 차례 동안, 당신은 행동을 3번 적게 합니다."
       },
       {
         "code": "08032",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “(게임당 최대 2번.)”",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
+        "replacement_text": "변형.\n당신은 +1 [intellect]을 얻습니다.\n[reaction] ‘제레마이어 커비’가 플레이 영역에 들어온 후, “홀수” 또는 “짝수” 중 하나를 선택합니다: 당신의 덱 맨 윗장부터 카드를 5장 공개합니다. 그중에서 앞서 선택한 것(“홀수” 또는 “짝수”)과 일치하는 비용의 카드를 모두 뽑습니다. 나머지 카드는 당신의 덱에 섞어넣습니다(게임당 최대 2번)."
       },
       {
         "code": "01033",
         "text": "이 카드의 [reaction] 기능은 다음과 같이 바뀝니다: “당신이 조사를 성공한 후, ‘밀란 크리스토퍼 박사'를 소진합니다…”",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After you successfully investigate, exhaust Dr. Milan Christopher: Gain 1 resource."
+        "replacement_text": "변형.\n당신은 +1 [intellect]을 얻습니다.\n[reaction] 당신이 조사를 성공한 후, ‘밀란 크리스토퍼 박사’를 소진합니다: 자원을 1개 획득합니다."
       },
       {
         "code": "02002",
         "text": "이 카드의 [reaction] 기능은 다음 문구를 얻습니다: “(라운드당 1번 한정.)”",
-        "replacement_text": "Mutated.\n[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location. (Limit once per round.)\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards."
+        "replacement_text": "변형.\n[reaction] 당신이 ‘적 하나가 위치한 장소에 있는 단서’를 1개 이상 발견한 후: 그 장소에서 추가로 단서를 1개 더 발견하거나 그 적이 [[정예]]가 아니라면 그 적을 자동 회피합니다. (라운드당 1번 한정.)\n[elder_sign] 효과: +2. 이번 테스트가 조사라면, 당신은 아무 공개된 장소 한 곳을 선택해도 됩니다. 이제 당신은 원래 장소를 조사하는 것 대신 마치 당신이 선택한 장소에 있는 것처럼 조사합니다."
       },
       {
         "code": "02111",
         "text": "이 카드는 다음 문구를 얻습니다: “승점 더미에 ‘너무 깊이 파헤치다' 사본 2장 그룹 한정.”",
-        "replacement_text": "Mutated.\nIn player order, each investigator draws 1 card from the top of the encounter deck. Then, add Delve Too Deep to the victory display.\nGroup limit 2 copies of Delve Too Deep in the victory display."
+        "replacement_text": "변형.\n플레이어 순서대로, 각 조사자는 조우 덱 맨 위 카드를 1장씩 뽑습니다. 그런 다음, ‘너무 깊이 파헤치다’를 승점 더미에 추가합니다.\n승점 더미에 ‘너무 깊이 파헤치다’ 사본 2장 그룹 한정."
       },
       {
         "code": "02229",
         "text": "이 카드는 기능 맨 뒤에 다음 문구를 얻습니다: “(라운드당 최대 1번.)”",
-        "replacement_text": "Mutated.\nIf this skill test is successful by 2 or more, after it resolves, you may immediately take an action as if it were your turn (this action does not count toward the number of actions you can take each turn). (Max once per round.)"
+        "replacement_text": "변형.\n난이도보다 2 이상 높은 차이로 능력 테스트에 성공하면, 이번 능력 테스트를 해결한 후 당신은 마치 자신의 차례인 것처럼 즉시 행동 한 번을 수행해도 됩니다(이 행동은 당신이 매 차례마다 수행할 수 있는 행동 횟수에 포함되지 않습니다). (라운드당 최대 1번.)"
       },
       {
         "code": "02266",
         "text": "이 카드는 다음 문구를 얻습니다: “라운드당 최대 1장.”",
-        "replacement_text": "Mutated. Exceptional. Fast. Play only during your turn.\nYou may take an additional 3 actions this turn. (Max once per round.)"
+        "replacement_text": "변형. 특별. 신속. 당신의 차례에만 플레이할 수 있습니다. 당신은 이번 차례에 추가로 행동을 3번 더 수행해도 됩니다.\n라운드당 최대 1장."
       },
       {
         "code": "03029",
         "text": "이 카드의 기능은 다음과 같이 바뀝니다: “당신의 손에 있는 레벨 0-3 [[물품]] 자산 1장을 플레이 영역에 둡니다.”",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nPut a level 0-3 [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand."
+        "replacement_text": "변형. 신속. 당신의 차례에만 플레이할 수 있습니다.\n당신의 손에 있는 레벨 0-3 [[물품]] 자산 1장을 플레이 영역에 둡니다. 당신의 차례 끝에, 그 자산이 여전히 플레이 상태라면 그 자산을 당신의 손으로 가져옵니다."
       },
       {
         "code": "03315",
         "exceptional": true,
         "text": "이 카드는 ‘특별' 키워드를 얻습니다.",
-        "replacement_text": "Mutated. Exceptional. You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck."
+        "replacement_text": "변형. 특별. 당신은 ‘이스의 열쇠’에 놓인 공포마다 모든 능력값에 +1을 얻습니다.\n<b>강제</b> - 당신에게 공포가 하나라도 놓이려 할 때: 그 공포 중에서 하나를 ‘이스의 열쇠’에 올려놓습니다.\n<b>강제</b> - ‘이스의 열쇠’가 플레이 영역에서 나갈 때: 당신의 덱 맨 위 카드 10장을 버립니다."
       },
       {
         "code": "04309",
         "text": "이 카드는 기능 맨 뒤에 다음 문구를 얻습니다: “‘올 인'을 게임에서 제거합니다.”",
-        "replacement_text": "Mutated.\nMax 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it. Remove All In from the game."
+        "replacement_text": "변형.\n능력 테스트당 최대 1장 소모할 수 있습니다.\n이번 능력 테스트가 성공하면, 능력값이 난이도를 넘어선 차이만큼 카드를 뽑습니다(최대 5장). 이 효과로 인해 뽑은 모든 약점은 해결하지 않고서 당신의 덱에 합친 후 섞습니다. ‘올 인’을 게임에서 제거합니다."
       },
       {
         "code": "05116",
         "text": "이 카드의 [action] 기능은 이제 [fast] 기능으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on the top of its deck."
+        "replacement_text": "변형. 사용 (비밀 3개).\n[fast] ‘비밀의 두루마리’를 소진하고 비밀을 1개 소비합니다: 조우 덱이나 아무 조사자 한 명의 덱에서 맨 밑에 있는 카드를 확인해 봅니다. 그런 다음, 그 카드를 버리거나 / 소유자가 손으로 가져가게 하거나 / 원래 덱 맨 밑에 놓거나 / 원래 덱 맨 위에 놓습니다."
       },
       {
         "code": "05188",
         "text": "이 카드의 [action] 기능은 이제 [fast] 기능으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom 3 cards of any investigator's deck or the encounter deck. You may discard 1 of those cards. You may add 1 of those cards to its owner's hand. Place the rest of those cards on either the top or bottom of their deck, in any order."
+        "replacement_text": "변형. 사용 (비밀 3개).\n[fast] ‘비밀의 두루마리’를 소진하고 비밀을 1개 소비합니다: 조우 덱이나 아무 조사자 한 명의 덱에서 맨 밑에 있는 카드를 3장 확인해 봅니다. 그중 1장을 버려도 됩니다. 그중 1장을 소유자가 손으로 가져가게 해도 됩니다. 남은 카드들은 원래 덱 맨 밑 또는 맨 위 중 한 곳에 원하는 순서대로 놓습니다."
       },
       {
         "code": "05189",
         "text": "이 카드의 [action] 기능은 이제 [fast] 기능으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (4 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the top or bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on top of its deck."
+        "replacement_text": "변형. 사용 (비밀 4개).\n[fast] ‘비밀의 두루마리’를 소진하고 비밀을 1개 소비합니다: 조우 덱이나 아무 조사자 한 명의 덱에서 맨 위 또는 맨 밑에 있는 카드를 확인해 봅니다. 그런 다음, 그 카드를 버리거나 / 소유자가 손으로 가져가게 하거나 / 원래 덱 맨 밑에 놓거나 / 원래 덱 맨 위에 놓습니다."
       },
       {
         "code": "05020",
         "text": "이 카드의 기능은 이제 “<b>협상.</b> 당신이 위치한 장소에 있는 [[정예]]가 아닌 적 하나를 선택하고…” 문구로 바뀝니다.",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-[[Elite]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location."
+        "replacement_text": "변형.\n<b>협상.</b> 당신이 위치한 장소에 있는 [[정예]]가 아닌 적 하나를 선택하고 [combat] (3)을 테스트합니다. 이 테스트는 +X 난이도를 얻습니다. X는 선택한 적의 피해값입니다. 성공하면, 당신이 위치한 장소에서 단서를 1개 발견하고 아무 다른 장소 한 곳에서 단서를 1개 발견합니다."
       },
       {
         "code": "06195",
         "text": "이 카드의 [action] 기능은 다음과 같이 바뀝니다: “[action] 탄약을 1발 소비합니다: <b>전투.</b> 당신은 이번 공격에서 +2 [combat]을 얻습니다. 이번 공격 동안 음수가 아닌 보정값을 가진 혼돈 토큰이 공개되면, 이 공격은 +2 피해를 줍니다.”",
-        "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+        "replacement_text": "변형. 사용 (탄약 5발).\n[action] 탄약을 1발 소비합니다: <b>전투</b>. 당신은 이번 공격에서 +2 [combat]을 얻습니다. 이번 공격 동안 음수가 아닌 보정값을 가진 혼돈 토큰이 공개되면, 이번 공격은 +2 피해를 줍니다."
       },
       {
         "code": "02026",
         "deck_limit": 0,
         "text": "금지.",
-        "replacement_text": "Mutated. Forbidden.\nMax 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "replacement_text": "변형. 금지.\n능력 테스트당 최대 1장 소모할 수 있습니다.\n이번 테스트의 난이도가 두 배가 됩니다. 이번 능력 테스트에 성공하면, 테스트의 모든 성공 효과를 두 번씩 해결합니다."
       },
       {
         "code": "02029",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated.\n[reaction] After a symbol is revealed during a test you are performing: You get +1 skill value for this test."
+        "replacement_text": "변형.\n[reaction] 당신이 테스트를 수행하는 동안 기호가 공개된 후: 이번 테스트에 +1 능력값을 얻습니다."
       },
       {
         "code": "02153",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "replacement_text": "변형. 신속. 적 하나가 당신이 위치한 장소에 있는 조사자 한 명을 공격할 때 플레이할 수 있습니다.\n그 공격을 취소합니다. 그런 다음, 혼돈 주머니에서 무작위 토큰을 1개 공개합니다. 기호가 공개되면, 공격한 적의 피해를 공격한 적 자신에게 줍니다."
       },
       {
         "code": "02269",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated.\nAfter a symbol is revealed during a skill test at your location, exhaust Jewel of Aureolus: Draw 1 card or gain 2 resources."
+        "replacement_text": "변형.\n[reaction] 당신이 위치한 장소에서 수행된 능력 테스트에서 기호가 공개된 후 ‘아우레올루스의 보석’을 소진합니다: 카드를 1장 뽑거나 자원을 2개 획득합니다."
       },
       {
         "code": "60416",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated.\nGain 1 resource. Reveal 3 random tokens from the chaos bag. For each symbol revealed, gain an additional 2 resources."
+        "replacement_text": "변형.\n자원을 1개 획득합니다. 혼돈 주머니에서 무작위로 토큰을 3개 공개합니다. 공개된 기호마다, 추가로 자원을 2개씩 더 획득합니다."
       },
       {
         "code": "05113",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated.\n<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase."
+        "replacement_text": "변형.\n<b>회피.</b> [[정예]]가 아닌 적 하나를 대상으로만 사용할 수 있습니다. 이번 회피 시도는 [agility] 대신 [willpower]를 사용합니다. 성공하면, 방금 회피한 적을 플레이 상태인 아무 장소 한곳으로 이동시킵니다. 성공했고 이번 회피 시도 동안 기호가 공개되었다면, 그 적은 다음 정리 단계 동안 준비 상태가 되지 않습니다."
       },
       {
         "code": "02263",
         "text": "이 카드의 전투 기능에 표시된 문구는 “+2 피해” 대신 “+1 피해”로 바뀝니다.",
-        "replacement_text": "Mutated. Researched. Uses (3 supplies).\n[action] Spend 1 supply: Fight. Attack with a base [combat] skill of 6. This attack deals +1 damage."
+        "replacement_text": "변형. 연구됨. 사용(소모품 3개).\n[action] 소모품을 1개 소비합니다: <b>전투</b>. 당신의 기본 [combat] 능력을 6으로 바꿔 공격합니다. 이번 공격은 +1 피해를 줍니다."
       },
       {
         "code": "03006",
         "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”이 카드의 강제 기능은 뒷면으로 이동되며, 이제 다음과 같이 바뀝니다: “<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([guardian]/[seeker]/[rogue]/[mystic]/[survivor]/중립)을 하나 선택합니다.”.이 카드의 앞면은 다음 문구를 얻습니다: “[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.”",
-        "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
+        "replacement_text": "변형.\n당신은 배역과 일치하는 카드 및 중립 카드만을 (플레이/소모/기능 격발) 할 수 있습니다.\n[free]: 당신의 배역을 바꿉니다. (라운드당 1번 한정).\n[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.\n[elder_sign] 효과: +2. 당신의 배역을 바꿔도 됩니다.",
+        "replacement_back_text": "변형.\n<b>덱 크기</b>: 35장.\n<b>덱 구성 선택지</b>: 레벨 0-3 생존자([survivor])/수호자([guardian])/탐구자([seeker])/무법자([rogue])/신비주의자([mystic]) 카드, 레벨 0-5 중립 카드.\n<b>덱 구성 요구조건</b> (덱 크기에 포함되지 않습니다): 즉흥 연기 사본 2장, 정체성의 위기 사본 2장, 무작위 기본 약점 카드 1장.\n<b>추가 요구조건</b>: 당신의 덱에는 최소한 서로 다른 세 가지 역할군([survivor]/[guardian]/[seeker]/[rogue]/[mystic])의 카드가 각기 7장 이상씩 포함되어야 합니다.<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([survivor]/[guardian]/[seeker]/[rogue]/[mystic]/중립)을 하나 선택합니다."
       },
       {
         "code": "03019",
         "text": "이 카드의 폭로 기능은 다음과 같이 바뀝니다: “당신의 손 또는 당신의 플레이 영역에서, 당신의 현재 배역과 일치하는 카드 1장을 버립니다. 그런 다음...”",
-        "replacement_text": "Mutated.\n<b>Revelation</b> - Discard 1 card in your hand or play area of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral)."
+        "replacement_text": "변형.\n<b>강제</b> - 당신의 손 또는 플레이 영역에서, 당신의 현재 배역과 일치하는 카드 1장을 버립니다. 그런 다음, 당신의 덱 맨 위 카드 1장을 버립니다. 당신의 배역을 이렇게 버린 카드의 역할군으로 바꿉니다(약점 카드를 버렸다면 당신의 배역을 중립으로 바꿉니다)."
       },
       {
         "code": "04032",
         "text": "이 카드의 문구는 “[skull], [cultist], [tablet], [elder_thing], [auto_fail]”에서 “[elder_sign]이 아닌 기호 토큰”으로 바뀝니다.",
-        "replacement_text": "Mutated. Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a non-[elder_sign] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)"
+        "replacement_text": "변형. 신속. 당신이 혼돈 토큰을 공개하려 할 때 플레이할 수 있습니다.\n1개의 혼돈 토큰을 대신하여 5개의 혼돈 토큰을 공개합니다. 이렇게 공개한 혼돈 토큰 가운데서 [elder_sign]이 아닌 기호 토큰 하나를 선택해서 해결하고, 나머지는 모두 무시합니다. (이러한 토큰이 하나도 공개되지 않았다면, 공개한 토큰 중 1개를 선택해서 해결하고, 나머지는 모두 무시합니다.)"
       },
       {
         "code": "04105",
         "text": "이 카드의 기능은 이제 “<b>협상.</b> 당신이 위치한 장소에 있는 약점이 아닌 적 하나를 선택하고…” 문구로 바뀝니다.",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-weakness enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead."
+        "replacement_text": "변형.\n<b>협상.</b> 당신이 위치한 장소에 있는 약점이 아닌 적 하나를 선택하고 [intellect] (3)을 테스트합니다. 이번 능력 테스트는 +X 난이도를 얻습니다. X는 선택한 적의 공포값입니다. 성공하면, 선택한 적을 조우 덱에 합친 후 섞습니다. 선택한 적이 [[정예]]라면, 그 대신 자동으로 그 적을 회피합니다."
       },
       {
         "code": "04110",
         "text": "이 카드의 문구는 “[skull], [cultist], [tablet], [elder_thing]”에서 “[auto_fail]가 아닌 기호 토큰”으로 바뀝니다.",
-        "replacement_text": "Mutated. Fast. Play when a non-[auto_fail] symbol is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>"
+        "replacement_text": "변형. 신속. 당신이 위치한 장소에서 수행된 능력 테스트에서 [auto_fail]가 아닌 기호 토큰 하나가 공개될 때 플레이할 수 있습니다.\n그 혼돈 토큰을 취소합니다 (<i>취소된 혼돈 토큰을 대체할 새로운 혼돈 토큰을 뽑지 않습니다</i>)."
       },
       {
         "code": "06002",
@@ -1001,49 +1001,49 @@
             }
           ]
         },
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+        "replacement_back_text": "변형.\n<b>덱 크기</b>: 50장.\n<b>보조 역할군 선택</b>: 덱 구성 시, 신비주의자([mystic])/무법자([rogue])/생존자([survivor]) 중 하나 선택.\n<b>덱 구성 선택지</b>: 레벨 0-5 탐구자 카드([seeker]), 레벨 0-5 중립 카드, 레벨 0-1 당신이 선택한 보조 역할군의 이벤트 그리고/또는 능력 카드 최대 10장.\n<b>덱 구성 요구조건</b>(덱 크기에 포함되지 않습니다): 초자연적인 증거 사본 3장, 충격적인 발견, 무작위 기본 약점 카드 1장."
       },
       {
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
       },
       {
         "code": "08045",
         "text": "이 카드의 상시 기능에 표시된 문구는 다음과 같이 바뀝니다: “당신은 +1 [intellect]과 +1 [agility]을 얻고, 매 차례마다 당신이 받는 첫 번째 틈새 공격을 무시합니다.”",
-        "replacement_text": "Mutated.\nWhile you are not at the locus, you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\n[reaction]After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus."
+        "replacement_text": "변형.\n당신이 “중심점”에 있지 않은 동안, 당신은 +1 [intellect]과 +1 [agility]을 얻고 당신은 매 차례마다 당신이 받는 첫 번째 틈새 공격을 무시합니다.\n[reaction] ‘프로페시아 프로파나’가 플레이 영역에 들어온 후: 공개된 장소 한 곳을 선택합니다. 그 장소는 ‘프로페시아 프로파나’가 플레이 영역에서 나갈 때까지 “중심점”이 됩니다.\n[action]: 아무 조사자 한 명을 “중심점”으로 이동시킵니다."
       },
       {
         "code": "08055",
         "text": "이 카드는 다음 문구를 얻습니다: “라운드당 최대 1장.”",
-        "replacement_text": "Mutated. Fast. Play at the start of the investigation phase. Max once per round.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck."
+        "replacement_text": "변형. 신속. 조사 단계 시작에 플레이할 수 있습니다. 라운드당 최대 1번.\n한 번에 1장씩, 정확히 5장이 되도록 조사자 덱들 맨 위로부터 카드를 공개합니다. 공개한 카드는 비플레이 상태로 치워 둡니다. 비플레이 상태로 치워 둔 동안, 아무 조사자든 이러한 카드를 자신의 손에 있는 것처럼 간주하여 플레이해도 됩니다. 다음 조사 단계 시작에, 이러한 카드 중 아직도 치워져 있는 모든 카드를 각기 소유자의 덱에 섞어넣습니다."
       },
       {
         "code": "08076",
         "text": "이 카드의 기능은 “(게임당 최대 2번.)” 문구를 얻습니다.",
-        "replacement_text": "Mutated.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading. (Max twice per game.)\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "replacement_text": "변형.\n당신의 손에 있는 레벨 0-5 카드를 1장 추방합니다. 당신이 위치한 장소에서 단서를 2개 발견합니다. 추방한 카드가 레벨 2 이상이었다면, 현재 주요사건에서 파멸을 1개 제거합니다. ‘열람 후 소각하시오’를 추방합니다. (게임당 최대 2번.)\n<b>젠콘 2020 “추방된 의회” 이벤트에서 디자인한 카드입니다.</b>"
       },
       {
         "code": "08098",
         "text": "이 카드의 문구는 “다음 행동”에서 “다음 기본 행동”으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take one of the following basic actions (move, evade, or investigate)."
+        "replacement_text": "변형. 사용(비밀 3개).\n[fast] 당신의 차례 동안, ‘억겁의 지도’를 소진하고 비밀을 1개 소비합니다: 다음 기본 행동 중 한 가지를 선택해서 수행합니다(이동/회피/조사)."
       },
       {
         "code": "08100",
         "text": "이 카드의 문구는 “다음 행동”에서 “다음 기본 행동”으로 바뀝니다.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "replacement_text": "변형. 사용(비밀 3개).\n[fast] 당신의 차례 동안, ‘억겁의 지도’를 소진하고 비밀을 1개 소비합니다: 다음 기본 행동 중 서로 다른 두 가지를 선택해서 원하는 순서대로 수행합니다(이동/회피/조사)."
       },
       {
         "code": "08093",
         "text": "이 카드의 난이도를 넘어선 차이 3 이상으로 성공했을 때의 문구는 다음과 같이 바뀝니다: “난이도를 넘어선 차이 3 이상으로 성공했다면, 그 대신 ”+2 피해를 주고 그 적을 당신으로부터 최대 2칸까지 멀리 이동“시키기 위해 당신은 ‘거석 망치'를 소진해도 됩니다(마찬가지로 이동은 정예가 아닌 적에 한하여)”",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> Add your [willpower] to your skill value for this attack. You deal +1 damage for this attack. If you succeed and the enemy is non-[[Elite]], you may move it one location away from you. (If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and may move the enemy up to two locations away from you.)"
+        "replacement_text": "변형.\n[action]: <b>전투.</b> 이번 공격에서 당신의 능력값에 당신의 [willpower]를 추가합니다. 당신은 이번 공격에서 +1 피해를 줍니다. 그 적이 [[정예]]가 아닌 적이었으며 이번 테스트가 성공했다면, 당신은 그 적을 당신으로부터 1칸 멀어지게끔 이동시켜도 됩니다. 난이도를 넘어선 차이 3 이상으로 성공했다면, 그 대신 +2 피해를 주고 그 적을 당신으로부터 최대 2칸까지 멀어지게끔 이동시키기 위해 당신은 ‘거석 망치’를 소진해도 됩니다(마찬가지로 이동은 [[정예]]가 아닌 적에 한하여)."
       },
       {
         "code": "09045",
         "text": "이 카드의 두 번째 기능은 다음을 얻습니다: “(라운드당 증거는 최대 3개까지 소비 가능).”",
-        "replacement_text": "Mutated.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
+        "replacement_text": "변형.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
       },
       {
         "code": "09081",
@@ -1088,9 +1088,9 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "customization_text": "□ <b>Betray.</b> Add the command: \"- <i>'Betray.'</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\"\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confess.</b> Add the command: \"- <i>'Confess.'</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\"\n□ <b>Distract.</b> Add the command: \"- <i>'Distract.'</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\"\n□□ <b>Greater Control.</b> Power Word gains \"[fast]: Return Power Word to your hand.\"\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "replacement_text": "Mutated.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "customization_change": "- <i>“Betray.”</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>“Cower.”</i> This enemy exhausts.\n- <i>“Confess.”</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>“Distract.”</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "customization_text": "□ <b>Betray.</b> Add the command: “- <i>‘Betray.’</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.”\n□ <b>Cower.</b> Add the command: “- <i>‘Cower.’</i> This enemy exhausts.”\n□ <b>Confess.</b> Add the command: “- <i>‘Confess.’</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.”\n□ <b>Distract.</b> Add the command: “- <i>‘Distract.’</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.”\n□□ <b>Greater Control.</b> Power Word gains “[fast]: Return Power Word to your hand.”\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "replacement_text": "변형.\n[action] 부착된 적이 당신이 위치한 장소에 있다면: <b>협상.</b> [willpower](3)를 테스트합니다. 성공하면, 그 적에게 명령을 내립니다(각각의 명령마다 라운드당 1번 한정)\n - 가라.“ 이 적은 당신이 선택한 방향으로 1칸 이동합니다."
       }
     ]
   }
