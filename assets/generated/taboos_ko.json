@@ -564,7 +564,7 @@
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”이 카드의 강제 기능은 뒷면으로 이동되며, 이제 다음과 같이 바뀝니다: “<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([guardian]/[seeker]/[rogue]/[mystic]/[survivor]/중립)을 하나 선택합니다.”.이 카드의 앞면은 다음 문구를 얻습니다: “[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.”"
+        "text": "이 카드의 강제 기능은 뒷면으로 이동되며, 이제 다음과 같이 바뀝니다: “<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([guardian]/[seeker]/[rogue]/[mystic]/[survivor]/중립)을 하나 선택합니다.”\n이 카드의 앞면은 다음 문구를 얻습니다: “[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.”"
       },
       {
         "code": "03019",
@@ -832,7 +832,7 @@
       {
         "code": "02002",
         "text": "이 카드의 [reaction] 기능은 다음 문구를 얻습니다: “(라운드당 1번 한정.)”",
-        "replacement_text": "변형.\n[reaction] 당신이 ‘적 하나가 위치한 장소에 있는 단서’를 1개 이상 발견한 후: 그 장소에서 추가로 단서를 1개 더 발견하거나 그 적이 [[정예]]가 아니라면 그 적을 자동 회피합니다. (라운드당 1번 한정.)\n[elder_sign] 효과: +2. 이번 테스트가 조사라면, 당신은 아무 공개된 장소 한 곳을 선택해도 됩니다. 이제 당신은 원래 장소를 조사하는 것 대신 마치 당신이 선택한 장소에 있는 것처럼 조사합니다."
+        "replacement_text": "변형.\n[reaction] 당신이 난이도보다 2 이상 높은 차이로 조사에 성공한 후: 당신이 위치한 장소에서 단서를 1개 발견합니다. (라운드당 1번 한정.)\n[elder_sign] 효과: +2. 당신은 이번 테스트를 자동 실패하기로 하면서 카드를 3장 <b>뽑아도 됩니다.</b>"
       },
       {
         "code": "02111",
@@ -928,9 +928,9 @@
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: “<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).”\nThis card's front side additionally gains: “[action]: Switch roles. Does not provoke attacks of opportunity.”이 카드의 강제 기능은 뒷면으로 이동되며, 이제 다음과 같이 바뀝니다: “<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([guardian]/[seeker]/[rogue]/[mystic]/[survivor]/중립)을 하나 선택합니다.”.이 카드의 앞면은 다음 문구를 얻습니다: “[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.”",
+        "text": "이 카드의 강제 기능은 뒷면으로 이동되며, 이제 다음과 같이 바뀝니다: “<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([guardian]/[seeker]/[rogue]/[mystic]/[survivor]/중립)을 하나 선택합니다.”\n이 카드의 앞면은 다음 문구를 얻습니다: “[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.”",
         "replacement_text": "변형.\n당신은 배역과 일치하는 카드 및 중립 카드만을 (플레이/소모/기능 격발) 할 수 있습니다.\n[free]: 당신의 배역을 바꿉니다. (라운드당 1번 한정).\n[action]: 당신의 배역을 바꿉니다. 이 행동은 틈새 공격을 유발하지 않습니다.\n[elder_sign] 효과: +2. 당신의 배역을 바꿔도 됩니다.",
-        "replacement_back_text": "변형.\n<b>덱 크기</b>: 35장.\n<b>덱 구성 선택지</b>: 레벨 0-3 생존자([survivor])/수호자([guardian])/탐구자([seeker])/무법자([rogue])/신비주의자([mystic]) 카드, 레벨 0-5 중립 카드.\n<b>덱 구성 요구조건</b> (덱 크기에 포함되지 않습니다): 즉흥 연기 사본 2장, 정체성의 위기 사본 2장, 무작위 기본 약점 카드 1장.\n<b>추가 요구조건</b>: 당신의 덱에는 최소한 서로 다른 세 가지 역할군([survivor]/[guardian]/[seeker]/[rogue]/[mystic])의 카드가 각기 7장 이상씩 포함되어야 합니다.<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([survivor]/[guardian]/[seeker]/[rogue]/[mystic]/중립)을 하나 선택합니다."
+        "replacement_back_text": "변형.\n<b>덱 크기</b>: 35장.\n<b>덱 구성 선택지</b>: 레벨 0-3 생존자([survivor])/수호자([guardian])/탐구자([seeker])/무법자([rogue])/신비주의자([mystic]) 카드, 레벨 0-5 중립 카드.\n<b>덱 구성 요구조건</b> (덱 크기에 포함되지 않습니다): 즉흥 연기 사본 2장, 정체성의 위기 사본 2장, 무작위 기본 약점 카드 1장.\n<b>추가 요구조건</b>: 당신의 덱에는 최소한 서로 다른 세 가지 역할군([survivor]/[guardian]/[seeker]/[rogue]/[mystic])의 카드가 각기 7장 이상씩 포함되어야 합니다.\n<b>추가 게임준비</b>: 당신이 시작 카드를 뽑은 후, 배역([survivor]/[guardian]/[seeker]/[rogue]/[mystic]/중립)을 하나 선택합니다."
       },
       {
         "code": "03019",
