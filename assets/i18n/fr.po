@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -792,19 +792,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -1546,7 +1546,7 @@ msgid "Encounter Cards"
 msgstr "Cartes Rencontre"
 
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "Enchaînée ( -${ taboo.extra_xp } expérience)."
+msgstr "Déchaînée ( ${ taboo.extra_xp } expérience)."
 
 msgid "At Death's Doorstep"
 msgstr "Aux Portes de la Mort"
@@ -1555,7 +1555,7 @@ msgid "Sealed Tokens"
 msgstr "Pions Scellés"
 
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "Enchaînée ( -${ card.extra_xp } expérience)."
+msgstr "Déchaînée ( ${ card.extra_xp } expérience)."
 
 msgid "Add Investigator Deck"
 msgstr "Ajouter un investigateur"
@@ -5753,10 +5753,10 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Renvoyer tous les pions ${ doNotRemove } les pions ${ bless } / ${ curse }"
 
 msgid "Recent token history"
-msgstr ""
+msgstr "Historique des pions piochés"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
 msgstr "Le Renouveau (non-officiel) de la Conspiration d'Innsmouth"
@@ -5786,45 +5786,45 @@ msgid "Return to Into the Maelstrom"
 msgstr "Renouveau – Dans le Maelstrôm"
 
 msgid "Chained - "
-msgstr ""
+msgstr "Enchaînée "
 
 msgid "Unchained - "
-msgstr ""
+msgstr "Déchaînée "
 
 msgid "Forbidden"
-msgstr ""
+msgstr "Interdite"
 
 msgid "Mutated"
-msgstr ""
+msgstr "Mutée"
 
 msgid "Original card text"
-msgstr ""
+msgstr "Texte d'origine de la carte"
 
 msgid "Original card text (back)"
-msgstr ""
+msgstr "Texte d'origine de la carte (verso)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "Dernière Liste des Tabous : ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "Cette carte n'est plus dans la liste des tabous."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "Voir l'historique des tabous"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "Historique des tabous :"
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "RÉSERVE DU CHAOS"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "L'affaire est dans le sac, les pions aussi."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "Pions Scellés (${ chaosBagResults.sealedTokens.length })"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6358,7 +6358,7 @@ msgstr "Le support pour le mécanisme nouvellement annoncé des « Clefs Écarla
 
 msgctxt "releaseNotes"
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "Cyclopean Foundations"
 
 msgctxt "releaseNotes"
 msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
